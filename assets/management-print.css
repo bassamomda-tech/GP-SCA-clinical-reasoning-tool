@@ -1,0 +1,48 @@
+/* ============================================
+   Reasoning GP — protocol print stylesheet
+   Loaded ONLY by the -print.html copies of protocol pages, on top of
+   management.css. The <doc-page> component owns all page geometry —
+   nothing here sets @page, paper size, or page breaks of its own
+   beyond ordinary break-hygiene on the content.
+   ============================================ */
+
+/* colours and backgrounds must survive the print engine */
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+/* freeze any animation at its end state rather than reverting it */
+*{animation-delay:-99s!important;animation-duration:.001s!important;animation-iteration-count:1!important;animation-fill-mode:both!important;animation-play-state:running!important;transition-duration:0s!important}
+
+/* the on-screen wrapper chrome is the sheet's job now */
+.mg-wrap{max-width:none;margin:0;padding:0;background:none}
+.mg-secnav,.mg-printbar,.mg-nav-print{display:none}
+.mg-back,.mgn-bar,.rgp-nav,.top{display:none!important}
+
+/* keep every card, tile, rung and step whole on the page */
+.mg-card,.mg-qcard,.mg-pstep,.mg-wrap .card,.mg-wrap .fstep,.mg-tile,.mg-rung,.mg-step,
+.mg-dl-row,.mg-ev li,.mg-wrap .say,.mg-legend,.mg-glance,.mg-layers,.mg-node{break-inside:avoid}
+tr,thead,.mg-table-wrap{break-inside:avoid}
+h1,h2,h3,.mg-sec-h{break-after:avoid}
+p,li,dd{orphans:3;widows:3}
+
+/* each numbered section starts on a fresh page — one topic per sheet */
+.mg-wrap section{break-before:page}
+.mg-wrap section:first-of-type{break-before:auto}
+
+/* tighter type for paper */
+.mg-wrap{font-size:10.5pt}
+.mg-qcard p,.mg-pstep p,.mg-card p,.mg-wrap .card p,.mg-wrap .card li{font-size:9.6pt;line-height:1.45}
+.mg-wrap section table{font-size:9.4pt}
+.mg-wrap section th,.mg-wrap section td{padding:5px 7px}
+.mg-sec-h h2{font-size:16pt}
+.mg-card h3,.mg-qcard h3,.mg-wrap .card h3{font-size:11.5pt}
+
+/* grids: two columns on paper reads better than auto-fit at sheet width */
+.mg-quick,.mg-cards,.mg-path{grid-template-columns:1fr 1fr}
+.mg-cards-2,.mg-wrap .two{grid-template-columns:1fr 1fr}
+.mg-glance{grid-template-columns:repeat(4,1fr)}
+
+/* shadows print as muddy grey — keep the borders, drop the elevation */
+.mg-card,.mg-qcard,.mg-pstep,.mg-wrap .card,.mg-wrap .fstep,.mg-wrap .mg-layers a,.mg-ev,.mg-cov,.mg-hist{box-shadow:none}
+
+/* links: show the destination for the paper reader */
+.mg-wrap .evlist a::after{content:" (" attr(href) ")";font-size:8.4pt;color:#5d6673;word-break:break-all}

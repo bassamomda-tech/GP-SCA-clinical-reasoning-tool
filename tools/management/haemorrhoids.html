@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haemorrhoids — Protocol · Reasoning GP</title>
+<meta name="description" content="Haemorrhoids in primary care: never attribute rectal bleeding to piles without excluding colorectal cancer, then stool softening as the foundation, short-course topicals only, banding or sclerotherapy for persistent grade I–III, and the 72-hour window for a thrombosed external pile." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/haemorrhoids.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Haemorrhoids protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"Haemorrhoids — the complete guide",
+  eyebrow:"Protocol · exclude cancer before you reassure",
+  stemTitle:"The cardinal error is attributing rectal bleeding to piles and missing colorectal cancer — so the red-flag screen comes before the reassurance, not after it",
+  stemSub:"One page for the whole condition. Haemorrhoids are common and benign, but never attribute rectal bleeding to piles without excluding colorectal cancer — examine, apply the NG12 criteria, and only then reassure. Treatment is conservative and unglamorous: stool softening is the foundation and the reason procedures succeed or fail, topical preparations are short-course only, and persistent grade I–III goes for banding. One time-critical exception: <b>a thrombosed external pile is most treatable within about 72 hours.</b>",
+  guideline:"NICE NG12 · NICE DG30/DG56 · BNF",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"Never attribute rectal bleeding to piles unexamined", tone:"tw"},
+    {t:"Thrombosed pile: ~72-hour window", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>Exclude cancer</small></a><a href="#nondrug"><b>Non-drug</b><small>Soften stool</small></a><a href="#ladder"><b>Ladder</b><small>Topical → banding</small></a><a href="#monitor"><b>Monitor</b><small>Bleeding · anaemia</small></a><a href="#refer"><b>Refer</b><small>NG12 · procedures</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Never attribute rectal bleeding to haemorrhoids without excluding colorectal cancer", html:"<b>This is the cardinal error in this condition.</b> <b>Examine, and apply the red-flag and NG12 criteria BEFORE reassuring.</b> Red flags: a change in bowel habit, weight loss, anaemia, age, family history, dark or mixed-in blood, or a mass. Bright-red blood on the paper in a young patient with visible piles is one thing; the same history at 62 is another."},
+    {tone:"green", h:"Stool softening is the foundation, and the reason procedures work", html:"Increase dietary fibre and fluids to keep stool soft, add a bulk-forming laxative if fibre alone is insufficient, and stop straining and prolonged sitting. <b>Procedures fail if straining and constipation continue</b> — so this is not the soft option before the real treatment, it is what makes the real treatment hold."},
+    {tone:"amber", h:"Topical preparations are short-course only", html:"Soothing and barrier creams; short courses of topical local anaesthetic or corticosteroid for pain and itch. Limit the duration — prolonged use causes skin sensitisation and atrophy. These relieve symptoms; they do not treat the haemorrhoid."},
+    {tone:"blue", h:"Banding first, surgery for grade IV or refractory", html:"Persistent grade I–III not settling with conservative measures → rubber-band ligation (the first-line procedure) or sclerotherapy. Grade IV, large or refractory → haemorrhoidectomy or a stapled/HALO procedure via colorectal surgery."},
+    {tone:"red", h:"⏱️ Thrombosed external pile — the 72-hour window", html:"<b>Acute severe anal pain with a tense, tender lump.</b> Analgesia and conservative management — but consider surgical excision if the patient presents within about 72 hours with severe pain. <b>Say this to patients: it is most treatable in the first few days</b>, so early contact genuinely changes the options available."},
+    {tone:"purple", h:"🟣 NICE NG12 — the colorectal route", html:"<b>Rectal bleeding with red-flag features → suspected-cancer pathway.</b> Aged 60 and over with a change in bowel habit, unintentional weight loss, iron-deficiency anaemia, or an abdominal or rectal mass, and FIT (refer at ≥10 µg Hb/g) where the criteria direct it. Restated in <a href='#refer'>Refer</a>."}
+  ],
+  pathwaySub:"Five steps, and the first is the one that protects the patient.",
+  pathway:[
+    {title:"Confirm the diagnosis and exclude cancer", html:"<b>Examine; apply the red-flag and NG12 criteria before reassuring.</b> <b>Do not attribute bleeding to piles unexamined.</b>", alert:true},
+    {title:"Soften the stool and fix the habits", html:"Fibre and fluids, a bulk-forming laxative if needed, no straining, anal hygiene, weight and activity."},
+    {title:"Short-course topical relief", html:"Soothing or barrier creams, brief local anaesthetic or corticosteroid — limited duration."},
+    {title:"Refer for a procedure if not settling", html:"Banding or sclerotherapy for grade I–III; surgery for grade IV or refractory."},
+    {title:"Monitor bleeding, anaemia and recurrence", html:"<b>Keep the stool soft long term — it is what prevents recurrence.</b>"}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm", title:"Step 1 — confirm, and consider what else bleeds",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Typical presentation</b>","Bright-red painless rectal bleeding, often on the paper or coating the stool; itch, prolapse, or a sensation of incomplete evacuation"],
+         ["<b>Grade</b>","I (no prolapse) · II (prolapse, reduces spontaneously) · III (prolapse, needs manual reduction) · IV (irreducible) — the grade directs which procedure"],
+         ["<b>THE RULE</b>","Never attribute rectal bleeding to haemorrhoids without excluding colorectal cancer, especially with red flags"],
+         ["<b>Red flags</b>","Change in bowel habit, weight loss, anaemia, age, family history, dark or mixed-in blood, or a mass"]
+       ]},
+       {b:"why", html:"Haemorrhoids are common and benign, but the cardinal error is attributing rectal bleeding to piles and missing colorectal cancer. <b>Examine, and apply the red-flag and 2WW criteria before reassuring</b> — then treatment is conservative, with procedures for those who do not settle. <b>Visible haemorrhoids do not exclude a proximal tumour</b>: both can be present, and the piles are the more visible of the two."}
+     ]},
+
+    {id:"nondrug", nav:"Non-drug", title:"Step 2 — stool softening and habits, first-line",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🌾 Fibre and fluids", html:"Increase dietary fibre and fluids to keep stool soft — the foundation of treatment and prevention."},
+         {tone:"amber", h:"🚽 Avoid straining", html:"<b>Don't strain or sit long on the toilet; respond to the urge promptly.</b>"},
+         {tone:"blue", h:"💊 Bulk laxative", html:"<b>Add a bulk-forming laxative if fibre alone is insufficient.</b>"},
+         {tone:"green", h:"🧼 Anal hygiene", html:"<b>Gentle cleaning, avoid vigorous wiping; pat dry.</b>"},
+         {tone:"green", h:"⚖️ Weight and activity", html:"Healthy weight and activity; treat chronic constipation or a chronic cough — both raise intra-abdominal pressure."},
+         {tone:"blue", h:"🛁 Sitz baths", html:"<b>Warm baths can soothe symptoms.</b>"}
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Ladder", title:"Step 3 — symptom relief, then procedures",
+     blocks:[
+       {b:"table", head:["Step","What","When"], rows:[
+         ["<b>Step 1 — short-term topical preparations</b>","Soothing or barrier creams; short courses of topical local anaesthetic or corticosteroid for pain and itch","<b>Symptom relief. Limit the duration — skin sensitisation and atrophy</b>"],
+         ["<b>Step 2 — outpatient procedures</b>","<b>Rubber-band ligation (first-line procedure) or sclerotherapy — refer</b>","<b>Persistent grade I–III not settling with conservative measures</b>"],
+         ["<b>Step 3 — surgery</b>","<b>Haemorrhoidectomy, or a stapled/HALO procedure — surgical referral</b>","Large, grade IV or refractory, after conservative and outpatient treatment have failed"],
+         ["<b>Acute — thrombosed external pile</b>","Analgesia and conservative management; consider surgical excision if presenting within about 72 hours with severe pain","<b>Acute severe anal pain with a tense lump</b>"]
+       ]},
+       {b:"warn", html:"<b>Limit topical steroid and anaesthetic to short courses.</b> Conservative measures and stool softening underpin everything — procedures fail if straining and constipation continue."}
+     ]},
+
+    {id:"monitor", nav:"Monitor", title:"Steps 4–5 — response, bleeding and review",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Symptoms and bleeding</b>","<b>Each review</b>","<b>Persisting or worsening → examine, consider a procedure or referral</b>"],
+         ["<b>Red flags</b>","<b>Ongoing</b>","<b>New change in habit, weight loss or anaemia → investigate</b>"],
+         ["<b>Anaemia</b>","<b>If bleeding is significant</b>","<b>Check FBC; iron if needed</b>"],
+         ["<b>Constipation</b>","<b>Ongoing</b>","<b>Keep stool soft — this is what prevents recurrence</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>After conservative measures</b>","<b>Assess response; ensure the stool is soft; topical relief if needed</b>"],
+         ["<b>If persistent</b>","Refer for banding or sclerotherapy (grade I–III), or surgery (grade IV or refractory)"],
+         ["<b>On any red flag</b>","<b>Re-evaluate for colorectal pathology if symptoms change</b>"]
+       ]}
+     ]},
+
+    {id:"notsettling", nav:"Not settling?", title:"Not settling? Re-check before referral",
+     sub:"Exclude sinister causes and confirm the conservative measures before any procedure.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"1 · Cancer excluded?", html:"Red-flag and NG12 criteria reviewed; is the bleeding truly haemorrhoidal?"},
+         {tone:"green", h:"2 · Stool soft?", html:"<b>Fibre, fluids, laxative — has the straining actually stopped?</b>"},
+         {tone:"blue", h:"3 · Grade", html:"<b>Higher grades and prolapse may need procedures rather than more cream.</b>"},
+         {tone:"amber", h:"4 · Topical overuse", html:"<b>Avoid prolonged steroid or anaesthetic creams.</b>"},
+         {tone:"blue", h:"5 · Refer", html:"<b>Persistent grade I–III → banding; grade IV or refractory → surgery.</b>"}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Safety-netting",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Sinister bleeding", html:"\"Bleeding mixed in with the stool or darker blood, a change in bowel habit, weight loss, or tiredness and pallor — come back; we'll investigate.\""},
+         {tone:"red", h:"🩸 Heavy bleeding", html:"<b>\"Large or persistent bleeding, or feeling faint — seek urgent help.\"</b>"},
+         {tone:"amber", h:"😣 Severe pain", html:"\"Sudden severe anal pain with a tense lump may be a clotted pile — contact us early; it's most treatable in the first days.\""},
+         {tone:"green", h:"🌾 Keep stool soft", html:"\"Fibre, fluids and not straining are the key to preventing them coming back.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When to refer",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW · NICE NG12", html:"Rectal bleeding with red-flag features, or meeting the NG12 criteria → suspected-cancer pathway. Aged 60 and over with a change in bowel habit, unintentional weight loss, iron-deficiency anaemia, or an abdominal or rectal mass; FIT (refer at ≥10 µg Hb/g) where the criteria direct it."},
+         {tone:"blue", h:"Procedures", html:"<b>Persistent grade I–III → banding or sclerotherapy.</b>"},
+         {tone:"amber", h:"Surgery", html:"<b>Grade IV, large, or refractory haemorrhoids → colorectal surgery.</b>"},
+         {tone:"red", h:"Thrombosed", html:"Acute thrombosed external haemorrhoid within about 72 hours with severe pain → consider surgical excision."},
+         {tone:"cream", h:"GP management", html:"Examination and the cancer exclusion, stool softening, short-course topicals, grading, and the procedure referral decision all belong here. Related pages: <a href='anal-fissure.html'>anal fissure</a> · <a href='constipation-adult.html'>constipation</a> · <a href='ibs.html'>IBS</a> · <a href='iron-deficiency-anaemia.html'>iron deficiency anaemia</a> · <a href='../algorithms/rectal-bleeding.html'>rectal bleeding pathway</a>."}
+       ]},
+       {b:"say", html:"This looks like haemorrhoids, and the mainstay is keeping stools soft with fibre and fluids so you don't strain, plus a short course of soothing cream. I've checked there's nothing more serious — but if your bleeding pattern or bowel habit changes, tell me."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 63-year-old man reports 3 months of <b>rectal bleeding</b> which he is sure is \"my piles again\" — he had banding 8 years ago. On questioning, the blood is <b>sometimes mixed into the stool and darker</b>, his bowels are <b>looser than usual</b>, and he has <b>lost about 5 kg</b> without trying. He asks for \"the cream that worked last time\" and does not want an examination."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does NOT accept the patient's own attribution — this is the cardinal error the page exists to prevent; identifies three NG12 red flags at 63 (mixed-in and darker blood, change in bowel habit, unintentional weight loss) and refers on the suspected-cancer pathway rather than prescribing; <b>negotiates the examination rather than abandoning it</b>, explaining why it matters and that a previous history of piles does not exclude anything; <b>checks FBC for iron-deficiency anaemia</b> as both a red flag and a consequence; uses FIT only where the NG12 criteria direct it, not as a substitute for referral when 2WW criteria are met; <b>can still address the stool softening and symptomatic relief</b> so the patient does not leave empty-handed; and <b>safety-nets heavy bleeding and faintness</b> while the referral proceeds."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the colorectal routes applied to rectal bleeding with red-flag features, including change in bowel habit aged 60 and over, weight loss, iron-deficiency anaemia, abdominal or rectal mass, and FIT at \u226510 \u00b5g Hb/g</span></li>'+
+         '<li><b>NICE DG56 / DG30 — Quantitative faecal immunochemical testing</b><span class="rd"> — the FIT threshold and its place in the colorectal pathway</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — haemorrhoid preparations, topical local anaesthetic and corticosteroid products, and bulk-forming laxatives</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Haemorrhoids \u2014 NG12 and DG56. Never attribute rectal bleeding to haemorrhoids without examining and excluding colorectal cancer: visible piles do not exclude a proximal tumour. Stool softening with fibre, fluids and a bulk-forming laxative is the foundation, and procedures fail if straining and constipation continue. Topical preparations are short-course only. Persistent grade I–III goes for rubber-band ligation or sclerotherapy; grade IV, large or refractory goes to colorectal surgery. A thrombosed external pile is most treatable within about 72 hours. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

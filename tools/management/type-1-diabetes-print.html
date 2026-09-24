@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Type 1 diabetes — Protocol · Reasoning GP</title>
+<meta name="description" content="Type 1 diabetes in primary care: confirming it is genuinely type 1 rather than misdiagnosed T2 or LADA, the named insulins and their roles, basal–bolus starting doses with the 0.5 units/kg estimate and the 100 rule, fixing the basal before the bolus, CGM for everyone, DKA and hypoglycaemia, sick-day rules and the DVLA 5-to-drive rule." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/type-1-diabetes.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790199278198257 tools/management/type-1-diabetes.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Type 1 diabetes protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"Type 1 diabetes — the complete guide",
+  eyebrow:"Protocol · NICE NG17 · TA151 · TA943 · fix the basal before you blame the bolus",
+  stemTitle:"Half of type 1 diabetes presents after the age of 30, so the diagnosis that gets missed is an overweight adult labelled type 2 — and the titration error that wastes years is adjusting meal doses while the basal is wrong",
+  stemSub:"One page for the whole condition. Confirm it is genuinely type 1 rather than misdiagnosed T2, LADA or MODY — lean, ketotic, rapid onset or poor response to orals means GAD antibodies and C-peptide, and treat as type 1 until proven otherwise. Then the insulins by name and role, basal–bolus starting doses, carb ratios and the 100 rule, safe titration in the right order, CGM for everyone, and the two emergencies plus the sick-day and DVLA rules every patient must know cold.",
+  guideline:"NICE NG17 · TA151 · TA943",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE NG17 — type 1 diabetes in adults"},
+    {t:"TA151 (pumps) · TA943 (hybrid closed loop)"},
+    {t:"NEVER stop basal insulin, even when not eating", tone:"tw"},
+    {t:"Prescribe insulin by BRAND and strength", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>Is it really T1?</small></a><a href="#insulins"><b>The insulins</b><small>Name · action · role</small></a><a href="#start"><b>Start</b><small>0.5 u/kg · 100 rule</small></a><a href="#titrate"><b>Titrate</b><small>Basal first</small></a><a href="#emergencies"><b>Emergencies</b><small>DKA · hypo · DVLA</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Do not assume type 2 in an overweight adult", html:"Half of type 1 diabetes presents over the age of 30, and misdiagnosing T1 or LADA as type 2 — then starting only oral agents — risks DKA. Lean, ketotic, rapid onset, poor response to orals, or a personal or family history of autoimmunity → check GAD antibodies and C-peptide, and treat as type 1 until proven otherwise. <b>New type 1 presenting in DKA is a same-day admission.</b>"},
+    {tone:"red", h:"⛔ Never stop basal insulin", html:"Not even when the patient is not eating or is vomiting — omission is the classic route to DKA. Check blood ketones when unwell or when glucose is above 15, and remember euglycaemic DKA: ketones can be ≥3.0 with a near-normal glucose. <b>Prescribe by BRAND and strength in type 1</b>, because biosimilars and U300 products differ dangerously."},
+    {tone:"blue", h:"Basal–bolus (MDI) for every adult, never pre-mixed", html:"Basal: detemir (Levemir) BD is NG17-preferred; alternatives glargine OD (Lantus, Semglee, Toujeo) or degludec OD (Tresiba) for flexible timing or nocturnal hypoglycaemia. Bolus: a rapid analogue — aspart, lispro or glulisine — with each meal. Pre-mixed insulin is NOT first-line in type 1 and is used only where MDI is genuinely unworkable."},
+    {tone:"amber", h:"Starting doses, the split, and the 100 rule", html:"Total daily dose roughly 0.5 units/kg/day (range 0.3–0.5), split about 50% basal and 50% bolus across meals — so 70 kg gives a TDD of about 35 units: basal ~17 units (halved if detemir BD), bolus ~6 units per main meal. <b>Start the insulin-to-carb ratio at about 1 unit per 10 g.</b> Correction factor by the 100 rule: 100 ÷ TDD = the mmol/L dropped per unit."},
+    {tone:"green", h:"Fix the fasting number with basal before touching meal doses", html:"<b>A wrong basal makes every bolus look wrong.</b> Titrate basal to a stable overnight and fasting 5–7 mmol/L, changing by 10–20% (or 1–2 units) every 3 days or so — then adjust the meal ratios. And check injection sites: lipohypertrophy causes erratic absorption and is a common hidden cause of poor control."},
+    {tone:"purple", h:"🟣 DVLA — the 5 to drive rule", html:"Group 1: the driver must have hypoglycaemia awareness, no more than one severe hypoglycaemic episode in 12 months, and adequate glucose monitoring. \"5 to drive\" — glucose must be at least 5 mmol/L; test before driving and every 2 hours, and carry fast-acting carbohydrate. <b>After a hypo, wait 45 minutes before driving.</b> <b>Group 2 is stricter and requires specialist assessment.</b> Impaired awareness has its own DVLA implications."}
+  ],
+  pathwaySub:"Six steps, and the fourth one is where most control problems are actually solved.",
+  pathway:[
+    {title:"Confirm it is type 1", html:"Rapid onset, ketosis, any age, lean build — and GAD antibodies plus C-peptide if in doubt. Do the baseline work: HbA1c, U&amp;Es, urine ACR, lipids, TFTs, coeliac serology, BP, weight, and enrol in retinal and foot screening.", alert:true},
+    {title:"Refer everyone for structured education", html:"DAFNE or equivalent — carb-counting is the backbone of good type 1 control, not an optional extra."},
+    {title:"Start basal–bolus with named products", html:"<b>0.5 units/kg/day, split 50:50, prescribed by brand.</b>"},
+    {title:"Titrate in the right order", html:"Basal to a stable fasting 5–7 first, then each meal's ratio against its own post-meal readings."},
+    {title:"Offer CGM to everyone and run the 9 care processes", html:"NG17 (2022): continuous or flash glucose monitoring for all adults with type 1 diabetes. Target time in range above 70%."},
+    {title:"Drill the emergencies, sick days and driving", html:"DKA, severe hypoglycaemia, never stopping insulin when unwell, and the 5-to-drive rule."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm", title:"Step 1 — confirm it IS type 1: the diagnosis that gets missed",
+     blocks:[
+       {b:"table", head:["Feature","Type 1","Points away — T2, LADA or MODY"], rows:[
+         ["<b>Onset</b>","<b>Rapid: weeks of thirst, polyuria and weight loss</b>","Insidious, obese, metabolic syndrome = type 2"],
+         ["<b>Ketosis</b>","<b>Ketones or DKA at presentation</b>","Absent"],
+         ["<b>Age</b>","<b>Any age — not just children. Around half present over 30</b>","MODY: young, strong family history, non-obese, often mild"],
+         ["<b>Response to oral agents</b>","<b>Poor or transient</b>","Good and sustained in type 2"],
+         ["<b>Autoimmunity</b>","<b>Personal or family history of autoimmune disease</b>","Absent"]
+       ]},
+       {b:"warn", html:"<b>Do not assume type 2 in an overweight adult</b> — misdiagnosing type 1 or LADA as type 2 and starting only oral agents risks DKA. If the patient is lean, ketotic, of rapid onset, responds poorly to orals, or has a personal or family history of autoimmunity → check GAD antibodies and C-peptide, and treat as type 1 (insulin) until proven otherwise. <b>New type 1 with DKA → same-day admission.</b>"},
+       {b:"dl", rows:[
+         ["<b>Baseline at diagnosis</b>","HbA1c, U&amp;Es and eGFR, urine ACR, lipids, TFTs and coeliac serology (autoimmune clustering), blood pressure, weight, and enrolment in retinal and foot screening"],
+         ["<b>Structured education</b>","DAFNE or equivalent for everyone — carb-counting is the backbone of good type 1 control"]
+       ]}
+     ]},
+
+    {id:"insulins", nav:"The insulins", title:"Step 2 — know the insulins by name, action and role",
+     blocks:[
+       {b:"table", head:["Class","Named products","Onset / peak / duration","Role"], rows:[
+         ["<b>Rapid-acting analogue</b>","Aspart (NovoRapid), lispro (Humalog), glulisine (Apidra); ultra-rapid: Fiasp, Lyumjev","<b>10–20 min / 1–3 h / 3–5 h</b>","<b>Bolus — with meals and for corrections</b>"],
+         ["<b>Short-acting (soluble) human</b>","Actrapid, Humulin S","30 min / 2–4 h / 6–8 h","Older bolus — needs 30-minute pre-meal timing; largely superseded"],
+         ["<b>Intermediate (NPH / isophane)</b>","Insulatard, Humulin I, Insuman Basal","1–2 h / 4–8 h / 12–16 h","Basal, twice daily — cheaper but more nocturnal hypoglycaemia"],
+         ["<b>Long-acting analogue</b>","Detemir (Levemir, usually BD), glargine U100 (Lantus, Semglee), glargine U300 (Toujeo)","<b>No pronounced peak / about 24 h</b> (detemir shorter)","<b>Basal — first-line, flatter profile</b>"],
+         ["<b>Ultra-long analogue</b>","<b>Degludec (Tresiba)</b>","<b>Flat / over 42 h</b>","Basal once daily — very stable, flexible timing, less nocturnal hypoglycaemia"],
+         ["<b>Pre-mixed</b>","NovoMix 30, Humalog Mix25/50, Humulin M3","Biphasic","<b>NOT first-line in type 1 — only if MDI is genuinely unworkable</b>"]
+       ]},
+       {b:"why", html:"The physiological aim is to replace background (basal) and mealtime (bolus) insulin separately, so each can be adjusted independently. That flexibility is exactly why multiple daily injections — basal–bolus, not pre-mixed — is first-line for all adults with type 1 diabetes under NG17. A pre-mixed regimen locks the two together and makes rational titration impossible."}
+     ]},
+
+    {id:"start", nav:"Start", title:"Step 3 — starting the regimen: named choices and doses",
+     blocks:[
+       {b:"table", head:["Element","Choice","Detail"], rows:[
+         ["<b>First-line regimen</b>","<b>Basal–bolus (MDI) for all adults with type 1 diabetes</b>","Basal: detemir (Levemir) BD is NG17-preferred. Alternatives: glargine OD (Lantus, Toujeo), or degludec OD (Tresiba) for flexible timing or nocturnal hypoglycaemia"],
+         ["<b>Bolus</b>","<b>Rapid analogue (NovoRapid, Humalog, Apidra) with each meal</b>","Count carbs and inject just before eating; the ultra-rapid products (Fiasp, Lyumjev) can be given at or just after the meal"],
+         ["<b>Total daily dose</b>","About 0.5 units/kg/day (range 0.3–0.5) in an insulin-naive, non-DKA patient","Lower if lean, insulin-sensitive or in the honeymoon phase; higher with intercurrent illness or steroids"],
+         ["<b>The split</b>","<b>About 50% basal, 50% bolus divided across meals</b>","e.g. 70 kg → TDD ~35 units → basal ~17 units (halved if detemir BD), bolus ~6 units per main meal"],
+         ["<b>Insulin-to-carb ratio</b>","<b>Start at about 1 unit per 10 g of carbohydrate</b>","Adjust by post-meal glucose; the ratio often needs to be stronger at breakfast"],
+         ["<b>Correction factor (ISF) — the 100 rule</b>","<b>100 ÷ TDD = the mmol/L dropped per unit</b>","<b>e.g. TDD 50 → 1 unit drops glucose by about 2 mmol/L.</b> Correct toward target and <b>beware stacking corrections</b>"],
+         ["<b>Pumps and technology</b>","<b>CSII (TA151) and hybrid closed-loop systems (TA943)</b>","<b>For disabling hypoglycaemia, or HbA1c not met on optimised MDI.</b> Specialist-initiated; the GP supports prescriptions and reviews"]
+       ]},
+       {b:"warn", html:"Never stop basal insulin, even when not eating or unwell — omission is the classic route to DKA. <b>And prescribe by BRAND in type 1</b>, because biosimilars and strengths differ — particularly U300 glargine and degludec — and a substitution error at those strengths is a large overdose."}
+     ]},
+
+    {id:"titrate", nav:"Titrate", title:"Step 4 — titrate safely: fix the basal first, then the bolus",
+     blocks:[
+       {b:"table", head:["Pattern","What to adjust","How"], rows:[
+         ["<b>Fasting or waking glucose off target</b>","<b>Basal, first</b>","Titrate basal to a stable overnight and fasting 5–7 mmol/L; change by 10–20% (or 1–2 units) every 3 days or so"],
+         ["<b>High after a specific meal</b>","<b>That meal's bolus or insulin-to-carb ratio</b>","Strengthen the ratio (e.g. 1:10 → 1:8) if consistently high at 2–4 hours post-meal"],
+         ["<b>Recurrent hypoglycaemia at a particular time</b>","<b>Reduce the responsible insulin</b>","Nocturnal hypoglycaemia → reduce basal or switch to degludec. Post-meal → weaken that meal's ratio"],
+         ["<b>Erratic readings or dawn phenomenon</b>","<b>Review basal timing or split</b>","Consider degludec or a pump; check injection technique and lipohypertrophy, and rotate sites"],
+         ["<b>Illness or steroids</b>","<b>Increase doses temporarily</b>","<b>More frequent monitoring and ketone checks — and never omit basal</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>The golden rule</b>","Chase the FASTING number with basal before touching mealtime doses — a wrong basal makes every bolus look wrong"],
+         ["<b>Injection technique</b>","Rotate sites, check for lipohypertrophy (which causes erratic absorption), and confirm correct needle length — a common hidden cause of poor control"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Targets", title:"Step 5 — targets, CGM and the annual review",
+     blocks:[
+       {b:"table", head:["Measure","Target — individualise"], rows:[
+         ["<b>HbA1c</b>","<b>≤48 mmol/mol (6.5%) if achievable without problematic hypoglycaemia</b>"],
+         ["<b>Waking glucose</b>","<b>5–7 mmol/L</b>"],
+         ["<b>Pre-meal glucose</b>","<b>4–7 mmol/L</b>"],
+         ["<b>90 minutes post-meal</b>","<b>5–9 mmol/L</b>"],
+         ["<b>Time in range (CGM)</b>","<b>Above 70% in 3.9–10 mmol/L; under 4% of time below 3.9</b>"]
+       ]},
+       {b:"table", head:["Technology / review","Detail"], rows:[
+         ["<b>CGM for ALL</b>","NG17 (2022): offer continuous or flash glucose monitoring — Libre 2, Dexcom and equivalents — to everyone with type 1 diabetes"],
+         ["<b>The 9 care processes</b>","HbA1c, blood pressure, lipids, U&amp;Es and ACR, BMI, smoking, foot check, retinal screening, injection-site review"],
+         ["<b>The autoimmune and human bits</b>","TFTs and coeliac serology periodically; mood and eating-disorder screen — insulin omission, sometimes called diabulimia; erectile function; pregnancy planning"],
+         ["<b>Cardiovascular and renal protection</b>","Statin where indicated by QRISK or age; ACE inhibitor or ARB if ACR is raised or the patient is hypertensive"]
+       ]}
+     ]},
+
+    {id:"emergencies", nav:"Emergencies", title:"Step 6 — the emergencies, sick days and driving",
+     blocks:[
+       {b:"table", head:["Emergency","Recognise","Action"], rows:[
+         ["<b>Hypoglycaemia</b>","Glucose below 4 mmol/L","15 g of fast-acting carbohydrate — 4–5 glucose tablets or 150 mL of juice — recheck at 15 minutes, repeat if needed, then a longer-acting carbohydrate. <b>Severe: IM glucagon or IV glucose plus 999.</b> <b>Then review the cause and reduce the responsible insulin</b>"],
+         ["<b>DKA</b>","Vomiting, abdominal pain, Kussmaul breathing, ketones ≥3.0 — glucose is usually high but CAN be near-normal (euglycaemic DKA)","<b>999 or same-day admission.</b> Never omit insulin; check blood ketones when unwell or when glucose is above 15"],
+         ["<b>Impaired awareness of hypoglycaemia</b>","<b>Loss of warning symptoms; recurrent severe hypos</b>","<b>DVLA implications.</b> Relax targets, review insulin, arrange structured education, consider CGM or a pump — specialist input"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Sick-day rules</b>","NEVER stop insulin. Check glucose AND blood ketones every 2–4 hours. Keep hydrated and keep carbohydrate going. Give correction doses according to the ketone level. Seek help if ketones are rising, if vomiting, or if fluids cannot be kept down"],
+         ["<b>DVLA — Group 1</b>","Must have hypoglycaemia awareness, no more than one severe hypo in 12 months, and adequate glucose monitoring. \"5 to drive\": glucose at least 5 mmol/L, tested before driving and every 2 hours, with fast carbohydrate carried. After a hypo, wait 45 minutes before driving"],
+         ["<b>DVLA — Group 2</b>","<b>Stricter requirements and specialist assessment</b>"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 DKA", html:"\"Vomiting, tummy pain, deep fast breathing, high ketones — 999. Never stop your insulin, even when you are not eating.\""},
+         {tone:"red", h:"🍬 Severe hypo", html:"\"If you cannot treat it yourself, someone gives glucagon or calls 999. Always carry fast sugar.\""},
+         {tone:"amber", h:"🤒 Sick days", html:"\"Unwell? Keep the insulin going, check ketones every few hours, sip fluids, and use your sick-day plan.\""},
+         {tone:"purple", h:"🚗 Driving — a DVLA duty", html:"\"5 to drive — test before you set off and every 2 hours. After a hypo, wait 45 minutes before driving.\" Tell the DVLA if your hypo awareness changes or you have a severe hypo — that is your legal duty, and I will record that we discussed it."}
+       ]}
+     ]},
+
+    {id:"troubleshoot", nav:"Control off?", title:"Control off? Work through this",
+     sub:"Technique, basal and counting come before anything else.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Is the basal right?", html:"Is the fasting glucose stable at 5–7? Fix the basal before blaming the boluses."},
+         {tone:"amber", h:"2 · Carb-counting", html:"Actually counting, or using fixed doses? Have the I:C ratios been reviewed? Has DAFNE-style education happened?"},
+         {tone:"blue", h:"3 · Technique and sites", html:"Lipohypertrophy, poor rotation, wrong needle length, or expired or heat-damaged insulin?"},
+         {tone:"blue", h:"4 · Are hypos driving the highs?", html:"Rebound after unrecognised hypos, or over-treating them? CGM shows the pattern."},
+         {tone:"green", h:"5 · Life factors", html:"Illness, steroids, alcohol, exercise, menstrual cycle, shift work — or an eating disorder with insulin omission."},
+         {tone:"green", h:"6 · Right diagnosis and needs", html:"Coeliac disease, thyroid dysfunction, gastroparesis — or a genuine case for a pump or closed loop → specialist."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Shared care — what stays specialist",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same-day / 999", html:"New type 1 presenting with DKA · severe hypoglycaemia · pregnancy with poor control."},
+         {tone:"amber", h:"Diabetes specialist team", html:"Pump or closed-loop assessment (TA151, TA943) · impaired hypoglycaemia awareness · recurrent DKA · HbA1c persistently off target despite optimised MDI."},
+         {tone:"amber", h:"Pre-conception and antenatal", html:"Planning pregnancy or pregnant → joint clinic; aim for HbA1c below 48, high-dose folic acid, and review retinopathy."},
+         {tone:"blue", h:"MDT foot / retinal screening", html:"Active foot disease → same-day. Retinopathy per the screening programme."},
+         {tone:"green", h:"Psychology", html:"Diabetes distress, eating disorder with insulin omission, needle phobia."},
+         {tone:"cream", h:"GP management", html:"Confirming the diagnosis, the baseline and annual care processes, supporting titration, prescriptions by brand, sick-day and DVLA advice, and the cardiovascular and renal protection all belong here. Related pages: <a href='dka.html'>DKA</a> · <a href='sick-day-rules.html'>sick day rules</a> · <a href='diabetes-unwell-insulin.html'>feeling unwell on insulin</a> · <a href='type-2-diabetes.html'>type 2 diabetes</a> · <a href='coeliac-disease.html'>coeliac disease</a> · <a href='hypothyroidism.html'>hypothyroidism</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 34-year-old man with type 1 diabetes for 12 years attends frustrated: <b>HbA1c 71 mmol/mol</b> despite \"doing everything\". He is on Lantus 24 units at night and NovoRapid 8 units with each meal — fixed doses, no carb-counting. His <b>waking readings run 11–14</b>, and he has <b>frequent readings of 3.2–3.6 in the late afternoon</b>. He injects into the same area of his abdomen \"because it doesn't hurt there\", and asks whether he should <b>increase his mealtime insulin</b>."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does NOT increase the bolus — recognises the high waking readings mean the BASAL is wrong, and that fixing it comes first; identifies the fixed-dose regimen as the underlying problem and refers for DAFNE-style carb-counting education, which is the actual treatment here; calculates an insulin-to-carb ratio and a correction factor using the 100 rule rather than leaving him on fixed doses; <b>examines the injection sites and finds lipohypertrophy</b> — asking about rotation, and recognising that erratic absorption from one overused site explains both the highs and the lows; <b>treats the afternoon hypos as a cause of rebound highs</b>, not as a separate problem; <b>offers CGM, which NG17 recommends for everyone with type 1</b>, and can say so; <b>checks DVLA status given recurrent hypos below 4</b>; and <b>screens for the autoimmune associations and for diabetes distress</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG17 — Type 1 diabetes in adults: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng17" rel="noopener">nice.org.uk/guidance/ng17</a><span class="rd"> — basal–bolus (MDI) as first-line for all adults with detemir twice daily preferred, pre-mixed insulin not first-line, the HbA1c ≤48 mmol/mol target, the waking, pre-meal and post-meal glucose targets, structured education, and the 2022 recommendation to offer continuous or flash glucose monitoring to everyone with type 1 diabetes</span></li>'+
+         '<li>NICE TA151 — Continuous subcutaneous insulin infusion · TA943 — Hybrid closed-loop systems<span class="rd"> — the criteria for pump and closed-loop therapy: disabling hypoglycaemia, or HbA1c not achieved on optimised multiple daily injections</span></li>'+
+         '<li><b>NICE NG17 \u2014 Type 1 diabetes in adults: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng17" rel="noopener">nice.org.uk/guidance/ng17</a><span class="rd"> — the starting total daily dose of about 0.5 units/kg/day, the 50:50 basal–bolus split, the 1 unit per 10 g starting carbohydrate ratio, the 100 rule for the correction factor, the titration intervals, and sick-day rules</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — Group 1 requirements (hypoglycaemia awareness, no more than one severe hypo in 12 months, glucose monitoring), the \u201c5 to drive\u201d rule with 2-hourly testing, the 45-minute wait after a hypo, and the stricter Group 2 standards</span></li>'+
+         '<li><b>Joint British Diabetes Societies — DKA and hypoglycaemia guidance</b><span class="rd"> — the 15 g carbohydrate rule with 15-minute recheck, IM glucagon in severe hypoglycaemia, the ketone threshold of 3.0, and euglycaemic DKA</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — the named insulin products with their onset, peak and duration profiles, and the requirement to prescribe by brand and strength</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Type 1 diabetes in adults — NICE NG17, TA151 (pumps), TA943 (hybrid closed loop), NICE and the DVLA standards. Do not assume type 2 in an overweight adult: around half of type 1 presents over 30, and treating LADA with oral agents alone risks DKA. Basal–bolus for every adult, never pre-mixed, prescribed by brand and strength. Start at about 0.5 units/kg/day split 50:50, with a 1:10 carbohydrate ratio and the 100 rule for corrections. Fix the fasting number with basal before touching meal doses. Offer CGM to everyone. Never stop basal insulin, even when not eating. 5 to drive. Verify doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

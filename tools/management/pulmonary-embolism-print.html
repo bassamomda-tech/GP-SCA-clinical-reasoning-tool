@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pulmonary embolism — Protocol · Reasoning GP</title>
+<meta name="description" content="Pulmonary embolism: the presentations that get missed, the two-level Wells score and why D-dimer is only for the unlikely group, DOAC loading doses that differ from AF dosing, duration by provoked versus unprovoked, pregnancy and cancer, CTEPH at 3–6 months, and the safety-nets." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/pulmonary-embolism.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790199278198257 tools/management/pulmonary-embolism.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Pulmonary embolism protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🫁",
+  title:"Pulmonary embolism — the complete guide",
+  eyebrow:"Protocol · NICE NG158 · the D-dimer belongs to one group only",
+  stemTitle:"The commonest diagnostic error is sending a D-dimer in the Wells-likely patient — in that group they go straight to imaging with interim anticoagulation, and a negative result should not reassure anyone",
+  stemSub:"Diagnosis and initial treatment are secondary-care work, but the recognition, the stratification and all of the follow-up are ours. This page carries the presentations that get missed — isolated breathlessness, syncope, an \"atypical chest infection\" that will not settle — the two-level Wells fork, the <b>DOAC loading schedules that differ from AF dosing</b>, the duration decision, pregnancy and cancer, and the CTEPH question at 3–6 months that no one else will ask.",
+  guideline:"NICE NG158 · NG12",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE NG158 — venous thromboembolic diseases"},
+    {t:"D-dimer is a RULE-OUT, and only if Wells ≤4", tone:"tw"},
+    {t:"PE dosing has a LOADING phase — unlike AF", tone:"tw"},
+    {t:"Pregnancy: LMWH, and treat empirically while investigating", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Unstable</b><small>Massive PE</small></a><a href="#recognise"><b>Recognise</b><small>The missed ones</small></a><a href="#wells"><b>Stratify</b><small>Wells · D-dimer</small></a><a href="#treat"><b>Treat</b><small>Loading doses</small></a><a href="#follow"><b>Follow up</b><small>CTEPH · duration</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Haemodynamic instability — do not score, do not D-dimer, do not wait", html:"Systolic hypotension, syncope with hypoxia and tachycardia, or a patient who looks peri-arrest: resuscitate and get them to hospital. <b>This is massive PE and thrombolysis territory — 999.</b> Syncope plus hypoxia plus tachycardia is a massive PE until proven otherwise, and scoring systems only delay the ambulance."},
+    {tone:"red", h:"⛔ Never send a D-dimer in the Wells-LIKELY patient", html:"D-dimer is a rule-out test, valid only in the \"PE unlikely\" group (Wells ≤4). In the likely group (>4) the patient goes straight to CTPA with interim therapeutic anticoagulation while waiting. Using D-dimer in the wrong group is the commonest diagnostic error in this condition and it delays treatment — a negative result there will not, and should not, reassure you."},
+    {tone:"amber", h:"The presentations that get missed", html:"Isolated unexplained breathlessness or tachycardia · syncope or pre-syncope, which can be the ONLY sign of a large PE · an \"atypical chest infection\" that is not responding · new atrial fibrillation · unexplained hypoxia. <b>Consider PE in any breathless or collapsed patient with risk factors</b>, not only the one with pleuritic pain and a swollen calf."},
+    {tone:"blue", h:"PE DOAC dosing has a loading phase — AF dosing does not", html:"Apixaban 10 mg BD for 7 days, then 5 mg BD. Rivaroxaban 15 mg BD for 21 days, then 20 mg OD with food. <b>Edoxaban and dabigatran need at least 5 days of LMWH lead-in first.</b> <b>Getting the loading phase wrong under-treats the clot</b>, and it is an easy error for anyone used to prescribing DOACs for AF."},
+    {tone:"amber", h:"Pregnancy: LMWH, and treat while you investigate", html:"D-dimer is physiologically raised in pregnancy and is unreliable — do not rely on it. LMWH is the anticoagulant of choice throughout; DOACs and warfarin are avoided. Suspected PE in pregnancy is treated empirically with LMWH while imaging is arranged, with urgent obstetric medicine involvement."},
+    {tone:"green", h:"Still breathless months later? Think CTEPH", html:"Persistent unexplained breathlessness 3–6 months after a PE should prompt an echocardiogram and referral for suspected chronic thromboembolic pulmonary hypertension. <b>This is the follow-up question nobody else in the system asks</b> — the acute team has discharged them and the breathlessness gets attributed to deconditioning or anxiety."}
+  ],
+  pathwaySub:"Six steps. The second one is where the error usually happens.",
+  pathway:[
+    {title:"Assess stability first", html:"SpO₂, heart rate and blood pressure decide the pathway before any scoring system does. <b>Unstable → 999 now.</b>", alert:true},
+    {title:"Calculate the two-level Wells score", html:"Likely (>4) → immediate CTPA with interim anticoagulation. Unlikely (≤4) → D-dimer; negative excludes PE, positive goes to CTPA."},
+    {title:"Anticoagulate with the right loading schedule", html:"Apixaban 10 mg BD ×7 days → 5 mg BD, or rivaroxaban 15 mg BD ×21 days → 20 mg OD with food."},
+    {title:"Handle the special situations", html:"Pregnancy → LMWH empirically. Cancer → DOAC or LMWH, with caution in luminal GI and GU tumours. Unprovoked → a targeted work-up, not a blanket cancer screen."},
+    {title:"Decide duration at 3 months", html:"Provoked → 3 months then stop. Unprovoked or ongoing risk → at least 6 months and often long-term."},
+    {title:"Ask the CTEPH question at 3–6 months", html:"Persistent unexplained breathlessness → echocardiogram and pulmonary hypertension referral."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Unstable", title:"Red flags — the unstable patient and the missed presentations",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["Systolic hypotension, syncope with hypoxia and tachycardia, peri-arrest","<b>Massive PE</b>","999 — resuscitate and transfer. Do NOT score, do NOT send a D-dimer, do NOT wait for a CTPA slot. Thrombolysis territory"],
+         ["<b>Syncope or pre-syncope with risk factors</b>","<b>Can be the ONLY sign of a large PE</b>","Same-day assessment at minimum; 999 if there is hypoxia or tachycardia with it"],
+         ["<b>Isolated unexplained breathlessness or tachycardia</b>","PE, frequently missed because the chest is clear and the pain is absent","Assess formally with Wells rather than reassuring on a normal examination"],
+         ["<b>\"Atypical chest infection\" not responding to antibiotics</b>","<b>PE misdiagnosed as pneumonia</b>","<b>Reconsider the diagnosis rather than changing the antibiotic</b>"],
+         ["<b>New atrial fibrillation or unexplained hypoxia</b>","<b>Can be the presenting feature of PE</b>","<b>Consider PE in the differential</b>"],
+         ["<b>Suspected PE in pregnancy or the postpartum period</b>","<b>Leading cause of direct maternal death</b>","Treat empirically with LMWH while investigating; urgent obstetric medicine"],
+         ["<b>Major bleeding, or head injury, while anticoagulated</b>","Anticoagulant-related haemorrhage; intracranial bleeding may be delayed","<b>A&amp;E same day, however well they feel</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Risk factors to ask about</b>","Recent surgery, immobility or long-haul travel · active cancer · previous VTE · pregnancy or postpartum · oestrogen (combined pill or HRT) · thrombophilia · obesity · lower-limb fracture or cast"],
+         ["<b>What to assess</b>","SpO₂, heart rate and blood pressure — haemodynamic status decides the pathway — plus the calves, and then the Wells score"]
+       ]}
+     ]},
+
+    {id:"recognise", nav:"Recognise", title:"The classic picture, and why it is not the dangerous one",
+     blocks:[
+       {b:"table", head:["Presentation","Detail"], rows:[
+         ["<b>Classic</b>","Pleuritic chest pain, breathlessness, haemoptysis, tachycardia, tachypnoea — often with DVT signs such as a unilateral swollen calf"],
+         ["<b>The subtle killers</b>","Isolated unexplained breathlessness or tachycardia · syncope or pre-syncope · an atypical chest infection that will not settle · new AF · unexplained hypoxia"],
+         ["<b>The rule</b>","<b>Consider PE in any breathless or collapsed patient with risk factors</b> — the classic presentation is the one that gets diagnosed, so it is not the one that kills"]
+       ]},
+       {b:"why", html:"PE is missed in primary care not because the classic picture is hard to recognise but because the atypical picture does not look like a chest problem at all. A normal chest examination, a normal temperature and a clear chest X-ray are all entirely compatible with a significant PE — and each of them makes a clinician feel safer than they should. The protective habit is to ask about risk factors in every breathless patient, because that is what moves PE from \"unlikely\" to \"needs a score\"."}
+     ]},
+
+    {id:"wells", nav:"Stratify", title:"The two-level Wells score — the fork in the road",
+     blocks:[
+       {b:"table", head:["Wells criterion","Points"], rows:[
+         ["<b>Clinical signs of DVT</b>","<b>3</b>"],
+         ["<b>PE is the most likely diagnosis</b>","<b>3</b>"],
+         ["<b>Heart rate over 100</b>","<b>1.5</b>"],
+         ["<b>Immobilisation ≥3 days, or surgery in the last 4 weeks</b>","<b>1.5</b>"],
+         ["<b>Previous DVT or PE</b>","<b>1.5</b>"],
+         ["<b>Haemoptysis</b>","<b>1</b>"],
+         ["<b>Active cancer (treatment within 6 months, or palliative)</b>","<b>1</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>PE LIKELY — more than 4 points</b>","<b>→ immediate CTPA</b> (V/Q scan where CTPA is unsuitable — renal impairment, contrast allergy, pregnancy). If CTPA cannot be done straight away, give interim therapeutic anticoagulation with a DOAC while waiting"],
+         ["<b>PE UNLIKELY — 4 points or fewer</b>","<b>→ D-dimer</b>, with an age-adjusted cut-off in the over-50s where that is used locally. Negative with low probability excludes PE — look elsewhere. Positive → CTPA"],
+         ["<b>The D-dimer caveat</b>","<b>D-dimer is a RULE-OUT test and only in the unlikely group.</b> <b>Never send it in the likely group — a negative will not reassure you.</b> It is raised by infection, pregnancy, cancer, surgery and age; specificity is low"]
+       ]},
+       {b:"warn", html:"<b>Do not send a D-dimer to \"screen\" a Wells-likely patient.</b> In that group the correct action is imaging plus interim anticoagulation, and using the D-dimer instead is the commonest diagnostic error in this condition. It delays treatment, and worse, a negative result creates false reassurance in exactly the patient most likely to have the diagnosis."}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Anticoagulation — agent, loading schedule and duration",
+     blocks:[
+       {b:"table", head:["Step","Detail","Notes"], rows:[
+         ["<b>First-line — apixaban</b>","<b>10 mg BD for 7 days, then 5 mg BD</b>","<b>The loading phase is built in. No routine monitoring</b>"],
+         ["<b>First-line — rivaroxaban</b>","<b>15 mg BD for 21 days, then 20 mg OD with food</b>","<b>Take with food — absorption depends on it</b>"],
+         ["<b>Edoxaban or dabigatran</b>","<b>Require at least 5 days of LMWH lead-in first</b>","A common prescribing trap — they are not start-from-scratch agents in VTE"],
+         ["<b>DOAC unsuitable</b>","<b>LMWH then warfarin, or LMWH alone</b>","<b>Severe renal impairment; antiphospholipid syndrome → warfarin</b>"],
+         ["<b>Cancer-associated PE</b>","<b>A DOAC (edoxaban, apixaban or rivaroxaban) or LMWH</b>","<b>Caution with DOACs in luminal GI and GU tumours — bleeding risk.</b> Continue while the cancer is active"],
+         ["<b>Pregnancy</b>","<b>LMWH throughout</b>","<b>DOACs and warfarin avoided.</b> Treat empirically while investigating"],
+         ["<b>Duration — provoked</b>","<b>3 months, then stop</b>","Where a transient factor (surgery, immobility) has resolved"],
+         ["<b>Duration — unprovoked or ongoing risk</b>","<b>At least 6 months, often long-term</b>","Weigh recurrence against bleeding risk, assess bleeding risk formally, and involve the patient in the decision"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"⚠ PE dosing is not AF dosing", html:"DOAC dosing for VTE has a loading phase — a higher dose for the first days or weeks — which AF dosing does not. <b>Getting it wrong under-treats the clot.</b> See <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a> for creatinine clearance, interactions and missed-dose rules."},
+         {tone:"blue", h:"🏠 Outpatient management", html:"Low-risk confirmed PE — sPESI 0, haemodynamically stable, no significant comorbidity — may be managed at home on a DOAC per the local pathway. <b>But the diagnosis is made in secondary care</b>, not in the surgery."}
+       ]}
+     ]},
+
+    {id:"special", nav:"Special cases", title:"Pregnancy, cancer, and the unprovoked work-up",
+     blocks:[
+       {b:"table", head:["Situation","Approach"], rows:[
+         ["<b>Pregnancy and postpartum</b>","D-dimer is physiologically raised and unreliable — do not use it to exclude PE. <b>LMWH is the anticoagulant of choice throughout.</b> CTPA or V/Q per the local obstetric pathway. Involve obstetric medicine urgently, and treat empirically with LMWH while investigating"],
+         ["<b>Cancer-associated</b>","<b>DOAC or LMWH. Higher recurrence AND higher bleeding risk.</b> Continue while the cancer is active. <b>Caution with DOACs in luminal GI and GU cancers</b>"],
+         ["<b>Unprovoked PE work-up</b>","<b>Do NOT perform indiscriminate cancer screens.</b> NICE: review the history and examination, take baseline bloods, and do baseline investigations; further imaging or tumour markers only where clinically indicated"],
+         ["<b>Thrombophilia testing</b>","<b>Rarely changes acute management and is specialist-guided.</b> Consider antiphospholipid antibody testing in unprovoked VTE where stopping anticoagulation is planned — and NOT while the patient is anticoagulated, as results are unreliable"]
+       ]}
+     ]},
+
+    {id:"follow", nav:"Follow up", title:"After the acute event",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Anticoagulation review</b>","<b>Regularly, and at the duration decision point</b>","Provoked → stop at 3 months. Unprovoked → reassess risk and benefit for extended therapy"],
+         ["<b>Renal function on a DOAC</b>","<b>Baseline, then periodically</b>","Re-dose by creatinine clearance; more often in CKD, the elderly, or during illness"],
+         ["<b>Bleeding review</b>","<b>Every review</b>","Falling haemoglobin → find the source. Optimise modifiable bleeding risks — blood pressure, NSAIDs, alcohol"],
+         ["<b>Persistent breathlessness</b>","<b>3–6 months after the PE</b>","Consider chronic thromboembolic pulmonary hypertension (CTEPH) → echocardiogram and refer if the dyspnoea remains unexplained"],
+         ["<b>Provoking factors</b>","<b>Ongoing</b>","Stop the combined pill or HRT if that was the trigger and arrange safe alternative contraception (see <a href='contraception.html'>contraception</a>); address mobility and future surgical VTE prophylaxis"]
+       ]},
+       {b:"say", html:"The clot on your lung is treated with a blood thinner — usually a tablet — for at least three months. If we could not find an obvious trigger, we often continue for longer, because the risk of another one stays higher. Two things to watch for. Tell us about any unusual bleeding. And if you are still breathless in a few months' time, come back — most people gradually get their breath back, and if you do not, there is a specific thing we check for."}
+     ]},
+
+    {id:"troubleshoot", nav:"Not right?", title:"Breathless or unwell on treatment? Think again",
+     sub:"A treated PE can still deteriorate.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"1 · Still unstable?", html:"Deteriorating observations or hypotension → recurrent or massive PE → 999, and thrombolysis territory."},
+         {tone:"amber", h:"2 · Is the DOAC dose right?", html:"Was the loading phase given correctly? Has creatinine clearance been checked? Is adherence genuine?"},
+         {tone:"amber", h:"3 · Bleeding", html:"Find and fix the source and optimise modifiable risks — stopping the anticoagulant is the last resort, not the first."},
+         {tone:"blue", h:"4 · Has the trigger been removed?", html:"Still on the combined pill or HRT that caused it? Is the immobility ongoing?"},
+         {tone:"green", h:"5 · CTEPH", html:"Persistent breathlessness months later → echocardiogram and pulmonary hypertension referral."},
+         {tone:"purple", h:"6 · A missed cancer", html:"Unprovoked PE with new symptoms or weight loss → targeted investigation under the relevant NG12 route, not a blanket screen."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Admission and specialist referral",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / immediate", html:"Haemodynamic instability — massive PE, thrombolysis territory. Syncope with hypoxia and tachycardia. <b>Do not score, do not D-dimer, do not wait.</b>"},
+         {tone:"amber", h:"Same day", html:"Suspected PE — Wells likely, or Wells unlikely with a positive D-dimer → acute medical or ambulatory care for CTPA and treatment. Suspected PE in pregnancy → empirical LMWH plus urgent obstetric medicine."},
+         {tone:"amber", h:"Haematology", html:"Unprovoked PE duration decisions · cancer-associated thrombosis · suspected antiphospholipid syndrome · recurrent VTE."},
+         {tone:"green", h:"Pulmonary hypertension service", html:"Persistent unexplained breathlessness after PE → echocardiogram, then referral for suspected CTEPH."},
+         {tone:"cream", h:"GP management", html:"Recognition and stratification, interim anticoagulation while imaging is arranged, the duration decision, removing the trigger, renal and bleeding monitoring, and the CTEPH question all belong here. Related pages: <a href='dvt.html'>deep vein thrombosis</a> · <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a> · <a href='contraception.html'>contraception</a> · <a href='atrial-fibrillation.html'>atrial fibrillation</a>."}
+       ]},
+       {b:"say", html:"A suspected clot on the lung is a same-day hospital problem — they will do the scan and start the treatment. If you are at all unwell with it, that is a 999 call rather than a wait. Once you are on the blood thinner, we will plan together how long you need it."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 47-year-old man attends with <b>4 days of breathlessness</b> on exertion and mild fatigue. He had a <b>knee arthroscopy 3 weeks ago</b>. <b>No chest pain, no cough, no fever.</b> Chest is clear, temperature normal, <b>HR 104, SpO₂ 94%, BP 124/78</b>. He was seen two days ago by a colleague, diagnosed with a <b>viral illness</b>, and asks for \"something to shift it\". He looks well."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises isolated breathlessness with tachycardia and recent surgery as a PE presentation despite a clear chest and normal temperature; calculates the Wells score explicitly — surgery within 4 weeks (1.5), HR over 100 (1.5), and whether PE is the most likely diagnosis (3) — and acts on which side of 4 it falls; <b>does NOT send a D-dimer if the score is likely</b>, and can explain why a negative would not reassure; <b>arranges same-day acute assessment rather than a routine referral</b>, and considers interim anticoagulation if imaging will be delayed; <b>does not accept the previous diagnosis as settled</b> — the 'atypical chest infection not responding' trap is exactly this; <b>notes the SpO₂ of 94% as abnormal for him</b> rather than normal-range; <b>gives the 999 safety-net for deterioration or syncope before he leaves</b>; and <b>documents the reasoning</b>, since this is a case that will be reviewed if it goes wrong."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG158 — Venous thromboembolic diseases: diagnosis, management and thrombophilia testing<br><a href="https://www.nice.org.uk/guidance/ng158" rel="noopener">nice.org.uk/guidance/ng158</a><span class="rd"> — the two-level Wells score and its thresholds, D-dimer restricted to the unlikely group, immediate CTPA with interim anticoagulation in the likely group, DOAC first-line with the apixaban and rivaroxaban loading schedules, LMWH in pregnancy, and the provoked versus unprovoked duration rules</span></li>'+
+         '<li><b>NICE NG158 \u2014 Venous thromboembolic diseases: diagnosis, management and thrombophilia testing</b><br><a href="https://www.nice.org.uk/guidance/ng158" rel="noopener">nice.org.uk/guidance/ng158</a><span class="rd"> — the primary-care recognition set including the atypical presentations, risk factors, and the follow-up schedule</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the targeted routes used where unprovoked VTE is accompanied by new symptoms, in place of an indiscriminate cancer screen</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — apixaban 10 mg BD for 7 days then 5 mg BD; rivaroxaban 15 mg BD for 21 days then 20 mg OD with food; the LMWH lead-in required before edoxaban or dabigatran</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Pulmonary embolism — NICE NG158, NICE and NG12. Assess stability before scoring: hypotension or syncope with hypoxia is massive PE and a 999 call, not a Wells score. D-dimer is a rule-out test and belongs only to the Wells-unlikely group; the likely group goes straight to CTPA with interim anticoagulation. PE DOAC dosing has a loading phase that AF dosing does not — apixaban 10 mg BD for 7 days then 5 mg BD, rivaroxaban 15 mg BD for 21 days then 20 mg OD with food. LMWH in pregnancy, treated empirically while investigating. Provoked: 3 months. Unprovoked: at least 6 months and often long-term. Ask about breathlessness at 3–6 months and think CTEPH. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

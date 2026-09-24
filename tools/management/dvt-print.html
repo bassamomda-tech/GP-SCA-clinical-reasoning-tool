@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deep vein thrombosis — Protocol · Reasoning GP</title>
+<meta name="description" content="Confirmed DVT in primary care: DOAC first-line and dosed by renal function, the provoked versus unprovoked decision that sets duration, occult cancer in unprovoked DVT, antiphospholipid syndrome requiring warfarin rather than a DOAC, monitoring, and the PE and bleeding safety-nets." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/dvt.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790195406534963 tools/management/dvt.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="DVT protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🦵",
+  title:"Deep vein thrombosis — the complete guide",
+  eyebrow:"Protocol · NICE NG158 · two questions: which anticoagulant, and for how long",
+  stemTitle:"The whole management plan turns on one distinction — provoked or unprovoked — because it sets the duration, and in unprovoked DVT the clot may be the presenting sign of a cancer",
+  stemSub:"One page for confirmed DVT. A DOAC first-line, dosed by renal function, with the specific situations that demand warfarin instead. Then the duration decision at 3 months, the occult-cancer thought in unprovoked disease, what to do about compression stockings and mobilisation, and the two safety-nets every patient must leave with — sudden breathlessness meaning PE, and the bleeding rules.",
+  guideline:"NICE NG158 · NG12",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE NG158 — venous thromboembolic diseases"},
+    {t:"Antiphospholipid syndrome → warfarin, NOT a DOAC", tone:"tw"},
+    {t:"Unprovoked DVT → think occult cancer", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Red flags</b><small>PE · bleeding</small></a><a href="#classify"><b>Classify</b><small>Provoked or not</small></a><a href="#anticoag"><b>Anticoagulate</b><small>DOAC first-line</small></a><a href="#duration"><b>How long?</b><small>The 3-month call</small></a><a href="#monitor"><b>Monitor</b><small>Renal · bleeding</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Sudden breathlessness is PE until proven otherwise", html:"Sudden breathlessness, pleuritic chest pain, haemoptysis or collapse in a patient with DVT → 999. Say this out loud before they leave, because the patient with a painful leg is not expecting the dangerous symptom to be in the chest. See <a href='pulmonary-embolism.html'>pulmonary embolism</a>."},
+    {tone:"blue", h:"A DOAC first-line, dosed by renal function", html:"<b>Apixaban or rivaroxaban for most patients.</b> Where a DOAC is unsuitable: LMWH followed by dabigatran or edoxaban, or warfarin. Take baseline FBC, U&amp;Es with eGFR, LFTs and clotting BEFORE starting — but do not wait for the results to start treatment."},
+    {tone:"red", h:"⛔ Antiphospholipid syndrome needs warfarin, not a DOAC", html:"<b>DOACs are inferior in antiphospholipid syndrome.</b> This matters most in the young patient with unprovoked or recurrent thrombosis — exactly the group most likely to be started on a DOAC by default."},
+    {tone:"amber", h:"Provoked or unprovoked sets the duration", html:"Provoked (surgery, immobility, combined oral contraceptive, pregnancy) → at least 3 months, then stop once the provoking factor has resolved and the bleeding risk supports it. Unprovoked → consider long-term anticoagulation, weighing recurrence against bleeding risk, and review for an underlying cause."},
+    {tone:"purple", h:"🟣 NICE NG12 — unprovoked DVT and occult cancer", html:"<b>In unprovoked DVT the clot may be the presenting sign of a cancer.</b> Review the history, examine, and check baseline bloods; investigate further where directed by findings, and apply the NG12 criteria for any symptom that emerges — unexplained weight loss, a change in bowel habit, haematuria, or an abnormal examination finding. Do not order an untargeted whole-body screen; do not skip the assessment either."},
+    {tone:"green", h:"Mobilise — bed rest is unnecessary and harmful", html:"<b>Early mobilisation, with leg elevation when resting.</b> Compression stockings are for persistent post-thrombotic leg symptoms, NOT for routine prevention of post-thrombotic syndrome — a change many clinicians missed. <b>Review the combined oral contraceptive or HRT</b> as a provoking factor."}
+  ],
+  pathwaySub:"Five steps after the ultrasound confirms it.",
+  pathway:[
+    {title:"Start anticoagulation and take the baselines", html:"A DOAC first-line. Take FBC, U&amp;Es with eGFR, LFTs and clotting first — but start treatment without waiting for them.", alert:true},
+    {title:"Classify: provoked or unprovoked", html:"A transient risk factor makes it provoked. Absence of one makes it unprovoked — which changes both the duration and the need to think about an underlying cause."},
+    {title:"Give the two safety-nets before they leave", html:"Sudden breathlessness or pleuritic pain means 999 — that is PE. And the bleeding rules: black or bloody stools, vomiting blood, any bleed that will not stop, and A&amp;E after a head injury."},
+    {title:"Decide duration at 3 months", html:"Provoked with the factor resolved → stop. Unprovoked → weigh recurrence against bleeding risk and consider continuing long-term."},
+    {title:"Then review at least annually", html:"Renal function (DOACs are renally dosed), bleeding risk, recurrence, and whether the anticoagulant is still needed."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Red flags", title:"Red flags — the chest, the bleed, and the leg that is getting worse",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["<b>Sudden breathlessness, pleuritic chest pain, haemoptysis or collapse</b>","<b>Pulmonary embolism</b>","<b>999.</b> <b>Give this warning explicitly at the first consultation</b> — the patient is watching the leg, not the chest. See <a href='pulmonary-embolism.html'>pulmonary embolism</a>"],
+         ["<b>Massive, tense, painful, dusky leg — extensive iliofemoral DVT</b>","Phlegmasia; limb-threatening, and a candidate for catheter-directed thrombolysis","<b>Same-day acute vascular assessment</b>"],
+         ["<b>Melaena, haematemesis, or any bleed that will not stop</b>","<b>Major bleeding on anticoagulation</b>","<b>Urgent assessment.</b> The patient must say they are anticoagulated"],
+         ["<b>Head injury while anticoagulated, however minor it seemed</b>","<b>Intracranial haemorrhage — may be delayed and initially silent</b>","<b>A&amp;E, same day, regardless of how well they feel</b>"],
+         ["<b>Worsening leg pain and swelling despite treatment</b>","<b>Clot extension, or the diagnosis is wrong</b>","<b>Reassess — confirm adherence and dose, then seek specialist advice</b>"],
+         ["<b>Recurrence while anticoagulated</b>","A red flag in itself: adherence, wrong dose, antiphospholipid syndrome, or occult cancer","<b>Haematology advice.</b> Do not simply switch agent without asking why"],
+         ["Unprovoked DVT with weight loss, bowel-habit change, haematuria or an abnormal examination","<b>Occult malignancy presenting as thrombosis</b>","<b>Apply the relevant NG12 criteria — see <a href='#refer'>Refer</a></b>"]
+       ]}
+     ]},
+
+    {id:"classify", nav:"Classify", title:"Classify the DVT, and take the baselines",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Confirmed</b>","Proximal or distal DVT confirmed on ultrasound, after a Wells score with or without D-dimer"],
+         ["<b>Provoked</b>","A transient risk factor: surgery, immobility, long-haul travel, combined oral contraceptive, HRT, pregnancy, trauma. <b>Review and stop the provoking drug where possible</b>"],
+         ["<b>Unprovoked</b>","No identifiable transient factor → consider an underlying cause, including cancer and thrombophilia. <b>The clot may be the presenting sign</b>"],
+         ["<b>Cancer assessment in unprovoked DVT</b>","History, examination and baseline bloods; targeted investigation as directed by findings and the NG12 criteria. <b>Not an untargeted whole-body screen — but not nothing either</b>"],
+         ["<b>Baseline tests</b>","FBC · U&amp;Es and eGFR (this determines the DOAC dose) · LFTs · PT and APTT · pregnancy test where relevant. Take them before starting — but do not delay treatment waiting for the results"]
+       ]},
+       {b:"why", html:"Two questions shape the entire plan: which anticoagulant, and for how long. The first is answered by renal function and a short list of specific exceptions; the second is answered almost entirely by whether the DVT was provoked. And the unprovoked answer carries a second obligation — thinking about why it happened — because in this group the thrombosis is sometimes the first manifestation of a cancer that is otherwise silent."}
+     ]},
+
+    {id:"anticoag", nav:"Anticoagulate", title:"Anticoagulation — the agent",
+     blocks:[
+       {b:"table", head:["Situation","Agent","Notes"], rows:[
+         ["<b>Most patients</b>","<b>A DOAC — apixaban or rivaroxaban</b>","<b>First-line (NG158). Dose by renal function and review as it changes</b>"],
+         ["<b>DOAC unsuitable</b>","<b>LMWH followed by dabigatran or edoxaban, or warfarin</b>","Severe renal impairment is the usual reason"],
+         ["<b>Antiphospholipid syndrome</b>","<b>Warfarin — NOT a DOAC</b>","<b>DOACs are inferior here.</b> Consider it in young, unprovoked or recurrent thrombosis"],
+         ["<b>Cancer-associated thrombosis</b>","<b>A DOAC or LMWH, continued while the cancer is active</b>","Choice influenced by tumour site, bleeding risk and drug interactions"],
+         ["<b>Pregnancy</b>","<b>LMWH</b>","<b>DOACs and warfarin are contraindicated.</b> Joint obstetric and haematology care"],
+         ["<b>Anticoagulation contraindicated</b>","<b>Consider a mechanical intervention such as an IVC filter</b>","Specialist decision"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"⚠ Coordinate procedures and interacting drugs", html:"Plan any surgery or dental work in advance, and review every drug that adds bleeding risk — NSAIDs, antiplatelets, SSRIs. See <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a>."},
+         {tone:"green", h:"🚶 Mobilise, do not rest", html:"<b>Early mobilisation with leg elevation when resting.</b> <b>Bed rest is unnecessary and harmful</b> — patients often assume the opposite and need telling."},
+         {tone:"blue", h:"🧦 Compression stockings", html:"For persistent post-thrombotic leg symptoms — NOT for routine prevention of post-thrombotic syndrome. This changed and is still widely prescribed the old way."},
+         {tone:"green", h:"✈️ Preventing the next one", html:"Advise on VTE prophylaxis for future travel, surgery and periods of immobility, and address weight, activity and smoking."}
+       ]}
+     ]},
+
+    {id:"duration", nav:"How long?", title:"Duration — the decision at 3 months",
+     blocks:[
+       {b:"table", head:["Category","Duration","Notes"], rows:[
+         ["<b>Provoked, factor resolved</b>","<b>At least 3 months, then stop</b>","Stop once the provoking factor has genuinely resolved and the bleeding risk supports stopping"],
+         ["<b>Unprovoked</b>","<b>At least 3 months, then consider continuing long-term</b>","Weigh recurrence risk against bleeding risk, and involve the patient in the decision. Complete the underlying-cause assessment before deciding"],
+         ["<b>Cancer-associated</b>","<b>Continue while the cancer is active or being treated</b>","Reassess if the cancer goes into remission"],
+         ["<b>Recurrent VTE</b>","<b>Usually long-term</b>","<b>Haematology advice — and ask why it recurred before extending blindly</b>"]
+       ]},
+       {b:"say", html:"We treat the clot with a blood-thinning tablet, and the first decision point is three months. If we can point to a clear cause — the operation, the long flight, the pill — then once that has passed we usually stop. If there was no obvious cause, the risk of another clot stays higher, and we will talk about staying on it long term, weighing that against the bleeding risk. Either way, take it every single day: a missed dose leaves you unprotected, and this is not a tablet where you can catch up later."}
+     ]},
+
+    {id:"monitor", nav:"Monitor", title:"Monitoring and review",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>U&amp;Es and eGFR</b>","<b>At baseline, then at least annually</b>","<b>Re-dose or switch the DOAC as renal function changes</b> — this is the commonest reason a dose becomes wrong over time"],
+         ["<b>FBC and bleeding review</b>","<b>Periodically</b>","Anaemia may mean an occult bleed — investigate rather than attributing it to the drug"],
+         ["<b>Duration decision</b>","<b>At 3 months</b>","Stop or continue, based on provoked versus unprovoked and the bleeding risk"],
+         ["<b>Underlying cause</b>","<b>Unprovoked DVT</b>","<b>Complete the cancer and thrombophilia assessment</b>"],
+         ["<b>Soon after starting</b>","<b>First follow-up</b>","Confirm the correct DOAC dose, adherence, bleeding counselling, and leg symptoms"],
+         ["<b>If continued long-term</b>","<b>At least annually</b>","Renal function, bleeding risk, recurrence, and whether it is still needed"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 — pulmonary embolism", html:"\"Sudden breathlessness, sharp chest pain that is worse when you breathe in, coughing up blood, or collapse — call 999.\""},
+         {tone:"red", h:"🩸 Bleeding", html:"\"Black or bloody stools, vomiting blood, or a bleed that will not stop — get urgent help and tell them you are on a blood thinner. After any head injury, go to A&amp;E even if you feel fine.\""},
+         {tone:"amber", h:"🦵 The leg getting worse", html:"\"Worsening pain or swelling in the leg despite treatment — contact us.\""},
+         {tone:"blue", h:"💊 Do not miss doses", html:"\"Take it exactly as prescribed. Missed doses leave you unprotected, and with these tablets the effect wears off quickly.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency", html:"Suspected pulmonary embolism · extensive iliofemoral DVT where thrombolysis may be considered · major bleeding · head injury on anticoagulation."},
+         {tone:"purple", h:"2WW · NICE NG12 — the cancer that presented as a clot", html:"<b>Unprovoked DVT warrants an assessment for occult cancer.</b> Apply the age- and symptom-specific NG12 criteria to whatever the history and examination turn up: unexplained weight loss with abdominal pain aged 40 and over → urgent direct-access CT; change in bowel habit or iron-deficiency anaemia aged 40 and over → FIT and the colorectal pathway; visible haematuria aged 45 and over → urgent bladder and renal referral; unexplained weight loss with cough or breathlessness aged 40 and over → urgent chest X-ray within 2 weeks."},
+         {tone:"amber", h:"Haematology", html:"Recurrence despite anticoagulation · unusual-site thrombosis · suspected antiphospholipid syndrome or strong thrombophilia · difficult duration decisions."},
+         {tone:"amber", h:"Obstetrics / specialist VTE", html:"<b>Pregnancy-associated VTE, or complex cancer-associated thrombosis.</b>"},
+         {tone:"cream", h:"GP management", html:"Starting and dosing the DOAC, the provoked/unprovoked classification, the occult-cancer assessment, the 3-month duration decision, mobilisation and stockings, the safety-nets and the annual review all belong here. Related pages: <a href='pulmonary-embolism.html'>pulmonary embolism</a> · <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a> · <a href='atrial-fibrillation.html'>atrial fibrillation</a> · <a href='varicose-veins.html'>varicose veins</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 34-year-old woman has a confirmed left calf DVT. She takes the <b>combined oral contraceptive pill</b> and flew back from Australia three weeks ago. She has <b>no other risk factors</b>, and mentions that her <b>mother had a clot in her thirties</b>. She asks how long she will be on tablets, whether she can still take the pill, and whether her <b>sister should be tested</b>."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Classifies it as provoked (COC plus long-haul flight) and gives the ≥3-month answer with the stop-review at 3 months; stops the combined pill and discusses safe alternatives — progestogen-only, the LNG-IUS — rather than leaving a gap; takes the family history seriously enough to consider antiphospholipid syndrome and inherited thrombophilia, and knows that APS would mean warfarin rather than a DOAC; <b>does not order thrombophilia testing reflexively</b>, explaining that it rarely changes management in provoked VTE and that testing on anticoagulation is unreliable; <b>advises on future VTE prophylaxis for flights and surgery</b>; <b>gives the PE and bleeding safety-nets explicitly</b>; <b>addresses mobilisation and corrects any assumption about bed rest</b>; and <b>answers the sister question honestly</b> — cascade testing is a specialist decision, not a routine one."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG158 — Venous thromboembolic diseases: diagnosis, management and thrombophilia testing<br><a href="https://www.nice.org.uk/guidance/ng158" rel="noopener">nice.org.uk/guidance/ng158</a><span class="rd"> — DOACs (apixaban or rivaroxaban) first-line, the alternatives where a DOAC is unsuitable, warfarin in antiphospholipid syndrome, the provoked versus unprovoked duration rules, and compression stockings for symptoms rather than routine post-thrombotic prevention</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the symptom- and age-specific routes applied when unprovoked thrombosis prompts an assessment for occult malignancy</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — apixaban and rivaroxaban dosing by renal function, LMWH in pregnancy, and the interaction and bleeding-risk cautions</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Deep vein thrombosis — NICE NG158 and NG12. A DOAC first-line, dosed by renal function, with warfarin reserved for antiphospholipid syndrome and LMWH for pregnancy. Take baseline bloods before starting but do not wait for them. Provoked DVT: at least 3 months, then stop once the factor has resolved. Unprovoked: consider long-term treatment, and assess for an underlying cause including cancer. Mobilise rather than rest; stockings are for symptoms, not routine prevention. Every patient leaves knowing that sudden breathlessness means 999. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

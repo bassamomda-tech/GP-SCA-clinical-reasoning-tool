@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="algkey" content="rgp.alg.abdominalpain.v1"/>
+<title>Abdominal Pain Algorithm · Reasoning GP</title>
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/abdominal-pain.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css?v=3">
+<link rel="stylesheet" href="../../assets/alg-summary.css?v=6">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body>
+
+<div class="alg-header">
+  <h1>🫃 Abdominal Pain</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta"><span>NICE NG12</span><span>NICE CG184</span><span>10-min consult</span></div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🫃</div>
+  <div>
+    <b>Abdominal Pain — Adult presentation in primary care</b>
+    <small>Covers acute, subacute, and chronic presentations · Adults ≥18 · UK NHS pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Summary</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SUMMARY VIEW — 2-page quick reference, inline responsive HTML (spec: _summary-spec.md). Download PDF prints summaries/abdominal-pain.html (the A4 artefact). -->
+<div id="viewSummary">
+  <div class="sum-bar"><p><b>2-page quick reference.</b> Abdominal pain in adults — triage and diagnostic approach. Ongoing management of each diagnosis stays in the Steps tab.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="summaries/abdominal-pain.html">⬇ Download PDF</button><a class="sum-open" href="summaries/abdominal-pain.html" target="_blank" rel="noopener">Print view ↗</a></div></div>
+  <div class="sum">
+<!-- ===================== PAGE 1 ===================== -->
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td>
+      <div class="brand"><b>REASONING GP</b> · Clinical algorithm · Quick reference</div>
+      <h1>Abdominal pain in adults — triage and diagnostic approach</h1>
+      <div class="sub">Daytime GP and OOH/111, face-to-face or remote. Exclude the surgical abdomen and the vascular catastrophes, localise by region to a named diagnosis, then decide who leaves by ambulance, by letter, or with a treatment and a review.</div>
+    </td>
+    <td class="pg">Page 1 / 2<br><span class="tags"><span>Adults</span><span>GP + OOH</span><span>Diagnosis first</span><span>v1.0 · Sep 2026</span></span></td>
+  </tr></table></div>
+
+  <div class="rule"><b>Core rule.</b> Three questions come before the history: <b>is the abdomen surgical, is the patient shocked, and could she be pregnant?</b> Any woman of reproductive age with abdominal pain has an ectopic pregnancy until a pregnancy test says otherwise — <b>stable with a positive test → EPU today; unstable, bleeding or severe pain → 999</b>. Pain out of proportion to the examination, pain with a pulsatile mass, and pain with hypotension are vascular emergencies. The old, the frail and the immunosuppressed present late and softly.</div>
+
+  <!-- 0 Immediate -->
+  <div class="sec red">
+    <div class="sh"><div class="n">0</div><div class="t">Before any history: is this an emergency now? <small>Stop the consultation and call 999 if any of these is present</small></div></div>
+    <div class="note">Shock — systolic BP &lt;90, pulse &gt;120, mottled or clammy · rigid or peritonitic abdomen · sudden severe pain with a pulsatile mass, or back/flank pain with collapse over 50 · severe constant pain with a soft abdomen in AF or vascular disease · haematemesis or melaena with instability · positive pregnancy test with pain, bleeding or shoulder-tip pain · fever with jaundice and rigors · tender irreducible groin or scrotal lump. ABCDE, observations, nil by mouth, exact onset time, hand over. Do not delay transfer for bloods, urine, imaging or analgesia decisions.</div>
+  </div>
+
+  <!-- 1 Define -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">1</div><div class="t">Define the pain in four lines <small>Enough to place the patient in the table below</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Time &amp; onset</h4>Instantaneous and maximal at onset (perforation, ruptured AAA, ectopic, torsion) · over hours with migration (appendicitis) · colicky in waves (obstruction, renal or biliary colic) · days to weeks (inflammatory, malignant).</div>
+      <div class="col blue"><h4>Site &amp; radiation</h4>Epigastric to back (pancreatitis, AAA) · RUQ to scapula (biliary) · loin to groin (renal) · iliac fossa (appendix, diverticulum, ovary, ectopic) · suprapubic (bladder, uterus) · generalised (peritonitis, obstruction, ischaemia).</div>
+      <div class="col blue"><h4>Context</h4>LMP and contraception in every woman of reproductive age · previous abdominal or pelvic surgery · known AAA, AF, vascular disease · alcohol, gallstones, NSAIDs, steroids, anticoagulants · immunosuppression · diabetes.</div>
+      <div class="col blue"><h4>Associated</h4>Vomiting, absolute constipation and no flatus · blood per rectum, melaena · fever, rigors, jaundice · dysuria, haematuria · vaginal bleeding · weight loss · thirst and polyuria.</div>
+    </div>
+  </div>
+
+  <!-- 2 Red flags -->
+  <div class="sec red">
+    <div class="sh"><div class="n">2</div><div class="t">Red-flag screen: trigger → concern → destination → what to do before handover <small>One row is enough; do not add up reassuring features</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:27%"><col style="width:19%"><col style="width:54%"></colgroup>
+      <tr><th>Trigger / red flag</th><th>Leading concern · destination</th><th>Do now · do not delay</th></tr>
+      <tr class="r"><td><b>Sudden severe abdominal, back or flank pain over 50</b> with collapse, hypotension, a pulsatile expansile mass or unequal femoral pulses; known AAA. First-episode "renal colic" over 50 is an AAA until excluded.</td>
+        <td>Ruptured or symptomatic AAA<br><span class="pill p999">999 now</span></td>
+        <td>Say "suspected ruptured AAA" on the handover so the vascular pathway starts from the call. Do not palpate repeatedly, do not arrange an outpatient ultrasound, do not give analgesia and review.</td></tr>
+      <tr class="r"><td><b>Rigid, board-like or peritonitic abdomen</b>: guarding, rebound, percussion tenderness, lying still; severe epigastric pain to the back with vomiting; pain on NSAIDs, steroids or known ulcer.</td>
+        <td>Perforated viscus · pancreatitis · peritonitis<br><span class="pill p999">999 now</span></td>
+        <td>Nil by mouth, observations, drug history on the handover. Analgesia is permitted and does not mask the diagnosis. Do not give a PPI and review.</td></tr>
+      <tr class="r"><td><b>Severe constant pain with a soft abdomen</b> — pain out of proportion to examination — in AF, heart failure, recent MI, vascular disease or over 65.</td>
+        <td>Acute mesenteric ischaemia<br><span class="pill p999">999 now</span></td>
+        <td>State "pain out of proportion, query mesenteric ischaemia" on the handover; it is diagnosed by CT angiography within hours and missed by a normal examination.</td></tr>
+      <tr class="r"><td><b>Any woman of reproductive age with abdominal or pelvic pain</b>, especially with amenorrhoea, vaginal bleeding, shoulder-tip pain or syncope; IUD, previous ectopic or assisted conception.</td>
+        <td>Ectopic pregnancy · ovarian torsion · PID<br><span class="pill p999">999 if unstable</span> <span class="pill psd">Same-day EPU / gynaecology</span></td>
+        <td>Urine pregnancy test in <b>every</b> woman of reproductive age, whatever the contraception (NG126). A positive test with pain is an EPU assessment today, not a routine scan. Sudden severe unilateral pain with vomiting is torsion — same-day gynaecology even if the pain has eased.</td></tr>
+      <tr class="a"><td><b>Colicky pain with vomiting, distension, absolute constipation and no flatus</b>; previous surgery, hernia, or a tender irreducible groin or scrotal lump.</td>
+        <td>Obstruction · strangulated hernia · volvulus<br><span class="pill p999">999 if peritonitic or irreducible hernia</span> <span class="pill psd">Same-day surgical</span></td>
+        <td>Examine both groins and the scrotum — a strangulated femoral hernia is easily missed in an elderly woman. Nil by mouth. No laxative, enema or antiemetic and review.</td></tr>
+      <tr class="a"><td><b>Fever, rigors, tachycardia or confusion with abdominal pain</b>; right upper quadrant pain with jaundice and fever (Charcot's triad); loin pain with fever and vomiting; immunosuppressed or asplenic.</td>
+        <td>Cholangitis · pyelonephritis · intra-abdominal or neutropenic sepsis<br><span class="pill p999">999 if sepsis or jaundice with rigors</span> <span class="pill psd">Same-day acute</span></td>
+        <td>Observations and sepsis assessment (NG51). Jaundice with fever and RUQ pain is an emergency biliary decompression pathway, not an oral antibiotic. Pyelonephritis with vomiting, pregnancy or frailty needs admission.</td></tr>
+      <tr class="a"><td><b>Haematemesis, coffee-ground vomiting, melaena, or anaemia with epigastric pain</b>; anticoagulants, NSAIDs, alcohol excess or known varices.</td>
+        <td>Upper GI bleed · bleeding ulcer<br><span class="pill p999">999 if haematemesis or shock</span> <span class="pill psd">Same-day acute</span></td>
+        <td>Observations including postural BP. Stop NSAIDs; discuss anticoagulation with the receiving team. Do not start a PPI and review after melaena.</td></tr>
+      <tr class="p"><td><b>Cancer feature with chronic or recurrent pain</b>: abdominal or pelvic mass or ascites, any age · 40+ with weight loss and abdominal pain · 60+ with weight loss plus new diabetes, nausea, back pain or bowel change · 55+ with upper abdominal pain plus weight loss, reflux or dyspepsia · dysphagia any age · jaundice 40+ · women 50+ with new IBS-like symptoms in 12 months.</td>
+        <td>Colorectal · ovarian · pancreatic · upper GI cancer<br><span class="pill p2ww">Urgent suspected-cancer referral or direct-access test within 2 weeks · NICE NG12</span></td>
+        <td>Match the test to the criterion (NG12): <b>FIT ≥10 µg Hb/g</b> → USC referral · <b>CA-125 at 40+ with urgent ultrasound per the age-specific threshold</b> — never alone; ultrasound first if ascites or a mass, and consider it at 39 or under · <b>urgent direct-access CT</b> at 60+ for pancreatic cancer · <b>urgent direct-access OGD</b> for dysphagia, or 55+ with weight loss plus upper abdominal pain, reflux or dyspepsia · unexplained mass, or jaundice 40+, is a direct USC referral. A normal test with persisting symptoms does not close the question.</td></tr>
+    </table>
+    <div class="note amber"><b>Pain without abdominal signs is not benign.</b> Thirst, polyuria and deep sighing breathing = <b>DKA</b> (capillary ketones, not glucose alone — euglycaemic DKA on SGLT2 inhibitors: <b>1.5–2.9 mmol/L</b> with pain, vomiting or illness → urgent same-day assessment and repeat; <b>≥3.0</b>, acidosis, dehydration, Kussmaul breathing or drowsiness → emergency). Epigastric pain with sweating over 40 = <b>inferior MI</b> (ECG before any PPI). Also lower-lobe pneumonia, PE, adrenal crisis, hypercalcaemia, sickle-cell crisis, urinary retention, shingles before the rash and abdominal wall pain.</div>
+    <div class="note amber"><b>Safety rule.</b> A soft abdomen, a normal temperature, normal bloods and a settled pain each lower probability; none excludes AAA, ischaemia, ectopic pregnancy or early appendicitis. Analgesia does not mask the surgical abdomen. If a row applies and the safe destination is unavailable, escalate.</div>
+  </div>
+
+  <div class="foot">Colour is semantic: red = emergency now · amber = same-day acute assessment · blue = define/assess · green = primary-care diagnosis · purple = uncertain / specialist route (including 2WW). Continued on page 2: classification, regional classifier, routine referral, primary-care treatment, endpoint.</div>
+</div>
+
+<!-- ===================== PAGE 2 ===================== -->
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td><div class="brand"><b>REASONING GP</b> · Abdominal pain in adults — triage and diagnostic approach</div></td>
+    <td class="pg">Page 2 / 2</td>
+  </tr></table></div>
+
+  <!-- 3 Examine -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">3</div><div class="t">Focused examination and investigation <small>Remote assessment that cannot examine the abdomen is an escalation criterion</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Measure</h4>Pulse, BP with postural drop, RR, SpO₂, temperature, GCS. Glucose and ketones if diabetic or vomiting. <b>Urine pregnancy test in every woman of reproductive age.</b></div>
+      <div class="col blue"><h4>Examine</h4>Distension and scars · gentle palpation for guarding, rebound, percussion tenderness and a pulsatile mass · Murphy's and RIF rebound · <b>both groins and the scrotum, always</b> · rectal examination where melaena or obstruction is in question · pelvic examination where indicated.</div>
+      <div class="col blue"><h4>Same-day tests</h4>Urine dipstick and MSU (a dipstick alone does not diagnose UTI with pelvic pain or over 65) · FBC, U&amp;E, CRP, LFT, lipase or amylase, glucose, capillary ketones · ECG if epigastric pain over 40. <b>Pancreatitis: two of pain, enzyme &gt;3× ULN, imaging.</b></div>
+      <div class="col blue"><h4>Directed tests (not triage)</h4>FIT, CA-125, coeliac serology, calprotectin, H. pylori testing, ultrasound for gallstones, outpatient OGD or colonoscopy. <b>No CA 19-9.</b></div>
+    </div>
+  </div>
+
+  <!-- 4 Classify -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">4</div><div class="t">Classify: three exits, not two <small>"Non-specific abdominal pain" is a decision to review, not a diagnosis to discharge on</small></div></div>
+    <div class="note grey"><b>Surgical or serious likely</b> — any red flag, peritonism, shock, obstruction, sepsis, or a positive pregnancy test with pain: name the concern, use the destination above, record observations, pregnancy test and analgesia with dose and time. <b>Cause established in primary care</b> — no red flags, normal observations, one regional diagnosis explaining it all: record the diagnosis, supporting findings, treatment and review date. <b>Unclassified</b> — never default to "constipation", "gastritis" or "IBS" at a first presentation: state the uncertainty, take the §6 route where one applies, and book an <b>active review within 12–24 hours</b>.</div>
+  </div>
+
+  <!-- 5 Classifier -->
+  <div class="sec green">
+    <div class="sh"><div class="n">5</div><div class="t">Regional classifier <small>Only once the red-flag screen is negative</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:21%"><col style="width:79%"></colgroup>
+      <tr class="a"><td><b>Iliac fossa — right / left</b></td><td><b>Appendicitis (right)</b> — central pain migrating over 6–24 h with anorexia, low fever, localised tenderness: same-day surgical assessment. <b>Normal bloods do not exclude it</b>; single signs are not diagnostic. In women, also ectopic, torsion and PID. <b>Diverticulitis (left)</b> — localised tenderness, fever, bowel-habit change over 50; treated as §7 (NG147). Peritonism, abscess, obstruction, fistula, sepsis, bleeding, dehydration, unable to take oral treatment or failing at 48 h → same-day assessment; interval investigation per <b>local policy</b> where CT findings, persisting symptoms or incomplete colorectal assessment raise concern.</td></tr>
+      <tr class="g"><td><b>Right upper quadrant</b></td><td><b>Biliary colic</b> — post-prandial, 1–6 h, no fever: analgesia, ultrasound, routine surgery. <b>Cholecystitis or cholangitis</b> — constant pain, fever, jaundice: same-day acute biliary pathway, not oral antibiotics.</td></tr>
+      <tr class="g"><td><b>Epigastric</b></td><td><b>Dyspepsia, GORD, peptic ulcer</b> — burning, food or NSAID related, no alarm features: test for H. pylori or give a PPI trial (CG184). <b>Always exclude cardiac pain over 40</b> and pancreatitis. Alarm features, or 55+ with weight loss → section 6 / NG12.</td></tr>
+      <tr class="g"><td><b>Loin to groin</b></td><td><b>Renal colic</b> — colicky pain, restless patient, haematuria: NSAID if not contraindicated and <b>low-dose non-contrast CT KUB within 24 h</b>, ultrasound in pregnancy (NG118). Alpha-blocker only as an adjunct for a distal stone under 10 mm; <b>no forced fluids during colic</b>. <b>Fever, single kidney, pregnancy or obstruction is an emergency</b>; a first episode over 50 is an AAA until excluded.</td></tr>
+      <tr class="g"><td><b>Suprapubic, pelvic and generalised</b></td><td><b>UTI</b> — dysuria, frequency, urgency without pelvic pain in a non-pregnant woman; men and pregnancy need 7 days and an MSU. <b>PID</b> — deep pain, discharge, cervical excitation: BASHH/local regimen, sexual-health referral. <b>Retention</b> — catheterise or admit. Not every suprapubic symptom is a UTI. <b>Constipation</b> — consistent history, no red flags; never the explanation for vomiting with absolute constipation. <b>Gastroenteritis</b> — needs diarrhoea and an exposure history. <b>IBS</b> — a <b>positive</b> diagnosis on symptom pattern with normal baseline tests (FBC, CRP, coeliac serology, calprotectin ± FIT), not exhaustive exclusion — and not a new diagnosis at 50 or over without investigation (CG61).</td></tr>
+    </table>
+  </div>
+
+  <!-- 6 Routine referral -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">6</div><div class="t">Refer routinely from this consultation <small>Not same-day, not 999 — the cases that leave by letter</small></div></div>
+    <div class="note grey"><b>Symptomatic gallstones</b> on ultrasound → routine upper GI surgery (CG188). <b>Dyspepsia unresponsive to eradication and a full-dose PPI</b> with no NG12 alarm feature → gastroenterology (CG184). <b>Suspected IBD</b> — raised calprotectin, or diarrhoea with blood, weight loss or nocturnal symptoms → gastroenterology, urgently if unwell. <b>Suspected coeliac disease</b> — positive tTG-IgA with total IgA → gastroenterology for biopsy, gluten continued (NG20). <b>Chronic pelvic pain or suspected endometriosis</b> → gynaecology, or a specialist service if imaging is negative but symptoms persist (NG73). <b>Recurrent stones, a symptomatic hernia, or constipation failing two agents</b> → the relevant routine clinic. <b>Interval investigation after CT-confirmed diverticulitis.</b></div>
+  </div>
+
+  <!-- 7 Primary-care treatment -->
+  <div class="sec red">
+    <div class="sh"><div class="n">7</div><div class="t">The only treatment decisions that belong in this consultation <small>What primary care treats today</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:26%"><col style="width:74%"></colgroup>
+      <tr class="a"><td><b>Analgesia while the diagnosis is settled</b></td><td>Give it: analgesia does not mask the surgical abdomen. Paracetamol first line (max 4 g/24 h; less in low weight or liver disease). An NSAID for renal or biliary colic <b>only where none applies: GI bleeding or ulcer, renal impairment or dehydration, heart failure, anticoagulation, pregnancy, significant cardiovascular disease, frailty, or an ACE inhibitor + diuretic</b> (NG118).</td></tr>
+      <tr class="g"><td><b>Diverticulitis</b></td><td><b>Well and uncomplicated: consider no antibiotic</b> — analgesia, fluids, safety-net, review at 48 h. Antibiotic if systemically unwell, immunosuppressed or comorbid: <b>co-amoxiclav 500/125 mg TDS for 5 days</b> (NG147); ciprofloxacin restricted. Avoid NSAIDs and opioids where possible.</td></tr>
+      <tr class="g"><td><b>Dyspepsia / suspected peptic ulcer, no alarm features</b></td><td>Stop the NSAID where possible; full-dose PPI for 4 weeks, or test and treat for H. pylori — <b>2-week PPI washout and no antibiotics for 4 weeks before testing</b>; regimen per local guidance, accounting for previous clarithromycin or metronidazole exposure (CG184).</td></tr>
+      <tr class="g"><td><b>Uncomplicated lower UTI, non-pregnant woman</b></td><td>Nitrofurantoin or trimethoprim per local guidance for 3 days (NG109). <b>Pregnancy, men, catheters, recurrence or systemic features change the pathway</b> — send an MSU. Loin pain, fever or vomiting is pyelonephritis, not cystitis.</td></tr>
+      <tr class="r"><td><b>Peritonitis, obstruction, AAA, ischaemia, ectopic, sepsis, GI bleed</b></td><td>Transfer is the treatment. Nil by mouth. No laxative or enema in obstruction; no PPI in melaena; do not treat a positive dipstick in a woman with pelvic pain and a positive pregnancy test; no outpatient scan for a suspected AAA. Analgesia is permitted if it does not delay conveyance.</td></tr>
+    </table>
+  </div>
+
+  <!-- 8 Endpoint -->
+  <div class="sec green">
+    <div class="sh"><div class="n">8</div><div class="t">Endpoint and documentation <small>Finish with one of four conclusions and a named owner</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>1 · Time-critical serious</h4>999 route taken; suspected diagnosis, onset, observations with postural BP, pregnancy test result, abdominal findings, analgesia with dose and time.</div>
+      <div class="col amber"><h4>2 · Serious possible</h4>Same-day surgical, gynaecological or acute assessment arranged; the question being excluded, who was spoken to, deadline to be seen.</div>
+      <div class="col green"><h4>3 · Cause established</h4>Diagnosis and supporting findings; observations and tests; treatment with dose and duration; review date; safety-net understood.</div>
+      <div class="col purple"><h4>4 · Unclassified</h4>Uncertainty stated; active review booked within 12–24 hours; section-6 referral or NG12 test sent, with date; deterioration criteria and a named owner.</div>
+    </div>
+    <div class="note grey"><b>Why a primary-care diagnosis is safe today, in one line:</b> no page-1 row applies · pulse, BP, temperature, RR normal · pregnancy test negative in anyone who could be pregnant · abdomen soft, no localised peritonism, groins and scrotum examined · one diagnosis explains it all · NG12 considered · written safety-net and booked review. <b>Safety-net wording:</b> call 999 or go to A&amp;E if the pain becomes severe or constant, the abdomen becomes hard or too painful to touch, you vomit repeatedly, you pass blood or black stools, you faint or go cold and clammy, or you develop a fever with shivering; same day if the pain moves to one place or worsens over hours.</div>
+    <div class="note amber"><b>OOH / remote limitation.</b> Convert to face-to-face or emergency assessment if: the abdomen cannot be examined; observations cannot be obtained; <b>a pregnancy test cannot be done in anyone who could be pregnant</b>; pain is severe, progressive or localising; repeated vomiting or unable to drink; over 65, frail, immunosuppressed or anticoagulated; or <b>no reliable same-day review or safe transport</b>.</div>
+  </div>
+
+  <div class="foot">Clinical decision support only; follow local emergency-transfer and referral policies and check doses against the current BNF. Source hierarchy: NICE guidelines first, then BNF/MHRA for doses and safety, then national specialty guidance. Sources: NICE NG12 Suspected cancer (May 2025) · NG147 Diverticular disease · CG184 Gastro-oesophageal reflux disease and dyspepsia · NG118 Renal and ureteric stones · NG109 Urinary tract infection (lower) in women · NG126 Ectopic pregnancy and miscarriage · NG73 Endometriosis · NG20 Coeliac disease · CG61 Irritable bowel syndrome · CG188 Gallstone disease · NG51 Sepsis · BNF · MHRA. Review after any guidance or medicines-safety update, otherwise every 6 months. © Reasoning GP · gpreasoning.uk</div>
+</div>
+  </div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <div class="node-num">01</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Surgical and life-threatening causes MUST be excluded first</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Screened — no red flags identified</span></label></div>
+  <div class="node-body">
+    <span>Abdominal pain is a diagnostic minefield. The following require immediate action before any further assessment. <b>Muted-presentation trap:</b> the elderly, diabetics, the immunosuppressed and anyone on steroids can have a surgical abdomen with minimal tenderness and no fever — lower your threshold, not your guard.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Peritonism</b> Board-like rigidity, rebound tenderness, guarding, absent bowel sounds → 999 (perforation, ruptured viscus, ischaemia)</div>
+      <div class="rftile"><b>Haemodynamic instability</b> HR &gt;100, SBP &lt;90, pallor, cold/clammy → 999 (AAA rupture, GI haemorrhage, ectopic pregnancy, sepsis)</div>
+      <div class="rftile"><b>Positive pregnancy test with pain</b> Urine hCG in <b>every</b> woman of reproductive age, whatever the contraception. <b>Stable</b> — positive test with abdominal, pelvic or cervical-motion tenderness → <b>immediate early pregnancy assessment unit / gynaecology today</b> (NG126). <b>999 / A&amp;E</b> if shock, syncope, severe or worsening pain, significant bleeding, peritonism, or shoulder-tip pain with instability. An IUD, previous ectopic or assisted conception raises suspicion but is not a prerequisite</div>
+      <div class="rftile"><b>Aortic aneurysm rupture</b> Age &gt;60, tearing abdominal/back pain, pulsatile mass, collapse → 999 (50% mortality even with surgery). <b>First-ever 'renal colic' in a patient &gt;60 = AAA until excluded</b> — the classic fatal mislabel</div>
+      <div class="rftile"><b>Torsion — two different destinations</b> <b>Suspected testicular torsion</b> (acute scrotal pain, often with abdominal pain, high-riding or transverse testis) → <b>immediate emergency urological/surgical assessment</b>; 4–6 h window. <b>Suspected ovarian or adnexal torsion</b> → <b>same-day emergency gynaecological assessment</b>, 999 if unstable or safe transport cannot be arranged — not routine imaging or an outpatient letter</div>
+      <div class="rftile"><b>Mesenteric ischaemia</b> Severe pain out of proportion to examination findings, AF history, vascular disease → 999 (high mortality if missed)</div>
+      <div class="rftile"><b>Unintentional weight loss + abdominal pain</b> Age ≥40 → <b>FIT-guided colorectal assessment</b> (NG12); age ≥60 with weight loss plus abdominal or back pain, new-onset diabetes, nausea, vomiting, constipation or diarrhoea → <b>urgent direct-access CT</b> (ultrasound if CT unavailable) for pancreatic cancer. Jaundice at 40 or over → suspected cancer pathway referral</div>
+      <div class="rftile"><b>Jaundice + abdominal pain</b> → same-day assessment (hepatobiliary emergency, cholangitis: Charcot's triad = fever + RUQ pain + jaundice)</div>
+      <div class="rftile"><b>Suspected sepsis</b> Assess on observations, mental state, perfusion, urine output, comorbidity and <b>trajectory</b> — with lactate where available (NG51). <b>Fever or hypothermia neither rules sepsis in nor out</b>, and NEWS2 supports escalation rather than replacing assessment. Pregnancy, immunosuppression and frailty are higher-risk groups → 999 if high risk</div>
+      <div class="rftile"><b>Change in bowel habit, rectal bleeding or iron-deficiency anaemia with pain</b> Use <b>FIT</b> to guide colorectal referral where the NG12 criteria apply (abdominal mass, change in bowel habit, iron-deficiency anaemia, ≥40 with weight loss and abdominal pain, &lt;50 with rectal bleeding plus pain or weight loss, ≥50 with rectal bleeding, pain or weight loss, ≥60 with anaemia): <b>FIT ≥10 µg Hb/g → suspected cancer pathway</b>. A low or unreturned FIT does not override an abdominal mass or strong ongoing concern</div>
+      <div class="rftile"><b>Diabetic ketoacidosis</b> Vomiting or abdominal pain in T1DM, or T2DM on an SGLT2 inhibitor — check <b>capillary blood ketones</b>, not glucose alone (euglycaemic DKA). <b>1.5–2.9 mmol/L</b> with abdominal pain, vomiting or illness → urgent same-day assessment and repeat testing. <b>≥3.0 mmol/L</b>, or significant hyperglycaemia, acidosis, dehydration, Kussmaul breathing or altered consciousness → emergency assessment via the local DKA pathway</div>
+      <div class="rftile"><b>New palpable mass</b> Any abdominal mass not previously documented → urgent imaging / suspected cancer referral — a mass is referred on its own merit, whatever the FIT result</div>
+      <div class="rftile"><b>The pain that is not in the abdomen</b> Inferior MI · <b>lower-lobe pneumonia</b> · <b>pulmonary embolism</b> · DKA and <b>adrenal crisis</b> in steroid-dependent or Addison's patients · <b>hypercalcaemia</b> · <b>sickle-cell crisis</b> · <b>acute intermittent porphyria</b> · <b>urinary retention</b> · <b>shingles before the rash</b> · <b>abdominal wall pain</b> (Carnett's positive) · testicular pathology · pregnancy-related disease beyond ectopic · severe drug-induced constipation</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Abdominal pain accounts for ~5% of all GP consultations; the challenge is that serious diagnoses are uncommon but catastrophic if missed. AAA rupture carries very high mortality without intervention. Ectopic pregnancy remains a leading cause of first-trimester maternal death in the UK — which is why <b>every</b> woman of reproductive age gets a pregnancy test, and why NG126 separates the unstable patient (999) from the stable positive test with tenderness (EPU today). Mesenteric ischaemia is missed because the examination is normal: "pain out of proportion to signs" is the cue. Torsion is time-critical, but the destination differs — testicular torsion is an immediate surgical/urological emergency, ovarian torsion a same-day gynaecological one. DKA on an SGLT2 inhibitor can be euglycaemic, so the test is ketones, not glucose.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <div class="node-num">02</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Characterise the pain — SOCRATES and temporal pattern to narrow differentials</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Pain characterised fully</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Site</div><div>RUQ = hepatobiliary (biliary colic, cholecystitis, hepatitis) · Epigastric = peptic ulcer, GORD, pancreatitis, MI · LUQ = splenic, pancreatitis · Periumbilical → RIF = appendicitis · RIF = appendicitis, ovarian pathology, Meckel's · LIF = diverticulitis, ovarian, constipation · Loin = renal colic, pyelonephritis · Suprapubic = UTI, bladder, gynaecological · Diffuse = IBS, peritonitis, mesenteric ischaemia, IBD</div>
+      <div>Onset</div><div>Sudden (seconds) = perforation, rupture, volvulus, torsion · Rapid (minutes) = colic (biliary, renal, uterine) · Gradual (hours) = appendicitis, cholecystitis, pancreatitis · Chronic / recurrent = IBS, IBD, functional</div>
+      <div>Character</div><div>Colicky (comes and goes in waves) = bowel obstruction, biliary/renal colic · Constant = inflammation/infection · Burning = PUD, GORD · Cramping = IBS, gastroenteritis</div>
+      <div>Radiation</div><div>RUQ → right shoulder tip = biliary / diaphragm irritation · Epigastric → back = pancreatitis, AAA · Loin → groin → testis/labia = renal colic · Central → RIF = appendicitis</div>
+      <div>Alleviating / aggravating</div><div>Food-related (postprandial) = biliary / mesenteric angina / PUD · Defaecation-relieved = IBS, IBD · Movement-worsened = peritonitis (patients lie still) · Position-related = pancreatitis (sitting forward better)</div>
+      <div>Severity + chronology</div><div>Acute (&lt;72h) vs subacute (days–weeks) vs chronic (&gt;3 months, ≥3 episodes). Escalating pain = worsening pathology. Static chronic = functional more likely</div>
+      <div>Associated symptoms</div><div>Fever, vomiting, diarrhoea, urinary symptoms, menstrual history, sexual history, jaundice, rectal bleeding, weight loss — all critically narrow the differential</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      A systematic pain history using SOCRATES correctly identifies the diagnosis in 60–70% of abdominal pain presentations before examination. The migration of pain from periumbilical to RIF is present in 60% of confirmed appendicitis cases. Colicky pain with complete absence in between strongly suggests hollow viscus obstruction or colic rather than inflammation. Understanding onset speed (seconds vs hours) is the single most important discriminator between surgical emergency and subacute disease.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <div class="node-num">03</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify by acuity and likely system — guides investigation and referral urgency</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Classified by acuity</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Acute surgical (hours)</div><div>Appendicitis · Acute cholecystitis · Perforated viscus · Bowel obstruction · Ischaemia · Ruptured ectopic · Torsion. → Same-day A&amp;E referral</div>
+      <div>Acute medical (hours–days)</div><div>Pancreatitis · Pyelonephritis · Diabetic crisis · Hepatitis · Inferior MI · Renal colic (if obstructed/infected) → Same-day assessment / A&amp;E</div>
+      <div>Urgent (days–weeks)</div><div>Peptic ulcer disease · Biliary colic (uncomplicated) · IBD flare · Diverticulitis (mild–moderate) · New onset &gt;50. → Same-day or urgent GP / 2WW</div>
+      <div>Chronic / recurrent</div><div>IBS · Functional abdominal pain · Chronic pancreatitis · Endometriosis · Adhesions · Chronic pelvic pain → Planned workup in primary care with referral if unresolved</div>
+      <div>Gynaecological screen (women)</div><div>LMP, cycle regularity, vaginal discharge, dyspareunia, intermenstrual/postcoital bleeding, pregnancy test (all reproductive-age women). Ovarian cysts, PID, endometriosis, ectopic — all present with abdominal pain</div>
+      <div>Functional</div><div><b>Diagnose IBS positively</b> on the symptom pattern (Rome IV) with appropriate baseline testing when there are no red flags — it does not require exhaustive exclusion of every organic disease, and over-investigation is its own harm. Age, alarm features and local pathways decide which baseline tests are needed (FIT, faecal calprotectin, coeliac serology, FBC). <b>Be wary of a NEW diagnosis of IBS at 50 or over:</b> new bowel-habit change or "IBS-type" symptoms at that age need investigation first — colorectal and ovarian cancer both masquerade as late-onset IBS</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Acuity classification drives the time-critical decision: Can this patient safely wait for primary care workup, or do they need hospital today? Pancreatitis severity (GLASGOW score in hospital) determines HDU admission need. Mild diverticulitis (no systemic upset, able to eat) can be managed in primary care with antibiotics; moderate/severe requires admission. All reproductive-age women presenting with lower abdominal pain must have a pregnancy test — a missed ectopic pregnancy is a never event.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head">
+    <div class="node-num">04</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted examination — systematic and focused to confirm or refute differentials</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Examination completed and documented</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Vital signs first</div><div>BP, HR, temperature, RR, SpO₂, capillary refill. Haemodynamic compromise → 999 before completing examination. NEWS2 score if any abnormality</div>
+      <div>Inspection</div><div>Distension (obstruction, ascites) · Visible peristalsis (obstruction) · Scars (adhesions) · Jaundice, pallor, cachexia · Cullen's / Grey Turner's sign (periumbilical / flank bruising = haemorrhagic pancreatitis — rare but critical)</div>
+      <div>Palpation — light</div><div>Start AWAY from site of pain. Tenderness, guarding (voluntary = patient tensing; involuntary = peritonism). Document site, character, severity</div>
+      <div>Palpation — deep</div><div>Masses · Organomegaly (liver, spleen) · Renal angles · Aortic pulsation (midline pulsatile mass &gt;3cm = AAA — do not deeply palpate if suspected)</div>
+      <div>Specific signs</div><div>Murphy's sign (RUQ + inspiratory arrest = cholecystitis) · Rovsing's, psoas and McBurney's point · Carnett's test (pain worsens with abdominal wall contraction = abdominal wall source). <b>None of these is a diagnostic test:</b> they shift probability only, and <b>normal blood tests do not exclude appendicitis</b> — imaging and serial clinical review may be needed</div>
+      <div>Bowel sounds</div><div>Absent = ileus / peritonitis / late obstruction · High-pitched tinkling = early obstruction · Normal does not exclude pathology</div>
+      <div>PR examination</div><div><b>Only when it will alter management</b> — suspected melaena, rectal bleeding, a rectal mass or pelvic pathology. Obtain consent and offer a chaperone; document both. It is <b>not</b> a blanket requirement in abdominal pain</div>
+      <div>Pelvic / genitourinary</div><div><b>Guided by symptoms</b> — pregnancy status, vaginal discharge or bleeding, pelvic pain, suspected PID or ectopic pregnancy; with consent and a chaperone, and never a blanket requirement. Cervical excitation (PID) · adnexal tenderness (cyst, ectopic) · testicular examination (torsion, epididymo-orchitis) · hernia orifices, inguinal and femoral</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Murphy's sign has 97% specificity for acute cholecystitis when positive. Involuntary guarding (rigidity) is the single most important sign of peritonitis — it is not suppressible by the patient and indicates surgical emergency. Carnett's test differentiates visceral from abdominal wall pain with 78–88% accuracy — positive Carnett's (worsens on raising head) suggests abdominal wall haematoma, hernia, or nerve entrapment, avoiding unnecessary investigations. A missed irreducible femoral hernia (most common in elderly women) causing obstruction is a preventable surgical emergency.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head">
+    <div class="node-num">05</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — match to acuity and differential; avoid blanket ordering</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Appropriate investigations ordered</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Acute / same-day</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">U&amp;E</span> <span class="pill pill-blue">LFTs</span> <span class="pill pill-blue">Amylase/Lipase</span> <span class="pill pill-blue">CRP</span> <span class="pill pill-blue">Lactate</span> (ischaemia) <span class="pill pill-blue">Urine dip + MC&amp;S</span> <span class="pill pill-blue">Pregnancy test (women)</span> <span class="pill pill-blue">Glucose + ketones</span></div>
+      <div>Biliary / hepatic</div><div><span class="pill pill-blue">LFTs</span> <span class="pill pill-blue">GGT</span> <span class="pill pill-blue">Bilirubin</span> · USS abdomen (gallstones, biliary dilation, liver lesions) — arrange same-day or urgent</div>
+      <div>Upper GI</div><div><span class="pill pill-blue">H. pylori test</span> (breath test / stool antigen — stop PPI 2 weeks prior) · Faecal calprotectin if IBD suspected · OGD if ulcer / cancer concern</div>
+      <div>Pancreatic</div><div><span class="pill pill-blue">Lipase</span> (preferred where available) or <span class="pill pill-blue">amylase</span>. <b>Acute pancreatitis needs two of three:</b> characteristic pain, enzyme &gt;3× the upper limit of normal, or characteristic imaging — <b>a raised amylase alone is not diagnostic, and a normal one does not exclude it</b>. USS abdomen. <b>Suspected pancreatic cancer:</b> age ≥60 with unexplained weight loss plus abdominal or back pain, diarrhoea, nausea, vomiting, constipation or new-onset diabetes → <b>urgent direct-access CT</b> (USS if CT unavailable). <b>CA 19-9 is not a diagnostic or screening test</b> — raised in benign biliary disease, normal in some cancers</div>
+      <div>Gynaecological</div><div><span class="pill pill-blue">Urine hCG</span> · <span class="pill pill-blue">High vaginal + endocervical swabs</span> (PID) · pelvic USS (transvaginal preferred). <b>Ovarian cancer (NG12):</b> for persistent or frequent bloating, early satiety, pelvic/abdominal pain or urinary symptoms at <b>40 or over</b>, measure CA-125 and arrange <b>urgent ultrasound according to the age-specific CA-125 threshold</b> — <b>do not use CA-125 in isolation or a single 35 IU/mL cut-off</b>. At 39 or under with persistent suggestive symptoms, consider urgent ultrasound rather than relying on CA-125</div>
+      <div>Lower GI / chronic</div><div><span class="pill pill-blue">FBC + CRP</span> <span class="pill pill-blue">Calprotectin</span> <span class="pill pill-blue">Coeliac screen</span> (anti-tTG IgA) <span class="pill pill-blue">Thyroid function</span> · Colonoscopy if red flags or calprotectin elevated</div>
+      <div>Renal</div><div><span class="pill pill-blue">Urine dip</span> (haematuria, leucocytes) <span class="pill pill-blue">MSU</span> · <b>low-dose non-contrast CT KUB within 24 hours</b> for suspected renal colic in adults (NG118) — <b>ultrasound instead in pregnancy</b>. <b>Urgent urological assessment</b> for fever, sepsis, a solitary kidney, anuria or suspected infected obstruction</div>
+      <div>Do NOT routinely order</div><div>Amylase for chronic pain · CT without clinical indication · OGD for functional dyspepsia &lt;55 years without alarm features · Barium studies as first-line (CT/USS preferred)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Lipase is preferred to amylase where available because it stays elevated longer, but <b>neither makes the diagnosis alone</b>: acute pancreatitis requires two of characteristic pain, an enzyme over three times the upper limit, or characteristic imaging. Urine hCG must be performed in all reproductive-age women — and a negative test does not exclude a very early ectopic (serum beta-hCG is more sensitive). Faecal calprotectin has NICE endorsement for distinguishing IBD from IBS and is a powerful primary-care test before referral. FIT is now the gateway to most colorectal referrals, but it is a <b>rule-in</b> test with a floor, not a rule-out: a mass, or persistent concerning symptoms, is referred whatever the number. CA-125 is interpreted against age-specific thresholds alongside ultrasound, never in isolation, and CA 19-9 has no place in primary-care assessment of abdominal pain.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head">
+    <div class="node-num">06</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Refer</span>
+      <h3>Referral criteria — most acute abdominal pain requires same-day senior review</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Referral decision made and documented</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span> Emergency</div><div>Peritonism with instability · shock · ruptured ectopic or any suspected ectopic with instability, syncope or significant bleeding · ruptured or symptomatic AAA · mesenteric ischaemia with instability · massive GI bleed · acute complete obstruction · severe sepsis · severe DKA</div>
+      <div><span class="pill pill-red">Same-day hospital / surgical</span></div><div>Suspected appendicitis · obstruction · pancreatitis · cholecystitis or cholangitis · infected obstructed kidney, or renal colic with fever or a single kidney · <b>stable</b> suspected ectopic pregnancy · <b>suspected torsion — testicular to emergency urology/surgery, ovarian to emergency gynaecology</b> · complicated diverticulitis (uncontrolled pain, peritonism, abscess, obstruction, fistula, sepsis, significant bleeding, dehydration or unable to tolerate oral treatment) · acute surgical abdomen without shock</div>
+      <div><span class="pill pill-amber">EPU today</span></div><div>Positive pregnancy test with pain or abdominal, pelvic or cervical-motion tenderness in a <b>haemodynamically stable</b> woman → immediate early pregnancy assessment service, within hours (NG126) — not a routine scan request, and not automatically 999</div>
+      <div><span class="pill pill-red">Same-day assess</span></div><div>Severe pain not responding to analgesia · Haematuria + loin pain (rule out obstructed ureter) · Elevated amylase · New jaundice · SBAR call to surgical registrar acceptable in stable patients</div>
+      <div><span class="pill pill-purple">Suspected cancer pathway</span></div><div><b>Colorectal (NG12, FIT-guided):</b> offer FIT where the criteria apply — abdominal mass, change in bowel habit, iron-deficiency anaemia, ≥40 with weight loss and abdominal pain, &lt;50 with rectal bleeding plus pain or weight loss, ≥50 with rectal bleeding, pain or weight loss, ≥60 with anaemia even without iron deficiency; <b>FIT ≥10 µg Hb/g → urgent referral</b>, and refer anyway for a mass or strong ongoing concern. <b>Upper GI:</b> dysphagia at any age · ≥55 with weight loss and upper abdominal pain, reflux or dyspepsia → urgent direct-access OGD. <b>Pancreatic:</b> ≥60 with weight loss plus abdominal/back pain, bowel change or new-onset diabetes → urgent direct-access CT; jaundice at 40+ → pathway referral. <b>Ovarian:</b> ≥40 with persistent or frequent bloating, early satiety, pelvic/abdominal pain or urinary symptoms → CA-125 with urgent ultrasound per the <b>age-specific threshold</b>, never CA-125 alone</div>
+      <div>Urgent routine</div><div>Uncomplicated biliary colic (elective cholecystectomy referral) · IBD flare without systemic compromise · Chronic pelvic pain for gynaecology · Functional dyspepsia with alarm features · H. pylori positive (treat then re-test)</div>
+      <div>Primary care manages</div><div>Mild IBS · Uncomplicated GORD · UTI · Constipation · Musculoskeletal abdominal pain (Carnett's positive) · Functional abdominal pain (with support)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      The most dangerous error in abdominal pain is delayed referral. The classic Alvarado score for appendicitis (score ≥7 → surgery) is not validated for primary care use — clinical gestalt and examination findings should drive the referral decision. Cholecystitis with fever indicates bacterial superinfection and requires IV antibiotics and potential same-day cholecystectomy. NICE NG12's 2WW criteria were developed from UK cancer audit data — adherence reduces time-to-treatment and improves survival outcomes. A threshold of uncertainty = refer: primary care cannot rule out surgical emergencies.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head">
+    <div class="node-num">07</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — condition-specific; analgesia and cause-directed therapy</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Treatment plan initiated</span></label></div>
+  <div class="node-body">
+    <span>Pain management should not be withheld pending diagnosis — this is outdated advice. Treat the cause in parallel.</span>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Peptic ulcer / GORD</div>
+        <div class="b-drug">PPI + H. pylori eradication <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">Eradication regimen and duration per <b>current local antimicrobial guidance</b>, taking account of <b>previous clarithromycin or metronidazole exposure</b> and allergy (CG184). Testing requires a <b>2-week PPI washout and no antibiotics for 4 weeks</b>; confirm eradication per the local protocol. PPI 4–8 weeks for a proven ulcer</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Uncomplicated UTI</div>
+        <div class="b-drug">Nitrofurantoin <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">Non-pregnant woman: nitrofurantoin MR 100 mg BD for <b>3 days</b> per local guidance (trimethoprim if contraindicated). <b>Men and pregnant women: a 7-day course with a pre-treatment MSU</b>; pregnancy needs a pregnancy-safe choice. <b>Not every suprapubic symptom is a UTI</b> — pelvic pain, STI/PID and gynaecological disease need a different assessment, and <b>a dipstick alone does not diagnose UTI in older adults or anyone with pelvic pain</b></div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">IBS</div>
+        <div class="b-drug">Antispasmodic <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">Mebeverine 135mg TDS (before meals) or Hyoscine butylbromide 10mg TDS. Add laxative for IBS-C, loperamide for IBS-D</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Analgesia</span><span class="rt"><b>Give analgesia while arranging assessment — it must not be withheld for fear of obscuring the diagnosis.</b> Paracetamol first line (<b>maximum 4 g in 24 hours; reduce in low body weight, liver disease or high alcohol intake</b>). An NSAID only where appropriate — <b>avoid in GI bleeding or active ulcer, renal impairment or dehydration, heart failure, anticoagulation or high bleeding risk, pregnancy, significant cardiovascular disease, frailty and older age, and with an ACE inhibitor + diuretic ("triple whammy" AKI)</b>; NICE advises avoiding NSAIDs <b>and</b> opioids in diverticular disease where possible because of perforation risk. Opioids short-term only, where clearly appropriate. Check doses against the current BNF and local formulary</span></div>
+      <div class="rung"><span class="rn">GORD</span><span class="rt"><b>Lifestyle first</b> (Step 8) + <b>Omeprazole 20mg OD</b> before food × 4 weeks. Step up to 40mg OD if inadequate. Add Gaviscon Advance 10ml QDS after meals and at bedtime for immediate symptom relief</span></div>
+      <div class="rung"><span class="rn">Diverticulitis</span><span class="rt"><b>Systemically well, uncomplicated:</b> consider <b>no antibiotic</b> — simple analgesia, safety-netting and review (NG147). <b>Systemically unwell, immunosuppressed or significant comorbidity</b> without complicated features: oral antibiotics — first choice <b>co-amoxiclav 500/125 mg TDS for 5 days</b>. Ciprofloxacin is <b>not</b> a routine alternative (restricted; only via the local or specialist pathway). <b>Complicated disease or any of uncontrolled pain, peritonism, abscess, obstruction, fistula, sepsis, significant bleeding, dehydration or inability to tolerate oral treatment → same-day hospital assessment.</b> Avoid NSAIDs and opioids where possible</span></div>
+      <div class="rung"><span class="rn">Biliary colic</span><span class="rt">An <b>NSAID where not contraindicated</b> (see the analgesia rung) is effective for biliary colic; paracetamol otherwise. Refer for elective laparoscopic cholecystectomy. <b>Fever, jaundice or RUQ pain with systemic upset → the acute biliary pathway</b> with LFTs, bilirubin and inflammatory markers — not oral antibiotics and review</span></div>
+      <div class="rung"><span class="rn">Renal colic</span><span class="rt">An <b>NSAID is first-line where not contraindicated</b> (NG118); paracetamol if it is. <b>Low-dose non-contrast CT KUB within 24 hours</b>; ultrasound in pregnancy. An <b>alpha-blocker only as an adjunct for a distal ureteric stone under 10 mm</b>, per local urology protocol — not for all stones or all colic. <b>Do not encourage forced oral fluids during acute obstruction or colic</b> — hydration advice belongs to prevention after recovery. Fever, sepsis, a single kidney, anuria or suspected infected obstruction → urgent urology</span></div>
+      <div class="rung"><span class="rn">PID</span><span class="rt">Treat empirically to the <b>current BASHH PID guideline and local protocol</b> — regimens and resistance patterns change, so check rather than working from memory. <b>Pregnancy and severe PID have different regimens</b>; severe disease, pregnancy or a possible surgical cause → same-day assessment. Include STI testing, partner notification and sexual-health referral, and advise abstinence until both partners are treated</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <b>Analgesia does not mask diagnosis</b> — multiple RCTs show opioids and NSAIDs in the acute abdomen do not reduce diagnostic accuracy and improve the patient's experience and cooperation with examination. Withholding analgesia is harmful. The safety work is in the <b>contraindications</b>, not the withholding: NSAIDs cause bleeding in ulcer disease, AKI alongside an ACE inhibitor and diuretic, and carry perforation risk in diverticular disease, where NICE advises avoiding NSAIDs and opioids where possible. <b>H. pylori eradication</b> substantially reduces ulcer recurrence, but the regimen depends on previous macrolide and metronidazole exposure and on local resistance — hence the link to local guidance rather than a fixed triple therapy. <b>Alpha-blockers</b> have a modest adjunctive effect on passage of <b>distal</b> stones under 10 mm, which is why they are not offered for all renal colic.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <div class="node-num">08</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-pharmacological interventions — condition-specific, evidence-based</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Lifestyle advice provided</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>GORD / PUD</b> Elevate bed head 15–20cm · Avoid meals within 3h of bed · Reduce alcohol, smoking, NSAIDs, caffeine · Weight loss if overweight · Small frequent meals</div>
+      <div class="lstile"><b>IBS</b> Low-FODMAP diet (refer to dietitian — reduces symptoms in 75%) · Soluble fibre (oats, linseeds) · Regular meal pattern · Avoid gas-producing foods · Peppermint oil capsules (evidence-based)</div>
+      <div class="lstile"><b>Biliary colic prevention</b> Low-fat diet reduces cholecystokinin stimulation and frequency of attacks. Weight loss (gradual — rapid weight loss paradoxically increases stone risk). Maintain physical activity</div>
+      <div class="lstile"><b>Renal stone prevention — after recovery, not during colic</b> Adequate fluid intake, usually 2.5–3 L/day for adults · reduce salt · consider citrate (lemon juice in water) · moderate red meat for oxalate stones. <b>This is prevention advice: do not force fluids to "flush the stone" during acute obstruction or colic</b></div>
+      <div class="lstile"><b>Diverticular disease</b> High-fibre diet (25–30g/day) reduces recurrence risk · Regular physical activity · Adequate hydration · Avoid constipation — treat proactively</div>
+      <div class="lstile"><b>Functional / chronic pain</b> CBT has strong evidence for IBS and functional abdominal pain (reduces pain scores by 30–50%) · Mindfulness-based stress reduction · Pain management programme if severe</div>
+      <div class="lstile"><b>All patients</b> Smoking cessation (increases risk of PUD, Crohn's, pancreatic cancer, renal stones) · Alcohol reduction (pancreatitis, gastritis, liver disease) · BMI optimisation</div>
+      <div class="lstile"><b>Hydration</b> Sensible fluid intake for GI conditions, <b>individualised</b> to heart failure, CKD and any fluid restriction; 2.5–3 L/day for stone prevention once recovered. <b>Not during acute renal obstruction or colic</b></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Low-FODMAP diet (Fermentable Oligosaccharides, Disaccharides, Monosaccharides and Polyols) reduces IBS symptoms in 75% of patients in multiple RCTs — it is as effective as pharmacological treatment and should be first-line for IBS managed in primary care. CBT for IBS has NNT ~3–4 for significant symptom improvement. Increasing fluid intake reduces renal stone recurrence by 60% — it is the single most cost-effective intervention in urolithiasis. Smoking cessation reduces PUD healing time from 8 weeks to 4 weeks and reduces recurrence by 50%.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <div class="node-num">09</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-up &amp; monitoring — structured review with clear safety-netting</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Follow-up plan and safety-net documented</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>48–72h (acute)</div><div>Diverticulitis, UTI, PID, biliary colic — check the response to treatment and analgesia. <b>Not improving, or any complicated feature → same-day hospital assessment</b>, not another course</div>
+      <div>2 weeks</div><div>H. pylori eradication: check compliance and side effects. IBS new diagnosis: review response to antispasmodics and dietary changes. Blood results review</div>
+      <div>4–6 weeks</div><div>GORD: review on PPI — step-down if well-controlled. Renal colic: follow-up imaging if stone &gt;4mm not passed. IBD: assess flare response</div>
+      <div>3 months</div><div>IBS / functional pain: full review. Chronic pain: reassess analgesic needs. Refer if no improvement in chronic unexplained pain despite trial of treatment</div>
+      <div>H. pylori post-treatment</div><div>Stool antigen test 4 weeks after completing eradication (stop PPI 2 weeks prior). If positive → second-line quadruple therapy</div>
+      <div><span class="pill pill-red">999</span> Safety-net</div><div>Sudden severe ("worst ever") pain · Haemodynamic collapse · Haematemesis · PR haemorrhage with shock · Rigid abdomen · Loss of consciousness</div>
+      <div><span class="pill pill-amber">Same-day</span> Safety-net</div><div>Any new fever with abdominal pain · worsening despite 48h treatment · vomiting preventing oral medication or fluids · new rectal bleeding · jaundice · a new mass felt by the patient · <b>a positive pregnancy test appearing at any point</b></div>
+      <div>After diverticulitis</div><div>Follow the <b>local post-diverticulitis imaging/endoscopy policy</b>. Arrange interval investigation where the CT findings, persistent symptoms, complicated disease or an incomplete colorectal assessment raise concern about malignancy — not as a blanket rule for everyone</div>
+      <div>Re-screen for red flags</div><div>At every follow-up for chronic abdominal pain — re-check weight, rectal bleeding, change in character of pain. Maintain vigilance for new pathology</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Diverticulitis that is not improving by 72 hours needs reassessment in hospital rather than a further primary-care course — perforation, abscess and fistula are the reasons. H. pylori eradication should be confirmed per local protocol, because treatment failure is common and undetected failure means continuing ulceration; testing needs a 2-week PPI washout and no antibiotics for 4 weeks. Structured review improves symptom control and satisfaction in IBS compared with as-needed appointments. Safety-netting must be documented — an RCGP SCA competency and medicolegally critical. Interval investigation after diverticulitis follows local policy and the CT findings rather than a blanket malignancy figure.
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer recognition) · NICE NG126 (Ectopic pregnancy and miscarriage) · NICE NG147 (Diverticular disease) · NICE NG118 (Renal and ureteric stones) · NICE NG51 (Sepsis) · NICE CG184 (Dyspepsia/GORD) · NICE NG109 (Lower UTI antimicrobial prescribing) · current BASHH PID guideline · BSG IBS guidelines · Rome IV criteria · BNF. <b>Antibiotic, PID and H. pylori regimens must follow current local formulary and antimicrobial guidance</b>, and separate pathways apply to children and to pregnancy. Always adapt to individual patient context and local clinical guidelines.
+</div>
+
+<script>
+(function(){
+  const flow=document.getElementById('flow');
+  const checks=flow?flow.querySelectorAll('input[type=checkbox]'):[];
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  const KEY='rgp.alg.abdominalpain.v1';
+  function save(){const s={};checks.forEach((c,i)=>{s[i]=c.checked});try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');checks.forEach((c,i)=>{if(s[i])c.checked=true})}catch(e){}}
+  function update(){let done=0;checks.forEach(c=>{const node=c.closest('.node');if(c.checked){done++;node&&node.classList.add('done')}else{node&&node.classList.remove('done')}});if(pDone)pDone.textContent=done;if(pFill)pFill.style.width=(done/total*100)+'%';}
+  checks.forEach(c=>c.addEventListener('change',()=>{update();save()}));
+  document.querySelectorAll('.why-btn').forEach(btn=>{btn.addEventListener('click',()=>{const drawer=btn.nextElementSibling;const open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',open?'false':'true');drawer.style.display=open?'none':'block';});});
+  document.getElementById('resetBtn')?.addEventListener('click',()=>{checks.forEach(c=>c.checked=false);document.querySelectorAll('.why-drawer').forEach(d=>d.style.display='none');document.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));update();save();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=2"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/alg-diagram.js?v=4"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+</body>
+</html>

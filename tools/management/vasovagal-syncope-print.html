@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vasovagal syncope — Protocol · Reasoning GP</title>
+<meta name="description" content="Transient loss of consciousness: exclude cardiac cause before calling anything vasovagal. Exertional or supine syncope is same-day, no prodrome over 45 needs cardiac exclusion, the ECG and lying/standing BP are done before referral, and DVLA advice runs from the event." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/vasovagal-syncope.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790241765963737 tools/management/vasovagal-syncope.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Vasovagal syncope protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"💫",
+  title:"Vasovagal syncope — the complete guide",
+  eyebrow:"Protocol · never diagnose vasovagal without excluding cardiac",
+  stemTitle:"Vasovagal is a diagnosis of exclusion — and the two features that make it untenable are collapse during exertion and collapse while lying flat",
+  stemSub:"One page for the condition: vasovagal syncope is a diagnosis of exclusion, so this page carries the exclusion work as well as the management. Take the witness account, because it is more diagnostically powerful than the patient's own recall; use position, prodrome, duration and recovery to separate syncope from seizure; do the ECG and the lying-and-standing BP before you refer rather than after; give DVLA advice that runs from the event; then treat by mechanism — counter-manoeuvres and fluid loading for vasovagal, medication review first for orthostatic, and same-day cardiology for anything exertional, supine or arrhythmic.",
+  guideline:"NICE CG109 · ESC Syncope 2018 · DVLA",
+  reviewed:"10 September 2026",
+  nextReview:"10 March 2027",
+  meta:[
+    {t:"NICE CG109 — transient loss of consciousness"},
+    {t:"NICE CG109 (TLoC) · ESC Syncope Guidelines (2018)"},
+    {t:"DVLA — Assessing fitness to drive"},
+    {t:"BNF · POST trial"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude cardiac</b><small>Exertional · supine</small></a><a href="#confirm"><b>Syncope or fit?</b><small>Witness · prodrome</small></a><a href="#workup"><b>Before referral</b><small>ECG · lying/standing BP</small></a><a href="#ladder"><b>Treat</b><small>By mechanism</small></a><a href="#monitor"><b>DVLA</b><small>From the event</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Exertional or supine syncope is cardiac until proven otherwise", html:"Syncope during exertion, or while lying flat, is almost always cardiac — vasovagal does not occur supine. Exertional syncope is a same-day referral regardless of any other feature, and the patient must not drive themselves or exert at all before assessment. Think <b>HOCM, aortic stenosis, arrhythmia</b>."},
+    {tone:"red", h:"No prodrome over 45 means urgent cardiac exclusion", html:"A prodrome under 10 seconds suggests arrhythmia; 10 seconds to 2 minutes favours vasovagal. <b>Absent prodrome in a patient over 45 requires urgent cardiac exclusion</b>, and palpitations or chest pain beforehand make it high-risk. QTc &gt;450 ms in men or &gt;470 ms in women warrants referral; &gt;500 ms is high-risk."},
+    {tone:"amber", h:"Anoxic jerks are not a seizure", html:"Brief anoxic jerks lasting 1–2 seconds occur in up to 50% of true syncope — do not read them as tonic-clonic activity. Sustained movements over 30 seconds, LATERAL tongue biting (over 90% specific for epilepsy) and prolonged post-ictal confusion over 5 minutes point to seizure. Tip-of-tongue biting occurs in both; the location is the discriminator."},
+    {tone:"blue", h:"Do the ECG and the standing BP before referring", html:"A referral without an ECG result, a lying-and-standing BP and a clear episode description is insufficient. Orthostatic hypotension is a systolic drop ≥20 mmHg, measured after 3 minutes standing — not after 30 seconds. Both tests take minutes and change which specialty you refer to."},
+    {tone:"purple", h:"DVLA advice runs from the event", html:"Group 1: 6 months off driving for unexplained syncope; Group 2 (HGV/PCV): 5 years if it remains unexplained. From the first suspected seizure, driving stops immediately and the DVLA must be notified — and <b>do not document \u201cepilepsy\u201d before specialist confirmation</b>, which has its own medico-legal consequences."},
+    {tone:"green", h:"Counter-manoeuvres beat any drug", html:"At the first prodrome — sit or crouch, cross the legs, tense the leg muscles: this aborts the episode in 50–70% of cases. <b>Do not try to push through and stay standing.</b> <b>Fluid loading of 2–3 L a day reduces vasovagal episodes by up to 50%</b>, and the evidence for lifestyle measures is stronger than for any medication."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The first question is the position they collapsed in.",
+  pathway:[
+    {title:"Screen the high-risk features", html:"Exertional or supine syncope · no prodrome over 45 · palpitations or chest pain first · structural heart disease · abnormal ECG (LBBB, complete block, QTc over 500 ms) · family history of sudden cardiac death under 40.", alert:true},
+    {title:"Separate syncope from seizure", html:"<b>Get the witness account.</b> Position, prodrome and its length (with autonomic features — pallor, sweating, nausea, piloerection), duration of LOC (<b>true syncope is under 2 minutes</b>), movements, tongue-biting site, incontinence, and speed of recovery."},
+    {title:"Do the two tests that change the referral", html:"<b>12-lead ECG and lying-and-standing BP at 3 minutes</b>, plus FBC, U&amp;E, TFTs and glucose. Echo if there is a murmur — outflow obstruction (aortic stenosis, HOCM) is the structural cause not to miss; Holter for intermediate risk. Consider myocardial ischaemia in exertional syncope with chest pain."},
+    {title:"Treat by mechanism", html:"Vasovagal → counter-manoeuvres, fluid loading, trigger diary. Orthostatic → medication review FIRST, then compression stockings, then fludrocortisone. Cardiac → cardiology."},
+    {title:"DVLA, safety-net and review", html:"Give and document the driving advice; review at 4–6 weeks; escalate if episodes recur despite lifestyle measures."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude cardiac", title:"Red flags and ESC risk stratification",
+     sub:"Cardiac syncope is the one that kills. Everything else can wait for the outcome of excluding it.",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["<b>Syncope during exertion</b>","<b>HOCM, aortic stenosis, arrhythmia</b>","<b>Same-day A&amp;E.</b> ECG in surgery, advise against all physical exertion immediately, discuss directly with the medical registrar. Do not let the patient drive themselves, and do not reassure as \u201cprobably vasovagal\u201d"],
+         ["<b>Syncope while supine</b>","<b>Cardiac until proven otherwise — vasovagal does not occur lying flat</b>","<b>Urgent cardiac exclusion</b>"],
+         ["Prolonged QT (QTc &gt;450 ms male, &gt;470 ms female) or Brugada pattern, with syncope","<b>Channelopathy with risk of sudden death</b>","Same-day emergency. Stop all QT-prolonging medication immediately (risk of torsades de pointes); check and correct K⁺ and Mg²⁺ — a potassium below 3.0 mmol/L needs urgent correction; refer via A&amp;E or a direct cardiology call; document the QTc value; advise no driving"],
+         ["<b>Palpitations or chest pain preceding the blackout</b>","Arrhythmia — SVT, VT, AF with rapid ventricular response, heart block — or ACS-related arrhythmia or PE","<b>High-risk presentation; urgent cardiology</b>. Absence of palpitations does not exclude a cardiac cause"],
+         ["<b>Family history of sudden cardiac death under 40</b>","<b>Inherited channelopathy or cardiomyopathy</b>","<b>High-risk; cardiology with a family history documented</b>"],
+         ["<b>Complete heart block or Mobitz II on ECG</b>","Risk of asystole; bradycardia and bradyarrhythmia on the ECG or monitor","<b>Emergency — transcutaneous pacing as a bridge to a permanent pacemaker</b>"],
+         ["<b>Thunderclap headache with LOC</b>","<b>Subarachnoid haemorrhage</b> — not true syncope but presents as sudden LOC","Emergency CT head without contrast; LP if CT is negative and suspicion remains"]
+       ]},
+       {b:"table", head:["ESC risk category","Features","Action"], rows:[
+         ["<b>Low risk</b>","Under 40, clear vasovagal trigger, full prodrome, rapid recovery, normal ECG, no cardiac history, no family history of SCD","<b>Primary care management; lifestyle advice; no urgent referral</b>"],
+         ["<b>Intermediate risk</b>","Over 45 with a first unexplained syncope; no clear trigger; no prodrome; cardiac history; abnormal but not life-threatening ECG","<b>Holter monitor; cardiology within 2 weeks; echo if a murmur is present</b>"],
+         ["<b>High risk</b>","Exertional syncope; supine syncope; significant structural heart disease; abnormal ECG (LBBB, complete block, QTc over 500 ms); family history of SCD under 40","Same-day cardiology; continuous monitoring; admit if haemodynamically unstable"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Transient loss of consciousness has no NICE NG12 suspected-cancer criterion, and none should be invented for one. The time-critical routes here are cardiac and neurological. The adjacency worth remembering is the same as for epilepsy: where the episode sits alongside a progressive focal neurological deficit or persistent headache, that is a direct-access MRI-within-2-weeks route for suspected brain or CNS cancer, not a syncope work-up"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Syncope or fit?", title:"The history — witness account first",
+     sub:"The witness saw what the patient could not. It is the most diagnostically powerful information available.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Open question first</b>","\u201cCan you talk me through what happened from the very beginning — what were you doing just before?\u201d The story frequently gives the diagnosis; a closed question first loses it"],
+         ["<b>Position at collapse</b>","<b>Standing, sitting or lying?</b> <b>Supine or exertional syncope is almost always cardiac. After prolonged standing or on rising suggests orthostatic or vasovagal. <b>Autonomic failure — diabetic neuropathy, Parkinson's disease, multiple system atrophy — causes a fixed orthostatic drop that does not respond to fluid loading alone</b></b>"],
+         ["<b>Prodrome</b>","Sweating, nausea, greyout, tunnel vision suggests vasovagal or orthostatic. Prodrome under 10 seconds suggests arrhythmia; 10 seconds to 2 minutes favours vasovagal. Absent prodrome over 45 = urgent cardiac exclusion"],
+         ["<b>Duration</b>","True syncope is brief — under 2 minutes — with rapid complete recovery. LOC &lt;5 minutes is typical of true syncope; over 5 minutes raises the probability of epilepsy, hypoglycaemia, intracranial or intracranial or structural brain pathology. Very brief LOC under 10 seconds with no prodrome in an older patient suggests heart block or asystole"],
+         ["<b>Movements, tongue and continence</b>","Tonic-clonic movements over 30 seconds, LATERAL tongue biting (over 90% specific for epilepsy) and urinary incontinence suggest seizure. Brief anoxic jerks of 1–2 seconds occur in up to 50% of true syncope. Tip-of-tongue biting occurs in both — the location discriminates"],
+         ["<b>Recovery</b>","Syncope: orientated within seconds to 2 minutes, tired but immediately aware. Post-ictal: cannot recall where they are for 5–20 minutes"],
+         ["<b>Trigger</b>","Situational syncope — cough, micturition (typically nocturnal), defecation, post-prandial — is a recognised benign reflex mechanism driven by the Valsalva manoeuvre reducing venous return. Vasovagal follows emotional distress, pain, venepuncture or prolonged standing"],
+         ["<b>Previous episodes and medication</b>","A lifelong history of faints with vasovagal features is strongly reassuring; a first blackout in a middle-aged or older adult needs full cardiac exclusion. Ask specifically about childhood faints — Brugada and LQTS may first present then. Review new or changed medication in the last 2 weeks, dehydration and recent illness"],
+         ["<b>Psychogenic non-epileptic seizures</b>","Consider where events are prolonged, atypical, resistant to treatment, or occur without injury — <b>a specialist diagnosis, not one to make or to exclude in primary care</b>"]
+       ]},
+       {b:"say", html:"I can see you collapsed in the supermarket yesterday and that your heart tracing in A&amp;E was reported as normal. Before I ask anything specific, I would like to hear what happened in your own words. And if your wife saw it, I would like to hear her account too — that is often the most useful information, because you were unconscious for part of it."}
+     ]},
+
+    {id:"workup", nav:"Before referral", title:"Examination, investigations, and what the letter needs",
+     blocks:[
+       {b:"table", head:["Investigation","Detail"], rows:[
+         ["<b>12-lead ECG — mandatory</b>","Look for: QTc (above 450 ms male, 470 ms female warrants referral; above 500 ms is high-risk), LBBB, complete heart block or Mobitz II, delta wave (WPW — pre-excitation), Brugada pattern, epsilon wave (ARVC), and evidence of prior infarct or LVH"],
+         ["<b>Lying-and-standing BP</b>","Measure supine, then standing at 1 and 3 minutes. A systolic drop ≥20 mmHg (or diastolic ≥10 mmHg) at 3 minutes confirms orthostatic hypotension. <b>Measuring only at 30 seconds misses it</b>"],
+         ["<b>Bloods</b>","FBC (anaemia — check Hb, and consider GI blood loss if below 80 g/L), U&amp;E and eGFR (sodium, hypokalaemia, hypomagnesaemia, hypocalcaemia, dehydration), TSH and TFTs, LFTs, HbA1c and glucose (hypoglycaemia — check in every TLoC), and AUDIT-C for alcohol"],
+         ["<b>Echocardiogram</b>","<b>If a murmur is present, or structural heart disease is suspected</b>"],
+         ["<b>Ambulatory monitoring</b>","Holter for intermediate risk — target within 24–48 hours where there are high-risk features. External event recorder or implantable loop recorder for infrequent episodes, arranged by cardiology"],
+         ["<b>Tilt-table test</b>","Specialist — request consideration in the referral letter for recurrent unexplained syncope with normal ECG and Holter"],
+         ["<b>Never in primary care</b>","Do NOT perform carotid sinus massage — risk of stroke and cardiac arrest without resuscitation facilities. It is a specialist procedure in a monitored setting only"]
+       ]},
+       {b:"table", head:["Referral","Urgency and pre-referral work"], rows:[
+         ["<b>Exertional syncope, or suspected structural heart disease (HOCM, AS)</b>","<b>Same-day A&amp;E.</b> ECG in surgery, advise against all exertion, direct discussion with the medical registrar, document the advice. Do not let them drive themselves; do not allow exercise; do not reassure as vasovagal"],
+         ["<b>Prolonged QT or Brugada pattern with syncope</b>","<b>Same-day emergency.</b> Stop QT-prolonging drugs, correct K⁺ and Mg²⁺, document the QTc, advise no driving. <b>Do not start any new QT-prolonging medication</b>"],
+         ["<b>Unexplained first syncope, over 45, no cardiac history</b>","<b>Cardiology within 2 weeks.</b> ECG, Holter, FBC, U&amp;E, TFTs; no driving until investigation is complete; full medication review; DVLA advice documented. <b>Do not reassure as vasovagal without investigation</b>"],
+         ["<b>Suspected epileptic seizure</b>","<b>Neurology within 2 weeks.</b> Document the witness account precisely, advise no driving immediately, check glucose. Do not start an antiepileptic drug, and do not document \u201cepilepsy\u201d before specialist confirmation"],
+         ["<b>Recurrent unexplained syncope with normal ECG and Holter</b>","<b>Cardiology within 4 weeks.</b> Review previous results, arrange an event recorder if not done, document frequency and quality-of-life impact, request tilt-table consideration. <b>Do not initiate beta-blockers before specialist review</b>"],
+         ["<b>Suspected carotid sinus hypersensitivity</b>","<b>Routine cardiology.</b> Document the trigger (head turning or a tight collar in an older man), review and stop alpha-blockers. <b>Never perform carotid sinus massage in primary care</b>"]
+       ]},
+       {b:"why", html:"The two tests that change the referral destination are the ones most often skipped. An ECG identifies the channelopathies and conduction disease that make this presentation lethal, and the lying-and-standing BP at 3 minutes identifies the commonest reversible cause in older patients — drug-induced orthostatic hypotension. A referral letter without both is insufficient for the specialist to triage correctly, and in practice it delays the appointment for the patient who needs it soonest."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Management by mechanism",
+     sub:"Lifestyle measures are first-line for vasovagal and orthostatic syncope, and the evidence for them is stronger than for any drug.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🏋️ Physical counter-manoeuvres — the most effective single measure", html:"At the very first warning (sweating, nausea, tunnel vision): immediately sit or crouch, cross the legs, and tense the leg muscles firmly. <b>Aborts the episode in 50–70% of cases when used at prodrome onset.</b> <b>Do NOT try to push through and remain standing — that accelerates it.</b> Demonstrate the manoeuvre in the consultation."},
+         {tone:"blue", h:"💧 Fluid loading", html:"<b>2–3 litres a day, plus 500 mL at the onset of a prodrome.</b> Adequate intravascular volume blunts the reflex. <b>Reduces vasovagal episodes by up to 50% in randomised studies.</b> Drink 500 mL 15 minutes before a known trigger — long meetings, hot weather, blood tests."},
+         {tone:"amber", h:"🧦 Compression stockings", html:"Class 2 (20–30 mmHg), on before standing in the morning, worn all day, off at night. Reduces the systolic drop by 10–15 mmHg in orthostatic hypotension, and is available on NHS prescription for confirmed orthostatic hypotension."},
+         {tone:"green", h:"🚶 Tilt training", html:"Wall-standing 30–40 minutes, 3 times a week, built up from 5–10 minutes daily and increasing by 5 minutes a week. Reduces recurrence by 50% in motivated patients. Always with a support person initially; stop and use counter-manoeuvres if a prodrome develops."},
+         {tone:"cream", h:"🧂 Dietary salt — orthostatic only", html:"6–9 g additional salt a day, for confirmed orthostatic hypotension only. Reduces the orthostatic drop by 5–10 mmHg with fluid loading. Avoid in heart failure, CKD or poorly controlled hypertension; review BP at 4 weeks."},
+         {tone:"plain", h:"🚫 Trigger work", html:"<b>Episode diary — date, time, what happened before.</b> Where fear of recurrence is disabling, CBT or NHS Talking Therapies helps more than further investigation. Avoid prolonged standing in queues (move the feet rhythmically); recognise situational triggers — coughing, micturition, defecation and swallowing, eat regular small meals, keep alcohol within 14 units a week and avoid it in hot weather, and rise slowly — sit on the edge of the bed for 30 seconds before standing."}
+       ]},
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Lifestyle first, and rationalise the medication", when:"all syncope types",
+          html:"<b>Fluid loading, counter-manoeuvres, compression stockings for orthostatic, tilt training, and a full review of drugs causing orthostatic change — antihypertensives, <b>alpha-blockers (tamsulosin, doxazosin)</b>, diuretics (<b>furosemide, a thiazide</b>), nitrates, antidepressants (<b>sertraline, paroxetine</b>), antipsychotics, opioids, benzodiazepines and insulin.</b> A drug added or changed in the previous 2 weeks is the single most likely reversible cause in an older patient Review at 4–6 weeks; only consider pharmacotherapy if episodes recur despite lifestyle measures."},
+         {step:"Step 2", title:"Fludrocortisone — orthostatic", when:"lifestyle insufficient",
+          fromLabel:"confirmed orthostatic hypotension",
+          html:"Fludrocortisone 50–200 micrograms daily; start at 100 micrograms and titrate. A mineralocorticoid expanding plasma volume. <b>Absolute contraindication: heart failure or uncontrolled hypertension.</b> <b>Monitor BP, electrolytes and weight (oedema) at 2 and 6 weeks.</b>"},
+         {step:"Step 3", title:"Midodrine — refractory orthostatic", when:"fludrocortisone inadequate",
+          fromLabel:"usually specialist-initiated",
+          html:"<b>Midodrine 2.5–10 mg TDS</b>, an alpha-1 agonist raising peripheral resistance. Do NOT take the last dose after 6 pm — supine hypertension overnight is the critical safety risk. Avoid in coronary artery disease, urinary retention and hyperthyroidism. <b>Monitor supine BP lying flat at every visit.</b>"},
+         {step:"Step 4", title:"Refractory vasovagal — specialist only", when:"recurrent despite everything",
+          fromLabel:"not a primary care decision",
+          html:"<b>Beta-blockers, SSRIs and pacing are specialist decisions</b> — and warn about behavioural activation if an SSRI is started. Where syncope is due to AF with rapid ventricular response, anticoagulation follows CHA₂DS₂-VASc under NICE NG196 with ORBIT bleeding assessment — a DOAC (apixaban, rivaroxaban, edoxaban) or warfarin, at the age-specific dose. The POST trial suggests metoprolol benefits vasovagal patients aged &gt;42 specifically; the evidence is weak in younger patients. <b>Do not initiate a beta-blocker before specialist review.</b>"}
+       ]},
+       {b:"say", html:"I completely understand why your first thought is that something is wrong with your brain — that is a natural worry after losing consciousness. But the evidence tells us that for most blackouts with the pattern you describe, the cause is in the heart's rhythm or the blood pressure, not the brain itself, and a brain scan would not answer the question we are asking. What I would like to do today is a heart tracing here, check your blood pressure lying and standing, and arrange a 24-hour heart monitor — that will answer it much faster than a scan."}
+     ]},
+
+    {id:"monitor", nav:"DVLA", title:"Driving, follow-up and safety-netting",
+     blocks:[
+       {b:"table", head:["Domain","Detail"], rows:[
+         ["<b>DVLA — unexplained syncope</b>","Group 1 (car, motorcycle): 6 months off driving. Group 2 (HGV, PCV): 5 years if it remains unexplained. The patient notifies the DVLA themselves, and if they continue driving against advice <b>GMC Good Medical Practice permits informing the DVLA directly</b>"],
+         ["<b>DVLA — suspected seizure</b>","Driving stops immediately from the point of suspicion, and the DVLA must be notified — do not wait for the neurology appointment. <b>Do not document \u201cepilepsy\u201d before specialist confirmation</b>"],
+         ["<b>DVLA — explained and treated</b>","<b>Cardiac causes may need definitive treatment — ablation for a re-entrant arrhythmia, a pacemaker for conduction disease, or an ICD where sudden-death risk is high. <b>Where a cause is identified and treated (for example a drug-induced orthostatic drop that resolves), driving may resume per DVLA criteria for that cause — document the advice given either way</b>"],
+         ["<b>4–6 week review</b>","Episode frequency and diary, response to counter-manoeuvres and fluid loading, medication review outcome, repeat lying-and-standing BP, investigation results, and driving status"],
+         ["<b>Occupational</b>","Do not allow return to hazardous occupations — heights, machinery, professional driving — pending investigation. Occupational health referral where relevant; a fit note may be needed while investigation is pending"],
+         ["<b>Safety-net</b>","Return urgently for: another blackout, blackout during exertion or while lying down, palpitations or chest pain, or any blackout causing injury. Involve the partner, family or carers in the plan — and consider safeguarding where repeated unexplained collapse in a vulnerable adult raises concern about neglect"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 / same-day", html:"Blackout during exertion or while supine · palpitations or chest pain with the episode · abnormal ECG (complete block, QTc over 500 ms, Brugada) · thunderclap headache with LOC."},
+         {tone:"amber", h:"🟠 The recurrence rule", html:"\u201cIf it happens again — especially if there is no warning, or it happens while you are sitting or lying down — come back the same day rather than waiting.\u201d"},
+         {tone:"blue", h:"🚗 Say the driving rule out loud", html:"Give the specific period, say it runs from the event, confirm the patient will notify the DVLA, and document all three."},
+         {tone:"green", h:"🤝 Never \u201ccome back if it happens again\u201d alone", html:"<b>That is not a management plan.</b> Offer something concrete today — the ECG, the standing BP, the monitor, a timeline."}
+       ]},
+       {b:"why", html:"The commonest failure in this presentation is diagnosing vasovagal syncope without actively excluding a cardiac cause — and the second is reassuring the patient without a concrete monitoring plan. Both are avoidable in a single consultation: the ECG and the lying-and-standing BP take minutes, and they either support the benign diagnosis or redirect the referral."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral summary",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same-day A&amp;E or cardiology", html:"Exertional or supine syncope · suspected structural heart disease · prolonged QT or Brugada pattern with syncope · complete heart block or Mobitz II · haemodynamic instability."},
+         {tone:"amber", h:"Cardiology — 2 weeks", html:"<b>First unexplained syncope over 45 with no cardiac history</b> — with ECG, Holter and bloods already arranged."},
+         {tone:"blue", h:"Neurology — 2 weeks", html:"<b>Suspected epileptic seizure</b> — witness account documented, glucose checked, no AED started, driving stopped. See the <a href='epilepsy.html'>epilepsy protocol</a>."},
+         {tone:"blue", h:"Cardiology — 4 weeks or routine", html:"Recurrent unexplained syncope with normal ECG and Holter (request tilt-table consideration) · suspected carotid sinus hypersensitivity."},
+         {tone:"cream", h:"Primary care", html:"Classic low-risk vasovagal — under 40, clear trigger, full prodrome, rapid recovery, normal ECG, no cardiac or family history: lifestyle advice and no urgent referral. Also drug-induced orthostatic hypotension responding to medication review."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 58-year-old teacher attends the morning after collapsing in a supermarket. He felt \u201cstrange and sweaty\u201d for a few seconds beforehand; his wife saw him slump, unconscious about 2 minutes with no jerking, then recover rapidly. A&amp;E reported the ECG as normal and discharged him. He takes ramipril 5 mg, amlodipine 5 mg and atorvastatin 40 mg, and asks whether he needs a brain scan."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Opens with a genuine open question and references the A&amp;E information already on file rather than re-asking it; <b>takes the wife's witness account</b>; <b>establishes position, prodrome length, duration and recovery</b>; recognises that the brief prodrome and rapid recovery favour vasovagal BUT that age 58, male sex and no postural trigger mean cardiac must be excluded first; does the ECG and lying-and-standing BP in the surgery — the antihypertensives make orthostatic hypotension a live differential; names and addresses the brain-scan expectation rather than dismissing it, and offers something concrete instead; <b>gives and documents the DVLA advice</b>; and — the step candidates miss — does not diagnose vasovagal without stating the cardiac exclusion plan out loud."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE CG109 — Transient loss of consciousness (\u2018blackouts\u2019) in over 16s<br><a href="https://www.nice.org.uk/guidance/cg109" rel="noopener">nice.org.uk/guidance/cg109</a><span class="rd"> — the initial assessment set including 12-lead ECG and lying/standing BP, the red-flag features requiring same-day referral, and the referral timelines</span></li>'+
+         '<li><b>NICE CG109 \u2014 Transient loss of consciousness (‘blackouts’) in over 16s</b><br><a href="https://www.nice.org.uk/guidance/cg109" rel="noopener">nice.org.uk/guidance/cg109</a><span class="rd"> — primary-care assessment, the syncope-versus-seizure discriminators, and management of vasovagal and orthostatic syncope</span></li>'+
+         '<li><b>ESC Guidelines for the diagnosis and management of syncope (2018)</b><span class="rd"> — the low / intermediate / high risk stratification used on this page, and the QTc and structural thresholds</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive: a guide for medical professionals</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — Group 1 six months and Group 2 five years for unexplained syncope, and the immediate cessation and notification requirement from a first suspected seizure</span></li>'+
+         '<li><b>POST trial (Prevention of Syncope Trial)</b><span class="rd"> — metoprolol benefit in vasovagal syncope confined to patients over 42, with weak evidence in younger patients</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — fludrocortisone, midodrine and metoprolol dosing and cautions, including the midodrine supine-hypertension timing rule</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Vasovagal syncope and orthostatic hypotension — NICE CG109, NICE TLoC (2022), ESC Syncope Guidelines (2018), DVLA Assessing fitness to drive and the BNF. Never diagnose vasovagal syncope without excluding a cardiac cause: exertional or supine syncope is cardiac until proven otherwise, and the ECG and lying-and-standing BP are done before referral. Suspected seizure is covered by the <a href=\"epilepsy.html\">epilepsy protocol</a>; the undifferentiated blackout \u2014 working out which cause this is \u2014 belongs to the <a href=\"../algorithms/tloc.html\">transient loss of consciousness pathway</a>, which stays live and should be the first stop when the diagnosis is not yet clear. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

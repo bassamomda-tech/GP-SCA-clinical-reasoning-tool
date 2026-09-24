@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Type 2 diabetes — Protocol · Reasoning GP</title>
+<meta name="description" content="Type 2 diabetes in adults, diagnosis and management on one page: HbA1c criteria, excluding type 1 and DKA, the NG28 2026 dual first-line of MR metformin plus an SGLT2 inhibitor, phenotype branches, remission, the nine care processes, and the NG12 pancreatic-cancer flag." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/type-2-diabetes.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Type 2 diabetes protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1FA78}",
+  title:"Type 2 diabetes",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"T2DM \u2014 confirm it (and spot the person who isn\u2019t type 2), protect the organs, climb the ladder without inertia",
+  stemSub:"One page for the whole condition. Confirm the diagnosis, set an individualised target, treat cardiovascular risk as hard as glucose, start the new NG28 dual first-line (MR metformin + SGLT2i) and branch by phenotype, run the annual review, and de-intensify the frail.",
+  guideline:"NICE NG28 (Feb 2026)",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NICE NG28 (18 Feb 2026)"},
+    {t:"NG136 BP \u00b7 NG238 lipids \u00b7 NG203 CKD"},
+    {t:"NG17 \u00b7 NG246 \u00b7 SIGN 154"},
+    {t:"DiRECT \u00b7 EMPA-REG \u00b7 LEADER \u00b7 UKPDS"},
+    {t:"2WW \u00b7 NG12 pancreatic", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>And exclude type 1</small></a><a href="#severe"><b>Red flags</b><small>DKA \u00b7 HHS \u00b7 2WW</small></a><a href="#ladder"><b>The ladder</b><small>NG28 2026 dual first-line</small></a><a href="#refer"><b>Refer</b><small>Who needs the team</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 New diabetes can be a cancer flag", html:"<b>2WW \u00b7 NICE NG12:</b> new-onset diabetes with unexplained weight loss in a patient aged 60 or over \u2192 urgent direct-access CT abdomen (ultrasound if CT unavailable) for <b>pancreatic cancer</b>. Also consider a pancreatic or upper-GI cause where new diabetes comes with steatorrhoea or persistent upper abdominal pain. <b>Do not simply start metformin and review in three months.</b>"},
+    {tone:"red", h:"Is it actually type 2?", html:"Think <b>T1DM or LADA</b> if aged under 50 <em>and</em> lean <em>and</em> rapid symptoms, ketones, weight loss, or personal or family autoimmunity \u2192 same-day glucose and ketones, then <b>anti-GAD and C-peptide</b>. Up to <b>20%</b> of DKA episodes occur in people later classified as type 2 (ketosis-prone T2DM, notably in South Asian populations). <b>Classifying type 1 as type 2 and starting metformin can be fatal.</b>"},
+    {tone:"amber", h:"The 2026 first-line changed", html:"NG28, 18 February 2026: metformin monotherapy is no longer the default. Offer <b>MR metformin AND an SGLT2 inhibitor</b> to the majority needing medication \u2014 <b>even with no comorbidity</b> \u2014 unless contraindicated, and only where frailty does not put them at risk of volume depletion or hypotension. Introduce stepwise: metformin first for tolerability, then add the gliflozin within weeks."},
+    {tone:"blue", h:"Diagnose on two results", html:"<b>HbA1c \u226548 mmol/mol on two occasions</b>, or <b>one result plus osmotic symptoms</b>. Random glucose \u226511.1 confirms only if symptomatic. <b>42\u201347 = non-diabetic hyperglycaemia</b> \u2192 annual HbA1c + NHS Diabetes Prevention Programme (reduces onset by <b>26%</b>) \u2014 not a diabetes diagnosis."},
+    {tone:"plain", h:"Treat the risk, not just the sugar", html:"<b>80% of people with T2DM die of cardiovascular disease.</b> BP <b>&lt;140/90</b> (&lt;130/80 if CKD or ACR \u226570), <b>atorvastatin 20 mg</b> if over 40 or QRISK3 \u226510%, ACEi/ARB first-line, urine ACR at diagnosis and annually. These deliver bigger absolute mortality gains than tight glucose."},
+    {tone:"green", h:"Remission is real", html:"<b>DiRECT:</b> ~800 kcal/day total diet replacement for 12\u201320 weeks within <b>6 years of diagnosis</b> \u2192 remission in <b>46% at 1 year, 36% at 2 years</b>. Refer eligible motivated patients to the <b>NHS Type 2 Path to Remission</b> programme. <b>Bariatric surgery achieves remission in 60\u201380%</b>."}
+  ],
+  pathwaySub:"The whole first consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Exclude the emergency", html:"Vomiting, abdominal pain, Kussmaul breathing, drowsiness \u2192 <b>check ketones and glucose</b>. <b>Ketones &gt;3 mmol/L or glucose &gt;30 \u2192 999</b> (DKA). Glucose &gt;30 with profound dehydration and clouded consciousness without ketones \u2192 HHS \u2192 999. Chest pain, focal neurology or sudden visual loss \u2192 999 on its own merits.", alert:true},
+    {title:"Confirm the diagnosis and the type", html:"HbA1c \u226548 \u00d72, or once if symptomatic. Screen for type 1, LADA, MODY and pancreatic diabetes before labelling it type 2. Check whether HbA1c is even valid in this patient."},
+    {title:"Stage and baseline", html:"Weight and BMI, BP both arms, U&amp;E/eGFR, <b>urine ACR</b>, lipids, LFTs, TSH, FBC, <b>12-lead ECG</b>, QRISK3, foot check with 10 g monofilament, retinal screening referral within 3 months."},
+    {title:"Start treatment \u2014 both halves", html:"Structured education and lifestyle from day one, plus <b>MR metformin + an SGLT2 inhibitor</b> (with the pre-initiation DKA check and written sick-day rules), then branch by phenotype. Statin, BP and ACR treatment run alongside."},
+    {title:"Review and intensify without inertia", html:"HbA1c at 3 months \u2192 above target: run the loop (adherence, lifestyle, intercurrent, right target, right diagnosis) \u2192 then add or switch. Annual nine care processes. De-intensify the frail."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm", title:"Confirming the diagnosis \u2014 and confirming it is actually type 2", sub:"Diagnosis needs two abnormal results unless the patient is symptomatic with one unequivocal result. The bigger error is not the number \u2014 it is the type.",
+     blocks:[
+       {b:"table", head:["Result","Interpretation","Action"], rows:[
+         ["<b>HbA1c \u226548 mmol/mol</b>","Diabetes if <b>two readings \u226548</b>, or <b>one reading \u226548 with classic symptoms</b> (polydipsia, polyuria, weight loss)","Repeat within <b>2 weeks to 3 months</b> if asymptomatic. Never diagnose on a single result in an asymptomatic patient"],
+         ["<b>HbA1c 42\u201347 mmol/mol</b>","<b>Non-diabetic hyperglycaemia</b> \u2014 high risk, not diabetes","Annual HbA1c + refer to the <b>NHS Diabetes Prevention Programme</b>. <b>Do not diagnose T2DM on this alone</b>"],
+         ["<b>Fasting glucose \u22657.0 mmol/L</b>","Alternative where HbA1c is unreliable","Confirm with a second reading"],
+         ["<b>Random glucose \u226511.1 mmol/L</b>","<b>Diagnostic only if symptomatic</b>","If asymptomatic, repeat fasting glucose or HbA1c to confirm"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>When HbA1c is invalid</b>","Pregnancy; anything shortening red-cell lifespan within 3 months (haemolysis, haemoglobin variants, <b>G6PD deficiency</b>, recent transfusion, severe anaemia); <b>CKD stage 4\u20135</b>; HIV. <b>Use fasting plasma glucose instead.</b> In haemolytic anaemia or haemoglobinopathy the shortened red-cell lifespan <b>falsely lowers</b> HbA1c (under-diagnosis); in iron deficiency anaemia it may be <b>falsely elevated</b>"],
+         ["<b>Think type 1 or LADA</b>","Aged <b>&lt;50 and lean and rapid symptoms</b>, ketones, weight loss, personal or family history of autoimmunity; normal BMI, ketonuria, age &lt;35 \u2192 <b>anti-GAD antibodies and C-peptide</b>, refer to diabetology. <b>Do not just start metformin and wait</b>"],
+         ["Other mimics","<b>MODY</b> \u2014 strong three-generation family history, young, not obese \u2192 genetics. <b>Pancreatic diabetes</b> \u2014 pancreatitis history, steatorrhoea. <b>Steroid-induced.</b>"],
+         ["Baseline at diagnosis","Weight and BMI, BP, HbA1c, U&amp;E/eGFR, <b>urine ACR</b>, lipids, LFTs, TSH, FBC, <b>12-lead ECG</b>, QRISK3, smoking, mood, and erectile function \u2014 ask, because it predicts cardiovascular disease"]
+       ]},
+       {b:"warn", html:"<b>Symptomatic hyperglycaemia at presentation</b> (thirst, polyuria, weight loss with glucose &gt;15\u201320)? <b>Check ketones the same day.</b> Ketones raised or the patient unwell \u2192 same-day assessment (DKA, HHS, or new type 1). Well but markedly symptomatic type 2 \u2192 consider starting with a sulfonylurea (works within days) or insulin, then rationalise."},
+       {b:"why", html:"HbA1c has an analytical variability of about \u00b13 mmol/mol, so a single borderline result may be laboratory error \u2014 NG28 therefore mandates a repeat unless the patient is unequivocally symptomatic. HbA1c reflects the preceding <b>8\u201312 weeks</b>, which is precisely why disturbed red-cell turnover invalidates it."}
+     ]},
+
+    {id:"severe", nav:"Red flags", title:"Red flags \u2014 the emergencies, and the cancer flag", sub:"Type 2 diabetes is rarely a true emergency, but its presentations mask DKA, HHS and acute end-organ injury. Screen these first.",
+     blocks:[
+       {b:"warn", html:"The single most examinable trap on this page: in an older patient losing weight, new-onset diabetes warrants pancreatic imaging on the NG12 pathway \u2014 don't just start metformin."},
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW \u00b7 NICE NG12 \u2014 pancreatic cancer", html:"Aged 60 or over with new-onset diabetes and unexplained weight loss \u2192 urgent direct-access CT abdomen within 2 weeks (ultrasound if CT is not available). Also consider a pancreatic or upper-GI cancer where new diabetes is accompanied by <b>steatorrhoea</b> or persistent upper abdominal pain."},
+         {tone:"red", h:"Kussmaul breathing, vomiting, abdominal pain", html:"Deep sighing respirations, vomiting, abdominal pain, drowsiness \u2014 <b>consider DKA even in \u201ctype 2\u201d</b>. Check ketones and glucose \u2192 <b>999 if ketones &gt;3 mmol/L or glucose &gt;30</b>."},
+         {tone:"red", h:"Hyperglycaemic hyperosmolar state", html:"<b>Glucose &gt;30 mmol/L</b>, profound dehydration, clouded consciousness, <b>no ketonaemia</b>, osmolarity <b>&gt;320</b> \u2192 <b>999</b>."},
+         {tone:"red", h:"New chest pain or breathlessness", html:"T2DM <b>doubles MI risk</b>, and <b>autonomic neuropathy causes painless MI</b> \u2014 silent ischaemia is common. Troponin rise or ST changes \u2192 <b>999</b>. This is why an ECG at diagnosis is mandatory."},
+         {tone:"red", h:"Sudden visual loss", html:"Sudden monocular loss \u2192 retinal artery or vein occlusion, or vitreous haemorrhage \u2192 <b>same-day ophthalmology or 999</b>."},
+         {tone:"red", h:"Red, hot, swollen foot with fever", html:"Diabetic foot infection with a risk of <b>necrotising fasciitis</b> \u2192 <b>same-day diabetic foot team</b>. Five-year mortality after a diabetic foot amputation exceeds that of many cancers."},
+         {tone:"red", h:"Focal neurology or stroke symptoms", html:"FAST positive \u2192 <b>999</b> for the thrombectomy window. Stroke risk is <b>2\u20134\u00d7 higher</b> in T2DM."},
+         {tone:"red", h:"Severe hypoglycaemia or confusion", html:"On a sulfonylurea or insulin with <b>glucose &lt;3 mmol/L and confusion \u2192 999</b> \u2014 prolonged sulfonylurea-induced hypoglycaemia can be life-threatening."},
+         {tone:"amber", h:"eGFR &lt;30 or acutely rising creatinine", html:"AKI on CKD \u2192 <b>hold metformin immediately</b>. Same-day nephrology if AKI stage 2\u20133."},
+         {tone:"amber", h:"Suspected Charcot foot", html:"Hot, swollen foot <b>without trauma</b> \u2192 urgent MDT foot service, not a routine referral."}
+       ]},
+       {b:"why", html:"Up to <b>20%</b> of DKA episodes occur in people later classified as type 2 \u2014 especially ketosis-prone type 2 in South Asian populations \u2014 and missing it is a serious incident. Diabetic foot infections kill: they cause <b>60% of all lower-limb amputations in the UK</b>, and early aggressive management saves both lives and limbs."}
+     ]},
+
+    {id:"stage", nav:"Stage &amp; risk", title:"Staging \u2014 HbA1c severity, cardiovascular risk, end-organ baseline", sub:"How high the HbA1c is, and what organs are already involved, decides how aggressively to treat from day one.",
+     blocks:[
+       {b:"table", head:["HbA1c at diagnosis","Interpretation","Implication"], rows:[
+         ["<b>48\u201357 mmol/mol</b>","Mild hyperglycaemia","Lifestyle intervention \u00b1 medication; QRISK3 essential"],
+         ["<b>58\u201374 mmol/mol</b>","Moderate","Medication indicated; assess for dual therapy if cardiovascular risk is high"],
+         ["<b>75\u201385 mmol/mol</b>","Significantly elevated","Dual therapy likely needed at initiation; consider early specialist input"],
+         ["<b>&gt;86 mmol/mol</b>","Severely elevated","Consider insulin initiation discussion and <b>urgent specialist review</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>QRISK3</b>","Calculate at diagnosis (the QRISK tool). <b>\u226510% \u2192 atorvastatin 20 mg</b>; established CVD \u2192 atorvastatin 80 mg"],
+         ["<b>eGFR + urine ACR</b>","Defines CKD stage and drives drug selection: <b>metformin contraindicated below eGFR 30</b>, SGLT2i caution and dose gates, <b>eGFR &lt;15 \u2192 renal referral</b>. <b>ACR &gt;3 mg/mmol = albuminuria</b> \u2192 ACEi or ARB; <b>ACR &gt;30 = macroalbuminuria</b>"],
+         ["<b>Established CVD?</b>","Prior MI, stroke, peripheral vascular disease or heart failure \u2192 an <b>SGLT2 inhibitor</b> (empagliflozin or dapagliflozin) or <b>GLP-1 RA</b> (semaglutide or liraglutide) is indicated <b>regardless of HbA1c</b>"],
+         ["Individualised target","<b>48</b> on lifestyle or one non-hypo drug; <b>53</b> once on a sulfonylurea or insulin; <b>58\u201364 or above</b> in frailty. Intensify when HbA1c rises above <b>58</b>"]
+       ]},
+       {b:"why", html:"<b>80% of people with T2DM die from cardiovascular disease.</b> A statin reduces major cardiovascular events by about <b>25%</b> (NNT 20 over 5 years, Heart Protection Study). EMPA-REG OUTCOME showed empagliflozin reduced <b>cardiovascular death by 38%</b> and <b>heart-failure hospitalisation by 35%</b> in high-risk patients \u2014 a bigger win than glucose control alone. And diabetic nephropathy is silent until late: ACR detects microalbuminuria before creatinine rises, and early ACEi or ARB reduces CKD progression by about <b>25%</b>."}
+     ]},
+
+    {id:"exam", nav:"Examination", title:"Targeted examination at diagnosis", sub:"UKPDS showed 50% of patients already had one microvascular complication at the time of diagnosis. Examination is not optional \u2014 it establishes the true disease burden.",
+     blocks:[
+       {b:"table", head:["What","How / threshold","Why it changes the plan"], rows:[
+         ["<b>BP both arms</b>","Target <b>&lt;140/90 mmHg</b>, or <b>&lt;130/80 mmHg</b> if nephropathy or CVD","A <b>&gt;20 mmHg difference between arms</b> suggests subclavian stenosis or aortic disease"],
+         ["<b>BMI + waist</b>","BMI \u226530, or waist <b>&gt;88 cm (F) / &gt;102 cm (M)</b>","Obesity pathway; consider a GLP-1 RA; documents the baseline for monitoring"],
+         ["Cardiovascular","Rate and rhythm (AF?), heart sounds, JVP, ankle oedema","Raised JVP or oedema \u2192 heart failure \u2192 SGLT2i becomes the priority agent"],
+         ["<b>Peripheral pulses + ABPI</b>","Absent pedal pulses \u2192 arrange ABPI. <b>ABI &lt;0.9 = peripheral vascular disease</b>","Drives foot risk stratification into the low, medium or high-risk pathway"],
+         ["<b>10 g monofilament</b>","Plantar surface of the <b>1st, 3rd and 5th metatarsal heads bilaterally</b>","Loss of sensation = peripheral neuropathy = <b>high-risk foot</b> \u2192 podiatry. Two minutes, and it is an amputation-prevention test"],
+         ["Eyes","Visual acuity and obvious cataract","Formal retinal screening via the <b>NHS Diabetic Eye Screening Programme within 3 months</b> of diagnosis \u2014 a NICE quality standard"],
+         ["Skin and injection sites","<b>Acanthosis nigricans</b> confirms insulin resistance; lipohypertrophy if already injecting","Injection-site problems cause erratic absorption"],
+         ["Cognition","Brief assessment if <b>aged &gt;70</b> or symptomatic","T2DM <b>doubles dementia risk</b> \u2014 relevant to the ability to self-manage insulin and detect hypoglycaemia"]
+       ]},
+       {b:"why", html:"Diabetic retinopathy is the leading cause of blindness in working-age adults in the UK, which is why DESP referral within 3 months is a quality standard rather than a nicety."}
+     ]},
+
+    {id:"workup", nav:"Investigations", title:"Investigations \u2014 baseline and annual panel", sub:"Baseline bloods establish the metabolic picture and are critical to safe drug selection. Note what NOT to order.",
+     blocks:[
+       {b:"table", head:["Test","Role","Interpretation"], rows:[
+         ["<b>HbA1c</b>","Diagnosis and baseline","Repeat <b>3 months</b> after starting treatment; target individualised 48\u201353, relaxed in frailty"],
+         ["<b>U&amp;E + eGFR</b>","Non-negotiable before metformin","eGFR &lt;60 \u2192 CKD, adjust doses; &lt;45 \u2192 metformin dose review; &lt;30 \u2192 stop metformin and caution with SGLT2i; <b>&lt;15 \u2192 renal referral</b>. Annually thereafter"],
+         ["<b>Urine ACR</b>","<b>First-void morning sample</b>","<b>&gt;3 mg/mmol = albuminuria \u2192 ACEi or ARB</b> (with diabetes or hypertension); <b>&gt;30 = macroalbuminuria</b>. Annual"],
+         ["<b>Fasting lipids</b>","Total, LDL, HDL, triglycerides","<b>LDL &lt;2.0 mmol/L</b>; established CVD <b>&lt;1.8 mmol/L</b>. Statin if QRISK3 \u226510%"],
+         ["<b>LFTs</b>","Before a statin, and to screen for NAFLD","<b>NAFLD affects ~70% of people with T2DM.</b> <b>ALT &gt;3\u00d7 ULN \u2192 hepatology before the statin</b>"],
+         ["<b>FBC</b>","Anaemia falsifies HbA1c","Macrocytosis suggests alcohol excess or <b>B12 deficiency</b>"],
+         ["<b>TSH</b>","At diagnosis","Hypothyroidism causes dyslipidaemia and worsens control; hyperthyroidism can cause hyperglycaemia. Then <b>every 2\u20133 years</b> or if symptomatic"],
+         ["<b>12-lead ECG</b>","Baseline cardiac assessment \u2014 NICE recommends it at diagnosis","LVH, silent MI (ST changes), <b>QTc</b> if adding QT-prolonging drugs"],
+         ["<b>Vitamin B12</b>","<b>If on metformin &gt;4 years</b>, or with neuropathy","Metformin reduces B12 absorption in about <b>30%</b>. Supplement if <b>B12 &lt;200 pmol/L</b>"],
+         ["<b>Not routinely needed</b>","\u2014","<b>OGTT</b> (already diagnosed on HbA1c), insulin levels, <b>C-peptide</b> unless type 1 vs type 2 is uncertain, urine dipstick microbiology in asymptomatic patients"]
+       ]},
+       {b:"why", html:"Metformin accumulates in renal failure and risks lactic acidosis \u2014 rare but fatal \u2014 so checking eGFR before starting is a never-event if missed. And microalbuminuria is an <b>independent cardiovascular</b> risk marker, not merely a kidney one: ACR &gt;3 in T2DM predicts major cardiovascular events, so treat it with an ACEi or ARB regardless of BP."}
+     ]},
+
+    {id:"protect", nav:"Protect", title:"Treat the risk, not just the sugar \u2014 BP, lipids, kidneys", sub:"This section deliberately precedes the glucose ladder, because it delivers the larger absolute mortality benefit.",
+     blocks:[
+       {b:"table", head:["Domain","Target / threshold","Treatment"], rows:[
+         ["<b>Blood pressure</b>","<b>&lt;140/90 mmHg</b> clinic; <b>&lt;130/80 mmHg if CKD or ACR \u226570</b>","<b>ACEi or ARB first-line in T2DM at any age</b> (renoprotective) \u2014 ramipril 2.5 mg OD titrated to <b>5\u201310 mg</b> (max 10 mg OD); then a CCB or thiazide-like diuretic per NG136. Check K\u207a and creatinine 1\u20132 weeks after starting or changing dose"],
+         ["<b>Lipids \u2014 primary prevention</b>","Age &gt;40 or QRISK3 \u226510%","<b>Atorvastatin 20 mg</b>; escalate if non-HDL has not fallen <b>40%</b>. Check LFTs before starting"],
+         ["<b>Lipids \u2014 secondary prevention</b>","Established CVD","<b>Atorvastatin 80 mg</b>; <b>LDL &lt;2.0 or non-HDL &lt;2.6</b> (NG238)"],
+         ["<b>Kidneys</b>","ACR \u22653 with diabetes","<b>ACEi or ARB titrated to maximum</b>, plus an <b>SGLT2 inhibitor</b>; ACR &gt;30 despite this \u2192 consider <b>finerenone</b> or renal advice"],
+         ["<b>Antiplatelet</b>","<b>Established CVD only</b>","Aspirin 75 mg \u2014 <b>never routine primary prevention in diabetes</b>: bleeding outweighs benefit"]
+       ]},
+       {b:"why", html:"A person with T2DM is far more likely to die of a heart attack than of hyperglycaemia. BP control and statins deliver bigger absolute mortality benefits than tight glucose \u2014 which is why this node comes before the glucose ladder, not after it. Smoking is the single biggest multiplier of diabetic cardiovascular risk, and the combined risk is multiplicative rather than additive."}
+     ]},
+
+    {id:"ladder", nav:"Glucose ladder", title:"The glucose ladder \u2014 doses, when, and why", sub:"Set the target first, then treat. Therapeutic inertia \u2014 failing to intensify or de-intensify \u2014 is the commonest error in T2DM care.",
+     blocks:[
+       {b:"warn", html:"NG28 changed on 18 February 2026 \u2014 metformin monotherapy is no longer the default. If glucose-lowering medication is needed, offer MR metformin AND an SGLT2 inhibitor first-line to the majority of people, even with no comorbidity at all, unless contraindicated. Introduce them stepwise (metformin first to check tolerability, then add the SGLT2i within weeks). The SGLT2i only if the person's level of frailty does not place them at risk of adverse events (volume depletion, hypotension). Then read across to the <b>phenotype branch</b> below \u2014 the ladder is no longer one queue."},
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"MR metformin + SGLT2 inhibitor \u2014 dual therapy first-line", when:"everyone needing medication; no comorbidity required",
+          html:"<b>Metformin MR</b> in preference to standard-release (standard-release only if tablets must be crushed or a liquid is needed): <b>500 mg OD with food</b>, titrate weekly \u2192 <b>1\u20132 g daily</b> (max 2 g/day, or 1 g BD for tolerability). Take with or after meals to reduce GI effects. <b>eGFR must be \u226530</b>; <b>eGFR &lt;45</b> \u2192 dose review; <b>&lt;30 \u2192 stop</b>. Check B12 if on it &gt;4 years or with neuropathy or anaemia. Then add <b>dapagliflozin 10 mg</b> or <b>empagliflozin 10 mg</b> OD (check eGFR &gt;25 before starting). <b>Metformin contraindicated or not tolerated:</b> SGLT2i monotherapy \u2014 or, if frailty puts them at risk from an SGLT2i, a <b>DPP-4i</b> instead."},
+         {step:"Before the SGLT2i", title:"The DKA safety check \u2014 new, and examinable", when:"every initiation",
+          fromLabel:"do not skip",
+          html:"Check for <b>previous DKA</b>, risk of <b>dehydration or volume depletion</b>, and a <b>very-low-carbohydrate or ketogenic diet</b>; address modifiable DKA risks <em>before</em> starting. <b>Do not initiate while the person is unwell with intercurrent illness.</b> Follow MHRA safety advice on ketone monitoring, and put <b>sick-day rules in every individualised treatment plan</b>, including how to restart afterwards."},
+         {step:"Step 2", title:"Branch by phenotype \u2014 not by HbA1c alone", when:"at diagnosis and at every review",
+          fromLabel:"more than one? agree the priority with the patient",
+          html:"<b>Established ASCVD \u2192 triple therapy first-line:</b> MR metformin + SGLT2i + <b>subcutaneous semaglutide up to 1 mg weekly</b>. <b>Heart failure \u2192</b> the SGLT2i is the priority agent (dapagliflozin or empagliflozin). <b>CKD \u2192</b> SGLT2i + ACEi/ARB; <b>eGFR 20\u201330 \u2192 dapagliflozin or empagliflozin with a DPP-4i</b>. <b>Obesity \u2192</b> earlier GLP-1 RA or tirzepatide. <b>Early-onset (diagnosed &lt;40 years) \u2192</b> higher lifetime cardiorenal risk, so escalate earlier to a GLP-1 RA or tirzepatide. <b>Frailty \u2192</b> relax the target, avoid or use caution with an SGLT2i, a DPP-4i is the gentle agent, and aim for the smallest effective number of medicines at the lowest effective dose."},
+         {step:"Step 3", title:"Further intensification", when:"HbA1c above the agreed target on the above",
+          fromLabel:"re-check adherence first",
+          html:"Add a third or fourth mechanism guided by phenotype: GLP-1 RA or tirzepatide (weight, ASCVD, early-onset); <b>DPP-4i</b> for the hypo-averse or in CKD \u2014 sitagliptin 100 mg OD, reduced to 50 mg if eGFR 30\u201350 and 25 mg if eGFR &lt;30, while <b>linagliptin needs no dose adjustment</b> (weight neutral; caution: pancreatitis); <b>gliclazide MR 30\u2013120 mg OD</b> or standard gliclazide 40\u201380 mg mane up to 160 mg BD (cheap and fast, but hypoglycaemia and weight gain \u2014 gliclazide is preferred over glibenclamide for its lower hypo risk); <b>pioglitazone 15\u201345 mg</b> (never in heart failure; fractures, bladder-cancer signal). <b>Never stack a DPP-4i with a GLP-1 RA.</b>"},
+         {step:"Step 4", title:"GLP-1 RA / tirzepatide", when:"per phenotype above \u2014 no longer 'only after triple therapy'",
+          fromLabel:"earlier in ASCVD, obesity, early-onset",
+          html:"<b>Semaglutide (Ozempic)</b> 0.25 mg weekly, titrated 4-weekly (0.25 \u2192 <b>0.5 mg</b> \u2192 up to <b>1 mg</b>) (the dose NG28 recommends; higher doses fall outside it). <b>Liraglutide</b> 0.6 mg OD, increased weekly to 1.2\u20131.8 mg. Expect <b>5\u201315 kg weight loss</b>. <b>Tirzepatide (Mounjaro)</b> \u2014 dual GIP/GLP-1, the most potent, now used earlier in obesity and early-onset disease. Continue beyond 6 months only if the agreed HbA1c and weight response is met. Counsel: nausea (start low, smaller meals), rare pancreatitis (stop and assess if severe abdominal pain), gallstones, and <b>pause before surgery or procedures per anaesthetic guidance</b>."},
+         {step:"Step 5", title:"Insulin", when:"symptomatic, or HbA1c persistently >75 mmol/mol despite optimised oral therapy",
+          fromLabel:"see the dedicated insulin protocol",
+          html:"Usually <b>NPH isophane insulin (Humulin I / Insulatard) 10 units at bedtime</b>, or a basal analogue (glargine 10 units nocte), self-titrated <b>2\u20134 units twice weekly</b> to a fasting glucose of 5\u20137. <b>Keep metformin and the SGLT2i; stop the sulfonylurea</b> (or halve it and watch) <b>and the DPP-4i</b>. Refer to the diabetes specialist nurse for structured education, a glucose meter, and DVLA and hypoglycaemia counselling."}
+       ]},
+       {b:"table", head:["Drug class","Key side effects","Fix / monitoring"], rows:[
+         ["Metformin (MR preferred)","GI upset, B12 deficiency, lactic acidosis (rare, renal)","MR first-line; B12 if symptomatic; sick-day pause; eGFR gates"],
+         ["SGLT2i","Genital thrush, UTI, polyuria, <b>euglycaemic DKA</b>, Fournier's gangrene (rare), volume depletion","Pre-initiation DKA check plus MHRA ketone advice; sick-day pause with a restart plan \u2014 <b>hold whenever the patient is unwell or nil by mouth</b> (vomiting, poor intake, fasting for surgery or a procedure); do not start during intercurrent illness; check eGFR is above 25 before starting; thrush \u2192 treat and give hygiene advice, rarely needs stopping; <b>check ketones if unwell even when glucose is normal</b>"],
+         ["Sulfonylurea","<b>Hypoglycaemia</b>, weight gain","Educate, and provide a meter for drivers (DVLA rules); avoid if eGFR &lt;30, frail, or eating erratically. Hypoglycaemia in older patients causes falls, fractures and cognitive decline"],
+         ["DPP-4i","Generally benign; rare pancreatitis","Dose-adjust sitagliptin in CKD; linagliptin needs none"],
+         ["Pioglitazone","Fluid retention and heart failure, fractures, bladder-cancer signal, weight gain","Never in heart failure or with haematuria under investigation; review benefit at 6 months"],
+         ["GLP-1 RA / tirzepatide","Nausea and vomiting, gallstones, pancreatitis (rare)","Slow titration; dietary advice; stop if pancreatitis is suspected"]
+       ]},
+       {b:"dl", rows:[
+         ["Already on metformin alone?","NG28 2026 changes the default for <b>new</b> decisions \u2014 it does not order a mass switch. Someone stable at target on metformin monotherapy with no cardiorenal indication does not need changing today; but <b>run a targeted register review</b> (cardiovascular comorbidity, CKD, rising HbA1c, obesity, early-onset) \u2014 most will now qualify for the addition of an SGLT2i"],
+         ["<b>Access inequality (new NG28 duty)</b>","Monitor who is <em>actually</em> receiving SGLT2 inhibitors, and engage the groups with lower uptake \u2014 women, older people, some minority ethnic backgrounds, and socioeconomically deprived patients"]
+       ]},
+       {b:"warn", html:"<b>De-intensification is a treatment too.</b> In frailty, dementia or limited life expectancy \u2014 relax the target, strip out the hypo-causing drugs first (sulfonylurea, insulin), and stop anything without symptomatic benefit. An HbA1c of 48 in a care-home resident is a harm marker, not an achievement."},
+       {b:"why", html:"UKPDS showed a <b>39% reduction in MI</b> with metformin in overweight T2DM (NNT 14 over 10 years), at very low hypoglycaemia risk and under \u00a310/month. The EMPA-REG, CANVAS and DECLARE trials then changed the paradigm: SGLT2 inhibitors reduce heart-failure hospitalisation independently of glucose lowering \u2014 they are heart and kidney drugs that also lower blood sugar, not the reverse. LEADER (liraglutide) and SUSTAIN-6 (semaglutide) showed a <b>13\u201326% reduction in major cardiovascular events</b> with <b>5\u201312 kg</b> of weight loss alongside. Each <b>1% fall in HbA1c reduces microvascular complications by 25%</b> and MI risk by <b>14%</b>."}
+     ]},
+
+    {id:"lifestyle", nav:"Lifestyle", title:"Lifestyle is treatment, not an optional add-on", sub:"Lifestyle intervention lowers HbA1c by 10\u201315 mmol/mol \u2014 equivalent to one oral drug \u2014 and can put early disease into remission.",
+     blocks:[
+       {b:"table", head:["Intervention","What to advise","Effect"], rows:[
+         ["<b>Very low calorie diet / remission</b>","<b>~800 kcal/day for 12\u201320 weeks</b> (DiRECT / Counterweight-Plus protocol) via the <b>NHS Type 2 Path to Remission</b> or Total Diet Replacement programme if BMI \u226530 and within <b>6 years of diagnosis</b>. Supervise closely","<b>Remission in 46% at 1 year, 36% at 2 years</b>"],
+         ["<b>Weight loss</b>","Structured support; choose drugs through a weight lens \u2014 GLP-1 and SGLT2i lose weight, sulfonylurea, pioglitazone and insulin gain it","<b>5% loss \u2192 HbA1c down 5\u201310 mmol/mol</b>; 10% gives a significant remission chance; <b>15 kg+ the highest remission rates</b>. Even modest loss improves BP, lipids and hepatic steatosis"],
+         ["<b>Structured education</b>","<b>DESMOND</b> or local equivalent for everyone <b>within 3 months</b> of diagnosis \u2014 document the offer and attendance (QOF)","Improves HbA1c, illness beliefs, depression and quality of life; builds the self-management skills a 10-minute appointment cannot"],
+         ["<b>Physical activity</b>","<b>\u2265150 min/week</b> moderate intensity plus <b>resistance training 2\u00d7/week</b>; break up sitting time. Social prescribing or exercise on prescription","Each session lowers post-prandial glucose by <b>2\u20133 mmol/L</b>; a single 30-minute walk lowers it <b>1\u20132 mmol/L for up to 24 hours</b> via insulin-independent GLUT4 uptake"],
+         ["<b>Carbohydrate quality</b>","Cut refined carbohydrate and sugar-sweetened drinks; wholefood Mediterranean pattern \u2014 <b>not a \u201cdiabetic diet\u201d</b>","Low-GI diet lowers HbA1c by about <b>5 mmol/mol</b>; the Mediterranean diet reduces cardiovascular events by <b>30%</b> (PREDIMED)"],
+         ["<b>Alcohol</b>","<b>&lt;14 units/week</b>, spread out, no bingeing","Causes hypoglycaemia (especially on a sulfonylurea or insulin) and worsens hepatic steatosis and NAFLD"],
+         ["<b>Smoking cessation</b>","NHS stop-smoking service; NRT plus varenicline (check interactions)","Smoking <b>doubles</b> cardiovascular risk in T2DM and the combined risk is multiplicative; cessation also lowers HbA1c by about <b>0.5%</b>"],
+         ["<b>Sleep and OSA</b>","Screen for obstructive sleep apnoea","Sleep <b>&lt;6 hours</b> raises insulin resistance by <b>25%</b>; <b>OSA is present in 50%</b> of T2DM with obesity, and treating it improves glucose control"],
+         ["<b>Mood</b>","Screen and treat","Depression rates double in diabetes and it wrecks self-management"],
+         ["<b>Foot self-care</b>","Daily inspection, moisturise skin but <b>not between the toes</b>, proper footwear, <b>never walk barefoot</b>, cut nails straight across","Report any ulcer, blister or skin break <b>within 24 hours</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Self-monitoring of blood glucose</b>","<b>Not routine</b> for T2DM on diet or metformin alone. Recommend if: on <b>insulin or a sulfonylurea</b>, symptomatic hypoglycaemia, <b>driving HGV</b>, or intercurrent illness. <b>FreeStyle Libre</b> considered for complex insulin regimens"],
+         ["Sick-day rules","Reinforce for anyone on insulin or an SGLT2i, because of the DKA risk \u2014 and give it in writing"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"The review rhythm \u2014 and the annual review done properly", sub:"80% of the blindness, amputations and renal failure caused by T2DM is preventable with systematic monitoring.",
+     blocks:[
+       {b:"table", head:["When","What","Action"], rows:[
+         ["<b>1 month</b>","Medication tolerance, BP","GI effects of metformin (take with food), nausea on a GLP-1 RA; reinforce lifestyle; address anxieties about the diagnosis"],
+         ["<b>3 months</b>","<b>HbA1c + U&amp;E</b>","Above target \u2192 run the loop below, then escalate. <b>Recheck U&amp;E if an ACEi or ARB was started</b> \u2014 watch for hyperkalaemia and a creatinine rise"],
+         ["<b>6 months</b>","Weight, BP, foot inspection, HbA1c if the dose changed","Review cardiovascular risk factors \u2014 is the statin at target dose?"],
+         ["<b>HbA1c thereafter</b>","3\u20136-monthly until stable on unchanging therapy, then 6-monthly","Above target \u2192 intensify. <b>Below 48 on a sulfonylurea or insulin \u2192 consider de-intensifying</b>"],
+         ["<b>The 9 key care processes</b>","Annually (QOF)","HbA1c \u00b7 BP \u00b7 cholesterol \u00b7 <b>urine ACR</b> \u00b7 eGFR \u00b7 BMI \u00b7 smoking status \u00b7 <b>foot examination with risk stratification</b> \u00b7 retinal screening. Document <em>and act on</em> each"],
+         ["Annual bloods","HbA1c, fasting lipids, U&amp;E/eGFR, LFTs, FBC, urine ACR","B12 if on metformin &gt;4 years or with neuropathy; TFTs every 2\u20133 years or if symptomatic"],
+         ["Plus the human bits","Annually","Mood; <b>erectile dysfunction</b> (offer a PDE5 inhibitor \u2014 and it flags cardiovascular risk); injection sites; hypoglycaemia history and awareness; driving group and DVLA duties; flu, pneumococcal and COVID vaccines; pregnancy plans"],
+         ["<b>Retinal screening</b>","Annual DESP digital photography","Grade 0 normal and grade 1 background \u2192 annual; grade 2 pre-proliferative \u2192 4-monthly ophthalmology; grade 3 proliferative \u2192 immediate"],
+         ["<b>Foot review</b>","By risk","<b>Low risk \u2192 annual</b> GP or nurse review; <b>medium risk</b> (neuropathy or PVD alone) <b>\u2192 3\u20136-monthly podiatry</b>; <b>high risk</b> (both, or previous ulcer) <b>\u2192 1\u20133-monthly specialist podiatry</b>. Active ulcer, infection, ischaemia or suspected Charcot \u2192 <b>same-day/urgent MDT foot service</b>"],
+         ["<b>eGFR + ACR trend</b>","At least annually, more often in CKD","Falling eGFR or rising ACR \u2192 tighten BP, maximise the ACEi/ARB and SGLT2i, and refer per NG203"]
+       ]},
+       {b:"cards", items:[
+
+         {tone:"blue", h:"\ud83d\ude97 Driving and the DVLA", html:"<b>Inform the DVLA and the insurer if on insulin or a sulfonylurea</b> (Group 1). Hypoglycaemia awareness must be intact, patients <b>must not drive with glucose &lt;5 mmol/L</b> (\u201c5 to drive\u201d), and they should test before driving on any hypo-risk drug. <b>Report severe hypoglycaemia to the DVLA.</b> A GP who fails to give this advice may be held professionally liable after a hypoglycaemic road traffic accident \u2014 this is medicolegal as well as clinical."}
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 DKA / HHS \u2014 999", html:"\u201cVomiting, tummy pain, drowsiness or deep fast breathing \u2014 call 999. On an SGLT2 (\u2018flozin\u2019) tablet this can happen <b>even with normal-ish sugars</b>.\u201d Also 999 for hypoglycaemic coma, acute foot infection with systemic sepsis, stroke or MI symptoms, and sudden visual loss."},
+         {tone:"red", h:"\ud83e\uddb6 Feet \u2014 same day", html:"\u201cA new ulcer, colour change, spreading redness, or a hot swollen foot \u2014 call us the same day. Never wait and see with a diabetic foot.\u201d"},
+         {tone:"amber", h:"\ud83c\udf6c Hypos on a sulfonylurea or insulin", html:"\u201cShaky, sweaty, confused \u2014 <b>15 g of fast sugar, recheck in 15 minutes</b>, then a snack. Severe or recurrent, tell us.\u201d"},
+         {tone:"amber", h:"\ud83e\udd22 Sick-day rules", html:"\u201cWhen you can't eat or drink, or you are vomiting: pause metformin, the \u2018flozin\u2019 tablet, the ACE inhibitor and any water tablet; keep insulin going (adjusted); check sugars often; call us if in doubt. Restart when eating and drinking normally.\u201d Also hold NSAIDs."},
+         {tone:"amber", h:"\ud83d\udcde Same-day if\u2026", html:"Glucose persistently <b>&gt;20 for 48 hours</b>; a new foot ulcer or blister; severe nausea or vomiting on a GLP-1 RA; significant muscle pain on a statin (check CK \u2014 possible rhabdomyolysis); rapidly worsening renal function."}
+       ]},
+       {b:"say", html:"There are two numbers that matter today: your sugar average and your blood pressure \u2014 and honestly the blood pressure and the statin protect your heart and kidneys at least as much as the sugar tablets do. We'll check the whole picture once a year, feet and eyes included."},
+       {b:"why", html:"SGLT2 inhibitors cause <b>euglycaemic DKA</b> \u2014 ketoacidosis with a normal blood sugar \u2014 in dehydrated or unwell patients, so holding them and metformin during intercurrent illness prevents hospitalisation. This must be explained at <em>every</em> prescription. In high-risk feet the amputation risk is <b>100\u00d7</b> that of the general population, and the pressure-sore \u2192 ulcer \u2192 osteomyelitis \u2192 amputation sequence takes only weeks: frequent review interrupts it."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Above target? Run this BEFORE adding the next drug", sub:"Half of 'treatment failure' is adherence, intercurrent illness, or the wrong target.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"1 · Adherence", html:"Tablets actually taken? GI side effects driving quiet non-adherence? (MR metformin fixes most)"},
+         {tone:"blue", h:"2 · Lifestyle drift", html:"Weight trend, diet, alcohol — reset ONE measurable goal, review in 3 months."},
+         {tone:"blue", h:"3 · Intercurrent", html:"Steroids, infection, new antipsychotic, depression, festive season?"},
+         {tone:"blue", h:"4 · Right target?", html:"Frail/hypo-prone → RELAX it. Young and fit → is 48 actually being pursued?"},
+         {tone:"blue", h:"5 · Right diagnosis?", html:"Lean, rapid decline, ketosis, weight loss despite treatment → C-peptide + anti-GAD (LADA), or pancreatic cause."}
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"All five checked?", html:"Then this is genuine treatment failure — move to the <b>next rung of the ladder</b>. Escalating before the five are checked is how a patient ends up on four agents for an adherence problem."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 who needs the specialist team, when, and how fast", sub:"Most new type 2 diabetes is managed in primary care. Delayed referral is a common SCA fail point.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW \u00b7 NG12 \u2014 urgent direct-access CT", html:"New-onset diabetes with unexplained weight loss, aged 60 or over \u2192 urgent direct-access CT abdomen within 2 weeks (ultrasound if CT unavailable) to exclude <b>pancreatic cancer</b>. Consider it too where steatorrhoea or persistent upper abdominal pain accompanies new diabetes."},
+         {tone:"red", h:"Same day", html:"<b>DKA or HHS</b>; <b>active foot disease</b> \u2014 ulceration, cellulitis, gangrene or Charcot foot \u2192 MDT foot service (same-day if infected); symptomatic and ketotic at diagnosis."},
+         {tone:"amber", h:"Diabetology \u2014 urgent", html:"<b>HbA1c &gt;86 mmol/mol</b> unresponsive to treatment; suspected <b>type 1 or LADA</b>; DKA or HHS; <b>recurrent severe hypoglycaemia</b> or lost hypoglycaemia awareness (also a DVLA issue); pregnancy with T2DM; insulin initiation where this is outside GP competency."},
+         {tone:"plain", h:"Diabetology \u2014 routine", html:"Above target despite optimal primary-care treatment including triple therapy and injectable consideration; complex insulin needs; renal transplant; complex comorbidity such as <b>steroid-induced diabetes</b>; diagnostic doubt \u2014 <b>MODY</b> (genetics) or pancreatic diabetes."},
+         {tone:"plain", h:"Nephrology \u00b7 NG203 triggers", html:"<b>eGFR &lt;30</b> (G4\u2013G5); rapidly declining eGFR <b>&gt;5 mL/min/1.73 m\u00b2 per year</b>; <b>ACR \u226570 mg/mmol</b> despite optimal RAAS blockade; <b>5-year KFRE &gt;5%</b>."},
+         {tone:"plain", h:"Cardiology / rapid-access chest pain", html:"New chest pain or suspected ACS \u2192 <b>999</b>; exertional symptoms with ECG changes \u2192 RACPC; established CVD needing optimisation."},
+         {tone:"plain", h:"Eyes", html:"All new T2DM \u2192 <b>DESP within 3 months</b>. Acute visual loss \u2192 refer immediately. <b>Sight-threatening retinopathy on screening \u2192 2WW ophthalmology.</b>"},
+         {tone:"plain", h:"Preconception and pregnancy", html:"Aim <b>HbA1c &lt;48</b>, <b>stop the statin and ACEi</b>, start <b>folic acid 5 mg before conception</b>, and refer to the joint diabetes\u2013antenatal clinic."},
+         {tone:"plain", h:"Weight, diet and surgery", html:"<b>NHS Diabetes Prevention Programme</b> for HbA1c 42\u201347. <b>DESMOND</b> for all newly diagnosed. <b>Dietitian</b> for BMI &gt;40, disordered eating, or renal or complex dietary needs \u2014 everyone else gets brief dietary advice at diagnosis. Bariatric surgery: BMI \u226535 with T2DM, or \u226530 in South Asian populations \u2014 remission in <b>60\u201380%</b>. Raise it proactively."},
+         {tone:"cream", h:"Related protocols \u2014 the four T2DM pages", html:"This page covers confirmed type 2 diabetes and its oral therapy. The rest of the condition is split across: <a href='insulin-type-2-diabetes.html'>insulin in type 2 diabetes</a> for initiation and titration \u00b7 <a href='t2dm-ramadan.html'>type 2 diabetes in Ramadan</a> for the pre-Ramadan risk assessment and drug retiming \u00b7 <a href='sick-day-rules.html'>sick day rules</a> for intercurrent illness \u00b7 <a href='dka.html'>DKA</a> and <a href='diabetes-unwell-insulin.html'>feeling unwell on insulin</a> for the acute end."}
+       ]},
+       {b:"say", html:"Your tablets have done a lot of work, but the numbers are telling us you need the extra options only the specialist team can start \u2014 we'll keep everything else going in the meantime, and nothing you've done has \u2018failed\u2019: diabetes drifts with time, and we move with it."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 63-year-old man, HbA1c 61 mmol/mol on a routine check, BMI 31, ex-smoker, BP 148/88. He mentions in passing that his trousers are loose \u2014 about half a stone down over three months \u2014 and he wants to know whether he can \u201cjust sort it with diet\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Confirms the diagnosis properly rather than acting on one result; recognises the NG12 pancreatic flag \u2014 new diabetes with weight loss at 60+ needs urgent CT, not just metformin; screens for type 1 features; takes the remission conversation seriously and refers to the NHS programme; treats BP and lipids as hard as glucose; explains the 2026 dual first-line and the sick-day rules for the SGLT2i. <a href='../../cases/type-2-diabetes.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG28 \u2014 Type 2 diabetes in adults: management (updated 18 February 2026)<br><a href="https://www.nice.org.uk/guidance/ng28" rel="noopener">nice.org.uk/guidance/ng28</a><span class="rd"> \u2014 the dual MR metformin + SGLT2i first-line, the pre-initiation DKA check and MHRA ketone advice, phenotype branches, semaglutide up to 1 mg, individualised targets, the access-inequality duty, ECG at diagnosis</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 new-onset diabetes with weight loss aged 60+ \u2192 urgent direct-access CT for pancreatic cancer</span></li>'+
+         '<li>NICE NG136 (hypertension), NG238 (lipids), NG203 (CKD), NG17 (type 1), NG246 (obesity), TA664 and TA875 (semaglutide)<span class="rd"> \u2014 BP and lipid targets, referral triggers, obesity and remission pathways</span></li>'+
+         '<li><b>SIGN 154; BDA dietary guidance (2022); NICE</b><span class="rd"> \u2014 diabetes management and dietary advice</span></li>'+
+         '<li><b>DiRECT \u2014 Lean et al., Lancet 2018</b><span class="rd"> \u2014 ~800 kcal/day total diet replacement: remission in 46% at 1 year, 36% at 2 years</span></li>'+
+         '<li><b>EMPA-REG OUTCOME \u2014 Zinman et al., NEJM 2015</b><span class="rd"> \u2014 empagliflozin: cardiovascular death down 38%, heart-failure hospitalisation down 35%; CANVAS and DECLARE support the class effect</span></li>'+
+         '<li><b>LEADER \u2014 Marso et al., NEJM 2016; SUSTAIN-6</b><span class="rd"> \u2014 GLP-1 RAs: 13\u201326% reduction in major cardiovascular events with 5\u201312 kg weight loss</span></li>'+
+         '<li><b>UKPDS \u2014 Lancet 1998</b><span class="rd"> \u2014 metformin cut MI by 39% in overweight T2DM; each 1% HbA1c fall reduces microvascular complications by 25% and MI by 14%; 50% had a microvascular complication at diagnosis</span></li>'+
+         '<li><b>PREDIMED \u2014 Estruch et al., NEJM 2013; Heart Protection Study</b><span class="rd"> \u2014 Mediterranean diet and a 30% event reduction; statins and a ~25% reduction in major cardiovascular events</span></li>'+
+         '<li><b>DVLA \u2014 Assessing fitness to drive</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk \u00b7 assessing fitness to drive</a><span class="rd"> \u2014 insulin and sulfonylurea notification, \u201c5 to drive\u201d, severe hypoglycaemia reporting</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses and renal dose adjustments; verify before prescribing</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Confirmed type 2 diabetes in adults \u2014 NICE NG28 (updated 18 February 2026: dual MR metformin + SGLT2i first-line, phenotype branches) with NG136 (BP), NG238 (lipids), NG203 (CKD) and NG12 (suspected cancer) interfaces. Diagnosis and management are merged on this page; there is no separate new-diagnosis pathway to cross-check. Insulin initiation and adjustment has its own protocol. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

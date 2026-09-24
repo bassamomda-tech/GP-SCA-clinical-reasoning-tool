@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Breast cancer — Protocol · Reasoning GP</title>
+<meta name="description" content="Breast cancer in primary care: the NG12 referral criteria stated exactly, why the symptom and not your clinical impression triggers the 2WW, triple assessment, BRCA and genetics referral, chemoprevention under CG164, and the GP's role in endocrine therapy monitoring and survivorship." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/breast-cancer.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Breast cancer protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🎀",
+  title:"Breast cancer — the complete guide",
+  eyebrow:"Protocol · the symptom triggers the referral, not your impression",
+  stemTitle:"An unexplained breast lump at 30 or over is a two-week-wait referral — however benign it feels, because the criterion is the symptom and not your assessment of probability",
+  stemSub:"One page for the whole task: apply the NG12 criteria exactly as written, refer without hedging, and explain the referral in a way that neither catastrophises nor falsely reassures. Then the parts that are genuinely the GP's: identifying who needs clinical genetics, knowing that chemoprevention comes from CG164 rather than NG12, and the long monitoring tail — tamoxifen's endometrial and CYP2D6 traps, aromatase inhibitor bone health, and the survivorship review that runs for a decade.",
+  guideline:"NICE NG12 (May 2025) · NICE CG164 · NHS Breast Screening Programme",
+  reviewed:"10 September 2026",
+  nextReview:"10 March 2027",
+  meta:[
+    {t:"NICE NG12 — suspected cancer (May 2025)", tone:"tw"},
+    {t:"NICE CG164 — familial breast cancer"},
+    {t:"NHS Breast Screening Programme (50–71)"},
+    {t:"EBCTCG · ATAC · IBIS-I/II · BNF"},
+    {t:"Mastitis has its own protocol"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Refer now</b><small>NG12 · exact criteria</small></a><a href="#confirm"><b>Assess</b><small>Lump · nipple · skin</small></a><a href="#workup"><b>Triple assessment</b><small>What happens next</small></a><a href="#genetics"><b>Genetics</b><small>BRCA · chemoprevention</small></a><a href="#monitor"><b>Survivorship</b><small>Endocrine therapy</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ The symptom refers, not your clinical impression", html:"NICE NG12: refer on a suspected cancer pathway (appointment within 2 weeks) if aged 30 and over with an unexplained breast lump with or without pain. A GP who says \u201cthis feels benign, we'll watch it\u201d for an unexplained lump at 47 is not following NICE. Clinical probability does not determine the referral — the symptom does."},
+    {tone:"red", h:"The other NG12 breast criteria, exactly", html:"<b>Refer (2 weeks):</b> aged 50 and over with any of discharge, retraction or other change of concern in ONE nipple only. <b>Consider referral (2 weeks):</b> <b>skin changes suggesting breast cancer</b>, or <b>aged 30 and over with an unexplained axillary lump</b>. <b>Consider non-urgent referral</b> if <b>under 30 with an unexplained breast lump</b>. <b>Bloodstained unilateral nipple discharge is a 2WW whatever the age.</b>"},
+    {tone:"amber", h:"No single test excludes cancer", html:"Triple assessment = clinical examination + imaging (mammogram and/or ultrasound) + histology (core biopsy or FNA). <b>All three are required; no single test alone can exclude breast cancer</b> — which is why you refer rather than arrange a mammogram yourself and rely on it."},
+    {tone:"blue", h:"Chemoprevention is CG164, not NG12", html:"NICE CG164 (familial breast cancer) governs chemoprevention and enhanced surveillance: tamoxifen 20 mg OD for 5 years pre-menopausally (~38% risk reduction, IBIS-I), or anastrozole 1 mg OD for 5 years post-menopausally (~50%, IBIS-II). <b>NG12 is the referral guideline and says nothing about chemoprevention</b> — a distinction worth holding, because the two are frequently conflated."},
+    {tone:"purple", h:"Two tamoxifen traps the GP owns", html:"Any abnormal uterine bleeding on tamoxifen is an urgent gynaecology referral — endometrial cancer risk is about 1 in 500 per year. And never paroxetine or fluoxetine alongside it: potent CYP2D6 inhibitors reduce conversion to endoxifen, the active metabolite, and so reduce efficacy — use sertraline, citalopram or venlafaxine instead. <b>Stop the COCP on diagnosis of ER+ disease.</b>"},
+    {tone:"green", h:"Say the prognosis out loud", html:"1 in 7 UK women, around 55,000 new cases a year, and overall 5-year survival about 87% — stage I about 99%, stage IV about 30%. Patients arrive assuming the worst, and the stage-dependent figures are the strongest argument for coming in early rather than waiting six weeks as most do."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The first one is a decision, not an examination finding.",
+  pathway:[
+    {title:"Apply the criteria and refer", html:"Unexplained lump at 30 or over → 2WW. Unilateral nipple change at 50 or over → 2WW. Skin changes, or axillary lump at 30 or over → consider 2WW. Bloodstained unilateral discharge → 2WW at any age.", alert:true},
+    {title:"Examine and characterise for the letter", html:"<b>Chaperone offered and documented.</b> Site (<b>upper outer quadrant — about 50% of cancers</b>), size, consistency, mobility, skin and nipple changes, and <b>axillary and supraclavicular nodes</b>."},
+    {title:"Explain what happens next", html:"<b>Triple assessment at the breast clinic — examination, imaging, biopsy.</b> Say that most 2WW referrals do not turn out to be cancer, without promising it. <b>Do not squeeze the nipple to demonstrate discharge.</b>"},
+    {title:"Take the family history properly", html:"Three or more affected relatives on one side · two relatives with one under 50 · male breast cancer · bilateral disease · breast plus ovarian in one person or family → clinical genetics."},
+    {title:"Then hold the long tail", html:"Endocrine therapy monitoring, bone and cardiac surveillance, menopausal symptom management, psychological support, and the recurrence symptoms to act on."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Refer now", title:"The NG12 referral criteria, stated exactly",
+     sub:"This is the whole clinical decision. Everything else on the page follows from getting it right.",
+     blocks:[
+       {b:"table", head:["Criterion","NG12 category","Action"], rows:[
+         ["<b>Aged ≥30 with an unexplained breast lump, with or without pain</b>","<b>Refer</b>","<b>Suspected cancer pathway referral — appointment within 2 weeks</b>"],
+         ["Aged ≥50 with discharge, retraction or other change of concern in ONE nipple only","<b>Refer</b>","<b>2WW</b>"],
+         ["<b>Skin changes that suggest breast cancer</b> — peau d'orange, tethering, ulceration, eczematous nipple change (Paget's)","<b>Consider referral</b>","<b>2WW</b>"],
+         ["<b>Aged ≥30 with an unexplained lump in the axilla</b>","<b>Consider referral</b>","<b>2WW</b>"],
+         ["<b>Aged &lt;30 with an unexplained breast lump, with or without pain</b>","<b>Consider non-urgent referral</b>","Routine breast clinic"],
+         ["<b>Unilateral spontaneous bloodstained nipple discharge, any age</b>","Falls within the nipple-change and skin-change routes","<b>2WW.</b> Duct papilloma is the commonest benign cause, but it cannot be distinguished from DCIS or invasive cancer without triple assessment. Bilateral milky discharge is different — that is galactorrhoea: check prolactin and review drug causes (antipsychotics, domperidone, antihistamines) rather than referring on the cancer pathway"],
+         ["Inflammatory change — diffuse erythema, oedema, rapid onset, unwell breast not responding to antibiotics","<b>Inflammatory breast cancer</b>","<b>2WW, and do not simply re-treat as mastitis</b> — see the <a href='mastitis-breast-abscess.html'>mastitis protocol</a> for the benign pathway"]
+       ]},
+       {b:"warn", html:"The single most important message on this page: the referral criterion is the symptom, not the clinical impression. An unexplained breast lump in a woman of 30 or over is a 2WW referral regardless of how benign it feels on examination — soft, mobile, well-defined lumps are still referred, because clinical examination cannot exclude malignancy and <b>no single test alone can</b>. Watchful waiting on an unexplained lump at 47 because it \u201cprobably isn't anything\u201d is a deviation from NICE guidance and a recognised source of avoidable delay — \u201cwatch and wait\u201d is not a shared decision when the criterion is met."},
+       {b:"why", html:"Breast cancer is the most common cancer in UK women: a lifetime risk of about 1 in 7, roughly 55,000 new cases a year, and overall 5-year survival of approximately 87%. The stage dependence is what makes early referral matter — stage I 5-year survival is about 99%, against about 30% at stage IV. That gradient is also the most useful thing to say to a patient who has waited weeks before coming in, and to the next patient who is deciding whether to bother."}
+     ]},
+
+    {id:"confirm", nav:"Assess", title:"History and examination — what the clinic needs from you",
+     sub:"The referral is already decided. The examination characterises the problem for the letter and finds the features that change urgency.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Lump characterisation</b>","When found and how; change since; one lump or several; hard and fixed versus soft and mobile; tender or painless. Upper outer quadrant is the commonest site — about 50% of cancers — because it holds the greatest density of glandular tissue. <b>Suspicious: hard, irregular, non-tender, fixed, with skin tethering</b>"],
+         ["<b>Nipple and skin</b>","Discharge — spontaneous or expressed, unilateral or bilateral, bloodstained or milky; retraction or inversion (significant if NEW and unilateral; bilateral longstanding inversion is usually benign ligament shortening); peau d'orange (dermal lymphoedema — locally advanced or inflammatory cancer); eczematous or scaly nipple change (Paget's disease of the nipple)"],
+         ["<b>Nodes</b>","<b>Axillary and supraclavicular examination in every case</b> — a palpable axillary lump at ≥30 is itself an NG12 criterion, and lymphoma is part of that differential"],
+         ["<b>Risk factors</b>","Age; family history (age at diagnosis, which side of the family, ovarian cancer, male breast cancer); hormonal — COCP and HRT use, early menarche, late menopause, nulliparity or late first pregnancy; breastfeeding (protective — each 12 months of cumulative breastfeeding reduces risk by about 4%); alcohol; obesity, particularly post-menopausal; previous chest radiotherapy; smoking"],
+         ["<b>Examination practicalities</b>","<b>Offer and document a chaperone.</b> Examine both breasts, all quadrants, the axillae and the supraclavicular fossae, with the patient sitting and lying. <b>Do not squeeze the nipple to try to reproduce discharge</b> — it is uninformative and adds to distress"],
+         ["<b>Benign patterns worth recognising</b>","Fibroadenoma (\u201cbreast mouse\u201d): smooth, rubbery, mobile, non-tender, typically under 30 — still referred if unexplained, non-urgently under 30. Fibrocystic change and cyclical mastalgia: bilateral, cyclical, diffuse nodularity. Simple cyst: smooth, may be tender, can appear rapidly. Recognising these guides your explanation — it does not remove the referral obligation"]
+       ]},
+       {b:"say", html:"I can hear how worrying this has been, and I want to say two things before we go further. First, you have done exactly the right thing by coming in. Second, I do not know yet what this is — and nor would anyone until the proper tests are done. What I can tell you is what happens next: because you have a breast lump and you are over 30, national guidance says I refer you to the breast clinic to be seen within two weeks. I want to be clear that I am not doing that because I think this is cancer — I am doing it because that is the rule for any new breast lump, and most people referred this way turn out not to have cancer. At the clinic they do three things in one visit: examine you, image the breast, and if needed take a small sample. That combination is the only way to be certain."}
+     ]},
+
+    {id:"workup", nav:"Triple assessment", title:"What happens at the breast clinic, and the referral letter",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Triple assessment</b>","Clinical examination + imaging (mammogram and/or ultrasound) + histology (core biopsy or fine needle aspiration). All three components are required for a complete diagnosis, and no single test alone can exclude breast cancer. Under 35 the imaging is usually ultrasound first (denser breast tissue); over 40 mammography is more informative"],
+         ["<b>Do not arrange imaging yourself instead of referring</b>","A normal mammogram does not exclude cancer, and arranging primary care imaging in place of a 2WW referral introduces delay while providing false reassurance"],
+         ["<b>The referral letter</b>","Duration and site of the symptom; examination findings including size, consistency, mobility and skin or nipple changes; axillary node status; relevant family history with ages at diagnosis; hormonal factors including current COCP or HRT; and the patient's understanding and level of anxiety. Note explicitly if the patient has not told their family — the breast care nurse will use it"],
+         ["<b>Possible outcomes</b>","Benign (fibroadenoma, cyst, fibrocystic change) — discharge with breast awareness advice. B3 atypical or indeterminate — further excision, and reassess chemoprevention eligibility. DCIS (stage 0) — non-invasive, usually detected as mammographic microcalcification, 10-year survival about 99%. Invasive cancer — MDT, staging and receptor-driven treatment"],
+         ["<b>Receptor status drives everything that follows</b>","<b>Tumour grade (1–3, with Grade 3 poorly differentiated) and receptor status are both reported. <b>ER+/PR+ (hormone receptor positive) — 60–70% of cases — adjuvant endocrine therapy. HER2+ (immunohistochemistry, FISH if equivocal) — HER2-targeted therapy (trastuzumab). Triple negative (ER−/PR−/HER2−) — the most aggressive, chemotherapy-based, with fewer targeted options</b>"],
+         ["<b>After a benign result — reassure properly</b>","Explain the benign diagnosis confidently; a hedged reassurance leaves the patient in doubt and re-presenting. Fibroadenoma needs no treatment unless symptomatic or large (&gt;3cm); advise patient-initiated review if it changes, and continue breast awareness"]
+       ]},
+       {b:"why", html:"The reason triple assessment exists is that each component alone has a meaningful false-negative rate, and the combination does not. That is also why the GP's job is to refer rather than to investigate: a GP-ordered mammogram reported as normal in a woman with a palpable lump is one of the recognised routes to delayed diagnosis, because it feels like an answer. <b>Refer the symptom and let the clinic complete the triad.</b>"}
+     ]},
+
+    {id:"genetics", nav:"Genetics", title:"Family history, BRCA and chemoprevention",
+     sub:"This is CG164 territory, not NG12 — and it is a distinct GP task from the referral decision.",
+     blocks:[
+       {b:"table", head:["Domain","Detail"], rows:[
+         ["<b>Refer to clinical genetics if</b>","≥3 affected relatives on the same side of the family · ≥2 relatives with breast cancer, one diagnosed at ≤50 · male breast cancer in the family · bilateral breast cancer · breast and ovarian cancer in the same person or the same family. A single first-degree relative diagnosed over 50 does not meet the criteria"],
+         ["<b>BRCA lifetime risk</b>","BRCA1: breast cancer lifetime risk approximately 69–72%. BRCA2: approximately 45–55%. Both also carry substantial ovarian cancer risk"],
+         ["<b>Enhanced surveillance</b>","Annual MRI from age 30 where high risk is confirmed on genetics assessment — arranged by the specialist service, not primary care"],
+         ["<b>Chemoprevention — NICE CG164</b>","Offered where the 10-year risk is ≥30%, or the lifetime risk is ≥60% (Tyrer-Cuzick model); or BRCA1/2 is confirmed; or the 10-year risk is ≥10% with high-risk histology such as atypical ductal hyperplasia"],
+         ["<b>Chemoprevention agents</b>","Tamoxifen 20 mg OD for 5 years (pre-menopausal) — about 38% risk reduction (IBIS-I); DVT/PE and endometrial cancer risk. Anastrozole 1 mg OD for 5 years (post-menopausal or post-oophorectomy) — about 50% risk reduction (IBIS-II); bone loss, so use with bone density monitoring"],
+         ["<b>Screening</b>","NHS Breast Screening Programme: 3-yearly mammography ages 50–71, invitation-based, uptake around 65–70%, preventing approximately 1,300 deaths a year in England. <b>Women aged 40–50 or over 71 can self-refer if concerned.</b> Counsel on benefits and limitations at the age-50 invitation"]
+       ]},
+       {b:"warn", html:"A citation distinction worth being precise about: chemoprevention and enhanced surveillance for familial risk come from NICE CG164 (familial breast cancer), NOT from NG12. NG12 is the suspected-cancer referral guideline and does not set chemoprevention criteria. The two are commonly conflated in secondary summaries — including the casebook chapter this protocol was built from, whose own section heading cites CG164 correctly while its body text attributes the criteria to NG12."},
+       {b:"why", html:"<b>Breast awareness has replaced formal self-examination in UK advice</b> — the instruction is to know what is normal for you and to report change promptly, rather than to perform a monthly ritual examination. The practical message: \u201cany new lump, skin change, nipple change or swelling in the armpit — report it straight away, not after six weeks\u201d. That last clause matters: the modal delay in this presentation is the patient's, not the system's, and the reason is usually fear rather than ignorance."}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"Treatment landscape — enough to counsel and monitor",
+     sub:"The MDT leads. The GP supports treatment, manages side effects and provides continuity.",
+     blocks:[
+       {b:"table", head:["Modality","Detail and GP role"], rows:[
+         ["<b>Endocrine therapy — ER+ pre-menopausal</b>","Tamoxifen 20 mg OD for 5–10 years; reduces recurrence by about 50% (EBCTCG). GP monitors: endometrial symptoms — any abnormal bleeding needs urgent gynaecology; DVT/PE risk (2–3× increased) — consider LMWH cover for periods of immobility such as long flights or surgery; mood; annual LFTs. <b>STOP the COCP (for example Microgynon) on diagnosis of ER+ disease</b>"],
+         ["<b>Endocrine therapy — ER+ post-menopausal</b>","Aromatase inhibitor: anastrozole 1 mg OD, letrozole 2.5 mg OD or exemestane 25 mg OD for 5–10 years; superior to tamoxifen post-menopausally, reducing recurrence by about 55% (ATAC, BIG 1-98). No endometrial or DVT/PE risk. GP monitors: DEXA at start and annually, bisphosphonate if osteoporotic, joint pain, and menopausal symptoms. Only for post-menopausal women or those with confirmed ovarian suppression — confirm menopausal status (FSH where uncertain), because giving an aromatase inhibitor to a pre-menopausal woman causes a reflexive rise in oestrogen"],
+         ["<b>Ovarian suppression</b>","GnRH agonist (goserelin, leuprorelin) in pre-menopausal high-risk ER+ disease — the GP may continue injections prescribed by oncology"],
+         ["<b>HER2-targeted therapy</b>","Trastuzumab (Herceptin) for 12 months; cardiac toxicity risk with LVEF monitoring by echocardiogram at baseline and 3-monthly. <b>Not given simultaneously with anthracyclines.</b> Pertuzumab adds GI effects (diarrhoea — loperamide); lapatinib is oral, for metastatic or post-trastuzumab disease, with hepatotoxicity monitoring"],
+         ["<b>Chemotherapy side effects — GP-relevant</b>","Febrile neutropenia: temperature ≥38°C during chemotherapy → same-day oncology assessment, treated as neutropenic sepsis until proven otherwise. Nausea (ondansetron, metoclopramide, dexamethasone per protocol); taxane peripheral neuropathy (report to oncology); premature ovarian failure — HRT is usually contraindicated in ER+ disease, so use venlafaxine for hot flushes"],
+         ["<b>Surgery</b>","Wide local excision plus radiotherapy gives equivalent survival to mastectomy for most stage I–II disease. Mastectomy for multifocal disease, large tumour relative to breast size, BRCA mutation, previous radiotherapy, or patient preference. Sentinel lymph node biopsy is standard for clinically node-negative disease and reduces lymphoedema risk"]
+       ]},
+       {b:"warn", html:"<b>The CYP2D6 interaction is a GP prescribing trap.</b> Tamoxifen is a prodrug requiring CYP2D6 conversion to endoxifen, its active metabolite. Paroxetine and fluoxetine are potent CYP2D6 inhibitors and reduce that conversion, reducing tamoxifen efficacy — so avoid them. Where an antidepressant is needed, use sertraline, citalopram or venlafaxine. Aromatase inhibitors are metabolised via CYP3A4, so check interactions with strong inhibitors such as ketoconazole and clarithromycin. Venlafaxine 37.5–75 mg is also the preferred agent for tamoxifen-induced hot flushes, which affect around 80% of users."}
+     ]},
+
+    {id:"lifestyle", nav:"Risk reduction", title:"Modifiable risk, and what to say when",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"🍷 Alcohol", html:"Alcohol raises breast cancer risk by approximately 7–10% per 10 g of alcohol a day, by increasing circulating oestrogen and IGF-1 and reducing folate. Target ≤14 units a week, with 2–3 alcohol-free days; abstinence or near-abstinence reduces recurrence risk in alcohol-related disease. Time it carefully: <em>\u201cI'm not raising this to add to what you're dealing with today — just so you have the information.\u201d</em>"},
+         {tone:"green", h:"🏃 Exercise", html:"Regular exercise reduces breast cancer risk by about 20–30%, and after diagnosis reduces all-cause mortality by roughly 34% and breast-cancer-specific mortality by about 41%. <b>150 minutes a week of moderate activity</b>, plus resistance training for bone health during aromatase inhibitor therapy."},
+         {tone:"blue", h:"⚖️ Weight", html:"Post-menopausal obesity raises ER+ risk, because adipose tissue becomes the primary oestrogen source once ovarian production ceases. 5–10% weight loss in obese post-menopausal women reduces oestrogen levels by 25–40%. Target BMI 18.5–24.9. Particularly important on an aromatase inhibitor."},
+         {tone:"blue", h:"🤱 Reproductive factors", html:"<b>Each 12 months of cumulative breastfeeding reduces risk by about 4%</b>, through prolonged amenorrhoea and mammary cell differentiation. <b>Worth naming as a positive</b> — it reduces the guilt patients attach to the risk factors they cannot change."},
+         {tone:"cream", h:"🔬 Breast awareness", html:"Know what is normal for you and report change promptly — not formal monthly self-examination. \u201cAny new lump, skin change, nipple change or swelling in the armpit — report it immediately, not after six weeks.\u201d"},
+         {tone:"plain", h:"💊 HRT and the COCP", html:"Before diagnosis these are a risk-factor discussion, not a contraindication. After a diagnosis of ER+ disease, oestrogen-containing preparations are contraindicated — stop the COCP and discuss non-hormonal contraception. Do not change hormonal medication before the diagnosis is known."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Survivorship", title:"Follow-up, monitoring and the recurrence safety-net",
+     blocks:[
+       {b:"table", head:["What","Detail"], rows:[
+         ["<b>Surveillance imaging</b>","Annual mammography for years 1–5 after wide local excision, arranged by the breast clinic (stereotactic biopsy is used for impalpable mammographic lesions)"],
+         ["<b>Tamoxifen monitoring</b>","Annual LFTs; document any uterine bleeding or discharge and refer urgently; DVT/PE symptom awareness; mood (PHQ-9); adherence check, and discuss any consideration of early discontinuation with oncology rather than stopping. Review CYP2D6-interacting drugs at every medication change"],
+         ["<b>Aromatase inhibitor monitoring</b>","Annual DEXA; a bisphosphonate (alendronate 70 mg weekly) for osteoporosis if the T-score is below −2.0 — avoid if eGFR is below 35 ml/min, or denosumab 60 mg 6-monthly where bisphosphonates are unsuitable; check corrected calcium and correct hypocalcaemia before starting, and counsel on osteonecrosis of the jaw and dental review; calcium and vitamin D; weight-bearing exercise; paracetamol or an NSAID for aromatase-inhibitor joint pain"],
+         ["<b>Cardiac monitoring on trastuzumab</b>","<b>LVEF at baseline and 3-monthly during treatment</b> — oncology-arranged, but the GP should act on new cardiac symptoms"],
+         ["<b>Menopausal symptoms</b>","Venlafaxine for hot flushes (not paroxetine or fluoxetine with tamoxifen); clonidine, duloxetine, CBT, acupuncture and sleep hygiene as adjuncts; non-hormonal vaginal moisturisers and lubricants (Replens) for dryness, since vaginal oestrogen is contentious in ER+ disease; topical vaginal oestradiol is an oncologist decision in ER+ disease"],
+         ["<b>Psychosocial</b>","Counselling, breast care nurse, Breast Cancer Now and Macmillan; occupational health for phased return to work; fertility discussion and egg preservation before chemotherapy in younger women; body image after surgery or reconstruction; PHQ-9 and GAD-7"],
+         ["<b>Recurrence symptoms to act on</b>","New bone pain · a new lump in either breast or on the chest wall · contralateral or axillary nodes · respiratory symptoms · new neurological symptoms. If recurrence is suspected: FBC, U&amp;E, LFTs with albumin, corrected calcium (hypercalcaemia of malignancy), LDH, TFTs if symptomatic, and consider chest X-ray — jaundice or hepatomegaly suggests liver metastases"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same-day", html:"Temperature ≥38°C during chemotherapy (febrile neutropenia — neutropenic sepsis) · suspected DVT or PE on tamoxifen · new severe bone pain with neurological signs (cord compression)."},
+         {tone:"amber", h:"🟠 Urgent referral", html:"Any abnormal uterine bleeding on tamoxifen → urgent gynaecology for hysteroscopy or colposcopy. Also new visual symptoms on tamoxifen (retinal toxicity)."},
+         {tone:"purple", h:"🟣 2WW", html:"Any new NG12 breast criterion in a treated patient — a new lump in either breast is not assumed to be scar tissue."},
+         {tone:"green", h:"📘 Support", html:"<b>Breast Cancer Now</b> for information and peer support; the breast care nurse remains the point of contact through treatment."}
+       ]},
+       {b:"say", html:"You are on anastrozole for the next five to ten years, and there are three things I will keep an eye on. Your bones — the tablet accelerates bone loss, so we scan them and I may add a bone-protecting treatment. Your joints — aching is the commonest side effect and there are things that help, so tell me rather than stopping the tablet. And your mood, because this is a long haul. One rule to take away: if you ever get new bone pain that does not settle, or you find a new lump in either breast, come to me rather than waiting for your next clinic appointment."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW breast clinic · NICE NG12", html:"<b>Refer:</b> unexplained breast lump at 30 or over; unilateral nipple discharge, retraction or other change of concern at 50 or over. <b>Consider referral:</b> skin changes suggesting cancer; unexplained axillary lump at 30 or over. <b>Bloodstained unilateral discharge at any age.</b>"},
+         {tone:"blue", h:"Routine breast clinic", html:"<b>Unexplained breast lump under 30 — consider non-urgent referral.</b> Also benign symptomatic disease needing specialist input (large fibroadenoma, recurrent cysts)."},
+         {tone:"amber", h:"Clinical genetics", html:"≥3 affected relatives one side · ≥2 relatives with one at ≤50 · male breast cancer · bilateral disease · breast plus ovarian in one person or family. CG164 pathway."},
+         {tone:"red", h:"Same-day oncology", html:"<b>Febrile neutropenia during chemotherapy (temperature ≥38°C)</b> · suspected spinal cord compression."},
+         {tone:"green", h:"NHS Breast Screening", html:"Invitation-based 3-yearly mammography at 50–71; self-referral available at 40–50 and over 71 on request."},
+         {tone:"cream", h:"GP management", html:"Shared care with oncology: the referral decision and letter · chaperoned examination · explanation and psychological support · family history assessment · endocrine therapy monitoring and side-effect management · survivorship review. Benign inflammatory breast disease is on the <a href='mastitis-breast-abscess.html'>mastitis and breast abscess protocol</a>."}
+       ]},
+       {b:"why", html:"Two things make this presentation go wrong in primary care, and neither is a knowledge gap about cancer biology. The first is <b>substituting clinical judgement for the NG12 criterion</b> — deciding a lump feels benign and arranging review instead of referral. The second is <b>hedged communication</b>: a referral explained so anxiously that the patient believes they have cancer, or so casually that they do not attend. Both are avoidable with a clear script, which is why this page carries one."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 47-year-old teacher has had a firm painless lump in the right upper outer quadrant for six weeks. She came only because a friend who had breast cancer insisted. Her mother was diagnosed at 63; she is on the COCP, drinks 15 units a week, and has told nobody in her family because she does not want to worry them \u201cif it's nothing\u201d. She is asking for reassurance."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Refers on the 2WW pathway because she is over 30 with an unexplained lump — and does not let a benign-feeling examination override the criterion; explains the referral without catastrophising or falsely reassuring, and names triple assessment; acknowledges the fear before taking the clinical history, since a frightened patient retains little; assesses family history against the CG164 genetics criteria and correctly concludes she does not meet them; <b>does not stop the COCP before a diagnosis is known</b>; times the <b>alcohol conversation</b> so it does not land as blame; and — the step candidates miss — <b>addresses that she has told no one, and offers the words to use.</b>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the breast cancer referral criteria: refer at 30 and over with an unexplained breast lump, and at 50 and over with unilateral nipple change; consider referral for skin changes suggesting cancer and for an unexplained axillary lump at 30 and over; consider non-urgent referral under 30. <b>Note:</b> the source casebook cites NG12 as a 2023 document; the current version is May 2025, which this page follows</span></li>'+
+         '<li>NICE CG164 — Familial breast cancer: classification, care and managing breast cancer and related risks in people with a family history of breast cancer<br><a href="https://www.nice.org.uk/guidance/cg164" rel="noopener">nice.org.uk/guidance/cg164</a><span class="rd"> — the genetics referral criteria, enhanced surveillance, and the chemoprevention thresholds and agents. <b>This is the guideline for chemoprevention, not NG12</b> — the source casebook\u2019s section heading cites CG164 correctly while its body text repeatedly attributes the chemoprevention criteria to NG12; this page follows CG164</span></li>'+
+         '<li><b>NHS Breast Screening Programme</b><span class="rd"> — 3-yearly mammography ages 50–71, uptake around 65–70%, preventing approximately 1,300 deaths a year in England; self-referral at 40–50 and over 71</span></li>'+
+         '<li><b>EBCTCG meta-analysis; ATAC and BIG 1-98 trials</b><span class="rd"> — tamoxifen reducing ER+ recurrence by about 50%, and aromatase inhibitors by about 55% post-menopausally</span></li>'+
+         '<li><b>IBIS-I and IBIS-II trials</b><span class="rd"> — chemoprevention risk reduction: tamoxifen approximately 38% pre-menopausally, anastrozole approximately 50% post-menopausally</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — tamoxifen, anastrozole, letrozole, exemestane, trastuzumab, goserelin and venlafaxine prescribing, and the tamoxifen CYP2D6 interactions</span></li>'+
+         '<li><b>Breast Cancer Now</b><br><a href="https://breastcancernow.org" rel="noopener">breastcancernow.org</a><span class="rd"> — patient information and peer support</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Breast cancer — NICE NG12 (May 2025) for referral, NICE CG164 for familial risk and chemoprevention, the NHS Breast Screening Programme, and the EBCTCG, ATAC, BIG 1-98, IBIS-I and IBIS-II trial evidence. An unexplained breast lump at 30 or over is a two-week-wait referral regardless of clinical impression, and no single test alone excludes breast cancer. Benign inflammatory breast disease is covered by the <a href=\"mastitis-breast-abscess.html\">mastitis and breast abscess protocol</a>. Verify all doses against the current BNF before prescribing, and follow local shared-care arrangements for endocrine therapy monitoring."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

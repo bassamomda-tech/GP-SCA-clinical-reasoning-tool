@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dementia — Protocol · Reasoning GP</title>
+<meta name="description" content="Dementia in primary care: why the subtype drives safe prescribing, the non-drug care that produces the largest quality-of-life gains, cholinesterase inhibitors and memantine, BPSD as communication of unmet need, the antipsychotic risks and the Lewy body sensitivity, and treating a sudden change as delirium." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/dementia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Dementia protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Dementia — the complete guide",
+  eyebrow:"Protocol · NICE NG97 · subtype drives safe prescribing",
+  stemTitle:"The largest gains in dementia care come not from the cognitive enhancer but from support, planning, and treating the things that make cognition worse — pain, sensory loss and anticholinergic burden",
+  stemSub:"One page for the whole condition. Establish the <b>subtype</b>, because it changes drug choice and makes some drugs dangerous; deliver the non-drug care that is the actual foundation; use cognitive enhancers where indicated and skip them in pure vascular dementia; treat <b>BPSD as communication of an unmet need</b> before reaching for an antipsychotic that carries excess stroke and death; and remember that a sudden change is <b>delirium until proven otherwise</b>, not the dementia getting worse.",
+  guideline:"NICE NG97",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE NG97 — dementia: assessment, management and support"},
+    {t:"Antipsychotics in Lewy body dementia: severe sensitivity", tone:"tw"},
+    {t:"Sudden change = delirium until proven otherwise", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#foundation"><b>Subtype</b><small>Drives prescribing</small></a><a href="#support"><b>Support</b><small>The real treatment</small></a><a href="#cognitive"><b>Cognitive</b><small>AChEI · memantine</small></a><a href="#bpsd"><b>BPSD</b><small>Unmet need first</small></a><a href="#decline"><b>Decline?</b><small>Delirium first</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⛔ Avoid antipsychotics in dementia with Lewy bodies", html:"Severe neuroleptic sensitivity — reactions can be catastrophic and irreversible. This is why establishing the subtype is a prescribing-safety task, not an academic one. Cholinesterase inhibitors, by contrast, help in Lewy body dementia and Parkinson's disease dementia as well as Alzheimer's."},
+    {tone:"red", h:"⚠ A sudden change is delirium until proven otherwise", html:"An acute change in confusion, alertness or behaviour over hours to days is NOT \"the dementia getting worse\". Screen for infection (especially urine and chest), constipation, dehydration, pain and a new drug. Missing delirium is the commonest avoidable harm in this condition."},
+    {tone:"amber", h:"BPSD is usually communication of an unmet need", html:"Always non-pharmacological first: look for pain, infection, constipation, hunger, boredom, environment and communication difficulty. <b>Unrecognised pain is a leading cause of agitation.</b> Antipsychotics carry a real excess of stroke and death in dementia — last resort, lowest dose, shortest time, with periodic withdrawal attempts."},
+    {tone:"blue", h:"Cognitive enhancers — and where they do not belong", html:"Donepezil 5–10 mg OD, rivastigmine or galantamine for mild-to-moderate Alzheimer's, Lewy body dementia or Parkinson's disease dementia. Memantine for moderate-to-severe Alzheimer's, as an add-on or where an AChE inhibitor is not tolerated. Not routinely indicated in pure vascular dementia — there, treat the cardiovascular risk factors instead."},
+    {tone:"green", h:"Reduce anticholinergic burden — it opposes the treatment", html:"Anticholinergics worsen cognition and directly oppose cholinesterase inhibitors. Reviewing and reducing them is one of the highest-yield actions available in primary care, and it is free. Alongside: treat pain, correct hearing and vision, and address sleep, nutrition, hydration and continence."},
+    {tone:"purple", h:"🟣 DVLA notification is a statutory duty", html:"A diagnosis of dementia must be notified to the DVLA — it is the patient's legal duty, and you should record that you told them. Capacity, Lasting Power of Attorney and advance care planning should all be addressed while the person can still participate, which means early rather than at the point of crisis."}
+  ],
+  pathwaySub:"Six steps, and the first one determines which drugs are safe.",
+  pathway:[
+    {title:"Establish subtype, severity and the whole person", html:"Alzheimer's, vascular, mixed, Lewy body or frontotemporal — plus function, BPSD, capacity and reversible contributors.", alert:true},
+    {title:"Put the non-drug foundation in place", html:"Cognitive stimulation, post-diagnostic support, carer assessment, advance care planning, sensory aids and the practicalities."},
+    {title:"Consider a cognitive enhancer where indicated", html:"AChE inhibitor, then memantine — and not routinely in pure vascular dementia."},
+    {title:"Manage BPSD by finding the unmet need", html:"Non-drug measures first, every time; antipsychotics last resort, time-limited and reviewed."},
+    {title:"Monitor cognition, function, drugs and the carer", html:"Carer strain is reassessed at every review — carer wellbeing protects the patient."},
+    {title:"On any decline, exclude reversible causes first", html:"Delirium, pain, anticholinergics, mood and sensory impairment — before accepting progression."}
+  ],
+  sections:[
+
+    {id:"foundation", nav:"Subtype", title:"Step 1 — subtype, severity and the whole person",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Subtype</b>","Alzheimer's, vascular, mixed, dementia with Lewy bodies, frontotemporal — this changes drug choice and cautions"],
+         ["<b>Severity and function</b>","Cognition, activities of daily living, behavioural and psychological symptoms (BPSD), and risk"],
+         ["<b>Capacity and planning</b>","Mental capacity, Lasting Power of Attorney, advance care planning, DVLA notification"],
+         ["<b>Reversible contributors</b>","Sensory impairment, pain, depression, delirium, polypharmacy — particularly anticholinergics"]
+       ]},
+       {b:"why", html:"Subtype drives safe prescribing: cholinesterase inhibitors help Alzheimer's and Lewy body dementia, but antipsychotics are dangerous in Lewy body disease. Beyond drugs, dementia care is mostly support, planning, and treating the things that make cognition worse — pain, sensory loss and anticholinergic load — which is where the largest quality-of-life gains lie."}
+     ]},
+
+    {id:"support", nav:"Support", title:"Step 2 — support, stimulation and carers: the foundation of care",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🧩 Cognitive stimulation", html:"Group cognitive stimulation therapy for mild-to-moderate dementia; structured activity."},
+         {tone:"green", h:"👥 Post-diagnostic support", html:"Named coordinator, written care plan, local services, dementia adviser."},
+         {tone:"green", h:"🫂 Carer support", html:"Carer needs assessment, education and respite — carer wellbeing protects the patient."},
+         {tone:"green", h:"📋 Advance care planning", html:"Capacity, LPA, preferences and DNACPR discussions while the person can still participate."},
+         {tone:"green", h:"👓 Optimise the basics", html:"Hearing and vision aids, treat pain, sleep, nutrition, hydration, continence."},
+         {tone:"purple", h:"🚗 Practicalities", html:"<b>DVLA notification, safeguarding, finances, home safety.</b>"}
+       ]}
+     ]},
+
+    {id:"cognitive", nav:"Cognitive", title:"Step 3 — cognitive enhancers (often specialist-initiated)",
+     blocks:[
+       {b:"table", head:["Step","Drug","When"], rows:[
+         ["<b>Step 1 — AChE inhibitor</b>","<b>Donepezil 5–10 mg OD, rivastigmine, or galantamine</b>","Mild-to-moderate Alzheimer's, Lewy body dementia, or Parkinson's disease dementia. <b>Counsel on GI effects and bradycardia; consider baseline pulse and ECG</b>"],
+         ["<b>Step 2 — memantine</b>","<b>NMDA antagonist</b>","Moderate-to-severe Alzheimer's; as an add-on to an AChE inhibitor, or where one is not tolerated"],
+         ["<b>Vascular dementia</b>","<b>Cognitive enhancers NOT routinely indicated in pure vascular dementia</b>","<b>Focus on cardiovascular risk reduction instead</b>"]
+       ]},
+       {b:"warn", html:"Avoid antipsychotics in dementia with Lewy bodies — severe sensitivity. Minimise anticholinergic burden: it worsens cognition and directly opposes AChE inhibitors. Antipsychotics for BPSD raise stroke and death risk — last resort only."}
+     ]},
+
+    {id:"bpsd", nav:"BPSD", title:"Step 4 — distress and behaviour: non-drug first",
+     blocks:[
+       {b:"table", head:["Step","Action"], rows:[
+         ["<b>Step 1 — always non-pharmacological first</b>","Look for unmet needs: pain, infection, constipation, hunger, boredom, environment, communication difficulty"],
+         ["<b>Antipsychotic</b>","Only if there is severe distress or risk to self or others, AFTER non-drug measures — lowest dose, shortest time, reviewed regularly"],
+         ["<b>Depression or anxiety</b>","Treat comorbid mood disorder; consider an antidepressant where appropriate"],
+         ["<b>Review</b>","<b>Time-limited; attempt withdrawal of antipsychotics periodically</b>"]
+       ]},
+       {b:"why", html:"BPSD is usually the communication of an unmet need — pain, infection or distress — so the first \"treatment\" is a careful search for the cause. Antipsychotics carry a real excess of stroke and death in dementia, which is why they are a last resort, lowest-dose, time-limited measure."}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"Step 5 — monitoring and the review schedule",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Cognition and function</b>","<b>At reviews</b>","<b>Track decline; reassess goals and support</b>"],
+         ["<b>AChE inhibitor tolerability</b>","<b>After starting and at titration</b>","<b>GI effects, weight, pulse and bradycardia, syncope</b>"],
+         ["<b>BPSD and antipsychotic review</b>","<b>Regularly</b>","<b>Attempt withdrawal; monitor for harm</b>"],
+         ["<b>Carer strain</b>","<b>Each review</b>","<b>Reassess carer support and respite needs</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>After diagnosis</b>","Establish the care plan: coordinator, support services, cognitive enhancer if indicated, carer assessment, advance planning"],
+         ["<b>Regular reviews</b>","Holistic review — cognition, function, BPSD, drugs, comorbidity, carer wellbeing, safeguarding"],
+         ["<b>With decline</b>","Anticipatory care: reassess goals, advance and end-of-life care, place-of-care decisions"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Delirium", html:"\"A sudden change in confusion, alertness or behaviour over hours to days — contact us. It usually means a treatable illness like an infection.\""},
+         {tone:"amber", h:"🛡️ Safeguarding", html:"\"Concerns about safety, neglect, finances or driving — raise them with us; we can help.\""},
+         {tone:"amber", h:"💊 Antipsychotic risks", html:"\"If an antipsychotic is used it is short-term and reviewed — tell us about drowsiness, falls or stiffness.\""},
+         {tone:"green", h:"🫂 Carer", html:"\"If you are struggling as a carer, tell us early — support and respite are available.\""}
+       ]}
+     ]},
+
+    {id:"decline", nav:"Decline?", title:"Decline or new distress? Exclude reversible causes",
+     sub:"A sudden change is delirium until proven otherwise — not just the dementia getting worse.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"1 · Delirium", html:"Acute change → screen for infection (especially urine and chest), constipation, dehydration, and any new drug."},
+         {tone:"amber", h:"2 · Pain", html:"<b>Unrecognised pain is a leading cause of agitation — assess and treat.</b>"},
+         {tone:"amber", h:"3 · Anticholinergics", html:"<b>Review and reduce anticholinergic burden.</b>"},
+         {tone:"blue", h:"4 · Mood and sensory", html:"<b>Treat depression; optimise hearing and vision.</b>"},
+         {tone:"green", h:"5 · Specialist", html:"Severe or refractory BPSD, or diagnostic doubt → old-age psychiatry or the memory service."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When to refer",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Memory assessment service", html:"<b>For diagnosis, subtyping and cognitive-enhancer initiation.</b>"},
+         {tone:"amber", h:"Old-age psychiatry — severe BPSD", html:"<b>Distress or risk refractory to non-drug measures.</b>"},
+         {tone:"amber", h:"Neurology / specialist", html:"<b>Rapid decline, young-onset dementia, or atypical features.</b>"},
+         {tone:"green", h:"Social care and safeguarding", html:"<b>Carer breakdown, safeguarding concerns, or place-of-care decisions.</b>"},
+         {tone:"cream", h:"GP management", html:"Recognising reversible contributors, the non-drug foundation, continuing cognitive enhancers, BPSD assessment, anticholinergic deprescribing, carer support, advance care planning and the delirium screen all belong here. Related pages: <a href='parkinsons.html'>Parkinson's disease</a> · <a href='depression.html'>depression</a> · <a href='malnutrition.html'>malnutrition</a> · <a href='tia-stroke.html'>stroke and TIA</a> · <a href='care-of-the-dying.html'>care of the dying</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"The daughter of an 82-year-old man with <b>dementia with Lewy bodies</b> phones. Over the <b>past three days</b> he has become more confused, is <b>seeing people in the room at night</b>, and was <b>agitated and aggressive</b> with carers this morning. He is on <b>donepezil</b> and was recently started on <b>oxybutynin</b> for urinary urgency. She asks whether he can have \"something to calm him down\"."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Treats a three-day change as DELIRIUM until proven otherwise</b> and screens for infection, constipation, dehydration and pain rather than accepting progression; identifies the recently started oxybutynin as an anticholinergic that both worsens cognition and directly opposes the donepezil, and stops it; <b>recognises that visual hallucinations are core to Lewy body dementia</b> and does not treat them as new psychosis; declines the request for an antipsychotic, explaining the severe neuroleptic sensitivity in Lewy body disease — this is the single most important safety point in the case — as well as the general stroke and death excess; <b>searches for the unmet need behind the agitation</b>, particularly pain and the carers' approach; assesses the daughter's strain and offers a carer's assessment and respite; arranges <b>same-day review or admission if systemically unwell</b>; and involves <b>old-age psychiatry</b> if distress persists after reversible causes are excluded."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG97 — Dementia: assessment, management and support for people living with dementia and their carers<br><a href="https://www.nice.org.uk/guidance/ng97" rel="noopener">nice.org.uk/guidance/ng97</a><span class="rd"> — subtype-specific prescribing, cholinesterase inhibitors and memantine by severity, group cognitive stimulation therapy, the non-pharmacological-first approach to distress and behaviour, antipsychotics as a last resort with periodic withdrawal attempts, and carer needs assessment</span></li>'+
+         '<li><b>NICE NG97 \u2014 Dementia: assessment, management and support</b><br><a href="https://www.nice.org.uk/guidance/ng97" rel="noopener">nice.org.uk/guidance/ng97</a><span class="rd"> — the reversible contributors, the delirium screen on acute change, anticholinergic burden, monitoring of AChE inhibitor tolerability, and the referral thresholds</span></li>'+
+         '<li>MHRA Drug Safety Update — antipsychotics in elderly people with dementia<span class="rd"> — the increased risk of stroke and death that makes antipsychotics a last-resort, time-limited measure</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — the statutory duty to notify a diagnosis of dementia</span></li>'+
+         '<li><b>Mental Capacity Act 2005</b><span class="rd"> — capacity assessment, Lasting Power of Attorney and advance care planning while the person can still participate</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Dementia — NICE NG97 and NICE. Establish the subtype, because it decides which drugs are safe: avoid antipsychotics in dementia with Lewy bodies, and do not use cognitive enhancers routinely in pure vascular dementia. The largest quality-of-life gains come from support, planning, and treating what makes cognition worse — pain, sensory impairment and anticholinergic burden. BPSD is usually communication of an unmet need: non-drug measures first, every time. A sudden change over hours to days is delirium until proven otherwise. Notify the DVLA. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

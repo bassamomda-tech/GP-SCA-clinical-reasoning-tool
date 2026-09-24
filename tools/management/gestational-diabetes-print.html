@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gestational diabetes — Protocol · Reasoning GP</title>
+<meta name="description" content="Hyperglycaemia in pregnancy: separating overt pre-existing diabetes from true gestational diabetes, the NG3 OGTT thresholds, glucose targets and fetal surveillance, the diet→metformin→insulin ladder with the fasting-7 rule, and the postnatal glucose test that is the most-missed action in the pathway." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/gestational-diabetes.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790241765963737 tools/management/gestational-diabetes.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Gestational diabetes protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🤰",
+  title:"Gestational diabetes — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Two things get missed: a booking HbA1c of 48 or more is pre-existing diabetes, not GDM — and the postnatal glucose test, because about half go on to type 2",
+  stemSub:"One page for the whole condition: separate overt pre-existing diabetes from true gestational diabetes at booking, screen by risk factor and diagnose on the 75 g OGTT, treat to deliberately tight targets because maternal glucose drives fetal overgrowth, escalate diet → metformin → insulin with the fasting-7 rule deciding the starting rung, and then do the postnatal test that converts this pregnancy into a lifelong prevention opportunity.",
+  guideline:"NICE NG3 · joint diabetes-antenatal standards",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE NG3 — diabetes in pregnancy"},
+    {t:"NICE NG3 — diabetes in pregnancy"},
+    {t:"OGTT thresholds: fasting ≥5.6 / 2-hour ≥7.8"},
+    {t:"BNF for all doses"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Overt diabetes · DKA · PET</small></a><a href="#confirm"><b>Screen &amp; diagnose</b><small>Risk factors · 75 g OGTT</small></a><a href="#workup"><b>Targets</b><small>Glucose · growth scans</small></a><a href="#ladder"><b>Treat</b><small>Diet → metformin → insulin</small></a><a href="#monitor"><b>Postnatal</b><small>The missed test</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ A booking HbA1c of 48 or more is NOT gestational diabetes", html:"Booking HbA1c ≥48 mmol/mol, or a fasting or random glucose in the diabetic range, means undiagnosed pre-existing type 1 or type 2 diabetes. That needs the diabetes-in-pregnancy pathway: tighter targets, folic acid 5 mg, retinal and renal screening, and low-dose aspirin from 12 weeks for pre-eclampsia."},
+    {tone:"amber", h:"The two diagnostic numbers", html:"On a 75 g OGTT, GDM is diagnosed if the fasting plasma glucose is ≥5.6 mmol/L OR the 2-hour glucose is ≥7.8 mmol/L (NICE NG3) — <b>either one alone makes the diagnosis</b>. <b>HbA1c does not diagnose GDM</b>, because pregnancy alters red-cell turnover."},
+    {tone:"blue", h:"The fasting glucose picks the starting rung", html:"Fasting &lt;7 mmol/L with no fetal complications → a 1–2 week trial of diet and exercise. <b>Fasting 7 or above at diagnosis → insulin immediately</b> — too high for a lifestyle trial. Fasting 6 or above with macrosomia or polyhydramnios also goes straight to insulin."},
+    {tone:"green", h:"Targets are tight on purpose", html:"Fasting below 5.3, 1-hour post-meal below 7.8, or 2-hour below 6.4 mmol/L — and <b>keep above 4</b> to avoid hypoglycaemia on insulin or a sulfonylurea. Maternal hyperglycaemia drives fetal overgrowth, and poorly controlled diabetes carries a raised stillbirth risk."},
+    {tone:"purple", h:"Growth and liquor scans at 28, 32 and 36 weeks", html:"<b>Macrosomia and polyhydramnios both signal suboptimal control</b> and inform the timing and mode of birth. <b>Offer elective birth no later than 40+6 weeks</b>, earlier if there is macrosomia or poor control."},
+    {tone:"plain", h:"The postnatal test is the most-missed action in the pathway", html:"Stop all glucose-lowering drugs immediately after birth. Then fasting plasma glucose at 6–13 weeks postpartum, or HbA1c if that window is missed (after 13 weeks), followed by an annual HbA1c — because around 50% develop type 2 diabetes, many within 5 years."}
+  ],
+  pathwaySub:"The whole pathway in five moves. The red step changes which condition you are treating.",
+  pathway:[
+    {title:"Rule out overt diabetes and the emergencies", html:"<b>Booking HbA1c ≥48 = pre-existing diabetes, not GDM.</b> Then screen for euglycaemic DKA, pre-eclampsia, reduced fetal movements, macrosomia and polyhydramnios.", alert:true},
+    {title:"Screen by risk factor, diagnose on OGTT", html:"<b>Any one risk factor → 75 g OGTT at 24–28 weeks.</b> Previous GDM → test as soon as possible after booking, and repeat at 24–28 weeks if normal. Diagnose on <b>fasting ≥5.6 or 2-hour ≥7.8</b>."},
+    {title:"Refer and set the targets", html:"<b>Joint diabetes-antenatal clinic, ideally seen within 1 week.</b> Self-monitoring to target, with <b>growth and liquor scans at 28, 32 and 36 weeks</b>."},
+    {title:"Escalate by the fasting glucose", html:"<b>Diet and exercise → metformin → insulin</b>, with <b>glibenclamide</b> reserved for the woman who cannot take metformin and declines insulin. <b>Fasting ≥7 at diagnosis starts on insulin.</b>"},
+    {title:"Deliver, stop the drugs, and retest", html:"Birth by 40+6, neonatal glucose monitoring, stop all hypoglycaemics immediately after delivery, then the <b>6–13 week postnatal glucose and annual HbA1c</b>, plus early testing in any future pregnancy."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Red flags — overt diabetes, DKA, pre-eclampsia and fetal compromise",
+     sub:"The first job is to separate true GDM from pre-existing diabetes only now detected — the latter needs more intensive care and pre-eclampsia prophylaxis.",
+     blocks:[
+       {b:"table", head:["Finding","What it means","Action"], rows:[
+         ["Booking HbA1c ≥48 mmol/mol, or fasting/random glucose in the diabetic range","Undiagnosed pre-existing type 1 or type 2 diabetes — NOT gestational diabetes","Manage as diabetes in pregnancy: tighter targets, folic acid 5 mg, retinal and renal screening, and low-dose aspirin from 12 weeks for pre-eclampsia"],
+         ["<b>Vomiting, abdominal pain, thirst, breathlessness, ketones</b>","Diabetic ketoacidosis — and it can occur at lower glucose levels in pregnancy (\u201ceuglycaemic DKA\u201d), in type 1 or rarely type 2","<b>Same-day emergency obstetric and medical admission.</b> A genuine threat to mother and fetus — see the <a href='dka.html'>DKA protocol</a>"],
+         ["Raised BP, proteinuria, headache, visual disturbance, epigastric pain, brisk reflexes","<b>Pre-eclampsia</b> — the risk is raised by both GDM and pre-existing diabetes","<b>Urgent assessment.</b> Offer aspirin prophylaxis in those at risk; see the <a href='hypertension-pregnancy.html'>hypertension in pregnancy protocol</a>"],
+         ["<b>Reduced fetal movements</b>","A marker of fetal compromise; <b>diabetes carries a higher stillbirth risk</b>","<b>Same-day assessment</b>"],
+         ["<b>Polyhydramnios (hydramnios) or accelerating fetal growth</b>","Markers of poor glycaemic control as well as fetal compromise","<b>Review control and scan</b>"],
+         ["<b>Severe maternal hypoglycaemia</b>","In women on insulin or a sulfonylurea — <b>the risk rises in the first trimester and with tight targets</b>","Counsel on recognition and treatment, and on the DVLA and driving rules where relevant"],
+         ["<b>Macrosomia</b>","<b>Predisposes to shoulder dystocia and neonatal injury</b>","<b>Informs the timing and mode-of-birth discussion with obstetrics</b>"]
+       ]},
+       {b:"why", html:"Two acute emergencies threaten both mother and baby here — <b>DKA, which can be euglycaemic in pregnancy</b>, and <b>pre-eclampsia</b>. Running underneath all of it is the unspoken red flag: the raised stillbirth risk of poorly controlled diabetes, which is precisely why glucose targets in pregnancy are so tight and fetal surveillance so structured."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Gestational diabetes has no NICE NG12 suspected-cancer criterion, and none should be invented for one. One adjacency is worth carrying forward after the pregnancy rather than during it: NG12 gives a direct-access CT within 2 weeks for people aged 60 and over with weight loss plus new-onset diabetes — irrelevant to an obstetric population, but relevant to the same woman decades later if diabetes emerges alongside unexplained weight loss"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Screen &amp; diagnose", title:"Who to screen, when, and the diagnostic thresholds",
+     sub:"The UK screens by risk factor rather than universally, so the screening question is what makes the diagnosis — most GDM is silent.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Risk factors — any ONE triggers an OGTT</b>","BMI above 30 kg/m² · a previous macrosomic baby weighing 4.5 kg or more · previous gestational diabetes · a first-degree relative with diabetes · high-risk ethnicity (South Asian, Black Caribbean, Middle Eastern)"],
+         ["<b>Previous GDM</b>","Offer early self-monitoring of blood glucose or a 75 g OGTT as soon as possible after booking, and a further OGTT at 24–28 weeks if the first is normal — this group has the highest recurrence rate"],
+         ["<b>All other risk factors</b>","<b>75 g OGTT at 24–28 weeks</b>"],
+         ["<b>Glycosuria on routine testing</b>","2+ on one occasion, or 1+ on two occasions → consider further testing for GDM"],
+         ["<b>Symptoms</b>","<b>Most GDM is asymptomatic and found on screening</b>, but thirst, polyuria, fatigue or recurrent thrush should prompt glucose testing <b>at any gestation</b>"],
+         ["<b>Diagnose GDM if EITHER</b>","Fasting plasma glucose ≥5.6 mmol/L OR 2-hour plasma glucose ≥7.8 mmol/L on the 75 g OGTT (NICE NG3)"],
+         ["<b>Overt diabetes, not GDM</b>","Booking HbA1c ≥48 mmol/mol, or fasting ≥7.0, or random ≥11.1 with symptoms — manage as pre-existing diabetes"],
+         ["<b>HbA1c in pregnancy</b>","Not used to diagnose GDM — red-cell turnover changes make it unreliable. Useful <b>at booking</b> to detect overt diabetes, and later to assess risk"]
+       ]},
+       {b:"table", head:["Differential","Recognise it by","Note"], rows:[
+         ["<b>Gestational diabetes</b>","Glucose intolerance <b>first recognised in pregnancy</b>, typically second or third trimester, <b>resolving after delivery</b>","The default when OGTT thresholds are met and the booking HbA1c was normal"],
+         ["<b>Pre-existing type 2 diabetes</b>","Often undiagnosed beforehand — a high booking HbA1c, obesity, strong risk factors, or hyperglycaemia in the first trimester","<b>Needs more intensive management and a different risk conversation</b>"],
+         ["<b>New type 1 diabetes</b>","<b>Younger, lean, rapid osmotic symptoms, ketosis-prone</b>","<b>A specialist emergency — do not mislabel as GDM</b>"],
+         ["<b>Transient steroid hyperglycaemia</b>","After <b>antenatal corticosteroids</b> given for fetal lung maturity","Transient; may need short-term insulin cover — not a new diagnosis of GDM"],
+         ["<b>Renal glycosuria</b>","<b>Glucose in the urine with a normal blood glucose</b> — a lowered renal threshold, common in pregnancy and benign","Confirm with blood glucose or OGTT before labelling — do not rely on the dipstick"]
+       ]},
+       {b:"warn", html:"<b>How the diagnosis is delivered matters clinically.</b> Explain that good control greatly reduces the risks, that it often resolves after birth, and that it is not caused by anything she did wrong — addressing guilt and engaging her early genuinely improves outcomes, because reaching tight targets depends on her doing the daily work."}
+     ]},
+
+    {id:"workup", nav:"Targets", title:"Monitoring and fetal surveillance",
+     blocks:[
+       {b:"table", head:["What","Detail"], rows:[
+         ["<b>Self-monitoring of blood glucose</b>","<b>Fasting and 1-hour post-meal capillary glucose</b>"],
+         ["<b>Targets</b>","Fasting below 5.3 · 1-hour post-meal below 7.8 · or 2-hour below 6.4 mmol/L. Keep above 4 mmol/L to avoid hypoglycaemia if on insulin or a sulfonylurea"],
+         ["<b>Growth and liquor scans</b>","Ultrasound for fetal growth and amniotic fluid volume at 28, 32 and 36 weeks — more often if there are concerns about macrosomia or polyhydramnios"],
+         ["<b>Pre-eclampsia surveillance</b>","<b>Regular BP and urinalysis; aspirin prophylaxis where indicated</b>"],
+         ["<b>At every antenatal contact</b>","Review the self-monitoring records and escalate treatment promptly if targets are not met"]
+       ]},
+       {b:"why", html:"Management is driven by capillary glucose self-monitoring against deliberately tight targets — a fasting value below 5.3 and a one-hour post-meal value below 7.8 — because maternal hyperglycaemia drives fetal overgrowth and its complications. Serial growth and liquor-volume scans at 28, 32 and 36 weeks detect macrosomia and polyhydramnios, which both signal suboptimal control and inform the timing and mode of birth."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Stepwise glucose control — diet → metformin → insulin",
+     sub:"Treatment escalates in steps, but the starting rung is decided by the fasting glucose at diagnosis.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Diet and exercise — a 1–2 week trial", when:"fasting &lt;7 mmol/L, no fetal complications",
+          html:"Low-glycaemic-index carbohydrates, portion control, and 30 minutes of walking after meals. Refer to a dietitian. Review glucose in 1–2 weeks. <b>Many women reach target on diet and activity alone</b> — this is genuinely therapeutic, not a holding step."},
+         {step:"Step 2", title:"Add metformin", when:"targets not met after the trial",
+          fromLabel:"lifestyle insufficient",
+          html:"Metformin is the first-line oral medication in pregnancy — safe and effective. <span class='rx'>Metformin 500 mg once daily with food</span>, increased weekly as tolerated to a usual maximum of <span class='rx'>2 g daily in divided doses</span>. Titrate to tolerance — GI upset is the usual limit."},
+         {step:"Step 3", title:"Insulin (± metformin)", when:"fasting ≥7 at diagnosis, or ≥6 with macrosomia or polyhydramnios, or targets still unmet",
+          fromLabel:"straight here if fasting ≥7",
+          html:"Start insulin immediately if the fasting glucose is ≥7 mmol/L at diagnosis — too high for a lifestyle trial. Otherwise <b>add it to metformin when diet plus metformin are insufficient</b>. <b>Counsel on hypoglycaemia recognition and treatment.</b>"},
+         {step:"Alternative", title:"Glibenclamide", when:"metformin not tolerated or declined, AND insulin declined",
+          fromLabel:"a narrow indication",
+          html:"Reserved for the woman who cannot tolerate or declines metformin and also declines insulin. <span class='rx'>Glibenclamide 5 mg daily with breakfast</span>, titrated to response (maximum 15 mg daily, in divided doses if above 5 mg)."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🥗 Carbohydrate quality", html:"Choose low-glycaemic-index carbohydrates, control portions, and spread intake across meals and snacks to blunt post-meal peaks. <b>Dietitian input is part of standard care.</b>"},
+         {tone:"blue", h:"🚶 Physical activity", html:"A 20–30 minute walk after meals is especially effective at lowering post-prandial glucose. Encourage regular moderate activity unless there is an obstetric contraindication."},
+         {tone:"amber", h:"⚖️ Weight and gestational gain", html:"Avoid excessive gestational weight gain; if BMI is above 27, healthy-eating advice reduces risk. <b>Weight loss is not pursued during pregnancy.</b> <b>Stop smoking</b> — support cessation as part of standard antenatal care."},
+         {tone:"plain", h:"🩸 Self-monitoring skills", html:"Teach reliable capillary testing, recognising and treating hypoglycaemia (if on insulin or a sulfonylurea), <b>and keeping a glucose diary to guide reviews.</b>"},
+         {tone:"green", h:"🤱 Breastfeeding", html:"Encourage it — it benefits maternal glucose metabolism and reduces the child's later obesity and diabetes risk. Metformin and insulin are compatible with breastfeeding."},
+         {tone:"cream", h:"📅 Future pregnancies", html:"Explain the high recurrence rate, the value of pre-conception weight optimisation, and early testing in any future pregnancy."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Postnatal", title:"Birth, postnatal care and the long-term follow-up",
+     sub:"Two safety priorities bracket the birth — and the second is the most frequently neglected step in the whole pathway.",
+     blocks:[
+       {b:"table", head:["When","What"], rows:[
+         ["<b>Timing of birth</b>","<b>Offer elective birth no later than 40+6 weeks in GDM</b>; earlier if there is macrosomia, poor control or other complications — agreed with obstetrics"],
+         ["<b>Immediately after delivery</b>","Stop ALL glucose-lowering medication right after birth. Feed the baby early and monitor neonatal blood glucose — there is a risk of neonatal hypoglycaemia, jaundice and respiratory distress"],
+         ["<b>6–13 weeks postpartum</b>","<b>Fasting plasma glucose</b>"],
+         ["<b>If that window is missed</b>","<b>HbA1c after 13 weeks</b>"],
+         ["<b>Then annually</b>","Annual HbA1c — around half develop type 2 diabetes, many within 5 years"],
+         ["<b>Prevention</b>","Weight management, diet and activity advice reduce progression to type 2 diabetes. Address pre-conception care for future pregnancies"],
+         ["<b>Recurrence</b>","High in future pregnancies — arrange early self-monitoring or an OGTT soon after the next booking"]
+       ]},
+       {b:"warn", html:"The postnatal glucose test is forgotten in a large proportion of women, and it is the single most important long-term action on this page. Gestational diabetes is a powerful, actionable predictor of future type 2 diabetes — the pregnancy has effectively performed a stress test on her glucose handling and it failed. Make sure the test is coded, requested and followed up, and that she knows why it matters."},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same-day", html:"<b>Reduced fetal movements</b> · <b>suspected DKA</b> (vomiting, abdominal pain, thirst, breathlessness, ketones — even with a normal-looking glucose) · <b>signs of pre-eclampsia</b> (headache, visual disturbance, epigastric pain, swelling)."},
+         {tone:"amber", h:"🟠 Prompt review", html:"<b>Symptomatic hyperglycaemia or hypoglycaemia</b> · targets persistently not met · <b>accelerating growth or polyhydramnios on scan</b>."},
+         {tone:"blue", h:"🩸 Postnatally", html:"Symptoms of hyperglycaemia after delivery — thirst, polyuria, weight loss → test for diabetes, do not wait for the scheduled check."},
+         {tone:"green", h:"✅ The two never-miss actions", html:"Stop the glucose-lowering drugs at delivery. Do the 6–13 week glucose test."}
+       ]},
+       {b:"say", html:"Your pregnancy test for diabetes has come back positive, and I want to start by saying clearly that this is not something you caused. What happens is that the placenta makes hormones that work against your own insulin, and in some women the body cannot quite keep up. The reason we treat it carefully is that your glucose crosses to the baby and makes the baby grow larger, which matters for the birth. Most women get their levels where we want them with changes to food and a short walk after meals; some need tablets or insulin, and that is not a failure. It usually goes away after the birth — but I will want a blood test around two to three months afterwards, because about half of women who have this go on to develop type 2 diabetes later, and that is something we can act on early."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral and shared care",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Joint diabetes-antenatal clinic", html:"Refer all women with GDM — ideally seen within 1 week of diagnosis — for combined obstetric and diabetes-team care, including a dietitian and a diabetes specialist nurse or midwife."},
+         {tone:"red", h:"Manage as pre-existing diabetes", html:"Booking HbA1c ≥48, or first-trimester hyperglycaemia → the pre-existing diabetes pathway, with tighter targets, folic acid 5 mg, and retinal and renal screening."},
+         {tone:"red", h:"Same-day", html:"Suspected DKA, severe pre-eclampsia, or reduced fetal movements → urgent obstetric assessment."},
+         {tone:"blue", h:"Neonatal planning", html:"Deliver in a unit with neonatal facilities and alert the neonatal team — risk of neonatal hypoglycaemia, jaundice and respiratory distress."},
+         {tone:"blue", h:"Anaesthetic / obstetric", html:"Macrosomia or other complications → consultant-led birth planning: timing, mode of birth, and intrapartum glucose control."},
+         {tone:"cream", h:"The GP's role", html:"Recognise the diagnosis, distinguish pre-existing diabetes, initiate safe early advice, act urgently on the obstetric and metabolic emergencies while specialist care is arranged — and own the postnatal and annual testing afterwards."}
+       ]},
+       {b:"why", html:"Prompt referral — within about a week of diagnosis — gets dietary advice, monitoring and, where needed, medication started during the window when they most influence fetal growth. The specialist clinic runs the pregnancy; primary care's distinctive contribution is at the two ends: spotting the diagnosis (and the pre-existing diabetes hiding behind it) at the start, and delivering the long-term prevention afterwards."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 32-year-old at 26 weeks in her second pregnancy, BMI 33, whose first baby weighed 4.6 kg. Her OGTT shows a fasting glucose of 5.8 and a 2-hour of 7.2. She is upset and asks whether she has \u201cgiven the baby diabetes\u201d, and mentions her booking HbA1c was 44."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Recognises that a fasting of 5.8 alone makes the diagnosis</b> even though the 2-hour is below 7.8; checks the booking HbA1c and correctly excludes pre-existing diabetes at 44; <b>refers to the joint clinic within a week</b>; gives the <b>actual targets</b> rather than \u201ckeep it down\u201d; starts a <b>1–2 week diet and exercise trial because the fasting is below 7</b>; addresses the guilt explicitly; and — the step candidates miss — books the 6–13 week postnatal glucose test at the point of diagnosis, and explains the ~50% lifetime type 2 risk."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG3 — Diabetes in pregnancy: management from preconception to the postnatal period<br><a href="https://www.nice.org.uk/guidance/ng3" rel="noopener">nice.org.uk/guidance/ng3</a><span class="rd"> — the risk-factor screening list, the 75 g OGTT thresholds (fasting ≥5.6 / 2-hour ≥7.8 mmol/L), the glucose targets, the diet→metformin→insulin ladder with the fasting-7 rule, birth by 40+6, and the postnatal testing schedule</span></li>'+
+         '<li><b>NICE NG3 \u2014 Diabetes in pregnancy: management from preconception to the postnatal period</b><br><a href="https://www.nice.org.uk/guidance/ng3" rel="noopener">nice.org.uk/guidance/ng3</a><span class="rd"> — primary-care screening, the glycosuria thresholds, and the referral routes</span></li>'+
+         '<li><b>Joint diabetes-antenatal care standards</b><span class="rd"> — the shared-care model, the within-1-week referral expectation, and the growth and liquor surveillance schedule at 28, 32 and 36 weeks</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion applies to gestational diabetes; the only adjacency is the later-life route of direct-access CT within 2 weeks for people aged 60 and over with weight loss and new-onset diabetes</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — metformin, insulin and glibenclamide in pregnancy, folic acid 5 mg, and aspirin for pre-eclampsia prophylaxis</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Gestational diabetes — NICE NG3, NICE and joint diabetes-antenatal care standards. Diagnostic thresholds on the 75 g OGTT are a fasting glucose of 5.6 mmol/L or above, or a 2-hour glucose of 7.8 mmol/L or above. A booking HbA1c of 48 mmol/mol or above is pre-existing diabetes, not gestational diabetes. The reasoning pathway for hyperglycaemia or glycosuria found in pregnancy remains at the <a href=\"../algorithms/gestational-hyperglycaemia.html\">hyperglycaemia in pregnancy pathway</a>. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

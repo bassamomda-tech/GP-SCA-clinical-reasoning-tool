@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Otitis media with effusion (glue ear) — Protocol · Reasoning GP</title>
+<meta name="description" content="Glue ear in under 12s: middle-ear fluid without infection. Confirm with otoscopy, tympanometry and audiology, observe actively for 3 months, then use the NICE NG233 decision table — monitoring, auto-inflation, hearing aids, bone-conduction devices or grommets. Down's syndrome and cleft palate go straight to specialists." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/otitis-media-effusion.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Otitis media with effusion protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"👂",
+  title:"Otitis media with effusion (glue ear) — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Fluid without infection — so no antibiotics, no steroids, nothing from the pharmacy shelf: observe for 3 months, then decide WITH the family from five real options",
+  stemSub:"One page for the whole condition: recognise that a young child rarely complains about their ears and presents instead with behaviour, attention, clumsiness or falling behind at school; confirm with otoscopy, tympanometry and formal audiology; carve out Down's syndrome and cleft palate for specialist care rather than observing; run 3 months of active observation because most resolve; then use the NG233 decision table — monitoring and support, auto-inflation, hearing aids, bone-conduction devices or grommets — rather than channelling every child straight to surgery.",
+  guideline:"NICE NG233 (August 2023)",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE NG233 — otitis media with effusion in under 12s (Aug 2023)"},
+    {t:"NICE CG60 — otitis media with effusion"},
+    {t:"BMJ 2023 visual summary of the updated guidance"},
+    {t:"Replaces the 2008 guideline (CG60)"},
+    {t:"No NG12 criterion in under-12s", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Not OME?</b><small>AOM · Down\'s · cleft · cholesteatoma</small></a><a href="#confirm"><b>Recognise</b><small>Two feature groups</small></a><a href="#workup"><b>Confirm</b><small>Otoscopy · tympanometry · audiology</small></a><a href="#ladder"><b>Observe then decide</b><small>3 months · decision table</small></a><a href="#refer"><b>Refer</b><small>Specialist · safety-net</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Down's syndrome and cleft palate do not get watchful waiting", html:"Children with Down's syndrome or cleft palate are explicitly carved out by NICE for specialist and audiology referral — do NOT manage with standard primary-care observation. Their OME is more prevalent, more persistent and higher-stakes for speech and language. The same applies to <b>craniofacial anomalies and learning disability</b>, which need individualised follow-up."},
+    {tone:"amber", h:"The child may never mention their ears", html:"NG233 deliberately broadens the presenting picture beyond hearing loss. Common features: hearing difficulty, ear discomfort, tinnitus, delayed speech and language. Associated features: behavioural problems, poor concentration or attention, clumsiness, balance difficulties, poor educational progress. A concern raised by a parent, teacher or health visitor is itself a valid trigger to assess."},
+    {tone:"blue", h:"OME with no hearing loss needs no treatment at all", html:"Children with OME but no hearing loss do not need treatment — but explain WHY it is not needed, and safety-net. The explanation is the intervention: it prevents both unnecessary anxiety and the assumption that nothing was found."},
+    {tone:"green", h:"Active observation for 3 months — with two exceptions", html:"Reassess hearing after 3 months of active observation; a large proportion resolve in that window. But intervene EARLIER if hearing difficulty is significantly affecting day-to-day living — a child whose development is being harmed should not be made to wait out the full three months."},
+    {tone:"purple", h:"Nothing from the pharmacy shelf works", html:"Do NOT offer antibiotics, oral or nasal steroids, decongestants, antihistamines, leukotriene receptor antagonists, mucolytics, or PPI and anti-reflux drugs. <b>Nor homeopathy, cranial osteopathy or acupuncture.</b> NICE reviewed and rejected the entire pharmacological shelf — none alter the natural history."},
+    {tone:"plain", h:"The 2023 headline: a decision table, not a dB cut-off", html:"Historically persistent bilateral OME at about 25–30 dBHL in the better ear over 3 months prompted intervention. NG233 now frames this as a shared decision using the OME decision table — monitoring and support, auto-inflation, hearing aids, bone-conduction devices or grommets — rather than a single decibel threshold channelling every child to surgery."}
+  ],
+  pathwaySub:"The whole pathway in five moves. The red step is the one that must precede any observation.",
+  pathway:[
+    {title:"Check this is OME, and that the child is not a special group", html:"Painful ear with fever and a bulging red drum is acute otitis media, not OME. Down's syndrome, cleft palate, craniofacial anomaly or learning disability → specialist. Foul discharge or a retraction pocket → urgent ENT.", alert:true},
+    {title:"Recognise it from either feature group", html:"Hearing difficulty, ear discomfort, tinnitus, delayed speech and language — or <b>behaviour, attention, clumsiness, balance, poor educational progress</b>. Often <b>bilateral and fluctuating</b>."},
+    {title:"Confirm and quantify", html:"Otoscopy and tympanometry, plus referral for formal hearing assessment if OME is clinically suspected. Consider co-existing sensorineural, non-organic and permanent conductive causes. Document laterality, hearing level and impact."},
+    {title:"Observe actively for 3 months, then use the decision table", html:"No hearing loss → no treatment, explain and safety-net. Hearing loss → reassess at 3 months, sooner if daily living is significantly affected. Then the five options, decided with the family."},
+    {title:"Support, then follow up", html:"<b>Support strategies at home and school throughout</b>; <b>post-grommet hearing test at 6 weeks and water precautions for 2 weeks</b>; safety-net for recurrence."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Not OME?", title:"What OME is — and when this pathway does not apply",
+     sub:"Otitis media with effusion is fluid in the middle ear in the ABSENCE of infection. First separate it from the conditions that need a different route.",
+     blocks:[
+       {b:"table", head:["Presentation","Why it is not simple OME","Action"], rows:[
+         ["<b>Acute otitis media (AOM)</b>","Painful ear, fever, bulging or red drum, systemic upset — that is infection, not OME","<b>Use the AOM pathway</b> — see the <a href='otitis-media-externa.html'>ear pain and otitis protocol</a>. <b>OME is the non-infected effusion that often follows</b>"],
+         ["<b>Down's syndrome</b>","<b>Higher OME prevalence and persistence</b>","Refer to specialist or audiology — do NOT manage with standard primary-care observation"],
+         ["<b>Cleft palate</b>","<b>Strongly associated with OME</b>","<b>Specialist (cleft or ENT) management, not routine watchful waiting</b>"],
+         ["<b>Cholesteatoma or chronic perforation</b>","<b>Foul discharge, attic crust or retraction pocket, persistent discharge</b>","<b>Urgent ENT referral — not simple glue ear</b>"],
+         ["<b>Suspected sensorineural or permanent loss</b>","Co-existing sensorineural, non-organic or permanent conductive hearing loss changes management","<b>Audiology and ENT assessment</b>"],
+         ["<b>Adult with a unilateral effusion</b>","Outside this under-12s pathway — a persistent unilateral middle-ear effusion in an adult needs exclusion of a post-nasal space (nasopharyngeal) tumour","<b>Urgent ENT referral</b>"]
+       ]},
+       {b:"why", html:"OME is defined by middle-ear fluid without the signs of acute infection — distinguishing it from acute otitis media is the first step, because the management (observe versus treat infection) is completely different. Children with Down's syndrome and cleft palate are explicitly carved out by NICE for specialist care, because their OME is more prevalent, more persistent and higher-stakes for speech and language. And although this guideline is for under-12s, an unexplained unilateral effusion in an adult is a nasopharyngeal-cancer red flag."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Otitis media with effusion in under 12s has no NICE NG12 suspected-cancer criterion, and none should be invented for one. The one cancer-relevant fact on this page belongs to a different population: a persistent unilateral middle-ear effusion in an ADULT requires urgent ENT referral to exclude a nasopharyngeal (post-nasal space) tumour — an urgent ENT route rather than a named NG12 criterion, and outside this pathway's age range. In a child, the relevant urgent routes are the ENT ones above (cholesteatoma, chronic perforation) rather than oncological"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Recognise", title:"How glue ear presents — two feature categories",
+     sub:"NG233 splits the presenting features into two groups. The child may not complain about their ears at all.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Common features</b>","Hearing difficulties · ear discomfort · tinnitus · delayed speech and language development"],
+         ["<b>Associated features</b>","Behavioural problems · lack of concentration or attention · clumsiness · balance difficulties · poor educational progress"],
+         ["<b>Who raises it</b>","Concerns from parents or carers, or from professionals such as teachers and health visitors, are a valid trigger to assess"],
+         ["<b>Often bilateral and fluctuating</b>","Hearing can fluctuate and effusions are frequently bilateral. A child may \u201cignore\u201d instructions or turn the TV up rather than report deafness"],
+         ["<b>Peaks in early childhood</b>","Very common in pre-school children; most episodes are self-limiting — which is why active observation comes first"],
+         ["<b>Who this pathway is for</b>","<b>A child &lt;12 (under 12) with suspected glue ear.</b> Suspect it from hearing difficulty, ear discomfort, tinnitus, delayed speech or language, or behaviour, balance or educational concerns"]
+       ]},
+       {b:"why", html:"The 2023 update deliberately broadens the presenting picture beyond \u201chearing loss\u201d to include behaviour, attention, clumsiness, balance and educational progress — because young children rarely articulate hearing difficulty, and OME is often first noticed as a developmental or behavioural concern. Recognising these softer signs is what prevents glue ear from being missed during the critical speech-and-language window."}
+     ]},
+
+    {id:"workup", nav:"Confirm", title:"Assessment and confirming the diagnosis",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Clinical examination</b>","Otoscopy (a dull or retracted drum, fluid level or bubbles, reduced mobility), general development, and general upper respiratory health"],
+         ["<b>Objective tests</b>","Tympanometry — a flat or type B trace supports an effusion — and hearing testing appropriate to the child's age"],
+         ["<b>Refer for formal hearing assessment</b>","If OME is clinically suspected from the history and presenting features, refer for further hearing assessment (audiology) to confirm OME and quantify any hearing loss"],
+         ["<b>Consider co-existing causes</b>","Where there is hearing loss, consider sensorineural, non-organic and permanent conductive causes — do not assume all loss is from the effusion"],
+         ["<b>Document the baseline</b>","Record laterality (unilateral or bilateral), hearing levels, and the impact on day-to-day living, speech and language, and schooling — this drives the management decision"],
+         ["<b>Confirmed OME</b>","A middle-ear effusion on examination or tympanometry, with or without a confirmed conductive hearing loss on audiometry. The presence or absence of hearing loss then splits the pathway"]
+       ]},
+       {b:"why", html:"OME is confirmed with otoscopy and tympanometry, but the management hinges on audiology — whether there is a hearing loss, how big it is, and whether it is affecting the child. Actively considering sensorineural, non-organic and permanent conductive causes prevents the error of attributing a fixed or progressive loss to a transient effusion and missing a more serious diagnosis."}
+     ]},
+
+    {id:"ladder", nav:"Observe then decide", title:"Active observation, the do-not-offer list, and the decision table",
+     sub:"Most OME resolves spontaneously, so the first-line approach is a period of active observation — the term that replaced \u201cwatchful waiting\u201d.",
+     blocks:[
+       {b:"table", head:["Situation","Action"], rows:[
+         ["<b>OME with NO hearing loss</b>","No treatment needed. Explain why it is not needed — which avoids confusion and anxiety — and that they can return if hearing concerns arise"],
+         ["<b>OME + hearing loss</b>","Reassess hearing after 3 months of active observation — a large proportion resolve in this window without intervention"],
+         ["<b>Significant impact on daily living</b>","Consider intervening EARLIER than the 3-month reassessment — do not make the child wait"],
+         ["<b>During observation</b>","Offer hearing-loss support strategies, and consider auto-inflation as a simple measure while observing"]
+       ]},
+       {b:"warn", html:"<b>Do NOT offer for OME or OME-related hearing loss: antibiotics</b> (it is not an active infection), oral or nasal steroids, decongestants, antihistamines, leukotriene receptor antagonists, mucolytics, or PPI and anti-reflux medications. Nor homeopathy, cranial osteopathy or acupuncture. NICE reviewed and rejected the whole pharmacological shelf, because none alter the natural history of OME — and prescribing them exposes children to side effects and antimicrobial resistance for no benefit. The only measures with a role are support strategies, auto-inflation, hearing aids or bone-conduction devices, and surgery."},
+       {b:"table", head:["The NICE OME decision table — five options","Detail"], rows:[
+         ["<b>Monitoring and support</b>","Continue active monitoring plus the support strategies if the family prefers to avoid devices or surgery"],
+         ["<b>Auto-inflation</b>","Consider as a non-invasive option, particularly as a bridge while deciding"],
+         ["<b>Hearing aids</b>","Consider hearing aids — especially where surgery is unsuitable or declined, or for bilateral loss; reversible and non-surgical"],
+         ["<b>Bone-conduction devices</b>","Consider bone-conduction devices, which transmit sound via skull vibration, bypassing the middle ear — useful where conventional aids are not suitable"],
+         ["<b>Grommets (ventilation tubes)</b>","Consider grommets for OME-related hearing loss — the main surgical option"],
+         ["<b>How to decide</b>","Cover the benefits, risks and practical considerations of each option, plus support strategies, tailored to the child and family — this is the decision table conversation"]
+       ]},
+       {b:"why", html:"The 3-month active-observation period reflects the strong natural-history evidence that most OME resolves on its own, sparing children unnecessary surgery. The crucial nuances are that OME without hearing loss needs no treatment at all — just explanation and a safety-net — and that a child whose hearing loss is materially harming their daily life or development should not be made to wait the full three months. Then: the 2023 guideline's headline change is the OME decision table. Instead of channelling every child with persistent loss straight to grommets, it lays out monitoring and support, auto-inflation, hearing aids, bone-conduction devices and grommets as legitimate options to weigh together with the family — recognising that hearing aids are a reasonable, reversible alternative to surgery for many children, and that the right choice depends on the child's circumstances and the family's preferences."},
+       {b:"table", head:["If surgery is chosen","Detail"], rows:[
+         ["<b>Grommets</b>","Insertion of temporary grommets to ventilate the middle ear is recommended for OME-related hearing loss. Discuss the risks — perforation, localised atrophy, tympanosclerosis, infection — as a shared decision"],
+         ["<b>Adjuvant adenoidectomy</b>","When planning grommets, consider adjuvant adenoidectomy — unless assessment indicates a palate abnormality. Discuss its risks (haemorrhage, velopharyngeal insufficiency)"],
+         ["<b>Adenoidectomy alone</b>","NOT recommended in the absence of persistent and/or frequent upper respiratory tract symptoms"],
+         ["<b>Intra-operative ciprofloxacin</b>","Consider a single dose of ciprofloxacin given intraoperatively during grommet insertion (off-label as at August 2023) to reduce post-operative otorrhoea"],
+         ["<b>Water precautions</b>","Keep the ear dry — avoid swimming, and take care bathing and washing hair, for 2 weeks after surgery"],
+         ["<b>Post-operative hearing test</b>","<b>Perform a postoperative hearing test 6 weeks after surgery</b>"]
+       ]},
+       {b:"why", html:"Grommets ventilate the middle ear and reliably restore hearing while in place, which is why they remain the main surgical option — but the 2023 guidance stresses shared decision-making about their real risks. Adjuvant adenoidectomy is considered alongside grommets (unless the palate is abnormal) because removing the adenoids reduces the chance of OME recurrence and repeat surgery; adenoidectomy on its own is reserved for children who also have significant upper-airway symptoms."}
+     ]},
+
+    {id:"lifestyle", nav:"Support", title:"Hearing-loss support strategies",
+     sub:"Whatever the management decision, these help the child function while the effusion is present — at home, in all settings, and in education.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"👀 Be close and face the child", html:"Get down to their level and face them when speaking, so they can use visual cues."},
+         {tone:"blue", h:"🔇 Minimise background noise", html:"Turn off the TV or radio when talking; choose quieter settings for conversations."},
+         {tone:"plain", h:"🖼️ Use visual aids", html:"<b>Gestures, pictures and demonstration to back up spoken instructions.</b>"},
+         {tone:"amber", h:"🏫 Inform school staff", html:"Tell staff about the OME and the related hearing loss so they can adapt, and ask whether classroom adjustments can be made — for example favourable seating near the front of the class."},
+         {tone:"blue", h:"🎈 Consider auto-inflation", html:"A simple, low-risk measure — for example a nasal balloon device — that can be offered during observation. Modest evidence but low risk, which is why NICE positions it as something to consider."},
+         {tone:"cream", h:"🗣️ Prepare the child, and tailor the information", html:"<b>Explain interventions and what to expect in age-appropriate terms.</b> Give OME information tailored to the child's age, development and the family's needs, format and language."},
+         {tone:"red", h:"🚭 Avoid passive smoke exposure", html:"<b>A modifiable risk factor for OME</b> — worth raising directly with the family."},
+         {tone:"green", h:"📈 Reassure and monitor", html:"Reassure parents that most OME resolves spontaneously, and monitor speech and language."}
+       ]},
+       {b:"why", html:"Support strategies are the part of OME care that helps every child immediately, regardless of whether they go on to devices or surgery — and they are cheap, safe and empowering for families and schools. Auto-inflation has modest evidence but is low-risk, so NICE positions it as something to consider during the observation period."}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Review, follow-up and safety-netting",
+     blocks:[
+       {b:"table", head:["When","What"], rows:[
+         ["<b>After the 3-month observation</b>","Re-test hearing and review speech, behaviour, education and the impact on daily living"],
+         ["<b>Post-grommet, at 6 weeks</b>","Hearing test. If the hearing loss has resolved → discharge, and consider follow-up options. If hearing loss continues → investigate and manage appropriately"],
+         ["<b>Follow-up options</b>","Advise parents and carers to seek reassessment if worried about recurrence; or consider a 1-year follow-up hearing test; or an individualised plan for higher-risk children"],
+         ["<b>After grommet extrusion</b>","<b>Review for recurrence</b>"],
+         ["<b>Persistent otorrhoea post-grommet</b>","Otorrhoea that persists and does not respond to topical antibiotics → ENT may consider grommet removal"],
+         ["<b>If hearing does not recover</b>","<b>Reconsider sensorineural or permanent conductive loss</b>"],
+         ["<b>Safety-net</b>","Tell families OME can recur, and to return if hearing, speech, behaviour or school progress deteriorates — re-refer for hearing assessment as needed"]
+       ]},
+       {b:"why", html:"The 6-week post-operative test closes the loop: it confirms the grommets worked, and any continuing loss is investigated rather than assumed resolved. Higher-risk groups — Down's syndrome, cleft palate, craniofacial anomalies, learning disability — get specialist pathways and individualised follow-up because their OME is more likely to be persistent and to be missed, with bigger consequences for speech, language and learning if it is."},
+       {b:"say", html:"What your child has is glue ear — fluid sitting behind the eardrum. It is not an infection, which is why antibiotics, steroids and decongestants genuinely do not help; NICE has looked at all of them. The good news is that most cases clear up by themselves, so the plan for the next three months is to watch it properly rather than do nothing: I will arrange a hearing test now and repeat it, and meanwhile there are things that make a real difference at home and at school — face her when you talk, turn the telly off during conversations, and let the school know so she can sit near the front. If the hearing is still affected after three months, we sit down together and go through the options — and grommets are only one of them; hearing aids are a perfectly reasonable choice too. Come back sooner if you feel her hearing is really holding her back."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral, special groups and unilateral loss",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Urgent ENT", html:"Foul discharge, attic crust or retraction pocket, or persistent discharge — suspected cholesteatoma or chronic perforation. Also, in an <b>adult</b>, a persistent <b>unilateral</b> middle-ear effusion, to exclude a nasopharyngeal tumour."},
+         {tone:"amber", h:"Specialist / audiology — do not observe", html:"Down's syndrome and cleft palate → specialist or audiology pathways, not routine observation. Craniofacial anomalies and learning disability → individualised follow-up (higher risk of unrecognised OME-related loss). Also <b>diagnostic uncertainty</b>."},
+         {tone:"blue", h:"Audiology — formal hearing assessment", html:"<b>Refer for formal hearing assessment if OME is clinically suspected</b>, to confirm the effusion and quantify any hearing loss."},
+         {tone:"blue", h:"ENT / audiology after observation", html:"Persistent hearing loss after 3 months, significant impact on development or schooling, or diagnostic uncertainty."},
+         {tone:"green", h:"Persistent unilateral loss", html:"Persistent unilateral OME-related hearing loss impacting daily living or communication warrants the same options discussion as bilateral loss — do not dismiss it because the other ear hears."},
+         {tone:"cream", h:"GP management", html:"An otherwise healthy child under 12: confirm with otoscopy and tympanometry, refer for audiology, run 3 months of active observation with support strategies, and hold the decision-table conversation."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 4-year-old is brought in because nursery have raised concerns: she is not following instructions, seems clumsy, and her speech is behind her peers. Her mother has noticed she turns the television up. There is no earache and she has never had a discharging ear. Otoscopy shows dull, retracted drums bilaterally."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises the associated features — behaviour, attention, clumsiness, nursery concern — as an OME presentation rather than waiting for a complaint about hearing; confirms with otoscopy and refers for formal audiology rather than diagnosing on the drum alone; does not prescribe antibiotics, steroids or a decongestant, and can say why; commits to 3 months of ACTIVE observation with a hearing re-test, not \u201ccome back if worse\u201d; <b>gives the support strategies and offers to inform nursery</b>; asks about <b>passive smoke exposure</b>; and — the step candidates miss — frames the eventual decision as a shared one across five options, so the family are not expecting grommets to be automatic."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG233 — Otitis media with effusion in under 12s (August 2023)</b><br><a href="https://www.nice.org.uk/guidance/ng233" rel="noopener">nice.org.uk/guidance/ng233</a><span class="rd"> — the two presenting-feature categories, the 3-month active observation period, the do-not-offer list, the OME decision table, and the surgical and aftercare recommendations. <b>NG233 replaced the 2008 guideline (CG60)</b></span></li>'+
+         '<li><b>NICE NG233 — the OME decision table</b><span class="rd"> — monitoring and support, auto-inflation, hearing aids, bone-conduction devices and grommets, presented as options to weigh with the family rather than a single decibel threshold</span></li>'+
+         '<li><b>NICE NG233 \u2014 Otitis media with effusion in under 12s</b><br><a href="https://www.nice.org.uk/guidance/ng233" rel="noopener">nice.org.uk/guidance/ng233</a><span class="rd"> — primary-care assessment, the Down\u2019s syndrome and cleft palate carve-outs, and the referral thresholds</span></li>'+
+         '<li><b>BMJ (2023) visual summary of the updated NICE guidance</b><br><a href="https://www.bmj.com/infographics" rel="noopener">bmj.com/infographics</a><span class="rd"> — the 2023 changes from the 2008 guideline, including the historical 25\u201330 dBHL framing now superseded by the decision table</span></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> — intra-operative ciprofloxacin (off-label as at August 2023), and confirmation that no oral or topical drug treatment is indicated for OME</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Otitis media with effusion (glue ear) in under 12s — NICE NG233 (August 2023) and its OME decision table, NICE, and the BMJ 2023 visual summary of the updated guidance. No drug treatment has a role. Refer for formal audiology assessment, and refer children with Down's syndrome or cleft palate to a specialist rather than observing in primary care. Ear pain and the acute infections are covered by the <a href=\"otitis-media-externa.html\">ear pain and otitis protocol</a>; the reasoning pathway remains at the <a href=\"../algorithms/otitis-media-effusion.html\">otitis media with effusion pathway</a>. Always individualise to the child and family."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

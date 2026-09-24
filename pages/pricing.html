@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plans and pricing · Reasoning GP</title>
+<meta name="description" content="Start free with no card: 5 pathways, 5 protocols, 5 cases and the full SCA Guide. Silver £10/month for the clinic toolkit, Gold £15/month for the SCA suite, Platinum £20/month for everything." />
+<link rel="canonical" href="https://gpreasoning.uk/pages/pricing.html">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=14" />
+<style>
+.pr-body{max-width:1120px;margin:0 auto}
+.pr-lead{font-size:16.5px;line-height:1.7;color:var(--ink-2);max-width:68ch}
+.pr-body h3{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin:22px 0 8px}
+.pr-body p,.pr-body li{font-size:14.5px;line-height:1.7;color:var(--ink-2)}
+.pr-body p{margin:8px 0;max-width:72ch}
+
+/* ---- free tier ---- */
+.pr-free{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md,12px);padding:20px 22px;margin:18px 0}
+.pr-free h2{margin:0 0 4px}
+.pr-free-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px 22px;margin:14px 0 0;padding:0;list-style:none}
+.pr-free-grid li{display:flex;gap:9px;align-items:flex-start;font-size:14px;line-height:1.5}
+.pr-tick{flex:none;width:17px;height:17px;border-radius:50%;background:#d5e6e4;color:#0c4a47;display:grid;place-items:center;font-size:10px;font-weight:700;margin-top:2px}
+.pr-no .pr-tick{background:#eee7d8;color:#6b6252}
+.pr-note{font-size:13px;color:var(--muted);margin:12px 0 0}
+
+/* ---- plan cards (id-scoped so the injected footer CSS cannot reach them) ---- */
+#prPlans{margin:22px 0 8px}
+/* The injected footer CSS carries `.rgp-subs{text-align:center}`, which matches
+   #prPlans.rgp-subs and inherits all the way down to the feature lines — and an
+   absolutely-positioned li::before against a centred line box leaves the tick
+   stranded from its text. Reset alignment at the root of the chain. */
+#prPlans,#prPlans .pr-grid,#prPlans .rgp-sub-card,#prPlans .rgp-sub-features,#prPlans .rgp-sub-desc,#prPlans .rgp-sub-price-note{text-align:left}
+#prPlans .rgp-bill-toggle{display:inline-flex;gap:4px;padding:4px;border-radius:99px;background:var(--surface-2,#fbf8f1);border:1px solid var(--line);margin:0 0 18px}
+#prPlans .rgp-bill-toggle button{appearance:none;border:0;background:none;font:inherit;font-size:13px;font-weight:600;color:var(--muted);padding:7px 16px;border-radius:99px;cursor:pointer}
+#prPlans .rgp-bill-toggle button.active{background:var(--teal);color:#f6f2e9}
+#prPlans .rgp-bill-save{font-size:11px;font-weight:600;opacity:.85}
+#prPlans .pr-grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:stretch}
+@media (min-width:620px){#prPlans .pr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1040px){#prPlans .pr-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+#prPlans .rgp-sub-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--r-md,12px);padding:20px 18px}
+#prPlans .rgp-tier-platinum{border-color:var(--teal-3,#136a65);box-shadow:0 2px 0 var(--teal-3,#136a65)}
+#prPlans .rgp-tier-badge{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+#prPlans .rgp-sub-name{font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;color:var(--ink);margin:3px 0 8px}
+#prPlans .rgp-sub-price{font-size:30px;font-weight:700;color:var(--ink);line-height:1.1;font-family:'DM Sans',sans-serif}
+#prPlans .rgp-sub-price small{font-size:13px;font-weight:500;color:var(--muted)}
+#prPlans .rgp-sub-price-note{font-size:12.5px;color:var(--rust,#b54c2b);margin:5px 0 0;font-weight:600}
+#prPlans .rgp-sub-desc{font-size:13.5px;color:var(--ink-2);margin:10px 0 12px;line-height:1.55}
+#prPlans .rgp-sub-features{list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:7px;flex:1 1 auto}
+#prPlans .rgp-sub-features li{font-size:13.5px;line-height:1.45;color:var(--ink-2);padding-left:18px;position:relative}
+#prPlans .rgp-sub-features li::before{content:"✓";position:absolute;left:0;top:0;color:var(--teal-3,#136a65);font-size:11px;font-weight:700}
+#prPlans .rgp-sub-features li.is-na{color:var(--muted);opacity:.8}
+#prPlans .rgp-sub-features li.is-na::before{content:"—";color:var(--muted)}
+#prPlans .rgp-sub-cta{display:block;text-align:center;background:var(--teal);color:#f6f2e9;padding:11px 16px;border-radius:9px;font-size:14px;font-weight:600;text-decoration:none}
+#prPlans .rgp-sub-cta:hover{background:var(--teal-2);color:#fff}
+#prPlans .rgp-tier-bronze .rgp-sub-cta{background:transparent;color:var(--teal);border:1px solid var(--line-2,#d8cfba)}
+#prPlans .rgp-tier-bronze .rgp-sub-cta:hover{border-color:var(--teal-3,#136a65);background:transparent;color:var(--teal)}
+#prPlans .price-y,#prPlans.bill-yearly .price-m{display:none}
+#prPlans.bill-yearly .price-y{display:inline}
+
+/* ---- decision helper ---- */
+.pr-pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin:16px 0}
+.pr-pick div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md,10px);padding:16px 18px}
+.pr-pick h3{margin:0 0 6px}
+.pr-pick p{margin:0;font-size:13.5px}
+
+/* ---- code + referral + institutional ---- */
+.pr-box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md,12px);padding:20px 22px;margin:18px 0}
+.pr-box h2{margin:0 0 6px}
+.pr-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+.pr-code-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;max-width:460px}
+.pr-code-row input{flex:1 1 200px;min-width:0;font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--line-2,#d8cfba);border-radius:8px;background:#fff;color:var(--ink)}
+.pr-code-row button{appearance:none;border:0;font:inherit;font-size:14px;font-weight:600;background:var(--teal);color:#f6f2e9;padding:10px 20px;border-radius:8px;cursor:pointer}
+.pr-code-row button:hover{background:var(--teal-2)}
+.pr-code-msg{font-size:13px;margin:9px 0 0;min-height:1em;color:var(--rust,#b54c2b);font-weight:600}
+.pr-code-msg.ok{color:#136a65}
+.pr-cta{display:inline-block;background:var(--teal);color:#f6f2e9;padding:11px 20px;border-radius:9px;font-size:14px;font-weight:600;margin-top:4px}
+.pr-cta:hover{background:var(--teal-2);color:#fff}
+.pr-cta-2{display:inline-block;padding:11px 20px;border:1px solid var(--line-2,#d8cfba);border-radius:9px;font-size:14px;font-weight:600;color:var(--teal);margin:4px 0 0 8px}
+.pr-cta-2:hover{border-color:var(--teal-3,#136a65)}
+.pr-steps{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px}
+.pr-steps li{font-size:13.5px;line-height:1.55;color:var(--ink-2)}
+.pr-steps b{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+
+/* ---- faq + table ---- */
+.pr-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+.pr-table th{text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:0 12px 8px 0;border-bottom:1px solid var(--line-2)}
+.pr-table td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.55;vertical-align:top}
+.pr-table td b{color:var(--ink)}
+.pr-table tr:last-child td{border-bottom:none}
+.pr-faq details{border-bottom:1px solid var(--line);padding:12px 0}
+.pr-faq summary{cursor:pointer;font-size:14.5px;font-weight:600;color:var(--ink);list-style:none}
+.pr-faq summary::-webkit-details-marker{display:none}
+.pr-faq summary::before{content:"+";display:inline-block;width:16px;color:var(--teal-3,#136a65);font-weight:700}
+.pr-faq details[open] summary::before{content:"–"}
+.pr-faq p{margin:8px 0 0 16px;font-size:14px}
+</style>
+</head>
+<body>
+<aside class="sidebar" data-active-id="__pricing"></aside>
+<div class="app"><main class="main">
+
+<section class="page-hero" data-screen-label="Pricing hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Plans and pricing</span>
+    <h1>Try it properly before you pay anything</h1>
+    <p>Five pathways, five protocols, five cases and the whole SCA Guide are open to everyone — no card, no sign-up. When you want the rest, plans start at £10 a month and you can cancel whenever you like.</p>
+  </div>
+</section>
+
+<div class="page-body"><div class="pr-body">
+
+  <section class="page-section">
+    <div class="pr-free">
+      <span class="eyebrow">Free forever</span>
+      <h2>What you get without paying</h2>
+      <p class="pr-lead">This is not a countdown trial. It stays open, and it includes complete pages rather than teasers — the free protocols and pathways are the real thing, cover to cover.</p>
+      <ul class="pr-free-grid">
+        <li><span class="pr-tick" aria-hidden="true">✓</span><span><b>5 full diagnostic pathways</b> — chest pain, headache, abdominal pain, back pain, breathlessness</span></li>
+        <li><span class="pr-tick" aria-hidden="true">✓</span><span><b>5 full management protocols</b> — hypertension, asthma, type 2 diabetes, gout, migraine</span></li>
+        <li><span class="pr-tick" aria-hidden="true">✓</span><span><b>5 full casebook cases</b> — chest pain, hypertension, type 2 diabetes, headache, anaemia</span></li>
+        <li><span class="pr-tick" aria-hidden="true">✓</span><span>Browse <b>every</b> directory — all 200+ pathways, 200+ protocols and 100+ cases are listed and searchable</span></li>
+        <li><span class="pr-tick" aria-hidden="true">✓</span><span>The Consultation Spine and the full <b>SCA Guide</b></span></li>
+        <li><span class="pr-tick" aria-hidden="true">✓</span><span>All articles, resources and patient leaflets</span></li>
+        <li><span class="pr-tick" aria-hidden="true">✓</span><span>One free run of <b>Ask</b> and of the <b>AI Patient Simulator</b>, plus 5 sample Hot Seat cases</span></li>
+        <li class="pr-no"><span class="pr-tick" aria-hidden="true">–</span><span>Prescribing, CPD, the rest of the clinic toolkit and the rest of the SCA suite need a plan</span></li>
+      </ul>
+      <p class="pr-note">The free pages are marked <b>Free</b> in each directory, so you can see what is open before you click.</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Plans</span>Four levels — pick what fits</h2>
+    <p>Silver is the clinic toolkit for everyday practice. Gold is the SCA exam suite. Platinum is both. Yearly billing works out cheaper on every paid plan.</p>
+
+    <div id="prPlans" class="rgp-subs" data-subs>
+      <div class="rgp-bill-toggle" role="tablist" aria-label="Billing period">
+        <button type="button" data-bill="monthly" class="active" role="tab" aria-selected="true">Monthly</button>
+        <button type="button" data-bill="yearly" role="tab" aria-selected="false">Yearly <span class="rgp-bill-save">save up to 25%</span></button>
+      </div>
+      <div class="pr-grid">
+        <article class="rgp-sub-card rgp-tier-bronze">
+          <div class="rgp-tier-badge">🥉 Bronze</div>
+          <div class="rgp-sub-name">Taster — Free</div>
+          <div class="rgp-sub-price"><span class="price-m">£0<small>/forever</small></span><span class="price-y">£0<small>/forever</small></span></div>
+          <p class="rgp-sub-desc">Get a real feel for every section, free for good.</p>
+          <ul class="rgp-sub-features">
+            <li><b>5 pathways · 5 protocols · 5 cases</b></li>
+            <li>All articles, resources &amp; patient leaflets</li>
+            <li>Consultation Spine + the full <b>SCA Guide</b></li>
+            <li class="is-na">Ask, beyond one free run</li>
+            <li class="is-na">Prescribing, CPD &amp; other tools</li>
+            <li class="is-na">Full Clinic toolkit &amp; SCA suite</li>
+          </ul>
+          <a class="rgp-sub-cta" href="../tools/management/hypertension.html">Open a free protocol</a>
+        </article>
+
+        <article class="rgp-sub-card rgp-tier-silver">
+          <div class="rgp-tier-badge">🥈 Silver</div>
+          <div class="rgp-sub-name">Clinic only</div>
+          <div class="rgp-sub-price"><span class="price-m">£10<small>/month</small></span><span class="price-y">£100<small>/year</small></span></div>
+          <p class="rgp-sub-price-note"><span class="price-m">or £100/year — save £20</span><span class="price-y">that's ~2 months free</span></p>
+          <p class="rgp-sub-desc">The full point-of-care clinic toolkit for everyday practice.</p>
+          <ul class="rgp-sub-features">
+            <li>All 200+ pathways &amp; 200+ protocols</li>
+            <li>Consultation Spine + Diagnostic Tool</li>
+            <li>Ready Prescriptions + EMIS copy-paste</li>
+            <li>Medication Chooser · Calculators · Labs</li>
+            <li>DVLA · Fit Note · Sick-Day Rules · Scribe</li>
+            <li class="is-na">SCA exam suite</li>
+          </ul>
+          <a class="rgp-sub-cta" href="mailto:bassamomda@gmail.com?subject=Silver%20(Clinic)%20subscription">Choose Silver</a>
+        </article>
+
+        <article class="rgp-sub-card rgp-tier-gold">
+          <div class="rgp-tier-badge">🥇 Gold</div>
+          <div class="rgp-sub-name">SCA only</div>
+          <div class="rgp-sub-price"><span class="price-m">£15<small>/month</small></span><span class="price-y">£100<small>/year</small></span></div>
+          <p class="rgp-sub-price-note"><span class="price-m">or £40 / 3 months · £100 / year</span><span class="price-y">vs £40 / 3 months · £15 / month</span></p>
+          <p class="rgp-sub-desc">The complete SCA exam-preparation suite.</p>
+          <ul class="rgp-sub-features">
+            <li>AI Patient Simulator + exam-day mode</li>
+            <li>AI Mock Exam Circuit + report card</li>
+            <li>Conversation Lab · Playbooks · Drills</li>
+            <li>AKT Question Bank + My Readiness</li>
+            <li>The Hot Seat — timer · scorecard · AI marking</li>
+            <li class="is-na">Clinic toolkit</li>
+          </ul>
+          <a class="rgp-sub-cta" href="mailto:bassamomda@gmail.com?subject=Gold%20(SCA)%20subscription">Choose Gold</a>
+        </article>
+
+        <article class="rgp-sub-card rgp-tier-platinum is-featured">
+          <div class="rgp-tier-badge">💎 Platinum</div>
+          <div class="rgp-sub-name">All access</div>
+          <div class="rgp-sub-price"><span class="price-m">£20<small>/month</small></span><span class="price-y">£180<small>/year</small></span></div>
+          <p class="rgp-sub-price-note"><span class="price-m">or £180/year — save £60</span><span class="price-y">that's 3 months free</span></p>
+          <p class="rgp-sub-desc">Everything — the whole Clinic toolkit and the whole SCA suite.</p>
+          <ul class="rgp-sub-features">
+            <li><b>Everything in Silver</b> (full Clinic)</li>
+            <li><b>Everything in Gold</b> (full SCA)</li>
+            <li>All 200+ pathways · 200+ protocols · 100+ cases</li>
+            <li>Progress, readiness &amp; habit tracking</li>
+            <li>Priority access to new tools</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a class="rgp-sub-cta" href="mailto:bassamomda@gmail.com?subject=Platinum%20(All%20access)%20subscription">Choose Platinum</a>
+        </article>
+      </div>
+    </div>
+    <p class="pr-note">Card and Apple Pay payments are handled by PayPal. Prices include VAT where applicable. Cancel from your PayPal account at any time — access runs to the end of the period you have paid for.</p>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Not sure</span>Which one is for you</h2>
+    <div class="pr-pick">
+      <div>
+        <h3>Sitting the SCA</h3>
+        <p>Take <b>Gold</b>. If you also want the pathways and protocols open during clinic, Platinum is £5 more a month.</p>
+      </div>
+      <div>
+        <h3>Working in practice</h3>
+        <p>Take <b>Silver</b>. It is the point-of-care half — every pathway and protocol, prescriptions, calculators and the clinic tools.</p>
+      </div>
+      <div>
+        <h3>An ST3 doing both</h3>
+        <p>Take <b>Platinum</b>. At £180 a year it is cheaper than Silver and Gold bought separately.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="pr-box">
+      <span class="eyebrow">Access code</span>
+      <h2>Have a code?</h2>
+      <p>Access codes from teaching or a campaign, and referral codes from a colleague, both go in here. Sign in first, then enter it.</p>
+      <div class="pr-code-row">
+        <label class="pr-sr" for="prCode">Access code</label>
+        <input type="text" id="prCode" placeholder="e.g. RGP-3F9A2C" autocomplete="off" spellcheck="false" />
+        <button type="button" id="prCodeGo">Unlock</button>
+      </div>
+      <p class="pr-code-msg" id="prCodeMsg" role="status"></p>
+    </div>
+  </section>
+
+  <section class="page-section" id="refer">
+    <div class="pr-box">
+      <span class="eyebrow">Refer a colleague</span>
+      <h2>Give a month, get a month</h2>
+      <p class="pr-lead">Every member has their own code. A colleague who uses it gets <b>30 days of full access free</b>, and you get <b>30 days added to your own plan</b> for each one who joins — up to <b>3 months</b> in total. Your months stack on top of any subscription rather than replacing it.</p>
+      <ol class="pr-steps">
+        <li><b>1 · Copy your code</b>Sign in and it appears below.</li>
+        <li><b>2 · Share it</b>Send it to a colleague, or post it in your VTS or trainee group.</li>
+        <li><b>3 · They join free</b>They enter it in the box above and get 30 days of Platinum.</li>
+        <li><b>4 · Your month lands</b>30 days is credited to your plan automatically, for up to 3 colleagues.</li>
+      </ol>
+      <div id="prRefer"></div>
+      <p class="pr-note">Referral codes are for new accounts — one per person, and you can’t claim your own.</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="pr-box">
+      <span class="eyebrow">Groups</span>
+      <h2>For practices and training programmes</h2>
+      <p class="pr-lead">If you are equipping a practice, a PCN, a VTS scheme or a training programme, tell us how many people and we will price it properly rather than asking everyone to subscribe individually.</p>
+      <table class="pr-table">
+        <thead><tr><th style="width:30%">Who</th><th>What usually suits them</th></tr></thead>
+        <tbody>
+          <tr><td><b>A GP practice or PCN</b></td><td>Silver across the clinical team, so the pathways, protocols and prescribing tools are open at every desk.</td></tr>
+          <tr><td><b>A VTS or training programme</b></td><td>Gold or Platinum for a cohort of trainees, usually for the run-up to the exam rather than the whole year.</td></tr>
+          <tr><td><b>A teaching session or course</b></td><td>Access codes for attendees — full access for a fixed window, nothing for them to set up.</td></tr>
+        </tbody>
+      </table>
+      <p>Tell us the group size, which half you need and roughly when, and you will get a price and an invoice you can put through your practice or programme.</p>
+      <p><a class="pr-cta" href="mailto:bassamomda@gmail.com?subject=Group%20access%20enquiry%20%E2%80%94%20practices%20and%20training%20programmes&amp;body=How%20many%20people%3A%0AWhich%20half%20(Clinic%2C%20SCA%20or%20both)%3A%0AWhen%20you%20need%20it%20from%3A%0AOrganisation%20and%20invoicing%20details%3A%0A%0AAnything%20else%3A%0A">Enquire about group access</a><a class="pr-cta-2" href="mailto:bassamomda@gmail.com?subject=Access%20codes%20for%20a%20teaching%20session">Ask about codes for a session</a></p>
+    </div>
+  </section>
+
+  <section class="page-section pr-faq">
+    <h2><span class="eyebrow">Questions</span>The things people ask before paying</h2>
+    <details><summary>Do I need a card to start?</summary><p>No. The free pages need no card and no account at all. You only sign up when you want a paid plan, or when you have a code to redeem.</p></details>
+    <details><summary>Can I cancel whenever I want?</summary><p>Yes. Subscriptions are managed in your PayPal account and you can cancel there at any time. Access continues to the end of the period you have already paid for.</p></details>
+    <details><summary>What happens to my account if I stop paying?</summary><p>It reverts to the free plan — you keep the free pathways, protocols, cases, Scribe and the SCA Guide, and anything saved in your browser stays where it is. Nothing is deleted.</p></details>
+    <details><summary>Is the clinical content actually reviewed?</summary><p>Every clinical page carries a strip under its title stating when it was last reviewed, when it is next due and which guidance it is anchored to. The whole library was signed off on 20 September 2026, and high-risk pages are re-reviewed every six months. See <a href="content-safety.html">how we keep content safe</a>.</p></details>
+    <details><summary>Can my practice pay by invoice?</summary><p>Yes — use the group enquiry above. Individual plans go through PayPal; group access can be invoiced.</p></details>
+    <details><summary>Is there a student or trainee discount?</summary><p>Gold has a £40 three-month option built for the run-up to the exam, which is the cheapest way to cover an exam attempt. For a whole cohort, ask about group access.</p></details>
+    <details><summary>What about the AI features and my patients' data?</summary><p>AI features are for education and de-identified drafting only, and you should never enter patient-identifiable data. What each tool is and is not for is set out in <a href="ai-safety.html">AI safety and data</a>.</p></details>
+  </section>
+
+  <section class="page-section">
+    <p class="pr-note">Reasoning GP is an independent, GP-led platform for UK healthcare professionals. It is educational and does not replace clinical judgement — see the <a href="disclaimer.html">disclaimer</a>, <a href="terms.html">terms</a> and <a href="privacy.html">privacy policy</a>.</p>
+  </section>
+
+</div></div>
+
+</main></div>
+<script src="../assets/site.js?v=100"></script>
+<script>
+(function(){
+  /* Billing toggle — sets the class rgp-pay.js reads (bill-yearly) and flips the
+     price spans. Kept page-local so it works whether or not rgp-pay.js loads. */
+  var subs = document.getElementById('prPlans');
+  if (subs) subs.querySelectorAll('[data-bill]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var yearly = b.getAttribute('data-bill') === 'yearly';
+      subs.classList.toggle('bill-yearly', yearly);
+      subs.querySelectorAll('[data-bill]').forEach(function(x){
+        var on = x === b;
+        x.classList.toggle('active', on);
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    });
+  });
+
+  /* Access code — reuses the same RGPAuth.redeem() the lock screen uses, so there
+     is one code path and no second implementation to drift. */
+  var go = document.getElementById('prCodeGo'), inp = document.getElementById('prCode'), msg = document.getElementById('prCodeMsg');
+  function say(t, ok){ msg.textContent = t; msg.classList.toggle('ok', !!ok); }
+  async function redeem(){
+    var code = (inp.value || '').trim();
+    if (!code) return say('Enter the code you were given.');
+    if (!window.RGPAuth) return say('Codes can only be redeemed on the live site.');
+    if (!RGPAuth.current()) { say('Sign in first, then enter your code.'); if (window.RGP_openAuth) RGP_openAuth('signin'); return; }
+    say('Checking…');
+    /* An access code and a referral code look alike to the person typing one, so
+       try the access-code path first and fall back to the referral endpoint
+       rather than making them pick the right box. */
+    try { await RGPAuth.redeem(code); say('✓ Unlocked — welcome in.', true); setTimeout(function(){ location.reload(); }, 900); return; }
+    catch(e1){
+      try {
+        var d = await refCall('POST', { code: code });
+        say('✓ Referral applied — ' + (d.days || 30) + ' days of full access. Welcome in.', true);
+        setTimeout(function(){ location.reload(); }, 1100);
+      } catch(e2){
+        say((e2 && e2.message && e2.message !== 'offline') ? e2.message : ((e1 && e1.message) || 'That code didn\u2019t work.'));
+      }
+    }
+  }
+  if (go){ go.addEventListener('click', redeem); inp.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); redeem(); } }); }
+
+  /* Referral — talks to /api/referral on the Worker. The code is ISSUED and the
+     free month CREDITED server-side; nothing here invents a code, because a code
+     that looks real but cannot be claimed is worse than no code at all. */
+  function refApi(){ var u=(window.RGP_CONFIG||{}).workerUrl; return u ? u.replace(/\/$/,'') : null; }
+  function refToken(){ try { return localStorage.getItem('rgp.auth.token.v1'); } catch(e){ return null; } }
+  async function refCall(method, body){
+    var base=refApi(), tok=refToken();
+    if(!base || !tok) throw new Error('offline');
+    var res = await fetch(base + '/api/referral', {
+      method: method,
+      headers: { 'Content-Type':'application/json', 'Authorization':'Bearer ' + tok },
+      body: method === 'GET' ? undefined : JSON.stringify(body || {})
+    });
+    var d = await res.json().catch(function(){ return {}; });
+    if(!res.ok) throw new Error(d.error || 'That didn\u2019t work.');
+    return d;
+  }
+
+  var box = document.getElementById('prRefer');
+  function shell(html){ if(box) box.innerHTML = html; }
+
+  async function paint(){
+    if (!box) return;
+    var u = window.RGPAuth && RGPAuth.current();
+    if (!u){
+      shell('<p class="pr-note">Sign in and your code appears here.</p>'
+        + '<p><button type="button" class="pr-cta" data-refer-signin>Sign in or create an account</button></p>');
+      var b = box.querySelector('[data-refer-signin]');
+      if (b) b.addEventListener('click', function(){ if (window.RGP_openAuth) RGP_openAuth('signin'); });
+      return;
+    }
+    if (!refApi()){
+      shell('<p class="pr-note">Referral codes work on the live site. <a href="mailto:bassamomda@gmail.com?subject=Referral%20code%20request">Email us</a> if you need one now.</p>');
+      return;
+    }
+    shell('<p class="pr-note">Loading your code…</p>');
+    var d;
+    try { d = await refCall('GET'); }
+    catch(e){
+      shell('<p class="pr-note">Couldn’t reach your account just now. '
+        + '<a href="mailto:bassamomda@gmail.com?subject=Referral%20code%20request">Email us</a> and we’ll issue one.</p>');
+      return;
+    }
+    var earned = d.earned || 0, max = d.max || 3;
+    shell('<div class="pr-code-row"><input type="text" readonly value="' + String(d.code).replace(/"/g,'&quot;') + '" aria-label="Your referral code" />'
+      + '<button type="button" data-refer-copy>Copy</button></div>'
+      + '<p class="pr-code-msg" data-refer-msg role="status">' + (earned
+          ? '✓ ' + earned + ' of ' + max + ' free months earned' + (earned >= max ? ' — you\u2019ve reached the maximum. Your code still gives colleagues their free month.' : '.')
+          : '') + '</p>');
+    box.querySelector('[data-refer-copy]').addEventListener('click', function(){
+      var i = box.querySelector('input'), m = box.querySelector('[data-refer-msg]');
+      i.select();
+      (navigator.clipboard ? navigator.clipboard.writeText(i.value) : Promise.reject())
+        .then(function(){ m.textContent = '✓ Copied — send it to a colleague.'; m.classList.add('ok'); })
+        .catch(function(){ m.textContent = 'Press Ctrl+C to copy.'; m.classList.remove('ok'); });
+    });
+  }
+  paint();
+  window.addEventListener('rgp-auth-change', paint);
+  setTimeout(paint, 1200);
+})();
+</script>
+<script src="../assets/rgp-pay.js"></script>
+</body></html>

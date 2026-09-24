@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Accessibility · Reasoning GP</title>
+<meta name="description" content="How Reasoning GP works for clinicians with dyslexia, low vision, ADHD or motor and cognitive differences — the reading settings, what meets WCAG 2.2 AA today, and what does not yet." />
+<link rel="canonical" href="https://gpreasoning.uk/pages/accessibility.html">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=14" />
+<style>
+.ax-body{max-width:900px;margin:0 auto}
+.ax-lead{font-size:16.5px;line-height:1.7;color:var(--ink-2);max-width:68ch}
+.ax-lead b{color:var(--ink)}
+.ax-body h3{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.ax-body p,.ax-body li{font-size:14.5px;line-height:1.7;color:var(--ink-2)}
+.ax-body p{margin:8px 0;max-width:72ch}
+.ax-body ul{padding-left:20px;margin:8px 0;display:flex;flex-direction:column;gap:7px;max-width:72ch}
+.ax-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+.ax-table th{text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:0 12px 8px 0;border-bottom:1px solid var(--line-2);vertical-align:bottom}
+.ax-table td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.55;vertical-align:top}
+.ax-table td b{color:var(--ink)}
+.ax-table tr:last-child td{border-bottom:none}
+.ax-state{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.ax-yes{background:#d5e6e4;color:#0c4a47}
+.ax-part{background:#f6e9c8;color:#7a570c}
+.ax-no{background:#f7e3da;color:#8c3a1f}
+.ax-note{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md,10px);padding:16px 18px;margin:18px 0;max-width:72ch}
+.ax-note p{margin:0;font-size:14px}
+.ax-note p + p{margin-top:10px}
+.ax-cta{display:inline-block;margin-top:6px;background:var(--teal);color:#f6f2e9;padding:11px 20px;border-radius:9px;font-size:14px;font-weight:600}
+.ax-cta:hover{background:var(--teal-2);color:#fff}
+.ax-meta{font-size:13px;color:var(--muted);margin-top:8px}
+</style>
+</head>
+<body>
+<aside class="sidebar" data-active-id="__accessibility"></aside>
+<div class="app"><main class="main">
+
+<section class="page-hero" data-screen-label="Accessibility hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Accessibility</span>
+    <h1>Built to be <em>read</em>, not just looked at</h1>
+    <p>A sizeable share of UK clinicians read differently — dyslexia, low vision, ADHD, migraine, or simply a phone held at arm's length between patients. The reading settings are on every page, and this statement says plainly what works today and what does not yet.</p>
+  </div>
+</section>
+
+<div class="page-body"><div class="ax-body">
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Reading settings</span>The control on every page</h2>
+    <p class="ax-lead">Look for the <b>accessibility button in the bottom-right corner</b> of any page. It opens six settings that apply across the whole site and are remembered on your device — no account needed, nothing sent to us.</p>
+    <table class="ax-table">
+      <thead><tr><th style="width:26%">Setting</th><th style="width:28%">Options</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><b>Text size</b></td><td>Normal · Larger · Largest</td><td>Scales the whole page up to 130% and reflows it, so nothing is cut off. Your browser's own zoom still works on top of this.</td></tr>
+        <tr><td><b>Typeface</b></td><td>Standard · Readable</td><td>Switches to <b>Atkinson Hyperlegible</b>, designed by the Braille Institute so that similar letter shapes stay distinguishable, with wider letter and word spacing.</td></tr>
+        <tr><td><b>Line spacing</b></td><td>Normal · Roomy</td><td>Opens line height to 1.85 and adds space between paragraphs and list items — the spacing targets in WCAG 2.2.</td></tr>
+        <tr><td><b>Contrast</b></td><td>Standard · Higher</td><td>Darkens body text to near-black, strengthens every hairline and table border, and underlines links.</td></tr>
+        <tr><td><b>Motion</b></td><td>Standard · Reduced</td><td>Stops transitions and animations. If your operating system already asks for reduced motion, that is respected without touching this.</td></tr>
+        <tr><td><b>Visual noise</b></td><td>Standard · Calmer</td><td>Removes shadows, hover movement and background gradients. <b>Safety colours are never removed</b> — a red card stays red.</td></tr>
+      </tbody>
+    </table>
+    <p>Settings do not print. A page you send to PDF comes out in the standard layout.</p>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Beyond the toggles</span>Choices baked into the design</h2>
+    <ul>
+      <li><b>No meaning carried by colour alone.</b> Every review-status pill, red flag and 2WW tag carries a word and a symbol as well as a colour. A protocol is readable in greyscale.</li>
+      <li><b>Real tables stay tables.</b> An earlier build restacked clinical tables into cards on phones; clinicians said they preferred tables, so columns are now sized in proportion to their content instead.</li>
+      <li><b>Semantic structure.</b> Headings are properly nested, pathway steps are lists, and clinical tables use real table markup with header cells — so a screen reader announces the structure rather than a wall of text.</li>
+      <li><b>Visible focus.</b> Keyboard focus is always shown, never suppressed, and collapsible sections open on Enter or Space with <code>aria-expanded</code> state.</li>
+      <li><b>Nothing hidden from print.</b> Collapsible sections are forced open in the print copy — a folded section must never be missing from a PDF.</li>
+      <li><b>Deep links reveal.</b> Jumping to a folded section opens it first, so a link can never land on hidden content.</li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Honest status</span>Where we stand against WCAG 2.2 AA</h2>
+    <p class="ax-lead">This site has <b>not</b> been through a formal independent accessibility audit. The table below is our own assessment, and we would rather publish it with the gaps showing than claim a level we have not had tested.</p>
+    <table class="ax-table">
+      <thead><tr><th style="width:32%">Area</th><th style="width:18%">Status</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Text contrast (1.4.3)</td><td><span class="ax-state ax-yes">Met</span></td><td>Body and UI text measured at 4.5:1 or better against its own background; the Higher-contrast setting raises this further.</td></tr>
+        <tr><td>Use of colour (1.4.1)</td><td><span class="ax-state ax-yes">Met</span></td><td>Status and severity always carry text and a symbol alongside colour.</td></tr>
+        <tr><td>Text spacing (1.4.12)</td><td><span class="ax-state ax-yes">Met</span></td><td>Content reflows without loss when spacing is increased; the Roomy setting applies the target values directly.</td></tr>
+        <tr><td>Resize text (1.4.4) / Reflow (1.4.10)</td><td><span class="ax-state ax-yes">Met</span></td><td>Pages reflow to 320px and to 200% zoom without horizontal scrolling of body content.</td></tr>
+        <tr><td>Keyboard (2.1.1) and focus visible (2.4.7)</td><td><span class="ax-state ax-part">Mostly</span></td><td>Core navigation, tabs, collapsible sections and the reading panel are fully keyboard-operable. Some older interactive tools have not been re-tested.</td></tr>
+        <tr><td>Screen-reader labelling (4.1.2)</td><td><span class="ax-state ax-part">Mostly</span></td><td>Landmarks, headings and controls are labelled. Some complex pathway diagrams need better described alternatives.</td></tr>
+        <tr><td>Motion (2.3.3)</td><td><span class="ax-state ax-yes">Met</span></td><td><code>prefers-reduced-motion</code> is respected, and the Reduced setting overrides regardless.</td></tr>
+        <tr><td>Captions and transcripts (1.2.x)</td><td><span class="ax-state ax-no">Gap</span></td><td>Where audio or spoken AI output is used, transcripts are not yet provided everywhere.</td></tr>
+        <tr><td>Independent audit</td><td><span class="ax-state ax-no">Gap</span></td><td>No third-party audit has been commissioned. Testing so far is internal, including with clinicians using the readable-typeface settings.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">What we are doing next</span>The order of work</h2>
+    <ul>
+      <li>Described text alternatives for the visual pathway diagrams, starting with the high-risk pathways.</li>
+      <li>Transcripts for spoken AI output and any audio content.</li>
+      <li>A keyboard-only pass across the older interactive tools.</li>
+      <li>Testing sessions with GPs and trainees who use assistive technology or read with dyslexia — if that is you, we would genuinely like to hear from you.</li>
+      <li>An independent audit once the above are in place, rather than before.</li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Tell us</span>If something here blocks you</h2>
+    <div class="ax-note">
+      <p>If any page is hard or impossible to use, email us with the page address and what happened. We treat an access barrier on a clinical page the same way we treat a clinical error on one — see <a href="content-safety.html">how we keep content safe</a> for the response times.</p>
+      <p>If you need a specific page in another format — larger print, plain text, or a described version — ask and we will produce it.</p>
+    </div>
+    <p><a class="ax-cta" href="mailto:bassamomda@gmail.com?subject=Accessibility%20%E2%80%94%20Reasoning%20GP">Report an accessibility problem</a></p>
+    <p class="ax-meta">This statement describes the current state of the site and is updated as things change. It is not a formal public-sector accessibility statement under the 2018 Regulations, which do not apply to this service.</p>
+  </section>
+
+</div></div>
+
+</main></div>
+<script src="../assets/site.js?v=100"></script>
+</body></html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atrial Fibrillation — Protocol · Reasoning GP</title>
+<meta name="description" content="Atrial fibrillation in one page: confirm the rhythm, hunt the driver, score CHA2DS2-VASc with the components in front of you, choose and dose the DOAC by creatinine clearance, use ORBIT to fix rather than withhold, run the rate ladder with named doses, refer early for rhythm control, and review both streams every year." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/atrial-fibrillation.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Atrial fibrillation protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"💓",
+  title:"Atrial fibrillation — the complete guide",
+  eyebrow:"Protocol · two streams on one page",
+  stemTitle:"Two streams, run in parallel forever: stop the stroke, then control the symptoms",
+  stemSub:"One page for the whole condition. Confirm AF on a 12-lead and hunt the driver; score CHA\u2082DS\u2082-VASc with the actual components in front of you; choose and dose the DOAC correctly (creatinine clearance, the reduction rules, the interactions); use ORBIT to fix bleeding risk and never to withhold protection; run the rate ladder with named doses; know who deserves rhythm control early; and review both streams every year. NICE NG196 \u00b7 ESC 2024.",
+  guideline:"NICE NG196 \u00b7 ESC 2024",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE NG196"},
+    {t:"ESC 2024 concepts \u00b7 early rhythm control"},
+    {t:"NG12 stated honestly", tone:"tw"},
+    {t:"v2.0 \u00b7 reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:"<div class='mg-layers'><a href='#confirm'><b>Confirm</b><small>12-lead \u00b7 or \u226530 s on a monitor</small></a><a href='#score'><b>Stream A</b><small>CHA\u2082DS\u2082-VASc \u22652 \u2192 offer</small></a><a href='#rate'><b>Stream B</b><small>Rate &lt;110, then rhythm</small></a><a href='#refer'><b>Refer</b><small>999 \u00b7 rhythm \u00b7 LAA occlusion</small></a></div>",
+  quickSub:"If you read nothing else on this page, read these six cards. Every figure traces to the source cited under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Fast AF with compromise is a 999 call — and pre-excitation must never get a rate-limiter", html:"Fast AF with chest pain, syncope, hypotension or severe breathlessness is haemodynamic compromise \u2014 999. New-onset AF within 48 hours in an otherwise well patient \u2192 same-day or urgent assessment: that is the cardioversion window. Suspected pre-excitation (young, very fast, delta wave on the ECG) \u2014 do NOT give a beta-blocker, a rate-limiting calcium-channel blocker or digoxin: they can accelerate the ventricular rate. Urgent cardiology."},
+    {tone:"amber", h:"Two questions, asked in parallel forever", html:"Run <b>\u201chow do I stop a stroke?\u201d</b> (anticoagulation, decided by risk score \u2014 <b>regardless of symptoms or AF pattern</b>) alongside <b>\u201chow do I make them feel better?\u201d</b> (rate, then rhythm). The classic fatal error: the rate is controlled, the patient feels fine, and someone stops the anticoagulant. Controlled AF still clots \u2014 and paroxysmal AF strokes just as much as permanent AF."},
+    {tone:"blue", h:"CHA₂DS₂-VASc ≥2 → offer anticoagulation — the same score of 2 in women as in men", html:"Offer a DOAC at CHA\u2082DS\u2082-VASc \u22652; consider one for a man scoring 1. <b>There is no \u201c\u22653 in women\u201d rule in NG196</b> \u2014 female sex contributes a point but is not on its own an indication, which is why score 2 means anticoagulate for a woman with hypertension plus female sex just as it does for a man with two risk factors. <b>Getting this wrong systematically under-treats women.</b> <b>Aspirin has no role in AF stroke prevention, ever.</b>"},
+    {tone:"green", h:"Dose by creatinine clearance, not the lab eGFR", html:"The commonest silent DOAC error in UK primary care is dosing off the lab eGFR. The licences use creatinine clearance by Cockcroft-Gault (which needs a weight) \u2014 in small elderly women CrCl runs far below eGFR, so the \u201cstandard dose\u201d overdoses exactly the patients who bleed. Default choice <b>apixaban 5 mg BD</b>, reduced to 2.5 mg BD only if 2 of: age \u226580, weight \u226460 kg, creatinine \u2265133 \u00b5mol/L. <b>Under-dosing is an error too \u2014 audit both directions.</b>"},
+    {tone:"purple", h:"ORBIT modifies the plan — it never vetoes it", html:"NG196 prefers ORBIT to HAS-BLED. A high score means fix the fixables and review more often; it is NOT a reason to withhold anticoagulation \u2014 stroke risk almost always outweighs bleeding risk in AF. The falls myth: a patient would need to fall hundreds of times a year for fall-related bleeding to outweigh stroke prevention. If bleeding genuinely defeats every optimisation, refer for left atrial appendage occlusion rather than accepting no protection at all."},
+    {tone:"teal", h:"Rate target <110 is lenient and evidence-based — but rhythm control belongs EARLY in the right patient", html:"Resting heart rate &lt;110 bpm if asymptomatic (lenient control, RACE II); tighten towards &lt;80 only if symptoms persist. Refer early for a rhythm strategy in the young or active, in AF causing or worsening heart failure, when symptoms persist despite rate control, in new-onset AF, and when a reversible trigger has just been fixed \u2014 early rhythm control improves outcomes in the first year after diagnosis (EAST-AFNET 4), and AF-induced cardiomyopathy is reversible."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is the one that must not wait.",
+  pathway:[
+    {title:"Screen for compromise before anything else", html:"Fast AF with chest pain, syncope, hypotension or severe breathlessness \u2192 999. New-onset within 48 hours but otherwise well \u2192 same-day assessment for the cardioversion window. Suspected pre-excitation \u2014 no rate-limiting drugs at all, urgent cardiology.", alert:true},
+    {title:"Confirm the rhythm, then classify it", html:"12-lead ECG \u2014 irregularly irregular, no P waves \u2014 or \u226530 seconds on ambulatory monitoring for paroxysmal symptoms. Pulse palpation alone never diagnoses AF, and a single-lead smartwatch trace needs 12-lead or clinician-reviewed confirmation. Paroxysmal, persistent or permanent changes the rhythm decision, <b>never the anticoagulation decision</b>."},
+    {title:"Hunt the driver and take the baseline", html:"Thyroid function, alcohol (the big one), blood pressure, sleep apnoea, sepsis, anaemia, electrolytes, valve disease, heart failure and ischaemia. Baseline: U&amp;E with CrCl by Cockcroft-Gault, FBC, LFTs, TFTs, HbA1c, lipids, weight and an echo."},
+    {title:"Stream A — score, then anticoagulate properly", html:"CHA\u2082DS\u2082-VASc \u22652 \u2192 offer a DOAC; a man scoring 1 \u2192 consider. Dose by creatinine clearance and apply the reduction rules in both directions. Score ORBIT to fix the modifiable bleeding risks, not to withhold. Stop any aspirin being taken for the AF."},
+    {title:"Stream B — rate first, rhythm early where it counts, then review both streams", html:"Bisoprolol to a resting rate under 110; add digoxin or swap to a rate-limiting calcium-channel blocker as the ladder allows. Refer early for rhythm control in the young, in AF-driven heart failure and in persisting symptoms. Re-score, re-calculate CrCl and re-check FBC every year."}
+  ],
+  sections:[
+    {id:"confirm", nav:"Confirm", title:"Confirming AF, and classifying it correctly", sub:"The diagnosis is electrical, so it needs a trace \u2014 and the classification must not be allowed to leak into the anticoagulation decision.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Confirm it","<b>12-lead ECG \u2014 irregularly irregular rhythm, no P waves.</b> For paroxysmal symptoms, <b>\u226530 seconds of AF on ambulatory monitoring</b> (24-hour tape, longer monitor, or a patch). <b>Pulse palpation alone never diagnoses AF</b>, and a single-lead smartwatch trace needs a 12-lead ECG (or a clinician-reviewed strip) before it becomes a diagnosis \u2014 but an irregular smartwatch alert in a symptomatic patient earns an ECG, not a shrug"],
+         ["Classify it","<b>Paroxysmal</b> \u2014 self-terminating, episodes &lt;7 days \u00b7 <b>persistent</b> \u2014 &gt;7 days, or needs cardioversion to stop \u00b7 <b>permanent</b> \u2014 accepted, no further rhythm attempts"],
+         ["What the classification does and does not decide","It drives <b>rhythm-control decisions only</b>. It has <b>NO bearing on anticoagulation</b> \u2014 <b>paroxysmal AF strokes just as much as permanent AF</b>, and \u201conly occasional AF\u201d is one of the commonest reasons patients are left unprotected"],
+         ["Symptom burden","Palpitations, breathlessness, fatigue, reduced exercise tolerance \u2014 or nothing at all (an incidental pulse check). <b>Symptoms drive Stream B alone; they never gate Stream A</b>"],
+         ["The mechanism, so the drug choice makes sense","AF generates a <b>fibrin-rich stasis thrombus</b> in the left atrium \u2014 that is why it needs an <b>anticoagulant</b>, and why antiplatelets (which act on the platelet-rich arterial thrombus of plaque disease) do not work here"]
+       ]},
+       {b:"why", html:"Two jobs, held apart in your head for the rest of the patient's life: <strong>\u201chow do I stop a stroke?\u201d</strong> \u2014 answered by the risk score, regardless of symptoms or AF pattern \u2014 and <strong>\u201chow do I make them feel better?\u201d</strong> \u2014 answered by rate, then rhythm. The classic fatal error is rate control working so well that someone concludes the anticoagulant is no longer needed."}
+     ]},
+
+    {id:"severe", nav:"Red flags", title:"The acute branch — compromise, the 48-hour window, and pre-excitation", sub:"Three situations where the next few hours matter more than the whole rest of this page.",
+     blocks:[
+       {b:"warn", html:"Fast AF with chest pain, syncope, hypotension or severe breathlessness = haemodynamic compromise \u2192 999. Suspected pre-excitation \u2014 a young patient, a very fast rate, a delta wave \u2014 must NOT be given a beta-blocker, verapamil, diltiazem or digoxin: blocking the AV node can accelerate conduction down the accessory pathway. Urgent cardiology."},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"999 / emergency now", html:"Haemodynamic compromise (chest pain, syncope, hypotension, severe breathlessness) with fast AF. Any new focal neurology \u2014 treat as stroke and call 999 even if it resolved in minutes. Suspected pre-excitation with a very fast rate."},
+         {tone:"amber", h:"Same-day / urgent, not 999", html:"New-onset AF within 48 hours in a well patient \u2014 the cardioversion window, so it is a same-day conversation with cardiology or ambulatory care, not a routine referral. Fast AF that is poorly tolerated but stable. <b>AF with decompensating heart failure.</b>"},
+         {tone:"red", h:"The driver that is itself an emergency", html:"Severe thyrotoxicosis, sepsis, significant anaemia or an electrolyte disturbance can present as new AF \u2014 treat the driver as urgently as the rhythm. AF in this setting may not need lifelong rhythm treatment, but it still needs the stroke question answered."},
+         {tone:"cream", h:"Stable, new, outside 48 hours", html:"Confirm on a 12-lead, start the driver hunt and the baseline bloods, <b>begin anticoagulation by score straight away</b>, start rate control, and refer for the rhythm conversation \u2014 <b>new-onset AF is itself an early-rhythm-control indication.</b>"}
+       ]}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Hunt the driver, and take the baseline that decides the dose", sub:"Half of AF management is finding what is generating it \u2014 and the baseline bloods are what make the DOAC dose legal.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"plain", h:"Hunt the driver", html:"TFTs (thyrotoxic AF), alcohol (the big one), blood pressure, obstructive sleep apnoea (STOP-BANG), infection or sepsis, anaemia, electrolytes, valve disease (a murmur earns an echo), heart failure, ischaemia."},
+         {tone:"plain", h:"Baseline bloods", html:"FBC, U&amp;E with CrCl calculated by Cockcroft-Gault (it needs a weight), LFTs, TFTs, HbA1c, lipids \u2014 and repeat at least annually."},
+         {tone:"plain", h:"Baseline tests", html:"Echocardiogram \u2014 structure and valves, because it changes drug choice (mechanical valve or moderate-to-severe mitral stenosis means warfarin, not a DOAC; structural or ischaemic disease rules out flecainide). Weight, because it sets the dose rules."},
+         {tone:"purple", h:"NG12 slot — the anticoagulated patient who bleeds", html:"AF has no cancer criterion of its own, but anticoagulation <em>unmasks</em> cancer. Unexplained iron-deficiency anaemia, rectal bleeding or visible haematuria on a DOAC is a suspected-cancer pathway, not a dose reduction \u2014 the exact thresholds are restated in <a href='#refer'>Refer</a>.", src:"NICE NG12 (May 2025) · house rule"},
+         {tone:"cream", h:"Who owns the plan?", html:"AF anticoagulation is usually yours. DAPT durations after a stent belong to cardiology \u2014 read them off the discharge summary. Reconcile every hospital letter: duplicated or orphaned antithrombotics kill. For the full antiplatelet, VTE and peri-procedural detail see the <a href='antiplatelets-anticoagulants.html'>antithrombotics protocol</a>."}
+       ]},
+       {b:"warn", html:"Dose DOACs by creatinine clearance (Cockcroft-Gault), never the lab eGFR. The licences are written in CrCl; in small elderly women CrCl runs far below eGFR, so the \u201cstandard dose\u201d overdoses precisely the patients who go on to bleed. <b>Calculate it at initiation and at every review</b> \u2014 the <a href='../calculators.html'>calculators page</a> does it in seconds."}
+     ]},
+
+    {id:"score", nav:"Who to anticoagulate", title:"Stream A · score CHA₂DS₂-VASc with the components in front of you", sub:"Not from memory, and not from the last letter \u2014 score it on the components, because the score changes with every birthday and every new diagnosis.",
+     blocks:[
+       {b:"table", head:["Letter","Criterion","Points"], rows:[
+         ["C","Congestive heart failure / LV dysfunction","1"],
+         ["H","Hypertension (or on treatment for it)","1"],
+         ["A\u2082","<b>Age \u226575</b>","<b>2</b>"],
+         ["D","Diabetes","1"],
+         ["S\u2082","<b>Prior stroke, TIA or thromboembolism</b>","<b>2</b>"],
+         ["V","Vascular disease (MI, peripheral arterial disease, aortic plaque)","1"],
+         ["A","Age 65\u201374","1"],
+         ["Sc","Sex category female","1"]
+       ]},
+       {b:"kv", rows:[
+         ["Score \u22652","<b>Offer anticoagulation \u2014 the same score of 2 in women as in men.</b> <b>There is no \u201c\u22653 in women\u201d threshold in NG196:</b> female sex adds a point but is not on its own an indication, so score 2 means anticoagulate for a woman with hypertension plus female sex exactly as it does for a man with two risk factors. <b>Getting this wrong systematically under-treats women.</b> Annual stroke risk at a score of 2 is <b>\u22652.2%</b> and rises steeply from there"],
+         ["Man scoring 1","<b>Consider</b> anticoagulation \u2014 in practice usually offer it, unless the single point is soft and the patient, properly informed, would rather not"],
+         ["Score 0 in a man, or 1 from female sex alone","No anticoagulation \u2014 but re-score at least annually and at every review. A 64-year-old becomes 65; a new diagnosis of hypertension, diabetes or heart failure moves the score overnight. <b>Not re-scoring is the commonest missed action in AF care</b>"],
+         ["Aspirin","<b>No role in AF stroke prevention, ever</b> \u2014 ineffective against the atrial stasis thrombus, and it still bleeds. If you inherit a patient on aspirin \u201cfor AF\u201d, that is an action, not a note"],
+         ["Pattern is irrelevant here","Paroxysmal, persistent and permanent AF are scored and anticoagulated identically. So is AF that has apparently been \u201ccured\u201d by ablation or cardioversion \u2014 anticoagulation continues by CHA\u2082DS\u2082-VASc regardless of apparent rhythm success"]
+       ]}
+     ]},
+
+    {id:"doac", nav:"Choose the DOAC", title:"Stream A · choose and dose the DOAC — the four reduction rules", sub:"The safety of DOACs was proven at the licensed dose criteria. The reduction rules ARE the drug. Doses are named for orientation; verify every one in the BNF.",
+     blocks:[
+       {b:"table", head:["DOAC","Standard AF dose","Reduce to","Reduce when \u2014 the exact licence criteria"], rows:[
+         ["<b>Apixaban</b> (usual first choice)","5 mg BD","2.5 mg BD","\u22652 of: age \u226580 \u00b7 weight \u226460 kg \u00b7 creatinine \u2265133 \u00b5mol/L \u2014 or CrCl 15\u201329"],
+         ["<b>Rivaroxaban</b>","20 mg OD <b>with food</b>","15 mg OD","CrCl 15\u201349. <b>Absorption fails without food \u2014 counsel it explicitly</b>"],
+         ["<b>Edoxaban</b>","60 mg OD","30 mg OD","Any of: CrCl 15\u201350 \u00b7 weight \u226460 kg \u00b7 ciclosporin, dronedarone, erythromycin or ketoconazole"],
+         ["<b>Dabigatran</b>","150 mg BD","110 mg BD","<b>Age \u226580 \u00b7 verapamil \u00b7 higher bleeding risk</b> (also consider at age 75\u201380, CrCl 30\u201350). <b>Avoid if CrCl &lt;30</b> \u2014 the most renally cleared of the four"]
+       ]},
+       {b:"kv", rows:[
+         ["Picking between them","<b>Apixaban</b> \u2014 best GI-bleed profile, twice daily. <b>Rivaroxaban and edoxaban</b> \u2014 once daily, better for adherence or a dosette box. <b>Dabigatran</b> \u2014 the only one with dyspepsia as a common side effect, and fully renally cleared. <b>Once-daily beats \u201cbest on paper\u201d if adherence is shaky</b>"],
+         ["Under-dosing is an error too","\u201cBeing kind\u201d with apixaban 2.5 mg BD in a patient who does not meet 2 of the 3 criteria gives stroke risk AND bleeding risk. Dose by the rules \u2014 in both directions \u2014 and audit both directions"],
+         ["Extremes of weight","Under 50 kg or over 120 kg (BMI &gt;40): DOAC evidence thins \u2014 apixaban or rivaroxaban preferred per ISTH, or seek haematology advice"],
+         ["Warfarin still wins for","A mechanical valve (INR target by valve, commonly 2.5\u20133.5; the general AF range is 2\u20133) \u00b7 moderate-to-severe mitral stenosis \u00b7 triple-positive antiphospholipid syndrome \u00b7 CrCl &lt;15 \u00b7 pregnancy (LMWH per specialist) \u00b7 DOAC intolerance, cost, or an established stable INR the patient wants to keep"],
+         ["Why DOACs are first-line at all","They beat warfarin on <b>intracranial haemorrhage, interactions and monitoring burden</b> \u2014 but only at the licensed dose criteria, which is why renal function and weight are re-checked rather than set once"]
+       ]},
+       {b:"warn", html:"An anticoagulant plus an antiplatelet, for AF alone, is bleeding with no added benefit \u2014 stop the antiplatelet the day the DOAC starts. The one exception is a recent stent: triple therapy is cardiology-directed and time-limited (commonly 1 week to 1 month of triple therapy, then DOAC plus clopidogrel to 12 months, then DOAC alone). Your job is to know the stop dates and chase the plan if the letter does not state them \u2014 do not let triple therapy run on by repeat-prescription inertia. If a PPI is needed alongside clopidogrel, use lansoprazole or pantoprazole \u2014 omeprazole and esomeprazole blunt clopidogrel via CYP2C19."}
+     ]},
+
+    {id:"orbit", nav:"Bleeding risk", title:"Stream A · ORBIT — fix the bleeding risk, never use it as a veto", sub:"The score exists to generate actions, not to justify leaving a patient unprotected.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Score it","ORBIT (preferred over HAS-BLED in NG196): sex plus haemoglobin, age &gt;74, bleeding history, renal impairment, antiplatelet use \u2014 the <a href='../calculators.html'>calculators page</a> scores it"],
+         ["What a high score means","Fix the fixables and review more often. It is NOT a reason to withhold anticoagulation \u2014 stroke risk almost always outweighs bleeding risk in AF"],
+         ["The fixables","BP to target \u00b7 stop NSAIDs including OTC ibuprofen \u00b7 stop any unneeded antiplatelet \u00b7 alcohol down \u00b7 PPI cover if a prior GI bleed or dyspepsia \u00b7 treat anaemia AND find its cause (occult GI loss?) \u00b7 falls: treat the falling \u2014 strength and balance, medication review, eyes \u2014 rather than stopping the DOAC"],
+         ["The falls myth","A patient would need to fall hundreds of times a year for fall-related bleeding to outweigh stroke prevention. \u201cThey fall\u201d is almost never a reason to withhold"],
+         ["Gastroprotection \u2014 who gets a PPI","PPI cover for an anticoagulant plus an antiplatelet, or for an antiplatelet with any of: a prior ulcer or GI bleed, age \u226565 with risk factors, or a concurrent SSRI, corticosteroid or NSAID. With clopidogrel use lansoprazole or pantoprazole \u2014 omeprazole and esomeprazole blunt it via CYP2C19"],
+         ["When it genuinely cannot be done","Recurrent major bleeding despite every optimisation \u2192 refer for left atrial appendage occlusion. Refer rather than accept no protection at all"]
+       ]},
+       {b:"table", head:["Bleeding severity","Picture","Action"], rows:[
+         ["<b>Nuisance</b>","Bruising, brief gum or nose bleeds","<b>Reassure, do not stop.</b> Fix the modifiables (<b>BP &lt;140</b>, alcohol, NSAIDs) and recheck FBC and ferritin"],
+         ["<b>Minor but recurrent</b>","Recurrent epistaxis, menorrhagia, PR spotting","Investigate the SOURCE \u2014 never label bleeding \u201cthe DOAC\u201d. Anticoagulants unmask GI and GU cancer: think FIT and colonoscopy, urine cytology and cystoscopy per <a href='#refer'>NG12</a>. Review the dose against the criteria; consider switching to apixaban if GI-prone"],
+         ["<b>Major</b>","Melaena, haematemesis, macroscopic haematuria with compromise, any symptom of intracranial haemorrhage","<b>Admit.</b> Reversal exists and speed matters: <b>idarucizumab</b> for dabigatran, <b>andexanet alfa</b> for apixaban or rivaroxaban, <b>PCC with vitamin K</b> for warfarin"]
+       ]},
+       {b:"warn", html:"Blood where it should not be = investigate, then decide about the drug. Iron-deficiency anaemia or visible haematuria on a DOAC is a cancer-pathway referral, not a dose reduction."}
+     ]},
+
+    {id:"rules", nav:"Day-to-day rules", title:"Stream A · interactions, missed doses, switching and procedures", sub:"This section is where most avoidable anticoagulant harm in primary care is actually generated.",
+     blocks:[
+       {b:"table", head:["Interaction","Effect","Action"], rows:[
+         ["<b>Carbamazepine, phenytoin, rifampicin, St John's Wort</b>","Induce P-gp and CYP3A4 \u2192 DOAC levels FALL \u2192 clots","<b>Avoid DOACs \u2014 use warfarin (monitorable) or change the inducer</b>"],
+         ["<b>Azole antifungals, HIV protease inhibitors, ciclosporin</b>","Inhibit \u2192 DOAC levels RISE \u2192 bleeds","Avoid or dose-reduce per drug (the edoxaban 30 mg rule); ask pharmacy. <b>Caution with clarithromycin too</b>"],
+         ["<b>NSAIDs (including OTC), SSRIs and SNRIs, corticosteroids</b>","Additive bleeding, platelet and GI","Avoid NSAIDs where possible; PPI cover; counsel explicitly about over-the-counter purchases and herbal remedies"],
+         ["<b>Amiodarone, verapamil, dronedarone</b>","Moderate rise in DOAC level","<b>Dabigatran 110 mg with verapamil; edoxaban 30 mg with dronedarone</b>"],
+         ["<b>A second antithrombotic</b>","Multiplied bleeding","<b>Only ever specialist-directed and time-limited</b>"]
+       ]},
+       {b:"kv", rows:[
+         ["Missed dose \u2014 <b>product-specific, not one rule</b>","<b>Apixaban (BD):</b> take the missed dose immediately, then continue BD as before. <b>Dabigatran (BD):</b> the missed dose may be taken up to <b>6 hours before</b> the next dose is due \u2014 omit it if less than 6 hours remain. <b>Rivaroxaban and edoxaban (OD):</b> take it immediately and continue the normal once-daily schedule the next day. <b>Never double up.</b> Check the individual SPC \u2014 the widely-quoted \u201ctake it if under 6 hours late, otherwise skip\u201d is the dabigatran rule and does not apply to the others"],
+         ["Missed \u22652 days","<b>Restart at the normal dose with a safety-net.</b> Recurrent misses \u2192 dosette box, once-daily agent, adherence conversation. DOACs have short half-lives: about 24 hours means anticoagulation is gone in a day, so missed doses are unprotected days"],
+         ["Vomiting a dose","<b>No universal interval exists in the SPCs.</b> Pragmatically: vomiting very soon after swallowing (roughly within the first hour, tablet possibly seen) \u2192 discuss re-dosing; later than that, treat it as absorbed and do <b>NOT</b> repeat. Repeated vomiting \u2192 seek advice rather than guessing \u2014 cover may need bridging or withholding"],
+         ["Switching","Warfarin \u2192 DOAC: start when INR &lt;2\u20132.5. DOAC \u2192 warfarin: overlap until INR \u22652, or use LMWH cover. DOAC \u2192 DOAC: start at the next scheduled dose. No gaps, and no overlaps beyond these"],
+         ["Alert card","<b>Everyone on an anticoagulant carries one</b> \u2014 for dentists, A&amp;E and pharmacists"]
+       ]},
+       {b:"table", head:["Peri-procedural","Stop before","Restart"], rows:[
+         ["<b>Apixaban, rivaroxaban, edoxaban</b>","<b>24 h for low-bleed-risk procedures, 48 h for high risk</b> \u2014 longer if CrCl &lt;30","Low risk: <b>6 h and above, typically 24 h</b> \u00b7 high risk: <b>48\u201372 h</b>, once haemostasis is secure"],
+         ["<b>Dabigatran</b>","<b>24\u201348 h, up to 96 h if CrCl 30\u201350 and high-risk surgery</b>","As above"],
+         ["<b>Warfarin</b>","<b>5 days</b> \u2014 bridge only for a mechanical valve or recent VTE, via the anticoagulation service","Same evening if haemostasis is secure"],
+         ["<b>Aspirin or clopidogrel held for AF+stent patients</b>","Clopidogrel and prasugrel 7 days \u00b7 ticagrelor 5 days \u00b7 aspirin for secondary prevention usually CONTINUE","<b>24 h once haemostasis is secure</b> \u2014 and only after a cardiology discussion if the stent is recent"]
+       ]},
+       {b:"kv", rows:[
+         ["These intervals are drug-specific","There is no single peri-procedural rule for \u201cDOACs\u201d \u2014 the interval depends on the individual agent, the CrCl and the bleeding risk of the procedure (dabigatran, being renally cleared, needs the longest). Follow the local or BSH peri-operative protocol and the surgical team's threshold rather than one remembered number"],
+         ["No bridging for DOACs","<b>Fast on, fast off \u2014 LMWH bridging adds bleeding without benefit</b>"],
+         ["Dental work, skin surgery, cataracts","<b>Usually NO interruption</b> \u2014 local haemostatic measures suffice. Do not reflexively stop"],
+         ["Recent stent or ACS needing surgery","<b>Cardiology discussion BEFORE anything stops</b>"]
+       ]}
+     ]},
+
+    {id:"lifestyle", nav:"Substrate", title:"The substrate work — treatment, not advice", sub:"AF is generated by something. Treating the substrate reduces AF burden and is the part of the plan only primary care can run.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"🍷 Alcohol", html:"<b>The single biggest modifiable driver.</b> Cutting it reduces recurrence \u2014 and in alcohol-related AF, abstinence can be the whole treatment. Ask about binge pattern, not just weekly units."},
+         {tone:"green", h:"⚖️ Weight", html:"<b>Weight loss reduces AF burden (LEGACY).</b> Worth saying explicitly: it is one of the few interventions that reduces the amount of AF rather than just its rate."},
+         {tone:"green", h:"😴 Sleep apnoea", html:"<b>Screen with STOP-BANG</b> \u2014 untreated OSA drives recurrence and defeats rhythm control, including after ablation."},
+         {tone:"blue", h:"🩺 Blood pressure", html:"<b>BP to target</b> \u2014 it is both a CHA\u2082DS\u2082-VASc point and an ORBIT fixable, so it pays twice."},
+         {tone:"red", h:"🚫 What to take away", html:"NSAIDs including OTC ibuprofen (bleeding, and they raise BP), and any aspirin being taken \u201cfor the AF\u201d. Review stimulants and decongestants; check for excessive caffeine where symptoms are palpitation-driven."},
+         {tone:"cream", h:"🧠 The explanation that keeps them on it", html:"Patients stop anticoagulants because they feel well. Say out loud that feeling well is what it is for \u2014 see the script in <a href='#monitor'>Monitoring</a>."}
+       ]}
+     ]},
+
+    {id:"rate", nav:"Rate ladder", title:"Stream B · rate control — the ladder, with doses", sub:"Rate control first for most patients. Lenient is evidence-based: chasing a normal-looking number adds side effects, not benefit.",
+     blocks:[
+       {b:"p", html:"Target <strong>resting heart rate &lt;110 bpm</strong> if asymptomatic (lenient control \u2014 RACE II). <strong>Tighten towards &lt;80 only if the patient remains symptomatic.</strong>"},
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Beta-blocker (not sotalol)", when:"first for most patients", fromLabel:"start here",
+          html:"<b>Bisoprolol 2.5 \u2192 10 mg OD</b> (or atenolol or metoprolol). <b>Asthma is NOT an absolute bar</b> \u2014 cardioselective beta-blockers are tolerated by most; true brittle reactive asthma \u2192 use a rate-limiting calcium-channel blocker instead. Sotalol is a rhythm drug, not a rate drug \u2014 do not start it for rate control."},
+         {step:"Alt 1", title:"Rate-limiting calcium-channel blocker", when:"beta-blocker not tolerated or contraindicated", fromLabel:"choose by comorbidity",
+          html:"<b>Diltiazem MR 120 \u2192 360 mg</b>, or <b>verapamil 40 mg TDS \u2192 240\u2013480 mg daily</b>. <b>NEVER in HFrEF \u2014 both are negative inotropes.</b> Never combine with a beta-blocker without specialist advice (risk of complete heart block)."},
+         {step:"Alt 2", title:"Digoxin", when:"sedentary patients, heart failure, or as an add-on", fromLabel:"heart rate still above target on monotherapy",
+          html:"<b>Load 250\u2013500 micrograms, 2\u20133 doses 6 hours apart</b> (less in frailty), then maintain <b>125\u2013250 micrograms OD</b> (<b>62.5 micrograms</b> in the elderly or renally impaired). <b>Controls resting but not exertional rate</b> \u2014 monotherapy suits the sedentary; otherwise add it to a beta-blocker or a CCB. Toxicity: nausea, visual disturbance, arrhythmia \u2192 check a digoxin level and K\u207a, because hypokalaemia potentiates it."},
+         {step:"Step 3", title:"Dual therapy", when:"still above target, or still symptomatic", fromLabel:"beta-blocker + digoxin (or CCB + digoxin)",
+          html:"Still uncontrolled on two agents \u2192 refer for rhythm control rather than stacking a third rate-limiting drug."}
+       ]},
+       {b:"warn", html:"In AF with heart failure, rate-control with the beta-blocker \u2014 not verapamil or diltiazem (see the <a href='heart-failure.html'>heart failure protocol</a>). <b>And in suspected pre-excitation, no AV-nodal blocking drug at all.</b>"}
+     ]},
+
+    {id:"rhythm", nav:"Rhythm control", title:"Stream B · rhythm control — who deserves it EARLY", sub:"The era of \u201crate control for everyone\u201d is over. Getting the referral in during the first year is the point.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Refer early for a rhythm strategy","The young or active \u00b7 AF causing or worsening heart failure \u00b7 symptomatic despite rate control \u00b7 new-onset AF \u00b7 a clear reversible trigger now fixed. Early rhythm control improves outcomes in the first year after diagnosis (EAST-AFNET 4), and AF-induced cardiomyopathy is reversible"],
+         ["Cardioversion","Onset &lt;48 h \u2192 can be cardioverted acutely. Otherwise \u22653 weeks of therapeutic anticoagulation first, or a TOE-guided approach \u2014 and anticoagulation continues for \u22654 weeks afterwards, then by score, which usually means indefinitely"],
+         ["Antiarrhythmic drugs (specialist-initiated)","Flecainide \u2014 only if there is NO structural or ischaemic heart disease, and always with a rate-limiting drug alongside. Sotalol. Dronedarone. Amiodarone \u2014 the option when the LV is impaired: TFTs and LFTs at baseline and 6-monthly, CXR at baseline"],
+         ["Pill-in-the-pocket","Infrequent paroxysmal AF, no structural heart disease, systolic BP &gt;100: a single self-administered dose of flecainide \u2014 specialist-assessed first"],
+         ["Ablation","Paroxysmal or persistent AF that has failed, or is intolerant of, one antiarrhythmic drug \u2014 and increasingly first-line for the young symptomatic patient. Anticoagulation continues afterwards by CHA\u2082DS\u2082-VASc regardless of apparent success"]
+       ]},
+       {b:"why", html:"Rhythm control is no longer a last resort for the intolerable. Trial evidence supports intervening within the first year, and AF that is driving a cardiomyopathy can reverse it \u2014 which is why \u201crate controlled, feels better, discharged\u201d can be the wrong answer in a 55-year-old."}
+     ]},
+
+    {id:"monitor", nav:"Monitor", title:"The annual AF review — both streams, every time", sub:"Two streams reviewed together, or one of them silently drifts.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Re-score CHA\u2082DS\u2082-VASc</b>","<b>Annually and at every review</b>","Patients who are not anticoagulated cross the threshold with birthdays and new diagnoses \u2014 this is the commonest missed action in AF care"],
+         ["<b>CrCl for the DOAC dose</b>","Annually; 6-monthly if CrCl 30\u201360 or the patient is frail; and after any acute illness or AKI","Re-dose by the table. Rule of thumb: recheck interval in months \u2248 CrCl \u00f7 10. Recalculate from weight and creatinine \u2014 the dose that was right at 74 may be an overdose at 81"],
+         ["<b>FBC and LFTs</b>","Annually","A falling haemoglobin on an anticoagulant means find the bleed \u2014 FIT and scope thinking \u2014 not just stop the DOAC. Anaemia is occult bleeding until explained"],
+         ["<b>Indication and duration still valid</b>","Annually","Still AF? Still the right agent? Any inherited antiplatelet or expired DAPT to de-prescribe?"],
+         ["<b>Adherence and missed-dose pattern</b>","Every review","Short half-lives mean missed doses are unprotected days \u2014 consider a once-daily agent, a dosette box or reminder apps"],
+         ["<b>Heart rate and symptoms</b>","Every review","Above target or symptomatic \u2192 climb the ladder or make the rhythm referral"],
+         ["<b>Weight, alcohol, BP, OSA</b>","Annually","<b>The substrate work \u2014 weight loss reduces AF burden (LEGACY)</b>"],
+         ["<b>Bleeding history and ORBIT modifiables</b>","Annually","<b>BP, alcohol, NSAIDs, a falls plan</b>"]
+       ]},
+       {b:"say", html:"There are two separate jobs here, and two different tablets. The blood thinner is the life-saver \u2014 it works silently, and it has to carry on even when you feel completely well, because feeling well is exactly what it is for. The heart-rate tablet is the comfort one, and we can adjust that by how you feel. If you ever see blood \u2014 in vomit, in urine, or as black bowel motions \u2014 or you hit your head, that is A&amp;E rather than wait-and-see. And please check with us before you buy ibuprofen or any herbal remedy."}
+     ]},
+
+    {id:"loop", nav:"Not controlled?", title:"Not controlled, or worried about bleeding? Check these before changing course", sub:"Most problems here are fixable without losing protection.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"1 · Adherence", html:"Is the anticoagulant actually being taken every day? Is the rate drug at the maximum tolerated dose before you add another?"},
+         {tone:"amber", h:"2 · Driver recheck", html:"Thyroid, alcohol, sleep apnoea, anaemia, infection \u2014 has one crept back in?"},
+         {tone:"amber", h:"3 · Right dose?", html:"CrCl recalculated? Are the reduction criteria genuinely met \u2014 in both directions?"},
+         {tone:"amber", h:"4 · Bleeding source", html:"Bleeding on a DOAC \u2192 find and fix the source and the ORBIT fixables. Stopping protection is the last resort, not the first."},
+         {tone:"amber", h:"5 · Target realistic?", html:"A resting rate of 100 in an asymptomatic patient is fine \u2014 lenient control is evidence-based. Chasing 70 adds side effects, not benefit."},
+         {tone:"amber", h:"6 · Right strategy?", html:"Symptomatic despite genuinely good rate control \u2192 rhythm referral. Do not stack a third rate-limiting drug."}
+       ]},
+       {b:"why", html:"All six checked \u2192 escalate the ladder, make the rhythm referral, or open the left atrial appendage occlusion conversation."}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"What the patient must know", sub:"Four sentences that prevent most avoidable harm in AF.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Stroke — FAST", html:"\u201cFace, arm, speech \u2014 999 immediately, even if it passes off in minutes. A symptom that goes away is still an emergency.\u201d"},
+         {tone:"red", h:"🩸 Bleeding", html:"\u201cBlack tarry stools, vomiting blood, blood in the urine, a bleed that will not stop \u2014 or ANY head injury \u2014 go to A&amp;E and tell them you are on a blood thinner.\u201d"},
+         {tone:"amber", h:"💓 Collapse", html:"\u201cA racing heart WITH chest pain, fainting, or severe breathlessness \u2014 999.\u201d"},
+         {tone:"cream", h:"💊 The golden rule", html:"\u201cNever stop the blood thinner because you feel well \u2014 feeling well is what it is for. And check with us before adding ibuprofen or a herbal remedy.\u201d"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, and how fast", sub:"Two of these are time-critical; one is the cancer pathway that anticoagulation itself creates.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / same day", html:"Haemodynamic compromise with fast AF (chest pain, syncope, hypotension, severe breathlessness). Any new focal neurology \u2014 as stroke, even if transient. Suspected pre-excitation with fast AF \u2014 and give NO rate-limiting drug, because they can accelerate it. Major bleeding or any neurological change on an anticoagulant \u2014 reversal agents exist and speed matters."},
+         {tone:"amber", h:"Urgent / same-day assessment", html:"New-onset AF within 48 hours \u2014 the cardioversion window. Fast AF that is poorly tolerated. AF with decompensating heart failure."},
+         {tone:"blue", h:"Early rhythm referral", html:"The young or active \u00b7 AF-driven heart failure \u00b7 symptomatic despite rate control \u00b7 new-onset AF \u00b7 AF after a trigger has been fixed \u2014 for cardioversion, antiarrhythmic drugs or ablation."},
+         {tone:"blue", h:"Valvular, and the warfarin cases", html:"Mechanical valve or significant mitral stenosis \u2014 warfarin, with specialist input. Any significant murmur that has not yet had an echo. Triple-positive antiphospholipid syndrome or CrCl &lt;15 \u2192 haematology."},
+         {tone:"blue", h:"Anticoagulation impossible", html:"Recurrent major bleeding despite full optimisation \u2192 left atrial appendage occlusion assessment. Refer rather than accept no protection."},
+         {tone:"purple", h:"NG12 — stated honestly <span class='tw'>2WW</span>", html:"Atrial fibrillation has no NICE NG12 criterion of its own, and this page does not invent one. But anticoagulation unmasks cancer, so three NG12 routes belong to every anticoagulated AF patient and must not be lost to \u201cit is just the DOAC\u201d:<br>\u2022 Unexplained visible haematuria in a person aged 45 and over, without a UTI or after treatment of one, \u2192 urgent suspected bladder or renal cancer referral (2WW). Aged 60 and over with unexplained non-visible haematuria plus dysuria or a raised white cell count \u2192 the same 2WW referral.<br>\u2022 Unexplained iron-deficiency anaemia \u2014 in men of any age, or in post-menopausal women \u2014 \u2192 urgent direct-access FIT and colorectal investigation; a FIT result \u226510 \u00b5g Hb/g stool warrants urgent lower GI referral, and rectal bleeding at 50 and over is a referral in its own right.<br>\u2022 Do not replace iron, or reduce the DOAC dose, and discharge \u2014 a falling haemoglobin on an anticoagulant is an investigation, not an explanation.", src:"NICE NG12 (updated May 2025) · house rule"},
+         {tone:"cream", h:"Routine + what primary care keeps", html:"We keep: the score and the re-score, the DOAC dose and its annual CrCl, the rate ladder, the substrate work (alcohol, weight, BP, OSA), the ORBIT fixables, and the safety-net. Cardiology owns rhythm strategy, device and ablation decisions, and any change to mandated DAPT after a stent. For the wider antithrombotic detail see the <a href='antiplatelets-anticoagulants.html'>antithrombotics protocol</a>."}
+       ]},
+       {b:"say", html:"Your rate tablets have done their bit, but you are still feeling the rhythm \u2014 and you are exactly the kind of patient who does well from getting the normal rhythm back, so I am sending you to the heart-rhythm team. The blood thinner carries on throughout, whatever they decide to do."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 78-year-old woman, weight 54 kg, attends for her AF review. She has hypertension and is on <b>apixaban 5 mg BD</b>, bisoprolol 5 mg and <b>aspirin 75 mg</b> \u2014 the aspirin was started \u201cfor the AF\u201d years ago and never stopped. Her creatinine is 138 \u00b5mol/L. She reports bruising easily and \u201ca few dizzy spells\u201d, and asks whether she really still needs \u201call these blood thinners\u201d, adding that her friend came off hers after a successful ablation."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises <b>two prescribing errors, not one</b>: the apixaban needs reducing to <b>2.5 mg BD</b> (she meets all three criteria \u2014 age \u226580 is not met, but weight \u226460 kg and creatinine \u2265133 are, so recalculate CrCl by Cockcroft-Gault and dose on the rules rather than the eGFR), and the <b>aspirin must stop \u2014 it has no role in AF and is an ORBIT point</b>. Scores <b>CHA\u2082DS\u2082-VASc on the components</b> and can explain why <b>a score of 2 is the threshold in women as in men</b>. Investigates the bruising with <b>FBC and ferritin</b>, and knows that iron-deficiency anaemia would be an NG12 route, not a reason to reduce the dose. Answers the ablation question correctly: anticoagulation continues by score regardless of apparent rhythm success. Explores the dizziness as a rate or postural issue rather than reflexively stopping a drug, and closes with the <b>never-stop-because-you-feel-well</b> explanation and a clear safety-net.<br><br><a href='../../cases/atrial-fibrillation.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG196 \u2014 Atrial fibrillation: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng196" rel="noopener">nice.org.uk/guidance/ng196</a><span class="rd"> \u2014 the CHA\u2082DS\u2082-VASc \u22652 threshold with the same score of 2 in women as in men, \u201cconsider\u201d at 1 in men, DOACs first-line, ORBIT preferred over HAS-BLED and used to modify rather than withhold, the lenient rate target, and the rate-control ladder</span></li>'+
+         '<li><b>ESC 2024 \u2014 atrial fibrillation guidelines</b><span class="rd"> \u2014 early rhythm control, the reversibility of AF-induced cardiomyopathy, and the peri-cardioversion anticoagulation windows</span></li>'+
+         '<li><b>EAST-AFNET 4 (2020) and RACE II (2010)</b><span class="rd"> \u2014 the outcome benefit of rhythm control started within the first year, and the evidence base for a lenient resting rate target of &lt;110 bpm</span></li>'+
+         '<li><b>LEGACY (2015)</b><span class="rd"> \u2014 weight loss reduces AF burden, not just heart rate</span></li>'+
+         '<li><b>Product SPCs and BSH peri-operative guidance</b><span class="rd"> \u2014 the four dose-reduction rules, the product-specific missed-dose rules, and the drug-specific peri-procedural intervals</span></li>'+
+         '<li>NICE NG12 \u2014 Suspected cancer: recognition and referral (updated May 2025)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 the visible-haematuria route at 45 and over, the non-visible-haematuria route at 60 and over, and the FIT and colorectal routes for unexplained iron-deficiency anaemia in anticoagulated patients</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 verify every dose, reduction criterion and monitoring requirement before prescribing</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Atrial fibrillation in adults \u2014 NICE NG196, with ESC 2024 concepts (early rhythm control) and NICE NG12 (May 2025) for the urgent-cancer routes that anticoagulation itself creates. Diagnosis and management are on this one page; AF has no separate diagnostic algorithm, and the wider antiplatelet, VTE and peri-procedural detail lives on the antithrombotics protocol. Doses are licence-based \u2014 verify against the current BNF and your local formulary before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

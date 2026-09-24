@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nappy rash — Protocol · Reasoning GP</title>
+<meta name="description" content="Nappy rash in primary care: irritant dermatitis spares the skin folds while candida involves them with satellite lesions — that one distinction directs treatment. Barrier and nappy care first, topical imidazole for candida, short mild steroid if inflamed, and the atypical presentations to reconsider." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/nappy-rash.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Nappy rash protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧒",
+  title:"Nappy rash — the complete guide",
+  eyebrow:"Protocol · NICE · the folds tell you which rash it is",
+  stemTitle:"One physical sign directs the whole treatment: irritant dermatitis SPARES the skin folds, while candida INVOLVES them with satellite lesions",
+  stemSub:"One page for the whole condition. Irritant nappy dermatitis is the commonest infantile rash and resolves in days with <b>nappy care and a barrier preparation</b> — frequent changes, gentle cleaning, nappy-free time and a thin barrier layer at every change. Fold involvement with satellite papules, or failure to settle after 3 days, means candida and needs a topical imidazole. A <b>short course of mild hydrocortisone</b> helps a markedly inflamed rash, but <b>never a potent steroid under an occlusive nappy</b>. And when the rash is atypical, blistering, eroded or the baby is unwell, <b>reconsider the diagnosis — including safeguarding.</b>",
+  guideline:"PCDS · BNFC · NICE NG153 (secondary impetigo)",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"PCDS — napkin dermatitis"},
+    {t:"Folds spared = irritant · folds involved = candida", tone:"tw"},
+    {t:"No potent steroids under a nappy", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#diagnose"><b>Diagnose</b><small>The folds</small></a><a href="#care"><b>Barrier care</b><small>First-line</small></a><a href="#drug"><b>Medication</b><small>When to add</small></a><a href="#review"><b>Review</b><small>3–7 days</small></a><a href="#refer"><b>Refer</b><small>Atypical</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"The folds are the diagnostic sign", html:"Irritant dermatitis: erythema on the convex skin in contact with the nappy — buttocks and genitals — SPARING the skin folds, caused by urine, faeces, friction and moisture. Candida: beefy-red rash INVOLVING the folds, with satellite papules and pustules. <b>That single distinction directs the treatment</b>, and it is visible in seconds."},
+    {tone:"green", h:"Barrier and nappy care clears most of it in days", html:"Change nappies promptly and frequently; high-absorbency nappies; clean gently with water or fragrance-free wipes; nappy-free time to air and dry; pat dry without rubbing; and a THIN layer of a barrier product (zinc and castor oil, or soft white paraffin) at every change. <b>Avoid soap, bubble bath, talcum powder and fragranced products.</b>"},
+    {tone:"amber", h:"Candida: topical imidazole, and check the mouth", html:"Clotrimazole 1% or miconazole 2% cream, applied 2–3 times daily, for candidal nappy dermatitis — continuing the barrier care alongside. <b>Consider oral candidiasis and treat it if present</b>, because an untreated oral reservoir reseeds the nappy area. Suspect candida after antibiotics, or if the rash has not responded after 3 days."},
+    {tone:"red", h:"⛔ No potent steroids under an occlusive nappy", html:"Hydrocortisone 1% once daily for up to 7 days is appropriate for a markedly inflamed dermatitis. Avoid potent topical steroids and prolonged steroid use in the nappy area — the nappy is an occlusive dressing, which greatly increases absorption and the risk of skin atrophy."},
+    {tone:"red", h:"⚠ Atypical, systemic or eroded — reconsider, including safeguarding", html:"Fever, blistering, erosions, or an unwell baby → same-day review and consider other diagnoses. Persistent, severe or unusually distributed rash prompts thought about neglect, faltering growth and systemic illness — and this is the part that the routine \"it's just nappy rash\" reflex skips."},
+    {tone:"blue", h:"Know the mimics before calling it treatment failure", html:"Seborrhoeic dermatitis (folds plus scalp cradle cap) · atopic eczema · psoriasis · bacterial infection such as impetigo — and rarely <b>Langerhans cell histiocytosis, zinc deficiency and scabies</b>. A rash not improving despite correct treatment is a diagnostic question, not a dosing one."}
+  ],
+  pathwaySub:"Five steps, and the first is a single look at the skin folds.",
+  pathway:[
+    {title:"Diagnose and distinguish", html:"Folds spared = irritant; folds involved with satellite lesions = candida. Consider the mimics.", alert:true},
+    {title:"Nappy care and a barrier preparation", html:"Frequent changes, gentle cleaning, nappy-free time, thin barrier at every change, avoid irritants."},
+    {title:"Add medication only where indicated", html:"Topical imidazole for candida; short mild hydrocortisone if markedly inflamed; antibiotic if impetiginised."},
+    {title:"Reassess at 3–7 days", html:"Simple irritant rash should improve within days. If not, reassess for candida or bacterial infection."},
+    {title:"Reconsider or refer the atypical", html:"Persistent, severe, systemic or unusually distributed → other diagnoses, dermatology, or safeguarding."}
+  ],
+  sections:[
+
+    {id:"diagnose", nav:"Diagnose", title:"Step 1 — diagnose and distinguish",
+     blocks:[
+       {b:"table", head:["Type","Appearance"], rows:[
+         ["<b>Irritant (commonest)</b>","Erythema on the convex skin in contact with the nappy (buttocks, genitals), SPARING the skin folds — from urine, faeces, friction and moisture"],
+         ["<b>Candidal</b>","Beefy-red rash INVOLVING the folds, with satellite papules and pustules. Consider after antibiotics, or if unresponsive for more than 3 days"],
+         ["<b>Mimics</b>","Seborrhoeic dermatitis (folds plus scalp or cradle cap), atopic eczema, psoriasis, bacterial infection (impetigo); rarely Langerhans cell histiocytosis, zinc deficiency, scabies"],
+         ["<b>Assess</b>","Duration, severity, feeding and recent antibiotics, systemic features, and other skin sites"]
+       ]},
+       {b:"why", html:"Nappy rash is usually simple irritant dermatitis, which spares the folds — but <b>involvement of the folds with satellite lesions signals candida</b>, and atypical, persistent or systemic features should prompt reconsidering the diagnosis, including, rarely, safeguarding or a serious dermatosis."}
+     ]},
+
+    {id:"care", nav:"Barrier care", title:"Step 2 — nappy care and barrier preparation",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"👶 Frequent changes", html:"Change nappies promptly and frequently; high-absorbency nappies; clean gently with water or fragrance-free wipes."},
+         {tone:"green", h:"💨 Nappy-free time", html:"<b>Let the skin air and dry; pat dry and avoid vigorous rubbing.</b>"},
+         {tone:"blue", h:"🛡️ Barrier preparation", html:"A thin layer of a barrier product (e.g. zinc and castor oil, or soft white paraffin) at each change to protect the skin."},
+         {tone:"amber", h:"🧴 Avoid irritants", html:"<b>Avoid soap, bubble bath, talcum powder and fragranced products.</b>"}
+       ]}
+     ]},
+
+    {id:"drug", nav:"Medication", title:"Step 3 — when to add medication",
+     blocks:[
+       {b:"table", head:["Step","What","When"], rows:[
+         ["<b>Step 1 — barrier and nappy care</b>","Most irritant nappy rash resolves with the measures above within a few days","<b>All</b>"],
+         ["<b>Step 2 — topical antifungal</b>","A topical imidazole — clotrimazole 1% or miconazole 2% cream, applied 2–3 times daily — for candidal nappy dermatitis, alongside barrier care. Consider oral candidiasis and treat if present","Candida suspected or confirmed: folds involved, satellite lesions, or more than 3 days unresponsive"],
+         ["<b>Step 3 — short mild topical corticosteroid</b>","Hydrocortisone 1% once daily for up to 7 days for inflamed dermatitis; can be combined with an antifungal where candida coexists. AVOID potent steroids in the nappy area","<b>Significantly inflamed</b>"],
+         ["<b>Step 4 — antibiotic</b>","<b>Treat secondary bacterial infection (e.g. impetigo) per NICE NG153</b>","<b>Impetiginised</b>"]
+       ]},
+       {b:"warn", html:"Avoid potent topical steroids and prolonged steroid use in the occluded nappy area. Reconsider the diagnosis if the rash is not improving despite appropriate treatment."}
+     ]},
+
+    {id:"review", nav:"Review", title:"Step 4 — review and recurrence",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>3–7 days</b>","Reassess: a simple irritant rash should improve within days of barrier care. If not improving, reassess for CANDIDA (satellite lesions → topical imidazole) or bacterial infection"],
+         ["<b>Persistent or atypical</b>","Reconsider the diagnosis: seborrhoeic or atopic dermatitis, psoriasis, or — rarely — zinc deficiency or immunodeficiency if persistent, severe or atypical"],
+         ["<b>Prevention</b>","Frequent nappy changes, a barrier preparation at each change, nappy-free time, and avoiding soap and fragranced wipes"]
+       ]},
+       {b:"say", html:"Frequent changes, a barrier cream and some nappy-free time usually clears it in a few days. If it's not settling, or there are little red spots spreading out from the rash and it's got into the skin creases, it may be thrush and need an antifungal cream."}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"When to reassess",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"🟠 Not settling", html:"No better after a few days of barrier care, or worsening → reassess for candida (satellite lesions) or bacterial infection."},
+         {tone:"red", h:"🔴 Systemic or atypical", html:"Fever, blistering, erosions, or an unwell baby → same-day review; consider other diagnoses."},
+         {tone:"red", h:"💬 Safety-net", html:"\"If the rash blisters, weeps, spreads, or your baby is unwell or feverish, see us promptly.\""},
+         {tone:"green", h:"🫶 Reassurance", html:"\"This is very common and not serious — it usually clears within a few days with the barrier cream and frequent changes.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Reconsider / dermatology", html:"Severe, persistent or atypical rash not responding to treatment; suspected psoriasis or a serious dermatosis."},
+         {tone:"red", h:"Safeguarding / paediatrics", html:"Features suggesting neglect or systemic illness — an unwell child, faltering growth, or an unusual distribution. See <a href='faltered-growth.html'>faltering growth</a>."},
+         {tone:"cream", h:"GP management", html:"Typical irritant or candidal nappy rash responding to standard care belongs here — the fold distinction, barrier and nappy care, the imidazole, the short mild steroid, and the 3–7 day review. Related pages: <a href='cmpa.html'>CMPA</a> · <a href='eczema.html'>eczema</a> · <a href='faltered-growth.html'>faltering growth</a> · <a href='constipation-child.html'>constipation in children</a>."}
+       ]},
+       {b:"say", html:"This is nappy rash — very common and not serious. The key is frequent nappy changes, gentle cleaning, some nappy-free time to let the skin breathe, and a barrier cream at each change. If it gets into the skin creases with little spots around it, that's a yeast infection and needs an antifungal cream instead."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 7-month-old has had a nappy rash for <b>10 days</b> despite barrier cream. She finished a course of <b>amoxicillin for an ear infection</b> a fortnight ago. The rash is <b>beefy-red, extends into the groin creases</b>, and there are <b>small red spots spreading onto the thighs</b>. Her mother has been using a potent steroid cream borrowed from an older sibling's eczema prescription and asks for \"something stronger\". The baby is well and feeding normally."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Reads the folds — involvement of the creases with satellite lesions means candida, not treatment-resistant irritant dermatitis, which is the entire diagnostic move in this case; <b>links it to the recent amoxicillin</b> as the precipitant; stops the borrowed potent steroid and explains that the nappy acts as an occlusive dressing, greatly increasing absorption and atrophy risk — and addresses the sharing of prescribed medicines without lecturing; prescribes a topical imidazole (clotrimazole 1% or miconazole 2%) 2–3 times daily and continues barrier care; examines the mouth for oral candidiasis and treats it if present, since an untreated reservoir reseeds the area; <b>reinforces the nappy-care basics</b>; confirms the baby is systemically well and there are no erosions or blistering; and safety-nets non-response, spread and systemic features with a review point."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>PCDS — napkin dermatitis</b><span class="rd"> — irritant dermatitis sparing the skin folds versus candidal infection involving the folds with satellite lesions, nappy care and barrier preparations as first-line, topical imidazole for candida, hydrocortisone 1% once daily for up to 7 days for inflamed dermatitis, the advice against potent steroids in the nappy area, the mimics and rarer causes, and the review and referral thresholds</span></li>'+
+         '<li><b>NICE NG153 — Impetigo: antimicrobial prescribing</b><br><a href="https://www.nice.org.uk/guidance/ng153" rel="noopener">nice.org.uk/guidance/ng153</a><span class="rd"> — treatment of secondary bacterial infection complicating nappy rash</span></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> — clotrimazole 1% and miconazole 2% cream, hydrocortisone 1%, barrier preparations including zinc and castor oil ointment, and the caution on topical corticosteroid potency under occlusion</span></li>'+
+         '<li><b>RCPCH / local safeguarding guidance</b><span class="rd"> — the prompt to consider neglect where a rash is severe, persistent or unusually distributed, particularly with faltering growth or an unwell child</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Nappy rash — PCDS napkin dermatitis guidance, the BNF for Children, and NICE NG153 for secondary impetigo. One sign directs treatment: irritant dermatitis spares the skin folds, while candida involves them with satellite lesions. Nappy care and a thin barrier preparation at every change clears most irritant rash within days. Topical clotrimazole 1% or miconazole 2% for candida — and check the mouth, because an untreated oral reservoir reseeds the area. Hydrocortisone 1% once daily for up to 7 days if markedly inflamed, but never a potent steroid under an occlusive nappy. A rash not improving despite correct treatment is a diagnostic question: reconsider seborrhoeic dermatitis, eczema, psoriasis, impetigo and the rare causes — and consider safeguarding where the rash is severe, persistent or unusually distributed. Verify all doses against the BNF for Children before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

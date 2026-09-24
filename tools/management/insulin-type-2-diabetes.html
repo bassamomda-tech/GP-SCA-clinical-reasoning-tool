@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Insulin in type 2 diabetes — Protocol · Reasoning GP</title>
+<meta name="description" content="Starting and titrating insulin in type 2 diabetes: NPH first-line at 10 units, self-titration by 2 units every 3 days against the fasting glucose, when an analogue is justified, adding prandial insulin when the fasting is at target but HbA1c is not, which oral agents to keep and which to stop, hypoglycaemia, sick-day rules and DVLA." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/insulin-type-2-diabetes.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Insulin in type 2 diabetes protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"💉",
+  title:"Insulin in type 2 diabetes — initiation and titration",
+  eyebrow:"Protocol · NICE NG28 · prescribe by brand, always",
+  stemTitle:"Starting insulin is the easy part — the protocol that matters is the titration, and the commonest error is piling on basal insulin when the fasting glucose is already at target and the problem is after meals",
+  stemSub:"For the oral and non-insulin ladder, the diagnosis and the wider condition, use the <a href='type-2-diabetes.html'>type 2 diabetes protocol</a>. This page is the insulin decision: <b>NPH (isophane) first-line at 10 units once daily</b>, patient self-titration by <b>2 units every 3 days</b> against the pre-breakfast glucose read as a 4–7 day pattern, when a long-acting analogue is genuinely justified, the basal-plus step when the fasting is at target but HbA1c is not, which oral agents to keep and which to stop, and the safety set — hypoglycaemia, sick-day rules, lipohypertrophy and DVLA.",
+  guideline:"NICE NG28 · GMMMG insulin aid · BNF",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE NG28 — type 2 diabetes in adults"},
+    {t:"GMMMG insulin prescribing aid"},
+    {t:"Prescribe insulin by BRAND, full product name", tone:"tw"},
+    {t:"Insulin-treated drivers must inform the DVLA", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Safety first</b><small>Brand · hypos · DVLA</small></a><a href="#before"><b>Before starting</b><small>Keep · stop · counsel</small></a><a href="#basal"><b>Start basal</b><small>NPH 10 units</small></a><a href="#titrate"><b>Titrate</b><small>+2 units / 3 days</small></a><a href="#prandial"><b>Still high?</b><small>Basal-plus</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Always prescribe insulin by BRAND, using the full product name", html:"Insulins are not interchangeable, and brand prescribing is what prevents a dangerous substitution error. \"Insulin glargine\" is not a prescription — <b>Semglee®</b> or <b>Abasaglar®</b> is. Never write just \"insulin\", a strength without a product, or an abbreviation. Write \"units\" in full, never \"U\" or \"iu\"."},
+    {tone:"blue", h:"NPH (isophane) first-line, 10 units once daily", html:"NICE NG28 keeps human NPH insulin as the cost-effective first-line basal — <b>Insuman Basal®, Insulatard®</b> or <b>Humulin I®</b>. Start 10 units once daily at the same time each day; it is not food-dependent. Start lower — 6–10 units — in the frail, the elderly, or renal impairment."},
+    {tone:"blue", h:"Self-titration: 2 units every 3 days", html:"Titrate against the pre-breakfast (fasting) capillary glucose, reading 4–7 day PATTERNS rather than single values, and teach the patient to do it themselves. Increase by 2 units every 3 days until the individualised fasting target is reached without hypoglycaemia. By fasting CBG: under 4 → reduce 10% · 4–7 → no change · 7.1–15 → +10% · 15.1–20 → +15% · over 20 → +20%."},
+    {tone:"amber", h:"Fasting at target but HbA1c still high? Do NOT add more basal", html:"That pattern means the problem is post-prandial, and more basal will only cause hypoglycaemia. Add a rapid-acting prandial insulin — 4 units once daily with the meal causing the largest rise — and titrate by 2 units twice weekly. <b>This single distinction is the most useful thing on the page</b>, and getting it wrong is the commonest reason a patient ends up on a large basal dose with recurrent hypos and an unchanged HbA1c."},
+    {tone:"green", h:"Keep metformin. Review the sulfonylurea.", html:"Continue metformin, and usually the SGLT2 inhibitor for its cardio-renal benefit. Review and usually STOP the sulfonylurea when insulin starts — the hypoglycaemia risk is additive and there is little to gain. A GLP-1 receptor agonist may continue on specialist advice. Insulin promotes weight gain, so the weight-favourable agents are worth keeping deliberately."},
+    {tone:"purple", h:"🟣 DVLA — a statutory duty on the patient", html:"Insulin-treated drivers must inform the DVLA — it is their legal duty and you should record that you told them. Check blood glucose before driving and every 2 hours on long journeys, carry fast-acting carbohydrate, and do not drive if hypoglycaemia-unaware or after a severe hypoglycaemic episode until reviewed. Group 2 (bus, coach, lorry) licensing has additional requirements."}
+  ],
+  pathwaySub:"Five steps. Step four is where most regimens go wrong.",
+  pathway:[
+    {title:"Confirm insulin is the right next step", html:"HbA1c above the individualised target despite optimised oral and non-insulin injectable therapy. Work the <a href='type-2-diabetes.html'>oral ladder</a> first — and consider whether this is actually type 1, LADA or MODY before starting."},
+    {title:"Decide what stays and what stops", html:"Keep metformin and usually the SGLT2 inhibitor. Stop the sulfonylurea. Counsel on technique, hypoglycaemia, sick-day rules, monitoring and driving."},
+    {title:"Start NPH 10 units once daily — by brand", html:"6–10 units if frail, elderly or renally impaired. A long-acting analogue only for problematic hypoglycaemia or where a carer must give the injection.", alert:true},
+    {title:"Titrate on patterns, not readings", html:"+2 units every 3 days against the fasting glucose, read over 4–7 days, self-titrated by the patient. Before increasing: check diet, activity, injection sites for lipohypertrophy, and adherence."},
+    {title:"If HbA1c stays high, ask WHERE", html:"Fasting not at target → keep titrating basal. Fasting at target → add prandial insulin at the largest meal. Little response despite appropriate titration → specialist advice, not blind escalation."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Safety first", title:"The safety rules that apply from the first prescription",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"⛔ Brand, full product name, \"units\" written out", html:"<b>Insulins are not interchangeable.</b> Write the brand (Insuman Basal®, Insulatard®, Humulin I®, Semglee®, Abasaglar®, Levemir®), the device, the strength, and <b>\"units\" in full — never \"U\" or \"iu\", which are misread as zeros.</b>"},
+         {tone:"red", h:"⛔ Never stop insulin during illness", html:"Insulin requirements RISE during intercurrent illness, even when the patient is not eating. Check capillary glucose 3–4 hourly if vomiting or dehydrated, and test ketones if glucose is above 20 mmol/L — or at a lower glucose if the patient is on an SGLT2 inhibitor, because of euglycaemic DKA. See <a href='sick-day-rules.html'>sick day rules</a> and <a href='diabetes-unwell-insulin.html'>feeling unwell on insulin</a>."},
+         {tone:"amber", h:"⚠ High-strength and ultra-long insulins are not for routine use", html:"Toujeo® (300 units/mL) and degludec are NOT for routine type 2 diabetes — specialist initiation only. A 300 units/mL product in place of a 100 units/mL one is a threefold overdose if the dose is transcribed rather than converted."},
+         {tone:"purple", h:"🟣 DVLA is the patient's legal duty", html:"<b>Insulin-treated drivers must notify the DVLA.</b> Glucose checked before driving and 2-hourly on long journeys; fast-acting carbohydrate in the car; no driving if hypoglycaemia-unaware, or after a severe hypo until reviewed. <b>Record that you gave this advice</b> — it is the commonest omission in an insulin initiation consultation."},
+         {tone:"blue", h:"📋 Baseline before the first dose", html:"Weight and BMI, renal function, current HbA1c, capillary glucose testing capability and training, and an explicitly agreed individualised glucose target. Without the target written down, titration has no endpoint."},
+         {tone:"green", h:"✓ The sentence that makes this acceptable", html:"\"Starting insulin doesn't mean anything has failed — type 2 diabetes changes over time, and the body often just needs help making enough insulin.\" Patients routinely experience insulin as a personal failure or a sign of severity; saying this first is what makes the rest of the consultation land."}
+       ]}
+     ]},
+
+    {id:"before", nav:"Before starting", title:"Before you start — the right step, and what stays",
+     blocks:[
+       {b:"table", head:["Question","Answer"], rows:[
+         ["<b>When to start insulin</b>","HbA1c remains above the individualised target despite optimised oral and non-insulin injectable therapy (metformin plus second and third agents, with or without a GLP-1 receptor agonist). <b>Work the <a href='type-2-diabetes.html'>oral ladder</a> first</b>"],
+         ["<b>Is this actually type 2?</b>","Lean build, ketosis-prone, rapid weight loss, very high glucose, or a young age at onset → consider type 1, LADA or MODY and seek urgent specialist input. This protocol is for type 2 diabetes, and starting basal insulin in undiagnosed type 1 is dangerous"],
+         ["<b>Keep — metformin</b>","<b>Continue it.</b> It reduces the insulin dose required and limits weight gain"],
+         ["<b>Keep — SGLT2 inhibitor</b>","<b>Usually continue for cardio-renal benefit.</b> <b>But remember the euglycaemic DKA risk when unwell</b>, and counsel accordingly"],
+         ["<b>Stop — sulfonylurea</b>","Review and usually stop when insulin starts: the hypoglycaemia risk is additive and the glycaemic gain is small. This is the single most useful deprescribing step at insulin initiation"],
+         ["<b>GLP-1 receptor agonist</b>","<b>May continue on specialist advice</b> — the combination is weight-favourable but is not a routine primary-care decision"],
+         ["<b>Counselling checklist</b>","Injection technique and site rotation · hypoglycaemia recognition and treatment · sick-day rules · blood glucose monitoring · DVLA · travel and fasting (including <a href='t2dm-ramadan.html'>Ramadan</a>) · and that the dose WILL be titrated, by them, upward from a deliberately low start"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🍽️ Lifestyle does not stop at insulin", html:"Carbohydrate awareness, portion control and a healthy dietary pattern reduce the insulin dose needed and the weight gained. Involve a dietitian."},
+         {tone:"blue", h:"🏃 Activity", html:"<b>Regular activity improves control and cardiovascular risk</b> — counsel specifically on glucose checks and hypoglycaemia risk around exercise, which changes once insulin is on board."},
+         {tone:"amber", h:"⚖️ Weight gain is expected, not incidental", html:"<b>Insulin promotes weight gain.</b> Reinforce weight management from the start, keep the weight-favourable agents, and <b>consider down-titrating insulin if HbA1c and BMI are both improving.</b>"},
+         {tone:"green", h:"🦶 The rest of the diabetes review continues", html:"Daily foot care, smoking cessation, BP and lipid control, and annual retinal, foot and renal screening are unchanged by starting insulin."}
+       ]}
+     ]},
+
+    {id:"basal", nav:"Start basal", title:"Step 1 — starting the basal insulin",
+     blocks:[
+       {b:"table", head:["Role","First choice","Alternatives"], rows:[
+         ["<b>Basal — NPH / isophane (FIRST-LINE)</b>","<b>Insuman Basal®</b>","Insulatard® · Humulin I®"],
+         ["<b>Basal — long-acting analogue (alternative)</b>","<b>Semglee® or Abasaglar® (glargine)</b>","Levemir® (detemir)"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Starting dose</b>","<b>10 units once daily, at the same time each day.</b> It is not food-dependent, so the timing can suit the patient"],
+         ["<b>Frail, elderly, or renal impairment</b>","<b>Start lower — 6–10 units once daily</b>"],
+         ["<b>When to choose an analogue instead</b>","Problematic hypoglycaemia, particularly nocturnal — or where the patient needs a CARER to give a once-daily injection. Long-acting analogues give a flatter, peakless profile"],
+         ["<b>What not to use routinely</b>","High-strength and ultra-long insulins (Toujeo®, degludec) are not for routine type 2 diabetes — specialist only"]
+       ]},
+       {b:"why", html:"NICE NG28 keeps human NPH insulin as the first-line basal because it is cost-effective and the analogues do not improve HbA1c — what they improve is <b>nocturnal hypoglycaemia</b>, and the flatter profile allows once-daily carer administration. So the analogue indication is a hypoglycaemia or practicality indication, not a glycaemic one, and framing it that way keeps the decision defensible both ways: NPH for most, analogue for a stated reason recorded in the notes."}
+     ]},
+
+    {id:"titrate", nav:"Titrate", title:"Step 2 — titration, done by the patient",
+     sub:"Against the fasting glucose, on patterns, with a defined increment.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>What to titrate against</b>","<b>The pre-breakfast (fasting) capillary glucose</b> — because the basal dose is what determines it"],
+         ["<b>How to read it</b>","<b>Patterns over 4–7 days, not one-off readings.</b> Unless you are worried about hypoglycaemia, never change a dose on a single value"],
+         ["<b>Standard increment</b>","Increase by 2 units every 3 days until the individualised fasting target is reached WITHOUT hypoglycaemia. Teach the patient to self-titrate — it is faster, and it is what NG28 expects"],
+         ["<b>Titration table by fasting CBG</b>","Under 4 mmol/L → reduce by 10% · 4–7 → no change · 7.1–15 → increase 10% · 15.1–20 → increase 15% · over 20 → increase 20%"],
+         ["<b>Individualising the target</b>","CKD stage 4–5, the elderly, or reduced hypoglycaemia awareness → aim for 5–9 mmol/L pre-meal. <b>At end of life, the only goal is freedom from osmotic symptoms</b> — not a number"],
+         ["<b>When HbA1c AND BMI are both falling</b>","Consider DOWN-titrating the insulin, guided by glucose readings, to avoid hypoglycaemia and further weight gain. Insulin doses are not a ratchet"]
+       ]},
+       {b:"warn", html:"Before increasing any dose, check the four things that blunt insulin's effect: diet and carbohydrate load · activity · injection sites for lipohypertrophy, which causes erratic absorption and is found only by examining them · and adherence, asked without judgement. Escalating the dose against lipohypertrophy or missed injections produces an unpredictable regimen and a hypoglycaemia risk that arrives without warning when technique improves."},
+       {b:"say", html:"I am going to start you on a deliberately small dose — ten units once a day — and then you are going to increase it yourself. Check your sugar before breakfast, and look at the readings over about a week rather than reacting to any single one. If the morning numbers are still above the target we agreed, add two units, wait three days, and look again. Keep going until you are at target. If a morning reading is below four, come down by ten per cent and tell me. Most people need considerably more than ten units in the end — the small start is about getting there safely, not about the final dose."}
+     ]},
+
+    {id:"prandial", nav:"Still high?", title:"Step 3 — HbA1c above target: ask WHERE the glucose is high",
+     sub:"The fork that decides whether you add basal or prandial insulin.",
+     blocks:[
+       {b:"table", head:["Situation","What it means","Action"], rows:[
+         ["<b>Fasting glucose NOT at target</b>","The basal dose is insufficient","<b>Keep titrating the basal — 2 units every 3 days</b>"],
+         ["<b>Fasting AT target but HbA1c still above target</b>","The problem is post-prandial. More basal will cause hypoglycaemia without improving HbA1c","<b>Add prandial insulin (basal-plus, below)</b>"],
+         ["<b>Basal-plus — add one prandial dose</b>","Cover the meal causing the largest post-prandial rise","Add 4 units of a rapid-acting analogue once daily with that meal. Brands: insulin lispro Sanofi®, Apidra®, NovoRapid®. Titrate +2 units twice weekly to the post-prandial target. Give just before, with, or just after food"],
+         ["<b>Basal-bolus — extend to other meals</b>","One prandial dose insufficient","Add prandial insulin stepwise to the other meals, adjusting each meal's dose against the NEXT pre-meal or pre-bed glucose"],
+         ["<b>Twice-daily pre-mix — the simpler alternative</b>","Fewer injections wanted, or basal-bolus impractical","<b>Humulin M3®, NovoMix® 30, Humalog® Mix25 or Mix50.</b> If control is inadequate on twice-daily pre-mix, refer to the diabetes specialist team rather than escalating further"],
+         ["<b>Little response to appropriate titration</b>","<b>True insulin resistance, or something else going on</b>","<b>Seek specialist advice — do not keep escalating blindly.</b> Very large doses with no glycaemic response is a referral, not a prescription"]
+       ]},
+       {b:"why", html:"This is the section that changes outcomes, because the instinct when HbA1c is high is to increase the dose that is already there. If the fasting glucose is at target, the basal insulin is doing its job and the excess glucose is coming from meals — so more basal simply drives the fasting level down into hypoglycaemia, most dangerously overnight, while HbA1c barely moves. Asking \"where in the day is the glucose high?\" before changing anything is the whole of good insulin titration."}
+     ]},
+
+    {id:"problems", nav:"Problems", title:"Hypoglycaemia, weight, sites and sick days",
+     blocks:[
+       {b:"table", head:["Issue","What to do"], rows:[
+         ["<b>Hypoglycaemia</b>","Treat with 15 g of fast-acting carbohydrate and recheck at 15 minutes; repeat if still low, then a longer-acting carbohydrate. Then act on the cause: reduce the responsible dose by 10%, stop the sulfonylurea if still prescribed, and look for the precipitant — missed meal, unaccustomed exercise, alcohol, lipohypertrophy, or improving renal function"],
+         ["<b>Hypoglycaemia unawareness or a severe episode</b>","Stop driving and review before resuming; relax the glucose target; structured education; consider an analogue switch or technology assessment; specialist referral"],
+         ["<b>Weight gain</b>","Reinforce diet and activity; keep metformin, the SGLT2 inhibitor and any GLP-1 agonist; down-titrate the insulin if HbA1c and BMI are both improving"],
+         ["<b>Sick days</b>","NEVER stop insulin. Check capillary glucose 3–4 hourly if vomiting or dehydrated. Test ketones if glucose is above 20 mmol/L — or at a lower glucose on an SGLT2 inhibitor, because of euglycaemic DKA"],
+         ["<b>Injection sites</b>","Rotate sites, and EXAMINE them at review — lipohypertrophy causes erratic absorption and unexplained variability, and is found only by looking and feeling"],
+         ["<b>Monitoring</b>","HbA1c every 3–6 months until stable, then 6-monthly. Capillary glucose patterns. Annual diabetes review — feet, eyes, renal function with urine ACR, lipids and BP"]
+       ]},
+       {b:"cards", items:[
+
+         {tone:"green", h:"✓ Down-titration is a legitimate move", html:"If HbA1c and weight are both falling, the insulin requirement is falling too. Reduce guided by readings — this prevents the slow accumulation of unnecessary dose that causes hypoglycaemia months later."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review",
+     blocks:[
+       {b:"table", head:["When","What to do"], rows:[
+         ["<b>Every 3–6 months until stable, then 6-monthly</b>","HbA1c against the agreed individualised target; titrate insulin against home glucose readings; review whether the other agents are all still needed"],
+         ["<b>Every review</b>","Hypoglycaemia — frequency, awareness, nocturnal episodes. Injection sites examined for lipohypertrophy, and technique observed. Weight. Adherence. Reinforce sick-day rules and DVLA advice"],
+         ["<b>Annually</b>","<b>Feet, retinal screening, U&amp;E with eGFR and urine ACR, lipids, BP.</b> Address cardiovascular risk and consider an SGLT2 inhibitor or GLP-1 agonist where indicated for cardio-renal benefit"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 / same day", html:"\"Vomiting and unable to keep fluids down, drowsy, or ketones high — that is an emergency. Never stop your insulin because you are not eating.\""},
+         {tone:"amber", h:"🟠 Contact us", html:"Any hypo below 4 that needed help from someone else · repeated morning lows · a reading you cannot explain · illness lasting more than 24 hours."},
+         {tone:"blue", h:"💊 The titration instruction", html:"\"Two units up every three days if your morning readings are still above target. Ten per cent down if any morning reading is below four.\""},
+         {tone:"green", h:"✓ Expectation setting", html:"\"Most people end up needing a good deal more than the starting dose — that is normal and not a sign of getting worse. We start low and climb because that is the safe direction.\""}
+       ]}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"HbA1c still high on insulin? Re-run the checklist", sub:"More units isn't always the answer. Before escalating insulin, check the basics that blunt its effect.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"1 · Fasting at target?", html:"If fasting is at target but HbA1c is high, the problem is <b>post-prandial</b> → add prandial insulin; do not pile on more basal."},
+         {tone:"amber", h:"2 · Technique and sites", html:"Lipohypertrophy, wrong needle length or technique, missed doses. Inspect the sites — do not take this from history alone."},
+         {tone:"amber", h:"3 · Oral agents", html:"<span class='rx'>Metformin</span> and any <span class='rx'>SGLT2 inhibitor</span> continued? Sulfonylurea stopped to reduce hypoglycaemia?"},
+         {tone:"amber", h:"4 · Patterns", html:"Titrating on <b>4–7-day trends</b>, not single readings? One high morning reading is not a dose change."},
+         {tone:"blue", h:"5 · True resistance", html:"Little response despite genuine titration → specialist advice rather than further unilateral escalation."}
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"Still uncontrolled after all five?", html:"Uncontrolled on BD pre-mix, true insulin resistance, or recurrent severe hypoglycaemia → refer to the <b>diabetes team</b>."}
+       ]}
+     ]},
+    {id:"refer", nav:"Refer", title:"When to involve the diabetes specialist team",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Urgent — possible type 1, LADA or MODY", html:"Lean build, ketosis-prone, rapid weight loss, very high glucose, or a young age at onset. This protocol is for type 2 diabetes; basal insulin alone in undiagnosed type 1 is dangerous. Urgent specialist input."},
+         {tone:"amber", h:"Uncontrolled on twice-daily pre-mix", html:"HbA1c above target despite BD pre-mix insulin → specialist team, for basal-bolus or a GLP-1 combination. Do not keep escalating pre-mix."},
+         {tone:"amber", h:"Recurrent severe or unaware hypoglycaemia", html:"Structured education (DAFNE-style), analogue switch, or technology assessment. Relax the target in the meantime."},
+         {tone:"amber", h:"Apparent insulin resistance", html:"<b>Little or no response to appropriate dose titration.</b> <b>Seek advice rather than continuing to escalate.</b>"},
+         {tone:"blue", h:"Pregnancy or planning", html:"Joint diabetes–antenatal care; tighter targets and specialist insulin regimens. Refer pre-conception where possible."},
+         {tone:"cream", h:"GP management", html:"Initiation, titration, the basal-plus step, deprescribing the sulfonylurea, hypoglycaemia, sick days, sites and the annual review are all primary care. Related pages: <a href='type-2-diabetes.html'>type 2 diabetes</a> (the oral ladder) · <a href='t2dm-ramadan.html'>type 2 diabetes in Ramadan</a> · <a href='sick-day-rules.html'>sick day rules</a> · <a href='diabetes-unwell-insulin.html'>feeling unwell on insulin</a> · <a href='dka.html'>DKA</a> · <a href='../algorithms/hypoglycaemia.html'>hypoglycaemia pathway</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 58-year-old woman with type 2 diabetes for 11 years attends for review. <b>HbA1c 79 mmol/mol</b> on metformin 1 g BD, dapagliflozin 10 mg, <b>gliclazide 160 mg BD</b> and dulaglutide. Her <b>fasting readings are 6–7 mmol/L</b> but post-meal values are 14–17. BMI 33. She is tearful and says starting insulin means she has \"failed\", and is worried about her job — she <b>drives a delivery van</b>."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Addresses the \"failed\" framing FIRST</b> and explains the natural history before any prescribing; reads the glucose pattern correctly — the fasting is at target, so this is a POST-PRANDIAL problem and adding basal would cause hypoglycaemia without moving HbA1c; <b>stops or reduces the gliclazide</b> given the additive hypoglycaemia risk; <b>keeps metformin and dapagliflozin</b> and can say why; <b>prescribes by brand with \"units\" written in full</b>; gives the DVLA duty explicitly — she must notify them, check before driving and 2-hourly on long journeys — and records it, recognising that a delivery driver may need Group 2 advice; counsels on euglycaemic DKA with the SGLT2 inhibitor and sick-day rules, never stopping insulin; <b>teaches self-titration with a specific increment</b>; arranges <b>glucose monitoring training and a defined review</b>; and addresses weight gain as an expected effect with a plan, not a warning."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG28 — Type 2 diabetes in adults: management</b><br><a href="https://www.nice.org.uk/guidance/ng28" rel="noopener">nice.org.uk/guidance/ng28</a><span class="rd"> — human NPH insulin as first-line basal, the analogue indications (nocturnal hypoglycaemia or carer administration), the basal-plus and basal-bolus escalation, continuing metformin, and reviewing the sulfonylurea at insulin initiation</span></li>'+
+         '<li><b>GMMMG insulin prescribing aid</b><span class="rd"> — the 10-unit starting dose, the 6–10 unit reduced start in frailty and renal impairment, the 2-units-every-3-days self-titration rule, the fasting-CBG titration percentages, and the 4-unit prandial starting dose with twice-weekly titration</span></li>'+
+         '<li><b>BNF — insulin products and prescribing</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — the requirement to prescribe by brand with the full product name, to write \u201cunits\u201d in full, and the caution on high-strength (300 units/mL) and ultra-long insulins</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — the notification duty for insulin-treated drivers, pre-driving and 2-hourly glucose checks, and the rules after a severe hypoglycaemic episode or with impaired awareness</span></li>'+
+         '<li><b>MHRA Drug Safety Update</b><span class="rd"> — SGLT2 inhibitors and diabetic ketoacidosis with near-normal blood glucose, which is why the ketone threshold is lower in a patient taking one</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Insulin in type 2 diabetes — NICE NG28, the GMMMG insulin aid and the BNF. Always prescribe by brand using the full product name, and write \"units\" in full. NPH (isophane) is first-line at 10 units once daily, 6–10 units if frail, elderly or renally impaired; a long-acting analogue is for problematic nocturnal hypoglycaemia or where a carer must inject. Teach self-titration at 2 units every 3 days against the fasting glucose, read over 4–7 days. If the fasting is at target but HbA1c is not, the problem is post-prandial — add 4 units of prandial insulin at the largest meal rather than more basal. Keep metformin, usually keep the SGLT2 inhibitor, and stop the sulfonylurea. Never stop insulin during illness. Insulin-treated drivers must inform the DVLA. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

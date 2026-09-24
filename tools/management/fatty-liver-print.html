@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fatty liver (MASLD) — Protocol · Reasoning GP</title>
+<meta name="description" content="Fatty liver disease in primary care: MASLD versus alcohol-related liver disease, the metabolic criteria, FIB-4 as the gatekeeper test with ELF and FibroScan, why cardiovascular death dominates and statins are safe, weight loss targets that reverse fibrosis, and cirrhosis surveillance." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/fatty-liver.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790195406534963 tools/management/fatty-liver.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Fatty liver protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🫀",
+  title:"Fatty liver disease (MASLD / ALD) — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"A quarter of adults have it and about 5% progress — FIB-4 finds that 5%, and most of the rest will die of cardiovascular disease, not their liver",
+  stemSub:"One page for the whole condition: exclude decompensation and the non-MASLD causes, separate metabolic from alcohol-related disease, stratify fibrosis with FIB-4 and escalate the indeterminate and high scores to ELF or FibroScan, then treat what actually kills these patients — cardiovascular risk, with statins given not withheld — alongside the weight loss that is the only intervention proven to reverse fibrosis. Cirrhosis gets surveillance.",
+  guideline:"NICE NG49 · EASL · BSG 2021 · NICE CG115",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE NG49 — non-alcoholic fatty liver disease (2016, upd. 2023)"},
+    {t:"EASL CPG (NAFLD 2016, MAFLD 2023) · BSG NAFLD 2021"},
+    {t:"NICE CG115 — alcohol-use disorders"},
+    {t:"Nomenclature updated to MASLD (2023)"},
+    {t:"NG12: HCC in cirrhosis", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Decompensation · 2WW</small></a><a href="#confirm"><b>MASLD or ALD?</b><small>Metabolic vs alcohol</small></a><a href="#workup"><b>Stage it</b><small>FIB-4 · ELF · FibroScan</small></a><a href="#ladder"><b>Treat</b><small>CV risk · weight · drugs</small></a><a href="#refer"><b>Refer</b><small>Hepatology · surveillance</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Decompensation is the turning point", html:"<b>Jaundice, new ascites, variceal bleeding or encephalopathy → same-day.</b> Median survival after a first decompensation is 1–2 years without transplant. Acute liver failure — ALT &gt;10× ULN with INR &gt;1.5 and encephalopathy — is a medical emergency."},
+    {tone:"amber", h:"Most is benign; the job is finding the 5%", html:"MASLD affects about 25% of UK adults but progresses to significant fibrosis in only around 5%. FIB-4 is the primary care gatekeeper (NICE NG49) — calculate it for every patient with confirmed fatty liver."},
+    {tone:"blue", h:"FIB-4 bands", html:"&lt;1.30 — low risk, NPV 90% for advanced fibrosis; manage in primary care. 1.30–2.67 — indeterminate, and NOT to be managed as low risk: refer for ELF or FibroScan. &gt;2.67 — high risk, PPV 65%; hepatology. In the over-65s use a threshold of &gt;2.0, because FIB-4 is falsely elevated by age."},
+    {tone:"green", h:"They die of heart attacks, not liver failure", html:"Cardiovascular disease is the commonest cause of death in MASLD, which confers 2× the CV risk independently of traditional factors. <b>QRISK3 for everyone, and treat every modifiable component</b> — this is a core part of management, not an afterthought."},
+    {tone:"purple", h:"Statins are safe — the fear is an evidence-based myth", html:"Do NOT withhold a statin for abnormal LFTs in MASLD if QRISK3 is 10% or above. A transient ALT rise (&lt;3× ULN) is acceptable and does not require stopping. Statins reduce cardiovascular mortality in exactly this population."},
+    {tone:"plain", h:"Weight loss is the treatment, and it is dose-dependent", html:"5% or more reduces steatosis · 7% or more improves MASH · 10% or more reduces fibrosis — weight loss of ≥10% is the only intervention consistently shown to reverse significant fibrosis. For a 90 kg patient that is 9 kg. A structured Tier 3 programme beats self-directed effort."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where cirrhosis and cancer are missed.",
+  pathway:[
+    {title:"Exclude decompensation and acute hepatitis", html:"Jaundice with coagulopathy, ascites, variceal bleed, encephalopathy, a nodular liver on imaging — and <b>ALT above 3× ULN (or above 120) is not simple MASLD</b>.", alert:true},
+    {title:"Confirm the diagnosis and the aetiology", html:"<b>Steatosis on imaging plus at least one metabolic criterion = MASLD.</b> Quantify alcohol honestly with AUDIT-C; <b>an AST:ALT ratio above 2:1 with a raised GGT and MCV points to alcohol</b>. Exclude viral, autoimmune, haemochromatosis, Wilson's and drug causes."},
+    {title:"Stage the fibrosis", html:"<b>FIB-4 for everyone</b>, then ELF (≥9.8 = high risk) or FibroScan (&gt;8 kPa significant fibrosis, &gt;12 kPa probable cirrhosis) for indeterminate and high scores."},
+    {title:"Treat the metabolic drivers and the CV risk", html:"Weight loss, Mediterranean diet, fructose elimination, exercise, alcohol reduction; <b>QRISK3 with a statin</b>; <b>a GLP-1 agonist first choice in type 2 diabetes</b>."},
+    {title:"Re-stratify and safety-net", html:"<b>Recalculate FIB-4 every 2–3 years</b> (or sooner if metabolic risk worsens), <b>6-monthly USS and AFP once cirrhotic</b>, and give the same-day list."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Red flags — when fatty liver signals advanced disease",
+     sub:"Fatty liver is extremely common and mostly benign. These features mean it is not.",
+     blocks:[
+       {b:"table", head:["Red flag","Features","Action"], rows:[
+         ["<b>Jaundice with deranged LFTs</b>","<b>Bilirubin &gt;50 µmol/L, coagulopathy (INR &gt;1.5), encephalopathy</b>","<b>Same-day — decompensated liver disease or acute liver failure</b>"],
+         ["<b>Haematemesis or melaena</b>","Suspected variceal bleed","<b>999</b> — a cirrhosis-related portal hypertension complication"],
+         ["<b>New-onset ascites</b>","Abdominal distension, <b>shifting dullness</b>, peripheral oedema","<b>Same-day — decompensated cirrhosis. Do NOT drain in primary care</b>"],
+         ["<b>Hepatic encephalopathy</b>","Confusion, <b>asterixis (liver flap)</b>, behavioural change in chronic liver disease","<b>Same-day.</b> Look for the precipitant — infection, GI bleed, constipation, drugs"],
+         ["<b>RUQ pain + fever + jaundice</b>","<b>Charcot's triad</b>","<b>Same-day — ascending cholangitis</b>, not fatty liver; exclude a biliary cause"],
+         ["<b>ALT &gt;3× ULN (or ALT &gt;120)</b>","Needs active investigation","<b>Not simple MASLD</b> — consider acute hepatitis (viral, drug-induced, autoimmune, ischaemic)"],
+         ["<b>Established cirrhosis + new weight loss or RUQ pain</b>","Surveillance failure","2WW if AFP is rising or the USS is abnormal — suspected hepatocellular carcinoma"],
+         ["<b>Alcohol: acute binge with deranged LFTs</b>","<b>AST:ALT ratio &gt;2:1, GGT markedly elevated</b>","Same-day if severe alcoholic hepatitis is suspected (Maddrey score &gt;32)"]
+       ]},
+       {b:"why", html:"MASLD affects about 25% of UK adults but progresses to significant fibrosis in only around 5% — the whole clinical task is identifying that 5%. Decompensation (jaundice, ascites, encephalopathy, variceal bleed) is a major turning point: median survival after the first episode is 1–2 years without transplant. An AST:ALT ratio above 2 in a drinker strongly suggests alcoholic hepatitis — AST is disproportionately elevated because of pyridoxine deficiency. Acute liver failure (ALT &gt;10× ULN + INR &gt;1.5 + encephalopathy) needs same-day specialist assessment."},
+       {b:"dl", rows:[
+         ["<b>NG12 — the criterion that applies here</b>","Fatty liver itself has no NICE NG12 suspected-cancer criterion, and none should be invented for one — but cirrhosis is a premalignant state. A new liver lesion on ultrasound, a rising AFP, or known cirrhosis with new right upper quadrant pain or weight loss goes on a suspected-cancer pathway referral for hepatocellular carcinoma. That is why HCC surveillance is confined to confirmed cirrhosis (6-monthly USS + AFP) rather than offered to everyone with steatosis — the distinction is what avoids mass over-investigation. Restated with the threshold in <a href='#refer'>Refer</a>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"MASLD or ALD?", title:"Confirm the diagnosis — and separate metabolic from alcohol-related disease",
+     sub:"Both present with a raised ALT and GGT and a bright liver on ultrasound. The distinction determines the treatment pathway.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>MASLD criteria (2023)</b>","Hepatic steatosis on imaging (a bright echogenic liver on USS) or biopsy, PLUS at least one metabolic criterion: BMI &gt;25 (or waist &gt;94/80 cm, men/women — waist &gt;94 cm in men, &gt;80 cm in women), triglycerides &gt;1.7 mmol/L, HDL &lt;1.0 (men) or &lt;1.3 mmol/L (women), BP ≥130/85, HbA1c ≥5.7%, or type 2 / pre-diabetes. <b>Replaces the term \u201cNAFLD\u201d</b>"],
+         ["<b>ALD criteria</b>","Harmful alcohol use — consistently more than &gt;14 units/week in women or &gt;21 units/week in men. AST:ALT ratio often &gt;2:1. GGT markedly elevated. MCV elevated (macrocytosis). CDT (carbohydrate-deficient transferrin) elevated"],
+         ["<b>Quantify the alcohol properly</b>","<b>Use AUDIT-C, and be direct: \u201cHow many units per week?\u201d</b> 1 unit = 10 mL pure alcohol = a small glass of wine = half a pint of beer = a single spirit. <b>Document the actual consumption, not \u201csocial drinker\u201d</b>"],
+         ["<b>Drug-induced steatosis</b>","Amiodarone, methotrexate, tamoxifen, corticosteroids, antipsychotics (olanzapine), NSAIDs, and rarely statins. Review the complete drug history including over-the-counter medicines and supplements"],
+         ["<b>Other causes to exclude</b>","<b>Viral hepatitis</b> (hepatitis B surface antigen, anti-HCV) · <b>autoimmune hepatitis</b> (ANA, ASMA — especially young women) · <b>haemochromatosis</b> (ferritin plus transferrin saturation) · <b>Wilson's disease</b> (under 40, caeruloplasmin)"],
+         ["<b>What the ultrasound tells you</b>","A bright echogenic liver means steatosis. An irregular surface means cirrhosis. Splenomegaly means portal hypertension. A hepatic nodule is HCC until proved otherwise. <b>USS cannot differentiate fibrosis stages</b>"]
+       ]},
+       {b:"why", html:"The 2023 nomenclature change from NAFLD to MASLD (metabolic dysfunction-associated steatotic liver disease) is clinically meaningful — it explicitly ties fatty liver to metabolic syndrome and drops the stigmatising \u201cnon-alcoholic\u201d label. The two frequently co-exist as dual-aetiology steatotic liver disease (MetALD), and the treatments differ: ALD requires alcohol cessation as the primary intervention, MASLD requires metabolic risk reduction. On markers: GGT is the most sensitive marker of alcohol use but has low specificity — many drugs, obesity and diabetes raise it — whereas an MCV &gt;100 fL with a raised GGT strongly suggests significant alcohol intake."}
+     ]},
+
+    {id:"workup", nav:"Stage it", title:"Investigations and fibrosis staging — FIB-4 is the gatekeeper",
+     sub:"Fibrosis stage determines prognosis and referral. Calculate FIB-4 for everyone with confirmed fatty liver.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>FIB-4</b>","<b>FIB-4 = (age × AST) ÷ (platelets × √ALT)</b>, with age in years, AST and ALT in U/L and platelets in 10⁹/L"],
+         ["<b>FIB-4 &lt;1.30 — low risk</b>","NPV 90% for advanced fibrosis; significant fibrosis unlikely. Reassure, give lifestyle advice, repeat FIB-4 in 2–3 years or if metabolic risk changes"],
+         ["<b>FIB-4 1.30–2.67 — indeterminate</b>","Refer for an ELF test (Enhanced Liver Fibrosis) or FibroScan. Do NOT manage as low risk"],
+         ["<b>FIB-4 &gt;2.67 — high risk</b>","PPV 65% for advanced fibrosis or cirrhosis. Urgent hepatology referral; FibroScan plus ELF to confirm the stage; may need a liver biopsy"],
+         ["<b>FIB-4 limitations</b>","Less accurate in the over-65s (age &gt;65) (falsely elevated), in acute hepatitis (transaminase spike) and in thrombocytopenia. In the over-65s, a threshold of &gt;2.0 counts as high risk. Always interpret in clinical context"],
+         ["<b>The NG49 pathway</b>","NICE recommends FIB-4 as the primary care fibrosis risk-stratification tool for everyone with MASLD or ALD; indeterminate or high scores go for ELF or FibroScan via the community or secondary care pathway"]
+       ]},
+       {b:"table", head:["Investigation","Detail"], rows:[
+         ["<b>First-line in all patients</b>","LFTs (ALT, AST, GGT, ALP, bilirubin, albumin), FBC (platelets for portal hypertension, MCV for alcohol), INR/PT (synthetic function), fasting lipids, HbA1c, TFTs"],
+         ["<b>Fibrosis score</b>","<b>FIB-4 — needs age, AST, ALT and platelets. Calculate for all.</b> Plus <b>ferritin and transferrin saturation</b> to exclude haemochromatosis"],
+         ["<b>Exclude other causes</b>","HBsAg + anti-HBc; anti-HCV — offer universal testing per NHS England; ANA + ASMA + anti-LKM1 for autoimmune hepatitis, especially young women with a raised IgG; <b>caeruloplasmin</b> if age &lt;40 or there are neurological features"],
+         ["<b>USS abdomen</b>","<b>First-line imaging.</b> Confirms steatosis, excludes biliary obstruction, detects a focal lesion, estimates liver size and splenomegaly. <b>Does NOT reliably stage fibrosis</b>"],
+         ["<b>ELF test</b>","<b>Hyaluronic acid, TIMP-1 and PIIINP panel</b>, via secondary care or some community pathways. For indeterminate FIB-4. <b>ELF ≥9.8 = high risk of advanced fibrosis</b>"],
+         ["<b>FibroScan (transient elastography)</b>","<b>Liver stiffness in kPa.</b> Requires <b>2 hours' fasting</b>. <b>Failure rate around 5% in obesity — an XL probe is needed.</b> Liver stiffness &gt;8 kPa = significant fibrosis; &gt;12 kPa = probable cirrhosis"],
+         ["<b>Liver biopsy</b>","Still the gold standard, but carries a <b>0.3% risk of significant bleeding</b> — reserved for cases where non-invasive tests are inconclusive"]
+       ]},
+       {b:"why", html:"<b>Hepatitis C screening is now universally recommended by NHS England</b> — many people acquired it through injecting drug use in the 1980s and 90s and are unaware; the treat-all policy with direct-acting antivirals cures over 95% and reverses fibrosis — direct-acting antivirals (DAAs). And <b>autoimmune hepatitis is commonly missed in primary care</b>: it typically presents in a young woman with a raised ALT, raised IgG and positive ANA or ASMA, and missing it risks progression to cirrhosis without immunosuppressive treatment — so check autoimmune markers whenever the LFTs are unexpectedly elevated, particularly in women of reproductive age."}
+     ]},
+
+    {id:"cvrisk", nav:"CV risk", title:"Cardiovascular risk — the overlooked priority",
+     sub:"Patients with MASLD are more likely to die from cardiovascular disease than from liver disease.",
+     blocks:[
+       {b:"table", head:["Domain","Action"], rows:[
+         ["<b>Why it dominates</b>","The commonest cause of death in MASLD is cardiovascular — MI and stroke — not liver failure. MASLD confers 2× the CV risk independently of traditional risk factors"],
+         ["<b>QRISK3 — mandatory</b>","<b>Calculate for all MASLD patients.</b> MASLD travels with metabolic syndrome (type 2 diabetes, hypertension, dyslipidaemia, central obesity) — <b>multiplicative CV risk factors, so treat every modifiable component</b>"],
+         ["<b>Statins</b>","Statins ARE safe in MASLD. A transient ALT rise (&lt;3× ULN) is acceptable and does not require discontinuation. Statins reduce CV mortality in MASLD. Do NOT withhold a statin for abnormal LFTs if QRISK3 is ≥10%"],
+         ["<b>Type 2 diabetes</b>","GLP-1 agonists (semaglutide, liraglutide) reduce hepatic steatosis and fibrosis. Pioglitazone improves liver histology in MASH (NASH). Metformin is neutral on the liver. SGLT-2 inhibitors: hepatic benefit still under study"],
+         ["<b>Blood pressure</b>","Hypertension is present in 40% of MASLD patients. RAAS blockade (an ACE inhibitor or ARB) is preferred for its potential hepatoprotective effect. Target &lt;130/80 mmHg"],
+         ["<b>Dyslipidaemia</b>","Atorvastatin first line for a raised LDL. Fenofibrate for hypertriglyceridaemia &gt;5 mmol/L. Omega-3 fatty acids 2–4 g/day reduce triglycerides by 20–30%"]
+       ]},
+       {b:"warn", html:"The single most important clinical message about MASLD: most of these patients die from heart attacks, not liver failure. That changes the priority — treating hypertension, dyslipidaemia, diabetes and obesity is the primary intervention. The fear of statin-induced liver damage in MASLD is an evidence-based myth."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Treatment — weight loss, drugs, and cirrhosis care",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Everyone", title:"Weight loss — the dose-dependent treatment", when:"MASLD without diabetes",
+          html:"Target above 5–7% as a minimum: ≥5% reduces steatosis, ≥7% improves MASH (steatohepatitis — inflammation), ≥10% reduces fibrosis. Diet plus exercise, with referral to a <b>structured tier 2 or tier 3 service</b>. <b>There are no licensed drugs for MASLD in primary care as of 2025.</b>"},
+         {step:"With diabetes", title:"GLP-1 agonist — the priority choice", when:"MASLD + type 2 diabetes",
+          fromLabel:"dual indication",
+          html:"Semaglutide (Ozempic / Wegovy) or liraglutide (Victoza) — reduces hepatic steatosis, inflammation and fibrosis, with weight-loss and glycaemic benefit. Pioglitazone is the second-line choice if a GLP-1 agonist is contraindicated — it is the only drug with NICE-approved evidence of liver-specific benefit in MASH."},
+         {step:"If alcohol-related", title:"Alcohol cessation — essential, not optional", when:"ALD",
+          fromLabel:"the primary treatment",
+          html:"Assisted withdrawal with a chlordiazepoxide reducing regimen guided by CIWA. Thiamine 100 mg TDS for Wernicke's prophylaxis. Acamprosate or naltrexone for relapse prevention. Refer to the alcohol team."},
+         {step:"If cirrhotic", title:"Cirrhosis care and surveillance", when:"confirmed cirrhosis",
+          fromLabel:"advanced fibrosis confirmed",
+          html:"HCC surveillance — USS abdomen plus AFP 6-monthly. Variceal screening — OGD at diagnosis, then propranolol if varices are present. For ascites: diuretics (spironolactone 100 mg plus furosemide 40 mg), specialist-initiated; a low-salt diet &lt;5 g/day; avoid NSAIDs, which precipitate AKI and hepatorenal syndrome in cirrhosis."},
+         {step:"Selected", title:"Bariatric surgery", when:"BMI &gt;40, or &gt;35 with comorbidity",
+          fromLabel:"advanced fibrosis with obesity",
+          html:"Bariatric surgery offers the greatest degree of liver fibrosis regression in MASLD with advanced fibrosis. <b>Tier 3 weight management referral first.</b>"}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"💉 Vaccination", html:"All MASLD patients: hepatitis A and B vaccine, annual influenza, COVID-19 up to date, pneumococcal. <b>Cirrhosis counts as immunocompromised — check the vaccination status.</b>"},
+         {tone:"red", h:"🚫 Drugs to avoid in liver disease", html:"NSAIDs (GI bleed and AKI risk), opioids and benzodiazepines (encephalopathy), co-amoxiclav (amoxicillin-clavulanate — hepatotoxic), metformin if eGFR &lt;30. In cirrhosis, maximum paracetamol is 2 g/day — not 4 g (the usual 1g × 4), and avoid herbal supplements."},
+         {tone:"blue", h:"🔬 Resmetirom — watch this space", html:"Resmetirom (Rezdiffra) is the first FDA-approved drug for MASH with fibrosis (F2–F3), approved in March 2024 and licensed in the USA. Not yet approved in the UK — a NICE review is pending."}
+       ]},
+       {b:"why", html:"Weight loss of ≥10% is the only intervention consistently shown to reverse significant hepatic fibrosis in MASLD — for a 100 kg patient, 10 kg. GLP-1 agonists show 59% resolution of MASH and 43% improvement in fibrosis stage in the ESSENCE trial (NEJM 2024), with earlier histological improvement in the LEAN and SUSTAIN programmes, making them the most promising pharmacological option. And HCC risk rises exponentially with fibrosis stage: cirrhosis carries a 2–4% annual HCC risk, which is what makes 6-monthly surveillance cost-effective."}
+     ]},
+
+    {id:"lifestyle", nav:"Lifestyle", title:"Lifestyle — the foundation of treatment",
+     sub:"Quantifying each intervention is what makes the conversation persuasive.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"⚖️ Weight loss target ≥10%", html:"<b>The single most effective intervention — for a 90 kg patient, 9 kg.</b> Achievable with a <b>500–750 kcal/day deficit</b>. A structured programme (Tier 3 service) is superior to self-directed effort. Set a 6-month target."},
+         {tone:"green", h:"🫒 Mediterranean diet", html:"<b>The highest evidence base in MASLD.</b> Olive oil, oily fish, legumes, vegetables, nuts, wholegrains. Reduces hepatic fat by 20–30% over 6 months independently of calorie restriction. Avoid ultra-processed foods."},
+         {tone:"amber", h:"🥤 Fructose and sugar", html:"High fructose intake — fizzy drinks, fruit juice, processed food — directly drives hepatic de novo lipogenesis. Eliminate all sugar-sweetened beverages: a significant and rapid effect on liver fat, because fructose is metabolised almost exclusively in the liver."},
+         {tone:"blue", h:"🚶 Aerobic exercise", html:"≥150 min/week (150–300 minutes a week) of moderate intensity reduces liver fat by 5–10% even without weight loss. Walking, cycling, swimming — <b>exercise alone still meaningfully reduces steatosis</b>."},
+         {tone:"blue", h:"🏋️ Resistance training", html:"2–3 sessions a week improves insulin sensitivity and reduces liver fat. Combined aerobic plus resistance is more effective than either alone, and is particularly valuable in sarcopenic obesity."},
+         {tone:"amber", h:"🍷 Alcohol", html:"Any alcohol worsens MASLD — even moderate drinking (&gt;7 units/week) accelerates fibrosis progression. Recommend complete abstinence if MASH or fibrosis is present. AUDIT-C screening."},
+         {tone:"cream", h:"☕ Coffee", html:"3–4 cups of regular coffee a day is associated with about 40% lower cirrhosis risk and reduced HCC risk — cafestol, kahweol and antioxidants reduce hepatic inflammation. <b>The evidence supports encouraging coffee, not decaf.</b>"},
+         {tone:"plain", h:"😴 Sleep and OSA", html:"Obstructive sleep apnoea is independently associated with more severe fatty liver — screen obese patients with STOP-BANG. CPAP may reduce hepatic inflammation, because untreated OSA causes intermittent hypoxia which activates hepatic stellate cells and drives fibrosis."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Follow-up, re-stratification and surveillance",
+     blocks:[
+       {b:"table", head:["Group","Monitoring"], rows:[
+         ["<b>Low risk (FIB-4 &lt;1.30)</b>","Annual LFTs plus a metabolic check (HbA1c, lipids, BP, weight). Repeat FIB-4 every 2–3 years, or sooner if metabolic risk worsens. USS every 3 years if steatosis is confirmed. No hepatology referral needed"],
+         ["<b>Indeterminate / post-FibroScan</b>","Follow specialist advice. If no significant fibrosis is confirmed (stiffness &lt;8 kPa), manage as low risk and recheck in 2–3 years. If F2 or above, 12-monthly hepatology review"],
+         ["<b>Confirmed cirrhosis</b>","HCC surveillance — USS abdomen plus AFP every 6 months. OGD every 1–2 years for variceal surveillance. Annual FBC, LFTs, INR, albumin and creatinine. Child-Pugh and MELD scoring"],
+         ["<b>ALD monitoring</b>","LFTs monthly for 3 months after cessation, then 3-monthly. GGT normalises in 4–6 weeks of abstinence; MCV normalises in 3 months. Persistent GGT elevation suggests ongoing drinking"],
+         ["<b>Cardiovascular</b>","Continue cardiovascular risk management — the commonest cause of death in MASLD"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same-day", html:"New jaundice · new ascites · confusion or encephalopathy · haematemesis · melaena · acute RUQ pain with fever (cholangitis)."},
+         {tone:"amber", h:"🟠 Within 48 hours", html:"Rising bilirubin · worsening oedema on diuretics · new peripheral oedema in known liver disease · a significant ALT rise (more than 3× the baseline)."},
+         {tone:"blue", h:"🔁 Rising FIB-4", html:"Fibrosis risk evolves — a rising score means re-testing with ELF or elastography, or referral."}
+       ]},
+       {b:"say", html:"Your scan shows fat in the liver, which about a quarter of adults have — on its own it is usually not dangerous. The blood score I have calculated tells me how likely it is that there is any scarring, and yours is in the low band, so we manage this here rather than sending you to a specialist. Two things matter far more than the liver result itself. First, losing about a tenth of your weight is the one thing proven to reverse liver scarring — that is the treatment. Second, people with fatty liver are much more likely to have a heart attack than liver trouble, which is why I want you on a statin: it is safe in fatty liver, and I am not going to stop it for a slightly abnormal liver test."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral criteria",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same-day", html:"Decompensated cirrhosis (jaundice with ascites and encephalopathy), variceal bleed, or acute liver failure (ALT &gt;10× ULN + INR &gt;1.5 + encephalopathy)."},
+         {tone:"purple", h:"2WW · NICE NG12", html:"Suspected hepatocellular carcinoma — a rising AFP, a new liver lesion on ultrasound, or known cirrhosis with new RUQ pain or weight loss."},
+         {tone:"blue", h:"Hepatology (routine)", html:"FIB-4 &gt;2.67 (high risk) · FIB-4 1.30–2.67 (indeterminate — for ELF or FibroScan) · ALT persistently above 3× ULN without a clear cause · suspected autoimmune hepatitis · confirmed hepatitis B or C."},
+         {tone:"green", h:"Community FibroScan", html:"Many ICBs have community transient elastography services — refer directly for an indeterminate FIB-4 without a hepatology outpatient appointment. Check the local pathway."},
+         {tone:"amber", h:"Alcohol services", html:"Harmful or dependent drinking with abnormal LFTs — community alcohol team (SMART Recovery, CGL, Turning Point). Assisted alcohol withdrawal if dependent."},
+         {tone:"cream", h:"Manage in primary care", html:"FIB-4 &lt;1.30 with stable LFTs (ALT &lt;3× ULN) and ongoing metabolic risk factor management. Review FIB-4 every 2–3 years; USS every 3 years if steatosis is confirmed without fibrosis risk."}
+       ]},
+       {b:"why", html:"<b>NG49 makes FIB-4 the primary care gatekeeper deliberately</b> — hepatology services are overwhelmed by MASLD referrals because the prevalence is so high, and most patients with a low FIB-4 never need to be seen. The community FibroScan pathway lets primary care access elastography directly for indeterminate-risk patients without a specialist appointment. And confining HCC surveillance to confirmed cirrhosis, rather than all MASLD, is what keeps the surveillance burden proportionate."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 54-year-old with type 2 diabetes and a BMI of 33 has a bright liver reported incidentally on an ultrasound done for gallstones, with an ALT of 68. He drinks \u201ca couple of glasses of wine most nights\u201d. He has read that his statin causes liver damage and has stopped taking it."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Calculates FIB-4 rather than referring or reassuring on the ALT alone</b>; <b>quantifies the alcohol in units with AUDIT-C and considers MetALD</b>; excludes the other causes (viral, autoimmune, haemochromatosis, drugs); restarts the statin and explains that it is safe and that a rise &lt;3× ULN is acceptable; <b>calculates QRISK3 and treats the metabolic drivers</b>; sets a <b>quantified weight-loss target with a Tier 3 referral</b>; and — the step candidates miss — says which FIB-4 band the patient is in and when it will be recalculated, rather than leaving the risk unstratified."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG49 — Non-alcoholic fatty liver disease: assessment and management (2016, updated 2023)<br><a href="https://www.nice.org.uk/guidance/ng49" rel="noopener">nice.org.uk/guidance/ng49</a><span class="rd"> — FIB-4 as the primary care risk-stratification tool, the ELF test for indeterminate scores, and the referral thresholds</span></li>'+
+         '<li><b>EASL Clinical Practice Guidelines (NAFLD 2016, MAFLD 2023)</b><span class="rd"> — the MASLD diagnostic criteria and the 2023 nomenclature change, including MetALD as dual-aetiology disease</span></li>'+
+         '<li><b>BSG NAFLD guidelines (2021)</b><span class="rd"> — fibrosis staging pathway, FibroScan thresholds (8 kPa significant fibrosis, 12 kPa probable cirrhosis) and surveillance</span></li>'+
+         '<li><b>NICE CG115 — Alcohol-use disorders</b><br><a href="https://www.nice.org.uk/guidance/cg115" rel="noopener">nice.org.uk/guidance/cg115</a><span class="rd"> — AUDIT-C, assisted withdrawal with chlordiazepoxide, thiamine prophylaxis, and acamprosate or naltrexone for relapse prevention</span></li>'+
+         '<li><b>ESSENCE trial (NEJM 2024), and the LEAN and SUSTAIN programmes</b><span class="rd"> — GLP-1 agonists: 59% resolution of MASH and 43% improvement in fibrosis stage</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the hepatocellular carcinoma route: a new liver lesion, a rising AFP, or cirrhosis with new RUQ pain or weight loss</span></li>'+
+         '<li><b>FDA approval of resmetirom (Rezdiffra), March 2024</b><span class="rd"> — the first MASH-specific drug, for F2–F3 fibrosis; NICE review pending, not yet UK-approved</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all doses: atorvastatin, fenofibrate, semaglutide, liraglutide, pioglitazone, spironolactone, furosemide, propranolol, chlordiazepoxide, thiamine</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Fatty liver disease (MASLD / ALD) — NICE NG49, EASL clinical practice guidelines, BSG NAFLD 2021 and NICE CG115. Nomenclature updated to MASLD (2023). For the reasoning route from an incidental fatty liver or abnormal LFTs, see the <a href=\"../algorithms/abnormal-lfts.html\">abnormal LFTs pathway</a>. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

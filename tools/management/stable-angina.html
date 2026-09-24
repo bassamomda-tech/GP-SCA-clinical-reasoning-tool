@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stable angina — Protocol · Reasoning GP</title>
+<meta name="description" content="Stable angina in primary care: CTCA first-line diagnosis, the GTN 5-5-999 rule and the PDE5-inhibitor interaction that kills, the anti-anginal ladder with exact doses and the beta-blocker/verapamil trap, the prevention bundle that actually stops the infarct, what revascularisation does and does not fix, and the DVLA rules." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/stable-angina.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Stable angina protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🫀",
+  title:"Stable angina — the complete guide",
+  eyebrow:"Protocol · NICE CG126 · CG95 · NG185 · two tracks that must never be confused",
+  stemTitle:"Anti-anginals make the patient feel better and do not prevent infarction; aspirin and the statin prevent the infarction and do nothing for the pain — and the classic failure is a comfortable patient whose statin quietly stopped",
+  stemSub:"One page for the whole condition. Confirm it is angina and that it is stable, with CTCA as the first-line diagnostic route. Then run the two tracks — symptom control up the anti-anginal ladder with exact doses and the combination that must never be prescribed, and the prevention bundle that is doing the survival work. Teach the GTN rules including the PDE5-inhibitor interaction that kills, be honest about what revascularisation does and does not fix, and give the DVLA advice everyone forgets.",
+  guideline:"NICE CG126 · CG95 · NG185 · NG238",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE CG126 — stable angina management"},
+    {t:"NICE CG95 — chest pain of recent onset · CTCA first-line"},
+    {t:"NEVER a PDE5 inhibitor within 24h of any nitrate", tone:"tw"},
+    {t:"NEVER beta-blocker + verapamil", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Unstable?</b><small>The pattern change</small></a><a href="#confirm"><b>Confirm</b><small>CTCA first-line</small></a><a href="#gtn"><b>GTN</b><small>5-5-999 · the killer</small></a><a href="#ladder"><b>Symptoms</b><small>The ladder</small></a><a href="#prevention"><b>Survival</b><small>The bundle</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ The interaction that kills — PDE5 inhibitors and nitrates", html:"NO sildenafil, tadalafil or any PDE5 inhibitor within 24 hours of GTN or ANY nitrate — 48 hours for tadalafil — and the same ban applies to nicorandil. <b>Profound refractory hypotension.</b> Angina patients ARE the erectile-dysfunction demographic, so ask proactively: a man who took sildenafil last night and gets chest pain today must NOT use his GTN. He calls 999 and tells the crew what he took."},
+    {tone:"red", h:"⛔ Never beta-blocker + verapamil", html:"<b>Absolute contraindication — bradycardia and asystole risk.</b> <b>Beta-blocker + diltiazem is also avoided (specialist only).</b> The only safe routine combination is a beta-blocker plus a DIHYDROPYRIDINE calcium-channel blocker — amlodipine or felodipine. And never stop a beta-blocker abruptly: rebound tachycardia precipitates ACS — taper over 1–2 weeks."},
+    {tone:"blue", h:"The GTN 5-5-999 rule", html:"Pain → stop, sit down, use GTN. Still there at 5 minutes → second dose. Still there 5 minutes after that (15 minutes total) → 999. <b>Say it, write it, and check recall at every review.</b> <b>Sit down first</b> — GTN drops blood pressure, and syncope on a ladder is how GTN injures people. <b>Use it BEFORE predictable triggers too</b> — hills, cold mornings, sex."},
+    {tone:"amber", h:"Titrate to maximum before calling a drug failed", html:"Beta-blocker (bisoprolol 2.5 → 10 mg OD, target resting heart rate 55–60) OR a calcium-channel blocker — rate-limiting diltiazem MR 90 mg BD → 360 mg/day, or amlodipine 5 → 10 mg if blood pressure also needs treating. <b>Review at 2–4 weeks. \"Failed\" at half dose is not failed.</b> Not tolerated → switch class rather than combine."},
+    {tone:"green", h:"The prevention bundle is the part that stops the infarct", html:"Aspirin 75 mg OD lifelong (clopidogrel 75 mg if intolerant) · atorvastatin 80 mg to LDL ≤2.0 or non-HDL ≤2.6, adding ezetimibe 10 mg if not met · an ACE inhibitor where there is diabetes, hypertension, CKD or LV dysfunction · blood pressure and glucose to target · annual influenza and pneumococcal vaccination. <b>MI risk spikes after influenza — the forgotten prevention drug.</b>"},
+    {tone:"blue", h:"Be honest about revascularisation", html:"In STABLE angina, PCI is for symptom control and does not reduce myocardial infarction or death (ISCHEMIA, ORBITA) — optimal medical therapy is that good. CABG has prognostic benefit in left-main and complex three-vessel disease, particularly with diabetes, which is what the anatomy assessment is for. Tell patients this plainly — many decline a stent once they understand the tablets are doing the survival work."}
+  ],
+  pathwaySub:"Five steps, and the last one checks both tracks every single time.",
+  pathway:[
+    {title:"Confirm it is angina — and that it is stable", html:"The three-point definition, CCS class, and the red flags that make it unstable. Rest pain, crescendo frequency or new pain is not a titration problem — it is a same-day or 999 problem.", alert:true},
+    {title:"Teach GTN properly", html:"Sit down, 1–2 sprays of 400 mcg sublingually, the 5-5-999 rule, pre-exertion prophylaxis, and the PDE5-inhibitor ban."},
+    {title:"Climb the anti-anginal ladder", html:"Beta-blocker or CCB to maximum tolerated → beta-blocker plus a dihydropyridine CCB → a third agent chosen by phenotype (isosorbide mononitrate, ivabradine, ranolazine, nicorandil)."},
+    {title:"Run the prevention bundle in parallel", html:"Aspirin, high-intensity statin to target, ACE inhibitor where indicated, blood pressure and glucose, smoking, activity, mood and vaccines."},
+    {title:"Review both tracks — and watch the rescue use", html:"Rising GTN use is the earliest warning of deterioration, exactly as in asthma. And check the statin is still being taken."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Unstable?", title:"Red flags — the pattern change that stops this being stable angina",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["<b>Pain at rest, or waking the patient</b>","<b>Unstable angina / ACS</b>","<b>999 or same-day acute assessment. Not a routine titration</b>"],
+         ["<b>Crescendo pattern — more frequent, longer, or at a lower threshold</b>","<b>Unstable angina</b>","<b>Same-day assessment</b>"],
+         ["<b>New-onset severe angina (CCS III–IV within 2 months)</b>","<b>Unstable presentation</b>","<b>Same-day or urgent assessment per CG95</b>"],
+         ["<b>Pain lasting over 15 minutes despite two GTN doses</b>","<b>Evolving MI</b>","<b>999 — this is the 5-5-999 rule the patient must be able to recite</b>"],
+         ["<b>Chest pain with syncope, new murmur, or haemodynamic compromise</b>","<b>Severe aortic stenosis, arrhythmia, mechanical complication</b>","<b>Same-day assessment; echocardiography</b>"],
+         ["Chest pain after a PDE5 inhibitor in the last 24 hours (48 for tadalafil)","GTN is contraindicated — giving it risks profound refractory hypotension","999, and tell the crew which drug was taken and when. Do NOT use the GTN"],
+         ["<b>Angina that has worsened without a change in coronary disease</b>","An amplifier: anaemia, thyrotoxicosis, new AF or tachyarrhythmia, uncontrolled hypertension, heart failure, infection, hypoxia","<b>Look for the amplifier before assuming progression</b> — FBC, TFTs, ECG, BP. Treating the amplifier often resolves the angina"]
+       ]},
+       {b:"warn", html:"The commonest error in this condition is treating a pattern change as a dose problem. Stable angina is predictable, exertional and relieved by rest; the moment any of those three stops being true, the consultation changes from titration to acute assessment. <b>Rising GTN use is the earliest measurable signal</b> — ask for sprays per week at every review, exactly as you would ask about reliever inhaler use in asthma."}
+     ]},
+
+    {id:"confirm", nav:"Confirm", title:"Making the diagnosis",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>The three-point definition</b>","(1) Constricting discomfort in the chest, arm, neck, jaw or shoulder, (2) brought on by exertion, (3) relieved by rest or GTN within about 5 minutes. All three = typical angina · two = atypical · one or none = non-anginal"],
+         ["<b>Diagnostic route</b>","CT coronary angiography is first-line (NICE CG95), via a rapid-access chest pain clinic. Functional imaging is second-line; invasive angiography third. Do not 'trial GTN' as a diagnostic test — oesophageal spasm responds to it too"],
+         ["<b>Confirm it is STABLE</b>","<b>Predictable, exertional, relieved by rest.</b> Rest pain, crescendo frequency or new pain moves this to the red-flag table above"],
+         ["<b>Quantify with CCS class</b>","I — strenuous exertion only · II — slight limitation · III — marked limitation, one flight of stairs · IV — any activity, or at rest. Record triggers (cold, meals, emotion) and what it stops them doing"],
+         ["<b>Baseline tests</b>","ECG (old MI, AF, LVH) · FBC (anaemia is an angina amplifier) · TFTs · HbA1c · lipids · U&amp;Es · blood pressure · weight. Echocardiography if there is a murmur, heart-failure signs or previous MI"]
+       ]},
+       {b:"why", html:"<b>Two tracks run forever and must never be confused.</b> Anti-anginals make the patient feel better but do not prevent myocardial infarction. Aspirin and the statin prevent the infarction and do nothing for the pain. Every review checks both — and the classic failure is the comfortable patient whose statin was quietly stopped, because the drug that was doing the survival work was the one with no perceptible effect."}
+     ]},
+
+    {id:"gtn", nav:"GTN", title:"GTN — the rules that save lives, and the one that kills",
+     blocks:[
+       {b:"table", head:["Point","Detail"], rows:[
+         ["<b>How to use it</b>","<b>SIT DOWN first</b> — it drops blood pressure, and syncope on a ladder is how GTN injures people. <b>Spray 1–2 × 400 mcg under the tongue and close the mouth.</b> <b>Use it BEFORE predictable triggers as well</b> — hills, cold mornings, sex"],
+         ["<b>The 5-5-999 rule</b>","Pain → stop and rest and use GTN. Still there at 5 minutes → second dose. Still there 5 minutes after that, or 15 minutes in total → 999. <b>Say it, write it, and check recall at every review</b>"],
+         ["<b>What to expect</b>","<b>Headache and flushing mean the drug is working</b> — paracetamol helps and it passes. Light-headedness means sit down for longer"],
+         ["<b>Tablets versus spray</b>","<b>Tablets (300–500 mcg) degrade 8 weeks after the bottle is opened</b>, so spray suits most people. Tablets can be spat out if side effects are troublesome"],
+         ["<b>The interaction that kills</b>","NO sildenafil, tadalafil or any PDE5 inhibitor within 24 hours of GTN or any nitrate (48 hours for tadalafil), and the same ban applies to nicorandil. <b>Profound refractory hypotension.</b> Ask proactively — angina patients are the ED demographic, and the man who took sildenafil last night must call 999 rather than reach for his spray"]
+       ]},
+       {b:"say", html:"If you get the pain: stop what you are doing and sit down — sit down first, because the spray drops your blood pressure and I do not want you fainting on a ladder. One or two sprays under the tongue. If it is still there after five minutes, take another. If it is still there five minutes after that — so fifteen minutes in total — call 999. Do not wait to see. And one more thing I ask every man on this spray, so please do not take it personally: if you ever take Viagra or anything like it, you must not use this spray for twenty-four hours afterwards — the two together can drop your blood pressure dangerously. If you get chest pain in that window, call 999 and tell them what you took."}
+     ]},
+
+    {id:"ladder", nav:"Symptoms", title:"The anti-anginal ladder — exact doses, real traps",
+     sub:"This track makes them feel better. It does not prevent infarction.",
+     blocks:[
+       {b:"table", head:["Step","Drug and dose","Notes"], rows:[
+         ["<b>Step 1 — beta-blocker OR calcium-channel blocker, titrated to maximum</b>","<b>Bisoprolol 2.5 → 10 mg OD</b> (the default, especially post-MI, in heart failure, or with a high resting heart rate — target resting HR 55–60). OR a rate-limiting CCB: diltiazem MR 90 mg BD → 360 mg/day, or verapamil (in asthma or beta-blocker intolerance). <b>OR amlodipine 5 → 10 mg</b>, which also treats blood pressure","Review at 2–4 weeks. \"Failed\" at half dose is not failed — titrate before judging. Not tolerated → switch to the other class rather than combining"],
+         ["<b>Step 2 — combine: beta-blocker + dihydropyridine CCB</b>","Beta-blocker plus amlodipine or felodipine — the ONLY safe routine combination","NEVER beta-blocker + verapamil (absolute). Avoid beta-blocker + diltiazem — specialist only. Bradycardia and asystole risk. Check ankles for amlodipine oedema — switch to lercanidipine rather than abandoning the class"],
+         ["<b>Step 3 — third agent, chosen by phenotype</b>","<b>Isosorbide mononitrate MR 25–60 mg ONCE daily in the MORNING</b> — the once-daily MR dosing IS the nitrate-free interval; BD dosing without an asymmetric gap breeds tolerance and a useless drug","<b>Do not add a third agent if symptoms are controlled on two</b>"],
+         ["<b>Ivabradine</b>","<b>2.5–5 → 7.5 mg BD</b>","Sinus rhythm with resting HR ≥70 only. NEVER with verapamil or diltiazem (MHRA)"],
+         ["<b>Ranolazine</b>","<b>375 → 750 mg BD</b>","No heart-rate or blood-pressure effect — the low-BP or bradycardic patient's friend. QT prolongation and interaction caution"],
+         ["<b>Nicorandil</b>","<b>10 → 20 mg BD</b>","MHRA: GI, skin and eye ULCERATION — mouth ulcers mean stop the drug, they do not heal through treatment. <b>Same PDE5-inhibitor ban as nitrates</b>"],
+         ["<b>Refer for revascularisation assessment</b>","<b>Limiting symptoms despite two optimised agents</b>","PCI/CABG is for SYMPTOM control. In stable angina PCI does not reduce MI or death (ISCHEMIA, ORBITA). CABG has prognostic benefit in left-main and complex three-vessel disease, especially with diabetes"]
+       ]},
+       {b:"warn", html:"Never stop a beta-blocker abruptly — rebound tachycardia precipitates ACS. Taper over 1–2 weeks. And in the multimorbid patient, one drug doing two jobs beats polypharmacy: bisoprolol covers angina and heart failure (and in heart failure, diltiazem and verapamil are avoided entirely); amlodipine covers angina and hypertension. See <a href='heart-failure.html'>heart failure</a> and <a href='hypertension.html'>hypertension</a>."}
+     ]},
+
+    {id:"prevention", nav:"Survival", title:"The prevention bundle — the part that stops the infarct",
+     blocks:[
+       {b:"table", head:["Drug","Dose","Notes"], rows:[
+         ["<b>Aspirin</b>","<b>75 mg OD, lifelong</b>","<b>Clopidogrel 75 mg if intolerant or allergic.</b> PPI cover where there is GI risk — see <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a>"],
+         ["<b>Atorvastatin</b>","<b>80 mg — the secondary-prevention dose</b>","Target LDL ≤2.0 or non-HDL ≤2.6 (NG238). Not met → add ezetimibe 10 mg. Still not met → the injectable pathway (inclisiran or a PCSK9 inhibitor) per local criteria"],
+         ["<b>ACE inhibitor</b>","<b>Ramipril titrated to 10 mg</b>","Where there is diabetes, hypertension, CKD or any LV dysfunction — most angina patients qualify for one reason or another"],
+         ["<b>Blood pressure and diabetes to target</b>","<b>Per their own protocols</b>","Every mmHg and every mmol counts double in established coronary disease"],
+         ["<b>Vaccination</b>","<b>Influenza annually, plus pneumococcal</b>","<b>MI risk spikes after influenza — the forgotten prevention drug</b>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"🚭 Smoking is the biggest single modifiable risk", html:"<b>Cessation support at every contact.</b> <b>Risk halves within a year of stopping</b> — a figure worth saying out loud, because it beats anything on the prescription."},
+         {tone:"green", h:"🏃 Exercise to the edge of the pain, not through it", html:"Regular activity within symptoms is protective and raises the anginal threshold. <b>Cardiac rehabilitation after MI or revascularisation.</b>"},
+         {tone:"green", h:"🥗 Diet and weight", html:"<b>A Mediterranean pattern has post-MI trial evidence (Lyon Diet Heart).</b> Weight loss lowers myocardial demand."},
+         {tone:"amber", h:"🧠 Mood is a cardiac risk factor", html:"Depression roughly doubles post-event mortality and destroys adherence. <b>Screen and treat — sertraline is the cardiac-safe choice.</b> See <a href='depression.html'>depression</a>."},
+         {tone:"blue", h:"❄️ Plan around the triggers", html:"<b>Cold mornings, heavy meals, unaccustomed exertion.</b> GTN before the trigger, a scarf over the mouth in winter."},
+         {tone:"purple", h:"🚗 DVLA", html:"Group 1 (car, motorcycle): no notification needed, but the patient MUST stop driving if symptoms occur at rest, with emotion, or at the wheel — and may resume when controlled. Group 2 (bus, coach, lorry): must notify the DVLA and is disqualified until symptom-free and a functional test is passed. Record the advice."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"The review — both tracks, every time",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Symptom track — frequency, CCS class, GTN sprays per week</b>","<b>Every review, and 2–4 weeks after any change</b>","Creeping GTN use means escalate the ladder — rising rescue use is the earliest warning, exactly as in asthma"],
+         ["<b>Pattern check</b>","<b>Every contact</b>","Less predictable? Lower threshold? Rest symptoms? → unstable → same-day or 999, not a routine titration"],
+         ["<b>Heart rate and blood pressure</b>","<b>At each titration</b>","<b>Beta-blocker target resting HR 55–60.</b> Hypotension limiting titration is the ranolazine niche"],
+         ["<b>Prevention track — lipids</b>","<b>3 months after any statin change, then annually</b>","<b>Non-HDL reduction ≥40%, or LDL ≤2.0. Not met → ezetimibe → injectables</b>"],
+         ["<b>Adherence to BOTH tracks</b>","<b>Every review</b>","<b>The comfortable patient off their statin is the one who infarcts</b>"],
+         ["<b>Annual bundle</b>","<b>Once a year</b>","Lipids, HbA1c, blood pressure, smoking, weight, mood, GTN technique with 5-5-999 recall, and the DVLA position if Group 2"]
+       ]},
+       {b:"say", html:"You have two kinds of medicine and they do completely different jobs. The spray and the daily heart tablets are for comfort — they stop the pain. The aspirin and the statin are the life-savers — they stop the heart attack — and they only work if you keep taking them, especially on the days you feel completely well. And one rule to remember cold: pain that does not settle after two sprays and fifteen minutes is a 999 call, not a wait-and-see."},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999", html:"\"Pain still there fifteen minutes and two sprays later — 999. Pain at rest, or pain that is coming more often or more easily — contact us the same day.\""},
+         {tone:"amber", h:"🟠 Using the spray more often?", html:"\"If you are reaching for the spray more than you used to, tell me — that is the earliest sign things need adjusting, and I would rather know early.\""},
+         {tone:"blue", h:"💊 Never stop the beta-blocker suddenly", html:"\"If you want to come off the heart-rate tablet, come and see me — stopping it suddenly can bring on a heart attack. We reduce it over a week or two.\""},
+         {tone:"green", h:"✓ About a stent", html:"\"A stent would be to make you more comfortable. In stable angina it does not reduce your risk of a heart attack — the tablets do that. Both are reasonable choices, but that is the honest trade-off.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — 999", html:"Pain at rest or unrelieved after 15 minutes and two GTN doses · crescendo angina · chest pain with syncope or haemodynamic compromise · chest pain within 24 hours of a PDE5 inhibitor (48 hours for tadalafil), where GTN is contraindicated."},
+         {tone:"amber", h:"Rapid-access chest pain clinic", html:"New-onset suspected angina, for CT coronary angiography as the first-line investigation (CG95)."},
+         {tone:"amber", h:"Cardiology — revascularisation assessment", html:"<b>Limiting symptoms despite two optimised anti-anginal agents.</b> <b>Frame it as symptom control, not survival</b> — except where the anatomy shows left-main or complex three-vessel disease, which is what the assessment is for."},
+         {tone:"blue", h:"Echocardiography", html:"<b>Murmur, heart-failure signs, or previous MI.</b> Aortic stenosis is the mimic that changes management completely."},
+         {tone:"green", h:"Cardiac rehabilitation", html:"<b>After MI or revascularisation</b> — and worth asking about in anyone whose activity has collapsed through fear of the pain."},
+         {tone:"cream", h:"GP management", html:"Diagnosis routing, GTN teaching, the whole anti-anginal ladder, the prevention bundle, amplifier hunting, DVLA advice and the two-track review all belong here. Related pages: <a href='hypercholesterolaemia.html'>lipid management</a> · <a href='hypertension.html'>hypertension</a> · <a href='heart-failure.html'>heart failure</a> · <a href='atrial-fibrillation.html'>atrial fibrillation</a> · <a href='mi-secondary-prevention.html'>post-MI secondary prevention</a> · <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 64-year-old man with stable angina attends for review. He is on <b>bisoprolol 2.5 mg</b> and <b>atorvastatin 80 mg</b>, and uses his GTN <b>\"three or four times a week now, it used to be once a fortnight\"</b>. He walks more slowly to avoid the pain. He mentions, unprompted and awkwardly, that he has been <b>buying sildenafil online</b>. His resting heart rate is 78 and BP 138/82."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Recognises rising GTN use as the key finding</b> and asks whether the pattern is still predictable — distinguishing escalation from instability; addresses the sildenafil immediately and non-judgementally: the 24-hour nitrate ban, and that chest pain in that window means 999 rather than GTN; notes bisoprolol is at 2.5 mg with a resting HR of 78 — the drug is NOT failed, it is untitrated, and increases it toward a target of 55–60; <b>checks the statin is actually being taken and the lipid target met</b>; <b>hunts the amplifier — FBC for anaemia, TFTs, ECG for new AF</b> — before assuming disease progression; <b>re-teaches the 5-5-999 rule and checks recall</b>; <b>addresses activity avoidance</b> — exercise to the edge of the pain, not through it; <b>gives DVLA advice</b>; and <b>explains the two tracks explicitly</b>, so the survival drugs are not mistaken for the comfort ones."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG126 — Stable angina: management</b><br><a href="https://www.nice.org.uk/guidance/cg126" rel="noopener">nice.org.uk/guidance/cg126</a><span class="rd"> — beta-blocker or calcium-channel blocker first-line and titrated to maximum, the safe and unsafe combinations, the third-line agents, and revascularisation for symptom control</span></li>'+
+         '<li><b>NICE CG95 — Recent-onset chest pain of suspected cardiac origin</b><br><a href="https://www.nice.org.uk/guidance/cg95" rel="noopener">nice.org.uk/guidance/cg95</a><span class="rd"> — the three-point definition of typical angina and CT coronary angiography as the first-line investigation</span></li>'+
+         '<li><b>NICE NG238 — Cardiovascular disease: lipid modification</b><span class="rd"> — atorvastatin 80 mg for secondary prevention, the LDL ≤2.0 and non-HDL ≤2.6 targets, and ezetimibe then injectable escalation</span></li>'+
+         '<li><b>ISCHEMIA (2020) and ORBITA (2018)</b><span class="rd"> — PCI in stable angina improves symptoms but does not reduce myocardial infarction or death, which is the basis of the honest revascularisation conversation</span></li>'+
+         '<li><b>MHRA Drug Safety Updates</b><span class="rd"> — nicorandil and gastrointestinal, skin and eye ulceration; ivabradine contraindicated with verapamil or diltiazem; the nitrate and PDE5-inhibitor interaction</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — Group 1 requires no notification but driving must stop if symptoms occur at rest, with emotion or at the wheel; Group 2 requires notification and disqualification until symptom-free with a passed functional test</span></li>'+
+         '<li><b>Lyon Diet Heart Study</b><span class="rd"> — the Mediterranean dietary pattern evidence referenced in the prevention bundle</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Stable angina — NICE CG126, CG95, NG185 and NG238. Two tracks that must never be confused: anti-anginals relieve symptoms and do not prevent infarction; aspirin and the statin prevent infarction and do nothing for the pain. Teach the GTN 5-5-999 rule and ask every patient about PDE5 inhibitors — no sildenafil within 24 hours of any nitrate, 48 for tadalafil, and the same applies to nicorandil. Never combine a beta-blocker with verapamil, and never stop a beta-blocker abruptly. Titrate to maximum before calling a drug failed. In stable angina PCI is for symptoms, not survival. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

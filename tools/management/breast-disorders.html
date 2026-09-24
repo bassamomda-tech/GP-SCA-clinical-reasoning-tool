@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Benign breast disorders — Protocol · Reasoning GP</title>
+<meta name="description" content="Benign breast disorders in primary care: the NG12 thresholds that decide referral, mastalgia managed without danazol, fibroadenoma and cysts, the nipple discharge features that matter, galactorrhoea and prolactin, gynaecomastia and its drug causes, and what triple assessment actually involves." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/breast-disorders.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Benign breast disorders protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🎀",
+  title:"Benign breast disorders — the complete guide",
+  eyebrow:"Protocol · NICE NG12 · NICE · the referral threshold is the symptom, not your impression",
+  stemTitle:"Almost every breast consultation is benign, and the whole clinical skill is applying the NG12 threshold without letting reassurance suppress the referral",
+  stemSub:"For suspected cancer, use the <a href='breast-cancer.html'>breast cancer protocol</a>; for lactational infection, the <a href='mastitis-breast-abscess.html'>mastitis and breast abscess protocol</a>. This page is everything else: mastalgia and why danazol has fallen out of use, fibroadenoma and cysts, the nipple-discharge features that change the plan, galactorrhoea and when to check prolactin, gynaecomastia and its drug causes, and what triple assessment actually means so you can explain it. The NG12 criteria are age- and sign-based and are not modified by how benign the history sounds — that is the single discipline this topic demands.",
+  guideline:"NICE NG12 · local breast-unit pathway",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE NG12 — suspected cancer: recognition and referral"},
+    {t:"Local breast-unit triple-assessment pathway"},
+    {t:"30+ unexplained breast lump → 2WW", tone:"tw"},
+    {t:"50+ nipple change or discharge, one side → 2WW", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>NG12</b><small>The thresholds</small></a><a href="#pain"><b>Mastalgia</b><small>Cyclical vs not</small></a><a href="#lumps"><b>Lumps</b><small>Fibroadenoma · cysts</small></a><a href="#nipple"><b>Nipple</b><small>Discharge · galactorrhoea</small></a><a href="#men"><b>Men</b><small>Gynaecomastia</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"purple", h:"🟣 NICE NG12 — the thresholds, verbatim", html:"Refer on a 2-week-wait suspected cancer pathway: aged 30 and over with an unexplained breast lump with or without pain; aged 50 and over with discharge from, retraction of, or other concerning changes in ONE nipple. CONSIDER 2WW referral for skin changes suggestive of breast cancer at any age, and for an unexplained lump in the AXILLA aged 30 and over. <b>Consider non-urgent referral for an unexplained breast lump under 30.</b>"},
+    {tone:"red", h:"⚠ The presentations that are cancer until proven otherwise", html:"Peau d'orange, skin tethering or dimpling, fixed or hard irregular lump, new nipple inversion or retraction, or an eczematous nipple that does not resolve with a short course of topical steroid — the last is Paget's disease of the nipple. An inflamed breast that does not settle after one antibiotic course in a non-lactating woman is inflammatory breast cancer until excluded — do not prescribe a second course, refer."},
+    {tone:"blue", h:"Mastalgia — reassurance, a bra, and time", html:"Cyclical breast pain is not a cancer symptom on its own and needs no imaging in the absence of other findings. First-line: a properly fitted supportive bra (including at night if severe), simple analgesia, and a topical NSAID such as diclofenac gel applied to the painful area. A pain diary over 2–3 cycles distinguishes cyclical from non-cyclical and is itself therapeutic — it shows the woman the pattern. Most settles within a few cycles."},
+    {tone:"amber", h:"Danazol is a last resort, not a step", html:"Danazol and tamoxifen are effective in refractory mastalgia but are specialist-initiated, and danazol's androgenic effects (weight gain, acne, hirsutism, voice change — which can be irreversible) mean it is now rarely used. Effective contraception is mandatory with both — danazol is teratogenic. Evening primrose oil is no longer recommended: the evidence does not support it."},
+    {tone:"green", h:"Fibroadenoma and cysts — what to tell her", html:"Fibroadenoma: smooth, firm, highly mobile (\"breast mouse\"), commonest under 30. Confirmed on triple assessment, then usually left alone — most stay stable or shrink, and excision is for size, growth or patient preference. Cysts: smooth, sometimes tender, fluctuate with the cycle, commonest 35–50 and perimenopausally. Aspiration is both diagnostic and curative — but bloodstained aspirate, a residual mass after aspiration, or rapid refilling all need urgent referral."},
+    {tone:"blue", h:"Discharge: the four features that change the plan", html:"Reassuring: bilateral, multi-duct, expressed only on squeezing, milky or green-brown, in a woman under 50. Concerning: UNILATERAL, SINGLE-DUCT, SPONTANEOUS (staining clothes or bedding), and blood-stained or serous. Any of those four in combination, or any discharge at 50 and over, warrants referral. Blood-stained single-duct discharge is most often an intraductal papilloma — benign — but is investigated as cancer until proven."}
+  ],
+  pathwaySub:"Five steps. The first one is a threshold, not a judgement.",
+  pathway:[
+    {title:"Apply the NG12 criteria before anything else", html:"Age 30+ with an unexplained lump · age 50+ with unilateral nipple change or discharge · skin changes at any age · unexplained axillary lump at 30+. These are age- and sign-based and do not bend to a benign-sounding history.", alert:true},
+    {title:"Characterise the presentation", html:"Pain (cyclical or not) · lump (mobile, smooth, hard, fixed) · nipple (discharge, inversion, skin change) · male breast enlargement. Examine both breasts and both axillae, and document what you found and where."},
+    {title:"Treat the benign cause on its own terms", html:"Mastalgia: bra, analgesia, topical NSAID, diary. Fibroadenoma: confirm and reassure. Cyst: aspirate. Physiological gynaecomastia: reassure and review. Drug-induced gynaecomastia: change the drug."},
+    {title:"Investigate where the cause is systemic", html:"Galactorrhoea → pregnancy test, prolactin, TFTs, drug review, and consider macroprolactin. Gynaecomastia → LFTs, U&amp;Es, TFTs, testosterone, LH, hCG and oestradiol where pathological features are present."},
+    {title:"Safety-net explicitly, and mean it", html:"\"If this changes, grows, becomes hard or fixed, or the skin or nipple changes, come back — a normal assessment today does not cover a new change tomorrow.\" Document that you said it."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"NG12", title:"The referral thresholds, and the red flags",
+     sub:"The commonest error in this topic is a correct benign diagnosis that displaces a required referral.",
+     blocks:[
+       {b:"table", head:["Presentation","Threshold","Action"], rows:[
+         ["<b>Unexplained breast lump, aged 30 and over</b>","<b>NG12 — with or without pain</b>","<b>2-week-wait suspected cancer referral.</b> \"Unexplained\" means no obvious benign cause on assessment; it does NOT mean you think it is sinister"],
+         ["Unilateral nipple discharge, retraction or other concerning change, aged 50 and over","<b>NG12</b>","<b>2-week-wait referral</b>"],
+         ["<b>Skin changes suggestive of breast cancer — any age</b>","<b>NG12 \"consider\"</b>","<b>Consider 2WW.</b> Peau d'orange, tethering, dimpling, ulceration, nipple eczema not resolving"],
+         ["<b>Unexplained axillary lump, aged 30 and over</b>","<b>NG12 \"consider\"</b>","<b>Consider 2WW</b> — axillary nodes are part of the breast examination, not an afterthought"],
+         ["<b>Unexplained breast lump under 30</b>","<b>NG12 \"consider\"</b>","<b>Consider non-urgent referral.</b> Most are fibroadenomas, but a lump still needs assessment rather than reassurance alone"],
+         ["Eczematous, scaly or ulcerated nipple not resolving with a short topical steroid course","<b>Paget's disease of the nipple</b>","<b>2WW referral. Do not keep treating it as eczema</b> — the classic history is months of topical steroid before referral"],
+         ["Inflamed breast not settling after ONE antibiotic course, especially in a non-lactating woman","<b>Inflammatory breast cancer</b>","<b>Refer urgently rather than prescribing a second course.</b> See <a href='mastitis-breast-abscess.html'>mastitis and breast abscess</a>"],
+         ["Male, unilateral, hard or eccentric breast lump, fixed, with skin or nipple change or axillary nodes","<b>Male breast cancer</b>","<b>2WW referral. Male breast cancer is uncommon but real</b>, and it is missed because the presentation is assumed to be gynaecomastia"],
+         ["<b>Breast lump in pregnancy or lactation</b>","<b>Same thresholds apply</b>","<b>Do not defer assessment to after delivery or weaning.</b> Ultrasound is the first-line imaging and is safe"]
+       ]},
+       {b:"warn", html:"The discipline this topic demands is that the NG12 criteria are thresholds, not prompts for judgement. A 34-year-old with a smooth mobile lump that is almost certainly a fibroadenoma still meets the 30-and-over criterion, and the referral is still made — triple assessment is how \"almost certainly\" becomes \"confirmed\". The failure mode is a confident benign diagnosis in the room substituting for the pathway, and it is the reason this page leads with the thresholds rather than the conditions."},
+       {b:"say", html:"What you are describing sounds very likely to be a benign lump, and most lumps in women your age are. But the rule we follow is based on your age and on finding a lump at all — not on how confident I feel — so I am going to refer you to the breast clinic on the two-week pathway. I want to be straightforward with you: that pathway is called an urgent suspected cancer referral, and seeing that letter is alarming. It does not mean I think you have cancer. It means the clinic can do the scan, the examination and, if needed, a biopsy all in one visit, which is the fastest way to give you a definite answer rather than my impression."}
+     ]},
+
+    {id:"pain", nav:"Mastalgia", title:"Breast pain",
+     blocks:[
+       {b:"table", head:["Type","Features","Management"], rows:[
+         ["<b>Cyclical mastalgia</b>","Bilateral, diffuse, often upper outer quadrants, worse in the days before menstruation, eases with the period. Typically 30s–40s","A properly fitted supportive bra — worn at night too if severe — simple analgesia, and a topical NSAID (diclofenac gel) to the painful area. <b>A pain diary over 2–3 cycles confirms the pattern and reassures</b>. Reduce caffeine if the woman finds it helps, though the evidence is weak. Most improves within a few cycles"],
+         ["<b>Non-cyclical mastalgia</b>","Unrelated to the cycle, often unilateral and localised. Any age; commoner after 40","Look for a cause: musculoskeletal chest wall pain (Tietze's, costochondritis — reproduced by pressing the chest wall, not the breast tissue), a large or unsupported bust, previous surgery, or duct ectasia. Treat the cause; topical NSAID; analgesia"],
+         ["<b>Chest wall (extramammary) pain</b>","Reproducible on palpating the chest wall with the breast lifted away; sharp, localised, worse on movement","Reassure explicitly — women assume any pain in that area is breast pain. Topical NSAID and analgesia"],
+         ["<b>Drug-associated breast pain</b>","Combined hormonal contraception, HRT, some antidepressants and antipsychotics","<b>Review the drug and consider a change or dose adjustment</b> — see <a href='hrt-prescribing.html'>HRT</a> and <a href='contraception.html'>contraception</a>"],
+         ["<b>Refractory, disabling pain after 3–6 months of first-line measures</b>","<b>Significantly affecting sleep, work or relationships</b>","Refer to a breast clinic. Danazol and tamoxifen are effective but specialist-initiated — see the card below"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"⚠ Danazol and tamoxifen", html:"<b>Both work in refractory mastalgia; both are specialist-initiated.</b> Danazol's androgenic effects — weight gain, acne, hirsutism and voice deepening, which may be irreversible — mean it is now rarely used. Effective non-hormonal contraception is mandatory with both; danazol is teratogenic. Tamoxifen is off-label for this indication."},
+         {tone:"red", h:"⛔ Evening primrose oil is not recommended", html:"Once routinely advised, now withdrawn from recommendation — the trial evidence does not support benefit over placebo. Say so directly if she is already buying it, and redirect the effort to the bra and the diary."},
+         {tone:"blue", h:"👚 The bra is the intervention, not the consolation", html:"A properly fitted supportive bra is the single most effective first-line measure, and most women are wearing the wrong size. <b>Fitting is free in most department stores</b> — a specific, actionable instruction that outperforms \"try painkillers\"."},
+         {tone:"green", h:"✓ What to say about prognosis", html:"\"Cyclical breast pain settles on its own in most women within a few cycles, and it is not a sign of cancer.\" Pain alone, with a normal examination and no other features, is not a referral criterion — and saying that plainly is most of the treatment."}
+       ]}
+     ]},
+
+    {id:"lumps", nav:"Lumps", title:"Discrete lumps and lumpiness",
+     blocks:[
+       {b:"table", head:["Diagnosis","Features","Management"], rows:[
+         ["<b>Fibroadenoma</b>","Smooth, firm, well-defined, highly mobile — the \"breast mouse\". Commonest under 30; may enlarge in pregnancy","Refer for triple assessment to confirm. Once confirmed, most are left alone — they stay stable or regress. Excision for size, documented growth, or patient preference"],
+         ["<b>Breast cyst</b>","Smooth, sometimes tender, can appear suddenly, fluctuates with the cycle. Commonest 35–50 and perimenopausally","<b>Aspiration is diagnostic and therapeutic.</b> Refer urgently if the aspirate is blood-stained, a mass remains after aspiration, or the cyst refills rapidly"],
+         ["<b>Fibrocystic change (benign breast change)</b>","Generalised nodularity and lumpiness, often bilateral, cyclical tenderness","Reassure; manage as cyclical mastalgia. Examine at a different point in the cycle if uncertain. Any DISCRETE dominant lump within general lumpiness is assessed on its own merits"],
+         ["<b>Fat necrosis</b>","Firm, sometimes tethered or with skin dimpling — mimics cancer closely. History of trauma, surgery or seatbelt injury, though the trauma is often not recalled","Refer — it cannot be distinguished clinically from carcinoma and needs triple assessment. A plausible history of trauma does not lower the threshold"],
+         ["<b>Lipoma</b>","<b>Soft, mobile, slow-growing</b>","Reassure once confirmed; refer if uncertain or if growing"],
+         ["<b>Galactocele</b>","<b>Smooth, milk-filled cyst during or after lactation</b>","<b>Usually resolves; aspiration if symptomatic.</b> See <a href='mastitis-breast-abscess.html'>mastitis and breast abscess</a>"],
+         ["<b>Phyllodes tumour</b>","<b>Rapidly enlarging, fibroadenoma-like, typically 40s–50s</b>","Urgent referral — behaviour ranges from benign to malignant and excision is required. A \"fibroadenoma\" that is growing quickly is not one"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>What triple assessment actually is</b>","Clinical examination + imaging (ultrasound under 40, mammography with or without ultrasound at 40 and over) + needle biopsy (core biopsy, or fine-needle aspiration cytology) — all at one visit. <b>Explain this to the patient in advance:</b> knowing she will likely have a scan and possibly a needle test the same day, and may get preliminary results, converts a frightening letter into a manageable appointment"],
+         ["<b>Why ultrasound in the young</b>","Dense breast tissue makes mammography poorly sensitive under 40, so ultrasound is first-line. Worth saying, because patients often expect a mammogram and read its absence as being taken less seriously"]
+       ]}
+     ]},
+
+    {id:"nipple", nav:"Nipple", title:"Nipple discharge, galactorrhoea and nipple change",
+     blocks:[
+       {b:"table", head:["Finding","Meaning","Action"], rows:[
+         ["Bilateral, multi-duct, expressed only on squeezing, milky or green-brown, under 50","<b>Physiological or duct ectasia</b>","<b>Reassure; advise stopping expression, which perpetuates it.</b> Duct ectasia is common perimenopausally and around smoking"],
+         ["<b>UNILATERAL, SINGLE-duct, SPONTANEOUS, blood-stained or serous</b>","<b>Intraductal papilloma (commonest), duct ectasia, or carcinoma</b>","Refer. Blood-stained single-duct discharge is investigated as cancer until proven otherwise, even though the usual answer is a benign papilloma"],
+         ["<b>Any nipple discharge at 50 and over, one side</b>","<b>NG12 threshold met</b>","<b>2-week-wait referral</b>"],
+         ["Milky discharge, both breasts, not related to pregnancy or breastfeeding","<b>Galactorrhoea</b>","<b>Pregnancy test first, then prolactin, TFTs and a careful drug review.</b> See the galactorrhoea card below"],
+         ["<b>New nipple inversion or retraction</b>","<b>Malignancy until excluded</b> — distinguish from long-standing congenital inversion","<b>Refer. Ask how long it has been present and whether it is new</b>"],
+         ["<b>Eczematous or scaly nipple and areola</b>","<b>Eczema, or Paget's disease of the nipple</b>","A short course of topical steroid is reasonable — but if it does not clear promptly, refer on a 2WW. Paget's typically starts at the nipple and spreads to the areola; eczema usually does the reverse"]
+       ]},
+       {b:"cards", items:[
+         {tone:"blue", h:"🔬 Galactorrhoea — what to check", html:"Pregnancy test · serum prolactin (with macroprolactin if raised — macroprolactin is biologically inactive and a common cause of a spuriously high result) · TFTs, since hypothyroidism raises prolactin · and a drug review. Repeat a mildly raised prolactin before acting — venepuncture stress, exercise and recent breast examination all raise it. See <a href='hyperprolactinaemia.html'>hyperprolactinaemia</a>."},
+         {tone:"amber", h:"💊 Drugs that cause galactorrhoea", html:"Antipsychotics (especially risperidone, amisulpride, haloperidol), metoclopramide and domperidone, SSRIs, tricyclics, opioids, methyldopa, verapamil, cimetidine and combined hormonal contraception. <b>A drug cause is far commoner than a prolactinoma</b> — review the list before ordering imaging."},
+         {tone:"red", h:"⛔ Prolactin very high, or with visual field loss or headache", html:"A markedly raised prolactin, or any prolactin elevation with headache or visual field defect, needs urgent endocrine referral and pituitary imaging — macroprolactinoma. Test visual fields by confrontation in the room."},
+         {tone:"green", h:"✓ Stopping expression", html:"Repeated checking and squeezing maintains physiological discharge through nipple stimulation. <b>Telling a woman to stop expressing it is often the entire treatment</b> — and explaining the mechanism makes the advice stick."}
+       ]}
+     ]},
+
+    {id:"men", nav:"Men", title:"Gynaecomastia",
+     sub:"True glandular tissue, not fat — and the drug history is the highest-yield part of the consultation.",
+     blocks:[
+       {b:"table", head:["Situation","Assessment","Management"], rows:[
+         ["<b>Physiological — neonatal, pubertal, or elderly</b>","Pubertal gynaecomastia is very common and usually resolves within 1–2 years. In older men, falling testosterone and rising adiposity (peripheral aromatisation) explain most cases","Reassure and review. In adolescents, explicit reassurance plus a review date is better than investigation"],
+         ["<b>Drug-induced — the commonest identifiable cause</b>","Spironolactone, digoxin, cimetidine, PPIs, finasteride and dutasteride, antipsychotics, some antiretrovirals, calcium-channel blockers, ketoconazole, anabolic steroids, alcohol, cannabis and opioids","Review every drug before investigating. Stop or switch the culprit where possible and reassess in 3 months"],
+         ["<b>Pathological — with pathological features</b>","Rapid onset, painful, large, unilateral, or with testicular abnormality, weight loss or systemic upset","Investigate: LFTs, U&amp;Es, TFTs, testosterone, LH, hCG, oestradiol; examine the testes and refer. <b>hCG matters — a testicular tumour can present as gynaecomastia</b>"],
+         ["<b>Pseudogynaecomastia</b>","Fat without glandular tissue — no firm disc beneath the areola on palpation","<b>Weight management; no breast investigation needed.</b> Distinguishing it by examination avoids an unnecessary pathway"],
+         ["<b>Suspected male breast cancer</b>","Unilateral, hard or eccentric to the nipple, fixed, skin or nipple change, axillary nodes","<b>2WW referral.</b> The reason male breast cancer is missed is that male breast enlargement is assumed benign — examine for the distinguishing features rather than assuming"],
+         ["<b>Persistent, distressing or long-standing</b>","Present over 12 months, fibrotic, or causing significant psychological distress","Refer — medical therapy is ineffective once fibrosis is established, and surgery is the option. Address the psychological impact directly; it is frequently significant and rarely volunteered"]
+       ]},
+       {b:"why", html:"Gynaecomastia is a hormonal sign, not a breast disease: it reflects a relative excess of oestrogen over androgen effect at the breast. That is why the drug list is long and varied — the drugs act at different points on that balance — and why the drug review outperforms any blood test as a first step. It is also why examination matters: distinguishing true glandular tissue from fat, and a central symmetrical disc from an eccentric hard lump, separates three completely different pathways in under a minute."}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review and safety-netting",
+     blocks:[
+       {b:"table", head:["Situation","Review"], rows:[
+         ["<b>Cyclical mastalgia</b>","Review after 2–3 cycles with the pain diary. Refer if severe and refractory after 3–6 months of first-line measures"],
+         ["<b>Benign lump confirmed on triple assessment</b>","No routine follow-up needed — but safety-net for change in size, consistency, skin or nipple"],
+         ["<b>Cyst aspirated</b>","Review for refilling; urgent referral if it refills rapidly, a mass remains, or the aspirate was blood-stained"],
+         ["<b>Galactorrhoea on a drug</b>","<b>Reassess 3 months after changing the drug; recheck prolactin</b>"],
+         ["<b>Gynaecomastia, drug-related or physiological</b>","Review at 3 months. Refer if progressive, over 12 months' duration, or distressing"],
+         ["<b>Anyone reassured without referral</b>","Document the examination findings, the reassurance given, and the explicit safety-net advice"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Come back promptly", html:"\"If the lump grows, becomes hard or fixed, if the skin dimples or puckers, if the nipple turns in or changes, or if you get blood-stained discharge from one side — come back straight away, even if you were reassured recently.\""},
+         {tone:"amber", h:"🟠 Breast screening continues regardless", html:"A benign diagnosis does not exempt anyone from the NHS Breast Screening Programme — 50 to 71, every 3 years, with self-referral thereafter. Check she is in the system."},
+         {tone:"blue", h:"💊 Before the clinic appointment", html:"\"They will examine you, scan you, and if there is anything to sample they will do a needle test the same day. You may get some results before you leave.\" Knowing the shape of the visit reduces the fear of the letter."},
+         {tone:"green", h:"✓ Breast awareness, not self-examination", html:"The advice is to know what is normal for you and report change — not a prescribed monthly technique, which raises anxiety without improving outcomes."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW · NICE NG12", html:"Aged 30 and over with an unexplained breast lump, with or without pain. Aged 50 and over with discharge from, retraction of, or other concerning change in ONE nipple. CONSIDER 2WW for skin changes suggestive of breast cancer at any age, and for an unexplained axillary lump aged 30 and over. Also: non-resolving nipple eczema (Paget's), a non-settling inflamed breast, and suspected male breast cancer."},
+         {tone:"amber", h:"Urgent breast clinic (non-2WW)", html:"Blood-stained or residual mass after cyst aspiration, rapidly refilling cyst, rapidly enlarging fibroadenoma-like lump (phyllodes), or suspected fat necrosis."},
+         {tone:"blue", h:"Routine breast clinic", html:"Unexplained lump under 30 · refractory mastalgia after 3–6 months of first-line treatment · persistent or distressing gynaecomastia · diagnostic uncertainty."},
+         {tone:"blue", h:"Endocrinology", html:"Markedly raised prolactin, prolactin elevation with headache or visual field loss, or unexplained pathological gynaecomastia with abnormal hormone results. See <a href='hyperprolactinaemia.html'>hyperprolactinaemia</a>."},
+         {tone:"green", h:"Genetics", html:"Significant family history — multiple affected relatives, young age at diagnosis, bilateral disease, male breast cancer in the family, or known BRCA. See <a href='breast-cancer.html'>breast cancer</a> for the full criteria."},
+         {tone:"cream", h:"GP management", html:"Mastalgia, confirmed fibroadenoma, fibrocystic change, physiological and drug-induced galactorrhoea, physiological and drug-induced gynaecomastia, and the reassurance and safety-netting around all of them. Related pages: <a href='breast-cancer.html'>breast cancer</a> · <a href='mastitis-breast-abscess.html'>mastitis and breast abscess</a> · <a href='hyperprolactinaemia.html'>hyperprolactinaemia</a> · <a href='hrt-prescribing.html'>HRT</a> · <a href='contraception.html'>contraception</a> · <a href='../algorithms/mastalgia.html'>breast pain pathway</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 34-year-old woman has noticed a <b>smooth, mobile, non-tender lump</b> in the upper outer quadrant of her left breast, present about 6 weeks and unchanged. No skin or nipple change, no discharge, no family history. She is <b>certain it is \"just hormonal\"</b> because it was more noticeable before her period, and opens by saying she <b>does not want to waste anyone's time</b> and would rather just be reassured. She has a 2-year-old and is worried about childcare for appointments."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Examines both breasts and both axillae and documents the findings</b>; recognises that the NG12 criterion is met at 30 and over with an unexplained lump regardless of how benign it sounds, and does not let her reassurance-seeking or her own confidence displace the referral; <b>explains WHY she is being referred without frightening her</b> — that the rule is age- and sign-based, not a judgement that this is cancer; <b>names the pathway honestly as an urgent suspected cancer referral</b> rather than letting her discover it from the letter; <b>describes what triple assessment involves</b>, including that it is one visit with scan and possibly a needle test, which addresses the childcare concern directly; <b>explains ultrasound rather than mammography at her age</b>; <b>gives explicit safety-net advice</b>; and <b>addresses the \"wasting time\" belief directly</b>, since it is the reason women present late."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the 30-and-over unexplained breast lump criterion, the 50-and-over unilateral nipple change criterion, and the "consider" criteria for skin changes at any age, unexplained axillary lump at 30 and over, and non-urgent referral for a lump under 30</span></li>'+
+         '<li><b>Clinical consensus — breast pain (no dedicated UK guideline)</b><span class="rd"> — the supportive-bra and topical NSAID first-line, the pain diary over 2–3 cycles, the withdrawal of evening primrose oil from recommendation, and the specialist-only status of danazol and tamoxifen with the androgenic and teratogenicity cautions</span></li>'+
+         '<li><b>NICE NG12 and local breast-unit pathways — breast lump · gynaecomastia</b><span class="rd"> — fibroadenoma and cyst management, cyst aspiration and its urgent-referral triggers, the drug list for gynaecomastia, and the hormonal investigation set</span></li>'+
+         '<li><b>Association of Breast Surgery — guidance on triple assessment</b><span class="rd"> — clinical examination plus imaging (ultrasound under 40, mammography ± ultrasound at 40 and over) plus needle biopsy at a single visit</span></li>'+
+         '<li><b>NHS Breast Screening Programme</b><br><a href="https://www.nhs.uk/conditions/breast-screening-mammogram/" rel="noopener">nhs.uk — breast screening</a><span class="rd"> — routine invitation 50 to 71 every 3 years, self-referral thereafter</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — danazol and tamoxifen cautions, and the drug causes of galactorrhoea and gynaecomastia</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Benign breast disorders — NICE NG12, NICE and ABS guidance. The NG12 criteria are thresholds, not prompts for judgement: an unexplained breast lump at 30 and over is a 2-week-wait referral however benign the history sounds. For mastalgia, the properly fitted supportive bra and a topical NSAID come before any drug, evening primrose oil is no longer recommended, and danazol is a specialist last resort. Unilateral, single-duct, spontaneous or blood-stained nipple discharge is referred. In galactorrhoea, check a pregnancy test, prolactin with macroprolactin, TFTs and the drug list. In gynaecomastia, review the drugs before ordering bloods — and examine for the features of male breast cancer rather than assuming. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

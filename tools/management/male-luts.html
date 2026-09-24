@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Male LUTS — Protocol · Reasoning GP</title>
+<meta name="description" content="Lower urinary tract symptoms in men, diagnosis and management on one page: voiding versus storage, IPSS and the 3-day chart, mandatory DRE and renal function, the NG12 prostate and bladder 2WW routes, and treatment by phenotype with named doses — alpha-blocker, 5-ARI, antimuscarinic or mirabegron, desmopressin." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/male-luts.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Male LUTS protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F6BA}",
+  title:"Male LUTS \u2014 the complete guide",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Split voiding from storage \u2014 that decides the whole plan \u2014 then exclude the sinister and treat by pattern",
+  stemSub:"One page for the whole condition: characterise voiding versus storage with IPSS and a 3-day chart, examine the prostate and check renal function (LUTS masks cancer and high-pressure retention), screen the NG12 routes, run conservative measures properly rather than as an afterthought, then treat by phenotype with named doses \u2014 alpha-blocker \u00b1 5-ARI for obstruction, antimuscarinic or mirabegron for storage only after excluding retention, desmopressin for confirmed nocturnal polyuria with sodium checks.",
+  guideline:"NICE CG97 · NG12 · TA290",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE CG97 \u2014 LUTS in men"},
+    {t:"NICE NG12 \u2014 suspected cancer (May 2025)", tone:"tw"},
+    {t:"NICE \u00b7 TA290 (mirabegron)"},
+    {t:"MTOPS \u00b7 CombAT \u00b7 EAU 2023"},
+    {t:"BNF for all doses"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Retention \u00b7 2WW \u00b7 renal</small></a><a href="#confirm"><b>Split it</b><small>Voiding \u00b7 storage \u00b7 IPSS</small></a><a href="#workup"><b>Work-up</b><small>DRE \u00b7 U&amp;E \u00b7 PSA \u00b7 PVR</small></a><a href="#ladder"><b>Treat</b><small>By phenotype</small></a><a href="#refer"><b>Refer</b><small>Urology \u00b7 2WW</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 The two things LUTS hides", html:"A hard, craggy, irregular or asymmetric prostate warrants a 2WW referral regardless of the PSA \u2014 PSA alone misses about 20% of clinically significant cancers. And <b>chronic retention can be painless</b>: a palpable bladder with a rising creatinine is high-pressure retention threatening the kidneys."},
+    {tone:"amber", h:"Voiding or storage? Everything follows", html:"<b>Voiding</b> \u2014 hesitancy, weak stream, straining, terminal dribble, incomplete emptying \u2192 bladder outflow obstruction (BOO), usually benign prostatic enlargement. <b>Storage</b> \u2014 urgency, frequency, nocturia, urgency incontinence \u2192 overactive bladder. Up to 40% of men with LUTS have OAB as the dominant problem, not BPH \u2014 an alpha-blocker alone fails them."},
+    {tone:"blue", h:"The 3-day chart is the highest-yield free test", html:"A <b>3-day frequency-volume chart</b> separates prostatic nocturia from <b>true nocturnal polyuria (&gt;33% of the 24-hour output overnight)</b> \u2014 which needs fluid timing or desmopressin, not an alpha-blocker. It also finds polyuria from diabetes."},
+    {tone:"green", h:"Treat by pattern, with the right clock", html:"Tamsulosin MR 400 micrograms OD works within days to 2\u20134 weeks. Finasteride 5 mg OD takes 3\u20136 months (up to 6\u201312 for full effect) \u2014 so do not judge it early. Add the 5-ARI when the prostate is <b>&gt;30 g, or PSA &gt;1.4\u20131.5</b>."},
+    {tone:"purple", h:"Never start an antimuscarinic without excluding retention", html:"<b>Check the post-void residual first \u2014 avoid if above 150 mL.</b> Antimuscarinics precipitate acute retention in a man with significant outflow obstruction, and are contraindicated in retention, narrow-angle glaucoma and severe constipation."},
+    {tone:"plain", h:"The PSA trap on a 5-ARI", html:"Finasteride and dutasteride halve the PSA after about 6 months \u2014 double the measured value when interpreting it, and document that you have. A rising PSA on a 5-ARI, even inside the \u201cnormal\u201d range, is a red flag for cancer."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where kidneys and cancers are lost.",
+  pathway:[
+    {title:"Screen the emergencies and the cancers", html:"Acute retention, high-pressure chronic retention with renal impairment, cauda equina, urosepsis; and the NG12 routes \u2014 abnormal DRE, age-specific raised PSA, visible haematuria.", alert:true},
+    {title:"Characterise the symptoms", html:"<b>Voiding versus storage versus post-micturition</b>, with <b>IPSS plus the bother score</b> and a <b>3-day frequency-volume chart</b>. Consider the full differential \u2014 LUTS in men is not a synonym for BPH."},
+    {title:"Do the mandatory work-up", html:"<b>Urine dipstick, U&amp;E, DRE</b> in every man; <b>PSA after a documented discussion</b>; post-void residual where retention is possible. <b>Do not over-investigate mild uncomplicated LUTS.</b>"},
+    {title:"Conservative first, then by phenotype", html:"Fluid timing, caffeine and alcohol, bladder retraining, double voiding, pelvic floor, weight, activity, constipation, <b>medication review \u2014 which can be curative on its own</b>. Then the drug that matches the pattern."},
+    {title:"Review with the right clock", html:"<b>4\u20136 weeks</b> for an alpha-blocker (IPSS, postural BP), <b>3\u20136 months</b> for a 5-ARI, <b>sodium on day 3 and day 7</b> for desmopressin, then annual IPSS, PSA trend, DRE and renal function."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Emergencies, renal risk, and the NG12 cancer routes",
+     sub:"Screen for all of these before you start treating symptoms \u2014 each needs action today or a suspected-cancer referral.",
+     blocks:[
+       {b:"table", head:["Red flag","Features","Action"], rows:[
+         ["<b>Acute urinary retention</b>","Unable to void, suprapubic pain, distended tender bladder","<b>999 / A&amp;E for catheterisation</b> \u2014 record the residual. Bladder injury follows if it is not relieved within hours"],
+         ["<b>High-pressure chronic retention</b>","<b>Large residual with renal impairment or hydronephrosis</b> \u2014 and it may be <b>painless</b>, presenting as <b>overflow incontinence</b>","<b>Same-day urology \u2014 obstructive uropathy.</b> Missing it causes irreversible renal damage"],
+         ["<b>Rising creatinine with LUTS</b>","Renal impairment on bloods","<b>Obstructive uropathy until proven otherwise \u2014 same-day urology</b> if significantly elevated or rising"],
+         ["<b>Cauda equina</b>","New <b>saddle anaesthesia</b>, bilateral leg weakness, retention or incontinence, absent anal tone","<b>999.</b> A neurosurgical emergency with a <b>6-hour window</b> for decompression"],
+         ["<b>Urosepsis / pyelonephritis</b>","Fever, rigors, loin pain, systemically unwell","<b>Same-day assessment, or 999 if sepsis criteria are met</b>"],
+         ["<b>2WW \u00b7 suspected prostate cancer</b>","Hard, craggy, nodular, irregular, asymmetric prostate, loss of the median sulcus or a fixed gland \u2014 or a <b>PSA above the age-specific range</b>. Bone pain, weight loss or haematuria suggest advanced disease","Suspected cancer pathway referral (NICE NG12) \u2014 an abnormal DRE warrants it regardless of PSA"],
+         ["<b>2WW \u00b7 suspected bladder cancer</b>","<b>Visible (painless) haematuria aged 45 or over</b>; unexplained non-visible haematuria aged 60 or over with dysuria or a raised white cell count","<b>Suspected cancer pathway referral (NG12).</b> Even one episode of visible haematuria after 45 meets the criteria \u2014 treat a coexisting UTI but still refer"],
+         ["Testicular or pelvic mass","Lump found on examination or reported","<b>2WW urology</b> \u2014 testicular cancer is the commonest cancer in men aged 15\u201335"]
+       ]},
+       {b:"warn", html:"<b>Painless visible haematuria is bladder cancer until proven otherwise.</b> Do not attribute it to a UTI alone without completing the pathway \u2014 and note the trap in the other direction: a plausible infection does not cancel the 2WW referral in a man of 45 or over with visible haematuria. Missing prostate cancer at a curable stage is also a recognised medicolegal risk."},
+       {b:"dl", rows:[
+         ["<b>NG12 \u2014 the criteria that apply here, stated precisely</b>","<b>Prostate:</b> a suspected-cancer pathway referral for prostate cancer where the DRE feels malignant, or the <b>PSA is above the age-specific reference range</b>. <b>Bladder and renal:</b> aged 45 and over with unexplained visible haematuria without infection, or visible haematuria that persists or recurs after successful treatment of infection; aged 60 and over with unexplained non-visible haematuria plus dysuria or a raised white cell count. <b>Upper tract:</b> the same visible-haematuria route covers renal cancer. These are restated with doses and thresholds in the <a href='#refer'>Refer</a> section"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Split it", title:"Quantify with IPSS, then classify the cause",
+     sub:"LUTS in men is not a synonym for BPH. Treating the wrong phenotype causes harm.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Symptom groups</b>","<b>Storage:</b> urgency, frequency (&gt;8 a day), nocturia, urgency (urge) incontinence \u2014 <b>urgency is the cardinal feature</b>. <b>Voiding:</b> hesitancy, poor or intermittent stream, straining, incomplete emptying. <b>Post-micturition:</b> terminal dribble and the sensation of incomplete emptying"],
+         ["<b>IPSS \u2014 the International Prostate Symptom Score</b>","7 questions each scored 0\u20135, plus one quality-of-life question scored 0\u20136. Total 0\u201335. Validated and endorsed by NICE CG97 and the EAU, and the outcome measure behind <b>NICE quality standard QS45</b>"],
+         ["<b>IPSS bands</b>","<b>Mild 0\u20137</b> \u2014 watchful waiting with lifestyle advice, reassess at 6\u201312 months. <b>Moderate 8\u201319</b> \u2014 the active treatment threshold. <b>Severe 20\u201335</b> \u2014 offer treatment, consider urology if refractory or complex"],
+         ["<b>The bother score matters more than the total</b>","A quality-of-life score of <b>3 or more</b> (\u201cmostly dissatisfied\u201d or worse) is significant bother. A man with IPSS 10 but QoL 5 deserves active treatment as much as one with IPSS 20 \u2014 the patient's own perception drives urgency"],
+         ["<b>3-day bladder diary</b>","Frequency, volumes, nocturia episodes and leakage \u2014 send it home. Distinguishes storage from voiding, and detects <b>nocturnal polyuria (&gt;33% of the 24-hour output overnight)</b>, which needs a completely different treatment"]
+       ]},
+       {b:"table", head:["Diagnosis","Recognise it by","Note"], rows:[
+         ["<b>Benign prostatic hyperplasia (BPH / BPE)</b>","Commonest cause in men &gt;50. Voiding plus storage symptoms, <b>smooth symmetrically enlarged prostate</b>, gradual onset, PSA normal for age or mildly raised","The default \u2014 but prove it rather than assume it"],
+         ["<b>Overactive bladder (OAB)</b>","<b>Predominantly storage</b> \u2014 urgency with or without urge incontinence, frequency, nocturia. Often no outflow obstruction; may coexist with BPH","Up to 40% of men with LUTS \u2014 responds to bladder retraining, antimuscarinics or a beta-3 agonist, not alpha-blockers"],
+         ["Urinary tract infection","Acute dysuria, frequency, suprapubic pain; systemically unwell in upper UTI. <b>MSU dipstick and culture</b>","<b>Uncommon in young men \u2014 exclude STI (chlamydia, gonorrhoea)</b>. A true UTI in a man needs upper-tract imaging and prostate assessment for a structural cause"],
+         ["<b>Prostate cancer</b>","May be asymptomatic or cause LUTS. <b>Hard, craggy, irregular prostate</b>, PSA raised or rising rapidly; bone pain, weight loss and haematuria mean advanced disease","<b>Always consider it in a man &gt;50 with new LUTS</b>"],
+         ["Prostatitis \u2014 acute or chronic","Perineal or pelvic pain, dysuria, fever if acute. <b>Chronic pelvic pain syndrome</b>: scrotal, perineal and post-ejaculatory pain, boggy tender prostate","Affects up to 15% of men and is frequently underdiagnosed \u2014 an entirely different pathway. See the <a href='prostatitis.html'>prostatitis protocol</a>"],
+         ["Urethral stricture","Reduced stream since trauma, instrumentation or an STI; younger men more often","Urology for <b>urethrogram or cystoscopy</b>"],
+         ["<b>Nocturnal polyuria</b>","<b>&gt;33% of the 24-hour output overnight</b> on the diary","Rule out cardiac failure, diabetes, CKD, diuretic timing and OSA \u2014 treat the underlying cause first. Desmopressin only if truly isolated"],
+         ["Neurogenic bladder","Parkinson's, MS, spinal cord disease, diabetes \u2014 mixed storage and voiding with neurological features","Urology or neuro-urology"],
+         ["<b>Drug causes \u2014 review the whole list</b>","Anticholinergics \u2192 retention. Diuretics \u2192 frequency and nocturia. Alpha-agonist decongestants (pseudoephedrine, Sudafed) \u2192 retention. Alpha-blockers \u2192 incontinence. Calcium-channel blockers. Opioids worsen voiding","Anticholinergic burden is a common reversible cause of voiding difficulty in older men, and over-the-counter decongestants precipitate acute retention"]
+       ]}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Examination and investigations \u2014 what is mandatory",
+     sub:"A focused examination changes the diagnosis and the management. Do not skip the DRE.",
+     blocks:[
+       {b:"table", head:["Examine","Looking for","Why it matters"], rows:[
+         ["<b>Abdomen</b>","Suprapubic palpation and percussion \u2014 <b>a palpable bladder means retention</b>. Renal angle tenderness","Chronic retention may be painless; renal angle tenderness suggests pyelonephritis or hydronephrosis"],
+         ["<b>Digital rectal examination \u2014 mandatory in all men with LUTS</b>","Normal BPH: smooth, symmetrically enlarged, rubbery, median sulcus preserved. <b>Refer 2WW: hard, craggy, nodular, irregular, loss of sulcus, fixed.</b> Estimate size \u2014 <b>normal is &lt;20 g</b>","The single most important examination \u2014 an abnormal DRE warrants 2WW regardless of PSA, because PSA alone misses about 20% of clinically significant cancers"],
+         ["Genitalia","Urethral discharge (STI or prostatitis), <b>phimosis</b>, penile pathology; <b>examine the testes for masses</b>","Phimosis is a reversible mechanical cause of LUTS, especially in diabetic men \u2014 circumcision is curative"],
+         ["<b>Neurological</b>","Perianal sensation, anal tone, lower limb power and reflexes if a neurogenic bladder is suspected or retention is new","<b>Absent anal tone means cauda equina</b>"],
+         ["Peripheral oedema","<b>Bilateral pitting oedema</b>","Points to <b>nocturnal polyuria from fluid redistribution</b> in cardiac failure, venous insufficiency or nephrotic syndrome \u2014 which redirects management entirely, to heart failure optimisation rather than BPH treatment"],
+         ["BMI and waist circumference","Obesity","Associated with LUTS severity; metabolic syndrome links to OAB and BPH progression (CG97)"],
+         ["BP","Hypertension","Review diuretic and calcium-channel-blocker timing. <b>Alpha-blockers lower BP</b> \u2014 relevant prescribing context"]
+       ]},
+       {b:"table", head:["Investigation","When","Notes"], rows:[
+         ["<b>Urine dipstick (urinalysis)</b>","<b>Mandatory first test in every man</b>","<b>The highest-yield bedside test:</b> nitrites and leucocytes \u2192 MSU culture; <b>blood \u2192 the haematuria pathway</b>; glucose \u2192 diabetes screen; protein \u2192 renal disease"],
+         ["MSU culture","Dipstick positive or symptoms suggest infection","A man with a true UTI needs further investigation \u2014 renal ultrasound and prostate assessment \u2014 to exclude a structural abnormality"],
+         ["<b>Renal function (U&amp;E)</b>","<b>All men with LUTS</b>","<b>A raised creatinine is obstructive uropathy until proven otherwise.</b> An <b>eGFR &lt;45</b> affects dosing of alpha-blockers and 5-ARIs"],
+         ["<b>PSA \u2014 after an informed discussion</b>","Offered, not automatic \u2014 <b>document the discussion</b>","Do NOT check PSA: with a symptomatic UTI (falsely raised), within 4 weeks of catheterisation, within 1 week of a DRE, or within 48 hours of ejaculation. Age-specific thresholds below"],
+         ["FBC","Baseline","Anaemia may indicate renal failure from chronic obstruction, or malignancy"],
+         ["Glucose or HbA1c","If not recent","Diabetes causes <b>osmotic polyuria</b> and autonomic bladder neuropathy"],
+         ["<b>Post-void residual (PVR)</b>","Bladder ultrasound after voiding, where retention is possible","A PVR &gt;300 mL is chronic urinary retention and an absolute indication for urology referral regardless of symptom severity \u2014 silent retention causes progressive renal failure. Also check it before any antimuscarinic \u2014 avoid if &gt;150 mL; confirm &lt;150 mL first"],
+         ["<b>Not routinely needed in primary care</b>","\u2014","Uroflowmetry, urodynamics and transrectal ultrasound are secondary care. PSA velocity needs serial measurements over time"]
+       ]},
+       {b:"warn", html:"The two sources for this page give different age-specific PSA thresholds, so both are stated rather than one silently chosen. NICE working thresholds \u2014 refer if PSA is at or above: \u2265 3.0 ng/mL at 50\u201359, \u2265 4.0 at 60\u201369, \u2265 5.0 at \u226570, with a lower threshold of 2.5\u20133.5 in the 40s where there is a family history or Black ethnicity. Some sources (including EAU-derived tables) instead use upper limits of normal of &lt;2.5 at age &lt;50, &lt;3.5 at 50\u201359, &lt;4.5 at 60\u201369 and &lt;6.5 at \u226570. Use your local laboratory's age-specific reference range and the current NICE figures \u2014 and remember the principle that matters more than the number: <b>an abnormal DRE goes on the cancer pathway whatever the PSA</b>."}
+     ]},
+
+    {id:"lifestyle", nav:"Conservative", title:"Conservative measures \u2014 first-line, not optional",
+     sub:"NICE CG97 recommends these for every man with LUTS. Quantifying the benefit is what motivates patients to do them.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"\ud83d\udca7 Fluid management", html:"Target 1.5\u20132 L/day, front-loaded \u2014 reduce intake after 6pm to cut nocturia, and avoid large fluid boluses. <b>Reduces frequency and nocturia by around 20%.</b>"},
+         {tone:"green", h:"\u2615 Caffeine and alcohol", html:"Both are bladder irritants and diuretics. Trial reducing caffeine to 2 cups a day or fewer \u2014 caffeine withdrawal improves urgency in OAB with sustained benefit at 12 months (RCT evidence). Target <b>under 50 g of alcohol a week</b>, in line with cardiovascular advice."},
+         {tone:"blue", h:"\ud83d\udebd Bladder retraining", html:"For urgency and OAB: defer voiding when urgent and gradually extend the interval from 1 hour to 3\u20134 hours over 4\u20136 weeks. Reduces urgency episodes by about 50% (Cochrane), and has similar efficacy to antimuscarinics at 6 months with better long-term adherence."},
+         {tone:"blue", h:"\ud83d\udd01 Double voiding and urethral milking", html:"<b>After the initial void, wait a minute, lean forward and void again.</b> Reduces post-micturition dribble and the sensation of incomplete emptying \u2014 simple, effective and immediate."},
+         {tone:"plain", h:"\ud83c\udfcb\ufe0f Pelvic floor exercises", html:"Reduce post-micturition dribble, urgency incontinence and post-prostatectomy incontinence, with sustained benefit at 1 year. Underreferred in men \u2014 refer to a continence nurse or physiotherapist for proper instruction."},
+         {tone:"amber", h:"\u2696\ufe0f Weight and activity", html:"<b>Each 5 kg of weight loss reduces IPSS by about 2 points</b>; support a weight programme if BMI is over 30. Regular moderate exercise \u2014 150 minutes a week \u2014 reduces LUTS severity by around 25% versus a sedentary lifestyle, and walking reduces nocturia."},
+         {tone:"blue", h:"\ud83d\udc8a Medication review \u2014 can be curative", html:"Stopping an anticholinergic or moving a diuretic to the morning can resolve LUTS within days with no new prescription. Also stop or switch <b>alpha-agonist decongestants (Sudafed / pseudoephedrine)</b> and review calcium-channel blockers. Go through the whole list systematically."},
+         {tone:"cream", h:"\ud83d\udebd Constipation and containment", html:"Chronic constipation worsens voiding and urgency by direct pressure \u2014 an often-overlooked cause of deterioration. Optimise with fibre, hydration and laxatives. Offer <b>pads, sheaths or a urine bottle for nocturia</b> while measures take effect \u2014 supervised waiting is legitimate for mild symptoms."}
+       ]},
+       {b:"why", html:"Nocturia deserves specific attention rather than being folded into \u201cprostate symptoms\u201d: it disrupts sleep architecture, increases falls risk, and is associated with cardiovascular mortality. And many men with mild to moderate symptoms respond to these measures alone \u2014 which is the point of offering them before a prescription, not alongside one."}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"Drug treatment \u2014 matched to the phenotype",
+     sub:"Voiding and storage symptoms need different drugs. Combination therapy is evidence-based for mixed symptoms.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Lifestyle and watchful waiting", when:"IPSS \u22647, or patient preference",
+          html:"Conservative measures as above, with <b>review at 6\u201312 months</b>. Trigger reassessment if IPSS worsens by 3 or more points, or new symptoms appear."},
+         {step:"Step 2", title:"Alpha-blocker \u2014 voiding symptoms dominant", when:"bothersome voiding, moderate\u2013severe LUTS",
+          fromLabel:"conservative measures insufficient",
+          html:"<b>Tamsulosin MR 400 micrograms OD after a meal</b> (most widely used) \u00b7 <b>alfuzosin MR 10 mg OD</b> (less retrograde ejaculation) \u00b7 <b>doxazosin MR 4\u20138 mg OD</b> (also treats hypertension). Works within days to 2\u20134 weeks, improving IPSS by about 4\u20136 points (NNT ~4) \u2014 but <b>does not shrink the prostate or alter long-term progression</b>. Counsel: postural hypotension (take the first dose at night), retrograde ejaculation, and intra-operative floppy iris syndrome \u2014 tell the ophthalmologist BEFORE cataract surgery. Reassess at 4\u20136 weeks; continue if IPSS improves by \u22653 points."},
+         {step:"Step 3", title:"Add a 5-alpha-reductase inhibitor", when:"prostate &gt;30 g (PSA &gt;1.4), or PSA &gt;1.5.",
+          fromLabel:"enlarged prostate / high progression risk",
+          html:"<b>Finasteride 5 mg OD</b> (6\u201312 months for full effect) or <b>dutasteride 500 micrograms OD</b> (similar efficacy, faster onset). Reduces prostate volume by 20\u201330% and progression to retention or surgery by about 50% (NNT ~18), and reduces prostate cancer risk by 25% \u2014 an underused benefit. Combination (MTOPS, CombAT) reduces clinical progression by 67% versus monotherapy; available as a single pill (<b>Combodart</b>). Warn: reduced libido, erectile and ejaculatory dysfunction, gynaecomastia."},
+         {step:"Step 4", title:"Antimuscarinic or beta-3 agonist \u2014 storage symptoms", when:"storage symptoms persisting after bladder retraining",
+          fromLabel:"retention and significant residual EXCLUDED first",
+          html:"<b>Solifenacin 5 mg OD</b> (preferred anticholinergic \u2014 once daily, well tolerated), tolterodine 2 mg BD, or oxybutynin \u2014 <b>avoid oxybutynin in the frail elderly</b>. <b>Mirabegron 50 mg OD</b> (beta-3 agonist, <b>NICE TA290</b>) where anticholinergic burden or cognitive concern applies; check BP and avoid in severe uncontrolled hypertension. Check the PVR before starting \u2014 avoid if &gt;150 mL (confirm &lt;150 mL). Can be added to an alpha-blocker for mixed symptoms."},
+         {step:"Step 5", title:"Desmopressin \u2014 confirmed nocturnal polyuria only", when:"diary confirms it and fluid measures have failed",
+          fromLabel:"treat the real driver first",
+          html:"<b>Desmopressin 25\u2013100 micrograms nocte</b> (oral or intranasal; 50\u2013100 micrograms is the usual range). Check sodium at baseline, day 3 and day 7, then periodically \u2014 stop if hyponatraemic. Avoid if eGFR &lt;50, in heart failure, on diuretics, and with caution in men &gt;65 with cardiac or renal disease. Treat the actual driver where there is one \u2014 OSA, ankle oedema, evening diuretic, poorly controlled diabetes or heart failure."},
+         {step:"Step 6", title:"Refer for surgery", when:"refractory after 6 months of optimised therapy",
+          fromLabel:"maximal medical therapy failed",
+          html:"<b>TURP, HoLEP</b>, or the day-case alternatives <b>Rezum and Urolift</b>; also <b>prostate artery embolisation</b>. <b>Success is around 70\u201380%.</b>"}
+       ]},
+       {b:"warn", html:"<b>Prescribing cautions.</b> Alpha-blockers with PDE5 inhibitors (sildenafil) cause profound hypotension \u2014 tamsulosin is the most selective with the smallest BP drop. Antimuscarinics are contraindicated in urinary retention, narrow-angle glaucoma and severe constipation. 5-ARIs are teratogenic \u2014 women of childbearing potential must not handle crushed or broken tablets, and treated men should not donate blood. PSA on a 5-ARI is halved after 6\u201312 months: double the observed value, and document that you have, to avoid missing a cancer. And for a trial without catheter (<b>TWOC</b>), start tamsulosin 48 hours before removal \u2014 it raises success to about 60%."},
+       {b:"why", html:"Two prescribing points worth holding onto. <b>Mirabegron over an anticholinergic in older men:</b> anticholinergic burden accumulates across polypharmacy and is associated with cognitive decline, falls and constipation, and a beta-3 agonist avoids that entirely. And tadalafil 5 mg OD is licensed for LUTS/BPH in men with comorbid erectile dysfunction \u2014 a useful dual-purpose option that is easy to forget."}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Follow-up, PSA surveillance and safety-netting",
+     blocks:[
+       {b:"table", head:["When","What","Action"], rows:[
+         ["<b>4\u20136 weeks</b>","Alpha-blocker review","<b>IPSS, symptom response, postural BP, side effects</b> (retrograde ejaculation, dizziness). Repeat the dipstick if a UTI was treated; review the bladder diary"],
+         ["<b>3 months</b>","Repeat IPSS and document the change","Improved by \u22653 points \u2192 continue and review at 6 months. No response \u2192 review adherence and the diagnosis, consider adding a 5-ARI, or refer"],
+         ["<b>3\u20136 months</b>","5-ARI effect","<b>Shrinkage takes months \u2014 do not judge it early.</b> Reassess symptoms and retention risk"],
+         ["<b>6 months</b>","U&amp;E, and PSA if on a 5-ARI","<b>Document that the true value is the measured PSA doubled.</b> Address 5-ARI sexual side effects \u2014 they often improve, but the discontinuation rate is high"],
+         ["<b>Annual</b>","IPSS, PSA trend, DRE, renal function","Ask about sexual function. <b>Consider step-down if symptoms have stayed mild for 12 months</b>"],
+         ["Watchful waiting","If IPSS \u22647","Review at 12 months; reassess sooner if IPSS worsens by \u22653 points"],
+         ["<b>PSA surveillance</b>","Annual, unless already in a surveillance programme","A PSA doubling time under 2 years is an urgent urology referral \u2014 velocity is more sensitive for clinically significant cancer than the absolute value. A rising PSA on a 5-ARI, even when \u201cnormal\u201d, is urgent."],
+         ["<b>Medication safety</b>","Annual","Review anticholinergic burden \u2014 switch men >65 from an antimuscarinic to mirabegron (STOPP/START recommends deprescribing; longitudinal studies show HR 1.2\u20131.4 for cognitive decline)"],
+         ["Sodium on desmopressin","<b>Baseline, day 3, day 7, then periodically</b>","Stop if hyponatraemic \u2014 hyponatraemia is the risk that governs this drug"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 999", html:"\u201cSuddenly unable to pass urine with a painful, full bladder \u2014 A&amp;E straight away.\u201d Also heavy bleeding with clots, collapse, fever with rigors, or <b>new numbness in the saddle area with leg weakness</b>."},
+         {tone:"amber", h:"\ud83e\ude78 Blood in urine", html:"\u201cVisible blood in the urine always needs checking \u2014 even once, even if it settles.\u201d"},
+         {tone:"blue", h:"\ud83d\ude35 First-dose dizziness", html:"\u201cThe outlet-relaxing tablet can drop your blood pressure, especially the first dose \u2014 take it at night and stand up slowly.\u201d"},
+         {tone:"amber", h:"\ud83d\udc41\ufe0f Eye surgery", html:"\u201cIf you are having cataract surgery, tell the eye surgeon you take tamsulosin \u2014 it affects the operation.\u201d"},
+         {tone:"green", h:"\u23f3 Give the second tablet time", html:"\u201cThe shrinking tablet takes three to six months \u2014 don't lose heart in the first few weeks.\u201d"},
+         {tone:"cream", h:"\ud83d\udcd8 Information and support", html:"Provide a LUTS/BPH patient leaflet (NHS or Prostate Cancer UK); <b>Prostate Cancer UK</b> for men worried about cancer risk. Confirm they know when to return urgently. <b>Acute retention has a 25% recurrence rate within a year of a TWOC</b> \u2014 men must know it is an emergency."}
+       ]},
+       {b:"say", html:"Most prostate-related urinary symptoms settle with simple measures and a tablet that relaxes the bladder outlet \u2014 that one works within days. If your prostate is enlarged we add a second tablet that shrinks it, but that one takes three to six months, so don't lose heart early. I'll keep an eye on your kidney bloods and your PSA along the way, and one thing to know: if that second tablet is doing its job it halves the PSA reading, so I double it when I look at the result."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Not improving? Re-check before escalating", sub:"",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"1 · Retention", html:"Palpable bladder, large post-void residual, rising creatinine → chronic retention → urology (don't add an antimuscarinic)."},
+         {tone:"blue", h:"2 · Right target", html:"Voiding treated as voiding, storage as storage? Mixed picture needs both."},
+         {tone:"amber", h:"3 · Adequate trial", html:"Alpha-blocker given days–weeks? 5-ARI given 3–6 months? Dose/adherence?"},
+         {tone:"blue", h:"4 · Nocturia driver", html:"3-day chart re-read — nocturnal polyuria (fluids, OSA, oedema, <b>diuretic timing</b>) versus prostatic?"},
+         {tone:"blue", h:"5 · Red flags", html:"Visible haematuria, hard/nodular DRE, rising PSA (corrected) → suspected-cancer pathway."},
+         {tone:"blue", h:"6 · Refer", html:"Refractory bothersome symptoms despite optimised therapy → urology (surgical options)."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral \u2014 who and how fast",
+     sub:"Most men with LUTS \u2014 around 60\u201370% \u2014 can be safely managed in primary care.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / A&amp;E", html:"<b>Acute urinary retention</b> (unable to void) \u00b7 <b>septic shock</b> \u00b7 <b>suspected cauda equina</b> \u00b7 <b>obstructive renal failure</b> with acutely rising creatinine."},
+         {tone:"red", h:"Same-day urology", html:"Painful retention not yet catheterised \u00b7 <b>significant hydronephrosis</b> on imaging \u00b7 <b>rapidly rising creatinine with LUTS</b>."},
+         {tone:"purple", h:"2WW \u00b7 NICE NG12", html:"<b>Visible painless haematuria aged \u226545</b> \u00b7 unexplained non-visible haematuria aged \u226560 with dysuria or a raised white cell count \u00b7 <b>a hard, irregular or craggy prostate on DRE</b> \u00b7 <b>PSA above the age-adjusted threshold with no benign cause</b>. NICE NG12 (May 2025)."},
+         {tone:"amber", h:"Urgent routine urology", html:"<b>Chronic urinary retention \u2014 PVR &gt;300 mL, even if painless</b> \u00b7 <b>recurrent UTI in a man (\u22652 a year)</b> \u00b7 suspected urethral stricture \u00b7 suspected neurogenic bladder \u00b7 <b>PSA doubling time under 2 years</b>."},
+         {tone:"blue", h:"Routine urology", html:"LUTS refractory to maximal primary care treatment \u2014 ≥6 months of an optimised alpha-blocker plus a 5-ARI where appropriate \u00b7 considering surgery (TURP, HoLEP) \u00b7 <b>failed TWOC</b> \u00b7 uncertain diagnosis."},
+         {tone:"cream", h:"Manage in primary care", html:"<b>Mild LUTS (IPSS \u22647) with no red flags</b> \u00b7 <b>moderate LUTS (IPSS 8\u201319) with normal investigations</b>, for watchful waiting or pharmacotherapy \u00b7 <b>OAB without haematuria or infection</b>. NICE CG97 explicitly supports primary care drug trials."}
+       ]},
+       {b:"why", html:"Two thresholds are worth being firm about. <b>Recurrent UTI in a man is never normal</b> \u2014 it implies a structural abnormality (BPH with incomplete emptying, a stone, a stricture, reflux) and needs upper-tract imaging and cystoscopy. And chronic painless retention with a high residual needs surgery or long-term catheterisation to protect the kidneys \u2014 primary care pharmacotherapy alone is not sufficient. In the other direction, over-referral creates waiting, anxiety and cost for men who could be treated well in general practice."},
+       {b:"say", html:"We've checked there's nothing more serious going on and given the tablets a fair go \u2014 if they're not doing enough, the urology team has procedures that physically relieve the blockage. I'll keep everything going while you wait."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 67-year-old getting up four times a night, with a weak stream and a sense of not emptying. He is on amlodipine and an evening furosemide, and bought Sudafed for a cold last week. His father had prostate cancer and he says he would \u201crather just have the blood test\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Splits voiding from storage</b> rather than accepting \u201cprostate trouble\u201d; scores <b>IPSS with the bother question</b> and sends a <b>3-day chart</b>; reviews the medication \u2014 the evening diuretic and the decongestant may be the whole problem; <b>does the DRE and checks U&amp;E</b>; has a genuine two-sided <b>PSA discussion and documents it</b>, including the family-history threshold; recognises the <b>NG12 routes</b>; and \u2014 the step candidates miss \u2014 offers conservative measures as treatment rather than as a preamble to the prescription."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE CG97 \u2014 Lower urinary tract symptoms in men (2010, updated 2015)<br><a href="https://www.nice.org.uk/guidance/cg97" rel="noopener">nice.org.uk/guidance/cg97</a><span class="rd"> \u2014 IPSS, conservative measures as first-line, the drug ladder by phenotype, and support for primary care pharmacotherapy trials. Some references cite this guidance as NG97 following renumbering \u2014 check the current NICE listing</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 prostate: suspected-cancer pathway for a malignant-feeling DRE or a PSA above the age-specific range; bladder and renal: visible haematuria at 45 and over, non-visible haematuria at 60 and over with dysuria or raised WCC</span></li>'+
+         '<li><b>NICE CG97 \u2014 Lower urinary tract symptoms in men: management</b><br><a href="https://www.nice.org.uk/guidance/cg97" rel="noopener">nice.org.uk/guidance/cg97</a><span class="rd"> \u2014 the age-specific PSA referral thresholds used on this page (\u2265 3.0 at 50\u201359, \u2265 4.0 at 60\u201369, \u2265 5.0 at \u226570; 2.5\u20133.5 in the 40s with family history or Black ethnicity)</span></li>'+
+         '<li><b>NICE TA290 \u2014 Mirabegron for overactive bladder</b><br><a href="https://www.nice.org.uk/guidance/ta290" rel="noopener">nice.org.uk/guidance/ta290</a><span class="rd"> \u2014 the beta-3 agonist option, and the case for it over antimuscarinics where anticholinergic burden matters</span></li>'+
+         '<li><b>MTOPS (NEJM 2003) and CombAT (BJU Int 2010)</b><span class="rd"> \u2014 combination alpha-blocker plus 5-ARI reduces clinical progression by 67% versus monotherapy, and is most cost-effective in men at high progression risk</span></li>'+
+         '<li>EAU Guidelines on Non-neurogenic Male LUTS (2023) \u00b7 SIGN 120 \u00b7 NICE QS45<span class="rd"> \u2014 IPSS as the tracked outcome measure, and the alternative age-specific PSA upper limits of normal quoted in the work-up section</span></li>'+
+         '<li><b>STOPP/START v3 criteria</b><span class="rd"> \u2014 deprescribing antimuscarinics in men over 65, and the cognitive-decline association (HR 1.2\u20131.4) behind the annual anticholinergic burden review</span></li>'+
+         '<li><b>Cochrane systematic review (2014) \u2014 bladder training</b><span class="rd"> \u2014 urgency episodes reduced by about 50%, with efficacy similar to antimuscarinics at 6 months and better long-term adherence</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: tamsulosin, alfuzosin, doxazosin, finasteride, dutasteride, solifenacin, tolterodine, oxybutynin, mirabegron, desmopressin, tadalafil</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Male lower urinary tract symptoms \u2014 NICE CG97, NICE NG12 (suspected cancer, May 2025), NICE and TA290. Diagnosis and management are merged on this page; there is no separate LUTS pathway to cross-check. Benign prostatic enlargement has its own page for prostate-specific detail, and prostatitis is managed separately. Verify all doses and the current age-specific PSA thresholds against the BNF and NICE before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

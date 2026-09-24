@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thyroid disease in pregnancy — Protocol · Reasoning GP</title>
+<meta name="description" content="Thyroid disease in pregnancy: trimester-specific ranges and why a low first-trimester TSH is normal, increasing levothyroxine by 30–50% from 4–6 weeks, propylthiouracil over carbimazole, postpartum thyroiditis, the monitoring schedule, and stepping the dose back down after delivery." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/thyroid-pregnancy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790200156739287 tools/management/thyroid-pregnancy.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Thyroid pregnancy protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🦋",
+  title:"Thyroid disease in pregnancy — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Pregnancy rewrites the reference ranges and raises the levothyroxine requirement — increase the dose early, refer everyone, and use PTU not carbimazole",
+  stemSub:"One page for the whole condition: understand why a low first-trimester TSH is normal and non-pregnant ranges mislead, act on the lower treatment threshold by increasing levothyroxine by 30–50% from as early as 4–6 weeks, refer every hyperthyroid woman — including the euthyroid ones — for specialist antithyroid choice, recognise the biphasic course of postpartum thyroiditis, and step the dose back down after delivery so she is not left over-replaced.",
+  guideline:"NICE NG145 · NG12 · MHRA · ATA / Endocrine Society",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NW London Outpatient Pathways — thyroid dysfunction in pregnancy (Issue 1, March 2021)"},
+    {t:"NICE NG145 — thyroid disease: assessment and management"},
+    {t:"MHRA Drug Safety Update — carbimazole and congenital malformations"},
+    {t:"Endocrine Society / ATA pregnancy guidance"},
+    {t:"NG12: unexplained thyroid lump", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Emergencies</b><small>Storm · hyperemesis · 2WW</small></a><a href="#confirm"><b>Physiology</b><small>Trimester ranges</small></a><a href="#ladder"><b>Treat</b><small>Levothyroxine ↑ · PTU</small></a><a href="#ppt"><b>Postpartum</b><small>PPT · step down</small></a><a href="#refer"><b>Refer</b><small>Everyone, urgently</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Two emergencies and one cancer route", html:"Thyroid storm — fever, tachyarrhythmia, agitation, vomiting → emergency admission. Hyperemesis gravidarum with intractable vomiting → emergency admission for rehydration and assessment. A thyroid nodule or goitre with suspicious features still follows the 2WW cancer pathway (NICE NG12), independent of pregnancy."},
+    {tone:"amber", h:"A low TSH in the first trimester is normal", html:"hCG cross-stimulates the TSH receptor, so TSH falls in the first trimester — do not misread it as pathological hyperthyroidism. Rising oestrogen raises thyroxine-binding globulin, lifting total (and free) FT4 and FT3. Apply trimester-specific reference ranges: non-pregnant ranges mislead, and this is the single commonest interpretive error."},
+    {tone:"blue", h:"Levothyroxine goes UP, early — the opposite of the instinct", html:"An increase of 30–50% may be needed from as early as 4–6 weeks' gestation to keep TSH normal. If she is already on levothyroxine, discuss the increase as soon as pregnancy is confirmed — do not wait for booking. A common practical approach is to increase immediately on a positive test, then titrate."},
+    {tone:"purple", h:"PTU, not carbimazole", html:"Propylthiouracil is usually used in pregnancy because of the increased risk of congenital abnormalities with carbimazole (MHRA alert) — at the lowest possible dose maintaining euthyroidism. <b>Both cross the placenta, so the specialist balances agent and timing.</b>"},
+    {tone:"green", h:"Refer everyone — including the euthyroid", html:"Urgent antenatal plus endocrinology referral for all overt or subclinical hypo- and hyperthyroidism, and for euthyroid women with a history of thyroid disease (for example treated Graves'). Check TSH and FT4 — adding FT3 if hyperthyroid — immediately, and discuss while awaiting assessment."},
+    {tone:"plain", h:"Step the dose back down after delivery", html:"The pregnancy-driven rise in requirement reverses after birth, so a woman left on her pregnancy dose becomes over-replaced. Drop to the pre-pregnancy dose on specialist advice and check TFTs at 6 weeks postpartum."}
+  ],
+  pathwaySub:"The whole pathway in five moves. The red step comes before any interpretation of the numbers.",
+  pathway:[
+    {title:"Screen for emergency and cancer", html:"Thyroid storm or intractable vomiting → emergency admission. A nodule or goitre with suspicious features → 2WW thyroid (NG12).", alert:true},
+    {title:"Test and interpret correctly", html:"TSH and FT4 (add FT3 if hyperthyroid) immediately, read against trimester-specific ranges. A fall in first-trimester TSH is physiological."},
+    {title:"Refer urgently — everyone", html:"Antenatal plus endocrinology for overt or subclinical disease, new diagnoses, and euthyroid women with a thyroid history. Discuss with the specialist while awaiting assessment."},
+    {title:"Treat by pattern", html:"Hypothyroid → increase levothyroxine 30–50% from 4–6 weeks. Hyperthyroid → specialist-initiated PTU at the lowest effective dose. Postpartum thyroiditis → differentiate from Graves', then treat the phase."},
+    {title:"Monitor across the pregnancy and after it", html:"TFTs at pregnancy confirmation, at booking, at least once in the 2nd and once in the 3rd trimester, and 2–4 weeks postpartum — then step the dose back down and recheck at 6 weeks."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Emergencies", title:"Emergencies, the cancer flag, and why control matters",
+     sub:"Pregnancy lowers the threshold for harm from thyroid disease. Screen first for what needs emergency or cancer-pathway action.",
+     blocks:[
+       {b:"table", head:["Situation","Features","Action"], rows:[
+         ["<b>Thyroid storm</b>","Severe signs and symptoms of hyperthyroidism — fever, tachyarrhythmia, agitation, vomiting","<b>Emergency admission</b>"],
+         ["<b>Hyperemesis gravidarum</b>","Intractable vomiting — can overlap with gestational transient thyrotoxicosis","<b>Emergency admission for rehydration and assessment</b>"],
+         ["<b>Suspected thyroid malignancy</b>","<b>Thyroid nodule or goitre with suspicious features</b>","<b>2WW thyroid (NICE NG12), independent of pregnancy</b>"],
+         ["<b>Inadequately-controlled hyperthyroidism</b>","Raises miscarriage, pre-eclampsia, IUGR, preterm delivery, low birth weight and fetal death","<b>Urgent control</b>"],
+         ["<b>Undetected or under-treated hypothyroidism</b>","May adversely affect fetal neuropsychological development and survival; associated with ovulatory dysfunction and infertility","<b>Treat early, refer urgently</b>"],
+         ["<b>Adrenergic symptoms</b>","Tremor or tachycardia needing symptomatic treatment while awaiting specialist assessment","<b>Seek endocrinology advice — a beta-blocker may be used short-term</b>"]
+       ]},
+       {b:"warn", html:"<b>Inadequately-controlled disease harms mother and fetus.</b> Undetected or under-treated hypothyroidism impairs fetal neurodevelopment; poorly-controlled hyperthyroidism raises miscarriage, pre-eclampsia, intrauterine growth restriction, preterm delivery and fetal death. <b>Treat early and refer urgently.</b>"},
+       {b:"why", html:"Maternal thyroid hormone is critical for fetal brain development, especially in the first trimester before the fetal thyroid is functional — which is why both under-treated hypothyroidism and poorly-controlled hyperthyroidism carry serious fetal risks and demand prompt action. Thyroid storm and hyperemesis are the genuine emergencies, and a suspicious nodule still follows the 2WW cancer pathway in pregnancy."},
+       {b:"dl", rows:[
+         ["<b>NG12 — the criterion that applies here</b>","NICE NG12: consider a suspected cancer pathway referral (for an appointment within 2 weeks) for thyroid cancer in people with an unexplained thyroid lump. <b>Pregnancy does not change this</b> — a thyroid nodule or goitre with suspicious features goes down the cancer pathway exactly as it would outside pregnancy, alongside whatever thyroid function management is needed. Restated in <a href='#refer'>Refer</a>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Physiology", title:"Pregnancy thyroid physiology and trimester-specific ranges",
+     sub:"Pregnancy rewrites the reference ranges. Misreading them is the commonest error in this area.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>TBG and thyroid hormones</b>","Increased oestrogen production raises thyroxine-binding globulin (TBG), producing a rise in total (and free) FT4 and FT3"],
+         ["<b>TSH falls in the first trimester</b>","A fall in TSH is normal in the first trimester, because hCG cross-stimulates the TSH receptor. Do not misread a low first-trimester TSH as pathological hyperthyroidism"],
+         ["<b>Use trimester ranges</b>","Apply trimester-specific reference ranges for TSH and for total and free thyroid hormones — non-pregnant ranges mislead"],
+         ["<b>Immune changes</b>","Altered immune function can change the course of existing autoimmune thyroid disease — it may improve during pregnancy and relapse postpartum"],
+         ["<b>After delivery</b>","Thyroid hormone and TSH levels normally return to the pre-pregnant state postpartum — but watch for postpartum thyroiditis"],
+         ["<b>What to request</b>","TSH plus FT4 for hypothyroid pictures; add FT3 for hyperthyroid pictures. Check immediately and send the results to the specialist"]
+       ]},
+       {b:"why", html:"Pregnancy physiology rewrites the reference ranges: hCG suppresses TSH in the first trimester and rising TBG lifts total thyroid hormones, so trimester-specific ranges are essential to avoid both over-diagnosing hyperthyroidism and missing genuine hypothyroidism. This is the single most common interpretive error in pregnancy thyroid testing."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Treatment by pattern",
+     sub:"The treatment threshold is lower than outside pregnancy, and the direction of dose change is counter-intuitive.",
+     blocks:[
+       {b:"table", head:["Hypothyroidism — overt or subclinical","Action"], rows:[
+         ["<b>Refer urgently</b>","Urgent referral to antenatal plus endocrinology. Check TSH and FT4 immediately and discuss with the specialist while awaiting assessment"],
+         ["<b>Increase the dose early</b>","On specialist advice, an increase in levothyroxine of 30–50% may be needed from as early as 4–6 weeks' gestation to maintain a normal serum TSH"],
+         ["<b>Already on levothyroxine?</b>","Discuss the dose increase and monitoring as soon as pregnancy is confirmed — do not wait for booking. A common practical approach is to increase the dose immediately on a positive test, then titrate"],
+         ["<b>Newly diagnosed?</b>","While awaiting review, discuss initiation of levothyroxine with the specialist; the aim is rapid normalisation of TSH"],
+         ["<b>Target</b>","Keep TSH within the trimester-specific range (specialist-led), and recheck TFTs frequently through the pregnancy"],
+         ["<b>How to take it</b>","Levothyroxine ≥30 min before food or caffeine, and separated from iron and calcium — including pregnancy supplements — by about 4 hours, to preserve absorption"]
+       ]},
+       {b:"why", html:"Thyroxine requirements rise by roughly a third early in pregnancy, because of increased binding-globulin and transplacental transfer to a fetus that cannot yet make its own hormone. Increasing the dose by 30–50% from 4–6 weeks — often by simply adding extra doses per week on a positive test — keeps TSH in range and protects fetal neurodevelopment. <b>Under-treatment is the harm to avoid</b>, and the rising demand means the dose usually needs to go <em>up</em> in the first trimester — the opposite of the instinct to minimise medication in pregnancy."},
+       {b:"table", head:["Hyperthyroidism — overt or subclinical","Action"], rows:[
+         ["<b>Refer everyone</b>","Urgent referral of all patients to antenatal and endocrinology, including women who are currently euthyroid (for example treated Graves'). Check TSH, FT3 and FT4 immediately and send to the specialist"],
+         ["<b>Drug of choice</b>","Propylthiouracil (PTU) is usually used in pregnant women, because of the increased risk of congenital abnormalities with carbimazole (see the MHRA alert). Use the lowest possible dose to maintain euthyroidism"],
+         ["<b>Risk–benefit</b>","The risks versus benefits of individual antithyroid treatments should be considered before prescribing — both PTU and carbimazole cross the placenta, and the specialist balances agent and timing"],
+         ["<b>Already on treatment</b>","<b>Ongoing blood monitoring is arranged and managed in secondary care</b>"],
+         ["<b>Symptom control</b>","For adrenergic symptoms (tremor, tachycardia) while awaiting specialist review, seek endocrinology advice — a beta-blocker may be used short-term"],
+         ["<b>Aetiology</b>","Distinguish Graves' disease from gestational transient thyrotoxicosis (hCG-driven, often with hyperemesis) — specialist-led, because management differs"]
+       ]},
+       {b:"why", html:"Carbimazole, and its active metabolite methimazole, is associated with a recognised embryopathy, so the MHRA advises effective contraception and specialist-guided use; PTU is generally preferred in the first trimester despite its own hepatic risks. Because the agent choice, dose and timing are a fine specialist balance — and Graves' antibodies can affect the fetus — every case is referred, even when the mother is currently euthyroid."}
+     ]},
+
+    {id:"ppt", nav:"Postpartum", title:"Postpartum thyroiditis, and stepping the dose back down",
+     sub:"Postpartum thyroiditis is common and classically biphasic. It usually resolves spontaneously in &lt;1 year.",
+     blocks:[
+       {b:"table", head:["Aspect","Detail"], rows:[
+         ["<b>Thyrotoxic pattern</b>","If initial TFTs show a thyrotoxic pattern → refer to a specialist for further tests to differentiate from Graves' disease. After the thyrotoxic phase resolves, recheck TFTs at 4–8 weeks (or if new symptoms) to screen for the hypothyroid phase"],
+         ["<b>Hypothyroid pattern</b>","If TFTs show a hypothyroid pattern → seek specialist advice on whether to start levothyroxine"],
+         ["<b>Who to suspect</b>","Check TFTs after delivery — particularly with a goitre, non-specific symptoms suggestive of thyroiditis, a history of PPT or autoimmune thyroid disease, or TPOAb positivity"],
+         ["<b>When to check</b>","<b>Check TSH and FT4 at 6–8 weeks postpartum in at-risk women</b>"],
+         ["<b>History of resolved PPT</b>","Offer annual TFT monitoring; screen before a future pregnancy and at 6–8 weeks after any pregnancy — there is a high risk of permanent hypothyroidism and of recurrence"],
+         ["<b>Relapse risk</b>","There is a significant risk of relapse — do not discharge from follow-up too early"]
+       ]},
+       {b:"why", html:"PPT typically runs a thyrotoxic phase — destructive release of stored hormone — followed by a hypothyroid phase before recovery. Distinguishing the thyrotoxic phase from new Graves' disease matters, because Graves' needs antithyroid drugs whereas PPT thyrotoxicosis does not. The high rate of eventual permanent hypothyroidism and recurrence is why resolved PPT earns annual monitoring and pre-pregnancy screening."},
+       {b:"table", head:["Postpartum — dose and follow-up","Detail"], rows:[
+         ["<b>Was on levothyroxine before pregnancy</b>","The dose will need to be decreased back to the pre-pregnancy dose as advised by a specialist. Check TFTs at 6 weeks postpartum"],
+         ["<b>Started levothyroxine in pregnancy</b>","Discuss with the specialist whether any dose changes are required postpartum, and the frequency of TFT monitoring"],
+         ["<b>Hyperthyroidism postpartum</b>","Significant risk of relapse of Graves' after delivery — check TFTs after delivery and continue specialist-led monitoring"],
+         ["<b>Breastfeeding</b>","Levothyroxine is safe; PTU and carbimazole are used at the lowest effective dose under specialist guidance — do not stop thyroid treatment to breastfeed without advice"],
+         ["<b>PPT hypothyroid phase</b>","If levothyroxine was started for PPT-related hypothyroidism, the specialist will advise on duration and a later trial of withdrawal — many recover"],
+         ["<b>Document the plan</b>","Record the postpartum dose change, the 6-week TFT, and the ongoing monitoring interval"]
+       ]},
+       {b:"why", html:"The pregnancy-driven rise in thyroxine requirement reverses after delivery, so a woman left on her pregnancy dose will become over-replaced — hence the prompt step back to the pre-pregnancy dose and a 6-week TFT check. Graves' disease characteristically relapses postpartum, which is why hyperthyroid women stay under specialist monitoring after delivery."}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Monitoring schedule and higher-risk groups",
+     blocks:[
+       {b:"table", head:["When","What"], rows:[
+         ["<b>At pregnancy confirmation</b>","Measure TFTs as soon as pregnancy is confirmed — the earliest window for dose adjustment"],
+         ["<b>At antenatal booking</b>","<b>Recheck TFTs at booking and act on trimester-specific ranges</b>"],
+         ["<b>Each of the 2nd and 3rd trimesters</b>","At least once in the 2nd and once in the 3rd trimester — more often if titrating"],
+         ["<b>2–4 weeks postpartum</b>","<b>Recheck TFTs 2–4 weeks after delivery; watch for PPT and adjust doses</b>"],
+         ["<b>Type 1 diabetes — 3× PPT risk</b>","Check TSH, FT4 and TPOAb prior to pregnancy, at diagnosis of pregnancy, and at 3 and 6 months postpartum"],
+         ["<b>TPOAb-positive women</b>","Higher risk of PPT and of progression — a lower threshold for postpartum testing and follow-up"],
+         ["<b>Pre-conception optimisation</b>","In known thyroid disease, optimise TFTs and adjust levothyroxine before conception where possible"],
+         ["<b>Coordinate care</b>","Keep antenatal, endocrinology and primary care aligned on targets, doses and the monitoring plan"]
+       ]},
+       {b:"why", html:"Frequent, scheduled TFTs — at confirmation, booking, each trimester and postpartum — are what keep a moving target in range as requirements change through pregnancy and fall again after delivery. Women with type 1 diabetes carry a threefold PPT risk, so their antibody and TFT screening is more intensive and extends to 3 and 6 months postpartum."},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"📋 Preconception counselling", html:"For known thyroid disease — optimise control and adjust treatment before conceiving. Hypothyroid women often need an immediate dose increase once pregnant."},
+         {tone:"blue", h:"🧂 Iodine and absorption", html:"Adequate iodine intake. Take levothyroxine on an empty stomach, separated from iron, calcium and prenatal vitamins. Adherence is critical."},
+         {tone:"blue", h:"⚖️ The drug conversation", html:"Discuss the carbimazole and PTU teratogenicity balance with the specialist rather than making the switch alone."},
+         {tone:"cream", h:"🚭 Smoking", html:"<b>Support smoking cessation</b> as part of routine antenatal care."}
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same-day / admit", html:"Thyroid storm (fever, tachyarrhythmia, agitation), intractable vomiting or dehydration suggesting hyperemesis, or fetal concerns."},
+         {tone:"amber", h:"🟠 Bring testing forward", html:"Symptoms worsen, vomiting becomes intractable, or TFTs drift out of the trimester range — re-test early and re-discuss with the specialist."},
+         {tone:"blue", h:"🔁 After delivery", html:"Drop levothyroxine to the pre-pregnancy dose and recheck at about 6 weeks. Review for postpartum thyroiditis and screen high-risk (type 1 diabetes) women."},
+         {tone:"green", h:"📝 Document and coordinate", html:"Record the diagnosis, dose plan, monitoring schedule and referrals; keep antenatal, endocrine and primary care aligned."}
+       ]},
+       {b:"say", html:"Two things change now that you are pregnant, and both are counter-intuitive. First, your thyroid blood tests get read against different ranges — a lower TSH in the first three months is normal and does not mean anything is wrong. Second, your levothyroxine dose usually needs to go up, not down: the baby cannot make its own thyroid hormone early on and relies entirely on yours. So I want to arrange the blood test today rather than waiting for your booking appointment, and speak to the specialist about increasing the dose straight away. After the baby is born we drop it back to your old dose and check again at six weeks."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral and emergency criteria",
+     sub:"The threshold to refer is deliberately low — everyone, even the euthyroid.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency admission", html:"Severe hyperthyroidism or thyroid storm, or intractable vomiting suggesting hyperemesis gravidarum."},
+         {tone:"purple", h:"2WW thyroid · NICE NG12", html:"An unexplained thyroid lump — a nodule or goitre with suspected malignancy — goes on the suspected cancer pathway, independent of pregnancy."},
+         {tone:"amber", h:"Urgent antenatal + endocrinology", html:"All patients with overt or subclinical hypo- or hyperthyroidism, including euthyroid women with a history of thyroid disease. Check TSH and FT4 (plus FT3 if hyperthyroid) immediately and discuss while awaiting assessment."},
+         {tone:"blue", h:"New diagnosis", html:"New hypo- or hyperthyroidism in pregnancy → contact endocrinology for advice and guidance, and start the urgent referral."},
+         {tone:"green", h:"Postpartum thyroiditis", html:"Refer to endocrinology if TFTs are abnormal — urgency by clinical judgement."},
+         {tone:"cream", h:"Pre-conception", html:"Known thyroid disease planning pregnancy → optimise and refer for pre-pregnancy counselling and dose planning."}
+       ]},
+       {b:"why", html:"Thyroid disease in pregnancy is shared antenatal–endocrine–primary-care territory, and the threshold to refer is deliberately low — everyone, even the euthyroid — because the stakes for mother and fetus are high and the management is specialist: trimester targets, antithyroid drug choice, and Graves' antibody surveillance. Thyroid storm and hyperemesis are the emergencies; a suspicious nodule still goes down the 2WW cancer pathway."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 31-year-old on levothyroxine 100 micrograms for Hashimoto's rings the surgery having just had a positive pregnancy test at about 5 weeks. She feels well, her last TSH three months ago was normal, and she asks whether she should stop or reduce the tablet \u201cnow that I'm pregnant\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Corrects the assumption immediately — the dose goes UP, not down, and explains why (the fetus cannot make its own hormone in the first trimester); <b>arranges TFTs now rather than waiting for booking</b>; discusses a <b>30–50% increase from 4–6 weeks with the specialist</b>; makes the <b>urgent antenatal and endocrinology referral</b>; covers absorption — empty stomach, 4 hours from iron and calcium in her prenatal vitamins; sets out the <b>trimester monitoring schedule</b>; and — the step candidates miss — flags the postpartum step-down and the 6-week check at this first consultation, so she is not left over-replaced after delivery."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NW London Outpatient Pathways — Thyroid dysfunction in pregnancy (Issue 1, March 2021)<span class="rd"> — the referral thresholds, the 30–50% levothyroxine increase from 4–6 weeks, the monitoring schedule, and the postpartum step-down</span></li>'+
+         '<li><b>NICE NG145 — Thyroid disease: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng145" rel="noopener">nice.org.uk/guidance/ng145</a><span class="rd"> — diagnosis and management principles, and the specialist-led position for thyroid disease in pregnancy</span></li>'+
+         '<li><b>NICE NG145 — thyroid disease</b><br><a href="https://www.nice.org.uk/guidance/ng145" rel="noopener">nice.org.uk/guidance/ng145</a><span class="rd"> — primary-care assessment, postpartum thyroiditis, and the monitoring intervals</span></li>'+
+         '<li><b>MHRA Drug Safety Update — carbimazole and congenital malformations</b><span class="rd"> — the carbimazole embryopathy risk, the advice on effective contraception, and the preference for propylthiouracil in the first trimester</span></li>'+
+         '<li><b>Endocrine Society and American Thyroid Association pregnancy guidance</b><span class="rd"> — trimester-specific reference ranges, and Graves\u2019 antibody surveillance in pregnancy</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — consider a suspected cancer pathway referral for thyroid cancer in people with an unexplained thyroid lump; pregnancy does not alter this</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — levothyroxine, propylthiouracil and carbimazole dosing, and beta-blocker use for adrenergic symptoms</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Thyroid disease in pregnancy — NW London Outpatient Pathways (Issue 1, March 2021), NICE NG145, NICE, the MHRA Drug Safety Update on carbimazole, Endocrine Society and ATA pregnancy guidance, and NICE NG12. Antithyroid drugs and antenatal thyroid care are specialist-led: always apply trimester-specific reference ranges and refer urgently. The non-pregnant conditions are covered by the <a href=\"hypothyroidism.html\">hypothyroidism</a> and <a href=\"hyperthyroidism.html\">hyperthyroidism</a> protocols. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

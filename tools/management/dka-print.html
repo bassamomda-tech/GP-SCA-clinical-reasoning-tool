@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DKA — Protocol · Reasoning GP</title>
+<meta name="description" content="Diabetic ketoacidosis: the JBDS diagnostic triad, recognition in primary care, euglycaemic DKA on SGLT2 inhibitors, the hospital protocol (fluids, fixed-rate insulin, potassium before insulin if low), cerebral oedema in children, and the prevention work the GP owns." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/dka.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790195406534963 tools/management/dka.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="DKA protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🩺",
+  title:"Diabetic ketoacidosis — recognition, emergency action and prevention",
+  eyebrow:"Protocol · DKA is never managed in primary care",
+  stemTitle:"Ketones and acidosis define DKA — not the glucose. Recognise it, call 999, and never omit the insulin",
+  stemSub:"One page for the whole condition: the JBDS triad and severity bands, what a GP can and cannot manage (pre-DKA ketosis yes, confirmed DKA never), euglycaemic DKA on SGLT2 inhibitors, the hospital protocol so you can follow what is happening and hand over well, cerebral oedema as the paediatric killer, and the prevention work that actually belongs to primary care — sick-day rules, ketone meters, CGM, and the psychological causes of insulin omission.",
+  guideline:"JBDS 2023 · NICE NG17 · ISPAD 2022 · TREND-UK",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"JBDS DKA guidelines (2023)"},
+    {t:"NICE NG17 — type 1 diabetes (upd. 2023)"},
+    {t:"ISPAD DKA guidelines (2022)"},
+    {t:"TREND-UK sick-day rules · BNF"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Recognise</b><small>999 · cerebral oedema</small></a><a href="#confirm"><b>Criteria</b><small>Triad · severity · triggers</small></a><a href="#workup"><b>Assess</b><small>History · exam · tests</small></a><a href="#ladder"><b>Hospital</b><small>JBDS protocol</small></a><a href="#lifestyle"><b>Prevent</b><small>The GP\'s job</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ The triad — all three required", html:"Ketonaemia ≥3.0 mmol/L (or ketonuria ≥2+) AND glucose &gt;11 mmol/L (or known diabetes regardless of glucose) AND acidosis — bicarbonate &lt;15 mmol/L or venous pH &lt;7.3. <b>999. DKA cannot be managed in primary care.</b>"},
+    {tone:"red", h:"Potassium before insulin if K⁺ is low", html:"<b>If K⁺ is <3.5 mmol/L, do NOT start insulin until it is corrected</b> — cardiac arrhythmia risk. Patients in DKA are always total-body potassium depleted even when the serum level looks normal or high, because acidosis drives K⁺ out of cells; insulin then drives it back in and the level can crash within 1–2 hours."},
+    {tone:"amber", h:"Euglycaemic DKA — the one that gets missed", html:"Normal or mildly raised glucose (typically 11–16 mmol/L) with ketones ≥3.0 and pH &lt;7.3, on an SGLT2 inhibitor. Triggered by fasting, alcohol, infection, surgery or a low-carbohydrate diet, in patients on empagliflozin, dapagliflozin, canagliflozin or ertugliflozin. Always check ketones, not just glucose, in any unwell patient on insulin or a gliflozin."},
+    {tone:"blue", h:"Never omit insulin — including the basal", html:"Missed insulin is the commonest preventable trigger, causing roughly 20–30% of DKA admissions. And in hospital the <b>long-acting basal insulin continues throughout DKA treatment</b> (JBDS 2023) — stopping it causes rebound hyperglycaemia and ketosis when the infusion stops."},
+    {tone:"purple", h:"Cerebral oedema is the paediatric killer", html:"Responsible for about 70–80% of DKA-related deaths in children, with a mortality of roughly 20–50%. Any child in DKA who develops headache, agitation or a change in conscious level during treatment has cerebral oedema until proved otherwise \u2014 stop the fluids, give mannitol, transfer to PICU."},
+    {tone:"green", h:"What primary care actually owns", html:"Pre-DKA ketosis (blood ketones 1.5–2.9) can be managed with sick-day rules — confirmed DKA never can. The rest of the GP's job is prevention: a working ketone meter, written sick-day rules, CGM, and asking directly about insulin omission."}
+  ],
+  pathwaySub:"The whole task in five moves. The red step is a phone call, not a treatment.",
+  pathway:[
+    {title:"Check glucose AND ketones", html:"In any unwell person with diabetes — polyuria, thirst, vomiting, abdominal pain, drowsiness, Kussmaul breathing, ketotic breath — and in anyone unwell on insulin or an SGLT2 inhibitor, whatever the glucose.", alert:true},
+    {title:"Apply the triad", html:"Ketones ≥3.0 + glucose &gt;11 (or known diabetes) + acidosis = DKA → 999. Ketosis without acidosis is <b>pre-DKA</b> — sick-day rules and correction insulin, with a ketone recheck."},
+    {title:"Resuscitate and hand over", html:"<b>IV access, 0.9% saline, and do not delay transfer.</b> Tell the receiving team the ketone level, the glucose, the potassium if known, and <b>the precipitant you suspect</b>."},
+    {title:"Know the hospital protocol", html:"Fixed-rate insulin at 0.1 unit/kg/h, basal insulin continued, potassium replaced by band, 10% dextrose added when glucose falls below 14 — so you can follow the discharge summary and continue the plan."},
+    {title:"Own the prevention", html:"Sick-day rules at every review, a prescribed <b>blood ketone meter</b>, CGM, and <b>a psychological assessment where insulin omission is suspected</b>."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Recognise", title:"Emergency recognition — and the four situations that change the plan",
+     blocks:[
+       {b:"table", head:["Presentation","What it is","Action"], rows:[
+         ["Known or new diabetes + glucose &gt;11 mmol/L + ketonuria ≥2+ or blood ketones ≥3.0 mmol/L + bicarbonate &lt;15 or venous pH &lt;7.3","<b>Diabetic ketoacidosis confirmed</b>","999. IV access. IV 0.9% NaCl. Fixed-rate insulin infusion (FRIII) 0.1 units/kg/h. U&amp;E and VBG hourly initially. Never stop insulin until ketones are <0.3 mmol/L"],
+         ["DKA + headache + vomiting + confusion + drowsiness + bradycardia + a fixed dilated pupil in a child","Cerebral oedema — the most feared complication in children (mortality about 20–50%)","999. STOP the current IV fluids. IV mannitol 0.5–1 g/kg (or hypertonic saline 3%, 5 mL/kg over 30 minutes). Paediatric ICU immediately"],
+         ["Glucose &gt;30 mmol/L + osmolality &gt;320 mOsm/kg + confusion + no or minimal ketosis + severe dehydration in an older person with type 2 diabetes","<b>Hyperosmolar hyperglycaemic state (HHS) — not DKA</b>","999. Slower correction — maximum osmolality fall of 3–8 mOsm/kg/h, and no immediate insulin until the sodium is corrected. IV 0.9% NaCl"],
+         ["DKA + chest pain + ECG changes + potassium >6.0 or <3.0 mmol/L on IV insulin","<b>Dangerous potassium abnormality</b>","999. Continuous cardiac monitoring. Add KCl to IV fluids. Do NOT give insulin if K⁺ is below 3.5 mmol/L until corrected"],
+         ["<b>DKA in pregnancy, any trimester</b>","Fetal mortality of roughly 9–35% even with apparently mild maternal symptoms","<b>999. Obstetric team and obstetric ICU, with fetal monitoring.</b> The glucose threshold is lower in pregnancy — euglycaemic DKA can occur at a glucose of 11–13 mmol/L, particularly on an SGLT2 inhibitor or when fasting"],
+         ["Normal or mildly raised glucose + ketonaemia ≥3.0 + acidosis + recent SGLT2 inhibitor use","<b>SGLT2 inhibitor-induced euglycaemic DKA</b>","999. Stop the SGLT2 inhibitor. DKA protocol with insulin plus dextrose to maintain the glucose. <b>SGLT2 inhibitors must be stopped 3 days before ANY elective surgery</b>"]
+       ]},
+       {b:"why", html:"Cerebral oedema in paediatric DKA is a complication of treatment as much as of disease — it accounts for about <b>70–80% of DKA-related deaths in children</b>, and is associated with rapid fluid administration (>20 mL/kg in the first hour), too rapid a fall in plasma osmolality (more than 3–4 mOsm/kg/h), too rapid a fall in glucose (>5 mmol/L/h), and a high blood urea on presentation. ISPAD therefore recommends initial resuscitation of 10 mL/kg 0.9% NaCl over 30–60 minutes (maximum 20 mL/kg) for haemodynamic compromise — not the historical 20 mL/kg boluses; a maximum 5% deficit replaced over 48 hours; a glucose fall held at 3–5 mmol/L/h; and never more than 5% dextrose in the replacement fluid."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","DKA has no NICE NG12 suspected-cancer criterion, and none should be invented for one. It is a metabolic emergency. The one adjacency worth remembering afterwards is that new-onset diabetes in an older patient with weight loss deserves thought about pancreatic cancer — NG12 gives direct-access CT within 2 weeks for people aged 60 and over with weight loss plus new-onset diabetes — but that is a post-discharge work-up, never a reason to delay the 999 call"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Criteria", title:"Diagnostic criteria, severity, and what precipitated it",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>JBDS diagnostic criteria — all THREE required</b>","<b>1 Ketonaemia ≥3.0 mmol/L</b> (or ketonuria ≥2+ on dipstick). 2 Hyperglycaemia — glucose &gt;11 mmol/L, or known diabetes regardless of glucose. <b>3 Acidosis — bicarbonate &lt;15 mmol/L OR venous pH &lt;7.3</b> on VBG"],
+         ["<b>Mild DKA</b>","<b>pH 7.25–7.30, bicarbonate 15–18 mmol/L, GCS 15</b> — may be managed on a general medical ward"],
+         ["<b>Moderate DKA</b>","<b>pH 7.00–7.24, bicarbonate 10–14 mmol/L, GCS 15</b> — medical ward or high dependency"],
+         ["<b>Severe DKA</b>","<b>pH <7.00, bicarbonate <10 mmol/L, GCS <15</b> — ICU or HDU"]
+       ]},
+       {b:"table", head:["Precipitant","Frequency / note"], rows:[
+         ["<b>New-onset type 1 diabetes</b>","<b>30–40% of DKA</b> — the first presentation"],
+         ["<b>Infection</b>","<b>The commonest precipitant</b> — UTI, pneumonia, skin or soft-tissue infection. <b>Always look for the source</b>"],
+         ["<b>Insulin omission</b>","<b>About 20–30% of DKA</b> — a disrupted routine, deliberate self-harm, or an eating disorder"],
+         ["<b>Myocardial infarction or acute coronary syndrome</b>","<b>Always check ECG and troponin</b>"],
+         ["Pregnancy","Lower glucose threshold; euglycaemic DKA more common"],
+         ["<b>SGLT2 inhibitor</b>","<b>Euglycaemic DKA</b>"],
+         ["Cocaine and recreational drugs","Sympathomimetic insulin resistance"]
+       ]},
+       {b:"table", head:["","DKA","HHS"], rows:[
+         ["Usual type","<b>Predominantly type 1</b>","<b>Predominantly type 2</b>"],
+         ["Glucose","Typically <b>14–40 mmol/L</b>","Typically <b>&gt;30 mmol/L</b>"],
+         ["Ketosis","<b>Severe — blood ketones ≥3.0</b>","<b>None or minimal — ketones <3.0 mmol/L, bicarbonate >15</b>"],
+         ["pH","<b>Below 7.3</b>","Normal or mildly reduced"],
+         ["Osmolality","Moderately raised (<b>300–320 mOsm/kg</b>)","<b>Markedly raised — above 320 mOsm/kg</b>"],
+         ["Onset and correction","Hours to days; <b>resolution expected within 24 hours</b>","<b>Days to weeks; slow correction over 48–72 hours</b> because of cerebral oedema risk from overcorrection"],
+         ["Mortality","\u2014","<b>Significantly higher than DKA — 15–20%</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Mixed DKA and HHS</b>","<b>About 20–30% of hyperglycaemic emergencies have features of both</b> — moderately raised ketones (1.5–3.0) with glucose above 25, bicarbonate 15–18 and osmolality above 320. Use the JBDS HHS/DKA crossover protocol: prioritise slow osmolality correction while managing the ketosis, with specialist diabetes or endocrine input"],
+         ["<b>Type 2 DKA — rare but increasingly recognised</b>","Usually precipitated by severe illness, particularly in Black and African Caribbean patients — ketosis-prone or \u201cFlatbush\u201d diabetes, a fulminant beta-cell exhaustion from severe hyperglycaemia. After resolution, roughly 30–40% can subsequently be managed without insulin. Identify with <b>HbA1c at presentation, C-peptide</b> (preserved beta-cell function) and <b>GAD antibody</b> if there are type 1 features"]
+       ]},
+       {b:"why", html:"<b>Insulin omission is significantly under-recognised.</b> A substantial proportion of these admissions involve young women with type 1 diabetes and eating disorders — \u201cdiabulimia\u201d, the intentional restriction of insulin to lose weight, since glycosuria causes caloric loss. It affects roughly 30–40% of young women with type 1 diabetes and carries about three times the mortality risk of type 1 diabetes without an eating disorder. Any young woman with type 1 diabetes and recurrent DKA should be screened for an eating disorder (SCOFF) and offered a specialist eating disorder service with type 1 diabetes expertise — the overlap needs integrated care from the diabetes specialist nurse, dietitian and psychologist."}
+     ]},
+
+    {id:"workup", nav:"Assess", title:"History, examination and investigations",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>History</b>","<b>Polyuria and polydipsia (osmotic), nausea, vomiting, abdominal pain</b> — which <b>can mimic a surgical abdomen (pseudo-peritoneum from ketonaemia)</b> — blurred vision, weakness, confusion. Duration of symptoms. The precipitating event: fever or infection symptoms, chest pain, <b>omission of insulin (ask directly and non-judgementally)</b>, new medication. The current insulin regimen — dose, type, timing, last dose. Glucose trends and ketone monitoring (<b>JBDS recommends blood rather than urine ketones</b>). Known triggers: surgery, trauma, stress. First presentation of diabetes"],
+         ["<b>Examination</b>","<b>Conscious level (GCS).</b> Hydration — dry mucous membranes, reduced skin turgor, sunken eyes. <b>Kussmaul breathing</b> (deep sighing respirations blowing off CO₂ to compensate). The smell of ketones — pear-drop or acetone breath, present in only about 50% of cases, so it cannot be relied on. Abdominal tenderness from pseudo-peritoneum, which resolves with DKA treatment — but if the abdomen is hard and peritonitic, consider a true surgical emergency. Peripheral venous access. Signs of infection (chest, urine, skin). <b>Temperature — hypothermia is a poor prognostic sign in DKA</b>"],
+         ["<b>Investigations</b>","<b>Capillary blood ketones</b> (point of care; ≥3.0 = DKA) · VBG for pH, bicarbonate and potassium — critical, obtained simultaneously · FBC, U&amp;E, <b>CRP</b>, glucose, HbA1c · <b>blood cultures, urine culture and CXR</b> to find the trigger · <b>ECG</b> (hyperkalaemia and hypokalaemia changes, and MI) · urinalysis and MSU · <b>troponin</b> if chest pain or ECG changes · <b>serum amylase or lipase</b> if abdominal pain — noting that <b>amylase is often mildly raised in DKA without true pancreatitis</b>"]
+       ]},
+       {b:"warn", html:"Potassium management is the most counterintuitive part of the protocol. Patients in DKA are <b>always total-body potassium depleted</b> — from osmotic diuresis, vomiting and intracellular loss — <b>even when the serum potassium looks normal or high on admission</b>, because severe acidosis drives K⁺ out of cells in exchange for H⁺ entering to buffer it. As insulin is given and the acidosis corrects, potassium moves rapidly back into cells and the serum level can fall precipitously to dangerous hypokalaemia within 1–2 hours if replacement has not started. The JBDS rule: K⁺ >5.5 mmol/L — do not add potassium yet; K⁺ 3.5–5.5 mmol/L — add 40 mmol KCl to each litre of 0.9% NaCl; K⁺ <3.5 mmol/L — do NOT start insulin until corrected, give IV KCl and recheck first."}
+     ]},
+
+    {id:"ladder", nav:"Hospital", title:"The JBDS 2023 treatment protocol",
+     sub:"Not a primary care task — but knowing it lets you hand over well and continue the plan after discharge.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Immediate resuscitation — first 30 minutes", when:"on arrival",
+          html:"<b>IV 0.9% NaCl 500 mL over 10–15 minutes</b> as a resuscitation bolus if haemodynamically compromised (systolic BP <90); <b>if stable, 1 L over 1 hour</b>. Two large-bore IV cannulae, continuous cardiac monitoring, urinary catheter if unconscious, and immediately <b>VBG, U&amp;E, capillary blood ketones and ECG</b>."},
+         {step:"Step 2", title:"Fixed-rate intravenous insulin infusion (FRIII)", when:"once potassium is known to be ≥3.5",
+          fromLabel:"resuscitated",
+          html:"<b>Insulin 0.1 units/kg/h (0.1 unit/kg/h) by infusion pump</b>, using short-acting soluble insulin (<b>Actrapid or Humulin S</b>). Continue the patient's long-acting basal insulin — do NOT stop Lantus, Levemir or Tresiba. Targets: ketone fall of ≥0.5 mmol/L/h, glucose fall of 3–4 mmol/L/h, bicarbonate rise of 3 mmol/L every 2 hours. When glucose falls <14 mmol/L (below 14), add 10% dextrose at 125 mL/h alongside the saline — do not reduce the insulin, because the ketosis must clear first."},
+         {step:"Step 3", title:"Ongoing fluid and potassium replacement", when:"after the initial bolus",
+          fromLabel:"deficit replacement",
+          html:"0.9% NaCl with KCl: 1 L over 2 h → 1 L over 2 h → 1 L over 4 h → 1 L over 4 h → 1 L over 6 h. Add 40 mmol/L KCl to each bag if K⁺ is 3.5–5.5; do NOT add if K⁺ is >5.5; if K⁺ is <3.5, hold the insulin, give IV KCl and recheck before restarting. <b>Potassium monitoring every 1–2 hours initially</b>, with hourly capillary glucose and ketones, and <b>VTE prophylaxis</b>. Practically, potassium is replaced once K⁺ is <5.5 and the patient is passing urine, because insulin drives K⁺ intracellularly."},
+         {step:"Step 4", title:"Resolution and transition to subcutaneous insulin", when:"ketones cleared",
+          fromLabel:"biochemical resolution",
+          html:"<b>DKA is resolved when blood ketones are <0.3 mmol/L AND bicarbonate is >18 mmol/L AND pH is >7.3.</b> Do NOT stop the IV insulin until the patient has eaten a meal AND subcutaneous insulin has been given — overlap by 30–60 minutes. Give the subcutaneous insulin at the normal meal dose with the meal, continue the infusion for 30 minutes afterwards, then stop it. <b>The admission HbA1c guides subsequent management.</b>"}
+       ]},
+       {b:"why", html:"\u201cNever stop the long-acting insulin\u201d is a deliberate change from older protocols. Historically the infusion was the only insulin given, and everything stopped at transition. JBDS 2023 specifies that patients on long-acting basal insulin (glargine/Lantus, detemir/Levemir, degludec/Tresiba) continue their usual dose throughout DKA treatment, even while on IV insulin — because abrupt cessation causes <b>rapid rebound hyperglycaemia and ketosis after the infusion stops</b>. Maintaining basal insulin reduces DKA recurrence after discharge and makes the transition smoother. For newly diagnosed type 1 diabetes presenting in DKA, the diabetes team sets the starting basal dose once the ketosis has resolved."}
+     ]},
+
+    {id:"lifestyle", nav:"Prevent", title:"Prevention — the part primary care owns",
+     sub:"Recognising early ketosis and applying sick-day rules correctly is what stops the next admission.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>JBDS sick-day rules for type 1 diabetes</b>","1 Never stop insulin — even if not eating; reduce the dose only if glucose is <6 mmol/L. 2 Test glucose every 2–4 hours. 3 Test blood ketones every 2–4 hours. 4 Increase rapid-acting insulin by 10–20% if ketones are rising or glucose is >14 mmol/L. 5 Drink plenty of sugar-free fluids (100–200 mL/hour). 6 Seek help if unable to keep fluids down, blood ketones ≥3.0 mmol/L, glucose >25 mmol/L (>25), or drowsy or confused. Full dose tables are on the <a href='diabetes-unwell-insulin.html'>unwell on insulin protocol</a>, and the drugs to pause are on the <a href='sick-day-rules.html'>sick day rules protocol</a>"],
+         ["<b>Ketone action thresholds</b>","<0.6 mmol/L = normal · 0.6–1.4 = monitor closely · 1.5–2.9 mmol/L = sick-day rules, call the diabetes team if not improving · 3.0 or above = DKA, call 999. Blood beta-hydroxybutyrate (BHB) is more sensitive and specific than urine ketones — urine reflects ketones from about 4–6 hours ago, blood is real time. A <b>Freestyle Optium Neo</b> meter with Optium β-ketone strips is <b>prescribable on FP10</b>"],
+         ["<b>Continuous glucose monitoring</b>","All type 1 patients are entitled to NHS-funded flash glucose monitoring — intermittently scanned CGM (isCGM) — (Freestyle Libre 2 or 3) or real-time CGM (Dexcom G7, Medtronic Guardian 4) under NICE NG17. A rising glucose with an upward trend arrow is the first warning of developing DKA, and CGM reduces DKA admissions by roughly 30–40%. The diabetes team initiates and trains; GPs issue the repeat prescriptions on FP10 and should not refuse to prescribe sensors for a patient already established on the system (Libre 2: 2 sensors per 28 days, 14-day wear; roughly £1,200–1,500 a year, cost-effective against avoided admissions)"],
+         ["<b>Insulin technology</b>","An insulin pump (CSII) reduces DKA rates by about 30–40% versus multiple daily injections in high-risk patients. Hybrid closed-loop systems (MiniMed 780G, iLet, Omnipod 5) are NICE-approved under TA943 (November 2023) for adults, children over 2 and pregnant women. The CREATE trial and other RCTs show time in target range (3.9–10 mmol/L) rising from about 60% to 70–75%, time in hypoglycaemia falling from about 4% to 2%, and a significant HbA1c reduction. Refer for assessment where there is recurrent DKA, recurrent or problematic hypoglycaemia, or an HbA1c >75 mmol/mol despite optimised injections"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"🏃 Exercise", html:"<b>High-intensity or prolonged exercise raises ketones in type 1 diabetes</b> through the counter-regulatory response. Test after exercise: if ketones rise >1.5 mmol/L with a raised glucose, give a correction dose. Fasted exercise without adequate insulin is a particular risk for exercise-related DKA. Take <b>15–30 g of carbohydrate before and during prolonged exercise</b>, and reduce basal insulin before prolonged aerobic exercise (DAFNE guidance)."},
+         {tone:"amber", h:"🍷 Alcohol", html:"Alcohol brings both risks: hypoglycaemia (it inhibits gluconeogenesis) and ketosis (if eating drops). Always eat when drinking. Do not reduce insulin before drinking \u201cto prevent a hypo\u201d — that risks DKA. Use CGM overnight to catch nocturnal hypoglycaemia, and <b>test blood ketones the morning after heavy drinking</b>."},
+         {tone:"blue", h:"🧠 Psychological support", html:"Diabetes distress, depression (2–3× the general-population prevalence) and eating disorders all matter here. Screen at every review with PHQ-9 and PAID (Problem Areas in Diabetes). Recurrent DKA from insulin omission → specialist eating disorder service plus diabetes psychology. NHS Talking Therapies; <b>Diabetes UK helpline 0345 123 2399</b>; <b>JDRF</b> for peer support."},
+         {tone:"cream", h:"🚗 Driving", html:"<b>Notify the DVLA if on insulin.</b> Group 1 (car): annual declaration; test glucose within 2 hours of driving and every 2 hours during the journey; do not drive if glucose is <5 mmol/L; keep rapid-acting glucose in the car. Group 2 (HGV/PCV): stricter — CGM evidence of sustained readings >5 mmol/L for 45 minutes before driving, and no severe hypoglycaemia in the preceding 12 months. Advise and document."},
+         {tone:"green", h:"🤰 Pre-conception (preconception) care", html:"DKA in pregnancy carries a fetal mortality of roughly 9–35%, at lower glucose thresholds. Target HbA1c <48 mmol/mol before conception; folic acid 5 mg daily (high-dose — type 1 diabetes carries an elevated neural tube defect (NTD) risk); retinopathy screening; refer to the joint diabetes–obstetric clinic before conception. In pregnancy: glucose targets 3.5–5.9 mmol/L fasting and <7.8 mmol/L one hour post-meal, with CGM mandatory (NG17)."},
+         {tone:"plain", h:"💊 SGLT2 inhibitor rules", html:"Stop when clinically unwell (infection, fever, unable to eat or drink), 3 days before elective surgery, and for any fasting procedure. Resume only after eating and drinking normally for 24–48 hours. Ensure patients have TREND-UK guidance and <b>document that it was given</b>."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"After DKA", title:"Post-DKA follow-up and the annual review",
+     blocks:[
+       {b:"table", head:["When","What"], rows:[
+         ["<b>Within 24–48 hours</b>","Diabetes specialist nurse contact — ketone meter checked, sick-day rules reinforced, insulin regimen reviewed"],
+         ["<b>Within 1 week</b>","GP appointment — precipitant addressed, HbA1c reviewed, psychological assessment if insulin omission is suspected"],
+         ["<b>At 3 months</b>","<b>HbA1c and diabetes team review</b>"],
+         ["<b>Escalation</b>","A second episode within 12 months → closed-loop pump referral plus psychology"],
+         ["<b>Regimen review</b>","Consider switching to <b>basal-bolus (MDI)</b> if not already, or a <b>pump (CSII) for recurrent DKA</b>. <b>Prescribe a blood ketone meter if not already owned</b>, and give sick-day rules written and verbally"]
+       ]},
+       {b:"table", head:["Annual type 1 review (NICE NG17)","Detail"], rows:[
+         ["HbA1c","<b>Target <48 mmol/mol for most adults</b> — individualise for hypoglycaemia unawareness or young children"],
+         ["Renal","<b>eGFR and albumin/creatinine ratio (nephropathy screen)</b>"],
+         ["Eyes and feet","<b>Annual retinopathy screening; monofilament and vibration testing</b>"],
+         ["Cardiovascular","Blood pressure, lipids, weight and BMI"],
+         ["Monitoring","CGM or flash monitoring review"],
+         ["<b>Thyroid</b>","Annual TFTs — autoimmune thyroid disease is 5–10× more common in type 1 diabetes"],
+         ["<b>Coeliac</b>","tTG-IgA at diagnosis and every 5 years — coeliac disease is 5–10× more common in type 1 diabetes"],
+         ["<b>DKA safety-netting</b>","At every review confirm: they know to ring 999 for ketones ≥3.0 or vomiting with inability to keep fluids down; the ketone meter works and the strips are in date; the sick-day rules are understood"]
+       ]},
+       {b:"why", html:"<b>Coeliac co-screening is the frequently missed annual task.</b> Prevalence in type 1 diabetes is about <b>5–10% against roughly 1% in the general population</b>, from shared genetic susceptibility (the HLA-DR3/DQ2 and DR4/DQ8 haplotypes). Coeliac disease in type 1 causes hypoglycaemia from malabsorption, worsened control despite good adherence, and increased DKA risk — and a strict gluten-free diet often improves glycaemic control markedly. Positive serology goes to gastroenterology for duodenal biopsy."},
+       {b:"say", html:"What happened to you is diabetic ketoacidosis — your body ran out of insulin, started burning fat for fuel, and the acid from that built up. The single most important thing going forward is that the insulin never stops, even on days you cannot eat: that is what caused this in most people it happens to. I want you to have a ketone meter at home with in-date strips, and a written plan for sick days. And if there is anything making it hard to take the insulin — how you feel about it, or about your weight — please tell me, because that is common and we can help with it properly."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999", html:"All DKA — confirmed or suspected (ketones ≥3.0 + glucose &gt;11 + pH &lt;7.3) · altered consciousness · <b>suspected cerebral oedema in a child</b> · <b>potassium <3.5 or >6.5</b> · <b>pregnancy with DKA</b>. Flag for HDU/ICU on arrival if pH <7.1, ketones >6, bicarbonate <5, K⁺ <3.5 on admission, reduced GCS, SBP <90 or oxygen saturations <92%."},
+         {tone:"amber", h:"Same-day hospital diabetes / endocrinology", html:"Mild DKA (pH 7.25–7.30) may be managed in a specialist unit if fully conscious, able to tolerate fluids and not vomiting — but it still needs IV access and hourly monitoring. <b>HHS (glucose above 30 with minimal ketosis) is always hospital.</b>"},
+         {tone:"blue", h:"Same-day diabetes team", html:"Blood ketones 1.5–2.9 mmol/L with vomiting · recurrent mild DKA · euglycaemic DKA (normal or mildly raised glucose with raised ketones in a patient on an SGLT2 inhibitor)."},
+         {tone:"cream", h:"GP management — pre-DKA only", html:"Ketonuria 1+ or blood ketones 1.5–2.9 with a raised glucose: sick-day rules, increase fluids, 4-hourly ketone checks. DO NOT manage confirmed DKA (ketones ≥3.0 or pH &lt;7.3) in primary care — always 999."},
+         {tone:"green", h:"After discharge — shared care", html:"<b>DSN follow-up within 24 hours, GP within 1 week.</b> Identify and address the precipitant; review the insulin regimen, sick-day rules and ketone monitoring; <b>psychological assessment if insulin was omitted</b>; then annual HbA1c, renal function, retinopathy and neuropathy checks."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 19-year-old with type 1 diabetes is brought in by her mother — two days of vomiting, abdominal pain, and now breathing oddly. Her glucose is 22. Her mother says she has been \"fine with her insulin\", but the young woman avoids the question when you ask her directly, and her HbA1c has been climbing for a year."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Checks ketones, not just glucose, and recognises the triad</b>; <b>calls 999 rather than attempting to manage it</b>; hands over the ketone level, glucose and suspected precipitant; asks about insulin omission directly and non-judgementally, with the mother out of the room; recognises the possibility of <b>diabulimia</b> and knows it needs an eating disorder service with diabetes expertise, not a telling-off; and — after discharge — arranges DSN contact within 24–48 hours, addresses the precipitant, and checks the ketone meter and sick-day rules rather than treating the admission as closed."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>JBDS-IP — Management of DKA in adults (2023)</b><span class="rd"> — the diagnostic triad, severity bands, fixed-rate insulin at 0.1 unit/kg/h, the potassium rules, the fluid schedule, resolution criteria, and the continue-the-basal-insulin change</span></li>'+
+         '<li><b>ISPAD — DKA and hyperglycaemic hyperosmolar state guidelines (2022)</b><span class="rd"> — paediatric fluid resuscitation limits, the osmolality and glucose fall rates, and cerebral oedema recognition and treatment</span></li>'+
+         '<li><b>NICE NG17 — Type 1 diabetes in adults (2015, updated 2023)</b><br><a href="https://www.nice.org.uk/guidance/ng17" rel="noopener">nice.org.uk/guidance/ng17</a><span class="rd"> — CGM and flash monitoring provision, the annual review set, HbA1c targets, and pregnancy monitoring</span></li>'+
+         '<li>NICE TA943 — Hybrid closed-loop systems for type 1 diabetes (November 2023)<br><a href="https://www.nice.org.uk/guidance/ta943" rel="noopener">nice.org.uk/guidance/ta943</a><span class="rd"> — NHS funding for adults, children over 2 and pregnant women; the CREATE trial time-in-range figures</span></li>'+
+         '<li><b>TREND-UK / NHS England — SGLT2 inhibitor sick-day rules</b><br><a href="https://trend-uk.org" rel="noopener">trend-uk.org</a><span class="rd"> — stop when unwell, 3 days before elective surgery or a fasting procedure; resume after 24–48 hours of eating and drinking normally</span></li>'+
+         '<li><b>MHRA Drug Safety Update — SGLT2 inhibitors and DKA</b><span class="rd"> — euglycaemic DKA at normal or mildly raised glucose</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion applies to DKA; the adjacent route worth remembering after discharge is direct-access CT within 2 weeks for people aged 60 and over with weight loss and new-onset diabetes</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — insulin prescribing, and the ketone meter and strip prescribing detail</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Diabetic ketoacidosis — JBDS 2023, NICE NG17 (updated 2023), ISPAD 2022, NICE TA943, TREND-UK sick-day rules and the BNF. DKA is never managed in primary care: ketones ≥3.0 with acidosis is a 999 call. Sick-day insulin adjustment and the drugs to pause during illness have their own protocols. Verify all doses against the current BNF."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

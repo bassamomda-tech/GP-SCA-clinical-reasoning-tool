@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hyperprolactinaemia — Protocol · Reasoning GP</title>
+<meta name="description" content="Raised prolactin in primary care: the sampling artefact and macroprolactin, drugs and hypothyroidism before imaging, the prolactin level bands that decide MRI, prolactinoma management with cabergoline, pituitary apoplexy, and the antipsychotic-induced case." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hyperprolactinaemia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Hyperprolactinaemia protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧫",
+  title:"Hyperprolactinaemia — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Repeat it properly, exclude macroprolactin, drugs and hypothyroidism — then the level itself tells you whether to image",
+  stemSub:"One page for the whole condition: recognise that prolactin is a stress hormone and a single raised sample often means nothing, exclude the three great mimics (macroprolactin, drugs, hypothyroidism) before imaging, use the level bands to decide who needs an MRI, treat prolactinoma with cabergoline — which normalises prolactin in over 90% and shrinks most tumours — and know the two emergencies: chiasmal compression and pituitary apoplexy.",
+  guideline:"Endocrine Society · Pituitary Society consensus",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"Endocrine Society · Pituitary Society — hyperprolactinaemia"},
+    {t:"Endocrine Society CPG — hyperprolactinaemia (2011)"},
+    {t:"Pituitary Society international consensus (2023)"},
+    {t:"MHRA cabergoline safety · DVLA 2022 · BNF"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Emergencies</b><small>Chiasm · apoplexy</small></a><a href="#confirm"><b>Causes</b><small>Macroprolactin · drugs · TSH</small></a><a href="#workup"><b>Work-up</b><small>Sampling · level bands</small></a><a href="#ladder"><b>Treat</b><small>Cabergoline · drug-induced</small></a><a href="#monitor"><b>Monitor</b><small>Withdrawal trial</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Two emergencies", html:"Visual field defect (bitemporal hemianopia) with headache and a significantly raised prolactin = macroadenoma compressing the optic chiasm — urgent MRI pituitary plus ophthalmology visual fields. Thunderclap headache with visual disturbance in someone with a known pituitary adenoma = pituitary apoplexy → hydrocortisone 100 mg IM and 999."},
+    {tone:"amber", h:"Prolactin is a stress hormone — repeat it properly", html:"<b>It rises with venepuncture, exercise, breast examination and food.</b> The standard is two fasting morning samples with 30 minutes' rest before venepuncture — ideally the cannula technique: insert a cannula, rest the patient 20–30 minutes, then draw without a new needle. <b>Many apparent cases are artefactual.</b>"},
+    {tone:"blue", h:"Macroprolactin is the great false positive", html:"Biologically inactive immunoglobulin-bound prolactin, measured by standard assays — 10–40% of apparent hyperprolactinaemia. Request PEG precipitation for any mildly raised prolactin (&lt;2000 mIU/L) without symptoms: if &gt;40% precipitates, it is macroprolactinaemia — no treatment, no MRI, no follow-up."},
+    {tone:"green", h:"Always check TSH first", html:"Primary hypothyroidism raises prolactin via TRH, typically to &lt;2000 mIU/L — and levothyroxine normalises it completely. <b>This is one of the commonest missed causes</b>, which is why TSH comes before any imaging."},
+    {tone:"purple", h:"The level bands decide the MRI", html:"&lt;400 normal · 400–1000 borderline (repeat, TSH, PEG) · 1000–2000 significant (investigate; MRI if no cause) · &gt;2000 strongly suggests prolactinoma (MRI mandatory) · &gt;5000 macroprolactinoma likely · &gt;10,000 almost certainly macroprolactinoma. All in mIU/L."},
+    {tone:"plain", h:"Cabergoline is decisively better than bromocriptine", html:"Normalises prolactin in about 90% versus 70%, restores ovulation in 80% versus 60%, shrinks tumour in 80–90% versus 60–70%, and is far better tolerated. <b>Bromocriptine's place is pregnancy</b>, where the safety record is longer."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step comes before any label.",
+  pathway:[
+    {title:"Screen for mass effect and apoplexy", html:"<b>Visual fields by confrontation, headache, cranial nerve palsy.</b> Thunderclap headache in a known adenoma → hydrocortisone 100 mg IM and 999 (adrenal crisis risk).", alert:true},
+    {title:"Repeat the sample properly", html:"<b>Two fasting resting morning samples, cannula technique preferred</b> — no breast examination or exercise beforehand."},
+    {title:"Exclude the three mimics", html:"<b>Macroprolactin (PEG), pregnancy (hCG), and hypothyroidism (TSH)</b> — plus a full drug review, U&amp;E for CKD, and the neurogenic causes."},
+    {title:"Image if the rise is unexplained", html:"MRI pituitary with gadolinium if prolactin is above 1000 on two fasting samples with no drug or thyroid cause, or any level with symptoms, or above 2000 at any level. Not needed if PEG confirms macroprolactinaemia, or a clear drug cause with no symptoms."},
+    {title:"Treat and follow up", html:"Cabergoline for prolactinoma; drug review with the prescriber for drug-induced. Then prolactin and MRI surveillance, bone health, and a <b>withdrawal trial after 2 years of stability</b>."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Emergencies", title:"Red flags — macroadenoma and the visual emergency",
+     sub:"Raised prolactin is common. Significant hyperprolactinaemia requires exclusion of a pituitary tumour, and visual symptoms make it urgent.",
+     blocks:[
+       {b:"table", head:["Presentation","Suggests","Action"], rows:[
+         ["Prolactin significantly elevated + visual field defect (bitemporal hemianopia) + headache","Pituitary macroadenoma (&gt;10 mm) compressing the optic chiasm — a visual emergency","<b>Urgent MRI pituitary plus ophthalmology visual field testing.</b> Cabergoline reduces tumour size rapidly in prolactinoma; neurosurgery if a non-prolactinoma macroadenoma is causing compression"],
+         ["<b>Prolactin very high (&gt;5000 mIU/L) + no drug cause + amenorrhoea</b>","<b>Likely prolactinoma — the commonest pituitary tumour</b>","MRI pituitary mandatory. &gt;5000 is probably a macroprolactinoma or large microadenoma. Endocrinology referral urgently"],
+         ["On antipsychotics + prolactin &gt;2000 + galactorrhoea + sexual dysfunction","Antipsychotic-induced hyperprolactinaemia — dopamine receptor blockade. Risk of osteoporosis from long-term hypogonadism","Psychiatric team review (switch to aripiprazole — a partial D2 agonist that rarely raises prolactin) or endocrinology co-management"],
+         ["Sudden severe (thunderclap) headache + visual disturbance + nausea in a known pituitary adenoma","<b>Pituitary apoplexy — haemorrhage or infarction into the tumour</b>","Medical emergency → 999. IV hydrocortisone (adrenocortical crisis risk). Neurosurgery and endocrinology"],
+         ["Raised prolactin + chest wall stimulation or nipple piercings + no other cause","<b>Physiological neurogenic hyperprolactinaemia</b> — confirm the history carefully","Exclude all pharmacological and structural causes before accepting a neurogenic aetiology. Stop nipple stimulation for 3 months and retest"],
+         ["Prolactin consistently elevated despite stopping the causative drug for 3 or more months","Underlying pituitary pathology previously masked by drug-induced elevation","<b>MRI pituitary mandatory — even when a drug cause was initially assumed</b>"]
+       ]},
+       {b:"why", html:"Pituitary apoplexy is one of the most dramatic emergencies in endocrinology. It causes <b>sudden severe headache of thunderclap onset, maximal at onset</b>, often with diplopia (cranial nerves III, IV and VI, which pass through the cavernous sinus immediately lateral to the pituitary), visual field defects, and profound adrenal insufficiency — the posterior pituitary is usually spared, but anterior pituitary destruction causes acute cortisol deficiency. <b>The headache pattern can mimic subarachnoid haemorrhage.</b> The key GP action is immediate hydrocortisone 100 mg IM to prevent acute adrenal crisis, plus 999 — and any patient with a known pituitary adenoma who develops acute severe headache, with or without visual symptoms, should be treated as apoplexy until proved otherwise."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Hyperprolactinaemia has no NICE NG12 suspected-cancer criterion, and none should be invented for one — prolactinomas are benign, and the urgent routes here are visual and endocrine rather than oncological. One genuine cancer adjacency sits inside the galactorrhoea assessment: bilateral non-bloody discharge in a non-pregnant, non-breastfeeding woman points to hyperprolactinaemia, but unilateral or bloody nipple discharge is breast pathology and needs urgent breast referral with mammogram and ultrasound, on the NG12 breast route rather than this pathway. And where imaging shows a <b>non-prolactinoma sellar mass</b>, that is managed as a CNS tumour by neurosurgery"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Causes", title:"Causes — classified, with the three mimics first",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Physiological (normal)</b>","Pregnancy (prolactin rises 10-fold) · breastfeeding and lactation · stress (venepuncture, physical examination) · sleep (the nocturnal prolactin surge) · sexual intercourse · nipple stimulation · the newborn period · after meals. Always repeat a fasting resting morning sample before investigating further"],
+         ["<b>Pharmacological — the commonest pathological cause</b>","Dopamine antagonists: antipsychotics (haloperidol, risperidone, amisulpride, olanzapine all raise prolactin; aripiprazole rarely does), metoclopramide, domperidone, prochlorperazine, chlorpromazine · antidepressants (SSRIs and TCAs — modest elevation) · antihypertensives: methyldopa, verapamil · H2 blockers: cimetidine · opioids (chronic use) · oestrogens (COC — mild elevation)"],
+         ["<b>Pituitary causes</b>","Prolactinoma — microprolactinoma &lt;10 mm is the commonest pituitary tumour, prevalence around 100 per million; macroprolactinoma &gt;10 mm. Stalk compression by any sellar or parasellar mass (craniopharyngioma, non-functioning adenoma, meningioma) causes \u201cdisconnection hyperprolactinaemia\u201d by removing dopamine inhibition"],
+         ["<b>Systemic disease</b>","Primary hypothyroidism (TRH stimulates prolactin release — ALWAYS check TSH first) · chronic kidney disease (reduced renal clearance — can raise prolactin 3–4×) · cirrhosis (reduced hepatic clearance) · PCOS (mild elevation, often co-existing) · chest wall injury, surgery or herpes zoster (neurogenic — the same reflex as nipple stimulation)"],
+         ["<b>Macroprolactinaemia</b>","Prolactin forms large immunoglobulin complexes (macroprolactin) that are biologically inactive but are measured by standard assays, giving a falsely elevated total prolactin. Prevalence 10–40% of apparent hyperprolactinaemia. PEG (polyethylene glycol) precipitation test: if &gt;40% of prolactin precipitates, this is macroprolactinaemia — no clinical significance and no treatment needed. <b>Request PEG when prolactin is mildly elevated without symptoms</b>"]
+       ]},
+       {b:"why", html:"The hypothyroidism–prolactin connection is one of the most commonly missed causes of apparent hyperprolactinaemia — TRH stimulates both TSH and prolactin release, so primary hypothyroidism can cause clinically significant hyperprolactinaemia (typically &lt;2000 mIU/L), and levothyroxine normalises the prolactin completely. That is why TSH must always be checked before investigating further. Macroprolactinaemia is the most important cause of false-positive hyperprolactinaemia: immunoglobulin binding creates large, biologically inactive complexes that immunoassays measure but which cannot bind prolactin receptors in tissues, so there is no clinical effect; the complex is <b>too large to be filtered by the kidney and accumulates in serum</b>. A patient with macroprolactinaemia has a high measured prolactin but no symptoms — no amenorrhoea, no galactorrhoea, no infertility, no headache."}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Assessment, sampling technique, and the level bands",
+     blocks:[
+       {b:"table", head:["Domain","Detail"], rows:[
+         ["<b>History</b>","Symptoms: amenorrhoea or oligomenorrhoea, galactorrhoea (spontaneous or expressed milk in a non-puerperal woman, or in a man), loss of libido, erectile dysfunction, infertility, headache, visual disturbance · drug history (antipsychotics, metoclopramide, domperidone, SSRIs, methyldopa, cimetidine, opioids) · pregnancy and breastfeeding status · menstrual history · stress around the blood test? recent exercise? breast examination before the test?"],
+         ["<b>Examination</b>","Visual fields by confrontation testing (bitemporal hemianopia from optic chiasm compression) · galactorrhoea — express gently: bilateral non-bloody suggests prolactinoma; unilateral or bloody suggests breast pathology · signs of hypothyroidism (cold, dry skin, bradycardia, delayed reflexes) · signs of acromegaly (co-secreting adenoma) · BMI · hirsutism and acne (PCOS)"],
+         ["<b>First-line investigations</b>","Prolactin × 2 (fasting resting morning samples, cannula technique preferred) · TSH / TFTs (primary hypothyroidism) · hCG (exclude pregnancy) · PEG precipitation test (macroprolactinaemia — if prolactin is &lt;2000 and the patient is asymptomatic)"],
+         ["<b>MRI pituitary indications</b>","MRI pituitary with gadolinium if: prolactin &gt;1000 mIU/L on two fasting samples with no drug or hypothyroid cause; OR any prolactin level with symptoms (visual disturbance, headache, hypogonadism); OR prolactin &gt;2000 at any level. NOT required: macroprolactinaemia confirmed by PEG, or drug-induced hyperprolactinaemia with an obvious cause and no symptoms"],
+         ["<b>Prolactin level bands (mIU/L)</b>","&lt;400 = normal · 400–1000 = borderline, likely physiological or pharmacological (repeat, check TSH, PEG test) · 1000–2000 = significant, investigate (PEG, TSH, drug review, MRI if no cause) · &gt;2000 = strongly suggests prolactinoma (MRI mandatory) · &gt;5000 = macroprolactinoma likely (MRI plus urgent endocrinology) · &gt;10,000 = almost certainly macroprolactinoma (endocrinology urgently)"]
+       ]},
+       {b:"warn", html:"<b>The prolactin cannula technique is the gold standard</b>, because a sample taken immediately after the stress of venepuncture contains stress-released prolactin on top of the baseline. The protocol: (1) insert a cannula at the start of the consultation; (2) let the patient sit quietly and rest for 20–30 minutes; (3) draw blood at the end of the rest period through the cannula, without a new needle insertion. Many practices do not follow this, and a single non-fasting sample taken during a stressful consultation will frequently show a falsely elevated prolactin. Where the protocol is impractical, ask the laboratory to perform PEG precipitation on any prolactin result between 400 and 2000 mIU/L before escalating to MRI."},
+       {b:"table", head:["Diagnosis","Features","Note"], rows:[
+         ["<b>Microprolactinoma (&lt;10 mm)</b>","Most common. Prolactin typically 1000–5000 mIU/L. Menstrual disturbance, galactorrhoea, infertility. No mass effect","Cabergoline. 95% remain stable or shrink; spontaneous resolution in about 30% over 4 years. Rarely requires surgery"],
+         ["<b>Macroprolactinoma (&gt;10 mm)</b>","Mass effect — visual field defect, headache, cranial nerve III/IV/VI palsy from cavernous sinus extension. Prolactin typically &gt;5000–10,000 mIU/L","Cabergoline first-line — shrinks the tumour in 80–90%, often dramatically. Surgery only if resistant to or intolerant of a dopamine agonist, or in an emergency (apoplexy threatening vision)"],
+         ["<b>Stalk or disconnection hyperprolactinaemia</b>","Any sellar or suprasellar mass (non-functioning adenoma, craniopharyngioma, Rathke's cleft cyst, meningioma) compresses the stalk, removing dopamine inhibition. Prolactin typically 400–3000 mIU/L — not as high as prolactinoma","MRI distinguishes it. DO NOT treat with a dopamine agonist — the mass is not a prolactinoma and cabergoline will not shrink it. Surgical removal if there is mass effect"],
+         ["<b>Drug-induced</b>","Typically prolactin &lt;3000 mIU/L, onset correlating with the drug start, resolving within 3 months of cessation","If prolactin does not normalise within 3 months of stopping the drug → MRI pituitary (an underlying structural cause masked by the drug)"]
+       ]},
+       {b:"why", html:"The level at which macroprolactinoma can be distinguished from stalk compression is clinically decisive. <b>A prolactin &gt;5000 mIU/L almost always indicates a prolactinoma</b> — tumour cells actively secreting prolactin, rather than compression merely releasing the inhibition on normal cells — whereas stalk compression by non-prolactin-secreting tumours typically produces levels &lt;3000 mIU/L. That matters because prolactinomas respond to cabergoline, while non-functioning adenomas with stalk compression do not and require surgical decompression. Getting it right prevents both under-treatment (missing a cabergoline-responsive prolactinoma) and inappropriate treatment (giving cabergoline where surgery is needed)."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Treatment — drug-induced, and prolactinoma",
+     blocks:[
+       {b:"table", head:["Scenario","Management"], rows:[
+         ["<b>Drug-induced hyperprolactinaemia</b>","(1) Identify and stop the causative drug where clinically safe — discuss with the prescribing team for antipsychotics. (2) Recheck prolactin 3 months after cessation; it should normalise. (3) If it does not → MRI pituitary. (4) If the drug cannot be stopped: add cabergoline ONLY after MRI confirms no pituitary lesion — do not add it empirically, or stalk compression from a structural lesion would be missed. (5) For antipsychotics: consider switching to aripiprazole or quetiapine (a psychiatric team decision)"],
+         ["<b>Microprolactinoma — cabergoline, first-line</b>","Cabergoline 0.25 mg twice weekly, titrated up by 0.25 mg every 4 weeks to normalise prolactin (usual maintenance 0.5–2 mg twice weekly). Normalises prolactin in over 90%, restores menstruation and fertility in 80%, and reduces tumour size by 30–50% in most patients. Cardiac valvulopathy risk is significant at Parkinson's-disease doses (10–20 mg/week); at prolactinoma doses (&lt;3 mg/week) it is minimal, but an echocardiogram is recommended after 3 years"],
+         ["<b>Microprolactinoma — bromocriptine, second-line</b>","Bromocriptine 1.25 mg OD increasing to 2.5–5 mg BD. Less well tolerated than cabergoline (nausea, postural hypotension, nasal stuffiness). Used in pregnancy, where there are more safety data — cabergoline is usually stopped when pregnancy is confirmed, and bromocriptine continued if required"],
+         ["<b>Macroprolactinoma — cabergoline, first-line</b>","Start low and titrate up rapidly. Serial MRI at 3, 6 and 12 months, with vision monitoring. Dramatic tumour shrinkage is common (80–90% within 6 months). Surgery is reserved for cabergoline intolerance, cabergoline resistance, or an emergency such as apoplexy"]
+       ]},
+       {b:"why", html:"<b>The evidence clearly favours cabergoline:</b> it normalises prolactin in approximately 90% versus 70% for bromocriptine, restores ovulation in 80% versus 60%, causes tumour shrinkage in 80–90% versus 60–70%, and is far better tolerated (once- or twice-weekly dosing versus BD or TDS, with much less nausea, postural hypotension and GI upset). The cardiac valvulopathy risk is principally established at the much higher Parkinson's doses of 10–20 mg/week; at prolactinoma doses of 0.5–2 mg/week the risk is low but not zero, and echocardiographic monitoring is recommended once cumulative exposure is significant — around 3 years of treatment. Bromocriptine remains preferred in women planning pregnancy, because its safety record in early pregnancy is much longer (established since the 1970s); the decision to stop or continue a dopamine agonist during pregnancy in macroprolactinoma requires specialist input."},
+       {b:"cards", cols:2, items:[
+         {tone:"purple", h:"🧠 The antipsychotic switching dilemma", html:"Antipsychotic-induced hyperprolactinaemia affects roughly 40–70% of patients on first-generation antipsychotics. Long-term consequences: osteoporosis from hypogonadism, sexual dysfunction, infertility, and a possible breast cancer risk (prolactin has growth-promoting effects on breast tissue). Amisulpride and risperidone are the most potent prolactin-raising agents; aripiprazole is a partial D2 agonist with negligible effect that can even reduce prolactin when added to another antipsychotic; quetiapine also has low potential. Raise it with the prescribing psychiatrist — do NOT adjust antipsychotics unilaterally."},
+         {tone:"green", h:"🤰 Pregnancy with prolactinoma", html:"Microprolactinoma: stop cabergoline or bromocriptine when pregnancy is confirmed. Tumour expansion in pregnancy is uncommon (&lt;3% in microadenoma) — monitor symptoms (headache, visual change). Breastfeeding is allowed; cabergoline is restarted postpartum if required. MRI if symptomatic (gadolinium avoided in the first trimester). Macroprolactinoma: continue the dopamine agonist throughout pregnancy — expansion risk 25–30% — as a specialist decision."},
+         {tone:"blue", h:"👶 Infertility from hyperprolactinaemia", html:"Normalise prolactin first — ovulation typically restores spontaneously once prolactin is normal. Add ovulation induction (clomifene) only if cycles do not resume after 3 months of normal prolactin. Stop the dopamine agonist when pregnancy is confirmed (microadenoma)."},
+         {tone:"amber", h:"🦴 Bone density", html:"Long-standing hyperprolactinaemia causes hypogonadism and so osteoporosis. DEXA after 2 or more years of significant hyperprolactinaemia with amenorrhoea. Treat if T-score below −2.5, or −1 to −2.5 with additional risk factors. Cabergoline restores oestrogen and improves bone density; HRT if hypogonadism persists in a premenopausal woman."},
+         {tone:"cream", h:"💊 Antipsychotic-induced — bone protection", html:"Long-term antipsychotic use with sustained hyperprolactinaemia → DEXA after 2 years. If osteopenia or osteoporosis: calcium and vitamin D, weight-bearing exercise; consider switching the antipsychotic (psychiatric team) or adding oestrogen or testosterone replacement (endocrinology)."},
+         {tone:"plain", h:"🥛 Galactorrhoea itself", html:"Physiological: avoid breast stimulation, use a well-fitting supportive bra. Cabergoline normalises prolactin and galactorrhoea stops in 80–90%. Reassure that galactorrhoea from a prolactinoma does not cause cancer. But unilateral or bloody discharge means urgent breast referral for mammogram and ultrasound."}
+       ]},
+       {b:"why", html:"The fertility restoration rate with prolactin normalisation is one of medicine's most satisfying outcomes — approximately 80% of women with hyperprolactinaemic amenorrhoea and infertility resume spontaneous ovulation and conceive within 12 months of prolactin normalisation on cabergoline. For most women with hyperprolactinaemia-related infertility, <b>the treatment is cabergoline alone, not IVF</b>. The sequencing matters: normalise prolactin first and observe for 3 months before adding ovulation induction, because adding clomifene or gonadotrophins while prolactin remains elevated will be ineffective — raised prolactin suppresses the hypothalamic-pituitary-ovarian axis upstream of where those drugs act."}
+     ]},
+
+    {id:"lifestyle", nav:"Living with it", title:"Practical support, bone health and driving",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"📅 Preconception planning", html:"Women who normalise prolactin on cabergoline and want to conceive: stop cabergoline when the pregnancy test is positive (microadenoma). Use a temperature chart or ovulation predictor kits (OPK) to time conception. If contraception is needed, barrier methods are preferred — the COC can suppress symptoms without treating the underlying prolactinoma and may mask recurrence, and an annual prolactin on the COC may be unreliable."},
+         {tone:"green", h:"🦴 Bone health maintenance", html:"Calcium at least 700 mg/day (1200 mg/day if at osteoporosis risk) — dairy, fortified plant milks, canned fish with bones, dark leafy greens. Vitamin D 10–25 micrograms OD, year-round in the UK. Weight-bearing exercise 150 minutes a week. Stop smoking — a major bone-loss accelerator."},
+         {tone:"purple", h:"💬 The psychological impact", html:"A pituitary tumour diagnosis causes significant anxiety, and patients often catastrophise about cancer or permanent disability. Say it plainly: <em>\u201cThis is a benign tumour — not cancer. It is almost always curable or permanently controllable with medication. Most people never need surgery.\u201d</em> <b>The Pituitary Foundation (pituitary.org.uk)</b> has excellent patient information; also the <b>Pituitary Network Association</b>."},
+         {tone:"amber", h:"⏰ Cabergoline adherence", html:"Twice-weekly dosing needs habit formation — link doses to a specific activity (Monday and Thursday evenings with a meal, since food improves tolerability and reduces nausea), plus a phone reminder. Do not skip doses — prolactin can rise quickly and menstruation stop within weeks of cessation."},
+         {tone:"red", h:"🚗 Driving and the DVLA", html:"A visual field defect from a macroadenoma means not driving until ophthalmology confirms the fields are safe — DVLA notification is required for any visual field defect. Notify and document the advice given, and retest formally before resuming. Cabergoline may cause sudden sleep onset — rare at low doses, but document the risk, especially where the occupation involves driving or machinery."},
+         {tone:"cream", h:"🫀 Echocardiogram monitoring", html:"On cabergoline beyond 3 years: echocardiogram for mitral and tricuspid valve assessment, with endocrinology guiding timing. At doses &lt;2 mg/week the risk is very low; clinically significant valvulopathy has been reported at doses &gt;3 mg/week."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitor", title:"Follow-up, surveillance and the withdrawal trial",
+     blocks:[
+       {b:"table", head:["Situation","Schedule"], rows:[
+         ["<b>On cabergoline</b>","Prolactin at 4–6 weeks after a dose change, then every 3 months until stable, then annually. MRI: microprolactinoma after 1 year then every 2 years if stable; macroprolactinoma at 3, 6 and 12 months then annually. Ophthalmology: macroprolactinoma with a field defect — 3-monthly until resolved"],
+         ["<b>Drug-induced</b>","Prolactin 3 months after stopping the causative drug. If normalised → no further investigation. If still elevated → MRI pituitary"],
+         ["<b>Withdrawal trial</b>","Consider a cautious trial of cabergoline withdrawal after 2 or more years of normalised prolactin with a stable or absent tumour on MRI — 20–30% remain in remission. Protocol: reduce the dose by 50% every 3 months while monitoring prolactin. If prolactin rises above normal → continue treatment. If it stays normal off treatment at 3 and 6 months → remission confirmed"],
+         ["<b>After withdrawal</b>","Prolactin at 3 months post-cessation, then 6 months, then annually for 3 years. If prolactin rises above normal → restart cabergoline. MRI if symptoms recur"],
+         ["<b>Macroprolactinaemia (PEG positive)</b>","No treatment or investigation required if the patient is asymptomatic. No MRI, no follow-up unless symptoms develop"]
+       ]},
+       {b:"why", html:"The cabergoline withdrawal trial is an important and underused management option — approximately 20–30% of microprolactinoma patients achieve sustained remission after withdrawal. Predictors of success: normalised prolactin for at least 2 years on treatment, no visible tumour on MRI (or dramatic size reduction), and a low pre-treatment prolactin. Guidelines recommend discussing withdrawal after 2 years of stability, and the approach <b>prevents patients taking a lifelong drug they may not need.</b>"},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Return immediately", html:"Sudden severe headache with visual disturbance in someone with a known pituitary tumour → pituitary apoplexy → 999 plus hydrocortisone · any new visual field defect → ophthalmology same day."},
+         {tone:"amber", h:"🟠 Urgent endocrinology", html:"Prolactin rising despite an adequate cabergoline dose · new visual symptoms on treatment · pregnancy with a macroprolactinoma — specialist review throughout."},
+         {tone:"blue", h:"🩸 Nipple discharge that changes", html:"\u201cIf the discharge becomes one-sided or bloodstained, tell me — that needs a different check.\u201d"},
+         {tone:"green", h:"✅ No follow-up needed", html:"Confirmed macroprolactinaemia with no symptoms: reassure, and discharge from follow-up."}
+       ]},
+       {b:"say", html:"There are different forms of prolactin in your blood. The standard test measures all of them together, but one form is a larger version that attaches to other proteins and cannot actually reach the cells that would respond to it. You have more of that inactive form, which makes the total reading look high — but your body is working perfectly normally. This is a characteristic of your blood chemistry, not a disease, and you do not need any treatment, scan or follow-up unless you develop symptoms. I appreciate that is a strange thing to be told after being sent for tests, so do ask me anything about it."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / same-day", html:"Pituitary apoplexy (sudden severe headache with visual disturbance in a known adenoma) → 999 plus hydrocortisone 100 mg IM · visual field defect with elevated prolactin → same-day ophthalmology and endocrinology."},
+         {tone:"amber", h:"Endocrinology — urgent (within 2 weeks)", html:"Prolactin &gt;1000 on two fasting samples with no clear drug or hypothyroid cause · any prolactin with visual symptoms or headache · macroprolactinoma on MRI · prolactin not normalising 3 months after stopping the causative drug."},
+         {tone:"blue", h:"Endocrinology — routine", html:"Confirmed microprolactinoma on MRI, for a management discussion (cabergoline versus expectant) · drug-induced hyperprolactinaemia causing significant symptoms where the drug cannot be changed · macroprolactinaemia with any symptoms (unusual)."},
+         {tone:"blue", h:"Psychiatry — antipsychotic-related", html:"Significant antipsychotic-induced hyperprolactinaemia (prolactin &gt;2000 with amenorrhoea, galactorrhoea or sexual dysfunction) → discuss switching to aripiprazole or quetiapine. Do NOT adjust antipsychotics without psychiatric team agreement."},
+         {tone:"cream", h:"GP management", html:"Confirmed macroprolactinaemia (PEG &gt;40% precipitation): reassure, no treatment, no MRI, no follow-up unless symptoms develop. Drug-induced, mild, asymptomatic with a known cause: reassure, advise drug review with the prescriber, recheck after cessation."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 29-year-old woman is referred back to you with a prolactin of 780 mIU/L, found when she attended about 4 months of irregular periods. The sample was taken at the end of a busy consultation in which you examined her breasts. She takes sertraline, and her TSH has not been checked."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises the result as potentially artefactual and repeats it properly — fasting, resting, morning, ideally cannula technique, with no preceding breast examination; <b>checks TSH and hCG before considering imaging</b>; requests PEG precipitation because the level is under 2000 and symptoms are equivocal; identifies <b>sertraline as a modest contributor without stopping it reflexively</b>; knows that 780 sits in the borderline 400–1000 band and does not by itself warrant an MRI; and — the step candidates miss — explains macroprolactin in plain language if it comes back positive, rather than leaving her feeling dismissed after being investigated."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>Endocrine Society · Pituitary Society consensus</b><span class="rd"> — primary-care assessment, sampling conditions, the exclusion of macroprolactin, drugs and hypothyroidism, and referral thresholds. <b>Note: there is no NICE clinical guideline for hyperprolactinaemia</b> — some secondary sources cite \u201cNICE CG116\u201d here, but CG116 is <em>Food allergy in under 19s</em></span></li>'+
+         '<li>Endocrine Society Clinical Practice Guideline — Diagnosis and treatment of hyperprolactinemia (Melmed et al., 2011)<span class="rd"> — the diagnostic pathway, cabergoline versus bromocriptine efficacy, and the withdrawal-trial criteria</span></li>'+
+         '<li>Pituitary Society international consensus statement on prolactinoma (2023)<span class="rd"> — contemporary macroprolactinoma management, pregnancy decisions, and dopamine agonist withdrawal</span></li>'+
+         '<li><b>MHRA — cabergoline and cardiac valvulopathy</b><span class="rd"> — the dose-dependence of valvulopathy risk (established at Parkinson\u2019s doses of 10–20 mg/week; low at prolactinoma doses under 2–3 mg/week) and echocardiographic monitoring</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive (2022)</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — notification for any visual field defect, and the sudden-sleep-onset caution with dopamine agonists</span></li>'+
+         '<li><b>The Pituitary Foundation</b><br><a href="https://www.pituitary.org.uk" rel="noopener">pituitary.org.uk</a><span class="rd"> — patient information and support; also the Pituitary Network Association</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion applies to hyperprolactinaemia; the adjacency is the breast route for unilateral or bloody nipple discharge</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — cabergoline and bromocriptine dosing, and hydrocortisone for suspected adrenal crisis</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Hyperprolactinaemia — NICE, the Endocrine Society Clinical Practice Guideline (2011), the Pituitary Society international consensus statement (2023), MHRA cabergoline safety guidance, DVLA Assessing Fitness to Drive (2022) and the BNF. Repeat the sample properly and exclude macroprolactin, drugs and hypothyroidism before imaging. The reasoning pathway for a raised prolactin result remains at the <a href=\"../algorithms/hyperprolactinaemia.html\">hyperprolactinaemia pathway</a>. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

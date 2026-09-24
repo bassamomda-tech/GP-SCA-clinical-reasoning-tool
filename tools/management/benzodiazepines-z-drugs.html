@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Benzodiazepines &amp; z-drugs — Protocol · Reasoning GP</title>
+<meta name="description" content="Benzodiazepine and z-drug prescribing and deprescribing: 2 weeks maximum at the lowest dose with the stop plan agreed before the first script, then proactive tapering of long-term users with diazepam-equivalent conversion, 25% steps every 2 weeks, and hold rather than reverse." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/benzodiazepines-z-drugs.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Benzodiazepines and z-drugs protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"💊",
+  title:"Benzodiazepines & z-drugs — prescribing and deprescribing",
+  eyebrow:"Protocol · NICE TA77 · NICE · BZRA deprescribing guideline",
+  stemTitle:"Tolerance develops within days to weeks, after which the patient is largely taking the drug to stave off withdrawal — so setting the expectation of a short course at the very FIRST prescription is what prevents decades of dependence",
+  stemSub:"One page for the whole drug class. Reserve these for short, severe, disabling episodes: 2 weeks maximum at the lowest dose, as an acute script, with the stop plan agreed BEFORE the first prescription. Then the larger job — <b>proactively search for and review every long-term user</b>, because deprescribing is recommended for anyone aged 65 and over on a BZRA regardless of duration, and for 18–64s on one beyond 4 weeks. Convert to a diazepam equivalent, reduce by about <b>25% every 2 weeks at a pace the patient controls</b>, go slower near the end, and <b>hold rather than reverse</b> when symptoms flare. Never stop abruptly after prolonged use — that risks seizures and delirium.",
+  guideline:"NICE TA77 · CG113 · NG215 · BZRA deprescribing",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE TA77 · NICE · BZRA deprescribing guideline"},
+    {t:"2 weeks maximum, acute script, stop plan agreed first", tone:"tw"},
+    {t:"Never stop abruptly — seizure risk", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#before"><b>Before</b><small>Stop plan first</small></a><a href="#prescribe"><b>If you must</b><small>≤2 weeks</small></a><a href="#review"><b>Review</b><small>Find long-term users</small></a><a href="#taper"><b>Taper</b><small>25% / 2 weeks</small></a><a href="#refer"><b>Refer</b><small>Complex</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Never stop abruptly after prolonged use", html:"Abrupt withdrawal can cause seizures, delirium and severe rebound anxiety or insomnia. Taper over weeks to months, scaled to how long they have been taking it. This applies equally to someone else's abrupt stop — a hospital discharge or care-home transfer that drops the drug is the same hazard."},
+    {tone:"amber", h:"2 weeks maximum, and agree the stop plan BEFORE prescribing", html:"Lowest effective dose, 2 weeks or less (ideally under 1 week), as an ACUTE script — never a repeat. Explain the dependence and withdrawal risk and agree how and when it will stop before the first prescription is issued, documenting that further scripts will not usually be given. <b>Do not reissue without reviewing the patient face to face.</b>"},
+    {tone:"red", h:"⛔ Never with opioids, gabapentinoids or alcohol", html:"Do not combine with opioids, gabapentinoids (pregabalin or gabapentin), sedating antihistamines or alcohol — additive respiratory depression and overdose risk. <b>Where the combination is inherited, deprescribing is priority one.</b> And query any hospital-initiated script that arrives without a course duration or review plan — do not continue it by default."},
+    {tone:"blue", h:"Who to deprescribe: almost everyone, and specifically", html:"Insomnia alone, or where the comorbidity is now managed · ANY patient aged 65 and over on a BZRA, regardless of duration · any patient aged 18–64 on one for more than 4 weeks. <b>Expected gains: better alertness and cognition, and fewer falls.</b> Use a patient decision aid — engagement, not coercion; if they decline after a full discussion, give information and review in 3–6 months."},
+    {tone:"green", h:"The taper: 25% every 2 weeks, patient sets the pace", html:"Consider converting a short-acting agent to an equivalent dose of long-acting diazepam, then reduce by about 25% every 2 weeks. Start smaller (10–12.5%, or monthly) if the patient is anxious — confidence matters more than speed. Go down to about 12.5% steps near the end, and if symptoms relapse HOLD for 1–2 weeks rather than reversing."},
+    {tone:"amber", h:"No 'trial of the others', and no substitute dependence", html:"If a patient does not respond to one z-hypnotic, do NOT try the others — only switch for an agent-specific adverse effect. And do not substitute promethazine or a sedating antidepressant for chronic insomnia: neither is licensed for it, and swapping one dependence for another is not deprescribing."}
+  ],
+  pathwaySub:"Seven steps. The first two prevent dependence; the rest undo it.",
+  pathway:[
+    {title:"Confirm the indication is genuinely short-term and severe", html:"Optimise non-drug treatment first, treat the comorbidity, and agree the stop plan before prescribing.", alert:true},
+    {title:"If you must prescribe: lowest dose, 2 weeks, acute script", html:"Named agent and dose, no repeat, no reissue without face-to-face review."},
+    {title:"Search for and review every long-term user", html:"Decide: deprescribe (most), treat the underlying cause first, or a different problem entirely."},
+    {title:"Convert to a diazepam equivalent", html:"Optional but smoother — the long half-life avoids inter-dose withdrawal."},
+    {title:"Taper at about 25% every 2 weeks, patient-led", html:"<b>Smaller steps near the end; hold rather than reverse on a setback.</b>"},
+    {title:"Manage the safety issues throughout", html:"Withdrawal, driving, falls and cognition in the elderly, and the dangerous combinations."},
+    {title:"Refer the complex and high-risk", html:"Talking Therapies, substance-misuse service, CMHT, or specialist taper support."}
+  ],
+  sections:[
+
+    {id:"before", nav:"Before", title:"Step 1 — before you prescribe at all",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>The only indications</b>","Benzodiazepine — short-term, severe, disabling anxiety causing unacceptable distress. Z-hypnotic — short-term, severe, disabling insomnia. <b>NOT for mild or chronic symptoms, or for distress alone</b>"],
+         ["<b>Optimise non-drug treatment first</b>","Insomnia → sleep hygiene plus CBT-I (see <a href='insomnia.html'>insomnia</a>). Anxiety → low-intensity psychological interventions or Talking Therapies first-line. Continue these alongside any prescription"],
+         ["<b>Treat the comorbidity</b>","Pain, respiratory or cardiac disease, depression, panic, substance misuse — treating these often resolves the sleep or anxiety symptom. Review culprit medicines"],
+         ["<b>Agree the stop plan UPFRONT</b>","Before prescribing, explain the dependence and withdrawal risk and agree how and when it will stop. <b>Document that further scripts will not usually be given</b>"],
+         ["<b>Don't reissue blind</b>","Do NOT issue a repeat or further prescription without reviewing the patient face to face"]
+       ]},
+       {b:"warn", html:"<b>Benzodiazepines and z-hypnotics are dependence-forming.</b> Long-term use gives limited benefit but well-documented harms: tolerance, dependence, falls and fractures, cognitive impairment and dementia association, daytime sedation and road-traffic accidents — all magnified in older people."},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"😴 Non-drug first", html:"CBT, CBT-I, sleep hygiene and self-help are first-line for insomnia and anxiety — the goal is to avoid or limit these drugs."},
+         {tone:"blue", h:"📉 Gradual withdrawal", html:"For long-term users, agree a slow patient-led taper (switch to a diazepam equivalent, reduce gradually) with support."},
+         {tone:"blue", h:"🧠 Treat the driver", html:"Address the underlying anxiety, depression, pain or substance use rather than perpetuating the prescription."},
+         {tone:"amber", h:"⏱️ Why the first script matters most", html:"Tolerance to the hypnotic and anxiolytic effect develops within days to weeks, after which the patient is largely taking the drug to stave off withdrawal."}
+       ]}
+     ]},
+
+    {id:"prescribe", nav:"If you must", title:"Step 2 — short course, lowest dose, named agent",
+     blocks:[
+       {b:"info", html:"If a drug is genuinely needed for a severe, short-lived crisis: lowest effective dose, 2 weeks or less (ideally under 1 week), as an ACUTE script."},
+       {b:"table", head:["Indication","Agent","Dose","Note"], rows:[
+         ["<b>Insomnia</b>","<b>Zopiclone</b>","<b>3.75–7.5 mg at night (3.75 mg if elderly)</b>","Z-hypnotic; up to 12 hours of driving impairment"],
+         ["<b>Insomnia</b>","<b>Zolpidem (Stilnoct®)</b>","<b>5–10 mg at night (5 mg if elderly)</b>","Second-line z-hypnotic"],
+         ["<b>Insomnia</b>","<b>Zaleplon</b>","<b>10 mg at night</b>","Ultra-short-acting; rarely used"],
+         ["<b>Anxiety (crisis)</b>","<b>Diazepam (Valium®)</b>","<b>2 mg (up to 5 mg) for a few days</b>","Long-acting benzodiazepine"],
+         ["<b>Anxiety (short)</b>","<b>Lorazepam (Ativan®)</b>","<b>0.5–1 mg</b>","Short-acting; higher dependence and withdrawal risk"]
+       ]},
+       {b:"table", head:["Rule","Detail"], rows:[
+         ["<b>No \"trial of the others\"</b>","If a patient does not respond to one z-hypnotic, do NOT try the others. Only switch z-hypnotic for an agent-specific adverse effect"],
+         ["<b>Avoid combinations</b>","Do not combine with opioids, gabapentinoids (pregabalin or gabapentin), sedating antihistamines or alcohol — additive respiratory depression and overdose risk"],
+         ["<b>Check discharge scripts</b>","Query any hospital-initiated benzodiazepine or z-hypnotic that arrives without a course duration or review plan; don't continue by default"]
+       ]},
+       {b:"why", html:"The evidence base supports only short courses: tolerance to the hypnotic and anxiolytic effect develops within days to weeks, after which the patient is largely taking the drug to stave off withdrawal. Setting the expectation of a short course at the very first prescription is what prevents decades of dependence."}
+     ]},
+
+    {id:"review", nav:"Review", title:"Step 3 — proactively identify and assess established use",
+     blocks:[
+       {b:"info", html:"Search for and proactively review every patient on a long-term benzodiazepine or z-hypnotic. First decide whether to <b>deprescribe</b> (most) or to <b>continue and treat the cause</b> (a minority)."},
+       {b:"cards", items:[
+         {tone:"blue", h:"✓ Recommend deprescribing", html:"Insomnia alone (or comorbidity now managed); ANY patient aged 65 and over on a BZRA regardless of duration; patients aged 18–64 on it for more than 4 weeks. <b>Expected gains: better alertness, cognition, and fewer falls.</b>"},
+         {tone:"amber", h:"⚠ Treat the cause, don't just stop", html:"Unmanaged anxiety, depression or panic, or a physical or mental condition driving the insomnia — optimise that first (e.g. an SSRI plus psychological therapy for an anxiety disorder)."},
+         {tone:"blue", h:"🔍 A different problem", html:"Restless legs, OSA or another sleep disorder masquerading as insomnia → manage that, not a hypnotic. See <a href='restless-legs.html'>restless legs</a> and <a href='osa.html'>OSA</a>."},
+         {tone:"green", h:"↔ Out of scope", html:"A benzodiazepine genuinely effective for a specific anxiety disorder, alcohol withdrawal, epilepsy, spasticity, palliative or end-of-life care, or procedural sedation — different rules apply."}
+       ]},
+       {b:"warn", html:"Use a patient decision aid (\"Should I stop my benzodiazepine or z-drug?\"). Engagement, not coercion: if the patient declines after a full discussion, give information and review again in 3–6 months."}
+     ]},
+
+    {id:"taper", nav:"Taper", title:"Steps 4–5 — convert, then reduce slowly with the patient",
+     blocks:[
+       {b:"info", html:"<b>Tapering is the core skill.</b> For a smoother withdrawal, consider converting a short-acting agent to an equivalent dose of long-acting diazepam, then reducing stepwise. <b>Switching is optional</b> — there is no firm evidence it beats simply tapering the original drug, but the long half-life avoids inter-dose withdrawal."},
+       {b:"table", head:["Drug","≈ Diazepam 5 mg equivalent"], rows:[
+         ["<b>Diazepam</b>","<b>5 mg</b>"],
+         ["<b>Temazepam</b>","<b>10 mg</b>"],
+         ["<b>Lorazepam</b>","<b>0.5 mg</b>"],
+         ["<b>Nitrazepam</b>","<b>5 mg</b>"],
+         ["<b>Zopiclone</b>","<b>7.5 mg</b>"],
+         ["<b>Zolpidem</b>","<b>10 mg</b>"]
+       ]},
+       {b:"table", head:["Step","What","Detail"], rows:[
+         ["<b>Agree the schedule with the patient</b>","<b>The patient controls the pace</b>","Typical: reduce about 25% of the dose every 2 weeks. Start smaller (10–12.5%, or monthly) if anxious — confidence matters more than speed"],
+         ["<b>Go slower near the end</b>","<b>Approaching low doses</b>","Reduce to about 12.5% steps near the end, consider planned drug-free days, and switch to lorazepam or oxazepam for final small steps if tablet strengths don't allow a 25% cut"],
+         ["<b>Monitor every 1–2 weeks</b>","<b>Throughout</b>","Review for withdrawal and relapse. Warn that withdrawal — insomnia, anxiety, irritability, sweating, GI upset — is usually mild and lasts days to a few weeks"],
+         ["<b>If symptoms relapse, HOLD — don't reverse</b>","<b>On a setback</b>","Maintain the current dose for 1–2 weeks until settled, then resume tapering more slowly. Keep the non-drug insomnia and anxiety strategies going (CBT-I, behavioural)"]
+       ]},
+       {b:"warn", html:"Never stop abruptly after prolonged use — abrupt withdrawal can cause seizures, delirium and severe rebound anxiety or insomnia. <b>Taper over weeks to months, scaled to how long they have been on it.</b>"}
+     ]},
+
+    {id:"safety", nav:"Safety", title:"Step 6 — withdrawal, driving and co-prescribing",
+     blocks:[
+       {b:"table", head:["Issue","Detail","Action"], rows:[
+         ["<b>Withdrawal symptoms</b>","Insomnia, anxiety, irritability, sweating, GI symptoms; rarely seizures if stopped abruptly","<b>Reassure (usually mild and self-limiting); slow taper; hold if needed</b>"],
+         ["<b>Driving</b>","<b>These impair driving and are covered by drug-driving law</b>","Advise not to drive when starting or adjusting, or if unfit; document the advice"],
+         ["<b>Falls and cognition (elderly)</b>","<b>Increased falls, fractures, confusion, and a dementia association</b>","<b>A strong reason to deprescribe in older patients</b>"],
+         ["<b>Dangerous combinations</b>","<b>Opioids, gabapentinoids, alcohol, sedating antihistamines</b>","<b>Avoid; if co-prescribed, prioritise deprescribing</b>"],
+         ["<b>Sedating alternatives misused</b>","<b>Promethazine, sedating antidepressants</b>","Not licensed for chronic insomnia — don't substitute one dependence for another"]
+       ]},
+       {b:"why", html:"The goal is not just \"off the drug\" but better function: most patients report improved alertness and mood and fewer falls once tapered, often with no worsening of the original sleep or anxiety problem — which is the key message to share when engaging them."}
+     ]},
+
+    {id:"stalling", nav:"Taper stalling?", title:"Taper stalling? Re-run the checklist",
+     sub:"Most failed tapers are too fast, or an untreated underlying problem — not a need to stay on the drug forever.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"1 · Pace", html:"Reduce the step size (12.5% or less) and lengthen the interval; let the patient set the pace."},
+         {tone:"amber", h:"2 · Underlying", html:"Untreated anxiety, depression, pain or restless legs driving the symptoms? Treat it."},
+         {tone:"blue", h:"3 · Non-drug", html:"<b>CBT-I, behavioural sleep strategies and relaxation in place?</b>"},
+         {tone:"blue", h:"4 · Form", html:"Tablet strengths limiting the cut? Switch to diazepam or lorazepam liquid for fine steps."},
+         {tone:"green", h:"5 · Support", html:"Single prescriber, regular review, decision aid, realistic expectations?"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Step 7 — when to involve specialists",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Talking Therapies / psychology", html:"CBT-I for chronic insomnia; psychological therapy for the underlying anxiety disorder — self-referral accepted in most areas."},
+         {tone:"amber", h:"Substance-misuse service", html:"High-dose use, illicit or multiple-source supply, polydrug dependence, or diversion → specialist drug service for a structured withdrawal. See <a href='opioid-dependence.html'>opioid dependence</a>."},
+         {tone:"amber", h:"Mental health (CMHT)", html:"Severe or refractory anxiety or depression, or where the benzodiazepine is masking a significant psychiatric illness."},
+         {tone:"blue", h:"Specialist taper", html:"Failed community tapers, very long-term high-dose use, or significant withdrawal complications."},
+         {tone:"cream", h:"GP management", html:"The decision not to prescribe, the short course with its stop plan, finding and reviewing long-term users, the diazepam conversion, the taper and the safety issues all belong here. Related pages: <a href='insomnia.html'>insomnia</a> · <a href='anxiety.html'>anxiety</a> · <a href='opioid-prescribing.html'>opioids in non-cancer pain</a> · <a href='chronic-pain.html'>chronic pain</a> · <a href='osa.html'>OSA</a>."}
+       ]},
+       {b:"say", html:"These work for a short time but the body gets used to them within a couple of weeks, after which they mostly just hold off withdrawal. We'll come off slowly, at a pace you control — most people sleep about the same but feel sharper, steadier on their feet and better in themselves once the dose is down."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 78-year-old woman has taken <b>nitrazepam 5 mg at night for about 20 years</b>, originally after a bereavement. She also takes <b>codeine</b> for back pain and <b>amitriptyline</b> for sleep. She has had <b>two falls</b> in the past year, one with a wrist fracture, and her daughter mentions she seems \"vague in the mornings\". She is adamant she \"can't sleep without them\" and has refused to change before. She drives locally."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises that at 78 on a BZRA, deprescribing is recommended regardless of duration, and that the two falls with a fracture make this urgent rather than optional; identifies the nitrazepam plus codeine plus amitriptyline combination as additive sedation and a falls driver, and prioritises unpicking it; engages rather than coerces — uses a decision aid, and accepts that a refusal after full discussion means information plus review in 3–6 months, not a forced taper; frames the benefit as better alertness, steadier on the feet and fewer falls, since \"you'll sleep the same\" is the honest and persuasive message; converts nitrazepam 5 mg to a diazepam equivalent (5 mg) and plans about 25% reductions every 2 weeks, slower near the end, with liquid or smaller steps if strengths do not allow; <b>knows to HOLD rather than reverse if symptoms flare</b>; <b>never stops abruptly</b>, naming the seizure and delirium risk; <b>gives the driving advice and documents it</b>; and addresses the back pain and the amitriptyline rather than only the benzodiazepine."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE TA77 — Guidance on the use of zaleplon, zolpidem and zopiclone for the short-term management of insomnia<br><a href="https://www.nice.org.uk/guidance/ta77" rel="noopener">nice.org.uk/guidance/ta77</a><span class="rd"> — short-term use only, the z-hypnotic doses including the reduced elderly doses, and the recommendation NOT to switch between z-hypnotics for non-response (only for an agent-specific adverse effect)</span></li>'+
+         '<li><b>NICE TA77 (Z-drugs for insomnia) · NICE CG113 (generalised anxiety disorder)</b><br><a href="https://www.nice.org.uk/guidance/cg113" rel="noopener">nice.org.uk/guidance/cg113</a><span class="rd"> — the restriction to short-term severe disabling symptoms, the 2-week maximum course, the acute-script and no-blind-reissue rules, and CBT-I and low-intensity psychological interventions as first-line</span></li>'+
+         '<li><b>Benzodiazepine receptor agonist (BZRA) deprescribing guideline</b><span class="rd"> — the deprescribing indications (any patient 65 and over regardless of duration; 18\u201364s beyond 4 weeks), the diazepam-equivalence table, the 25%-every-2-weeks taper with smaller steps near the end, the hold-don\u2019t-reverse rule, and the patient decision aid</span></li>'+
+         '<li>NICE NG215 — Medicines associated with dependence or withdrawal symptoms<br><a href="https://www.nice.org.uk/guidance/ng215" rel="noopener">nice.org.uk/guidance/ng215</a><span class="rd"> — shared decision-making, patient-led pace, and the principle that withdrawal is managed rather than imposed</span></li>'+
+         '<li><b>MHRA Drug Safety Update and the BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — additive respiratory depression with opioids and gabapentinoids, the doses quoted, the seizure risk on abrupt withdrawal, and the driving impairment</span></li>'+
+         '<li><b>Road Traffic Act 1988 (drug-driving provisions)</b><span class="rd"> — the statutory position and the medical defence when taken as prescribed and unimpaired</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Benzodiazepines and z-drugs — NICE TA77, NICE, the BZRA deprescribing guideline and NG215. Tolerance develops within days to weeks, so the expectation of a short course must be set at the first prescription: lowest effective dose, 2 weeks maximum, acute script, stop plan agreed beforehand, and no reissue without face-to-face review. Never combine with opioids, gabapentinoids or alcohol. Deprescribing is recommended for any patient aged 65 and over on a BZRA regardless of duration, and for 18–64s beyond 4 weeks. Convert to a diazepam equivalent, reduce by about 25% every 2 weeks at a pace the patient controls, take smaller steps near the end, and hold rather than reverse on a setback. Never stop abruptly after prolonged use — seizures and delirium. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

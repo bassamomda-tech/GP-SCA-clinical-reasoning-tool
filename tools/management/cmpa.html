@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cow's milk protein allergy (CMPA) — Protocol · Reasoning GP</title>
+<meta name="description" content="Cow's milk protein allergy in infants, diagnosis and management on one page: IgE versus non-IgE, FPIES and proctocolitis, faltering growth, the elimination-and-reintroduction trial, extensively hydrolysed and amino-acid formula, the iMAP milk ladder, and when to refer." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/cmpa.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="CMPA protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F37C}",
+  title:"Cow's milk protein allergy \u2014 the complete guide",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"CMPA \u2014 classify by timing, prove it with elimination AND reintroduction, and never leave a child milk-free without review",
+  stemSub:"One page for the whole condition: exclude anaphylaxis, FPIES and faltering growth; separate IgE from non-IgE by the clock; diagnose non-IgE by elimination and planned reintroduction rather than by tests; prescribe eHF first and AAF for the right reasons; protect nutrition and growth; and get children back onto milk through the iMAP ladder.",
+  guideline:"NICE CG116 · iMAP / MAP · BSACI",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"iMAP / BSACI \u2014 Cow's milk allergy in children"},
+    {t:"iMAP / MAP milk allergy in primary care"},
+    {t:"BSACI \u00b7 EAACI"},
+    {t:"BNF for Children for all doses"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Anaphylaxis \u00b7 FPIES \u00b7 growth</small></a><a href="#confirm"><b>Classify</b><small>IgE \u00b7 non-IgE \u00b7 mixed</small></a><a href="#workup"><b>Prove it</b><small>Eliminate then reintroduce</small></a><a href="#ladder"><b>Feed</b><small>eHF \u00b7 AAF \u00b7 milk ladder</small></a><a href="#refer"><b>Refer</b><small>Allergy \u00b7 dietitian</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Two shock presentations, not one", html:"<b>Anaphylaxis</b> \u2014 swelling, wheeze or stridor, collapse within minutes of milk \u2192 IM adrenaline 150 micrograms (&lt;6 months), 300 micrograms (6 months–6 years), plus 999. And <b>FPIES</b> \u2014 <b>profuse vomiting 2\u20134 hours after milk</b> with lethargy, pallor and hypotension \u2192 <b>999</b>. FPIES is non-IgE, allergy tests are negative, and it is routinely misdiagnosed as sepsis or gastroenteritis."},
+    {tone:"amber", h:"The clock does the classifying", html:"<b>&lt;2 hours = IgE-mediated</b> (urticaria, angioedema, vomiting, wheeze; <b>0.5% of infants</b>). <b>2\u201372 hours (&gt;2 h) = non-IgE</b> (eczema, reflux, colic, blood or mucus in stool, faltering growth; <b>2\u20133%</b>). <b>Mixed in 20% \u2014 manage as IgE, the higher risk.</b>"},
+    {tone:"blue", h:"Non-IgE is diagnosed by a trial, not a test", html:"Allergy tests are <b>negative by definition</b> in non-IgE CMPA \u2014 <b>do not order them</b>, and a negative test does not exclude it. Diagnosis needs <b>both</b> limbs: symptoms improve on elimination (2\u20136 weeks) <b>and</b> recur on reintroduction. <b>IgG \u201cfood intolerance\u201d tests have no evidence base</b> and are recommended against by NICE, BSACI and EAACI."},
+    {tone:"green", h:"eHF first, AAF for a reason", html:"Extensively hydrolysed formula (eHF, also written EHF) first-line \u2014 effective in 90% of non-IgE CMPA, on FP10 (ACBS: proven cow's milk allergy). Amino-acid formula (AAF \u2014 an amino acid formula, no intact protein) for eHF refusal or failure, severe IgE disease, FPIES or eosinophilic disease. <b>Not soya under 6 months</b>, and <b>\u201clactose-free\u201d formula does not treat CMPA</b>."},
+    {tone:"purple", h:"Over-diagnosis is the norm", html:"15% of parents believe their child has CMPA; only 2\u20133% actually do. Colic, reflux and eczema are common in infants whatever they are fed \u2014 which is exactly why the reintroduction limb is not optional. <b>Eczema alone does not diagnose CMPA.</b>"},
+    {tone:"plain", h:"Get them back on milk", html:"<b>Non-IgE: 50% outgrow by age 1 and 90% by age 3.</b> Start the <b>iMAP milk ladder at 9\u201312 months</b> when symptoms are controlled and growth normal. <b>Do not leave a child on a milk-free diet by inertia</b> \u2014 delayed reintroduction makes persistent allergy more likely."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where infants come to harm.",
+  pathway:[
+    {title:"Exclude the emergencies", html:"Anaphylaxis, FPIES, severe faltering growth (weight below the 2nd centile, crossing 2 or more centile lines, no weight gain for 2 or more weeks), dehydration, haematemesis or melaena, infected eczema with systemic upset.", alert:true},
+    {title:"Classify by timing", html:"Immediate under 2 hours, delayed 2\u201372 hours, or both. Take a feeding history, a family atopy history, and a 1\u20132 week symptom diary. Name the subtype: proctocolitis, FPIES, mixed."},
+    {title:"Prove it", html:"IgE-mediated: skin prick or specific IgE via allergy clinic. Non-IgE: eliminate 2\u20136 weeks, then <b>reintroduce to confirm</b>. No IgG tests, no patch tests, no routine bloods."},
+    {title:"Feed and protect growth", html:"Breastfed: maternal exclusion plus calcium 1000 mg and vitamin D 10 micrograms. Formula-fed: eHF, then AAF if needed. Dietitian for every case; vitamin D 400 IU for every child on a milk-free diet."},
+    {title:"Review and reintroduce", html:"Phone at 2 weeks, face to face at 6 weeks with centiles, 3-monthly in the first year, milk ladder at 9\u201312 months, annual tolerance review."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Exclude the life-threatening and the growth emergency",
+     sub:"Milk allergy has two shock presentations with different clocks, and one slow emergency that causes irreversible harm.",
+     blocks:[
+       {b:"warn", html:"Anaphylaxis to cow's milk is rare (about 0.1% of children) but can be fatal, and IgE-mediated CMPA can escalate on later exposures. Acute facial or lip swelling, wheeze, stridor, hypotension or collapse within minutes of milk \u2192 999 and IM adrenaline: 150 micrograms if &lt;6 months, 300 micrograms if 6 months\u20136 years. <b>Delayed recognition is what kills.</b>"},
+       {b:"dl", rows:[
+         ["<b>FPIES \u2014 the mimic of sepsis</b>","<b>Profuse vomiting 2\u20134 hours after milk</b> (not immediate), with lethargy, pallor, hypotension and hypothermia \u2192 <b>999</b>. Food Protein-Induced Enterocolitis Syndrome is <b>non-IgE but produces a shock-like state</b>; it needs IV fluids and sometimes steroids, allergy tests are negative, and <b>recurrence on re-exposure is effectively 100%</b> until it resolves (typically age 3\u20135)"],
+         ["<b>Severe faltering growth</b>","Weight below the 2nd centile, crossing 2 or more centile lines, or no weight gain for 2 or more weeks \u2192 <b>same-day paediatric assessment</b> (malnutrition, neglect, metabolic disease). <b>This is the most serious non-acute complication</b> \u2014 malnutrition in infancy causes irreversible neurodevelopmental harm"],
+         ["Respiratory distress","Wheeze, stridor or increased work of breathing within 2 hours of a feed \u2192 <b>999</b>"],
+         ["Haematemesis or melaena","Blood or coffee-ground vomit, black tarry stools \u2192 <b>same-day paediatrics</b> (severe CMPA enteropathy, erosive disease)"],
+         ["Dehydration","Sunken fontanelle, reduced urine output, dry mucous membranes, lethargy \u2192 <b>same-day assessment</b>"],
+         ["Infected eczema","Widespread infected eczema with fever and systemic upset \u2192 <b>same-day</b> (eczema herpeticum, sepsis)"],
+         ["<b>Persistent blood-streaked stools</b>","Visible blood in stools for &gt;2 weeks despite a milk-free diet \u2192 urgent (2-week) paediatric gastroenterology for IBD, polyps or intussusception. <b>This is not an NG12 cancer route</b> \u2014 see below \u2014 but it is a referral, not a wait"],
+         ["<b>NG12 stated honestly</b>","CMPA has no NICE NG12 suspected-cancer criterion, and none should be invented for it. The NG12 <em>children and young people</em> criteria that could apply to the same unwell infant are: unexplained petechiae, hepatosplenomegaly or generalised lymphadenopathy \u2192 very urgent full blood count (within 48 hours) and immediate paediatric referral for leukaemia, and an unexplained palpable abdominal mass or organomegaly \u2192 referral within 48 hours (neuroblastoma, Wilms' tumour). A pale, lethargic infant with bruising is not a milk problem"]
+       ]},
+       {b:"why", html:"Two of these are missed for the same reason: the timing does not fit the expected pattern. <b>FPIES arrives 2\u20134 hours after the feed</b>, so the milk is not suspected and the child is treated as septic; <b>faltering growth arrives over weeks</b>, so it is not treated as an emergency at all. Plot the weight before you discuss formula."}
+     ]},
+
+    {id:"confirm", nav:"Classify", title:"IgE, non-IgE, or mixed \u2014 and which subtype",
+     sub:"Timing separates the mechanisms, and the mechanism decides everything that follows.",
+     blocks:[
+       {b:"table", head:["Type","Timing and features","Prevalence and management"], rows:[
+         ["<b>IgE-mediated</b>","<b>Immediate, &lt;2 hours</b> \u2014 urticaria, angioedema, acute vomiting, wheeze, anaphylaxis","<b>0.5% of infants.</b> Skin prick or specific IgE; strict avoidance; adrenaline auto-injector if severe; allergy clinic. <b>High anaphylaxis risk</b>"],
+         ["<b>Non-IgE-mediated</b>","<b>Delayed, &gt;2 hours up to 72 hours</b> \u2014 eczema, proctocolitis (blood-streaked stools), reflux symptoms, chronic diarrhoea, colic","<b>2\u20133% of infants.</b> Clinical diagnosis by elimination and reintroduction; <b>allergy tests negative</b>. Lower risk, primary-care managed"],
+         ["<b>Mixed</b>","Immediate and delayed together \u2014 e.g. urticaria within the hour plus eczema worsening over days","<b>20% of CMPA cases. Manage as IgE-mediated</b> \u2014 the higher risk. Tests may be positive"],
+         ["Proctocolitis (CMPI / FPIAP \u2014 food protein-induced allergic proctitis)","Blood-streaked mucousy stools in an <b>otherwise well</b> infant aged &lt;6 months with <b>normal growth</b>; commonest in breastfed babies","The commonest non-IgE presentation. Benign \u2014 95% resolve by 12 months. Maternal exclusion trial is sufficient; <b>do not over-investigate (no colonoscopy)</b>"],
+         ["<b>FPIES</b>","Profuse vomiting 2\u20134 hours post-exposure, lethargy, pallor, shock-like state; <b>no skin or respiratory features</b>","Rare. Allergy tests negative. <b>Strict avoidance until age 3\u20135</b>; confirmation only by medically supervised re-challenge. <b>Medical emergency when it reacts</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["Timing of symptoms","<b>&lt;2 hours \u2192 IgE</b> (histamine release, mast-cell degranulation). <b>&gt;2 hours to 72 hours \u2192 non-IgE</b> (T-cell mediated, immune-complex). Both \u2192 mixed"],
+         ["Feeding history","<b>Breastfed:</b> CMPA can occur via cow's milk protein in the maternal diet. <b>Formula-fed:</b> standard formula contains cow's milk protein. <b>Weaning:</b> symptoms may start with yoghurt, cheese or cow's milk. <b>Onset is typically &lt;6 months</b>"],
+         ["<b>Symptom diary</b>","Parent-completed for <b>1\u20132 weeks</b>: every feed and food, symptom type, timing, severity 0\u201310. The diagnostic gold standard for establishing the temporal relationship \u2014 more reliable than recall, with about <b>85% sensitivity</b> for identifying the culprit food"],
+         ["Gastrointestinal","Vomiting, diarrhoea, blood or mucus in stools, <b>constipation (paradoxically)</b>, colic (inconsolable crying more than 3 hours a day), reflux symptoms (back arching, possetting)"],
+         ["Skin","Atopic eczema (flexures and face), urticaria (wheals within 2 hours), angioedema. <b>Eczema alone does NOT diagnose CMPA \u2014 a trial is needed</b>"],
+         ["Respiratory","Wheeze, chronic cough, nasal congestion. Rarely the sole manifestation \u2014 consider asthma and viral infection first"],
+         ["Family history","<b>First-degree atopy increases CMPA risk about 3-fold</b> \u2014 ask specifically about parental and sibling eczema, asthma, allergic rhinitis and food allergy"],
+         ["Response to avoidance","<b>The key diagnostic feature.</b> IgE: improvement within 2\u20134 weeks. Non-IgE: improvement within 2\u20136 weeks. <b>No improvement \u2192 reconsider the diagnosis</b>"]
+       ]},
+       {b:"warn", html:"Over-diagnosis is rampant: 15% of parents believe their child has CMPA, but only 2\u20133% have confirmed disease. Colic, reflux and eczema are common in infants regardless of diet, and <b>misclassification means the wrong treatment</b> \u2014 an unnecessary milk-free diet on one side, an unrecognised anaphylaxis risk on the other."}
+     ]},
+
+    {id:"workup", nav:"Prove it", title:"Examination, and the tests to order and refuse",
+     sub:"One measurement matters more than any test: the weight on a centile chart.",
+     blocks:[
+       {b:"table", head:["Examine","What to record","Why"], rows:[
+         ["<b>Growth</b>","<b>Weight, length and head circumference plotted on centile charts</b> (UK-WHO), documented in the <b>PCHR (red book)</b>","Faltering growth = crossing down 2 or more centile lines; failure to thrive = below the 2nd centile with poor gain. Mandatory at every review"],
+         ["Skin","Eczema extent (% body surface area), distribution, and signs of infection (weeping, crusting, pustules); urticaria; angioedema","Severity guides both allergy suspicion and eczema treatment. 20% of infants have eczema and only about 30% of those have food allergy"],
+         ["Abdomen","Masses, tenderness, bowel sounds (hyperactive in acute FPIES)","<b>Generally unremarkable in CMPA</b> \u2014 an abnormal abdomen means look elsewhere"],
+         ["General wellbeing","Alertness, lethargy, pallor, irritability; hydration (mucous membranes, fontanelle, urine output); respiratory effort","Systemic involvement changes the urgency"],
+         ["<b>Nappy contents</b>","Inspect if brought, or request a photograph. Frank blood (red streaks), melaena (black tarry), mucous (thick clear or white)","<b>Parent-reported \u201cblood\u201d is often something else</b> \u2014 food dyes, urates in the nappy, or an anal fissure from constipation"],
+         ["Development","Age-appropriate milestones (social smile 6 weeks, sitting 6 months, walking 12\u201318 months)","<b>Malnutrition causes developmental delay</b> \u2014 record it in the PCHR"]
+       ]},
+       {b:"table", head:["Test","When","Notes"], rows:[
+         ["<b>Skin prick test (SPT)</b>","IgE-mediated only \u2014 allergy specialist","<b>Gold standard; wheal \u22653mm (3 mm or more) is positive.</b> About <b>90% sensitivity but only 50% specificity</b> \u2014 a positive test means roughly a 50% chance of clinical allergy, not certainty"],
+         ["<b>Specific IgE blood test</b>","Alternative where SPT unavailable","<b>Cow's milk IgE &gt;0.35 kUA/L is positive.</b> <b>Do not order if there are no immediate symptoms</b>"],
+         ["<b>Non-IgE \u2014 no allergy testing</b>","Never","<b>SPT and specific IgE are negative by definition in non-IgE CMPA.</b> Testing misleads: a negative result does not exclude it and generates false reassurance or needless restriction"],
+         ["<b>Elimination trial</b>","Both types","Eliminate <b>all</b> cow's milk protein (formula, and the maternal diet if breastfeeding) for <b>2\u20134 weeks (IgE) or 2\u20136 weeks (non-IgE)</b>"],
+         ["<b>Reintroduction challenge</b>","After elimination <b>if</b> symptoms improved","<b>IgE: hospital-supervised</b> (anaphylaxis risk). <b>Non-IgE: home challenge under GP guidance.</b> <b>Symptoms recurring within 2\u20134 weeks confirms CMPA</b>"],
+         ["Bloods","Rarely needed","FBC if anaemia suspected (chronic blood loss in proctocolitis); albumin in severe malnutrition or malabsorption. <b>Not routine \u2014 over-investigation causes anxiety</b>"]
+       ]},
+       {b:"warn", html:"<b>Do NOT order: IgG \u201cfood intolerance\u201d tests</b> \u2014 IgG antibodies to food proteins are a <b>normal physiological response</b>, not pathology; NICE, BSACI and EAACI all recommend against them, and they are sold widely with no evidence base. <b>Patch testing has no role.</b> <b>Endoscopy or colonoscopy only</b> for red flags \u2014 persistent GI bleeding despite a milk-free diet, weight loss, or suspected IBD."},
+       {b:"why", html:"Elimination and reintroduction is the gold standard for non-IgE CMPA because no blood test exists. Both limbs are needed: symptoms improve on elimination <em>and</em> recur on reintroduction. If symptoms do not improve on a properly complete elimination, <b>it is not CMPA</b> \u2014 and the diet should stop rather than continue \u201cjust in case\u201d."}
+     ]},
+
+    {id:"ladder", nav:"Feeding", title:"Milk avoidance \u2014 the formula ladder and what not to use",
+     sub:"Eliminate the protein without starving the child. Every step here has a nutrition consequence.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Breastfed", title:"Maternal cow's-milk-protein exclusion", when:"first-line \u2014 keep breastfeeding",
+          html:"Mother eliminates <b>all</b> dairy \u2014 milk, cheese, yoghurt, butter, cream, ice cream, chocolate \u2014 with <b>calcium 1000 mg and vitamin D 10 micrograms daily for the mother</b> and <b>essential dietitian support</b>. <b>Accidental exposure takes about 2 weeks to clear from breast milk</b>, so judge the trial over weeks, not days."},
+         {step:"Step 1", title:"Extensively hydrolysed formula (eHF)", when:"formula-fed, non-IgE",
+          fromLabel:"first-line formula",
+          html:"Nutramigen (Mead Johnson), Similac Alimentum (Abbott), Aptamil Pepti (Danone) \u2014 proteins hydrolysed into small peptides. <b>Prescribe on FP10</b> (ACBS indication: proven cow's milk allergy). <b>Trial 2\u20136 weeks; improves symptoms in 90% of non-IgE CMPA.</b> <b>Bitter taste \u2014 infants may refuse it at first</b>, so warn parents rather than switching immediately. About <b>\u00a315 a tin</b>."},
+         {step:"Step 2", title:"Amino-acid formula (AAF)", when:"eHF refused or failed, severe IgE, FPIES",
+          fromLabel:"not first-line",
+          html:"<b>Neocate, Alfamino, Nutramigen Puramino</b> \u2014 elemental, no intact protein, <b>about 99% effective</b> but a metallic taste and <b>\u00a330\u201340 a tin</b>. Indications: eHF refusal or non-response, severe IgE-mediated CMPA, FPIES, eosinophilic oesophagitis. <b>Specialist input before switching \u2014 do not use it first-line.</b>"},
+         {step:"Step 3", title:"Soya formula \u2014 conditional only", when:"age &gt;6 months, eHF and AAF refused",
+          fromLabel:"rarely",
+          html:"<b>Avoid if &lt;6 months</b> (phytoestrogen content; NICE advises against). <b>10\u201314% of CMPA infants also react to soya</b>, and cross-reactivity may be as high as <b>50%</b> in some series. <b>SMA Wysoy, Cow &amp; Gate Infasoy</b> \u2014 use only after dietitian input, or for cultural or religious reasons."},
+         {step:"Alternative", title:"Plant milks", when:"cooking, or as a drink from age 1",
+          fromLabel:"never as a sole milk under 1",
+          html:"Oat, rice and coconut milks are nutritionally inadequate as the sole milk source at &lt;1 year \u2014 for cooking or on cereal only, unsweetened and calcium-fortified. From <b>age 1 and over</b> they can be a drink if CMPA persists."}
+       ]},
+       {b:"dl", rows:[
+         ["<b>Vitamin D and calcium</b>","Every child on a milk-free diet: vitamin D 400 IU (10 micrograms) daily. eHF and AAF provide adequate calcium; if alternative milks are used from age 1, ensure about <b>350 mg calcium daily</b> (fortified plant milks, green vegetables, tahini)"],
+         ["Weaning","<b>Start solids at 6 months as usual.</b> Avoid cow's milk, cheese, yoghurt, butter, cream and milk powder; watch for <b>hidden milk in bread, biscuits, cakes and ready meals</b>. Safe: meat, fish, fruit, vegetables, rice, pasta, lentils, eggs if tolerated"],
+         ["<b>Label reading</b>","<b>UK law requires allergens in bold.</b> Avoid <b>milk, casein, whey, lactose, butter, cream, ghee, curds</b>. The <b>British Dietetic Association \u201cCMPA Support\u201d app</b> scans barcodes and flags allergens"],
+         ["<b>Adrenaline auto-injector</b>","<b>IgE-mediated CMPA only: prescribe TWO devices.</b> EpiPen Jr 150 micrograms (7.5\u201325 kg), EpiPen 300 micrograms (&gt;25 kg). Train parents: <b>anterolateral thigh, hold 10 seconds</b>, then <b>999</b>, and <b>repeat after 5 minutes</b> if no improvement. Written emergency action plan"],
+         ["Safe formula preparation","Same as standard formula: boil water, cool to <b>70\u00b0C</b>, add powder, shake. Use within 2 hours, discard unused after 24 hours. <b>Never microwave</b> (hot spots)"]
+       ]},
+       {b:"warn", html:"<b>\u201cLactose-free\u201d formula does not treat CMPA</b> \u2014 lactose intolerance is rare in infants and is a different problem entirely. <b>Do not use other mammalian milks (goat, sheep) as a CMPA treatment</b> \u2014 they cross-react. And <b>do not step up to AAF without trying eHF</b> unless a specialist has directed it."}
+     ]},
+
+    {id:"lifestyle", nav:"Family support", title:"Parental education \u2014 where most of the benefit actually comes from",
+     sub:"Reassurance is therapeutic here, and accidental exposure is the commonest failure mode.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"\ud83c\udff7\ufe0f Hidden milk", html:"Bread (milk powder), biscuits, cakes, chocolate, ready meals, processed meats (casein binders), crisps (milk flavouring). <b>Always check the label even if the product \u201clooks\u201d milk-free</b> \u2014 about <b>25% of CMPA children have an accidental exposure each year</b>, and label-reading education cuts that risk substantially."},
+         {tone:"green", h:"\ud83e\udd8b Nutrition reassurance", html:"eHF and AAF provide complete nutrition \u2014 the same calories, protein and calcium as standard formula. No extra supplements are needed beyond <b>vitamin D 400 IU</b>. The parental worry about \u201cmissing out on nutrients\u201d is unfounded, and growth monitoring is what confirms it."},
+         {tone:"blue", h:"\ud83e\udd34 Breastfeeding support", html:"Mother must eliminate <b>all</b> dairy, and <b>accidental exposure takes 2 weeks to clear from breast milk</b>. Dietitian review is essential; peer support helps (\u201cDairy Free for Baby UK\u201d and similar groups)."},
+         {tone:"plain", h:"\ud83c\udfe0 Social situations", html:"Inform <b>nursery, childminders and family members</b>; provide safe snacks for parties; teach the child from about age 2 to say <b>\u201cI can't have milk\u201d</b>. Consider a <b>medical alert bracelet</b> in severe IgE disease."},
+         {tone:"cream", h:"\ud83e\uddf4 Eczema care runs in parallel", html:"Milk elimination improves eczema in about 30% of cases \u2014 it is not a substitute for topical treatment. Continue <b>emollients 3\u20134 times daily</b> (Diprobase, Epaderm) and topical steroids for flares (<b>hydrocortisone 1% to the face, betamethasone 0.1% to the body</b>)."},
+         {tone:"green", h:"\ud83d\udcc8 Prognosis \u2014 say it early", html:"Non-IgE: 50% outgrow by age 1, 90% by age 3. IgE-mediated: 50% by age 5, 80% by age 16. Tolerance is reviewed annually through the ladder or supervised challenge. <b>CMPA is not lifelong</b> \u2014 saying so relieves a great deal of anxiety."},
+         {tone:"green", h:"\ud83c\udf5b Weaning safely", html:"Start solids at 6 months as usual and introduce the high-allergen foods (egg, peanut, wheat, fish) unless an allergist advises otherwise \u2014 avoiding allergens does not prevent allergy. Offer milk-free versions (soya yoghurt from 6 months, oat milk on cereal)."}
+       ]},
+       {b:"why", html:"<b>Parental anxiety is a large part of the disease burden</b> \u2014 label reading, social restriction and fear of reactions. Clear education changes outcomes: the formula is nutritionally complete, most children outgrow it, and most reactions are mild."}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Growth, response, and getting back onto milk",
+     sub:"A fixed review schedule, because the commonest long-term error is drift.",
+     blocks:[
+       {b:"table", head:["When","What","Action"], rows:[
+         ["<b>2 weeks</b>","Phone review after starting eHF or AAF","Expect about a <b>50% symptom reduction by 2 weeks</b>. No improvement \u2192 reconsider the diagnosis or step up to AAF. Check formula acceptance (taste)"],
+         ["<b>6 weeks</b>","Face to face","<b>Weight, length and head circumference plotted.</b> Symptoms should be <b>80\u201390% improved</b>; if not, reassess the diagnosis. Review the maternal diet if breastfeeding; discuss weaning"],
+         ["<b>3-monthly through the first year</b>","Growth monitoring","Growth velocity; dietitian if there are concerns; vitamin D compliance; adjust prescription volumes as the infant grows"],
+         ["<b>Age 9\u201312 months</b>","<b>iMAP milk ladder</b>","Non-IgE with controlled symptoms and normal growth: baked milk (muffin, biscuit) \u2192 yoghurt \u2192 cheese \u2192 fresh milk, one step every 1\u20132 weeks. <b>IgE-mediated: hospital-supervised challenge only</b>"],
+         ["<b>Annually</b>","Tolerance review","Non-IgE: ladder progression. IgE: <b>repeat skin prick or specific IgE to time the challenge</b>"]
+       ]},
+       {b:"why", html:"<b>The milk ladder works because heat denatures milk protein</b> \u2014 baked milk is least allergenic, then fermented (yoghurt), then fresh, and sequential exposure induces tolerance. <b>About 80% of non-IgE children tolerate baked milk by age 1.</b> The reason to run it on time: many children have outgrown CMPA but stay milk-free through inertia, and <b>delayed reintroduction increases the risk of persistent allergy</b>."},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 Anaphylaxis", html:"\u201cSwelling of the lips, face or tongue, difficulty breathing, wheeze, floppiness or collapse after milk \u2014 <b>call 999</b> and use the adrenaline pen if you have one.\u201d"},
+         {tone:"red", h:"\ud83e\udd2e Vomiting hours later", html:"\u201cIf there is heavy vomiting <b>2 to 4 hours</b> after milk with floppiness or paleness \u2014 <b>999</b>. That is a different reaction and it can cause shock.\u201d"},
+         {tone:"amber", h:"\ud83d\udcc9 Growth", html:"\u201cIf your baby isn't feeding or gaining weight well, contact us promptly \u2014 we will weigh and plot them.\u201d"},
+         {tone:"amber", h:"\ud83e\ude78 Blood in the nappy", html:"\u201cBlood or persistent mucus in the nappy, or ongoing distress \u2014 let us know. If it carries on beyond 2 weeks on a milk-free diet we need to look further.\u201d"},
+         {tone:"blue", h:"\ud83d\udeab Wrong milk", html:"\u201cDon't switch to soya, goat or \u2018lactose-free\u2019 milk to treat this \u2014 use only the formula we prescribe.\u201d"},
+         {tone:"green", h:"\ud83e\ude9c Six weeks with no change", html:"\u201cIf there is no improvement after 6 weeks off milk, come back \u2014 that usually means milk isn't the problem and we should stop the diet.\u201d"}
+       ]},
+       {b:"say", html:"There are two things going on. First, we take cow's milk protein out completely \u2014 from your diet if you are breastfeeding, or with a special formula \u2014 and give it a proper few weeks. Second, and this is the part people skip: we put milk back to check it really was the cause. If symptoms come back, we know. If nothing changes off milk, then milk was not the problem and we stop the diet rather than carry on. Most babies grow out of this, and we will start reintroducing milk properly through a ladder at around 9 to 12 months."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Not improving? Re-check before escalating", sub:"Confirm the elimination is complete and the diagnosis correct.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"1 \u00b7 Complete exclusion?", html:"Hidden cow\u2019s milk protein in the maternal diet, the formula or weaning foods \u2014 and remember <b>maternal exposure takes 2 weeks to clear</b>."},
+         {tone:"blue", h:"2 \u00b7 Right formula", html:"eHF tolerated, or does severity warrant AAF?"},
+         {tone:"amber", h:"3 \u00b7 Long enough?", html:"Non-IgE CMPA needs <b>2\u20136 weeks</b>, not 2\u20136 days, before the trial is judged."},
+         {tone:"blue", h:"4 \u00b7 Other diagnosis", html:"Reflux, infection, another food allergy or a non-allergic cause \u2014 <b>no improvement on complete elimination means it is not CMPA</b>."},
+         {tone:"blue", h:"5 \u00b7 Growth", html:"Faltering growth \u2192 AAF plus <b>paediatric and dietitian input</b>."},
+         {tone:"blue", h:"6 \u00b7 Refer", html:"Severe or IgE-mediated disease, multiple allergies, or genuine doubt \u2192 specialist allergy."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 who goes where",
+     sub:"IgE-mediated disease needs a specialist; nearly every case needs a dietitian.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / same-day", html:"<b>Anaphylaxis. Suspected FPIES</b> (profuse vomiting with a shock-like state). <b>Severe faltering growth</b> \u2014 weight below the 2nd centile or crossing 2 or more centile lines. Dehydration. Persistent haematemesis or melaena."},
+         {tone:"amber", h:"Urgent allergy clinic", html:"<b>Suspected IgE-mediated CMPA</b> \u2014 immediate urticaria, angioedema or wheeze \u2192 for skin prick testing, adrenaline prescription and an emergency action plan. Also <b>mixed IgE/non-IgE</b>, multiple food allergies, and severe eczema unresponsive to treatment."},
+         {tone:"amber", h:"Routine paediatrics", html:"Non-IgE CMPA with <b>poor growth even if not frankly faltering</b>; <b>no improvement after 6 weeks milk-free</b> (reassess the diagnosis); a breastfeeding mother struggling with the elimination diet; persistent parental anxiety despite reassurance."},
+         {tone:"blue", h:"Paediatric dietitian \u2014 nearly everyone", html:"For nutritional adequacy, <b>calcium and vitamin D</b>, weaning advice, formula selection and reintroduction planning. <b>Essential</b> with multiple food allergies, faltering growth, or a breastfeeding mother. Cow's milk provides about half a toddler's calcium, protein and calories \u2014 elimination without expert guidance risks rickets and protein-energy malnutrition."},
+         {tone:"amber", h:"Urgent paediatric gastroenterology", html:"<b>Visible blood in stools for &gt;2 weeks despite a milk-free diet</b> \u2014 to exclude IBD, polyps or intussusception."},
+         {tone:"purple", h:"NG12 \u2014 stated honestly", html:"CMPA has no NG12 suspected-cancer criterion and none should be invented. The NG12 <em>children and young people</em> routes that could apply to the same infant: unexplained petechiae, hepatosplenomegaly or generalised lymphadenopathy \u2192 very urgent FBC within 48 hours plus immediate paediatric referral (leukaemia); an unexplained palpable abdominal mass or organomegaly \u2192 referral within 48 hours (neuroblastoma, Wilms' tumour). <b>NICE NG12 (May 2025).</b>"},
+         {tone:"cream", h:"Keep in primary care", html:"Non-IgE CMPA with mild symptoms, normal growth, a straightforward elimination diet and a clear response. The GP prescribes eHF, monitors growth, guides <b>home reintroduction from 9\u201312 months</b>, and reviews annually. Escalate for multiple allergies, faltering growth, diagnostic uncertainty or high parental anxiety."}
+       ]},
+       {b:"say", html:"Most babies outgrow milk allergy. For now we remove cow's milk protein \u2014 from your diet if you are breastfeeding, or with a special formula \u2014 and a dietitian helps keep the nutrition right. Later we carefully reintroduce milk using the milk ladder."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 4-month-old, exclusively breastfed, with 6 weeks of \u201creflux\u201d, eczema and <b>streaks of blood in the nappy</b>, thriving on the 50th centile. Mother has already cut out dairy on advice from a forum and wants to know if the baby \u201chas a milk allergy for life\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Establishes <b>timing relative to feeds</b> rather than accepting \u201creflux\u201d; recognises <b>proctocolitis in a well, thriving infant</b> as benign non-IgE disease; <b>plots the weight</b> and checks the PCHR; screens for anaphylaxis and FPIES history; supports continued breastfeeding with <b>maternal calcium and vitamin D and a dietitian</b>; <b>commits to a reintroduction challenge to confirm</b> rather than an open-ended diet; refuses IgG testing if asked; gives the prognosis figures; and \u2014 the step candidates most often miss \u2014 books the milk ladder at 9\u201312 months rather than leaving the diet to drift. Casebook chapter: <a href=\"../../cases/cmpa-reflux.html\">CMPA and reflux</a>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG116 \u2014 Food allergy in under 19s: assessment and diagnosis</b><br><a href="https://www.nice.org.uk/guidance/cg116" rel="noopener">nice.org.uk/guidance/cg116</a><span class="rd"> \u2014 IgE vs non-IgE classification, elimination and reintroduction, formula choice, soya under 6 months, referral criteria</span></li>'+
+         '<li><b>iMAP / MAP \u2014 Milk Allergy in Primary Care</b><br><a href="https://gpifn.org.uk/imap/" rel="noopener">gpifn.org.uk/imap</a><span class="rd"> \u2014 the milk ladder (baked \u2192 fermented \u2192 fresh, one step every 1\u20132 weeks from 9\u201312 months), primary-care diagnostic algorithm, parent information</span></li>'+
+         '<li><b>BSACI and EAACI</b><br><a href="https://www.bsaci.org" rel="noopener">bsaci.org</a><span class="rd"> \u2014 adrenaline auto-injector prescribing (two devices), skin prick and specific IgE interpretation, and the recommendation AGAINST IgG \u201cfood intolerance\u201d testing</span></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> \u2014 IM adrenaline doses by age (150 micrograms under 6 months, 300 micrograms 6 months\u20136 years), EpiPen Jr and EpiPen weight bands, vitamin D 400 IU</span></li>'+
+         '<li><b>ACBS \u2014 Advisory Committee on Borderline Substances</b><span class="rd"> \u2014 eHF and AAF prescribable on FP10 for the indication \u201cproven cow\u2019s milk allergy\u201d</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 no criterion applies to CMPA; the children-and-young-people routes (unexplained petechiae, hepatosplenomegaly or generalised lymphadenopathy \u2192 very urgent FBC and immediate referral; unexplained palpable abdominal mass or organomegaly \u2192 48-hour referral) are stated so the page neither invents nor omits a cancer pathway</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Cow's milk protein allergy \u2014 NICE, iMAP/MAP and BSACI guidance. Diagnosis and management are merged on this page; there is no separate cow's milk allergy pathway to cross-check. Verify all doses against the current BNF for Children before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

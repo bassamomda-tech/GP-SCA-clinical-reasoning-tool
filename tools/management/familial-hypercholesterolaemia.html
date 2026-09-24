@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Familial hypercholesterolaemia — Protocol · Reasoning GP</title>
+<meta name="description" content="Familial hypercholesterolaemia: when to suspect it and the record search that finds it, why QRISK must not be used, Simon Broome and DLCN criteria, the ≥50% LDL reduction target, cascade genetic testing of relatives, statins and pregnancy, and specialist referral." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/familial-hypercholesterolaemia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Familial hypercholesterolaemia protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧬",
+  title:"Familial hypercholesterolaemia — the complete guide",
+  eyebrow:"Protocol · NICE CG71 · diagnosing one person is diagnosing a family",
+  stemTitle:"FH is monogenic, lifelong and very-high-risk, so it is never risk-scored with QRISK — and the defining action is not the statin but the cascade testing of relatives who carry the same untreated risk",
+  stemSub:"One page for the whole condition. Recognise it — including the systematic record search that finds undiagnosed cases — and know that <b>QRISK underestimates FH and must not be applied to it</b>. Refer for specialist confirmation with Simon Broome or DLCN criteria and genetic testing, treat to a <b>≥50% LDL-C reduction</b> rather than an ordinary primary-prevention target, ensure cascade testing of first- and second-degree relatives actually happens, and handle the two situations GPs get wrong: statins around pregnancy, and children.",
+  guideline:"NICE CG71 · NG238",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE CG71 — familial hypercholesterolaemia"},
+    {t:"Do NOT use QRISK in FH — it underestimates", tone:"tw"},
+    {t:"Target: ≥50% reduction in LDL-C from baseline", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#suspect"><b>Suspect</b><small>Thresholds · search</small></a><a href="#cascade"><b>Cascade</b><small>Test the family</small></a><a href="#treat"><b>Treat</b><small>≥50% LDL drop</small></a><a href="#monitor"><b>Monitor</b><small>Lipids · LFTs</small></a><a href="#refer"><b>Refer</b><small>Specialist-led</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⛔ Never risk-score FH with QRISK", html:"FH is a monogenic, lifelong, very-high-risk condition and QRISK underestimates it. Unlike ordinary high cholesterol, FH is not risk-stratified — it is treated on the diagnosis. Applying a population risk calculator to a monogenic disorder produces a falsely reassuring number and delays treatment by years."},
+    {tone:"amber", h:"When to suspect it", html:"Adult total cholesterol above 7.5 mmol/L or LDL above 4.9, with a personal or family history of premature coronary disease, or tendon xanthomata (child: TC above 6.7 or LDL above 4.0). Search the records systematically: TC above 9 at age 30 or over — above 7.5 under 30 — is above the 99th centile and very likely FH."},
+    {tone:"red", h:"⚠ Suspected homozygous FH goes straight to a specialist centre", html:"LDL above 13 mmol/L at 16 or over, or above 11 under 16 → refer to a specialist centre and do NOT apply Simon Broome or DLCN criteria. Childhood coronary disease or very high levels warrant urgent specialist involvement — this is a different disease in severity and needs apheresis-capable services."},
+    {tone:"blue", h:"The target is a ≥50% LDL-C reduction", html:"A higher bar than ordinary primary prevention: aim for at least a 50% fall in LDL-C from baseline on the maximal tolerated high-intensity statin (atorvastatin or rosuvastatin). Not met → add ezetimibe 10 mg OD → specialist PCSK9 inhibitor, inclisiran, or lipoprotein apheresis in homozygous FH."},
+    {tone:"green", h:"Diagnosing one person means testing the family", html:"Once the index case is confirmed, systematically test first- AND second-degree relatives, including children, coordinated by the specialist service. Where a mutation is known, offer relatives GENETIC testing rather than LDL alone — and note that <b>simply telling a patient to \"tell your relatives\" does not work</b>; the cascade has to be organised."},
+    {tone:"red", h:"⚠ Statins and pregnancy", html:"<b>Stop statins before and around pregnancy — they are teratogenic.</b> Plan contraception and offer pre-conception counselling as part of routine FH care, not as an afterthought. Children with FH are managed by specialists — do not initiate paediatric treatment in primary care alone."}
+  ],
+  pathwaySub:"Five steps, and the second is the one that distinguishes FH care from lipid care.",
+  pathway:[
+    {title:"Suspect it — and search for it", html:"Apply the thresholds, look for tendon xanthomata and premature family CHD, and run the systematic record search for TC above 9. <b>Exclude secondary causes before labelling.</b>"},
+    {title:"Refer for confirmation, then cascade the family", html:"Specialist lipid clinic for Simon Broome or DLCN criteria and genetic testing — then coordinated testing of first- and second-degree relatives.", alert:true},
+    {title:"Treat to a ≥50% LDL reduction", html:"Maximal tolerated high-intensity statin → ezetimibe → specialist agents. <b>Lifestyle is an adjunct and cannot normalise FH lipids alone.</b>"},
+    {title:"Monitor lipids, liver and the cascade", html:"LDL at 3 months then annually; LFTs at baseline, 3 and 12 months; and check at every review that relatives are actually being tested."},
+    {title:"Plan for pregnancy, lifelong", html:"Contraception, pre-conception counselling, and stopping statins around conception."}
+  ],
+  sections:[
+
+    {id:"suspect", nav:"Suspect", title:"Step 1 — recognising FH, and finding the cases you have not diagnosed",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Suspect FH</b>","Adult TC above 7.5 mmol/L or LDL above 4.9 (child TC above 6.7 / LDL above 4.0) with a personal or family history of premature coronary heart disease, or tendon xanthomata"],
+         ["<b>Search the records systematically</b>","TC above 9 mmol/L if aged 30 or over — above 7.5 if under 30 — is above the 99th centile and very likely FH. This is a searchable, findable population sitting in every practice's lipid results"],
+         ["<b>Suspected homozygous FH</b>","LDL above 13 mmol/L at 16 or over, or above 11 under 16 → refer to a specialist centre and do NOT use Simon Broome or DLCN criteria"],
+         ["<b>Diagnostic criteria</b>","Simon Broome or Dutch Lipid Clinic Network (DLCN) criteria; arrange or await genetic testing via the specialist service"],
+         ["<b>Exclude secondary causes first</b>","Hypothyroidism, nephrotic syndrome, cholestasis, alcohol — before labelling anyone with FH"]
+       ]},
+       {b:"why", html:"FH is a monogenic, lifelong, very-high-risk condition — and unlike ordinary high cholesterol it is not risk-scored with QRISK, which underestimates it. The defining feature is that diagnosing one person should trigger cascade testing of the whole family, because each affected relative carries the same untreated risk of early coronary disease. That is what makes FH a family diagnosis rather than an individual one, and it is the part most often left undone."}
+     ]},
+
+    {id:"cascade", nav:"Cascade", title:"Step 2 — cascade testing: the action that defines FH care",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Who to test</b>","Once the index case is confirmed, systematically test first- AND second-degree relatives, including children — coordinated by the specialist service"],
+         ["<b>What test</b>","Where a mutation is known, offer relatives GENETIC testing rather than LDL measurement alone — LDL alone misses affected relatives whose levels overlap the normal range"],
+         ["<b>Why it needs organising</b>","<b>Simply telling patients to \"tell your relatives\" does not work.</b> The cascade is a coordinated process, and checking that it has actually started is a legitimate primary-care task at every review"],
+         ["<b>Children</b>","<b>Affected children are managed by specialists.</b> Do not initiate paediatric lipid treatment in primary care alone"]
+       ]},
+       {b:"say", html:"This is an inherited cause of very high cholesterol, so it needs specialist confirmation and — importantly — testing of your relatives, because they may have it too. We will start a strong statin to cut your cholesterol by at least half and protect your heart for the long term. The family testing matters as much as your own treatment: your brothers, sisters, parents and children each have a real chance of carrying the same gene, and finding it early is what prevents heart attacks in them."}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Step 3 — lipid-lowering to a ≥50% LDL reduction",
+     blocks:[
+       {b:"table", head:["Step","Treatment","Detail"], rows:[
+         ["<b>Step 1 — high-intensity statin</b>","Atorvastatin or rosuvastatin, at the maximal tolerated high-intensity dose","Aim for a ≥50% reduction in LDL-C from baseline — a higher bar than ordinary primary prevention"],
+         ["<b>Step 2 — add ezetimibe</b>","<b>Ezetimibe 10 mg once daily added to the statin</b>","<b>Where the ≥50% reduction is not achieved.</b> Ezetimibe may be used alone if a statin is genuinely not tolerated"],
+         ["<b>Step 3 — specialist agents</b>","PCSK9 inhibitors (per NICE technology appraisal), inclisiran, or other agents via the lipid clinic","<b>Lipoprotein apheresis for homozygous FH</b>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"⚠ Pregnancy", html:"<b>Stop statins before and around pregnancy — teratogenic.</b> <b>Plan contraception and pre-conception counselling.</b> This applies to a young population on lifelong treatment, so it is a routine conversation, not an exceptional one."},
+         {tone:"amber", h:"⚠ Children", html:"Children with FH are managed by specialists — do not initiate paediatric treatment in primary care alone."},
+         {tone:"green", h:"🥗 Lifestyle is an adjunct", html:"Cardioprotective diet and reduced saturated fat help but cannot normalise FH lipids alone. Smoking cessation is critical given the already very high coronary risk; regular activity, healthy weight, alcohol within limits."},
+         {tone:"blue", h:"👨‍👩‍👧 Engage the family in both", html:"<b>Family testing and shared lifestyle change go together</b> — the household usually shares both the genes and the diet."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitor", title:"Step 4 — lipids, liver and the family",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>LDL and lipid profile</b>","<b>3 months, then annually</b>","<b>Confirm the ≥50% LDL reduction; intensify if not achieved</b>"],
+         ["<b>LFTs</b>","<b>Baseline, 3 months and 12 months</b>","<b>Stop only if ALT or AST exceeds 3× the upper limit of normal</b>"],
+         ["<b>Adherence</b>","<b>Each review</b>","Address statin hesitancy proactively rather than waiting for the patient to disclose non-adherence"],
+         ["<b>Cascade status</b>","<b>Ongoing</b>","Check that relatives are actually being tested — this is the step that quietly fails"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>After specialist diagnosis</b>","Establish treatment: high-intensity statin, lifestyle, and confirm cascade testing has been initiated"],
+         ["<b>3 months</b>","<b>Recheck LDL; add ezetimibe or escalate if the reduction is under 50%</b>"],
+         ["<b>Annually, lifelong</b>","Lipids, adherence, cardiovascular risk factors, family testing status, and pregnancy planning"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🫀 Cardiovascular symptoms", html:"\"Chest pain or breathlessness on exertion — get assessed promptly. Your heart risk is higher than average.\""},
+         {tone:"red", h:"🤰 Pregnancy", html:"\"Stop the statin if you are pregnant or planning to be, and tell us so we can plan it safely.\""},
+         {tone:"amber", h:"💪 Muscle symptoms", html:"\"Severe muscle pain with dark urine — stop the statin and seek help. Lesser aches — contact us rather than just stopping.\""},
+         {tone:"green", h:"👨‍👩‍👧 Family", html:"\"Your close relatives should be tested — early treatment can prevent heart attacks in them too.\""}
+       ]}
+     ]},
+
+    {id:"troubleshoot", nav:"Not at target?", title:"LDL not down by 50%? Check before escalating",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Adherence", html:"Statin hesitancy is common — explore beliefs and side-effect fears rather than assuming the tablets are being taken."},
+         {tone:"amber", h:"2 · Dose and intensity", html:"Is the patient on the maximal tolerated high-intensity statin, or on a starter dose that was never titrated?"},
+         {tone:"blue", h:"3 · Add-on", html:"<b>Ezetimibe added? Consider specialist PCSK9 inhibitor.</b>"},
+         {tone:"blue", h:"4 · Secondary cause", html:"<b>Recheck thyroid function, alcohol and other contributors.</b>"},
+         {tone:"green", h:"5 · Specialist", html:"<b>Persistent failure or true intolerance → lipid clinic.</b> Adherent, optimised and secondary causes excluded is the point to refer for PCSK9 inhibition."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When to refer — the specialist lipid service leads diagnosis",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Urgent specialist — homozygous or severe", html:"Suspected homozygous FH: LDL above 13 mmol/L at 16 or over, above 11 under 16, or childhood coronary disease. Do not apply Simon Broome or DLCN criteria — refer to a specialist centre."},
+         {tone:"blue", h:"All suspected FH", html:"Refer to a specialist lipid clinic for diagnostic confirmation, genetic testing and cascade screening. The diagnosis is specialist-led, and cascade testing depends on it."},
+         {tone:"amber", h:"Refractory", html:"LDL target not met on a statin plus ezetimibe → for PCSK9 inhibitor or apheresis."},
+         {tone:"amber", h:"Children and pregnancy", html:"Affected children, and pregnancy or pre-conception planning → specialist."},
+         {tone:"cream", h:"GP management", html:"Suspecting FH, running the record search, excluding secondary causes, delivering and titrating the statin, adding ezetimibe, monitoring lipids and LFTs, chasing the cascade, and pregnancy planning all belong here. Related pages: <a href='hypercholesterolaemia.html'>lipid management</a> · <a href='stable-angina.html'>stable angina</a> · <a href='mi-secondary-prevention.html'>post-MI secondary prevention</a> · <a href='hypertension.html'>hypertension</a> · <a href='contraception.html'>contraception</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 31-year-old woman attends for a routine check. Her <b>total cholesterol is 9.8 mmol/L and LDL 7.2</b>. She is slim, a non-smoker and takes no medication. Her <b>father had a myocardial infarction at 44</b> and her <b>paternal aunt at 51</b>. She has <b>thickening over both Achilles tendons</b>. A previous entry two years ago recorded a cholesterol of 9.1 with the comment \"diet advice given\". She mentions she and her partner are <b>hoping to start a family next year</b>."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises TC above 9 at age 30 or over as above the 99th centile and very likely FH, and does NOT calculate QRISK — explaining that a population risk score underestimates a monogenic condition; <b>identifies the Achilles thickening as tendon xanthomata</b>; <b>notes the previous result was not acted on and says so without blame</b>, since the record search is exactly how these cases are found; <b>excludes secondary causes — thyroid, renal, alcohol — before labelling</b>; refers to the specialist lipid clinic for Simon Broome/DLCN criteria and genetic testing rather than managing alone; raises cascade testing of her father's side, her siblings and any future children as central, not incidental; addresses the pregnancy plan directly — statins are teratogenic, so contraception and pre-conception counselling are part of the initial plan, and sequencing treatment around a planned pregnancy is the real clinical judgement here; and <b>sets the ≥50% LDL reduction target</b> rather than an ordinary one."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE CG71 — Familial hypercholesterolaemia: identification and management<br><a href="https://www.nice.org.uk/guidance/cg71" rel="noopener">nice.org.uk/guidance/cg71</a><span class="rd"> — the suspicion thresholds, the systematic record search using TC above 9 (above 7.5 under 30), Simon Broome and DLCN criteria, the instruction not to use those criteria in suspected homozygous FH, cascade testing of first- and second-degree relatives with genetic rather than LDL testing where a mutation is known, and the ≥50% LDL-C reduction target</span></li>'+
+         '<li>NICE NG238 — Cardiovascular disease: risk assessment and lipid modification<br><a href="https://www.nice.org.uk/guidance/ng238" rel="noopener">nice.org.uk/guidance/ng238</a><span class="rd"> — high-intensity statin choice, ezetimibe as the first add-on, and the position of the injectable agents</span></li>'+
+         '<li><b>NICE technology appraisals — PCSK9 inhibitors and inclisiran</b><span class="rd"> — the criteria under which alirocumab, evolocumab and inclisiran are funded, and lipoprotein apheresis in homozygous FH</span></li>'+
+         '<li><b>NICE CG71 \u2014 Familial hypercholesterolaemia: identification and management</b><br><a href="https://www.nice.org.uk/guidance/cg71" rel="noopener">nice.org.uk/guidance/cg71</a><span class="rd"> — secondary causes to exclude, the monitoring intervals, the ALT/AST 3× ULN stopping rule, and the statin-in-pregnancy caution</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — atorvastatin and rosuvastatin dosing, ezetimibe 10 mg once daily, and statin contraindication in pregnancy</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Familial hypercholesterolaemia — NICE CG71, NG238 and NICE. Never risk-score FH with QRISK: it is monogenic, lifelong and very high risk, and is treated on the diagnosis. Suspect it at TC above 7.5 or LDL above 4.9 with premature family CHD or tendon xanthomata, and search your records for TC above 9. Refer all suspected cases for specialist confirmation and genetic testing — and make sure cascade testing of first- and second-degree relatives actually happens, because diagnosing one person is diagnosing a family. Treat to a ≥50% reduction in LDL-C. Stop statins around pregnancy and plan contraception. Verify doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

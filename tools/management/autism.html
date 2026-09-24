@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Autism — Protocol · Reasoning GP</title>
+<meta name="description" content="Autism in primary care: never say wait and see, refer when autism is suspected, arrange audiology alongside, and know the three safety-nets — regression, new seizures, and behaviour change meaning physical pain. Plus melatonin for sleep, EHCP and DLA, and the annual review." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/autism.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Autism protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Autism — the complete guide",
+  eyebrow:"Protocol · refer on suspicion, never wait and see",
+  stemTitle:"\u201cWait and see\u201d is the one thing you must not say — refer when autism is suspected, and arrange audiology alongside rather than instead",
+  stemSub:"One page for the whole condition: recognise both DSM-5 domains rather than language delay alone, refer to the autism assessment service on suspicion without waiting for speech to develop, exclude hearing loss concurrently, and hold the three safety-nets that matter most — developmental regression, new seizures in a group where 1 in 3 develop epilepsy, and behaviour change in a non-verbal child meaning physical pain until proven otherwise. Diagnosis needs ADOS-2 and a multidisciplinary team; everything before and after it is primary care.",
+  guideline:"NICE CG128 · NICE CG170 · NICE CG142 · DSM-5",
+  reviewed:"10 September 2026",
+  nextReview:"10 March 2027",
+  meta:[
+    {t:"NICE CG128 — autism recognition &amp; referral (under 19s)"},
+    {t:"NICE CG170 — autism management (under 19s)"},
+    {t:"NICE CG128 · NICE CG142 · DSM-5 criteria"},
+    {t:"Slenyto — licensed for autism sleep, ages 2–18"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Never wait</b><small>Refer on suspicion</small></a><a href="#confirm"><b>Two domains</b><small>DSM-5 · girls mask</small></a><a href="#workup"><b>Before referral</b><small>Audiology · red flags</small></a><a href="#ladder"><b>Support</b><small>Sleep · school · family</small></a><a href="#monitor"><b>Annual review</b><small>Epilepsy · growth · pain</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Never say \u201cwait and see\u201d", html:"NICE CG128/CG170: if autism is suspected, refer to an autism assessment service — do not delay because the child makes eye contact, is verbal, or has some social skills, and do not wait for speech alone. Failure to refer when autism is suspected is both a clinical and a medico-legal omission, and it must be documented that \u201cwait and see\u201d was not given."},
+    {tone:"red", h:"Regression is never \u201cnormal autism\u201d", html:"Loss of skills already acquired — words, social responses, abilities — at any age needs urgent paediatric assessment and EEG. <b>Consider Rett syndrome, Landau-Kleffner and metabolic conditions.</b> <b>Safety-net at 48 hours, not the next appointment</b> — this is the highest-risk safety-netting failure in paediatric neurodevelopmental consultations. Around <b>25–30% of autistic children show some regression</b>."},
+    {tone:"amber", h:"1 in 3 develop epilepsy — do not call seizures \u201cautism\u201d", html:"New staring spells over 30 seconds, unusual movements, convulsions or unexplained falls need urgent EEG and paediatric neurology. Parents routinely attribute absence seizures and automatisms to autistic behaviour, delaying diagnosis of a treatable condition."},
+    {tone:"blue", h:"Behaviour change means pain first", html:"In a non-verbal autistic child, new distress, aggression or self-injury is physical pain until proven otherwise — constipation (up to 50%), ear infection, dental pain, GERD, UTI. Pain is systematically undertreated in this group because it is attributed to autism, which escalates behaviour plans that never address the cause."},
+    {tone:"purple", h:"Both DSM-5 domains, and girls mask", html:"Diagnosis needs social communication deficits AND restricted, repetitive behaviours — language delay alone is not autism, and eye contact neither confirms nor excludes it. Girls are diagnosed on average 4.6 years later through masking and camouflaging, and academic achievement does not exclude autism. UK prevalence about <b>1 in 57</b>."},
+    {tone:"green", h:"Audiology alongside, not instead", html:"Formal audiology is a mandatory component of the NICE pathway and must be arranged CONCURRENTLY with the autism referral, not before it. The neonatal screen misses mild-to-moderate loss, and glue ear both mimics and co-occurs with autism. Document that both were arranged."}
+  ],
+  pathwaySub:"The whole task in five moves. The first is a referral decision made on suspicion, not certainty.",
+  pathway:[
+    {title:"Refer on suspicion, and screen the urgent patterns", html:"Regression at any age → urgent paediatrics plus EEG. New seizure-like episodes → urgent neurology. Otherwise: refer to the autism assessment service now.", alert:true},
+    {title:"Confirm the pattern spans both domains", html:"Social communication (absent proto-declarative pointing by 14 months, reduced peer interest, impaired reciprocity) AND restricted/repetitive behaviours (insistence on sameness, special interests, sensory responses)."},
+    {title:"Arrange audiology and the parallel referrals", html:"<b>Formal audiology concurrently; SALT; developmental paediatrics.</b> Ask about siblings — <b>recurrence risk around 20%</b>. Screen parental mental health with PHQ-9."},
+    {title:"Start support during the wait", html:"SENCO and a SEND support plan (no diagnosis needed), EHCP application, DLA and Carer's Allowance, National Autistic Society, sleep programme then melatonin if needed."},
+    {title:"Then hold the annual review", html:"Growth and nutrition, sleep and melatonin cessation trial, active constipation screening, epilepsy surveillance, ADHD and mental health, family wellbeing, and transition planning from age 14."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Never wait", title:"The referral rule, and the three urgent patterns",
+     sub:"The GP does not diagnose autism — that needs ADOS-2, ADI-R and a multidisciplinary team. The GP recognises the pattern and refers promptly.",
+     blocks:[
+       {b:"warn", html:"NICE CG128/CG170 (2022): if autism is suspected, refer to an autism assessment service. Do not delay because the child makes eye contact, is verbal, or has some social skills. Do not wait for speech alone. \u201cWait and see\u201d is not an acceptable response to suspected autism — early diagnosis enables early intervention, which significantly improves outcomes, and the failure to refer is a documented medico-legal omission."},
+       {b:"table", head:["Pattern","Meaning","Action"], rows:[
+         ["<b>Developmental regression at any age</b> — loss of words, social responses or skills already acquired","Rett syndrome, Landau-Kleffner syndrome, childhood disintegrative disorder, epileptic encephalopathy or metabolic disease. Autistic regression occurs in about <b>25–30%</b>, but regression is never assumed to be \u201cnormal autism\u201d","Urgent paediatric assessment plus EEG; MRI and chromosomal microarray are specialist-arranged. Safety-net for contact within <b>48 hours</b>"],
+         ["New staring spells lasting over 30 seconds, unusual movements, convulsions or unexplained falls","<b>Epilepsy — 1 in 3 autistic people develop it</b>, and absence seizures are routinely mistaken for autistic behaviour","Urgent EEG and paediatric neurology. 999 for any convulsion over 5 minutes"],
+         ["<b>Behaviour change in a non-verbal autistic child</b> — new distress, aggression or self-injury","Physical pain until proven otherwise: constipation (up to 50% of autistic children), otitis media, dental pain, GERD, UTI","<b>Examine for a physical cause BEFORE altering any behaviour plan.</b> Consider an ABC chart — do behaviours cluster around meals or toileting?"],
+         ["<b>Suspected autism with no hearing assessment</b>","Hearing loss both mimics and co-occurs with autism; the neonatal screen misses mild-to-moderate loss. Ask about listening in background noise","Formal audiology arranged CONCURRENTLY with the autism referral — a mandatory part of the NICE pathway"],
+         ["<b>Safeguarding concern</b>","Autistic children are at increased risk of abuse and neglect","<b>MASH referral</b>"],
+         ["<b>School exclusion or school refusal</b>","<b>Exclusion is disproportionately applied to autistic children</b>","GP advocacy letter, SENCO involvement, EHCP if not in place, CAMHS assessment"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Autism has no NICE NG12 suspected-cancer criterion, and none should be invented for one. The urgent routes here are neurological and developmental. The only oncological adjacency is the general paediatric one: where regression or behaviour change comes with headache, vomiting, visual change or a progressive focal deficit, that is a brain tumour route in its own right — and it is a reason the regression safety-net exists"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Two domains", title:"DSM-5 domains, and the presentations that get missed",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Both domains are required</b>","Domain A — social communication and interaction deficits. Domain B — restricted, repetitive patterns of behaviour, interests or activities. BOTH are required for diagnosis: language delay alone is not autism"],
+         ["<b>Domain A: joint attention</b>","Absent proto-declarative pointing — pointing to SHARE interest rather than to request — by 14 months is the most specific early marker. Also: not following a point, not showing things, reduced response to name. Many autistic children point to request, so the absence of sharing-pointing is more specific than pointing itself"],
+         ["<b>Domain A: social reciprocity</b>","Reduced interest in peers, parallel play without engagement, interaction on the child's own terms. <b>The quality of reciprocity matters more than the frequency of contact.</b> Autism is not shyness — shyness wants social contact but is inhibited; autism is a qualitatively different pattern of social motivation and understanding"],
+         ["<b>Domain B</b>","Insistence on sameness (exact routes, orders, bedtime sequences, extreme distress at change), repetitive motor mannerisms, intense narrow special interests, and unusual sensory responses (covering ears, seeking strong input, food texture sensitivity). Parents often describe these as \u201cstrong-willed\u201d or \u201csensitive\u201d rather than as a pattern"],
+         ["<b>Eye contact does not decide it</b>","Autistic children often make eye contact with familiar people. Eye contact alone neither confirms nor excludes autism — leading with that question misdirects the whole consultation"],
+         ["<b>M-CHAT-R/F</b>","A validated screening tool for 16–30 month olds. NICE cautions that M-CHAT must not be used alone to exclude autism: a positive result should accelerate referral, never replace it"],
+         ["<b>Girls, and the missed presentation</b>","Girls are diagnosed on average 4.6 years later than boys through masking and camouflaging. <b>Academic achievement does not exclude autism</b> — many autistic girls mask successfully at school and melt down at home afterwards, with intense special interests and rigid adherence to social rules they have learned rather than intuited"],
+         ["<b>Comorbidity</b>","ADHD in 50–70% · epilepsy in 1 in 3 · anxiety, depression and OCD more common than in neurotypical peers · GI problems including constipation in up to 50% · sleep difficulties in about 80% · intellectual disability in a substantial minority, and it significantly affects outcome"]
+       ]},
+       {b:"say", html:"Thank you for coming in — I can hear you have been worried for a while, and I want you to know that parents know their children better than anyone. What you have noticed is the most important information I have. I am not going to tell you to wait and see. From what you describe there is enough here that Ethan should be assessed properly, and I am making that referral today. I will also arrange a full hearing test at the same time — not instead of the referral, but alongside it, because hearing problems can look similar and can also happen at the same time."}
+     ]},
+
+    {id:"workup", nav:"Before referral", title:"What the GP does before and alongside referral",
+     blocks:[
+       {b:"table", head:["Action","Detail"], rows:[
+         ["<b>Refer to the autism assessment service</b>","On suspicion — do not wait for certainty, speech development or school agreement. Shared decision-making with parents throughout, and honest reassurance rather than false reassurance. Include the developmental history, both DSM-5 domains with examples, red flags, family history and school observations"],
+         ["<b>Formal audiology — concurrently</b>","Not the neonatal screen: full audiometry with tympanometry and otoscopy. Grommets or a hearing aid may be needed. Otitis media with effusion (glue ear) is common, mimics autism and co-occurs with it. Document that audiology was arranged alongside the referral"],
+         ["<b>Speech and language therapy</b>","Refer in parallel — SALT input does not wait for the diagnosis"],
+         ["<b>Developmental history</b>","Milestones, regression, birth and perinatal history (prematurity, low birth weight, maternal valproate exposure), family history of autism including any first-degree relative (sibling recurrence risk around 20%), hearing and vision, sleep, diet and food repertoire, GI symptoms, behaviour at home versus nursery or school"],
+         ["<b>Examination</b>","Growth centiles (food restriction is common), head circumference (macrocephaly, or hydrocephalus if crossing centiles), dysmorphic features (Down syndrome, Williams syndrome, fragile X), hypotonia, skin (neurocutaneous stigmata — café-au-lait macules of neurofibromatosis, tuberous sclerosis), neurological examination, and hearing and vision screening"],
+         ["<b>Parental mental health</b>","PHQ-9 and GAD-7 for parents and carers — maternal mental health in particular affects child safety and is a GP clinical responsibility. The health visitor is a key partner in under-5s. Document the result and any onward referral"],
+         ["<b>Do not delay support for the diagnosis</b>","A SEND support plan needs no diagnosis. SENCO involvement, nursery or school adjustments, DLA application and NAS resources can all start today"]
+       ]},
+       {b:"why", html:"<b>The waiting period is where primary care adds most value.</b> Autism assessment waits are long, and families frequently receive nothing during them. Everything in the support section below — school adjustments, sleep management, DLA, NAS Earlybird, sibling and parental support — is available without a confirmed diagnosis, and the GP is usually the only professional in contact with the family while they wait."}
+     ]},
+
+    {id:"ladder", nav:"Support", title:"Sleep, school, family and the medication rules",
+     blocks:[
+       {b:"table", head:["Domain","Detail"], rows:[
+         ["<b>Sleep — 80% of autistic children</b>","<b>Behavioural sleep programme FIRST</b> — sleep hygiene — consistent routine, visual bedtime sequence, screen-free wind-down, environmental adjustment for sensory needs, and a weighted blanket if it helps. Then melatonin: Slenyto is licensed for insomnia in autistic children aged 2–18. Review at 6 weeks, then 6-monthly. <b>No response at 5 mg → CAMHS sleep review.</b> Annual cessation trial — many children can eventually stop as the circadian rhythm matures"],
+         ["<b>Constipation — up to 50%</b>","Macrogol (Movicol Paediatric Plain) first-line as the laxative of choice, 1 sachet per year of age per day; lactulose or senna as alternatives, with dietary fibre and fluid. Exclude obstruction before laxatives; an abdominal X-ray helps assess severe faecal loading in a non-verbal child. Multifactorial: restricted food repertoire, low fluid intake, sensory issues with toileting, reduced activity, medication. <b>Screen actively at every review rather than waiting to be told</b> — treating it can dramatically improve behaviour, sleep and mood with no psychiatric medication"],
+         ["<b>School</b>","SENCO involvement from the outset. SEND support plan — no diagnosis required. EHCP application where impairment is significant; a GP supporting letter strengthens it. Exam accommodations. Advocate immediately against exclusion"],
+         ["<b>Family finances and support</b>","Disability Living Allowance — applicable from diagnosis and sometimes before. Carer's Allowance. Universal Credit adjustments. Short Breaks (respite). Citizens Advice benefits check. Many families never claim what they are legally entitled to because nobody told them. A carer's assessment is a legal entitlement too"],
+         ["<b>Family and siblings</b>","NAS Earlybird programme; National Autistic Society; local peer support. Siblings — ask specifically at every consultation; they may present with somatic symptoms or school avoidance. Sibs (sibs.org.uk). Relationship strain is common — offer Relate proactively rather than after a crisis"],
+         ["<b>ADHD comorbidity (50–70%)</b>","Paediatric psychiatry review — see the <a href=\"adhd.html\">ADHD protocol</a> (NG87). Stimulant choice differs: methylphenidate may be less effective in autism — atomoxetine or guanfacine are alternatives. Monitor growth, BP, HR, tics and anxiety"],
+         ["<b>Anxiety and depression</b>","Screen with GAD-7 where the child can engage. Autism-adapted CBT first — via CAMHS or NHS Talking Therapies for older adolescents. SSRIs: limited evidence in autism and a higher risk of behavioural activation than in non-autistic children — never initiate in primary care without specialist recommendation; start low (for example sertraline 25 mg) and titrate slowly"]
+       ]},
+       {b:"warn", html:"Absolute prescribing rule: NICE CG128/CG170 prohibits antipsychotics for core autism features. Aripiprazole and risperidone are justified only for specific challenging behaviour causing serious harm, after all behavioural interventions are exhausted, and are NEVER GP-initiated — a CAMHS psychiatrist or paediatrician must initiate with a documented indication and risk–benefit discussion. GP shared-care monitoring is then mandatory: weight and BMI monthly for 3 months then quarterly; fasting glucose and lipids at baseline, 3 months and annually (metabolic syndrome risk); prolactin if symptomatic; AIMS scale for tardive dyskinesia and EPS at each review — any dyskinetic movement means stop and contact the specialist urgently. Ensure a shared care agreement is in place before prescribing."},
+       {b:"say", html:"How are you both doing in all of this? It is completely normal to feel several things at once — relief that someone is taking it seriously, grief about what it might mean, and worry about the future. Those feelings are all valid and I would rather you said them out loud than carried them. And how are Ethan's brothers and sisters? Sometimes when one child has significant needs the others' feelings get a bit lost, and there is support specifically for them too."}
+     ]},
+
+    {id:"monitor", nav:"Annual review", title:"Follow-up, surveillance and the three safety-nets",
+     blocks:[
+       {b:"table", head:["When","What"], rows:[
+         ["<b>6–8 weeks</b>","Referral acknowledged? Audiology appointment received? SALT underway? Sleep programme started — is melatonin now needed? Parental PHQ-9. SENCO engaged and SEND support plan in place? DLA application started? Any regression, seizures or behaviour change?"],
+         ["<b>3–6 months — the active waiting period</b>","SEND plan in place? EHCP progressing? Melatonin effective? ADHD assessment needed? Behaviour escalation requiring CAMHS? Parental mental health. Family support services accessed (Short Breaks, carer's assessment). Dietitian if the food repertoire is very restricted"],
+         ["<b>Post-diagnosis</b>","NAS Earlybird referral immediately. DLA applied for. EHCP application. Comorbidity assessment — ADHD, anxiety. Genetic counselling if a syndrome is identified. Epilepsy surveillance plan. Agree an annual GP review"],
+         ["<b>Annual review</b>","Growth and nutrition on centile charts (faltering growth warrants a dietitian) · sleep and an annual melatonin cessation trial · active constipation screening · epilepsy surveillance · ADHD and medication review · mental health (anxiety, depression, OCD) · family and sibling wellbeing · EHCP annual review · transition planning from age 14"],
+         ["<b>Transition to adult services</b>","Begins at 14, not 17 — the EHCP must include a transition plan by then, with adult social care assessment and CAMHS-to-AMHS handover. Early planning prevents crisis at 18"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Regression — contact within 48 hours", html:"\u201cIf you ever notice Ethan losing skills he already has — words he used to say, social responses he used to make — contact us within 48 hours, not at the next appointment. Losing skills that were already there is not a normal part of autism and needs urgent investigation.\u201d"},
+         {tone:"red", h:"🔴 New seizures", html:"\u201cAbout one in three autistic children develop epilepsy. Blank staring over 30 seconds, jerking, or a sudden fall — contact us urgently, and <b>999 for any convulsion lasting more than 5 minutes.</b> <b>Do not assume unusual behaviour is just autism.</b>\u201d"},
+         {tone:"amber", h:"🟠 Behaviour change = pain first", html:"\u201cIf his behaviour suddenly changes — more distressed, more aggressive, more self-injurious — <b>think about pain before anything else.</b> Constipation, toothache, earache or a stomach upset can all look like a behaviour problem. Come and see us before changing any behaviour plan.\u201d"},
+         {tone:"green", h:"📋 Document these six things", html:"\u201cWait and see\u201d NOT given · audiology arranged concurrently · regression safety-net given · parental PHQ-9 screened · DLA and Carer's Allowance information given · EHCP process explained."}
+       ]},
+       {b:"why", html:"Physical pain in non-verbal autistic children is systematically undertreated because it is attributed to autistic behaviour — producing preventable suffering and the iatrogenic escalation of behaviour management plans that never address the cause. Constipation is massively underdiagnosed in this group, and treating it is a high-impact, low-risk intervention that is frequently missed. Equally, parents commonly attribute staring spells and automatisms to autism rather than to seizures, delaying antiepileptic treatment in a population where <b>1 in 3 develop epilepsy</b>."},
+       {b:"say", html:"I know the future feels uncertain. What I can tell you is that autism is a lifelong difference, but it changes enormously with age and the right support — many autistic adults live independently, work, and describe their autism as part of their identity rather than a disease — around 30–40% are in paid employment. Autistic burnout from prolonged masking is increasingly recognised in adolescents and adults. The two things that most change how this goes are early diagnosis and early support, and that is exactly what we are putting in place today."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Urgent paediatrics", html:"<b>Developmental regression at any age — plus EEG.</b> Exclude Rett, Landau-Kleffner and metabolic conditions."},
+         {tone:"red", h:"Urgent paediatric neurology", html:"New staring spells, unusual movements, convulsions or unexplained falls — urgent EEG. 999 for a convulsion over 5 minutes."},
+         {tone:"amber", h:"Autism assessment service", html:"Refer on suspicion — do not wait for speech, certainty or school agreement. Diagnosis requires ADOS-2, ADI-R and an MDT."},
+         {tone:"blue", h:"Audiology and SALT — concurrently", html:"Formal audiology is mandatory in the NICE pathway and runs alongside the referral, not before it. SALT in parallel."},
+         {tone:"blue", h:"CAMHS / paediatric psychiatry", html:"ADHD assessment (50–70% comorbidity) · escalating behaviour · anxiety or depression needing more than autism-adapted CBT · sleep not responding to melatonin at 5 mg."},
+         {tone:"cream", h:"GP management", html:"Referral and audiology · developmental history and examination · parental PHQ-9 · SENCO, SEND and EHCP support · DLA and Carer's Allowance · sleep programme and melatonin · constipation · annual review and comorbidity surveillance · shared-care monitoring where a specialist has initiated antipsychotics."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"Parents attend with their 3½-year-old son: 10–15 single words and not combining, does not point to share, rarely looks at other children, extreme distress if a routine changes, lines up toy cars precisely, responds to his name inconsistently. Both sets of grandparents think the parents are worrying unnecessarily and that \u201call boys talk late\u201d. The parents feel guilty about \u201clabelling\u201d him."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Validates parental expertise before clinical questioning</b>; recognises BOTH DSM-5 domains rather than treating this as speech delay; <b>does not lead with \u201cdoes he make eye contact?\u201d</b>; refers to the autism assessment service today and explicitly does not say \u201cwait and see\u201d; <b>arranges formal audiology CONCURRENTLY and says why</b>; <b>starts SENCO and SEND support without waiting for the diagnosis</b>; addresses the grandparents' stance without dismissing them; <b>gives the regression and seizure safety-nets</b>; and — the step candidates miss — <b>screens parental mental health and mentions DLA entitlement.</b>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE CG128 — Autism spectrum disorder in under 19s: recognition, referral and diagnosis<br><a href="https://www.nice.org.uk/guidance/cg128" rel="noopener">nice.org.uk/guidance/cg128</a><span class="rd"> — refer when autism is suspected; do not delay for eye contact, verbal ability or speech alone; audiology as a mandatory concurrent component; the caution against using M-CHAT alone to exclude autism</span></li>'+
+         '<li>NICE CG170 — Autism spectrum disorder in under 19s: support and management<br><a href="https://www.nice.org.uk/guidance/cg170" rel="noopener">nice.org.uk/guidance/cg170</a><span class="rd"> — the prohibition on antipsychotics for core autism features, the challenging-behaviour exception with specialist initiation and metabolic monitoring, and autism-adapted psychological interventions</span></li>'+
+         '<li><b>NICE CG128 · NICE CG142 \u2014 Autism spectrum disorder in under 19s; Autism spectrum disorder in adults</b><br><a href="https://www.nice.org.uk/guidance/cg128" rel="noopener">nice.org.uk/guidance/cg128</a><span class="rd"> — primary-care recognition, the referral pathway and comorbidity surveillance</span></li>'+
+         '<li><b>DSM-5</b><span class="rd"> — the two required domains: social communication and interaction deficits, plus restricted repetitive patterns of behaviour, interests or activities</span></li>'+
+         '<li><b>NHS Digital (2022) autism prevalence estimate</b><span class="rd"> — approximately 1 in 57 in the UK</span></li>'+
+         '<li><b>National Autistic Society, NAS Earlybird, Sibs and Relate</b><br><a href="https://www.autism.org.uk" rel="noopener">autism.org.uk</a> · <a href="https://www.sibs.org.uk" rel="noopener">sibs.org.uk</a><span class="rd"> — family, sibling and relationship support</span></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> — melatonin (Slenyto, licensed for insomnia in autistic children aged 2–18), macrogol, sertraline, atomoxetine, guanfacine, aripiprazole and risperidone</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Autism — NICE CG128 and CG170, NICE CG128 · NICE CG142, DSM-5 and the BNF for Children. Refer when autism is suspected: \u201cwait and see\u201d is not an acceptable response, and formal audiology is arranged alongside the referral rather than before it. Diagnosis requires ADOS-2, ADI-R and a multidisciplinary team. Verify all doses against the BNF for Children before prescribing, and never initiate antipsychotics for autism in primary care."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

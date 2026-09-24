@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Breathlessness Algorithm · Reasoning GP</title>
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/breathlessness.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --c-bg: #f7f6f2;
+    --c-surface: #ffffff;
+    --c-surface2: #f0efe9;
+    --c-border: #e2e0d8;
+    --c-text: #1a1a1a;
+    --c-text2: #555550;
+    --c-text3: #888882;
+
+    --c-safety: #c0392b;
+    --c-safety-lt: #fdf3f2;
+    --c-safety-mid: #f8e4e2;
+    --c-diagnose: #1a5276;
+    --c-diagnose-lt: #eaf2fb;
+    --c-diagnose-mid: #d4e8f7;
+    --c-refer: #6c3483;
+    --c-refer-lt: #f5eef8;
+    --c-refer-mid: #e8d5f0;
+    --c-treat: #1e8449;
+    --c-treat-lt: #eafaf1;
+    --c-treat-mid: #c9edda;
+    --c-lifestyle: #d68910;
+    --c-lifestyle-lt: #fef9e7;
+    --c-lifestyle-mid: #fdedb4;
+
+    --r: 10px;
+    --r-sm: 6px;
+    --shadow: 0 2px 8px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--c-bg);
+    color: var(--c-text);
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0 0 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── BANNER ── */
+  .stem-banner {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2471a3 60%, #1a8cbb 100%);
+    color: white;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border-bottom: 3px solid #1562a0;
+  }
+  .sb-icon {
+    font-size: 40px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+  }
+  .stem-banner b {
+    display: block;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  .stem-banner small {
+    font-size: 13px;
+    opacity: 0.82;
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .alg-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background: var(--c-surface);
+    border-bottom: 1px solid var(--c-border);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--c-text2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .pcount { font-weight: 700; color: var(--c-text); margin-left: 2px; }
+  .pbar {
+    flex: 1;
+    height: 6px;
+    background: var(--c-border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .pbar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #1a8cbb, #1e8449);
+    border-radius: 99px;
+    transition: width 0.4s ease;
+  }
+  .reset {
+    background: none;
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--c-text3);
+    cursor: pointer;
+    transition: all .15s;
+    font-family: inherit;
+  }
+  .reset:hover { border-color: var(--c-text3); color: var(--c-text2); }
+
+  /* ── FLOW CONTAINER ── */
+  .alg-flow {
+    max-width: 780px;
+    margin: 28px auto 0;
+    padding: 0 16px;
+  }
+
+  /* ── CONNECTOR ── */
+  .connector {
+    width: 2px;
+    height: 28px;
+    background: var(--c-border);
+    margin: 0 auto;
+    position: relative;
+  }
+  .connector::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--c-border);
+  }
+
+  /* ── NODE ── */
+  .node {
+    background: var(--c-surface);
+    border-radius: var(--r);
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--c-border);
+    overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  .node:hover { box-shadow: var(--shadow-lg); }
+
+  .node[data-type="SAFETY"]    { border-left-color: var(--c-safety); }
+  .node[data-type="DIAGNOSE"]  { border-left-color: var(--c-diagnose); }
+  .node[data-type="REFER"]     { border-left-color: var(--c-refer); }
+  .node[data-type="TREAT"]     { border-left-color: var(--c-treat); }
+  .node[data-type="LIFESTYLE"] { border-left-color: var(--c-lifestyle); }
+
+  /* ── NODE HEADER ── */
+  .node-head-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px 14px;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .node-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: white;
+  }
+  .node[data-type="SAFETY"]    .node-num { background: var(--c-safety); }
+  .node[data-type="DIAGNOSE"]  .node-num { background: var(--c-diagnose); }
+  .node[data-type="REFER"]     .node-num { background: var(--c-refer); }
+  .node[data-type="TREAT"]     .node-num { background: var(--c-treat); }
+  .node[data-type="LIFESTYLE"] .node-num { background: var(--c-lifestyle); }
+
+  .node-head { flex: 1; }
+  .node-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  .node[data-type="SAFETY"]    .node-tag { background: var(--c-safety-mid);   color: var(--c-safety); }
+  .node[data-type="DIAGNOSE"]  .node-tag { background: var(--c-diagnose-mid); color: var(--c-diagnose); }
+  .node[data-type="REFER"]     .node-tag { background: var(--c-refer-mid);    color: var(--c-refer); }
+  .node[data-type="TREAT"]     .node-tag { background: var(--c-treat-mid);    color: var(--c-treat); }
+  .node[data-type="LIFESTYLE"] .node-tag { background: var(--c-lifestyle-mid);color: var(--c-lifestyle); }
+
+  .node-head h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--c-text);
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .node-tick {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .node-tick label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--c-text3);
+    font-weight: 500;
+    user-select: none;
+  }
+  .node-tick input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #1e8449;
+  }
+  .node.done { opacity: .85; }
+  .node.done .node-head h3 { text-decoration: line-through; text-decoration-color: var(--c-border); }
+
+  /* ── NODE BODY ── */
+  .node-body {
+    padding: 16px 18px;
+    font-size: 14px;
+    color: var(--c-text2);
+    line-height: 1.65;
+  }
+  .node-body > p { margin-bottom: 12px; }
+
+  /* ── KV GRID ── */
+  .kv {
+    display: grid;
+    grid-template-columns: minmax(120px, 170px) 1fr;
+    gap: 0;
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+    font-size: 13.5px;
+    margin-top: 12px;
+  }
+  .kv > div {
+    padding: 9px 13px;
+    border-bottom: 1px solid var(--c-border);
+    line-height: 1.5;
+  }
+  .kv > div:last-child, .kv > div:nth-last-child(2) { border-bottom: none; }
+  .kv > div:nth-child(odd)  { background: var(--c-surface2); font-weight: 600; color: var(--c-text); font-size: 13px; }
+  .kv > div:nth-child(even) { background: var(--c-surface);  color: var(--c-text2); }
+
+  /* ── RED FLAG GRID ── */
+  .rfgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .rftile {
+    background: var(--c-safety-lt);
+    border: 1px solid #f0c8c4;
+    border-left: 3px solid var(--c-safety);
+    border-radius: var(--r-sm);
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--c-text);
+    line-height: 1.5;
+  }
+  .rftile b { display: block; color: var(--c-safety); font-size: 12.5px; margin-bottom: 3px; }
+  .warn { background: var(--c-safety-lt); border: 1px solid #f0c8c4; border-left: 3px solid var(--c-safety); border-radius: var(--r-sm); padding: 10px 13px; font-size: 13px; line-height: 1.55; margin-top: 12px; color: var(--c-text); }
+  .caution { background: var(--c-lifestyle-lt); border: 1px solid #f0d97a; border-left: 3px solid var(--c-lifestyle); border-radius: var(--r-sm); padding: 10px 13px; font-size: 13px; line-height: 1.55; margin-top: 12px; color: var(--c-text); }
+
+  /* ── BRANCH ── */
+  .branch {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .b-card {
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+    background: var(--c-surface);
+  }
+  .b-cond {
+    background: var(--c-treat-lt);
+    border-bottom: 1px solid var(--c-treat-mid);
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--c-treat);
+  }
+  .b-drug {
+    padding: 8px 12px 4px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--c-text);
+  }
+  .b-note {
+    padding: 0 12px 10px;
+    font-size: 12.5px;
+    color: var(--c-text2);
+    line-height: 1.45;
+  }
+
+  /* ── LADDER ── */
+  .ladder {
+    margin-top: 12px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+  }
+  .rung {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    border-bottom: 1px solid var(--c-border);
+    font-size: 13.5px;
+  }
+  .rung:last-child { border-bottom: none; }
+  .rn {
+    min-width: 80px;
+    padding: 10px 14px;
+    background: var(--c-surface2);
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--c-treat);
+    border-right: 1px solid var(--c-border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .rt {
+    padding: 10px 14px;
+    color: var(--c-text2);
+    line-height: 1.5;
+  }
+  .rt b { color: var(--c-text); }
+
+  /* ── LIFESTYLE GRID ── */
+  .lsgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .lstile {
+    background: var(--c-lifestyle-lt);
+    border: 1px solid #f0d97a;
+    border-left: 3px solid var(--c-lifestyle);
+    border-radius: var(--r-sm);
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--c-text);
+    line-height: 1.5;
+  }
+  .lstile b { display: block; color: var(--c-lifestyle); font-size: 12.5px; margin-bottom: 3px; }
+
+  /* ── PILLS ── */
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 99px;
+    vertical-align: middle;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+  }
+  .pill-red    { background: #fdecea; color: #c0392b; border: 1px solid #f5c6c2; }
+  .pill-purple { background: #f3e8fb; color: #6c3483; border: 1px solid #d7aff0; }
+  .pill-blue   { background: #e8f4fd; color: #1a5276; border: 1px solid #a8d4f0; }
+  .pill-teal   { background: #e4f6f5; color: #148f77; border: 1px solid #a2d9d3; }
+  .pill-amber  { background: #fef5e4; color: #d68910; border: 1px solid #f5d782; }
+  .pill-green  { background: #e9f7ef; color: #1e8449; border: 1px solid #a3d9b8; }
+  .pill-grey   { background: #f4f4f0; color: #666660; border: 1px solid #d8d8d0; }
+
+  /* ── WHY ROW ── */
+  .why-row {
+    border-top: 1px solid var(--c-border);
+    background: var(--c-surface2);
+  }
+  .why-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 9px 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--c-text3);
+    font-family: inherit;
+    text-align: left;
+    transition: color .15s;
+  }
+  .why-btn:hover { color: var(--c-text2); }
+  .caret { transition: transform .2s; display: inline-block; }
+  .why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+  .why-drawer {
+    display: none;
+    padding: 0 18px 14px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--c-text2);
+    border-top: 1px dashed var(--c-border);
+    margin: 0 18px;
+    padding: 12px 0 14px;
+  }
+  .why-drawer.open { display: block; }
+  .why-drawer em { color: var(--c-text); font-style: normal; font-weight: 600; }
+
+  /* ── FOOT ── */
+  .alg-foot {
+    max-width: 780px;
+    margin: 32px auto 0;
+    padding: 16px 22px;
+    background: var(--c-surface);
+    border-radius: var(--r);
+    border: 1px solid var(--c-border);
+    font-size: 12.5px;
+    color: var(--c-text3);
+    line-height: 1.6;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .alg-foot strong { color: var(--c-text2); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width: 520px) {
+    .rfgrid, .branch, .lsgrid { grid-template-columns: 1fr; }
+    .kv { grid-template-columns: 1fr; }
+    .kv > div:nth-child(odd) { border-bottom: none; }
+    .stem-banner { padding: 16px 18px; }
+    .alg-progress { padding: 10px 16px; }
+    .node-body { padding: 14px 14px; }
+    .node-head-row { padding: 14px 14px 12px; }
+  }
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css?v=3">
+<link rel="stylesheet" href="../../assets/alg-summary.css?v=6">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🫁</div>
+  <div>
+    <b>Breathlessness — New or Worsening Presentation</b>
+    <small>Systematic assessment for UK primary care · 10-minute consultation framework</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Summary</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SUMMARY VIEW — 2-page quick reference, inline responsive HTML (spec: _summary-spec.md). Download PDF prints summaries/breathlessness.html (the A4 artefact). -->
+<div id="viewSummary">
+  <div class="sum-bar"><p><b>2-page quick reference.</b> Breathlessness in adults — triage and diagnostic approach. Ongoing management of each diagnosis stays in the Steps tab.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="summaries/breathlessness.html">⬇ Download PDF</button><a class="sum-open" href="summaries/breathlessness.html" target="_blank" rel="noopener">Print view ↗</a></div></div>
+  <div class="sum">
+<!-- ===================== PAGE 1 ===================== -->
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td>
+      <div class="brand"><b>REASONING GP</b> · Clinical algorithm · Quick reference</div>
+      <h1>Breathlessness in adults — triage and diagnostic approach</h1>
+      <div class="sub">Daytime GP and OOH/111, face-to-face or remote. Measure before you reason, screen for the acute life-threats, then separate cardiac from respiratory from systemic to a named diagnosis.</div>
+    </td>
+    <td class="pg">Page 1 / 2<br><span class="tags"><span>Adults</span><span>GP + OOH</span><span>Diagnosis first</span><span>v1.0 · Sep 2026</span></span></td>
+  </tr></table></div>
+
+  <div class="rule"><b>Core rule.</b> Breathlessness is a measurement, not an impression: RR, SpO₂, pulse and BP come before the history. Judge SpO₂ against the patient's own target — 94–98% for most acutely ill adults, 88–92% if at risk of hypercapnic respiratory failure. New or falling hypoxia, RR ≥25 or breathlessness at rest is an acute-care decision — never "just anxiety" or "just their COPD" until measured. Numbers and NEWS2 support escalation; they do not decide destination.</div>
+
+  <!-- 0 Immediate -->
+  <div class="sec red">
+    <div class="sh"><div class="n">0</div><div class="t">Before any history: is this an emergency now? <small>Stop the consultation and call 999 if any of these is present</small></div></div>
+    <div class="note">Cannot speak in sentences, silent chest, exhaustion, cyanosis, agitation or drowsiness · severe hypoxia or SpO₂ falling below the patient's target · RR ≥25 or rising · pulse &gt;120 or &lt;40, systolic BP &lt;90 · life-threatening asthma (PEF &lt;33%, silent chest, poor effort, bradycardia, confusion — NG245) · stridor, drooling, facial or tongue swelling · silent hyper-resonant hemithorax or tracheal deviation · suspected anaphylaxis · breathlessness as an ACS equivalent, or malignant arrhythmia. Sit upright, oxygen to target, IM adrenaline 500 micrograms if anaphylaxis, salbutamol via spacer if wheeze, hand over with observations and times. Do not delay transfer for a CXR, bloods or an ECG.</div>
+  </div>
+
+  <!-- 1 Define -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">1</div><div class="t">Measure, then define the breathlessness in four lines <small>Enough to place the patient in the table below; the full history can wait</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Measure first</h4>RR over a full minute, SpO₂ on air (and the usual reading), pulse, BP, temperature, GCS; peak flow if wheeze; NEWS2. A fall of 3% from a previous SpO₂ matters even if the number looks fine.</div>
+      <div class="col blue"><h4>Time course</h4>Minutes (pneumothorax, PE, anaphylaxis, arrhythmia) · hours to days (asthma, infection, heart failure, ACS) · weeks to months (COPD, anaemia, effusion, cancer, fibrosis). Episodic and fully resolving suggests asthma, arrhythmia or panic.</div>
+      <div class="col blue"><h4>Pattern and posture</h4>Orthopnoea and paroxysmal nocturnal dyspnoea (heart failure) · exertional limit in metres or flights, and how it changed · wheeze, cough, sputum, haemoptysis · chest pain, palpitations, syncope · better on holiday (occupational).</div>
+      <div class="col blue"><h4>Context</h4>Known asthma, COPD, heart failure, IHD, cancer · inhaler technique, adherence, steroid courses this year, previous ITU · pack-years, asbestos, occupation · immobility, surgery, pregnancy/postpartum, oestrogen · amiodarone, methotrexate, nitrofurantoin.</div>
+    </div>
+  </div>
+
+  <!-- 2 Red flags -->
+  <div class="sec red">
+    <div class="sh"><div class="n">2</div><div class="t">Red-flag screen: trigger → concern → destination → what to do before handover <small>One row is enough; do not add up reassuring features</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:27%"><col style="width:19%"><col style="width:54%"></colgroup>
+      <tr><th>Trigger / red flag</th><th>Leading concern · destination</th><th>Do now · do not delay</th></tr>
+      <tr class="r"><td><b>Acute severe or life-threatening asthma</b>: PEF &lt;50% (severe) or &lt;33% (life-threatening), RR ≥25, pulse ≥110, cannot complete sentences; silent chest, cyanosis, poor effort, confusion, SpO₂ &lt;92% (NG245).</td>
+        <td>Acute asthma<br><span class="pill p999">999 now</span> if life-threatening, SpO₂ &lt;92% or no response</td>
+        <td>Salbutamol 4–10 puffs via spacer, one puff at a time, every 10–20 minutes, or nebulised 5 mg. Prednisolone 40–50 mg for 5 days (NG245). Titrate oxygen to 94–98%. <b>Start treatment and transfer — do not wait for a complete response.</b> Never discharge after a nebuliser without repeating PEF and SpO₂.</td></tr>
+      <tr class="r"><td><b>Pleuritic pain or sudden breathlessness with hypoxia</b>, pulse &gt;100, haemoptysis, unilateral leg swelling, syncope; immobility, surgery, cancer, pregnancy or 6 weeks postpartum, oestrogen.</td>
+        <td>Pulmonary embolism / pneumothorax<br><span class="pill p999">999 if hypoxic, hypotensive or syncope</span> <span class="pill psd">Same-day acute assessment</span></td>
+        <td>Two-level PE Wells (NG158). Over 4: immediate CTPA or V/Q via the acute route, not a D-dimer; interim therapeutic anticoagulation if imaging is delayed. 4 or less: D-dimer only if it can be acted on in time. <b>Pregnancy or 6 weeks postpartum:</b> no Wells, no D-dimer — urgent objective testing all the same (ECG, CXR, compression ultrasound if DVT symptoms, otherwise V/Q or CTPA) with <b>LMWH while awaiting exclusion</b> unless strongly contraindicated (RCOG). Tracheal deviation with hypotension = tension pneumothorax → 999.</td></tr>
+      <tr class="r"><td><b>Acute heart failure or arrhythmia</b>: breathless at rest, orthopnoea, PND, new crackles, raised JVP, new oedema, pulse &gt;120 or &lt;40 or irregular, syncope; or with chest pain or sweating — breathlessness alone can be the ACS in diabetes, age over 75 and women.</td>
+        <td>Acute heart failure · arrhythmia · ACS<br><span class="pill p999">999 now</span> if ACS suspected, unstable or pulmonary oedema</td>
+        <td>ECG if it will not delay transfer. Suspected ACS: aspirin 300 mg orally unless allergic; record dose and time (CG95). Sit upright; oxygen only if SpO₂ &lt;94%. Never a diuretic and review.</td></tr>
+      <tr class="r"><td><b>Airway compromise or anaphylaxis</b>: stridor, drooling, facial, lip or tongue swelling, urticaria with breathlessness or hypotension after a trigger; suspected inhaled foreign body.</td>
+        <td>Anaphylaxis · upper airway obstruction<br><span class="pill p999">999 now</span></td>
+        <td>IM adrenaline 500 micrograms (0.5 mL of 1 mg/mL) anterolateral thigh, repeated after 5 minutes if no response; lie flat with legs raised, or sit up if breathing dominates; high-flow oxygen (Resuscitation Council UK). Never rely on an antihistamine. All anaphylaxis is admitted.</td></tr>      <tr class="a"><td><b>Infection with severity features</b>: fever, rigors, purulent sputum, focal signs, confusion; CRB65 — confusion, RR ≥30, BP &lt;90 systolic or ≤60 diastolic, age ≥65 (CG191).</td>
+        <td>Pneumonia · empyema · sepsis<br><span class="pill psd">Same-day acute assessment</span> <span class="pill p999">999 if sepsis, shock or neutropenic</span></td>
+        <td>Temperature and SpO₂; record CRB65 and NEWS2. <b>CRB65 with judgement:</b> 0 — community management if observations, comorbidity and circumstances are safe, review at 48–72 hours; 1–2 — consider same-day assessment, especially with hypoxia, frailty, comorbidity or poor support; 3–4 — urgent hospital assessment. Hypoxia or a high NEWS2 is an acute-care decision, not an antibiotic and review.</td></tr>
+      <tr class="a"><td><b>COPD exacerbation not safe at home</b>: SpO₂ below target, marked breathlessness, cyanosis, confusion or drowsiness, new oedema, poor support, or no improvement on a rescue pack (NG115).</td>
+        <td>COPD exacerbation · type 2 respiratory failure<br><span class="pill psd">Same-day acute assessment</span> <span class="pill p999">999 if drowsy or confused</span></td>
+        <td>Salbutamol via spacer or air-driven nebuliser; prednisolone 30 mg for 5 days; antibiotic only if sputum is more purulent or the patient is unwell (NG114/NG115). Oxygen target 88–92% if hypercapnic risk. Drowsiness or headache suggests CO₂ retention: a transfer, not more nebulisers.</td></tr>
+      <tr class="a"><td><b>Pregnancy or up to 6 weeks postpartum, or cancer / immunosuppressed / anticoagulated</b>, with new or worsening breathlessness.</td>
+        <td>PE · peripartum cardiomyopathy · pre-eclampsia · SVC obstruction · effusion · pneumonitis · anaemia<br><span class="pill psd">Same-day maternity / acute / oncology</span> <span class="pill p999">999 if unstable</span></td>
+        <td>Record gestation or postpartum interval, BP, urinalysis, SpO₂, cancer treatment and anticoagulant. Speak directly to maternity, acute or acute oncology. Facial or arm swelling with distended neck veins is SVC obstruction. Breathlessness on immunotherapy or a pneumotoxic drug is a specialist call.</td></tr>
+      <tr class="p"><td><b>Age 40 and over with unexplained breathlessness</b> plus cough, fatigue, chest pain, weight loss or appetite loss — or one such symptom in an ever-smoker; asbestos exposure; clubbing or supraclavicular nodes; <b>unexplained haemoptysis aged 40 and over</b>.</td>
+        <td>Lung cancer · mesothelioma<br><span class="pill p2ww">Urgent CXR within 2 weeks · NG12</span></td>
+        <td>Direct-access urgent CXR (NG12); unexplained haemoptysis at 40 and over takes the suspected-cancer route even with a normal examination, and at any age needs prompt assessment. A normal CXR with persisting symptoms still needs a decision on urgent suspected-cancer referral. Breathlessness with anaemia or weight loss needs an urgent FBC (NG12).</td></tr>
+    </table>
+    <div class="note amber"><b>Safety rule.</b> A normal chest, a normal peak flow between attacks, a normal CXR and a familiar diagnosis label each reduce probability and exclude nothing. Wheeze can be absent in life-threatening asthma and present in heart failure. Never label new breathlessness as anxiety while RR, SpO₂ or pulse is abnormal.</div>
+  </div>
+
+  <div class="foot">Colour is semantic: red = emergency now · amber = same-day acute assessment · blue = define/assess · green = primary-care diagnosis established · purple = uncertain, routine specialist or 2WW.</div>
+</div>
+
+<!-- ===================== PAGE 2 ===================== -->
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td><div class="brand"><b>REASONING GP</b> · Breathlessness in adults — triage and diagnostic approach</div></td>
+    <td class="pg">Page 2 / 2</td>
+  </tr></table></div>
+
+  <!-- 3 Examine -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">3</div><div class="t">Focused examination and investigation <small>Remote assessment that cannot measure is an escalation criterion</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Observations</h4>RR, SpO₂ on air, pulse rate and rhythm, BP, temperature, GCS; peak flow with best/predicted; NEWS2. Repeat after treatment — the change matters more than the first number.</div>
+      <div class="col blue"><h4>System examination</h4>Work of breathing, speech, accessory muscles, cyanosis · trachea, percussion, breath sounds, wheeze or crackles and whether unilateral · JVP, heart sounds, oedema, calves · pallor, clubbing, nodes.</div>
+      <div class="col blue"><h4>Pattern-separating signs</h4>Basal crackles with raised JVP and oedema (heart failure) · stony dullness (effusion) · fine crackles with clubbing (fibrosis) · hyper-resonance with quiet sounds (pneumothorax) · normal chest with tachypnoea and hypoxia (PE, anaemia, acidosis) · normal chest, normal SpO₂ (panic).</div>
+      <div class="col blue"><h4>Investigations</h4><b>CXR is targeted</b> — pneumonia, oedema, pneumothorax, pleural disease, malignancy or ILD (urgent if NG12 applies), not every breathless patient. ECG for any unexplained new breathlessness. Spirometry with reversibility, FeNO and a peak-flow diary for asthma (NG245); post-bronchodilator FEV₁/FVC &lt;0.7 for COPD (NG115). NT-proBNP + ECG for heart failure (NG106). FBC, ferritin, U&amp;E, TFT, HbA1c. Not in primary care: CTPA, echo without NT-proBNP triage, steroid trials.</div>    </div>
+  </div>
+
+  <!-- 4 Classify -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">4</div><div class="t">Classify: three exits, not two <small>"Chest is clear" is not a diagnosis; name the cause or name the uncertainty</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>Serious cause likely</h4>Any red flag, RR ≥25, hypoxia below the patient's target or falling, increased work of breathing, new tachycardia or hypotension, or a high-risk context. <b>Output:</b> name the concern; use the destination above; record observations, treatment and time.</div>
+      <div class="col green"><h4>Cause established in primary care</h4>Observations at baseline and one cause explaining it all, with objective support (spirometry, NT-proBNP, FBC, CXR). <b>Output:</b> the cause, the findings, and the management pathway entered.</div>
+      <div class="col purple"><h4>Unclassified / uncertain</h4>Exertional breathlessness with normal resting observations, mixed features, or not improving on treatment. <b>Output:</b> never default to "anxiety" or "deconditioning" — state the uncertainty, exclusions outstanding, the section-6 route where one applies, and who reviews when.</div>
+    </div>
+  </div>
+
+  <!-- 5 Classifier -->
+  <div class="sec green">
+    <div class="sh"><div class="n">5</div><div class="t">Cause classifier: what makes each diagnosis, objectively <small>Only once the red-flag screen is negative</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:21%"><col style="width:79%"></colgroup>
+      <tr class="g"><td><b>Asthma</b></td><td>Episodic wheeze, cough and breathlessness with diurnal and trigger-related variability, atopy. Objective confirmation before diagnosis (NG245): FeNO ≥50 ppb, FEV₁ improvement of 12% plus 200 mL, or peak-flow variability over 20% on a 2-week diary — never on symptoms or a salbutamol trial. Better away from work = occupational asthma.</td></tr>
+      <tr class="g"><td><b>COPD</b></td><td>Age over 35 with a smoking or exposure history, exertional breathlessness, chronic cough or sputum, and post-bronchodilator FEV₁/FVC below 0.7 (NG115). Record the MRC grade; never diagnose without spirometry. A never-smoker with obstruction needs another explanation.</td></tr>
+      <tr class="g"><td><b>Chronic heart failure</b></td><td>Exertional breathlessness with orthopnoea or PND, oedema, raised JVP, basal crackles, previous MI or AF. NT-proBNP + ECG (NG106): 400–2000 ng/L → echo within 6 weeks; above 2000 → within 2 weeks. Below 400 makes heart failure unlikely but does not explain the breathlessness, and obesity and cardiac drugs lower it.</td></tr>
+      <tr class="g"><td><b>Anaemia, thyroid, metabolic, obesity, deconditioning</b></td><td>Gradual exertional breathlessness, normal chest, normal SpO₂. Needs positive findings, not the absence of others: FBC + ferritin, TFT, U&amp;E, HbA1c, weight trajectory. Iron deficiency in a man or postmenopausal woman → GI cancer route (NG12).</td></tr>
+      <tr class="g"><td><b>Breathing pattern disorder / panic</b></td><td>Breathlessness at rest easing on exertion, sighing, air hunger, perioral tingling, episodes peaking within minutes, normal observations throughout. Only after cardiac, respiratory and anaemic causes are addressed objectively; inducible laryngeal obstruction is often mislabelled asthma.</td></tr>
+      <tr class="p"><td><b>Do not label by default</b></td><td>ILD (fine crackles, clubbing, exertional desaturation) needs an urgent CXR and respiratory referral, not an antibiotic. Effusion, SVC obstruction and bronchiectasis are imaging diagnoses. A patient labelled asthma or COPD who is not improving needs spirometry, not another inhaler.</td></tr>
+    </table>
+  </div>
+
+  <!-- 6 Routine referral -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">6</div><div class="t">Refer routinely from this consultation <small>Not same-day, not 999 — the cases that leave by letter</small></div></div>
+    <div class="note grey">NT-proBNP 400–2000 ng/L → HF specialist + echo within 6 weeks; above 2000 ng/L → within 2 weeks (NG106) · uncertainty after the objective panel, or suspected ILD, bronchiectasis or pulmonary hypertension → respiratory · asthma uncontrolled on moderate-dose MART, or ≥2 steroid courses in 12 months → respiratory (NG245) · COPD MRC ≥3 → pulmonary rehabilitation + LTOT assessment (NG115) · suspected occupational asthma → occupational lung service · breathing pattern disorder → respiratory physiotherapy · recurrent panic → NHS Talking Therapies (NG113).</div>
+  </div>
+
+  <!-- 7 Primary-care treatment -->
+  <div class="sec red">
+    <div class="sh"><div class="n">7</div><div class="t">The only treatment decisions that belong in this consultation <small>What primary care treats today</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:26%"><col style="width:74%"></colgroup>
+      <tr class="r"><td><b>Anaphylaxis</b></td><td>IM adrenaline 500 micrograms as set out in the page-1 row, repeated after 5 minutes if no improvement; position, high-flow oxygen, 999 (RCUK). Admit every case; two auto-injectors on discharge and an allergy referral.</td></tr>
+      <tr class="r"><td><b>Acute asthma not needing immediate transfer</b></td><td>Salbutamol 4–10 puffs via spacer one puff at a time, every 10–20 minutes, or nebulised 5 mg; prednisolone 40–50 mg daily for 5 days; oxygen titrated to 94–98% (NG245). Review within 48 hours; check technique; written action plan. No response, or SpO₂ &lt;92%, is an admission.</td></tr>
+      <tr class="a"><td><b>COPD exacerbation safe at home</b></td><td>Increase short-acting bronchodilator via spacer; prednisolone 30 mg daily for 5 days; antibiotic only if sputum is more purulent or the patient is unwell (NG114/NG115). Oxygen target 88–92% if at risk of hypercapnia. Review at 48 hours and refresh the rescue pack.</td></tr>
+      <tr class="a"><td><b>Pneumonia, CRB65 0 (or 1–2 assessed as safe)</b></td><td>Amoxicillin 500 mg three times daily for 5 days unless penicillin-allergic (CG191, NG138); safety-net and review at 48–72 hours. Repeat CXR at 6 weeks if symptoms persist or lung-cancer risk is higher.</td></tr>
+      <tr class="g"><td><b>Newly confirmed asthma or COPD</b></td><td>Start the NG245 or NG115 ladder only after objective confirmation: technique demonstrated, spacer supplied, smoking cessation offered, vaccinations checked, written plan, named review date.</td></tr>
+      <tr class="r"><td><b>What not to do</b></td><td>No diuretic without NT-proBNP, an ECG and clinical fluid overload. No community treatment of suspected PE or pneumothorax. No steroid trial as a diagnostic test. <b>No domiciliary oxygen without specialist assessment</b> — acute oxygen to target is always appropriate when indicated. <b>No chronic asthma or COPD diagnosis on symptoms alone</b> — but treat acute bronchospasm now and confirm objectively later.</td></tr>
+    </table>
+  </div>
+
+  <!-- 8 Endpoint -->
+  <div class="sec green">
+    <div class="sh"><div class="n">8</div><div class="t">Endpoint and documentation <small>Finish with one of four conclusions</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>1 · Time-critical serious</h4>999 route taken; suspected diagnosis, RR, SpO₂ on air, pulse, BP, PEF where relevant, treatment with doses and times, oxygen target.</div>
+      <div class="col amber"><h4>2 · Serious possible</h4>Same-day acute, maternity or oncology assessment arranged; the question being excluded, Wells or CRB65 score, who was spoken to, deadline to be seen.</div>
+      <div class="col green"><h4>3 · Cause established</h4>Cause and the objective findings supporting it; observations; management pathway entered; inhaler technique and plan; safety-net understood.</div>
+      <div class="col purple"><h4>4 · Unclassified</h4>Uncertainty stated; objective panel or referral sent, with date; interim rescue plan; review owner and timeframe; escalation criteria.</div>
+    </div>
+    <div class="note grey"><b>Why a primary-care diagnosis is safe today:</b> no page-1 row applies · RR, SpO₂, pulse and BP at baseline · one cause explains it all, with objective support · written safety-net and a named review owner. <b>Safety-net wording:</b> call 999 if you cannot speak in full sentences, your lips turn blue, you become drowsy, or your breathing suddenly worsens; same-day contact for breathlessness at rest, a reliever lasting under 4 hours, chest pain, coughing blood, a swollen painful leg, or waking breathless.</div>
+    <div class="note amber"><b>OOH / remote limitation.</b> Convert to face-to-face or emergency assessment if: cannot complete sentences on the call; RR, SpO₂, pulse or peak flow cannot be measured; worsening during the call; pregnant, immunosuppressed or a previous ITU admission for asthma; or safe transport cannot be guaranteed.</div>
+  </div>
+
+  <div class="foot">Clinical decision support only; follow local emergency-transfer, antimicrobial and referral policies and check doses against the current BNF. Source hierarchy: NICE first, then BNF/MHRA, then national specialty guidance. Sources: NICE NG245 Asthma · NG115 COPD · NG114 COPD exacerbation antimicrobial · CG191 Pneumonia · NG138 CAP antimicrobial · NG106 Chronic heart failure · CG187 Acute heart failure · NG158 Venous thromboembolic diseases · CG95 Chest pain · NG51 Sepsis · NG12 Suspected cancer · NG113 Panic disorder · NICE · BNF · MHRA · BTS Pleural disease 2023 · BTS Emergency oxygen · RCUK anaphylaxis · RCOG Green-top 37b. Review after any guidance or medicines-safety update, otherwise every 6 months. © Reasoning GP · gpreasoning.uk</div>
+</div>
+  </div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ═══ STEP 1 ═══ -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head-row">
+      <div class="node-num">1</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Red Flags — Exclude Life-Threatening Causes Immediately</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p>Assess these FIRST before any structured history. If present, act immediately — do not complete the algorithm.</p>
+      <div class="caution"><b>Numbers support the decision; they do not make it.</b> SpO₂, RR, pulse, BP and NEWS2 are warning signs, not diagnostic requirements or destination rules. Severe asthma, PE, pulmonary oedema and ACS can all be critical before a score rises. <strong>Read every threshold below against the patient's own baseline, their trajectory and the suspected diagnosis</strong> — and an ECG belongs in the initial assessment of any unexplained new breathlessness.</div>
+      <div class="rfgrid">
+        <div class="rftile"><b>Severe or new hypoxia</b> Judge SpO₂ against the patient's usual/individualised target: most acutely ill adults 94–98%, <strong>88–92% if at risk of hypercapnic respiratory failure</strong> — so 91% may be normal for them. <strong>Severe hypoxia, a fall below their target, a falling trend, cyanosis, exhaustion, altered consciousness or inability to speak in sentences → <span class="pill pill-red">999</span></strong>. SpO₂ alone does not determine destination</div>
+        <div class="rftile"><b>Increased work of breathing</b> Rising RR, accessory muscle use, unable to complete sentences, breathlessness at rest that is new → urgent escalation. RR ≥25 is a <strong>severity trigger</strong>; the destination depends on trajectory, diagnosis and context</div>
+        <div class="rftile"><b>Haemodynamic compromise</b> HR &gt;130, BP &lt;90 systolic, mottled peripheries, altered consciousness → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Suspected PE</b> Pleuritic chest pain + tachycardia + unilateral leg swelling + DVT risk factors. <strong>Unstable — hypotension, severe hypoxia, syncope → <span class="pill pill-red">999</span></strong>. Stable but suspected → <span class="pill pill-amber">same-day acute assessment</span> for imaging, not routine primary-care testing</div>
+        <div class="rftile"><b>Cardiac cause without chest pain</b> Breathlessness can be the ACS equivalent (diabetes, age over 75, women); also tachy- or bradyarrhythmia, valvular disease, myocarditis, pericardial disease, pulmonary hypertension. <strong>ECG in the initial assessment</strong>; suspected ACS or malignant arrhythmia → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Tension pneumothorax</b> Sudden onset, tracheal deviation, absent breath sounds, hypotension → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Acute severe / life-threatening asthma</b> Life-threatening: PEF &lt;33%, silent chest, cyanosis, poor respiratory effort, exhaustion, bradycardia, confusion — a normal or rising PaCO₂ in a deteriorating patient signals fatigue / near-fatal asthma. Acute severe: PEF 33–50%, RR ≥25, pulse ≥110, cannot complete sentences. <strong>Start treatment and transfer — do not wait for a complete response</strong> → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Acute pulmonary oedema</b> Orthopnoea, pink frothy sputum, bilateral crackles, elevated JVP → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Anaphylaxis</b> Acute onset dyspnoea + urticaria/angioedema/hypotension after trigger → <span class="pill pill-red">999</span> + IM adrenaline 0.5 mg</div>
+        <div class="rftile"><b>Stridor / upper airway</b> Inspiratory noise, drooling, unable to swallow, epiglottitis features → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Haemoptysis</b> Unexplained haemoptysis <strong>aged 40 and over → suspected cancer pathway referral</strong> (NICE NG12). At any age it needs prompt clinical assessment and targeted investigation (CXR, FBC, clotting, examination) — not a wait-and-see</div>
+        <div class="rftile"><b>Suspected SVC obstruction</b> Facial or arm swelling, distended neck veins, facial plethora, headache. <strong>Stridor, airway compromise, cerebral symptoms or severe deterioration → <span class="pill pill-red">999</span></strong>; otherwise urgent <strong>same-day</strong> oncology / respiratory assessment</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <em>Breathlessness is the third most common presentation in UK general practice</em> and carries a broad differential from trivial to immediately life-threatening. Missed acute asthma still kills around 1,400 people a year in the UK, and PE is a leading cause of avoidable death. A low or falling SpO₂ matters because compensatory mechanisms are near-exhausted — but it must be read against the patient's own target, since a person with chronic hypercapnic respiratory failure may live at 88–92%. Unexplained haemoptysis at 40 and over meets NICE NG12 criteria for a suspected cancer pathway referral, where the positive predictive value passes the 3% referral threshold; at any age it still needs prompt assessment.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══ STEP 2 ═══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head-row">
+      <div class="node-num">2</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Confirm Onset, Pattern &amp; Severity — Structured History</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p>Use SOCRATES + targeted questions to narrow the differential. One key question separates most diagnoses.</p>
+      <div class="kv">
+        <div>Onset &amp; speed</div>
+        <div><b>Sudden (&lt;minutes)</b> → PE, pneumothorax, anaphylaxis, acute pulmonary oedema<br><b>Hours–days</b> → Pneumonia, asthma exacerbation, acute HF<br><b>Weeks–months</b> → COPD, malignancy, anaemia, pleural effusion, anxiety</div>
+
+        <div>Triggering factors</div>
+        <div>Exercise → cardiac / COPD / deconditioning · Rest → severe cardiorespiratory disease · Allergen → asthma / anaphylaxis · Position (flat) → HF, phrenic palsy · Night symptoms → asthma</div>
+
+        <div>Associated symptoms</div>
+        <div>Wheeze → asthma / COPD · Pleuritic pain → PE / pneumonia / pleurisy · Ankle swelling + orthopnoea → HF · Productive cough → infection · Haemoptysis → PE / TB / malignancy · Palpitations → arrhythmia · Stridor → upper airway</div>
+
+        <div>Functional severity</div>
+        <div>Use <b>MRC Dyspnoea Scale</b>: Grade 1 (strenuous exercise only) to Grade 5 (too breathless to leave home). Document baseline vs change.</div>
+
+        <div>Background history</div>
+        <div>Smoking (pack-years) · Prior asthma / COPD / HF / PE / malignancy · Recent immobility / long-haul flight / surgery (DVT/PE risk) · Medications (β-blockers worsen asthma; ACEi cause cough)</div>
+
+        <div>DVT/PE risk</div>
+        <div>Apply <b>Wells PE score</b> if PE suspected: <b>≤4</b> → D-dimer, but only if the result will be available and acted on within the required timeframe; <b>&gt;4</b> → immediate CTPA (or V/Q) via the acute route — <b>no D-dimer</b>, and interim therapeutic anticoagulation if imaging will be delayed. Do not apply Wells if already sending to 999, and neither Wells nor D-dimer is validated in pregnancy or up to 6 weeks postpartum.</div>
+
+        <div>Occupational / environmental</div>
+        <div>Asbestos (mesothelioma) · Farming / birds (extrinsic allergic alveolitis) · Silica (silicosis) · Always ask about pets and hobbies</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The MRC Dyspnoea Scale is validated, reproducible, and tracks treatment response over time — document grade at every consultation. Speed of onset alone correctly identifies the probable mechanism in ~70% of presentations. Wells score is a validated clinical decision rule that stratifies pre-test probability for PE; using it reduces unnecessary imaging without missing significant PE (NICE NG158). Occupational history is frequently omitted and can reveal treatable, compensable diagnoses.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══ STEP 3 ═══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head-row">
+      <div class="node-num">3</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Classify the Working Diagnosis — Phenotyping by Pattern</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p>Classify by acuity and mechanism. Treatment diverges sharply between these groups.</p>
+      <div class="kv">
+        <div>Obstructive airway<br><small style="font-weight:400;color:var(--c-text3)">(Asthma / COPD)</small></div>
+        <div>Variable wheeze · Diurnal variation · Atopy / smoking history · Reversibility on spirometry (FEV₁/FVC &lt;0.7 in COPD). <span class="pill pill-blue">Spirometry</span> is diagnostic gold standard — not peak flow alone.</div>
+
+        <div>Cardiac dyspnoea<br><small style="font-weight:400;color:var(--c-text3)">(HF / arrhythmia)</small></div>
+        <div>Orthopnoea, PND, ankle oedema, elevated JVP, S3 gallop. <span class="pill pill-blue">NT-proBNP</span> + ECG, then the local HF pathway (NG106). A low NT-proBNP makes heart failure unlikely but does not exclude all cardiac disease, and is lowered by obesity and by treatment. Echo defines phenotype (HFrEF/HFpEF) — treatment follows the diagnosis, not the symptom.</div>
+
+        <div>Thromboembolic<br><small style="font-weight:400;color:var(--c-text3)">(PE / DVT)</small></div>
+        <div>Wells score. <span class="pill pill-blue">D-dimer</span> only if Wells ≤4 and the result can be acted on in time; an age-adjusted threshold (age × 10) applies only where the assay's units are stated. Wells &gt;4 → imaging, not D-dimer.</div>
+
+        <div>Infective / inflammatory<br><small style="font-weight:400;color:var(--c-text3)">(Pneumonia / pleuritis)</small></div>
+        <div>Fever, productive cough, crackles, consolidation on CXR. <span class="pill pill-blue">CRB65</span> is a mortality-risk tool used <b>with</b> clinical judgement: <b>0</b> low risk — community management if observations, comorbidity and social circumstances are safe; <b>1–2</b> intermediate — consider same-day hospital assessment, especially with hypoxia, frailty, major comorbidity or poor support; <b>3–4</b> high risk — urgent hospital assessment.</div>
+
+        <div>Pleural disease<br><small style="font-weight:400;color:var(--c-text3)">(Effusion / pneumothorax)</small></div>
+        <div>Reduced breath sounds, stony dull (effusion) or hyper-resonant (pneumothorax). <span class="pill pill-blue">CXR</span> first-line. Exudate vs transudate → Light's criteria at aspiration.</div>
+
+        <div>Haematological<br><small style="font-weight:400;color:var(--c-text3)">(Anaemia / metHb)</small></div>
+        <div>Pallor, tachycardia, fatigue, exertional dyspnoea disproportionate to exam. <span class="pill pill-blue">FBC + haematinics</span>. SpO₂ unreliable in methaemoglobinaemia — co-oximetry needed.</div>
+
+        <div>Psychogenic / deconditioning</div>
+        <div><em>Diagnosis of exclusion.</em> Breathing pattern disorder features: sighing, hyperventilation, tingling, inconsistency. Consider Nijmegen questionnaire. Do not diagnose anxiety until all organic causes excluded.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Classifying the mechanism determines the entire management pathway. Treating presumed asthma with bronchodilators in undiagnosed HF delays definitive care and may cause harm. NT-proBNP has a high negative predictive value, so a low result makes heart failure unlikely — but it does not exclude other cardiac disease, and obesity and HF drugs lower it. CRB65 is validated for community-acquired pneumonia <em>mortality risk</em> and informs, rather than replaces, the admission decision (CG191). Psychogenic breathlessness is common (10–20% of presentations) but <em>cannot be diagnosed until organic causes are excluded</em> — never anchor on this diagnosis prematurely.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══ STEP 4 ═══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head-row">
+      <div class="node-num">4</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted Examination — Focused Clinical Assessment</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p>Examine in order of urgency. Each finding should confirm or refute your working hypothesis.</p>
+      <div class="kv">
+        <div>Vital signs first</div>
+        <div>RR over a full minute — <b>RR ≥25 is a severity trigger</b>, not by itself a destination. SpO₂ on air, against the patient's usual/individualised target (mandatory). HR, BP, temperature, GCS. <b>NEWS2</b> supports escalation and prompts urgent clinical review; it does not replace judgement or decide 999 — physiology, suspected diagnosis, trajectory and the local escalation protocol do. Repeat the observations after treatment.</div>
+
+        <div>General inspection</div>
+        <div>Position (sitting forward → severe obstruction) · Pursed-lip breathing → COPD · Accessory muscle use · Cyanosis (central vs peripheral) · Cachexia → malignancy · Clubbing → fibrosis, malignancy, bronchiectasis</div>
+
+        <div>Respiratory</div>
+        <div>Expansion (symmetry → pneumothorax if asymmetric) · Percussion (dull → effusion / consolidation; hyperresonant → pneumothorax) · Auscultation: wheeze (expiratory = obstruction), crackles (fine = fibrosis / HF, coarse = infection), bronchial breathing (consolidation), absent sounds (effusion / pneumothorax)</div>
+
+        <div>Cardiovascular</div>
+        <div>JVP elevation → HF / SVCO / COPD cor pulmonale · Apex beat position · Heave (RV overload) · Heart sounds: S3 gallop (HF), loud P2 (pulmonary hypertension) · Peripheral oedema (bilateral → HF; unilateral → DVT)</div>
+
+        <div>Peak flow (if asthma suspected)</div>
+        <div>Compare to predicted and personal best. &lt;50% personal best = acute severe. &lt;33% = life-threatening. Do NOT perform if SpO₂ &lt;92% or patient too distressed.</div>
+
+        <div>Legs</div>
+        <div>Unilateral calf swelling, redness, tenderness → DVT → elevates PE pre-test probability. Bilateral pitting oedema → cardiac / hypoalbuminaemia / venous insufficiency.</div>
+
+        <div>ENT / upper airway</div>
+        <div>Inspiratory stridor → laryngeal or tracheal obstruction. Uvular deviation → peritonsillar abscess / epiglottitis. Do NOT examine throat if epiglottitis suspected (risk of complete obstruction).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        NEWS2 is the NHS-mandated early warning score for acute deterioration; a score ≥5 should trigger senior review or hospital transfer discussion. SpO₂ monitoring changes management in 30% of breathless presentations. Percussion is underutilised in primary care but has 85% sensitivity for moderate-large pleural effusion. Clubbing should always prompt investigation as it is associated with significant underlying disease (malignancy, ILD, bronchiectasis) in &gt;80% of cases.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══ STEP 5 ═══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head-row">
+      <div class="node-num">5</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Investigations — Targeted Testing to Confirm Diagnosis</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p>Investigate based on working diagnosis. Avoid blanket requesting — every test should answer a specific question.</p>
+      <div class="kv">
+        <div>Initial assessment</div>
+        <div><span class="pill pill-blue">SpO₂</span> (point-of-care) and full observations · <span class="pill pill-blue">ECG</span> for any unexplained new breathlessness — AF and other arrhythmia, RV strain, LVH, ischaemia. <b><span class="pill pill-blue">CXR</span> is targeted, not mandatory:</b> request it for suspected pneumonia, pulmonary oedema, pneumothorax, pleural disease, malignancy, interstitial lung disease or another thoracic cause — <b>not for an uncomplicated asthma exacerbation</b> unless an alternative diagnosis or complication is suspected.</div>
+
+        <div>Suspected HF</div>
+        <div><span class="pill pill-blue">NT-proBNP</span> + ECG (NICE NG106): <b>&lt;400 ng/L</b> — heart failure less likely in an untreated person, investigate alternatives; <b>400–2000 ng/L</b> — specialist assessment and echocardiography <b>within 6 weeks</b>; <b>&gt;2000 ng/L</b> — urgent specialist assessment and echocardiography <b>within 2 weeks</b>. A low value does not exclude all cardiac disease and is lowered by obesity, and by diuretics, ACEi/ARB, beta-blockers and MRAs. Add <span class="pill pill-blue">U&amp;Es, eGFR, LFTs, TFTs, FBC</span></div>
+
+        <div>Suspected asthma</div>
+        <div><span class="pill pill-blue">FeNO</span> <b>≥50 ppb (adults 17+) or ≥35 ppb (ages 12–16)</b> = diagnostic of asthma per NG245 (the older 40 ppb figure was NG80) · <span class="pill pill-blue">Spirometry + bronchodilator reversibility</span> (&gt;12% AND &gt;200 mL improvement = positive) · Bronchial challenge if equivocal · Peak flow diary (2-week record)</div>
+
+        <div>Suspected COPD</div>
+        <div><span class="pill pill-blue">Post-bronchodilator spirometry</span> (FEV₁/FVC &lt;0.7 confirms) · <span class="pill pill-blue">FBC</span> (polycythaemia), <span class="pill pill-blue">α₁-antitrypsin</span> (if early onset / minimal smoking)</div>
+
+        <div>Suspected PE</div>
+        <div><b>Wells ≤4:</b> <span class="pill pill-blue">D-dimer</span> if the result will be available and acted on in time (age-adjusted threshold only where the assay's units are specified). Raised → imaging. <b>Wells &gt;4:</b> immediate <span class="pill pill-blue">CTPA or V/Q</span> — no D-dimer; if imaging will be delayed, interim therapeutic anticoagulation with <b>baseline FBC, renal and hepatic function, weight and bleeding-risk assessment</b> (NG158). <b>Pregnant or up to 6 weeks postpartum:</b> no Wells, no D-dimer — urgent objective testing must still be arranged: ECG and CXR, compression ultrasound first if DVT symptoms, V/Q or CTPA if PE remains suspected, and <b>LMWH while awaiting exclusion unless strongly contraindicated</b> (RCOG Green-top 37b). This is more than a maternity referral.</div>
+
+        <div>Suspected pneumonia</div>
+        <div><span class="pill pill-blue">CXR</span> · <span class="pill pill-blue">CRP</span> (guides antibiotic decision with CRB-65) · If admitted: urine pneumococcal antigen, blood cultures, legionella antigen</div>
+
+        <div>Suspected malignancy</div>
+        <div><span class="pill pill-blue">CXR</span> (mass, collapse, effusion, pleural thickening) · <span class="pill pill-blue">CT chest</span> via 2WW pathway · <span class="pill pill-blue">FBC, LFTs, calcium, albumin</span></div>
+
+        <div>Suspected anaemia</div>
+        <div><span class="pill pill-blue">FBC + film</span> · <span class="pill pill-blue">Ferritin, B12, folate</span> · <span class="pill pill-blue">Reticulocyte count</span> if haemolysis suspected · Haematinics only useful if FBC abnormal</div>
+
+        <div>Do NOT investigate</div>
+        <div>D-dimer if Wells &gt;4 (go direct to imaging) · Spirometry during an acute exacerbation (inaccurate) · Routine ECHO without clinical/NT-proBNP indication (low yield, long wait) · Routine CXR for every breathlessness presentation, or for an uncomplicated asthma exacerbation · A blanket blood panel — each test should answer a question you have asked</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        NT-proBNP has a negative predictive value of 98% for HF — it is the single most efficient test for ruling out cardiac dyspnoea in primary care. FeNO is the recommended first objective test for suspected asthma (NICE/BTS/SIGN NG245): <b>≥50 ppb in adults 17 and over, or ≥35 ppb at ages 12–16, confirms asthma</b>. Smoking lowers FeNO, so a normal result does not exclude it — move on to spirometry with reversibility, then PEF variability. Age-adjusted D-dimer (age × 10 µg/L for patients &gt;50) increases specificity without sacrificing sensitivity, avoiding unnecessary CTPA in older patients. CXR is normal in ~25% of PEs and should not be used to exclude it.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══ STEP 6 ═══ -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head-row">
+      <div class="node-num">6</div>
+      <div class="node-head">
+        <span class="node-tag">Refer</span>
+        <h3>Referral Criteria — When to Escalate &amp; to Whom</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p>Match urgency to clinical risk. When in doubt, refer more urgently, not less.</p>
+      <div class="kv">
+        <div>999 Emergency</div>
+        <div>Severe hypoxia or a fall below the patient's individualised target · exhaustion, cyanosis, inability to speak in sentences, altered consciousness · haemodynamic instability · life-threatening asthma (PEF &lt;33%, silent chest, poor effort, bradycardia, confusion) · suspected tension pneumothorax · anaphylaxis · suspected ACS or malignant arrhythmia with dyspnoea · stridor or airway compromise. <b>A high NEWS2 demands urgent clinical review — it does not by itself decide 999</b>; physiology, suspected diagnosis, trajectory and the local escalation protocol do</div>
+
+        <div>Same-day hospital</div>
+        <div>New hypoxia or breathlessness at rest without life-threatening features · <b>suspected PE, stable</b> (Wells &gt;4, or Wells ≤4 with a positive or unobtainable D-dimer) · <b>acute severe asthma — start treatment and transfer; do not wait for a complete response to nebulised treatment</b> · community pneumonia CRB65 3–4, or 1–2 with hypoxia, frailty, major comorbidity or poor support · spontaneous pneumothorax (primary &gt;2 cm on CXR) · suspected cardiac tamponade · acute heart failure or pulmonary oedema · suspected SVC obstruction without instability (oncology/respiratory)</div>
+
+        <div>2WW Lung Cancer<br><span class="pill pill-purple">NICE NG12</span></div>
+        <div>Unexplained haemoptysis <b>aged ≥40</b> · Age ≥40 + ≥2 unexplained symptoms of: cough, fatigue, breathlessness, chest pain, weight loss, appetite loss — or <b>one</b> of those in an ever-smoker → urgent direct-access CXR within 2 weeks · unexplained breathlessness aged ≥40 with a smoking history, asbestos exposure or a relevant symptom combination → urgent CXR · CXR suspicious for malignancy → suspected cancer pathway. <b>Hoarseness</b> is a separate pathway: persistent unexplained hoarseness (≥3 weeks) aged 45 and over → suspected <b>head and neck</b> cancer referral, not a lung rule</div>
+
+        <div>Urgent respiratory<br><small style="font-weight:400;color:var(--c-text3)">(Within 2 weeks)</small></div>
+        <div>New pleural effusion (undiagnosed) · Suspected ILD (bilateral crackles, clubbing, CXR changes) · Haemoptysis without 2WW criteria but &gt;3 episodes · Suspected malignant pleural mesothelioma (asbestos exposure)</div>
+
+        <div>Routine respiratory</div>
+        <div>Confirmed COPD requiring specialist spirometry · Difficult / uncontrolled asthma despite step 3 treatment · Bronchiectasis (confirmed or suspected) · Suspected pulmonary hypertension (echo referral)</div>
+
+        <div>Urgent cardiology</div>
+        <div>NT-proBNP 400–2000 ng/L → specialist assessment and echo within <b>6 weeks</b>; &gt;2000 ng/L → within <b>2 weeks</b> (NICE NG106) · New AF with dyspnoea → rate/rhythm and anticoagulation assessment · Decompensated chronic HF not responding to treatment · Suspected valvular disease, myocarditis, pericardial disease or pulmonary hypertension</div>
+
+        <div>Manage in primary care</div>
+        <div>Mild COPD with good symptom control · Well-controlled asthma (NG245 step 1–2) · Deconditioning / obesity-related dyspnoea · Anxiety / breathing pattern disorder (after exclusion) · Mild anaemia with identified cause</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The 2WW lung pathway detects lung cancer at an earlier stage and improves 5-year survival; 1 in 10 appropriate 2WW referrals will have lung cancer. BNP-guided referral for echocardiography is the NICE NG106 recommended pathway — it is cost-effective and reduces unnecessary echocardiography. New undiagnosed pleural effusions require urgent respiratory referral as 30–40% have an underlying malignant aetiology. Spontaneous pneumothorax &gt;2 cm requires same-day review as conservative management risks tension progression.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══ STEP 7 ═══ -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head-row">
+      <div class="node-num">7</div>
+      <div class="node-head">
+        <span class="node-tag">Treat</span>
+        <h3>Treatment Pathway — Condition-Specific Management</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p>First-line treatment depends on confirmed diagnosis. Each pathway below follows UK NICE/BTS guidance.</p>
+      <div class="caution"><b>This is a diagnostic pathway.</b> Only the immediately required treatment lives here — full asthma, COPD, heart-failure and PE regimens belong to their own maintained pathways. Check every dose and preparation against the current BNF and the local formulary. <strong>Treat acute bronchospasm immediately when the patient is unwell; confirm a chronic diagnosis objectively afterwards</strong> — objective testing must never delay acute treatment.</div>
+
+      <!-- BRANCH: First-line by diagnosis -->
+      <div style="font-weight:700;font-size:13px;color:var(--c-text3);margin:14px 0 6px;text-transform:uppercase;letter-spacing:0.5px;">First-line initial therapy by diagnosis</div>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Asthma (newly diagnosed)</div>
+          <div class="b-drug">AIR — ICS/formoterol PRN <span class="pill pill-teal">NG245 Step 1</span></div>
+          <div class="b-note">Low-dose combined ICS/formoterol, 1 puff <b>as needed</b> — the anti-inflammatory reliever. <b>NG245: never start SABA alone.</b> Use the local formulary's preparation and check the product-specific dose. Check inhaler technique at every visit.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">COPD (newly diagnosed)</div>
+          <div class="b-drug">Short-acting bronchodilator <span class="pill pill-teal">Step 1</span></div>
+          <div class="b-note">Confirm COPD with <b>post-bronchodilator spirometry</b> first. Salbutamol (or ipratropium) PRN for symptom relief, then assess the response. If symptoms persist, choose maintenance therapy on <b>breathlessness, exacerbation history, inhaler technique, comorbidity and the presence or absence of asthma features</b> — not a fixed LABA/LAMA pathway applied to everyone.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Heart failure (suspected)</div>
+          <div class="b-drug">Diagnose first <span class="pill pill-blue">NT-proBNP + ECG</span></div>
+          <div class="b-note">Follow the local HF diagnostic pathway (NG106); <b>acute pulmonary oedema is an emergency</b>. A loop diuretic only where there is clinical fluid overload, per local guidance — never for breathlessness of uncertain cause. Start disease-modifying treatment (ACEi/ARNI, beta-blocker, MRA, SGLT2 inhibitor) only after diagnosis, echo phenotype and clinical review; <b>do not start or up-titrate a beta-blocker during acute decompensation</b>. Check renal function, potassium and BP before and after any change.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Community pneumonia (CRB65 0, or 1–2 assessed as safe)</div>
+          <div class="b-drug">Amoxicillin 500 mg TDS <span class="pill pill-teal">5 days</span></div>
+          <div class="b-note">If penicillin allergic: doxycycline 200 mg then 100 mg OD for 5 days. Atypical cover: add clarithromycin 500 mg BD if atypical features (dry cough, bilateral infiltrates).</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">PE (confirmed, stable)</div>
+          <div class="b-drug">DOAC <span class="pill pill-teal">Anticoagulant</span></div>
+          <div class="b-note">Apixaban 10 mg BD for 7 days then 5 mg BD, or rivaroxaban 15 mg BD for 21 days then 20 mg OD (NG158 — neither is universally "preferred"). <b>Before starting:</b> renal and hepatic function, weight, bleeding risk, pregnancy, active cancer and interacting drugs. Confirmed PE needs <b>at least 3 months</b>; continuation beyond 3 months is individualised, not a fixed provoked-3/unprovoked-6 rule. Community treatment only through a validated low-risk PE pathway with reliable follow-up.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Iron deficiency anaemia</div>
+          <div class="b-drug">Ferrous sulfate <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note">200 mg OD (one tablet OD, on alternate days if tolerated). Recheck FBC and ferritin at 4 weeks. Treat for 3 months after Hb normalised to replenish stores. Investigate cause simultaneously.</div>
+        </div>
+      </div>
+
+      <!-- LADDER: Asthma escalation -->
+      <div style="font-weight:700;font-size:13px;color:var(--c-text3);margin:20px 0 6px;text-transform:uppercase;letter-spacing:0.5px;">Asthma escalation ladder (NICE/BTS/SIGN NG245, 2024)</div>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>AIR — low-dose ICS/formoterol PRN</b> (1 puff as needed; use the local formulary preparation and its own dose). No SABA-only therapy at any step. Counsel that every reliever puff now also delivers the steroid.</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Low-dose MART</b> — same ICS/formoterol inhaler 1 puff BD maintenance + PRN relief. One inhaler for prevention and rescue.</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Moderate-dose MART</b> — increase the maintenance dose (product-specific: typically 2 puffs BD + PRN). Confirm technique + adherence before stepping up.</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Check FeNO + blood eosinophils</b> — either raised → refer (specialist / biologic assessment); both normal → 8–12 week trial of montelukast (LTRA) or a LAMA added to moderate MART, then refer if no benefit.</span></div>
+      </div>
+
+      <!-- LADDER: COPD escalation -->
+      <div style="font-weight:700;font-size:13px;color:var(--c-text3);margin:20px 0 6px;text-transform:uppercase;letter-spacing:0.5px;">COPD escalation ladder (NICE NG115)</div>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Short-acting bronchodilator PRN</b> — salbutamol (or ipratropium). NICE's actual first step; assess response before any maintenance inhaler.</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Maintenance therapy chosen on assessment</b> — once short-acting treatment is insufficient, NG115 offers <b>LABA + LAMA</b> where there are <b>no asthmatic/steroid-responsive features</b>, or <b>LABA + ICS</b> where there are. Choose on breathlessness, exacerbation history, technique, adherence and comorbidity, and review the response; LAMA alone is for the patient who cannot tolerate a LABA.</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>ICS-containing (triple) therapy: LAMA + LABA + ICS</b> — consider where there are <b>asthma features</b> or <b>persistent exacerbations despite appropriate bronchodilator treatment</b>, guided by blood eosinophils and local/NICE criteria. FEV₁ &lt;50% is not a universal prerequisite. Weigh the pneumonia and other ICS risks, and review whether it helped.</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Specialist review</b> — Consider theophylline (monitor levels), azithromycin prophylaxis (for frequent exacerbators, check QTc, NTM), roflumilast, long-term oxygen therapy (LTOT) assessment.</span></div>
+      </div>
+
+      <div style="margin-top:14px;padding:10px 14px;background:var(--c-safety-lt);border-radius:var(--r-sm);border:1px solid #f0c8c4;font-size:13px;">
+        <b style="color:var(--c-safety);">⚠ Acute exacerbation — asthma and COPD are separate, do not merge the boxes:</b><br>
+        <b>Acute asthma:</b> salbutamol 4–10 puffs via spacer, one puff at a time, every 10–20 minutes, or 5 mg nebulised · prednisolone 40–50 mg daily for 5 days · titrate oxygen to <b>94–98%</b>, avoiding unnecessary high-concentration oxygen · no routine antibiotic · repeat PEF and SpO₂ after treatment. <b>Acute severe or life-threatening features → start treatment and transfer; do not wait for a complete response.</b><br>
+        <b>COPD exacerbation:</b> increase the short-acting bronchodilator via spacer or air-driven nebuliser · prednisolone <b>30 mg</b> daily for 5 days · antibiotic only when clinically indicated, particularly more purulent sputum or other features suggesting bacterial infection · oxygen to the <b>individualised target, generally 88–92% if at risk of hypercapnia</b> · drowsiness or headache suggests CO₂ retention — that is a transfer, not more nebulisers.
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        ICS in asthma reduces exacerbations and asthma deaths — which is why NG245 (2024) abolished SABA-only therapy: every reliever is now ICS/formoterol (AIR/MART), so treating symptoms automatically treats inflammation. LAMA monotherapy in COPD reduces exacerbations by 17% vs LABA and by 52% vs SABA alone. Triple therapy in COPD reduces exacerbations compared with dual bronchodilation but increases pneumonia risk — hence reserving ICS for asthma features or persistent exacerbations, guided by eosinophils. DOACs are preferred over LMWH/warfarin for most confirmed PE; apixaban and rivaroxaban are both first-line options in NG158, chosen on renal and hepatic function, weight, bleeding risk and interactions rather than a blanket preference. <em>Titrate oxygen to the individualised target — generally 88–92% where there is hypercapnic risk</em>, because in a CO₂ retainer high-flow oxygen risks worsening hypercapnia.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══ STEP 8 ═══ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head-row">
+      <div class="node-num">8</div>
+      <div class="node-head">
+        <span class="node-tag">Lifestyle</span>
+        <h3>Non-Pharmacological Interventions — Essential Adjuncts</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p>Lifestyle modifications are <em>treatments</em>, not optional extras. Prescribe them with the same specificity as drugs.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Smoking cessation</b> Single most impactful intervention for COPD, asthma, lung cancer and cardiovascular disease. Refer to the NHS Stop Smoking Service and offer licensed pharmacotherapy through it. Every consultation is an opportunity — brief intervention takes 30 seconds.</div>
+        <div class="lstile"><b>Pulmonary rehabilitation (PR)</b> 6–8 week supervised exercise and education programme. Offer to COPD patients functionally limited by breathlessness (MRC ≥3) and after an exacerbation. Improves exercise capacity, symptoms and quality of life (NG115). Refer via respiratory or the local PR service.</div>
+        <div class="lstile"><b>Vaccinations</b> Annual influenza vaccine (all respiratory / cardiac patients) · pneumococcal, COVID-19 and RSV vaccination <b>according to the current UK immunisation schedule (Green Book)</b> — products and eligibility change each season, so check rather than working from a remembered regimen.</div>
+        <div class="lstile"><b>Weight management</b> Obesity (BMI &gt;30) independently worsens dyspnoea via reduced chest wall compliance and increased O₂ demand. Even 5–10% weight loss significantly improves breathlessness, exercise tolerance, and CPAP compliance in OSA. Refer to NHS Tier 2/3 weight management services if BMI &gt;35.</div>
+        <div class="lstile"><b>Breathing retraining</b> Diaphragmatic and pursed-lip breathing (COPD) · physiotherapy-led breathing pattern disorder programme for hyperventilation and inducible laryngeal obstruction. Nijmegen score &gt;23 → refer to respiratory physiotherapy. Deliver it through a physiotherapist rather than recommending a named proprietary technique.</div>
+        <div class="lstile"><b>Exercise and physical activity</b> Deconditioning is reversible. Prescribe structured exercise: 150 minutes moderate-intensity/week (NICE PH44). Cardiac rehab for HF patients. Even 10 minutes/day walking improves functional capacity in COPD. Social prescribing to community walking groups / BHF programmes.</div>
+        <div class="lstile"><b>Trigger avoidance (asthma)</b> Avoid <b>identified</b> triggers — NSAIDs in NSAID-sensitive asthma, beta-blockers, occupational exposures, and known animal or mould exposure where the history fits. Physical measures against house dust mite (mattress covers, filters) are <b>not</b> recommended as general advice: no consistent clinical benefit.</div>
+        <div class="lstile"><b>Home environment</b> COPD and asthma: damp, mould, wood-burning stoves and gas cooking worsen symptoms. Refer to the housing team where poor housing contributes, and address the source rather than recommending a device.</div>
+        <div class="lstile"><b>Mental health support</b> Anxiety and depression affect 40% of COPD and 20% of HF patients — breathlessness generates fear, which worsens breathlessness (hyperventilation cycle). Offer NHS Talking Therapies referral. CBT has evidence for both asthma and COPD self-management.</div>
+        <div class="lstile"><b>Advance care planning (COPD / HF)</b> For MRC Grade 4–5 or advanced HF: sensitive ACP discussion about resuscitation preferences, preferred place of care, and goals. Refer to palliative care for breathlessness management (opioids, fan therapy, anxiolytics).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Pulmonary rehabilitation is one of the most cost-effective interventions in all of medicine — NICE analysis shows it costs ~£2,000 per QALY gained in COPD, far below the £20,000–30,000 threshold. Smoking cessation slows FEV₁ decline in COPD from ~50 mL/year to near-normal ~25 mL/year — no pharmacological intervention comes close. Influenza vaccination in COPD reduces exacerbations by 30% and hospitalisation by 50% (Cochrane review). The breathlessness-anxiety cycle is a key driver of functional impairment; treating only the physiological component without addressing the psychological response leads to persistent disability. <em>Prescribe rehabilitation as you would a drug — with dose, frequency, and duration.</em>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══ STEP 9 ═══ -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head-row">
+      <div class="node-num">9</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Follow-Up, Monitoring &amp; Safety-Netting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p>Every breathless patient needs a clear follow-up plan and explicit safety-netting before leaving. Document both in the records.</p>
+      <div class="kv">
+        <div>Acute presentation<br>(Infection / exacerbation)</div>
+        <div><b>48–72 hours:</b> Phone or in-person review if not improving or worsening. Confirm treatment response. If still febrile or SpO₂ falling below target → same-day hospital assessment. Re-examine and repeat the observations. <b>After an acute asthma attack treated in primary care or OOH: review within about 2–7 days</b> — UK standards specify within <b>2 working days</b> of an exacerbation treated in hospital or out of hours.</div>
+
+        <div>New diagnosis<br>(Asthma / COPD / HF)</div>
+        <div><b>2 weeks:</b> Confirm diagnosis, review investigation results (spirometry, BNP, echo request). Assess inhaler technique. Check adherence and tolerability of new medications. Smoking cessation referral confirmed?</div>
+
+        <div>Medication titration</div>
+        <div><b>1–2 weeks:</b> renal function and electrolytes <b>1–2 weeks after starting and 1–2 weeks after each dose increase</b> of ACEi, ARNI, ARB or MRA in heart failure, then periodically (NG106). FBC + ferritin after 4 weeks of iron therapy. BP and renal function if starting a diuretic. Theophylline level (target 10–20 mg/L) at steady state (3–5 days).</div>
+
+        <div>Stable chronic disease<br>(COPD / Asthma / HF)</div>
+        <div><b>3 months:</b> Annual structured review minimum. COPD: CAT score, exacerbation frequency, smoking status, inhaler technique, PR attendance, vaccinations, spirometry. Asthma: PAAP in place, symptom control (ACQ/RCP 3 questions), PEFR. HF: weight, fluid status, BNP trend, LVEF on echo.</div>
+
+        <div>Anticoagulation for PE</div>
+        <div><b>3 months:</b> review anticoagulation and <b>individualise continuation</b> — recurrence risk, bleeding risk, cancer status, patient preference and the specialist/local protocol, not a fixed provoked-3/unprovoked-6 rule. Reduced-dose apixaban 2.5 mg BD is one extended-treatment option. Thrombophilia testing only per local haematology criteria. Cancer-associated PE → DOAC or LMWH with oncology input.</div>
+
+        <div>Post-referral monitoring</div>
+        <div>Confirm 2WW referral acknowledged within 2 working days. Chase echo result if not received within 6 weeks (HF pathway). Ensure patient has specialist contact if condition deteriorates before appointment.</div>
+
+        <div>Safety-net: Call 999</div>
+        <div>Sudden severe worsening of breathlessness at rest · oxygen saturation falling below the patient's target · cannot complete a sentence · cyanosis · collapse or altered consciousness · chest pain with breathlessness (possible ACS / PE) · stridor develops</div>
+
+        <div>Safety-net: Same-day GP</div>
+        <div>Breathlessness not improving after 48 hours of treatment · Fever returning after initial improvement (secondary infection / empyema) · Increasing wheeze not responding to reliever · New ankle swelling · Haemoptysis develops · Cough productive of green / brown sputum after 5 days</div>
+
+        <div>Personalised action plan</div>
+        <div>All asthma patients must leave with a written <b>Personalised Asthma Action Plan (PAAP)</b> — a core NG245 requirement and the intervention most consistently linked to fewer attacks. COPD patients: self-management plan with a rescue antibiotic + prednisolone prescription where appropriate for exacerbations (discuss with patient, document agreement).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Safety-netting is a medicolegally critical part of any breathlessness consultation and should be documented verbatim in the patient record. Written instructions are recalled better than verbal advice alone. Renal function monitoring after starting an ACEi in HF detects acute kidney injury; this is a key prescribing safety competency assessed in the RCGP SCA. Personalised asthma action plans are among the most evidence-based interventions for reducing asthma attacks, yet a minority of UK asthma patients have one. The 48-hour safety-net is particularly important in pneumonia: failure to improve by 48 hours suggests a resistant organism, a complication (empyema, abscess), or a missed diagnosis. <em>Good safety-netting is not optional — it is the standard of care.</em>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<div class="alg-foot" style="max-width:780px;margin:32px auto 0;margin-left:auto;margin-right:auto;">
+  <strong>Educational use only.</strong> This pathway is based on: NICE/BTS/SIGN NG245 (Asthma, 2024), NICE NG115 (COPD), NICE NG114 (COPD exacerbation antimicrobial), NICE NG106 (Chronic Heart Failure), NICE CG191 / NG138 (Community-Acquired Pneumonia), NICE NG158 (Venous thromboembolic diseases), NICE NG12 (Suspected Cancer), BTS Guideline for Oxygen Use in Adults (2017), BTS Pleural Disease Guideline (2023), Resuscitation Council UK anaphylaxis guidance, RCOG Green-top 37b (VTE in pregnancy and the puerperium), and the UK Immunisation Green Book. <b>Separate pathways apply to children, pregnancy and the post-partum period, major trauma and specialist circumstances.</b> Always apply clinical judgement and adapt to individual patient context, comorbidities, local formulary, and current NICE/BTS guidance. Check for guideline updates at <em>nice.org.uk</em>.
+</div>
+
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.breathlessness.v1';
+  const checkboxes = document.querySelectorAll('.node-tick input[type="checkbox"]');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const total = checkboxes.length;
+  document.getElementById('pTotal').textContent = total;
+
+  // Load saved state
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+    checkboxes.forEach((cb, i) => {
+      if (saved[i]) {
+        cb.checked = true;
+        cb.closest('.node').classList.add('done');
+      }
+    });
+  } catch (e) {}
+
+  function updateProgress() {
+    const done = document.querySelectorAll('.node-tick input:checked').length;
+    pDone.textContent = done;
+    pFill.style.width = (done / total * 100) + '%';
+  }
+  updateProgress();
+
+  checkboxes.forEach((cb, i) => {
+    cb.addEventListener('change', function () {
+      const node = this.closest('.node');
+      node.classList.toggle('done', this.checked);
+      updateProgress();
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+        saved[i] = this.checked;
+        localStorage.setItem(STORE_KEY, JSON.stringify(saved));
+      } catch (e) {}
+    });
+  });
+
+  // Reset button
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    checkboxes.forEach(cb => { cb.checked = false; cb.closest('.node').classList.remove('done'); });
+    updateProgress();
+    try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+  });
+
+  // Why? drawers
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const drawer = this.nextElementSibling;
+      const isOpen = drawer.classList.contains('open');
+      drawer.classList.toggle('open', !isOpen);
+      this.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=2"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/alg-diagram.js?v=4"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PPI prescribing &amp; deprescribing — Protocol · Reasoning GP</title>
+<meta name="description" content="Proton pump inhibitors: pick a cheap capsule, treat at full dose for a defined acute course, gastroprotect only those with risk factors, avoid omeprazole with clopidogrel, stop for 2 weeks before endoscopy or H. pylori testing, and deprescribe with the rebound warned about in advance." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/ppi-prescribing.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790199278198257 tools/management/ppi-prescribing.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="PPI prescribing protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"💊",
+  title:"PPI prescribing & deprescribing — the complete guide",
+  eyebrow:"Protocol · NICE CG184 · NICE · an acute script, not a repeat",
+  stemTitle:"Prescribing the first course as an ACUTE script with a review date is the single most effective way to stop a 4-week course becoming a 4-year one",
+  stemSub:"One page for the whole drug class. <b>No PPI is more effective than another — choose on cost</b>, and prescribe capsules rather than tablets. Treat at full dose for a defined course, gastroprotect only the patients who actually have GI-bleed risk factors rather than reflexively with every NSAID, and know the two situations that must not be got wrong: <b>omeprazole and esomeprazole with clopidogrel</b>, and <b>stopping the PPI for 2 weeks before endoscopy or H. pylori testing</b>. Then review every long-term PPI annually and deprescribe — warning about rebound in advance, because rebound heartburn is pharmacology, not relapse.",
+  guideline:"NICE CG184 · NG12",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE CG184 · NICE CG184 and GORD"},
+    {t:"Off PPI ≥2 weeks before endoscopy / H. pylori test", tone:"tw"},
+    {t:"On clopidogrel: avoid omeprazole and esomeprazole", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#before"><b>Before</b><small>Indication · alarm</small></a><a href="#start"><b>Start</b><small>Cheap · full dose</small></a><a href="#gastroprotect"><b>Protect</b><small>Only if at risk</small></a><a href="#notresponding"><b>Not working?</b><small>Optimise first</small></a><a href="#deprescribe"><b>Deprescribe</b><small>Manage rebound</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Off the PPI for 2 weeks before endoscopy or H. pylori testing", html:"PPIs mask malignancy at endoscopy and cause false-negative H. pylori tests. Patients going for endoscopy should be off the PPI for at least 2 weeks, and off NSAIDs. <b>Do not start a PPI that delays a needed investigation</b> — the reflex to \"try a PPI first\" in someone with alarm features is exactly how an upper GI cancer gets a three-month delay."},
+    {tone:"red", h:"⛔ On clopidogrel, avoid omeprazole and esomeprazole", html:"<b>Both inhibit CYP2C19 and may reduce clopidogrel activation (MHRA).</b> <b>Use lansoprazole or pantoprazole instead.</b> This is one of the commonest avoidable interactions in primary care, because the PPI is often added by a different clinician from the one who started the clopidogrel."},
+    {tone:"blue", h:"No PPI beats another — choose on cost, and use capsules", html:"First-line: omeprazole 20 mg or lansoprazole 30 mg CAPSULES once daily — tablets are 4–7× dearer and branded products around 13×. <b>Take 30–60 minutes BEFORE breakfast or the main meal</b> for best acid suppression, which is the single most common adherence error."},
+    {tone:"amber", h:"Prescribe the first course as an ACUTE script", html:"Full dose for 4 weeks — 8 weeks if there is oesophagitis or an ulcer — as a 1-month acute prescription with a review, then step down to the lowest effective dose or stop. <b>Only move to a repeat once a long-term need is established.</b> <b>This one habit prevents most inappropriate long-term PPI use.</b>"},
+    {tone:"amber", h:"Gastroprotect the at-risk, not everyone on an NSAID", html:"Co-prescribe only when GI-bleed risk factors are present: age 65 and over, high-dose or prolonged use, prior ulcer or bleed, significant comorbidity, or concurrent steroid, anticoagulant, antiplatelet or SSRI. A patient under 45 with no risk factors on an NSAID alone usually does NOT need a PPI — and the PPI stops when the NSAID stops."},
+    {tone:"green", h:"Rebound is pharmacology, not relapse", html:"Transient heartburn for 1–2 weeks after stopping or reducing is rebound acid hypersecretion — pre-warn, taper, cover with an alginate, and reassure. <b>Do not reflexively restart the PPI</b>: most \"I can't come off it\" is rebound or a fixable trigger rather than a true long-term indication."}
+  ],
+  pathwaySub:"Six steps. The first prevents harm, and the last prevents a lifelong prescription.",
+  pathway:[
+    {title:"Confirm the indication and screen for alarm features", html:"Document the indication. Review culprit drugs, give lifestyle advice, consider an alginate first. <b>Alarm features mean endoscopy BEFORE settling on a PPI.</b>", alert:true},
+    {title:"Choose a cheap PPI and treat at full dose for a set course", html:"Omeprazole 20 mg or lansoprazole 30 mg capsules, 30–60 minutes before food, as an acute script."},
+    {title:"Gastroprotect only the patients with risk factors", html:"Lansoprazole 15–30 mg or omeprazole 20 mg, for the duration of the culprit drug. <b>Not omeprazole with clopidogrel.</b>"},
+    {title:"If not responding, optimise before escalating", html:"Adherence and timing, then double dose, then switch PPI, then test and treat H. pylori, then add an alginate and reconsider the diagnosis."},
+    {title:"Review every long-term PPI at least annually", html:"Is there a valid long-term indication? If yes, lowest effective dose. If no, deprescribe."},
+    {title:"Deprescribe, and manage the rebound", html:"Halve for 4 weeks → stop or move to on-demand → alginate cover → and stop the PPI outright if the culprit drug has stopped."}
+  ],
+  sections:[
+
+    {id:"before", nav:"Before", title:"Step 1 — before you prescribe",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Confirm the indication</b>","Uninvestigated dyspepsia, proven GORD, peptic ulcer or H. pylori, or gastroprotection — follow NICE CG184. <b>Document the indication on the prescription</b>"],
+         ["<b>Review culprit drugs</b>","Stop or reduce drugs that cause or worsen dyspepsia where possible: NSAIDs, aspirin and antiplatelets, calcium-channel blockers, nitrates, theophylline, bisphosphonates, corticosteroids, SSRIs, TCAs, anticholinergics"],
+         ["<b>Lifestyle for all</b>","Weight loss, smaller meals, avoid trigger foods (fatty and spicy, coffee, chocolate, alcohol), stop smoking, don't eat 3–4 hours before bed, raise the head of the bed, manage stress"],
+         ["<b>Try an alginate first</b>","Consider a trial of an alginate or antacid (e.g. Gaviscon Advance®) and review in 1 month, if referral is not needed"],
+         ["<b>Alarm features?</b>","Dysphagia, weight loss, GI bleed or anaemia, persistent vomiting, epigastric mass, or age 55 and over with new or persistent symptoms → urgent endoscopy or 2WW BEFORE settling on a PPI"]
+       ]},
+       {b:"warn", html:"Patients going for endoscopy should be off the PPI for at least 2 weeks, and off NSAIDs — PPIs mask malignancy and cause false-negative H. pylori tests. <b>Do not start a PPI that delays a needed investigation.</b>"},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🍽️ Lifestyle", html:"Weight loss, smaller meals, avoid late eating and triggers, raise the bed-head, reduce alcohol and caffeine."},
+         {tone:"blue", h:"📉 Plan the step-down from the start", html:"Step down to the lowest effective dose or on-demand use once healed; avoid an indefinite PPI by default. <b>The commonest PPI error is leaving patients on full dose indefinitely.</b>"},
+         {tone:"green", h:"🚭 Smoking", html:"<b>Stop smoking — it worsens reflux and dyspepsia.</b>"},
+         {tone:"blue", h:"💬 Frame it as a course", html:"Telling the patient at the outset that this is a defined course with a review, not a permanent tablet, is what makes the later step-down conversation easy."}
+       ]}
+     ]},
+
+    {id:"start", nav:"Start", title:"Step 2 — pick a cheap PPI and treat at full dose",
+     blocks:[
+       {b:"info", html:"<b>No PPI is more effective than another — choose on cost.</b> <b>First-line: omeprazole 20 mg or lansoprazole 30 mg CAPSULES once daily</b> (tablets are 4–7× dearer; branded around 13×). Prescribe as an ACUTE 1-month script with a review — only move to a repeat once a long-term need is established."},
+       {b:"table", head:["PPI","Standard (full) dose","Low / on-demand","High / double dose"], rows:[
+         ["<b>Omeprazole (1st line)</b>","<b>20 mg once daily</b>","10 mg once daily","40 mg once daily (40 mg BD in severe oesophagitis)"],
+         ["<b>Lansoprazole (1st line)</b>","<b>30 mg once daily</b>","15 mg once daily","30 mg twice daily"],
+         ["<b>Esomeprazole</b>","20 mg once daily","—","40 mg once daily"],
+         ["<b>Pantoprazole / rabeprazole</b>","40 mg / 20 mg once daily","20 mg / 10 mg","BD (non-formulary in many areas)"]
+       ]},
+       {b:"table", head:["Practical point","Detail"], rows:[
+         ["<b>Typical courses</b>","Uninvestigated dyspepsia or GORD: full dose for 4 weeks (8 weeks if oesophagitis or ulcer). Then step down to the lowest effective dose, or stop"],
+         ["<b>How to take</b>","30–60 minutes BEFORE breakfast, or before the main meal, for best acid suppression"],
+         ["<b>Swallowing difficulty or NG tube</b>","Esomeprazole gastro-resistant capsules or dispersible tablets, lansoprazole orodispersible (Fastab), or omeprazole dispersible tablets — see the SPC"]
+       ]},
+       {b:"why", html:"<b>PPIs are over-prescribed and frequently continued without indication.</b> Front-loading a defined course on an acute script, set at full dose, with the expectation of step-down, is the single most effective way to prevent a 4-week course becoming a 4-year one."}
+     ]},
+
+    {id:"gastroprotect", nav:"Protect", title:"Step 3 — gastroprotect only the patients who need it",
+     blocks:[
+       {b:"info", html:"Co-prescribe a PPI with ulcer-causing drugs (NSAIDs, aspirin and antiplatelets, anticoagulants, corticosteroids, SSRIs) ONLY when GI-bleed risk factors are present. <b>Dose: lansoprazole 15–30 mg or omeprazole 20 mg.</b>"},
+       {b:"table", head:["Drug","Gastroprotect when…","Notes"], rows:[
+         ["<b>NSAID</b>","Age 65 and over, high dose or prolonged use, prior ulcer or bleed, comorbidity (cardiovascular disease, diabetes, renal or hepatic impairment), on a steroid, anticoagulant, antiplatelet or SSRI, osteoarthritis or RA, chronic back pain","Co-prescribe the PPI for the duration of the NSAID; use the lowest NSAID dose; stop the PPI when the NSAID stops"],
+         ["<b>Aspirin / antiplatelet</b>","On clopidogrel, high-dose aspirin, elderly, prior ulcer or bleed, H. pylori, dual antiplatelet therapy, or on an NSAID, SSRI or anticoagulant","<b>Lowest aspirin dose (75 mg); NOT enteric-coated</b>"],
+         ["<b>Anticoagulant (DOAC or warfarin)</b>","<b>Prior ulcer or bleed, or on an antiplatelet, NSAID or SSRI</b>","<b>Monitor INR closely if starting a PPI with warfarin</b>"],
+         ["<b>Corticosteroid</b>","Prior ulcer, older age, serious comorbidity, or on an NSAID, anticoagulant, antiplatelet or SSRI","<b>A steroid alone is low-risk; PPI for the steroid course only</b>"]
+       ]},
+       {b:"warn", html:"Clopidogrel interaction: omeprazole and esomeprazole inhibit CYP2C19 and may reduce clopidogrel activation (MHRA) — avoid them; use lansoprazole or pantoprazole instead."},
+       {b:"why", html:"Younger patients under 45 with no GI-bleed risk factors on an NSAID alone usually do NOT need a PPI. Reflexive co-prescribing of a PPI with every NSAID is a major driver of inappropriate long-term use — and the PPI should stop when the precipitating drug stops."}
+     ]},
+
+    {id:"notresponding", nav:"Not working?", title:"Step 4 — inadequate control: optimise before escalating",
+     blocks:[
+       {b:"table", head:["Step","When","Action"], rows:[
+         ["<b>4a — check adherence, timing and lifestyle</b>","<b>First move</b>","Confirm the PPI is taken 30–60 minutes before food, daily, and that trigger foods, alcohol, smoking and culprit drugs (NSAIDs, CCBs, nitrates, bisphosphonates) have been addressed"],
+         ["<b>4b — increase to high or double dose</b>","<b>Adherence and timing confirmed, symptoms persist</b>","Step up to a double dose (e.g. omeprazole 40 mg OD, or split BD) for proven or severe oesophagitis, or refractory GORD. Review at 4–8 weeks"],
+         ["<b>4c — switch to a different PPI</b>","<b>Dose optimised, still symptomatic</b>","Some patients respond to a different PPI — trial an alternative (omeprazole → lansoprazole or esomeprazole) before declaring failure"],
+         ["<b>4d — test and treat H. pylori</b>","<b>Persistent dyspepsia, not already done</b>","Stop the PPI for 2 weeks, then stool antigen or urea breath test. If positive: 7-day triple therapy — omeprazole 20–40 mg BD plus amoxicillin 1 g BD plus clarithromycin 500 mg BD, or metronidazole if penicillin-allergic"],
+         ["<b>4e — add an alginate, reassess the diagnosis</b>","<b>Breakthrough or atypical symptoms</b>","Add an alginate (Gaviscon Advance®) for breakthrough symptoms. Reconsider functional dyspepsia, cardiac or biliary causes, or the need for endoscopy"]
+       ]}
+     ]},
+
+    {id:"review", nav:"Annual review", title:"Step 5 — review every long-term PPI, at least annually",
+     blocks:[
+       {b:"info", html:"Every patient on a PPI beyond a defined course needs an ANNUAL risk–benefit review. First decide whether there is a valid indication to continue long-term — if so, use the lowest effective dose; if not, deprescribe."},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"✓ Continue long-term", html:"Barrett's oesophagus (omeprazole 20–40 mg), severe oesophagitis (LA grade C or D), oesophageal stricture, Zollinger-Ellison syndrome, recurrent bleeding ulcer of unclear cause, ongoing high-risk gastroprotection, pancreatic enzyme replacement therapy, palliative symptom control."},
+         {tone:"amber", h:"⏸ Don't review yet", html:"Healing courses still within their window, current H. pylori eradication, awaiting or under gastroenterology review or endoscopy, grade 3–4 oesophagitis, immunosuppression or chemotherapy — leave until the course or episode completes."},
+         {tone:"green", h:"📉 Step-down candidates", html:"On a healing or high dose with symptoms controlled → step to the lowest maintenance dose and review for stopping 2–3 months later."},
+         {tone:"green", h:"🛑 Stop candidates", html:"On maintenance beyond 8 weeks with no valid long-term indication → trial stopping."}
+       ]},
+       {b:"warn", html:"Weak but biologically plausible long-term associations, to weigh in older, frail, care-home or immunocompromised patients: C. difficile and other enteric infections, fractures, hypomagnesaemia, B12 and iron deficiency, acute interstitial nephritis, community-acquired pneumonia, hyponatraemia."}
+     ]},
+
+    {id:"deprescribe", nav:"Deprescribe", title:"Step 6 — step down or stop, and manage rebound",
+     blocks:[
+       {b:"info", html:"For mild-to-moderate GORD or dyspepsia (no erosions, no Barrett's) controlled and asymptomatic for 2 weeks or more, or where the precipitating drug has stopped — deprescribe. <b>Choose one route and warn about rebound acid hypersecretion.</b>"},
+       {b:"table", head:["Step","When","Action"], rows:[
+         ["<b>6a — halve the dose for 4 weeks</b>","<b>On a standard or high dose</b>","Reduce to the lowest effective dose (e.g. omeprazole 20 mg → 10 mg) for about 4 weeks. Tapering reduces rebound acid hypersecretion"],
+         ["<b>6b — stop, or switch to PRN / on-demand</b>","<b>Controlled and tolerating the lower dose</b>","Stop the PPI, or move to on-demand use for symptom flares. Encourage self-purchase of an OTC alginate or antacid for breakthrough symptoms"],
+         ["<b>6c — cover rebound with an alginate</b>","<b>During and after tapering — warn in advance</b>","Rebound heartburn for 1–2 weeks after stopping is a PHARMACOLOGICAL effect, not relapse — cover with an alginate or antacid and reassure; don't reflexively restart the PPI"],
+         ["<b>6d — stop the PPI if the trigger drug stops</b>","<b>Gastroprotection only; NSAID, antiplatelet or steroid discontinued</b>","If the PPI was purely for gastroprotection and the culprit drug has stopped, STOP the PPI too"]
+       ]},
+       {b:"table", head:["Then","Detail"], rows:[
+         ["<b>Monitor</b>","Review at 4–8 weeks for heartburn, epigastric pain, weight loss or appetite loss"],
+         ["<b>If symptoms return significantly</b>","Revert to the lowest effective dose; if continuing, review annually; consider H. pylori testing (off the PPI for 2 weeks)"],
+         ["<b>Hospital or antibiotics</b>","If on antibiotics with a high C. difficile risk, consider holding the PPI with alginate cover, and review the need afterwards"]
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety", title:"Rebound, side effects, and what to warn about",
+     blocks:[
+       {b:"table", head:["Issue","What happens","What to do"], rows:[
+         ["<b>Rebound acid hypersecretion</b>","<b>Transient heartburn 1–2 weeks after stopping or reducing</b>","<b>Pre-warn; taper; alginate cover; reassure — don't restart reflexively</b>"],
+         ["<b>Common short-term effects</b>","Headache, diarrhoea, nausea, abdominal pain, constipation, rash","Usually mild and reversible; trial a different PPI or stop if troublesome"],
+         ["<b>Hypomagnesaemia</b>","Cramps, arrhythmia — especially with diuretics or digoxin, on long-term use","Check magnesium in long-term users with symptoms; correct; review the need"],
+         ["<b>B12 and iron deficiency</b>","Reduced absorption over years","<b>Check if anaemic or fatigued on long-term use; supplement</b>"],
+         ["<b>C. difficile, pneumonia, acute interstitial nephritis</b>","Uncommon long-term associations","<b>Lowest effective dose; review the need; stop if AIN is suspected</b>"]
+       ]},
+       {b:"warn", html:"Don't ignore NEW alarm features in a patient already on a PPI: dysphagia, weight loss, GI bleeding or iron-deficiency anaemia, persistent vomiting, or an epigastric mass → urgent endoscopy or 2WW, even if the symptoms seem controlled. <b>Symptomatic control on acid suppression is not reassurance.</b>"}
+     ]},
+
+    {id:"loop", nav:"Symptoms back?", title:"Symptoms back after stopping? Re-run the checklist",
+     sub:"Most \"I can't come off it\" is rebound or a fixable trigger, not a true long-term indication.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"1 · Rebound?", html:"<b>Less than 2 weeks since stopping? Cover with an alginate and reassure.</b>"},
+         {tone:"blue", h:"2 · Indication", html:"Is there a valid long-term indication — Barrett's, severe oesophagitis, stricture, Zollinger-Ellison, gastroprotection?"},
+         {tone:"amber", h:"3 · Trigger drugs", html:"NSAID, aspirin, CCB, nitrate, bisphosphonate or steroid still on board?"},
+         {tone:"green", h:"4 · Lifestyle", html:"<b>Weight, late meals, alcohol, smoking and trigger foods addressed?</b>"},
+         {tone:"blue", h:"5 · H. pylori", html:"<b>Tested, off the PPI for 2 weeks? Eradicate if positive.</b>"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When to scope or refer",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW · urgent endoscopy (NICE NG12)", html:"Dysphagia at any age; age 55 and over with weight loss plus upper-abdominal pain, reflux or dyspepsia; GI bleed, iron-deficiency anaemia, persistent vomiting or an epigastric mass. And remember the patient must be off the PPI for 2 weeks before the scope."},
+         {tone:"amber", h:"Refractory GORD or dyspepsia", html:"Persistent symptoms despite optimised dose, a PPI switch, H. pylori eradication and lifestyle change → gastroenterology."},
+         {tone:"blue", h:"Confirmed complications", html:"Barrett's oesophagus, severe (LA grade C or D) oesophagitis, or stricture → specialist follow-up plus long-term PPI."},
+         {tone:"blue", h:"Suspected Zollinger-Ellison", html:"Refractory or multiple ulcers, diarrhoea, a very high PPI requirement → gastroenterology (fasting gastrin)."},
+         {tone:"cream", h:"GP management", html:"Indication and documentation, drug choice and dosing, the acute-script habit, risk-based gastroprotection, optimisation before escalation, the annual review and the deprescribing plan all belong here. Related pages: <a href='gord.html'>GORD</a> · <a href='ibs.html'>IBS</a> · <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a> · <a href='iron-deficiency-anaemia.html'>iron deficiency anaemia</a>."}
+       ]},
+       {b:"say", html:"We'll treat this with a short, full-strength course rather than an open-ended one, sort out anything that's triggering it, and then step you down to the lowest dose — or stop — once you're settled. A bit of heartburn for a week or two when we reduce it is expected and fixable, not a sign you need it forever."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 71-year-old man on <b>clopidogrel</b> after a stroke and <b>naproxen</b> for knee osteoarthritis attends for a medication review. He has been on <b>omeprazole 20 mg</b> for 6 years — originally a 4-week course for indigestion, since on repeat. He mentions <b>occasional muscle cramps</b>, and that he has become <b>more tired recently</b>. He is worried about \"being on too many tablets\" and asks whether he can stop the omeprazole."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Spots the clopidogrel–omeprazole interaction and switches to lansoprazole or pantoprazole — the highest-value action in the case, and one that survives regardless of the deprescribing decision; recognises he DOES need gastroprotection, because he is elderly on an NSAID plus an antiplatelet, so this is not a stop-the-PPI case but a change-the-PPI case; <b>checks magnesium for the cramps and haematinics for the fatigue</b> as recognised long-term PPI associations; <b>reviews whether the naproxen is still needed</b>, since stopping it would change the gastroprotection requirement; explains that the original indication expired years ago but a new one has taken its place, which is why the answer to \"can I stop?\" is a qualified no; <b>documents the indication</b> so the next reviewer is not left guessing; would warn about rebound and cover with an alginate if stopping were appropriate; and <b>safety-nets the new alarm features</b>, noting the iron-deficiency anaemia route."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG184 — Gastro-oesophageal reflux disease and dyspepsia in adults</b><br><a href="https://www.nice.org.uk/guidance/cg184" rel="noopener">nice.org.uk/guidance/cg184</a><span class="rd"> — the four PPI indications, full-dose courses of 4 weeks (8 with oesophagitis or ulcer), the requirement to be off a PPI for 2 weeks before endoscopy and H. pylori testing, step-down to the lowest effective dose or on-demand use, and the 7-day triple-therapy eradication regimens</span></li>'+
+         '<li><b>NICE CG184 \u2014 Gastro-oesophageal reflux disease and dyspepsia in adults</b><br><a href="https://www.nice.org.uk/guidance/cg184" rel="noopener">nice.org.uk/guidance/cg184</a><span class="rd"> — the gastroprotection risk-factor lists for NSAIDs, antiplatelets, anticoagulants and corticosteroids, the equivalence of PPIs with cost-based choice, the dose table, and the deprescribing and rebound guidance</span></li>'+
+         '<li><b>MHRA Drug Safety Update — clopidogrel and proton pump inhibitors</b><span class="rd"> — omeprazole and esomeprazole inhibit CYP2C19 and may reduce clopidogrel activation; lansoprazole or pantoprazole preferred</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — dysphagia at any age, and age 55 and over with weight loss plus upper-abdominal pain, reflux or dyspepsia, as urgent direct-access endoscopy routes</span></li>'+
+         '<li><b>BNF and the individual Summaries of Product Characteristics</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — the dose table, capsule-versus-tablet formulations and dispersible options, timing before food, and the long-term association warnings (hypomagnesaemia, B12 and iron deficiency, C. difficile, fracture, acute interstitial nephritis)</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"PPI prescribing and deprescribing — NICE CG184, NICE CG184 and GORD, MHRA and NG12. No PPI is more effective than another: choose on cost, prescribe capsules, and take 30–60 minutes before food. Prescribe the first course as an ACUTE script — full dose 4 weeks, 8 with oesophagitis or ulcer — then step down or stop. Gastroprotect only patients with GI-bleed risk factors, and stop the PPI when the culprit drug stops. On clopidogrel, avoid omeprazole and esomeprazole; use lansoprazole or pantoprazole. Off the PPI for 2 weeks before endoscopy or H. pylori testing. Review every long-term PPI annually, and when deprescribing, warn about rebound in advance — it is pharmacology, not relapse. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

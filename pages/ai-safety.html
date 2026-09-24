@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI safety and data · Reasoning GP</title>
+<meta name="description" content="What each AI tool on Reasoning GP is for, what it must not be used for, what happens to what you type, and who is responsible for the output." />
+<link rel="canonical" href="https://gpreasoning.uk/pages/ai-safety.html">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=14" />
+<style>
+.ai-body{max-width:900px;margin:0 auto}
+.ai-lead{font-size:16.5px;line-height:1.7;color:var(--ink-2);max-width:68ch}
+.ai-lead b{color:var(--ink)}
+.ai-body h3{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.ai-body p,.ai-body li{font-size:14.5px;line-height:1.7;color:var(--ink-2)}
+.ai-body p{margin:8px 0;max-width:72ch}
+.ai-body ul{padding-left:20px;margin:8px 0;display:flex;flex-direction:column;gap:7px;max-width:72ch}
+.ai-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+.ai-table th{text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:0 12px 8px 0;border-bottom:1px solid var(--line-2);vertical-align:bottom}
+.ai-table td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.55;vertical-align:top}
+.ai-table td b{color:var(--ink)}
+.ai-table tr:last-child td{border-bottom:none}
+.ai-rule{background:#fef2f2;border:1px solid #fecaca;border-radius:var(--r-md,10px);padding:16px 18px;margin:18px 0;max-width:72ch}
+.ai-rule p{margin:0;font-size:14.5px;color:#7f1d1d}
+.ai-rule p + p{margin-top:9px}
+.ai-rule b{color:#7f1d1d}
+.ai-note{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md,10px);padding:16px 18px;margin:18px 0;max-width:72ch}
+.ai-note p{margin:0;font-size:14px}
+.ai-note p + p{margin-top:10px}
+.ai-yn{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.ai-y{background:#d5e6e4;color:#0c4a47}
+.ai-n{background:#f7e3da;color:#8c3a1f}
+.ai-cta{display:inline-block;margin-top:6px;background:var(--teal);color:#f6f2e9;padding:11px 20px;border-radius:9px;font-size:14px;font-weight:600}
+.ai-cta:hover{background:var(--teal-2);color:#fff}
+.ai-meta{font-size:13px;color:var(--muted);margin-top:8px}
+</style>
+</head>
+<body>
+<aside class="sidebar" data-active-id="__ai-safety"></aside>
+<div class="app"><main class="main">
+
+<section class="page-hero" data-screen-label="AI safety hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">AI safety and data</span>
+    <h1>What the AI does, and what it <em>must not</em></h1>
+    <p>Reasoning GP uses AI in several tools. This page says plainly what each one is for, what it is not for, what happens to what you type into it, and who is accountable for the output. The short answer to the last one is: you are.</p>
+  </div>
+</section>
+
+<div class="page-body"><div class="ai-body">
+
+  <section class="page-section">
+    <h2><span class="eyebrow">The one rule</span>Do not enter patient-identifiable data</h2>
+    <div class="ai-rule">
+      <p><b>Do not type or paste anything that identifies a patient into any AI tool on this site</b> — no names, dates of birth, NHS numbers, addresses, or details specific enough to identify someone. Use age, sex and clinical facts only.</p>
+      <p>Reasoning GP is <b>not commissioned by your practice or ICB, is not covered by your organisation's data-processing agreements, and is not an approved clinical system.</b> Anything you paste leaves your practice's governance. If a tool would be useful with real patient data, that use needs a DPIA and a contract with your organisation — which does not exist today.</p>
+    </div>
+    <p>Where a tool helps you draft something for a real patient — a referral, a letter, a note — the safe pattern is: <b>write it here in de-identified form, then add the identifiers in your clinical system.</b></p>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Tool by tool</span>Intended and excluded use</h2>
+    <table class="ai-table">
+      <thead><tr><th style="width:20%">Tool</th><th style="width:30%">What it is for</th><th style="width:30%">What it must not be used for</th><th style="width:20%">Before you act on it</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Ask</b><br>clinical questions</td>
+          <td>Finding what UK guidance says on a clinical question, with its sources, faster than opening five sites.</td>
+          <td>Deciding management for a specific patient. Doses. Anything you would not check.</td>
+          <td>Open the cited source and read the recommendation yourself.</td>
+        </tr>
+        <tr>
+          <td><b>Consult Scribe</b><br><b>on hold — unavailable</b></td>
+          <td><b>Nothing at present.</b> This feature is withheld from all plans while its information-governance and consent requirements are completed, and note generation is disabled for every account.</td>
+          <td><b>Any clinical use.</b> Recording a live consultation engages UK GDPR, patient consent and NHS record-keeping duties that are not yet in place.</td>
+          <td>Not available. It will not be offered until those requirements are met.</td>
+        </tr>
+        <tr>
+          <td><b>Letters and forms</b><br>referrals, A&amp;G, reports</td>
+          <td>Drafting structure and wording for correspondence you will rewrite and sign.</td>
+          <td>Generating a referral that is sent without being read. Clinical content you have not verified.</td>
+          <td>Check every clinical statement and every threshold you have quoted.</td>
+        </tr>
+        <tr>
+          <td><b>SCA simulator and circuits</b><br>AI patient</td>
+          <td>Rehearsing consultations against a simulated patient, for exam practice.</td>
+          <td>Any clinical purpose. The AI patient is fiction and its history is invented.</td>
+          <td>Nothing — but do not carry its clinical content into practice.</td>
+        </tr>
+        <tr>
+          <td><b>Examiner marking and feedback</b></td>
+          <td>Practice feedback mapped to the published RCGP domain descriptors.</td>
+          <td>Predicting your exam result, or as evidence of competence for anyone else.</td>
+          <td>Treat as one practice opinion, not a mark.</td>
+        </tr>
+        <tr>
+          <td><b>Portfolio and reflection prompts</b></td>
+          <td>Prompting your own reflection and structuring what you have written.</td>
+          <td>Writing a reflection you did not have. Fabricated learning entries.</td>
+          <td>The words submitted to your portfolio must be yours and true.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Data</span>What happens to what you type</h2>
+    <table class="ai-table">
+      <thead><tr><th style="width:44%">Question</th><th style="width:16%">Answer</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Is your input used to train AI models?</td><td><span class="ai-yn ai-y">No</span></td><td>Prompts are sent to the model provider to generate a response and are not used by us to train anything.</td></tr>
+        <tr><td>Does Reasoning GP store your prompts?</td><td><span class="ai-yn ai-y">No</span></td><td>Tool inputs and outputs are not retained on our side beyond the request. Anything you deliberately save stays in your own browser.</td></tr>
+        <tr><td>Is your input processed by a third party?</td><td><span class="ai-yn ai-n">Yes</span></td><td>Requests are passed to an external AI model provider to be answered. That is why the rule above exists: assume anything you type leaves this site.</td></tr>
+        <tr><td>Is anything sent anywhere without you pressing a button?</td><td><span class="ai-yn ai-y">No</span></td><td>Nothing is transmitted until you run a tool.</td></tr>
+        <tr><td>Is audio recorded or stored?</td><td><span class="ai-yn ai-y">No</span></td><td>No tool on this site records or uploads audio. Where dictation appears, it is your own device's keyboard dictation and never reaches us as audio.</td></tr>
+      </tbody>
+    </table>
+    <div class="ai-note">
+      <p><b>What still needs specialist review, stated honestly:</b> a full data-protection impact assessment and a data-processing agreement have not been completed for AI features, and no claim of NHS DSPT compliance is made. Until they are, the tools are positioned for <b>education and de-identified drafting only</b>, which is why the rule at the top of this page is absolute rather than advisory.</p>
+      <p>See the <a href="privacy.html">privacy policy</a> for how account and usage data is handled.</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Boundaries</span>Regulatory position</h2>
+    <ul>
+      <li><b>No medical-device claim is made.</b> These tools are positioned as educational and drafting aids. They are not offered as software intended to diagnose, prevent, monitor, predict, prognose or treat.</li>
+      <li><b>No tool produces patient-specific recommendations.</b> If a future feature did — taking a real patient's data and returning advice about that patient — specialist regulatory advice would be required before release, and the product claim would have to change with it.</li>
+      <li><b>AI does not replace clinical judgement</b>, your local protocol, or emergency assessment. In an emergency, call <b>999</b>.</li>
+      <li><b>Doses are always the BNF's.</b> No AI output on this site should be used as a prescribing source.</li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Before you use it</span>The 20-second checklist</h2>
+    <ul>
+      <li>Have I removed everything that identifies the patient?</li>
+      <li>Am I using this to <b>find guidance</b> or <b>draft wording</b> — not to decide?</li>
+      <li>Have I read the output in full, rather than scanning it?</li>
+      <li>Have I checked every dose against the BNF and every threshold against NICE?</li>
+      <li>If this goes into a record or to a colleague, am I content to be its author?</li>
+      <li>If something looks wrong, have I reported it?</li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">When it goes wrong</span>Unsafe AI output</h2>
+    <p class="ai-lead">If a tool produces something clinically unsafe — a wrong dose, an invented guideline, a missed red flag, a fabricated citation — <b>report it with the exact question you asked</b>. We cannot reproduce it without that.</p>
+    <table class="ai-table">
+      <thead><tr><th style="width:26%">Step</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td><b>1. Report</b></td><td>You send the prompt, the output and the tool. Acknowledged same working day.</td></tr>
+        <tr><td><b>2. Reproduce</b></td><td>We re-run it. If it reproduces, the tool is changed or suspended before anything else.</td></tr>
+        <tr><td><b>3. Fix</b></td><td>Usually a change to the tool's instructions or its grounding, occasionally removing the feature.</td></tr>
+        <tr><td><b>4. Tell you</b></td><td>You are told what was found and what changed — including if we could not reproduce it.</td></tr>
+      </tbody>
+    </table>
+    <p>Unsafe AI output is handled under the same severity levels and response times as a content error — see <a href="content-safety.html">how we keep content safe</a>.</p>
+    <p><a class="ai-cta" href="mailto:bassamomda@gmail.com?subject=Unsafe%20AI%20output%20%E2%80%94%20Reasoning%20GP">Report unsafe AI output</a></p>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">In short</span>The disclaimer, in one paragraph</h2>
+    <div class="ai-note">
+      <p>AI features on Reasoning GP generate text. They can be wrong, out of date, or confidently invent a source. They are for education and for drafting in de-identified form. They do not give advice about a named patient, they are not a medical device, and they never replace your clinical judgement or your local protocols. Verify every dose against the BNF and every threshold against current NICE before acting. Do not enter patient-identifiable data. You remain the author and the decision-maker for anything you use.</p>
+    </div>
+    <p class="ai-meta">See also the <a href="disclaimer.html">medical disclaimer</a>, <a href="privacy.html">privacy policy</a> and <a href="terms.html">terms of use</a>.</p>
+  </section>
+
+</div></div>
+
+</main></div>
+<script src="../assets/site.js?v=100"></script>
+</body></html>

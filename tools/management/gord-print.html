@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GORD / Acid Reflux — Protocol · Reasoning GP</title>
+<meta name="description" content="GORD and acid reflux, assessment and management on one page: the NG12 alarm features and why the PPI stops 2 weeks before OGD, a clinical diagnosis without endoscopy, full-dose PPI taken 30–60 minutes before breakfast, H. pylori test-and-treat, pregnancy, LPR and functional heartburn — then the step-down and the taper that beats rebound acid hypersecretion." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/gord.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790199257424517 tools/management/gord.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="GORD protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🔥",
+  title:"GORD / acid reflux",
+  eyebrow:"Protocol · assess &amp; manage in one place",
+  stemTitle:"Exclude the cancer, heal it properly, then get off the PPI",
+  stemSub:"One page for the whole condition. Screen the NG12 alarm features (and stop the PPI two weeks before OGD so it cannot mask a malignancy), make the clinical diagnosis without endoscopy, prescribe a full-dose PPI taken at the right time, test-and-treat H. pylori where dyspepsia overlaps, handle pregnancy, laryngopharyngeal reflux and functional heartburn differently — then the part everyone skips: step down and stop long-term PPIs with a taper that beats the rebound. NICE CG184 · NG12 · NICE.",
+  guideline:"NICE CG184 · NG12 (updated May 2025)",
+  reviewed:"8 September 2026",
+  nextReview:"8 March 2027",
+  meta:[
+    {t:"NICE CG184 · NG12 · NICE"},
+    {t:"BSG Barrett’s guidelines"},
+    {t:"2WW · NG12 upper GI", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:"<div class='mg-layers'><a href='#severe'><b>Alarm first</b><small>Dysphagia = OGD, any age</small></a><a href='#confirm'><b>Diagnose clinically</b><small>No OGD if uncomplicated</small></a><a href='#ladder'><b>Treat</b><small>Full dose, right timing</small></a><a href='#stepdown'><b>Step down</b><small>Beat the rebound</small></a></div>",
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Dysphagia is an endoscopy, at any age — never a stronger PPI", html:"NICE NG12: offer urgent direct-access upper GI endoscopy, to be performed within 2 weeks, to anyone with dysphagia — at any age. Also aged 55 and over (≥55) with weight loss plus any of upper abdominal pain, reflux or dyspepsia. <b>Never attribute new dysphagia to reflux.</b> Oesophageal adenocarcinoma incidence has risen sharply in the UK and reflux is its principal risk factor, so a longstanding GORD label is exactly the cognitive anchor that hides it.", src:"NG12"},
+    {tone:"red", h:"Stop the PPI 2 weeks before the OGD", html:"Acid suppression heals and masks malignancy at endoscopy and causes false reassurance — stop the PPI (and NSAIDs) ideally ≥2 weeks before urgent OGD where it is safe to do so. The same rule applies before <b>H. pylori</b> testing, where a PPI causes false negatives. Haematemesis, melaena or coffee-ground vomiting → 999 or same-day: acute upper GI bleeding carries about 10% mortality."},
+    {tone:"amber", h:"Typical reflux needs no endoscopy — it needs the right timing", html:"A confident clinical diagnosis is made on <b>typical heartburn and acid regurgitation</b> once alarm features are excluded. Full-dose PPI for 4–8 weeks: omeprazole 20–40 mg OD or lansoprazole 30 mg OD, taken 30–60 minutes BEFORE breakfast. PPIs need a meal to activate proton pumps — <b>wrong timing is the commonest cause of apparent “PPI failure”</b>, and checking it comes before any dose increase.", src:"CG184 · NICE"},
+    {tone:"blue", h:"Set the step-down goal at the first prescription", html:"The commonest GORD failure is not misdiagnosis — it is the patient left on full-dose PPI for a decade with no review. <b>Say “this is a course, and then we reduce” at the FIRST prescription.</b> The target for most uncomplicated GORD is the <b>lowest effective dose or on-demand use</b>, and <b>every repeat is a step-down opportunity</b>."},
+    {tone:"green", h:"Rebound is not relapse — and that one conversation is what makes stopping work", html:"Rebound acid hypersecretion after stopping a PPI lasts about 1–2 weeks and mimics relapse, so patients restart and conclude they need it for life. Warn them before you stop, taper rather than stopping abruptly (omeprazole 40 → 20 → 10 mg), and bridge with an alginate ± short-course famotidine."},
+    {tone:"purple", h:"Some patients should NOT be stopped", html:"Barrett’s oesophagus, severe erosive oesophagitis (Los Angeles grade C or D), a documented stricture, or ongoing NSAID/antiplatelet gastroprotection all need continued PPI — step to the lowest effective dose, but do not stop. <b>Barrett’s carries roughly 0.3% per year progression to adenocarcinoma</b> and needs enrolment in endoscopic surveillance."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm — do not skip it.",
+  pathway:[
+    {title:"Screen the NG12 alarm features", html:"Dysphagia at any age · aged 55+ with weight loss plus upper abdominal pain, reflux or dyspepsia · haematemesis, melaena or coffee-ground vomiting · epigastric or left supraclavicular mass · unexplained iron-deficiency anaemia · persistent vomiting or early satiety. Any of these changes the destination before any treatment starts, and <b>the PPI stops 2 weeks before the OGD</b>.", alert:true},
+    {title:"Make the diagnosis clinically", html:"Typical <b>heartburn</b> (retrosternal burning, worse lying flat, bending or after meals) and <b>acid regurgitation</b>, with relief from antacids. <b>Exclude cardiac pain first in anyone with cardiac risk</b> — exertional pain, radiation to jaw or arm, breathlessness or diaphoresis is assessed as possible ACS, not anchored as reflux. <b>No OGD is needed for typical uncomplicated symptoms.</b>"},
+    {title:"Review the drugs and the drivers", html:"NSAIDs, aspirin, bisphosphonates, calcium-channel blockers, nitrates, theophylline, doxycycline and anticholinergics either relax the lower oesophageal sphincter or injure the mucosa — deprescribe or protect. Then obesity, late or large meals, alcohol, caffeine, smoking, trigger foods and tight clothing."},
+    {title:"Treat: lifestyle plus a full-dose PPI, timed correctly", html:"Full-dose PPI for 4–8 weeks (8 weeks at full dose for erosive oesophagitis), 30–60 minutes before breakfast, alongside lifestyle measures. Test-and-treat H. pylori where dyspepsia or ulcer-type symptoms overlap. Add an <b>alginate (Gaviscon Advance)</b> for breakthrough, post-prandial or nocturnal symptoms."},
+    {title:"Review at 4–8 weeks and step down", html:"Controlled → halve the dose stepwise toward on-demand use, warning about the rebound fortnight. Partial → check timing and adherence first, then BD dosing or switch PPI. Refractory → reconsider the diagnosis and refer for endoscopy. <b>Review every long-term PPI at least annually.</b>"}
+  ],
+  sections:[
+    {id:"confirm", nav:"Confirm", title:"Confirming the diagnosis — is this reflux?", sub:"A clinical diagnosis of GORD can be made from a typical history without investigation, provided there are no alarm features.",
+     blocks:[
+       {b:"table", head:["Feature","What she or he describes","Note"], rows:[
+         ["<b>Cardinal symptoms</b>","<b>Heartburn</b> — retrosternal burning, worse lying flat, bending forward or after meals — and <b>acid regurgitation</b>","<b>Relief with antacids supports the diagnosis.</b> A PPI response supports it too but is not diagnostic"],
+         ["<b>Atypical / extra-oesophageal</b>","Chronic cough, nocturnal cough, hoarseness, globus, dental erosions, non-cardiac chest pain, worsening asthma","Laryngopharyngeal reflux responds less reliably than typical GORD and needs a longer trial — see <a href='#special'>Special groups</a>"],
+         ["<b>Cardiac pain must be excluded</b>","Exertional retrosternal pain, radiation to jaw or arm, breathlessness, diaphoresis","Assess as possible ACS first. Do not anchor on “reflux” in a cardiac-risk patient — this is a frequently tested safety point"],
+         ["<b>The spectrum</b>","Intermittent reflux → <b>erosive oesophagitis</b> → <b>Barrett’s oesophagus</b>","<b>LPR and functional heartburn behave differently.</b> Erosive disease needs 8 weeks at full dose; Barrett’s needs continued PPI and surveillance"],
+         ["<b>Lifestyle drivers</b>","<b>Obesity</b>, late or large meals, alcohol, caffeine, smoking, trigger foods, <b>tight clothing</b>","<b>Central obesity is the dominant modifiable driver</b> and weight loss is first-line therapy"],
+         ["<b>Medication review</b>","NSAIDs, aspirin, bisphosphonates, calcium-channel blockers, nitrates, theophylline, doxycycline, anticholinergics","They relax the lower oesophageal sphincter or injure the mucosa directly — <b>deprescribe or protect where it is safe to do so</b>"],
+         ["<b>Pregnancy</b>","<b>Very common in the third trimester</b>","Lifestyle and alginates first, then omeprazole if acid suppression is needed. Usually resolves postpartum"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"teal", h:"🎯 Set the goal at the first prescription", html:"Control symptoms and heal any oesophagitis on the lowest effective long-term acid suppression — NOT indefinite full-dose PPI by default. Saying <b>“this is a course, then we reduce”</b> at the first consultation is what prevents the ten-year repeat prescription. It costs one sentence and it is the single highest-yield thing on this page."},
+         {tone:"teal", h:"🩺 What a clinical diagnosis does not need", html:"<b>No routine endoscopy for typical uncomplicated reflux</b> (NICE restricts OGD to alarm features or treatment failure), <b>no routine pH study or manometry</b> — those are specialist tests before anti-reflux surgery or where the diagnosis remains uncertain after OGD. Investigate only where the result changes management."}
+       ]},
+       {b:"why", html:"NICE states a clinical diagnosis can be made on typical symptoms without further testing in the absence of alarm features, and routine endoscopy for typical reflux is low-yield. Distinguishing reflux from cardiac chest pain is the safety point examiners test — and the commonest GORD pitfall in practice is not the diagnosis at all, but the patient left on a full-dose PPI indefinitely with no review."}
+     ]},
+
+    {id:"exam", nav:"Examination", title:"Targeted examination", sub:"Examination is usually normal in uncomplicated GORD. Its purpose is to exclude the complications and the mimics — not to confirm reflux.",
+     blocks:[
+       {b:"table", head:["Look for","Finding","Changes what"], rows:[
+         ["<b>BMI / weight</b>","<b>Central obesity</b>; document the weight and BMI","<b>The dominant modifiable driver — weight loss is first-line therapy</b>, so this is a treatment measurement, not a formality"],
+         ["<b>Abdomen</b>","<b>Epigastric tenderness is common and non-specific.</b> Palpate specifically for a <b>hard epigastric mass</b> and for <b>hepatomegaly</b>","An epigastric mass consistent with stomach cancer → consider a suspected cancer pathway referral (NG12). Hepatomegaly → urgent investigation"],
+         ["<b>Lymph nodes</b>","<b>Left supraclavicular node — Virchow’s node / Troisier’s sign</b>","<b>Gastric cancer metastasis → urgent upper GI referral.</b> It takes five seconds to feel for and it is the finding that changes everything"],
+         ["<b>Cardio-respiratory</b>","Exclude a cardiac cause of the chest pain; <b>auscultate if aspiration is suspected</b>","Cardiac assessment takes priority in anyone with cardiac risk factors or exertional symptoms"],
+         ["<b>Mouth and dentition</b>","<b>Dental erosions and water brash</b>","<b>Support chronic acid exposure</b> — useful corroboration where the history is atypical, and worth a dental referral"]
+       ]},
+       {b:"why", html:"The examination in GORD is predominantly a screen for complications and mimics — gastric malignancy, aspiration and cardiac disease. A normal examination supports empirical therapy in a patient without alarm features, which is what makes it worth doing before you prescribe."}
+     ]},
+
+    {id:"severe", nav:"Alarm features", title:"Alarm features — exclude upper GI cancer and bleeding first", sub:"Reflux is common, but the examiner — and the coroner — is interested in the malignancy and the bleed hiding inside it. Screen every patient against NG12 before treating empirically.",
+     blocks:[
+       {b:"warn", html:"<b>Stop the PPI (and NSAIDs) before urgent OGD.</b> Acid suppression heals and masks malignancy at endoscopy and produces false reassurance — <b>ideally the PPI is off for ≥2 weeks pre-OGD</b> where it is safe to stop it. The same 2-week rule applies before <b>H. pylori</b> breath or stool testing."},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Dysphagia — ANY age", html:"Difficulty swallowing solids or liquids, or food sticking. NG12: offer urgent direct-access upper GI endoscopy, to be performed within 2 weeks, to assess for oesophageal and stomach cancer in people with dysphagia — with no age threshold at all. <b>Never attribute new dysphagia to reflux</b>, and never respond to it with a higher PPI dose.", src:"NG12"},
+         {tone:"red", h:"🔴 Aged 55+ with weight loss", html:"Weight loss PLUS any of upper abdominal pain, reflux or dyspepsia, aged 55 and over (≥55) → urgent direct-access upper GI endoscopy within 2 weeks (NG12). All three of those symptoms are the ones reflux patients present with, which is precisely why the age-plus-weight-loss combination has to be asked about deliberately.", src:"NG12"},
+         {tone:"red", h:"🔴 GI bleeding", html:"Haematemesis, melaena or coffee-ground vomiting → 999 or same-day assessment. Acute upper GI bleeding carries about 10% mortality. <b>NG12 also lists haematemesis for non-urgent direct-access endoscopy</b> — but a patient who is actively bleeding or haemodynamically unstable is an emergency admission, not a referral form."},
+         {tone:"amber", h:"🟠 Epigastric mass / Troisier’s sign", html:"A palpable upper abdominal mass consistent with stomach cancer → consider a suspected cancer pathway referral (NG12). A left supraclavicular node (Virchow / Troisier) suggests gastric cancer metastasis → urgent upper GI referral.", src:"NG12"},
+         {tone:"amber", h:"🟠 Iron-deficiency anaemia", html:"Unexplained iron-deficiency anaemia with reflux or dyspepsia is occult GI blood loss until proven otherwise. The precise NG12 route is: aged 55 and over with upper abdominal pain plus low haemoglobin → consider non-urgent direct-access upper GI endoscopy. The legacy pathway called this a straight 2WW; <b>unexplained IDA also needs a lower-GI assessment in its own right</b> — see <a href='iron-deficiency-anaemia.html'>iron-deficiency anaemia</a>. Either way it is investigated, never absorbed into the reflux label.", src:"NG12"},
+         {tone:"amber", h:"🟠 Persistent vomiting or early satiety", html:"Unexplained persistent vomiting or early satiety → consider OGD, and think about gastric outlet obstruction. NG12 lists, for people aged 55 and over, nausea or vomiting with any of weight loss, reflux, dyspepsia or upper abdominal pain among the criteria for considering direct-access endoscopy."},
+         {tone:"purple", h:"Also consider routine OGD <span class='tw'>NG12</span>", html:"<b>Aged 55 and over with treatment-resistant dyspepsia</b>, or <b>upper abdominal pain with low haemoglobin</b>, or a raised platelet count with any of nausea, vomiting, weight loss, reflux, dyspepsia or upper abdominal pain → <b>consider non-urgent direct-access upper GI endoscopy (NG12)</b>. Think earlier than 55 in people aged &gt;40 with a family history of gastro-oesophageal cancer, or from a higher-risk ethnic background.", src:"NG12"}
+       ]},
+       {b:"why", html:"NG12 mandates urgent direct-access OGD for dysphagia at any age, and for patients aged 55 and over with weight loss plus upper abdominal pain, reflux or dyspepsia. Oesophageal adenocarcinoma incidence has risen sharply in the UK and reflux is its principal risk factor — verbalise these thresholds rather than reflexively prescribing a PPI. A longstanding GORD label must never become a cognitive anchor: new dysphagia or weight loss in a known refluxer demands re-triage against NG12."}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Work-up — only what changes management", sub:"Uncomplicated GORD needs NO investigation. Test the right patients for the right reasons.",
+     blocks:[
+       {b:"table", head:["Test","When","What it gives you"], rows:[
+         ["<b>H. pylori test</b> — urea breath test or stool antigen","<b>Where dyspepsia or ulcer-type symptoms overlap</b>; test-and-treat in uninvestigated dyspepsia","<b>Stop the PPI 2 weeks before testing — a PPI causes false negatives.</b> Positive → eradication (see the <a href='#ladder'>ladder</a>); <b>retest after treatment if there was an ulcer or symptoms persist</b>"],
+         ["<b>OGD</b>","<b>NG12 alarm features, or refractory symptoms after an optimised PPI</b>","Grades the oesophagitis (Los Angeles A–D), and diagnoses stricture and Barrett’s. Stop the PPI 2 weeks beforehand"],
+         ["<b>Barrett’s surveillance</b>","<b>Confirmed Barrett’s at OGD</b>","Endoscopic surveillance, with the interval set by segment length and the presence of dysplasia (BSG). Premalignant — counsel and ensure enrolment"],
+         ["<b>FBC</b>","Anaemia suspected, or as part of the alarm-feature work-up","<b>Iron-deficiency anaemia → investigate for occult GI blood loss</b>; a <b>raised platelet count</b> is itself an NG12 “consider endoscopy” trigger aged 55+"],
+         ["<b>24-hour pH study / manometry</b>","<b>Before anti-reflux surgery</b>, or where the diagnosis is uncertain after OGD","<b>Specialist tests, not primary care.</b> Also used to define <b>functional heartburn</b> (typical symptoms, normal OGD and normal pH study)"],
+         ["<b>Coeliac serology · abdominal ultrasound</b>","Coeliac serology where there is IBS overlap; ultrasound if epigastric pain has been present for under a year (&lt;1 year) (possible biliary cause)","Both belong to the functional-dyspepsia work-up rather than to reflux itself"],
+         ["<b>Do NOT order</b>","—","<b>Routine OGD for typical reflux without alarm features</b>; routine pH studies or manometry from primary care; a barium swallow in place of endoscopy"]
+       ]},
+       {b:"cards", items:[
+         {tone:"purple", h:"NG12 direct-access and 2WW slot <span class='tw'>2WW</span>", html:"Offer urgent direct-access upper GI endoscopy, to be performed within 2 weeks, for oesophageal and stomach cancer in people with dysphagia at any age, or aged 55 and over with weight loss plus any of upper abdominal pain, reflux or dyspepsia. Consider a suspected cancer pathway referral for an upper abdominal mass consistent with stomach cancer. Consider non-urgent direct-access endoscopy for haematemesis, and for people aged 55 and over with treatment-resistant dyspepsia, upper abdominal pain with low haemoglobin, a raised platelet count with any of nausea, vomiting, weight loss, reflux, dyspepsia or upper abdominal pain, or nausea or vomiting with any of weight loss, reflux, dyspepsia or upper abdominal pain. Restated with the same thresholds under <a href='#refer'>Refer</a>.", src:"NICE NG12, mandatory per house rules"}
+       ]},
+       {b:"why", html:"Routine endoscopy for typical reflux without alarm features is low-yield, and NICE restricts OGD to alarm features or treatment failure. Barrett’s oesophagus carries roughly 0.3% per year progression to adenocarcinoma and warrants structured surveillance — which is the reason a refractory refluxer gets endoscoped rather than escalated indefinitely."}
+     ]},
+
+    {id:"treat", nav:"Who to treat", title:"Who gets what", sub:"Almost everyone gets lifestyle measures plus a time-limited full-dose PPI. The decisions that matter are who needs eradication, who needs 8 weeks, and who must not be stopped.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Typical uncomplicated reflux</b>","<b>Lifestyle measures plus a full-dose PPI for 4–8 weeks, then step down.</b> No investigation, no endoscopy. Managed entirely in primary care"],
+         ["<b>Mild or intermittent symptoms</b>","<b>Alginate or antacid PRN</b> (Gaviscon Advance after meals and at bedtime) plus lifestyle — a PPI course is not obligatory for everyone"],
+         ["<b>Erosive oesophagitis at OGD</b>","<b>8 weeks at full dose</b> to heal it, then the lowest effective maintenance dose. <b>LA grade C or D: maintain, do not stop</b>"],
+         ["<b>Dyspepsia or ulcer-type overlap</b>","<b>H. pylori test-and-treat</b> — urea breath test or stool antigen off PPI for 2 weeks, then eradication therapy if positive"],
+         ["<b>Barrett’s, stricture, or NSAID/antiplatelet gastroprotection</b>","Continued PPI at the lowest effective dose — these patients are not stopped, and Barrett’s must be enrolled in surveillance"],
+         ["<b>Pregnancy</b>","Lifestyle and alginates first; omeprazole has the most safety data if acid suppression is needed. Usually resolves postpartum"],
+         ["<b>Functional heartburn</b>","Normal OGD and normal pH study — manage as a gut–brain-axis disorder, and AVOID endless PPI escalation. Consider a low-dose tricyclic (amitriptyline)"],
+         ["<b>What primary care keeps</b>","Typical reflux with no alarm features, responding to lifestyle and a PPI — which is the large majority. Refer for alarm features, diagnostic uncertainty or genuine treatment failure"]
+       ]}
+     ]},
+
+    {id:"lifestyle", nav:"Lifestyle", title:"Lifestyle — first-line for everyone", sub:"These measures address the mechanics of reflux and reduce reliance on long-term acid suppression. They carry more of the load as the drug dose comes down, so they are reinforced at every step-down.",
+     blocks:[
+       {b:"table", head:["Measure","What to advise","Why / effect"], rows:[
+         ["<b>Weight loss</b>","Target a sustained reduction in the overweight; refer to a weight-management programme where appropriate","The single most effective intervention in overweight patients — it lowers intra-abdominal pressure and reduces symptoms"],
+         ["<b>Meal pattern</b>","Smaller meals; nothing within 3 hours of lying down; a lighter, earlier evening meal","Reduces both the volume available to reflux and the nocturnal acid exposure that wakes people"],
+         ["<b>Bed head elevation</b>","Raise the head of the bed with blocks under the bedposts — not extra pillows, which simply flex the abdomen","<b>Specifically benefits nocturnal symptoms.</b> Left-lateral sleeping position may also help nocturnal reflux"],
+         ["<b>Trigger foods and drinks</b>","Trim alcohol, caffeine, fatty, spicy and acidic foods, chocolate and fizzy drinks — individualised to what actually provokes symptoms","Individual triggers vary; a blanket exclusion list is poorly adhered to and rarely necessary"],
+         ["<b>Smoking cessation</b>","NHS Stop Smoking Service; offer pharmacotherapy","<b>Smoking lowers lower-oesophageal-sphincter tone</b>, and cessation also reduces oesophageal cancer risk"],
+         ["<b>Tight clothing</b>","Avoid tight waistbands and belts","Raises intra-abdominal pressure — a small, free intervention that patients rarely think of"],
+         ["<b>Deprescribe the aggravators</b>","Review NSAIDs, aspirin, calcium-channel blockers, nitrates, bisphosphonates, theophylline, doxycycline and anticholinergics — stop, switch or protect where it is safe","They relax the sphincter or injure the mucosa directly. <b>This review is often more effective than escalating the PPI</b>"],
+         ["<b>Self-care and OTC</b>","<b>Antacids and alginates for intermittent symptoms</b>; explain what OTC failure means","Safety-net explicitly for alarm features and for failure of OTC treatment, so the patient knows when to return"]
+       ]},
+       {b:"say", html:"Two things do more here than any tablet: getting some weight off if there is weight to lose, and not eating within three hours of lying down. If nights are the problem, put blocks under the head of the bed rather than piling up pillows — pillows just bend you in the middle and make it worse."}
+     ]},
+
+    {id:"ladder", nav:"Treatment ladder", title:"The treatment ladder — the right drug at the right time", sub:"Doses are named for orientation — verify every one in the BNF. The timing instruction matters as much as the dose.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Lifestyle measures and a drug review", when:"every patient",
+          html:"Weight loss, smaller and earlier meals, bed-head elevation, trigger reduction, smoking cessation. <b>Stop or switch the causative drugs where it is safe to do so</b> — NSAIDs, calcium-channel blockers, nitrates, bisphosphonates, theophylline, doxycycline, anticholinergics."},
+         {step:"Step 2", title:"Alginate or antacid PRN", when:"mild or intermittent symptoms, and in pregnancy",
+          html:"<b>Gaviscon Advance after meals and at bedtime.</b> Also the bridging agent for breakthrough symptoms at every later step, and during the step-down and the rebound fortnight."},
+         {step:"Step 3", title:"Full-dose PPI for 4–8 weeks", when:"proven or clinically diagnosed GORD", fromLabel:"first-line",
+          html:"Omeprazole 20–40 mg OD or lansoprazole 30 mg OD, taken 30–60 minutes BEFORE breakfast — PPIs need food to activate proton pumps, and <b>wrong timing is the commonest cause of apparent “PPI failure”</b>. <b>Erosive oesophagitis: 8 weeks at full dose.</b>"},
+         {step:"Step 4", title:"Test and treat H. pylori", when:"dyspepsia or ulcer-type symptoms", fromLabel:"epigastric / ulcer features",
+          html:"Urea breath test or stool antigen — stop the PPI 2 weeks before testing (false negatives). Positive → 7-day triple therapy: PPI BD plus amoxicillin 1 g BD plus clarithromycin 500 mg BD, or <b>metronidazole 400 mg BD if penicillin-allergic</b>. <b>Retest afterwards if there was an ulcer or if symptoms persist.</b>"},
+         {step:"Step 5", title:"Optimise before escalating", when:"partial response", fromLabel:"still symptomatic",
+          html:"<b>Check timing and adherence FIRST</b>, then <b>increase to BD dosing or switch PPI</b>. Add an alginate (Gaviscon Advance) PRN for breakthrough, post-prandial or nocturnal symptoms. An apparently PPI-resistant patient is usually a fixable one — work the <a href='#targets'>six checks</a> before calling it refractory."},
+         {step:"Step 6", title:"H2RA add-on or alternative", when:"nocturnal breakthrough, or PPI intolerance", fromLabel:"adjunct",
+          html:"<b>Famotidine 20–40 mg nocte</b> for nocturnal acid breakthrough, or where a PPI is not tolerated. Also useful as short-term cover while stopping a PPI."},
+         {step:"Step 7", title:"Step down and stop", when:"symptoms controlled for 4–8 weeks", fromLabel:"the target for most",
+          html:"Reduce to the lowest effective dose or on-demand use, with a taper that pre-empts the rebound. This is the step that is skipped most often and matters most — it has <a href='#stepdown'>its own section</a>."}
+       ]},
+       {b:"warn", html:"<b>Long-term PPI risks — the reasons to step down:</b> hypomagnesaemia, B12 deficiency, C. difficile and other enteric infections, hip fracture, hypochlorhydria, and rebound acid hypersecretion on stopping — the last of which is the trap that convinces patients they need the drug for life."}
+     ]},
+
+    {id:"stepdown", nav:"Step down &amp; stop", title:"The step-down — beating the rebound is the whole skill", sub:"Once symptoms have been controlled for 4–8 weeks and any oesophagitis has healed, reduce. Rebound acid hypersecretion after abrupt cessation lasts about 1–2 weeks and mimics relapse — patients restart and conclude they are PPI-dependent. A taper pre-empts it.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", title:"Halve the dose", when:"controlled for 4–8 weeks",
+          html:"Drop full → standard → low dose (for example omeprazole 40 → 20 → 10 mg) over a few weeks, holding each step until stable. Reinforce lifestyle at each step — it carries more of the load as the drug reduces."},
+         {step:"2nd", title:"On-demand or intermittent use", when:"stable on a low dose", fromLabel:"the target for most",
+          html:"Take the PPI only for symptomatic days or as short courses — on-demand dosing controls most uncomplicated GORD with a fraction of the total drug exposure. <b>An alginate PRN bridges the breakthrough days.</b>"},
+         {step:"3rd", title:"Cover the rebound fortnight", when:"stopping completely", fromLabel:"pre-warn and bridge",
+          html:"Warn that heartburn may briefly worsen for about 1–2 weeks — this is rebound, not the reflux returning. Bridge with an alginate ± a short course of famotidine; hold the line and it settles. This single conversation is what makes stopping succeed — without it, the patient self-restarts in week one and both of you conclude the drug is needed for life."},
+         {step:"Don’t", title:"Who should NOT step down or stop", when:"keep the PPI", fromLabel:"maintain at the lowest effective dose",
+          html:"Barrett’s oesophagus, severe erosive oesophagitis (Los Angeles grade C or D), a documented stricture, or ongoing NSAID or antiplatelet gastroprotection — these need continued PPI. <b>Step to the lowest effective dose but do not stop.</b> And where reflux symptoms relapse on stopping — which happens in the majority — settle on <b>the lowest dose that controls them</b> rather than returning to full dose by default."}
+       ]},
+       {b:"say", html:"These tablets are brilliant for healing the irritation, but they are not meant to be forever for most people. We will get you comfortable, then come down step by step. One thing to expect when we stop: your heartburn may flare for a week or two — that is the stomach readjusting, NOT the reflux coming back for good. Ride it out with the Gaviscon and it settles; jump straight back on the tablet and we never find out that you did not need it."},
+       {b:"why", html:"NICE recommends a full-dose PPI for 4–8 weeks as initial therapy, then step-down to the lowest dose that controls symptoms, including on-demand use. Auditing the repeat-prescribing list for long-term full-dose PPIs with no review is one of the highest-yield deprescribing wins available in general practice — and <b>every repeat request is a step-down opportunity</b>."}
+     ]},
+
+    {id:"targets", nav:"Targets", title:"Targets, and the before-you-escalate check", sub:"Judge the response at 4–8 weeks against symptoms, and check the obvious six things before calling anyone PPI-resistant.",
+     blocks:[
+       {b:"table", head:["Situation","Target and timeframe","Action threshold"], rows:[
+         ["<b>Initial PPI course</b>","<b>Symptom control at 4–8 weeks</b> (8 weeks at full dose for erosive oesophagitis)","<b>Controlled → step down.</b> Partial → check timing and adherence, then BD or switch PPI. <b>No response → reconsider the diagnosis and investigate</b>"],
+         ["<b>Laryngopharyngeal reflux</b>","<b>A longer trial: BD PPI for 8–12 weeks</b> plus an alginate","<b>Persistent → ENT, to exclude head and neck pathology.</b> Responds less reliably than typical GORD, so set that expectation in advance"],
+         ["<b>Long-term PPI on repeat</b>","<b>Reviewed at least annually</b>","Confirm the ongoing need, attempt step-down or stop, use the lowest effective dose; check magnesium, and B12 if use has been prolonged"],
+         ["<b>H. pylori eradication</b>","Retest after treatment where there was an ulcer or symptoms persist","<b>Retest by breath or stool test, off PPI</b>, to confirm clearance"],
+         ["<b>Alarm features</b>","<b>Screened at every contact</b>","New dysphagia, weight loss or bleeding → urgent OGD, NOT a higher PPI dose"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"table", head:["Long-term PPI risk","Watch for","Action"], rows:[
+         ["<b>Hypomagnesaemia</b>","Cramps, arrhythmia, tetany; often asymptomatic","<b>Check magnesium at the annual review</b> of long-term PPI use"],
+         ["<b>B12 deficiency</b>","Fatigue, neuropathy, macrocytosis","<b>Check B12 where use has been prolonged</b>"],
+         ["<b>C. difficile and other enteric infections</b>","New persistent diarrhoea on a PPI","Reduce or stop where the indication is not solid; investigate the diarrhoea"],
+         ["<b>Hip fracture</b>","Osteoporosis risk factors, falls","A further reason to hold the lowest effective dose rather than default full dose"],
+         ["<b>Rebound acid hypersecretion</b>","<b>Heartburn worsening for 1–2 weeks after stopping</b>","<b>Pre-warn, taper, and bridge with an alginate</b> — do not interpret it as relapse"]
+       ]}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Special situations", sub:"Only the groups where management genuinely differs — these are the nuances that get tested and the ones that cause endless futile PPI escalation.",
+     blocks:[{b:"cards", items:[
+       {tone:"blue", h:"🤰 Pregnancy", html:"<b>Very common in the third trimester.</b> Lifestyle and alginates first; omeprazole has the most safety data if acid suppression is needed. <b>Usually resolves postpartum</b>, so frame it as time-limited and review after delivery rather than continuing indefinitely."},
+       {tone:"blue", h:"💢 Non-cardiac chest pain", html:"<b>Only after a cardiac cause has been excluded.</b> A PPI trial can be both diagnostic and therapeutic in proven reflux-related chest pain — but the sequence matters: cardiac assessment first, reflux trial second."},
+       {tone:"amber", h:"🗣️ Laryngopharyngeal reflux", html:"Hoarseness, throat clearing, globus, chronic cough → a longer trial: BD PPI for 8–12 weeks, plus an alginate. <b>ENT referral if it persists, to exclude head and neck pathology.</b> <b>It responds less reliably than typical GORD</b> — say so at the outset so a partial response is not read as failure."},
+       {tone:"cream", h:"🧠 Functional heartburn and functional dyspepsia", html:"Typical symptoms with a normal OGD and a normal pH study — a gut–brain-axis disorder. Test and treat H. pylori for the epigastric type, coeliac serology if there is IBS overlap, ultrasound if epigastric pain has been present under a year (&lt;1 year — possible biliary cause), and consider a low-dose tricyclic (amitriptyline). <b>AVOID endless PPI escalation</b> — recognising this prevents years of it."},
+       {tone:"green", h:"🔬 Barrett’s oesophagus", html:"Confirmed at OGD → continue the PPI and ensure enrolment in the endoscopic surveillance programme, at the interval set by segment length and dysplasia. <b>Roughly 0.3% per year progression to adenocarcinoma</b> — premalignant, so counsel and follow up rather than discharging."},
+       {tone:"red", h:"🥩 Eosinophilic oesophagitis", html:"<b>Dysphagia, food impaction, a young atopic patient → OGD plus biopsy</b> (the biopsy is the point — the endoscopy can look normal). It is a common reason for a genuinely PPI-unresponsive “reflux” patient, and it is missed when dysphagia is treated as reflux."}
+     ]}]},
+
+    {id:"monitor", nav:"Review", title:"Review, monitoring and safety-netting", sub:"Structured follow-up is what converts a prescription into a resolved problem — and it is where an alarm feature appearing later gets caught.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Symptom response</b>","<b>4–8 weeks</b>","<b>Controlled → step down.</b> Not controlled → <b>check timing and adherence first</b>, then escalate, reconsider the diagnosis, or refer"],
+         ["<b>Long-term PPI on repeat</b>","<b>At least annually</b>","Confirm the ongoing need, attempt step-down or stop, lowest effective dose; check magnesium, and B12 if prolonged. <b>Every repeat is a step-down opportunity</b>"],
+         ["<b>Alarm features</b>","<b>Every contact</b>","New dysphagia, weight loss or bleeding → urgent OGD — do NOT simply increase the PPI"],
+         ["<b>H. pylori eradication</b>","Post-treatment, if there was an ulcer or symptoms persist","<b>Retest by breath or stool test, off PPI</b>, to confirm clearance"],
+         ["<b>Barrett’s oesophagus</b>","At the recommended surveillance interval","<b>Ensure the patient is actually enrolled</b> — check it rather than assume it"],
+         ["<b>Recurrence off treatment</b>","When symptoms return after stopping","Re-evaluate, and consider endoscopy if symptoms recur off treatment or fail to settle — particularly in younger patients relapsing repeatedly"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🚨 999 / same-day", html:"“Vomiting blood, or black tarry stools — that is 999 or A&amp;E, not an appointment.” <b>Acute upper GI bleeding carries about 10% mortality.</b>"},
+         {tone:"red", h:"🔴 Swallowing or weight", html:"“Trouble swallowing, food sticking, or losing weight without trying — tell me straight away; that needs a camera test, not a stronger tablet.”"},
+         {tone:"amber", h:"🔄 Rebound on stopping", html:"“When we stop the tablet your heartburn may flare for a week or two — that is rebound, not relapse. Use the Gaviscon and it settles.”"},
+         {tone:"green", h:"💊 Not forever", html:"“These are not meant to be lifelong for most people — we will review yearly and use the lowest dose that keeps you comfortable.”"},
+         {tone:"plain", h:"⏱️ Give it the full course", html:"“Take it 30 to 60 minutes before breakfast — that is what makes it work — and give it four to eight weeks before we judge it.”"}
+       ]},
+       {b:"warn", html:"Audit your repeat-prescribing list for long-term full-dose PPIs with no review. It is one of the highest-yield deprescribing wins in general practice, and the patients found by that search are exactly the ones who were never told the course had an end."},
+       {b:"why", html:"<b>A longstanding GORD label must never become a cognitive anchor</b>: new dysphagia or weight loss in a known refluxer demands re-triage against NG12. <b>Annual review of long-term PPIs is a recognised quality marker</b> — and the review is also the moment the step-down conversation actually happens."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Not responding? Check before escalating", sub:"",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"1 · Timing", html:"Taken 30–60 min BEFORE breakfast? Wrong timing is the #1 'failure'."},
+         {tone:"blue", h:"2 · Adherence + lifestyle", html:"Actually taking it? Weight, late meals, triggers, aggravating drugs (NSAIDs/CCBs)?"},
+         {tone:"blue", h:"3 · Right diagnosis?", html:"Cardiac pain masquerading? Functional heartburn / LPR (different response)? Eosinophilic oesophagitis (dysphagia, food impaction, young atopic → OGD + biopsy)?"},
+         {tone:"amber", h:"4 · Alarm features", html:"New dysphagia / weight loss / bleeding / IDA → OGD, not a higher PPI dose."},
+         {tone:"blue", h:"5 · H. pylori", html:"Tested (off PPI) and eradicated where relevant?"},
+         {tone:"amber", h:"6 · Refractory", html:"Optimised BD PPI + alginate and still symptomatic → gastroenterology (pH/manometry)."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, when, how urgently", sub:"Most GORD is managed entirely in primary care. Refer for alarm features, diagnostic uncertainty, or genuine treatment failure.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same-day / 999", html:"Haematemesis, melaena, coffee-ground vomiting, GI bleeding or haemodynamic instability → emergency admission. <b>Acute upper GI bleeding carries about 10% mortality.</b>"},
+         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> · NICE NG12", html:"Offer urgent direct-access upper GI endoscopy, to be performed within 2 weeks, to assess for oesophageal and stomach cancer in people with dysphagia at ANY age, or aged 55 and over with weight loss plus any of upper abdominal pain, reflux or dyspepsia. Consider a suspected cancer pathway referral for an upper abdominal mass consistent with stomach cancer; a <b>left supraclavicular node (Virchow / Troisier)</b> goes urgently the same way. Consider non-urgent direct-access endoscopy for haematemesis, and for people aged 55 and over with treatment-resistant dyspepsia, upper abdominal pain with low haemoglobin, a raised platelet count with any of nausea, vomiting, weight loss, reflux, dyspepsia or upper abdominal pain, or nausea or vomiting with any of weight loss, reflux, dyspepsia or upper abdominal pain. <b>Stop the PPI 2 weeks before the OGD.</b>", src:"NICE NG12 · house rule"},
+         {tone:"plain", h:"Routine gastroenterology", html:"<b>Refractory symptoms despite an optimised PPI</b> (for pH study and manometry) · <b>suspected or confirmed Barrett’s oesophagus</b>, for surveillance · <b>severe oesophagitis, Los Angeles grade C or D</b> · <b>suspected eosinophilic oesophagitis</b> · <b>younger patients whose symptoms recur off PPI</b>."},
+         {tone:"plain", h:"Upper GI surgery", html:"<b>Proven GORD considering fundoplication</b> — volume regurgitation, PPI dependence or intolerance, or a patient who wants to avoid lifelong PPI. <b>After pH study and manometry</b>, never on symptoms alone."},
+         {tone:"cream", h:"ENT", html:"<b>Laryngopharyngeal reflux persisting after a BD PPI trial of 8–12 weeks</b> — to exclude head and neck pathology rather than to re-treat the reflux."},
+         {tone:"plain", h:"What primary care keeps", html:"<b>Typical reflux, no alarm features, responding to lifestyle plus a PPI</b> — manage and review. This is the majority, and unnecessary referral delays the patients who need urgent endoscopy."}
+       ]},
+       {b:"say", html:"Reflux usually settles with some weight loss, meal changes and a course of an acid tablet taken before breakfast — then we bring it down to the lowest dose you need, and for many people, off it altogether. If you ever struggle to swallow or lose weight, that changes things and I need to know straight away."},
+       {b:"why", html:"The referral logic in GORD is essentially the NG12 cancer pathway plus a small group needing specialist diagnostics or surgery. Verbalising the precise NG12 thresholds — dysphagia at any age, 55 and over with weight loss plus reflux, dyspepsia or upper abdominal pain — demonstrates safe, guideline-concordant practice far better than a general statement about red flags."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only — the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 58-year-old man requesting “something stronger” for heartburn he has had for years, on omeprazole 20 mg from a repeat prescription that has never been reviewed. He takes it at bedtime. He mentions in passing that his trousers are loose and that food occasionally feels like it sticks."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Picks up <b>dysphagia and weight loss</b> and does not fold them into the reflux story; states the <b>NG12 threshold precisely</b> (dysphagia at any age → urgent direct-access OGD within 2 weeks; 55 and over with weight loss plus reflux → the same) and <b>stops the PPI 2 weeks before the endoscopy</b>; corrects the <b>timing error — 30–60 minutes before breakfast, not at bedtime</b> — rather than increasing the dose; reviews the <b>aggravating drugs</b>; and, in the non-alarm version of this case, commits to a 4–8 week course with an explicit step-down plan and a warning about the rebound fortnight. <a href='../../cases/dyspepsia.html'>Open the full casebook chapter →</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG12 — Suspected cancer: recognition and referral (2015, updated May 2025)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — urgent direct-access upper GI endoscopy within 2 weeks for dysphagia at any age and for weight loss plus upper abdominal pain, reflux or dyspepsia aged 55 and over; the upper abdominal mass criterion; and the non-urgent “consider” list including haematemesis, treatment-resistant dyspepsia, low haemoglobin and raised platelet count</span></li>'+
+         '<li>NICE CG184 — Gastro-oesophageal reflux disease and dyspepsia in adults (2014, updated 2019)<br><a href="https://www.nice.org.uk/guidance/cg184" rel="noopener">nice.org.uk/guidance/cg184</a><span class="rd"> — full-dose PPI for 4\u20138 weeks, 8 weeks for erosive oesophagitis, H. pylori test-and-treat, step-down and on-demand dosing, and annual review of long-term acid suppression</span></li>'+
+         '<li><b>NICE CG184 \u2014 Gastro-oesophageal reflux disease and dyspepsia in adults</b><br><a href="https://www.nice.org.uk/guidance/cg184" rel="noopener">nice.org.uk/guidance/cg184</a><span class="rd"> — the clinical diagnosis without endoscopy, PPI timing 30\u201360 minutes before food, alginate use, the taper and rebound acid hypersecretion, and the long-term PPI risk list</span></li>'+
+         '<li><b>BSG — Barrett\u2019s oesophagus guidelines</b><br><a href="https://www.bsg.org.uk" rel="noopener">bsg.org.uk</a><span class="rd"> — endoscopic surveillance intervals by segment length and dysplasia, and the progression risk of roughly 0.3% per year to adenocarcinoma</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all doses: omeprazole, lansoprazole, famotidine, amoxicillin, clarithromycin, metronidazole, alginates and amitriptyline</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"GORD and acid reflux in primary care — NICE CG184, NG12 (suspected cancer, updated May 2025), NICE and the BSG Barrett\u2019s guidelines. Assessment and management are merged on this page: the former GORD algorithm is retired. Alarm features follow the NICE NG12 suspected-cancer pathway, and the PPI is stopped 2 weeks before OGD wherever it is safe to do so. Not a substitute for clinical judgement or your local formulary — verify every dose in the BNF."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

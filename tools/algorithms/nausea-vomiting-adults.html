@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Nausea & Vomiting in Adults Algorithm · Reasoning GP</title>
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/nausea-vomiting-adults.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#e74c3c;--safety-lt:#fdf3f2;--safety-bd:#f5c6c3;--diagnose:#2980b9;--diagnose-lt:#eef6fc;--diagnose-bd:#aed6f1;--treat:#27ae60;--treat-lt:#eafaf1;--treat-bd:#a9dfbf;--refer:#8e44ad;--refer-lt:#f5eef8;--refer-bd:#d2b4de;--lifestyle:#e67e22;--lifestyle-lt:#fef9f0;--lifestyle-bd:#f8c471;--light:#f8f9fa;--border:#e5e7eb;--text:#1a202c;--muted:#64748b;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08);}
+body{font-family:'DM Sans',sans-serif;background:#f0f4f8;color:var(--text);line-height:1.55;font-size:15px;padding:20px 16px 60px;}
+h3{font-family:'Source Serif 4',serif;font-weight:600;}
+.stem-banner{display:flex;align-items:center;gap:14px;background:#1a202c;color:#fff;border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;max-width:780px;margin-left:auto;margin-right:auto;}
+.sb-icon{font-size:2rem;}.stem-banner b{display:block;font-size:1.05rem;font-weight:700;}.stem-banner small{font-size:.82rem;opacity:.7;}
+.alg-progress{max-width:780px;margin:0 auto 24px;background:#fff;border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);}
+.alg-progress span{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.pcount{margin-left:auto;font-weight:700;}.pbar{flex:1;height:6px;background:#e5e7eb;border-radius:99px;min-width:80px;}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#27ae60,#2ecc71);border-radius:99px;width:0%;transition:width .4s ease;}
+.reset{margin-left:8px;font-size:.78rem;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;color:var(--muted);}
+.alg-flow{max-width:780px;margin:0 auto;display:flex;flex-direction:column;}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;position:relative;border-left:5px solid var(--border);transition:box-shadow .2s;}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);}.node[data-type="TREAT"]{border-left-color:var(--treat);}.node[data-type="REFER"]{border-left-color:var(--refer);}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);}
+.node-num{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;}
+.node[data-type="SAFETY"] .node-num{background:var(--safety);}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose);}.node[data-type="TREAT"] .node-num{background:var(--treat);}.node[data-type="REFER"] .node-num{background:var(--refer);}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle);}
+.node-head{padding:16px 56px 0 18px;}.node-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:6px;}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-lt);color:var(--safety);}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-lt);color:var(--diagnose);}.node[data-type="TREAT"] .node-tag{background:var(--treat-lt);color:var(--treat);}.node[data-type="REFER"] .node-tag{background:var(--refer-lt);color:var(--refer);}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-lt);color:var(--lifestyle);}
+.node-head h3{font-size:1rem;line-height:1.3;}
+.node-tick{padding:10px 18px 0;}.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--muted);}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:#27ae60;cursor:pointer;}
+.node.ticked{opacity:.7;}.node.ticked .node-head h3{text-decoration:line-through;color:var(--muted);}
+.node-body{padding:14px 18px 16px;}.node-body>p{font-size:.9rem;color:var(--muted);margin-bottom:12px;}
+.kv{display:grid;grid-template-columns:190px 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden;font-size:.87rem;margin-top:8px;}
+.kv>div{background:#fff;padding:9px 12px;line-height:1.45;}.kv>div:nth-child(odd){background:var(--light);font-weight:600;font-size:.82rem;}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.rftile{background:var(--safety-lt);border:1px solid var(--safety-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.rftile b{display:block;color:var(--safety);margin-bottom:2px;}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:8px;}
+.b-card{background:var(--treat-lt);border:1px solid var(--treat-bd);border-radius:8px;padding:12px;font-size:.85rem;}
+.b-cond{font-weight:700;color:var(--treat);margin-bottom:4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;}.b-drug{font-weight:700;font-size:.95rem;margin-bottom:4px;}.b-note{color:var(--muted);font-size:.82rem;}
+.ladder{display:flex;flex-direction:column;gap:0;margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+.rung{display:flex;align-items:stretch;font-size:.87rem;}.rn{min-width:80px;background:#1a202c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;text-align:center;padding:10px 6px;}.rt{flex:1;padding:10px 14px;background:#fff;border-bottom:1px solid var(--border);line-height:1.4;}.rung:last-child .rt{border-bottom:none;}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.lstile{background:var(--lifestyle-lt);border:1px solid var(--lifestyle-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px;}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;border-radius:99px;padding:2px 8px;margin:1px 2px;vertical-align:middle;}
+.pill-red{background:#fde8e8;color:#c0392b;}.pill-purple{background:#f3e8fd;color:#7c3aed;}.pill-blue{background:#e8f0fe;color:#1d4ed8;}.pill-teal{background:#e6faf8;color:#0d9488;}.pill-amber{background:#fef3c7;color:#b45309;}.pill-green{background:#dcfce7;color:#16a34a;}.pill-grey{background:#f3f4f6;color:#6b7280;}
+.why-row{border-top:1px solid var(--border);}.why-btn{width:100%;text-align:left;background:none;border:none;padding:10px 18px;font-size:.82rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:600;}.why-btn:hover{background:var(--light);}
+.caret{transition:transform .25s;}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg);}
+.why-drawer{display:none;padding:12px 18px 16px;font-size:.85rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);background:var(--light);}.why-drawer.open{display:block;}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;}
+.alg-foot{max-width:780px;margin:32px auto 0;font-size:.8rem;color:var(--muted);background:#fff;border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border);line-height:1.6;}
+@media(max-width:500px){.kv{grid-template-columns:1fr;}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr;}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css?v=3">
+<link rel="stylesheet" href="../../assets/alg-summary.css?v=6">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">🤢</div>
+  <div><b>Nausea &amp; Vomiting in Adults — Systematic Primary Care Assessment</b>
+  <small>9-step pathway · the company the vomiting keeps tells you the cause · UK GP / RCGP SCA preparation</small></div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Summary</button></div>
+  <span>Progress</span><span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- SUMMARY VIEW — inline copy of summaries/nausea-vomiting-adults.html; the Download PDF button prints summaries/nausea-vomiting-adults.html (the A4 artefact). -->
+<div id="viewSummary">
+  <div class="sum-bar"><p><b>2-page quick reference.</b> Nausea and vomiting in adults — the accompanying feature makes the diagnosis. Ongoing management of each cause stays in the Steps tab.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="summaries/nausea-vomiting-adults.html">⬇ Download PDF</button><a class="sum-open" href="summaries/nausea-vomiting-adults.html" target="_blank" rel="noopener">Print view ↗</a></div></div>
+  <div class="sum"><div class="page">
+  <div class="hdr"><table><tr>
+    <td>
+      <div class="brand"><b>REASONING GP</b> · Clinical algorithm · Quick reference</div>
+      <h1>Nausea and vomiting in adults — triage and diagnosis</h1>
+      <div class="sub">Daytime GP and OOH/111, face-to-face or remote. The diagnosis lies in what the vomiting comes with, not in the vomiting. Ongoing management is in the full Steps pathway.</div>
+    </td>
+    <td class="pg">Page 1 / 2<br><span class="tags"><span>Adults</span><span>GP + OOH</span><span>Cause first</span><span>v1.0 · Sep 2026</span></span></td>
+  </tr></table></div>
+
+  <div class="rule"><b>Core rule.</b> <b>Urine β-hCG in every woman of reproductive age before investigating or prescribing.</b> Then classify by the accompanying feature: vomiting with headache, with abdominal pain, with vertigo, or with thirst and weight loss are four different problems. Never treat persistent vomiting with an antiemetic alone — failure of a correctly chosen antiemetic is a diagnostic statement, not a reason to add a second drug.</div>
+
+  <!-- 0 Immediate -->
+  <div class="sec red">
+    <div class="sh"><div class="n">0</div><div class="t">Before any history: is this an emergency now? <small>Stop the consultation and call 999 if any of these is present</small></div></div>
+    <div class="note">Rigid, guarded abdomen or peritonism · haematemesis or coffee-ground vomit with compromise · thunderclap headache · reduced or fluctuating consciousness, or new confusion · seizure · ketosis with Kussmaul breathing in diabetes · shock or postural hypotension · chest pain or sweating · non-blanching rash with fever. ABCDE, observations, nil by mouth, IV access. Capillary glucose and ketones in anyone with diabetes. Do not delay transfer for bloods, an antiemetic or imaging.</div>
+  </div>
+
+  <!-- 1 Define -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">1</div><div class="t">Define the vomiting in four lines <small>Enough to place the patient in the table below</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Time</h4>Acute &lt;1 week or chronic &gt;1 month. <b>Timing:</b> early morning before eating (pregnancy, raised ICP, alcohol, uraemia) · 1–3 hours after eating (gastroparesis or outlet obstruction) · during eating (functional).</div>
+      <div class="col blue"><h4>Character</h4><b>Bile</b> (pylorus patent, obstruction distal) · <b>undigested food hours later</b> (gastric stasis or outlet obstruction) · <b>faeculent</b> (distal obstruction or fistula) · <b>blood or coffee-grounds</b> (upper GI bleed route). Effortless regurgitation without nausea is not vomiting (achalasia, rumination).</div>
+      <div class="col blue"><h4>Context</h4><b>Pregnancy</b> · diabetes/insulin · long-term steroids · <b>drugs</b> (opioids, GLP-1 agonists, chemotherapy, antibiotics, digoxin, metformin, SSRIs, iron, colchicine, levodopa — or a recent dose increase) · alcohol, cannabis · previous abdominal surgery · head injury · immunosuppression.</div>
+      <div class="col blue"><h4>Associated</h4>Pain, and whether vomiting relieves it · bowels: diarrhoea (reassuring) vs <b>absolute constipation with no flatus</b> (obstruction) · headache, visual change, focal neurology · vertigo, hearing change, gait · thirst, polyuria, weight loss · dysphagia · self-induced vomiting, dietary restriction, dental erosion.</div>
+    </div>
+  </div>
+
+  <!-- 2 Red flags -->
+  <div class="sec red">
+    <div class="sh"><div class="n">2</div><div class="t">Red-flag screen: trigger → concern → destination → what to do before handover <small>One row is enough; do not add up reassuring features</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:29%"><col style="width:24%"><col style="width:47%"></colgroup>
+      <tr><th>Trigger / red flag</th><th>Leading concern · destination</th><th>Do now · do not delay</th></tr>
+      <tr class="r"><td><b>Bilious or faeculent vomiting with distension and absolute constipation</b> (no stool <b>and</b> no flatus); previous abdominal surgery; high-pitched or absent bowel sounds; peritonism.</td>
+        <td>Bowel obstruction · perforation · strangulation<br><span class="pill p999">999 / same-day surgical take</span></td>
+        <td>Nil by mouth, IV access; examine hernial orifices and scars. <b>Never give a prokinetic</b> in suspected mechanical obstruction — risk of perforation. Not an outpatient scan: the decision is fluids, NG decompression and imaging within hours.</td></tr>
+      <tr class="r"><td><b>Vomiting worse on waking or lying flat, with headache</b>; papilloedema; focal deficit; new seizure; visual obscurations; personality or cognitive change; recent head injury on anticoagulants.</td>
+        <td>Raised intracranial pressure · tumour · haemorrhage<br><span class="pill p999">999 if acute or deteriorating</span> <span class="pill p2ww">Urgent direct-access MRI within 2 weeks if sub-acute progressive · NG12</span></td>
+        <td><b>Do fundoscopy</b> — it changes the disposal. Ask whether vomiting eases when upright; patients rarely volunteer it. Never treat morning vomiting with headache as gastritis.</td></tr>
+      <tr class="r"><td><b>Thunderclap headache, meningism or non-blanching rash</b> with vomiting.</td>
+        <td>Subarachnoid haemorrhage · bacterial meningitis<br><span class="pill p999">999 + pre-alert</span></td>
+        <td>Record exact onset and time-to-peak. Benzylpenicillin 1.2 g IM/IV before transfer if meningococcal disease is strongly suspected and it will not delay the ambulance. Do not attribute a first presentation to migraine.</td></tr>
+      <tr class="r"><td><b>Diabetes with vomiting</b>: thirst, polyuria, weight loss, Kussmaul breathing, capillary ketones ≥3.0 mmol/L (or unwell with ketones ≥1.5). <b>Or long-term steroids / known adrenal insufficiency</b>, unable to absorb tablets; hypotension, hyponatraemia, hyperkalaemia, pigmentation.</td>
+        <td>Diabetic ketoacidosis · adrenal (Addisonian) crisis<br><span class="pill p999">999 now</span></td>
+        <td>Check capillary glucose <b>and ketones</b> in every vomiting person with diabetes; never omit insulin (sick-day rules). SGLT2 inhibitors cause euglycaemic DKA — normal glucose does not exclude it. If steroid-dependent or adrenally insufficient: <b>hydrocortisone 100 mg IM</b> now, then transfer — vomited oral replacement is not absorbed; a crisis develops within hours. Check the steroid card and kit.</td></tr>
+      
+      <tr class="a"><td><b>Unable to keep any fluid down &gt;24 hours</b>, or drowsy, confused, oliguric, or postural drop &gt;20 mmHg; frail or living alone.</td>
+        <td>Dehydration with AKI, hyponatraemia or hypokalaemia<br><span class="pill psd">Same-day admission for IV fluids</span></td>
+        <td>Hypokalaemia both results from and worsens vomiting through ileus — correct it to break the cycle. Suspend nephrotoxics: ACE inhibitors, ARBs, diuretics, metformin, SGLT2 inhibitors.</td></tr>
+      <tr class="a"><td><b>Pregnancy</b>: hyperemesis with ketonuria or weight loss &gt;5%; any vomiting after 20 weeks with hypertension, epigastric pain, headache or jaundice.</td>
+        <td>Hyperemesis gravidarum · pre-eclampsia · HELLP · acute fatty liver of pregnancy<br><span class="pill psd">Urgent maternity assessment</span> <span class="pill p999">999 if BP ≥160/110 or focal signs</span></td>
+        <td>Speak directly to the maternity unit. Record gestation, weight change, urine ketones and BP. Vomiting starting <b>after</b> the first trimester is not ordinary NVP — find another cause.</td></tr>
+      <tr class="p"><td><b>Age ≥55 with nausea or vomiting</b> plus weight loss, reflux, dyspepsia or upper abdominal pain; or a raised platelet count. <b>Dysphagia at any age.</b></td>
+        <td>Oesophageal or stomach cancer<br><span class="pill p2ww">Dysphagia: urgent direct-access OGD within 2 weeks · otherwise consider non-urgent OGD · NICE NG12</span></td>
+        <td>Use the correct threshold: dysphagia at any age is the <b>urgent</b> 2-week route; nausea and vomiting with an additional feature at ≥55 is "consider non-urgent direct-access OGD". Also hypercalcaemia: bone pain and vomiting over 60 → FBC, ESR or plasma viscosity, urine protein electrophoresis (myeloma, NG12).</td></tr>
+    </table>
+    <div class="note amber"><b>Safety rule.</b> Repeat a negative pregnancy test if the LMP is uncertain. Gastroenteritis is nearly always improving by 48 hours, so persistence means the working diagnosis was probably wrong — obstruction, raised ICP, DKA, Addison's and hypercalcaemia all masquerade as it for two days. Vomiting with diarrhoea is rarely obstructive; vomiting with absolute constipation usually is. <b>Vomiting with no abdominal signs in an older adult or a person with diabetes can be a silent myocardial infarction</b> — autonomic neuropathy can reduce a coronary event to vomiting alone, so keep the threshold for an ECG very low over 60 or in diabetes, and call 999 with chest discomfort, sweating or breathlessness.</div>
+  </div>
+
+  <!-- 3 Examine -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">3</div><div class="t">Focused examination and investigation <small>Only after the emergency question is answered; remote assessment that cannot deliver these is an escalation criterion</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Observations</h4>Pulse, BP <b>lying and standing</b>, RR (Kussmaul), SpO₂, temperature, conscious level, capillary refill, weight. <b>Capillary glucose and ketones</b> in diabetes. NEWS2 if unwell.</div>
+      <div class="col blue"><h4>System examination</h4>Abdomen: distension, visible peristalsis, tenderness, guarding, rebound, masses, hernial orifices, scars, bowel sounds, <b>succussion splash</b> (gastric outlet obstruction). PR for an empty rectum, impaction or melaena.</div>
+      <div class="col blue"><h4>Targeted signs</h4><b>Fundoscopy for papilloedema</b>; cranial nerves, limb power, coordination, gait; neck stiffness if febrile. Nystagmus, Dix-Hallpike, head impulse test — standing unaided impossible means a central cause. Buccal and palmar pigmentation; dental erosion, parotid swelling.</div>
+      <div class="col blue"><h4>Investigations</h4><b>Urine β-hCG first.</b> Then question-led: FBC, U&amp;Es, LFTs, <b>calcium</b>, glucose or HbA1c, CRP, TFTs, amylase or lipase if epigastric pain; coeliac serology, 9 am cortisol, digoxin level; ECG. Not from primary care: abdominal X-ray, CT, gastric emptying (never before an OGD).</div>
+    </div>
+  </div>
+
+  <div class="foot">Colour is semantic: red = emergency now · amber = same-day acute assessment · blue = define/assess · green = benign diagnosis established · purple = uncertain / specialist route. Continued on page 2: classification, cause classifier, routine referral, primary-care treatment, endpoint.</div>
+</div>
+
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td><div class="brand"><b>REASONING GP</b> · Nausea and vomiting in adults — triage and diagnostic approach</div></td>
+    <td class="pg">Page 2 / 2</td>
+  </tr></table></div>
+
+  <!-- 4 Classify -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">4</div><div class="t">Classify: three exits, not two <small>"Probably a virus" at 48 hours is a decision to re-examine, not to continue</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>Serious cause likely</h4>Any red flag, deranged physiology, pregnancy with red flags, or a surgical, neurological or metabolic pattern. <b>Output:</b> name the leading concern, use the destination above, and hand over observations, glucose and ketones, and the drug list.</div>
+      <div class="col green"><h4>Self-limiting or reversible cause established</h4>Gastroenteritis with diarrhoea and normal physiology; a clear drug cause with a dose to reduce; a typical vestibular or migraine attack; mild NVP. <b>Output:</b> name the cause, state the expected course, prescribe by mechanism with a review date.</div>
+      <div class="col purple"><h4>Unclassified / uncertain</h4>Persistent vomiting with no cause, remote assessment, frailty, or failure of a well-chosen antiemetic. <b>Output:</b> do not add a second antiemetic. Return to the history, arrange bloods, and set a defined review — or admit.</div>
+    </div>
+  </div>
+
+  <!-- 5 Classifier -->
+  <div class="sec green">
+    <div class="sh"><div class="n">5</div><div class="t">Cause classifier — seven groups <small>The group determines which antiemetic will work</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:21%"><col style="width:79%"></colgroup>
+      <tr class="g"><td><b>GI and surgical</b></td><td>Gastroenteritis (commonest), obstruction, appendicitis, pancreatitis, biliary disease, peptic ulcer, gastric outlet obstruction, gastroparesis (long-standing diabetes), upper GI malignancy.</td></tr>
+      <tr class="r"><td><b>Neurological</b></td><td>Migraine (common) · raised ICP from tumour, haemorrhage, hydrocephalus or idiopathic intracranial hypertension · meningitis, encephalitis, SAH, concussion. <b>Acute angle-closure glaucoma</b> presents as headache and vomiting with a red painful eye and a fixed mid-dilated pupil — sight is lost within hours.</td></tr>
+      <tr class="g"><td><b>Vestibular</b></td><td>BPPV, vestibular neuronitis, labyrinthitis, Ménière's, vestibular migraine, motion sickness. New gait ataxia in an older vasculopath → posterior circulation stroke.</td></tr>
+      <tr class="r"><td><b>Metabolic and endocrine</b></td><td>DKA, uraemia, <b>hypercalcaemia</b> (vomiting, constipation, thirst, confusion — often the first sign of malignancy or hyperparathyroidism), hyponatraemia, Addison's disease, thyroid disease.</td></tr>
+      <tr class="a"><td><b>Drugs and toxins</b></td><td>Opioids, GLP-1 receptor agonists (usually a recent dose escalation), chemotherapy, antibiotics, digoxin toxicity, NSAIDs, dopamine agonists, alcohol, carbon monoxide. <b>Cannabinoid hyperemesis:</b> cyclical vomiting in a regular user, relieved by hot showers — cessation is the only treatment.</td></tr>
+      <tr class="a"><td><b>Pregnancy</b></td><td>Nausea and vomiting of pregnancy and hyperemesis gravidarum (first trimester); after 20 weeks consider pre-eclampsia, HELLP and acute fatty liver of pregnancy.</td></tr>
+      <tr class="p"><td><b>Functional, psychiatric — and do not label by default</b></td><td>Functional nausea and vomiting (Rome IV), cyclical vomiting syndrome, rumination, anxiety, bulimia nervosa. "Gastritis", "a virus" and "stress" need positive evidence and a review date. Also consider inferior MI, renal colic, urinary sepsis and radiotherapy.</td></tr>
+    </table>
+  </div>
+
+  <!-- 6 Routine referral -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">6</div><div class="t">Refer routinely from this consultation <small>Not same-day, not 999 — the cases that leave by letter</small></div></div>
+    <div class="note grey"><b>Routine gastroenterology:</b> chronic unexplained nausea or vomiting after negative first-line investigation; suspected gastroparesis (only after mechanical obstruction has been excluded endoscopically — a gastric emptying study is never the first test); suspected functional or cyclical vomiting syndrome; suspected achalasia. <b>Routine endocrinology:</b> confirmed hypercalcaemia or suspected Addison's once acutely stable. <b>Eating disorder service — urgently if there are physical risk markers</b> (bradycardia, hypotension, hypokalaemia): self-induced vomiting, dietary restriction or dental erosion. <b>Interim advice:</b> oral rehydration in small frequent sips, a short defined antiemetic course with a stop date, and the written safety-net below. <b>Not routine:</b> dysphagia at any age (urgent 2-week OGD) and every page-1 red flag.</div>
+  </div>
+
+  <!-- 7 Treatment -->
+  <div class="sec red">
+    <div class="sh"><div class="n">7</div><div class="t">The only treatment decisions that belong in this consultation <small>Choose the antiemetic by receptor, not by habit</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:26%"><col style="width:74%"></colgroup>
+      <tr class="r"><td><b>Obstruction, raised ICP, DKA, MI, SAH, meningitis</b></td><td><b>Transfer is the treatment.</b> Nil by mouth, IV access if available, oxygen if hypoxic. <b>Do not give a prokinetic in suspected obstruction.</b> Do not sedate; do not request outpatient imaging; do not give an antiemetic instead of arranging admission.</td></tr>
+      <tr class="r"><td><b>Adrenal crisis</b></td><td><b>Hydrocortisone 100 mg IM now</b>, then 999. Any steroid-dependent patient who is vomiting has not absorbed their replacement dose. Double the oral dose during illness; use the emergency kit if vomiting.</td></tr>
+      <tr class="g"><td><b>Vestibular cause</b></td><td><b>Cyclizine 50 mg up to three times daily</b>, or prochlorperazine 5 mg three times daily / 3 mg buccal twice daily. Ondansetron does not work for vestibular nausea. Use for the shortest period — prolonged use delays vestibular compensation.</td></tr>
+      <tr class="a"><td><b>Gastric stasis / gastroparesis</b> (obstruction excluded)</td><td><b>Metoclopramide 10 mg three times daily — maximum 5 days (MHRA 2013)</b>, avoid under 20 years and in Parkinson's. Alternative: domperidone 10 mg three times daily, <b>maximum 1 week at the lowest effective dose (MHRA 2014)</b>, avoid in cardiac disease or QT prolongation. Issue with a stop date so it cannot become a repeat.</td></tr>
+      <tr class="g"><td><b>Chemical, metabolic or drug-induced; pregnancy; migraine</b></td><td><b>Chemical/metabolic:</b> ondansetron 4–8 mg three times daily (constipation, headache, QT). <b>Pregnancy:</b> cyclizine 50 mg three times daily or promethazine 12.5–25 mg first line (NG126); metoclopramide or ondansetron second line after discussing risks; thiamine if prolonged. <b>Migraine:</b> prochlorperazine or metoclopramide with the triptan or NSAID — the prokinetic also improves absorption.</td></tr>
+      <tr class="g"><td><b>Route and rehydration</b></td><td>Oral rehydration salts, 5 ml every 5 minutes. <b>If oral is not retained, change the route</b> — buccal prochlorperazine, rectal domperidone, or the subcutaneous route in palliative care. An oral tablet that is vomited back has done nothing. Reduce or stop the culprit drug: most drug-induced nausea settles on dose reduction alone.</td></tr>
+    </table>
+  </div>
+
+  <!-- 8 Endpoint -->
+  <div class="sec green">
+    <div class="sh"><div class="n">8</div><div class="t">Endpoint and documentation <small>Finish with one of four conclusions and a named owner</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>1 · Time-critical</h4>999 or same-day surgical/medical route taken; suspected diagnosis, observations including postural BP, glucose and ketones, GCS, steroid and insulin status, drugs given with dose and time.</div>
+      <div class="col amber"><h4>2 · Serious cause possible</h4>Same-day route or targeted test arranged; state the question being excluded, who was spoken to, and the deadline. Record the pregnancy test result and that nil by mouth was advised where relevant.</div>
+      <div class="col green"><h4>3 · Reversible cause established</h4>Named cause, the mechanism-matched antiemetic with dose, route, duration and <b>stop date</b>, rehydration plan, sick-day rules where relevant, safety-net, review owner and date.</div>
+      <div class="col purple"><h4>4 · Unclassified</h4>Uncertainty stated; a second antiemetic <b>not</b> added; the history revisited; investigations arranged and chased by name; 48-hour review booked with explicit escalation criteria.</div>
+    </div>
+    <div class="note grey"><b>Why a benign conclusion is safe today, in one line:</b> negative pregnancy test (or pregnancy accounted for) · normal physiology including postural BP, and glucose and ketones where relevant · no absolute constipation, bilious or faeculent vomit, papilloedema or posture-dependent headache · a coherent cause with a mechanism-matched treatment and a stop date · written safety-net given and a 48-hour review agreed. <b>Safety-net wording:</b> call 999 for severe tummy pain with a hard abdomen, vomiting blood, a sudden severe headache, drowsiness or confusion, chest pain, or a fit; contact us the same day if you cannot keep any fluid down, you pass very little urine, you feel dizzy standing up, your headache is worse on waking or lying flat, or you have diabetes and your ketones are raised.</div>
+    <div class="note amber"><b>OOH / remote limitation.</b> Convert to face-to-face or emergency assessment if a pregnancy test, observations, postural BP, abdominal examination, fundoscopy, or glucose and ketones cannot be obtained; the vomit content cannot be described reliably; the patient has diabetes, takes steroids, is pregnant, is frail or lives alone; symptoms are changing during the call; or timely review cannot be guaranteed. Under time pressure the default is the safer destination.</div>
+  </div>
+
+  <div class="foot">Clinical decision support only; follow local emergency-transfer, emergency-medicines and referral policies and check doses against the current BNF. Source hierarchy: NICE guidelines first, then BNF/MHRA for doses and safety, then national specialty guidance. Sources: NICE NG12 Suspected cancer: recognition and referral · CG184 Gastro-oesophageal reflux disease and dyspepsia in adults · NG126 Ectopic pregnancy and miscarriage (context) · NG17 Type 1 diabetes and NG28 Type 2 diabetes (sick-day rules) · NG51 Sepsis · BNF · MHRA Drug Safety Update: metoclopramide (2013) and domperidone (2014) · Rome IV criteria for functional gastroduodenal disorders. Review after any guidance or medicines-safety update, otherwise every 6 months. © Reasoning GP · gpreasoning.uk</div>
+</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Red Flags — Surgical, neurological and metabolic emergencies</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Vomiting is the final common pathway of a long list of dangerous conditions. The safety task is to identify the small number of patients in whom the vomiting is a symptom of obstruction, raised intracranial pressure, or metabolic collapse.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Bilious or faeculent vomiting + distension + absolute constipation</b> Bowel obstruction → <span class="pill pill-red">same-day surgical admission</span>, nil by mouth</div>
+      <div class="rftile"><b>Peritonism</b> Rigid, guarded abdomen, rebound tenderness → perforation or ischaemia → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Vomiting worse on waking / lying flat + headache</b> Raised intracranial pressure → <span class="pill pill-red">urgent CT head</span>; papilloedema, focal signs, new seizure</div>
+      <div class="rftile"><b>Thunderclap headache + vomiting</b> Subarachnoid haemorrhage → <span class="pill pill-red">999</span>. Neck stiffness, photophobia, non-blanching rash → meningococcal sepsis</div>
+      <div class="rftile"><b>Ketosis, thirst, polyuria, Kussmaul breathing</b> Diabetic ketoacidosis → <span class="pill pill-red">999</span>; check capillary ketones in any vomiting person with diabetes</div>
+      <div class="rftile"><b>Haematemesis or coffee-ground vomit</b> Upper GI bleed → <span class="pill pill-red">same-day admission</span></div>
+      <div class="rftile"><b>Chest pain, sweating, or "just vomiting" in an older diabetic</b> Silent MI presents as vomiting → <span class="pill pill-red">999 + ECG</span></div>
+      <div class="rftile"><b>Hypotension, pigmentation, hyponatraemia, hyperkalaemia</b> Addisonian crisis → <span class="pill pill-red">999</span>; ask about long-term steroids abruptly stopped</div>
+      <div class="rftile"><b>Unable to keep any fluid down &gt;24 h, or drowsy / confused</b> Dehydration with electrolyte disturbance → <span class="pill pill-red">same-day admission</span> for IV fluids</div>
+      <div class="rftile"><b>Pregnancy</b> Hyperemesis with ketonuria and weight loss &gt;5% → same-day obstetric assessment; vomiting after 20 weeks → consider pre-eclampsia, HELLP, AFLP</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The two classic primary-care misses in this presentation are raised intracranial pressure and bowel obstruction, and both are missed for the same reason: the vomiting dominates the consultation and the accompanying feature is not sought. Posture-dependent vomiting — worse on waking, easing after being upright for an hour — is the cardinal history in raised ICP and is almost never volunteered spontaneously. In obstruction, the giveaway is the combination of vomiting with absolute constipation (no stool <i>and</i> no flatus); vomiting with diarrhoea is reassuringly rarely obstructive. Silent myocardial infarction deserves its place on the list because in older patients and those with diabetes, autonomic neuropathy can reduce a coronary event to nausea and vomiting alone — the threshold for an ECG in an older person with unexplained vomiting should be very low. Finally, any patient on long-term steroids who has been vomiting cannot absorb their replacement dose and is at risk of an adrenal crisis within hours.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>History — Timing, content, and the company it keeps</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Duration</div><div>Acute (&lt;1 week) → infection, drugs, surgical, vestibular. Chronic or recurrent (&gt;1 month) → gastroparesis, obstruction, metabolic, functional, cyclical vomiting, raised ICP.</div>
+      <div>Timing within the day</div><div><b>Early morning before eating</b> → pregnancy, raised ICP, alcohol, uraemia. <b>1–3 hours after eating</b> → gastroparesis or gastric outlet obstruction. <b>During or immediately after eating</b> → functional or psychogenic.</div>
+      <div>Content</div><div><b>Bile</b> = patent but obstructed distally. <b>Undigested food hours later</b> = gastroparesis or outlet obstruction. <b>Faeculent</b> = distal obstruction or fistula. <b>Blood / coffee grounds</b> = upper GI bleed pathway.</div>
+      <div>Nausea vs effortless regurgitation</div><div>Effortless return of food with no nausea suggests achalasia or a pharyngeal pouch, not vomiting. Rumination is repeated effortless regurgitation and re-swallowing.</div>
+      <div>Abdominal pain</div><div>Site, character, relation to vomiting. <b>Pain relieved by vomiting</b> → peptic ulcer or obstruction. <b>Pain unrelieved</b> → pancreatitis, biliary, ischaemia. Epigastric pain to the back → pancreatitis.</div>
+      <div>Bowels</div><div>Diarrhoea → gastroenteritis (reassuring). Absolute constipation with no flatus → obstruction. Recent antibiotics → <i>C. difficile</i>.</div>
+      <div>Headache and neurology</div><div>New or changed headache, worse on waking, coughing or bending; visual disturbance; focal weakness; seizure; personality change. Migraine history and typical features.</div>
+      <div>Vertigo and hearing</div><div>Room-spinning, positional triggers, tinnitus, hearing loss, gait unsteadiness → vestibular cause. New gait ataxia in an older vasculopath → posterior circulation stroke.</div>
+      <div>Drug history — line by line</div><div>Opioids, NSAIDs, antibiotics (macrolides, metronidazole), metformin, GLP-1 receptor agonists, SSRIs, digoxin, levodopa, chemotherapy, iron, colchicine, theophylline. Recent dose increase? Cannabis (hyperemesis) and alcohol.</div>
+      <div>Systemic clues</div><div>Weight loss, thirst and polyuria, amenorrhoea, heat or cold intolerance, bone pain (hypercalcaemia), steroid use and withdrawal, recent head injury.</div>
+      <div>Psychosocial</div><div>Self-induced vomiting, dietary restriction, weight and body-image concern, laxative or diuretic misuse, dental erosion → eating disorder. Anxiety and anticipatory nausea.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Timing and content do more diagnostic work here than any test available in primary care. Vomiting undigested food eaten many hours earlier is close to pathognomonic of delayed gastric emptying — either gastroparesis (classically in long-standing diabetes) or mechanical outlet obstruction from a peptic stricture or tumour. Bilious vomiting confirms that the pylorus is patent, which effectively excludes gastric outlet obstruction and moves the level of any obstruction distally. Cannabinoid hyperemesis syndrome is now common enough to belong on every list: cyclical severe vomiting in a regular cannabis user, characteristically relieved by hot showers, and frequently investigated for years before the connection is made. GLP-1 receptor agonists have become one of the most common drug causes of nausea in UK practice, and a recent dose escalation is usually the answer.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Classification — Seven cause groups</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>1 · GI and surgical</div><div>Gastroenteritis (commonest overall), bowel obstruction, appendicitis, pancreatitis, biliary colic and cholecystitis, peptic ulcer, gastric outlet obstruction, gastroparesis, gastro-oesophageal malignancy</div>
+      <div>2 · Neurological / raised ICP</div><div>Migraine (very common), raised intracranial pressure from tumour, haemorrhage, hydrocephalus or idiopathic intracranial hypertension; meningitis; SAH; concussion</div>
+      <div>3 · Vestibular</div><div>BPPV, vestibular neuronitis, labyrinthitis, Ménière's disease, vestibular migraine, motion sickness, posterior circulation stroke</div>
+      <div>4 · Metabolic and endocrine</div><div>DKA, uraemia, hypercalcaemia (malignancy, hyperparathyroidism), hyponatraemia, Addison's disease, hyperthyroidism, hypothyroidism</div>
+      <div>5 · Drugs and toxins</div><div>Opioids, GLP-1 agonists, chemotherapy, antibiotics, digoxin toxicity, NSAIDs, dopamine agonists, alcohol, cannabis hyperemesis, carbon monoxide</div>
+      <div>6 · Pregnancy</div><div>Nausea and vomiting of pregnancy, hyperemesis gravidarum; after 20 weeks consider pre-eclampsia, HELLP, acute fatty liver of pregnancy</div>
+      <div>7 · Functional and psychiatric</div><div>Functional nausea and vomiting (Rome IV), cyclical vomiting syndrome, rumination, anxiety, bulimia nervosa, anticipatory nausea</div>
+      <div>Also consider</div><div>Cardiac (inferior MI), renal or ureteric colic, urinary and other sepsis, glaucoma (acute angle closure with vomiting), radiotherapy, post-operative</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Grouping by mechanism is not academic tidiness — it directly determines which antiemetic will work, because each group acts through a different receptor pathway. Vestibular nausea is histamine and muscarinic driven, so cyclizine works and ondansetron largely does not. Chemical and metabolic nausea acts on the chemoreceptor trigger zone via dopamine and 5-HT3, so ondansetron or haloperidol are effective. Gastric stasis needs a prokinetic. Choosing an antiemetic by mechanism rather than by local habit is one of the clearest examples in general practice of pathophysiology changing a prescription. Acute angle-closure glaucoma is worth remembering as the ophthalmic cause that reaches the surgery as "vomiting and headache" — the red painful eye with a hazy cornea and fixed semi-dilated pupil is the clue, and it is sight-threatening within hours.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Examination — Hydration, abdomen, neurology</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Hydration status</div><div>Pulse, BP lying and standing, capillary refill, mucous membranes, skin turgor, urine output and colour, weight change. A postural drop &gt;20 mmHg indicates significant depletion.</div>
+      <div>Observations and NEWS2</div><div>Temperature (infection), respiratory rate (Kussmaul breathing in DKA or acidosis), oxygen saturation, conscious level</div>
+      <div>Abdomen</div><div>Distension, visible peristalsis, tenderness and its site, guarding and rebound, masses, succussion splash (gastric outlet obstruction), hernial orifices, scars from previous surgery (adhesions)</div>
+      <div>Bowel sounds</div><div>High-pitched tinkling → mechanical obstruction; absent → ileus or perforation. Low sensitivity, but a useful confirmatory finding</div>
+      <div>Rectal examination</div><div>Empty collapsed rectum in obstruction; faecal impaction with overflow; melaena; rectal mass</div>
+      <div>Neurological</div><div><b>Fundoscopy for papilloedema</b>, visual fields, cranial nerves, limb power and coordination, gait, plantar reflexes. Neck stiffness and Kernig's sign if febrile</div>
+      <div>Vestibular assessment</div><div>Nystagmus and its direction, Dix-Hallpike for BPPV, head impulse test, Romberg and gait. <b>HINTS</b> examination if acute vertigo — a central pattern means stroke</div>
+      <div>Cardiovascular</div><div>Pulse rate and rhythm, heart sounds; consider ECG in anyone older, diabetic, or with chest symptoms</div>
+      <div>Other</div><div>Pigmentation of buccal mucosa and palmar creases (Addison's), thyroid, lymph nodes, dental erosion and parotid swelling (self-induced vomiting), pupils and eye if headache</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Fundoscopy is the examination most often skipped and most often decisive. Papilloedema in a patient with morning vomiting and headache converts a symptomatic prescription into an urgent CT head, and it takes under a minute. A succussion splash — audible gastric fluid four hours or more after the last meal — is a genuinely useful bedside sign of gastric outlet obstruction that has largely fallen out of use. In acute vertigo with vomiting, the HINTS examination (head impulse, nystagmus, test of skew) outperforms early MRI for distinguishing vestibular neuronitis from posterior circulation stroke, and the single most important discriminator in practice is gait: a patient with vestibular neuronitis can walk unaided if unsteadily, whereas one who cannot stand without falling should be assumed to have a central cause. Dental erosion and parotid enlargement may be the only objective findings in concealed self-induced vomiting.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Investigations — Targeted, not reflexive</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Every woman of reproductive age</div><div><span class="pill pill-blue">Urine β-hCG</span> — before investigation and before prescribing. This is the single non-negotiable test in this pathway.</div>
+      <div>Anyone with diabetes</div><div><span class="pill pill-blue">Capillary blood glucose + ketones</span>. Ketones ≥3.0 mmol/L or unwell with ketones ≥1.5 → same-day admission. Reinforce sick-day rules.</div>
+      <div>Baseline bloods (persistent or unwell)</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">U&amp;Es</span> (AKI, hyponatraemia, hypokalaemia) <span class="pill pill-blue">LFTs</span> <span class="pill pill-blue">Calcium</span> <span class="pill pill-blue">Glucose / HbA1c</span> <span class="pill pill-blue">CRP</span> <span class="pill pill-blue">TFTs</span> <span class="pill pill-blue">Amylase or lipase</span> if epigastric pain</div>
+      <div>Second line</div><div><span class="pill pill-blue">Coeliac serology</span>; <span class="pill pill-blue">9 am cortisol</span> if Addison's suspected; <span class="pill pill-blue">digoxin level</span> if toxicity possible; <span class="pill pill-blue">urine dip and culture</span>; <span class="pill pill-blue">ECG</span> in older patients or with electrolyte disturbance</div>
+      <div>Stool</div><div>Culture and <i>C. difficile</i> toxin if diarrhoea with recent antibiotics, hospitalisation, blood, or a persistent course; not routinely in simple self-limiting gastroenteritis</div>
+      <div>Imaging</div><div><b>Urgent CT head</b> — new progressive headache with vomiting, papilloedema, focal signs, or vomiting worse on waking. <b>Abdominal imaging via the acute take</b> if obstruction suspected — do not arrange routine outpatient imaging for a suspected obstruction.</div>
+      <div>Endoscopy</div><div><span class="pill pill-purple">NG12</span> consider <b>non-urgent direct-access OGD</b> in people <b>55 and over</b> with nausea or vomiting <b>and</b> weight loss, reflux, dyspepsia or upper abdominal pain; also with raised platelet count. <b>Dysphagia at any age</b> → urgent OGD within 2 weeks.</div>
+      <div>Gastric emptying</div><div>Gastric emptying study or scintigraphy for suspected gastroparesis — secondary care, and only after mechanical obstruction has been excluded endoscopically</div>
+      <div>Do not do</div><div>Do not order a routine abdominal X-ray in primary care for vomiting; do not start empirical PPI or antiemetic in place of a pregnancy test; do not request a gastric emptying study before an OGD</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The pregnancy test is first because getting it wrong has two distinct consequences: a missed ectopic pregnancy, and the prescription of a teratogen to a woman who did not know she was pregnant. Calcium is included in the baseline panel because hypercalcaemia is a treatable and easily overlooked cause of nausea, constipation, thirst and confusion, and it is frequently the first sign of malignancy or hyperparathyroidism. Hypokalaemia in a persistent vomiter is both a consequence and a compounding cause — it worsens ileus and gastric stasis, creating a self-perpetuating cycle that has to be broken by replacement. On the NG12 wording: nausea and vomiting sits in the "consider non-urgent direct-access endoscopy" group in people aged 55 and over with additional features, whereas dysphagia at any age is an urgent two-week referral — these two thresholds are commonly confused, and quoting the wrong one either delays a cancer diagnosis or floods the endoscopy service.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head"><span class="node-tag">Refer</span><h3>Referral Criteria — Emergency, 2WW, and routine pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 now</span></div><div>Peritonism or suspected perforation; thunderclap headache; meningitis; DKA; suspected MI; Addisonian crisis; reduced consciousness</div>
+      <div><span class="pill pill-red">Same-day surgical take</span></div><div>Suspected bowel obstruction (bilious or faeculent vomiting, distension, absolute constipation); suspected appendicitis, pancreatitis or cholecystitis; upper GI bleed</div>
+      <div><span class="pill pill-red">Same-day medical take</span></div><div>Unable to tolerate oral fluids &gt;24 hours; significant dehydration or AKI; hyponatraemia or hypokalaemia; suspected hypercalcaemia; suspected digoxin toxicity</div>
+      <div><span class="pill pill-red">Urgent CT head / neurology</span></div><div>Vomiting with new progressive headache, worse on waking or lying flat; papilloedema; focal neurology; new seizure; personality change → <b>suspected brain tumour pathway</b></div>
+      <div><span class="pill pill-purple">2WW upper GI</span></div><div><b>NICE NG12:</b> <b>dysphagia at any age</b> → urgent direct-access OGD within 2 weeks. <b>Consider non-urgent direct-access OGD</b> in people <b>aged 55+</b> with nausea or vomiting plus weight loss, reflux, dyspepsia or upper abdominal pain — or with a raised platelet count</div>
+      <div><span class="pill pill-purple">2WW other</span></div><div><b>NG12:</b> unexplained weight loss with nausea → consider the relevant site-specific pathway. Hypercalcaemia with vomiting in an older patient → investigate for myeloma (FBC, ESR/plasma viscosity, protein electrophoresis / Bence Jones) and malignancy</div>
+      <div>Obstetrics, same-day</div><div>Hyperemesis with ketonuria, weight loss &gt;5%, or failure of oral antiemetics; any vomiting after 20 weeks with hypertension, epigastric pain or jaundice</div>
+      <div>Gastroenterology (routine)</div><div>Chronic unexplained nausea or vomiting after negative first-line workup; suspected gastroparesis; suspected functional or cyclical vomiting syndrome; suspected achalasia</div>
+      <div>Eating disorder service</div><div>Self-induced vomiting, dietary restriction, dental erosion or electrolyte disturbance — refer urgently if there are physical risk markers (bradycardia, hypotension, hypokalaemia)</div>
+      <div>Primary care manage</div><div>Gastroenteritis, migraine, drug-induced (dose review), vestibular causes, mild NVP, functional nausea with a clear diagnosis and safety-net</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Suspected bowel obstruction goes to the surgical take, not to an outpatient scan, because the decision needed is fluid resuscitation, nasogastric decompression and imaging within hours; arranging an outpatient CT for a patient with bilious vomiting and a distended abdomen is a well-recognised route to a strangulated bowel. The brain tumour pathway is worth naming explicitly: NG12 directs consideration of an urgent direct-access MRI (or CT if MRI is contraindicated) within two weeks for adults with progressive sub-acute loss of central neurological function, and morning vomiting with headache in an adult with no migraine history is exactly that picture. Hypercalcaemia earns a mention on the cancer list in its own right because in an older patient with vomiting, constipation, thirst and confusion, it is often the presenting biochemical abnormality of myeloma — and NG12 names the FBC, plasma viscosity or ESR, and urine protein electrophoresis / Bence Jones as the very urgent direct-access tests.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head"><span class="node-tag">Treat</span><h3>Treatment — Antiemetic matched to mechanism</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Vestibular / motion</div>
+        <div class="b-drug">Cyclizine 50 mg TDS <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">H1 antihistamine, acts on the vestibular nuclei. Alternative: prochlorperazine 5 mg TDS or 3 mg buccal BD. Ondansetron is ineffective for vestibular nausea. Avoid prolonged use — it delays vestibular compensation.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Gastric stasis / gastroparesis</div>
+        <div class="b-drug">Metoclopramide 10 mg TDS <span class="pill pill-teal">prokinetic</span></div>
+        <div class="b-note"><b>Maximum 5 days</b> (MHRA — extrapyramidal and tardive dyskinesia risk); avoid in under-20s and in Parkinson's. Domperidone 10 mg TDS is an alternative but carries QT and cardiac risk: maximum 1 week, avoid if cardiac disease. <b>Never</b> give a prokinetic in suspected mechanical obstruction.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Chemical, metabolic, drug-induced</div>
+        <div class="b-drug">Ondansetron 4–8 mg TDS <span class="pill pill-teal">5-HT3</span></div>
+        <div class="b-note">Effective for chemotherapy, opioid and post-operative nausea. Main side effects constipation, headache, QT prolongation. Alternative: haloperidol 0.5–1.5 mg (specialist or palliative use). Avoid ondansetron in first-trimester pregnancy where possible.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Raised intracranial pressure</div>
+        <div class="b-drug">Dexamethasone + cyclizine</div>
+        <div class="b-note">Specialist-directed: dexamethasone reduces peritumoural oedema. This is a referral, not a prescription made alone — arrange urgent imaging first.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Pregnancy</div>
+        <div class="b-drug">Cyclizine 50 mg TDS <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">Or promethazine 12.5–25 mg. Second line: metoclopramide or ondansetron (counsel on the small absolute increase in orofacial cleft risk in the first trimester). Thiamine if prolonged. See the NVP pathway.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Migraine</div>
+        <div class="b-drug">Prochlorperazine or metoclopramide + triptan</div>
+        <div class="b-note">An antiemetic with prokinetic action both treats the nausea and improves absorption of the analgesic. Consider a non-oral route (buccal prochlorperazine, rectal domperidone) when vomiting prevents absorption.</div>
+      </div>
+    </div>
+    <div class="ladder" style="margin-top:14px;">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Treat the cause.</b> Stop or reduce the offending drug; correct hypercalcaemia, hyponatraemia, hypokalaemia; treat infection; relieve constipation. Most drug-induced nausea resolves on dose reduction alone.</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Rehydrate.</b> Oral rehydration salts, small frequent sips, 5 ml every 5 minutes if vomiting. Escalate to admission for IV fluids if oral intake fails for 24 hours or there is AKI.</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Single antiemetic matched to mechanism</b>, at an adequate dose, regularly rather than as required, for a defined short course with a review date.</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Non-oral route</b> if oral is not retained — buccal prochlorperazine, rectal domperidone, or subcutaneous route in palliative care. An oral antiemetic that is vomited back has done nothing.</span></div>
+      <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Reconsider the diagnosis</b> if there is no response in 48–72 hours. Persistent vomiting despite a correctly chosen antiemetic is a diagnostic statement, not a reason to add a second drug.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The MHRA restrictions on metoclopramide (2013) and domperidone (2014) changed prescribing substantially and are frequently overlooked: metoclopramide is limited to a maximum of five days because of extrapyramidal reactions and tardive dyskinesia, with particular caution in young people, and domperidone is limited to short courses at the lowest effective dose because of QT prolongation and sudden cardiac death. Giving a prokinetic in mechanical obstruction risks perforation and is an absolute contraindication. The route matters as much as the drug — an oral tablet given to a patient who is actively vomiting is a wasted prescription, and buccal or rectal alternatives are underused in general practice. The most important line in this step is the last one: failure of a well-chosen antiemetic should prompt a return to step 1, not a second antiemetic, because the commonest reason for treatment failure is an unrecognised cause rather than an inadequate drug.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head"><span class="node-tag">Lifestyle</span><h3>Non-Pharmacological — Hydration, diet and behavioural measures</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Small frequent sips</b> 5 ml every 5 minutes is better tolerated than a glass every hour. Oral rehydration salts rather than water alone where there is diarrhoea or heavy losses.</div>
+      <div class="lstile"><b>Eat to the symptom</b> Small, low-fat, low-fibre meals; dry starchy foods; avoid large meals, which worsen gastric stasis. Cold food has less odour and is often better tolerated than hot.</div>
+      <div class="lstile"><b>Gastroparesis diet</b> Small frequent meals, liquid or pureed calories, low fat and low fibre, sit upright for an hour after eating, avoid carbonated drinks and alcohol.</div>
+      <div class="lstile"><b>Sick-day rules</b> Essential in diabetes (never omit insulin, check ketones, test more often) and on steroids (double the replacement dose; hydrocortisone 100 mg IM if vomiting). Give this in writing.</div>
+      <div class="lstile"><b>Ginger and acupressure</b> Modest but real evidence in pregnancy and post-operative nausea. Ginger 250 mg QDS or P6 wrist acupressure bands — safe, cheap, and worth offering.</div>
+      <div class="lstile"><b>Cannabis cessation</b> The only effective treatment for cannabinoid hyperemesis syndrome. Explain the link explicitly; symptoms resolve over weeks after stopping, and recur on resumption.</div>
+      <div class="lstile"><b>Infection control</b> Norovirus: stay off work or school until 48 hours symptom-free, hand washing with soap and water (alcohol gel is ineffective), do not prepare food for others.</div>
+      <div class="lstile"><b>Dental protection</b> After vomiting, rinse with water or a fluoride mouthwash but <b>do not brush for an hour</b> — brushing enamel softened by acid causes erosion. Important in NVP and in eating disorders.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Sick-day rules are the single highest-value piece of non-drug advice in this pathway because they prevent two specific emergencies. In type 1 diabetes, the instinct to omit insulin when not eating precipitates ketoacidosis; the correct advice is to continue insulin, test glucose and ketones more often, and maintain carbohydrate intake in liquid form. In steroid-dependent patients, vomiting means the oral replacement dose is not absorbed, and an adrenal crisis can develop within hours — these patients need an emergency injection kit and a clear plan. Advising against brushing teeth immediately after vomiting is a small but genuinely useful detail: gastric acid demineralises enamel, and mechanical brushing in the following hour accelerates irreversible erosion, which is why dental damage is often the most visible long-term consequence of recurrent vomiting.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>48–72 hours</div><div>Telephone or face-to-face review if treating symptomatically: is the patient hydrated, is the antiemetic working, has anything new appeared? Failure to improve triggers re-assessment, not a second antiemetic.</div>
+      <div>1 week</div><div>Vomiting persisting beyond a week is no longer gastroenteritis. Reconsider obstruction, raised ICP, metabolic causes, pregnancy and malignancy. Arrange bloods if not already done.</div>
+      <div>2–4 weeks</div><div>Review weight, hydration and electrolytes; stop short-course antiemetics (metoclopramide max 5 days, domperidone max 1 week); chase investigation results actively</div>
+      <div>3 months</div><div>Chronic unexplained nausea → gastroenterology referral; reassess for functional nausea, gastroparesis, cyclical vomiting, eating disorder; review the drug list again</div>
+      <div><span class="pill pill-red">999 now</span></div><div>Severe abdominal pain with a rigid abdomen; vomiting blood; sudden severe headache; drowsiness or confusion; chest pain; seizure</div>
+      <div><span class="pill pill-red">Same-day GP</span></div><div>Unable to keep any fluid down for 24 hours; passing very little urine; dizzy on standing; headache worse on waking or lying flat; new weakness or visual change; diabetes with ketones</div>
+      <div>Written safety-net</div><div>Give specific instructions on rehydration, when to return, and — in diabetes and steroid users — the sick-day plan. Document what was said.</div>
+      <div>Re-investigate if</div><div>Weight loss, dysphagia, anaemia or a new abdominal mass develops → NG12 pathway; neurological signs appear → urgent imaging; the pattern changes character</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The 48-hour review is where most diagnostic saves happen in this pathway. Acute vomiting from gastroenteritis is nearly always improving by then, so persistence is a strong signal that the original working diagnosis was wrong — and the conditions that masquerade as gastroenteritis for 48 hours (obstruction, raised ICP, DKA, Addison's, hypercalcaemia) are precisely the dangerous ones. The instinct at that review is to add or change antiemetic; the discipline is to go back to the history and examination. Equally important is the active management of short-course antiemetics: metoclopramide and domperidone prescriptions issued in an acute episode have a tendency to become repeat items, which is how MHRA duration limits are quietly breached over months. Every antiemetic prescription should carry a review date from the moment it is issued.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer: recognition and referral, May 2025), NICE CG184 (Dyspepsia), RCOG Green-top 69 (NVP context), MHRA Drug Safety Update on metoclopramide (2013) and domperidone (2014), Rome IV criteria for functional gastroduodenal disorders, BSG guidance on gastroparesis. Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const KEY='rgp.alg.nausea-vomiting-adults.v1';
+  const nodes=document.querySelectorAll('.node');
+  const pDone=document.getElementById('pDone');const pFill=document.getElementById('pFill');
+  const total=nodes.length;document.getElementById('pTotal').textContent=total;
+  function save(){const s={};nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb)s[n.dataset.step]=cb.checked;});localStorage.setItem(KEY,JSON.stringify(s));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&s[n.dataset.step]){cb.checked=true;n.classList.add('ticked');}});}catch(e){}}
+  function upd(){let d=0;nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&cb.checked)d++;});pDone.textContent=d;pFill.style.width=((d/total)*100)+'%';}
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');if(cb){cb.addEventListener('change',()=>{n.classList.toggle('ticked',cb.checked);upd();save();});}
+    const btn=n.querySelector('.why-btn');const dr=n.querySelector('.why-drawer');
+    if(btn&&dr){btn.addEventListener('click',()=>{const o=dr.classList.toggle('open');btn.setAttribute('aria-expanded',o);});}
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb){cb.checked=false;n.classList.remove('ticked');}
+      const dr=n.querySelector('.why-drawer');const btn=n.querySelector('.why-btn');
+      if(dr)dr.classList.remove('open');if(btn)btn.setAttribute('aria-expanded','false');
+    });upd();localStorage.removeItem(KEY);
+  });
+  load();upd();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=2"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/alg-diagram.js?v=4"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+</body>
+</html>

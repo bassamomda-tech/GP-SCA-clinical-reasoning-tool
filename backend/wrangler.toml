@@ -1,0 +1,53 @@
+name = "shy-voice-2225"
+main = "worker.js"
+compatibility_date = "2026-07-01"
+
+# --- KV namespaces ---
+# ⚠️ THESE ARE STILL PLACEHOLDERS. Your live Worker (shy-voice-2225) already has
+# real KV namespaces bound. Deploying with these values will fail, and any
+# [vars] left blank below would OVERWRITE the live ones.
+# Get the real ids with:  wrangler kv namespace list
+# (or Cloudflare dashboard → Workers & Pages → KV) and paste them here BEFORE
+# your first `wrangler deploy` from this repo.
+kv_namespaces = [
+  { binding = "USERS",  id = "PASTE_USERS_KV_ID" },
+  { binding = "TOKENS", id = "PASTE_TOKENS_KV_ID" },
+  # Optional — powers the 12-month "Updates" archive. Create with:
+  #   wrangler kv namespace create UPDATES
+  { binding = "UPDATES", id = "PASTE_UPDATES_KV_ID" }
+]
+
+# Daily cron warms the live feed AND appends new items to the 12-month archive.
+[triggers]
+crons = ["0 7 * * *"]
+
+# --- Workers AI (OPTIONAL) — powers semantic search in the Ask assistant. ---
+# Free tier. In the dashboard: Worker → Settings → Bindings → Add → Workers AI,
+# variable name "AI". If absent, Ask silently uses lexical search instead.
+[ai]
+binding = "AI"
+
+[vars]
+ALLOWED_ORIGIN = "https://gpreasoning.uk"
+AI_MODEL = "claude-sonnet-5"     # best quality/price. Cheaper: claude-haiku-4-5
+WEB_SEARCH = "on"                # live web search on trusted UK clinical domains (set "off" to disable)
+ADMIN_EMAIL = "bassamomda@gmail.com"   # YOUR account email on the site — unlocks tools/ask-quality.html (feedback review + answer cache)
+FALLBACK_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"  # free Workers AI model used if Anthropic credit runs out
+EMBED_MODEL = "@cf/baai/bge-base-en-v1.5"   # Workers AI embedding model for semantic search
+
+# PayPal Subscription Plan IDs — pre-filled from the live ids already in
+# assets/site.js (RGP_CONFIG.paypalPlans). Verify against your PayPal dashboard
+# before deploying; a blank here silently breaks tier mapping for new subscribers.
+PLAN_SILVER_MONTHLY   = "P-7W0981493D9643523NJFITGA"
+PLAN_SILVER_YEARLY    = "P-5JJ39495BS015630PNJFJA3A"
+PLAN_GOLD_MONTHLY     = "P-3FU28600XR036331XNJFIV2I"
+PLAN_GOLD_3MONTHLY    = ""   # not created yet — the £40/3-month option
+PLAN_GOLD_YEARLY      = "P-1YB945321J846421DNJFJBIY"
+PLAN_PLATINUM_MONTHLY = "P-85Y58353NJ528450PNJFIXBQ"
+PLAN_PLATINUM_YEARLY  = "P-02W75567UM810814LNJVCD5Y"
+
+# Secrets are NOT stored here — set them with `wrangler secret put`:
+#   wrangler secret put AI_API_KEY
+#   wrangler secret put PAYPAL_CLIENT_ID
+#   wrangler secret put PAYPAL_SECRET
+#   wrangler secret put PAYPAL_WEBHOOK_ID

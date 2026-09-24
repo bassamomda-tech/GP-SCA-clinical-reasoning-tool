@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stroke &amp; TIA — secondary prevention and life after stroke — Protocol · Reasoning GP</title>
+<meta name="description" content="Stroke and TIA in primary care after the acute event: antiplatelet or anticoagulant, high-intensity statin, blood pressure target, AF and carotid decisions, then the half that is genuinely general practice — rehabilitation, post-stroke mood, fatigue, spasticity, cognition, carers, driving and return to work." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/tia-stroke.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790241765963737 tools/management/tia-stroke.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Stroke and TIA protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Stroke & TIA — secondary prevention and life after stroke",
+  eyebrow:"Protocol · NICE NG128 · CG177 · NG236 · the management half, not the diagnostic one",
+  stemTitle:"The acute decision belongs to the hyperacute pathway; everything that determines whether this patient has another stroke — and whether they get their life back — belongs to general practice",
+  stemSub:"For the diagnostic route and the same-day rules, use the <a href='../algorithms/tloc.html'>transient loss of consciousness pathway</a>. This page is the other half: the four secondary-prevention decisions that actually reduce recurrence (antithrombotic, statin, blood pressure, and the AF and carotid questions), and then the part no clinic follows up on — rehabilitation goals, post-stroke depression and emotionalism, fatigue, spasticity, cognition and capacity, the carer, driving, and return to work.",
+  guideline:"NICE NG128 · CG177 · NG236 · NG196 · NG238 · NG12",
+  reviewed:"11 September 2026",
+  nextReview:"11 March 2027",
+  meta:[
+    {t:"NICE NG128 — stroke and TIA in over 16s"},
+    {t:"NICE CG177 / NG236 — stroke rehabilitation in adults"},
+    {t:"NICE NG196 — atrial fibrillation · NG238 — lipids"},
+    {t:"Bleeding on an anticoagulant still needs NG12", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Red flags</b><small>Recurrence &amp; the mimics</small></a><a href="#antithrombotic"><b>Antithrombotic</b><small>Clopidogrel or DOAC</small></a><a href="#risk"><b>Risk factors</b><small>Statin · BP · glucose</small></a><a href="#life"><b>Life after stroke</b><small>Mood · fatigue · tone</small></a><a href="#driving"><b>Driving &amp; work</b><small>DVLA rules</small></a></div>',
+  quickSub:"The six that change outcomes. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ A new deficit is a new emergency — every time", html:"Any new focal neurological deficit in a patient with previous stroke or TIA is treated as a new stroke: FAST positive → 999, not a GP appointment. The thrombolysis and thrombectomy windows do not care that the patient has had one before, and the commonest reason a recurrent stroke is missed is that the deficit is attributed to the old one. <b>Ask what is NEW or WORSE compared with their established baseline</b> — which is why that baseline belongs in the record."},
+    {tone:"blue", h:"Clopidogrel 75 mg is the long-term default", html:"After the initial period: clopidogrel 75 mg OD as long-term secondary prevention for ischaemic stroke or TIA. If clopidogrel is unsuitable or not tolerated: aspirin 75 mg OD plus modified-release dipyridamole 200 mg BD, or aspirin alone if dipyridamole is also unsuitable. Do not continue dual antiplatelet therapy long-term after the specialist-initiated short course — the bleeding risk accrues and the benefit does not."},
+    {tone:"amber", h:"If there is AF, the antiplatelet comes OFF", html:"Atrial fibrillation with stroke or TIA means an anticoagulant, not an antiplatelet — a DOAC (apixaban, rivaroxaban, edoxaban or dabigatran) unless contraindicated, warfarin where a DOAC is unsuitable (valve, severe renal impairment, antiphospholipid syndrome). Combining an antiplatelet with the anticoagulant is a common and dangerous error: stop the clopidogrel unless there is a separate specialist indication. Check for paroxysmal AF if the rhythm was never captured."},
+    {tone:"blue", h:"High-intensity statin, and the BP target is 130/80", html:"Atorvastatin 20–80 mg ON for ischaemic stroke or TIA, aiming for a greater than 40% reduction in non-HDL cholesterol; escalate or add ezetimibe if not achieved. <b>Blood pressure target below 130/80 mmHg for secondary prevention</b> (below 150/90 if aged 80 or over, and treat cautiously in bilateral carotid stenosis). In haemorrhagic stroke, BP control is the main lever and a statin is NOT routine — check which type before prescribing."},
+    {tone:"green", h:"Post-stroke depression is the most missed diagnosis here", html:"Roughly a third of stroke survivors develop depression, most within the first year, and it is the strongest modifiable predictor of poor functional recovery. Screen at every review — an SSRI (sertraline or citalopram) plus psychological therapy where indicated. <b>Distinguish it from emotionalism</b> (sudden crying or laughing without matching mood — often dramatically SSRI-responsive) <b>and from aphasia</b>, where standard questionnaires fail and a visual or carer-informed tool is needed."},
+    {tone:"purple", h:"🚗 DVLA — a statutory duty, not advice", html:"Car or motorcycle: must not drive for 1 month after a stroke or TIA; DVLA need not be notified if there is full clinical recovery at 1 month and no residual deficit affecting driving. Multiple TIAs over a short period: 3 months free of attacks and DVLA notification. Bus, coach or lorry (Group 2): must stop and notify DVLA; relicensing requires 1 year and meeting the functional standards. Residual visual field loss, neglect, cognitive impairment or significant limb weakness requires notification regardless of the time elapsed. Record that you gave this."}
+  ],
+  pathwaySub:"After the clinic letter arrives, five things decide the next ten years.",
+  pathway:[
+    {title:"Establish the type, the cause, and the baseline", html:"Ischaemic or haemorrhagic? Cardioembolic, large-vessel, small-vessel or cryptogenic? What did the carotid imaging and the rhythm monitoring show? Then record the functional baseline — mRS or a plain description of what they can do — because every future \"is this new?\" question is answered against it."},
+    {title:"Get the antithrombotic right", html:"Clopidogrel 75 mg for ischaemic stroke or TIA without AF · a DOAC (antiplatelet stopped) if AF · neither routinely after intracerebral haemorrhage without specialist advice. Confirm the specialist-initiated DAPT course has an end date and that it ended.", alert:true},
+    {title:"Treat the four risk factors properly", html:"High-intensity statin to a greater than 40% non-HDL reduction · BP below 130/80 · HbA1c and diabetes management · smoking cessation, alcohol, weight and activity. Do not leave the BP \"running a bit high because of the stroke\" — that reasoning belongs to the acute phase only."},
+    {title:"Manage life after stroke — the part nobody else follows up", html:"Rehabilitation goals and re-referral · mood and emotionalism · fatigue · spasticity and contracture · pain and shoulder · continence · swallowing and nutrition · cognition and capacity · communication · the carer. NG236 entitles the patient to re-referral when a new goal appears, at any point — recovery is not a closed window."},
+    {title:"Review, and say the safety-net out loud", html:"Structured review at 6 weeks and 6 months, then at least annually, with medication, BP, mood, function and carer strain each covered. FAST advice repeated at every review, and the DVLA position documented."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Red flags", title:"Red flags — recurrence, bleeding, and the deficit that is actually something else",
+     sub:"The established diagnosis is the camouflage. Screen against the recorded baseline, not against \"normal\".",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["Any NEW focal deficit — face, arm, speech, vision — or a sudden worsening beyond the known baseline","<b>Recurrent stroke.</b> Highest risk is in the first days to weeks after a TIA, but recurrence is lifelong","<b>FAST positive → 999 immediately.</b> Thrombolysis and thrombectomy windows apply regardless of previous events. <b>Never book a routine appointment for a new deficit</b>"],
+         ["<b>Crescendo TIAs — two or more in a week, or increasing frequency</b>","Unstable large-vessel or cardioembolic source; very high early stroke risk","<b>Emergency same-day assessment, not the next TIA clinic slot</b>"],
+         ["Sudden severe headache, vomiting, reducing consciousness, or a deficit in a patient on an anticoagulant","<b>Intracerebral haemorrhage</b> — and anticoagulation makes it both more likely and more rapidly fatal","999. Do not give aspirin. Bring the anticoagulant name, dose and last dose time"],
+         ["<b>Transient monocular visual loss — \"a curtain coming down\"</b>","<b>Amaurosis fugax — a retinal TIA, most often carotid</b>","<b>Same-day TIA pathway, exactly as for a hemispheric TIA.</b> It is frequently dismissed as \"just my eye\""],
+         ["New visible haematuria, rectal bleeding, iron-deficiency anaemia or unexplained weight loss in a patient on an antithrombotic","The anticoagulant is an explanation for bleeding — it is not a reason to skip the cancer pathway. Anticoagulants unmask tumours as often as they cause bleeding","<b>Investigate per NG12 on its own merits</b> — see <a href='#refer'>Refer</a>. Attributing bleeding to the drug is a recognised cause of delayed cancer diagnosis"],
+         ["Fever, new murmur, splinter haemorrhages, or stroke in a young patient or IV drug user","<b>Infective endocarditis with septic emboli</b>","Urgent admission, blood cultures before antibiotics, echocardiography. Do not anticoagulate"],
+         ["Stroke under 55, recurrent events despite treatment, or a family history of early stroke","Patent foramen ovale, dissection, thrombophilia, antiphospholipid syndrome, vasculitis, Fabry disease, CADASIL","Young-stroke specialist referral; antiphospholipid syndrome specifically requires warfarin rather than a DOAC"],
+         ["Progressive deficit over days to weeks, or one that fluctuates and does not fit a vascular territory","Not a stroke: subdural haematoma, tumour, demyelination, functional neurological disorder, seizure with Todd's paresis, hypoglycaemia","Re-image and reconsider the diagnosis rather than escalating secondary prevention"]
+       ]},
+       {b:"warn", html:"<b>Two mirror-image errors.</b> <b>Attributing a new deficit to the old stroke</b> — the single commonest way a recurrence is missed, and the reason a documented functional baseline is a safety intervention rather than paperwork. <b>And attributing everything to the stroke in the other direction:</b> the patient with previous stroke who becomes confused has a UTI, a subdural, hyponatraemia or delirium until proven otherwise. <b>\"It's their stroke\" is not a diagnosis.</b>"}
+     ]},
+
+    {id:"recognise", nav:"Recognise", title:"Recognising TIA — and the mimics that are not",
+     sub:"Absorbed from the former TIA pathway. Transient focal neurology, now fully resolved.",
+     blocks:[
+       {b:"table", head:["Element","Detail","Why it matters"], rows:[
+         ["<b>The presentation</b>","Transient FOCAL neurology — unilateral weakness, speech disturbance, or amaurosis fugax — now fully resolved. Confirm the time course, and confirm the symptoms were focal","A TIA is a diagnosis made on history alone, since by definition the examination is normal by the time you see them"],
+         ["<b>Posterior-circulation symptoms</b>","<b>Diplopia, ataxia, dysarthria and vertigo, with signs</b>","<b>Routinely under-recognised as vascular</b> — vertigo and double vision get attributed to the ear or the eye, and a posterior-circulation TIA carries the same urgency as an anterior one"],
+         ["<b>The two mimics to exclude on history</b>","<b>Syncope and migraine aura are NOT TIAs.</b> Syncope is global rather than focal; migraine aura spreads and marches over minutes, typically with positive visual phenomena","<b>Getting this wrong in either direction is costly</b> — a missed TIA loses the 24-hour window, and a mislabelled faint or aura starts lifelong antiplatelet therapy unnecessarily"],
+         ["<b>Still deficit, or high risk → it is not a TIA</b>","Any persisting or fluctuating deficit (FAST positive) is a STROKE — 999. Crescendo TIA (2 or more episodes in 7 days), or an event while on an anticoagulant or with a bleeding disorder → emergency admission","<b>Anticoagulation demands exclusion of haemorrhage before anything else</b>"],
+         ["<b>Examination</b>","Blood pressure, pulse for AF, carotid auscultation, cardiac examination","AF found here changes the drug entirely — see <a href='#antithrombotic'>Antithrombotic</a>"],
+         ["<b>Immediate action</b>","Aspirin 300 mg immediately unless contraindicated or already anticoagulated (then take specialist advice), refer to be seen within 24 hours, and advise not to drive","<b>The 24-hour specialist rule is the single most important step</b>"],
+         ["<b>Specialist-led investigation</b>","Diffusion-weighted MRI (preferred) to confirm the territory · carotid Doppler, urgent if the patient is an anterior-circulation candidate for endarterectomy · ECG and prolonged monitoring for paroxysmal AF · FBC, glucose/HbA1c, lipids, U&amp;E, clotting · echocardiography if cardioembolic","<b>Do not arrange these yourself instead of referring</b> — they are part of the 24-hour pathway, not a substitute for it"]
+       ]}
+     ]},
+    {id:"antithrombotic", nav:"Antithrombotic", title:"Antiplatelet or anticoagulant — the decision with the largest effect",
+     blocks:[
+       {b:"table", head:["Situation","Drug","Notes"], rows:[
+         ["<b>Ischaemic stroke or TIA, no AF — long term</b>","<b>Clopidogrel 75 mg OD</b>","<b>The long-term default.</b> Check for interactions reducing activation (omeprazole — use lansoprazole or pantoprazole if a PPI is needed). Genuine non-response exists but is not routinely tested for in primary care"],
+         ["<b>Clopidogrel unsuitable or not tolerated</b>","<b>Aspirin 75 mg OD + MR dipyridamole 200 mg BD</b>; aspirin 75 mg alone if dipyridamole is also unsuitable","Dipyridamole headache is common early, usually settles, and is worth warning about or the patient stops it"],
+         ["<b>Short-term after minor stroke or high-risk TIA</b>","Specialist-initiated DAPT (clopidogrel + aspirin) for 21–90 days, then single agent","<b>Your job is to confirm it STOPPED.</b> A DAPT course left running on repeat prescription is a preventable major-bleed source — check the end date the day the letter arrives"],
+         ["<b>Atrial fibrillation (any pattern, including paroxysmal)</b>","DOAC — apixaban 5 mg BD (2.5 mg BD if two of: age 80+, weight ≤60 kg, creatinine ≥133 µmol/L), or rivaroxaban, edoxaban, dabigatran. <b>Stop the antiplatelet</b>","<b>Anticoagulation beats antiplatelet decisively in AF-related stroke.</b> Renal function before starting and at least annually; dose-check against weight and age at every review. <b>CHA₂DS₂-VASc is already ≥2 — the decision is made</b>"],
+         ["AF with a mechanical valve, severe renal impairment or antiphospholipid syndrome","<b>Warfarin</b> with INR 2–3 (higher range for some valves)","The remaining genuine warfarin indications. DOACs are inferior in antiphospholipid syndrome — this matters in young stroke"],
+         ["<b>Intracerebral haemorrhage</b>","<b>No routine antithrombotic.</b> Restarting after ICH is a specialist decision","<b>BP control is the dominant intervention.</b> A statin is not routine and may be stopped — check the discharge letter rather than reinstating reflexively"],
+         ["<b>Symptomatic carotid stenosis</b>","Urgent referral for consideration of endarterectomy or stenting, alongside medical therapy","<b>Benefit is highest within 2 weeks of the event and falls steeply</b> — a delayed carotid referral is a lost opportunity, not a minor administrative slip"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"⛔ Never combine an antiplatelet with an anticoagulant without a specialist indication", html:"<b>The commonest dangerous prescribing error after stroke.</b> When an anticoagulant starts for AF, <b>the clopidogrel or aspirin stops</b> — unless cardiology has specified dual therapy for a stent or ACS, with an end date."},
+         {tone:"amber", h:"⚠ The DAPT course that never ended", html:"<b>Check the discharge letter for the stop date and diarise it.</b> A 21-day course silently becoming a 5-year repeat is common, invisible on a medication list, and doubles major bleeding."},
+         {tone:"blue", h:"💊 PPI and GI protection", html:"Offer a PPI with an antithrombotic where there is dyspepsia, prior ulcer, age 65+, steroid or NSAID use. <b>Avoid omeprazole and esomeprazole with clopidogrel</b> — use lansoprazole or pantoprazole."},
+         {tone:"green", h:"✓ Adherence is the whole game", html:"<b>Ask how many doses were missed this month, without judgement.</b> Once-daily where possible, dosette boxes, and address the belief — common and unspoken — that the tablets can stop once recovery feels complete."}
+       ]}
+     ]},
+
+    {id:"risk", nav:"Risk factors", title:"The four risk factors — and the target for each",
+     blocks:[
+       {b:"table", head:["Factor","Target and drug","Notes"], rows:[
+         ["<b>Lipids</b>","Atorvastatin 20–80 mg ON; aim for a greater than 40% reduction in non-HDL cholesterol. If not achieved: increase the dose, then add <b>ezetimibe 10 mg OD</b>; consider inclisiran or a PCSK9 inhibitor per local criteria","Lipids and LFTs at 3 months. Statin intolerance is usually dose-related — try a lower dose or an alternative statin before abandoning it; true myopathy with a raised CK is uncommon. <b>Not routine after intracerebral haemorrhage</b>"],
+         ["<b>Blood pressure</b>","<b>Below 130/80 mmHg</b> (below 150/90 if aged 80 or over). ACE inhibitor or ARB, calcium-channel blocker, thiazide-like diuretic per <a href='hypertension.html'>the hypertension protocol</a>","The single largest population-level lever on recurrence, and the most commonly under-treated after discharge. Caution in severe bilateral carotid stenosis, and titrate gradually in the first weeks"],
+         ["<b>Glucose</b>","<b>HbA1c per the diabetes pathway; screen if not known diabetic</b>","Post-stroke hyperglycaemia is common and frequently undiagnosed. An SGLT2 inhibitor or GLP-1 agonist where there is established cardiovascular disease"],
+         ["<b>Smoking, alcohol, weight, activity</b>","<b>Smoking cessation is the highest-yield single conversation.</b> Alcohol within limits; weight and activity per the rehabilitation plan","<b>Varenicline or NRT plus behavioural support.</b> Physical activity should come from the rehabilitation goals rather than generic advice — \"walk more\" is not actionable with a hemiparesis"],
+         ["<b>Rhythm — if AF was never captured</b>","<b>Consider prolonged ambulatory monitoring in cryptogenic stroke</b>","Paroxysmal AF is a common occult cause, and finding it changes the drug entirely — worth pursuing rather than settling for \"cryptogenic\""]
+       ]},
+       {b:"why", html:"Secondary prevention after stroke fails in primary care for an unglamorous reason: each element drifts a little. The BP is left at 145 because it was \"allowed to run high\" acutely and nobody revisited it; the statin was reduced for aches and never re-challenged; the DAPT course never ended; the clopidogrel was never stopped when the DOAC began. None of these is a dramatic error and all of them are recurrences waiting to happen. The structured annual review exists precisely because this is drift, not ignorance — and it is why each target above is stated as a number rather than a direction."}
+     ]},
+
+    {id:"life", nav:"Life after stroke", title:"Life after stroke — the half that is genuinely general practice",
+     sub:"The hospital manages the infarct. Nobody but you manages the next thirty years.",
+     blocks:[
+       {b:"table", head:["Problem","What to do","Detail that matters"], rows:[
+         ["<b>Depression — in roughly a third, mostly in the first year</b>","Screen at every review. SSRI (sertraline or citalopram) and psychological therapy where indicated","<b>The strongest modifiable predictor of poor functional recovery.</b> <b>Standard questionnaires fail in aphasia</b> — use a visual analogue or carer-informed tool rather than recording \"unable to assess\". Review at 4–6 weeks"],
+         ["<b>Emotionalism — sudden crying or laughing that does not match the mood</b>","Name it to the patient and family, and treat: it is often dramatically SSRI-responsive","Distinct from depression and profoundly distressing because it is misread by everyone as sadness or instability. Explaining the mechanism is itself therapeutic"],
+         ["<b>Fatigue — very common, persistent, and unrelated to effort</b>","Exclude depression, anaemia, thyroid dysfunction, sleep apnoea and drug sedation, then manage with pacing and graded activity","Patients are routinely told it is laziness or depression when it is neither. Validation plus a pacing plan is the intervention; there is no drug for it"],
+         ["<b>Spasticity and contracture</b>","Physiotherapy and positioning first; consider baclofen or tizanidine; refer for botulinum toxin where focal spasticity limits function or care","Untreated spasticity becomes fixed contracture, which is irreversible — this is a time-limited window. Baclofen sedates and weakens; titrate slowly"],
+         ["<b>Shoulder pain and central post-stroke pain</b>","Positioning, support and physiotherapy for the hemiplegic shoulder. Central post-stroke pain: amitriptyline, or gabapentin or pregabalin per CG173","Hemiplegic shoulder pain is largely preventable with correct handling — teach the family not to pull on the affected arm. Central pain is neuropathic and does not respond to simple analgesia"],
+         ["<b>Cognition and capacity</b>","Assess cognition — vascular cognitive impairment is common and often unrecognised. Capacity is decision-specific","Address advance care planning, LPA and driving while capacity is intact. See <a href='dementia.html'>the dementia protocol</a> for vascular cognitive impairment"],
+         ["<b>Communication — aphasia and dysarthria</b>","Speech and language therapy referral, and re-referral when a new goal appears","Aphasia is not a loss of intelligence — say so to the family, and address the patient directly rather than the carer. Allow time; use writing, pictures or gesture"],
+         ["<b>Swallowing, nutrition and continence</b>","Any coughing or wet voice with food → SLT swallow assessment. Weight monitoring. Continence assessment rather than pads by default","<b>Aspiration pneumonia is a leading cause of death after stroke.</b> Incontinence is frequently treatable and is a major driver of institutionalisation and carer breakdown"],
+         ["<b>Seizures</b>","Post-stroke epilepsy: treat per <a href='epilepsy.html'>the epilepsy protocol</a>; lamotrigine or levetiracetam are usually preferred","<b>A single early seizure is not automatically epilepsy.</b> Driving rules change again — check them against the seizure, not the stroke"],
+         ["<b>The carer</b>","Carer's assessment, carer's allowance, respite, and a direct question about how THEY are coping","Carer strain predicts placement more strongly than the patient's deficit does. Register them as a carer in the record — it is the step that unlocks the rest"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🔁 Re-referral is a right, not a favour", html:"NG236 is explicit: rehabilitation should be re-offered whenever a new goal or a change in need appears, at any point after the stroke. <b>\"Discharged from physio\" does not mean recovery has finished</b> — a patient wanting to return to driving, work or a specific activity two years on is a legitimate re-referral."},
+         {tone:"blue", h:"🎯 Goals must be the patient's", html:"Ask what they want to be able to do — hold a grandchild, get to the shop, return to work — and build the referral around that. Goal-directed rehabilitation outperforms generic exercise, and it is what maintains engagement."},
+         {tone:"amber", h:"⚠ Falls and bone health", html:"Falls risk is high — hemiparesis, visual field loss, neglect, sedating drugs. Assess fracture risk (FRAX) and treat osteoporosis: hip fracture after stroke carries a grim prognosis. Review anything sedating."},
+         {tone:"green", h:"🤝 Where to send people", html:"Stroke Association (helpline and local groups), Different Strokes for younger survivors, Aphasia support groups, and the local stroke rehabilitation or ESD team. Peer contact with someone further along is consistently rated the most useful thing offered."}
+       ]}
+     ]},
+
+    {id:"driving", nav:"Driving &amp; work", title:"Driving, work and entitlements",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"🚗 DVLA — Group 1 (car, motorcycle)", html:"<b>Must not drive for 1 month.</b> DVLA need not be notified if there is satisfactory clinical recovery at 1 month and no residual deficit affecting driving. Notification IS required for residual visual field defect, neglect, cognitive impairment, or significant limb weakness or coordination problems. <b>Multiple TIAs over a short period: 3 months attack-free and notify.</b>"},
+         {tone:"purple", h:"🚛 DVLA — Group 2 (bus, coach, lorry)", html:"<b>Must stop driving and notify DVLA.</b> Relicensing requires 1 year and meeting the functional and exercise-test standards. This is often the most consequential single piece of information for a working driver — raise it early rather than at the 6-month review."},
+         {tone:"blue", h:"💼 Return to work", html:"Phased return, workplace assessment and adjustments; occupational health where available; Access to Work for equipment and support. <b>The Equality Act 2010 makes reasonable adjustment a legal entitlement.</b> Fatigue and cognitive load — not weakness — are the usual reasons a return fails."},
+         {tone:"green", h:"💷 Money and entitlements", html:"PIP, Attendance Allowance for the over-65s, Carer's Allowance, Council Tax reduction, Blue Badge, and free prescriptions where applicable. Signpost early — claims take months, and financial strain is a direct contributor to carer breakdown."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review and monitoring",
+     blocks:[
+       {b:"table", head:["When","What to check"], rows:[
+         ["<b>On receiving the discharge letter</b>","Stroke type · cause · antithrombotic and whether a DAPT course has an END DATE · statin dose · BP plan · carotid and rhythm results · rehabilitation and ESD arrangements · the functional baseline recorded in your own notes"],
+         ["<b>6 weeks</b>","Medication actually taken and tolerated · DAPT stopped if due · BP · mood screen · fatigue · rehabilitation engagement · carer coping · driving discussed"],
+         ["<b>6 months</b>","BP to target · lipids (greater than 40% non-HDL reduction achieved) · HbA1c · mood · function against the baseline · new rehabilitation goals · return-to-work position · spasticity and contracture risk"],
+         ["<b>At least annually thereafter</b>","Full review: antithrombotic still correct (and still single-agent unless specified) · DOAC dose against weight, age and renal function · U&amp;Es and LFTs · BP · lipids · mood and cognition · falls and fracture risk · continence · carer's assessment · FAST advice repeated · DVLA position documented"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 — repeat it every review", html:"\"If the face droops, an arm or leg goes weak, or speech goes — any NEW weakness — call 999 immediately. Do not wait, do not ring us first, and do not assume it is the old stroke.\""},
+         {tone:"amber", h:"🟠 Contact us the same day", html:"Two or more transient episodes in a week · new or worsening headache on an anticoagulant · any bleeding that will not stop · new confusion · a fall with a head injury while anticoagulated."},
+         {tone:"blue", h:"💊 Never stop these yourself", html:"\"The antiplatelet or anticoagulant and the statin are what stop the next stroke. If something about them is troubling you, come and tell me — but do not just stop them.\""},
+         {tone:"green", h:"🔁 Recovery has no closing date", html:"\"If you find something new you want to be able to do — even years from now — come back and we will re-refer you. Being discharged from physiotherapy does not mean you have finished improving.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — 999", html:"Any new focal deficit (FAST positive) · suspected intracerebral haemorrhage · crescendo TIA · suspected endocarditis with neurological signs. <b>Previous stroke does not downgrade any of these.</b>"},
+         {tone:"amber", h:"Urgent — same day or within days", html:"Symptomatic carotid stenosis (benefit is highest within 2 weeks) · suspected post-stroke seizure · rapidly worsening spasticity threatening contracture · suspected aspiration."},
+         {tone:"purple", h:"2WW · NICE NG12 — bleeding on an antithrombotic still needs the cancer pathway", html:"<b>Do not attribute bleeding to the anticoagulant and stop there.</b> Visible haematuria aged 45 and over → urgent suspected bladder or renal cancer referral. Rectal bleeding or iron-deficiency anaemia aged 50 and over → FIT (refer on ≥10 µg Hb/g) and the colorectal pathway. Unexplained weight loss with abdominal pain aged 40 and over → urgent direct-access imaging. Anticoagulants unmask underlying tumours at least as often as they cause benign bleeding, and \"it's the DOAC\" is a recognised cause of delayed diagnosis."},
+         {tone:"blue", h:"Stroke rehabilitation / ESD team", html:"Re-referral whenever a new goal or need appears, at any time after the stroke (NG236). Physiotherapy, occupational therapy, speech and language therapy — name the goal in the referral."},
+         {tone:"blue", h:"Neurology / young stroke service", html:"Stroke under 55, recurrent events despite optimal treatment, unexplained or cryptogenic stroke, suspected dissection, PFO, vasculitis or thrombophilia, or suspected antiphospholipid syndrome."},
+         {tone:"amber", h:"Cardiology", html:"AF newly identified or suspected paroxysmal AF needing prolonged monitoring; PFO closure consideration; anticoagulation decisions in complex bleeding risk."},
+         {tone:"green", h:"Psychology / Talking Therapies", html:"Post-stroke depression or anxiety not responding to an SSRI, adjustment difficulty, or emotionalism with significant distress. Specify the stroke and any communication needs in the referral."},
+         {tone:"cream", h:"GP management", html:"Everything above belongs here: the antithrombotic, the statin, the BP, the glucose, mood, fatigue, spasticity, continence, cognition, the carer, driving and work, and the annual review that stops all of it drifting. Related pages: <a href='../algorithms/tloc.html'>transient loss of consciousness pathway</a> · <a href='hypertension.html'>hypertension</a> · <a href='atrial-fibrillation.html'>atrial fibrillation</a> · <a href='epilepsy.html'>epilepsy</a> · <a href='dementia.html'>dementia</a> · <a href='chronic-pain.html'>chronic pain</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 71-year-old man attends 7 weeks after a left MCA ischaemic stroke with residual right arm weakness and mild expressive aphasia. He is on <b>aspirin 75 mg AND clopidogrel 75 mg</b> (the discharge letter specified 21 days of dual therapy), <b>atorvastatin 20 mg</b>, and his <b>BP today is 148/88</b>. His wife mentions he cries several times a day \"for no reason\", is exhausted by lunchtime, and has stopped going out. He asks when he can drive again — and whether he can get back to his part-time delivery-driving job."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Stops the aspirin</b> — the DAPT course ended four weeks ago, and spotting this is the single highest-value action in the case; <b>addresses the BP against the 130/80 secondary-prevention target</b> rather than accepting it; <b>increases the atorvastatin or checks the non-HDL reduction</b>; <b>recognises the crying as EMOTIONALISM rather than assuming depression</b>, names it to both of them, and still screens for depression — adapting the tool for aphasia rather than recording \"unable to assess\"; <b>validates the fatigue</b> and offers pacing rather than attributing it to low mood; addresses the social withdrawal and re-refers to rehabilitation with his own goal; gives the Group 1 rule (1 month, no notification if fully recovered — but notification IS needed here because of the residual weakness and aphasia) and the Group 2 rule for his delivery job: stop, notify DVLA, 1 year before relicensing; <b>offers the wife a carer's assessment</b> and addresses her directly as well as him; <b>speaks to the patient, not over him, despite the aphasia</b>; and <b>repeats the FAST safety-net for a new deficit</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG128 — Stroke and transient ischaemic attack in over 16s: diagnosis and initial management<br><a href="https://www.nice.org.uk/guidance/ng128" rel="noopener">nice.org.uk/guidance/ng128</a><span class="rd"> — clopidogrel 75 mg as long-term secondary prevention, the aspirin plus MR dipyridamole alternative, carotid intervention timing, and the anticoagulation decision in AF</span></li>'+
+         '<li><b>NICE NG236 — Stroke rehabilitation in adults (2023), superseding CG162</b><br><a href="https://www.nice.org.uk/guidance/ng236" rel="noopener">nice.org.uk/guidance/ng236</a><span class="rd"> — goal-setting, rehabilitation intensity, and the explicit entitlement to re-referral whenever a new goal or need appears</span></li>'+
+         '<li>NICE CG177 / NG226 and the National Clinical Guideline for Stroke (2023)<span class="rd"> — post-stroke depression and emotionalism, fatigue, spasticity and contracture, shoulder pain, continence and swallowing</span></li>'+
+         '<li><b>NICE NG196 — Atrial fibrillation: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng196" rel="noopener">nice.org.uk/guidance/ng196</a><span class="rd"> — DOAC first-line, apixaban dose-reduction criteria, the remaining warfarin indications, and not combining an antiplatelet with an anticoagulant without a specific indication</span></li>'+
+         '<li>NICE NG238 — Cardiovascular disease: risk assessment and lipid modification<span class="rd"> — atorvastatin 20–80 mg, the greater than 40% non-HDL reduction target, and ezetimibe escalation</span></li>'+
+         '<li><b>NICE NG136 — Hypertension in adults</b><span class="rd"> — the below 130/80 mmHg secondary-prevention target and the treatment sequence</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — visible haematuria at 45 and over, FIT at ≥10 µg Hb/g with rectal bleeding or iron-deficiency anaemia, and the rule that bleeding on an antithrombotic is investigated on its own merits</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive: a guide for medical professionals</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — the Group 1 one-month rule and notification triggers, the multiple-TIA three-month rule, and the Group 2 one-year relicensing standard</span></li>'+
+         '<li><b>MHRA Drug Safety Update</b><span class="rd"> — reduced clopidogrel activation with omeprazole and esomeprazole; DOAC dosing and renal monitoring</span></li>'+
+         '<li><b>Stroke Association · Different Strokes · Equality Act 2010</b><br><a href="https://www.stroke.org.uk" rel="noopener">stroke.org.uk</a><span class="rd"> — patient and carer support, and the reasonable-adjustment entitlement on return to work</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Stroke &amp; TIA — secondary prevention and life after stroke. NICE NG128, NG236, NG196, NG238, NG136 and NG12, with the DVLA fitness-to-drive standards. For diagnosis and the same-day rules use the TIA &amp; stroke pathway. Clopidogrel 75 mg long-term unless there is AF, in which case a DOAC replaces it — never both without a specialist indication. Confirm every specialist DAPT course has ended. BP below 130/80, atorvastatin to a greater than 40% non-HDL reduction. Then treat the mood, the fatigue, the tone, the carer and the driving — that is the half only general practice does. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

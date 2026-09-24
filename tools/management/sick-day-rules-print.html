@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sick day rules — Protocol · Reasoning GP</title>
+<meta name="description" content="Medication adjustment in acute illness: the SADMAN drugs to hold, why insulin is never stopped, SGLT2-inhibitor euglycaemic DKA, steroid sick-day dosing, ketone action thresholds, admission criteria and the written plan with restart rules." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/sick-day-rules.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790241765963737 tools/management/sick-day-rules.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Sick day rules protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F321}\u{FE0F}",
+  title:"Sick day rules \u2014 medication adjustment in acute illness",
+  eyebrow:"Protocol \u00b7 the same trigger, three different actions",
+  stemTitle:"Illness means HOLD some drugs, NEVER stop insulin, and DOUBLE the steroid \u2014 the three instincts that must not be confused",
+  stemSub:"One page for the whole task: screen for the emergency (DKA, HHS, AKI, sepsis), map the drug list onto the three groups, hold the SADMAN drugs, keep the insulin going and monitor ketones, increase steroid in adrenal insufficiency, and send the patient home with a written plan that says when to restart. The two killers these rules exist to prevent are diabetic ketoacidosis and acute kidney injury.",
+  guideline:"TREND / Diabetes UK \u00b7 JBDS-IP \u00b7 NICE NG28 / NG17 / NG148 / NG243 \u00b7 MHRA",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"TREND Diabetes / Diabetes UK \u2014 sick day rules"},
+    {t:"JBDS-IP \u2014 DKA and HHS in adults"},
+    {t:"MHRA Drug Safety Update \u2014 SGLT2i and DKA"},
+    {t:"NICE NG148 (AKI) \u00b7 NG243 (adrenal insufficiency)"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 \u00b7 reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Emergency?</b><small>DKA \u00b7 HHS \u00b7 AKI \u00b7 sepsis</small></a><a href="#confirm"><b>Who is at risk</b><small>Insulin \u00b7 SADMAN \u00b7 steroids</small></a><a href="#workup"><b>Assess</b><small>Glucose \u00b7 ketones \u00b7 fluids</small></a><a href="#ladder"><b>Act</b><small>Hold \u00b7 continue \u00b7 increase</small></a><a href="#refer"><b>Refer</b><small>Admit or home</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Never stop insulin", html:"Stopping insulin during illness is the commonest avoidable cause of DKA. Illness raises counter-regulatory hormones, so insulin requirements usually rise, not fall \u2014 even when the patient is eating less. <b>Continue basal insulin even if they are not eating</b>, and do not stop it en route to hospital."},
+    {tone:"red", h:"A normal glucose does not exclude DKA on an SGLT2 inhibitor", html:"SGLT2 inhibitors cause euglycaemic DKA \u2014 the glucose looks reassuringly normal while the patient is ketoacidotic. Check ketones in anyone unwell on dapagliflozin, empagliflozin or canagliflozin regardless of the glucose, and stop the drug during any acute illness."},
+    {tone:"amber", h:"SADMAN \u2014 hold these while dehydrated", html:"<b>S</b>ulfonylureas / <b>S</b>GLT2 inhibitors \u00b7 <b>A</b>CE inhibitors \u00b7 <b>D</b>iuretics \u00b7 <b>M</b>etformin \u00b7 <b>A</b>RBs \u00b7 <b>N</b>SAIDs. Each is safe in health but harmful in the physiology of acute dehydrating illness \u2014 hypoglycaemia, euglycaemic DKA, AKI, hyperkalaemia and lactic acidosis."},
+    {tone:"blue", h:"Ketones are the early-warning system", html:"Blood ketones: &lt;0.6 normal \u00b7 0.6\u20131.5 recheck with extra fluids \u00b7 1.5\u20133.0 correction insulin and seek urgent advice if &gt;1.5, \u00b7 &gt;3.0 is an emergency. A rising ketone level identifies evolving DKA hours before the patient looks unwell, which is what makes home rescue possible."},
+    {tone:"purple", h:"Steroids are the exception \u2014 double, don't hold", html:"Adrenal insufficiency or long-term steroids: double the usual oral hydrocortisone for the duration of the fever, and give IM hydrocortisone if vomiting. The same trigger demands \u201cstop\u201d for the SADMAN drugs and \u201cdouble\u201d for steroids \u2014 which is exactly why it is a high-yield discriminator."},
+    {tone:"green", h:"The restart step matters as much as the hold", html:"Restart held drugs once the patient has been eating and drinking normally for 24\u201348 hours, and recheck U&amp;E before restarting an ACE inhibitor, ARB or diuretic if there was an AKI. An ACE inhibitor never restarted after an admission is a common and silent medicines-safety error."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step decides home versus hospital.",
+  pathway:[
+    {title:"Screen for the emergency", html:"Vomiting and unable to keep fluids down \u00b7 rising or large ketones \u00b7 drowsy, deep breathing, abdominal pain (DKA) \u00b7 marked dehydration or AKI \u00b7 sepsis (NEWS2 \u22655) \u00b7 very high glucose with HHS features in an older patient with type 2 diabetes.", alert:true},
+    {title:"Map the drug list", html:"Three overlapping groups: <b>insulin</b> (never stop), the <b>SADMAN</b> drugs (hold), and <b>long-term steroids or adrenal insufficiency</b> (increase). Also lithium, DOACs and digoxin."},
+    {title:"Quantify the two risks", html:"<b>Capillary glucose every 2\u20134 hours</b>, blood or urine ketones if glucose is &gt;13\u201315 mmol/L or the patient feels unwell, fluid status, and <b>U&amp;E if there has been diarrhoea and vomiting on SADMAN drugs</b>."},
+    {title:"Act on each group", html:"Hold the SADMAN drugs, keep insulin going with correction doses by glucose and ketones, double the steroid, and maintain fluids and carbohydrate."},
+    {title:"Decide home versus admit, then write it down", html:"The pivotal question is behavioural \u2014 can they keep fluids down and follow the plan? Then a written sick-day card with hold list, ketone thresholds, when to seek help and <b>when to restart</b>."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Emergency?", title:"When acute illness becomes an emergency",
+     sub:"Sick day rules exist to prevent two killers — DKA and AKI. Screen for both before deciding the patient is safe at home.",
+     blocks:[
+       {b:"warn", html:"Admit now if: blood ketones &gt; 3.0 mmol/L (&gt;3.0; or +++ / ++++ on urine testing), persistent vomiting or unable to keep fluids down, drowsiness or Kussmaul breathing with abdominal pain and pear-drop breath (DKA), or a glucose &gt;30 mmol/L for days with confusion and marked dehydration in an older person with type 2 diabetes (HHS). Do not stop insulin en route. Ketones 1.5\u20133.0 \u2014 recheck in 2 hours with extra fluids and correction doses; rising or not clearing means emergency assessment."},
+       {b:"table", head:["Feature","What it is","Action"], rows:[
+         ["<b>Vomiting and unable to keep fluids down</b>","Cannot follow oral sick-day rules \u2014 dehydration and ketosis escalate quickly","<b>Same-day assessment; likely admission for IV fluids \u00b1 insulin</b>"],
+         ["Ketones rising, or blood ketones \u22653 mmol/L (or 2+ on urine) with the patient unwell","<b>Impending or established DKA</b>","<b>999. Do NOT stop insulin.</b> IV fluids and a fixed-rate insulin infusion in hospital"],
+         ["Drowsy, confused, deep sighing (Kussmaul) breathing, abdominal pain, fruity breath","<b>Established DKA</b> \u2014 a medical emergency","<b>999</b>"],
+         ["Older patient with type 2 diabetes, very high glucose (often &gt;30), marked dehydration, drowsiness, low or no ketones","<b>Hyperosmolar hyperglycaemic state (HHS)</b>","<b>999</b>"],
+         ["Reduced urine output, light-headedness, a postural drop after diarrhoea and vomiting \u2014 especially on an ACE inhibitor, ARB, diuretic, metformin or NSAID","<b>Acute kidney injury</b>","<b>Hold the SADMAN drugs, check U&amp;E, same-day assessment if unwell</b>"],
+         ["<b>NEWS2 \u22655</b>, fever with rigors, looks septic","<b>Sepsis</b>","Sepsis pathway / same-day admission — and treat the source: pneumonia, pyelonephritis, abscess or cellulitis"],
+         ["Hypotension, collapse, hyponatraemia in someone on long-term steroids","<b>Adrenal crisis</b>","<b>IM hydrocortisone and 999</b>"]
+       ]},
+       {b:"why", html:"Acute illness raises the counter-regulatory hormones \u2014 <b>cortisol, catecholamines, glucagon and growth hormone</b> \u2014 which drive hyperglycaemia and ketogenesis <b>even when the patient is eating less</b>. In type 1 diabetes, reduced or omitted insulin during that surge is <b>the single commonest precipitant of DKA</b>. At the same time, dehydration from vomiting and diarrhoea reduces renal perfusion, so continuing nephrotoxic or renally-cleared drugs tips borderline kidneys into AKI \u2014 and, for metformin, raises the risk of <b>lactic acidosis</b>. <b>Recognising who cannot be managed at home is the core safety skill.</b>"},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Sick day rules have no NICE NG12 suspected-cancer criterion, and none should be invented for one. This page is an acute medication-safety task. If an illness episode turns out not to be intercurrent \u2014 unexplained weight loss, persistent symptoms, or an unexplained anaemia found on the sick-day bloods \u2014 that is a separate work-up on its own merits, not a sick-day decision"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Who is at risk", title:"The medication review \u2014 three groups, three different actions",
+     sub:"Map the patient's drugs onto these groups. That converts a vague \u201cthey're unwell\u201d into a concrete plan.",
+     blocks:[
+       {b:"table", head:["Group","Who","Action"], rows:[
+         ["<b>Insulin \u2014 type 1 or type 2 diabetes</b>","Anyone insulin-treated","Highest priority. NEVER stop it \u2014 requirements usually RISE during illness, even with reduced eating"],
+         ["<b>SADMAN drugs</b>","<b>S</b>ulfonylureas / <b>S</b>GLT2 inhibitors \u00b7 <b>A</b>CE inhibitors \u00b7 <b>D</b>iuretics \u00b7 <b>M</b>etformin \u00b7 <b>A</b>RBs \u00b7 <b>N</b>SAIDs","<b>HOLD during dehydrating illness</b>"],
+         ["<b>Long-term steroids / adrenal insufficiency</b>","Replacement or long-term steroid therapy","<b>INCREASE \u2014 sick-day dosing, not a hold.</b> See the <a href='addisons-disease.html'>Addison's disease protocol</a>"],
+         ["Other relevant drugs","<b>Lithium</b> (toxicity with dehydration \u2014 check the level and ensure hydration), <b>anticoagulants and DOACs</b> (renal dosing), <b>digoxin</b> (toxicity with AKI or an electrolyte shift)","Review and adjust"]
+       ]},
+       {b:"why", html:"SADMAN is a deliberately memorable shorthand for the drugs that either impair the kidney's ability to cope with dehydration (ACE inhibitors, ARBs, diuretics, NSAIDs), <b>accumulate dangerously in AKI</b> (metformin \u2192 lactic acidosis), <b>or cause harm when oral intake falls</b> (sulfonylureas \u2192 hypoglycaemia; SGLT2 inhibitors \u2192 euglycaemic DKA and volume depletion). An ACE inhibitor plus a diuretic plus an NSAID is the classic \u201ctriple whammy\u201d for AKI (Think Kidneys; NICE NG148)."}
+     ]},
+
+    {id:"workup", nav:"Assess", title:"What to check before deciding home versus admit",
+     sub:"Quantify the two risks — ketosis and dehydration — then judge whether the patient can actually follow oral sick-day rules.",
+     blocks:[
+       {b:"table", head:["Check","Detail","Note"], rows:[
+         ["<b>Test frequency</b>","Type 1: glucose AND ketones every 4\u20136 hours including overnight; if glucose is &gt;11 mmol/L and/or ketones are present, increase to every 2 hours. Type 2: glucose at least 4 times daily; if &gt;11 mmol/L with ketones present, glucose and ketones every 2\u20134 hours","More often than usual, always"],
+         ["<b>Target while ill</b>","Aim for a glucose of roughly &lt;11\u201315 mmol/L with ketones clear \u2014 do not chase tight control during acute illness","Urine sticks if no meter: + / ++ \u2248 1.5\u20133.0, +++ / ++++ &gt;3.0"],
+         ["<b>Blood glucose</b>","<b>Now, then 2\u20134 hourly.</b> A high glucose during illness means <b>insulin needs to rise, not fall</b>","<b>A normal glucose does not reassure on an SGLT2 inhibitor</b>"],
+         ["<b>Blood ketones \u2014 the key test</b>","&lt;0.6 normal \u00b7 0.6\u20131.5 recheck plus extra fluids \u00b7 1.5\u20133.0 correction insulin, and seek urgent advice if blood ketones are &gt;1.5 mmol/L \u00b7 \u22653.0 (&gt;3.0) is an emergency","Test in anyone unwell on an SGLT2 inhibitor even if the glucose is normal (euglycaemic DKA)"],
+         ["<b>Fluids and carbohydrate</b>","<b>Maintain hydration and carbohydrate: aim for ≥100 mL an hour.</b> If not eating or vomiting, use sugary fluids; if the glucose is high, use sugar-free. Roughly 10\u201315 g of carbohydrate every 2\u20133 hours if meals are missed","Sip regularly rather than in boluses"],
+         ["<b>Hydration and U&amp;E</b>","Postural BP, urine output, capillary refill, mucous membranes. Check U&amp;E if there has been diarrhoea and vomiting on SADMAN drugs \u2014 and hold them if AKI is likely","AKI is the second killer"],
+         ["<b>NEWS2 / sepsis</b>","Fever with rigors, tachycardia, hypotension, <b>NEWS2 \u22655</b>","Sepsis pathway / same-day admission \u2014 and treat the source: pneumonia, pyelonephritis, abscess or cellulitis"],
+         ["<b>Can they follow the rules?</b>","The pivotal question: is the patient keeping fluids down, and able to monitor and correct at home?","<b>This, not the absolute glucose, decides home versus admit</b>"]
+       ]},
+       {b:"why", html:"Assessment turns a vague \u201cunwell diabetic\u201d into two measurable risks: <b>blood ketones track evolving DKA hours before the patient looks ill</b>, and <b>U&amp;E with hydration status track impending AKI</b>. But the most decisive observation is behavioural \u2014 a patient who can keep fluids down and follow their correction plan can usually be managed at home whatever the glucose, whereas one who is vomiting with rising ketones needs admission even if the glucose looks unalarming."}
+     ]},
+
+    {id:"ladder", nav:"Act", title:"The three actions \u2014 continue, hold, increase",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"\ud83d\udc89 Insulin \u2014 NEVER stop", html:"Continue basal insulin even if not eating \u2014 stopping insulin is the commonest avoidable cause of DKA. <b>Monitor glucose every 2\u20134 hours</b> including overnight if unwell. Check ketones if the glucose is &gt;13\u201315 mmol/L or the patient feels unwell. Correction doses: extra rapid-acting insulin, often around 10\u201320% of the total daily dose, per the individual plan \u2014 <b>repeat 2-hourly with a recheck</b>. <b>Stay hydrated \u2014 sip regularly, aiming for about 3 L a day</b>; sugary drinks if not eating and the glucose is not high, water or sugar-free if it is."},
+         {tone:"red", h:"\ud83d\udc8a Steroids \u2014 DOUBLE, don't hold", html:"Oral, intercurrent illness or fever: double the usual oral hydrocortisone (or equivalent) for the duration, then return to normal on recovery. Vomiting or unable to take oral: give IM hydrocortisone \u2014 the emergency injection, which anyone can give \u2014 and seek urgent help. Surgery or procedures need additional peri-procedure cover, arranged in advance. Check the patient has a steroid emergency card, MedicAlert, and an in-date IM hydrocortisone kit."}
+       ]},
+       {b:"table", head:["SADMAN drug \u2014 HOLD","Examples","Why"], rows:[
+         ["<b>Sulfonylureas</b>","Gliclazide, glimepiride, glipizide","<b>Hypoglycaemia risk if not eating \u2014 hold while intake is poor</b>"],
+         ["<b>SGLT2 inhibitors</b>","Dapagliflozin, empagliflozin, canagliflozin","<b>Stop \u2014 euglycaemic DKA and volume depletion.</b> Restart when well and eating and drinking normally"],
+         ["<b>ACE inhibitors / ARBs</b>","Ramipril, lisinopril, perindopril; losartan, candesartan, irbesartan, valsartan","Reduce renal perfusion in dehydration (loss of efferent vasoconstriction) \u2192 AKI and hyperkalaemia. Hold"],
+         ["<b>Diuretics</b>","Furosemide, bendroflumethiazide, indapamide, spironolactone","<b>Volume depletion \u2192 AKI.</b> Hold"],
+         ["<b>Metformin</b>","\u2014","<b>Accumulates in AKI \u2192 lactic acidosis.</b> Hold"],
+         ["<b>NSAIDs</b>","Ibuprofen, naproxen, diclofenac \u2014 <b>including over-the-counter purchases</b>. <b>Use paracetamol for symptom relief instead</b>","<b>Nephrotoxic in dehydration.</b> Hold, and avoid generally"],
+         ["<b>Restart rule</b>","All of the above","Restart once the patient has been eating and drinking normally for 24\u201348 hours. Recheck U&amp;E before or after restarting an ACE inhibitor, ARB or diuretic if there was an AKI"]
+       ]},
+       {b:"warn", html:"<b>Holding is temporary \u2014 make sure the patient knows to restart.</b> Unintended permanent discontinuation of an ACE inhibitor after an admission is a common medicines-safety error, and the restart step matters as much as the hold: a documented, time-limited hold with a clear restart trigger prevents both the acute harm and the downstream harm of a chronically-needed drug being dropped by accident."},
+       {b:"why", html:"Two mechanisms are worth holding onto. <b>Ketone monitoring is the early-warning system</b> \u2014 a rising blood ketone identifies evolving DKA hours before the patient looks unwell, allowing extra insulin and fluids at home to abort it; the diabetes team teaches the correction algorithm, and the GP's job is to reinforce it, ensure the patient has strips and a plan, and recognise when home management is failing. And in adrenal insufficiency the body cannot mount the cortisol surge that illness demands, so without extra exogenous steroid the patient decompensates into an adrenal crisis \u2014 hypotension, collapse, hyponatraemia. Each SADMAN drug, by contrast, is safe in health and harmful only in the specific physiology of acute dehydrating illness, so holding it for the duration removes the harm without meaningfully worsening the condition it treats."}
+     ]},
+
+    {id:"lifestyle", nav:"The written plan", title:"Self-management and prevention \u2014 the sick-day card",
+     sub:"When someone is vomiting and frightened at 2am, nobody reads a leaflet for the first time.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"\ud83d\udccb Personalised sick-day card", html:"Which drugs to hold, never to stop insulin, and when to restart \u2014 written down, before they are ever ill."},
+         {tone:"blue", h:"\ud83e\ude78 Ketone testing kit", html:"Ensure insulin-treated patients have a blood-ketone meter, in-date strips, and know the action thresholds."},
+         {tone:"plain", h:"\ud83d\udca7 Fluids and carbohydrate", html:"Sip fluids regularly; sugary drinks if not eating and the glucose is not high, sugar-free if it is."},
+         {tone:"amber", h:"\ud83d\udd01 Annual reinforcement", html:"Revisit sick-day rules at diabetes and medication reviews, and after any DKA admission."},
+         {tone:"green", h:"\ud83d\udc89 Vaccination", html:"Annual influenza, plus pneumococcal and COVID vaccination, to reduce illness episodes."},
+         {tone:"green", h:"\u2705 Restart reminder", html:"Reconcile medicines after illness so held drugs are restarted and not lost."}
+       ]},
+       {b:"why", html:"Sick-day rules only work if the patient knows them before they become unwell. Proactive, written, personalised plans and ketone kits are the evidence-based way to stop an illness at home from becoming a DKA admission."}
+     ]},
+
+    {id:"monitor", nav:"Safety-net", title:"Follow-up, restart rules and safety-netting",
+     blocks:[
+       {b:"table", head:["Tell every patient","Trigger"], rows:[
+         ["<b>999 if</b>","Persistent vomiting and unable to keep fluids down, blood ketones \u22653, drowsiness or confusion, deep rapid breathing, abdominal pain, or collapse"],
+         ["<b>Same-day if</b>","Ketones rising despite correction doses, glucose persistently very high or very low, reduced urine output, or feeling steadily worse"],
+         ["<b>Restart held drugs</b>","Once eating and drinking normally for 24\u201348 hours. Recheck U&amp;E after an AKI before restarting an ACE inhibitor, ARB or diuretic"],
+         ["<b>Reconcile</b>","After any illness or admission, review the medication list so temporarily-held drugs are restarted and SGLT2 inhibitors resumed appropriately"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"\ud83d\udd01 The two failure modes to design against", html:"<b>1 Under-escalation</b> \u2014 a patient struggling at home who should have been admitted. The guard is an explicit, time-bound safety-net with named thresholds rather than \u201ccome back if worse\u201d. <b>2 The silent medicines-safety error</b> \u2014 a held drug never restarted. The guard is a deliberate medicines-reconciliation step after every illness episode. <b>Explicit safety-netting and reconciliation close both gaps.</b>"}
+       ]},
+       {b:"say", html:"While you are ill, three different things happen to your tablets, so let me be clear about each. Your insulin never stops \u2014 illness pushes your sugars up even when you are not eating, and stopping it is what causes people to end up in hospital. These tablets here we pause, because while you are dehydrated they can damage your kidneys. And if you were on steroids you would double them, not stop them. Sip fluids, check your sugars every few hours, and check ketones if you feel rough. Restart the paused tablets once you have been eating and drinking normally for a day or two \u2014 I will write all of it down."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When to admit or escalate",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / same-day", html:"Suspected DKA or HHS, persistent vomiting unable to keep fluids down, drowsiness or confusion, blood ketones \u22653, sepsis, severe dehydration or AKI, or adrenal crisis."},
+         {tone:"amber", h:"Discuss with the diabetes team", html:"Ketones rising despite correction doses, uncertainty about insulin adjustment, or recurrent sick-day decompensation."},
+         {tone:"cream", h:"Manage at home", html:"Tolerating fluids, ketones controlled, glucose monitored, a written plan in place and able to seek help \u2014 safety-net clearly."}
+       ]},
+       {b:"why", html:"The admission threshold is set by the patient's ability to follow oral sick-day rules and by the ketone trajectory \u2014 not by the absolute glucose. A patient with a very high glucose who is alert, hydrating and clearing ketones can often be managed at home; a patient with a near-normal glucose who is vomiting with rising ketones \u2014 for example on an SGLT2 inhibitor \u2014 needs admission."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 58-year-old with type 2 diabetes rings on day two of a vomiting illness. He takes metformin, dapagliflozin, gliclazide, ramipril, indapamide, and has been taking ibuprofen for the aches. He has stopped eating, is \u201cdrinking a bit\u201d, and mentions his glucose is <b>7.8</b> \u2014 so he assumes everything is fine."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does not accept the normal glucose as reassurance \u2014 he is on an SGLT2 inhibitor, so ketones must be checked; identifies <b>five SADMAN drugs plus an OTC NSAID</b> and holds them; assesses <b>hydration, urine output and the ability to keep fluids down</b>; checks <b>U&amp;E</b>; recognises the <b>triple whammy</b>; gives explicit <b>ketone thresholds</b> rather than \u201ckeep an eye on it\u201d; sets a clear <b>admission trigger</b>; and \u2014 the step candidates miss \u2014 states the restart rule and arranges reconciliation, so the ramipril is not silently lost."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>TREND Diabetes / Diabetes UK \u2014 Sick Day Rules</b><br><a href="https://trend-uk.org" rel="noopener">trend-uk.org</a><span class="rd"> \u2014 the patient-facing sick-day rules: never stop insulin, testing frequency, ketone action thresholds, fluid and carbohydrate targets</span></li>'+
+         '<li><b>JBDS-IP \u2014 Management of DKA and HHS in adults</b><span class="rd"> \u2014 the DKA and HHS definitions and thresholds behind the admission criteria, and fixed-rate insulin infusion in hospital</span></li>'+
+         '<li>MHRA Drug Safety Update \u2014 SGLT2 inhibitors and diabetic ketoacidosis<span class="rd"> \u2014 euglycaemic DKA: check ketones in anyone unwell on an SGLT2 inhibitor even when the glucose is normal, and withhold during acute illness</span></li>'+
+         '<li><b>NICE NG28 (type 2 diabetes) and NG17 (type 1 diabetes)</b><br><a href="https://www.nice.org.uk/guidance/ng28" rel="noopener">nice.org.uk/guidance/ng28</a><span class="rd"> \u2014 monitoring during intercurrent illness and the insulin-adjustment principles</span></li>'+
+         '<li><b>NICE NG148 \u2014 Acute kidney injury</b><br><a href="https://www.nice.org.uk/guidance/ng148" rel="noopener">nice.org.uk/guidance/ng148</a><span class="rd"> \u2014 the drugs to hold in dehydration, and the ACE inhibitor + diuretic + NSAID \u201ctriple whammy\u201d (with Think Kidneys)</span></li>'+
+         '<li><b>Society for Endocrinology / NICE NG243 \u2014 Adrenal insufficiency</b><br><a href="https://www.nice.org.uk/guidance/ng243" rel="noopener">nice.org.uk/guidance/ng243</a><span class="rd"> \u2014 steroid sick-day dosing: double oral hydrocortisone during fever, IM hydrocortisone if vomiting, emergency card and kit</span></li>'+
+         '<li><b>NICE NG17 (type 1) \u00b7 NG28 (type 2)</b><br><a href="https://www.nice.org.uk/guidance/ng28" rel="noopener">nice.org.uk/guidance/ng28</a><span class="rd"> \u2014 primary-care sick-day advice and escalation thresholds</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Sick day rules \u2014 TREND Diabetes / Diabetes UK, JBDS-IP, MHRA Drug Safety Update, NICE NG28, NG17, NG148 and NG243. This page replaces the former sick-day-rules algorithm; DKA itself and insulin adjustment in illness have their own protocols. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

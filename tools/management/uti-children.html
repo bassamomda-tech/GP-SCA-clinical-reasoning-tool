@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UTI in children — Protocol · Reasoning GP</title>
+<meta name="description" content="Urinary tract infection in children under NICE NG224: the under-3-months rule, how to get a usable urine sample by age, dipstick interpretation that changes with age, antibiotic choice and duration for lower and upper tract infection, the imaging schedule, atypical and recurrent definitions, and when renal scarring matters." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/uti-children.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="UTI in children protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧒",
+  title:"UTI in children — the complete guide",
+  eyebrow:"Protocol · NICE NG224 · age changes every rule on this page",
+  stemTitle:"Under 3 months with a fever, a suspected UTI is a hospital problem — and above that age the whole management hinges on whether this is upper or lower tract, typical or atypical, first or recurrent",
+  stemSub:"For the diagnostic reasoning use the <a href='../algorithms/uti-children.html'>UTI in children pathway</a>. This page is the management: getting a sample that means something, reading a dipstick whose interpretation changes with age, choosing the antibiotic and the duration, deciding who needs imaging and when, and recognising the atypical or recurrent picture that leads to scarring, hypertension and — rarely — chronic kidney disease. The commonest error is not the antibiotic choice: it is treating a bag or pad sample as diagnostic, and never arranging the imaging.",
+  guideline:"NICE NG224 · NG143 · BNFc",
+  reviewed:"12 September 2026",
+  nextReview:"12 March 2027",
+  meta:[
+    {t:"NICE NG224 — UTI in under 16s: diagnosis and management (2022)"},
+    {t:"NICE NG224 — UTI in under 16s: imaging and follow-up"},
+    {t:"NICE NG143 — fever in under 5s"},
+    {t:"Under 3 months + fever → same-day paediatrics", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Red flags</b><small>Under 3 months · sepsis</small></a><a href="#sample"><b>The sample</b><small>Method by age</small></a><a href="#diagnose"><b>Dipstick</b><small>Interpretation by age</small></a><a href="#treat"><b>Antibiotics</b><small>Upper vs lower</small></a><a href="#imaging"><b>Imaging</b><small>USS · DMSA · MCUG</small></a></div>',
+  quickSub:"If you read nothing else, read these six. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Under 3 months with fever — refer, do not treat", html:"An infant under 3 months with a fever or a suspected UTI must be referred for same-day paediatric assessment and treated with parenteral antibiotics per NG143. <b>Do not send a urine and wait, and do not start oral antibiotics.</b> UTI at this age is frequently bacteraemic, the signs are non-specific (poor feeding, vomiting, lethargy, jaundice, failure to thrive, irritability), and <b>fever may be absent or the infant may be hypothermic</b>."},
+    {tone:"amber", h:"A bag or pad sample cannot diagnose a UTI", html:"Clean-catch is the recommended method in a child who is not toilet-trained; only if that is not possible use a pad or catheter sample, or suprapubic aspiration in secondary care. Bag and pad samples have high contamination rates, so a positive result must be confirmed before a child is labelled and committed to imaging. A negative result on a good sample is useful; a positive result on a poor one is a decision to repeat, not to treat."},
+    {tone:"blue", h:"Dipstick interpretation depends on age", html:"Under 3 years: do not rely on the dipstick — send urine for microscopy and culture. 3 years and over: nitrite positive ≈ treat (start antibiotics and send culture); leucocyte positive with nitrite negative → send culture and do not start antibiotics unless there is good clinical evidence of UTI; both negative → UTI unlikely, look elsewhere. Nitrites are the more specific of the two — leucocytes alone have many other causes, including any febrile illness."},
+    {tone:"blue", h:"Upper or lower decides the drug and the duration", html:"Acute pyelonephritis / upper UTI (fever 38 °C or above, or loin pain or tenderness with bacteriuria): oral antibiotic for 7–10 days — co-amoxiclav or cefalexin per local sensitivities — or admit for IV if unwell or under 3 months. Lower UTI / cystitis: 3 days of trimethoprim, nitrofurantoin, amoxicillin or cefalexin, guided by local resistance, with a review if still unwell at 48 hours."},
+    {tone:"green", h:"Safety-net at 24–48 hours, in words the parent can act on", html:"Tell the parent to return if the child is not improving within 24–48 hours, is drinking poorly, is vomiting everything, becomes drowsy or floppy, or develops a new fever. <b>Give the sepsis signs explicitly.</b> Failure to respond within 48 hours means reassess, review the culture and sensitivities, and consider atypical UTI and urgent imaging — not simply a second course of the same antibiotic."},
+    {tone:"purple", h:"🟣 Statutory and safeguarding duties", html:"Recurrent UTI in a child is a recognised safeguarding consideration where there is also poor attendance, unexplained injury, neglect, or a disclosure — follow local safeguarding procedures, and consider sexual abuse where there is genital trauma, an STI or a behavioural change. UTI is not itself evidence of abuse, and must not be presented as such — but it can be the presentation that brings a neglected child to attention, and that duty overrides confidentiality."}
+  ],
+  pathwaySub:"Five decisions, in order. Getting the first two right prevents most of the downstream error.",
+  pathway:[
+    {title:"Is this child under 3 months, or septic at any age?", html:"Under 3 months with fever or suspected UTI → same-day paediatric referral for parenteral antibiotics. Any age with sepsis features, dehydration, inability to tolerate oral fluids or a rapidly deteriorating course → emergency admission.", alert:true},
+    {title:"Get a urine sample that actually means something", html:"<b>Clean-catch if not toilet-trained; mid-stream if toilet-trained.</b> Pad or catheter only if clean-catch is impossible. Send for microscopy, culture and sensitivities in every child under 3 years, and in any child with suspected upper UTI, atypical features or recurrence."},
+    {title:"Interpret by age, then decide on treatment", html:"<b>Under 3 years: culture decides.</b> 3 years and over: nitrites drive the decision, leucocytes alone do not. Then classify: <b>upper tract (fever ≥38 °C or loin pain) or lower tract</b>."},
+    {title:"Treat for the right duration, and safety-net", html:"<b>Upper: 7–10 days oral, or IV if unwell. Lower: 3 days.</b> <b>Review at 48 hours if not improving, with the culture in front of you.</b> Adjust to sensitivities rather than escalating blindly."},
+    {title:"Decide who needs imaging — and actually arrange it", html:"Atypical or recurrent UTI, and all infants under 6 months, follow the NG224 imaging schedule (USS, DMSA, MCUG). The most consistently missed step in the whole pathway is the follow-up imaging request."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Red flags", title:"Red flags — the age rule, and the child who is more than infected",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["<b>Under 3 months with fever, or any suspected UTI at this age</b>","High rate of bacteraemia and meningitis; clinical signs are unreliable and localising features absent","Same-day paediatric assessment and parenteral antibiotics per NG143. Do not start oral antibiotics and do not wait for a culture"],
+         ["Any age: mottled or ashen skin, non-blanching rash, reduced consciousness, weak or high-pitched cry, grunting, tachypnoea, prolonged capillary refill, reduced urine output","<b>Sepsis</b>","<b>999 / emergency admission. Do not delay for a urine sample</b>"],
+         ["Unable to tolerate oral fluids or oral antibiotics; persistent vomiting; clinical dehydration","<b>Oral therapy will fail regardless of the organism</b>","<b>Admit for IV antibiotics and fluids</b>"],
+         ["<b>Fever 38 °C or above, loin pain or tenderness, systemic upset</b>","<b>Acute pyelonephritis / upper UTI — the form that causes renal scarring</b>","7–10 days of oral antibiotics, or admission if unwell or under 3 months. Culture mandatory"],
+         ["<b>Not responding within 48 hours of an appropriate antibiotic</b>","Atypical UTI: resistant organism, obstruction, abscess, or a wrong diagnosis","Reassess in person, review culture and sensitivities, and arrange urgent ultrasound during the acute infection"],
+         ["Non-E. coli organism, poor urine flow, abdominal or bladder mass, raised creatinine, septicaemia","<b>Each is an NG224 marker of ATYPICAL UTI and triggers imaging</b>","Ultrasound during the acute infection, and the NG224 schedule thereafter — see <a href='#imaging'>Imaging</a>"],
+         ["<b>Faltering growth, hypertension, or a known antenatal renal abnormality</b>","Underlying renal tract abnormality, reflux nephropathy or established scarring","Paediatric nephrology referral, blood pressure and renal function, not just another antibiotic course"],
+         ["Recurrent UTI with neglect, poor attendance, unexplained injury, genital trauma or a disclosure","<b>Safeguarding concern</b>","Follow local safeguarding procedures and discuss with the named professional. UTI alone is not evidence of abuse"]
+       ]},
+       {b:"warn", html:"The two failures that cause harm here are both administrative rather than clinical. One: a UTI diagnosed on a pad or bag sample, which labels a child, triggers imaging they did not need, and obscures the real cause of the fever. Two: a genuine upper UTI treated correctly and then never imaged or followed up — the scarring that leads to hypertension and, rarely, chronic kidney disease accrues silently over years, and the moment it could have been detected was the request you did not make. Both are prevented by the same discipline: a proper sample, and the imaging decision made at the time of diagnosis rather than left to the next clinician."}
+     ]},
+
+    {id:"sample", nav:"The sample", title:"Getting a urine sample that can be believed",
+     sub:"Almost every downstream error in this pathway starts with a contaminated sample.",
+     blocks:[
+       {b:"table", head:["Situation","Method","Practical detail"], rows:[
+         ["<b>Not toilet-trained (infant or toddler)</b>","<b>Clean-catch urine — the recommended method</b>","Remove the nappy, clean the area with water, and wait with a sterile pot. Cold water on the abdomen or the sound of running water triggers voiding; feeding an infant often prompts a void within minutes. It takes patience and a parent who has been told what to do — allow for it in the appointment rather than defaulting to a pad"],
+         ["<b>Clean-catch genuinely not possible</b>","<b>Urine collection pad</b> (not cotton wool, gauze or sanitary towels)","<b>Change the pad frequently and transfer promptly.</b> Higher contamination rate — treat a positive result as provisional and confirm it before committing the child to a diagnosis"],
+         ["<b>Toilet-trained child</b>","<b>Mid-stream clean sample</b>","Explain it to the child and the parent; the first part of the stream carries the periurethral contamination"],
+         ["Severely unwell, or a sample needed urgently and non-invasive methods have failed","Catheter sample or suprapubic aspiration — in secondary care, ideally ultrasound-guided","<b>Never delay antibiotics in a septic child to obtain a clean sample</b>"],
+         ["<b>Sample cannot reach the laboratory within 4 hours</b>","<b>Refrigerate, or use a boric acid container filled to the correct line</b>","<b>An overfilled or underfilled boric acid container gives a false result</b> — the preservative concentration matters"],
+         ["<b>When to send for microscopy, culture and sensitivities</b>","Every child under 3 years · suspected upper UTI or acute pyelonephritis · any infant under 3 months · atypical or recurrent UTI · a high risk of serious illness · not responding to treatment at 48 hours · a single positive dipstick result in a child 3 years or over that is being acted on","Culture is the reference standard, and the only way the sensitivities that matter at 48 hours ever become available"]
+       ]},
+       {b:"say", html:"I need a clean urine sample, and with a child this age that takes a few minutes of patience rather than a special device. Take the nappy off, clean the area with plain water, and just wait with the pot ready — one of you holding her, one of you poised. Two things often trigger it: a feed, or running the cold tap nearby. If we truly cannot catch it we can use a special pad, but the catch is more reliable, and that matters: a contaminated sample can tell us there is an infection when there isn't, and that means antibiotics she doesn't need and scans she doesn't need. So it is worth the ten minutes now."}
+     ]},
+
+    {id:"diagnose", nav:"Dipstick", title:"Dipstick and culture — and why the age threshold exists",
+     blocks:[
+       {b:"table", head:["Age","Dipstick role","What to do"], rows:[
+         ["<b>Under 3 months</b>","<b>Irrelevant to the decision</b>","Refer for same-day paediatric assessment; urine microscopy and culture are done there"],
+         ["<b>3 months to under 3 years</b>","<b>Do not rely on it</b>","<b>Send urine for microscopy, culture and sensitivities.</b> Start antibiotics if the clinical picture suggests UTI, then adjust on the culture. <b>Dipstick nitrites and leucocytes are both unreliable in this age group</b>"],
+         ["<b>3 years and over — nitrite POSITIVE (leucocyte either)</b>","<b>Good predictive value</b>","<b>Treat as UTI: start antibiotics and send a culture</b>"],
+         ["<b>3 years and over — leucocyte positive, nitrite negative</b>","Weak; leucocytes rise in any febrile illness, in balanitis, vulvitis, appendicitis and Kawasaki disease","Send urine for culture and do NOT start antibiotics unless there is good clinical evidence of UTI. Treat on the culture result"],
+         ["<b>3 years and over — both negative</b>","<b>UTI unlikely</b>","<b>Do not treat as UTI; look for another source of the fever</b>"],
+         ["<b>Asymptomatic bacteriuria — a positive culture with no symptoms</b>","<b>Not a UTI</b>","<b>Do NOT treat.</b> Treating it does not prevent symptomatic infection or scarring, and it selects resistance"]
+       ]},
+       {b:"why", html:"The under-3-years dipstick exception is not caution for its own sake — it reflects two physiological facts. Nitrites are produced by bacterial conversion of dietary nitrate, which needs urine to dwell in the bladder for around four hours; infants and toddlers void far too frequently for that, so nitrites are falsely negative. And leucocyte esterase is raised by any febrile illness, which is precisely the population being tested. So in the age group where UTI is most consequential and hardest to detect clinically, the test performs worst — which is why culture is mandatory rather than advisable. Above 3 years, bladder dwell time is longer, symptoms are localisable, and nitrites become genuinely useful."}
+     ]},
+
+    {id:"treat", nav:"Antibiotics", title:"Antibiotic choice and duration",
+     sub:"Always check the local sensitivity pattern and the current BNFc dose for weight and age — resistance is local and doses change.",
+     blocks:[
+       {b:"table", head:["Situation","Treatment","Notes"], rows:[
+         ["<b>Under 3 months, any suspected UTI</b>","<b>Refer immediately for parenteral antibiotics (NG143)</b>","<b>No oral antibiotic in primary care at this age</b>"],
+         ["Upper UTI / acute pyelonephritis, 3 months or over, well enough for oral","Oral antibiotic for 7–10 days — co-amoxiclav or cefalexin, per local sensitivities","<b>The longer course is what protects the kidney.</b> Culture is mandatory; review at 48 hours if not improving. Admit for IV if vomiting, dehydrated or systemically unwell"],
+         ["<b>Lower UTI / cystitis, 3 months or over</b>","3 days of trimethoprim, nitrofurantoin, amoxicillin or cefalexin, guided by local resistance","<b>Three days is sufficient for lower tract infection</b> — longer courses add adverse effects and resistance without benefit. Review if still unwell at 48 hours. Amoxicillin only where sensitivity is known, because E. coli resistance is high"],
+         ["<b>Adjusting on the culture</b>","<b>Switch to the narrowest effective agent the organism is sensitive to</b>","Even if the child has improved, a resistant organism on culture with ongoing symptoms means a change — not a wait"],
+         ["<b>Not improving at 48 hours</b>","Reassess in person; review culture and sensitivities; arrange ultrasound during the acute infection; consider admission","<b>This is the definition of atypical UTI, and it triggers imaging</b> — see <a href='#imaging'>Imaging</a>"],
+         ["<b>Antibiotic prophylaxis</b>","<b>Not recommended routinely after a first UTI.</b> <b>Consider in recurrent UTI, on specialist advice</b>","Usually trimethoprim or nitrofurantoin at a night-time prophylactic dose. NG224 both position prophylaxis as a specialist decision, not a primary-care default"],
+         ["<b>Symptom relief and fluids</b>","<b>Paracetamol or ibuprofen for pain and fever; encourage fluids</b>","<b>Do not use ibuprofen in dehydration or suspected renal impairment.</b> Treat constipation, which is a genuine and very common contributor"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"⛔ Do not treat asymptomatic bacteriuria", html:"<b>A positive culture in a well, asymptomatic child is not a UTI.</b> Treating it does not prevent symptomatic infection or renal scarring, and it drives resistance and unnecessary imaging."},
+         {tone:"amber", h:"⚠ Nitrofurantoin does not treat the kidney", html:"Nitrofurantoin achieves bladder but not renal tissue concentrations — it is a lower-tract drug only. Using it for suspected pyelonephritis is a recognised and serious error. <b>Also avoid it under 3 months.</b>"},
+         {tone:"amber", h:"⚠ Trimethoprim in pregnancy and folate", html:"In an adolescent who might be pregnant, trimethoprim is a folate antagonist and is avoided in the first trimester. Ask about pregnancy in any girl of reproductive age before prescribing, and offer contraception and sexual-health advice where relevant."},
+         {tone:"green", h:"✓ Prevention that actually works", html:"Treat constipation, address dysfunctional voiding (deferring, rushing, incomplete emptying), ensure adequate fluids, and encourage double voiding where advised. Constipation and voiding dysfunction are the two most treatable causes of recurrence — and are routinely overlooked in favour of prophylaxis."}
+       ]}
+     ]},
+
+    {id:"imaging", nav:"Imaging", title:"Imaging and follow-up — the most-missed part of this pathway",
+     sub:"NG224. Classify the episode first: typical, atypical, or recurrent.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Atypical UTI means any of</b>","Seriously ill or septicaemic · poor urine flow · abdominal or bladder mass · raised creatinine · failure to respond to suitable antibiotics within 48 hours · infection with a non-E. coli organism"],
+         ["<b>Recurrent UTI means</b>","Two or more episodes of upper UTI/acute pyelonephritis; OR one episode of upper UTI plus one or more of lower UTI; OR three or more episodes of lower UTI"]
+       ]},
+       {b:"table", head:["Age","Typical UTI, responds well","Atypical UTI","Recurrent UTI"], rows:[
+         ["<b>Under 6 months</b>","<b>Ultrasound within 6 weeks</b>","<b>Ultrasound during the acute infection · DMSA at 4–6 months · MCUG</b>","<b>Ultrasound during the acute infection · DMSA at 4–6 months · MCUG</b>"],
+         ["<b>6 months to under 3 years</b>","<b>No routine imaging</b>","<b>Ultrasound during the acute infection · DMSA at 4–6 months</b> (consider MCUG if dilatation on USS, poor flow, non-E. coli infection or a family history of reflux)","<b>Ultrasound within 6 weeks · DMSA at 4–6 months</b>"],
+         ["<b>3 years and over</b>","<b>No routine imaging</b>","<b>Ultrasound during the acute infection</b>","<b>Ultrasound within 6 weeks · DMSA at 4–6 months</b>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🔍 What each test is for", html:"<b>Ultrasound</b> — structural abnormality, obstruction, dilatation, bladder emptying. <b>DMSA scintigraphy</b> — renal parenchymal defects, i.e. established scarring; done at 4–6 months so acute inflammation does not mimic a scar. <b>MCUG</b> — vesicoureteric reflux, mainly in infants; invasive, needs antibiotic cover and a clear explanation to parents."},
+         {tone:"amber", h:"⚠ The request that never gets made", html:"Imaging is triggered at the moment of diagnosis but performed weeks later, so it depends entirely on someone creating the request and a safety-net for the result. Diarise it, tell the parent what has been arranged and when, and check the result came back — an un-actioned DMSA is the commonest silent failure in this pathway."},
+         {tone:"green", h:"✓ After a first typical UTI over 6 months", html:"No routine imaging, no prophylaxis and no routine follow-up urine culture is needed — most children have entirely normal tracts. <b>Say this to the parents explicitly</b>: the reassurance is part of the treatment, and it prevents an anxious cycle of repeat testing."},
+         {tone:"blue", h:"📋 Long-term follow-up where scarring is found", html:"Bilateral renal abnormality, impaired kidney function, raised blood pressure or proteinuria → paediatric nephrology. Where scarring is confirmed: annual blood pressure measurement, with urinalysis for proteinuria and renal function monitoring as advised. Note it in the record as a lifelong consideration — including in pregnancy."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — same day", html:"Any infant under 3 months with fever or suspected UTI · sepsis features at any age · unable to tolerate oral fluids or antibiotics · clinical dehydration · rapidly deteriorating course."},
+         {tone:"amber", h:"Urgent paediatric discussion", html:"Failure to respond to appropriate antibiotics within 48 hours · suspected atypical UTI · abdominal or bladder mass · poor urine flow · raised creatinine · recurrent upper UTI."},
+         {tone:"blue", h:"Paediatric nephrology or urology", html:"Bilateral renal abnormality · impaired kidney function · raised blood pressure or proteinuria · confirmed significant scarring on DMSA · vesicoureteric reflux needing management · known antenatal renal tract abnormality."},
+         {tone:"blue", h:"Imaging (direct request)", html:"<b>Ultrasound, DMSA and MCUG per the NG224 schedule above.</b> Include the age, the episode classification (typical, atypical, recurrent) and the organism on the request — it determines how the study is reported."},
+         {tone:"green", h:"Continence / bladder-and-bowel service", html:"Dysfunctional voiding, deferring, daytime wetting, or constipation not responding to first-line treatment. <b>This referral prevents more recurrences than prophylaxis does</b>, and is consistently underused."},
+         {tone:"purple", h:"🟣 Safeguarding", html:"Where recurrent UTI sits alongside neglect, poor engagement, unexplained injury, genital trauma, an STI or a disclosure — refer to children's social care under local safeguarding procedures. <b>A statutory duty that overrides confidentiality.</b> UTI alone is not evidence of abuse and must not be recorded as such."},
+         {tone:"cream", h:"GP management", html:"Most UTI in children over 6 months is diagnosed and treated entirely in primary care: the sample, the antibiotic, the 48-hour review, the constipation and voiding advice, the imaging request where indicated, and the parental explanation. Related pages: <a href='../algorithms/uti-children.html'>UTI in children pathway</a> · <a href='recurrent-uti.html'>recurrent UTI</a> · <a href='constipation-child.html'>constipation in children</a> · <a href='nocturnal-enuresis.html'>nocturnal enuresis</a> · <a href='../algorithms/fever-children.html'>fever in a child</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 14-month-old girl is brought in with a <b>third febrile illness in four months</b>. Today she has a temperature of <b>38.6 °C</b>, is miserable and off her food, with no rash, normal chest and ears, and a soft abdomen. Her mother has brought a <b>wet nappy in a plastic bag</b> and says the last two episodes were \"a virus\" and \"a water infection treated with three days of antibiotics\" — no sample was ever sent and no scan arranged. She opens her bowels hard pellets every third day. Mum is exhausted and asks for \"the same antibiotic as last time\"."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Declines the nappy sample and explains why</b>, arranging a clean-catch; knows the dipstick is unreliable under 3 years and sends microscopy, culture and sensitivities regardless; <b>classifies this as RECURRENT UTI</b> (three or more lower-tract episodes, or one upper plus others) and therefore triggers the NG224 imaging schedule — ultrasound within 6 weeks and DMSA at 4–6 months — rather than just prescribing again; distinguishes upper from lower tract on the fever and any loin tenderness, and picks the duration accordingly; identifies and treats the constipation as a genuine driver of recurrence; <b>does not offer prophylaxis unilaterally</b>, recognising it as a specialist decision; <b>gives an explicit 24–48 hour safety-net with the sepsis signs</b>; <b>checks the previous episodes were genuinely UTIs rather than assuming</b>; acknowledges the mother's exhaustion and validates that three illnesses in four months is worth taking seriously; and documents that imaging has been requested with a plan to check the result."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG224 — Urinary tract infection in under 16s: diagnosis and management (2022)<br><a href="https://www.nice.org.uk/guidance/ng224" rel="noopener">nice.org.uk/guidance/ng224</a><span class="rd"> — the under-3-months referral rule, urine collection methods, the age-dependent dipstick strategy, upper versus lower classification, the 7–10 day and 3-day durations, and the position on asymptomatic bacteriuria and prophylaxis</span></li>'+
+         '<li>NICE NG224 — Urinary tract infection in under 16s: imaging and follow-up<br><a href="https://www.nice.org.uk/guidance/ng224" rel="noopener">nice.org.uk/guidance/ng224</a><span class="rd"> — the definitions of atypical and recurrent UTI, and the ultrasound / DMSA / MCUG schedule by age and category</span></li>'+
+         '<li><b>NICE NG143 — Fever in under 5s: assessment and initial management</b><br><a href="https://www.nice.org.uk/guidance/ng143" rel="noopener">nice.org.uk/guidance/ng143</a><span class="rd"> — the traffic-light assessment, the parenteral-antibiotic rule under 3 months, and the sepsis features used in the safety-net</span></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> — all antibiotic doses by weight and age, the nitrofurantoin lower-tract-only limitation and its under-3-months contraindication, and trimethoprim in pregnancy</span></li>'+
+         '<li><b>NICE CG99 — Constipation in children and young people</b><span class="rd"> — the constipation management referenced as a recurrence driver</span></li>'+
+         '<li><b>Working Together to Safeguard Children · local safeguarding procedures</b><span class="rd"> — the statutory duty referenced in the safeguarding card</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"UTI in children — NICE NG224, NG224, NG143 and the BNFc. Under 3 months with fever: same-day paediatric referral and parenteral antibiotics, never an oral prescription in primary care. A clean-catch sample, because a pad or bag sample cannot diagnose a UTI. Do not rely on the dipstick under 3 years. Upper tract 7–10 days, lower tract 3 days. Classify every episode as typical, atypical or recurrent, and make the NG224 imaging request at the time of diagnosis — it is the step most often missed. Treat the constipation. Verify all doses against the BNFc for weight and age before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

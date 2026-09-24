@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Psychosis &amp; schizophrenia — Protocol · Reasoning GP</title>
+<meta name="description" content="Psychosis and schizophrenia in primary care: first-episode psychosis as a time-critical Early Intervention referral, excluding the organic causes that account for up to 20%, the positive/negative/disorganised symptom screen, antipsychotic initiation and metabolic monitoring, CBTp and family intervention, and the annual physical health review that closes the mortality gap." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/psychosis-schizophrenia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790195488559994 tools/management/psychosis-schizophrenia.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Psychosis schizophrenia protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Psychosis & schizophrenia — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"First-episode psychosis is a time-critical referral — do not wait for diagnostic certainty, because every week of untreated psychosis worsens the outcome",
+  stemSub:"One page for the whole condition: assess risk and exclude the organic causes that account for up to a fifth of apparent first episodes, characterise positive, negative and disorganised symptoms with a collateral history, refer urgently to Early Intervention in Psychosis for anyone of any age with a first episode, then hold the two things primary care owns for decades — the annual physical health review that closes a 15–20 year mortality gap, and the relapse signature.",
+  guideline:"NICE CG178 · CG155 · CG185 · Mental Health Act 1983",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE CG178 — psychosis &amp; schizophrenia in adults (2014, upd. 2020)"},
+    {t:"NICE CG155 — children &amp; young people"},
+    {t:"NICE CG185 — bipolar disorder"},
+    {t:"NHS England EIP access &amp; waiting time standard"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Risk · organic causes</small></a><a href="#confirm"><b>Characterise</b><small>Positive · negative · differential</small></a><a href="#workup"><b>Work-up</b><small>Exam · bloods · ECG</small></a><a href="#ladder"><b>Treat</b><small>EIP · antipsychotics · CBTp</small></a><a href="#monitor"><b>GP role</b><small>Physical health · relapse</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Up to 20% of apparent first-episode psychosis is organic", html:"Autoimmune encephalitis (anti-NMDA receptor), CNS infection, metabolic derangement and substance-induced psychosis must be excluded before a psychiatric diagnosis. <b>Missing encephalitis carries a mortality risk</b> — think of it with rapid onset, seizures, fever or focal signs."},
+    {tone:"red", h:"Command hallucinations are immediate danger", html:"Voices instructing violence to self or others → 999 or Mental Health Act assessment. <b>Never manage this alone in primary care.</b> Active suicidal intent with a plan and method: <b>999, and do not leave the person alone.</b>"},
+    {tone:"amber", h:"Refer without waiting for certainty", html:"Duration of untreated psychosis is the strongest MODIFIABLE predictor of outcome — each week of delay worsens prognosis. Refer all first-episode psychosis, at any age, urgently to Early Intervention in Psychosis; the NHS standard is access within 2 weeks. EIP teams assess and confirm the diagnosis — that is their job, not yours."},
+    {tone:"blue", h:"Negative symptoms are missed, and they predict function", html:"Blunted affect, alogia, avolition, anhedonia and social withdrawal often precede florid psychosis by months — and are <b>the best predictor of functional outcome</b>. Ask about them directly rather than waiting for hallucinations to be reported."},
+    {tone:"purple", h:"Baseline before any antipsychotic", html:"<b>ECG, FBC, U&amp;E, LFT, lipids, HbA1c, weight and BP before starting.</b> QTc &gt;450 ms in men or &gt;470 ms in women — seek advice before prescribing. Aripiprazole 10–15 mg has the most favourable metabolic profile and is NICE-preferred first line."},
+    {tone:"green", h:"The mortality gap is a GP responsibility", html:"People with schizophrenia die 15–20 years earlier, primarily from cardiovascular disease, and up to 40% on antipsychotics have metabolic syndrome. <b>Annual physical health reviews by GPs reduce that gap</b> — this is the single highest-value long-term action on this page."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step comes before any diagnostic label.",
+  pathway:[
+    {title:"Assess risk and screen for organic cause", html:"<b>Risk to self or others, command hallucinations, severe self-neglect</b> · <b>delirium, drug-induced, neurological</b> · acute behavioural disturbance. Acute risk → crisis team, considering the <b>Mental Health Act</b>.", alert:true},
+    {title:"Characterise the psychosis", html:"<b>Positive, negative and disorganised symptoms</b>, duration, function and insight, with a collateral history — often the most reliable information when insight is impaired."},
+    {title:"Exclude the secondary causes", html:"Full physical examination, first-line bloods, urine drug screen, HIV and syphilis serology, pregnancy test, baseline ECG. Neuroimaging only on indication."},
+    {title:"Refer, then support the treatment", html:"EIP urgently for a first episode at any age; CAMHS if under 18; CMHT for a known relapse. Antipsychotics are <b>specialist-led</b>; <b>CBTp and family intervention sit alongside them as first-line</b>."},
+    {title:"Own the long game", html:"Annual physical health review, metabolic monitoring, cannabis and smoking cessation, and a documented relapse signature with the patient and carer."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Red flags — immediate danger and organic causes",
+     sub:"Screen for organic causes and immediate risk before assuming primary psychiatric illness.",
+     blocks:[
+       {b:"table", head:["Red flag","Suggests","Action"], rows:[
+         ["<b>Command hallucinations to harm</b>","Hearing voices instructing violence to self or others","<b>999 / Mental Health Act assessment</b>"],
+         ["<b>Active suicidal intent with a plan</b>","Expressed intent plus a method","<b>999 — do not leave the person alone</b>"],
+         ["<b>Acute confusion with fever</b>","<b>Encephalitis or meningitis</b> — neck stiffness, photophobia, rash","<b>999</b>"],
+         ["<b>New-onset seizures</b>","<b>Temporal lobe epilepsy, CNS lesion</b>","<b>Same-day neurology or A&amp;E</b>"],
+         ["<b>Focal neurological signs</b>","New weakness, dysphasia, diplopia","<b>999 — stroke or CNS lesion</b>"],
+         ["<b>Severe agitation or violence risk</b>","Unable to engage safely; risk to the clinician","<b>999, with police support if needed</b>"],
+         ["<b>Rapid cognitive decline over days to weeks</b>","<b>Delirium, or dementia with BPSD</b>","<b>Same-day medical review</b>"],
+         ["<b>Substance intoxication or overdose</b>","Stimulants, cannabis, alcohol excess","<b>Same-day, with a toxicology screen</b>"]
+       ]},
+       {b:"warn", html:"<b>When someone is acutely disturbed and declines help:</b> if there is immediate risk to self or others, police can use section 136 to remove them to a place of safety for assessment — but s136 is NOT usable in a private home or garden. If there is no immediate risk and the person has calmed, arrange a Mental Health Act assessment (a section 12 (s12) approved doctor is needed). Throughout: <b>keep calm, ensure staff safety, and debrief the team afterwards.</b>"},
+       {b:"why", html:"Up to 20% of apparent first-episode psychosis has an underlying organic cause. Autoimmune encephalitis (anti-NMDA receptor), CNS infection, metabolic derangement and substance-induced psychosis must be excluded before a psychiatric diagnosis is made, and missing encephalitis carries a mortality risk. Command hallucinations represent immediate danger and require urgent psychiatric assessment — never manage them alone in primary care."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Psychosis has no NICE NG12 suspected-cancer criterion, and none should be invented for one. The relevant urgent routes here are neurological rather than oncological — <b>focal signs, new seizures or rapid onset go same-day</b>. If instead the picture is a <b>progressive focal neurological deficit</b> suggesting a brain tumour, that is the NG12 route: direct-access MRI (or CT if MRI is contraindicated) within 2 weeks for suspected brain or CNS cancer. Worth holding in mind, because <b>CNS tumours can present with psychiatric symptoms</b>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Characterise", title:"Confirm the psychotic features, then the differential",
+     sub:"Accurate symptom characterisation determines urgency and referral pathway.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Positive symptoms</b>","Hallucinations — auditory most common: voices commenting or commanding. Delusions — persecutory, referential, grandiose. Thought insertion and withdrawal. Passivity phenomena"],
+         ["<b>Negative symptoms</b>","Blunted affect, alogia, avolition, anhedonia, social withdrawal — often precede florid psychosis by months, and are frequently missed"],
+         ["<b>Disorganised symptoms</b>","Formal thought disorder (loosening of associations, tangentiality), disorganised behaviour, inappropriate affect"],
+         ["<b>Duration screen</b>","&lt;1 month → brief psychotic disorder. 1–6 months → schizophreniform. &gt;6 months with functional decline → schizophrenia criteria"],
+         ["<b>Collateral history — essential</b>","<b>Contact family or carer with consent.</b> Baseline function, timeline of change, substance use, recent stressors. <b>Often the most reliable information when insight is impaired</b>"],
+         ["<b>Mental state examination (MSE)</b>","Appearance, behaviour, speech (rate, form, content), mood, perception, cognition (orientation, memory), insight, judgement"]
+       ]},
+       {b:"table", head:["Diagnosis","Recognise it by","Action"], rows:[
+         ["<b>Primary psychosis</b>","Schizophrenia, schizoaffective disorder, delusional disorder, brief psychotic disorder","<b>Refer to EIP if this is a first episode</b>"],
+         ["<b>Bipolar I — manic with psychosis</b>","Elevated mood, grandiosity, reduced sleep, pressured speech, with mood-congruent psychotic features","<b>Urgent psychiatric referral</b> — see NICE CG185"],
+         ["<b>Severe depression with psychosis</b>","Mood-congruent psychotic features — worthlessness, guilt, nihilistic delusions — with severe depression","<b>Urgent psychiatric referral</b>"],
+         ["<b>Substance-induced</b>","Cannabis (high-potency \u201cskunk\u201d), stimulants (cocaine, amphetamine), alcohol withdrawal (hallucinosis), LSD","<b>Urine drug screen essential</b>"],
+         ["<b>Organic or secondary</b>","Delirium, dementia (BPSD), epilepsy, thyroid disease, B12 deficiency, HIV, neurosyphilis, autoimmune encephalitis","<b>Bloods plus neurology</b>"],
+         ["<b>At-risk mental state</b>","<b>Sub-threshold symptoms, help-seeking, brief limited psychotic episodes</b>","<b>EIP referral for monitoring and early intervention</b>"]
+       ]},
+       {b:"why", html:"<b>Treatment diverges significantly by diagnosis.</b> <b>Bipolar disorder requires mood stabilisers, not antipsychotics alone</b>, and <b>organic psychosis requires treatment of the underlying cause</b>. Brief psychotic disorder (&lt;1 month) often follows acute stress and may resolve — but still needs urgent CMHT input. And note the overlap rather than treating it as either/or: substance use and primary psychosis co-exist in roughly 50% of cases, so a positive drug screen does not exclude a primary psychosis."}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Examination and investigations",
+     sub:"A full physical examination is mandatory in all new presentations of psychosis.",
+     blocks:[
+       {b:"table", head:["Examine","Looking for"], rows:[
+         ["<b>Vital signs</b>","Temperature (infection or encephalitis), BP, HR, oxygen saturation — tachycardia with fever is an organic emergency"],
+         ["<b>Neurological examination</b>","Cranial nerves, focal deficits, cerebellar signs, primitive reflexes, meningism — any abnormality goes to neurology same-day"],
+         ["<b>Cognitive screen</b>","Orientation, MMSE or MoCA — disorientation suggests delirium or an organic cause, not primary psychosis"],
+         ["<b>Eyes</b>","Kayser-Fleischer rings (Wilson's disease — rare), nystagmus (intoxication or cerebellar), pupil abnormalities"],
+         ["<b>Thyroid</b>","<b>Goitre, lid lag, tremor — thyrotoxicosis can mimic mania or psychosis</b>"],
+         ["<b>Substance signs</b>","Needle tracks, jaundice, parotid enlargement, ataxia, the smell of alcohol"]
+       ]},
+       {b:"table", head:["Investigation","Detail"], rows:[
+         ["<b>Bloods — first line</b>","<b>FBC, U&amp;E, LFT, TFT, CRP, glucose, B12 and folate, calcium</b>"],
+         ["<b>Infection and autoimmune screen</b>","HIV test (recommended in psychosis), syphilis serology; consider NMDA-R antibodies if there is rapid onset, a young female patient, or seizures"],
+         ["<b>Urine drug screen</b>","Essential in all first episodes — cannabis, stimulants, opioids, benzodiazepines. A positive result does not exclude primary psychosis"],
+         ["<b>Pregnancy test</b>","<b>All women of reproductive age, before initiating antipsychotics</b>"],
+         ["<b>ECG</b>","Baseline QTc before antipsychotics — especially haloperidol and quetiapine. QTc above 450 ms (men) or 470 ms (women): seek advice before prescribing"],
+         ["<b>Neuroimaging</b>","MRI brain if there are focal neurological signs, a first episode in an older adult, seizures, rapid onset or atypical features — request via CMHT or neurology, not routinely from primary care"]
+       ]},
+       {b:"why", html:"Metabolic, thyroid and infection screening at first presentation is standard, and HIV testing is recommended given the high prevalence of psychiatric manifestations. A baseline ECG is essential before antipsychotic initiation, because QT prolongation increases the risk of torsades de pointes. There is also a bigger reason for the physical examination: people with severe mental illness receive fewer physical health assessments and have a 15–20 year reduced life expectancy, partly from physical comorbidity — so the first presentation is the moment to establish a baseline. Viral encephalitis and CNS tumours can present with psychiatric symptoms, which is why the neurological examination matters most."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Treatment — referral first, then medication and therapy together",
+     sub:"The GP role is assessment, safety and initiation. Most antipsychotic management should be led by EIP or the CMHT.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Refer to EIP — time-critical", when:"any first episode, any age",
+          html:"All first-episode psychosis at any age goes urgently to Early Intervention in Psychosis; the NHS access standard is 2 weeks. <b>Under 18s go to CAMHS urgently, not adult EIP.</b> <b>Do not wait for diagnostic certainty — EIP teams assess and confirm.</b> A known relapse goes to the <b>CMHT</b>: optimise treatment and address adherence."},
+         {step:"First line", title:"Aripiprazole 10–15 mg OD", when:"no particular sedation need",
+          fromLabel:"specialist-advised initiation",
+          html:"<b>Low metabolic side-effect profile — NICE-preferred first line.</b> Initiate <b>only if EIP or the CMHT advise and the patient consents</b>."},
+         {step:"Alternative", title:"Olanzapine 5–10 mg OD", when:"sedation needed",
+          fromLabel:"start 5 mg in antipsychotic-naïve patients",
+          html:"<b>Monitor weight, glucose and lipids monthly initially</b> — olanzapine causes significant metabolic syndrome: weight gain, diabetes and dyslipidaemia."},
+         {step:"Bridge only", title:"Lorazepam 1–2 mg PO/IM", when:"acute agitation",
+          fromLabel:"short-term only",
+          html:"1–2 doses only, pending specialist review. Avoid in respiratory compromise."},
+         {step:"Treatment-resistant", title:"Clozapine — specialist only", when:"after 2 antipsychotics have failed",
+          fromLabel:"CMHT-led",
+          html:"The only evidence-based treatment for treatment-resistant schizophrenia, but it requires CLOZARIL monitoring registration and mandatory neutrophil monitoring because of a 1–2% agranulocytosis risk. <b>Never initiate in primary care.</b>"}
+       ]},
+       {b:"table", head:["Stage","What to do"], rows:[
+         ["<b>Before starting any antipsychotic</b>","<b>Baseline ECG, FBC, U&amp;E, LFT, lipids, HbA1c, weight and BP</b>"],
+         ["<b>Week 4</b>","Review side effects — EPS (akathisia, parkinsonism), sedation, weight gain — and adjust the dose with the CMHT"],
+         ["<b>3 months</b>","Metabolic monitoring: weight, BP, fasting glucose, lipids — then annually thereafter"],
+         ["<b>No response after 4–6 weeks at an adequate dose</b>","<b>CMHT review for a switch, or clozapine consideration</b>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🧩 CBT for psychosis (CBTp)", html:"NICE-recommended. Reduces positive symptoms and improves insight. Minimum 16 sessions. Access via CMHT or EIP psychology."},
+         {tone:"green", h:"👨‍👩‍👧 Family intervention", html:"Reduces relapse by 50% where there is high expressed emotion in the family — the single most effective intervention for reducing relapse in those households. Refer the family to a NICE-recommended programme via EIP."},
+         {tone:"amber", h:"🌿 Cannabis cessation", html:"High-potency cannabis doubles relapse risk, and high-potency users have around 5× the risk of psychosis compared with non-users — the most important modifiable environmental risk factor. Brief intervention at every consultation; refer to drug services."},
+         {tone:"green", h:"❤️ Physical health promotion", html:"Antipsychotics increase cardiovascular risk — structured exercise 150 minutes a week, a Mediterranean diet and smoking cessation reduce the mortality gap."},
+         {tone:"cream", h:"💼 Employment and education", html:"Individual Placement and Support (IPS) via EIP — returning to work or education improves long-term outcomes, and IPS is more effective than traditional vocational services."},
+         {tone:"plain", h:"🤝 Carer support", html:"Signpost Rethink Mental Illness, Mind and local carers' groups. Carer's assessment via the GP or social care. Identify a named carer."},
+         {tone:"plain", h:"🍺 Substance use", html:"Address all substances — alcohol and stimulants worsen psychosis. Dual diagnosis pathway if the comorbidity is significant. Non-judgemental approach."},
+         {tone:"blue", h:"😴 Sleep hygiene", html:"<b>A regular sleep-wake cycle matters — disruption precipitates relapse.</b> Avoid screens, and caffeine after 2pm. <b>Assess insomnia as an early relapse sign.</b>"}
+       ]},
+       {b:"why", html:"Antipsychotics are effective in 70–80% of first-episode psychosis when used adequately, and starting at low doses reduces extrapyramidal side effects. Aripiprazole has the most favourable metabolic profile; olanzapine and clozapine cause significant metabolic syndrome. But medication is only half of it: CBTp and family intervention sit alongside antipsychotics as first-line treatment, not as optional extras."}
+     ]},
+
+    {id:"monitor", nav:"GP role", title:"Follow-up, monitoring and the relapse signature",
+     sub:"Shared care with EIP or the CMHT — the annual physical health review is a core GP responsibility.",
+     blocks:[
+       {b:"table", head:["When","What"], rows:[
+         ["<b>1–2 weeks</b>","Medication tolerance, EPS — akathisia is restlessness, often mistaken for worsening psychosis — sedation, and compliance"],
+         ["<b>4–6 weeks</b>","Treatment response — are positive symptoms improving? Liaise with EIP or CMHT. Weight and BP"],
+         ["<b>3 months</b>","Full metabolic review: weight, BMI, BP, fasting glucose, lipids, HbA1c. Depression screen with PHQ-9"],
+         ["<b>Annual</b>","Full physical health review: cardiovascular risk (QRISK), metabolic monitoring, dental health, eye examination, smoking status, substance use — with SMI register recall"],
+         ["<b>Relapse signature</b>","Document the individual early warning signs with the patient and carer — sleep disruption, social withdrawal and irritability often precede florid relapse by 2–4 weeks"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999", html:"Return of command hallucinations, expressed intent to harm self or others, severe agitation, or organic symptoms (fever, confusion)."},
+         {tone:"amber", h:"🟠 Same-day GP", html:"Significant deterioration in mental state, new concerns from a carer, or a suspected medication side effect — for example dystonia, or neuroleptic malignant syndrome."},
+         {tone:"red", h:"⚠️ Neuroleptic malignant syndrome", html:"Rare but life-threatening — hyperthermia, rigidity and altered consciousness. Requires immediate cessation of the antipsychotic and emergency admission."},
+         {tone:"green", h:"📋 Crisis plan", html:"<b>Give crisis contacts and a written safety plan</b>, and make sure the carer has them too."}
+       ]},
+       {b:"why", html:"Up to 40% of patients on antipsychotics have metabolic syndrome, and annual physical health reviews by GPs reduce the mortality gap — that is the strongest argument for the SMI register recall being taken seriously rather than treated as a tick-box. Relapse signatures allow early intervention and reduce the need for hospitalisation. And GP–CMHT communication is essential: GPs often see these patients more frequently and are well placed to detect early deterioration."},
+       {b:"say", html:"What you have been experiencing — the voices, and the sense that people are watching you — is something we can treat, and treating it early makes a real difference to how things go. So I am going to refer you today to a team that specialises in exactly this; I am not waiting to be certain of a label first, because the waiting is the part that does harm. Before any medication starts I want some blood tests and a heart tracing, so we have a safe baseline. Two other things matter as much as tablets: talking therapy designed for these experiences, and involving whoever is closest to you, because that halves the chance of this coming back. And I will keep seeing you for your physical health — blood pressure, weight, sugar — because that is where people with this diagnosis get let down, and I do not intend to let that happen."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / urgent", html:"Command hallucinations to harm, an active suicidal plan, violence risk, an organic emergency such as encephalitis, or being unable to assess safely."},
+         {tone:"red", h:"Same-day", html:"First-episode psychosis with significant distress, poor insight, or risk to self or others — contact the crisis team or duty psychiatrist."},
+         {tone:"amber", h:"EIP — urgent", html:"All first-episode psychosis, any age. The NHS access standard is within 2 weeks. Contact the local Early Intervention in Psychosis team directly."},
+         {tone:"blue", h:"CMHT — routine", html:"<b>At-risk mental state, sub-threshold symptoms, carer concerns.</b> Also the route for a known relapse."},
+         {tone:"purple", h:"Section 136 / Mental Health Act", html:"If the patient refuses assessment and poses a risk, police can use s136 powers — but not in a private home or garden. A GP can request an MHA assessment; a section 12 (s12) approved doctor is needed."},
+         {tone:"cream", h:"Children and adolescents", href:"", html:"Under 18 → CAMHS urgent referral, not adult EIP. Consider the CAMHS crisis line."}
+       ]},
+       {b:"why", html:"Duration of untreated psychosis is the strongest modifiable predictor of outcome — each week of delay worsens prognosis. EIP services reduce relapse rates, improve employment and reduce hospitalisation, and access is mandated for all ages with a first episode. GPs should not wait for certainty of diagnosis — EIP teams assess and confirm."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 21-year-old brought by his mother, who says he has stopped going to lectures, barely leaves his room and has been talking about the neighbours recording him. He is guarded but not hostile, smokes high-potency cannabis daily, and says he does not think anything is wrong. His mother mentions he has seemed \u201cflat\u201d since Christmas."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Takes a collateral history with consent and recognises the months of negative symptoms preceding the delusions; <b>asks directly about command hallucinations and risk</b>; screens for organic cause and arranges bloods, a urine drug screen and a baseline ECG; <b>refers urgently to EIP without waiting for diagnostic certainty</b>; knows cannabis is the key modifiable factor but does not attribute everything to it; and — the step candidates miss — engages the mother as a carer and flags the family intervention, and states the physical-health commitment rather than leaving it to the mental health team."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE CG178 — Psychosis and schizophrenia in adults: prevention and management (2014, updated 2020)<br><a href="https://www.nice.org.uk/guidance/cg178" rel="noopener">nice.org.uk/guidance/cg178</a><span class="rd"> — the EIP referral requirement, first-line antipsychotic choice, the physical health monitoring schedule, and CBTp and family intervention as first-line alongside medication</span></li>'+
+         '<li>NICE CG155 — Psychosis and schizophrenia in children and young people (2013, updated 2016)<br><a href="https://www.nice.org.uk/guidance/cg155" rel="noopener">nice.org.uk/guidance/cg155</a><span class="rd"> — the under-18 pathway and CAMHS referral</span></li>'+
+         '<li><b>NICE CG185 — Bipolar disorder (2014, updated 2023)</b><br><a href="https://www.nice.org.uk/guidance/cg185" rel="noopener">nice.org.uk/guidance/cg185</a><span class="rd"> — mania with psychosis, and why mood stabilisers rather than antipsychotics alone are needed</span></li>'+
+         '<li>NHS England — Access and Waiting Time Standard for Early Intervention in Psychosis<span class="rd"> — the 2-week access standard for first-episode psychosis, at any age; the source of the \u201cwithin 2 weeks\u201d figure used here</span></li>'+
+         '<li><b>Mental Health Act 1983 (amended 2007)</b><span class="rd"> — compulsory assessment, section 136 place-of-safety powers and their exclusion of private dwellings, and the section 12 approved doctor requirement</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion applies to psychosis; the adjacency is direct-access MRI within 2 weeks for a progressive focal neurological deficit suggesting brain or CNS cancer</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — aripiprazole, olanzapine, quetiapine, haloperidol, lorazepam and clozapine dosing and monitoring</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Psychosis and schizophrenia — NICE CG178 (adults), CG155 (children and young people), CG185 (bipolar disorder), the NHS England Access and Waiting Time Standard for Early Intervention in Psychosis, and the Mental Health Act 1983 (amended 2007). First-episode psychosis at any age is a time-critical EIP referral. The reasoning pathway for an acute psychotic presentation remains at the <a href=\"../algorithms/psychosis.html\">psychosis pathway</a>. Verify all doses against the current BNF before prescribing, and follow local EIP and CMHT pathways."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Fever in Adults Algorithm · Reasoning GP</title>
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/fever-adults.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#e74c3c;--safety-lt:#fdf3f2;--safety-bd:#f5c6c3;--diagnose:#2980b9;--diagnose-lt:#eef6fc;--diagnose-bd:#aed6f1;--treat:#27ae60;--treat-lt:#eafaf1;--treat-bd:#a9dfbf;--refer:#8e44ad;--refer-lt:#f5eef8;--refer-bd:#d2b4de;--lifestyle:#e67e22;--lifestyle-lt:#fef9f0;--lifestyle-bd:#f8c471;--light:#f8f9fa;--border:#e5e7eb;--text:#1a202c;--muted:#64748b;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08);}
+body{font-family:'DM Sans',sans-serif;background:#f0f4f8;color:var(--text);line-height:1.55;font-size:15px;padding:20px 16px 60px;}
+h3{font-family:'Source Serif 4',serif;font-weight:600;}
+.stem-banner{display:flex;align-items:center;gap:14px;background:#1a202c;color:#fff;border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;max-width:780px;margin-left:auto;margin-right:auto;}
+.sb-icon{font-size:2rem;}.stem-banner b{display:block;font-size:1.05rem;font-weight:700;}.stem-banner small{font-size:.82rem;opacity:.7;}
+.alg-progress{max-width:780px;margin:0 auto 24px;background:#fff;border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);}
+.alg-progress span{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.pcount{margin-left:auto;font-weight:700;}.pbar{flex:1;height:6px;background:#e5e7eb;border-radius:99px;min-width:80px;}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#27ae60,#2ecc71);border-radius:99px;width:0%;transition:width .4s ease;}
+.reset{margin-left:8px;font-size:.78rem;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;color:var(--muted);}
+.alg-flow{max-width:780px;margin:0 auto;display:flex;flex-direction:column;}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;position:relative;border-left:5px solid var(--border);transition:box-shadow .2s;}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);}.node[data-type="TREAT"]{border-left-color:var(--treat);}.node[data-type="REFER"]{border-left-color:var(--refer);}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);}
+.node-num{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;}
+.node[data-type="SAFETY"] .node-num{background:var(--safety);}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose);}.node[data-type="TREAT"] .node-num{background:var(--treat);}.node[data-type="REFER"] .node-num{background:var(--refer);}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle);}
+.node-head{padding:16px 56px 0 18px;}.node-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:6px;}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-lt);color:var(--safety);}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-lt);color:var(--diagnose);}.node[data-type="TREAT"] .node-tag{background:var(--treat-lt);color:var(--treat);}.node[data-type="REFER"] .node-tag{background:var(--refer-lt);color:var(--refer);}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-lt);color:var(--lifestyle);}
+.node-head h3{font-size:1rem;line-height:1.3;}
+.node-tick{padding:10px 18px 0;}.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--muted);}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:#27ae60;cursor:pointer;}
+.node.ticked{opacity:.7;}.node.ticked .node-head h3{text-decoration:line-through;color:var(--muted);}
+.node-body{padding:14px 18px 16px;}.node-body>p{font-size:.9rem;color:var(--muted);margin-bottom:12px;}
+.kv{display:grid;grid-template-columns:190px 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden;font-size:.87rem;margin-top:8px;}
+.kv>div{background:#fff;padding:9px 12px;line-height:1.45;}.kv>div:nth-child(odd){background:var(--light);font-weight:600;font-size:.82rem;}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.rftile{background:var(--safety-lt);border:1px solid var(--safety-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.rftile b{display:block;color:var(--safety);margin-bottom:2px;}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:8px;}
+.b-card{background:var(--treat-lt);border:1px solid var(--treat-bd);border-radius:8px;padding:12px;font-size:.85rem;}
+.b-cond{font-weight:700;color:var(--treat);margin-bottom:4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;}.b-drug{font-weight:700;font-size:.95rem;margin-bottom:4px;}.b-note{color:var(--muted);font-size:.82rem;}
+.ladder{display:flex;flex-direction:column;gap:0;margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+.rung{display:flex;align-items:stretch;font-size:.87rem;}.rn{min-width:80px;background:#1a202c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;text-align:center;padding:10px 6px;}.rt{flex:1;padding:10px 14px;background:#fff;border-bottom:1px solid var(--border);line-height:1.4;}.rung:last-child .rt{border-bottom:none;}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.lstile{background:var(--lifestyle-lt);border:1px solid var(--lifestyle-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px;}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;border-radius:99px;padding:2px 8px;margin:1px 2px;vertical-align:middle;}
+.pill-red{background:#fde8e8;color:#c0392b;}.pill-purple{background:#f3e8fd;color:#7c3aed;}.pill-blue{background:#e8f0fe;color:#1d4ed8;}.pill-teal{background:#e6faf8;color:#0d9488;}.pill-amber{background:#fef3c7;color:#b45309;}.pill-green{background:#dcfce7;color:#16a34a;}.pill-grey{background:#f3f4f6;color:#6b7280;}
+.why-row{border-top:1px solid var(--border);}.why-btn{width:100%;text-align:left;background:none;border:none;padding:10px 18px;font-size:.82rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:600;}.why-btn:hover{background:var(--light);}
+.caret{transition:transform .25s;}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg);}
+.why-drawer{display:none;padding:12px 18px 16px;font-size:.85rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);background:var(--light);}.why-drawer.open{display:block;}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;}
+.alg-foot{max-width:780px;margin:32px auto 0;font-size:.8rem;color:var(--muted);background:#fff;border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border);line-height:1.6;}
+@media(max-width:500px){.kv{grid-template-columns:1fr;}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr;}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css?v=3">
+<link rel="stylesheet" href="../../assets/alg-summary.css?v=6">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">🌡️</div>
+  <div><b>Fever in Adults — Systematic Primary Care Assessment</b>
+  <small>9-step pathway · sepsis recognition, the source-finding sweep, travel fever and PUO · UK GP / RCGP SCA preparation</small></div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Summary</button></div>
+  <span>Progress</span><span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- SUMMARY VIEW — inline copy of summaries/fever-adults.html; the Download PDF button prints summaries/fever-adults.html (the A4 artefact). -->
+<div id="viewSummary">
+  <div class="sum-bar"><p><b>2-page quick reference.</b> Fever in adults — sepsis recognition, the source-finding sweep and the high-risk groups. Ongoing management of each diagnosis stays in the Steps tab.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="summaries/fever-adults.html">⬇ Download PDF</button><a class="sum-open" href="summaries/fever-adults.html" target="_blank" rel="noopener">Print view ↗</a></div></div>
+  <div class="sum"><div class="page">
+  <div class="hdr"><table><tr>
+    <td>
+      <div class="brand"><b>REASONING GP</b> · Clinical algorithm · Quick reference</div>
+      <h1>Fever in adults — triage and diagnostic approach</h1>
+      <div class="sub">Daytime GP and OOH/111, face-to-face or remote. Assess physiology first, then hunt the source, then decide whether the absence of a source is safe. Ongoing management of each diagnosis is in the full Steps pathway.</div>
+    </td>
+    <td class="pg">Page 1 / 2<br><span class="tags"><span>Adults</span><span>GP + OOH</span><span>Physiology first</span><span>v1.0 · Sep 2026</span></span></td>
+  </tr></table></div>
+
+  <div class="rule"><b>Core rule.</b> Severity is judged from physiology and risk group, not from the thermometer. Use NEWS2 and the NG253 high-risk criteria in section 0 — they outrank any temperature. <b>Absence of fever does not exclude sepsis</b> — older, frail and steroid-treated patients may be normothermic or hypothermic. Neutropenia, asplenia and recent travel to a malarial area convert an ordinary-looking fever into an emergency.</div>
+
+  <!-- 0 Immediate -->
+  <div class="sec red">
+    <div class="sh"><div class="n">0</div><div class="t">Before any history: is this an emergency now? <small>Stop the consultation and call 999 if any of these is present</small></div></div>
+    <div class="note">Systolic &lt;90 mmHg (or &gt;40 below baseline) · pulse &gt;130 · respiratory rate ≥25 · SpO₂ &lt;92% on air · new altered mental state, or not responding normally to voice · mottled, ashen or cyanosed skin · <b>non-blanching rash</b> · no urine for 18 hours · NEWS2 ≥5 · fever within 6 weeks of chemotherapy. ABCDE, full observations, oxygen if hypoxic. <b>Suspected meningococcal disease with a non-blanching rash: benzylpenicillin 1.2 g IM/IV before transfer</b> (section 7). Do not delay transfer for bloods, cultures, urine or oral antibiotics.</div>
+  </div>
+
+  <!-- 1 Define -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">1</div><div class="t">Define the fever in four lines <small>Enough to place the patient in the table below</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Time</h4>&lt;5 days (usually viral) · 5–14 days (look harder) · <b>&gt;3 weeks undiagnosed = PUO</b>. Pattern, rigors, swinging fever. Antipyretics taken and when — a recorded normal temperature may be masked.</div>
+      <div class="col blue"><h4>Character</h4>Highest recorded temperature and how measured. Rigors suggest bacteraemia. Hyperthermia pictures — heatstroke, neuroleptic malignant or serotonin syndrome, thyroid storm — in which antipyretics do not work.</div>
+      <div class="col blue"><h4>Context</h4><b>Travel</b> (where, when, prophylaxis, freshwater, bites) · <b>immune status</b> (chemotherapy ≤6 weeks, biologics, DMARDs, steroids, transplant, asplenia, sickle cell, HIV, diabetes) · <b>devices</b> (catheter, line, prosthesis, pacemaker, recent surgery, dental work) · injecting drug use · new drug · pregnancy · contacts, occupation.</div>
+      <div class="col blue"><h4>Associated</h4>Sweep: cough, sputum · dysuria, frequency, flank pain · sore throat, earache, sinus or dental pain · headache, neck stiffness · abdominal pain, diarrhoea · skin breaks, bites, rash · joint swelling · <b>back pain</b> · vaginal or urethral discharge · night sweats, weight loss, bruising, lymph nodes.</div>
+    </div>
+  </div>
+
+  <!-- 2 Red flags -->
+  <div class="sec red">
+    <div class="sh"><div class="n">2</div><div class="t">Red-flag screen: trigger → concern → destination → what to do before handover <small>One row is enough; do not add up reassuring features</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:29%"><col style="width:24%"><col style="width:47%"></colgroup>
+      <tr><th>Trigger / red flag</th><th>Leading concern · destination</th><th>Do now · do not delay</th></tr>
+      <tr class="r"><td><b>NEWS2 ≥5, or any NG253 high-risk criterion</b>: systolic &lt;90, pulse &gt;130, RR ≥25, SpO₂ &lt;92%, new altered mental state, mottled or ashen skin, no urine for 18 h.</td>
+        <td>Sepsis<br><span class="pill p999">999 now</span></td>
+        <td>ABCDE, oxygen to target, IV access if it does not delay transfer. Record the full observation set <b>including respiratory rate</b> and hand it over. No oral antibiotics and review; do not wait for a CRP or urine result.</td></tr>
+      <tr class="r"><td><b>Non-blanching purpuric rash</b> (glass test), or fever with meningism: headache, neck stiffness, photophobia, vomiting, altered mental state, seizure.</td>
+        <td>Meningococcal disease · bacterial meningitis · encephalitis<br><span class="pill p999">999 + pre-alert</span></td>
+        <td><b>Benzylpenicillin 1.2 g IM/IV</b> (or ceftriaxone) as soon as possible where meningococcal disease is strongly suspected, unless it delays transfer or there is anaphylaxis. Examine the whole skin undressed — a few petechiae are enough. Notify UKHSA on suspicion, not confirmation.</td></tr>
+      <tr class="r"><td><b>Immunocompromised, or a device in situ. Fever within 6 weeks of chemotherapy</b>, known neutropenia, asplenia or sickle cell. <b>Or</b> biologics, DMARDs, high-dose steroids, transplant, advanced HIV, poor diabetes control; prosthetic joint or valve, line, catheter, pacemaker, recent surgery or instrumentation.</td>
+        <td>Neutropenic sepsis · encapsulated-organism sepsis · occult deep or device infection<br><span class="pill p999">999 / same-hour if chemotherapy ≤6 weeks, neutropenia, asplenia, sickle cell</span> <span class="pill psd">Otherwise same-day acute assessment</span></td>
+        <td>CG151: <b>immediate admission for broad-spectrum antibiotics within 1 hour</b> — send directly; no review first if it causes delay, no FBC-and-wait, no oral antibiotic. Check the alert card and standby plan. Otherwise the signs are blunted: escalate on a lower threshold and on physiology, not appearance; inspect every line, catheter and wound. Long-term steroids plus vomiting means replacement is not absorbed — <b>give parenteral hydrocortisone or admit</b>.</td></tr>
+      <tr class="r"><td><b>Fever within 1 year of travel to a malarial area</b> — especially within 6 weeks — with or without a localising source, whatever prophylaxis was taken.</td>
+        <td>Falciparum malaria · typhoid · dengue · viral haemorrhagic fever<br><span class="pill psd">Same-day admission</span></td>
+        <td>Malaria until three thick and thin films are negative — a hospital test, not an outpatient one. Early falciparum fever is usually continuous or irregular, not cyclical. <b>If travel to a VHF risk area within 21 days: telephone the local infection service and UKHSA before face-to-face assessment.</b></td></tr>
+      <tr class="r"><td><b>Fever with back pain</b>, focal spinal tenderness, or any new limb weakness, sensory level or bladder disturbance.</td>
+        <td>Discitis · spinal epidural abscess<br><span class="pill p999">999 for urgent MRI</span></td>
+        <td>Percuss the whole spine — seconds, and the only bedside test that raises the possibility. Do not attribute fever plus back pain to a coincidental musculoskeletal problem; once neurology appears the deficit may be permanent.</td></tr>
+      
+      <tr class="a"><td><b>Deep-seated infection. New murmur, or injecting drug use, with fever</b> — often weeks of malaise, sweats and weight loss on previous antibiotics. <b>Or a hot, swollen, painful joint</b> or prosthesis, with fever or upset.</td>
+        <td>Infective endocarditis · septic arthritis · prosthetic joint infection<br><span class="pill psd">Same-day medicine / orthopaedics — cultures and echo, or aspiration</span></td>
+        <td><b>Cultures or aspiration must precede any further antibiotic</b> — prior antibiotics render cultures negative and delay endocarditis by months; an oral antibiotic with review obscures the joint culture and delays washout. Never treat blind. Splinter haemorrhages, Osler's nodes, Janeway lesions, Roth spots. Gout and pseudogout mimic septic arthritis; still aspirate.</td></tr>
+      
+      <tr class="a"><td><b>Age ≥50, fever or malaise</b> with new headache, jaw claudication, scalp tenderness or any visual symptom.</td>
+        <td>Giant cell arteritis<br><span class="pill psd">Same-day rheum / acute med</span> <span class="pill p999">Emergency eye if visual</span></td>
+        <td><b>Start prednisolone now</b>: 40–60 mg daily (minimum 0.75 mg/kg); 60 mg immediately plus same-day ophthalmology with any visual symptom. Do not wait for ESR or CRP — a normal ESR does not exclude GCA. Sight loss is irreversible.</td></tr>
+      <tr class="p"><td><b>Unexplained fever with night sweats and weight loss</b>, bruising, bleeding, bone pain, or unexplained lymphadenopathy or splenomegaly.</td>
+        <td>Leukaemia · lymphoma · TB<br><span class="pill p2ww">Very urgent FBC within 48 h · suspected lymphoma referral · NICE NG12</span></td>
+        <td>FBC on the very urgent route, acted on the same day it returns. <b>Children and young people with fever plus unexplained petechiae, hepatosplenomegaly or generalised lymphadenopathy need immediate specialist assessment</b> (NG12). Cough &gt;3 weeks with sweats and weight loss: CXR, consider TB — notifiable.</td></tr>
+    </table>
+    <div class="note amber"><b>Safety rule.</b> A fever that "breaks" with paracetamol proves nothing, and a normal CRP in the first day does not exclude serious bacterial infection. In older adults a positive urine dipstick is not a source without urinary symptoms — asymptomatic bacteriuria is common, and labelling it as the cause is a recognised route to a missed pneumonia, endocarditis or spinal infection. A genuinely sourceless fever in an unwell adult is a reason to escalate, not to reassure.</div>
+  </div>
+
+  <!-- 3 Examine -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">3</div><div class="t">Focused examination and investigation <small>Only after the emergency question is answered; remote assessment that cannot deliver these is an escalation criterion</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Observations</h4>Temperature, pulse, BP, <b>respiratory rate</b>, SpO₂, conscious level, capillary refill, blood glucose, NEWS2. Respiratory rate is the most sensitive early marker and the most often omitted.</div>
+      <div class="col blue"><h4>System examination</h4>Chest and heart sounds (listen for a new murmur) · abdomen including renal angles, liver, spleen · throat, teeth, ears, sinuses · all lymph node groups · calves. Pelvic or PR where indicated.</div>
+      <div class="col blue"><h4>Targeted signs</h4><b>Whole skin undressed</b> for non-blanching rash, cellulitis, ulcers, bites, injection sites, embolic signs — include back, buttocks, between the toes. <b>Percuss the whole spine.</b> Examine every joint, line, catheter, wound and pacemaker site. Fundoscopy.</div>
+      <div class="col blue"><h4>Investigations</h4>None if well, &lt;5 days, with a clear source. Otherwise question-led: FBC with differential, CRP, U&amp;Es, LFTs, LDH, ESR, HIV test, blood cultures before antibiotics, urine culture, CXR (highest yield). Not in primary care: malaria films, echo, CT, MRI — via the acute or specialist route.</div>
+    </div>
+  </div>
+
+  <div class="foot">Colour is semantic: red = emergency now · amber = same-day acute assessment · blue = define/assess · green = benign diagnosis established · purple = uncertain / specialist route. Continued on page 2: classification, cause classifier, routine referral, primary-care treatment, endpoint.</div>
+</div>
+
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td><div class="brand"><b>REASONING GP</b> · Fever in adults — triage and diagnostic approach</div></td>
+    <td class="pg">Page 2 / 2</td>
+  </tr></table></div>
+
+  <!-- 4 Classify -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">4</div><div class="t">Classify: three exits, not two <small>"No source found" is a conclusion that needs a plan, not a discharge</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>Serious infection or serious cause likely</h4>Any red flag, deranged physiology, a high-risk group, or a source needing acute care. <b>Output:</b> name the leading concern, use the destination above, and hand over the full observation set with drugs given and times.</div>
+      <div class="col green"><h4>Self-limiting illness established</h4>Well, &lt;5 days, normal physiology, a coherent viral or minor localised source, no risk group, and reliable support and access. <b>Output:</b> record observations, the expected course, the written safety-net, and a named review point.</div>
+      <div class="col purple"><h4>Unclassified / uncertain</h4>No source after a full sweep, unreliable or remote assessment, a frail or comorbid patient, or a fever that has already lasted &gt;5 days. <b>Output:</b> do not label "viral". State what is outstanding; arrange bloods, a chest X-ray and a defined review, or admit.</div>
+    </div>
+  </div>
+
+  <!-- 5 Classifier -->
+  <div class="sec green">
+    <div class="sh"><div class="n">5</div><div class="t">Where adult fever comes from <small>Use only once the emergency and red-flag screens are complete</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:21%"><col style="width:79%"></colgroup>
+      <tr class="g"><td><b>Respiratory and ENT</b> (commonest)</td><td>Viral URTI, influenza, COVID-19, bronchitis, community-acquired pneumonia (use CRB-65), tonsillitis (FeverPAIN or Centor), sinusitis, otitis media, dental abscess, quinsy. Stridor or drooling = epiglottitis → 999.</td></tr>
+      <tr class="g"><td><b>Urinary, skin and abdominal</b></td><td>Pyelonephritis (fever, rigors, flank pain), prostatitis, catheter-associated infection; cellulitis, abscess, infected ulcer or bite; gastroenteritis, diverticulitis, appendicitis, cholecystitis and cholangitis, <i>C. difficile</i>, PID.</td></tr>
+      <tr class="r"><td><b>Deep and device-related</b></td><td>Endocarditis, septic arthritis, prosthetic joint infection, osteomyelitis, discitis, spinal epidural or psoas abscess, line infection, intra-abdominal collection. Suspect where the fever has no surface source.</td></tr>
+      <tr class="r"><td><b>Imported</b></td><td>Malaria (most important), dengue, typhoid, rickettsial infection, leptospirosis, amoebic liver abscess, hepatitis A/E, schistosomiasis, viral haemorrhagic fever. Several are notifiable; discuss with the infection service.</td></tr>
+      <tr class="p"><td><b>Non-infective inflammatory and malignant</b></td><td>Giant cell arteritis and PMR, adult-onset Still's disease (very high ferritin), SLE and vasculitis, IBD flare, sarcoidosis, gout; lymphoma and leukaemia, renal cell and hepatocellular carcinoma; <b>pulmonary embolism causes low-grade fever</b> and is missed once an infective label is applied.</td></tr>
+      <tr class="p"><td><b>Do not label by default</b></td><td>"Viral", "UTI" on a dipstick alone, and "probably chest" without signs all need positive evidence. Drug fever appears 7–10 days after a new drug and settles within 72 hours of stopping it. <b>Hyperthermia is not fever</b>: heatstroke, neuroleptic malignant syndrome, serotonin syndrome and thyroid storm need active cooling and treatment of the cause — antipyretics do not work.</td></tr>
+    </table>
+  </div>
+
+  <!-- 6 Routine referral -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">6</div><div class="t">Refer routinely from this consultation <small>Not same-day, not 999 — the cases that leave by letter</small></div></div>
+    <div class="note grey"><b>PUO — fever &gt;3 weeks with no diagnosis after first-line investigation:</b> refer to general medicine or infectious diseases; the differential is roughly one-third infection, one-third malignancy or inflammatory disease, one-third undiagnosed. <b>Routine rheumatology:</b> suspected adult-onset Still's disease, vasculitis or connective tissue disease once GCA has been excluded or already treated. <b>Routine infectious diseases:</b> a returning traveller with a resolved or low-grade undiagnosed fever, or suspected chronic imported infection. <b>Interim advice:</b> keep a temperature and symptom diary, avoid further empirical antibiotics, and give the written safety-net below. <b>Not routine:</b> unexplained fever with night sweats and weight loss (very urgent FBC within 48 hours, NG12), suspected TB (TB service plus UKHSA notification), and every page-1 red flag.</div>
+  </div>
+
+  <!-- 7 Treatment -->
+  <div class="sec red">
+    <div class="sh"><div class="n">7</div><div class="t">The only treatment decisions that belong in this consultation <small>Everything else is in the management pathway</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:26%"><col style="width:74%"></colgroup>
+      <tr class="r"><td><b>Suspected meningococcal disease</b> (non-blanching rash)</td><td><b>Benzylpenicillin 1.2 g IM/IV</b> (adult), or ceftriaxone, as soon as possible before transfer — unless it would delay the ambulance or there is anaphylaxis to either. Call 999 first or simultaneously. Record drug, dose, route and time. Notify UKHSA on suspicion; contact chemoprophylaxis is arranged by UKHSA.</td></tr>
+      <tr class="a"><td><b>Suspected giant cell arteritis</b></td><td><b>Prednisolone 40–60 mg daily (minimum 0.75 mg/kg), not enteric-coated</b>, started immediately; 60 mg with any visual symptom plus same-day ophthalmology. Do not wait for ESR, CRP, ultrasound or biopsy. Add gastroprotection and bone protection per local pathway; note diabetes.</td></tr>
+      <tr class="r"><td><b>Sepsis, neutropenic sepsis, malaria, endocarditis, septic arthritis, spinal infection</b></td><td><b>Transfer is the treatment.</b> Oxygen to target, IV access if it does not delay transfer. <b>Do not give an oral antibiotic and review</b> — in neutropenic sepsis it delays the 1-hour IV target, and in endocarditis and septic arthritis it destroys the cultures or the aspirate. No CT, MRI or malaria film requested from primary care.</td></tr>
+      <tr class="a"><td><b>Adrenal insufficiency or long-term steroids</b></td><td>Double the oral replacement dose during febrile illness. If vomiting or unable to absorb: <b>hydrocortisone 100 mg IM</b> and admit. Give the sick-day plan in writing and check the emergency injection kit and steroid card.</td></tr>
+      <tr class="g"><td><b>Identified bacterial source, physiologically stable</b></td><td>Targeted antibiotic per local formulary and NICE antimicrobial guidance, shortest effective course — amoxicillin or doxycycline for CAP guided by CRB-65; nitrofurantoin or trimethoprim for lower UTI; flucloxacillin for cellulitis; phenoxymethylpenicillin for streptococcal tonsillitis. Take cultures first where feasible; review results at 48–72 hours and de-escalate or stop.</td></tr>
+      <tr class="g"><td><b>Self-limiting viral illness</b></td><td><b>No antibiotic is the correct prescription.</b> Paracetamol 1 g up to four times daily for comfort only — it does not change the course and the response carries no diagnostic information. Do not alternate antipyretics routinely; avoid ibuprofen in dehydration, AKI risk, varicella or possible streptococcal soft-tissue infection. Fluids, expected timeline, written safety-net, and review sick-day rules for diabetes, steroids, ACE inhibitors, diuretics and SGLT2 inhibitors.</td></tr>
+    </table>
+  </div>
+
+  <!-- 8 Endpoint -->
+  <div class="sec green">
+    <div class="sh"><div class="n">8</div><div class="t">Endpoint and documentation <small>Finish with one of four conclusions and a named owner</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>1 · Time-critical</h4>999 or same-hour route taken; suspected diagnosis, full observation set with respiratory rate and NEWS2, GCS, immune and travel status, devices, any drug given with dose, route and time, and the notification made.</div>
+      <div class="col amber"><h4>2 · Serious cause possible</h4>Same-day route or targeted test arranged; state the question being excluded, who was spoken to, and the deadline by which the patient must be seen. Record that cultures precede antibiotics.</div>
+      <div class="col green"><h4>3 · Self-limiting illness established</h4>Observations, the systems examined and found normal, the expected duration given, sick-day rules where relevant, written safety-net, and the review owner and date.</div>
+      <div class="col purple"><h4>4 · Unclassified</h4>No source found: uncertainty stated, investigations arranged and chased by name, the review point agreed, and explicit escalation criteria. Not recorded as "viral".</div>
+    </div>
+    <div class="note grey"><b>Why a benign conclusion is safe today, in one line:</b> normal physiology and NEWS2 including respiratory rate · a systematic sweep documented as negative, with the whole skin and spine examined · no high-risk group (neutropenia, asplenia, immunosuppression, travel, device, pregnancy) · &lt;5 days and improving · written safety-net given and a review agreed. <b>Safety-net wording:</b> call 999 for a rash that does not fade when pressed, drowsiness or difficulty waking, a severe headache with a stiff neck, breathlessness, cold mottled hands and feet, a fit, or passing no urine; contact us the same day if you feel much worse, the fever lasts beyond 5 days, you cannot keep fluids down, or you develop new pain anywhere — including your back.</div>
+    <div class="note amber"><b>OOH / remote limitation.</b> Convert to face-to-face or emergency assessment if a full observation set including respiratory rate cannot be obtained; the skin cannot be examined for a non-blanching rash; the patient is neutropenic, asplenic, immunosuppressed, pregnant, has a device or has travelled; mental state is altered or changing during the call; the caller is not the patient; or transport, support at home or timely review cannot be guaranteed. Under time pressure the default is the safer destination.</div>
+  </div>
+
+  <div class="foot">Clinical decision support only; follow local emergency-transfer, emergency-medicines and referral policies and check doses against the current BNF. Source hierarchy: NICE guidelines first, then BNF/MHRA for doses and safety, then national specialty guidance. Sources: NICE NG253 Sepsis (16+): recognition, diagnosis and early management · CG151 Neutropenic sepsis · NG240 Meningitis (bacterial) and meningococcal disease · NG12 Suspected cancer: recognition and referral · NG33 Tuberculosis · NG143 Fever in under 5s (paediatric comparison) · BNF · Royal College of Physicians NEWS2 · UKHSA malaria and imported fever guidance and notifiable diseases list. Review after any guidance or medicines-safety update, otherwise every 6 months. © Reasoning GP · gpreasoning.uk</div>
+</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Red Flags — Sepsis, meningococcal disease and the high-risk groups</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Fever is one of the commonest presentations in general practice and the overwhelming majority is self-limiting. The safety task is to identify deranged physiology, and to recognise the patient groups in whom an ordinary-looking fever is an emergency.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>NEWS2 ≥5, or any single parameter of 3</b> Sepsis until proven otherwise → <span class="pill pill-red">999</span>. Use NEWS2, not the temperature, to judge severity</div>
+      <div class="rftile"><b>Physiological red flags</b> Systolic &lt;90 (or &gt;40 below baseline), HR &gt;130, RR ≥25, SpO₂ &lt;92% on air, no urine for 18 hours, mottled or ashen skin, non-blanching rash → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>New altered mental state</b> Confusion, drowsiness, agitation — often the only sign of sepsis in older adults → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Non-blanching purpuric rash</b> Meningococcal sepsis → <span class="pill pill-red">999 + IM/IV benzylpenicillin now</span> (1.2 g adult) unless a true anaphylactic allergy</div>
+      <div class="rftile"><b>Meningism</b> Headache, neck stiffness, photophobia, vomiting → <span class="pill pill-red">999</span>; also consider subarachnoid haemorrhage</div>
+      <div class="rftile"><b>Neutropenic sepsis</b> Fever within 6 weeks of chemotherapy, or known neutropenia → <span class="pill pill-red">999, same-hour</span>. Do not wait for bloods; do not give oral antibiotics and review</div>
+      <div class="rftile"><b>Asplenia or sickle cell disease</b> Encapsulated-organism sepsis progresses in hours → <span class="pill pill-red">same-day admission</span> with a low threshold for 999</div>
+      <div class="rftile"><b>Travel to a malarial area in the last year (especially 6 weeks)</b> <span class="pill pill-red">Same-day</span> — falciparum malaria kills within days and can present with fever alone</div>
+      <div class="rftile"><b>New murmur with fever, or injecting drug use</b> Infective endocarditis → <span class="pill pill-red">same-day</span> for blood cultures and echocardiography; do not start blind antibiotics first</div>
+      <div class="rftile"><b>Fever + back pain + neurology</b> Discitis or spinal epidural abscess → <span class="pill pill-red">999</span>; urgent MRI. A classic and devastating miss</div>
+      <div class="rftile"><b>Hot swollen joint or prosthesis</b> Septic arthritis → <span class="pill pill-red">same-day orthopaedics</span> for aspiration before antibiotics</div>
+      <div class="rftile"><b>Fever + night sweats + weight loss</b> <span class="pill pill-purple">NG12</span> → <b>very urgent FBC within 48 hours</b> (leukaemia); consider suspected-lymphoma referral</div>
+      <div class="rftile"><b>Immunosuppressed</b> Biologics, DMARDs, high-dose steroids, transplant, advanced HIV, poorly controlled diabetes → escalate early; the usual signs are blunted</div>
+      <div class="rftile"><b>Recent surgery, device or line</b> Prosthetic joint, pacemaker, central line, catheter, recent instrumentation → same-day surgical or specialty discussion</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The central principle of NICE NG253 is that sepsis is recognised from physiology and risk factors, not from the temperature: a patient with a fever of 39.5°C and normal observations is usually less unwell than one with a temperature of 37.2°C, a respiratory rate of 26 and new confusion. Older and frail patients, and those on steroids, may be afebrile or hypothermic while septic, and the raised respiratory rate is the earliest and most reliable warning sign. Neutropenic sepsis is singled out because it is the one febrile presentation where the clock runs in minutes: NICE CG151 requires immediate admission and broad-spectrum antibiotics within one hour, and mortality rises measurably with each hour of delay — any patient within six weeks of chemotherapy who reports a fever should be sent directly, without a face-to-face assessment first if that would cause delay. Spinal epidural abscess earns its place because fever with back pain is so often attributed to a coincidental musculoskeletal problem, and by the time neurological signs appear the deficit may be permanent.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>History — The five questions that change everything</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>1 · Travel</div><div>Where, when, how long, rural or urban, prophylaxis taken and adherence, freshwater exposure, animal or insect bites, unpasteurised food. <b>Any fever within 1 year of the tropics needs malaria excluded</b>; within 21 days of West Africa consider viral haemorrhagic fever and discuss with the local infection service before examining.</div>
+      <div>2 · Immune status</div><div>Chemotherapy in the last 6 weeks, biologics, DMARDs, steroids, transplant, splenectomy, sickle cell disease, HIV status, diabetes, alcohol excess, malnutrition, pregnancy</div>
+      <div>3 · Devices and procedures</div><div>Urinary catheter, central or peripheral line, prosthetic joint or valve, pacemaker, recent surgery or endoscopy, recent dental work, injecting drug use</div>
+      <div>4 · Duration and pattern</div><div>&lt;5 days → usually viral. 5–14 days → look harder. <b>&gt;3 weeks with no diagnosis → PUO.</b> Rigors suggest bacteraemia; a swinging fever suggests abscess; alternate-day patterns are described in malaria but are unreliable</div>
+      <div>5 · Localising symptoms — systematic sweep</div><div>Cough and sputum; dysuria, frequency, flank pain; sore throat; earache; sinus pain and facial tenderness; headache and neck stiffness; abdominal pain and diarrhoea; skin breaks, bites, rashes; joint pain and swelling; back pain; vaginal or urethral discharge; dental pain</div>
+      <div>Constitutional features</div><div>Weight loss, drenching night sweats, fatigue, anorexia, lymph node swelling, bone pain, easy bruising → haematological malignancy or TB</div>
+      <div>Exposures and occupation</div><div>Contact with a similar illness, farm or abattoir work, sewage or rat exposure (leptospirosis), birds (psittacosis), untreated water, sexual history, sick children at home</div>
+      <div>Drugs</div><div>Recent new drug (drug fever — antibiotics, anticonvulsants, allopurinol), antipsychotics (neuroleptic malignant syndrome), serotonergic drugs (serotonin syndrome), recent vaccination, antipyretics already taken (masking the fever)</div>
+      <div>TB risk</div><div>Country of origin or travel, previous TB or contact, homelessness, prison, HIV, immunosuppression, cough &gt;3 weeks, haemoptysis, night sweats, weight loss</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Travel and immune status are asked first because they change the disposal of the patient rather than merely refining the differential. Falciparum malaria is the most important imported infection in the UK, with around 1,500–2,000 cases and a small number of deaths each year; almost all deaths involve a delay in diagnosis, and the classic teaching that the fever is cyclical is unhelpful because early falciparum fever is usually continuous or irregular. Three negative thick and thin films are needed to exclude it, which is a hospital task. Drug fever is worth holding in mind in the patient who is febrile but well with no source and a recently started medication — it typically appears seven to ten days after the drug is started and resolves within 72 hours of stopping it. Asking specifically about antipyretics already taken prevents false reassurance: a patient who took paracetamol two hours ago may be recorded as afebrile while remaining significantly unwell, which is why the physiological parameters matter more than the reading.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Classification — Where adult fever comes from</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Respiratory · commonest</div><div>Viral URTI and influenza, COVID-19, acute bronchitis, community-acquired pneumonia, sinusitis, tonsillitis, otitis media, dental abscess, quinsy, epiglottitis (stridor, drooling — 999)</div>
+      <div>Urinary</div><div>Cystitis (often afebrile), pyelonephritis (fever, rigors, flank pain), prostatitis, catheter-associated infection, renal or perinephric abscess</div>
+      <div>Skin and soft tissue</div><div>Cellulitis, abscess, infected ulcer or bite, erysipelas, necrotising fasciitis, shingles, infected eczema, pilonidal or dental abscess</div>
+      <div>Abdominal and pelvic</div><div>Gastroenteritis, diverticulitis, appendicitis, cholecystitis and cholangitis, liver abscess, <i>C. difficile</i>, PID, epididymo-orchitis, intra-abdominal collection</div>
+      <div>Bone, joint and spine</div><div>Septic arthritis, osteomyelitis, prosthetic joint infection, discitis, spinal epidural abscess, psoas abscess</div>
+      <div>Central nervous system</div><div>Meningitis, encephalitis (confusion, seizure, personality change), brain abscess, subdural empyema</div>
+      <div>Cardiovascular</div><div>Infective endocarditis, myocarditis or pericarditis, infected pacemaker or line, mycotic aneurysm</div>
+      <div>Imported and travel-related</div><div>Malaria, dengue, typhoid, rickettsial infection, schistosomiasis, amoebic liver abscess, leptospirosis, hepatitis A/E, viral haemorrhagic fever (notifiable, discuss before examining)</div>
+      <div>Non-infective inflammatory</div><div>Giant cell arteritis and polymyalgia, adult-onset Still's disease, SLE and other connective tissue disease, vasculitis, IBD flare, sarcoidosis, gout and pseudogout, VTE (PE causes low-grade fever)</div>
+      <div>Malignancy</div><div>Lymphoma (classic B-symptoms), leukaemia, renal cell carcinoma, hepatocellular carcinoma, metastatic disease, tumour-associated fever</div>
+      <div>Drug and iatrogenic</div><div>Drug fever, transfusion reaction, neuroleptic malignant syndrome, serotonin syndrome, malignant hyperthermia, post-vaccination fever</div>
+      <div>Environmental / other</div><div>Heat exhaustion and heatstroke (hyperthermia, not fever — antipyretics do not work), thyroid storm, adrenal crisis, factitious fever</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Keeping the non-infective causes visible prevents two common errors. The first is the repeated course of antibiotics for a fever that is actually inflammatory or malignant — the febrile patient with proximal girdle pain, jaw claudication and a raised inflammatory response has giant cell arteritis and needs steroids and an urgent referral, not a third antibiotic. The second is confusing hyperthermia with fever: in heatstroke, neuroleptic malignant syndrome, serotonin syndrome and thyroid storm the set-point mechanism is not driving the temperature, so antipyretics are ineffective and active cooling plus treatment of the cause is the priority. It is also worth remembering that fever in adults is far more likely to have an identifiable source than fever in young children, so a genuinely sourceless fever in an unwell adult is a reason to escalate rather than to reassure — and that pulmonary embolism, which is not an infection at all, commonly produces a low-grade fever and is missed when the clinician has committed to an infective explanation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Examination — Physiology first, then the head-to-toe source hunt</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Full observation set + NEWS2</div><div>Temperature, HR, BP, respiratory rate, SpO₂, conscious level (AVPU or GCS), capillary refill, blood glucose. <b>Respiratory rate is the most sensitive early marker</b> and the most frequently omitted</div>
+      <div>General appearance</div><div>Does the patient look septic? Mottling, ashen or cyanosed, sweating, rigors, dehydration, cachexia, jaundice, drowsiness. Trust the "looks unwell" judgement and act on it</div>
+      <div>Whole skin, undressed</div><div>Non-blanching rash (glass test), cellulitis, ulcers, abscesses, bites, IV drug injection sites, splinter haemorrhages, Janeway lesions, Osler's nodes, shingles, needle-track marks. <b>Look at the back, buttocks and between the toes</b></div>
+      <div>Head and neck</div><div>Throat and tonsils, trismus and uvular deviation (quinsy), teeth and gums, ears, sinus tenderness, temporal artery tenderness, neck stiffness, lymph nodes in all groups</div>
+      <div>Chest</div><div>Respiratory rate and effort, dullness and crackles, bronchial breathing, pleural rub; heart sounds and <b>specifically listen for a new murmur</b></div>
+      <div>Abdomen</div><div>Tenderness and peritonism, Murphy's sign, renal angle tenderness, hepatomegaly and splenomegaly, masses, rectal or pelvic examination where indicated</div>
+      <div>Spine and joints</div><div>Percuss the whole spine for focal tenderness (discitis, abscess); examine every joint for effusion, heat and restricted movement; check prosthetic joint sites and scars</div>
+      <div>Neurological</div><div>Conscious level, orientation, pupils, neck stiffness and Kernig's sign, focal signs, limb power, plantar responses, fundoscopy (papilloedema, Roth spots)</div>
+      <div>Devices and lines</div><div>Inspect every catheter, cannula, line site, pacemaker pocket, PEG site and surgical wound. Infected devices cause otherwise unexplained fever</div>
+      <div>Legs</div><div>Calf swelling and tenderness (DVT/PE as a non-infective cause of fever), cellulitis, ulcers, peripheral perfusion</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The two examination components most often skipped are the full skin survey and the spine, and both hide emergencies. A non-blanching rash may be limited to a handful of petechiae on the trunk, the soles or the conjunctivae, and it cannot be excluded without undressing the patient — in meningococcal disease the rash may also appear after the patient is first seen, which is why the safety-net must describe it explicitly. Percussing the spine takes seconds and is the only bedside test that reliably raises the possibility of discitis or epidural abscess in the febrile patient with back pain. Listening deliberately for a new murmur matters because endocarditis is a diagnosis made by suspicion: the typical patient has weeks of malaise, weight loss and low-grade fever, has often had one or more courses of antibiotics, and the crucial action is to send them for blood cultures <i>before</i> further antibiotics are given, since prior antibiotics can render cultures negative and delay diagnosis by months.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Investigations — Proportionate to duration and risk</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Well, &lt;5 days, clear source</div><div>Usually <b>no investigation</b>. Treat the source, safety-net, review if not improving. Over-investigating self-limiting viral illness is not benign — it delays and distracts</div>
+      <div>Bedside</div><div><span class="pill pill-blue">Urine dip and culture</span> (interpret with caution over 65 — asymptomatic bacteriuria is common) · <span class="pill pill-blue">SpO₂</span> · <span class="pill pill-blue">Capillary glucose ± ketones</span> · <span class="pill pill-blue">Pregnancy test</span> · <span class="pill pill-blue">ECG</span> if tachycardic or chest symptoms</div>
+      <div>First-line bloods (unwell, or fever &gt;5–7 days)</div><div><span class="pill pill-blue">FBC + differential</span> <span class="pill pill-blue">CRP</span> <span class="pill pill-blue">U&amp;Es</span> <span class="pill pill-blue">LFTs</span> <span class="pill pill-blue">Bone profile</span> <span class="pill pill-blue">LDH</span> <span class="pill pill-blue">ESR / plasma viscosity</span> <span class="pill pill-blue">HIV test</span> <span class="pill pill-blue">Blood cultures</span> (before antibiotics, if available)</div>
+      <div><span class="pill pill-purple">Very urgent FBC — 48 hours</span></div><div><b>NICE NG12:</b> unexplained fever with <b>night sweats, weight loss, bruising, bleeding or unexplained lymphadenopathy</b> → very urgent full blood count within 48 hours for <b>suspected leukaemia</b></div>
+      <div>Imaging</div><div><span class="pill pill-blue">Chest X-ray</span> — the highest-yield single test in unexplained fever (pneumonia, TB, lymphoma, hilar nodes). Abdominal or pelvic ultrasound for suspected collection, biliary disease or pelvic sepsis</div>
+      <div>Travel-specific</div><div><b>Malaria thick and thin films × 3 — hospital, same day.</b> Dengue and arboviral serology, blood cultures for typhoid, stool culture and microscopy, hepatitis serology. Discuss with the infection service; some are notifiable</div>
+      <div>Targeted microbiology</div><div>Sputum culture and <span class="pill pill-blue">AFB × 3</span> if TB suspected; throat swab; wound swab if infected; stool culture and <i>C. difficile</i>; sexual health screen; <span class="pill pill-blue">blood cultures × 3 sets</span> from different sites if endocarditis suspected</div>
+      <div>Second line / PUO workup</div><div>Autoantibodies (ANA, ANCA, rheumatoid factor), immunoglobulins and protein electrophoresis, ferritin (very high in Still's disease), TFTs, 9 am cortisol, IGRA, echocardiogram, CT chest/abdomen/pelvis, temporal artery ultrasound or biopsy — largely secondary-care directed</div>
+      <div>Do not do</div><div>Do not give blind antibiotics before blood cultures in suspected endocarditis; do not rely on a normal CRP to exclude serious infection early; do not treat asymptomatic bacteriuria in older adults as the source; do not manage suspected malaria with outpatient tests</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">CRP lags behind clinical deterioration by hours, so a normal CRP in the first day of an illness never excludes serious bacterial infection — a well-documented cause of false reassurance in both primary care and emergency departments. The urine dipstick carries the opposite risk in older adults: asymptomatic bacteriuria is present in a substantial proportion of over-65s and in almost all catheterised patients, so a positive dip in a confused febrile older person is frequently mistaken for the source while a pneumonia or spinal infection goes unexamined. In practice the rule is that a urinary diagnosis requires urinary symptoms. The NG12 leukaemia criterion is included because it is the one cancer pathway triggered by fever itself: unexplained fever with night sweats, weight loss, bruising or lymphadenopathy earns a very urgent full blood count within 48 hours, and the same NG12 table requires immediate specialist assessment for a child or young person with fever and unexplained petechiae, hepatosplenomegaly or generalised lymphadenopathy.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head"><span class="node-tag">Refer</span><h3>Referral Criteria — Emergency, same-day and cancer pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 now</span></div><div>NEWS2 ≥5 or any red-flag physiology; suspected meningococcal disease (give IM benzylpenicillin first); meningitis or encephalitis; <b>neutropenic sepsis</b>; suspected necrotising fasciitis; fever with back pain and neurology</div>
+      <div><span class="pill pill-red">Same-day admission</span></div><div><b>Fever after travel to a malarial area</b> (films × 3); immunosuppressed, asplenic or sickle cell patient with fever; suspected endocarditis; suspected septic arthritis or prosthetic joint infection; fever with no source in an unwell or frail adult; suspected pyelonephritis not safe for oral treatment</div>
+      <div><span class="pill pill-purple">Very urgent FBC (48 h)</span></div><div><b>NICE NG12 — suspected leukaemia:</b> unexplained fever with night sweats, weight loss, bruising, bleeding, bone pain or unexplained lymphadenopathy → <b>FBC within 48 hours</b></div>
+      <div><span class="pill pill-purple">2WW haematology</span></div><div><b>NICE NG12 — suspected lymphoma:</b> unexplained lymphadenopathy or splenomegaly, with fever, night sweats, weight loss, pruritus, breathlessness, alcohol-induced node pain → suspected cancer pathway referral</div>
+      <div><span class="pill pill-purple">Children &amp; young people — immediate</span></div><div><b>NICE NG12:</b> fever with <b>unexplained petechiae</b>, <b>hepatosplenomegaly</b> or <b>generalised lymphadenopathy</b> → <b>immediate specialist assessment</b> (very urgent FBC for leukaemia). See the paediatric fever pathway for NG143 traffic-light assessment</div>
+      <div><span class="pill pill-purple">Other NG12 links</span></div><div>Fever with a persistent cough, haemoptysis or weight loss in a smoker or over-40 → urgent chest X-ray within 2 weeks (lung cancer). Fever with bone pain and anaemia over 60 → FBC, ESR/plasma viscosity and urine protein electrophoresis / Bence Jones (myeloma)</div>
+      <div>Infectious diseases</div><div>Suspected imported infection; suspected TB (also notifiable — contact the TB service and UKHSA); returning traveller with fever and no diagnosis; suspected viral haemorrhagic fever (<b>discuss before face-to-face assessment</b>)</div>
+      <div>Rheumatology</div><div>Suspected giant cell arteritis (start steroids immediately and refer urgently — same day if visual symptoms); suspected adult-onset Still's disease, vasculitis or connective tissue disease</div>
+      <div>PUO clinic / general medicine</div><div><b>Fever &gt;3 weeks with no diagnosis after appropriate first-line investigation</b> → refer. The differential is roughly one-third infection, one-third malignancy or inflammatory disease, one-third undiagnosed</div>
+      <div>Primary care manage</div><div>Self-limiting viral illness; uncomplicated LRTI, UTI, tonsillitis, sinusitis, cellulitis or dental infection in a physiologically stable patient, with a clear written safety-net and a review plan</div>
+      <div>Notify</div><div>Statutory notification (UKHSA) for suspected meningococcal disease, TB, typhoid, malaria, measles, food poisoning and other notifiable infections — notify on clinical suspicion, not on confirmation</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Giant cell arteritis is the one febrile presentation where treatment must precede referral: visual loss can occur within hours and is irreversible, so high-dose prednisolone is started immediately on clinical suspicion and the patient is referred the same day if there are any visual symptoms. Suspected viral haemorrhagic fever is the mirror image — the patient should not be brought into a waiting room, and the correct first action is a telephone discussion with the local infection service and UKHSA. The statutory notification duty catches people out: for meningococcal disease, TB, malaria, typhoid and measles the duty arises on clinical suspicion, not on laboratory confirmation, and in practice notification is frequently left to the admitting hospital when the community clinician also has the obligation. On the PUO referral, the classical division into thirds is still a useful framework, but the important practical point is that a genuine PUO is not a reason for another empirical antibiotic course — blind antibiotics obscure cultures and delay the diagnosis of both endocarditis and lymphoma.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head"><span class="node-tag">Treat</span><h3>Treatment — Source-directed, with antipyretics for comfort only</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Suspected meningococcal disease</div>
+        <div class="b-drug">Benzylpenicillin 1.2 g IM/IV <span class="pill pill-red">now</span></div>
+        <div class="b-note">Give before transfer unless there is a history of anaphylaxis; call 999 first or simultaneously. Cefotaxime is the alternative. Do not delay transfer to obtain IV access.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Identified bacterial source</div>
+        <div class="b-drug">Targeted antibiotic</div>
+        <div class="b-note">Per local formulary and NICE antimicrobial guidance: amoxicillin or doxycycline for CAP (guided by CRB-65), nitrofurantoin or trimethoprim for lower UTI, flucloxacillin for cellulitis, phenoxymethylpenicillin for streptococcal tonsillitis (FeverPAIN or Centor). Shortest effective course.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Viral illness, no source</div>
+        <div class="b-drug">No antibiotic <span class="pill pill-teal">correct choice</span></div>
+        <div class="b-note">Explain expected duration (fever commonly 3–5 days), give a written safety-net, and offer a review rather than a prescription. A delayed prescription is an option where uncertainty is genuine, not a default.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Symptom relief</div>
+        <div class="b-drug">Paracetamol 1 g QDS</div>
+        <div class="b-note">For discomfort, not to normalise the number. Ibuprofen is an alternative but avoid in dehydration, AKI risk, or suspected varicella and possible streptococcal soft-tissue infection. <b>Do not alternate agents routinely</b>, and do not judge severity by the antipyretic response.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Suspected giant cell arteritis</div>
+        <div class="b-drug">Prednisolone 40–60 mg OD <span class="pill pill-red">same day</span></div>
+        <div class="b-note">Start immediately on clinical suspicion at a minimum of 0.75 mg/kg and refer urgently; do not wait for ESR, ultrasound or biopsy. Higher dose with visual symptoms. Add PPI and bone protection.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Hyperthermia, not fever</div>
+        <div class="b-drug">Active cooling + treat cause</div>
+        <div class="b-note">Heatstroke, neuroleptic malignant syndrome, serotonin syndrome, thyroid storm. <b>Antipyretics do not work</b> — remove clothing, cool actively, give fluids, stop the culprit drug, and admit as an emergency.</div>
+      </div>
+    </div>
+    <div class="ladder" style="margin-top:14px;">
+      <div class="rung"><span class="rn">Hydration</span><span class="rt">Fever increases insensible losses by roughly 10% per °C. Encourage oral fluids; admit for IV fluids where intake fails, there is AKI, or the patient is frail and cannot maintain intake.</span></div>
+      <div class="rung"><span class="rn">Sick-day rules</span><span class="rt"><b>Diabetes:</b> never omit insulin, test glucose and ketones more often. <b>Steroid-dependent or adrenal insufficiency:</b> double the replacement dose; <b>hydrocortisone 100 mg IM</b> if vomiting. <b>Review nephrotoxics</b> — consider suspending ACE inhibitors, ARBs, diuretics, metformin and SGLT2 inhibitors during acute illness with poor intake.</span></div>
+      <div class="rung"><span class="rn">Antibiotic stewardship</span><span class="rt">Take cultures before antibiotics where feasible, prescribe the narrowest effective agent for the shortest effective course, actively review results at 48–72 hours, and de-escalate or stop. Document the indication and the review plan in the record.</span></div>
+      <div class="rung"><span class="rn">Do not treat blind</span><span class="rt">In suspected endocarditis and suspected PUO, empirical antibiotics before cultures can make the diagnosis impossible for weeks. Refer for cultures first.</span></div>
+      <div class="rung"><span class="rn">Notify</span><span class="rt">Complete the statutory notification for notifiable infections on suspicion; arrange chemoprophylaxis for close contacts of meningococcal disease via UKHSA; advise on exclusion from work or school where relevant.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Antipyretics are for comfort, not for the number, and the response to them carries no diagnostic information — the belief that a fever which "breaks" with paracetamol is therefore viral is a persistent myth and a recognised route to missed sepsis. Routine alternating of paracetamol and ibuprofen is not supported and increases dosing errors. Ibuprofen carries specific cautions in the febrile patient: it worsens dehydration-related acute kidney injury, and its use in varicella and in possible streptococcal soft-tissue infection has been associated with more severe disease. Sick-day rules deserve emphasis because an ordinary febrile illness is the commonest precipitant of both diabetic ketoacidosis and adrenal crisis, and of drug-induced AKI in patients on ACE inhibitors, diuretics and SGLT2 inhibitors — a two-minute conversation about which tablets to pause prevents a substantial proportion of febrile admissions in older patients.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head"><span class="node-tag">Lifestyle</span><h3>Self-Care, Prevention and Public Health Advice</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Expected course, spelled out</b> Most viral fevers settle in 3–5 days. Giving the expected timeline reduces re-consultation and antibiotic demand more effectively than any leaflet on antibiotics.</div>
+      <div class="lstile"><b>Fluids and rest</b> Small frequent drinks; monitor urine output and colour. Do not force food. Older and frail patients dehydrate quickly and need someone to check on them.</div>
+      <div class="lstile"><b>Do not over-wrap</b> Light clothing and a normal room temperature. Tepid sponging and cold baths are not recommended — they cause shivering, which raises the core temperature.</div>
+      <div class="lstile"><b>Written safety-net</b> Name the specific signs: non-blanching rash, drowsiness, severe headache with neck stiffness, breathlessness, not passing urine, cold mottled hands and feet, or feeling much worse. Written beats verbal.</div>
+      <div class="lstile"><b>Sick-day rules in writing</b> Essential for diabetes, adrenal insufficiency and those on ACE inhibitors, diuretics or SGLT2 inhibitors. Check the patient has an emergency plan and, where relevant, an injection kit.</div>
+      <div class="lstile"><b>Vaccination</b> Annual influenza and COVID-19 boosters, pneumococcal and shingles vaccines where eligible, and the full asplenia or immunosuppression schedule. Check and complete opportunistically.</div>
+      <div class="lstile"><b>Travel prevention</b> Pre-travel advice, antimalarial prophylaxis and adherence, bite avoidance and nets, food and water hygiene. Emphasise that prophylaxis reduces but does not eliminate malaria risk — any fever after travel still needs assessment.</div>
+      <div class="lstile"><b>Infection control at home</b> Hand hygiene, respiratory etiquette, staying off work while febrile, 48 hours symptom-free after vomiting or diarrhoea, and keeping away from immunosuppressed household members.</div>
+      <div class="lstile"><b>Asplenia and immunosuppression card</b> Ensure the patient carries their alert card, understands their standby antibiotic plan, and knows to seek help within the hour rather than the day.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Explaining the expected natural history is the most effective consultation behaviour available for reducing both antibiotic prescribing and unnecessary re-attendance: patients return because nobody told them that a fever lasting four days is normal. The advice against tepid sponging and cold baths is worth stating explicitly because it remains widespread practice — peripheral cooling in a patient whose hypothalamic set-point is raised induces shivering and vasoconstriction, which increases heat production and is uncomfortable. The written safety-net is the single most important medico-legal and clinical component of discharging a febrile adult from a consultation: documenting which specific signs were described, and the fact that written information was given, both improves the patient's chance of returning at the right moment and records that the risk was addressed. For asplenic and immunosuppressed patients, the timeframe in the advice must be shortened from "if you get worse over the next day" to "within the hour", because that is the speed at which encapsulated organisms behave.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Same day</div><div>Arrange a defined point of contact for anyone sent home with no identified source — a telephone review, an agreed time to re-attend, and a named plan out of hours. Uncertainty must be converted into a plan, not left with the patient</div>
+      <div>48 hours</div><div>Review if no source was found, if the patient is frail or comorbid, or if an antibiotic was started. <b>Actively chase and act on cultures and results</b> — the commonest failure is a result filed unread</div>
+      <div>5–7 days</div><div>Fever persisting beyond a week is no longer a simple viral illness. Re-examine fully, undress the patient again, and arrange first-line bloods and a chest X-ray if not already done</div>
+      <div>2–3 weeks</div><div>Re-take the history from the beginning (travel, animals, drugs, sexual history, TB contact), repeat examination, and broaden investigation. Consider endocarditis, TB, lymphoma, abscess and inflammatory disease</div>
+      <div>&gt;3 weeks, no diagnosis</div><div><b>PUO</b> → refer to general medicine or infectious diseases. Do not give further empirical antibiotics; they obscure cultures and delay diagnosis</div>
+      <div><span class="pill pill-red">999 now</span></div><div>Non-blanching rash; drowsiness, confusion or difficulty waking; severe headache with neck stiffness or photophobia; breathlessness or chest pain; cold mottled hands and feet; fitting; not passing urine for 18 hours</div>
+      <div><span class="pill pill-red">Same-day contact</span></div><div>Feeling significantly worse; fever persisting beyond 5 days; unable to keep fluids down; new localised pain or swelling; new back pain; any fever in a neutropenic, asplenic or recently travelled patient</div>
+      <div>Re-investigate if</div><div>Night sweats, weight loss, new lymphadenopathy, bruising or bone pain appear → <span class="pill pill-purple">NG12 pathways</span>; a new murmur or embolic phenomena appear → endocarditis; back pain or neurology develops → urgent MRI</div>
+      <div>Documentation</div><div>Record NEWS2 and the full observation set, the systems examined and found normal, the working diagnosis, the safety-net advice given <b>in the words used</b>, and the agreed review plan. This is the record that protects both the patient and the clinician</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Almost all serious harm in febrile presentations occurs in the interval after the first consultation rather than during it, which makes the safety-net the clinically active part of the encounter. Documenting the observation set — including the respiratory rate — and the negative findings of a systematic examination is what makes a later reviewer able to judge whether the patient has genuinely changed, and it is precisely what is missing in the records of most delayed sepsis diagnoses. Recording the safety-net in the words used, rather than as "advised to return if worse", both improves the patient's response and demonstrates that the risk was recognised. The 48-hour review is where the second peak of diagnoses occurs, because a source that was invisible on day one is usually apparent by day three: the febrile illness that will turn out to be pneumonia, pyelonephritis, endocarditis or lymphoma nearly always declares itself to a clinician who looks again with the whole differential still open, rather than one who is confirming the original impression.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG253 (Suspected sepsis in over 16s), NICE NG12 (Suspected cancer: recognition and referral, May 2025), NICE CG151 (Neutropenic sepsis, 2012), NICE NG33 (Tuberculosis, updated 2019), Royal College of Physicians NEWS2 (2017), UKHSA malaria treatment and imported fever guidance (2024), UKHSA notifiable diseases list. Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const KEY='rgp.alg.fever-adults.v1';
+  const nodes=document.querySelectorAll('.node');
+  const pDone=document.getElementById('pDone');const pFill=document.getElementById('pFill');
+  const total=nodes.length;document.getElementById('pTotal').textContent=total;
+  function save(){const s={};nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb)s[n.dataset.step]=cb.checked;});localStorage.setItem(KEY,JSON.stringify(s));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&s[n.dataset.step]){cb.checked=true;n.classList.add('ticked');}});}catch(e){}}
+  function upd(){let d=0;nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&cb.checked)d++;});pDone.textContent=d;pFill.style.width=((d/total)*100)+'%';}
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');if(cb){cb.addEventListener('change',()=>{n.classList.toggle('ticked',cb.checked);upd();save();});}
+    const btn=n.querySelector('.why-btn');const dr=n.querySelector('.why-drawer');
+    if(btn&&dr){btn.addEventListener('click',()=>{const o=dr.classList.toggle('open');btn.setAttribute('aria-expanded',o);});}
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb){cb.checked=false;n.classList.remove('ticked');}
+      const dr=n.querySelector('.why-drawer');const btn=n.querySelector('.why-btn');
+      if(dr)dr.classList.remove('open');if(btn)btn.setAttribute('aria-expanded','false');
+    });upd();localStorage.removeItem(KEY);
+  });
+  load();upd();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=2"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/alg-diagram.js?v=4"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+</body>
+</html>

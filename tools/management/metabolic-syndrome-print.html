@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Metabolic Syndrome — Protocol · Reasoning GP</title>
+<meta name="description" content="Metabolic syndrome in one page: reclassify the patients who actually have diabetes, established CVD, FH or a secondary cause first; define the cluster with ethnicity-specific thresholds; build the risk picture (QRISK3, NAFLD, OSA, PCOS); then treat every component to target on a foundation of 5–10% weight loss, with special-population caveats and structured annual review." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/metabolic-syndrome.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790260576276093 tools/management/metabolic-syndrome.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Metabolic syndrome protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"⚖️",
+  title:"Metabolic syndrome — the complete guide",
+  eyebrow:"Protocol · assess &amp; manage in one place",
+  stemTitle:"A risk state, not a disease — its only value is prompting you to treat every component at once",
+  stemSub:"One page for the whole condition. First reclassify the patients who actually have diabetes, established CVD, familial hypercholesterolaemia or a treatable secondary cause, because each has a higher-priority pathway; define the cluster using ethnicity-specific waist thresholds; build the full risk picture (QRISK3, NAFLD/MASLD with FIB-4, OSA, PCOS, gout, ED); then treat each component to its guideline target on a foundation of 5–10% weight loss. IDF/harmonised criteria · NICE NG238 · NG28 · NG136 · NG49 · NG246.",
+  guideline:"IDF/harmonised · NICE NG238 / NG28 / NG136 / NG49 / NG246",
+  reviewed:"8 September 2026",
+  nextReview:"8 March 2027",
+  meta:[
+    {t:"IDF / NCEP ATP III / harmonised 2009 criteria"},
+    {t:"NICE NG238 · NG28 (Feb 2026) · NG136 · NG49 · NG246"},
+    {t:"NHS Diabetes Prevention Programme"},
+    {t:"2WW · NG12 criteria that surface here", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:"<div class='mg-layers'><a href='#severe'><b>Reclassify</b><small>Diabetes · CVD · FH · secondary</small></a><a href='#define'><b>Define</b><small>The five components</small></a><a href='#ladder'><b>Treat</b><small>Every component to target</small></a><a href='#refer'><b>Refer</b><small>Tier 3/4 · hepatology · sleep</small></a></div>",
+  quickSub:"If you read nothing else on this page, read these six cards. Every figure traces to the source cited under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Reclassify before you counsel — four higher-priority pathways", html:"Undiagnosed type 2 diabetes (symptomatic hyperglycaemia, or HbA1c ≥48 mmol/mol) → diagnose and manage as diabetes; very high glucose with ketones or an unwell patient → same-day assessment. Established CVD (angina, prior MI/stroke/TIA, claudication) → these are secondary-prevention patients. Familial hypercholesterolaemia (total cholesterol &gt;7.5 mmol/L, tendon xanthomata, premature CVD family history) → the FH pathway, not “metabolic syndrome”. Secondary obesity (Cushing's, hypothyroidism, PCOS, hypothalamic, drug-induced) → investigate and treat the cause."},
+    {tone:"amber", h:"Two numbers that need urgent action, not an annual review", html:"BP ≥180/120 with symptoms or end-organ signs → assess for a hypertensive emergency; check the fundi for accelerated or malignant hypertension. Triglycerides &gt;10 mmol/L → pancreatitis risk → urgent lipid-lowering plus specialist advice. Both are easy to file as “another component of the cluster” and both are time-critical."},
+    {tone:"blue", h:"The definition: central obesity plus two, and ethnicity matters", html:"Central obesity (increased waist — ethnicity-specific: e.g. ≥94 cm men / ≥80 cm women in Europids, lower in South Asians) is the cardinal component, plus ≥2 of: triglycerides ≥1.7 mmol/L (or treated) · HDL &lt;1.0 mmol/L men / &lt;1.3 women (or treated) · BP ≥130 systolic and/or ≥85 diastolic (or treated) · fasting glucose ≥5.6 mmol/L or known T2DM. That is the IDF rule; the harmonised 2009 definition uses <b>≥3 of the 5 components</b>. South Asian and other high-risk groups develop insulin resistance at lower waist and BMI thresholds — use the ethnicity-specific cut-offs."},
+    {tone:"green", h:"5–10% weight loss is the foundation — it moves every number", html:"A 5–10% weight reduction meaningfully improves glycaemia, blood pressure, lipids AND NAFLD simultaneously. Build it on a Mediterranean-style or calorie-controlled diet (less refined carbohydrate, sugary drinks and ultra-processed food; more fibre, vegetables, oily fish), ≥150 min/week moderate activity (or 75 min vigorous) plus 2 resistance sessions, alcohol ≤14 units/week, smoking cessation — the single biggest CV risk reduction — and treatment of OSA. Structured programmes with self-monitoring and behavioural support outperform advice alone."},
+    {tone:"purple", h:"It never travels alone — screen the cluster", html:"NAFLD/MASLD, OSA, PCOS, gout and erectile dysfunction share the insulin-resistant phenotype, and finding them changes management. Raised LFTs or steatosis → exclude other liver disease and stage fibrosis with FIB-4 or ELF (NICE NG49); snoring with daytime sleepiness → Epworth and sleep service; urine ACR + eGFR for kidney involvement; ED is itself a cardiovascular marker."},
+    {tone:"teal", h:"No single drug treats the syndrome — treat components to target", html:"Atorvastatin 20 mg if QRISK3 ≥10% (NG238), 80 mg for secondary prevention, aiming for a &gt;40% non-HDL reduction. BP per NG136 with ACEi/ARB first-line (especially with diabetes). HbA1c 42–47 → NHS Diabetes Prevention Programme. Diabetic → NG28 (Feb 2026): MR metformin + an SGLT2 inhibitor as dual first-line, then branch by phenotype. Non-HDL cholesterol is now preferred to LDL for risk assessment and statin monitoring."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is reclassification — get it wrong and everything downstream is the wrong pathway.",
+  pathway:[
+    {title:"Exclude established end-organ disease and secondary causes", html:"Undiagnosed T2DM (HbA1c ≥48, or symptomatic — same-day if ketotic/unwell) · established CVD → secondary prevention (chest pain or new neuro deficit → acute pathway) · BP ≥180/120 with symptoms or end-organ signs → emergency assessment with fundoscopy · FH (TC &gt;7.5, tendon xanthomata, premature family history) → FH pathway · secondary obesity (Cushing's, hypothyroidism, PCOS, hypothalamic, steroids, antipsychotics) · triglycerides &gt;10 mmol/L → pancreatitis risk, urgent action.", alert:true},
+    {title:"Define the cluster", html:"Central obesity (ethnicity-specific waist) PLUS ≥2 of raised triglycerides, low HDL, raised BP and raised fasting glucose (IDF) — or ≥3 of 5 (harmonised 2009). Definitions vary (IDF, NCEP ATP III, harmonised) but converge on the same five components. The label matters less than acting on each component and the aggregate risk."},
+    {title:"Build the risk picture and screen the cluster", html:"History: diet, activity, alcohol, smoking, sleep and OSA screen, shift work, family history of premature CVD or diabetes, ethnicity, prior gestational diabetes, medications (antipsychotics, steroids, some antiretrovirals), mental health (depression, binge eating), readiness to change. Calculate QRISK3. Examine and test: weight, height, BMI, ethnicity-adjusted waist; standardised BP with ABPM/HBPM to confirm; HbA1c or fasting glucose; fasting lipids (total/HDL/non-HDL, triglycerides); U&amp;E; LFTs; TFTs if indicated; consider urate; urine ACR; FIB-4/ELF if NAFLD; ECG if hypertensive or symptomatic."},
+    {title:"Lifestyle first, then treat each component to target", html:"Foundation: 5–10% weight loss, Mediterranean-style diet, ≥150 min/week + resistance work, alcohol limits, smoking cessation, treat OSA. Then: NHS DPP or NG28 for glycaemia · atorvastatin by QRISK3 · BP per NG136 · weight pharmacotherapy (orlistat, semaglutide/liraglutide) within NICE criteria · bariatric surgery per NG246."},
+    {title:"Structured annual review", html:"Weight/waist, BP, HbA1c, lipids (non-HDL), U&amp;E + ACR, LFTs; recalculate QRISK3; titrate every treatment to target; repeat FIB-4 per risk; drug monitoring per agent; retinal and foot checks if diabetic; mental-health review; reinforce lifestyle. Re-check HbA1c in impaired glucose regulation and re-refer to prevention programmes as needed."}
+  ],
+  sections:[
+    {id:"severe", nav:"Reclassify", title:"Exclude established end-organ disease and secondary causes first", sub:"Metabolic syndrome is a clustering of cardiometabolic risk factors. Before lifestyle counselling, exclude the conditions that need urgent action or specific treatment.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Undiagnosed type 2 diabetes", html:"Symptomatic hyperglycaemia (thirst, polyuria, weight loss) or HbA1c ≥48 mmol/mol → diagnose and manage as diabetes. Very high glucose with ketones, or an unwell patient → same-day assessment. See the <a href='type-2-diabetes.html'>type 2 diabetes protocol</a>."},
+         {tone:"red", h:"🔴 Established cardiovascular disease", html:"Angina, prior MI, stroke or TIA, claudication → these are secondary-prevention patients. Chest pain or a new neurological deficit → the acute pathway."},
+         {tone:"red", h:"🔴 Severe hypertension", html:"BP ≥180/120 with symptoms or end-organ signs → assess for a hypertensive emergency; check the fundi for accelerated or malignant hypertension."},
+         {tone:"amber", h:"🟠 Familial hypercholesterolaemia", html:"Total cholesterol &gt;7.5 mmol/L, tendon xanthomata, or a premature-CVD family history → the FH pathway or lipid clinic, not simply “metabolic syndrome”. See the <a href='hypercholesterolaemia.html'>lipids protocol</a>."},
+         {tone:"amber", h:"🟠 Secondary obesity / endocrine cause", html:"Cushing's, hypothyroidism, PCOS, hypothalamic causes, or drug-induced (steroids, antipsychotics) → investigate and treat the cause."},
+         {tone:"amber", h:"🟠 Severe hypertriglyceridaemia", html:"Triglycerides &gt;10 mmol/L → pancreatitis risk → urgent lipid-lowering plus specialist advice."}
+       ]},
+       {b:"why", html:"Metabolic syndrome is a risk state, not a disease in itself — its value is prompting aggressive risk-factor management. The clinician must first reclassify patients who actually have diabetes, established cardiovascular disease, familial hypercholesterolaemia or a treatable secondary cause, <b>because each carries a distinct, higher-priority pathway.</b>"}
+     ]},
+
+    {id:"define", nav:"Define", title:"Define the syndrome — recognise the cluster", sub:"Use a recognised definition. The widely-used harmonised/IDF criteria require central obesity plus risk factors; the key clinical message is the clustering.",
+     blocks:[
+       {b:"table", head:["Component","Threshold","Note"], rows:[
+         ["<b>Central obesity</b>","Increased waist circumference — ethnicity-specific thresholds; e.g. ≥94 cm men / ≥80 cm women in Europids, lower in South Asians","<b>The cardinal component</b>"],
+         ["<b>Raised triglycerides</b>","<b>≥1.7 mmol/L (or on treatment for it)</b>","Fasting sample"],
+         ["<b>Low HDL cholesterol</b>","<b>&lt;1.0 mmol/L men / &lt;1.3 mmol/L women (or on treatment)</b>","Interpret with the TC:HDL ratio"],
+         ["<b>Raised blood pressure</b>","<b>≥130 systolic and/or ≥85 diastolic (or treated hypertension)</b>","Lower than the hypertension diagnostic threshold — this is a risk-clustering cut-off"],
+         ["<b>Raised fasting glucose</b>","Fasting glucose ≥5.6 mmol/L, or known type 2 diabetes / impaired glucose regulation","HbA1c 42–47 = the prevention-programme band"],
+         ["<b>The diagnosis</b>","Central obesity plus ≥2 of the other components (IDF), or ≥3 of 5 components (harmonised)","<b>Identifies insulin-resistant, high cardiometabolic-risk individuals</b>"]
+       ]},
+       {b:"kv", rows:[
+         ["Associated conditions","NAFLD/MASLD, OSA, PCOS, gout and erectile dysfunction share the insulin-resistant phenotype"],
+         ["Reclassify first","Already diabetic? Established CVD? Familial hypercholesterolaemia? Secondary obesity? — each has its own higher-priority pathway"]
+       ]},
+       {b:"why", html:"Definitions vary (IDF, NCEP ATP III, harmonised 2009) but converge on the same five components. South Asian populations develop insulin resistance at lower waist and BMI thresholds, so ethnicity-specific cut-offs matter in UK practice. The diagnosis is less important than acting on each component and the aggregate risk."}
+     ]},
+
+    {id:"history", nav:"History", title:"History and risk assessment", sub:"Build the full cardiometabolic risk picture and look for associated conditions.",
+     blocks:[
+       {b:"table", head:["Domain","Ask about","Why"], rows:[
+         ["<b>Lifestyle</b>","Diet pattern, physical activity, alcohol, smoking, sleep (screen for OSA — snoring, witnessed apnoea, Epworth), shift work","Each is a modifiable component driver"],
+         ["<b>Cardiovascular risk</b>","Family history of premature CVD or diabetes, ethnicity, prior gestational diabetes, smoking — calculate QRISK3","QRISK3 quantifies 10-year cardiovascular risk and frames the conversation around statin therapy and lifestyle intensity"],
+         ["<b>Associated conditions</b>","PCOS, non-alcoholic fatty liver disease (NAFLD/MASLD), obstructive sleep apnoea, gout, erectile dysfunction (a cardiovascular marker)","Metabolic syndrome rarely travels alone — identifying them changes management"],
+         ["<b>Medications</b>","Antipsychotics, steroids, some antiretrovirals → weight gain and dysglycaemia","May be the modifiable cause"],
+         ["<b>Mental health</b>","Depression and binge eating affect motivation and outcomes — screen and support","<b>Treating low mood removes a major barrier to weight loss and activity</b>"],
+         ["<b>Readiness to change</b>","<b>Assess motivation; use brief interventions and shared goal-setting</b>","Determines which programme will actually be used"]
+       ]}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Examination and investigations", sub:"Targeted examination plus a focused panel quantify each component and screen for complications.",
+     blocks:[
+       {b:"table", head:["What","Detail","Why"], rows:[
+         ["<b>Anthropometry</b>","Weight, height, BMI, waist circumference — record ethnicity-adjusted thresholds","Waist is the cardinal component"],
+         ["<b>Blood pressure</b>","Standardised measurement; ABPM or HBPM to confirm hypertension (NICE NG136)","Avoids treating white-coat readings"],
+         ["<b>Bloods</b>","HbA1c or fasting glucose; fasting lipid profile (total/HDL/non-HDL, triglycerides); U&amp;E; LFTs (NAFLD); TFTs if indicated; consider urate","Non-HDL cholesterol is now preferred to LDL for risk assessment and statin monitoring"],
+         ["<b>NAFLD assessment</b>","If raised LFTs or steatosis → exclude other liver disease; use FIB-4 or ELF to stage fibrosis (NICE NG49)","Finds the patients whose prognosis is hepatic, not cardiac"],
+         ["<b>Urine ACR</b>","Albumin:creatinine ratio for diabetic or hypertensive kidney involvement","Screens the organ damage the cluster drives"],
+         ["<b>QRISK3 + ECG</b>","Cardiovascular risk score (the QRISK tool); ECG if hypertensive or symptomatic (LVH, prior infarct)","Sets statin and BP decisions"]
+       ]},
+       {b:"cards", items:[
+         {tone:"purple", h:"NG12 criteria that surface here <span class='tw'>2WW</span>", html:"Metabolic syndrome has no NICE NG12 criterion of its own, and this page does not invent one — but two NG12 routes arise directly from this work-up and must not be lost in a risk-factor consultation:<br>• New-onset diabetes with weight loss aged 60 and over → urgent direct-access CT (or urgent ultrasound if CT is unavailable) within 2 weeks for suspected pancreatic cancer. Reclassifying a patient into “new type 2 diabetes” is exactly where this is missed.<br>• Unexplained weight loss with other trigger symptoms → the relevant urgent suspected-cancer pathway — weight loss in this cluster should never be assumed to be a lifestyle success without asking whether it was intended.<br>Unintentional weight loss in a metabolic-syndrome patient is a symptom, not an outcome.", src:"NICE NG12 (updated May 2025) · house rule"}
+       ]},
+       {b:"why", html:"The investigation set simply measures each syndrome component and screens for the organ damage it drives — kidney (ACR), liver (NAFLD/MASLD with FIB-4 staging), and cardiovascular (QRISK3, ECG)."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Management — lifestyle first, then each component to target", sub:"Intensive lifestyle change is the foundation; layer evidence-based pharmacotherapy for each component by cardiovascular risk.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Foundation", title:"Weight and lifestyle", when:"every patient, at every stage", fromLabel:"the base of everything",
+          html:"Target 5–10% weight loss; Mediterranean-style diet; ≥150 min/week moderate activity plus resistance training; alcohol within limits; smoking cessation; treat OSA. A 5–10% weight reduction meaningfully improves glycaemia, blood pressure, lipids and NAFLD."},
+         {step:"Glycaemia", title:"Prevent or treat type 2 diabetes", when:"HbA1c 42–47 → NHS DPP", fromLabel:"prevention first",
+          html:"Refer high-risk patients (HbA1c 42–47) to the NHS Diabetes Prevention Programme. If diabetic, manage per NICE NG28 (Feb 2026): MR metformin + an SGLT2 inhibitor as dual first-line (the older rule was metformin first-line with SGLT2i/GLP-1 added for weight and cardiorenal benefit), then branch by phenotype — ASCVD → add subcutaneous semaglutide up to 1 mg; obesity or early-onset → earlier GLP-1 RA or tirzepatide."},
+         {step:"Lipids", title:"Statin by risk", when:"QRISK3 ≥10% (primary prevention)", fromLabel:"NG238",
+          html:"Atorvastatin 20 mg if QRISK3 ≥10% (NICE NG238); 80 mg for secondary prevention. Aim for a &gt;40% non-HDL reduction."},
+         {step:"Blood pressure", title:"Treat to target (NG136)", when:"if hypertensive", fromLabel:"if BP raised",
+          html:"ACEi or ARB first-line (especially with diabetes); thresholds and targets by age, diabetes and CKD status. See the <a href='hypertension.html'>hypertension protocol</a>."},
+         {step:"Weight Rx", title:"Pharmacotherapy — orlistat or GLP-1", when:"obesity not responding", fromLabel:"within NICE criteria",
+          html:"Orlistat, or a GLP-1 (semaglutide/liraglutide) within NICE criteria and specialist weight services for eligible patients."},
+         {step:"Surgery", title:"Bariatric referral", when:"meets thresholds after Tier 3 input", fromLabel:"NG246",
+          html:"Consider per NICE NG246 thresholds — e.g. BMI ≥40, or ≥35 with comorbidity; lower thresholds in some ethnic groups and in new-onset T2DM."}
+       ]},
+       {b:"why", html:"No single drug treats “metabolic syndrome”; outcomes improve by managing each component to guideline targets on a foundation of weight loss. SGLT2 inhibitors and GLP-1 agonists are increasingly central because they combine glycaemic control with weight loss and cardiorenal protection."},
+       {b:"say", html:"Several risk factors are clustering together — weight around the middle, blood pressure, sugar and cholesterol. The good news is they respond to the same changes. Losing 5–10% of your weight, moving more and stopping smoking improves all of them, and we'll add tablets to bring each number to target."}
+     ]},
+
+    {id:"lifestyle", nav:"Lifestyle", title:"Lifestyle and behaviour change", sub:"Sustained behaviour change underpins every component of the syndrome.",
+     blocks:[
+       {b:"table", head:["Domain","What to advise","Why"], rows:[
+         ["<b>🥗 Diet</b>","Mediterranean-style or calorie-controlled; reduce refined carbohydrate, sugary drinks and ultra-processed food; increase fibre, vegetables and oily fish","Improves every component simultaneously"],
+         ["<b>🏃 Physical activity</b>","≥150 min/week moderate (or 75 min vigorous) aerobic plus 2 sessions of resistance training; reduce sedentary time","Improves insulin sensitivity independent of weight"],
+         ["<b>⚖️ Weight goals</b>","Realistic, stepwise 5–10% loss; self-monitoring; structured programmes (NHS DPP, commercial referrals)","Structured programmes with self-monitoring and behavioural support outperform advice alone"],
+         ["<b>🍺 Alcohol</b>","<b>Within UK limits (≤14 units/week)</b>","<b>Fewer calories plus better BP and triglycerides</b>"],
+         ["<b>🚭 Smoking</b>","<b>Offer cessation</b>","<b>The single biggest CV risk reduction</b>"],
+         ["<b>😴 Sleep and OSA</b>","<b>Treat OSA; promote sleep hygiene</b>","<b>Poor sleep worsens insulin resistance and appetite regulation</b>"],
+         ["<b>🧠 Behavioural support</b>","Goal-setting, motivational interviewing, address depression and binge eating, peer or group support to sustain change","Treating OSA and low mood removes major barriers to weight loss and activity"]
+       ]}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Special populations", sub:"Risk and thresholds are not uniform — some groups need earlier and more aggressive management, others need less.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"South Asian / high-risk ethnicity", html:"Lower waist and BMI thresholds; earlier and more intensive intervention; higher diabetes risk at any given weight."},
+         {tone:"blue", h:"Women with PCOS", html:"High prevalence of insulin resistance; address weight, screen for dysglycaemia, consider metformin; pregnancy planning."},
+         {tone:"amber", h:"Severe mental illness", html:"Antipsychotic-associated metabolic risk — proactive annual physical health checks and early intervention."},
+         {tone:"cream", h:"Older adults", html:"Individualise targets; balance benefits against frailty, polypharmacy and hypoglycaemia risk."},
+         {tone:"plain", h:"Children and adolescents", html:"Rising prevalence — family-based lifestyle approach; refer to paediatric or specialist services."}
+       ]},
+       {b:"why", html:"Ethnicity, PCOS and severe mental illness all shift the picture toward earlier, more aggressive management, while older and frailer patients need individualised, less intensive targets to avoid harm."}
+     ]},
+
+    {id:"monitor", nav:"Monitor", title:"Monitoring and long-term review", sub:"A structured annual review is the mechanism that turns a label into treated risk factors.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Annual review</b>","<b>Weight/waist, BP, HbA1c, lipid profile (non-HDL), U&amp;E + ACR, LFTs</b>","<b>Recalculate QRISK3; titrate treatments to target; reinforce lifestyle</b>"],
+         ["<b>Diabetes prevention</b>","<b>Per risk — re-check HbA1c in those with impaired glucose regulation</b>","<b>Re-refer to the prevention programme as needed</b>"],
+         ["<b>Liver surveillance</b>","<b>Repeat FIB-4 in NAFLD per risk</b>","<b>Refer if the fibrosis score is rising</b>"],
+         ["<b>Medication monitoring</b>","Per agent — statin (lipids + LFTs), antihypertensives (U&amp;E), diabetes drugs","<b>Review adherence and side effects</b>"],
+         ["<b>Complication screening</b>","Retinal and foot checks if diabetic; cardiovascular symptom review; mental health","Catches progression early"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"📞 Acute event — 999", html:"Chest pain, breathlessness, or stroke symptoms (FAST) → emergency, call 999."},
+         {tone:"amber", h:"🟠 New diabetes symptoms", html:"Thirst, polyuria, weight loss, or recurrent infections → check glucose/HbA1c. New chest pain, neurological deficit or symptomatic hyperglycaemia → the appropriate acute pathway."},
+         {tone:"cream", h:"💬 Safety-net script", html:"“Seek urgent help for chest pain or stroke symptoms; tell us about excessive thirst, passing lots of urine, or unexplained weight loss.”"}
+       ]},
+       {b:"why", html:"Metabolic syndrome is a long-term, modifiable risk state: structured annual review tracks each component to target, detects progression to diabetes or advanced liver disease early, and maintains the lifestyle gains that drive most of the benefit."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways", sub:"Most management is in primary care; refer for specialist weight management, complications, or diagnostic uncertainty.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Tier 3 / specialist weight management", html:"Complex obesity, GLP-1 or pharmacotherapy initiation where required, pre-bariatric assessment."},
+         {tone:"amber", h:"Bariatric surgery (Tier 4)", html:"<b>Meets NICE NG246 thresholds after Tier 3 input.</b>"},
+         {tone:"blue", h:"Hepatology", html:"Advanced fibrosis risk on FIB-4 or ELF, or diagnostic uncertainty in NAFLD/MASLD (NICE NG49)."},
+         {tone:"blue", h:"Cardiology / lipid clinic", html:"Possible familial hypercholesterolaemia, statin intolerance, or established CVD needing specialist input."},
+         {tone:"plain", h:"Sleep service", html:"<b>Suspected OSA (high Epworth or witnessed apnoea) for a sleep study.</b> See the <a href='osa.html'>OSA protocol</a>."},
+         {tone:"plain", h:"Endocrinology", html:"Suspected secondary cause (Cushing's), difficult diabetes, or PCOS needing specialist care."},
+         {tone:"green", h:"GP manages", html:"The whole framework: reclassification, component-by-component treatment to target, cluster screening, lifestyle and behavioural support, and the structured annual review."}
+       ]},
+       {b:"why", html:"Referral targets the high-yield complications and the patients who need interventions beyond primary care — advanced liver fibrosis, OSA, FH, and obesity severe enough for specialist weight services or surgery. Identifying these changes prognosis more than relabelling the syndrome."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only — the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 44-year-old British South Asian man attends for a “well man check”. Waist 98 cm, BMI 28, BP 138/88 on two readings, HbA1c 45 mmol/mol, triglycerides 2.4, HDL 0.9, ALT mildly raised. He works nights, snores heavily, and takes olanzapine for bipolar disorder. He feels well and wants to know if he needs “the diabetes tablet”."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Applies <b>ethnicity-specific waist thresholds</b> rather than reassuring on BMI; recognises the <b>full cluster (central obesity + 3 components)</b> and calculates <b>QRISK3</b>; screens the travelling companions — <b>NAFLD with FIB-4</b> for the raised ALT, <b>OSA with Epworth</b> given nights and snoring, and <b>urine ACR</b>; identifies <b>olanzapine as a metabolic contributor</b> and the SMI annual-health-check duty without stopping it unilaterally; refers to the <b>NHS DPP for HbA1c 45</b> rather than starting metformin; negotiates a <b>5–10% weight-loss goal</b> with a structured programme; and safety-nets <b>chest pain, stroke symptoms and hyperglycaemia</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>IDF (2006) \u00b7 NCEP ATP III \u00b7 Harmonised definition (2009)</b><span class="rd"> \u2014 the five components, the central-obesity-plus-two (IDF) and \u22653-of-5 (harmonised) rules, and the ethnicity-specific waist thresholds</span></li>'+
+         '<li>NICE NG238 \u2014 Cardiovascular disease: risk assessment and lipid modification<br><a href="https://www.nice.org.uk/guidance/ng238" rel="noopener">nice.org.uk/guidance/ng238</a><span class="rd"> \u2014 QRISK3 \u226510% \u2192 atorvastatin 20 mg, 80 mg for secondary prevention, the &gt;40% non-HDL reduction target</span></li>'+
+         '<li><b>NICE NG28 \u2014 Type 2 diabetes in adults (updated February 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng28" rel="noopener">nice.org.uk/guidance/ng28</a><span class="rd"> \u2014 MR metformin + SGLT2i as dual first-line, then phenotype-based branching</span></li>'+
+         '<li><b>NICE NG136 \u2014 Hypertension in adults</b><span class="rd"> \u2014 ABPM/HBPM confirmation, ACEi/ARB first-line with diabetes, age- and comorbidity-based thresholds and targets</span></li>'+
+         '<li><b>NICE NG49 \u2014 Non-alcoholic fatty liver disease</b><span class="rd"> \u2014 FIB-4 / ELF fibrosis staging and the hepatology referral trigger</span></li>'+
+         '<li><b>NICE NG246 — Overweight and obesity management (2025)</b><span class="rd"> \u2014 bariatric surgery thresholds, including the lower thresholds in some ethnic groups and new-onset T2DM</span></li>'+
+         '<li><b>NHS Diabetes Prevention Programme</b><span class="rd"> \u2014 the HbA1c 42\u201347 referral band</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer (updated May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 new-onset diabetes with weight loss at 60+ \u2192 urgent direct-access CT for pancreatic cancer</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Risk-management framework for the cardiometabolic cluster \u2014 IDF/harmonised criteria with NICE NG238, NG28 (Feb 2026), NG136, NG49 and NG246, the NHS Diabetes Prevention Programme, and NICE NG12 (May 2025) for the pancreatic-cancer route. Assessment and management are merged on this page; the former algorithm is retired. Treat each component to its guideline target and verify every dose against the current BNF."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

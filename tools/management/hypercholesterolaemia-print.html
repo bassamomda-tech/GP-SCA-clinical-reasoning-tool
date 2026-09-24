@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lipids &amp; hypercholesterolaemia — Protocol · Reasoning GP</title>
+<meta name="description" content="Lipids and hypercholesterolaemia in adults, diagnosis and management on one page: FH screening with Simon Broome, secondary causes, QRISK3, atorvastatin by group, the 40% non-HDL target, statin myalgia, and the escalation ladder to ezetimibe and injectables." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hypercholesterolaemia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790241765963737 tools/management/hypercholesterolaemia.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Lipids protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1FA78}",
+  title:"Lipids & hypercholesterolaemia",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Lipids \u2014 QRISK sets who, atorvastatin sets the start, the 40% drop sets success",
+  stemSub:"One page for the whole condition. Three questions frame every lipid consultation: is there established CVD, is this familial hypercholesterolaemia, and if neither, what is the 10-year risk?",
+  guideline:"NICE NG238 (2023)",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NICE NG238 (2023)"},
+    {t:"CG71 \u00b7 familial hypercholesterolaemia"},
+    {t:"TA385/393/394/694/733"},
+    {t:"QRISK3 \u00b7 Simon Broome \u00b7 DLCN"},
+    {t:"No NG12 criterion applies", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Frame it</b><small>Primary \u00b7 secondary \u00b7 FH</small></a><a href="#ladder"><b>Start the statin</b><small>Dose by group</small></a><a href="#target"><b>Chase the target</b><small>40% at 2\u20133 months</small></a><a href="#refer"><b>Refer</b><small>FH \u00b7 injectables</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these five cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Spot FH before you reach for QRISK", html:"Suspect familial hypercholesterolaemia if <b>total cholesterol &gt;7.5 mmol/L</b> or <b>LDL &gt;4.9 mmol/L</b>, or there are <b>tendon xanthomata</b>, personal CHD &lt;60, or a first-degree relative with CHD &lt;60. <b>Never put FH through QRISK \u2014 it underestimates the risk.</b> Search records for cholesterol <b>&gt;9 (aged \u226530)</b> or <b>&gt;7.5 (&lt;30)</b>. Suspect <b>homozygous</b> FH and refer directly if <b>LDL &gt;13 (\u226516y)</b> or <b>&gt;11 (&lt;16y)</b>."},
+    {tone:"amber", h:"Who never needs a risk score", html:"<b>Established CVD, CKD, type 1 diabetes, or age \u226585</b> \u2014 high-risk by definition, treat on that basis. <b>QRISK3 is for primary prevention only</b>, ages 25\u201384. A non-fasting lipid profile is sufficient."},
+    {tone:"blue", h:"Exclude secondary causes first", html:"<b>Hypothyroidism</b> (present in ~5% of new dyslipidaemia referrals \u2014 <b>do not start a statin until treated</b>), nephrotic syndrome, diabetes, CKD, alcohol excess, pregnancy, and drugs (ciclosporin, amiodarone, retinoids). Check TFTs, HbA1c, LFTs, U&amp;E/ACR."},
+    {tone:"plain", h:"The dose depends on the track", html:"<b>Secondary prevention: atorvastatin 80 mg</b> immediately at diagnosis. <b>Primary prevention (QRISK3 \u226510%): atorvastatin 20 mg</b>. <b>CKD or type 1 diabetes: atorvastatin 20 mg</b> regardless of score."},
+    {tone:"green", h:"Success is measured, not assumed", html:"Recheck non-HDL at <b>2\u20133 months</b>. <b>Primary prevention: &gt;40% reduction in non-HDL.</b> <b>Secondary prevention: LDL \u22642.0 or non-HDL \u22642.6 mmol/L.</b> Not met \u2192 adherence, then up-titrate, then ezetimibe \u2014 not fire-and-forget."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Frame the patient", html:"Established CVD \u2192 secondary prevention, no score. High-risk by definition (CKD, T1DM, \u226585) \u2192 treat. Otherwise primary prevention \u2192 QRISK3."},
+    {title:"Screen for FH and the emergencies", html:"Total cholesterol &gt;7.5, tendon xanthomata, premature CVD, or a family history of early CHD \u2192 FH pathway. <b>Triglycerides &gt;10 mmol/L with abdominal pain and vomiting \u2192 same-day: pancreatitis risk.</b> Chest pain \u2192 999 regardless of the lipid result.", alert:true},
+    {title:"Exclude secondary causes", html:"TFTs, HbA1c, LFTs, U&amp;E/ACR, alcohol history, drug review \u2014 treat these before labelling it primary hypercholesterolaemia or starting a statin."},
+    {title:"Start the right statin", html:"Atorvastatin 80 mg for established CVD; 20 mg for QRISK \u226510%, CKD or T1DM. Offer lifestyle alongside, never instead."},
+    {title:"Measure, titrate, sustain", html:"Non-HDL at 2\u20133 months against the target \u2192 LFTs at 3 and 12 months \u2192 handle myalgia by rechallenge rather than abandonment \u2192 escalate to ezetimibe and injectables when genuinely maxed."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Frame &amp; confirm", title:"Framing the diagnosis \u2014 primary, secondary, or familial", sub:"Getting the frame right prevents both under-treating the high-risk and medicalising the low-risk.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"teal", h:"Secondary prevention \u2014 no score needed", html:"<b>Established atherosclerotic CVD:</b> MI or ACS, angina, stroke or TIA, peripheral arterial disease, coronary or other arterial revascularisation. High-risk by definition \u2014 <b>do not calculate QRISK3</b>; the risk is already realised."},
+         {tone:"teal", h:"Primary prevention \u2014 QRISK3 decides", html:"No established CVD \u2192 estimate 10-year risk with <b>QRISK3</b> (ages 25\u201384) and decide by shared decision. A non-fasting profile (total, HDL, non-HDL, triglycerides) is sufficient."}
+       ]},
+       {b:"dl", rows:[
+         ["<b>Familial hypercholesterolaemia</b> \u2014 screen first","<b>TC &gt;7.5 or LDL &gt;4.9 mmol/L</b>, tendon xanthomata, premature CVD, or a first-degree relative with CHD &lt;60. Use <b>Simon Broome</b> or <b>Dutch Lipid (DLCN) score &gt;5</b> \u2014 either may be used \u2014 and refer for genetic testing and <b>cascade screening of relatives</b>. Search records for cholesterol <b>&gt;9 mmol/L (aged \u226530)</b> or <b>&gt;7.5 (&lt;30)</b>. <b>Homozygous FH \u2014 refer directly without applying the criteria \u2014 if LDL &gt;13 (\u226516y) or &gt;11 (&lt;16y)</b>"],
+         ["Simon Broome criteria","<b>Definite FH:</b> TC &gt;7.5 (adult) or LDL &gt;4.9, <b>plus tendon xanthomata</b> in the patient or a first- or second-degree relative. <b>Possible FH:</b> TC &gt;7.5 plus a family history of MI &lt;60, or TC &gt;7.5 in a first-degree relative"],
+         ["Secondary causes \u2014 treat first","<b>Hypothyroidism</b> (TSH \u2014 present in about 5% of new dyslipidaemia referrals; treating it normalises lipids without a statin), <b>nephrotic syndrome</b> (urine dipstick, hypoalbuminaemia, oedema), diabetes (HbA1c), CKD (eGFR), alcohol excess, pregnancy, and drugs (ciclosporin, amiodarone, retinoids)"],
+         ["Common polygenic","Most cases, once secondary causes are excluded and FH criteria are not met"],
+         ["Mixed dyslipidaemia","Raised triglycerides + raised LDL + low HDL \u2014 usually metabolic syndrome. Check fasting triglycerides, HbA1c, waist circumference and BP. <b>Statin remains the primary treatment</b>"],
+         ["Hypertriglyceridaemia","Fasting <b>2\u201310 mmol/L</b>: lifestyle, plus a fibrate if severe. <b>&gt;10 mmol/L: urgent referral \u2014 pancreatitis risk</b>; <b>&gt;20 mmol/L: urgent specialist plus fibrate</b>. Secondary causes: diabetes, alcohol, hypothyroidism"],
+         ["Isolated low HDL","<b>&lt;1.0 mmol/L (men) or &lt;1.2 (women)</b> \u2014 no specific drug treatment; address lifestyle. Low HDL with high triglycerides indicates high cardiovascular risk"]
+       ]},
+       {b:"why", html:"Familial hypercholesterolaemia affects about <b>1 in 250</b> people in the UK \u2014 roughly 260,000 individuals \u2014 but only about <b>7% are diagnosed</b>. Untreated it carries a <b>50% risk of CHD by age 50 in men and 30% in women</b>, and a 35-year-old with untreated FH carries the risk of a 55-year-old without it. Every FH patient identified means each first-degree relative has a <b>50%</b> chance of being affected, which is why cascade screening through the NHS programme matters so much."}
+     ]},
+
+    {id:"severe", nav:"Red-flag branch", title:"When a lipid result is part of urgent disease", sub:"Most high cholesterol is incidental. These are the exceptions, and one of them is an emergency of a different organ altogether.",
+     blocks:[
+       {b:"warn", html:"<b>Never conflate a lipid result with clinical urgency \u2014 or the reverse.</b> Exertional or acute chest pain is <b>ACS until proven otherwise \u2192 999</b>, whatever the cholesterol is doing. And <b>triglycerides &gt;10 mmol/L with nausea, vomiting or abdominal pain is a same-day acute-pancreatitis risk</b>, not a lipid-clinic letter."},
+       {b:"cards", items:[
+         {tone:"red", h:"Triglycerides &gt;10 mmol/L with abdominal symptoms", html:"Nausea, abdominal pain, vomiting \u2192 <b>same-day</b> review, consider admission. Acute pancreatitis risk is substantial. Eruptive xanthomata also indicate severe hypertriglyceridaemia \u2192 same-day."},
+         {tone:"red", h:"Chest pain", html:"Exertional chest pain, known coronary disease, or acute onset \u2192 <b>999</b>. Treat as ACS until proven otherwise."},
+         {tone:"amber", h:"Corneal arcus under 45 with TC &gt;7.5", html:"Or tendon xanthomata \u2192 <b>urgent</b>: familial hypercholesterolaemia by Simon Broome or DLCN criteria. Corneal arcus is a normal finding in the elderly but significant under 45."},
+         {tone:"amber", h:"Xanthelasma in a young patient", html:"Eyelid plaques under 50 with a family history of early MI \u2192 <b>urgent</b> lipid clinic \u2014 possible FH."},
+         {tone:"blue", h:"Hypothyroidism as the cause", html:"Raised TSH, new or uncontrolled \u2014 secondary hyperlipidaemia. <b>Do not start a statin until the thyroid is treated.</b>"},
+         {tone:"blue", h:"Nephrotic syndrome as the cause", html:"Proteinuria +++, hypoalbuminaemia, peripheral oedema \u2192 <b>same-day</b>. Do not treat the cholesterol in isolation."},
+         {tone:"purple", h:"NG12 \u2014 no criterion applies", html:"Hypercholesterolaemia is not a NICE NG12 suspected-cancer criterion. Where a lipid panel is being taken as part of a picture of <b>unexplained weight loss</b>, follow the relevant NG12 route on its own merits rather than treating the lipid result as the diagnosis."}
+       ]},
+       {b:"why", html:"Secondary causes \u2014 hypothyroidism, nephrotic syndrome, uncontrolled diabetes, alcohol \u2014 must be treated before statin initiation, or the lipid picture will not resolve and the patient ends up on escalating doses for a problem the statin was never going to fix."}
+     ]},
+
+    {id:"risk", nav:"Risk &amp; QRISK3", title:"Cardiovascular risk \u2014 QRISK3 and the conversation", sub:"Risk stratification determines whether to treat, not the cholesterol level alone.",
+     blocks:[
+       {b:"table", head:["QRISK3 (10-year)","Interpretation","Action"], rows:[
+         ["<b>&lt;10%</b>","Low risk","Lifestyle advice; a statin is <b>not routinely offered</b> \u2014 but do not rule it out if the patient chooses it after an informed discussion, or if risk is underestimated. <b>Recheck lipids and QRISK3 in 5 years</b>, or sooner if risk factors change"],
+         ["<b>10\u201320%</b>","Moderate risk","Offer <b>atorvastatin 20 mg</b> as a shared decision; a ~3-month lifestyle trial first is reasonable"],
+         ["<b>&gt;20%</b>","High risk","Offer a statin <b>promptly \u2014 do not delay with a lifestyle-only period</b>. Atorvastatin 20 mg"],
+         ["<b>Established CVD</b>","Secondary prevention","<b>Atorvastatin 80 mg</b> regardless of cholesterol level. Do not calculate QRISK3"],
+         ["<b>Type 1 diabetes</b>","High-risk by definition","Offer a statin if <b>aged &gt;40, diabetes &gt;10 years, nephropathy or other risk factors</b> \u2014 no score needed"],
+         ["<b>CKD (eGFR &lt;60 or ACR \u22653)</b>","High-risk by definition","<b>Atorvastatin 20 mg</b> for primary and secondary prevention; increase if eGFR \u226530 and target not met (agree with renal if eGFR &lt;30). <b>Do not use simvastatin above 10 mg if eGFR &lt;45</b>. SHARP trial evidence"],
+         ["<b>Aged \u226585</b>","Individualise","Consider atorvastatin 20 mg without calculating risk; weigh frailty and polypharmacy"]
+       ]},
+       {b:"dl", rows:[
+         ["What QRISK3 needs","Age, sex, ethnicity, smoking, systolic BP, <b>total cholesterol:HDL ratio</b>, BMI, family history, and comorbidities (diabetes, CKD, AF, rheumatoid arthritis, SLE, severe mental illness). Available at qrisk.org or embedded in clinical systems"],
+         ["Where QRISK3 underestimates","<b>HIV</b> (BHIVA: offer a statin at \u226540 years), severe mental illness, autoimmune disease, corticosteroids, recently stopped smoking, and drugs that raise lipids \u2014 treat the score as a starting point, not a verdict"],
+         ["<b>Where QRISK must never be used</b>","<b>FH, established CVD, type 1 diabetes, CKD</b> \u2014 these patients are already high-risk and warrant treatment on that basis"],
+         ["The insight","A patient with TC 8 mmol/L and QRISK3 5% needs lifestyle advice; a patient with TC 5 mmol/L and QRISK3 25% needs atorvastatin today"]
+       ]},
+       {b:"why", html:"QRISK3 replaced Framingham in UK guidance because it adds risk factors (severe mental illness, SLE, AF, deprivation, migraine) and calibrates better to UK populations. NG238 uses a <b>10%</b> threshold for offering a statin."}
+     ]},
+
+    {id:"exam", nav:"Examination", title:"Targeted examination", sub:"Two findings here change the diagnosis outright, and one measurement matters as much as the lipid result.",
+     blocks:[
+       {b:"table", head:["What","Look for","Why it changes the plan"], rows:[
+         ["<b>Hands and tendons</b>","<b>Tendon xanthomata</b> \u2014 thickened Achilles tendons, extensor tendons of the hands. Run a finger along the tendon feeling for nodules. Tuberous xanthomata over knuckles suggest familial combined hyperlipidaemia","<b>Pathognomonic of FH</b> \u2014 with TC &gt;7.5 this gives <em>definite</em> FH on Simon Broome criteria without genetic testing"],
+         ["<b>Eyes</b>","<b>Corneal arcus</b> with TC <b>&gt;7.5 mmol/L</b> (significant under 45, normal in the elderly), <b>xanthelasma</b> (eyelid plaques, significant in a patient <b>&lt;50</b>). Fundoscopy if diabetic","Possible FH \u2192 lipid clinic"],
+         ["<b>Blood pressure</b>","Both arms, seated","Hypertension and hyperlipidaemia are <b>multiplicative</b> risk factors \u2014 <b>undertreated hypertension quadruples CV risk even on a statin</b>. Target &lt;130/80 in high-risk patients"],
+         ["BMI and waist","BMI &gt;30, or waist &gt;102 cm (M) / &gt;88 cm (F)","Metabolic syndrome \u2014 interpret with the TC:HDL ratio and triglycerides"],
+         ["Cardiovascular","Carotid bruits, peripheral pulses (ABPI \u2014 the ankle\u2013brachial index, ABI \u2014 if PAD suspected), murmurs, ankle oedema","May reveal undiagnosed established CVD \u2014 which moves the patient to secondary prevention"],
+         ["Thyroid","Goitre, slow-relaxing reflexes, dry skin, bradycardia","Clinical hypothyroidism \u2192 check TSH and treat before starting a statin"],
+         ["Abdomen","Hepatomegaly (fatty liver, alcohol), splenomegaly, abdominal xanthomas","Severe hypertriglyceridaemia, or an alcohol contribution"]
+       ]}
+     ]},
+
+    {id:"workup", nav:"Investigations", title:"Investigations and their interpretation", sub:"Non-fasting is fine for screening. What matters is what you do and do not order.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Lipid profile","Total cholesterol, LDL-C, HDL-C, triglycerides, <b>TC:HDL ratio</b>. <b>Non-fasting is acceptable for initial screening</b>; fasting preferred if triglycerides are raised. A <b>TC:HDL ratio &lt;4</b> is desirable, and the ratio is more predictive than total cholesterol alone"],
+         ["Baseline before a statin","<b>ALT/AST</b> (allows later results to be interpreted \u2014 statins raise ALT in about <b>1\u20133%</b>), <b>TSH</b>, <b>HbA1c</b>, <b>eGFR</b>. <b>CK only if muscle symptoms or high risk</b>"],
+         ["Treatment targets","<b>Primary prevention: &gt;40% reduction in non-HDL-C at 2\u20133 months</b> \u2014 no absolute LDL target. <b>Secondary prevention: LDL \u22642.0 mmol/L (2.0 mmol/L) or non-HDL \u22642.6 mmol/L</b> (NG238 / QOF)"],
+         ["Genetic testing","Via lipid clinic \u2014 <b>LDLR, APOB, PCSK9</b> mutations. A positive result confirms FH and enables <b>cascade screening of relatives through the NHS programme</b>, which is free"],
+         ["<b>When not to investigate</b>","Do <b>not</b> repeat lipids within 3 months of the last result; do <b>not</b> order CK routinely before a statin (asymptomatic exercise-related rises cause needless statin avoidance); do <b>not</b> check lipids during acute illness (falsely low)"],
+         ["Repeat after treatment","Recheck lipids at <b>2\u20133 months</b>; LFTs at <b>3 months then annually</b>; no routine CK unless symptomatic"]
+       ]},
+       {b:"why", html:"Non-HDL is the better target than LDL: it needs no fasting and captures all atherogenic particles. NG238 moved to LDL-C targets in secondary prevention in line with ESC guidance, supported by trials and Mendelian randomisation showing that lower is better."}
+     ]},
+
+    {id:"lifestyle", nav:"Lifestyle", title:"Lifestyle \u2014 a concurrent treatment, not an optional add-on", sub:"Offered to everyone, alongside statins rather than instead of them. Combined changes can lower LDL by 1.0\u20131.5 mmol/L \u2014 equivalent to a low-dose statin.",
+     blocks:[
+       {b:"table", head:["Change","What to advise","Effect"], rows:[
+         ["<b>Mediterranean diet</b>","Olive oil, <b>oily fish \u22652\u00d7/week</b>, legumes, nuts, vegetables, wholegrains","<b>LDL down 0.3\u20130.5 mmol/L; CV events down 30%</b> over 5 years (PREDIMED) \u2014 comparable to statin therapy. The single most evidence-based dietary intervention"],
+         ["<b>Saturated fat</b>","Replace butter, red meat and full-fat dairy with olive oil, avocado, oily fish","Each 1% of saturated fat replaced by polyunsaturated fat lowers LDL by <b>0.03 mmol/L</b>"],
+         ["<b>Plant sterols/stanols</b>","<b>2 g/day</b> \u2014 fortified spreads, yoghurt drinks, orange juice (OTC)","<b>LDL down 10\u201315%</b>, additive to a statin"],
+         ["<b>Soluble fibre</b>","Oats, psyllium, beans \u2014 porridge for breakfast is a simple, evidence-based recommendation","<b>LDL down 0.2\u20130.4 mmol/L</b> by binding bile acids"],
+         ["<b>Physical activity</b>","<b>\u2265150 minutes/week</b> moderate intensity; aerobic most effective","<b>HDL up 0.08\u20130.15 mmol/L; triglycerides down 20\u201330%</b>"],
+         ["<b>Weight loss</b>","Structured support; BMI below 25 where achievable","<b>5\u201310 kg loss: LDL down 0.2\u20130.3 mmol/L, triglycerides down 20%</b>, HDL up"],
+         ["<b>Smoking cessation</b>","NHS stop-smoking service \u00b1 NRT or varenicline","Smoking lowers HDL by <b>5\u201310%</b>; HDL recovers within 6 months of quitting. Service support is <b>4\u00d7 more effective</b> than willpower alone \u2014 and QRISK falls fast"],
+         ["<b>Alcohol</b>","<b>&lt;14 units/week</b> with 2 alcohol-free days","Excess raises triglycerides and LDL \u2014 a common reversible cause of a \u201cbad\u201d profile"]
+       ]},
+       {b:"kv", rows:[
+         ["Lifestyle alone","Reasonable for <b>QRISK &lt;10%</b>, or for those who decline a statin \u2014 with a defined reassessment interval"],
+         ["Whole-risk optimisation","Treat the blood pressure and the diabetes, and review drugs that raise lipids \u2014 the lipid result is one component of the risk, not the whole of it"]
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"Starting the statin \u2014 dose and intensity by group", sub:"Atorvastatin is first-line: potent per mg, once daily at any time, and far fewer interactions than simvastatin.",
+     blocks:[
+       {b:"table", head:["Indication","Statin","Notes"], rows:[
+         ["<b>Secondary prevention</b> (established CVD)","<b>Atorvastatin 80 mg OD</b>","Start <b>immediately at diagnosis, including after ACS</b> \u2014 do not delay. Lower dose only for drug interactions, high adverse-effect risk, frailty, CKD or patient preference"],
+         ["<b>Primary prevention, QRISK3 \u226510%</b>","<b>Atorvastatin 20 mg OD</b>","QRISK 10\u201320%: a ~3-month lifestyle trial first is reasonable. \u226520%: offer promptly"],
+         ["<b>CKD</b> (eGFR &lt;60 or ACR \u22653)","<b>Atorvastatin 20 mg OD</b>","For primary <em>and</em> secondary prevention; up-titrate to 80 mg if eGFR \u226530 and target not met. <b>Avoid high-dose simvastatin in CKD</b>"],
+         ["<b>Type 1 diabetes</b>","<b>Atorvastatin 20 mg OD</b>","If aged &gt;40, diabetes &gt;10 years, nephropathy or other risk factors"],
+         ["<b>Type 2 diabetes</b>","<b>Atorvastatin 20 mg OD</b>","If QRISK3 \u226510% \u2014 most patients over 40 qualify"],
+         ["<b>HIV, aged \u226540</b>","Offer a statin","BHIVA \u2014 QRISK underestimates risk in HIV"],
+         ["<b>Aged \u226585</b>","Consider atorvastatin 20 mg","No calculation; individualise for frailty and polypharmacy"]
+       ]},
+       {b:"dl", rows:[
+         ["High- vs moderate-intensity","\u201cHigh-intensity\u201d means a <b>\u226540% LDL reduction</b>: atorvastatin 20\u201380 mg, rosuvastatin 10\u201340 mg"],
+         ["Interactions","<b>Simvastatin</b> with amlodipine, diltiazem, verapamil, macrolides, azoles or some HIV drugs \u2192 dose caps and myopathy risk. <b>Hold the statin during a clarithromycin or erythromycin course.</b> Atorvastatin is cleaner but still check every new prescription. Grapefruit matters only at heavy intake"],
+         ["Pregnancy","<b>Stop the statin as soon as pregnancy is confirmed \u2014 teratogenic</b>; stop before conception where pregnancy is planned, and avoid while breastfeeding. Restart postnatally after breastfeeding. Bile-acid sequestrants if lipid treatment is essential during pregnancy. Counsel women of childbearing potential and discuss contraception"]
+       ]},
+       {b:"ladder", steps:[
+         {step:"1", title:"Optimise before escalating", when:"target missed at 2\u20133 months",
+          html:"Confirm <b>adherence</b> and correct dose timing, reinforce diet and lifestyle, and exclude or treat secondary causes (hypothyroidism, alcohol, drugs). <b>Roughly half of apparent non-response is adherence.</b> Recheck non-HDL at 2\u20133 months."},
+         {step:"2", title:"Maximise the statin", when:"genuinely adherent",
+          fromLabel:"titrate",
+          html:"<b>Atorvastatin 20 \u2192 40 \u2192 80 mg OD</b> to the highest tolerated dose (about a <b>40\u201355% LDL fall at 80 mg</b>). Secondary-prevention patients should already be on 80 mg. Recheck at 2\u20133 months after each step."},
+         {step:"3", title:"Switch to a more potent statin", when:"insufficient or partly intolerant",
+          fromLabel:"potency per mg",
+          html:"<b>Rosuvastatin 10 \u2192 20 \u2192 40 mg OD</b> \u2014 <b>rosuvastatin 20 mg \u2248 atorvastatin 40\u201380 mg</b>. Useful where atorvastatin 80 mg is not tolerated."},
+         {step:"4", title:"Add ezetimibe 10 mg OD", when:"still above target on maximum tolerated statin",
+          fromLabel:"first add-on",
+          html:"A further <b>~15\u201320% LDL</b> (about 21% non-HDL) reduction, cheap and well tolerated, and available as a fixed-dose combination for adherence. <b>In secondary prevention, NICE allows adding it even if the target is met</b>, to lower risk further. Also the default monotherapy in true statin intolerance."},
+         {step:"5", title:"Bempedoic acid", when:"statin contraindicated or not tolerated and ezetimibe inadequate",
+          fromLabel:"oral, primary care",
+          html:"<b>Bempedoic acid 180 mg OD</b>, or the fixed-dose combination with ezetimibe 10 mg once daily (NICE TA694)."},
+         {step:"6", title:"Inclisiran 284 mg SC", when:"secondary prevention with LDL \u22652.6 despite maximum therapy",
+          fromLabel:"community-deliverable",
+          html:"Established ASCVD with <b>LDL-C \u22652.6 mmol/L</b> despite maximum tolerated statin \u00b1 ezetimibe. Doses at <b>0 and 3 months, then 6-monthly</b> \u2014 can be given in primary care or community (NICE TA733)."},
+         {step:"Refer", title:"PCSK9 inhibitor \u2014 specialist-initiated", when:"NICE TA393/394 thresholds",
+          fromLabel:"lipid clinic",
+          html:"<b>Evolocumab 140 mg SC every 2 weeks (or 420 mg monthly)</b>, or <b>alirocumab 75\u2013150 mg SC every 2 weeks</b> \u2014 a further <b>50\u201360% LDL fall</b>. Thresholds for persistent LDL despite maximum tolerated therapy: <b>FH without CVD &gt;5.0; CVD high-risk &gt;4.0; CVD very-high-risk &gt;3.5 mmol/L</b>. Cost is about \u00a34,500/year against \u00a320/year for a statin, hence specialist initiation."}
+       ]},
+       {b:"why", html:"Each 1 mmol/L reduction in LDL-C reduces major cardiovascular events by about <b>22%</b> (Cholesterol Treatment Trialists). A high-intensity statin in secondary prevention reduces events by <b>25\u201335% over 5 years</b> (NNT roughly 15\u201320), and adding ezetimibe gives a further <b>6\u20137%</b> event reduction (IMPROVE-IT). Fibrates are for severe hypertriglyceridaemia to prevent pancreatitis \u2014 not routine cholesterol treatment."}
+     ]},
+
+    {id:"myalgia", nav:"Myalgia", title:"Statin muscle symptoms \u2014 the main reason people quit, and mostly fixable", sub:"True statin myopathy is rare. Treat myalgia as a problem to solve, not a reason to leave a secondary-prevention patient unprotected.",
+     blocks:[
+       {b:"dl", rows:[
+         ["The reality","Most reported statin muscle pain is non-specific and frequently <b>nocebo</b> \u2014 the SAMSON trial found symptoms occurred equally on placebo, and the nocebo effect accounts for an estimated <b>70\u201380%</b> of reported intolerance. Statin-associated muscle symptoms affect <b>5\u201310%</b> in trials"],
+         ["<b>Check CK and the red flags</b>","Severe or widespread pain, weakness, or dark urine \u2192 <b>check CK</b>. <b>CK &gt;10\u00d7 ULN or features of rhabdomyolysis \u2192 stop and seek urgent advice.</b> <b>CK &gt;4\u00d7 ULN \u2192 stop the statin</b>; <b>&lt;4\u00d7 \u2192 continue and review</b>. Modest aches with a normal or mildly raised CK \u2192 work through the options below"],
+         ["The rechallenge approach","Stop for <b>2\u20134 weeks</b> \u2014 do the symptoms actually resolve? \u2192 rechallenge at the same or a lower dose, or with a different statin, or <b>alternate-day or twice-weekly rosuvastatin (e.g. 5 mg)</b>. Systematic re-examination recovers tolerable treatment in about <b>80%</b> of cases \u2014 most \u201cintolerant\u201d patients tolerate <em>some</em> statin"],
+         ["Check the amplifiers","Vitamin D deficiency, hypothyroidism, drug interactions, new or unaccustomed exercise, alcohol \u2014 fix these before declaring intolerance"],
+         ["True intolerance","Documented failure of <b>2\u20133 statins</b> including low-dose attempts \u2192 <b>ezetimibe 10 mg OD monotherapy</b>, then bempedoic acid, then injectables, and refer to the lipid clinic. <b>Do not leave them on nothing</b>"]
+       ]},
+       {b:"warn", html:"<b>Nocebo is real, but so is the cardiovascular benefit.</b> Frame statins positively \u2014 the evidence is overwhelming \u2014 warn proportionately, and adjust rather than abandon."}
+     ]},
+
+    {id:"target", nav:"Monitoring", title:"Monitoring, follow-up and safety-netting", sub:"The 2\u20133 month recheck is the critical intervention point: without intensification there, around 60% of high-risk patients stay above target.",
+     blocks:[
+       {b:"table", head:["Check","When","Action"], rows:[
+         ["<b>Non-HDL cholesterol</b>","<b>2\u20133 months</b> after starting or changing","<b>Primary prevention: aim &gt;40% reduction from baseline.</b> <b>Secondary prevention: LDL \u22642.0 mmol/L or non-HDL \u22642.6 mmol/L.</b> Not achieved \u2192 adherence and lifestyle \u2192 up-titrate \u2192 add ezetimibe"],
+         ["<b>LFTs</b>","<b>Baseline, 3 months, 12 months</b>, then annually","<b>Only stop if transaminases are persistently &gt;3\u00d7 ULN</b> \u2014 mild rises are common and not a reason to stop. Restart at a lower dose once resolved"],
+         ["CK","Only if muscle symptoms","No routine CK. <b>&gt;10\u00d7 ULN \u2192 stop urgently</b>"],
+         ["HbA1c","In those at risk","Statins slightly raise type 2 diabetes risk \u2014 the net cardiovascular benefit clearly outweighs it; monitor rather than withhold"],
+         ["Annual review","12 months onwards","Lipid profile, LFTs, <b>QRISK3 recalculation</b> (it changes with age and new diagnoses), lifestyle review, adherence check"],
+         ["Frequency limits","\u2014","No routine lipid check more often than 6-monthly unless the dose changes"],
+         ["Those not on treatment","Periodically","Reassess QRISK3 and lipids \u2014 <b>every 5 years</b> if QRISK &lt;10%, sooner if risk factors change"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 Stop and contact us the same day", html:"\u201cSevere unexplained muscle pain or weakness, or dark cola-coloured urine \u2014 stop the statin and contact us the same day so we can check a blood test.\u201d Jaundice \u2192 stop and urgent LFTs."},
+         {tone:"red", h:"\ud83d\udea8 Chest pain is separate", html:"\u201cChest pain means 999, regardless of your cholesterol treatment.\u201d"},
+         {tone:"amber", h:"\ud83d\udc8a Mild aches", html:"\u201cMild aches are usually not the statin and usually settle \u2014 tell us rather than just stopping. We can adjust the dose or switch; we almost never have to give up.\u201d"},
+         {tone:"amber", h:"\ud83e\udd30 Pregnancy", html:"\u201cStop statins if you might become pregnant, and tell us if you are planning to \u2014 we pause them beforehand.\u201d"},
+         {tone:"green", h:"\ud83e\uddec Family", html:"\u201cIf your cholesterol is very high and runs in the family, your relatives should be tested too \u2014 it can be an inherited condition, and finding it early protects them.\u201d"}
+       ]},
+       {b:"say", html:"Cholesterol treatment is about the long game \u2014 lowering your risk of a heart attack or stroke years down the line. The statin does most of the work; we check a blood test in a couple of months to prove it is working, and a 40% drop is the goal. If muscle aches bother you we adjust rather than give up \u2014 there is almost always a version you can tolerate."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Not at target? Work through this before escalating", sub:"",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"1 · Adherence", html:"Actually taking it? Explore myalgia beliefs, nocebo, dosing confusion — half of 'failure' is here."},
+         {tone:"amber", h:"2 · The 40% test", html:"Non-HDL fallen ≥40%? If not on a supposedly-taken high-intensity statin, suspect non-adherence or interaction."},
+         {tone:"blue", h:"3 · Secondary cause", html:"Untreated hypothyroidism, uncontrolled diabetes, alcohol, nephrotic — treat the driver."},
+         {tone:"blue", h:"4 · Is it FH?", html:"Very high baseline + FHx → genetic cause, needs specialist + cascade screening, higher-intensity targets."},
+         {tone:"blue", h:"5 · Myalgia handled?", html:"Rechallenge/alternate-day tried, amplifiers fixed — or written off too soon?"},
+         {tone:"amber", h:"6 · Escalate", html:"Genuinely maxed + adherent + still above target → ezetimibe → injectable pathway."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 lipid clinic and specialist input", sub:"What primary care keeps is as important as what it sends on.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day", html:"<b>Triglycerides &gt;10 mmol/L</b> (pancreatitis risk), or eruptive xanthomata from severe hypertriglyceridaemia. <b>&gt;20 mmol/L \u2192 urgent specialist plus fibrate.</b>"},
+         {tone:"amber", h:"Lipid clinic \u2014 urgent", html:"Definite or possible <b>FH</b> (Simon Broome or DLCN met) for genetic testing and cascade screening; <b>LDL &gt;4.9 mmol/L</b> in an adult; tendon xanthomata; a patient <b>&lt;40</b> with <b>LDL &gt;4.0</b>; paediatric FH and children of FH patients."},
+         {tone:"plain", h:"Lipid clinic \u2014 routine", html:"LDL not at target despite maximum tolerated statin plus ezetimibe; <b>statin intolerance after \u22653 different statins</b>; consideration of a PCSK9 inhibitor or inclisiran; complex or mixed dyslipidaemia; diagnostic uncertainty."},
+         {tone:"plain", h:"Cardiology", html:"A secondary-prevention patient not at LDL target on atorvastatin 80 mg where a PCSK9 inhibitor is being considered \u2014 specialist initiation is required on the NHS."},
+         {tone:"plain", h:"Endocrinology", html:"Secondary hyperlipidaemia from uncontrolled diabetes or thyroid disease not responding to primary-care management."},
+         {tone:"cream", h:"Primary care manages", html:"Primary prevention with QRISK3 10\u201320% \u2014 lifestyle trial then statin; secondary prevention on atorvastatin 80 mg achieving target; mild mixed dyslipidaemia with lifestyle modification; <b>inclisiran and bempedoic acid can both be delivered in primary care</b>."}
+       ]},
+       {b:"why", html:"PCSK9 inhibitors lower LDL by a further 50\u201360% on top of maximum statin therapy and are indicated when LDL stays above the NICE thresholds despite maximum tolerated treatment. FH cascade screening through the NHS programme is free and identifies high-risk relatives before they develop CVD \u2014 every FH diagnosis in primary care potentially protects several family members."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 38-year-old woman, total cholesterol 8.4 mmol/L, father had an MI at 52. She has read that statins \u201cdamage your muscles\u201d, feels well, and wants to \u201cfix it with diet\u201d. QRISK3 is 3%."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises that QRISK is the wrong tool here and that this is possible FH; examines for tendon xanthomata and arcus; excludes secondary causes; explains the inherited nature and <b>cascade screening for relatives</b>; addresses the statin-myalgia belief with the nocebo evidence without dismissing her; refers to the lipid clinic; discusses pregnancy planning and statins. <a href='../../cases/hypercholesterolaemia.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG238 \u2014 Cardiovascular disease: risk assessment and reduction, including lipid modification (2023)</b><br><a href="https://www.nice.org.uk/guidance/ng238" rel="noopener">nice.org.uk/guidance/ng238</a><span class="rd"> \u2014 QRISK3 use and the 10% threshold, who not to risk-score, atorvastatin doses by group, the &gt;40% non-HDL target, LDL \u22642.0 / non-HDL \u22642.6 in secondary prevention, ezetimibe even at target</span></li>'+
+         '<li><b>NICE CG71 \u2014 Familial hypercholesterolaemia</b><br><a href="https://www.nice.org.uk/guidance/cg71" rel="noopener">nice.org.uk/guidance/cg71</a><span class="rd"> \u2014 Simon Broome criteria, record search thresholds, homozygous FH LDL levels, genetic testing and cascade screening</span></li>'+
+         '<li><b>NICE NG238 \u2014 CVD risk assessment and lipid modification</b><span class="rd"> \u2014 primary-care operationalisation, monitoring intervals, statin intolerance pathway</span></li>'+
+         '<li><b>NICE technology appraisals</b><span class="rd"> \u2014 TA385 ezetimibe; TA393 alirocumab and TA394 evolocumab with their LDL thresholds (FH without CVD &gt;5.0; CVD high-risk &gt;4.0; very-high-risk &gt;3.5 mmol/L); TA694 bempedoic acid; TA733 inclisiran</span></li>'+
+         '<li><b>Cholesterol Treatment Trialists\u2019 Collaboration</b><span class="rd"> \u2014 each 1 mmol/L LDL reduction lowers major vascular events by ~22%</span></li>'+
+         '<li><b>IMPROVE-IT; PREDIMED; SHARP; SAMSON</b><span class="rd"> \u2014 ezetimibe add-on benefit (6\u20137%); Mediterranean diet and a 30% event reduction; statins in CKD; the nocebo basis of most statin muscle symptoms</span></li>'+
+         '<li><b>QRISK3</b><br><a href="https://qrisk.org" rel="noopener">qrisk.org</a><span class="rd"> \u2014 the calculator and its input variables</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses, statin interactions (macrolides, calcium-channel blockers, azoles), and pregnancy contraindications</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Lipid management and hypercholesterolaemia in adults \u2014 NICE NG238 (2023), CG71 (FH), NG238, TA385/393/394/694/733 and NICE. Diagnosis and management are merged on this page; there is no separate high-cholesterol pathway to cross-check. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

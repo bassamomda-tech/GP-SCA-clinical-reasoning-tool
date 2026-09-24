@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hirsutism — Protocol · Reasoning GP</title>
+<meta name="description" content="Hirsutism in primary care: distinguishing it from hypertrichosis, the Ferriman-Gallwey assessment, the rapid-onset virilising picture that means an androgen-secreting tumour, the drug causes, testosterone and DHEAS thresholds, and the treatment ladder — co-cyprindiol, CHC, spironolactone, metformin, eflornithine and why every option needs 6 months." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hirsutism.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Hirsutism protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🪞",
+  title:"Hirsutism — the complete guide",
+  eyebrow:"Protocol · NICE · PCOS accounts for most of it, and the exception is the emergency",
+  stemTitle:"Slowly developing hirsutism around puberty with irregular periods is PCOS; hirsutism that appears over months with deepening voice, clitoromegaly or muscle bulk is a tumour until proven otherwise",
+  stemSub:"For the differential reasoning use the <a href='../algorithms/hirsutism.html'>hirsutism pathway</a>. This page is the management: separating true androgen-dependent hirsutism from hypertrichosis, quantifying it with Ferriman-Gallwey so change can be measured, the rate-of-onset question that identifies the rare dangerous cause, the drug causes worth stopping, which bloods to send and how to read them, and a treatment ladder in which <b>every option needs at least six months before it can be judged</b> — a fact that decides whether treatment succeeds or is abandoned.",
+  guideline:"Endocrine Society · NICE NG12 · BNF",
+  reviewed:"12 September 2026",
+  nextReview:"12 March 2027",
+  meta:[
+    {t:"Endocrine Society — hirsutism"},
+    {t:"Endocrine Society — hirsutism in premenopausal women"},
+    {t:"Rotterdam criteria for PCOS"},
+    {t:"Rapid virilisation → urgent, not routine", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Red flags</b><small>Rapid virilisation</small></a><a href="#assess"><b>Assess</b><small>Ferriman-Gallwey</small></a><a href="#bloods"><b>Bloods</b><small>Thresholds</small></a><a href="#treat"><b>Treat</b><small>6 months minimum</small></a><a href="#refer"><b>Refer</b><small>Endocrine · gynae</small></a></div>',
+  quickSub:"The six that change outcomes. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Rate of onset is the question that matters most", html:"Hirsutism developing rapidly over weeks to months, especially with virilisation — deepening voice, clitoromegaly, increased muscle bulk, male-pattern balding, breast atrophy — indicates an androgen-secreting ovarian or adrenal tumour, or Cushing's syndrome. This needs urgent endocrine or gynaecology referral and urgent bloods, not a six-month trial of a pill. Ask \"how quickly did this happen?\" in every consultation — it is the single highest-yield question on this page."},
+    {tone:"blue", h:"Hirsutism is not hypertrichosis, and the distinction changes everything", html:"Hirsutism is excess terminal (coarse, pigmented) hair in ANDROGEN-DEPENDENT areas — upper lip, chin, chest, areolae, linea alba, lower back, buttocks, inner thighs, external genitalia. Hypertrichosis is excess hair of any type in non-androgenic distribution, generalised, and is usually drug-induced, familial or associated with systemic illness — and it does not respond to anti-androgens. <b>Getting this wrong means months of ineffective hormonal treatment.</b>"},
+    {tone:"amber", h:"PCOS accounts for the majority — and is a diagnosis of pattern", html:"Around 70–80% of hirsutism is PCOS. Rotterdam requires two of three: oligo- or anovulation, clinical or biochemical hyperandrogenism, and polycystic ovaries on ultrasound. Idiopathic hirsutism (normal cycles, normal androgens) is the next commonest. Together they account for the great majority, so the workup is a short, targeted screen — not an exhaustive endocrine hunt. See <a href='pcos.html'>PCOS</a>."},
+    {tone:"blue", h:"The bloods, and the numbers that mean something", html:"Total testosterone is the primary test — take it in the morning, in the early follicular phase where cycles allow. A normal or mildly raised level fits PCOS or idiopathic hirsutism. Testosterone more than twice the upper limit of normal, or a markedly raised DHEAS, suggests a tumour or congenital adrenal hyperplasia and warrants urgent referral. Add: SHBG (often low in PCOS, raising free androgen), LH/FSH, prolactin, TFTs, 17-hydroxyprogesterone if CAH is suspected, and overnight dexamethasone suppression or late-night salivary cortisol if Cushing's is suspected."},
+    {tone:"green", h:"Every treatment needs 6 months — say so before starting", html:"The hair growth cycle means no anti-androgen shows its effect before 3 months, and 6 months is the minimum fair trial; maximum benefit takes 9–12 months. Existing terminal hair does not disappear — treatment stops NEW conversion, so cosmetic measures remain necessary alongside. A woman who expects results in six weeks stops at eight weeks and concludes nothing works. The expectation-setting is the intervention."},
+    {tone:"purple", h:"🟣 NG12 — the honest position", html:"Hirsutism itself has no NG12 suspected-cancer criterion, and none is invented here. But the NG12 ovarian route runs through the examination this page requires: any woman with ascites, or a pelvic or abdominal mass not obviously uterine fibroids → urgent suspected ovarian cancer referral; and persistent abdominal distension, early satiety, pelvic pain or urinary urgency — particularly at 50 or over → CA-125, with urgent ultrasound if 35 IU/mL or above. An androgen-secreting ovarian tumour is found by pelvic examination and imaging, not by a hormone panel alone — so the examination is not optional."}
+  ],
+  pathwaySub:"Five steps. The first two take two minutes and sort the emergency from the everything-else.",
+  pathway:[
+    {title:"Ask how fast it came on", html:"Years, gradually, from puberty → PCOS or idiopathic. Weeks to months, progressive, with virilisation → urgent referral and urgent bloods for an androgen-secreting tumour or Cushing's.", alert:true},
+    {title:"Confirm it is hirsutism, not hypertrichosis", html:"Terminal hair in androgen-dependent sites = hirsutism. Fine or generalised hair in non-androgenic distribution = hypertrichosis — review the drug list and look for systemic causes instead."},
+    {title:"Quantify and examine", html:"Ferriman-Gallwey score across nine areas, recorded so change can be measured. Examine for acne, acanthosis nigricans, male-pattern balding, clitoromegaly, abdominal striae, a pelvic or abdominal mass, BMI and blood pressure."},
+    {title:"Targeted bloods", html:"Morning early-follicular total testosterone, SHBG, LH/FSH, prolactin, TFTs; DHEAS and 17-OHP where indicated; cortisol screen if Cushing's is suspected; HbA1c and lipids where PCOS is likely."},
+    {title:"Treat — and commit to six months", html:"Weight loss where relevant, cosmetic measures, then a hormonal option (co-cyprindiol or a CHC), adding spironolactone if inadequate; topical eflornithine for facial hair; metformin where metabolic features dominate. <b>Review at 6 months, not before.</b>"}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Red flags", title:"Red flags — the rare dangerous causes",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["<b>Rapid onset over weeks to months, progressive</b>","<b>Androgen-secreting ovarian or adrenal tumour</b> — gradual onset over years is reassuring; speed is the discriminator","Urgent endocrine or gynaecology referral with urgent total testosterone and DHEAS. Do not start a hormonal trial and review in six months"],
+         ["Virilisation: deepening voice, clitoromegaly, increased muscle bulk, male-pattern temporal balding, breast atrophy","<b>Marked androgen excess — tumour, or non-classical CAH</b>","Urgent referral. Voice change and clitoromegaly are the two most specific findings and must be asked about and examined for"],
+         ["<b>Total testosterone more than twice the upper limit of normal</b>","<b>Tumour or congenital adrenal hyperplasia rather than PCOS</b>","Urgent endocrinology referral and imaging (pelvic ultrasound and adrenal CT per specialist advice)"],
+         ["<b>Markedly raised DHEAS</b>","<b>Adrenal source — adrenal tumour or CAH</b>","<b>Urgent endocrinology referral</b>"],
+         ["Central obesity, purple abdominal striae, proximal muscle weakness, easy bruising, moon face, new hypertension or diabetes","<b>Cushing's syndrome</b>","Overnight dexamethasone suppression test or late-night salivary cortisol, and endocrinology referral"],
+         ["<b>Ascites, or a pelvic or abdominal mass not obviously fibroids</b>","<b>Ovarian malignancy</b>","NG12: urgent suspected ovarian cancer referral. This is found on examination — which is why examination is part of this workup"],
+         ["Hirsutism with severe insulin resistance — marked acanthosis nigricans, very high BMI, young onset","<b>Severe insulin-resistance syndromes; substantial metabolic risk</b>","HbA1c, lipids, blood pressure; treat as high cardiometabolic risk and refer if extreme"],
+         ["Hirsutism with primary amenorrhoea, ambiguous genitalia, salt-wasting history or short stature","<b>Classical or non-classical congenital adrenal hyperplasia</b>","17-hydroxyprogesterone (early morning, follicular) and endocrinology referral"],
+         ["Significant psychological distress, social withdrawal, or self-harm related to appearance","<b>The impact is frequently severe and routinely under-asked</b>","Ask directly, assess mood and risk, and treat the distress alongside the hirsutism rather than after it"]
+       ]},
+       {b:"warn" , html:"<b>Two errors, in opposite directions.</b> <b>The first is treating the rare case as routine:</b> a woman with six months of rapidly worsening facial hair and a voice her family has noticed does not need a six-month pill trial — she needs urgent bloods and a referral this week. <b>The second, far commoner, is over-investigating the typical case:</b> a woman with gradual hirsutism since her teens, irregular periods and a normal examination needs a short targeted screen and effective treatment, not a serial endocrine workup that delays the thing that would actually help. <b>The rate-of-onset question separates the two in one sentence.</b>"}
+     ]},
+
+    {id:"assess", nav:"Assess", title:"Assessment — hirsutism versus hypertrichosis, and quantifying it",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Hirsutism</b>","Excess TERMINAL hair — coarse, pigmented, over 5 mm — in androgen-dependent areas: upper lip, chin and jawline, chest and areolae, upper and lower abdomen (linea alba), upper and lower back, buttocks, inner thighs, external genitalia. <b>Androgen-driven, and therefore responsive to anti-androgen treatment.</b>"],
+         ["<b>Hypertrichosis</b>","Excess hair of any type (including fine vellus) in a non-androgenic, often generalised distribution. Causes: drugs (minoxidil, ciclosporin, phenytoin, diazoxide, some antipsychotics, systemic corticosteroids), anorexia nervosa, hypothyroidism, porphyria, paraneoplastic syndromes, and familial or racial variation. Does not respond to anti-androgens — treating it as hirsutism wastes months."],
+         ["<b>Ferriman-Gallwey scoring</b>","Score 0–4 in each of nine androgen-sensitive areas (upper lip, chin, chest, upper abdomen, lower abdomen, upper back, lower back, upper arms, thighs); maximum 36. A score of 8 or more indicates hirsutism in most populations — but the threshold varies by ethnicity, and self-treatment (waxing, threading, laser) suppresses the score, so ask what she already removes. Record the number: it is the only way to demonstrate improvement at six months."],
+         ["<b>Ethnicity matters to interpretation</b>","Normal terminal hair distribution differs substantially between populations — women of South Asian, Middle Eastern and Mediterranean heritage have a higher normal range, while East Asian women have a lower one. Distress is not proportional to the score, and a woman below the threshold who is significantly distressed still warrants assessment and treatment."]
+       ]},
+       {b:"table", head:["Assessment element","What to look for"], rows:[
+         ["<b>History</b>","Rate of onset and progression · age at onset relative to puberty · menstrual history (regularity, oligomenorrhoea, amenorrhoea) · fertility and pregnancy plans · acne and greasy skin · scalp hair loss · weight change · voice change · libido and clitoral change · family history of hirsutism, PCOS or CAH · ethnicity · current and past hair-removal methods"],
+         ["<b>Drug history — worth its own question</b>","Anabolic steroids and testosterone (including gym supplements and online purchases) · danazol · progestogens with androgenic activity (norethisterone, levonorgestrel) · systemic corticosteroids · sodium valproate · ciclosporin · minoxidil · phenytoin · diazoxide. Ask about anabolic steroid use directly and without judgement — it is under-disclosed and reversible"],
+         ["<b>Examination</b>","Ferriman-Gallwey score · acne · seborrhoea · acanthosis nigricans (neck, axillae — a marker of insulin resistance) · male-pattern balding · clitoromegaly · breast atrophy · abdominal striae and central adiposity · abdominal and pelvic examination for a mass · BMI, waist circumference and blood pressure"],
+         ["<b>Psychological impact</b>","Ask what it stops her doing, how much time and money removal takes, and about mood, anxiety and social avoidance. Distress frequently exceeds what the score would predict, and it is the reason she has come"]
+       ]}
+     ]},
+
+    {id:"bloods", nav:"Bloods", title:"Investigations and how to interpret them",
+     blocks:[
+       {b:"table", head:["Test","When and how","Interpretation"], rows:[
+         ["<b>Total testosterone</b>","The primary test. Morning sample, early follicular phase (days 2–5) where cycles allow. Stop hormonal contraception beforehand if possible, as it suppresses androgens and masks the result","Normal or mildly raised → PCOS or idiopathic hirsutism. More than twice the upper limit of normal → urgent referral for a tumour or CAH. A normal level does NOT exclude PCOS"],
+         ["<b>SHBG (and calculated free androgen index)</b>","<b>With the testosterone</b>","SHBG is often LOW in PCOS and insulin resistance, which raises free (active) androgen even when total testosterone is normal — this explains clinically obvious hirsutism with an unremarkable testosterone"],
+         ["<b>LH and FSH</b>","<b>Early follicular where cycles allow</b>","A raised LH:FSH ratio supports PCOS but is neither required nor sufficient; normal values do not exclude it"],
+         ["<b>DHEAS</b>","Where onset is rapid, virilisation is present, or an adrenal source is suspected","<b>Markedly raised → adrenal tumour or CAH → urgent endocrinology</b>. Mildly raised is common and non-specific"],
+         ["<b>Prolactin and TFTs</b>","Where there is menstrual disturbance, galactorrhoea, or thyroid symptoms","Hyperprolactinaemia and thyroid disease both cause menstrual disturbance and are easily treated — see <a href='hyperprolactinaemia.html'>hyperprolactinaemia</a>, <a href='hypothyroidism.html'>hypothyroidism</a>"],
+         ["<b>17-hydroxyprogesterone</b>","Early morning, follicular phase, where non-classical CAH is suspected — young onset, strong family history, particular ethnic backgrounds, or high androgens","<b>Raised → endocrinology referral for a short synacthen test</b>"],
+         ["<b>Cortisol screen</b>","Overnight dexamethasone suppression test or late-night salivary cortisol where Cushing's features are present","<b>Do not screen for Cushing's routinely</b> — only where there are corroborating clinical features"],
+         ["<b>Metabolic screen</b>","HbA1c, lipid profile, blood pressure, BMI and waist circumference where PCOS is likely or suspected","PCOS carries genuine cardiometabolic risk, and this is the part of the consultation with the largest long-term effect — see <a href='pcos.html'>PCOS</a>"],
+         ["<b>Pelvic ultrasound</b>","Where PCOS is being confirmed on Rotterdam criteria, where an adnexal mass is suspected, or where androgens are markedly raised","Not required to treat hirsutism, and a normal scan does not exclude PCOS if two other criteria are met"]
+       ]},
+       {b:"why", html:"<b>Two interpretive traps are worth naming.</b> First, a normal total testosterone in a woman with obvious hirsutism is common and is not a reason to stop — low SHBG raises the free fraction, and idiopathic hirsutism is defined precisely by normal androgens with normal cycles, so the treatment is the same. Second, hormonal contraception suppresses androgen levels, so testing a woman already on the pill produces a reassuring number that means nothing. If the result would change management, either test before starting or accept that the numbers will be uninterpretable — and say which you are doing, rather than acting on a suppressed result."}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Treatment — and the six-month rule that decides whether it works",
+     sub:"Existing terminal hair does not disappear. Treatment prevents new conversion, so cosmetic measures continue alongside.",
+     blocks:[
+       {b:"table", head:["Step","Treatment","Notes"], rows:[
+         ["<b>0 · Set the expectation, before prescribing anything</b>","\"No treatment works before 3 months; 6 months is the minimum trial; maximum benefit takes 9–12 months. It stops new coarse hair developing — it does not remove what is already there, so hair removal continues alongside.\"","This is the step that determines adherence. Without it, treatment is abandoned at 8 weeks and recorded as ineffective"],
+         ["<b>1 · Weight and metabolic</b>","Weight loss where BMI is raised — even 5–10% reduces androgen levels, improves SHBG, restores ovulation and improves hirsutism","The only intervention that treats the hirsutism, the cycle, the fertility and the cardiometabolic risk simultaneously. Offer real support, not an instruction"],
+         ["<b>2 · Cosmetic measures — offer them as legitimate treatment</b>","Plucking, waxing, threading, depilatory creams, shaving (which does NOT increase growth), bleaching; electrolysis for permanent removal; laser and IPL for dark hair on light skin","Shaving does not make hair grow back thicker — correct this myth explicitly, it is nearly universal. Laser and electrolysis are usually private; be honest about cost rather than implying NHS availability"],
+         ["<b>3 · Hormonal first-line</b>","A combined hormonal contraceptive — preferably one with a non-androgenic or anti-androgenic progestogen. Or co-cyprindiol (ethinylestradiol 35 µg / cyproterone acetate 2 mg), which is more effective for hirsutism and acne","Co-cyprindiol carries a higher VTE risk than standard CHCs and is licensed for moderate-to-severe hirsutism and acne — review the need periodically and withdraw 3–4 cycles after the condition has resolved. Check UKMEC. All CHCs also provide the contraception that anti-androgens require"],
+         ["<b>4 · Add an anti-androgen if response is inadequate at 6 months</b>","Spironolactone 50–100 mg OD (off-label for hirsutism; up to 200 mg under specialist advice)","Effective, and the usual add-on. MUST be combined with reliable contraception — it is teratogenic (feminisation of a male fetus). Monitor potassium and renal function; avoid in renal impairment and with ACE inhibitors, ARBs or potassium supplements. Menstrual irregularity is common"],
+         ["<b>5 · Facial hair specifically</b>","<b>Topical eflornithine 11.9% cream twice daily to the face</b>","Slows growth rather than removing hair; works best combined with laser or other removal. Assess benefit at 4 months and stop if none. Local irritation and acne are common"],
+         ["<b>6 · Where metabolic features dominate</b>","Metformin — modest effect on hirsutism, greater effect on cycle regularity, insulin resistance and ovulation","Not primarily a hirsutism drug: choose it when PCOS metabolic features or fertility are the main issue. See <a href='pcos.html'>PCOS</a>"],
+         ["<b>7 · Specialist-only options</b>","Finasteride, flutamide and higher-dose cyproterone are not for primary-care initiation","Flutamide carries hepatotoxicity risk; finasteride is teratogenic and off-label. <b>Refer rather than initiate</b>"],
+         ["<b>What NOT to do</b>","Do not prescribe an anti-androgen without reliable contraception · do not judge treatment before 6 months · do not treat hypertrichosis with anti-androgens · do not screen for Cushing's without clinical features","The contraception requirement is absolute: spironolactone and finasteride are teratogenic"]
+       ]},
+       {b:"say" , html:"I want to be honest about what treatment does and how long it takes, because this is where most people get disheartened. The tablets work by stopping new coarse hairs from developing — they do not remove the hairs that are already there. That means you will still need to manage those the way you do now, and the benefit shows up as less new growth over time. Nothing happens in the first three months. Six months is the earliest point at which we can fairly judge it, and the full effect takes nine to twelve. So I would like us to agree now to stick with this until we review it properly at six months, rather than deciding at six weeks that it has not worked."}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review and monitoring",
+     blocks:[
+       {b:"table", head:["When","What to check"], rows:[
+         ["<b>4–6 weeks after starting spironolactone</b>","Potassium, renal function and blood pressure; symptoms of hyperkalaemia; confirm contraception is in place and reliable"],
+         ["<b>3 months</b>","Tolerance and adherence only — explicitly NOT efficacy. Reinforce that no judgement is made until 6 months. Check contraception, and mood"],
+         ["<b>6 months</b>","Repeat the Ferriman-Gallwey score against baseline · her own assessment of new growth and time spent on removal · add or escalate if inadequate · continue if improving, since benefit accrues to 9–12 months"],
+         ["<b>Annually</b>","BMI, blood pressure, HbA1c and lipids where PCOS · UKMEC recheck and VTE risk on a CHC (particularly co-cyprindiol, where the continuing need should be reviewed) · potassium and renal function on spironolactone · contraception still reliable · mood · fertility plans, which change the whole plan"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Contact us urgently", html:"\"If your voice starts to deepen, or the hair growth speeds up noticeably, or you notice changes in your body shape or genital area — come back promptly rather than waiting for the review.\""},
+         {tone:"amber", h:"🟠 On spironolactone", html:"\"You must use reliable contraception on this medicine, because it can affect a developing baby. Tell me straight away if you might be pregnant, and come for the blood test to check your kidneys and potassium.\""},
+         {tone:"blue", h:"💊 Judge it at six months", html:"\"Do not assess this before six months, and do not stop at three because nothing seems to be happening — at three months nothing is supposed to be happening yet.\""},
+         {tone:"green", h:"✓ Shaving does not make it worse", html:"\"Shaving does not make hair grow back thicker or faster — that is a myth. Use whatever removal method suits you; it will not undermine the treatment.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Urgent endocrinology or gynaecology", html:"Rapid onset over weeks to months · any virilisation (voice deepening, clitoromegaly, muscle bulk, breast atrophy) · total testosterone more than twice the upper limit of normal · markedly raised DHEAS · suspected Cushing's syndrome. <b>Do not start a hormonal trial in any of these.</b>"},
+         {tone:"purple", h:"2WW · NICE NG12", html:"Hirsutism has no NG12 criterion of its own and none is invented — but the ovarian route runs through the examination this workup requires. Ascites, or a pelvic or abdominal mass not obviously fibroids → urgent suspected ovarian cancer referral. Persistent abdominal distension, early satiety, pelvic pain or urinary urgency, particularly aged 50 or over → CA-125; if ≥35 IU/mL, urgent pelvic ultrasound."},
+         {tone:"blue", h:"Endocrinology — routine", html:"Suspected non-classical congenital adrenal hyperplasia (raised 17-OHP) · diagnostic uncertainty · failure of two appropriate treatments at adequate duration · need for finasteride, flutamide or higher-dose cyproterone."},
+         {tone:"blue", h:"Gynaecology / fertility", html:"PCOS with subfertility · anovulation requiring ovulation induction · suspected adnexal mass. See <a href='infertility.html'>infertility</a> and <a href='pcos.html'>PCOS</a>."},
+         {tone:"green", h:"Dermatology", html:"Severe hirsutism unresponsive to hormonal treatment · coexisting severe acne or hidradenitis · consideration of laser where locally commissioned."},
+         {tone:"green", h:"Psychological support", html:"Significant distress, social avoidance, low mood or anxiety related to appearance — refer to Talking Therapies and treat alongside, not after. Appearance-related distress here is frequently severe and disproportionate to the score."},
+         {tone:"cream", h:"GP management", html:"Most hirsutism is managed entirely here: the rate-of-onset question, hirsutism versus hypertrichosis, a recorded Ferriman-Gallwey score, a short targeted blood screen, weight and metabolic risk, cosmetic measures offered as legitimate, a CHC or co-cyprindiol with spironolactone added if needed, and a six-month review. Related pages: <a href='../algorithms/hirsutism.html'>hirsutism pathway</a> · <a href='pcos.html'>PCOS</a> · <a href='hyperprolactinaemia.html'>hyperprolactinaemia</a> · <a href='acne.html'>acne</a> · <a href='contraception.html'>contraception</a> · <a href='../algorithms/irregular-periods.html'>irregular periods</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 24-year-old woman of South Asian heritage attends about facial hair on her chin and upper lip, which she has threaded weekly since she was 17 and which she says is \"getting worse\". Her periods come <b>every 6–10 weeks</b>. Her BMI is <b>31</b> and she has acne on her jawline and some darkening of the skin at the back of her neck. She has been using a friend's leftover \"hormone tablets\" for two months with no effect and is upset, saying she has stopped going to the gym and avoids photographs. She asks for <b>\"the laser on the NHS\"</b>."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Asks the rate-of-onset question and establishes this is gradual since her teens — not rapid virilisation; examines for virilisation and finds none, and identifies the acanthosis nigricans as insulin resistance; records a Ferriman-Gallwey score and asks what she already removes, recognising that threading suppresses the score; interprets the score in the context of her ethnicity while taking her distress seriously regardless; recognises the PCOS pattern on Rotterdam (oligomenorrhoea plus clinical hyperandrogenism) and does the metabolic screen — HbA1c, lipids, BP; sends a morning early-follicular testosterone and SHBG, and explains that a normal testosterone will not mean nothing is wrong; stops the borrowed medication and explains why sharing prescription hormones is unsafe; offers a CHC or co-cyprindiol with the VTE caveat, and explains the six-month rule BEFORE prescribing; <b>corrects the expectation that treatment removes existing hair</b>; is honest that laser is rarely NHS-funded rather than implying it will be; addresses weight with support rather than instruction, noting it improves hirsutism, cycles and fertility together; and asks about mood and social withdrawal, offering psychological support alongside."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>Endocrine Society — hirsutism</b><span class="rd"> — the hirsutism/hypertrichosis distinction, Ferriman-Gallwey scoring, the drug causes, the investigation set and thresholds for referral, and the treatment ladder with the minimum 6-month trial</span></li>'+
+         '<li>Endocrine Society — Evaluation and Treatment of Hirsutism in Premenopausal Women<span class="rd"> — testosterone more than twice the upper limit of normal as a threshold for urgent evaluation, the role of SHBG and free androgen, and the position of spironolactone, finasteride and flutamide</span></li>'+
+         '<li><b>Rotterdam consensus criteria for PCOS</b><span class="rd"> — two of three: oligo/anovulation, clinical or biochemical hyperandrogenism, polycystic ovaries on ultrasound</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — urgent referral for ascites or a pelvic/abdominal mass, and the ovarian symptom set with CA-125 at 35 IU/mL</span></li>'+
+         '<li><b>BNF · MHRA</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — co-cyprindiol licensing, its higher VTE risk and the recommendation to withdraw 3–4 cycles after resolution; spironolactone dosing, teratogenicity and potassium monitoring; eflornithine and the 4-month assessment point; flutamide hepatotoxicity</span></li>'+
+         '<li><b>FSRH — UKMEC</b><br><a href="https://www.fsrh.org" rel="noopener">fsrh.org</a><span class="rd"> — eligibility criteria applied before prescribing any combined hormonal contraceptive</span></li>'+
+         '<li><b>Verity — the UK PCOS charity</b><br><a href="https://www.verity-pcos.org.uk" rel="noopener">verity-pcos.org.uk</a><span class="rd"> — patient support referenced for PCOS-related hirsutism</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Hirsutism — Endocrine Society guidance, Rotterdam criteria, NG12 and the BNF. Ask how fast it came on: gradual since puberty is PCOS or idiopathic, rapid with virilisation is a tumour until proven otherwise. Distinguish hirsutism from hypertrichosis — anti-androgens do not treat the latter. Record a Ferriman-Gallwey score so change can be measured. Morning early-follicular testosterone; more than twice the upper limit of normal means urgent referral. Set the six-month expectation before prescribing, and never give spironolactone without reliable contraception. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recurrent UTI — Protocol · Reasoning GP</title>
+<meta name="description" content="Recurrent urinary tract infection: never attribute haematuria to infection, relapse versus reinfection, post-void residual and structural triggers, topical vaginal oestrogen as the most underused prevention, D-mannose and methenamine before antibiotic prophylaxis, and the nitrofurantoin monitoring rules." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/recurrent-uti.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Recurrent UTI protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🚰",
+  title:"Recurrent UTI — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Never let a UTI explain haematuria — and try topical oestrogen, D-mannose and methenamine before committing anyone to long-term antibiotics",
+  stemSub:"One page for the whole condition: confirm recurrent UTI with cultures (≥2 in 6 months, or ≥3 in a year), separate relapse from reinfection because they point to different causes, find the structural trigger — above all a significant post-void residual — then work the prevention ladder properly, with vaginal oestrogen first in post-menopausal women and continuous antibiotics as the last rung. Any macroscopic haematuria is a 2WW referral whatever the culture shows.",
+  guideline:"NICE NG112 · NICE NG12 · BNF",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE NG112 — UTI (lower): antimicrobial prescribing"},
+    {t:"NICE NG12 — suspected cancer (May 2025)", tone:"tw"},
+    {t:"Raz &amp; Stamm NEJM 1993 · Kranjcec 2014 · ALTAR 2022"},
+    {t:"UKHSA / PHE AMR data · BNF"},
+    {t:"Acute UTI has its own protocols"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Urosepsis · 2WW · structural</small></a><a href="#confirm"><b>Classify</b><small>Relapse vs reinfection</small></a><a href="#workup"><b>Investigate</b><small>PVR · USS · not ABU</small></a><a href="#ladder"><b>Prevent</b><small>Oestrogen → antibiotics last</small></a><a href="#monitor"><b>Monitor</b><small>6-month review</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ A concurrent UTI does not remove the 2WW obligation", html:"Any unexplained macroscopic haematuria in an adult is a 2WW urology referral (NICE NG12), regardless of a concurrent UTI. Treat the UTI AND refer simultaneously. Haematuria attributed to infection is one of the commonest routes to delayed bladder cancer diagnosis — the infection is treated, the bleeding appears to settle, and nobody investigates."},
+    {tone:"amber", h:"Relapse and reinfection mean different things", html:"Relapse — the same organism within 2 weeks — means inadequate treatment or a structural source harbouring bacteria (calculus, prostate, stricture) → investigate structurally. Reinfection — a different organism, or after more than 2 weeks — means re-ascent from the periurethral or bowel reservoir, and is the commonest pattern in women."},
+    {tone:"blue", h:"Scan the bladder — it takes 2 minutes", html:"Post-void residual: normal under 50 mL, borderline 50–100 mL, clinically significant above 100 mL. Residual urine is a bacterial growth medium and defeats every other prevention strategy, so treat the cause — alpha-blocker for BPH, gynaecology for cystocoele, ISC for neurogenic, pelvic floor physiotherapy for functional dysfunction."},
+    {tone:"green", h:"Topical vaginal oestrogen is the most underused intervention", html:"Estriol 0.01% cream 0.5 g nightly for 2 weeks then twice weekly, or oestradiol 10 microgram vaginal tablets on the same schedule. NNT around 3 for preventing ≥1 UTI over 6 months. Safe even with a history of breast cancer — negligible systemic absorption (NICE NG196 and BMS guidance confirm this). <b>Offer it BEFORE antibiotic prophylaxis.</b>"},
+    {tone:"purple", h:"Do not treat asymptomatic bacteriuria", html:"In non-pregnant adults, treating ABU does not reduce symptomatic UTI and increases resistance (NG112). A positive MSU in an older woman with confusion or falls is not a UTI — investigate the actual cause. Pregnancy is the exception: treat all bacteriuria — 30% develop pyelonephritis untreated."},
+    {tone:"plain", h:"Two non-antibiotic options come before antibiotics", html:"D-mannose 2 g OD — equivalent to nitrofurantoin prophylaxis for E. coli UTI prevention in RCT, OTC and safe in pregnancy. Methenamine hippurate 1 g BD — a non-antibiotic urinary antiseptic with no resistance selection, shown non-inferior to daily antibiotic prophylaxis in the ALTAR trial (2022)."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where bladder cancers are lost.",
+  pathway:[
+    {title:"Screen the emergencies and the cancer route", html:"<b>Urosepsis, emphysematous pyelonephritis, retention, neurogenic bladder</b> — and <b>any macroscopic haematuria → 2WW, alongside treating the infection</b>. <b>Any UTI in a man, or in a child, is always investigated.</b>", alert:true},
+    {title:"Confirm and classify", html:"<b>≥2 culture-proven UTIs in 6 months, or ≥3 in 12 months.</b> Then <b>relapse versus reinfection from the organisms</b>, and the host, structural, bacterial and drug causes."},
+    {title:"Investigate for a treatable trigger", html:"MSU every episode with organism and sensitivity documented, renal and bladder USS with post-void residual, HbA1c, U&amp;E; cystoscopy and cytology on indication. <b>Do not treat asymptomatic bacteriuria.</b>"},
+    {title:"Work the prevention ladder in order", html:"Bladder and bowel optimisation → topical oestrogen if post-menopausal → D-mannose or methenamine → self-start or post-coital antibiotics → continuous prophylaxis as a last resort."},
+    {title:"Review with an exit plan", html:"6-month review of any antibiotic strategy — still needed? oestrogen tried? can it stop? Nitrofurantoin beyond 6 months needs annual CXR and LFT; trimethoprim needs annual FBC."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Red flags — urosepsis, malignancy and structural cause",
+     sub:"Recurrent UTI (≥2 in 6 months, or ≥3 in 12 months) requires investigation. Macroscopic haematuria requires its own 2WW investigation.",
+     blocks:[
+       {b:"table", head:["Presentation","Suggests","Action"], rows:[
+         ["<b>UTI + fever &gt;38°C + rigors + loin pain + haemodynamic instability</b>","<b>Urosepsis or ascending pyelonephritis with bacteraemia</b>","<b>999 if BP &lt;90/60, HR &gt;100, or confused.</b> IV antibiotics (<b>ceftriaxone plus gentamicin</b> if severe), <b>blood cultures before antibiotics</b>. <b>All systemically unwell patients go to hospital</b>"],
+         ["<b>Recurrent UTI + macroscopic haematuria + age &gt;45 or smoker</b>","<b>Urothelial cancer — bladder TCC or SCC</b>","2WW urology immediately. Treat the UTI AND refer 2WW simultaneously. Never assume haematuria is explained by infection (NICE NG12)"],
+         ["Recurrent UTI + new neurological symptoms + lower limb weakness or incontinence","<b>Neurogenic bladder from spinal cord pathology → high urosepsis risk</b>","<b>MRI spine urgently</b>"],
+         ["<b>UTI in a male under 65 without a catheter or known structural cause</b>","<b>UTI is uncommon in young men — a structural cause until excluded</b>","STI screen (gonorrhoea and chlamydia), USS urinary tract, urology referral"],
+         ["Pyelonephritis not responding to 48 hours of IV antibiotics in a diabetic","Emphysematous pyelonephritis — gas-forming E. coli or Klebsiella; a surgical emergency","<b>CT abdomen urgently. Hospital</b>"],
+         ["<b>Recurrent UTI + poor urinary stream + hesitancy + incomplete emptying</b>","<b>Bladder outflow obstruction — BPH, stricture, cystocoele, neurogenic</b>","<b>Post-void residual USS — &gt;100 mL is significant. Urgent urology</b>"]
+       ]},
+       {b:"why", html:"Haematuria–UTI conflation is one of the commonest pathways to delayed bladder cancer diagnosis — haematuria is attributed to a UTI, the infection is treated, the haematuria appears to resolve, and no investigation is arranged. NICE NG12: any unexplained macroscopic haematuria in an adult is a 2WW urology referral, regardless of concurrent UTI. <b>Bladder cancer frequently co-presents with UTI</b>, because blood in the bladder plus stasis favours bacterial growth. Separately, emphysematous pyelonephritis — gas-forming organisms producing CO₂ within the renal parenchyma in a diabetic — is a necrotising infection with 40–90% mortality without surgery: any diabetic not improving on IV antibiotics at 48 hours needs an urgent CT abdomen."},
+       {b:"dl", rows:[
+         ["<b>NG12 — the criteria that apply here</b>","Bladder and renal cancer: refer on a suspected cancer pathway (for an appointment within 2 weeks) for people aged ≥45 with unexplained visible haematuria without urinary tract infection, or with visible haematuria that persists or recurs after successful treatment of infection; and for people aged ≥60 with unexplained non-visible haematuria plus either dysuria or a raised white cell count. The practical rule this generates in a recurrent-UTI clinic: treat the infection and refer at the same time — do not use the culture result to cancel the referral. Restated in <a href='#refer'>Refer</a>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Classify", title:"Causes of recurrent UTI — and the relapse/reinfection split",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Host factors</b>","Post-menopausal status (oestrogen deficiency → vaginal atrophy → loss of Lactobacillus → ascending E. coli) · sexual activity (mechanical urethral inoculation) · spermicide use (disrupts vaginal flora) · poor fluid intake with infrequent voiding · constipation (faecal reservoir) · diabetes (glycosuria plus impaired neutrophil function) · genetics (P blood group antigen and UPEC adhesion)"],
+         ["<b>Structural and anatomical</b>","Incomplete bladder emptying (BPH, urethral stricture, cystocoele, neurogenic bladder — residual urine is a bacterial growth medium) · vesicoureteric reflux · renal calculi (struvite or infection stones harbour bacteria and never clear without stone removal) · colovesical fistula (pneumaturia plus mixed faecal organisms — diverticular disease or Crohn's)"],
+         ["<b>Bacterial factors</b>","UPEC (E. coli) 80–85%. Proteus mirabilis (urease-producing → alkaline urine → struvite stones). Relapse — same organism within 2 weeks — means inadequate treatment or a structural source. Reinfection — different organism, or more than 2 weeks — means re-ascent from the periurethral or bowel reservoir"],
+         ["<b>Drug-induced</b>","SGLT2 inhibitors (pharmacological glycosuria → increased UTI susceptibility) · immunosuppressants"]
+       ]},
+       {b:"why", html:"<b>The relapse-versus-reinfection distinction drives the investigation.</b> Relapse (same organism within 2 weeks) suggests inadequately treated infection or a structural source maintaining bacterial persistence — a calculus, the prostate, a stricture — and warrants structural investigation. Reinfection (a different organism, or beyond 2 weeks) suggests re-ascent, and is the commonest pattern in women. Two specific triggers worth naming: any recurrent UTI consistently growing Proteus mirabilis needs renal imaging (USS plus KUB X-ray or CT) to exclude a struvite or staghorn calculus — it cannot be eradicated with antibiotics alone, and stone removal is required for cure; and pneumaturia (bubbles on voiding) with recurrent mixed-organism UTI (E. coli plus Enterococcus plus anaerobes) in an older man with diverticular disease means a colovesical fistula — CT abdomen and pelvis for diagnosis."}
+     ]},
+
+    {id:"workup", nav:"Investigate", title:"Assessment, investigations, and what not to treat",
+     blocks:[
+       {b:"table", head:["Domain","Detail"], rows:[
+         ["<b>History</b>","Episode frequency and organisms (same = relapse; different = reinfection) · precipitating factors (post-coital?) · fluid intake · voiding pattern (holding urine? post-void dribbling? pneumaturia?) · post-menopausal status and vaginal symptoms · sexual history and contraception (spermicide?) · catheter · diabetes · previous investigations · family history"],
+         ["<b>Examination</b>","Loin tenderness (pyelonephritis) · suprapubic tenderness and a palpable bladder (retention) · women: urethral prolapse, cystocoele (anterior vaginal wall descent = incomplete emptying), vaginal atrophy (pale thin dry mucosa) · men: PR if prostatitis is suspected — a tender prostate, and no vigorous massage because of bacteraemia risk"],
+         ["<b>Investigations</b>","MSU culture for every episode, documenting organism and sensitivity each time (essential for the relapse-versus-reinfection pattern) · renal and bladder USS (post-void residual, hydronephrosis, stones, bladder lesion) · HbA1c · eGFR and U&amp;E · flexible cystoscopy (macroscopic haematuria, male recurrent UTI, or a woman &gt;50 with recurrent UTI) · urine cytology (atypical cells)"],
+         ["<b>Post-void residual</b>","Normal &lt;50 mL · borderline 50–100 mL · clinically significant &gt;100 mL. A bladder scanner takes 2 minutes and <b>should be part of every recurrent UTI assessment</b>"],
+         ["<b>Always investigate further</b>","≥3 culture-proven UTIs in 12 months · ≥2 in 6 months · any UTI in a male under 65 · macroscopic haematuria (2WW) · pyelonephritis not resolving in 72 hours on IV antibiotics · Proteus mirabilis consistently (struvite stone) · poor stream or hesitancy with UTI · pneumaturia (colovesical fistula)"],
+         ["<b>Urine cytology indications</b>","All macroscopic haematuria referrals · recurrent UTI in a smoker &gt;40 with persistent microscopic haematuria · atypical symptoms suggesting bladder pathology"]
+       ]},
+       {b:"warn", html:"<b>Do NOT treat asymptomatic bacteriuria in non-pregnant adults</b> — NICE NG112: treating ABU does not reduce symptomatic UTI and increases antimicrobial resistance. In older people, a positive MSU plus non-specific symptoms (confusion, falls) is NOT a UTI — investigate the actual cause. Treat ONLY if: pregnant, before a urological procedure, renal transplant in the first 2 months, or the symptoms are genuinely specific (dysuria, frequency, suprapubic pain)."},
+       {b:"why", html:"Asymptomatic bacteriuria affects 10–25% of community-dwelling women over 70 — it is a normal finding and does not require treatment (NG112). The commonest prescribing error in primary care and care homes is treating a positive MSU in an older woman with non-specific symptoms as a UTI, and an <b>NHS England Patient Safety Alert (2016)</b> specifically warns against it. Pregnancy is the opposite case: ABU must be treated, because there is a 30% risk of pyelonephritis without treatment — MSU at booking, treat any positive culture with <b>cefalexin 500 mg TDS for 7 days</b>, with a <b>test of cure at 7 days and monthly surveillance</b> throughout pregnancy."}
+     ]},
+
+    {id:"acute", nav:"Acute episode", title:"Treating the acute episode",
+     sub:"Kept here because a self-start protocol depends on it. The full acute pages are the <a href='uti-women.html'>UTI in women</a>, <a href='uti-men.html'>UTI in men</a> and <a href='uti-children.html'>UTI in children</a> protocols.",
+     blocks:[
+       {b:"table", head:["Situation","Regimen"], rows:[
+         ["<b>Uncomplicated UTI — women</b>","<b>Nitrofurantoin 100 mg MR BD for 3 days (first-line if eGFR ≥45)</b> — UK E. coli nitrofurantoin resistance is &lt;5%, the most microbiome-sparing effective option. <b>Avoid at term.</b> If contraindicated: <b>pivmecillinam 400 mg stat then 200 mg QDS for 3 days</b>, or <b>trimethoprim 200 mg BD for 3 days</b> (check local resistance — around 30% E. coli resistance in the UK)"],
+         ["<b>UTI in men</b>","<b>Trimethoprim 200 mg BD for 7 days — men need 7-day courses.</b> MSU culture before starting, STI screen alongside. <b>Ciprofloxacin 500 mg BD for 28 days if prostatitis is suspected</b>"],
+         ["<b>UTI in pregnancy</b>","<b>Cefalexin 500 mg TDS for 7 days.</b> Nitrofurantoin: avoid at term. Trimethoprim: avoid in the first trimester. Test of cure (repeat MSU) at 7 days plus monthly surveillance. Treat ALL bacteriuria, including asymptomatic"],
+         ["<b>Pyelonephritis — community, well</b>","<b>Ciprofloxacin 500 mg BD for 7 days.</b> Culture before starting. Co-amoxiclav 625 mg TDS for 14 days if ciprofloxacin is contraindicated. Hospital (IV ceftriaxone plus gentamicin) if vomiting, confused or haemodynamically unstable"]
+       ]},
+       {b:"why", html:"UK E. coli nitrofurantoin resistance is &lt;5%, and nitrofurantoin acts locally within the urine with minimal gut flora disruption — making it the most microbiome-preserving effective option. Trimethoprim UK resistance is approximately 25–30% — check the local ICB antibiogram. Pivmecillinam (Selexid) has around 5% UK E. coli resistance, a narrow spectrum and minimal microbiome disruption, and is a NICE NG112 first-line option alongside nitrofurantoin. Co-amoxiclav and cefalexin should be reserved for complicated UTI and pyelonephritis."}
+     ]},
+
+    {id:"ladder", nav:"Prevent", title:"Prevention — in order, with antibiotics last",
+     sub:"Every rung below the antibiotics is worth exhausting first. Vaginal oestrogen in particular is powerful and underused.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Everyone", title:"Bladder, bowel and hygiene optimisation", when:"first-line, all patients",
+          html:"1.5–2 L fluid daily. Void every 2–3 hours (avoid bladder stasis). Double-void technique — void, wait 30 seconds, void again. Post-coital voiding within 30 minutes. Treat constipation actively — fibre, fluid and activity, with lactulose, senna or Movicol. Target a post-void residual &lt;100 mL. Avoid spermicide-containing contraceptives (nonoxynol-9 disrupts vaginal flora), and consider an alternative to a diaphragm in a post-coital pattern. Wipe front to back; warm water only externally — no soap, which disrupts periurethral lactobacilli."},
+         {step:"Post-menopausal", title:"Topical vaginal oestrogen — first-line here", when:"any post-menopausal woman",
+          fromLabel:"before any antibiotic strategy",
+          html:"Estriol 0.01% cream (Gynest) 0.5 g intravaginally nightly for 2 weeks, then twice weekly long-term; or oestradiol 10 microgram vaginal tablets (Vagifem) on the same schedule. NNT approximately 3 (Raz and Stamm, NEJM 1993). Safe even with a history of breast cancer — negligible systemic absorption. Start before antibiotic prophylaxis."},
+         {step:"Non-antibiotic", title:"D-mannose and methenamine hippurate", when:"before continuous antibiotics",
+          fromLabel:"no resistance selection",
+          html:"<b>D-mannose 2 g OD (or 1 g BD)</b> — blocks type 1 fimbrial E. coli adhesion to the urothelium; RCT (Kranjcec 2014) showed equivalence to nitrofurantoin prophylaxis for E. coli UTI prevention; safe in pregnancy; OTC. <b>Methenamine hippurate (Hiprex) 1 g BD</b> — a non-antibiotic urinary antiseptic (urinary acidification → formaldehyde release), <b>with no resistance selection</b>; contraindicated if eGFR &lt;30, in gout, or with urinary alkalinisers such as potassium citrate. Cranberry as an adjunct: standardised extract 36 mg PAC OD (not juice — variable PAC content and high sugar); modest reduction, NNT around 8."},
+         {step:"Targeted antibiotics", title:"Self-start, or post-coital single dose", when:"prevention measures insufficient",
+          fromLabel:"minimal antibiotic exposure",
+          html:"Self-start protocol: provide nitrofurantoin 100 mg MR BD for 3 days. The patient starts at first symptoms, sends an MSU within 24 hours, reports if there is no improvement at 48 hours, and keeps an episode diary. Review at 6 months. Post-coital single dose: nitrofurantoin 100 mg stat or trimethoprim 200 mg stat within 2 h (&lt;2 hours) of intercourse, for a documented post-coital trigger — RCTs show equivalent efficacy to daily prophylaxis for that pattern."},
+         {step:"Last resort", title:"Continuous low-dose prophylaxis", when:"all of the above have failed",
+          fromLabel:"with a monitoring plan",
+          html:"Nitrofurantoin 50 mg nocte, or trimethoprim 100 mg nocte, or cefalexin 125 mg nocte, for 6 months. Nitrofurantoin &gt;6 months: annual CXR and LFT (pulmonary fibrosis risk around 1 in 5,000–10,000). Trimethoprim: annual FBC (megaloblastic effect). Review the indication at 6 months."}
+       ]},
+       {b:"why", html:"Topical vaginal oestrogen is the most evidence-based and most underused intervention for post-menopausal recurrent UTI. The mechanism is coherent — it restores vaginal Lactobacillus colonisation, an acidic pH and periurethral mucosal integrity, reducing E. coli colonisation — and its safety in women with a history of breast cancer is confirmed (NICE NG196, BMS), which is the objection that most often stops it being offered. <b>Methenamine hippurate deserves particular emphasis</b> because it is <b>non-antibiotic and selects no resistance</b>, making it valuable where <b>nitrofurantoin is contraindicated (eGFR &lt;45)</b>, where organisms are multidrug-resistant, or where long-term antibiotics are undesirable; the ALTAR randomised trial (2022) found it non-inferior to daily antibiotic prophylaxis. And the two zero-cost interventions are the highest-yield of all: double-voiding reduces residual urine in the roughly 15–20% of women with subtle voiding dysfunction, and post-coital voiding interrupts mechanical bacterial inoculation (around a 30% reduction; Foxman 1990) — each takes 60 seconds to teach."},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"💊 On an SGLT2 inhibitor", html:"<b>SGLT2 inhibitors increase UTI susceptibility through glycosuria.</b> In a diabetic woman with recurrent UTI, consider drug substitution, or add D-mannose or methenamine prophylaxis — a shared decision with the diabetes team."},
+         {tone:"blue", h:"🧷 Long-term catheter", html:"ABU with a long-term catheter is normal — do NOT treat unless symptomatic. Maintain closed drainage and adequate hydration. Consider intermittent self-catheterisation (ISC) over an indwelling catheter where feasible — lower UTI and sepsis risk."},
+         {tone:"cream", h:"📓 Bladder diary", html:"Record voiding times, volumes, fluid intake, urgency and symptoms over 3–5 days. Gives objective data for a urology or urogynaecology referral and guides targeted advice."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitor", title:"Follow-up and monitoring",
+     blocks:[
+       {b:"table", head:["What","Detail"], rows:[
+         ["<b>Self-start — 6-month review</b>","Number of episodes, organisms and sensitivities from cultures sent, antibiotic use pattern. If frequency is increasing → prophylaxis or structural investigation. Ensure MSUs are being sent for resistance surveillance. Document the arrangement"],
+         ["<b>Antibiotic prophylaxis monitoring</b>","Nitrofurantoin continuous: annual CXR and LFT (pulmonary fibrosis risk &gt;6 months' use). Trimethoprim: annual FBC. Review at 6 months — still indicated? Has topical oestrogen been tried? Can prophylaxis stop?"],
+         ["<b>Topical oestrogen monitoring</b>","Annual review: UTI frequency reduced? Vaginal symptoms improved? Any postmenopausal spotting → pelvic USS to exclude endometrial pathology. Topical oestrogen is long-term — do not stop at 3 months if it is working"],
+         ["<b>After structural investigation</b>","Results reviewed and actioned. Structural abnormality treated before restarting prophylaxis. Flexible cystoscopy and urine cytology reports documented"],
+         ["<b>Treat the underlying cause</b>","BPH → alpha-blocker (see <a href='male-luts.html'>male LUTS</a>) · cystocoele → gynaecology · neurogenic → intermittent self-catheterisation · functional voiding dysfunction → pelvic floor physiotherapy and bladder retraining"]
+       ]},
+       {b:"warn", html:"<b>Nitrofurantoin pulmonary fibrosis:</b> estimated incidence around <b>1 in 5,000–10,000</b> on long-term continuous use, with <b>repeated MHRA safety warnings</b>. It presents as <b>progressive breathlessness with a dry cough and restrictive spirometry</b>. Annual CXR and LFT monitoring is mandatory beyond 6 months, and new respiratory symptoms on long-term nitrofurantoin mean stopping the drug and imaging the chest. Given that risk, methenamine hippurate is an increasingly attractive long-term alternative — no pulmonary or hepatic toxicity, and no resistance selection."},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same-day / 999", html:"Fever with rigors, confusion and loin pain → urosepsis → 999 · acute urinary retention → 999 or same-day urology."},
+         {tone:"amber", h:"🟠 GP same week", html:"UTI not responding at 48 hours → review the MSU sensitivity result · new macroscopic haematuria during UTI treatment → 2WW urology, do not defer · UTI frequency escalating despite optimised prevention → urology referral."},
+         {tone:"blue", h:"🔁 The 6-month question", html:"Has topical oestrogen been started? Has D-mannose or methenamine been tried? Are voiding habits optimised? Can antibiotics be stepped down or stopped?"},
+         {tone:"green", h:"🩸 Never defer haematuria", html:"\u201cIf you see blood in your urine, tell me even if you also have an infection — that always gets checked separately.\u201d"}
+       ]},
+       {b:"say", html:"Two things are worth being clear about. First, if you ever see blood in your urine I will refer you for a bladder check even if you have an infection at the same time — an infection does not explain away bleeding, and that is the one thing I do not want us to miss. Second, before I put you on a daily antibiotic for months, there are things that work as well or better. If you are past the menopause, a small amount of oestrogen cream used vaginally is the single most effective preventive we have, and it is safe even if you have had breast cancer — it barely gets absorbed. Alongside that there is a sugar called D-mannose and a non-antibiotic tablet called methenamine, neither of which breeds resistance. Antibiotics every night are the last option, not the first."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / same-day", html:"Urosepsis (fever with instability or confusion) · emphysematous pyelonephritis · acute urinary retention."},
+         {tone:"purple", h:"2WW urology · NICE NG12", html:"Any unexplained macroscopic haematuria in an adult — a concurrent UTI does NOT remove the 2WW obligation · recurrent UTI with haematuria aged &gt;45 · recurrent UTI in a male under 65."},
+         {tone:"amber", h:"Urology (urgent, 2 weeks)", html:"Post-void residual &gt;100 mL · stone disease contributing to recurrent UTI · outflow obstruction symptoms · not controlled by self-start or prophylaxis at 6 months · positive urine cytology."},
+         {tone:"blue", h:"Gynaecology", html:"Pelvic organ prolapse (cystocoele causing incomplete emptying) · young women with a suspected anatomical variant."},
+         {tone:"green", h:"Pelvic floor physiotherapy", html:"Voiding dysfunction without a structural cause · pelvic floor weakness with recurrent UTI · bladder retraining programme."},
+         {tone:"cream", h:"GP management", html:"Post-menopausal: topical oestrogen first-line. Self-start antibiotics. Post-coital single dose. D-mannose. Methenamine hippurate. Continuous low-dose prophylaxis as a last resort."}
+       ]},
+       {b:"why", html:"<b>Any UTI in a man or a child is always investigated</b> — it implies a structural abnormality until proven otherwise. And <b>a significant post-void residual undermines every other strategy</b>: bacteria multiply in stagnant residual urine, so any UTI prevention strategy will be less effective while significant residual urine persists. Treat the cause first — BPH with an alpha-blocker, cystocoele via gynaecology, neurogenic bladder with intermittent self-catheterisation, functional voiding dysfunction with pelvic floor physiotherapy."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 63-year-old woman with her fourth UTI this year asks for \u201csomething to stop them\u201d. She mentions that with the last one she noticed her urine was pink for a day, which settled with the antibiotics. She has vaginal dryness, holds her urine at work, and has never been offered oestrogen."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does not accept that the antibiotics explained the haematuria — refers 2WW while managing the recurrence; confirms the recurrence with <b>culture history and separates relapse from reinfection</b>; <b>scans the post-void residual</b>; offers topical vaginal oestrogen as first-line and can state the NNT and the breast-cancer safety point; offers <b>D-mannose or methenamine before continuous antibiotics</b>; teaches <b>double-voiding and post-coital voiding</b>; and — the step candidates miss — sets a 6-month review with an explicit exit plan rather than an open-ended prophylactic prescription."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG112 — Urinary tract infection (lower): antimicrobial prescribing (2018, updated 2022)<br><a href="https://www.nice.org.uk/guidance/ng112" rel="noopener">nice.org.uk/guidance/ng112</a><span class="rd"> — nitrofurantoin and pivmecillinam as first-line, course lengths, and the instruction not to treat asymptomatic bacteriuria in non-pregnant adults</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — bladder and renal cancer: visible haematuria aged 45 and over without infection (or persisting/recurring after treatment of infection), and non-visible haematuria aged 60 and over with dysuria or a raised white cell count</span></li>'+
+         '<li>Raz R, Stamm WE. A controlled trial of intravaginal estriol in postmenopausal women with recurrent urinary tract infections. <em>NEJM</em> 1993<span class="rd"> — the topical oestrogen evidence and the NNT of approximately 3 for preventing ≥1 UTI over 6 months</span></li>'+
+         '<li>Kranjčec B, Papeš D, Altarac S. D-mannose powder for prophylaxis of recurrent urinary tract infections in women. <em>World J Urol</em> 2014<span class="rd"> — D-mannose equivalence to nitrofurantoin prophylaxis for E. coli UTI prevention</span></li>'+
+         '<li>ALTAR trial — Harding C et al. Alternative to prophylactic antibiotics for the treatment of recurrent urinary tract infections in women: multicentre, open label, randomised, non-inferiority trial. <em>BMJ</em> 2022<span class="rd"> — methenamine hippurate non-inferior to daily antibiotic prophylaxis. <b>Note:</b> some secondary sources attribute the 2022 methenamine evidence to a Cochrane review by Bonkat et al.; the landmark 2022 randomised evidence is the ALTAR trial, and Bonkat is an author of the EAU urological infections guidelines rather than of that review</span></li>'+
+         '<li><b>Foxman B (1990) — post-coital voiding</b><span class="rd"> — approximately 30% UTI reduction in the post-coital pattern</span></li>'+
+         '<li>NHS England Patient Safety Alert (2016) — asymptomatic bacteriuria in older people<span class="rd"> — warning against treating a positive MSU with non-specific symptoms as a UTI</span></li>'+
+         '<li><b>UKHSA / PHE antimicrobial resistance data, and the BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — UK E. coli resistance rates, and all doses: nitrofurantoin, pivmecillinam, trimethoprim, cefalexin, ciprofloxacin, co-amoxiclav, methenamine, estriol and oestradiol</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Recurrent urinary tract infection — NICE NG112, NICE NG12 (suspected cancer, May 2025), Raz and Stamm NEJM 1993, Kranjcec 2014, the ALTAR trial (BMJ 2022), UKHSA resistance data and the BNF. Any unexplained macroscopic haematuria is a 2WW referral whatever the culture shows. The acute episode is covered by the <a href=\"uti-women.html\">UTI in women</a>, <a href=\"uti-men.html\">UTI in men</a> and <a href=\"uti-children.html\">UTI in children</a> protocols. The reasoning pathway remains at the <a href=\"../algorithms/recurrent-uti.html\">recurrent UTI pathway</a>. Verify all doses and local resistance data before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

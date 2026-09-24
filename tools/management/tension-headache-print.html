@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tension-type headache — Protocol · Reasoning GP</title>
+<meta name="description" content="Tension-type headache in primary care: the positive diagnosis rather than a diagnosis of exclusion, the episodic/chronic split, medication-overuse headache as the commonest reason it becomes daily, amitriptyline as the only prophylaxis with evidence, why simple analgesia must be limited by days per month, and the NG12 and red-flag routes that run through headache." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/tension-headache.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790201970603102 tools/management/tension-headache.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Tension-type headache protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🎯",
+  title:"Tension-type headache — the complete guide",
+  eyebrow:"Protocol · NICE CG150 · the commonest headache, and the one most often mislabelled",
+  stemTitle:"Tension-type headache is a positive diagnosis, not what is left when migraine has been excluded — and when it becomes daily the cause is usually the treatment",
+  stemSub:"For the undifferentiated headache presentation and the full differential, use the <a href='../algorithms/headache.html'>headache pathway</a>. This page is the condition itself: making the diagnosis positively on its own features, separating episodic from chronic, recognising that a patient with headache on 15 or more days a month is describing medication-overuse headache until proven otherwise, limiting acute treatment by days per month rather than by dose, and using the one prophylactic drug that has evidence. Most \"tension headache\" that reaches a GP repeatedly is either unrecognised migraine or analgesic overuse, and both change the plan completely.",
+  guideline:"NICE CG150 · ICHD-3 · NG12",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE CG150 — headaches in over 12s: diagnosis and management"},
+    {t:"NICE CG150 — tension-type headache"},
+    {t:"ICHD-3 diagnostic criteria"},
+    {t:"NG12: progressive neurological signs → 2-week MRI", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Red flags</b><small>Before any label</small></a><a href="#diagnose"><b>Diagnose</b><small>Positively, not by exclusion</small></a><a href="#moh"><b>MOH</b><small>The daily-headache trap</small></a><a href="#acute"><b>Acute</b><small>Days per month</small></a><a href="#prevent"><b>Prevent</b><small>Amitriptyline</small></a></div>',
+  quickSub:"The six that change the consultation. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"Diagnose it positively — the four ICHD-3 features", html:"Bilateral · pressing or tightening (non-pulsating) · mild to moderate intensity · not aggravated by routine physical activity. <b>No nausea or vomiting; no more than one of photophobia or phonophobia.</b> If it is unilateral, throbbing, moderate-to-severe, worsened by movement, or comes with nausea — it is migraine, not tension-type headache, and the treatment diverges immediately. See <a href='migraine.html'>migraine</a>."},
+    {tone:"red", h:"⚠ Headache on 15+ days a month is MOH until proven otherwise", html:"Medication-overuse headache is the commonest cause of chronic daily headache and is routinely missed, because the patient presents asking for stronger painkillers and the analgesia looks like the solution rather than the cause. Thresholds: simple analgesics (paracetamol, NSAIDs, aspirin) on 15 or more days a month; triptans, opioids, ergots or combination analgesics on 10 or more days a month — for 3 months or more. <b>Ask how many DAYS a month, never \"how much do you take\".</b>"},
+    {tone:"amber", h:"Limit acute treatment by days per month, not by dose", html:"Aspirin, paracetamol or an NSAID for acute episodes — but the instruction that matters is the frequency cap: keep simple analgesia below 15 days a month, and triptans or combination analgesics below 10. <b>Do not offer opioids for tension-type headache at any point.</b> <b>Say the cap out loud and write it down</b> — a patient told only \"take paracetamol as needed\" will reasonably take it daily."},
+    {tone:"blue", h:"Amitriptyline is the only prophylaxis with real support", html:"For frequent episodic or chronic tension-type headache: amitriptyline 10 mg nocte, titrated slowly by 10 mg every 1–2 weeks to a usual 25–75 mg, with a fair trial of 8–12 weeks before judging it. Its analgesic effect is independent of any antidepressant effect — say this or the patient hears \"he thinks it's in my head\". <b>Review at 6 months with a view to withdrawal</b>, tapering rather than stopping abruptly."},
+    {tone:"green", h:"Acupuncture is the CG150 non-drug option", html:"NICE CG150 supports considering a course of up to 10 sessions of acupuncture over 5–8 weeks for the prophylactic treatment of chronic tension-type headache. This is the one non-pharmacological treatment the guideline endorses for this condition — availability varies by area, so check local commissioning. Address sleep, caffeine, hydration, stress and posture alongside, but do not present those as the whole plan."},
+    {tone:"purple", h:"🟣 NICE NG12 — the brain-tumour route through headache", html:"Consider an urgent direct-access MRI (or CT if MRI is contraindicated), to be done within 2 weeks, for adults with progressive, sub-acute loss of central neurological function. In children and young people with newly abnormal cerebellar or other central neurological function, refer very urgently (within 48 hours). Headache alone is not an NG12 criterion — the criterion is the neurological sign, which is why the examination matters more than the headache description. Restated in <a href='#refer'>Refer</a>."}
+  ],
+  pathwaySub:"Five steps, and the third is the one that most often rewrites the diagnosis.",
+  pathway:[
+    {title:"Exclude secondary headache", html:"Thunderclap onset, new headache over 50, progressive or postural headache, headache with fever or neck stiffness, papilloedema or any focal neurological sign, new headache in immunosuppression or cancer, jaw claudication with scalp tenderness over 50. Examine — including fundoscopy and blood pressure — before applying any primary-headache label.", alert:true},
+    {title:"Make the diagnosis positively", html:"Bilateral, pressing or tightening, mild to moderate, not worsened by routine activity, no nausea. <b>Then actively reconsider migraine</b>, which is the commonest misdiagnosis in this direction."},
+    {title:"Count the days — headache days AND medication days", html:"Episodic (under 15 days a month) or chronic (15 or more)? And on how many days a month is any acute medication taken? A headache diary for 4–8 weeks settles both questions better than any further history."},
+    {title:"Treat: cap the acute, consider prophylaxis", html:"Simple analgesia with an explicit days-per-month limit; no opioids. Amitriptyline 10 mg nocte titrated for frequent or chronic headache; consider acupuncture."},
+    {title:"If MOH is present, withdrawal comes first", html:"Stop the overused medication abruptly for simple analgesics and triptans, warning that headache worsens for 1–2 weeks before improving. Prophylaxis can be started at the same time. Review at 4–8 weeks."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Red flags", title:"Red flags — what must be excluded before the label goes on",
+     sub:"A benign headache diagnosis is only as safe as the examination that preceded it.",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["<b>Thunderclap — maximal intensity within 5 minutes</b>","<b>Subarachnoid haemorrhage</b> until excluded; also arterial dissection, venous sinus thrombosis, pituitary apoplexy","<b>999 / immediate admission.</b> CT then lumbar puncture per the acute pathway — a normal CT beyond 6 hours does not exclude it"],
+         ["<b>New or changed headache in a patient over 50</b>","<b>Giant cell arteritis, space-occupying lesion, subdural haematoma</b> — the prior probability of secondary headache rises sharply","ESR/CRP and careful examination. Jaw claudication, scalp tenderness or visual symptoms → same-day steroids and GCA pathway — see <a href='giant-cell-arteritis.html'>giant cell arteritis</a>"],
+         ["Progressive headache, worse in the morning or on lying flat, with vomiting","<b>Raised intracranial pressure</b>","Fundoscopy for papilloedema; urgent imaging. Progressive, sub-acute loss of central neurological function meets the NG12 imaging criterion"],
+         ["<b>Any focal neurological sign, personality change, or new seizure</b>","<b>Space-occupying lesion, stroke, encephalitis</b>","<b>Urgent imaging and referral; same-day if acute.</b> <b>The sign, not the headache, is what triggers the NG12 route</b>"],
+         ["Fever, neck stiffness, photophobia, non-blanching rash, or altered consciousness","<b>Meningitis or encephalitis</b>","999; benzylpenicillin before transfer if meningococcal disease is suspected and it will not delay admission"],
+         ["Postural — worse standing (low pressure) or worse lying (raised pressure)","<b>CSF leak, or raised ICP including idiopathic intracranial hypertension</b>","Urgent assessment; fundoscopy essential. IIH classically in younger women with a raised BMI"],
+         ["<b>Headache in pregnancy or postpartum with raised BP or proteinuria</b>","<b>Pre-eclampsia</b>","Same-day obstetric assessment — headache is a presenting feature, not an incidental one"],
+         ["<b>Immunosuppression, HIV, or known cancer with a new headache</b>","<b>Cerebral abscess, opportunistic infection, metastasis</b>","Urgent imaging; a low threshold regardless of how typical the headache sounds"],
+         ["Headache with carbon monoxide exposure risk — worse at home, better away, others affected","<b>Carbon monoxide poisoning</b>","Ask about faulty boilers and shared symptoms in the household; this is the classic missed cause of recurrent \"tension\" headache"]
+       ]},
+       {b:"warn", html:"The trap in this condition is not over-investigation — it is the label itself. \"Tension headache\" is frequently applied to any bilateral headache without nausea, and then carried forward in the record for years, so every subsequent clinician anchors on it. Two things to do about that: make the diagnosis positively against the ICHD-3 features rather than by exclusion, and treat a change in an established headache pattern as a new presentation requiring a fresh assessment."}
+     ]},
+
+    {id:"diagnose", nav:"Diagnose", title:"The positive diagnosis, and the two conditions it is confused with",
+     blocks:[
+       {b:"table", head:["Feature","Tension-type headache","What it suggests instead"], rows:[
+         ["<b>Site</b>","<b>Bilateral</b>, often described as a band, or pressure at the vertex or occiput","<b>Unilateral → migraine</b> (though migraine can be bilateral, especially in children); <b>strictly unilateral orbital with autonomic features → cluster headache</b>"],
+         ["<b>Character</b>","<b>Pressing or tightening; non-pulsating</b>","<b>Throbbing or pulsating → migraine</b>"],
+         ["<b>Intensity</b>","<b>Mild to moderate; the patient usually carries on</b>","<b>Moderate to severe, stopping normal activity → migraine</b>"],
+         ["<b>Effect of activity</b>","<b>NOT aggravated by routine physical activity such as walking or stairs</b>","<b>Worsened by movement, wanting to lie in a dark room → migraine.</b> This single question is the most discriminating in the history"],
+         ["<b>Associated features</b>","<b>No nausea or vomiting. No more than one of photophobia or phonophobia</b>","<b>Nausea, vomiting, or both photophobia AND phonophobia → migraine.</b> Aura, if present, settles it"],
+         ["<b>Duration</b>","<b>30 minutes to 7 days</b>","15 minutes to 3 hours, strictly unilateral, with agitation and autonomic features → cluster headache"],
+         ["<b>Frequency — the classification that drives treatment</b>","Infrequent episodic: under 1 day a month. Frequent episodic: 1–14 days a month. Chronic: 15 or more days a month for over 3 months","Chronic tension-type headache should prompt an immediate MOH question before anything is prescribed"],
+         ["<b>Examination</b>","Normal neurological examination. Pericranial muscle tenderness may be present and supports the diagnosis","<b>Any abnormal sign moves this out of primary headache entirely</b>"]
+       ]},
+       {b:"why", html:"The single most useful correction in this area is that most patients labelled with frequent \"tension headache\" have migraine. Migraine without aura is commonly bilateral and commonly moderate rather than severe, so it fails the stereotype while still meeting the criteria — and patients under-report nausea unless asked directly, because they attribute it to the painkillers. The practical consequence is large: migraine has effective acute treatment (triptans) and several effective preventives, while tension-type headache has one prophylactic drug and a frequency cap. Ask specifically about nausea, about whether stairs make it worse, and about whether they want to lie down in the dark — before accepting the label the patient arrived with."},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"📓 The headache diary earns its place", html:"4–8 weeks recording headache days, severity, and every day any acute medication is taken. It answers the episodic-versus-chronic question and the MOH question simultaneously, and it does so more reliably than recall — patients consistently underestimate medication days."},
+         {tone:"amber", h:"⚠ Comorbidity is the rule, not the exception", html:"Depression, anxiety, poor sleep and chronic pain elsewhere are all strongly associated with chronic tension-type headache and each makes it harder to treat. Screen with PHQ-9 and GAD-7; treat what you find. See <a href='depression.html'>depression</a>, <a href='anxiety.html'>anxiety</a> and <a href='insomnia.html'>insomnia</a>."},
+         {tone:"green", h:"✓ Neck and posture", html:"Cervicogenic contribution is common in desk-based and driving occupations. Physiotherapy, workstation assessment and a posture and movement plan are reasonable adjuncts — presented alongside the medical plan, not instead of it."},
+         {tone:"blue", h:"🔍 Other reversible contributors", html:"Caffeine (both excess and withdrawal), dehydration, alcohol, poor sleep, skipped meals, uncorrected refractive error, bruxism and temporomandibular dysfunction, and obstructive sleep apnoea with morning headache. Each is worth a direct question."}
+       ]}
+     ]},
+
+    {id:"moh", nav:"MOH", title:"Medication-overuse headache — the reason a headache became daily",
+     sub:"The single most useful thing a GP can do in chronic daily headache.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>The definition</b>","Headache on 15 or more days a month in someone with a pre-existing headache disorder, developing as a consequence of regular overuse of acute headache medication for more than 3 months. Thresholds: simple analgesics (paracetamol, aspirin, NSAIDs) on 15 or more days a month; triptans, ergots, opioids or combination analgesics on 10 or more days a month"],
+         ["<b>Why it is missed</b>","The patient presents asking for something stronger, and the history sounds like worsening headache rather than drug-induced headache. Codeine-containing over-the-counter combinations are bought rather than prescribed, so they never appear on the medication list — ask specifically what is bought from the pharmacy or supermarket"],
+         ["<b>How to ask</b>","\"On how many DAYS in a month do you take anything at all for headache?\" — days, not doses, and including anything bought over the counter. The answer is frequently 25–30, and the patient has never been asked"],
+         ["<b>Withdrawal — simple analgesics and triptans</b>","<b>Stop abruptly.</b> Warn explicitly that the headache gets worse for 1–2 weeks before it improves, and that improvement may take 4–12 weeks — an unwarned patient restarts the tablets and concludes the advice was wrong. Hydration, sleep and an agreed plan for the bad fortnight"],
+         ["<b>Withdrawal — opioids</b>","<b>Taper rather than stop abruptly.</b> See <a href='opioid-prescribing.html'>opioids in non-cancer pain</a> and <a href='chronic-pain.html'>chronic pain</a> for the method"],
+         ["<b>Prophylaxis during withdrawal</b>","<b>Can be started at the same time as withdrawal rather than afterwards</b> — amitriptyline for tension-type headache, or the appropriate preventive if the underlying disorder is migraine"],
+         ["<b>Review and expectation</b>","<b>Review at 4–8 weeks.</b> <b>Reassess the underlying headache diagnosis only AFTER withdrawal</b> — the true pattern is obscured until then, and many patients turn out to have episodic migraine"],
+         ["<b>Preventing recurrence</b>","<b>Set the days-per-month limit explicitly for the future, and record it.</b> Relapse is common, and the limit is the protection"]
+       ]},
+       {b:"say", html:"I think the painkillers have become part of the problem rather than the solution — and I know that sounds counter-intuitive when they are the only thing that touches it. When the brain gets used to regular painkillers, it becomes more sensitive to pain between doses, so you get a headache as the last dose wears off, you take another, and the cycle keeps itself going. That is why it has gone from a few days a month to nearly every day. The treatment is to stop them completely for a period. I want to be honest: the first week or two will be worse, not better, and that is expected — it is not a sign that we have got this wrong. After that most people find the headaches become much less frequent, and then we can see what the underlying pattern actually is and treat that properly."}
+     ]},
+
+    {id:"acute", nav:"Acute", title:"Acute treatment — and the cap that comes with it",
+     blocks:[
+       {b:"table", head:["Drug","Dose","Notes"], rows:[
+         ["<b>Aspirin</b>","<b>600–900 mg, repeated up to 4-hourly as needed (maximum 4 g daily)</b>","Effective in tension-type headache. Avoid under 16, in asthma sensitive to NSAIDs, and in peptic ulcer disease"],
+         ["<b>Ibuprofen</b>","<b>400 mg, up to three times daily with food</b>","<b>Consider gastroprotection with risk factors or prolonged use;</b> assess cardiovascular and renal risk; avoid below eGFR 30"],
+         ["<b>Paracetamol</b>","<b>1 g up to four times daily (maximum 4 g in 24 hours)</b>","Less effective than aspirin or an NSAID for this indication but better tolerated. Reduce the maximum in low body weight, frailty, chronic alcohol use or hepatic impairment"],
+         ["<b>Combination analgesics containing codeine</b>","<b>Avoid</b>","The fastest route into medication-overuse headache — the MOH threshold is 10 days a month rather than 15, and they are freely available over the counter"],
+         ["<b>Opioids</b>","<b>Do not offer for tension-type headache</b>","No role at any stage. High MOH risk, dependence, and no evidence of benefit"],
+         ["<b>Triptans</b>","<b>Not indicated for tension-type headache</b>","<b>If a triptan reliably works, the diagnosis is migraine</b> — a useful retrospective diagnostic clue rather than a treatment failure"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"⛔ The frequency cap IS the prescription", html:"Simple analgesics on fewer than 15 days a month; triptans, opioids or combination analgesics on fewer than 10. State it as a number, write it on the prescription or in the plan, and explain why — this single instruction prevents the condition that brings most chronic-daily-headache patients back."},
+         {tone:"amber", h:"⚠ Ask what they BUY, not just what you prescribe", html:"Over-the-counter codeine combinations, effervescent analgesics and \"migraine\" preparations do not appear on the medication record. A patient can be in florid MOH with an empty prescribing screen."},
+         {tone:"blue", h:"💊 Acute treatment is not the main treatment", html:"In frequent episodic or chronic tension-type headache the meaningful intervention is prophylaxis plus removing overuse — not a better analgesic. Framing this early prevents the escalation conversation later."},
+         {tone:"green", h:"✓ Non-drug measures worth naming", html:"Regular sleep and wake times, meals and hydration, caffeine moderation, exercise, stress management, and workstation or posture correction. Real but modest — offer them as part of the plan rather than as the whole of it."}
+       ]}
+     ]},
+
+    {id:"prevent", nav:"Prevent", title:"Prophylaxis",
+     blocks:[
+       {b:"table", head:["Option","Detail","Notes"], rows:[
+         ["<b>Amitriptyline — first and essentially only choice</b>","Start 10 mg nocte; increase by 10 mg every 1–2 weeks as tolerated to a usual 25–75 mg. Allow 8–12 weeks at an adequate dose before judging effect","Explain that the analgesic action is separate from the antidepressant action and occurs at much lower doses — otherwise the patient reads the leaflet and stops. Anticholinergic effects, morning sedation (take 2–3 hours before bed), weight gain; caution in the elderly for falls and confusion; avoid with an MAOI within 14 days, in urinary retention and in acute angle-closure glaucoma; ECG before higher doses where there is cardiac risk"],
+         ["<b>Duration and withdrawal</b>","Review at 6 months with a view to stopping; taper rather than stopping abruptly","Many patients need only a time-limited course. <b>Leaving it on repeat indefinitely is the common failure</b>"],
+         ["<b>Acupuncture</b>","Consider a course of up to 10 sessions over 5–8 weeks for chronic tension-type headache (CG150)","<b>The one non-drug prophylaxis NICE supports here.</b> Local commissioning varies — check before offering"],
+         ["<b>Other antidepressants</b>","<b>Not recommended for this indication by CG150</b>","Treat coexisting depression or anxiety on their own merits with the appropriate drug — but do not expect an SSRI to act as headache prophylaxis"],
+         ["<b>Botulinum toxin</b>","<b>Not recommended for chronic tension-type headache</b>","It is an option in chronic MIGRAINE, which is part of why the diagnostic distinction matters"],
+         ["<b>Physiotherapy and psychological therapy</b>","Reasonable adjuncts where there is cervicogenic contribution, high stress, or significant comorbid anxiety or low mood","Relaxation training, CBT and biofeedback have some support in chronic tension-type headache, though they are not CG150 recommendations for it"]
+       ]},
+       {b:"why", html:"Prophylaxis fails in this condition for three predictable reasons, and all three are avoidable. <b>The dose is never titrated past 10 mg</b>, which is a starting dose rather than a treatment dose. <b>It is abandoned at 3–4 weeks</b>, before an 8–12 week trial has been given. <b>Or it is started while medication overuse continues</b>, in which case nothing will work until the overuse is addressed. Setting the expectation at the outset — slow titration, a two to three month trial, and dealing with the analgesics first — is what makes the difference."}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review and safety-netting",
+     blocks:[
+       {b:"table", head:["When","What to check"], rows:[
+         ["<b>4–8 weeks (or after starting withdrawal)</b>","Headache days and medication days from the diary. Withdrawal tolerated and past the bad fortnight? Amitriptyline titration progressing and tolerated? Reassess the underlying headache diagnosis now that overuse is removed"],
+         ["<b>3 months</b>","Response to prophylaxis at an adequate dose for an adequate time. If no benefit at 75 mg after 8–12 weeks, stop it rather than continuing indefinitely — and revisit the diagnosis, particularly migraine"],
+         ["<b>6 months</b>","Consider tapering and withdrawing amitriptyline. Reinforce the days-per-month limit. Review mood, sleep and any comorbid chronic pain"],
+         ["<b>Any time</b>","A change in the established pattern is a new presentation — re-screen the red flags rather than adjusting the dose"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 / same day", html:"\"If a headache comes on like a thunderclap — worst ever, full intensity within seconds or minutes — call 999. Also if you get a fever with a stiff neck or a rash, weakness or numbness, confusion, or a first fit.\""},
+         {tone:"amber", h:"🟠 Contact us promptly", html:"A headache that changes character or becomes progressively worse · new headache over 50 · headache worse on lying flat, coughing or straining · visual disturbance, jaw pain on chewing, or scalp tenderness · headache in pregnancy."},
+         {tone:"blue", h:"💊 The withdrawal warning", html:"\"For the first one to two weeks after stopping, the headaches will be worse. That is expected and it is part of the treatment working, not a sign it is failing. Most people are through it by two weeks and better by six to twelve.\""},
+         {tone:"green", h:"✓ Setting the expectation", html:"\"Tension-type headache is usually controllable rather than curable. The aim is fewer headache days and far less medication — and the single biggest gain usually comes from taking fewer painkillers, not more.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — 999 or same day", html:"Thunderclap headache · suspected meningitis or encephalitis · new focal neurological deficit · papilloedema · suspected giant cell arteritis with visual symptoms · headache with pre-eclampsia features in pregnancy."},
+         {tone:"purple", h:"2WW · NICE NG12 — suspected brain or CNS cancer", html:"Consider an urgent direct-access MRI head (or CT if MRI is contraindicated), to be performed within 2 weeks, for adults with progressive, sub-acute loss of central neurological function. Children and young people with newly abnormal cerebellar or other central neurological function: refer very urgently, for assessment within 48 hours. Headache on its own does not meet an NG12 criterion — the neurological sign does, which is why the examination is the part that must not be skipped."},
+         {tone:"amber", h:"Neurology", host:"", html:"Diagnostic uncertainty · failure of an adequate trial of amitriptyline at an adequate dose · chronic daily headache persisting after medication withdrawal · suspected cluster headache or another trigeminal autonomic cephalalgia · headache in a patient in whom you remain uneasy despite a normal examination."},
+         {tone:"blue", h:"Specialist headache service", html:"Refractory chronic headache, complex medication overuse (particularly with opioids), or where inpatient or supported withdrawal is needed."},
+         {tone:"green", h:"Physiotherapy / psychological therapy", html:"Cervicogenic contribution, workstation and posture problems, or significant comorbid anxiety, low mood or chronic pain elsewhere. See <a href='chronic-pain.html'>chronic pain</a>."},
+         {tone:"cream", h:"GP management", html:"Almost all tension-type headache is managed in primary care: the positive diagnosis, the red-flag screen and examination, the headache diary, the days-per-month cap, medication withdrawal where there is overuse, amitriptyline titrated properly, and review against headache days rather than pain score. Related pages: <a href='../algorithms/headache.html'>headache pathway</a> · <a href='migraine.html'>migraine</a> · <a href='giant-cell-arteritis.html'>giant cell arteritis</a> · <a href='chronic-pain.html'>chronic pain</a> · <a href='opioid-prescribing.html'>opioids in non-cancer pain</a> · <a href='insomnia.html'>insomnia</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 34-year-old office manager attends wanting \"something stronger\" for headaches she has had for two years, now <b>almost daily</b>. She describes a <b>tight band</b> across both temples, and says she takes <b>co-codamol bought from the supermarket most days</b> — \"it's the only thing that touches it\". On direct questioning she sometimes feels <b>queasy</b> with the worst ones and prefers to <b>sit in a dark room</b>, though she still gets to work. Examination is normal. She is sleeping badly, works at two screens, and asks whether she should have <b>a scan</b>."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Screens the red flags and examines (including fundoscopy and BP) before any label; asks how many DAYS a month she takes anything, including bought medication — and recognises MOH from co-codamol at a 10-day threshold; re-interrogates the diagnosis rather than accepting \"tension headache\": the nausea and the dark room point to migraine, and says so; explains the MOH mechanism in plain language and warns the headache will worsen for 1–2 weeks after stopping, without which the plan fails; <b>declines the scan with a reason rather than a refusal</b>, explaining what would make imaging necessary; starts prophylaxis alongside withdrawal and explains amitriptyline's analgesic action is separate from its antidepressant action; <b>gives a headache diary and a days-per-month limit as a number</b>; addresses <b>sleep and workstation</b>; arranges review at 4–8 weeks to reassess the true headache pattern after withdrawal; and <b>gives the thunderclap and focal-sign safety-net</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG150 — Headaches in over 12s: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg150" rel="noopener">nice.org.uk/guidance/cg150</a><span class="rd"> — the diagnostic table for tension-type headache, aspirin/paracetamol/NSAID for acute treatment, amitriptyline for prophylaxis, acupuncture up to 10 sessions over 5–8 weeks for chronic tension-type headache, the recommendation against opioids, and the medication-overuse headache thresholds and withdrawal advice</span></li>'+
+         '<li><b>NICE CG150 \u2014 Headaches in over 12s: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg150" rel="noopener">nice.org.uk/guidance/cg150</a><span class="rd"> — the primary-care assessment, episodic/chronic classification, amitriptyline titration and review intervals, and referral thresholds</span></li>'+
+         '<li>ICHD-3 — International Classification of Headache Disorders, 3rd edition<br><a href="https://ichd-3.org" rel="noopener">ichd-3.org</a><span class="rd"> — the four diagnostic features, the 30 minutes to 7 days duration, and the infrequent episodic / frequent episodic / chronic frequency definitions</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — urgent direct-access MRI within 2 weeks for progressive sub-acute loss of central neurological function in adults, and very urgent referral within 48 hours for children and young people with newly abnormal cerebellar or central neurological function</span></li>'+
+         '<li><b>MHRA and BNF</b><span class="rd"> — amitriptyline cautions and contraindications, codeine-containing combination analgesics and dependence, and NSAID cardiovascular, renal and GI risk</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Tension-type headache — NICE CG150, ICHD-3 and NG12. Diagnose it positively on the four ICHD-3 features rather than by excluding migraine — and when the headache is frequent, actively reconsider migraine, which is the commonest misdiagnosis in this direction. Headache on 15 or more days a month is medication-overuse headache until proven otherwise: ask how many DAYS a month, including what is bought over the counter. Cap acute treatment by days per month, never offer opioids, and titrate amitriptyline properly before calling it a failure. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

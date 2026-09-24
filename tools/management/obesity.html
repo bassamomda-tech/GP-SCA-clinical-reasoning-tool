@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Obesity — Protocol · Reasoning GP</title>
+<meta name="description" content="Obesity in adults: ethnicity-adjusted BMI thresholds and waist-to-height ratio, asking permission before discussing weight, screening for secondary and drug-induced causes and for binge-eating disorder before any restrictive plan, the 5–10% health goal, semaglutide and tirzepatide with their NICE criteria and stopping rules, bariatric surgery and lifelong micronutrient follow-up." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/obesity.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Obesity protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"⚖️",
+  title:"Obesity — the complete guide",
+  eyebrow:"Protocol · NICE NG246 · TA875 · TA1026 · a chronic relapsing disease, not willpower",
+  stemTitle:"Framing obesity as a chronic relapsing disease driven by biology and environment changes the medicine — you screen for comorbidity, treat to protect organs, expect relapse, and support long-term rather than moralise",
+  stemSub:"One page for the whole condition. Classify with <b>ethnicity-adjusted thresholds</b>, which matter enormously in UK primary care, and <b>ask permission before discussing weight at all</b> — the opening line decides whether the patient engages. Screen for secondary and drug-induced causes, and for binge-eating disorder and depression BEFORE any weight-focused intervention, because a restrictive plan on an untreated eating disorder harms. Then the 5–10% health goal, the GLP-1 era with its real criteria and stopping rules, bariatric surgery, and the lifelong micronutrient follow-up that becomes a GP responsibility.",
+  guideline:"NICE NG246 · TA875 · TA1026",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE NG246 — obesity identification and management"},
+    {t:"TA875 (semaglutide) · TA1026 (tirzepatide)"},
+    {t:"Screen for binge-eating disorder BEFORE a restrictive plan", tone:"tw"},
+    {t:"Weight returns when GLP-1 drugs stop — counsel upfront", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#classify"><b>Classify</b><small>Ethnicity-adjusted</small></a><a href="#causes"><b>Causes</b><small>Secondary · drugs</small></a><a href="#foundation"><b>Foundation</b><small>The 5–10% goal</small></a><a href="#drugs"><b>Drugs</b><small>GLP-1 criteria</small></a><a href="#surgery"><b>Surgery</b><small>Lifelong aftercare</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"Ethnicity-adjusted thresholds, and waist-to-height at any BMI", html:"<b>Overweight 25–29.9 · obesity I 30–34.9 · II 35–39.9 · III ≥40.</b> Lower thresholds for South Asian, Chinese and other high-risk groups: overweight from 23, obesity from 27.5 — the same cardiometabolic risk arrives at a lower BMI. A waist-to-height ratio above 0.5 flags central adiposity risk at ANY BMI, and is most useful between BMI 25 and 35."},
+    {tone:"green", h:"Ask permission before discussing weight", html:"Ask permission to discuss weight; use neutral language — \"weight\" and \"BMI\", not \"obese\" or \"fat\" — and set person-centred goals. <b>The opening line determines whether the patient engages at all</b>, and a consultation that begins badly here is usually lost for years, not minutes."},
+    {tone:"red", h:"⚠ Screen for binge-eating disorder and depression BEFORE a weight plan", html:"A restrictive plan imposed on an untreated eating disorder does harm, and untreated depression wrecks adherence. Screen first, and treat these in their own right — before or alongside the weight work, never after it."},
+    {tone:"amber", h:"Look for the drug that is causing it", html:"Antipsychotics (especially olanzapine and clozapine), steroids, insulin and sulfonylureas, sodium valproate, some antidepressants, gabapentinoids. Consider a swap to a weight-neutral alternative with the prescriber's agreement — fighting iatrogenic weight gain with diet alone rarely works. Also screen for hypothyroidism, Cushing's and PCOS."},
+    {tone:"green", h:"The 5–10% goal is the honest one", html:"A realistic 5–10% loss meaningfully improves blood pressure, glycaemia, lipids, MASLD, obstructive sleep apnoea and fertility. <b>Sell the health wins, not a target dress size.</b> <b>And say that activity holds weight off more than it takes it off</b> — framing it honestly prevents the disillusionment that ends the attempt."},
+    {tone:"amber", h:"GLP-1 drugs treat a chronic disease — the weight returns when they stop", html:"Semaglutide 2.4 mg weekly gives around 15% mean loss; tirzepatide titrated to 10–15 mg weekly is the most effective agent at around 20%. Weight is regained when they stop (STEP-4 and similar) — they are chronic-disease drugs like antihypertensives, not a course. <b>Counsel that upfront</b>, and beware unregulated online supply."}
+  ],
+  pathwaySub:"Six steps, and the second one prevents the commonest harm.",
+  pathway:[
+    {title:"Classify and assess — after asking permission", html:"Ethnicity-adjusted BMI, waist-to-height ratio, eating pattern, mental health, sleep, mobility, medications and social determinants."},
+    {title:"Screen for secondary causes, comorbidity and eating disorder", html:"TFTs, Cushing's if cushingoid, PCOS, the drug list — plus HbA1c, BP, lipids and QRISK3, FIB-4 and OSA. <b>And binge-eating disorder and depression before any restrictive plan.</b>", alert:true},
+    {title:"Build the foundation: lifestyle, behaviour, Tier 2", html:"A sustainable deficit, activity, behavioural support and a structured programme referral — aiming at 5–10%."},
+    {title:"Add pharmacotherapy within the criteria", html:"Semaglutide or tirzepatide where NICE criteria are met, with the stopping rules applied; orlistat as an alternative."},
+    {title:"Consider bariatric surgery", html:"BMI ≥40, or ≥35 with a significant comorbidity that would improve — and expedite recent-onset T2DM with BMI ≥35."},
+    {title:"Review, expect relapse, and maintain the aftercare", html:"Cardiometabolic screen annually, drug efficacy against the stopping rule, and lifelong micronutrients after surgery."}
+  ],
+  sections:[
+
+    {id:"classify", nav:"Classify", title:"Step 1 — classify by BMI and waist, and ask permission first",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>BMI categories</b>","<b>Overweight 25–29.9 · obesity I 30–34.9 · II 35–39.9 · III ≥40.</b> Lower thresholds for South Asian, Chinese and other high-risk groups: overweight ≥23, obesity ≥27.5 — the same cardiometabolic risk at a lower BMI"],
+         ["<b>Waist and waist-to-height</b>","A waist-to-height ratio above 0.5 flags central adiposity risk at ANY BMI — especially useful in the BMI 25–35 range, and less reliable at BMI 35 and above"],
+         ["<b>Raise it sensitively</b>","Ask permission to discuss weight. Use neutral language — \"weight\", \"BMI\", not \"obese\" or \"fat\" — and set person-centred goals. <b>The opening line sets whether they engage at all</b>"],
+         ["<b>Assess</b>","Eating pattern including binge-eating, mental health, sleep and OSA, mobility, medications that drive gain, readiness to change, and social determinants — food access, shift work, finances"]
+       ]},
+       {b:"why", html:"Obesity is a chronic relapsing disease driven by biology and environment, not willpower — and the framing changes the medicine. You screen for comorbidity, treat to protect organs, expect relapse, and support long-term rather than moralise. <b>Ethnicity-adjusted thresholds matter enormously in UK primary care</b>, where using the standard cut-offs systematically under-treats the populations at highest cardiometabolic risk."}
+     ]},
+
+    {id:"causes", nav:"Causes", title:"Step 2 — secondary causes, and the comorbidity that IS the reason to treat",
+     blocks:[
+       {b:"table", head:["What to screen for","Detail"], rows:[
+         ["<b>Secondary causes</b>","Hypothyroidism (TFTs) · Cushing's syndrome (if cushingoid) · PCOS (in women with menstrual or androgenic features) · hypothalamic causes"],
+         ["<b>Drug-induced gain</b>","Antipsychotics — especially olanzapine and clozapine · steroids · insulin and sulfonylureas · sodium valproate · some antidepressants · gabapentinoids"],
+         ["<b>Cardiometabolic screen</b>","HbA1c (type 2 diabetes) · blood pressure · lipids and QRISK3 · MASLD/NAFLD with FIB-4 · gout. These are the outcomes you are preventing, and they justify the intensity of treatment"],
+         ["<b>Obstructive sleep apnoea</b>","Snoring, witnessed apnoeas and daytime somnolence → Epworth or STOP-BANG → sleep service. Untreated OSA worsens everything and carries its own cardiovascular risk"],
+         ["<b>Mental health and eating disorder</b>","Screen for binge-eating disorder and depression BEFORE any weight-focused intervention — a restrictive plan on an untreated eating disorder harms, and depression wrecks adherence"]
+       ]},
+       {b:"warn", html:"<b>Consider a drug swap where a medicine is driving the weight</b> — for example a weight-neutral antipsychotic or antidepressant, with the original prescriber's agreement. <b>Fighting iatrogenic gain with diet alone rarely works</b>, and continuing to counsel on diet while the causative drug runs unchanged is the commonest futile version of this consultation."}
+     ]},
+
+    {id:"foundation", nav:"Foundation", title:"Step 3 — Tier 1–2: lifestyle and behaviour, the base of everything",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🥗 Diet", html:"A sustainable deficit of around 600 kcal/day, or a structured programme; cut sugary drinks and ultra-processed food. Total diet replacement at around 800 kcal/day can achieve substantial loss and type 2 diabetes remission in selected patients — see <a href='type-2-diabetes.html'>type 2 diabetes</a>."},
+         {tone:"green", h:"🏃 Activity", html:"Build to at least 150 minutes a week of moderate activity plus resistance work; reduce sedentary time. Activity holds weight off more than it takes it off — frame that honestly."},
+         {tone:"blue", h:"🧠 Behaviour", html:"Behavioural support, self-monitoring and goal-setting; refer to a structured Tier-2 weight-management service, which is the evidence-based way this is delivered."},
+         {tone:"green", h:"🎯 The 5–10% goal", html:"A realistic 5–10% loss meaningfully improves BP, glycaemia, lipids, MASLD, OSA and fertility. <b>Sell the health wins, not a target dress size.</b>"},
+         {tone:"amber", h:"🤝 Barriers", html:"<b>Sleep, mood, medication-related gain, finances, the food environment</b> — address the real obstacles rather than restating the advice."},
+         {tone:"green", h:"🔁 Expect relapse", html:"<b>Weight regain is the biology of the disease, not failure.</b> <b>Re-engage non-judgementally, every time</b> — the willingness to do that is what keeps people coming back."}
+       ]},
+       {b:"say", html:"Aiming for around 5–10% of your weight is enough to genuinely improve your blood pressure, your sugars and your sleep — we are chasing health, not a number on a chart. And if the weight creeps back, that is the condition, not you failing; we just pick it back up together."}
+     ]},
+
+    {id:"drugs", nav:"Drugs", title:"Step 4 — the GLP-1 era: named agents, criteria and stopping rules",
+     blocks:[
+       {b:"table", head:["Agent","Dose and efficacy","Criteria and cautions"], rows:[
+         ["<b>Semaglutide (Wegovy) — GLP-1 agonist, first-line drug</b>","2.4 mg SC weekly, titrated over 16–20 weeks. Around 15% mean weight loss","NICE TA875: within a specialist weight-management service; BMI ≥35, or 30–34.9 meeting referral criteria, with lower cut-offs for high-risk ethnicity, plus at least one weight-related comorbidity. Counsel: nausea (titrate slowly), gallstones, rare pancreatitis, pause peri-operatively per anaesthetic guidance, not in pregnancy"],
+         ["<b>Tirzepatide (Mounjaro) — dual GIP/GLP-1, most potent</b>","Titrated to 10–15 mg SC weekly. Around 20% loss — the most effective agent","NICE TA1026 approves it for weight management within BMI and comorbidity criteria; phased NHS rollout via primary care and weight services. Same GI side-effect, stopping-rule and pregnancy cautions as semaglutide"],
+         ["<b>Orlistat 120 mg TDS — lipase inhibitor</b>","<b>With meals; omit if a meal is missed or fat-free</b>","GI effects (steatorrhoea, urgency) are the adherence limiter and a behavioural feedback signal. <b>Continue beyond 3 months only if at least 5% has been lost.</b> Reduces fat-soluble vitamin absorption"],
+         ["<b>The weight-regain caveat</b>","<b>Weight is regained when GLP-1 drugs stop (STEP-4 and similar)</b>","They treat a chronic disease in the way antihypertensives do — frame them as ongoing treatment, not a \"course\". This shapes both funding and patient expectation honestly, and counselling it upfront prevents a sense of failure later"]
+       ]},
+       {b:"warn", html:"Pharmacotherapy is an adjunct to, never a replacement for, lifestyle change — and each agent has NICE eligibility and stopping rules. Beware unregulated online GLP-1 supply: dosing errors, no monitoring, and no eating-disorder screen."}
+     ]},
+
+    {id:"surgery", nav:"Surgery", title:"Step 5 — bariatric surgery (Tier 4): the most effective durable treatment",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Thresholds (NG246)</b>","BMI ≥40, OR ≥35 with a significant comorbidity that would improve — type 2 diabetes, OSA, hypertension. <b>Lower thresholds for high-risk ethnic groups.</b> All after specialist assessment and Tier-3 input"],
+         ["<b>Expedite</b>","<b>Recent-onset type 2 diabetes with BMI ≥35 → expedited assessment</b>, because surgery can drive diabetes remission and the earlier the better"],
+         ["<b>Procedures</b>","<b>Sleeve gastrectomy, Roux-en-Y bypass, gastric band (used less now)</b> — substantial durable loss and comorbidity remission; the most effective long-term treatment available"],
+         ["<b>Lifelong follow-up — a GP responsibility</b>","Lifelong micronutrient monitoring and supplementation: B12, iron, folate, calcium, vitamin D, thiamine. Watch for dumping syndrome, hypoglycaemia, and internal hernia — acute abdominal pain after a bypass is a surgical emergency"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"Step 6 — review: progress, comorbidity, and aftercare",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Weight, waist and goals</b>","<b>Regularly</b>","Reinforce, adjust, and expect and normalise relapse — re-engage rather than discharge"],
+         ["<b>Cardiometabolic</b>","<b>Annually, more often if abnormal</b>","HbA1c, blood pressure, lipids and QRISK3, MASLD via FIB-4 — each treated to its own target"],
+         ["<b>Drug therapy</b>","<b>Per the agent's schedule</b>","Efficacy against the stopping rule (at least 5%), side effects, and continue only if responding"],
+         ["<b>Post-bariatric</b>","<b>Per the shared-care protocol</b>","Lifelong micronutrients and supplementation; new abdominal pain → surgical review"],
+         ["<b>Mood and eating</b>","<b>As needed</b>","Re-screen — treat depression and binge-eating disorder in their own right"]
+       ]},
+       {b:"say", html:"We will keep an eye on the things the weight affects — sugars, blood pressure, liver and sleep — because improving those is the real win. If we use medication or surgery, they come with their own follow-up, and I will keep that going with you long-term."},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Post-bariatric emergency", html:"\"Severe or persistent tummy pain after weight-loss surgery — same-day or A&amp;E. Some complications are urgent.\""},
+         {tone:"amber", h:"💉 GLP-1 side effects", html:"\"Nausea is common early and settles as we go up slowly. Severe ongoing tummy pain — contact us; rarely it is the pancreas or gallbladder.\""},
+         {tone:"amber", h:"🤰 Pregnancy", html:"\"Stop the weight-loss injections and tell us if you might become pregnant — they are not used in pregnancy, and they can reduce how well the pill works.\""},
+         {tone:"red", h:"🌐 Online supply", html:"\"Please do not buy these injections from unregulated websites — wrong doses without monitoring cause real harm.\""}
+       ]}
+     ]},
+
+    {id:"troubleshoot", nav:"Not progressing?", title:"Not progressing? Work through this",
+     sub:"It is rarely \"just eat less\".",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Secondary or iatrogenic", html:"Hypothyroidism, Cushing's, PCOS — or a weight-driving drug (antipsychotic, steroid, insulin) left unaddressed?"},
+         {tone:"red", h:"2 · Eating disorder or mood", html:"<b>Binge-eating or depression sabotaging any plan → treat these first.</b>"},
+         {tone:"blue", h:"3 · Structured support", html:"Actually in a Tier-2 programme, or going it alone? Has the referral been made?"},
+         {tone:"blue", h:"4 · Drug eligibility", html:"Meets GLP-1 or surgery criteria and has not been offered them? Or on a drug below the 5% stopping threshold?"},
+         {tone:"amber", h:"5 · Sleep and barriers", html:"<b>Untreated OSA, shift work, food insecurity — the real-world obstacles.</b>"},
+         {tone:"green", h:"6 · Expectations", html:"Chasing an unrealistic target and disengaging → reset to the 5–10% health goals."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"The tiered pathway",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Tier 2 — community", html:"Structured weight-management and behavioural programmes — the evidence-based first referral for most patients."},
+         {tone:"amber", h:"Tier 3 — specialist MDT", html:"Complex obesity, comorbidity, pharmacotherapy initiation, and pre-bariatric optimisation."},
+         {tone:"amber", h:"Tier 4 — bariatric surgery", html:"<b>Meets NG246 thresholds after specialist input.</b> <b>Expedite recent-onset type 2 diabetes with BMI ≥35.</b>"},
+         {tone:"blue", h:"Endocrinology", html:"Suspected Cushing's or a hypothalamic cause, or PCOS needing specialist input. See <a href='pcos.html'>PCOS</a>."},
+         {tone:"red", h:"Mental health / eating disorder service", html:"Binge-eating disorder or significant depression — before or alongside the weight work, not after it. See <a href='depression.html'>depression</a>."},
+         {tone:"cream", h:"GP management", html:"Classification, the secondary-cause and comorbidity screen, the conversation itself, Tier-2 referral, drug review for iatrogenic gain, shared-care pharmacotherapy and lifelong post-bariatric micronutrient monitoring all belong here. Related pages: <a href='type-2-diabetes.html'>type 2 diabetes</a> · <a href='osa.html'>obstructive sleep apnoea</a> · <a href='fatty-liver.html'>fatty liver disease</a> · <a href='hypertension.html'>hypertension</a> · <a href='pcos.html'>PCOS</a>."}
+       ]},
+       {b:"say", html:"Carrying extra weight is a medical condition, not a personal failing, and it responds to treatment — from structured support to newer medicines and, for some, surgery. We will start where it fits you, aim for changes that improve your health, and I will refer you into the right service."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 41-year-old woman of South Asian background attends asking about <b>\"the weight-loss jab\"</b> she has read about. Her <b>BMI is 29</b>. She has <b>PCOS</b>, was started on <b>olanzapine 10 mg</b> eighteen months ago and has gained 14 kg since. She describes <b>eating large amounts in the evening and feeling out of control</b>, then feeling ashamed. She snores and her partner has noticed pauses in her breathing. She has <b>already ordered semaglutide from an online pharmacy</b> but has not started it."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Applies the ethnicity-adjusted threshold — BMI 29 is obesity in a South Asian patient, not overweight, which changes both the framing and her eligibility; identifies olanzapine as a major driver and raises a weight-neutral swap with the prescribing team rather than counselling on diet against an unchanged cause; recognises the evening eating as probable binge-eating disorder and treats that FIRST — a restrictive plan here would harm; <b>screens for OSA with Epworth or STOP-BANG</b> given the witnessed apnoeas; <b>addresses the unregulated online supply directly</b> — dosing errors, no monitoring, no eating-disorder screen — without shaming her for it; explains the real NICE route (TA875, within a specialist service) and the stopping rules, and that weight returns when the drug stops; <b>checks HbA1c, lipids, BP and FIB-4</b>; and asks permission before the weight conversation and uses neutral language throughout."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG246 — Overweight and obesity management (2025)</b><br><a href="https://www.nice.org.uk/guidance/cg189" rel="noopener">nice.org.uk/guidance/cg189</a><span class="rd"> — the BMI categories, the lower thresholds for South Asian, Chinese and other high-risk groups, the tiered pathway, and the bariatric surgery thresholds including expedited assessment for recent-onset type 2 diabetes with BMI ≥35</span></li>'+
+         '<li><b>NICE NG246 — Overweight and obesity management</b><br><a href="https://www.nice.org.uk/guidance/ng246" rel="noopener">nice.org.uk/guidance/ng246</a><span class="rd"> — the waist-to-height ratio above 0.5 as a central adiposity measure at any BMI, and the person-centred, permission-first approach to raising weight</span></li>'+
+         '<li><b>NICE TA875 — Semaglutide for managing overweight and obesity</b><span class="rd"> — semaglutide 2.4 mg weekly within a specialist weight-management service, the BMI and comorbidity criteria, and the stopping rules</span></li>'+
+         '<li><b>NICE TA1026 — Tirzepatide for managing overweight and obesity</b><span class="rd"> — the BMI and comorbidity criteria and the phased NHS rollout through primary care and weight-management services</span></li>'+
+         '<li><b>STEP-4 and the semaglutide withdrawal trials</b><span class="rd"> — weight is regained when GLP-1 receptor agonists are stopped, which is the basis for framing them as chronic-disease treatment rather than a course</span></li>'+
+         '<li><b>NICE NG246 \u2014 Overweight and obesity management</b><br><a href="https://www.nice.org.uk/guidance/ng246" rel="noopener">nice.org.uk/guidance/ng246</a><span class="rd"> — secondary and drug-induced causes, orlistat dosing with the 5% three-month rule, the comorbidity screen, and post-bariatric micronutrient monitoring</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — semaglutide, tirzepatide and orlistat dosing, titration and cautions including pregnancy and reduced oral contraceptive efficacy</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Obesity in adults — NICE NG246, TA875 (semaglutide), TA1026 (tirzepatide) and NICE. Obesity is a chronic relapsing disease driven by biology and environment, not willpower. Use ethnicity-adjusted thresholds — overweight ≥23 and obesity ≥27.5 in South Asian, Chinese and other high-risk groups — and a waist-to-height ratio above 0.5 at any BMI. Ask permission before discussing weight. Screen for binge-eating disorder and depression before any restrictive plan, and look for the drug that is causing the gain. Aim at 5–10% for the health wins. GLP-1 agonists are chronic-disease treatment: the weight returns when they stop. Pharmacotherapy and surgery are adjuncts within specialist pathways. Verify against current NICE, local weight-service criteria and the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

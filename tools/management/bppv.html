@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BPPV — Protocol · Reasoning GP</title>
+<meta name="description" content="Benign paroxysmal positional vertigo in primary care: excluding the central mimic with HINTS before positional testing, performing Dix-Hallpike and the supine roll test, the Epley manoeuvre step by step, Semont and Brandt-Daroff, why vestibular sedatives are the wrong treatment, recurrence, driving, and when a positional vertigo is not BPPV." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/bppv.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="BPPV protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🌀",
+  title:"BPPV — the complete guide",
+  eyebrow:"Protocol · the treatment is a manoeuvre, not a prescription",
+  stemTitle:"BPPV is one of the few conditions in general practice that can be cured in the consultation — and the two ways it goes wrong are prescribing a sedative instead, or treating a central stroke as an inner-ear problem",
+  stemSub:"For the differential reasoning across all vertigo use the <a href='../algorithms/vertigo.html'>vertigo pathway</a>. This page is the doing: excluding the central mimic before you tip anyone backwards, performing Dix-Hallpike and the supine roll test, the Epley manoeuvre step by step with what to tell the patient at each stage, Semont and Brandt-Daroff when Epley is not possible, why vestibular sedatives actively impair recovery, and what to do about recurrence, driving and the patient in whom the manoeuvre keeps failing.",
+  guideline:"AAO-HNS 2017 · Bárány Society criteria · DVLA",
+  reviewed:"12 September 2026",
+  nextReview:"12 March 2027",
+  meta:[
+    {t:"AAO-HNS clinical practice guideline (2017 update)"},
+    {t:"Bárány Society diagnostic criteria"},
+    {t:"Epley cures ~80% in one session", tone:"ok"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Exclude central</b><small>HINTS first</small></a><a href="#diagnose"><b>Diagnose</b><small>Dix-Hallpike · roll</small></a><a href="#epley"><b>Epley</b><small>Step by step</small></a><a href="#other"><b>If Epley fails</b><small>Semont · Brandt-Daroff</small></a><a href="#after"><b>Aftercare</b><small>Recurrence · driving</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Exclude the central cause BEFORE you tip anyone backwards", html:"A cerebellar or brainstem stroke can present as isolated vertigo with no limb signs. HINTS is more sensitive than early MRI in acute vestibular syndrome: a NORMAL head-impulse test, DIRECTION-CHANGING or vertical nystagmus, or SKEW deviation each indicate a central cause. Add: new severe headache or neck pain, any focal deficit, gait ataxia out of proportion, deafness of sudden onset, or inability to sit or walk unaided — and the patient is going to hospital, not onto the couch."},
+    {tone:"blue", h:"The history that makes BPPV likely", html:"Brief — seconds to under a minute — rotational vertigo, triggered reliably by a change in HEAD POSITION relative to gravity: rolling over in bed, lying down, sitting up, looking up to a shelf, bending down. Episodes recur over days to weeks, with latency of a few seconds before onset, and no hearing loss, tinnitus or aural fullness. <b>Continuous vertigo lasting hours is NOT BPPV</b> — think vestibular neuritis, Ménière's or a central cause."},
+    {tone:"blue", h:"Dix-Hallpike is the diagnosis; the supine roll test is the one people forget", html:"Dix-Hallpike diagnoses posterior canal BPPV (about 85–90% of cases): upbeating-torsional nystagmus after a 2–5 second latency, lasting under a minute, fatiguing on repetition. If Dix-Hallpike is negative but the history is convincing, perform the SUPINE ROLL TEST for horizontal canal BPPV (around 10%) — it is missed constantly, and it needs a different manoeuvre (Lempert barbecue roll or Gufoni)."},
+    {tone:"green", h:"Epley cures most people in one session", html:"The Epley canalith repositioning manoeuvre resolves roughly 80% of posterior canal BPPV at the first attempt, and the great majority after a repeat. It is safe, free, takes about five minutes, and there is no drug that comes close. Warn the patient it will provoke severe vertigo for 20–30 seconds at each step and that this means it is working — unwarned, they will pull out of the position, and the manoeuvre fails."},
+    {tone:"red", h:"⛔ Do not treat BPPV with vestibular sedatives", html:"Prochlorperazine, cinnarizine and betahistine do not treat BPPV — there is no ongoing vestibular asymmetry to suppress, the attacks are over in under a minute, and sedatives impair the central compensation that recovery depends on. In older people they add falls, sedation and — with prochlorperazine — parkinsonism. A short course to permit travel or as a one-off antiemetic is the only defensible use; a repeat prescription for BPPV is a treatment failure."},
+    {tone:"purple", h:"🚗 DVLA — a statutory duty", html:"Driving must cease if there is \"liability to sudden and disabling giddiness\", and the DVLA must be notified where that liability is likely to persist or recur unpredictably. For a single BPPV episode cured by a manoeuvre and fully resolved, driving may resume once free of positional vertigo. <b>Give the advice explicitly and record it</b> — patients rarely connect \"dizzy when I roll over\" with a duty to notify."}
+  ],
+  pathwaySub:"Five steps. The first is the safety step and must come before any positional testing.",
+  pathway:[
+    {title:"Exclude the central cause", html:"HINTS (head impulse, nystagmus type, test of skew) plus the red-flag screen: headache or neck pain, focal deficit, disproportionate gait ataxia, sudden deafness, cannot sit or stand unaided. <b>Any positive → emergency admission, not a manoeuvre.</b>", alert:true},
+    {title:"Take the positional history properly", html:"Duration in SECONDS, triggered by head position change, latency of a few seconds, recurrent over days to weeks, no cochlear symptoms. If the vertigo is continuous or lasts hours, stop — this is a different diagnosis."},
+    {title:"Confirm with Dix-Hallpike, then the supine roll test", html:"Dix-Hallpike each side for posterior canal. If negative and the history fits, do the supine roll test for horizontal canal. Warn, support the head, and watch the eyes rather than the patient's face."},
+    {title:"Treat with the matching manoeuvre, in the same appointment", html:"Posterior canal → Epley (or Semont). Horizontal canal → Lempert barbecue roll or Gufoni. Re-test after treating to confirm resolution, and repeat the manoeuvre in the same visit if still positive."},
+    {title:"Aftercare, recurrence and driving", html:"Teach Brandt-Daroff for home use, explain the recurrence rate honestly, address falls risk and bone health in older patients, give the DVLA advice, and arrange review if unresolved after two or three sessions."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Exclude central", title:"Red flags — the stroke that looks exactly like this",
+     sub:"Isolated vertigo with a normal neurological examination can be a cerebellar infarct. HINTS is how you tell.",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["<b>HINTS: head impulse NORMAL (no corrective saccade)</b>","A normal head-impulse test in acute continuous vertigo is a CENTRAL sign — the peripheral lesion is what produces the abnormal test","<b>Emergency admission for suspected posterior circulation stroke</b>"],
+         ["HINTS: direction-CHANGING horizontal nystagmus, or vertical or purely torsional nystagmus","<b>Central.</b> Peripheral nystagmus is unidirectional and suppressed by fixation","<b>Emergency admission</b>"],
+         ["<b>HINTS: skew deviation on alternate cover test</b>","<b>Central — brainstem</b>","<b>Emergency admission</b>"],
+         ["New severe headache or neck pain, especially with neck trauma or manipulation","<b>Vertebral artery dissection</b>","Emergency admission. Do NOT perform Dix-Hallpike or any neck-extension manoeuvre"],
+         ["Any focal deficit — dysarthria, diplopia, dysphagia, limb weakness or incoordination, Horner's, facial numbness","<b>Brainstem or cerebellar event</b>","<b>999</b>"],
+         ["Gait ataxia out of proportion — cannot sit unsupported or walk even with help","<b>Cerebellar lesion.</b> BPPV between episodes leaves a patient able to walk","<b>Emergency admission</b>"],
+         ["<b>Sudden unilateral hearing loss with vertigo</b>","Labyrinthitis, Ménière's, vestibular schwannoma — or AICA territory infarct","Sudden sensorineural hearing loss is an ENT emergency — same-day referral for steroids, and consider stroke"],
+         ["<b>Vertigo continuous for hours to days rather than seconds</b>","<b>Vestibular neuritis, Ménière's, central cause — not BPPV</b>","<b>Reassess the diagnosis; see the <a href='../algorithms/vertigo.html'>vertigo pathway</a>, <a href='menieres.html'>Ménière's</a></b>"],
+         ["Positional vertigo that does not fatigue, has no latency, or is accompanied by downbeat nystagmus on Dix-Hallpike","Central positional vertigo — posterior fossa lesion, Chiari malformation, cerebellar degeneration or MS","<b>Neurology referral and MRI, not a repositioning manoeuvre</b>"]
+       ]},
+       {b:"warn", html:"Two cautions about the manoeuvre itself, which are about the neck rather than the ear. Do not perform Dix-Hallpike or Epley where there is significant cervical disease, recent neck injury, cervical instability, rheumatoid or severe osteoarthritic neck, carotid or vertebrobasilar disease, or recent neck surgery — use the <b>Semont manoeuvre</b>, which requires far less neck extension, or refer to vestibular physiotherapy. And in a patient with a suspected dissection, neck extension is actively dangerous. The safety question is always asked before the couch, never during."}
+     ]},
+
+    {id:"diagnose", nav:"Diagnose", title:"Dix-Hallpike and the supine roll test",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Dix-Hallpike — how</b>","Patient sits on the couch, positioned so their head will hang over the end when supine. Turn the head 45° toward the side being tested. Support the head, lie them back rapidly to 20–30° below horizontal, keeping the 45° rotation. Hold and WATCH THE EYES for at least 30 seconds. Then sit them up slowly and repeat on the other side."],
+         ["<b>Dix-Hallpike — a positive result</b>","Latency of 2–5 seconds, then upbeating-torsional nystagmus (top pole of the eye beating toward the lower ear), with vertigo; lasting under a minute; FATIGUING on repetition. <b>The affected side is the side that provokes it.</b>"],
+         ["<b>Supine roll test — when and how</b>","<b>Do it when Dix-Hallpike is negative but the history is convincing.</b> Patient supine with head neutral and slightly flexed; turn the head rapidly 90° to one side, observe, return to neutral, then the other side. Horizontal (geotropic or apogeotropic) nystagmus indicates horizontal canal BPPV — around 10% of cases and routinely missed."],
+         ["<b>The Bárány / AAO-HNS diagnostic essentials</b>","Recurrent brief episodes of positional vertigo, provoked by a change of head position relative to gravity, with the characteristic nystagmus on positional testing, and no other cause. <b>No imaging, bloods or audiology are needed for typical BPPV</b>."]
+       ]},
+       {b:"table", head:["Pattern","Canal / condition","Treatment"], rows:[
+         ["<b>Upbeating-torsional nystagmus on Dix-Hallpike, latency, fatigues</b>","<b>Posterior canal BPPV (85–90%)</b>","<b>Epley, or Semont if neck extension must be limited</b>"],
+         ["<b>Horizontal nystagmus on supine roll test</b>","<b>Horizontal (lateral) canal BPPV (~10%)</b>","<b>Lempert barbecue roll or Gufoni manoeuvre</b> — not Epley"],
+         ["<b>Downbeat nystagmus, no latency, does not fatigue</b>","<b>Central positional vertigo, or rare anterior canal BPPV</b>","<b>Neurology referral and MRI — treat as central until excluded</b>"],
+         ["<b>Convincing positional history but repeatedly negative testing</b>","BPPV in remission, or vestibular migraine, or PPPD (persistent postural-perceptual dizziness)","Re-test on another day; consider vestibular migraine and PPPD, which are commonly mislabelled as refractory BPPV"],
+         ["<b>Positional vertigo after head injury</b>","Post-traumatic BPPV — often bilateral or multi-canal, and more likely to recur","Treat as usual but expect to repeat; a lower threshold for vestibular physiotherapy referral"]
+       ]},
+       {b:"say", html:"I am going to lie you back quickly with your head turned, and I need to warn you properly: if this is what I think it is, it will make the room spin hard for about twenty to thirty seconds. It is unpleasant, but it is not dangerous, and it is actually the thing that tells me I have found the problem. The important part is that you keep your eyes open and stay in the position until I say — if you sit up when the spinning starts, we lose the information and I will just have to do it again. I will be holding your head the whole time, and I will tell you exactly when we are moving."}
+     ]},
+
+    {id:"epley", nav:"Epley", title:"The Epley manoeuvre — step by step",
+     sub:"For LEFT posterior canal BPPV. Mirror every direction for the right side.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Before you start</b>","Confirm the safety questions (neck, dissection, central signs). Warn the patient in the words above. Have a couch with space for the head to extend beyond the end, and position them so their shoulders will reach the edge. Consider a vomit bowl within reach."],
+         ["<b>Step 1</b>","<b>Sitting, head turned 45° to the LEFT (the affected side).</b>"],
+         ["<b>Step 2</b>","Lie back rapidly, head still at 45° left, extended 20–30° below horizontal. HOLD for 30 seconds, or until the nystagmus and vertigo settle — whichever is longer. This is the position that provokes the worst symptoms."],
+         ["<b>Step 3</b>","Rotate the head 90° to the RIGHT, so it is now 45° right, keeping it extended. HOLD 30 seconds (or until symptoms settle)."],
+         ["<b>Step 4</b>","Roll the patient onto their RIGHT side while turning the head a further 90°, so they end up looking down at the floor, nose about 45° toward the couch. HOLD 30 seconds. This step produces the second burst of vertigo, and is the one patients most often resist — talk them through it."],
+         ["<b>Step 5</b>","Sit them up slowly, keeping the head turned, then bring the head to neutral with the chin slightly down. Let them sit for a minute or two before standing — unsteadiness immediately afterwards is normal."],
+         ["<b>Then</b>","Re-test with Dix-Hallpike. If still positive, repeat the Epley in the same appointment — repeating it immediately is both effective and expected. <b>Two or three cycles in one visit is reasonable.</b>"]
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"✓ Expected results", html:"Around 80% resolve after a single Epley, and the large majority after a repeat session. <b>Tell the patient this number</b> — it converts an unpleasant five minutes into an obviously worthwhile one."},
+         {tone:"blue", h:"📋 Post-manoeuvre restrictions: not needed", html:"The old advice to sleep upright for two nights, avoid bending, or wear a soft collar is NOT supported and is no longer recommended. <b>Do not impose it</b> — it is burdensome and does not improve outcomes."},
+         {tone:"amber", h:"⚠ Mild residual unsteadiness is normal", html:"A day or two of vague imbalance or \"floatiness\" after a successful manoeuvre is common and is NOT failure. Warn about it in advance, or the patient concludes it did not work. Advise care with ladders, driving and heights for the rest of that day."},
+         {tone:"green", h:"🏠 Teach Brandt-Daroff for home", html:"Brandt-Daroff exercises can be taught for home use, particularly for recurrence or where the in-surgery manoeuvre cannot be completed. Sit, lie rapidly to one side with the nose up 45°, hold 30 seconds, sit for 30 seconds, repeat to the other side — <b>5 repetitions, three times daily, until free of vertigo for two days.</b>"}
+       ]}
+     ]},
+
+    {id:"other", nav:"If Epley fails", title:"Semont, horizontal canal, and the patient who keeps coming back",
+     blocks:[
+       {b:"table", head:["Situation","What to do","Notes"], rows:[
+         ["<b>Neck disease, instability or limited extension</b>","<b>Semont (liberatory) manoeuvre</b> — from sitting, lie to the affected side with the nose up, then swing rapidly through sitting to the opposite side with the nose down, holding each position","Requires far less neck extension than Epley and is the manoeuvre of choice where the neck is the limiting factor"],
+         ["<b>Horizontal canal BPPV (positive supine roll test)</b>","Lempert barbecue roll (360° in 90° steps toward the unaffected ear) or the Gufoni manoeuvre","<b>Epley does not treat the horizontal canal</b> — this is why a \"failed Epley\" is sometimes simply the wrong canal"],
+         ["<b>Still positive after 2–3 sessions across separate visits</b>","<b>Refer to vestibular physiotherapy or ENT</b>","Also reconsider the diagnosis: multi-canal involvement, central positional vertigo, vestibular migraine or PPPD"],
+         ["<b>Recurrent BPPV</b>","Re-treat; teach Brandt-Daroff for self-management; check vitamin D and calcium","<b>Recurrence is common — roughly 15–50% within a few years</b>, and it is not a sign anything was done wrongly. Vitamin D deficiency is associated with recurrence, and supplementation where deficient may reduce it"],
+         ["<b>Anxiety, avoidance and persistent dizziness after the BPPV is cured</b>","<b>PPPD — persistent postural-perceptual dizziness.</b> Vestibular rehabilitation, and an SSRI where indicated","Classically follows a genuine vestibular event: the BPPV is gone but the dizziness is not. Manoeuvres will not help, and repeating them reinforces the illness model"],
+         ["<b>Older patient with BPPV</b>","<b>Falls assessment, medication review, bone health and FRAX</b>","<b>BPPV roughly doubles the risk of falling</b>, and in this group the fracture is the outcome that matters more than the vertigo. Review anything sedating, including any vestibular sedative already prescribed"],
+         ["<b>Vestibular sedative already on repeat</b>","<b>Stop it, and explain why</b>","Prochlorperazine, cinnarizine and betahistine impair central compensation and add falls, sedation and parkinsonism. Deprescribing is itself a treatment here"]
+       ]},
+       {b:"why", html:"<b>The reason a manoeuvre beats any drug is mechanical.</b> BPPV is caused by displaced otoconia — calcium carbonate crystals — floating in a semicircular canal, where they deflect the cupula when the head moves against gravity. A repositioning manoeuvre uses gravity to walk those crystals back around the canal and out into the utricle, where they cause no symptoms. The problem is physically removed. A vestibular sedative, by contrast, can only dampen the perception of a signal that is being generated correctly by a displaced particle — and by dampening it, delays the central adaptation that would otherwise help. That is why the correct treatment is five minutes of positioning and the wrong one is a repeat prescription."}
+     ]},
+
+    {id:"after", nav:"Aftercare", title:"Aftercare, driving, and what to tell the patient",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"✓ The explanation that reassures", html:"\"There are tiny crystals in your inner ear that have come loose and drifted into the wrong channel. When you move your head they slosh about and your balance organ thinks you are spinning. The manoeuvre uses gravity to tip them back where they belong. It is not a stroke, not a brain tumour, and not something that damages your hearing.\""},
+         {tone:"purple", h:"🚗 DVLA — the statutory position", html:"Must not drive while there is \"liability to sudden and disabling giddiness\", and must notify the DVLA if that liability is likely to persist or recur unpredictably. After a single episode fully resolved by a manoeuvre, driving may resume once free of positional vertigo. Group 2 (bus, coach, lorry) standards are stricter — advise notification. Record the advice given."},
+         {tone:"amber", h:"⚠ Safety in the meantime", html:"Avoid ladders, working at height, operating machinery and swimming alone while symptomatic. Care getting out of bed — sit up in stages. In older patients, review the home for falls hazards — specifically lighting, clutter and footwear — and consider a falls-service referral."},
+         {tone:"blue", h:"📅 Review and safety-net", html:"Review if not resolved after the session, if symptoms change in character, or if anything new appears — especially hearing loss, headache, or symptoms that become continuous rather than positional. \"Come back urgently if the dizziness stops being brief and positional and becomes constant, or if you develop any weakness, slurred speech, double vision or a bad headache.\""},
+         {tone:"green", h:"🔁 Recurrence, framed honestly", html:"\"This comes back in a fair proportion of people — somewhere between one in seven and one in two over a few years. That is not a sign anything went wrong, and it is treatable the same way each time. I will teach you exercises you can do at home, and you can always come back for the manoeuvre.\""},
+         {tone:"blue", h:"🦴 Check vitamin D in recurrent cases", html:"Vitamin D deficiency is associated with recurrent BPPV, and correcting it may reduce recurrence. Reasonable to check and treat in anyone with repeated episodes — and it aligns with the bone-health assessment these patients need anyway."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — 999 / same day", html:"Any HINTS central sign · new severe headache or neck pain · any focal neurological deficit · gait ataxia out of proportion · unable to sit or stand unaided · suspected vertebral artery dissection. <b>Do not perform a positional manoeuvre in any of these.</b>"},
+         {tone:"amber", h:"Same-day ENT", html:"Sudden sensorineural hearing loss with vertigo — an ENT emergency requiring urgent steroids. Do not let the vertigo distract from the hearing."},
+         {tone:"blue", h:"Vestibular physiotherapy", html:"Failure after 2–3 manoeuvre attempts · neck disease preventing Epley and Semont · multi-canal or post-traumatic BPPV · PPPD · an older patient needing balance rehabilitation. <b>The highest-yield referral in this pathway and consistently underused.</b>"},
+         {tone:"blue", h:"ENT / audiovestibular medicine", html:"Diagnostic uncertainty · atypical nystagmus · associated cochlear symptoms · suspected Ménière's or vestibular schwannoma · refractory BPPV. See <a href='menieres.html'>Ménière's disease</a>."},
+         {tone:"amber", h:"Neurology and MRI", html:"Downbeat nystagmus, positional vertigo without latency or fatigue, or any suspicion of central positional vertigo — posterior fossa lesion, Chiari, MS, cerebellar degeneration."},
+         {tone:"green", h:"Falls service", html:"Older patient with BPPV and any fall, near-fall or unsteadiness between episodes. BPPV roughly doubles falls risk — the fracture is the outcome that matters most in this group."},
+         {tone:"cream", h:"GP management", html:"BPPV is diagnosed and cured in primary care: HINTS to exclude central, Dix-Hallpike and the supine roll test to diagnose, Epley or Semont to treat, re-test to confirm, Brandt-Daroff for home, and deprescribing of any vestibular sedative. Related pages: <a href='../algorithms/vertigo.html'>vertigo pathway</a> · <a href='../algorithms/vertigo.html'>vertigo pathway</a> · <a href='menieres.html'>Ménière's</a> · <a href='vestibular-neuronitis.html'>vestibular neuritis</a> · <a href='../algorithms/falls.html'>falls</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 68-year-old woman describes <b>10 days of the room spinning for about 20 seconds</b> whenever she rolls over in bed or looks up at a high cupboard. Between episodes she feels normal but is \"nervous of moving her head\". No hearing loss, tinnitus or headache. She was given prochlorperazine by an out-of-hours service and has been taking it three times a day since, and has had <b>two near-falls</b> in that time. She has osteoarthritis of the neck. She asks for \"a stronger tablet\" and mentions she drives her grandchildren to school."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Takes the positional history properly — seconds, trigger, latency, no cochlear symptoms; <b>performs HINTS and the red-flag screen BEFORE any positional testing</b>, and says why; asks about the neck and recognises the cervical osteoarthritis as a reason to use SEMONT rather than Epley; performs a positional test and then treats in the same appointment rather than referring; stops the prochlorperazine and explains that it does not treat BPPV, impairs compensation, and is contributing to her near-falls and to parkinsonism risk at her age — resisting the request for a stronger tablet by offering something better; warns her the manoeuvre will provoke severe vertigo for 20–30 seconds and that this means it is working; <b>does not impose post-manoeuvre sleeping restrictions</b>; <b>addresses falls and bone health, and checks vitamin D</b>; <b>gives the DVLA position and records it</b> — relevant because she drives children; <b>teaches Brandt-Daroff</b>; <b>frames recurrence honestly</b>; and gives a safety-net for symptoms becoming continuous or developing focal features."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>AAO-HNS — Clinical Practice Guideline: Benign Paroxysmal Positional Vertigo (2017 update)</b><span class="rd"> — canalith repositioning as first-line treatment, the recommendation against routine imaging and against vestibular suppressants, and the ~80% single-manoeuvre resolution rate</span></li>'+
+         '<li><b>Bárány Society — diagnostic criteria for BPPV</b><span class="rd"> — the nystagmus characteristics by canal, and the definition of central positional vertigo</span></li>'+
+         '<li><b>HINTS examination (Kattah et al., <i>Stroke</i>)</b><span class="rd"> — the head-impulse, nystagmus and test-of-skew battery, and its sensitivity relative to early MRI in acute vestibular syndrome</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive: a guide for medical professionals</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — the \u201cliability to sudden and disabling giddiness\u201d standard and the Group 1 and Group 2 positions</span></li>'+
+         '<li><b>BNF · MHRA</b><span class="rd"> — prochlorperazine extrapyramidal effects and falls risk in older people; cinnarizine and betahistine indications</span></li>'+
+         '<li><b>NICE NG249 — Falls in older people</b><span class="rd"> — the falls assessment referenced for the older patient with BPPV</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"BPPV \u2014 the AAO-HNS 2017 guideline, Bárány Society criteria and the DVLA standards. Exclude the central cause with HINTS before you tip anyone backwards: a normal head-impulse test, direction-changing or vertical nystagmus, or skew deviation each mean stroke, not BPPV. Dix-Hallpike for the posterior canal, the supine roll test for the horizontal canal — and Epley does not treat the horizontal canal. Epley cures about 80% in one session; warn the patient it will provoke severe vertigo and that this means it is working. No post-manoeuvre restrictions. Do not treat BPPV with prochlorperazine, cinnarizine or betahistine, and stop them where they are already prescribed. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

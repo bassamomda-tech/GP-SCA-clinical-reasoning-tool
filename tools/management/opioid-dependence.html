@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Opioid dependence — Protocol · Reasoning GP</title>
+<meta name="description" content="Opioid dependence in primary care: recognising and reversing overdose, confirming dependence objectively before any prescription, methadone versus buprenorphine under shared care, the three-missed-doses rule, detox only when stable, and take-home naloxone as the highest-impact action." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/opioid-dependence.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Opioid dependence protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"💊",
+  title:"Opioid dependence — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"People are far safer in treatment than out of it — so retention, an adequate dose and naloxone matter more than getting anyone opioid-free",
+  stemSub:"One page for the whole condition: recognise and reverse overdose, confirm dependence objectively before any substitute opioid is prescribed, initiate opioid substitution treatment through specialist or shared care, wrap every patient in harm reduction — above all take-home naloxone — and hold the safety lines that prevent deaths: cautious methadone induction, the three-missed-doses rule, and continuity across every transition of care.",
+  guideline:"Orange Book 2017 · NICE TA114 · CG52 · CG51 · TA115",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"Drug misuse and dependence: UK guidelines (\u201cOrange Book\u201d, 2017)"},
+    {t:"NICE TA114 — methadone &amp; buprenorphine"},
+    {t:"NICE CG52 (detox) · CG51 (psychosocial) · TA115 (naltrexone)"},
+    {t:"OHID / PHE — take-home naloxone"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Overdose first</b><small>Naloxone · lost tolerance</small></a><a href="#confirm"><b>Confirm</b><small>ICD criteria · drug test</small></a><a href="#workup"><b>Assess</b><small>BBV · ECG · safeguarding</small></a><a href="#ladder"><b>Treat</b><small>Methadone vs buprenorphine</small></a><a href="#monitor"><b>Safety</b><small>Missed doses · transitions</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Overdose is a reversible cause of death", html:"Pinpoint pupils, respiratory rate &lt; 12 (below 12) or shallow breathing, reduced consciousness → 999 plus naloxone 400 micrograms IM, repeated every 2–3 minutes, with airway, oxygen and the recovery position. Naloxone is shorter-acting than most opioids, especially methadone — re-sedation can occur, so never leave the person alone after reversal."},
+    {tone:"red", h:"Never prescribe into an untolerant person", html:"Objective confirmation of current opioid use is required before any substitute opioid: a positive urine or oral-fluid drug test, plus signs of withdrawal or intoxication, or injection marks. Do not rely on history alone. Methadone is itself a potent respiratory depressant — <b>prescribing it to someone exaggerating their use can be fatal.</b>"},
+    {tone:"amber", h:"Loss of tolerance is the single biggest risk factor", html:"Prison release, hospital discharge, completed detox or any break in use. Deaths cluster there because people return to a dose their body can no longer handle. Everyone leaving a controlled environment, and everyone in treatment, should leave with take-home naloxone and overdose-awareness advice."},
+    {tone:"blue", h:"Under-dosing is why treatment fails", html:"Aim for a maintenance dose that stops withdrawal and craving and blocks the effect of illicit top-ups — commonly methadone 60–120 mg/day or buprenorphine 12–16 mg/day. <b>Under-dosing is a common cause of continued illicit use and drop-out.</b>"},
+    {tone:"purple", h:"Three missed methadone doses = re-titrate", html:"If 3 or more consecutive days of methadone are missed, tolerance may be lost — do NOT dispense the usual dose. Reassess, confirm continued need, re-titrate, and review the supervised-consumption arrangement. <b>The usual maintenance dose can be fatal after a gap.</b>"},
+    {tone:"green", h:"Take-home naloxone is the highest-impact action", html:"Overdoses are usually witnessed, and a bystander who can give IM or intranasal naloxone buys the minutes an ambulance needs. <b>Offer it to everyone at risk, and offer it repeatedly</b> — kits get used, lost or left behind. Drug services can supply it without a prescription."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is a reversible death.",
+  pathway:[
+    {title:"Rule out acute overdose", html:"<b>Pinpoint pupils, reduced respiratory rate or consciousness</b> — especially with alcohol, benzodiazepines or pregabalin, or after a period of abstinence. <b>999 plus naloxone.</b>", alert:true},
+    {title:"Confirm dependence objectively", html:"ICD dependence criteria (≥3 in the past year) PLUS a positive drug test, with withdrawal or intoxication signs or injection marks. Assess severity, complications and <b>the person's own goals</b>."},
+    {title:"Assess the whole person", html:"BBV testing (HIV, hepatitis B and C), injecting harms, mental health, ECG before methadone where there is cardiac risk, social context, and safeguarding and pregnancy — always ask."},
+    {title:"Refer for OST, then share the care", html:"Specialist drug and alcohol service for assessment and initiation; most GPs then continue prescribing under a shared-care agreement. <b>Pregnancy is urgent joint care — do not abruptly detox.</b>"},
+    {title:"Wrap in harm reduction and hold the safety lines", html:"Take-home naloxone, needle programmes, vaccination and hepatitis C treatment, psychosocial support — then the missed-dose rule, diversion awareness, and continuity across hospital, prison and treatment breaks."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Overdose first", title:"Red flags — overdose, and the highest-risk moments",
+     sub:"Opioid overdose is a reversible cause of death. Recognise it, give naloxone, call 999 — then build overdose prevention into every consultation.",
+     blocks:[
+       {b:"table", head:["Red flag","Why it matters","Action"], rows:[
+         ["<b>Opioid overdose</b>","Pinpoint pupils, respiratory rate &lt; 12 or shallow breathing, reduced consciousness, cyanosis, snoring or gurgling","999 plus naloxone 400 micrograms IM, repeated every 2–3 minutes; airway, oxygen, recovery position"],
+         ["<b>Lost tolerance</b>","Recent abstinence — prison release, a hospital stay, detox, or any break in use — sharply raises overdose risk if they return to their previous dose","<b>High risk; ensure take-home naloxone</b>"],
+         ["<b>Sedative combinations</b>","Opioids with alcohol, benzodiazepines, pregabalin or gabapentin, or zopiclone → additive respiratory depression, and most drug-related deaths","<b>Counsel, and avoid co-prescribing sedatives</b>"],
+         ["<b>Methadone induction</b>","The first 1–2 weeks are the highest-risk period — methadone accumulates over days because of its long half-life","<b>Start low, titrate slowly, supervise consumption</b>"],
+         ["<b>Naloxone re-sedation</b>","Naloxone is shorter-acting than most opioids, especially methadone — the patient can re-sedate after it wears off","<b>Always 999; do not leave the person alone after reversal</b>"],
+         ["<b>Suicide or mental health crisis</b>","High rates of depression, self-harm and intentional overdose in this group","<b>Assess risk directly at every contact and act on it</b> — see the <a href='depression.html'>depression protocol</a>"]
+       ]},
+       {b:"warn", html:"Never start opioid substitution treatment without confirmed dependence, and never give a full methadone dose to someone who may have lost tolerance. The induction period, and the days after any abstinence — prison release, hospital discharge, completed detox — carry the highest overdose risk. <b>Give take-home naloxone to everyone.</b>"},
+       {b:"why", html:"The majority of drug-related deaths in the UK involve opioids, and most involve more than one substance — opioids with benzodiazepines, alcohol, pregabalin or gabapentin. These are all CNS depressants and act synergistically on respiratory drive, so the combination is far more dangerous than any one drug alone. Asking specifically about street benzodiazepines and pregabalin or gabapentin, and counselling against mixing, is a core safety conversation. Loss of tolerance is the single most important overdose risk factor, and its timing is often iatrogenic — the days following prison release, hospital discharge or a completed detox are when people are most likely to die, because they return to a dose their body can no longer handle."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Opioid dependence is not an NICE NG12 suspected-cancer presentation, so no two-week-wait applies, and none should be invented for one. The time-critical safety actions here are <b>overdose reversal with naloxone</b> and <b>same-day mental health assessment for acute suicide risk</b>. Two adjacencies are worth remembering afterwards rather than during: <b>cancer pain is a common route into long-term opioid use</b>, so a new or changing pain in someone on opioids deserves assessment on its own merits, not attribution to drug-seeking; and <b>hepatitis C-related cirrhosis is premalignant</b>, so anyone with confirmed cirrhosis needs the hepatocellular carcinoma surveillance set out on the <a href='fatty-liver.html'>fatty liver protocol</a>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Confirm", title:"Confirm dependence — and confirm current use objectively",
+     sub:"Dependence is a clinical diagnosis, but objective confirmation of current opioid use is a prescribing safety requirement.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Dependence criteria (ICD-10/11)</b>","3 or more over the past year: a strong desire or craving; impaired control over use; a withdrawal state; tolerance (needing more for the same effect); salience (use crowds out other activities); and persistent use despite clear harm"],
+         ["<b>Drug history</b>","Which opioids, the amount and cost per day, the route (oral, smoked or \u201cchasing\u201d, injected), duration of use, last use, the typical withdrawal pattern, other drugs (benzodiazepines, crack or cocaine, alcohol, pregabalin), previous treatment episodes, and any overdoses"],
+         ["<b>Objective confirmation — required before OST</b>","A urine or oral-fluid drug test positive for opioids (or for methadone or buprenorphine), PLUS signs of intoxication or withdrawal and/or injection sites. Do not rely on history alone to justify a prescription"],
+         ["<b>Withdrawal assessment</b>","Yawning, lacrimation, rhinorrhoea, sweating, dilated pupils, piloerection (\u201ccold turkey\u201d), abdominal cramps, diarrhoea, myalgia, restlessness, insomnia. <b>Use an objective scale such as COWS</b> — withdrawal is uncomfortable but rarely dangerous in healthy adults, <b>unlike alcohol or benzodiazepine withdrawal</b>"],
+         ["<b>Severity and goals</b>","Gauge dependence severity, complications, and the person's own goals — stabilisation and harm reduction versus abstinence. This shapes whether you aim for maintenance OST or, later, detox"]
+       ]},
+       {b:"why", html:"Objective confirmation of dependence is a fundamental safety rule in the UK clinical guidelines (the \u201cOrange Book\u201d). A substitute opioid such as methadone is itself a potent respiratory depressant, so prescribing it to someone who is not in fact opioid-tolerant — for example someone exaggerating their use to obtain a prescription — can cause fatal toxicity. Confirmation combines a positive drug test, objective signs and a coherent history, <b>not the history alone</b>. Second point, easily lost: unlike alcohol or benzodiazepine withdrawal, uncomplicated opioid withdrawal is not life-threatening in an otherwise healthy adult — intensely unpleasant, but safe. That matters clinically, because the urgency in opioid dependence is not the withdrawal but engaging and retaining the person in treatment, preventing overdose and reducing the harms of continued illicit use — and it means abrupt withdrawal on hospital admission or in custody is rarely justified, since it risks disengagement and post-release overdose."}
+     ]},
+
+    {id:"workup", nav:"Assess", title:"Comprehensive assessment — physical, mental, social and safeguarding",
+     sub:"A treatment episode is a high-value opportunity to address health that is otherwise neglected.",
+     blocks:[
+       {b:"table", head:["Domain","What to do"], rows:[
+         ["<b>Blood-borne viruses</b>","Offer HIV, hepatitis B and hepatitis C testing to anyone who injects or has injected. Offer hepatitis B vaccination (rapid schedule), and refer hepatitis C for treatment — it is now curable with direct-acting antivirals"],
+         ["<b>Injecting harms</b>","Inspect injection sites for abscesses, cellulitis, DVT, and missed or arterial injection. Consider infective endocarditis (fever plus a new murmur), and ask about groin injecting. Check tetanus status; consider botulism and anthrax in outbreaks"],
+         ["<b>Mental health</b>","Screen for depression, anxiety, PTSD and trauma, personality difficulties and self-harm or suicide risk — comorbidity is the rule, not the exception, and worsens outcomes if untreated"],
+         ["<b>Cardiac — before methadone</b>","Methadone prolongs the QT interval. Take an ECG before or with methadone where there is cardiac risk, other QT-prolonging drugs, or a higher dose; check electrolytes"],
+         ["<b>Social context</b>","Housing, income and debt, employment, relationships, domestic abuse, and contact with the criminal justice system — all influence treatment and recovery"],
+         ["<b>Safeguarding and pregnancy — always ask</b>","Dependent children or pregnancy → assess and refer appropriately. Parental drug use is a safeguarding consideration; pregnancy needs urgent joint specialist and maternity care — do not abruptly detox"]
+       ]},
+       {b:"why", html:"Hepatitis C is curable in over 95% of cases with short oral direct-acting antiviral courses, and treating people who inject drugs is central to elimination — so testing and referral should be routine rather than optional, alongside hepatitis B vaccination, HIV testing, wound care and immunisations. <b>Safeguarding is a continuous responsibility</b>: children of parents with drug dependence are at increased risk, and assessment of dependents is part of every drug-treatment contact — not to remove children by default, but to ensure support is in place. In pregnancy, maintenance OST is continued because uncontrolled withdrawal and relapse carry greater risks to the fetus than stable substitute treatment."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Opioid substitution treatment — methadone versus buprenorphine",
+     sub:"Maintenance OST is the cornerstone, usually initiated by a specialist service with GPs continuing under shared care. Both agents are first-line (NICE TA114) — choose with the patient.",
+     blocks:[
+       {b:"table", head:["Option","Detail"], rows:[
+         ["<b>Methadone — oral solution 1 mg/1 mL, slow induction</b>","Typical start 10–30 mg (lower if tolerance is uncertain). Titrate slowly — it accumulates over days. Supervised daily consumption initially. Highest overdose risk in the first 2 weeks. Prolongs the QT interval"],
+         ["<b>Buprenorphine — sublingual, start in withdrawal</b>","Start only when objective withdrawal is present, because a partial agonist precipitates withdrawal if given too soon. Start 2–4 mg and titrate to about 12–16 mg. Safer in overdose (ceiling effect), and useful where alertness matters"],
+         ["<b>Buprenorphine with naloxone (e.g. Suboxone)</b>","The naloxone component deters injecting and diversion; otherwise used like buprenorphine. Long-acting injectable buprenorphine is an option in specialist services"],
+         ["<b>Goal of dosing</b>","Reach a maintenance dose that stops withdrawal and craving and blocks the effect of illicit top-ups — commonly methadone 60–120 mg/day or buprenorphine 12–16 mg/day. Under-dosing is a common cause of continued illicit use and drop-out"],
+         ["<b>Supervised consumption</b>","Usually supervised at the pharmacy for the first ~3 months and until stable, then relaxed to take-home doses as risk allows — balancing diversion and overdose risk against engagement"],
+         ["<b>Continue, don't interrupt</b>","Maintain OST through hospital admissions and custody; sudden cessation drives relapse and post-release overdose. Liaise with the drug service to verify the current dose before re-prescribing"]
+       ]},
+       {b:"why", html:"Opioid substitution treatment is one of the most evidence-based interventions in medicine: it reduces illicit heroin use, all-cause and overdose mortality, injecting and blood-borne virus transmission, and acquisitive crime, while improving social functioning. The protective effect depends on retention — people are far safer in treatment than out of it — so the priorities are an adequate maintenance dose and keeping the person engaged, <b>rather than pushing prematurely toward an opioid-free state</b>. The two agents differ in risk profile: methadone's long, variable half-life means it accumulates over the first days of induction, which is why deaths cluster in the first two weeks and why induction is cautious and supervised; buprenorphine is a partial agonist with a ceiling on respiratory depression, making it safer in overdose, but it will precipitate acute withdrawal if started while a full agonist is still on board — so it is begun only once the person is objectively in withdrawal."},
+       {b:"ladder", steps:[
+         {step:"When to detox", title:"Only when the person is stable and has chosen it", when:"an informed abstinence goal",
+          html:"Only when the person is stable, motivated and has chosen an abstinence goal — with relapse-prevention support in place. Maintenance is not \u201cfailure\u201d; for many it is the safest long-term option."},
+         {step:"How", title:"Gradual reduction", when:"tapering the substitute",
+          fromLabel:"stable on OST",
+          html:"Withdraw the substitute by tapering the dose \u2014 typical maintenance before reduction is <span class='rx'>methadone 60\u2013120 mg daily</span> or <span class='rx'>buprenorphine 12\u201324 mg daily</span>. Community detox over 12 or more weeks with methadone, or sooner with buprenorphine; inpatient detox is shorter and for complex cases. Buprenorphine is often preferred for the withdrawal phase."},
+         {step:"Symptom relief", title:"Lofexidine", when:"during the reduction",
+          fromLabel:"autonomic symptoms",
+          html:"<span class='rx'>Lofexidine 800 micrograms daily in divided doses</span>, increased in steps of 400\u2013800 micrograms daily to a maximum of <span class='rx'>2.4 mg daily</span> (then tapered over 2\u20134 days) \u2014 an alpha-2 agonist that reduces withdrawal symptoms; add anti-emetics, anti-diarrhoeals and simple analgesia as needed. <b>Avoid prescribing benzodiazepines.</b>"},
+         {step:"Relapse prevention", title:"Naltrexone", when:"opioid-free and motivated",
+          fromLabel:"detox completed",
+          html:"<span class='rx'>Naltrexone 50 mg daily</span>, an oral opioid antagonist, can support abstinence after detox in motivated, opioid-free patients — it blocks the effect of opioids (NICE TA115). <b>Combine with psychosocial support and mutual aid.</b>"},
+         {step:"The danger point", title:"Overdose after detox", when:"tolerance is lost",
+          fromLabel:"the moment risk rises",
+          html:"Tolerance is lost during and after detox — relapse onto the previous dose can be fatal. Reducing OST is the moment overdose risk rises, so naloxone provision and overdose education are mandatory."}
+       ]},
+       {b:"why", html:"<b>Detoxification is not the right first or only goal for everyone.</b> Detox without ongoing relapse-prevention support has high relapse rates, and — critically — relapse after the loss of tolerance carries a markedly increased risk of fatal overdose. That is why the UK guidelines frame maintenance OST as a legitimate long-term treatment and reserve detox for people who are stable, well-supported and have made an informed choice toward abstinence. Naltrexone blocks opioid receptors so that using produces no effect, removing the reward of relapse — it is only suitable once a person is fully opioid-free, otherwise it precipitates withdrawal, and works best in motivated patients with good psychosocial support. Lofexidine eases the autonomic symptoms during the reduction itself, improving the chance of completing detox."}
+     ]},
+
+    {id:"psychosocial", nav:"Psychosocial", title:"Psychosocial interventions and coexisting use",
+     sub:"Medication and psychosocial support are complementary, not alternatives.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🤝 Keyworking and care plan", html:"Every patient has a named keyworker and a recovery care plan, reviewed regularly. Pharmacological treatment works best embedded in structured psychosocial support, not given in isolation."},
+         {tone:"blue", h:"📈 Evidence-based therapies", html:"Contingency management (incentives for drug-free tests or engagement), behavioural couples therapy, and structured psychosocial interventions improve outcomes alongside OST (NICE CG51)."},
+         {tone:"green", h:"👥 Mutual aid", html:"Actively connect people to Narcotics Anonymous, SMART Recovery and local peer-support and recovery communities — facilitated access improves engagement."},
+         {tone:"amber", h:"🍺 Coexisting use", html:"Treat comorbid alcohol, crack or cocaine and benzodiazepine use; manage stimulant use psychosocially. Address tobacco — smoking is the biggest cause of long-term mortality in this group."},
+         {tone:"plain", h:"🧠 Dual diagnosis — \u201cno wrong door\u201d", html:"Coordinate with mental health services for coexisting serious mental illness — neither service should turn the person away."}
+       ]},
+       {b:"why", html:"NICE recommends offering structured psychosocial interventions and facilitating access to mutual aid alongside opioid substitution treatment. Contingency management — small, escalating incentives for objective markers such as drug-free tests or attendance — has the strongest evidence base for improving engagement and reducing illicit use. Dual diagnosis is common and is associated with worse outcomes when services work in silos: the principle of \u201cno wrong door\u201d means a person should be helped to access both substance-misuse and mental health care from whichever service they present to, rather than being bounced between them."}
+     ]},
+
+    {id:"lifestyle", nav:"Harm reduction", title:"Harm reduction and health promotion",
+     sub:"Harm reduction accepts that not everyone will stop using immediately, and focuses on keeping people alive and healthier in the meantime.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"💉 Take-home naloxone", html:"Supply naloxone and train the patient and the people around them to recognise and reverse an overdose. This is the single highest-impact harm-reduction action — offer it to everyone at risk, repeatedly."},
+         {tone:"amber", h:"⚠️ Overdose awareness", html:"Don't use alone; don't mix with alcohol, benzodiazepines or pregabalin; remember tolerance is lost after any break in use; use a small \u201ctester\u201d amount after time off; call 999 early."},
+         {tone:"blue", h:"🧷 Needle and syringe programmes", html:"Provide or refer for sterile injecting equipment with never-share advice, and offer safer-injecting and wound-care information to reduce infections and BBV transmission."},
+         {tone:"green", h:"💉 Immunisation and BBV treatment", html:"Hepatitis B vaccination, hepatitis A and tetanus as indicated, and seasonal flu and COVID vaccines; refer hepatitis C for curative direct-acting antiviral treatment."},
+         {tone:"blue", h:"🚭 Wider health", html:"Address smoking — the biggest long-term killer here — alcohol, sexual health and contraception, dental health and nutrition. Offer cervical screening and other routine prevention."},
+         {tone:"cream", h:"🏠 Social recovery", html:"Support with housing, benefits and debt, employment and meaningful activity through social prescribing and recovery communities — \u201crecovery capital\u201d sustains change."}
+       ]},
+       {b:"why", html:"Take-home naloxone saves lives: overdoses are usually witnessed, and a bystander who can give intramuscular or intranasal naloxone buys the minutes needed for an ambulance to arrive. UK policy supports wide distribution of naloxone to people who use opioids and to their families and carers, and drug services can supply it without a prescription. <b>Repeated offers matter because kits get used, lost or left behind.</b> And tobacco deserves particular emphasis: smoking, not the opioid itself, is the leading cause of premature death in this population, so smoking cessation is a high-value and often overlooked intervention."}
+     ]},
+
+    {id:"monitor", nav:"Safety", title:"Monitoring, safe prescribing and continuing care",
+     blocks:[
+       {b:"table", head:["Issue","What to do"], rows:[
+         ["<b>Missed doses — critical</b>","If 3 or more consecutive days of methadone are missed, tolerance may be lost — do NOT dispense the usual dose. Reassess and re-titrate; confirm continued need and review the supervised-consumption arrangement"],
+         ["<b>Diversion and intoxication</b>","Be alert to diversion, double-scripting and selling-on. Review if the person is intoxicated at pickup, repeatedly losing prescriptions, or tests negative for the prescribed drug — adjust supervision rather than abruptly stopping"],
+         ["<b>Drug testing and review</b>","Use periodic drug testing and regular structured reviews to monitor progress and titrate supervision and take-home doses to stability. Re-check the QT interval or ECG at higher methadone doses, or with new QT-prolonging drugs"],
+         ["<b>Transitions = danger</b>","Hospital admission, prison entry and release, and any treatment break are high-overdose-risk windows. Verify and continue the correct dose across transitions, and re-issue naloxone"],
+         ["<b>Driving (DVLA)</b>","Patients must not drive if impaired; those on OST have notification duties and may need to demonstrate stability. Advise patients of their responsibility to inform the DVLA"],
+         ["<b>Safeguarding and family</b>","Keep dependent children, pregnancy and domestic-abuse risks under review at each contact and act on changes. Document the risk, the plan and the safety advice given"]
+       ]},
+       {b:"why", html:"The missed-dose rule is a hard safety line: methadone tolerance falls quickly, and after three or more consecutive missed doses the usual maintenance dose can be enough to cause fatal toxicity. Pharmacies are instructed to withhold and refer back for reassessment, and prescribers must re-titrate rather than simply resume — a key reason supervised consumption and good pharmacy communication are built into treatment. Risk is highest at transitions of care: release from prison carries a many-fold increase in overdose death in the first weeks, and hospital admissions or treatment interruptions create the same loss-of-tolerance trap. Continuity — verifying the dose, continuing OST across settings, and re-issuing naloxone at every transition — is where primary care can directly prevent deaths."},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999", html:"\u201cIf someone is hard to wake, breathing slowly or has tiny pupils — give the naloxone, put them on their side and call 999. Don't leave them, because it can wear off.\u201d"},
+         {tone:"amber", h:"🟠 After any break", html:"\u201cIf you've been in prison or hospital, or off it for a few days, your tolerance drops. Never go back to your old amount — use a tiny tester amount, and never use alone.\u201d"},
+         {tone:"blue", h:"💊 Missed doses", html:"\u201cIf you miss three days or more of your methadone, come and see me before restarting — the usual dose can be too much after a gap.\u201d"},
+         {tone:"green", h:"🧷 Keep the kit", html:"\u201cCome back for another naloxone kit any time — if you've used it, lost it, or it's out of date.\u201d"}
+       ]},
+       {b:"say", html:"The most important thing I can do today is keep you alive while we sort the rest out, and there are two parts to that. First, a naloxone kit for you and for whoever you're around — it buys minutes if the worst happens, and you can come back for another any time. Second, getting you onto a proper dose of a substitute so you're not chasing it: people do far better in treatment than out of it, and staying on it long-term is a legitimate choice, not a failure. I'll also want a drug test before I can prescribe anything — that's not about mistrust, it's because a full dose given to someone whose tolerance has dropped can kill them. And if you ever have a break — prison, hospital, a few clean days — come and talk to me before you use again."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral, shared care and special groups",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / emergency", html:"Opioid overdose, suspected infective endocarditis or serious injecting-related infection, or acute suicide risk."},
+         {tone:"amber", h:"Specialist drug and alcohol service", html:"<b>Refer for comprehensive assessment and initiation of OST.</b> Many practices then continue prescribing under a shared-care agreement with specialist support — work within your local arrangement and competence."},
+         {tone:"red", h:"Pregnancy — urgent joint care", html:"Refer urgently for joint management by the specialist drug service and maternity team. Continue and maintain OST — do not attempt abrupt detox; uncontrolled withdrawal and relapse are more dangerous to the fetus."},
+         {tone:"blue", h:"Young people (under 18)", html:"Refer under-18s (age &lt; 18) to a specialist children and young people's substance-misuse service — assessment, consent and capacity, and safeguarding all differ from adults."},
+         {tone:"blue", h:"Mental health liaison", html:"Coexisting serious mental illness, high suicide risk, or complex dual diagnosis — coordinate with mental health services."},
+         {tone:"cream", h:"No NG12 cancer pathway", html:"Opioid dependence is not an NG12 (suspected cancer) presentation, so no two-week-wait applies — the time-critical safety actions are <b>overdose reversal with naloxone</b> and <b>same-day mental health assessment for acute suicide risk</b>."}
+       ]},
+       {b:"why", html:"Most opioid-dependence treatment in UK primary care happens through shared care: the specialist service assesses, stabilises and sets the treatment plan, and the GP continues prescribing and provides holistic care under an agreed framework with specialist back-up. Working within that agreement — and within your own competence and any local training requirements, such as the RCGP certificate in the management of drug misuse — is what makes GP involvement safe and effective. Pregnancy is a special situation where the instinct to \u201cget the patient off drugs\u201d is actively harmful: sudden opioid withdrawal in pregnancy is associated with miscarriage and preterm labour, and relapse risks overdose and disengagement from antenatal care. The guideline approach is stabilisation on OST with closely coordinated specialist drug and maternity care, planning for neonatal abstinence syndrome at delivery."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 34-year-old released from prison three days ago asks to be \u201cput back on my methadone — I was on 80 mg\u201d. He used heroin yesterday for the first time in four months. He has no drug test on file at your practice, injects into his groin, and mentions his partner is pregnant."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does not reinstate 80 mg on history alone — recognises that four months in custody means lost tolerance and that the previous dose could be fatal; arranges objective confirmation with a drug test plus withdrawal or intoxication signs before prescribing; gives take-home naloxone at this consultation, as a post-release patient in the highest-risk window; liaises with the drug service to verify the dose rather than guessing; asks about <b>groin injecting and offers BBV testing</b>; recognises the pregnancy as urgent joint specialist and maternity care, and does not suggest detox; and — the step candidates miss — identifies the safeguarding dimension of an expected baby without turning the consultation into a threat."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>Drug misuse and dependence: UK guidelines on clinical management (\u201cOrange Book\u201d, 2017)<span class="rd"> — the objective-confirmation-before-prescribing rule, methadone and buprenorphine induction, supervised consumption, the missed-dose rule, and shared-care prescribing</span></li>'+
+         '<li>NICE TA114 — Methadone and buprenorphine for the management of opioid dependence<br><a href="https://www.nice.org.uk/guidance/ta114" rel="noopener">nice.org.uk/guidance/ta114</a><span class="rd"> — both agents recommended as first-line maintenance OST</span></li>'+
+         '<li><b>NICE CG52 — Drug misuse: opioid detoxification</b><br><a href="https://www.nice.org.uk/guidance/cg52" rel="noopener">nice.org.uk/guidance/cg52</a><span class="rd"> — tapering regimens, community versus inpatient detox, and lofexidine for withdrawal symptoms</span></li>'+
+         '<li><b>NICE CG51 — Drug misuse: psychosocial interventions</b><br><a href="https://www.nice.org.uk/guidance/cg51" rel="noopener">nice.org.uk/guidance/cg51</a><span class="rd"> — contingency management, behavioural couples therapy, and facilitated access to mutual aid</span></li>'+
+         '<li><b>NICE TA115 — Naltrexone for the management of opioid dependence</b><br><a href="https://www.nice.org.uk/guidance/ta115" rel="noopener">nice.org.uk/guidance/ta115</a><span class="rd"> — relapse prevention in motivated, opioid-free patients after detox</span></li>'+
+         '<li><b>OHID / PHE guidance on take-home naloxone and harm reduction</b><span class="rd"> — wide distribution to people who use opioids and their families and carers, supply by drug services without a prescription, and needle and syringe programmes</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion applies to opioid dependence; the adjacencies noted are cancer pain as a route into long-term opioid use, and hepatocellular carcinoma surveillance in hepatitis C-related cirrhosis</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — methadone, buprenorphine, buprenorphine with naloxone, naloxone, naltrexone and lofexidine dosing</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Opioid dependence — Drug misuse and dependence: UK guidelines on clinical management (\u201cOrange Book\u201d, 2017), NICE TA114, CG52, CG51 and TA115, and OHID/PHE guidance on take-home naloxone and harm reduction. Opioid substitution treatment should be delivered within local specialist and shared-care arrangements. Opioid dependence is not an NG12 (suspected cancer) pathway. Analgesic opioid prescribing and tapering in chronic pain is a separate topic — see the <a href=\"opioid-prescribing.html\">opioid prescribing protocol</a>. Always work within your competence, local protocols and the patient's individual context."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

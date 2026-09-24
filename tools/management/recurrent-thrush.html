@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recurrent thrush (RVVC) — Protocol · Reasoning GP</title>
+<meta name="description" content="Recurrent vulvovaginal candidiasis: culture and speciation before long-term antifungals, the mimics that get treated as thrush for years (lichen sclerosus, vulvodynia, BV), predisposing factors including SGLT2 inhibitors, induction-and-suppression fluconazole regimens, and the NG12 vulval cancer route." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/recurrent-thrush.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Recurrent thrush protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🌸",
+  title:"Recurrent thrush (RVVC) — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Culture before the fifth empirical antifungal — recurrent \u201cthrush\u201d that does not respond is usually not thrush",
+  stemSub:"One page for the whole condition: confirm recurrent vulvovaginal candidiasis properly (4 or more episodes a year, with culture and speciation), exclude the mimics that get treated as thrush for years — lichen sclerosus, vulvodynia, bacterial vaginosis, contact dermatitis — screen for diabetes and the drugs that cause it, then use an induction-and-suppression regimen with trigger avoidance alongside. The 4-week non-resolving vulval lesion is a cancer referral, not a further prescription.",
+  guideline:"BASHH UK VVC 2019 · NICE NG12",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"BASHH UK vulvovaginal candidiasis guideline (2019)"},
+    {t:"BASHH — vulvovaginal candidiasis (2019)"},
+    {t:"Sobel et al. NEJM 2004 — weekly fluconazole"},
+    {t:"MHRA — fluconazole in pregnancy"},
+    {t:"NG12: vulval cancer route", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>LS · SCC · HIV · diabetes</small></a><a href="#confirm"><b>Confirm</b><small>4+/year · speciation</small></a><a href="#workup"><b>Differential</b><small>The mimics</small></a><a href="#ladder"><b>Treat</b><small>Induction → suppression</small></a><a href="#refer"><b>Refer</b><small>2WW · vulval clinic</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Culture before committing to long-term antifungals", html:"Recurrent \u201cthrush\u201d that does not respond may be lichen sclerosus, dermatitis, herpes, or a resistant non-albicans species. HVS culture plus speciation is mandatory at first presentation and in all RVVC — 4 or more courses of fluconazole without sustained resolution means a full diagnostic review before the next prescription."},
+    {tone:"red", h:"A vulval lesion still there at 4 weeks is a cancer referral", html:"<b>Raised, ulcerated or warty lesions are not thrush.</b> NG12: consider a suspected cancer pathway referral for vulval cancer in a woman with an unexplained vulval lump, ulceration or bleeding — and a persistent vulval lesion not resolved after 4 weeks of antifungal treatment goes 2WW to gynaecology for VIN or vulval SCC."},
+    {tone:"amber", h:"Lichen sclerosus is the most commonly missed diagnosis", html:"<b>Average time to correct diagnosis is 1–2 years.</b> Thrush: white discharge, erythema, satellite lesions on normal skin. LS: white atrophic figure-of-eight skin with fissuring at the posterior fourchette and NO significant discharge. Thrush improves markedly within 7 days of fluconazole; LS does not — but does respond to clobetasol propionate 0.05%. <b>3–5% lifetime SCC risk</b>."},
+    {tone:"blue", h:"Two bedside tests worth 5 minutes", html:"Vaginal pH on litmus paper — a 5-second test: pH &lt;4.5 means Candida, &gt;4.5 means BV. Cotton bud vestibular touch test — pain at 5 and 7 o'clock with normal cultures means vulvodynia, which is delayed 5 or more years on average because it is repeatedly called thrush."},
+    {tone:"purple", h:"Every RVVC patient needs an HbA1c — and a drug review", html:"<b>Glycosuria feeds Candida.</b> SGLT2 inhibitors cause glycosuria as their therapeutic mechanism and carry 3–4× the vulvovaginal candidiasis risk. Also broad-spectrum antibiotics, immunosuppression, high-oestrogen COC and pregnancy."},
+    {tone:"green", h:"Induction then suppression, and warn about the rebound", html:"Induction: fluconazole 150 mg every 72 hours for 3 doses (days 1, 4, 7). Suppression: fluconazole 150 mg once weekly for 6 months — about a 90% reduction in episodes, NNT around 2. <b>But about 50% recur after stopping</b> — this suppresses rather than cures, so say so and give a PRN prescription at course end."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is what stops years of misdirected treatment.",
+  pathway:[
+    {title:"Screen for the sinister and the underlying", html:"Oesophageal candidiasis (HIV), unexplained weight loss or night sweats, lichen sclerosus, a persistent vulval lesion at 4 weeks, new-onset diabetes, azole non-response.", alert:true},
+    {title:"Confirm RVVC properly", html:"4 or more symptomatic episodes a year, at least 2 culture-confirmed, with speciation — <b>10–20% are non-albicans and respond poorly to azoles</b>."},
+    {title:"Work through the mimics", html:"<b>Examine the vulval skin, do a vaginal pH, and do the cotton bud test.</b> BV, lichen sclerosus, contact dermatitis, vulvodynia and DIV all get treated as thrush and none of them respond to antifungals."},
+    {title:"Treat and remove the driver", html:"<b>Induction then 6-month suppression for confirmed C. albicans</b>; <b>HbA1c, drug review (SGLT2i, antibiotics, COC), irritant avoidance</b>, and partner treatment if suppression is failing."},
+    {title:"Review with an endpoint in mind", html:"Monthly on suppression, LFT at 6 months, then a documented continue-or-stop decision, with a PRN prescription and the recurrence figure explained."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Red flags — the diagnoses hiding behind recurrent thrush",
+     sub:"Recurrent thrush (4 or more episodes a year) is not always \u201cjust thrush\u201d. Diabetes, lichen sclerosus and immunosuppression are commonly missed.",
+     blocks:[
+       {b:"table", head:["Presentation","Suggests","Action"], rows:[
+         ["<b>Recurrent thrush + dysphagia + oral white plaques</b>","<b>Oesophageal candidiasis — an AIDS-defining illness.</b> Also haematological malignancy, high-dose steroids, anti-TNF. <b>Rare without severe immunosuppression</b>","<b>HIV test urgently</b>, plus gastroenterology"],
+         ["<b>Recurrent thrush + unexplained weight loss + night sweats + fatigue</b>","<b>HIV or haematological malignancy</b>","<b>FBC, LDH and ferritin urgently. HIV test mandatory</b>"],
+         ["<b>Recurrent thrush not responding to fluconazole</b>","Non-albicans Candida — C. glabrata (reduced azole sensitivity) or C. krusei (fluconazole-resistant)","<b>HVS culture plus speciation mandatory before any further antifungal</b>"],
+         ["White vulval skin + intense itch + fissuring + no response to antifungals","<b>Lichen sclerosus.</b> White atrophic figure-of-eight changes, no discharge, <b>3–5% SCC risk</b>","Clobetasol 0.05% plus dermatology or gynaecology and biopsy. NOT treatable with antifungals"],
+         ["<b>Recurrent thrush + polyuria + polydipsia + weight loss</b>","<b>New-onset diabetes mellitus — glycosuria feeds Candida</b>","<b>HbA1c urgently. ALL recurrent thrush patients need an HbA1c</b>"],
+         ["Persistent vulval lesion not resolved after 4 weeks of antifungal treatment","<b>VIN or vulval SCC. Raised, ulcerated or warty lesions are not thrush</b>","<b>2WW gynaecology immediately</b>"]
+       ]},
+       {b:"why", html:"Lichen sclerosus is the most commonly misdiagnosed condition in women with recurrent vulvovaginal symptoms — average time to correct diagnosis is 1–2 years. The clinical distinction: thrush produces white discharge, erythema and satellite lesions on otherwise normal skin; LS produces white atrophic skin in a figure-of-eight distribution with fissuring at the posterior fourchette and NO significant discharge. And there is a therapeutic test: thrush improves markedly within 7 days of fluconazole; LS does not improve with an antifungal but does improve with clobetasol propionate 0.05% ointment. LS carries a 3–5% lifetime SCC risk, so annual vulval examination and biopsy of any new lesion are required."},
+       {b:"dl", rows:[
+         ["<b>NG12 — the criterion that applies here</b>","NICE NG12: consider a suspected cancer pathway referral (for an appointment within 2 weeks) for vulval cancer in a woman with an unexplained vulval lump, ulceration or bleeding. Applied to this pathway that means: a persistent vulval lesion not resolved after 4 weeks of antifungal treatment, any raised, ulcerated or warty lesion, and lichen sclerosus with an atypical lesion all go 2WW to gynaecology for VIN or vulval squamous cell carcinoma. <b>Do not issue a further antifungal course instead of the referral</b> — restated with the threshold in <a href='#refer'>Refer</a>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Confirm", title:"Classification, definition and predisposing factors",
+     sub:"The definition matters, because it is the threshold for committing someone to six months of antifungal.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>RVVC definition</b>","<b>≥4 confirmed episodes a year (4 or more).</b> Candida albicans accounts for 80–90%; non-albicans species (C. glabrata, C. krusei) for 10–20% — with poor azole response. <b>Culture plus speciation is mandatory for all RVVC</b>"],
+         ["<b>RVVC threshold in practice</b>","≥4 episodes a year with symptoms plus a positive culture, or clinical findings. At least 2 should be culture-confirmed. Any atypical or treatment-resistant episode → always culture plus speciation"],
+         ["<b>Key predisposing factors</b>","Diabetes (HbA1c &gt;53 — glycosuria) · SGLT2 inhibitors (3–4× candida risk from pharmacological glycosuria) · broad-spectrum antibiotics (disrupt vaginal lactobacilli) · immunosuppression (HIV, corticosteroids, biologics) · high-oestrogen COC · pregnancy · tight synthetic clothing"],
+         ["<b>Oral thrush risk factors</b>","Inhaled corticosteroids without mouth rinsing · dentures · xerostomia · smoking · iron, B12, folate or zinc deficiency"],
+         ["<b>History</b>","Episode frequency and how it was confirmed · timing — premenstrual, so cyclic or hormonal? · complete resolution between episodes? · antifungal response · pregnancy status · COC, SGLT2 inhibitor or antibiotic use · male partner symptoms (candidal balanitis as a reinfection source)"],
+         ["<b>Examination</b>","External genitalia — erythema, satellite lesions (classic Candida), oedema. Vulval skin — white atrophic changes (lichen sclerosus), fissures, warts. Speculum — white curdy discharge, and pH testing with litmus paper. Cervix — normal in VVC"],
+         ["<b>Investigations</b>","HVS culture plus speciation (mandatory at first presentation and in all RVVC) · vaginal pH litmus (&lt;4.5 = candida; &gt;4.5, = BV) · HbA1c · HIV test (offered to all RVVC) · FBC, ferritin, B12, folate and zinc · STI screen · pregnancy test"]
+       ]},
+       {b:"why", html:"<b>The SGLT2 inhibitor–candida link is worth being explicit about:</b> dapagliflozin, empagliflozin and canagliflozin cause glycosuria as their <em>therapeutic mechanism</em>, giving <b>3–4× the rate of vulvovaginal candidiasis</b>. Two legitimate options: continue the SGLT2 inhibitor with weekly fluconazole 150 mg prophylaxis, or switch the antidiabetic if the SGLT2i benefit is modest against the thrush burden — a shared decision with the patient and the diabetes team. Separately, vaginal pH on litmus paper is a 5-second test that immediately distinguishes Candida (pH &lt;4.5) from BV (pH &gt;4.5,) from BV, and is the most useful rapid diagnostic step for vaginal symptoms. And <b>roughly 20% of male partners have asymptomatic candidal colonisation</b>, which perpetuates the cycle despite prophylaxis — if RVVC is not controlled on weekly fluconazole, treat the male partner simultaneously with clotrimazole cream BD for 7 days plus fluconazole 150 mg stat."}
+     ]},
+
+    {id:"workup", nav:"Differential", title:"The mimics — none of these respond to an antifungal",
+     sub:"Each of these is regularly treated as thrush for months or years. Recognising them is most of the clinical value on this page.",
+     blocks:[
+       {b:"table", head:["Diagnosis","Recognise it by","Treatment"], rows:[
+         ["<b>Bacterial vaginosis</b>","Fishy odour (worse post-coital), grey thin discharge, pH &gt;4.5, NO itch, NO erythema. Does NOT respond to antifungal","<b>Metronidazole 400 mg BD for 5 days, or 2 g stat</b> — see the <a href='bacterial-vaginosis.html'>BV protocol</a>"],
+         ["<b>Lichen sclerosus</b>","Intense itch, worse at night; white atrophic figure-of-eight skin; fissures at the posterior fourchette; no significant discharge. Does NOT respond to antifungal","Clobetasol 0.05% ointment on a taper regimen. Annual SCC surveillance — biopsy any new lesion"],
+         ["<b>Contact dermatitis</b>","Scented sanitary products, latex, spermicides, fragranced wipes. Erythema plus itch, no discharge","<b>Remove the cause plus hydrocortisone 1% cream BD for 7 days</b>"],
+         ["<b>Vulvodynia</b>","Chronic burning pain, no visible lesion or infection, positive cotton bud test, consistently normal cultures","Amitriptyline 10–25 mg nocte plus lidocaine 5% gel PRN, pelvic floor physiotherapy and psychosexual therapy. Vulval clinic referral"],
+         ["<b>DIV (desquamative inflammatory vaginitis)</b>","Profuse purulent discharge, dyspareunia and vaginal erosions. Group B Streptococcus (Group B Strep). Does not respond to antifungal","Topical clindamycin 2% intravaginally for 4 weeks, specialist-initiated. Gynaecology referral"]
+       ]},
+       {b:"why", html:"Vulvodynia affects 8–16% of women but is diagnosed on average 5 or more years late — predominantly because it is repeatedly attributed to thrush. Features that should trigger reconsideration: burning as the dominant symptom rather than itch; pain worse with touch, intercourse or clothing rather than with discharge; a normal-looking vulva; consistently negative cultures; and no response to fluconazole after 7 days. The test takes two minutes: the cotton bud vestibular touch test — gently touch the vestibule at the 5 and 7 o'clock positions with a moistened cotton bud; pain or allodynia with normal cultures means vulvodynia and a vulval clinic referral, and it <b>prevents months of inappropriate antifungal treatment</b>. The governing rule for the whole page: 4 or more courses of fluconazole without sustained resolution means a vulval examination, cotton bud test, HVS culture and speciation before prescribing again."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Antifungal treatment — acute, induction and suppression",
+     blocks:[
+       {b:"table", head:["Situation","Regimen"], rows:[
+         ["<b>Acute — C. albicans</b>","Fluconazole 150 mg stat (first-line, and available OTC). Or clotrimazole 500 mg pessary stat. Or clotrimazole 200 mg for 3 nights plus 1% cream externally. Pregnancy: topical clotrimazole for 7 days ONLY — fluconazole is contraindicated (teratogenic, especially in the first trimester)"],
+         ["<b>RVVC — induction</b>","<b>Fluconazole 150 mg every 72 hours for 3 doses (days 1, 4 and 7)</b> — achieves high mucosal drug levels. <b>Confirm C. albicans on culture first</b>"],
+         ["<b>RVVC — 6-month suppression</b>","Fluconazole 150 mg once weekly for 6 months (BASHH / NICE). Reduces episodes by about 90% during therapy (Sobel et al. NEJM 2004, NNT around 2). About 50% recur after stopping. Consider 12 months for frequent relapsers. LFT at 6 months if continuing. Effective contraception is mandatory — fluconazole is teratogenic"],
+         ["<b>Fluconazole-resistant or C. glabrata</b>","Nystatin pessaries 100,000 units OD for 14 days. Or boric acid 600 mg pessaries for 14 days (specialist-initiated). Or ibrexafungerp 300 mg OD for 1 day (GUM or gynaecology — see the licensing note below). Do NOT prescribe further fluconazole"]
+       ]},
+       {b:"warn", html:"Fluconazole in pregnancy: ALL systemic fluconazole should be avoided (MHRA and BNF). Use topical clotrimazole only. <b>Every woman starting weekly suppression needs effective contraception.</b> And boric acid 600 mg intravaginal pessaries — 70% mycological cure against azole-resistant C. glabrata — are unlicensed, require a specialist compounding pharmacy prescription, and are INTRAVAGINAL ONLY: they are orally toxic. GUM or gynaecology initiation only."},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"💊 RVVC on an SGLT2 inhibitor", html:"(1) Continue the SGLT2i plus weekly fluconazole 150 mg prophylaxis. (2) Switch to an alternative antidiabetic if the SGLT2i benefit is modest. Shared decision with the patient and the diabetes team."},
+         {tone:"blue", h:"💠 RVVC on a high-oestrogen COC", html:"Switch to a low-dose COC (20 micrograms ethinylestradiol), a progestogen-only pill, or a copper IUD if relevant."},
+         {tone:"green", h:"🌬️ Oral thrush on an inhaled corticosteroid", html:"Rinse the mouth and spit after every ICS dose — this reduces risk by about 90%. Use a spacer with an MDI. Active infection: <b>nystatin 1 mL QDS for 7 days, or fluconazole 50 mg OD for 7 days</b>."},
+         {tone:"amber", h:"🤰 RVVC in pregnancy", html:"Topical clotrimazole for 7 days per episode only. No fluconazole. Screen for gestational diabetes (GDM). Gynaecology if severe."},
+         {tone:"red", h:"🛡️ Immunosuppressed", html:"Prophylactic fluconazole 100–200 mg OD during high-dose steroids, anti-TNF or chemotherapy (specialist-initiated). Early aggressive treatment — there is a risk of invasive candidiasis in profound immunosuppression."},
+         {tone:"cream", h:"🧪 Ibrexafungerp — read the licensing carefully", html:"Ibrexafungerp (Brexafemme) is a first-in-class glucan synthase inhibitor, effective against C. glabrata and azole-resistant species, licensed by the FDA in 2021 for acute VVC (300 mg BD for one day) and for RVVC prevention (300 mg BD for one day, monthly, for 6 months). It is not UK-licensed, so UK access is via GUM or gynaecology on a named-patient or unlicensed basis — check current availability before promising it."}
+       ]},
+       {b:"why", html:"Weekly fluconazole suppression rests on Sobel et al., NEJM 2004 (n=387): a 90% reduction in RVVC episodes, NNT approximately 2 — one of the clearer effect sizes in this area. But <b>recurrence is about 50% at 6 months after stopping</b>, which is why the counselling matters as much as the prescription: maintenance suppresses rather than cures, and recurrence after stopping is common. <b>Provide a PRN fluconazole 150 mg prescription at course end</b> so a single breakthrough episode does not become another year of empirical treatment. And refer azole-refractory RVVC to gynaecology or GUM rather than continuing ineffective fluconazole."}
+     ]},
+
+    {id:"lifestyle", nav:"Prevention", title:"Trigger avoidance, hygiene and microbiome support",
+     sub:"These run alongside maintenance, not after it — they are what reduces recurrence once suppression stops.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🧼 Vulval hygiene", html:"Warm water only externally — no soap, shower gel, intimate wash or douche. Pat dry. Cotton underwear. No tight synthetic clothing. Change promptly out of wet swimwear. Use an emollient wash, and an emollient barrier for soreness; avoid over-washing."},
+         {tone:"red", h:"🚫 No douching", html:"Destroys the Lactobacillus microbiome, raising both RVVC and BV risk. Never recommend it — including commercial products, bicarbonate, vinegar, or essential oils vaginally."},
+         {tone:"blue", h:"💊 Antibiotic prophylaxis", html:"For antibiotic-triggered RVVC, co-prescribe fluconazole 150 mg stat with each antibiotic course, and document it on the prescription."},
+         {tone:"green", h:"🩸 Glycaemic control", html:"<b>Optimise HbA1c. Low-GI diet. Review the SGLT2 inhibitor if relevant.</b> <b>Each RVVC episode is an opportunity to re-engage diabetes management.</b>"},
+         {tone:"cream", h:"🦠 Vaginal lactic acid probiotics", html:"Balance Activ, Acti-Gel 208, Lactigel — restore Lactobacillus flora and reduce RVVC recurrences (systematic review evidence). Apply vaginally twice weekly as maintenance after the antifungal course. OTC, and safe in pregnancy."},
+         {tone:"amber", h:"🚭 Smoking cessation", html:"Smoking suppresses vaginal mucosal immunity. Every thrush consultation is a cessation opportunity."},
+         {tone:"plain", h:"👥 Partner treatment if relevant", html:"If RVVC is not controlled on suppression, assess the male partner — asymptomatic colonisation in about 20%. Treat simultaneously: clotrimazole cream BD for 7 days plus fluconazole 150 mg stat."},
+         {tone:"plain", h:"💧 Lubricant hygiene", html:"Water-based and unflavoured only. No flavoured or sugar-containing lubricants — they promote Candida overgrowth."}
+       ]},
+       {b:"why", html:"On probiotics: van de Wijgert et al. (2020) systematic review found a statistically significant reduction in RVVC with vaginal Lactobacillus preparations versus placebo. The mechanism is coherent — lactic acid production by Lactobacillus crispatus and rhamnosus restores an acidic pH that inhibits Candida overgrowth — and Balance Activ vaginal gel (lactic acid plus glycogen) applied twice weekly as maintenance after a suppression course delays relapse. On the inhaler point: the ICS mouth-rinse reduces oral candidiasis by about 90%, takes 5 seconds to instruct, costs nothing and has no side effects — yet only 30–40% of ICS users rinse consistently, so ask at every respiratory review and re-emphasise it at every oral thrush diagnosis. Using a spacer with an MDI reduces oropharyngeal ICS deposition by around 60%, reducing the risk further."}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Follow-up and safety-netting",
+     blocks:[
+       {b:"table", head:["When","What"], rows:[
+         ["<b>Monthly while on suppression</b>","Side effects? Pregnancy status (fluconazole contraindicated)? Breakthrough episodes?"],
+         ["<b>At 6 months</b>","LFT, and a documented continue-versus-stop decision with the rationale recorded"],
+         ["<b>After stopping suppression</b>","About 50% recurrence at 6 months. Provide a PRN fluconazole 150 mg prescription. Culture before restarting if there are atypical features. A second 6-month course if it resumes frequently"],
+         ["<b>Lichen sclerosus follow-up</b>","Annual vulval examination, clobetasol adherence review, and biopsy of any new lesion (3–5% SCC risk)"],
+         ["<b>Diabetes monitoring</b>","HbA1c 3-monthly until controlled, then 6-monthly. Each thrush episode is a glycaemia review trigger"],
+         ["<b>Review within 2 weeks</b>","Thrush not improved after 7 days of correct treatment → HVS culture plus speciation (non-albicans?). New atypical symptoms — burning without discharge, white skin → vulval examination, pH test, and reconsider the diagnosis"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Return urgently", html:"Dysphagia with thrush → oesophageal candidiasis or HIV, urgently · a spreading vulval lesion not resolved at 4 weeks → 2WW · fever with pelvic pain → PID, hospital the same day."},
+         {tone:"amber", h:"🟠 The 2-week treatment-failure threshold", html:"Fluconazole 150 mg should produce significant improvement within 7 days in confirmed C. albicans VVC. If not, reconsider: non-albicans Candida (culture and speciation), BV (pH test), lichen sclerosus (clobetasol, not antifungal), contact dermatitis (remove the product), vulvodynia (cotton bud test with normal cultures)."},
+         {tone:"blue", h:"🔁 Before the next prescription", html:"4 or more courses of fluconazole without sustained resolution = full diagnostic review. Document that process clearly."},
+         {tone:"green", h:"💬 Set the expectation", html:"Counsel that maintenance suppresses rather than cures, and that recurrence after stopping is common."}
+       ]},
+       {b:"say", html:"Before I give you another antifungal, I want to be sure this is thrush — because when it keeps coming back and the treatment only half works, it often turns out to be something else that looks similar. So today I want a swab that also tells us which species it is, a blood test for diabetes, and a proper look at the skin. If it is ordinary thrush, there is a good regimen: three doses to clear it, then one tablet a week for six months, which cuts episodes by about ninety per cent. I'll be honest that it suppresses rather than cures — about half of women get episodes again after stopping — so I'll give you a spare prescription and we'll talk about the things that reduce the triggers."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Urgent", html:"Suspected oesophageal candidiasis → HIV test urgently plus gastroenterology. Suspected vulval SCC → 2WW gynaecology."},
+         {tone:"purple", h:"2WW · NICE NG12", html:"An unexplained vulval lump, ulceration or bleeding → suspected cancer pathway referral for vulval cancer. In practice: a persistent vulval lesion at 4 weeks · lichen sclerosus with an atypical lesion · any raised, ulcerated or warty lesion."},
+         {tone:"amber", h:"Gynaecology / vulval clinic", html:"RVVC not controlled on 6-month suppression · non-albicans Candida (boric acid or ibrexafungerp required) · vulvodynia (positive cotton bud test) · DIV · ongoing lichen sclerosus management."},
+         {tone:"blue", h:"GUM / sexual health", html:"RVVC with a positive STI screen · newly reactive HIV · complex immunosuppressed management."},
+         {tone:"green", h:"Endocrinology / diabetes", html:"HbA1c &gt;48 (pre-diabetes) or above 53 (diabetes) → structured education and glycaemic optimisation · an SGLT2 inhibitor causing RVVC → drug review."},
+         {tone:"cream", h:"GP management", html:"Confirmed C. albicans, no immunosuppression, diabetes excluded: acute treatment plus a 6-month suppressive regimen."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 46-year-old on her fifth course of fluconazole this year for \u201cthrush\u201d. The itch is worse at night, there is no real discharge, and she says the tablets \u201chelp a bit for a few days\u201d. She started empagliflozin for type 2 diabetes 18 months ago. On examination the vulval skin is pale and there is a fissure at the posterior fourchette."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Stops and examines rather than reissuing fluconazole</b>; recognises white atrophic skin with posterior fourchette fissuring and no discharge as lichen sclerosus, not thrush; <b>knows antifungals will not help and clobetasol 0.05% will</b>; takes an <b>HVS with speciation and an HbA1c</b> anyway; identifies the SGLT2 inhibitor as a genuine contributor and discusses it with the diabetes team rather than stopping it unilaterally; and — the step candidates miss — arranges annual vulval surveillance and explains the 3–5% SCC risk with the instruction to return for any new lesion."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>BASHH — UK national guideline on the management of vulvovaginal candidiasis (2019)<span class="rd"> — the RVVC definition, culture and speciation requirement, induction and 6-month suppression regimens, and referral thresholds</span></li>'+
+         '<li><b>BASHH — vulvovaginal candidiasis (2019)</b><span class="rd"> — primary-care acute treatment, predisposing factors, and the weekly fluconazole suppression regimen</span></li>'+
+         '<li>Sobel JD et al. Maintenance fluconazole therapy for recurrent vulvovaginal candidiasis. <em>NEJM</em> 2004;351:876–83<span class="rd"> — n=387; approximately 90% reduction in episodes during weekly suppression, NNT around 2, and about 50% recurrence at 6 months after stopping</span></li>'+
+         '<li>van de Wijgert et al. (2020) — systematic review of vaginal Lactobacillus preparations<span class="rd"> — statistically significant reduction in RVVC versus placebo, and the lactic acid / pH mechanism</span></li>'+
+         '<li><b>MHRA and BNF — fluconazole in pregnancy</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — avoid all systemic fluconazole in pregnancy; topical clotrimazole only. Also all doses: clotrimazole, nystatin, clobetasol, metronidazole, clindamycin, amitriptyline, lidocaine</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — consider a suspected cancer pathway referral for vulval cancer in a woman with an unexplained vulval lump, ulceration or bleeding</span></li>'+
+         '<li><b>FDA approval of ibrexafungerp (Brexafemme), 2021</b><span class="rd"> — first-in-class glucan synthase inhibitor for acute VVC and RVVC prevention; <b>not UK-licensed</b>, so UK access is unlicensed or named-patient via GUM or gynaecology</span></li>'+
+         '<li><b>British Association of Dermatologists — lichen sclerosus</b><span class="rd"> — clobetasol propionate 0.05% taper regimens, the 3–5% lifetime SCC risk, and annual vulval surveillance with biopsy of new lesions</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Recurrent vulvovaginal candidiasis — BASHH UK VVC guideline 2019, Sobel et al. NEJM 2004, van de Wijgert et al. 2020, and MHRA fluconazole pregnancy guidance. Culture with speciation before committing to long-term antifungals. A persistent vulval lesion is a cancer referral, not another prescription. The reasoning pathway remains at the <a href=\"../algorithms/recurrent-thrush.html\">recurrent thrush pathway</a>. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

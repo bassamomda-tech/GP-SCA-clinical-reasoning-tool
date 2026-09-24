@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haematological cancers — Protocol · Reasoning GP</title>
+<meta name="description" content="Leukaemia, lymphoma and myeloma in primary care under NICE NG12: assemble the non-specific constellation, order a very urgent FBC within 48 hours with a blood film, use the NG12 thresholds for lymphoma and the myeloma screen, escalate blasts and pancytopenia the same day, and never miss neutropenic sepsis — antibiotics within one hour, without waiting for the count." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/haematological-cancers.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<meta name="omelette-print-source" content="v1790195422703009 tools/management/haematological-cancers.html">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Haematological cancers protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"Haematological cancers — the complete guide",
+  eyebrow:"Protocol · NICE NG12 · leukaemia · lymphoma · myeloma",
+  stemTitle:"The vague-symptom cancers — recognised not by any single feature but by the constellation, and confirmed by the humblest test in the building",
+  stemSub:"Fatigue, the odd bruise, a second chest infection, a few pounds lost, a night sweat: individually benign, collectively marrow disease. One page for the whole of primary care's part — assembling the constellation rather than explaining each thread away, the NG12 thresholds for a very urgent FBC and a blood film, the lymphoma and myeloma screens, what an abnormal count obliges you to do the same day, the emergencies that arrive after diagnosis, and neutropenic sepsis, which is the one that kills within hours.",
+  guideline:"NICE NG12 · NG35 (myeloma) · CG151 (neutropenic sepsis) · NG47",
+  reviewed:"11 September 2026",
+  nextReview:"11 March 2027",
+  meta:[
+    {t:"NICE NG12 — Suspected cancer: recognition and referral (May 2025)"},
+    {t:"NICE NG35 — Myeloma: diagnosis and management"},
+    {t:"NICE CG151 — Neutropenic sepsis"},
+    {t:"2WW: very urgent FBC within 48h for suspected leukaemia", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#emergency"><b>Emergencies</b><small>Neutropenic sepsis</small></a><a href="#constellation"><b>Constellation</b><small>Not one symptom</small></a><a href="#ng12"><b>NG12</b><small>The thresholds</small></a><a href="#fbc"><b>Read the FBC</b><small>Film · blasts</small></a><a href="#refer"><b>Refer</b><small>By acuity</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every threshold traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Neutropenic sepsis — antibiotics within one hour, do not wait for the count", html:"Any patient on chemotherapy, or within 6 weeks of it, who becomes unwell or febrile has neutropenic sepsis until proven otherwise. Immediate emergency admission and IV antibiotics within one hour of presentation (CG151) — do not wait for the neutrophil count, do not send them to a routine appointment, and do not give oral antibiotics at home. The patient may be afebrile: hypothermia, rigors, confusion, hypotension or simply “not right” all count, and steroids mask fever. <b>Mortality is measurable in hours.</b> Every patient starting chemotherapy should leave your consultation knowing this."},
+    {tone:"purple", h:"2WW · NG12 — suspected leukaemia: a very urgent FBC within 48 hours", html:"Offer a very urgent full blood count, within 48 hours, to assess for leukaemia in adults with any unexplained combination of: pallor, persistent fatigue, fever, recurrent or persistent infection, generalised lymphadenopathy, unexplained bruising, unexplained bleeding, petechiae, or hepatosplenomegaly. In children and young people with any of these, refer immediately — a very urgent FBC within 48 hours if the child is not being referred immediately. Request a blood film with it, and state the clinical suspicion on the form."},
+    {tone:"purple", h:"2WW · NG12 — lymphoma and myeloma", html:"Lymphoma: consider a suspected cancer pathway referral for unexplained lymphadenopathy or splenomegaly, taking into account any associated B symptoms — fever, night sweats, shortness of breath, pruritus, weight loss, alcohol-induced lymph node pain. Myeloma: in people aged 60 and over with persistent bone pain, particularly back pain, or an unexplained fracture, offer a very urgent FBC, calcium and plasma viscosity or ESR; if the results suggest myeloma, very urgent serum and urine protein electrophoresis with Bence-Jones protein within 48 hours."},
+    {tone:"red", h:"The abnormal FBC obliges you to act the same day", html:"Blasts on the film, pancytopenia, a white cell count that is very high or very low, or a platelet count below 20 × 10⁹/L all require a same-day telephone discussion with haematology — not a 2WW letter and not a repeat in two weeks. Acute leukaemia can progress from abnormal count to life-threatening in days. A result that arrives in your inbox is not the same as a result that has been acted upon — have a system for chasing the very urgent FBC you ordered."},
+    {tone:"amber", h:"Persistence and combination, not any single symptom", html:"Almost every individual feature is more often benign than malignant — reactive lymphadenopathy after a virus, fatigue in a busy life, a bruise on an anticoagulant. What should move you is persistence beyond 6 weeks, progression, and the accumulation of features in one person. <b>Safety-net explicitly and re-examine rather than reassure by default</b> — and a node that has been present for six weeks has already declared itself, whatever the original explanation was."},
+    {tone:"blue", h:"Myeloma is the one that is missed", html:"Median time to diagnosis is among the longest of any cancer, and most patients have seen their GP three or more times first. The reason is that back pain in a 70-year-old is common and myeloma is not. The discipline: in the over-60s, unexplained back pain that is persistent, or that wakes them at night, or that comes with anaemia, renal impairment, hypercalcaemia or recurrent infection, gets the CRAB screen — not another course of analgesia."}
+  ],
+  pathwaySub:"Five moves. The first is a safety question that takes ten seconds and occasionally saves a life.",
+  pathway:[
+    {title:"Is this an emergency now?", html:"Unwell or febrile on or within 6 weeks of chemotherapy → neutropenic sepsis, admit immediately, antibiotics within the hour. Also: cord compression, symptomatic hypercalcaemia, hyperviscosity, tumour lysis.", alert:true},
+    {title:"Assemble the constellation", html:"Ask about all of it, not just the presenting thread — fatigue, pallor, bruising and bleeding, recurrent infection, fever, drenching night sweats, weight loss, bone pain, lumps, itch. <b>Ask how long, and whether it is progressing.</b>"},
+    {title:"Examine for marrow failure and infiltration", html:"Pallor, bruising, petechiae and purpura; all node groups including epitrochlear and supraclavicular; liver and spleen; bone and sternal tenderness; temperature."},
+    {title:"Order the right bloods, very urgently", html:"FBC with a blood film, plus U&amp;E, calcium, LFTs, LDH and ESR or plasma viscosity. Add protein electrophoresis and serum-free light chains where myeloma is suspected. State the suspicion on the request form and put a plan in place to chase the result."},
+    {title:"Refer by acuity, not by habit", html:"Emergency admission for the emergencies · same-day haematology discussion for blasts, pancytopenia or a grossly abnormal count · 2WW suspected cancer pathway otherwise · immediate paediatric referral for a child."}
+  ],
+  sections:[
+
+    {id:"emergency", nav:"Emergencies", title:"The haematological emergencies",
+     sub:"Most arrive after the diagnosis is known — which means they arrive to the GP, out of hours, from a patient who has been told to ring if anything changes.",
+     blocks:[
+       {b:"table", head:["Emergency","Recognising it","Action"], rows:[
+         ["<b>Neutropenic sepsis</b>","Unwell or febrile (temperature 38°C or above, or any clinical suspicion of sepsis) in someone on chemotherapy or within 6 weeks of it. May present with hypothermia, rigors, confusion, hypotension, or simply feeling dreadful — fever can be absent, especially on steroids","Immediate emergency admission by the fastest route. IV antibiotics within one hour of presentation (CG151). Do not wait for the neutrophil count, do not arrange an outpatient FBC, do not give oral antibiotics. Phone the acute oncology service or the on-call team to pre-alert"],
+         ["<b>Metastatic spinal cord compression</b>","Back pain with any new leg weakness, sensory level, saddle anaesthesia, or bladder or bowel dysfunction, in known or suspected myeloma or lymphoma","Same-day discussion with acute oncology or the MSCC coordinator; whole-spine MRI within 24 hours; dexamethasone per local protocol; nurse flat until imaged"],
+         ["<b>Symptomatic hypercalcaemia</b>","Thirst, polyuria, confusion, drowsiness, constipation, vomiting — common in myeloma and in some lymphomas","Urgent calcium (corrected) and renal function; admission for IV fluids and bisphosphonate if symptomatic or markedly raised"],
+         ["<b>Hyperviscosity</b>","Headache, visual disturbance or visual loss, confusion, mucosal bleeding, breathlessness — in myeloma, Waldenström's, or a very high white cell count","Emergency haematology admission; may need plasmapheresis or leukapheresis"],
+         ["<b>Tumour lysis syndrome</b>","Within days of starting treatment for a high-turnover malignancy — oliguria, arrhythmia, tetany, confusion","<b>Emergency admission; urgent U&amp;E, calcium, phosphate, urate</b>"],
+         ["<b>Profound thrombocytopenia with bleeding</b>","Spontaneous bruising, mucosal or retinal bleeding, platelets below 20 × 10⁹/L","Same-day haematology; avoid NSAIDs, aspirin, anticoagulants and intramuscular injections"]
+       ]},
+       {b:"warn", html:"The neutropenic sepsis safety-net is a GP responsibility even though the chemotherapy is not. Every patient of yours who starts chemotherapy should know: a thermometer at home, a 24-hour acute oncology number, and the instruction that feeling unwell or feverish means going straight to hospital — not ringing the surgery in the morning, and not waiting to see if it settles. Check that they have the number and that they know it overrides any other advice, including yours."}
+     ]},
+
+    {id:"constellation", nav:"Constellation", title:"The presentation — why these cancers are missed",
+     sub:"Nothing here is specific. That is the entire diagnostic problem, and the reason the discipline has to be structural.",
+     blocks:[
+       {b:"table", head:["Feature","What it reflects","Note"], rows:[
+         ["<b>Fatigue, pallor, breathlessness on exertion</b>","<b>Anaemia from marrow failure or infiltration</b>","The most commonly dismissed symptom in medicine — and iron deficiency found on a blood test does not by itself explain a full constellation"],
+         ["<b>Unexplained bruising, petechiae, purpura, mucosal or gum bleeding</b>","<b>Thrombocytopenia</b>","Petechiae are the single most alarming sign here, especially in a child. Look in the mouth and on the lower legs"],
+         ["<b>Recurrent, persistent or unusually severe infection</b>","<b>Neutropenia or immune paresis</b>","Two chest infections in two months in a previously well adult is a haematological question, not just a respiratory one"],
+         ["<b>Drenching night sweats, fever, unintentional weight loss</b>","<b>B symptoms — lymphoma</b>","<b>“Drenching” means changing nightclothes or bedding.</b> Ask that specifically; “I get a bit sweaty” is different"],
+         ["<b>Persistent painless lymphadenopathy</b>","<b>Lymphoma or leukaemia</b>","Persistent beyond 6 weeks, painless, firm or rubbery, larger than 1–2 cm, or generalised. <b>Supraclavicular or epitrochlear nodes are never normal.</b> Reactive nodes are tender, mobile and settle"],
+         ["<b>Persistent bone pain, especially back; pathological fracture</b>","<b>Myeloma</b>","<b>Pain at rest or at night is the discriminator from mechanical pain.</b> A vertebral fracture with no adequate trauma in an older person is myeloma until excluded"],
+         ["<b>Generalised itch without a rash; lymph node pain after alcohol</b>","<b>Classic Hodgkin lymphoma clues</b>","<b>Alcohol-induced node pain is rare but close to specific</b> — worth asking about directly when nodes are present"],
+         ["<b>Hepatosplenomegaly, or any organomegaly</b>","<b>Infiltration</b>","<b>A spleen tip you can feel in an adult is abnormal and needs explaining</b>"]
+       ]},
+       {b:"why", html:"The error that produces late diagnosis is not ignorance of these features — it is that each one is dealt with in a separate consultation, by a different clinician, and explained away individually. The fatigue is attributed to age, the bruise to a knock, the infections to the season, the weight loss to the fatigue. Each explanation is locally reasonable and the sum is a missed leukaemia. The structural defences are: an open question that invites everything at once (“tell me everything that's been going on, even things that seem unrelated”), a review of the record for the pattern of recent attendances, and treating a third presentation of vague symptoms as a red flag in itself."}
+     ]},
+
+    {id:"ng12", nav:"NG12", title:"The NICE NG12 thresholds, in full",
+     sub:"These are the numbers to know. They are restated in Refer.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"🩸 Leukaemia — adults", html:"Offer a very urgent full blood count, within 48 hours, to assess for leukaemia in adults with any of: pallor, persistent fatigue, unexplained fever, unexplained persistent or recurrent infection, generalised lymphadenopathy, unexplained bruising, unexplained bleeding, unexplained petechiae, or hepatosplenomegaly."},
+         {tone:"purple", h:"🧒 Leukaemia — children and young people", html:"Refer children and young people for immediate specialist assessment if they have unexplained petechiae or hepatosplenomegaly. Offer a very urgent full blood count within 48 hours in children and young people with any of: pallor, persistent fatigue, unexplained fever, unexplained persistent infection, generalised lymphadenopathy, persistent or unexplained bone pain, unexplained bruising or unexplained bleeding. Leukaemia is the commonest childhood cancer — see also the <a href='../algorithms/limping-children.html'>limping child pathway</a>, where bone pain is the presenting feature."},
+         {tone:"purple", h:"🔍 Lymphoma — adults", html:"Consider a suspected cancer pathway referral for unexplained lymphadenopathy or splenomegaly, taking into account associated symptoms — particularly fever, night sweats, shortness of breath, pruritus, weight loss, and alcohol-induced lymph node pain. <b>Non-Hodgkin and Hodgkin lymphoma share this route.</b>"},
+         {tone:"purple", h:"🧒 Lymphoma — children and young people", html:"Consider a very urgent referral (for an appointment within 48 hours) for specialist assessment in children and young people with unexplained lymphadenopathy or splenomegaly, taking the same associated symptoms into account."},
+         {tone:"purple", h:"🦴 Myeloma — the two-stage test", html:"In people aged 60 and over with persistent bone pain, particularly back pain, or an unexplained fracture, offer a very urgent full blood count, calcium and plasma viscosity or ESR. If the results suggest myeloma, offer very urgent serum protein electrophoresis and a Bence-Jones protein urine test, with results within 48 hours. Serum-free light chains are increasingly used alongside or instead of urine testing — follow the local laboratory's protocol."},
+         {tone:"amber", h:"🩸 And the criterion people forget", html:"A raised plasma viscosity or ESR in an older person with bone pain is not a soft result to be repeated in a month — it is the trigger for the second stage of the myeloma pathway. Equally: a normal ESR does not exclude myeloma, and roughly a fifth of patients are non-secretory or light-chain only, in whom electrophoresis alone can be normal. <b>If suspicion is high, refer regardless of the screen.</b>"}
+       ]},
+       {b:"dl", rows:[
+         ["<b>CRAB — the myeloma features to ask about and look for</b>","<b>hyperCalcaemia</b> (thirst, confusion, constipation, polyuria) · <b>Renal impairment</b> (a new or unexplained rise in creatinine) · <b>Anaemia</b> (normocytic, with a raised total protein or globulin gap) · <b>Bone lesions</b> (pain, lytic lesions, pathological or vertebral fracture). Add recurrent infection from immune paresis, which is the feature most often attributed to something else"]
+       ]}
+     ]},
+
+    {id:"fbc", nav:"Read the FBC", title:"Reading the count, and what obliges same-day action",
+     sub:"The FBC is the most powerful test in general practice and the most frequently under-read.",
+     blocks:[
+       {b:"table", head:["Finding","Interpretation","Action"], rows:[
+         ["<b>Blasts on the film</b>","<b>Acute leukaemia until proven otherwise</b>","Same-day telephone discussion with haematology. Do not wait, do not repeat, do not send a letter"],
+         ["<b>Pancytopenia</b>","Marrow failure — acute leukaemia, myelodysplasia, aplastic anaemia, infiltration, or severe B12 or folate deficiency","<b>Same-day haematology discussion.</b> Send B12, folate and ferritin at the same time, but do not let a plausible deficiency delay the referral"],
+         ["<b>White cell count very high (above about 30 × 10⁹/L) or very low</b>","Leukaemia; a markedly raised lymphocyte count in an older person suggests CLL","Same-day discussion if very high, unwell, or accompanied by other cytopenias. A stable isolated lymphocytosis in a well patient is a routine haematology referral"],
+         ["<b>Platelets below 20 × 10⁹/L, or below 50 with bleeding</b>","<b>Severe thrombocytopenia</b>","<b>Same-day haematology.</b> <b>Stop anticoagulants, antiplatelets and NSAIDs; avoid IM injections</b>"],
+         ["Normocytic anaemia with a raised total protein, globulin gap, raised calcium or new renal impairment","<b>Myeloma</b>","<b>Proceed to the electrophoresis and light chains stage</b>"],
+         ["<b>Isolated, stable, mild abnormality in a well patient with no red flags</b>","<b>Frequently benign</b>","<b>Repeat with a film and a clear interval, and safety-net.</b> Do not let an isolated mild abnormality become a reason to drop the rest of the constellation"],
+         ["<b>A normal FBC in the face of strong clinical suspicion</b>","<b>Does not exclude lymphoma, early myeloma or marrow disease</b>","<b>Refer on the clinical picture.</b> Lymphoma frequently presents with an entirely normal count — a normal FBC is the commonest reason a lymphoma referral is wrongly deferred"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🧪 Request the film, and say why", html:"A blood film is not generated automatically. Request it explicitly and write the clinical suspicion on the form — “?leukaemia, unexplained bruising and petechiae” gets read by the laboratory and changes what they do with the sample and how fast."},
+         {tone:"amber", h:"📋 Chase what you ordered", html:"<b>A very urgent FBC is only very urgent if someone looks at the result.</b> Book the follow-up before the patient leaves, tell them when and how they will hear, and make the result your task rather than theirs — the failure point in almost every delayed-diagnosis case review is the unchased result, not the unordered test."},
+         {tone:"green", h:"🔬 The supporting bloods", html:"U&amp;E and creatinine, corrected calcium, LFTs including albumin and total protein, LDH, ESR or plasma viscosity, and coagulation if there is any bleeding. LDH reflects tumour burden in lymphoma; the globulin gap is a cheap pointer to a paraprotein."},
+         {tone:"purple", h:"🩻 Imaging", html:"CXR for mediastinal lymphadenopathy where lymphoma is suspected — but a normal CXR excludes nothing and must not delay referral. Do not order a skeletal survey yourself for suspected myeloma; whole-body MRI or low-dose CT is the modern standard and is arranged by the specialist team (NG35)."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral by acuity",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — now", html:"Neutropenic sepsis (unwell or febrile on or within 6 weeks of chemotherapy) — immediate admission, IV antibiotics within one hour, do not wait for the count. Also: spinal cord compression, symptomatic hypercalcaemia, hyperviscosity, tumour lysis, severe thrombocytopenic bleeding."},
+         {tone:"red", h:"Same day — telephone haematology", html:"Blasts on the film · pancytopenia · very high or very low white cell count · platelets below 20 × 10⁹/L · any grossly abnormal count in an unwell patient. <b>A conversation, not a letter.</b>"},
+         {tone:"purple", h:"2WW · NICE NG12", html:"Leukaemia (adults): very urgent FBC within 48 hours for unexplained pallor, persistent fatigue, fever, recurrent or persistent infection, generalised lymphadenopathy, bruising, bleeding, petechiae or hepatosplenomegaly. Lymphoma: suspected cancer pathway referral for unexplained lymphadenopathy or splenomegaly, considering fever, night sweats, breathlessness, pruritus, weight loss and alcohol-induced node pain. Myeloma (60+): persistent bone pain, particularly back pain, or unexplained fracture → very urgent FBC, calcium and plasma viscosity or ESR; if suggestive, very urgent protein electrophoresis and Bence-Jones protein within 48 hours."},
+         {tone:"amber", h:"Children and young people", html:"Immediate specialist referral for unexplained petechiae or hepatosplenomegaly. Very urgent FBC within 48 hours for unexplained pallor, fatigue, fever, persistent infection, generalised lymphadenopathy, persistent bone pain, bruising or bleeding. Very urgent referral within 48 hours for unexplained lymphadenopathy or splenomegaly."},
+         {tone:"blue", h:"Routine haematology", html:"Stable isolated lymphocytosis in a well patient (likely CLL) · monoclonal gammopathy of undetermined significance found incidentally · stable mild cytopenias with no red flags. MGUS still needs specialist-directed follow-up — the progression rate is roughly 1% per year and it does not discharge itself."},
+         {tone:"cream", h:"The GP's continuing role", html:"After diagnosis: recognising the emergencies above, supporting treatment side effects, vaccination advice (avoid live vaccines during and after immunosuppression — take specialist advice), infection risk, psychological support for patient and family, carers' needs, and palliative and end-of-life care where appropriate. Related pages: <a href='../algorithms/lymphadenopathy.html'>lymphadenopathy pathway</a> · <a href='../algorithms/lymphocytosis.html'>lymphocytosis</a> · <a href='anaemia-iron-deficiency.html'>iron deficiency anaemia</a> · <a href='../../cases/haematological-cancers.html'>the casebook chapter</a>."}
+       ]},
+       {b:"say", html:"I know you were hoping I'd give you something to perk you up, and I wish it were that simple. The problem is that on their own, each of these things — the tiredness, the bruises, the two chest infections, losing a bit of weight — could be nothing much. But together they make me want to check how your bone marrow is working, because that's what makes all your blood cells, and if it isn't working properly it explains all four at once. So I'd like to do a blood test urgently, within the next day or two, and I'll chase the result myself and ring you. Most of the time these tests are reassuring. But the careful thing here is to check quickly rather than wait and see."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 67-year-old man attends with his wife, 6 weeks of feeling “washed out”, breathless on the stairs, with <b>several unexplained bruises</b>, <b>two chest infections in two months</b>, <b>weight loss</b> and <b>drenching night sweats</b>. His wife says he looks pale and pushed him to come. On examination he is pale with scattered bruising and petechiae, a palpable spleen tip and small cervical nodes. He is not febrile today. He opens with “it's just my age, isn't it — can you give me a tonic or some iron?”"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Assembles the four separate complaints into one constellation rather than addressing the fatigue alone; screens for <b>B symptoms, bone pain and lymphadenopathy</b>; <b>examines nodes, spleen, liver and temperature and narrates it</b>; orders a <b>very urgent FBC within 48 hours with a blood film, naming NG12</b>, plus calcium, LDH and ESR; states what happens if the count is grossly abnormal — a same-day haematology phone call, not a letter; <b>gives the neutropenic sepsis safety-net explicitly</b> and any patient starting chemotherapy the 24-hour number; <b>validates the wife's observation</b> rather than talking over her; is honest about uncertainty without either catastrophising or promising it is nothing; and <b>takes personal responsibility for chasing the result</b>. Fails on: the tonic or iron and reassurance about ageing, a routine rather than very urgent FBC, no film, or no safety-net."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every threshold on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the very urgent 48-hour FBC for suspected leukaemia in adults and in children and young people, immediate referral for unexplained petechiae or hepatosplenomegaly in children, the lymphoma referral criteria with B symptoms and alcohol-induced node pain, and the two-stage myeloma pathway at 60 and over</span></li>'+
+         '<li><b>NICE NG35 — Myeloma: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng35" rel="noopener">nice.org.uk/guidance/ng35</a><span class="rd"> — serum-free light chains alongside electrophoresis, whole-body MRI or low-dose CT in place of skeletal survey, and the management of myeloma bone disease</span></li>'+
+         '<li>NICE CG151 — Neutropenic sepsis: prevention and management in people with cancer<br><a href="https://www.nice.org.uk/guidance/cg151" rel="noopener">nice.org.uk/guidance/cg151</a><span class="rd"> — the one-hour antibiotic standard, treating suspected neutropenic sepsis as an acute medical emergency, and not delaying for the neutrophil count</span></li>'+
+         '<li><b>NICE NG47 — Haematological cancers: improving outcomes</b><span class="rd"> — service organisation, the MDT, and the diagnostic pathways referred to here</span></li>'+
+         '<li><b>NICE NG52 — Metastatic spinal cord compression in adults</b><span class="rd"> — the 24-hour whole-spine MRI standard and the emergency pathway used for the myeloma and lymphoma complication</span></li>'+
+         '<li>National Cancer Diagnosis Audit / Cancer Research UK — routes to diagnosis<span class="rd"> — the repeated-consultation pattern before diagnosis in myeloma, and the proportion of haematological cancers diagnosed as emergencies</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Haematological cancers (leukaemia · lymphoma · myeloma) — NICE NG12 (May 2025), NG35, CG151, NG47 and NG52. Assemble the constellation rather than explaining each thread away; offer a very urgent FBC within 48 hours with a blood film where NG12 applies; escalate blasts, pancytopenia or a grossly abnormal count by telephone the same day; act on persistence rather than reassuring by default; and treat any unwell or febrile patient on or within 6 weeks of chemotherapy as neutropenic sepsis — immediate admission and IV antibiotics within one hour, without waiting for the neutrophil count. Verify all thresholds against current NICE guidance."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

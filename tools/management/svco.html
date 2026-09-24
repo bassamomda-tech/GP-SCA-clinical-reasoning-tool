@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Superior vena cava obstruction — Protocol · Reasoning GP</title>
+<meta name="description" content="SVCO in primary care: the clinical diagnosis, severity grading at the bedside, sit up and dexamethasone 16 mg, the NG12 rule that SVCO and stridor are referred IMMEDIATELY rather than on a two-week wait, why a stent gives the fastest relief, tissue diagnosis before steroid where the airway allows, and advance care planning." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/svco.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="SVCO protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🩺",
+  title:"Superior vena cava obstruction — the complete guide",
+  eyebrow:"Protocol · NICE NG12 immediate referral · GMEC Palliative · sit up, steroid, admit",
+  stemTitle:"SVCO is one of the few presentations NICE NG12 singles out for IMMEDIATE referral rather than a two-week wait — because the two-week pathway is far too slow for an airway and raised-venous-pressure emergency",
+  stemSub:"One page for the emergency. Compression, invasion or thrombosis of the superior vena cava by mediastinal tumour or nodes — <b>95% lung cancer or non-Hodgkin lymphoma</b>, and it can be the first presentation of an undiagnosed thoracic malignancy. The primary-care moves are <b>sit them up, give dexamethasone, admit</b>. Two refinements decide how the hospital manages them: <b>grade the severity at the bedside</b>, because stridor or cerebral signs make it a blue-light transfer; and <b>where the patient is stable, a tissue diagnosis before steroid matters</b>, since steroids can obscure lymphoma histology.",
+  guideline:"NICE NG12 · GMEC Palliative 6th ed · PANG 2016",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE NG12 — SVCO and stridor: refer IMMEDIATELY"},
+    {t:"GMEC Palliative Care guidelines, 6th ed (April 2025)"},
+    {t:"Dexamethasone 16 mg + PPI, sit up, admit", tone:"tw"},
+    {t:"95% lung cancer or non-Hodgkin lymphoma"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Recognise</b><small>Swelling · veins · JVP</small></a><a href="#grade"><b>Grade</b><small>Airway · brain</small></a><a href="#act"><b>Act</b><small>Sit up · steroid · admit</small></a><a href="#cause"><b>Cause</b><small>Tumour · thrombus</small></a><a href="#after"><b>After</b><small>Stent · ACP · recurrence</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"purple", h:"🟣 NICE NG12 — SVCO is an IMMEDIATE referral, not a two-week wait", html:"NG12 states that people with symptoms of superior vena caval obstruction — facial or neck swelling with fixed elevation of the JVP — or with stridor should be referred IMMEDIATELY for emergency admission. <b>This overrides any two-week-wait pathway.</b> A very urgent chest X-ray within 2 weeks is the right test for suspected lung cancer in a stable outpatient; it is the wrong response to overt SVCO, which needs emergency admission and contrast CT today."},
+    {tone:"red", h:"⚠ Life-threatening features — 999", html:"Stridor · marked respiratory distress or laryngeal oedema · reduced consciousness · seizures · haemodynamic compromise · rapidly progressive symptoms. The airway and the brain are at risk now: sit up, oxygen, dexamethasone, and blue-light transfer. <b>Untreated SVCO can cause death within days.</b>"},
+    {tone:"blue", h:"Recognise it clinically — the fixed, non-pulsatile JVP is the discriminator", html:"Swelling of face, neck and arms · distended non-pulsatile veins of neck, trunk and arms · dyspnoea · headache, dizziness, drowsiness or seizures from raised intracranial venous pressure · classically worse on stooping or lying flat. Pemberton's sign — facial congestion on raising the arms above the head — is a useful bedside confirmation. Angioedema, nephrotic syndrome, heart failure and cellulitis all cause facial swelling, but none gives a fixed elevated JVP with chest-wall collateral veins."},
+    {tone:"amber", h:"Sit up, steroid, admit", html:"Sit the patient up — it lowers venous pressure immediately. Oxygen if hypoxic. Dexamethasone 16 mg orally (or 13.2 mg subcutaneously), then 8 mg twice daily (6.6 mg SC BD, morning and lunchtime), with a PPI and glucose monitoring. Consider furosemide 40 mg orally or IV. Then admit — unless the patient is in the last days of life, in which case seek specialist palliative advice and treat where they are."},
+    {tone:"blue", h:"A stent gives the fastest relief — within hours", html:"Endovenous stenting by interventional radiology relieves the mechanical obstruction directly and works within hours, so it is first-line for symptom relief regardless of histology. Chemotherapy may be definitive in a chemo-sensitive tumour (small-cell lung cancer, lymphoma, germ-cell); radiotherapy gives relief over days to weeks; and a catheter-related thrombotic SVCO is managed with anticoagulation and line removal rather than a stent."},
+    {tone:"green", h:"Rate of onset changes the risk — and the plan", html:"A slowly developing obstruction allows venous collaterals to form and partially decompress the system; a rapid occlusion does not. So a fast onset is more dangerous, and a gradual one can often be worked up — including a tissue biopsy — before definitive treatment. That is the reasoning behind biopsy-first in the stable patient and treat-first in the crashing one."}
+  ],
+  pathwaySub:"Five steps; the first three happen before the patient leaves.",
+  pathway:[
+    {title:"Recognise it clinically", html:"Facial, neck or arm swelling with dyspnoea in a patient with — or at risk of — thoracic cancer. Look for the fixed non-pulsatile JVP and chest-wall collateral veins. <b>SVCO is a clinical diagnosis that must trigger action before imaging.</b>"},
+    {title:"Grade the severity at the bedside", html:"Stridor, severe respiratory distress, reduced consciousness, seizures or haemodynamic compromise → 999. Otherwise urgent admission. Ask how fast it came on, and whether they can lie flat for a scan.", alert:true},
+    {title:"Treat immediately", html:"Sit up · oxygen if hypoxic · dexamethasone 16 mg with a PPI · consider furosemide 40 mg · monitor glucose."},
+    {title:"Refer — acute oncology or the on-call medical team", html:"Known cancer → acute oncology service. New presentation → on-call medical or respiratory team, for urgent contrast CT and interventional radiology. <b>Admission lets diagnosis and treatment run in parallel.</b>"},
+    {title:"Then: definitive treatment, prognosis, and the recurrence safety-net", html:"Stent, chemotherapy, radiotherapy or anticoagulation according to cause. Wean the steroid once obstruction is relieved. Discuss prognosis and advance care planning — one-year survival is around 17%."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Recognise", title:"Recognising SVCO",
+     sub:"A clinical diagnosis. The constellation, not the scan, is what triggers action.",
+     blocks:[
+       {b:"table", head:["Feature","Detail","Note"], rows:[
+         ["<b>Swelling</b>","<b>Face, neck and arms</b>","Often noticed first by the patient or family on waking"],
+         ["<b>Dilated veins</b>","Distended, NON-PULSATILE veins of the neck, trunk and arms; dilated chest-wall collateral veins","<b>Collateral chest-wall veins indicate a more chronic obstruction</b> — and they are the sign that most reliably separates SVCO from other causes of facial swelling"],
+         ["<b>Fixed elevation of the JVP</b>","<b>Non-pulsatile and fixed</b>","The discriminator. NG12 names this specifically alongside facial and neck swelling as the trigger for immediate referral"],
+         ["<b>Respiratory</b>","<b>Dyspnoea; STRIDOR and a hoarse voice are red-flag airway signs</b>","Stridor converts this from urgent to a 999 airway emergency"],
+         ["<b>Neurological</b>","Headache, dizziness, CNS depression, seizures — from raised intracranial venous pressure","Cerebral signs are the other 999 trigger"],
+         ["<b>Postural aggravation</b>","<b>Classically worse on stooping or lying flat</b>","Also ask whether they can lie down for a scan — it affects how imaging is arranged"],
+         ["<b>Pemberton's sign</b>","<b>Facial congestion and plethora on raising both arms above the head</b>","A quick, useful bedside confirmation"],
+         ["<b>It may be the first presentation</b>","<b>Of an undiagnosed thoracic malignancy</b>","No cancer history does not lower the suspicion"]
+       ]},
+       {b:"why", html:"Recognising the combination of facial or arm swelling, distended non-pulsatile veins and dyspnoea in someone with or at risk of thoracic cancer is the whole of the primary-care task. SVCO is a clinical diagnosis that must trigger urgent action before imaging, because the imaging that confirms it — contrast CT — is a hospital investigation, and arranging it from primary care is slower than admitting the patient who needs it."}
+     ]},
+
+    {id:"grade", nav:"Grade", title:"Severity grading — the pivot of the pathway",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Life-threatening — 999, blue-light", html:"Stridor · severe respiratory distress or laryngeal and airway oedema · reduced consciousness · seizures · haemodynamic compromise. <b>The airway and brain are at risk NOW.</b> Sit up, oxygen, dexamethasone, immediate transfer."},
+         {tone:"amber", h:"🟠 Stable — urgent admission", html:"<b>Gradual onset, no airway or cerebral compromise, collaterals formed.</b> <b>Still admit today</b> — but there is usually time for contrast CT and a tissue diagnosis before definitive treatment."},
+         {tone:"blue", h:"⏱️ Ask how fast it came on", html:"A rapid onset gives less time for collateral veins to form and is more dangerous; a slow onset means the system is partly decompressed. Rate of onset is the single most useful historical variable and it belongs in the referral."},
+         {tone:"blue", h:"📋 Also ask and examine for", html:"Known or suspected thoracic malignancy · a previous central line, PICC or pacemaker (suggesting thrombotic SVCO) · orthopnoea · whether they can lie flat."}
+       ]},
+       {b:"why", html:"Severity grading decides emergency versus urgent, and whether the airway is the immediate threat. Stridor or cerebral signs make SVCO a true airway and neurological emergency requiring blue-light transfer and immediate steroid. A gradual onset with established collaterals can usually be worked up — including obtaining histology — before definitive treatment, which materially improves the oncological decisions that follow."}
+     ]},
+
+    {id:"act", nav:"Act", title:"Immediate management",
+     blocks:[
+       {b:"table", head:["Action","Detail"], rows:[
+         ["<b>Position</b>","<b>Sit the patient up.</b> It lowers venous pressure immediately and costs nothing"],
+         ["<b>Oxygen</b>","<b>Give oxygen if hypoxic</b>"],
+         ["<b>Steroid</b>","Dexamethasone 16 mg orally (or 13.2 mg subcutaneously) stat, then 8 mg twice daily orally (or 6.6 mg SC twice daily, morning and lunchtime) on subsequent days"],
+         ["<b>Diuretic</b>","<b>Consider furosemide 40 mg orally or IV</b>"],
+         ["<b>Gastroprotection and monitoring</b>","<b>Co-prescribe a PPI with high-dose steroid; monitor blood glucose.</b> Take a baseline glucose before starting where you can"],
+         ["<b>Admit</b>","Admit to hospital from the community — UNLESS the patient is in the last days of life, in which case seek specialist palliative care advice and treat symptoms where they are"],
+         ["<b>Breathlessness in the meantime</b>","Head-up positioning, oxygen, and consider a low-dose opioid with or without a benzodiazepine for distressing dyspnoea and anxiety — see <a href='palliative-breathlessness.html'>palliative breathlessness</a>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"⚠ Tissue diagnosis versus steroid — the real tension", html:"<b>Steroids and radiotherapy can obscure lymphoma histology.</b> So in the STABLE patient, the hospital will want a biopsy before treatment; in the crashing patient, treat first. Give the steroid where there is airway or cerebral compromise — but say in your referral when it was given, because it affects the diagnostic plan."},
+         {tone:"blue", h:"💊 Steroid stewardship from day one", html:"<b>Morning and lunchtime dosing only — never evening.</b> PPI cover, glucose monitoring, and a plan to wean once the obstruction is relieved. Watch for agitation, hyperglycaemia, GI bleeding and infection."},
+         {tone:"green", h:"✓ What to say", html:"\"Sitting upright will help straightaway. I am giving you a strong steroid now to reduce the swelling around the blockage, and you need to go into hospital today for a scan — there is a procedure that can open the vein up, and it usually works within hours.\""},
+         {tone:"red", h:"⛔ Do not send a two-week-wait referral", html:"<b>Overt SVCO needs emergency admission.</b> The two-week chest X-ray route is for a stable outpatient with suspected lung cancer, and using it here is the commonest serious error in this presentation."}
+       ]}
+     ]},
+
+    {id:"cause", nav:"Cause", title:"Causes, differential and investigations",
+     blocks:[
+       {b:"table", head:["Category","Detail","Treatment implication"], rows:[
+         ["<b>Malignant — over 90%</b>","Lung cancer (especially small-cell and squamous) and non-Hodgkin lymphoma account for around 95%; also thymoma, germ-cell tumours and mediastinal metastases such as breast","A chemo-sensitive tumour — small-cell, lymphoma, germ-cell — may respond rapidly to chemotherapy and be controlled definitively"],
+         ["<b>Thrombotic — increasingly common</b>","Thrombosis around central venous catheters, PICC lines and pacemaker leads","Managed with anticoagulation, with or without thrombolysis, and line removal — NOT primarily a stent"],
+         ["<b>Benign</b>","Fibrosing mediastinitis, retrosternal goitre, aortic aneurysm, post-radiotherapy fibrosis, tuberculosis","Changes the prognosis entirely"],
+         ["<b>Differential of facial swelling</b>","<b>Angioedema, nephrotic syndrome, cardiac failure, cellulitis</b>","None of these gives a fixed elevated JVP with chest-wall collateral veins"],
+         ["<b>Chest X-ray</b>","<b>Often shows a mediastinal mass or widening</b>","Useful but not the definitive test, and not a substitute for admission in overt SVCO"],
+         ["<b>CT with IV contrast</b>","The key investigation — confirms the level and cause, and plans stenting","Distinguishes extrinsic compression from intraluminal tumour from thrombus, which is what determines stent versus anticoagulation versus systemic therapy"],
+         ["<b>Tissue diagnosis</b>","Sputum cytology, bronchoscopy, or nodal/mass biopsy — obtain histology BEFORE treatment if the patient is stable","It directs chemotherapy and radiotherapy. Do not delay emergency treatment for biopsy if the airway is threatened"],
+         ["<b>Bloods</b>","FBC, U&amp;Es, LFTs, LDH (lymphoma), clotting; baseline glucose before high-dose steroid","LDH supports a lymphoma suspicion"]
+       ]}
+     ]},
+
+    {id:"after", nav:"After", title:"Definitive treatment, prognosis and the recurrence safety-net",
+     blocks:[
+       {b:"table", head:["Treatment","Detail","Speed"], rows:[
+         ["<b>Endovenous stent</b>","Interventional radiology; relieves the mechanical obstruction directly. First-line for symptom relief regardless of histology","<b>Works within HOURS</b>"],
+         ["<b>Chemotherapy</b>","<b>Small-cell lung cancer, lymphoma, germ-cell tumours</b>","<b>Rapid response; may be definitive</b>"],
+         ["<b>Radiotherapy</b>","<b>Radiosensitive tumours not suited to chemotherapy</b>","Relief over days to weeks"],
+         ["<b>Anticoagulation ± thrombolysis</b>","Catheter-related thrombus; consider thrombolysis if a stent is blocked, and line removal","Per local protocol"],
+         ["<b>Steroid weaning</b>","Wean dexamethasone once the obstruction is relieved; keep PPI cover and monitor glucose while the dose is high","Over days, guided by symptoms"],
+         ["<b>Advance care planning</b>","One-year survival is around 17%. Discuss prognosis, ceilings of treatment and preferred place of care sensitively","<b>Alongside treatment, not after it</b>"],
+         ["<b>Recurrence</b>","Returning facial swelling, dyspnoea or collateral veins after stenting suggests stent occlusion or re-thrombosis → re-image urgently","<b>Reproduces the original emergency</b>"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 / return immediately", html:"\"If the breathlessness gets worse, you develop noisy or difficult breathing, the facial swelling comes back, or you become confused or have a fit — call 999. A stent can block, and that brings the problem straight back.\""},
+         {tone:"amber", h:"🟠 On the steroid", html:"<b>Hyperglycaemia, GI bleeding, agitation and infection risk.</b> Monitor glucose actively in a patient with diabetes, keep the PPI, and wean as soon as the obstruction is relieved."},
+         {tone:"green", h:"✓ Holistic support", html:"Specialist palliative care, clinical nurse specialist and carer support. This is a frightening and highly visible presentation — the face and neck swell, the voice changes — and the psychological impact on patient and family deserves explicit attention."},
+         {tone:"blue", h:"📋 Where the patient is dying", html:"<b>Admission may be inappropriate in the last days of life.</b> Seek specialist palliative advice, and manage with positioning, oxygen, dexamethasone where it still helps, and opioid with or without benzodiazepine for breathlessness. See <a href='care-of-the-dying.html'>care of the dying</a>."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 — life-threatening", html:"Stridor, severe respiratory distress, reduced consciousness, seizures or haemodynamic compromise. Sit up, oxygen, dexamethasone, blue-light transfer."},
+         {tone:"purple", h:"NICE NG12 — immediate emergency referral", html:"NG12: refer people with symptoms of superior vena caval obstruction (facial or neck swelling with fixed elevation of the JVP) or with stridor IMMEDIATELY for emergency admission. <b>This overrides any two-week-wait pathway</b>, and it is the one place in NG12 where \"immediately\" rather than \"within 2 weeks\" is specified for a thoracic presentation."},
+         {tone:"amber", h:"Acute oncology service", html:"<b>Where the cancer is known</b> — fastest route to contrast CT and interventional radiology for stenting."},
+         {tone:"amber", h:"On-call medical or respiratory team", html:"<b>Where this is a new presentation.</b> Admission allows diagnosis (biopsy) and treatment to proceed in parallel rather than sequentially."},
+         {tone:"green", h:"Specialist palliative care", html:"Where the patient is in the last days of life and admission is not appropriate, or for symptom control alongside active treatment."},
+         {tone:"cream", h:"What primary care owns", html:"Recognising it clinically, grading the severity, sitting the patient up, giving dexamethasone with a PPI, and getting them admitted today — plus the recurrence safety-net afterwards. Related pages: <a href='mscc.html'>MSCC</a> · <a href='malignant-hypercalcaemia.html'>malignant hypercalcaemia</a> · <a href='palliative-breathlessness.html'>palliative breathlessness</a> · <a href='palliative-corticosteroids.html'>palliative corticosteroids</a> · <a href='care-of-the-dying.html'>care of the dying</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 63-year-old smoker with a <b>3-week history of cough and 6 kg weight loss</b>, not yet investigated, is brought in by his wife because his <b>face and neck look swollen</b> and he is breathless. He has no known cancer. He is talking in full sentences, <b>no stridor</b>, saturations 94%. You note facial plethora, a fixed non-pulsatile raised JVP, and dilated veins across the upper chest; the swelling is worse when he bends to tie his shoes. His wife asks whether he can \"have the chest X-ray we were told about\" and be seen next week."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises SVCO clinically from the fixed non-pulsatile JVP plus collateral veins, and does not attribute the swelling to another cause; grades severity — no stridor or cerebral signs, so urgent rather than 999, but still admission TODAY; explicitly declines the two-week-wait route and can quote why: NG12 names SVCO and stridor for IMMEDIATE referral; <b>sits the patient up and gives dexamethasone 16 mg with a PPI</b>; <b>considers furosemide and takes a baseline glucose</b>; refers to the on-call medical or respiratory team because there is no known cancer, recognising that admission lets biopsy and treatment run in parallel; notes the biopsy-versus-steroid tension and records the time the steroid was given; <b>asks about rate of onset and whether he can lie flat</b>, and puts both in the referral; <b>mentions that a stent works within hours</b> to make the urgency concrete for the family; and handles the wife's expectation of next week without being dismissive of the advice she was given."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the recommendation to refer people with symptoms of superior vena caval obstruction (facial or neck swelling with fixed elevation of the JVP) or with stridor IMMEDIATELY for emergency admission, overriding the two-week-wait route; and the very urgent chest X-ray within 2 weeks that applies to stable suspected lung cancer instead</span></li>'+
+         '<li>GMEC Palliative Care Pain &amp; Symptom Control Guidelines, 6th edition (April 2025)<span class="rd"> — sit up, oxygen if hypoxic, dexamethasone 16 mg oral or 13.2 mg SC then 8 mg BD (6.6 mg SC BD), furosemide 40 mg, PPI cover and glucose monitoring, and the instruction to admit unless the patient is in the last days of life</span></li>'+
+         '<li><b>Palliative Adult Network Guidelines (2016)</b><span class="rd"> — the SVCO management framework, the roughly 17% one-year survival figure, and the supportive-care recommendations</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — dexamethasone and furosemide dosing, the 3.3 mg/mL injection strength used for subcutaneous administration, and high-dose corticosteroid cautions</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Superior vena cava obstruction — NICE NG12, GMEC Palliative Care Guidelines 6th edition and the Palliative Adult Network Guidelines. Recognise it clinically: facial, neck or arm swelling with a fixed non-pulsatile raised JVP and chest-wall collateral veins. NG12 requires IMMEDIATE emergency referral for SVCO or stridor — this overrides any two-week-wait pathway. Sit the patient up, give oxygen if hypoxic, give dexamethasone 16 mg with a PPI, consider furosemide 40 mg, and admit unless they are in the last days of life. A stent relieves the obstruction within hours. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

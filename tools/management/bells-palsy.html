@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bell's palsy — Protocol · Reasoning GP</title>
+<meta name="description" content="Bell's palsy: the forehead sign that separates it from stroke, prednisolone started within 72 hours, eye protection to prevent exposure keratopathy, recognising Ramsay Hunt, and the 3-week non-recovery referral trigger." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/bells-palsy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Bell's palsy protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"😐",
+  title:"Bell's palsy — the complete guide",
+  eyebrow:"Protocol · the forehead decides everything",
+  stemTitle:"One examination finding separates a benign facial palsy from a stroke — whether the forehead is involved — and one prescription started within 72 hours changes the odds of full recovery",
+  stemSub:"One page for acute idiopathic facial palsy. Bell's palsy is lower motor neurone, so the whole side including the forehead is weak; a stroke is upper motor neurone and SPARES the forehead. Get that right, then do the three things that matter: <b>prednisolone as early as possible within 72 hours</b>, <b>eye protection for anyone who cannot fully close the eye</b> — because exposure keratopathy is the avoidable harm here — and recognition of <b>Ramsay Hunt</b>, which needs an antiviral. Reassess anyone not improving by three weeks.",
+  guideline:"BNF · House-Brackmann",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"Forehead SPARED = upper motor neurone = stroke pathway", tone:"tw"},
+    {t:"Prednisolone within 72 hours of onset", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>The forehead</b><small>LMN vs UMN</small></a><a href="#eye"><b>The eye</b><small>Protect it</small></a><a href="#steroid"><b>Steroid</b><small>Within 72 h</small></a><a href="#monitor"><b>Recovery</b><small>3-week check</small></a><a href="#refer"><b>Refer</b><small>Stroke · eye · ENT</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Forehead SPARED means stroke, not Bell's palsy", html:"Bell's palsy is lower motor neurone: the whole side is weak, INCLUDING the forehead — the patient cannot wrinkle the brow or close the eye. If the forehead still wrinkles, the lesion is upper motor neurone and the patient goes down the stroke pathway. <b>This single sign is the most important thing on the page</b>, and missing a central cause is the key pitfall."},
+    {tone:"red", h:"Prednisolone, started within 72 hours", html:"Oral prednisolone markedly improves the likelihood of complete recovery, and the benefit is greatest when started early. Prednisolone 50 mg once daily for 10 days, or 60 mg once daily for 5 days then reducing by 10 mg a day. Take with food. <b>Do not delay while arranging investigations.</b>"},
+    {tone:"red", h:"⚠ Protect the eye — this is the avoidable harm", html:"Anyone who cannot fully close the eye needs artificial tears by day, lubricating ointment at night, and the eyelid taped closed at night. Exposure keratopathy is what causes lasting damage in an otherwise self-limiting condition, and it is entirely preventable. Sunglasses outdoors; avoid dust and wind."},
+    {tone:"amber", h:"Ramsay Hunt needs an antiviral", html:"Vesicles in or around the ear, or significant ear pain, with the palsy → Ramsay Hunt syndrome (varicella zoster). Aciclovir 800 mg five times daily for 7 days plus prednisolone, with urgent specialist advice. Look in the ear — the vesicles are easily missed and the treatment differs."},
+    {tone:"blue", h:"Antivirals are not routine in Bell's palsy", html:"<b>Routine antivirals are not recommended.</b> Consider adding one to the steroid in severe palsy or on specialist advice — but the default in straightforward Bell's palsy is prednisolone alone plus eye care."},
+    {tone:"green", h:"Most recover well — but review at three weeks", html:"Explain the expected course: most people improve over weeks, often substantially. No recovery by about 3 weeks, or any atypical feature — bilateral, recurrent, slow onset, other cranial nerve signs — means reconsider the diagnosis and refer. Facial exercises and physiotherapy can help slower cases."}
+  ],
+  pathwaySub:"Five steps. The first is an examination finding, and the second must not wait for it.",
+  pathway:[
+    {title:"Confirm LMN palsy and exclude the mimics", html:"Forehead involved = LMN = Bell's. Forehead spared = UMN = stroke pathway. Then exclude Ramsay Hunt, otitis media or cholesteatoma, parotid mass, Lyme disease, trauma, and bilateral palsy.", alert:true},
+    {title:"Start prednisolone — ideally within 72 hours", html:"50 mg OD for 10 days, or 60 mg OD for 5 days then reducing by 10 mg daily. With food."},
+    {title:"Protect the eye, for everyone who cannot close it", html:"Artificial tears by day, ointment at night, tape the lid closed at night. <b>Do not omit this</b>."},
+    {title:"Explain the course and safety-net", html:"Most recover well over weeks; give the stroke, eye and Ramsay Hunt triggers explicitly."},
+    {title:"Review at 3 weeks, then 3–4 months", html:"No improvement by 3 weeks → reconsider and refer. Incomplete recovery at 3–4 months → ENT or neurology plus facial rehabilitation."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"The forehead", title:"Step 1 — confirm lower motor neurone palsy, exclude the mimics",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Bell's palsy</b>","Acute (under 72 hours) unilateral LOWER motor neurone facial weakness — the forehead is involved, so the patient cannot wrinkle it or close the eye"],
+         ["<b>Exclude stroke</b>","FOREHEAD SPARING — the patient can still wrinkle the brow — means an upper motor neurone lesion and a central cause → stroke pathway"],
+         ["<b>Exclude other causes</b>","Ramsay Hunt (vesicles, ear pain) · otitis media or cholesteatoma · parotid mass · Lyme disease · trauma · bilateral palsy"],
+         ["<b>Assess</b>","Severity (House-Brackmann grade), eye closure, hearing, and the other cranial nerves"]
+       ]},
+       {b:"why", html:"<b>The single most important step is the forehead.</b> Bell's palsy weakens the whole side including the forehead, because the lower motor neurone supplies all of it; a stroke spares the forehead, because its upper-face innervation is bilateral. Missing a central cause — or missing Ramsay Hunt, which needs an antiviral — is the key pitfall, and early steroids markedly improve recovery, so the assessment and the prescription happen in the same consultation."}
+     ]},
+
+    {id:"eye", nav:"The eye", title:"Step 2 — eye protection is critical, and non-drug",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"👁️ Lubricate", html:"Artificial tears by day and lubricating ointment at night — the cornea is at risk whenever the eye will not close."},
+         {tone:"red", h:"😴 Tape at night", html:"Tape the eyelid closed at night; consider an eye patch or other protective measures."},
+         {tone:"amber", h:"🕶️ Protect", html:"<b>Sunglasses outdoors; avoid dust and wind exposure.</b>"},
+         {tone:"blue", h:"🍽️ Eating and oral hygiene", html:"<b>Advice on chewing and mouth care — food pools on the weak side.</b>"},
+         {tone:"green", h:"🫶 Reassure", html:"Most people recover well, often within weeks — explain the expected course explicitly."},
+         {tone:"green", h:"💪 Facial exercises", html:"<b>Facial exercises and physiotherapy can aid recovery in slower cases.</b>"}
+       ]}
+     ]},
+
+    {id:"steroid", nav:"Steroid", title:"Step 3 — early corticosteroids, and when an antiviral is added",
+     blocks:[
+       {b:"table", head:["Step","Treatment","When"], rows:[
+         ["<b>Step 1 — prednisolone, start early</b>","Prednisolone 50 mg once daily for 10 days, OR 60 mg once daily for 5 days then reduce by 10 mg a day. Take with food","Ideally within 72 hours of onset — oral prednisolone improves the likelihood of complete recovery and benefit is greatest started early"],
+         ["<b>Consider — add an antiviral</b>","Not routinely recommended; consider adding to the steroid in severe palsy or on specialist advice","If Ramsay Hunt is suspected: aciclovir 800 mg five times daily for 7 days plus prednisolone, with urgent advice"],
+         ["<b>Always — eye protection alongside</b>","Lubrication with or without taping for everyone who cannot fully close the eye","<b>Prevents exposure keratopathy. Do not omit</b>"]
+       ]},
+       {b:"warn", html:"<b>Do not delay steroids</b> — the benefit is greatest when started within 72 hours, and waiting for a review appointment wastes the window. <b>Always protect the eye.</b> And reassess if there is no improvement by 3 weeks, or if features are atypical or bilateral, because those are the presentations where the diagnosis is something else."}
+     ]},
+
+    {id:"monitor", nav:"Recovery", title:"Step 4 — monitoring recovery and the eye",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Facial recovery</b>","<b>From about 2–3 weeks</b>","<b>Most improve; no recovery by 3 weeks → refer</b>"],
+         ["<b>Eye and cornea</b>","<b>Each contact</b>","<b>Pain, redness or visual change → urgent ophthalmology</b>"],
+         ["<b>Atypical features</b>","<b>Ongoing</b>","Bilateral, recurrent, slow onset, or other cranial nerve signs → reassess and refer"],
+         ["<b>Completeness of recovery</b>","<b>By about 3–4 months</b>","<b>Incomplete recovery → ENT or neurology, with facial rehabilitation</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>At diagnosis</b>","Start prednisolone early, arrange eye protection, reassure and safety-net"],
+         ["<b>About 3 weeks</b>","<b>Recovery check — no improvement means refer to ENT or neurology</b>"],
+         ["<b>About 3–4 months</b>","Outcome review — incomplete recovery means specialist input plus facial rehabilitation"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Stroke", html:"\"If the weakness spreads, if you can still wrinkle your forehead, or if you develop arm or leg weakness or speech problems — call 999.\""},
+         {tone:"red", h:"👁️ Eye danger", html:"\"Eye pain, redness or any change in vision — seek urgent eye assessment. Protecting the eye is vital.\""},
+         {tone:"amber", h:"🟠 Ramsay Hunt", html:"\"A painful ear, or blisters in or around the ear with the weakness — contact us; it needs antiviral treatment.\""},
+         {tone:"green", h:"🫶 Recovery", html:"\"Most people recover well over weeks — but tell us if there is no improvement after about three weeks.\""}
+       ]}
+     ]},
+
+    {id:"troubleshoot", nav:"Not recovering?", title:"Not recovering by 3 weeks? Re-check before referring",
+     sub:"Reconsider the diagnosis and the treatment timing.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"1 · Is the diagnosis right?", html:"Forehead sparing (central), vesicles (Ramsay Hunt), ear or parotid signs, or bilateral palsy → reconsider."},
+         {tone:"amber", h:"2 · Steroid timing", html:"<b>Were steroids started early enough — within 72 hours?</b>"},
+         {tone:"red", h:"3 · The eye", html:"<b>Has the cornea been protected throughout? Any exposure damage?</b>"},
+         {tone:"blue", h:"4 · Another cause", html:"Consider Lyme disease, tumour, multiple sclerosis or sarcoidosis in atypical or non-resolving cases."},
+         {tone:"blue", h:"5 · Refer", html:"<b>No recovery by 3 weeks, or atypical features → ENT or neurology.</b>"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When to refer",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — 999", html:"Suspected stroke: forehead spared, or other neurological signs → stroke pathway. See <a href='tia-stroke.html'>stroke and TIA</a>."},
+         {tone:"red", h:"Ophthalmology", html:"Exposure keratopathy or any eye complication — pain, redness, visual change."},
+         {tone:"amber", h:"Ramsay Hunt", html:"Suspected (vesicles or ear pain) → urgent advice; antiviral plus steroid. See <a href='shingles.html'>shingles</a>."},
+         {tone:"blue", h:"ENT or neurology", html:"No recovery by 3 weeks · atypical, bilateral or recurrent palsy · other cranial-nerve involvement."},
+         {tone:"cream", h:"GP management", html:"The LMN-versus-UMN assessment, early prednisolone, eye protection, Ramsay Hunt recognition, the 3-week recovery check and the safety-net all belong here. Related pages: <a href='tia-stroke.html'>stroke and TIA</a> · <a href='shingles.html'>shingles</a> · <a href='lyme-disease.html'>Lyme disease</a> · <a href='../algorithms/facial-weakness.html'>facial weakness pathway</a>."}
+       ]},
+       {b:"say", html:"This is a weakness of the facial nerve, and the good news is that most people recover well — especially with a steroid tablet started early, which is why I want you to begin it today. The most important thing in the meantime is protecting the eye on that side, because it cannot blink properly: drops during the day, ointment and taping it shut at night. If the eye becomes painful or red, or your vision changes, that needs same-day attention."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 41-year-old man attends having woken <b>yesterday</b> unable to move the right side of his face. He is frightened he has had a stroke. On examination the <b>right forehead does not wrinkle</b> and he <b>cannot close the right eye</b>; limbs and speech are normal. He mentions <b>an ache deep in the right ear</b> for two days beforehand. He works outdoors as a groundsman and asks whether he needs time off."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Elicits and names the forehead finding — it does NOT wrinkle, so this is lower motor neurone and not a stroke — and explains that distinction to the patient, which is the reassurance he came for; examines the ear and canal for vesicles given the preceding ear pain, because Ramsay Hunt changes treatment to include aciclovir; starts prednisolone the same day, recognising he is within the 72-hour window, and does not defer to a review appointment; arranges full eye protection — drops by day, ointment and taping at night — and explains exposure keratopathy, which matters especially given outdoor work in wind and dust; advises sunglasses and eye protection at work rather than simply signing him off; gives the three safety-net triggers (spreading weakness or limb/speech involvement, eye pain or visual change, ear vesicles); and arranges the 3-week recovery review with the non-recovery referral plan stated."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>House-Brackmann facial nerve grading scale</b><span class="rd"> — the severity grading referenced in the assessment row</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — prednisolone and aciclovir dosing, and ocular lubricant choice</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Bell's palsy. The forehead decides the diagnosis: involved means lower motor neurone and Bell's palsy, spared means upper motor neurone and the stroke pathway. Start prednisolone as early as possible within 72 hours — 50 mg daily for 10 days, or 60 mg for 5 days then reducing by 10 mg a day. Protect the eye in everyone who cannot fully close it: drops by day, ointment and taping at night, because exposure keratopathy is the avoidable harm. Suspect Ramsay Hunt if there are vesicles or ear pain, and add aciclovir. Reassess anyone not improving by three weeks. Verify doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

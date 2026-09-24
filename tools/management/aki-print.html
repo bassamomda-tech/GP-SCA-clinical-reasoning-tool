@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Acute kidney injury — Protocol · Reasoning GP</title>
+<meta name="description" content="AKI in adults, detection and management on one page: KDIGO staging against baseline, the hyperkalaemia and overload emergencies, pre-renal/intrinsic/post-renal causes, stopping nephrotoxins, sick-day rules, the medication restart criteria, and the 3-month CKD review." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/aki.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790241765963737 tools/management/aki.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="AKI protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1FAD8}",
+  title:"Acute kidney injury (AKI)",
+  eyebrow:"Protocol \u00b7 detect &amp; manage in one place",
+  stemTitle:"AKI \u2014 stage it against baseline, screen the killers, stop the nephrotoxins, and never skip the 3-month review",
+  stemSub:"One page for the whole condition. Confirm and stage against the patient's own baseline creatinine, screen for hyperkalaemia and overload first, work pre-renal / intrinsic / post-renal to a cause, stop the nephrotoxins (usually the single most effective intervention), issue documented sick-day rules, and review at 3 months because AKI is a CKD risk marker, not an isolated event.",
+  guideline:"NICE NG148 \u00b7 KDIGO 2012",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NICE NG148 (2019)"},
+    {t:"KDIGO AKI 2012 \u00b7 staging"},
+    {t:"NICE QS76 \u00b7 3-month review"},
+    {t:"Think Kidneys \u00b7 sick-day rules"},
+    {t:"2WW \u00b7 NG12 myeloma", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Stage it</b><small>KDIGO vs baseline</small></a><a href="#severe"><b>The killers</b><small>K\u207a \u00b7 overload \u00b7 uraemia</small></a><a href="#cause"><b>Find the cause</b><small>Pre \u00b7 intrinsic \u00b7 post</small></a><a href="#refer"><b>Refer</b><small>Who can stay at home</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Potassium and the ECG come first", html:"<b>Hyperkalaemia kills before renal failure does.</b> <b>K\u207a \u22656.5 mmol/L, or \u22656.0 with ECG changes \u2192 999.</b> ECG is <b>mandatory at K\u207a \u22656.0</b>: peaked T waves \u2192 widening QRS \u2192 sine wave \u2192 VF. <b>Treat on the ECG before the blood results return if it is abnormal.</b>"},
+    {tone:"red", h:"Review the drug chart before anything else", html:"Stopping NSAIDs, ACEi/ARB and diuretics is often the single most effective intervention. <b>40\u201360% of community AKI resolves</b> when precipitants are removed and fluid balance restored. NSAIDs alone cause about <b>10%</b> of community AKI, and the <b>\u201ctriple whammy\u201d (NSAID + ACEi/ARB + diuretic)</b> is a preventable cause of AKI deaths."},
+    {tone:"amber", h:"Stage against their own baseline", html:"KDIGO: creatinine rise \u226526 \u00b5mol/L (KDIGO states \u226526.5 \u00b5mol/L) within 48 hours, or \u22651.5\u00d7 baseline within 7 days, or urine output &lt;0.5 mL/kg/h for &gt;6 hours. Stage 1: 1.5\u20131.9\u00d7. Stage 2: 2.0\u20132.9\u00d7. Stage 3: \u22653\u00d7, or creatinine \u2265354 \u00b5mol/L, or RRT. Use the most recent stable value within 3 months as baseline \u2014 and <b>stage on absolute creatinine, not eGFR</b>, which lags in rapidly changing AKI."},
+    {tone:"blue", h:"Three categories, three actions", html:"<b>Pre-renal (about 70%)</b> \u2014 restore perfusion. <b>Intrinsic (about 25%)</b> \u2014 remove the insult; blood + protein on dipstick with systemic illness is possible glomerulonephritis \u2192 urgent nephrology. <b>Post-renal (about 5%)</b> \u2014 relieve obstruction; <b>renal USS within 24 hours whenever obstruction is possible</b>."},
+    {tone:"plain", h:"Very few AKI patients stay at home", html:"Community management is for <b>stage 1 only</b>, with a known cause, a well patient able to drink, <b>K\u207a &lt;5.5</b>, no significant comorbidity \u2014 and <b>U&amp;E rechecked in 48 hours, which is mandatory</b>. <b>Stage 2\u20133 needs hospital assessment (NG148).</b>"},
+    {tone:"green", h:"AKI is a risk marker, not an event", html:"AKI survivors have <b>3\u00d7 the risk of developing CKD</b> and <b>2\u00d7 the rate of cardiovascular events</b>; <b>1-year mortality after hospitalised AKI is about 25\u201330%</b>. Yet <b>up to 30% have no formal review within 3 months</b>. <b>NICE QS76 requires a structured review within 3 months</b> \u2014 that review is the GP's job."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Confirm it is AKI, not CKD", html:"<b>Check old results for a baseline creatinine.</b> Without one you cannot stage, and you may be treating stable CKD as an emergency \u2014 or missing an emergency. The <b>NHS Spine AKI algorithm</b> generates automatic GP alerts; check flagged lab results."},
+    {title:"Screen the killers", html:"K\u207a \u22656.5 or ECG changes \u00b7 pulmonary oedema \u00b7 severe acidosis \u00b7 anuria \u00b7 obstruction with sepsis \u00b7 uraemic encephalopathy or pericardial rub \u00b7 shock \u2192 999. Do not wait for repeat bloods.", alert:true},
+    {title:"Assess volume status", html:"This decides whether you give fluids or withhold them. <b>Postural BP drop &gt;20 mmHg confirms volume depletion</b>; raised JVP with crackles means overload \u2014 <b>giving fluid to an overloaded patient causes pulmonary oedema</b>."},
+    {title:"Stop, support, investigate", html:"Stop nephrotoxins and hold the sick-day drugs; oral rehydration if tolerated; treat sepsis; catheterise if obstructed; U&amp;E, FBC, dipstick, and <b>renal USS within 24 hours if obstruction is possible</b>."},
+    {title:"Recheck and prevent the next one", html:"<b>U&amp;E at 48\u201372 hours</b>, then until recovered. <b>Documented sick-day rules card.</b> Recheck before restarting held drugs. <b>Full review at 3 months</b> \u2014 U&amp;E, ACR, BP \u2014 and add to the CKD register if impairment persists."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm &amp; stage", title:"Confirming AKI and staging it", sub:"You cannot stage AKI without a baseline. Finding the old creatinine is the first diagnostic act.",
+     blocks:[
+       {b:"table", head:["Stage","Criteria","Concern level"], rows:[
+         ["<b>AKI definition</b> (KDIGO)","Creatinine rise \u226526 \u00b5mol/L (KDIGO states \u226526.5 \u00b5mol/L) within 48 hours, <b>or \u22651.5\u00d7 baseline within 7 days</b>, <b>or urine output &lt;0.5 mL/kg/h for &gt;6 hours</b>","Any one criterion is sufficient"],
+         ["<b>Stage 1</b>","Creatinine <b>1.5\u20131.9\u00d7 baseline</b>, or a rise \u226526 \u00b5mol/L (KDIGO states \u226526.5 \u00b5mol/L) within 48 hours. Urine output <b>&lt;0.5 mL/kg/h for \u22656 hours</b>","Moderate concern \u2014 the only stage that may be managed in the community"],
+         ["<b>Stage 2</b>","Creatinine <b>2.0\u20132.9\u00d7 baseline</b>. Urine output <b>&lt;0.5 mL/kg/h for \u226512 hours</b>","High concern \u2014 <b>same-day review</b>"],
+         ["<b>Stage 3</b>","Creatinine <b>\u22653\u00d7 baseline</b>, <b>or \u2265354 \u00b5mol/L</b>, <b>or oliguria &gt;12 hours</b>, or requiring dialysis. Urine output <b>&lt;0.3 mL/kg/h for \u226524 hours or anuria \u226512 hours</b>","<b>Emergency \u2014 999</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Baseline creatinine</b>","Use the <b>most recent stable value within 3 months</b>. If unavailable, use CKD-EPI to estimate baseline from a known eGFR. If there are no prior results at all, treat the lowest result as baseline. Checking old results is what separates AKI from established CKD"],
+         ["<b>The eGFR caveat</b>","<b>eGFR lags in rapidly changing AKI</b> because CKD-EPI assumes a steady state \u2014 stage on absolute creatinine values against the individual's baseline, not on eGFR alone"],
+         ["<b>AKI alerts</b>","The <b>NHS Spine AKI algorithm</b> generates automatic GP alerts \u2014 studies show it reduces delayed diagnosis by about <b>40%</b>. Check lab results carefully for flagged AKI notifications"],
+         ["How it presents","Often an <b>incidental creatinine rise</b> on routine bloods, or an unwell patient with reduced urine output. Context: acute illness (sepsis, D&amp;V, AKI on CKD), recent contrast, new drugs, urinary symptoms"]
+       ]},
+       {b:"why", html:"KDIGO staging is the global standard adopted by NG148. Stage 1 detected early can often be managed in primary care by reversing precipitants; stage 2\u20133 requires hospital assessment. AKI is common, frequently iatrogenic, and a strong marker of both mortality and future CKD."}
+     ]},
+
+    {id:"severe", nav:"Red flags", title:"Screen the killers first", sub:"AKI can be rapidly fatal \u2014 hyperkalaemia and pulmonary oedema kill within hours. Screen for these before anything else.",
+     blocks:[
+       {b:"warn", html:"Anuria, an obstructed and infected urinary tract (pyonephrosis), or hyperkalaemia are emergencies \u2014 arrange immediate admission and do not wait for repeat bloods."},
+       {b:"cards", items:[
+         {tone:"red", h:"Hyperkalaemia \u2014 K\u207a \u22656.5 mmol/L", html:"Or <b>\u22656.0 with ECG changes</b>: peaked T waves, wide QRS, sine wave. Weakness, palpitations \u2192 <b>999 \u2014 cardiac arrest risk</b>. <b>ECG is mandatory at K\u207a \u22656.0.</b>"},
+         {tone:"red", h:"Oliguria or anuria", html:"Urine output <b>&lt;0.5 mL/kg/h for 6+ hours</b>, or complete anuria \u2192 <b>999 \u2014 severe AKI</b>."},
+         {tone:"red", h:"Pulmonary oedema", html:"Breathlessness at rest, crackles, falling saturations, pink frothy sputum \u2192 <b>999 \u2014 fluid overload</b>. Loss of fluid excretion accumulates rapidly."},
+         {tone:"red", h:"Uraemic encephalopathy", html:"Confusion, drowsiness, <b>asterixis (flapping tremor)</b>, <b>pericardial rub</b> \u2192 <b>999 \u2014 dialysis urgency</b>. Uraemic pericarditis is an absolute emergency."},
+         {tone:"red", h:"Sepsis with AKI", html:"HR &gt;90, RR &gt;20, temperature &gt;38 or &lt;36\u00b0C, <b>systolic BP &lt;90</b> with rising creatinine \u2192 <b>999 \u2014 septic AKI</b>."},
+         {tone:"red", h:"Haemodynamic collapse", html:"<b>Systolic BP &lt;90 mmHg</b>, cold peripheries, reduced GCS \u2192 <b>999 \u2014 shock state</b>."},
+         {tone:"red", h:"Rhabdomyolysis", html:"<b>Dark cola-coloured urine</b>, severe myalgia, markedly elevated CK \u2192 <b>999 \u2014 myoglobin nephrotoxicity</b>."},
+         {tone:"red", h:"Rapidly rising creatinine", html:"Creatinine <b>doubled within 24\u201348 hours</b>, or a rise <b>&gt;354 \u00b5mol/L</b> \u2192 <b>same-day medical</b>."},
+         {tone:"amber", h:"Obstructive uropathy", html:"Bilateral flank pain, bladder distension, unable to pass urine despite the urge \u2192 <b>same-day urology</b>."},
+         {tone:"amber", h:"Nephrotoxin exposure with AKI", html:"Recent high-dose NSAID, contrast or aminoglycoside with a rising creatinine in an unwell patient \u2192 <b>same-day</b>."},
+         {tone:"purple", h:"2WW \u00b7 NICE NG12 \u2014 myeloma", html:"AKI with a raised calcium and anaemia or bone pain, aged 60 and over \u2192 urgent FBC plus protein electrophoresis and Bence Jones protein, and refer on a suspected cancer pathway. Myeloma is an intrinsic-renal cause that is repeatedly missed because each abnormality looks explicable on its own."}
+       ]},
+       {b:"why", html:"AKI kills by three mechanisms. <b>(1) Hyperkalaemia</b> causes fatal arrhythmias \u2014 K\u207a \u22656.5 warrants emergency ECG and IV treatment. <b>(2) Fluid overload</b> causes pulmonary oedema. <b>(3) Uraemia</b> accumulates toxins causing pericarditis, encephalopathy and coagulopathy. NG148 mandates same-day specialist input for AKI stage 2\u20133. Missing severe AKI in primary care is a leading cause of preventable death and a frequent source of medico-legal claims \u2014 the sick-day-rules campaign exists because this safety screen was historically underpowered."}
+     ]},
+
+    {id:"cause", nav:"Find the cause", title:"Pre-renal, intrinsic, post-renal \u2014 the pivot of management", sub:"Classify rapidly: the category directly drives what you do. History is the most powerful tool here.",
+     blocks:[
+       {b:"table", head:["Category","Causes and clues","Action"], rows:[
+         ["<b>Pre-renal (about 70%)</b> \u2014 most reversible","Reduced renal perfusion: dehydration, vomiting and diarrhoea, haemorrhage, sepsis, cardiac failure, hepatorenal syndrome, and <b>NSAID/ACEi/ARB/diuretic-induced</b>. <b>Clue: concentrated urine, dry mucous membranes, low BP, tachycardia</b>","Restore volume \u2014 oral or IV fluids; treat sepsis"],
+         ["<b>Intrinsic (about 25%)</b>","<b>Tubular (ATN)</b> \u2014 ischaemia, nephrotoxins (aminoglycosides, contrast, myoglobin, NSAIDs). <b>Glomerular</b> \u2014 rapidly progressive GN (<b>haematuria + proteinuria + casts</b>). <b>Vascular</b> \u2014 renal artery stenosis, TTP/HUS. <b>Interstitial nephritis (AIN)</b> \u2014 drug-induced (penicillin, NSAIDs, PPIs). Also <b>myeloma</b> and <b>rhabdomyolysis</b>","Dipstick + urine ACR/PCR; <b>if GN suspected \u2192 urgent nephrology</b>"],
+         ["<b>Post-renal (about 5%)</b>","Obstruction: BPH, pelvic malignancy, retroperitoneal fibrosis, stones, urethral stricture, single kidney. Clue: poor stream, nocturia, palpable bladder, bilateral hydronephrosis on USS","<b>Urgent renal-tract USS</b>; catheterise for outflow obstruction. <b>2WW if malignancy suspected</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["Key history","Recent illness and fluid intake; <b>medications (NSAIDs, ACEi/ARB, diuretics, antibiotics, contrast)</b>; prior CKD; urinary symptoms; <b>systemic features such as rash or arthralgia \u2014 vasculitis or AIN</b>; BP medication changes"],
+         ["<b>Ask specifically about sick-day drugs</b>","Whether ACEi/ARB, diuretics, NSAIDs or metformin were <b>continued through an acute dehydrating illness</b>, or recently dose-increased \u2014 a common and entirely preventable precipitant"]
+       ]},
+       {b:"table", head:["Examination","What to look for","Why it changes the plan"], rows:[
+         ["Vital signs","BP <b>in both arms</b> (a discrepancy suggests a vascular cause), HR, RR, temperature, saturations, GCS. <b>Postural BP drop &gt;20 mmHg = volume depletion confirmed</b>","Decides fluids versus restriction"],
+         ["<b>Volume status</b>","<b>Hypovolaemia:</b> dry mucosae, reduced skin turgor, sunken eyes, tachycardia, low BP, low JVP. <b>Hypervolaemia:</b> raised JVP, peripheral oedema, crackles, ascites, S3 gallop","<b>Giving IV fluid to a fluid-overloaded patient causes pulmonary oedema</b>"],
+         ["Cardiovascular","JVP, heart sounds \u2014 <b>a pericardial rub means uraemic pericarditis, an emergency</b> \u2014 peripheral oedema","Rub \u2192 dialysis urgency"],
+         ["Respiratory","Basal crackles, reduced air entry, pleural effusion. <b>Saturations &lt;94% \u2192 same-day hospital</b>","Pulmonary oedema"],
+         ["Abdomen","<b>Palpable bladder</b> (retention \u2192 catheterise), renal angle tenderness, flank mass (tumour, PKD), liver size (hepatorenal)","Takes 30 seconds and identifies fully reversible post-renal obstruction"],
+         ["Skin","<b>Purpuric rash \u2192 vasculitis or TTP</b>; maculopapular rash \u2192 drug hypersensitivity (AIN); livedo reticularis \u2192 cholesterol emboli or vasculitis","Points to intrinsic disease needing nephrology"],
+         ["Neurological","<b>Asterixis = uraemia \u2192 emergency.</b> Reduced GCS \u2192 999. Consider Wernicke's if alcoholic or malnourished","Rapid bedside screen for uraemic encephalopathy"],
+         ["Rectal","If post-renal obstruction suspected \u2014 enlarged or irregular prostate","BPH versus malignancy"]
+       ]},
+       {b:"why", html:"Identifying the cause is the pivot of AKI management. Pre-renal AKI resolves with fluid resuscitation and nephrotoxin removal. Intrinsic causes such as rapidly progressive GN require urgent immunosuppression \u2014 delay causes irreversible nephron loss. Post-renal obstruction requires decompression, and the longer it persists the greater the permanent damage. Sick-day rules are validated: temporary cessation of ACEi/ARB, diuretics, NSAIDs and metformin during acute dehydrating illness <b>prevents 20\u201330% of AKI hospital admissions</b>."}
+     ]},
+
+    {id:"workup", nav:"Investigations", title:"Investigations \u2014 prioritised by urgency", sub:"Potassium and the ECG are the most time-critical results.",
+     blocks:[
+       {b:"table", head:["Test","Role","Interpretation"], rows:[
+         ["<b>U&amp;E</b> \u2014 creatinine + potassium","Urgent, all","<b>K\u207a \u22656.0 mmol/L needs an ECG immediately</b>"],
+         ["<b>ECG</b>","<b>Mandatory if K\u207a \u22656.0</b>","Peaked T waves \u2192 widening QRS \u2192 sine wave \u2192 VF. <b>Treat before blood results return if the ECG is abnormal</b>"],
+         ["<b>FBC</b>","Urgent","Anaemia (chronic disease or haemolysis), WCC (infection or vasculitis), platelets (<b>TTP/HUS</b>)"],
+         ["<b>Venous blood gas</b>","Urgent if unwell","<b>pH &lt;7.2 = metabolic acidosis \u2192 emergency</b>"],
+         ["<b>Urine dipstick</b>","All","<b>Blood + protein = glomerulonephritis</b> (or myeloma); nitrites and leucocytes = UTI or pyelonephritis"],
+         ["<b>Urine sodium</b>","Where the category is unclear","<b>&lt;20 mmol/L = pre-renal</b> (sodium conserved); <b>&gt;40 mmol/L = intrinsic</b> (tubules failing to reabsorb)"],
+         ["MSU for culture","If infection suspected","Guides antibiotic choice"],
+         ["<b>ACR</b>","Once stable","Quantify proteinuria; drives the CKD assessment at 3 months"],
+         ["Additional bloods","As indicated","LFTs and albumin (hepatorenal, nutrition); <b>CRP, ESR, CK</b> (infection, inflammation, <b>rhabdomyolysis</b>); glucose and HbA1c; <b>LDH and blood film if a microangiopathic picture</b>"],
+         ["<b>Renal USS</b>","<b>First-line if obstruction suspected</b>, kidneys asymmetric, or the cause is unclear","<b>Within 24 hours</b> whenever obstruction is possible, or if not recovering. <b>Bilateral hydronephrosis mandates same-day urology.</b> <b>Not needed in obvious pre-renal AKI</b>"],
+         ["CXR","If fluid overload or a pulmonary cause suspected","Pulmonary oedema, consolidation"],
+         ["Specialist immunology","If intrinsic disease suspected \u2014 with nephrology","ANCA, ANA, anti-GBM, complement, immunoglobulins, protein electrophoresis, hepatitis B and C, HIV, ASOT. Starting these in primary care can save 24\u201348 hours before immunosuppression"],
+         ["<b>Do NOT order</b>","\u2014","Renal biopsy from primary care; USS where the cause is obviously pre-renal or post-renal and resolving; repeat creatinine in stable CKD with no acute change"]
+       ]},
+       {b:"why", html:"Urine sodium helps separate pre-renal AKI (kidneys conserving sodium, U<sub>Na</sub> &lt;20) from intrinsic tubular damage (U<sub>Na</sub> &gt;40). The autoimmune screen is only relevant where there are features of glomerulonephritis \u2014 but initiating it in primary care can save a day or two before nephrology starts immunosuppression."}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Treatment \u2014 stop, support, and the hyperkalaemia ladder", sub:"Primary-care treatment removes precipitants, optimises fluid balance, manages mild hyperkalaemia, and adjusts nephrotoxic drugs.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"1 \u00b7 Stop the nephrotoxins", html:"<b>HOLD immediately: NSAIDs, ACEi, ARBs, diuretics, metformin</b> (lactic acidosis risk in AKI), <b>lithium</b> (toxic accumulation), <b>gentamicin, vancomycin, trimethoprim</b>. Review recent iodinated contrast. <b>Document clearly in the notes.</b>"},
+         {tone:"blue", h:"2 \u00b7 Fluid challenge \u2014 if not overloaded", html:"Oral rehydration if tolerated \u2014 encourage <b>2\u20133 L/day</b> water. Unable to drink \u2192 IV fluids in hospital. <b>Do NOT give fluids if overloaded (crackles, raised JVP).</b>"},
+         {tone:"plain", h:"3 \u00b7 Treat the underlying cause", html:"UTI or pyelonephritis: co-amoxiclav 500/125 mg TDS, or cefalexin 500 mg QDS (adjust for severity and renal function). <b>Sepsis \u2192 999.</b> Vomiting \u2192 an antiemetic such as <b>cyclizine 50 mg TDS</b>. Catheterise for outflow obstruction."}
+       ]},
+       {b:"ladder", steps:[
+         {step:"1", title:"ECG immediately", when:"K\u207a 5.5\u20136.4 mmol/L",
+          html:"<b>If peaked T waves or QRS widening \u2192 999 now.</b> The hyperkalaemia ladder below applies only where the ECG is normal."},
+         {step:"2", title:"Dietary potassium restriction", when:"ECG normal",
+          fromLabel:"first non-drug step",
+          html:"Avoid bananas, oranges, tomatoes, potatoes, leafy greens, nuts, chocolate, and <b>salt substitutes (LoSalt, NoSalt)</b>. <b>Dietary change alone achieves a 0.3\u20130.5 mmol/L reduction.</b>"},
+         {step:"3", title:"Potassium binder", when:"persistent K\u207a 5.1\u20136.4 in an ambulatory patient",
+          fromLabel:"usually specialist-initiated",
+          html:"<b>Patiromer (Veltassa) 8.4 g OD</b>, or sodium zirconium cyclosilicate (Lokelma) 10 g TDS for 48 hours then 5 g OD. Both may need shared care. <b>Now preferred over calcium resonium</b> for outpatient management \u2014 better tolerability and faster action."},
+         {step:"4", title:"Recheck and escalate", when:"24\u201348 hours",
+          fromLabel:"mandatory",
+          html:"Repeat U&amp;E. <b>K\u207a \u22656.0, or failing to respond \u2192 same-day hospital.</b>"}
+       ]},
+       {b:"table", head:["Drug","Action in AKI","Detail and restart rule"], rows:[
+         ["<b>Metformin</b>","<b>STOP</b> \u2014 and stop if eGFR &lt;30","Risk of lactic acidosis. <b>Hold during AKI even if the eGFR is usually &gt;30.</b> Restart only when creatinine is stable and eGFR \u226530 for \u22653 months"],
+         ["<b>ACEi / ARB</b>","<b>HOLD</b> during acute illness","Restart once creatinine is stable \u2014 acceptable if within 30% of the pre-AKI baseline. Document pre- and post-AKI creatinine to guide the restart, and <b>recheck U&amp;E after restarting</b>"],
+         ["<b>Diuretics</b>","<b>HOLD</b>","Furosemide, spironolactone, thiazides all worsen pre-renal AKI. Restart with caution if still indicated"],
+         ["<b>NSAIDs</b>","<b>STOP</b> \u2014 use paracetamol","They constrict the afferent arteriole and reduce GFR. <b>Avoid indefinitely if CKD persists. Paracetamol 1 g QDS is safe in AKI</b>"],
+         ["<b>Lithium</b>","<b>HOLD + urgent level</b>","Toxicity accumulates rapidly in AKI. <b>Therapeutic range 0.6\u20131.0 mmol/L; toxicity &gt;1.5.</b> Review with psychiatry"],
+         ["<b>SGLT2 inhibitors</b>","<b>HOLD</b>","Dapagliflozin, empagliflozin \u2014 hold in acute illness or if eGFR &lt;45. Restart once stable and recovered"],
+         ["Digoxin, DOACs/LMWH, opioids, gabapentinoids, methotrexate","<b>Review and dose-adjust</b>","All accumulate in renal impairment \u2014 check levels and doses"]
+       ]},
+       {b:"warn", html:"<b>Sick-day rules card \u2014 give it in writing.</b> Every patient with CKD or on at-risk medication should have a written card: hold ACEi/ARB, diuretics, NSAIDs, metformin and SGLT2 inhibitors if vomiting, diarrhoea, or any illness reducing fluid intake \u2014 and restart when eating and drinking normally for 24\u201348 hours. Forgetting to restart them afterwards causes harm too, so the card must say both."},
+       {b:"why", html:"Nephrotoxin removal is the most powerful intervention available in primary care \u2014 <b>40\u201360% of community AKI resolves</b> when precipitants are removed and fluid balance restored. The ACEi/ARB hold is supported by NG148 with explicit restart criteria. The sick-day-rules campaign has been estimated to prevent around 40,000 AKI admissions per year in the UK if consistently applied."}
+     ]},
+
+    {id:"lifestyle", nav:"Prevention", title:"Prevention and recovery optimisation", sub:"These are primary prevention and recovery tools \u2014 AKI survivors carry 3\u00d7 the risk of CKD progression, so these measures are protective.",
+     blocks:[
+       {b:"table", head:["Measure","What to advise","Why / effect"], rows:[
+         ["<b>Hydration</b>","<b>Minimum 1.5\u20132 L daily</b>, water preferred; increase in hot weather, with exercise and during illness. Urine should be pale yellow","<b>Dehydration is the commonest precipitant of community AKI</b>; adequate hydration reduces recurrent AKI by about <b>25%</b> in RCTs"],
+         ["<b>Sick-day rules education</b>","Written card <em>and</em> verbal explanation: hold ACEi/ARB, diuretics, NSAIDs and metformin during any vomiting, diarrhoea or illness reducing intake; restart after 24\u201348 hours of normal eating and drinking","The single most cost-effective primary prevention tool available in primary care"],
+         ["<b>NSAID avoidance</b>","Paracetamol instead \u2014 <b>and explain to avoid even OTC ibuprofen</b>","NSAIDs cause about <b>10% of community AKI</b>; the <b>\u201ctriple whammy\u201d (NSAID + ACEi/ARB + diuretic)</b> is responsible for a significant proportion of AKI deaths and is entirely preventable"],
+         ["<b>Flag it in the record</b>","Code the AKI episode so future prescribing and imaging decisions see it","Prevents the next avoidable insult"],
+         ["Alcohol","<b>&lt;14 units/week</b> with alcohol-free days","Causes dehydration and direct nephrotoxicity \u2014 a significant risk factor, particularly in hot weather"],
+         ["Smoking cessation","Refer to the stop-smoking service","Smoking causes renal vasoconstriction and accelerates CKD progression; <b>post-AKI cessation reduces GFR decline by up to 50%</b>"],
+         ["Blood pressure","<b>Target &lt;130/80 mmHg in CKD with proteinuria.</b> ACEi/ARB preferred once creatinine is stable","<b>Reduces proteinuria by 30\u201340%</b> and slows progression"],
+         ["Glycaemic control","<b>Target HbA1c \u226453 mmol/mol</b> in diabetes","Poor control drives hyperfiltration and nephron loss \u2014 reduces progression from AKI to CKD"],
+         ["Weight","<b>Target BMI &lt;30</b>","<b>Every 5 kg lost reduces BP by about 4 mmHg</b>; obesity drives CKD progression and AKI risk"],
+         ["<b>Contrast precautions</b>","<b>Alert radiology if eGFR &lt;60</b> \u2014 lowest-osmolarity contrast, consider alternative imaging, pre-hydration with 0.9% saline before any contrast CT or angiography (hospital-arranged)","Prevents contrast-associated AKI"],
+         ["Low-potassium diet","If hyperkalaemic \u2014 refer to a renal dietitian post-AKI if K\u207a remains elevated","<b>Reduces K\u207a by 0.3\u20130.5 mmol/L</b>"]
+       ]},
+       {b:"why", html:"<b>AKI is not a single event \u2014 it is a risk marker.</b> Survivors have 3\u00d7 the rate of CKD development, 2\u00d7 the rate of cardiovascular events, and significantly reduced life expectancy compared with matched controls (NG148). Post-AKI primary care is therefore a major prevention opportunity."}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Follow-up, monitoring and safety-netting", sub:"Post-AKI monitoring is a NICE-mandated quality standard, and many patients leave hospital without it. This is the GP's safety net.",
+     blocks:[
+       {b:"table", head:["When","What","Action"], rows:[
+         ["<b>48\u201372 hours</b>","<b>U&amp;E + FBC</b> \u2014 mandatory for any community-managed stage 1 AKI","Confirm creatinine is trending down. Stable or improving \u2192 continue monitoring. Worsening \u2192 same-day hospital"],
+         ["<b>1 week</b>","U&amp;E","Confirm creatinine is returning toward baseline. Consider restarting ACEi/ARB and diuretics if creatinine is within 30% of the pre-AKI baseline"],
+         ["<b>3 months</b>","Full AKI review \u2014 U&amp;E, eGFR, ACR, BP, medicines reconciliation","Formally assess for CKD: if eGFR &lt;60 or ACR &gt;3 mg/mmol persists, diagnose CKD and add to the CKD register. Required by <b>NICE QS76</b>"],
+         ["Annual","If CKD confirmed: eGFR, ACR, BP, FBC, bone profile, calcium, phosphate, and <b>PTH if eGFR &lt;30</b>","<b>Refer nephrology if eGFR &lt;30 or rapidly declining</b>"],
+         ["Fluid balance and weight","Daily while managing at home","Overload or worsening oliguria \u2192 admit"],
+         ["<b>After a hospital AKI</b>","Check the discharge summary for <b>AKI stage, cause, nephrotoxin changes and follow-up instructions</b>","Many discharge summaries are incomplete \u2014 active GP review within 1 week is best practice (RCGP / NHS England joint guidance)"]
+       ]},
+       {b:"kv", rows:[
+         ["Monitoring parameters","eGFR trend, serum creatinine, potassium, <b>bicarbonate (acidosis)</b>, haemoglobin (anaemia of CKD), BP, and <b>proteinuria (ACR)</b>"],
+         ["Also consider at review","Renal dietitian; structured diabetes education if diabetic; BP optimisation \u2014 and code the AKI episode"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udea8 999 \u2014 passing no urine", html:"\u201cIf you pass no urine for 6 hours or more despite drinking well \u2014 call 999.\u201d"},
+         {tone:"red", h:"\ud83d\udea8 999 \u2014 breathless at rest", html:"\u201cNew or worsening breathlessness, especially at night \u2014 call 999.\u201d"},
+         {tone:"red", h:"\ud83d\udea8 999 \u2014 confusion or drowsiness", html:"\u201cAny new confusion, or not acting like yourself \u2014 call 999.\u201d Also severe weakness or inability to stand, and <b>palpitations or chest pain, which can mean a potassium arrhythmia</b>."},
+         {tone:"amber", h:"\ud83d\udd34 Same-day", html:"\u201cIf you are not improving despite stopping the tablets and drinking well, or you keep vomiting \u2014 contact us the same day.\u201d"},
+         {tone:"green", h:"\ud83d\udca7 While you are unwell", html:"\u201cKeep drinking, pause the tablets on your card, and restart them once you have been eating and drinking normally for a day or two.\u201d"}
+       ]},
+       {b:"say", html:"Your kidney blood test has gone off \u2014 usually from dehydration, an infection or a medication. We'll pause some tablets while you're unwell, get fluids into you, and recheck the blood in a couple of days. If you're passing very little urine, getting breathless or feel very unwell, we need to send you in the same day."},
+       {b:"why", html:"Post-AKI care is chronically under-resourced. NG148 and the Taskforce on Kidney Health (2020) highlight that <b>up to 30% of AKI survivors have no formal review within 3 months</b>, missing the chance to diagnose CKD, optimise BP and prevent recurrence. <b>One-year mortality after hospitalised AKI is about 25\u201330%.</b> The 3-month review detects persistent impairment, allows safe medication restart, and reduces the risk of a second AKI \u2014 and failing to review post-AKI and missing progression to CKD 3\u20134 is a known complaint trigger. The 48-hour recheck is the safety net that prevents missed deterioration."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Creatinine not improving?", sub:"Reassess the three categories \u2014 something is ongoing.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 \u00b7 Perfusion", html:"Still hypovolaemic or hypotensive/septic? Reassess and treat."},
+         {tone:"amber", h:"2 \u00b7 Obstruction", html:"Has a renal-tract USS been done? Exclude/relieve obstruction."},
+         {tone:"amber", h:"3 \u00b7 Drugs", html:"All nephrotoxins stopped and doses adjusted?"},
+         {tone:"red", h:"4 \u00b7 Intrinsic disease", html:"Blood + protein on dip, or myeloma features \u2192 urgent nephrology."},
+         {tone:"red", h:"5 \u00b7 Admit", html:"Worsening biochemistry, overload or uraemia \u2192 same-day admission."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 and who can safely stay at home", sub:"Most AKI detected in primary care needs same-day assessment at minimum. Very few patients can be managed in the community.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 \u2014 emergency", html:"<b>K\u207a \u22656.5 mmol/L or ECG changes</b>; pulmonary oedema; <b>reduced GCS or asterixis</b>; <b>systolic BP &lt;90</b> or septic shock; <b>creatinine \u2265354 \u00b5mol/L or AKI stage 3</b>; anuria; <b>uraemic pericarditis (pericardial rub)</b>."},
+         {tone:"amber", h:"Same-day hospital", html:"<b>AKI stage 2</b> (creatinine 2\u20133\u00d7 baseline); <b>K\u207a 6.0\u20136.4</b>; <b>oliguria &gt;6 hours</b>; cause unclear or intrinsic disease suspected; unable to tolerate oral fluids; <b>significant comorbidity</b> (cardiac failure, cirrhosis, diabetes, immunosuppression); <b>rapidly progressive AKI \u2014 doubling in 24\u201348 hours</b>; suspected obstruction (arrange the USS same-day)."},
+         {tone:"amber", h:"Same-day urology", html:"<b>Bilateral hydronephrosis on USS</b>; acute urinary retention (catheterise first); ureteric stone causing obstruction with AKI; suspected malignant obstruction. <b>Each hour of obstruction causes nephron loss.</b>"},
+         {tone:"plain", h:"Urgent nephrology", html:"<b>Haematuria + proteinuria + AKI (possible GN)</b>; suspected vasculitis or AIN; rapidly declining eGFR with no clear pre-renal cause; <b>AKI on CKD stage 4\u20135</b>; nephrotic syndrome; AKI not recovering. Consider myeloma \u2192 haematology."},
+         {tone:"cream", h:"Primary care manageable \u2014 all of these must apply", html:"<b>Stage 1 only</b>; a known cause (dehydration, D&amp;V); a well patient able to drink; no significant comorbidity or medication concern; <b>K\u207a &lt;5.5 mmol/L</b>; and <b>close GP follow-up arranged \u2014 U&amp;E rechecked in 48 hours</b>."},
+         {tone:"plain", h:"On admission \u2014 flag the drugs", html:"Tell the receiving team to review <b>ACEi, ARBs, diuretics, NSAIDs, metformin, lithium and aminoglycosides</b> \u2014 all need suspension or dose adjustment in AKI."},
+         {tone:"plain", h:"Post-AKI review for everyone", html:"Medicines reconciliation, CKD surveillance, and a documented plan to avoid future nephrotoxins."}
+       ]},
+       {b:"why", html:"NG148 states explicitly that <b>AKI stage 2\u20133 warrants hospital admission</b> for IV fluid resuscitation, ECG monitoring and specialist input. Only mild stage 1 with a clear reversible cause in a well patient can be monitored in primary care \u2014 and even then the <b>48-hour review is mandatory</b>. A common and litigated error is watchful waiting once the referral threshold has been crossed."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 78-year-old man on ramipril, indapamide and regular ibuprofen for knee pain, three days of vomiting and diarrhoea. Creatinine 186 \u00b5mol/L against a baseline of 96 (1.9\u00d7), K\u207a 5.8 mmol/L. He feels \u201cjust a bit washed out\u201d and has kept taking all his tablets."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Finds the <b>baseline creatinine</b> and stages this as AKI 1; recognises the <b>triple whammy</b>; does an <b>ECG for the K\u207a of 5.8</b>; assesses volume status specifically; stops the NSAID and holds the ACEi and diuretic; arranges <b>U&amp;E at 48 hours</b>; issues a <b>written sick-day-rules card including when to restart</b>; and books the <b>3-month CKD review</b>. <a href='../../cases/aki.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG148 \u2014 Acute kidney injury: prevention, detection and management (2019)<br><a href="https://www.nice.org.uk/guidance/ng148" rel="noopener">nice.org.uk/guidance/ng148</a><span class="rd"> \u2014 detection and staging, same-day specialist input for stage 2\u20133, nephrotoxin cessation with explicit ACEi/ARB restart criteria, the CKD risk after AKI</span></li>'+
+         '<li><b>KDIGO AKI Clinical Practice Guideline (2012)</b><span class="rd"> \u2014 the staging criteria used throughout: creatinine \u226526 \u00b5mol/L (KDIGO states \u226526.5 \u00b5mol/L) in 48 hours, \u22651.5\u00d7 baseline in 7 days, urine-output thresholds, and stages 1\u20133</span></li>'+
+         '<li><b>NICE QS76 \u2014 Acute kidney injury quality standard</b><span class="rd"> \u2014 AKI survivors should have a structured review within 3 months</span></li>'+
+         '<li><b>NICE NG148 (2013); NHS England AKI Programme; Think Kidneys</b><span class="rd"> \u2014 sick-day rules guidance and the national prevention programme</span></li>'+
+         '<li><b>Taskforce on Kidney Health (2020)</b><span class="rd"> \u2014 up to 30% of AKI survivors have no formal review within 3 months</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 myeloma: aged 60 and over with hypercalcaemia or leukopenia and a suspicion of myeloma, offer very urgent FBC and protein electrophoresis with Bence Jones protein</span></li>'+
+         '<li>NICE CG182 \u2014 Chronic kidney disease (the CKD guideline cited for post-AKI surveillance); RCGP / NHS England joint guidance on post-AKI discharge<span class="rd"> \u2014 BP target &lt;130/80 with proteinuria, and GP review within 1 week of an AKI discharge</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses; patiromer and sodium zirconium cyclosilicate; renal dose adjustment for digoxin, DOACs, opioids, gabapentinoids, lithium and methotrexate</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Acute kidney injury in adults \u2014 NICE NG148, KDIGO AKI 2012, NICE QS76, NHS England AKI Programme and Think Kidneys sick-day-rules guidance. Detection and management are merged on this page; there is no separate AKI pathway to cross-check. Many cases require same-day hospital assessment. Verify all doses against the current BNF and your local AKI and sick-day-rules pathway."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

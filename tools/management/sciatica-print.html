@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sciatica — Protocol · Reasoning GP</title>
+<meta name="description" content="Sciatica management in primary care under NICE NG59: the cauda equina rules and the safety-net script, why gabapentinoids, benzodiazepines, oral steroids and opioids are explicitly NOT recommended, what to use instead, staying active and physiotherapy, when imaging and a surgical opinion are justified, epidural injection, work and driving, and the NG12 routes that run through back pain." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/sciatica.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790201685183360 tools/management/sciatica.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Sciatica protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"⚡",
+  title:"Sciatica — the complete guide",
+  eyebrow:"Protocol · NICE NG59 · the drug list is mostly a list of what NOT to give",
+  stemTitle:"Sciatica is the one pain presentation where the guideline's central recommendation is negative — gabapentinoids, benzodiazepines, oral steroids and opioids are all explicitly not recommended, and most GPs remember the opposite",
+  stemSub:"For the diagnostic route — distinguishing radicular pain from referred pain, stenosis and the mimics — use the <a href='../algorithms/back-pain.html'>back pain pathway</a>. This page is the management: the cauda equina safety-net in words a patient will act on, the NG59 do-not-offer list and what to use instead, staying active rather than resting, physiotherapy and the exercise programme, when imaging and a surgical opinion are actually justified, epidural injection, the fit note and the return to work, and the prognosis figure that makes conservative management acceptable to someone in severe pain.",
+  guideline:"NICE NG59 · NG193 · NG12",
+  reviewed:"12 September 2026",
+  nextReview:"12 March 2027",
+  meta:[
+    {t:"NICE NG59 — low back pain and sciatica in over 16s"},
+    {t:"NICE NG59 — sciatica (lumbar radiculopathy)"},
+    {t:"NG59: do NOT offer gabapentinoids for sciatica", tone:"tw"},
+    {t:"NG12: 60+ back pain → myeloma screen", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Cauda equina</b><small>The safety-net script</small></a><a href="#donot"><b>Do NOT offer</b><small>The NG59 list</small></a><a href="#treat"><b>Treat</b><small>What to use instead</small></a><a href="#active"><b>Stay active</b><small>Physio · exercise</small></a><a href="#refer"><b>Refer</b><small>Imaging · surgery</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Cauda equina — and the reason a leaflet is not enough", html:"Bilateral leg symptoms, saddle or perineal numbness (ask specifically about wiping and about sensation when passing urine), urinary retention or loss of bladder or bowel control, or loss of anal tone → immediate emergency referral for MRI, same day. Say the words out loud to every patient with sciatica, at every consultation — the deficit is often painless, develops over hours, and the window for a good outcome is short. Documented verbal safety-netting is the single most important medicolegal act in this condition."},
+    {tone:"red", h:"⛔ NG59: do NOT offer gabapentinoids for sciatica", html:"NICE explicitly recommends AGAINST gabapentin, pregabalin, other antiepileptics, oral corticosteroids and benzodiazepines for managing sciatica — the 2020 evidence review found no benefit and clear harm. This is the most commonly inverted recommendation in musculoskeletal general practice: pregabalin for sciatica feels like textbook neuropathic prescribing, and it is specifically contraindicated by the guideline. <b>Do not offer opioids for chronic sciatica either.</b>"},
+    {tone:"blue", h:"What to offer instead", html:"An oral NSAID at the lowest effective dose for the shortest possible time, with gastroprotection, having assessed cardiovascular, renal and GI risk. Do not offer paracetamol alone. Consider a weak opioid (with or without paracetamol) only if an NSAID is contraindicated, not tolerated or ineffective — and only for ACUTE pain, with a stop date. Then the treatment that actually carries the evidence: staying active, and a group exercise and physiotherapy programme."},
+    {tone:"green", h:"The prognosis figure that makes conservative care bearable", html:"The majority of acute sciatica improves substantially within 6–12 weeks without surgery, and a large proportion of disc herniations resorb spontaneously. <b>Say this explicitly and early</b> — a patient in severe radicular pain who has not been given a timeframe reasonably assumes nothing is being done. Pair it with honest acknowledgement that the pain is often severe, and with a specific review date rather than \"come back if it doesn't settle\"."},
+    {tone:"amber", h:"Imaging does not help unless the plan is an intervention", host:"", html:"Do not routinely offer imaging in a non-specialist setting. Only image when the result would change management — i.e. when a spinal surgical or pain-intervention opinion is being sought. MRI findings correlate poorly with symptoms, incidental degenerative change is near-universal, and an unexplained scan report reinforces a structural illness belief and drives requests for surgery that will not help. <b>A red flag is a different matter entirely and is imaged urgently.</b>"},
+    {tone:"purple", h:"🟣 NICE NG12 — the cancers that present as back pain", html:"Aged 60 and over with persistent bone pain, particularly back pain, or an unexplained fracture → very urgent FBC, calcium and plasma viscosity or ESR for myeloma; if suggestive, very urgent serum and urine protein electrophoresis with Bence-Jones protein within 48 hours. Aged 60 and over with weight loss plus back pain → urgent direct-access CT within 2 weeks for pancreatic cancer. Unexplained bone swelling or pain → very urgent direct-access X-ray within 48 hours for bone sarcoma. Restated in <a href='#refer'>Refer</a>."}
+  ],
+  pathwaySub:"Five steps. The first is a safety act that is repeated at every single contact.",
+  pathway:[
+    {title:"Screen for cauda equina and the serious causes — every time", html:"Bilateral symptoms, saddle anaesthesia, bladder or bowel dysfunction, progressive motor deficit, and the malignancy, infection and fracture flags. <b>Then give the safety-net verbally and record that you did.</b>", alert:true},
+    {title:"Confirm it is radicular, and grade the deficit", html:"Dermatomal leg-dominant pain below the knee, with a positive straight-leg raise; document power, reflexes and sensation so the next clinician can tell progression from a stable deficit. <b>A significant or progressive motor deficit changes the pathway.</b>"},
+    {title:"Treat the pain within the NG59 limits", html:"NSAID with gastroprotection, shortest course. No gabapentinoids, no benzodiazepines, no oral steroids. A weak opioid only if the NSAID fails, short-term, with a stop date. Say what you are NOT prescribing and why — otherwise it reads as a refusal."},
+    {title:"Keep them active and get physiotherapy started", html:"Explicit advice against bed rest; a group exercise programme; manual therapy only as part of a package including exercise; a psychologically informed programme where there is significant distress or disability."},
+    {title:"Review, and escalate on the right triggers", html:"Review at 2–4 weeks. Escalate for a surgical opinion where radicular pain is non-tolerable, or has not improved after 4–6 weeks of optimal conservative care, or where there is a significant neurological deficit."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Cauda equina", title:"Red flags — and the safety-net script",
+     sub:"The deficit is frequently painless. A patient who has not been told what to look for cannot report it.",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["Saddle or perineal numbness · bilateral leg pain, numbness or weakness · urinary retention or incontinence · faecal incontinence or loss of anal tone · loss of sexual sensation","<b>Cauda equina syndrome.</b> Retention with overflow incontinence is often the presenting feature, and painless","Immediate emergency referral for same-day MRI and neurosurgical assessment. Do not arrange an outpatient scan and do not review in a week"],
+         ["Progressive or severe motor weakness — foot drop, inability to stand on tiptoe or heel, weak knee extension","Significant nerve root compression; the deficit, not the pain, sets the urgency","Urgent (same or next day) spinal surgical assessment. A fixed mild deficit is different from one worsening over days — document power so progression is detectable"],
+         ["Known cancer, with new or changed back pain, band-like pain, or difficulty walking","<b>Metastatic spinal cord compression</b>","Same-day discussion with acute oncology or the MSCC coordinator; whole-spine MRI within 24 hours; dexamethasone per local protocol"],
+         ["Fever, systemic upset, injecting drug use, immunosuppression or recent bacteraemia","<b>Spinal epidural abscess or discitis</b>","<b>Urgent MRI, FBC and CRP, blood cultures; emergency admission if septic</b>"],
+         ["Age over 50 with new pain, night pain waking from sleep, unexplained weight loss, or a history of malignancy","<b>Vertebral metastases, myeloma or primary bone tumour</b>","Urgent imaging and the NG12 pathway below — night pain that wakes from sleep is not mechanical"],
+         ["Significant trauma, or minor trauma in osteoporosis or on long-term steroids","<b>Vertebral fragility fracture</b>","<b>X-ray; assess fracture risk and treat osteoporosis — see <a href='osteoporosis.html'>osteoporosis</a></b>"],
+         ["Bilateral leg pain on walking, relieved by sitting or flexing forward, with preserved pedal pulses","Neurogenic claudication from lumbar spinal stenosis — a different condition with a different natural history","Not acute sciatica: manage conservatively, and refer for a decompression opinion if walking distance is significantly limited"],
+         ["Unilateral leg pain with absent pulses, worse on exertion and relieved promptly by rest","<b>Vascular claudication</b>","Assess pulses and ankle-brachial index — the mimic most easily missed because the story sounds positional"]
+       ]},
+       {b:"say", html:"Before anything else, I need to tell you about one rare complication, and I want you to remember it rather than just take the leaflet. If you develop numbness around your back passage or between your legs — the area you sit on, or when you wipe — or if you cannot pass urine, or you lose control of your bladder or bowels, or the pain and weakness spread to both legs, you need to go to A&amp;E the same day. Not ring the surgery, not wait until morning. That combination means the nerves at the bottom of the spine are being squeezed, and it needs a scan within hours because waiting can cause permanent damage. It is uncommon, and I am not expecting it — but it can come on without much extra pain, so you would not necessarily know it was serious."},
+       {b:"warn", html:"<b>Two things about that script matter.</b> <b>First, it must be spoken and recorded, not delegated to a leaflet</b> — the commonest finding in cauda equina litigation is that the warning was not documented. Second, ask the specific questions rather than \"any bladder problems?\": ask about sensation when wiping, whether the stream feels normal, whether they can tell when the bladder is full. A patient in retention with overflow may report \"a bit of leaking\" and think it unrelated to their back."},
+       {b:"dl", rows:[
+         ["<b>NG12 — the criteria that apply here</b>","Myeloma: aged 60 and over with persistent bone pain, particularly back pain, or an unexplained fracture → very urgent FBC, calcium and plasma viscosity or ESR; if the results suggest myeloma, very urgent serum and urine protein electrophoresis with Bence-Jones protein within 48 hours. Pancreatic cancer: aged 60 and over with weight loss and back pain → urgent direct-access CT within 2 weeks (urgent ultrasound if CT is unavailable). Bone sarcoma: unexplained bone swelling or pain → very urgent direct-access X-ray within 48 hours. Restated in <a href='#refer'>Refer</a>"]
+       ]}
+     ]},
+
+    {id:"donot", nav:"Do NOT offer", title:"The NG59 do-not-offer list — and why it surprises people",
+     sub:"The negative recommendations here are stronger and more specific than the positive ones.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"⛔ Gabapentinoids and other antiepileptics", html:"Do not offer gabapentin, pregabalin or other antiepileptics for sciatica. The 2020 NG59 evidence review found no benefit in sciatica specifically, alongside sedation, dizziness, falls, cognitive impairment, dependence and misuse. Pregabalin is Class C controlled, and combined with an opioid causes additive respiratory depression (MHRA). If a patient is already on one for sciatica, the conversation is about tapering."},
+         {tone:"red", h:"⛔ Benzodiazepines and oral corticosteroids", html:"Do not offer benzodiazepines for sciatica — including diazepam as a \"muscle relaxant\", which is common practice and not supported. <b>Do not offer oral corticosteroids.</b> Neither improves outcome, and both carry real harm: sedation, falls and dependence for one, and the full steroid burden for the other."},
+         {tone:"red", h:"⛔ Opioids for chronic sciatica", html:"<b>Do not offer opioids for managing chronic sciatica.</b> A weak opioid is an option in ACUTE pain only where an NSAID is contraindicated, not tolerated or ineffective — with a review date and a stop date written at the point of prescribing. See <a href='opioid-prescribing.html'>opioids in non-cancer pain</a>."},
+         {tone:"amber", h:"⛔ Paracetamol alone, and the passive treatments", host:"", html:"<b>Do not offer paracetamol alone for low back pain.</b> Do not offer belts, corsets, foot orthotics, rocker-sole shoes, traction, or ultrasound, interferential therapy, PENS or TENS. <b>Do not offer acupuncture for low back pain with or without sciatica.</b> <b>Do not offer spinal injections for low back pain</b> (epidural for acute severe sciatica is a separate, permitted option — see below)."},
+         {tone:"blue", h:"⛔ Do not routinely image", html:"Do not routinely offer imaging in a non-specialist setting; image only if the result would change management. <b>Explain this rather than simply declining</b> — \"the scan would not change what we do, and it would show wear-and-tear that nearly everyone your age has\" is heard very differently from a refusal."},
+         {tone:"green", h:"✓ Say what you are NOT prescribing, and why", html:"A patient who expected pregabalin and receives naproxen without explanation concludes they have been fobbed off. Name the guideline, give the reason (no benefit in sciatica, and real harms), and immediately offer what does work — the physiotherapy referral and the activity plan — so the consultation ends with a plan rather than a subtraction."}
+       ]},
+       {b:"why", html:"The reason this list is counter-intuitive is that sciatica is genuinely neuropathic pain, and neuropathic pain elsewhere is treated with exactly these drugs under CG173. The evidence simply does not transfer: trials in sciatica specifically have not shown benefit for gabapentinoids, while the harms are identical to those seen everywhere else. So CG173 governs diabetic neuropathy and post-herpetic neuralgia, and NG59 governs sciatica — and they give opposite advice about the same molecules. Knowing which guideline you are in is the whole of the prescribing decision here. Note also that NG193's chronic primary pain prohibitions do NOT apply: sciatica is chronic SECONDARY pain, so a patient with sciatica is not denied analgesia on the grounds that chronic primary pain guidance says not to start it — see <a href='chronic-pain.html'>chronic primary pain</a>."}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"What to actually prescribe",
+     blocks:[
+       {b:"table", head:["Situation","Treatment","Notes"], rows:[
+         ["<b>Acute sciatica, first line</b>","Oral NSAID — e.g. ibuprofen 400 mg TDS or naproxen 250–500 mg BD — at the lowest effective dose for the shortest possible time, with a PPI","Assess GI, cardiovascular, hepatic and renal risk first, and check eGFR where relevant. Gastroprotection is recommended for everyone taking an oral NSAID for back pain or sciatica, not only the high-risk"],
+         ["<b>NSAID contraindicated, not tolerated or ineffective</b>","Consider a weak opioid (codeine, with or without paracetamol) for ACUTE pain only","<b>Write the stop date at the point of prescribing.</b> Warn about constipation and prescribe a laxative alongside. <b>Not for chronic sciatica</b>"],
+         ["<b>Severe acute radicular pain not controlled in primary care</b>","Consider referral for an epidural injection of local anaesthetic and steroid","NG59 permits this for ACUTE and SEVERE sciatica — it is the one injection option that is recommended rather than prohibited. Not for chronic sciatica and not for low back pain"],
+         ["<b>Neuropathic pain elsewhere, or a diagnosis that is not sciatica</b>","CG173 ladder — amitriptyline, duloxetine, gabapentin or pregabalin, switching rather than stacking","Relevant only if the diagnosis is not radicular pain from the lumbar spine. See <a href='neuropathic-pain.html'>neuropathic pain</a>"],
+         ["<b>Already taking a gabapentinoid or opioid for sciatica</b>","Review benefit against harm and agree a taper — roughly 10% of the current dose every 2–4 weeks","<b>Do not stop abruptly.</b> Warn that pain often worsens for 2–4 weeks after each reduction and then settles; without that warning the taper is abandoned. See <a href='chronic-pain.html'>chronic pain</a>"],
+         ["<b>Osteoarthritis or spinal stenosis coexisting</b>","<b>Manage under its own guideline</b>","See <a href='osteoarthritis.html'>osteoarthritis</a>; stenosis is managed conservatively with a decompression opinion if walking distance is significantly limited"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"⚠ NSAID safety is the real prescribing risk here", html:"The patient with severe sciatica will take more than prescribed if the pain is bad. State the maximum dose explicitly, prescribe a PPI, give a defined course length, and avoid NSAIDs altogether below eGFR 30, in heart failure, or with active GI disease or anticoagulation."},
+         {tone:"blue", h:"💊 Topical and adjunctive", html:"<b>Topical NSAIDs have little role in radicular pain</b> — the source is the nerve root, not a superficial structure. Heat or cold packs are harmless and some patients find them helpful; positioning advice is often more useful than either."},
+         {tone:"green", h:"✓ Sleep and position", html:"Practical advice earns disproportionate goodwill: lying with the painful side up and a pillow between the knees, a rolled towel under the lumbar spine when sitting, getting out of bed by rolling to the side rather than sitting straight up. None of it is guideline material and all of it helps the first fortnight."},
+         {tone:"red", h:"⛔ Do not advise bed rest", host:"", html:"<b>Bed rest worsens outcomes in sciatica.</b> Deconditioning, fear-avoidance and prolonged disability all follow. Advise staying active and continuing normal activities as far as pain allows, explicitly and at the first consultation."}
+       ]}
+     ]},
+
+    {id:"active", nav:"Stay active", title:"Activity, physiotherapy and the psychosocial half",
+     blocks:[
+       {b:"table", head:["Intervention","What to offer","Detail that matters"], rows:[
+         ["<b>Self-management and activity</b>","Advice and information tailored to the person, encouraging continuation of normal activities; explicit advice against bed rest","<b>Frame activity as treatment rather than permission</b>: \"movement is what settles this\", not \"you can move if you feel able\""],
+         ["<b>Group exercise programme</b>","Offer a group exercise programme (biomechanical, aerobic, mind-body or a combination) within the NHS, taking preferences and ability into account","The core recommended non-drug treatment for low back pain and sciatica. Any modality; consistency and progression matter more than the type"],
+         ["<b>Manual therapy</b>","Consider spinal manipulation, mobilisation or soft-tissue technique ONLY as part of a treatment package including exercise","<b>Not as a standalone treatment</b> — passive treatment alone reinforces the structural illness model and does not change the natural history"],
+         ["<b>Psychologically informed rehabilitation</b>","Consider a combined physical and psychological programme where there is significant psychosocial obstacle to recovery, or where previous treatment has not helped","Screen for fear-avoidance and catastrophising — they predict disability better than the imaging does. This is the right referral for the patient whose pain has outlasted the disc"],
+         ["<b>Return to work</b>","Encourage early return, with modified duties if needed; use the fit note to enable work rather than only to withdraw from it","<b>Time off work is a strong predictor of prolonged disability.</b> The Equality Act 2010 makes reasonable adjustment a legal entitlement where symptoms substantially limit day-to-day activities; Access to Work can fund equipment"],
+         ["<b>Driving</b>","Advise not to drive while pain, weakness or sedating medication impairs control of the vehicle or emergency manoeuvres","There is no specific DVLA notification for sciatica, but a significant motor deficit such as foot drop affects fitness to drive and must be addressed; record the advice"],
+         ["<b>What NOT to offer</b>","No belts, corsets, orthotics, rocker-soles, traction, ultrasound, interferential, PENS, TENS or acupuncture","<b>Several are actively sold to patients in severe pain</b> — saying explicitly that they do not work protects them from spending money on it"]
+       ]},
+       {b:"say", html:"I want to give you a realistic timeframe, because \"it should settle\" is not much use when you are in this much pain. Most sciatica improves substantially over six to twelve weeks, and a lot of disc bulges shrink back on their own — the body reabsorbs them. That does not mean the next few weeks will be comfortable; it means the direction of travel is towards recovery even without an operation. What makes it go faster is keeping moving within what the pain allows, and the physiotherapy I am referring you for. What makes it slower is going to bed. I will see you in two to three weeks to check we are on the right line, and I have told you the warning signs that mean you do not wait for that appointment."}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review and escalation triggers",
+     blocks:[
+       {b:"table", head:["When","What to check"], rows:[
+         ["<b>2–4 weeks</b>","Trajectory — better, same or worse? Power, reflexes and sensation compared with the recorded baseline. NSAID tolerated, and any opioid stopped on its date. Physiotherapy actually started. Work status. Red flags re-screened and the safety-net repeated"],
+         ["<b>4–6 weeks, if not improving</b>","<b>Consider referral for a spinal surgical opinion with imaging.</b> Reassess the diagnosis — stenosis, vascular claudication, hip pathology, or a non-radicular cause. Screen for fear-avoidance and low mood, and consider a combined physical and psychological programme"],
+         ["<b>Any time</b>","Escalate immediately for a new or progressive motor deficit, or any cauda equina feature — regardless of how recently they were seen"],
+         ["<b>Beyond 3 months</b>","This is now chronic secondary pain: review the analgesia against function rather than pain score, taper any gabapentinoid or opioid, confirm the exercise programme is established, and address mood, sleep and work. See <a href='chronic-pain.html'>chronic pain</a>"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 A&amp;E the same day", html:"\"Numbness around the back passage or between your legs, unable to pass urine, losing control of bladder or bowels, or both legs becoming weak or numb — A&amp;E the same day, do not ring us first.\" Repeat at every consultation."},
+         {tone:"amber", h:"🟠 Contact us urgently", html:"New or worsening weakness — a foot that drags or catches, or difficulty on stairs · rapidly worsening pain · fever with back pain · new night pain or weight loss."},
+         {tone:"blue", h:"💊 About the tablets", host:"", html:"\"Take the anti-inflammatory with food, do not exceed the dose on the box even if the pain is bad, and take the stomach protector alongside it. The codeine is for a fortnight at most and it will constipate you — take the laxative.\""},
+         {tone:"green", h:"🔁 What recovery looks like", html:"\"Improvement is usually gradual and uneven — better one day, worse the next. The leg pain usually settles before the back pain, and some numbness or tingling can linger after the pain has gone. That pattern is normal and not a sign of damage.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — same day", html:"Any cauda equina feature · suspected metastatic spinal cord compression · spinal infection with sepsis · severe or progressive motor deficit. <b>Emergency referral for MRI, not an outpatient request.</b>"},
+         {tone:"purple", h:"2WW · NICE NG12", html:"Myeloma: aged 60 and over with persistent bone pain, particularly back pain, or an unexplained fracture → very urgent FBC, calcium and plasma viscosity or ESR; if suggestive, very urgent serum and urine protein electrophoresis with Bence-Jones protein within 48 hours. Pancreatic cancer: aged 60 and over with weight loss and back pain → urgent direct-access CT within 2 weeks. Bone sarcoma: unexplained bone swelling or pain → very urgent direct-access X-ray within 48 hours."},
+         {tone:"amber", h:"Spinal surgical opinion", html:"Radicular pain that is non-tolerable despite optimal conservative care, or that has not improved after 4–6 weeks · significant neurological deficit · neurogenic claudication with significantly limited walking distance being considered for decompression. Imaging is arranged as part of this pathway, because now the result will change management."},
+         {tone:"blue", h:"Pain service — epidural injection", html:"Consider referral for epidural injection of local anaesthetic and steroid in ACUTE and SEVERE sciatica. <b>Not for chronic sciatica and not for low back pain</b>, where spinal injections are explicitly not recommended."},
+         {tone:"blue", h:"Physiotherapy / MSK service", host:"", html:"For a group exercise programme, activity progression and manual therapy as part of a package. State the diagnosis, the neurological findings and the functional goal in the referral."},
+         {tone:"green", h:"Combined physical and psychological programme", html:"Where psychosocial obstacles to recovery are significant, or where previous treatment has not helped. <b>The right referral for pain that has outlasted the disc</b> — and a better use of the appointment than another scan."},
+         {tone:"cream", h:"GP management", html:"Most sciatica is managed entirely in primary care: the cauda equina safety-net, an NSAID with gastroprotection, explicit avoidance of gabapentinoids, benzodiazepines, oral steroids and long-term opioids, activity and physiotherapy, the fit note, and review at 2–4 weeks against a recorded neurological baseline. Related pages: <a href='../algorithms/back-pain.html'>back pain pathway</a> · <a href='../algorithms/chronic-back-pain.html'>chronic back pain pathway</a> · <a href='chronic-pain.html'>chronic primary pain</a> · <a href='neuropathic-pain.html'>neuropathic pain</a> · <a href='opioid-prescribing.html'>opioids in non-cancer pain</a> · <a href='osteoarthritis.html'>osteoarthritis</a> · <a href='osteoporosis.html'>osteoporosis</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 44-year-old warehouse supervisor has had <b>3 weeks of left leg pain</b> radiating from the buttock to the outer calf, worse on coughing, with tingling in the foot. Straight-leg raise is limited to 40° on the left; <b>power, reflexes and sensation are intact</b>. He has taken ibuprofen \"on and off\" and is <b>self-certified off work</b>. He arrives asking for \"pregabalin — my brother had it for the same thing and it sorted him out\", plus <b>\"a scan to see what's actually going on\"</b>, and a sick note for another month. He has a history of dyspepsia."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Screens for cauda equina with the specific questions and gives the safety-net verbally, documenting it; records power, reflexes and sensation as a baseline so progression is detectable; declines pregabalin and explains WHY — NG59 recommends against gabapentinoids for sciatica specifically, and the reason his brother's experience differs is that the evidence does not support it, without dismissing the brother; <b>declines routine imaging with an explanation rather than a refusal</b>, noting it would not change management and that degenerative findings are near-universal; prescribes an NSAID at a defined dose and course length WITH a PPI given the dyspepsia, and checks contraindications; advises explicitly against bed rest and refers to physiotherapy for a group exercise programme; <b>gives the 6–12 week prognosis figure</b> so conservative care is credible; addresses work actively — modified duties and a fit note that enables a graded return rather than another month off, recognising time off as a predictor of prolonged disability; <b>sets a 2–3 week review and names the escalation triggers</b>; and <b>ends with a plan rather than two refusals</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG59 — Low back pain and sciatica in over 16s: assessment and management<br><a href="https://www.nice.org.uk/guidance/ng59" rel="noopener">nice.org.uk/guidance/ng59</a><span class="rd"> — the do-not-offer recommendations for gabapentinoids, other antiepileptics, oral corticosteroids and benzodiazepines in sciatica; no opioids for chronic sciatica; NSAID first-line with gastroprotection; paracetamol not offered alone; the group exercise programme; manual therapy only within a package; the combined physical and psychological programme; epidural injection for acute severe sciatica; and the recommendations against belts, corsets, orthotics, traction, TENS/PENS, ultrasound, interferential therapy and acupuncture</span></li>'+
+         '<li><b>NICE NG59 \u2014 Low back pain and sciatica in over 16s</b><br><a href="https://www.nice.org.uk/guidance/ng59" rel="noopener">nice.org.uk/guidance/ng59</a><span class="rd"> — the primary-care assessment, red-flag set, review intervals, prognosis and referral thresholds</span></li>'+
+         '<li><b>NICE NG193 — Chronic pain (primary and secondary) in over 16s</b><br><a href="https://www.nice.org.uk/guidance/ng193" rel="noopener">nice.org.uk/guidance/ng193</a><span class="rd"> — establishes that sciatica is chronic SECONDARY pain, so the chronic primary pain prohibitions do not apply to it</span></li>'+
+         '<li><b>NICE CG173 — Neuropathic pain in adults: pharmacological management</b><span class="rd"> — the ladder that governs neuropathic pain OTHER than sciatica, and the reason the two guidelines give opposite advice about the same drugs</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — myeloma bloods at 60 and over with persistent bone or back pain, pancreatic CT at 60 and over with weight loss and back pain, and the 48-hour X-ray for suspected bone sarcoma</span></li>'+
+         '<li><b>NICE NG233 — Metastatic spinal cord compression</b><span class="rd"> — the MSCC pathway referenced in the red-flag table</span></li>'+
+         '<li><b>MHRA Drug Safety Updates</b><span class="rd"> — gabapentin and pregabalin as Class C controlled drugs (April 2019); additive respiratory depression when gabapentinoids are combined with opioids; NSAID cardiovascular and GI risk</span></li>'+
+         '<li><b>Equality Act 2010</b><span class="rd"> — the reasonable-adjustment entitlement referenced in the return-to-work row</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Sciatica — NICE NG59, NICE NG59, NG193, CG173 and NG12. Give the cauda equina safety-net verbally at every consultation and document it. Do NOT offer gabapentin, pregabalin, other antiepileptics, benzodiazepines or oral corticosteroids for sciatica, and do not offer opioids for chronic sciatica — CG173's neuropathic ladder does not transfer here. Offer an NSAID at the lowest effective dose for the shortest time, with gastroprotection. Advise against bed rest, refer for a group exercise programme, and give the 6–12 week prognosis. Image only when the result would change management. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

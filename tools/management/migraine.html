@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Migraine — Protocol · Reasoning GP</title>
+<meta name="description" content="Migraine in adults: the two numbers that drive every decision, triptan-plus-NSAID mechanics and switching before abandoning the class, unmasking medication-overuse headache, prophylaxis titrated to target for 6–8 weeks, the hormonal interfaces including aura with CHC as UKMEC 4, and the CGRP-era referral triggers." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/migraine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Migraine protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Migraine — the complete guide",
+  eyebrow:"Protocol · NICE CG150 · BASH · two numbers rule everything",
+  stemTitle:"Attack days and acute-medication days decide every subsequent choice — and until the second number is dealt with, no amount of prophylaxis will work",
+  stemSub:"One page for the whole condition. Confirm it is migraine and catch the atypical aura that leaves this pathway; <b>count the two numbers</b>; treat attacks early with the right triptan mechanics and switch before abandoning the class; <b>unmask medication-overuse headache before calling anything refractory</b>; titrate prophylaxis properly — 6–8 weeks at target, not 2 weeks at the starting dose; handle the hormonal interfaces, where <b>aura plus combined hormonal contraception is UKMEC 4</b>; and know the CGRP-era referral triggers.",
+  guideline:"NICE CG150 · BASH · TA919 · TA906",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE CG150 — headaches in over 12s · BASH guidance"},
+    {t:"MOH limits: 10 days (triptans) / 15 days (simple)", tone:"tw"},
+    {t:"Aura + CHC = UKMEC 4 — switch today", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>POUND · two numbers</small></a><a href="#acute"><b>Acute</b><small>Triptan + NSAID</small></a><a href="#moh"><b>MOH</b><small>The great mimic</small></a><a href="#prophylaxis"><b>Prophylaxis</b><small>6–8 wks at target</small></a><a href="#hormones"><b>Hormones</b><small>UKMEC 4 · pregnancy</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"The two numbers, counted at every review", html:"Number 1 — headache days per month: 15 or more (with 8 or more migrainous) for over 3 months is CHRONIC migraine and a different pathway. Number 2 — acute medication days per month: triptans, opioids or combination analgesics on 10 or more days, or simple analgesia on 15 or more, is medication-overuse headache territory. <b>A 4–8 week diary answers both better than any consultation.</b>"},
+    {tone:"blue", h:"Treat the attack early, full dose, in combination", html:"Sumatriptan 50–100 mg at headache onset — NOT during aura, wait for the pain — PLUS ibuprofen 400–600 mg or naproxen 500 mg or aspirin 900 mg. Efficacy halves once central sensitisation and allodynia set in, so \"wait and see if it's a bad one\" is the commonest patient error. Soluble forms absorb faster in gastric stasis; add metoclopramide 10 mg or prochlorperazine for nausea."},
+    {tone:"amber", h:"Non-response to ONE triptan is not class failure", html:"Try at least two alternatives before giving up: rizatriptan 10 mg (faster), eletriptan 40–80 mg (most effective oral), zolmitriptan nasal 5 mg (vomiting), sumatriptan SC 6 mg (most effective overall), frovatriptan or naratriptan (longer half-life, recurrence-prone and menstrual). <b>About a third of \"triptan failures\" respond to a different one.</b>"},
+    {tone:"red", h:"⛔ Never opioids or ergots", html:"Opioids — including codeine and co-codamol — and ergots are ineffective long-term and are the fastest road to medication-overuse headache and dependence. An inherited co-codamol repeat in a migraine patient is an action, not a footnote."},
+    {tone:"amber", h:"Prophylaxis fails because it is under-dosed and judged too early", html:"Offer at 4 or more attack days a month, disabling attacks, or when acute medication cannot be used. Titrate to TARGET and hold 6–8 weeks before judging — most \"failures\" were 2 weeks at the starting dose. <b>Success is a 50% reduction in attack days on the diary, not zero.</b> First-line: propranolol MR 80 → 160 mg/day, or amitriptyline 10 mg nocte → 50–75 mg by phenotype."},
+    {tone:"purple", h:"🟣 Aura plus combined hormonal contraception = UKMEC 4", html:"Any aura, any age — the CHC comes off TODAY and is switched to a POP, implant or IUS. <b>Migraine WITHOUT aura is UKMEC 2 at initiation and fine for most.</b> New aura appearing ON the pill means stopping mid-pack with bridging cover. This is an absolute contraindication because of ischaemic stroke risk, not a relative caution. See <a href='contraception.html'>contraception</a>."}
+  ],
+  pathwaySub:"Seven steps. Step four is the one that rescues most apparently refractory patients.",
+  pathway:[
+    {title:"Confirm migraine and count the two numbers", html:"4–72 hours with POUND features, normal examination, no imaging for typical migraine. Catch the atypical aura — motor weakness, brainstem features, aura over 60 minutes, first aura over 50 — which leaves this pathway.", alert:true},
+    {title:"Set the foundations", html:"The diary, sleep and meal regularity, hydration, caffeine, trigger review — the free treatments that make everything else measurable."},
+    {title:"Treat attacks early and properly", html:"Triptan plus NSAID at onset, antiemetic for gastric stasis, switch triptan before abandoning the class, gepant rescue where triptans fail or are contraindicated."},
+    {title:"Unmask medication-overuse headache", html:"Before calling anything refractory. Stop the overused drug abruptly for a month, warn about the 1–2 week worsening, and reassess at 4–8 weeks."},
+    {title:"Prophylaxis — adequate dose, adequate time", html:"Propranolol or amitriptyline, then candesartan or topiramate, judged at 6–8 weeks at target dose."},
+    {title:"Handle the hormonal interfaces", html:"Aura and CHC, menstrual mini-prophylaxis, pregnancy, perimenopause, breastfeeding."},
+    {title:"Review on the diary, and refer into the CGRP era", html:"Three adequate prophylactic trials failed → specialist for CGRP monoclonals, rimegepant or botulinum toxin."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm", title:"Step 1 — confirm migraine, and count the two numbers",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>The diagnosis</b>","Attacks lasting 4–72 hours with at least 2 of: unilateral, pulsating, moderate-to-severe, worse on activity — PLUS nausea or vomiting, or photophobia with phonophobia (POUND). <b>Normal examination. No imaging for typical migraine</b> — scans reassure for a fortnight and find incidentalomas"],
+         ["<b>Typical aura</b>","Visual (fortification spectra, scotoma), sensory or speech; evolves GRADUALLY over 5 minutes or more, lasts 5–60 minutes, fully reversible. <b>Sudden-onset focal symptoms are a stroke or TIA pathway, not migraine</b>"],
+         ["<b>Atypical aura — refer</b>","Motor weakness (hemiplegic), double vision, unilateral visual loss, poor balance or dysarthria (brainstem), reduced consciousness, aura over 60 minutes, or a FIRST aura over the age of 50"],
+         ["<b>Number 1 — headache days per month</b>","15 or more days a month (with 8 or more migrainous) for over 3 months = CHRONIC migraine → a different pathway"],
+         ["<b>Number 2 — acute medication days per month</b>","Triptans, opioids or combination analgesics on 10 or more days, or simple analgesia on 15 or more = medication-overuse headache territory — the great mimic of \"worsening migraine\""],
+         ["<b>Context, every time</b>","Menstrual link (diary 3 cycles), contraception (aura? → the hormones section), mood and sleep (they drive drug choice), family history, occupation and driving"]
+       ]},
+       {b:"warn", html:"<b>Red flags out of the migraine pathway:</b> thunderclap (peak intensity within 5 minutes) · new headache over 50, with ESR and temporal tenderness for GCA · postural headache or one that wakes from sleep, with papilloedema, for raised intracranial pressure · fever with neck stiffness · any new neurology · new headache in cancer, HIV or pregnancy · a progressive daily crescendo pattern."}
+     ]},
+
+    {id:"foundations", nav:"Foundations", title:"Step 2 — the diary and the routine: the free treatments",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"📓 The headache diary", html:"THE tool: attack days, acute-medication days, menstrual link, triggers. 4–8 weeks of diary beats any single consultation — every escalation decision below depends on it."},
+         {tone:"green", h:"😴 Sleep and meals", html:"<b>Regular sleep and wake times and regular meals</b> — irregularity is a more reliable trigger than any single food. Skipped meals and lie-ins are classic."},
+         {tone:"green", h:"☕ Caffeine and hydration", html:"Consistent caffeine intake rather than abstinence — withdrawal triggers attacks. Adequate hydration."},
+         {tone:"amber", h:"🔍 Triggers, honestly", html:"<b>Most \"trigger foods\" are premonitory cravings rather than causes.</b> Chase patterns in the diary rather than imposing elimination diets."},
+         {tone:"blue", h:"💊 Riboflavin 400 mg OD", html:"<b>Modest evidence, harmless and cheap — a reasonable adjunct.</b> Magnesium 400–600 mg is similar."},
+         {tone:"green", h:"📍 Acupuncture", html:"Up to 10 sessions over 5–8 weeks where drug prophylaxis is unsuitable or declined — a CG150 option."}
+       ]}
+     ]},
+
+    {id:"acute", nav:"Acute", title:"Step 3 — treat the attack: early, full dose, combination",
+     blocks:[
+       {b:"table", head:["Step","Treatment","Detail"], rows:[
+         ["<b>1st — triptan + NSAID together, at onset</b>","Sumatriptan 50–100 mg at headache onset (NOT during aura — wait for the pain) PLUS ibuprofen 400–600 mg, naproxen 500 mg or aspirin 900 mg","<b>The evidence-based combination.</b> Repeat the triptan after 2 hours or more if it returns (maximum 2 doses in 24 hours). <b>Soluble or dispersible forms absorb faster in gastric stasis</b>"],
+         ["<b>2nd — add the antiemetic</b>","<b>Metoclopramide 10 mg or prochlorperazine</b>","Treats the gastric stasis that stops tablets working — worth adding even without prominent nausea. Buccal prochlorperazine or dispersible options if vomiting. <b>Metoclopramide: maximum 5 days, dystonia risk in the young</b>"],
+         ["<b>3rd — switch the triptan before abandoning the class</b>","Rizatriptan 10 mg (faster) · eletriptan 40–80 mg (most effective oral) · zolmitriptan nasal 5 mg (vomiting) · sumatriptan SC 6 mg (severe or rapid attacks, most effective overall) · frovatriptan or naratriptan (longer half-life — recurrence-prone and menstrual)","Try at least 2 alternatives before giving up. About a third of \"triptan failures\" respond to a different one"],
+         ["<b>4th — gepant rescue</b>","<b>Rimegepant 75 mg ODT (NICE TA919)</b>","Where 2 or more triptans have failed, or triptans are contraindicated or not tolerated — no vasoconstriction, so usable in ischaemic heart disease. Does not cause MOH at usual use"]
+       ]},
+       {b:"table", head:["Rule","Detail"], rows:[
+         ["<b>Triptan contraindications</b>","Ischaemic heart disease, cerebrovascular disease, uncontrolled hypertension, hemiplegic or brainstem aura. Age over 65 is a caution, not a bar — do a vascular review first"],
+         ["<b>Never</b>","Opioids (including codeine and co-codamol) and ergots — ineffective long-term, and the fastest road to MOH and dependence. <b>An inherited co-codamol repeat is an action</b>"],
+         ["<b>Timing</b>","Treat EARLY in the pain phase — efficacy halves once central sensitisation and allodynia set in. \"Wait and see if it's a bad one\" is the commonest patient error"],
+         ["<b>Count the days</b>","Every acute plan comes with the MOH limits said out loud AND written down"]
+       ]}
+     ]},
+
+    {id:"moh", nav:"MOH", title:"Step 4 — unmask medication-overuse headache",
+     sub:"The commonest reversible cause of apparently refractory migraine.",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Suspect it</b>","Triptans, opioids or combination analgesics on 10 or more days a month, or simple analgesia on 15 or more, for over 3 months — the diary shows it instantly"],
+         ["<b>The fix</b>","<b>Stop the overused drug ABRUPTLY for at least 1 month</b> (triptans and simple analgesia — taper only opioids). Headaches worsen for 1–2 weeks before improving: pre-warn, or the patient will \"rescue\" themselves straight back into it"],
+         ["<b>Support the withdrawal</b>","Naproxen 250–500 mg BD regularly for 2–4 weeks as bridging cover (not counted if time-limited), or start prophylaxis simultaneously — candesartan, amitriptyline and the CGRP agents all work even during overuse"],
+         ["<b>Then reassess</b>","At 4–8 weeks: many \"chronic migraineurs\" revert to episodic once the rebound has gone — THEN judge whether prophylaxis is still needed"],
+         ["<b>Prevent relapse</b>","The MOH conversation at every acute prescription; scripts capped — for example 6 triptans a month on repeat, with review"]
+       ]},
+       {b:"why", html:"MOH is the commonest reversible cause of \"refractory migraine\" in primary care. Escalating prophylaxis — or referring — without withdrawing the overuse fails, because the rebound drives the headache no matter what you add underneath it. <b>That is why this step sits before prophylaxis rather than after it.</b>"}
+     ]},
+
+    {id:"prophylaxis", nav:"Prophylaxis", title:"Step 5 — prophylaxis: adequate dose, adequate time, honest counselling",
+     blocks:[
+       {b:"info", html:"Offer when there are 4 or more attack days a month, disabling attacks, or acute medication cannot be used. <b>The iron rule: titrate to target and hold 6–8 weeks before judging</b> — most \"failures\" were 2 weeks at the starting dose. <b>Success is 50% fewer attack days on the diary, not zero.</b>"},
+       {b:"table", head:["Step","Agent","Detail"], rows:[
+         ["<b>1st — propranolol, or amitriptyline by phenotype</b>","<b>Propranolol MR 80 mg → 160 mg/day</b>, or <b>amitriptyline 10 mg nocte → titrate by 10–25 mg → 50–75 mg</b>","Avoid propranolol in asthma and bradycardia; caution in athletes (fatigue). Choose amitriptyline where sleep disturbance, tension-type overlap or low mood coexist — pre-warn about dry mouth and morning grogginess, and take it about 12 hours before waking rather than at midnight"],
+         ["<b>2nd — candesartan or topiramate</b>","<b>Candesartan 8 mg → 16 mg OD</b>, or <b>topiramate 25 mg → 50 mg BD</b>","Candesartan is as effective as propranolol, well tolerated, the quiet star — check BP and U&amp;Es. Topiramate is effective BUT teratogenic (Pregnancy Prevention Programme and effective contraception mandatory), reduces COC efficacy, causes cognitive fog, weight loss, paraesthesia, renal stones and acute glaucoma (early eye pain → stop). <b>In any woman who could conceive, candesartan usually wins</b>"],
+         ["<b>3rd — third agent or combine</b>","The unused first- or second-line, or combine mechanisms (e.g. propranolol plus low-dose amitriptyline)","<b>Re-check MOH first — always.</b> A menstrual pattern calls for the hormonal strategies below rather than endless switching"],
+         ["<b>4th — the CGRP era: refer</b>","CGRP monoclonals (erenumab, fremanezumab, galcanezumab — monthly injections, NICE-approved after 3 failures) or rimegepant 75 mg alternate days (TA906)","Chronic migraine also: botulinum toxin (15 or more headache days with 3 failed preventives). These WORK where everything else failed — refer rather than recycling agents"]
+       ]},
+       {b:"table", head:["Situation","Prophylaxis note"], rows:[
+         ["<b>Withdrawing after success</b>","<b>6–12 months of good control → taper over 2–3 months and see.</b> Many stay well; agree the restart threshold in advance"],
+         ["<b>Woman who could conceive</b>","Avoid topiramate (PPP); think twice about candesartan and stop it pre-conception. Propranolol and amitriptyline have the friendliest profiles. Folic acid and a plan BEFORE conception"],
+         ["<b>Comorbid hypertension</b>","<b>Candesartan or propranolol — one drug, two jobs</b>"],
+         ["<b>Comorbid depression or insomnia</b>","<b>Amitriptyline — but treat the depression properly in its own right</b>. See <a href='depression.html'>depression</a>"],
+         ["<b>Elderly</b>","Candesartan is tolerated best; amitriptyline adds anticholinergic burden and falls risk"]
+       ]}
+     ]},
+
+    {id:"hormones", nav:"Hormones", title:"Step 6 — the hormonal interfaces",
+     blocks:[
+       {b:"table", head:["Situation","Management"], rows:[
+         ["<b>Aura + combined hormonal contraception = UKMEC 4</b>","Any aura, any age — the CHC comes off TODAY, switched to a POP, implant or IUS. Migraine WITHOUT aura is UKMEC 2 at initiation and fine for most. New aura ON the pill → stop mid-pack and bridge. See <a href='contraception.html'>contraception</a>"],
+         ["<b>Menstrual migraine (diary-proven, −2 to +3 days)</b>","Treat acute attacks with a long-half-life triptan; or perimenstrual \"mini-prophylaxis\" — frovatriptan 2.5 mg BD or naratriptan 1 mg BD from 2 days before expected onset for 5–6 days; or a continuous hormonal strategy (extended-cycle CHC if NO aura, or oestrogen-stabilising approaches)"],
+         ["<b>Pregnancy</b>","Migraine usually improves, especially without aura. Acute: paracetamol first; sumatriptan has the best safety data of the triptans; NSAIDs sparingly in T1–T2 and never in T3; antiemetics fine (cyclizine, prochlorperazine). Prophylaxis: propranolol is the choice; stop topiramate and candesartan pre-conception. NEW headache or aura in pregnancy — especially third trimester — think pre-eclampsia and refer the same day"],
+         ["<b>Perimenopause</b>","Attacks often flare with cycle chaos — transdermal HRT (steady levels) is migraine-friendlier than oral, and aura is NOT a contraindication to HRT at physiological doses. See <a href='hrt-prescribing.html'>HRT prescribing</a>"],
+         ["<b>Breastfeeding</b>","Paracetamol and ibuprofen fine; sumatriptan compatible; propranolol compatible"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"Step 7 — diary-led review",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Diary: attack days and acute-medication days</b>","<b>Every review</b>","The two numbers decide: escalate acute care, start or adjust prophylaxis, or unmask MOH"],
+         ["<b>A new prophylactic</b>","<b>6–8 weeks at TARGET dose</b>","Judge then — not at 2 weeks on the starting dose. Success = 50% fewer attack days"],
+         ["<b>Acute treatment adequacy</b>","<b>Every review</b>","<b>Right triptan, taken early enough, with an NSAID and an antiemetic?</b>"],
+         ["<b>Contraception and pregnancy plans</b>","<b>Every review in women of reproductive age</b>","<b>Aura status versus CHC; topiramate and PPP; pre-conception planning</b>"],
+         ["<b>After 6–12 months of control</b>","<b>Planned</b>","<b>Taper prophylaxis over 2–3 months with an agreed restart threshold</b>"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 / same day", html:"\"Thunderclap headache — worst ever, maximal within minutes — call 999. Also fever with a stiff neck, new weakness or numbness, confusion, or a first fit.\""},
+         {tone:"amber", h:"🟠 Contact us", html:"\"A headache that changes character, aura lasting over an hour, aura for the first time, or any new neurological symptom.\""},
+         {tone:"blue", h:"💊 The two limits", html:"\"Triptans on no more than 10 days a month; paracetamol or ibuprofen on no more than 15. Beyond that the painkillers start causing the headaches.\""},
+         {tone:"green", h:"⏱️ Take it early", html:"\"Treat as soon as the pain starts, at the full dose, with an anti-inflammatory alongside — waiting to see if it will be a bad one halves how well it works.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — 999 or same day", html:"Thunderclap headache · suspected meningitis or encephalitis · new focal deficit · papilloedema · suspected GCA with visual symptoms · new headache or aura in pregnancy with pre-eclampsia features."},
+         {tone:"amber", h:"Neurology — atypical aura", html:"Motor weakness (hemiplegic), brainstem features, unilateral visual loss, aura over 60 minutes, or a first aura over 50 — for diagnosis and triptan-safety decisions."},
+         {tone:"blue", h:"Headache clinic — the CGRP era", html:"Three or more adequate prophylactic trials failed, with 4 or more episodic attack days a month or chronic migraine → CGRP monoclonals, rimegepant or botulinum toxin. These work where everything else has failed — refer rather than recycling agents."},
+         {tone:"amber", h:"Diagnostic doubt", html:"<b>Late onset, a changed pattern, or suspected cluster headache</b> — verapamil pathways and high-flow oxygen are specialist-led."},
+         {tone:"cream", h:"GP management", html:"Diagnosis, the diary, acute treatment and triptan switching, MOH withdrawal, prophylaxis to target, the hormonal interfaces and the review rhythm all belong here. Related pages: <a href='tension-headache.html'>tension-type headache</a> · <a href='contraception.html'>contraception</a> · <a href='hrt-prescribing.html'>HRT prescribing</a> · <a href='giant-cell-arteritis.html'>giant cell arteritis</a> · <a href='depression.html'>depression</a> · <a href='../algorithms/headache.html'>headache pathway</a>."}
+       ]},
+       {b:"say", html:"You have given three preventers a proper try and migraine is still taking too many days — that is exactly the group the newer injectable preventers were designed for, and they need the specialist clinic to start them. Keep the diary going: it is the evidence that gets you treated fastest."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 29-year-old woman reports migraines \"getting worse\" — now <b>headache on about 20 days a month</b>. She takes <b>sumatriptan roughly 12 days a month</b> and <b>co-codamol most other days</b>, bought over the counter. She is on the <b>combined pill</b> and mentions that for the last few months she has been getting <b>\"zigzag lights\" for about 20 minutes before some headaches</b> — which is new. She asks to be referred to a neurologist for \"the new injections\"."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Identifies the new visual aura and stops the CHC TODAY — aura plus combined hormonal contraception is UKMEC 4, arranging a POP, implant or IUS and bridging cover, rather than treating this as a headache-only consultation; counts the two numbers and recognises medication-overuse headache from both the triptan (12 days) and the co-codamol, asking specifically about what is bought rather than prescribed; <b>explains that MOH must be withdrawn BEFORE calling this refractory</b> — abrupt stop for a month, with the 1–2 week worsening warned about and bridging naproxen or simultaneous prophylaxis offered; <b>declines the immediate CGRP referral with a reason</b>, since three adequate prophylactic trials are the threshold and none has been tried; starts propranolol or amitriptyline and states the 6–8 week at-target rule; stops the co-codamol explicitly and explains why opioids are the fastest route into MOH; issues a <b>headache diary</b>; and <b>safety-nets the thunderclap and focal-deficit triggers</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG150 — Headaches in over 12s: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg150" rel="noopener">nice.org.uk/guidance/cg150</a><span class="rd"> — the diagnostic criteria, triptan plus NSAID as the acute combination, the antiemetic recommendation, propranolol and topiramate (and amitriptyline) for prophylaxis, acupuncture as an option where drug prophylaxis is unsuitable, and the medication-overuse thresholds and withdrawal advice</span></li>'+
+         '<li>British Association for the Study of Headache (BASH) national headache management system<span class="rd"> — the triptan-switching principle, the 6–8 week at-target prophylaxis trial, perimenstrual mini-prophylaxis with frovatriptan or naratriptan, and the 50% attack-day reduction as the success measure</span></li>'+
+         '<li>NICE TA919 (rimegepant for acute migraine) and TA906 (rimegepant for prevention); TA764, TA659, TA631 (CGRP monoclonals); TA260 (botulinum toxin for chronic migraine)<br><a href="https://www.nice.org.uk/guidance/ta919" rel="noopener">nice.org.uk/guidance/ta919</a><span class="rd"> — the gepant and CGRP indications, and the three-failed-preventives threshold</span></li>'+
+         '<li><b>UK Medical Eligibility Criteria (UKMEC) for Contraceptive Use</b><br><a href="https://www.fsrh.org" rel="noopener">fsrh.org</a><span class="rd"> — migraine with aura as UKMEC 4 for combined hormonal contraception at any age, and migraine without aura as UKMEC 2 at initiation</span></li>'+
+         '<li><b>NICE CG150 \u2014 Headaches in over 12s: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg150" rel="noopener">nice.org.uk/guidance/cg150</a><span class="rd"> — the drug doses quoted, triptan contraindications, pregnancy and breastfeeding guidance, and the prophylaxis withdrawal schedule</span></li>'+
+         '<li><b>MHRA Drug Safety Updates</b><span class="rd"> — topiramate Pregnancy Prevention Programme and its teratogenic and neurodevelopmental risks; metoclopramide duration limits and dystonia risk in young people</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Migraine in adults — NICE CG150, BASH, TA919 and TA906 (rimegepant), TA764 and related CGRP appraisals, and UKMEC. Two numbers drive everything: attack days and acute-medication days. Treat attacks early at full dose with a triptan plus an NSAID, and switch triptan at least twice before calling the class a failure. Never use opioids or ergots. Unmask medication-overuse headache before calling any migraine refractory. Judge prophylaxis at 6–8 weeks at target dose, not 2 weeks at the starting dose. Migraine with aura is UKMEC 4 for combined hormonal contraception at any age. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

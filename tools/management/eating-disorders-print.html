@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eating disorders — Protocol · Reasoning GP</title>
+<meta name="description" content="Eating disorders in primary care: SCOFF screening, the MEED (formerly MARSIPAN) physical risk criteria and when to admit, refeeding syndrome, the GP's monitoring role alongside the eating disorders service, refer-without-delay under NICE NG69, and atypical anorexia, bulimia, binge eating and ARFID." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/eating-disorders.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790195406534963 tools/management/eating-disorders.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Eating disorders protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🍽️",
+  title:"Eating disorders — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Refer the moment you suspect it, and never let a normal BMI reassure you — the physical risk, not the weight, decides urgency",
+  stemSub:"One page for the whole condition: screen with SCOFF, assess physical risk with the MEED parameters (pulse, postural BP, ECG, electrolytes, SUSS test), refer to the eating disorders service immediately rather than waiting for the patient to be ready, and hold the long-term physical monitoring and therapeutic relationship in primary care while the specialist team delivers treatment. Refeeding syndrome is the acute danger; anorexia nervosa has the highest mortality of any psychiatric condition.",
+  guideline:"NICE NG69 · MEED 2022 (RCPsych) · NICE CG32 · BAPEN",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE NG69 — eating disorders (2017, upd. 2020)"},
+    {t:"MEED 2022 (RCPsych) — replaces MARSIPAN"},
+    {t:"NICE CG32 — nutrition support · BAPEN 2018 refeeding"},
+    {t:"SCOFF (Morgan et al.) · DSM-5"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Physical risk</b><small>MEED · admit criteria</small></a><a href="#confirm"><b>Recognise</b><small>SCOFF · the diagnoses</small></a><a href="#workup"><b>Assess</b><small>ECG · bloods · SUSS</small></a><a href="#ladder"><b>Treat</b><small>Refer · therapy · drugs</small></a><a href="#monitor"><b>GP role</b><small>Monitoring · relapse</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ The highest mortality of any psychiatric condition", html:"Anorexia nervosa carries roughly 5% all-cause mortality at 10 years, and the risk is highest in the first years after diagnosis. Deaths are from <b>cardiac events and suicide</b>. Every month of delay in accessing specialist treatment increases that risk."},
+    {tone:"red", h:"MEED criteria — same-day medical admission", html:"BMI &lt;13, heart rate &lt;40, BP &lt;80/50, QTc &gt;450 ms, temperature &lt;35.5°C, K⁺ &lt;3.0 mmol/L, PO₄ &lt;0.5 mmol/L, Mg²⁺ &lt;0.5 mmol/L, syncope, or inability to stand from sitting. Bradycardia with QTc prolongation, hypokalaemia and hypophosphataemia is a sudden-cardiac-death risk."},
+    {tone:"amber", h:"Refer without waiting for readiness", html:"NICE NG69 is explicit: do not delay referral to the eating disorders service because of waiting lists or because the patient seems not \u201cready\u201d. <b>Refer immediately on suspicion and manage in parallel</b> — early intervention produces higher full-recovery rates and lower mortality. Under-18s go to the CAMHS eating disorders urgent pathway (seen within 1 week if urgent)."},
+    {tone:"blue", h:"SCOFF — a score of ≥2 is a positive screen", html:"<b>S</b>ick because uncomfortably full · lost <b>C</b>ontrol over eating · lost more than <b>O</b>ne stone in 3 months · believe yourself <b>F</b>at when others say too thin · <b>F</b>ood dominates your life. <b>Sensitivity 78%, specificity 94% for anorexia nervosa.</b> Ask it sensitively — patients frequently deny or minimise, especially about weight."},
+    {tone:"purple", h:"Refeeding syndrome is the danger of treatment", html:"At risk: BMI &lt;16, or negligible intake (&lt;500 kcal/day) for &gt;5 days. Thiamine BEFORE any glucose. Start at a maximum of 5 kcal/kg/day and increase over a week. Monitor phosphate, potassium, magnesium and ECG daily for the first week. Hypophosphataemia &lt;0.3 mmol/L triggers cardiac and respiratory failure."},
+    {tone:"green", h:"A normal BMI does not exclude a severe eating disorder", html:"Atypical anorexia nervosa meets every criterion except low weight, and carries the same medical and psychiatric risk. Bulimia and binge eating disorder usually present at normal or raised BMI. <b>The physical risk parameters, not the weight, decide urgency.</b>"}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step decides today's disposal.",
+  pathway:[
+    {title:"Assess physical risk first", html:"Pulse, lying and standing BP, temperature, BMI, ECG for QTc, and U&amp;E with phosphate and magnesium. Any MEED parameter met → same-day medical admission. Consider refeeding risk before anyone starts eating more.", alert:true},
+    {title:"Recognise and name it", html:"<b>SCOFF</b>, then which disorder — anorexia nervosa, <b>atypical anorexia</b>, bulimia, binge eating disorder or <b>ARFID</b>. Ask about restriction, fear of weight gain, body image and <b>compensatory behaviours</b>."},
+    {title:"Investigate for complications, not for diagnosis", html:"ECG, U&amp;E, phosphate, magnesium, FBC, LFTs (starvation hepatitis), glucose, TFTs (sick euthyroid), creatine kinase; DEXA in established disease, specialist-arranged."},
+    {title:"Refer immediately and set the GP contract", html:"<b>Community eating disorders service now</b>; CAMHS urgent pathway if under 18. Agree what you will do — physical monitoring and the relationship — and what you will not: you are not the eating disorder therapist."},
+    {title:"Monitor for the long term", html:"Weight, pulse, postural BP and MEED risk at every visit; bloods and ECG on a schedule. <b>Do not discharge from GP care</b> — these are chronic, relapsing conditions."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Physical risk", title:"Physical risk and the admission criteria",
+     sub:"The MEED parameters (2022, Royal College of Psychiatrists — the guidance that replaced MARSIPAN) define when admission is required.",
+     blocks:[
+       {b:"table", head:["Finding","What it means","Action"], rows:[
+         ["<b>BMI &lt;13, or rapidly falling BMI, with physical complications</b>","<b>Anorexia nervosa with severe physical compromise</b> — haemodynamic instability or electrolyte crisis","<b>Same-day medical admission</b>"],
+         ["<b>Heart rate &lt;40 bpm</b>","<b>Bradycardia from vagal overactivity and electrolyte imbalance.</b> With QTc &gt;450 ms, hypokalaemia and hypophosphataemia (hypomagnesaemia too) this is a <b>risk of sudden cardiac death</b>","<b>Same-day medical admission</b>"],
+         ["<b>BP &lt;80/50 mmHg, or syncope</b>","Haemodynamic compromise","<b>Same-day medical admission</b>"],
+         ["<b>Temperature &lt;35.5°C</b>","Hypothermia from loss of insulation and reduced metabolic rate","<b>Same-day medical admission</b>"],
+         ["<b>K⁺ &lt;3.0 mmol/L, PO₄ &lt;0.5 mmol/L or Mg²⁺ &lt;0.5 mmol/L</b>","Electrolyte crisis — arrhythmia risk","<b>Same-day medical admission</b>"],
+         ["<b>Unable to stand from sitting without using the arms</b>","Proximal myopathy from muscle catabolism — the <b>sit-up–squat–stand (SUSS)</b> test","<b>Same-day medical admission</b>"],
+         ["<b>Refeeding syndrome developing</b>","<b>Hypophosphataemia with cardiac or respiratory deterioration</b>","<b>Admission</b>"],
+         ["<b>Any acute deterioration in a known patient</b>","<b>Pulse &lt;50, collapse, or a new electrolyte crisis</b>","<b>999 or same-day admission</b>"]
+       ]},
+       {b:"warn", html:"Refeeding syndrome is the most important acute complication of treating severe malnutrition. In prolonged starvation the body shifts to fat and protein catabolism; intracellular phosphate, potassium and magnesium look relatively preserved even though total body stores are depleted. When carbohydrate is reintroduced, insulin drives glucose, potassium, phosphate and magnesium back into cells simultaneously and plasma levels fall precipitously — causing cardiac arrhythmias, cardiac failure, respiratory failure, seizures and rhabdomyolysis. <b>Hypophosphataemia &lt;0.3 mmol/L is the critical trigger.</b> The protocol: at risk if BMI &lt;16, or intake has been &lt;500 kcal/day for &gt;5 days; start at a maximum of 5 kcal/kg/day — not normal intake — and increase slowly over a week; give thiamine — oral thiamine 100 mg TDS, or Pabrinex IV if severe — BEFORE any glucose; monitor PO₄, K⁺, Mg²⁺ and ECG daily for the first week."},
+       {b:"why", html:"Any patient with a suspected eating disorder needs a physical assessment, and it is the GP who usually has to perform or arrange it — ECG, electrolytes including phosphate and magnesium, glucose, and lying/standing blood pressure. The cardiac risk in severe anorexia nervosa is substantial and <b>peaks during refeeding</b>, which is exactly when the patient appears to be getting better. <b>Document the MEED physical risk assessment at each visit</b> — it is what converts a vague concern into a defensible decision about admission."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Eating disorders have no NICE NG12 suspected-cancer criterion, and none should be invented for one. The relevant caution runs the other way: unexplained weight loss in an adult also has an organic differential, and a psychiatric label must not close it down prematurely. Where the history is appetite loss rather than restriction with body-image disturbance — particularly over 40, or with dysphagia, an abdominal mass, anaemia, hypercalcaemia or abnormal LFTs — work it up on the <a href='../algorithms/anorexia.html'>appetite loss and nutritional assessment pathway</a>, which carries the NG12 cancer routes in full"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Recognise", title:"Screening and diagnosis",
+     sub:"Screen with SCOFF, then identify which disorder — the treatments differ.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>SCOFF questionnaire</b>","Do you make yourself Sick because you feel uncomfortably full? Do you worry you have lost Control over how much you eat? Have you recently lost more than One stone in a 3-month period? Do you believe yourself to be Fat when others say you are too thin? Would you say that Food dominates your life? A score of ≥2 (two or more positive answers) is a positive screen — sensitivity 78%, specificity 94% for anorexia nervosa. Administer it sensitively and non-judgementally: patients frequently deny or minimise, particularly the weight-related questions"],
+         ["<b>What to ask about</b>","Restriction of intake, fear of weight gain, distorted body image, and compensatory behaviours — purging, laxative abuse, excessive exercise. Quantify the weight change and weigh in clinic against previous documented weights, because patients often underestimate"],
+         ["<b>Anorexia nervosa</b>","Restriction with low weight, <b>fear of weight gain and body-image disturbance</b>. Look for <b>amenorrhoea, lanugo hair, cold intolerance and bradycardia</b>"],
+         ["<b>Atypical anorexia nervosa</b>","<b>Every criterion for anorexia nervosa met EXCEPT the low weight.</b> Carries the same medical and psychiatric risk — a normal BMI must not be taken as reassurance"],
+         ["<b>Bulimia nervosa</b>","Binge eating with compensatory behaviour, usually at <b>normal or raised BMI</b>. Look for dental erosion, parotid swelling, Russell's sign (knuckle calluses) and hypokalaemia. The <b>restrictive phase</b> can also present as appetite loss"],
+         ["<b>Binge eating disorder</b>","Recurrent binges without compensatory behaviour; distress and loss of control are the core features. Commonly presents to primary care as obesity rather than as an eating disorder"],
+         ["<b>ARFID — avoidant/restrictive food intake disorder</b>","A DSM-5 diagnosis: food refusal driven by sensory characteristics, fear of aversive consequences (choking, vomiting), or an apparent lack of interest in food — WITHOUT the body-image disturbance of anorexia nervosa. Increasingly recognised in adults, not just children, and more frequent in autism spectrum disorder, anxiety disorders and OCD. Consider it in longstanding selective eating causing nutritional deficiency"],
+         ["<b>Diabulimia</b>","<b>Deliberate insulin restriction to lose weight in type 1 diabetes</b> — glycosuria causes caloric loss. Screen with SCOFF in any young person with type 1 diabetes and recurrent DKA; see the <a href='dka.html'>DKA protocol</a>"]
+       ]},
+       {b:"why", html:"<b>Two traps account for most missed diagnoses.</b> The first is <b>weight</b>: bulimia, binge eating disorder and atypical anorexia all commonly present at a normal or raised BMI, so a BMI in range tells you nothing about risk. The second is <b>the patient's own account</b> — denial and minimisation are features of the illness rather than dishonesty, which is why a collateral history and an objective clinic weight matter, and why the SCOFF is worth asking even when the presenting complaint is something else."}
+     ]},
+
+    {id:"workup", nav:"Assess", title:"Examination and investigations",
+     sub:"You are not investigating to make the diagnosis — that is clinical. You are quantifying physical risk.",
+     blocks:[
+       {b:"table", head:["Assessment","Detail"], rows:[
+         ["<b>Observations</b>","Weight and BMI, pulse, lying and standing (orthostatic) BP, temperature"],
+         ["<b>SUSS test</b>","Sit-up–squat–stand: can the patient sit up from lying, and stand from squatting, without using their arms? Scores proximal myopathy objectively"],
+         ["<b>Nutritional examination</b>","Temporal, thenar and interosseous wasting; <b>lanugo hair, cold peripheries, dry skin</b>. In purging: <b>dental erosion, parotid swelling, Russell's sign</b>"],
+         ["<b>ECG</b>","<b>QTc prolongation and bradycardia — arrhythmia risk.</b> <b>Every 3 months in established anorexia nervosa</b>"],
+         ["<b>U&amp;E plus Mg²⁺ and PO₄</b>","<b>Electrolyte disturbance from restriction or purging.</b> Hypokalaemia is characteristic of purging; hypomagnesaemia and hyponatraemia also occur"],
+         ["<b>FBC, ferritin, B12, folate</b>","Anaemia and micronutrient deficiency"],
+         ["<b>LFTs</b>","<b>Starvation hepatitis</b> — a transaminase rise that reflects the malnutrition itself"],
+         ["<b>Glucose</b>","Hypoglycaemia in severe restriction"],
+         ["<b>TFTs</b>","<b>Sick euthyroid syndrome in severe malnutrition</b> — a low free T3 that must not be treated as hypothyroidism"],
+         ["<b>Creatine kinase</b>","Raised in rhabdomyolysis, and with excessive exercise"],
+         ["<b>DEXA bone density</b>","<b>Osteoporosis in established anorexia nervosa — specialist-arranged</b>"]
+       ]},
+       {b:"why", html:"<b>Sick euthyroid syndrome is the investigation trap here.</b> Severe malnutrition suppresses peripheral T4-to-T3 conversion, giving a low free T3 with a normal or low-normal TSH — this is an adaptive response to starvation, not thyroid disease, and treating it with levothyroxine increases metabolic rate in a patient who cannot afford it. It resolves with nutritional restoration. The same logic applies to the <b>starvation hepatitis</b> transaminase rise: investigate it as liver disease only if it does not track the nutritional state."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Treatment — refer, then support",
+     sub:"Specialist services deliver the treatment. Your job is to get them there fast and keep them physically safe.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Refer to the eating disorders service — immediately", when:"positive SCOFF with weight loss or physical compromise",
+          html:"<b>Urgent referral to the community eating disorders team (CEDS).</b> NICE NG69: do not delay referral because of waiting lists or because the patient does not seem ready — refer and manage in parallel. Under-18s: the CAMHS eating disorders urgent pathway — the NHS waiting time standard is 1 week for urgent and 4 weeks for routine, so specify \u201curgent\u201d if there is any physical compromise or rapid weight loss. Severe disease meeting MEED criteria → joint CEDS and medical inpatient admission."},
+         {step:"Step 2", title:"Psychological therapy — the actual treatment", when:"delivered by the specialist service",
+          fromLabel:"referral accepted",
+          html:"Anorexia nervosa in adults: individual eating-disorder-focused CBT (CBT-ED), MANTRA, or specialist supportive clinical management (SSCM). Children and young people: family therapy (FT-AN / family-based treatment). <b>Bulimia nervosa: CBT-ED, or guided self-help first for adults.</b> <b>Binge eating disorder: guided self-help, then CBT-ED.</b> Know what has been offered so you can support engagement."},
+         {step:"Step 3", title:"Medication — adjunct only, and never the primary treatment", when:"specialist-led",
+          fromLabel:"therapy underway",
+          html:"<b>There is no drug treatment for anorexia nervosa itself.</b> <b>Avoid fluoxetine in anorexia nervosa — it suppresses appetite further.</b> Olanzapine 2.5 mg (2.5–5 mg) daily is specialist-initiated in severe refractory anorexia nervosa — it produces weight gain through appetite stimulation and anxiolysis and reduces obsessional food-related thoughts; NG69 does not recommend it routinely, but the updated evidence review acknowledges its use where other treatments have failed. Mirtazapine 15 mg at night (15–30 mg; the appetite effect is greatest at 15 mg and less prominent at 30–45 mg) is useful where depression coexists (appetite stimulation plus antidepressant plus improved sleep). Treat comorbid depression and anxiety on their own merits — PHQ-9 and NHS Talking Therapies or psychiatry."},
+         {step:"Step 4", title:"Nutritional support and refeeding", when:"severe malnutrition",
+          fromLabel:"specialist-supervised",
+          html:"Follow the refeeding protocol: maximum 5 kcal/kg/day initially, thiamine before glucose, daily electrolytes and ECG for a week. Nasogastric feeding (an NG tube) may be required under MEED criteria — and in extreme cases with impaired capacity, under the Mental Health Act. <b>GPs do not initiate enteral or parenteral nutrition</b> — the role is referral plus monitoring of community NG or PEG patients. Dietitian input throughout."},
+         {step:"Step 5", title:"Practical and social support", when:"alongside treatment",
+          fromLabel:"often forgotten",
+          html:"Fit note, and help with PIP or ESA where the illness affects capacity to work. <b>Signpost Beat, the UK eating disorder charity.</b> <b>Involve family and carers with the patient's consent</b>, and offer them support in their own right."}
+       ]},
+       {b:"warn", html:"<b>How to talk about it matters clinically.</b> Keep conversations <b>non-judgemental and recovery-focused</b>. Avoid food policing, meal-by-meal monitoring and power struggles — in anorexia nervosa these reinforce the disorder. Something like <em>\u201cI can see this is very difficult for you. I want to help you get the support you need\u201d</em> does more than a negotiation about calories. Practical mealtime support — <b>structured mealtimes, eating with family, distraction afterwards</b> — belongs with the family, not with you."}
+     ]},
+
+    {id:"monitor", nav:"GP role", title:"The GP's role — monitoring, coordination, and the long view",
+     sub:"Eating disorders are chronic and relapsing. Primary care holds continuity that the specialist service cannot.",
+     blocks:[
+       {b:"table", head:["What","When","Detail"], rows:[
+         ["<b>Physical monitoring</b>","<b>Every GP visit</b>","Weight, BMI, pulse, orthostatic BP; document the MEED physical risk score each time"],
+         ["<b>Bloods</b>","<b>Monthly in active anorexia nervosa</b>","<b>Electrolytes with phosphate and magnesium, glucose, FBC</b>"],
+         ["<b>ECG</b>","<b>Every 3 months in anorexia nervosa</b>","<b>QTc and rate</b>"],
+         ["<b>Coordination</b>","Ongoing","Liaise with CEDS, keep the patient engaged with treatment, and provide motivational support and family engagement"],
+         ["<b>Scope</b>","Always","Do not act as the eating disorder therapist — maintain the therapeutic relationship and direct specialist treatment to CEDS"],
+         ["<b>Continuity</b>","Long term","Do NOT discharge from GP care — eating disorders are chronic, relapsing conditions requiring long-term GP support"],
+         ["<b>Bone health</b>","Established disease","DEXA, and specialist advice on osteoporosis management; weight restoration is the primary treatment for the bone loss"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"🔁 Not improving? Work through this before escalating the dose of anything", html:"<b>1 Physical risk re-scored?</b> Pulse, postural BP, ECG, electrolytes, SUSS — MEED parameters can be met at any weight. <b>2 Actually in treatment?</b> Referral made, appointment attended, therapy started — or has the patient quietly disengaged? <b>3 Right diagnosis?</b> Consider <b>atypical anorexia, ARFID and diabulimia</b>, and reconsider an organic cause if the picture is appetite loss rather than restriction. <b>4 Comorbidity?</b> Depression, anxiety, OCD, autism and substance use all obstruct recovery and are treatable. <b>5 Refeeding risk</b> re-assessed before any intake increase. <b>6 Escalate</b> — back to CEDS, and to medical admission if any MEED criterion is met."}
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 / same-day", html:"\u201cIf you faint, or your heart feels very slow (a pulse under 50) or is skipping, come in the same day.\u201d Also collapse, or a new electrolyte crisis on bloods."},
+         {tone:"amber", h:"🟠 Same week", html:"<b>Accelerating weight loss (≥1 kg a week) despite treatment</b>, or new or worsening low mood or suicidal thoughts."},
+         {tone:"blue", h:"🔄 Relapse is expected, not failure", html:"\u201cSetbacks are part of this. Coming back early when it slips is the thing that keeps you safe.\u201d"},
+         {tone:"green", h:"📘 Support", html:"<b>Beat</b> for patients and families. Involve family with consent, and offer carers support in their own right."}
+       ]},
+       {b:"say", html:"Thank you for telling me — that took something. I want to be clear about two things. First, I am going to refer you to the specialist eating disorders team today; I am not going to wait until you feel ready, because getting help early genuinely changes the outcome. Second, what I do here is different from what they do. They do the therapy. I check that your body is safe — your weight, your pulse, your blood pressure standing up, a heart tracing and some blood tests — and I stay your GP through all of it. I am not going to police your eating or weigh you into an argument. If your heart rate drops or the bloods change, that is when I would need to act quickly, and I will explain why at the time."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / same-day admission", html:"Any MEED criterion met — HR &lt;40, BP &lt;80/50, QTc &gt;450 ms, K⁺ &lt;3.0, PO₄ &lt;0.5, Mg²⁺ &lt;0.5, temperature &lt;35.5°C, syncope, BMI &lt;13, or inability to stand from sitting. Also <b>developing refeeding syndrome</b>."},
+         {tone:"amber", h:"Eating disorders service — urgent", html:"Positive SCOFF (≥2) with any weight loss or physical compromise → urgent CEDS referral. Severe disease with physical compromise → joint CEDS plus medical inpatient admission. <b>Do not delay for waiting lists or readiness (NG69).</b>"},
+         {tone:"amber", h:"CAMHS eating disorders — under 18s", html:"Urgent pathway; the NHS standard is 1 week for urgent and 4 weeks for routine. Mark it urgent if there is any physical compromise or rapid weight loss."},
+         {tone:"blue", h:"Psychiatry / NHS Talking Therapies", html:"Comorbid depression: PHQ-9 ≥10 → NHS Talking Therapies for mild to moderate, psychiatry for severe, including psychotic depression. Anxiety-related food avoidance: CBT. ARFID: the specialist ARFID pathway — an emerging service, with adult feeding difficulties teams at some centres."},
+         {tone:"green", h:"Dietitian", html:"<b>Nutritional support and refeeding protocol supervision</b>, alongside the specialist team."},
+         {tone:"cream", h:"Stays with the GP", html:"Physical monitoring, medicines safety, comorbidity, the therapeutic relationship, family engagement, and continuity through relapse. Not the therapy itself."}
+       ]},
+       {b:"why", html:"NG69 contains a specific instruction that GPs must not delay referral while waiting for a patient to become \u201cready\u201d, and it exists because early intervention in anorexia nervosa produces significantly higher rates of full recovery and lower mortality than delayed treatment. With roughly 5% all-cause mortality at 10 years — higher than any other psychiatric condition — and the risk highest in the first years after diagnosis, every month of delay counts. Make the referral on identification, and continue primary care support, physical monitoring and engagement in parallel."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 19-year-old student attends about dizziness on standing and feeling cold all the time. Her BMI is 17.8 — down from 21 last year. She says she has \u201cjust been eating healthily and running a lot\u201d, is warm in a heavy jumper on a mild day, and becomes uncomfortable when you ask to weigh her."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Asks SCOFF sensitively rather than accepting the healthy-eating account; takes lying and standing BP, pulse and temperature and arranges an ECG and electrolytes with phosphate and magnesium; scores physical risk against the MEED parameters and does not let a BMI of 17.8 reassure; <b>refers to CEDS the same day without waiting for readiness</b>; considers <b>refeeding risk before advising her to eat more</b>; explores compensatory exercise; and \u2014 the step candidates miss \u2014 states explicitly what the GP role is and is not, so the relationship survives the treatment."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG69 — Eating disorders: recognition and treatment (2017, updated 2020)<br><a href="https://www.nice.org.uk/guidance/ng69" rel="noopener">nice.org.uk/guidance/ng69</a><span class="rd"> — refer without delay, the psychological therapies for each disorder (CBT-ED, MANTRA, SSCM, family therapy), and the position on olanzapine. <b>NG69 replaced the earlier CG9 (2004)</b>; a source referring to \u201cCG9 (2017)\u201d is conflating the two — NG69 is the 2017 guideline</span></li>'+
+         '<li>MEED 2022 — Medical Emergencies in Eating Disorders (Royal College of Psychiatrists, CR233)<span class="rd"> — the physical risk parameters and admission criteria used on this page; <b>MEED replaces the earlier MARSIPAN guidance</b>, and the two names refer to successive versions of the same framework</span></li>'+
+         '<li>NICE CG32 — Nutrition support in adults (2006), and BAPEN refeeding guidance (2018)<br><a href="https://www.nice.org.uk/guidance/cg32" rel="noopener">nice.org.uk/guidance/cg32</a><span class="rd"> — refeeding syndrome risk criteria, the 5 kcal/kg/day starting point, thiamine before glucose, and daily electrolyte monitoring</span></li>'+
+         '<li><b>SCOFF questionnaire (Morgan et al.)</b><span class="rd"> — the five questions, the threshold of 2 or more, and the 78% sensitivity / 94% specificity for anorexia nervosa</span></li>'+
+         '<li><b>DSM-5</b><span class="rd"> — the diagnostic criteria for anorexia nervosa, atypical anorexia nervosa, bulimia nervosa, binge eating disorder and ARFID</span></li>'+
+         '<li>NHS England eating disorders waiting time standard for children and young people (2019)<span class="rd"> — 1 week for urgent and 4 weeks for routine referrals</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — olanzapine, mirtazapine, thiamine and Pabrinex dosing</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Eating disorders — NICE NG69, MEED 2022 (Royal College of Psychiatrists, replacing MARSIPAN), NICE CG32 and BAPEN refeeding guidance, SCOFF and DSM-5. Loss of appetite as a symptom — including its cancer, endocrine and drug-related differential — is covered by the <a href=\"../algorithms/anorexia.html\">appetite loss and nutritional assessment pathway</a>. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

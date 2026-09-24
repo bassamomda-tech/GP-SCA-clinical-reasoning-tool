@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Protocol layout standard · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+</head>
+<body data-screen-label="Layout standard">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script>
+MG.render({
+  icon:"\u{1F4D0}",
+  title:"Protocol layout standard",
+  eyebrow:"Reference \u00b7 the one layout every merged protocol follows",
+  stemTitle:"This is the canonical shape \u2014 approve it once, and all 211 protocols get it",
+  stemSub:"Every merged protocol uses this section order and this component set, rendered by one engine from data. Nothing here is clinical content: each section below shows what belongs in that slot and which component carries it. Sections marked <b>required</b> appear on every page; the rest appear when the condition needs them.",
+  guideline:"internal standard",
+  reviewed:"6 September 2026",
+  meta:[
+    {t:"One renderer \u00b7 management-engine.js ?v=5"},
+    {t:"One stylesheet \u00b7 management.css ?v=4"},
+    {t:"Numbering is automatic 01\u219215"},
+    {t:"2WW pill where NG12 applies", tone:"tw"},
+    {t:"Approve before rollout", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="hypertension.html"><b>Hypertension v3.0</b><small>the reference implementation \u2192</small></a><a href="gout.html"><b>Gout v2.0</b><small>to be aligned \u2192</small></a><a href="menieres.html"><b>M\u00e9ni\u00e8re\u2019s v2.0</b><small>to be aligned \u2192</small></a></div>',
+  quickSub:"Slot 01 \u2014 required. Three to five cards, tone-coded. The answer a GP needs mid-consultation without scrolling. Card tones carry meaning and are used consistently across every protocol.",
+  quick:[
+    {tone:"red", h:"Red \u2014 the thing that kills", html:"Same-day referral, admission, or the diagnosis that must not be missed. Every protocol's first card. Carries the recommendation tag: <span class='mg-src'>NG136 1.5.2</span>"},
+    {tone:"amber", h:"Amber \u2014 confirm before you act", html:"The diagnostic threshold or confirmation step. Prevents treating on a single reading, a single result, or a clinical impression."},
+    {tone:"blue", h:"Blue \u2014 who to treat", html:"The treatment threshold and the shared-decision boundary \u2014 who gets drugs, who gets watchful waiting."},
+    {tone:"plain", h:"Plain \u2014 first-line action", html:"The first drug or first intervention, with the branching rule (age, ethnicity, comorbidity) that decides it."},
+    {tone:"green", h:"Green \u2014 the target", html:"What success looks like: the number, the timeframe, and the review interval. Treat-to-target, never treat-to-dose."}
+  ],
+  pathwaySub:"Slot 02 \u2014 required. The whole consultation in five numbered moves, auto-numbered by the engine. One step is tinted red: the point at which delay causes harm.",
+  pathway:[
+    {title:"Assess properly", html:"How to take the measurement, ask the history, or read the result correctly \u2014 the step most often done badly."},
+    {title:"Confirm", html:"The out-of-office test, the repeat sample, the audiogram, the crystal aspirate \u2014 whatever converts suspicion into a diagnosis."},
+    {title:"Stage or stratify", html:"Severity bands, risk score, or disease burden \u2014 the thing that determines how hard you treat."},
+    {title:"Screen for danger", html:"The red-flag branch: who needs same-day assessment, and what to do while waiting.", alert:true},
+    {title:"Treat to target", html:"Work-up \u2192 decide treatment \u2192 climb the ladder \u2192 set this patient's target \u2192 titrate \u2192 review."}
+  ],
+  sections:[
+    {id:"confirm", nav:"Confirm", title:"Confirming the diagnosis", sub:"Required. This is where the retired algorithm's diagnostic content lands \u2014 criteria, thresholds, and the mimics to exclude.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"teal", h:"Component \u00b7 paired cards", html:"Two side-by-side teal cards for \u201cin clinic\u201d vs \u201cout of office\u201d, or \u201csuspect\u201d vs \u201cconsider\u201d. Bulleted, each bullet carrying its recommendation tag.", src:"class .two"},
+         {tone:"teal", h:"Component \u00b7 criteria card", html:"Formal diagnostic criteria stated verbatim (B\u00e1r\u00e1ny, NG219 tiers, Truelove\u2013Witts) rather than paraphrased, so the page can be quoted in a referral."}
+       ]},
+       {b:"dl", rows:[
+         ["What always appears here","The threshold that defines the diagnosis; the confirmatory test; the named mimics with their discriminators; the trap (a normal value that does not exclude the diagnosis)"],
+         ["Where it comes from","The retired algorithm's steps 1\u20134, folded in verbatim where correct and reconciled where the two legacy pages disagreed"]
+       ]}
+     ]},
+    {id:"exam", nav:"Examination", title:"Targeted examination", sub:"Optional \u2014 include when examination changes the plan. Not a screening list: each finding must alter management.",
+     blocks:[{b:"cards", items:[
+       {tone:"cream", h:"Finding \u2192 action", html:"Card grid, one per finding, each stating what an abnormal result makes you do differently."},
+       {tone:"cream", h:"Kept short", html:"Six findings maximum. If a finding does not change the plan, it belongs in the casebook chapter, not here."}
+     ]}]},
+    {id:"severe", nav:"Red-flag branch", title:"The severe / acute branch", sub:"Required where the condition has an emergency form. Always tinted red so it is findable by scrolling alone.",
+     blocks:[
+       {b:"warn", html:"<b>Component \u00b7 red warning strip.</b> The single sentence that prevents harm \u2014 aspirate before steroid, steroids within 72 hours, never stop insulin, same-day if papilloedema. One per page, at most two."},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Refer same day if\u2026", html:"The explicit list, not \u201cif concerned\u201d."},
+         {tone:"amber", h:"No red flags \u2014 same-week pathway", html:"What to do for the severe-but-stable patient, so the red list is not the only branch."}
+       ]}
+     ]},
+    {id:"workup", nav:"Work-up", title:"Work-up and investigations", sub:"Required. Baseline tests for every newly diagnosed patient, plus the selective tests and who gets them.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"plain", h:"Baseline", html:"The tests everyone gets, grouped (urine, bloods, imaging, risk score)."},
+         {tone:"plain", h:"Consider, selectively", html:"Named test + the trigger that justifies it \u2014 never a bare \u201cconsider\u201d."},
+         {tone:"purple", h:"NG12 slot", html:"Where a direct-access cancer test applies (FIT, CA-125, CXR, PSA, urgent FBC), it appears here <em>and</em> is restated in Refer with the <span class='tw'>2WW</span> pill and the qualifying age.", src:"mandatory per house rules"}
+       ]}
+     ]},
+    {id:"treat", nav:"Who to treat", title:"Who gets treatment?", sub:"Required. The threshold, and the shared decision where the threshold is soft.",
+     blocks:[{b:"dl", rows:[
+       ["Component","A table or dl of patient group \u2192 offer / discuss / do not treat, each row tagged with its recommendation"],
+       ["Tone rule","Absolute risk and shared decision language, so the page supports a conversation rather than dictating one"]
+     ]}]},
+    {id:"lifestyle", nav:"Lifestyle", title:"Lifestyle \u2014 a treatment, not a preamble", sub:"Required. Quantified: the intervention, the dose, and the effect size \u2014 otherwise it reads as filler and gets skipped.",
+     blocks:[{b:"cards", items:[
+       {tone:"green", h:"Quantified table", html:"Salt &lt;6 g, 150 min/week, \u226414 units \u2014 each with its expected effect, so the advice can be prescribed and reviewed."},
+       {tone:"green", h:"Deprescribing", html:"The drug that is causing or worsening the condition, and what to swap it for."}
+     ]}]},
+    {id:"ladder", nav:"Treatment ladder", title:"The treatment ladder", sub:"Required. Numbered steps with the branching rule, the escalation trigger between steps, and the named interaction that causes harm.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"plain", h:"Component \u00b7 ladder", html:"<span class='mg-src'>class .ladder + .stepno</span> Step 1 \u2192 2 \u2192 3 cards, each with a table of patient group \u2192 drug, and the tolerability fallback."},
+         {tone:"cream", h:"Doses", html:"Named primary-care choices with doses, always with \u201cverify in the BNF\u201d \u2014 the page names the drug, the BNF owns the dose."},
+         {tone:"red", h:"The interaction that kills", html:"Every ladder ends with the hard warning: allopurinol + azathioprine, ACEi + ARB, colchicine + clarithromycin."}
+       ]}
+     ]},
+    {id:"targets", nav:"Targets", title:"Targets, secondary causes and side effects", sub:"Required. The target by patient group, the before-you-call-it-resistant check, and how to keep a class working rather than abandoning it.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"blue", h:"Targets by group", html:"Table: standard, elderly, CKD, pregnancy \u2014 the commonest error in chronic-disease care is applying the wrong target."},
+       {tone:"amber", h:"Before you call it resistant", html:"The numbered six-step check \u2014 adherence, dose, driver, diagnosis \u2014 before escalation or referral."}
+     ]}]},
+    {id:"special", nav:"Special groups", title:"Special groups", sub:"Optional. Pregnancy, under-40s, family origin, CKD, frailty and multimorbidity \u2014 only the groups where management genuinely differs.",
+     blocks:[{b:"cards", items:[
+       {tone:"purple", h:"Pregnancy", html:"Drug switches stated explicitly, with the timing."},
+       {tone:"cream", h:"Frailty", html:"When to de-escalate rather than intensify \u2014 the section most protocols omit."}
+     ]}]},
+    {id:"monitor", nav:"Monitoring", title:"Monitoring, review schedule and safety-netting", sub:"Required. What to check, when, and the action threshold \u2014 plus the spoken safety-net.",
+     blocks:[
+       {b:"table", head:["Component","Purpose"], rows:[
+         ["Monitoring table","What / when / action-threshold. Never \u201cmonitor bloods\u201d without the number that triggers a change"],
+         ["Review timeline","The staged rhythm: after each change, while titrating, at target, annually"],
+         ["Safety-net scripts","Written in the words a GP would actually say, so they can be spoken and documented"]
+       ]},
+       {b:"say", html:"<b>Component \u00b7 patient script</b> A teal script block giving the explanation in plain speech \u2014 what the treatment does, what to expect, and the one instruction that determines success. Every protocol carries at least one."}
+     ]},
+    {id:"refer", nav:"Refer", title:"Refer \u2014 when to step beyond primary care", sub:"Required. Same-day, 2WW, urgent and routine, each with the explicit trigger \u2014 plus what primary care keeps.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same-day / emergency", html:"The named list."},
+         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> \u00b7 NICE NG12", html:"The precise threshold restated \u2014 age, modifying feature, and action (USC referral, direct-access test, or 48-hour referral). If the condition has <em>no</em> NG12 criterion, the page says so explicitly rather than inventing one.", src:"house rule"},
+         {tone:"plain", h:"Routine + what we keep", html:"Specialist input triggers, and the explicit statement of what stays in primary care."}
+       ]},
+       {b:"say", html:"<b>Referral script</b> The sentence to say to the patient, and the sentence to put in the referral."}
+     ]},
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"Required. A short practice card only \u2014 the Casebook keeps the full teaching case and is never duplicated here.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"One paragraph, the patient's opening line, and the challenge."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Mapped to the RCGP domains, then a link out to the full casebook chapter."}
+     ]}]},
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Required on every page. Sources traceable to the recommendation they support, and a dated record of what changed.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"plain", h:"Evidence panel", html:"Each source with its URL and <em>which recommendations it covers</em> \u2014 so a figure on the page can be traced without a search."}
+       ]},
+       {b:"warn", html:"<b>Consistency rules that apply to every page.</b> One review date, used in both the header pill and the footnote. Numbering is automatic \u2014 never hand-typed. Card tones mean the same thing on every protocol. The Casebook is linked, never copied. No NG12 link is invented; its absence is stated. No merge-coverage matrix and no version history \u2014 the audit trail lives in the project log, not on the page. <b>Never hard-code a \u201c\u00a7n\u201d cross-reference</b>: link to the anchor (<code>#refer</code>, <code>#provenance</code>) so renumbering can never break a pointer."}
+     ]}
+  ],
+  foot:"Internal layout standard for merged condition protocols \u2014 not clinical content. Rendered by the same engine and stylesheet as every protocol, so this page is a live specimen of the layout rather than a mockup of it."
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Malnutrition — Protocol · Reasoning GP</title>
+<meta name="description" content="Malnutrition in adults: MUST scoring and the score-2 rule, refeeding syndrome and the thiamine-before-glucose rule, the food-first step-up to ONS with ACBS criteria, why albumin misleads, food insecurity and the question to ask, mirtazapine for appetite, PEG in advanced dementia, and the NG12 weight-loss routes." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/malnutrition.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Malnutrition protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🍽️",
+  title:"Malnutrition — the complete guide",
+  eyebrow:"Protocol · NICE CG32 · BAPEN MUST · food first, then ONS",
+  stemTitle:"Malnutrition is screened for with a five-minute tool that most practices own and few use, and the two things that kill are not the undernutrition itself — they are refeeding syndrome and giving glucose before thiamine",
+  stemSub:"One page for the whole condition. Score MUST properly (including how to get a height from someone who cannot stand), act on the score — <b>2 or more means a dietitian referral without delay</b> — then work the food-first step-up before reaching for a prescription, because ONS have ACBS criteria and a review date. Along the way: why albumin is a poor nutritional marker and CRP explains most low ones, the food-insecurity question worth asking verbatim, depression as the commonest treatable cause of weight loss in older people, and the honest conversation about PEG feeding in advanced dementia.",
+  guideline:"NICE CG32 · NG97 · BAPEN MUST · MARSIPAN · ACBS · NG12",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE CG32 — nutrition support in adults"},
+    {t:"BAPEN — MUST screening tool (free at bapen.org.uk)"},
+    {t:"NICE NG97 — dementia · MARSIPAN — eating disorders"},
+    {t:"NG12: unexplained weight loss → cancer pathway", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Red flags</b><small>Refeeding · Wernicke</small></a><a href="#must"><b>MUST</b><small>Score and act</small></a><a href="#causes"><b>Causes</b><small>Intake · losses · social</small></a><a href="#treat"><b>Step up</b><small>Food first, then ONS</small></a><a href="#practical"><b>Practical</b><small>What actually works</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Never give glucose before thiamine", html:"In any malnourished patient, IV glucose given before thiamine can precipitate acute Wernicke encephalopathy — glucose increases the metabolic demand for thiamine in someone already depleted. The triad is confusion, ataxia and ophthalmoplegia, but not all three need be present: assume Wernicke in any malnourished patient who becomes confused. Treatment is IV Pabrinex (thiamine 250 mg, as I+II combined, three times daily for 3–5 days), then oral thiamine 100 mg TDS. Highest risk: alcohol dependence, prolonged vomiting, post-bariatric surgery, cancer."},
+    {tone:"red", h:"⚠ Refeeding syndrome — the risk is created by the treatment", html:"Highest risk: BMI under 16, unintentional weight loss over 15% in 3–6 months, little or no intake for more than 10 days, or low potassium, phosphate or magnesium before feeding. Check phosphate, potassium and magnesium BEFORE starting nutritional support and monitor weekly for 2–4 weeks. Start feeding slowly, give thiamine and B vitamins before and with feeding, and correct electrolytes as you go rather than waiting. Severe hypophosphataemia needs same-day assessment."},
+    {tone:"blue", h:"MUST score 2 or more = dietitian, without delay", html:"Three steps: BMI (over 20 = 0, 18.5–20 = 1, under 18.5 = 2) + unplanned weight loss over 3–6 months (under 5% = 0, 5–10% = 1, over 10% = 2) + acute disease effect (2 if acutely ill AND no intake for over 5 days). 0 = low risk, rescreen monthly in the community. 1 = medium, document and observe. 2 or more = high risk — refer to a dietitian and start nutritional support. If the patient cannot stand or be weighed, estimate height from ulna length or demi-span using the BAPEN tables — \"unable to weigh\" is not a reason to skip screening."},
+    {tone:"amber", h:"Albumin is not a nutritional marker", html:"Albumin is a negative acute-phase reactant: it falls in infection, surgery, trauma, malignancy and CKD because the liver switches to making CRP and fibrinogen instead. So severe established malnutrition can show a normal albumin, and a well-nourished septic patient can show a low one. Read albumin alongside CRP — a high CRP with a low albumin indicates inflammation, not nutritional depletion. Prealbumin has a 2-day half-life versus albumin's 20 days and responds faster, but is also inflammation-suppressed and rarely available in primary care."},
+    {tone:"green", h:"Food first — and fortification beats prescribing", html:"<b>Before any supplement: fortify what the patient already eats.</b> Full-fat milk instead of skimmed; butter on vegetables and potatoes; cheese into soups and mash; cream into porridge; milk powder into milky foods — 2 tablespoons adds about 4 g of protein without adding volume. Small frequent meals every 2–3 hours, the largest when appetite is best (often mid-morning, not evening), and the most nutritious part of the meal eaten first before fatigue or early satiety sets in."},
+    {tone:"purple", h:"🟣 NICE NG12 — unexplained weight loss is a cancer route", html:"Unexplained weight loss is an NG12 trigger in its own right, and malnutrition is frequently its first presentation. Use the age- and symptom-specific criteria: weight loss with abdominal pain aged 40 and over → urgent direct-access CT for pancreatic cancer; weight loss with dyspepsia, reflux, nausea or vomiting aged 55 and over → urgent direct-access OGD; weight loss with iron-deficiency anaemia or a change in bowel habit aged 40 and over → FIT and the colorectal pathway; weight loss with a cough, fatigue or breathlessness aged 40 and over → urgent chest X-ray within 2 weeks. Restated in <a href='#refer'>Refer</a>."}
+  ],
+  pathwaySub:"Five steps. The screening step is the one that is skipped, and the refeeding step is the one that causes harm.",
+  pathway:[
+    {title:"Score MUST — and do it on the patients who never get screened", html:"Screen any adult with unintentional weight loss, BMI under 20, poor appetite, a chronic disease carrying nutritional risk, or any condition impairing food intake. Use ulna length or demi-span where the patient cannot be weighed or stand."},
+    {title:"Assess refeeding risk BEFORE feeding", html:"BMI under 16, weight loss over 15%, minimal intake over 10 days, or low phosphate, potassium or magnesium. Check the electrolytes first, give thiamine before and with feeding, start slowly — and never give glucose before thiamine.", alert:true},
+    {title:"Find the cause across all three axes", html:"Reduced intake (depression, dysphagia, dentition, drugs, food access) · increased losses or demands (malabsorption, cancer, COPD, sepsis) · social and psychological (isolation, food insecurity, alcohol, eating disorder). Depression is the commonest treatable cause in older people and is routinely missed — PHQ-9 at every assessment."},
+    {title:"Step up: food first, then ONS, then enteral", html:"Fortification and dietary advice for 4–8 weeks · ACBS-criteria ONS with a dietitian and a review date · enteral feeding for a non-functioning oral route · parenteral only for a non-functioning gut."},
+    {title:"Monitor, and stop when the job is done", html:"Weight weekly then monthly, MUST rescored each time, electrolytes weekly for 2–4 weeks if refeeding risk, and functional markers — grip strength and walking speed often improve before weight does. Review ONS at 3 months minimum and stop them when weight is maintained on diet alone."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Red flags", title:"Red flags — including the two the treatment creates",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["Confusion in a malnourished patient — with or without ataxia and ophthalmoplegia","<b>Wernicke encephalopathy.</b> Thiamine deficiency impairs pyruvate dehydrogenase; the classic triad is frequently incomplete","Urgent IV thiamine — Pabrinex I+II, thiamine 250 mg three times daily for 3–5 days, then oral thiamine 100 mg TDS. <b>NEVER give IV glucose first — it precipitates the encephalopathy</b>"],
+         ["BMI under 16 · weight loss over 15% in 3–6 months · negligible intake for over 10 days · low phosphate, potassium or magnesium","<b>High refeeding-syndrome risk.</b> Refeeding drives an insulin surge, intracellular shift of phosphate, potassium and magnesium, and can cause arrhythmia, cardiac failure and death","Check phosphate, potassium and magnesium BEFORE feeding; start slowly; thiamine and B vitamins before and with feeding; monitor electrolytes weekly for 2–4 weeks. <b>Severe hypophosphataemia or severe derangement → same-day assessment</b>"],
+         ["MUST 2 or more with a very low BMI, or acute illness with no intake for over 5 days","<b>Severe malnutrition requiring inpatient nutritional support</b>","<b>Same-day hospital assessment</b>"],
+         ["<b>Unexplained weight loss over 5% in 3 months with no identified cause</b>","<b>Undiagnosed malignancy until excluded</b>","<b>NG12 pathway — see <a href='#refer'>Refer</a>.</b> Weight loss is a criterion in its own right, not a soft sign"],
+         ["Suspected eating disorder with BMI under 13, heart rate under 40, BP under 80/50, QTc over 450 ms, potassium under 3.0 mmol/L, or syncope","MARSIPAN medical admission thresholds — medical instability requiring admission before or alongside psychiatric treatment","Weigh, measure BMI, ECG for QTc, check electrolytes and glucose, and refer to the adult eating disorder service — or liaison psychiatry if acutely medically unwell. <b>Anorexia nervosa in the 30–50 age group is frequently undiagnosed</b>"],
+         ["<b>Uraemic malnutrition with confusion</b>","<b>Advanced renal failure</b>","<b>Same-day assessment</b>"],
+         ["Unexplained malnutrition in a child, or in an adult with capacity concerns","<b>Safeguarding</b>","Safeguarding referral immediately — MASH or local authority adult social care. Document the clinical findings and the explanation given without challenging the carer narrative, and record the discrepancy"]
+       ]},
+       {b:"warn", html:"The two iatrogenic dangers on this page both come from treating enthusiastically. Feeding a severely depleted patient too fast causes refeeding syndrome; giving glucose to a thiamine-depleted patient causes Wernicke encephalopathy. Both are prevented by the same two habits: check phosphate, potassium and magnesium before you start, and give thiamine first."}
+     ]},
+
+    {id:"must", nav:"MUST", title:"MUST — scoring it, and scoring the patients who cannot stand",
+     sub:"Validated, free, about five minutes, endorsed by NICE and BAPEN — and the commonest reason malnutrition is missed is that nobody scored it.",
+     blocks:[
+       {b:"table", head:["Step","Scoring"], rows:[
+         ["<b>Step 1 — BMI</b>","<b>Over 20 = 0 points · 18.5–20 = 1 point · under 18.5 = 2 points</b>"],
+         ["<b>Step 2 — unplanned weight loss over the last 3–6 months</b>","<b>Under 5% = 0 points · 5–10% = 1 point · over 10% = 2 points</b>"],
+         ["<b>Step 3 — acute disease effect</b>","2 points if the patient is acutely ill AND there has been no nutritional intake for more than 5 days"],
+         ["<b>Total 0 — low risk</b>","<b>Rescreen monthly in the community, weekly in hospital</b>"],
+         ["<b>Total 1 — medium risk</b>","<b>Document and observe; dietary advice and fortification; rescreen</b>"],
+         ["<b>Total 2 or more — high risk</b>","<b>Refer to a registered dietitian AND start nutritional support.</b> This is the action the whole tool exists to trigger"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Who to screen</b>","Any adult with unintentional weight loss, BMI under 20, poor appetite, a chronic disease carrying nutritional risk (cancer, COPD, CKD, heart failure, IBD, neurological disease), or any condition that might impair food intake. Care home residents, the housebound and the recently discharged are the groups most often missed"],
+         ["<b>If the patient cannot be weighed or cannot stand</b>","Estimate height from ulna length or demi-span using the BAPEN tables, and estimate BMI from reported weight; mid-upper arm circumference is an alternative surrogate. <b>\"Unable to weigh\" is not a reason to leave the screen undone</b> — the tools exist precisely for this group"],
+         ["<b>Where to get it</b>","<b>Free at bapen.org.uk.</b> Every practice should be able to score MUST"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🔬 Types worth distinguishing", html:"<b>Protein-energy malnutrition</b> — the common UK picture is mixed PEM with sarcopenia. <b>Disease-related malnutrition</b> — reduced intake plus increased demand from chronic illness. <b>Malnutrition–inflammation–cachexia syndrome</b> — inflammation-driven weight loss in malignancy, heart failure or CKD, which is metabolically distinct from simple undernutrition and does not fully reverse with feeding alone."},
+         {tone:"amber", h:"⚠ Micronutrients travel with it", html:"Vitamin D (very common — housebound, care home, covered or darker skin), iron, B12, folate, zinc (poor wound healing, immune dysfunction, taste disturbance), selenium, magnesium, calcium. <b>And thiamine, which is the one that is an emergency</b> — see the red flags."}
+       ]}
+     ]},
+
+    {id:"causes", nav:"Causes", title:"Why is this person not eating enough?",
+     sub:"Three axes. The social one is the one a blood test will never show.",
+     blocks:[
+       {b:"table", head:["Axis","Causes","What to do about it"], rows:[
+         ["<b>Reduced intake — anorexia</b>","Depression — the commonest treatable cause of reduced appetite and weight loss in older people, and frequently undetected · anxiety · dementia · hypothyroidism · chronic pain · malignancy (cytokine-driven) · drugs (opioids, metformin, digoxin, SSRIs)","<b>PHQ-9 at every malnutrition assessment.</b> TFTs. <b>Medication review — see the deprescribing card below</b>"],
+         ["<b>Reduced intake — dysphagia</b>","Stroke · Parkinson's · MND · oesophageal pathology · head and neck cancer · dental problems","<b>SALT referral with videofluoroscopy and a modified-texture diet</b>"],
+         ["<b>Reduced intake — oral and dental</b>","Ill-fitting dentures · oral candidiasis (present in roughly 30% of care home residents) · mucositis · xerostomia from anticholinergics and SSRIs","Ask at every review: \"Do you have any problems with your mouth, teeth or gums that make it difficult to eat?\" Community dental referral; <b>fluconazole 50 mg OD for 7 days or miconazole oral gel</b> for candidiasis; saliva substitutes"],
+         ["<b>Reduced intake — access to food</b>","Poverty and food insecurity · physical disability (cannot open packaging, cannot cook) · social isolation · bereavement","<b>Ask the question directly (below) and refer to social prescribing.</b> Occupational therapy where the limitation is physical"],
+         ["<b>Increased losses — malabsorption</b>","Coeliac disease · Crohn's · chronic pancreatitis with steatorrhoea · short bowel · bile acid malabsorption","<b>Anti-tTG IgA with total IgA · faecal elastase if steatorrhoea</b> · gastroenterology referral"],
+         ["<b>Increased demand</b>","Cancer · sepsis · burns · major surgery · severe COPD (the work of breathing can consume many times normal calories) · heart failure · CKD · HIV","Treat the underlying disease — it is the most effective nutritional intervention"],
+         ["<b>Social and psychological</b>","<b>Loneliness and isolation — eating alone reduces intake substantially</b> · food insecurity · eating disorders including ARFID · alcohol dependence, which supplies calories while depleting thiamine, folate, zinc and magnesium · poor care home mealtime experience","<b>Community lunch clubs, meal delivery, befriending.</b> <b>Alcohol: thiamine replacement is not optional</b> — see <a href='alcohol-problem-drinking.html'>alcohol</a>"]
+       ]},
+       {b:"say", html:"I want to ask you something I ask everyone, and please do not take it as a judgement. In the last twelve months, have you been worried whether your food would run out before you had money to buy more? … Thank you for telling me. That is more common than people think, and there is practical help — I can put you in touch with our social prescriber today, who can sort a food bank referral if you need one now, check you are getting every benefit you are entitled to, and look at meal delivery. I am also going to do some blood tests, because going without adequate food does measurable things to the body that we can put right."},
+       {b:"why", html:"That question is worth asking verbatim because it is validated, brief, and it is the one thing on this page a blood test cannot substitute for. Food insecurity is associated with undernutrition and micronutrient deficiency, and — paradoxically — with obesity and poor metabolic health, because calorie-dense food is cheaper than nutritious food. A positive answer should trigger three things at once: social prescribing referral (community navigator, food bank, benefits check), a benefits entitlement assessment, and practical support such as meal delivery or Healthy Start vouchers. <b>The GP is often the first professional to identify it.</b>"}
+     ]},
+
+    {id:"investigate", nav:"Investigate", title:"Examination and investigations",
+     blocks:[
+       {b:"table", head:["Tier","Tests","Interpretation"], rows:[
+         ["<b>Anthropometry</b>","Weight and height for BMI; ulna length or demi-span if unable to stand; mid-upper arm circumference","The measurement, not the impression — record it so the next review has a comparator"],
+         ["<b>First-line bloods</b>","FBC · ferritin and serum iron · B12 and folate · U&amp;Es · LFTs with albumin · CRP · glucose and HbA1c · TFTs · 25-OH vitamin D · calcium, phosphate and magnesium","Calcium, phosphate and magnesium are here for refeeding risk, not for diagnosis — they are needed before feeding starts"],
+         ["<b>Albumin and CRP together</b>","<b>Albumin is a negative acute-phase reactant with a 20-day half-life</b>","<b>A high CRP with a low albumin means inflammation, not undernutrition.</b> Normal albumin does not exclude severe malnutrition. Prealbumin (2-day half-life) responds faster but is also inflammation-suppressed and rarely available in primary care"],
+         ["<b>Second-line, cause-directed</b>","Anti-tTG IgA with total IgA (coeliac) · faecal elastase (chronic pancreatitis) · PSA in men over 50 · chest X-ray (lung cancer, TB) · serum protein electrophoresis (myeloma) · zinc and selenium if specifically suspected · thiamine status in alcohol-related malnutrition","Directed by the history, not ordered as a panel"],
+         ["<b>Functional assessment</b>","Hand grip strength · walking speed · ability to perform activities of daily living","These often improve before weight does, which makes them the better early marker of a working plan"]
+       ]}
+     ]},
+
+    {id:"treat", nav:"Step up", title:"Nutritional support — the four-step ladder",
+     blocks:[
+       {b:"table", head:["Step","What it is","Detail"], rows:[
+         ["<b>Step 1 — dietary advice and food fortification</b>","<b>For MUST 1–2 with a functioning gut. Food first.</b> Increase the energy and protein density of the existing diet rather than the volume","Fortify: butter, cream, cheese, milk powder, olive oil into ordinary cooking. Frequent small meals, 6–8 times a day. High-protein snacks between meals. Full-fat dairy. Written advice, dietitian input for a personalised plan, and address the barriers (dental review, medication review, depression screening and treatment). <b>Duration 4–8 weeks, then reassess weight and MUST</b>"],
+         ["<b>Step 2 — oral nutritional supplements (ONS)</b>","<b>Prescribed when fortification alone is insufficient</b>","ACBS criteria: disease-related malnutrition, dietary measures tried and inadequate, and MUST 2 or more or a qualifying condition. Typically 1–3 per day <b>as a supplement, not a meal replacement</b>. Review at 4–6 weeks for weight, compliance and acceptability; formal review at 3 months minimum. Stop when weight is stable on food alone, if the patient declines, or on an appropriate end-of-life decision"],
+         ["<b>Step 3 — enteral (tube) feeding</b>","<b>For a non-functioning oral route with a functioning gut</b>","NG tube for short-term use (under 4–6 weeks) — post-stroke dysphagia, acute illness, post-surgical. Gastrostomy (PEG/RIG) for long-term neurological dysphagia — MND, stroke, Parkinson's — managed in the community by a nutrition nurse and dietitian. Jejunostomy post-gastrectomy or in delayed gastric emptying. Formulas and rates are dietitian-prescribed"],
+         ["<b>Step 4 — parenteral nutrition</b>","<b>Only when the gut is non-functional or inaccessible</b>","Short bowel, high-output fistula, prolonged ileus, severe mucositis, multi-organ failure. <b>Specialist nutrition team only.</b> Risks: line infection, PN cholestasis with long-term use, metabolic complications"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"⚠ ONS prescribing is a recognised quality problem", html:"ONS are for disease-related malnutrition, not for preference or convenience, and the primary-care bill is substantial. Before prescribing: score MUST, involve a dietitian, specify the duration, document the indication, and diarise the review. Prescribing ONS as snacks for a well-nourished patient, or without dietitian input, is the pattern to avoid."},
+         {tone:"red", h:"⛔ PEG feeding in advanced dementia", html:"NICE NG97 is explicit: enteral tube feeding should NOT routinely be offered to people with advanced dementia who are eating and drinking poorly. The evidence shows no improvement in survival, no prevention of aspiration pneumonia — it may increase it, because tube feeding does not protect against aspiration of oropharyngeal secretions — no reduction in pressure ulcers, and no gain in comfort or quality of life. Families often request it believing that \"not feeding\" is causing the death, when the dementia is causing the loss of appetite and swallow. The work is the honest conversation, not the tube."},
+         {tone:"green", h:"✓ Treat the disease — it is a nutritional intervention", html:"In cancer cachexia, treating the cancer is the most effective anti-cachexia strategy there is, and in every disease-related malnutrition the same logic applies. Symptom control counts too: nausea, pain and constipation all reduce intake, and all are treatable."},
+         {tone:"blue", h:"📋 What to hand over", html:"Written fortification advice, the MUST score, the dietitian referral, the review date, and — where relevant — the social prescribing referral made on the same day. Verbal dietary advice without paper does not survive the walk home."}
+       ]}
+     ]},
+
+    {id:"specific", nav:"By disease", title:"Disease-specific nutritional management",
+     blocks:[
+       {b:"table", head:["Condition","Management","Notes"], rows:[
+         ["<b>Cancer cachexia</b>","<b>Nutritional support plus treating the cancer plus symptom control.</b> Megestrol acetate 160 mg OD stimulates appetite and increases intake but does not improve survival, and carries VTE risk. Dexamethasone 4 mg OD gives short-term appetite improvement in the palliative setting. EPA 2 g OD has modest evidence for muscle preservation","Involuntary weight loss over 5% with systemic inflammation and muscle wasting, driven by IL-6, TNF-α and IL-1 — so it cannot be fully reversed by feeding alone. Say that to families, kindly, early"],
+         ["<b>COPD</b>","Aim to maintain BMI above 21 — a BMI under 21 in COPD carries worse mortality than a BMI of 25 or more. Calorie-dense ONS in smaller volumes (2 kcal/mL). Pulmonary rehabilitation restores muscle mass","Up to about 30% of severe COPD is malnourished: increased work of breathing, early satiety from hyperinflation compressing the stomach, systemic inflammation, depression. Very high-carbohydrate diets increase CO₂ production in severe disease — keep the macronutrient balance"],
+         ["<b>Dementia</b>","Upright positioning, SALT-assessed modified texture, finger foods for apraxic patients, preferred foods, a warm and social mealtime. <b>Avoid routine PEG in late-stage disease (NG97)</b>","PEG may be considered with a careful goals-of-care discussion in advanced but not late-stage disease. See <a href='dementia.html'>dementia</a>"],
+         ["<b>CKD</b>","A low-protein diet is no longer recommended: adequate protein (around 0.8 g/kg/day) with targeted phosphate restriction. Potassium restriction only when hyperkalaemic. <b>Renal dietitian is essential</b>","Avoid high-phosphate processed foods, cola and excess dairy. See <a href='ckd.html'>CKD</a>"],
+         ["<b>Eating disorders</b>","MARSIPAN medical risk assessment; adult eating disorder service; liaison psychiatry if medically unwell; CAMHS in young people","Adult anorexia nervosa in the 30–50 age group is frequently undiagnosed. Weigh in consistent clothing, ECG for QTc, electrolytes and glucose"],
+         ["<b>Alcohol-related malnutrition</b>","Thiamine replacement before any glucose; oral thiamine 100 mg TDS; replace folate, zinc and magnesium","Alcohol supplies calories while depleting the very vitamins needed to metabolise them. See <a href='alcohol-problem-drinking.html'>alcohol</a>"],
+         ["<b>Palliative / end-stage disease</b>","Goals-of-care discussion. Comfort feeding, preferred foods and a pleasant mealtime rather than nutritional targets","<b>Stopping ONS can be the right decision</b>. See <a href='palliative-corticosteroids.html'>palliative corticosteroids</a> for dexamethasone as an appetite stimulant"]
+       ]}
+     ]},
+
+    {id:"practical", nav:"Practical", title:"What actually increases intake",
+     sub:"The interventions patients notice, and the ones that need no prescription.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🧈 Fortification, specifically", html:"Full-fat milk instead of skimmed · butter on vegetables, potatoes and toast · cheese into soups, sauces and mash · cream into porridge and soups · milk powder into milky foods (about 4 g protein per 2 tablespoons). High-protein snacks: full-fat yoghurt, nuts, cheese, boiled eggs, hummus."},
+         {tone:"blue", h:"⏰ Frequency and timing", html:"Small meals every 2–3 hours are better tolerated than three large ones where there is anorexia, early satiety or dysphagia. Largest meal when appetite is best — often mid-morning rather than evening in older people. Protein-rich breakfast. Medication before rather than during meals, and limit drinks with meals — they take up stomach space."},
+         {tone:"green", h:"🍽️ Company changes the amount eaten", html:"Eating alone reduces intake substantially compared with eating with others. Age UK lunch clubs, WRVS meal delivery, council-funded luncheon clubs, faith-community lunches. In care homes: protected mealtimes with adequate staffing for assisted feeding. At home: family meals, and involving the patient in preparation."},
+         {tone:"amber", h:"💊 Mirtazapine where depression and weight loss coexist", html:"Mirtazapine 7.5–15 mg at night in older patients, up to 15–30 mg: it antagonises H1 and 5-HT2C receptors, so appetite stimulation and sedation are useful side effects here rather than unwanted ones, with roughly 1–2 kg gain over 8 weeks. The antidepressant of choice where depression, insomnia and weight loss coexist — and avoid sertraline or fluoxetine first-line when appetite stimulation is the priority."},
+         {tone:"blue", h:"🦷 Mouth, teeth and dentures", html:"Check denture fit, look for candidiasis, assess for dry mouth and review anticholinergics, and refer for dental pain or caries. <b>One direct question at every review finds most of it.</b>"},
+         {tone:"amber", h:"🗑️ Deprescribe what suppresses appetite", html:"Opioids (nausea, constipation, anorexia) · metformin (nausea, metallic taste) · digoxin · SSRIs · NSAIDs · anticholinergics (dry mouth, dysphagia). Use STOPPFrail or the Beers criteria — every drug removed may improve appetite, swallowing and GI function."},
+         {tone:"green", h:"🏋️ Resistance exercise preserves the muscle you are feeding", html:"Chair-based resistance work 2–3 times a week prevents sarcopenia, preserves muscle during refeeding and improves appetite. Protein 20–30 g within 2 hours of exercise maximises muscle protein synthesis. Physiotherapy for sarcopenia, gait problems or fear of falling — restoring mobility restores independence in cooking and eating."},
+         {tone:"blue", h:"🤝 Social prescribing, concretely", html:"Food bank via the Trussell Trust (referral required) · community fridges · Healthy Start vouchers for qualifying pregnant women and children under 4 · Meals on Wheels and WRVS · Age UK · local authority adult social care. MUST 2 or more plus food insecurity means a community dietitian AND a social prescribing referral, on the same day."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Monitoring, stopping, and care home governance",
+     blocks:[
+       {b:"table", head:["What","When"], rows:[
+         ["<b>Weight</b>","<b>Weekly initially in high-risk or active treatment, then monthly</b>"],
+         ["<b>MUST</b>","Rescored at every follow-up — it is the comparator that shows whether the plan works"],
+         ["<b>Electrolytes (phosphate, potassium, magnesium)</b>","<b>Weekly for 2–4 weeks where there is refeeding risk</b>"],
+         ["<b>Albumin and CRP</b>","Monthly in chronic malnutrition — remembering albumin lags actual nutritional status by 3–4 weeks"],
+         ["<b>Functional markers</b>","<b>Grip strength, walking speed, ADLs — often improve before weight does</b>"],
+         ["<b>Dietitian review</b>","<b>4–6 weeks after starting ONS or specific support</b>"],
+         ["<b>ONS review and stopping</b>","At 3 months minimum. Stop when BMI is stably above 18.5 and weight is maintained on diet alone, when acute illness has resolved with adequate intake, on patient preference, or on an appropriate end-of-life decision. Do not continue ONS indefinitely without a documented indication and review"],
+         ["<b>Care home patients</b>","Annual nutritional assessment with the MUST score in the notes, medication review for appetite-suppressing drugs, dental referral where indicated, and depression screening (Cornell Scale in dementia). Check at care home visits that nutritional monitoring is documented"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same day", html:"Confusion in a malnourished patient (assume Wernicke) · severe hypophosphataemia or electrolyte derangement · MUST 2 or more with very low BMI · MARSIPAN thresholds met."},
+         {tone:"amber", h:"🟠 Within 2 weeks", html:"MUST 2 or more not yet referred to a dietitian · unexplained weight loss with cancer not yet excluded · suspected coeliac disease with weight loss."},
+         {tone:"blue", h:"💊 Refeeding advice to the patient", html:"\"We are going to build your intake up gradually rather than quickly, and I will check your blood salts weekly at first. Feeding too fast after a long period of eating little is genuinely risky, which is why we do it this way.\""},
+         {tone:"green", h:"✓ What improvement looks like", html:"\"Strength and energy often come back before the weight does — being able to get up from a chair more easily, or walk further, is real progress even if the scales have not moved yet.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Hospital — same day", html:"Wernicke encephalopathy features (confusion, with or without ophthalmoplegia and ataxia) → urgent IV thiamine · severe hypophosphataemia or severe electrolyte derangement · MUST 2 or more with very low BMI or no intake for over 5 days · uraemic malnutrition with confusion · MARSIPAN medical thresholds met."},
+         {tone:"purple", h:"2WW · NICE NG12", html:"Unexplained weight loss over 5% in 3 months with no identified cause, and any red-flag symptom occurring with malnutrition (dysphagia, haemoptysis, haematuria, change in bowel habit, breast lump). Apply the age- and symptom-specific NG12 criteria: weight loss with abdominal pain aged 40 and over → urgent direct-access CT (pancreatic); with dyspepsia, reflux, nausea or vomiting aged 55 and over → urgent direct-access OGD; with iron-deficiency anaemia or change in bowel habit aged 40 and over → FIT and the colorectal pathway; with cough, fatigue or breathlessness aged 40 and over → urgent chest X-ray within 2 weeks."},
+         {tone:"blue", h:"Dietitian — every MUST 2 or more", html:"All patients scoring 2 or more go to a registered dietitian for individualised assessment and a management plan. Community dietitian by GP referral; care homes via community dietitian outreach plus SALT for dysphagia."},
+         {tone:"green", h:"Social prescribing / community navigator", html:"Food insecurity — food bank referral and benefits check. Social isolation — community meals, befriending, day centres. Occupational therapy where cooking or eating is physically limited. Carer support."},
+         {tone:"amber", h:"SALT", html:"<b>Dysphagia — videofluoroscopy and a modified-texture diet.</b> Do not start a texture-modified diet without assessment."},
+         {tone:"amber", h:"Gastroenterology", html:"<b>Coeliac disease, IBD, chronic pancreatitis, suspected malabsorption.</b>"},
+         {tone:"amber", h:"Eating disorder service / psychiatry", html:"Adult eating disorder service; liaison psychiatry if acutely medically unwell; CAMHS for young people. <b>MARSIPAN provides the medical risk framework.</b>"},
+         {tone:"cream", h:"GP management", html:"Most of this is primary care: scoring MUST, assessing refeeding risk before feeding, finding the cause across all three axes, the food-first step-up, ONS within ACBS criteria with a review date, mirtazapine where depression coexists, deprescribing what suppresses appetite, and the social prescribing referral. Related pages: <a href='iron-deficiency-anaemia.html'>iron deficiency</a> · <a href='../algorithms/vitamin-b12-deficiency.html'>B12 deficiency</a> · <a href='../algorithms/vitamin-d-deficiency.html'>vitamin D</a> · <a href='alcohol-problem-drinking.html'>alcohol</a> · <a href='dementia.html'>dementia</a> · <a href='ckd.html'>CKD</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"An 81-year-old widower is brought by his daughter, who says he \"isn't eating\". He has lost <b>7 kg over 4 months</b>; BMI is <b>17.8</b>. He lives alone since his wife died 8 months ago, has <b>ill-fitting dentures</b>, takes <b>codeine for back pain</b>, and says food \"doesn't taste of anything and it's not worth cooking for one\". He denies low mood but admits he no longer goes out. Bloods are not yet done. The daughter asks whether he should be <b>started on build-up drinks</b>."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Scores MUST explicitly and states it (BMI 2 + weight loss 2 = 4, high risk); assesses refeeding risk BEFORE any feeding plan and checks phosphate, potassium and magnesium; screens for depression with PHQ-9 and recognises bereavement, isolation and \"not worth cooking for one\" as the likely dominant cause rather than accepting the denial of low mood; <b>examines the mouth and arranges dental review for the dentures</b>; <b>reviews the codeine as a contributor to anorexia and constipation</b>; <b>asks the food-insecurity question</b>; starts with food fortification and practical written advice rather than immediately prescribing ONS, and explains the ACBS criteria and dietitian route when the daughter asks; <b>refers to a dietitian because MUST is 2 or more</b>, and to social prescribing for lunch clubs and befriending at the same time; <b>considers mirtazapine</b> if depression is confirmed, noting appetite stimulation as a deliberate benefit; excludes malignancy — unexplained weight loss over 5% needs an NG12 route; and <b>arranges weight and MUST review with a defined interval</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE CG32 — Nutrition support for adults: oral nutrition support, enteral tube feeding and parenteral nutrition<br><a href="https://www.nice.org.uk/guidance/cg32" rel="noopener">nice.org.uk/guidance/cg32</a><span class="rd"> — the indications for each step of the support ladder, the refeeding-syndrome risk criteria and monitoring, and the screening recommendation</span></li>'+
+         '<li><b>BAPEN — Malnutrition Universal Screening Tool (MUST)</b><br><a href="https://www.bapen.org.uk" rel="noopener">bapen.org.uk</a><span class="rd"> — the three-step scoring, the 0/1/≥2 action thresholds, and the ulna-length and demi-span tables for estimating height where the patient cannot stand</span></li>'+
+         '<li><b>NICE NG97 — Dementia: assessment, management and support</b><br><a href="https://www.nice.org.uk/guidance/ng97" rel="noopener">nice.org.uk/guidance/ng97</a><span class="rd"> — enteral tube feeding should not routinely be offered in advanced dementia; the evidence of no benefit in survival, aspiration, pressure ulcers or quality of life</span></li>'+
+         '<li><b>MARSIPAN — Management of Really Sick Patients with Anorexia Nervosa</b><span class="rd"> — the medical admission thresholds quoted (BMI, heart rate, blood pressure, QTc, potassium, syncope) and the framework for adults</span></li>'+
+         '<li>ACBS (Advisory Committee on Borderline Substances) criteria and NICE medicines evidence commentary on ONS (2020)<span class="rd"> — when oral nutritional supplements qualify for NHS prescription, the dietitian-involvement recommendation, and the 3-monthly review requirement</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the age- and symptom-specific unexplained-weight-loss routes for pancreatic, upper GI, colorectal and lung cancer</span></li>'+
+         '<li>Finucane TE et al — tube feeding in advanced dementia (systematic review, 1999; subsequent updates)<span class="rd"> — the evidence base underlying the NG97 recommendation</span></li>'+
+         '<li><b>BNF · Trussell Trust · Age UK · Healthy Start</b><br><a href="https://www.trusselltrust.org/get-help" rel="noopener">trusselltrust.org/get-help</a><span class="rd"> — thiamine, Pabrinex, mirtazapine and megestrol dosing; and the practical community resources referenced in the social prescribing card</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Malnutrition — NICE CG32, BAPEN MUST, NICE NG97, MARSIPAN, ACBS criteria and NG12. Score MUST on anyone with unintentional weight loss, BMI under 20 or poor appetite, and use ulna length or demi-span where the patient cannot be weighed. A score of 2 or more means a dietitian referral and nutritional support. Check phosphate, potassium and magnesium before feeding, and never give glucose before thiamine. Food first and fortification before ONS; ONS need ACBS criteria, a dietitian and a review date. Albumin is not a nutritional marker — read it with CRP. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

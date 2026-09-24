@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Heart Failure — Protocol · Reasoning GP</title>
+<meta name="description" content="Heart failure in one page: the NT-proBNP echo clock, the phenotype split that changes everything, all four pillars offered in HFrEF with real starting and target doses, a fix for every titration obstacle, the diuretic kept mentally separate, iron and review rhythm, community decompensation, and palliative parallel planning." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/heart-failure.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Heart failure protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🫀",
+  title:"Heart failure — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; titrate in one place",
+  stemTitle:"Diagnose by the BNP clock, build the four pillars, and fix each obstacle instead of stopping",
+  stemSub:"One page for the whole condition. Use NT-proBNP to set the echo clock; split the phenotype, because it changes everything; get all four pillars on board at low dose then titrate to target; fix each titration obstacle rather than abandoning the drug; keep the diuretic mentally separate from the pillars; run the review and iron checks; manage decompensation in the community; and know when it is time for palliative parallel planning. NICE NG106 (Sept 2025) · ESC 2023.",
+  guideline:"NICE NG106 (Sept 2025) · ESC 2023",
+  reviewed:"8 September 2026",
+  nextReview:"8 March 2027",
+  meta:[
+    {t:"NICE NG106, incl. September 2025 update"},
+    {t:"ESC 2023 concepts"},
+    {t:"NG12 stated honestly", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:"<div class='mg-layers'><a href='#diagnose'><b>Diagnose</b><small>NT-proBNP &gt;2000 = 2-week echo</small></a><a href='#pillars'><b>Four pillars</b><small>Offer all four in HFrEF</small></a><a href='#obstacles'><b>Titrate</b><small>Fix, don't stop</small></a><a href='#refer'><b>Refer</b><small>HF team · devices · palliative</small></a></div>",
+  quickSub:"If you read nothing else on this page, read these six cards. Every figure traces to the source cited under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Decompensated — new or known HF — stops the routine pathway", html:"Breathless at rest, pulmonary oedema, SpO₂ &lt;92% or hypoperfusion = decompensated: same-day admission — not a 6-week echo, not a titration visit. Also admit for new confusion, SBP &lt;90, K⁺ ≥6.0, AKI, new significant arrhythmia, or congestion not responding to oral diuretic. And NYHA-grade every patient at every contact: I none · II on exertion · III minimal exertion · IV at rest."},
+    {tone:"amber", h:"The BNP clock — and the false-normal that catches people out", html:"NT-proBNP &gt;2000 ng/L → specialist assessment + echo within 2 WEEKS. 400–2000 ng/L → within 6 weeks. &lt;400 ng/L → HF unlikely. But BNP reads falsely LOW in obesity and in patients already on diuretics, ACE inhibitors or beta-blockers — a “normal” BNP in a breathless obese patient does NOT exclude heart failure. It reads falsely high with age, AF, CKD (eGFR &lt;60), LVH, sepsis, PE and COPD or cor pulmonale."},
+    {tone:"blue", h:"All four pillars, offered to everyone with HFrEF", html:"NG106 (September 2025): offer all four pillars — an ACE inhibitor, a HF-licensed beta-blocker, an MRA and an SGLT2 inhibitor — to everyone with HFrEF as first-line therapy, titrating each to the maximally tolerated dose. The MRA is no longer an add-on reserved for EF ≤35% or persisting symptoms. <b>Breadth before depth: four drugs at half dose beat two at target.</b> Get all four on at low dose within weeks, then up-titrate every 2–4 weeks as BP, heart rate and kidneys allow."},
+    {tone:"green", h:"The diuretic is NOT a pillar", html:"Furosemide 20–40 mg (bumetanide 1 mg ≈ 40 mg furosemide) treats congestion — symptoms only, no survival benefit. Keep it mentally separate: titrate pillars UP for prognosis; titrate the diuretic to the lowest dose that keeps the patient decongested. <b>NICE gives no blanket dose-doubling rule</b> — increases are individualised with renal function checked after. <b>Never combine an ACE inhibitor + ARB + MRA together.</b>"},
+    {tone:"purple", h:"Symptomatic hypotension? Reduce the DIURETIC first", html:"The commonest fix for dizziness or a systolic BP of 90–100 in a euvolaemic patient is reducing the diuretic, not the pillars — then stagger dosing times, and drop nitrates, alpha-blockers and calcium-channel blockers before touching a pillar. <b>Asymptomatic low BP needs NO action.</b> Likewise, a creatinine rise ≤30% or an eGFR fall ≤25% on titration is acceptable — recheck, don't stop, and CKD is a reason for slower titration, not no titration."},
+    {tone:"teal", h:"Two things routinely missed: iron, and the Hb gate", html:"Iron deficiency affects about 50% of heart-failure patients. Consider IV iron in symptomatic HFrEF with ferritin &lt;100 µg/L or TSAT &lt;20% AND Hb &lt;150 g/L — the haemoglobin trigger is easy to miss and it gates eligibility. IV ferric carboxymaltose or derisomaltose improves symptoms and admissions; oral iron does NOT work in heart failure. Flag iron studies at every annual review."}
+  ],
+  pathwaySub:"The whole condition in five moves. The red step is the one that must not wait for imaging.",
+  pathway:[
+    {title:"Recognise decompensation before you start the diagnostic clock", html:"Acute breathlessness at rest, oedema up the legs, or falling SpO₂ in new suspected HF = decompensated: same-day admission. Admit for breathlessness at rest, SpO₂ &lt;92%, new confusion, SBP &lt;90, K⁺ ≥6.0, AKI, new significant arrhythmia or failure of oral diuretic — in new or known HF, and routine titration stops. Chest pain or syncope → 999. NYHA-grade at every contact.", alert:true},
+    {title:"Set the echo clock and split the phenotype", html:"NT-proBNP &gt;2000 → echo and specialist assessment within 2 weeks; 400–2000 → within 6 weeks; &lt;400 → look elsewhere, but beware the false-lowerers. HFrEF (LVEF ≤40%) → offer all four pillars. HFmrEF (41–49%) → consider the same four classes. HFimpEF (was ≤40%, now higher) → continue prognostic therapy. HFpEF (≥50%) → consider an MRA and an SGLT2 inhibitor, plus a diuretic for congestion, and hunt the comorbidities. Baseline: ECG, CXR, U&amp;E, FBC, LFT, TFT, HbA1c, lipids, ferritin + TSAT, urinalysis."},
+    {title:"Lay the foundations that prevent admissions", html:"Daily weights with the +2 kg over 3 days rule · cardiac rehab referral for everyone stable · avoid excess salt but no routine sodium or fluid restriction, minimal alcohol · stop the saboteurs (NSAIDs including OTC, pioglitazone, verapamil, diltiazem) · flu, pneumococcal and COVID vaccination · screen mood · a written HF plan with sick-day rules."},
+    {title:"Build all four pillars, then titrate — fixing obstacles rather than stopping", html:"ACE inhibitor, HF-licensed beta-blocker, MRA and SGLT2 inhibitor at low dose within weeks, then up-titrate every 2–4 weeks. U&amp;E and K⁺ 1–2 weeks after every RAAS or MRA change. Hypotension → reduce the diuretic first. K⁺ 5.5–5.9 → diet and stop the K⁺-raisers. Bradycardia → reduce the beta-blocker last. Creatinine up ≤30% → acceptable."},
+    {title:"Review, re-check iron, and plan ahead", html:"Structured review 6-monthly (HF nurse ideal): pillars at target? adherence? rehab done? devices discussed? advance care conversation started? Ferritin/TSAT, FBC and HbA1c annually. Decompensating but walking and talking → increase the loop diuretic per the individualised plan, U&amp;E in 3–5 days, review at 48 hours, keep the beta-blocker going."}
+  ],
+  sections:[
+    {id:"diagnose", nav:"Diagnose", title:"The BNP clock, the echo, and the phenotype split", sub:"NT-proBNP sets the urgency; the ejection fraction sets the treatment.",
+     blocks:[
+       {b:"table", head:["NT-proBNP","Meaning","Action (NG106)"], rows:[
+         ["<b>&gt;2000 ng/L</b>","High risk — worse prognosis","<b>Specialist assessment + echo within 2 WEEKS</b>"],
+         ["<b>400–2000 ng/L</b>","Possible HF","Specialist assessment + echo within <b>6 weeks</b>"],
+         ["<b>&lt;400 ng/L</b>","HF unlikely","Look elsewhere — but beware the false-lowerers below"]
+       ]},
+       {b:"kv", rows:[
+         ["BNP false-LOW","<b>Obesity</b>, and diuretics, ACE inhibitors or beta-blockers already on board — <b>a “normal” BNP in a breathless obese patient does NOT exclude HF</b>"],
+         ["BNP false-HIGH","<b>Age, AF, CKD (eGFR &lt;60), LVH, sepsis, PE, COPD or cor pulmonale</b> — interpret against the whole picture"],
+         ["The phenotype split","<b>HFrEF (LVEF ≤40%)</b> → offer all four pillars. <b>HFmrEF (41–49%)</b> → <b>consider</b> an ACE inhibitor (or ARB), beta-blocker, MRA and SGLT2 inhibitor — “consider”, not “offer”, so weigh comorbidity and ask the HF team where uncertain (new in the 2025 NG106 update). <b>HFimpEF (previously ≤40%, now above 40%)</b> → <b>continue all prognostic treatment</b> — an improved echo is the drugs working, not a reason to stop; withdrawal only on specialist direction. <b>HFpEF (≥50%)</b> → <b>consider an MRA and an SGLT2 inhibitor</b> + diuretic for congestion + hunt the comorbidities (see <a href='#hfpef'>HFpEF</a>)"],
+         ["Baseline work-up","<b>ECG</b> (AF? old MI? LBBB — CRT relevance), <b>CXR, U&amp;E, FBC, LFT, TFT, HbA1c, lipids, ferritin + TSAT</b> (iron deficiency in ~50%), <b>urinalysis</b>; spirometry if COPD overlap is suspected"],
+         ["Find the cause","<b>IHD</b> (commonest — needs an angiography discussion), hypertension, <b>valve disease</b> (murmur → echo priority), AF, alcohol, chemotherapy history, family history of cardiomyopathy (refer young or familial cases separately)"],
+         ["Grade it every time","<b>NYHA I</b> none · <b>II</b> on exertion · <b>III</b> minimal exertion · <b>IV</b> at rest"]
+       ]},
+       {b:"warn", html:"New suspected HF with acute breathlessness at rest, oedema up the legs, or SpO₂ down = decompensated — same-day admission, not a 6-week echo. And NYHA-grade every patient at every contact."}
+     ]},
+
+    {id:"lifestyle", nav:"Foundations", title:"Self-management — the admission-preventers", sub:"These are treatment, not advice. The scales in particular do more than most drug changes.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"⚖️ Daily weights", html:"Same scales, same time, after voiding. +2 kg over 3 days = ring the practice or HF nurse — the earliest decompensation signal, days before breathlessness."},
+         {tone:"green", h:"🏃 Cardiac rehab", html:"<b>Refer everyone stable</b> — improves symptoms, capacity and admissions as much as a drug. Sell it accordingly."},
+         {tone:"green", h:"🧂 Salt, fluid, alcohol", html:"Avoid excess salt, but NICE advises <b>against routine sodium or fluid restriction</b> — individualise only for hyponatraemia, recurrent congestion or advanced CKD; alcohol minimal — zero if alcohol cardiomyopathy."},
+         {tone:"red", h:"🚫 The saboteurs", html:"<b>NSAIDs (including OTC), pioglitazone, verapamil and diltiazem</b>, flecainide in structural disease; <b>potassium supplements and K⁺-containing salt substitutes</b> alongside ACEi/ARB/ARNI + MRA; caution with <b>pregabalin (oedema)</b> and <b>corticosteroids (fluid)</b>."},
+         {tone:"blue", h:"💉 Vaccines", html:"<b>Flu yearly, pneumococcal once, COVID per schedule.</b>"},
+         {tone:"cream", h:"🧠 Mood and the written plan", html:"Depression is common and kills adherence — screen for it. Written HF plan: who to call, the weight rules, sick-day rules. <b>Diuretic self-adjustment only within an agreed plan</b> — the dose range, the trigger (weight up or ankles swelling), how long the higher dose runs, when bloods are due, and who to ring. Breathless at rest, chest pain or palpitations are never self-managed: breathlessness can be pneumonia, PE, ACS or arrhythmia."}
+       ]}
+     ]},
+
+    {id:"pillars", nav:"Four pillars", title:"HFrEF — all four on board, then titrate to target", sub:"Doses are named for orientation; verify every one against the current BNF.",
+     blocks:[
+       {b:"why", html:"NG106 (September 2025 update): offer all four pillars — ACEi, a HF-licensed beta-blocker, an MRA and an SGLT2 inhibitor — to everyone with HFrEF as first-line therapy, and titrate each to the maximally tolerated dose. MRA is no longer an add-on reserved for EF ≤35% or persisting symptoms. Get all four on at low dose within weeks (each cuts mortality independently), THEN up-titrate every 2–4 weeks as BP, HR and kidneys allow. <b>Breadth before depth — four drugs at half-dose beat two at target.</b> Still symptomatic on maximally tolerated doses of all four → switch the ACE inhibitor to an ARNI."},
+       {b:"ladder", steps:[
+         {step:"Pillar 1", title:"ACE inhibitor (ARB if cough) — or an ARNI from the start via the HF team", when:"day one", fromLabel:"start here",
+          html:"<b>Ramipril 1.25–2.5 mg → target 10 mg</b> (or <b>candesartan 4–8 mg → 32 mg</b>). U&amp;E + K⁺ 1–2 weeks after every step. A creatinine rise ≤30% or eGFR fall ≤25% is acceptable — recheck, don't stop. ACE inhibitor not tolerated (other than angioedema) → <b>ARNI (sacubitril/valsartan 24/26–49/51 mg BD → 97/103 mg BD)</b> via the HF team. <b>After ACEi angioedema, no ARNI</b> — beta-blocker, MRA and SGLT2 inhibitor, and consider an ARB. <b>Never co-prescribe an ACE inhibitor and an ARNI; stop the ACEi at least 36 hours before the first ARNI dose</b> (angioedema risk)."},
+         {step:"Pillar 2", title:"HF-licensed beta-blocker", when:"stable, not congested", fromLabel:"start alongside, titrate alternately",
+          html:"<b>Bisoprolol 1.25 → 10 mg</b>, carvedilol 3.125 mg BD → 25–50 mg BD, or nebivolol (elderly). <b>Double no faster than 2-weekly.</b> Warn: “you may feel more tired for the first fortnight — that's the drug working, it passes.” Titrate only when stable and dry — never up-titrate while congested. Continue an established dose through decompensation unless shocked, bradycardic or in heart block — stopping doubles risk."},
+         {step:"Pillar 3", title:"MRA", when:"everyone with HFrEF — not just EF ≤35%", fromLabel:"the forgotten pillar — don't skip it",
+          html:"<b>Spironolactone 25 → 50 mg</b> (eplerenone 25 → 50 mg if gynaecomastia or post-MI). K⁺ + U&amp;E at 1, 4, 8 and 12 weeks, then every 3–6 months. K⁺ 5.5–5.9 → halve; ≥6.0 → hold (see the <a href='#obstacles'>obstacle table</a>); do NOT combine with K⁺ supplements. Warn about gynaecomastia and menstrual change."},
+         {step:"Pillar 4", title:"SGLT2 inhibitor", when:"everyone, diabetic or not", fromLabel:"no titration — the easy pillar",
+          html:"<b>Dapagliflozin 10 mg or empagliflozin 10 mg OD.</b> Works in days; the pillar with the strongest trial evidence across the whole EF range. Expect a small early creatinine dip — don't stop. Check eGFR against the product licence. <b>Safety:</b> volume depletion with a loop diuretic (review the diuretic dose); genital infection — hygiene counselling; <b>euglycaemic DKA</b> — pause during acute illness, vomiting or diarrhoea, prolonged fasting or surgery and if DKA is suspected (check ketones even with a normal glucose); avoid in type 1 diabetes or previous DKA unless specialist-directed; in diabetes, review insulin or sulfonylurea doses for hypoglycaemia."}
+       ]},
+       {b:"warn", html:"<b>The diuretic is not a pillar.</b> <b>Furosemide 20–40 mg (bumetanide 1 mg ≈ 40 mg furosemide)</b> treats congestion — symptoms only, no survival benefit. NICE gives no blanket dose-doubling rule: increases are individualised, with renal function checked after. Keep it mentally separate: titrate pillars UP for prognosis, and titrate the diuretic to the lowest dose that keeps them decongested (a flexible self-adjustment plan for capable patients). <b>Never ACEi + ARB + MRA together.</b>"}
+     ]},
+
+    {id:"obstacles", nav:"Titration", title:"Every titration obstacle has a fix that is not “stop the pillar”", sub:"This table is where most under-treatment in UK primary care is generated.",
+     blocks:[
+       {b:"table", head:["Titration obstacle","Looks like","Fix — don't just stop the pillar"], rows:[
+         ["<b>Symptomatic hypotension</b>","Dizzy, BP &lt;90–100 systolic","Stagger dosing times; reduce the DIURETIC first if euvolaemic (the commonest fix); drop nitrates, alpha-blockers and CCBs before touching pillars; asymptomatic low BP needs NO action"],
+         ["<b>Bradycardia</b>","HR &lt;50 on a beta-blocker","ECG (block?); stop rate-limiting non-essentials (digoxin? diltiazem?); reduce the beta-blocker LAST — if in sinus rhythm at ≥75 despite maximum beta-blocker → ivabradine (specialist)"],
+         ["<b>K⁺ 5.5–5.9</b>","On ACEi + MRA","Diet advice, stop K⁺-raisers (trimethoprim, NSAIDs, salt substitutes), recheck at 1 week; persistent → halve the MRA; ≥6.0 → hold the MRA + urgent recheck and ECG. Patiromer or SZC via the HF team can KEEP the pillars on board"],
+         ["<b>Creatinine climbing</b>","eGFR falling on titration","A rise ≤30% is acceptable; &gt;30% → halve the last change, exclude dehydration and NSAIDs, recheck in 1–2 weeks; CKD is a reason for SLOWER titration, not no titration"],
+         ["<b>“Feels worse” on the beta-blocker</b>","Fatigue in weeks 1–2","<b>Expected and transient — pre-warned patients persist; don't abandon it</b>"]
+       ]}
+     ]},
+
+    {id:"beyond", nav:"Beyond", title:"Still symptomatic on four pillars — what the HF team adds", sub:"Escalation is specialist-initiated, but knowing the menu makes the referral useful.",
+     blocks:[
+       {b:"kv", rows:[
+         ["ARNI switch","ACEi or ARB → sacubitril/valsartan if still symptomatic with EF ≤35% (36-hour washout from the ACEi)"],
+         ["Ivabradine","<b>Sinus rhythm ≥75 bpm on the maximum tolerated beta-blocker, EF ≤35%</b>"],
+         ["IV iron","Consider in symptomatic HFrEF with iron deficiency (<b>ferritin &lt;100 µg/L or TSAT &lt;20%</b>) <b>and Hb &lt;150 g/L</b> — the haemoglobin trigger is easy to miss and it gates eligibility. IV ferric carboxymaltose or derisomaltose improves symptoms and admissions; oral iron does NOT work in HF; flag iron studies at every annual review"],
+         ["Devices","LBBB + QRS ≥130 ms → CRT; EF ≤35% despite 3 months of optimal therapy → ICD discussion (ischaemic aetiology especially)"],
+         ["Digoxin and others","<b>Symptom add-on, especially AF + HF; also hydralazine/nitrate</b> (Afro-Caribbean patients, or renal intolerance of RAAS blockade)"],
+         ["AF + HF","Rate control with the beta-blocker (not verapamil or diltiazem); anticoagulate with a DOAC by CHA₂DS₂-VASc (see the <a href='atrial-fibrillation.html'>AF protocol</a>); consider a rhythm strategy early — AF-driven cardiomyopathy is reversible"]
+       ]}
+     ]},
+
+    {id:"hfpef", nav:"HFpEF", title:"HFpEF — a different disease, a different plan", sub:"The comorbidity list IS the treatment list.",
+     blocks:[
+       {b:"kv", rows:[
+         ["What NG106 now says","<b>Consider an MRA AND an SGLT2 inhibitor</b> for treating HFpEF (new in the September 2025 update — the MRA is the change; SGLT2i was already recommended). <b>Loop diuretic on top, for congestion only.</b>"],
+         ["Read it as “consider”, not “offer”","The HFpEF evidence is for symptoms and hospitalisation rather than a clear mortality signal, so it is a shared-decision conversation — but “SGLT2i + diuretic only” is now out of date. ACEi/ARB and beta-blockers still need their own indication (hypertension, AF rate, post-MI) rather than being given for HFpEF itself."],
+         ["The real work","Treat what's driving it: hypertension to target, AF, obesity (weight loss genuinely improves HFpEF), diabetes, an OSA screen, CKD"],
+         ["Think amyloid","Elderly + LVH + carpal tunnel history ± low-voltage ECG → cardiology (treatable now — tafamidis)"]
+       ]},
+       {b:"why", html:"HFpEF is stiff-heart disease driven by metabolic and vascular comorbidity — which is why the comorbidity list IS the treatment list, and why the GP (who owns the BP, the weight, the diabetes) matters more than any referral."}
+     ]},
+
+    {id:"monitor", nav:"Monitor", title:"Monitoring rhythm and community decompensation", sub:"Trend beats snapshot — and most decompensation can be handled at home if it is caught early.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>U&amp;E + K⁺</b>","1–2 weeks after every RAAS or MRA change; MRA at 1, 4, 8 and 12 weeks; then every 3–6 months when stable","Thresholds per the <a href='#obstacles'>obstacle table</a>"],
+         ["<b>Weight + NYHA + BP/HR</b>","Every contact","<b>Trend beats snapshot</b>"],
+         ["<b>Ferritin/TSAT + FBC + HbA1c</b>","Annually","<b>Iron deficiency → IV iron referral</b>"],
+         ["<b>Structured review</b>","<b>6-monthly (HF nurse ideal)</b>","Pillars at target? Adherence? Rehab done? Devices discussed? Advance care conversation started?"],
+         ["<b>Decompensating in the community</b>","Weight up, orthopnoea, oedema — but walking, talking and SpO₂ OK","Increase the loop diuretic per the person's individualised self-management plan, or on HF-nurse or specialist advice — there is no NICE “always double it” rule, and the safe increment depends on the current dose, renal function and how dry they already are. Then U&amp;E in 3–5 days, review at 48 hours; keep the beta-blocker going; involve the HF nurse the same week. No response or worse → admit"],
+         ["<b>Admit</b>","Breathless at rest, SpO₂ &lt;92%, new confusion, SBP &lt;90, K⁺ ≥6.0, AKI, new significant arrhythmia, no response to oral diuretic","<b>Same day</b> — routine titration stops. <b>Do not start or up-titrate a beta-blocker</b> (continue an established one unless shocked, bradycardic or in heart block); hold ACEi/ARB/ARNI/MRA if hypotensive, in AKI or K⁺ ≥6.0 — on acute advice"]
+       ]},
+       {b:"say", html:"You have four different tablets because each one protects the heart in a different way — together they roughly halve the risk. The water tablet is different: that one just controls the fluid, and you'll learn to adjust it yourself using the scales. The single most useful thing you can do is weigh yourself every morning."}
+     ]},
+
+    {id:"loop", nav:"Still symptomatic?", title:"Still symptomatic? Check these before calling it refractory", sub:"Most “refractory” HF is under-titration, congestion, iron, or an untreated driver.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"1 · Pillars at target?", html:"All four ON and titrated to target or maximum tolerated — not just started? (The commonest gap in UK primary care.)"},
+         {tone:"amber", h:"2 · Actually dry?", html:"JVP, oedema, weight trend — hidden congestion is the commonest cause of persistent breathlessness."},
+         {tone:"amber", h:"3 · Iron checked?", html:"<b>Ferritin &lt;100 or TSAT &lt;20% → IV iron. Checked this year?</b>"},
+         {tone:"amber", h:"4 · A driver untreated?", html:"AF rate or rhythm, ischaemia (angina? → angiography discussion), valve disease progressing, thyroid, anaemia, NSAID creep, alcohol."},
+         {tone:"amber", h:"5 · The lungs?", html:"<b>COPD overlap, PE, effusion — not all breathlessness is the heart.</b>"},
+         {tone:"amber", h:"6 · Right phenotype?", html:"Repeat the echo if the trajectory changed — EF recovers (stand down nothing without advice) or falls (devices territory)."}
+       ]},
+       {b:"why", html:"All optimised → HF team: ARNI, ivabradine, devices or advanced therapies."}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"What the patient must know", sub:"Four sentences that prevent most avoidable admissions.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"⚖️ The 2 kg rule", html:"“Up 2 kg in 3 days → ring us or the heart-failure nurse — don't wait for breathlessness.”"},
+         {tone:"red", h:"🔴 Same day", html:"“Breathless at rest or lying flat, waking gasping, new confusion, passing much less urine or swelling fast — same-day call; chest pain or fainting — 999.”"},
+         {tone:"blue", h:"🤢 Sick-day rules", html:"“Vomiting or diarrhoea → pause the water tablet, the ACE inhibitor (or ARB / sacubitril-valsartan), the spironolactone and the ‘flozin’ for 48 hours, keep drinking, ring us if unsure.”"},
+         {tone:"cream", h:"💊 Painkillers", html:"“No ibuprofen-type drugs — they undo the water tablet and strain the kidneys. Paracetamol is fine.”"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"HF team, cardiology — and the palliative conversation", sub:"Referral is routine here; the parallel palliative conversation is the one most often left too late.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Every new diagnosis", html:"Specialist confirmation + a pillar plan (within 2 weeks if NT-proBNP &gt;2000); community HF nurse from day one."},
+         {tone:"blue", h:"Escalation", html:"Symptomatic on maximally tolerated doses of all four pillars → ARNI switch, then ivabradine or digoxin; EF ≤35% at 3 months → device discussion; QRS ≥130 ms + LBBB → CRT. <b>Kidneys or K⁺ blocking the pillars</b> → HF team (patiromer / SZC can keep them on). Suspected pulmonary hypertension → cardiology."},
+         {tone:"blue", h:"Cause needs fixing", html:"Ischaemia → angiography; significant valve disease → intervention MDT; suspected amyloid or familial cardiomyopathy → specialist clinic (+ family screening)."},
+         {tone:"amber", h:"Recurrent admissions", html:"Two or more in 6 months despite optimisation → advanced HF assessment — and trigger the parallel palliative conversation."},
+         {tone:"cream", h:"Palliative parallel planning", html:"NYHA IV despite everything, cachexia, or hypotension limiting all titration → anticipatory care plan, a deactivate-the-ICD discussion, opioids for breathlessness, hospice support — alongside, not instead of, HF care. See the <a href='palliative-pain.html'>palliative pain protocol</a>."},
+         {tone:"purple", h:"NG12 — stated honestly <span class='tw'>2WW</span>", html:"Heart failure has no NICE NG12 criterion of its own, and this page does not invent one. But two NG12 routes overlap with this presentation and must not be lost:<br>• Unexplained breathlessness or an unexplained chest sign in a person aged 40 and over, especially a current or former smoker → urgent chest X-ray within 2 weeks for suspected lung cancer. Breathlessness attributed to HF on clinical grounds, with a normal BNP or an unconvincing echo, still needs this considered.<br>• Unexplained weight loss with other trigger symptoms → the relevant urgent suspected-cancer pathway. Cardiac cachexia is a recognised feature of advanced HF, but it must not be the default explanation for weight loss in a patient whose HF is otherwise stable.", src:"NICE NG12 (updated May 2025) · house rule"}
+       ]},
+       {b:"say", html:"I want the heart-failure team involved — not because you're at the end of the road, but because the next treatments (a newer tablet, possibly a special pacemaker) are theirs to start. We keep doing the day-to-day together — and the weighing scales remain your best early-warning system."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 71-year-old man with HFrEF (EF 32%) attends for review. He is on ramipril 2.5 mg, bisoprolol 2.5 mg and furosemide 40 mg, started eight months ago and never changed. He is NYHA III, says he feels “a bit dizzy standing up”, and his ankles are not swollen. His last U&amp;E was six months ago. He asks whether he can have “something stronger for the breathlessness”."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises this as <b>under-titration, not refractory HF</b>: two pillars missing entirely (<b>MRA and SGLT2 inhibitor, both now offered to everyone with HFrEF</b>) and the other two far below target; handles the dizziness correctly by reducing the diuretic first in a euvolaemic patient rather than the pillars; plans 2–4-weekly titration with U&amp;E and K⁺ 1–2 weeks after each RAAS or MRA change; checks <b>ferritin and TSAT with the Hb &lt;150 g/L gate</b>; refers to <b>cardiac rehab</b>; teaches the <b>+2 kg in 3 days rule and the sick-day rules</b>; screens <b>mood</b>; and reviews for <b>NSAID creep</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG106 \u2014 Chronic heart failure in adults: diagnosis and management, incorporating the September 2025 update<br><a href="https://www.nice.org.uk/guidance/ng106" rel="noopener">nice.org.uk/guidance/ng106</a><span class="rd"> \u2014 the NT-proBNP echo clock, all four pillars offered in HFrEF, MRA + SGLT2i considered in HFpEF, pharmacological management extended to mildly reduced EF, and the absence of any blanket diuretic dose-doubling rule</span></li>'+
+         '<li><b>ESC 2023 \u2014 heart failure guidelines</b><span class="rd"> \u2014 the four-pillar concept, phenotype definitions and device thresholds</span></li>'+
+         '<li>NICE NG12 \u2014 Suspected cancer: recognition and referral (updated May 2025)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 the urgent chest X-ray route for unexplained breathlessness at 40+ and the unexplained-weight-loss routes that overlap with cardiac cachexia</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 verify every starting dose, target dose and monitoring requirement before prescribing</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Heart failure in adults \u2014 NICE NG106, incorporating the September 2025 update (all four pillars offered in HFrEF; MRA + SGLT2i considered in HFpEF; mildly reduced EF treated pharmacologically) with ESC 2023 concepts, and NICE NG12 (May 2025) for the overlapping urgent-cancer routes. Diagnosis and management are on this one page; heart failure has no separate diagnostic algorithm. Verify doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

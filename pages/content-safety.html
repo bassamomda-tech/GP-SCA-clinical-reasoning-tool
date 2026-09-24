@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How we keep content safe · Reasoning GP</title>
+<meta name="description" content="The clinical governance, evidence standard, review cycles and corrections process behind every Reasoning GP pathway, protocol and case." />
+<link rel="canonical" href="https://gpreasoning.uk/pages/content-safety.html">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=14" />
+<link rel="stylesheet" href="../assets/provenance.css?v=13" />
+<style>
+.cs-body{max-width:900px;margin:0 auto}
+.cs-lead{font-size:16.5px;line-height:1.7;color:var(--ink-2);max-width:68ch}
+.cs-lead b{color:var(--ink)}
+.cs-body h3{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.cs-body p,.cs-body li{font-size:14.5px;line-height:1.7;color:var(--ink-2)}
+.cs-body p{margin:8px 0;max-width:72ch}
+.cs-body ul{padding-left:20px;margin:8px 0;display:flex;flex-direction:column;gap:7px;max-width:72ch}
+.cs-fill{background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:1px 7px;font-weight:600;color:#92400e}
+.cs-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+.cs-table th{text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:0 12px 8px 0;border-bottom:1px solid var(--line-2);vertical-align:bottom}
+.cs-table td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);color:var(--ink-2);line-height:1.55;vertical-align:top}
+.cs-table td b{color:var(--ink)}
+.cs-table tr:last-child td{border-bottom:none}
+.cs-demo{display:flex;flex-direction:column;gap:10px;margin:18px 0}
+.cs-demo-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.cs-demo-row .pv-status{flex:none}
+.cs-demo-row span.cs-what{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.cs-note{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md,10px);padding:16px 18px;margin:18px 0;max-width:72ch}
+.cs-note p{margin:0;font-size:14px}
+.cs-note p + p{margin-top:10px}
+.cs-chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;max-width:72ch}
+.cs-chips span{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;background:var(--bg-soft);border:1px solid var(--line);color:var(--ink-2)}
+.cs-meta{font-size:13px;color:var(--muted);margin-top:8px}
+.cs-cta{display:inline-block;margin-top:6px;background:var(--teal);color:#f6f2e9;padding:11px 20px;border-radius:9px;font-size:14px;font-weight:600}
+.cs-cta:hover{background:var(--teal-2);color:#fff}
+</style>
+</head>
+<body>
+<aside class="sidebar" data-active-id="__content-safety"></aside>
+<div class="app"><main class="main">
+
+<section class="page-hero" data-screen-label="Content safety hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Clinical governance</span>
+    <h1>How we keep content <em>safe</em></h1>
+    <p>What sits behind every pathway, protocol and case: where the evidence comes from, when each page was last checked, how often it is due again, and what happens when you tell us something is wrong.</p>
+  </div>
+</section>
+
+<div class="page-body"><div class="cs-body">
+
+  <section class="page-section">
+    <h2><span class="eyebrow">The short version</span>Every page tells you its own status</h2>
+    <p class="cs-lead">There is no single badge on this site that says "all our content is reviewed", because that would not be true and a badge like that is worth nothing anyway. Instead <b>every clinical page carries a provenance strip under its title</b> stating when it was last checked, when it is next due, and which guidance it is anchored to. If a page has not had a named clinical sign-off, <b>it says so on the page</b>.</p>
+
+    <div class="cs-demo">
+      <div class="cs-demo-row rgp-prov rgp-prov-current" style="padding:0;border:none;background:none;margin:0">
+        <span class="pv-status"><span class="pv-glyph" aria-hidden="true">✓</span>Current</span>
+        <span class="cs-what">Signed off by a named clinician, and inside its review cycle.</span>
+      </div>
+      <div class="cs-demo-row rgp-prov rgp-prov-due" style="padding:0;border:none;background:none;margin:0">
+        <span class="pv-status"><span class="pv-glyph" aria-hidden="true">!</span>Review due</span>
+        <span class="cs-what">Signed off, but within 60 days of its next scheduled review.</span>
+      </div>
+      <div class="cs-demo-row rgp-prov rgp-prov-overdue" style="padding:0;border:none;background:none;margin:0">
+        <span class="pv-status"><span class="pv-glyph" aria-hidden="true">!</span>Review overdue</span>
+        <span class="cs-what">Past its scheduled review date. Still published, but read it with that in mind.</span>
+      </div>
+      <div class="cs-demo-row rgp-prov rgp-prov-unrecorded" style="padding:0;border:none;background:none;margin:0">
+        <span class="pv-status"><span class="pv-glyph" aria-hidden="true">–</span>Review not verified</span>
+        <span class="cs-what">Written and cited against current guidance, but no named clinical sign-off is logged against it yet.</span>
+      </div>
+    </div>
+
+    <p>Status is shown as a word and a symbol as well as a colour, so it is readable without colour vision. The same strip links every page to the guidance it draws on and to the form for telling us something is wrong.</p>
+    <div class="cs-note">
+      <p><b>Where the library stands today.</b> The <b>211 management protocols</b>, <b>200 diagnostic algorithms</b> and <b>108 casebook cases</b> were read through and signed off on <b>20 September 2026</b>, and now carry that date in their strip. The clinical lead accountable for that sign-off is named above.</p>
+      <p>High-risk pages then come round again at six months and everything else at twelve, so the first re-reviews fall due in <b>March 2027</b>. A page added after that date carries no sign-off until it has one, and says so.</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Evidence standard</span>Which sources we use, and in what order</h2>
+    <p>UK primary care has a clear hierarchy and we follow it rather than assembling our own. Where two sources disagree, the higher one wins and the disagreement is stated on the page rather than quietly resolved.</p>
+
+    <table class="cs-table">
+      <thead><tr><th style="width:20%">Order</th><th style="width:36%">Source</th><th>How we use it</th></tr></thead>
+      <tbody>
+        <tr><td><b>1</b></td><td><b>NICE guidelines</b></td><td>The default anchor for thresholds, referral criteria and management sequence. Recommendation numbers are quoted where a page states a specific threshold.</td></tr>
+        <tr><td><b>2</b></td><td><b>BNF and BNFC</b></td><td>The only authority for doses. We deliberately do not restate doses that belong in the BNF — every prescribing page defers to it and says so.</td></tr>
+        <tr><td><b>3</b></td><td><b>MHRA Drug Safety Update</b></td><td>Overrides everything above it on safety restrictions, contraindications and warnings, from the date of issue.</td></tr>
+        <tr><td><b>4</b></td><td><b>NHS England, UKHSA</b></td><td>Service specifications, screening programmes, immunisation and communicable disease management.</td></tr>
+        <tr><td><b>5</b></td><td><b>Royal College and specialty guidance</b></td><td>RCGP, RCOG, RCPCH, BSG, BASHH, BTS/SIGN, BSR, FSRH and equivalents, where NICE is silent or less specific.</td></tr>
+        <tr><td><b>6</b></td><td>Primary literature</td><td>Only to explain a number a clinician will be asked about, never to override a national recommendation.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Guidance that has changed or been withdrawn</h3>
+    <p>When a source is withdrawn, superseded or placed under review, the page says which recommendation is affected and what we have done, rather than silently deleting the line. A page whose anchor guidance is mid-revision is flagged <b>Review due</b> regardless of its date.</p>
+
+    <h3>National guidance is not your local pathway</h3>
+    <p>Everything here is national guidance. <b>Referral routes, direct-access investigations, antimicrobial choices and formulary preferences are set locally</b> by your ICB, area prescribing committee or trust, and they routinely differ from the national default. Every clinical page carries this caveat in its footnote. Where your local pathway differs, your local pathway is the one that applies.</p>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Review cycles</span>How often a page comes round again</h2>
+    <table class="cs-table">
+      <thead><tr><th style="width:24%">Tier</th><th style="width:20%">Cycle</th><th>What it covers</th></tr></thead>
+      <tbody>
+        <tr><td><b>High risk</b></td><td><b>6 months</b></td><td>Anything where a missed threshold causes serious harm quickly: suspected cancer and the two-week-wait criteria, sepsis, chest pain and ACS, anticoagulation, insulin and diabetic emergencies, hyperkalaemia, AKI, cauda equina and spinal cord compression, meningitis, stroke and TIA, anaphylaxis, suicidal ideation, safeguarding, ectopic pregnancy, testicular torsion, PE and DVT.</td></tr>
+        <tr><td><b>Standard</b></td><td><b>12 months</b></td><td>Everything else, brought forward whenever its anchor guidance changes.</td></tr>
+        <tr><td><b>Out of cycle</b></td><td><b>Immediate</b></td><td>Any MHRA safety alert, NICE update or reader report affecting a published threshold, dose or referral criterion.</td></tr>
+      </tbody>
+    </table>
+    <p>Cycles run from the last recorded sign-off, not from publication. A page's tier is shown in its provenance strip.</p>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Corrections</span>If something here is wrong, tell us</h2>
+    <p class="cs-lead">Every clinical page has a <b>Report a concern</b> link in the strip at the top. It opens a message pre-filled with the page address so you only have to describe the problem. You do not need to be sure — a suspicion is worth reporting.</p>
+
+    <table class="cs-table">
+      <thead><tr><th style="width:18%">Severity</th><th style="width:38%">What it means</th><th>Our response</th></tr></thead>
+      <tbody>
+        <tr><td><b>Critical</b></td><td>Could cause serious harm now — a wrong dose, a missed red flag, an incorrect emergency threshold.</td><td>Page amended or withdrawn <b>same working day</b>. Acknowledged to the reporter with what changed.</td></tr>
+        <tr><td><b>Major</b></td><td>A referral criterion, monitoring interval or contraindication that is wrong or out of date.</td><td>Amended within <b>5 working days</b>.</td></tr>
+        <tr><td><b>Moderate</b></td><td>Guidance has moved on and the page has not, without immediate risk.</td><td>Amended at the <b>next scheduled review</b>, or sooner.</td></tr>
+        <tr><td><b>Minor</b></td><td>Typography, a broken link, an unclear sentence.</td><td>Logged and fixed in the <b>next routine pass</b>.</td></tr>
+      </tbody>
+    </table>
+
+    <p>A page that cannot be corrected quickly is <b>flagged or withdrawn rather than left standing</b>. Correction always beats defending what is published.</p>
+    <p><a class="cs-cta" href="mailto:bassamomda@gmail.com?subject=Content%20concern%20%E2%80%94%20Reasoning%20GP">Report a concern</a></p>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Who is accountable</span>The people behind the content</h2>
+    <p>Reasoning GP is a small, GP-led independent project rather than a large editorial organisation, and we would rather describe that accurately than imply a structure we do not have.</p>
+    <div class="cs-note">
+      <p><b>Clinical lead and responsible author:</b> <span class="cs-fill">Dr Bassam Mohamed</span>, practising UK GP. Accountable for clinical content, sign-off and corrections.</p>
+      <p><b>Independent clinical review:</b> <span class="cs-fill">to be confirmed</span> — the roles this work needs next are an independent reviewer for high-risk pages and a medicines-safety reviewer for prescribing content. We will name them here when they are in post, and not before.</p>
+      <p><b>Independence:</b> no advertising, and no pharmaceutical or commercial sponsorship of clinical content.</p>
+      <p><b>Original authorship:</b> every page is written by the clinical lead in his own words from the primary published sources named on it — NICE guidelines (NG/CG/TA/QS), the BNF and BNFC, MHRA Drug Safety Updates, UKHSA guidance and named UK specialty-society guidelines. We do not copy, adapt or republish text from any third-party summary or subscription service.</p>
+      <p><b>No affiliation or endorsement:</b> Reasoning GP is independent. It is not affiliated with, licensed by, endorsed by or produced in partnership with NICE, the BNF, the RCGP, the MHRA, UKHSA or any other guideline publisher. Naming a guideline indicates the source a recommendation rests on; it does not imply that its publisher has reviewed or approved this site.</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Boundaries</span>What this platform is not</h2>
+    <ul>
+      <li><b>Not a medical device.</b> Reasoning GP publishes educational and reference content. It does not make recommendations about an individual patient, and we make no regulatory claim of any kind. Any future feature that produced patient-specific output would require specialist regulatory advice before release.</li>
+      <li><b>Not a substitute for clinical judgement</b>, your local protocol, or emergency assessment. In an emergency, call <b>999</b>.</li>
+      <li><b>Not a prescribing authority.</b> Check every dose in the current BNF or BNFC before prescribing.</li>
+      <li><b>Not for patients.</b> The content is written for qualified UK healthcare professionals and doctors in training.</li>
+      <li><b>Not a source of truth for AI output.</b> Where a feature uses AI it is labelled, and the same rule applies: verify before acting. See the <a href="disclaimer.html">medical disclaimer</a>.</li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Keeping up</span>How guideline changes reach the library</h2>
+    <p>MHRA Drug Safety Update, UKHSA and NICE feeds are monitored and surfaced on the <a href="updates.html">Updates page</a>. A change that affects a published threshold triggers an out-of-cycle review of the pages that cite it, which is why the review date on a page can move before its cycle is up.</p>
+    <p class="cs-meta">This page describes our working process. It is not a legal, regulatory or information-governance statement — see <a href="terms.html">Terms</a>, <a href="privacy.html">Privacy</a> and the <a href="disclaimer.html">Medical disclaimer</a>.</p>
+  </section>
+
+</div></div>
+
+</main></div>
+<script src="../assets/site.js?v=100"></script>
+</body></html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Metastatic spinal cord compression — Protocol · Reasoning GP</title>
+<meta name="description" content="MSCC in primary care: dexamethasone 16 mg on clinical suspicion before imaging, whole-spine MRI within 24 hours, same-day MSCC coordinator referral, why a normal neurological examination does not exclude it, the steroid taper, and the safety-net every cancer patient should be given." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/mscc.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="MSCC protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧬",
+  title:"Metastatic spinal cord compression — the complete guide",
+  eyebrow:"Protocol · NICE NG234 · steroid on suspicion, scan within 24 hours",
+  stemTitle:"Function present when treatment starts is usually preserved; function already lost rarely returns — which is why dexamethasone is given on clinical suspicion, before any scan confirms anything",
+  stemSub:"One page for the emergency. The three moves are <b>suspect, steroid, scan</b>, and the only one that can be done in the consulting room is the first two. <b>A normal neurological examination does NOT exclude MSCC</b> — compression is commonly at a level distant from the pain and frequently at more than one level, which is why the imaging is whole-spine and why the examination lowers your threshold to act rather than ever reassuring you to wait. Thoracic back pain in a patient with cancer is MSCC until proven otherwise.",
+  guideline:"NICE NG234 · GMEC Palliative 6th ed · PCF8 · NG12",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE NG234 — spinal metastases and MSCC (2023)"},
+    {t:"GMEC Palliative Care guidelines, 6th ed (April 2025)"},
+    {t:"Dexamethasone 16 mg + PPI on SUSPICION", tone:"tw"},
+    {t:"Whole-spine MRI within 24 hours", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Suspect</b><small>The features · normal exam</small></a><a href="#steroid"><b>Steroid</b><small>16 mg now</small></a><a href="#image"><b>Scan</b><small>Whole spine ≤24h</small></a><a href="#refer"><b>Refer</b><small>MSCC coordinator</small></a><a href="#after"><b>After</b><small>Taper · rehab · ACP</small></a></div>',
+  quickSub:"The six that decide whether this patient walks again. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Give dexamethasone on suspicion — do not wait for the scan", html:"Dexamethasone 16 mg orally (or 13.2 mg subcutaneously) stat, then 8 mg twice daily, with a PPI. <b>Start it on clinical suspicion, before MRI confirms anything</b> — it reduces vasogenic oedema around the cord and buys time, and waiting for confirmation risks irreversible paralysis. Continue until MSCC is excluded, surgery is done, or radiotherapy has started."},
+    {tone:"red", h:"⚠ A normal neurological examination does NOT exclude MSCC", html:"Compression can exist with a near-normal examination, and at a level distant from the pain. So the examination establishes a baseline and lowers your threshold to image — it never provides reassurance to wait. Thoracic back pain in a patient with cancer is MSCC until proven otherwise."},
+    {tone:"amber", h:"Whole-spine MRI within 24 hours — not a targeted film", html:"<b>Urgent MRI of the WHOLE spine within 24 hours of clinical suspicion</b> (CT whole spine with thin slices and sagittal reconstruction if MRI is contraindicated). Whole-spine because compression is frequently at multiple levels and the clinical level is unreliable — the thoracic spine is the commonest site, around 70%."},
+    {tone:"blue", h:"Same-day MSCC coordinator, not a routine referral", html:"Urgent same-day referral to the network MSCC coordinator, or oncology out-of-hours. The route exists specifically to compress referral-to-treatment time. Most patients have radiotherapy within 24 hours of diagnosis; surgery is for single-level compression, instability, good performance status and life expectancy of 6 months or more."},
+    {tone:"green", h:"The safety-net is the highest-yield long-term intervention", html:"Every patient with cancer — particularly prostate, breast, lung or myeloma — should be told to report new or worsening back pain, leg weakness or numbness, or any bladder or bowel change IMMEDIATELY and not wait for an appointment. Because ambulant status at treatment is the key predictor of staying ambulant, teaching the early symptoms prevents more paralysis than anything done after presentation."},
+    {tone:"purple", h:"🟣 NICE NG12 — when MSCC is the FIRST presentation", html:"MSCC can be the index presentation of an unknown primary, and then NG12 applies in its own right. Aged 60 and over with persistent bone pain, particularly back pain, or an unexplained fracture → very urgent FBC, calcium and plasma viscosity or ESR for myeloma; if suggestive, very urgent serum and urine protein electrophoresis with Bence-Jones protein within 48 hours. Unexplained bone swelling or pain → very urgent direct-access X-ray within 48 hours for bone sarcoma. The acute MSCC pathway takes precedence and runs in parallel — it does not replace the hunt for the primary."}
+  ],
+  pathwaySub:"Five steps, and the first three should all happen in the same consultation.",
+  pathway:[
+    {title:"Suspect it", html:"A patient with cancer and new or worsening back pain, with or without neurological symptoms. MSCC affects 5–10% of patients with cancer; commonest primaries are prostate, lung, breast and myeloma. Symptoms are often vague — the index of suspicion has to be low."},
+    {title:"Give the steroid", html:"Dexamethasone 16 mg stat plus a PPI, then 8 mg twice daily. On suspicion, before imaging. Check blood glucose and assess thromboprophylaxis.", alert:true},
+    {title:"Immobilise if unstable, then image", html:"Immobilise without delay — including during transfer — if MSCC is suspected with signs of spinal instability, or there is moderate-to-severe movement-related pain. Urgent whole-spine MRI within 24 hours."},
+    {title:"Refer same day to the MSCC coordinator", html:"Radiotherapy for most, within 24 hours of diagnosis. Surgical decompression for selected patients. If the patient is dying, admission and radiotherapy may be inappropriate — seek specialist palliative advice instead."},
+    {title:"Afterwards: taper, rehabilitate, plan", html:"Taper dexamethasone over 1–2 weeks after treatment. Pressure care, continence, bowel regimen, physiotherapy and OT. Discuss prognosis and advance care planning — MSCC signals advanced disease."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Suspect", title:"Recognising it — the features, and why the examination cannot reassure you",
+     sub:"MSCC affects 5–10% of patients with cancer, and the window to preserve function is short.",
+     blocks:[
+       {b:"table", head:["Feature","What to ask and look for","Why it matters"], rows:[
+         ["<b>Spinal or back pain</b>","Severe, progressive or unremitting. Radicular and band-like. Nocturnal — waking or preventing sleep. Worse on straining, coughing or standing. <b>It may not be present at all</b>","Thoracic back pain in a patient with cancer is MSCC until proven otherwise. Nocturnal and band-like pain are the two most specific historical features"],
+         ["<b>Limb weakness</b>","Out of proportion to the general condition; difficulty walking; claudication-like leg pain","Often the symptom the patient volunteers last, having attributed it to being unwell generally"],
+         ["<b>Sensory change</b>","Tingling, numbness, \"my legs don't feel like mine\" — look specifically for a SENSORY LEVEL","A sensory level is the single most useful positive physical finding"],
+         ["<b>Bladder and bowel</b>","Difficulty passing urine (usually late), constipation or faecal incontinence, a distended bladder","<b>These are LATE features — waiting for them is waiting too long.</b> Palpate for retention rather than relying on the history"],
+         ["<b>Signs</b>","Localised spinal tenderness, limb weakness, absent OR increased reflexes, extensor plantars, clonus, reduced anal tone (late)","Reflexes may be absent or brisk depending on the level — neither pattern excludes it"],
+         ["<b>The examination itself</b>","<b>A normal neurological examination does NOT exclude MSCC</b>","The examination gives you a baseline against which to judge treatment response, and it lowers your threshold to image. It never gives you grounds to wait"]
+       ]},
+       {b:"warn", html:"The failure mode is attributing the pain to something benign in a patient who has every reason to have back pain. Patients with advanced cancer are often frail, deconditioned, on opioids and already in pain — so new back pain gets absorbed into the existing picture. The discipline is to treat new or changed back pain in a patient with cancer as a different question from their established pain, and to ask specifically about nocturnal pain, band-like pain, leg weakness and bladder function every time."},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🔬 Which cancers, and where", html:"Prostate, breast, lung and myeloma account for most spinal metastases; renal and thyroid also metastasise to bone. Mechanism: a vertebral body metastasis collapsing posteriorly onto the cord, or direct epidural extension. The thoracic spine is the commonest site (around 70%)."},
+         {tone:"amber", h:"⚠ It can be the first presentation", html:"<b>MSCC may be the index presentation of an unknown primary.</b> Run the acute pathway AND the hunt for the primary — see the NG12 card. <b>Do not delay the steroid while investigating the cancer.</b>"},
+         {tone:"blue", h:"🔍 Differential on MRI", html:"Benign causes (disc prolapse, epidural abscess, haematoma), degenerative stenosis, or non-compressive paraneoplastic or leptomeningeal disease. MRI distinguishes them — which is another reason the scan is urgent rather than optional."},
+         {tone:"green", h:"✓ Document the baseline", html:"<b>Power, reflexes, plantars, sensory level and continence, written down.</b> It is what the receiving team compares against, and what tells anyone reviewing later whether the deficit is progressing."}
+       ]}
+     ]},
+
+    {id:"steroid", nav:"Steroid", title:"Dexamethasone — the one treatment you start yourself",
+     blocks:[
+       {b:"table", head:["Step","Dose","Notes"], rows:[
+         ["<b>Loading dose — on suspicion</b>","<b>Dexamethasone 16 mg orally stat, or 13.2 mg subcutaneously</b>","<b>Before imaging confirms anything.</b> This is the single action in the whole pathway that a GP can take immediately and that changes the outcome"],
+         ["<b>Maintenance</b>","8 mg twice daily orally (or 6.6 mg subcutaneously twice daily — morning and lunchtime)","Continue 8 mg BD, or 16 mg once daily, until MSCC is excluded, surgery is completed, or radiotherapy has started. Avoid evening doses — insomnia and agitation"],
+         ["<b>During radiotherapy</b>","<b>8 mg orally each morning until treatment completes</b>","Then taper"],
+         ["<b>Gastroprotection</b>","<b>Co-prescribe a PPI with high-dose steroid</b>","Not optional at this dose"],
+         ["<b>Monitoring</b>","Blood glucose — steroid-induced hyperglycaemia is common and can be marked in a patient with diabetes","Also mood and sleep; steroid psychosis and agitation occur at these doses"],
+         ["<b>VTE</b>","<b>Assess whether thromboprophylaxis is appropriate</b>","Malignancy plus immobility plus steroid is a high-risk combination"],
+         ["<b>Taper</b>","<b>Reduce and discontinue over 1–2 weeks after radiotherapy or surgery</b>","If the neurology deteriorates during reduction, return to the last effective dose for a further 2 weeks before retrying. Keep the PPI while the dose is high"]
+       ]},
+       {b:"why", html:"Dexamethasone works by reducing the vasogenic oedema around the compressed cord, which buys time and improves the outcome of whatever definitive treatment follows. It is given on suspicion rather than on confirmation for a simple reason: the cost of giving a few doses of steroid to someone who turns out not to have MSCC is small and reversible, while the cost of waiting overnight for a scan in someone who does is permanent paralysis. That asymmetry is the whole argument, and it is worth saying out loud to a patient or relative who asks why treatment is starting before the diagnosis is certain."}
+     ]},
+
+    {id:"image", nav:"Scan", title:"Immobilisation and imaging",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Immobilise — when</b>","Immobilise without delay, including during transfer, if suspected MSCC is accompanied by signs of spinal instability. Consider immobilisation where there are suspected spinal metastases or MSCC with moderate-to-severe movement-related pain. Otherwise nurse flat per local guidance"],
+         ["<b>Imaging — what and when</b>","<b>Urgent MRI of the WHOLE spine within 24 hours of clinical suspicion.</b> If MRI is contraindicated: <b>CT of the whole spine with thin slices and sagittal reconstruction</b>"],
+         ["<b>Why whole-spine</b>","Compression is frequently at more than one level, and the clinical level is unreliable — a targeted film at the level of the pain can miss the compression entirely"],
+         ["<b>Bloods</b>","<b>As indicated by the underlying malignancy and fitness for treatment</b> — and, where MSCC is the first presentation, the NG12 myeloma screen"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"⛔ Do not arrange an outpatient scan", html:"\"Urgent MRI\" in this context means within 24 hours, via the acute pathway. A routine or two-week outpatient request is not a treatment for an oncological emergency, and is the commonest way this pathway fails in practice."},
+         {tone:"amber", h:"⚠ Moving the patient", html:"Where instability is suspected, the immobilisation applies during transfer too — say so explicitly when you arrange the ambulance, not just in the referral letter."},
+         {tone:"blue", h:"📋 What the referral needs", html:"Primary tumour and stage, the neurological findings with the baseline you recorded, time of symptom onset and rate of progression, current ambulant status, the steroid dose and time given, and performance status. Ambulant status and rate of progression are what the oncology team triage on."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral and definitive treatment",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same-day — MSCC coordinator", html:"Urgent same-day referral to the network MSCC coordinator, or oncology out-of-hours. The coordinator route exists to compress referral-to-treatment time — use it rather than a general medical admission where your network provides it."},
+         {tone:"amber", h:"Radiotherapy — most patients", html:"<b>Urgent radiotherapy within 24 hours of diagnosis for most patients</b>, under dexamethasone cover — it controls the tumour, relieves pain and preserves function without surgery."},
+         {tone:"amber", h:"Surgery — selected patients", html:"Surgical decompression with or without stabilisation where there is: no tissue diagnosis yet; a limited number of levels of compression; minor neurological impairment; progressive weakness despite prior radiotherapy at that level; or instability with life expectancy of 6 months or more and fitness for surgery. Post-operative radiotherapy usually follows."},
+         {tone:"blue", h:"Systemic therapy — tumour-specific", html:"Hormone therapy or chemotherapy where the tumour is highly hormone- or chemo-sensitive — prostate, lymphoma, myeloma, small-cell lung."},
+         {tone:"green", h:"If the patient is dying", html:"Admission and radiotherapy may be inappropriate in the last days of life. <b>Seek specialist palliative care advice and focus on symptom control</b> — analgesia, positioning, catheterisation for retention, and honest conversation with the family. See <a href='care-of-the-dying.html'>care of the dying</a> and <a href='palliative-pain.html'>palliative pain</a>."},
+         {tone:"purple", h:"2WW · NICE NG12 — if the primary is unknown", html:"Myeloma: aged 60 and over with persistent bone pain, particularly back pain, or an unexplained fracture → very urgent FBC, calcium and plasma viscosity or ESR; if suggestive, very urgent serum and urine protein electrophoresis with Bence-Jones protein within 48 hours. Bone sarcoma: unexplained bone swelling or pain → very urgent direct-access X-ray within 48 hours. These run in PARALLEL with the acute pathway and never delay the steroid."},
+         {tone:"cream", h:"What primary care owns", html:"Suspecting it, giving the dexamethasone and PPI, arranging the immobilisation and the same-day referral, and giving every at-risk patient the safety-net. Related pages: <a href='sciatica.html'>sciatica</a> · <a href='cauda-equina.html'>cauda equina syndrome</a> · <a href='malignant-hypercalcaemia.html'>malignant hypercalcaemia</a> · <a href='svco.html'>superior vena cava obstruction</a> · <a href='palliative-corticosteroids.html'>palliative corticosteroids</a>."}
+       ]},
+       {b:"why", html:"Radiotherapy is the default because it relieves compression for most tumour types quickly and non-invasively. Surgery is preferred where the spine is unstable, where the compression is from bone rather than radiosensitive tumour, or where a single level can be decompressed in a patient fit enough to benefit — and the decision is driven by performance status and predicted survival rather than by the imaging alone. Outcome is dictated by speed: function present at treatment is usually preserved, function already lost rarely returns."}
+     ]},
+
+    {id:"after", nav:"After", title:"Supportive care, rehabilitation and follow-up",
+     blocks:[
+       {b:"table", head:["Domain","What to do"], rows:[
+         ["<b>Pressure and VTE care</b>","Meticulous pressure-area care while immobile; reassess thromboprophylaxis; a bowel regimen from the outset"],
+         ["<b>Bladder and bowel</b>","Continence support, catheterisation or intermittent self-catheterisation, and active bowel management for cord dysfunction"],
+         ["<b>Rehabilitation</b>","Early physiotherapy and occupational therapy, mobility aids, falls prevention; spinal-cord-injury rehabilitation where appropriate"],
+         ["<b>Psychological and social</b>","Support for the patient and family; equipment and care-package planning for new disability — often needed within days"],
+         ["<b>Steroid taper</b>","Reduce over 1–2 weeks after treatment; if neurology worsens on reduction, return to the last effective dose for 2 weeks. Keep PPI cover and monitor glucose"],
+         ["<b>Prognosis and advance care planning</b>","MSCC signals advanced disease — discuss prognosis and advance care planning. Ambulant status at treatment is the key predictor of remaining ambulant"],
+         ["<b>New or progressing neurology after treatment</b>","Urgent re-imaging and oncology review — do not assume it is expected progression"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 The safety-net, given verbally to every at-risk patient", html:"\"If you get new or worsening back pain, weakness or numbness in your legs, or any change in your bladder or bowels — contact us the same day or go to A&amp;E. Do not wait for an appointment and do not assume it is just your back.\""},
+         {tone:"amber", h:"🟠 On the steroid", html:"\"Take it in the morning and at lunchtime, never in the evening — it will keep you awake. Take the stomach protector with it. Tell us if you feel agitated or your blood sugars run high.\""},
+         {tone:"green", h:"✓ Honest framing", html:"\"We are treating this today rather than waiting for the scan, because the steroid protects the nerves while we get you seen. How you are walking now is the best guide to how you will walk afterwards — which is why we are not waiting.\""},
+         {tone:"blue", h:"📋 Whom to warn", html:"Prioritise the safety-net conversation in patients with prostate, breast, lung or myeloma, and anyone with known bone metastases — and record that you gave it."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 68-year-old man with metastatic prostate cancer telephones about <b>3 weeks of mid-thoracic back pain</b>, now <b>waking him at night</b> and described as \"a band around my chest\". He mentions his legs feel \"heavy on the stairs\". He is already on <b>morphine sulfate MR 30 mg BD</b> for bone pain and assumed this was the same thing. On examination power is <b>5/5 throughout, reflexes brisk, plantars equivocal</b>, and he is still walking unaided. He asks whether he can \"wait for the oncology appointment next Thursday\"."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises nocturnal band-like thoracic pain in prostate cancer as suspected MSCC despite the normal power; <b>states explicitly that a normal examination does not exclude it</b>; <b>asks specifically about bladder function and palpates for retention</b>; <b>gives dexamethasone 16 mg with a PPI THERE AND THEN, before imaging</b>, and can explain why; arranges whole-spine MRI within 24 hours — not a targeted film, not an outpatient request; <b>refers same day to the MSCC coordinator rather than accepting Thursday</b>, and explains that walking now is the best predictor of walking later; <b>documents the neurological baseline</b>; <b>addresses the assumption that this is his existing bone pain</b> without dismissing it; <b>checks glucose and considers thromboprophylaxis</b>; and gives the return-immediately safety-net covering leg weakness and bladder change."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG234 — Spinal metastases and metastatic spinal cord compression (2023)<br><a href="https://www.nice.org.uk/guidance/ng234" rel="noopener">nice.org.uk/guidance/ng234</a><span class="rd"> — whole-spine MRI within 24 hours of suspicion, immobilisation where instability is suspected, the surgical selection criteria, and radiotherapy timing</span></li>'+
+         '<li>GMEC Palliative Care Pain &amp; Symptom Control Guidelines, 6th edition (April 2025)<span class="rd"> — dexamethasone 16 mg loading and 8 mg twice daily maintenance, the subcutaneous equivalents (13.2 mg and 6.6 mg), PPI cover, and the 1–2 week taper with the return-to-last-effective-dose rule</span></li>'+
+         '<li><b>Greater Manchester Cancer Services MSCC pathway</b><span class="rd"> — the network MSCC coordinator route and same-day referral standard</span></li>'+
+         '<li><b>Palliative Care Formulary (PCF8)</b><span class="rd"> — corticosteroid dosing, adverse effects and tapering in the palliative setting</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the myeloma bloods route at 60 and over with persistent bone or back pain, and the 48-hour X-ray for suspected bone sarcoma, which apply where MSCC is the index presentation of an unknown primary</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Metastatic spinal cord compression — NICE NG234, GMEC Palliative Care Guidelines 6th edition, the Greater Manchester MSCC pathway and PCF8. Suspect, steroid, scan. Give dexamethasone 16 mg with a PPI on clinical suspicion, before imaging. Arrange whole-spine MRI within 24 hours and refer the same day to the MSCC coordinator. A normal neurological examination does not exclude MSCC, and thoracic back pain in a patient with cancer is MSCC until proven otherwise. Function present at treatment is usually preserved; function already lost rarely returns. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

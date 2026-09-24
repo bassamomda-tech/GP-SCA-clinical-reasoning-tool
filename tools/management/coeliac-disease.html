@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coeliac disease — Protocol · Reasoning GP</title>
+<meta name="description" content="Coeliac disease under NICE NG20: test on a gluten-containing diet with tTG-IgA and total IgA, never after starting gluten-free; confirm with duodenal biopsy in adults; then a lifelong gluten-free diet with dietitian support, deficiency replacement, bone protection and pneumococcal vaccination for hyposplenism." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/coeliac-disease.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Coeliac disease protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🌾",
+  title:"Coeliac disease — the complete guide",
+  eyebrow:"Protocol · NICE NG20 · test on gluten, or not at all",
+  stemTitle:"The classic error is starting a gluten-free diet before testing — it normalises both serology and histology and makes a secure diagnosis impossible, sometimes for months",
+  stemSub:"One page for the whole condition. Know who to test and test correctly: tTG-IgA with total IgA, while the patient is still eating gluten — in more than one meal a day for at least 6 weeks. Confirm with duodenal biopsy in adults. Then the treatment is a <b>lifelong gluten-free diet with dietitian support</b>, plus the three things coeliac adds that are easy to forget: deficiency replacement, bone protection from malabsorption, and pneumococcal vaccination for functional hyposplenism — and case-finding in first-degree relatives.",
+  guideline:"NICE NG20",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE NG20 — coeliac disease recognition and assessment"},
+    {t:"Gluten in >1 meal/day for ≥6 weeks BEFORE testing", tone:"tw"},
+    {t:"Functional hyposplenism → vaccinate", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#test"><b>Test</b><small>On gluten</small></a><a href="#complications"><b>Associations</b><small>Bone · spleen</small></a><a href="#diet"><b>Diet</b><small>Lifelong</small></a><a href="#wider"><b>Wider care</b><small>Family · labels</small></a><a href="#monitor"><b>Annual</b><small>tTG · haematinics</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Do NOT start a gluten-free diet before the diagnosis is confirmed", html:"Going gluten-free normalises serology and histology, so it prevents a secure diagnosis. The patient must be eating gluten in more than one meal a day for at least 6 weeks before testing. If they have already stopped, they need a gluten challenge before testing is meaningful — which is why the sequence matters more than the speed."},
+    {tone:"blue", h:"The right test is tTG-IgA WITH total IgA", html:"<b>Total IgA plus IgA tissue transglutaminase (tTG-IgA).</b> The total IgA is not optional — in IgA deficiency the tTG-IgA is falsely negative, and you need IgG-based testing (IgG-DGP or EMA) instead. Positive serology → refer to gastroenterology for duodenal biopsy to confirm villous atrophy in adults."},
+    {tone:"amber", h:"Who to test — wider than the classic presentation", html:"Persistent GI symptoms (diarrhoea, bloating, abdominal pain) · unexplained iron, B12 or folate deficiency · faltering growth · unexplained weight loss · type 1 diabetes · autoimmune thyroid disease · IBS-type symptoms · dermatitis herpetiformis · a first-degree relative with coeliac disease. Unexplained iron deficiency and \"IBS\" are the two that most often hide it."},
+    {tone:"green", h:"The diet is the treatment, and the dietitian makes it work", html:"A strict lifelong gluten-free diet — excluding wheat, barley and rye — resolves symptoms and reduces complications. <b>Refer everyone newly diagnosed to a dietitian</b> for education, label-reading, cross-contamination avoidance and nutritional adequacy. <b>There is no drug substitute: adherence IS the treatment.</b> Signpost Coeliac UK."},
+    {tone:"red", h:"⚠ Functional hyposplenism — vaccinate", html:"Coeliac disease causes functional hyposplenism, so offer pneumococcal vaccination with a booster, annual influenza vaccination, and ensure Hib and MenACWY per national guidance. <b>This is the element most often missed entirely</b>, because nothing about the consultation prompts it unless you know to look."},
+    {tone:"amber", h:"Malabsorption has consequences to check for", html:"Iron, B12, folate and vitamin D deficiency — check and replace at diagnosis and recheck after dietary treatment. Low bone density from malabsorption — assess fracture risk and arrange DEXA per risk. Ongoing symptoms despite a strict diet, weight loss or an abdominal mass mean reassessment, including the rare risk of enteropathy-associated T-cell lymphoma and small-bowel cancer."}
+  ],
+  pathwaySub:"Five steps, and getting the first one in the wrong order costs months.",
+  pathway:[
+    {title:"Identify who to test — and test on gluten", html:"tTG-IgA with total IgA, while eating gluten in more than one meal a day for at least 6 weeks. <b>Do NOT start a gluten-free diet first.</b>", alert:true},
+    {title:"Confirm the diagnosis", html:"<b>Positive serology → gastroenterology for duodenal biopsy in adults.</b>"},
+    {title:"Start the lifelong gluten-free diet with a dietitian", html:"Exclude wheat, barley and rye; education, labels and cross-contamination."},
+    {title:"Correct the deficiencies and protect bone and spleen", html:"Iron, B12, folate, vitamin D and calcium; DEXA per risk; pneumococcal and influenza vaccination."},
+    {title:"Annual review, and test the relatives", html:"Symptoms and adherence, tTG-IgA titre, haematinics and TFTs, bone health, growth in children — and offer testing to first-degree relatives."}
+  ],
+  sections:[
+
+    {id:"test", nav:"Test", title:"Step 1 — who to test, and testing correctly",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Who to test</b>","Persistent GI symptoms (diarrhoea, bloating, abdominal pain), unexplained iron, B12 or folate deficiency, faltering growth, unexplained weight loss, type 1 diabetes, autoimmune thyroid disease, IBS-type symptoms, dermatitis herpetiformis, or a first-degree relative"],
+         ["<b>Test</b>","Total IgA PLUS IgA tissue transglutaminase (tTG-IgA); if IgA deficient, use IgG-based testing (IgG-DGP or EMA)"],
+         ["<b>CRUCIAL</b>","The patient must be eating gluten — in more than one meal a day for at least 6 weeks before testing. Do NOT start a gluten-free diet before the diagnosis is confirmed"],
+         ["<b>Diagnosis</b>","Positive serology → refer to gastroenterology for duodenal biopsy (villous atrophy) to confirm, in adults"]
+       ]},
+       {b:"why", html:"The classic error is starting a gluten-free diet before testing — this normalises serology and histology and prevents a secure diagnosis. Test on gluten, confirm with biopsy, then commit to lifelong dietary change. <b>The order is the whole of it</b>: a patient who has been gluten-free for three months before their blood test has to eat gluten again for six weeks to be diagnosable."}
+     ]},
+
+    {id:"complications", nav:"Associations", title:"Associations and complications",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"🦴 Osteoporosis", html:"Malabsorption leads to low bone density — assess fracture risk and arrange DEXA."},
+         {tone:"amber", h:"🩸 Anaemia and deficiency", html:"<b>Iron, B12, folate and vitamin D deficiency — check and replace.</b>"},
+         {tone:"red", h:"🛡️ Hyposplenism", html:"Functional hyposplenism → pneumococcal vaccination with booster, annual influenza, and ensure Hib and MenACWY per guidance."},
+         {tone:"red", h:"🔴 Refractory or alarm features", html:"Ongoing symptoms despite a strict diet, weight loss or an abdominal mass → reassess. Rare risk of enteropathy-associated T-cell lymphoma and small-bowel cancer → specialist."}
+       ]}
+     ]},
+
+    {id:"diet", nav:"Diet", title:"Treatment — the lifelong gluten-free diet",
+     blocks:[
+       {b:"table", head:["Step","When","Detail"], rows:[
+         ["<b>Cornerstone — strict gluten-free diet for life</b>","<b>All patients</b>","Exclude wheat, barley and rye. Refer to a dietitian for education, label-reading, avoiding cross-contamination, and nutritional adequacy. <b>Adherence resolves symptoms and reduces complications</b>"],
+         ["<b>Correct deficiencies</b>","<b>At diagnosis, if deficient</b>","Iron, B12, folate, vitamin D and calcium as indicated; recheck after dietary treatment"],
+         ["<b>Protect bone and spleen</b>","<b>Ongoing — complication prevention</b>","Assess bone health (DEXA per risk); ensure pneumococcal and influenza vaccination for hyposplenism"],
+         ["<b>Dermatitis herpetiformis</b>","<b>The skin variant</b>","Itchy vesicular rash on extensor surfaces — gluten-free diet; dermatology may add dapsone"]
+       ]},
+       {b:"warn", html:"<b>Gluten-free \"free-from\" prescribing varies locally.</b> <b>There is no drug substitute for the diet — adherence is the treatment.</b> <b>Lifelong, not a fad</b>, and that distinction is worth making explicitly to a patient who has met gluten-free eating as a lifestyle choice."}
+     ]},
+
+    {id:"wider", nav:"Wider care", title:"Beyond the diet — bone, vaccines, family and labels",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🥗 Dietitian and support", html:"Refer to a dietitian to make the gluten-free diet effective and nutritionally complete; signpost Coeliac UK and prescribable gluten-free staples where available."},
+         {tone:"amber", h:"🦴 Bone health", html:"Ensure adequate calcium and vitamin D given the malabsorption risk; DEXA if there are additional osteoporosis risk factors."},
+         {tone:"red", h:"💉 Vaccination", html:"Functional hyposplenism occurs in coeliac disease — offer pneumococcal vaccination."},
+         {tone:"blue", h:"👪 Family and labels", html:"Test first-degree relatives; teach gluten label-reading and cross-contamination avoidance."}
+       ]},
+       {b:"why", html:"The gluten-free diet is the treatment, but durable success depends on dietitian support and label literacy — and coeliac disease carries specific extras: bone protection from malabsorption, pneumococcal vaccination for hyposplenism, and case-finding in relatives. <b>Those three are the ones a symptom-focused review misses</b>, because the patient feels well and nothing prompts them."}
+     ]},
+
+    {id:"monitor", nav:"Annual", title:"Annual review",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Symptoms and dietary adherence</b>","<b>Annually</b>","<b>Dietitian input if there are ongoing symptoms or poor adherence</b>"],
+         ["<b>tTG-IgA</b>","<b>Periodically</b>","A falling titre confirms adherence; a rising one means reviewing the diet"],
+         ["<b>FBC, ferritin, B12, folate, vitamin D, calcium, TFTs</b>","<b>Annually</b>","<b>Replace deficiencies; screen for associated autoimmune disease</b>"],
+         ["<b>Bone health</b>","<b>Per risk / DEXA</b>","<b>Manage osteoporosis</b>"],
+         ["<b>Growth (children)</b>","<b>Each review</b>","<b>Expect catch-up growth on the diet</b>"]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Gastroenterology", html:"Confirmatory duodenal biopsy; positive serology; diagnostic uncertainty (especially IgA deficiency); refractory disease."},
+         {tone:"green", h:"Dietitian", html:"<b>All newly diagnosed patients — essential for education and adherence.</b>"},
+         {tone:"blue", h:"Dermatology", html:"<b>Dermatitis herpetiformis.</b>"},
+         {tone:"red", h:"Reassess / specialist", html:"Persistent symptoms despite a strict diet, or alarm features → exclude complications and malignancy."},
+         {tone:"cream", h:"GP management", html:"Case-finding and correct testing, the dietitian referral, deficiency replacement, bone protection, vaccination, relative testing and the annual review all belong here. Related pages: <a href='ibs.html'>IBS</a> · <a href='iron-deficiency-anaemia.html'>iron deficiency anaemia</a> · <a href='osteoporosis.html'>osteoporosis</a> · <a href='type-1-diabetes.html'>type 1 diabetes</a> · <a href='hypothyroidism.html'>hypothyroidism</a>."}
+       ]},
+       {b:"say", html:"Coeliac disease means gluten damages the gut lining. The important thing right now — keep eating gluten until the tests are done, a blood test and usually a camera-test biopsy, or we won't be able to confirm it. Once confirmed, the treatment is a strict gluten-free diet for life, which heals the gut. A dietitian will help, and we'll check your iron and bones, and give you a vaccination because coeliac affects how the spleen works."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 27-year-old woman attends with 8 months of bloating, loose stools and tiredness. Her <b>ferritin is 6 µg/L with a normal haemoglobin</b>. She read about gluten online and <b>has been strictly gluten-free for 10 weeks</b>, feeling considerably better. She wants \"the coeliac test\" today to know for certain. Her <b>mother has coeliac disease</b>."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises that testing now is uninterpretable — 10 weeks gluten-free normalises serology and histology, and explains why rather than just declining; explains the gluten challenge: gluten in more than one meal a day for at least 6 weeks before tTG-IgA, and negotiates it honestly given she feels better off gluten; <b>orders tTG-IgA WITH total IgA when the time comes</b>, and can say why the total IgA matters; treats the unexplained iron deficiency as a coeliac indication in its own right, and investigates and replaces it regardless; <b>notes the first-degree relative as an independent reason to test</b>; <b>does not start a gluten-free diet as \"a trial\" before diagnosis</b>, and explains what a secure diagnosis unlocks — dietitian support, prescribable staples, DEXA, vaccination and relative testing; <b>discusses the pneumococcal vaccination for hyposplenism if confirmed</b>; and <b>arranges gastroenterology referral for biopsy on a positive result.</b>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG20 — Coeliac disease: recognition, assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng20" rel="noopener">nice.org.uk/guidance/ng20</a><span class="rd"> — who to test, tTG-IgA with total IgA and the IgG-based alternative in IgA deficiency, the requirement to eat gluten in more than one meal a day for at least 6 weeks before testing, the instruction not to start a gluten-free diet before diagnosis, confirmatory duodenal biopsy in adults, the lifelong gluten-free diet with dietitian referral, and the annual review</span></li>'+
+         '<li><b>NICE NG20 \u2014 Coeliac disease: recognition, assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng20" rel="noopener">nice.org.uk/guidance/ng20</a><span class="rd"> — the haematinic and bone monitoring set, tTG titre as an adherence marker, dermatitis herpetiformis with dapsone via dermatology, and testing of first-degree relatives</span></li>'+
+         '<li>UKHSA Green Book, chapters on pneumococcal, Hib and meningococcal immunisation<br><a href="https://www.gov.uk/government/collections/immunisation-against-infectious-disease-the-green-book" rel="noopener">gov.uk — the Green Book</a><span class="rd"> — functional hyposplenism in coeliac disease as an indication for pneumococcal vaccination with booster, annual influenza, and Hib and MenACWY cover</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b><span class="rd"> — referenced for the reassessment of persistent symptoms despite a strict diet, where enteropathy-associated T-cell lymphoma and small-bowel cancer are the rare concerns</span></li>'+
+         '<li><b>Coeliac UK</b><br><a href="https://www.coeliac.org.uk" rel="noopener">coeliac.org.uk</a><span class="rd"> — patient education, label reading and the prescribable gluten-free staples position</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Coeliac disease in primary care — NICE NG20, NICE and the UKHSA Green Book. Test on gluten or not at all: tTG-IgA with total IgA, while eating gluten in more than one meal a day for at least 6 weeks, and never after starting a gluten-free diet — that normalises both serology and histology. Positive serology needs confirmatory duodenal biopsy in adults. Treatment is a strict lifelong gluten-free diet with dietitian support; there is no drug substitute. Remember the three easily-missed extras: deficiency replacement, bone protection, and pneumococcal vaccination for functional hyposplenism. Test first-degree relatives. Verify against current NICE NG20."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

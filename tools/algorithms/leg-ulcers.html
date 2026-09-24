@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Leg Ulcers Algorithm · Reasoning GP</title>
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/leg-ulcers.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#e74c3c;--safety-lt:#fdf3f2;--safety-bd:#f5c6c3;--diagnose:#2980b9;--diagnose-lt:#eef6fc;--diagnose-bd:#aed6f1;--treat:#27ae60;--treat-lt:#eafaf1;--treat-bd:#a9dfbf;--refer:#8e44ad;--refer-lt:#f5eef8;--refer-bd:#d2b4de;--lifestyle:#e67e22;--lifestyle-lt:#fef9f0;--lifestyle-bd:#f8c471;--light:#f8f9fa;--border:#e5e7eb;--text:#1a202c;--muted:#64748b;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08);}
+body{font-family:'DM Sans',sans-serif;background:#f0f4f8;color:var(--text);line-height:1.55;font-size:15px;padding:20px 16px 60px;}
+h3{font-family:'Source Serif 4',serif;font-weight:600;}
+.stem-banner{display:flex;align-items:center;gap:14px;background:#1a202c;color:#fff;border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;max-width:780px;margin-left:auto;margin-right:auto;}
+.sb-icon{font-size:2rem;}.stem-banner b{display:block;font-size:1.05rem;font-weight:700;}.stem-banner small{font-size:.82rem;opacity:.7;}
+.alg-progress{max-width:780px;margin:0 auto 24px;background:#fff;border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);}
+.alg-progress span{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.pcount{margin-left:auto;font-weight:700;}.pbar{flex:1;height:6px;background:#e5e7eb;border-radius:99px;min-width:80px;}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#27ae60,#2ecc71);border-radius:99px;width:0%;transition:width .4s ease;}
+.reset{margin-left:8px;font-size:.78rem;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;color:var(--muted);}
+.alg-flow{max-width:780px;margin:0 auto;display:flex;flex-direction:column;}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;position:relative;border-left:5px solid var(--border);transition:box-shadow .2s;}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);}.node[data-type="TREAT"]{border-left-color:var(--treat);}.node[data-type="REFER"]{border-left-color:var(--refer);}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);}
+.node-num{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;}
+.node[data-type="SAFETY"] .node-num{background:var(--safety);}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose);}.node[data-type="TREAT"] .node-num{background:var(--treat);}.node[data-type="REFER"] .node-num{background:var(--refer);}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle);}
+.node-head{padding:16px 56px 0 18px;}.node-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:6px;}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-lt);color:var(--safety);}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-lt);color:var(--diagnose);}.node[data-type="TREAT"] .node-tag{background:var(--treat-lt);color:var(--treat);}.node[data-type="REFER"] .node-tag{background:var(--refer-lt);color:var(--refer);}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-lt);color:var(--lifestyle);}
+.node-head h3{font-size:1rem;line-height:1.3;}
+.node-tick{padding:10px 18px 0;}.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--muted);}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:#27ae60;cursor:pointer;}
+.node.ticked{opacity:.7;}.node.ticked .node-head h3{text-decoration:line-through;color:var(--muted);}
+.node-body{padding:14px 18px 16px;}.node-body>p{font-size:.9rem;color:var(--muted);margin-bottom:12px;}
+.kv{display:grid;grid-template-columns:190px 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden;font-size:.87rem;margin-top:8px;}
+.kv>div{background:#fff;padding:9px 12px;line-height:1.45;}.kv>div:nth-child(odd){background:var(--light);font-weight:600;font-size:.82rem;}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.rftile{background:var(--safety-lt);border:1px solid var(--safety-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.rftile b{display:block;color:var(--safety);margin-bottom:2px;}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:8px;}
+.b-card{background:var(--treat-lt);border:1px solid var(--treat-bd);border-radius:8px;padding:12px;font-size:.85rem;}
+.b-cond{font-weight:700;color:var(--treat);margin-bottom:4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;}.b-drug{font-weight:700;font-size:.95rem;margin-bottom:4px;}.b-note{color:var(--muted);font-size:.82rem;}
+.ladder{display:flex;flex-direction:column;gap:0;margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+.rung{display:flex;align-items:stretch;font-size:.87rem;}.rn{min-width:80px;background:#1a202c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;text-align:center;padding:10px 6px;}.rt{flex:1;padding:10px 14px;background:#fff;border-bottom:1px solid var(--border);line-height:1.4;}.rung:last-child .rt{border-bottom:none;}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.lstile{background:var(--lifestyle-lt);border:1px solid var(--lifestyle-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px;}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;border-radius:99px;padding:2px 8px;margin:1px 2px;vertical-align:middle;}
+.pill-red{background:#fde8e8;color:#c0392b;}.pill-purple{background:#f3e8fd;color:#7c3aed;}.pill-blue{background:#e8f0fe;color:#1d4ed8;}.pill-teal{background:#e6faf8;color:#0d9488;}.pill-amber{background:#fef3c7;color:#b45309;}.pill-green{background:#dcfce7;color:#16a34a;}.pill-grey{background:#f3f4f6;color:#6b7280;}
+.why-row{border-top:1px solid var(--border);}.why-btn{width:100%;text-align:left;background:none;border:none;padding:10px 18px;font-size:.82rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:600;}.why-btn:hover{background:var(--light);}
+.caret{transition:transform .25s;}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg);}
+.why-drawer{display:none;padding:12px 18px 16px;font-size:.85rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);background:var(--light);}.why-drawer.open{display:block;}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;}
+.alg-foot{max-width:780px;margin:32px auto 0;font-size:.8rem;color:var(--muted);background:#fff;border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border);line-height:1.6;}
+@media(max-width:500px){.kv{grid-template-columns:1fr;}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr;}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css?v=3">
+<link rel="stylesheet" href="../../assets/alg-summary.css?v=6">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">🦵</div>
+  <div><b>Leg Ulcers — Systematic Primary Care Assessment</b>
+  <small>9-step pathway · venous, arterial, neuropathic and malignant ulceration · ABPI before compression · UK GP / RCGP SCA preparation</small></div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Summary</button></div>
+  <span>Progress</span><span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- SUMMARY VIEW — inline copy of summaries/leg-ulcers.html; the Download PDF button prints summaries/leg-ulcers.html (the A4 artefact). -->
+<div id="viewSummary">
+  <div class="sum-bar"><p><b>2-page quick reference.</b> Leg ulcers — limb-threatening causes, the ABPI rule and ulcer classification. Compression regimens, wound care and hosiery stay in the Steps tab.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="summaries/leg-ulcers.html">⬇ Download PDF</button><a class="sum-open" href="summaries/leg-ulcers.html" target="_blank" rel="noopener">Print view ↗</a></div></div>
+  <div class="sum"><div class="page">
+  <div class="hdr"><table><tr>
+    <td>
+      <div class="brand"><b>REASONING GP</b> · Clinical algorithm · Quick reference</div>
+      <h1>Leg ulcers in adults — triage and diagnostic approach</h1>
+      <div class="sub">Daytime GP, OOH and community nursing. Exclude the limb-threatening causes, measure the ABPI before any compression, then classify the ulcer. Ongoing compression, wound care and recurrence prevention are in the full Steps pathway.</div>
+    </td>
+    <td class="pg">Page 1 / 2<br><span class="tags"><span>Adults</span><span>GP + community</span><span>ABPI first</span><span>v1.0 · Sep 2026</span></span></td>
+  </tr></table></div>
+
+  <div class="rule"><b>Core rule.</b> <b>Never apply compression before the ABPI is measured in both legs.</b> Full compression on an ischaemic limb causes tissue necrosis and is a recognised cause of avoidable amputation. ABPI 0.8–1.3 permits full compression; below 0.8 or above 1.3 the patient is referred first. <b>Any ulcer on the foot of a person with diabetes goes to the multidisciplinary foot service within one working day</b> (NG19) and is not managed in general practice. A venous-looking leg does not exclude arterial disease.</div>
+
+  <!-- 0 Immediate -->
+  <div class="sec red">
+    <div class="sh"><div class="n">0</div><div class="t">Before any wound-care decision: is this an emergency now? <small>Stop and escalate if any of these is present</small></div></div>
+    <div class="note">Pain out of proportion to the appearance, crepitus, dusky or blistering skin, rapidly advancing erythema, systemic toxicity → <b>necrotising fasciitis, 999</b> · sepsis features or NEWS2 ≥5 → <b>same-day admission</b> · pale, cold, pulseless painful foot, or rest pain relieved by hanging the leg out of bed → <b>critical or acute limb ischaemia, same-day vascular</b> · exposed bone or probe-to-bone → <b>osteomyelitis, same-day</b> · any new diabetic foot ulcer → <b>foot service within 24 hours</b>. Do not debride, do not compress, and do not start a dressing regimen before these are excluded.</div>
+  </div>
+
+  <!-- 1 Define -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">1</div><div class="t">Define the ulcer in four lines <small>Enough to place the patient in the table below</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Time</h4>Duration, how it started (spontaneous, minor knock, bite, scratch), previous ulcers on either leg and how they were treated, cycles of healing and breakdown. <b>Baseline size measured or traced today</b> — the 4-week and 12-week rules depend on it.</div>
+      <div class="col blue"><h4>Character</h4>Site, size, depth, edge, base tissue, exudate, odour. <b>Pain and position:</b> venous aches and is <b>better on elevation</b>; arterial is worse at night and <b>worse on elevation</b>, relieved by dangling; neuropathic is painless. A patient who sleeps in a chair has arterial disease until proven otherwise.</div>
+      <div class="col blue"><h4>Context</h4><b>Venous:</b> previous DVT, varicose veins or vein surgery, leg fracture, pregnancy, obesity, prolonged standing. <b>Arterial:</b> smoking, diabetes, hypertension, lipids, claudication distance, known vascular disease. Also: IBD or rheumatoid arthritis, sickle cell, injecting drug use, previous radiotherapy, steroids or immunosuppressants, <b>nicorandil</b> and hydroxycarbamide.</div>
+      <div class="col blue"><h4>Associated</h4>Oedema and its cause (heart, renal, liver, lymphoedema, calcium channel blocker, immobility) · fever or spreading redness · sensory loss · purpura, livedo or multiple ulcers (vasculitis) · who does the dressings, and whether the patient can see and reach their own feet.</div>
+    </div>
+  </div>
+
+  <!-- 2 Red flags -->
+  <div class="sec red">
+    <div class="sh"><div class="n">2</div><div class="t">Red-flag screen: trigger → concern → destination → what to do before handover <small>One row is enough; do not add up reassuring features</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:27%"><col style="width:19%"><col style="width:54%"></colgroup>
+      <tr><th>Trigger / red flag</th><th>Leading concern · destination</th><th>Do now · do not delay</th></tr>
+      <tr class="r"><td><b>Pain out of proportion, crepitus, dusky or blistering skin, rapidly spreading erythema, systemic toxicity.</b></td>
+        <td>Necrotising fasciitis<br><span class="pill p999">999 now</span></td>
+        <td>ABCDE, observations, mark the erythema edge with the time. Nil by mouth. Do not wait for a swab, an antibiotic response or a surgical opinion by letter.</td></tr>
+      <tr class="r"><td><b>Rest pain</b> (worse at night, eased by dependency), pale cold foot, absent pulses, gangrene, or <b>ABPI &lt;0.5</b> with tissue loss.</td>
+        <td>Critical or acute limb ischaemia<br><span class="pill psd">Same-day vascular</span> <span class="pill p999">999 if acute — the six Ps</span></td>
+        <td><b>Remove any compression immediately.</b> Keep the limb warm, dependent and protected; give adequate analgesia. Do not elevate an ischaemic leg. Record pulses, ABPI if already known, and smoking and diabetes status.</td></tr>
+      <tr class="r"><td><b>Any new ulcer on the foot of a person with diabetes</b>, or suspected infection, gangrene, Charcot deformity or osteomyelitis in a diabetic foot.</td>
+        <td>Diabetic foot ulcer<br><span class="pill psd">Multidisciplinary foot service within 1 working day · NICE NG19</span></td>
+        <td>Do not manage in general practice. The foot is painless, so it deteriorates unnoticed; around 80% of diabetes-related amputations are preceded by an ulcer. Probe-to-bone suggests osteomyelitis. Offload, do not compress, and refer today.</td></tr>
+      <tr class="a"><td><b>Fever, rigors, spreading erythema, purulence, increasing pain</b> or NEWS2 elevated in a person with an ulcer.</td>
+        <td>Cellulitis · osteomyelitis · sepsis<br><span class="pill psd">Same-day admission if systemically unwell</span> <span class="pill pgp">Oral antibiotic if well</span></td>
+        <td>Infection is a <b>clinical</b> diagnosis: increasing pain, spreading erythema, purulence, systemic upset. Odour and exudate alone are not infection. Swab only once that clinical decision is made, to guide the agent. Mark and date the erythema edge.</td></tr>
+      <tr class="p"><td><b>Ulcer not healed after 12 weeks</b> of appropriate treatment; rolled or everted edge; exuberant friable granulation; bleeding; rapid change; atypical site; an ulcer arising in an old scar, burn or chronic wound.</td>
+        <td>Squamous cell carcinoma, including <b>Marjolin's ulcer</b> · BCC · melanoma<br><span class="pill p2ww">Urgent suspected skin cancer referral / incisional biopsy · NICE NG12</span></td>
+        <td>Biopsy the <b>raised edge</b>, not the necrotic centre, or the sample is non-diagnostic. Malignant transformation is routinely mistaken for granulation tissue for months. Book the 12-week review at the first appointment — that is what makes this rule work.</td></tr>
+      <tr class="p"><td><b>An associated soft-tissue lump</b> that is enlarging, painful or deep to fascia.</td>
+        <td>Soft-tissue sarcoma<br><span class="pill p2ww">Urgent direct-access ultrasound within 2 weeks · NICE NG12</span></td>
+        <td>State the size, depth and rate of growth in the request. Do not excise or biopsy a suspected sarcoma in primary care.</td></tr>
+      <tr class="a"><td><b>Atypical ulcer.</b> Rapidly enlarging and painful with a <b>violaceous, undermined edge</b>, often with IBD or rheumatoid arthritis. <b>Or</b> purpura, livedo, multiple ulcers with systemic symptoms; or a painful black eschar in a hypertensive diabetic or a patient with renal failure.</td>
+        <td>Pyoderma gangrenosum · vasculitis · cryoglobulinaemia · calciphylaxis · Martorell's hypertensive ulcer<br><span class="pill psd">Urgent dermatology / rheumatology</span></td>
+        <td><b>Do not debride</b> — pathergy makes pyoderma gangrenosum worse, and debridement is the reflex that causes the harm. Do not compress hard; avoid unnecessary antibiotics — treatment is immunosuppression. Urinalysis for blood and protein, FBC, U&amp;Es, CRP, ANCA and ANA. These ulcers do not respond to compression and dressings, and delay costs tissue.</td></tr>
+      
+      <tr class="b"><td><b>ABPI &lt;0.8 or &gt;1.3</b>, or mixed arteriovenous features, in a leg that otherwise looks venous.</td>
+        <td>Unrecognised arterial disease<br><span class="pill psd">Vascular assessment before any compression</span></td>
+        <td>Measure both legs, supine and rested 10–20 minutes, using the highest brachial pressure as the denominator. <b>A high ABPI is not reassurance</b> — medial calcification in diabetes and CKD makes the vessel incompressible, so &gt;1.3 needs toe-brachial pressures or duplex. Reduced compression is a specialist decision only.</td></tr>
+    </table>
+    <div class="note amber"><b>Safety rule.</b> New or increasing pain under a compression bandage, or new numbness, means <b>remove the bandage and reassess the same day</b> — it is the presentation of pressure damage on an under-recognised ischaemic limb, not expected discomfort. Palpable pulses do not exclude significant arterial disease, and a normal-looking venous leg can have an ABPI of 0.6. Repeat the ABPI every 6 months: arterial disease progresses.</div>
+  </div>
+
+  <!-- 3 Examine -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">3</div><div class="t">Focused examination and investigation <small>Both legs, shoes and socks off; remote assessment cannot complete this and is an escalation criterion</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Observations</h4>Temperature, pulse, BP, RR, NEWS2 if unwell; BMI; blood glucose or HbA1c. Ulcers are frequently bilateral, and a second ulcer changes the diagnosis.</div>
+      <div class="col blue"><h4>System examination</h4>Ulcer: site, <b>measured size or tracing</b>, depth, edge, base, exudate, odour, exposed tendon or bone. Surrounding skin: oedema, varicose eczema, haemosiderin staining, lipodermatosclerosis, atrophie blanche, cellulitis, maceration. Mobility and ankle range of movement.</div>
+      <div class="col blue"><h4>Targeted signs</h4>Posterior tibial, dorsalis pedis, popliteal and femoral pulses in <b>both</b> legs. <b>10 g monofilament at 10 sites</b>, vibration, ankle reflexes. Callus, deformity, interdigital fungal infection, nail disease, temperature asymmetry (Charcot), and a look <b>inside the shoe</b> for foreign bodies. Whole-skin survey.</div>
+      <div class="col blue"><h4>Investigations</h4><b>Doppler ABPI in both legs — before any compression.</b> Bloods: FBC, HbA1c, U&amp;Es, LFTs, CRP, ferritin and albumin, lipids; ANCA, ANA, rheumatoid factor and cryoglobulins if vasculitis is suspected; urinalysis. <b>Swab only if clinically infected.</b> Not from primary care: duplex and arterial imaging (vascular-led), MRI for osteomyelitis. Consider patch testing for persistent peri-ulcer eczema.</div>
+    </div>
+  </div>
+
+  <div class="foot">Colour is semantic: red = emergency now · amber = same-day acute assessment · blue = define/assess · green = benign diagnosis established · purple = uncertain / specialist route. Continued on page 2: classification, ulcer classifier, routine referral, primary-care treatment, endpoint.</div>
+</div>
+
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td><div class="brand"><b>REASONING GP</b> · Leg ulcers in adults — triage and diagnostic approach</div></td>
+    <td class="pg">Page 2 / 2</td>
+  </tr></table></div>
+
+  <!-- 4 Classify -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">4</div><div class="t">Classify: three exits, not two <small>A "venous ulcer" without an ABPI is an unclassified ulcer</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>Limb- or life-threatening</h4>Ischaemia, necrotising or systemic infection, osteomyelitis, a diabetic foot ulcer, or suspected malignancy. <b>Output:</b> name the concern, use the destination above, remove any compression, and hand over pulses, ABPI if known, and diabetes and smoking status.</div>
+      <div class="col green"><h4>Venous ulcer established</h4>Medial gaiter site, typical surrounding skin changes, pulses present and <b>ABPI 0.8–1.3</b>, no diabetic foot involvement, no atypical features. <b>Output:</b> record ABPI with its date and the baseline size; start full compression with community nursing and refer to a vascular service.</div>
+      <div class="col purple"><h4>Unclassified / uncertain</h4>ABPI not yet measured or unreliable (&gt;1.3), mixed features, atypical site or edge, multiple ulcers, or no progress on treatment. <b>Output:</b> do not compress and do not label venous. State what is outstanding and who arranges it by when.</div>
+    </div>
+  </div>
+
+  <!-- 5 Classifier -->
+  <div class="sec green">
+    <div class="sh"><div class="n">5</div><div class="t">Ulcer classifier — site, appearance, pulses, ABPI <small>Site and pain identify the type in most cases before any equipment</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:21%"><col style="width:79%"></colgroup>
+      <tr class="g"><td><b>Venous</b> (60–70%)</td><td>Medial gaiter area above the malleolus; shallow, irregular sloping edge, granulating, heavily exudative; oedema, varicose eczema, haemosiderin staining, lipodermatosclerosis, atrophie blanche; pulses present; <b>ABPI 0.8–1.3</b>. Aches, better on elevation.</td></tr>
+      <tr class="r"><td><b>Arterial</b> (10–15%)</td><td>Lateral malleolus, shin, toes or pressure points; deep, punched-out, sharply demarcated, pale or necrotic dry base; cold shiny hairless skin, absent pulses, dependent rubor; <b>ABPI &lt;0.8</b>. Worse at night and on elevation. <b>Do not compress.</b></td></tr>
+      <tr class="a"><td><b>Mixed arteriovenous</b> (10–15%)</td><td>Features of both, <b>ABPI 0.5–0.8</b>. Common in older patients and in diabetes. Needs vascular assessment; reduced compression only under specialist supervision, never on GP initiative.</td></tr>
+      <tr class="r"><td><b>Neuropathic / diabetic foot</b></td><td>Plantar surface, metatarsal heads, heel, or under callus; painless, punched-out with surrounding hyperkeratosis; warm foot, palpable pulses, absent monofilament sensation; Charcot deformity. <b>Foot service within 1 working day.</b></td></tr>
+      <tr class="p"><td><b>Malignant and inflammatory</b></td><td>SCC (including Marjolin's in chronic ulceration), BCC, melanoma, cutaneous lymphoma — rolled or everted edge, exuberant granulation, no healing at 12 weeks. Pyoderma gangrenosum, vasculitis, rheumatoid ulcers, necrobiosis lipoidica, calciphylaxis.</td></tr>
+      <tr class="p"><td><b>Do not label by default</b></td><td>"Venous" without an ABPI, and "infected" on odour alone, are not diagnoses. Also consider: pressure ulcer (and whether a safeguarding referral is needed), sickle cell ulceration, <b>nicorandil</b>- or hydroxycarbamide-induced ulceration (resolves on withdrawal — check the repeat list), trauma or burn, factitious, and tropical or mycobacterial infection with relevant travel.</td></tr>
+    </table>
+  </div>
+
+  <!-- 6 Routine referral -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">6</div><div class="t">Refer routinely from this consultation <small>Not same-day, not 999 — the cases that leave by letter</small></div></div>
+    <div class="note grey"><b>Vascular service — CG168:</b> refer <b>everyone</b> with a venous leg ulcer, or one healed within the past 12 months, for duplex assessment and consideration of endovenous treatment of superficial reflux; correcting the incompetence substantially reduces recurrence, and this is the most under-made referral in leg ulcer care. <b>Routine dermatology:</b> atypical or non-healing ulcer needing biopsy, and persistent peri-ulcer eczema for patch testing (contact allergy to dressings, adhesives, lanolin and topical antibiotics is common). <b>Tissue viability and community nursing:</b> compression initiation and maintenance, debridement, complex exudate, pressure redistribution, hosiery fitting. <b>Interim advice:</b> elevate above hip level, ankle exercises hourly, emollient daily, and the written safety-net below. <b>Not routine:</b> ABPI &lt;0.8 or &gt;1.3, any diabetic foot ulcer, suspected malignancy at 12 weeks, and every page-1 red flag.</div>
+  </div>
+
+  <!-- 7 Treatment -->
+  <div class="sec red">
+    <div class="sh"><div class="n">7</div><div class="t">The only treatment decisions that belong in this consultation <small>Everything else is in the management pathway</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:26%"><col style="width:74%"></colgroup>
+      <tr class="r"><td><b>Ischaemia, necrotising infection, sepsis, diabetic foot ulcer</b></td><td><b>Referral is the treatment.</b> <b>Remove any compression</b> from an ischaemic or painful limb. Keep an ischaemic leg warm, dependent and protected; do not elevate it. Do not debride a suspected pyoderma gangrenosum or an ischaemic ulcer. No dressing regimen substitutes for the referral.</td></tr>
+      <tr class="a"><td><b>Clinically infected ulcer, systemically well</b></td><td><b>Flucloxacillin 500 mg–1 g four times daily for 7 days</b> (clarithromycin 500 mg twice daily if penicillin-allergic), per NG141. Swab to guide if not responding. <b>Only for clinical infection</b> — all chronic ulcers are colonised, and swabbing an uninfected ulcer generates antibiotics that do not help healing and do drive resistance and <i>C. difficile</i>.</td></tr>
+      <tr class="g"><td><b>Venous ulcer, ABPI 0.8–1.3</b></td><td><b>Strong graduated multilayer compression, approximately 40 mmHg at the ankle</b>, applied by a trained practitioner (four-layer, two-layer or wrap system) — this, not the dressing, heals the ulcer. Under-dosing because of discomfort is the commonest reversible cause of non-healing: persist with good analgesia. Simple non-adherent dressing chosen by exudate level; no antimicrobial dressing without clinical infection.</td></tr>
+      <tr class="g"><td><b>Pain and oedema today</b></td><td>Paracetamol with or without a topical or oral NSAID; time analgesia to dressing changes; topical local anaesthetic before debridement. Ischaemic rest pain often needs an opioid <b>and</b> urgent vascular input. Neuropathic pain: amitriptyline, duloxetine, gabapentin or pregabalin (CG173). Elevate above hip level, hourly ankle exercises, and review calcium channel blockers and other oedema-causing drugs.</td></tr>
+      <tr class="g"><td><b>Peri-ulcer eczema</b></td><td>Short course of a moderate-potency topical corticosteroid to the eczematous skin <b>only</b>, not the ulcer bed, plus generous emollient. <b>Avoid topical antibiotics and lanolin-containing products</b> — neomycin and framycetin are potent sensitisers and a common iatrogenic cause of persistent peri-ulcer dermatitis.</td></tr>
+      <tr class="b"><td><b>Where arterial disease is found</b></td><td>The ulcer is a marker of widespread atherosclerosis: <b>high-intensity statin, antiplatelet, BP control, smoking cessation referral, supervised exercise programme</b>. This does more for life expectancy than any dressing. Optimise glycaemic control in diabetes; screen nutrition with MUST and correct protein, vitamin C, zinc and iron deficiency.</td></tr>
+    </table>
+  </div>
+
+  <!-- 8 Endpoint -->
+  <div class="sec green">
+    <div class="sh"><div class="n">8</div><div class="t">Endpoint and documentation <small>Finish with one of four conclusions and a named owner</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>1 · Limb- or life-threatening</h4>999, same-day vascular or foot-service route taken; pulses, ABPI if known, compression removed and when, observations, diabetes and smoking status, analgesia given.</div>
+      <div class="col amber"><h4>2 · Serious cause possible</h4>Same-day or urgent route arranged; state what is being excluded, who was spoken to, and the deadline. Erythema edge marked and dated; biopsy or imaging requested by name.</div>
+      <div class="col green"><h4>3 · Venous ulcer established</h4><b>ABPI value and date</b>, baseline measurement and dated photograph with a scale, compression class and who applies it, vascular referral made, <b>4-week and 12-week review dates booked</b>, hosiery plan after healing.</div>
+      <div class="col purple"><h4>4 · Unclassified</h4>ABPI outstanding or unreliable: compression withheld, the reason recorded, who will measure it and when, interim wound care and analgesia, and explicit escalation criteria.</div>
+    </div>
+    <div class="note grey"><b>Why a venous diagnosis is safe today, in one line:</b> <b>ABPI 0.8–1.3 measured in both legs today</b> · typical medial gaiter site with venous skin changes and pulses present · not a diabetic foot · no atypical edge, and a 12-week biopsy review booked · baseline size recorded and a <b>≥30% area reduction expected by 4 weeks</b> · written safety-net given. <b>Safety-net wording:</b> call 999 if the pain becomes far worse than the wound looks, the skin turns dusky or crackles, or you become feverish and very unwell; remove the bandage and contact us the same day if the pain increases under it, your toes go numb, cold or pale, the redness spreads, the discharge becomes pus-like, or the ulcer suddenly gets bigger.</div>
+    <div class="note amber"><b>OOH / remote limitation.</b> This presentation cannot be completed remotely: an ABPI, pulses, monofilament testing and direct inspection of both feet — including between the toes and inside the shoes — are all required. Convert to face-to-face if the ulcer cannot be seen and measured; the patient has diabetes, is anticoagulated or is immunosuppressed; there is new pain under a bandage; or district nursing and timely review cannot be arranged. Under time pressure the default is the safer destination.</div>
+  </div>
+
+  <div class="foot">Clinical decision support only; follow local vascular, diabetic foot and referral policies and check doses against the current BNF. Source hierarchy: NICE guidelines first, then BNF/MHRA for doses and safety, then national specialty guidance. Sources: NICE CG168 Varicose veins in the legs · NG19 Diabetic foot problems: prevention and management · NG12 Suspected cancer: recognition and referral · NG141 Cellulitis and erysipelas: antimicrobial prescribing · CG173 Neuropathic pain in adults · NG51 Sepsis ·  · SIGN 120 Management of chronic venous leg ulcers · National Wound Care Strategy Programme lower limb recommendations · BNF. Review after any guidance or medicines-safety update, otherwise every 6 months. © Reasoning GP · gpreasoning.uk</div>
+</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Red Flags — Limb-threatening ischaemia, infection and malignancy</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Leg ulceration affects around 1 in 500 UK adults, rising to 1 in 50 over 80. Most are venous and manageable in the community, but three groups need urgent escalation before any wound care decision is made.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Critical limb ischaemia</b> Rest pain (worse at night, eased by hanging the leg out of bed), pale cold pulseless foot, gangrene → <span class="pill pill-red">same-day vascular referral</span></div>
+      <div class="rftile"><b>Any ulcer on the foot of a person with diabetes</b> → <span class="pill pill-red">multidisciplinary diabetic foot service within 24 hours</span> (NICE NG19). Do not manage in general practice.</div>
+      <div class="rftile"><b>Necrotising fasciitis</b> Pain out of proportion, rapidly spreading erythema, crepitus, dusky skin, systemic toxicity → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Sepsis from cellulitis or osteomyelitis</b> Fever, rigors, tachycardia, confusion, NEWS2 elevated → <span class="pill pill-red">same-day admission</span> for IV antibiotics</div>
+      <div class="rftile"><b>Exposed bone or probe-to-bone</b> Osteomyelitis → <span class="pill pill-red">same-day</span> orthopaedic or diabetic foot referral; requires imaging and prolonged antibiotics</div>
+      <div class="rftile"><b>Non-healing at 12 weeks, rolled or everted edge, exuberant granulation</b> Marjolin's ulcer (SCC in chronic ulceration) → <span class="pill pill-purple">2WW suspected skin cancer</span> / biopsy</div>
+      <div class="rftile"><b>Rapidly enlarging painful ulcer with a violaceous undermined edge</b> Pyoderma gangrenosum → urgent dermatology; <b>debridement makes it worse</b> (pathergy)</div>
+      <div class="rftile"><b>Purpura, livedo, systemic symptoms, multiple ulcers</b> Vasculitis or cryoglobulinaemia → urgent rheumatology; urinalysis and ANCA</div>
+      <div class="rftile"><b>Acute painful ulcer with a black eschar in a hypertensive diabetic</b> Consider calciphylaxis or Martorell's hypertensive ulcer → urgent specialist input</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The diabetic foot ulcer deserves to be treated as a distinct emergency rather than a subtype of leg ulcer. NICE NG19 specifies referral to the multidisciplinary foot care service within one working day for any new diabetic foot ulcer, because the combination of neuropathy, ischaemia and impaired immunity means an apparently trivial ulcer can progress to osteomyelitis and amputation within days — and the patient cannot feel it deteriorating. Around 80% of diabetes-related amputations are preceded by a foot ulcer, and delayed referral is the single most modifiable factor. Pyoderma gangrenosum is included because the reflex response to a necrotic ulcer edge — debridement — actively worsens it through pathergy, so recognising it prevents harm. Marjolin's ulcer is rare but it is the reason the 12-week rule exists: any chronic wound can undergo malignant transformation, and the tumour is often mistaken for exuberant granulation tissue for months.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>History — Risk factors that identify the ulcer type</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Duration and course</div><div>How long present, how it started (spontaneous, minor trauma, insect bite, scratch), healing and breakdown cycles, previous ulcers on either leg and how they were treated</div>
+      <div>Pain and what changes it</div><div><b>Venous</b>: aching, heavy, worse standing, <b>better on elevation</b>. <b>Arterial</b>: severe, worse at night and <b>worse on elevation</b>, relieved by dangling the leg. <b>Neuropathic</b>: painless. Sudden increase in pain → infection or ischaemia.</div>
+      <div>Venous risk factors</div><div>Previous DVT, varicose veins or vein surgery, leg fracture, pregnancy, obesity, occupations involving prolonged standing, family history, previous ulceration</div>
+      <div>Arterial risk factors</div><div>Smoking, diabetes, hypertension, hyperlipidaemia, known coronary or cerebrovascular disease, intermittent claudication and its distance, rest pain, previous revascularisation</div>
+      <div>Diabetes</div><div>Duration, control (HbA1c), known neuropathy or retinopathy, previous ulcer or amputation, footwear, whether the patient can see and reach their own feet</div>
+      <div>Mobility and oedema</div><div>Immobility, ankle range of movement, chair-bound (dependency oedema), heart failure, renal or hepatic disease, lymphoedema, calcium channel blocker use</div>
+      <div>Atypical clues</div><div>Inflammatory bowel disease or rheumatoid arthritis (pyoderma gangrenosum, vasculitis), sickle cell disease, tropical travel, injecting drug use, previous radiotherapy, long-standing scar or burn</div>
+      <div>Drugs</div><div>Steroids and immunosuppressants (impaired healing), hydroxycarbamide (ulceration), nicorandil (a well-recognised cause of painful ulceration — perianal, oral and cutaneous), anticoagulants</div>
+      <div>Impact and capability</div><div>Pain at night, sleep, mobility, ability to wash and dress, exudate and odour, social isolation, who does the dressings, ability to tolerate compression and to apply hosiery</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The relationship between pain and leg position is the most discriminating question in the history and costs nothing. Venous hypertension is relieved by elevation, so a venous ulcer feels better with the leg up; arterial perfusion depends on gravity, so an ischaemic leg hurts more when elevated and patients characteristically sleep in a chair or hang the leg out of bed. A patient who sleeps sitting up because of leg pain has arterial disease until proven otherwise. Nicorandil-induced ulceration is worth knowing specifically because it is drug-induced, often severe and non-healing, frequently misdiagnosed for months, and resolves completely on withdrawal of the drug — but only if someone thinks to look at the repeat prescription. Asking who actually does the dressings and whether the patient can reach their own feet changes the management plan more than any investigation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Classification — Ulcer type by site, appearance and pulses</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Venous · 60–70%</div><div><b>Medial gaiter area</b> (above the malleolus); shallow, irregular sloping edge, granulating base, heavy exudate; surrounded by oedema, varicose eczema, haemosiderin staining, lipodermatosclerosis, atrophie blanche; pulses present; <b>ABPI 0.8–1.3</b></div>
+      <div>Arterial · 10–15%</div><div><b>Lateral malleolus, shin, toes, pressure points</b>; deep, punched-out, sharply demarcated, pale or necrotic dry base; cold shiny hairless skin, absent pulses, delayed capillary refill, dependent rubor; <b>ABPI &lt;0.8</b></div>
+      <div>Mixed arteriovenous · 10–15%</div><div>Features of both, ABPI 0.5–0.8. Needs vascular assessment: <b>reduced compression</b> may be possible under specialist supervision but never on GP initiative</div>
+      <div>Neuropathic / diabetic foot</div><div><b>Plantar surface, metatarsal heads, heel, under callus</b>; painless, punched-out with surrounding hyperkeratosis; warm foot, palpable pulses, absent sensation to 10 g monofilament; Charcot deformity. <b>24-hour referral.</b></div>
+      <div>Pressure ulcer</div><div>Heel, malleolus, sacrum; in immobile patients; graded 1–4. Requires pressure redistribution, repositioning, and a safeguarding thought if care was inadequate</div>
+      <div>Malignant</div><div><b>SCC</b> (including Marjolin's in chronic ulceration), BCC, melanoma, cutaneous lymphoma. Rolled or everted edge, exuberant friable granulation, bleeding, atypical site, no progress at 12 weeks → <b>biopsy</b></div>
+      <div>Inflammatory / vasculitic</div><div>Pyoderma gangrenosum (violaceous undermined edge, IBD/RA association, pathergy), vasculitis, rheumatoid ulcers, necrobiosis lipoidica, calciphylaxis in renal failure</div>
+      <div>Infective</div><div>Cellulitis complicating any ulcer; necrotising infection; rarely tuberculosis, syphilis, deep fungal or tropical infection (Buruli, leishmaniasis) — consider with relevant travel</div>
+      <div>Other</div><div>Sickle cell ulceration, hydroxycarbamide- or nicorandil-induced, factitious, trauma or burn, lymphoedema-related, Martorell's hypertensive ischaemic ulcer</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Site and pain together identify the type in the great majority of cases before any equipment is involved: medial and better up is venous, lateral or toes and worse up is arterial, plantar and painless is neuropathic. The important subtlety is mixed disease, which is common in older patients and in diabetes and is where harm occurs — a leg can look convincingly venous, with oedema and staining, while the ABPI is 0.6. This is precisely why the measurement is mandatory rather than a formality: the clinical appearance of a venous ulcer does not exclude significant arterial disease. In diabetes, the ABPI can additionally be falsely elevated above 1.3 by medial arterial calcification, so a high reading is also a referral trigger rather than reassurance, and toe-brachial pressures or duplex are needed instead.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Examination &amp; ABPI — The measurement the pathway turns on</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Both legs, both feet, shoes and socks off</div><div>Compare sides. Examine between the toes and under any callus. Ulcers are frequently bilateral and a second ulcer changes the diagnosis.</div>
+      <div>Ulcer characterisation</div><div>Site, size (measure two dimensions or trace), depth, edge, base tissue type (granulation, slough, necrosis, exposed tendon or bone), exudate volume and type, odour</div>
+      <div>Surrounding skin</div><div>Oedema (pitting or non-pitting), varicose eczema, haemosiderin staining, lipodermatosclerosis, atrophie blanche, cellulitis, maceration, contact dermatitis from dressings</div>
+      <div>Pulses</div><div>Palpate posterior tibial and dorsalis pedis in both feet, plus popliteal and femoral. Absent pulses mandate Doppler; <b>palpable pulses do not exclude arterial disease</b>.</div>
+      <div><b>ABPI — mandatory before compression</b></div><div>Doppler ankle systolic ÷ highest brachial systolic, both legs, patient supine and rested 10–20 minutes. <b>≥0.8 to ≤1.3 → full compression safe. 0.5–0.8 → mixed disease, refer. &lt;0.5 → critical ischaemia, urgent vascular. &gt;1.3 → unreliable (calcification), refer.</b></div>
+      <div>Neurological assessment</div><div>10 g monofilament at 10 sites, vibration (128 Hz tuning fork), ankle reflexes, proprioception. Loss of protective sensation defines the at-risk foot</div>
+      <div>Foot assessment in diabetes</div><div>Deformity, callus, nail disease, interdigital fungal infection, footwear fit and foreign bodies inside the shoe, temperature asymmetry (Charcot)</div>
+      <div>General</div><div>BMI, mobility and ankle range of movement, evidence of heart failure, BP, lymphadenopathy, general skin survey for other lesions</div>
+      <div>Photograph and document</div><div>Dated photograph with a scale, plus measured dimensions, at baseline and at each review. This is how non-healing at 12 weeks is actually recognised rather than assumed.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The ABPI is the fulcrum of this entire pathway. Full-strength compression applied to a leg with an ABPI below 0.5 can cause pressure necrosis and has led to amputations; it is one of the clearest examples in community practice of a well-intentioned treatment causing catastrophic harm when a five-minute measurement is skipped. The technique details matter: the patient must be supine and rested, because standing or recent exertion distorts the reading, and the highest of the two brachial pressures is used as the denominator. A falsely high ABPI above 1.3 is a particular trap in diabetes and chronic kidney disease, where medial calcification makes the vessel incompressible — this reading must never be interpreted as good perfusion. Serial measurement and photography are equally important: the 12-week non-healing rule which triggers biopsy or referral can only be applied if the baseline size was recorded, and in practice the absence of a baseline measurement is why chronic ulcers drift for years.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Investigations — Confirm the type and find the treatable comorbidity</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Bedside</div><div><span class="pill pill-blue">ABPI</span> (both legs) · <span class="pill pill-blue">Capillary glucose / HbA1c</span> · <span class="pill pill-blue">Urinalysis</span> (glucose, protein, blood — vasculitis) · <span class="pill pill-blue">10 g monofilament</span> · <span class="pill pill-blue">BP and BMI</span></div>
+      <div>Bloods</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">HbA1c</span> <span class="pill pill-blue">U&amp;Es</span> <span class="pill pill-blue">LFTs</span> <span class="pill pill-blue">CRP</span> <span class="pill pill-blue">Ferritin / albumin</span> (nutrition, healing) <span class="pill pill-blue">Lipids</span>. Add <span class="pill pill-blue">ANCA, ANA, rheumatoid factor, cryoglobulins</span> if vasculitis suspected</div>
+      <div>Wound swab</div><div><b>Only if clinically infected</b> — increasing pain, spreading erythema, purulence, malodour, systemic upset, or sudden deterioration. All chronic ulcers are colonised; swabbing an uninfected ulcer generates inappropriate antibiotics.</div>
+      <div>Venous duplex ultrasound</div><div>To map superficial and deep reflux and to guide endovenous treatment. <b>NICE CG168: refer everyone with a venous leg ulcer to a vascular service</b> — duplex is the assessment that follows.</div>
+      <div>Arterial imaging</div><div>Arterial duplex, CT or MR angiography — vascular-led, where ABPI or symptoms indicate significant disease and revascularisation is being considered</div>
+      <div>Biopsy</div><div><span class="pill pill-purple">2WW / dermatology</span> <b>Any ulcer not healed by 12 weeks of appropriate treatment</b>, or with a rolled/everted edge, exuberant granulation, atypical site or rapid change. Take an incisional biopsy including the edge, not the base.</div>
+      <div>Imaging for osteomyelitis</div><div>Plain X-ray first (may be normal early); MRI is the investigation of choice. Probe-to-bone in a diabetic foot ulcer is strongly suggestive</div>
+      <div>Patch testing</div><div>Consider in persistent surrounding eczema — contact allergy to dressings, adhesives, lanolin, topical antibiotics and rubber accelerators is common in this group</div>
+      <div>Do not do</div><div>Do not routinely swab; do not start antibiotics for odour or exudate alone; do not use antimicrobial dressings prophylactically; do not compress before the ABPI</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Two investigative habits cause most of the avoidable harm in leg ulcer care, and both involve doing more rather than less. Routine wound swabbing generates positive cultures from colonising flora in almost every chronic ulcer, which in turn generates repeated antibiotic courses that do not improve healing and do drive resistance and <i>C. difficile</i>. Infection in an ulcer is a clinical diagnosis — increasing pain, spreading erythema, purulence, systemic upset — and the swab's role is to guide the antibiotic choice once that clinical decision has been made, not to make it. The second habit is antimicrobial and advanced dressings in place of compression: the evidence consistently shows that dressing choice has a marginal effect on healing while compression has a large one, so a simple non-adherent dressing under proper compression outperforms an expensive dressing without it. Biopsy technique also matters: the diagnostic tissue in a malignant ulcer is at the raised edge, and a biopsy taken from the necrotic centre is commonly non-diagnostic.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head"><span class="node-tag">Refer</span><h3>Referral Criteria — Same-day, 2WW, and planned pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Suspected necrotising fasciitis (pain out of proportion, crepitus, rapidly advancing erythema, systemic toxicity); sepsis with haemodynamic compromise</div>
+      <div><span class="pill pill-red">Same-day vascular</span></div><div>Critical limb ischaemia: rest pain, tissue loss with <b>ABPI &lt;0.5</b>, pale pulseless cold foot, gangrene. Acute limb ischaemia (the six Ps) is a surgical emergency</div>
+      <div><span class="pill pill-red">Diabetic foot service — within 24 hours</span></div><div><b>NICE NG19: any new diabetic foot ulcer, or suspected infection, gangrene, Charcot or osteomyelitis.</b> Do not manage a diabetic foot ulcer in general practice</div>
+      <div><span class="pill pill-purple">2WW suspected skin cancer</span></div><div><b>NICE NG12:</b> an ulcer that <b>fails to heal after 12 weeks</b> of appropriate treatment, or that has a rolled or everted edge, exuberant friable granulation, bleeding or rapid change → <b>urgent suspected skin cancer referral / incisional biopsy</b> for squamous cell carcinoma, including <b>Marjolin's ulcer</b> in chronic ulceration. Pigmented or changing lesion → suspected melanoma pathway</div>
+      <div><span class="pill pill-purple">2WW sarcoma</span></div><div><b>NICE NG12:</b> an associated unexplained soft-tissue lump that is enlarging, painful or deep → urgent direct-access ultrasound within 2 weeks for suspected soft-tissue sarcoma</div>
+      <div>Vascular — before compression</div><div><b>ABPI &lt;0.8 or &gt;1.3</b>, or mixed arteriovenous features. Do not apply compression on GP initiative outside 0.8–1.3</div>
+      <div>Vascular / venous service (routine)</div><div><b>NICE CG168: refer all patients with a venous leg ulcer</b> (or healed ulcer within the last 12 months) to a vascular service for duplex and consideration of endovenous ablation — this reduces recurrence substantially</div>
+      <div>Dermatology</div><div>Suspected pyoderma gangrenosum (urgent), vasculitis, atypical or non-healing ulcer needing biopsy, persistent surrounding eczema for patch testing</div>
+      <div>Tissue viability / community nursing</div><div>Compression initiation and maintenance, complex exudate management, debridement, pressure redistribution, hosiery fitting and long-term prevention</div>
+      <div>Primary care manage</div><div>Uncomplicated venous ulcer with ABPI 0.8–1.3 in partnership with community nursing; cardiovascular risk modification; pain control; oedema and comorbidity optimisation</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Two referrals are systematically under-made. The first is the vascular referral for venous intervention: NICE CG168 recommends referring people with a venous leg ulcer, or one healed within the past year, for assessment and endovenous treatment of superficial reflux, because correcting the underlying venous incompetence markedly reduces recurrence — yet most ulcers are managed indefinitely with dressings alone and never reach a vascular clinic. The second is the biopsy or skin cancer referral for the non-healing ulcer. The 12-week rule matters because squamous cell carcinoma arising in chronic ulceration is typically diagnosed late, after months or years of dressing changes, and by then it may have metastasised; the tumour can look identical to exuberant granulation tissue. Applying both rules requires only that the ulcer's size was measured at the start and that someone reviews the whole plan at 12 weeks, which is a diary entry rather than a clinical skill.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head"><span class="node-tag">Treat</span><h3>Treatment — Compression first, dressings second</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Venous ulcer, ABPI 0.8–1.3</div>
+        <div class="b-drug">Multilayer compression <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note"><b>40 mmHg at the ankle</b>, graduated, applied by a trained practitioner — four-layer bandaging, two-layer systems, or compression wraps. Heals 60–70% of venous ulcers by 24 weeks. This, not the dressing, is the treatment.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Wound bed</div>
+        <div class="b-drug">Simple non-adherent dressing</div>
+        <div class="b-note">Choose by exudate level and comfort, not by cost or marketing: low-adherence for light exudate, foam or alginate for heavy. Clean with tap water or saline. Debride slough where appropriate. No antimicrobial dressing without clinical infection.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Clinically infected ulcer</div>
+        <div class="b-drug">Flucloxacillin 500 mg–1 g QDS</div>
+        <div class="b-note">7 days; clarithromycin 500 mg BD if penicillin-allergic. Swab to guide if not responding. <b>Only for clinical infection</b> — spreading erythema, increasing pain, purulence, systemic upset. Odour and exudate alone are not infection.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Arterial or mixed</div>
+        <div class="b-drug">Do not compress</div>
+        <div class="b-note">Vascular assessment for revascularisation; meanwhile keep the wound dry and protected, optimise cardiovascular risk (high-intensity statin, antiplatelet, BP, smoking cessation), and manage pain properly. Reduced compression only under specialist direction.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Surrounding varicose eczema</div>
+        <div class="b-drug">Moderate-potency topical steroid</div>
+        <div class="b-note">Short course to the eczematous skin (not the ulcer bed) plus generous emollient. Avoid topical antibiotics and lanolin-containing products — sensitisation is common and perpetuates the problem.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Stalled healing despite compression</div>
+        <div class="b-drug">Pentoxifylline 400 mg TDS</div>
+        <div class="b-note">Unlicensed for this indication but with reasonable evidence as an adjunct to compression. Review the diagnosis and the ABPI first — non-healing is more often wrong diagnosis, inadequate compression or unrecognised malignancy than a drug deficiency.</div>
+      </div>
+    </div>
+    <div class="ladder" style="margin-top:14px;">
+      <div class="rung"><span class="rn">Pain</span><span class="rt"><b>Paracetamol ± topical or oral NSAID</b> first; ischaemic rest pain often needs opioids and urgent vascular input. Neuropathic pain → amitriptyline, duloxetine, gabapentin or pregabalin (NICE CG173). Time analgesia to dressing changes; consider topical local anaesthetic before debridement.</span></div>
+      <div class="rung"><span class="rn">Oedema</span><span class="rt"><b>Elevate above hip level</b> when sitting, avoid prolonged standing, ankle exercises hourly, treat heart failure, review calcium channel blockers and other oedema-causing drugs. Uncontrolled oedema defeats compression.</span></div>
+      <div class="rung"><span class="rn">Cardiovascular risk</span><span class="rt">Where arterial disease is present, this is a coronary risk equivalent: <b>high-intensity statin, antiplatelet, BP control, smoking cessation, supervised exercise programme</b>. Treating the ulcer without treating the arteries treats the wrong problem.</span></div>
+      <div class="rung"><span class="rn">Diabetes</span><span class="rt">Optimise glycaemic control, offload with specialist footwear or total contact cast (foot service), treat infection early, and never manage a diabetic foot ulcer without the multidisciplinary team.</span></div>
+      <div class="rung"><span class="rn">Nutrition</span><span class="rt">Screen with MUST. Correct protein, vitamin C, zinc and iron deficiency; poor nutrition is a common and correctable reason for a wound that will not close, particularly in frail older patients.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Compression is one of the most effective interventions in community medicine and one of the most frequently under-dosed. The evidence for graduated multilayer compression at around 40 mmHg is strong and consistent, healing roughly two-thirds of venous ulcers within six months, while the comparative evidence between dressing types is weak — which means the expensive part of most ulcer care contributes least. Under-dosed compression, applied because the patient found full compression uncomfortable, is the commonest reversible cause of a non-healing venous ulcer; tolerance usually improves within days and is worth persisting with alongside good analgesia. Topical antibiotics deserve a specific warning: they achieve little, and neomycin and framycetin are potent sensitisers, so a proportion of patients with persistent peri-ulcer eczema have iatrogenic contact dermatitis. Where arterial disease is found, the ulcer is a marker of widespread atherosclerosis, and the statin and antiplatelet will do more for the patient's life expectancy than any dressing will.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head"><span class="node-tag">Lifestyle</span><h3>Non-Pharmacological — Prevention and self-management</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Compression hosiery for life after healing</b> Class 2 (18–24 mmHg) below-knee stockings, replaced every 3–6 months. Recurrence falls from around 70% to 20%. Provide an applicator and check the patient can physically manage them.</div>
+      <div class="lstile"><b>Elevation and ankle exercises</b> Legs above hip level for 30 minutes three times a day; hourly ankle dorsiflexion to engage the calf muscle pump. Avoid prolonged standing and long periods with legs dependent.</div>
+      <div class="lstile"><b>Walking</b> The calf pump is the mechanism that empties the deep veins — regular walking improves venous return, and in arterial disease supervised exercise improves claudication distance and collateral flow.</div>
+      <div class="lstile"><b>Skin care</b> Daily emollient to the whole lower leg, wash with a soap substitute, dry carefully between the toes. Healthy skin is far less likely to break down after minor trauma.</div>
+      <div class="lstile"><b>Smoking cessation</b> The most important single change in arterial ulceration — it improves healing, reduces amputation risk and reduces cardiovascular mortality. Refer to the stop-smoking service directly.</div>
+      <div class="lstile"><b>Weight and diet</b> Obesity raises venous pressure and impairs mobility. Adequate protein, vitamin C and zinc support healing; screen frail patients for malnutrition.</div>
+      <div class="lstile"><b>Foot care in diabetes</b> Daily inspection with a mirror, never walk barefoot, check inside shoes before wearing, professional nail and callus care, annual foot check (more often if at risk).</div>
+      <div class="lstile"><b>Protect from trauma</b> Shin guards or long trousers, furniture padding, careful nail cutting, review sedating drugs and falls risk — many ulcers start as a minor knock.</div>
+      <div class="lstile"><b>Psychological and social support</b> Chronic ulcers cause pain, odour, sleep loss, isolation and depression. Ask about mood and about who helps; leg clubs and group clinics improve both healing and quality of life.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Once a venous ulcer has healed, the clinical problem changes from healing to prevention, and life-long compression hosiery is the intervention with the best evidence — recurrence rates without it approach 70%, and concordance is the main determinant of success. Concordance in turn depends on practical details that are easy to overlook: whether the patient can physically pull the stocking on (an applicator or a lower class worn consistently beats a higher class abandoned in a drawer), whether they have two pairs so one can be washed, and whether replacement at three to six months is actually organised. Note that graduated compression stockings are <i>not</i> recommended for the prevention of post-thrombotic syndrome after DVT, which is a different indication — the evidence here is specifically about preventing ulcer recurrence. The psychosocial burden is also routinely under-addressed: pain, exudate and odour drive social withdrawal and depression, and community leg clubs improve healing rates partly through peer support and adherence.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Every dressing change</div><div>Measure or trace the ulcer, record exudate and pain, inspect surrounding skin, check compression is intact and correctly applied, confirm the patient can tolerate it</div>
+      <div>4 weeks</div><div><b>Expect ≥30% reduction in ulcer area.</b> Less than that predicts non-healing: review the diagnosis, repeat the ABPI, check compression is truly at therapeutic pressure, screen for infection and malnutrition</div>
+      <div>12 weeks</div><div><b>Decision point.</b> Not healed despite appropriate treatment → <span class="pill pill-purple">biopsy or 2WW suspected skin cancer referral</span> and vascular reassessment. This is a diary entry made at first presentation, not an afterthought</div>
+      <div>6 months</div><div>Repeat ABPI (arterial disease progresses); review cardiovascular risk management; reassess venous intervention if not yet done; check hosiery fit and replacement</div>
+      <div>After healing</div><div>Class 2 hosiery for life with 3–6 monthly replacement; annual review of skin, ABPI and hosiery; prompt access for any new break in the skin</div>
+      <div><span class="pill pill-red">999 / same-day</span></div><div>Pain out of proportion, crepitus, rapidly spreading redness, fever or feeling very unwell (necrotising infection or sepsis); sudden pale, cold, painful pulseless foot (acute ischaemia)</div>
+      <div><span class="pill pill-red">Same-day GP or nurse</span></div><div>Increasing pain or new numbness under compression (remove the bandage), spreading redness, purulent discharge, sudden increase in ulcer size, new ulcer on a diabetic foot</div>
+      <div>Re-investigate if</div><div>Ulcer edge changes, becomes rolled or everted, bleeds or granulates exuberantly; ulcer enlarges despite compression; new ulcers at atypical sites; systemic symptoms develop</div>
+      <div>Documentation</div><div>Record ABPI value and date, ulcer measurements, compression class and who applies it, the 12-week review date, and the vascular referral decision. Photograph with a scale at baseline and at each review.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The 30%-at-four-weeks rule is the most useful prognostic marker in ulcer care: wounds that reduce by less than about a third of their area in the first month are unlikely to heal on the current plan, and this is the moment to re-examine the diagnosis rather than to continue for another six months of dressings. Persistent or increasing pain under compression must always be treated as a warning rather than as expected discomfort — it is the presentation of pressure damage from bandaging on an under-recognised ischaemic limb, and the correct action is to remove the bandage and reassess the same day. Repeating the ABPI at six months matters because peripheral arterial disease progresses, and a leg that was safe to compress a year ago may no longer be. Finally, the 12-week review should be booked at the first appointment: the reason Marjolin's ulcers are diagnosed late is almost never a failure of knowledge, but the absence of a scheduled point at which someone steps back and asks why the wound is still there.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE CG168 (Varicose veins in the legs, 2013), NICE NG19 (Diabetic foot problems, updated 2019), NICE NG12 (Suspected cancer: recognition and referral, May 2025), NICE NG141 (Cellulitis antimicrobial prescribing), SIGN 120 (Chronic venous leg ulcers), National Wound Care Strategy Programme lower limb recommendations (2023). Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const KEY='rgp.alg.leg-ulcers.v1';
+  const nodes=document.querySelectorAll('.node');
+  const pDone=document.getElementById('pDone');const pFill=document.getElementById('pFill');
+  const total=nodes.length;document.getElementById('pTotal').textContent=total;
+  function save(){const s={};nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb)s[n.dataset.step]=cb.checked;});localStorage.setItem(KEY,JSON.stringify(s));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&s[n.dataset.step]){cb.checked=true;n.classList.add('ticked');}});}catch(e){}}
+  function upd(){let d=0;nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&cb.checked)d++;});pDone.textContent=d;pFill.style.width=((d/total)*100)+'%';}
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');if(cb){cb.addEventListener('change',()=>{n.classList.toggle('ticked',cb.checked);upd();save();});}
+    const btn=n.querySelector('.why-btn');const dr=n.querySelector('.why-drawer');
+    if(btn&&dr){btn.addEventListener('click',()=>{const o=dr.classList.toggle('open');btn.setAttribute('aria-expanded',o);});}
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb){cb.checked=false;n.classList.remove('ticked');}
+      const dr=n.querySelector('.why-drawer');const btn=n.querySelector('.why-btn');
+      if(dr)dr.classList.remove('open');if(btn)btn.setAttribute('aria-expanded','false');
+    });upd();localStorage.removeItem(KEY);
+  });
+  load();upd();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=2"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/alg-diagram.js?v=4"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+</body>
+</html>

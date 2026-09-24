@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Heavy menstrual bleeding — Protocol · Reasoning GP</title>
+<meta name="description" content="Heavy menstrual bleeding in primary care under NICE NG88: the patient's own definition rather than a measured volume, FBC in every woman, when to examine and when to image, the LNG-IUS as first-line, tranexamic and mefenamic acid for those wanting to conceive, and the NG12 routes including post-menopausal bleeding at 55 and FIT for iron-deficiency anaemia." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/menorrhagia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Heavy menstrual bleeding protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"Heavy menstrual bleeding — the complete guide",
+  eyebrow:"Protocol · NICE NG88 · the patient defines \"heavy\", not a measuring jug",
+  stemTitle:"Heavy menstrual bleeding is defined by its effect on the woman's life, not by a measured volume — and the single most effective treatment is one she can be offered today",
+  stemSub:"This page is the whole of heavy menstrual bleeding — the diagnostic reasoning and the management: NG88's definition and why it matters, the FBC that every woman needs, when examination and imaging are required and when they are not, the treatment ladder split by whether contraception is acceptable and whether she is trying to conceive, iron replacement done properly, and the NG12 routes that run straight through this presentation — post-menopausal bleeding at 55 and over, and iron-deficiency anaemia at 50 and over.",
+  guideline:"NICE NG88 · NG12 · FSRH · BSH",
+  reviewed:"12 September 2026",
+  nextReview:"12 March 2027",
+  meta:[
+    {t:"NICE NG88 — heavy menstrual bleeding: assessment and management"},
+    {t:"NICE NG12 — suspected cancer (May 2025)"},
+    {t:"FSRH · BSH iron guidance"},
+    {t:"PMB 55+ → 2WW endometrial", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Red flags</b><small>NG12 · haemodynamic</small></a><a href="#assess"><b>Assess</b><small>FBC · examine · image</small></a><a href="#treat"><b>Treat</b><small>LNG-IUS first</small></a><a href="#iron"><b>Iron</b><small>Replace properly</small></a><a href="#refer"><b>Refer</b><small>Thresholds</small></a></div>',
+  quickSub:"The six that change outcomes. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"NG88's definition is the patient's, and that is deliberate", html:"Excessive menstrual blood loss which interferes with physical, emotional, social and material quality of life. Do not measure or estimate blood loss, and do not require a threshold to be met before treating — the old 80 mL definition was never usable in practice and excluded women who needed help. Ask instead: flooding, clots, changing protection hourly, double protection, night-time changes, days off work or school, planning life around periods."},
+    {tone:"red", h:"⚠ Check a full blood count in every woman", html:"NG88: perform an FBC in all women with heavy menstrual bleeding, in parallel with starting treatment. Iron deficiency is extremely common, frequently profound, and routinely under-treated — and fatigue, breathlessness and poor concentration are often attributed to a busy life rather than to a haemoglobin of 92. Check ferritin too: iron deficiency without anaemia still causes symptoms and still needs replacing."},
+    {tone:"green", h:"The LNG-IUS is first-line — offer it first, not last", html:"NG88 names the 52 mg levonorgestrel intrauterine system as first-line pharmacological treatment where there is no structural or histological abnormality, or where there are fibroids under 3 cm not distorting the cavity. It reduces blood loss by around 80–90%, treats pain as well, and is contraceptive. <b>Warn about 3–6 months of irregular bleeding before it settles</b> — unwarned, it gets removed at three months and recorded as a failure."},
+    {tone:"amber", h:"If she is trying to conceive, the options change completely", html:"All the effective hormonal options are contraceptive, so in a woman trying to conceive use non-hormonal treatment: tranexamic acid 1 g TDS for up to 4 days from the onset of bleeding (it is antifibrinolytic, not hormonal, and does not affect fertility), with or without mefenamic acid 500 mg TDS for pain and bleeding. <b>Ask about pregnancy plans before offering anything</b> — it is the question that determines the whole ladder."},
+    {tone:"blue", h:"Examination and imaging are targeted, not routine", html:"Examine (abdominal, and pelvic with speculum) before an LNG-IUS, and where history suggests structural or histological pathology. An otherwise well woman with a classic history and no risk factors can start tranexamic acid or a hormonal treatment without a pelvic examination. Arrange transvaginal ultrasound where there is a palpable uterus or mass, persistent intermenstrual bleeding, treatment failure, or suspected adenomyosis or fibroids."},
+    {tone:"purple", h:"🟣 NG12 — two routes run straight through this presentation", html:"Endometrial cancer: post-menopausal bleeding aged 55 or over → urgent suspected cancer referral (2WW). Consider direct-access ultrasound in women under 55 with post-menopausal bleeding. Colorectal cancer: iron-deficiency anaemia — do not attribute it to the periods without thought. In women aged 50 or over, or where the bleeding history does not adequately explain the anaemia, offer FIT and refer on ≥10 µg Hb/g. Also: an abnormal-looking cervix → urgent referral irrespective of smear history. Restated in <a href='#refer'>Refer</a>."}
+  ],
+  pathwaySub:"Five steps, and treatment starts at step three rather than after the investigations.",
+  pathway:[
+    {title:"Exclude the emergency and the cancer routes", html:"Haemodynamic compromise from acute heavy bleeding → admit. Post-menopausal bleeding at 55 or over → 2WW. Abnormal cervix → 2WW. Iron-deficiency anaemia not explained by the bleeding → consider FIT and the colorectal pathway.", alert:true},
+    {title:"Take the history that actually classifies it", html:"Impact on life · flooding, clots, double protection, night changes · cycle regularity · intermenstrual or post-coital bleeding · pain · pressure or bulk symptoms · bleeding elsewhere (gums, epistaxis, post-partum or post-surgical) suggesting a coagulopathy · drugs including anticoagulants and copper IUD · pregnancy plans."},
+    {title:"Investigate — FBC in everyone, the rest targeted", html:"FBC and ferritin in all. Coagulation screen and von Willebrand studies if the history suggests a bleeding disorder since menarche. TFTs only if there are thyroid symptoms. Do not test for thyroid disease routinely."},
+    {title:"Start treatment now, split by pregnancy plans", html:"Not trying to conceive: LNG-IUS first-line, then CHC or cyclical progestogen. Trying to conceive: tranexamic acid, with or without mefenamic acid. <b>Treat in parallel with any investigation, not after it.</b>"},
+    {title:"Replace the iron, and review", html:"Oral iron with vitamin C, on alternate days, for 3 months after the haemoglobin normalises. Review at 3 months; re-check FBC and ferritin."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Red flags", title:"Red flags — the emergency, the cancers and the coagulopathy",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["Acute torrential bleeding with tachycardia, hypotension, dizziness or collapse","<b>Haemodynamically significant haemorrhage</b>","Emergency admission. Cannulate if able; consider tranexamic acid; arrange urgent gynaecology assessment"],
+         ["<b>Post-menopausal bleeding aged 55 or over</b>","<b>Endometrial cancer until excluded</b>","NG12: urgent suspected cancer referral (2WW). In women under 55 with PMB, consider direct-access ultrasound"],
+         ["<b>Cervix that looks or feels abnormal on examination</b>","<b>Cervical cancer</b>","Urgent suspected cancer referral — a recent normal smear does not exclude it and must not delay referral"],
+         ["Iron-deficiency anaemia, particularly aged 50 or over, or out of proportion to the bleeding described","Do not attribute IDA to periods reflexively — GI malignancy and coeliac disease both present this way","NG12: offer FIT and refer on ≥10 µg Hb/g; check coeliac serology. See <a href='iron-deficiency-anaemia.html'>iron-deficiency anaemia</a>"],
+         ["<b>Persistent intermenstrual or post-coital bleeding</b>","<b>Endometrial or cervical pathology, polyp, or infection</b>","Examine the cervix, arrange transvaginal ultrasound, and refer for hysteroscopy where it persists"],
+         ["Heavy bleeding since menarche, with easy bruising, epistaxis, bleeding gums, or post-partum or post-dental haemorrhage; or a family history","Inherited bleeding disorder — von Willebrand disease is the commonest and is substantially under-diagnosed in women","Coagulation screen and von Willebrand studies; haematology referral. Tranexamic acid is particularly useful here"],
+         ["Risk factors for endometrial hyperplasia: age over 45, BMI 30 or over, PCOS or chronic anovulation, unopposed oestrogen, tamoxifen, nulliparity, family history of Lynch syndrome","Endometrial hyperplasia or carcinoma even without post-menopausal bleeding","Lower the threshold for ultrasound and hysteroscopy with endometrial biopsy, and refer rather than treating empirically for long"],
+         ["Rapidly enlarging pelvic mass, or new pain and bulk symptoms with a known fibroid","<b>Degeneration, torsion, or rarely leiomyosarcoma</b>","<b>Urgent gynaecology assessment and imaging</b>"]
+       ]},
+       {b:"warn", html:"<b>Two errors define this presentation.</b> <b>The first is treating the bleeding and ignoring the iron:</b> a woman can have her periods controlled and be left profoundly iron-deficient for months, because the FBC was taken and never acted on, or the ferritin was never checked at all. The second is attributing iron-deficiency anaemia to menstruation without asking whether the bleeding actually accounts for it — in a woman aged 50 or over, or where the history does not fit, that assumption is a recognised route to a delayed colorectal cancer diagnosis. Both are avoided by treating the FBC as a result requiring action rather than a box completed."}
+     ]},
+
+    {id:"assess", nav:"Assess", title:"Assessment, examination and investigation",
+     blocks:[
+       {b:"table", head:["Element","What to do","Why"], rows:[
+         ["<b>Impact — the NG88 definition in practice</b>","\"What does a heavy day look like for you?\" Flooding through clothes or bedding · clots · changing protection hourly · using two products together · getting up at night to change · days off work, school or exercise · avoiding leaving the house","<b>This IS the diagnosis — there is no volume threshold to meet.</b> It also gives the baseline against which treatment is judged at 3 months"],
+         ["<b>Bleeding pattern</b>","Regular or irregular · cycle length · duration · intermenstrual, post-coital or post-menopausal bleeding","Regular heavy bleeding suggests fibroids, adenomyosis or a coagulopathy; irregular bleeding suggests anovulation, polyps, hyperplasia or malignancy and changes the urgency"],
+         ["<b>Pain, pressure and bulk</b>","Dysmenorrhoea, deep dyspareunia, pelvic pressure, urinary frequency, a palpable mass","Pain with heavy bleeding points to adenomyosis or endometriosis (see <a href='dysmenorrhoea.html'>dysmenorrhoea</a>); bulk symptoms point to fibroids"],
+         ["<b>Bleeding-disorder screen</b>","Heavy since menarche? Epistaxis, bleeding gums, easy bruising, post-partum or post-surgical or post-dental bleeding? Family history?","Von Willebrand disease is common and under-diagnosed in women; a positive screen changes both the investigation and the treatment"],
+         ["<b>Drugs and devices</b>","Anticoagulants and antiplatelets · copper IUD (increases loss) · missed or erratic hormonal contraception · tamoxifen · herbal preparations","A copper IUD is a common and easily-reversed cause; anticoagulation needs a joint decision rather than simple discontinuation"],
+         ["<b>Pregnancy plans</b>","<b>Ask directly, early</b>","It determines the entire treatment ladder, because the most effective options are all contraceptive"],
+         ["<b>Examination</b>","Abdominal in everyone. Pelvic and speculum examination before fitting an LNG-IUS, and where history suggests structural or histological pathology. Not required before starting tranexamic acid or a CHC in a well woman with a classic history","Looking for an enlarged or irregular uterus, adnexal mass, and an abnormal cervix. Chaperone and explicit consent"],
+         ["<b>Investigations</b>","FBC and ferritin in ALL. Coagulation and von Willebrand studies if indicated by history. TFTs only if thyroid symptoms — NG88 says do not test routinely. Chlamydia screen if at risk. hCG if pregnancy is possible","Do not order routine TFTs, hormone profiles or a \"female hormone panel\" — they do not change management in regular heavy bleeding"],
+         ["<b>Imaging and hysteroscopy</b>","Transvaginal ultrasound where: uterus palpable abdominally or a pelvic mass · suspected adenomyosis or fibroids · persistent intermenstrual bleeding · treatment failure · examination is difficult or declined. Hysteroscopy where a submucosal fibroid, polyp or endometrial pathology is suspected","Hysteroscopy, not ultrasound, is the investigation for suspected intracavity pathology. Endometrial biopsy where there are hyperplasia risk factors, persistent IMB, or treatment failure over 45"]
+       ]}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Treatment — split by whether she wants contraception and whether she wants a baby",
+     sub:"Three months per step, with the impact measures from the history as the outcome.",
+     blocks:[
+       {b:"table", head:["Situation","Treatment","Notes"], rows:[
+         ["<b>Contraception acceptable — FIRST LINE</b>","<b>LNG-IUS 52 mg</b>","NG88 first-line where there is no structural or histological abnormality, or fibroids under 3 cm not distorting the cavity. Reduces loss by around 80–90%, treats dysmenorrhoea, and is contraceptive. <b>Warn about 3–6 months of irregular bleeding, and say it settles</b> — otherwise it is removed early and recorded as a failure. Effective in adenomyosis"],
+         ["<b>Contraception acceptable, LNG-IUS declined or unsuitable</b>","Combined hormonal contraceptive — and consider continuous or tricycled use rather than cyclical","Reduces loss and regulates the cycle; check UKMEC (migraine with aura, BMI, smoking over 35, VTE risk). Continuous use avoids the withdrawal bleed entirely"],
+         ["<b>Contraception acceptable, oestrogen contraindicated</b>","Cyclical oral progestogen — norethisterone 5 mg TDS from day 5 to 26 · or depot medroxyprogesterone · or the etonogestrel implant","Norethisterone at this dose and schedule is for cycle control and is NOT contraceptive — say so explicitly. Depot: bone-density considerations with long-term use"],
+         ["<b>TRYING TO CONCEIVE, or hormones declined</b>","Tranexamic acid 1 g TDS for up to 4 days, started when bleeding begins · with or without mefenamic acid 500 mg TDS","Tranexamic acid is antifibrinolytic, not hormonal, and does not affect fertility — the key option in this group. Stop if no improvement after 3 cycles. <b>Avoid in active thromboembolic disease.</b> Mefenamic acid also helps the pain; avoid with peptic ulcer or significant renal impairment"],
+         ["<b>Fibroids 3 cm or larger, or distorting the cavity</b>","<b>Refer — but start tranexamic acid, an NSAID or a CHC meanwhile</b>","Options include uterine artery embolisation, myomectomy, hysterectomy, or specialist medical therapy. <b>Do not leave her untreated while waiting</b>"],
+         ["<b>Acute severe bleeding needing rapid control in primary care</b>","Norethisterone 5 mg TDS until bleeding stops, then reduce; plus tranexamic acid 1 g TDS","A recognised holding measure while arranging assessment; not a long-term plan"],
+         ["<b>What NOT to do</b>","Do not offer routine TFTs or hormone panels · do not use danazol, etamsylate or oral progestogen in the luteal phase alone (days 15–26) for HMB · do not delay treatment pending investigation","Luteal-phase-only progestogen is specifically not recommended by NG88 and is still prescribed"],
+         ["<b>GnRH analogue — secondary care</b>","Leuprorelin 3.75 mg IM monthly, for a maximum of 6 months, with add-back HRT","Used for pre-surgical downregulation of fibroids, not as a primary-care treatment. <b>Add-back HRT prevents the hypo-oestrogenic symptoms and bone loss</b> — the reason the 6-month cap exists. Specialist-initiated; a GP may be asked to continue or monitor it"],
+         ["<b>Endometrial ablation</b>","A second-line surgical option for refractory HMB where the cavity is normal or there are small fibroids, and the family is complete","Not for a woman who may want a future pregnancy, and effective contraception is still needed afterwards. Sits between medical treatment and hysterectomy — worth naming, because women often assume hysterectomy is the only surgical option and decline referral on that basis"]
+       ]},
+       {b:"why", html:"The reason NG88 puts the LNG-IUS first, above the pill, is effect size: it reduces menstrual blood loss by roughly 80–90%, more than any oral option, while also treating dysmenorrhoea and providing contraception. The reason it is nonetheless under-used is entirely about the first three months — irregular spotting is near-universal early and settles by six months, but a woman who was not warned reasonably concludes it has made things worse and asks for removal. So the counselling is not a courtesy; it is the difference between a highly effective treatment and a failed one. And the single question that reorganises the whole ladder is \"are you hoping to get pregnant?\" — because every first-line hormonal option is contraceptive, and tranexamic acid exists precisely for the woman who is not."}
+     ]},
+
+    {id:"iron", nav:"Iron", title:"Iron deficiency — the part most often left undone",
+     blocks:[
+       {b:"table", head:["Step","Detail"], rows:[
+         ["<b>Test properly</b>","<b>FBC in every woman with HMB, plus ferritin.</b> Iron deficiency WITHOUT anaemia still causes fatigue, poor concentration, hair loss and reduced exercise tolerance, and still warrants replacement — a normal haemoglobin with a ferritin of 8 is not a normal result"],
+         ["<b>Replace effectively</b>","Ferrous sulfate 200 mg (or ferrous fumarate, or ferrous gluconate) — evidence now favours ALTERNATE-DAY dosing, which improves absorption by reducing hepcidin induction and is better tolerated than TDS. Take with vitamin C or orange juice; avoid tea, coffee, calcium and PPIs around the dose"],
+         ["<b>Continue long enough</b>","<b>For 3 months AFTER the haemoglobin has normalised, to replete stores.</b> Stopping when the haemoglobin corrects is the commonest reason for recurrence"],
+         ["<b>Manage the side effects rather than abandoning treatment</b>","Constipation, nausea and dark stools are common. Alternate-day dosing, taking it with food, or switching salt usually solves it. \"Iron does not agree with me\" almost always means TDS dosing on an empty stomach"],
+         ["<b>Re-check</b>","<b>FBC and ferritin at 3 months, then per response.</b> Failure to respond → check adherence, consider coeliac disease, ongoing loss, or malabsorption"],
+         ["<b>When to think beyond menstruation</b>","Age 50 or over · anaemia out of proportion to the bleeding · GI symptoms · weight loss · family history of bowel cancer","<b>Offer FIT and check coeliac serology; refer on FIT ≥10 µg Hb/g (NG12)</b>"],
+         ["<b>When to refer for IV iron</b>","Oral iron not tolerated or ineffective, malabsorption, or the need for rapid correction before surgery","Per local pathway; increasingly available in community and day-unit settings"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"⚠ The FBC that was taken and never actioned", html:"<b>Ordering the FBC is not the intervention — replacing the iron is.</b> Diarise the result, act on the ferritin as well as the haemoglobin, and give a finish date rather than an open-ended prescription."},
+         {tone:"green", h:"✓ What to tell her about iron", html:"\"Take it every other day rather than three times a day — it actually absorbs better and upsets your stomach less. Have it with orange juice, and not with tea or coffee. Your stools will go dark, which is harmless. And keep going for three months after your blood count is normal, because we are refilling the stores, not just the blood.\""}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review and safety-netting",
+     blocks:[
+       {b:"table", head:["When","What to check"], rows:[
+         ["<b>3 months</b>","Impact measures against baseline — flooding, protection changes, days lost — not a volume estimate · tolerance · FBC and ferritin rechecked · adherence to iron · if no better, move up the ladder or investigate further"],
+         ["<b>3–6 months after an LNG-IUS</b>","Bleeding pattern — expect it to have settled by 6 months. Check threads. Do not remove for irregular bleeding alone if loss is improving; reassure and wait"],
+         ["<b>At treatment failure</b>","Re-examine, arrange transvaginal ultrasound if not done, consider hysteroscopy and endometrial biopsy (particularly over 45 or with hyperplasia risk factors), and refer"],
+         ["<b>Annually where treatment is working</b>","FBC and ferritin · blood pressure and BMI on a CHC · UKMEC recheck · LNG-IUS expiry date for the HMB indication · pregnancy plans · perimenopausal changes and whether the plan still fits"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same day", html:"\"If you are soaking through a pad every hour for more than a couple of hours, or you feel faint, breathless or your heart is racing, contact us the same day or go to A&amp;E.\""},
+         {tone:"amber", h:"🟠 Come back sooner", html:"Bleeding between periods or after sex · any bleeding after the menopause · bleeding that suddenly becomes much heavier or more painful · new pelvic pressure or a lump."},
+         {tone:"blue", h:"💊 The coil settling-in period", html:"\"For the first three to six months expect irregular spotting — it is not a sign it is failing, and it usually settles completely. If it is still troublesome at six months, come back and we will review it rather than you putting up with it.\""},
+         {tone:"green", h:"✓ This is treatable", html:"\"Heavy periods are not something to endure. We measure success by whether your life changes — fewer days off, no flooding, not planning around it. If the first treatment does not do that, there are others.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — same day", html:"Haemodynamically significant bleeding · suspected malignancy with acute heavy bleeding · severe symptomatic anaemia requiring transfusion."},
+         {tone:"purple", h:"2WW · NICE NG12", html:"Endometrial cancer: post-menopausal bleeding aged 55 or over → urgent suspected cancer referral. Consider direct-access ultrasound in women under 55 with post-menopausal bleeding. Cervical cancer: an abnormal-looking or abnormal-feeling cervix → urgent suspected cancer referral irrespective of smear history. Colorectal cancer: iron-deficiency anaemia not adequately explained by the menstrual history, particularly aged 50 or over → FIT, and refer on ≥10 µg Hb/g."},
+         {tone:"amber", h:"Gynaecology — urgent or routine", html:"Fibroids 3 cm or larger, or distorting the cavity · suspected adenomyosis needing imaging or specialist management · persistent intermenstrual bleeding · treatment failure after two appropriate options · rapidly enlarging pelvic mass. <b>Keep her on treatment while she waits.</b>"},
+         {tone:"blue", h:"Hysteroscopy and endometrial biopsy", html:"Suspected submucosal fibroid, endometrial polyp or endometrial pathology · persistent IMB · treatment failure in a woman over 45 · hyperplasia risk factors (BMI 30+, PCOS, unopposed oestrogen, tamoxifen, Lynch syndrome)."},
+         {tone:"blue", h:"Haematology", html:"Suspected inherited bleeding disorder — heavy since menarche with mucocutaneous bleeding or a family history; abnormal coagulation or von Willebrand studies. Also for IV iron where oral iron fails or is not tolerated."},
+         {tone:"green", h:"Contraception and menopause services", html:"Complex contraceptive decisions, difficult LNG-IUS fitting, or perimenopausal bleeding where HRT is also being considered — see <a href='hrt-prescribing.html'>HRT prescribing</a> and <a href='contraception.html'>contraception</a>."},
+         {tone:"cream", h:"GP management", html:"Most heavy menstrual bleeding is managed entirely here: the impact history, the FBC and ferritin acted upon, the LNG-IUS or tranexamic acid depending on pregnancy plans, iron replaced properly and for long enough, and referral only where structure or failure demands it. Related pages: <a href='dysmenorrhoea.html'>dysmenorrhoea</a> · <a href='iron-deficiency-anaemia.html'>iron-deficiency anaemia</a> · <a href='pcos.html'>PCOS</a> · <a href='hrt-prescribing.html'>HRT</a> · <a href='../algorithms/bleeding-on-hrt.html'>bleeding on HRT</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 44-year-old woman describes periods that have become \"a nightmare\" over two years: regular but lasting 8 days, <b>flooding through to her clothes</b>, changing a super tampon and a pad together hourly on the worst two days, and <b>two days off work most months</b>. She is exhausted and breathless climbing stairs. She has <b>a copper IUD fitted five years ago</b>, and mentions in passing that she has always bruised easily and had \"a lot of bleeding\" after a dental extraction. She is not planning any more children. She asks whether she needs \"a hysterectomy like my mother had\"."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Uses the NG88 impact definition rather than asking her to quantify volume; <b>checks FBC AND ferritin and treats the likely iron deficiency properly</b> — alternate-day dosing, with vitamin C, continued 3 months beyond normalisation; <b>identifies the copper IUD as a contributing and reversible cause</b>; picks up the bleeding-disorder history (easy bruising, post-dental haemorrhage) and arranges coagulation and von Willebrand studies, which is the finding most candidates miss; <b>asks about pregnancy plans before offering treatment</b>; offers the LNG-IUS as first-line — which can replace the copper coil at the same procedure — with explicit counselling about 3–6 months of irregular bleeding; <b>offers tranexamic acid as an immediate non-hormonal option meanwhile</b>; at 44 with treatment-resistant bleeding considers endometrial assessment and states the hyperplasia risk factors; screens the NG12 routes — no PMB here, but recognises IDA at 44 as needing thought rather than automatic attribution; <b>addresses the hysterectomy question directly and proportionately</b>, explaining the ladder before surgery; and names the impact on her work and energy as the outcome to be measured at 3 months."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG88 — Heavy menstrual bleeding: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng88" rel="noopener">nice.org.uk/guidance/ng88</a><span class="rd"> — the quality-of-life definition and the instruction not to measure blood loss, FBC in all women, when examination and imaging are needed, the LNG-IUS as first-line, tranexamic and mefenamic acid, the recommendation against routine thyroid testing, and against luteal-phase-only progestogen, danazol and etamsylate</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — post-menopausal bleeding at 55 and over, direct-access ultrasound under 55, the abnormal cervix, and FIT at ≥10 µg Hb/g for iron-deficiency anaemia</span></li>'+
+         '<li><b>NICE NG88 \u2014 Heavy menstrual bleeding: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng88" rel="noopener">nice.org.uk/guidance/ng88</a><span class="rd"> — the primary-care assessment, the norethisterone regimens and their non-contraceptive status, and the acute-bleeding holding measures</span></li>'+
+         '<li><b>FSRH — UKMEC and Combined Hormonal Contraception</b><br><a href="https://www.fsrh.org" rel="noopener">fsrh.org</a><span class="rd"> — eligibility criteria, and continuous or extended CHC regimens</span></li>'+
+         '<li>British Society for Haematology — iron deficiency guidance; and NICE guidance on iron replacement<span class="rd"> — alternate-day oral iron dosing and the hepcidin rationale, continuing for 3 months after normalisation, and indications for intravenous iron</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all doses quoted: tranexamic acid, mefenamic acid, norethisterone, the iron salts, and depot medroxyprogesterone bone-density considerations</span></li>'+
+         '<li><b>Von Willebrand disease in women — BSH and RCOG guidance</b><span class="rd"> — heavy menstrual bleeding since menarche as a presentation of inherited bleeding disorder, and the role of tranexamic acid</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Heavy menstrual bleeding — NICE NG88, NG12, NICE, FSRH and BSH iron guidance. The patient defines \"heavy\", not a measuring jug: impact on life is the diagnosis. FBC and ferritin in every woman, and act on both. LNG-IUS first-line if contraception is acceptable — with explicit counselling about 3–6 months of irregular bleeding. Tranexamic acid 1 g TDS if she is trying to conceive. Replace iron on alternate days and continue 3 months beyond normalisation. Post-menopausal bleeding at 55 or over is a 2WW referral, and iron-deficiency anaemia is not automatically the periods. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

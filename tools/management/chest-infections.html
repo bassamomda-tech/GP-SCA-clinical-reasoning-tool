@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chest infections (LRTI / CAP) — Protocol · Reasoning GP</title>
+<meta name="description" content="Chest infections in primary care: severity is the diagnosis that matters. Bronchitis versus pneumonia versus COPD exacerbation, CRB-65 and sepsis screening, antibiotic stewardship with delayed prescriptions, controlled oxygen in COPD, and the resolution CXR that catches lung cancer." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/chest-infections.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Chest infections protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🫁",
+  title:"Chest infections (LRTI / CAP) — the complete guide",
+  eyebrow:"Protocol · severity is the diagnosis that matters",
+  stemTitle:"Naming it a \u201cchest infection\u201d is not a diagnosis — the decisive judgement is severity, and the elderly decompensate atypically with confusion rather than fever",
+  stemSub:"One page for the whole condition group: separate self-limiting viral bronchitis from pneumonia and from an infective COPD exacerbation by examination and systemic features, stratify CAP with CRB-65 while screening for sepsis with NEWS2, then treat across the spectrum — no or delayed antibiotic with real safety-netting for the uncomplicated, severity-guided antibiotics when indicated, controlled oxygen in COPD, and emergency admission for the septic. Then the part most often dropped: the resolution chest X-ray that catches an obstructing lung cancer.",
+  guideline:"NICE NG138 · CG191 · NG120 · NG51 · NG115 · NG12",
+  reviewed:"10 September 2026",
+  nextReview:"10 March 2027",
+  meta:[
+    {t:"NICE NG138 — CAP antimicrobial prescribing"},
+    {t:"NICE CG191 — pneumonia diagnosis &amp; management"},
+    {t:"NICE NG120 — acute cough · NG51 — sepsis"},
+    {t:"NICE NG115 — COPD"},
+    {t:"NG12: persistent cough → CXR", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Sepsis first</b><small>NEWS2 · CRB-65</small></a><a href="#confirm"><b>Which is it?</b><small>Bronchitis · CAP · COPD</small></a><a href="#workup"><b>Examine</b><small>Full obs · mimics</small></a><a href="#ladder"><b>Treat</b><small>Stewardship to IV</small></a><a href="#monitor"><b>Follow up</b><small>Resolution CXR</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Severity is the diagnosis, not the label", html:"<b>\u201cChest infection\u201d is not a formulation — grade it.</b> Sepsis features from a chest source: confusion, RR ≥22, hypotension, tachycardia, hypoxia, mottling, temperature extremes, reduced urine output. Use a sepsis screen or NEWS2 — sepsis is time-critical: admit and treat without delay. Oral antibiotics and home for a septic patient is the single worst outcome of this consultation."},
+    {tone:"red", h:"CRB-65 stratifies CAP", html:"Confusion · Respiratory rate ≥30 · BP &lt;90 systolic or ≤60 diastolic · age ≥65. <b>Score 0 usually home; 1–2 consider hospital; 3–4 urgent admission.</b> <b>Use clinical judgement and read oxygen saturations alongside it</b> — CRB-65 does not include hypoxia, so a saturation of 90% matters even at a low score."},
+    {tone:"amber", h:"The elderly present atypically and decompensate fastest", html:"The elderly, frail, immunosuppressed, those with comorbidity or lung disease, and the very young present with confusion, falls and no fever. <b>Lower the threshold to examine, investigate and admit</b> — in this group the absence of fever is not reassurance, and new confusion is a presenting feature of pneumonia."},
+    {tone:"blue", h:"Examination separates bronchitis from pneumonia", html:"Acute bronchitis: cough with or without sputum, clear chest, systemically well — usually viral and self-limiting, and antibiotics rarely help. Pneumonia: focal chest signs, fever, tachypnoea, hypoxia, systemic upset. You cannot make this distinction on the telephone, and you cannot make it without listening to the chest."},
+    {tone:"green", h:"Don't reflex-prescribe — but do safety-net properly", html:"NICE supports no antibiotic or a back-up (delayed) prescription for uncomplicated acute cough and bronchitis, with clear safety-netting. Reserve immediate antibiotics for pneumonia, systemic illness or high-risk patients. Stewardship without a specific safety-net is not stewardship — it is under-treatment with no fallback."},
+    {tone:"purple", h:"The resolution CXR catches the cancer", html:"Arrange a follow-up chest X-ray at about 6 weeks after pneumonia in smokers and those over 50, to confirm resolution and exclude an underlying lung cancer obstructing the airway. And a cough not resolving beyond 3 weeks — especially a smoker aged 40 or over, or with haemoptysis or weight loss — needs a CXR and the NG12 lung cancer pathway, plus consideration of TB."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The first one is not a diagnosis, it is a severity judgement.",
+  pathway:[
+    {title:"Screen for sepsis and grade severity", html:"Full observations: RR, oxygen saturation, HR, BP, temperature, consciousness. Sepsis screen or NEWS2. CRB-65 if pneumonia is likely. Sepsis or severe CAP → emergency admission with oxygen and a pre-alert.", alert:true},
+    {title:"Decide which of the three it is", html:"Bronchitis (clear chest, well) · pneumonia (focal signs, systemic upset) · infective COPD exacerbation (increased breathlessness with sputum volume and purulence on a COPD background). Consider the mimics."},
+    {title:"Examine, and take the persistent-symptom history", html:"<b>Chest examination is not optional.</b> Then: total cough duration, haemoptysis, weight loss, night sweats, smoking pack-years — the cancer and TB screen that outlasts the acute episode."},
+    {title:"Treat to the severity", html:"Severe or septic → oxygen, IV antibiotics and fluids, admit. CAP → severity-guided antibiotics (amoxicillin first-line in low severity, per local guidance). COPD exacerbation → bronchodilators ± oral steroids ± antibiotics by purulence, plus a rescue pack. Bronchitis → no or delayed antibiotic."},
+    {title:"Safety-net, follow up, prevent", html:"Specific warning signs with who to call · resolution CXR in smokers and over-50s · COPD and spirometry review · flu, pneumococcal and COVID vaccination · smoking cessation."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Sepsis first", title:"Severity, sepsis and the admission decision",
+     sub:"A chest infection can be the source of sepsis. Grade every presentation before treating it.",
+     blocks:[
+       {b:"table", head:["Finding","Meaning","Action"], rows:[
+         ["Confusion, RR ≥22, hypotension, tachycardia, hypoxia, mottling, very high or very low temperature, reduced urine output","<b>Sepsis from a chest source (NICE NG51)</b> — a time-critical emergency","Emergency admission. Oxygen, IV antibiotics and fluids per the local sepsis pathway. Do not delay for investigations"],
+         ["<b>CRB-65 3–4</b>","<b>Severe community-acquired pneumonia</b>","<b>Urgent admission</b>"],
+         ["<b>CRB-65 1–2</b>","<b>Moderate CAP</b>","<b>Consider hospital</b> — weigh comorbidity, frailty, social support and oxygen saturation — a shared decision where the patient is borderline and has good support at home"],
+         ["<b>CRB-65 0 but oxygen saturation 90–92% on air</b>","<b>CRB-65 does not include hypoxia</b>","<b>Do not be falsely reassured by a low score</b> — read saturations alongside it"],
+         ["<b>New confusion or falls in an older patient with cough</b>","Atypical presentation of pneumonia — the elderly, frail, immunosuppressed and comorbid decompensate fastest and present without fever","<b>Lower the threshold to examine, investigate and admit</b>"],
+         ["<b>Rising CO₂, drowsiness or headache on oxygen in COPD</b>","<b>Type 2 respiratory failure</b>","<b>Controlled oxygen to target saturation; urgent admission</b>"],
+         ["<b>Pneumonia not resolving, or recurrent infection at the same site</b>","<b>Obstructing lesion, empyema, pleural effusion or bronchiectasis</b>","<b>CXR plus respiratory referral; NG12 pathway if cancer is suspected</b>"]
+       ]},
+       {b:"warn", html:"The failure mode of this consultation is a septic patient sent home with oral antibiotics because the label \u201cchest infection\u201d felt routine. Naming the infection is not the clinically decisive judgement — severity is. A 72-year-old with COPD and diabetes, confused, RR 28, saturations 90%, HR 112, BP 104/62 and reduced urine output has <b>severe CAP with sepsis</b>, whatever the family expected when they arrived."},
+       {b:"dl", rows:[
+         ["<b>NG12 — the criterion that applies here</b>","A cough or chest symptoms not resolving — for example beyond 3 weeks, or a pneumonia not clearing — especially in a smoker aged 40 or over, or with haemoptysis, weight loss or persistent chest signs, needs a chest X-ray and the NICE NG12 lung cancer pathway. Consider TB in parallel: cough over 3 weeks, weight loss, night sweats and risk factors. Restated in <a href='#refer'>Refer</a>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Which is it?", title:"Bronchitis, pneumonia, COPD exacerbation — and the mimics",
+     blocks:[
+       {b:"table", head:["Diagnosis","Discriminating features"], rows:[
+         ["<b>Acute bronchitis</b>","Cough with or without sputum, clear chest, systemically well — viral and self-limiting. Antibiotics rarely help"],
+         ["<b>Community-acquired pneumonia</b>","<b>Focal chest signs, fever, tachypnoea, hypoxia, systemic upset.</b> Severity graded by <b>CRB-65</b>"],
+         ["<b>Infective COPD exacerbation</b>","Increased breathlessness beyond baseline, with increased sputum volume and purulence, on a known COPD background"],
+         ["<b>Sepsis from a chest source</b>","Systemic dysfunction — confusion, hypotension, hypoxia, low urine output"],
+         ["<b>Mimics to consider</b>","<b>Pulmonary embolism</b> (pleuritic pain, risk factors) · <b>heart failure</b> (orthopnoea, oedema) · <b>lung cancer or TB</b> (persistent symptoms) · <b>pneumothorax</b>"]
+       ]},
+       {b:"why", html:"The distinction drives treatment intensity, and it is made on examination rather than on the history alone. A dry cough in a systemically well patient with a clear chest is viral bronchitis and needs stewardship; focal signs with fever, tachypnoea and systemic upset are pneumonia and need active treatment; a change in sputum volume and purulence with increased breathlessness on a COPD baseline is an infective exacerbation with its own management. In COPD, have a lower threshold throughout, and ensure a rescue pack and self-management plan are in place."}
+     ]},
+
+    {id:"workup", nav:"Examine", title:"Examination, observations and the persistent-symptom screen",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Full observations — narrate them</b>","Respiratory rate, oxygen saturation, heart rate, blood pressure, temperature, level of consciousness. These are the severity assessment; a consultation without them cannot grade the illness"],
+         ["<b>Chest examination</b>","Focal crackles or consolidation versus a clear chest — the single finding that separates pneumonia from bronchitis. Wheeze in COPD exacerbation"],
+         ["<b>Severity scoring</b>","<b>CRB-65 for CAP; sepsis screen or NEWS2 for systemic dysfunction</b>"],
+         ["<b>Baseline and vulnerability</b>","Usual health and function, COPD, diabetes, other comorbidity, immunosuppression, frailty, and how far this represents deterioration from baseline. Vaccination status (flu, pneumococcal, COVID)"],
+         ["<b>Persistent-symptom screen</b>","Total duration of cough, haemoptysis, weight loss, night sweats, smoking history in pack-years — the cancer and TB screen"],
+         ["<b>Investigations</b>","Chest X-ray where pneumonia is suspected and the diagnosis or severity is uncertain, for non-resolving symptoms, and as a resolution film. FBC, U&amp;E and CRP where severity is uncertain or the patient is unwell — CRP can support the decision in borderline cases but never overrides clinical severity; blood cultures before antibiotics if septic, per the local sepsis pathway"]
+       ]},
+       {b:"say", html:"I can see you were hoping for antibiotics, and I understand why. But your dad is more unwell than a chest infection we would treat at home — he is confused, and his breathing and his oxygen are affected. That combination needs hospital assessment today rather than tablets. You did exactly the right thing bringing him in; the confusion is the part that tells me this is serious, and I am glad you noticed it. I am arranging an ambulance now, I will call ahead so they are expecting him, and I will give him some oxygen while we wait."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Treatment across the spectrum",
+     blocks:[
+       {b:"table", head:["Situation","Management"], rows:[
+         ["<b>Sepsis or severe CAP</b>","Oxygen to target saturation (with care in COPD), IV antibiotics and fluids per the local sepsis pathway, urgent admission. Treat associated AKI and glucose derangement"],
+         ["<b>CAP — antibiotics</b>","Severity-guided: amoxicillin first-line in low-severity disease — doxycycline or clarithromycin if penicillin-allergic — with combination or IV therapy for higher severity, per local guidance (NICE NG138)"],
+         ["<b>Infective COPD exacerbation</b>","Increase bronchodilators; oral corticosteroids if more breathless; antibiotics if the sputum is purulent or criteria are met; rescue pack and self-management plan (NICE NG115)"],
+         ["<b>Oxygen in COPD</b>","Controlled oxygen to a target saturation — watch for CO₂ retention and type 2 respiratory failure"],
+         ["<b>Acute bronchitis — stewardship</b>","<b>No antibiotic, or a back-up (delayed) prescription (NICE NG120).</b> Self-care: fluids, analgesia, rest. Explain the natural history — a post-viral cough commonly lasts 3 weeks"],
+         ["<b>Safety-netting — specific, not generic</b>","Seek help if breathless, confused, not improving or worsening, if the fever persists, or if intake is poor — with <b>when to act and who to call</b>"],
+         ["<b>Prevention</b>","Flu, pneumococcal and COVID vaccination; smoking cessation; COPD optimisation"]
+       ]},
+       {b:"why", html:"Most acute cough and bronchitis is viral, and antibiotic stewardship is a clinical intervention rather than a rationing exercise — reducing resistance while keeping the patient safe. But NICE pairs the no-antibiotic or delayed-prescription approach with clear safety-netting, and the two are not separable: withholding an antibiotic without telling the patient exactly what to watch for and who to contact is not stewardship. Equally, stewardship must not be applied dismissively — a patient who feels fobbed off will simply attend elsewhere, so the explanation of why antibiotics may not help is part of the treatment."},
+       {b:"say", html:"For a cough like yours the evidence is that antibiotics make very little difference — most of these infections are viral, and the cough itself can take up to three weeks to settle even when everything is healing normally. So I am not going to start antibiotics today, but I am not simply sending you away either. I will give you a prescription to keep at home and only use it if things change — and this is what I want you to watch for: getting breathless, feeling confused or muddled, a fever that will not settle, or simply getting worse rather than slowly better. If any of that happens, use the prescription and contact us the same day."}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Follow-up, the resolution CXR and prevention",
+     blocks:[
+       {b:"table", head:["What","Detail"], rows:[
+         ["<b>Resolution chest X-ray</b>","At about 6 weeks after pneumonia in smokers and those over 50, to confirm resolution and exclude an underlying lung cancer obstructing the airway"],
+         ["<b>Non-resolving or recurrent same-site infection</b>","<b>Safety-net explicitly for it, and investigate</b> — CXR plus respiratory referral"],
+         ["<b>Recovery review</b>","Confirm symptom resolution, review COPD control and spirometry, and reassess inhaler technique and the self-management plan"],
+         ["<b>Prevention</b>","Flu, pneumococcal and COVID vaccination; smoking cessation support; COPD optimisation. Protect the vulnerable — the elderly, frail, immunosuppressed, comorbid and the very young"],
+         ["<b>Persistent symptoms</b>","Cough beyond 3 weeks, haemoptysis, weight loss or night sweats → CXR plus the NG12 lung cancer pathway, and consider TB"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 / same-day", html:"Sepsis features · severe CAP (high CRB-65) · respiratory failure · new confusion in an older patient with cough."},
+         {tone:"amber", h:"🟠 Same-day review", html:"Not improving or worsening on treatment · new breathlessness · persistent fever · poor oral intake."},
+         {tone:"purple", h:"🟣 2WW · NG12", html:"Persistent cough, haemoptysis or weight loss; an abnormal or non-resolving CXR — particularly a smoker aged 40 or over."},
+         {tone:"green", h:"📋 Don't drop the follow-up", html:"Resolution CXR in smokers and over-50s is the step most often forgotten, and it is the one that catches an obstructing tumour."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency admission", html:"Sepsis, severe CAP, respiratory failure, or an alternative emergency diagnosis. Same day or 999, with oxygen and a pre-alert call."},
+         {tone:"purple", h:"2WW lung cancer · NICE NG12", html:"Persistent cough, haemoptysis or weight loss; an abnormal or non-resolving chest X-ray, especially in a smoker aged 40 or over."},
+         {tone:"amber", h:"TB service — urgent", html:"Suspected TB: cough beyond 3 weeks, night sweats, weight loss, risk factors."},
+         {tone:"blue", h:"Respiratory medicine", html:"Recurrent or non-resolving infection, complex COPD, bronchiectasis, empyema."},
+         {tone:"green", h:"Community or virtual ward", html:"Selected moderate cases suitable for supported home or IV care, where available."},
+         {tone:"cream", h:"GP management", html:"Acute bronchitis with stewardship and safety-netting · low-severity CAP (CRB-65 0) at home on oral antibiotics with review · infective COPD exacerbation with rescue pack · resolution CXR, vaccination and cessation. The undifferentiated symptom belongs to the <a href='../algorithms/acute-cough.html'>acute cough pathway</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 72-year-old man with COPD (40 pack-years) and type 2 diabetes is brought by his daughter with 5 days of productive cough, fever and worsening breathlessness — and since yesterday he is confused and unsteady, \u201cnot himself at all\u201d. RR 28, saturations 90% on air, HR 112, BP 104/62, temperature 38.6°C, focal crackles at the right base, reduced urine output. His daughter expected \u201cjust some antibiotics\u201d, and says he hates hospitals."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Takes and narrates full observations, screens for sepsis and calculates CRB-65 — recognising severe CAP with sepsis rather than \u201ca chest infection\u201d; <b>does NOT prescribe oral antibiotics for home</b>; <b>arranges emergency admission with oxygen and a pre-alert</b>; recognises atypical severity in the elderly — confusion and falls, not fever; distinguishes this from bronchitis and from a COPD exacerbation; <b>uses controlled oxygen with CO₂ retention awareness</b>; addresses the \u201cjust antibiotics\u201d expectation honestly and <b>validates the daughter for bringing him in</b>; and — the step candidates miss — plans the resolution CXR, COPD review and vaccination for after recovery."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG138 — Pneumonia (community-acquired): antimicrobial prescribing</b><br><a href="https://www.nice.org.uk/guidance/ng138" rel="noopener">nice.org.uk/guidance/ng138</a><span class="rd"> — severity-guided antibiotic choice, amoxicillin first-line in low-severity CAP</span></li>'+
+         '<li><b>NICE CG191 — Pneumonia in adults: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg191" rel="noopener">nice.org.uk/guidance/cg191</a><span class="rd"> — CRB-65 stratification, the resolution chest X-ray at about 6 weeks in smokers and those over 50</span></li>'+
+         '<li><b>NICE NG120 — Cough (acute): antimicrobial prescribing</b><br><a href="https://www.nice.org.uk/guidance/ng120" rel="noopener">nice.org.uk/guidance/ng120</a><span class="rd"> — no antibiotic or a back-up (delayed) prescription for uncomplicated acute cough, with safety-netting</span></li>'+
+         '<li><b>NICE NG51 — Sepsis: recognition, diagnosis and early management</b><br><a href="https://www.nice.org.uk/guidance/ng51" rel="noopener">nice.org.uk/guidance/ng51</a><span class="rd"> — the sepsis features and the time-critical treatment imperative</span></li>'+
+         '<li><b>NICE NG115 — COPD in over 16s</b><br><a href="https://www.nice.org.uk/guidance/ng115" rel="noopener">nice.org.uk/guidance/ng115</a><span class="rd"> — infective exacerbation management, rescue packs, controlled oxygen and CO₂ retention</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — persistent cough, haemoptysis, weight loss or a non-resolving chest X-ray, particularly in a smoker aged 40 or over</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Chest infections (LRTI / CAP) — NICE NG138, CG191, NG120 (acute cough), NG51 (sepsis), NG115 (COPD) and NG12. Severity is the diagnosis that matters: screen for sepsis, stratify CAP with CRB-65, and never send a septic patient home on oral antibiotics. The undifferentiated symptom belongs to the <a href=\"../algorithms/acute-cough.html\">acute cough pathway</a>. Verify all antibiotic choices against current local guidance before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

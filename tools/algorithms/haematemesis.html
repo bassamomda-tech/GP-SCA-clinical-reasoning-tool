@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Haematemesis Algorithm · Reasoning GP</title>
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/haematemesis.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#e74c3c;--safety-lt:#fdf3f2;--safety-bd:#f5c6c3;--diagnose:#2980b9;--diagnose-lt:#eef6fc;--diagnose-bd:#aed6f1;--treat:#27ae60;--treat-lt:#eafaf1;--treat-bd:#a9dfbf;--refer:#8e44ad;--refer-lt:#f5eef8;--refer-bd:#d2b4de;--lifestyle:#e67e22;--lifestyle-lt:#fef9f0;--lifestyle-bd:#f8c471;--light:#f8f9fa;--border:#e5e7eb;--text:#1a202c;--muted:#64748b;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08);}
+body{font-family:'DM Sans',sans-serif;background:#f0f4f8;color:var(--text);line-height:1.55;font-size:15px;padding:20px 16px 60px;}
+h3{font-family:'Source Serif 4',serif;font-weight:600;}
+.stem-banner{display:flex;align-items:center;gap:14px;background:#1a202c;color:#fff;border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;max-width:780px;margin-left:auto;margin-right:auto;}
+.sb-icon{font-size:2rem;}.stem-banner b{display:block;font-size:1.05rem;font-weight:700;}.stem-banner small{font-size:.82rem;opacity:.7;}
+.alg-progress{max-width:780px;margin:0 auto 24px;background:#fff;border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);}
+.alg-progress span{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.pcount{margin-left:auto;font-weight:700;}.pbar{flex:1;height:6px;background:#e5e7eb;border-radius:99px;min-width:80px;}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#27ae60,#2ecc71);border-radius:99px;width:0%;transition:width .4s ease;}
+.reset{margin-left:8px;font-size:.78rem;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;color:var(--muted);}
+.alg-flow{max-width:780px;margin:0 auto;display:flex;flex-direction:column;}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;position:relative;border-left:5px solid var(--border);transition:box-shadow .2s;}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);}.node[data-type="TREAT"]{border-left-color:var(--treat);}.node[data-type="REFER"]{border-left-color:var(--refer);}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);}
+.node-num{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;}
+.node[data-type="SAFETY"] .node-num{background:var(--safety);}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose);}.node[data-type="TREAT"] .node-num{background:var(--treat);}.node[data-type="REFER"] .node-num{background:var(--refer);}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle);}
+.node-head{padding:16px 56px 0 18px;}.node-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:6px;}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-lt);color:var(--safety);}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-lt);color:var(--diagnose);}.node[data-type="TREAT"] .node-tag{background:var(--treat-lt);color:var(--treat);}.node[data-type="REFER"] .node-tag{background:var(--refer-lt);color:var(--refer);}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-lt);color:var(--lifestyle);}
+.node-head h3{font-size:1rem;line-height:1.3;}
+.node-tick{padding:10px 18px 0;}.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--muted);}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:#27ae60;cursor:pointer;}
+.node.ticked{opacity:.7;}.node.ticked .node-head h3{text-decoration:line-through;color:var(--muted);}
+.node-body{padding:14px 18px 16px;}.node-body>p{font-size:.9rem;color:var(--muted);margin-bottom:12px;}
+.kv{display:grid;grid-template-columns:190px 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden;font-size:.87rem;margin-top:8px;}
+.kv>div{background:#fff;padding:9px 12px;line-height:1.45;}.kv>div:nth-child(odd){background:var(--light);font-weight:600;font-size:.82rem;}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.rftile{background:var(--safety-lt);border:1px solid var(--safety-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.rftile b{display:block;color:var(--safety);margin-bottom:2px;}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:8px;}
+.b-card{background:var(--treat-lt);border:1px solid var(--treat-bd);border-radius:8px;padding:12px;font-size:.85rem;}
+.b-cond{font-weight:700;color:var(--treat);margin-bottom:4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;}.b-drug{font-weight:700;font-size:.95rem;margin-bottom:4px;}.b-note{color:var(--muted);font-size:.82rem;}
+.ladder{display:flex;flex-direction:column;gap:0;margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+.rung{display:flex;align-items:stretch;font-size:.87rem;}.rn{min-width:80px;background:#1a202c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;text-align:center;padding:10px 6px;}.rt{flex:1;padding:10px 14px;background:#fff;border-bottom:1px solid var(--border);line-height:1.4;}.rung:last-child .rt{border-bottom:none;}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.lstile{background:var(--lifestyle-lt);border:1px solid var(--lifestyle-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px;}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;border-radius:99px;padding:2px 8px;margin:1px 2px;vertical-align:middle;}
+.pill-red{background:#fde8e8;color:#c0392b;}.pill-purple{background:#f3e8fd;color:#7c3aed;}.pill-blue{background:#e8f0fe;color:#1d4ed8;}.pill-teal{background:#e6faf8;color:#0d9488;}.pill-amber{background:#fef3c7;color:#b45309;}.pill-green{background:#dcfce7;color:#16a34a;}.pill-grey{background:#f3f4f6;color:#6b7280;}
+.why-row{border-top:1px solid var(--border);}.why-btn{width:100%;text-align:left;background:none;border:none;padding:10px 18px;font-size:.82rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:600;}.why-btn:hover{background:var(--light);}
+.caret{transition:transform .25s;}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg);}
+.why-drawer{display:none;padding:12px 18px 16px;font-size:.85rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);background:var(--light);}.why-drawer.open{display:block;}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;}
+.alg-foot{max-width:780px;margin:32px auto 0;font-size:.8rem;color:var(--muted);background:#fff;border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border);line-height:1.6;}
+@media(max-width:500px){.kv{grid-template-columns:1fr;}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr;}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css?v=3">
+<link rel="stylesheet" href="../../assets/alg-summary.css?v=6">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">🩸</div>
+  <div><b>Haematemesis &amp; Upper GI Bleeding — Primary Care Assessment</b>
+  <small>9-step pathway · vomiting blood, coffee-ground vomit and melaena · UK GP / RCGP SCA preparation</small></div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Summary</button></div>
+  <span>Progress</span><span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- SUMMARY VIEW — inline copy of summaries/haematemesis.html; the Download PDF button prints summaries/haematemesis.html (the A4 artefact). -->
+<div id="viewSummary">
+  <div class="sum-bar"><p><b>2-page quick reference.</b> Haematemesis and upper GI bleeding in adults — triage and disposal. Post-discharge PPI, <i>H. pylori</i> eradication and NSAID review stay in the Steps tab.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="summaries/haematemesis.html">⬇ Download PDF</button><a class="sum-open" href="summaries/haematemesis.html" target="_blank" rel="noopener">Print view ↗</a></div></div>
+  <div class="sum">
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td>
+      <div class="brand"><b>REASONING GP</b> · Clinical algorithm · Quick reference</div>
+      <h1>Haematemesis and upper GI bleeding in adults — triage and diagnostic approach</h1>
+      <div class="sub">Daytime GP and OOH/111, face-to-face or remote. Resuscitate, risk-assess and transfer; confirm the bleed is real and upper GI. Ongoing eradication, gastroprotection and follow-up are in the full Steps pathway.</div>
+    </td>
+    <td class="pg">Page 1 / 2<br><span class="tags"><span>Adults</span><span>GP + OOH</span><span>Disposal first</span><span>v1.0 · Sep 2026</span></span></td>
+  </tr></table></div>
+
+  <div class="rule"><b>Core rule.</b> Confirmed haematemesis or melaena is an acute admission, whatever the patient looks like and whatever the volume. Do not risk-assess towards discharge in primary care: NICE CG141 requires formal risk assessment and endoscopy within 24 hours of admission, immediately after resuscitation if unstable. A normal haemoglobin, a settled bleed and a "known Mallory-Weiss" do <b>not</b> make it safe. Blood tests must never delay transfer.</div>
+
+  <!-- 0 Immediate -->
+  <div class="sec red">
+    <div class="sh"><div class="n">0</div><div class="t">Before any history: is this an emergency now? <small>Stop the consultation and call 999 if any of these is present</small></div></div>
+    <div class="note">Active fresh red haematemesis · shock or postural hypotension (systolic &lt;100 mmHg, pulse &gt;100, capillary refill &gt;2 s, cool peripheries) · syncope or collapse with the bleed · melaena with haemodynamic compromise · known varices or chronic liver disease · reduced or falling consciousness · airway soiling. ABCDE, lie flat, high-flow oxygen, wide-bore IV access and crystalloid if available, nil by mouth, recovery position if vomiting. Record time and estimated volume of the last bleed. Do not delay transfer for bloods, a PPI, a CT request or a fuller history.</div>
+  </div>
+
+  <!-- 1 Define -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">1</div><div class="t">Define the bleed in four lines <small>Enough to place the patient in the table below</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Time</h4>Time of first and last episode. Number of episodes. Still bleeding now? Volume in household terms (teaspoon, cupful, bowlful). Retching <i>before</i> blood (Mallory-Weiss) or blood with the first vomit.</div>
+      <div class="col blue"><h4>Character</h4>Fresh red, clots, or brown coffee-grounds. Melaena: black, tarry, offensive stool. Fresh red PR blood with haematemesis means very brisk upper GI bleeding, not a lower GI source.</div>
+      <div class="col blue"><h4>Context</h4>NSAID, aspirin, steroid, SSRI, bisphosphonate (include supermarket ibuprofen) · anticoagulant or antiplatelet · alcohol and known cirrhosis or previous banding · previous ulcer, <i>H. pylori</i>, OGD or GI bleed · previous aortic graft · age ≥60 and comorbidity.</div>
+      <div class="col blue"><h4>Associated</h4>Dizziness, syncope, breathlessness, chest pain · epigastric pain before the bleed · dysphagia, weight loss, early satiety · jaundice, ascites, confusion · mimics: epistaxis, haemoptysis, dental bleeding, red food or drink, iron or bismuth.</div>
+    </div>
+  </div>
+
+  <!-- 2 Red flags -->
+  <div class="sec red">
+    <div class="sh"><div class="n">2</div><div class="t">Red-flag screen: trigger → concern → destination → what to do before handover <small>One row is enough; do not add up reassuring features</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:27%"><col style="width:19%"><col style="width:54%"></colgroup>
+      <tr><th>Trigger / red flag</th><th>Leading concern · destination</th><th>Do now · do not delay</th></tr>
+      <tr class="r"><td><b>Active fresh haematemesis</b>, or any haematemesis with shock: systolic &lt;100 mmHg, pulse &gt;100, postural drop &gt;20 mmHg, cool mottled peripheries, confusion.</td>
+        <td>Major upper GI haemorrhage<br><span class="pill p999">999 now</span></td>
+        <td>Lie flat, oxygen, wide-bore IV access, crystalloid if available, nil by mouth. Record time and volume of last bleed, drug and alcohol history, and observations for handover. Do not give a PPI before endoscopy (CG141) and do not wait for bloods.</td></tr>
+      <tr class="r"><td><b>Known varices, cirrhosis or liver stigmata</b>: jaundice, ascites, spider naevi, splenomegaly, encephalopathy — with any haematemesis, even small volume.</td>
+        <td>Variceal haemorrhage<br><span class="pill p999">999 now</span></td>
+        <td>Highest-mortality group; painless and can be catastrophic. Pre-alert the receiving team that varices are suspected — terlipressin, prophylactic antibiotics and banding within 24 h are hospital actions. Do not observe at home.</td></tr>
+      <tr class="r"><td><b>Melaena</b>: black, tarry, offensive stool, with or without vomiting. Confirm by rectal examination if the history is equivocal.</td>
+        <td>Upper GI bleed of ≥50 ml<br><span class="pill psd">Same-day admission</span> <span class="pill p999">999 if compromised</span></td>
+        <td>Patients do not volunteer this — ask specifically: "black, sticky, like tar, with a strong smell". Iron and bismuth blacken stool but do not make it tarry or offensive. A well-looking patient with melaena still goes in today.</td></tr>
+      <tr class="r"><td><b>Anticoagulated or on antiplatelet therapy</b>: DOAC, warfarin, clopidogrel, dual antiplatelet — with haematemesis or coffee-grounds.</td>
+        <td>Uncontrollable bleeding · reversal needed<br><span class="pill psd">Same-day admission</span></td>
+        <td>Record drug, dose, last dose time and indication; INR if warfarinised and immediately available, but do not delay transfer for it. Do not stop or restart anticoagulation on your own initiative — that is a specialist decision after haemostasis.</td></tr>
+      <tr class="a"><td><b>Coffee-ground vomit in a higher-risk patient</b>: age ≥60, significant cardiac, renal or respiratory disease, anaemia, immunosuppression, or living alone without support.</td>
+        <td>Ongoing or recurrent bleeding with poor physiological reserve<br><span class="pill psd">Same-day admission</span></td>
+        <td>Age and comorbidity, not the volume vomited, predict death. A normal haemoglobin in the first hours means nothing — haemodilution has not yet happened. Take FBC, U&amp;Es, LFTs, clotting and group &amp; save, and send them <b>with</b> the patient.</td></tr>
+      <tr class="a"><td><b>Dysphagia at any age</b>, or age ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia — with or without bleeding.</td>
+        <td>Oesophageal or gastric cancer<br><span class="pill p2ww">Urgent direct-access OGD within 2 weeks · NICE NG12</span></td>
+        <td>Use the urgent suspected-cancer route and state the alarm feature in the request. Active bleeding overrides this: admit today and the inpatient scope serves both purposes. Haematemesis alone in a stabilised patient is a "consider non-urgent direct-access OGD" criterion (NG12).</td></tr>
+      <tr class="a"><td><b>Severe chest or epigastric pain with vomiting</b>, subcutaneous emphysema, or pain after violent retching.</td>
+        <td>Boerhaave oesophageal perforation · peptic perforation<br><span class="pill p999">999 now</span></td>
+        <td>Peritonism or shock with vomiting is a surgical emergency, not a bleeding problem. Nil by mouth, IV access, transfer. Do not attribute severe pain to "gastritis" after an episode of vomiting blood.</td></tr>
+      <tr class="a"><td><b>Previous abdominal aortic graft</b> with any GI bleed, however small ("herald bleed").</td>
+        <td>Aorto-enteric fistula<br><span class="pill p999">999 now, state the graft</span></td>
+        <td>Rare, and the definitive bleed is usually fatal within hours. Pre-alert and name the graft explicitly. Never plan outpatient investigation.</td></tr>
+      <tr class="b"><td><b>Is it actually upper GI blood?</b> Swallowed epistaxis (especially anticoagulated older patients), haemoptysis (frothy, coughed), dental or oropharyngeal bleeding, red food, drink or dye.</td>
+        <td>Benign mimic<br><span class="pill pgp">Primary care</span></td>
+        <td>Look in the nose and mouth before accepting the diagnosis. If a genuine non-GI source is found and the patient is stable, treat that source. If any doubt remains, treat as an upper GI bleed and admit.</td></tr>
+    </table>
+    <div class="note amber"><b>Safety rule.</b> "It has stopped", "it was only a teaspoon", "it was after retching" and a normal haemoglobin are not discharge criteria. A Glasgow-Blatchford score of 0 identifies very low risk, but it needs blood results and most UK units admit at ≥1 — so in primary care the score informs the handover, not the decision to keep the patient at home. Self-induced vomiting with haematemesis: consider an eating disorder and assess physical risk.</div>
+  </div>
+
+  <!-- 3 Examine -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">3</div><div class="t">Focused examination and investigation <small>Only after the emergency question is answered; remote assessment that cannot deliver these is an escalation criterion</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Observations</h4>Pulse, BP <b>lying and standing</b>, RR, SpO₂, temperature, capillary refill, GCS, NEWS2. A postural drop &gt;20 mmHg is the earliest reliable sign of significant loss. Repeat after any further bleed.</div>
+      <div class="col blue"><h4>System examination</h4>Pallor, sweating, confusion. Abdomen: epigastric tenderness, mass, peritonism, hepatomegaly, splenomegaly, ascites. Rectal examination to confirm melaena where the history is unclear.</div>
+      <div class="col blue"><h4>Targeted signs</h4>Liver stigmata: jaundice, spider naevi, palmar erythema, caput medusae, asterixis. Nose and oropharynx for a bleeding point. Surgical scars and previous graft sites. Signs of malignancy: cachexia, epigastric mass, Virchow's node.</div>
+      <div class="col blue"><h4>Investigations</h4>Question-led only, and never instead of transfer: FBC, U&amp;Es (raised urea with normal creatinine supports an upper source), LFTs, clotting/INR, group &amp; save — sent <b>with</b> the patient. Not from primary care: OGD, CT, FIT (a colorectal tool with no role here), faecal occult blood.</div>
+    </div>
+  </div>
+
+  <div class="foot">Colour is semantic: red = emergency now · amber = same-day acute assessment · blue = define/assess · green = benign diagnosis established · purple = uncertain / specialist route. Continued on page 2: classification, cause classifier, routine referral, primary-care treatment, endpoint.</div>
+</div>
+
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td><div class="brand"><b>REASONING GP</b> · Haematemesis and upper GI bleeding in adults — triage and diagnostic approach</div></td>
+    <td class="pg">Page 2 / 2</td>
+  </tr></table></div>
+
+  <!-- 4 Classify -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">4</div><div class="t">Classify: three exits, not two <small>A settled bleed is not a benign bleed</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>Acute upper GI bleed</h4>Confirmed haematemesis or melaena, or coffee-grounds with any red flag, comorbidity, anticoagulation or liver disease. <b>Output:</b> name the suspected source (ulcer, varices, malignancy), use the destination above, and hand over volume, timings, drugs and observations.</div>
+      <div class="col green"><h4>Benign mimic established</h4>A demonstrated non-GI source — epistaxis, dental bleeding, haemoptysis with a respiratory cause — or clearly identified red food or drink, in a stable patient with no melaena and normal observations. <b>Output:</b> record the source, treat it, and give the written safety-net below.</div>
+      <div class="col purple"><h4>Unclassified / uncertain</h4>Reported blood not witnessed, vague history, remote assessment, unreliable account, or coffee-grounds with no clear cause in an otherwise well younger adult. <b>Output:</b> do not default to "gastritis". State the uncertainty; the safe default is same-day assessment.</div>
+    </div>
+  </div>
+
+  <!-- 5 Classifier -->
+  <div class="sec green">
+    <div class="sh"><div class="n">5</div><div class="t">Cause classifier once the patient is safe <small>Shapes the handover and the follow-up, not the decision to admit</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:21%"><col style="width:79%"></colgroup>
+      <tr class="g"><td><b>Peptic ulcer</b> (commonest)</td><td>Epigastric pain preceding the bleed; NSAID, aspirin, steroid or SSRI exposure; <i>H. pylori</i>. Duodenal more often than gastric. Posterior duodenal ulcers erode the gastroduodenal artery and bleed briskly.</td></tr>
+      <tr class="g"><td><b>Erosive gastritis or oesophagitis</b></td><td>NSAIDs, alcohol, reflux. Typically low-volume coffee-grounds rather than fresh blood. Still requires the acute pathway when bleeding is confirmed.</td></tr>
+      <tr class="r"><td><b>Varices</b></td><td>Painless, large volume, in cirrhosis or portal hypertension. Previous banding, alcohol excess, hepatitis B or C. Highest mortality; needs pre-alert and hepatology follow-up with secondary prophylaxis.</td></tr>
+      <tr class="g"><td><b>Mallory-Weiss tear</b></td><td>Forceful retching, coughing or vomiting <i>then</i> streaks or small volumes of blood. Usually self-limiting — but the diagnosis is made after endoscopy, never in the surgery, and it is the classic false-reassurance trap.</td></tr>
+      <tr class="p"><td><b>Upper GI malignancy</b></td><td>Dysphagia, progressive weight loss, early satiety, iron-deficiency anaemia, epigastric mass. Requires OGD on the NG12 route even after the acute episode is managed.</td></tr>
+      <tr class="p"><td><b>Do not label by default</b></td><td>"Just gastritis", "only a Mallory-Weiss" and "swallowed nosebleed" need positive evidence. Also consider: Dieulafoy lesion, angiodysplasia, gastric antral vascular ectasia, aorto-enteric fistula, coagulopathy, and nicorandil- or hydroxycarbamide-related ulceration.</td></tr>
+    </table>
+  </div>
+
+  <!-- 6 Routine referral -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">6</div><div class="t">Refer routinely from this consultation <small>Not same-day, not 999 — the cases that leave by letter</small></div></div>
+    <div class="note grey"><b>NG12:</b> consider non-urgent direct-access OGD for haematemesis in a patient whose bleeding has clearly stopped and who is otherwise stable; and in people aged ≥55 with treatment-resistant dyspepsia, upper abdominal pain with low haemoglobin, raised platelets with an upper GI symptom, or nausea and vomiting with weight loss, reflux, dyspepsia or upper abdominal pain. <b>Routine gastroenterology (CG184):</b> recurrent ulcer despite eradication and a full PPI course, refractory reflux, or an unavoidable long-term NSAID after a bleed. <b>Routine hepatology:</b> newly suspected cirrhosis or portal hypertension for variceal surveillance and prophylaxis. <b>Interim advice:</b> stop the NSAID or aspirin unless it is essential secondary prevention, and give the written safety-net below. <b>Not routine:</b> dysphagia at any age, or ≥55 with weight loss plus an upper GI symptom — that is the 2-week urgent OGD route on page 1.</div>
+  </div>
+
+  <!-- 7 Treatment -->
+  <div class="sec red">
+    <div class="sh"><div class="n">7</div><div class="t">The only treatment decisions that belong in this consultation <small>Everything else is in the management pathway</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:26%"><col style="width:74%"></colgroup>
+      <tr class="r"><td><b>Active bleed, shock, varices, melaena</b></td><td><b>Transfer is the treatment.</b> Lie flat, high-flow oxygen, wide-bore IV access and crystalloid if available, nil by mouth. <b>Do not give a PPI before endoscopy</b> (CG141: no benefit on mortality, re-bleeding or surgery, and it may obscure findings). Do not sedate; do not give oral fluids; do not delay the ambulance for bloods or a cannula.</td></tr>
+      <tr class="a"><td><b>Anticoagulant or antiplatelet in situ</b></td><td>Withhold the next dose and hand over drug, dose, last-dose time and indication. Reversal (vitamin K, PCC, idarucizumab, andexanet) is a hospital decision. Do not permanently stop aspirin taken for secondary prevention on your own initiative — thrombotic risk rises and most patients resume with gastroprotection once haemostasis is secure.</td></tr>
+      <tr class="a"><td><b>Culprit drugs</b></td><td>Stop the NSAID or aspirin now unless it is essential secondary prevention (name it in the referral); stop bisphosphonates; note steroids and SSRIs. Document what was stopped and why, so the discharge summary does not silently reinstate it.</td></tr>
+      <tr class="g"><td><b>Confirmed benign mimic only</b> (demonstrated epistaxis, dental or oropharyngeal bleeding, stable, no melaena)</td><td>Treat the source: nasal pressure and topical measures, dental referral, review anticoagulation intensity. Give the written safety-net and a named review. No PPI, no antibiotics, no eradication testing at this visit.</td></tr>
+      <tr class="g"><td><b>Established ulcer, after discharge</b></td><td>Full-dose PPI (omeprazole 20–40 mg daily or lansoprazole 30 mg daily) for 4–8 weeks per CG184, then <i>H. pylori</i> test-and-treat. <b>Test at least 2 weeks after the PPI stops</b> (and 4 weeks after antibiotics) or the result is falsely negative; after a bleeding ulcer, eradication must be confirmed by urea breath test. This belongs to the follow-up consultation, not the acute one.</td></tr>
+    </table>
+  </div>
+
+  <!-- 8 Endpoint -->
+  <div class="sec green">
+    <div class="sh"><div class="n">8</div><div class="t">Endpoint and documentation <small>Finish with one of four conclusions and a named owner</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>1 · Time-critical bleed</h4>999 or acute route taken; suspected source, time and volume of each bleed, observations including postural BP, GCS, alcohol and liver history, anticoagulant with last dose time, bloods sent with the patient.</div>
+      <div class="col amber"><h4>2 · Bleed possible</h4>Same-day admission arranged; state what is being excluded, who was spoken to, and the deadline for assessment. Record that the patient was advised nil by mouth and how they will travel.</div>
+      <div class="col green"><h4>3 · Benign mimic established</h4>The demonstrated source, the observations that support stability, absence of melaena on direct questioning or examination, drugs stopped, safety-net given, review owner and date.</div>
+      <div class="col purple"><h4>4 · Unclassified</h4>Uncertainty stated, exclusions outstanding, and the default chosen — same-day assessment. Record why, and who reviews if the patient declines.</div>
+    </div>
+    <div class="note grey"><b>Why a benign conclusion is safe today, in one line:</b> a positively identified non-GI source · no melaena on direct questioning or rectal examination · normal observations including postural BP · no anticoagulant, liver disease or significant comorbidity · written safety-net given and an agreed review. <b>Safety-net wording:</b> call 999 if you vomit blood again, faint or feel faint on standing, or develop severe chest or tummy pain; contact us the same day if your stool turns black, sticky and strong-smelling, if you vomit anything that looks like coffee grounds, or if you become more breathless or pale.</div>
+    <div class="note amber"><b>OOH / remote limitation.</b> Convert to face-to-face or emergency assessment if the blood was not witnessed by a clinician; volume or timing cannot be established; observations, postural BP or a rectal examination cannot be obtained; the patient is anticoagulated, has liver disease or significant comorbidity; the caller is not the patient; or transport, support at home or timely review cannot be guaranteed. Under time pressure the default is the safer destination.</div>
+  </div>
+
+  <div class="foot">Clinical decision support only; follow local emergency-transfer and referral policies and check doses against the current BNF. Source hierarchy: NICE guidelines first, then BNF/MHRA for doses and safety, then national specialty guidance. Sources: NICE CG141 Acute upper gastrointestinal bleeding over 16s · NG12 Suspected cancer: recognition and referral · CG184 Gastro-oesophageal reflux disease and dyspepsia in adults · NG253 Sepsis (16+) · BNF · Glasgow-Blatchford score (as adopted in CG141) · BSG care bundle for acute upper GI bleeding. Review after any guidance or medicines-safety update, otherwise every 6 months. © Reasoning GP · gpreasoning.uk</div>
+</div>
+  </div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Red Flags — Resuscitate and transfer before you diagnose</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Haematemesis is a time-critical presentation with an overall inpatient mortality of about 10%. The primary-care decision is binary: does this patient travel by ambulance now, or can they be assessed and still referred the same day?</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Fresh red haematemesis</b> Active bleeding → <span class="pill pill-red">999</span>. Lie flat, oxygen, IV access, nil by mouth. Do not delay for bloods.</div>
+      <div class="rftile"><b>Shock</b> HR &gt;100, systolic &lt;100 mmHg, postural drop &gt;20 mmHg, capillary refill &gt;2 s, cool peripheries → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Melaena</b> Black tarry offensive stool = ≥50 ml of upper GI blood → <span class="pill pill-red">same-day admission</span> even if the patient feels well</div>
+      <div class="rftile"><b>Known varices / chronic liver disease</b> Jaundice, ascites, spider naevi, splenomegaly → <span class="pill pill-red">999</span>; variceal bleeding mortality up to 20% at 6 weeks</div>
+      <div class="rftile"><b>Anticoagulated or antiplatelet</b> DOAC, warfarin, clopidogrel, dual antiplatelet → <span class="pill pill-red">same-day</span>; reversal may be needed</div>
+      <div class="rftile"><b>Syncope or presyncope</b> Collapse with the bleed indicates significant volume loss → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Age 60+ with comorbidity</b> Cardiac, renal or respiratory disease tolerates hypovolaemia poorly → low threshold for <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Dysphagia at any age</b> With or without bleeding → <span class="pill pill-purple">urgent direct-access OGD</span> within 2 weeks (NICE NG12)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Upper gastrointestinal bleeding has an incidence of roughly 100 per 100,000 per year in the UK and an inpatient mortality of around 10%, rising to 30% in inpatients who bleed while admitted for another reason. The single strongest predictor of death is not the volume vomited but age and comorbidity — an 80-year-old with ischaemic heart disease may decompensate from a bleed a 30-year-old would tolerate. Melaena deserves particular emphasis because patients do not volunteer it: the specific question is "has your stool been black, tarry and unusually smelly?" Iron and bismuth turn stool black but not tarry or offensive, and do not cause the classic melaena smell. NICE CG141 recommends that all patients with acute upper GI bleeding are risk-assessed and that unstable patients receive endoscopy immediately after resuscitation, with everyone else scoped within 24 hours.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>History — Characterise the bleed and find the cause</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Was it really blood?</div><div>Fresh red, clots, or brown "coffee grounds" (blood altered by acid)? Ask about volume in household terms — teaspoon, cupful, bowlful. Red wine, beetroot and tomato-based food are common false alarms.</div>
+      <div>Blood or coffee grounds?</div><div>Fresh red = active or recent brisk bleeding. Coffee grounds = slower bleeding or a bleed that has stopped — lower risk but not a discharge criterion on its own.</div>
+      <div>Sequence of events</div><div>Forceful retching <i>then</i> blood → Mallory-Weiss tear. Blood from the first vomit → ulcer or varices. Painless large-volume fresh blood → varices.</div>
+      <div>Melaena or haematochezia</div><div>Black tarry stool = upper GI source. Fresh red PR blood with haematemesis means a very brisk upper GI bleed with rapid transit — a marker of severity, not a lower GI source.</div>
+      <div>Drugs</div><div>NSAIDs and aspirin (including over-the-counter and topical), steroids, SSRIs, bisphosphonates, DOACs, warfarin, clopidogrel. Ask specifically about ibuprofen bought for a bad back.</div>
+      <div>Alcohol and liver disease</div><div>Units per week, binge pattern, previous decompensation, known cirrhosis, previous variceal banding, hepatitis B/C risk.</div>
+      <div>Previous upper GI history</div><div>Known ulcer, previous <i>H. pylori</i> eradication, previous endoscopy and what it showed, previous GI bleed, gastric surgery, oesophageal stricture or dilatation.</div>
+      <div>Alarm features</div><div>Dysphagia, progressive weight loss, early satiety, persistent vomiting, epigastric mass, iron-deficiency anaemia → suspected upper GI cancer.</div>
+      <div>Mimics to exclude</div><div>Epistaxis swallowed overnight; haemoptysis (frothy, bright, coughed not vomited); bleeding from gums or dental extraction; self-induced vomiting.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The sequence question — retching before blood, or blood with the first vomit — is the most useful single discriminator available without a scope. A Mallory-Weiss tear follows a mechanical insult and produces streaks or small volumes; it accounts for around 5–10% of upper GI bleeds and usually settles spontaneously. Varices bleed painlessly and copiously because portal pressure drives the bleed. NSAID exposure is systematically under-reported: patients do not consider a supermarket ibuprofen a "medicine", yet NSAIDs multiply ulcer bleeding risk approximately fourfold, and the combination of an NSAID with an SSRI or a steroid is multiplicative rather than additive. Swallowed epistaxis is the commonest benign mimic in older people on anticoagulants — always look in the nose.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Differential — Causes of upper GI bleeding by frequency</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Peptic ulcer · 35–50%</div><div>Duodenal more than gastric. NSAIDs, <i>H. pylori</i>, or both. Epigastric pain often preceded the bleed; posterior duodenal ulcers erode the gastroduodenal artery and bleed briskly.</div>
+      <div>Erosive gastritis / oesophagitis · 15%</div><div>NSAIDs, alcohol, reflux, critical illness. Usually low-volume coffee grounds rather than fresh blood.</div>
+      <div>Oesophageal / gastric varices · 10%</div><div>Portal hypertension from cirrhosis, portal vein thrombosis, schistosomiasis. Painless, large volume, high mortality. Look for stigmata of chronic liver disease.</div>
+      <div>Mallory-Weiss tear · 5–10%</div><div>Longitudinal mucosal tear at the gastro-oesophageal junction after forceful retching, coughing or vomiting. Usually self-limiting.</div>
+      <div>Upper GI malignancy · 3–5%</div><div>Oesophageal or gastric cancer, or a bleeding GIST. Dysphagia, weight loss, early satiety, anaemia. Requires urgent OGD under NG12.</div>
+      <div>Vascular lesions</div><div>Dieulafoy lesion, angiodysplasia, gastric antral vascular ectasia, aorto-enteric fistula (previous aortic graft — catastrophic).</div>
+      <div>Swallowed blood</div><div>Epistaxis, oropharyngeal or dental bleeding, haemoptysis — no GI lesion at all. Common and easily missed.</div>
+      <div>Rare but important</div><div>Coagulopathy (liver disease, DIC, thrombocytopenia), Boerhaave perforation after violent vomiting, hereditary haemorrhagic telangiectasia.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Knowing the distribution changes the pre-test probability you carry into the referral conversation. Peptic ulcer disease still dominates despite falling <i>H. pylori</i> prevalence, because NSAID use has risen in an ageing population. Variceal bleeding is the minority by number but the majority of the mortality — which is why a history of alcohol excess or cirrhosis escalates any haematemesis to an immediate 999 call rather than a same-day referral. Aorto-enteric fistula is vanishingly rare but worth holding in mind in anyone with a previous abdominal aortic graft and a "herald bleed", because the definitive bleed is usually fatal and the window is hours.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Examination &amp; Risk Score — Glasgow-Blatchford in the surgery</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Observations</div><div>Pulse, BP lying <b>and standing</b>, respiratory rate, oxygen saturation, temperature, capillary refill, NEWS2 score. A postural drop is the earliest reliable sign of significant loss.</div>
+      <div>General</div><div>Pallor, sweating, confusion, cool peripheries. Conscious level — encephalopathy suggests decompensated liver disease.</div>
+      <div>Liver disease stigmata</div><div>Jaundice, spider naevi, palmar erythema, gynaecomastia, caput medusae, ascites, splenomegaly, asterixis. Any of these makes varices likely.</div>
+      <div>Abdomen</div><div>Epigastric tenderness, epigastric mass, hepatomegaly, splenomegaly, ascites. Peritonism suggests perforation rather than simple bleeding.</div>
+      <div>Rectal examination</div><div>Confirms melaena objectively. Worth doing where the history is equivocal, because it converts a "possible" bleed into a definite one.</div>
+      <div>Nose and mouth</div><div>Look for an obvious bleeding point — nasal crusting, telangiectasia, gum disease, recent extraction.</div>
+      <div><b>Glasgow-Blatchford score</b></div><div>Urea, haemoglobin, systolic BP, pulse ≥100, melaena, syncope, liver disease, cardiac failure. <b>GBS 0 = very low risk</b> and potentially outpatient; <b>GBS ≥1 = admit</b>. Most UK units use a threshold of 0–1.</div>
+      <div>Why urea matters</div><div>A <b>raised urea with a normal creatinine</b> is characteristic of upper GI bleeding — digested blood protein is absorbed. A urea:creatinine ratio &gt;100:1 (mmol) supports an upper source.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The Glasgow-Blatchford score was designed to be calculable before endoscopy and is the tool NICE CG141 recommends at first assessment; the Rockall score requires endoscopic findings and so belongs to secondary care. A GBS of 0 identifies a group with a very low probability of needing intervention, and some units discharge these patients for outpatient endoscopy — but the score requires blood results, so in a surgery without same-day phlebotomy the practical answer is referral. The disproportionately raised urea is a genuinely useful primary-care sign: it reflects absorbed blood protein plus a degree of pre-renal impairment, and a normal creatinine alongside it argues against renal disease as the explanation. Note that haemoglobin can be normal in the first hours of a brisk bleed because haemodilution has not yet occurred — a normal Hb never excludes significant bleeding.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Investigations — What is useful, and what wastes time</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Urgent bloods (if referring, not instead)</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">U&amp;Es</span> <span class="pill pill-blue">LFTs</span> <span class="pill pill-blue">Clotting / INR</span> <span class="pill pill-blue">Group &amp; save</span>. Send with the patient rather than waiting for results.</div>
+      <div>Interpreting the FBC</div><div>Normal Hb in the first hours does not exclude a major bleed. Microcytic anaemia points to chronic blood loss and therefore an ulcer or tumour rather than a Mallory-Weiss tear.</div>
+      <div>Upper GI endoscopy (OGD)</div><div>The definitive test. <b>Within 24 hours</b> of admission for all acute upper GI bleeds; <b>immediately after resuscitation</b> if unstable (NICE CG141).</div>
+      <div><i>H. pylori</i> testing</div><div><span class="pill pill-blue">Stool antigen</span> or <span class="pill pill-blue">urea breath test</span>, but <b>only 2 weeks after stopping the PPI</b> and 4 weeks after antibiotics, or it is falsely negative. Serology is not reliable for confirming eradication.</div>
+      <div>Direct-access OGD (NG12)</div><div><span class="pill pill-purple">Urgent, 2 weeks</span> — dysphagia at any age; or age 55+ with weight loss <b>and</b> upper abdominal pain, reflux or dyspepsia.</div>
+      <div>Do not do</div><div>Do not delay referral for bloods, a CT, or a trial of PPI. Do not perform faecal occult blood or FIT to "confirm" melaena — FIT is a colorectal tool and has no role here.</div>
+      <div>After discharge</div><div>Repeat FBC and ferritin at 1–2 weeks; renal function if fluids or transfusion were given; INR review if warfarinised.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The commonest investigative error in primary care is treating this as a diagnostic problem rather than a logistical one. Blood results do not change the disposal of a patient with genuine haematemesis — they will be repeated on arrival — so taking them must never delay transfer. The <i>H. pylori</i> timing rule is the detail most often missed and generates a stream of false negatives: proton pump inhibitors suppress bacterial load enough to invalidate both stool antigen and breath testing, so the test must be deferred for two weeks after the PPI stops. Since a bleeding ulcer patient will be on a PPI for 4–8 weeks, eradication testing is a planned follow-up task, not a same-visit one. A FIT test has no place in upper GI bleeding: it is calibrated and validated for colorectal cancer risk stratification, and a positive result in this context tells you nothing you did not already know.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head"><span class="node-tag">Refer</span><h3>Referral Criteria — 999, same-day, and the NG12 cancer pathway</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 now</span></div><div>Active fresh haematemesis; shock or postural hypotension; suspected variceal bleed (known cirrhosis or liver stigmata); syncope with the bleed; melaena with haemodynamic compromise</div>
+      <div><span class="pill pill-red">Same-day admission</span></div><div>Any confirmed haematemesis or melaena, however well the patient looks; coffee-ground vomit on anticoagulant or antiplatelet therapy; coffee grounds with anaemia, comorbidity, or age 60+</div>
+      <div><span class="pill pill-purple">2WW / urgent OGD</span></div><div><b>NICE NG12 — suspected oesophageal or stomach cancer.</b> Urgent direct-access endoscopy within 2 weeks for <b>dysphagia at any age</b>, or <b>age 55 and over with weight loss</b> and any of upper abdominal pain, reflux or dyspepsia</div>
+      <div><span class="pill pill-purple">Consider non-urgent OGD</span></div><div><b>NG12:</b> consider non-urgent direct-access endoscopy for <b>haematemesis</b>; and in people aged 55+ with treatment-resistant dyspepsia, upper abdominal pain with low haemoglobin, raised platelets with nausea/vomiting/weight loss/reflux/dyspepsia/upper abdominal pain, or nausea/vomiting with weight loss, reflux, dyspepsia or upper abdominal pain</div>
+      <div>Hepatology</div><div>Newly suspected cirrhosis or portal hypertension after the acute episode — variceal surveillance and primary prophylaxis (non-selective beta-blocker or banding)</div>
+      <div>Gastroenterology (routine)</div><div>Recurrent ulcer despite eradication and PPI; refractory reflux; suspected eosinophilic oesophagitis; need for long-term NSAID with prior bleed</div>
+      <div>Primary care manage</div><div>Post-discharge PPI course, <i>H. pylori</i> eradication and confirmation, NSAID review and gastroprotection, iron replacement, alcohol intervention</div>
+      <div>Safeguarding thought</div><div>Self-induced vomiting with haematemesis → consider eating disorder; recurrent presentation with alcohol-related bleeding → alcohol care pathway</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG12 (updated May 2025) separates two thresholds for endoscopy that are easy to conflate. The <i>urgent</i> two-week pathway is triggered by dysphagia at any age, or by weight loss plus an upper GI symptom at 55 and over. Haematemesis itself sits in the <i>consider non-urgent</i> group — which sounds contradictory until you realise NG12 addresses cancer detection, not acute bleeding: the acutely bleeding patient is captured by CG141 and admitted, scoped within 24 hours, and never waits for a two-week pathway. The practical rule is therefore to admit on the acute pathway, and use NG12 only for the patient whose bleeding has clearly stopped and who is being worked up for a cause. Long-term, the hepatology referral matters more than most GPs expect: after a first variceal bleed, the risk of re-bleeding without secondary prophylaxis approaches 60% within a year.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head"><span class="node-tag">Treat</span><h3>Treatment — Immediate measures and post-discharge management</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">In the surgery, awaiting ambulance</div>
+        <div class="b-drug">ABC + oxygen <span class="pill pill-teal">1st</span></div>
+        <div class="b-note">Lie flat with legs elevated; high-flow oxygen; wide-bore IV access and 500 ml crystalloid bolus if available; nil by mouth; recovery position if vomiting; keep warm. Document time of last bleed and estimated volume for the receiving team.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Stop the culprit</div>
+        <div class="b-drug">Drug review</div>
+        <div class="b-note">Stop NSAIDs and aspirin (unless essential secondary prevention — discuss). Hold DOAC/warfarin and antiplatelets pending specialist advice. Stop bisphosphonates and SSRIs temporarily where practical.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Confirmed peptic ulcer bleed</div>
+        <div class="b-drug">PPI, full dose <span class="pill pill-teal">4–8 weeks</span></div>
+        <div class="b-note">Omeprazole 20–40 mg OD or lansoprazole 30 mg OD. Then <i>H. pylori</i> test-and-treat 2 weeks after stopping. Gastric ulcers need endoscopic confirmation of healing.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond"><i>H. pylori</i> positive</div>
+        <div class="b-drug">Triple therapy, 7 days</div>
+        <div class="b-note">PPI BD + amoxicillin 1 g BD + clarithromycin 500 mg BD (or metronidazole 400 mg BD if penicillin-allergic). Confirm eradication by urea breath test after a bleeding ulcer — this is one of the few situations where confirmation is mandatory.</div>
+      </div>
+    </div>
+    <div class="ladder" style="margin-top:14px;">
+      <div class="rung"><span class="rn">Varices</span><span class="rt"><b>Secondary care:</b> terlipressin, prophylactic antibiotics, band ligation within 24 h, TIPS if uncontrolled. <b>Primary care afterwards:</b> non-selective beta-blocker (propranolol or carvedilol) titrated to heart rate, banding programme attendance, alcohol abstinence support.</span></div>
+      <div class="rung"><span class="rn">Ongoing NSAID need</span><span class="rt">If an NSAID is unavoidable after a bleed, use the <b>lowest effective dose of the least gastrotoxic agent with a co-prescribed PPI</b>, eradicate <i>H. pylori</i> first, and review the indication at every prescription. Consider topical NSAID or paracetamol-based alternatives.</span></div>
+      <div class="rung"><span class="rn">Anaemia</span><span class="rt"><b>Ferrous fumarate 210 mg OD</b> (alternate-day dosing improves absorption) for 3 months after haemoglobin normalises. Recheck FBC and ferritin at 4 weeks to confirm response.</span></div>
+      <div class="rung"><span class="rn">Restarting anticoagulation</span><span class="rt">Rarely a primary-care decision alone. Most patients with a strong indication (AF with high stroke risk, mechanical valve, recent VTE) restart once haemostasis is secure, often with PPI cover. Document the shared decision.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE CG141 specifically advises <i>against</i> giving a PPI before endoscopy in acute upper GI bleeding — it does not reduce mortality, re-bleeding or need for surgery, and it can obscure endoscopic findings. The PPI belongs after the scope, or after discharge for a confirmed ulcer. Confirming <i>H. pylori</i> eradication is optional in uncomplicated dyspepsia but mandatory after a bleeding ulcer, because persistent infection is the dominant cause of re-bleeding and the consequences of failure are severe. The hardest conversation is restarting aspirin or an anticoagulant: stopping permanently after a bleed feels safe but raises thrombotic and stroke risk substantially, and the evidence favours resumption with gastroprotection once bleeding is controlled. Aspirin for secondary cardiovascular prevention in particular should usually be restarted, not abandoned.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head"><span class="node-tag">Lifestyle</span><h3>Non-Pharmacological — Preventing the next bleed</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Alcohol</b> The single highest-yield intervention where liver disease or gastritis is the cause. Brief intervention plus referral to alcohol care services; abstinence after a variceal bleed is the strongest predictor of survival.</div>
+      <div class="lstile"><b>Over-the-counter analgesia literacy</b> Explicitly name ibuprofen, diclofenac gel, aspirin, and combination cold remedies. Many patients do not connect "painkillers from the supermarket" with a GI bleed.</div>
+      <div class="lstile"><b>Smoking cessation</b> Smoking impairs ulcer healing, increases recurrence, and raises upper GI cancer risk. Refer to the stop-smoking service at the follow-up appointment.</div>
+      <div class="lstile"><b>Reflux measures</b> Weight loss if BMI raised, avoid late meals, raise the head of the bed, reduce alcohol and known trigger foods — useful adjuncts where oesophagitis was found.</div>
+      <div class="lstile"><b>Written safety-net</b> Give explicit, written instructions on melaena and recurrent haematemesis. Patients frequently do not realise black stool is an emergency.</div>
+      <div class="lstile"><b>Iron-rich diet</b> Alongside supplementation; take iron with vitamin C, away from tea, coffee, calcium and the PPI dose where possible.</div>
+      <div class="lstile"><b>Medicines reconciliation</b> A structured post-discharge review is where most preventable re-bleeds are avoided — check the hospital actually stopped the NSAID, and that the PPI has a review date rather than becoming permanent by default.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The post-discharge medicines reconciliation is the most valuable thing primary care does in this pathway, and it is frequently skipped. Discharge summaries commonly reinstate a pre-admission NSAID by transcription error, or start a PPI with no stop date so the patient remains on it for years without review. Explicit naming of drugs matters because patients classify medicines by where they bought them rather than by pharmacology: asking "are you on any anti-inflammatories?" reliably produces a "no" from someone taking daily ibuprofen for arthritis. Written safety-netting on melaena has a genuine evidence base in reducing delayed re-presentation — the description needs to be concrete ("black, sticky, like tar, with a strong smell"), not the word "melaena".</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Within 1 week of discharge</div><div>Structured post-discharge review: read the endoscopy report, reconcile medicines, confirm PPI dose and duration, confirm NSAID stopped, book eradication testing</div>
+      <div>2 weeks</div><div>Repeat FBC and ferritin; start or adjust iron; check renal function if transfused or given fluids</div>
+      <div>6–8 weeks</div><div>End of PPI course. <b>Test for <i>H. pylori</i> 2 weeks after the PPI stops.</b> Gastric ulcer → check that repeat endoscopy for healing is booked</div>
+      <div>3 months</div><div>Confirm eradication by urea breath test where a bleeding ulcer was <i>H. pylori</i> positive; confirm haemoglobin and ferritin normalised; review long-term gastroprotection need</div>
+      <div><span class="pill pill-red">999 now</span></div><div>Further vomiting of blood; collapse or faint; black tarry stool with dizziness; new severe chest or abdominal pain (consider perforation or Boerhaave)</div>
+      <div><span class="pill pill-red">Same-day GP</span></div><div>Any black stool; new coffee-ground vomit; increasing breathlessness or pallor; light-headedness on standing</div>
+      <div>Re-investigate if</div><div>Ulcer symptoms recur after eradication and a full PPI course; iron deficiency persists or recurs despite replacement; weight loss or dysphagia develops → repeat OGD and consider NG12 pathway</div>
+      <div>Documentation</div><div>Record the endoscopic diagnosis, <i>H. pylori</i> status, eradication and its confirmation, the NSAID decision and the anticoagulant decision — this is the information the next clinician will need in an emergency</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Re-bleeding occurs in 10–15% after endoscopic therapy, concentrated in the first 72 hours, so the highest-risk window is usually still inpatient — but the second peak is the patient who restarts an NSAID or whose <i>H. pylori</i> was never eradicated. Persistent or recurrent iron deficiency after a treated upper GI bleed is an important signal: it suggests either continued occult loss or a second lesion, and it is the classic route to a missed caecal carcinoma in a patient whose anaemia was all attributed to the known ulcer. Where iron deficiency recurs and the OGD was clean, the colon needs investigating. Finally, documenting <i>H. pylori</i> status and eradication confirmation in a structured, findable place in the record is a small act with a long payoff — it is precisely what the next clinician facing a recurrence will want and rarely finds.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE CG141 (Acute upper gastrointestinal bleeding, updated 2016), NICE NG12 (Suspected cancer: recognition and referral, May 2025), NICE CG184 (incl. H. pylori test-and-treat), BSG care bundle for acute upper GI bleeding (2015), Glasgow-Blatchford score (Blatchford et al., Lancet 2000). Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const KEY='rgp.alg.haematemesis.v1';
+  const nodes=document.querySelectorAll('.node');
+  const pDone=document.getElementById('pDone');const pFill=document.getElementById('pFill');
+  const total=nodes.length;document.getElementById('pTotal').textContent=total;
+  function save(){const s={};nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb)s[n.dataset.step]=cb.checked;});localStorage.setItem(KEY,JSON.stringify(s));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&s[n.dataset.step]){cb.checked=true;n.classList.add('ticked');}});}catch(e){}}
+  function upd(){let d=0;nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&cb.checked)d++;});pDone.textContent=d;pFill.style.width=((d/total)*100)+'%';}
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');if(cb){cb.addEventListener('change',()=>{n.classList.toggle('ticked',cb.checked);upd();save();});}
+    const btn=n.querySelector('.why-btn');const dr=n.querySelector('.why-drawer');
+    if(btn&&dr){btn.addEventListener('click',()=>{const o=dr.classList.toggle('open');btn.setAttribute('aria-expanded',o);});}
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb){cb.checked=false;n.classList.remove('ticked');}
+      const dr=n.querySelector('.why-drawer');const btn=n.querySelector('.why-btn');
+      if(dr)dr.classList.remove('open');if(btn)btn.setAttribute('aria-expanded','false');
+    });upd();localStorage.removeItem(KEY);
+  });
+  load();upd();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=2"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/alg-diagram.js?v=4"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+</body>
+</html>

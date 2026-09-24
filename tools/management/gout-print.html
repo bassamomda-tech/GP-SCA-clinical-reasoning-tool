@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gout — Protocol · Reasoning GP</title>
+<meta name="description" content="Gout in adults, diagnosis and management on one page: NG219 recognition, serum urate, excluding the septic joint, flare treatment by comorbidity, urate-lowering therapy treat-to-target, monitoring, safety-net scripts and referral." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/gout.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790241765963737 tools/management/gout.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Gout protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F9B6}",
+  title:"Gout in adults",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Gout \u2014 kill the flare fast, then treat the urate to target for life",
+  stemSub:"One page for the whole condition. Ordered the way a consultation actually runs. Every threshold is tagged with its NICE recommendation.",
+  guideline:"NICE NG219",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NICE NG219 (2022)"},
+    {t:"BSR 2017 \u00b7 NICE NG219"},
+    {t:"BNF owns all doses"},
+    {t:"No NG12 criterion applies", tone:"tw"},
+    {t:"v2.1 \u00b7 reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Diagnosis</b><small>NG219 tiers + urate rule</small></a><a href="#ladder"><b>Management</b><small>Flare \u2192 ULT to target</small></a><a href="#refer"><b>Refer</b><small>Triggers + scripts</small></a><a href="../../cases/gout.html"><b>Casebook chapter</b><small>Full teaching case \u2192</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these five cards. Every number traces to the recommendation cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Exclude the septic joint first", html:"A hot, swollen, acutely painful joint <b>is septic arthritis until proven otherwise</b> \u2014 especially with fever or systemic upset, immunosuppression, diabetes or a prosthetic joint. Same-day orthopaedics or rheumatology for aspiration <b>before any steroid</b>. Gout and sepsis can co-exist."},
+    {tone:"amber", h:"Recognise, then confirm", html:"<b>Suspect</b> gout with rapid-onset severe pain, redness and swelling of one or both 1st MTP joints, or tophi. <b>Consider</b> it in other joints or with chronic inflammatory joint pain. <b>Serum urate \u2265360 \u00b5mol/L</b> supports the diagnosis \u2014 urate dips in a flare, so recheck \u22652 weeks after it settles. <span class='mg-src'>NG219 1.1</span>"},
+    {tone:"blue", h:"Treat the flare early", html:"One of: <b>colchicine 500 micrograms 2\u20134 times daily</b>, an <b>NSAID at full anti-inflammatory dose + PPI</b>, or <b>prednisolone 30\u201335 mg for 3\u20135 days</b>. Choose by kidneys, gut, heart and interactions. <b>Never stop established urate-lowering therapy during a flare.</b>"},
+    {tone:"plain", h:"Then treat the urate", html:"Offer <b>urate-lowering therapy</b> to everyone with confirmed gout \u2014 first-line <b>allopurinol</b> 100 mg daily (50 mg in CKD or the elderly), up by 100 mg every ~4 weeks against monthly urate, with <b>colchicine flare cover for up to 6 months</b>. Usually lifelong. <span class='mg-src'>NG219 1.4</span>"},
+    {tone:"green", h:"Target, not dose", html:"<b>Urate &lt;360 \u00b5mol/L</b> \u2014 or <b>&lt;300</b> with tophi, joint damage or ongoing flares. \u201cOn 100 mg for five years, still flaring\u201d is under-titration \u2014 the commonest failure in UK gout care."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm \u2014 do not skip it.",
+  pathway:[
+    {title:"Recognise", html:"Rapid onset (&lt;24 h to peak), hot, red, exquisitely tender joint \u2014 1st MTP in about half (podagra), also midfoot, ankle, knee, wrist, hand. Can't bear the bedsheet. Untreated flares settle over 1\u20132 weeks."},
+    {title:"Exclude sepsis", html:"Fever or systemic upset, immunosuppression, diabetes, prosthetic joint, or any doubt \u2192 <b>same-day aspiration before steroid</b>. CRP and white count do not distinguish gout from infection.", alert:true},
+    {title:"Confirm and stage", html:"Serum urate \u2265360 supports it; recheck \u22652 weeks post-flare if lower. Record the pre-treatment urate as the titration baseline. Assess burden: flares per year, tophi, joint damage, stones, CKD."},
+    {title:"Treat the flare", html:"Colchicine, NSAID + PPI, or prednisolone \u2014 chosen by comorbidity. Rest, elevate, ice. Continue any existing allopurinol or febuxostat."},
+    {title:"Treat to target", html:"Bloods for the cluster \u2192 review urate-raising drugs \u2192 start allopurinol with flare cover \u2192 monthly urate until &lt;360 (&lt;300 if tophi) \u2192 annual review, lifelong."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm", title:"Confirming the diagnosis", sub:"The NG219 recognition tiers, the serum-urate rule that catches people out, and the mimics. This is the diagnostic core of the page.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"teal", h:"<b>Suspect</b> gout", html:"Rapid-onset (often overnight) severe pain, redness and swelling in <b>one or both 1st MTP joints</b>, <b>or</b> the presence of <b>tophi</b> \u2014 look at ears, elbows and fingers.", src:"NG219 1.1.1"},
+         {tone:"teal", h:"<b>Consider</b> gout", html:"The same rapid-onset picture in <b>other joints</b> \u2014 midfoot, ankle, knee, wrist, fingers \u2014 or in someone with <b>chronic inflammatory joint pain</b>. Gout here is routinely mislabelled as cellulitis or osteoarthritis.", src:"NG219 1.1.2"}
+       ]},
+       {b:"dl", rows:[
+         ["Typical course","Peaks within 24 h; self-resolves over 1\u20132 weeks even untreated. Recurrent attacks, intercritical periods and tophaceous deposits follow if urate stays high"],
+         ["Serum urate <span class='mg-src'>NG219 1.2</span>","<b>\u2265360 \u00b5mol/L supports the diagnosis</b> \u2014 but urate <b>dips during a flare</b>: if &lt;360 and gout is still suspected, <b>recheck \u22652 weeks after it settles</b>. A normal level mid-flare excludes nothing"],
+         ["Record the baseline","The pre-treatment urate is the reference against which treat-to-target titration is judged \u2014 document it"],
+         ["Aspirate when in doubt","Negatively birefringent needle crystals confirm gout, and the same sample excludes sepsis and CPPD (positively birefringent rhomboids \u2014 older patients, knee or wrist, chondrocalcinosis on X-ray)"],
+         ["Imaging alternative","X-ray, ultrasound (<b>double-contour sign</b>) or <b>dual-energy CT</b> where aspiration cannot be done \u2014 but never delay admission for imaging"]
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"CPPD (pseudogout)", html:"Older patient, knee or wrist, chondrocalcinosis \u2014 positively birefringent rhomboid crystals."},
+         {tone:"cream", h:"Cellulitis", html:"Spreading erythema beyond the joint, no crystal history \u2014 and gout is frequently misdiagnosed as cellulitis over the midfoot."},
+         {tone:"cream", h:"Other inflammatory arthritis", html:"Rheumatoid, psoriatic or reactive arthritis if polyarticular or atypical \u2014 refer if the picture is unclear."}
+       ]},
+       {b:"why", html:"A classic podagra presentation is specific enough that NICE allows a confident clinical diagnosis without aspiration, reserving crystal confirmation for atypical or uncertain cases. Serum urate falls during an acute flare as an acute-phase effect, so a value below 360 at presentation in a convincing case is misleading and must be rechecked once settled."}
+     ]},
+
+    {id:"severe", nav:"Red-flag branch", title:"The septic joint \u2014 the branch that must come first", sub:"An untreated septic joint can be destroyed within days and can be fatal. Treat every acute monoarthritis as septic until the aspirate proves otherwise.",
+     blocks:[
+       {b:"warn", html:"<b>Hot swollen joint + fever or systemic upset = septic arthritis until proven otherwise \u2192 same-day orthopaedics or rheumatology for aspiration BEFORE any steroid.</b> Gout and sepsis co-exist \u2014 a known gout patient can still have an infected joint. Never inject steroid into a possibly septic joint."},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Highest risk \u2014 admit and aspirate", html:"Fever or systemic upset, immunosuppression, diabetes, prosthetic joint, IV drug use, or simply the unwell patient."},
+         {tone:"amber", h:"Diagnostic uncertainty \u2014 aspirate, don't guess", html:"Send for microscopy, Gram stain and culture. <b>CRP and white count do not distinguish gout from infection</b> \u2014 only the aspirate does."}
+       ]},
+       {b:"why", html:"Septic and crystal arthritis share the cardinal features of a hot, red, exquisitely tender joint, and inflammatory markers cannot separate them. The only reliable way to exclude infection in a single hot joint is aspiration with Gram stain and culture \u2014 which is why acute monoarthritis is treated as septic until the aspirate returns."}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Work-up \u2014 the bloods a gout diagnosis should trigger", sub:"Gout is a metabolic disease. The flare is often the door through which four other conditions are found.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"plain", h:"Baseline for everyone", html:"<b>U&amp;E and eGFR</b> (dictates allopurinol starting dose and colchicine dosing), <b>lipids</b>, <b>HbA1c</b>, <b>LFTs</b>, blood pressure and weight."},
+         {tone:"plain", h:"Find the driver", html:"Thiazide and loop diuretics, low-dose aspirin (minor), <b>ciclosporin</b>, alcohol, chemotherapy (tumour lysis), recent surgery, dehydration."},
+         {tone:"purple", h:"NG12 \u2014 no criterion applies", html:"Gout is <b>not</b> a NICE NG12 suspected-cancer criterion, so there is no 2WW route from this diagnosis. See <a href=\"#refer\">Refer</a> for the one situation in which the picture should be switched to an NG12 pathway.", src:"stated explicitly"}
+       ]},
+       {b:"dl", rows:[
+         ["Assess the burden","Flares per year, tophi, joint damage, urate stones, CKD stage, diuretic use, cardiovascular and metabolic disease \u2014 this is what decides how hard you push ULT"],
+         ["Young onset","Gout under 30 warrants a look for enzyme defects or renal disease \u2014 and specialist input"]
+       ]}
+     ]},
+
+    {id:"flare", nav:"Treat the flare", title:"Killing the flare \u2014 choose by the patient", sub:"All three options work. The choice is driven entirely by kidneys, gut, heart and interactions.",
+     blocks:[
+       {b:"table", head:["Option","Dose","Best for / avoid"], rows:[
+         ["<b>NSAID</b>","Naproxen <b>750 mg stat then 250 mg every 8 h</b> (or ibuprofen 400\u2013600 mg every 6\u20138 h) <b>+ PPI</b>, until 1\u20132 days after resolution","Young, kidneys fine, no GI or CV risk. <b>Avoid:</b> CKD, heart failure, anticoagulated, GI bleed history, on ACEi + diuretic (triple whammy)"],
+         ["<b>Colchicine</b>","<b>500 micrograms 2\u20134 times daily</b> until relief or side effects (max ~6 mg per course); works best started &lt;24 h","NSAID-unsuitable patients. <b>Halve or avoid in CKD (eGFR &lt;30: avoid); avoid with clarithromycin, erythromycin, azoles, ciclosporin, verapamil and diltiazem</b> (CYP3A4/P-gp toxicity); statin interaction \u2014 warn about myopathy. <b>Diarrhoea is the first sign of toxicity \u2192 stop</b>"],
+         ["<b>Prednisolone</b>","<b>30\u201335 mg once daily for 3\u20135 days</b>, no taper needed","CKD, or where both colchicine and NSAIDs are unsuitable; the elderly. Caution: diabetes (warn and monitor sugars), heart failure (fluid), psychiatric history"],
+         ["<b>Intra-articular steroid</b>","Methylprednisolone or triamcinolone into the joint (off-label)","Single accessible joint with <b>sepsis excluded</b> \u2014 the fastest fix of all; IM where oral is unsuitable"],
+         ["<b>Combine</b>","NSAID or colchicine + steroid","Severe or polyarticular disease under review \u2014 or admit if systemically unwell"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Adjuncts and the rescue plan", html:"Rest, elevate, ice for 20 minutes several times daily. Put the flare drug in the bathroom cabinet <b>before</b> the next attack with written self-start instructions \u2014 it halves flare duration."},
+         {tone:"red", h:"Already on urate-lowering therapy?", html:"<b>Keep the allopurinol or febuxostat going through the flare.</b> Stopping and restarting yo-yos the urate and provokes more attacks. If already on prophylactic colchicine, treat the breakthrough with an NSAID or steroid \u2014 don't stack full-dose colchicine on top."}
+       ]},
+       {b:"why", html:"NSAIDs are limited by renal impairment, GI and cardiovascular risk; colchicine by diarrhoea, renal and hepatic dosing and its CYP3A4/P-gp interactions; corticosteroids are the pragmatic choice in CKD or polypharmacy. Maintaining established urate-lowering therapy through a flare avoids the urate flux that itself triggers attacks."}
+     ]},
+
+    {id:"lifestyle", nav:"Lifestyle", title:"Lifestyle and deprescribing \u2014 worth about 60 \u00b5mol/L", sub:"Real, but not a substitute for urate-lowering therapy. The error runs both ways: lecturing about diet instead of starting allopurinol, or starting allopurinol without touching the beer and the bendroflumethiazide.",
+     blocks:[
+       {b:"table", head:["Change","What to advise","Why it matters"], rows:[
+         ["<b>Alcohol</b>","Beer and spirits are worst (purine load plus blocked excretion); wine is more neutral. Ask honestly at every review","One of the largest modifiable contributors to flare frequency"],
+         ["<b>Fructose</b>","Cut sugary drinks and fruit juices","The most under-recognised dietary driver of urate"],
+         ["<b>Purines</b>","Moderate red and organ meat and shellfish; low-fat dairy is protective. <b>Do not prescribe a restrictive \u201cgout diet\u201d</b>","Effect is small next to ULT, and restrictive diets reduce adherence to what actually works"],
+         ["<b>Weight</b>","Gradual loss only \u2014 <b>crash diets provoke flares</b>","Ketosis raises urate acutely"],
+         ["<b>Swap the driver</b>","Thiazide for hypertension in a gout patient \u2192 switch (amlodipine, or <b>losartan</b>, which is mildly uricosuric). Keep diuretics genuinely needed for heart failure","Removes the cause rather than treating around it"],
+         ["<b>Hydration</b>","About 2 L/day, more with urate stones","Reduces stone risk and supports excretion"],
+         ["<b>The cluster</b>","Screen and treat BP, HbA1c, lipids and CKD","Gout is a cardiovascular risk marker, not just a joint problem"]
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Treatment ladder", title:"Urate-lowering therapy \u2014 low start, flare cover, titrate to target", sub:"Offer ULT to everyone with confirmed gout; push hardest where there are recurrent flares, CKD stage 3\u20135, diuretic therapy, tophi, chronic gouty arthritis, urate stones or young onset. Discuss it after a first attack rather than defaulting to waiting.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", title:"Allopurinol \u2014 start low, go slow, don't stop", when:"first-line for everyone",
+          html:"<b>100 mg once daily (50 mg if CKD stage 3+, eGFR &lt;60, or elderly) \u2192 increase by 100 mg (50 mg in CKD) every ~4 weeks guided by urate</b> \u2192 usual maintenance 300\u2013600 mg, maximum 900 mg/day. CKD is <b>not</b> a bar \u2014 titrate more slowly with renal monitoring. <b>First-line where there is major cardiovascular disease</b> (previous MI, stroke, unstable angina). <b>Counsel the DRESS/SJS warning:</b> any rash in the first weeks \u2192 stop and seek same-day advice (highest risk: CKD, and Han Chinese, Thai or Korean ancestry \u2014 consider HLA-B*58:01 testing first)."},
+         {step:"Cover", title:"Flare prophylaxis alongside \u2014 up to 6 months", when:"co-prescribe from day one",
+          fromLabel:"mobilising urate provokes flares",
+          html:"<b>Colchicine 500 micrograms once or twice daily</b>, dosed by renal function, is first-line; low-dose NSAID + PPI, or prednisolone \u22645 mg, where colchicine is unsuitable. Without cover, early flares convince patients that allopurinol \u201ccaused\u201d their gout \u2014 the number-one reason ULT is abandoned."},
+         {step:"Target", title:"Treat to TARGET, not to dose", when:"urate every 4 weeks while titrating",
+          fromLabel:"the discipline that works",
+          html:"<b>&lt;360 \u00b5mol/L \u2014 or &lt;300 if there are tophi, joint damage, or ongoing flares despite &lt;360</b> \u2014 then annually, lifelong. Tophi take months to years to dissolve below 300."},
+         {step:"2nd", title:"Febuxostat", when:"allopurinol intolerant, or target unreachable",
+          fromLabel:"with the CV caveat",
+          html:"<b>80 mg once daily \u2192 120 mg if urate is not &lt;360 after 2\u20134 weeks.</b> No dose change needed in mild-to-moderate CKD. <b>Prefer allopurinol where there is major cardiovascular disease</b> (MI, stroke, unstable angina \u2014 the FAST and CARES signal). LFTs at baseline and periodically. Same flare-cover rules apply."},
+         {step:"3rd", title:"Specialist options", when:"both failed or not tolerated",
+          fromLabel:"refer, don't abandon",
+          html:"Uricosurics (sulfinpyrazone, benzbromarone via specialist); <b>losartan</b> and <b>SGLT2 inhibitors</b> are useful urate-lowering choices for comorbidity; combination therapy; IL-1 blockade (anakinra, canakinumab) for refractory flares."}
+       ]},
+       {b:"warn", html:"<b>The interaction that kills: allopurinol + azathioprine (or 6-mercaptopurine).</b> Xanthine-oxidase inhibition multiplies the thiopurine \u2192 profound marrow suppression. Screen every gout patient's medication list for azathioprine (transplant, IBD, autoimmune disease) <b>before</b> prescribing \u2014 if present, it is a specialist decision only. Allopurinol also potentiates <b>warfarin</b> and <b>theophylline</b> \u2014 recheck the INR after starting."}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Monitoring, review and safety-netting", sub:"Urate-led titration is the whole game. Everything here has an action threshold attached.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Serum urate","<b>Every 4 weeks while titrating</b> \u2192 annually once at target","Above target \u2192 next dose step. At target \u2192 hold and check annually"],
+         ["U&amp;E / eGFR","Baseline, with each titration in CKD, then annually","Guides allopurinol pace and flare-drug choice"],
+         ["LFTs","Febuxostat: baseline and periodically","Significant rise \u2192 stop or switch"],
+         ["Flares and tophi","Every review","Flares while titrating are expected \u2014 check the cover is working. Flares <b>at target</b> beyond 6\u201312 months \u2192 recheck adherence, then consider the lower target (&lt;300)"],
+         ["Flare prophylaxis","Review at 6 months","Stop cover once at target and flare-free; keep a rescue supply"],
+         ["The metabolic annual","BP, HbA1c, lipids, weight, QRISK","Gout is a cardiovascular risk marker \u2014 treat the cluster"],
+         ["Adherence","Every contact","A daily tablet forever, flares or not \u2014 the single message that determines success"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"Still flaring? Check before calling it refractory", html:"<b>1</b> Taking it daily? (refill history \u2014 many take allopurinol \u201cfor attacks\u201d like an antibiotic). <b>2</b> Dose stuck at 100 mg? 300\u2013600 mg is normal. <b>3</b> Was flare cover given? <b>4</b> Drivers still running \u2014 beer, sugary drinks, the thiazide nobody swapped? <b>5</b> Right diagnosis \u2014 CPPD, sepsis, reactive or psoriatic arthritis? <b>6</b> Genuinely refractory \u2192 rheumatology."}
+       ]},
+       {b:"say", html:"There are two jobs: today's fire, and the chemistry that keeps lighting it. The flare tablets put the fire out; the daily allopurinol drains the fuel \u2014 slowly, over months, and only if we push the dose until your blood level is under target. Expect a few flares early on \u2014 that's the crystals dissolving, not the tablet failing \u2014 and never stop it during a flare."},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 Septic joint", html:"\u201cA hot swollen joint <em>with</em> fever, shivers or feeling properly unwell \u2014 same-day help. It can be an infected joint, which is an emergency.\u201d"},
+         {tone:"red", h:"\ud83d\udfe0 Allopurinol rash", html:"\u201cAny rash in the first couple of months \u2014 stop the tablet and contact us the same day. Rarely it signals a serious reaction.\u201d"},
+         {tone:"amber", h:"\ud83d\udca9 Colchicine limit", html:"\u201cDiarrhoea or vomiting on colchicine means too much \u2014 stop and call. Never stockpile doses, and tell any prescriber you're on it before starting new antibiotics.\u201d"},
+         {tone:"amber", h:"\ud83d\udd25 Flare not settling", html:"\u201cIf the attack isn't improving after a few days of treatment, or it spreads to other joints with fever, contact us the same day.\u201d"},
+         {tone:"green", h:"\ud83d\udc8a The forever rule", html:"\u201cThe daily tablet continues through flares, through good spells, for life \u2014 stopping is what brings gout back.\u201d"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 rheumatology, and who we keep", sub:"Continue the flare plan and ULT titration while any referral is pending, unless the specialist advises otherwise.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day", html:"Suspected septic arthritis \u2192 aspiration before steroids, admission. Systemically unwell with a polyarticular flare."},
+         {tone:"amber", h:"Diagnostic doubt", html:"Atypical joints, onset under 30 (enzyme defects, renal disease), or where crystal confirmation is needed."},
+         {tone:"plain", h:"Treatment failure", html:"ULT contraindicated, not tolerated or ineffective; urate &gt;360 despite maximum tolerated ULT; flares or tophi persisting at target \u2192 combination therapy, uricosurics, IL-1 blockade."},
+         {tone:"plain", h:"Intolerance", html:"Allopurinol hypersensitivity \u2014 especially after a rash, where desensitisation and alternatives are specialist calls \u2014 with febuxostat also unsuitable."},
+         {tone:"plain", h:"Complex renal", html:"<b>eGFR &lt;45</b> where standard ULT is constrained, eGFR &lt;30, transplant recipients (azathioprine and ciclosporin interactions), urate nephropathy or stones."},
+         {tone:"purple", h:"When it is <em>not</em> gout <span class='tw'>NG12</span>", html:"Gout has no 2WW pathway. But if the picture turns out to be an <b>unexplained bone or soft-tissue lump</b>, or <b>unexplained bone pain with weight loss</b>, switch to the relevant NG12 sarcoma or myeloma route rather than managing it as crystal disease."}
+       ]},
+       {b:"say", html:"Gout is one of the few kinds of arthritis we can effectively switch off \u2014 but the part people miss is that the daily tablet has to be pushed up until your blood level hits the target, and then kept there for good. Do that and the attacks stop; skip it and they always come back."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 58-year-old man, third attack this year, on bendroflumethiazide for hypertension, drinks 30 units a week, wants \u201csomething stronger for when it flares\u201d and is resistant to a daily tablet."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Excludes sepsis; explains flare versus prevention; addresses the thiazide and the alcohol without lecturing; explains that early flares on allopurinol are expected and covers them; negotiates a lifelong tablet with a rescue plan. <a href='../../cases/gout.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named recommendation.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG219 \u2014 Gout: diagnosis and management (2022)</b><br><a href="https://www.nice.org.uk/guidance/ng219" rel="noopener">nice.org.uk/guidance/ng219</a><span class="rd"> \u2014 recognition tiers (1.1), serum urate and confirmation (1.2), flare management (1.3), urate-lowering therapy and treat-to-target (1.4), referral</span></li>'+
+         '<li><b>NICE NG219 \u2014 Gout: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng219" rel="noopener">nice.org.uk/guidance/ng219</a><span class="rd"> \u2014 primary-care operationalisation: flare drug choice by comorbidity, prophylaxis duration, monitoring intervals</span></li>'+
+         '<li><b>British Society for Rheumatology \u2014 Management of gout (2017)</b><span class="rd"> \u2014 treat-to-target thresholds (&lt;360, &lt;300 for tophaceous disease), specialist options</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: colchicine in renal impairment, allopurinol titration, febuxostat, and the azathioprine, warfarin, theophylline and CYP3A4/P-gp interactions</span></li>'+
+         '<li><b>MHRA Drug Safety Update</b><br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> \u2014 febuxostat cardiovascular risk; allopurinol severe cutaneous reactions, DRESS/SJS counselling and HLA-B*58:01</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Gout in adults \u2014 NICE NG219, BSR 2017 and NICE. Diagnosis and management are merged on this page; there is no separate gout pathway to cross-check. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

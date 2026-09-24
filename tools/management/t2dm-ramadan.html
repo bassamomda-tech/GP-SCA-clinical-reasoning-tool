@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Type 2 diabetes in Ramadan — Protocol · Reasoning GP</title>
+<meta name="description" content="Type 2 diabetes in Ramadan: the IDF-DAR/BIMA three-tier risk stratification done 6–8 weeks ahead, the break-the-fast thresholds, drug-by-drug retiming to iftar and suhoor, insulin reduction, diet and hydration, the religious exemptions, and what to document." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/t2dm-ramadan.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="T2DM in Ramadan protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🌙",
+  title:"Type 2 diabetes in Ramadan — the complete guide",
+  eyebrow:"Protocol · IDF-DAR · BIMA · the consultation happens 6–8 weeks early or not at all",
+  stemTitle:"Most people with diabetes will fast whether or not you advise it — so the useful consultation is not about permission, it is about risk stratification, retiming every drug to iftar and suhoor, and agreeing in advance when to break the fast",
+  stemSub:"One page for the whole condition. Stratify with the IDF-DAR/BIMA three tiers <b>6–8 weeks before</b> Ramadan, because switching a sulfonylurea, trialling a fast and arranging education cannot be done once it has started. Then the four things that make fasting safe: the break-the-fast thresholds, the bigger dose moved to iftar with the suhoor dose trimmed, a late suhoor with slow-release carbohydrate and real hydration, and the reassurance that finger-prick testing does not invalidate the fast — the single commonest barrier to safe monitoring.",
+  guideline:"IDF-DAR 2021 · BIMA 2020 · NICE NG28 · Diabetes &amp; Primary Care 2023",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"IDF-DAR (2021) Diabetes and Ramadan: Practical Guidelines"},
+    {t:"British Islamic Medical Association — Ramadan Rapid Review"},
+    {t:"NICE NG28 — type 2 diabetes in adults"},
+    {t:"Break fast if BG &lt;3.9 or &gt;16.7 mmol/L", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Break the fast</b><small>Non-negotiable rules</small></a><a href="#risk"><b>Risk tiers</b><small>IDF-DAR / BIMA</small></a><a href="#oral"><b>Oral agents</b><small>Retime to iftar</small></a><a href="#insulin"><b>Insulin</b><small>Reduce · omit lunch</small></a><a href="#lifestyle"><b>Diet</b><small>Suhoor · hydration</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Break the fast immediately if…", html:"<b>Blood glucose below 3.9 mmol/L</b> — impending hypoglycaemia; treat, and do not continue the fast. <b>Blood glucose above 16.7 mmol/L.</b> Any hypoglycaemic symptoms — sweating, tremor, palpitations, confusion — even without a meter to hand. <b>Any acute illness developing during the fast</b> → apply the <a href='sick-day-rules.html'>sick day rules</a> and resume when health is back to normal. <b>Agree these four rules out loud before Ramadan, not during it.</b>"},
+    {tone:"blue", h:"Checking blood glucose does NOT break the fast", html:"<b>Say this explicitly to every patient.</b> The belief that finger-prick testing invalidates the fast is the commonest barrier to safe self-monitoring, and removing it is one of the highest-value sentences in the consultation. The same applies to vaccines — receiving a COVID-19 or other vaccine does not invalidate the fast."},
+    {tone:"amber", h:"The assessment belongs 6–8 weeks before Ramadan", html:"Offer a structured pre-Ramadan assessment and education session 6–8 weeks ahead. That lead time is the point: switching a high-hypoglycaemia-risk drug, arranging a 1–2 day trial fast, supplying a meter and training on it, and starting any new agent all have to happen BEFORE the month begins. <b>Never initiate a new antidiabetic drug during Ramadan</b> — you do not want to discover its hypoglycaemia or GI effects mid-fast."},
+    {tone:"blue", h:"The retiming principle in one line", html:"<b>The bigger dose moves to iftar; the suhoor dose is the dangerous one.</b> <b>Metformin: total dose unchanged, only the timing changes.</b> Sulfonylurea: switch to gliclazide or glimepiride, avoid glibenclamide, and reduce or omit the suhoor dose — a sulfonylurea taken pre-dawn acts right through a long daytime fast with nothing to eat. DPP-4 inhibitors, GLP-1 agonists, pioglitazone and acarbose need no dose change at all."},
+    {tone:"amber", h:"SGLT2 inhibitors are the exception", html:"Take at iftar with extra clear fluids in the non-fasting hours, and use with caution where there is any risk of fluid depletion. Many clinicians up-stratify a patient on an SGLT2 inhibitor to high risk and consider pausing the drug for the month, because the diuretic effect over a 10–21 hour UK fast risks dehydration, AKI and euglycaemic DKA — which occurs with a near-normal glucose and is therefore missed."},
+    {tone:"purple", h:"🟣 Exemption is a religious fact, not a clinical opinion", html:"<b>Those whose health is harmed by fasting are religiously exempt.</b> The alternatives are concrete and worth naming: non-consecutive fasts, fasting in the winter months when fasts are shorter, feeding others, and paying fidyah (a charitable donation, roughly £5 per missed fast). Patients should follow medical advice where fasting carries a high probability of harm — and a patient who cannot fast is not failing their faith. Say that."}
+  ],
+  pathwaySub:"Five steps, and the first one has to happen weeks before the month starts.",
+  pathway:[
+    {title:"Book the pre-Ramadan assessment 6–8 weeks ahead", html:"Structured education, a meter and SMBG training, a review of every drug, and time to switch anything high-risk. Offer a 1–2 day trial fast in the month before and review its effect on glucose."},
+    {title:"Stratify the risk — IDF-DAR / BIMA three tiers", html:"Category 1 (very high) must not fast · Category 2 (high) should not fast · Category 3 (moderate/low) may fast at the patient's discretion. Weigh diabetes type, hypoglycaemia risk and awareness, current drugs, complications, comorbidities, social and work circumstances, and previous fasting experience."},
+    {title:"Agree the break-the-fast rules", html:"BG below 3.9 or above 16.7 mmol/L, any hypoglycaemic symptoms, or an acute illness. <b>And confirm that testing does not invalidate the fast.</b>", alert:true},
+    {title:"Retime and adjust every drug", html:"Bigger dose to iftar; metformin total unchanged; sulfonylurea switched and the suhoor dose trimmed; basal insulin reduced 15–20%; the daytime bolus omitted; incretins and pioglitazone unchanged."},
+    {title:"Educate, document, and review after Ramadan", html:"Late suhoor with slow-release carbohydrate, hydration between iftar and suhoor, moderate exercise avoiding the pre-iftar window. Record the risk category, the plan and the advice given — particularly if the patient fasts against advice — then revert the doses and timings afterwards."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Break the fast", title:"The non-negotiable rules, and the risks being balanced",
+     sub:"Every fasting patient must leave the consultation able to state these without prompting.",
+     blocks:[
+       {b:"table", head:["Trigger","Action","Why"], rows:[
+         ["<b>Blood glucose below 3.9 mmol/L</b>","Break the fast immediately, treat the hypoglycaemia, and do not resume that day","Impending hypoglycaemia. <b>Mid-to-late afternoon is the highest-risk window</b> — the longest interval since suhoor"],
+         ["<b>Blood glucose above 16.7 mmol/L</b>","<b>Break the fast</b>","Significant hyperglycaemia; risks dehydration and progression to DKA or HHS over a long fast"],
+         ["<b>Any hypoglycaemic symptoms — sweating, tremor, palpitations, confusion</b>","<b>Break the fast even if no meter is available</b>","<b>Do not require a reading before acting</b> — this is the rule patients most often get wrong, waiting to confirm rather than treating"],
+         ["<b>Any acute illness developing while fasting</b>","Break the fast, apply the <a href='sick-day-rules.html'>sick day rules</a>, resume when health is back to normal","Intercurrent illness plus fasting plus dehydration is the combination that produces admissions"],
+         ["<b>Vomiting, drowsiness, very high glucose or ketones</b>","<b>999 / emergency admission — suspected DKA or HHS</b>","Euglycaemic DKA occurs with a near-normal glucose, particularly on an SGLT2 inhibitor — check ketones, not just glucose"],
+         ["<b>Long summer fast (10–21 hours in the UK), poor fluid intake</b>","<b>Emphasise hydration between iftar and suhoor; minimise caffeine</b>","<b>Dehydration risks AKI and thrombosis</b>, and compounds every other risk on this list"]
+       ]},
+       {b:"info", html:"<b>Checking blood glucose does NOT invalidate the fast.</b> <b>Nor does a vaccine.</b> Both beliefs are common, both suppress safe behaviour, and correcting them takes one sentence each. The five fasting risks to name are hypoglycaemia, hyperglycaemia, dehydration with thrombosis and AKI, DKA including euglycaemic DKA, and HHS."},
+       {b:"say", html:"Before we talk about your tablets, I want to agree four rules with you, and I would like you to be able to tell them back to me. Break your fast straight away if your sugar goes below 3.9 or above 16.7. Break it if you feel shaky, sweaty or confused — even if you cannot get to your meter, because waiting to check is what gets people into trouble. And break it if you become unwell with anything else. One more thing, because a lot of people worry about it: testing your blood sugar does not break your fast. Neither does a vaccine. So please test as often as you need to — that is what keeps this safe."}
+     ]},
+
+    {id:"risk", nav:"Risk tiers", title:"Risk stratification — who must not, who should not, who may",
+     sub:"The IDF-DAR/BIMA three tiers are the backbone of the consultation. Stratify before adjusting anything.",
+     blocks:[
+       {b:"table", head:["Category","Who","Advice"], rows:[
+         ["<b>Category 1 — very high risk</b>","Poorly controlled type 1 diabetes · DKA, HHS or severe/disabling hypoglycaemia in the last 3 months · hypoglycaemia unawareness · advanced macrovascular disease · CKD stage 4–5 · insulin-treated T2DM WITHOUT safe-fasting experience · pregnancy in pre-existing diabetes, or insulin- or sulfonylurea-treated gestational diabetes · acute illness · the frail elderly","<b>MUST NOT fast — strongly advise against.</b> If the patient insists: specialist involvement, structured education, intensive SMBG, and explicit break-fast rules"],
+         ["<b>Category 2 — high risk</b>","Well-controlled type 1 diabetes · T2DM with sustained poor control (HbA1c above 75 mmol/mol for over 12 months) · insulin-treated T2DM WITH safe-fasting experience · T2DM on an SGLT2 inhibitor · stable macrovascular disease · CKD stage 3 · metformin- or diet-controlled gestational diabetes","<b>SHOULD NOT fast — individualise carefully.</b> If the patient proceeds: education, SMBG and dose adjustment are mandatory, not optional"],
+         ["<b>Category 3 — moderate / low risk</b>","Well-controlled T2DM on diet and lifestyle alone, metformin, a DPP-4 inhibitor, a GLP-1 receptor agonist, pioglitazone or acarbose. A second-generation sulfonylurea or basal insulin sits at the moderate end and needs regular SMBG","<b>May fast — the decision is the patient's.</b> Adjust medication and give the education and safety-net"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>What to weigh</b>","Type of diabetes · individual hypoglycaemia risk and awareness · current medications · complications and comorbidities · social and work circumstances · previous fasting experience. Previous safe fasting is one of the most useful single pieces of history — it moves an insulin-treated patient between categories 1 and 2"],
+         ["<b>The trial fast</b>","Offer a 1–2 day trial fast in the month before Ramadan and review the glucose readings. It converts a theoretical risk discussion into data, and it is only possible if the assessment happens early"],
+         ["<b>If uncertain</b>","<b>A risk calculator is available in IDF-DAR chapter 5.</b> Use it rather than guessing at the boundary between categories 2 and 3"],
+         ["<b>Document</b>","Record the risk category, the advice given, and — if the patient chooses to fast despite being category 1 or 2 — that this was discussed and the safety-net given. This protects the patient more than it protects you: it is what the next clinician reads"]
+       ]},
+       {b:"why", html:"The three-tier stratification exists because \"don't fast\" is advice most patients will not take. Roughly 116 million people with diabetes fast worldwide, and the majority fast despite being advised otherwise — so a consultation framed around permission fails, while one framed around risk minimisation succeeds. <b>Doing it 6–8 weeks ahead is what makes the category actionable:</b> a category 2 patient on glibenclamide can be switched to gliclazide, given a meter, trained, and trialled — all before the month starts. The same conversation in the first week of Ramadan can only remove treatment, not improve it."}
+     ]},
+
+    {id:"oral", nav:"Oral agents", title:"Oral medication — retiming drug by drug",
+     sub:"The bigger dose moves to iftar. The suhoor dose is the one that causes harm.",
+     blocks:[
+       {b:"table", head:["Drug","Adjustment","Notes"], rows:[
+         ["<b>Metformin — total dose UNCHANGED</b>","Once daily → take at iftar. Twice daily → iftar and suhoor. Three times daily → morning dose at suhoor, and combine the afternoon and evening doses at iftar. Modified-release → take at iftar","Metformin's glucose-lowering does not depend on meal timing and it carries minimal hypoglycaemia risk, so only the timing changes. No dose reduction is needed"],
+         ["<b>Sulfonylurea — the main oral hypoglycaemia culprit</b>","Switch to gliclazide or glimepiride where possible and AVOID glibenclamide. Once daily → take at iftar, reducing the dose if control is good. Twice daily → keep the iftar dose, REDUCE the suhoor dose","Glibenclamide is specifically avoided: its long action and high hypoglycaemia rate make it the worst sulfonylurea for fasting. The suhoor dose acts through the entire daytime fast with no food behind it"],
+         ["<b>Sulfonylurea combination tablets</b>","Once-daily combination → take at iftar and consider reducing the dose by 50%. Twice-daily combination → OMIT the morning dose and take the normal dose at iftar","Easy to miss, because the sulfonylurea is hidden inside a combination product — check the constituents of every fixed-dose combination"],
+         ["<b>SGLT2 inhibitors</b>","No dose change — take at iftar, with extra clear fluids during non-fasting hours. Use with caution if at risk of fluid depletion; consider pausing for the month","<b>Many clinicians up-stratify these patients to high risk.</b> Diuretic effect over a long fast → dehydration, AKI and <b>euglycaemic DKA</b>"],
+         ["<b>DPP-4 inhibitors — sitagliptin, linagliptin, alogliptin</b>","<b>No dose modification</b>","Low hypoglycaemia risk; among the preferred agents for a fasting patient"],
+         ["<b>GLP-1 receptor agonists</b>","<b>No dose modification.</b> If on oral semaglutide, take the tablet at iftar and wait 30 minutes before eating","The oral semaglutide administration rule is easily broken by an iftar meal taken immediately — say it specifically"],
+         ["<b>Pioglitazone</b>","<b>No dose modification — iftar or suhoor</b>","Low hypoglycaemia risk"],
+         ["<b>Glinides (prandial glucose regulators) — e.g. repaglinide</b>","Three-times-daily dosing is reduced and redistributed to two doses, taken with iftar and suhoor","Meal-linked by design, so it follows the meals rather than the clock"],
+         ["<b>Acarbose</b>","<b>Take with meals (iftar/suhoor); generally no specific change</b>","Low hypoglycaemia risk"]
+       ]},
+       {b:"why", html:"The whole scheme follows from one physiological fact: the pre-dawn dose has a 10–21 hour fast behind it and the evening dose has a meal. So agents that cause hypoglycaemia are trimmed or removed at suhoor and largely preserved at iftar, while agents that do not cause hypoglycaemia — the incretins, pioglitazone, acarbose — need nothing done to them at all. That is also why the pre-Ramadan switch matters more than the retiming: moving a patient off glibenclamide onto gliclazide removes more risk than any amount of dose juggling."}
+     ]},
+
+    {id:"insulin", nav:"Insulin", title:"Insulin-treated type 2 diabetes",
+     sub:"At least high risk by definition. Proceed only with safe-fasting experience, education and SMBG.",
+     blocks:[
+       {b:"table", head:["Regimen","Adjustment","Notes"], rows:[
+         ["<b>Basal insulin</b>","<b>Give at iftar and reduce the dose by about 15–20% if control is good</b>","Moderate risk WITH regular SMBG. The reduction protects against daytime hypoglycaemia"],
+         ["<b>Basal–bolus</b>","Keep the basal (reduced as above); give the bolus with iftar and a smaller bolus with suhoor; OMIT the daytime (lunch) bolus entirely","<b>There is no daytime meal, so there is no daytime bolus</b> — stated plainly, because patients on fixed regimens often continue it"],
+         ["<b>Premixed / biphasic insulin</b>","Give the usual evening dose at iftar; at suhoor give a REDUCED dose — often about 50% of the former morning dose. Reverse the larger/smaller pattern so the bigger dose falls at iftar","The dose ratio inverts relative to the non-fasting regimen"],
+         ["<b>Monitoring</b>","Intensify SMBG, including mid-afternoon — the highest-risk time. Break the fast if BG is below 3.9 mmol/L","Check pre-dawn at suhoor, morning, midday, mid-afternoon, pre-sunset at iftar, 2 hours after iftar, and any time symptomatic or unwell"],
+         ["<b>Who needs specialist input before Ramadan</b>","No prior safe-fasting experience · brittle control · recurrent or disabling hypoglycaemia · type 1 diabetes · advanced complications · CKD 4–5 still wishing to fast","<b>Detailed insulin titration in fasting is specialist territory.</b> This page is a primary-care framework — refer early, not mid-month"]
+       ]},
+       {b:"warn", html:"Insulin is the highest-hypoglycaemia-risk therapy during fasting, and the three universal moves are the same in every regimen: reduce the basal modestly, omit the daytime prandial dose, and shift the larger premix dose to iftar. But individual regimens vary enough that an insulin-treated patient without a track record of safe fasting belongs with the diabetes team — and that referral has to be made weeks ahead."}
+     ]},
+
+    {id:"lifestyle", nav:"Diet &amp; activity", title:"Diet, hydration and exercise",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🌅 Eat suhoor as late as possible", html:"A late pre-dawn meal shortens the effective daytime fast and flattens the glucose swings that make fasting risky. This is the single most useful piece of dietary advice."},
+         {tone:"blue", h:"🌾 Choose slow-release carbohydrate", html:"High-fibre starchy foods that release energy slowly — chapatis, rice, oat cereals, grains, seeds, beans and pulses — at suhoor rather than refined carbohydrate."},
+         {tone:"amber", h:"💧 Hydration between iftar and suhoor", html:"Plenty of water in the non-fasting hours, and minimise caffeine, which is a diuretic. <b>UK fasts run 10–21 hours; dehydration drives AKI and thrombosis risk.</b>"},
+         {tone:"amber", h:"🍩 Fried and sugary foods, and dates", html:"<b>Limit fried items — pakoras, samosas — and sugary foods at iftar.</b> Go easy on dates specifically: they are high in sugar and spike glucose, and \"just a few dates\" is usually more than a few. Ramadan is also an opportunity to make healthier choices."},
+         {tone:"green", h:"🥗 Fruit, vegetables and salad", html:"<b>Include fresh fruit, vegetables and salads for fibre and satiety</b> at both meals."},
+         {tone:"green", h:"🚶 Light-to-moderate exercise", html:"Advisable, but avoid strenuous activity during fasting hours and especially in the period just before iftar — the peak hypoglycaemia window. The physical activity of nightly taraweeh prayers adds up: factor it into hypoglycaemia risk after iftar."}
+       ]},
+       {b:"say", html:"Two practical things that make the biggest difference. Eat your suhoor as late as you can — it shortens the fast your body actually experiences. And make it slow-release: chapatti, rice, oats, beans, something with fibre, rather than anything sugary. Then between sunset and dawn, drink plenty of water and go easy on the coffee and tea, because they make you lose fluid. At iftar, I would not tell anyone to skip the dates — but two or three rather than a handful, because they push your sugar up fast."}
+     ]},
+
+    {id:"exempt", nav:"Exemption", title:"Exemption, alternatives and the shared decision",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"🕌 Who is religiously exempt", html:"Those for whom fasting is detrimental are exempt: the frail and elderly, children, pregnant and breastfeeding women, and people with significant comorbidities. Patients should follow medical opinion where the advice is not to fast because of a high probability of harm."},
+         {tone:"blue", h:"🕌 The religious test for breaking a fast", html:"Break or abstain if the illness is worsened by fasting, if recovery is delayed by fasting, or if there is substantial fear of either — judged by prior experience, common knowledge, or a clinician's advice. This is the religiously grounded counterpart to the medical risk stratification, and quoting it is what makes the advice land."},
+         {tone:"green", h:"✓ The alternatives are concrete", html:"Non-consecutive fasts · fasting in the winter months when the fasts are much shorter · feeding others · paying fidyah, a charitable donation of roughly £5 per missed fast. Someone who cannot fast is not failing their faith — say so directly, because many patients assume otherwise and fast unsafely rather than ask."},
+         {tone:"blue", h:"🤝 Community and cultural working", html:"Work with local religious scholars and community leaders; offer group education and Ramadan-specific materials where the fasting population is large. This is evidence-based — it improves reach and trust, and embeds the safety messages where patients actually hear them."},
+         {tone:"amber", h:"⚠ Pregnancy", html:"Pregnant women are exempt. Pre-existing diabetes in pregnancy, or insulin- or sulfonylurea-treated gestational diabetes, is very high risk → specialist obstetric and diabetes care."},
+         {tone:"cream", h:"📋 Document the shared decision", html:"Record the risk category, the medication plan, the advice given, and the review arrangements. Particularly where a category 1 or 2 patient chooses to fast anyway — that is precisely the record the next clinician needs."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review and safety-netting",
+     blocks:[
+       {b:"table", head:["When","What to do"], rows:[
+         ["<b>6–8 weeks before Ramadan</b>","Risk category · structured education · meter and SMBG training · switch any high-hypoglycaemia-risk agent · start any NEW agent now, not later · offer a 1–2 day trial fast · write the medication plan down"],
+         ["<b>During Ramadan</b>","Review category 1 and 2 patients who are fasting. Check SMBG records, hypoglycaemia episodes, hydration and whether the break-fast rules have been needed"],
+         ["<b>After Ramadan</b>","Revert medication timings and doses to the usual regimen — this step is routinely forgotten and leaves patients on a reduced basal or an iftar-timed schedule for months. Review overall control and reassess HbA1c</b>"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999", html:"\"Vomiting, drowsiness, very high sugar or ketones — that is a medical emergency, call 999. Do not wait for sunset.\""},
+         {tone:"amber", h:"🟠 Break the fast and check", html:"\"Below 3.9 or above 16.7, or any shakiness, sweating or confusion — break the fast and check your sugar. If you cannot check, break it anyway.\""},
+         {tone:"blue", h:"💊 Testing is allowed", html:"\"Testing your blood sugar does not break your fast, and neither does a vaccine. Test as often as you need.\""},
+         {tone:"green", h:"🔁 After the month", html:"\"Come back after Ramadan so we can put your doses and timings back to normal — otherwise you stay on the fasting plan all year.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — 999", html:"Suspected DKA (including euglycaemic DKA on an SGLT2 inhibitor) or HHS: vomiting, drowsiness, very high glucose or ketones."},
+         {tone:"amber", h:"Diabetes specialist team — before Ramadan", html:"Type 1 diabetes · insulin-treated T2DM without safe-fasting experience · recurrent or disabling hypoglycaemia · advanced complications · CKD 4–5 in someone who still wishes to fast. <b>Refer 6–8 weeks ahead, not mid-month.</b>"},
+         {tone:"amber", h:"Obstetric / diabetes care", html:"Pre-existing diabetes in pregnancy, or insulin- or sulfonylurea-treated gestational diabetes, in a woman intending to fast."},
+         {tone:"blue", h:"Structured education", html:"Pre-Ramadan group education where available, plus SMBG training and a meter. Ramadan-specific materials in the relevant community languages."},
+         {tone:"cream", h:"GP management", html:"The whole of this page is primary care: the risk category, the break-fast rules, the drug retiming, the diet and hydration advice, the documentation and the post-Ramadan reversion. Related pages: <a href='type-2-diabetes.html'>type 2 diabetes</a> · <a href='sick-day-rules.html'>sick day rules</a> · <a href='dka.html'>DKA</a> · <a href='diabetes-unwell-insulin.html'>feeling unwell on insulin</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 54-year-old man with T2DM attends three weeks before Ramadan intending to fast. He takes <b>metformin 1 g TDS, gliclazide 80 mg BD and dapagliflozin 10 mg</b>. HbA1c is 62 mmol/mol, eGFR 58. He fasted last year \"and felt dizzy some afternoons but got through it\". He asks whether he can fast, and says he has been told <b>testing his blood sugar would break the fast</b> so he did not check at all last year."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Corrects the testing misconception early and explicitly</b> — it is the reason last year was unsafe; <b>recognises the dizzy afternoons as probable hypoglycaemia</b> rather than accepting \"got through it\"; stratifies risk and names the category — the SGLT2 inhibitor alone places him at high risk, and discusses pausing dapagliflozin for the month with the euglycaemic DKA reasoning; retimes metformin correctly (suhoor dose, then afternoon + evening combined at iftar) without changing the total; <b>reduces or omits the suhoor gliclazide dose</b> and explains why the pre-dawn dose is the dangerous one; <b>agrees the four break-fast rules and checks them back</b>; <b>arranges a meter and SMBG training, and offers a trial fast</b> — possible only because he came three weeks early; gives <b>hydration and late-suhoor advice</b>; <b>does not start any new agent</b>; frames it as a shared decision, mentions exemption and fidyah without pressure; and <b>documents the category, plan and advice</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>IDF-DAR (2021) — Diabetes and Ramadan: Practical Guidelines</b><br><a href="https://www.idf.org/our-activities/education/diabetes-and-ramadan.html" rel="noopener">idf.org — diabetes and Ramadan</a><span class="rd"> — the three-tier risk categories, the break-the-fast thresholds of 3.9 and 16.7 mmol/L, the drug-by-drug retiming to iftar and suhoor, the insulin adjustments, and the risk calculator in chapter 5</span></li>'+
+         '<li>British Islamic Medical Association (2020) — Ramadan Rapid Review risk table<br><a href="https://britishima.org" rel="noopener">britishima.org</a><span class="rd"> — the UK-adapted risk stratification, the exemption framework, and the religious test for breaking a fast (illness worsened, recovery delayed, or substantial fear of either)</span></li>'+
+         '<li><b>Gilani A (2023) — How to manage diabetes in Ramadan.</b> <i>Diabetes &amp; Primary Care</i> 25: 27–9<span class="rd"> — the primary-care framework, the 6–8 week pre-Ramadan assessment window, and the SGLT2-inhibitor caution</span></li>'+
+         '<li><b>Hassanein M et al (2017)</b> <i>Diabetes Res Clin Pract</i> 126: 303–16<span class="rd"> — the IDF-DAR evidence base for risk categorisation and medication adjustment</span></li>'+
+         '<li><b>NICE NG28 — Type 2 diabetes in adults: management</b><br><a href="https://www.nice.org.uk/guidance/ng28" rel="noopener">nice.org.uk/guidance/ng28</a><span class="rd"> — the underlying drug choices and the sulfonylurea hypoglycaemia caution</span></li>'+
+         '<li><b>MHRA Drug Safety Update</b><span class="rd"> — SGLT2 inhibitors and the risk of diabetic ketoacidosis with near-normal blood glucose</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Type 2 diabetes in Ramadan — IDF-DAR (2021), BIMA Ramadan Rapid Review, Gilani (2023) and NICE NG28. Assess 6–8 weeks before Ramadan, not during it, and never start a new antidiabetic agent mid-month. Break the fast if blood glucose is below 3.9 or above 16.7 mmol/L, for any hypoglycaemic symptoms even without a meter, or for any acute illness. Move the bigger dose to iftar and trim the suhoor dose; metformin's total is unchanged; avoid glibenclamide; reduce basal insulin 15–20% and omit the daytime bolus. Testing blood glucose does not invalidate the fast. Revert doses and timings after Ramadan. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

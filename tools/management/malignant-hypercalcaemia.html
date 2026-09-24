@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Malignant hypercalcaemia — Protocol · Reasoning GP</title>
+<meta name="description" content="Hypercalcaemia of malignancy: a reversible oncological emergency that mimics dying. Corrected calcium and severity banding, rehydrate before any bisphosphonate, one bisphosphonate never two, the eGFR &lt;30 rule, denosumab and calcitonin, the NG12 myeloma route, and advance care planning." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/malignant-hypercalcaemia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Malignant hypercalcaemia protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🦴",
+  title:"Malignant hypercalcaemia — the complete guide",
+  eyebrow:"Protocol · a reversible emergency that mimics dying",
+  stemTitle:"Rehydrate first, then ONE bisphosphonate — and check the calcium in any cancer patient who is suddenly deteriorating, because this looks exactly like the dying phase and is reversible",
+  stemSub:"One page for the whole condition: recognise the non-specific picture, confirm with an albumin-corrected calcium and grade it, correct the volume depletion that the hypercalcaemia itself caused, then give a single IV bisphosphonate — never two — remembering it takes about a week to work. Because that week matters, the decision to treat is a goals-of-care decision as much as a biochemical one, and the prognosis is poor enough that advance care planning belongs in the same conversation.",
+  guideline:"GMEC Palliative Care Guidelines (6th ed, 2025) · NICE NG12 · BNF/SPC",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"GMEC Palliative Care Pain &amp; Symptom Control Guidelines (6th ed, April 2025)"},
+    {t:"BNF and SPC — bisphosphonate dosing"},
+    {t:"NICE NG12 — myeloma direct-access route", tone:"tw"},
+    {t:"General hypercalcaemia has its own pathway"},
+    {t:"Poor prognosis — ACP indicated"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Recognise</b><small>Mimics dying</small></a><a href="#confirm"><b>Grade it</b><small>Corrected Ca bands</small></a><a href="#workup"><b>Cause &amp; tests</b><small>PTHrP · myeloma 2WW</small></a><a href="#ladder"><b>Treat</b><small>Fluids then ONE bisphosphonate</small></a><a href="#monitor"><b>Follow-up</b><small>7 days · ACP</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ It mimics the dying phase — and it is reversible", html:"Hypercalcaemia may present as rapid clinical decline mimicking the dying phase, but it can be reversed. Drowsiness, confusion and nausea overlap with dying, so a low threshold to check calcium in a deteriorating cancer patient is essential — this is one of the few oncological emergencies that is readily reversible if caught."},
+    {tone:"amber", h:"Use the albumin-corrected calcium, and grade it", html:"Mild: corrected Ca &lt;3.0 mmol/L and asymptomatic. Moderate: 3.0–3.5 mmol/L, symptomatic — needs active treatment. Severe: &gt;3.5 mmol/L, or any level with reduced consciousness, severe dehydration, AKI or cardiac features — an emergency. A low-albumin cancer patient's true ionised calcium is underestimated without correction."},
+    {tone:"blue", h:"Rehydrate first — always", html:"Calcium-driven polyuria causes volume depletion, which itself worsens the hypercalcaemia. IV 0.9% saline 2–4 L per 24 hours (amount and rate per renal function, calcium level and cardiovascular status), then the bisphosphonate. <b>Bisphosphonates act too slowly to be used alone in a crisis.</b>"},
+    {tone:"purple", h:"One bisphosphonate — never both", html:"EITHER zoledronic acid OR pamidronate disodium (per local guideline, BNF and SPC) — do not give both. And if eGFR &lt;30 mL/min, do NOT give a bisphosphonate — seek specialist advice (denosumab is the alternative, as it is not renally cleared)."},
+    {tone:"green", h:"It takes about a week to work", html:"Zoledronic acid: effect &lt;4 days, maximum at 4–7 days, lasting about 4 weeks. Pamidronate: effect &lt;3 days, maximum at 5–7 days, lasting about 2.5 weeks. That delay is why treatment may be inappropriate if the prognosis is very short — seek specialist advice."},
+    {tone:"plain", h:"The rate of rise matters as much as the number", html:"A rapid rise is tolerated far less well than a chronically elevated calcium, so <b>grade on symptoms as well as on the level</b>. Two patients with identical numbers can be very differently unwell."}
+  ],
+  pathwaySub:"The whole task in five moves. The red step is the one that gets missed.",
+  pathway:[
+    {title:"Suspect it in any deteriorating cancer patient", html:"<b>Drowsy, confused, thirsty, constipated, polyuric</b> — \u201cstones, bones, groans, moans\u201d. <b>Check corrected calcium with U&amp;E, creatinine and eGFR.</b>", alert:true},
+    {title:"Confirm and band the severity", html:"&lt;3.0 and asymptomatic → hydrate and recheck. Symptomatic or &gt;3.0 → active treatment. &gt;3.5, or any level with reduced consciousness, AKI or cardiac features → emergency."},
+    {title:"Work out the mechanism", html:"<b>PTHrP (about 80%), osteolytic, or calcitriol-mediated</b> — and do not miss <b>co-existing primary hyperparathyroidism, drugs and dehydration</b>. Myeloma screen, with the NG12 direct-access route where the picture fits."},
+    {title:"Rehydrate, then a single bisphosphonate", html:"Review contributory drugs · IV 0.9% saline 2–4 L/24 h · then ONE IV bisphosphonate. <b>Not if eGFR is below 30.</b> Weigh whether treatment fits the goals of care."},
+    {title:"Recheck at 7 days, and plan ahead", html:"Repeat calcium and renal function at 7 days; repeat the infusion every 3–4 weeks if it recurs, checking renal function before each dose. <b>Poor prognosis — begin advance care planning.</b>"}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Recognise", title:"Recognise and confirm — the presentation that mimics dying",
+     sub:"Symptoms are non-specific and overlap with dying, so a low threshold to check calcium in a deteriorating cancer patient is essential.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>\u201cBones, stones, groans, moans\u201d</b>","Bone pain · renal stones, polyuria and thirst · abdominal groans (nausea, anorexia, constipation) · psychic moans (fatigue, confusion, drowsiness)"],
+         ["<b>Confirm</b>","Check corrected calcium with U&amp;E, creatinine and eGFR. Consider also PTH, magnesium, phosphate and vitamin D"],
+         ["<b>Commonest cancers</b>","<b>Myeloma, breast, lung, renal and squamous tumours</b>"],
+         ["<b>Beware</b>","Hypercalcaemia may present as rapid clinical decline mimicking the dying phase — but it can be reversible"]
+       ]},
+       {b:"warn", html:"Because the symptoms — drowsiness, confusion, nausea — mimic many things including dying, hypercalcaemia is easily missed; yet it is one of the few oncological emergencies that is readily reversible if caught. In a patient with a reasonable prognosis, correcting it restores days to weeks of lucidity."},
+       {b:"dl", rows:[
+         ["<b>NG12 — the criterion that applies here</b>","Myeloma is a leading cause of malignant hypercalcaemia, and NICE NG12 provides a direct-access route. Where the picture fits — <b>hypercalcaemia with anaemia, renal impairment or bone pain</b> — send very urgent serum and urine protein electrophoresis plus a Bence-Jones protein test, for a result within 48 hours. That catches a treatable haematological malignancy which frequently presents exactly this way. Where the underlying cancer is not yet known at all, admission or oncology referral allows diagnosis and treatment to proceed simultaneously. Restated in <a href='#refer'>Refer</a>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Grade it", title:"Confirm and grade the severity",
+     sub:"Always use the albumin-corrected calcium and grade it — the band drives the urgency.",
+     blocks:[
+       {b:"table", head:["Band","Definition","Implication"], rows:[
+         ["<b>Mild</b>","<b>Corrected Ca &lt;3.0 mmol/L and asymptomatic</b>","<b>Often managed with hydration and a recheck</b>"],
+         ["<b>Moderate</b>","<b>Corrected Ca 3.0–3.5 mmol/L — symptomatic</b>","<b>Needs active treatment</b>"],
+         ["<b>Severe</b>","Corrected Ca &gt;3.5 mmol/L, or any level with reduced consciousness, severe dehydration, AKI or cardiac features","<b>Emergency</b>"],
+         ["<b>ECG and cardiac features</b>","Shortened QT, bradyarrhythmias; a rare risk of arrest at very high levels","ECG for severe hypercalcaemia or cardiac symptoms"],
+         ["<b>Rate matters</b>","A rapid rise is tolerated far less well than a chronically elevated calcium","<b>Grade on symptoms as well as the number</b>"]
+       ]},
+       {b:"why", html:"Corrected calcium adjusts for albumin — without it, a low-albumin cancer patient's true ionised calcium is underestimated. Banding then <b>matches treatment intensity to risk</b>, while the rate of rise explains why two patients with the same level can be very differently unwell."}
+     ]},
+
+    {id:"workup", nav:"Cause &amp; tests", title:"Mechanism and investigations",
+     sub:"The mechanism guides both treatment and prognosis.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>PTHrP — commonest, around 80%</b>","Humoral hypercalcaemia: the tumour secretes parathyroid-hormone-related peptide — squamous lung, head and neck, renal, breast"],
+         ["<b>Osteolytic</b>","Direct bone destruction by metastases or marrow infiltration — myeloma, breast"],
+         ["<b>Calcitriol-mediated</b>","<b>Excess 1,25-vitamin D — lymphoma</b>"],
+         ["<b>Don't miss</b>","Co-existing primary hyperparathyroidism (raised or unsuppressed PTH), drugs (thiazides, calcium and vitamin D supplements, lithium), and dehydration"]
+       ]},
+       {b:"table", head:["Investigation","Detail"], rows:[
+         ["<b>Core bloods</b>","Corrected calcium, U&amp;E, creatinine, eGFR, PTH (suppressed in malignancy), phosphate, magnesium, vitamin D, ALP"],
+         ["<b>Myeloma screen</b>","<b>FBC, ESR or plasma viscosity.</b> If myeloma is suspected — <b>hypercalcaemia, anaemia, renal impairment, bone pain</b> — send 2WW very urgent serum and urine protein electrophoresis plus Bence-Jones protein (NICE NG12 direct access, within 48 hours where the picture fits)"],
+         ["<b>Find the primary</b>","Imaging directed by the history — CXR or CT chest, mammography, myeloma skeletal survey — if the cancer is not yet known"],
+         ["<b>ECG</b>","<b>For severe hypercalcaemia or cardiac symptoms</b>"]
+       ]},
+       {b:"why", html:"A suppressed PTH confirms the hypercalcaemia is malignancy-driven rather than parathyroid, and because myeloma is a leading cause, NG12 provides fast-track access to protein electrophoresis and Bence-Jones testing. On mechanism: PTHrP and osteolytic disease respond to rehydration plus a bisphosphonate; calcitriol-mediated lymphoma hypercalcaemia responds well to corticosteroids; and an unsuppressed PTH points to coincident primary hyperparathyroidism rather than the malignancy — a different management path."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Treatment — rehydrate, then a single bisphosphonate",
+     sub:"In primary care, seek specialist advice. Weigh first whether treatment fits this patient's situation at all.",
+     blocks:[
+       {b:"warn", html:"<b>Points to weigh before treating:</b> is this a <b>first episode or after a long interval</b>? Was there <b>good prior quality of life</b>? Is the patient <b>willing and able to have IV treatment and blood tests</b>? And treatment takes about a week to work — it may be inappropriate if the prognosis is very poor."},
+       {b:"ladder", steps:[
+         {step:"Mild", title:"Hydrate and recheck", when:"corrected Ca &lt;3.0 and asymptomatic",
+          html:"Check U&amp;E, creatinine and eGFR. Review nephrotoxic and contributory medicines — diuretics, calcium and vitamin D supplements, ACE inhibitors. Correct dehydration with 0.9% saline 2–3 L per 24 hours, or adequate oral intake. Recheck in 2–3 days and treat if rising."},
+         {step:"Symptomatic or &gt;3.0", title:"IV saline, then ONE bisphosphonate", when:"potentially life-threatening",
+          fromLabel:"rehydration comes first",
+          html:"Review medicines as above. Give IV 0.9% saline 2–4 L per 24 hours — amount and rate according to renal function, calcium level and cardiovascular status — then a single IV bisphosphonate."},
+         {step:"The bisphosphonate", title:"Zoledronic acid OR pamidronate — not both", when:"eGFR 30 or above",
+          fromLabel:"per local guideline, BNF and SPC",
+          html:"EITHER zoledronic acid OR pamidronate disodium, dosed per local guideline, the BNF and the SPC — do not give both. Onset: zoledronic acid effect &lt;4 days, maximum 4–7 days, lasting about 4 weeks; pamidronate effect &lt;3 days, maximum 5–7 days, lasting about 2.5 weeks."},
+         {step:"Renal caution", title:"eGFR &lt;30 — do not give it", when:"seek specialist advice",
+          fromLabel:"a hard stop",
+          html:"If eGFR &lt;30 ml/min do NOT give a bisphosphonate — seek specialist advice."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"💉 Denosumab", html:"For hypercalcaemia refractory to bisphosphonates, or where bisphosphonates are contraindicated — for example eGFR &lt;30. Specialist-initiated; watch for later hypocalcaemia."},
+         {tone:"amber", h:"⏱️ Calcitonin", html:"A rapid but short-lived adjunct for severe symptomatic hypercalcaemia while the bisphosphonate takes effect — it acts within hours."},
+         {tone:"green", h:"💊 Corticosteroids", html:"Effective in calcitriol-mediated hypercalcaemia — lymphoma, myeloma, sarcoid."},
+         {tone:"red", h:"🏥 Severe or AKI", html:"Consider renal or critical care input. Dialysis is reserved for life-threatening levels with renal failure."}
+       ]},
+       {b:"why", html:"Volume depletion from calcium-driven polyuria worsens hypercalcaemia, so saline rehydration is the essential first step; bisphosphonates then inhibit osteoclastic bone resorption but act too slowly to be used alone in a crisis. When a bisphosphonate cannot be used because of poor renal function, or has failed, denosumab provides an alternative anti-resorptive that is not renally cleared; calcitonin buys time by acting within hours; and corticosteroids specifically target the vitamin-D-driven mechanism seen in lymphoma — matching the agent to the cause and to the renal function."}
+     ]},
+
+    {id:"lifestyle", nav:"Supportive care", title:"Medication review and supportive care",
+     sub:"Several everyday contributors are reversible in primary care and stack on top of the malignant drive.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"🛑 Stop the contributors", html:"Review or withhold thiazide diuretics, calcium and vitamin D supplements, lithium, and other contributory drugs."},
+         {tone:"blue", h:"💧 Maintain hydration", html:"Encourage oral fluids, and mobilise where possible — immobility worsens hypercalcaemia."},
+         {tone:"green", h:"🦷 Dental care", html:"Dental review and hygiene before and during repeated bisphosphonates, to reduce the risk of osteonecrosis of the jaw."},
+         {tone:"cream", h:"🤲 Symptom control", html:"Treat nausea, constipation and delirium, with clear, honest communication with the patient and family."}
+       ]},
+       {b:"why", html:"Thiazides, calcium and vitamin D supplements, dehydration and immobility all stack on top of the malignant drive and are reversible in primary care — so addressing them both helps control the calcium and <b>reduces recurrence between infusions</b>. Dental care specifically mitigates the main long-term hazard of repeated bisphosphonates."}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Monitoring, re-treatment and safety-netting",
+     blocks:[
+       {b:"table", head:["When","What"], rows:[
+         ["<b>7 days</b>","If symptoms persist, repeat calcium and renal function; re-treat with a bisphosphonate if indicated"],
+         ["<b>Recurrence</b>","Repeat the infusion every 3–4 weeks if symptoms recur — check calcium and renal function before each dose"],
+         ["<b>Refractory</b>","<b>Calcium not responding → seek specialist advice; consider denosumab</b>"],
+         ["<b>Prognosis and ACP</b>","Hypercalcaemia of malignancy carries a poor prognosis — begin advance care planning"],
+         ["<b>Return urgently</b>","Recurring drowsiness, confusion, vomiting, severe thirst or polyuria, or reduced urine output → recheck calcium and renal function"]
+       ]},
+       {b:"why", html:"Recurrence is the rule, because the underlying malignancy keeps driving calcium release — so a single infusion is rarely the end of the story. Scheduled monitoring, pre-dose renal checks and a clear symptom safety-net catch the next episode early, while the poor prognosis makes parallel advance care planning appropriate."},
+       {b:"say", html:"The blood test shows the calcium in your blood has gone up, and that is what has been making you so drowsy and sick — not, as it might have looked, a sudden turn for the worse in itself. The good news is that we can often bring it down. It takes fluid through a drip first, then a single injection that works over about a week. I want to be straight with you that this does tend to come back, because the cancer keeps pushing the calcium up, and that it is a sign we should talk about what matters to you and what you would and would not want from here. But for now, treating this can give you back a stretch of feeling much clearer."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Specialist advice and admission",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Admit", html:"Severe (Ca &gt;3.5), reduced consciousness, AKI, severe dehydration, or unable to take oral fluids — needs IV rehydration and IV bisphosphonate in hospital."},
+         {tone:"amber", h:"Seek specialist advice", html:"From acute oncology or palliative care for any treatment decision in primary care, for refractory calcium, or for eGFR &lt;30."},
+         {tone:"blue", h:"New presentation", html:"If the underlying cancer is unknown, admission or oncology referral allows simultaneous diagnosis and treatment."},
+         {tone:"purple", h:"NG12 · myeloma direct access", html:"Hypercalcaemia with anaemia, renal impairment or bone pain → very urgent serum and urine protein electrophoresis plus Bence-Jones protein, within 48 hours."},
+         {tone:"cream", h:"Balance of treatment", html:"Weigh a first episode versus recurrent disease, prior quality of life, willingness and ability to have IV treatment, and that bisphosphonates take about a week — treatment may be inappropriate if the prognosis is very short."}
+       ]},
+       {b:"why", html:"The decision to treat is as much a goals-of-care decision as a biochemical one: in a patient with a reasonable prognosis and good prior function, <b>correcting hypercalcaemia restores days to weeks of lucidity</b>; in someone in the last days of life, <b>IV treatment that takes a week to work may simply prolong dying</b> — which is why specialist advice is advised rather than optional."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"You are asked to visit a 71-year-old with known metastatic breast cancer who has become drowsy and confused over four days, is vomiting, and is barely drinking. The family have been told she is \u201cprobably dying\u201d and are asking about a syringe driver. She was gardening a fortnight ago."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does not accept the dying-phase framing without checking a corrected calcium, U&amp;E and eGFR — the four-day trajectory in someone functioning well a fortnight earlier is the clue; <b>grades the severity and recognises this is potentially reversible</b>; rehydrates before considering a bisphosphonate and knows never to give two; <b>checks eGFR before the bisphosphonate decision</b>; reviews contributory drugs; and — the step candidates miss — holds both truths with the family at once: this is treatable now, and it signals a poor prognosis, so advance care planning belongs in the same conversation rather than instead of treatment."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>GMEC Palliative Care Pain and Symptom Control Guidelines (6th edition, April 2025)<span class="rd"> — the severity bands, rehydration-first sequence, the single-bisphosphonate rule, onset and duration figures for zoledronic acid and pamidronate, the eGFR &lt;30 contraindication, and the second-line options</span></li>'+
+         '<li><b>BNF and Summary of Product Characteristics — bisphosphonate dosing</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — zoledronic acid and pamidronate disodium dosing, which should follow the local guideline, the BNF and the SPC; also denosumab, calcitonin and corticosteroids</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the myeloma route: where initial tests suggest myeloma, offer very urgent serum and urine protein electrophoresis and a Bence-Jones protein urine test, for a result within 48 hours</span></li>'+
+         '<li><b>GMEC Palliative Care Guidelines (2025) — hypercalcaemia</b><span class="rd"> — primary-care assessment and the advance care planning prompt</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Malignant hypercalcaemia — GMEC Palliative Care Pain and Symptom Control Guidelines (6th edition, April 2025), the BNF and SPC for bisphosphonate dosing, and NICE NG12 for the myeloma direct-access route. Rehydration comes first, and never give two bisphosphonates. A general (non-palliative) hypercalcaemia work-up is covered by the <a href=\"../algorithms/hypercalcaemia.html\">hypercalcaemia pathway</a>; the reasoning pathway for this presentation remains at the <a href=\"../algorithms/malignant-hypercalcaemia.html\">malignant hypercalcaemia pathway</a>. Follow your local guideline and verify all doses before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

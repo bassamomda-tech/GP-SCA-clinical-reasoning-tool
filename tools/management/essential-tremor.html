@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Essential tremor — Protocol · Reasoning GP</title>
+<meta name="description" content="Essential tremor in primary care, diagnosis and management on one page: rest versus action tremor, the re-emergent tremor of Parkinson's, the alcohol response, mandatory TFTs and the drug review, propranolol and primidone with doses, adaptive equipment, DVLA advice, and referral for DBS or focused ultrasound." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/essential-tremor.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Essential tremor protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F91D}",
+  title:"Essential tremor \u2014 the complete guide",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Rest or action? That one question sorts essential tremor from Parkinson's \u2014 then treat by impact, not by appearance",
+  stemSub:"One page for the whole condition: screen the toxic and metabolic emergencies, separate an action tremor from a rest tremor (including the re-emergent tremor that catches people out), exclude thyrotoxicosis and the tremorgenic drug list, reassure where it is mild, and treat with propranolol or primidone when function is impaired \u2014 with DBS and focused ultrasound for the refractory few.",
+  guideline:"NICE NG127 \u00b7 NICE NG71 \u00b7 NICE IPG617 \u00b7 DVLA",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE NG127 \u2014 suspected neurological conditions"},
+    {t:"NICE NG71 \u2014 Parkinson's disease"},
+    {t:"NICE IPG617 \u2014 focused ultrasound thalamotomy"},
+    {t:"BNF for all doses"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v2.0 \u00b7 reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>SS \u00b7 NMS \u00b7 DTs \u00b7 Wilson\'s</small></a><a href="#confirm"><b>Rest or action?</b><small>ET \u00b7 PD \u00b7 cerebellar</small></a><a href="#workup"><b>Work-up</b><small>TFTs \u00b7 drugs \u00b7 MRI?</small></a><a href="#ladder"><b>Treat</b><small>Propranolol \u00b7 primidone</small></a><a href="#refer"><b>Refer</b><small>Neurology \u00b7 DBS \u00b7 FUS</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Tremor plus altered consciousness is never essential tremor", html:"Clonus and hyperreflexia after a serotonergic drug change = serotonin syndrome. Lead-pipe rigidity with hyperthermia on an antipsychotic = NMS. Tremor 6\u201372 hours after stopping alcohol = delirium tremens. All three: stop the drug and <b>999</b>."},
+    {tone:"amber", h:"The one question that sorts it", html:"Rest tremor, asymmetric, pill-rolling, with bradykinesia and rigidity \u2192 Parkinson's \u2014 refer untreated. Bilateral action or postural tremor, no other neurology, improves with alcohol \u2192 essential tremor. Everything else follows from that split."},
+    {tone:"blue", h:"The re-emergent tremor trap", html:"In Parkinson's, the rest tremor disappears when the arms go out and then comes back after 5\u201315 seconds at the same slow frequency. Essential tremor appears <b>immediately</b> on posture. <b>Hold the posture and count</b> \u2014 record it explicitly if you see it."},
+    {tone:"green", h:"Always exclude the two reversible causes", html:"<b>TFTs in every new tremor</b>, and a <b>medication review</b> \u2014 salbutamol and other \u03b2\u2082-agonists, lithium, valproate, SSRIs, amiodarone, theophylline, caffeine. Removing the cause is the treatment."},
+    {tone:"purple", h:"Treat by impact, not by appearance", html:"Many patients need <b>explanation alone</b>. When function is impaired: propranolol 40 mg BD titrated up to 160 mg BD \u2014 about 50% amplitude reduction, NNT around 3; or <b>primidone from 50 mg nocte</b>. Non-responders to one often respond to the other."},
+    {tone:"plain", h:"Don't let alcohol become the treatment", html:"One unit reliably improves essential tremor in 50\u201370% of patients for 30\u201345 minutes \u2014 which is why some self-medicate. Ask directly and without judgement, then offer a medicine that works as well without the risk. <b>AUDIT-C at each review.</b>"}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is the one that must never be skipped.",
+  pathway:[
+    {title:"Screen the emergencies", html:"Delirium tremens, serotonin syndrome, neuroleptic malignant syndrome, thyroid storm, an acute structural cause, and Wilson's disease in the under-40s.", alert:true},
+    {title:"Characterise the tremor", html:"<b>When does it happen \u2014 at rest, on posture, or on action?</b> Then symmetry, alcohol response, family history, drugs, thyroid status and caffeine. Examine for <b>bradykinesia and rigidity</b>."},
+    {title:"Exclude the reversible", html:"<b>TFTs, medication review, glucose.</b> Copper and caeruloplasmin if under 40. DaTscan only via neurology, for genuine diagnostic doubt."},
+    {title:"Treat the cause", html:"Essential tremor and disabling \u2192 propranolol or primidone. Suspected Parkinson's \u2192 <b>neurology untreated</b>. Drug-induced or physiological \u2192 remove the driver. Thyrotoxic \u2192 propranolol plus treat the thyroid."},
+    {title:"Review and safety-net", html:"Response and titration at 6 weeks, then 3-monthly; <b>reassess the diagnosis if features evolve</b> \u2014 emerging bradykinesia means Parkinson's. DVLA advice given and documented."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Toxic, metabolic and structural emergencies",
+     sub:"New tremor is usually benign. Act immediately when it comes with altered consciousness, acute toxicity or focal signs.",
+     blocks:[
+       {b:"table", head:["Presentation","Diagnosis","Action"], rows:[
+         ["Tremor + altered consciousness + fever, <b>6\u201372 hours after stopping alcohol</b>","<b>Delirium tremens.</b> Tremor starts 6\u201324 h after the last drink and peaks at 24\u201372 h; <b>seizure risk is high</b>","<b>Admit.</b> Chlordiazepoxide by CIWA protocol or lorazepam. <b>IV Pabrinex (thiamine) before any glucose.</b> Life-threatening untreated"],
+         ["Tremor + agitation + <b>hyperreflexia and clonus</b> after a serotonergic drug change","<b>Serotonin syndrome.</b> Clonus \u2014 spontaneous rhythmic ankle or patellar clonus \u2014 is what distinguishes it from NMS","<b>Stop ALL serotonergic drugs \u2192 999.</b> Cyproheptadine plus benzodiazepines in hospital"],
+         ["Tremor + <b>lead-pipe rigidity</b> + hyperthermia + autonomic instability on an antipsychotic","<b>Neuroleptic malignant syndrome.</b> Lead-pipe rigidity, bradykinesia and a <b>markedly raised CK</b>; onset over days to weeks","<b>Stop all antipsychotics \u2192 999.</b> Dantrolene and bromocriptine in hospital"],
+         ["Sudden tremor + confusion + acute headache + focal deficit","<b>Structural intracranial cause</b> \u2014 haemorrhage, tumour, abscess","<b>999. Urgent CT head</b>"],
+         ["Tremor + tachycardia + heat intolerance + weight loss + palpitations","<b>Thyrotoxicosis or thyroid storm</b>","<b>TSH and free T4 urgently. Propranolol 40 mg TDS</b> for symptom control while investigating. <b>Hospital if storm is suspected</b> \u2014 fever, confusion, arrhythmia, HR &gt;140"],
+         ["<b>Under 40 (onset &lt;40)</b> + tremor + psychiatric change + jaundice + <b>Kayser-Fleischer rings</b>","<b>Wilson's disease</b> \u2014 a treatable copper metabolism disorder","Caeruloplasmin (&lt;200 mg/L), serum copper, 24-hour urine copper. Urgent neurology and hepatology. <b>Penicillamine or trientine</b> achieves remission if treated early, and <b>zinc supplementation</b> is an alternative in early disease"]
+       ]},
+       {b:"why", html:"Serotonin syndrome versus NMS is the highest-value differential in this whole area. Both cause hyperthermia, altered consciousness and movement abnormality, but the drugs and the signs differ. <b>Serotonin syndrome</b> \u2014 excess serotonergic activity (SSRIs with MAOIs, tramadol, fentanyl, triptans, lithium, linezolid, MDMA); <b>hyperreflexia plus clonus</b>, agitation, myoclonus, tremor; onset in <b>hours</b>. <b>NMS</b> \u2014 dopamine blockade (antipsychotics, metoclopramide); <b>lead-pipe rigidity</b>, bradykinesia, high CK, autonomic instability; onset over <b>days to weeks</b>. <b>The bedside tests:</b> brisk <b>dorsiflexion</b> of the foot, held \u2014 sustained clonus means serotonin syndrome; flex and extend the wrist passively \u2014 uniform ratchet resistance throughout the range means NMS, not just resistance at initiation. Wilson's is the diagnosis most commonly missed in young adults with tremor \u2014 average delay from onset to diagnosis is 1\u20134 years, and it is entirely treatable if caught early."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Essential tremor has no NICE NG12 suspected-cancer criterion, and none should be invented for it. The relevant urgent route here is structural: tremor with a new focal neurological deficit, or with an acute severe headache, is a same-day CT head \u2014 an acute-event pathway, not a two-week wait. If instead the picture is a progressive focal deficit or new-onset seizure suggesting a brain tumour, that is the NG12 route: a direct-access MRI (or CT if MRI is contraindicated) within 2 weeks for suspected brain or central nervous system cancer"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Rest or action?", title:"Classify the tremor \u2014 the setting localises the cause",
+     sub:"Essential tremor, Parkinson's and cerebellar tremor are separated at the bedside, not by scan.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Essential tremor</b> \u2014 the commonest adult tremor","<b>Bilateral postural and kinetic</b> tremor \u2014 present on sustained posture or movement, <b>absent at rest</b>. Hands most often; also <b>head (titubation \u2014 yes-yes or no-no)</b> and voice. <b>Family history in 50\u201370%.</b> <b>Improves with small amounts of alcohol</b> (GABA-A modulation). <b>No other neurological signs.</b> Worse with anxiety, caffeine, fatigue, hypoglycaemia. <b>Frequency 4\u201312 Hz.</b> Responds to propranolol or primidone"],
+         ["<b>Parkinson's disease tremor</b>","<b>Rest tremor</b> \u2014 present when the limb is fully supported, absent during intentional movement. <b>\u201cPill-rolling\u201d</b> thumb against index and middle finger. <b>Unilateral onset</b> becoming bilateral. With cogwheel rigidity, bradykinesia, postural instability, micrographia, masked facies (hypomimia), shuffling gait, and anosmia that precedes motor symptoms by 4\u20136 years. <b>Slow, 3\u20136 Hz.</b> <b>Re-emergent on posture after a 5\u201315 second latency</b> \u2014 the key discriminator. Responds to levodopa"],
+         ["<b>Cerebellar (intention) tremor</b>","<b>Increases as the limb approaches the target</b>, worst at the end of movement. With dysdiadochokinesia, ataxic gait, dysarthria, nystagmus and past-pointing on finger-nose testing. Causes: MS, posterior circulation stroke, chronic alcohol, cerebellar tumour, spinocerebellar ataxia. 2\u20134 Hz, large amplitude, ipsilateral to the lesion. Neurology urgently"],
+         ["<b>Physiological tremor</b>","Fine, fast hand tremor \u2014 <b>normal</b>. Exaggerated by anxiety, caffeine, salbutamol and other \u03b2\u2082-agonists, hypoglycaemia, hyperthyroidism, alcohol withdrawal and fever. <b>Resolves when the cause is removed</b>"],
+         ["<b>Drug-induced</b>","<b>Sodium valproate</b> (postural) \u00b7 <b>lithium</b> (coarse, postural \u2014 toxic above 1.5 mmol/L) \u00b7 <b>SSRIs</b> \u00b7 <b>salbutamol</b> \u00b7 <b>amiodarone</b> \u00b7 <b>theophylline</b> \u00b7 <b>metoclopramide</b> (dystonic). Also consider Wilson's, phaeochromocytoma, hepatic encephalopathy and hypoglycaemia"],
+         ["<b>Functional tremor</b> (functional movement disorder, FMD)","<b>Variable frequency</b> that changes during examination, <b>entrains</b> to a rhythm the examiner taps, <b>distractible</b> (improves during a simultaneous cognitive task), positive <b>Hoover's sign</b>. Onset during stress or injury; normal MRI. <b>Not imagined \u2014 a real disorder of motor control</b>, accounting for about <b>5\u201310% of new neurology tremor referrals</b>. Neurology plus specialist physiotherapy and CBT; improves significantly with a correct diagnosis and a proper explanation"]
+       ]},
+       {b:"table", head:["Feature","Essential tremor","Parkinson's","Cerebellar"], rows:[
+         ["<b>When present</b>","Postural and kinetic","<b>At rest</b>, stops on movement","Intention \u2014 worsens near target"],
+         ["Frequency and character","<b>4\u201312 Hz</b>, medium-fast, bilateral","<b>3\u20136 Hz</b>, slow, pill-rolling, unilateral onset","<b>2\u20134 Hz</b>, large amplitude, ipsilateral"],
+         ["Other neurology","<b>None</b> \u2014 otherwise normal examination","Cogwheel rigidity, bradykinesia, masked facies, micrographia, shuffling gait","Ataxia, dysdiadochokinesia, nystagmus, dysarthria"],
+         ["<b>Alcohol (1 unit)</b>","<b>Improves in 50\u201370% for 30\u201345 minutes</b>","<b>No improvement</b>","May worsen"],
+         ["<b>Posture-hold latency</b>","Appears <b>immediately</b> on extension","<b>Re-emergent \u2014 5\u201315 seconds of silence, then returns</b> at rest frequency","\u2014"],
+         ["Response to treatment","Propranolol ~50% amplitude reduction (<b>NNT ~3</b>); primidone effective","Levodopa \u2014 <b>tremor less responsive than rigidity and bradykinesia</b>","Treat the cause; clonazepam gives modest benefit"]
+       ]},
+       {b:"why", html:"<b>The alcohol test is worth asking about explicitly.</b> One unit reliably improves essential tremor in <b>50\u201370%</b> of patients for <b>30\u201345 minutes</b>, through ethanol's GABA-A modulation of the olivocerebellar circuits that generate the oscillation. That has two consequences: a positive history <b>strongly supports essential tremor</b> (a Parkinson's rest tremor does not improve with alcohol), and <b>many patients self-medicate</b>, which explains heavy drinking patterns in some. Ask it plainly and without judgement \u2014 <em>\u201cSome people with this kind of tremor find alcohol makes it better \u2014 is that true for you?\u201d</em> \u2014 because a yes both confirms the diagnosis and opens the conversation about risk."}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Examination and investigations",
+     sub:"Four manoeuvres and one blood test do most of the work.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>The four-step tremor examination</b>","<b>1</b> Observe <b>at rest</b> \u2014 hands on lap, eyes open (rest tremor = Parkinson's). <b>2</b> <b>Arms outstretched for 30 seconds</b> \u2014 postural tremor; essential tremor appears immediately, Parkinson's re-emerges after 5\u201315 seconds. <b>3</b> <b>Finger-nose test</b> \u2014 intention tremor; cerebellar tremor worsens approaching the target, with past-pointing. <b>4</b> Assess <b>frequency</b> (4\u201312 Hz essential, 3\u20136 Hz Parkinson's), amplitude and distribution \u2014 hands, head, voice, limbs"],
+         ["<b>Bedside tests worth doing</b>","<b>Spiral drawing</b> \u2014 ask for <b>Archimedean spirals</b>: essential tremor produces large tremulous spirals, while Parkinson's shows <b>micrographia</b> rather than a tremulous spiral. <b>Writing sample</b> for micrographia. <b>Cogwheel rigidity</b> \u2014 passively flex and extend the wrist in a circular motion for the ratchet sensation. <b>Dysdiadochokinesia</b> \u2014 rapid alternating pronation and supination. <b>Heel-shin</b> test for cerebellar ataxia"]
+       ]},
+       {b:"table", head:["Investigation","When","Why"], rows:[
+         ["<b>TSH</b>","<b>Mandatory in all new tremors</b>","Hyperthyroidism is the reversible cause you cannot afford to miss"],
+         ["FBC, U&amp;E, LFTs","Baseline","Metabolic, liver and alcohol-related causes"],
+         ["Fasting glucose","Baseline","Hypoglycaemia"],
+         ["<b>Lithium or valproate level</b>","If taking either","<b>Lithium above 1.5 mmol/L is toxicity</b> \u2014 tremor is an early sign"],
+         ["<b>Caeruloplasmin, serum copper, 24-hour urine copper</b>","<b>Young adult</b> with liver disease or psychiatric change","<b>Wilson's disease</b> \u2014 see the caveat below"],
+         ["<b>MRI brain</b>","<b>Only</b> if focal neurological signs, a unilateral tremor without a classic essential-tremor or Parkinson's pattern, rapid onset, or a suspected structural lesion","<b>Not a routine test for tremor</b>"],
+         ["DaTscan (DaTSCAN)","<b>Via neurology only</b>, for genuine diagnostic doubt","Distinguishes Parkinson's from essential tremor (reduced striatal dopamine transporter uptake) but <b>cannot distinguish Parkinson's from other parkinsonian syndromes</b>"]
+       ]},
+       {b:"warn", html:"<b>Interpreting Wilson's serology:</b> caeruloplasmin is the copper-carrying protein made in the liver, and it is low in Wilson's because the mutant ATP7B protein cannot load copper before secretion \u2014 <b>below 200 mg/L in 80% of cases</b>. But it is also an acute-phase reactant, so it can be falsely normal or raised in inflammation, pregnancy or on the combined pill. The 24-hour urine copper is more sensitive \u2014 above 100 micrograms/24 h (&gt;100 mcg) is abnormal, and &gt;40 mcg (40 mcg to &lt;100) is borderline. The <b>Kayser-Fleischer ring is the most specific sign</b>, a golden-brown arc at the corneal periphery on slit-lamp examination, present in about <b>95% of neurological Wilson's</b>. You do not need a slit lamp to raise the diagnosis \u2014 request ophthalmology review in any young patient with unexplained neurological symptoms plus liver disease."}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"Treat by impact \u2014 the essential tremor ladder",
+     sub:"Quantify the effect on writing, eating, drinking, work and social confidence. That, not the amplitude, decides whether to prescribe.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Every patient", title:"Explanation and trigger reduction", when:"including mild tremor",
+          html:"Reassure: benign, slowly progressive, not Parkinson's \u2014 for many patients the explanation is the whole treatment. Reduce caffeine and stimulants, address anxiety, fatigue and sleep, and <b>review and rationalise tremorgenic medication</b>."},
+         {step:"First-line", title:"Propranolol 40\u2013160 mg BD", when:"tremor impairs function",
+          fromLabel:"non-drug measures insufficient",
+          html:"<b>Reduces tremor amplitude by about 50%, NNT around 3</b> \u2014 one of the most favourable effect sizes in neurology. <b>Start 40 mg BD and titrate up to 160 mg BD</b>; most patients settle on <b>80\u2013160 mg/day</b>, and a modified-release preparation is available. Caution in <b>asthma, COPD, bradycardia, Raynaud's and diabetes</b>. <b>Atenolol 50\u2013100 mg OD</b> if propranolol is poorly tolerated \u2014 less CNS penetration, fewer vivid dreams."},
+         {step:"Second-line", title:"Primidone 50\u2013750 mg/day", when:"propranolol failed or unsuitable",
+          fromLabel:"about 40% do not respond to propranolol",
+          html:"<b>Start 50 mg at night</b> (the BNF's 62.5 mg tablet is the usual practical starting dose) <b>and increase by 50 mg every 2 weeks</b> to a usual target of <b>250\u2013750 mg/day</b>. <b>Excellent for head and voice tremor.</b> Sedation early (titrate slowly) and ataxia at high doses; <b>full effect takes 4\u20136 weeks</b>."},
+         {step:"Combination", title:"Both agents, or an adjunct", when:"partial response",
+          fromLabel:"single agent inadequate",
+          html:"Combining both at lower doses gives additive benefit with fewer side effects than high-dose monotherapy \u2014 they work by different mechanisms. Adjuncts: <b>topiramate 25\u2013100 mg OD</b> (cognitive slowing \u2014 \u201cdopamax\u201d \u2014 paraesthesiae, weight loss) or <b>gabapentin 300\u20132400 mg/day</b> (modest benefit, better tolerated). <b>Both are adjuncts, not first-line monotherapy.</b>"},
+         {step:"Refractory", title:"DBS, focused ultrasound, radiosurgery", when:"disabling despite optimised therapy",
+          fromLabel:"3 months at target dose of each",
+          html:"Deep brain stimulation of the thalamic VIM nucleus \u2014 about 90% amplitude reduction, NICE-approved for severe drug-refractory disability; reversible and adjustable, with a <b>1\u20132% risk of intracranial haemorrhage</b>, infection and hardware failure. Focused ultrasound thalamotomy (NICE IPG617) \u2014 non-invasive, no incision, 80\u201390% reduction sustained at 2 years, but unilateral only (bilateral treatment risks dysarthria and gait ataxia). <b>Gamma Knife stereotactic thalamotomy</b> is an alternative where DBS is not an option \u2014 delayed effect at 3\u20136 months, less precise."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"\ud83c\udfad Performance anxiety tremor", html:"<b>Propranolol 40 mg as a single dose, 30\u201360 minutes before</b> the performance, presentation or exam. Very effective for fine-motor performance tremor; <b>not addictive and no regular use needed</b>. Avoid in asthma, and <b>not for driving-related activity</b> \u2014 it may affect reaction time. Well evidenced in musicians, surgeons, public speakers and examinees, and an appropriate off-label decision for a GP to make."},
+         {tone:"amber", h:"\ud83d\udc8a Drug-induced tremor \u2014 fix the cause", html:"<b>Valproate:</b> reduce the dose or switch. <b>SSRIs:</b> reduce, switch, or add propranolol 40 mg BD. <b>Lithium:</b> check the level \u2014 the maintenance range is <b>0.6\u20131.0 mmol/L</b> and a fine postural tremor at <b>1.0 mmol/L</b> or below is expected in <b>30\u201340%</b> of patients, but <b>&gt;1.5 mmol/L is toxicity</b>, with coarse tremor, ataxia, confusion and seizures becoming prominent <b>above 2.0 mmol/L</b>. <b>Metoclopramide:</b> stop immediately (dystonic reaction)."},
+         {tone:"amber", h:"\ud83e\udde0 Suspected Parkinson's \u2014 hands off the levodopa", html:"NICE NG71: refer urgently to a specialist in movement disorders BEFORE starting any dopaminergic treatment. Separating Parkinson's from MSA and PSP is a specialist assessment, and empirical levodopa first is poor practice. The only exception: a very long wait (&gt;4 months) with significantly disabling symptoms, and then only in consultation with the neurology team. Full management is on the <a href='parkinsons.html'>Parkinson's protocol</a>."},
+         {tone:"green", h:"\ud83e\udd8b Thyrotoxic tremor", html:"<b>Propranolol for symptomatic relief while you treat the thyroid disease</b> (carbimazole or propylthiouracil) \u2014 the tremor resolves as the thyrotoxicosis is controlled. See the <a href='hyperthyroidism.html'>hyperthyroidism protocol</a>."}
+       ]},
+       {b:"warn", html:"Treat by impact, not by appearance \u2014 only medicate when the tremor impairs function or causes significant distress. Beta-blocker cautions matter here: asthma, bradyarrhythmia and decompensated heart failure."}
+     ]},
+
+    {id:"lifestyle", nav:"Daily life", title:"Living with the tremor \u2014 what actually helps",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"\ud83c\udf74 Adaptive equipment", html:"Weighted cutlery (400\u2013600 g) reduces the impact on eating with RCT evidence of quality-of-life benefit. Weighted mugs and cups, non-slip mats under plates, an <b>electric toothbrush</b> (removes the fine-motor requirement), button hooks and zip pulls, voice-controlled devices where tremor affects typing. <b>Refer to occupational therapy</b> for a full assessment of activities of daily living."},
+         {tone:"amber", h:"\u2615 Caffeine elimination", html:"Caffeine is <b>one of the most potent exaggerators of physiological tremor</b> \u2014 it blocks adenosine receptors and raises sympathetic activity. Going from &gt;300 mg/day to &lt;100 mg/day often produces a perceptible improvement; a complete 4-week elimination is both a diagnostic and a therapeutic trial."},
+         {tone:"blue", h:"\ud83e\uddd8 Stress management", html:"Anxiety and sympathetic arousal <b>markedly</b> worsen every kind of tremor. Mindfulness-based stress reduction, <b>CBT (especially for performance anxiety)</b>, relaxation breathing, and <b>NHS Talking Therapies</b> where an anxiety disorder is present. Propranolol helps the symptom; the psychological work addresses the driver."},
+         {tone:"amber", h:"\ud83c\udf7a Alcohol \u2014 name the dilemma", html:"Counsel on the <b>self-medication pattern and dependence risk</b>, and offer the effective alternatives. Say it sympathetically: <em>\u201cI understand it's the only thing that helps reliably \u2014 let's find a medical treatment that works as well without the risks.\u201d</em> <b>AUDIT-C at each review; refer if AUDIT-C \u22655.</b>"},
+         {tone:"plain", h:"\ud83d\ude34 Sleep", html:"<b>Fatigue significantly worsens amplitude.</b> Target <b>7\u20139 hours</b>, with standard sleep hygiene \u2014 consistent times, cool dark room, no screens in the hour before bed. Treat sleep disorders: <b>CPAP for OSA significantly improves tremor</b> in patients with co-existing sleep-disordered breathing."},
+         {tone:"cream", h:"\ud83d\ude97 Driving and the DVLA", html:"Essential tremor: no mandatory notification unless vision or safety is impaired. <b>Parkinson's disease: notification is mandatory</b> \u2014 advise it, and <b>document that you advised it</b>. Functional tremor: notify if unable to drive safely. Record the advice given and the patient's acknowledgement at each relevant consultation."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Response, tolerability, and the diagnosis itself",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Response and titration</b>","<b>6 weeks</b> after starting or changing","Tremor improved? Side effects \u2014 bradycardia, bronchospasm, sedation? Continue titrating to the lowest effective dose"],
+         ["At target dose","<b>3-monthly</b>","Function, tolerability, adherence"],
+         ["<b>Annual review</b>","Yearly","Is the tremor still significantly affecting quality of life? If yes, consider DBS or focused-ultrasound referral"],
+         ["Propranolol tolerability","Each review","HR and BP, fatigue, cold peripheries, bronchospasm"],
+         ["Primidone tolerability","Early and ongoing","Sedation, ataxia, nausea \u2014 slow the titration"],
+         ["<b>Re-examine the diagnosis</b>","If the pattern changes","New rest tremor or emerging bradykinesia \u2192 reconsider Parkinson's and refer"],
+         ["<b>Lithium, if prescribed</b>","<b>Any worsening of tremor</b>","<b>Check the level that day \u2014 not at the next routine date.</b> The usual precipitants are dehydration (vomiting, diarrhoea, hot weather), a new <b>NSAID</b> or ACE inhibitor (both reduce renal lithium clearance), a sodium-restricted diet, and diuretics"],
+         ["After DBS or focused ultrasound","Shared care, annual","GP manages general health; neurology manages settings and medication. <b>Check DBS battery status</b>; report new neurological symptoms urgently"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"\ud83d\udd01 Tremor not controlled? Work this before calling it refractory", html:"<b>1 Is it essential tremor?</b> Bilateral action tremor, no other neurology, alcohol-responsive, family history \u2014 and <b>no emerging bradykinesia</b>. <b>2 Reversible cause excluded?</b> TFTs done, and the tremorgenic drug list genuinely reviewed \u2014 \u03b2\u2082-agonists, lithium, valproate, SSRIs, amiodarone, theophylline. <b>3 Caffeine actually reduced?</b> A full 4-week elimination, not a vague cut-back. <b>4 Adequate drug trial?</b> Propranolol to <b>160 mg BD</b> and primidone to <b>250\u2013750 mg/day</b>, each for <b>3 months at target dose</b> \u2014 remembering primidone takes 4\u20136 weeks to work. <b>5 Tried the combination?</b> Both at lower doses beats high-dose monotherapy. <b>6 Genuinely refractory</b> \u2192 neurology for <b>DBS or focused ultrasound thalamotomy</b>."}
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 999", html:"\u201cIf the shaking comes with confusion, fever, stiffness or heavy sweating \u2014 or a sudden severe headache or weakness on one side \u2014 that is an emergency.\u201d"},
+         {tone:"amber", h:"\ud83d\udfe0 Same week", html:"\u201cIf the tremor gets much worse after starting a new medicine, come back for a drug review.\u201d On lithium: <b>a level the same day</b>."},
+         {tone:"blue", h:"\ud83d\udfe1 Changing pattern", html:"\u201cIf the shaking starts happening when your hands are resting, or you notice yourself slowing down or stiffening up, come back \u2014 that changes the diagnosis.\u201d"},
+         {tone:"green", h:"\ud83d\udcac Reassurance", html:"\u201cThis is not Parkinson's, and it is not dangerous \u2014 but if it starts getting in the way, there is effective treatment.\u201d"}
+       ]},
+       {b:"say", html:"What you have is essential tremor \u2014 a shake that shows up when you use your hands, rather than when they are resting. That distinction is exactly why this is not Parkinson's. It is common, it runs in families, and it is not dangerous. Plenty of people simply want to know what it is and leave it there. If it is getting in the way of writing, eating or work, a tablet such as propranolol settles it for about half of people, and there is a second option if that one does not suit. One thing worth saying openly: alcohol does steady it, which is why some people end up using it that way \u2014 I would much rather treat it properly."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / same-day", html:"<b>Delirium tremens</b> \u00b7 <b>serotonin syndrome</b> (clonus, agitation, drug change) \u00b7 <b>neuroleptic malignant syndrome</b> (rigidity, hyperthermia, antipsychotics) \u00b7 <b>thyroid storm</b> \u00b7 suspected intracranial haemorrhage."},
+         {tone:"amber", h:"Neurology within 4 weeks (NICE NG71)", html:"<b>Suspected Parkinson's \u2014 refer BEFORE starting medication</b> \u00b7 <b>cerebellar tremor</b> of any cause (structural exclusion needed) \u00b7 <b>suspected Wilson's</b> \u00b7 <b>functional tremor</b> (for the specialist physiotherapy programme and CBT) \u00b7 rapidly progressive or atypical tremor of unclear cause."},
+         {tone:"blue", h:"Neurology (routine)", html:"Essential tremor not responding to adequate trials of propranolol and primidone \u2014 3 months each at target dose \u00b7 consideration for <b>DBS or focused ultrasound thalamotomy</b> in severe disabling disease \u00b7 Parkinson's annual review under shared care."},
+         {tone:"green", h:"Endocrinology / GP investigation", html:"Hyperthyroid tremor \u2014 TSH and free T4, then treat the thyrotoxicosis (carbimazole or propylthiouracil) and the tremor resolves. <b>Drug-induced \u2014 stop or reduce the causative agent.</b>"},
+         {tone:"plain", h:"Occupational therapy and physiotherapy", html:"OT for activities-of-daily-living adaptations and weighted equipment. For cerebellar tremor, <b>weighting strategies (wrist weights) and proprioceptive techniques</b>."},
+         {tone:"purple", h:"NG12 \u2014 stated honestly", html:"<b>There is no 2WW route for essential tremor.</b> Tremor with a new focal deficit or acute severe headache is a <b>same-day CT head</b>. Where the presentation is instead a <b>progressive focal neurological deficit</b> suggesting a brain tumour, the NG12 route applies: direct-access MRI (or CT if MRI is contraindicated) within 2 weeks for suspected brain or CNS cancer."},
+         {tone:"cream", h:"Keep in primary care", html:"<b>Classic essential tremor</b> \u2014 bilateral postural, familial, alcohol-responsive, no other signs \u2014 with propranolol and lifestyle measures. <b>Physiological</b> (caffeine, anxiety, salbutamol) \u2014 remove the cause. <b>Drug-induced</b> \u2014 adjust the medication."}
+       ]},
+       {b:"why", html:"<b>Why NG71 insists on referral before medication:</b> starting levodopa in someone who actually has MSA or PSP gives false reassurance of a Parkinson's diagnosis, delays the correct one, and exposes them to a drug that will not help much; and it risks missing an atypical presentation of a tumour, vascular disease or drug-induced parkinsonism needing entirely different management. The specialist assessment takes 30\u201360 minutes \u2014 onset symmetry, early falls, eye movements for PSP, the pull test for postural instability, cerebellar signs for MSA \u2014 often with a <b>DaTscan</b>."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 58-year-old accountant whose hands shake when he holds a cup or signs a document, steady on his lap. His father had the same. He mentions, almost as an aside, that a glass of wine settles it completely \u2014 and that he has started having one before client meetings."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Establishes rest versus action</b> rather than accepting \u201ctremor\u201d; asks about family history and the alcohol response; examines for bradykinesia and rigidity and holds the posture long enough to look for a re-emergent tremor; <b>checks TFTs and reviews the drug list</b>; explains clearly that <b>this is not Parkinson's</b>; treats by <b>functional impact</b> rather than reflexively prescribing; and \u2014 the step candidates miss \u2014 picks up the alcohol self-medication without judgement, screens with AUDIT-C, and offers propranolol as the alternative."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG71 · IPG617 · DVLA</b><span class="rd"> \u2014 primary-care assessment, essential tremor management, and referral thresholds</span></li>'+
+         '<li><b>NICE NG71 \u2014 Parkinson\u2019s disease in adults (2017)</b><br><a href="https://www.nice.org.uk/guidance/ng71" rel="noopener">nice.org.uk/guidance/ng71</a><span class="rd"> \u2014 refer suspected Parkinson\u2019s to a movement-disorder specialist, untreated, within 4 weeks; do not initiate dopaminergic treatment in primary care</span></li>'+
+         '<li>NICE IPG617 \u2014 MR-guided focused ultrasound thalamotomy for essential tremor (2016)<br><a href="https://www.nice.org.uk/guidance/ipg617" rel="noopener">nice.org.uk/guidance/ipg617</a><span class="rd"> \u2014 non-invasive unilateral thalamotomy; 80\u201390% tremor reduction sustained at 2 years, and why bilateral treatment is avoided</span></li>'+
+         '<li><b>EFNS / MDS essential tremor guidelines</b><span class="rd"> \u2014 propranolol and primidone as first-line therapy, the approximate 50% amplitude reduction and NNT around 3, and topiramate and gabapentin as adjuncts</span></li>'+
+         '<li><b>Wilson\u2019s Disease Association diagnostic criteria</b><span class="rd"> \u2014 caeruloplasmin below 200 mg/L in 80%, 24-hour urine copper thresholds, and the Kayser-Fleischer ring in about 95% of neurological cases</span></li>'+
+         '<li><b>DVLA \u2014 Assessing fitness to drive (2022)</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk \u2014 assessing fitness to drive</a><span class="rd"> \u2014 mandatory notification for Parkinson\u2019s disease; essential tremor only where vision or safe control is impaired</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 no criterion applies to essential tremor; the adjacent route is direct-access MRI within 2 weeks for a progressive focal neurological deficit suggesting brain or CNS cancer</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: propranolol, atenolol, primidone, topiramate, gabapentin</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Essential tremor \u2014 NICE NG71, NICE IPG617 and DVLA guidance. The undifferentiated tremor presentation is covered by the <a href=\"../algorithms/tremors.html\">tremors assessment pathway</a>, which remains the place to start when the diagnosis is not yet clear. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

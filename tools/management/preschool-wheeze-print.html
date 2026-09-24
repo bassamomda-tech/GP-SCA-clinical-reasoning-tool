@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pre-school wheeze — Protocol · Reasoning GP</title>
+<meta name="description" content="Wheeze in the under-5s: why pre-school viral wheeze is not asthma, separating episodic viral from multiple-trigger wheeze, bronchiolitis and the NG9 admission thresholds, croup and inhaled foreign body, what to give in an acute episode, when a preventer trial is justified, and the red flags that mean it is not wheeze at all." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/preschool-wheeze.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790200156739287 tools/management/preschool-wheeze.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Pre-school wheeze protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🫁",
+  title:"Pre-school wheeze — the complete guide",
+  eyebrow:"Protocol · NICE NG9 · NG245 · pre-school viral wheeze is not asthma",
+  stemTitle:"Most wheezy under-5s do not have asthma — they have viral-triggered wheeze that will stop by school age, and treating them as asthmatic commits a 2-year-old to inhaled steroids they do not need",
+  stemSub:"One page for wheeze in the under-5s. The central task is <b>classification</b>: bronchiolitis in the under-1s (where bronchodilators do not work and NG9 sets the admission thresholds), episodic viral wheeze, multiple-trigger wheeze, and the mimics that are not wheeze at all — croup, inhaled foreign body, and the chronic red flags that mean cystic fibrosis or a structural cause. Then the two decisions that follow: what to give in an acute episode, and whether this child has earned a preventer trial. For confirmed asthma in an older child see <a href='asthma-children.html'>asthma in children</a>.",
+  guideline:"NICE NG9 · NG245 · BTS/SIGN",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"NICE NG9 — bronchiolitis in children"},
+    {t:"NICE/BTS/SIGN NG245 — asthma diagnosis and monitoring"},
+    {t:"Under 5: asthma cannot be confirmed by objective testing", tone:"tw"},
+    {t:"Bronchodilators do NOT work in bronchiolitis", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Admit now</b><small>NG9 · red flags</small></a><a href="#classify"><b>Classify</b><small>Which wheeze?</small></a><a href="#acute"><b>Acute</b><small>What to give</small></a><a href="#preventer"><b>Preventer?</b><small>Trial, not label</small></a><a href="#parents"><b>Parents</b><small>Spacer · what to expect</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ NICE NG9 — admit a bronchiolitic infant immediately if…", html:"Apnoea (observed or reported) · persistent oxygen saturation below 92% in air · severe respiratory distress — grunting, marked chest recession, respiratory rate over 70 · looks seriously unwell to a healthcare professional · central cyanosis. Consider admission for: respiratory rate over 60, inadequate oral intake (50–75% of usual), or clinical dehydration. Lower the threshold in the under-3-months, prematurity, chronic lung or congenital heart disease, and neuromuscular disorders."},
+    {tone:"red", h:"⛔ Bronchodilators do not work in bronchiolitis", html:"NG9 is explicit: do not use salbutamol, ipratropium, adrenaline (nebulised), montelukast, antibiotics, or systemic or inhaled corticosteroids in bronchiolitis. <b>Management is supportive — feeding support, fluids and oxygen.</b> The infant under 12 months having their FIRST wheezy illness with coryza, fine crackles and a low-grade fever has bronchiolitis, and reaching for a salbutamol inhaler is the commonest error in this age group."},
+    {tone:"amber", h:"Pre-school viral wheeze is not asthma — say so", html:"Wheeze ONLY with viral colds, completely symptom-free in between, in a child with no atopy: this is episodic viral wheeze, and the majority grow out of it by school age. Under 5, asthma cannot be confirmed by objective testing (NG245) — spirometry, FeNO and peak flow are not reliable in this age group — so any diagnosis is provisional and a therapeutic trial, not a label. <b>Recording \"asthma\" in a 2-year-old's notes follows them for years.</b>"},
+    {tone:"blue", h:"The acute episode: spacer, not nebuliser", html:"Salbutamol via a pressurised metered-dose inhaler and a SPACER with a face mask is as effective as a nebuliser in mild-to-moderate episodes, with fewer side effects. Typically 2–10 puffs, one puff at a time with 5 tidal breaths each, repeated as needed and reviewed. <b>Give and check the spacer technique in the room</b> — the commonest reason an inhaler \"doesn't work\" is that the drug never reached the lung."},
+    {tone:"green", h:"Multiple-trigger wheeze earns a preventer TRIAL", html:"Wheeze between colds — on exercise, laughing, crying, cold air, smoke or allergen exposure — suggests multiple-trigger wheeze and a higher chance of true asthma, especially with eczema, food allergy or a strong family history. An 8–12 week trial of a low-dose inhaled corticosteroid, with a planned STOP and reassessment, is the appropriate step — the stop date is what distinguishes a trial from a label."},
+    {tone:"purple", h:"🟣 When it is not wheeze at all", html:"A sudden choking episode then persistent unilateral wheeze or cough = inhaled foreign body → urgent same-day assessment for bronchoscopy, even if the child now looks well. <b>Barking cough with stridor = croup, not wheeze.</b> Wheeze from the first weeks of life, failure to thrive, wet chronic cough, clubbing, or a persistently abnormal chest = cystic fibrosis, primary ciliary dyskinesia, tracheobronchomalacia or a structural anomaly → paediatric referral."}
+  ],
+  pathwaySub:"Four steps. Skipping the first one is how a foreign body becomes a three-month cough.",
+  pathway:[
+    {title:"Exclude the emergencies and the mimics", html:"NG9 admission criteria in the under-1s · stridor and barking cough (croup) · sudden choking then focal signs (foreign body) · the chronic red flags that suggest a structural or genetic cause.", alert:true},
+    {title:"Classify the wheeze", html:"Bronchiolitis (under 1, first episode, coryza and fine crackles) · episodic viral wheeze (only with colds, well in between) · multiple-trigger wheeze (symptoms between colds). Confirm it IS wheeze — ask the parent to describe or imitate the sound, because \"wheeze\" is used for almost any noisy breathing."},
+    {title:"Treat the acute episode", html:"Salbutamol via pMDI and spacer with a face mask, titrated to response; oral prednisolone only where there is a clear indication; oxygen and admission by the severity criteria."},
+    {title:"Decide about prevention — and set a stop date", html:"Episodic viral wheeze: no routine preventer. Multiple-trigger wheeze or frequent severe episodes: an 8–12 week ICS trial with a planned reassessment. Address smoke exposure at every contact — it is the single most modifiable factor."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Admit now", title:"Red flags — admission, and the diagnoses that are not wheeze",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["Apnoea, oxygen saturation persistently below 92%, grunting, marked recession, respiratory rate over 70, cyanosis, or a child who looks seriously unwell","<b>Severe bronchiolitis or severe acute wheeze</b>","<b>999 / immediate admission.</b> These are the NG9 immediate-admission criteria and they apply regardless of how the child looked an hour ago"],
+         ["Respiratory rate over 60, feeding at 50–75% of usual volume, or clinical dehydration","<b>Moderate bronchiolitis</b>","<b>Consider admission (NG9).</b> <b>Feeding is the most useful single question to a parent</b> — a baby too breathless to feed is a baby in trouble"],
+         ["Silent chest, exhaustion, poor respiratory effort, altered consciousness, agitation, or SpO₂ under 92% in a wheezy child","<b>Life-threatening acute wheeze / asthma attack</b>","<b>999.</b> A quiet chest in a previously noisy child is deterioration, not improvement"],
+         ["Sudden choking or coughing episode, then persistent cough or unilateral wheeze","<b>Inhaled foreign body</b>","Urgent same-day paediatric assessment for bronchoscopy — even if the child now appears well. The symptom-free interval after the initial event is what causes the delay in diagnosis"],
+         ["<b>Barking cough, hoarse voice, inspiratory stridor</b>","<b>Croup — not wheeze</b>","Oral dexamethasone 0.15 mg/kg single dose; admit if stridor at rest, marked recession or distress. Keep the child calm — distress worsens the obstruction"],
+         ["Drooling, unable to swallow, muffled voice, tripod position, toxic-looking","<b>Epiglottitis or bacterial tracheitis</b>","<b>999. Do NOT examine the throat</b>"],
+         ["Wheeze from the first weeks of life · failure to thrive · chronic wet or productive cough · clubbing · persistent focal or asymmetrical chest signs · recurrent pneumonia","Cystic fibrosis, primary ciliary dyskinesia, tracheobronchomalacia, vascular ring, immunodeficiency, or aspiration","<b>Paediatric referral — these do not get another salbutamol trial.</b> Check the newborn bloodspot result for CF"],
+         ["<b>Fever with focal chest signs, and an unwell child</b>","<b>Pneumonia</b>","Treat per the <a href='chest-infections.html'>chest infections protocol</a>; admit if hypoxic, dehydrated or systemically unwell"]
+       ]},
+       {b:"warn", html:"<b>Two errors define this area.</b> <b>Treating an under-1 with first-episode bronchiolitis as asthma</b> — giving salbutamol that NG9 explicitly says does not work, and sometimes steroids too. <b>And labelling a 2-year-old with episodic viral wheeze as asthmatic</b> — which under NG245 cannot be objectively confirmed at that age, commits the child to long-term inhaled steroids, and frequently persists in the record long after the wheeze has stopped. The correct posture in the under-5s is a provisional description and a therapeutic trial with a review date, not a diagnosis."}
+     ]},
+
+    {id:"classify", nav:"Classify", title:"Which wheeze is this?",
+     sub:"The classification determines everything that follows.",
+     blocks:[
+       {b:"table", head:["Pattern","Recognising it","What it means"], rows:[
+         ["<b>Bronchiolitis</b>","Usually under 12 months, FIRST wheezy illness. Coryza for 1–3 days, then cough, tachypnoea, fine inspiratory crackles and/or high-pitched expiratory wheeze, poor feeding. Low-grade fever. RSV in most cases; peak at days 3–5","Supportive care only. Bronchodilators, steroids, antibiotics and montelukast are all specifically NOT recommended (NG9). Cough can persist for up to 3 weeks — tell the parents this, or they will return worried"],
+         ["<b>Episodic viral wheeze</b>","Wheeze ONLY during viral upper respiratory infections, completely well and symptom-free between episodes. No interval symptoms, often no atopy. Typically 1–5 years","The most likely diagnosis in this age group, and the majority resolve by school age. <b>No routine preventer; treat episodes with salbutamol via spacer</b>"],
+         ["<b>Multiple-trigger wheeze</b>","Wheeze with colds AND between them — on exercise, laughing, crying, cold air, smoke or allergen exposure. Often with eczema, food allergy, allergic rhinitis or a strong family history of atopy","<b>Higher likelihood of progressing to true asthma.</b> <b>Justifies a preventer TRIAL with a planned stop and reassessment</b>"],
+         ["<b>Suspected asthma (over 5)</b>","Interval symptoms, nocturnal cough or wheeze, exercise limitation, documented response to a bronchodilator, atopy","<b>Over 5, objective testing becomes possible.</b> See <a href='asthma-children.html'>asthma in children</a>"],
+         ["<b>Not wheeze at all</b>","Stridor (inspiratory, upper airway) · stertor (snoring, nasal) · transmitted upper-airway noise from secretions · a wet rattly chest from post-nasal drip","Ask the parent to imitate the sound, or listen yourself before accepting the word. Parental \"wheeze\" corresponds to true wheeze on examination in only a minority of cases"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Why the under-5 label matters so much</b>","NG245 states that asthma cannot be confirmed by objective testing in the under-5s — spirometry needs coordination they do not have, FeNO is unreliable, and peak flow is meaningless. So a diagnosis at this age rests on pattern recognition plus response to treatment, and should be recorded as \"suspected asthma\" or \"pre-school wheeze\" with a review date"],
+         ["<b>What raises the probability of true asthma</b>","Interval symptoms between infections · eczema or food allergy · allergic rhinitis · parental asthma or atopy · male sex · early sensitisation to aeroallergens · frequent or severe episodes requiring steroids or admission"],
+         ["<b>What lowers it</b>","Symptoms only with colds · complete freedom from symptoms in between · no personal or family atopy · onset in infancy with a clear viral trigger each time"]
+       ]}
+     ]},
+
+    {id:"acute", nav:"Acute", title:"Treating the acute episode",
+     blocks:[
+       {b:"table", head:["Situation","Treatment","Notes"], rows:[
+         ["Mild–moderate acute wheeze, child over 1 with episodic viral or multiple-trigger wheeze","Salbutamol via pMDI and spacer with a face mask — typically 2–10 puffs, ONE puff at a time with about 5 tidal breaths after each, repeated according to response","A spacer is as effective as a nebuliser in mild-to-moderate episodes with fewer side effects (tremor, tachycardia). Reassess after treatment and before discharge"],
+         ["<b>Severe episode</b>","Oxygen to maintain saturations, nebulised salbutamol with ipratropium, and admission","<b>Silent chest, exhaustion or SpO₂ under 92% → 999</b>"],
+         ["<b>Oral corticosteroid</b>","Consider a short course of oral prednisolone in a severe episode, or in a child already on a preventer with a significant attack — typically 3 days","Routine oral steroids for mild episodic viral wheeze in an otherwise well pre-school child are NOT supported — the evidence for benefit in that group is weak"],
+         ["<b>Bronchiolitis (under 1, first episode)</b>","<b>Supportive only: feeding support, fluids, oxygen if needed</b>","Do NOT give salbutamol, ipratropium, nebulised adrenaline, montelukast, antibiotics or corticosteroids (NG9)"],
+         ["<b>Croup</b>","Oral dexamethasone 0.15 mg/kg as a single dose (prednisolone is an alternative if dexamethasone is unavailable)","Admit for stridor at rest or significant distress. <b>Keep the child calm and on the parent's lap</b>"],
+         ["<b>Antibiotics</b>","<b>Not indicated for wheeze or bronchiolitis</b>","Only for genuine bacterial infection — focal signs, high fever and an unwell child. See <a href='chest-infections.html'>chest infections</a>"],
+         ["<b>Montelukast</b>","Not for bronchiolitis. May be considered by specialists in episodic viral wheeze, but the evidence is inconsistent","Warn parents about neuropsychiatric side effects — sleep disturbance, nightmares, agitation and mood change (MHRA) — and review it specifically at the next appointment"]
+       ]}
+     ]},
+
+    {id:"preventer", nav:"Preventer?", title:"Prevention — a trial with a stop date, not a label",
+     blocks:[
+       {b:"table", head:["Situation","Action"], rows:[
+         ["<b>Episodic viral wheeze, infrequent mild episodes</b>","No routine preventer. Salbutamol via spacer for episodes, a written plan, and review"],
+         ["Multiple-trigger wheeze, or frequent/severe episodes (repeated steroid courses, attendances or an admission)","Trial a low-dose inhaled corticosteroid for 8–12 weeks with a PLANNED stop and reassessment. <b>If there is no clear benefit, stop it — do not continue by default</b>"],
+         ["<b>Clear benefit on the trial, with deterioration on stopping</b>","This supports a working diagnosis of asthma; continue at the lowest effective dose and review at least annually. See <a href='asthma-children.html'>asthma in children</a>"],
+         ["<b>No benefit on the trial</b>","<b>Stop the ICS, revisit the diagnosis, and reconsider the mimics</b> — poor inhaler technique, ongoing smoke exposure, or a structural or genetic cause"],
+         ["Any child needing escalation beyond a low-dose ICS, or with frequent oral steroid courses","<b>Paediatric referral</b>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"🚭 Smoke exposure is the biggest modifiable factor", html:"Ask at every contact, including vaping and smoking outdoors or in the car — third-hand smoke on clothing still exposes the child. <b>Offer the parent cessation support directly rather than only advising</b>; it is one of the few interventions that changes the natural history."},
+         {tone:"blue", h:"🔬 What to check before escalating", html:"Inhaler and spacer technique (observed, not asked about) · adherence · smoke exposure · whether the sound is actually wheeze · the chronic red flags. Escalating treatment past poor technique is the commonest avoidable error."},
+         {tone:"amber", h:"⚠ Review the label as the child grows", html:"A \"pre-school wheeze\" or \"suspected asthma\" entry needs revisiting at school age. Many children will have stopped wheezing entirely; others will now be old enough for objective testing to confirm asthma."},
+         {tone:"green", h:"✓ Allergy and atopy", html:"Treat coexisting eczema and allergic rhinitis properly — both worsen wheeze control. See <a href='eczema.html'>eczema</a> and <a href='allergic-rhinitis.html'>allergic rhinitis</a>; consider <a href='cmpa.html'>CMPA</a> in an infant with wheeze, eczema and gut symptoms."}
+       ]}
+     ]},
+
+    {id:"parents", nav:"Parents", title:"What to tell the family",
+     blocks:[
+       {b:"say", html:"What Alfie has is what we call pre-school viral wheeze. His airways are small and springy, and when he catches a cold they narrow and make that whistling sound. It looks and sounds very like asthma — but it usually isn't, and most children grow out of it completely by the time they start school. That's why I'm not labelling him asthmatic today and not putting him on a daily preventer inhaler: he doesn't need one between colds, and I don't want him on steroids he doesn't need. What I will do is give you the blue inhaler and a spacer for when he's wheezy, show you exactly how to use it, and tell you the signs that mean he needs to be seen the same day."},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999 / A&amp;E now", html:"\"Too breathless to feed, talk or play · going blue around the lips · sucking in under the ribs or at the neck · grunting · drowsy or floppy · or the inhaler is not lasting 4 hours.\""},
+         {tone:"amber", h:"🟠 Same-day appointment", html:"\"Needing the inhaler more often than usual, feeding less than about half normal, a high fever with fast breathing, or you are simply worried and it is getting worse rather than better.\""},
+         {tone:"blue", h:"💊 The spacer, every time", html:"\"One puff at a time into the spacer, then five normal breaths, then the next puff. Never puff several times into the spacer at once. Wash it monthly in warm soapy water and let it drip dry — don't rub it, as that creates static that sticks the drug to the wall.\""},
+         {tone:"green", h:"✓ What to expect", html:"\"The cough after a chest infection can go on for up to three weeks even though he's getting better. Most children with this stop having episodes by school age.\""}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review",
+     blocks:[
+       {b:"table", head:["When","What to do"], rows:[
+         ["<b>After an acute episode</b>","Review within 48 hours if managed at home, and after any hospital attendance. Check technique, confirm the plan and identify triggers"],
+         ["<b>8–12 weeks into an ICS trial</b>","Reassess deliberately: has there been a clear reduction in episodes and interval symptoms? If not, STOP the ICS. Never let a trial become an indefinite prescription by default"],
+         ["<b>At least annually in any child on a preventer</b>","Technique observed, adherence, growth (height and weight plotted), smoke exposure, episode frequency, and whether the treatment is still needed"],
+         ["<b>At school age</b>","Revisit the diagnosis. Objective testing becomes possible; many children will have stopped wheezing and can have the label removed"]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / immediate admission", html:"NG9 criteria: apnoea, SpO₂ persistently under 92%, severe respiratory distress, cyanosis, or a child who looks seriously unwell. <b>Silent chest, exhaustion or altered consciousness in a wheezy child.</b> <b>Suspected epiglottitis — do not examine the throat.</b>"},
+         {tone:"red", h:"⚡ Urgent same-day — inhaled foreign body", html:"A sudden choking episode followed by persistent cough or unilateral wheeze needs same-day paediatric assessment for bronchoscopy, even if the child now looks well. The well-looking interval after the event is precisely why this diagnosis is delayed."},
+         {tone:"amber", h:"Paediatric referral", html:"Chronic red flags (wheeze from the first weeks of life, failure to thrive, wet chronic cough, clubbing, focal or asymmetrical signs, recurrent pneumonia) · diagnostic uncertainty · frequent severe episodes · escalation beyond a low-dose ICS · repeated oral steroid courses."},
+         {tone:"blue", h:"Allergy / respiratory paediatrics", html:"Significant coexisting food allergy or suspected allergic asthma requiring specialist assessment."},
+         {tone:"cream", h:"GP management", html:"Primary care owns: classifying the wheeze, the acute spacer-delivered salbutamol, deciding whether a preventer trial is justified and stopping it if it fails, smoke-exposure work, technique teaching, the written plan and the safety-net. Related pages: <a href='asthma-children.html'>asthma in children</a> · <a href='chest-infections.html'>chest infections</a> · <a href='eczema.html'>eczema</a> · <a href='allergic-rhinitis.html'>allergic rhinitis</a> · <a href='cmpa.html'>CMPA</a> · <a href='../algorithms/wheeze-child.html'>wheeze in children pathway</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A <b>2-year-old</b> is brought by his mother with his <b>fourth wheezy episode this winter</b>, each one starting with a runny nose and settling within a week. He is <b>completely well between episodes</b>, running about normally, with no eczema and no family history of asthma. His mother is exhausted, says <b>\"the nursery keeps saying he's asthmatic\"</b>, and asks to be <b>started on a brown preventer inhaler</b> like her sister's child. She smokes, <b>\"but only outside\"</b>. Today he is wheezy but feeding, alert and not recessing."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Classifies this as episodic viral wheeze — wheeze only with colds, symptom-free between, no atopy — and explains why that is NOT asthma; explains that under 5 asthma cannot be confirmed by objective testing, so a label would be provisional and carries consequences; <b>declines the preventer with a reason rather than a refusal</b>, and says what would change that decision (symptoms between colds, frequent severe attacks); treats today's episode with salbutamol via pMDI and spacer and TEACHES the technique in the room, one puff with five breaths; addresses smoking including third-hand smoke on clothing and offers cessation support to her, not just advice; <b>gives the red-flag safety-net in concrete parent language</b> (too breathless to feed, recession, inhaler not lasting 4 hours); <b>warns the cough may persist up to 3 weeks</b>; arranges review and explains most children grow out of it by school age; and <b>validates her exhaustion rather than dismissing the nursery's comment.</b>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG9 — Bronchiolitis in children: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng9" rel="noopener">nice.org.uk/guidance/ng9</a><span class="rd"> — the immediate-admission criteria (apnoea, SpO\u2082 below 92%, severe respiratory distress, cyanosis), the consider-admission criteria (RR over 60, 50\u201375% of usual intake, dehydration), the risk groups, and the explicit recommendations against bronchodilators, adrenaline, montelukast, antibiotics and corticosteroids</span></li>'+
+         '<li>NICE/BTS/SIGN NG245 — Asthma: diagnosis, monitoring and chronic asthma management (2024)<br><a href="https://www.nice.org.uk/guidance/ng245" rel="noopener">nice.org.uk/guidance/ng245</a><span class="rd"> — that asthma cannot be confirmed by objective testing in the under-5s, and the role of a treatment trial with reassessment in that age group</span></li>'+
+         '<li><b>NICE NG9 (bronchiolitis) · NICE/BTS/SIGN NG245 (asthma)</b><br><a href="https://www.nice.org.uk/guidance/ng245" rel="noopener">nice.org.uk/guidance/ng245</a><span class="rd"> — the episodic viral versus multiple-trigger wheeze classification, spacer-delivered salbutamol dosing, and the single-dose dexamethasone 0.15 mg/kg for croup</span></li>'+
+         '<li><b>MHRA Drug Safety Update — montelukast</b><span class="rd"> — neuropsychiatric reactions including sleep disturbance, nightmares, agitation and mood change, and the advice to counsel families and review specifically</span></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> — salbutamol, corticosteroid and dexamethasone dosing in children</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Pre-school wheeze — NICE NG9, NICE/BTS/SIGN NG245, NICE and the MHRA montelukast advice. Pre-school viral wheeze is not asthma: wheeze only with colds and complete freedom from symptoms in between usually resolves by school age, and under 5 asthma cannot be confirmed by objective testing — so record a provisional description with a review date rather than a label. In bronchiolitis, bronchodilators, steroids, antibiotics and montelukast are all specifically not recommended; management is supportive and NG9 sets the admission thresholds. Treat acute episodes with salbutamol via a pMDI and spacer, teaching the technique in the room. A preventer is a time-limited trial with a planned stop, not a default. Verify all doses against the BNF for Children before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

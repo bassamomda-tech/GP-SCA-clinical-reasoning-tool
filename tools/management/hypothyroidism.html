@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hypothyroidism &amp; subclinical hypothyroidism — Protocol · Reasoning GP</title>
+<meta name="description" content="Hypothyroidism in adults, diagnosis and management on one page: reading the TFT pattern, the subclinical treat/trial/monitor decision, levothyroxine dosing by age and heart, the 6–8 week titration rhythm, pregnancy rules, absorption, and the thyroid-lump 2WW." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hypothyroidism.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Hypothyroidism protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F98B}",
+  title:"Hypothyroidism & subclinical hypothyroidism",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Hypothyroidism \u2014 read the pattern, dose by age and heart, titrate on the 6\u20138 week rhythm, and don\u2019t over-treat the mildly raised TSH",
+  stemSub:"One page for the whole condition. Read the TFT pattern correctly (primary, pituitary, sick euthyroid), examine the neck and the reflexes, order the baseline that actually changes management, make the subclinical treat/trial/monitor decision by the numbers, choose the starting dose by age and cardiac status, know the pregnancy rules cold, fix absorption before raising doses, and hold the line on T3.",
+  guideline:"NICE NG145 \u00b7 BTA",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NICE NG145 (2019)"},
+    {t:"BTA \u00b7 NICE NG145"},
+    {t:"TRUST \u00b7 JAMA 2018;320:1349"},
+    {t:"GEMS / Red Whale Nov 2024"},
+    {t:"2WW \u00b7 NG12 thyroid lump", tone:"tw"},
+    {t:"v3.0 \u00b7 both algorithms merged", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Read the TFTs</b><small>Primary \u00b7 pituitary \u00b7 sick euthyroid</small></a><a href="#examine"><b>Examine</b><small>Neck \u00b7 heart \u00b7 reflexes</small></a><a href="#subclinical"><b>Subclinical</b><small>Treat \u00b7 trial \u00b7 monitor</small></a><a href="#ladder"><b>Levothyroxine</b><small>Dose \u00b7 titrate \u00b7 pregnancy</small></a><a href="#refer"><b>Refer</b><small>Endocrine \u00b7 2WW</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Check the pattern before you treat", html:"Low or inappropriately normal TSH with a low FT4 is secondary (pituitary) hypothyroidism \u2014 not a titrate-on-TSH problem. Check a <b>9am cortisol first</b>: giving levothyroxine before steroid replacement can <b>precipitate an adrenal crisis</b>. Refer to endocrinology. Titrating this patient to a \u201cnormal TSH\u201d chronically under-replaces them."},
+    {tone:"red", h:"Never diagnose subclinical disease on one result", html:"<b>Repeat TSH and FT4 at 3 months</b> \u2014 about <b>half of mild elevations normalise spontaneously</b>. Treating on a single reading commits the patient to lifelong therapy for what may have been a blip. Exclude non-thyroidal illness (TSH commonly overshoots during recovery), recent thyroiditis, amiodarone or lithium, and <b>biotin assay interference</b> (stop biotin ~2 days before re-testing)."},
+    {tone:"amber", h:"The subclinical decision in one line", html:"<b>TSH &gt;10 on two tests \u2192 consider treating.</b> TSH 4\u201310 with symptoms and under 65 \u2192 a time-limited 6-month trial, stopped if symptoms persist once TSH is normal. <b>TSH 4\u201310 and asymptomatic, or aged 65 and over \u2192 monitor</b>, don't treat."},
+    {tone:"blue", h:"Starting dose is set by age and heart", html:"Under 65 with no cardiac disease: full replacement 1.6 micrograms/kg/day rounded to 25 micrograms (<b>100 \u00b5g</b> at 60 kg, <b>125 \u00b5g</b> at 80 kg, <b>150 \u00b5g</b> at 100 kg). <b>Aged 65 or over, or ischaemic heart disease: 25\u201350 micrograms/day</b>, up-titrated 25 micrograms every 4 weeks \u2014 thyroxine raises myocardial oxygen demand, and going fast in IHD precipitates angina, MI or arrhythmia."},
+    {tone:"plain", h:"6\u20138 weeks, every time", html:"<b>Recheck TSH 6\u20138 weeks after every dose change</b> \u2014 never sooner; the pituitary lags weeks behind. Adjust in <b>25\u201350 microgram</b> steps to a TSH within the reference range (0.4\u20134); the lower half (0.4\u20132.5) often feels best in younger symptomatic patients. Then annually."},
+    {tone:"green", h:"Pregnancy is the highest-stakes titration", html:"<b>Preconception target TSH &lt;2.5.</b> A positive pregnancy test means adding 25\u201350% immediately \u2014 do not wait for bloods (practically, double the dose on 2 days a week). TSH 4-weekly to mid-gestation, trimester targets, joint care. Subclinical hypothyroidism in pregnancy or preconception is always treated."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Read the pattern, not just the TSH", html:"Raised TSH with low FT4 = overt \u2192 treat. Raised TSH with normal FT4 = subclinical \u2192 repeat at 3 months. Low or normal TSH with low FT4 = pituitary \u2192 9am cortisol and refer, never titrate on TSH. Don't test during acute illness.", alert:true},
+    {title:"Exclude what it isn't", html:"Pregnancy or trying to conceive (separate lower-threshold pathway), age &lt;16, suspected adrenal insufficiency, amiodarone or lithium, and any thyroid lump or compressive neck symptom \u2192 NG12 2WW regardless of the TSH."},
+    {title:"Confirm and stratify", html:"Repeat TSH + FT4 at 3 months, check <b>anti-TPO once</b>. Then stratify subclinical disease by TSH level, age and symptoms."},
+    {title:"Treat, trial or monitor", html:"Overt \u2192 treat. TSH &gt;10 \u2192 consider treating. TSH 4\u201310 under 65 with symptoms \u2192 6-month trial. Otherwise monitor at a defined interval. Fix absorption from day one."},
+    {title:"Titrate and hold the rhythm", html:"TSH at 6\u20138 weeks after every change \u2192 stable at 4\u20136 months \u2192 annually. Stop a trial that hasn't worked. Watch for over-replacement \u2014 AF and fractures."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Read the TFTs", title:"Confirm it is primary \u2014 the patterns that change the plan", sub:"The whole management logic hinges on which pattern you are looking at. Two of these five need a different pathway entirely.",
+     blocks:[
+       {b:"table", head:["Pattern","TSH","FT4","Meaning \u2192 action"], rows:[
+         ["<b>Overt primary</b>","\u2191 (usually &gt;10)","\u2193","<b>Treat with levothyroxine regardless of symptoms</b> \u2014 this pathway"],
+         ["<b>Subclinical</b>","\u2191 (4\u201310, or &gt;10)","<b>Normal</b>","<b>Repeat at 3 months</b> + anti-TPO antibodies \u2192 the treat/trial/monitor decision below"],
+         ["<b>Secondary (pituitary)</b>","<b>Low or inappropriately normal</b>","\u2193","<b>NOT a levothyroxine-titrate-on-TSH problem.</b> Check <b>9am cortisol</b> \u2014 treating thyroid before steroid replacement can precipitate <b>adrenal crisis</b> \u2192 endocrinology. \u00b1 headache, visual symptoms, other pituitary hormone loss"],
+         ["<b>Sick euthyroid</b>","Low/normal","Low/normal","Acute illness distorts TFTs \u2192 <b>don't test during acute illness</b>; recheck <b>6 weeks after recovery</b>"],
+         ["<b>Poor adherence pattern</b>","\u2191","Normal/\u2191","Taking it only before the blood test \u2014 FT4 responds in days, TSH takes weeks. Explore gently"]
+       ]},
+       {b:"dl", rows:[
+         ["Cause","<b>Autoimmune (Hashimoto's \u2014 anti-TPO positive)</b> is most UK cases; post-thyroidectomy or radioiodine; drugs \u2014 <b>amiodarone, lithium</b> (6-monthly TFTs on both), and the immunotherapy group: <b>checkpoint inhibitors, interferon and tyrosine kinase inhibitors</b>; post-partum thyroiditis (often transient \u2014 confirm the need for lifelong treatment later); subacute thyroiditis"],
+         ["Baseline","TSH + FT4, <b>anti-TPO once</b> (prognostic in subclinical disease), lipids (they improve with treatment), pregnancy status. <b>No routine FT3, and no repeat antibody testing</b>"],
+         ["<b>Post-thyroid-cancer</b>","The oncology team may want TSH deliberately <b>suppressed (&lt;0.1)</b> \u2014 <b>check the letter before \u201ccorrecting\u201d it</b>"],
+         ["<b>Transient causes of a raised TSH</b>","Recovery from any non-thyroidal illness (sick-euthyroid rebound), recent treatment of hyperthyroidism, recent thyroiditis (post-partum, subacute), post-viral states, drugs raising TSH, <b>high-dose biotin supplements and assay artefact</b>, and normal <b>diurnal variation</b> (TSH is higher at night and early morning) \u2014 mild fluctuation around the upper reference limit is common and often not pathological"]
+       ]},
+       {b:"why", html:"NICE NG145 requires a repeat TSH with FT4 after <b>3 months</b> before acting on a mildly raised TSH, because roughly <b>half normalise spontaneously</b>. Central hypothyroidism is the classic trap: the TSH is misleadingly low or normal, so treating \u201cto a normal TSH\u201d chronically under-replaces the patient. And the whole subclinical logic depends on the FT4 being normal \u2014 if it is low, the patient has overt disease and the \u201cconsider/monitor\u201d reasoning no longer applies."}
+     ]},
+
+    {id:"severe", nav:"Exclude first", title:"Before you label it \u201csubclinical\u201d \u2014 exclude the things it isn\u2019t", sub:"Each of these needs a different, more urgent, or fundamentally different approach that a TSH-led algorithm is not designed for.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW \u00b7 NICE NG12 \u2014 thyroid cancer", html:"An unexplained thyroid lump \u2192 consider a suspected cancer pathway referral (2 weeks) for thyroid cancer \u2014 independent of the TSH, which is usually normal in thyroid malignancy. A rapidly enlarging or fixed goitre, hoarseness, dysphagia or a neck node raises the same concern; in an adult aged <b>45 or over</b>, persistent unexplained hoarseness or an unexplained neck lump is itself an NG12 head-and-neck criterion. Do not let a normal or mildly abnormal TFT reassure you out of examining the neck."},
+         {tone:"red", h:"Overt hypothyroidism", html:"Raised TSH with a <b>low</b> FT4 \u2014 this is overt disease, not subclinical \u2192 <b>treat with levothyroxine regardless of symptoms</b>."},
+         {tone:"red", h:"Suspected adrenal insufficiency", html:"Hypotension, hyponatraemia, fatigue, pigmentation, postural dizziness \u2192 <b>check 9am cortisol before any thyroxine</b>: levothyroxine can <b>precipitate adrenal crisis</b> if Addison's coexists."},
+         {tone:"red", h:"Myxoedema coma (rare)", html:"Doses missed for weeks, then drowsiness, confusion, hypothermia \u2192 <b>emergency admission</b>. Hospital treatment is <b>IV T3 or T4 plus IV hydrocortisone</b> with supportive care, usually in <b>ITU</b> \u2014 the hydrocortisone matters because coexisting adrenal insufficiency cannot be excluded in the moment."},
+         {tone:"red", h:"Cardiac decompensation in severe hypothyroidism", html:"A new pericardial effusion, heart failure, bradyarrhythmia or a prolonged QTc \u2192 same-day cardiology, and 999 if haemodynamically compromised. Muffled heart sounds in a bradycardic patient warrant an <b>urgent ECG and echocardiogram</b> \u2014 severe hypothyroidism causes sinus bradycardia, low-voltage complexes and QTc prolongation."},
+         {tone:"amber", h:"Pregnant or trying to conceive", html:"<b>This pathway does not apply</b> \u2192 lower treatment threshold, <b>treat promptly and refer</b>. Untreated disease risks miscarriage and fetal neurodevelopment \u2014 subclinical disease with positive antibodies is associated with a <b>2\u20133\u00d7 miscarriage risk</b>."},
+         {tone:"amber", h:"Central (secondary) hypothyroidism", html:"Low or normal TSH with a <b>low free T4</b>, \u00b1 headache, visual symptoms or other pituitary hormone loss \u2192 <b>refer endocrinology; do not titrate on TSH</b>."},
+         {tone:"amber", h:"Very high TSH, or systemically unwell", html:"TSH well above 10 with marked symptoms, or intercurrent illness \u2192 <b>treat as overt and assess clinically</b>; don't just \u201cwatch and repeat\u201d."},
+         {tone:"amber", h:"Amiodarone, lithium or immunotherapy", html:"Drug-induced thyroid dysfunction can <b>evolve quickly</b> and causes both hypo- and hyperthyroidism \u2192 monitor with the initiating team, don't simply observe. <b>6-monthly TFTs</b>, and for 12 months after stopping amiodarone."},
+         {tone:"plain", h:"Child or young person aged &lt;16", html:"Different thresholds and causes \u2192 <b>paediatric or endocrine referral</b> rather than this adult pathway. <b>Congenital hypothyroidism</b> is picked up on the <b>newborn bloodspot</b>; a child with growth failure or delayed puberty needs urgent paediatric endocrinology \u2014 do not delay, the neurodevelopmental harm is irreversible."}
+       ]}
+     ]},
+
+    {id:"examine", nav:"Examine", title:"Targeted examination \u2014 what changes management", sub:"Examination does three jobs here: it confirms severity, it finds the 2WW neck, and it sets how cautiously you start.",
+     blocks:[
+       {b:"table", head:["Look at","What to find","Why it changes the plan"], rows:[
+         ["<b>Thyroid gland</b>","Size, consistency, nodules, tenderness, bruit","<b>Hard, irregular or fixed \u2192 2WW.</b> Diffusely firm, non-tender and symmetrical \u2192 Hashimoto's. Tender \u2192 subacute thyroiditis. <b>Tracheal deviation \u2192 urgent chest X-ray.</b> Cervical lymphadenopathy with a thyroid mass has a high positive predictive value for malignancy"],
+         ["<b>Cardiovascular</b>","Rate and rhythm (bradycardia, AF), BP (hypertension is common), heart sounds, peripheral oedema","<b>Muffled sounds suggest a pericardial effusion.</b> ECG if bradycardic, if an effusion is suspected, or before treating an elderly or cardiac patient"],
+         ["<b>Neurological</b>","<b>Delayed relaxation of the ankle reflexes</b> (near-pathognomonic when present), cerebellar ataxia in severe disease, carpal tunnel signs (<b>Tinel's and Phalen's</b>)","Hypothyroid myopathy and entrapment neuropathy are reversible with replacement \u2014 and their presence marks more than a mild biochemical abnormality. Assess cognition in overt disease"],
+         ["<b>Skin and hair</b>","Dry, cool, pale or yellowish skin (carotenaemia); coarse brittle hair; <b>loss of the outer third of the eyebrow (Hertoghe's sign)</b>; non-pitting oedema of the face and limbs","These are the features of established overt disease \u2014 they argue against \u201cwatch and repeat\u201d"]
+       ]},
+       {b:"why", html:"<b>Examination gives you a severity anchor.</b> A patient with myxoedematous facies, bradycardia and delayed reflexes needs a <b>more cautious initiation at a lower starting dose</b> than an incidentally found subclinical case with a normal examination \u2014 the same TSH means different things in those two people. And the neck examination is the part a TSH-led approach forgets: <b>thyroid cancer usually has a normal TSH</b>, so a normal blood test must never talk you out of palpating the gland."}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Investigations \u2014 the baseline that changes management, and the tests to stop ordering",
+     sub:"Order what alters the plan. Repeating antibodies and chasing T3 are the two commonest wasted tests in thyroid care.",
+     blocks:[
+       {b:"table", head:["Test","When","What it does for you"], rows:[
+         ["<b>TSH + free T4</b>","Always \u2014 and repeat at 3 months before acting on a mild elevation","Establishes the pattern. <b>Not during acute illness</b>"],
+         ["<b>Anti-TPO antibodies</b>","<b>Once</b>","Confirms autoimmune cause and predicts progression from subclinical to overt \u2014 it sets the monitoring interval. <b>Do not repeat</b>"],
+         ["Thyroglobulin antibodies","Only if anti-TPO negative and Hashimoto's still suspected","Less sensitive; <b>not routine</b>"],
+         ["<b>9am cortisol \u00b1 short Synacthen (ACTH stimulation) test</b>","If features suggest coexisting adrenal insufficiency \u2014 hypotension, hyponatraemia, <b>hyperpigmentation</b>, unwell","<b>Check BEFORE starting levothyroxine</b> \u2014 thyroxine increases cortisol metabolism and can precipitate an Addisonian crisis"],
+         ["<b>Pregnancy test</b>","Any woman of reproductive age with new hypothyroidism","Pregnancy changes the TSH reference range and the treatment threshold \u2014 confirm before dosing"],
+         ["Lipids","Baseline, then <b>reassess fasting lipids at 3\u20136 months once euthyroid</b>","Hypothyroidism raises total cholesterol and LDL and it normalises with treatment \u2014 do not start a statin before treating the thyroid; only treat what is still elevated after stable euthyroidism"],
+         ["FBC, ferritin, B12 and folate","Baseline and when symptoms persist","Autoimmune thyroid disease clusters with <b>pernicious anaemia</b>; iron deficiency both impairs levothyroxine absorption and reduces peripheral T4\u2192T3 conversion"],
+         ["U&amp;E, LFTs, CK","Baseline in overt disease","<b>Raised CK and LDH are common (myopathy)</b>; transaminases rise in hypothyroid hepatopathy \u2014 and it is a useful baseline if a statin may follow"],
+         ["ECG","Bradycardia, suspected effusion, or before treating an elderly or cardiac patient","Sinus bradycardia, low-voltage complexes, <b>prolonged QTc</b>"],
+         ["<b>Thyroid ultrasound</b>","<b>Only</b> if there is a goitre, a nodule or a hard texture on palpation","Not required in every hypothyroid patient and not a diagnostic test for hypothyroidism \u2014 NICE does not recommend it for diagnosis"],
+         ["<b>Interference check</b>","Discordant or implausible results","<b>High-dose biotin</b> distorts many immunoassays \u2014 stop it about 2 days before re-testing"]
+       ]},
+       {b:"warn", html:"<b>Do NOT order:</b> routine free T3, routine thyroglobulin, repeat antibodies once positive, a nuclear scan, or an ultrasound for a normal-feeling neck. <b>Secondary hypothyroidism is rare (about 1 in 80,000)</b> but changes everything: TSH cannot be used for titration, and the coexisting deficiencies (<b>growth hormone, ACTH, FSH and LH</b>) have to be identified \u2014 which is why the pituitary picture goes to endocrinology with an <b>MRI pituitary</b>, not into a titration schedule."}
+     ]},
+
+    {id:"subclinical", nav:"Subclinical", title:"Subclinical hypothyroidism \u2014 progression risk, then the treat / trial / monitor decision", sub:"Raised TSH (<b>\u22654</b>) with a normal free T4, confirmed on a repeat at 3 months. Three inputs decide management: TSH level, age, and symptoms \u2014 modified by antibody status.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Background progression rate","<b>2\u20136% per year</b> progress to overt hypothyroidism"],
+         ["Higher risk of progression","<b>Female, older, and anti-TPO antibody positive</b> \u2014 antibody positivity roughly <b>doubles</b> the annual progression rate (about <b>4%/year</b>) and is why NICE recommends annual rather than 2\u20133-yearly monitoring"],
+         ["Other features of thyroid disease","<b>Previous radioactive iodine, thyroid surgery, or a goitre</b> \u2014 all indicate ongoing thyroid pathology and favour treating or closer monitoring"],
+         ["Higher TSH = higher risk","The higher the confirmed TSH, and especially <b>\u226510</b>, the greater the chance of both progression and cardiovascular harm"],
+         ["Symptoms \u2014 interpret cautiously","Tiredness, low mood and weight change are common and non-specific. <b>In older adults symptoms correlate poorly with mild TSH elevation</b> \u2014 see the evidence caveats below"]
+       ]},
+       {b:"table", head:["Confirmed picture","Action","Detail"], rows:[
+         ["<b>TSH &gt;10 mU/L</b> (\u00d72, 3 months apart)","<b>Consider levothyroxine</b>","NICE: consider treatment \u2014 may improve symptoms and long-term cardiovascular risk; TSH &gt;10 carries higher CHD risk. Start exactly as in overt disease. <b>Be more hesitant over 65</b> \u2014 over-suppression risks AF and osteoporosis"],
+         ["<b>TSH &lt;10, aged &lt;65, symptomatic</b>","<b>6-month trial of levothyroxine</b>","A time-limited <b>diagnostic test of symptom benefit</b>, not a commitment to lifelong treatment \u2014 <b>say so up front</b>. <b>Stop if symptoms persist once TSH is normal</b>: the elevation was probably not the cause"],
+         ["<b>TSH &lt;10, aged \u226565, or asymptomatic</b>","<b>Monitor \u2014 do not treat</b>","About half normalise untreated. Recheck TSH + FT4 <b>annually if features of thyroid disease</b> (antibody positive, prior surgery or RAI, goitre), otherwise <b>every 2\u20133 years</b>. <b>Aged \u226580 (80+), a mildly raised TSH is often normal ageing</b> \u2014 watch, don't treat"],
+         ["<b>Anti-TPO positive, or prior RAI or surgery</b>","<b>Lower threshold to treat</b>","Higher progression risk \u2192 favour treating or a trial, and annual monitoring if not treating"],
+         ["<b>Pregnant or preconception</b>","<b>Always treat</b>","Separate lower-threshold pathway with trimester-specific targets \u2014 treat promptly and refer"]
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"If not treating, monitoring is an active plan \u2014 not \u201cdoing nothing\u201d", html:"Set the interval by progression risk (<b>annually</b> if antibody positive or other features of thyroid disease, otherwise <b>2\u20133-yearly</b>). <b>Re-test sooner if symptoms are new or worsening</b> \u2014 don't wait for the scheduled interval. Counsel on the <b>2\u20136%/year</b> progression rate and that most people remain stable or normalise. Name the symptoms that should prompt an earlier check (fatigue, cold intolerance, weight gain, constipation, low mood). <b>Flag pregnancy plans \u2014 the monitoring approach no longer applies.</b> Address cardiovascular risk (BP, lipids once euthyroid, smoking, activity) on its own merits. And <b>resist over-attributing vague symptoms to a mildly raised TSH.</b>"}
+       ]},
+       {b:"warn", html:"<b>Be honest about the evidence.</b> Randomised trials \u2014 <b>TRUST (NEJM 2017;376:2534)</b> and the <b>JAMA 2018;320:1349</b> meta-analysis \u2014 showed <b>no significant improvement in symptoms or quality of life</b> from treating subclinical hypothyroidism, particularly in older adults. A <b>JAMA 2010;304:1365</b> meta-analysis found <b>no overall increase in CHD or mortality \u2014 except where TSH &gt;10</b>, where CHD events and mortality are increased; and treatment has not been shown to change cardiovascular risk. In the over-65s, symptom prevalence is <b>no different</b> between euthyroid and subclinical groups (BJGP 20X708065). This is exactly why NG145 uses cautious \u201cconsider\u201d language \u2014 and why over-treatment, which risks <b>AF and osteoporosis</b>, is a real harm rather than a theoretical one."}
+     ]},
+
+    {id:"absorption", nav:"Absorption", title:"Get the tablet into the blood \u2014 fix this before raising doses", sub:"A rising TSH on a stable dose is far more often absorption or adherence than true progression.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"\u23f0 Timing", html:"Empty stomach, water only: <b>30\u201360 minutes before breakfast</b>, or at bedtime <b>3 hours after the evening meal</b> (equally valid and often easier). Same routine every day. <b>At least 30 minutes before caffeine and other drugs.</b> Morning fasting administration improves TSH control by about 20% compared with taking it with food (Surks/Bolk-era RCT evidence), and bedtime dosing 2 or more hours after eating is an evidence-based alternative \u2014 consistency matters more than which of the two you choose."},
+         {tone:"amber", h:"\ud83d\udc8a The blockers", html:"Iron (ferrous sulphate), calcium carbonate, antacids, sucralfate: separate by 4 hours. PPIs, soy and coffee reduce absorption \u2014 keep intake consistent. <b>Cholestyramine and orlistat reduce absorption substantially</b> and need the same separation or a rethink. <b>A new PPI often explains a rising TSH on a stable dose</b> \u2014 say all of this at every medication review, not just at initiation."},
+         {tone:"plain", h:"\ud83e\uddfe Brand consistency", html:"If control is erratic on a stable regimen, fix <b>one brand</b> \u2014 or consider a liquid formulation for genuine malabsorption or tube feeding."},
+         {tone:"amber", h:"\ud83d\udd0e Needing ever-higher doses?", html:"Needing <b>&gt;2 micrograms/kg/day</b> \u2192 think <b>coeliac disease</b> (serology), <b>H. pylori</b> or atrophic gastritis, or adherence \u2014 not simply \u201cmore\u201d."},
+         {tone:"plain", h:"\ud83d\udc89 Oestrogen effect", html:"Starting HRT or a COCP raises binding globulin \u2192 dose requirement can rise \u2192 <b>recheck TSH 8 weeks after</b>."},
+         {tone:"plain", h:"\ud83d\udcc9 Weight change", html:"Large weight loss (including bariatric surgery and GLP-1 agonists) \u2192 the dose may need <b>cutting</b>; weight gain \u2192 rising."},
+         {tone:"green", h:"\ud83c\udf19 Wellbeing measures", html:"For fatigue, address sleep, activity, mood and <b>iron and B12 status</b> \u2014 these often explain symptoms better than a mildly raised TSH, especially during a subclinical trial."}
+       ]}
+     ]},
+
+    {id:"lifestyle", nav:"Beyond the tablet", title:"Beyond the tablet \u2014 nutrition, the associated conditions, and mood",
+     sub:"Small print that changes outcomes: two of these are the reason a dose keeps climbing, and one is the reason a euthyroid patient still feels unwell.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Iodine \u2014 enough, not more", html:"<b>UK reference intake is 140 micrograms a day</b>; dairy, fish and eggs are the practical sources. Avoid iodine loading \u2014 kelp and seaweed supplements can worsen autoimmune thyroid disease, and patients often take them believing the opposite. Iodine deficiency remains a treatable cause of hypothyroidism in some groups."},
+         {tone:"plain", h:"Selenium \u2014 discuss, don't prescribe", html:"Selenium may reduce anti-TPO antibody titres and improve quality of life in Hashimoto's, particularly in antibody-positive patients, but the evidence does not support routine prescribing. <b>Two Brazil nuts a day</b> provide an adequate intake \u2014 that is the honest answer to the supplement question."},
+         {tone:"plain", h:"Vitamin D", html:"Deficiency is common in autoimmune thyroid disease and associated with <b>higher anti-TPO titres</b>. Supplement per NICE: <b>10 micrograms (400 IU) daily from October to March</b> for the general population, more if deficient; <b>check 25-OH vitamin D if symptomatic or high risk</b>."},
+         {tone:"amber", h:"Coeliac disease \u2014 the reason the dose keeps climbing", html:"Coeliac disease co-occurs in 3\u20135% of Hashimoto's patients against about 1% of the general population, and undiagnosed coeliac causes levothyroxine malabsorption. <b>Screen with anti-tTG IgA plus total IgA</b> if the hypothyroidism is resistant or there are GI symptoms \u2014 a gluten-free diet markedly improves absorption once treated."},
+         {tone:"green", h:"Mood and \u201cbrain fog\u201d", html:"Depression and anxiety are 2\u20133\u00d7 more prevalent in hypothyroidism \u2014 assess and treat them on their own merits rather than waiting for the thyroid to fix them. Brain fog persists despite euthyroidism in some patients: <b>validate the symptom</b>, ensure sleep is addressed, and refer to psychology or <b>NHS Talking Therapies</b> where it is persistent."},
+         {tone:"cream", h:"Correct the iron, not just the dose", html:"Iron deficiency does two things here: it <b>impairs levothyroxine absorption</b> and it <b>reduces peripheral T4\u2192T3 conversion</b>. Correct it \u2014 dietary advice or replacement \u2014 and keep <b>ferrous sulphate 4 hours away from the levothyroxine</b>."}
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Levothyroxine", title:"Levothyroxine \u2014 start right, titrate on the 6\u20138 week rhythm", sub:"Once you have decided to replace, the pharmacology is identical in overt and subclinical disease.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Start", title:"By age and heart", when:"day one",
+          html:"<b>Under 65 with no cardiac disease:</b> full replacement <b>1.6 micrograms/kg/day</b>, rounded to the nearest 25 micrograms (60 kg \u2192 <b>100 \u00b5g</b>; <b>70 kg \u2192 112 \u00b5g</b>; 80 kg \u2192 <b>125 \u00b5g</b>; 100 kg \u2192 <b>150 \u00b5g</b>). <b>Aged 65 or over, or ischaemic heart disease: 25\u201350 micrograms/day</b>, up-titrated <b>25 micrograms every 4 weeks</b> \u2014 thyroxine raises myocardial oxygen demand, so going fast in IHD precipitates angina, MI or arrhythmia. Take it <b>30\u201360 minutes before food</b> from day one; wrong dosing causes more harm than a few days' delay in starting."},
+         {step:"Titrate", title:"25\u201350 microgram steps on TSH", when:"recheck 6\u20138 weeks after EVERY change",
+          fromLabel:"TSH lags \u2014 never adjust sooner",
+          html:"Aim for a TSH <b>within the reference range (0.4\u20134)</b>; in younger symptomatic patients the <b>lower half (0.4\u20132.5)</b> often feels best, and 0.5\u20132.5 mU/L is the working target with 0.5\u20133.0 acceptable in a patient who feels well. There is no benefit in aiming for suppression \u2014 keep the TSH &ge;0.5 to protect bone. Increase in <b>25 microgram</b> steps every <b>6\u20138 weeks</b> (25\u201350 micrograms where the patient is young and markedly hypothyroid); <b>most patients stabilise between 75 and 150 micrograms a day</b>. Alternate-day dosing works for in-between doses (e.g. 100 and 125 on alternate days). Once stable, confirm at <b>4\u20136 months</b>, then <b>annual TSH</b>."},
+         {step:"Trial review", title:"The 6-month subclinical trial \u2014 review honestly", when:"TSH in range at ~6 months",
+          fromLabel:"the step most often skipped",
+          html:"Reassess symptoms with the TSH in range. <b>Not improved \u2192 stop levothyroxine</b> and return to monitoring: the elevation was not the cause. Continuing a trial that has not worked is the commonest drift into unnecessary lifelong therapy."},
+         {step:"Pregnancy", title:"The rules to know cold", when:"planning or pregnant",
+          fromLabel:"the highest-stakes titration in the book",
+          html:"<b>Preconception: TSH &lt;2.5</b> before trying. A positive test = add 25\u201350% immediately \u2014 do not wait for bloods (practically: double the dose on 2 days a week, or add <b>25\u201350 micrograms</b> outright). <b>Requirements rise by about 30\u201350% in the first trimester</b> \u2014 higher thyroid-binding globulin, hCG-driven stimulation and a larger volume of distribution \u2014 and failure to increase the dose promptly is associated with adverse fetal neurodevelopmental outcomes. <b>TSH 4-weekly to mid-gestation</b> (~16\u201320 weeks) with trimester targets: <b>first trimester &lt;2.5, second and third &lt;3.0</b>. Refer for joint obstetric\u2013endocrine care; untreated or under-treated disease risks <b>miscarriage and pre-eclampsia</b>. Post-delivery: return to the pre-pregnancy dose and check TSH at <b>6 weeks</b>. Post-partum thyroiditis affects about 5\u201310% of women, typically months 3\u20136, and is commonly missed \u2014 an untreated hypothyroid phase can present as postnatal depression, so check TSH at 3\u20136 months post-partum in any woman with new fatigue or low mood. <b>Subclinical disease plus pregnancy or planning = treat, always.</b>"}
+       ]},
+       {b:"table", head:["Problem","Looks like","Fix"], rows:[
+         ["<b>Over-replacement</b>","Suppressed TSH; palpitations, tremor, heat intolerance, insomnia, weight loss \u2014 <b>or entirely silent</b>","<b>Reduce by 25 micrograms</b>, recheck 6\u20138 weeks. Silent suppression still causes <b>AF (roughly 3\u00d7 risk) and osteoporotic fracture</b>, and iatrogenic thyrotoxicosis is additionally associated with a <b>possible increase in dementia risk</b> \u2014 especially in older and post-menopausal patients. <b>The annual TSH exists to catch this.</b> A TSH below 0.1 is the highest-risk zone; do not suppress below 0.5 unless there is a stated oncological reason"],
+         ["Under-replacement","TSH climbing on a stable dose","Adherence \u2192 absorption blockers (new PPI? iron?) \u2192 oestrogen started? \u2192 <b>then</b> increase"],
+         ["<b>Angina on titration</b>","Chest pain as the dose rises (IHD)","<b>Drop back a step</b>, slow to <b>12.5\u201325 microgram</b> increments, treat the angina \u2014 cardiology if unstable"],
+         ["Persistent symptoms, normal TSH","\u201cStill tired on thyroxine\u201d","Work the loop below \u2014 usually <b>not</b> the thyroid"],
+         ["Hair loss early on","Transient shedding in the first months","Reassure \u2014 it settles as levels stabilise"]
+       ]},
+       {b:"warn", html:"Liothyronine (T3) and desiccated thyroid extract are endocrinology-only decisions (NG145). Combination T4/T3 has no consistent trial benefit and carries real cardiac and bone harms \u2014 don't initiate it in primary care, and don't unilaterally stop an endocrinologist's established regimen either."}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"The monitoring rhythm and safety-netting", sub:"Testing too early is the commonest wasted blood test in thyroid care.",
+     blocks:[
+       {b:"table", head:["Situation","TSH check","Note"], rows:[
+         ["After any dose change","<b>6\u20138 weeks</b>","Never sooner \u2014 you would be chasing a number that has not equilibrated"],
+         ["Newly stable","Confirm at <b>4\u20136 months</b>","Then annually"],
+         ["Stable long-term","<b>Annually</b>","Plus a symptom review and an <b>over-replacement check</b>"],
+         ["Pregnancy","<b>4-weekly to ~16\u201320 weeks</b>, then per the obstetric plan","Trimester-specific targets"],
+         ["On amiodarone or lithium","<b>6-monthly</b>, and for <b>12 months after stopping amiodarone</b>","Both cause hypo- <em>and</em> hyperthyroidism"],
+         ["Untreated subclinical","<b>Annually if anti-TPO positive</b>; <b>2\u20133-yearly if negative</b>","Escalate to treatment if TSH &gt;10, or symptoms with a rising TSH"],
+         ["Persistent symptoms with a normal TSH","Investigate elsewhere","Anaemia, ferritin, B12 and folate, coeliac, menopause, depression, sleep apnoea \u2014 <b>don't keep escalating thyroxine for non-thyroidal symptoms</b>"],
+         ["<b>Bone density (DEXA)</b>","If the <b>TSH has been suppressed below 0.1 for &gt;12 months</b>, in post-menopausal women, or where fracture risk is significant","<b>Aim to keep TSH &ge;0.5 to minimise bone loss</b>"],
+         ["Lipids","<b>Re-check fasting lipids at 3\u20136 months once euthyroid</b>","Only start lipid-lowering therapy on what remains elevated after stable euthyroidism \u2014 hypothyroid dyslipidaemia largely corrects itself"],
+         ["Post-partum","<b>TSH at 3\u20136 months post-partum</b> where there is new fatigue or low mood","Post-partum thyroiditis (about 5\u201310% of women) is commonly missed and can look like postnatal depression"],
+         ["<b>Register and recall</b>","At diagnosis, then <b>annual medication review</b>","<b>Add to the hypothyroid disease register and flag for QOF recall</b> \u2014 this is a lifelong condition and no patient should be lost to follow-up"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"\ud83d\udd01 Still tired with a normal TSH? Work this before touching the dose", html:"Once the TSH is in range on levothyroxine, the thyroid <em>is</em> replaced \u2014 persistent symptoms almost always have another cause. <b>1 Truly optimal?</b> TSH 3.9 is \u201cnormal\u201d but a young symptomatic patient may do better in the <b>lower half (0.4\u20132.5)</b> \u2014 trial it before declaring failure. <b>2 Adherence and absorption</b> \u2014 daily? empty stomach? new PPI, iron or calcium? <b>Coeliac serology if doses keep climbing.</b> <b>3 The mimics</b> \u2014 ferritin (aim &gt;30\u201350), B12 and folate, HbA1c, coeliac, depression or anxiety, OSA (snoring plus somnolence), menopause. <b>4 Another autoimmune condition</b> \u2014 Hashimoto's clusters with coeliac, pernicious anaemia, <b>Addison's</b> (pigmentation, postural dizziness, low sodium \u2192 9am cortisol) and type 1 diabetes. <b>5 Expectations</b> \u2014 symptoms lag biochemistry by weeks to months, and weight rarely falls much with correction alone. All excluded, TSH optimal, still unwell \u2192 endocrine opinion (the T3 question is theirs)."}
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 Myxoedema \u2014 emergency", html:"\u201cIf doses have been missed for weeks and someone becomes very drowsy, confused and cold, that is an emergency.\u201d"},
+         {tone:"red", h:"\u2764\ufe0f Chest pain", html:"\u201cNew chest tightness after a dose increase \u2014 stop climbing and call us.\u201d"},
+         {tone:"amber", h:"\ud83d\udc93 Too much thyroxine", html:"\u201cPalpitations, shakiness, sweating or unexplained weight loss \u2014 tell us; the dose may be too high.\u201d"},
+         {tone:"amber", h:"\ud83e\udd30 Pregnancy", html:"\u201cThe moment you are pregnant or planning \u2014 tell us. The dose goes up straight away and we test more often.\u201d"},
+         {tone:"blue", h:"\ud83d\udcde Bring the test forward if\u2026", html:"New or worsening hypothyroid symptoms, or a <b>new goitre or neck change</b> \u2014 don't wait for the routine interval. <b>Switch pathway</b> if FT4 falls below range (now overt \u2192 treat), pregnancy or conception (treat and refer), or new compressive neck symptoms (\u2192 2WW)."},
+         {tone:"green", h:"\ud83d\udcdd Document the plan", html:"Record the decision (treat / 6-month trial / monitor), the agreed interval, and the symptoms that should prompt earlier review. <b>That is what good safety-netting looks like</b> \u2014 and what the SCA rewards."}
+       ]},
+       {b:"say", html:"The tablet replaces exactly what your thyroid should make \u2014 same time every day on an empty stomach, away from iron or calcium. It takes about six weeks for the blood test to catch up with any change, so we check then, not sooner \u2014 and once we have found your dose it is usually steady for years."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 endocrinology and the 2WW", sub:"The referral list is deliberately short: this is a primary-care condition in almost all cases.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW \u00b7 NG12 \u2014 thyroid or head-and-neck", html:"An unexplained thyroid lump \u2192 consider a suspected cancer pathway referral for thyroid cancer, independent of the TSH. A fixed or rapidly enlarging goitre, hoarseness, dysphagia or a neck node raises the same concern; persistent unexplained <b>hoarseness or an unexplained neck lump in an adult aged 45 or over</b> is an NG12 head-and-neck criterion in its own right. Thyroid cancer accounts for about <b>3,900 new UK cases a year</b>, and well-differentiated disease has a <b>5-year survival &gt;98%</b> and <b>10-year survival &gt;90%</b> when caught early \u2014 the pathway exists because the prognosis is strongly stage-dependent. A firm, fixed goitre must never be attributed to Hashimoto's without imaging."},
+         {tone:"red", h:"Same day", html:"Suspected <b>myxoedema coma</b>; suspected <b>adrenal crisis</b>; acute compressive neck symptoms."},
+         {tone:"amber", h:"Endocrinology \u2014 the pituitary picture", html:"Low or normal TSH with a low FT4 \u2192 9am cortisol first, then refer \u2014 never just titrate. Headache, visual field defect or galactorrhoea alongside it makes it <b>urgent, with an MRI pituitary</b>. Also diagnostic uncertainty, or atypical or unstable biochemistry."},
+         {tone:"amber", h:"Urgent endocrine (2 weeks) \u2014 resistant disease", html:"TSH persistently elevated despite more than 200 micrograms of levothyroxine a day \u2014 resistant hypothyroidism, once adherence, absorption and coeliac disease have been addressed. Confirmed <b>secondary hypothyroidism</b> belongs here too, as does <b>congenital hypothyroidism (paediatric referral the same week)</b>."},
+         {tone:"amber", h:"Pregnancy and preconception", html:"Pregnant or trying to conceive \u2192 <b>treat promptly</b> and arrange joint obstetric\u2013endocrine care (separate lower-threshold pathway with trimester-specific targets). Also fertility problems with subclinical hypothyroidism."},
+         {tone:"plain", h:"Cardiac ceiling", html:"Ischaemic heart disease making titration impossible without angina."},
+         {tone:"plain", h:"Persistent symptoms", html:"TSH optimal and the loop exhausted \u2192 for assessment, <b>including the T3 conversation \u2014 which is theirs to have</b>."},
+         {tone:"plain", h:"Structural, young, or drug-induced", html:"Goitre, nodule or compressive symptoms; <b>age &lt;16</b> \u2192 paediatric or endocrine; drug-induced disease where the drug must continue (<b>amiodarone, lithium</b>) \u2192 joint management with the initiating specialist."},
+         {tone:"cream", h:"Primary care manages", html:"Confirming the diagnosis, the treat/trial/monitor decision, levothyroxine initiation and titration, and the monitoring schedule \u2014 for the great majority of patients."}
+       ]},
+       {b:"say", html:"Your blood tests are where they should be, but you are clearly not feeling right \u2014 so I want the hormone specialists to look deeper. We will keep the levothyroxine exactly as it is meanwhile."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 71-year-old woman, tired for a year, TSH 6.8 with a normal free T4 on a screening test done six weeks after a chest infection. She has read about thyroid problems online and would like \u201cto start the tablets and see if I feel better\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises this is not yet a diagnosis \u2014 <b>repeat at 3 months</b> and note the recent illness as a transient cause; checks anti-TPO; explains honestly that <b>trials show no symptom benefit in this group</b> and that over-treatment risks AF and osteoporosis, without dismissing her fatigue; investigates the mimics (ferritin, B12, mood, sleep); sets a monitoring interval and safety-nets which symptoms bring the test forward; examines the neck. <a href='../../cases/hypothyroidism.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG145 \u2014 Thyroid disease: assessment and management (2019)</b><br><a href="https://www.nice.org.uk/guidance/ng145" rel="noopener">nice.org.uk/guidance/ng145</a><span class="rd"> \u2014 repeat TSH at 3 months before acting, the subclinical treat/trial/monitor thresholds, monitoring intervals (annual if features of thyroid disease, otherwise 2\u20133-yearly), levothyroxine dosing and the 6\u20138 week recheck, T3 as a specialist-only decision</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 unexplained thyroid lump \u2192 consider a suspected cancer pathway referral for thyroid cancer; hoarseness and neck lump criteria in adults aged 45 and over</span></li>'+
+         '<li><b>British Thyroid Association; NICE NG145 \u2014 thyroid disease</b><span class="rd"> \u2014 primary-care operationalisation, absorption and interaction advice, pregnancy dose adjustment</span></li>'+
+         '<li><b>TRUST \u2014 Stott et al., NEJM 2017;376:2534</b><span class="rd"> \u2014 levothyroxine in older adults with subclinical hypothyroidism gave no symptom or quality-of-life benefit</span></li>'+
+         '<li><b>Feller et al., JAMA 2018;320:1349</b><span class="rd"> \u2014 meta-analysis: no significant symptom or quality-of-life improvement with treatment</span></li>'+
+         '<li><b>Rodondi et al., JAMA 2010;304:1365</b><span class="rd"> \u2014 no overall CHD or mortality increase in subclinical hypothyroidism except where TSH &gt;10</span></li>'+
+         '<li>NEJM 2017;376:2556; BJGP 2016;66:538 and BJGP 20X708065 (doi:10.3399/bjgp20X708065); Clinical Endocrinology 2016;84:799<span class="rd"> \u2014 2\u20136%/year progression to overt disease, and symptom prevalence no different between euthyroid and subclinical groups in older adults</span></li>'+
+         '<li>GEMS (Guidelines &amp; Evidence Made Simple) / Red Whale, November 2024<span class="rd"> \u2014 primary-care summary of the subclinical decision</span></li>'+
+         '<li><b>Surks et al. and the levothyroxine-timing RCTs</b><span class="rd"> \u2014 morning fasting administration improves TSH control by about 20% compared with taking the tablet with food; bedtime dosing 2 or more hours after eating is an evidence-based alternative</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 levothyroxine doses, administration timing, and interactions (iron, calcium, antacids, PPIs, cholestyramine, orlistat)</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Primary and subclinical hypothyroidism in adults \u2014 NICE NG145 with BTA guidance and the NG12 thyroid-lump interface. Diagnosis and management are merged on this page; there is no separate subclinical-hypothyroidism pathway to cross-check. Not applicable to pregnant women or those trying to conceive, who need prompt treatment and referral. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

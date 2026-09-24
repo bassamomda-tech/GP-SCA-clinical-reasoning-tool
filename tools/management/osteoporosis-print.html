@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Osteoporosis &amp; fracture risk — Protocol · Reasoning GP</title>
+<meta name="description" content="Osteoporosis in adults, assessment and management on one page: case-finding, who to treat without a DXA, FRAX to NOGG to DXA in the right order, the secondary-cause screen, the alendronate ritual, the denosumab never-just-stop rule, and the 5-year holiday decision." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/osteoporosis.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790241765963737 tools/management/osteoporosis.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Osteoporosis protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F9B4}",
+  title:"Osteoporosis & fracture risk",
+  eyebrow:"Protocol \u00b7 assess &amp; manage in one place",
+  stemTitle:"Osteoporosis \u2014 find the at-risk, know who to treat without a scan, run FRAX \u2192 NOGG \u2192 DXA in order, and make the 5-year decision properly",
+  stemSub:"One page for the whole condition. Case-find rather than screen, identify the three groups who are treated without waiting for a DXA, run FRAX onto the NOGG bands in the right order, screen the secondary causes, start alendronate with the counselling ritual that decides whether it works, fix each side effect instead of abandoning bone protection, respect the denosumab never-just-stop rule, and run falls work alongside throughout.",
+  guideline:"NOGG 2024 \u00b7 NICE CG146 \u00b7 TA464",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NOGG 2024 \u00b7 NICE CG146 (2017)"},
+    {t:"NICE TA161 \u00b7 TA204 \u00b7 TA464 \u00b7 TA791"},
+    {t:"FRAX \u00b7 QFracture"},
+    {t:"HORIZON \u00b7 ARCH \u00b7 VERO"},
+    {t:"2WW \u00b7 NG12 myeloma", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#found"><b>Case-find</b><small>Who to assess</small></a><a href="#stratify"><b>FRAX \u2192 NOGG</b><small>In that order</small></a><a href="#ladder"><b>Treat</b><small>The ritual matters</small></a><a href="#refer"><b>Refer</b><small>Anabolic-first</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Every fragility fracture is a treatment opportunity", html:"A low-trauma fracture in an adult aged 50 and over is osteoporosis until proven otherwise, and is the strongest predictor of the next fracture. Half of hip-fracture patients had an earlier fragility fracture nobody acted on, and each fracture roughly doubles the risk of the next. The wrist fracture IS the opportunity \u2014 refer every distal radius fracture in a patient 50+ to the fracture liaison service."},
+    {tone:"red", h:"Three groups: treat WITHOUT waiting for a DXA", html:"<b>(1) Fragility fracture aged 75 and over</b> \u2014 FRAX and DXA optional, start treatment. <b>(2) Any vertebral fracture</b> \u2014 often incidental on imaging; <b>act on it, don't file it</b>. <b>(3) Starting prednisolone \u22657.5 mg/day for \u22653 months</b> \u2014 co-prescribe bone protection from day one, don't scan first."},
+    {tone:"amber", h:"Two-thirds of vertebral fractures are silent", html:"Height loss &gt;4 cm, or new thoracic kyphosis \u2192 lateral spine X-ray or VFA. Sudden severe back pain with height loss is a vertebral fragility fracture \u2014 image it. A vertebral fracture markedly raises future risk and <b>warrants treatment, often without waiting for DXA</b>."},
+    {tone:"blue", h:"FRAX first, DXA only if it changes the decision", html:"<b>Calculate FRAX WITHOUT BMD first</b>, then plot onto the <b>NOGG bands</b>: <b>low</b> \u2192 lifestyle, reassess in 5 years; <b>intermediate</b> \u2192 DXA and recalculate; <b>high</b> \u2192 treat (DXA useful as a baseline but must not delay); <b>very high</b> \u2192 treat and consider anabolic-first referral. <b>T-score \u2264\u22122.5 = osteoporosis.</b>"},
+    {tone:"plain", h:"The ritual is the treatment", html:"<b>Alendronate 70 mg once weekly:</b> same morning, empty stomach, whole tablet with a <b>full glass of plain tap water</b>, stay <b>upright \u226530 minutes</b>, nothing else for 30 minutes. <b>Done wrong it causes oesophagitis and achieves near-zero absorption.</b> Say it, write it, and check it at review."},
+    {tone:"green", h:"Never just stop denosumab", html:"Missed or stopped doses cause rapid bone loss and rebound vertebral fractures within 7\u201318 months. Stopping requires a specialist-guided bisphosphonate follow-on. <b>Flag it on the record like an anticoagulant</b>, and note the injection is due every 6 months <em>to the week</em>."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Case-find \u2014 there is no population screening", html:"<b>All women \u226565 and men \u226575.</b> Younger with a risk factor: previous fragility fracture, oral glucocorticoids, parental hip fracture, smoking, alcohol \u22653 units/day, low BMI, RA, premature menopause &lt;45, recurrent falls."},
+    {title:"Spot the fracture you must not miss", html:"Sudden back pain, height loss or kyphosis \u2192 vertebral fragility fracture. Hip fracture is the highest-mortality fragility fracture. Aged \u226560 with persistent bone pain or an unexplained fragility fracture \u2192 very urgent myeloma screen (NG12).", alert:true},
+    {title:"Quantify \u2014 FRAX, then NOGG", html:"FRAX (or QFracture) without BMD, mapped onto the NOGG intervention thresholds. <b>Anyone &lt;40 with a major risk factor goes straight to DXA</b> \u2014 FRAX is not validated below 40."},
+    {title:"Screen secondary causes, then treat", html:"Pre-treatment checks: renal function, calcium, vitamin D, dental review. Correct deficiency <em>first</em>. Then alendronate 70 mg weekly with the ritual."},
+    {title:"Review, and run falls work alongside", html:"Adherence at 3\u20136 months (the 1-year quit rate is about 50%), then annually. <b>Oral bisphosphonate review at 5 years; IV zoledronate at 3.</b> Falls assessment is co-treatment, not a garnish."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Red flags", title:"The fracture you must not miss", sub:"A fragility fracture is a fracture from a fall at standing height or less, in an adult aged 50 or over.",
+     blocks:[
+       {b:"warn", html:"A fragility fracture in an adult aged 50 and over is osteoporosis until proven otherwise, and is the strongest predictor of the next fracture."},
+       {b:"cards", items:[
+         {tone:"red", h:"Sudden back pain, height loss or kyphosis", html:"<b>Vertebral fragility fracture \u2014 often unrecognised.</b> Image the spine (X-ray or VFA) and assess. A vertebral fracture markedly raises future risk and <b>warrants treatment, often without waiting for DXA</b>. &gt;4 cm height loss or new thoracic kyphosis \u2192 lateral spine imaging."},
+         {tone:"red", h:"Hip fracture", html:"<b>The highest-mortality fragility fracture.</b> After a hip fracture, <b>IV bisphosphonate reduces both mortality and re-fracture</b> \u2014 ensure bone protection is started via the fracture liaison service."},
+         {tone:"amber", h:"Glucocorticoids \u2014 prednisolone \u22657.5 mg/day for \u22653 months", html:"High fracture risk \u2014 assess and usually start bone protection early. Do not wait for DXA in high-risk steroid users."},
+         {tone:"amber", h:"Fractures at unusual sites, or vertebral pain &gt;6 weeks", html:"Or worsening pain \u2192 <b>investigate for a secondary cause</b>, including myeloma, malignancy and metabolic bone disease."},
+         {tone:"purple", h:"2WW \u00b7 NICE NG12 \u2014 myeloma", html:"Aged \u226560 with persistent bone pain or an unexplained fragility fracture \u2014 especially with a <b>raised ESR or plasma viscosity, or anaemia</b> \u2014 request very urgent serum protein electrophoresis plus serum-free light chains (or urinary Bence Jones protein) and FBC, and refer urgently to haematology. Myeloma can present as osteoporosis or a low-trauma vertebral fracture. Also screen for myeloma in <b>anyone over 50 with a vertebral fracture</b>."},
+         {tone:"blue", h:"New dysphagia on a bisphosphonate", html:"Stop the drug and investigate \u2014 2WW thinking, not simply a switch. Food sticking or pain on swallowing needs assessment, not a different tablet."}
+       ]},
+       {b:"why", html:"Half of patients presenting with a hip fracture have had an earlier, often vertebral, fragility fracture that was not acted on. Each fracture roughly doubles the risk of the next, so the case-finding priority is to recognise the index fragility fracture and start assessment and treatment \u2014 the fracture liaison model exists precisely to close this secondary-prevention gap. The NG12 myeloma pathway exists to catch the malignancy hiding behind an unexplained fracture: treating \u201cprimary\u201d osteoporosis when the real driver is myeloma, hyperparathyroidism or osteomalacia means treating the wrong target."}
+     ]},
+
+    {id:"found", nav:"Case-find", title:"Case-finding \u2014 who to assess, and who to treat without a scan", sub:"There is no population screening. Fracture-risk assessment is targeted and opportunistic.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>By age</b>","<b>All women aged \u226565 and all men aged \u226575</b> \u2014 assess everyone in these groups"],
+         ["<b>Younger, with a risk factor</b>","<b>Previous fragility fracture</b>; oral glucocorticoids (prednisolone \u22657.5 mg/day for \u22653 months); parental hip fracture; current smoking; <b>alcohol \u22653 units/day</b> (and \u226514 units/week); <b>low BMI (&lt;18.5)</b>; rheumatoid arthritis or secondary osteoporosis; <b>premature menopause &lt;45 years</b>; recurrent falls; IBD or coeliac disease; type 1 diabetes; CKD; antiandrogens or aromatase inhibitors; antiepileptics; long-term SSRIs or PPIs"],
+         ["<b>Straight to DXA</b>","<b>NICE: anyone aged &lt;40 with a major risk factor</b> \u2014 fragility fracture, glucocorticoids, or untreated premature menopause \u2014 <b>scan first rather than calculating FRAX</b>, because FRAX is not validated below 40 and these patients have a clear high-risk trigger. Also after a fragility fracture per the local pathway; then re-enter the BMD or T-score into FRAX"],
+         ["<b>Treat WITHOUT waiting for DXA</b>","<b>(1) Fragility fracture aged \u226575</b> \u2014 FRAX and DXA optional, start treatment. <b>(2) Any vertebral fracture</b>, often found incidentally on imaging \u2014 act on it, don't file it. <b>(3) Starting prednisolone \u22657.5 mg/day for \u22653 months</b> \u2014 co-prescribe bone protection from day one"],
+         ["<b>What counts as a fragility fracture</b>","A fracture from standing height or less: <b>wrist</b> (the classic early warning \u2014 refer every distal radius fracture in a patient 50+ to fracture liaison), <b>hip, vertebral, humerus, pelvis</b>"],
+         ["<b>Don't forget men</b>","Osteoporosis is <b>under-diagnosed in men</b>; a man with any fragility fracture warrants assessment <em>and</em> a secondary-cause screen. <b>Hypogonadism drives about 20% of male osteoporosis</b>"]
+       ]},
+       {b:"why", html:"Population screening for osteoporosis is not cost-effective, so the strategy is opportunistic case-finding around age and clinical risk factors."}
+     ]},
+
+    {id:"stratify", nav:"FRAX \u2192 NOGG", title:"Quantify the risk \u2014 FRAX, then NOGG, then DXA", sub:"In that order. The tool output tells you whether to reassure, scan, or treat.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", title:"FRAX without BMD", when:"the 10-year fracture probability",
+          html:"<b>FRAX (ages 40\u201390)</b> or <b>QFracture (30\u201399, better for multimorbidity)</b> \u2014 gives the 10-year risk of a major osteoporotic and of a hip fracture, and links directly to NOGG. <b>In type 2 diabetes, tick the RA box</b> to offset FRAX's underestimate. Which score to act on: NICE uses the major-osteoporotic-fracture risk; NOGG uses the higher of the two. Calculate without a T-score initially, and only scan if the result lands in the assessment zone."},
+         {step:"2nd", title:"Act by NOGG band", when:"NOGG 2024",
+          fromLabel:"the fork",
+          html:"<b>Green / low</b> \u2192 lifestyle alone; reassess in 5 years or if circumstances change. <b>Amber / intermediate</b> \u2192 <b>arrange DXA</b>, re-enter the T-score into FRAX, and review NOGG again. <b>Red / high</b> \u2192 <b>treat</b> \u2014 NOGG allows starting treatment immediately while awaiting DXA. <b>Deep red / very high</b> \u2192 treat <b>and consider specialist referral for anabolic-first therapy</b>."},
+         {step:"3rd", title:"DXA interpretation", when:"lowest of hip / spine",
+          fromLabel:"T-scores",
+          html:"<b>T-score \u2264\u22122.5 = osteoporosis</b> \u00b7 <b>\u22121 to \u22122.5 = osteopenia</b> (treat only if FRAX says so) \u00b7 <b>\u2265\u22121 = normal</b>. Re-enter the BMD into FRAX to refine the decision. A Z-score \u2264\u22122 in a young patient \u2192 hunt secondary causes hard and refer."}
+       ]},
+       {b:"dl", rows:[
+         ["<b>Secondary-cause screen \u2014 before or with treatment</b>","FBC, ESR or CRP, U&amp;E and creatinine, LFTs, bone profile (calcium, phosphate, ALP), TFTs, vitamin D, coeliac serology. <b>Myeloma screen if aged &gt;50 with a vertebral fracture</b> (protein electrophoresis + free light chains). <b>Testosterone, LH and FSH in men.</b> PTH if calcium is abnormal; 24-hour urinary cortisol if cushingoid. Consider a spine X-ray for silent vertebral fractures"],
+         ["<b>Who to screen</b>","Any man; any pre- or early-menopausal woman; fractures at unusual sites; vertebral fractures painful &gt;6 weeks"],
+         ["Why it matters","Treating coeliac-driven or myeloma-driven bone loss with alendronate alone misses the disease \u2014 and correcting vitamin D <em>before</em> zoledronate or denosumab prevents symptomatic hypocalcaemia"]
+       ]},
+       {b:"why", html:"Fracture risk is driven by far more than bone density \u2014 age, prior fracture, steroids and parental hip fracture each add independent risk \u2014 which is why a validated tool rather than DXA alone is the starting point. FRAX is favoured in the NICE/NOGG route because its output links straight to the NOGG intervention thresholds. The NOGG colour-coded graph turns a percentage risk into an action: green = reassure, amber = measure bone density to refine, red = treat."},
+       {b:"warn", html:"The three UK guidelines (NICE, NOGG and SIGN) differ \u2014 pick one and don't switch mid-assessment. This page follows NICE/NOGG (FRAX \u2192 NOGG thresholds). SIGN prefers QFracture."}
+     ]},
+
+    {id:"lifestyle", nav:"Foundations", title:"Falls work and calcium/vitamin D \u2014 co-treatment, not garnish", sub:"Most fractures need both a fragile bone and a fall. Bone protection works only alongside fall reduction.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"\ud83d\udeb6 Falls assessment", html:"Gait and balance (timed up-and-go), medication review (sedatives, antihypertensives, anticholinergics, long-term steroids, drugs causing a postural drop), vision, footwear, home hazards, and a <b>postural BP</b> \u2192 refer to a strength and balance programme. <b>Evidence: about a 25% reduction in falls.</b>"},
+         {tone:"green", h:"\ud83d\udcaa Exercise", html:"<b>Weight-bearing plus resistance plus balance training</b> (tai chi counts). Walking alone is not enough, and swimming and cycling do not load bone."},
+         {tone:"blue", h:"\ud83e\udd5b Calcium", html:"Aim <b>700\u20131200 mg/day \u2014 diet first</b> (one pint of milk is about 700 mg). Supplement only the dietary gap; combined calcium and vitamin D (Accrete D3, Adcal-D3) if intake is poor. <b>Not within 2 hours of a bisphosphonate.</b>"},
+         {tone:"blue", h:"\u2600\ufe0f Vitamin D", html:"<b>800 IU colecalciferol daily for everyone on bone treatment</b>, with a loading course first if deficient (<b>&lt;25 nmol/L</b>). <b>Non-negotiable before zoledronate or denosumab.</b>"},
+         {tone:"amber", h:"\ud83d\udead Smoking and alcohol", html:"Both are independent risks and directly weaken bone \u2014 cessation support; <b>alcohol &lt;3 units/day and \u226414 units/week</b>."},
+         {tone:"plain", h:"\u2696\ufe0f Weight", html:"<b>BMI &lt;18.5 is a major risk</b> \u2014 address the cause: eating disorder, malabsorption, or frailty."}
+       ]},
+       {b:"why", html:"Antiresorptive drugs reduce relative fracture risk, but the absolute number of fractures prevented depends just as much on whether the person falls. A combined approach \u2014 strengthen the bone, reduce the fall \u2014 is why structured falls assessment is part of every osteoporosis plan, not an optional extra."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"The treatment ladder \u2014 and the ritual that decides if it works", sub:"Pre-treatment checks first: renal function, calcium, vitamin D, and a dental review. Correct deficiency before any potent antiresorptive.",
+     blocks:[
+       {b:"warn", html:"<b>Before starting:</b> check <b>renal function, calcium and vitamin D</b> and correct deficiency; <b>arrange a dental check</b> (osteonecrosis-of-jaw risk). Ensure dietary calcium of about <b>700 mg/day</b> \u2014 supplement only if intake is inadequate, and <b>not within 2 hours of a bisphosphonate</b>."},
+       {b:"ladder", steps:[
+         {step:"1st", title:"Alendronate 70 mg once weekly", when:"first-line for almost everyone",
+          html:"<b>The ritual \u2014 say it, write it, check it:</b> same morning each week \u00b7 empty stomach \u00b7 whole tablet with a <b>full glass of plain tap water</b> \u00b7 stay <b>upright for \u226530 minutes</b> \u00b7 nothing else (food, drink, other tablets, calcium) for 30 minutes. <b>Done wrong it causes oesophagitis and near-zero absorption.</b> Alternative: <b>risedronate 35 mg weekly</b> (gentler on the oesophagus)."},
+         {step:"2nd", title:"IV zoledronate 5 mg once yearly", when:"oral not tolerated, contraindicated, or adherence unrealistic",
+          fromLabel:"oesophageal disease \u00b7 cannot sit upright \u00b7 GI intolerance",
+          html:"Given via a day unit. <b>Flu-like reaction after the first infusion in about 30%</b> \u2014 pre-warn and give paracetamol; much milder in subsequent years. <b>Needs eGFR \u226535, corrected calcium and vitamin D replete first.</b> Also the post-hip-fracture drug of choice \u2014 HORIZON showed a mortality benefit."},
+         {step:"3rd", title:"Denosumab 60 mg SC every 6 months", when:"renal impairment (eGFR <35), or both of the above unsuitable",
+          fromLabel:"the one with the trap",
+          html:"<b>THE RULE: never stop or delay denosumab without a plan.</b> Missed or stopped doses cause rapid bone loss and rebound vertebral fractures within 7\u201318 months. Stopping requires a <b>specialist-guided bisphosphonate follow-on</b>. <b>Flag it on the record like an anticoagulant.</b> Check calcium (hypocalcaemia risk, especially in CKD) and confirm vitamin D replete <b>before each dose</b>."},
+         {step:"4th", title:"Anabolic-first for the very-high-risk", when:"specialist \u00b7 T \u2264\u22123.5, multiple vertebral fractures, or fracture ON treatment",
+          fromLabel:"build then lock",
+          html:"<b>Romosozumab</b> for 12 months (<b>avoid if there is a history of MI or stroke</b>) or <b>teriparatide</b> for 18\u201324 months \u2014 build bone first, <em>then</em> an antiresorptive to lock it in. Building-then-locking beats locking alone in the very-high-risk (ARCH, VERO) \u2014 hence early referral rather than after three failed oral years. <b>HRT is the option of choice in early menopause, or <b>&lt;60</b> with symptoms</b>; raloxifene is niche."}
+       ]},
+       {b:"table", head:["Problem","Looks like","Fix \u2014 keep bone protection alive"], rows:[
+         ["Reflux or oesophagitis","Heartburn or dysphagia on alendronate","<b>Check the ritual first \u2014 usually the cause</b> \u2192 switch to risedronate \u2192 IV zoledronate. <b>New dysphagia = stop and investigate (2WW thinking), not just switch</b>"],
+         ["<b>ONJ fear (media-driven)</b>","Patient refuses treatment","Absolute risk on oral bisphosphonates is about 1 in 10,000 to 1 in 100,000. A dental check-up and good hygiene are sensible before starting; invasive dental work ideally before IV agents. <b>The fracture they are risking is about 1 in 3 to 1 in 10</b>"],
+         ["<b>Atypical femoral fracture</b>","New thigh or groin ache on long-term treatment","<b>X-ray BOTH femurs</b>; if confirmed \u2192 stop, orthopaedics and endocrine. <b>Risk rises after 5 years \u2014 this is WHY the holiday review exists.</b> Absolute risk is tiny against the fractures prevented"],
+         ["Flu-like reaction","Within 48 hours of the first zoledronate","Pre-warn and give paracetamol; settles, and is much milder in subsequent years"],
+         ["Hypocalcaemia","Cramps or tingling after denosumab or zoledronate","Prevented by checking calcium and loading vitamin D FIRST \u2014 the pre-dose check is not optional"],
+         ["<b>\u201cIt's not doing anything\u201d</b>","No felt benefit \u2192 quiet non-adherence (<b>about 50% by 1 year</b>)","<b>Name the silence upfront:</b> \u201cyou won't feel it working \u2014 the win is the fracture that never happens.\u201d Ask at every review; switch to an IV or 6-monthly agent if realistic adherence is the issue. <b>Poor adherence is the commonest cause of apparent treatment failure</b>"]
+       ]},
+       {b:"why", html:"Oral bisphosphonates are first-line because they reduce vertebral, non-vertebral and hip fractures cheaply and safely for most people; the upfront checks minimise the rare harms (hypocalcaemia, osteonecrosis of the jaw, atypical femoral fracture). Correcting vitamin D and calcium before a potent antiresorptive is essential to avoid precipitating symptomatic hypocalcaemia."}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"The review rhythm \u2014 and the 5-year holiday decision", sub:"Structured review keeps patients on therapy long enough to benefit, and catches the rare serious adverse events early.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Adherence, ritual and side effects","<b>3\u20136 months</b> after starting, then annually","<b>The 1-year quit rate is about 50% \u2014 this review IS the treatment.</b> Address GI upset, the commonest reason oral bisphosphonates are abandoned"],
+         ["Calcium, vitamin D, renal function","Annually, <b>and before every IV or SC dose</b>","Replace, re-dose, re-gate (<b>zoledronate needs eGFR \u226535</b>)"],
+         ["Height and back pain","Annually","<b>New &gt;2 cm loss, or thoracic pain \u2192 spine imaging.</b> A new vertebral fracture is treatment failure \u2192 escalate"],
+         ["<b>The 5-year review</b> (3 years for zoledronate)","At 5 years of oral bisphosphonate","<b>Holiday if ALL of:</b> no fragility fracture on treatment \u00b7 hip T-score &gt;\u22122.5 \u00b7 not high-risk (no steroids, no previous hip or vertebral fracture). <b>Continue to 10 years (oral) or 6 years (IV) if:</b> fracture on treatment, T-score still \u2264\u22122.5, aged \u226575, on steroids, or previous hip or vertebral fracture"],
+         ["During a holiday","Reassess FRAX and DXA at <b>2 years</b>","Bisphosphonates linger in bone, so protection persists. <b>New fracture or a significant BMD fall \u2192 restart.</b> <b>No holidays from denosumab \u2014 ever</b> (rebound); its \u201cstop\u201d is a specialist-planned switch"],
+         ["Repeat DXA on treatment","<b>Not routinely</b> \u2014 only if the result changes the decision","For example at the 5-year review, or where failure is suspected"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 Sudden severe back pain or height loss", html:"\u201cSudden severe back pain, or losing height \u2014 that can be a spine fracture; contact us.\u201d Any new low-trauma fracture \u2192 fracture liaison service."},
+         {tone:"amber", h:"\ud83e\uddb5 Thigh ache", html:"\u201cA new dull ache in the thigh or groin that won't settle \u2014 tell us; we X-ray it. Don't just push through.\u201d Rare atypical femoral fracture."},
+         {tone:"amber", h:"\ud83c\udf7d\ufe0f Swallowing", html:"\u201cFood sticking or pain on swallowing on the weekly tablet \u2014 stop it and come in.\u201d"},
+         {tone:"amber", h:"\ud83e\uddb7 Dental", html:"\u201cKeep up dental check-ups and tell your dentist you're on a bone medicine \u2014 the jaw problem people read about is extremely rare, and preventable.\u201d Jaw pain or a non-healing socket \u2192 review."},
+         {tone:"green", h:"\ud83d\udc89 Denosumab diary", html:"\u201cYour injection is due every 6 months TO THE WEEK \u2014 a late dose loses the protection quickly. If a dose is ever going to be missed, ring us first.\u201d"}
+       ]},
+       {b:"say", html:"This tablet is like a pension payment \u2014 you'll never feel it working, but it roughly halves the chance of breaking your hip or spine, and the weekly ritual with the water and staying upright is genuinely what makes it work and keeps it safe. We'll look at it all again properly at five years \u2014 many people then earn a pause."},
+       {b:"why", html:"The <b>drug holiday</b> concept reflects the long skeletal retention of bisphosphonates, which continue to protect for a period after stopping in lower-risk patients, reducing cumulative exposure to rare harms. Denosumab is the opposite \u2014 its effect reverses quickly, so stopping it without a follow-on agent is dangerous, a point examiners frequently test."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Fracture ON treatment? Check before calling it failure", sub:"",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Actually taken?", html:"Weekly, with the full ritual? Pharmacy refill history? (~50% have quietly stopped by year 1.)"},
+         {tone:"blue", h:"2 · Absorbed?", html:"Taken with breakfast/coffee/calcium = near-zero absorption. Coeliac screen done?"},
+         {tone:"amber", h:"3 · Vitamin D + calcium replete?", html:"Treating osteomalacia with a bisphosphonate helps nobody — recheck 25-OH-D."},
+         {tone:"blue", h:"4 · Secondary cause missed?", html:"Myeloma (re-screen if new vertebral #), hyperparathyroidism, hypogonadism, cortisol, new steroid courses."},
+         {tone:"amber", h:"5 · The fall side?", html:"Falls programme actually attended? New sedatives? Vision checked?"},
+         {tone:"blue", h:"6 · True failure", html:"\u22652 fragility #s on verified treatment, or fracture + falling BMD → specialist for anabolic-first (romosozumab/teriparatide)."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 who needs the metabolic bone clinic", sub:"Most osteoporosis is managed entirely in primary care; referral is for diagnostic complexity, treatment failure, or parenteral and anabolic agents.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW \u2014 suspected myeloma", html:"NICE NG12: aged \u226560 with bone pain or an unexplained fracture plus abnormal protein electrophoresis, or a raised plasma viscosity or ESR \u2192 urgent haematology referral."},
+         {tone:"amber", h:"Very high risk \u2014 anabolic-first assessment", html:"<b>T-score \u2264\u22123.5</b>, multiple vertebral fractures, or a <b>fracture on treatment</b> \u2192 romosozumab or teriparatide assessment. Also deep-red FRAX risk, severe or recurrent vertebral fractures despite treatment, and intolerance of multiple agents."},
+         {tone:"plain", h:"Young or unexplained", html:"<b>Osteoporosis <b>&lt;50</b>, Z-score \u2264\u22122, or a man without an obvious cause</b> \u2192 secondary-cause work-up with endocrinology. Also pre- or early-menopausal women, and complex secondary osteoporosis."},
+         {tone:"plain", h:"Denosumab exits", html:"Any planned stop or switch of denosumab \u2192 specialist-guided bisphosphonate follow-on. Never a primary-care unilateral stop."},
+         {tone:"plain", h:"Complex", html:"<b>eGFR &lt;30\u201335</b> (renal bone disease versus osteoporosis \u2014 get advice before bisphosphonates), <b>atypical femoral fracture</b>, <b>osteonecrosis of the jaw</b>, pregnancy-associated osteoporosis."},
+         {tone:"cream", h:"Fracture liaison service", html:"Every fragility fracture in a patient aged 50 and over should flow through the FLS pathway \u2014 if your area has one, use it; <b>if not, YOU are the FLS</b>. Refer anyone presenting with a fragility fracture for systematic assessment and secondary prevention."}
+       ]},
+       {b:"say", html:"Your bones have broken despite treatment we've verified you're taking properly \u2014 that puts you in the group that does better with the bone-building injections first, and that's a specialist decision, so I'm referring you. Everything else \u2014 the calcium, vitamin D and balance work \u2014 carries on exactly as now."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 68-year-old woman who fell in the garden and fractured her distal radius six weeks ago, discharged from fracture clinic with no bone assessment. She takes prednisolone 10 mg daily for polymyalgia, started four months ago. She has read online that \u201cthese bone tablets rot your jaw\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises the <b>wrist fracture as the index fragility fracture</b> and the missed FLS opportunity; identifies that steroids \u22657.5 mg for \u22653 months already warrants bone protection without waiting for a DXA; runs FRAX onto NOGG and screens secondary causes; quantifies the ONJ risk (1 in 10,000\u2013100,000) against her fracture risk rather than dismissing the concern; teaches the <b>alendronate ritual explicitly</b>; and arranges falls assessment alongside. <a href='../../cases/osteoporosis.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NOGG 2024 \u2014 UK clinical guideline for the prevention and treatment of osteoporosis<br><a href="https://www.nogg.org.uk" rel="noopener">nogg.org.uk</a><span class="rd"> \u2014 the FRAX \u2192 NOGG intervention thresholds and the low / intermediate / high / very-high bands, the treat-without-DXA groups, and the 5-year and 3-year review decisions</span></li>'+
+         '<li>NICE CG146 \u2014 Osteoporosis: assessing the risk of fragility fracture (2017)<br><a href="https://www.nice.org.uk/guidance/cg146" rel="noopener">nice.org.uk/guidance/cg146</a><span class="rd"> \u2014 case-finding criteria, the under-40 straight-to-DXA rule, and use of the major-osteoporotic-fracture risk</span></li>'+
+         '<li><b>NICE technology appraisals</b><span class="rd"> \u2014 TA161 (secondary prevention), TA204 (denosumab), TA464 (bisphosphonates for fragility fracture prevention), TA791 (romosozumab)</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 myeloma: aged 60 and over with persistent bone pain or unexplained fragility fracture \u2192 very urgent serum protein electrophoresis, serum-free light chains or Bence Jones protein, and FBC</span></li>'+
+         '<li><b>FRAX and QFracture</b><br><a href="https://www.sheffield.ac.uk/FRAX/" rel="noopener">FRAX</a> \u00b7 <a href="https://qfracture.org" rel="noopener">qfracture.org</a><span class="rd"> \u2014 the two validated risk tools; FRAX ages 40\u201390, QFracture 30\u201399</span></li>'+
+         '<li><b>HORIZON; ARCH; VERO</b><span class="rd"> \u2014 IV zoledronate\u2019s mortality benefit after hip fracture; romosozumab and teriparatide outperforming antiresorptive-alone in very-high-risk patients (the building-then-locking rationale)</span></li>'+
+         '<li><b>NICE CG146 \u2014 fracture risk assessment; SIGN</b><span class="rd"> \u2014 primary-care operationalisation. Note the three UK guidelines differ; use one consistently</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: alendronate, risedronate, zoledronate, denosumab, colecalciferol, calcium preparations</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Osteoporosis and fragility-fracture prevention in adults \u2014 NOGG 2024, NICE CG146 (2017), TA161, TA204, TA464 and TA791, with NICE. Assessment and management are merged on this page; there is no separate osteoporosis pathway to cross-check. The UK guidelines (NICE, NOGG, SIGN) differ \u2014 this page follows NICE/NOGG and you should use one consistently. Verify thresholds against the live tools and all doses against the current BNF."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

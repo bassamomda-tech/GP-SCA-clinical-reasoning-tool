@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ménière's disease — Protocol · Reasoning GP</title>
+<meta name="description" content="Ménière's disease in primary care, diagnosis and management on one page: the Bárány/AAO-HNS criteria, excluding sudden sensorineural hearing loss and vestibular schwannoma, audiometry, acute attack relief, betahistine and salt prophylaxis, DVLA advice and ENT referral." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/menieres.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790196272852298 tools/management/menieres.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Meniere's protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F442}",
+  title:"M\u00e9ni\u00e8re's disease \u2014 the complete guide",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"M\u00e9ni\u00e8re's disease \u2014 exclude the time-critical mimics, confirm with audiometry, then reduce the attacks",
+  stemSub:"One page for the whole condition: recognise the triad and the 20-minute-to-12-hour attack, rule out sudden sensorineural hearing loss (steroids within 72 hours) and vestibular schwannoma before you label it, confirm the low-frequency loss on pure-tone audiometry, treat the acute attack briefly and the disease preventively, give the DVLA advice, and know when ENT escalation is needed.",
+  guideline:"B\u00e1r\u00e1ny/AAO-HNS · DVLA",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"B\u00e1r\u00e1ny Society / AAO-HNS criteria"},
+    {t:"DVLA Assessing Fitness to Drive"},
+    {t:"BNF for all doses"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v3.0 \u00b7 reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Sudden SNHL \u00b7 central \u00b7 schwannoma</small></a><a href="#confirm"><b>Confirm</b><small>Triad \u00b7 20 min\u201312 h \u00b7 criteria</small></a><a href="#ladder"><b>Treat</b><small>Attack \u00b7 prevention</small></a><a href="#refer"><b>Refer</b><small>ENT \u00b7 DVLA</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Sudden hearing loss is an emergency", html:"Rapid unilateral sensorineural loss developing over hours to 3 days is <b>sudden SNHL \u2014 same-day ENT for steroids within 72 hours (&lt;72 h from onset)</b>, not a M\u00e9ni\u00e8re's flare. Vertical or direction-changing nystagmus, focal neurology or ataxia \u2192 <b>999</b> (posterior-circulation stroke)."},
+    {tone:"amber", h:"The pattern that defines it", html:"<b>\u22652 spontaneous vertigo attacks lasting 20 minutes to 12 hours</b>, with <b>audiometrically confirmed low/mid-frequency sensorineural loss</b> in the affected ear, plus fluctuating tinnitus or aural fullness. <b>Not positional, not seconds, not days.</b>"},
+    {tone:"blue", h:"Audiometry is the test", html:"<b>Pure-tone audiometry</b> documents the fluctuating low-frequency loss and is central to the formal diagnosis and to monitoring. <b>MRI internal auditory meati (IAM)</b> whenever loss or tinnitus is unilateral or asymmetrical \u2014 a <b>vestibular schwannoma (acoustic neuroma)</b> mimics early M\u00e9ni\u00e8re's."},
+    {tone:"green", h:"Two arms of treatment", html:"<b>Acute:</b> a short course of prochlorperazine or an antihistamine \u2014 for the attack only. <b>Preventive:</b> low salt plus <b>betahistine 16 mg TDS</b> (up to 48 mg/day), trialled for <b>3\u20136 months</b>. <b>Do not</b> leave anyone on long-term vestibular sedatives \u2014 they block central compensation."},
+    {tone:"purple", h:"DVLA \u2014 say it and document it", html:"M\u00e9ni\u00e8re's is <b>notifiable</b>. The patient must tell the DVLA and <b>must not drive</b> while liable to sudden, disabling vertigo. This is the most commonly missed and most medico-legally important counselling point on the page."},
+    {tone:"plain", h:"Vertigo burns out; hearing does not come back", html:"Attacks cluster and then remit, and the vertigo often <b>settles over years</b> \u2014 but <b>hearing loss tends to progress and become permanent</b>. That single sentence frames expectations and the timing of hearing rehabilitation."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Exclude the dangerous", html:"Sudden SNHL (the 72-hour window), central signs, Ramsay Hunt (vertigo with ear pain and vesicles, \u00b1 facial palsy), bacterial labyrinthitis or cholesteatoma, cardiac and pre-syncopal causes, ototoxic drugs.", alert:true},
+    {title:"Match the pattern", html:"Spontaneous rotational vertigo lasting 20 minutes to 12 hours, fluctuating unilateral low-frequency hearing loss, tinnitus and aural fullness \u00b1 Tumarkin drop attacks. <b>Screen out vestibular migraine \u2014 the commonest mimic.</b>"},
+    {title:"Confirm", html:"Pure-tone audiometry (\u00b1 serial); MRI internal auditory meati if the loss or tinnitus is unilateral or asymmetrical; bloods to exclude contributors. The diagnosis is ENT or audiovestibular-confirmed \u2014 refer all suspected cases."},
+    {title:"Treat both arms", html:"A short-term vestibular sedative for the attack; low salt, trigger reduction and betahistine for prevention; vestibular rehabilitation for imbalance between attacks; hearing aids as the loss progresses."},
+    {title:"Counsel and review", html:"DVLA notification and occupational safety, the M\u00e9ni\u00e8re's Society, mood screening. Review prophylaxis at 3\u20136 months, re-image if the hearing pattern changes, and escalate disabling disease to ENT."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Exclude the sinister and the time-critical before you label it M\u00e9ni\u00e8re's",
+     sub:"Unilateral audiovestibular symptoms have several serious mimics, and one of them has a 72-hour treatment window.",
+     blocks:[
+       {b:"warn", html:"<b>Rapid unilateral sensorineural hearing loss developing over hours to 3 days is sudden SNHL \u2014 an otological emergency. Same-day ENT for steroids within 72 hours.</b> Treating it as a M\u00e9ni\u00e8re's flare wastes the only window in which the hearing can be salvaged."},
+       {b:"dl", rows:[
+         ["<b>Central vertigo / stroke</b>","Vertical or direction-changing nystagmus, focal neurology, ataxia, diplopia \u2192 <b>999</b>. <b>HINTS is only valid in acute <em>sustained</em> vertigo</b>, not in episodic attacks"],
+         ["<b>Vestibular schwannoma (acoustic neuroma)</b>","Progressive unilateral hearing loss or tinnitus \u00b1 imbalance \u2192 ENT and <b>MRI internal auditory meati</b>. It mimics early M\u00e9ni\u00e8re's \u2014 <b>image before attributing progressive asymmetric loss to M\u00e9ni\u00e8re's</b>"],
+         ["<b>Ramsay Hunt</b>","Vertigo with ear pain and vesicles \u00b1 facial palsy \u2192 <b>same-day antivirals and steroids</b>"],
+         ["Bacterial labyrinthitis / cholesteatoma","Otalgia, discharge, systemic upset, attic crust \u2192 <b>urgent ENT</b>"],
+         ["Cardiac and drug causes","Pre-syncope or arrhythmia; <b>ototoxic drugs \u2014 aminoglycosides, loop diuretics, cisplatin</b>. Review the medication list and check lying and standing BP and pulse"],
+         ["<b>NG12 stated honestly</b>","<b>M\u00e9ni\u00e8re's has no NICE NG12 suspected-cancer criterion, and vestibular schwannoma is benign \u2014 so there is no 2WW route here</b>; it goes urgent-routine ENT with MRI. If the picture is really an unexplained neck lump, or persistent unexplained hoarseness in an adult aged 45 or over, <b>switch to the NG12 head-and-neck route</b> instead"]
+       ]},
+       {b:"why", html:"M\u00e9ni\u00e8re's is in part a diagnosis of exclusion, which is why the diagnosis is ENT-confirmed. Sudden SNHL is time-critical, progressive unilateral loss mandates MRI to exclude a schwannoma, and central signs point to stroke \u2014 three different clocks running behind the same complaint of \u201cdizziness\u201d."}
+     ]},
+
+    {id:"confirm", nav:"Confirm", title:"The triad, the attack pattern and the formal criteria",
+     sub:"The duration of the attack is the single most useful discriminator in the history.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Vertigo","<b>Spontaneous</b> (not positional) rotational vertigo lasting <b>20 minutes to 12 hours</b>, rarely up to 24 hours. Recurrent, clustering then remitting"],
+         ["Hearing loss","<b>Low-frequency sensorineural</b> loss, typically unilateral \u2014 fluctuating early, progressive over years"],
+         ["Tinnitus and aural fullness","Unilateral tinnitus and a sense of pressure in the affected ear, often heralding an attack"],
+         ["Associated features","Nausea and vomiting; imbalance for hours to days afterwards; <b>Tumarkin drop attacks</b> (sudden falls without warning) in some"],
+         ["<b>Formal criteria (B\u00e1r\u00e1ny Society / AAO-HNS)</b>","<b>\u22652 spontaneous vertigo episodes of \u226520 minutes</b>, plus <b>audiometrically confirmed low/mid-frequency sensorineural loss</b> in the affected ear, plus <b>fluctuating aural symptoms</b> (hearing, tinnitus, fullness)"],
+         ["<b>Vestibular migraine</b>","<b>The commonest and most under-recognised mimic</b> \u2014 migrainous features, photophobia, a headache history, variable duration. Treating the migraine often transforms the symptom burden"],
+         ["BPPV","Brief (seconds), <b>positional</b>, no hearing loss"],
+         ["Vestibular neuritis","A single prolonged attack over days, <b>no hearing loss</b>"]
+       ]},
+       {b:"table", head:["Examination","Expected in M\u00e9ni\u00e8re's","What it excludes"], rows:[
+         ["Otoscopy","Normal","Middle-ear disease, cholesteatoma"],
+         ["Tuning forks","Weber lateralises to the better ear; Rinne positive bilaterally","Confirms a <b>sensorineural</b> rather than conductive pattern"],
+         ["Nystagmus","Horizontal during an attack (peripheral)","Vertical or direction-changing \u2192 <b>central; reconsider the diagnosis</b>"],
+         ["Cranial nerves and cerebellar","Normal between attacks","Central pathology"],
+         ["Cardiovascular","Lying and standing BP, pulse","Orthostatic and arrhythmic dizziness"]
+       ]},
+       {b:"why", html:"Between attacks the examination is typically unremarkable, so <b>a normal examination does not exclude the diagnosis</b> \u2014 its purpose is to demonstrate a peripheral sensorineural pattern and to exclude central signs, middle-ear disease and cardiovascular causes. The 20-minute-to-12-hour attack with fluctuating low-frequency loss is what separates M\u00e9ni\u00e8re's from BPPV (seconds), vestibular neuritis (days, no hearing loss) and vestibular migraine."}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Audiometry confirms it; MRI excludes the mimic",
+     sub:"One test makes the diagnosis possible and one test makes it safe.",
+     blocks:[
+       {b:"table", head:["Test","Role","Notes"], rows:[
+         ["<b>Pure-tone audiometry</b>","Documents the low/mid-frequency sensorineural loss and its fluctuation","<b>Central to the formal diagnosis and to monitoring</b>; serial audiometry tracks progression"],
+         ["<b>MRI internal auditory meati</b>","Excludes vestibular schwannoma and central pathology","Indicated for <b>any</b> unilateral or asymmetrical sensorineural loss or tinnitus"],
+         ["Bloods","Exclude contributors","FBC, glucose or HbA1c, TFTs, U&amp;E; consider autoimmune and syphilis screening in atypical or bilateral disease"],
+         ["Specialist vestibular tests","ENT / audiovestibular-led","<b>Electrocochleography, VEMP, caloric testing</b> \u2014 not primary care"],
+         ["Not routinely useful","\u2014","CT head; routine bloods are rarely diagnostic but help exclude contributors"]
+       ]},
+       {b:"why", html:"Audiometry is the cornerstone: it objectively confirms the characteristic fluctuating low-frequency loss and tracks progression, and <b>the formal criteria cannot be met without it</b>. MRI of the internal auditory meati is essential whenever loss or tinnitus is unilateral or asymmetrical, because a schwannoma can present exactly like early M\u00e9ni\u00e8re's."}
+     ]},
+
+    {id:"lifestyle", nav:"Prevention", title:"Lifestyle and trigger control \u2014 the first-line preventive arm",
+     sub:"This is treatment, not advice: salt and trigger reduction change attack burden.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"\ud83e\uddc2 Low salt", html:"<b>The cornerstone preventive measure</b> \u2014 reduce processed foods and aim for a consistent low-sodium intake rather than an occasional effort."},
+         {tone:"green", h:"\u2615 Trigger reduction", html:"Cut <b>caffeine and alcohol</b>; where relevant chocolate and tobacco. Identify personal triggers; stop smoking."},
+         {tone:"plain", h:"\ud83d\udca7 Routine", html:"Good hydration, regular meals and sleep, stress reduction \u2014 <b>attacks cluster around a disrupted routine</b>."},
+         {tone:"blue", h:"\ud83e\uddcd Vestibular rehabilitation", html:"For chronic imbalance <em>between</em> attacks \u2014 <b>the right answer where sedatives are the wrong one</b>."},
+         {tone:"blue", h:"\ud83e\uddbb Hearing support", html:"Audiology follow-up, <b>hearing aids</b> as loss progresses, tinnitus management strategies; <b>cochlear implant</b> in selected severe cases."},
+         {tone:"amber", h:"\ud83e\ude9c Practical safety", html:"Avoid heights, ladders and <b>swimming alone</b> during active disease; plan for a sudden attack."},
+         {tone:"purple", h:"\ud83e\udde0 Mental health and peer support", html:"<b>Anxiety and depression are common</b> \u2014 screen proactively, treat, and signpost the <b>M\u00e9ni\u00e8re's Society</b>."}
+       ]},
+       {b:"why", html:"Salt restriction and trigger reduction reduce attack burden and are genuinely first-line, not an afterthought \u2014 but the unpredictability and the progressive hearing loss carry a high psychological cost, so <b>mood and peer support are part of the treatment</b>, not an optional extra."}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"Acute relief and prophylaxis \u2014 with the sedative trap",
+     sub:"Two arms, two different jobs: settle the attack, and reduce how often attacks come.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Acute", title:"Short-course vestibular sedative", when:"the attack only",
+          html:"<b>Prochlorperazine 5 mg PO TDS, buccal 3 mg BD, or 12.5 mg IM</b> if vomiting; or an antihistamine \u2014 <b><span class='rx'>cyclizine 50 mg TDS</span></b> or <b><span class='rx'>cinnarizine 30 mg TDS</span></b> \u2014 for severe vertigo and vomiting. <b>Use for the attack, then stop.</b>"},
+         {step:"Prophylaxis", title:"Betahistine plus low salt", when:"recurrent attacks",
+          fromLabel:"first-line prevention",
+          html:"<b>Betahistine 16 mg TDS (up to 48 mg/day)</b> to reduce attack frequency and severity \u2014 widely used in the UK, <b>evidence modest</b>. <b>Trial for 3\u20136 months</b>, then review the benefit honestly and stop if there is none. Combine with the low-salt approach."},
+         {step:"Specialist add-on", title:"Diuretics, vestibular rehabilitation", when:"specialist-guided",
+          fromLabel:"partial response",
+          html:"A <b>thiazide-type diuretic</b> (e.g. bendroflumethiazide 2.5 mg OD, sometimes combined with amiloride) is used by some specialists; <b>vestibular rehabilitation</b> for chronic imbalance between attacks."},
+         {step:"Refractory", title:"ENT procedures", when:"disabling despite the above",
+          fromLabel:"escalate, don't persist",
+          html:"<b>Intratympanic steroids</b>, <b>intratympanic gentamicin</b> (ablative), or surgery \u2014 <b>endolymphatic sac decompression, labyrinthectomy</b> \u2014 for disabling, treatment-resistant disease."}
+       ]},
+       {b:"warn", html:"<b>Do not continue vestibular sedatives between attacks</b> \u2014 they impair central vestibular compensation and leave patients permanently unsteady. <b>Repeat prescriptions of prochlorperazine or cinnarizine running for months are the commonest iatrogenic harm in this condition.</b> And because attacks are sudden and disabling, <b>DVLA notification is mandatory</b> \u2014 advise explicitly and document it."}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Attacks, hearing, mood \u2014 and the diagnosis itself",
+     sub:"The review that matters most is the honest one about whether the betahistine is doing anything.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Attack frequency and severity","Each review","Optimise prophylaxis; refer if disabling"],
+         ["Hearing \u2014 serial audiometry","Via ENT / audiology","Track progressive loss; hearing aids as needed; document fluctuation"],
+         ["<b>Betahistine benefit</b>","<b>At 3\u20136 months</b>, then periodically","Continue if it is helping; <b>stop if it is not</b> \u2014 don't leave it on the repeat by default"],
+         ["<b>The diagnosis</b>","If features change","New asymmetrical or progressive loss \u2192 <b>MRI</b>; central signs \u2192 urgent reassessment"],
+         ["Mood","Each review","Screen for and treat anxiety and depression; signpost support"],
+         ["Driving and occupation","Each review","<b>Reinforce the DVLA advice</b> and workplace safety; document it"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Natural history to counsel on</b>","Attacks typically cluster then remit and the vertigo often \u201cburns out\u201d over years \u2014 but <b>hearing loss tends to progress and become permanent</b>. This frames both realistic expectations and the timing of hearing rehabilitation"],
+         ["Bilateral disease","Develops in a minority, with greater hearing and balance impact \u2014 <b>consider an autoimmune work-up</b>"],
+         ["<b>Tumarkin drop attacks</b>","Sudden falls without warning, high injury risk \u2192 <b>urgent ENT</b>; may warrant ablative therapy"],
+         ["Comorbid vestibular migraine","A common overlap \u2014 treating the migraine can substantially reduce the total symptom burden"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 Central red flags", html:"\u201cSudden severe headache, double vision, slurred speech, weakness, or unsteadiness that doesn't come in attacks but stays \u2014 call <b>999</b>.\u201d"},
+         {tone:"red", h:"\ud83d\udc42 Sudden hearing drop", html:"\u201cA sudden big drop in hearing \u2014 contact us the <b>same day</b>. There is a treatment that only works in the first three days.\u201d"},
+         {tone:"purple", h:"\ud83d\ude97 Driving", html:"\u201cBecause attacks come without warning, you <b>must tell the DVLA</b> and not drive while you are liable to them.\u201d"},
+         {tone:"amber", h:"\ud83e\ude9c Drop attacks", html:"\u201cIf you ever fall suddenly without warning and without losing consciousness, tell us \u2014 that needs <b>urgent ENT</b> review.\u201d"},
+         {tone:"green", h:"\ud83e\uddc2 It is treatment, not advice", html:"\u201cKeeping salt, caffeine and alcohol down genuinely reduces attacks \u2014 it is part of the treatment, not just lifestyle talk.\u201d"},
+         {tone:"blue", h:"\ud83d\udc8a Don't stay on the sickness tablets", html:"\u201cThe anti-sickness tablets are for attacks only \u2014 taking them continuously keeps you unsteady.\u201d"}
+       ]},
+       {b:"say", html:"There are two jobs here. When an attack hits, the tablets settle the spinning and sickness \u2014 but only for those few days, because taking them all the time actually stops your balance system recovering. The other job is reducing how often attacks come, and that is the low-salt approach plus a regular medicine we will review in a few months. The part I must be clear about: while you are liable to sudden attacks you have to tell the DVLA and not drive."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Attacks not controlled? Check these before calling it refractory", sub:"It is often the diagnosis, not the drug. Confirm the diagnosis and optimise prevention before escalating.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"1 · Is it Ménière's?", html:"ENT-confirmed with an audiogram? Reconsider <b>vestibular migraine</b> — the commonest mimic — plus BPPV, and vestibular schwannoma if the loss is progressive and asymmetric."},
+         {tone:"amber", h:"2 · Is the audiogram there?", html:"No audiometric confirmation means no formal diagnosis. Get it before escalating treatment."},
+         {tone:"amber", h:"3 · Lifestyle actually in place?", html:"Low salt in practice, not in principle; caffeine and alcohol genuinely reduced; sleep and stress addressed."},
+         {tone:"amber", h:"4 · Adequate betahistine trial?", html:"<span class='rx'>Betahistine 16 mg TDS</span>, titrated where needed, for a full <b>3–6 months</b> — and actually reviewed."},
+         {tone:"red", h:"5 · Sedatives still running?", html:"Long-term <span class='rx'>prochlorperazine</span> or <span class='rx'>cinnarizine</span> causes persistent unsteadiness and blocks central compensation. Stop it and add vestibular rehabilitation."},
+         {tone:"blue", h:"6 · Genuinely refractory", html:"Disabling attacks despite optimised prevention, or <b>Tumarkin drop attacks</b> → ENT for intratympanic or surgical options."}
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"Diagnosis confirmed and prevention optimised?", html:"That is the point at which ENT escalation is appropriate — and the referral letter writes itself."}
+       ]}
+     ]},
+    {id:"refer", nav:"Refer", title:"Refer \u2014 who goes where",
+     sub:"Refer all suspected cases for confirmation; the red flags go the same day.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same-day ENT", html:"<b>Sudden sensorineural hearing loss (steroids within 72 hours)</b>, Ramsay Hunt, suspected cholesteatoma or bacterial labyrinthitis."},
+         {tone:"red", h:"999", html:"Central signs \u2014 vertical or direction-changing nystagmus, focal neurology, ataxia, diplopia."},
+         {tone:"amber", h:"ENT + MRI", html:"<b>Unilateral or asymmetrical hearing loss or tinnitus</b> \u2014 to exclude vestibular schwannoma (acoustic neuroma), and to confirm the diagnosis."},
+         {tone:"amber", h:"ENT / audiovestibular", html:"<b>All suspected cases</b> \u2014 diagnostic confirmation, audiometry, and management of refractory disease (intratympanic therapy, surgery)."},
+         {tone:"plain", h:"Neurology", html:"Suspected <b>vestibular migraine</b> or another central cause."},
+         {tone:"plain", h:"Vestibular physiotherapy", html:"Chronic imbalance or unsteadiness between attacks."},
+         {tone:"purple", h:"NG12 \u2014 stated honestly", html:"<b>There is no 2WW route for M\u00e9ni\u00e8re's or for vestibular schwannoma, which is benign.</b> The NG12 criteria that could apply to the same consultation are the head-and-neck ones: <b>an unexplained neck lump, or persistent unexplained hoarseness in an adult aged 45 or over \u2192 suspected head-and-neck cancer referral (2 weeks)</b>. Do not invent a cancer pathway for the vertigo \u2014 but do not miss the lump you find while examining the neck."},
+         {tone:"cream", h:"Keep in primary care", html:"Acute attack management, lifestyle and salt, the betahistine trial, monitoring, mood, and the DVLA advice."}
+       ]},
+       {b:"say", html:"The pattern of spinning attacks with fluctuating hearing and ringing fits M\u00e9ni\u00e8re's. I will refer you to ENT to confirm it with a hearing test and check nothing else is going on, and meanwhile we will work on reducing attacks with the low-salt approach and a regular medicine, plus something to keep for the bad attacks."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 46-year-old woman with three episodes over two months of violent spinning lasting <b>about an hour</b>, each with a blocked feeling and roaring in the left ear. She is a driving instructor and has not mentioned the attacks to anyone at work."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Establishes the <b>duration of the attack</b> and its spontaneity rather than accepting \u201cdizziness\u201d; asks specifically about hearing, tinnitus and fullness; <b>excludes sudden SNHL and central features</b>; recognises the mimic (vestibular migraine) rather than labelling immediately; arranges audiometry and ENT referral; treats both arms; and \u2014 the step candidates most often miss \u2014 <b>raises the DVLA duty and her occupation explicitly, and documents it</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>B\u00e1r\u00e1ny Society / AAO-HNS diagnostic criteria for M\u00e9ni\u00e8re\u2019s disease</b><br><a href="https://www.jvr-web.org/ICVD.html" rel="noopener">jvr-web.org/ICVD.html</a><span class="rd"> \u2014 \u22652 spontaneous vertigo episodes of \u226520 minutes, audiometrically confirmed low/mid-frequency SNHL, fluctuating aural symptoms</span></li>'+
+         '<li><b>ENT UK \u2014 audiovestibular guidance</b><br><a href="https://www.entuk.org" rel="noopener">entuk.org</a><span class="rd"> \u2014 sudden sensorineural hearing loss as an emergency (steroids within 72 hours); MRI internal auditory meati for asymmetric loss</span></li>'+
+         '<li><b>DVLA \u2014 Assessing fitness to drive</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk \u2014 assessing fitness to drive</a><span class="rd"> \u2014 M\u00e9ni\u00e8re\u2019s and liability to sudden disabling giddiness: the notification duty and driving cessation</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 no criterion applies to M\u00e9ni\u00e8re\u2019s; the adjacent head-and-neck routes (unexplained neck lump, persistent unexplained hoarseness at 45 and over) are stated so the page neither invents nor omits a cancer pathway</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: betahistine, prochlorperazine (oral, buccal, IM), cyclizine, cinnarizine</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"M\u00e9ni\u00e8re's disease \u2014 B\u00e1r\u00e1ny/AAO-HNS criteria, ENT UK and DVLA guidance. Diagnosis and management are merged on this page; there is no separate M\u00e9ni\u00e8re's pathway to cross-check. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Parkinson's disease — Protocol · Reasoning GP</title>
+<meta name="description" content="Parkinson's disease in primary care: the on-time-every-time medication rule and why abrupt withdrawal is dangerous, the dopamine-blocking drugs to avoid, non-motor symptoms as the GP's highest-value work, impulse-control disorders on agonists, and excluding reversible causes before assuming progression." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/parkinsons.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Parkinson's disease protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Parkinson's disease — the complete guide",
+  eyebrow:"Protocol · NICE NG71 · shared care · on time, every time",
+  stemTitle:"The specialist tunes the motor drugs; the GP's highest-value work is the non-motor burden and making absolutely certain the doses are never late or missed",
+  stemSub:"One page for the shared-care role. Parkinson's regimens are <b>precisely timed and must never be stopped abruptly or delayed</b> — missed doses cause severe immobility and a dangerous NMS-like state, and hospital and care-home admissions are where this goes wrong. Beyond that: manage the <b>non-motor</b> burden that actually drives disability, know the <b>dopamine-blocking drugs that must be avoided</b>, ask directly about impulse-control disorders, and exclude reversible causes before accepting that deterioration is progression.",
+  guideline:"NICE NG71",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE NG71 — Parkinson's disease in adults"},
+    {t:"Never stop or delay PD medication — NMS-like risk", tone:"tw"},
+    {t:"Avoid metoclopramide, prochlorperazine, haloperidol", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#foundation"><b>Shared care</b><small>Who does what</small></a><a href="#mdt"><b>MDT</b><small>Physio · SALT · OT</small></a><a href="#meds"><b>Medication</b><small>On time · avoid</small></a><a href="#monitor"><b>Review</b><small>Motor · non-motor</small></a><a href="#decline"><b>Worse?</b><small>Check first</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ On time, every time — and never stop abruptly", html:"Parkinson's regimens are precisely timed. Ensure medication is given on time, including in hospital and care settings — dispense, do not omit. Abrupt withdrawal risks acute akinesia and a neuroleptic-malignant-like syndrome. A patient who cannot swallow or keep down their tablets is an urgent problem, not one that waits for the morning round."},
+    {tone:"red", h:"⛔ Avoid dopamine-blocking drugs", html:"Metoclopramide, prochlorperazine, haloperidol and typical antipsychotics all worsen Parkinson's. Use domperidone for nausea, and quetiapine or clozapine if an antipsychotic is genuinely needed. This is the commonest iatrogenic deterioration in Parkinson's, and it usually arrives via an out-of-hours prescription for vomiting."},
+    {tone:"blue", h:"The diagnosis and the motor drugs are specialist-led", html:"Diagnosis is specialist-made (bradykinesia plus rigidity or tremor); the GP does not initiate anti-parkinsonian drugs. Levodopa is the mainstay, alongside dopamine agonists, MAO-B inhibitors and COMT inhibitors — all specialist-tuned. The GP role is on-time medication, non-motor symptoms, comorbidity, MDT coordination and anticipatory care."},
+    {tone:"green", h:"Non-motor symptoms are where primary care adds most", html:"Constipation (laxatives), orthostatic hypotension, depression, REM-sleep behaviour disorder, urinary symptoms, drooling and pain. These drive quality of life and disability at least as much as the motor symptoms, and they are squarely a GP job — the specialist clinic rarely has time for them."},
+    {tone:"amber", h:"Ask directly about impulse-control disorders", html:"Dopamine agonists can cause urges to gamble, shop, eat or engage in hypersexual behaviour — and patients almost never volunteer it. <b>Ask at every review, and ask the family too.</b> The consequences are often financial and marital before they are medical, and the treatment is a specialist regimen change."},
+    {tone:"amber", h:"Deterioration is not automatically progression", html:"Before accepting decline: check the doses are actually being taken on time, look for a newly started dopamine antagonist, and exclude intercurrent illness, dehydration, constipation and delirium. Three of the five commonest causes of \"worsening Parkinson's\" are reversible and iatrogenic."}
+  ],
+  pathwaySub:"Five steps, and the medication rule underpins all of them.",
+  pathway:[
+    {title:"Understand the shared-care setup", html:"Specialist diagnoses and tunes the motor regimen; the GP covers timing, non-motor symptoms, comorbidity and coordination.", alert:true},
+    {title:"Put the MDT in place", html:"Physiotherapy, SALT (speech AND swallow), dietitian, OT, PD specialist nurse, carer support."},
+    {title:"Protect the regimen and manage the non-motor burden", html:"On time every time; never abruptly; avoid dopamine blockers; treat constipation, postural hypotension, mood and sleep."},
+    {title:"Review motor, non-motor and safety", html:"Including a direct question about impulse-control disorders at every review on an agonist."},
+    {title:"On deterioration, exclude the reversible causes first", html:"Timing, offending drugs, intercurrent illness — then liaise with the specialist."}
+  ],
+  sections:[
+
+    {id:"foundation", nav:"Shared care", title:"Step 1 — the shared-care setup",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Diagnosis</b>","Specialist-made (bradykinesia plus rigidity or tremor). The GP does not initiate anti-parkinsonian drugs"],
+         ["<b>Drug classes</b>","Levodopa (mainstay), dopamine agonists, MAO-B inhibitors, COMT inhibitors — specialist-led"],
+         ["<b>GP role</b>","On-time medication, non-motor symptoms, comorbidity, MDT coordination, anticipatory care"],
+         ["<b>Assess</b>","Motor fluctuations, falls, cognition and mood, swallow, autonomic symptoms, carer needs"]
+       ]},
+       {b:"why", html:"Parkinson's drug regimens are precisely timed and must never be stopped abruptly or delayed — missed doses cause severe immobility and a dangerous NMS-like state. The GP's highest-value work is the non-motor burden (mood, constipation, falls, sleep, autonomic symptoms) and coordinating the MDT, while the specialist tunes the motor drugs."}
+     ]},
+
+    {id:"mdt", nav:"MDT", title:"Step 2 — multidisciplinary and lifestyle support",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🏃 Physiotherapy", html:"<b>For balance, gait, falls prevention and mobility.</b>"},
+         {tone:"amber", h:"🗣️ Speech and language therapy", html:"<b>For speech and — importantly — swallowing and aspiration risk.</b> Aspiration pneumonia is a leading cause of death in Parkinson's."},
+         {tone:"blue", h:"🍽️ Dietitian and OT", html:"Nutrition (weight loss, constipation), and occupational therapy for function and home safety."},
+         {tone:"green", h:"🚶 Exercise", html:"<b>Regular exercise improves mobility and wellbeing</b> and is one of the few things with disease-level benefit."},
+         {tone:"green", h:"🫂 PD nurse and carer", html:"<b>Parkinson's specialist nurse, carer support, advance care planning.</b>"},
+         {tone:"green", h:"😴 Sleep and mood", html:"Address sleep disturbance, low mood and apathy — major quality-of-life factors that are easily attributed to the disease and left untreated."}
+       ]}
+     ]},
+
+    {id:"meds", nav:"Medication", title:"Step 3 — support the regimen, manage the non-motor symptoms",
+     blocks:[
+       {b:"table", head:["Rule","Detail"], rows:[
+         ["<b>On time, every time</b>","Ensure medication is given on time, including in hospital and care settings — dispense, do not omit"],
+         ["<b>Never stop abruptly</b>","Abrupt withdrawal risks acute akinesia and a neuroleptic-malignant-like syndrome"],
+         ["<b>Non-motor symptoms — GP-managed</b>","Constipation (laxatives), orthostatic hypotension, depression, REM-sleep behaviour disorder, urinary symptoms, drooling, pain"],
+         ["<b>Psychosis and hallucinations</b>","Discuss with the specialist; if an antipsychotic is needed use quetiapine or clozapine — NOT typical antipsychotics"]
+       ]},
+       {b:"warn", html:"<b>Avoid dopamine-blocking drugs</b> — metoclopramide, prochlorperazine, haloperidol and typical antipsychotics all worsen Parkinson's. <b>Use domperidone for nausea, and quetiapine or clozapine for psychosis.</b> <b>Watch for impulse-control disorders with dopamine agonists.</b> <b>Never abruptly stop Parkinson's medication.</b>"}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"Step 4 — monitoring motor, non-motor and safety",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Motor fluctuations</b>","<b>Each review</b>","<b>\"Wearing off\" or dyskinesia → specialist for regimen adjustment</b>"],
+         ["<b>Falls and mobility</b>","<b>Each review</b>","<b>Physiotherapy, home safety, medication review</b>"],
+         ["<b>Mood, cognition, psychosis</b>","<b>Each review</b>","<b>Treat depression; specialist advice for hallucinations</b>"],
+         ["<b>Autonomic symptoms and constipation</b>","<b>Each review</b>","Manage postural blood pressure, bowels, bladder, swallow and aspiration risk"],
+         ["<b>Impulse-control disorder</b>","<b>Each review, on an agonist</b>","<b>Ask directly — and ask the family. Liaise with the specialist</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Regular shared-care reviews</b>","Holistic review: motor and non-motor symptoms, falls, mood, swallow, carer needs, medication timing"],
+         ["<b>On change</b>","Motor fluctuations, psychosis or new disability → specialist or PD nurse"],
+         ["<b>Advancing disease</b>","Palliative and anticipatory planning, swallow and aspiration, place of care"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Can't take medication", html:"\"If you cannot swallow or keep down your Parkinson's tablets — because of illness or surgery — contact us urgently. Doses must not be missed.\""},
+         {tone:"red", h:"🔴 NMS-like state", html:"\"High fever, severe stiffness, confusion and sweating — especially if medication has been stopped — call 999.\""},
+         {tone:"amber", h:"🎲 Impulse control", html:"\"Some of these medicines can cause urges to gamble, shop or other compulsions — tell us or your family if you notice it.\""},
+         {tone:"amber", h:"💊 Avoid certain drugs", html:"\"Some anti-sickness and sedative drugs make Parkinson's worse — always check with us before starting a new medicine.\""}
+       ]}
+     ]},
+
+    {id:"decline", nav:"Worse?", title:"Deteriorating? Check before assuming progression",
+     sub:"Exclude reversible and iatrogenic causes before attributing decline to the disease.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"1 · Medication timing", html:"Are doses being taken on time and not omitted — especially in hospital or a care home?"},
+         {tone:"red", h:"2 · Offending drugs", html:"A newly started dopamine antagonist — an anti-emetic or antipsychotic — worsening symptoms?"},
+         {tone:"amber", h:"3 · Intercurrent illness", html:"Infection, dehydration or constipation causing acute deterioration or delirium?"},
+         {tone:"blue", h:"4 · Non-motor", html:"<b>Mood, sleep or autonomic symptoms driving the disability?</b>"},
+         {tone:"green", h:"5 · Specialist", html:"<b>Motor fluctuations or psychosis → specialist for a regimen change.</b>"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When to refer or liaise",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — 999 / admission", html:"Acute akinesia, an NMS-like state, or a patient unable to take their medication."},
+         {tone:"amber", h:"Motor fluctuations", html:"Wearing-off, dyskinesia or freezing → neurology or the PD service for a regimen change."},
+         {tone:"amber", h:"Psychosis or dementia", html:"Hallucinations or cognitive decline → specialist, for a safe antipsychotic choice. See <a href='dementia.html'>dementia</a>."},
+         {tone:"blue", h:"Advanced therapies", html:"<b>For apomorphine, intestinal gel, or deep brain stimulation assessment.</b>"},
+         {tone:"green", h:"PD specialist nurse", html:"The most useful single point of contact for timing problems, non-motor symptoms and carer support."},
+         {tone:"cream", h:"GP management", html:"Protecting the medication timing, the whole non-motor burden, avoiding dopamine blockers, MDT coordination, impulse-control screening, falls and anticipatory care all belong here. Related pages: <a href='dementia.html'>dementia</a> · <a href='depression.html'>depression</a> · <a href='constipation-adult.html'>constipation</a> · <a href='malnutrition.html'>malnutrition</a> · <a href='essential-tremor.html'>essential tremor</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 74-year-old man with Parkinson's on <b>co-careldopa four times daily</b> was admitted to a care home two weeks ago after a fall. His wife reports he is <b>much stiffer and barely walking</b>, and was <b>vomiting last week</b> — the out-of-hours doctor prescribed <b>metoclopramide</b>. The home gives his tablets \"with the medication round, morning and teatime\". He has also started <b>gambling online</b>, which his wife has just discovered; he is on a <b>dopamine agonist</b> as well."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Identifies TWO iatrogenic causes before considering progression</b>: the care home has collapsed a four-times-daily regimen into two medication rounds, and metoclopramide is a dopamine antagonist that must be stopped and replaced with domperidone; <b>corrects the timing with the home explicitly and in writing</b>, explaining that PD doses are patient-timed, not round-timed; recognises the gambling as an impulse-control disorder caused by the dopamine agonist, does not treat it as a moral matter, and refers to the specialist for a regimen change rather than stopping the agonist abruptly; <b>excludes intercurrent illness, dehydration and constipation</b>; <b>checks swallow given the vomiting and immobility</b>, with SALT referral if any concern; <b>assesses falls risk and the wife's strain</b>; and <b>safety-nets the NMS-like presentation</b> and the inability to take medication."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG71 — Parkinson\u2019s disease in adults</b><br><a href="https://www.nice.org.uk/guidance/ng71" rel="noopener">nice.org.uk/guidance/ng71</a><span class="rd"> — specialist diagnosis and drug initiation, levodopa as the mainstay, the multidisciplinary referrals (physiotherapy, SALT, OT, dietitian), quetiapine or clozapine for Parkinson\u2019s disease psychosis, and the requirement to discuss impulse-control disorders before and during dopamine agonist therapy</span></li>'+
+         '<li><b>NICE NG71 \u2014 Parkinson’s disease in adults</b><br><a href="https://www.nice.org.uk/guidance/ng71" rel="noopener">nice.org.uk/guidance/ng71</a><span class="rd"> — the on-time medication rule and the risks of abrupt withdrawal, the dopamine-blocking drugs to avoid with domperidone as the safer anti-emetic, the non-motor symptom set, and the review structure</span></li>'+
+         '<li><b>Parkinson\u2019s UK — Get It On Time campaign</b><br><a href="https://www.parkinsons.org.uk" rel="noopener">parkinsons.org.uk</a><span class="rd"> — the evidence behind timed dosing in hospital and care-home settings, where collapsing a regimen into medication rounds causes avoidable deterioration</span></li>'+
+         '<li><b>MHRA Drug Safety Updates</b><span class="rd"> — dopamine agonists and impulse-control disorders; metoclopramide use restrictions and extrapyramidal effects</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Parkinson's disease — NICE NG71 and NICE. Diagnosis and motor-drug adjustment are specialist-led; the GP protects the regimen and manages the non-motor burden. Medication must be given on time, every time, including in hospital and care homes, and must never be stopped abruptly — acute akinesia and a neuroleptic-malignant-like syndrome follow. Avoid metoclopramide, prochlorperazine, haloperidol and typical antipsychotics: use domperidone for nausea and quetiapine or clozapine for psychosis. Ask directly about impulse-control disorders on dopamine agonists. Before accepting deterioration as progression, check timing, offending drugs and intercurrent illness. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menopause &amp; HRT prescribing — Protocol · Reasoning GP</title>
+<meta name="description" content="Menopause and HRT in one page: clinical diagnosis and when FSH earns its keep, red flags before prescribing, absolute risk numbers for counselling, route and regimen by uterus and stage, named preparations and dose equivalents, endometrial protection, side effects, bleeding, non-hormonal options and referral." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hrt-prescribing.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="HRT and menopause protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F338}",
+  title:"Menopause & HRT prescribing",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Menopause \u2014 diagnose it clinically, exclude the bleeding that isn\u2019t menopause, choose the route by risk and the regimen by uterus and stage, and always protect the endometrium",
+  stemSub:"One page for the whole condition. Confirm the diagnosis (and know the two places FSH earns its keep), screen the contraindications, counsel with absolute rather than relative risk, pick route and regimen with named preparations and dose equivalents, then work the stepwise plan for \u201cnot better\u201d, side effects and bleeding \u2014 plus the non-hormonal pathway when HRT is declined or unsafe.",
+  guideline:"NICE NG23 \u00b7 BMS",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NICE NG23 (2015, upd. 2024)"},
+    {t:"BMS 2024 \u00b7 MHRA 2020"},
+    {t:"FSRH 2023 \u00b7 RCOG POI"},
+    {t:"WHI \u00b7 E3N \u00b7 MENOS 1 &amp; 2"},
+    {t:"2WW \u00b7 NG12 PMB 55+", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Diagnose</b><small>Clinical from 45</small></a><a href="#severe"><b>Red flags</b><small>PMB \u00b7 breast \u00b7 VTE</small></a><a href="#ladder"><b>Prescribe</b><small>Route \u00b7 regimen \u00b7 dose</small></a><a href="#refer"><b>Refer</b><small>2WW \u00b7 specialist</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Never start HRT on top of unexplained bleeding", html:"2WW \u00b7 NICE NG12: unexplained postmenopausal bleeding in a woman aged 55 or over \u2192 suspected endometrial cancer pathway referral. <b>PMB &lt;55</b> \u2192 consider a suspected gynaecological cancer referral \u2014 in practice, investigate any PMB. The commonest serious error in menopause care is attributing PMB to \u201cthe menopause\u201d or to HRT side effects and delaying an endometrial cancer diagnosis. Starting HRT on top muddies the picture for months, and makes endometrial pathology worse."},
+    {tone:"red", h:"Always protect the endometrium", html:"<b>A woman with a uterus on systemic oestrogen must have a progestogen</b> \u2014 or a Mirena, which also provides contraception. Unopposed oestrogen causes <b>endometrial hyperplasia in 20\u201340%</b> and raises endometrial cancer risk about <b>6-fold</b>. <b>Never respond to progestogen intolerance by dropping the progestogen</b> \u2014 switch the type or the route."},
+    {tone:"amber", h:"Diagnose it clinically", html:"Aged 45 or over with typical symptoms: clinical diagnosis \u2014 do not check FSH (NG23). Menopause = <b>12 months amenorrhoea</b>; average UK age <b>51</b> (range 45\u201355). Perimenopause = cycle length varying by <b>\u22657 days</b> plus symptoms, and can last <b>4\u20138 years</b>. FSH earns its keep in only two places: <b>suspected POI under 40</b>, and genuine uncertainty at 40\u201345."},
+    {tone:"blue", h:"Transdermal is the safer route", html:"<b>Transdermal oestrogen carries no excess VTE or stroke risk</b> \u2014 it bypasses hepatic first-pass metabolism. <b>Oral oestrogen roughly doubles VTE risk</b> (about <b>+6 per 10,000 women/year</b>) and slightly raises ischaemic stroke risk (about <b>1.5\u00d7</b>). Go transdermal first if BMI &gt;30, smoker, migraine, hypertension, or aged 60 and over."},
+    {tone:"plain", h:"Counsel in absolute numbers", html:"<b>Combined HRT: about 4 extra breast cancers per 1000 women over 5 years</b> \u2014 comparable to drinking 2 units of alcohol a day, and less than obesity contributes. <b>Oestrogen-only: no increased risk, or slightly reduced.</b> Micronised progesterone and dydrogesterone carry the lowest signal. Started <b>&lt;60 or within 10 years of menopause</b>, HRT does not increase cardiovascular risk \u2014 the \u201cwindow of opportunity\u201d."},
+    {tone:"green", h:"POI is treated for health, not just symptoms", html:"Menopause under 40 \u2014 <b>POI affects about 1% of women under 40</b>. Confirm with <b>two raised FSH readings at least 4\u20136 weeks apart</b>, refer, and give <b>HRT (or a COCP) until at least the natural age of menopause, ~51</b>, for bone, cardiovascular and cognitive protection. <b>Risks are not increased above background in this group.</b>"}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Exclude what isn't menopause", html:"Any postmenopausal or unscheduled bleeding \u2192 investigate before HRT (NG12 2WW if 55+). Breast lump or nipple discharge \u2192 2WW breast. Current or past breast cancer, active VTE, severe liver disease \u2192 specialist. Atypical features \u2014 severe unilateral headache, focal neurology, bone pain, weight loss \u2014 investigate rather than attribute.", alert:true},
+    {title:"Diagnose clinically and quantify", html:"Clinical from 45; FSH only under 40 (suspected POI) or uncertain at 40\u201345. Record symptom type, frequency, night-time waking and quality-of-life impact \u2014 you will judge treatment against this at 3 months."},
+    {title:"Assess and counsel", html:"BP, BMI, breast and pelvic examination as indicated, thyroid clinically; personal and family history of breast cancer and VTE; QRISK3. Counsel with absolute risk. <b>HRT is not contraception.</b>"},
+    {title:"Prescribe \u2014 route then regimen", html:"Transdermal first-line if any risk factor. Uterus? \u2192 progestogen. Peri (LMP &lt;12 months) \u2192 sequential; post \u2192 continuous combined. Vaginal symptoms only \u2192 local oestrogen alone. Start low, titrate."},
+    {title:"Review and fine-tune", html:"First review at <b>6\u201312 weeks</b>, formal assessment at <b>3 months</b>, then annually with no arbitrary stop date. Fix side effects rather than abandoning HRT; assess the endometrium for persistent unscheduled bleeding."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Diagnose", title:"Confirm the menopause \u2014 and know when to test", sub:"Menopause is a clinical diagnosis from age 45. Investigations are rarely needed and often actively misleading.",
+     blocks:[
+       {b:"table", head:["Stage","Definition","What to do"], rows:[
+         ["<b>Menopause</b>","<b>12 months amenorrhoea</b> after the last menstrual period (uterus intact). Average UK age <b>51</b>; range <b>45\u201355</b>","Clinical diagnosis from 45 \u2014 <b>do not check FSH</b>"],
+         ["<b>Perimenopause</b>","Cycle length varying by <b>\u22657 days</b> from normal, plus menopausal symptoms, aged <b>&gt;40</b>. May still be having periods. Can last <b>4\u20138 years</b>","Clinical diagnosis; sequential HRT if treating"],
+         ["<b>Early menopause</b>","Age <b>40\u201345</b>","Clinical diagnosis plus FSH to support. <b>HRT strongly recommended to age 51</b>"],
+         ["<b>Premature ovarian insufficiency (POI)</b>","Menopause <b>&lt;40</b> \u2014 affects about <b>1% of women aged &lt;40</b>","<b>Two FSH readings &gt;30\u201340 IU/L at least 4\u20136 weeks apart</b> to confirm \u2192 <b>refer</b>. HRT (or COCP) mandatory to at least 51 for bone, cardiovascular and cognitive protection"]
+       ]},
+       {b:"dl", rows:[
+         ["Aged \u226545 years","<b>Clinical diagnosis \u2014 do NOT do FSH</b> (NG23). Vasomotor symptoms plus irregular cycles = perimenopause; no period for 12 months = postmenopause"],
+         ["Aged 40\u201344 years","Diagnose clinically if the picture is typical; FSH only if the diagnosis is genuinely unclear (for example after hysterectomy, or on hormonal contraception)"],
+         ["On the pill or a Mirena","Symptoms are masked and <b>FSH is unreliable on combined hormonal contraception</b> \u2014 stop or switch before testing if the answer matters"],
+         ["<b>Symptoms to establish</b>","<b>Vasomotor</b> (hot flushes, night sweats); <b>psychological</b> (low mood, anxiety, poor memory, brain fog); <b>urogenital</b> (dryness, dyspareunia, urinary urgency); <b>musculoskeletal</b> (joint pains, reduced muscle mass); <b>sleep disturbance</b>"],
+         ["<b>Quantify the burden</b>","Use the <b>Greene Climacteric Scale</b> or the <b>Menopause Rating Scale (MRS)</b> to score severity, so you can judge treatment response objectively at 3 months. Record night-time waking and quality-of-life impact"],
+         ["Impact is a legitimate medical need","<b>80% of women have symptoms and 25% describe a severe impact</b> on work, relationships and psychological wellbeing \u2014 this is not trivial"]
+       ]},
+       {b:"why", html:"NG23 explicitly states FSH testing is <b>not required</b> to diagnose menopause in women over 45 with typical symptoms: FSH fluctuates wildly in perimenopause, so a normal result does not exclude it and a single raised result does not confirm it. Testing in under-45s is appropriate to detect POI, which carries significant long-term consequences \u2014 increased osteoporosis, cardiovascular disease and dementia risk \u2014 so early identification and HRT initiation is health-preserving."},
+       {b:"warn", html:"<b>Investigate any abnormal or unscheduled bleeding BEFORE starting HRT.</b> Postmenopausal bleeding is a 2WW suspected-endometrial-cancer referral (NG12: aged 55 or over with unexplained PMB; in practice refer any PMB). Starting HRT on top of unexplained bleeding muddies the picture for months."}
+     ]},
+
+    {id:"severe", nav:"Red flags", title:"Red flags \u2014 screen before you prescribe", sub:"Some \u201cmenopausal\u201d symptoms are sinister. Do not attribute symptoms to the menopause without exclusion.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW \u00b7 NG12 \u2014 postmenopausal bleeding", html:"Any PV bleed more than 12 months after the LMP \u2192 2WW gynaecology before HRT. NG12: unexplained PMB aged 55 or over \u2192 suspected endometrial cancer pathway; <b>PMB &lt;55</b> → consider a suspected gynaecological cancer referral. Persistent intermenstrual or post-coital bleeding in a perimenopausal woman over 45 also warrants referral. Endometrial carcinoma must be excluded first \u2014 HRT will make endometrial pathology worse."},
+         {tone:"purple", h:"2WW \u00b7 Breast", html:"New breast mass, skin tethering, nipple discharge (especially blood-stained), or axillary lymphadenopathy \u2192 urgent breast clinic. Investigate and refer <b>before</b> HRT initiation \u2014 HRT with an oestrogen-sensitive malignancy causes serious harm. <b>Do not start HRT until assessment is complete.</b>"},
+         {tone:"red", h:"Breast cancer \u2014 current or past", html:"<b>Absolute contraindication to all systemic HRT preparations</b>, including the \u201csafer\u201d options. <b>Topical vaginal oestrogen may be permissible</b> \u2014 MHRA 2020 confirmed negligible systemic absorption \u2014 but <b>discuss with oncology before prescribing</b>."},
+         {tone:"red", h:"Current VTE or arterial thrombosis", html:"Current DVT, PE or arterial thrombosis \u2192 <b>oral HRT contraindicated</b> (oral increases VTE roughly 3-fold). Investigate and treat before deciding on route \u2014 <b>transdermal oestrogen does not increase VTE risk</b>."},
+         {tone:"red", h:"Other oestrogen-dependent malignancy", html:"Endometrial cancer, certain ovarian cancers \u2192 <b>seek specialist advice; do not initiate HRT without oncology input</b>."},
+         {tone:"red", h:"Severe liver disease", html:"Active hepatitis, hepatic failure, hepatocellular carcinoma \u2192 <b>oral HRT contraindicated</b> (first-pass hepatic metabolism). Transdermal may be possible with specialist guidance."},
+         {tone:"amber", h:"Atypical or rapidly progressive symptoms", html:"Severe unilateral headache, focal neurological symptoms, bone pain, weight loss \u2192 investigate before attributing anything to the menopause. May represent malignancy or neurological disease."},
+         {tone:"amber", h:"Uncontrolled hypertension", html:"Check BP before prescribing. <b>Systolic &gt;180 or diastolic &gt;110 \u2192 control the BP first.</b> Transdermal is safer than oral in hypertension \u2014 no hepatic renin stimulation."},
+         {tone:"amber", h:"Undiagnosed abnormal bleeding or untreated hyperplasia", html:"Both preclude starting HRT \u2014 investigate or refer, and consider the non-hormonal pathway meanwhile."}
+       ]},
+       {b:"table", head:["Category","Examples","What to do"], rows:[
+         ["<b>Do not start</b>","Current or past breast cancer; other oestrogen-dependent cancer; undiagnosed abnormal bleeding; untreated endometrial hyperplasia; active liver disease; current VTE or arterial disease; pregnancy","Investigate or refer; consider the non-hormonal pathway"],
+         ["<b>Specialist first</b>","Previous VTE or thrombophilia; hormone-sensitive cancer history wanting HRT; complex CVD","Refer to a menopause clinic \u2014 <b>transdermal may still be possible</b>; do not simply refuse"],
+         ["<b>Caution \u2014 choose route carefully</b>","BMI &gt;30, migraine (any type), smoker, controlled hypertension, gallbladder disease, aged 60 or over","<b>Transdermal oestrogen plus micronised progesterone</b> \u2014 the lowest-risk combination"],
+         ["<b>Not barriers</b>","Well-controlled hypertension, migraine without aura, diabetes, previous cervical or ovarian pathology per specialist advice","Prescribe by the low-risk route; monitor BP"]
+       ]},
+       {b:"why", html:"Migraine (with or without aura) contraindicates the combined <em>pill</em>, not HRT \u2014 physiological transdermal estradiol is acceptable in migraineurs. The pattern to internalise: risk factors change the ROUTE (go transdermal); true contraindications change the PLAN (refer or go non-hormonal)."},
+       {b:"warn", html:"<b>HRT is not contraception.</b> Fertility can persist: contraception is needed until <b>2 years after the LMP if aged &lt;50, or 1 year if <b>≥50</b> (or until age 55). A <b>Mirena</b> does both jobs elegantly \u2014 contraception plus the progestogen arm of HRT (replace every 5 years when used for endometrial protection)."}
+     ]},
+
+    {id:"risk", nav:"Risk &amp; counselling", title:"The risk numbers to counsel with", sub:"HRT risk must be contextualised in absolute, not relative, terms. This is the heart of shared decision-making.",
+     blocks:[
+       {b:"table", head:["Risk","What to say (per 1000 women aged 50\u201359, over ~5 years)","Modifier"], rows:[
+         ["<b>Breast cancer</b>","Baseline about <b>23/1000</b>. <b>Combined HRT: about 4 extra cases</b> \u2014 equivalent to drinking <b>2 units of alcohol a day</b>. Oestrogen-only (after hysterectomy): no increased risk, or slightly reduced. Risk relates to duration and falls after stopping","Micronised progesterone (Utrogestan) has the lowest breast cancer signal, then dydrogesterone. <b>BMI &gt;30 is a stronger breast cancer risk factor than HRT itself</b>"],
+         ["<b>VTE</b>","<b>Oral HRT roughly doubles VTE risk</b> \u2014 absolute increase about <b>+6 per 10,000 women/year</b>, still small. <b>Transdermal: no excess VTE risk</b>","Transdermal first if BMI &gt;30, smoker, previous superficial thrombophlebitis, or family history"],
+         ["<b>Cardiovascular</b>","No increased CHD risk when started &lt;60, or within 10 years of the menopause (CVD risk not increased starting <b>&lt;60/&lt;65</b>) \u2014 the \u201cwindow of opportunity\u201d, where risk is reduced or neutral. Starting &gt;60, or &gt;10 years post-menopause, slightly increases risk","<b>Timing matters enormously</b>"],
+         ["<b>Stroke</b>","Oral oestrogen: small increased ischaemic stroke risk (about 1.5\u00d7). <b>Transdermal: no increased stroke risk</b>","Use transdermal in any woman with stroke risk factors"],
+         ["<b>Endometrium</b>","<b>All women with an intact uterus MUST have a progestogen added.</b> Oestrogen alone causes <b>hyperplasia in 20\u201340%</b> and raises cancer risk about <b>6-fold</b>","The LNG-IUS (Mirena) is a NICE-recommended route of progestogen delivery"],
+         ["<b>Bones \u2014 a benefit</b>","HRT prevents osteoporotic fracture while taken: <b>hip fracture risk down 27%, vertebral fracture down 37%</b> (WHI)","Protective only while taking it \u2014 the benefit does not persist after stopping. Especially important in POI and early menopause"]
+       ]},
+       {b:"why", html:"The <b>2002 Women's Health Initiative</b> caused widespread HRT abandonment on the basis of relative-risk figures that represent very small absolute individual increases. Re-analysis showed WHI used predominantly <b>oral conjugated equine oestrogen with medroxyprogesterone</b> \u2014 not modern body-identical transdermal estradiol with micronised progesterone. The <b>E3N cohort (France, n\u224880,000)</b> then showed that transdermal oestrogen with micronised progesterone carries no increased VTE risk and the lowest breast cancer risk of any combined regimen. Oral oestrogen undergoes hepatic first-pass metabolism, stimulating clotting factors and renin \u2014 which mechanistically explains its VTE and hypertensive risk. The BMS, MHRA (2020) and NICE all now confirm the risk\u2013benefit balance favours HRT for most symptomatic women aged &lt;60. <b>In POI, risks are not increased above background</b>."}
+     ]},
+
+    {id:"exam", nav:"Examination", title:"Targeted examination", sub:"Brief, but it changes the prescription \u2014 and one item here catches a condition that mimics menopause exactly.",
+     blocks:[
+       {b:"table", head:["What","Threshold / look for","Why it changes the plan"], rows:[
+         ["<b>Blood pressure</b>","<b>Mandatory before initiating HRT.</b> Systolic &gt;180 \u2192 control first","Hypertension does not contraindicate <em>transdermal</em> HRT but must be documented and managed. Oral oestrogen can raise BP via hepatic renin\u2013angiotensin stimulation"],
+         ["<b>BMI</b>","BMI &gt;30","<b>Obesity is a stronger breast cancer risk factor than HRT itself</b>, and raises VTE risk \u2014 factor it into shared decision-making and choose transdermal"],
+         ["<b>Breast</b>","Any mass or nipple discharge \u2192 <b>urgent referral before HRT</b>. Check screening status","<b>NHS Breast Screening Programme: 50\u201371 years, 3-yearly.</b> A normal current mammogram is not a contraindication \u2014 and asking builds rapport"],
+         ["Pelvic examination","Indicated if urogenital symptoms, PMB, or an IUS fitting is planned","Look for <b>atrophic vaginitis</b> (pale, dry, friable mucosa), pelvic floor tone, uterine size"],
+         ["<b>Thyroid</b>","Clinical assessment \u2014 TFTs if any features","<b>Thyroid dysfunction mimics menopause closely</b>: fatigue, palpitations, mood change, irregular periods, weight gain. Prescribing HRT for undiagnosed hypothyroidism delays the right treatment"],
+         ["Cardiovascular","Murmurs, oedema","Document a baseline \u2014 HRT does not worsen established heart failure, but use the transdermal route"]
+       ]}
+     ]},
+
+    {id:"workup", nav:"Investigations", title:"Investigations \u2014 targeted, not routine", sub:"Note the do-not-order list as carefully as the order list.",
+     blocks:[
+       {b:"table", head:["Test","When","Interpretation"], rows:[
+         ["<b>TFTs (TSH)</b>","Any clinical suspicion of thyroid dysfunction","Hypothyroidism is highly prevalent in the same demographic \u2014 <b>do not attribute fatigue or weight gain to the menopause without a TSH</b>"],
+         ["<b>FSH / LH / oestradiol</b>","<b>NOT needed to diagnose menopause over 45</b> (NG23)","FSH &gt;30\u201340 IU/L on two occasions 4\u20136 weeks apart confirms POI in a woman under 40. Hormone levels fluctuate \u2014 a single measurement is unreliable"],
+         ["<b>FBC + ferritin</b>","Heavy perimenopausal periods, or fatigue","<b>Iron deficiency anaemia</b> \u2014 check before attributing fatigue or palpitations solely to the menopause"],
+         ["<b>Lipid profile + QRISK3</b>","Cardiovascular risk assessment","Menopause raises LDL and lowers HDL. <b>QRISK3</b> is preferred over QRISK2 here \u2014 it includes SLE, severe mental illness and AF, all relevant in this age group"],
+         ["<b>DEXA scan</b>","POI, early menopause (&lt;45), prolonged amenorrhoea, prior fragility fracture, or stopping HRT after long use","<b>Not routine</b> before standard HRT. In POI it guides dose optimisation \u2014 these women have accelerated bone loss"],
+         ["Pelvic ultrasound","<b>PMB (2WW mandatory)</b>; suspected fibroids","<b>Not routine</b> before HRT in an asymptomatic woman with a normal screening history"],
+         ["<b>Do NOT order</b>","\u2014","<b>Routine mammography before HRT</b> (use the NHS screening programme); <b>routine coagulation screen</b> (no evidence it changes management); <b>routine bone density</b> in standard peri/menopausal women"]
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Prescribe", title:"Prescribing \u2014 three questions decide everything", sub:"(1) Uterus? (2) Peri or post? (3) Vaginal symptoms only? Then choose the route: transdermal first-line if any risk factor.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"No uterus", title:"Oestrogen-only", when:"post-hysterectomy",
+          html:"<b>Patch:</b> Evorel or Estradot <b>50 micrograms twice weekly</b> (start 25\u201350; range 25/50/75/100). <b>Gel:</b> Oestrogel <b>2 pumps daily</b>, or Sandrena <b>1 mg daily</b>. <b>Spray:</b> Lenzetto <b>1\u20133 sprays daily</b>. <b>Oral:</b> estradiol (Elleste Solo, Zumenon) <b>1\u20132 mg daily</b>. <em>Subtotal hysterectomy or a history of severe endometriosis may still need a progestogen \u2014 ask.</em>"},
+         {step:"Uterus + peri", title:"Sequential (cyclical) combined", when:"LMP <12 months",
+          fromLabel:"still bleeding, or <12 months since LMP",
+          html:"Oestrogen continuously plus a progestogen for <b>12\u201314 days a month</b> \u2192 expect a monthly withdrawal bleed. <b>Ready-made oral:</b> Femoston 1/10, Elleste Duet 1 mg. <b>Ready-made patch:</b> Evorel Sequi. <b>Build your own (most flexible):</b> any oestrogen above plus <b>Utrogestan 200 mg nocte on days 15\u201326</b>, or plus a Mirena."},
+         {step:"Uterus + post", title:"Continuous combined", when:"LMP >12 months, or age 55, or after 1 year of sequential",
+          fromLabel:"postmenopausal",
+          html:"Oestrogen plus progestogen daily \u2192 bleed-free once settled. <b>Ready-made oral:</b> Femoston-conti 0.5/1 mg, Kliovance 1 mg, Kliofem, Bijuve 1 mg/100 mg (body-identical). <b>Patch:</b> Evorel Conti. <b>Build your own:</b> oestrogen plus <b>Utrogestan 100 mg nocte daily</b>, or plus a Mirena. <b>Tibolone (Livial) 2.5 mg daily</b> is a single-agent alternative \u2014 a synthetic steroid with oestrogenic, progestogenic and weak androgenic activity, needing no separate progestogen; postmenopausal (&gt;12 months amenorrhoea) only, may help low libido; <b>avoid with a breast cancer history and &gt;60 (stroke risk)</b>."},
+         {step:"Vaginal only", title:"Local oestrogen", when:"GSM, dryness, recurrent UTI \u2014 any age, indefinitely",
+          fromLabel:"urogenital symptoms only",
+          html:"<b>Vagifem or Vagirux 10 micrograms</b> pessary nightly for 2 weeks, then twice weekly; Ovestin cream; <b>Estring</b> ring (3-monthly \u2014 good where dexterity is poor); Imvaggis pessary. No progestogen needed, safe long-term, and can be added on top of systemic HRT. Review annually; can be continued even with relative systemic contraindications (with oncology advice after breast cancer)."},
+         {step:"Add-on", title:"Testosterone for persistent low libido", when:"HSDD with menopause, other treatments optimised",
+          fromLabel:"off-licence in women",
+          html:"<b>Testogel</b> sachet spread over ~8 days, or <b>AndroFeme 1</b>, or Intrinsa \u2014 <b>off-licence in women and specialist-initiated in most areas</b>. NICE supports use for hypoactive sexual desire disorder where other treatments have failed. Check <b>baseline total testosterone, then at 3\u20136 months</b>, keeping the level in the female range."}
+       ]},
+       {b:"table", head:["Dose level","Oral estradiol","Patch","Oestrogel pumps","Lenzetto sprays"], rows:[
+         ["Low (start if 60 or over)","0.5\u20131 mg","25 micrograms","1","1"],
+         ["Standard start","1 mg","25\u201350 micrograms","2","1\u20132"],
+         ["Moderate","2 mg","50\u201375 micrograms","3","2\u20133"],
+         ["High (specialist territory beyond this)","\u2014","100 micrograms","4","3"]
+       ]},
+       {b:"table", head:["Progestogen","Sequential (12\u201314 days/month)","Continuous (daily)","Notes"], rows:[
+         ["<b>Micronised progesterone (Utrogestan) \u2014 preferred</b>","<b>200 mg nocte</b> for 12 days","<b>100 mg nocte</b>","<b>Body-identical; lowest breast and VTE signal.</b> Derived from plant sterols. Sedating \u2014 use at night. Caution with a soya or peanut allergy history"],
+         ["Dydrogesterone (in Femoston)","10 mg for 14 days","5 mg","Next-lowest risk signal; only available in combined products in the UK"],
+         ["Medroxyprogesterone (Provera)","10 mg for 12\u201314 days","2.5\u20135 mg","If Utrogestan is not tolerated"],
+         ["Norethisterone","5 mg for 12\u201314 days","5 mg","More androgenic \u2014 more mood and skin side effects; higher breast cancer signal"],
+         ["<b>Mirena 52 mg LNG-IUS</b>","Covers continuously","Covers continuously","<b>NICE-recommended progestogen delivery</b>; also provides contraception. <b>Replace 5-yearly when used for endometrial protection</b> (8 years off-label for contraception alone). Ideal in perimenopause where both are needed"]
+       ]},
+       {b:"warn", html:"<b>Never give unopposed systemic oestrogen to a woman with a uterus.</b> Start low and titrate up \u2014 younger women and those with POI often need the higher end, older women the lower end, but don't over-restrict the dose: an inadequate dose means inadequate symptom control. Most women need a 50 microgram patch or equivalent. <b>If the oestrogen dose goes up, check the progestogen still matches</b> \u2014 under-dosed progestogen, or fewer than 12 sequential days, risks hyperplasia."},
+       {b:"why", html:"The LNG-IUS as progestogen delivery is evidence-based (NG23) and practically advantageous \u2014 it avoids systemic synthetic progestogen while providing contraception. Regimen selection matters: switching perimenopausal women to continuous combined prematurely causes unscheduled bleeding and poor adherence."}
+     ]},
+
+    {id:"lifestyle", nav:"Lifestyle", title:"Non-pharmacological interventions \u2014 evidence-based adjuncts", sub:"Not a substitute for HRT in severe symptoms, but they substantially enhance outcomes and can reduce the dose needed.",
+     blocks:[
+       {b:"table", head:["Intervention","What to advise","Effect"], rows:[
+         ["<b>Aerobic exercise</b>","<b>150 minutes/week</b> moderate intensity","<b>Reduces hot flush severity by 30\u201350%</b> via serotonin and noradrenaline pathways; also improves mood, sleep and bone density"],
+         ["<b>Strength training</b>","Progressive resistance training <b>2\u20133\u00d7/week</b>","Protects against menopausal muscle and bone loss \u2014 <b>maintains bone mineral density comparably to some HRT doses</b>. Recommend to every menopausal woman"],
+         ["<b>Weight management</b>","Even <b>5% weight loss</b> helps","Reduces vasomotor symptom frequency. (Paradoxically, obese women often have <em>more</em> flushes despite peripheral androgen-to-oestrone conversion, because of receptor downregulation)"],
+         ["<b>Sleep hygiene</b>","Cool bedroom (<b>16\u201318\u00b0C</b>), cotton nightwear, bedroom fan; layered clothing and trigger avoidance","Night sweats disrupt sleep \u2192 fatigue \u2192 mood symptoms. <b>HRT improves sleep in 60\u201380% within 4 weeks</b>"],
+         ["<b>CBT</b>","<b>NICE-recommended</b>; mindfulness-based cognitive therapy (MBCT); NHS Talking Therapies self-referral","<b>MENOS 1 and 2 RCTs</b>: significant reduction in how much flushes bother women, even where frequency is unchanged. Offer alongside HRT or as an alternative where it is declined or contraindicated"],
+         ["<b>Phytoestrogens</b>","Soy isoflavones","Modest evidence \u2014 <b>20\u201340% reduction</b> in mild vasomotor symptoms in RCTs. Not a substitute for HRT in severe symptoms; avoid in oestrogen-sensitive cancers"],
+         ["<b>Alcohol and caffeine</b>","<b>\u226414 units/week</b>; reduce coffee if flushes worsen after it","Both are vasomotor triggers; alcohol also disrupts sleep architecture and raises breast cancer risk"],
+         ["<b>Smoking cessation</b>","NHS stop-smoking service","Smoking worsens vasomotor symptoms and cardiovascular risk, and brings menopause forward"],
+         ["<b>Vaginal health</b>","<b>Vaginal moisturisers (Replens 3\u00d7/week)</b> plus lubricants (Sylk, YES) for intercourse; regular sexual activity","Maintains vaginal blood flow and epithelial health \u2014 the non-hormonal management of GSM. Pelvic-floor exercises for urinary symptoms"],
+         ["<b>Bone and cardiovascular health</b>","Weight-bearing exercise, <b>calcium and vitamin D</b>; BP, lipids, smoking and alcohol addressed on their own merits","Menopause management is more than symptom control"]
+       ]},
+       {b:"why", html:"Exercise is genuinely disease-modifying in the menopause \u2014 resistance training maintains bone mineral density on DEXA, reduces cardiovascular risk, and improves mood through serotonin pathways. NG23 recommends CBT alongside HRT or as an alternative when HRT is contraindicated."}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"Follow-up, side effects and bleeding", sub:"Most treatment \u201cfailure\u201d is a dose, route, progestogen or absorption problem \u2014 not the wrong decision.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>First review</b>","<b>6\u201312 weeks</b>","Symptom response (use MRS or the Greene scale), side effects (breast tenderness, bloating, breakthrough bleeding), <b>BP recheck</b>, patch tolerance and site reactions"],
+         ["<b>Formal assessment</b>","<b>3 months</b> after any start or change","Inadequate control \u2192 titrate the oestrogen up (and re-match the progestogen). Check for unscheduled bleeding. Review progestogen tolerability. Most side effects settle by 3 months \u2014 don't switch too early, and don't accept misery too long"],
+         ["<b>Annual review</b>","Ongoing","Risk\u2013benefit review, updated medical and family history, <b>BP</b>, <b>mammography screening up to date</b>, documented discussion, reassessment of continued need"],
+         ["Bleeding pattern","Every contact","Sequential: a regular withdrawal bleed is fine. Continuous combined: irregular spotting can be normal for up to 6 months"],
+         ["<b>HRT duration</b>","\u2014","<b>NICE: no arbitrary time limit.</b> Most women use it 2\u20135 years; some benefit lifelong (especially POI, osteoporosis, severe symptoms). <b>Do not force stopping at 5 years without a clinical reason</b> \u2014 continue at the lowest effective dose while benefit outweighs risk"],
+         ["<b>Stopping HRT</b>","When agreed","<b>Taper rather than stopping abruptly</b> to avoid a rebound symptom surge \u2014 <b>reduce the dose by 50% for 3 months</b> before stopping; tapering is better tolerated and more likely to lead to successful discontinuation. Some women never tolerate complete cessation; discuss honestly"]
+       ]},
+       {b:"table", head:["Side-effect pattern","Symptoms","Fix, in order"], rows:[
+         ["<b>Oestrogenic</b>","Breast tenderness, nausea, bloating, leg cramps, headaches","<b>1</b> Reassure \u2014 often settles \u22643 months \u2192 <b>2</b> take oral with food or at night \u2192 <b>3</b> reduce the dose \u2192 <b>4</b> switch oral to transdermal"],
+         ["<b>Progestogenic</b> \u2014 the commonest reason women quit","PMS-like mood swings, irritability, low mood, acne, greasy skin, breast tenderness in the progestogen phase","<b>1</b> Switch to <b>Utrogestan or dydrogesterone</b> \u2192 <b>2</b> deliver via <b>Mirena</b> (minimal systemic absorption) \u2192 <b>3</b> vaginal Utrogestan (off-licence) \u2192 <b>4</b> keep 12 days if sequential \u2014 <b>never shorten below this</b>"],
+         ["<b>Practical / local</b>","Patch-site irritation, gel transfer worries, forgetting tablets","Rotate patch sites; switch patch \u2192 gel \u2192 spray; a once-daily combined tablet; align with an existing routine"],
+         ["<b>Unclear or both</b>","Persistent intolerance of several regimens","Trial a different combined product, or tibolone (postmenopausal only); specialist advice"]
+       ]},
+       {b:"table", head:["Bleeding scenario","Meaning","Action"], rows:[
+         ["Sequential: monthly bleed near the end of the progestogen days","<b>Expected</b>","Reassure; if heavy or prolonged, increase the progestogen or switch product"],
+         ["Continuous combined: spotting in the first 6 months","Common while the endometrium settles","Reassure and review; check adherence"],
+         ["Continuous combined: bleeding persisting beyond 6 months, or NEW bleeding after amenorrhoea","<b>Unscheduled \u2014 investigate</b>. About a <b>5% risk of endometrial pathology</b>","Examine plus <b>TVUSS \u2192 endometrial biopsy</b>; refer gynaecology; <b>2WW if any suspicion, or for PMB off HRT</b>"],
+         ["Bleeding after a dose or product change","Often transient (~3 months)","Review at 3 months; investigate if it persists"],
+         ["Ready to stop the monthly bleed","Age 55, or after 1 year on sequential","Switch sequential \u2192 continuous combined"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udea8 999 \u2014 stop HRT and call", html:"<b>Signs of VTE:</b> unilateral leg pain with swelling. <b>Acute chest pain with breathlessness.</b> <b>Stroke symptoms (FAST):</b> facial droop, arm weakness, speech difficulty."},
+         {tone:"red", h:"\ud83d\udd34 Same day", html:"<b>New unexpected vaginal bleeding on HRT.</b> A <b>new breast lump</b>. Severe unexplained headache. Severe unilateral abdominal or pelvic pain."},
+         {tone:"amber", h:"\ud83d\udcde Tell us rather than stopping", html:"\u201cSide effects in the first few weeks are common and usually settle \u2014 don't stop it yourself. Tell me and we will adjust the dose, the route or the progestogen instead.\u201d"},
+         {tone:"green", h:"\ud83e\ude7a Breast awareness", html:"Reassess breast awareness and screening at each annual review; report any new lump."}
+       ]},
+       {b:"say", html:"We'll review in three months. Side effects in the first few weeks are common and usually settle \u2014 don't stop it yourself; tell me and we'll adjust the dose, the route or the progestogen instead. There's almost always a version of HRT that suits."}
+     ]},
+
+    {id:"alternatives", nav:"Non-hormonal", title:"Non-hormonal options \u2014 HRT declined or contraindicated", sub:"A real pathway, not a consolation prize.",
+     blocks:[
+       {b:"table", head:["Option","Dose","Notes"], rows:[
+         ["<b>CBT</b>","\u2014","Evidence for vasomotor symptoms, sleep and mood (NG23); NHS Talking Therapies self-referral"],
+         ["<b>Fezolinetant (Veoza)</b>","<b>45 mg OD</b>","NK3-receptor antagonist for vasomotor symptoms \u2014 <b>the licensed non-hormonal drug</b>. Check <b>LFTs at baseline, 1, 2 and 3 months</b>, then per the SmPC"],
+         ["<b>Venlafaxine</b>","<b>37.5\u201375 mg</b>","Best-evidenced antidepressant for flushes; citalopram and escitalopram are alternatives. <b>Avoid paroxetine and fluoxetine with tamoxifen</b> (CYP2D6 inhibition reduces tamoxifen efficacy)"],
+         ["Clonidine","<b>50\u201375 micrograms BD</b>","Historically the only licensed non-hormonal option; modest effect, and hypotension and dry mouth limit its use"],
+         ["Gabapentin (off-licence)","Titrate <b>300\u2013900 mg nocte</b>","For flushes especially with sleep disturbance; sedating and dependence-forming \u2014 counsel accordingly"],
+         ["Vaginal moisturisers and lubricants","Regular use","For GSM where even local oestrogen is declined (Replens, Sylk, YES)"]
+       ]},
+       {b:"why", html:"After breast cancer: non-hormonal options first; vaginal oestrogen only with the oncology team's agreement (MHRA 2020 confirmed negligible systemic absorption, and it may be used with oncology input in most patients with genitourinary syndrome); fezolinetant or an SSRI/SNRI \u2014 avoiding the tamoxifen interactions \u2014 is the usual pathway."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"'HRT doesn't suit me' — re-run this checklist before stopping", sub:"Most treatment 'failure' is a dose, route, progestogen or absorption problem — not the wrong decision.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Time", html:"Given <b>\u22653 months</b> at this dose?"},
+         {tone:"amber", h:"2 · Basics and absorption", html:"Adherence. Is the <b>patch actually sticking</b> \u2014 change site, avoid moisturiser? Gel on dry skin and <b>not washed off for an hour</b>? Spray technique correct?"},
+         {tone:"amber", h:"3 · Dose", html:"Oestrogen stepped up, with the progestogen <b>re-matched</b>?"},
+         {tone:"blue", h:"4 · Route", html:"Tried <b>transdermal</b> \u2014 steadier levels, no first-pass, no VTE excess?"},
+         {tone:"blue", h:"5 · Progestogen", html:"Switched to Utrogestan, dydrogesterone or Mirena?"},
+         {tone:"blue", h:"6 · Regimen", html:"Sequential vs continuous right for her stage, and bleeding assessed?"},
+         {tone:"amber", h:"7 · Mimics", html:"<b>TFTs, ferritin and FBC, HbA1c</b>, depression or anxiety, sleep apnoea, medication effects. Menopause is not the only cause of fatigue and poor sleep in a 50-year-old."}
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"All seven optimised?", html:"Then the decision to stop is an informed one \u2014 or the referral is to a <b>menopause specialist</b> rather than back to square one."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 who goes where", sub:"GP-led menopause care is appropriate and encouraged by NG23 for the majority. Over-referral creates delay and access barriers.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW \u00b7 Gynaecology", html:"<b>Postmenopausal bleeding \u2014 exclude endometrial cancer before HRT.</b> NG12: <b>unexplained PMB aged 55 or over \u2192 2WW</b>; <b>&lt;55</b> \u2192 consider a suspected gynaecological cancer referral. Persistent IMB or PCB in a perimenopausal woman over 45."},
+         {tone:"purple", h:"2WW \u00b7 Urgent breast clinic", html:"New breast mass, skin tethering, nipple discharge (especially blood-stained), axillary lymphadenopathy. <b>Do not start HRT until assessment is complete.</b>"},
+         {tone:"amber", h:"Specialist menopause clinic", html:"<b>POI (under 40)</b>; <b>early menopause (under 45)</b>; HRT failure after an adequate trial of optimised dose, route and progestogen; complex medical history or multiple risk factors; <b>women with breast cancer requesting HRT</b>; consideration of high-dose or unlicensed regimens."},
+         {tone:"amber", h:"Gynaecology \u2014 unscheduled bleeding", html:"Persistent or new bleeding on continuous combined HRT \u2192 endometrial assessment (2WW if suspicious). Do not keep adjusting the HRT around persistent unscheduled bleeding \u2014 assess the endometrium, and check cervical screening status plus examination: not all bleeding on HRT is hormonal."},
+         {tone:"plain", h:"Endocrinology", html:"POI with autoimmune features (thyroid, adrenal, diabetes); surgical menopause with complex comorbidity; <b>testosterone prescribing</b> \u2014 specialist-initiated in most areas."},
+         {tone:"plain", h:"Haematology", html:"<b>Known thrombophilia</b> requesting HRT; personal or strong family VTE history; antiphospholipid syndrome. Women with a VTE history can use transdermal HRT safely \u2014 haematology input is needed only where thrombophilia is confirmed or high-risk, not for every VTE history."},
+         {tone:"cream", h:"GP manages", html:"Standard perimenopause and menopause over 45 with typical symptoms and no contraindications \u2014 <b>initiation and ongoing management of standard HRT regimens</b>, including route and regimen choice, dose titration, side-effect management, and annual review."}
+       ]},
+       {b:"why", html:"POI needs specialist input because of diagnostic complexity, psychological impact, and the need for fertility counselling, higher-dose HRT and DEXA monitoring. Complex risk \u2014 previous VTE, thrombophilia, hormone-sensitive cancer, complex CVD \u2014 should prompt referral for specialist risk\u2013benefit assessment, <b>not a blanket refusal of HRT</b>."},
+       {b:"say", html:"There's almost always a version of HRT that suits \u2014 the dose, the way it goes in, and the progestogen can each be changed independently. We'll adjust one thing at a time and review at three months."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 53-year-old woman, BMI 33, last period 18 months ago, requesting \u201cbio-identical hormones\u201d after reading about them. Flushes are waking her four times a night and she is struggling at work. In passing she mentions some light spotting a fortnight ago, which she assumed was \u201cthe last of it\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Identifies the postmenopausal bleeding and refers on the 2WW pathway before prescribing \u2014 not after; diagnoses clinically without an unnecessary FSH; chooses <b>transdermal</b> for the BMI; picks a <b>continuous combined</b> regimen for her stage; explains the breast cancer risk in <b>absolute terms with the alcohol comparison</b>; addresses the \u201cbio-identical\u201d question honestly (body-identical estradiol and micronised progesterone are regulated and prescribable; compounded \u201cbio-identical\u201d preparations are not); safety-nets VTE and bleeding. <a href='../../cases/menopause.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG23 \u2014 Menopause: diagnosis and management (2015, updated 2024)<br><a href="https://www.nice.org.uk/guidance/ng23" rel="noopener">nice.org.uk/guidance/ng23</a><span class="rd"> \u2014 clinical diagnosis from 45 without FSH, FSH only under 40 or where uncertain at 40\u201345, no arbitrary duration limit, LNG-IUS as progestogen delivery, CBT, testosterone for HSDD</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 unexplained postmenopausal bleeding aged 55 and over \u2192 suspected endometrial cancer 2WW; under 55 consider a suspected gynaecological cancer referral; breast criteria</span></li>'+
+         '<li>British Menopause Society guidance (2020, 2024); MHRA Drug Safety Update, Menopause 2020<span class="rd"> \u2014 route-specific risk, vaginal oestrogen after breast cancer, the absolute risk figures used for counselling</span></li>'+
+         '<li><b>FSRH \u2014 Contraception for women aged over 40 (2023)</b><span class="rd"> \u2014 HRT is not contraception; contraception until 2 years after LMP if under 50, 1 year if 50 or over</span></li>'+
+         '<li><b>RCOG Green-top \u2014 Premature ovarian insufficiency</b><span class="rd"> \u2014 two raised FSH readings 4\u20136 weeks apart, HRT to at least age 51, DEXA monitoring</span></li>'+
+         '<li><b>Women\u2019s Health Initiative (2002) and re-analyses</b><span class="rd"> \u2014 the origin of the risk controversy; hip fracture down 27% and vertebral fracture down 37%; used oral conjugated equine oestrogen with medroxyprogesterone, not modern transdermal body-identical regimens</span></li>'+
+         '<li><b>E3N cohort \u2014 Fournier et al., 2008 (n\u224880,000)</b><span class="rd"> \u2014 transdermal oestrogen with micronised progesterone: no excess VTE risk and the lowest breast cancer signal of any combined regimen</span></li>'+
+         '<li><b>MENOS 1 and MENOS 2 RCTs</b><span class="rd"> \u2014 CBT significantly reduces how much hot flushes bother women, even where frequency is unchanged</span></li>'+
+         '<li><b>BNF and product SmPCs</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all named preparations and doses, fezolinetant LFT monitoring, tamoxifen\u2013SSRI interactions</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Menopause, perimenopause and HRT prescribing in adults \u2014 NICE NG23 (2024 update) with BMS, MHRA 2020, FSRH 2023 and RCOG POI guidance, and the NG12 postmenopausal-bleeding interface. Diagnosis and management are merged on this page; there is no separate HRT/menopause pathway to cross-check. Verify all doses and licensing against the current BNF and SmPC before prescribing \u2014 testosterone in women is off-licence."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

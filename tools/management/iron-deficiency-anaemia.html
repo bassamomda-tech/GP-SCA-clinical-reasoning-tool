@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Iron deficiency &amp; iron-deficiency anaemia — Protocol · Reasoning GP</title>
+<meta name="description" content="Iron deficiency and IDA in adults, diagnosis and management on one page: ferritin bands with the CRP correction, finding the cause, coeliac and H. pylori, the NICE NG12 2WW rules, oral and IV iron, monitoring and referral." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/iron-deficiency-anaemia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Iron deficiency protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1FA78}",
+  title:"Iron deficiency in adults",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Iron deficiency \u2014 confirm it, then find where the iron is going",
+  stemSub:"One page for the whole condition. Covers isolated iron deficiency as well as IDA. Iron deficiency is always a finding, never a diagnosis: replacing iron without finding the source is the error that delays a cancer diagnosis.",
+  guideline:"BSH 2021 · BSG · NICE NG12",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"BSH Iron Deficiency Anaemia (2021)"},
+    {t:"NICE NG12 \u00b7 2WW colorectal", tone:"tw"},
+    {t:"NG24 \u00b7 NG8 \u00b7 NG88 \u00b7 NICE"},
+    {t:"BNF owns all doses"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Diagnosis</b><small>Ferritin + the three stages</small></a><a href="#cause"><b>Find the cause</b><small>The real work</small></a><a href="#ladder"><b>Replace iron</b><small>Oral \u2192 IV</small></a><a href="#refer"><b>Refer <span class="tw">2WW</span></b><small>NG12 thresholds</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these five cards. Every number traces to the recommendation cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 IDA in a man or post-menopausal woman is a red flag", html:"Unexplained IDA in <b>any man</b> or <b>any post-menopausal woman</b> \u2192 <b>urgent suspected colorectal cancer referral</b> and bidirectional endoscopy. <b>NG12: offer a 2WW referral to anyone aged 60+ with IDA</b>, and use <b>FIT</b> to support urgent referral in younger adults. Colorectal cancer is found in about <b>5%</b> of primary-care IDA presentations. <span class='tw'>2WW</span>"},
+    {tone:"amber", h:"Ferritin confirms it \u2014 with one caveat", html:"<b>&lt;15 \u00b5g/L</b> definite (specificity ~99%) \u00b7 <b>15\u201330 \u00b5g/L</b> probable \u00b7 <b>30\u2013100 \u00b5g/L</b> possible if inflamed \u00b7 <b>&gt;100 \u00b5g/L</b> unlikely. Ferritin is an <b>acute-phase protein</b> \u2014 always check <b>CRP</b> if ferritin is 30\u2013100, and a <b>transferrin saturation &lt;20%</b> still indicates deficiency when inflamed."},
+    {tone:"blue", h:"Always ask: where is the iron going?", html:"Blood loss (menorrhagia, GI), malabsorption (<b>coeliac \u2014 1 in 100 UK adults</b>, iron deficiency in 50% with no GI symptoms), diet, or increased demand. <b>Anti-tTG IgA + total IgA</b> in every unexplained case, on gluten."},
+    {tone:"plain", h:"Replace, and keep going after the Hb normalises", html:"One ferrous salt tablet <b>once daily or alternate-day</b> (BSH 2021 \u2014 same absorption, far fewer side effects than TDS). Recheck <b>Hb at 2\u20134 weeks</b>, expect a rise of <b>10\u201320 g/L per month</b>. <b>Continue for 3 months after the Hb normalises</b> to refill stores."},
+    {tone:"green", h:"Replace and investigate together", html:"Starting iron does <b>not</b> remove the need to find the source, and neither iron treatment nor anticoagulation is a reason to defer endoscopy. Target ferritin <b>&gt;50 \u00b5g/L</b> after treatment."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm \u2014 do not skip it.",
+  pathway:[
+    {title:"Confirm", html:"<b>Ferritin &lt;30 \u00b5g/L confirms iron deficiency at any age</b>, and who the patient is decides how hard you hunt for a GI source. Microcytic hypochromic picture on FBC \u2014 but a normal MCV does not exclude it, and a normal ferritin does not exclude it if CRP is raised."},
+    {title:"Screen for danger", html:"Hb &lt;70 g/L with cardiorespiratory symptoms, visible GI bleeding or melaena, or a fall in Hb &gt;20 g/L in a month \u2192 same-day assessment \u00b1 transfusion. Then apply the NG12 rules before anything else.", alert:true},
+    {title:"Stratify by who the patient is", html:"Pre-menopausal woman \u2192 usually menstrual or dietary, but still screen GI symptoms. Man or post-menopausal woman \u2192 <b>GI loss until proven otherwise</b>. Any age with malabsorption features \u2192 coeliac, PPI, H. pylori, prior surgery."},
+    {title:"Find the cause", html:"Coeliac serology in everyone; H. pylori testing where there are upper-GI symptoms or no clear cause; urine dip for haematuria; menstrual and obstetric history; medication review (NSAIDs, anticoagulants)."},
+    {title:"Replace and close the loop", html:"Oral iron with vitamin C, alternate-day if intolerant, IV iron where indicated \u2192 recheck at 2\u20134 weeks \u2192 3 months past normalisation \u2192 confirm the cause was found and every investigation actioned."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm", title:"Confirming iron deficiency", sub:"Three stages exist: depleted stores (low ferritin, normal Hb), iron-deficient erythropoiesis (low ferritin, low MCV), and iron-deficiency anaemia (all low, low Hb). All three matter.",
+     blocks:[
+       {b:"table", head:["Ferritin","Interpretation","Action"], rows:[
+         ["<b>&lt;15 \u00b5g/L</b>","Definite iron deficiency \u2014 specificity ~99%","Treat and investigate the cause"],
+         ["<b>15\u201330 \u00b5g/L</b>","Probable iron deficiency","Treat and investigate the cause"],
+         ["<b>30\u2013100 \u00b5g/L</b>","Possible if an inflammatory state is present","<b>Always check CRP.</b> Ferritin &lt;100 with CRP &gt;5 suggests deficiency despite a normal-looking ferritin; transferrin saturation &lt;20% supports it"],
+         ["<b>&gt;100 \u00b5g/L</b>","Iron deficiency unlikely","Look for another cause of the anaemia"]
+       ]},
+       {b:"dl", rows:[
+         ["FBC in IDA","Microcytic (<b>MCV &lt;80 fL</b>), hypochromic. Low Hb: <b>&lt;130 g/L men, &lt;120 g/L women, &lt;110 g/L pregnancy</b>. Low MCH (<b>&lt;27 pg</b>), high RDW (anisocytosis)"],
+         ["Serum iron + TIBC","Low iron with high TIBC indicates deficiency, but it is less reliable than ferritin (diurnal variation, affected by recent intake) \u2014 use only when ferritin is equivocal, and <b>not routinely</b>"],
+         ["Reticulocyte Hb content","<b>&lt;28 pg</b> is a functional iron-deficiency marker \u2014 useful in CKD where ferritin is raised by inflammation"],
+         ["Isolated low ferritin, normal Hb","Iron depletion without anaemia. <b>Still requires a cause</b>, and treat if symptomatic (fatigue, restless legs, cognitive symptoms) \u2014 symptoms occur before the Hb drops. <b>The NG12 referral rules still apply</b> to men and post-menopausal women"]
+       ]},
+       {b:"why", html:"Ferritin below 15 \u00b5g/L is essentially diagnostic, but 15\u2013100 can mislead: inflammation, infection, cancer and autoimmune disease all raise ferritin as an acute-phase protein, so a patient with active IBD and a cancer-related bleed may show a \u201cnormal\u201d ferritin of 50. The CRP correction is therefore essential whenever deficiency is clinically suspected."}
+     ]},
+
+    {id:"severe", nav:"Red-flag branch", title:"When iron deficiency signals serious pathology", sub:"Finding the cause is the priority. Missing GI malignancy is the critical pitfall, and the mistake is treating the number instead of investigating.",
+     blocks:[
+       {b:"warn", html:"<b>Replace and investigate together.</b> Starting iron does not remove the need to find the source. Unexplained IDA in men and post-menopausal women warrants bidirectional endoscopy (OGD plus colonoscopy) \u2014 and neither iron therapy nor anticoagulation is a valid reason to defer it."},
+       {b:"cards", items:[
+         {tone:"red", h:"Severe symptomatic anaemia", html:"<b>Hb &lt;70 g/L</b> with chest pain, breathlessness or haemodynamic compromise \u2192 <b>same-day</b> hospital assessment \u00b1 transfusion."},
+         {tone:"red", h:"Active bleeding", html:"Visible GI bleeding, haematemesis or melaena, or a <b>fall in Hb &gt;20 g/L in one month</b> \u2192 same-day assessment. Review NSAIDs and anticoagulants."},
+         {tone:"purple", h:"IDA + rectal bleeding or change in bowel habit <span class='tw'>2WW</span>", html:"<b>Any age</b> \u2192 lower-GI suspected cancer pathway. Do not attribute to haemorrhoids without investigating.", src:"NG12"},
+         {tone:"purple", h:"IDA in a post-menopausal woman or any man <span class='tw'>2WW</span>", html:"With no obvious cause \u2192 urgent upper and/or lower GI investigation to exclude malignancy.", src:"NG12"},
+         {tone:"purple", h:"IDA + dysphagia <span class='tw'>2WW</span>", html:"Difficulty or pain on swallowing, Plummer\u2013Vinson syndrome \u2192 upper GI: exclude oesophageal and gastric cancer.", src:"NG12"},
+         {tone:"purple", h:"IDA + unintentional weight loss &gt;5% <span class='tw'>2WW</span>", html:"With anorexia, night sweats or fatigue \u2192 suspect GI or haematological malignancy.", src:"NG12"},
+         {tone:"purple", h:"IDA + haematuria <span class='tw'>2WW</span>", html:"Visible or non-visible \u2192 urology. Urological and GI pathology can coexist \u2014 investigate both.", src:"NG12"},
+         {tone:"purple", h:"IDA + lymphadenopathy or splenomegaly <span class='tw'>2WW</span>", html:"Consider lymphoma with occult GI involvement \u2192 haematology.", src:"NG12"}
+       ]},
+       {b:"why", html:"Colorectal cancer is found in about 5% of patients presenting with IDA in primary care, making it the most important diagnosis to exclude. Iron deficiency in any post-menopausal woman or any man is a red flag by definition unless there is a clear dietary or malabsorptive cause. NG12 mandates urgent referral for IDA in all patients aged <b>\u226560</b>, and for any adult with IDA plus GI symptoms."}
+     ]},
+
+    {id:"cause", nav:"Find the cause", title:"Where is the iron going?", sub:"Blood loss, malabsorption, diet, or demand. This section is the actual clinical work.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Blood loss \u2014 commonest", html:"Menorrhagia (the commonest cause in women of reproductive age), GI bleeding (peptic ulcer, IBD, colorectal cancer, NSAIDs), haematuria, regular blood donation, epistaxis, haemoptysis."},
+         {tone:"plain", h:"Malabsorption", html:"<b>Coeliac disease</b> \u2014 the most important and most commonly missed; also post-gastrectomy, <b>H. pylori</b> gastritis, IBD, and bariatric bypass surgery. Long-term PPI reduces absorption."},
+         {tone:"plain", h:"Dietary insufficiency", html:"Vegan or vegetarian diet without adequate non-haem iron or vitamin C; infants on cow's milk alone; the elderly with poor intake; tea or coffee with meals."},
+         {tone:"plain", h:"Increased demand", html:"Pregnancy (relative deficiency), adolescent growth, and marathon running (foot-strike haemolysis)."}
+       ]},
+       {b:"dl", rows:[
+         ["Coeliac screen","<b>Anti-tTG IgA first-line, with total IgA</b> \u2014 IgA deficiency (about <b>1 in 500</b>) causes a false-negative tTG, in which case use an IgG-based test. Must be taken <b>while eating gluten</b>. Positive \u2192 gastroenterology for duodenal biopsy: serology alone is not enough to commit someone to a lifelong gluten-free diet"],
+         ["H. pylori","<b>Urea breath test or stool antigen</b> where there are upper-GI symptoms or no clear cause. Chronic atrophic gastritis impairs iron absorption; <b>eradication alone resolves IDA in about 70%</b> of cases where it is the cause. Avoid the breath test on a PPI (false negative), and confirm with a <b>test of cure at 4 weeks</b> after antibiotics"],
+         ["Gynaecological","With menorrhagia, assess flow honestly (flooding, clots, duration) and consider <b>pelvic ultrasound</b> for fibroids or polyps; assess for anovulation (<b>PCOS</b>), and arrange a smear if overdue. Treat the bleeding \u2014 it is the ongoing loss"],
+         ["First-line bloods for everyone","FBC + film, ferritin, <b>CRP</b>, anti-tTG IgA + total IgA, B12 and folate, TFTs"],
+         ["Cause-directed","Urine dipstick for haematuria; H. pylori stool antigen; LFTs; FIT to support urgent referral"],
+         ["Do not do","Do not order serum iron and TIBC routinely; no bone-marrow biopsy in primary care; do not repeat ferritin more often than monthly"]
+       ]},
+       {b:"why", html:"Coeliac disease presents with iron deficiency in 50% of cases with no GI symptoms at all, so every patient with IDA of unclear cause should have anti-tTG IgA checked <em>before</em> endoscopy \u2014 a positive result lets the gastroenterologist combine gastroscopy with duodenal biopsy in one procedure. In women of reproductive age menorrhagia accounts for around 75% of IDA, but that does not exclude GI pathology, particularly from <b>\u226545 years</b> onwards."}
+     ]},
+
+    {id:"differential", nav:"Not all microcytosis", title:"Differential \u2014 not all microcytic anaemia is IDA", sub:"Giving iron to the wrong patient causes iron overload. Two mimics matter most.",
+     blocks:[
+       {b:"table", head:["Condition","Pattern","Key discriminator"], rows:[
+         ["<b>Anaemia of chronic disease</b>","Normocytic or mildly microcytic; ferritin normal or raised, <b>TIBC low</b> (the opposite of IDA); CRP raised","Cancer, CKD, autoimmune disease, chronic infection \u2014 treat the underlying condition. <b>Ferritin &lt;15 always means iron deficiency</b>, even with inflammation"],
+         ["<b>Thalassaemia trait</b>","Persistent microcytosis (<b>MCV often &lt;75 fL</b>) with normal Hb or mild anaemia; <b>normal ferritin</b>; target cells; family history","<b>Mentzer index (MCV \u00f7 RBC) &lt;13 suggests thalassaemia, &gt;13 suggests IDA</b>; HPLC confirms. Carrier frequency up to <b>5%</b> in South Asian, Mediterranean and African populations. <b>Do NOT give iron</b> unless there is concurrent deficiency"],
+         ["Sideroblastic anaemia","Microcytic or normocytic; <b>high ferritin with low iron</b>; ring sideroblasts on marrow","Rare \u2014 haematology referral"],
+         ["Lead poisoning","Occupational exposure; basophilic stippling on film","Rare in UK adults"],
+         ["Mixed deficiency","B12 or folate deficiency alongside IDA can give a <b>normocytic</b> picture with a falsely normal MCV","Check B12 and folate whenever the picture is unclear \u2014 particularly in coeliac disease and post-gastrectomy"]
+       ]},
+       {b:"why", html:"Thalassaemia trait is common and entirely benign, and treating it as iron deficiency causes iron overload. The Mentzer index and a normal ferritin are the practical discriminators. Mixed B12 and iron deficiency is easy to miss because the macrocytosis and microcytosis cancel out."}
+     ]},
+
+    {id:"lifestyle", nav:"Diet", title:"Diet, absorption and long-term prevention", sub:"Most \u201crefractory\u201d iron deficiency is an absorption or adherence problem, not a dosing one.",
+     blocks:[
+       {b:"table", head:["Measure","What to advise","Effect"], rows:[
+         ["<b>Haem iron</b>","Red meat, kidney, dark poultry, sardines, mussels \u2014 2\u20133 portions/week. Avoid liver in pregnancy (vitamin A excess)","Absorbed at <b>15\u201335%</b> vs 2\u201320% for non-haem"],
+         ["<b>Non-haem iron</b>","Dark green leafy vegetables, fortified cereals, lentils, chickpeas, tofu, pumpkin seeds, dried apricots","Absorption depends heavily on what it is eaten with"],
+         ["<b>Vitamin C</b>","Orange juice, strawberries, peppers eaten <em>with</em> the meal or tablet","Increases non-haem absorption <b>3\u20136-fold</b>"],
+         ["<b>Inhibitors</b>","Tea and coffee (tannins), calcium and dairy, phytates in unprocessed bran, polyphenols, PPIs \u2014 separate by <b>1 hour</b>","Tea with every meal is the most commonly overlooked cause of non-response"],
+         ["<b>Vegetarian / vegan</b>","Requirements are <b>1.8\u00d7 higher</b>; emphasise lentils, fortified foods, seeds, greens","Consider ongoing low-dose supplementation (<b>14\u201318 mg elemental iron/day</b>) if recurrent"],
+         ["<b>Reduce menstrual loss</b>","<b>Tranexamic acid 1 g TDS on days 1\u20134</b> (reduces flow 40\u201350%); mefenamic acid for flow and pain; <b>Mirena IUS reduces flow by 90%</b> over 12 months","The Mirena is the most effective long-term intervention for menorrhagia-related IDA"],
+         ["<b>Coeliac \u2014 gluten-free diet</b>","Strict adherence, with dietitian referral","Mucosal recovery in <b>80%</b>; iron stores normalise over <b>6\u201312 months</b>"]
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Replace iron", title:"Iron replacement \u2014 oral and IV", sub:"BSH 2021 changed practice: once-daily or alternate-day dosing, not TDS.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", title:"Oral iron \u2014 once daily or alternate-day", when:"first-line",
+          html:"One ferrous salt tablet: <b>ferrous sulfate 200 mg</b> (65 mg elemental), <b>ferrous fumarate 210 mg</b>, or <b>ferrous gluconate 300 mg</b> (35 mg elemental, better tolerated). <b>Once daily or alternate-day \u2014 not TDS</b>: hepcidin rises after each dose and suppresses next-day absorption, so alternate-day dosing achieves the same total absorption with significantly fewer GI side effects. Take 30 minutes before food with <b>vitamin C 200 mg</b> or orange juice. <b>Avoid enteric-coated preparations</b> \u2014 poor absorption."},
+         {step:"2nd", title:"Manage the side effects before abandoning oral iron", when:"GI upset is common",
+          fromLabel:"adherence is the usual problem",
+          html:"Nausea, constipation and <b>black stools</b> (warn the patient \u2014 this is not melaena). Options: reduce to once daily or alternate-day, switch salt, or take with food (absorption falls by about <b>30%</b> but tolerance improves)."},
+         {step:"Check", title:"Recheck and keep going past normalisation", when:"2\u20134 weeks",
+          fromLabel:"the step most often skipped",
+          html:"Recheck <b>Hb at 2\u20134 weeks</b>: expect a rise of <b>10\u201320 g/L per month</b> (reticulocytes rise at 1\u20132 weeks as the earliest marker). A rise of <b>\u226510 g/L at 4 weeks</b> retrospectively confirms the diagnosis. <b>Continue iron for 3 months after the Hb normalises</b> \u2014 total course typically 4\u20136 months. <b>Do not stop when the Hb normalises: stores are still empty.</b>"},
+         {step:"IV", title:"Intravenous iron", when:"intolerant, malabsorbing, or urgent",
+          fromLabel:"escalation",
+          html:"<b>Ferric carboxymaltose 500\u20131000 mg IV over 15 minutes</b> (or iron isomaltoside). Indications: oral intolerance, malabsorption (coeliac, IBD, post-bypass), non-adherence, urgent repletion (pre-surgery, late pregnancy), or refractory IDA. <b>First-line in IBD and post-bariatric surgery</b> \u2014 oral iron worsens inflammation in IBD and is poorly absorbed after Roux-en-Y. Faster response (4 weeks vs 8\u201312 weeks oral), and can be initiated in primary care with a brief observation period where a local service exists."},
+         {step:"Pregnancy", title:"In pregnancy", when:"special case",
+          fromLabel:"different thresholds",
+          html:"<b>Ferrous sulfate 200 mg once daily</b> is standard. <b>IV iron from the second trimester</b> if oral is not tolerated or <b>Hb &lt;90 g/L near term</b>."}
+       ]},
+       {b:"warn", html:"<b>Failure to respond at 4 weeks should trigger reassessment, never dose escalation.</b> Check adherence and tolerance, absorption (PPI, coeliac, H. pylori), ongoing blood loss, and whether the diagnosis is wrong (anaemia of chronic disease, thalassaemia trait, malignancy). <b>Do not keep re-prescribing iron without investigating.</b>"}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Monitoring, follow-up and safety-netting", sub:"Every row has an action threshold. The 3-month ferritin check is the one that prevents recurrence.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["FBC","<b>4 weeks</b> after starting","Expect Hb rise <b>10\u201320 g/L</b>. No response \u2192 reassess diagnosis, adherence, malabsorption; check anti-tTG IgA if not already done"],
+         ["Reticulocytes","1\u20132 weeks","Early response marker \u2014 a rise confirms the marrow is responding"],
+         ["Hb + ferritin","<b>3 months</b>","Hb should be normal. <b>Continue iron a further 3 months if ferritin is still &lt;50 \u00b5g/L</b>. Confirm the cause was identified and treated, and that every outstanding investigation (endoscopy, gynaecology) has been actioned"],
+         ["Ferritin target","Post-treatment","<b>&gt;50 \u00b5g/L</b> indicates replete stores; some guidance suggests <b>&gt;100 \u00b5g/L</b> in symptomatic patients (restless legs, fatigue). <b>Do not over-supplement</b> \u2014 ferritin &gt;200 \u00b5g/L without deficiency is not beneficial"],
+         ["Recurrent IDA","Any second episode","A second episode without a clearly established benign cause (e.g. adequately treated menorrhagia) <b>requires GI investigation even if previous investigation was negative</b> \u2014 occult GI blood loss is intermittent"],
+         ["H. pylori","4 weeks after eradication","<b>Test of cure</b> \u2014 at 4 weeks, not 2, and off PPI to avoid a false negative"],
+         ["Ongoing prevention","Annually in high-risk groups","Vegans, coeliac disease, IBD, regular blood donors. Treat menorrhagia definitively; maintain the gluten-free diet"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 Return urgently", html:"\u201cBlack or bloody stools, vomiting blood, difficulty swallowing, worsening abdominal pain, significant weight loss, or worsening breathlessness or chest pain \u2014 contact us the same day.\u201d"},
+         {tone:"amber", h:"\ud83e\uddea Black stools are expected", html:"\u201cThe tablets turn your stools black \u2014 that is the iron, not bleeding. But <em>tarry, sticky</em> black stools with a strong smell are different, and need same-day contact.\u201d"},
+         {tone:"green", h:"\ud83d\udc8a Keep going after the blood count is normal", html:"\u201cWe carry on for about three more months after your blood count comes back to normal, because the count recovers long before your iron stores refill.\u201d"},
+         {tone:"blue", h:"\ud83d\udd0d The tests still matter", html:"\u201cThe tablets fix the level; the tests tell us why it dropped. Please do go ahead with the camera test even though you're feeling better.\u201d"}
+       ]},
+       {b:"say", html:"Your blood count shows you are low in iron, which explains the tiredness and breathlessness. The tablets will build it back up over a few weeks \u2014 but just as important is finding out why it dropped, so I would like to do a few checks and, given your age, arrange a camera test of the bowel to be thorough. Keep taking the iron with orange juice, avoid tea within an hour of it, and we will recheck your blood in a few weeks."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 who needs specialist input", sub:"Referral is cause-driven. Continue iron while any referral is pending.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day", html:"<b>Hb &lt;70 g/L</b> with chest pain, tachycardia or breathlessness; haemodynamic compromise; active suspected GI bleed."},
+         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> \u00b7 NICE NG12", html:"IDA in <b>any man</b> or <b>any post-menopausal woman</b>; <b>anyone aged 60+ with IDA</b>; IDA + rectal bleeding or change in bowel habit (lower GI); IDA + dysphagia (upper GI); IDA + unintentional weight loss; IDA + haematuria (urology); IDA + lymphadenopathy or splenomegaly (haematology). <b>FIT</b> supports urgent referral in younger adults.", src:"NG12"},
+         {tone:"plain", h:"Gastroenterology \u2014 routine", html:"Positive anti-tTG IgA needing duodenal biopsy; unexplained IDA with negative bidirectional endoscopy (capsule endoscopy territory); suspected IBD; refractory or recurrent deficiency."},
+         {tone:"plain", h:"Haematology", html:"Confirmed thalassaemia (trait counselling, pre-conception genetic advice); IDA refractory despite adequate dose and adherence; suspected haematological malignancy."},
+         {tone:"plain", h:"Gynaecology", html:"Menorrhagia not controlled in primary care (<b>Mirena IUS first-line</b>); fibroids or polyps on ultrasound needing intervention; suspected endometriosis; <b>post-menopausal bleeding \u2014 2WW</b>."},
+         {tone:"cream", h:"IV iron \u2014 usually no referral needed", html:"IV iron can be initiated in primary care where clearly indicated, or via a community IV iron service per local pathway."}
+       ]},
+       {b:"why", html:"The NG12 rules for IDA are explicit and reflect the ~5% colorectal cancer detection rate in men and post-menopausal women. A common and serious mistake is delaying endoscopy because the patient is anticoagulated or already on iron \u2014 neither prevents endoscopy, and neither is a sufficient reason to defer it."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 64-year-old man, tired for months, Hb 104 g/L with MCV 74 and ferritin 12 \u00b5g/L. He attributes it to \u201cgetting older\u201d, has no GI symptoms, and does not want \u201canything invasive\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises that IDA in a man is a colorectal red flag regardless of symptoms; explains the 2WW referral without inducing panic; explores and addresses the reluctance to be scoped; starts iron <em>and</em> investigates; checks coeliac serology; safety-nets bleeding. <a href='../../cases/anaemia.html'>Open the anaemia casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>BSH \u2014 Guidelines on the management of iron deficiency anaemia (2021)</b><br><a href="https://b-s-h.org.uk/guidelines" rel="noopener">b-s-h.org.uk/guidelines</a><span class="rd"> \u2014 ferritin thresholds, alternate-day oral dosing, duration of therapy, IV iron indications, non-response work-up</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 IDA aged 60+ \u2192 2WW colorectal; FIT to support urgent referral; dysphagia, weight loss, haematuria and lymphadenopathy routes</span></li>'+
+         '<li><b>BSH 2021 \u2014 iron deficiency anaemia</b><span class="rd"> \u2014 primary-care investigation, coeliac serology, monitoring intervals, referral</span></li>'+
+         '<li><b>BSG \u2014 British Society of Gastroenterology guidelines for the management of iron-deficiency anaemia</b><br><a href="https://www.bsg.org.uk/clinical-resource/" rel="noopener">bsg.org.uk/clinical-resource</a><span class="rd"> \u2014 the gastroenterological work-up: who needs bidirectional endoscopy, coeliac serology before scoping, and capsule endoscopy when upper and lower GI investigation is negative</span></li>'+
+         '<li><b>NICE NG24 \u2014 Blood transfusion</b><span class=\"rd\"> \u2014 transfusion thresholds and alternatives, including when IV iron is preferable to transfusion in non-bleeding IDA</span></li>'+
+         '<li><b>NICE NG8 \u2014 Anaemia management in chronic kidney disease</b><span class="rd"> \u2014 functional iron deficiency, reticulocyte Hb content where ferritin is unreliable</span></li>'+
+         '<li><b>NICE NG88 \u2014 Heavy menstrual bleeding</b><span class="rd"> \u2014 tranexamic acid, mefenamic acid and LNG-IUS for menorrhagia-related iron loss</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: ferrous salts and elemental iron content, ferric carboxymaltose, tranexamic acid, iron in pregnancy</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Iron deficiency and iron-deficiency anaemia in adults \u2014 BSH 2021, NICE NG12, NICE, NG8 and NG88. Diagnosis and management are merged on this page; there is no separate iron-deficiency pathway to cross-check. Always identify the cause, and verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

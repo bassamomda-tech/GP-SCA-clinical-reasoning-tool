@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DOACs, antiplatelets &amp; anticoagulation — Protocol · Reasoning GP</title>
+<meta name="description" content="Antithrombotic prescribing: pick the class by mechanism, dose DOACs by creatinine clearance not eGFR, the four licence reduction rules applied in both directions, VTE loading and stop dates, DAPT durations, interactions and the product-specific missed-dose rules, graded bleeding response, switching, and the annual review that catches silent dosing errors." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/antiplatelets-anticoagulants.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Antithrombotics protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"DOACs, antiplatelets & anticoagulation — the complete guide",
+  eyebrow:"Protocol · NICE NG196 · NG158 · NG128 · BSH · dose by CrCl, never eGFR",
+  stemTitle:"DOAC safety was proven at the licensed dose criteria, so the four reduction rules are the whole game — and they must be applied in BOTH directions, because \"2.5 mg BD to be safe\" is under-anticoagulation and causes strokes",
+  stemSub:"One page for antithrombotic prescribing. Pick the right CLASS by mechanism — arterial plaque needs an antiplatelet, stasis needs an anticoagulant, and a short list of conditions still needs warfarin. Then dose the DOAC properly using <b>creatinine clearance (Cockcroft-Gault), not the lab eGFR</b>, apply the four reduction rules, set stop dates for DAPT and provoked VTE, know the interactions and the <b>product-specific</b> missed-dose rules, switch without gaps, respond to bleeding by severity, and run the annual review that catches the silent dosing errors.",
+  guideline:"NICE NG196 · NG158 · NG128 · BSH",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE NG196 (AF) · NG158 (VTE) · NG128 (stroke/TIA)"},
+    {t:"British Society for Haematology guidance"},
+    {t:"Dose by CrCl (Cockcroft-Gault), NOT the lab eGFR", tone:"tw"},
+    {t:"Under-dosing is an error too — audit both directions", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#class"><b>Class</b><small>Arterial vs stasis</small></a><a href="#dose"><b>Dose</b><small>CrCl · four rules</small></a><a href="#vte"><b>VTE</b><small>Load · stop date</small></a><a href="#antiplatelet"><b>Antiplatelets</b><small>DAPT durations</small></a><a href="#rules"><b>Day to day</b><small>Interactions · missed</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Dose by creatinine clearance, not eGFR", html:"The licences use creatinine clearance (Cockcroft-Gault). The lab reports eGFR, and the two diverge most in small elderly women — where CrCl runs far below eGFR. <b>So \"the standard dose\" overdoses exactly the patients who bleed.</b> <b>Calculate CrCl at initiation and at every review</b>, because weight and creatinine both drift."},
+    {tone:"blue", h:"Apixaban 5 mg BD is the usual default", html:"Reduce to 2.5 mg BD only if TWO of: age ≥80 · weight ≤60 kg · creatinine ≥133 µmol/L. Rivaroxaban 20 mg OD with food (15 mg if CrCl 15–49). Edoxaban 60 mg OD (30 mg if CrCl 15–50, ≤60 kg, or with ciclosporin, dronedarone, erythromycin or ketoconazole). Dabigatran 150 mg BD (110 mg if ≥80 or on verapamil)."},
+    {tone:"amber", h:"Under-dosing is an error too", html:"Giving apixaban 2.5 mg BD \"to be safe\" without meeting two of the three criteria is under-anticoagulation, and it causes strokes. <b>Audit in both directions</b> — the reflex to reduce feels cautious and is not. Re-apply the rules at review rather than setting them once."},
+    {tone:"red", h:"⛔ Never unilaterally stop specialist-mandated DAPT", html:"Stopping mandated dual antiplatelet therapy early risks stent thrombosis, which is often fatal — and leaving forgotten DAPT running for years causes bleeding. <b>Every DAPT patient needs a visible stop date on the repeat screen.</b> Most dental work, skin surgery and cataract surgery needs no interruption at all."},
+    {tone:"amber", h:"The missed-dose rule is product-specific", html:"Apixaban (BD): take the missed dose immediately, then continue as before. Dabigatran (BD): the missed dose may be taken up to 6 hours before the next is due — omit it if less time remains. Rivaroxaban and edoxaban (OD): take immediately, then resume the normal schedule next day. Never double up. The widely-quoted \"take it if under 6 hours late\" is the DABIGATRAN rule and does not apply to the others."},
+    {tone:"purple", h:"🟣 Blood where it should not be is a cancer pathway, not a dose reduction", html:"Iron-deficiency anaemia or visible haematuria in a patient on an antithrombotic is an NG12 referral — investigate the cause, then decide about the drug. Anticoagulants unmask tumours at least as often as they cause benign bleeding, and \"it's the DOAC\" is a recognised cause of delayed cancer diagnosis. Restated in <a href='#refer'>Refer</a>."}
+  ],
+  pathwaySub:"Seven steps, and most prescribing harm lives in steps two and three.",
+  pathway:[
+    {title:"Pick the class by mechanism", html:"Arterial plaque thrombus (ACS, stents, stroke/TIA, PAD) → antiplatelet. Stasis thrombus (AF, DVT/PE) → anticoagulant. Mechanical valve, moderate-to-severe mitral stenosis, triple-positive antiphospholipid syndrome, CrCl under 15 → warfarin."},
+    {title:"Calculate CrCl and apply the four reduction rules", html:"<b>Cockcroft-Gault, not eGFR — and apply the rules in both directions.</b>", alert:true},
+    {title:"Set the duration at the moment you prescribe", html:"Provoked VTE 3 months with the stop date booked now; DAPT per the discharge summary with a visible stop date. <b>Duration drift is the commonest error on this page.</b>"},
+    {title:"Check interactions and counsel on the day-to-day rules", html:"Enzyme inducers including St John's Wort, azoles, NSAIDs and OTC ibuprofen, PPI cover, the product-specific missed-dose rule, and the alert card."},
+    {title:"Respond to bleeding by severity", html:"Nuisance bleeding is not a reason to stop. Major bleeding is an admission with a named reversal agent. <b>And investigate the source before blaming the drug.</b>"},
+    {title:"Switch without gaps or overlaps", html:"Warfarin → DOAC when INR is below 2–2.5. DOAC → warfarin with overlap until INR ≥2. DOAC → DOAC at the next scheduled dose."},
+    {title:"Review annually — recalculate, re-justify, de-prescribe", html:"Weight and creatinine → recalculate CrCl and re-apply the rules; FBC and LFTs; is the indication still valid and the duration still current?"}
+  ],
+  sections:[
+
+    {id:"class", nav:"Class", title:"Step 1 — right class first, the decision everything hangs on",
+     blocks:[
+       {b:"table", head:["Problem","Mechanism","Class"], rows:[
+         ["<b>ACS, stents, stroke/TIA, PAD</b>","<b>Platelet-rich ARTERIAL thrombus on a plaque</b>","<b>Antiplatelet</b> — aspirin, clopidogrel, ticagrelor"],
+         ["<b>AF, DVT/PE</b>","<b>Fibrin-rich STASIS thrombus</b>","<b>Anticoagulant</b> — a DOAC first-line, warfarin for the exceptions"],
+         ["Mechanical valve · moderate-to-severe mitral stenosis · triple-positive antiphospholipid syndrome · CrCl under 15","<b>Conditions where DOAC evidence does not hold</b>","<b>Warfarin</b> (or LMWH in pregnancy or cancer, per specialist advice)"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>The AF threshold — the decision itself lives on the AF page</b>","Offer a DOAC at CHA₂DS₂-VASc ≥2 — the same score of 2 in women as in men; consider one for a man scoring 1. Aspirin has NO role in AF stroke prevention. The scoring table, the ORBIT fixables and the annual re-score rule are all on the <a href='atrial-fibrillation.html'>atrial fibrillation protocol</a> — one home for the AF decision, so the two pages cannot drift apart"],
+         ["<b>Bleeding risk</b>","ORBIT is preferred (NG196), and its purpose is to FIX the modifiables — blood pressure, alcohol, NSAIDs, anaemia, falls risk — not to decline anticoagulation. A high bleeding score is a reason to optimise, not a reason to leave a patient unprotected from stroke"]
+       ]}
+     ]},
+
+    {id:"dose", nav:"Dose", title:"Step 2 — choose and dose the DOAC: the four reduction rules",
+     sub:"This is the licence table, and dosing is what this page exists for.",
+     blocks:[
+       {b:"table", head:["DOAC","Standard AF dose","Reduce to","When — exact licence criteria"], rows:[
+         ["<b>Apixaban</b> (usual first choice)","<b>5 mg BD</b>","<b>2.5 mg BD</b>","<b>≥2 of: age ≥80 · weight ≤60 kg · creatinine ≥133 µmol/L</b> (or CrCl 15–29)"],
+         ["<b>Rivaroxaban</b>","<b>20 mg OD with food</b>","<b>15 mg OD</b>","<b>CrCl 15–49</b>"],
+         ["<b>Edoxaban</b>","<b>60 mg OD</b>","<b>30 mg OD</b>","Any of: CrCl 15–50 · ≤60 kg · ciclosporin, dronedarone, erythromycin or ketoconazole"],
+         ["<b>Dabigatran</b>","<b>150 mg BD</b>","<b>110 mg BD</b>","<b>Age ≥80 · verapamil</b> (consider also at 75–80, CrCl 30–50, or high bleeding risk). <b>Avoid below CrCl 30</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Choosing between them</b>","Apixaban has the best GI-bleed profile but is twice daily. Rivaroxaban and edoxaban are once daily — better for adherence and dosette boxes. Dabigatran is the only one with dyspepsia as a common side effect and is fully renally cleared. <b>Once-daily beats \"best on paper\" if adherence is shaky</b>"],
+         ["<b>Under-dosing is an error too</b>","Giving apixaban 2.5 mg BD \"to be safe\" without meeting two criteria is under-anticoagulation, and that means strokes. Audit in both directions"],
+         ["<b>Warfarin is still right for</b>","Mechanical valves (INR 2.5–3.5 depending on the valve) · moderate-to-severe mitral stenosis · triple-positive antiphospholipid syndrome · CrCl under 15"],
+         ["<b>Weight over 120 kg or BMI over 40</b>","DOAC evidence thins. Apixaban or rivaroxaban are preferred per ISTH — or seek haematology advice"]
+       ]},
+       {b:"why", html:"DOACs beat warfarin on intracranial haemorrhage, interactions and monitoring burden — which is why they are first-line. But their safety was established at the licensed dose criteria, so the four reduction rules ARE the treatment, not a footnote to it. And they are re-checked rather than set once, because renal function and weight both drift — the dose that was correct at 74 may be an overdose at 81."}
+     ]},
+
+    {id:"vte", nav:"VTE", title:"Step 3 — DVT and PE: load, maintain, and book the stop date",
+     blocks:[
+       {b:"table", head:["Regimen","Loading","Then"], rows:[
+         ["<b>Apixaban</b> (no LMWH lead-in needed)","<b>10 mg BD × 7 days</b>","<b>5 mg BD</b>"],
+         ["<b>Rivaroxaban</b> (no LMWH lead-in)","<b>15 mg BD × 21 days</b>","<b>20 mg OD with food</b>"],
+         ["<b>Edoxaban or dabigatran</b>","<b>≥5 days of LMWH first</b>","<b>Edoxaban 60 mg OD / dabigatran 150 mg BD</b>"],
+         ["<b>Extended prophylaxis</b> (after ≥6 months, if continuing)","—","<b>Apixaban 2.5 mg BD or rivaroxaban 10 mg OD</b>"]
+       ]},
+       {b:"table", head:["VTE type","Duration","Notes"], rows:[
+         ["<b>Provoked</b> — surgery, immobility, COC, and the factor has now gone","<b>3 months, then STOP</b>","Book the stop date at initiation — drift is the commonest error on this page"],
+         ["<b>Unprovoked</b>","<b>≥3 months, then discuss indefinite treatment</b>","<b>Recurrence is roughly 10% per year off treatment.</b> Check bleeding risk. Unprovoked VTE also prompts the cancer thought — history, examination and bloods, not a blind CT"],
+         ["<b>Active cancer</b>","<b>A DOAC, or LMWH where a GI or GU tumour raises bleeding risk</b>","Continue while the cancer is active; review every 3–6 months"],
+         ["<b>Recurrent VTE or antiphospholipid syndrome</b>","<b>Indefinite; triple-positive APS → warfarin</b>","<b>Haematology involvement</b>"]
+       ]},
+       {b:"info", html:"See <a href='dvt.html'>deep vein thrombosis</a> and <a href='pulmonary-embolism.html'>pulmonary embolism</a> for the diagnostic and follow-up pathways; this page carries the prescribing detail."}
+     ]},
+
+    {id:"antiplatelet", nav:"Antiplatelets", title:"Step 4 — antiplatelet regimens: who, what, how long",
+     blocks:[
+       {b:"table", head:["Indication","Regimen","Second agent stops at"], rows:[
+         ["<b>ACS — medically managed or PCI</b>","<b>Aspirin 75 mg OD lifelong + ticagrelor 90 mg BD</b> (or prasugrel/clopidogrel post-PCI)","12 months — per the discharge summary. Never extend or shorten unilaterally"],
+         ["<b>Elective PCI, no ACS</b>","<b>Aspirin + clopidogrel 75 mg</b>","<b>6 months</b>"],
+         ["<b>Stroke / TIA, long-term</b>","<b>Clopidogrel 75 mg OD alone</b>","— (aspirin plus MR dipyridamole only if clopidogrel is not tolerated)"],
+         ["<b>High-risk TIA or minor stroke</b> (specialist-initiated)","<b>Aspirin + clopidogrel, 300 mg loading doses</b>","<b>DAPT for 21 days → clopidogrel alone</b>"],
+         ["<b>PAD</b>","<b>Clopidogrel 75 mg OD</b>","—"],
+         ["<b>Primary prevention</b>","NO antiplatelet — aspirin has no primary-prevention role, including in diabetes","—"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Gastroprotection</b>","A PPI alongside DAPT, or alongside a single antiplatelet where there is any of: prior ulcer or bleed, age ≥65 with risk factors, or concurrent SSRI, steroid, NSAID or anticoagulant. With clopidogrel use lansoprazole or pantoprazole — omeprazole and esomeprazole blunt it via CYP2C19"],
+         ["<b>Triple therapy (AF plus a new stent)</b>","Time-limited and cardiology-directed — often 1 week to 1 month of triple therapy, then DOAC plus clopidogrel to 12 months, then DOAC alone. Your job is to know the stop dates and chase the plan if it is missing from the letter"]
+       ]},
+       {b:"warn", html:"Stopping mandated DAPT early risks stent thrombosis, which is often fatal. Continuing forgotten DAPT for years risks bleeding. <b>Every DAPT patient needs a visible stop date on the repeat screen</b> — this is a prescribing-systems problem as much as a clinical one."}
+     ]},
+
+    {id:"rules", nav:"Day to day", title:"Step 5 — interactions, missed doses and the practical rules",
+     blocks:[
+       {b:"table", head:["Interaction","Effect","Action"], rows:[
+         ["<b>Carbamazepine, phenytoin, rifampicin, St John's Wort</b>","<b>Induce P-gp and CYP3A4 → DOAC levels FALL → clots</b>","Avoid DOACs — use warfarin, which can be monitored, or change the inducer. St John's Wort is bought over the counter and must be asked about"],
+         ["<b>Azole antifungals, HIV protease inhibitors, ciclosporin</b>","<b>Inhibit → DOAC levels RISE → bleeds</b>","<b>Avoid or dose-reduce per drug</b> (the edoxaban 30 mg rule); ask pharmacy"],
+         ["<b>NSAIDs including OTC ibuprofen, SSRIs and SNRIs, steroids</b>","<b>Additive bleeding — platelet effect plus GI injury</b>","Avoid NSAIDs where possible; PPI cover; counsel specifically about over-the-counter purchases"],
+         ["<b>Amiodarone, verapamil, dronedarone</b>","<b>Moderate level rise</b>","<b>Dabigatran 110 mg with verapamil; edoxaban 30 mg with dronedarone</b>"],
+         ["<b>A second antithrombotic</b>","<b>Multiplied bleeding risk</b>","<b>Only ever specialist-directed and time-limited</b>"]
+       ]},
+       {b:"table", head:["Situation","What to advise"], rows:[
+         ["<b>Missed DOAC dose — product-specific, NOT one rule</b>","Apixaban (BD): take the missed dose immediately, then continue BD as before. Dabigatran (BD): the missed dose may be taken up to 6 hours before the next dose is due — omit it if less than 6 hours remain. Rivaroxaban and edoxaban (OD): take immediately and continue the normal OD schedule the next day. NEVER double up. Check the individual SPC — the widely-quoted \"take it if under 6 hours late\" is the dabigatran rule and does not apply to the others"],
+         ["<b>Missed ≥2 days</b>","Restart at the normal dose with a safety-net. Recurrent misses → dosette box, a once-daily agent, or an adherence conversation. A DOAC not taken is a stroke waiting: a 24-hour half-life means anticoagulation is gone within a day"],
+         ["<b>Vomiting the dose</b>","<b>No universal interval exists in the SPCs.</b> Pragmatically: vomiting very soon after swallowing — roughly within the first hour, tablet possibly seen — warrants discussing a re-dose; later than that, treat it as absorbed and do NOT repeat. Repeated vomiting → seek advice rather than guessing, as cover may need bridging or withholding"],
+         ["<b>Alert card</b>","Everyone on an anticoagulant carries one — for dentists, A&amp;E and pharmacists"]
+       ]}
+     ]},
+
+    {id:"bleeding", nav:"Bleeding", title:"Step 6 — bleeding on antithrombotics: a graded response",
+     blocks:[
+       {b:"table", head:["Severity","Picture","Action"], rows:[
+         ["<b>Nuisance</b>","Bruising, brief gum or nose bleeds","Reassure and do NOT stop. Fix the modifiables — blood pressure, alcohol, NSAIDs"],
+         ["<b>Clinically relevant non-major</b>","Bleeding needing medical attention but not transfusion","Hold briefly, treat the source, review the dose against CrCl and the indication"],
+         ["<b>Major</b>","Haemodynamic compromise, a critical-site bleed, a fall in haemoglobin needing transfusion","<b>Admit.</b> Reversal: idarucizumab (dabigatran), andexanet alfa (apixaban, rivaroxaban), PCC plus vitamin K (warfarin) — speed matters"],
+         ["<b>Any neurological change on an anticoagulant</b>","Intracranial haemorrhage, which may be delayed after a head injury","<b>999 / immediate admission, however well they appear</b>"]
+       ]},
+       {b:"warn", html:"Blood where it should not be means INVESTIGATE, then decide about the drug. Iron-deficiency anaemia or visible haematuria on a DOAC is a cancer pathway referral, not a dose reduction — see <a href='#refer'>Refer</a> for the NG12 routes."}
+     ]},
+
+    {id:"review", nav:"Review &amp; surgery", title:"Step 7 — the annual review and the peri-procedural rules",
+     blocks:[
+       {b:"table", head:["Annual review item","Why"], rows:[
+         ["<b>Weight and creatinine → recalculate CrCl</b>","The dose that was right at 74 may be an overdose at 81 — re-apply the four rules every year"],
+         ["<b>FBC and LFTs</b>","<b>Anaemia means occult bleeding until explained</b>"],
+         ["<b>Indication still valid, and duration check</b>","<b>Provoked VTE past its stop date? DAPT past 12 months? De-prescribe</b>"],
+         ["<b>Adherence and missed-dose pattern</b>","<b>Consider a once-daily agent or a dosette box</b>"],
+         ["<b>Bleeding history and the ORBIT modifiables</b>","<b>Blood pressure, alcohol, NSAIDs, and a falls plan</b>"]
+       ]},
+       {b:"table", head:["Procedure situation","Rule"], rows:[
+         ["<b>Apixaban, rivaroxaban, edoxaban</b>","Stop 24 hours before a low-bleeding-risk procedure, 48 hours before high risk — longer if CrCl is reduced"],
+         ["<b>Dabigatran</b>","<b>Needs the longest interval, being fully renally cleared.</b> The stop interval depends on the individual agent, the CrCl and the bleeding risk of the procedure — follow the local or BSH peri-operative protocol and the surgical team's threshold rather than one remembered number"],
+         ["<b>Antiplatelets</b>","<b>5–7 days where interruption is genuinely required</b>"],
+         ["<b>No bridging for DOACs</b>","<b>Fast on, fast off — LMWH bridging adds bleeding without benefit</b>"],
+         ["<b>Dental work, skin surgery, cataract surgery</b>","Usually NO interruption needed — local haemostatic measures suffice. Do not reflexively stop"],
+         ["<b>Recent stent or ACS needing surgery</b>","<b>Cardiology discussion BEFORE anything is stopped</b>"]
+       ]}
+     ]},
+
+    {id:"check", nav:"Before you change", title:"Before you start, stop or switch — the 5-point check",
+     sub:"Wrong dose for the kidneys, drifted durations and unilateral stops of specialist drugs cause most antithrombotic harm.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Class", html:"Arterial → antiplatelet. AF or VTE → anticoagulant. Valve or antiphospholipid syndrome → warfarin. Right aisle?"},
+         {tone:"red", h:"2 · Dose", html:"<b>CrCl calculated, not eGFR?</b> <b>The four reduction rules applied — in BOTH directions?</b>"},
+         {tone:"amber", h:"3 · Duration", html:"<b>Is there a visible stop date for DAPT or provoked VTE?</b> Has a specialist-set duration been respected?"},
+         {tone:"amber", h:"4 · Interactions", html:"Inducers including St John's Wort, azoles, NSAIDs, a second antithrombotic — and is PPI cover indicated?"},
+         {tone:"blue", h:"5 · Switching — no gaps, no overlaps", html:"Warfarin → DOAC: start when INR is below 2–2.5. DOAC → warfarin: overlap until INR ≥2, or cover with LMWH. DOAC → DOAC: start at the next scheduled dose."},
+         {tone:"green", h:"Complex?", html:"<b>Anticoagulation service, haematology or cardiology</b> — switching in valve disease, extremes of weight, or on a recent stent is not a solo decision."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Who to call",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — 999", html:"Major bleeding, or any neurological change on an anticoagulant → admit immediately. Reversal agents exist and speed matters. Head injury on an anticoagulant goes to A&amp;E however well the patient feels — intracranial bleeding can be delayed."},
+         {tone:"purple", h:"2WW · NICE NG12 — unexplained bleeding or anaemia", html:"<b>Investigate as cancer before blaming the drug.</b> Visible haematuria aged 45 and over → urgent suspected bladder or renal cancer referral. Iron-deficiency anaemia or rectal bleeding aged 50 and over → FIT (refer at ≥10 µg Hb/g) and the colorectal pathway. Unexplained weight loss with abdominal pain aged 40 and over → urgent direct-access imaging."},
+         {tone:"amber", h:"Cardiology", html:"Any change to mandated DAPT · triple-therapy planning · a recent stent needing surgery."},
+         {tone:"amber", h:"Haematology", html:"Antiphospholipid syndrome · recurrent VTE on treatment · extremes of weight · CrCl under 15 · suspected heparin or DOAC failure."},
+         {tone:"blue", h:"Anticoagulation service", html:"<b>Warfarin management, bridging plans and complex switches.</b>"},
+         {tone:"cream", h:"GP management", html:"Class selection, CrCl-based dosing and the four rules, VTE stop dates, antiplatelet durations and gastroprotection, interactions and missed-dose counselling, graded bleeding response, and the annual review all belong here. Related pages: <a href='atrial-fibrillation.html'>atrial fibrillation</a> · <a href='dvt.html'>DVT</a> · <a href='pulmonary-embolism.html'>pulmonary embolism</a> · <a href='stable-angina.html'>stable angina</a> · <a href='mi-secondary-prevention.html'>post-MI secondary prevention</a> · <a href='tia-stroke.html'>stroke and TIA</a>."}
+       ]},
+       {b:"say", html:"This tablet is protecting you from a stroke, and the trade-off is that you will bleed more easily. So we match the dose to your kidneys every year, we avoid ibuprofen-type painkillers, and if you ever see blood where it should not be, we look for the cause properly rather than just blaming the tablet."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"An <b>81-year-old woman weighing 54 kg</b> attends for her annual review. She has AF and takes <b>apixaban 5 mg BD</b>, started three years ago. Her <b>creatinine is 138 µmol/L</b> and the lab <b>eGFR reads 46</b>. She has recently started buying <b>ibuprofen gel and tablets</b> for knee pain, mentions <b>bruising \"more than I used to\"</b>, and her <b>haemoglobin has fallen from 126 to 104</b> since last year."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises she now meets TWO reduction criteria — age ≥80 and weight ≤60 kg, with creatinine ≥133 as a third — so 5 mg BD is an overdose and should be 2.5 mg BD; <b>calculates CrCl rather than reading the eGFR of 46</b>, and can explain why the two diverge in a small elderly woman; treats the falling haemoglobin as occult bleeding needing investigation, not as a side effect to accept — and knows iron-deficiency anaemia on a DOAC is an NG12 route; <b>stops the oral NSAID and addresses the OTC purchase specifically</b>, offering topical or alternative analgesia; <b>does not stop the apixaban</b> for nuisance bruising, but does fix the modifiables; <b>checks blood pressure, alcohol and falls risk as ORBIT modifiables</b>; and <b>documents the recalculated dose with the reasoning</b>, since this is precisely the silent error the annual review exists to catch."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG196 — Atrial fibrillation: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng196" rel="noopener">nice.org.uk/guidance/ng196</a><span class="rd"> — DOAC first-line, the CHA₂DS₂-VASc ≥2 threshold with the same score of 2 in women as in men, ORBIT as the preferred bleeding-risk tool used to fix modifiables, and no role for aspirin in AF stroke prevention</span></li>'+
+         '<li><b>NICE NG158 — Venous thromboembolic diseases</b><br><a href="https://www.nice.org.uk/guidance/ng158" rel="noopener">nice.org.uk/guidance/ng158</a><span class="rd"> — the apixaban and rivaroxaban loading schedules, the LMWH lead-in required for edoxaban and dabigatran, extended prophylaxis dosing, and the provoked versus unprovoked duration rules</span></li>'+
+         '<li><b>NICE NG128 — Stroke and TIA in over 16s</b><br><a href="https://www.nice.org.uk/guidance/ng128" rel="noopener">nice.org.uk/guidance/ng128</a><span class="rd"> — clopidogrel 75 mg as long-term secondary prevention, the aspirin plus MR dipyridamole alternative, and the 21-day DAPT course after high-risk TIA or minor stroke</span></li>'+
+         '<li>British Society for Haematology — peri-operative management of anticoagulation<span class="rd"> — the 24/48-hour DOAC stop intervals, the longer interval for dabigatran, the no-bridging rule, and the procedures that need no interruption</span></li>'+
+         '<li><b>BNF and the individual Summaries of Product Characteristics</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — the four DOAC dose-reduction rules with their exact licence criteria, dosing by creatinine clearance (Cockcroft-Gault) rather than eGFR, and the PRODUCT-SPECIFIC missed-dose rules</span></li>'+
+         '<li><b>ISTH guidance on DOACs at extremes of body weight</b><span class="rd"> — apixaban or rivaroxaban preferred above 120 kg or BMI 40, where DOAC evidence thins</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the haematuria, iron-deficiency anaemia and weight-loss routes applied when a patient on an antithrombotic bleeds</span></li>'+
+         '<li><b>MHRA Drug Safety Updates</b><span class="rd"> — clopidogrel with omeprazole or esomeprazole via CYP2C19; DOAC interactions with enzyme inducers including St John\u2019s Wort; the named reversal agents</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Antithrombotic prescribing in adults — NICE NG196 (AF), NG158 (VTE), NG128 (stroke/TIA) and BSH guidance. Pick the class by mechanism, then dose by creatinine clearance (Cockcroft-Gault), never the lab eGFR. Apply the four DOAC reduction rules in BOTH directions — under-dosing causes strokes. Book the stop date for provoked VTE and DAPT at the moment you prescribe. The missed-dose rule is product-specific: the \"6 hours\" rule is dabigatran's alone. Never unilaterally stop specialist-mandated DAPT. Blood where it should not be means investigate first and decide about the drug second. Doses are licence-based; verify against the current BNF and your local formulary before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

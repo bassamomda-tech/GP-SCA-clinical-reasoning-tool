@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dysmenorrhoea — Protocol · Reasoning GP</title>
+<meta name="description" content="Period pain in primary care: separating primary from secondary dysmenorrhoea, the features that point to endometriosis or adenomyosis, the NSAID and hormonal treatment ladder with doses, why a normal ultrasound does not exclude endometriosis, the 8-year average diagnostic delay, and the NG12 routes that run through pelvic pain." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/dysmenorrhoea.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790263987096422 tools/management/dysmenorrhoea.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Dysmenorrhoea protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"Dysmenorrhoea — the complete guide",
+  eyebrow:"Protocol · NICE NG73 · NICE · primary or secondary is the whole question",
+  stemTitle:"Period pain that started with the periods and responds to an NSAID is primary dysmenorrhoea; pain that began years later, or is getting worse, or does not respond, is a diagnosis you have not made yet",
+  stemSub:"This page is the whole of dysmenorrhoea — the differential reasoning and the management: the history that separates primary from secondary, the treatment ladder with actual doses and how long to give each step, what to examine and when to image, and the point that matters more than any of it — <b>a normal pelvic ultrasound does not exclude endometriosis</b>, which is why the average delay to diagnosis in the UK is around 8 years and why so much of it accrues in general practice.",
+  guideline:"NICE NG73 · RCOG GTG 41 · NG12 · FSRH",
+  reviewed:"12 September 2026",
+  nextReview:"12 March 2027",
+  meta:[
+    {t:"NICE NG73 — endometriosis: diagnosis and management"},
+    {t:"RCOG Green-top 41 — chronic pelvic pain (2012)"},
+    {t:"FSRH — continuous and extended hormonal regimens"},
+    {t:"Normal USS does NOT exclude endometriosis", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Red flags</b><small>Torsion · PID · NG12</small></a><a href="#classify"><b>Primary or secondary</b><small>The whole question</small></a><a href="#assess"><b>Assess</b><small>Examine · image</small></a><a href="#treat"><b>Treat</b><small>NSAID → hormonal</small></a><a href="#refer"><b>Refer</b><small>NG73 thresholds</small></a></div>',
+  quickSub:"The six that change outcomes. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"Primary dysmenorrhoea has a recognisable shape", html:"Starts 6–12 months after menarche, once cycles become ovulatory · begins with or just before the bleed and lasts 8–72 hours · cramping suprapubic pain, often with backache, thigh ache, nausea, diarrhoea or headache · no pain at other times in the cycle · normal examination. It is caused by prostaglandin-driven myometrial contraction and uterine ischaemia — which is exactly why an NSAID, not paracetamol, is the right first drug."},
+    {tone:"amber", h:"Secondary dysmenorrhoea — the features that change the plan", html:"Onset years after menarche · pain starting days BEFORE the bleed or persisting after it · deep dyspareunia · dyschezia or cyclical bowel or bladder symptoms · heavy or irregular bleeding · subfertility · pain no longer responding to what used to work. Any of these means look for endometriosis, adenomyosis, fibroids, PID, an ovarian cyst or a device problem — a new or escalating pattern is never dismissed as \"just periods\"."},
+    {tone:"red", h:"⛔ A normal ultrasound does not exclude endometriosis", html:"NG73 is explicit: do not exclude endometriosis on the basis of a normal pelvic or transvaginal ultrasound, a normal examination, or a normal MRI. Superficial peritoneal disease is not visible on imaging, and laparoscopy remains the reference standard. Telling a woman her scan is normal and her pain is therefore normal is the single commonest step in the 8-year diagnostic delay — and it is the one entirely within our control."},
+    {tone:"blue", h:"The treatment ladder, with real doses", html:"First: an NSAID started at or just before the onset of pain and taken regularly for 2–3 days — mefenamic acid 500 mg TDS, naproxen 500 mg then 250 mg every 6–8 hours, or ibuprofen 400 mg TDS. <b>Give each step a fair trial of 3 months before judging it.</b> Then, if contraception is acceptable: a combined hormonal contraceptive, used continuously or tricycled rather than cyclically — the hormone-free interval is when the pain happens."},
+    {tone:"green", h:"Continuous, not cyclical — the change people have never been offered", html:"A CHC taken back-to-back (continuous or extended, with a 4-day break only when breakthrough bleeding occurs) removes the withdrawal bleed and with it the pain. FSRH supports this and it is not \"unlicensed risk-taking\" — it is standard practice that many women have simply never been told about. Alternatives: <b>LNG-IUS</b>, <b>desogestrel</b>, or <b>depot medroxyprogesterone</b>."},
+    {tone:"purple", h:"🟣 NG12 — the routes that run through pelvic pain", html:"Ovarian cancer: persistent or frequent abdominal distension, early satiety, pelvic or abdominal pain, or increased urinary urgency or frequency — particularly in a woman aged 50 or over, or any woman with these symptoms 12 or more times a month → measure CA-125; if 35 IU/mL or above, arrange urgent pelvic ultrasound. Any woman with ascites, a pelvic or abdominal mass (not obviously fibroids) → urgent suspected ovarian cancer referral. Cervical cancer: a cervix that looks or feels abnormal on examination → urgent suspected cancer referral regardless of a recent normal smear. Restated in <a href='#refer'>Refer</a>."}
+  ],
+  pathwaySub:"Five steps. Almost all the diagnostic value is in the first two.",
+  pathway:[
+    {title:"Exclude the acute cause", html:"Sudden severe unilateral pain with vomiting → torsion. Pain with fever, discharge or cervical excitation → PID. Any possibility of pregnancy → urine hCG for ectopic, in every woman of reproductive age with pelvic pain.", alert:true},
+    {title:"Decide: primary or secondary?", html:"Age at onset relative to menarche · timing within the cycle · deep dyspareunia · dyschezia and cyclical bowel or bladder symptoms · bleeding pattern · subfertility · whether previously effective treatment has stopped working."},
+    {title:"Examine — and say why you are offering it", html:"Abdominal examination in everyone. Offer pelvic and speculum examination where secondary dysmenorrhoea is suspected or the woman is sexually active; not routinely in an adolescent with a classical primary history. Look for fixed or tender uterus, nodularity, adnexal masses and an abnormal cervix."},
+    {title:"Treat empirically while investigating", html:"NSAID regularly for the first 2–3 days of the bleed; then a continuous or tricycled CHC, or an LNG-IUS or progestogen-only option. <b>3 months per step. Do not withhold treatment pending a diagnosis.</b>"},
+    {title:"Refer on the NG73 thresholds, not on the scan", html:"Refer on the clinical picture where symptoms are severe, persistent or recurrent, where fertility is a concern, or where initial treatment has failed — regardless of imaging."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Red flags", title:"Red flags — the acute causes and the cancer routes",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["<b>Sudden severe unilateral pelvic pain with nausea and vomiting</b>","<b>Ovarian torsion</b> — an emergency; the ovary is salvageable only for a few hours","Emergency gynaecology admission for urgent ultrasound and laparoscopy. Do not arrange an outpatient scan"],
+         ["<b>Any possibility of pregnancy with pelvic pain</b>","<b>Ectopic pregnancy</b>","Urine hCG in every woman of reproductive age with pelvic pain. Positive with pain → early pregnancy unit the same day"],
+         ["Fever, purulent or offensive discharge, deep dyspareunia, cervical excitation, raised inflammatory markers","<b>Pelvic inflammatory disease</b> — treat on clinical suspicion; delay causes tubal damage and infertility","Empirical antibiotics and STI screening without waiting for results. See <a href='pelvic-inflammatory-disease.html'>PID</a>"],
+         ["Persistent abdominal distension or bloating, early satiety, pelvic pain or urinary urgency — especially aged 50 or over, or occurring 12 or more times a month","<b>Ovarian cancer.</b> The symptoms are non-specific and routinely attributed to IBS or the menopause","NG12: measure CA-125. If 35 IU/mL or above → urgent pelvic ultrasound. Ascites or a pelvic mass → urgent suspected cancer referral directly"],
+         ["<b>Cervix that looks or feels abnormal on examination</b>","<b>Cervical cancer</b>","Urgent suspected cancer referral — and do NOT be reassured by a recent normal smear, which screens rather than diagnoses"],
+         ["<b>Post-coital, intermenstrual or post-menopausal bleeding with pain</b>","<b>Cervical or endometrial pathology</b>","Examine the cervix. Post-menopausal bleeding aged 55 or over → urgent suspected endometrial cancer referral"],
+         ["Severe dysmenorrhoea from the very first period, with obstructed flow, a pelvic mass or primary amenorrhoea","Obstructive Müllerian anomaly — imperforate hymen, transverse vaginal septum, obstructed hemivagina","Urgent paediatric or adolescent gynaecology referral. Pain from the first cycle is not primary dysmenorrhoea"],
+         ["New pain in a woman with an IUD, particularly within weeks of insertion","<b>Malposition, partial expulsion, perforation or PID</b>","<b>Examine for threads and arrange ultrasound; screen for infection</b>"]
+       ]},
+       {b:"warn", html:"<b>The failure in this presentation is almost never over-investigation.</b> It is a woman told for years that severe period pain is normal, given paracetamol, never examined, never offered a continuous hormonal regimen, and discharged on a normal scan. The average delay from first presentation to a diagnosis of endometriosis in the UK is around 8 years, and a large share of it is primary-care consultations exactly like that one. Two habits close most of the gap: ask how much school, work or life the pain costs, and treat a normal scan as uninformative rather than reassuring."}
+     ]},
+
+    {id:"classify", nav:"Primary or secondary", title:"Primary or secondary — the distinction that drives everything",
+     blocks:[
+       {b:"table", head:["","Primary dysmenorrhoea","Secondary dysmenorrhoea"], rows:[
+         ["<b>Onset</b>","<b>6–12 months after menarche, when cycles become ovulatory</b>","<b>Years after menarche, often in the 20s–40s</b>"],
+         ["<b>Timing</b>","<b>Begins with or hours before the bleed; lasts 8–72 hours</b>","Often starts days BEFORE the bleed and may persist after it, or be present acyclically"],
+         ["<b>Trajectory</b>","<b>Stable or improves with age and after childbirth</b>","Progressive — and \"my usual treatment has stopped working\" is a red flag in itself"],
+         ["<b>Associated features</b>","Nausea, diarrhoea, backache, thigh ache, headache — the prostaglandin syndrome","Deep dyspareunia · dyschezia · cyclical bowel or bladder symptoms · heavy or irregular bleeding · subfertility"],
+         ["<b>Examination</b>","<b>Normal</b>","May show a fixed or retroverted tender uterus, uterosacral nodularity, adnexal mass or enlarged uterus — but is frequently NORMAL, which excludes nothing"],
+         ["<b>Causes</b>","Excess endometrial prostaglandin (PGF2α) → myometrial contraction, uterine ischaemia and pain","Endometriosis · adenomyosis · fibroids · PID and chronic pelvic infection · ovarian cysts · IUD malposition · cervical stenosis · Müllerian anomaly"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"🔍 Endometriosis — the symptom set to ask for by name", html:"Chronic pelvic pain · period pain affecting daily activities · deep dyspareunia · period-related or cyclical bowel symptoms, especially painful defecation · period-related or cyclical urinary symptoms, including haematuria · infertility with any of these. <b>NG73 says suspect endometriosis on this symptom set alone</b> — imaging is for planning, not for permission."},
+         {tone:"blue", h:"🔍 Adenomyosis — the one that gets missed after endometriosis", html:"Heavy, painful periods with a diffusely enlarged, boggy, tender uterus, typically in a woman in her late 30s or 40s who has had children. <b>Often coexists with endometriosis.</b> Transvaginal ultrasound or MRI can suggest it; <b>the LNG-IUS is a genuinely effective treatment and is under-offered</b>."},
+         {tone:"blue", h:"🔍 Fibroids", html:"Heavy bleeding more than pain, with bulk symptoms — pressure, frequency, a palpable mass. Acute severe pain suggests red degeneration (classically in pregnancy) or torsion of a pedunculated fibroid. Ultrasound is genuinely informative here, unlike in superficial endometriosis."},
+         {tone:"green", h:"👧 Adolescents", html:"Primary dysmenorrhoea is very common and treatable: NSAID plus, if needed, a CHC — and a CHC may be given for pain regardless of sexual activity. Do not require a pelvic examination to treat an adolescent with a classical history. But pain from the very first period, or pain with obstructed flow, needs urgent imaging for an obstructive anomaly."}
+       ]}
+     ]},
+
+    {id:"assess", nav:"Assess", title:"Assessment, examination and investigation",
+     blocks:[
+       {b:"table", head:["Element","What to do","Why"], rows:[
+         ["<b>Impact, asked explicitly</b>","\"How many days a month does this cost you — school, work, sport, plans?\" Consider a pain and bleeding diary over 2–3 cycles","The impact question is what escalates treatment and justifies referral, and it is the one most often not asked. A diary also distinguishes cyclical from acyclical pain, which is the crux of the classification"],
+         ["<b>Bleeding pattern</b>","Cycle length and regularity, duration, flooding, clots, intermenstrual, post-coital or post-menopausal bleeding","Heavy bleeding with pain points to adenomyosis, fibroids or endometriosis; see <a href='menorrhagia.html'>heavy menstrual bleeding</a>"],
+         ["<b>Sexual and fertility history</b>","Deep versus superficial dyspareunia, STI risk, contraception in use, plans for pregnancy","<b>Deep dyspareunia is one of the strongest pointers to endometriosis</b>; fertility plans change which treatment is acceptable, since most effective options are contraceptive"],
+         ["<b>Bowel and bladder</b>","Cyclical painful defecation, cyclical urinary symptoms, cyclical haematuria","Cyclical bowel or bladder symptoms are near-specific for deep endometriosis and are routinely misattributed to IBS or cystitis"],
+         ["<b>Examination</b>","Abdominal in everyone. Offer pelvic and speculum where secondary dysmenorrhoea is suspected, or the woman is sexually active — with a chaperone and clear consent","Looking for a fixed tender uterus, uterosacral or pouch-of-Douglas nodularity, adnexal mass, enlarged boggy uterus, and an abnormal cervix. <b>A normal examination excludes nothing</b>"],
+         ["<b>Investigations — targeted</b>","Urine hCG in any possibility of pregnancy · STI screen including chlamydia and gonorrhoea NAAT if PID is possible or risk factors exist · FBC and ferritin if bleeding is heavy · CA-125 where the NG12 ovarian criteria are met","<b>No routine bloods in a classical primary picture</b>"],
+         ["<b>Imaging</b>","Transvaginal ultrasound (or transabdominal if TV is not acceptable) where secondary dysmenorrhoea is suspected, examination is abnormal, or first-line treatment fails","Useful for fibroids, endometriomas, adenomyosis and ovarian pathology — and NOT capable of excluding superficial peritoneal endometriosis. Say that to the patient when you order it, not when the result arrives"]
+       ]},
+       {b:"say", html:"I am arranging a scan, and I want to be clear about what it can and cannot tell us, because this is where a lot of women get let down. A scan is good at showing cysts, fibroids and changes in the muscle of the womb. It is not able to show the commonest form of endometriosis, which sits on the surface of the tissues and is only visible by looking inside with a camera. So if the scan comes back normal, that will not mean nothing is wrong and it will not mean we stop. It means we treat on your symptoms and, if you are not getting better, I refer you — because your symptoms are the evidence here, not the picture."}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Treatment — the ladder, with doses and trial lengths",
+     sub:"Give each step three months before judging it. Treat while investigating, never after.",
+     blocks:[
+       {b:"table", head:["Step","Treatment","Notes"], rows:[
+         ["<b>1 · NSAID — the first drug, and better than paracetamol</b>","Mefenamic acid 500 mg TDS · naproxen 500 mg initially then 250 mg every 6–8 hours · ibuprofen 400 mg TDS. Start at the onset of pain or 1–2 days before the expected bleed, and take REGULARLY for 2–3 days rather than as required","<b>Directly targets the prostaglandin mechanism.</b> Take with food; avoid in active peptic ulcer, significant renal impairment or aspirin-sensitive asthma; consider a PPI where there is GI risk. Paracetamol is second-best and is what most women have already tried and found wanting"],
+         ["<b>2 · Hormonal — combined, used CONTINUOUSLY</b>","Combined hormonal contraceptive, taken continuously or tricycled, with a 4-day break only if breakthrough bleeding occurs. Typically a 30 µg ethinylestradiol / levonorgestrel pill","The hormone-free interval is when the pain happens, so removing it removes the pain. FSRH supports continuous and extended regimens; they are standard practice, not experimental. Check UKMEC before prescribing: migraine with aura, BMI, smoking over 35, VTE history, breastfeeding"],
+         ["<b>3 · Hormonal alternatives</b>","LNG-IUS (52 mg) — first choice where bleeding is also heavy, and effective in adenomyosis · desogestrel 75 µg OD continuously · depot medroxyprogesterone 150 mg IM every 13 weeks · progestogen-only pill or implant","The LNG-IUS treats the pain and the bleeding together and is the most under-offered option in this presentation. Warn about 3–6 months of irregular bleeding at the start, or it gets removed early. <b>Depot: consider bone density with long-term use, especially under 18</b>"],
+         ["<b>4 · Where contraception is not wanted</b>","Norethisterone 5 mg TDS from day 5 to 26 (cycle control, NOT contraceptive), or NSAID optimisation alone","Useful short-term; not a long-term solution, and the non-contraceptive point must be stated explicitly"],
+         ["<b>5 · Adjuncts worth offering</b>","Local heat — a hot water bottle or heat patch has genuine evidence · TENS · exercise · adequate sleep","Offer heat sincerely rather than as a token: the evidence is comparable to an NSAID for some women. Smoking cessation; address dietary and vitamin claims honestly — the evidence for magnesium, vitamin B1 and fish oil is weak"],
+         ["<b>6 · What NOT to do</b>","Do not prescribe opioids for dysmenorrhoea · do not use GnRH analogues in primary care · do not dismiss pain because a scan is normal · do not delay treatment awaiting a diagnosis","Opioids do not treat prostaglandin-mediated pain, cause dependence in a young population, and signal that the diagnosis has been abandoned rather than made"]
+       ]},
+       {b:"why", html:"Two things about this ladder are worth stating to the patient directly. First, an NSAID works here for a specific reason — the pain is prostaglandin-driven, and an NSAID blocks prostaglandin synthesis, which paracetamol does not. That is why \"I've tried painkillers\" usually means paracetamol and is not the same as having tried treatment. Second, the standard cyclical pill schedule was designed to produce a monthly bleed for reasons of acceptability, not physiology — and that bleed is the symptom. Taking the pill continuously is therefore not a workaround but a better fit to the problem, and many women have carried years of avoidable pain simply because nobody offered it."}
+     ]},
+
+    {id:"monitor", nav:"Follow up", title:"Review and safety-netting",
+     blocks:[
+       {b:"table", head:["When","What to check"], rows:[
+         ["<b>3 months after each step</b>","Pain days per month against baseline · days of school, work or activity lost · whether the NSAID was taken regularly and early rather than as required · tolerance and side effects · bleeding pattern on a continuous regimen"],
+         ["<b>3–6 months after an LNG-IUS</b>","Bleeding usually settles by 6 months — say so in advance. Check threads and symptoms; do not remove early for irregular bleeding alone if the pain is improving"],
+         ["<b>At any review where treatment has failed</b>","Re-take the history for secondary features, examine if not already done, and refer on the NG73 clinical thresholds — do not order a repeat scan instead of referring"],
+         ["<b>Annually where treatment is working</b>","Contraceptive review and UKMEC recheck · blood pressure and BMI on a CHC · bone health considerations on long-term depot · fertility plans, which change the whole plan"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same day", html:"\"If you get sudden severe one-sided pain with vomiting, or any pain with a positive pregnancy test, or pain with a fever and offensive discharge — contact us the same day or go to A&amp;E.\""},
+         {tone:"amber", h:"🟠 Come back sooner", html:"Pain that changes character, becomes constant rather than cyclical, or stops responding to what was working · new bleeding between periods or after sex · new bowel or bladder symptoms."},
+         {tone:"blue", h:"💊 Take the NSAID differently", html:"\"Start it the day before you expect the bleed, or the moment the pain begins — not once it is severe — and take it regularly for two or three days rather than waiting to see if you need it. Timing changes how well it works.\""},
+         {tone:"green", h:"✓ The reassurance that is actually true", html:"\"Severe period pain is common but it is not something you have to put up with, and there is more than one thing to try. If the first option does not work, that is information, not failure — come back.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency — same day", html:"Suspected ovarian torsion · positive pregnancy test with pain (ectopic) · PID with systemic sepsis or a suspected tubo-ovarian abscess · suspected obstructive Müllerian anomaly with acute retention of menstrual flow."},
+         {tone:"purple", h:"2WW · NICE NG12", html:"Ovarian cancer: persistent or frequent abdominal distension, early satiety, pelvic or abdominal pain, or urinary urgency or frequency — particularly aged 50 or over, or symptoms 12 or more times a month → CA-125; if ≥35 IU/mL, urgent pelvic ultrasound. Ascites or a pelvic or abdominal mass not obviously fibroid → urgent suspected ovarian cancer referral. Cervical cancer: an abnormal-looking or abnormal-feeling cervix → urgent suspected cancer referral irrespective of smear history. Endometrial cancer: post-menopausal bleeding aged 55 or over → urgent suspected cancer referral."},
+         {tone:"amber", h:"Gynaecology — on the clinical picture, not the scan", html:"NG73: refer where symptoms are severe, persistent or recurrent; where initial management has not worked, is not tolerated or is contraindicated; where there are signs of deep endometriosis; or where fertility is a priority. <b>Refer regardless of normal imaging.</b>"},
+         {tone:"blue", h:"Specialist endometriosis centre", html:"Suspected or confirmed deep endometriosis involving bowel, bladder or ureter — NG73 directs these to a centre with the relevant multidisciplinary expertise rather than to general gynaecology."},
+         {tone:"blue", h:"Adolescent gynaecology", html:"Severe dysmenorrhoea from the first period · suspected obstructive anomaly · primary amenorrhoea with cyclical pain · failure of NSAID plus hormonal treatment in a young person."},
+         {tone:"green", h:"Fertility, and pain services", html:"Subfertility with suspected endometriosis → fertility referral in parallel, not after (see <a href='infertility.html'>infertility</a>). Where pain has become chronic and central features have developed, see <a href='chronic-pain.html'>chronic pain</a> — but not as a substitute for making the gynaecological diagnosis."},
+         {tone:"cream", h:"GP management", html:"Most dysmenorrhoea is managed entirely here: the classification, the impact question, the NSAID taken properly, a continuous rather than cyclical hormonal regimen, the LNG-IUS, and a referral made on symptoms rather than on imaging. Related pages: <a href='menorrhagia.html'>heavy menstrual bleeding</a> · <a href='pcos.html'>PCOS</a> · <a href='contraception.html'>contraception</a> · <a href='pelvic-inflammatory-disease.html'>PID</a> · <a href='../algorithms/irregular-periods.html'>irregular periods</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 27-year-old woman says her periods have become \"unbearable\" over the last three years, having been manageable in her teens. The pain now <b>starts four days before the bleed</b> and she takes <b>two days off work most months</b>. She has <b>deep pain during sex</b> and describes <b>painful bowel movements around her period</b>, which a previous clinician attributed to IBS. She takes paracetamol and \"the odd ibuprofen when it gets bad\". A pelvic ultrasound last year was normal and she was told nothing was wrong. She and her partner are considering trying for a baby next year."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Identifies this as SECONDARY dysmenorrhoea from onset, timing and trajectory; recognises deep dyspareunia and cyclical dyschezia as near-specific for endometriosis and names it rather than accepting the IBS label; states explicitly that a normal ultrasound does NOT exclude endometriosis and explains why, repairing the previous consultation without criticising the clinician; <b>asks the impact question and quantifies it</b> (two days a month off work); corrects the NSAID technique — regularly and started early, not \"the odd ibuprofen when it gets bad\"; <b>offers examination with a chaperone</b>; discusses a continuous or tricycled CHC and the LNG-IUS, while recognising that fertility plans next year affect acceptability; refers to gynaecology on the NG73 clinical thresholds rather than ordering another scan, and considers parallel fertility input; <b>screens the NG12 ovarian symptom set</b>; <b>does not prescribe an opioid</b>; and <b>acknowledges the years of not being believed</b>, which is what she has actually come in with."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG73 — Endometriosis: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng73" rel="noopener">nice.org.uk/guidance/ng73</a><span class="rd"> — the symptom set on which to suspect endometriosis, the explicit instruction not to exclude it on normal examination, ultrasound or MRI, the referral thresholds, and referral to a specialist centre for deep disease</span></li>'+
+         '<li><b>RCOG Green-top 41 (2012) · ESHRE endometriosis (2022)</b><span class="rd"> — the primary/secondary distinction, the NSAID doses and the instruction to start early and take regularly, the hormonal ladder, and the 3-month trial per step</span></li>'+
+         '<li><b>FSRH — Combined Hormonal Contraception, and UKMEC</b><br><a href="https://www.fsrh.org" rel="noopener">fsrh.org</a><span class="rd"> — continuous and extended (tricycling) regimens as standard practice, the 4-day break for breakthrough bleeding, and the eligibility criteria checked before prescribing</span></li>'+
+         '<li><b>NICE NG88 — Heavy menstrual bleeding</b><span class="rd"> — the LNG-IUS as first-line where bleeding and pain coexist</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the ovarian cancer symptom set with CA-125 at 35 IU/mL and urgent ultrasound, direct referral for ascites or a pelvic mass, the abnormal cervix, and post-menopausal bleeding at 55 and over</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all doses quoted, NSAID cautions and contraindications, norethisterone for cycle control and its non-contraceptive status, and depot medroxyprogesterone bone-density considerations</span></li>'+
+         '<li><b>Endometriosis UK</b><br><a href="https://www.endometriosis-uk.org" rel="noopener">endometriosis-uk.org</a><span class="rd"> — patient support, and the source of the frequently-cited UK average diagnostic delay of around 8 years</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Dysmenorrhoea — NICE NG73, NICE NG88, FSRH guidance and NG12. Primary or secondary is the whole question: onset relative to menarche, timing within the cycle, trajectory, dyspareunia and cyclical bowel or bladder symptoms. An NSAID started early and taken regularly beats paracetamol because the pain is prostaglandin-driven. Then a continuous or tricycled CHC, or an LNG-IUS. Three months per step. A normal ultrasound does NOT exclude endometriosis — refer on symptoms, not on imaging. No opioids. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

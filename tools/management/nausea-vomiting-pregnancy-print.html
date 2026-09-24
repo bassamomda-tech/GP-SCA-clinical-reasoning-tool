@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nausea &amp; vomiting in pregnancy — Protocol · Reasoning GP</title>
+<meta name="description" content="NVP and hyperemesis gravidarum in primary care, diagnosis and management on one page: PUQE scoring, the red flags including Wernicke's encephalopathy, the pregnancy-safe antiemetic ladder with doses, mandatory thiamine, admission thresholds and day-case IV rehydration." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/nausea-vomiting-pregnancy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790200156739287 tools/management/nausea-vomiting-pregnancy.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="NVP protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F930}",
+  title:"Nausea & vomiting in pregnancy \u2014 the complete guide",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Score the severity, treat it properly, and never let \u201cmorning sickness\u201d delay the thiamine or the drip",
+  stemSub:"One page for the whole condition: exclude the mimics and the emergencies, score with PUQE, treat on the score with an antiemetic ladder that is genuinely safe in pregnancy, give thiamine to everyone who needs an antiemetic, use the day-case IV unit before the woman ends up in A&amp;E, and treat the psychological harm as part of the disease.",
+  guideline:"RCOG Green-top 69 (2024) \u00b7 NICE NG201",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"RCOG Green-top Guideline No. 69 (2024)"},
+    {t:"NICE NG201 \u2014 Antenatal care"},
+    {t:"NICE NG201 \u2014 antenatal care"},
+    {t:"BNF for all doses"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Wernicke\'s \u00b7 HELLP \u00b7 molar</small></a><a href="#confirm"><b>Score it</b><small>PUQE \u00b7 NVP vs HG</small></a><a href="#workup"><b>Work-up</b><small>Dipstick \u00b7 bloods \u00b7 USS</small></a><a href="#ladder"><b>Treat</b><small>Ladder \u00b7 thiamine</small></a><a href="#refer"><b>Refer</b><small>Day case \u00b7 admit</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Confusion, diplopia, nystagmus or ataxia = Wernicke's", html:"Vomiting plus <b>any</b> of those \u2192 <b>IV thiamine immediately and 999</b>. The classic triad is often incomplete \u2014 <b>eye signs alone are enough to treat</b>. Untreated it causes irreversible Korsakoff's syndrome and death."},
+    {tone:"red", h:"Never give glucose before thiamine", html:"IV 5% dextrose without thiamine precipitates Wernicke's encephalopathy. Rehydrate with <b>0.9% sodium chloride plus potassium</b>, and give <b>thiamine before any glucose-containing fluid</b> in anyone vomiting persistently."},
+    {tone:"amber", h:"Score it, then treat the score", html:"<b>PUQE</b> \u2014 three questions (hours of nausea, vomits, retches per day), each 1\u20135, total 3\u201315. <b>Mild \u22646</b>, <b>moderate 7\u201312</b>, <b>severe \u226513</b>. Score at <em>every</em> visit alongside weight and a urine dipstick, and document it."},
+    {tone:"blue", h:"Thiamine is mandatory, not optional", html:"RCOG mandates thiamine in every woman with hyperemesis needing an antiemetic \u2014 25\u201350 mg TDS orally, continued throughout treatment. Give it empirically if ketonuria is ++ or vomiting has run beyond 3 weeks; <b>do not wait for a thiamine level</b>."},
+    {tone:"green", h:"The drugs are safe \u2014 undertreating is not", html:"Prochlorperazine 5\u201310 mg TDS, cyclizine 50 mg TDS, promethazine 25 mg TDS all have decades of safety data (RCOG category A). <b>Do not withhold treatment over unfounded teratogenicity fears</b> \u2014 untreated hyperemesis harms mother and fetus."},
+    {tone:"purple", h:"Admission threshold, and the route that avoids it", html:"Ketonuria +++, nothing kept down for 24 hours, weight loss &gt;5%, postural hypotension, PUQE \u226513, K\u207a &lt;3.0 or Na\u207a &lt;130 \u2192 same-day hospital. Moderate disease goes to the <b>EPU day case</b> for IV fluids \u2014 4\u20136 hours instead of a 3\u20135 day admission."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where women come to harm \u2014 usually by being told this is normal.",
+  pathway:[
+    {title:"Exclude the dangerous", html:"Wernicke's (neurological signs), haematemesis (Mallory-Weiss), severe dehydration, abdominal pain (appendicitis, cholecystitis, pancreatitis, HELLP or pre-eclampsia after 20 weeks), fever and pyelonephritis, molar pregnancy, and suicidal ideation.", alert:true},
+    {title:"Score and classify", html:"<b>PUQE</b> plus weight, hydration and urine dipstick. Separate normal NVP from moderate NVP from <b>hyperemesis gravidarum</b> \u2014 protracted vomiting with dehydration, ketonuria, electrolyte disturbance and <b>&gt;5% weight loss</b>. Onset after 10 weeks or new vomiting after 16 weeks means look elsewhere."},
+    {title:"Investigate proportionately", html:"Dipstick at every consultation; MSU if leucocytes or nitrites; U&amp;E, FBC, LFTs and TFTs in moderate or severe disease; USS to confirm an intrauterine singleton and exclude a mole. <b>Mild NVP with a normal dipstick needs no bloods.</b>"},
+    {title:"Treat on the score", html:"Lifestyle and ginger for mild; first-line antiemetic plus <b>thiamine</b> for anything needing a drug; step to metoclopramide (max 5 days) or ondansetron; combine classes and add acid suppression before declaring failure."},
+    {title:"Review at 24\u201348 hours", html:"<b>Not optional \u2014 it is the safety mechanism.</b> If it is not working, step up rather than repeat. Weekly review while symptoms persist, fit note and workplace adjustments, PHQ-9/GAD-7, and Pregnancy Sickness Support."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Not all vomiting in pregnancy is NVP",
+     sub:"Two jobs here: find the non-obstetric and obstetric mimics, and identify the woman who needs a hospital today.",
+     blocks:[
+       {b:"warn", html:"Wernicke's encephalopathy is the catastrophe this page exists to prevent. Thiamine depletion from persistent vomiting causes confusion, ophthalmoplegia and ataxia \u2014 and the triad is often incomplete, so ophthalmological signs alone should trigger immediate IV thiamine. Untreated it leads to irreversible Korsakoff's syndrome and death."},
+       {b:"table", head:["Red flag","Features","Action"], rows:[
+         ["<b>Neurological symptoms</b>","<b>Diplopia, nystagmus, confusion or ataxia</b> with vomiting","<b>IV thiamine immediately + 999</b> \u2014 Wernicke's encephalopathy, life-threatening"],
+         ["<b>Haematemesis</b>","Blood or coffee-ground vomit \u2014 <b>Mallory-Weiss tear (common in hyperemesis)</b>, oesophagitis, rarely peptic ulcer","<b>Same-day assessment</b>; GI surgical review if haemodynamically unstable"],
+         ["<b>Severe dehydration</b>","<b>Ketonuria ++ and unable to keep any fluids down and weight loss &gt;5%</b>, postural hypotension","Same-day admission for IV fluids, antiemetics, thiamine and VTE prophylaxis"],
+         ["<b>Abdominal pain with vomiting</b>","Epigastric \u2014 UTI, appendicitis, cholecystitis, pancreatitis, pre-eclampsia after 20 weeks. Severe right upper quadrant \u2014 <b>HELLP syndrome after 20 weeks</b>, gallstones","<b>Same-day assessment</b>"],
+         ["Fever with vomiting","Temperature <b>&gt;37.5\u00b0C</b> \u2014 <b>UTI and pyelonephritis are common in pregnancy</b>; also gastroenteritis, appendicitis","<b>Urine MC&amp;S same day</b>"],
+         ["<b>Onset after 12 weeks, or new vomiting in the second trimester</b>","NVP typically resolves by 12\u201316 weeks. <b>New vomiting after 16 weeks is not NVP until proven otherwise</b>","Exclude UTI, reflux, appendicitis, pre-eclampsia, molar pregnancy, <b>AFLP</b>"],
+         ["<b>Molar pregnancy</b>","Vomiting <b>out of proportion</b> to gestation, vaginal bleeding, <b>uterus larger than dates</b>, bilateral <b>theca-lutein cysts</b> \u2014 a mole produces very high \u03b2hCG which drives severe NVP","<b>Same-day early pregnancy unit</b>"],
+         ["<b>Psychiatric emergency</b>","<b>Suicidal ideation</b> from the distress of hyperemesis","<b>Same-day mental health assessment.</b> Hyperemesis carries higher rates of termination and maternal suicide than other pregnancy complications"]
+       ]},
+       {b:"why", html:"<b>Appendicitis in pregnancy is notoriously hard to diagnose</b> \u2014 the appendix migrates superiorly as the uterus enlarges, so the pain may be atypical and peritonism masked by the gravid uterus. <b>Pre-eclampsia and HELLP can present as nausea and vomiting</b>, particularly with right upper quadrant pain from hepatic capsule stretch; missing that after 20 weeks is a critical safety failure."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","NVP and hyperemesis have no NICE NG12 suspected-cancer criterion, and none should be invented for them. The adjacent condition that matters is <b>molar pregnancy</b> \u2014 premalignant, and the route is same-day early pregnancy unit with ultrasound and \u03b2hCG, not a two-week wait. Confirmed molar pregnancy is registered with a <b>trophoblastic screening centre</b> for hCG surveillance, because a minority progress to gestational trophoblastic neoplasia. Get the diagnosis today; the cancer surveillance is the specialist centre's job, not a 2WW form"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Score it", title:"PUQE, and the line between NVP and hyperemesis",
+     sub:"The score decides the setting of care. Guessing severity is how moderate hyperemesis gets oral tablets and three A&E attendances.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>PUQE scoring</b>","The validated <b>Pregnancy-Unique Quantification of Emesis</b> score: three questions, each scored <b>1\u20135</b> \u2014 hours of nausea per day, episodes of vomiting per day, episodes of retching per day. <b>Total 3\u201315.</b> Document it in the notes"],
+         ["<b>Mild NVP</b>","<b>PUQE \u22646.</b> Nausea but maintaining oral intake, no ketonuria \u2192 lifestyle measures \u00b1 a first-line antiemetic in primary care"],
+         ["<b>Moderate NVP</b>","<b>PUQE 7\u201312.</b> Significant symptoms affecting function, some dehydration risk \u2192 medical treatment in primary care with close monitoring and a <b>low threshold for admission</b>"],
+         ["<b>Severe / hyperemesis</b>","PUQE \u226513, or ketonuria ++, or weight loss &gt;5%, or unable to keep oral fluids down \u2192 hospital for IV hydration, IV antiemetics and thiamine"],
+         ["<b>Hyperemesis gravidarum \u2014 diagnostic criteria</b>","Persistent nausea and vomiting causing <b>dehydration, ketonuria, electrolyte imbalance and &gt;5% weight loss</b>. Affects <b>0.3\u20131.5% of pregnancies</b>. Peaks at <b>8\u201312 weeks</b> and may persist beyond 20 weeks"],
+         ["<b>Normal NVP for comparison</b>","Affects <b>70\u201380% of pregnancies</b>. Onset <b>4\u20138 weeks</b>, peak <b>8\u201312 weeks</b>, <b>resolves by 16\u201320 weeks in 90%</b>. Some oral intake maintained, no significant weight loss, no ketonuria"],
+         ["<b>Baseline weight</b>","<b>Weigh at every appointment and document it.</b> Percentage loss from <b>pre-pregnancy weight</b> where known is what drives the admission decision"],
+         ["Twin or molar pregnancy","Higher \u03b2hCG \u2192 more severe NVP and hyperemesis. <b>Confirm by ultrasound</b>"],
+         ["Non-pregnancy causes","Suspect if onset after 10 weeks, worsening after 20 weeks, prominent diarrhoea, fever, localised abdominal pain, urinary symptoms or headache \u2014 <b>investigate those separately</b>"],
+         ["<b>Psychological impact \u2014 screen everyone</b>","PHQ-9 and GAD-7 at first presentation in all women with hyperemesis: depression and anxiety run at 30\u201350%. Do not normalise the distress"]
+       ]},
+       {b:"why", html:"PUQE is validated against 24-hour vomiting diaries and correlates with objective dehydration, and <b>RCOG Green-top 69 specifically recommends using it</b> \u2014 consistently, because it prevents both under-treatment and over-medicalisation. This matters more than it sounds: up to 80% of UK women with hyperemesis report their symptoms were initially dismissed as normal morning sickness, with real psychological harm and delay. Pregnancy Sickness Support estimates 50% of hyperemesis patients are admitted three or more times before an adequate plan is in place \u2014 early, decisive community treatment is what prevents that spiral. And note the overlap: <b>gestational thyrotoxicosis occurs in 60% of hyperemesis</b>, because \u03b2hCG cross-stimulates the TSH receptor."}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Examination and investigations \u2014 proportionate to the score",
+     blocks:[
+       {b:"table", head:["Examine","What to find","Why it changes the plan"], rows:[
+         ["<b>Vital signs</b>","Tachycardia (dehydration or infection); hypotension (severe dehydration); <b>raised BP with headache after 20 weeks \u2192 pre-eclampsia</b>; fever (infection); raised respiratory rate (ketoacidosis in severe disease)","Sets the admission decision"],
+         ["<b>Hydration</b>","Skin turgor, dry mucous membranes, sunken eyes, postural hypotension \u2014 a systolic drop &gt;20 mmHg sitting to standing","Postural hypotension is a sensitive sign of significant dehydration in pregnancy and mandates same-day referral"],
+         ["<b>Weight</b>","Weigh every presentation; calculate percentage loss from baseline","&gt;5% loss marks significant dehydration and malnutrition \u2014 it is the admission threshold"],
+         ["Abdomen","Epigastric tenderness (pancreatitis, peptic ulcer, pre-eclampsia), right upper quadrant (cholecystitis, HELLP after 20 weeks), right iliac fossa (appendicitis). <b>Uterus larger than dates \u2192 molar or multiple pregnancy</b>","Finds the mimic"],
+         ["<b>Neurological</b>","<b>Confusion, ataxia, diplopia or nystagmus</b>","<b>Emergency IV thiamine + 999</b>"],
+         ["<b>Urine dipstick \u2014 every consultation</b>","Ketones: trace = dehydration; ++ to +++ = significant metabolic derangement. Protein, leucocytes, nitrites for UTI and pyelonephritis","<b>Ketonuria +++ is a same-day admission</b>"]
+       ]},
+       {b:"table", head:["Test","When","Notes"], rows:[
+         ["<b>Urine dipstick</b>","Every consultation","Ketones for severity, protein for pre-eclampsia after 20 weeks, leucocytes and nitrites for infection"],
+         ["MSU","If leucocytes or nitrites positive","<b>UTI and pyelonephritis are common NVP mimics and worsen NVP.</b> Treat with pregnancy-safe antibiotics \u2014 <b>nitrofurantoin not in the third trimester</b>"],
+         ["<b>Bloods \u2014 moderate or severe</b>","Not needed in mild disease","<b>U&amp;E</b> (hypokalaemia, hyponatraemia \u2014 replacement needed); <b>FBC</b> (haemoconcentration); <b>LFTs \u2014 transiently raised in 50% of hyperemesis, usually benign</b>; <b>TFTs</b> \u2014 gestational thyrotoxicosis"],
+         ["<b>Thiamine</b>","Severe disease","Check it, but do not delay treatment for the result \u2014 give it empirically if ketonuria ++ or vomiting beyond 3 weeks (RCOG)"],
+         ["<b>Pelvic ultrasound</b>","All new presentations if not already done at booking","Confirms an <b>intrauterine</b> pregnancy and gestation, <b>singleton versus multiple</b>, and <b>excludes a molar pregnancy</b>"],
+         ["<b>When NOT to investigate</b>","Mild NVP, normal dipstick, normal examination, maintaining intake","<b>No blood tests. Do not over-investigate self-limiting mild NVP</b>"]
+       ]},
+       {b:"warn", html:"Hypokalaemia (K\u207a &lt;3.0 mmol/L) from recurrent vomiting causes cardiac arrhythmias \u2014 oral rehydration cannot correct it and IV replacement is mandatory. <b>Gestational thyrotoxicosis</b> (suppressed TSH, raised free T4, driven by \u03b2hCG) occurs in <b>60% of hyperemesis</b> but is transient: do not treat unless TSH stays suppressed beyond 16\u201320 weeks with clinical hyperthyroidism \u2014 treating it causes fetal hypothyroidism. And raised transaminases are usually benign here, but must be distinguished from <b>acute fatty liver of pregnancy</b>, which is life-threatening and presents later with vomiting, jaundice and coagulopathy."}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"The antiemetic ladder \u2014 pregnancy-safe, with doses",
+     sub:"RCOG Green-top 69 and NICE NG201 are explicit: antiemetics are safe and recommended. Undertreatment is the harm.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Lifestyle and ginger", when:"mild NVP only (PUQE \u22646)",
+          html:"Small, frequent, <b>carbohydrate-rich</b> meals; avoid triggers; rest; <b>ginger 250 mg QDS</b>; <b>P6 acupressure</b>; cold food (less smell). <b>If insufficient after 24\u201348 hours, move to an antiemetic.</b>"},
+         {step:"Step 2", title:"First-line antiemetic plus thiamine", when:"moderate NVP (PUQE 7\u201312)",
+          fromLabel:"lifestyle insufficient",
+          html:"<b>Prochlorperazine 5\u201310 mg TDS</b> OR <b>cyclizine 50 mg TDS</b> OR <b>promethazine 25 mg TDS or nocte</b> \u2014 all <b>RCOG category A</b> (no evidence of harm). <b>Add thiamine 25 mg TDS.</b> <b>If the oral route fails, use buccal, IM or IV.</b> <b>Review at 24\u201348 hours.</b>"},
+         {step:"Step 3", title:"Second-line antiemetic", when:"first-line inadequate",
+          fromLabel:"still vomiting",
+          html:"<b>Metoclopramide 10 mg TDS \u2014 maximum 5 days</b> (tardive dyskinesia and extrapyramidal risk; prescribe with a clear stop date) OR <b>ondansetron 4\u20138 mg BD\u2013TDS</b>, with the benefit/risk discussion below. <b>Continue thiamine.</b>"},
+         {step:"Step 4", title:"Combination and acid suppression", when:"refractory",
+          fromLabel:"single agents failing",
+          html:"<b>Two antiemetics from different classes.</b> Add acid suppression for the reflux component \u2014 <b>famotidine 20 mg BD or omeprazole 20 mg OD</b> (ranitidine was withdrawn from the UK market in 2020). <b>Prednisolone 40 mg OD reducing over 2 weeks</b> for refractory hyperemesis \u2014 <b>secondary care initiation</b>."},
+         {step:"Step 5", title:"Hospital IV management", when:"admission criteria met",
+          fromLabel:"escalate, don't persist",
+          html:"IV 0.9% sodium chloride with potassium (KCl) replacement \u2014 NOT 5% dextrose, which precipitates Wernicke's. <b>IV thiamine (Pabrinex 100 mg BD for 3 days)</b>. IV ondansetron 4\u20138 mg TDS; IV metoclopramide 10 mg TDS. Assess VTE risk and give thromboprophylaxis \u2014 dehydration plus reduced mobility in pregnancy is a thrombotic combination, and VTE prophylaxis is part of the admission bundle alongside fluids, antiemetics and thiamine. <b>TPN (total parenteral nutrition)</b> for hyperemesis failing all measures \u2014 a specialist decision."}
+       ]},
+       {b:"warn", html:"NEVER give IV 5% dextrose without thiamine \u2014 it precipitates Wernicke's encephalopathy. Thiamine goes in BEFORE any glucose-containing fluid in anyone who has been vomiting persistently. And thiamine 25\u201350 mg TDS orally is mandatory in every woman with hyperemesis requiring an antiemetic, continued throughout the treatment period \u2014 not a nicety."},
+       {b:"why", html:"The safety evidence is robust: prochlorperazine, cyclizine and promethazine have decades of use data and are RCOG category A. The ondansetron question is narrower than its reputation \u2014 a 2014 Danish cohort suggested a small increase in oral clefts, an absolute risk increase of about 0.1%; <b>RCOG recommends discussing it but does not prohibit use</b>, and the concern falls away <b>after 10 weeks, when palate closure is complete</b>. Set against that, undertreated hyperemesis causes nutritional deficiency, <b>IUGR</b>, preterm birth, maternal psychological harm and fetal thiamine deficiency. <b>The risk of not treating is the larger risk.</b>"}
+     ]},
+
+    {id:"lifestyle", nav:"Support", title:"Non-drug measures, work, and the psychological load",
+     sub:"Lifestyle alone rarely controls moderate or severe disease \u2014 but the practical and emotional support is as much treatment as the tablets.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"\ud83c\udf5e Eating pattern", html:"<b>Small, frequent, carbohydrate-rich</b> meals \u2014 plain crackers, toast, rice, bland foods. <b>Eat before getting out of bed.</b> Avoid large meals (gastric distension worsens nausea). <b>Separate fluids from solids by 30 minutes.</b>"},
+         {tone:"green", h:"\ud83e\uddca Cold food", html:"Cold or room-temperature food produces <b>less smell and steam</b> than hot food, which substantially reduces the trigger for many women \u2014 ice lollies, cold water, frozen ginger chews."},
+         {tone:"plain", h:"\ud83d\udeab Trigger avoidance", html:"Identify individual triggers \u2014 strong smells (perfume, cooking, petrol), heat, stuffy rooms, fatigue. Fan in the kitchen, delegate cooking, open windows. <b>Rest is treatment, not laziness</b> \u2014 sleep deprivation amplifies nausea through <b>cortisol</b> elevation."},
+         {tone:"blue", h:"\ud83e\uded8 Ginger", html:"The <b>best-evidenced non-drug treatment</b>: tea, biscuits, or <b>capsules 250 mg QDS</b>. <b>Reduces nausea scores by around 30% in mild NVP</b> \u2014 and is <b>not effective for severe hyperemesis</b>, so do not offer it as the answer there. <b>P6 (Neiguan) acupressure</b> wristbands are a reasonable low-risk adjunct alongside it."},
+         {tone:"blue", h:"\ud83d\udca7 Hydration strategy", html:"Sip cold water, ice chips, clear broth or diluted juice in small amounts frequently; sports drinks replace electrolytes. <b>If oral hydration fails, IV fluids \u2014 do not delay seeking help.</b>"},
+         {tone:"amber", h:"\ud83d\udcdd Fit notes and the workplace", html:"Proactively issue fit notes for women unable to work \u2014 hyperemesis is a legitimate medical condition. ACAS guidance supports adjustments: flexible hours, working from home, toilet access. Up to 30% of women with hyperemesis lose their jobs through prolonged absence, so the fit note is a clinical intervention."},
+         {tone:"green", h:"\ud83e\udde0 Psychological support", html:"<b>Pregnancy Sickness Support helpline 0800 0 334 899</b> \u2014 staffed by hyperemesis survivors, and shown to reduce admissions by giving real-time guidance. Online communities; <b>CBT for health anxiety and anticipatory nausea</b>; screen with PHQ-9 and treat depression if found. <b>Partners need educating too.</b>"},
+         {tone:"cream", h:"\ud83d\udc8a Vitamins", html:"<b>Continue folic acid \u2014 do not stop it</b>; the <b>neural tube defect (NTD)</b> risk from stopping vastly outweighs its modest contribution to nausea. Switch to <b>evening-only</b> dosing if tablets worsen symptoms, and <b>trial an iron-free preparation</b> if pregnancy vitamins with iron are the problem."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Review, monitoring and safety-netting",
+     sub:"NVP is dynamic and women deteriorate quickly. The 24\u201348 hour review is the safety mechanism, not a courtesy.",
+     blocks:[
+       {b:"table", head:["When","What","Action"], rows:[
+         ["<b>24\u201348 hours</b>","Response to the first antiemetic","If no improvement, step up the ladder \u2014 do not continue a failing treatment. Reassess hydration; weigh if possible"],
+         ["1 week","Ongoing moderate or severe symptoms","Recheck dipstick, weight and symptoms. <b>Worsening ketonuria \u2192 hospital.</b> Improving \u2192 continue and review at 2 weeks"],
+         ["<b>Weekly</b>","All hyperemesis managed in primary care","<b>Weight, PUQE score and urine dipstick at every visit.</b> Document clearly"],
+         ["Resolution","Most resolve by <b>16\u201320 weeks</b>","Review medication for cessation. <b>Some hyperemesis persists throughout pregnancy</b> \u2014 ongoing joint care. <b>Post-natal debriefing matters for mental health</b>"],
+         ["<b>After 16 weeks</b>","New or worsening vomiting","Re-investigate \u2014 exclude UTI, reflux, appendicitis. After 20 weeks exclude pre-eclampsia (BP, urine protein) and AFLP (LFTs, coagulation)"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 999", html:"\u201cIf you become confused, get double vision or feel unsteady on your feet \u2014 that is an emergency, call <b>999</b>.\u201d Also collapse, severe hypotension, or vomiting blood."},
+         {tone:"red", h:"\ud83d\udcde Same-day hospital", html:"\u201cIf you can't keep <b>any</b> fluids down for a day, your urine goes dark or tests strongly for ketones, you feel faint on standing, or you get tummy pain or a fever \u2014 contact us or maternity the same day.\u201d"},
+         {tone:"amber", h:"\u2696\ufe0f Weight", html:"\u201cKeep an eye on your weight \u2014 significant loss means you need reviewing, not soldiering on.\u201d"},
+         {tone:"amber", h:"\ud83e\udde0 Mental health", html:"\u201cIf this starts to feel unbearable, or you have thoughts of harming yourself, tell us the same day \u2014 that is part of the illness and we treat it.\u201d"},
+         {tone:"blue", h:"\ud83d\udcc5 After 16 weeks", html:"\u201cSickness that starts or worsens after 16 weeks isn't ordinary pregnancy sickness \u2014 come back and we will look for another cause.\u201d"},
+         {tone:"green", h:"\ud83e\udec2 Prognosis", html:"\u201cIt usually eases by around 16\u201320 weeks, and there are medicines that are genuinely safe to use meanwhile.\u201d"}
+       ]},
+       {b:"say", html:"Sickness in pregnancy is common, but what you have is more than that, and it has a name and a treatment. I am going to score it so we can both see whether we are winning, start a medicine with a long safety record, and add thiamine because prolonged vomiting can strip out that vitamin. I want to see you in a day or two \u2014 if the medicine isn't working we step up rather than keep going. The line I want you to hold is fluids: if you cannot keep anything down, you need a drip, and there is a day unit that can do it in an afternoon."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Not controlled? Step up or admit", sub:"Escalate the antiemetic ladder; admit if dehydrated or not coping.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"1 \u00b7 Dehydration", html:"Ketonuria, nothing kept down, weight loss \u2192 IV fluids as a <b>day case or an admission</b>."},
+         {tone:"amber", h:"2 \u00b7 Adequate antiemetic", html:"Full dose \u2014 and <b>a non-oral route if she is vomiting the tablets</b>. Two agents from <b>different classes</b> plus acid suppression before declaring failure."},
+         {tone:"amber", h:"3 \u00b7 Other cause", html:"UTI, thyroid, molar or multiple pregnancy <b>on ultrasound</b> \u2014 and pre-eclampsia or AFLP after <b>20 weeks</b>."},
+         {tone:"blue", h:"4 \u00b7 Thiamine / VTE", html:"Thiamine given, VTE risk assessed \u2014 <b>both are mandatory in hyperemesis</b>."},
+         {tone:"red", h:"5 \u00b7 Escalate", html:"Hyperemesis or not coping \u2192 maternity / early-pregnancy unit for <b>obstetric input</b>. Do not let her cycle through repeat GP appointments."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral and admission \u2014 the thresholds are explicit",
+     sub:"When the threshold is met, do not delay. The day-case unit is the route that prevents the emergency admission.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / emergency", html:"Neurological signs \u2014 confusion, diplopia, ataxia \u2192 IV thiamine plus 999 immediately (Wernicke's). Haematemesis with haemodynamic instability. Severe sepsis (pyelonephritis). Suspected molar pregnancy with haemodynamic compromise."},
+         {tone:"red", h:"Same-day hospital", html:"Ketonuria +++ \u00b7 unable to keep any fluids or medication down for 24 hours \u00b7 weight loss &gt;5% \u00b7 postural hypotension \u00b7 PUQE \u226513 \u00b7 K\u207a &lt;3.0 or Na\u207a &lt;130 \u00b7 complicating factors (UTI, mental health crisis, suicidal ideation)."},
+         {tone:"amber", h:"Day-case / ambulatory IV unit", html:"Moderate hyperemesis (PUQE 7\u201312) with ketonuria ++ but maintaining minimal fluid \u2192 IV fluids, IV antiemetics and thiamine as a day case. Ambulatory care of this kind prevents admission where the service exists locally."},
+         {tone:"blue", h:"Obstetric / midwifery team", html:"All hyperemesis should be under joint care with the obstetric team or EPAU \u2014 alert the booking midwife. It may require consultant-led care."},
+         {tone:"plain", h:"Early pregnancy unit", html:"Suspected <b>molar or multiple pregnancy</b> for ultrasound and \u03b2hCG; ongoing management where an EPU service leads it."},
+         {tone:"purple", h:"NG12 \u2014 stated honestly", html:"<b>There is no 2WW cancer route for NVP or hyperemesis.</b> The one premalignant adjacency is <b>molar pregnancy</b>, and its route is same-day EPU with ultrasound, then registration with a trophoblastic screening centre for hCG surveillance \u2014 because a minority progress to gestational trophoblastic neoplasia. <b>Same-day diagnosis, specialist surveillance \u2014 not an NG12 form.</b>"},
+         {tone:"cream", h:"Keep in primary care", html:"Mild to moderate NVP (PUQE \u226412), maintaining some oral intake, no red flags, no ketonuria ++ \u2192 antiemetics, thiamine, hydration support and close follow-up."}
+       ]},
+       {b:"why", html:"Day-case IV rehydration in early pregnancy units has transformed hyperemesis care \u2014 replacing 3\u20135 day inpatient admissions with 4\u20136 hour day-case visits, a model RCOG Green-top 69 endorses. Referring proactively breaks the familiar sequence of GP appointment \u2192 inadequate oral treatment \u2192 deterioration \u2192 A&amp;E \u2192 emergency admission \u2192 prolonged stay. The mental health dimension is routinely underestimated: a 2017 study found 39% of women with severe hyperemesis reported suicidal ideation and 30% considered termination solely because of the symptoms \u2014 so a documented crisis plan belongs in the record."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 27-year-old at 9 weeks in her first pregnancy, vomiting six or seven times a day for two weeks. She has lost 4 kg, dipstick shows ketones ++, and she has already been told twice that morning sickness is normal. She is tearful and says she cannot face going on."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Scores it (PUQE) rather than eyeballing severity</b>; weighs her and dips the urine; <b>recognises this is hyperemesis, not NVP</b>; excludes the mimics and asks about neurological symptoms; <b>prescribes a first-line antiemetic AND thiamine</b>; refers to the <b>day-case IV unit</b> rather than issuing another prescription and hoping; <b>asks directly about mood and suicidal ideation</b> and signposts Pregnancy Sickness Support; issues a fit note unprompted; and \u2014 the step candidates miss \u2014 <b>validates that she was previously dismissed instead of repeating it</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>RCOG Green-top Guideline No. 69 \u2014 The Management of Nausea and Vomiting of Pregnancy and Hyperemesis Gravidarum (2024)<br><a href="https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/" rel="noopener">rcog.org.uk \u2014 green-top guidelines</a><span class="rd"> \u2014 PUQE scoring, the antiemetic ladder and category A agents, mandatory thiamine, admission thresholds, day-case IV rehydration, and the ondansetron benefit/risk discussion</span></li>'+
+         '<li><b>NICE NG201 \u2014 Antenatal care</b><br><a href="https://www.nice.org.uk/guidance/ng201" rel="noopener">nice.org.uk/guidance/ng201</a><span class="rd"> \u2014 antenatal assessment, and treating nausea and vomiting rather than withholding treatment</span></li>'+
+         '<li><b>NICE NG201 \u2014 antenatal care</b><br><a href="https://www.nice.org.uk/guidance/ng201" rel="noopener">nice.org.uk/guidance/ng201</a><span class="rd"> \u2014 primary-care assessment, conservative measures, and the referral and admission criteria</span></li>'+
+         '<li><b>Pasternak et al., Danish cohort (2014)</b><span class="rd"> \u2014 ondansetron and oral clefts: a small signal, absolute risk increase about 0.1%; the concern applies to the first trimester, before palate closure completes at around 10 weeks</span></li>'+
+         '<li><b>Pregnancy Sickness Support</b><br><a href="https://www.pregnancysicknesssupport.org.uk" rel="noopener">pregnancysicknesssupport.org.uk</a> \u00b7 helpline <b>0800 0 334 899</b><span class="rd"> \u2014 peer support shown to reduce admissions; the source of the repeat-admission and symptom-dismissal figures quoted on this page</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 no criterion applies to NVP or hyperemesis; molar pregnancy goes same-day to the EPU and then to a trophoblastic screening centre for hCG surveillance, which is why no 2WW route is stated here</span></li>'+
+         '<li><b>BNF / BNF for Children</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: prochlorperazine, cyclizine, promethazine, metoclopramide, ondansetron, thiamine, Pabrinex, famotidine, omeprazole, prednisolone</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Nausea and vomiting in pregnancy and hyperemesis gravidarum \u2014 RCOG Green-top 69 (2024), NICE NG201 and NICE. Diagnosis and management are merged on this page; there is no separate NVP pathway to cross-check. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

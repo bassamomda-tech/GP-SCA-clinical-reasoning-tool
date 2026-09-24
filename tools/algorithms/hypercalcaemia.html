@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hypercalcaemia Algorithm · Reasoning GP</title>
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/hypercalcaemia.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f5f4f0;
+  --bg-soft:   #eceae4;
+  --surface:   #ffffff;
+  --border:    #e2dfd8;
+  --text:      #1a1a1a;
+  --muted:     #6b6760;
+  --accent:    #1a3a2a;
+  --accent2:   #2d6a4f;
+
+  /* Step type colours */
+  --safety:    #c0392b;
+  --diagnose:  #1a5276;
+  --refer:     #6c3483;
+  --treat:     #1a6b3c;
+  --lifestyle: #7d6608;
+
+  /* Pill colours */
+  --pill-red:    #c0392b;
+  --pill-purple: #6c3483;
+  --pill-blue:   #1a5276;
+  --pill-teal:   #1a6b3c;
+  --pill-amber:  #c17f24;
+  --pill-green:  #1e8449;
+  --pill-grey:   #717d7e;
+
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  --shadow-lg: 0 6px 32px rgba(0,0,0,0.11);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ── Page header ─────────────────────────────────────────── */
+.page-header {
+  background: var(--accent);
+  color: #fff;
+  padding: 28px 24px 22px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 18px,
+    rgba(255,255,255,0.025) 18px,
+    rgba(255,255,255,0.025) 19px
+  );
+}
+.page-header h1 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+.page-header p {
+  font-size: 0.88rem;
+  opacity: 0.75;
+  margin-top: 4px;
+  position: relative;
+}
+
+/* ── Banner ──────────────────────────────────────────────── */
+.stem-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  font-size: 0.9rem;
+}
+.sb-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.stem-banner b { display: block; font-weight: 600; font-size: 1rem; }
+.stem-banner small { color: var(--muted); font-size: 0.82rem; }
+
+/* ── Progress bar ────────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--muted);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+.pcount { font-weight: 600; color: var(--text); white-space: nowrap; }
+.pbar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.pbar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent2), #52b788);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+.reset {
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.reset:hover { background: var(--border); color: var(--text); }
+
+/* ── Algorithm flow ──────────────────────────────────────── */
+.alg-flow {
+  max-width: 780px;
+  margin: 24px auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── Connector line ──────────────────────────────────────── */
+.connector {
+  width: 2px;
+  min-height: 28px;
+  background: linear-gradient(180deg, var(--border), var(--border));
+  margin: 0 auto;
+  position: relative;
+}
+.connector::after {
+  content: '▾';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* ── Node card ───────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.node:hover { box-shadow: var(--shadow-lg); }
+
+/* Colour accent bar on left */
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* Header row */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(0,0,0,0.015);
+}
+.node-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #fff;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--diagnose); }
+.node[data-type="REFER"]     .node-num { background: var(--refer); }
+.node[data-type="TREAT"]     .node-num { background: var(--treat); }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--lifestyle); }
+
+.node-head-text { flex: 1; }
+.node-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+.node[data-type="SAFETY"]    .node-tag { color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { color: var(--diagnose); }
+.node[data-type="REFER"]     .node-tag { color: var(--refer); }
+.node[data-type="TREAT"]     .node-tag { color: var(--treat); }
+.node[data-type="LIFESTYLE"] .node-tag { color: var(--lifestyle); }
+
+.node-head h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+.node-tick {
+  flex-shrink: 0;
+  padding: 14px 16px 10px;
+  display: flex;
+  align-items: center;
+}
+.node-tick label {
+  display: flex; align-items: center; gap: 6px;
+  cursor: pointer; user-select: none;
+}
+.node-tick input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent2); }
+.tlbl { font-size: 0.78rem; color: var(--muted); }
+
+.node.done { opacity: 0.72; }
+.node.done .node-head { background: rgba(46,125,50,0.05); }
+
+/* Body */
+.node-body {
+  padding: 16px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+.node-body > p, .node-body > .intro { margin-bottom: 12px; color: var(--muted); font-size: 0.85rem; }
+
+/* ── KV grid ──────────────────────────────────────────────── */
+.kv, .alg-flow .kv, .node .kv {
+  display: grid;
+  grid-template-columns: minmax(110px, 22%) minmax(0, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+  margin-top: 10px;
+  font-size: 0.84rem;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: rgba(0,0,0,0.018); }
+.kv > div {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.55;
+}
+.kv > div:last-child, .kv > div:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+.kv > div:nth-child(odd), .alg-flow .kv > div:nth-child(odd), .node .kv > div:nth-child(odd) {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-right: 1px solid var(--border);
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+@media(max-width:600px){.alg-flow .kv, .node .kv{grid-template-columns:1fr}.alg-flow .kv>div:nth-child(odd), .node .kv>div:nth-child(odd){border-right:none;padding-bottom:2px}.alg-flow .kv>div:nth-child(even), .node .kv>div:nth-child(even){padding-top:4px}}
+.alg-flow .kv > div, .node .kv > div { min-width: 0; overflow-wrap: break-word; }
+@media(max-width:600px){.alg-flow .pill, .node .pill{white-space:normal;max-width:100%}}
+
+/* ── Red flag grid ───────────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.rftile {
+  background: #fff5f5;
+  border: 1px solid #f5c6cb;
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  border-left: 3px solid var(--safety);
+}
+.rftile b, .node .rftile b, .alg-flow .rftile b { display: inline; color: inherit; font-size: inherit; margin-bottom: 0; }
+.rftile > b:first-child, .node .rftile > b:first-child, .alg-flow .rftile > b:first-child { display: block; color: var(--safety); margin-bottom: 2px; font-size: 0.83rem; }
+
+/* ── Branch ──────────────────────────────────────────────── */
+.branch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.b-card {
+  flex: 1 1 200px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+}
+.b-cond {
+  background: #f0f4ff;
+  padding: 7px 11px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--diagnose);
+  border-bottom: 1px solid var(--border);
+}
+.b-drug {
+  padding: 8px 11px 4px;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+.b-note {
+  padding: 0 11px 9px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ── Ladder ──────────────────────────────────────────────── */
+.ladder {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+}
+.rung {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.84rem;
+}
+.rung:last-child { border-bottom: none; }
+.rn {
+  background: var(--treat);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 9px 11px;
+  display: flex;
+  align-items: center;
+  min-width: 72px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.rt {
+  padding: 9px 13px;
+  line-height: 1.5;
+  background: rgba(26,107,60,0.03);
+}
+
+/* ── Lifestyle grid ──────────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.lstile {
+  background: #f0faf3;
+  border: 1px solid #b7e4c7;
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  border-left: 3px solid var(--lifestyle);
+}
+.lstile b, .node .lstile b, .alg-flow .lstile b { display: inline; color: inherit; font-size: inherit; margin-bottom: 0; }
+.lstile > b:first-child, .node .lstile > b:first-child, .alg-flow .lstile > b:first-child { display: block; color: var(--lifestyle); margin-bottom: 2px; font-size: 0.83rem; }
+
+/* ── Pills ───────────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+  color: #fff;
+  white-space: nowrap;
+}
+.pill-red    { background: var(--pill-red); }
+.pill-purple { background: var(--pill-purple); }
+.pill-blue   { background: var(--pill-blue); }
+.pill-teal   { background: var(--pill-teal); }
+.pill-amber  { background: var(--pill-amber); }
+.pill-green  { background: var(--pill-green); }
+.pill-grey   { background: var(--pill-grey); }
+
+/* ── Why? drawer ─────────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border);
+  background: rgba(0,0,0,0.012);
+}
+.why-btn {
+  width: 100%;
+  text-align: left;
+  padding: 9px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.15s;
+}
+.why-btn:hover { color: var(--text); }
+.caret { transition: transform 0.2s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer {
+  display: none;
+  padding: 0 16px 14px;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.why-drawer.open { display: block; }
+.why-drawer b { color: var(--text); }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.alg-foot {
+  max-width: 780px;
+  margin: 32px auto 0;
+  padding: 16px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  line-height: 1.6;
+}
+
+/* ── Section label ───────────────────────────────────────── */
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 18px 0 6px 4px;
+}
+
+/* ── Utilities ───────────────────────────────────────────── */
+.mt8 { margin-top: 8px; }
+.mt12 { margin-top: 12px; }
+b { font-weight: 600; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .rfgrid { grid-template-columns: 1fr; }
+  .lsgrid { grid-template-columns: 1fr; }
+  .branch { flex-direction: column; }
+  .kv { grid-template-columns: 1fr; }
+  .kv > div:nth-child(odd) { border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css?v=3">
+<link rel="stylesheet" href="../../assets/alg-summary.css?v=6">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body>
+
+<div class="page-header">
+  <h1>🩺 Reasoning GP — Clinical Algorithms</h1>
+  <p>RCGP Examiner-Quality · UK GP Trainees · SCA Exam Preparation</p>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🧪</div>
+  <div>
+    <b>Hypercalcaemia — Investigation &amp; Management</b>
+    <small>Corrected calcium &gt;2.6 mmol/L · Primary care to acute pathway · Primary hyperparathyroidism · Malignancy</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Summary</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SUMMARY VIEW — 2-page quick reference, inline responsive HTML (spec: _summary-spec.md). Download PDF prints summaries/hypercalcaemia.html (the A4 artefact). -->
+<div id="viewSummary">
+  <div class="sum-bar"><p><b>2-page quick reference.</b> Hypercalcaemia in adults — triage and diagnostic approach. Ongoing management stays in the Steps tab.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="summaries/hypercalcaemia.html">⬇ Download PDF</button><a class="sum-open" href="summaries/hypercalcaemia.html" target="_blank" rel="noopener">Print view ↗</a></div></div>
+  <div class="sum">
+<!-- ===================== PAGE 1 ===================== -->
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td>
+      <div class="brand"><b>REASONING GP</b> · Clinical algorithm · Quick reference</div>
+      <h1>Hypercalcaemia in adults — triage and diagnostic approach</h1>
+      <div class="sub">Two causes account for about 90% of cases — primary hyperparathyroidism and malignancy — and the PTH separates them in one test. Correct for albumin, then act on the adjusted value.</div>
+    </td>
+    <td class="pg">Page 1 / 2<br><span class="tags"><span>Adults</span><span>Lab result</span><span>Adjusted Ca²⁺ above 2.60</span><span>v1.0 · Sep 2026</span></span></td>
+  </tr></table></div>
+  <div class="rule"><b>Core rule.</b> Use the <b>laboratory's albumin-adjusted calcium</b>, read with symptoms, albumin, renal function and previous values — a low albumin hides significant hypercalcaemia and a high one invents it. <b>3.5 mmol/L or above is an emergency at any level of wellness</b>; <b>3.0–3.5 needs same-day assessment</b>, as does <b>any symptomatic hypercalcaemia below 3.0</b> — the calcium and the dehydration drive each other upward. The next test is an <b>intact PTH paired with the adjusted calcium</b>, routine sample, local protocol. <b>Raised or non-suppressed: PTH-mediated — needs specialist interpretation, not automatically primary hyperparathyroidism. Suppressed: urgent parallel evaluation, not an automatic cancer referral.</b></div>
+  <!-- 0 Immediate -->
+  <div class="sec red">
+    <div class="sh"><div class="n">0</div><div class="t">On seeing the result: is this an emergency now? <small>Arrange emergency admission — 999 or immediate discussion with the acute team</small></div></div>
+    <div class="note"><b>Adjusted Ca²⁺ 3.5 mmol/L or above</b>, however well the patient seems — urgent correction is needed because of the risk of dysrhythmia and coma (Society for Endocrinology) · <b>any calcium level</b> with confusion, coma, seizure, serious arrhythmia, severe dehydration, AKI, persistent vomiting or <b>inability to maintain intake</b> · <b>rapid rise, particularly with known malignancy</b> · <b>digoxin</b> with arrhythmia or toxicity concern. <b>Primary care arranges urgent transfer and hands over</b>: adjusted calcium with albumin, previous values and dates, U&amp;E, drug list, observations, conscious level, fluid status. Hospital treatment usually begins with monitored IV isotonic saline; bisphosphonate, calcitonin, denosumab, glucocorticoids and dialysis are specialist decisions.</div>
+  </div>
+  <!-- 1 Define -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">1</div><div class="t">Adjust, grade, then send one test <small>The adjusted value decides urgency; the PTH decides the cause</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Adjust first</h4>Use the <b>laboratory-reported albumin-adjusted calcium</b> — a single universal correction formula is not interchangeable with the local method. A low albumin (malignancy, liver disease, malnutrition, inflammation) makes the total look normal while the adjusted value is raised. <b>Consider ionised calcium where adjustment is unreliable</b> — critical illness, major pH disturbance, severe hypoalbuminaemia; not recommended routinely in hyperparathyroidism assessment (NG132). Interpret with symptoms, albumin, renal function and previous values.</div>
+      <div class="col blue"><h4>Grade by adjusted value</h4><b>3.5 or above:</b> emergency assessment regardless of apparent wellness. <b>3.0–3.5:</b> may be tolerated if the rise has been gradual, but treatment is often required — <b>same-day acute assessment</b>, emergency transfer if confusion, vomiting or dehydration, AKI, arrhythmia, reduced GCS or unable to maintain intake. <b>Below 3.0:</b> often asymptomatic, usually no urgent correction — but <b>symptomatic hypercalcaemia below 3.0 still needs same-day assessment</b>. Symptoms and rate of rise override the number.</div>
+      <div class="col blue"><h4>Send the PTH — it sorts causes into two groups</h4>Measure <b>intact PTH and adjusted calcium concurrently, local laboratory protocol, routine random sample — fasting not required</b>. <b>Repeat the adjusted calcium at least once if 2.6 or above; measure PTH once calcium is raised on two occasions</b> unless urgency requires parallel testing (NG132). <b>Raised or non-suppressed:</b> PTH-mediated — primary, tertiary, FHH, lithium-associated or assay issue; <b>needs specialist interpretation, not automatically primary hyperparathyroidism</b>. <b>Suppressed:</b> non-PTH-mediated — urgent evaluation, causes investigated in parallel.</div>
+      <div class="col blue"><h4>Symptoms to ask about</h4>"Stones, bones, groans and psychic moans": renal colic, bone pain, constipation, abdominal pain, low mood, poor concentration. Also <b>polyuria and thirst</b> (a concentrating defect, hence the dehydration), fatigue, weakness, vomiting, weight loss.</div>
+    </div>
+  </div>
+  <!-- 2 Red flags -->
+  <div class="sec red">
+    <div class="sh"><div class="n">2</div><div class="t">Red-flag screen: trigger → concern → destination → what to do before handover <small>One row is enough; do not add up reassuring features</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:27%"><col style="width:19%"><col style="width:54%"></colgroup>
+      <tr><th>Trigger / red flag</th><th>Leading concern · destination</th><th>Do now · do not delay</th></tr>
+      <tr class="r"><td><b>Adjusted Ca²⁺ 3.5 mmol/L or above</b>, or <b>any level</b> with confusion, coma, seizure, serious arrhythmia, severe dehydration, AKI, persistent vomiting or inability to maintain intake · <b>cardiac or drug risk</b>: bradycardia, shortened QT, arrhythmia, or on <b>digoxin</b> · <b>AKI</b>: creatinine rising, eGFR falling, oliguria.</td>
+<td>Hypercalcaemia needing urgent correction · arrhythmia or digoxin toxicity · hypercalcaemic AKI<br><span class="pill p999">Emergency assessment now; ECG</span></td>
+<td><b>Self-amplifying</b>: hypercalcaemia causes polyuria, dehydration reduces calcium excretion, the level climbs further — the patient deteriorates while waiting, and dehydration and AKI worsen each other. <b>Arrange urgent transfer and hand over</b>; treatment, including <b>monitored</b> IV volume replacement, is a hospital decision — <b>not unmonitored fluids in the community</b>. <b>Hypercalcaemia potentiates digoxin</b> and can precipitate toxicity at a stable dose: ECG for symptomatic, moderate/severe or rapidly rising hypercalcaemia, looking for <b>QT shortening, bradyarrhythmia or other conduction abnormality</b> — it supports severity but does not make the diagnosis, and <b>no fixed QTc cut-off applies</b>. Review supplements and thiazides; <b>never stop lithium unilaterally</b>. Hold ACE inhibitors, ARBs, NSAIDs, diuretics and metformin as appropriate and record what was held (NG148). Send the adjusted calcium with albumin, U&amp;E and previous values.</td></tr>
+      <tr class="a"><td><b>Adjusted Ca²⁺ 3.0–3.5 mmol/L</b> in a patient who is alert, hydrated and without AKI, or <b>symptomatic hypercalcaemia below 3.0</b>.</td>
+        <td>Hypercalcaemia needing assessment today<br><span class="pill psd">Same-day acute assessment</span></td>
+        <td>May be tolerated if the rise has been gradual, but treatment is often required depending on symptoms and context. Assess hydration, GCS and orientation <b>face to face</b> — not on the telephone. Send <b>paired PTH and adjusted calcium</b>, U&amp;E, phosphate, magnesium, ALP, 25-hydroxyvitamin D, FBC, ESR or CRP, LFTs, TSH. Review supplements and thiazides; <b>lithium only with mental-health input</b>. Repeat with a named reviewer.</td></tr>
+      <tr class="a"><td><b>Known or suspected malignancy</b> with a raised calcium, or a rapid rise with a <b>suppressed PTH</b> · <b>suppressed PTH with no obvious cause</b>, or hypercalcaemia with high-dose vitamin D, calcium carbonate, lithium, a thiazide, teriparatide, excess vitamin A or antacid/milk excess · <b>granulomatous and endocrine features</b>: bilateral hilar changes, erythema nodosum, uveitis; tremor, weight loss, heat intolerance; recent immobility; postural hypotension with fatigue.</td>
+<td>Malignant hypercalcaemia · bone metastases · PTHrP-secreting tumour · drug or supplement cause · sarcoidosis · TB · thyrotoxicosis · immobilisation · adrenal insufficiency<br><span class="pill psd">Same-day oncology or acute assessment; otherwise review the drug and investigate the cause <b>in parallel</b></span></td>
+<td>Malignant hypercalcaemia rises quickly and carries a poor prognosis untreated — an oncological emergency, not a finding to monitor; contact the oncology team directly, and on a palliative pathway the decision belongs with that team and the patient's wishes. Otherwise ask directly about <b>over-the-counter supplements and high-dose vitamin D</b> — not on the repeat prescription, and often not volunteered — review and stop where appropriate, then recheck; <b>never stop lithium unilaterally</b>. <b>Persistent hypercalcaemia may be unmasked primary hyperparathyroidism</b>; calcium or vitamin D for osteoporosis is reviewed, not automatically stopped. Send TSH and a chest X-ray; where granulomatous disease is suspected arrange <b>respiratory assessment, imaging and specialist-directed testing</b>. <b>ACE is not a routine diagnostic test</b> — neither sensitive nor specific, and it risks false reassurance; <b>1,25-dihydroxyvitamin D is selective, after specialist discussion; 25-hydroxyvitamin D is the initial test</b>. All share the suppressed-PTH limb — investigate in parallel, not sequentially, and <b>use NG12 only when its own criteria are met</b>.</td></tr>
+      <tr class="p"><td><b>Hypercalcaemia with a myeloma or cancer feature</b>: unexplained bone pain (especially back pain), fractures on minimal trauma, anaemia, weight loss, fatigue, unexplained renal impairment, a raised ESR or plasma viscosity, or hypercalcaemia at 60 or over with no parathyroid explanation.</td>
+        <td>Myeloma · metastatic bone disease · other malignancy<br><span class="pill p2ww">Very urgent FBC, calcium, plasma viscosity/ESR and protein electrophoresis with Bence Jones protein — within 48 hours; urgent suspected-cancer referral if positive · NICE NG12</span></td>
+        <td><b>NG12: in anyone 60 or over with hypercalcaemia or leucopenia and a presentation consistent with possible myeloma, arrange a very urgent FBC, calcium, plasma viscosity or ESR and serum protein electrophoresis with urinary Bence Jones protein — within 48 hours</b>, and refer on the urgent suspected-cancer route if the results suggest myeloma. Normal results with persisting symptoms still need review and a decision on referral.</td></tr>
+    </table>
+    <div class="note amber"><b>Safety rule.</b> Use the laboratory's <b>albumin-adjusted</b> value, interpreted with symptoms, albumin, renal function and previous results. Wellness is not reassurance at 3.5 or above. <b>A loop diuretic is not calcium-lowering treatment</b> — it worsens the dehydration driving the level, is rarely used, and is reserved for fluid overload during monitored treatment. <b>Do not give IV fluids in the community</b> unless this is a trained ambulance or acute setting with monitoring and a local protocol. A suppressed PTH is not benign — but it means urgent <b>parallel</b> evaluation, <b>not an automatic cancer-pathway referral</b>.</div>
+  </div>
+  <div class="foot">Colour is semantic: red = emergency now · amber = same-day assessment · blue = define/assess · green = primary-care management · purple = uncertain / specialist route (including 2WW).</div>
+</div>
+<!-- ===================== PAGE 2 ===================== -->
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td><div class="brand"><b>REASONING GP</b> · Hypercalcaemia in adults — triage and diagnostic approach</div></td>
+    <td class="pg">Page 2 / 2</td>
+  </tr></table></div>
+  <!-- 3 Examine -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">3</div><div class="t">Assessment and investigation <small>Hydration and cognition cannot be assessed remotely</small></div></div>
+    <div class="note grey"><b>Assess:</b> GCS and orientation; hydration — <b>lying and standing BP</b>, pulse, mucous membranes, skin turgor, urine output; examine for a breast lump, chest signs, nodes, abdominal mass, <b>bone tenderness</b>, goitre. <b>The bloods:</b> <b>intact PTH with a paired adjusted calcium</b>, local protocol, random sample — <b>fasting not required</b> · albumin · U&amp;E · phosphate, magnesium · ALP · <b>25-hydroxyvitamin D</b> · FBC · ESR or plasma viscosity · LFTs · TSH · in the 60-and-overs, <b>electrophoresis with Bence Jones protein</b> (NG12). For FHH, NICE accepts <b>24-hour urinary calcium, a random calcium:creatinine excretion ratio or the clearance ratio</b>. <b>Reading them together:</b> PTH is <b>appropriate or inappropriate for the calcium</b> — raised or non-suppressed with low-normal phosphate is PTH-mediated (primary, tertiary, FHH or lithium-associated; specialist interpretation); suppressed with raised ALP suggests bone metastases; suppressed with anaemia, renal impairment and a raised ESR means myeloma — electrophoresis urgently; low calcium excretion is a clue to FHH, not a diagnosis (§5). <b>Not routine primary-care tests:</b> <b>ACE</b> (neither sensitive nor specific), <b>PTHrP</b> (specialist-directed), <b>1,25-dihydroxyvitamin D</b> (selective, after specialist discussion). Do not label hyperparathyroidism without a PTH, or <b>defer the PTH for six months</b>; do not skip electrophoresis in an older patient with bone pain — that is the missed myeloma.</div>
+  </div>
+  <!-- 4 Classify -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">4</div><div class="t">Classify: three exits, not two <small>"Mildly raised calcium, repeat in 6 months" is only safe once the PTH is known</small></div></div>
+    <div class="note grey"><b>Emergency or same-day</b> — 3.5 or above; any level with confusion, coma, seizure, arrhythmia, severe dehydration, AKI, persistent vomiting or unable to maintain intake; 3.0–3.5; symptomatic below 3.0; rapid rise or digoxin concern. <i>Output:</i> destination, adjusted calcium with albumin, hydration, U&amp;E, drugs reviewed, handover. · <b>Mild, PTH-mediated, managed in primary care</b> — 2.61–2.79, asymptomatic, normal renal function, PTH raised or non-suppressed, no cancer feature. <i>Output:</i> interpretation, contributors reviewed, monitoring interval, escalation thresholds. · <b>Unclassified or PTH-suppressed</b> — no cause found, persisting after supplements stop, or unexplained bone pain: state the uncertainty, investigate <b>in parallel</b>, and use NG12 <b>only when its own criteria are met</b>.</div>
+  </div>
+  <!-- 5 Classifier -->
+  <div class="sec green">
+    <div class="sh"><div class="n">5</div><div class="t">Cause classifier: the PTH splits it in two <small>Only once the urgency is settled</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:17%"><col style="width:83%"></colgroup>
+      <tr class="g"><td><b>The PTH split</b><br>raised / non-suppressed vs suppressed</td><td><b>Primary hyperparathyroidism (PTH raised or non-suppressed)</b> — commonest community cause, usually incidental in an asymptomatic older woman: mildly raised calcium, <b>low-to-normal phosphate</b>, raised or unsuppressed PTH; but <b>tertiary, FHH and lithium-associated disease sit in the same group</b>, so specialist interpretation precedes the label, and <b>end-organ consequences</b> — renal function, stones, DXA — not the calcium alone, decide whether surgery is offered (NG132). <b>Malignancy (PTH suppressed)</b> — addressed urgently: <b>PTHrP secretion</b> (squamous lung, renal, breast, head and neck), <b>osteolytic metastases</b>, <b>myeloma</b> with anaemia, renal impairment and bone pain; typically higher, faster-rising, raised ALP. <b>Investigate in parallel with the other suppressed-PTH causes; use NG12 when its criteria are met</b> — a suppressed PTH alone is neither a cancer referral nor something to monitor.</td></tr>
+      <tr class="g"><td><b>Drugs, granulomatous and endocrine causes; then FHH, tertiary and spurious</b></td><td><b>Drugs — the commonest reversible cause:</b> high-dose vitamin D, calcium carbonate and antacids, <b>thiazides</b>, <b>lithium</b> (raises PTH — never stopped unilaterally), teriparatide, excess vitamin A. Usually missing from the drug history because the patient buys it — <b>ask directly</b>. <b>Then:</b> sarcoidosis and TB, thyrotoxicosis, adrenal insufficiency, immobilisation, milk-alkali — same suppressed-PTH limb as malignancy, investigated in parallel with it. <b>FHH:</b> lifelong mild hypercalcaemia, <b>raised or normal PTH</b>, low calcium excretion, family history, no end-organ damage — a <b>clearance ratio below 0.01 is a screening clue, not a verdict</b>: FHH and primary hyperparathyroidism <b>overlap</b>, and CKD, vitamin D deficiency, low calcium intake and thiazides confound it, so <b>never conclude "no surgery" from a single low ratio</b>; endocrine review, genetic confirmation where appropriate. <b>Tertiary:</b> long-standing CKD, raised PTH with high phosphate. <b>Spurious:</b> dehydration, high albumin or assay issue — hence the repeat adjusted value.</td></tr>
+    </table>
+  </div>
+  <!-- 6 Routine referral -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">6</div><div class="t">Refer routinely from this consultation <small>Not same-day — the cases that leave by letter</small></div></div>
+    <div class="note grey"><b>Confirmed primary hyperparathyroidism</b> → a <b>surgeon with parathyroid expertise</b> where there are <b>symptoms, renal stones, fragility fracture or osteoporosis, or an adjusted calcium of 2.85 mmol/L or above</b> (NG132) — and <b>consider referral even when none is present</b>; <b>age under 50 is specialist / shared-decision criteria, not a NICE primary indication</b>. <b>Otherwise:</b> discuss and monitor, cinacalcet endocrinology-initiated where surgery is unsuitable · <b>FHH</b> → endocrinology, preventing an unnecessary operation · <b>granulomatous disease</b> → respiratory · <b>tertiary</b> → renal · <b>lithium-associated</b> → endocrinology with mental health · <b>osteoporosis</b> → treat alongside (NG146).</div>
+  </div>
+  <!-- 7 Primary-care management -->
+  <div class="sec red">
+    <div class="sh"><div class="n">7</div><div class="t">The only decisions that belong in this consultation <small>Mild, asymptomatic, PTH-mediated hypercalcaemia</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:21%"><col style="width:79%"></colgroup>
+      <tr class="r"><td><b>Confirm on the adjusted value, send the PTH, and review the contributors</b></td><td><b>Repeat the adjusted calcium at least once if 2.6 or above</b> — timing set by the level, symptoms and local pathway; <b>measure PTH once calcium is raised on two occasions</b>, or in parallel if urgency requires it (NG132). Paired, random sample, local protocol — <b>fasting not required</b>; panel as §3, with the <b>NG12 48-hour myeloma panel</b> in the 60-and-overs. <b>Do not defer the PTH for six months.</b> Review <b>calcium and vitamin D supplements</b> (prescribed and bought), calcium-containing antacids and <b>thiazides</b> — stop where clinically appropriate; supplements needed for osteoporosis are <b>reviewed, not automatically stopped long-term</b>. <b>Never stop lithium unilaterally</b> — mental-health input, check the level. Review digoxin. Recheck; <b>if it does not normalise, investigate for unmasked primary hyperparathyroidism</b>. Encourage <b>adequate hydration if cardiac and renal function allow</b> — a fixed 2–3 litres is not safe in heart failure, CKD, frailty or older age. Avoid prolonged immobility. <b>No loop diuretic</b> — not calcium-lowering treatment, and it worsens the dehydration driving the level.</td></tr>
+      <tr class="g"><td><b>End-organ assessment, monitoring and the escalation rule</b></td><td><b>Renal function, DXA (consider at diagnosis), and renal tract ultrasound where a stone is suspected or clinically indicated</b> (NG132) — not routine imaging; these findings, not the calcium alone, decide whether surgery is offered. Treat confirmed osteoporosis in parallel (NG146). PHPT without surgery: <b>annual adjusted calcium and eGFR/creatinine</b>, <b>DXA every 2–3 years</b>. <b>Routine annual 24-hour urine calcium and routine renal ultrasound every 2–3 years are not NICE requirements.</b> Write the triggers down: <b>3.5 or above, or any level with confusion, vomiting, dehydration, AKI or arrhythmia → emergency; 3.0–3.5, or symptoms below 3.0 → same-day; 2.85 or above, or new symptoms, stones, fractures or falling eGFR → surgical referral.</b></td></tr>
+      <tr class="r"><td><b>What not to do</b></td><td>Do not simply monitor a <b>suppressed PTH</b> — nor send every one down the cancer pathway; investigate in parallel, use NG12 on its own criteria. <b>No loop diuretic. No unmonitored IV fluids in the community. No glucocorticoid for "vitamin D toxicity" without specialist guidance.</b> Do not dose bisphosphonates, denosumab or calcitonin from primary care; NICE advises <b>against bisphosphonates for long-term calcium reduction in PHPT</b>. Do not stop lithium unilaterally. Do not file a raised calcium as "borderline" with no PTH and no reviewer — that is the missed myeloma.</td></tr>
+    </table>
+  </div>
+  <!-- 8 Endpoint -->
+  <div class="sec green">
+    <div class="sh"><div class="n">8</div><div class="t">Endpoint and documentation <small>Finish with one of four conclusions</small></div></div>
+    <div class="note grey"><b>Four conclusions.</b> <b>1 · Emergency</b> — transfer and handover. <b>2 · Same-day</b> — assessed today, paired PTH and calcium sent, contributors reviewed, named reviewer. <b>3 · Managed here</b> — interpretation recorded, end-organ assessment arranged, monitoring and escalation set. <b>4 · Unclassified</b> — uncertainty stated, causes investigated in parallel, NG12 on its own criteria or §6 referral with date, review owner named.</div>
+    <div class="note grey"><b>Why primary-care management is safe today:</b> the <b>albumin-adjusted</b> value, confirmed on a repeat · <b>2.61–2.79 mmol/L</b> · asymptomatic, hydrated, normal renal function · <b>PTH raised or non-suppressed</b> · contributors reviewed, lithium discussed with mental health · NG12 considered, 48-hour panel sent in the 60-and-overs · end-organ assessment arranged · monitoring and escalation thresholds written down with a named reviewer. <b>Safety-net wording:</b> contact us or 111 <b>the same day</b> if you become confused, unusually drowsy or weak, start vomiting or cannot keep fluids down, become very thirsty or pass much more urine than usual; call 999 for a fit or collapse. Take no calcium or vitamin D unless agreed, and attend the tests even if you feel well.</div>
+    <div class="note amber"><b>Remote and result-handling limitation.</b> Hydration and cognition cannot be judged by telephone, so <b>3.0 or above needs face-to-face assessment</b>. Convert to face-to-face or emergency assessment where the patient cannot attend, is vomiting or unable to drink, is frail or lives alone, a relative reports confusion, or the result arrives out of hours — <b>3.5 or above must never sit in an inbox overnight</b>.</div>
+  </div>
+  <div class="foot">Clinical decision support only; follow local acute-transfer, renal and prescribing policies and check doses against the current BNF. Sources: NICE NG132 Hyperparathyroidism (primary) and its hypercalcaemia visual summary · NG12 Suspected cancer (May 2025) · NG146 Osteoporosis · NG148 Acute kidney injury · NG203 Chronic kidney disease · Society for Endocrinology Endocrine Emergency Guidance on acute hypercalcaemia (Endocrine Connections, 2016) · BNF · MHRA. <b>Acute treatment — IV fluids, bisphosphonates, denosumab, calcitonin, glucocorticoids, dialysis — is a specialist decision and is not dosed here.</b> Review after any guidance or medicines-safety update, otherwise every 6 months. © Reasoning GP · gpreasoning.uk</div>
+</div>
+  </div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 1: SAFETY — Red Flags                            -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="1" id="node1">
+    <div style="display:flex; align-items:stretch;">
+      <div style="padding:14px 0 10px 16px; display:flex; flex-direction:column; gap:4px;">
+        <div class="node-num">1</div>
+      </div>
+      <div class="node-head" style="border-bottom:none; flex:1; border-radius:0;">
+        <div class="node-head-text">
+          <span class="node-tag">Safety</span>
+          <h3>Screen for life-threatening hypercalcaemia &amp; can't-miss diagnoses</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" data-step="1" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div style="height:1px; background:var(--border);"></div>
+    <div class="node-body">
+      <p class="intro">Hypercalcaemia can be asymptomatic or life-threatening. Use the <b>laboratory-reported albumin-adjusted calcium</b>, interpreted alongside symptoms, albumin, renal function and previous values. Act on the level <em>and</em> the clinical state — severity is not read off a number alone.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Adjusted Ca²⁺ ≥3.5 mmol/L</b> Urgent correction is needed because of the risk of dysrhythmia and coma — <b>emergency hospital assessment regardless of apparent wellness</b> (Society for Endocrinology)</div>
+        <div class="rftile"><b>Adjusted Ca²⁺ 3.0–3.5 mmol/L</b> May be tolerated if the rise has been gradual, but treatment is often required → <b>same-day acute assessment</b>. <b>Emergency transfer</b> if confusion, vomiting or dehydration, AKI, arrhythmia, reduced GCS or unable to maintain oral intake</div>
+        <div class="rftile"><b>Severe symptoms at any calcium level</b> Confusion, coma, seizure, serious arrhythmia, severe dehydration, AKI, persistent vomiting or inability to maintain intake → <b>emergency assessment</b>. A modest number with a sick patient is still an emergency</div>
+        <div class="rftile"><b>Rapid rise, or rise with known malignancy</b> The rate of change matters as much as the absolute value — a fast rise is tolerated far less well → <b>emergency or same-day assessment</b> by clinical state</div>
+        <div class="rftile"><b>On digoxin</b> Hypercalcaemia potentiates digoxin toxicity → <b>emergency assessment if arrhythmia or any concern about toxicity</b></div>
+        <div class="rftile"><b>AKI or falling urine output</b> Oliguria, rising creatinine, significant dehydration → <b>same-day assessment</b>; emergency if the patient cannot maintain intake</div>
+        <div class="rftile"><b>Features suggesting malignancy</b> Weight loss, night sweats, bone pain, lymphadenopathy, known cancer. <b>Investigate urgently and in parallel</b>; use the NG12 cancer route when its symptom, examination or test criteria are met — <b>not solely because PTH is suppressed</b></div>
+        <div class="rftile"><b>Suspected adrenal insufficiency</b> Postural hypotension, weakness, hyponatraemia with hypercalcaemia → <b>same-day assessment</b>; emergency if shocked or unwell</div>
+        <div class="rftile"><b>Drug contributors</b> Thiazide, calcium or vitamin D supplements, lithium, high-dose vitamin A, calcium-containing antacids. Review and stop the contributor where appropriate — <b>but never stop lithium unilaterally</b>: involve mental-health/psychiatry</div>
+        <div class="rftile"><b>Immobility</b> Prolonged bed rest, spinal cord injury, Paget's, high bone turnover — a contributor rather than a destination; urgency follows the calcium level and clinical state</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Adjusted calcium ≥3.5 mmol/L needs urgent correction</b> because of the risk of dysrhythmia and coma (Society for Endocrinology). Below 3.0 is often asymptomatic and usually needs no urgent correction; 3.0–3.5 may be tolerated if the rise has been gradual, but frequently needs treatment depending on symptoms and context — which is why the same number can mean two different destinations. Malignancy is the most common cause in hospitalised patients and primary hyperparathyroidism the most common in outpatients. The key distinction is <b>PTH-mediated</b> (PHPT, tertiary, FHH, lithium-associated) versus <b>non-PTH-mediated</b> (malignancy, granulomatous disease, vitamin D excess, drugs). Use the laboratory's albumin-adjusted calcium rather than a remembered correction formula — methods differ between laboratories — and consider ionised calcium where adjustment is unreliable.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 2: DIAGNOSE — Confirm & Assess Severity          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+    <div style="display:flex; align-items:stretch;">
+      <div style="padding:14px 0 10px 16px; display:flex; flex-direction:column; gap:4px;">
+        <div class="node-num">2</div>
+      </div>
+      <div class="node-head" style="border-bottom:none; flex:1; border-radius:0;">
+        <div class="node-head-text">
+          <span class="node-tag">Diagnose</span>
+          <h3>Confirm hypercalcaemia &amp; classify severity</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" data-step="2" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div style="height:1px; background:var(--border);"></div>
+    <div class="node-body">
+      <p class="intro">Use the laboratory's albumin-adjusted calcium. Confirm before committing to a diagnosis — but <b>never delay urgent assessment for repeat sampling</b>.</p>
+      <div class="kv">
+        <div>Which calcium</div>
+        <div>Use the <b>laboratory-reported albumin-adjusted calcium</b>. <b>Do not treat a single universal correction formula as interchangeable with the local laboratory method.</b> Interpret with symptoms, albumin, renal function and previous values. <b>Normal: 2.2–2.6 mmol/L</b></div>
+        <div>Ionised calcium</div>
+        <div>Consider (discuss with the laboratory) where <b>albumin adjustment is unreliable</b> — critical illness, major pH disturbance, severe hypoalbuminaemia. <b>Not recommended routinely</b> for assessing primary hyperparathyroidism (NG132)</div>
+        <div>Under 3.0 mmol/L</div>
+        <div><span class="pill pill-grey">Often asymptomatic</span> Usually no urgent correction. Outpatient assessment if well — but symptomatic hypercalcaemia below 3.0 still warrants same-day assessment</div>
+        <div>3.0–3.5 mmol/L</div>
+        <div><span class="pill pill-amber">Context-dependent</span> May be tolerated if the rise has been gradual; treatment is often required depending on symptoms and context → <b>same-day acute assessment</b>. Emergency transfer if confusion, vomiting/dehydration, AKI, arrhythmia, reduced GCS or unable to maintain intake</div>
+        <div>≥3.5 mmol/L</div>
+        <div><span class="pill pill-red">Emergency</span> Urgent correction because of dysrhythmia and coma risk — <b>emergency hospital assessment regardless of apparent wellness</b> (Society for Endocrinology)</div>
+        <div>Repeat testing</div>
+        <div><b>Repeat the albumin-adjusted calcium at least once if ≥2.6 mmol/L</b> (NG132). Timing follows the calcium level, the symptoms and the local laboratory pathway — not a fixed interval. <b>Do not defer PTH for six months</b>, and act on the first result if symptomatic or the level is high</div>
+        <div>When to measure PTH</div>
+        <div>Measure PTH <b>after calcium is elevated on at least two separate occasions</b>, unless urgent clinical circumstances require testing in parallel (NG132)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Albumin adjustment prevents under- and over-diagnosis, but adjustment methods differ between laboratories — which is why the laboratory's own adjusted value is the one to use, rather than a formula applied by hand. Ionised calcium is the physiologically active fraction and is worth obtaining where adjustment is unreliable, but NICE does not recommend it routinely for primary-hyperparathyroidism assessment. A single elevated reading in an asymptomatic patient may reflect assay variation or a transient cause, so NG132 asks for at least one repeat at 2.6 mmol/L or above, with PTH measured once calcium is elevated on two occasions — unless urgency requires parallel testing. If the patient is symptomatic or the level is high, act on the first result.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 3: DIAGNOSE — Classify Aetiology                 -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+    <div style="display:flex; align-items:stretch;">
+      <div style="padding:14px 0 10px 16px; display:flex; flex-direction:column; gap:4px;">
+        <div class="node-num">3</div>
+      </div>
+      <div class="node-head" style="border-bottom:none; flex:1; border-radius:0;">
+        <div class="node-head-text">
+          <span class="node-tag">Diagnose</span>
+          <h3>Classify the aetiology — PTH-mediated vs non-PTH-mediated</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" data-step="3" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div style="height:1px; background:var(--border);"></div>
+    <div class="node-body">
+      <p class="intro">PTH is the critical branch point. <b>Measure intact PTH and albumin-adjusted calcium concurrently using the local laboratory protocol</b> — a routine random sample is appropriate; fasting is not required, and <b>do not delay urgent assessment for repeat sampling</b>.</p>
+      <div class="kv">
+        <div>How to read PTH</div>
+        <div>Interpret PTH as <b>appropriate or inappropriate for the calcium level</b>. A raised or non-suppressed PTH with hypercalcaemia suggests <b>PTH-mediated</b> hypercalcaemia and <b>requires specialist interpretation</b> — it does not by itself establish primary hyperparathyroidism</div>
+        <div>PTH-mediated causes</div>
+        <div><b>Primary hyperparathyroidism</b> — the commonest outpatient cause · <b>tertiary hyperparathyroidism</b>, especially in longstanding CKD · <b>FHH</b> · <b>lithium-associated hyperparathyroidism</b> · <b>assay and sampling issues</b>. All need interpretation together, not a single label</div>
+        <div>Suppressed PTH</div>
+        <div><b>Non-PTH-mediated hypercalcaemia — needs urgent evaluation, but not automatically a cancer-pathway referral.</b> Investigate <b>in parallel</b> for malignancy (guided by symptoms and examination), myeloma, vitamin D excess, granulomatous disease, thyrotoxicosis, immobilisation, milk-alkali syndrome and relevant medications</div>
+        <div>When to use NG12</div>
+        <div>Use the <b>suspected cancer pathway when the relevant NG12 symptom, examination or test criteria are met</b> — <b>not solely because PTH is suppressed</b>. Myeloma screening (protein electrophoresis and serum free light chains) where the picture fits</div>
+        <div>FHH</div>
+        <div><b>Familial hypocalciuric hypercalcaemia</b> — usually benign. A <b>calcium:creatinine clearance ratio below 0.01 is a screening clue, not a diagnosis</b>: <b>FHH and primary hyperparathyroidism overlap</b>, and results are confounded by <b>CKD, vitamin D deficiency, low calcium intake and thiazides</b>. <b>Do not conclude "no surgery" from a single low ratio</b> — endocrine review, and genetic confirmation where appropriate, are needed. NICE accepts 24-hour urinary calcium, a random renal calcium:creatinine excretion ratio or the clearance ratio</div>
+        <div>Drug contributors</div>
+        <div>Thiazides, lithium, calcium supplements, vitamin D excess, calcium-containing antacids (milk-alkali), high-dose vitamin A. <b>Review rather than reflexively stop</b> — and <b>never stop lithium unilaterally</b></div>
+        <div>Granulomatous disease</div>
+        <div>Sarcoidosis, TB and others raise 1,25-dihydroxyvitamin D through macrophage production. <b>If clinically suspected, arrange appropriate respiratory assessment, chest imaging and specialist-directed testing</b> — <b>ACE is not a routine diagnostic test</b> (neither sensitive nor specific enough)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>PTH read against the calcium drives the pathway</b> — but it sorts hypercalcaemia into two groups, it does not name the diagnosis. A raised or inappropriately normal PTH means PTH-mediated hypercalcaemia, of which primary hyperparathyroidism is only the commonest member: tertiary hyperparathyroidism in longstanding CKD, FHH, lithium-associated hyperparathyroidism and assay artefact all sit in the same box, which is why specialist interpretation is needed before a label is applied. A suppressed PTH means the cause lies elsewhere and needs urgent evaluation — but the right response is parallel investigation (malignancy guided by symptoms and examination, myeloma screen, vitamin D status, granulomatous disease, thyrotoxicosis, immobilisation, milk-alkali, drugs), with the NG12 cancer route used when its own criteria are met. FHH matters because it mimics primary hyperparathyroidism and should not lead to surgery — but a single clearance ratio cannot settle it, since the two conditions overlap and CKD, vitamin D deficiency, low calcium intake and thiazides all confound the result.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 4: DIAGNOSE — Targeted Examination               -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+    <div style="display:flex; align-items:stretch;">
+      <div style="padding:14px 0 10px 16px; display:flex; flex-direction:column; gap:4px;">
+        <div class="node-num">4</div>
+      </div>
+      <div class="node-head" style="border-bottom:none; flex:1; border-radius:0;">
+        <div class="node-head-text">
+          <span class="node-tag">Diagnose</span>
+          <h3>Targeted examination — systemic &amp; directed</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" data-step="4" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div style="height:1px; background:var(--border);"></div>
+    <div class="node-body">
+      <p class="intro">Physical examination directs urgency and guides the differential diagnosis. Pay particular attention to signs of malignancy and haemodynamic status.</p>
+      <div class="kv">
+        <div>Vital signs</div>
+        <div>HR, BP (postural drop → dehydration/Addison's), RR, O₂ sat, GCS. Tachycardia + hypotension = severe/emergency</div>
+        <div>Hydration status</div>
+        <div>Mucous membranes, skin turgor, JVP, UO — dehydration worsens hypercalcaemia (reduced renal Ca²⁺ excretion)</div>
+        <div>Lymphadenopathy</div>
+        <div>Cervical, axillary, inguinal — lymphoma, sarcoidosis, metastatic malignancy. Firm, fixed nodes = malignancy concern</div>
+        <div>Neck palpation</div>
+        <div>Thyroid mass (thyrotoxicosis), parathyroid lesion (rarely palpable — only if carcinoma, large adenoma)</div>
+        <div>Chest / lungs</div>
+        <div>Pleural effusion, consolidation — lung malignancy, sarcoidosis</div>
+        <div>Abdomen</div>
+        <div>Hepatomegaly, splenomegaly — lymphoma, malignancy. Nephrolithiasis tenderness (PHPT complication)</div>
+        <div>Skin / eyes</div>
+        <div>Band keratopathy (corneal calcium, a slit-lamp finding — refer), erythema nodosum (sarcoid), skin lesions (malignancy, sarcoid)</div>
+        <div>Neurological</div>
+        <div>Confusion, proximal weakness (hypercalcaemic myopathy), hyporeflexia — indicates severity, need for admission</div>
+        <div>Bone tenderness</div>
+        <div>Percussion over spine, long bones — metastatic disease, myeloma, osteitis fibrosa cystica (severe PHPT)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Examination findings in hypercalcaemia often provide the diagnosis before investigations return. Lymphadenopathy with suppressed PTH = lymphoma or sarcoidosis until proven otherwise. Dehydration significantly worsens hypercalcaemia by reducing urinary calcium clearance — spotting this drives immediate fluid management. Neurological signs (confusion, weakness) indicate severity and need for same-day admission regardless of the exact calcium level. Band keratopathy is a chronic sign indicating long-standing hypercalcaemia, typically PHPT.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 5: DIAGNOSE — Investigations                     -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+    <div style="display:flex; align-items:stretch;">
+      <div style="padding:14px 0 10px 16px; display:flex; flex-direction:column; gap:4px;">
+        <div class="node-num">5</div>
+      </div>
+      <div class="node-head" style="border-bottom:none; flex:1; border-radius:0;">
+        <div class="node-head-text">
+          <span class="node-tag">Diagnose</span>
+          <h3>Investigations — first-line, and what is specialist-directed</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" data-step="5" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div style="height:1px; background:var(--border);"></div>
+    <div class="node-body">
+      <p class="intro">First-line bloods establish the cause in most cases. <b>Several tests commonly listed for hypercalcaemia are specialist-directed and should not be ordered routinely from primary care</b> — they are set out below.</p>
+      <div class="kv">
+        <div>Tier 1 — Bloods</div>
+        <div>
+          <span class="pill pill-blue">Albumin-adjusted Ca²⁺ + albumin</span>
+          <span class="pill pill-blue">Intact PTH (paired, random sample)</span>
+          <span class="pill pill-blue">U&amp;E / creatinine / eGFR</span>
+          <span class="pill pill-blue">Phosphate</span>
+          <span class="pill pill-blue">ALP</span>
+          <span class="pill pill-blue">LFTs</span>
+          <span class="pill pill-blue">FBC</span>
+          <span class="pill pill-blue">25-hydroxyvitamin D</span>
+          <span class="pill pill-blue">TSH</span>
+        </div>
+        <div>Interpret PTH + Ca²⁺</div>
+        <div>Raised or non-suppressed PTH with hypercalcaemia = PTH-mediated (specialist interpretation). Suppressed PTH = non-PTH-mediated — investigate causes in parallel. Raised phosphate and ALP with hypercalcaemia point towards bone disease</div>
+        <div>Tier 1 — Urine</div>
+        <div>Calcium excretion assessment where FHH is being considered: NICE accepts <b>24-hour urinary calcium, a random renal calcium:creatinine excretion ratio, or the calcium:creatinine clearance ratio</b>. <b>A single result does not settle FHH</b> — see step 3</div>
+        <div>Tier 1 — ECG</div>
+        <div>ECG for <b>symptomatic, moderate or severe, or rapidly rising</b> hypercalcaemia: look for <b>QT shortening, bradyarrhythmia or other conduction abnormality</b>. The ECG supports the severity assessment — <b>it does not determine the diagnosis</b>, and no fixed QTc cut-off should be used</div>
+        <div>Tier 1 — Imaging</div>
+        <div><span class="pill pill-blue">CXR</span> where malignancy or granulomatous disease is suspected — hilar lymphadenopathy, pulmonary lesion, primary lung tumour</div>
+        <div>Specialist-directed only</div>
+        <div><b>Not routine primary-care tests.</b> <b>PTHrP</b> is specialist-directed and is not needed to establish that malignancy is possible. <b>1,25-dihydroxyvitamin D</b> is selective — suspected granulomatous disease or lymphoma, usually after specialist discussion; <b>25-hydroxyvitamin D is the relevant initial vitamin D test</b>. <b>ACE is not a routine test for sarcoidosis</b></div>
+        <div>Myeloma screen</div>
+        <div><span class="pill pill-blue">Serum protein electrophoresis + serum free light chains</span> where the clinical picture fits — anaemia, bone pain, renal impairment, raised ESR/plasma viscosity</div>
+        <div>Bone and renal assessment</div>
+        <div>Once PHPT is confirmed: <b>consider DXA at diagnosis</b> (NG132). <b>Renal tract ultrasound when a renal stone is suspected or otherwise clinically indicated</b> — not as routine screening</div>
+        <div>Localisation imaging</div>
+        <div>Sestamibi and neck ultrasound localise an adenoma before surgery — <b>ordered by endocrinology or the surgical team, not in primary care</b>, and never used to make the diagnosis</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Paired PTH and albumin-adjusted calcium answer most of the question</b>, and NG132 asks only for a routine sample using the local laboratory's protocol — fasting and special handling are not general requirements. 25-hydroxyvitamin D is the initial vitamin D test and matters because deficiency can mask primary hyperparathyroidism by keeping calcium in range; correcting it can then unmask hypercalcaemia. Phosphate is typically low in PHPT because PTH promotes renal phosphate excretion, and a raised ALP may indicate bone involvement. <b>The tests deliberately absent here matter as much as those present:</b> ACE is neither sensitive nor specific enough to diagnose or exclude sarcoidosis and risks false reassurance; PTHrP is specialist-directed and is not needed to establish that malignancy is possible; 1,25-dihydroxyvitamin D is selective and usually follows specialist discussion. DXA at diagnosis is a NICE consideration in confirmed PHPT, and renal ultrasound is for suspected stones rather than routine surveillance.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 6: REFER — Referral Criteria                     -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="REFER" data-step="6" id="node6">
+    <div style="display:flex; align-items:stretch;">
+      <div style="padding:14px 0 10px 16px; display:flex; flex-direction:column; gap:4px;">
+        <div class="node-num">6</div>
+      </div>
+      <div class="node-head" style="border-bottom:none; flex:1; border-radius:0;">
+        <div class="node-head-text">
+          <span class="node-tag">Refer</span>
+          <h3>Referral pathway — who, when, and how urgently</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" data-step="6" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div style="height:1px; background:var(--border);"></div>
+    <div class="node-body">
+      <p class="intro">The aetiology determines the specialty and the urgency follows the clinical state, not the number alone. <b>Acute treatment is a hospital decision</b> — primary care arranges transfer and hands over.</p>
+      <div class="kv">
+        <div>Emergency assessment</div>
+        <div><span class="pill pill-red">Emergency</span> Adjusted Ca²⁺ <b>≥3.5 mmol/L regardless of apparent wellness</b> · any level with <b>confusion, coma, seizure, serious arrhythmia, severe dehydration, AKI, persistent vomiting or inability to maintain intake</b> · <b>rapid rise with known malignancy</b> · <b>digoxin with arrhythmia or toxicity concern</b>. <b>Arrange urgent transfer and give a clinical handover</b> — calcium, renal function, medications, observations and time</div>
+        <div>Same-day acute assessment</div>
+        <div><span class="pill pill-amber">Same-day</span> Adjusted Ca²⁺ <b>3.0–3.5 mmol/L</b> · <b>symptomatic hypercalcaemia below 3.0</b> · <b>suppressed PTH with concerning symptoms or malignancy features</b> · <b>AKI, falling urine output or significant dehydration</b></div>
+        <div>Suspected cancer pathway</div>
+        <div><span class="pill pill-purple">2WW · NICE NG12</span> Use the suspected cancer route <b>when the relevant NG12 symptom, examination or test criteria are met</b> — <b>not solely because PTH is suppressed</b>. A suppressed PTH means urgent evaluation with parallel investigation of malignancy, myeloma, vitamin D excess, granulomatous disease, thyrotoxicosis, immobilisation, milk-alkali and medications</div>
+        <div>Haematology</div>
+        <div><span class="pill pill-purple">Urgent</span> Positive myeloma screen — paraprotein on electrophoresis, abnormal serum free light chains, Bence Jones protein → urgent haematology</div>
+        <div>Parathyroid surgical referral</div>
+        <div>Refer to a <b>surgeon with parathyroid expertise</b> where confirmed PHPT is associated with (NG132): <b>symptoms of hypercalcaemia</b> · <b>renal stones</b> · <b>fragility fracture or osteoporosis</b> · <b>albumin-adjusted calcium ≥2.85 mmol/L</b>. <b>NICE also says to consider surgical referral even when these features are absent.</b> <span class="pill pill-grey">Specialist / shared-decision criteria</span> Age under 50 appears in international criteria and is a matter for specialist discussion — <b>it is not a NICE primary indication</b></div>
+        <div>Endocrinology</div>
+        <div>Confirmed or suspected PHPT not meeting surgical criteria, <b>uncertainty about FHH, tertiary or lithium-associated hyperparathyroidism</b>, or any raised/non-suppressed PTH needing interpretation. Tertiary hyperparathyroidism in CKD is usually already on a renal pathway</div>
+        <div>Respiratory</div>
+        <div><span class="pill pill-grey">Routine–urgent</span> Suspected sarcoidosis or other granulomatous disease → <b>respiratory assessment, chest imaging and specialist-directed testing</b>. <b>Glucocorticoids are a specialist decision, not a holding measure started in primary care</b></div>
+        <div>Drug-associated</div>
+        <div>Mild asymptomatic hypercalcaemia with a thiazide or supplements may be reviewed after stopping the contributor — but <b>this is not always "primary care only"</b>: <b>never stop lithium unilaterally</b> (involve mental health/psychiatry) · <b>persistent hypercalcaemia may be unmasked PHPT</b> · <b>renal impairment, symptoms or calcium ≥3.0 need more urgent assessment</b> · calcium and vitamin D supplements may be clinically necessary in osteoporosis and should be <b>reviewed rather than automatically stopped long-term</b></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>NICE NG132 sets four features that make parathyroid surgical referral appropriate in confirmed PHPT</b> — symptoms of hypercalcaemia, renal stones, fragility fracture or osteoporosis, and an albumin-adjusted calcium of 2.85 mmol/L or above — while also saying to consider referral even when none is present, so the conversation is rarely closed by a threshold alone. Age under 50 comes from international criteria and belongs in the shared decision rather than in a list of NICE indications. Much mild asymptomatic PHPT is managed conservatively with annual review. <b>For non-PTH-mediated hypercalcaemia the discipline is parallel investigation rather than a reflex cancer referral:</b> a suppressed PTH is a reason for urgent evaluation, but the NG12 route earns its place only when its own criteria are met — sending every suppressed PTH straight to a cancer pathway both over-refers and delays the patient whose cause is granulomatous, drug-related or myeloma.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 7: TREAT — Drug Ladder / Treatment Pathway       -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="TREAT" data-step="7" id="node7">
+    <div style="display:flex; align-items:stretch;">
+      <div style="padding:14px 0 10px 16px; display:flex; flex-direction:column; gap:4px;">
+        <div class="node-num">7</div>
+      </div>
+      <div class="node-head" style="border-bottom:none; flex:1; border-radius:0;">
+        <div class="node-head-text">
+          <span class="node-tag">Treat</span>
+          <h3>Treatment pathway — by severity and aetiology</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" data-step="7" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div style="height:1px; background:var(--border);"></div>
+    <div class="node-body">
+      <p class="intro">Acute hypercalcaemia is treated in hospital. <b>This pathway sets out what primary care does</b> — recognise, arrange transfer, hand over, and manage the mild chronic disease that stays in the community.</p>
+
+      <div class="section-label">Acute or severe hypercalcaemia — what primary care does</div>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Arrange urgent transfer and provide a clinical handover</b> — the adjusted calcium and its trend, renal function, current medications (especially digoxin, thiazide, lithium, calcium and vitamin D), observations, oral intake and conscious level, and the suspected cause. <span class="pill pill-teal">This is the primary-care action</span></span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Hospital treatment usually begins with monitored IV isotonic saline.</b> <b>IV bisphosphonate, calcitonin, denosumab, glucocorticoids and dialysis are specialist decisions</b> — the choice depends on the cause, renal function, malignancy, vitamin D status, fluid-overload and heart-failure risk, and the local acute or endocrine protocol. <b>Doses and rates are deliberately not given here.</b></span></div>
+        <div class="rung"><span class="rn">Fluids</span><span class="rt"><b>Do not start IV fluids in the community</b> unless this is a trained ambulance or acute-care setting with monitoring and a local protocol. Fluid management in acute hypercalcaemia belongs in monitored secondary care — heart failure, CKD and frailty make unmonitored fluid loading unsafe.</span></div>
+        <div class="rung"><span class="rn">Diuretics</span><span class="rt"><b>A loop diuretic is not a calcium-lowering treatment</b> and may worsen dehydration. Loop diuretics are <b>rarely used</b>, and are generally reserved for <b>fluid overload during monitored treatment</b> (Society for Endocrinology). <b>Never give one at home to "bring the calcium down".</b></span></div>
+        <div class="rung"><span class="rn">Antiresorptives</span><span class="rt"><b>The hospital, endocrine or oncology team selects and monitors antiresorptive treatment.</b> NICE specifically advises <b>against bisphosphonates for long-term calcium reduction in primary hyperparathyroidism</b>; they may be considered for fracture-risk reduction. Cinacalcet, where used, is endocrinology-initiated.</span></div>
+      </div>
+
+      <div class="section-label mt12">Mild PHPT not meeting surgical criteria — primary-care surveillance</div>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Meets a NG132 referral feature</div>
+          <div class="b-drug">Refer to parathyroid surgery <span class="pill pill-teal">Via NG132</span></div>
+          <div class="b-note">Symptoms of hypercalcaemia, renal stones, fragility fracture or osteoporosis, or adjusted calcium ≥2.85 mmol/L — and consider referral even where none is present. Localisation imaging is arranged by the specialist team, not before referral.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">No surgical feature, stable, asymptomatic</div>
+          <div class="b-drug">Conservative surveillance <span class="pill pill-grey">Primary care</span></div>
+          <div class="b-note">Annual albumin-adjusted calcium and eGFR/creatinine; consider DXA at diagnosis and every 2–3 years (NG132). Review the surgical criteria at each annual review. Maintain adequate hydration within cardiac and renal limits.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Unsuitable for or declining surgery</div>
+          <div class="b-drug">Endocrinology decision <span class="pill pill-amber">Specialist-initiated</span></div>
+          <div class="b-note">Cinacalcet may be considered by endocrinology where calcium reduction is needed; it does not improve bone density. Monitoring is specified by the initiating team.</div>
+        </div>
+      </div>
+
+      <div class="section-label mt12">Drug-associated hypercalcaemia</div>
+      <div class="kv">
+        <div>Thiazide diuretics</div>
+        <div>Review and stop where clinically appropriate, then recheck the adjusted calcium. <b>Persistent hypercalcaemia may represent unmasked PHPT</b> — investigate rather than assume the drug was the whole answer</div>
+        <div>Lithium</div>
+        <div><b>Do not stop lithium unilaterally.</b> Discuss with mental health/psychiatry — the psychiatric risk of stopping may outweigh the hypercalcaemia. Lithium-associated hyperparathyroidism needs endocrine interpretation</div>
+        <div>Vitamin D excess</div>
+        <div>Stop the supplement and recheck. <b>Glucocorticoids are not a routine primary-care response to vitamin D toxicity</b> — they have a place in granulomatous disease and some lymphoma-related or vitamin-D-mediated hypercalcaemia, but only with endocrine or acute-care guidance. Severe or symptomatic hypercalcaemia goes to acute assessment</div>
+        <div>Calcium supplements</div>
+        <div>Review rather than automatically stop — they may be clinically necessary in osteoporosis. Check dietary intake and calcium-containing antacids (milk-alkali)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Monitored intravenous fluid is the cornerstone of acute treatment</b>, but it is a hospital intervention: the rate and volume depend on heart failure and fluid-overload risk, renal function and the cause, and it requires monitoring of urine output and electrolytes that primary care cannot provide. The same applies to bisphosphonates, denosumab, calcitonin, glucocorticoids and dialysis — each depends on the cause, renal function, malignancy, vitamin D status and dental risk, which is why this pathway names them without dosing them. <b>Loop diuretics are a specific trap:</b> they increase calcium excretion but worsen dehydration, which raises calcium further, and Society for Endocrinology guidance describes them as rarely used and generally reserved for fluid overload during monitored treatment. Cinacalcet lowers calcium without improving bone density or preventing stones, unlike parathyroidectomy, and NICE advises against bisphosphonates for long-term calcium reduction in PHPT.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 8: LIFESTYLE — Non-Pharmacological               -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+    <div style="display:flex; align-items:stretch;">
+      <div style="padding:14px 0 10px 16px; display:flex; flex-direction:column; gap:4px;">
+        <div class="node-num">8</div>
+      </div>
+      <div class="node-head" style="border-bottom:none; flex:1; border-radius:0;">
+        <div class="node-head-text">
+          <span class="node-tag">Lifestyle</span>
+          <h3>Non-pharmacological measures — for stable, mild hypercalcaemia</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" data-step="8" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div style="height:1px; background:var(--border);"></div>
+    <div class="node-body">
+      <p class="intro">These measures support management of stable, mild hypercalcaemia. <b>They are not a substitute for assessment</b>, and fluid management in acute hypercalcaemia belongs in monitored secondary care.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Hydration — adequate, not prescriptive</b> For stable mild disease, <b>encourage normal adequate hydration if cardiac and renal function allow</b>. <b>A fixed 2–3 L/day is not safe as a universal instruction</b> in heart failure, CKD, frailty or older age, or anyone at risk of fluid overload. Dehydration is a common precipitant of deterioration — the message is to avoid it, individualised to the patient</div>
+        <div class="lstile"><b>Avoid immobility</b> Prolonged bed rest increases bone resorption and worsens hypercalcaemia. Encourage regular activity as tolerated, and pay particular attention during acute illness or after injury</div>
+        <div class="lstile"><b>Dietary calcium — do not restrict</b> Counter-intuitive but important: a low-calcium diet increases PTH secretion and can worsen PHPT. Aim for a normal intake, and avoid excessive supplementary calcium. Review supplements rather than stopping necessary osteoporosis treatment outright</div>
+        <div class="lstile"><b>Review diuretics</b> Thiazides reduce renal calcium excretion and may need review with the prescribing indication in mind. <b>A loop diuretic is not a substitute and is not calcium-lowering treatment</b> — it is reserved for fluid overload during monitored treatment</div>
+        <div class="lstile"><b>Vitamin D supplements</b> Review against the 25-hydroxyvitamin D level and the clinical indication. In granulomatous disease, vitamin D handling is abnormal — <b>supplementation decisions there are specialist-guided</b></div>
+        <div class="lstile"><b>Alcohol</b> Excess worsens dehydration and bone health. Standard UK advice of no more than 14 units a week applies</div>
+        <div class="lstile"><b>Medication review</b> Calcium supplements, calcium-containing antacids, lithium, thiazides, high-dose vitamin A, vitamin D. <b>Review and document — and never stop lithium unilaterally</b></div>
+        <div class="lstile"><b>Stone prevention if a stone-former</b> Adequate fluid intake within cardiac and renal limits, reduced dietary sodium, moderate animal protein. Refer to urology for recurrent stones — stones are also a NG132 surgical referral feature</div>
+        <div class="lstile"><b>Bone health</b> Weight-bearing exercise supports bone density in PHPT managed conservatively. Consider DXA at diagnosis and every 2–3 years (NG132)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Avoiding dehydration genuinely matters</b> — reduced urinary calcium clearance is one of the main ways mild hypercalcaemia becomes severe — but a blanket 2–3 L/day instruction is unsafe in heart failure, CKD, frailty and older age, which is why the advice here is adequate hydration within the patient's cardiac and renal limits. The instruction not to restrict dietary calcium is frequently misunderstood by patients who intuitively cut out dairy: a low-calcium diet raises PTH and can worsen PHPT. <b>Sun protection is not a general hypercalcaemia measure</b> — avoiding excessive vitamin D exposure may be relevant in sarcoidosis or other granulomatous disease, but that is specialist advice for a specific condition, not lifestyle advice for everyone with a raised calcium. NG132 supports conservative management, including these measures, for asymptomatic PHPT not meeting surgical criteria.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 9: SAFETY — Follow-Up & Monitoring              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="9" id="node9">
+    <div style="display:flex; align-items:stretch;">
+      <div style="padding:14px 0 10px 16px; display:flex; flex-direction:column; gap:4px;">
+        <div class="node-num">9</div>
+      </div>
+      <div class="node-head" style="border-bottom:none; flex:1; border-radius:0;">
+        <div class="node-head-text">
+          <span class="node-tag">Safety</span>
+          <h3>Follow-up, monitoring &amp; safety-netting</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" data-step="9" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div style="height:1px; background:var(--border);"></div>
+    <div class="node-body">
+      <p class="intro">Monitoring follows the aetiology. <b>For confirmed PHPT managed without surgery, NICE NG132 specifies annual albumin-adjusted calcium and eGFR/creatinine, DXA to consider at diagnosis and every 2–3 years, and renal tract ultrasound when a stone is suspected or clinically indicated</b> — routine annual 24-hour urine calcium and routine renal ultrasound every 2–3 years are not NICE requirements.</p>
+      <div class="kv">
+        <div>Post-acute discharge</div>
+        <div>Review shortly after discharge — adjusted calcium, U&amp;E and eGFR, oral intake maintained, medications reconciled, and specialist follow-up confirmed as arranged</div>
+        <div>Drug contributor stopped</div>
+        <div>Recheck the adjusted calcium after stopping or reducing the contributor. <b>If it does not normalise, investigate for underlying PHPT</b> rather than attributing it to the drug. Lithium changes are made with mental-health input, not unilaterally</div>
+        <div>PHPT without surgery — NICE</div>
+        <div><b>Annual albumin-adjusted calcium and eGFR/creatinine.</b> <b>Consider DXA at diagnosis and every 2–3 years.</b> <b>Renal tract ultrasound when a renal stone is suspected or clinically indicated.</b> Review the surgical referral features at each annual review (NG132)</div>
+        <div>Not NICE requirements</div>
+        <div><b>Routine annual 24-hour urine calcium</b> and <b>routine renal ultrasound every 2–3 years</b> are not stated NICE requirements and should not be booked as automatic recalls</div>
+        <div>Post-parathyroidectomy</div>
+        <div>Specialist-led early monitoring for post-operative hypocalcaemia ("hungry bone"), then calcium and renal function per the surgical team's protocol. Confirm the plan is in the record before taking over monitoring</div>
+        <div>Malignancy-associated</div>
+        <div>Oncology-led. Calcium monitoring and any antiresorptive treatment follow the oncology regimen; dental assessment before antiresorptive treatment is arranged by the initiating team</div>
+        <div>Granulomatous disease</div>
+        <div>Respiratory or specialist-led, including any glucocorticoid treatment and its monitoring. Primary care monitors calcium and renal function as directed by that plan</div>
+        <div>When to escalate urgently</div>
+        <div>Calcium rising despite treatment · new or worsening renal impairment · new or worsening confusion · unable to maintain oral fluids · bone pain with new neurological deficit</div>
+        <div>Safety-net — 999</div>
+        <div><span class="pill pill-red">999</span> Confusion, drowsiness, coma or collapse · seizure · cardiac arrhythmia or chest pain · persistent vomiting unable to keep fluids down · back pain with leg weakness (possible cord compression)</div>
+        <div>Safety-net — same-day</div>
+        <div><span class="pill pill-amber">Same-day</span> Significant worsening weakness or lethargy · unable to eat or drink for more than a day · severe bone pain · markedly reduced urine output · <b>an adjusted calcium of 3.0 mmol/L or above returning on routine monitoring</b>, or a symptomatic result below that</div>
+        <div>Annual review</div>
+        <div>Confirm specialist appointments attended, reconcile calcium and vitamin D supplements, reinforce individualised hydration, and make the explicit decision to continue surveillance or refer for surgery</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Asymptomatic PHPT often remains stable for years</b>, which is why NG132 supports conservative management with annual albumin-adjusted calcium and eGFR/creatinine, DXA considered at diagnosis and every 2–3 years, and renal imaging when a stone is suspected — a schedule designed to detect the patients who cross a surgical referral threshold without subjecting everyone to annual urine collections and repeated scanning. <b>Post-parathyroidectomy hypocalcaemia ("hungry bone")</b> is the serious early complication: the suppressed skeleton rapidly takes up calcium, and monitoring in that window is specialist-led. Safety-netting matters particularly in hypercalcaemia because patients adapt to a chronically raised calcium and may not recognise gradual deterioration — so the trigger for review is the symptom set, not only the number.
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG132 (Hyperparathyroidism — primary: diagnosis, assessment and initial management) and its hypercalcaemia visual summary · Society for Endocrinology Endocrine Emergency Guidance: emergency management of acute hypercalcaemia in adult patients (Endocrine Connections, 2016) · NICE NG12 (Suspected cancer: recognition and referral). <b>Acute treatment — intravenous fluids, bisphosphonates, denosumab, calcitonin, glucocorticoids and dialysis — is a secondary-care or specialist decision and is deliberately not dosed here.</b> Always adapt to individual patient context, local laboratory and acute protocols, and current guidance. For acute or complex cases, seek senior or specialist advice.
+</div>
+
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.hypercalcaemia.v1';
+  const TOTAL = 9;
+
+  // Load saved state
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(e) {}
+
+  const checkboxes = document.querySelectorAll('input[type="checkbox"][data-step]');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const resetBtn = document.getElementById('resetBtn');
+
+  function updateProgress() {
+    let done = 0;
+    checkboxes.forEach(cb => { if (cb.checked) done++; });
+    pDone.textContent = done;
+    pFill.style.width = (done / TOTAL * 100) + '%';
+  }
+
+  function saveState() {
+    const state = {};
+    checkboxes.forEach(cb => { state[cb.dataset.step] = cb.checked; });
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+
+  // Apply saved state
+  checkboxes.forEach(cb => {
+    const step = cb.dataset.step;
+    if (saved[step]) {
+      cb.checked = true;
+      const node = document.getElementById('node' + step);
+      if (node) node.classList.add('done');
+    }
+    cb.addEventListener('change', function () {
+      const node = document.getElementById('node' + this.dataset.step);
+      if (node) node.classList.toggle('done', this.checked);
+      updateProgress();
+      saveState();
+    });
+  });
+
+  // Why? drawers
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      const drawer = this.nextElementSibling;
+      drawer.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Reset
+  resetBtn.addEventListener('click', function () {
+    if (!confirm('Reset all progress?')) return;
+    checkboxes.forEach(cb => {
+      cb.checked = false;
+      const node = document.getElementById('node' + cb.dataset.step);
+      if (node) node.classList.remove('done');
+    });
+    try { localStorage.removeItem(STORE_KEY); } catch(e) {}
+    updateProgress();
+  });
+
+  updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=2"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/alg-diagram.js?v=4"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+</body>
+</html>

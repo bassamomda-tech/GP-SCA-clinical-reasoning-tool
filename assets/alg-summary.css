@@ -1,0 +1,58 @@
+/* Reasoning GP — Summary tab (2-page quick reference) rendered as responsive HTML on screen.
+   Same class vocabulary as the standalone A4 file (tools/algorithms/summaries/<slug>.html), which is
+   the print/PDF artefact; this sheet re-skins it for the page. Semantic colours are fixed (spec §3). */
+#viewSummary{--s-ink:#1a1f2b;--s-mute:#5a6270;--s-line:#d5dae3;--s-red:#b3261e;--s-amber:#b26a00;--s-blue:#1f5fa8;--s-green:#2b7a3e;--s-purple:#6a3fa0}
+#viewSummary, #viewSummary *{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+#viewSummary .sum{max-width:1140px;margin:0 auto;padding:0 16px 24px;color:var(--s-ink);font-size:.9rem;line-height:1.5}
+#viewSummary .page{background:#fff;border:1px solid #e2dfd6;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:18px 20px 14px;margin:12px 0 0}
+#viewSummary .hdr{border-bottom:2px solid var(--s-ink);padding-bottom:8px;margin-bottom:12px}
+#viewSummary .hdr table{width:100%;border-collapse:collapse}
+#viewSummary .hdr td{vertical-align:bottom;padding:0}
+#viewSummary .brand{font-size:.72rem;letter-spacing:.5px;color:var(--s-mute);text-transform:uppercase}
+#viewSummary .brand b{color:var(--s-ink)}
+#viewSummary h1{font-family:var(--font-serif,'Source Serif 4',Georgia,serif);font-size:1.45rem;font-weight:600;margin:4px 0 4px;line-height:1.25}
+#viewSummary .sub{font-size:.85rem;color:#3b4352}
+#viewSummary .pg{font-size:.72rem;color:var(--s-mute);text-align:right;white-space:nowrap}
+#viewSummary .tags{display:inline-flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px}
+#viewSummary .tags span{border:1px solid #b9c0cc;border-radius:4px;padding:1px 6px;font-size:.68rem;color:#3b4352}
+#viewSummary .rule{background:var(--s-ink);color:#fff;padding:10px 14px;border-radius:8px;margin-bottom:14px;font-size:.88rem}
+#viewSummary .rule b{color:#ffd166}
+#viewSummary .sec{margin-bottom:16px}
+#viewSummary .sh{display:flex;align-items:stretch;margin-bottom:8px;border-bottom:1px solid var(--s-line)}
+#viewSummary .sh .n{flex:0 0 30px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;background:var(--s-ink);border-radius:6px 0 0 0}
+#viewSummary .sh .t{padding:6px 10px;font-weight:700;font-size:1rem;line-height:1.3}
+#viewSummary .sh .t small{display:block;font-weight:400;color:var(--s-mute);font-size:.78rem;margin-top:1px}
+#viewSummary .red .n{background:var(--s-red)}#viewSummary .amber .n{background:var(--s-amber)}#viewSummary .blue .n{background:var(--s-blue)}#viewSummary .green .n{background:var(--s-green)}#viewSummary .purple .n{background:var(--s-purple)}
+#viewSummary table.grid{width:100%;border-collapse:collapse;table-layout:fixed}
+#viewSummary table.grid th{background:#eef1f6;text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;padding:6px 8px;border:1px solid var(--s-line)}
+#viewSummary table.grid td{padding:8px;border:1px solid var(--s-line);vertical-align:top;font-size:.86rem;overflow-wrap:anywhere}
+#viewSummary table.grid td:first-child{border-left-width:4px}
+#viewSummary tr.r td:first-child{border-left-color:var(--s-red)}#viewSummary tr.a td:first-child{border-left-color:var(--s-amber)}#viewSummary tr.g td:first-child{border-left-color:var(--s-green)}#viewSummary tr.p td:first-child{border-left-color:var(--s-purple)}#viewSummary tr.b td:first-child{border-left-color:var(--s-blue)}
+#viewSummary .pill{display:inline-block;font-weight:700;font-size:.68rem;padding:1px 7px;border-radius:4px;color:#fff;white-space:normal;margin:2px 2px 0 0;border:none}
+/* the guideline auto-linker injects a.cite-link inside pills; its teal would sit at 1.05:1 on a solid badge */
+#viewSummary .pill a,#viewSummary .pill a.cite-link,#viewSummary .pill a:hover,#viewSummary .pill a:visited{color:inherit;text-decoration:underline;text-underline-offset:2px;font-weight:inherit}
+#viewSummary .p999{background:var(--s-red)}#viewSummary .psd{background:var(--s-amber)}#viewSummary .p2ww{background:var(--s-purple)}#viewSummary .pgp{background:var(--s-green)}
+/* auto-flow columns, not a fixed track count: a .cols block distributes however many .col cells it has,
+   so folding 4→3→2→1 cells (the standard lever for winning print height) needs no per-count rule */
+#viewSummary .cols{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);grid-template-columns:none;gap:10px;margin:0;width:auto}
+#viewSummary .col{display:block;border:1px solid var(--s-line);border-radius:6px;padding:8px 10px;font-size:.85rem;overflow-wrap:anywhere}
+#viewSummary .col h4{margin:0 0 4px;font-size:.88rem}
+#viewSummary .col.red{border-top:3px solid var(--s-red)}#viewSummary .col.amber{border-top:3px solid var(--s-amber)}#viewSummary .col.blue{border-top:3px solid var(--s-blue)}#viewSummary .col.green{border-top:3px solid var(--s-green)}#viewSummary .col.purple{border-top:3px solid var(--s-purple)}
+#viewSummary .note{border-left:4px solid var(--s-red);background:#fbeeed;padding:8px 12px;margin:10px 0;border-radius:0 6px 6px 0;font-size:.86rem}
+#viewSummary .note.amber{border-left-color:var(--s-amber);background:#fdf3e3}
+#viewSummary .note.grey{border-left-color:var(--s-mute);background:#f1f3f6}
+#viewSummary .foot{border-top:1px solid var(--s-line);margin-top:12px;padding-top:8px;font-size:.74rem;color:var(--s-mute);line-height:1.5}
+/* auto-fit collapses surplus tracks, so a folded 1-cell block fills the row while 2+ cells still pair */
+@media (max-width:900px){#viewSummary .cols{grid-auto-flow:row;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}}
+@media (max-width:640px){
+  #viewSummary .sum{padding:0 8px 16px}#viewSummary .page{padding:14px 12px 10px}
+  #viewSummary .cols{grid-auto-flow:row;grid-template-columns:1fr}
+  #viewSummary .hdr table,#viewSummary .hdr tr,#viewSummary .hdr td{display:block;width:100%}#viewSummary .pg{text-align:left;margin-top:6px}#viewSummary .tags{justify-content:flex-start}
+  #viewSummary table.grid,#viewSummary table.grid tbody,#viewSummary table.grid tr,#viewSummary table.grid td{display:block;width:100%}
+  #viewSummary table.grid colgroup,#viewSummary table.grid tr:first-child:has(th){display:none}
+  #viewSummary table.grid tr{border:1px solid var(--s-line);border-left-width:4px;border-radius:6px;margin-bottom:8px;overflow:hidden}
+  #viewSummary table.grid td{border:none;border-top:1px solid var(--s-line)}#viewSummary table.grid td:first-child{border-top:none;border-left:none;background:#f7f8fb}
+  #viewSummary tr.r{border-left-color:var(--s-red)}#viewSummary tr.a{border-left-color:var(--s-amber)}#viewSummary tr.g{border-left-color:var(--s-green)}#viewSummary tr.p{border-left-color:var(--s-purple)}#viewSummary tr.b{border-left-color:var(--s-blue)}
+}
+/* hidden print frame: the standalone A4 file is what actually prints */
+#viewSummary .sum-print{position:absolute;width:0;height:0;border:0;overflow:hidden;opacity:0;pointer-events:none}

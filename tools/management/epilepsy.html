@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Epilepsy — Protocol · Reasoning GP</title>
+<meta name="description" content="Epilepsy in primary care: the GP does not diagnose epilepsy or start AEDs. First seizure means specialist referral within 2 weeks, DVLA advice from the date of the seizure, the SUDEP conversation, valproate Pregnancy Prevention Programme, the lamotrigine–COCP interaction, and status epilepticus rescue." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/epilepsy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Epilepsy protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"⚡",
+  title:"Epilepsy — the complete guide",
+  eyebrow:"Protocol · the GP role is narrow, and every part of it is high-stakes",
+  stemTitle:"You do not diagnose epilepsy and you do not start the drug — but the DVLA advice, the SUDEP conversation, the valproate rule and the COCP interaction are all yours, and all of them are urgent",
+  stemSub:"One page for the whole condition: refer every first seizure to an epilepsy specialist within 2 weeks, give DVLA advice that runs from the date of the seizure rather than the date of the appointment, hold the SUDEP conversation NG217 mandates, know the two prescribing rules that cause the most harm (valproate in women of childbearing potential, and carbamazepine in generalised epilepsy), and get the rescue plan and seizure first aid in place before the specialist is ever seen.",
+  guideline:"NICE NG217 (2022) · DVLA · MHRA valproate PPP · BNF",
+  reviewed:"10 September 2026",
+  nextReview:"10 March 2027",
+  meta:[
+    {t:"NICE NG217 — Epilepsies in children, young people and adults (2022)"},
+    {t:"DVLA — Assessing fitness to drive"},
+    {t:"MHRA — Valproate Pregnancy Prevention Programme"},
+    {t:"BNF · Epilepsy Action · SUDEP Action"},
+    {t:"NG12 stated honestly", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Emergency</b><small>Status · 5-minute rule</small></a><a href="#confirm"><b>Characterise</b><small>Witness · semiology</small></a><a href="#workup"><b>Investigate</b><small>2 weeks · what not to do</small></a><a href="#ladder"><b>AEDs</b><small>Specialist starts, GP monitors</small></a><a href="#monitor"><b>DVLA &amp; SUDEP</b><small>Legal · mandated</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ The GP does not diagnose epilepsy and does not start AEDs", html:"NICE NG217 is unambiguous: diagnosis and AED initiation are specialist responsibilities. Every first suspected seizure goes to an epilepsy specialist — not general neurology — within 2 weeks. <b>Do not order EEG or MRI yourself</b> (specialist-coordinated), and do not reassure that \u201cit probably isn't epilepsy because the CT was normal\u201d — CT does not exclude epilepsy; MRI is required."},
+    {tone:"red", h:"DVLA runs from the date of the seizure, not today", html:"Group 1 (car, motorcycle): 6 months seizure-free from the DATE of the last seizure. Group 2 (HGV, bus, PSV): 10 years — 5 with specialist approval under specific criteria. The patient must stop driving immediately and notify the DVLA themselves. If they decline to notify and keep driving, the GP must inform the DVLA directly — the confidentiality exception for public safety. <b>Document the date, the exact rule given, and the patient's response.</b>"},
+    {tone:"amber", h:"Two prescribing rules cause the most harm", html:"NEVER carbamazepine or phenytoin in JME or generalised epilepsy — they paradoxically worsen myoclonic and absence seizures. NEVER valproate in a woman of childbearing potential without PPP compliance — <b>neural tube defects 1–2%, neurodevelopmental effects 30–40%</b>, annual acknowledgement form, MHRA mandate. <b>And never stop an AED abruptly</b> — rebound seizures, and the 6-month DVLA clock resets."},
+    {tone:"blue", h:"The COCP halves the lamotrigine level", html:"Starting a COCP reduces lamotrigine plasma levels by about 50% — a cause of breakthrough seizures — and stopping it raises them again. Dose review is needed both ways. Conversely, enzyme-inducing AEDs (carbamazepine, phenytoin, phenobarbital, primidone, oxcarbazepine, topiramate above 200 mg) make the COCP and POP unreliable. Tell the specialist the contraception before the AED is chosen."},
+    {tone:"purple", h:"SUDEP: 1 in 1000, and the conversation is mandated", html:"Approximately 1:1000 per year in poorly controlled epilepsy, about 1:10,000 with good control, against a background population risk of roughly 1:100,000. <b>NICE NG217 mandates the discussion with all patients.</b> Highest risk: nocturnal generalised tonic-clonic seizures, sleeping prone, sleeping alone, and AED non-adherence. <b>Frame it as motivation for adherence, not as a frightening prognosis.</b>"},
+    {tone:"green", h:"The 5-minute rule is what carers need", html:"Buccal midazolam 10 mg is first-line out-of-hospital rescue; if there is no response at 5 minutes, call 999. Rectal diazepam 10 mg if midazolam is unavailable; IV lorazepam in hospital. Status epilepticus is 2 or more seizures without recovery between them, or a seizure lasting more than 5 minutes. <b>Time it, recovery position, nothing in the mouth, do not restrain.</b>"}
+  ],
+  pathwaySub:"The whole consultation in five moves. Every one of them is the GP's job.",
+  pathway:[
+    {title:"Treat the emergency", html:"Seizure over 5 minutes, or 2 or more without recovery → status epilepticus. Buccal midazolam if prescribed; <b>999 at 5 minutes.</b> Also 999 for a first seizure with head injury, focal deficit, fever with meningism, or pregnancy.", alert:true},
+    {title:"Characterise the event", html:"Two narratives: what the patient remembers (prodrome, aura, partial recall) and what the witness saw (semiology, duration, post-ictal state). Hunt the provoking factors — <b>sleep deprivation, alcohol, missed meals, illness, missed doses</b> — and ask about prior morning myoclonus."},
+    {title:"Refer, and know what not to do", html:"<b>Epilepsy specialist within 2 weeks.</b> Do the <b>ECG and metabolic bloods</b>. Do NOT order EEG or MRI, do not start an AED, do not use a normal CT to reassure. Occupational health where the job carries risk."},
+    {title:"Give the information only you can give today", html:"DVLA rules and the notification duty · SUDEP in context · seizure first aid for the household · the AED–contraception interactions before the specialist chooses · trigger avoidance · water, heights and cooking safety."},
+    {title:"Then hold the long-term shared care", html:"AED prescriptions under shared care, side-effect and interaction monitoring, valproate PPP checks at every prescription, adherence, annual review, and folic acid 5 mg for any woman who might conceive."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Emergency", title:"Status epilepticus and the first-seizure emergency",
+     sub:"Most seizures stop by themselves. These are the ones that do not, and the ones that are not epilepsy.",
+     blocks:[
+       {b:"table", head:["Presentation","Meaning","Action"], rows:[
+         ["Seizure lasting more than 5 minutes, or 2 or more seizures without recovery between them","<b>Status epilepticus</b> — a medical emergency with rising mortality and neuronal injury the longer it continues","Buccal midazolam 10 mg if prescribed. If no response at 5 minutes → 999. Rectal diazepam 10 mg if midazolam is unavailable — benzodiazepines cause respiratory depression, so a single dose then 999 rather than repeated dosing at home. Hospital: IV lorazepam, then IV fosphenytoin if lorazepam fails, and general anaesthesia if refractory"],
+         ["<b>Cluster of seizures — for example 3 in 24 hours</b>","<b>Risk of progression to status.</b> Hunt the trigger: non-adherence, sleep deprivation, alcohol, intercurrent illness, a missed dose","<b>Rescue medication plan; urgent neurology review</b>"],
+         ["<b>First seizure with fever, neck stiffness or photophobia</b>","<b>CNS infection — meningitis or encephalitis</b>","<b>999</b>"],
+         ["First seizure with head injury, focal neurological deficit or failure to return to baseline","Structural intracranial cause — haemorrhage, tumour, stroke. Look for papilloedema and other features of raised ICP","<b>999, urgent imaging</b>"],
+         ["<b>Seizure in pregnancy after 20 weeks</b>","<b>Eclampsia until proved otherwise</b>","<b>999, obstetric emergency</b>"],
+         ["<b>New seizure in an older adult, or with progressive focal deficit</b>","<b>Structural lesion including tumour</b>","<b>Urgent assessment; see the NG12 note below</b>"]
+       ]},
+       {b:"why", html:"The 5-minute rule is the single most important thing to teach a household. The instruction set is short and should be given verbally and in writing: time the seizure from onset; recovery position once the jerking stops, or during if possible; do NOT restrain; do NOT put anything in the mouth; remove nearby hazards; stay with the person throughout. Call 999 if the seizure lasts more than 5 minutes, the person does not regain consciousness within 10 minutes, a further seizure follows before recovery, or an injury has occurred. Buccal midazolam can be prescribed by a GP where there is a clear risk of repeated seizures — a known cluster pattern or identified triggers — with the specialist confirming and formally training carers at the first appointment; it is not routinely prescribed after a single first seizure without recurrence risk factors."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Epilepsy itself has no NICE NG12 suspected-cancer criterion, and none should be invented for one — a first seizure is a 2-week epilepsy specialist referral under NG217, which is a different pathway from a suspected cancer referral. The NG12 adjacency that matters: where the picture is a progressive, sub-acute loss of central neurological function, NG12 advises an urgent direct-access MRI brain (or CT if MRI is contraindicated) within 2 weeks to assess for brain or CNS cancer. So a new seizure in an adult accompanied by progressive focal deficit, personality change or persistent headache is not simply \u201cnew-onset epilepsy\u201d — it needs the imaging route alongside the epilepsy referral. Restated in <a href='#refer'>Refer</a>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Characterise", title:"Characterise the event — the witness account is the diagnosis",
+     sub:"The GP contribution to the specialist's diagnosis is a good history. It cannot be reconstructed later.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Two narratives, both needed</b>","<b>What the patient remembers</b> — prodrome, aura, the last thing recalled, partial awareness. <b>What the witness saw</b> — onset (focal or generalised), semiology (tonic, clonic, automatisms, head turning), <b>duration</b>, tongue biting (lateral is suggestive), incontinence, colour, and the <b>post-ictal state</b> and its length. <b>Contact the witness directly if possible</b>"],
+         ["<b>Provoking factors</b>","<b>Sleep deprivation (the most potent trigger in idiopathic generalised epilepsy, especially JME), alcohol, missed meals, intercurrent illness or fever, missed AED doses, recreational stimulants (cocaine, amphetamine, MDMA), <b>prescribed drugs that lower the seizure threshold (tramadol, bupropion, quinolone antibiotics, mefloquine, an antipsychotic — especially clozapine — lithium, ciclosporin)</b>, benzodiazepine or alcohol withdrawal, and photosensitivity (3–5% of epilepsy).</b> A provoked seizure is not the same as epilepsy — but DVLA rules still apply until the specialist has confirmed low recurrence risk"],
+         ["<b>Ask specifically about prior events</b>","Morning myoclonic jerks (dropping the cereal bowl) suggest juvenile myoclonic epilepsy and are almost never volunteered. Also brief absences, déjà vu, epigastric rising sensations, and previous unexplained falls or nocturnal tongue biting"],
+         ["<b>The differential for transient loss of consciousness</b>","<b>Syncope</b> (prodromal pallor, sweating, tunnel vision; postural or situational trigger, postural hypotension; rapid recovery; brief myoclonic jerks are common and do NOT mean epilepsy), <b>cardiac arrhythmia</b> (exertional, no prodrome, ECG), <b>non-epileptic attack disorder</b>, hypoglycaemia, TIA, and parasomnia or non-REM arousal disorder in nocturnal events. The undifferentiated presentation is covered by the <a href='../algorithms/fits-funny-turns.html'>fits and funny turns pathway</a>"],
+         ["<b>Seizure classification (specialist confirms)</b>","<b>Focal</b> — aware or impaired awareness, with or without progression to bilateral tonic-clonic. <b>Generalised</b> — tonic-clonic, absence, myoclonic, atonic. <b>Syndromes:</b> juvenile myoclonic epilepsy, childhood absence epilepsy, and the focal epilepsies. <b>Classification drives AED choice, which is why the history matters.</b> Epilepsy is over-represented in learning disability and autism — where communication difficulty can mask both seizures and side effects, and safeguarding considerations may apply"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Febrile seizures in children</b>","Simple febrile seizure: under 15 minutes, generalised, resolves spontaneously, one episode in this illness. Reassurance: about 30% recurrence risk, but most children do not develop epilepsy, and roughly 95% have no long-term neurological consequence. Complex features — focal, longer than 15 minutes, multiple within one illness, or post-ictal weakness — need assessment for CNS infection and paediatric neurology referral. Management: paracetamol or ibuprofen for comfort rather than to prevent recurrence, <b>buccal midazolam if a seizure lasts over 5 minutes</b>, and parent education for future episodes"]
+       ]}
+     ]},
+
+    {id:"workup", nav:"Investigate", title:"Investigation and referral — and the four things not to do",
+     blocks:[
+       {b:"table", head:["Action","Detail"], rows:[
+         ["<b>Epilepsy specialist — within 2 weeks</b>","NICE NG217: all patients with a first suspected seizure are referred to a specialist in epilepsy — not general neurology — within 2 weeks. The letter should carry: seizure type and duration from the witness account; prodrome and aura; post-ictal state; trigger factors; previous episodes including morning myoclonus; family history; medications <b>especially the COCP</b>; occupation; ECG and blood results; and the DVLA discussion outcome. Ask explicitly for advice on DVLA, AED initiation and pregnancy or contraception management"],
+         ["<b>GP investigations</b>","ECG (exclude arrhythmic syncope — a 12-lead is mandatory in any TLoC; look for a long QTc, &gt;450 ms in men or &gt;470 ms in women, Brugada and pre-excitation), FBC, U&amp;E, calcium, magnesium, glucose, LFTs. Hyponatraemia, hypocalcaemia, hypomagnesaemia and hypoglycaemia are all reversible provoking causes, and a first-degree relative with epilepsy raises the recurrence risk. Pregnancy test where relevant"],
+         ["<b>Occupational health</b>","<b>Within 2–4 weeks where the job carries risk</b> — healthcare, driving, heights, machinery. Include duties and specific concerns; request a fitness-for-duty assessment and advice on temporary modification. Do not comment on professional registration — that is a professional body matter — and do not determine fitness for clinical duties unilaterally"],
+         ["<b>Do NOT order EEG or MRI yourself</b>","<b>Specialist-coordinated with the appropriate protocol.</b> An EEG requested from primary care is frequently the wrong study, and a normal EEG does not exclude epilepsy"],
+         ["<b>Do NOT start an AED</b>","<b>Specialist responsibility (NG217)</b>"],
+         ["<b>Do NOT reassure on the basis of a normal CT</b>","<b>CT does not exclude epilepsy — MRI is the required structural imaging</b>"],
+         ["<b>Do NOT give vague DVLA advice, or fail to document it</b>","Document the date, the exact rule communicated, and the patient's response"]
+       ]},
+       {b:"why", html:"The referral letter is the GP's main clinical contribution to the diagnosis. The specialist cannot re-take a witness history weeks later, and the classification — focal versus generalised, and specifically whether this is juvenile myoclonic epilepsy — determines the AED choice and therefore the pregnancy, contraception and driving consequences that follow. A letter that records \u201ccollapse ?seizure, please assess\u201d wastes the one piece of information only primary care could capture."}
+     ]},
+
+    {id:"ladder", nav:"AEDs", title:"Antiepileptic drugs — the specialist starts, the GP monitors",
+     sub:"Shared care means the GP issues, monitors and counsels. That requires knowing the pharmacology.",
+     blocks:[
+       {b:"table", head:["Setting","First-line (NICE NG217)"], rows:[
+         ["<b>Focal epilepsy</b>","<b>Lamotrigine or levetiracetam — equal first-line.</b> <b>Lamotrigine:</b> broad-spectrum, safer in pregnancy, <b>must be titrated slowly (Stevens-Johnson risk with rapid escalation)</b>, and <b>the COCP reduces its level by ~50%</b>. <b>Levetiracetam (commonly 1000 mg BD):</b> faster titration, no significant interactions, <b>renally cleared (dose-adjust in CKD)</b>, but psychiatric effects — irritability, aggression, low mood — which patients must be warned about (adjust if eGFR &lt;80). <b>Carbamazepine</b> causes <b>hyponatraemia through SIADH</b>, and dose-related <b>diplopia and ataxia</b>; it is effective in focal epilepsy but is an enzyme inducer, makes the COCP unreliable, and needs HLA-B*1502 testing before use in patients of East or South Asian ancestry"],
+         ["<b>Generalised epilepsy (JME, GTCS, absence)</b>","<b>Sodium valproate is the most effective for JME and idiopathic generalised epilepsy (commonly 1000–1500 mg/day) — and carries <b>hepatotoxicity, pancreatitis, thrombocytopenia, tremor and weight gain</b> — but the MHRA Pregnancy Prevention Programme is mandatory for any woman of childbearing potential.</b> <b>Lamotrigine (typically titrated to around 200 mg daily)</b> is effective for GTCS and absence (less so for myoclonus) and is the usual first choice for women of childbearing potential. <b>Ethosuximide is first-line for childhood absence epilepsy only</b> — not for GTCS; if GTCS coexists, valproate is added or substituted"]
+       ]},
+       {b:"warn", html:"<b>Four rules that must not be broken.</b> <b>(1) NEVER carbamazepine or phenytoin in JME or generalised epilepsy</b> — they paradoxically worsen myoclonic and absence seizures, and this is a major and recognised prescribing error. (2) NEVER valproate in a woman of childbearing potential without PPP compliance — an MHRA mandate, with an annual acknowledgement form, confirmed at every prescription. <b>(3) NEVER stop an AED abruptly</b> — rebound seizures follow, reduction must be a gradual specialist-supervised taper, and discontinuation is only considered after a long seizure-free period as a shared decision, and the 6-month DVLA clock resets. (4) HLA-B*1502 before carbamazepine in patients of East or South Asian ancestry — carriers have around a tenfold increased risk of Stevens-Johnson syndrome."},
+       {b:"dl", rows:[
+         ["<b>Valproate PPP — the GP's monitoring duties</b>","At EVERY prescription: confirm effective contraception is in place; confirm the annual specialist PPP review has occurred; confirm the patient has signed the annual acknowledgement form. <b>Check the patient carries the MHRA Valproate User Card.</b> Risks to state plainly: neural tube defects in 1–2%, and neurodevelopmental effects in 30–40%. If planning pregnancy: switch AED before conception (levetiracetam or lamotrigine for JME), specialist-led, with high-dose folic acid 5 mg daily pre-conception — and never stop valproate abruptly"],
+         ["<b>Contraception and AED interactions</b>","Enzyme-inducing AEDs — carbamazepine, phenytoin, phenobarbital, primidone, oxcarbazepine, topiramate above 200 mg — significantly reduce COCP and POP efficacy, creating pregnancy risk; a non-hormonal or higher-dose option is needed — a copper IUD or the Nexplanon implant is unaffected by enzyme induction, whereas a standard 30 microgram ethinylestradiol pill such as Microgynon and progestogen-only pills are. Lamotrigine runs the other way: the COCP reduces lamotrigine levels by about 50%, so seizure risk rises when a COCP is started and levels rise again when it is stopped — dose review both ways"],
+         ["<b>Epilepsy in pregnancy</b>","Lamotrigine is relatively safe and is preferred for women with epilepsy — but its levels fall in pregnancy through increased renal clearance, so the dose often needs increasing to maintain control. Folic acid 5 mg daily from pre-conception to 12 weeks for all women with epilepsy who might conceive. Joint obstetric and neurology management. Valproate is teratogenic and carbamazepine carries a cleft palate risk; seizures in pregnancy carry their own risks — placental abruption, pre-eclampsia, fetal hypoxia, trauma from falls — so control matters more, not less"]
+       ]},
+       {b:"why", html:"The GP's prescribing role in epilepsy is issuing under shared care, monitoring side effects and interactions, managing adherence and reviewing annually — and every one of those requires understanding the pharmacology rather than simply reissuing. The two interactions that most often cause breakthrough seizures in practice are the COCP–lamotrigine interaction and enzyme-inducing AEDs undermining hormonal contraception, and both are usually discovered in primary care rather than in clinic. Around 70% of people with epilepsy achieve complete seizure control on medication — a figure worth saying out loud, because the prognosis patients imagine is usually far worse than the reality."}
+     ]},
+
+    {id:"monitor", nav:"DVLA &amp; SUDEP", title:"Driving, SUDEP and safety — the conversations only the GP will have",
+     blocks:[
+       {b:"table", head:["Domain","What to do"], rows:[
+         ["<b>DVLA — Group 1 (car, motorcycle)</b>","<b>6 months seizure-free from the DATE of the last seizure.</b> The patient <b>stops driving immediately</b> and notifies the DVLA themselves at gov.uk. The DVLA then writes to the GP and specialist for medical evidence before reinstatement"],
+         ["<b>DVLA — Group 2 (HGV, bus, PSV)</b>","10 years seizure-free; 5 years with specialist approval under specific criteria. Sleep-only seizure rules differ — specialist guidance"],
+         ["<b>If the patient keeps driving</b>","The GP must inform the DVLA directly — the confidentiality exception for public safety (GMC guidance). <b>Do not issue a fit-to-drive letter without specialist involvement.</b> Document everything"],
+         ["<b>SUDEP</b>","<b>NICE NG217 mandates the discussion.</b> ~1:1000 per year in poorly controlled epilepsy; ~1:10,000 with good control; background population risk ~1:100,000. Most events are nocturnal, associated with <b>nocturnal GTCS, sleeping prone, sleeping alone and AED non-adherence</b>. Frame as motivation for adherence and control, not as a frightening prognosis"],
+         ["<b>Safety measures</b>","Shower rather than bath while seizures are uncontrolled; never lock the bathroom door; tell a household member. Swim only with a lifeguard who knows, and never alone. Use the back rings of the hob and sit to cook; prefer the microwave. No ladders or work at heights. Inform the household about the recovery position and the 5-minute rule"],
+         ["<b>Trigger management</b>","Consistent sleep times including days off; avoid alcohol combined with sleep deprivation or missed meals; eat regularly; treat febrile illness proactively. Photosensitive epilepsy (3–5%): polarised sunglasses, screen filters, viewing distance"],
+         ["<b>Annual review</b>","Seizure frequency and diary, AED adherence and side effects, interactions (especially contraception), valproate PPP status, DVLA status, SUDEP discussion revisited, mood (PHQ-9 — depression and anxiety are common and are themselves seizure triggers), bone health on enzyme-inducing AEDs, alcohol (AUDIT-C), and pregnancy intentions"],
+         ["<b>Resources</b>","Epilepsy Action (epilepsy.org.uk, 0808 800 5050), Epilepsy Society, SUDEP Action. Written seizure first aid card for patient and carer; seizure diary or app"]
+       ]},
+       {b:"why", html:"The DVLA conversation cannot be deferred, and it is a common source of both patient harm and medicolegal exposure. The rule runs <b>from the date of the seizure, not the date of the consultation</b> — which frequently means a patient who has driven to the appointment has already been driving unlawfully, and needs to be told so kindly but unambiguously. <b>Soft or vague advice is the failure mode.</b> The documentation standard is: <em>\u201cDVLA advice given [date]: must not drive from date of seizure [date]; Group 1 requires 6 months seizure-free; patient must notify DVLA at gov.uk. Patient acknowledged / declined. [Action taken.]\u201d</em>"},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999", html:"Seizure over 5 minutes · a second seizure before recovery · not regaining consciousness within 10 minutes · injury during the seizure · first seizure with fever and neck stiffness, head injury or focal deficit · seizure after 20 weeks of pregnancy."},
+         {tone:"amber", h:"🟠 Urgent review", html:"Cluster of seizures · breakthrough seizure after a period of control (check adherence, sleep, alcohol, illness, interactions) · new AED side effects, rash on lamotrigine, or mood change on levetiracetam."},
+         {tone:"red", h:"💊 Never stop abruptly", html:"\u201cDon't ever stop the medication suddenly, even if you've been seizure-free — it can bring seizures back, and it restarts the six-month driving clock.\u201d"},
+         {tone:"green", h:"🤰 Planning pregnancy", html:"Come before conceiving, not after — the AED may need changing and folic acid 5 mg starts pre-conception."}
+       ]},
+       {b:"say", html:"There are two things I have to be straight with you about today, and then some good news. First, the law says you must stop driving from the date of the seizure — not from today — and you need to tell the DVLA yourself; for an ordinary licence it's six months seizure-free. I'm sorry, I know that's a big practical hit. Second, I can't diagnose epilepsy and I can't start medication — that's the specialist's job, and I'm referring you urgently to be seen within two weeks. What I can do is give you the information you need now: how to keep safe, what your flatmate should do if it happens again, and one thing worth telling the specialist — you're on the pill, and that interacts with some of the epilepsy medicines in both directions. And the good news: around seven in ten people with epilepsy become completely seizure-free on treatment."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999", html:"Status epilepticus (over 5 minutes, or 2 or more seizures without recovery) · first seizure with fever and meningism, head injury or focal deficit · seizure after 20 weeks of pregnancy (eclampsia)."},
+         {tone:"amber", h:"Epilepsy specialist — within 2 weeks", html:"All first suspected seizures (NICE NG217) — an epilepsy specialist, not general neurology. Also breakthrough seizures on treatment, and any woman on valproate planning pregnancy."},
+         {tone:"purple", h:"NG12 — the adjacency, stated honestly", html:"<b>Epilepsy has no NG12 criterion of its own.</b> But progressive sub-acute loss of central neurological function → urgent direct-access MRI brain (or CT if MRI is contraindicated) within 2 weeks for suspected brain or CNS cancer — so a new seizure with progressive focal deficit, personality change or persistent headache needs that route alongside the epilepsy referral."},
+         {tone:"blue", h:"Occupational health", html:"Within 2–4 weeks where the job carries risk — healthcare, driving, heights, machinery. Fitness-for-duty assessment and temporary modification. Not professional registration advice — that is a professional body matter."},
+         {tone:"green", h:"Joint obstetric + neurology", html:"Pregnancy in a woman with epilepsy, and pre-conception planning where an AED switch is needed."},
+         {tone:"cream", h:"GP shared care", html:"AED prescribing under shared care, side-effect and interaction monitoring, valproate PPP checks at every prescription, adherence support, annual review, DVLA documentation, and SUDEP and safety counselling."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 24-year-old nurse attends three days after her first witnessed generalised tonic-clonic seizure at a party — little sleep the night before, four units of alcohol, missed meals. She is on the COCP, has read about SUDEP online and is frightened, and is worried about her registration. Her opening line: <em>\u201cI drove here today \u2014 am I OK to drive?\u201d</em>"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Addresses the DVLA question first, kindly and unambiguously — the rule runs from the date of the seizure, so she could not lawfully have driven here; knows the GP does not diagnose epilepsy or start an AED, and refers to an epilepsy specialist within 2 weeks; <b>does not order EEG or MRI, and does not reassure on a normal CT</b>; <b>addresses SUDEP with accurate figures rather than deflecting</b>; flags the COCP–lamotrigine interaction so she can raise it with the specialist; teaches <b>seizure first aid and the 5-minute rule to the flatmate</b>; refers to <b>occupational health without commenting on NMC registration</b>; and — the step candidates miss — <b>documents the DVLA advice, the exact rule and her response.</b>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG217 — Epilepsies in children, young people and adults (2022)</b><br><a href="https://www.nice.org.uk/guidance/ng217" rel="noopener">nice.org.uk/guidance/ng217</a><span class="rd"> — the GP does not diagnose epilepsy or initiate AEDs; first suspected seizure referred to an epilepsy specialist within 2 weeks; first-line AED choice by seizure type; the mandated SUDEP discussion</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive: a guide for medical professionals</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — Group 1: 6 months seizure-free from the date of the last seizure; Group 2: 10 years (5 with specialist approval); the patient\u2019s duty to notify, and the GP\u2019s duty to inform the DVLA if the patient continues to drive against advice</span></li>'+
+         '<li><b>MHRA — Valproate Pregnancy Prevention Programme</b><span class="rd"> — valproate must not be used in women of childbearing potential unless the PPP is in place and alternatives have failed; annual acknowledgement form; Valproate User Card; neural tube defects 1–2% and neurodevelopmental effects 30–40%</span></li>'+
+         '<li>GMC — Confidentiality: patients\u2019 fitness to drive and reporting concerns to the DVLA<span class="rd"> — the public-safety confidentiality exception behind the duty to inform</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion applies to epilepsy; the adjacency is urgent direct-access MRI (or CT if MRI is contraindicated) within 2 weeks for progressive, sub-acute loss of central neurological function</span></li>'+
+         '<li><b>Epilepsy Action, Epilepsy Society and SUDEP Action</b><br><a href="https://www.epilepsy.org.uk" rel="noopener">epilepsy.org.uk</a> · helpline <b>0808 800 5050</b><span class="rd"> — patient resources, seizure first aid cards and SUDEP information</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — lamotrigine, levetiracetam, carbamazepine, sodium valproate, ethosuximide, buccal midazolam, rectal diazepam and lorazepam dosing and interactions</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Epilepsy — NICE NG217 (2022), DVLA Assessing fitness to drive, the MHRA Valproate Pregnancy Prevention Programme, GMC confidentiality guidance and the BNF. The GP does not diagnose epilepsy or initiate antiepileptic drugs: refer every first suspected seizure to an epilepsy specialist within 2 weeks. Undifferentiated transient loss of consciousness is covered by the <a href=\"../algorithms/fits-funny-turns.html\">fits and funny turns pathway</a>. Verify all doses against the current BNF before prescribing, and follow local shared-care agreements."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

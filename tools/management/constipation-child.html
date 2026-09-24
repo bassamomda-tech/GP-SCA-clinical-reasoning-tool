@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Constipation (child) — Protocol · Reasoning GP</title>
+<meta name="description" content="Idiopathic constipation in children, diagnosis and management on one page: the organic red flags, Rome IV criteria and the Bristol Stool Chart, why overflow soiling is not diarrhoea, disimpaction before maintenance with macrogol doses, behavioural and school interventions, and why stopping too soon is the commonest cause of relapse." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/constipation-child.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Constipation child protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1F9D2}",
+  title:"Constipation in children \u2014 the complete guide",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Disimpact first, maintain for months, and never treat the soiling as diarrhoea",
+  stemSub:"One page for the whole condition: exclude the organic red flags, diagnose idiopathic constipation positively with Rome IV and the Bristol chart, recognise that soft soiling around a loaded rectum is overflow rather than diarrhoea, clear the impaction before starting maintenance, then keep the macrogol going for months with behavioural and school support \u2014 because stopping early re-establishes the painful withholding cycle.",
+  guideline:"NICE CG99 · Rome IV · BNFC",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"NICE CG99 \u2014 Constipation in children (2010, upd. 2017)"},
+    {t:"NICE CG99 \u00b7 Rome IV criteria"},
+    {t:"ERIC \u2014 childhood continence charity"},
+    {t:"BNFC for all doses"},
+    {t:"NG12: unexplained abdominal mass in a child", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Hirschsprung\'s \u00b7 spine \u00b7 growth</small></a><a href="#confirm"><b>Confirm</b><small>Rome IV \u00b7 Bristol \u00b7 overflow</small></a><a href="#workup"><b>Work-up</b><small>Examine \u00b7 no PR \u00b7 no AXR</small></a><a href="#ladder"><b>Treat</b><small>Disimpact \u2192 maintain</small></a><a href="#refer"><b>Refer</b><small>Paeds \u00b7 psychology</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 The red flags that mean it is not idiopathic", html:"Failure to pass meconium within 48 hours of birth (not passed >48 h; delayed meconium <48 h excluded), ribbon stools from birth, failure to thrive (faltering growth), abdominal distension with obstipation, neurological signs or a sacral dimple, or an abnormally positioned anus. >95% of childhood constipation is functional \u2014 but these features mandate investigation or referral."},
+    {tone:"amber", h:"Soft soiling is overflow, not diarrhoea", html:"Encopresis is involuntary leakage of soft stool around an impacted mass, and it is misdiagnosed as diarrhoea in up to 30% of cases \u2014 leading to antidiarrhoeal treatment that worsens the impaction. <b>The key question: is the soiling soft or liquid?</b> If yes, the rectum is loaded."},
+    {tone:"blue", h:"Disimpact BEFORE maintenance", html:"<b>NICE CG99 is explicit \u2014 disimpact first, then maintain.</b> Starting maintenance doses in a loaded child causes worsening soiling and treatment failure. <b>Warn parents that soiling briefly gets messier during the clear-out</b> \u2014 that is expected, not failure."},
+    {tone:"green", h:"Macrogol first line, titrated to 1\u20132 soft stools a day", html:"Movicol Paediatric Plain: 1 sachet/day at 2\u20136 years, 2 sachets/day at 6\u201312 years, titrated to effect. A Cochrane review found it <b>superior to lactulose</b> for frequency and consistency, and superior to enemas for quality of life. <b>Safe long-term.</b>"},
+    {tone:"purple", h:"Stopping too soon is the commonest failure", html:"The relapse rate when laxatives stop within 4 weeks of stools normalising is about 70%. Treat for <b>3\u20136 months minimum</b>, wean only after <b>4 or more consecutive weeks</b> of normal stools, and reduce by about half a sachet a week. <b>This is a marathon, not a sprint \u2014 say so.</b>"},
+    {tone:"plain", h:"Two things GPs skip", html:"<b>Never perform a digital rectal examination in primary care</b> \u2014 CG99 restricts it to specialists. And <b>do not order an abdominal X-ray</b>: it correlates poorly with symptoms and changes management in under 5% of cases."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is the one that separates functional from organic.",
+  pathway:[
+    {title:"Exclude organic disease", html:"Delayed meconium, ribbon stools, faltering growth, distension with bilious vomiting, neurological or spinal signs, abnormal anus, an abdominal mass \u2014 Hirschsprung's, hypothyroidism, coeliac disease, spinal dysraphism.", alert:true},
+    {title:"Diagnose it positively", html:"<b>Rome IV criteria</b> and the <b>Bristol Stool Chart</b> rather than \u201cnot going enough\u201d. Identify the <b>precipitant</b> \u2014 toilet training, school start, a fissure \u2014 and ask whether the soiling is soft (overflow)."},
+    {title:"Examine \u2014 and know what not to do", html:"Plot growth, palpate the abdomen for a faecal mass, inspect the perianal area and the spine. <b>No digital rectal examination. No routine abdominal X-ray.</b> Bloods only where an organic cause is suspected."},
+    {title:"Disimpact, then maintain", html:"Escalating macrogol until 2 days of soft stool, then a maintenance dose titrated to <b>1\u20132 soft stools a day</b>, adding senna if macrogol alone is not enough. <b>Behavioural work runs alongside, not afterwards.</b>"},
+    {title:"Review and keep going", html:"<b>1\u20132 weeks</b> to confirm disimpaction, <b>4\u20136 weeks</b> to titrate, <b>3 months</b> for a full review, then a slow wean at <b>6\u201312 months</b>. Reinforce the timescale at every visit."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude first", title:"Organic and surgical causes \u2014 exclude these before treating",
+     sub:">95% of childhood constipation is idiopathic. These features are the exceptions that matter.",
+     blocks:[
+       {b:"table", head:["Red flag","Suggests","Action"], rows:[
+         ["<b>Delayed meconium \u2014 not passed within 48 hours of birth</b>","<b>Hirschsprung's disease</b>","<b>Urgent neonatal referral</b>"],
+         ["<b>Ribbon stools from birth</b>","Anorectal malformation or Hirschsprung's","<b>Urgent paediatrics</b>"],
+         ["<b>Abdominal distension with obstipation</b>","No stool or flatus, <b>bilious vomiting</b>, distension \u2192 bowel obstruction","<b>999</b>"],
+         ["<b>Bilious vomiting</b>","Especially in a neonate \u2014 <b>malrotation, intussusception, Hirschsprung's</b>","<b>999</b>"],
+         ["Blood in stool not explained by a fissure","Significant rectal bleeding","<b>Urgent paediatrics</b>"],
+         ["<b>Neurological features</b>","Lower limb weakness, abnormal gait, absent anal reflex, <b>sacral dimple or pit</b> \u2192 spinal pathology","<b>Urgent MRI spine and paediatrics</b>"],
+         ["<b>Faltering growth with constipation</b>","<b>Hypothyroidism, coeliac disease, Hirschsprung's</b>","<b>Blood tests and paediatric referral</b>"],
+         ["<b>Abdominal mass</b>","Palpable mass with constipation \u2014 <b>faecolith versus malignancy</b>","<b>Same-day review</b> \u2014 and see the NG12 route below"]
+       ]},
+       {b:"why", html:"<b>Hirschsprung's disease affects 1 in 5,000 children</b> \u2014 absent ganglion cells in the colon cause a functional obstruction. It classically presents with <b>delayed meconium >48 h in a term neonate</b> but can present later with severe constipation, and needs a surgical <b>pull-through</b> procedure. <b>Missing it leads to toxic megacolon.</b> Separately, spinal cord anomalies (tethered cord, sacral agenesis) can present as chronic constipation with urinary symptoms \u2014 a sacral dimple or hairy patch above the natal cleft warrants <b>spinal ultrasound in infants and MRI in older children</b>."},
+       {b:"dl", rows:[
+         ["<b>NG12 \u2014 the children and young people route that applies here</b>","An unexplained palpable abdominal mass in a child, or an enlarged abdominal organ, is an NG12 criterion: refer very urgently (for assessment within 48 hours) for suspected neuroblastoma or Wilms' tumour. A faecal mass in a constipated child is usually indentable and \u201crolls\u201d under the fingers \u2014 but a mass that is not clearly faecal must go down the very-urgent route, not into a laxative trial. The same table gives the other paediatric routes to hold in mind in an unwell child: unexplained petechiae, hepatosplenomegaly or generalised lymphadenopathy \u2192 very urgent full blood count within 48 hours plus immediate paediatric referral for leukaemia. Constipation itself has no NG12 criterion, and none should be invented for it"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Confirm", title:"Diagnose it positively \u2014 Rome IV and the Bristol chart",
+     sub:"\u201cNot going enough\u201d and \u201chard stools\u201d are subjective. Define it clearly for the family and for the record.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Rome IV criteria \u2014 under 4 years</b>","<b>≥2 of the following for ≥1 month:</b> ≤2 defecations a week; ≥1 episode of faecal incontinence a week (once toilet-trained); a history of <b>retentive posturing</b>; a history of painful or hard bowel movements; a large faecal mass in the rectum; large-diameter stools that obstruct the toilet"],
+         ["<b>Rome IV criteria \u2014 4 years and over</b>","<b>≥2 of the above for ≥1 month</b>, not meeting IBS criteria, with ≥1 diagnostic criterion present <b>at least once a week</b>"],
+         ["<b>Bristol Stool Chart</b>","<b>Types 1\u20132 = constipated</b> (hard, lumpy). <b>Types 3\u20134 = normal.</b> <b>Types 5\u20137 = loose or diarrhoea.</b> <b>Show families the chart</b> \u2014 it normalises the discussion and improves history accuracy"],
+         ["<b>Frequency norms</b>","Breastfed neonate: up to 7 a day is normal. Formula-fed: 1\u20132 a day. Age 1\u20133 years: 1\u20132 a day. School age: from once a day to once every 3 days. <b>Fewer than 3 a week in a school-age child is constipation</b>"],
+         ["<b>Faecal soiling (encopresis)</b>","Involuntary leakage of soft stool around an impacted mass \u2014 often misidentified as diarrhoea. <b>The key question: is the soiling soft or liquid?</b> If yes, this is <b>overflow incontinence from a loaded rectum</b>, not diarrhoea. Always ask about the hard stools underneath it"],
+         ["Onset and trigger","Identify the precipitant \u2014 toilet training, starting school, a diet change, an illness, travel, or a painful fissure \u2192 the pain-avoidance cycle. Understanding the trigger guides treatment"]
+       ]},
+       {b:"table", head:["Pattern","Recognise it by","What it means"], rows:[
+         ["<b>Functional (idiopathic) constipation</b>","No red flags, normal examination, no organic cause","<b>>95% of childhood constipation.</b> Behavioural and dietary factors predominate \u2014 laxatives plus behavioural support"],
+         ["<b>Faecal impaction</b>","<b>Overflow soiling</b>, a palpable abdominal mass, a prolonged history, soiling despite apparent effort","<b>Requires disimpaction before maintenance laxatives</b> \u2014 assess for it on examination"],
+         ["<b>Organic constipation</b>","Any red flag. <b>Hypothyroidism</b> (weight gain, dry skin, slow pulse, goitre); <b>coeliac disease</b> (faltering growth, anaemia); <b>cystic fibrosis</b> (steatorrhoea); <b>hypercalcaemia</b>","Consider when laxatives are failing \u2014 screen with <b>TSH and free T4, coeliac serology and a metabolic panel</b>"],
+         ["<b>The pain\u2013fear cycle</b>","Hard stool \u2192 pain \u2192 withholding \u2192 harder stool \u2192 more pain \u2192 more withholding","<b>Breaking it needs laxatives AND behavioural strategies</b> \u2014 address the fear explicitly"],
+         ["Dietary-driven","Low fibre, low fluid, <b>excessive cow's milk (>500 mL a day in toddlers)</b>, few fruit and vegetables","Common at weaning and in school-age children with selective eating"],
+         ["Situational","<b>Starting school</b> (reluctant to use unfamiliar toilets), holidays, illness, a change of routine","Identify and address the trigger directly"]
+       ]},
+       {b:"warn", html:"Faecal impaction must be disimpacted with high-dose macrogol before maintenance is started. Starting maintenance doses in a loaded child leads to worsening soiling and treatment failure \u2014 <b>NICE CG99 is explicit: disimpact first, then maintain</b>. And the pain\u2013fear cycle explains why laxatives alone are insufficient: once a child has experienced painful defecation, <b>withholding becomes a conditioned response</b>."}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Examination and investigations \u2014 and what not to do",
+     sub:"Functional constipation needs no investigations. Investigate only to exclude an organic cause.",
+     blocks:[
+       {b:"table", head:["Examine","Looking for","Why"], rows:[
+         ["<b>Growth and nutrition</b>","<b>Plot height and weight on a centile chart</b>","<b>Faltering growth with constipation triggers the organic screen</b> (coeliac, hypothyroid). Obesity with constipation \u2192 dietary assessment"],
+         ["<b>Abdomen</b>","Palpate all quadrants \u2014 a left iliac fossa or suprapubic faecal mass is palpable in 50% of impaction. Is it <b>indentable</b>, with a \u201crolling\u201d feel? Usually non-tender","Pain suggests a different diagnosis. <b>Abdominal palpation is sufficient to detect impaction in most cases</b>"],
+         ["Perianal inspection","<b>Fissures</b> (linear tears at 6 or 12 o'clock \u2014 confirm the hard-stool cause), <b>skin tags</b>, soiling staining, and the anal position \u2014 an anteriorly placed anus suggests a congenital anomaly","<b>Never perform a digital rectal examination in primary care</b>"],
+         ["<b>Spine and lower limbs</b>","A sacral pit, dimple or hairy patch >5mm above the natal cleft \u2192 MRI spine (tethered cord). Leg power, tone, reflexes; the <b>anal reflex</b> if there is concern","A neurological deficit means MRI"],
+         ["Thyroid","<b>Goitre \u2192 thyroid function tests.</b> Bradycardia, dry skin, slow reflexes","Hypothyroidism causes constipation, growth failure and delayed bone age"],
+         ["<b>Developmental and psychosocial</b>","Autism spectrum disorder (ASD) is associated with functional constipation; toileting anxiety is common. Observe the parent\u2013child interaction","Safeguarding awareness if the soiling is causing significant distress and the parental response is harsh"]
+       ]},
+       {b:"table", head:["Investigation","When","Notes"], rows:[
+         ["<b>Do NOT order routinely \u2014 abdominal X-ray (AXR)</b>","Never, for diagnosis or monitoring","NICE CG99 advises against it \u2014 poor correlation with symptoms, radiation exposure, and it changes management in <5% of cases"],
+         ["<b>Never \u2014 digital rectal examination in primary care</b>","\u2014","Distressing, unnecessary and potentially harmful. CG99 restricts it to specialists where the diagnosis is uncertain"],
+         ["TFTs (TSH and T4)","Faltering growth, dry skin, bradycardia, goitre, delayed puberty","Hypothyroidism"],
+         ["<b>Coeliac serology \u2014 tTG IgA plus total IgA</b>","Faltering growth, anaemia, fatigue, abdominal pain, family history","<b>Coeliac disease can present primarily as constipation in children</b>"],
+         ["Calcium and metabolic panel","Polydipsia with constipation","<b>U&amp;E, calcium, glucose and bicarbonate</b> \u2014 hypercalcaemia, diabetes insipidus, chronic acidosis"],
+         ["Rectal suction biopsy","<b>Hospital, paediatric surgeons only</b>","The definitive test for Hirschsprung's \u2014 <b>absent ganglion cells</b>. Do not refer for it without clinical suspicion"],
+         ["<b>Spine MRI</b>","<b>Hospital</b> \u2014 spinal signs, deep sacral dimple, hair patch, leg weakness","Do not delay \u2014 a tethered cord causes progressive irreversible damage"]
+       ]},
+       {b:"why", html:"Coeliac disease affects 1 in 100 children but is diagnosed in fewer than 1 in 4 of those affected, and constipation is an atypical but recognised presentation. <b>tTG IgA is highly sensitive (95%) and specific (97%)</b> and should be considered in any child with unexplained chronic constipation who fails to respond to laxatives."}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"The CG99 laxative ladder \u2014 disimpaction then maintenance",
+     sub:"Always disimpact first if impacted. Explain up front that treatment will be needed for months.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Phase 1", title:"Disimpaction \u2014 escalating macrogol", when:"overflow soiling or a palpable faecal mass",
+          html:"Movicol Paediatric Plain (macrogol), escalating daily until disimpaction, continued until 2 days of clear soft stool \u2014 it may take 1\u20132 weeks. The two sources give different escalation regimens because the dose is age-banded in the BNFC: either from 4 sachets on day 1, increasing by 2 sachets a day to a maximum of 12 a day; or from 2 sachets on day 1, increasing by 2 a day to a maximum of 8 \u2014 <b>use the BNFC band for the child's age</b>. <b>Warn parents that soiling temporarily increases.</b> Add a stimulant (<b>senna</b>) if macrogol alone is insufficient."},
+         {step:"Step 1", title:"Maintenance macrogol \u2014 first line", when:"start as disimpaction completes",
+          fromLabel:"do not stop after the clear-out",
+          html:"Movicol Paediatric Plain: 1 sachet/day at 2\u20136 years, 2 sachets/day at 6\u201312 years \u2014 titrated to achieve 1\u20132 soft stools a day (commonly 1\u20134 sachets daily by age). <b>NICE first line.</b>"},
+         {step:"Step 2", title:"Add a stimulant", when:"macrogol alone insufficient",
+          fromLabel:"still not 1\u20132 soft stools a day",
+          html:"Senna 2.5\u20135 mg at 2\u20134 years, 5\u201310 mg at 4\u201312 years, at night \u2014 or <b>sodium picosulfate 2.5\u20135 mg at night</b>. Dose by age per BNFC."},
+         {step:"Step 3", title:"Lactulose \u2014 if macrogol not tolerated", when:"alternative osmotic",
+          fromLabel:"macrogol refused or not tolerated",
+          html:"Lactulose 2.5 mL BD (1\u20135 years), 5 mL BD (5\u201310 years), 10 mL BD (10\u201312 years). An osmotic laxative \u2014 may cause flatulence."},
+         {step:"Step 4", title:"Rectal treatments \u2014 last resort", when:"oral route failed",
+          fromLabel:"oral disimpaction unsuccessful",
+          html:"Glycerol suppositories for short-term disimpaction in infants or where the oral route fails \u2014 a 1 g suppository for infants, 2 g for children. <b>Phosphate enema and manual evacuation are hospital-initiated only</b>, if all oral treatment fails."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"\ud83c\udf7c Infants under 1 year", html:"Breastfed: dietary advice to the mother. Formula-fed: extra water between feeds. <b>Not macrogol under 1 year (<1 yr)</b> \u2014 <b>lactulose 2.5 mL BD</b> if needed. <b>No senna under 2 years.</b> Children <1 year have a higher rate of organic pathology, so review them more carefully and refer if initial dietary measures fail."},
+         {tone:"blue", h:"\u23f3 Duration \u2014 the point families most need to hear", html:"Typically 3\u20136 months minimum for functional constipation. Do NOT stop abruptly \u2014 wean gradually once stools have been consistently normal for 4 weeks. The relapse rate when laxatives are stopped within 4 weeks of normalisation is about 70%."}
+       ]},
+       {b:"warn", html:"Do not stop maintenance too soon \u2014 it is the commonest cause of relapse, and the commonest reason treatment appears to have failed. Families stop when stools normalise, but the rectal muscle has been stretched and needs months of normal function to recover its sensitivity. <b>And do not rely on diet alone as treatment.</b>"},
+       {b:"why", html:"<b>Macrogol (Movicol) is NICE CG99's first-line choice</b> \u2014 it works osmotically, is tasteless and is well tolerated. A Cochrane review (2012) found it superior to lactulose for stool frequency and consistency, and superior to enemas for quality of life, and it is <b>safe for long-term use</b>. Counsel families explicitly: <b>this is a marathon, not a sprint.</b>"}
+     ]},
+
+    {id:"lifestyle", nav:"Behaviour", title:"Diet, toileting and behaviour \u2014 co-treatment, not closing advice",
+     sub:"Behavioural interventions with laxatives achieve remission in 60\u201370% at 12 months, against 50% with laxatives alone.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"\ud83d\udca7 Fluid intake", html:"<b>Aim for 6\u20138 cups a day of water or diluted squash</b> \u2014 insufficient fluid is a major cause of hard stool. <b>Reduce excessive cow's milk (>500 mL a day in toddlers)</b>: it fills the stomach without fibre and displaces fruit and vegetables."},
+         {tone:"green", h:"\ud83e\udd66 Dietary fibre", html:"<b>Age plus 5 grams of fibre a day</b> \u2014 so a 6-year-old needs about <b>11 g/day</b>. Practically: 2 portions of fruit, 2 of vegetables, and wholegrain bread or cereals. <b>Prunes and kiwi fruit have specific evidence</b> (a sorbitol and fibre effect)."},
+         {tone:"blue", h:"\ud83d\udebd Toilet routine", html:"<b>Sit on the toilet for 5\u201310 minutes after meals</b> to use the <b>gastrocolic reflex</b>. <b>Feet flat on the floor or a footstool, knees above hips</b> \u2014 the squatting position relaxes the puborectalis. <b>Star chart or reward system for sitting, not for producing a stool.</b>"},
+         {tone:"plain", h:"\ud83c\udfc3 Physical activity", html:"Regular exercise promotes bowel motility \u2014 <b>aim for 60 minutes of moderate activity daily</b>, and reduce screen time, since sedentary behaviour is associated with constipation."},
+         {tone:"amber", h:"\ud83c\udfeb School toilet access", html:"A 2021 study found 85% of children avoided school toilets at some point because of privacy, hygiene or bullying \u2014 and withholding all day perpetuates the problem. A GP letter to the school requesting accessible, supervised toilet time is a simple, free intervention that significantly helps."},
+         {tone:"green", h:"\ud83d\udde3\ufe0f De-medicalise the language", html:"<b>Avoid blaming the child for soiling \u2014 it is involuntary.</b> Explain it as <em>\u201cthe poo is just slipping out because the bowel is too full.\u201d</em> Reducing shame improves cooperation with treatment and long-term outcomes."},
+         {tone:"cream", h:"\ud83d\udcd8 ERIC and the wider team", html:"ERIC \u2014 Education and Resources for Improving Childhood Continence \u2014 has excellent family resources at eric.org.uk, helpline 0808 169 9949. Keep a <b>bowel-habit diary</b>, involve the <b>health visitor or school nurse</b>, and address toilet anxiety directly."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Follow-up, monitoring and safety-netting",
+     sub:"Constipation is one of the most under-followed conditions in paediatric primary care.",
+     blocks:[
+       {b:"table", head:["When","What","Action"], rows:[
+         ["<b>1\u20132 weeks</b>","Confirm disimpaction is complete","<b>No more soiling, palpable mass gone \u2192 transition to maintenance.</b> Assess family understanding and adherence"],
+         ["<b>4\u20136 weeks</b>","Is maintenance achieving <b>1\u20132 soft stools a day</b>?","<b>Adjust the dose up or down.</b> Reinforce the toilet routine; ask about school, fluid and diet"],
+         ["<b>3 months</b>","Full review","Is the soiling resolved? Any growth concern? <b>Organic screen if still not responding.</b> Consider escalating the dose or adding a stimulant; <b>psychological referral if the family is overwhelmed</b>"],
+         ["<b>6\u201312 months</b>","Begin the wean","Only when there have been 4 or more consecutive weeks of normal stools, no soiling, and the child is confident using the toilet. Wean (taper) slowly \u2014 reduce by half a sachet a week. On relapse, restart the previous dose immediately"],
+         ["<b>Documentation</b>","Every visit","Record baseline stool frequency, Bristol score, soiling frequency, abdominal examination, laxative dose and the follow-up plan \u2014 essential for continuity and for any referral"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udd34 Same-day", html:"\u201cSudden tummy pain with swelling and vomiting \u2014 come straight in; that could be a blockage.\u201d Also if the child becomes acutely unwell, or there is <b>significant rectal bleeding beyond a small fissure</b>."},
+         {tone:"amber", h:"\ud83d\udfe0 Within a week", html:"<b>Soiling worsening significantly on maintenance</b> (may need re-disimpaction) \u00b7 the child refusing all food or fluids \u00b7 <b>new neurological symptoms \u2014 leg weakness or urinary incontinence</b>."},
+         {tone:"blue", h:"\ud83d\udca9 Soiling is overflow", html:"\u201cLeaking usually means a backlog of hard stool, not naughtiness \u2014 we treat the constipation, not the leaking.\u201d"},
+         {tone:"green", h:"\u23f3 Keep going", html:"\u201cKeep the laxative going for months \u2014 stopping as soon as things improve is the main reason it comes back.\u201d"},
+         {tone:"amber", h:"\ud83d\udcc9 Expect a wobble", html:"\u201cDuring the clear-out things can briefly get messier \u2014 that's expected. Persevere.\u201d"},
+         {tone:"cream", h:"\ud83d\udcc8 Prognosis", html:"80% achieve remission by puberty \u2014 but 30% have ongoing symptoms into adulthood if undertreated. Early, sustained treatment protects long-term bowel function."}
+       ]},
+       {b:"say", html:"This is very common and very treatable, but it needs the right approach in the right order. First a proper clear-out \u2014 and I should warn you that things get messier before they get better, which is expected. Then a daily laxative kept going for months, not weeks: the bowel has been stretched and needs time to get its sensation back, and stopping early is the usual reason it comes back. The leaking isn't naughtiness, it's stool slipping past a blockage, so please don't tell them off for it. Diet and a sitting-after-meals routine both help, but they aren't enough on their own."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Not improving? Re-check before escalating", sub:"Re-examine impaction, adherence and the diagnosis.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 \u00b7 Still impacted?", html:"Inadequate disimpaction \u2192 maintenance will fail; re-disimpact."},
+         {tone:"amber", h:"2 \u00b7 Dose", html:"Macrogol titrated adequately; stimulant added if needed?"},
+         {tone:"amber", h:"3 \u00b7 Adherence", html:"Families often under-dose or stop early \u2014 support and re-educate."},
+         {tone:"blue", h:"4 \u00b7 Behavioural", html:"Toilet routine, withholding and the fear cycle genuinely addressed? <b>School toilet access</b> sorted?"},
+         {tone:"blue", h:"5 \u00b7 Red flags", html:"Faltering growth or new organic features \u2192 <b>screen and refer</b>."},
+         {tone:"blue", h:"6 \u00b7 Refer", html:"Refractory <b>despite adequate disimpaction and maintenance</b> \u2192 paediatric assessment."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral criteria",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / same-day ED", html:"Suspected bowel obstruction \u2014 distension with bilious vomiting and no stool. Acute abdomen. Signs of ischaemia. <b>Neonatal constipation with vomiting.</b>"},
+         {tone:"amber", h:"Urgent paediatrics (1 week)", html:"<b>Suspected Hirschsprung's</b> (delayed meconium, ribbon stools, neonatal onset) \u00b7 <b>suspected spinal pathology</b> (neurological signs, deep sacral dimple) \u00b7 <b>an organic cause confirmed on bloods</b> (hypothyroidism, coeliac disease)."},
+         {tone:"purple", h:"NG12 \u00b7 very urgent (48 hours)", html:"An unexplained palpable abdominal mass or enlarged abdominal organ in a child \u2192 very urgent referral for suspected neuroblastoma or Wilms' tumour. Also unexplained petechiae, hepatosplenomegaly or generalised lymphadenopathy \u2192 very urgent FBC within 48 hours plus immediate paediatric referral (leukaemia). NICE NG12 (May 2025)."},
+         {tone:"blue", h:"Paediatric outpatients", html:"<b>Failure to respond to 3\u20136 months of optimised laxative treatment</b> \u00b7 <b>recurrent impaction despite adequate maintenance</b> · <b>≥2 relapses</b> needing re-disimpaction \u00b7 significant psychological impact or school non-attendance \u00b7 <b>age <1 year with constipation</b> (organic causes more likely)."},
+         {tone:"plain", h:"CAMHS / psychology", html:"Significant anxiety around toileting \u00b7 <b>school refusal because of constipation</b> \u00b7 a trauma history \u00b7 <b>ASD with constipation and a severe behavioural component</b>."},
+         {tone:"amber", h:"Safeguarding", html:"If soiling is being punished harshly, the child appears distressed beyond expectation, or multiple inappropriate investigations have been sought \u2192 safeguarding concern. Consult the named GP."},
+         {tone:"cream", h:"Manage in primary care", html:"Functional constipation responding to laxatives, a family who understand and are engaged, no red flags, age >1 year, and a clear maintenance plan in place."}
+       ]},
+       {b:"why", html:"<b>Constipation with overflow soiling causes real psychological harm</b> \u2014 school exclusion, bullying and low self-esteem are common consequences, and where the social and psychological impact is significant, psychological support alongside medical management improves long-term outcomes compared with laxatives alone. Regular structured follow-up at 4\u20136 weeks also significantly improves remission rates and reduces secondary psychological harm \u2014 which is the argument against handing over a prescription and waiting for the family to re-present."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 6-year-old brought by his mother because he is \u201chaving diarrhoea every day\u201d and soiling his pants at school. He opens his bowels twice a week, the stools are large and painful, and he hides behind the sofa when he needs to go. His mother is at the end of her tether and says he is doing it deliberately."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"<b>Recognises the \u201cdiarrhoea\u201d as overflow soiling</b> and asks whether it is soft; identifies <b>retentive posturing</b>; uses <b>Rome IV and the Bristol chart</b>; palpates the abdomen and <b>does not do a PR or order an AXR</b>; <b>disimpacts before starting maintenance</b> and warns that soiling will briefly worsen; commits to <b>months</b> of treatment with a named wean plan; addresses <b>school toilet access</b> with an offer to write; signposts <b>ERIC</b>; and \u2014 the step candidates miss \u2014 explicitly relieves the mother's belief that it is deliberate, because the blame is itself part of the problem."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE CG99 \u2014 Constipation in children and young people (2010, updated 2017)<br><a href="https://www.nice.org.uk/guidance/cg99" rel="noopener">nice.org.uk/guidance/cg99</a><span class="rd"> \u2014 disimpaction before maintenance, macrogol as first line, the advice against routine abdominal X-ray, and the restriction of digital rectal examination to specialists. Some references cite this guidance as NG99 \u2014 check the current NICE listing</span></li>'+
+         '<li><b>NICE CG99 \u2014 Constipation in children and young people</b><br><a href="https://www.nice.org.uk/guidance/cg99" rel="noopener">nice.org.uk/guidance/cg99</a><span class="rd"> \u2014 primary-care assessment, red flags for organic disease, and the referral thresholds</span></li>'+
+         '<li><b>Rome IV diagnostic criteria for functional gastrointestinal disorders</b><span class="rd"> \u2014 the under-4 and 4-and-over criteria used in the Confirm section</span></li>'+
+         '<li>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025), children and young people<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 unexplained palpable abdominal mass or enlarged abdominal organ in a child \u2192 very urgent referral (48 hours) for suspected neuroblastoma or Wilms\u2019 tumour; petechiae, hepatosplenomegaly or generalised lymphadenopathy \u2192 very urgent FBC plus immediate paediatric referral</span></li>'+
+         '<li>Cochrane review (2012) \u2014 osmotic and stimulant laxatives for childhood constipation<span class="rd"> \u2014 macrogol superior to lactulose for stool frequency and consistency, and superior to enemas for quality of life</span></li>'+
+         '<li><b>ERIC \u2014 Education and Resources for Improving Childhood Continence</b><br><a href="https://eric.org.uk" rel="noopener">eric.org.uk</a> \u00b7 helpline <b>0808 169 9949</b><span class="rd"> \u2014 family resources, and the source signposted for school and toileting support</span></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> \u2014 all doses by age: macrogol (Movicol Paediatric Plain) disimpaction and maintenance regimens, senna, sodium picosulfate, lactulose, glycerol suppositories</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Constipation in children \u2014 NICE CG99, NICE, Rome IV criteria and the BNF for Children. Diagnosis and management are merged on this page; there is no separate paediatric constipation pathway to cross-check. Verify all doses against the current BNFC before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

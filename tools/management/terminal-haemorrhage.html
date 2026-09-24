@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Catastrophic haemorrhage (palliative) — Protocol · Reasoning GP</title>
+<meta name="description" content="Catastrophic terminal haemorrhage: identifying who is at risk, the sentinel bleed as the cue to finalise the plan, anticipatory prescribing and dark towels, why midazolam must NOT be given subcutaneously in a major bleed, staying with the patient, preparing the family, and debriefing afterwards." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/terminal-haemorrhage.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Catastrophic haemorrhage protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"Catastrophic haemorrhage — the complete guide",
+  eyebrow:"Protocol · GMEC Palliative · PCF8 · almost all the benefit is banked before it happens",
+  stemTitle:"A catastrophic terminal bleed is usually a dying event rather than a treatable one — so the work that changes the outcome is the anticipatory planning done weeks earlier, and in the moment presence matters more than drugs",
+  stemSub:"One page for the emergency and, more importantly, for the preparation. Three things carry almost all the value: <b>flag the at-risk patient so the whole team can see it</b>; <b>treat a sentinel bleed as the cue to finalise the crisis plan</b>; and get the route right — the subcutaneous route is unreliable in a major bleed because the patient is peripherally shut down, so crisis midazolam must be IV, IM, buccal or sublingual. If the patient is clearly dying and bleeding massively, staying with them and using dark towels does more good than chasing a cannula.",
+  guideline:"GMEC Palliative 6th ed · PCF8 · Scottish Palliative Care Guidelines",
+  reviewed:"13 September 2026",
+  nextReview:"13 March 2027",
+  meta:[
+    {t:"GMEC Palliative Care guidelines, 6th ed (April 2025)"},
+    {t:"Palliative Care Formulary (PCF8)"},
+    {t:"Scottish Palliative Care Guidelines"},
+    {t:"Midazolam: NOT subcutaneous in a major bleed", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#risk"><b>Who is at risk</b><small>Flag it early</small></a><a href="#sentinel"><b>Sentinel bleed</b><small>The warning</small></a><a href="#plan"><b>Plan ahead</b><small>Ceiling · meds · towels</small></a><a href="#crisis"><b>In the moment</b><small>Stay · route matters</small></a><a href="#after"><b>Afterwards</b><small>Debrief · support</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Midazolam must NOT be given subcutaneously in a major bleed", html:"In a catastrophic bleed the patient is peripherally shut down, so subcutaneous absorption is too slow and erratic to help in the few minutes available. Use IV, IM, buccal or sublingual — and avoid buccal or sublingual if the mouth is filling with blood, because it will simply be washed away. If a syringe driver is already running, the crisis dose is an additional stat bolus by a fast route — do not rely on the driver."},
+    {tone:"red", h:"⚠ Do not leave the patient", html:"Stay with them and give calm reassurance; a second person summons help and supports the family. In a true catastrophic bleed death often comes within minutes and consciousness is usually lost quickly — so chasing a cannula or a perfect dose can mean the patient dies alone. <b>Presence, positioning and dark towels are the priority, not the drug.</b>"},
+    {tone:"amber", h:"The sentinel bleed is the most useful warning you will get", html:"A smaller \"herald\" bleed — a streak of haemoptysis, oozing from a fungating tumour, a small variceal bleed — may precede a catastrophic one by hours to days. Treat it as the trigger to move from contingency to a fully prepared plan: finalise the ceiling of care, site the crisis medication, place the towels, and brief the family and the out-of-hours team."},
+    {tone:"blue", h:"Anticipatory measures, all of them cheap", html:"Review and usually stop anticoagulants and antiplatelets. Consider tranexamic acid for recurrent smaller bleeds — oral or topical — and stop it if it is not helping. Prescribe crisis midazolam 5–10 mg and make sure it is physically in the house with a written crisis instruction. Put dark green or blue towels at the bedside to disguise blood and reduce distress, with gloves and waste bags to hand. A just-in-case box, and district nurses and out-of-hours who know the plan."},
+    {tone:"green", h:"Prepare the family — including permission to just be present", html:"Explain sensitively what a bleed might look like, that the priority is staying close and keeping their person calm rather than heroics, to use the dark towels, and to call the agreed number rather than 999 unless that is the plan. Reassure carers that it is acceptable to be present without \"doing\" — comfort and company are the most valuable things they can give. Families who have been prepared cope far better, both at the time and in bereavement."},
+    {tone:"amber", h:"Record the ceiling of care where everyone can see it", html:"Decide and document whether the plan is active (admission, transfusion, intervention) or comfort-focused at home or hospice — most catastrophic terminal bleeds are not survivable, so comfort is usually the realistic goal. Complete the DNACPR and any ReSPECT or advance care plan, and put it on the special patient note or EPaCCS so out-of-hours, the ambulance service, district nurses and the hospice all see it instantly. Without that, a frightened carer dials 999 and the patient dies in transit."}
+  ],
+  pathwaySub:"Five steps, and four of them happen before any bleed.",
+  pathway:[
+    {title:"Identify and flag who is at risk", html:"Head and neck or central lung tumours near the great vessels, fungating or eroding tumours, oesophageal varices, severe thrombocytopenia, advanced haematological malignancy, hepatic failure with coagulopathy, and anyone anticoagulated. Make the risk visible to the whole team — GP, district nurses, out-of-hours, hospice."},
+    {title:"Treat a sentinel bleed as the cue", html:"A herald bleed converts \"at risk\" into imminent. Finalise the plan, site the medication, brief the family.", alert:true},
+    {title:"Agree and record the ceiling of care", html:"Active or comfort-focused. DNACPR and ReSPECT completed and accessible. Plan shared on EPaCCS or a special patient note so nobody initiates unwanted escalation."},
+    {title:"Put the anticipatory measures in place", html:"Stop anticoagulation where appropriate · consider tranexamic acid · crisis midazolam prescribed and IN the house · dark towels, gloves and waste bags at the bedside · just-in-case box · family briefed."},
+    {title:"If it happens: stay, position, comfort — then debrief", html:"Do not leave. Dark towels. Position to protect the airway. Midazolam by a fast route only if the patient is distressed and conscious enough to benefit. Afterwards: support and debrief the family and the team, document, and review the plan for others."}
+  ],
+  sections:[
+
+    {id:"risk", nav:"Who is at risk", title:"Identifying the at-risk patient — step one, and the highest-value step",
+     sub:"Most of the achievable benefit in a terminal bleed is banked before it happens.",
+     blocks:[
+       {b:"table", head:["Risk","Detail"], rows:[
+         ["<b>High-risk situations</b>","Head and neck or central lung tumours lying near the great vessels · fungating or eroding tumours · oesophageal varices · severe thrombocytopenia · advanced haematological malignancy"],
+         ["<b>Surface bleeding</b>","<b>Eroding skin or fungating tumour · carotid blow-out</b>"],
+         ["<b>Internal bleeding</b>","Major haemoptysis · massive haematemesis or variceal bleed · gastrointestinal, rectal, vaginal or urinary tract bleeding · epistaxis"],
+         ["<b>Coagulopathy and drugs</b>","DOACs, warfarin, antiplatelets, or hepatic failure with coagulopathy — flag these early and review them"],
+         ["<b>Non-malignant disease</b>","<b>A terminal bleed is not exclusive to cancer</b> — advanced liver disease and haematological conditions carry the same risk"],
+         ["<b>Make it visible</b>","Flag the risk in the record so the whole team sees it — GP, district nurses, out-of-hours, ambulance service and hospice — so the plan exists before any bleed"]
+       ]},
+       {b:"why", html:"Recognising who is at risk is what allows the team to plan: to agree goals of care, site crisis medication, and prepare the family, so that if a bleed occurs the response is calm and comforting rather than chaotic. Almost none of the benefit in this condition comes from what is done during the bleed — it comes from what was arranged weeks before — which is why identification is step one rather than an administrative preliminary."}
+     ]},
+
+    {id:"sentinel", nav:"Sentinel bleed", title:"The sentinel bleed, the types of bleeding, and what is still treatable",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"⚠ The herald bleed", html:"A smaller sentinel bleed may precede a catastrophic one by hours to days — a streak of haemoptysis, oozing from a fungating tumour, a small variceal bleed. It is the single most useful clinical warning available, because it converts an abstract risk into an imminent event. Act on it the same day."},
+         {tone:"blue", h:"🩸 Type of bleed shapes the response", html:"Haemoptysis, haematemesis, melaena, rectal, vaginal or urinary bleeding, surface or fungating bleeding, epistaxis, variceal bleeding. The type determines safe positioning and whether an oral, buccal or sublingual route will work or simply be overwhelmed by blood."},
+         {tone:"red", h:"🔴 Signs in the moment", html:"Visible massive bleeding · hypotension · cool, clammy peripheries · air hunger · anxiety and a sense of impending doom."},
+         {tone:"green", h:"✓ Ask early whether it is still treatable", html:"Before the patient is in extremis, ask whether the bleeding is amenable to treatment: radiotherapy for haemoptysis, endoscopy and banding for varices, interventional radiology embolisation, or palliative radiotherapy and topical measures for fungating tumours. Or whether the plan is purely comfort-focused. That question is much easier to answer in clinic than at 3 am."}
+       ]}
+     ]},
+
+    {id:"plan", nav:"Plan ahead", title:"Goals of care, and the anticipatory measures",
+     blocks:[
+       {b:"table", head:["Element","What to do"], rows:[
+         ["<b>The honest conversation</b>","Where appropriate, discuss the risk and the likely course sensitively and in advance with the patient and those close to them. Many people value knowing that a plan exists — but tailor how much detail you give to the individual"],
+         ["<b>Agree the ceiling of treatment</b>","Decide and RECORD whether the plan is active (admission, transfusion, intervention) or comfort-focused at home or in the hospice. Most catastrophic terminal bleeds are not survivable, so comfort is usually the realistic goal"],
+         ["<b>Resuscitation status</b>","Ensure a DNACPR decision and any ReSPECT or advance care plan are completed and accessible. <b>CPR is futile and undignified in a terminal bleed</b>"],
+         ["<b>Document and share</b>","Put the plan where out-of-hours, the ambulance service, district nurses and the hospice can all see it — special patient note or EPaCCS — so nobody initiates unwanted escalation"],
+         ["<b>Review anticoagulation</b>","<b>Consider stopping anticoagulant and antiplatelet medication</b>"],
+         ["<b>Tranexamic acid</b>","Consider it for recurrent smaller bleeds, oral or topical — and stop it if it is not helping"],
+         ["<b>Reduce bleeding risk locally</b>","For fungating tumours consider topical measures: topical tranexamic acid, adrenaline-soaked gauze, sucralfate, or palliative radiotherapy"],
+         ["<b>Crisis medication</b>","Anticipatory anxiolytic — midazolam 5–10 mg IV / IM / buccal / sublingual. Ensure it is PRESCRIBED and PHYSICALLY AVAILABLE where the patient is, with a clear written crisis instruction"],
+         ["<b>Practical measures</b>","Dark-coloured (green or blue) towels at the bedside to absorb and disguise blood loss and reduce distress; gloves and waste bags to hand"],
+         ["<b>Community patients</b>","A just-in-case box in the home, and district nurses and out-of-hours who know the plan. Consider training a competent family member in buccal or sublingual midazolam — but NOT if a large amount of blood is likely to come from the mouth"]
+       ]},
+       {b:"why", html:"Without a documented, shared ceiling of care, a frightened carer dials 999 and the patient dies in transit or undergoing futile resuscitation — the opposite of what was wanted. Agreeing and recording the goal in advance is what makes a comfort-focused death in the preferred place actually achievable, rather than merely intended. And the simple measures — dark towels, a written plan, a just-in-case box — transform the experience of a terminal bleed for everyone in the room."}
+     ]},
+
+    {id:"crisis", nav:"In the moment", title:"During a catastrophic bleed",
+     blocks:[
+       {b:"table", head:["Priority","Action","Why"], rows:[
+         ["<b>First and always</b>","Do NOT leave the patient. Stay with them, give calm reassurance. A second person summons help and supports the family","Death often comes within minutes and consciousness is usually lost quickly — leaving to fetch equipment can mean the patient dies alone"],
+         ["<b>Position</b>","Lie the patient towards the BLEEDING SIDE in haemoptysis. Recovery or upright position for haematemesis. Apply dark towels to absorb and conceal","Protects the airway and reduces the visual distress for everyone present"],
+         ["<b>Massive bleed, clearly dying</b>","Comfort over drugs — presence and non-pharmacological care matter more than cannulating","Consciousness is usually lost within minutes; a cannula attempted at that point achieves nothing"],
+         ["<b>Crisis sedation — indication</b>","Give midazolam ONLY if the patient is distressed or frightened and conscious enough to benefit. <b>It relieves anxiety; it does not stop the bleed</b>","The goal is rapid anxiolysis, not deep sedation the patient will not live long enough to need"],
+         ["<b>Crisis sedation — dose</b>","Midazolam 10 mg (range 5–10 mg) stat; may repeat once if distress persists and the patient is still responsive","Per GMEC and PCF8"],
+         ["<b>Crisis sedation — ROUTE</b>","IV, IM, buccal or sublingual. NOT subcutaneous in a major bleed — peripheral shutdown makes SC absorption unreliable. Buccal or sublingual only if the mouth is not filling with blood","This is the single most important technical point on the page: the right drug by the wrong route does nothing in the minutes available"],
+         ["<b>If a syringe driver is already running</b>","Give the crisis dose as an ADDITIONAL stat bolus by a fast route — do not rely on the driver to act quickly enough","A driver cannot deliver a crisis dose in time"]
+       ]},
+       {b:"say", html:"I am staying right here with you. You are not on your own. I am going to put these towels here and help you lie on your side — that is all we need to do. I have given you something to take the fear away and it will work quickly. Just keep hold of my hand. Your family are here with you too."},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"✓ What the family should be told to do", html:"Use the dark towels, stay close, talk reassuringly, and call the agreed number — district nurse, hospice or out-of-hours — rather than 999 unless 999 is the plan. <b>And that being present without \"doing\" is enough.</b>"},
+         {tone:"amber", h:"⚠ Where a carer has been trained to give midazolam", html:"Show exactly how and when to give buccal or sublingual midazolam — but do not set this up at all if heavy oral bleeding is likely, because it will not be absorbed and the attempt will distress everyone."}
+       ]}
+     ]},
+
+    {id:"after", nav:"Afterwards", title:"Aftercare, debrief and team learning",
+     blocks:[
+       {b:"table", head:["Task","Detail"], rows:[
+         ["<b>Support family and team</b>","Offer support and debriefing to both — and expect that it may need to be ongoing. Witnessing a terminal bleed is traumatic; consider proactive bereavement follow-up rather than waiting to be asked"],
+         ["<b>Practical care of the environment</b>","Dispose of clinical waste appropriately; attend to the deceased and the surroundings with dignity BEFORE the family return to the bedside"],
+         ["<b>Document</b>","Record what happened, what was given — drug, dose, route and time — and who was present. Verify death and follow the normal after-death processes"],
+         ["<b>Team learning</b>","A structured debrief helps staff process the event and improves the plan for the next high-risk patient"],
+         ["<b>Review the wider plan</b>","Use the event to check that other at-risk patients on the caseload have their flag, their ceiling of care, their crisis medication and their towels in place"]
+       ]},
+       {b:"why", html:"A catastrophic bleed is one of the most distressing events families and staff witness, and the psychological consequences are real and lasting. Structured debriefing and ongoing support are part of good care rather than an optional extra — and the practical business of clearing the room before relatives return is a kindness that is easily forgotten in the aftermath."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral and coordination",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Specialist palliative care — IN ADVANCE", html:"Involve the specialist palliative care or hospice team early for high-risk patients — for advice on anticipatory prescribing, place-of-care planning, and support during and after the event. <b>Not at the point of crisis.</b>"},
+         {tone:"blue", h:"Active options, discussed early", html:"Where treatment fits the goals of care: interventional radiology for embolisation, endoscopy and banding for varices, or palliative radiotherapy for haemoptysis or fungating bleeding. <b>Discuss before the patient is in extremis.</b>"},
+         {tone:"green", h:"Community coordination", html:"Brief the district nurses, out-of-hours and ambulance service. Ensure the crisis plan, DNACPR and just-in-case medication are all in place and visible."},
+         {tone:"green", h:"Out-of-hours handover", html:"Use the special patient note or EPaCCS so any responding clinician knows the plan instantly — the response is only as good as the weakest link in a chain that crosses five teams."},
+         {tone:"cream", h:"What primary care owns", html:"Identifying and flagging risk, having the conversation, recording the ceiling of care, stopping anticoagulation, prescribing and siting the crisis medication, putting the towels at the bedside, preparing the family, and debriefing afterwards. Related pages: <a href='care-of-the-dying.html'>care of the dying</a> · <a href='palliative-breathlessness.html'>palliative breathlessness</a> · <a href='palliative-delirium-agitation.html'>palliative delirium and agitation</a> · <a href='palliative-pain.html'>palliative pain</a> · <a href='palliative-corticosteroids.html'>palliative corticosteroids</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"You visit a 71-year-old man with a <b>fungating squamous cell carcinoma of the neck</b>, now on a palliative pathway at home with his wife as main carer. Yesterday there was a <b>small bleed from the tumour that stopped on its own</b> after about a minute. He is on <b>apixaban</b> for a previous DVT. His wife is frightened and asks \"what do I do if it happens properly?\" There is a syringe driver running with morphine, and no DNACPR in place. He says he does not want to go back into hospital."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises the small bleed as a SENTINEL bleed and treats it as the cue to finalise everything today, not as reassurance that it stopped; <b>reviews and stops the apixaban</b>; agrees and records a comfort-focused ceiling of care and completes the DNACPR, honouring his stated wish not to be readmitted; shares the plan on EPaCCS or a special patient note so out-of-hours and the ambulance service see it; <b>prescribes crisis midazolam and ensures it is physically in the house</b>, with a written instruction; specifies the route — IM or buccal, NOT subcutaneous — and explains why the SC route fails in a major bleed; <b>notes that the syringe driver cannot deliver a crisis dose</b>; <b>places dark towels, gloves and waste bags at the bedside</b> and says what they are for; considers topical tranexamic acid and palliative radiotherapy for the fungating tumour; prepares the wife concretely — stay close, use the towels, call the district nurse or hospice rather than 999, and that simply being present is enough; <b>judges how much graphic detail to give her</b>; and arranges specialist palliative care involvement and a plan for debrief and bereavement support."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>GMEC Palliative Care Pain &amp; Symptom Control Guidelines, 6th edition (April 2025)<span class="rd"> — the anticipatory management framework, crisis midazolam 5\u201310 mg with the explicit instruction to avoid the subcutaneous route in a major bleed, dark towels at the bedside, positioning, and the emphasis on presence over intervention</span></li>'+
+         '<li><b>Palliative Care Formulary (PCF8)</b><span class="rd"> — midazolam dosing and routes for crisis sedation, tranexamic acid use including topical application, and the management of bleeding from fungating tumours</span></li>'+
+         '<li><b>Scottish Palliative Care Guidelines</b><br><a href="https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines" rel="noopener">Scottish Palliative Care Guidelines</a><span class="rd"> — the sentinel (herald) bleed as a warning sign, family preparation, and the aftercare and debriefing recommendations</span></li>'+
+         '<li><b>ReSPECT process and DNACPR guidance</b><span class="rd"> — advance recording of resuscitation decisions, and the requirement that they be accessible to out-of-hours and ambulance services (EPaCCS / special patient note)</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — midazolam and tranexamic acid preparations, and the routes of administration referenced on this page</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Catastrophic haemorrhage (palliative) — GMEC Palliative Care Guidelines 6th edition, PCF8 and the Scottish Palliative Care Guidelines. Almost all the achievable benefit is banked before the event: flag the at-risk patient, treat a sentinel bleed as the cue to finalise the plan, record a shared ceiling of care with DNACPR on EPaCCS, stop anticoagulation, and put crisis midazolam and dark towels physically in the home. In the moment, do not leave the patient — and give midazolam by IV, IM, buccal or sublingual route, never subcutaneously in a major bleed. Debrief the family and the team afterwards. Verify all doses against the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

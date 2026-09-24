@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ADHD — Protocol · Reasoning GP</title>
+<meta name="description" content="ADHD in primary care: get the teacher questionnaire before referring, the two-setting DSM-5 requirement, parent training first under NG87, lisdexamfetamine first-line in adults but methylphenidate in children, Schedule 2 prescribing rules, and growth and cardiovascular monitoring on shared care." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/adhd.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790241765963737 tools/management/adhd.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="ADHD protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧩",
+  title:"ADHD — the complete guide",
+  eyebrow:"Protocol · referral quality, then shared-care prescribing",
+  stemTitle:"Get the teacher questionnaire before you refer — and remember the adult first-line drug is not the child's",
+  stemSub:"One page for the whole condition: confirm symptoms in two settings because DSM-5 requires it, obtain the school rating scale that otherwise delays specialist assessment by months, offer parent training first as NG87 directs, then hold the shared-care prescribing safely — Schedule 2 rules, growth and cardiovascular monitoring, and the atomoxetine black-box warning. Diagnosis and initiation are specialist; almost everything else is yours.",
+  guideline:"NICE NG87 · DSM-5 · Equality Act 2010",
+  reviewed:"10 September 2026",
+  nextReview:"10 March 2027",
+  meta:[
+    {t:"NICE NG87 — ADHD diagnosis and management (2018)"},
+    {t:"NICE NG87 · DSM-5 criteria"},
+    {t:"Misuse of Drugs Regs — Schedule 2 CD"},
+    {t:"Equality Act 2010 — reasonable adjustments"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Before referring</b><small>Two settings · red flags</small></a><a href="#confirm"><b>Recognise</b><small>DSM-5 · girls · adults</small></a><a href="#workup"><b>Refer well</b><small>Teacher scales · ECG</small></a><a href="#ladder"><b>Treat</b><small>Parent training first</small></a><a href="#monitor"><b>Shared care</b><small>CD rules · growth</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Two settings, or it is not ADHD", html:"DSM-5 requires symptoms in at least two settings — school AND home — with several present before age 12 (&lt;12) and lasting at least 6 months. A child struggling only at home suggests family dynamics, parenting stress or an undetected learning difficulty; only at school suggests anxiety, learning disability or sensory issues. <b>Teacher observations are mandatory, not optional.</b>"},
+    {tone:"amber", h:"Referring without the school questionnaire wastes months", html:"Obtain a teacher-completed rating scale — Conners 3, SNAP-IV or NICHQ Vanderbilt — BEFORE referring. A referral without school evidence delays specialist assessment by months, and it is the single most common avoidable GP failing in this pathway."},
+    {tone:"blue", h:"The adult first-line drug is not the child's", html:"Children 5–18: methylphenidate MR first-line (Concerta XL 18–54 mg OD, or Ritalin LA 10–40 mg OD). Adults: lisdexamfetamine (Elvanse 20–70 mg OD) is first-line under NG87 — not methylphenidate. In children, switch to lisdexamfetamine only if methylphenidate is inadequate after 6 weeks at an optimised dose."},
+    {tone:"purple", h:"Parent training comes first", html:"NG87: parent training first for under-5s and for mild-to-moderate ADHD — medication only after non-pharmacological measures. <b>No medication at all under 5.</b> Exercise has the most consistent non-drug evidence base — 30 minutes of aerobic activity, ideally before school, comparable in effect size to low-dose methylphenidate in mild-to-moderate symptoms."},
+    {tone:"green", h:"Girls are diagnosed about three years later", html:"The inattentive presentation (ADHD-I) predominates in girls: quiet, dreamy, disorganised, underachieving rather than disruptive. Less visible means later referral — on average about 3 years later than boys — and anxiety is a very common comorbidity that the school may blame instead. <b>Masking is common.</b> Prevalence: about 5% of children, 2.5% of adults."},
+    {tone:"plain", h:"Schedule 2 rules, and the \u201czombie\u201d fear", html:"Methylphenidate, lisdexamfetamine and dexamfetamine are Schedule 2 controlled drugs: maximum 28 days' supply, no remote or telephone prescription requests, specialist-initiated and GP-maintained on a shared care agreement. The \u201czombie effect\u201d parents fear is a dose-dependent over-dosing effect — the answer is to reduce the dose, not to stop."}
+  ],
+  pathwaySub:"The whole task in five moves. The first two determine how long the family waits.",
+  pathway:[
+    {title:"Screen the differential and the red flags", html:"Symptoms in one setting only · absence seizures · hearing or vision impairment · safeguarding or trauma · sleep disorder · learning disability · significant comorbidity. ADHD is a diagnosis of pattern, not of disruptiveness.", alert:true},
+    {title:"Confirm the DSM-5 pattern in two settings", html:"≥6 of 9 inattentive and/or ≥6 of 9 hyperactive-impulsive symptoms, present before age 12, lasting ≥6 months, in ≥2 settings, with functional impairment. Ask about girls' inattentive presentation and adult persistence."},
+    {title:"Refer properly", html:"Teacher-completed Conners 3, SNAP-IV or NICHQ Vanderbilt, plus the parent history, developmental and birth history, family history, and school reports. ECG first if there is a family history of cardiac disease, arrhythmia, syncope or cardiac symptoms."},
+    {title:"Start the non-pharmacological work now", html:"Parent training, school SENCO involvement and a SEND support plan (which does not need a diagnosis), psychoeducation, sleep hygiene, exercise and external structure. None of this waits for the specialist."},
+    {title:"Then hold shared care safely", html:"28-day Schedule 2 prescriptions, BP and HR at every review, height and weight 6-monthly on a centile chart, mood and appetite, and the annual structured reassessment, with specialist advice for refractory symptoms."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Before referring", title:"Red flags and the differential",
+     sub:"ADHD is common, but several conditions mimic it and one of them is a seizure disorder.",
+     blocks:[
+       {b:"table", head:["Feature","Consider","Action"], rows:[
+         ["<b>Symptoms in ONE setting only</b>","Home only: family dynamics, parenting stress, attachment difficulty, undetected learning difficulty. School only: anxiety, learning disability, sensory processing, bullying","Does not meet DSM-5 criteria — investigate the setting-specific cause rather than referring as ADHD"],
+         ["<b>Brief staring episodes with unresponsiveness and abrupt return</b>","<b>Absence seizures</b> — frequently misread as inattention","<b>Refer to paediatric neurology; EEG is specialist-arranged</b>"],
+         ["<b>Not responding when spoken to; speech or language delay</b>","Hearing impairment — including glue ear (otitis media with effusion, OME); visual impairment","<b>Formal hearing and vision testing before ADHD referral</b>"],
+         ["<b>Sudden onset, regression, or behaviour change after a life event</b>","<b>Trauma, abuse, neglect, bereavement, domestic abuse</b>","<b>Safeguarding assessment.</b> ADHD is developmental and longstanding, not sudden"],
+         ["<b>Loud snoring, witnessed apnoeas, restless sleep, daytime sleepiness</b>","<b>Obstructive sleep apnoea</b> — causes inattention and hyperactivity in children","<b>ENT referral; treating it may resolve the symptoms</b>"],
+         ["Global developmental delay, difficulty across all cognitive domains, or fluctuating attention","<b>Learning disability; autism spectrum disorder</b> — both frequently coexist with ADHD","<b>Developmental paediatrics</b>"],
+         ["<b>Very low mood, self-harm, or expressed hopelessness in an adolescent</b>","Depression, anxiety — either as comorbidity or as the primary diagnosis","Assess and treat the dominant condition first (NG87); screen with PHQ-9 in adolescents and adults. Elevated mood or grandiosity suggests mania — a different pathway, and stimulants may precipitate it"]
+       ]},
+       {b:"why", html:"<b>The two-setting requirement does most of the diagnostic work.</b> A child who struggles only at home is unlikely to have ADHD; a child who struggles only at school is more likely to have it than was once thought — but anxiety, learning disability and sensory issues must be excluded first. Prevalence is about 5% in children and 2.5% in adults, making it the most common neurodevelopmental diagnosis in UK primary care, and around <b>60% of childhood ADHD persists into adulthood</b>. Heritability is high — roughly 50% — so a parent recognising themselves in the child's description is a common and clinically meaningful event."},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","ADHD has no NICE NG12 suspected-cancer criterion, and none should be invented for one. This is a neurodevelopmental referral pathway. The only oncological adjacency worth holding in mind is the general paediatric one: where inattention or behaviour change is accompanied by headache, vomiting, visual change or a progressive focal neurological deficit, that is a brain tumour route in its own right — NG12 advises very urgent direct access to assessment for suspected brain or CNS cancer in children. <b>Sudden change is not ADHD</b>"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Recognise", title:"DSM-5 criteria, and the presentations that get missed",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>DSM-5 requirements</b>","≥6 of 9 inattentive symptoms and/or ≥6 of 9 hyperactive-impulsive symptoms (5 in adults aged 17 and over), present for ≥6 months, with several present before age 12, occurring in ≥2 settings, causing clear functional impairment, and not better explained by another disorder"],
+         ["<b>Inattentive domain (9 symptoms)</b>","Fails to give close attention to detail · difficulty sustaining attention · does not seem to listen when spoken to directly · does not follow through on instructions · difficulty organising tasks · avoids tasks requiring sustained mental effort · loses things · easily distracted · forgetful in daily activities"],
+         ["<b>Hyperactive-impulsive domain</b>","Fidgeting · leaving seat · running or climbing inappropriately · unable to play quietly · \u201con the go\u201d · talks excessively · blurts out answers · difficulty waiting turn · interrupts or intrudes"],
+         ["<b>ADHD-I in girls — the missed presentation</b>","Inattentive presentation predominates in girls: dreamy, quiet in class, organisationally chaotic, academically underachieving despite good verbal ability, forgetting to hand work in. Less disruptive means less visible, and diagnosis comes on average about 3 years later than in boys. Anxiety is a very common comorbidity, and schools frequently attribute the difficulties to anxiety or \u201clearning style\u201d instead. Masking is common"],
+         ["<b>Adult ADHD</b>","Often presents after a child is diagnosed — \u201cI was exactly like him at school.\u201d Hyperactivity becomes inner restlessness; the impairment shows in work, relationships, finances and driving. <b>ADHD is a disability under the Equality Act 2010 where it substantially affects daily function, so reasonable adjustments apply at work. <b>Adults on stimulants must be advised about DVLA notification duties where the condition or its treatment affects safe driving</b></b>"],
+         ["<b>Common comorbidities</b>","Autism spectrum disorder · anxiety · learning disability · oppositional defiant disorder · tic disorders and Tourette's (comorbid with ADHD in about 20%) · sleep disorders · in adolescents, substance misuse (a dual diagnosis pathway where significant)"]
+       ]},
+       {b:"say", html:"Before we go through anything clinical, I want to say one thing. ADHD is a neurodevelopmental condition — it is not caused by parenting, diet, screens or a lack of discipline. If this is what is going on, there is nothing you could have done differently. Nothing. Parents very often tell me they have been punishing a child for things that turned out to be symptoms, and I would rather say that out loud now than leave you carrying it."}
+     ]},
+
+    {id:"workup", nav:"Refer well", title:"What the GP does before referral",
+     sub:"The quality of the referral determines how long the family waits. This is the highest-value part of the GP role.",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Teacher-completed rating scale — obtain BEFORE referring</b>","<b>Conners 3, SNAP-IV or NICHQ Vanderbilt.</b> The teacher rating carries diagnostic weight the parent account cannot replace, and NG87 expects it. Referring without school evidence delays specialist assessment by months"],
+         ["<b>Parent-completed scale</b>","The same instruments, completed at home — the two settings are compared, not summed"],
+         ["<b>History to include</b>","Developmental and birth history (prematurity, perinatal complications) · educational history and school reports · family history including any first-degree relative with ADHD (about 50% heritability) · sleep · screen and diet history · psychosocial context, adverse childhood experiences and any safeguarding concerns · functional impairment in concrete terms"],
+         ["<b>Examination</b>","Growth (height, weight, centiles — the pre-treatment baseline), BP and HR (note bradycardia), hearing and vision, goitre, dysmorphic features, neurological examination for tics. Check FBC and ferritin where there is pallor or dietary concern — iron deficiency causes inattention and restlessness"],
+         ["<b>ECG — when</b>","Before a stimulant is started if there is a family history of cardiac disease or sudden death, known arrhythmia, syncope on exertion, or cardiac symptoms or signs. Not routinely otherwise"],
+         ["<b>Refer to</b>","Community paediatrics or CAMHS for children; adult ADHD service for adults. Under-5s: parent training first, and specialist referral if it fails"],
+         ["<b>Start non-pharmacological support now</b>","<b>Do not wait for the appointment.</b> A <b>SEND support plan can be initiated without a diagnosis</b>; SENCO involvement, parent training and school adjustments can all begin immediately"]
+       ]},
+       {b:"why", html:"<b>A GP-supporting letter strengthens an EHCP application</b>, and academic accommodations such as extra time in exams require documented evidence of diagnosis — so the paperwork the GP generates has direct educational consequences. School adjustments alone can substantially narrow the gap between a child's potential and their performance: preferential seating, shorter task chunks, movement breaks, visual timers, homework adjustments and exam accommodations."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"NG87 stepped management — non-drug first",
+     sub:"Medication is specialist-initiated. Everything above it in the ladder is available to the GP today.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"All ages", title:"Psychoeducation and environmental structure", when:"from first suspicion",
+          html:"Psychoeducation is a first-line component for all ages, and CBT is an evidence-based adjunct in adolescents and adults — it reduces shame, improves adherence and self-esteem, and makes the family active partners. <b>ADHD UK (adhduk.org) and ADDISS (addiss.co.uk).</b> Explain it to the child too: children who understand their diagnosis self-advocate and self-manage significantly better. External scaffolding compensates for the executive function deficit — visual daily schedule, homework station, task timers, colour-coded timetable, equipment checklist at the door."},
+         {step:"Under 5s, and mild–moderate", title:"Parent training programme", when:"NG87 first-line",
+          fromLabel:"before any medication",
+          html:"NG87: parent training first for under-5s and for mild-to-moderate ADHD at any age. No medication under 5. Group-based, evidence-based programmes; referral via the local pathway. Decisions are shared with the family throughout, and omega-3 supplementation has been studied but is not recommended."},
+         {step:"All ages", title:"Exercise, sleep and school adjustments", when:"alongside everything",
+          fromLabel:"adjuncts, not substitutes",
+          html:"Exercise has the most consistent non-pharmacological evidence base — 30 minutes of aerobic activity daily, ideally before school, with an effect size comparable to low-dose methylphenidate in mild-to-moderate symptoms (it raises dopamine and noradrenaline, the same neurotransmitters the drugs target). Sleep: consistent bedtime, screen-free for an hour before, no stimulant dose after 4pm; avoid decongestants containing pseudoephedrine alongside stimulants; <span class='rx'>melatonin MR (Circadin) 2 mg at night</span> only after a behavioural programme and arranged with the specialist. SENCO, SEND support plan, EHCP where impairment is significant; children's centres and Sure Start for younger families."},
+         {step:"Children 5–18", title:"Methylphenidate MR — specialist-initiated", when:"moderate–severe, or non-drug measures inadequate",
+          fromLabel:"specialist diagnosis required",
+          html:"Concerta XL 18mg OD starting dose, titrated to a maximum 54 mg; or Ritalin LA 10–40 mg OD. Modified-release preferred — covers school hours, reduces end-of-dose rebound, once daily; titrate to the lowest effective dose. If inadequate after 6 weeks at an optimised dose, switch to lisdexamfetamine. <b>Schedule 2 CD.</b>"},
+         {step:"Adults", title:"Lisdexamfetamine first-line", when:"adult ADHD",
+          fromLabel:"different from children",
+          html:"Elvanse, starting 20–30mg OD and titrated to a maximum 70 mg — NG87 first-line in adults, NOT methylphenidate. A pro-drug of dexamfetamine, so lower misuse potential (it must be metabolised, and cannot be injected or snorted), with a <b>12–14 hour duration</b> covering evening demands. <b>Also second-line in children.</b>"},
+         {step:"Non-stimulant", title:"Atomoxetine or guanfacine", when:"anxiety, tics, ODD or misuse risk",
+          fromLabel:"neither is a controlled drug",
+          html:"Atomoxetine (Strattera) 0.5 mg/kg/day titrated to 1.2 mg/kg/day, maximum 100 mg — a noradrenaline reuptake inhibitor; preferred where anxiety is prominent, tics are significant, or there is substance misuse risk. Takes 4–6 weeks for full effect — warn the family explicitly, because stopping early is the commonest reason it \u201cfails\u201d. Black-box warning: suicidal ideation in children and adolescents — monitor at 1, 2, 4, 8 and 12 weeks. Dexamfetamine 2.5–5 mg OD, titrated cautiously — third-line and specialist-initiated, a Schedule 2 CD with higher misuse potential than lisdexamfetamine, used only where methylphenidate and lisdexamfetamine have both failed or are not tolerated. <b>Guanfacine MR (Intuniv) 1 mg OD titrated weekly to a maximum 4 mg</b> — an alpha-2 agonist, best evidence for <b>ADHD with tics and ADHD with oppositional defiant disorder</b>; sedation is common initially and usually settles over 2–4 weeks; <b>never stop abruptly (rebound hypertension)</b>."}
+       ]},
+       {b:"warn", html:"Schedule 2 controlled drug rules apply to methylphenidate, lisdexamfetamine and dexamfetamine: maximum 28 days' supply per prescription, no remote or telephone prescription requests, one prescription at a time, and safe storage counselling — particularly where there is substance misuse in the household. Never initiate in primary care without a specialist diagnosis and recommendation; the GP prescribes on a shared care agreement after specialist titration. Contraindications for the stimulants: MAOI within 14 days, phaeochromocytoma, hyperthyroidism, severe arrhythmia, structural heart disease, severe hypertension."},
+       {b:"why", html:"The adult–child first-line difference is the highest-yield prescribing distinction in ADHD and a common exam point: methylphenidate is first-line in children 5–18, lisdexamfetamine is first-line in adults. On comorbidity, <b>NG87's principle is to treat the dominant condition first</b>: stimulants can worsen anxiety, but ADHD itself generates anxiety through repeated failure and disorganisation, so in practice methylphenidate often reduces anxiety by reducing the chaos — and if anxiety does worsen, atomoxetine (which has anxiolytic properties) is preferred. For tics, NICE does not routinely withhold stimulants — the historical association is not well supported — but monitor, and switch to guanfacine if tics worsen significantly; never stop guanfacine abruptly — taper it."}
+     ]},
+
+    {id:"monitor", nav:"Shared care", title:"Monitoring, growth and the annual reassessment",
+     blocks:[
+       {b:"table", head:["What","Detail"], rows:[
+         ["<b>Every review</b>","<b>BP and HR</b> (all ADHD medications) · appetite and any weight change · sleep · mood, and specifically \u201cis the child still himself?\u201d — a flat affect means the dose is too high, not that the drug should stop · tics · adherence"],
+         ["<b>Every 6 months</b>","Height and weight plotted on a centile chart — mandatory growth monitoring on stimulants. Appetite suppression is dose-related and most pronounced with lisdexamfetamine; watch for growth faltering and for catch-up growth during a break. A dietitian can help where intake is poor"],
+         ["<b>Atomoxetine — first 12 weeks</b>","<b>Black-box monitoring for suicidal ideation at 1, 2, 4, 8 and 12 weeks.</b> Warn about hepatotoxicity: <b>jaundice or dark urine means stop immediately</b>. Give with food for nausea; check LFTs if hepatotoxicity is suspected"],
+         ["<b>Guanfacine — during titration</b>","BP and HR at baseline and after each dose increment, with weekly BP during titration. ECG if there are cardiac concerns (QTc prolongation at higher doses). Never stop abruptly"],
+         ["<b>Annually</b>","Structured reassessment of ongoing need — a planned drug holiday can help judge whether medication is still required, as a joint decision with specialist, child and family. NICE does not routinely recommend routine weekend or holiday drug holidays: continuous treatment supports social and emotional learning, not just academic performance"],
+         ["<b>Prescribing practicalities</b>","28-day maximum, no remote requests, named prescribing pharmacy in many trusts, safe storage. Review the shared care agreement is in place and current"],
+         ["<b>Transition to adult services</b>","Plan early — the transition from paediatrics or CAMHS to adult ADHD services is a recognised point of disengagement and prescription lapse"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Stop and seek advice", html:"Jaundice or dark urine on atomoxetine (hepatotoxicity) · new or worsening suicidal ideation · syncope, chest pain or palpitations on a stimulant."},
+         {tone:"amber", h:"🟠 Review the dose", html:"Flat affect or \u201cnot himself\u201d — reduce, do not stop · significant weight loss or growth faltering · marked end-of-dose rebound irritability · new or worsening tics."},
+         {tone:"blue", h:"⏳ Atomoxetine needs 4–6 weeks", html:"Say so at initiation and repeat at every review until the full effect is established — stopping early is the commonest reason it appears not to work."},
+         {tone:"green", h:"📘 Support", html:"<b>ADHD UK (adhduk.org), ADDISS (addiss.co.uk)</b>, and school SENCO. For adults, reasonable adjustments at work under the Equality Act."}
+       ]},
+       {b:"say", html:"Two things about the medication. It is started by the specialist, but I will be the one prescribing it month to month, and there are rules about that — it is a controlled drug, so it is a maximum of 28 days at a time and I cannot take a request over the phone. And the worry you mentioned about him becoming \u201ca zombie\u201d: that flat, switched-off look is a sign the dose is too high, not a sign the medicine is wrong. If you ever see it, tell me — we reduce the dose. Meanwhile, the things that help most are not tablets at all: a proper routine with visual reminders, thirty minutes of hard exercise before school if you can manage it, and getting the school's support plan in place, which we can start now without waiting for the appointment."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral pathways",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Community paediatrics / CAMHS", html:"Children and young people with suspected ADHD meeting the two-setting criterion — with the teacher rating scale attached. Under-5s: parent training first, refer if it fails."},
+         {tone:"blue", h:"Adult ADHD service", html:"Adults with suspected ADHD, including those presenting after a child's diagnosis. Shared care agreement needed before the GP prescribes."},
+         {tone:"red", h:"Urgent / same-day", html:"Suicidal ideation on atomoxetine · cardiac symptoms on a stimulant · safeguarding concern."},
+         {tone:"blue", h:"Other specialists", html:"Paediatric neurology for suspected absence seizures · ENT for suspected OSA · audiology and ophthalmology before ADHD referral where hearing or vision is in doubt · developmental paediatrics for suspected autism or learning disability."},
+         {tone:"cream", h:"GP management", html:"The two-setting history and teacher questionnaire · pre-referral examination, growth baseline and ECG where indicated · parent training, SENCO and SEND referral · psychoeducation, sleep and exercise advice · shared-care prescribing with BP, HR and 6-monthly growth monitoring · annual reassessment."}
+       ]},
+       {b:"why", html:"The two GP failings that matter most in this pathway are both administrative rather than clinical: referring without the school rating scale, and letting non-pharmacological support wait for the specialist appointment. <b>Both add months of avoidable impairment</b>, and both are entirely within primary care's control."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A mother attends with her 9-year-old son, referred by the school SENCO — bright but unable to sustain attention, fidgeting, calling out, losing equipment, unable to finish homework. The teacher has completed a Conners 3 with elevated scores in both domains. A paternal uncle has ADHD. She says <em>\u201cI thought he was just naughty; I kept punishing him for things that weren't his fault\u201d</em>, and is worried medication will make him \u201clike a zombie\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Addresses the maternal guilt explicitly and early — ADHD is not caused by parenting; confirms symptoms in BOTH settings rather than accepting the school's account; has the teacher Conners in hand and knows referral without it delays assessment by months; explains the NG87 stepped approach so she hears that parent training comes before medication; answers the \u201czombie\u201d fear accurately — a dose-dependent effect, reduce rather than stop; <b>starts SENCO and SEND support now rather than waiting</b>; and — the step candidates miss — explores whether a parent recognises themselves, given ~50% heritability and the number of adults diagnosed after their child."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG87 — Attention deficit hyperactivity disorder: diagnosis and management (2018)<br><a href="https://www.nice.org.uk/guidance/ng87" rel="noopener">nice.org.uk/guidance/ng87</a><span class="rd"> — parent training first for under-5s and mild-to-moderate ADHD; methylphenidate first-line in children 5–18 and lisdexamfetamine first-line in adults; the 6-week optimised-dose switch rule; treat the dominant condition first in comorbidity; the position on tics and on drug holidays</span></li>'+
+         '<li><b>NICE NG87 \u2014 Attention deficit hyperactivity disorder: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng87" rel="noopener">nice.org.uk/guidance/ng87</a><span class="rd"> — primary-care assessment, pre-referral rating scales, and shared-care monitoring</span></li>'+
+         '<li><b>DSM-5</b><span class="rd"> — the diagnostic criteria: ≥6 of 9 symptoms in either domain (5 in those aged 17 and over), ≥6 months, onset of several symptoms before age 12, in ≥2 settings, with functional impairment</span></li>'+
+         '<li><b>Conners 3, SNAP-IV and NICHQ Vanderbilt rating scales</b><span class="rd"> — the teacher- and parent-completed instruments expected with an ADHD referral</span></li>'+
+         '<li><b>Misuse of Drugs Regulations — Schedule 2 controlled drugs</b><span class="rd"> — 28-day maximum supply, no remote prescription requests, safe storage requirements for methylphenidate, lisdexamfetamine and dexamfetamine</span></li>'+
+         '<li><b>Equality Act 2010</b><span class="rd"> — ADHD as a disability where it substantially affects day-to-day activities, and the duty to make reasonable adjustments at work and in education</span></li>'+
+         '<li><b>ADHD UK and ADDISS</b><br><a href="https://adhduk.org" rel="noopener">adhduk.org</a> · <a href="https://www.addiss.co.uk" rel="noopener">addiss.co.uk</a><span class="rd"> — patient and family psychoeducation resources</span></li>'+
+         '<li><b>BNF and BNF for Children</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — methylphenidate (Concerta XL, Ritalin LA), lisdexamfetamine (Elvanse), dexamfetamine, atomoxetine (Strattera) and guanfacine MR (Intuniv) dosing, contraindications and monitoring</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"ADHD — NICE NG87 (2018), NICE ADHD (2023), DSM-5, the Misuse of Drugs Regulations for Schedule 2 controlled drugs, and the Equality Act 2010. Diagnosis and medication initiation are specialist tasks; obtain a teacher-completed rating scale before referring, and begin non-pharmacological support without waiting for the appointment. Verify all doses against the current BNF or BNF for Children before prescribing, and prescribe only under a current shared care agreement."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

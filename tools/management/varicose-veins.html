@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Varicose veins — Protocol · Reasoning GP</title>
+<meta name="description" content="Varicose veins: the complications that convert a cosmetic problem into a referral, checking arterial supply before compression, conservative measures, managing venous eczema and superficial thrombophlebitis, the NICE CG168 referral thresholds, and the bleeding-varicosity first aid." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/varicose-veins.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Varicose veins protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🦵",
+  title:"Varicose veins — the complete guide",
+  eyebrow:"Protocol · NICE CG168 · referral is driven by complications, not appearance",
+  stemTitle:"Most varicose veins are a quality-of-life problem — what converts them into a referral is a complication, and what makes compression dangerous is the arterial supply nobody checked",
+  stemSub:"One page for the whole condition. Assess the symptoms and, more importantly, look for the complications that meet the NICE referral thresholds — skin changes, ulceration, bleeding, superficial thrombophlebitis. Deliver the conservative measures properly, <b>confirm adequate arterial supply before fitting any compression</b>, treat venous eczema, and give the patient the bleeding-varicosity first aid, because that is the one emergency this condition produces.",
+  guideline:"NICE CG168",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"NICE CG168 — varicose veins in the legs"},
+    {t:"Check arterial supply BEFORE compression", tone:"tw"},
+    {t:"No oral drug cures varicose veins", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#assess"><b>Assess</b><small>Complications</small></a><a href="#conservative"><b>Conservative</b><small>Compression caution</small></a><a href="#skin"><b>Skin</b><small>Eczema · phlebitis</small></a><a href="#monitor"><b>Review</b><small>Symptoms · skin</small></a><a href="#refer"><b>Refer</b><small>CG168 thresholds</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Check the arterial supply before fitting compression", html:"Confirm adequate arterial supply — pulses, and ABPI if there is any doubt — before fitting compression hosiery. Compression applied to a limb with coexisting arterial disease can cause ischaemia. This is the one way a well-intentioned prescription for varicose veins harms a leg."},
+    {tone:"amber", h:"Complications are what trigger referral, not appearance", html:"Skin changes (pigmentation, eczema, lipodermatosclerosis) · ulceration · bleeding from a varicosity · superficial thrombophlebitis. NICE referral is driven by symptoms and complications, not by how the veins look — which is also the honest answer to a purely cosmetic request."},
+    {tone:"red", h:"🩸 Bleeding varicosity — the first aid patients must know", html:"Lie down, raise the leg high, and press firmly for several minutes; call 999 if it will not stop. <b>Say this to anyone with prominent varicosities</b> — a bleeding varicose vein can lose a surprising volume, and the instinct to stand up and walk to the bathroom makes it worse."},
+    {tone:"blue", h:"There is no oral drug that cures varicose veins", html:"Management is conservative measures plus intervention where referral criteria are met. <b>Drugs have a role only in the complications</b> — emollients and a short course of topical corticosteroid for active venous eczema, and analgesia or an NSAID for superficial thrombophlebitis."},
+    {tone:"green", h:"The conservative measures worth naming specifically", html:"Weight loss if overweight · regular activity to work the calf-muscle pump, avoiding prolonged standing or sitting · leg elevation when resting · compression hosiery for symptom relief where intervention is unsuitable or while awaiting referral · emollients for skin care. <b>And explain the natural history</b>, separating cosmetic from medical expectations."},
+    {tone:"amber", h:"Exclude the two things that are not varicose veins", html:"DVT — acute unilateral swelling, which needs urgent assessment, not a stocking. <b>And arterial disease — check the pulses before compression.</b> A venous leg ulcer that has not healed within about 2 weeks is a referral in its own right."}
+  ],
+  pathwaySub:"Five steps, and the referral decision rests entirely on step one.",
+  pathway:[
+    {title:"Assess symptoms and hunt for complications", html:"Aching, heaviness, itching, swelling, cramps — then look for skin changes, ulceration, bleeding and thrombophlebitis. <b>Exclude DVT and arterial disease.</b>", alert:true},
+    {title:"Deliver the conservative measures", html:"Weight, activity, elevation, skin care — and compression only after the arterial supply is confirmed."},
+    {title:"Treat the skin complications", html:"Emollients with a short topical corticosteroid course for active venous eczema; analgesia for superficial thrombophlebitis, assessing its extent."},
+    {title:"Review symptoms and skin integrity", html:"Significant quality-of-life impact or any new complication moves this to referral."},
+    {title:"Refer on the CG168 criteria", html:"Symptomatic veins, skin changes, superficial vein thrombosis with suspected incompetence, a leg ulcer, or bleeding."}
+  ],
+  sections:[
+
+    {id:"assess", nav:"Assess", title:"Step 1 — assess the symptoms, and find the complications",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Symptoms</b>","Aching, heaviness, itching, swelling, cramps — and cosmetic concern, which is legitimate to discuss even though it is not a referral criterion"],
+         ["<b>Complications — these are what change the plan</b>","Skin changes (pigmentation, eczema, lipodermatosclerosis) · ulceration · superficial thrombophlebitis · bleeding"],
+         ["<b>Examine</b>","Distribution of the varicosities, skin integrity, and assess for chronic venous insufficiency"],
+         ["<b>Exclude</b>","DVT — acute unilateral swelling. Arterial disease — check the pulses BEFORE any compression"]
+       ]},
+       {b:"why", html:"Most varicose veins are a quality-of-life issue, but the presence of a complication — skin changes, ulceration, bleeding or thrombophlebitis — is what converts them into a referral. And checking arterial supply before compression avoids harming a limb with coexisting arterial disease, which is the single avoidable harm this condition offers."}
+     ]},
+
+    {id:"conservative", nav:"Conservative", title:"Step 2 — conservative measures, first-line",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"⚖️ Weight", html:"<b>Weight loss if overweight reduces venous load and symptoms.</b>"},
+         {tone:"green", h:"🏃 Exercise", html:"Regular activity to work the calf-muscle pump; avoid prolonged standing or sitting."},
+         {tone:"green", h:"🦵 Elevation", html:"<b>Elevate the legs when resting to reduce swelling and aching.</b>"},
+         {tone:"red", h:"🧦 Compression hosiery — arterial check first", html:"For symptom relief, chiefly where intervention is unsuitable or while awaiting referral. <b>Check the arterial supply first — pulses, and ABPI if in doubt.</b>"},
+         {tone:"blue", h:"🧴 Skin care", html:"Emollients for venous eczema; treat dryness and itch to prevent skin breakdown — which is how ulcers begin."},
+         {tone:"blue", h:"💬 Reassurance and expectations", html:"Explain the natural history, and address cosmetic versus medical expectations openly rather than leaving the patient to discover the funding position at referral."}
+       ]}
+     ]},
+
+    {id:"skin", nav:"Skin", title:"Step 3 — managing the skin complications",
+     blocks:[
+       {b:"table", head:["Problem","Management"], rows:[
+         ["<b>Venous eczema</b>","Emollients, with or without a short course of topical corticosteroid for active eczema"],
+         ["<b>No specific drug for the veins themselves</b>","There is no oral drug that cures varicose veins — management is conservative measures plus intervention"],
+         ["<b>Superficial thrombophlebitis</b>","Analgesia or an NSAID; assess the extent — a proximal long-segment thrombophlebitis warrants referral and consideration of anticoagulation"]
+       ]},
+       {b:"warn", html:"Before fitting compression, confirm adequate arterial supply — pulses, or ABPI if there is any doubt. <b>Compression in arterial disease can cause ischaemia</b>, and the patients most likely to be offered a stocking for aching legs are exactly those old enough to have unrecognised PAD. See <a href='peripheral-arterial-disease.html'>peripheral arterial disease</a>."}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"Step 4 — monitoring symptoms and skin",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Symptoms and quality of life</b>","<b>Each review</b>","<b>Significant impact → refer for intervention</b>"],
+         ["<b>Skin integrity</b>","<b>Each review</b>","<b>Skin changes or eczema → refer. An ulcer → the leg-ulcer pathway</b>"],
+         ["<b>Compression tolerance</b>","<b>If compression is in use</b>","<b>Adjust the class; re-confirm the arterial supply remains adequate</b>"],
+         ["<b>New complications</b>","<b>Any time</b>","Bleeding, ulceration or thrombophlebitis → act per the safety-net and referral criteria"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>At presentation</b>","Assess symptoms and complications, give conservative advice, and decide whether referral criteria are already met"],
+         ["<b>As needed</b>","<b>Reassess if symptoms worsen or skin changes develop</b>"],
+         ["<b>If ulcer or bleeding</b>","<b>Escalate to the appropriate urgent pathway</b>"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Bleeding varicosity", html:"\"If a vein bleeds: lie down, raise the leg high, and press firmly for several minutes — call 999 if it will not stop.\""},
+         {tone:"amber", h:"🩹 Ulcer", html:"\"A break in the skin or a non-healing sore around the ankle — contact us. Venous ulcers need proper treatment.\""},
+         {tone:"red", h:"🦵 DVT", html:"\"Sudden painful swelling of one calf — seek urgent assessment to rule out a clot.\""},
+         {tone:"amber", h:"🧦 Compression care", html:"\"If the stockings cause pain, numbness or colour change in the foot, stop wearing them and tell us.\""}
+       ]}
+     ]},
+
+    {id:"troubleshoot", nav:"Worsening?", title:"Worsening? Check the referral criteria",
+     sub:"NICE referral is driven by symptoms and complications, not appearance alone.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Skin changes", html:"<b>Pigmentation, eczema or lipodermatosclerosis → vascular referral.</b>"},
+         {tone:"red", h:"2 · Ulcer", html:"A venous leg ulcer, or broken skin below the knee not healed within about 2 weeks → leg-ulcer or vascular referral."},
+         {tone:"red", h:"3 · Bleeding", html:"<b>Has bled, or is at risk of bleeding, from a varicosity → refer.</b>"},
+         {tone:"amber", h:"4 · Thrombophlebitis", html:"<b>Superficial vein thrombosis → assess extent and refer.</b>"},
+         {tone:"blue", h:"5 · Symptoms", html:"Troublesome symptoms affecting quality of life → vascular for intervention."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When to refer to vascular — the CG168 thresholds",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Bleeding", html:"Bleeding from a varicose vein, or a varicosity at high risk of bleeding. <b>999 if active bleeding will not stop with elevation and pressure.</b>"},
+         {tone:"red", h:"Venous leg ulcer", html:"A leg ulcer — broken skin below the knee not healed within about 2 weeks — or a healed venous ulcer."},
+         {tone:"amber", h:"Skin changes", html:"Lower-limb skin changes thought to be due to chronic venous insufficiency: pigmentation, eczema, lipodermatosclerosis."},
+         {tone:"amber", h:"Superficial thrombophlebitis", html:"<b>Superficial vein thrombosis with suspected venous incompetence.</b>"},
+         {tone:"blue", h:"Symptomatic veins", html:"Symptomatic primary or recurrent varicose veins affecting quality of life."},
+         {tone:"cream", h:"GP management", html:"Assessment, the conservative measures, compression after an arterial check, venous eczema, superficial thrombophlebitis, the safety-net and the referral decision all belong here. Related pages: <a href='peripheral-arterial-disease.html'>peripheral arterial disease</a> · <a href='dvt.html'>DVT</a> · <a href='eczema.html'>eczema</a> · <a href='cellulitis.html'>cellulitis</a>."}
+       ]},
+       {b:"say", html:"Varicose veins are common and often just need simple measures — staying active, elevating your legs, and weight control. If they are really troubling you, or if the skin changes or a vein bleeds, I will refer you to the vein specialists for treatment. One thing worth knowing in advance: if a vein ever bleeds, lie down, get the leg up high, and press hard for several minutes — that stops almost all of them."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 62-year-old woman who works as a hairdresser attends with <b>aching, heavy legs</b> by the end of the day and prominent varicosities on both calves. She has <b>brown discoloration above the right ankle</b> and some <b>dry, itchy, scaly skin</b> there. She is a smoker with <b>type 2 diabetes</b>. She asks for <b>\"the stockings\"</b> and whether the veins can be \"taken out on the NHS\"."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Identifies the pigmentation and venous eczema as skin changes of chronic venous insufficiency — which is itself a CG168 referral criterion, so this is not a cosmetic consultation; does NOT simply issue compression hosiery: checks pedal pulses and arranges ABPI given diabetes and smoking, and can explain that compression on an arterially compromised limb causes ischaemia — while also knowing <b>the ABPI may read falsely high in diabetes</b>; treats the venous eczema with emollients and a short topical corticosteroid course rather than leaving skin to break down into an ulcer; <b>excludes DVT</b>; <b>answers the funding question honestly</b> — referral is driven by symptoms and complications, and she meets the criteria on the skin changes; <b>gives the bleeding-varicosity first aid explicitly</b>; addresses <b>smoking, weight and prolonged standing</b> with practical adjustments for her job; and <b>safety-nets the non-healing ankle sore</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG168 — Varicose veins: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg168" rel="noopener">nice.org.uk/guidance/cg168</a><span class="rd"> — the five referral criteria (symptomatic primary or recurrent varicose veins, skin changes due to chronic venous insufficiency, superficial vein thrombosis with suspected incompetence, a leg ulcer or a healed venous ulcer, and bleeding or high bleeding risk), and the position of compression hosiery where intervention is unsuitable</span></li>'+
+         '<li><b>NICE CG168 \u2014 Varicose veins: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg168" rel="noopener">nice.org.uk/guidance/cg168</a><span class="rd"> — the conservative measures, the requirement to confirm arterial supply before compression, management of venous eczema and superficial thrombophlebitis, and the review structure</span></li>'+
+         '<li><b>NICE CG147 — Peripheral arterial disease</b><br><a href="https://www.nice.org.uk/guidance/cg147" rel="noopener">nice.org.uk/guidance/cg147</a><span class="rd"> — ABPI assessment, referenced here because compression is contraindicated in significant arterial disease and the ABPI is falsely elevated in diabetes and CKD</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — emollients and topical corticosteroid potency for venous eczema; NSAID use in superficial thrombophlebitis</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Varicose veins — NICE CG168 and NICE. Referral is driven by symptoms and complications, not appearance: skin changes of chronic venous insufficiency, a leg ulcer or healed venous ulcer, bleeding or high bleeding risk, superficial vein thrombosis with suspected incompetence, or symptoms affecting quality of life. Confirm adequate arterial supply before fitting compression — compression on an arterially compromised limb can cause ischaemia. No oral drug cures varicose veins; treat venous eczema with emollients and a short topical steroid course. Every patient with prominent varicosities should know the bleeding first aid: lie down, elevate, press firmly, and call 999 if it will not stop."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

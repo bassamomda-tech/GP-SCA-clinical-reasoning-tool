@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>COPD — Protocol · Reasoning GP</title>
+<meta name="description" content="COPD in adults, diagnosis and management on one page: post-bronchodilator spirometry, the NG115 inhaler ladder branching on asthmatic features, controlled oxygen at 88–92%, the 5-day steroid, NG114 antibiotic judgement, NIV, pulmonary rehab, LTOT and advance care planning." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/copd.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="COPD protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1FAC1}",
+  title:"COPD",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"COPD \u2014 confirm it post-bronchodilator, do the non-drug work first, branch the inhaler on asthmatic features, and target 88\u201392% in the flare",
+  stemSub:"One page for the whole condition. Confirm with post-bronchodilator spirometry, grade against the patient's own baseline, climb the NG115 ladder (dual LABA+LAMA is the default, never LAMA alone), use controlled oxygen in the exacerbation, de-escalate ICS when it is not earning its pneumonia risk, and know the LTOT, rehab and advance-care triggers.",
+  guideline:"NICE NG115 \u00b7 NG114",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NICE NG115 (2019)"},
+    {t:"NG114 \u00b7 exacerbation antibiotics"},
+    {t:"GOLD 2024 \u00b7 BTS"},
+    {t:"REDUCE JAMA 2013 \u00b7 ALBERT NEJM 2011"},
+    {t:"2WW \u00b7 NG12 lung cancer", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>Post-bronchodilator</small></a><a href="#acute"><b>The flare</b><small>Controlled O\u2082 \u00b7 exact doses</small></a><a href="#ladder"><b>Inhaler ladder</b><small>Branch on phenotype</small></a><a href="#refer"><b>Refer</b><small>LTOT \u00b7 rehab \u00b7 palliative</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Target SpO\u2082 88\u201392%, NOT 94\u201398%", html:"In COPD with chronic CO\u2082 retention, uncontrolled high-flow oxygen removes the hypoxic ventilatory drive and causes <b>fatal CO\u2082 narcosis</b>. Use a <b>24\u201328% Venturi mask</b> \u2014 it delivers a precise FiO\u2082 regardless of breathing pattern, unlike a simple mask or nasal cannulae. Put the target SpO\u2082 on the referral letter and say it to the paramedic crew."},
+    {tone:"red", h:"Grade against their own baseline", html:"Establish the patient's <b>baseline SpO\u2082 and exercise tolerance</b> first. A 3\u20134% drop from baseline is significant even when the absolute number still looks acceptable (\u2265 88%). Recognise <b>CO\u2082 narcosis</b>: drowsiness, <b>asterixis</b> (coarse flapping tremor with wrists extended), headache, warm peripheries, bounding pulse."},
+    {tone:"amber", h:"Prednisolone 30 mg for 5 days \u2014 not 14", html:"<b>Prednisolone 30 mg OD for 5 days</b> (NICE NG115). The <b>REDUCE trial (JAMA 2013)</b> showed 5 days is non-inferior to 14 for time to next exacerbation, with far less steroid exposure. <b>No taper for courses \u22643 weeks.</b> That is <b>10 \u00d7 5 mg tablets per exacerbation, not 28</b>. Monitor glucose in diabetics."},
+    {tone:"blue", h:"Antibiotics are a judgement, not a purulence rule", html:"<b>NG114 weighs several factors</b>, not sputum colour alone: severity of symptoms (sputum colour change AND an increase in volume or thickness), whether they need hospital, <b>previous exacerbation and hospitalisation history</b>, risk of complications (significant comorbidity, very poor lung function), and <b>previous sputum culture results</b>. If giving one: <b>amoxicillin 500 mg TDS</b>, <b>doxycycline 200 mg then 100 mg OD</b>, or <b>clarithromycin 500 mg BD</b> \u2014 5 days."},
+    {tone:"plain", h:"LAMA alone is not a NICE step", html:"Once short-acting treatment is insufficient and there are <b>no asthmatic features</b>, NICE recommends <b>LABA + LAMA</b> \u2014 whatever the symptom burden. And the <b>blood-eosinophil thresholds (0.1 / 0.3) are GOLD, not NICE</b>: NICE gates ICS on <b>asthmatic or steroid-responsive features</b>, then on persisting symptoms or severe/frequent exacerbations."},
+    {tone:"green", h:"The two things that change the trajectory", html:"Smoking cessation is the only intervention that slows FEV\u2081 decline \u2014 the Lung Health Study showed it halved annual loss from about <b>60 mL/year to about 30 mL/year</b>. Pulmonary rehabilitation within 4 weeks of an admission reduces re-hospitalisation by about 50% (NNT 4) and all-cause mortality by about 40% at 12 months \u2014 yet only about <b>5\u201310%</b> of admitted patients are referred before discharge."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Establish the baseline first", html:"What is this patient's usual SpO\u2082 and exercise tolerance? Without that, the acute numbers cannot be interpreted."},
+    {title:"Screen for respiratory failure and the other emergencies", html:"SpO\u2082 &lt;88% (or \u22654% below baseline), RR &gt;30, confusion, cyanosis, exhaustion \u2192 999 with controlled oxygen. CO\u2082 narcosis (drowsy, asterixis) \u2192 <b>reduce O\u2082 to 24\u201328% Venturi immediately</b>. Sudden unilateral absent breath sounds with hyperresonance \u2192 pneumothorax. Haemoptysis with new consolidation and weight loss in a smoker over 40 \u2192 <b>2WW lung cancer</b>.", alert:true},
+    {title:"Grade the flare against baseline", html:"Mild: symptoms only, RR and SpO\u2082 at baseline, self-managing. Moderate: breathless beyond baseline, RR up, SpO\u2082 declining but \u226588%. Severe: respiratory failure features."},
+    {title:"Treat the bundle", html:"Bronchodilators (hold ipratropium if already on a LAMA) + <b>prednisolone 30 mg for 5 days</b> + an antibiotic on the NG114 judgement + controlled oxygen. Reassess within 1\u20132 hours."},
+    {title:"Prevent the next one", html:"48-hour review, rescue pack re-supplied, <b>pulmonary rehab referral within 4 weeks of admission</b>, smoking cessation, vaccines, precipitant identified and coded."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm", title:"Diagnose properly \u2014 spirometry plus the work-up", sub:"Two errors dominate: labelling COPD on pre-bronchodilator spirometry, and never re-questioning an old label that arrived without spirometry at all.",
+     blocks:[
+       {b:"dl", rows:[
+         ["The test","<b>Post-bronchodilator FEV\u2081/FVC &lt;0.70</b> in a symptomatic patient with a risk factor (aged \u226535, smoker or ex-smoker, occupational dust or fume exposure). No routine reversibility testing \u2014 clinical features separate asthma"],
+         ["At diagnosis, everyone gets","<b>CXR</b> (exclude cancer \u2014 NG12: unexplained cough, haemoptysis or weight loss in a smoker), <b>FBC</b> (anaemia or polycythaemia, plus a <b>baseline eosinophil count</b>), <b>BMI</b>, and <b>MRC + CAT</b> scores"],
+         ["Selected patients","<b>\u03b1\u2081-antitrypsin</b> if aged &lt;40, minimal smoking, or a family history; sputum culture if persistently purulent; <b>ECG and BNP/NT-proBNP</b> if cor pulmonale or a cardiac component is suspected (P pulmonale, right axis deviation, RBBB); CT if bronchiectasis, fibrosis or cancer is suspected"],
+         ["Severity (FEV\u2081 % predicted)","<b>Stage 1 \u226580%</b> (needs symptoms) \u00b7 <b>2: 50\u201379%</b> \u00b7 <b>3: 30\u201349%</b> \u00b7 <b>4: &lt;30%</b>"],
+         ["<b>MRC dyspnoea scale</b>","<b>1</b> strenuous exercise only \u00b7 <b>2</b> hurrying or hills \u00b7 <b>3</b> slower than peers on the flat, or stops for breath walking at own pace \u00b7 <b>4</b> stops after about 100 m \u00b7 <b>5</b> housebound, or breathless dressing"],
+         ["<b>CAT score</b>","COPD Assessment Test \u2014 <b>8 questions, 0\u201340 scale</b>, patient-completed in about 2 minutes (catestonline.org). &lt;10 low impact \u00b7 10\u201320 medium \u00b7 21\u201330 high \u00b7 &gt;30 very high. Now preferred over MRC alone in GOLD because it captures the full daily impact, not just breathlessness"],
+         ["<b>GOLD groups</b>","<b>A</b> few symptoms (mMRC 0\u20131), low risk (0\u20131 exacerbation/year, no hospitalisation) \u00b7 <b>B</b> more symptoms (mMRC \u22652), low risk \u00b7 <b>C</b> few symptoms, high risk (\u22652 exacerbations/year or \u22651 hospitalisation) \u00b7 <b>D</b> most symptoms, high risk"],
+         ["<b>Frequent exacerbator phenotype</b>","<b>\u22652 moderate or \u22651 severe exacerbation per year</b> \u2014 a separate clinical phenotype with different pathobiology (eosinophilic, bacterial or mixed), and the trigger for escalation and prophylaxis assessment"]
+       ]},
+       {b:"why", html:"Labelling COPD on <em>pre</em>-bronchodilator spirometry over-diagnoses, and around a third of \u201cCOPD\u201d on practice registers arrived without spirometry at all. If the record has no post-bronchodilator ratio, get one."},
+       {b:"warn", html:"The asthma\u2013COPD distinction matters because it flips the inhaler logic: asthmatic features, previous asthma, eosinophilia or large variability \u2192 ICS is essential (treat as asthma with fixed obstruction), whereas in pure COPD, ICS is a targeted add-on with a real pneumonia cost."}
+     ]},
+
+    {id:"severe", nav:"Red flags", title:"Red flags \u2014 respiratory failure, pneumothorax, and the cancer flag", sub:"An exacerbation can be precipitated by, or can mask, something else entirely.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW \u00b7 NICE NG12 \u2014 lung cancer", html:"Haemoptysis with new consolidation and weight loss in a smoker or ex-smoker aged over 40 \u2192 suspected lung cancer pathway referral. An exacerbation may be precipitated by or masking a tumour. NG12: offer an urgent CXR (within 2 weeks) to anyone aged 40 and over with unexplained haemoptysis, or with persistent cough, weight loss, chest or shoulder pain, breathlessness, fatigue, appetite loss or clubbing in a smoker. Do not accept \u201cit's just their COPD\u201d for a new or changed symptom."},
+         {tone:"red", h:"Type 2 respiratory failure", html:"SpO\u2082 &lt;88% on air with confusion, RR &gt;30, all accessory muscles working, exhaustion \u2192 999. Controlled O\u2082 24\u201328% via Venturi, target 88\u201392% \u2014 not 95%+. Urgent ABG. Nebulised salbutamol + ipratropium. <b>IV hydrocortisone 200 mg.</b> <b>NIV (BiPAP) if pH &lt;7.35 and pCO\u2082 &gt;6 kPa</b> despite medical management."},
+         {tone:"red", h:"CO\u2082 narcosis from over-oxygenation", html:"On home oxygen or receiving <b>high-flow uncontrolled O\u2082</b>, now drowsy with <b>asterixis</b> and headache \u2192 oxygen-induced hypercapnic respiratory failure. <b>Reduce O\u2082 immediately to 24\u201328% Venturi</b>, urgent ABG, 999 and NIV alert."},
+         {tone:"red", h:"Tension pneumothorax", html:"Sudden severe dyspnoea with unilateral absent breath sounds, hyperresonant percussion and tracheal deviation \u2014 COPD patients have bullae and are at risk \u2192 999. <b>Needle decompression, 2nd intercostal space mid-clavicular line</b>; urgent chest drain."},
+         {tone:"red", h:"Pneumonia complicating the exacerbation", html:"Tachycardia, hypotension, <b>fever &gt;38.5\u00b0C</b>, purulent sputum and new consolidation \u2192 999 or same-day hospital. <b>CRB-65</b> scoring; IV antibiotics."},
+         {tone:"amber", h:"Cor pulmonale / right heart failure", html:"Bilateral ankle oedema, raised JVP, SpO\u2082 acutely below baseline \u2192 <b>same-day hospital</b>. ECG and echo; IV diuresis with controlled oxygen."},
+         {tone:"amber", h:"Consider pulmonary embolism", html:"An exacerbation can mimic or be triggered by PE \u2014 consider D-dimer or CTPA where there is <b>disproportionate hypoxia</b> or clinical suspicion."}
+       ]},
+       {b:"why", html:"In COPD, a subgroup \u2014 the hypercapnic patient, often GOLD stage 3\u20134 \u2014 relies on <b>hypoxic ventilatory drive</b> because chronic hypercapnia has reset the central chemoreceptor threshold, so CO\u2082 is no longer the dominant stimulus. High-flow oxygen removes that drive, reduces respiratory effort, lets CO\u2082 accumulate, and can cause narcosis and arrest. Every COPD patient transported by ambulance should have a Venturi mask with the target SpO\u2082 written down \u2014 on the referral letter and stated verbally to the crew."}
+     ]},
+
+    {id:"assess", nav:"Assess", title:"Assessment \u2014 history, examination, investigations", sub:"The examination findings that matter here are the CO\u2082-retention signs and the comparison with baseline.",
+     blocks:[
+       {b:"dl", rows:[
+         ["History","Baseline SpO\u2082 and exercise tolerance \u2014 critical for interpreting acute readings. Onset and rate of change (acute over hours vs gradual over days). Increased breathlessness, increased sputum with colour change (yellow or green suggests infective), reduced exercise tolerance. Fever and myalgia (viral trigger). Recent antibiotics (resistant colonisation). Current LAMA, LABA/ICS and SABA frequency. Smoking. Comorbidities: IHD, heart failure, diabetes, pulmonary hypertension. <b>Home oxygen prescription.</b> Previous exacerbations needing hospitalisation or NIV"],
+         ["Examination","SpO\u2082 compared with documented baseline \u2014 a drop of \u22653\u20134% is significant even if the absolute value is still \u226588%; <b>RR \u226530 = severe</b>; HR, BP, temperature. Accessory muscle use (sternocleidomastoid, scalene), tracheal position, percussion (hyperresonance = air trapping; dullness = consolidation or effusion), auscultation, <b>pursed-lip breathing</b>. CO\u2082 retention signs: asterixis, drowsiness, warm peripheries, bounding pulse, papilloedema. JVP and peripheral oedema (cor pulmonale). <b>Cachexia is a severity marker</b>"],
+         ["<b>Precipitating causes</b>","<b>Respiratory viral infection is commonest \u2014 70\u201380%</b> (rhinovirus, RSV, coronavirus, influenza). <b>Bacterial: Haemophilus influenzae is the commonest</b>, then Streptococcus pneumoniae, Moraxella catarrhalis, and <b>Pseudomonas aeruginosa</b> in severe COPD, frequent exacerbators and bronchiectasis overlap. Air pollution (particulates, ozone). <b>Pulmonary embolism.</b> Cardiac decompensation. Pneumothorax. <b>No identifiable cause in about 33%</b>"]
+       ]},
+       {b:"table", head:["Investigation","When","Interpretation"], rows:[
+         ["SpO\u2082","Continuous in moderate\u2013severe","Against baseline, not against 94\u201398%"],
+         ["<b>ABG</b>","<b>If SpO\u2082 &lt;92%, or confusion/drowsiness</b>","Type 2 respiratory failure = low pH + high pCO\u2082 (&gt;6 kPa) + raised bicarbonate. A high bicarbonate (&gt;28 mmol/L) with a high pCO\u2082 means the kidneys have had time to compensate \u2014 chronic hypercapnia, i.e. their baseline. An acutely raised pCO\u2082 with a normal or only mildly raised bicarbonate means acute decompensation on top. Repeat the ABG <b>30\u201360 minutes after starting oxygen</b>"],
+         ["CXR","All moderate\u2013severe exacerbations","Exclude pneumothorax, pneumonia, consolidation, cardiac failure"],
+         ["FBC, CRP, blood cultures","Infection markers","Cultures if febrile with consolidation"],
+         ["Sputum culture","<b>Purulent, not responding, admitted, or \u22653 exacerbations/year</b>","Guides the next antibiotic choice"],
+         ["ECG","Arrhythmia, cor pulmonale","P pulmonale, right axis deviation, RBBB"],
+         ["BNP / NT-proBNP","Suspected cardiac component","Heart failure precipitating or complicating the flare"]
+       ]},
+       {b:"why", html:"The bicarbonate is what tells you whether this is the patient's chronic state or an acute decompensation. A patient with a chronic pCO\u2082 of 7 kPa, bicarbonate 34 mmol/L and pH 7.36 is compensated and may be at baseline; the same patient at pH 7.28 is acutely decompensated and needs NIV."}
+     ]},
+
+    {id:"acute", nav:"The flare", title:"The exacerbation \u2014 severity, exact rescue doses, and NIV", sub:"Graded against the patient's own baseline. Controlled oxygen from first contact in anything moderate or worse.",
+     blocks:[
+       {b:"table", head:["Severity","Picture","Action"], rows:[
+         ["<b>Mild</b>","Increasing breathlessness with cough or sputum <b>beyond day-to-day variation</b>. <b>No change in RR or SpO\u2082 from baseline.</b> Managing at home independently","Increase SABA (salbutamol 2.5 mg nebulised, or 4\u201310 puffs via spacer, QDS to hourly); consider a short antibiotic course on the NG114 judgement if sputum has changed; <b>rescue-pack self-activation</b>"],
+         ["<b>Moderate</b>","Increased breathlessness beyond baseline, <b>RR elevated, SpO\u2082 declining but \u226588%</b>. Managing with GP or phone support but unable to maintain activities","<b>Prednisolone 30 mg OD \u00d7 5 days</b> + an antibiotic if indicated + increased bronchodilators. <b>Consider same-day hospital assessment</b>; reassess response within <b>1\u20132 hours</b>"],
+         ["<b>Severe</b>","Breathless at rest, <b>RR \u226525</b>, accessory muscles, <b>SpO\u2082 &lt;90\u201392% or below their known baseline</b>. Acute respiratory failure: <b>SpO\u2082 &lt;88% (or a 3\u20134% drop from baseline), RR &gt;30</b>, accessory muscle use, confusion or drowsiness, cyanosis, <b>pH &lt;7.35</b> on ABG","<b>999.</b> <b>Controlled O\u2082 28% Venturi, target 88\u201392%.</b> Nebulised salbutamol + ipratropium. <b>IV hydrocortisone 200 mg.</b> ABG + NIV assessment. Antibiotics if an infective trigger"],
+         ["<b>Life-threatening</b>","Confusion or drowsiness (CO\u2082), cyanosis, exhaustion, new oedema","<b>999.</b> Sit them up, controlled oxygen, salbutamol while waiting"]
+       ]},
+       {b:"ladder", steps:[
+         {step:"1", title:"Bronchodilators", when:"all exacerbations",
+          html:"<b>Salbutamol 2.5\u20135 mg nebulised</b> \u2014 driven by 28\u201335% Venturi oxygen in hypercapnic patients, not high-flow \u2014 or <b>4\u201310 puffs via spacer</b>, repeated every 4\u20136 hours. <b>Ipratropium 500 micrograms nebulised every 6\u20138 hours</b>, added to salbutamol for additive anticholinergic bronchodilation. <b>If already on a LAMA, do not add ipratropium</b> \u2014 same receptor class, additive risk of urinary retention and angle-closure glaucoma. Never let nebulised ipratropium reach the eyes (check mask fit)."},
+         {step:"2", title:"Systemic corticosteroid", when:"breathlessness limits activities",
+          fromLabel:"5 days, not 14",
+          html:"<b>Prednisolone 30 mg OD \u00d7 5 days</b> (NICE NG115) \u2014 reduces length of hospitalisation and shortens time to clinical improvement by about <b>1 day</b>. <b>No taper needed for courses \u22643 weeks.</b> <b>IV hydrocortisone 200 mg</b> if unable to swallow or severe. <b>Monitor glucose in diabetics</b> \u2014 prednisolone raises it significantly."},
+         {step:"3", title:"Antibiotic \u2014 on the NG114 judgement", when:"weigh the factors, don't apply a purulence rule",
+          fromLabel:"not routine in non-purulent flares",
+          html:"<b>Amoxicillin 500 mg TDS \u00d7 5 days</b> first-line (covers H. influenzae, S. pneumoniae, M. catarrhalis). <b>Doxycycline 200 mg loading then 100 mg OD \u00d7 5 days</b> as an alternative (broader, atypical cover). <b>Clarithromycin 500 mg BD \u00d7 5 days.</b> <b>Co-amoxiclav 625 mg TDS \u00d7 5 days</b> if previous frequent antibiotics, a severe exacerbation, or Pseudomonas risk. On azithromycin prophylaxis \u2192 treat the flare with a NON-macrolide."},
+         {step:"4", title:"Controlled oxygen", when:"moderate or severe, from first contact",
+          fromLabel:"the intervention that kills if done wrong",
+          html:"<b>Venturi mask 28%, target SpO\u2082 88\u201392%.</b> Avoid a simple face mask (variable FiO\u2082), avoid nasal cannulae (unreliable FiO\u2082), and never 100% O\u2082 or 15 L/min. ABG 30\u201360 minutes after starting."},
+         {step:"5", title:"NIV (BiPAP) \u2014 hospital", when:"pH <7.35 + pCO\u2082 >6 kPa despite 1 hour of medical management",
+          fromLabel:"for awareness, not primary care",
+          html:"IPAP 12\u201320 cmH\u2082O + EPAP 3\u20136 cmH\u2082O, backup rate 10\u201315 breaths/min. Delivered on a respiratory ward or acute medical unit \u2014 <b>not in a GP surgery</b>. Goal: pH improvement &gt;0.05 units within 1\u20132 hours and pH &gt;7.35 within 4 hours. <b>Success rate approximately 75%</b> where pH is 7.25\u20137.35. Intubation criteria (NIV failure): pH &lt;7.25 or worsening, not tolerating the mask, haemodynamic instability, excessive secretions. High-flow nasal oxygen (Optiflow) is an alternative in selected patients (pH 7.30\u20137.35) but NIV remains standard."}
+       ]},
+       {b:"dl", rows:[
+         ["<b>Rescue pack rules</b>","<b>Prednisolone 30 mg OD \u00d7 5 days + an antibiotic \u00d7 5 days</b>, supplied in advance to educated patients with a written plan who have had <b>\u22652 exacerbations/year</b>. Start when breathlessness increases beyond baseline <em>with</em> a change in sputum colour or quantity, <b>lasting more than 24\u201348 hours</b> without another explanation. One pack at a time; they must <b>tell you each time they use it</b>; <b>\u22653 uses per year \u2192 specialist review</b>, and \u22652 uses \u2192 face-to-face review and escalate the ladder"],
+         ["After every flare","Review within <b>48 hours</b> (NICE standard): SpO\u2082 back to baseline, symptoms and compliance, step-up decision, <b>pulmonary rehab referral</b>, re-supply the rescue pack, identify the precipitant, and <b>code it in the record</b>"],
+         ["Frequent steroid courses","<b>\u22652 per year</b> \u2192 check the ladder, and think <b>bone protection (DEXA, bisphosphonate)</b> and adrenal suppression"]
+       ]},
+       {b:"why", html:"Rescue packs reduce ED attendance by roughly 40% and unplanned admission by roughly 30% in RCTs \u2014 among the most cost-effective interventions in COPD. And the 5-day steroid course is a genuine paradigm shift: <b>REDUCE (JAMA 2013)</b> compared <b>prednisolone 40 mg OD</b> for 5 days versus 14 days and found equivalent time to next exacerbation over <b>180 days</b> (NICE NG115 adopted 30 mg for the UK) with significantly lower cumulative steroid exposure. Continuing to prescribe 14-day courses exposes patients to adrenal suppression, diabetes destabilisation, bone loss and skin fragility for no additional benefit."}
+     ]},
+
+    {id:"foundations", nav:"The big four", title:"Non-drug treatment outperforms the inhalers", sub:"This section comes before the ladder because it delivers more than any inhaler step-up.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"\ud83d\udead 1 \u00b7 Smoking cessation", html:"<b>The ONLY intervention that slows FEV\u2081 decline</b>, and NG115 requires it be addressed <b>at every COPD contact</b>. The <b>Lung Health Study</b> showed cessation slowed annual FEV\u2081 loss from about <b>60 mL/year to about 30 mL/year</b>. Varenicline or cytisinicline, NRT combination, vaping as a quit tool per local policy, plus behavioural support. <b>Even in GOLD 3\u20134 it improves outcomes and reduces exacerbations.</b>"},
+         {tone:"green", h:"\ud83c\udfc3 2 \u00b7 Pulmonary rehabilitation", html:"Refer at <b>MRC \u22653</b>, and <b>all patients within 4 weeks of any admission for an exacerbation</b>. <b>Reduces hospitalisation by about 50%</b>, improves 6-minute walk distance by about <b>50\u201380 metres</b>, reduces dyspnoea and improves quality of life. Programme: <b>twice-weekly supervised sessions for 6\u20138 weeks</b> \u2014 aerobic exercise, resistance training and education. <b>NHS waits are typically 3\u20136 months</b>, so refer promptly to catch the window. Sell it like a drug: it has the best evidence of anything you can offer."},
+         {tone:"blue", h:"\ud83d\udc89 3 \u00b7 Vaccines", html:"Annual influenza (September\u2013November) reduces exacerbation frequency by about 25\u201330% and hospitalisation by about 40%. <b>Pneumococcal (PCV20 single dose, or PPV23)</b> \u2014 S. pneumoniae is the second commonest bacterial trigger. COVID booster per the autumn programme; RSV if eligible."},
+         {tone:"amber", h:"\ud83d\udcdd 4 \u00b7 Self-management plan", html:"Written plan with a <b>yellow zone</b> (worsening symptoms \u2192 increase bronchodilators, start the rescue pack if sputum has changed) and a <b>red zone</b> (SpO\u2082 dropping or very unwell \u2192 <b>999</b>). Educate on early recognition and on <b>not delaying treatment</b>."},
+         {tone:"plain", h:"\ud83c\udf7d\ufe0f Nutrition", html:"<b>Malnutrition (BMI &lt;20)</b> means respiratory muscle weakness, more hospitalisation and higher mortality \u2192 high-calorie supplements (<b>Complan, Ensure Plus</b>) and dietitian referral. <b>MUAC &lt;23 cm indicates malnutrition risk.</b> Conversely obesity worsens breathlessness and reduces exercise capacity. <b>BMI documented annually is a QOF indicator.</b>"},
+         {tone:"plain", h:"\ud83c\udf2c\ufe0f Inhaler technique", html:"<b>Roughly 70\u201380% of COPD patients have suboptimal technique.</b> DPIs (Handihaler, Breezhaler, Turbohaler, Ellipta) need a FAST deep inhale (&gt;60 L/min); <b>pMDIs need a SLOW steady inhalation coordinated with actuation</b>, and a spacer reduces the coordination demand. Match the device to inspiratory ability \u2014 a weak inhale means MDI+spacer or soft-mist, not a DPI. Observe every prescribed inhaler at every review."},
+         {tone:"plain", h:"\ud83d\udeb6 Activity between programmes", html:"Interim home exercise while on the rehab waiting list: <b>30 minutes \u00d7 3 days/week minimum</b> walking or cycling. NICE-approved apps (my mhealth COPD, NHS COPD app). <b>Pacing and breathing\u2013activity synchronisation</b> via occupational therapy."}
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Inhaler ladder", title:"The ladder \u2014 treat the trait, not the FEV\u2081", sub:"Everyone starts with a short-acting reliever. The branch point is asthmatic or steroid-responsive features \u2014 not the FEV\u2081, and not an eosinophil cut-off.",
+     blocks:[
+       {b:"warn", html:"<b>Two common misreadings of NG115, both corrected here.</b> (1) <b>LAMA monotherapy is not a NICE step</b> for a symptomatic patient \u2014 once short-acting treatment is insufficient and there are no asthmatic features, NICE recommends <b>LABA+LAMA</b> (dual), whatever the symptom burden. (2) The blood-eosinophil thresholds (0.1 / 0.3) are GOLD, an international framework \u2014 NICE does not gate ICS on an eosinophil count. NICE gates ICS on asthmatic or steroid-responsive features, then on persisting day-to-day symptoms or severe/frequent exacerbations. Eosinophils are supportive context for a shared decision, not the rule."},
+       {b:"kv", rows:[
+         ["\u201cAsthmatic features / steroid responsiveness\u201d means (NG115)","Any previous secure diagnosis of asthma or atopy, a <b>higher blood eosinophil count</b>, <b>substantial FEV\u2081 variation over time (\u2265400 ml)</b>, or <b>substantial diurnal peak-flow variation (\u226520%)</b>"]
+       ]},
+       {b:"ladder", steps:[
+         {step:"All", title:"Short-acting reliever PRN", when:"everyone \u2014 the actual NICE first step",
+          html:"<b>Salbutamol 100 micrograms, 1\u20132 puffs PRN</b> (with a spacer) or <b>ipratropium 20\u201340 micrograms QDS</b>. Stop the SAMA when a LAMA starts \u2014 don't double anticholinergics."},
+         {step:"Step A", title:"LABA + LAMA \u2014 no asthmatic features", when:"still breathless or exacerbating despite short-acting treatment",
+          fromLabel:"the default first regular inhaler, any symptom burden",
+          html:"One combined device: <b>Anoro Ellipta OD</b> (umeclidinium/vilanterol), <b>Spiolto Respimat OD</b>, <b>Ultibro Breezhaler OD</b>. LAMA-only (tiotropium, glycopyrronium, aclidinium) has a place mainly where a LABA is not tolerated \u2014 it is not the recommended starting point for a symptomatic patient."},
+         {step:"Step A", title:"LABA + ICS \u2014 asthmatic features present", when:"instead of LABA+LAMA in that group",
+          fromLabel:"steroid-responsive phenotype",
+          html:"LABA/ICS combination (e.g. Fostair, Symbicort, Relvar). Counsel on pneumonia risk and rinse-and-spit."},
+         {step:"Step B", title:"Triple therapy (LABA+LAMA+ICS)", when:"day-to-day symptoms harming quality of life, or severe/frequent exacerbations",
+          fromLabel:"3-month trial for the symptom indication",
+          html:"Single triple device: <b>Trelegy Ellipta OD</b>, <b>Trimbow BD</b>, <b>Trixeo Aerosphere BD</b>. On the symptom indication, use a <b>3-month trial and step back to LABA+LAMA if there is no benefit</b>. Set the review either way: no fewer flares at 12 months, or a pneumonia \u2192 step back down. One severe or two moderate exacerbations in a year is the NICE exacerbation trigger. GOLD C/D patients are the typical triple-therapy group."},
+         {step:"Step C", title:"Beyond triple \u2014 specialist territory", when:"still exacerbating on optimised triple",
+          fromLabel:"plus the non-drug work done",
+          html:"<b>Azithromycin 250 mg three times a week</b> (specialist-initiated) \u2014 reduces exacerbation frequency by about <b>35%</b>. <b>Essential safety checks first: baseline ECG \u2014 QTc must be normal (<b>&lt;450 ms in men, &lt;470 ms in women</b>), because azithromycin prolongs QT and can cause torsades de pointes; LFTs; a hearing check (repeat at 6 months); and CT plus sputum culture</b> to exclude bronchiectasis and atypical infection. <b>Roflumilast 500 micrograms OD</b> (PDE4 inhibitor) if chronic bronchitis with FEV\u2081 &lt;50% predicted and frequent exacerbations \u2014 GI side effects. <b>Carbocisteine</b> trial for chronic productive cough \u2014 continue only if it helps at 4 weeks."}
+       ]},
+       {b:"table", head:["Side effect","Culprit","Fix"], rows:[
+         ["<b>Pneumonia (risk raised by roughly 50%)</b>","ICS in COPD","Precisely why ICS is reserved for asthmatic features, persisting symptoms or frequent exacerbations \u2014 <b>de-escalate if it isn't earning its keep</b>; counsel the patient to report fever or new purulence"],
+         ["Dry mouth, urinary retention, glaucoma precipitation","LAMA","Caution in BPH or urinary symptoms and angle-closure risk; keep nebulised ipratropium out of the eyes"],
+         ["Tremor, palpitations, cramps","LABA / salbutamol","Usually settles; check they are not over-using SABA for uncontrolled disease"],
+         ["Oral thrush / dysphonia","ICS","Rinse and spit; spacer with MDIs"],
+         ["<b>QT prolongation / sensorineural hearing loss</b>","Azithromycin prophylaxis","Baseline and repeat ECG and LFTs; macrolides can cause sensorineural hearing loss at long-term doses — stop if tinnitus or hearing change; treat flares with a non-macrolide"]
+       ]},
+       {b:"warn", html:"<b>Legacy ICS/LABA-only patients</b> (Seretide-era, no LAMA): if there are no asthmatic or steroid-responsive features, switch to LABA+LAMA at review \u2014 same symptom control, less pneumonia. And never leave someone on ICS/LABA plus a separate LAMA in three devices when one triple inhaler does the same job."},
+       {b:"why", html:"<b>ALBERT (NEJM 2011)</b> showed azithromycin 250 mg daily for 12 months reduced exacerbation frequency by about <b>27%</b> versus placebo in selected patients (non-smoking, GOLD 2\u20134, at least one exacerbation requiring medical intervention in the prior year). NICE recommends three-times-weekly dosing to reduce macrolide resistance induction."}
+     ]},
+
+    {id:"monitor", nav:"Review &amp; oxygen", title:"Annual review, and who actually needs oxygen", sub:"Never oximeter-screen for LTOT during or just after a flare.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["MRC + CAT + exacerbation count","Every review (annually; <b>6-monthly if severe</b>)","Trend, not snapshot \u2014 rising burden means revisit the ladder and rehab. <b>CAT &gt;10 with \u22652 exacerbations/year = GOLD D</b> \u2192 triple therapy plus consider azithromycin or roflumilast"],
+         ["Observed technique + adherence","Every review","<b>Fix before any escalation</b>"],
+         ["<b>SpO\u2082 when STABLE</b>","Every review","<b>\u226492% \u2192 refer for LTOT assessment</b> (two ABGs \u22653 weeks apart in secondary care). <b>Never screen during or just after a flare</b>"],
+         ["FBC eosinophils","When weighing ICS either way","A higher count is one of the NG115 asthmatic features supporting ICS \u2014 <b>context for the decision, not a NICE numerical gate</b> (the 0.1/0.3 cut-offs are GOLD)"],
+         ["BMI + mood + frailty","Annually","Cachexia \u2192 dietitian; depression and anxiety are near-universal and treatable; consider frailty and palliative needs"],
+         ["Spirometry","Periodically, or if the picture changes","<b>Rapid decline (&gt;500 ml over 5 years) \u2192 refer</b>"],
+         ["<b>Post-exacerbation review</b>","<b>Within 48 hours</b>","SpO\u2082 at baseline? Symptoms improving? Prednisolone and antibiotic compliance. Step up if needed. Rehab referral if not done. Smoking cessation. Rescue pack re-supplied. <b>Precipitant identified and coded</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>LTOT \u2014 the only treatment that improves survival</b>","The <b>MRC and NOTT trials (1981)</b> showed <b>LTOT \u226515 hours/day</b> in resting hypoxaemia (<b>PaO\u2082 \u22647.3 kPa (55 mmHg), SpO\u2082 \u226488%</b>) reduced 3-year mortality from about <b>67% to about 45%</b>"],
+         ["Assessment","<b>Only when stable \u2014 at least 5 weeks after any exacerbation</b>, because transient hypoxaemia during a flare does not qualify. <b>Two resting ABGs \u22653 weeks apart.</b> Indications: PaO\u2082 \u22647.3 kPa on air at rest; or PaO\u2082 7.3\u20138 kPa with pulmonary hypertension, cor pulmonale, polycythaemia or nocturnal hypoxaemia"],
+         ["Prescription and review","Concentrator supplying <b>\u226515 hours/day</b>, targeting <b>PaO\u2082 \u22658 kPa without a CO\u2082 rise</b>. <b>Annual review:</b> ABG reassessment, <b>smoking status documented \u2014 fire and facial-burn risk</b>, concordance, equipment servicing"],
+         ["Ambulatory oxygen","Separate assessment: <b>exercise desaturation to SpO\u2082 &lt;88% during a 6-minute walk test</b>"]
+       ]},
+       {b:"warn", html:"<b>LTOT is for survival, not breathlessness</b> \u2014 it requires 15+ hours a day and is dangerous in current smokers, so cessation is part of the assessment. <b>For breathlessness without hypoxia, oxygen does NOT help</b>: use a handheld fan, breathing techniques, rehabilitation and, in advanced disease, low-dose opioids."},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udea8 999", html:"\u201cCall 999 if you become drowsy or confused, your lips go blue, or you are exhausted and your breathing is not improving with the usual treatment.\u201d"},
+         {tone:"amber", h:"\ud83d\udd34 Same-day", html:"\u201cIf you start the rescue pack and you are not improving within a day or two \u2014 or your oxygen levels drop \u2014 contact us the same day.\u201d"},
+         {tone:"amber", h:"\ud83d\udca8 Tell us every time", html:"\u201cLet us know each time you use the rescue pack. If you are using it more than twice a year, the treatment underneath needs changing.\u201d"},
+         {tone:"blue", h:"\ud83d\udeac Oxygen and smoking", html:"\u201cIf you are ever prescribed home oxygen, smoking near it risks serious facial burns and fire \u2014 that is part of why we work on stopping.\u201d"}
+       ]},
+       {b:"say", html:"The two treatments with the biggest effect are stopping smoking and the exercise programme \u2014 the inhalers help you live with the disease, but those two change where it's going. And if you ever feel more breathless with dirtier phlegm, that's a flare: start the plan and let us know the same day."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Still breathless or flaring? Check before escalating", sub:"Most 'failed inhalers' are smoking, technique, deconditioning — or a second diagnosis.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Smoking", html:"Still smoking? Everything else is secondary."},
+         {tone:"blue", h:"2 · Technique", html:"Watched them? Device matched to their inspiratory effort?"},
+         {tone:"blue", h:"3 · Rehab", html:"Offered, attended, completed? Re-refer after every admission."},
+         {tone:"blue", h:"4 · Second diagnosis", html:"Heart failure (BNP), anaemia, PE (disproportionate hypoxia), lung cancer (new haemoptysis/weight loss \u2192 2WW CXR/CT), bronchiectasis, anxiety."},
+         {tone:"blue", h:"5 · Phenotype", html:"Asthmatic/steroid-responsive features re-assessed? ICS earning its keep \u2014 or due de-escalation?"}
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"All five addressed?", html:"Then move to the <b>next ladder step, or refer</b> \u2014 an escalation that is treating the disease rather than an unfixed smoking, technique or deconditioning problem."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 respiratory, procedures, and advanced disease", sub:"Advanced COPD carries a prognosis similar to or worse than many cancers. Plan for it.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999", html:"<b>SpO\u2082 &lt;88% (or \u22654% drop from baseline)</b>; respiratory failure (confusion, cyanosis, RR &gt;30); <b>CO\u2082 narcosis</b>; suspected <b>tension pneumothorax</b>; severe exacerbation not improving with treatment."},
+         {tone:"amber", h:"Same-day hospital", html:"Moderate exacerbation <b>not improving within 1\u20132 hours</b> of community treatment; <b>SpO\u2082 88\u201392% but declining</b>; new or worsening <b>cor pulmonale</b>; a complicating comorbidity (acute MI, arrhythmia, PE); <b>inadequate social support</b> for home management; <b>a first exacerbation</b> (exclude a serious cause)."},
+         {tone:"plain", h:"GP management \u2014 discharge criteria met", html:"Moderate exacerbation improving: <b>SpO\u2082 \u226590% (or at their stable baseline), RR &lt;25</b>, no confusion, able to manage medications, social support in place. Prescribe <b>prednisolone 30 mg \u00d7 5 days</b> + antibiotic if indicated + increased bronchodilators; rescue-pack supply; action plan; <b>48-hour follow-up</b>."},
+         {tone:"plain", h:"LTOT assessment", html:"<b>Stable SpO\u2082 \u226492%</b>, cor pulmonale, or polycythaemia \u2192 formal oxygen assessment."},
+         {tone:"plain", h:"Young or atypical", html:"Aged <b>&lt;40</b>, minimal smoking, or a family history \u2192 <b>\u03b1\u2081-antitrypsin</b>; rapid FEV\u2081 decline; diagnostic doubt; spirometry to confirm GOLD stage."},
+         {tone:"plain", h:"Frequent flares", html:"<b>\u22652 exacerbations/year</b>, or exacerbating through optimised triple therapy \u2192 azithromycin and roflumilast assessment, plus a bronchiectasis work-up."},
+         {tone:"plain", h:"Procedures \u2014 genuinely effective and under-referred", html:"<b>Severe emphysema (FEV\u2081 &lt;50%, hyperinflation)</b> \u2192 lung-volume-reduction surgery, bronchoscopic valve, or transplant assessment."},
+         {tone:"cream", h:"Palliative and advance care planning", html:"Advanced COPD (GOLD 4, MRC 4\u20135) carries a prognosis similar to or worse than many cancers. Offer ACP to anyone with FEV\u2081 &lt;30% predicted, \u22653 exacerbations requiring hospitalisation per year, or any admission with type 2 respiratory failure. Cover preferred place of death, resuscitation preferences (<b>ReSPECT form</b> — which records the clinical recommendation for CPR, i.e. <b>DNACPR</b> where appropriate, and the ceiling of treatment), and <b>NIV or intubation preferences in future acute events</b>. <b>Low-dose oral morphine for refractory breathlessness</b>, fan therapy, hospice or community team. <b>Don't wait for a \u201cterminal\u201d label.</b>"}
+       ]},
+       {b:"why", html:"The <b>ReSPECT</b> form prevents unwanted aggressive intervention at the end of life: a GOLD 4 patient admitted in a severe exacerbation may, without a documented plan, be intubated in ITU despite having clearly expressed a preference for non-escalation. It records the patient's priorities, the CPR recommendation, and <b>the recommended ceiling of treatment</b> (for example \u201cNIV if appropriate but no intubation\u201d). Complete it while the patient is stable and able to participate, review it annually, and keep a copy both at home and on the electronic record."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 68-year-old man with GOLD 3 COPD, three days of increased breathlessness and green sputum, SpO\u2082 89% against a documented baseline of 93%. He is still smoking 15 a day, has never attended pulmonary rehabilitation, and has had two admissions in the past year. The ambulance crew are asking what oxygen to give."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Compares SpO\u2082 with the documented baseline rather than to 94\u201398%; specifies controlled oxygen at 24\u201328% Venturi with a target of 88\u201392% and says so to the crew; prescribes <b>prednisolone 30 mg for 5 days, not 14</b>; reasons through the NG114 antibiotic judgement rather than reciting a purulence rule; <b>refers to pulmonary rehab within 4 weeks of the admission</b>; addresses smoking as the only disease-modifier; and books the 48-hour review. <a href='../../cases/copd.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG115 \u2014 Chronic obstructive pulmonary disease in over 16s: diagnosis and management (2019)<br><a href="https://www.nice.org.uk/guidance/ng115" rel="noopener">nice.org.uk/guidance/ng115</a><span class="rd"> \u2014 post-bronchodilator FEV\u2081/FVC &lt;0.70, the inhaler pathway branching on asthmatic features (LABA+LAMA as the default dual, no eosinophil gate), prednisolone 30 mg for 5 days, pulmonary rehabilitation at MRC \u22653 and within 4 weeks of admission, azithromycin prophylaxis and its safety checks, LTOT</span></li>'+
+         '<li><b>NICE NG114 \u2014 COPD exacerbation: antimicrobial prescribing</b><br><a href="https://www.nice.org.uk/guidance/ng114" rel="noopener">nice.org.uk/guidance/ng114</a><span class="rd"> \u2014 the antibiotic decision as a judgement weighing symptom severity, hospital need, exacerbation and hospitalisation history, complication risk and previous cultures; first-line agents and 5-day courses</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 urgent CXR within 2 weeks for unexplained haemoptysis aged 40+, and for persistent cough, weight loss, chest pain, breathlessness, fatigue, appetite loss or clubbing in a smoker</span></li>'+
+         '<li><b>REDUCE \u2014 Leuppi et al., JAMA 2013</b><span class="rd"> \u2014 prednisolone 5 days non-inferior to 14 days for time to next exacerbation, with lower cumulative steroid exposure</span></li>'+
+         '<li><b>ALBERT \u2014 Albert et al., NEJM 2011</b><span class="rd"> \u2014 azithromycin reduced exacerbation frequency by about 27% in selected patients; NICE recommends 3-times-weekly dosing to limit resistance</span></li>'+
+         '<li><b>MRC and NOTT trials (1981)</b><span class="rd"> \u2014 LTOT \u226515 hours/day in resting hypoxaemia (PaO\u2082 \u22647.3 kPa) reduced 3-year mortality from ~67% to ~45%; the only intervention shown to improve survival</span></li>'+
+         '<li><b>McCarthy et al., Cochrane 2015; Lung Health Study</b><span class="rd"> \u2014 pulmonary rehabilitation within 4 weeks of admission reduced re-hospitalisation by ~50% (NNT 4) and mortality by ~40% at 12 months; smoking cessation halved the annual rate of FEV\u2081 decline</span></li>'+
+         '<li><b>GOLD 2024 Report; BTS/SIGN COPD guideline</b><span class="rd"> \u2014 GOLD A\u2013D groups, the CAT score bands, the eosinophil thresholds (0.1/0.3) that belong to GOLD and not to NICE</span></li>'+
+         '<li><b>BNF and local ICB formulary</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses; inhaler brands vary by ICB</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Confirmed COPD in adults \u2014 NICE NG115 (inhaler pathway branches on asthmatic features; no eosinophil gate) with NG114 for exacerbation antibiotics, NG12 for the lung-cancer interface, and GOLD 2024 for staging context. Diagnosis, chronic management and the acute exacerbation are merged on this page; there is no separate acute-COPD pathway to cross-check. Verify all doses against the current BNF and local formulary (inhaler brands vary by ICB) before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Pelvic Pain in Women Algorithm · Reasoning GP</title>
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/pelvic-pain-women.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#e74c3c;--safety-lt:#fdf3f2;--safety-bd:#f5c6c3;--diagnose:#2980b9;--diagnose-lt:#eef6fc;--diagnose-bd:#aed6f1;--treat:#27ae60;--treat-lt:#eafaf1;--treat-bd:#a9dfbf;--refer:#8e44ad;--refer-lt:#f5eef8;--refer-bd:#d2b4de;--lifestyle:#e67e22;--lifestyle-lt:#fef9f0;--lifestyle-bd:#f8c471;--light:#f8f9fa;--border:#e5e7eb;--text:#1a202c;--muted:#64748b;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08);}
+body{font-family:'DM Sans',sans-serif;background:#f0f4f8;color:var(--text);line-height:1.55;font-size:15px;padding:20px 16px 60px;}
+h3{font-family:'Source Serif 4',serif;font-weight:600;}
+.stem-banner{display:flex;align-items:center;gap:14px;background:#1a202c;color:#fff;border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;max-width:780px;margin-left:auto;margin-right:auto;}
+.sb-icon{font-size:2rem;}.stem-banner b{display:block;font-size:1.05rem;font-weight:700;}.stem-banner small{font-size:.82rem;opacity:.7;}
+.alg-progress{max-width:780px;margin:0 auto 24px;background:#fff;border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);}
+.alg-progress span{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.pcount{margin-left:auto;font-weight:700;}.pbar{flex:1;height:6px;background:#e5e7eb;border-radius:99px;min-width:80px;}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#27ae60,#2ecc71);border-radius:99px;width:0%;transition:width .4s ease;}
+.reset{margin-left:8px;font-size:.78rem;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;color:var(--muted);}
+.alg-flow{max-width:780px;margin:0 auto;display:flex;flex-direction:column;}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;position:relative;border-left:5px solid var(--border);transition:box-shadow .2s;}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);}.node[data-type="TREAT"]{border-left-color:var(--treat);}.node[data-type="REFER"]{border-left-color:var(--refer);}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);}
+.node-num{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;}
+.node[data-type="SAFETY"] .node-num{background:var(--safety);}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose);}.node[data-type="TREAT"] .node-num{background:var(--treat);}.node[data-type="REFER"] .node-num{background:var(--refer);}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle);}
+.node-head{padding:16px 56px 0 18px;}.node-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:6px;}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-lt);color:var(--safety);}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-lt);color:var(--diagnose);}.node[data-type="TREAT"] .node-tag{background:var(--treat-lt);color:var(--treat);}.node[data-type="REFER"] .node-tag{background:var(--refer-lt);color:var(--refer);}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-lt);color:var(--lifestyle);}
+.node-head h3{font-size:1rem;line-height:1.3;}
+.node-tick{padding:10px 18px 0;}.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--muted);}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:#27ae60;cursor:pointer;}
+.node.ticked{opacity:.7;}.node.ticked .node-head h3{text-decoration:line-through;color:var(--muted);}
+.node-body{padding:14px 18px 16px;}.node-body>p{font-size:.9rem;color:var(--muted);margin-bottom:12px;}
+.kv{display:grid;grid-template-columns:190px 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden;font-size:.87rem;margin-top:8px;}
+.kv>div{background:#fff;padding:9px 12px;line-height:1.45;}.kv>div:nth-child(odd){background:var(--light);font-weight:600;font-size:.82rem;}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.rftile{background:var(--safety-lt);border:1px solid var(--safety-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.rftile b{display:block;color:var(--safety);margin-bottom:2px;}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:8px;}
+.b-card{background:var(--treat-lt);border:1px solid var(--treat-bd);border-radius:8px;padding:12px;font-size:.85rem;}
+.b-cond{font-weight:700;color:var(--treat);margin-bottom:4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;}.b-drug{font-weight:700;font-size:.95rem;margin-bottom:4px;}.b-note{color:var(--muted);font-size:.82rem;}
+.ladder{display:flex;flex-direction:column;gap:0;margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+.rung{display:flex;align-items:stretch;font-size:.87rem;}.rn{min-width:80px;background:#1a202c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;text-align:center;padding:10px 6px;}.rt{flex:1;padding:10px 14px;background:#fff;border-bottom:1px solid var(--border);line-height:1.4;}.rung:last-child .rt{border-bottom:none;}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.lstile{background:var(--lifestyle-lt);border:1px solid var(--lifestyle-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px;}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;border-radius:99px;padding:2px 8px;margin:1px 2px;vertical-align:middle;}
+.pill-red{background:#fde8e8;color:#c0392b;}.pill-purple{background:#f3e8fd;color:#7c3aed;}.pill-blue{background:#e8f0fe;color:#1d4ed8;}.pill-teal{background:#e6faf8;color:#0d9488;}.pill-amber{background:#fef3c7;color:#b45309;}.pill-green{background:#dcfce7;color:#16a34a;}.pill-grey{background:#f3f4f6;color:#6b7280;}
+.why-row{border-top:1px solid var(--border);}.why-btn{width:100%;text-align:left;background:none;border:none;padding:10px 18px;font-size:.82rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:600;}.why-btn:hover{background:var(--light);}
+.caret{transition:transform .25s;}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg);}
+.why-drawer{display:none;padding:12px 18px 16px;font-size:.85rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);background:var(--light);}.why-drawer.open{display:block;}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;}
+.alg-foot{max-width:780px;margin:32px auto 0;font-size:.8rem;color:var(--muted);background:#fff;border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border);line-height:1.6;}
+@media(max-width:500px){.kv{grid-template-columns:1fr;}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr;}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css?v=3">
+<link rel="stylesheet" href="../../assets/alg-summary.css?v=6">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">🌸</div>
+  <div><b>Pelvic Pain in Women — Systematic Primary Care Assessment</b>
+  <small>9-step pathway · acute and chronic · ectopic, torsion, PID, endometriosis, ovarian cancer · UK GP / RCGP SCA preparation</small></div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Summary</button></div>
+  <span>Progress</span><span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- SUMMARY VIEW — inline copy of summaries/pelvic-pain-women.html; the Download PDF button prints summaries/pelvic-pain-women.html (the A4 artefact). -->
+<div id="viewSummary">
+  <div class="sum-bar"><p><b>2-page quick reference.</b> Pelvic pain in women — pregnancy test first, then the emergencies, then cyclicity. Ongoing management of endometriosis, PID and chronic pelvic pain stays in the Steps tab.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="summaries/pelvic-pain-women.html">⬇ Download PDF</button><a class="sum-open" href="summaries/pelvic-pain-women.html" target="_blank" rel="noopener">Print view ↗</a></div></div>
+  <div class="sum"><div class="page">
+  <div class="hdr"><table><tr>
+    <td>
+      <div class="brand"><b>REASONING GP</b> · Clinical algorithm · Quick reference</div>
+      <h1>Pelvic pain in women — triage and diagnostic approach</h1>
+      <div class="sub">Daytime GP and OOH/111, face-to-face or remote. Pregnancy test first, exclude the emergencies, then establish whether the pain is cyclical. Ongoing management of each diagnosis is in the full Steps pathway.</div>
+    </td>
+    <td class="pg">Page 1 / 2<br><span class="tags"><span>Adults</span><span>GP + OOH</span><span>β-hCG first</span><span>v1.0 · Sep 2026</span></span></td>
+  </tr></table></div>
+
+  <div class="rule"><b>Core rule.</b> <b>Urine β-hCG in every woman of reproductive age with pelvic pain, before anything else.</b> Pain with a positive test is an ectopic pregnancy until the early pregnancy unit says otherwise. Ascites or a pelvic mass goes straight to the urgent ovarian cancer route without waiting for CA-125, and <b>new IBS-type symptoms aged 50 or over are an ovarian cancer red flag, not a new diagnosis of IBS</b>. A normal examination and a normal scan do <b>not</b> exclude endometriosis (NG73).</div>
+
+  <!-- 0 Immediate -->
+  <div class="sec red">
+    <div class="sh"><div class="n">0</div><div class="t">Before any history: is this an emergency now? <small>Stop the consultation and call 999 if any of these is present</small></div></div>
+    <div class="note">Shock or peritonism · syncope or feeling faint with the pain · shoulder-tip pain · heavy vaginal bleeding with haemodynamic compromise · positive pregnancy test with severe pain · fever with rigors and severe pelvic pain · severe pain after 20 weeks of pregnancy, or BP ≥160/110 with headache, visual change or epigastric pain. ABCDE, observations, IV access if available, nil by mouth. Do not delay transfer for a scan, a CA-125, swabs or analgesia given orally.</div>
+  </div>
+
+  <!-- 1 Define -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">1</div><div class="t">Define the pain in four lines <small>Enough to place the patient in the table below</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Time</h4>Acute (hours to days) or chronic — <b>chronic pelvic pain is intermittent or constant pain in the lower abdomen or pelvis for at least 6 months</b>, not exclusively with periods or intercourse. Sudden onset, or gradual and progressive.</div>
+      <div class="col blue"><h4>Character</h4><b>Cyclical or not</b> — the single most useful question. Tracks the cycle → endometriosis, adenomyosis, dysmenorrhoea, mittelschmerz. Constant or unrelated → PID, adhesions, IBS, bladder pain syndrome, musculoskeletal, neuropathic. Site, radiation, relation to bowels and micturition.</div>
+      <div class="col blue"><h4>Context</h4>LMP and cycle · contraception and IUD · previous ectopic, PID or STI, new or multiple partners · previous pelvic surgery, caesarean or mesh (adhesions, nerve entrapment) · subfertility · recent instrumentation, IUD insertion or termination · <b>age ≥50</b> · IBD or rheumatoid disease.</div>
+      <div class="col blue"><h4>Associated</h4><b>The NG73 endometriosis cluster:</b> period-related pain affecting daily activities, deep dyspareunia, cyclical bowel symptoms (especially painful defaecation), cyclical urinary symptoms, infertility. <b>The NG12 ovarian cluster:</b> persistent bloating or distension, early satiety or loss of appetite, urinary urgency or frequency. Also discharge, abnormal bleeding, weight loss.</div>
+    </div>
+  </div>
+
+  <!-- 2 Red flags -->
+  <div class="sec red">
+    <div class="sh"><div class="n">2</div><div class="t">Red-flag screen: trigger → concern → destination → what to do before handover <small>One row is enough; do not add up reassuring features</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:29%"><col style="width:25%"><col style="width:46%"></colgroup>
+      <tr><th>Trigger / red flag</th><th>Leading concern · destination</th><th>Do now · do not delay</th></tr>
+      <tr class="r"><td><b>Positive pregnancy test with pain</b>, with or without bleeding; amenorrhoea with a period that was slightly late; shoulder-tip pain, syncope or shock.</td>
+        <td>Ectopic pregnancy · ruptured ectopic<br><span class="pill psd">Same-day early pregnancy unit</span> <span class="pill p999">999 if shock, syncope or shoulder-tip pain</span></td>
+        <td><b>Do the test — do not discuss whether she could be pregnant.</b> Pain frequently precedes bleeding. Record LMP, contraception, previous ectopic. Speak to the EPAU directly; not an outpatient scan or a review tomorrow. Repeat a negative test if the LMP is uncertain.</td></tr>
+        <tr class="r"><td><b>Sudden severe unilateral pain with vomiting</b>, often with a known cyst, in pregnancy or after ovulation induction.</td>
+        <td>Ovarian torsion<br><span class="pill psd">Same-day gynaecology</span></td>
+        <td>The ovary is salvageable for only a few hours — delay converts it into an oophorectomy in a young woman. Nil by mouth, analgesia, transfer. Do not wait for an outpatient ultrasound slot.</td></tr>
+      <tr class="r"><td><b>Peritonism, shock, or rebound tenderness</b> with pelvic pain.</td>
+        <td>Ruptured ectopic or cyst with haemoperitoneum · perforated appendix · tubo-ovarian abscess<br><span class="pill p999">999 now</span></td>
+        <td>ABCDE, IV access, nil by mouth. Appendicitis is the commonest non-gynaecological cause and is frequently mislabelled as a gynaecological problem in young women — and vice versa.</td></tr>
+      <tr class="r"><td><b>Fever with rigors and pelvic pain</b>, or severe pain with an IUD in situ, or after instrumentation, IUD insertion or termination.</td>
+        <td>PID with sepsis · tubo-ovarian abscess · endometritis · perforation<br><span class="pill psd">Same-day admission</span></td>
+        <td>Observations and NEWS2. Do not remove an IUD before antibiotics are started and pregnancy risk assessed — discuss the same day. Systemically well PID is treated in primary care (section 7); febrile PID is admitted for IV antibiotics.</td></tr>
+      <tr class="p"><td><b>Ascites, or a palpable pelvic or abdominal mass</b> not obviously fibroids. <b>Or</b> persistent or frequent (&gt;12 times a month) bloating or distension, early satiety, appetite loss, pelvic or abdominal pain, urinary urgency/frequency — especially <b>new IBS-type symptoms aged ≥50</b>, weight loss, fatigue or bowel-habit change.</td>
+        <td>Ovarian cancer<br><span class="pill p2ww">Mass or ascites: urgent referral · NICE NG12</span> <span class="pill p2ww">Otherwise CA-125; if ≥35 IU/mL urgent pelvic/abdominal ultrasound</span></td>
+        <td><b>With a mass or ascites refer urgently — do not wait for a CA-125</b>: measuring it and waiting days is the commonest misapplication. Examine for shifting dullness and a mass arising from the pelvis; true IBS rarely presents first after 50. <b>A normal CA-125 with persisting symptoms is not a discharge</b> — normal in up to half of early-stage cancers: re-examine and refer. Add FIT if bowel symptoms dominate (≥10 µg Hb/g → colorectal route).</td></tr>
+      <tr class="p"><td><b>Post-menopausal bleeding aged ≥55</b>; or a cervix that looks friable, irregular or bleeds on contact; or an unexplained vulval lump or ulceration.</td>
+        <td>Endometrial · cervical · vulval cancer<br><span class="pill p2ww">2WW gynaecology · NICE NG12</span></td>
+        <td><b>A normal smear history does not exclude cervical cancer</b> — screening tests asymptomatic pre-invasive change, not symptomatic disease; refer on appearance alone. Direct-access ultrasound for PMB where available.</td></tr>
+      <tr class="a"><td><b>Pregnancy ≥20 weeks or up to 6 weeks postpartum</b>: pain with hypertension, headache, visual change, epigastric pain, bleeding, reduced fetal movements or contractions.</td>
+        <td>Abruption · pre-eclampsia and HELLP · preterm labour · uterine rupture<br><span class="pill psd">Immediate maternity assessment</span> <span class="pill p999">999 if BP ≥160/110, seizure or heavy bleeding</span></td>
+        <td>Record BP, gestation or postpartum interval, urine protein if available. Speak directly to the maternity unit; never route through routine GP or midwife follow-up.</td></tr>
+    </table>
+    <div class="note amber"><b>Safety rule.</b> A normal examination and a normal ultrasound exclude very little: superficial peritoneal endometriosis is invisible on ultrasound and undetectable bimanually, and NG73 states that normal imaging and examination do not rule it out. Average time to diagnosis in the UK is around 8 years, and normalising severe period pain is the largest contributor. <b>Safeguarding:</b> where sexual violence or coercion is disclosed or suspected, ask alone and in private, offer a chaperone and document it, and follow local safeguarding/SARC routes; read the whole record before adding another prescription.</div>
+  </div>
+
+  <!-- 3 Examine -->
+  <div class="sec blue">
+    <div class="sh"><div class="n">3</div><div class="t">Focused examination and investigation <small>Consent, chaperone offered and documented; remote assessment that cannot deliver these is an escalation criterion</small></div></div>
+    <div class="cols">
+      <div class="col blue"><h4>Observations</h4>Temperature, pulse, BP, RR, NEWS2 if unwell, pallor. Tachycardia with pain and a positive pregnancy test is a surgical emergency, whatever the BP.</div>
+      <div class="col blue"><h4>System examination</h4>Abdomen: site of maximal tenderness, guarding and rebound, a mass arising from the pelvis, ascites and shifting dullness, hernial orifices, scars. <b>Carnett's sign</b> — pain worse on tensing the abdominal wall means an abdominal wall origin, not intra-abdominal pathology.</div>
+      <div class="col blue"><h4>Targeted signs</h4>Speculum: cervix inspected directly, discharge, IUD threads, swabs. Bimanual: uterine size and mobility, <b>fixed retroverted uterus, tender nodularity or thickening of the posterior fornix or uterosacral ligaments</b> (deep endometriosis), adnexal mass, cervical excitation. <b>Palpate the levator ani</b> — reproducing the pain identifies myofascial pain. Hip, sacroiliac and pubic symphysis; allodynia over scars.</div>
+      <div class="col blue"><h4>Investigations</h4><b>Urine β-hCG first.</b> Urine dip and MSU; vulvovaginal NAAT for chlamydia and gonorrhoea (self-taken acceptable); FBC, CRP, U&amp;Es, ferritin, coeliac serology if bowel symptoms; <b>CA-125 per NG12</b>, then urgent pelvic/abdominal USS if ≥35 IU/mL; FIT if bowel symptoms dominate. Not from primary care: laparoscopy, MRI pelvis (specialist-requested), CT.</div>
+    </div>
+  </div>
+
+  <div class="foot">Colour is semantic: red = emergency now · amber = same-day acute assessment · blue = define/assess · green = benign diagnosis established · purple = uncertain / specialist route. Continued on page 2: classification, cause classifier, routine referral, primary-care treatment, endpoint.</div>
+</div>
+
+<div class="page">
+  <div class="hdr"><table><tr>
+    <td><div class="brand"><b>REASONING GP</b> · Pelvic pain in women — triage and diagnostic approach</div></td>
+    <td class="pg">Page 2 / 2</td>
+  </tr></table></div>
+
+  <!-- 4 Classify -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">4</div><div class="t">Classify: three exits, not two <small>A negative laparoscopy does not exclude a non-gynaecological cause</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>Emergency or serious cause likely</h4>Positive pregnancy test with pain, any red flag, deranged physiology, a pelvic mass or ascites, or post-menopausal bleeding. <b>Output:</b> name the concern, use the destination above, and hand over the pregnancy test result, LMP, observations and contraception.</div>
+      <div class="col green"><h4>Benign cause established</h4>A coherent pattern: cyclical pain fitting the NG73 cluster, systemically well PID, IBS, bladder pain syndrome, or reproducible myofascial pain — with a negative pregnancy test and no red flags. <b>Output:</b> name it, treat it today, and set a 3-month review.</div>
+      <div class="col purple"><h4>Unclassified / uncertain</h4>Chronic pain with no single cause, several coexisting contributors, remote assessment, or examination not possible. <b>Output:</b> do not default to "probably endometriosis" or "just IBS". State the uncertainty, treat what is treatable, and name the review owner and date.</div>
+    </div>
+  </div>
+
+  <!-- 5 Classifier -->
+  <div class="sec green">
+    <div class="sh"><div class="n">5</div><div class="t">Cause classifier — four systems, frequently coexisting <small>Assess all four from the outset, not sequentially over years</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:21%"><col style="width:79%"></colgroup>
+      <tr class="g"><td><b>Gynaecological</b></td><td><b>Endometriosis</b> (suspect on the NG73 cluster alone; up to 10% of women of reproductive age), adenomyosis, fibroids, chronic PID with adhesions, ovarian cysts, pelvic congestion, ovarian remnant, cervical stenosis, mittelschmerz.</td></tr>
+      <tr class="g"><td><b>Gastrointestinal</b></td><td>IBS (very commonly coexistent rather than an alternative), chronic constipation, coeliac disease, diverticular disease, IBD. Constipation amplifies all pelvic pain and is worth treating properly on its own.</td></tr>
+      <tr class="a"><td><b>Urological</b></td><td><b>Bladder pain syndrome / interstitial cystitis</b> — pain worse with a full bladder and relieved by voiding, with repeatedly culture-negative "recurrent UTIs". Repeated antibiotics for negative cultures neither help nor are harmless. Also urethral pain syndrome, stones, detrusor overactivity.</td></tr>
+      <tr class="b"><td><b>Musculoskeletal and neuropathic</b></td><td>The most under-diagnosed group: pelvic floor myalgia and overactivity, pubic symphysis dysfunction, sacroiliac and hip pathology, coccydynia, abdominal wall trigger points, and ilioinguinal or iliohypogastric nerve entrapment after a Pfannenstiel incision or mesh repair. Hormonal treatment will not help these.</td></tr>
+      <tr class="p"><td><b>Malignancy</b></td><td>Ovarian (the great mimic), endometrial, cervical, vulval, bowel and bladder cancer. Any change in the character of a long-standing pain, or a new mass, bloating, satiety or weight loss, reopens this.</td></tr>
+      <tr class="p"><td><b>Do not label by default</b></td><td>"Probably endometriosis", "just IBS", "recurrent UTI" on negative cultures and "it's stress" all need positive evidence and a review date. Chronic pelvic pain is usually multifactorial — partial response to treatment more often means a second coexisting cause than treatment failure. Central sensitisation becomes part of the pathology in long-standing pain.</td></tr>
+    </table>
+  </div>
+
+  <!-- 6 Routine referral -->
+  <div class="sec purple">
+    <div class="sh"><div class="n">6</div><div class="t">Refer routinely from this consultation <small>Not same-day, not 999 — the cases that leave by letter</small></div></div>
+    <div class="note grey"><b>Routine gynaecology (NG73):</b> suspected endometriosis with severe symptoms, or after a 3-month primary-care trial has failed; fibroids with pressure symptoms; an adnexal mass needing assessment; subfertility with pain. <b>Specialist endometriosis centre (NG73):</b> suspected deep endometriosis involving bowel, bladder or ureter — outcomes are materially better with the multidisciplinary team, and this referral is routinely missed. <b>Pelvic health physiotherapy:</b> reproducible levator tenderness, pelvic floor overactivity, pubic symphysis dysfunction, post-surgical scar or nerve pain. <b>Pelvic pain clinic (NG193):</b> long-standing pain with central sensitisation or opioid use — pain medicine, physiotherapy and psychology together, rather than another diagnostic laparoscopy. <b>Sexual health:</b> partner notification and complex or treatment-failure PID. <b>Interim advice:</b> start the treatment in section 7, begin a pain and cycle diary, and give the safety-net below.</div>
+  </div>
+
+  <!-- 7 Treatment -->
+  <div class="sec red">
+    <div class="sh"><div class="n">7</div><div class="t">The only treatment decisions that belong in this consultation <small>Start treatment without waiting for diagnostic certainty</small></div></div>
+    <table class="grid">
+      <colgroup><col style="width:26%"><col style="width:74%"></colgroup>
+      <tr class="r"><td><b>Ectopic, torsion, peritonism, septic PID, obstetric emergency</b></td><td><b>Transfer is the treatment.</b> Nil by mouth, IV access if available, analgesia that does not delay transfer. Do not arrange an outpatient scan, do not remove an IUD, and do not start oral antibiotics in place of admission for febrile PID.</td></tr>
+      <tr class="a"><td><b>PID, systemically well</b></td><td><b>Treat empirically on clinical suspicion — do not wait for swabs</b> (BASHH; swabs are frequently negative in genuine PID and each week of delay raises the risk of tubal infertility, ectopic pregnancy and chronic pain). Ceftriaxone 1 g IM single dose <b>plus</b> doxycycline 100 mg twice daily <b>plus</b> metronidazole 400 mg twice daily for <b>14 days</b>; or ofloxacin 400 mg twice daily plus metronidazole 400 mg twice daily for 14 days. Partner notification, abstinence until both treated, review at 72 hours.</td></tr>
+      <tr class="g"><td><b>Suspected endometriosis or dysmenorrhoea — and the analgesic ceiling</b></td><td><b>NG73: offer paracetamol and/or an NSAID for a 3-month trial</b> (mefenamic acid 500 mg three times daily, or naproxen 250–500 mg twice daily with food), started just before the period. <b>Do not wait for a scan or laparoscopy.</b> If inadequate at 3 months, move to hormonal treatment: a combined hormonal contraceptive (consider continuous or tricycling) or a progestogen — desogestrel, medroxyprogesterone, or the <b>52 mg levonorgestrel IUS</b>, particularly useful for adenomyosis with heavy bleeding. For neuropathic or centrally mediated pain: amitriptyline, duloxetine, gabapentin or pregabalin. <b>Do not escalate opioids</b> — NG193 recommends against initiating opioids for chronic primary pain; they cause dependence, constipation and hyperalgesia without improving chronic pelvic pain. Set goals of function and sleep, not abolition of pain.</td></tr>
+      <tr class="g"><td><b>Bladder pain syndrome or IBS-predominant pain</b></td><td><b>Bladder:</b> stop the unnecessary antibiotics, reduce caffeine, alcohol and acidic triggers, timed voiding and bladder retraining, amitriptyline 10–25 mg at night for pain. <b>IBS:</b> mebeverine or hyoscine butylbromide, soluble fibre, dietitian-led low-FODMAP trial, low-dose amitriptyline — but <b>CA-125 first if the symptoms are new and she is ≥50</b>.</td></tr>
+      
+      <tr class="g"><td><b>Name the diagnosis and validate the pain</b></td><td>Treatment, not preamble. Explain the working diagnosis, the plan, the timescale, and explicitly that <b>a normal scan does not mean nothing is wrong</b>. Raise fertility early in endometriosis and PID. Add the non-drug components now: heat or TENS, pelvic floor <b>relaxation rather than strengthening</b> where the floor is overactive, pacing, sleep, and psychological therapy offered as pain management — never as a suggestion that the pain is imagined.</td></tr>
+    </table>
+  </div>
+
+  <!-- 8 Endpoint -->
+  <div class="sec green">
+    <div class="sh"><div class="n">8</div><div class="t">Endpoint and documentation <small>Finish with one of four conclusions and a named owner</small></div></div>
+    <div class="cols">
+      <div class="col red"><h4>1 · Time-critical</h4>999 or same-day EPAU/gynaecology route taken; <b>pregnancy test result</b>, LMP, observations, contraception and IUD status, previous ectopic, analgesia given, and who was spoken to.</div>
+      <div class="col amber"><h4>2 · Serious cause possible</h4>Same-day route or urgent test arranged; state the question being excluded and the deadline. CA-125 and ultrasound requested by name where indicated — or the urgent referral made without waiting for them.</div>
+      <div class="col green"><h4>3 · Benign cause established</h4>Named diagnosis, treatment with dose and duration, PID partner notification, <b>3-month review booked as a decision point</b> (not a repeat prescription), fertility conversation recorded, diary started, safety-net given.</div>
+      <div class="col purple"><h4>4 · Unclassified</h4>Uncertainty stated; all four systems considered and recorded; treatable elements treated; a normal CA-125 with persisting symptoms explicitly <b>not</b> treated as reassurance; review owner, date and escalation criteria.</div>
+    </div>
+    <div class="note grey"><b>Why a benign conclusion is safe today, in one line:</b> negative pregnancy test (repeated if the LMP is uncertain) · normal observations, no peritonism, no mass and no ascites · no post-menopausal bleeding and a normal-looking cervix · the ovarian symptom cluster considered and CA-125 arranged where NG12 applies · a coherent cause with treatment started and a <b>3-month decision point booked</b> · written safety-net given. <b>Safety-net wording:</b> call 999 if the pain suddenly becomes severe, you faint or feel faint, you get pain at the tip of your shoulder, or you bleed heavily; contact us the same day if you have a positive pregnancy test with any pain or bleeding, a fever with shivering, vomiting with the pain, or new swelling of your tummy — and come back if the pain changes character or the treatment has not helped by your review.</div>
+    <div class="note amber"><b>OOH / remote limitation.</b> Convert to face-to-face or emergency assessment if a pregnancy test cannot be done; observations, abdominal examination or a speculum and bimanual examination are needed and cannot be obtained; a chaperone is not available where one is wanted; the pain is severe, sudden or changing during the call; she is pregnant or postpartum; or safeguarding concerns cannot be explored privately. Under time pressure the default is the safer destination.</div>
+  </div>
+
+  <div class="foot">Clinical decision support only; follow local emergency-transfer, safeguarding and referral policies and check doses against the current BNF. Source hierarchy: NICE guidelines first, then BNF/MHRA for doses and safety, then national specialty guidance. Sources: NICE NG73 Endometriosis: diagnosis and management · NG12 Suspected cancer: recognition and referral · CG122 Ovarian cancer: recognition and initial management · NG193 Chronic pain (primary and secondary) in over 16s · NG126 Ectopic pregnancy and miscarriage · NG88 Heavy menstrual bleeding · DG56 Quantitative faecal immunochemical testing · RCOG Green-top 41 Chronic pelvic pain and GTG 21 Ectopic pregnancy · BASHH Pelvic inflammatory disease guideline · BNF. Review after any guidance or medicines-safety update, otherwise every 6 months. © Reasoning GP · gpreasoning.uk</div>
+</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Red Flags — Pregnancy, torsion, sepsis and malignancy</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>The first action in any woman of reproductive age with pelvic pain is a pregnancy test. Ectopic pregnancy remains a leading cause of early maternal death in the UK, and the classic presentation — pain with a period that was slightly late — is easily attributed to something benign.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Positive pregnancy test with pain</b> Ectopic until proven otherwise → <span class="pill pill-red">same-day early pregnancy unit</span>. Shoulder-tip pain, syncope, or shock → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Sudden severe unilateral pain with vomiting</b> Ovarian torsion → <span class="pill pill-red">same-day gynaecology</span>; the ovary is salvageable for only a few hours</div>
+      <div class="rftile"><b>Peritonism or shock</b> Ruptured ectopic, ruptured cyst with haemoperitoneum, perforated appendix, tubo-ovarian abscess → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Fever with rigors and pelvic pain</b> PID with sepsis or tubo-ovarian abscess → <span class="pill pill-red">same-day admission</span> for IV antibiotics</div>
+      <div class="rftile"><b>Ascites or a palpable pelvic/abdominal mass</b> (not obviously uterine fibroids) → <span class="pill pill-purple">urgent 2WW suspected ovarian cancer referral</span> — <b>refer, do not wait for CA-125</b> (NICE NG12)</div>
+      <div class="rftile"><b>Post-menopausal bleeding aged 55+</b> → <span class="pill pill-purple">2WW suspected endometrial cancer</span>; direct-access ultrasound where locally available</div>
+      <div class="rftile"><b>Cervix appears suspicious on examination</b> Friable, irregular or contact bleeding → <span class="pill pill-purple">urgent gynaecology</span>; <b>a normal smear history does not exclude cervical cancer</b></div>
+      <div class="rftile"><b>Pain after 20 weeks of pregnancy</b> Abruption, pre-eclampsia, preterm labour, uterine rupture → <span class="pill pill-red">immediate obstetric assessment</span>; <b>999 if BP ≥160/110</b>, seizure or heavy bleeding</div>
+      <div class="rftile"><b>Recent instrumentation, IUD insertion or termination</b> Perforation, retained products, endometritis → <span class="pill pill-red">same-day gynaecology</span></div>
+      <div class="rftile"><b>IUD in situ with pain and fever</b> PID; consider removal only after antibiotics are started and pregnancy risk assessed → discuss same day</div>
+      <div class="rftile"><b>Unexplained weight loss, loss of appetite, change in bowel habit with pelvic pain</b> → investigate for ovarian and colorectal malignancy (<span class="pill pill-purple">CA-125, FIT, imaging</span>)</div>
+      <div class="rftile"><b>Disclosure of sexual violence or coercion</b> Ask about safety in private, offer a chaperone, follow local safeguarding and SARC pathways</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Ectopic pregnancy occurs in roughly 1 in 80 pregnancies in the UK and is a leading cause of early maternal death; the pain frequently precedes any bleeding, and a substantial proportion of women do not initially believe they could be pregnant — which is why the test is performed rather than discussed. Ovarian torsion is the time-critical gynaecological emergency: the ovary can be salvaged if detorsion happens within hours, and delay converts a conservable ovary into an oophorectomy in a young woman. The NG12 distinction on ovarian cancer matters practically: ascites or a pelvic mass means immediate urgent referral, whereas the symptom cluster of bloating, early satiety, pelvic pain and urinary frequency triggers a CA-125 first. Cervical cancer deserves a specific mention because of a common false reassurance — a visibly abnormal cervix requires urgent referral regardless of a normal or up-to-date cervical screening history, since screening detects pre-invasive change in asymptomatic women and is not a test for symptomatic disease.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>History — Cyclicity is the most useful single question</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Acute or chronic</div><div>Acute (hours to days) → think emergency first. <b>Chronic pelvic pain = intermittent or constant pain in the lower abdomen or pelvis for at least 6 months</b>, not exclusively with periods or intercourse</div>
+      <div>Cyclical or not</div><div><b>Pain that tracks the cycle</b> → endometriosis, adenomyosis, primary dysmenorrhoea, mittelschmerz. <b>Constant or unrelated</b> → adhesions, PID, IBS, bladder pain syndrome, musculoskeletal, neuropathic</div>
+      <div>Site, radiation, character</div><div>Unilateral and sudden → ovarian event. Suprapubic → bladder or uterine. Deep and dragging with prolonged standing → pelvic congestion. Radiating to the back or thigh; relation to bowel action and to micturition</div>
+      <div>Menstrual history</div><div>LMP, cycle length and regularity, heaviness, clots, flooding, intermenstrual and post-coital bleeding, age at menarche, pain starting before the bleed (endometriosis) vs with it (primary dysmenorrhoea)</div>
+      <div><b>The endometriosis cluster</b></div><div><b>NICE NG73:</b> suspect endometriosis with one or more of <b>chronic pelvic pain; period-related pain affecting daily activities; deep dyspareunia; period-related or cyclical bowel symptoms (especially painful defaecation); period-related or cyclical urinary symptoms; infertility with any of these</b></div>
+      <div>Sexual and contraceptive history</div><div>Deep vs superficial dyspareunia, post-coital pain and bleeding, new or multiple partners, previous STI or PID, contraception and IUD, previous ectopic, subfertility, previous pelvic surgery</div>
+      <div>Bowel symptoms</div><div>Bloating, distension, constipation or diarrhoea, pain relieved by defaecation (IBS), rectal bleeding, tenesmus, painful defaecation during periods (deep endometriosis)</div>
+      <div>Urinary symptoms</div><div>Frequency, urgency, nocturia, dysuria, haematuria, pain relieved by voiding and worsening with a full bladder (bladder pain syndrome), recurrent culture-negative "UTIs"</div>
+      <div><b>The ovarian cancer cluster</b></div><div><b>NICE NG12:</b> persistent or frequent (&gt;12 times a month) <b>bloating or abdominal distension, early satiety or loss of appetite, pelvic or abdominal pain, urinary urgency or frequency</b> — with particular attention to <b>new IBS-like symptoms in a woman aged 50 or over</b></div>
+      <div>Impact and psychosocial</div><div>Effect on work, sleep, mood, relationships and sexual function; previous investigations and treatments and what helped; history of sexual violence or adverse childhood experience; anxiety, depression, catastrophising</div>
+      <div>Previous surgery</div><div>Caesarean section, hysterectomy, appendicectomy, hernia repair with mesh — adhesions and nerve entrapment (ilioinguinal, iliohypogastric) are genuinely common and under-recognised</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Cyclicity does most of the diagnostic work, but the more important message from NICE NG73 is about listening: the average delay from first symptom to diagnosis of endometriosis in the UK is around eight years, and the largest single contributor is the normalisation of severe period pain — by clinicians and by the women themselves. NG73 therefore lowers the threshold deliberately, directing clinicians to <i>suspect</i> endometriosis on the symptom cluster alone, to ask about cyclical bowel and urinary symptoms which are frequently missed, and explicitly to offer treatment without waiting for a definitive diagnosis. The ovarian cancer cluster is the mirror image and is why symptom-triggered CA-125 testing exists: the symptoms are vague, they overlap almost exactly with IBS, and true IBS very rarely presents for the first time after the age of 50 — so the new "IBS" in an older woman should prompt a CA-125 rather than a low-FODMAP leaflet.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Differential — Acute and chronic causes by system</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Acute · pregnancy-related</div><div>Ectopic pregnancy, miscarriage, corpus luteum haemorrhage; after 20 weeks: abruption, preterm labour, pre-eclampsia and HELLP, uterine rupture, chorioamnionitis</div>
+      <div>Acute · gynaecological</div><div>Ovarian torsion, ruptured or haemorrhagic ovarian cyst, mittelschmerz (mid-cycle, self-limiting), acute PID and tubo-ovarian abscess, degenerating or red-degeneration fibroid, endometritis after instrumentation, ovarian hyperstimulation</div>
+      <div>Acute · non-gynaecological</div><div>Appendicitis, UTI and pyelonephritis, ureteric colic, diverticulitis, constipation, mesenteric adenitis, inguinal or femoral hernia, IBD flare</div>
+      <div>Chronic · gynaecological</div><div><b>Endometriosis</b> (up to 10% of women of reproductive age), adenomyosis, fibroids, chronic PID with adhesions, pelvic congestion syndrome, ovarian remnant syndrome, cervical stenosis, residual ovary after hysterectomy</div>
+      <div>Chronic · gastrointestinal</div><div>IBS (very common and frequently coexistent rather than alternative), chronic constipation, coeliac disease, diverticular disease, inflammatory bowel disease</div>
+      <div>Chronic · urological</div><div>Bladder pain syndrome / interstitial cystitis, recurrent or chronic UTI, urethral pain syndrome, bladder stones, detrusor overactivity</div>
+      <div>Chronic · musculoskeletal</div><div>Pelvic floor muscle overactivity and myalgia, pubic symphysis dysfunction, sacroiliac and hip pathology (including labral tear and femoroacetabular impingement), coccydynia, abdominal wall trigger points, hernia</div>
+      <div>Chronic · neuropathic</div><div>Pudendal neuralgia, ilioinguinal or iliohypogastric nerve entrapment after Pfannenstiel incision or mesh repair, post-surgical scar pain, central sensitisation with widespread pain and fatigue</div>
+      <div>Malignancy</div><div><b>Ovarian</b> (the great mimic — bloating, satiety, urinary frequency, IBS-like), endometrial, cervical, vulval, bowel and bladder cancer, metastatic disease</div>
+      <div>Other</div><div>Vulvodynia and vaginismus, sexually transmitted infection, pelvic tuberculosis, previous pelvic radiotherapy, somatisation and the effects of trauma — often alongside organic disease rather than instead of it</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Chronic pelvic pain is genuinely multifactorial in most women, and the search for a single culprit organ is the reason so many end up with repeated negative laparoscopies. It is common for endometriosis, IBS and pelvic floor myalgia to coexist in the same patient, each amplifying the others, and treating only one produces partial benefit that is then misread as diagnostic failure. This is why the RCOG's approach to chronic pelvic pain emphasises assessing all three systems — gynaecological, gastrointestinal and musculoskeletal — plus the psychosocial dimension from the outset rather than sequentially over years. Musculoskeletal and neuropathic causes are the most under-diagnosed group in primary care: pelvic floor myalgia is identifiable on examination by reproducible tenderness of the levator muscles, nerve entrapment after a Pfannenstiel incision produces a discrete tender point with altered sensation, and both respond to specific treatment rather than to hormones or laparoscopy.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Examination — Abdomen, pelvis and the musculoskeletal system</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Consent and chaperone</div><div>Explain what and why, offer a chaperone and document the offer and the outcome, and stop at any point on request. In women with pain, trauma history or vaginismus, a careful single-digit examination is often all that is possible or necessary</div>
+      <div>Observations</div><div>Temperature, pulse, BP, respiratory rate; pallor; NEWS2 if unwell. Tachycardia with pain and a positive pregnancy test is a surgical emergency</div>
+      <div>Abdomen</div><div>Site of maximal tenderness, guarding and rebound, masses (including a palpable pelvic mass arising from the pelvis), distension, ascites and shifting dullness, hernial orifices, scars</div>
+      <div><b>Carnett's sign</b></div><div>Pain worse on tensing the abdominal wall (head lift or leg raise) indicates an <b>abdominal wall</b> origin — trigger point or nerve entrapment — rather than intra-abdominal pathology. A high-value, rarely performed test</div>
+      <div>Speculum examination</div><div>Inspect the cervix directly (friability, irregularity, contact bleeding), note discharge, take triple swabs or NAAT as indicated, check IUD threads</div>
+      <div>Bimanual examination</div><div>Uterine size, shape, mobility and tenderness; <b>fixed retroverted uterus</b> and <b>tender nodularity or thickening in the posterior fornix or uterosacral ligaments</b> → deep endometriosis; adnexal masses and tenderness; <b>cervical excitation</b> → PID or peritoneal irritation</div>
+      <div>Pelvic floor assessment</div><div>Palpate the levator ani and obturator internus for reproducible tenderness and overactivity; assess whether the examination itself reproduces the presenting pain — a positive finding that redirects management to physiotherapy</div>
+      <div>Musculoskeletal and neurological</div><div>Hip range of movement and FABER/FADIR, sacroiliac provocation, pubic symphysis tenderness, coccyx, lumbar spine; mapped areas of altered sensation or allodynia over scars and nerve territories</div>
+      <div>What a normal examination means</div><div><b>Nothing reassuring in isolation.</b> NICE NG73 is explicit that a normal examination and normal imaging <b>do not exclude endometriosis</b> — treatment may be offered on symptoms alone</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Two examination findings change management more than any other and are both quick. Carnett's sign distinguishes abdominal wall pain from visceral pain in seconds: if tensing the rectus makes the pain worse, the source is the wall, and further pelvic imaging is unlikely to help. Reproducing the presenting pain by palpating the pelvic floor muscles identifies the substantial group of women whose pain is myofascial and who benefit from specialist pelvic floor physiotherapy rather than hormonal suppression or surgery. The negative findings need equal emphasis: examination for endometriosis has poor sensitivity, and superficial peritoneal disease — which can cause severe pain — is invisible on ultrasound and undetectable bimanually. A woman told that her scan and examination were normal often hears that her pain is not real, and NG73 exists partly to prevent that consultation. The one exception to reassurance is that a pelvic mass or ascites on examination is actionable immediately, on the urgent ovarian cancer pathway, without waiting for a CA-125.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Investigations — Pregnancy test, swabs, CA-125, ultrasound</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Every woman of reproductive age</div><div><span class="pill pill-blue">Urine β-hCG</span> — first, always, before imaging or treatment. A negative test in a symptomatic woman should be repeated if the LMP is uncertain</div>
+      <div>Bedside</div><div><span class="pill pill-blue">Urine dip and MSU</span> · <span class="pill pill-blue">Observations</span> · <span class="pill pill-blue">Vulvovaginal NAAT</span> for chlamydia and gonorrhoea (self-taken swab is acceptable) · high vaginal swab if discharge or suspected PID</div>
+      <div>Bloods</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">CRP</span> <span class="pill pill-blue">U&amp;Es</span> · <span class="pill pill-blue">Ferritin</span> if heavy bleeding · <span class="pill pill-blue">Coeliac serology</span> where bowel symptoms dominate · <span class="pill pill-blue">Serum β-hCG</span> if quantification is needed alongside EPAU assessment</div>
+      <div><span class="pill pill-purple">CA-125 — NICE NG12</span></div><div>Measure in any woman (especially <b>50 or over</b>) with persistent or frequent <b>abdominal distension or bloating, early satiety or loss of appetite, pelvic or abdominal pain, or urinary urgency/frequency</b>; also with new IBS-type symptoms, or unexplained weight loss, fatigue or change in bowel habit. <b>CA-125 ≥35 IU/mL → arrange urgent pelvic and abdominal ultrasound</b></div>
+      <div>Interpreting CA-125</div><div>Raised by endometriosis, fibroids, menstruation, pregnancy, PID, liver disease and heart failure — and <b>normal in up to half of early-stage ovarian cancers</b>. A normal result with persistent symptoms means re-assess and consider referral anyway, not discharge</div>
+      <div>Ultrasound</div><div><b>Transvaginal ultrasound</b> is the first-line pelvic imaging — for cysts, fibroids, adenomyosis, endometriomas, hydrosalpinx, free fluid. Normal imaging does <b>not</b> exclude endometriosis. Urgent scan if CA-125 ≥35, or if torsion, ectopic or an abscess is suspected (via the acute pathway)</div>
+      <div>FIT</div><div><span class="pill pill-blue">FIT ≥10 µg Hb/g</span> where bowel symptoms or rectal bleeding are prominent → colorectal 2WW pathway (NICE NG12 / DG56)</div>
+      <div>Laparoscopy</div><div>The definitive test for endometriosis and adhesions — <b>secondary care, and not a prerequisite for starting treatment</b>. A negative laparoscopy does not exclude non-gynaecological causes</div>
+      <div>Other imaging</div><div>MRI pelvis for suspected deep endometriosis or adenomyosis (specialist-requested); hip or spine imaging where musculoskeletal; CT only via the acute or cancer pathway</div>
+      <div>Do not do</div><div>Do not treat presumed "recurrent UTI" on repeatedly negative cultures — reconsider bladder pain syndrome; do not use CA-125 as a screening test in asymptomatic women; do not delay a hormonal trial while awaiting a scan in suspected endometriosis</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">CA-125 is a symptom-triggered test with genuinely awkward performance characteristics, and both errors are common. It is raised by a long list of benign gynaecological conditions, so a mildly elevated result in a young woman with endometriosis generates avoidable alarm; and it is normal in a substantial minority of early ovarian cancers, so a normal result cannot close a case where symptoms persist. NICE NG12's structure accommodates this: ascites or a pelvic mass bypasses the blood test entirely and goes straight to urgent referral, and the test is reserved for the vaguer symptom cluster. The corresponding trap in chronic pelvic pain is the woman treated for years for "recurrent UTIs" on the basis of symptoms and negative cultures — that pattern is bladder pain syndrome, and repeated antibiotics neither help her nor are harmless. The final point is the most practical: in suspected endometriosis, waiting for imaging or laparoscopy before starting treatment is the mechanism by which the eight-year diagnostic delay accumulates, and NG73 explicitly permits treating on the symptom cluster alone.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head"><span class="node-tag">Refer</span><h3>Referral Criteria — Emergency, 2WW and specialist pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 now</span></div><div>Shock or peritonism; suspected ruptured ectopic; syncope with pain; suspected sepsis from PID or tubo-ovarian abscess; severe pain after 20 weeks of pregnancy</div>
+      <div><span class="pill pill-red">Same-day EPAU or gynaecology</span></div><div><b>Any positive pregnancy test with pain or bleeding</b>; suspected ovarian torsion; suspected ruptured or haemorrhagic cyst; PID with fever or failure of oral treatment; pain after recent instrumentation or IUD insertion</div>
+      <div><span class="pill pill-purple">2WW suspected ovarian cancer</span></div><div><b>NICE NG12:</b> <b>ascites and/or a pelvic or abdominal mass</b> not clearly uterine fibroids → <b>urgent referral; do not wait for CA-125</b>. Also refer urgently if ultrasound suggests ovarian cancer, or if CA-125 is raised and ultrasound abnormal</div>
+      <div><span class="pill pill-purple">CA-125 then USS</span></div><div><b>NICE NG12:</b> persistent bloating, early satiety, pelvic/abdominal pain or urinary urgency/frequency — especially <b>aged 50+ or new IBS-type symptoms</b> → <b>CA-125</b>; if <b>≥35 IU/mL</b> arrange <b>urgent pelvic and abdominal ultrasound</b></div>
+      <div><span class="pill pill-purple">2WW other gynaecological</span></div><div><b>Post-menopausal bleeding aged 55+</b> → suspected endometrial cancer (direct-access ultrasound where available). <b>Cervix suspicious on examination</b> → urgent gynaecology for suspected cervical cancer, regardless of screening history. Unexplained vulval lump, ulceration or bleeding → suspected vulval cancer</div>
+      <div><span class="pill pill-purple">2WW colorectal</span></div><div><b>NICE NG12 / DG56:</b> pelvic pain with change in bowel habit or rectal bleeding and <b>FIT ≥10 µg Hb/g</b> → colorectal suspected cancer pathway</div>
+      <div>Gynaecology (routine or urgent)</div><div>Suspected endometriosis with severe symptoms or failure of a 3-month primary-care trial; suspected deep endometriosis with bowel, bladder or ureteric involvement → <b>specialist endometriosis centre</b>; fibroids with pressure symptoms; adnexal mass needing assessment; subfertility with pain</div>
+      <div>Sexual health / GUM</div><div>Confirmed or suspected PID for partner notification and contact tracing; recurrent STI; complex or treatment-failure cases</div>
+      <div>Pain management / multidisciplinary</div><div>Chronic pelvic pain with central sensitisation, opioid dependence, or failure of cause-directed treatment → pelvic pain clinic, which should include pain medicine, physiotherapy and psychology</div>
+      <div>Pelvic floor physiotherapy</div><div>Reproducible levator tenderness, pelvic floor overactivity, pubic symphysis dysfunction, post-surgical scar and nerve pain. An under-used and effective referral</div>
+      <div>Primary care manage</div><div>Primary dysmenorrhoea; suspected endometriosis on a hormonal trial; uncomplicated PID; IBS; simple constipation; musculoskeletal pain pending physiotherapy — all with a defined review date</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The NG12 ovarian pathway is one of the most commonly misapplied in general practice, and the error is usually the same: measuring CA-125 in a woman who has a palpable pelvic mass or ascites, and waiting several days for the result. Where a mass or ascites is present the referral is immediate and the blood test adds nothing to the decision. The specialist endometriosis centre referral is the other under-used route — NG73 directs referral to a centre with the expertise for deep endometriosis involving the bowel, bladder or ureter, because surgery in those cases requires a multidisciplinary team and outcomes are materially better. Finally, referral to a pelvic pain clinic is not an admission of failure but a recognition of mechanism: in long-standing chronic pelvic pain, central sensitisation becomes part of the pathology, and the evidence favours a multidisciplinary approach including physiotherapy and psychological therapy over further diagnostic laparoscopy, which frequently finds nothing new and reinforces the search for a single fixable lesion.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head"><span class="node-tag">Treat</span><h3>Treatment — Cause-directed, started without waiting for certainty</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Suspected endometriosis / dysmenorrhoea</div>
+        <div class="b-drug">NSAID ± paracetamol <span class="pill pill-teal">3-month trial</span></div>
+        <div class="b-note"><b>NICE NG73:</b> offer paracetamol and/or an NSAID (e.g. mefenamic acid 500 mg TDS or naproxen 250–500 mg BD with food) for a 3-month trial, taken from just before the period starts. Review at 3 months; if inadequate, move to hormonal treatment or refer.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Endometriosis — hormonal</div>
+        <div class="b-drug">Combined pill or progestogen <span class="pill pill-teal">2nd line</span></div>
+        <div class="b-note">Combined hormonal contraceptive (consider continuous or tricycling to reduce bleeds), or a progestogen — desogestrel, medroxyprogesterone, or the <b>52 mg levonorgestrel IUS</b>, which is particularly effective for adenomyosis and heavy bleeding. GnRH analogues are specialist-initiated with add-back HRT.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Pelvic inflammatory disease</div>
+        <div class="b-drug">14-day antibiotics <span class="pill pill-red">treat empirically</span></div>
+        <div class="b-note">Ceftriaxone 1 g IM single dose + doxycycline 100 mg BD + metronidazole 400 mg BD for 14 days; or ofloxacin 400 mg BD + metronidazole 400 mg BD for 14 days. <b>Start on clinical suspicion — do not wait for swabs.</b> Partner notification, abstinence, and review at 72 hours and 2–4 weeks.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Bladder pain syndrome</div>
+        <div class="b-drug">Bladder-directed measures</div>
+        <div class="b-note">Stop unnecessary antibiotics; reduce caffeine, alcohol and acidic triggers; timed voiding and bladder retraining; amitriptyline 10–25 mg nocte for pain; refer to urology if no progress. Repeated antibiotics for culture-negative symptoms cause harm without benefit.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">IBS-predominant pain</div>
+        <div class="b-drug">Antispasmodic + fibre adjustment</div>
+        <div class="b-note">Mebeverine or hyoscine butylbromide; soluble fibre; consider a dietitian-led low-FODMAP trial; low-dose amitriptyline for pain. <b>New IBS-type symptoms aged 50+ require a CA-125 first.</b></div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Musculoskeletal / myofascial</div>
+        <div class="b-drug">Pelvic floor physiotherapy</div>
+        <div class="b-note">Specialist pelvic health physiotherapy for levator overactivity, pubic symphysis dysfunction and post-surgical pain; trigger point injection or nerve block via the pain clinic for confirmed entrapment. Hormones will not help this group.</div>
+      </div>
+    </div>
+    <div class="ladder" style="margin-top:14px;">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Name the working diagnosis and validate the pain.</b> Explain the plan, the expected timescale, and that a normal scan does not mean nothing is wrong. This is therapeutic, not preamble — and it is what most women with chronic pelvic pain report as missing.</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Treat the identified cause</b> — hormonal for cyclical pain, antibiotics for PID, bowel-directed for IBS, bladder-directed for bladder pain syndrome, physiotherapy for myofascial pain. Treat coexisting causes together rather than sequentially.</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Analgesia with a plan and a ceiling.</b> Paracetamol and NSAIDs first; neuropathic agents (amitriptyline, duloxetine, gabapentinoids) where there is neuropathic or central pain. <b>Avoid escalating opioids</b> — they do not work for chronic pelvic pain and cause dependence, constipation and hyperalgesia (RCOG; NICE NG193).</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Add the non-drug components early</b>: pelvic floor physiotherapy, TENS, heat, exercise, sleep, and psychological therapy for pain (CBT or ACT) — offered as part of pain management, never as a suggestion that the pain is imagined.</span></div>
+      <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Review at 3 months and revise.</b> Partial response usually means a second coexisting cause rather than treatment failure. No response means re-open the diagnosis — including the cancer pathways.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The most consequential shift in NICE NG73 was permitting — indeed encouraging — treatment of suspected endometriosis in primary care without diagnostic confirmation, because requiring laparoscopy first is the main structural cause of the diagnostic delay. A three-month analgesic trial followed by hormonal treatment can be delivered entirely in general practice, and for many women that is sufficient. PID follows the same logic for different reasons: BASHH and NICE both advise empirical treatment on clinical suspicion because swabs are frequently negative even in genuine PID, and each week of delay increases the risk of tubal infertility, chronic pain and ectopic pregnancy. On analgesia, the evidence for opioids in chronic pelvic pain is poor and the harms are substantial — NICE NG193 recommends against initiating opioids for chronic primary pain, and the realistic goals are function and sleep rather than abolition of pain. The single most valued intervention reported by women with chronic pelvic pain, consistently, is being believed and given an explanation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head"><span class="node-tag">Lifestyle</span><h3>Non-Pharmacological — Self-management and supported living</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Pain and symptom diary</b> Record pain, bleeding, bowel and bladder symptoms against the cycle for 2–3 months. It reveals cyclicity the history missed and gives both of you something concrete to review.</div>
+      <div class="lstile"><b>Heat and TENS</b> A heat pad or wheat bag is as effective as an NSAID for many women with dysmenorrhoea; TENS has reasonable evidence and no systemic side effects.</div>
+      <div class="lstile"><b>Pelvic floor awareness</b> Relaxation and down-training rather than Kegel strengthening where the floor is overactive — strengthening an already overactive pelvic floor makes the pain worse.</div>
+      <div class="lstile"><b>Exercise and pacing</b> Regular low-impact activity improves pain, mood and sleep. Pacing — planning activity around known flares instead of boom-and-bust — is one of the most effective self-management skills.</div>
+      <div class="lstile"><b>Bowel and bladder habits</b> Treat constipation properly (it amplifies all pelvic pain); reduce caffeine and alcohol for bladder symptoms; avoid straining; consider a footstool and good toilet posture.</div>
+      <div class="lstile"><b>Sleep and mood</b> Chronic pain and poor sleep reinforce each other. Address insomnia directly, screen for anxiety and depression, and offer psychological therapy as pain management rather than as an alternative explanation.</div>
+      <div class="lstile"><b>Sexual function</b> Ask about it explicitly. Lubricants, position changes, timing around the cycle, and psychosexual or physiotherapy referral for vaginismus and deep dyspareunia. Most women will not raise it unasked.</div>
+      <div class="lstile"><b>Fertility conversation</b> Endometriosis and PID both affect fertility. Raise it early and proactively, before it becomes urgent, and refer for advice rather than waiting for a fertility problem to present.</div>
+      <div class="lstile"><b>Support and information</b> Endometriosis UK, Pelvic Pain Support Network, and local pelvic health services. Signposting reduces isolation and the sense of not being believed.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The symptom diary earns its place because cyclicity is the highest-value diagnostic feature and is frequently invisible in a single consultation — women with severe, constant pain often cannot recall whether it worsens premenstrually until they track it. Down-training rather than strengthening the pelvic floor is a genuinely counterintuitive point: the standard advice to do pelvic floor exercises is actively harmful in women with an overactive, painful floor, and this group is common in chronic pelvic pain. Raising fertility early matters because both endometriosis and PID reduce fertility, and women repeatedly report finding out too late that their condition had implications they were never told about. Finally, the psychological component must be framed carefully. Psychological therapy is offered because chronic pain involves nervous system sensitisation and because living with pain is difficult — not as a hint that the pain is not real. Women with chronic pelvic pain describe that misframing as the single most damaging thing that happens in their consultations, and it is what makes them stop returning.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>72 hours (PID)</div><div>Review response to antibiotics; admit if no improvement or worsening (tubo-ovarian abscess). Confirm partner notification is under way and abstinence advised until both treated</div>
+      <div>2–4 weeks (PID)</div><div>Confirm symptom resolution, adherence to the full 14 days, partner treated, and repeat testing where indicated. Discuss the long-term risks of infertility, ectopic pregnancy and chronic pain</div>
+      <div>3 months (suspected endometriosis)</div><div><b>Review the analgesic or hormonal trial.</b> Inadequate response → change hormonal agent or refer to gynaecology; suspected deep disease → specialist endometriosis centre. Do not simply repeat the prescription</div>
+      <div>3–6 months (chronic pelvic pain)</div><div>Reassess using the diary; review all four systems (gynaecological, GI, urological, musculoskeletal); reconsider a missed coexisting cause; review analgesia and de-prescribe opioids; check mood, sleep and function</div>
+      <div>CA-125 follow-up</div><div>A <b>normal CA-125 with persistent symptoms is not a discharge</b> — reassess, examine again, and consider referral. Repeat testing or imaging where symptoms progress</div>
+      <div><span class="pill pill-red">999 now</span></div><div>Sudden severe pain; fainting or collapse; shoulder-tip pain; heavy vaginal bleeding with dizziness; fever with rigors and severe pain; pain with a positive pregnancy test and feeling faint</div>
+      <div><span class="pill pill-red">Same-day contact</span></div><div>Positive pregnancy test with any pain or bleeding; a new or rapidly increasing pain; fever; vomiting with pain; new abdominal swelling; inability to pass urine</div>
+      <div>Re-investigate if</div><div>New bloating or abdominal distension, early satiety, weight loss or change in bowel habit → <span class="pill pill-purple">CA-125 and NG12 pathways</span>; post-menopausal bleeding → 2WW endometrial; a new pelvic mass → urgent referral; pain changes character or becomes constant</div>
+      <div>Documentation</div><div>Record the pregnancy test result, the working diagnosis, the CA-125 and ultrasound decisions and their rationale, the review date, and the safety-net advice given. Where a woman has been seen repeatedly, read the whole record before adding another prescription</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Pelvic pain is a presentation where the diagnosis often emerges over several consultations, which makes the review structure the real clinical instrument. Two specific safety-nets deserve to be built in from the start. First, a normal CA-125 with continuing symptoms is not reassurance: a substantial minority of early ovarian cancers have a normal marker, so the plan must include re-assessment rather than discharge. Second, the three-month endometriosis review must actually happen and must be a decision point — the commonest pattern in the records of women who waited years for diagnosis is a series of repeat prescriptions with no review of whether the treatment worked. Reading the whole record before adding another treatment is the other habit that shortens delay: the diagnosis of endometriosis, ovarian cancer and chronic PID is frequently visible in the pattern of six previous consultations even when no single consultation was inadequate. And the discipline of re-opening the diagnosis when a chronic pain changes character is what catches the malignancy that develops in a woman already carrying a benign label.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG73 (Endometriosis: diagnosis and management, updated 2024), NICE NG12 (Suspected cancer: recognition and referral, May 2025), NICE CG122 (Ovarian cancer: recognition and initial management), NICE NG193 (Chronic pain, 2021), NICE NG88 (Heavy menstrual bleeding), RCOG Green-top Guideline 41 (Chronic pelvic pain) and GTG 21 (Ectopic pregnancy), BASHH PID guideline (2019), NICE DG56 (FIT for colorectal cancer). Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const KEY='rgp.alg.pelvic-pain-women.v1';
+  const nodes=document.querySelectorAll('.node');
+  const pDone=document.getElementById('pDone');const pFill=document.getElementById('pFill');
+  const total=nodes.length;document.getElementById('pTotal').textContent=total;
+  function save(){const s={};nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb)s[n.dataset.step]=cb.checked;});localStorage.setItem(KEY,JSON.stringify(s));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&s[n.dataset.step]){cb.checked=true;n.classList.add('ticked');}});}catch(e){}}
+  function upd(){let d=0;nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&cb.checked)d++;});pDone.textContent=d;pFill.style.width=((d/total)*100)+'%';}
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');if(cb){cb.addEventListener('change',()=>{n.classList.toggle('ticked',cb.checked);upd();save();});}
+    const btn=n.querySelector('.why-btn');const dr=n.querySelector('.why-drawer');
+    if(btn&&dr){btn.addEventListener('click',()=>{const o=dr.classList.toggle('open');btn.setAttribute('aria-expanded',o);});}
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb){cb.checked=false;n.classList.remove('ticked');}
+      const dr=n.querySelector('.why-drawer');const btn=n.querySelector('.why-btn');
+      if(dr)dr.classList.remove('open');if(btn)btn.setAttribute('aria-expanded','false');
+    });upd();localStorage.removeItem(KEY);
+  });
+  load();upd();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=2"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/alg-diagram.js?v=4"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+</body>
+</html>

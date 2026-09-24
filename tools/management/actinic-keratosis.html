@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Actinic keratosis — Protocol · Reasoning GP</title>
+<meta name="description" content="Actinic keratosis in primary care: recognising field change, the features that mean SCC rather than AK, treating by lesion count and site with 5-fluorouracil, imiquimod, diclofenac or cryotherapy, the expected inflammatory reaction, and the immunosuppressed and transplant exception." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/actinic-keratosis.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Actinic keratosis protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"☀️",
+  title:"Actinic keratosis — the complete guide",
+  eyebrow:"Protocol · NICE · PCDS · treat the field, not just the lesion",
+  stemTitle:"The clinical question is never \"is this an AK?\" but \"is any of this an SCC?\" — because a tender, thickened, growing or ulcerated lesion in a field of AKs is the one that needs a 2-week-wait referral, not a cream",
+  stemSub:"One page for the whole condition. AKs are markers of cumulative UV damage and of <b>field change</b>, so the treatment decision is driven by <b>how many lesions, where they are, and how much they bother the patient</b> — not by the presence of an AK alone, since many need no treatment at all. Examine the whole field and the rest of the skin, know the <b>features that mean SCC</b>, choose between <b>5-fluorouracil, imiquimod, diclofenac gel and cryotherapy</b> on lesion count and site, and warn about the inflammatory reaction in advance, because it is the expected treatment effect and the usual reason a course is abandoned. Immunosuppressed and transplant patients are a different risk category.",
+  guideline:"PCDS · NICE NG12",
+  reviewed:"14 September 2026",
+  nextReview:"14 March 2027",
+  meta:[
+    {t:"PCDS — actinic keratosis"},
+    {t:"Primary Care Dermatology Society (PCDS) guidance"},
+    {t:"Tender, thickened or ulcerated → think SCC", tone:"tw"},
+    {t:"Transplant/immunosuppressed → low referral threshold", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#safety"><b>Is it SCC?</b><small>The real question</small></a><a href="#diagnose"><b>Diagnose</b><small>Field change</small></a><a href="#choose"><b>Choose</b><small>Count · site</small></a><a href="#counsel"><b>Counsel</b><small>The reaction</small></a><a href="#refer"><b>Refer</b><small>NG12 · specialist</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ The features that mean SCC, not AK", html:"Tenderness, thickening or induration, rapid growth, ulceration, bleeding, a nodular or fleshy component, or a lesion that fails to respond to adequate treatment. Any of these in a field of AKs means suspected squamous cell carcinoma → urgent suspected-cancer referral, not a cream. <b>Palpate as well as look — SCC is often easier to feel than to see</b>, and a hyperkeratotic AK on the ear or lip is the classic one to get wrong."},
+    {tone:"blue", h:"AK is a marker of field change and of overall skin-cancer risk", html:"Rough, scaly, erythematous macules or papules on chronically sun-exposed skin — scalp, face, ears, forearms, dorsal hands, lower legs — often more easily felt than seen, on a background of solar damage. So examine the whole field and the rest of the skin: patients with AKs have a raised risk of BCC, SCC and melanoma, and finding a second lesion matters more than perfecting the AK diagnosis."},
+    {tone:"green", h:"Many AKs need no treatment at all", html:"The decision is driven by lesion number, site, symptoms and patient preference — mild, asymptomatic, non-hyperkeratotic AKs can reasonably be left, with emollients, sun protection and advice to report change. <b>Individual lesions may regress spontaneously.</b> Overtreating asymptomatic field change in a frail patient is a real harm, because the treatments are uncomfortable."},
+    {tone:"amber", h:"Choose by lesion count and site", html:"<b>Few discrete lesions → cryotherapy, or a topical agent to the area.</b> Field change with multiple lesions → a topical field treatment: <span class='rx'>5-fluorouracil 5% cream</span> (often once or twice daily for about 4 weeks), <span class='rx'>imiquimod 5%</span> (3 nights a week for 4 weeks, with repeat courses), or <span class='rx'>diclofenac 3% gel</span> twice daily for 60–90 days. 5-FU is the most effective and the most inflammatory; diclofenac is the best tolerated and the slowest."},
+    {tone:"red", h:"⚠ Warn about the inflammatory reaction, or the course fails", html:"Redness, crusting, erosion and discomfort during treatment are the EXPECTED effect, not an adverse reaction — and peak inflammation is usually the point at which patients stop. Say this at the point of prescribing, give a timeframe, and offer emollient and simple analgesia. An unwarned patient who abandons 5-FU at day 10 has had a counselling failure, not a treatment failure."},
+    {tone:"purple", h:"🟣 NICE NG12 — suspected squamous cell carcinoma", html:"Consider an urgent suspected-cancer referral (for an appointment within 2 weeks) for people with a skin lesion that raises the suspicion of squamous cell carcinoma. Suspected melanoma or a pigmented lesion with a weighted 7-point checklist score of 3 or more, or any suspicion, goes on the same pathway. Basal cell carcinoma is usually a routine dermatology referral, but use the urgent route where delay could cause significant impact. Restated in <a href='#refer'>Refer</a>."}
+  ],
+  pathwaySub:"Five steps, and the first one is a question about cancer, not about AKs.",
+  pathway:[
+    {title:"Ask whether any lesion is an SCC", html:"Tender, thickened, growing, ulcerated, bleeding or nodular → urgent suspected-cancer referral. <b>Palpate the field, and examine the rest of the skin.</b>", alert:true},
+    {title:"Confirm AK and assess the field", html:"Distribution, lesion count, hyperkeratosis, symptoms, and whether the patient is immunosuppressed."},
+    {title:"Decide whether to treat at all", html:"Asymptomatic mild AK may need only sun protection, emollient and safety-netting."},
+    {title:"Choose the modality by count and site", html:"Cryotherapy for few discrete lesions; 5-FU, imiquimod or diclofenac for field change — and counsel on the reaction BEFORE the first application."},
+    {title:"Review, and give lifelong sun protection and self-examination advice", html:"Review response at the appropriate interval for the agent, and re-examine the field."}
+  ],
+  sections:[
+
+    {id:"safety", nav:"Is it SCC?", title:"Step 1 — the question that comes first",
+     sub:"An AK diagnosis is only safe once SCC has been considered and excluded on the day.",
+     blocks:[
+       {b:"table", head:["Feature","Meaning","Action"], rows:[
+         ["<b>Tenderness or pain in a scaly lesion</b>","<b>Suspicious of SCC</b> — AKs are usually asymptomatic or mildly rough","<b>Urgent suspected-cancer referral (2-week wait)</b>"],
+         ["<b>Thickening, induration or a nodular/fleshy component</b>","<b>Suspicious of SCC</b> — palpable depth is the key discriminator","Urgent suspected-cancer referral. Palpate every field: SCC is often easier to FEEL than to see"],
+         ["<b>Rapid growth, ulceration or bleeding</b>","<b>Suspicious of SCC</b>","<b>Urgent suspected-cancer referral</b>"],
+         ["<b>A lesion that fails to respond to adequate treatment</b>","<b>Was not an AK, or has progressed</b>","<b>Re-examine and refer rather than repeating the cream</b>"],
+         ["<b>Pigmented, irregular or changing lesion</b>","<b>Possible melanoma</b>","Weighted 7-point checklist; score 3 or more, or any suspicion → suspected-melanoma pathway. See <a href='../algorithms/pigmented-skin-lesions.html'>pigmented skin lesions pathway</a>"],
+         ["<b>Pearly, rolled-edged or telangiectatic papule</b>","<b>Possible basal cell carcinoma</b>","Usually routine dermatology; use the urgent route where delay could cause significant impact"],
+         ["<b>Any lesion in a transplant recipient or immunosuppressed patient</b>","<b>Higher risk, faster progression, and multiple SCCs</b>","<b>Low threshold for referral; specialist dermatology involvement</b>"],
+         ["<b>Ear, lip or temple site</b>","<b>Higher-risk sites for SCC</b>","<b>A lower threshold for referral than for the same lesion on the forearm</b>"]
+       ]},
+       {b:"warn", html:"The clinical question is never \"is this an AK?\" but \"is any of this an SCC?\" Treating a field of AKs is entirely reasonable — but the tender, thickened, growing or ulcerated lesion within that field is the one that needs a referral, and it is easily lost among the others."}
+     ]},
+
+    {id:"diagnose", nav:"Diagnose", title:"Step 2 — diagnosis, field assessment and risk",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Appearance</b>","Rough, scaly, erythematous macules or papules — often better felt than seen; may be hyperkeratotic or, on the lip, present as actinic cheilitis"],
+         ["<b>Sites</b>","Chronically sun-exposed skin: scalp (especially bald), face, ears, nose, forearms, dorsal hands, lower legs"],
+         ["<b>Background</b>","Solar damage — telangiectasia, mottled pigmentation, atrophy. Fitzpatrick skin types I–II, outdoor work or heavy recreational sun exposure, older age, prior skin cancer"],
+         ["<b>Field change</b>","Multiple AKs in one area indicate field change — a region of dysplastic skin rather than isolated lesions, which is why area treatments exist"],
+         ["<b>Assess and record</b>","Number of lesions, distribution and area, hyperkeratosis, symptoms, cosmetic concern, immunosuppression, and whether the patient can apply a cream themselves"],
+         ["<b>Examine the rest of the skin</b>","AKs mark raised overall risk of BCC, SCC and melanoma — a full skin check is part of the consultation"],
+         ["<b>Diagnosis is clinical</b>","Usually clinical; dermoscopy and biopsy are for uncertainty or suspected malignancy, not for routine AK"]
+       ]},
+       {b:"why", html:"AKs matter for two reasons, and the treatment decision follows from which one you are addressing. Individually they are a low-risk dysplastic lesion, and most will not progress — individual lesions may even regress. Collectively they are a marker: of field change in that area, and of the patient's cumulative UV exposure and therefore their lifetime skin-cancer risk. So the job is partly to treat troublesome lesions and partly to identify the patient who now needs lifelong sun protection, self-examination and a low threshold for review."}
+     ]},
+
+    {id:"choose", nav:"Choose", title:"Step 3 — deciding whether and how to treat",
+     blocks:[
+       {b:"info", html:"Treatment is guided by lesion number, thickness, site, symptoms and patient preference — not by the presence of an AK alone. Mild, asymptomatic, non-hyperkeratotic AKs can reasonably be left untreated with emollients, sun protection and advice to report change."},
+       {b:"table", head:["Situation","Option","Practical detail"], rows:[
+         ["<b>Few discrete lesions</b>","<b>Cryotherapy</b>","Quick and lesion-directed. Blistering, discomfort and post-inflammatory hypo- or hyperpigmentation are common; scarring is possible — relevant on the face"],
+         ["<b>Few lesions, or where cryotherapy is unsuitable</b>","<b>A topical agent applied to the area</b>","Choose by tolerability and the patient's ability to apply it correctly"],
+         ["<b>Field change, multiple lesions — most effective</b>","<b><span class='rx'>5-fluorouracil 5% cream</span></b> (often once to twice daily for around 4 weeks; lower-strength and combination preparations are also used)","<b>The most effective and the most inflammatory.</b> Expect brisk erythema, crusting and erosion; <b>protect surrounding skin and avoid the eyes</b>"],
+         ["<b>Field change — immune-mediated alternative</b>","<b><span class='rx'>Imiquimod 5% cream</span></b> (commonly 3 nights a week for 4 weeks, with a repeat course after a treatment-free interval)","Marked local inflammation, sometimes with flu-like symptoms. <b>Useful where 5-FU is not tolerated</b>"],
+         ["<b>Field change — best tolerated, slowest</b>","<b><span class='rx'>Diclofenac 3% gel</span></b> twice daily for <b>60–90 days</b>","Mildest reaction and the best choice for frail or reaction-averse patients, at the cost of a long course and lower efficacy"],
+         ["<b>Hyperkeratotic, extensive or treatment-resistant disease</b>","<b>Dermatology</b>","<b>For photodynamic therapy, curettage, or specialist assessment</b>"],
+         ["<b>All patients, regardless of treatment</b>","<b>Sun protection and skin surveillance</b>","High-SPF broad-spectrum sunscreen used properly, clothing and hats, shade, avoiding peak UV; emollients for symptomatic scaling; self-examination taught"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🧴 Sun protection is the long-term treatment", html:"It reduces new AK formation and overall skin-cancer risk, and it applies whether or not the current lesions are treated. Be specific: high-SPF broad-spectrum sunscreen applied generously and reapplied, plus hat, sleeves and shade."},
+         {tone:"amber", h:"⚠ Don't overtreat the frail", html:"<b>The field treatments are uncomfortable for weeks.</b> In a frail or very elderly patient with asymptomatic AKs, no treatment plus sun protection and safety-netting is often the better plan — and should be framed as a positive decision, not a refusal."},
+         {tone:"blue", h:"🖐️ Can they apply it?", html:"Field treatments need accurate self-application to a defined area for weeks. Check dexterity, vision and understanding, or the course will fail regardless of the agent chosen."},
+         {tone:"red", h:"🫆 Immunosuppressed and transplant patients", html:"Higher risk, faster progression and multiple SCCs — a different risk category. Low threshold for referral, specialist dermatology involvement, and rigorous sun protection."}
+       ]}
+     ]},
+
+    {id:"counsel", nav:"Counsel", title:"Step 4 — the conversation that determines whether treatment works",
+     blocks:[
+       {b:"warn", html:"Local inflammation — redness, crusting, erosion, discomfort — is the EXPECTED effect of field treatment, not an adverse reaction. <b>Peak inflammation is usually the point at which patients stop.</b> Warn explicitly before the first application, give an expected timeframe, and offer emollient and simple analgesia."},
+       {b:"say", html:"These rough patches are sun damage, and the cream works by making the damaged skin react and then heal over. I want to be clear about what that looks like, because it puts people off: the area will get red, sore and crusty, and it usually looks its worst about halfway through. That is the treatment working, not a reaction to it. Keep going, use a simple moisturiser around it and paracetamol if it is sore, and it will settle in the couple of weeks after you finish. If it becomes very painful, spreads well beyond the area, or you are worried, stop and come and see me rather than just abandoning it."},
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Response to treatment</b>","After the course and its settling period — weeks for 5-FU or imiquimod, after 60–90 days for diclofenac","Assess clearance; repeat or change modality if the response is inadequate"],
+         ["<b>Non-responding lesions</b>","<b>At review</b>","A lesion that has not responded to adequate treatment is a referral, not a repeat course — it may be SCC"],
+         ["<b>The field and the whole skin</b>","<b>At review and opportunistically</b>","New or changing lesions; check the rest of the skin for BCC, SCC and melanoma"],
+         ["<b>Sun protection and self-examination</b>","<b>Ongoing, lifelong</b>","Reinforce; this is the intervention that reduces new lesions and overall risk"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Come back before finishing", html:"\"A lesion that becomes tender, lumpy, ulcerated or starts bleeding — or grows — needs checking straight away, whether or not you are using the cream.\""},
+         {tone:"amber", h:"🟠 Severe reaction", html:"\"If the treated area becomes very painful, weepy well beyond the treated patch, or looks infected, stop and contact us.\""},
+         {tone:"blue", h:"💊 Expected course", html:"\"Worst around the middle, settling in the weeks after you stop. That is the treatment working.\""},
+         {tone:"green", h:"☀️ For life", html:"\"Sunscreen, hat and sleeves from now on — it reduces new patches and your overall skin-cancer risk. And check your own skin, telling us about anything new that doesn't settle in a month.\""}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"2WW · NICE NG12 — suspected SCC or melanoma", html:"Consider an urgent suspected-cancer referral (appointment within 2 weeks) for a skin lesion raising suspicion of squamous cell carcinoma — tender, thickened, growing, ulcerated, bleeding or nodular, or failing to respond to adequate treatment. Suspected melanoma, or a pigmented lesion scoring 3 or more on the weighted 7-point checklist, goes on the suspected-melanoma pathway."},
+         {tone:"amber", h:"Dermatology — urgent-ish", html:"Diagnostic uncertainty · extensive or hyperkeratotic disease · treatment-resistant AK · any lesion in a transplant recipient or immunosuppressed patient."},
+         {tone:"blue", h:"Dermatology — routine", html:"For photodynamic therapy, curettage or specialist field treatment; suspected basal cell carcinoma (urgent route where delay would cause significant impact)."},
+         {tone:"cream", h:"GP management", html:"Clinical diagnosis, the SCC question, field assessment, the decision whether to treat, cryotherapy or a topical field agent with proper counselling, the response review, and lifelong sun protection and self-examination all belong here. Related pages: <a href='../algorithms/pigmented-skin-lesions.html'>pigmented skin lesions pathway</a> · <a href='eczema.html'>eczema</a> · <a href='psoriasis.html'>psoriasis</a> · <a href='rosacea.html'>rosacea</a> · <a href='seborrhoeic-dermatitis.html'>seborrhoeic dermatitis</a>."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 74-year-old retired roofer attends about \"scaly patches\" on his bald scalp and forearms, present for two years. There are numerous rough erythematous macules across the scalp with background telangiectasia and mottled pigmentation. He mentions that one patch behind his right ear has become sore and is catching on his glasses, and that it <b>bled a little when he knocked it</b>. He wants \"the strongest cream to get rid of them all\" and says he has \"never bothered with sunscreen\"."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does not treat this as a single AK-management consultation — identifies that the tender, bleeding lesion behind the ear is suspicious of SCC and arranges an urgent suspected-cancer referral, which is the highest-value action and is easily lost among the field; <b>palpates rather than only inspecting</b>, knowing SCC is often easier to feel; <b>recognises the ear as a higher-risk site</b>; <b>examines the whole skin for BCC, SCC and melanoma</b>, since AKs mark raised overall risk; assesses the field properly — count, distribution, hyperkeratosis, symptoms — and chooses a field treatment rather than lesion-by-lesion cryotherapy for extensive scalp disease; counsels explicitly on the inflammatory reaction, its peak and its timeframe before prescribing 5-FU, offering emollient and analgesia, because an unwarned patient abandons the course; <b>does not promise clearance of everything</b>; gives specific lifelong sun protection advice relevant to an outdoor worker and teaches self-examination; and safety-nets any lesion that becomes tender, lumpy, ulcerated or non-healing."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>PCDS — actinic keratosis</b><span class="rd"> — the clinical diagnosis and distribution, the features raising suspicion of squamous cell carcinoma, the principle that treatment is guided by lesion number, thickness, site and symptoms rather than by the presence of an AK alone, the topical and physical treatment options with their courses, the expected local inflammatory reaction, and the referral indications including immunosuppression</span></li>'+
+         '<li><b>Primary Care Dermatology Society (PCDS) — Actinic (solar) keratosis</b><br><a href="https://www.pcds.org.uk" rel="noopener">pcds.org.uk</a><span class="rd"> — the field-change concept and field-directed treatment, practical selection between 5-fluorouracil, imiquimod, diclofenac gel and cryotherapy by lesion count and tolerability, actinic cheilitis, and the higher-risk sites and patient groups</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — consider an urgent suspected-cancer referral (for an appointment within 2 weeks) for a skin lesion raising suspicion of squamous cell carcinoma; the suspected-melanoma pathway and the weighted 7-point checklist score of 3 or more; and basal cell carcinoma as a routine referral unless delay would cause significant impact</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — fluorouracil 5% cream, imiquimod 5% cream and diclofenac 3% gel preparations, application regimens and cautions. Regimens vary by product and by local formulary \u2014 confirm the specific course against the SPC before prescribing</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Actinic keratosis — NICE, PCDS and NG12. The first question is never \"is this an AK?\" but \"is any of this an SCC?\" — tender, thickened, rapidly growing, ulcerated, bleeding or non-responding lesions go on the urgent suspected-cancer pathway, and palpation finds them better than inspection. AKs mark field change and raised overall skin-cancer risk, so examine the whole skin. Many need no treatment: decide on lesion count, site, symptoms and preference. Cryotherapy for few discrete lesions; 5-fluorouracil, imiquimod or diclofenac gel for field change, chosen on efficacy versus tolerability. Warn about the inflammatory reaction before the first application — it is the expected effect and the usual reason a course is abandoned. Immunosuppressed and transplant patients are a different risk category. Confirm regimens against the SPC and local formulary before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

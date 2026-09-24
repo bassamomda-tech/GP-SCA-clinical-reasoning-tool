@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Feeling unwell on insulin — Protocol · Reasoning GP</title>
+<meta name="description" content="Sick-day insulin adjustment: never stop insulin, test glucose and ketones, the two dose-adjustment methods (extra units by glucose, or a percentage of total daily dose when ketones are present), carbohydrate and fluids, the taper back down, and the DKA escalation triggers." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/diabetes-unwell-insulin.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790195406534963 tools/management/diabetes-unwell-insulin.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Unwell on insulin protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"💉",
+  title:"Feeling unwell on insulin — sick-day insulin adjustment",
+  eyebrow:"Protocol · the dose goes UP, never off",
+  stemTitle:"Never stop insulin — test glucose AND ketones, and let the ketone level choose the dosing method",
+  stemSub:"One page for the whole task: recognise which decompensation this is, test more often than usual, and add extra insulin by one of two methods — fixed extra units per dose when there are no ketones, or a percentage of the total daily dose every 2 hours when there are. Keep carbohydrate and fluids going alongside, taper the increments as the illness settles, and know the concrete triggers for urgent advice and admission.",
+  guideline:"TREND-UK 2018/2020 · NICE NG17 / NG28 · JBDS-IP",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"TREND-UK — what to do when you are ill (2018, 2020)"},
+    {t:"Down S (2020), Diabetes &amp; Primary Care 22: 47–8"},
+    {t:"NICE NG17 (type 1) · NG28 (type 2)"},
+    {t:"JBDS-IP — DKA guidance"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Golden rule</b><small>Never stop insulin</small></a><a href="#workup"><b>Test</b><small>Glucose + ketones</small></a><a href="#ladder"><b>Two methods</b><small>A: units · B: % TDD</small></a><a href="#lifestyle"><b>Carbs &amp; fluids</b><small>Then taper</small></a><a href="#refer"><b>Escalate</b><small>Ketones · vomiting</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ DO NOT STOP TAKING YOUR INSULIN", html:"<b>Even when unable to eat.</b> The stress hormones of any acute illness drive glucose and ketone production up, so <b>the body needs more insulin, not less</b>. Stopping insulin — usually because of poor appetite — is the single commonest avoidable cause of DKA, and <b>basal insulin in particular is what prevents ketogenesis</b>."},
+    {tone:"amber", h:"The ketone level, not the glucose, defines the risk", html:"Blood ketones: &lt;0.6 normal · 0.6–1.5 act and recheck · 1.5–3.0 high risk · &gt;3.0 urgent. Urine: <b>+/++ ≈ 1.5–3.0, +++/++++ &gt;3.0</b>. <b>&gt;1.5 mmol/L is the practical \"this could become DKA\" alarm.</b>"},
+    {tone:"blue", h:"Test more often — including overnight", html:"Type 1: glucose AND ketones every 4–6 hours, including through the night. Type 2 on insulin: glucose at least 4 times a day. If glucose is &gt;11 and/or ketones are present (&gt;1.5 blood, or +/++ urine) → every 2 hours, including overnight."},
+    {tone:"green", h:"Two methods — pick by ketone level", html:"No or low ketones with glucose &gt;11 → Method A: fixed extra units added to each usual dose. Ketones present → Method B: extra rapid-acting insulin every 2 hours as a percentage of the total daily dose. Both go <b>on top of</b> the usual basal and bolus."},
+    {tone:"purple", h:"A normal glucose does not reassure on an SGLT2 inhibitor", html:"<b>Euglycaemic DKA</b> — near-normal glucose but unwell with ketones. Check ketones in everyone unwell on these drugs and stop the SGLT2 inhibitor. And always hunt the precipitant (<b>sepsis with NEWS2 ≥5, MI, missed doses</b>) — <b>ketogenesis continues until it is treated</b>."},
+    {tone:"plain", h:"Then step the dose back down", html:"As the illness resolves the insulin requirement falls — reduce the increments incrementally rather than stopping abruptly. Continuing sick-day doses into recovery is a common cause of rebound hypoglycaemia, so keep fast-acting carbohydrate to hand while you taper."}
+  ],
+  pathwaySub:"The whole task in five moves. The red step is the one that keeps people out of hospital.",
+  pathway:[
+    {title:"Apply the golden rule and screen for DKA", html:"Never stop insulin. Then look for ketones above 3.0, vomiting and unable to keep fluids down, drowsiness, Kussmaul breathing, abdominal pain, dehydration or NEWS2 ≥5.", alert:true},
+    {title:"Test both, in the same minute", html:"<b>Capillary glucose AND blood ketones.</b> Separate the four directions — DKA, HHS, hypoglycaemia, and euglycaemic DKA on an SGLT2 inhibitor — and find the precipitant."},
+    {title:"Choose the dosing method by ketone level", html:"<b>Method A</b> (no or low ketones) — fixed extra units per dose, recheck glucose every 4 hours. <b>Method B</b> (ketones present) — a percentage of the total daily dose every 2 hours, rechecking both every 2 hours."},
+    {title:"Keep carbohydrate and fluids going", html:"<b>Sip at least 100 mL an hour if able</b>; sugar-free when the glucose is high, sugary when it is low or the patient cannot eat. Insulin without carbohydrate causes hypoglycaemia; insulin without fluid concentrates ketones."},
+    {title:"Taper, restock, debrief", html:"Reduce the increments as the illness settles, keep testing until stable, <b>replace used ketone strips and check expiry dates</b>, and review the sick-day plan after a severe episode."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Golden rule", title:"The golden rule, and the DKA red flags",
+     sub:"Glucose, ketones and conscious level separate the four directions this can go.",
+     blocks:[
+       {b:"warn", html:"DO NOT STOP TAKING YOUR INSULIN — even if you are unable to eat. You need food, insulin and fluids together to avoid dehydration and serious complications."},
+       {b:"dl", rows:[
+         ["<b>DKA</b>","Usually type 1. Ketones raised, acidotic, Kussmaul breathing, fruity (pear-drop) breath, abdominal pain, thirst, polyuria, dehydration, nausea and vomiting, drowsiness or confusion"],
+         ["<b>HHS</b>","Usually an older person with type 2. <b>Glucose &gt;30 for days, profoundly dehydrated, confused, ketones low</b>"],
+         ["<b>Hypoglycaemia</b>","<b>Not eating but insulin unchanged.</b> Glucose &lt;4 mmol/L with poor intake on continued insulin or a sulfonylurea → fast-acting carbohydrate ± glucagon — and do NOT stop the basal insulin"],
+         ["<b>Euglycaemic DKA</b>","Near-normal glucose but unwell with ketones, on an SGLT2 inhibitor \u2014 easily missed. Check ketones in everyone unwell on these drugs, and stop the SGLT2 inhibitor"],
+         ["<b>Find the precipitant</b>","Infection (UTI, chest, skin or foot), missed or insufficient insulin, pump failure, sepsis (NEWS2 ≥5), MI, pancreatitis, a new diagnosis, alcohol — <b>ketogenesis continues until the precipitant is treated</b>"]
+       ]},
+       {b:"table", head:["Trigger","Meaning","Action"], rows:[
+         ["<b>Blood ketones &gt; 3.0 mmol/L (or +++/++++ on urine)</b>","<b>High risk of established DKA</b>","Urgent hospital assessment / 999. Continue basal insulin; do not delay transfer"],
+         ["<b>Blood ketones &gt; 1.5 mmol/L</b>","<b>High risk of DKA</b>","<b>Consider urgent hospital assessment</b> — treat with extra insulin and recheck every 2 hours meanwhile"],
+         ["<b>Vomiting, or unable to keep fluids down</b>","Cannot maintain hydration or carbohydrate","<b>Seek urgent medical advice / admission</b> — a patient who cannot keep fluids down cannot out-drink their losses and needs IV fluids and insulin"],
+         ["<b>DKA symptoms</b>","Thirst, polyuria, dehydration, laboured breathing, abdominal pain, nausea and vomiting, drowsiness or confusion, pear-drop breath","<b>Emergency</b>"],
+         ["<b>Cannot control glucose or ketones despite extra insulin</b>","Home management is failing","<b>Escalate — do not keep cycling alone</b>"],
+         ["<b>Unsure how to adjust the dose</b>","\u2014","Contact the diabetes specialist team or GP for advice rather than guessing"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>NG12 stated honestly</b>","Sick-day insulin adjustment has no NICE NG12 suspected-cancer criterion, and none should be invented for one. This is an acute metabolic-safety task. If the illness that precipitated it turns out not to be a simple intercurrent infection — unexplained weight loss, a persistent symptom, an unexplained anaemia on the admission bloods — that deserves its own work-up afterwards, on its own merits"]
+       ]}
+     ]},
+
+    {id:"workup", nav:"Test", title:"Test — glucose and ketones, more often",
+     sub:"Frequent testing, including overnight, is what catches a rising ketone trend before it tips into DKA.",
+     blocks:[
+       {b:"table", head:["Who","Frequency","Note"], rows:[
+         ["<b>Type 1 diabetes</b>","<b>Blood glucose AND ketones every 4–6 hours, including through the night</b>","Both, every time"],
+         ["<b>Type 2 on insulin</b>","<b>Blood glucose ≥4 times a day</b>; add ketone testing if glucose is &gt;11 and the patient is unwell","\u2014"],
+         ["<b>Step up to 2-hourly if…</b>","Glucose &gt;11 mmol/L and/or ketones present (&gt;1.5 mmol/L blood, or +/++ urine) → glucose and ketones every 2 hours, including overnight","This is the window in which extra insulin can still reverse ketogenesis at home"],
+         ["<b>Ketone bands</b>","Blood &lt;0.6 normal · 0.6–1.5 act and recheck · 1.5–3.0 high risk · &gt;3.0 urgent. Urine: +/++ ≈ 1.5–3.0; +++/++++ &gt;3.0","<b>Check ketones whenever unwell or glucose is &gt;13–15 mmol/L</b>"],
+         ["<b>Prefer blood ketones</b>","\u2014","A blood ketone meter is more reliable and timely than urine sticks for sick-day decisions"],
+         ["<b>If admitting</b>","\u2014","Also assess hydration — <b>pulse, postural BP, capillary refill, urine output, NEWS2</b>, since dehydration accelerates deterioration. Hospital will add venous gas and bicarbonate, U&amp;E, FBC, CRP and cultures — do not delay referral to obtain these in the community"]
+       ]},
+       {b:"why", html:"The 2-hourly cycle for a glucose above 11 with ketones is <b>deliberately intensive</b>, because that is precisely the window in which extra insulin can still switch off ketogenesis at home. Ketones ≥3 mmol/L (or urine 2+) is established or imminent DKA — 999, and continue the insulin."}
+     ]},
+
+    {id:"ladder", nav:"Two methods", title:"Two ways to add insulin — pick by ketone level",
+     sub:"Extra doses are always additional to the usual regimen. Keep the normal basal and bolus running underneath.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Glucose &gt;11, no or low ketones (&lt;1.5) → Method A", html:"<b>Add a fixed number of extra units to each usual insulin dose</b>, scaled by glucose. <b>Test glucose every 4 hours.</b>"},
+         {tone:"amber", h:"Ketones present (&gt;1.5, or +/++ urine) → Method B", html:"Give extra rapid-acting or mixed insulin every 2 hours as a percentage of the total daily dose — a higher percentage for higher ketones."},
+         {tone:"green", h:"Always — continue the usual insulin and basal", html:"Extra doses are additional. Keep taking the normal basal/bolus or mixed insulin as prescribed — basal insulin is what prevents ketogenesis in the first place."},
+         {tone:"blue", h:"If on a pump", html:"<b>Give correction boluses and check the set.</b> If ketones are rising despite correction, suspect a failed set or site → switch to a pen and follow Method B."}
+       ]},
+       {b:"table", head:["Method A — glucose (mmol/L)","Add to EACH dose","If total daily dose &gt;50 units"], rows:[
+         ["<b>11–17</b>","<b>+2 extra units</b>","<b>Double it: +4</b>"],
+         ["<b>17–22</b>","<b>+4 extra units</b>","<b>Double it: +8</b>"],
+         ["<b>&gt;22</b>","<b>+6 extra units</b>","<b>Double it: +12</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Method A in practice</b>","Take the prescribed insulin <b>plus</b> these increments. All adjustments are incremental and should be reduced gradually as the illness subsides. <b>Recheck glucose every 4 hours — every 2 hours if ketones appear.</b> Once the initial increased dose has been given, contact the GP or diabetes specialist nurse if still unsure"]
+       ]},
+       {b:"table", head:["Method B — total daily dose","+10% (ketones up to ++ / 1.5–3.0)","+20% (+++/++++ / &gt;3.0)"], rows:[
+         ["<b>Up to 14 units</b>","<b>1 unit every 2 hours</b>","<b>2 units every 2 hours</b>"],
+         ["<b>15–24 units</b>","<b>2 units every 2 hours</b>","<b>4 units every 2 hours</b>"],
+         ["<b>25–34 units</b>","<b>3 units every 2 hours</b>","<b>6 units every 2 hours</b>"],
+         ["<b>35–44 units</b>","<b>4 units every 2 hours</b>","<b>8 units every 2 hours</b>"],
+         ["<b>45–54 units</b>","<b>5 units every 2 hours</b>","<b>10 units every 2 hours</b>"],
+         ["<b>Over 54 units</b>","<b>Contact the specialist team or GP</b>","<b>Contact the specialist team or GP</b>"]
+       ]},
+       {b:"warn", html:"Recheck blood glucose and ketones every 2 hours and repeat the extra dose until glucose is below 11 and ketones are clear. Drink plenty of water to flush ketones. A total daily dose &gt;54 units, or any uncertainty about altering doses, means contacting the specialist team rather than extrapolating the table."},
+       {b:"why", html:"<b>Ketones change the dosing logic.</b> Without ketones, a modest fixed top-up per dose corrects the hyperglycaemia; with ketones, you need larger, more frequent rapid-acting doses to switch off ketone production, which is why the percentage-of-total-daily-dose method is used. The fixed-increment table gives patients a safe, simple correction <b>without needing to calculate ratios while feeling unwell</b>, and the doubling rule above 50 units a day accounts for the relative insulin resistance of higher-requirement patients, in whom small fixed increments would be inadequate. Dosing by percentage scales the correction to the patient's own requirement — and the cut-off above 54 units reflects that very high-requirement or brittle patients need specialist input rather than an off-the-shelf table."}
+     ]},
+
+    {id:"lifestyle", nav:"Carbs &amp; fluids", title:"Carbohydrate and fluids alongside the insulin — then the taper",
+     sub:"Insulin alone is not enough: without carbohydrate the extra doses cause hypos, without fluid the ketones concentrate.",
+     blocks:[
+       {b:"table", head:["Situation","Do this"], rows:[
+         ["<b>Glucose &lt;11 and no ketones</b>","<b>Take insulin as normal.</b> Take carbohydrate as a meal replacement and <b>sip sugar-free liquids (at least 100 mL an hour if able)</b>"],
+         ["<b>Glucose &gt;11</b>","Continue insulin plus the extra doses; maintain fluids with sugar-free drinks to rehydrate without pushing the glucose higher"],
+         ["<b>Unable to eat, or vomiting</b>","Replace meals with sugary fluids or easy carbohydrate — soup, milk, yoghurt, ice cream — to keep calories up"],
+         ["<b>Glucose running low</b>","Switch to sugary fluids to keep the glucose up — but never omit basal insulin"],
+         ["<b>Volume</b>","<b>Sip ≥100 mL an hour if able</b>; small frequent sips if nauseated"],
+         ["<b>Ketones present</b>","<b>Drink plenty of water to maintain hydration and flush ketones</b>, alongside the extra insulin"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"📉 Taper the extra insulin gradually", html:"As the illness resolves, adjust the insulin back to normal — reduce the increments incrementally rather than stopping abruptly."},
+         {tone:"amber", h:"⚠️ Watch for hypos", html:"As appetite and wellbeing return, the extra insulin can cause hypoglycaemia — reduce promptly and keep fast-acting carbohydrate to hand."},
+         {tone:"blue", h:"🔁 Keep testing until stable", html:"Continue more frequent glucose (and ketone) checks until back to baseline, then resume the usual routine and the prescribed doses."},
+         {tone:"plain", h:"🧰 Debrief and restock", html:"If the episode needed big dose changes or nearly led to admission, review with the GP or DSN and refresh the sick-day plan. Replace used ketone strips and check expiry dates so the kit is ready next time."}
+       ]},
+       {b:"why", html:"The recovery taper matters because the insulin requirement falls as the illness and its stress hormones settle — continuing sick-day doses into recovery is a common cause of rebound hypoglycaemia. Tapering incrementally, while still testing, lands the patient safely back on their usual regimen."}
+     ]},
+
+    {id:"monitor", nav:"Preparation", title:"Key safety points and patient preparation",
+     sub:"These rules are useless if the patient does not have the kit and the plan before they fall ill.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"💉 Never stop insulin", html:"The single most important message — even when not eating. Basal insulin in particular prevents ketogenesis."},
+         {tone:"amber", h:"➕ Extra doses are additional", html:"Always on top of the normal regimen, incremental, and tapered as the illness resolves."},
+         {tone:"blue", h:"🩸 Blood ketone meter and strips", html:"Ensure the patient has an in-date meter and strips at home before they are ill."},
+         {tone:"blue", h:"🔢 Know the numbers", html:"Ketones above 1.5 = seek advice; above 3.0 = hospital. Glucose above 11 = step up testing and add insulin."},
+         {tone:"green", h:"📋 Written plan and contacts", html:"The TREND-UK leaflet, GP / DSN / out-of-hours / 111 numbers, and the dose tables printed out."},
+         {tone:"cream", h:"💊 SADMAN awareness", html:"If also on metformin, an SGLT2 inhibitor, an ACE inhibitor, an ARB, a diuretic or an NSAID, pause those while dehydrated — see the <a href='sick-day-rules.html'>sick day rules protocol</a>."}
+       ]},
+       {b:"say", html:"The most important thing I can tell you is that your insulin does not stop, even if you cannot face food — being ill pushes your sugars up, so you usually need more, not less. Test your sugar and your ketones more often than usual, including overnight. If your sugar is high but ketones are clear, add the extra units from the table to each dose. If ketones are up, that is the one that worries me: use the two-hourly extra doses, drink plenty, and ring us. And if you start vomiting, cannot keep fluids down, or the ketones go above three, that is a hospital job — do not sit at home with it."}
+     ]},
+
+    {id:"refer", nav:"Escalate", title:"When to seek urgent advice or admit",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / admit", html:"Blood ketones above 3.0 mmol/L (or +++/++++), suspected DKA, reduced consciousness, or severe dehydration → emergency admission."},
+         {tone:"red", h:"Seek urgent medical advice", html:"Starting to vomit, unable to keep fluids down, or unable to control glucose or ketones."},
+         {tone:"amber", h:"Ketones above 1.5 mmol/L", html:"High risk of DKA → consider urgent hospital assessment while continuing extra insulin and 2-hourly checks."},
+         {tone:"blue", h:"Unsure how to adjust", html:"Total daily dose &gt;54 units, or any uncertainty about altering doses → contact the specialist team or GP."},
+         {tone:"amber", h:"Not improving", html:"Persistent hyperglycaemia or ketones despite extra insulin, or clinical deterioration → escalate."},
+         {tone:"amber", h:"High-risk patient — lower the threshold", html:"<b>Recent DKA, hypoglycaemia unawareness, pregnancy, frailty or CKD.</b>"}
+       ]},
+       {b:"why", html:"The escalation triggers are deliberately concrete — vomiting, ketones above 1.5–3.0, uncontrolled glucose — because these are the points at which home management is failing and DKA becomes likely. A patient who cannot keep fluids down cannot out-drink their losses and needs IV fluids and insulin."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 24-year-old with type 1 diabetes phones on day one of a flu-like illness. She has eaten almost nothing since yesterday and <b>halved her insulin because she was not eating</b>. Her glucose is 19 and she has not checked ketones — she is not sure the meter has strips."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Corrects the halved dose immediately and explains why illness raises requirements; <b>gets ketones measured before choosing a method</b>; picks <b>Method B if ketones are up, Method A if not</b>, with actual numbers rather than \"take a bit more\"; covers <b>carbohydrate and fluid, and at least 100 mL an hour</b>; gives <b>explicit escalation triggers</b> (vomiting, ketones above 1.5 then above 3.0); arranges a <b>2-hourly recheck and a call back</b>; and — the step candidates miss — checks she actually has in-date ketone strips, and plans the taper so she does not hypo on the way back down."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>TREND-UK (2018) Type 1 diabetes and (2020) Type 2 diabetes — What to do when you are ill<br><a href="https://trend-uk.org" rel="noopener">trend-uk.org</a><span class="rd"> — the source of both dose-adjustment tables, the testing frequencies, the ketone action bands and the never-stop-insulin rule</span></li>'+
+         '<li>Down S (2020). How to advise on sick day rules. <em>Diabetes &amp; Primary Care</em> 22: 47–8<span class="rd"> — the fixed-increment (Method A) table, the doubling rule above 50 units/day, and the percentage-of-total-daily-dose (Method B) schedule</span></li>'+
+         '<li><b>NICE NG17 — Type 1 diabetes in adults</b><br><a href="https://www.nice.org.uk/guidance/ng17" rel="noopener">nice.org.uk/guidance/ng17</a><span class="rd"> — monitoring during intercurrent illness and ketone testing</span></li>'+
+         '<li><b>NICE NG28 — Type 2 diabetes in adults</b><br><a href="https://www.nice.org.uk/guidance/ng28" rel="noopener">nice.org.uk/guidance/ng28</a><span class="rd"> — insulin-treated type 2 diabetes during illness</span></li>'+
+         '<li><b>JBDS-IP — Management of DKA in adults</b><span class="rd"> — the DKA thresholds behind the admission triggers, and IV fluids with fixed-rate insulin infusion in hospital</span></li>'+
+         '<li><b>MHRA Drug Safety Update — SGLT2 inhibitors and DKA</b><span class="rd"> — euglycaemic DKA: check ketones in anyone unwell on an SGLT2 inhibitor even when the glucose is near-normal</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Feeling unwell on insulin — TREND-UK (2018, 2020), Down S (2020) Diabetes &amp; Primary Care 22: 47–8, NICE NG17 and NG28, and JBDS-IP. Blood ketones above 1.5 mmol/L indicate high DKA risk. Never stop insulin even if unable to eat. Which drugs to pause during a dehydrating illness is covered by the sick day rules protocol. Always individualise with the diabetes team and current guidance."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

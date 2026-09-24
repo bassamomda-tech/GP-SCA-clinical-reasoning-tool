@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Precocious puberty — Protocol · Reasoning GP</title>
+<meta name="description" content="Precocious puberty: secondary sexual characteristics before 8 in girls or 9 in boys. Every child is referred and every boy urgently, because pathology is far more likely in boys; plot serial growth, examine the nervous system with fundoscopy and visual fields, and never simply observe in primary care." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/precocious-puberty.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Precocious puberty protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"📏",
+  title:"Precocious puberty — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Every child is referred and every boy urgently — because in boys this is far more often a lesion, and the growth chart is the most useful thing primary care can add",
+  stemSub:"One page for the whole condition: recognise it (secondary sexual characteristics before 8 in girls, before 9 in boys), screen for the intracranial and serious causes with a neurological examination including fundoscopy and visual fields, plot serial growth because a centile-crossing spurt both supports the diagnosis and raises the urgency, then refer — all boys urgently, girls by red flags — and hold the shared-care monitoring, family support and safety-net while the specialist decides on a GnRH analogue.",
+  guideline:"GEMS / BMJ 2020;368:l6597 · RCPCH 2013 growth charts",
+  reviewed:"9 September 2026",
+  nextReview:"9 March 2027",
+  meta:[
+    {t:"GEMS \u201cPrecocious puberty\u201d guide \u2014 BMJ 2020;368:l6597"},
+    {t:"RCPCH 2013 puberty &amp; close-monitoring growth charts"},
+    {t:"NG12 \u2014 paediatric brain/CNS route applies", tone:"tw"},
+    {t:"All suspected cases referred \u2014 do not observe"},
+    {t:"Specialist-led diagnosis and treatment"},
+    {t:"v1.0 \u00b7 reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Red flags</b><small>Intracranial · testicular</small></a><a href="#confirm"><b>Recognise</b><small>&lt;8 girls · &lt;9 boys</small></a><a href="#workup"><b>Assess</b><small>Growth · Tanner · neuro</small></a><a href="#refer"><b>Refer</b><small>All boys urgently</small></a><a href="#monitor"><b>Then</b><small>Shared care · safety-net</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Every boy is referred urgently — even with a normal examination", html:"Precocious puberty in boys is much more likely to have a pathological cause, including an intracranial lesion, so refer every boy urgently regardless of examination findings. In girls it is usually idiopathic central precocious puberty, so <b>urgency depends on red flags</b> — but every child is still referred."},
+    {tone:"red", h:"This can be the first sign of a brain lesion", html:"New headaches, visual disturbance or signs of raised intracranial pressure → urgent referral, flagged clearly. A neurological examination including fundoscopy and visual fields is mandatory in the primary-care assessment, because central precocious puberty is driven in a proportion of children — especially boys — by a hypothalamic hamartoma, glioma or the sequelae of cranial irradiation."},
+    {tone:"amber", h:"The growth chart is your highest-value contribution", html:"<b>Plotting serial growth is the single most useful primary-care step.</b> A pubertal growth spurt crossing ≥1 centile space in 3–6 months supports true progressive precocious puberty and adds urgency, whereas isolated breast development or pubic hair with a normal growth velocity is often a benign variant. Use the <b>RCPCH puberty and close-monitoring charts</b>."},
+    {tone:"blue", h:"Definition — and what counts in each sex", html:"Secondary sexual characteristics before age 8 in girls and before age 9 in boys. Girls: progressive breast enlargement before 8 (especially with upward centile crossing), clitoromegaly, or menarche before 8. Boys: penile growth or testicular enlargement before 9 — and examine for a testicular mass."},
+    {tone:"purple", h:"Central, peripheral, or a benign variant", html:"<b>Central (gonadotrophin-dependent):</b> early HPG-axis activation — idiopathic (commonest in girls), intracranial lesion, post-CNS insult; follows the normal pubertal sequence. <b>Peripheral (gonadotrophin-independent):</b> CAH, adrenal or gonadal tumour, McCune-Albright, exogenous steroids; <b>may be out of sequence</b>. <b>Benign variants:</b> premature thelarche and premature adrenarche — non-progressive, but still assessed."},
+    {tone:"green", h:"Refer all suspected cases — do not simply observe", html:"Refer every child with suspected precocious puberty; the diagnosis, the need for imaging and the GnRH-analogue decision are all specialist judgements. <b>Confirm the referral is made and attended, and chase non-attendance</b> — then keep plotting growth and escalate if red flags emerge."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is the neurological examination.",
+  pathway:[
+    {title:"Screen for intracranial and serious causes", html:"New headache, visual disturbance or raised-ICP signs · polyuria and polydipsia · CNS disorder or injury · rapid growth crossing ≥1 centile space in 3–6 months · pubic hair in infancy · a testicular mass.", alert:true},
+    {title:"Confirm it meets the definition", html:"<b>Before 8 in girls, before 9 in boys.</b> Establish the sequence and the <b>rate of progression</b>, and review <b>exogenous sex-steroid exposure</b> and perinatal or CNS history."},
+    {title:"Examine and plot", html:"Tanner staging, height and weight (and growth velocity where possible) on a growth chart, full neurological examination with fundoscopy and visual fields, abdomen, testicular volume and lumps in boys, skin for café-au-lait macules, thyroid status and BP."},
+    {title:"Refer — all children, urgency by sex and red flags", html:"All boys urgently. Girls urgently if any red flag, clitoromegaly, menarche before 8, or progressive breast development before 8 with centile crossing; otherwise routine. <b>Highlight red flags in the letter.</b>"},
+    {title:"Support, share care, safety-net", html:"Psychosocial support and school liaison, weight where relevant, remove exogenous steroids; administer depot GnRH analogue where shared care is agreed; keep plotting growth and escalate on new red flags."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Red flags", title:"Red flags — intracranial and serious causes",
+     sub:"Precocious puberty can be the first sign of an intracranial lesion. Examine the nervous system and plot growth in every child.",
+     blocks:[
+       {b:"table", head:["Red flag","Significance","Action"], rows:[
+         ["New headaches, visual disturbance, or signs of raised intracranial pressure","<b>Possible intracranial pathology</b>","<b>Urgent referral — flag clearly in the letter</b>"],
+         ["<b>Polyuria and polydipsia</b>","Possible pituitary or hypothalamic cause — for example cranial diabetes insipidus from a hypothalamic lesion","<b>Urgent paediatric referral</b>"],
+         ["<b>History of CNS disorder or injury</b>","CNS trauma, meningitis, cranial irradiation, hypoxic-ischaemic injury, neurofibromatosis — all raise the risk of central precocious puberty","<b>Urgent paediatric referral</b>"],
+         ["<b>Rapid growth crossing ≥1 centile space in 3–6 months</b>","<b>Supports true progressive precocious puberty and adds urgency</b>","<b>Urgent paediatric referral</b>"],
+         ["<b>Pubic hair in infancy</b>","<b>Pituitary, adrenal or virilising tumour</b>","<b>Urgent paediatric referral</b>"],
+         ["<b>A testicular lump or mass</b>","<b>A gonadal source</b>","Urgent referral; note it prominently — a testicular lump may follow a separate urological pathway"]
+       ]},
+       {b:"warn", html:"Every boy with precocious puberty is referred urgently — pathology, including intracranial causes, is much more likely than in girls. In both sexes, new headache, visual change or raised-ICP signs point to an intracranial cause and must be flagged in the referral."},
+       {b:"why", html:"Central precocious puberty results from early activation of the hypothalamic-pituitary-gonadal axis, which in a proportion of children — especially boys — is driven by an intracranial lesion such as a hypothalamic hamartoma, glioma, or the sequelae of cranial irradiation. That is why a neurological examination with fundoscopy and visual fields, and attention to headache or raised-ICP features, is mandatory in the primary-care assessment."},
+       {b:"dl", rows:[
+         ["<b>NG12 — the paediatric criterion that applies here</b>","NICE NG12 children and young people: consider a very urgent referral (for an appointment within 48 hours) for suspected brain or central nervous system cancer in a child or young person with newly abnormal cerebellar or other central neurological function. Precocious puberty with new neurological signs, visual field loss, papilloedema on fundoscopy or raised-ICP features meets that criterion, and the referral should say so explicitly rather than going as a routine endocrine letter. Separately, <b>a testicular mass warrants urgent referral in its own right</b> — the source notes it may follow a urological rather than endocrine pathway. Precocious puberty itself, without neurological signs or a mass, has no NG12 criterion and none should be invented for one"]
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Recognise", title:"Recognising precocious puberty, and the causes",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Definition</b>","Onset of secondary sexual characteristics before age 8 in girls and before age 9 in boys"],
+         ["<b>Girls — features</b>","Progressive breast enlargement before 8 (especially with upward height-centile crossing), clitoromegaly, or menarche before 8"],
+         ["<b>Boys — features</b>","Penile growth or testicular enlargement before 9. Examine for a testicular mass or lump"],
+         ["<b>History</b>","Age and sequence of changes (true puberty follows an order); rate of progression; growth spurt; headache, visual symptoms, vomiting, polyuria and polydipsia; behaviour and mood change; exogenous sex-steroid exposure (creams, gels, supplements); perinatal and CNS history (irradiation, infection, trauma); family age of puberty"]
+       ]},
+       {b:"table", head:["Cause group","Detail"], rows:[
+         ["<b>Central (gonadotrophin-dependent)</b>","Early HPG-axis activation: idiopathic (commonest in girls), intracranial lesions (hypothalamic hamartoma, glioma), post-CNS insult. Follows a normal pubertal sequence"],
+         ["<b>Peripheral (gonadotrophin-independent)</b>","Sex steroids from elsewhere: congenital adrenal hyperplasia, adrenal or gonadal tumours, McCune-Albright (autonomous ovarian cysts), exogenous steroids. May be out of normal sequence — for example virilisation"],
+         ["<b>Benign normal variants</b>","Premature thelarche (isolated breast development, normal growth) and premature adrenarche (isolated pubic or axillary hair) — non-progressive; still need assessment to confirm"],
+         ["<b>Don't forget</b>","Hypothyroidism and McCune-Albright can both cause precocious puberty; café-au-lait macules plus fibrous dysplasia suggest the latter"]
+       ]},
+       {b:"why", html:"Distinguishing central from peripheral precocious puberty determines treatment: central is treated with a <b>GnRH analogue</b> to switch the axis back off and protect adult height and psychosocial wellbeing, whereas <b>peripheral causes require treatment of the source</b> — a tumour, CAH. The benign variants need recognition so that children are reassured and monitored rather than over-investigated, but the initial referral remains appropriate because the distinction is a specialist one."}
+     ]},
+
+    {id:"workup", nav:"Assess", title:"Examination, growth plotting, and what the specialist will do",
+     sub:"Mostly refer rather than test — but the examination and the growth chart are yours.",
+     blocks:[
+       {b:"table", head:["Assessment","Detail"], rows:[
+         ["<b>Examination</b>","Tanner staging; plot height, weight and (where possible) growth velocity; full neurological examination with fundoscopy and visual fields; abdominal examination; testicular volume and lumps in boys; skin for café-au-lait macules; thyroid status and blood pressure. In boys the testicular examination directs the work-up: asymmetric enlargement suggests a tumour, whereas bilateral enlargement suggests central activation"],
+         ["<b>Growth velocity</b>","A pubertal growth spurt crossing ≥1 centile space in 3–6 months supports true (progressive) precocious puberty and adds urgency"],
+         ["<b>Syndromic clues</b>","Café-au-lait macules and facial asymmetry (McCune-Albright), neurofibromatosis stigmata, and signs of hyperthyroidism or Cushing's"],
+         ["<b>Bone age</b>","Wrist X-ray for bone age is usually arranged by the specialist; an advanced bone age versus chronological age indicates significant sex-steroid exposure"],
+         ["<b>Primary-care role in testing</b>","Mostly refer rather than test — plot serial growth, document staging, and check TFTs only if there are hypothyroid features. The hormonal and imaging work-up is specialist-led"]
+       ]},
+       {b:"table", head:["Specialist investigation","What it shows"], rows:[
+         ["<b>Bone age</b>","Wrist X-ray — advanced bone age quantifies the sex-steroid effect and predicts the impact on final height"],
+         ["<b>Hormones</b>","Basal LH and FSH plus a GnRH (LHRH) stimulation test to separate central (pubertal LH response) from peripheral (suppressed gonadotrophins); oestradiol or testosterone; 17-OHP and androgens if there is virilisation; TFTs"],
+         ["<b>Imaging</b>","Pituitary or brain MRI for confirmed central precocious puberty (mandatory in boys and young girls); pelvic USS (uterine and ovarian maturation, cysts) in girls; testicular or adrenal USS if a peripheral source is suspected"]
+       ]},
+       {b:"why", html:"<b>Plotting serial growth is the single most useful primary-care step:</b> a pubertal growth spurt that crosses centile lines supports true precocious puberty and adds urgency, whereas isolated breast development or pubic hair with a normal growth velocity often represents a benign variant. The GnRH stimulation test is the pivotal specialist investigation, because it directly demonstrates whether the axis has been switched on (central) or is suppressed by a peripheral steroid source — a distinction random hormone levels cannot reliably make. Brain MRI is essential in confirmed central precocious puberty, especially in boys and very young girls, because the pre-test probability of an intracranial lesion is high enough to mandate imaging even when the examination is normal."}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"Specialist treatment and shared care",
+     sub:"The treatment decision is specialist-led. The GP's part is often delivering it and monitoring the child.",
+     blocks:[
+       {b:"table", head:["Situation","Treatment"], rows:[
+         ["<b>Central precocious puberty</b>","A GnRH analogue depot — for example depot leuprorelin or triptorelin — paradoxically suppresses the axis, halting progression to preserve adult height and reduce psychosocial impact. Continued to around the normal age of puberty, then stopped"],
+         ["<b>Peripheral precocious puberty</b>","Treat the source: surgery or oncology for a tumour; steroid replacement for CAH; aromatase inhibitor or anti-oestrogen approaches in McCune-Albright; remove exogenous steroid exposure"],
+         ["<b>Benign variants</b>","Monitor — no drug. Premature thelarche and adrenarche need reassurance and surveillance of growth and progression, not treatment"],
+         ["<b>GP and shared-care role</b>","Where agreed, administer the depot injections, monitor growth and pubertal staging, support adherence, and watch for injection-site or treatment effects — escalating concerns to the specialist"]
+       ]},
+       {b:"why", html:"GnRH analogues exploit the physiology of the axis: continuous (rather than pulsatile) GnRH stimulation desensitises the pituitary, switching gonadotrophin secretion off and arresting pubertal progression — buying time for growth and emotional maturation so final height and wellbeing are protected. The decision to treat balances predicted height loss and psychosocial impact against the burden of therapy, which is why it is specialist-led, often with the GP delivering the depot under shared care."}
+     ]},
+
+    {id:"lifestyle", nav:"Family support", title:"Family support and modifiable factors",
+     sub:"Support the child while the specialist work-up proceeds — this is genuine management, not a soft add-on.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🫂 Psychosocial support", html:"Early development can affect self-esteem, peer relationships and behaviour — offer age-appropriate explanation and, where helpful, school liaison."},
+         {tone:"green", h:"⚖️ Weight", html:"Address adiposity where relevant — it associates with earlier puberty in girls — and support healthy diet and activity."},
+         {tone:"amber", h:"🧴 Exogenous steroids", html:"Review and remove any sex-steroid exposure (creams, gels, supplements) that can drive peripheral changes — a concrete, reversible cause primary care can act on directly."},
+         {tone:"cream", h:"💬 Reassurance", html:"Explain that benign normal variants (premature thelarche and adrenarche) are common but still warrant the assessment already arranged."}
+       ]},
+       {b:"why", html:"The impact of early puberty on the child — being physically out of step with peers, and the emotional consequences — is part of the specialist's decision about whether and when to treat, so acknowledging and supporting it is genuine management. Removing exogenous steroid exposure is a concrete, reversible cause of peripheral changes that primary care can identify and act on directly."}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"Review, follow-up and safety-netting",
+     blocks:[
+       {b:"table", head:["What","Detail"], rows:[
+         ["<b>Ensure the referral happens</b>","Confirm the referral is made and attended — do not simply observe in primary care. Chase non-attendance"],
+         ["<b>Keep plotting growth</b>","Use the RCPCH puberty and close-monitoring growth charts; a documented centile-crossing growth spurt strengthens the referral and tracks progression"],
+         ["<b>Escalate urgency</b>","New headache, visual disturbance, vomiting or raised-ICP signs, rapid centile-crossing growth, or a new testicular mass → expedite (possible intracranial or serious cause)"],
+         ["<b>Reassure</b>","Most girls have a benign or idiopathic cause; referral is routine practice, and benign variants are monitored rather than treated"],
+         ["<b>Re-examine and re-flag</b>","Re-examine and escalate the urgency if red flags develop; flag any red flag prominently in the referral"]
+       ]},
+       {b:"why", html:"Serial growth data and clear safety-netting are the most valuable things primary care can add while a child waits to be seen: a documented accelerating growth velocity both supports the diagnosis and raises the urgency, and the safety-net ensures that an evolving intracranial cause is escalated rather than missed."},
+       {b:"say", html:"What you have noticed does need a specialist opinion, and I am arranging that today — I am not going to just watch and wait, because working out the cause needs tests we do not do here. In girls this is usually simply early puberty with no underlying problem, and often it settles into being a normal variation; in boys we are more careful, which is why every boy is seen urgently. Two things I will do meanwhile: keep measuring and plotting height, because a growth spurt tells the specialist a great deal, and check there is nothing at home that could be contributing, like a hormone cream. And please come back sooner if there are headaches, any change in vision, or vomiting."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral — all children, urgency by sex and red flags",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"All boys — urgent, always", html:"Precocious puberty in boys is more often pathological → refer every boy urgently, even with a normal examination. Note any testicular lump — it may follow a urological pathway."},
+         {tone:"red", h:"Any child with red flags — urgent", html:"Headache, visual disturbance or raised-ICP signs · polyuria and polydipsia · CNS history · steep centile-crossing growth · pubic hair in infancy · a testicular mass. Highlight the red flags in the referral so paediatrics can judge how urgent."},
+         {tone:"purple", h:"NG12 · very urgent (48 hours)", html:"Newly abnormal cerebellar or other central neurological function in a child or young person → very urgent referral for suspected brain or CNS cancer. Say so explicitly in the letter rather than sending a routine endocrine referral."},
+         {tone:"amber", h:"Girls — urgent", html:"Any red flag, clitoromegaly, menarche before 8, or progressive breast development before 8 with height-centile crossing."},
+         {tone:"blue", h:"Girls — routine", html:"Otherwise — normal neurological and genital examination and normal growth → routine paediatric referral."},
+         {tone:"cream", h:"Do not just observe", html:"Refer all suspected cases to paediatrics or paediatric endocrinology. The diagnosis, the need for imaging and the GnRH-analogue decision are specialist judgements."}
+       ]},
+       {b:"why", html:"The sex difference in referral urgency reflects the underlying epidemiology: in girls, precocious puberty is usually idiopathic central precocious puberty, whereas in boys an identifiable — and sometimes serious — cause is much more common, so every boy warrants urgent specialist assessment. All children are referred because the diagnosis, the need for imaging and the decision about GnRH-analogue treatment to preserve final height are specialist judgements."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A mother brings her 7-year-old son because he has grown out of two shoe sizes since Easter, has developed pubic hair, and \u201csmells like a teenager\u201d. He has been getting early-morning headaches for a fortnight, which she attributes to screen time. His examination is otherwise unremarkable and she asks whether they can \u201cjust keep an eye on it\u201d."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Knows the boys' threshold is before 9 and that every boy is referred urgently regardless of examination; takes the early-morning headaches seriously and performs fundoscopy and visual fields; plots the height and weight and recognises centile crossing as both diagnostic support and an urgency marker; recognises this meets the NG12 very-urgent brain/CNS criterion if neurological function is abnormal, and says so in the letter; asks about <b>exogenous steroid exposure and CNS history</b>; declines the \u201ckeep an eye on it\u201d request with a clear explanation; and \u2014 the step candidates miss \u2014 commits to confirming the referral is attended and chasing non-attendance, rather than leaving the family to it."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>GEMS \u2014 \u201cPrecocious puberty\u201d guide. <em>BMJ</em> 2020;368:l6597</b><span class="rd"> \u2014 the definitions (before 8 in girls, before 9 in boys), the red-flag set, the refer-all-children rule with urgency by sex, the central versus peripheral classification, the specialist work-up, and GnRH-analogue treatment</span></li>'+
+         '<li><b>RCPCH puberty and close-monitoring growth charts (2013)</b><br><a href="https://www.rcpch.ac.uk/resources/growth-charts" rel="noopener">rcpch.ac.uk \u2014 growth charts</a><span class="rd"> \u2014 the charts used for serial plotting, and the centile-space crossing threshold that adds urgency</span></li>'+
+         '<li>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025), children and young people<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 consider a very urgent referral (within 48 hours) for suspected brain or CNS cancer in a child or young person with newly abnormal cerebellar or other central neurological function</span></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> \u2014 GnRH analogue depot preparations (leuprorelin, triptorelin) and their administration under shared care</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Precocious puberty \u2014 the GEMS guide (BMJ 2020;368:l6597), RCPCH 2013 puberty and close-monitoring growth charts, NICE NG12 and the BNF for Children. All suspected cases are referred and every boy is referred urgently; specialist services confirm the cause and decide on treatment. The reasoning pathway remains at the <a href=\"../algorithms/precocious-puberty.html\">precocious puberty pathway</a>. Adapt to local paediatric pathways."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

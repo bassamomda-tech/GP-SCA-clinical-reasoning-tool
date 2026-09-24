@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Asthma (adults &amp; 12+) — Protocol · Reasoning GP</title>
+<meta name="description" content="Asthma in adults and young people 12+, diagnosis and management on one page: NG245 objective test order, the AIR to MART ladder with named inhalers, the biomarker gate, the acute attack severity ladder with magnesium, and the mandatory 48-hour review." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/asthma.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Asthma protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1FAC1}",
+  title:"Asthma (adults & 12+)",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"Asthma \u2014 confirm it objectively, start AIR, step through MART, grade the attack on physiology, and never discharge without a 48-hour review",
+  stemSub:"One page for the whole condition. Confirm the diagnosis in the right test order, start the anti-inflammatory reliever (never SABA alone), escalate low-dose to moderate-dose MART, use the biomarker gate before add-ons, manage the acute attack by severity, transition legacy SABA patients, and know when to step DOWN.",
+  guideline:"NICE/BTS/SIGN NG245 (2024)",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NICE/BTS/SIGN NG245 (Nov 2024)"},
+    {t:"Supersedes NG80 + BTS/SIGN 2023"},
+    {t:"NRAD 2014 \u00b7 SABINA \u00b7 GINA 2024"},
+    {t:"NICE QS25 \u00b7 QOF RES004"},
+    {t:"No NG12 criterion applies", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>FeNO \u00b7 BDR \u00b7 PEF, in order</small></a><a href="#acute"><b>The attack</b><small>Grade on physiology</small></a><a href="#ladder"><b>AIR \u2192 MART</b><small>Named inhalers, exact doses</small></a><a href="#refer"><b>Refer</b><small>Biomarker gate \u00b7 999</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 A silent chest or a normal PaCO\u2082 is NOT reassuring", html:"In a distressed asthmatic, a <b>silent chest</b> means airflow is too low to generate audible wheeze \u2014 the most dangerous auscultatory finding in acute respiratory medicine. A <b>normal or rising PaCO\u2082</b> (it should be <em>low</em>) means respiratory-muscle fatigue: a PaCO\u2082 above 4.5 kPa in clinically severe asthma is a pre-arrest gas. Both mean decompensation and imminent arrest, not improvement."},
+    {tone:"red", h:"Nobody gets SABA alone any more", html:"\u226590% of UK asthma deaths occur in people on insufficient inhaled corticosteroid. Every reliever puff should contain ICS. &gt;2 reliever canisters/year, or reliever use \u22653 days/week, means act \u2014 do not reissue. <b>&gt;3 SABA inhalers/year = uncontrolled; \u226512/year = risk of death</b> (NRAD, SABINA)."},
+    {tone:"amber", h:"Grade the attack on numbers, not on how settled they look", html:"<b>Moderate: PEF 50\u201375%</b> best/predicted, SpO\u2082 \u226592%, no severe features. Acute severe: any one of PEF 33\u201350%, RR \u226525, HR \u2265110, unable to complete a sentence. Life-threatening: any one of PEF &lt;33%, SpO\u2082 &lt;92%, PaO\u2082 &lt;8 kPa, normal PaCO\u2082, silent chest, cyanosis, poor respiratory effort, arrhythmia, exhaustion, altered consciousness, hypotension. Near-fatal: raised PaCO\u2082 &gt;6 kPa or needing ventilation with raised inflation pressures."},
+    {tone:"blue", h:"Diagnose objectively, in this order", html:"<b>FeNO \u226550 ppb (17 and over) or \u226535 ppb (ages 12\u201316)</b> confirms asthma \u2014 those are the NG245 thresholds (the old 40 ppb figure and the 25\u201339 borderline band came from the superseded NG80). Then <b>bronchodilator reversibility: FEV\u2081 up \u226512% AND \u2265200 ml</b>. Then <b>PEF variability \u226520%</b> over 2 weeks. Then refer for bronchial challenge. Never leave \u201casthma\u201d on the record without objective confirmation."},
+    {tone:"plain", h:"Treat every attack immediately, then review in 48 hours", html:"O\u2082-driven <b>salbutamol 2.5\u20135 mg nebulised</b> (or 4\u201310 puffs via spacer, one at a time), <b>prednisolone 40\u201350 mg PO stat then OD for 5 days</b> (no taper needed for courses \u22643 weeks), O\u2082 to SpO\u2082 <b>94\u201398%</b>, reassess at <b>15\u201320 minutes</b>. Review within 48 hours of every attack \u2014 mandatory, and a failure to arrange it is an unacceptable safety standard."},
+    {tone:"green", h:"The action plan saves lives", html:"A personalised <b>written asthma action plan</b> reduces asthma hospitalisation by about <b>30%</b> and A&amp;E attendance by about <b>25%</b>, yet fewer than <b>30%</b> of UK asthma patients have one. It takes about <b>3 minutes</b> to complete at a review. Green zone (PEF &gt;80%), amber (PEF 50\u201380%), red (PEF &lt;50% \u2192 999)."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Measure before you think", html:"PEF (% best or predicted), SpO\u2082, RR, HR and ability to speak \u2014 immediately. These define severity and drive everything that follows. Grade on these, never on appearance."},
+    {title:"Screen for life-threatening features", html:"Any one of PEF &lt;33%, SpO\u2082 &lt;92%, silent chest, cyanosis, poor effort, exhaustion or altered consciousness \u2192 <b>999 now</b>, treat while waiting, and do not leave the patient. Asthma with stridor or angio-oedema after a drug or food \u2192 anaphylaxis \u2192 <b>IM adrenaline 500 micrograms first</b>.", alert:true},
+    {title:"Treat immediately at any severity", html:"O\u2082-driven SABA + oral prednisolone + controlled oxygen, reassess at 15\u201320 minutes. No response within 15\u201320 minutes \u2192 999 regardless of the initial grade."},
+    {title:"Confirm the diagnosis (if not already objective)", html:"FeNO \u2192 bronchodilator reversibility \u2192 PEF variability \u2192 challenge testing. Assess occupation in every adult, plus smoking, atopy, BMI and previous attacks."},
+    {title:"Prevent the next one", html:"Steroid course, <b>inhaler technique observed</b>, trigger addressed, treatment stepped up, action plan updated \u2014 and a <b>48-hour review</b> booked before they leave."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm", title:"Confirming the diagnosis \u2014 objectively, and in the NG245 order", sub:"Treatment normalises the tests and traps the patient in a label. Get the objective test first wherever possible.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", title:"FeNO", when:"symptoms suggest asthma",
+          html:"FeNO \u226550 ppb (adults 17 and over) or \u226535 ppb (ages 12\u201316) = asthma confirmed. These are the NG245 thresholds \u2014 the older 40 ppb figure and the 25\u201339 \u201cborderline\u201d band came from the superseded NG80. <b>Smoking lowers FeNO</b>, so a normal result does not exclude asthma. If unavailable or below threshold \u2192 next test."},
+         {step:"2nd", title:"Spirometry with bronchodilator reversibility", when:"FeNO not diagnostic",
+          fromLabel:"FeNO below threshold or unavailable",
+          html:"<b>FEV\u2081 increase \u226512% AND \u2265200 ml</b> (or \u226510% of predicted FEV\u2081) after salbutamol = confirmed. <b>Normal spirometry when well does not exclude asthma.</b>"},
+         {step:"3rd", title:"PEF variability", when:"still uncertain",
+          fromLabel:"spirometry not diagnostic",
+          html:"Twice-daily peak-flow diary for 2 weeks: <b>mean variability \u226520% = confirmed</b>."},
+         {step:"4th", title:"Refer for bronchial challenge", when:"all the above negative but suspicion persists",
+          fromLabel:"don't label without evidence",
+          html:"Direct challenge (histamine or methacholine) in secondary care. Never leave \u201casthma\u201d on the record without objective confirmation \u2014 and never remove treatment abruptly to test; plan it."}
+       ]},
+       {b:"dl", rows:[
+         ["Assess at baseline","Symptom pattern and triggers; <b>occupation \u2014 ask every adult</b> (paint sprayers, bakers, cleaners, healthcare, and exposure to flour dust, isocyanates, laboratory animals or natural rubber latex); smoking and vaping; atopy and rhinitis; BMI; previous attacks, admissions and oral steroid courses"],
+         ["Control score","<b>RCP 3 questions</b> (daytime symptoms? night waking? activity limitation?) or <b>ACT</b> \u2014 record a number you can compare at review"],
+         ["<b>ACT interpretation</b>","<b>20\u201325 well controlled</b> \u2014 continue. <b>16\u201319 not well controlled</b> \u2014 step up, review triggers. <b>\u226415 very poorly controlled</b> \u2014 urgent step-up, consider oral prednisolone. The five items are symptom frequency, night waking, activity limitation, reliever use and overall control. Administer at every review <em>and</em> at exacerbation"],
+         ["History that changes risk","Rate of deterioration (<b>acute over hours is more dangerous than gradual over days</b>); trigger (infection is commonest in adults, then allergen, exercise, NSAID or aspirin, beta-blocker, emotional stress); usual control and SABA frequency; <b>previous ITU or ventilation \u2014 the single highest-risk indicator</b>; ICS dose and adherence; comorbidities (GORD with nocturnal aspiration, rhinosinusitis, obesity)"],
+         ["Examination","ABCDE plus: SpO\u2082 (mandatory), <b>RR &gt;25 and HR &gt;110 as severity markers</b>, BP, ability to complete sentences, auscultation (bilateral wheeze typical; <b>silent chest is life-threatening</b>), accessory muscle use and tracheal tug, <b>pulsus paradoxus &gt;12 mmHg BP variation with respiration = severe</b>, PEF, and percussion (hyperresonant with air trapping, dull suggests a pneumothorax complication)"]
+       ]},
+       {b:"table", head:["Investigation","When","Interpretation"], rows:[
+         ["<b>PEF</b>","<b>Mandatory in all acute asthma</b>","Express as <b>% predicted or % personal best</b>. Every asthma patient should know their personal best \u2014 ask and record it at every review; if unknown, use predicted from standard nomograms"],
+         ["<b>SpO\u2082</b>","All \u2014 continuous if &lt;95%","&lt;92% is a life-threatening feature"],
+         ["<b>Arterial blood gas</b>","If SpO\u2082 &lt;92% or any life-threatening feature","<b>PaCO\u2082 interpretation is critical</b> \u2014 see the physiology note below"],
+         ["<b>CXR</b>","<b>Not routine</b>","Indicated for suspected pneumothorax or pneumonia, first presentation, a life-threatening attack, or poor response to treatment"],
+         ["FBC + CRP","Suspected infective trigger","Blood cultures if fever with consolidation"],
+         ["Theophylline level","If on theophylline","<b>Narrow therapeutic index</b>"],
+         ["<b>FeNO</b>","Diagnosis, and to guide ICS","&gt;40 ppb \u2192 step up ICS; &lt;25 ppb \u2192 consider stepping down if well controlled"],
+         ["Spirometry","At diagnosis, then <b>every 1\u20132 years</b>","FEV\u2081/FVC"]
+       ]},
+       {b:"why", html:"Percentage of personal best is more clinically meaningful than absolute PEF. A patient whose personal best is 500 L/min achieving 400 L/min (80%) is having a moderate exacerbation; the same 400 L/min in someone whose best is 600 L/min (67%) is <b>acute severe</b>. And the ABG follows a counterintuitive logic: in mild-to-moderate asthma, hypoxaemia drives hyperventilation, producing hypocapnia (typically 3.5\u20134.5 kPa) and respiratory alkalosis (pH &gt;7.45) \u2014 that is the <em>expected</em> finding in someone working hard to breathe. As muscles fatigue the CO\u2082 climbs toward \u201cnormal\u201d (5\u20136 kPa) or above (&gt;6 kPa). A PaCO\u2082 above 4.5 kPa in clinically severe acute asthma is a pre-arrest situation needing immediate senior support, intubation preparation and ICU transfer."},
+       {b:"warn", html:"Do not start long-term treatment on a \u201ctrial of therapy\u201d alone in the 12+ age group \u2014 get the objective test first where at all possible. If treatment has already been started, arrange testing at the point it can safely be reviewed."}
+     ]},
+
+    {id:"acute", nav:"The attack", title:"The acute attack \u2014 grade it, treat it, escalate it", sub:"Severity is graded on PEF % best/predicted plus physiology. Treatment never waits for the ambulance.",
+     blocks:[
+       {b:"warn", html:"Any acute asthmatic whose wheeze disappears while they are still distressed and not improving is deteriorating rapidly. The chest is silent because they are about to arrest, not because they are better. The classic picture of near-fatal asthma: sitting bolt upright, one word at a time, all accessory muscles working, visibly exhausted."},
+       {b:"table", head:["Severity","Definition","Action"], rows:[
+         ["<b>Moderate</b>","<b>PEF 50\u201375%</b> best or predicted, increasing symptoms not controlled by the usual reliever, speaking full sentences, <b>RR &lt;25, HR &lt;110</b>, <b>SpO\u2082 \u226592%</b>, no acute severe features","Manage in primary care with dose escalation. On MART: <b>up to 6 ICS/formoterol inhalations at once</b> (1-minute intervals). Or salbutamol 4\u201310 puffs via spacer, repeated every 10\u201320 minutes. <b>Prednisolone 40\u201350 mg OD for 5 days.</b> Review the response before they leave, and <b>review again within 1\u20132 days</b>"],
+         ["<b>Acute severe</b>","<b>Any one of: PEF 33\u201350%</b> best/predicted \u00b7 <b>RR \u226525/min</b> \u00b7 <b>HR \u2265110/min</b> \u00b7 <b>inability to complete sentences in one breath</b>. SpO\u2082 may still be \u226592%","Requires hospital assessment \u2014 start treatment immediately and call 999. Continuous back-to-back nebulised salbutamol 2.5\u20135 mg + O\u2082 + prednisolone 40\u201350 mg PO immediately. Admit unless there is a rapid, sustained response"],
+         ["<b>Life-threatening</b>","<b>Any one of: PEF &lt;33%</b> \u00b7 <b>SpO\u2082 &lt;92%</b> \u00b7 <b>PaO\u2082 &lt;8 kPa</b> \u00b7 <b>normal PaCO\u2082 (4.6\u20136.0 kPa \u2014 it should be low)</b> \u00b7 <b>silent chest</b> \u00b7 cyanosis \u00b7 poor respiratory effort \u00b7 arrhythmia \u00b7 exhaustion or altered consciousness \u00b7 hypotension","<b>999 immediately.</b> High-flow O\u2082 <b>15 L/min via non-rebreather</b>; back-to-back nebulised salbutamol + <b>ipratropium 500 micrograms</b> (O\u2082-driven); prednisolone 40\u201350 mg PO or <b>IV hydrocortisone 200 mg</b>; <b>magnesium sulphate 2 g (2000 mg, 8 mmol) IV over 20 minutes</b>. Do not leave the patient; alert anaesthetics and ICU"],
+         ["<b>Near-fatal</b>","<b>Raised PaCO\u2082 &gt;6 kPa</b> and/or requiring mechanical ventilation with raised inflation pressures. Add exhaustion, confusion or reduced consciousness, bradycardia, hypotension","<b>999 \u2014 imminent respiratory arrest. Do NOT leave the patient.</b> ICU alert; IV aminophylline; heliox if available"]
+       ]},
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"All acute asthma \u2014 immediate, any severity", when:"the moment severity is graded",
+          html:"<b>Salbutamol 2.5\u20135 mg nebulised, O\u2082-driven at 6\u20138 L/min.</b> If no nebuliser: salbutamol 4\u201310 puffs via spacer \u2014 as effective as a nebuliser \u2014 each puff inhaled separately, one per minute, up to 10 puffs. <b>Prednisolone 40\u201350 mg PO stat</b> (or <b>IV hydrocortisone 200 mg</b> if unable to swallow). <b>O\u2082 to SpO\u2082 94\u201398%</b> \u2014 controlled; hypoxia drives the attack. <b>Reassess PEF, SpO\u2082 and clinical status at 15\u201320 minutes</b> \u2014 no response \u2192 999."},
+         {step:"Step 2", title:"Acute severe or life-threatening", when:"any severe or life-threatening feature",
+          fromLabel:"escalate, don't wait",
+          html:"Continue <b>nebulised salbutamol back-to-back (every 15\u201320 minutes)</b>. Add <b>ipratropium bromide 500 micrograms nebulised every 4\u20136 hours</b> \u2014 additional bronchodilation, <b>NNT approximately 8 for avoiding admission</b>. <b>Magnesium sulphate 2 g IV over 20 minutes, single dose</b> \u2014 reduces the need for ICU, <b>NNT approximately 8</b>, safe in pregnancy (nebulised MgSO\u2084 151 mg is an alternative). Continue high-flow O\u2082; IV access and fluid if hypotensive. 999 if not already called."},
+         {step:"Step 3", title:"Refractory life-threatening \u2014 hospital and ICU", when:"not responding to the above",
+          fromLabel:"for awareness, not primary care",
+          html:"<b>IV aminophylline loading dose 5 mg/kg over 20 minutes</b> (if not already on theophylline \u2014 monitor ECG for arrhythmia). <b>IV salbutamol 5 micrograms/min infusion</b> if the nebulised route is inadequate. <b>Ketamine</b> for intubation (bronchodilator properties). <b>NIV has a limited role in asthma \u2014 risk of barotrauma.</b> Intubation is a last resort with high complication risk in status asthmaticus; a low-respiratory-rate ventilation strategy is used."}
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Asthma + stridor or angio-oedema after a drug or food", html:"<b>Anaphylaxis-triggered bronchospasm \u2014 not simple asthma.</b> \u2192 999 and IM adrenaline 500 micrograms (0.5 mL of 1:1000) into the outer thigh immediately, before anything else."},
+         {tone:"red", h:"Acute asthma in pregnancy", html:"Any severe feature with <b>SpO\u2082 &lt;95%</b> \u2192 999. <b>Maintain SpO\u2082 &gt;95% in pregnancy</b> because of fetal hypoxia risk. <b>Salbutamol is safe. Prednisolone is safe.</b> Avoid the NSAID trigger; alert the obstetric team. Do not stop ICS or MART in pregnancy \u2014 poor control harms the baby far more than the drugs."},
+         {tone:"amber", h:"Practice equipment \u2014 check it before you need it", html:"An O\u2082 cylinder with non-rebreather mask, a <b>nebuliser that can be driven by oxygen</b>, IV access equipment, and injectable hydrocortisone. Grading takes 60 seconds: PEF as % personal best, RR, HR, speech, SpO\u2082 \u2014 and if any acute severe or life-threatening criterion is met, 999 is called simultaneously with starting treatment."}
+       ]},
+       {b:"why", html:"IV magnesium sulphate 2 g is a BTS/SIGN Grade A recommendation that remains significantly underused in both primary care and emergency departments. Magnesium acts as a calcium-channel antagonist, blocking calcium-mediated bronchial smooth-muscle contraction, inhibits acetylcholine release at the neuromuscular junction, and has anti-inflammatory effects. Trials including the <b>3Mg trial (JAMA 2013)</b> show it reduces ICU admission and improves PEF when added to standard bronchodilators and corticosteroids. It is given <b>once only</b> (unlike repeated nebulisers), and a GP with IV access should consider giving it while awaiting transfer \u2014 it is safe, effective, and can be given outside hospital."}
+     ]},
+
+    {id:"risk", nav:"Risk", title:"Who is at risk of a fatal attack \u2014 and the action plan that prevents it", sub:"Risk stratification is the difference between a routine review and an intervention.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"The single highest-risk predictor", html:"<b>Previous near-fatal asthma \u2014 ICU admission or ventilation.</b> Flag it on the record; it changes the threshold for admission at every future attack."},
+         {tone:"amber", h:"High-risk features for a severe or fatal attack", html:"<b>Three or more classes of asthma medication</b>; <b>heavy SABA use (&gt;1 canister/month)</b>; oral prednisolone-dependent asthma; non-adherence to ICS \u2014 &gt;80% of fatal attacks occur in people on insufficient controller therapy; a recent ED visit or hospitalisation (<b>&lt;12 months</b>); psychosocial factors (depression, anxiety, illicit drug use, social isolation) \u2014 a significant risk multiplier; aspirin or NSAID sensitivity; ongoing occupational exposure; severe food allergy."},
+         {tone:"green", h:"The written asthma action plan \u2014 three zones", html:"<b>Green (well, PEF &gt;80%)</b> \u2014 continue regular medication. <b>Amber (PEF 50\u201380% or increasing symptoms)</b> \u2014 increase reliever, start prednisolone 40 mg, contact the GP. <b>Red (PEF &lt;50% or severe symptoms)</b> \u2014 <b>call 999</b>, continuous reliever, take prednisolone. Personalise it with their own personal best PEF, exact SABA escalation doses, when and at what dose to start prednisolone, and precise 999 criteria. MART-specific if on MART \u2014 their \u201cblue inhaler\u201d IS the steroid one."}
+       ]},
+       {b:"why", html:"Multiple systematic reviews show a personalised written action plan reduces asthma hospitalisation by about <b>30%</b>, A&amp;E attendance by about <b>25%</b>, and asthma deaths \u2014 yet <b>fewer than 30% of UK asthma patients have one</b>. Provision of a plan is a <b>NICE QS25</b> and RCGP quality indicator, expected at diagnosis and reviewed annually. BTS/SIGN publish template formats that take about <b>3 minutes</b> to complete at the review and can be done by a trained asthma nurse."}
+     ]},
+
+    {id:"foundations", nav:"Foundations", title:"The work that makes inhalers work", sub:"Most \u201ctreatment failure\u201d is technique, adherence, smoking or the wrong diagnosis.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"\ud83c\udf2c\ufe0f Technique", html:"<b>Watch them use the device at EVERY review and step change</b> \u2014 the commonest cause of apparent treatment failure. DPIs need a sharp inhale; MDIs slow, with a spacer. <b>Self-reported technique is unreliable</b> \u2014 use video and direct observation."},
+         {tone:"plain", h:"\ud83e\uddea Device choice matters in an attack", html:"<b>MDI + spacer</b> suits most patients and is <b>preferred during an acute attack</b> (passive breathing technique). Accuhaler (DPI) needs inspiratory flow &gt;30 L/min; Turbohaler &gt;60 L/min \u2014 <b>not suitable during an acute attack</b>. Easyhaler and Genuair have moderate flow requirements."},
+         {tone:"green", h:"\ud83d\udcdd Action plan", html:"A written personalised plan for everyone, MART-specific if on MART."},
+         {tone:"amber", h:"\ud83d\udead Smoking and vaping", html:"Cessation support at every review. <b>Smoking causes ICS resistance</b> \u2014 glucocorticoid-receptor hyposensitivity in airway epithelium means smokers respond less well and need higher doses for the same effect. It also blunts FeNO interpretation. The most important single lifestyle change for any asthmatic who smokes."},
+         {tone:"plain", h:"\ud83c\udf3f Triggers", html:"Treat <b>allergic rhinitis</b> (it drags asthma down). Review occupational exposure. NSAIDs and aspirin \u2014 about 10% of adult asthmatics (aspirin-exacerbated respiratory disease): avoid all NSAIDs, use paracetamol. Beta-blockers by any route including eye drops are an absolute contraindication. House-dust-mite mitigation and pet avoidance where relevant. Exercise-induced bronchospasm: pre-exercise SABA 10 puffs via spacer, or a regular LTRA."},
+         {tone:"blue", h:"\ud83d\udc89 Vaccines", html:"<b>Annual influenza \u2014 a QOF indicator (RES004)</b>: quadrivalent inactivated vaccine (QIV, or <b>adjuvanted QAIV for \u226565s</b>), offered <b>September\u2013November</b>; pneumococcal if eligible; COVID per the current schedule."},
+         {tone:"green", h:"\u2696\ufe0f Weight", html:"<b>Obesity (BMI &gt;30)</b> means more severe symptoms, lower lung function, worse quality of life, reduced ICS response and more exacerbations. <b>A 5\u201310% weight loss significantly improves control</b>, reduces exacerbations, and may allow stepping down (NICE NG189)."},
+         {tone:"amber", h:"\ud83e\udde0 Mood and breathing pattern", html:"Anxiety and depression affect roughly 20\u201340% of severe asthma patients. Anxiety both mimics and worsens asthma, and <b>hyperventilation syndrome mimics asthma and may coexist</b>. <b>PHQ-9 and GAD-7 at each review.</b> Breathing retraining (Buteyko, physiotherapist-led) reduces SABA use and improves quality of life in RCTs; refer dysfunctional breathing to a respiratory physiotherapist."},
+         {tone:"cream", h:"\ud83d\udcda Self-management", html:"<b>Asthma + Lung UK (asthma.org.uk), helpline 0300 222 5800.</b> Every patient should know their personal best PEF, own a working peak-flow meter, hold a current written action plan, know when to take prednisolone, and know when to call 999. Brief motivational interviewing at each review improves self-management behaviour."}
+       ]},
+       {b:"why", html:"Influenza is the commonest identified trigger for severe exacerbations requiring hospitalisation in adults, particularly in autumn and winter, and vaccination reduces asthma-related admissions by about <b>30\u201335%</b> in RCTs. Some patients fear the vaccine will \u201ctrigger their asthma\u201d \u2014 a belief rooted in early whole-virus vaccines. <b>Modern inactivated vaccines do not trigger exacerbations</b>; address the misconception proactively. ICS itself suppresses eosinophilic airway inflammation and <b>reduces exacerbation frequency by roughly 50\u201360%</b>. Common reasons for non-adherence are forgetfulness (once-daily beats twice-daily), oral candida (rinse after use, use a spacer), and steroid fears \u2014 inhaled steroids are not systemic steroids. Support adherence practically: electronic reminders, dosette boxes, and a pharmacy repeat service for inhalers."}
+     ]},
+
+    {id:"ladder", nav:"AIR \u2192 MART", title:"The AIR \u2192 MART ladder \u2014 named inhalers and exact doses", sub:"Every reliever puff contains ICS, so worsening symptoms automatically deliver more anti-inflammatory. Review every step at 8\u201312 weeks.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"AIR \u2014 low-dose ICS/formoterol AS NEEDED only", when:"new diagnosis / infrequent symptoms",
+          html:"<b>Symbicort Turbohaler 200/6</b>, <b>DuoResp Spiromax 160/4.5</b> or <b>Fobumix Easyhaler 160/4.5</b> (budesonide/formoterol, licensed for AIR from 12): <b>1 inhalation when symptomatic</b>, repeated after a few minutes if needed (<b>max 6 in one episode, usual max 8/day</b>)."},
+         {step:"Step 2", title:"Low-dose MART", when:"reliever \u22653 days/week, night waking, or ANY exacerbation",
+          fromLabel:"uncontrolled on AIR",
+          html:"Same drug, now regular: <b>Symbicort 100/6 or 200/6 \u2014 1 inhalation BD + PRN</b> (or Fobumix/DuoResp equivalents; <b>Fostair 100/6</b> MDI+spacer or NEXThaler from 18+). One device does maintenance <em>and</em> relief."},
+         {step:"Step 3", title:"Moderate-dose MART", when:"uncontrolled on low-dose MART at 8\u201312 weeks",
+          fromLabel:"technique + adherence confirmed first",
+          html:"Double the maintenance: <b>Symbicort 200/6 \u2014 2 inhalations BD + PRN</b> (or Fostair 200/6, 1 puff BD, 18+). <b>Total daily maximum usually 8 inhalations (12 briefly during a flare).</b>"},
+         {step:"Step 4", title:"The biomarker gate \u2014 FeNO + blood eosinophils", when:"uncontrolled on moderate MART",
+          fromLabel:"phenotype before more drugs",
+          html:"<b>Either raised \u2192 REFER</b> (eosinophilic asthma, a potential biologic candidate \u2014 do not blind-escalate). Both normal \u2192 an 8\u201312 week trial of montelukast 10 mg nocte (LTRA) OR a LAMA (e.g. tiotropium Respimat) added to moderate MART. Works \u2192 continue; doesn't \u2192 stop it, try the other, then refer."},
+         {step:"Step down", title:"Don't forget the way down", when:"controlled \u22653 months",
+          fromLabel:"good control, no flares",
+          html:"Reduce maintenance one step (moderate \u2192 low MART \u2192 consider AIR only) at a review, with the action plan updated and an early re-review booked. <b>Most patients end up over-treated because nobody ever steps down.</b>"}
+       ]},
+       {b:"dl", rows:[
+         ["<b>Post-exacerbation prescribing</b>","<b>Prednisolone 40 mg OD for 5 days</b> \u2014 <b>no taper needed for courses \u22643 weeks</b> (tapering adds no clinical benefit). <b>Review inhaler technique at discharge</b>; check ICS adherence; <b>step up ICS by at least one step following an exacerbation</b>; add a LABA if not already prescribed (i.e. move to MART); ensure a spacer is available and the technique demonstrated; <b>update the action plan with the new personal best PEF</b>"],
+         ["<b>Legacy BTS/SIGN step framework</b> (for cross-reference)","<b>Step 1</b> SABA PRN, no ICS. <b>Step 2</b> low-dose ICS (e.g. beclometasone 200\u2013400 micrograms/day). <b>Step 3</b> low-dose ICS + LABA (e.g. Symbicort MART, budesonide/formoterol 200/6 micrograms \u2014 i.e. budesonide 200 micrograms with formoterol <b>6 mcg</b> \u2014 1\u20132 puffs maintenance BD + 1 PRN up to 8/day). <b>Step 4</b> medium-dose ICS + LABA \u00b1 LTRA (montelukast 10 mg OD \u2014 caution neuropsychiatric). <b>Step 5</b> refer: high-dose ICS + LABA + add-on, and biologics"],
+         ["<b>Biologics</b>","Specialist-initiated: <b>omalizumab, mepolizumab, benralizumab, dupilumab, tezepelumab</b> \u2014 eligibility depends on the agent (blood eosinophils, positive skin-prick test or specific IgE, or raised FeNO)"]
+       ]},
+       {b:"table", head:["Side effect","Cause","Fix"], rows:[
+         ["Oral thrush / dysphonia","ICS deposition","Rinse and spit after maintenance doses; spacer with MDIs; re-check technique; treat candida (miconazole gel or nystatin)"],
+         ["Tremor / palpitations","Formoterol","Usually settles in days to weeks; if persistent, review PRN frequency \u2014 are they treating uncontrolled asthma with puffs?"],
+         ["Cough on inhaling","Device or propellant","Switch DPI to MDI + spacer; slow the technique"],
+         ["<b>Montelukast: vivid dreams, low mood, agitation</b>","LTRA neuropsychiatric effects (<b>MHRA warning</b>)","Counsel at initiation; <b>stop if mood or behaviour changes \u2014 they reverse</b>"],
+         ["LAMA: dry mouth, urinary retention","Anticholinergic","Caution in glaucoma and prostatic symptoms"]
+       ]},
+       {b:"warn", html:"<b>Transitioning legacy patients:</b> anyone still on SABA plus a separate ICS is not wrong to continue if well controlled \u2014 but at their next review discuss switching to MART or AIR, and <b>never renew SABA-only prescriptions</b>. No ICS anywhere is the dangerous pattern: &gt;2 reliever canisters/year or reliever use \u22653 days/week means act, not reissue."},
+       {b:"why", html:"MART is the most important change in asthma management of the last decade. Formoterol is a fast-acting <em>and</em> long-acting beta-2 agonist \u2014 onset as fast as salbutamol (about <b>1\u20133 minutes</b>) with a <b>12-hour</b> duration \u2014 so a budesonide/formoterol inhaler can serve as both maintenance and reliever. When symptoms increase, every extra reliever puff is also a dose of budesonide, delivering anti-inflammatory treatment at the exact moment of inflammation. <b>MART reduces severe exacerbation rates by roughly 35\u201340%</b> compared with fixed-dose ICS/LABA plus a SABA reliever, which is why NG245 makes it the preferred approach from step 3."}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"The review rhythm \u2014 and the 48-hour rule", sub:"Every attack is a sentinel event and a failed pathway, not bad luck.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Post-exacerbation review</b>","<b>Within 48 hours \u2014 mandatory</b>","Confirm the prednisolone course is being taken; confirm PEF is improving; identify and address the trigger; <b>step up maintenance treatment</b>; update the action plan; review inhaler technique; assess psychosocial risk. Failure to arrange 48-hour follow-up after discharge from primary care or hospital is an unacceptable safety standard"],
+         ["Response to any change","<b>8\u201312 weeks</b>","Control score plus a reliever-use audit \u2192 continue, step up, or step down"],
+         ["Structured review","<b>At least annually</b>","RCP3 or ACT, technique observed, action plan updated, reliever count from the prescribing record, smoking, rhinitis, flu jab, spirometry, BMI, education. Practice asthma-nurse-led reviews achieve outcomes equivalent to GP-led reviews"],
+         ["<b>FeNO</b>","To guide ICS dose","&gt;40 ppb \u2192 step up ICS; &lt;25 ppb \u2192 consider stepping down if well controlled"],
+         ["<b>SABA / reliever audit</b>","Ongoing, at practice level","&gt;3 SABA inhalers/year = uncontrolled asthma requiring review; \u226512/year = significantly elevated risk of severe exacerbation and death. Flag SABA-only repeats and any repeat interval under 8 weeks (more than one canister a month)"],
+         ["Frequent oral steroids","\u22652 courses/year","Uncontrolled disease \u2192 escalate, biomarker gate, refer \u2014 and consider bone and adrenal protection"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udea8 999", html:"\u201cCall 999 if you cannot speak in full sentences, your lips go blue, your reliever isn't touching it, or your peak flow drops below a third of your best.\u201d Silent chest, SpO\u2082 &lt;92%, PEF &lt;33%, exhaustion or altered consciousness."},
+         {tone:"amber", h:"\ud83d\udd34 Same-day", html:"\u201cIf you need your reliever again within four hours, or you are waking at night with it, contact us the same day.\u201d PEF 33\u201350%, RR &gt;25, HR &gt;110, unable to complete sentences, or no response to three doses of reliever."},
+         {tone:"amber", h:"\ud83d\udc8a Finish the steroids", html:"\u201cTake the whole 5-day steroid course even if you feel better after two \u2014 stopping early is when people relapse.\u201d"},
+         {tone:"green", h:"\ud83c\udfe0 Come back in 48 hours", html:"\u201cI want to see you again within two days of any attack, even if you feel fine \u2014 that is when we work out why it happened and stop the next one.\u201d"}
+       ]},
+       {b:"say", html:"Your reliever now contains the steroid too \u2014 so when your chest is bad, every extra puff is also treating the inflammation underneath. If you're needing it most days, that's your signal to come back, not to soldier on."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"Not controlled? Run this BEFORE stepping up", sub:"Most uncontrolled asthma is technique, adherence, smoking or the wrong diagnosis — not undertreatment.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"1 · Technique", html:"Watched them use it? Right device for their inspiratory effort?"},
+         {tone:"amber", h:"2 · Adherence", html:"Pickup data checked? Steroid fears explored? MART simplifies to one inhaler."},
+         {tone:"blue", h:"3 · Triggers", html:"Smoking/vaping, occupation, rhinitis untreated, NSAIDs, \u03b2-blockers (incl. timolol drops)?"},
+         {tone:"blue", h:"4 · Diagnosis", html:"Ever objectively confirmed? Consider ILO/breathing-pattern disorder, COPD overlap, cardiac."},
+         {tone:"blue", h:"5 · Biomarkers", html:"At the step-4 gate: FeNO + eosinophils done?"}
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"All five checked and still uncontrolled?", html:"Then step up \u2014 or refer. That is a genuine escalation rather than a higher dose covering an unfixed technique or adherence problem."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer \u2014 999, same-day, and the specialist gate", sub:"The 999 decision is made on objective severity markers, not symptoms alone.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 \u2014 call immediately", html:"<b>Life-threatening or near-fatal asthma</b> (SpO\u2082 &lt;92%, PEF &lt;33%, silent chest, altered consciousness, exhaustion, cyanosis); <b>acute severe asthma</b> (PEF 33\u201350%, RR &gt;25, HR &gt;110, unable to complete sentences); <b>any acute asthma not responding within 15\u201320 minutes</b> of initial SABA treatment in primary care; <b>asthma with anaphylaxis features \u2014 IM adrenaline first</b>."},
+         {tone:"amber", h:"Same-day hospital assessment", html:"<b>PEF 50\u201375% (moderate) not improving after initial treatment</b>; <b>nocturnal presentation</b>; a history of near-fatal asthma; inadequate social circumstances; a patient who is unreliable or very anxious."},
+         {tone:"plain", h:"GP urgent review \u2014 next day", html:"Moderate asthma responding to treatment: <b>PEF &gt;75% after bronchodilator with no life-threatening features</b>. Increase the treatment step, <b>prednisolone 40 mg OD for 5 days</b>, written action plan \u2014 and the 48-hour review."},
+         {tone:"plain", h:"Respiratory specialist \u2014 the biomarker gate", html:"<b>FeNO or blood eosinophils raised at the step-4 gate</b> \u2192 specialist and biologic assessment. Also: uncontrolled despite moderate MART plus an LTRA or LAMA trial with confirmed technique and adherence; \u22652 courses of oral prednisolone in 12 months, or \u22651 hospitalisation in 12 months; step 4\u20135 treatment not achieving control."},
+         {tone:"plain", h:"Occupational asthma", html:"Suspected occupational asthma \u2192 refer. <b>The job may be curable \u2014 document the exposure</b> and the symptom\u2013work relationship."},
+         {tone:"plain", h:"Diagnostic doubt", html:"Objective tests negative but symptoms persist \u2192 <b>bronchial challenge (FeNO, methacholine)</b>; atypical features."},
+         {tone:"plain", h:"Pregnancy", html:"<b>Do not stop ICS or MART</b> \u2014 poor control harms the baby far more than the drugs. Severe or deteriorating asthma in pregnancy warrants early specialist involvement."}
+       ]},
+       {b:"say", html:"Your asthma isn't as settled as it should be despite the right inhalers used well, so I want a chest specialist to check whether you're in the group that responds to the newer targeted treatments."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 24-year-old woman, breathless for two days after a cold, using her blue inhaler \u201cmost days\u201d for months. PEF 300 against a personal best of 480 (62%), RR 22, HR 104, speaking in full sentences. She has had two prednisolone courses this year and has collected eight salbutamol inhalers in twelve months."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Measures PEF, SpO\u2082, RR, HR and speech <em>before</em> deciding; grades this as moderate; treats immediately with spacer salbutamol and <b>prednisolone 40\u201350 mg for 5 days</b>; <b>recognises the SABA over-use as the real diagnosis</b> and moves her onto MART rather than reissuing; watches her inhaler technique; writes a MART-specific action plan; and books the <b>48-hour review</b>. <a href='../../cases/asthma.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE/BTS/SIGN NG245 \u2014 Asthma: diagnosis, monitoring and chronic asthma management (November 2024)<br><a href="https://www.nice.org.uk/guidance/ng245" rel="noopener">nice.org.uk/guidance/ng245</a><span class="rd"> \u2014 supersedes NG80 and BTS/SIGN 2023. The objective test order and FeNO thresholds (\u226550 ppb adults, \u226535 ppb ages 12\u201316), bronchodilator reversibility and PEF variability criteria, the AIR and MART ladder, the step-4 biomarker gate, and step-down. The acute exacerbation ladder is retained from BTS/SIGN</span></li>'+
+         '<li><b>NRAD \u2014 National Review of Asthma Deaths (2014)</b><span class="rd"> \u2014 \u226590% of asthma deaths occur in people on insufficient inhaled corticosteroid; SABA over-prescription as a mortality signal</span></li>'+
+         '<li><b>SABINA programme; GINA 2024</b><span class="rd"> \u2014 &gt;3 SABA inhalers/year indicates poor control, \u226512/year is associated with significantly elevated risk of severe exacerbation and death</span></li>'+
+         '<li><b>3Mg trial \u2014 JAMA 2013</b><span class="rd"> \u2014 IV magnesium sulphate 2 g reduces ICU admission and improves PEF in acute severe asthma</span></li>'+
+         '<li>NICE QS25 (asthma quality standard); QOF RES004; NICE NG189 (weight management)<span class="rd"> \u2014 written action plan at diagnosis and reviewed annually, annual influenza vaccination, and the weight pathway</span></li>'+
+         '<li><b>MHRA drug safety update \u2014 montelukast</b><span class="rd"> \u2014 neuropsychiatric reactions; counsel at initiation and stop if mood or behaviour changes</span></li>'+
+         '<li><b>Asthma + Lung UK</b><br><a href="https://www.asthma.org.uk" rel="noopener">asthma.org.uk</a><span class="rd"> \u2014 patient resources and action-plan templates; helpline 0300 222 5800</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all inhaler and steroid doses, magnesium, ipratropium, aminophylline; verify before prescribing</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Asthma in adults and young people aged 12 and over \u2014 NICE/BTS/SIGN NG245 (November 2024, superseding NG80 and BTS/SIGN 2023; the acute exacerbation ladder is retained from BTS/SIGN), with NRAD 2014, GINA 2024 and BNF inhaler prescribing. Diagnosis, chronic management and the acute attack are merged on this page; there is no separate acute-asthma pathway to cross-check. Children aged 5\u201311 follow a different ladder \u2014 see the paediatric asthma protocol. Verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=7"></script>
+</body>
+</html>

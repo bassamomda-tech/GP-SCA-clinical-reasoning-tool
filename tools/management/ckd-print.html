@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chronic kidney disease — Protocol · Reasoning GP</title>
+<meta name="description" content="CKD in adults, diagnosis and management on one page: the 90-day rule, the G×A staging grid, the four kidney-protecting drugs with exact criteria, complications by the numbers, drug dose gates, KFRE-based referral and the structured annual review." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/ckd.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790201685183360 tools/management/ckd.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="CKD protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"\u{1FAD8}",
+  title:"Chronic kidney disease (CKD)",
+  eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
+  stemTitle:"CKD \u2014 confirm it is chronic, stage it on the G\u00d7A grid, deploy the big four, and refer on KFRE not on eGFR alone",
+  stemSub:"One page for the whole condition. Confirm it is chronic rather than AKI, stage on the grid that drives everything, find the cause, deploy the four kidney-protecting drugs with their exact criteria, manage anaemia, bone, potassium and acidosis by the numbers, dose-gate the everyday drugs, monitor by risk cell, and refer on the Kidney Failure Risk Equation.",
+  guideline:"NICE NG203 \u00b7 KDIGO 2024",
+  reviewed:"7 September 2026",
+  nextReview:"7 March 2027",
+  meta:[
+    {t:"NICE NG203 (2021)"},
+    {t:"KDIGO CKD 2024"},
+    {t:"TA775 dapagliflozin \u00b7 TA877 finerenone"},
+    {t:"TA623 patiromer \u00b7 QOF CKD006"},
+    {t:"2WW \u00b7 NG12 haematuria", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm &amp; stage</b><small>90 days \u00b7 the G\u00d7A grid</small></a><a href="#severe"><b>Exclude AKI</b><small>And the emergencies</small></a><a href="#ladder"><b>The big four</b><small>Exact criteria</small></a><a href="#refer"><b>Refer</b><small>KFRE &gt;5%</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"\u26a0 Don't miss albuminuria", html:"<b>A normal eGFR with ACR \u226530 mg/mmol still signals significant CKD</b> and a higher cardiovascular and progression risk. <b>Risk = eGFR (G) \u00d7 ACR (A)</b> \u2014 always quantify ACR and stage on both axes. <b>G3bA3 carries about a 40-fold higher risk of kidney failure than G1A1</b>, and a <b>G2A3</b> patient needs more intensive management than a stable <b>G3aA1</b> one."},
+    {tone:"red", h:"Exclude AKI before you manage CKD", html:"Creatinine rise \u226526 \u00b5mol/L in 48 hours, or \u226550% in 7 days, is AKI \u2014 same-day assessment, stop nephrotoxins. <b>AKI is superimposed on CKD in up to 20% of CKD patients annually</b>, and missing it causes irreversible nephron loss. A step-change in creatinine is <b>AKI-on-CKD or an artefact until proven otherwise</b>."},
+    {tone:"amber", h:"The 90-day rule", html:"CKD = eGFR &lt;60 and/or ACR \u22653 mg/mmol on two occasions \u226590 days apart. A single low eGFR is NOT CKD \u2014 repeat within 2 weeks if new (to exclude AKI), then confirm at 3 months. Labelling CKD wrongly means unnecessary investigation, anxiety and insurance consequences; missing it delays cardiovascular risk reduction \u2014 CKD independently doubles cardiovascular mortality."},
+    {tone:"blue", h:"The expected eGFR dip is not a reason to stop", html:"On starting or up-titrating an ACEi or ARB, a creatinine rise up to 30%, or an eGFR fall up to 25%, is EXPECTED, haemodynamic, and acceptable \u2014 do not stop for it. Check U&amp;E before and <b>1\u20132 weeks</b> after each change. <b>Stopping for the expected dip deprives the patient of renoprotection</b> \u2014 in REIN, ramipril halved progression to end-stage disease in proteinuric CKD."},
+    {tone:"plain", h:"Four drugs protect the kidney", html:"<b>ACEi/ARB titrated to maximum tolerated</b>, then <b>dapagliflozin 10 mg OD</b> (slows eGFR decline by about <b>39\u201340%</b> \u2014 DAPA-CKD), <b>atorvastatin 20 mg</b> in all CKD G3a and above regardless of cholesterol, and <b>finerenone 10\u201320 mg OD</b> in type 2 diabetes still proteinuric. <b>Never combine an ACEi with an ARB</b> \u2014 ONTARGET showed harm without benefit."},
+    {tone:"green", h:"Refer on risk, not on a single number", html:"The NG203 headline criterion is a 5-year risk of needing renal replacement &gt;5% on the 4-variable Kidney Failure Risk Equation (age, sex, eGFR, ACR). It also rationally <b>reassures the stable elderly G3a patient, whose risk is often <b>&lt;1%</b></b>. <b>Plot the trajectory, not the snapshot</b> \u2014 eGFR 38 stable for five years is a different disease from eGFR 38 that was 60 two years ago."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Exclude AKI and the emergencies first", html:"Creatinine rise \u226526 \u00b5mol/L in 48 h or \u226550% in 7 days \u00b7 K\u207a \u22656.0 \u00b7 oliguria \u00b7 uraemic symptoms \u00b7 BP \u2265180/120 with end-organ damage \u00b7 fluid overload \u00b7 new eGFR &lt;15 \u2192 same-day or 999.", alert:true},
+    {title:"Confirm it is chronic", html:"Two readings <b>\u226590 days apart</b>. Early-morning urine ACR; <b>dip for blood, send for ACR \u2014 never dip for protein</b>. Consider cystatin-C eGFR where muscle mass distorts the estimate."},
+    {title:"Stage on the G\u00d7A grid and find the cause", html:"G1\u2013G5 \u00d7 A1\u2013A3 sets monitoring frequency, referral threshold and treatment intensity. Then look actively for a cause \u2014 obstruction, drugs, myeloma, PKD, vasculitis \u2014 not just \u201cdiabetes and hypertension\u201d."},
+    {title:"Deploy the big four and dose-gate the rest", html:"BP to target with ACEi/ARB by ACR, then SGLT2 inhibitor, statin, and finerenone where indicated. Review every drug against its renal gate."},
+    {title:"Monitor by risk cell and safety-net", html:"Recall per grid cell; U&amp;E 1\u20132 weeks after any RAAS change; <b>KFRE annually from G3</b>; sick-day rules in writing; and the structured annual review (QOF CKD006)."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Exclude AKI", title:"Exclude AKI and the CKD emergencies", sub:"Before managing CKD, rule out AKI, accelerated decline, and complications needing emergency treatment.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"AKI by KDIGO criteria", html:"Creatinine rise \u226526 \u00b5mol/L in 48 hours, or \u226550% rise in 7 days \u2192 <b>same-day acute assessment</b>; stop nephrotoxins (NSAIDs, metformin, and ACEi/ARB if oliguric). Stopping nephrotoxins promptly can allow near-complete recovery if done within hours."},
+         {tone:"red", h:"Oliguria or anuria", html:"Urine output <b>&lt;0.5 mL/kg/h</b> \u2192 <b>999 or same-day admission</b>. Treat as <b>post-renal obstruction until proven otherwise</b>."},
+         {tone:"red", h:"Hyperkalaemia \u22656.0 mmol/L", html:"Risk of fatal arrhythmia \u2192 <b>same-day ECG and urgent management</b>. <b>K\u207a \u22656.5, or any ECG change \u2192 999.</b> The most immediately life-threatening CKD complication \u2014 requires treatment within minutes."},
+         {tone:"red", h:"Uraemic symptoms", html:"Nausea, vomiting, confusion, encephalopathy, <b>pericarditis (pleuritic chest pain with a rub)</b> \u2192 <b>999</b> \u2014 approaching the dialysis threshold. <b>Uraemic pericarditis is a dialysis indication regardless of eGFR.</b>"},
+         {tone:"red", h:"BP \u2265180/120 with end-organ damage", html:"Headache, visual disturbance, <b>papilloedema</b> \u2014 <b>\u2265180/120 mmHg</b> \u2192 <b>same-day \u2014 hypertensive emergency</b>. Isolated high BP without end-organ features \u2192 urgent same-day review. <b>Can cause irreversible target-organ damage within hours.</b>"},
+         {tone:"red", h:"Pulmonary oedema / fluid overload", html:"Breathlessness, crackles, raised JVP, peripheral oedema \u2192 <b>999 if severe</b>; same-day if new and significant."},
+         {tone:"red", h:"New eGFR &lt;15 (G5) at first presentation", html:"End-stage kidney disease not yet on renal replacement therapy \u2192 <b>same-day nephrology discussion or admission</b>. NG203 mandates that eGFR &lt;15 triggers immediate nephrology involvement for RRT planning."},
+         {tone:"amber", h:"Macroscopic (visible) haematuria", html:"New onset \u2192 <b>same-day urology if no obvious cause</b>. Exclude AKI superimposed on CKD."},
+         {tone:"purple", h:"2WW \u00b7 NICE NG12 \u2014 urological cancer", html:"Unexplained visible haematuria aged 45 and over \u2192 urgent suspected-cancer referral for bladder and renal cancer (USS and cystoscopy). Visible haematuria goes down the 2WW urology route first \u2014 before the CKD workup. Persistent non-visible haematuria with ACR \u226530 points instead to glomerular disease \u2192 nephrology; non-visible haematuria on 2 of 3 dipsticks \u2192 eGFR + ACR + urology referral. Also consider <b>myeloma</b> in a patient over 60 with anaemia and a raised calcium \u2014 serum electrophoresis and light chains."}
+       ]},
+       {b:"why", html:"<b>AKI is superimposed on CKD in up to 20% of CKD patients annually.</b> Missing it causes irreversible nephron loss and accelerates progression to end-stage disease. The AKI e-alert system is triggered by KDIGO criteria \u2014 GPs should know these thresholds. Hyperkalaemia is the most immediately life-threatening complication, and a K\u207a \u22656.5 mmol/L within the first week of ACEi treatment requires immediate same-day management."}
+     ]},
+
+    {id:"confirm", nav:"Confirm &amp; stage", title:"Confirm it is chronic, stage it on the grid, find the cause", sub:"CKD is defined as abnormalities of kidney structure or function persisting more than 3 months. A single low eGFR is not sufficient.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Definition</b>","eGFR &lt;60 mL/min/1.73m\u00b2 and/or ACR \u22653 mg/mmol, on two separate occasions \u226590 days apart (NG203). If new, repeat within 2 weeks to exclude AKI, then confirm at 3 months"],
+         ["First abnormal result","<b>Do not diagnose CKD yet.</b> Repeat eGFR + ACR in 3 months, document <b>\u201cpossible CKD\u201d</b>, and stop nephrotoxins if applicable"],
+         ["<b>ACR</b>","<b>Early-morning urine sample.</b> A1 &lt;3 mg/mmol (normal) \u00b7 A2 3\u201330 mg/mmol (moderately increased) \u00b7 A3 &gt;30 mg/mmol (severely increased). Confirm a result of <b>3\u201370 with a repeat; \u226570 needs no repeat</b>. Repeat an isolated positive ACR up to 3 times. ACR is more sensitive than PCR for early diabetic nephropathy and is now the preferred marker"],
+         ["<b>Dip for blood, send for ACR</b>","<b>Never dip for protein \u2014 it is insensitive.</b> Persistent non-visible haematuria with ACR \u226530 \u2192 nephrology (glomerular); visible haematuria \u2192 2WW urology first"],
+         ["<b>eGFR caveats</b>","Calculated by <b>CKD-EPI</b> in NHS labs. Overestimates function in muscle wasting, underestimates in the very muscular \u2014 <b>use cystatin C</b> where there is uncertainty, particularly to confirm G3a with A1 in an otherwise well patient. Avoid meat-heavy meals before the test"],
+         ["<b>What is NOT CKD</b>","A single eGFR without repeat confirmation; <b>transient proteinuria</b> (UTI, exercise, fever, postural); and eGFR 45\u201359 without other markers in someone aged 70+, which may be normal ageing"],
+         ["<b>Find the CAUSE</b>","Diabetes (commonest in the UK) and hypertension explain most \u2014 but actively check: <b>obstruction</b> (LUTS \u2192 bladder scan and USS), <b>drugs</b> (NSAIDs, lithium, PPIs causing interstitial nephritis), <b>myeloma</b> in the over-60 with anaemia and high calcium (serum electrophoresis + light chains), <b>family history</b> (PKD \u2192 USS), and <b>systemic features</b> (vasculitis \u2192 urgent). Document the aetiology: diabetic nephropathy, hypertensive, glomerulonephritis, renovascular, polycystic, obstructive, or unknown"],
+         ["<b>USS if</b>","Accelerated decline, visible haematuria, obstruction symptoms, family history of PKD, or a newly found eGFR &lt;30. <b>NG203 mandates renal ultrasound at diagnosis</b> because obstructive uropathy is potentially fully reversible. <b>Not needed for routine monitoring</b>"]
+       ]},
+       {b:"table", head:["G\u00d7A grid \u2014 review frequency","A1 (&lt;3)","A2 (3\u201330)","A3 (&gt;30)"], rows:[
+         ["<b>G1\u2013G2 (eGFR \u226560)</b>","Not CKD unless another marker \u2014 annual if at risk","<b>CKD</b> \u2014 review annually","High risk \u2014 6-monthly"],
+         ["<b>G3a (45\u201359)</b>","Annual","6\u201312-monthly","6-monthly"],
+         ["<b>G3b (30\u201344)</b>","6-monthly","6-monthly","3\u20136-monthly"],
+         ["<b>G4 (15\u201329)</b>","3\u20136-monthly + referral criteria","3-monthly","3-monthly \u2014 nephrology"],
+         ["<b>G5 (eGFR &lt;15 ml/min/1.73m\u00b2)</b>","Nephrology","Nephrology","Nephrology"]
+       ]},
+       {b:"dl", rows:[
+         ["What each G stage adds","<b>G1 (eGFR \u226590)</b> normal or high \u2014 CKD only if ACR \u22653 or a structural abnormality. <b>G2 (60\u201389)</b> mildly decreased \u2014 CKD only with other markers; <b>high cardiovascular risk, so treat modifiable factors aggressively</b>. <b>G3a (45\u201359)</b> mild\u2013moderate. <b>G3b (30\u201344)</b> moderate\u2013severe \u2014 check PTH, phosphate, bicarbonate, Hb. <b>G4 (15\u201329)</b> severely decreased \u2014 refer if not already; <b>prepare for RRT and plan AV fistula formation</b>. <b>G5 (eGFR &lt;15 ml/min/1.73m\u00b2)</b> kidney failure \u2014 monthly review, active RRT (haemodialysis, peritoneal dialysis, transplant) or conservative care"],
+         ["What each A stage means","<b>A1</b> lower cardiovascular and progression risk for any given G stage. <b>A2 doubles progression risk versus A1</b> \u2014 target BP &lt;130/80 with ACEi/ARB if diabetic or proteinuric. <b>A3</b> high progression risk \u2014 <b>ACEi/ARB mandatory</b>, renal dietitian, and nephrology if it persists despite treatment"]
+       ]},
+       {b:"why", html:"The grid is the whole disease in one picture: <b>risk rises diagonally</b>, and ACR is both the risk marker and the treatment target \u2014 it selects who gets RAAS blockade, who gets an SGLT2 inhibitor, and who gets referred. The KDIGO heat map identifies high, very high and highest-risk combinations predicting both progression and cardiovascular events. <b>This replaced the old \u201cstage 1\u20135\u201d system</b> because it risk-stratifies far better."}
+     ]},
+
+    {id:"exam", nav:"Examination", title:"Targeted examination", sub:"Identifies reversible causes, quantifies complications, and changes the urgency of intervention.",
+     blocks:[
+       {b:"table", head:["What","Look for","Why it changes the plan"], rows:[
+         ["<b>Blood pressure, both arms</b>","Target <b>&lt;140/90 mmHg</b> in CKD without proteinuria; <b>&lt;130/80 mmHg if ACR \u226570 or diabetes</b>. Orthostatic drop suggests autonomic neuropathy or over-diuresis","A difference &gt;15 mmHg suggests subclavian stenosis or aortic coarctation, both commoner in CKD with atherosclerosis"],
+         ["<b>Fluid status</b>","Raised JVP, bibasal crackles, peripheral oedema \u2192 overload \u2192 restrict fluid and optimise the loop diuretic. Postural hypotension \u2192 over-diuresis \u2192 reduce the diuretic","Fluid overload is the commonest cause of \u201cresistant hypertension\u201d in CKD \u2014 optimising loop diuretics can reduce systolic BP by 20\u201330 mmHg without adding an agent"],
+         ["Cardiovascular","Murmurs, <b>irregular pulse (AF doubles cardiovascular risk in CKD)</b>, and <b>pericardial rub \u2192 uraemic emergency, 999</b>","Rub \u2192 dialysis indication"],
+         ["Abdomen","<b>Palpable kidneys (bilateral \u2014 ADPKD)</b>, bladder distension (obstructive uropathy \u2192 catheterise urgently), <b>renal artery bruit</b> (renovascular disease)","Bilateral renal enlargement warrants urgent USS for ADPKD, which carries genetic counselling implications"],
+         ["Peripheral vascular","Absent pulses, ABPI","<b>PAD coexists in 30% of CKD 4\u20135</b> \u2014 affects wound healing and AV fistula planning"],
+         ["Skin","<b>Uraemic frost</b> (very late, G5), pallor (anaemia from reduced EPO), excoriation from pruritus","Marks advanced disease"],
+         ["Neurological","<b>Restless legs</b>, peripheral neuropathy (sensory loss, reduced reflexes)","Advanced uraemia or concurrent diabetic neuropathy"],
+         ["Weight, BMI, muscle","<b>Protein-energy wasting is common in G4\u20135</b>","<b>Low muscle mass overestimates eGFR \u2014 consider cystatin C</b>"]
+       ]}
+     ]},
+
+    {id:"workup", nav:"Investigations", title:"Investigations by stage", sub:"Three purposes: confirm the diagnosis, identify reversible causes, detect complications.",
+     blocks:[
+       {b:"dl", rows:[
+         ["All CKD at baseline","U&amp;E + eGFR, FBC, early-morning urine albumin:creatinine ratio (ACR), HbA1c, lipid profile, urine dipstick (and MC&amp;S if indicated)"],
+         ["<b>G3a\u2013G3b additions</b>","<b>Bicarbonate</b> (target \u226522 mmol/L \u2014 acidosis accelerates CKD), <b>calcium and phosphate</b>, and <b>PTH</b>"],
+         ["<b>G4\u2013G5 additions</b>","<b>25-OH vitamin D</b> (replace if deficient), <b>ferritin and transferrin saturation</b>, reticulocyte count, uric acid"],
+         ["Renal ultrasound","<b>All new CKD diagnoses.</b> Look for obstruction, <b>asymmetry &gt;1.5 cm (renovascular)</b>, small echobright kidneys (chronic damage), ADPKD cysts, calculi"],
+         ["Cause-specific","If glomerulonephritis suspected: ANCA, ANA/dsDNA, complement C3/C4, anti-GBM, hepatitis B and C serology \u2014 <b>discuss with nephrology before requesting</b>"],
+         ["<b>CKD\u2013MBD</b>","PTH, calcium, phosphate, ALP. <b>Target PTH 2\u20139\u00d7 the upper limit of normal in G5 on dialysis.</b> Treat hyperphosphataemia with a phosphate binder"],
+         ["<b>Anaemia of CKD</b>","<b>Check iron stores first</b> \u2014 <b>ferritin &lt;100 \u00b5g/L or TSAT &lt;20% \u2192 iron before any ESA</b>. <b>Do not start an ESA without adequate iron replacement.</b> CKD anaemia is a diagnosis of exclusion \u2014 also check B12 and folate"],
+         ["<b>Do NOT routinely request</b>","<b>CT IVP</b> (nephrotoxic contrast if eGFR &lt;30); <b>DMSA scan</b> from primary care; <b>renal biopsy</b> (nephrology only); <b>serum creatinine alone</b> (use eGFR); <b>24-hour urine collection</b> (ACR is now preferred)"]
+       ]},
+       {b:"warn", html:"<b>Gadolinium MRI contrast is contraindicated at eGFR &lt;30</b> \u2014 risk of nephrogenic systemic fibrosis. <b>Check the eGFR before ordering any contrast investigation.</b>"},
+       {b:"why", html:"Bicarbonate monitoring from G3a matters because metabolic acidosis activates catabolic pathways that accelerate muscle loss and CKD progression \u2014 in the BICAR-RCT, sodium bicarbonate supplementation slowed eGFR decline by about <b>4 mL/min/year</b>. CKD\u2013mineral bone disease causes vascular calcification, which is why cardiovascular mortality in CKD is 10\u201330\u00d7 higher than in the general population."}
+     ]},
+
+    {id:"ladder", nav:"The big four", title:"The four kidney-protecting drugs \u2014 exact criteria", sub:"CKD treatment targets two linked problems: slowing decline, and reducing cardiovascular mortality — the commonest cause of death in CKD.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"BP to target, with ACEi/ARB if proteinuric", when:"the foundation",
+          html:"<b>Target &lt;140/90 mmHg; &lt;130/80 mmHg if ACR \u226570 or diabetes</b> (regardless of age). SPRINT supports the tighter target \u2014 it reduced cardiovascular events by 25%. <b>ACEi/ARB titrated to the maximum tolerated dose</b> \u2014 <b>ramipril 2.5 mg OD titrated to 10 mg OD</b>, or <b>losartan 25\u2013100 mg OD</b>, or candesartan up to 32 mg \u2014 for: ACR \u226570 (anyone), ACR \u226530 with hypertension, or ACR \u22653 with diabetes. U&amp;E and K\u207a before, and 1\u20132 weeks after each dose increase. <b>Reduces proteinuria by 30\u201350% independently of BP.</b> Choose an ACEi first and switch to an ARB for cough. <b>Never combine an ACEi with an ARB.</b>"},
+         {step:"1b", title:"Non-proteinuric CKD without diabetes", when:"where RAAS blockade is not indicated",
+          fromLabel:"different first agent",
+          html:"<b>Amlodipine 5 mg OD titrated to 10 mg</b>, or a thiazide-like diuretic \u2014 <b>indapamide 1.5 mg MR</b>. Target <b>&lt;140/90 mmHg</b>. Add an ACEi as third agent if resistant. <b>Avoid thiazides if eGFR &lt;30 \u2014 they are ineffective.</b>"},
+         {step:"2", title:"SGLT2 inhibitor (gliflozin \u2014 dapagliflozin or empagliflozin)", when:"proteinuric CKD, with or without diabetes",
+          fromLabel:"on top of maximised ACEi/ARB",
+          html:"Dapagliflozin 10 mg OD (NICE TA775; empagliflozin is the alternative gliflozin): offer if <b>ACR \u226522.6 mg/mmol</b> (diabetic or not; eGFR 25\u201375 to initiate per TA775; the licence now permits initiation from eGFR \u226515), or type 2 diabetes with ACR &gt;3. Also <b>offer if T2DM + ACR &gt;30, and consider if T2DM + ACR 3\u201330</b>. <b>Slows CKD progression by about 39\u201340% (DAPA-CKD)</b> \u2014 the biggest advance in CKD management in 20 years. <b>Expect an initial eGFR dip of around 3\u20135 \u2014 do not stop.</b> <b>Do not initiate if eGFR &lt;25; pause if eGFR falls below 25.</b> Sick-day pause; DKA counselling in diabetics; genital hygiene advice."},
+         {step:"3", title:"Statin", when:"ALL CKD G3a and above",
+          fromLabel:"cardiovascular risk is the main killer",
+          html:"<b>Atorvastatin 20 mg nocte regardless of cholesterol or QRISK</b> \u2014 CKD is a QRISK-independent indication. Uptitrate if non-HDL has not fallen by 40%. Monitoring frequency runs from <b>annual (eGFR \u226545 with ACR \u226430)</b> to <b>3-monthly (eGFR &lt;15)</b>. SHARP: reduces major atherosclerotic events by 17%, NNT about 15 over 5 years \u2014 comparable to statins after MI. Aspirin 75 mg only if established CVD \u2014 not for primary prevention in CKD (bleeding risk)."},
+         {step:"4", title:"Finerenone", when:"type 2 diabetes with CKD still proteinuric",
+          fromLabel:"the newest addition",
+          html:"<b>Finerenone 10\u201320 mg OD (NICE TA877)</b>: type 2 diabetes with <b>ACR \u226530 mg/mmol</b> (or ACR \u22653 in the wider licence) despite maximised ACEi/ARB and SGLT2 inhibitor, <b>eGFR \u226525, K\u207a \u22645.0 mmol/L</b>. Reduces the composite kidney and cardiovascular endpoint by 18% (FIDELIO). <b>Check K\u207a at 1 month</b>, then with routine bloods \u2014 it is a non-steroidal MRA and <b>hyperkalaemia is the trade-off</b>."},
+         {step:"Alt", title:"Resistant hypertension \u2014 spironolactone", when:"on >3 agents",
+          fromLabel:"with caution",
+          html:"Spironolactone 25 mg OD only if K\u207a &lt;4.5 mmol/L and eGFR &gt;30. Check K\u207a at 1 week. <b>Do not combine with an ACEi/ARB without specialist advice</b> \u2014 dual RAAS blockade increases hyperkalaemia risk without additional renal benefit."}
+       ]},
+       {b:"table", head:["Everyday drug","Renal gate","Action"], rows:[
+         ["<b>Metformin</b>","eGFR &lt;45 \u2192 review or halve (500 mg BD if 30\u201345); &lt;30 \u2192 stop","Switch per the diabetes ladder"],
+         ["<b>Sulfonylureas</b>","<b>eGFR &lt;30</b>","Hypoglycaemia risk \u2014 <b>avoid glibenclamide</b>; cautious low-dose gliclazide. <b>SGLT2i is the preferred add-on in CKD + T2DM.</b> HbA1c target <b>53\u201358 mmol/mol</b>, less tight if frail or hypo-prone"],
+         ["<b>DOACs</b>","<b>Use CrCl (Cockcroft\u2013Gault), not eGFR</b>","Apply each DOAC's own reduction rules; <b>CrCl &lt;15 \u2192 warfarin</b>"],
+         ["<b>Nitrofurantoin</b>","<b>eGFR &lt;45</b>","Ineffective and toxic \u2014 use an alternative. Not trimethoprim if K\u207a is high: it raises K\u207a and raises creatinine cosmetically"],
+         ["<b>Opioids</b>","<b>G4\u20135</b>","<b>Morphine accumulates</b> \u2014 prefer reduced-dose oxycodone or fentanyl; start low, go slow"],
+         ["<b>Bisphosphonates</b>","<b>eGFR &lt;30</b>","Avoid alendronate \u2014 bone protection needs renal advice (it may be renal bone disease, not osteoporosis)"],
+         ["Digoxin, gabapentinoids (gabapentin, pregabalin), aciclovir, allopurinol, LMWH","Renally cleared","<b>Dose-reduce per the BNF renal tables</b> \u2014 building that habit is the point. <b>Medication error is the commonest cause of AKI on CKD</b>"]
+       ]},
+       {b:"why", html:"The permitted rise on ACEi/ARB initiation is one of the most important practical points in CKD care. Stopping for an expected haemodynamic dip deprives patients of renoprotection \u2014 REIN showed ramipril halved progression to end-stage disease in proteinuric CKD. Avoiding combined ACEi + ARB is equally critical: ONTARGET showed increased AKI, hyperkalaemia and death without additional renal benefit."}
+     ]},
+
+    {id:"complications", nav:"Complications", title:"Manage the complications by the numbers", sub:"Anaemia, potassium, bone, acidosis and gout — each with a threshold and an action.",
+     blocks:[
+       {b:"table", head:["Complication","Screen when","Threshold \u2192 action"], rows:[
+         ["<b>Anaemia</b>","Hb at every review from G3b, or if symptomatic","Hb &lt;110 g/L (or symptomatic at a higher level) \u2192 investigate: ferritin/TSAT, B12, folate. <b>Iron FIRST</b> \u2014 oral <b>ferrous sulfate 200 mg TDS</b> if tolerated, or <b>IV iron</b> if <b>Hb &lt;100</b> or oral intolerant; target <b>ferritin &gt;100 \u00b5g/L, TSAT &gt;20%</b>. Still &lt;100 g/L despite adequate iron \u2192 refer for an erythropoiesis-stimulating agent. <b>Hb target 100\u2013120 g/L \u2014 avoid &gt;130 (thrombosis risk).</b> ESAs may be started from G3a where Hb &lt;100"],
+         ["<b>Hyperkalaemia</b>","With every U&amp;E","<b>5.5\u20135.9:</b> dietary advice, review K\u207a-raising drugs (<b>trimethoprim, spironolactone, NSAIDs</b>), recheck. <b>\u22656.0:</b> urgent repeat + ECG. <b>\u22656.5 or ECG changes = same-day admission.</b> Persistent 5.5\u20136.0 on an ACEi/ARB \u2014 do not reflexively stop the renoprotection: consider patiromer (Veltassa) 8.4 g OD or sodium zirconium cyclosilicate (NICE TA623) to enable continuation, via the renal team"],
+         ["<b>Bone \u2014 CKD\u2013MBD</b>","<b>Calcium, phosphate, PTH, vitamin D from G4</b> (this page follows NG203; screening from G3a is also widely practised \u2014 see the note below)","Replace vitamin D with <b>colecalciferol</b> if deficient. PO\u2084 &gt;1.5 mmol/L \u2192 dietary phosphate restriction first (renal dietitian), then calcium carbonate 500 mg with meals; sevelamer if hypercalcaemia coexists; avoid aluminium-based binders. Raised PTH with low or normal calcium \u2192 alfacalcidol 0.25\u20131 microgram OD \u2014 activated vitamin D, because the <b>1-alpha hydroxylase deficiency of CKD G4+</b> means standard vitamin D is not enough. <b>This is renal-team territory, not primary care</b>; check calcium and phosphate monthly initially"],
+         ["<b>Acidosis</b>","Bicarbonate from G4 (and from G3a where monitored)","Bicarbonate &lt;20 mmol/L (and NG203/NICE act at &lt;22 mmol/L) \u2192 oral sodium bicarbonate 500 mg\u20131 g TDS (1\u20132g TDS in the BICAR-RCT) (with renal advice). <b>Target \u226522 mmol/L.</b> Recheck response at 4 weeks. <b>Slows progression and protects muscle and bone (BICAR-RCT)</b> \u2014 caution over the sodium load in heart failure"],
+         ["<b>Gout</b>","Clinically","<b>Allopurinol dose-adjusted \u2014 start 50\u2013100 mg.</b> <b>NO NSAIDs</b> \u2192 <b>low-dose colchicine 500 micrograms OD\u2013BD</b>, or a short steroid course for flares"]
+       ]},
+       {b:"warn", html:"<b>Two thresholds where the sources differ, resolved deliberately.</b> <b>Bone screening:</b> NG203 specifies calcium, phosphate, PTH and vitamin D <b>from G4</b>, and that is the rule here; screening <b>from G3a</b> is common practice and reasonable where progression is rapid \u2014 both are recorded so neither is lost. <b>Anaemia:</b> <b>investigate at Hb &lt;110 g/L</b>, and the <b>ESA referral threshold is Hb &lt;100 g/L</b> with iron replete \u2014 these are two different decisions, not a contradiction."}
+     ]},
+
+    {id:"lifestyle", nav:"Protect", title:"Protecting the kidneys \u2014 the daily rules", sub:"Lifestyle modification is integral treatment, not an afterthought. Address every point at every annual review.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udeab NSAIDs \u2014 the number one avoidable nephrotoxin", html:"Including <b>OTC ibuprofen and topical-to-oral drift</b>. <b>Stop in G3 and above.</b> Flag it on the record and offer alternatives \u2014 <b>paracetamol is fine</b>."},
+         {tone:"amber", h:"\ud83e\udd22 Sick-day rules \u2014 in writing", html:"Vomiting, diarrhoea or dehydration \u2192 pause ACEi/ARB, diuretics, SGLT2i, metformin and NSAIDs for 48 hours; restart when eating and drinking normally for 24\u201348 hours. <b>The classic primary-care AKI is this combination in a dry patient.</b> Provide the NHS sick-day-rules leaflet \u2014 <b>20\u201330% of AKI episodes are preventable this way</b>."},
+         {tone:"green", h:"\ud83e\uddc2 Salt \u2014 the most under-used intervention", html:"Reduce salt to &lt;5g/day (2 g sodium) \u2014 lowers BP by 5\u201310 mmHg; NG203 and NICE also express this as &lt;6 g/day. A 1 g/day sodium reduction lowers systolic BP by about 2\u20133 mmHg; restricting to 2 g/day reduces it by around 10 mmHg \u2014 equivalent to adding a second antihypertensive. Avoid liquorice and excess caffeine. <b>Home BP monitoring with a validated cuff.</b>"},
+         {tone:"plain", h:"\ud83e\udd69 Protein \u2014 what this page recommends", html:"<b>No routine protein restriction in primary care</b> \u2014 the risk of malnutrition outweighs the benefit, and it is not a primary-care intervention. Where a low-protein diet is used it is dietitian-led: 0.6\u20130.8 g/kg/day from G3b onwards, with adequate calorie intake to prevent malnutrition. <b>Refer to a renal dietitian from G3b\u2013G4</b> for potassium and phosphate work. Avoid very high-protein diets and gym supplements."},
+         {tone:"plain", h:"\u26a1 Potassium", html:"If K\u207a &gt;5.0 on an ACEi/ARB: avoid bananas, tomatoes, potatoes, dark chocolate, nuts, and <b>salt substitutes (LoSalt)</b>. <b>Cooking method matters \u2014 boiling leaches potassium out.</b> Renal dietitian for personalised advice."},
+         {tone:"plain", h:"\ud83e\uddea Phosphate", html:"From G3b: limit processed foods, cola drinks and excess dairy. <b>Phosphate additives (E numbers) in processed food are rapidly absorbed</b> \u2014 fresh food is preferred, and this works synergistically with binders."},
+         {tone:"green", h:"\ud83d\udead Smoking", html:"Smoking accelerates CKD progression independently \u2014 it doubles the rate of eGFR decline. NHS Stop Smoking Service; varenicline or combination NRT. <b>Reduces cardiovascular mortality by 30% in CKD patients.</b>"},
+         {tone:"green", h:"\ud83c\udfc3 Exercise and weight", html:"<b>150 minutes/week</b> moderate aerobic activity; resistance training from G3b with dietitian input. Reduces BP, improves insulin resistance, and <b>slows sarcopenia</b>. In the STEPPING study, structured exercise slowed eGFR decline by 2 mL/min/year versus sedentary controls. Avoid dehydration during exercise. Cardiovascular death is the commonest CKD outcome \u2014 these count double."},
+         {tone:"blue", h:"\ud83d\udca7 Hydration", html:"<b>Around 2 L/day unless fluid-restricted in G4\u20135.</b> <b>CKD impairs urine-concentrating ability, so dehydration triggers AKI.</b>"},
+         {tone:"blue", h:"\ud83d\udc89 Vaccination", html:"Annual influenza; pneumococcal (PPV23) single dose with a booster at 5 years if immunosuppressed; COVID primary course and boosters. Hepatitis B series for all CKD, especially pre-dialysis \u2014 response falls from about 70% to 50\u201360% once on dialysis, so vaccinate pre-emptively."},
+         {tone:"cream", h:"\ud83d\udccb Medication review \u2014 every review", html:"Hunt dose errors against the renal gates, drugs whose indication has lapsed, and interacting OTC or herbal products. Review nephrotoxins: NSAIDs, aminoglycosides (renal dosing), and contrast agents against the eGFR threshold."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"The structured review \u2014 track the trajectory, not the snapshot", sub:"Monitoring frequency is set by the KDIGO risk cell. The annual review (QOF CKD006) must cover every domain below.",
+     blocks:[
+       {b:"table", head:["What","When","Why"], rows:[
+         ["<b>eGFR + ACR</b>","Per the grid cell \u2014 annual to 3-monthly","<b>Plot the TRAJECTORY.</b> Accelerated progression = a sustained eGFR fall \u226525% with a category change within 12 months, or \u226515 mL/min/year \u2192 work through the loop below and refer. Other definitions in use: <b>&gt;5 mL/min/year</b>, or <b>&gt;25% in 12 months</b>"],
+         ["<b>4-variable KFRE</b>","<b>Annually from G3</b>","Age + sex + eGFR + ACR \u2192 5-year kidney-failure risk. <b>&gt;5% = refer (NG203)</b>; it also rationally reassures the stable elderly G3a patient, whose risk is often under 1%"],
+         ["<b>U&amp;E after any RAAS or diuretic change</b>","<b>1\u20132 weeks</b>","<b>Acceptable: eGFR fall \u226425% or creatinine rise \u226430%.</b> SGLT2i: eGFR + K\u207a at 4 weeks. Finerenone: K\u207a at 1 month. Spironolactone: K\u207a at 1 week"],
+         ["<b>Annual bundle</b>","Once a year","BP, weight, HbA1c if diabetic, lipids, <b>Hb from G3b</b>, medication and nephrotoxin review, <b>sick-day-rule reinforcement</b>, vaccination check"],
+         ["<b>By stage</b>","\u2014","<b>G1\u2013G2:</b> annual eGFR, ACR, U&amp;E, BP and dipstick. <b>G3a:</b> annual eGFR, ACR, U&amp;E, FBC, bicarbonate, calcium, phosphate, HbA1c, lipids; BP at each contact. <b>G3b:</b> 6-monthly eGFR, ACR, FBC, U&amp;E, calcium, phosphate, PTH, bicarbonate; BP every 3\u20136 months. <b>G4:</b> every 3\u20134 months, nephrology involved, RRT planning documented and AV fistula referral if haemodialysis anticipated. <b>G5:</b> monthly under nephrology with primary-care co-management, transplant assessment, conservative-care discussion, <b>advance care planning</b>"]
+       ]},
+       {b:"kv", rows:[
+         ["<b>Annual review checklist</b>","eGFR trajectory plotted \u00b7 ACR trend \u00b7 BP at target \u00b7 HbA1c if diabetic \u00b7 smoking status \u00b7 medication review including nephrotoxins and dose gates \u00b7 vaccinations \u00b7 <b>sick-day rules given</b> \u00b7 statin prescribed \u00b7 <b>SGLT2 inhibitor considered</b> \u00b7 dietitian referral if G3b and above"]
+       ]},
+       {b:"cards", items:[
+         
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"\ud83d\udea8 999", html:"\u201cSudden breathlessness or chest pain, confusion or reduced consciousness, <b>no urine for 12+ hours</b>, severe swelling, or muscle weakness with a high potassium \u2014 call 999.\u201d"},
+         {tone:"amber", h:"\ud83d\udd34 Same-day GP", html:"\u201cUrine output significantly reduced, <b>potassium \u22655.5</b>, <b>systolic BP &gt;180 mmHg</b>, any illness causing dehydration if you are in stage 4\u20135, new leg swelling, or new blood in the urine.\u201d"},
+         {tone:"amber", h:"\ud83e\udd22 The sick-day card", html:"\u201cVomiting or diarrhoea and can't keep fluids down \u2014 pause the kidney and BP tablets, the water tablet, the 'flozin' and metformin for 48 hours; restart when you're eating and drinking normally. Ring us if unsure.\u201d"},
+         {tone:"amber", h:"\ud83d\udc8a Painkillers", html:"\u201cNo ibuprofen or naproxen-type drugs \u2014 including ones bought over the counter. Paracetamol is fine.\u201d"},
+         {tone:"green", h:"\u26a1 Potassium", html:"\u201cIf we've told you your potassium runs high: watch salt substitutes like LoSalt, and mention it whenever anyone prescribes you something new.\u201d"}
+       ]},
+       {b:"say", html:"Your kidneys are working at about [X]% and our job is to keep them there \u2014 the blood-pressure tablet and the newer 'flozin' tablet both protect them directly, and the main things that hurt them are ibuprofen-type painkillers and getting dehydrated when you're unwell. That's what the sick-day card is for."},
+       {b:"why", html:"Plotting eGFR as a trend line is more informative than any single value \u2014 eGFR 38 stable for five years is a very different patient from eGFR 38 that has fallen from 60 in two years; the latter needs urgent nephrology. NG203 introduced <b>QOF indicator CKD006</b> (annual review with ACR, eGFR and BP), which is both a quality requirement and the mechanism by which deterioration is detected early. The 1\u20132 week U&amp;E check after starting an ACEi/ARB prevents undetected severe hyperkalaemia. Advance care planning from G4 respects patient autonomy and prevents unwanted intervention near the end of life \u2014 conservative kidney management without dialysis is a valid, NICE-endorsed option for frail elderly patients."}
+     ]},
+
+    {id:"loop", nav:"Not responding?", title:"eGFR falling faster than expected? Check before blaming CKD", sub:"CKD progresses slowly. A step-change in creatinine is AKI-on-CKD or an artefact until proven otherwise.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · AKI on CKD", html:"Dehydration, sepsis, new drug, contrast within 7 days? Treat the insult, recheck in 1\u20132 weeks."},
+         {tone:"blue", h:"2 · Obstruction", html:"Men + LUTS, palpable bladder, single kidney → bladder scan + renal USS."},
+         {tone:"blue", h:"3 · Drug artefact", html:"Trimethoprim raises creatinine ~20% without real GFR change; creatine supplements; big meat meal pre-test."},
+         {tone:"blue", h:"4 · New nephrotoxin", html:"NSAID (incl. OTC), PPI (interstitial nephritis), lithium level, recently added diuretic + ACEi + dehydration."},
+         {tone:"red", h:"5 · The kidneys themselves", html:"Active urine sediment (blood + protein new) → glomerulonephritis/vasculitis → urgent renal; myeloma screen in the older patient."},
+         {tone:"amber", h:"6 · Real and sustained?", html:"Confirm on repeat before acting — one reading is not a trajectory."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Nephrology \u2014 by risk, not just by number", sub:"About 60% of UK CKD is managed solely in primary care — the system depends on knowing when NOT to refer as much as when to refer.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same-day / 999", html:"AKI on CKD \u00b7 new eGFR &lt;15 \u00b7 K\u207a \u22656.5 mmol/L or ECG changes \u00b7 pulmonary oedema secondary to CKD \u00b7 uraemic encephalopathy or pericarditis \u00b7 fluid overload with oliguria."},
+         {tone:"amber", h:"Urgent \u2014 within days", html:"<b>eGFR 15\u201329 (G4) not previously known to nephrology</b>; <b>rapid decline \u2014 &gt;25% fall in 12 months</b>; <b>unexplained eGFR fall &gt;15 mL/min in 3 months</b>; new nephrotic syndrome (ACR &gt;220 mg/mmol with hypoalbuminaemia and oedema)."},
+         {tone:"plain", h:"Routine nephrology \u2014 the NG203 criteria", html:"<b>KFRE 5-year risk &gt;5%</b> \u2014 the headline criterion. <b>eGFR &lt;30 (eGFR&lt;30, G4\u2013G5)</b> for RRT planning, AV fistula formation and transplant workup. <b>ACR \u226570 mg/mmol</b> unless it is established diabetic nephropathy already on treatment, or <b>despite 3 months of optimised ACEi/ARB</b>. <b>Sustained ACR &gt;300 mg/mmol.</b> <b>ACR &gt;30 with persistent haematuria.</b> <b>Uncontrolled BP on \u22654 agents.</b> Suspected glomerulonephritis, vasculitis or myeloma nephropathy."},
+         {tone:"plain", h:"Cause needs a specialist", html:"Suspected glomerular disease (active urinary sediment), PKD, myeloma, renal artery stenosis \u2014 suspect if creatinine jumps &gt;25% on an ACEi, a young patient with early CKD, or a single kidney with declining function. Consider renal and vascular genetics."},
+         {tone:"plain", h:"Complications", html:"ESA-territory anaemia, or <b>unexplained anaemia not responding to iron</b>; G4 bone disease; resistant hyperkalaemia; BP uncontrolled on 3\u20134 agents; eGFR declining in G3 despite optimised management (consider a GP-to-consultant advice request first)."},
+         {tone:"plain", h:"Urology", html:"<b>Obstructive uropathy on USS</b>; haematuria with a renal lesion; recurrent renal calculi; suspected bladder-outflow obstruction contributing to CKD. <b>2WW if visible haematuria aged 45 and over.</b>"},
+         {tone:"plain", h:"Renal dietitian", html:"<b>From G3b:</b> dietitian-led protein guidance (0.6\u20130.8 g/kg/day) where appropriate, phosphate restriction in hyperphosphataemia, and <b>potassium restriction if K\u207a &gt;5.5 mmol/L on an ACEi/ARB</b>."},
+         {tone:"cream", h:"Continue in primary care", html:"G1\u2013G3a with a stable eGFR, ACR &lt;70, a known cause (diabetic or hypertensive nephropathy), controlled BP and no complications \u2014 on the annual review protocol."}
+       ]},
+       {b:"why", html:"The most important referral is eGFR &lt;30 for RRT planning \u2014 it should happen 1\u20132 years before the anticipated need. <b>Arteriovenous fistula formation takes 3\u20136 months to mature</b>, so late referral forces temporary vascular access catheters, which carry significantly higher infection and mortality rates. The rapid-decline threshold captures accelerated CKD from renovascular disease, myeloma or uncontrolled diabetes \u2014 <b>all reversible if caught early</b>. <b>ACR &gt;300 mg/mmol is the nephrotic-range threshold</b> that often indicates primary glomerular disease requiring biopsy."},
+       {b:"say", html:"I'm referring you to the kidney team \u2014 not because dialysis is coming, but because your numbers put you in the group where a specialist plan now prevents that later. We'll keep running your day-to-day care together."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only \u2014 the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 58-year-old woman with type 2 diabetes, eGFR 52, ACR 45 mg/mmol on two samples three months apart, BP 148/86, on metformin and atorvastatin. She has read that \u201cthe blood pressure tablet damages your kidneys\u201d because her creatinine rose when it was started, and stopped it herself."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Stages her as <b>G3aA3</b> and explains that the ACR matters as much as the eGFR; explains that the creatinine rise on starting the ACEi was expected and acceptable up to 30%, and restarts it with a 1\u20132 week U&amp;E; targets BP <b>&lt;130/80</b> because ACR \u226570 or diabetes; <b>adds dapagliflozin</b>; calculates the <b>KFRE</b> rather than referring on eGFR alone; and issues written <b>sick-day rules</b>. <a href='../../cases/ckd.html'>Open the full casebook chapter \u2192</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG203 \u2014 Chronic kidney disease: assessment and management (2021)<br><a href="https://www.nice.org.uk/guidance/ng203" rel="noopener">nice.org.uk/guidance/ng203</a><span class="rd"> \u2014 the 90-day rule, ACR-based staging and the G\u00d7A grid, BP targets by ACR, ACEi/ARB indications and the acceptable eGFR fall, renal ultrasound at diagnosis, CKD\u2013MBD screening from G4, KFRE &gt;5% as the referral criterion, and QOF CKD006</span></li>'+
+         '<li><b>KDIGO CKD Guideline (2024)</b><span class="rd"> \u2014 the G1\u2013G5 \u00d7 A1\u2013A3 heat map and its risk categories, and the AKI criteria used to exclude AKI-on-CKD</span></li>'+
+         '<li><b>NICE TA775 \u2014 Dapagliflozin for CKD</b><span class="rd"> \u2014 ACR \u226522.6 mg/mmol, eGFR 25\u201375 to initiate</span></li>'+
+         '<li><b>NICE TA877 \u2014 Finerenone for CKD with type 2 diabetes</b><span class="rd"> \u2014 ACR threshold, eGFR \u226525, K\u207a \u22645.0, and potassium monitoring</span></li>'+
+         '<li>NICE TA623 \u2014 Patiromer (and sodium zirconium cyclosilicate) for hyperkalaemia<span class="rd"> \u2014 enabling continuation of RAAS blockade rather than losing renoprotection</span></li>'+
+         '<li>DAPA-CKD; FIDELIO-DKD; SHARP; REIN; ONTARGET; SPRINT; BICAR-RCT; STEPPING<span class="rd"> \u2014 dapagliflozin slowing progression by ~39\u201340%; finerenone reducing the composite endpoint by 18%; statins reducing major atherosclerotic events by 17%; ramipril halving progression in proteinuric CKD; the harm of dual RAAS blockade; intensive BP lowering; bicarbonate slowing eGFR decline; structured exercise slowing decline by 2 mL/min/year</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 unexplained visible haematuria aged 45 and over \u2192 urgent suspected bladder or renal cancer referral; myeloma screening in the older patient with anaemia and hypercalcaemia</span></li>'+
+         '<li>NICE NG203 \u2014 chronic kidney disease; NHS England AKI Programme; BHS hypertension guidance<span class="rd"> \u2014 primary-care operationalisation, sick-day rules, and BP measurement standards</span></li>'+
+         '<li><b>BNF \u2014 renal impairment tables</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 every dose gate on this page: metformin, sulfonylureas, DOACs by CrCl, nitrofurantoin, opioids, bisphosphonates, digoxin, gabapentinoids, aciclovir, allopurinol</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Confirmed CKD in adults \u2014 NICE NG203 (2021) with KDIGO 2024, TA775 (dapagliflozin), TA877 (finerenone) and TA623 (patiromer). Diagnosis, staging and management are merged on this page; there is no separate CKD pathway to cross-check. Verify all doses against the current BNF renal impairment tables before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

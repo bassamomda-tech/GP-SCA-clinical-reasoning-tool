@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Addison's Disease / Adrenal Insufficiency — Protocol · Reasoning GP</title>
+<meta name="description" content="Adrenal insufficiency in one page: recognise and treat adrenal crisis before biochemistry, the insidious chronic picture and its mimics, 9am cortisol and short Synacthen with ACTH to localise primary vs secondary, lifelong hydrocortisone and fludrocortisone replacement, the sick-day rules and NHS Steroid Emergency Card, monitoring, and who to refer." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/addisons-disease.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790200156739287 tools/management/addisons-disease.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+</head>
+<body data-screen-label="Addison's disease protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=14"></script>
+<script>
+MG.render({
+  icon:"🧂",
+  title:"Addison's disease / adrenal insufficiency — the complete guide",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Treat the crisis before you confirm it — and prevention beats treatment",
+  stemSub:"One page for the whole condition. Recognise adrenal crisis and give hydrocortisone before any test, spot the insidious chronic picture that gets mislabelled as depression or CFS for over a year, confirm with 9am cortisol and the short Synacthen test, localise primary versus secondary with ACTH, replace glucocorticoid and (in primary disease) mineralocorticoid for life, drill the sick-day rules and the NHS Steroid Emergency Card at every contact, and monitor for the autoimmune cluster. NICE NG243 · Society for Endocrinology.",
+  guideline:"NICE NG243 · Society for Endocrinology",
+  reviewed:"8 September 2026",
+  nextReview:"8 March 2027",
+  meta:[
+    {t:"NICE NG243 — adrenal insufficiency (2024)"},
+    {t:"Society for Endocrinology emergency guidance"},
+    {t:"NHS Steroid Emergency Card (2020)"},
+    {t:"2WW · NG12 criteria that surface here", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+  ],
+  lead:"<div class='mg-layers'><a href='#crisis'><b>Crisis</b><small>Hydrocortisone 100 mg before tests</small></a><a href='#workup'><b>Confirm</b><small>9am cortisol → Synacthen → ACTH</small></a><a href='#ladder'><b>Replace</b><small>Hydrocortisone + fludrocortisone</small></a><a href='#sickday'><b>Prevent</b><small>Sick-day rules + emergency kit</small></a></div>",
+  quickSub:"If you read nothing else on this page, read these six cards. Every figure traces to the source cited under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Adrenal crisis: hydrocortisone 100 mg IM/IV before ANY test", html:"Hypotension or collapse, vomiting, abdominal pain, fever, confusion — especially during illness or after missed steroid doses. Give hydrocortisone 100 mg IM or IV immediately and do not wait for cortisol results (NG243: never delay steroids for tests). Anyone — the patient, a relative or a carer — can give the IM injection. Then <b>1 L 0.9% saline IV over 30 minutes</b> (in hospital), treat hypoglycaemia, and <b>999 — rapid transport, ideally within 30 minutes</b>. Death is from hypovolaemic shock and hyperkalaemia, and the crisis is reversible with timely steroid."},
+    {tone:"amber", h:"Up to 50% of Addison's is first diagnosed AT the crisis", html:"Keep a low threshold in unexplained shock — the new presentation can BE the crisis. The biochemical signature is hyponatraemia + hyperkalaemia ± hypoglycaemia (and mild hypercalcaemia) — <b>treat empirically while confirming</b>. Take a random cortisol (and ideally ACTH) before the steroid <b>only if it does not delay treatment</b>."},
+    {tone:"blue", h:"The chronic picture is mislabelled for over a year", html:"Profound fatigue, weakness, anorexia, weight loss, nausea, postural dizziness — frequently mislabelled as depression, CFS, anorexia or IBS for months to years; the mean delay to diagnosis exceeds a year. The two most discriminating features of primary disease: <b>salt craving</b> (mineralocorticoid deficiency) and <b>hyperpigmentation</b> of palmar creases, buccal mucosa, scars and pressure areas. Low Na⁺ with high K⁺ on routine bloods is the classic trigger to think of it."},
+    {tone:"green", h:"Confirm: 9am cortisol → short Synacthen → ACTH localises", html:"9am cortisol &lt;100 nmol/L strongly suggests insufficiency; &gt;430–500 nmol/L makes it unlikely; intermediate → short Synacthen test (250 µg tetracosactide, cortisol at 0 and 30 min; failure to rise above ~&gt;430–550 nmol/L, lab-dependent, confirms). Then high ACTH + low cortisol = primary (Addison's); low or inappropriately normal ACTH = secondary — where <b>steroid withdrawal is the commonest cause</b>."},
+    {tone:"purple", h:"The sick-day rules are the highest-yield intervention", html:"Rule 1 — oral: DOUBLE the glucocorticoid for fever, intercurrent illness or significant infection until recovered. Rule 2 — parenteral: vomiting, diarrhoea, or can't keep tablets down → IM hydrocortisone from the emergency kit + urgent help. Surgery, major dental work and colonoscopy prep need peri-procedure parenteral cover. Every patient carries the <b>NHS Steroid Emergency Card (2020) + MedicAlert</b> and an <b>in-date IM hydrocortisone kit</b> — and the family is trained to use it. <b>Adrenal crisis is largely preventable through education.</b>"},
+    {tone:"teal", h:"Replacement is physiological — and never stops abruptly", html:"Hydrocortisone 15–25 mg/day in 2–3 divided doses, largest on waking (e.g. 10/5/5 mg), titrated to wellbeing — never to a random cortisol. Fludrocortisone 50–200 µg once daily in PRIMARY disease only (secondary insufficiency preserves the renin–angiotensin–aldosterone axis). <b>Never stop glucocorticoid abruptly — it precipitates crisis.</b> Over-replacement causes weight gain, hypertension, dysglycaemia and osteoporosis."}
+  ],
+  pathwaySub:"The whole consultation in five moves. The red step is where patients die — do not skip it.",
+  pathway:[
+    {title:"Crisis? Treat before confirming", html:"Shock, collapse, vomiting, abdominal pain, fever or confusion in known or possible adrenal insufficiency → hydrocortisone 100 mg IM/IV stat + IV saline + 999. Also: anyone on long-term steroids who is vomiting, septic or has stopped their steroid; <b>hypoglycaemia</b> (especially children and secondary disease) → IV glucose + hydrocortisone; <b>Waterhouse–Friderichsen</b> — adrenal haemorrhage in meningococcal or severe sepsis, purpura + shock → 999.", alert:true},
+    {title:"Suspect the insidious picture", html:"Fatigue, weight loss, postural dizziness, salt craving, pigmentation; low Na⁺ + high K⁺ ± hypoglycaemia on bloods. Ask explicitly about steroid use — abrupt withdrawal of long-term oral, inhaled or topical steroids is the commonest cause of secondary insufficiency. Autoimmune clues: personal or family T1DM, thyroid disease, vitiligo, pernicious anaemia, coeliac."},
+    {title:"Confirm and localise", html:"9am cortisol first (&lt;100 strongly suggests, &gt;430–500 unlikely), short Synacthen to confirm, ACTH to localise (high = primary, low = secondary), U&amp;E, glucose, 21-hydroxylase antibodies. Antibody-negative → adrenal CT and TB screen; secondary → pituitary MRI + full axis."},
+    {title:"Replace, and refer to endocrinology", html:"All confirmed or suspected disease → endocrinology for confirmation, cause work-up and initiation. Hydrocortisone 15–25 mg/day divided; fludrocortisone 50–200 µg OD in primary disease, titrated to BP, postural drop, U&amp;E and renin. GP delivers lifelong shared care — uninterrupted supply, sick-day reinforcement, monitoring."},
+    {title:"Educate, equip, and review", html:"Sick-day rules rehearsed at every contact; NHS Steroid Emergency Card + MedicAlert; in-date IM kit with the family trained; flag the medical record. Annual review: wellbeing, weight, lying/standing BP, U&amp;E ± renin, over-replacement screen, the autoimmune cluster, bone health."}
+  ],
+  sections:[
+    {id:"crisis", nav:"Crisis", title:"Adrenal crisis — recognise and treat before confirming", sub:"The can't-miss emergency. Treatment always precedes confirmatory tests.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Shock + known or possible adrenal insufficiency", html:"Hypotension or postural drop, collapse, vomiting, abdominal pain, fever, confusion → 999 + immediate IM/IV hydrocortisone 100 mg. Often precipitated by illness or steroid withdrawal. Or milder symptoms in someone with known or high-risk adrenal insufficiency — the commoner primary-care presentation."},
+         {tone:"red", h:"🔴 Hyponatraemia + hyperkalaemia", html:"Low Na⁺ with raised K⁺ ± hypoglycaemia and mild hypercalcaemia is the classic biochemical signature — treat empirically while confirming."},
+         {tone:"red", h:"🔴 Intercurrent illness / missed steroids", html:"Any patient on long-term steroids who is vomiting, septic or has stopped their steroid → crisis risk. Give parenteral hydrocortisone."},
+         {tone:"red", h:"🔴 Waterhouse–Friderichsen", html:"Adrenal haemorrhage in meningococcal or severe sepsis → purpura + shock → 999."},
+         {tone:"red", h:"🔴 Hypoglycaemia", html:"Especially in children and in secondary adrenal insufficiency → treat with IV glucose + hydrocortisone."},
+         {tone:"amber", h:"🟠 The new presentation can BE the crisis", html:"Up to 50% of Addison's is diagnosed at first crisis — keep a low threshold in unexplained shock."}
+       ]},
+       {b:"kv", rows:[
+         ["Immediate management","Hydrocortisone 100 mg IM or IV stat — anyone (patient, relative, carer) can give it IM · 1 L 0.9% saline IV over 30 minutes (aggressive rehydration in hospital) · treat hypoglycaemia · identify and treat the precipitant · 999 with rapid transport, ideally within 30 minutes"],
+         ["Bloods","Take a random cortisol (and ideally ACTH) before the steroid only if it does not delay treatment — treatment always comes first (NG243: never delay steroids for tests)"],
+         ["Children","Under 16: follow BSPED guidance — the same principles (hydrocortisone, fluids, rapid transfer) with weight-based doses"],
+         ["The records","<b>Flag the notes of everyone with known adrenal insufficiency</b> so the crisis risk is visible to every clinician they meet"]
+       ]},
+       {b:"why", html:"Adrenal crisis carries significant mortality and is reversible with timely steroid — death is from hypovolaemic shock and hyperkalaemia. Patients cannot mount a stress cortisol response, so any illness or surgery needs extra steroid and missed doses can be fatal: <b>everything else on this page follows from that single fact</b>."}
+     ]},
+
+    {id:"history", nav:"History", title:"The insidious picture and its mimics", sub:"Chronic primary adrenal insufficiency is notoriously non-specific — the mean delay to diagnosis exceeds a year.",
+     blocks:[
+       {b:"table", head:["Ask about","Detail","Why it matters"], rows:[
+         ["<b>Core symptoms</b>","<b>Profound fatigue, weakness, anorexia, weight loss, nausea, dizziness</b>","Frequently mislabelled as depression, CFS, anorexia or IBS for months to years"],
+         ["<b>Salt craving</b>","<b>Highly suggestive of mineralocorticoid deficiency</b>","One of the <b>two most discriminating clinical features</b> for primary disease"],
+         ["<b>Postural symptoms</b>","Dizziness or lightheadedness on standing → postural hypotension from aldosterone deficiency and volume depletion","Points to the mineralocorticoid axis"],
+         ["<b>Hyperpigmentation</b>","Primary (Addison's) only: ACTH-driven pigmentation of palmar creases, buccal mucosa, scars and pressure areas. Absent in secondary (pituitary) causes","The other most-discriminating feature — <b>its absence does not exclude the disease</b>"],
+         ["<b>Autoimmune clues</b>","Personal or family history of type 1 diabetes, autoimmune thyroid disease, vitiligo, pernicious anaemia, coeliac","Autoimmune polyglandular (Schmidt) syndrome — recognising the cluster shortens the diagnostic journey"],
+         ["<b>Steroid history</b>","Abrupt withdrawal of long-term oral, inhaled or topical steroids → secondary (tertiary) adrenal insufficiency. Ask explicitly about steroid use","<b>Steroid withdrawal is the commonest cause of secondary insufficiency</b>"],
+         ["<b>Other causes</b>","TB (the commonest cause worldwide), adrenal metastases or bilateral haemorrhage, adrenalectomy, drugs (ketoconazole, etomidate), HIV, infiltrative disease","Directs the cause work-up when antibodies are negative"]
+       ]}
+     ]},
+
+    {id:"exam", nav:"Examination", title:"Targeted examination", sub:"Look specifically for the signs that separate primary from secondary, and for the associated autoimmune diseases.",
+     blocks:[
+       {b:"table", head:["What","Finding","Means"], rows:[
+         ["<b>Blood pressure</b>","Postural hypotension (systolic drop &gt;20 mmHg); persistent hypotension in chronic disease","Volume depletion from aldosterone deficiency"],
+         ["<b>Pigmentation</b>","Palmar creases, buccal and gingival mucosa, recent scars, knuckles, pressure points","Primary disease only — elevated ACTH and POMC-derived peptides localise the lesion to the adrenal, not the pituitary"],
+         ["<b>Vitiligo</b>","<b>Depigmented patches</b>","Autoimmune association"],
+         ["<b>Hydration / volume</b>","<b>Dry mucous membranes, reduced skin turgor, tachycardia</b>","Volume depletion"],
+         ["<b>Weight / muscle</b>","<b>Weight loss, muscle wasting, general debility</b>","Chronicity"],
+         ["<b>Thyroid / other endocrine</b>","<b>Goitre or signs of hypo- or hyperthyroidism</b>","Polyglandular syndrome"]
+       ]}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Investigations — confirm, localise, and find the cause", sub:"Confirm cortisol deficiency, then localise (primary vs secondary), then seek the cause. Never let testing delay treatment in a crisis.",
+     blocks:[
+       {b:"table", head:["Test","Detail","Interpretation"], rows:[
+         ["<b>9am serum cortisol — first-line</b>","Timed to the circadian peak","&lt;100 nmol/L strongly suggests insufficiency · &gt;430–500 nmol/L makes it unlikely · intermediate → short Synacthen test"],
+         ["<b>Short Synacthen test — confirmatory</b>","<b>250 µg tetracosactide; cortisol at 0 and 30 minutes</b>","Failure to rise above the threshold (~&gt;430–550 nmol/L, lab-dependent) confirms adrenal insufficiency — the definitive primary-care-accessible confirmatory test"],
+         ["<b>Plasma ACTH</b>","Paired with cortisol","High ACTH + low cortisol = primary (Addison's) · low or inappropriately normal ACTH = secondary (pituitary/hypothalamic)"],
+         ["<b>U&amp;E / glucose</b>","At presentation","Hyponatraemia, hyperkalaemia, hypoglycaemia, mild hypercalcaemia, raised urea"],
+         ["<b>Adrenal autoantibodies</b>","<b>21-hydroxylase antibodies</b>","<b>Positive in autoimmune Addison's — the commonest UK cause</b>"],
+         ["<b>Renin / aldosterone</b>","Primary disease","<b>High renin with low aldosterone confirms mineralocorticoid deficiency</b>"],
+         ["<b>Cause work-up</b>","Antibody-negative → adrenal CT (TB, haemorrhage, metastases, infiltration) + TB screen · secondary → pituitary MRI + full pituitary axis","<b>Antibody-negative disease mandates imaging</b>"]
+       ]},
+       {b:"cards", items:[
+         {tone:"purple", h:"NG12 criteria that surface in this work-up <span class='tw'>2WW</span>", html:"Addison's disease itself has no NICE NG12 suspected-cancer criterion, and this page does not invent one. But the cause work-up can surface cancer, and two NG12 routes matter here:<br>• Bilateral adrenal metastases found on CT as the cause of adrenal failure → refer via the appropriate suspected-cancer pathway for the primary — most often lung: NG12 gives chest X-ray (urgent, within 2 weeks) for the smokers over 40 with unexplained weight loss, appetite loss or fatigue that this presentation mimics, and a 2WW chest referral for CXR findings suggestive of lung cancer.<br>• The presenting complaint — unexplained weight loss with appetite loss in an adult — is itself an NG12 trigger symptom: if the adrenal work-up is negative, return to it (weight loss with abdominal pain aged 60+ → urgent direct-access CT for pancreatic cancer; consider CXR per above). <b>Do not let a normal Synacthen close the weight-loss question.</b>", src:"NICE NG12 (updated May 2025) · house rule"}
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Replace", title:"Replacement therapy — named drugs and doses", sub:"Lifelong, physiological, titrated clinically. Verify doses in the BNF; initiation is specialist-led.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Glucocorticoid", title:"Hydrocortisone 15–25 mg/day in 2–3 divided doses", when:"all patients, lifelong", fromLabel:"first-line",
+          html:"Largest dose on waking to mimic the circadian rhythm (e.g. 10/5/5 mg) — the morning-loaded regimen reduces fatigue. Prednisolone once daily is an alternative. Titrate to wellbeing — never to a random cortisol."},
+         {step:"Mineralocorticoid", title:"Fludrocortisone 50–200 µg once daily", when:"PRIMARY disease only", fromLabel:"not needed in secondary",
+          html:"Titrate to BP, postural drop, electrolytes and plasma renin. Not needed in secondary (pituitary) insufficiency because the renin–angiotensin–aldosterone axis is preserved."},
+         {step:"Selected", title:"DHEA", when:"specialist-led only", fromLabel:"impaired wellbeing despite optimal replacement",
+          html:"<span class='rx'>DHEA 25\u201350 mg once daily in the morning</span> may be considered in some women with impaired wellbeing or libido despite adequate gluco- and mineralocorticoid replacement — specialist initiation, not routine."}
+       ]},
+       {b:"warn", html:"Never stop glucocorticoid abruptly — sudden cessation precipitates crisis. Under-replacement risks crisis; over-replacement causes Cushingoid harm — weight gain, hypertension, dysglycaemia and osteoporosis. Dose adequacy is judged clinically and biochemically, never by a single random cortisol."},
+       {b:"why", html:"<b>Replacement aims to reproduce physiological cortisol secretion</b> — the adrenal output the body can no longer make. Mineralocorticoid replacement is the piece the non-specialist forgets: <b>it is required in primary disease only</b>, and its titration target is renin, postural BP and electrolytes rather than symptoms alone."}
+     ]},
+
+    {id:"sickday", nav:"Sick-day rules", title:"Sick-day rules and crisis prevention — the critical education", sub:"The most examinable, life-saving element of the whole condition. Rehearse it at every contact.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Sick-day rule 1 — oral","DOUBLE the oral glucocorticoid dose during fever, intercurrent illness or significant infection, until recovered"],
+         ["Sick-day rule 2 — parenteral","Vomiting, diarrhoea, or unable to take or keep down tablets → IM hydrocortisone from the emergency injection kit + seek urgent medical help"],
+         ["Procedures","Surgery, major dental work, colonoscopy prep → peri-procedure parenteral steroid cover per protocol — coordinate it, including for dental work"],
+         ["Steroid Emergency Card","Issue the NHS Steroid Emergency Card (the 2020 initiative that standardised peri-operative and sick-day management) + a MedicAlert bracelet; ensure it is documented on the records and prescriptions"],
+         ["Emergency kit","Provide an IM hydrocortisone injection kit; train the patient AND family or carers to use it; replace before expiry"],
+         ["Never stop abruptly","Sudden cessation precipitates crisis — reinforce adherence at every review"]
+       ]},
+       {b:"say", html:"Your body can’t make its own steroid hormone any more, so the tablets do that job every day — and when you’re ill, your body would normally make more, so you double the dose. If you’re vomiting and can’t keep the tablets down, that’s what the injection is for: anyone can give it, then call for help straight away. Carry your steroid card everywhere, and never stop the tablets suddenly."},
+       {b:"why", html:"Adrenal crisis is largely preventable through patient education, and patients who reliably apply the sick-day rules and carry emergency steroid have far fewer life-threatening episodes. The SCA examiner expects explicit, structured safety-netting delivered in plain language: double the oral dose for fever, switch to IM if vomiting, call for help. Empowering family members to inject provides the critical safety margin during severe illness."}
+     ]},
+
+    {id:"lifestyle", nav:"Living with it", title:"Self-management and living with adrenal insufficiency", sub:"Self-management is the cornerstone of preventing crisis.",
+     blocks:[
+       {b:"table", head:["Topic","Advice","Why"], rows:[
+         ["<b>Adherence</b>","Lifelong, non-negotiable medication. Use reminders or dosette boxes; never run out — order in advance and carry spares when travelling","A missed supply is a crisis risk, not an inconvenience"],
+         ["<b>Identification</b>","Carry the Steroid Emergency Card and wear a MedicAlert bracelet at all times","Makes the crisis treatable by strangers"],
+         ["<b>Travel</b>","Extra medication and the IM hydrocortisone kit in hand luggage with a doctor's letter; know how to access care abroad","Hold luggage gets lost; crises don't wait"],
+         ["<b>Vaccination &amp; infection</b>","Keep immunisations up to date; treat infections promptly and apply the sick-day rules early","Infection is the commonest precipitant"],
+         ["<b>Family training</b>","Teach family and carers to recognise crisis and administer the emergency IM hydrocortisone","The patient who needs the injection most may be too unwell to give it"],
+         ["<b>Support</b>","<b>Signpost the Addison's Disease Self-Help Group (ADSHG)</b>","Peer support and patient resources"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitor", title:"Follow-up and monitoring", sub:"Balance the harms of under- and over-replacement, and screen for the autoimmune cluster.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Wellbeing, energy, weight, BP (lying AND standing), pigmentation</b>","<b>Each review</b>","<b>Adjust glucocorticoid; assess over- vs under-replacement</b>"],
+         ["<b>U&amp;E ± plasma renin</b>","<b>Periodically</b>","Titrate fludrocortisone to normalise BP, postural drop and electrolytes (primary disease)"],
+         ["<b>Sick-day knowledge, kit and card</b>","<b>Each review — re-educate at every contact</b>","Replace expired hydrocortisone; confirm the card is carried and the record flagged"],
+         ["<b>Over-replacement screen</b>","Each review","Weight gain, hypertension, dysglycaemia, osteoporosis — minimise the glucocorticoid dose accordingly"],
+         ["<b>Associated autoimmune disease</b>","<b>Periodically in autoimmune Addison's</b>","Screen for thyroid disease, B12 deficiency, coeliac and type 1 diabetes"],
+         ["<b>Annual specialist review</b>","<b>Yearly</b>","Coordinate endocrinology follow-up; bone health assessment as indicated"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"📞 999 + IM hydrocortisone", html:"Vomiting, collapse, severe weakness, or any acute illness with shock — give the injection first (anyone can), then 999. Treat first, confirm later."},
+         {tone:"amber", h:"🟠 Same-day / urgent", html:"Any acute illness or vomiting in a patient who cannot apply the sick-day rules · a patient found to have stopped their steroid · an expired or missing emergency kit in someone currently unwell."},
+         {tone:"blue", h:"🩺 Routine review", html:"Annual replacement review · repeat prescriptions with no gaps · immunisations · new symptoms of the autoimmune cluster (thyroid, B12, coeliac, T1DM)."}
+       ]},
+       {b:"why", html:"Long-term monitoring balances the harms of under- and over-replacement and detects the additional autoimmune conditions that cluster with autoimmune Addison's. Repeated reinforcement of the sick-day rules at every encounter is the highest-yield safety intervention in the chronic care of this disease."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, when, how urgently", sub:"Diagnosis and initiation are specialist-led; the GP delivers lifelong shared care.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / acute medicine", html:"Suspected adrenal crisis — admit after the first-dose parenteral hydrocortisone and IV fluids. Never delay the steroid for the ambulance."},
+         {tone:"amber", h:"Urgent endocrinology", html:"New biochemical or clinical suspicion — low 9am cortisol, abnormal Synacthen, suggestive electrolytes — for confirmation, cause work-up and treatment initiation. <b>All confirmed or suspected disease is referred:</b> replacement, sick-day rules, the steroid emergency card and home IM hydrocortisone are initiated under endocrinology."},
+         {tone:"blue", h:"Pituitary / neurosurgery", html:"Secondary insufficiency with a pituitary lesion on MRI → joint endocrine and neurosurgical care."},
+         {tone:"amber", h:"Oncology <span class='tw'>2WW</span>", html:"Bilateral adrenal metastases identified on imaging as the cause (e.g. from lung cancer) → manage the primary malignancy via the appropriate suspected-cancer pathway — see the NG12 card under <a href='#workup'>Work-up</a>."},
+         {tone:"green", h:"GP manages (shared care)", html:"Repeat prescriptions with no gaps · sick-day reinforcement at every contact · immunisations · monitoring between specialist reviews · coordinating the annual endocrinology review · flagging the record · peri-procedure steroid cover coordination."}
+       ]},
+       {b:"why", html:"Although diagnosis and stabilisation are specialist-led, primary care is central to safe long-term care: uninterrupted steroid supply, reinforcing the sick-day rules, and recognising decompensation early. Bilateral adrenal metastases are an important non-autoimmune cause and the route into the relevant cancer pathway."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only — the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 38-year-old woman attends with eighteen months of exhaustion, half a stone of weight loss and dizziness on standing, previously coded as low mood and tiredness-all-the-time. Bloods last week: Na⁺ 128, K⁺ 5.4. She mentions she has started salting everything she eats. Her sister has coeliac disease."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Connects <b>low Na⁺ + high K⁺</b> with the story rather than repeating the bloods; elicits <b>salt craving</b> and looks for <b>palmar-crease and buccal pigmentation</b> and a <b>postural drop</b>; asks explicitly about <b>steroid use</b>; arranges <b>9am cortisol, U&amp;E, glucose and ACTH</b> with <b>urgent endocrinology referral</b> rather than waiting; safety-nets in plain language — if you start vomiting or feel dramatically worse, that is an emergency: call 999 and say you may have an adrenal problem; and picks up the family autoimmune history. <a href='../../cases/addisons-disease.html'>Open the full casebook chapter →</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG243 \u2014 Adrenal insufficiency: identification and management (2024)<br><a href="https://www.nice.org.uk/guidance/ng243" rel="noopener">nice.org.uk/guidance/ng243</a><span class="rd"> \u2014 never delay steroids for tests; hydrocortisone 100 mg IM/IV + fluids first; crisis recognition in known and high-risk patients</span></li>'+
+         '<li>Society for Endocrinology \u2014 emergency guidance for acute adrenal insufficiency<span class="rd"> \u2014 the crisis bundle: 100 mg hydrocortisone stat, 1 L 0.9% saline over 30 min, treat hypoglycaemia, transfer within 30 min</span></li>'+
+         '<li><b>NHS England \u2014 Steroid Emergency Card (2020)</b><span class="rd"> \u2014 the standardised card, record-flagging and peri-procedure cover this page mandates at every review</span></li>'+
+         '<li><b>NICE NG243 \u2014 adrenal insufficiency</b><span class="rd"> \u2014 the diagnostic thresholds (9am cortisol &lt;100 / &gt;430\u2013500 nmol/L), replacement doses and monitoring rhythm</span></li>'+
+         '<li><b>Endocrine Society clinical practice guidelines</b><span class="rd"> \u2014 replacement titration, DHEA in selected women, and the autoimmune-cluster screen</span></li>'+
+         '<li><b>BSPED guidance</b><span class="rd"> \u2014 paediatric adrenal crisis: same principles, weight-based doses</span></li>'+
+         '<li><b>NICE NG12 \u2014 Suspected cancer (updated May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 the weight-loss trigger symptoms and the lung-cancer CXR/2WW routes relevant to adrenal metastases</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 verify all doses before prescribing</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Primary-care recognition, referral and lifelong shared care of adrenal insufficiency \u2014 NICE NG243 (2024), NICE, Society for Endocrinology emergency guidance, NHS Steroid Emergency Card (2020), BSPED for under-16s. Diagnosis and initiation are specialist-led; assessment and management are merged on this page and the former diagnostic algorithm is retired. Verify every dose against the current BNF and local protocols."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>
