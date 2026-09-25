@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lyme disease — Protocol · Reasoning GP</title>
+<meta name="description" content="Lyme disease in UK primary care on one page, per NICE NG95 (2018) and QS186 (2019): erythema migrans as a clinical diagnosis, ELISA then immunoblot testing, doxycycline-led antibiotic regimens by presentation, neurological and cardiac red flags, tick-bite advice, persistent symptoms, referral and safety-netting." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/lyme-disease.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790316494957944 tools/management/lyme-disease.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Lyme disease protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F99F}",
+  title:"Lyme disease",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Lyme disease — treat the rash on sight, test only when there is no rash",
+  stemSub:"One page for Lyme disease in UK primary care. Erythema migrans is a clinical diagnosis: treat it without testing. Without a rash, the two-tier test (ELISA then immunoblot) guides the decision, and a negative early test does not rule Lyme out. The regimen is chosen by presentation, and neurological or cardiac involvement changes the urgency.",
+  guideline:"NICE NG95 (2018, updated Oct 2018) · NICE QS186 (2019) · UKHSA RIPL",
+  meta:[
+    {t:"NICE NG95 Lyme disease (2018)"},
+    {t:"NICE QS186 quality standard (2019)"},
+    {t:"UKHSA RIPL · national reference lab"},
+    {t:"Doses per NG95 · check BNF / BNFc"}
+  ],
+  lead:'<div class="mg-layers"><a href="#diagnose"><b>Diagnosis</b><small>EM is clinical</small></a><a href="#test"><b>Testing</b><small>ELISA → immunoblot</small></a><a href="#treat"><b>Treat</b><small>Regimen by presentation</small></a><a href="#refer"><b>Refer</b><small>Neuro · cardiac · doubt</small></a></div>',
+  glance:[
+    {lbl:"EM rash", val:"Treat clinically", sub:"no test needed"},
+    {lbl:"No EM", val:"ELISA → immunoblot", sub:"test, then treat per result"},
+    {lbl:"Adult 1st-line", val:"Doxycycline", sub:"100 mg BD or 200 mg OD · 21 days"},
+    {lbl:"Alternatives", val:"Amoxicillin · azithromycin", sub:"1 g TDS 21 d · 500 mg OD 17 d"},
+    {lbl:"Tick bite, well", val:"No antibiotics", sub:"advise and safety-net"},
+    {lbl:"Disseminated", val:"Neuro / cardiac", sub:"specialist ± IV ceftriaxone"}
+  ],
+  quickSub:"If you read nothing else, read these five cards. Every dose on this page is taken from NICE NG95 — check the current BNF/BNFc before prescribing.",
+  quick:[
+    {tone:"green", h:"Erythema migrans = diagnose and treat now", html:"An expanding red rash appearing days to weeks after a (possible) tick bite is <b>erythema migrans</b>. Diagnose Lyme disease <b>clinically and start antibiotics without laboratory testing</b> (NICE NG95; QS186 statement 1). Serology is often negative this early and only delays treatment."},
+    {tone:"blue", h:"Adult first-line: doxycycline 21 days", html:"For EM and/or non-focal symptoms in adults and young people aged 12 and over: <b>oral doxycycline 100 mg twice daily or 200 mg once daily for 21 days</b>. Alternatives: <b>amoxicillin 1 g three times daily for 21 days</b>, then <b>azithromycin 500 mg daily for 17 days</b> (NICE NG95). Avoid azithromycin with cardiac involvement (QT effect)."},
+    {tone:"amber", h:"No rash? Test — and don’t trust an early negative", html:"Suspected Lyme without EM → <b>ELISA</b>; positive or equivocal → <b>immunoblot</b>. Negative ELISA within 4 weeks of symptom onset and still suspected → <b>repeat ELISA 4–6 weeks later</b>. Symptoms for 12 weeks or more with a negative ELISA and still suspected → <b>immunoblot</b>. High suspicion → do not rule Lyme out on a negative result (NICE NG95; QS186 statement 2)."},
+    {tone:"red", h:"Red flags: face, meninges, heart", html:"Facial nerve palsy or other cranial neuropathy, radiculopathy, meningitis or encephalitis features, and <b>carditis</b> (heart block, syncope, breathlessness, chest pain). Follow usual emergency practice — e.g. suspected CNS infection or complete heart block → same-day emergency referral <b>even if Lyme disease is suspected</b> (NICE NG95)."},
+    {tone:"plain", h:"Well after a tick bite? No prophylaxis", html:"Do not give antibiotics to someone who is well after a tick bite. Explain tick removal, what EM looks like, and to return if a rash or flu-like illness develops over the following weeks. Most tick bites do not transmit infection."}
+  ],
+  pathwaySub:"The consultation in six moves. The red step is where harm happens — missed carditis and neuroborreliosis.",
+  pathway:[
+    {title:"Exposure and rash", html:"Ask about outdoor activity (woodland, moorland, parks, gardens), travel, and tick bites — but <b>many patients do not recall a bite</b>. Look at the whole skin: is there an expanding erythema migrans?"},
+    {title:"EM present → treat", html:"EM is diagnostic. <b>Start the NG95 regimen the same day</b>; do not send serology to ‘confirm’ it. Record the size, site and appearance (a photo helps)."},
+    {title:"Screen for dissemination", html:"Cranial nerve palsy (especially facial), radicular pain, meningism, confusion; palpitations, syncope, breathlessness, chest pain (ECG); swollen joint; eye symptoms. Emergency features → same-day referral.", alert:true},
+    {title:"No EM → test sensibly", html:"Compatible symptoms plus possible exposure → ELISA, then immunoblot if positive/equivocal, with the NG95 timing rules for repeat testing. Do not test people without symptoms after a tick bite."},
+    {title:"Treat by presentation", html:"Non-focal/EM: 21 days oral. Cranial nerve or peripheral nerve involvement: 21 days oral. Arthritis or acrodermatitis chronica atrophicans: 28 days. CNS or haemodynamically unstable carditis: specialist, IV ceftriaxone."},
+    {title:"Review and close the loop", html:"Warn that recovery from fatigue and aches can take weeks. Ongoing symptoms → reassess; consider <b>one second course of an alternative antibiotic</b> if treatment may have failed; <b>after 2 courses, do not routinely offer further antibiotics</b> — seek specialist advice."}
+  ],
+  sections:[
+
+    {id:"diagnose", nav:"Diagnose", title:"Recognising Lyme disease", sub:"Lyme disease is caused by Borrelia burgdorferi sensu lato, transmitted by infected Ixodes ticks. Most presentations in primary care are erythema migrans.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Erythema migrans","A red rash that <b>expands over days</b>, may have central clearing (the ‘bull’s-eye’ pattern), and is usually <b>not itchy, hot or painful</b>. It typically appears <b>1–4 weeks</b> after the bite (range roughly 3 days to 3 months) and can last several weeks. Often quoted as &gt;5 cm across. <b>Diagnose and treat clinically — do NOT wait for, or rely on, tests</b>"],
+         ["Early reaction at the bite site","A rash that <b>develops and recedes within 48 hours</b> of the bite, and is more likely than EM to be <b>hot, itchy or painful</b>, is usually a <b>tick-bite reaction</b> rather than EM — advise and review rather than treat"],
+         ["Non-focal symptoms","Fever and sweats, swollen lymph glands, malaise, fatigue, neck pain or stiffness, migratory joint or muscle aches, cognitive difficulties, headache, paraesthesia. Non-specific on their own — consider Lyme with exposure, and test"],
+         ["Focal (disseminated) features","<b>Neuroborreliosis</b> (facial palsy or other cranial neuropathy, radiculopathy, meningitis, encephalitis); <b>carditis</b> (heart block, pericarditis); <b>Lyme arthritis</b> (usually a large joint, often the knee); <b>acrodermatitis chronica atrophicans</b> (bluish-red, later atrophic skin on an extremity); lymphocytoma; eye involvement (uveitis, keratitis)"],
+         ["Context","Tick-endemic exposure in the UK or abroad; <b>many recall no bite</b>. Ticks are small (nymphs are poppy-seed sized) and bites are painless"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"EM is enough on its own", html:"People presenting with erythema migrans should be diagnosed and treated for Lyme disease on clinical assessment, without laboratory testing.", src:"NICE QS186 statement 1 (2019); NICE NG95 (2018)"},
+         {tone:"amber", h:"Don’t diagnose on a bite alone", html:"A tick bite without symptoms is not Lyme disease. Do not test or treat asymptomatic people; advise and safety-net instead.", src:"NICE NG95 (2018); NICE NG182 (2020)"}
+       ]},
+       {b:"why", html:"Erythema migrans is a <strong>clinical diagnosis</strong> because the antibody response takes weeks to develop. Testing an EM rash both delays treatment and falsely reassures when it comes back negative. Without EM, the two-tier test (ELISA then immunoblot) is used, and disseminated features change the urgency and the route of treatment."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags and same-day action", sub:"Disseminated Lyme disease is uncommon, but carditis and CNS infection can be dangerous. Lyme is a reason to add treatment, never to delay usual emergency care.",
+     blocks:[
+       {b:"warn", html:"<b>Follow usual clinical practice for emergency referral</b> — for example symptoms suggesting <b>central nervous system infection</b>, <b>uveitis</b>, or cardiac complications such as <b>complete heart block</b> — even if Lyme disease is suspected. Do not wait for Lyme serology."},
+       {b:"cards", items:[
+         {tone:"red", h:"Carditis — heart block", html:"Palpitations, syncope or presyncope, breathlessness or chest pain in someone with possible Lyme → <b>ECG</b>. Second/third-degree AV block, syncope or haemodynamic compromise → <b>999 / same-day admission</b> (may need temporary pacing).", src:"NICE NG95 (2018)"},
+         {tone:"red", h:"Meningitis / encephalitis", html:"Headache with neck stiffness, photophobia, confusion, reduced consciousness or seizures → same-day emergency assessment as for any suspected CNS infection. Lyme neuroborreliosis affecting the CNS is treated with IV ceftriaxone under specialist care.", src:"NICE NG95 (2018)"},
+         {tone:"red", h:"Eye involvement", html:"Red painful eye, photophobia or visual change (uveitis, keratitis) → same-day ophthalmology.", src:"NICE NG95 (2018)"},
+         {tone:"amber", h:"Facial palsy", html:"A lower motor neurone facial palsy (can be bilateral) after possible tick exposure — consider Lyme and test. Treat as cranial nerve Lyme if confirmed or strongly suspected; discuss with a specialist without delaying treatment. Exclude stroke features and other causes as usual.", src:"NICE NG95 (2018)"},
+         {tone:"amber", h:"Radiculopathy", html:"Severe, often nocturnal, radicular pain or sensory/motor deficit in a nerve root distribution — consider peripheral nervous system Lyme. Specialist discussion.", src:"NICE NG95 (2018)"}
+       ]},
+       {b:"why", html:"Lyme carditis usually presents as fluctuating AV conduction block and can progress rapidly to complete heart block. That is why any cardiac symptom in suspected Lyme gets an ECG, and why azithromycin (which prolongs the QT interval) is avoided when there is cardiac involvement."}
+     ]},
+
+    {id:"tick", nav:"Tick bites", title:"Tick bites, removal and prevention", sub:"Most tick bites do not transmit Lyme disease. The job after a bite is removal, advice and safety-netting — not antibiotics.",
+     blocks:[
+       {b:"tiles", items:[
+         {t:"\u{1FA9D} Remove it promptly", html:"Use a <b>plastic tick-removal device</b> if available, or fine-tipped tweezers. Get under the tick’s body close to the skin and lift or pull it off steadily without squeezing or crushing the body. Clean the area afterwards."},
+         {t:"\u{1F48A} No prophylactic antibiotics", html:"Do not offer antibiotics to people who have been bitten by a tick and have no symptoms. Watch for symptoms instead."},
+         {t:"\u{1F9EA} No testing after a bite", html:"Do not test asymptomatic people for Lyme disease after a tick bite — antibodies take weeks to appear and a result would not change management."},
+         {t:"\u{1F455} Prevention", html:"Cover skin, tuck trousers into socks, keep to paths, use an insect repellent, and check skin (including scalp, groin and behind knees; children’s heads and necks) after being outdoors."},
+         {t:"\u{1F4DA} What to look for", html:"An expanding red rash, or a flu-like illness, in the weeks after the bite — return and it will be treated. Photograph the site."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Advice after a tick bite", html:"Remove the tick, explain that most bites do not transmit infection, describe EM, and advise to seek help if symptoms appear in the weeks afterwards.", src:"NICE NG95 (2018)"},
+         {tone:"plain", h:"Public awareness", html:"Local authorities should organise health promotion activities to raise public awareness of how to prevent Lyme disease.", src:"NICE QS186 statement 4 (2019)"}
+       ]}
+     ]},
+
+    {id:"test", nav:"Testing", title:"Laboratory testing when there is no EM", sub:"Two-tier serology. The timing rules matter: antibodies may be absent early in infection.",
+     blocks:[
+       {b:"table", head:["Situation","Test","Next step"], rows:[
+         ["<b>Erythema migrans</b>","<b>None</b>","Diagnose and treat clinically"],
+         ["Symptoms suggestive of Lyme, no EM","<b>ELISA</b> (combined IgG/IgM)","Consider starting treatment while awaiting results if clinical suspicion is high"],
+         ["ELISA positive or equivocal","<b>Immunoblot</b>","Positive immunoblot + compatible symptoms → diagnose and treat"],
+         ["ELISA negative, tested <b>within 4 weeks</b> of symptom onset, still suspected","Repeat ELISA <b>4–6 weeks</b> after the first","Explain why a repeat is needed"],
+         ["ELISA negative, symptoms for <b>12 weeks or more</b>, still suspected","<b>Immunoblot</b>","Interpret with the clinical picture"],
+         ["Immunoblot negative but high suspicion / symptoms persist","—","Discuss with a specialist; consider alternative diagnoses. Do not rule Lyme out on a negative result alone if suspicion is high"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Repeat the early negative", html:"A negative ELISA taken within 4 weeks of symptoms starting is repeated 4 to 6 weeks later if Lyme disease is still suspected.", src:"NICE QS186 statement 2 (2019); NICE NG95 (2018)"},
+         {tone:"blue", h:"Where samples go", html:"The UKHSA <b>Rare and Imported Pathogens Laboratory (RIPL)</b>, Porton Down, is the national Lyme reference laboratory and uses standard two-tier testing (screening ELISA, then immunoblot). Use its Lyme request form with the clinical details; RIPL also offers clinical advice.", src:"UKHSA RIPL user manual (v31, June 2026)"},
+         {tone:"plain", h:"Use validated tests only", html:"Use UKAS-accredited laboratories with validated tests. Tests not validated for Lyme diagnosis (e.g. some privately marketed assays) should not be used to make or exclude the diagnosis.", src:"NICE NG95 (2018)"},
+         {tone:"plain", h:"Serology after treatment", html:"Antibodies can persist for months or years after successful treatment. A positive result does not prove active infection — do not re-treat on serology alone.", src:"UKHSA RIPL user manual (v31, June 2026)"}
+       ]},
+       {b:"why", html:"Serology misses early infection because IgM and IgG take several weeks to rise; this is why EM is treated without testing and why an early negative ELISA is repeated. Immunocompromised people may not mount an antibody response, so specialist advice is sensible when suspicion stays high."}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Antibiotic treatment by presentation (adults and ≥12 years)", sub:"The regimen, dose and duration depend on the presentation (NICE NG95; QS186 statement 3). Doses below are the NG95 adult/12+ doses.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"EM / non-focal", title:"Doxycycline 21 days", when:"first-line",
+          html:"<b><span class='rx'>Doxycycline 100 mg twice daily or 200 mg once daily for 21 days</span></b>. First alternative: <b><span class='rx'>amoxicillin 1 g three times daily for 21 days</span></b>. Second alternative: <b><span class='rx'>azithromycin 500 mg daily for 17 days</span></b> (not with cardiac involvement)."},
+         {step:"Cranial / peripheral nerves", title:"Oral, 21 days + specialist discussion", when:"e.g. facial palsy, radiculopathy",
+          fromLabel:"focal neurological",
+          html:"<span class='rx'>Doxycycline 100 mg twice daily or 200 mg once daily</span>, or <span class='rx'>amoxicillin 1 g three times daily</span>, for <b>21 days</b>. Discuss with or refer to a specialist, without delaying treatment."},
+         {step:"Central nervous system", title:"Specialist-led — IV ceftriaxone", when:"meningitis, encephalitis",
+          fromLabel:"CNS neuroborreliosis", tone:"red",
+          html:"Emergency referral. First-line <span class='rx'>IV ceftriaxone 2 g twice daily or 4 g once daily for 21 days</span>; alternative <span class='rx'>oral doxycycline 200 mg twice daily or 400 mg once daily for 21 days</span> (higher dose for CNS penetration; also used as the oral switch once stabilised). Hospital-initiated."},
+         {step:"Arthritis / ACA", title:"Oral, 28 days", when:"Lyme arthritis, acrodermatitis chronica atrophicans",
+          fromLabel:"late or joint/skin",
+          html:"<span class='rx'>Doxycycline 100 mg twice daily or 200 mg once daily</span> or <span class='rx'>amoxicillin 1 g three times daily</span>, each for <b>28 days</b>; IV ceftriaxone may be used under specialist care if oral options are unsuitable. Reassess and consider rheumatology/dermatology input."},
+         {step:"Carditis", title:"Doxycycline 21 days — or IV if unstable", when:"heart block, myocarditis",
+          fromLabel:"cardiac", tone:"red",
+          html:"Not haemodynamically compromised: <span class='rx'>doxycycline 100 mg twice daily or 200 mg once daily for 21 days</span> (amoxicillin if doxycycline is contraindicated). Haemodynamically unstable: <span class='rx'>IV ceftriaxone 2 g once daily for 21 days</span>. <b>Not azithromycin</b> (QT). Specialist/cardiology-led."}
+       ]},
+       {b:"cards", items:[
+         {tone:"blue", h:"Choice and duration by presentation", html:"People with Lyme disease have initial antibiotic treatment, with the antibiotic, dosage and duration determined by their symptoms.", src:"NICE QS186 statement 3 (2019)"},
+         {tone:"red", h:"Azithromycin and the heart", html:"Do not use azithromycin to treat people with cardiac abnormalities associated with Lyme disease, because of its effect on the QT interval.", src:"NICE NG95 (2018)"},
+         {tone:"amber", h:"Focal symptoms → specialist, don’t delay", html:"Adults with focal symptoms: consider discussion with or referral to a specialist, <b>without delaying treatment</b>.", src:"NICE NG95 (2018)"}
+       ]},
+       {b:"warn", html:"Warn about the <b>Jarisch–Herxheimer reaction</b>: fever, chills, headache and worsening aches or rash, usually within the first 24 hours of antibiotics and settling within a day or two. It does not mean the antibiotic is failing or that the patient is allergic — keep taking it. Doxycycline: take with a full glass of water sitting upright, avoid lying down straight after, and use high-factor sun protection (photosensitivity)."}
+     ]},
+
+    {id:"special", nav:"Children & pregnancy", title:"Children and pregnancy", sub:"The drug changes, not the principle: EM is still treated clinically.",
+     blocks:[
+       {b:"table", head:["Group","First choice","Alternatives / notes"], rows:[
+         ["<b>Children under 9</b>","<b><span class='rx'>Amoxicillin</span></b> for 21 days (EM/non-focal) — <b>30 mg/kg three times daily</b> for children 33 kg and under","<span class='rx'>Azithromycin 10 mg/kg daily for 17 days</span> for children 50 kg and under (off-label under 12). Doxycycline is avoided under 9 (tooth staining)"],
+         ["<b>Children 9–11</b>","Doxycycline may be used — under 45 kg: <span class='rx'>5 mg/kg in 2 divided doses on day 1, then 2.5 mg/kg daily in 1 or 2 divided doses</span>, total 21 days (up to 5 mg/kg daily for severe infection); 45 kg and over: adult dose. Off-label under 12","NG95 judged dental risk low with courses of 28 days or less. Amoxicillin or azithromycin as alternatives"],
+         ["<b>Young people 12+</b>","Adult regimens","As the treatment section"],
+         ["<b>Pregnancy / breastfeeding</b>","Treat as usual practice, using <b>antibiotics suitable in pregnancy</b> — in practice amoxicillin; doxycycline is avoided","Seek specialist advice for focal/disseminated disease; check BNF for breastfeeding"],
+         ["<b>Children with focal disease</b>","Specialist (paediatric/infection) care","CNS involvement: <span class='rx'>IV ceftriaxone 80 mg/kg (max 4 g) once daily for 21 days</span> for children under 50 kg, under specialist care"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Paediatric doses", html:"Amoxicillin 30 mg/kg three times daily (≤33 kg) and azithromycin 10 mg/kg daily (≤50 kg) are the NG95 weight-based regimens for EM/non-focal disease. Check BNFc for maximum doses.", src:"NICE NG95 (2018)"},
+         {tone:"plain", h:"Pregnancy", html:"Treat pregnant women following usual practice, but with antibiotics that are suitable in pregnancy.", src:"NICE NG95 (2018)"}
+       ]}
+     ]},
+
+    {id:"persist", nav:"Persistent symptoms", title:"Ongoing symptoms after treatment", sub:"Fatigue, aches and poor concentration often take weeks to settle after a correct course. Persistence is not proof of ongoing infection.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"Reassess before re-treating", when:"symptoms persist after the first course",
+          html:"Was the diagnosis right? Was the correct drug, dose and duration taken? Any new focal features (neuro, cardiac, joint, eye)? Could reinfection have occurred? Consider alternative diagnoses."},
+         {step:"2", title:"Consider a second course of an alternative antibiotic", when:"if treatment may have failed",
+          fromLabel:"possible treatment failure",
+          html:"NICE NG95: consider a second course of antibiotics for ongoing symptoms if treatment may have failed, <b>using an alternative antibiotic</b> to the initial course (e.g. amoxicillin after doxycycline)."},
+         {step:"3", title:"After 2 courses: no more routine antibiotics", when:"still symptomatic",
+          fromLabel:"two courses completed", tone:"amber",
+          html:"<b>Do not routinely offer further antibiotics.</b> Consider discussion with the national reference laboratory (UKHSA RIPL) or discussion with/referral to an appropriate specialist (infection, neurology, rheumatology, paediatrics) depending on symptoms."},
+         {step:"4", title:"Support the person", when:"throughout",
+          html:"Acknowledge the symptoms are real, manage them symptomatically, review function, mood and sleep, and agree a follow-up plan. Consider referral for help with the impact of ongoing symptoms."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Second course", html:"Consider a second course of antibiotics if treatment may have failed, using an alternative antibiotic to the first.", src:"NICE NG95 (2018)"},
+         {tone:"amber", h:"After 2 completed courses", html:"Do not routinely offer further antibiotics; consider discussion with a national reference laboratory, or discussion with or referral to an appropriate specialist.", src:"NICE NG95 (2018)"}
+       ]},
+       {b:"why", html:"Correctly treated Lyme disease usually resolves, but some people have fatigue, pain or cognitive symptoms for months. Repeated or prolonged antibiotics have not been shown to help and cause harm (C. difficile, adverse drug reactions, resistance). Serology can remain positive after cure, so a positive result is not a reason to re-treat."}
+     ]},
+
+    {id:"followup", nav:"Follow-up", title:"Follow-up and monitoring", sub:"Most early Lyme needs one review. Build the checkpoints into the plan at the first consultation.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Treatment started + education","At diagnosis","Start antibiotic (clinically for EM); explain Jarisch–Herxheimer; describe disseminated features to watch for"],
+         ["Rash and symptom response","During / at end of course","EM usually fades during treatment; tiredness and aches can lag behind by weeks"],
+         ["Repeat ELISA","4–6 weeks after a negative early ELISA","Only if tested within 4 weeks of onset and Lyme is still suspected"],
+         ["New focal features","Any time","Neuro, cardiac, joint or eye symptoms → same-day or urgent specialist route as appropriate"],
+         ["Persistent symptoms","After the course","Reassess; consider one alternative-antibiotic second course if treatment may have failed; after 2 courses → specialist/RIPL advice, not more antibiotics"],
+         ["Test interpretation","If serology used","Interpret in clinical context; serology can stay positive after cure"]
+       ]},
+       {b:"timeline", items:[
+         {n:"1", when:"Day 0", title:"Diagnose, treat, educate", html:"Start the NG95 regimen; photograph the rash; warn about Jarisch–Herxheimer and disseminated features."},
+         {n:"2", when:"End of course (3–4 weeks)", title:"Response review", html:"Confirm improvement; reassess if symptoms persist or progress."},
+         {n:"3", when:"If persisting", title:"Reassess / refer", html:"Alternative diagnosis? Treatment failure → consider an alternative-antibiotic second course; after 2 courses → specialist advice."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral — who, how fast, where", sub:"Treat first where appropriate; referral should not delay antibiotics.",
+     blocks:[
+       {b:"table", head:["Presentation","Urgency","Where","What to send"], rows:[
+         ["Syncope, 2nd/3rd-degree heart block, haemodynamic compromise","<b>999 / same day</b>","Emergency department / cardiology","ECG, exposure history, antibiotics given"],
+         ["Suspected meningitis, encephalitis","<b>Same day</b>","Acute medicine / ED","Neuro findings, timeline, any rash photo"],
+         ["Uveitis or other eye involvement","<b>Same day</b>","Eye casualty","Symptoms, visual acuity"],
+         ["Facial palsy or other cranial neuropathy, radiculopathy","Urgent discussion — don’t delay treatment","Infection / neurology (per local pathway)","Serology result or request, treatment started"],
+         ["Lyme arthritis, acrodermatitis chronica atrophicans","Routine/soon","Rheumatology / dermatology / infection","Serology, joint findings, 28-day course details"],
+         ["Children with focal disease","Urgent","Paediatrics / paediatric infection","As above"],
+         ["Diagnostic doubt, persistent symptoms after 2 courses","Routine","Infection specialist; UKHSA RIPL clinical advice","Full treatment history, test results"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Emergency referral trumps Lyme", html:"Symptoms suggesting CNS infection, uveitis, or cardiac complications such as complete heart block → usual emergency referral, even if Lyme is suspected.", src:"NICE NG95 (2018)"},
+         {tone:"plain", h:"Specialist discussion for focal disease", html:"Consider discussion with or referral to a specialist for adults with focal symptoms, without delaying treatment; children with focal symptoms need specialist input.", src:"NICE NG95 (2018)"}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Safety-netting", sub:"Give the patient the words, and write down what you said.",
+     blocks:[
+       {b:"tiles", items:[
+         {t:"\u{1F534} Heart", html:"“If you have a racing or very slow heartbeat, faint or nearly faint, get breathless or have chest pain, call 999 or go to A&amp;E — Lyme can occasionally affect the heart’s rhythm.”"},
+         {t:"\u{1F9E0} Nerves and brain", html:"“If one side of your face droops, you get a severe headache with a stiff neck or dislike of light, confusion, or new shooting nerve pains or weakness, contact us the same day.”"},
+         {t:"\u{1F441} Eyes", html:"“A painful red eye or blurred vision needs to be seen the same day.”"},
+         {t:"\u{1F4C8} Feeling worse at first", html:"“You may feel briefly worse — fever, aches — in the first day of the antibiotic. That is expected and settles; keep taking it.”"},
+         {t:"\u{1FA9D} New rash after a bite", html:"“A new spreading red rash or flu-like illness in the weeks after a tick bite — come back; we’ll treat it.”"}
+       ]},
+       {b:"say", html:"That spreading red rash is typical of Lyme disease, and it is enough to diagnose it — we don’t need a blood test, which is often negative this early. A three-week course of doxycycline treats it well. Take it with a full glass of water while sitting up, and protect your skin from the sun. You might feel briefly worse on the first day — that is expected, so keep going. If your face droops, you get a bad headache with a stiff neck, palpitations or faints, contact us straight away. Tiredness can take a few weeks to lift after the course; if it doesn’t, come back and we’ll review it together."}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Where Lyme consultations go wrong.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Testing an EM rash","Delays treatment and a negative result falsely reassures. EM is treated on sight"],
+         ["Antibiotics for a tick bite","Not recommended for people who are well after a bite. Advise, safety-net, and treat if EM or symptoms develop"],
+         ["Calling the 48-hour bite reaction EM","A rash that develops and recedes within 48 hours of the bite (often hot, itchy or painful) is usually a tick-bite reaction, not EM"],
+         ["One early negative ELISA → ‘not Lyme’","If tested within 4 weeks of onset and still suspected, repeat 4–6 weeks later; if symptoms for 12+ weeks, immunoblot"],
+         ["Azithromycin in carditis","QT prolongation — avoid with cardiac involvement"],
+         ["Doxycycline in pregnancy or young children","Use amoxicillin (pregnancy; under 9s) or azithromycin (children, weight-based)"],
+         ["Missing the ECG","Any palpitations, dizziness, syncope or breathlessness in suspected Lyme → ECG for AV block"],
+         ["Endless antibiotic courses","After 2 completed courses, do not routinely offer more; seek specialist or reference-laboratory advice"],
+         ["Re-treating on a positive antibody test","Antibodies can persist after cure; treat the patient, not the serology"],
+         ["Relying on unvalidated private tests","Use accredited laboratories and validated two-tier testing"]
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card — the classic Lyme station tests whether you treat without testing, and how you handle a patient who wants a test.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"plain", h:"Classic scenario", html:"A 38-year-old woman back from a walking holiday in the New Forest has an 8 cm expanding red rash on her thigh with central clearing, and mild aches. She found a tick two weeks ago. She asks for ‘the Lyme blood test’ before taking any antibiotics, and mentions she is trying to conceive.", src:"NICE NG95 (2018) — scenario"},
+       {tone:"plain", h:"Examiner-style checkpoints", html:"Recognises EM and explains why no test is needed (and why an early test can be falsely negative); <b>asks about pregnancy</b> before prescribing (doxycycline vs amoxicillin); screens for neuro/cardiac/eye features; gives the correct regimen and duration; warns about Jarisch–Herxheimer and photosensitivity; safety-nets red flags; addresses the fear of ‘chronic Lyme’ honestly; arranges review.", src:"NICE NG95 (2018); NICE QS186 (2019)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG95 — Lyme disease (published April 2018, last updated October 2018)</b><br><a href="https://www.nice.org.uk/guidance/ng95" rel="noopener">nice.org.uk/guidance/ng95</a><span class="rd"> — EM as a clinical diagnosis, tick-bite advice and no prophylaxis, ELISA/immunoblot timing, regimens by presentation for adults and children, pregnancy, azithromycin/QT caution, emergency referral, second course and the two-course limit</span></li>'+
+         '<li><b>NICE QS186 — Lyme disease quality standard (July 2019)</b><br><a href="https://www.nice.org.uk/guidance/qs186" rel="noopener">nice.org.uk/guidance/qs186</a><span class="rd"> — statement 1 EM treated without testing; 2 repeat ELISA at 4–6 weeks; 3 antibiotic by presentation; 4 public awareness</span></li>'+
+         '<li><b>UKHSA — Rare and Imported Pathogens Laboratory (RIPL) user manual (v31, June 2026) and Lyme request form</b><br><a href="https://www.gov.uk/guidance/lyme-disease-sample-testing-advice" rel="noopener">gov.uk — Lyme disease: sample testing advice</a><span class="rd"> — national reference laboratory, two-tier testing, antibody persistence after cure, clinical advice</span></li>'+
+         '<li><b>NICE NG182 — Insect bites and stings: antimicrobial prescribing (2020)</b><br><a href="https://www.nice.org.uk/guidance/ng182" rel="noopener">nice.org.uk/guidance/ng182</a><span class="rd"> — no antibiotic for a bite without symptoms or signs of infection</span></li>'+
+         '<li><b>BNF / BNFc</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — check all doses, maximum paediatric doses, pregnancy and breastfeeding</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Lyme disease — NICE NG95 (2018, updated October 2018) and NICE QS186 (2019); UKHSA RIPL for reference testing. Antibiotic doses and durations are those stated in NG95; verify all doses against the current BNF/BNFc before prescribing, and seek specialist advice for CNS, cardiac and paediatric focal disease."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

@@ -56,8 +56,8 @@
       },
       {
         id: 'crc_50', tier: 'cancer',
-        label: 'Age ≥50 with rectal bleeding, or ≥40 with bleeding + change in bowel habit — colorectal 2WW',
-        action: 'Lower GI 2WW ± FIT.',
+        label: 'Rectal bleeding at 50+, or under 50 with abdominal pain or weight loss — FIT (NICE NG12)',
+        action: 'FIT; 2WW colorectal if ≥10 µg Hb/g. Rectal mass → 2WW without FIT.',
         patientPhrase: '"At your age, rectal bleeding needs a fast referral to rule out a bowel cause — this is standard, not a sign anything terrible has been found."',
         source: 'NICE NG12 §1.3',
         when: i => (i.age != null && i.age >= 50 && (i.bright_paper || i.mixed_stool || i.diarrhoea_blood)) || (i.age != null && i.age >= 40 && i.change_bowel),

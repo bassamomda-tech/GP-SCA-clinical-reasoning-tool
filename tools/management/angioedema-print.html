@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Angioedema — Protocol · Reasoning GP</title>
+<meta name="description" content="Angioedema in primary care on one page: airway danger signs and IM adrenaline (RCUK 2021), histaminergic versus bradykinin-mediated swelling, ACE inhibitor angioedema, C4 and C1-inhibitor testing for hereditary angioedema, the chronic urticaria ladder to omalizumab (NICE TA339), adrenaline auto-injectors, referral and safety-netting." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/angioedema.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790316402604106 tools/management/angioedema.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Angioedema management card">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F4A2}",
+  title:"Angioedema",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Angioedema — stabilise the airway, then find the mechanism",
+  stemSub:"Primary-care management of angioedema in one page: recognise airway involvement and anaphylaxis, separate histaminergic (allergic or idiopathic, usually with hives) from bradykinin-mediated swelling (ACE inhibitor, hereditary or acquired C1-inhibitor deficiency, no hives), treat each correctly, stop the trigger and refer the right people.",
+  guideline:"RCUK 2021 anaphylaxis · NICE NG258 (2026) · BSACI 2015 urticaria &amp; angioedema · UK C1-INH consensus 2014 · NICE TA339 / TA606 / TA738",
+  meta:[
+    {t:"Resuscitation Council UK — Emergency treatment of anaphylaxis (2021)", tone:"tw"},
+    {t:"NICE NG258 anaphylaxis (May 2026, replaced CG134)"},
+    {t:"BSACI chronic urticaria &amp; angioedema (2015)"},
+    {t:"UK C1-inhibitor deficiency consensus (2014) · WAO/EAACI HAE 2021"},
+    {t:"NICE TA339 omalizumab · TA606 lanadelumab · TA738 berotralstat"},
+    {t:"MHRA DSU 2017 adrenaline auto-injectors · BNF owns all other doses"}
+  ],
+  lead:'<div class="mg-layers"><a href="#emergency"><b>Airway first</b><small>999 + IM adrenaline</small></a><a href="#mechanism"><b>Which mechanism?</b><small>Hives or no hives</small></a><a href="#drugs"><b>ACE inhibitor?</b><small>Stop for good</small></a><a href="#hae"><b>C4 → C1-INH</b><small>Hereditary / acquired</small></a><a href="#refer"><b>Refer</b><small>Allergy / immunology</small></a></div>',
+  glance:[
+    {lbl:"Airway", val:"Tongue/throat?", sub:"= emergency"},
+    {lbl:"With urticaria", val:"Histaminergic", sub:"antihistamine-responsive"},
+    {lbl:"No urticaria", val:"Bradykinin?", sub:"ACEi / hereditary"},
+    {lbl:"Allergic", val:"Antihistamine", sub:"+ adrenaline if anaphylaxis"},
+    {lbl:"ACEi", val:"Stop permanently", sub:"avoid all ACEi"},
+    {lbl:"Red flag", val:"Stridor / anaphylaxis", sub:"= 999 + IM adrenaline"}
+  ],
+  quickSub:"If you read nothing else on this page, read these five cards. Sources are named on each card and listed under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Airway beats aetiology", html:"Swelling of the <b>tongue, floor of mouth, pharynx or larynx</b>, voice change, stridor, drooling, difficulty swallowing or breathing → <b>999</b>. If there are any features of anaphylaxis, give <b>IM adrenaline</b> into the anterolateral thigh and repeat after 5 minutes if no better (RCUK 2021). If you are unsure whether it is anaphylaxis, treat it as anaphylaxis."},
+    {tone:"amber", h:"Hives or no hives?", html:"Angioedema <b>with urticaria/itch</b> is almost always <b>histaminergic</b> (allergic or idiopathic) and responds to antihistamines. Angioedema <b>without urticaria</b> points to <b>bradykinin</b>: ACE inhibitor, hereditary or acquired C1-inhibitor deficiency. Bradykinin swelling responds poorly to adrenaline, antihistamine and steroid, lasts 2–5 days, and can cause <b>abdominal attacks</b>."},
+    {tone:"purple", h:"ACE inhibitor angioedema can start years in", html:"It can occur at <b>any time</b> during treatment, not only in the first weeks. <b>Stop the ACE inhibitor permanently</b>, record it as an adverse reaction, and never switch to another ACE inhibitor. ARBs carry a small cross-risk — use only with caution. Sacubitril/valsartan is contraindicated after ACEi/ARB angioedema."},
+    {tone:"blue", h:"Recurrent swelling without hives → check C4", html:"Not on an ACEi and no hives → <b>serum C4</b> is the screen (low in almost all HAE types 1 and 2, especially during an attack). Low C4 → <b>C1-INH level and function</b> and immunology referral. A normal C4 between attacks does not fully exclude it: repeat during an attack if suspicion remains."},
+    {tone:"green", h:"Chronic urticaria with angioedema: up-dose, then refer", html:"Daily non-sedating H1 antihistamine at standard dose → <b>up-dose to 4×</b> (off-label, BSACI 2015) → add a leukotriene receptor antagonist → specialist for <b>omalizumab (NICE TA339)</b> or ciclosporin. An adrenaline auto-injector is <b>not</b> routinely needed for chronic spontaneous urticaria/angioedema without anaphylaxis."}
+  ],
+  pathwaySub:"The consultation in six moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Airway and anaphylaxis check", html:"ABCDE. Tongue, floor of mouth, uvula or larynx involved? Voice change, stridor, drooling, wheeze, hypotension, widespread urticaria? → 999, IM adrenaline if anaphylaxis, lie flat with legs raised. Rapidly progressive facial or oral swelling needs same-day assessment even if stable now.", alert:true},
+    {title:"Hives or no hives", html:"Urticaria/itch present → histaminergic. No urticaria → think bradykinin (ACEi, HAE, acquired C1-INH deficiency) or, less often, idiopathic histaminergic angioedema without wheals."},
+    {title:"Medication review", html:"ACE inhibitors (any duration), sacubitril/valsartan, ARBs, gliptins with an ACEi, NSAIDs/aspirin (worsen chronic urticaria), oestrogens (worsen HAE), recent contrast or new drugs. Stop the culprit."},
+    {title:"Allergy history", html:"Timing after food, sting, drug, latex or exercise; reproducibility; minutes-to-2-hours onset suggests IgE-mediated. Anaphylaxis or suspected IgE allergy → specialist allergy service (NICE NG258)."},
+    {title:"Targeted tests", html:"Isolated recurrent angioedema without ACEi → C4 ± C1-INH level/function. Chronic urticaria → limited bloods only (FBC, CRP/ESR, ± TFTs/thyroid antibodies). Do not order broad allergy panels."},
+    {title:"Treat by type, plan, safety-net", html:"Antihistamine ladder for histaminergic disease; stop ACEi for good; immunology for C1-INH deficiency (icatibant / C1-INH concentrate, prophylaxis per TA606/TA738). Written plan, two auto-injectors where anaphylaxis risk, and clear 999 advice."}
+  ],
+  sections:[
+
+    {id:"mechanism", nav:"Mechanism", title:"Recognise angioedema and identify the mechanism", sub:"Angioedema is deeper swelling of the dermis, subcutis or submucosa. The first split is whether hives are present; the second is whether the patient is on a drug that blocks bradykinin breakdown.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Histaminergic (commonest)","With urticaria and itch; allergic (food, drug, sting, latex) or idiopathic, often as part of chronic spontaneous urticaria; onset over minutes to hours, resolves within 24–48 hours; responds to antihistamines"],
+         ["ACEi-induced","Bradykinin-mediated; <b>no urticaria</b>; can start <b>years</b> into treatment; typically lips, face and tongue; can involve the airway or bowel; stop ACEi permanently"],
+         ["Hereditary / acquired C1-inhibitor deficiency","Recurrent angioedema <b>without urticaria</b>, family history (though some are new mutations), attacks of abdominal pain or laryngeal swelling; low C4 → check C1-INH. Acquired form presents later in life, often with lymphoproliferative disease"],
+         ["Drug triggers","ACEi (and sometimes ARBs), sacubitril/valsartan, gliptins alongside an ACEi, NSAIDs/aspirin (pseudo-allergic, worsen chronic urticaria), radiocontrast, oestrogen (triggers HAE); review the full medication list"]
+       ]},
+       {b:"table", head:["Feature","Histaminergic","Bradykinin-mediated"], rows:[
+         ["Urticaria / itch","Usually present","<b>Absent</b>; skin swelling is non-itchy, may feel tight or painful"],
+         ["Onset and duration","Minutes to hours; settles in 24–48 h","Develops over hours; peaks at 24 h, lasts <b>2–5 days</b>"],
+         ["Abdominal attacks","Rare","Common in HAE — colicky pain, vomiting, bowel-wall oedema; can mimic a surgical abdomen"],
+         ["Response to adrenaline / antihistamine / steroid","Good","<b>Poor or none</b>"],
+         ["Typical triggers","Allergen, NSAIDs, infection, idiopathic","ACEi, oestrogen, dental work or trauma, stress, infection"],
+         ["Prodrome","None specific","Tingling; in HAE sometimes a non-itchy serpiginous rash (erythema marginatum), easily mistaken for urticaria"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Chronic spontaneous urticaria with angioedema", html:"Wheals and/or angioedema on most days for more than 6 weeks without a consistent external trigger. Angioedema accompanies the wheals in a substantial proportion. It is not usually allergic, and allergy testing rarely helps.", src:"BSACI 2015 chronic urticaria &amp; angioedema"},
+         {tone:"plain", h:"Isolated angioedema without wheals", html:"Consider ACEi first, then C1-inhibitor deficiency (hereditary or acquired), then idiopathic histaminergic angioedema. A response to high-dose antihistamine supports a histaminergic cause.", src:"BSACI 2015 chronic urticaria &amp; angioedema"}
+       ]},
+       {b:"why", html:"Angioedema without urticaria points away from allergy towards a bradykinin mechanism (ACEi or C1-inhibitor deficiency). These need the drug stopped or specific therapies (C1-INH concentrate, icatibant) — antihistamines alone will not help, and false reassurance from a ‘failed’ antihistamine trial delays the right diagnosis."}
+     ]},
+
+    {id:"emergency", nav:"Emergency", title:"Airway and anaphylaxis — the first five minutes", sub:"The first decision is airway, not aetiology. Treat for anaphylaxis if uncertain and protect the airway.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Airway involvement", html:"Tongue, lips, floor of mouth, pharynx or larynx swelling; voice change, hoarseness, stridor, drooling, difficulty swallowing or breathing → <b>999</b>. Keep the patient with you and sitting up if that is easier for breathing.", src:"Resuscitation Council UK 2021 anaphylaxis"},
+         {tone:"red", h:"💉 Anaphylaxis — IM adrenaline", html:"Angioedema with airway, breathing or circulation problems (wheeze, hypotension, collapse), usually with skin changes → <b>IM adrenaline</b> 1 mg/mL into the anterolateral thigh: <b>adult and child &gt;12 y 500 µg</b> (0.5 mL); <b>6–12 y 300 µg</b>; <b>6 months–6 y 150 µg</b>; <b>&lt;6 months 100–150 µg</b>. <b>Repeat after 5 minutes</b> if no improvement.", src:"Resuscitation Council UK 2021 anaphylaxis"},
+         {tone:"red", h:"Position, oxygen, fluids", html:"Lie flat and raise the legs (semi-recumbent if breathing is difficult; left lateral if pregnant). <b>Do not let them stand or sit up suddenly</b> — this can precipitate cardiac arrest. 999, ABCDE, high-flow oxygen, IV fluid bolus if shocked.", src:"Resuscitation Council UK 2021 anaphylaxis"},
+         {tone:"amber", h:"Refractory anaphylaxis", html:"No improvement in respiratory or cardiovascular features <b>despite two doses of IM adrenaline</b> is refractory anaphylaxis: it needs critical care support and an adrenaline infusion — keep repeating IM adrenaline every 5 minutes while the ambulance arrives.", src:"Resuscitation Council UK 2021 anaphylaxis"},
+         {tone:"amber", h:"Antihistamines and steroids are not resuscitation drugs", html:"Give them only after resuscitation, for skin symptoms; an <b>oral non-sedating antihistamine</b> is preferred. <b>Routine hydrocortisone is no longer recommended</b> in the acute treatment of anaphylaxis.", src:"Resuscitation Council UK 2021 anaphylaxis"},
+         {tone:"blue", h:"🔴 Bradykinin airway swelling", html:"ACEi or hereditary airway swelling responds poorly to adrenaline and antihistamine. <b>Still give adrenaline</b> if you cannot exclude anaphylaxis, but airway management is paramount — 999 and admit. A known HAE patient should use their own icatibant or C1-INH concentrate and still attend hospital for a laryngeal attack.", src:"UK C1-INH consensus 2014; WAO/EAACI HAE 2021"},
+         {tone:"amber", h:"🟠 Rapidly progressing or oral swelling", html:"Any progressive facial or oral swelling → <b>same-day assessment</b> even if currently stable. ACEi and HAE swellings evolve over hours and may reach the airway late."},
+         {tone:"plain", h:"After an anaphylactic reaction", html:"Everyone treated for anaphylaxis needs a period of hospital observation (biphasic risk): <b>2 hours</b> from resolution may be enough only if there was a good response within 5–10 minutes to a single dose of IM adrenaline given within 30 minutes of onset, symptoms have completely resolved, and the person already has 2 in-date auto-injectors and knows how to use them; <b>at least 6 hours</b> if two doses were needed or there was a previous biphasic reaction; <b>at least 12 hours</b> for severe reactions needing more than two doses, severe asthma or severe respiratory compromise, possible continuing allergen absorption (e.g. slow-release medicines), or poor access to emergency care after discharge. Mast cell tryptase: first sample as soon as possible after treatment starts, second ideally 1–2 hours (no later than 4 hours) after onset.", src:"Resuscitation Council UK 2021 anaphylaxis; NICE NG258"}
+       ]},
+       {b:"warn", html:"<b>Do not delay adrenaline to work out the mechanism.</b> If there is any doubt about anaphylaxis in a patient with airway swelling, give IM adrenaline — it is safe at the recommended IM doses, and the harm from withholding it is far greater."},
+       {b:"why", html:"Allergic/histaminergic angioedema responds to adrenaline, antihistamine and steroid; bradykinin-mediated angioedema (ACEi-induced, hereditary) does not. Both can obstruct the airway. The practical rule is therefore: treat as anaphylaxis if uncertain, and protect the airway regardless of cause."}
+     ]},
+
+    {id:"investigate", nav:"Assess &amp; test", title:"Assessment and investigations — targeted, not scattergun", sub:"History does most of the work. The key test in primary care is C4 for isolated angioedema.",
+     blocks:[
+       {b:"dl", rows:[
+         ["History","Timing and duration of each swelling; sites (face, lips, tongue, genitals, hands, feet, bowel); hives or itch; possible triggers within 2 hours (food, sting, drug, latex, exercise); ACEi/ARB/gliptin/NSAID/oestrogen; family history of swelling or unexplained abdominal pain; previous airway involvement; response to antihistamine"],
+         ["Photographs","Ask the patient to photograph swellings and wheals — many have settled by the appointment"],
+         ["Symptom diary","Chronic or recurrent cases: record swellings, wheals, triggers and response to treatment; the urticaria activity score (UAS7) is used by specialists and in NICE TA339"],
+         ["Examination","Distribution, presence of wheals, dermographism, signs of systemic disease (lymphadenopathy, splenomegaly — relevant to acquired C1-INH deficiency), thyroid"]
+       ]},
+       {b:"table", head:["Test","When","Interpretation / action"], rows:[
+         ["<b>Serum C4</b>","Recurrent angioedema <b>without urticaria</b> and not on an ACEi (or persisting after ACEi stopped)","Low → C1-INH level and function, immunology referral. Normal between attacks does not fully exclude HAE — repeat during an attack if suspicion is high"],
+         ["<b>C1-INH level and function</b>","Low C4, or strong clinical suspicion / family history","Low level = HAE type 1; normal level, low function = HAE type 2. Interpreted by immunology"],
+         ["C1q","Low C4 with onset in later adulthood and no family history","Low C1q suggests <b>acquired</b> C1-INH deficiency — look for lymphoproliferative disease (usually requested by immunology)"],
+         ["FBC, CRP or ESR","Chronic spontaneous urticaria with angioedema","Limited screen; raised inflammatory markers suggest urticarial vasculitis or systemic disease"],
+         ["TFTs ± thyroid antibodies","Chronic urticaria","Autoimmune thyroid disease is associated with chronic urticaria"],
+         ["Specific IgE / skin prick tests","Only where history suggests an IgE-mediated trigger","Via allergy clinic. Do not order broad allergy panels for chronic spontaneous urticaria — they mislead"],
+         ["Mast cell tryptase","After suspected anaphylaxis","Timed samples in hospital; baseline at specialist follow-up"],
+         ["Medication review","All cases","Stop ACEi/NSAID culprits; document"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"C4 as the screen for C1-inhibitor deficiency", html:"C4 is low in almost all patients with HAE types 1 and 2 and is the recommended screening test; C1-INH level and function confirm the type. Test family members of an index case.", src:"UK C1-INH consensus 2014; WAO/EAACI HAE 2021"},
+         {tone:"blue", h:"Keep chronic urticaria work-up minimal", html:"Routine extensive investigation is not needed for chronic spontaneous urticaria; a limited screen guided by history is recommended. Tests are driven by the history, not a panel.", src:"BSACI 2015 chronic urticaria &amp; angioedema"}
+       ]},
+       {b:"why", html:"Most chronic urticaria is idiopathic or autoimmune, not allergic, so allergy panels generate false positives and unnecessary food avoidance. Conversely, a single C4 in the right patient — recurrent swelling without hives, not on an ACEi — is cheap and can end years of misdiagnosed ‘allergic’ swelling or unnecessary abdominal surgery."}
+     ]},
+
+    {id:"ladder", nav:"Histaminergic ladder", title:"Histaminergic angioedema and chronic urticaria — the treatment ladder", sub:"Acute allergic angioedema: remove the trigger and give a non-sedating antihistamine. Chronic spontaneous urticaria/angioedema: step up until controlled, then step down.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", title:"Non-sedating H1 antihistamine, taken daily", when:"first-line",
+          html:"Second-generation antihistamine such as <b>cetirizine or loratadine</b> at the standard licensed dose (dose per BNF), taken <b>regularly</b> rather than as needed in chronic disease. Avoid sedating antihistamines (chlorphenamine) for long-term use. Stop NSAIDs/aspirin if they aggravate symptoms. Adrenaline if any anaphylaxis features."},
+         {step:"2nd", title:"Up-dose to up to 4× the standard dose", when:"not controlled in 2–4 weeks",
+          fromLabel:"off-label, widely used",
+          html:"Increase the same non-sedating antihistamine <b>up to four times the licensed dose</b> (off-label; BSACI 2015). Give it 2–4 weeks before judging response. Some patients respond better to a different agent."},
+         {step:"3rd", title:"Add a leukotriene receptor antagonist", when:"still uncontrolled",
+          fromLabel:"often started in primary care",
+          html:"Add <b>montelukast</b> (dose per BNF; warn about neuropsychiatric adverse effects — MHRA). NICE TA339 requires failure of H1 antihistamines <b>and</b> an LTRA before omalizumab, so trying this step speeds specialist access."},
+         {step:"Refer", title:"Omalizumab or ciclosporin — specialist", when:"refractory",
+          fromLabel:"secondary care",
+          html:"<b>Omalizumab (NICE TA339)</b>: severe CSU in people 12 and over, with severity assessed as <b>UAS7 ≥ 28</b>, not responding to H1 antihistamines and LTRAs; stopped at or before the 4th dose if no response; stopped after 6 doses if responding, restarted only on relapse; given under a dermatology, immunology or allergy specialist. <b>Ciclosporin</b> is a specialist option."},
+         {step:"Flare", title:"Short oral steroid course for severe flares only", when:"rescue",
+          fromLabel:"not maintenance",
+          html:"A short course of oral prednisolone may be used for severe exacerbations (BSACI 2015); avoid repeated or long-term steroid use. Not effective in bradykinin-mediated angioedema."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Step down once controlled", html:"After a period of good control, reduce the antihistamine dose gradually. Chronic spontaneous urticaria usually remits spontaneously over months to years.", src:"BSACI 2015 chronic urticaria &amp; angioedema"},
+         {tone:"amber", h:"Omalizumab criteria are specific", html:"UAS7 ≥ 28, failed H1 antihistamines and LTRA, age 12+, specialist-administered, stopping rules at dose 4 and after 6 doses.", src:"NICE TA339"}
+       ]},
+       {b:"warn", html:"<b>Antihistamine failure is a clue, not just a reason to escalate.</b> Angioedema that never responds to high-dose antihistamine, especially without wheals, should prompt a medication review for ACEi and a C4 before moving up the urticaria ladder."}
+     ]},
+
+    {id:"drugs", nav:"ACEi &amp; drugs", title:"ACE inhibitor and other drug-induced angioedema", sub:"The commonest cause of bradykinin-mediated angioedema in UK general practice. The drug is often long-standing, so it is missed.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Stop the ACEi permanently", html:"Discontinue, <b>record as an adverse drug reaction/allergy</b> on the record and in any hospital letters, and avoid <b>all</b> ACE inhibitors — recurrence on rechallenge is likely and can be fatal. Swellings may continue to recur for weeks (occasionally months) after stopping; that does not mean the ACEi was innocent.", src:"BNF ACE inhibitors (contraindicated after ACEi angioedema)"},
+         {tone:"blue", h:"Timing does not exonerate", html:"ACEi angioedema can occur at any time during treatment, including after years of uneventful use. Ask about ACEi in every patient with facial or tongue swelling without hives.", src:"BNF ACE inhibitors"},
+         {tone:"amber", h:"ARB: small cross-risk — use with caution", html:"ARBs do not block bradykinin breakdown in the same way, but angioedema has been reported with them and after ACEi angioedema. Use with caution; after severe or airway angioedema, discuss with a specialist before starting. A calcium-channel blocker or other class is usually the simpler switch for hypertension.", src:"BNF / SmPC angiotensin-II receptor antagonists"},
+         {tone:"red", h:"Sacubitril/valsartan", html:"<b>Contraindicated</b> with a history of angioedema related to previous ACEi or ARB therapy, and in hereditary or idiopathic angioedema. Must not be given with an ACEi — a <b>36-hour washout</b> is required when switching from an ACEi.", src:"BNF sacubitril/valsartan (SmPC)"},
+         {tone:"amber", h:"Gliptins with an ACEi", html:"DPP-4 inhibitors (gliptins; interaction listed notably for vildagliptin in ACEi SmPCs) also slow bradykinin breakdown; the combination with an ACEi increases angioedema risk. Consider this when a patient on both develops swelling.", src:"BNF DPP-4 inhibitors"},
+         {tone:"amber", h:"NSAIDs, aspirin and opioids", html:"Can trigger or aggravate histaminergic angioedema and chronic urticaria (non-allergic mechanisms). Advise paracetamol instead in chronic urticaria where NSAIDs worsen symptoms.", src:"BSACI 2015 chronic urticaria &amp; angioedema"},
+         {tone:"amber", h:"Oestrogens", html:"Combined hormonal contraception and oestrogen HRT can trigger or worsen HAE attacks; use progestogen-only, barrier or intrauterine methods in C1-INH deficiency.", src:"UK C1-INH consensus 2014; WAO/EAACI HAE 2021"},
+         {tone:"plain", h:"Other drugs worth a look", html:"Radiocontrast, recent antibiotics, alteplase, racecadotril and mTOR inhibitors (sirolimus, everolimus, temsirolimus) — the last three particularly with an ACEi. Check the BNF interaction record for any new drug.", src:"BNF interactions"}
+       ]},
+       {b:"why", html:"ACE inhibitors block the breakdown of bradykinin. Because this is a pharmacological effect rather than an allergy, it can appear after years of use, it does not respond to antihistamines, and switching to another ACE inhibitor simply repeats the problem."}
+     ]},
+
+    {id:"hae", nav:"C1-INH deficiency", title:"Hereditary and acquired C1-inhibitor deficiency", sub:"Rare, specialist-led, but diagnosed late: many patients go years with ‘allergic’ swellings or negative laparotomies. The GP’s jobs are to suspect it, test C4, refer, and hold the emergency plan.",
+     blocks:[
+       {b:"table", head:["Type","Lab pattern","Clues"], rows:[
+         ["<b>HAE type 1</b>","Low C4, low C1-INH level, low function","Autosomal dominant; onset in childhood or adolescence; family history (some de novo)"],
+         ["<b>HAE type 2</b>","Low C4, normal or raised C1-INH level, low function","As type 1 — a normal C1-INH level does not exclude it, so function must be measured"],
+         ["HAE with normal C1-INH","Normal C4 and C1-INH","Rare; often oestrogen-related, mainly women; specialist diagnosis"],
+         ["<b>Acquired C1-INH deficiency</b>","Low C4, low C1-INH, often <b>low C1q</b>","Onset usually later in adult life, no family history; associated with lymphoproliferative disease or MGUS — needs haematological work-up"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Laryngeal attacks are life-threatening", html:"Any throat tightness or voice change in a known HAE patient → use on-demand treatment immediately and <b>go to hospital</b>. Adrenaline, antihistamine and steroid are not effective for HAE attacks.", src:"UK C1-INH consensus 2014; WAO/EAACI HAE 2021"},
+         {tone:"blue", h:"On-demand treatment", html:"<b>C1-INH concentrate</b> or <b>icatibant</b> (bradykinin B2 receptor antagonist) for acute attacks, ideally self- or carer-administered at home after training. Every patient should have access to on-demand treatment and carry it.", src:"UK C1-INH consensus 2014; WAO/EAACI HAE 2021"},
+         {tone:"blue", h:"Long-term prophylaxis — lanadelumab", html:"Recommended for people aged 12 and over who are eligible for preventive C1-INH under the NHS England commissioning policy (≥ 2 clinically significant attacks per week over 8 weeks despite oral preventive therapy, or oral therapy contraindicated or not tolerated), at the lowest dosing frequency.", src:"NICE TA606"},
+         {tone:"blue", h:"Long-term prophylaxis — berotralstat", html:"Oral option for people aged 12 and over with <b>at least 2 attacks per month</b>; stopped if attacks do not fall by at least 50% after 3 months.", src:"NICE TA738"}
+       ]},
+       {b:"dl", rows:[
+         ["Short-term prophylaxis","Before dental work, endoscopy, intubation or surgery, patients need a specialist plan (usually C1-INH concentrate beforehand). Flag the diagnosis to dentists and surgeons (UK C1-INH consensus 2014)"],
+         ["Primary-care housekeeping","Code the diagnosis; add ACEi and oestrogen alerts; ensure the written emergency plan and on-demand drug are in date; offer testing of first-degree relatives via immunology (UK C1-INH consensus 2014)"]
+       ]},
+       {b:"why", html:"HAE attacks involve the skin, the bowel and the upper airway. Abdominal attacks cause severe colicky pain and vomiting with bowel-wall oedema and can mimic an acute abdomen — a history of recurrent unexplained abdominal pain plus swellings without hives, especially with a family history, should prompt a C4."}
+     ]},
+
+    {id:"aai", nav:"Auto-injectors", title:"Adrenaline auto-injectors — who, how many, and training", sub:"For people at risk of anaphylaxis. Not a treatment for ACEi or hereditary angioedema, and not routinely needed for chronic spontaneous urticaria/angioedema.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Who needs one", html:"After emergency treatment for suspected anaphylaxis, offer an adrenaline auto-injector as an interim measure while awaiting the specialist allergy appointment; before discharge the person should have <b>two</b> in-date injectors and know how and when to use them. Specialist allergy services decide on long-term need (e.g. food, venom, idiopathic anaphylaxis).", src:"NICE NG258"},
+         {tone:"red", h:"Carry two at all times", html:"Prescribe <b>two</b> auto-injectors and advise carrying both at all times. If not improving, use the second injector 5–15 minutes after the first. <b>Call 999 whenever an auto-injector is used</b>, even if improving, and say ‘anaphylaxis’.", src:"MHRA DSU 2017 adrenaline auto-injectors"},
+         {tone:"amber", h:"Training and technique", html:"Show the patient (and carers) how to use their <b>specific brand</b> with a trainer device — brands differ. Check technique at every review; replace before expiry; keep to the same brand where possible to avoid confusion.", src:"NICE NG258; MHRA DSU 2017"},
+         {tone:"amber", h:"Positioning when used", html:"Lie down with legs raised, or sit if breathing is difficult; do not stand or walk even if feeling better.", src:"MHRA 2023 adrenaline auto-injector guidance"},
+         {tone:"plain", h:"Not for bradykinin angioedema alone", html:"ACEi-induced or hereditary angioedema does not respond to adrenaline; these patients need the trigger removed or a C1-INH/icatibant plan, not an auto-injector.", src:"UK C1-INH consensus 2014; WAO/EAACI HAE 2021"},
+         {tone:"plain", h:"Not routinely for chronic urticaria", html:"Chronic spontaneous urticaria with angioedema is not an indication for an auto-injector in the absence of anaphylaxis or airway compromise.", src:"BSACI 2015 chronic urticaria &amp; angioedema"}
+       ]},
+       {b:"why", html:"Two devices are recommended because a single dose may not be enough, a device may misfire, or help may be delayed. The commonest failure is not the device but the patient not carrying it or not using it early — training and a written plan matter more than the prescription itself."}
+     ]},
+
+    {id:"groups", nav:"Special groups", title:"Special groups", sub:"Pregnancy, children and older adults change the likely cause and the treatment choices.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Pregnancy and breastfeeding", html:"If an antihistamine is needed for chronic urticaria, use the lowest effective dose of a non-sedating antihistamine such as <b>loratadine or cetirizine</b> (BSACI also lists chlorphenamine in pregnancy, but advises avoiding it when breastfeeding); avoid up-dosing without specialist advice. HAE attack frequency can change in pregnancy — immunology should plan delivery; plasma-derived C1-INH concentrate is the preferred treatment in pregnancy.", src:"BSACI 2015 chronic urticaria &amp; angioedema; UK C1-INH consensus 2014; WAO/EAACI HAE 2021"},
+         {tone:"plain", h:"Children", html:"Acute urticaria/angioedema in children is often triggered by infection or food. Children who have had anaphylaxis need referral to a paediatric allergy service. HAE usually begins in childhood or adolescence — recurrent swellings or abdominal pain with a family history warrant C4 and immunology referral.", src:"NICE NG258; BSACI 2015; WAO/EAACI HAE 2021"},
+         {tone:"plain", h:"Older adults", html:"New angioedema without hives in later life → ACEi first; if not on one and C4 is low, think <b>acquired C1-INH deficiency</b> and screen for lymphoproliferative disease.", src:"UK C1-INH consensus 2014"},
+         {tone:"plain", h:"Afro-Caribbean patients on ACEi", html:"Higher rates of ACEi angioedema are reported in Black patients (BNF). For hypertension in people of Black African or African-Caribbean family origin, NG136 recommends considering an ARB in preference to an ACEi.", src:"NICE NG136; BNF ACE inhibitors"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral — who, how fast, where", sub:"Referral is mechanism-driven. Continue the interim plan (antihistamine, auto-injector, drug avoidance) while waiting.",
+     blocks:[
+       {b:"table", head:["Situation","Urgency","Where","What to send / do"], rows:[
+         ["Airway involvement, stridor, anaphylaxis, rapidly progressive oral swelling","<b>Immediate — 999</b>","ED","IM adrenaline given and times; drug history (ACEi); known HAE plan"],
+         ["After emergency treatment of suspected anaphylaxis","Soon (check it was made on discharge)","Age-appropriate <b>specialist allergy service</b> (NICE NG258)","Description of reaction, timings, suspected trigger, tryptase results, treatment given"],
+         ["Recurrent angioedema without urticaria, <b>low C4</b> or family history of HAE","Urgent routine; sooner if airway episodes","<b>Clinical immunology</b>","C4 result, attack diary, family history, drug history; emergency plan meanwhile"],
+         ["Low C4 in later life, no family history","Urgent routine","Immunology ± haematology","Suspected acquired C1-INH deficiency — FBC, examination for lymphadenopathy/splenomegaly"],
+         ["Chronic spontaneous urticaria/angioedema not controlled on 4× antihistamine + LTRA","Routine","Dermatology, allergy or immunology (per local pathway)","UAS7 or diary, doses and durations tried — for omalizumab (NICE TA339)"],
+         ["Suspected IgE-mediated food, drug, latex or venom allergy","Routine (urgent if anaphylaxis)","Allergy","Detailed reaction history; interim auto-injector if anaphylaxis risk"],
+         ["Urticarial lesions lasting &gt;24 h, bruising, systemic features","Routine / urgent","Dermatology / rheumatology","Suspected urticarial vasculitis — inflammatory markers, urine dip"],
+         ["ACEi angioedema after severe or airway episode, needing RAAS blockade (e.g. heart failure)","Advice and guidance","Cardiology / allergy","Before starting ARB or sacubitril/valsartan (the latter contraindicated)"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"999 / ED", html:"Airway involvement or anaphylaxis — immediate.", src:"Resuscitation Council UK 2021 anaphylaxis"},
+         {tone:"blue", h:"Immunology / allergy", html:"Recurrent angioedema without urticaria, low C4, suspected hereditary; chronic refractory urticaria/angioedema; all anaphylaxis after emergency treatment.", src:"NICE NG258; UK C1-INH consensus 2014"},
+         {tone:"plain", h:"Medication change", html:"ACEi-induced → switch antihypertensive class and document avoidance; no referral needed for straightforward cases."}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Follow-up &amp; safety-net", title:"Follow-up, monitoring and safety-netting", sub:"Every row has an action. The written plan is the safety net.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Post-ED review after anaphylaxis","Within days","Confirm specialist allergy referral made, two auto-injectors prescribed and trained, trigger avoidance advice given"],
+         ["After stopping an ACEi","2–4 weeks, and BP review","Alternative antihypertensive working; warn that swellings can still recur for weeks (occasionally months); if they keep recurring beyond that, check C4"],
+         ["Chronic urticaria on antihistamine","Every 2–4 weeks while titrating","Step up if uncontrolled; step down after sustained control; refer when 4× dose + LTRA fails"],
+         ["Symptom diary","Chronic/recurrent","Identify pattern, triggers, response to antihistamine"],
+         ["Auto-injector check","Each review and annually","Two in date; technique; carried at all times"],
+         ["HAE patients","Annual (shared care with immunology)","Attack frequency, on-demand stock in date, oestrogen/ACEi avoided, family testing offered"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"🔴 Call 999", html:"“If your tongue or throat swells, your voice changes, or you struggle to breathe or swallow, call 999 — and use your adrenaline pen first if you have one.”", src:"Resuscitation Council UK 2021 anaphylaxis"},
+         {tone:"amber", h:"🟠 Same day", html:"“If the swelling is spreading quickly, is in your mouth, or you have severe tummy pain with swelling, contact us or 111 the same day.”"},
+         {tone:"green", h:"💊 Keep taking the antihistamine", html:"“For long-term hives and swelling, the tablet works best taken every day, not just when it flares. We can increase the dose if needed.”", src:"BSACI 2015 chronic urticaria &amp; angioedema"},
+         {tone:"blue", h:"📸 Photograph it", html:"“Take photos of any swelling or rash and note what you were doing — it helps us find the cause.”", src:"BSACI 2015 chronic urticaria &amp; angioedema"}
+       ]},
+       {b:"say", html:"This swelling can occasionally affect the throat, so if your tongue or throat swells, or you struggle to breathe or swallow, call 999. We’ll work out the cause — if it’s your blood-pressure tablet we’ll stop it for good and switch you to a different type, and if it keeps happening without a rash we’ll check a special blood test for an inherited cause."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"Pitfalls and SCA consultation practice", sub:"The mistakes that recur in practice, then a short practice case.",
+     blocks:[
+       {b:"table", head:["Pitfall","Why it matters","Instead"], rows:[
+         ["Blaming a new food when the patient is on ramipril","ACEi angioedema recurs and can be fatal","Ask about ACEi in every angioedema without hives, however long they have taken it"],
+         ["Switching one ACEi for another","Class effect","Stop all ACEi; use another antihypertensive class"],
+         ["Relying on antihistamine/steroid for bradykinin swelling","Ineffective; false reassurance","Airway plan, stop trigger, immunology for C1-INH deficiency"],
+         ["Routine IV chlorphenamine and hydrocortisone as first treatment of anaphylaxis","Delays adrenaline; no longer recommended routinely","IM adrenaline first; oral non-sedating antihistamine for skin symptoms afterwards"],
+         ["Ordering an allergy panel for chronic urticaria","False positives, needless avoidance diets","Limited, history-driven tests"],
+         ["One auto-injector, no training","Misfire or delayed use","Two devices, brand-specific training, 999 after use"],
+         ["Recurrent abdominal pain + swellings labelled IBS","Missed HAE","Check C4"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Classic scenario", html:"A 66-year-old man on <b>ramipril for 5 years</b> presents the morning after a frightening night: his lower lip and one side of his tongue swelled for several hours. No rash, no itch, no new foods. It has settled. He is convinced it was the prawns and asks for an allergy test — and wants to keep his ‘good’ blood-pressure tablet."},
+         {tone:"plain", h:"Examiner-style checkpoints", html:"Checks the airway is now safe and asks about breathing/voice during the episode; notes <b>no urticaria</b> and links it to the ACEi despite 5 years’ use; explains the bradykinin mechanism simply; stops ramipril permanently, codes it, switches class (e.g. calcium-channel blocker) and does not reach reflexively for an ARB; explains why an allergy test and antihistamine will not help; safety-nets with 999 advice and warns swellings may recur for a few weeks; plans C4 if it recurs after stopping. <a href='../../cases/urticaria.html'>Open the urticaria casebook chapter →</a>", src:"BNF ACE inhibitors; RCUK 2021 anaphylaxis"}
+       ]}
+     ]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every recommendation on this page is traceable to a named source. No clinician review has yet been recorded for this card.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>Resuscitation Council UK — Emergency treatment of anaphylaxis: guidelines for healthcare providers (May 2021)</b><br><a href="https://www.resus.org.uk/library/additional-guidance/guidance-anaphylaxis/emergency-treatment" rel="noopener">resus.org.uk</a><span class="rd"> — IM adrenaline doses and 5-minute repeat, positioning, refractory anaphylaxis, antihistamine/steroid role, observation periods, tryptase timing</span></li>'+
+         '<li><b>NICE NG258 — Anaphylaxis: assessment and referral after emergency treatment (May 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng258" rel="noopener">nice.org.uk/guidance/ng258</a><span class="rd"> — updates and replaces CG134 (2011); observation periods, tryptase, auto-injectors before discharge, training, referral to specialist allergy service</span></li>'+
+         '<li><b>BSACI guideline for the management of chronic urticaria and angioedema (Powell et al., Clin Exp Allergy 2015)</b><span class="rd"> — classification, limited investigation, antihistamine up-dosing, LTRA, omalizumab, ciclosporin, pregnancy</span></li>'+
+         '<li><b>C1 inhibitor deficiency: 2014 United Kingdom consensus document (Longhurst et al., Clin Exp Immunol 2015)</b><span class="rd"> — UKPIN/HAE UK; diagnosis with C4 and C1-INH, on-demand and short-term prophylaxis, oestrogen avoidance, emergency plans</span></li>'+
+         '<li><b>WAO/EAACI guideline for the management of hereditary angioedema — 2021 revision (Maurer et al., Allergy 2022)</b><span class="rd"> — HAE types, testing, on-demand therapy, children</span></li>'+
+         '<li><b>NICE TA339 — Omalizumab for previously treated chronic spontaneous urticaria (2015)</b><span class="rd"> — UAS7 ≥ 28, failed H1 antihistamine + LTRA, stopping rules</span></li>'+
+         '<li><b>NICE TA606 — Lanadelumab for preventing recurrent attacks of HAE (2019)</b> and <b>NICE TA738 — Berotralstat (2021)</b><span class="rd"> — eligibility for long-term prophylaxis</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Adrenaline auto-injectors: updated advice after European review (2017)</b> and MHRA auto-injector guidance (2023)<span class="rd"> — two devices carried at all times, second device 5–15 minutes after the first if no improvement, 999 after use, positioning</span></li>'+
+                  '<li><b>NICE NG136 — Hypertension in adults (2019, since updated)</b><span class="rd"> — choice of antihypertensive by ethnicity</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — ACE inhibitor, ARB, sacubitril/valsartan and gliptin cautions; ACEi interactions (alteplase, mTOR inhibitors, racecadotril); all antihistamine and montelukast doses</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Management of angioedema in primary care; airway compromise and anaphylaxis are emergencies. Sources: Resuscitation Council UK 2021 anaphylaxis guideline, NICE NG258 (2026, replaced CG134), BSACI 2015 chronic urticaria and angioedema guideline, UK C1-inhibitor deficiency consensus 2014, WAO/EAACI HAE 2021, NICE TA339, TA606 and TA738, MHRA 2017 and 2023 auto-injector advice, NICE NG136 and the BNF. Verify all doses and interactions against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

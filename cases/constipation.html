@@ -718,7 +718,7 @@ body.mode-clinic .sca-only{display:none!important}
 
 </style>
 
-<link rel="stylesheet" href="../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../assets/provenance.css?v=14">
 </head>
 <body class="mode-both" id="bodyEl">
 <button class="sb-toggle" aria-label="Open case list">
@@ -769,7 +769,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="ns-item"><span class="ns-val">25g/day</span><span class="ns-lbl">Recommended daily dietary fibre intake (UK)</span></div>
     <div class="ns-item"><span class="ns-val">1.5–2 L</span><span class="ns-lbl">Daily fluid target for normal bowel function</span></div>
     <div class="ns-item"><span class="ns-val">4 weeks</span><span class="ns-lbl">Adequate laxative trial before escalation decision</span></div>
-    <div class="ns-item"><span class="ns-val">2WW ≥40</span><span class="ns-lbl">Urgent referral: age ≥40 + rectal bleeding or change in bowel habit</span></div>
+    <div class="ns-item"><span class="ns-val">FIT</span><span class="ns-lbl">Rectal bleeding or change in bowel habit → 2WW if FIT ≥10 µg Hb/g (NG12)</span></div>
     <div class="ns-item"><span class="ns-val">Macrogol 1st</span><span class="ns-lbl">NICE first-line pharmacological choice — not lactulose</span></div>
     <div class="ns-item"><span class="ns-val">No AXR</span><span class="ns-lbl">Abdominal X-ray not indicated for typical constipation</span></div>
   </div>
@@ -783,7 +783,7 @@ body.mode-clinic .sca-only{display:none!important}
   <div class="stem-variants">
     <div class="stem-variant"><strong>Scenario A — Functional constipation</strong> Middle-aged adult, no red flags, lifestyle or drug cause. Lifestyle + macrogol ± bisacodyl. Rome IV criteria met.</div>
     <div class="stem-variant"><strong>Scenario B — Opioid-induced constipation (OIC)</strong> Regular opioids (codeine, morphine). Macrogol + bisacodyl from day 1 of opioid therapy. Naloxegol if refractory.</div>
-    <div class="stem-variant"><strong>Scenario C — Red flags (2WW)</strong> Age ≥40 + rectal bleeding or weight loss. 2WW colorectal cancer referral. Do not manage as functional.</div>
+    <div class="stem-variant"><strong>Scenario C — Red flags (2WW)</strong> Rectal bleeding, weight loss, IDA or a change in bowel habit → FIT; 2WW colorectal if ≥10 µg Hb/g, or a rectal mass. Do not manage as functional.</div>
     <div class="stem-variant"><strong>Scenario D — Faecal impaction</strong> Severe constipation, hard mass on DRE. High-dose macrogol disimpaction regimen (8 sachets/day × 3 days). Maintain on regular laxative after disimpaction.</div>
     <div class="stem-variant"><strong>Scenario E — IBS with constipation (IBS-C)</strong> Abdominal pain relieved by defaecation, bloating, altered habit. Rome IV IBS criteria. Low-FODMAP + targeted pharmacotherapy; linaclotide if first-line fails (≥12 months).</div>
   </div>
@@ -816,17 +816,17 @@ body.mode-clinic .sca-only{display:none!important}
         <tbody>
           <tr class="open-q-row">
             <td class="q"><strong>🟢 OPEN — always start here</strong><em>"Tell me in your own words what's been happening — when did things change, and how is it affecting you?"</em></td>
-            <td class="why">Establishes duration, pattern, and functional impact. Duration is critical — new change in bowel habit over weeks in a patient over 40 is a red flag; long-standing constipation since childhood is a different scenario entirely.</td>
+            <td class="why">Establishes duration, pattern, and functional impact. Duration is critical — a new change in bowel habit over weeks is a red flag (FIT, NICE NG12); long-standing constipation since childhood is a different scenario entirely.</td>
             <td><span class="chg chg-ddx">DDx</span><span class="chg chg-urgent">Urgency</span></td>
           </tr>
           <tr>
             <td class="q">Rectal bleeding<em>"Have you noticed any blood — in the toilet, on the paper, or mixed in with the stool?"</em></td>
-            <td class="why">The single most important red flag question. Blood mixed in stool (dark, altered) is more sinister than blood on paper (likely haemorrhoids/fissure). Any rectal bleeding in a patient over 40 with change in bowel habit = NICE NG12 2WW colorectal cancer referral regardless of presumed cause.<span class="why-sub">Never attribute rectal bleeding to haemorrhoids in an over-40 without investigation — this is a common cause of delayed colorectal cancer diagnosis.</span></td>
+            <td class="why">The single most important red flag question. Blood mixed in stool (dark, altered) is more sinister than blood on paper (likely haemorrhoids/fissure). Rectal bleeding with abdominal pain or weight loss under 50, or any rectal bleeding at 50+, needs FIT under NICE NG12 — and a 2WW referral if ≥10 µg Hb/g — regardless of presumed cause.<span class="why-sub">Never attribute rectal bleeding to haemorrhoids without investigation — this is a common cause of delayed colorectal cancer diagnosis.</span></td>
             <td><span class="chg chg-urgent">2WW</span><span class="chg chg-999">Emergency</span></td>
           </tr>
           <tr>
             <td class="q">Unintentional weight loss<em>"Have you lost any weight recently without trying — over the past 3–6 months?"</em></td>
-            <td class="why">NICE NG12 criterion for 2WW colorectal referral: unexplained weight loss + change in bowel habit in age ≥40. Also consider malignancy causing partial bowel obstruction, hypothyroidism, depression, systemic illness.<span class="why-sub">Quantify: "how much, over what period?" — unintentional loss &gt;5% body weight in 6 months is clinically significant.</span></td>
+            <td class="why">NICE NG12: a change in bowel habit at any age, or weight loss with abdominal pain at 40+, warrants FIT; 2WW if ≥10 µg Hb/g. Also consider malignancy causing partial bowel obstruction, hypothyroidism, depression, systemic illness.<span class="why-sub">Quantify: "how much, over what period?" — unintentional loss &gt;5% body weight in 6 months is clinically significant.</span></td>
             <td><span class="chg chg-urgent">2WW</span><span class="chg chg-ddx">DDx</span></td>
           </tr>
           <tr>
@@ -874,11 +874,11 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="rf-table">
         <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
         <tbody>
-          <tr><td class="rf-flag">Rectal bleeding + change in bowel habit + age ≥40</td><td class="rf-why">NICE NG12: colorectal cancer until proven otherwise — do not assume haemorrhoids without investigation in this age group</td><td><span class="rf-action rfa-same">2WW colonoscopy</span></td></tr>
-          <tr><td class="rf-flag">Weight loss + change in bowel habit + age ≥40</td><td class="rf-why">NICE NG12 2WW criterion — malignancy, lymphoma, malabsorption, systemic illness</td><td><span class="rf-action rfa-same">2WW colonoscopy</span></td></tr>
+          <tr><td class="rf-flag">Rectal bleeding (with pain or weight loss under 50; any at 50+)</td><td class="rf-why">NICE NG12: colorectal cancer until proven otherwise — do not assume haemorrhoids without investigation in this age group</td><td><span class="rf-action rfa-same">2WW colonoscopy</span></td></tr>
+          <tr><td class="rf-flag">Change in bowel habit (any age), or weight loss + abdominal pain at 40+</td><td class="rf-why">NICE NG12 2WW criterion — malignancy, lymphoma, malabsorption, systemic illness</td><td><span class="rf-action rfa-same">2WW colonoscopy</span></td></tr>
           <tr><td class="rf-flag">Absolute constipation + no flatus + distension + vomiting</td><td class="rf-why">Large bowel obstruction — surgical emergency; perforation risk if laxatives given</td><td><span class="rf-action rfa-999">999 / A&amp;E</span></td></tr>
           <tr><td class="rf-flag">New bowel + bladder dysfunction + leg symptoms</td><td class="rf-why">Cauda equina syndrome — neurosurgical emergency; MRI spine within hours</td><td><span class="rf-action rfa-999">999</span></td></tr>
-          <tr><td class="rf-flag">Iron deficiency anaemia + bowel symptoms + age ≥50</td><td class="rf-why">NICE NG12: right-sided colonic malignancy commonly presents with IDA only; colonoscopy mandatory</td><td><span class="rf-action rfa-same">2WW colonoscopy</span></td></tr>
+          <tr><td class="rf-flag">Iron-deficiency anaemia (any age)</td><td class="rf-why">NICE NG12: right-sided colonic malignancy commonly presents with IDA only; colonoscopy mandatory</td><td><span class="rf-action rfa-same">2WW colonoscopy</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -937,8 +937,8 @@ body.mode-clinic .sca-only{display:none!important}
         <ul class="tc-items">
           <li class="tc-item"><strong>Large bowel obstruction</strong><em>No flatus + distension + vomiting → 999 surgical emergency; do not give laxatives</em></li>
           <li class="tc-item"><strong>Cauda equina syndrome</strong><em>Bowel/bladder change + leg symptoms → 999 emergency MRI; not functional constipation</em></li>
-          <li class="tc-item"><strong>2WW: age ≥40 + bleeding or weight loss + bowel change</strong><em>NICE NG12 → urgent colonoscopy within 2 weeks; do not delay with laxative trial first</em></li>
-          <li class="tc-item"><strong>2WW: age ≥50 + IDA + bowel symptoms</strong><em>Right-sided colonic cancer screen → 2WW colonoscopy + iron replacement</em></li>
+          <li class="tc-item"><strong>FIT: bleeding, weight loss or bowel change</strong><em>NICE NG12 → 2WW colorectal if FIT ≥10 µg Hb/g; do not delay with laxative trial first</em></li>
+          <li class="tc-item"><strong>IDA at any age</strong><em>FIT (NICE NG12) → 2WW if ≥10 µg Hb/g; men and post-menopausal women also need upper and lower GI investigation (BSG 2021) + iron replacement</em></li>
           <li class="tc-item"><strong>Palpable abdominal or rectal mass</strong><em>2WW regardless of age</em></li>
         </ul>
       </div>
@@ -968,7 +968,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
       <div class="sca-grid">
         <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"I'm not picking up any of the specific warning signs that would make me want to refer urgently — no blood, no weight loss, and a clear drug cause. However, I want you to know that if either of those things ever develop, please come back immediately."</div></div>
-        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Prescribing laxatives without documented red flag screen — medico-legally risky</li><li>Not applying 2WW criteria to age ≥40 with any rectal bleeding</li><li>Treating obstruction as constipation — risk of perforation if laxatives given</li></ul></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Prescribing laxatives without documented red flag screen — medico-legally risky</li><li>Not offering FIT for rectal bleeding, weight loss, IDA or a change in bowel habit</li><li>Treating obstruction as constipation — risk of perforation if laxatives given</li></ul></div>
       </div>
       <div class="rag-strip">
         <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Laxatives prescribed without red flag screen documented. 2WW criteria missed. No safety-net for red flag development.</div></div>
@@ -1027,9 +1027,9 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="rt">
         <thead><tr><th style="width:22%">Investigation</th><th style="width:38%">When to order — clinical indication</th><th>Result that changes management</th></tr></thead>
         <tbody>
-          <tr><td class="q">Colonoscopy (2WW pathway)</td><td class="why">NICE NG12 criteria met: age ≥40 + bleeding; age ≥60 + bowel change; age ≥50 + IDA; palpable mass. Gold standard for CRC, polyps, IBD, and structural bowel disease.</td><td class="why">Cancer → curative resection if early; staging if advanced. Polyps → polypectomy. Normal → reassure; manage as functional.</td></tr>
+          <tr><td class="q">Colonoscopy (2WW pathway)</td><td class="why">NICE NG12 criteria met: FIT ≥10 µg Hb/g after bleeding, bowel change, weight loss or IDA; or a rectal mass. Gold standard for CRC, polyps, IBD, and structural bowel disease.</td><td class="why">Cancer → curative resection if early; staging if advanced. Polyps → polypectomy. Normal → reassure; manage as functional.</td></tr>
           <tr><td class="q">TFTs (thyroid function tests)</td><td class="why">Any patient with constipation plus fatigue, weight gain, cold intolerance, hair loss, bradycardia. Hypothyroidism is one of the most commonly missed secondary causes of constipation.</td><td class="why">TSH elevated → treat hypothyroidism; constipation often resolves without laxatives. Normal → thyroid not the cause.</td></tr>
-          <tr><td class="q">FBC + iron studies</td><td class="why">IDA in over-50s with bowel symptoms = NICE NG12 2WW criterion. Also identifies anaemia from chronic blood loss.</td><td class="why">IDA + bowel symptoms age ≥50 → 2WW colonoscopy. Normal FBC in typical functional constipation → confirms no anaemia.</td></tr>
+          <tr><td class="q">FBC + iron studies</td><td class="why">IDA in over-50s with bowel symptoms = NICE NG12 2WW criterion. Also identifies anaemia from chronic blood loss.</td><td class="why">IDA at any age → FIT (NG12); 2WW if ≥10 µg Hb/g. Normal FBC in typical functional constipation → confirms no anaemia.</td></tr>
           <tr><td class="q">Corrected serum calcium</td><td class="why">Hypercalcaemia causes constipation through smooth muscle depression. A simple blood test that prevents missing a significant metabolic abnormality.</td><td class="why">Elevated → full hypercalcaemia investigation (see hypercalcaemia framework). Normal → excludes hypercalcaemia as cause.</td></tr>
           <tr><td class="q">Coeliac serology (anti-tTG IgA)</td><td class="why">Coeliac disease can present with constipation and bloating mimicking IBS-C. Always exclude coeliac before diagnosing IBS-C.</td><td class="why">Positive → duodenal biopsy; gluten-free diet. Negative → coeliac excluded; proceed with IBS-C management.</td></tr>
           <tr><td class="q">AXR (plain abdominal X-ray)</td><td class="why">NOT routinely recommended for constipation. AXR cannot reliably quantify faecal loading. Useful only if bowel obstruction suspected (dilated loops, air-fluid levels) or volvulus being considered.</td><td class="why">Dilated loops + obstruction pattern → 999. Coffee bean sign → sigmoid volvulus; emergency surgery. Normal AXR in simple constipation → no clinical value.</td></tr>
@@ -1086,7 +1086,7 @@ body.mode-clinic .sca-only{display:none!important}
       </div>
       <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency / 2WW</div>
-        <div class="ddx-card ddx-c" style="margin-bottom:.5rem"><h4>Colorectal cancer</h4><p>Red flags: bleeding + change + age ≥40; weight loss; IDA ≥50; rectal mass. 2WW colonoscopy. Do not manage as functional without investigation.</p></div>
+        <div class="ddx-card ddx-c" style="margin-bottom:.5rem"><h4>Colorectal cancer</h4><p>Red flags: bleeding, bowel change, weight loss or IDA → FIT, 2WW if ≥10 µg Hb/g; rectal mass → 2WW. Do not manage as functional without investigation.</p></div>
         <div class="ddx-card ddx-c"><h4>Large bowel obstruction</h4><p>No flatus + distension + vomiting. 999 surgical emergency. Never give laxatives if obstruction suspected.</p></div>
       </div>
     </div>
@@ -1119,7 +1119,7 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="ref-table">
         <thead><tr><th>Indication</th><th>Urgency</th><th>GP does before referral</th><th>Must NOT do</th></tr></thead>
         <tbody>
-          <tr><td style="font-weight:600">NICE NG12 2WW criteria met</td><td><span class="ref-urg rurg-2">2WW Urgent</span></td><td style="font-size:12px">Document the specific NG12 criterion; provide FBC result; document DRE findings; provide weight and weight loss data; start iron replacement if IDA present</td><td style="font-size:12px;color:var(--r)">Do not delay 2WW referral to try laxatives first; do not reassure haemorrhoids as cause in over-40 without colonoscopy</td></tr>
+          <tr><td style="font-weight:600">NICE NG12 2WW criteria met</td><td><span class="ref-urg rurg-2">2WW Urgent</span></td><td style="font-size:12px">Document the specific NG12 criterion; provide FBC result; document DRE findings; provide weight and weight loss data; start iron replacement if IDA present</td><td style="font-size:12px;color:var(--r)">Do not delay 2WW referral to try laxatives first; do not reassure that haemorrhoids are the cause without FIT and appropriate investigation</td></tr>
           <tr><td style="font-weight:600">Refractory constipation — failed primary care management</td><td><span class="ref-urg rurg-r">Routine gastroenterology</span></td><td style="font-size:12px">Document: treatments tried (names, doses, duration), secondary causes excluded (TFTs, calcium, coeliac normal), DRE findings. Ensure macrogol + stimulant for minimum 4 weeks at full dose before labelling refractory</td><td style="font-size:12px;color:var(--r)">Do not refer after 1-week trial of a low-dose single laxative; referral will be returned</td></tr>
           <tr><td style="font-weight:600">Pelvic floor dyssynergia suspected</td><td><span class="ref-urg rurg-r">Colorectal physiotherapy</span></td><td style="font-size:12px">Document DRE findings (paradoxical contraction, empty rectum), failed laxatives. Biofeedback is the correct treatment — laxatives alone are ineffective for dyssynergia</td><td style="font-size:12px;color:var(--r)">Do not continue escalating laxatives when mechanism is obstructive</td></tr>
           <tr><td style="font-weight:600">IBS-C failing first-line — linaclotide</td><td><span class="ref-urg rurg-r">Routine gastroenterology</span></td><td style="font-size:12px">Document: Rome IV IBS-C criteria, coeliac excluded, colonoscopy normal (if done), failed low-FODMAP + macrogol for ≥12 weeks, mood screening (PHQ-9 + GAD-7)</td><td style="font-size:12px;color:var(--r)">Do not initiate linaclotide without gastroenterology advice; do not prescribe linaclotide for functional constipation without abdominal pain (IBS-C indication only)</td></tr>
@@ -1634,8 +1634,8 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="font-size:12px;line-height:1.75">
           <div>999: bowel obstruction (no wind + distension + vomiting)</div>
           <div>999: cauda equina (bowel change + leg symptoms)</div>
-          <div>2WW: age ≥40 + bleeding or weight loss + bowel change</div>
-          <div>2WW: age ≥50 + IDA + bowel symptoms</div>
+          <div>FIT: bleeding, weight loss or bowel change → 2WW if ≥10 µg Hb/g</div>
+          <div>IDA at any age → FIT; BSG: upper and lower GI investigation</div>
           <div>2WW: palpable abdominal or rectal mass</div>
         </div>
       </div>
@@ -1661,7 +1661,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="sum-sub-hdr">📊 2 — Key Numbers</div>
     <div class="num-grid" style="margin-bottom:1rem">
       <div class="num-card num-highlight"><div class="num-val">Macrogol first</div><div class="num-lbl">NICE first-line — not lactulose; not bisacodyl alone</div></div>
-      <div class="num-card num-highlight"><div class="num-val">2WW ≥40</div><div class="num-lbl">Bleeding or weight loss + bowel change → urgent colonoscopy</div></div>
+      <div class="num-card num-highlight"><div class="num-val">FIT</div><div class="num-lbl">Bleeding or weight loss + bowel change → urgent colonoscopy</div></div>
       <div class="num-card"><div class="num-val">Day 1 OIC</div><div class="num-lbl">Start macrogol + bisacodyl on day 1 of opioid — proactive</div></div>
       <div class="num-card"><div class="num-val">BSS 3–5</div><div class="num-lbl">Target stool consistency on treatment</div></div>
       <div class="num-card"><div class="num-val">4 weeks</div><div class="num-lbl">Adequate trial before escalation to add bisacodyl</div></div>
@@ -1779,7 +1779,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="sdp-row"><div class="sdp-cond">Faecal impaction</div><div class="sdp-arrow">→</div><div class="sdp-pill acei-pill">Macrogol 8 sachets/day × 3d</div><div class="sdp-note">Disimpaction</div></div>
           <div class="sdp-row"><div class="sdp-cond">OIC failed ≥4 weeks</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">Naloxegol 12.5–25 mg OD</div><div class="sdp-note">NICE OIC</div></div>
           <div class="sdp-row"><div class="sdp-cond">IBS-C failed ≥12 months</div><div class="sdp-arrow">→</div><div class="sdp-pill ccb-pill">Linaclotide 290 mcg OD</div><div class="sdp-note">IBS-C only</div></div>
-          <div class="sdp-pivot">⛔ No lactulose first-line · Macrogol base + stimulant add-on · Red flag rescreen every appointment · 2WW age ≥40 + bleeding or weight loss</div>
+          <div class="sdp-pivot">⛔ No lactulose first-line · Macrogol base + stimulant add-on · Red flag rescreen every appointment · FIT for bleeding, weight loss or bowel change</div>
         </div>
       </div>
     </div>
@@ -1995,7 +1995,7 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=100"></script>
+<script src="../assets/site.js?v=102"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
@@ -2005,6 +2005,6 @@ function resetScorecard(){
 <script src="../assets/topic-links.js?v=7"></script>
 
 <div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
-<script src="../assets/provenance.js?v=14"></script>
+<script src="../assets/provenance.js?v=15"></script>
 </body>
 </html>

@@ -3,122 +3,276 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bullous Pemphigoid — Protocol · Reasoning GP</title>
+<title>Bullous pemphigoid (and pemphigus) — Protocol · Reasoning GP</title>
+<meta name="description" content="Bullous pemphigoid in primary care on one page: the itchy urticated prodrome in older people, telling it apart from pemphigus, red flags and same-day referral, drug triggers such as gliptins, what the GP can do while awaiting dermatology, blister care, and steroid safety (NOGG 2024 bone protection, steroid emergency card)." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/bullous-pemphigoid.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Bullous pemphigoid management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
-  icon:"🫧",
-  title:"Bullous Pemphigoid",
-  stemTitle:"Bullous pemphigoid — primary-care role in shared care",
-  stemSub:"The GP\u2019s part in confirmed bullous pemphigoid under dermatology shared care \u2014 recognising and referring, supporting potent topical / systemic steroid regimens, wound care, and monitoring for treatment complications in a typically elderly, frail group. NICE \u00b7 BAD 2026.",
-  guideline:"BAD",
-  glance:[
-    {lbl:"Picture", val:"Tense blisters", sub:"+ itch, elderly; mucosa usually spared"},
-    {lbl:"Diagnosis", val:"Skin biopsy + DIF", sub:"dermatology-confirmed"},
-    {lbl:"Localised/mild", val:"Potent topical steroid", sub:"clobetasol"},
-    {lbl:"Extensive", val:"Oral prednisolone", sub:"\u00b1 steroid-sparing"},
-    {lbl:"Refer", val:"All suspected", sub:"dermatology"},
-    {lbl:"Watch", val:"Infection / steroid harms", sub:"frail elderly"}
+  icon:"\u{1FAE7}",
+  title:"Bullous pemphigoid",
+  eyebrow:"Protocol · recognise, refer &amp; keep the steroids safe",
+  stemTitle:"Bullous pemphigoid — the itchy older patient whose “eczema” starts to blister",
+  stemSub:"The commonest autoimmune blistering disease, seen mostly in people over 70. The GP’s job is to recognise it early (often in the itchy, urticated, pre-blister phase), separate it from pemphigus and infection, refer at the right speed, stop a likely drug trigger, and then keep a frail patient safe on months of steroids under dermatology shared care.",
+  guideline:"BAD 2012 bullous pemphigoid · BAD 2017 pemphigus vulgaris · BLISTER (Lancet 2017) · EADV 2022 · NOGG 2024",
+  meta:[
+    {t:"BAD bullous pemphigoid guideline (2012)"},
+    {t:"BAD pemphigus vulgaris guideline (2017)", tone:"tw"},
+    {t:"BLISTER trial · Lancet 2017"},
+    {t:"EADV S2k BP guideline (2022)"},
+    {t:"NOGG 2024 · NatPSA/2020/005 steroid card"},
+    {t:"Doses: verify against current BNF"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Recognise, and refer to confirm",
-      blocks:[
-        {b:"kv", rows:[
-          ["Typical picture","Elderly patient; intense itch then <b>large, tense, fluid-filled blisters</b> on erythematous/urticated skin (flexures, trunk, limbs). Blisters don\u2019t rupture easily (Nikolsky negative). Mucosa usually spared"],
-          ["Diagnosis","<b>Dermatology-confirmed</b>: skin biopsy (histology) + <b>direct immunofluorescence</b> (linear IgG/C3 at basement membrane) \u00b1 serology (anti-BP180/BP230)"],
-          ["Distinguish","Pemphigus (flaccid blisters, mucosal, Nikolsky positive \u2014 more dangerous), bullous impetigo, dermatitis herpetiformis, drug eruptions, eczema"],
-          ["Triggers / context","Often idiopathic; can be drug-induced (e.g. gliptins/DPP-4 inhibitors, some others) \u2014 review medication. Usually frail, comorbid, elderly"]
-        ]},
-        {b:"why", html:"Bullous pemphigoid needs <strong>dermatology confirmation by biopsy + immunofluorescence</strong> because treatment is prolonged immunosuppression in a frail group, and it must be distinguished from pemphigus (more dangerous, mucosal) and mimics. The GP\u2019s role is prompt referral, then shared-care support of steroid regimens and vigilance for treatment complications \u2014 and to review for drug triggers (notably DPP-4 inhibitors)."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 supportive", title:"Skin & wound care, general support",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"\ud83e\ude79 Blister/wound care", html:"Leave intact blisters where possible; large tense blisters may be aspirated (roof left on) by clinicians; non-adherent dressings to eroded areas; gentle handling."},
-          {t:"\ud83e\uddf4 Emollients & hygiene", html:"Generous emollients/soap substitute; keep skin clean; prevent secondary infection."},
-          {t:"\ud83d\udc8a Review triggers", html:"Review medication for possible triggers (e.g. DPP-4 inhibitors/gliptins) \u2014 discuss with dermatology/diabetes team before stopping."},
-          {t:"\ud83e\uddb4 Pressure care", html:"Pressure-area care, repositioning, and falls prevention in frail/immobile patients."},
-          {t:"\ud83c\udf7d\ufe0f Nutrition & fluids", html:"Maintain nutrition/hydration (extensive disease \u2192 fluid/protein loss); dietitian if needed."},
-          {t:"\ud83e\udde0 Support", html:"Carer support, district-nursing involvement for dressings, psychological support."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 specialist-led", title:"Steroid-based treatment ladder",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Localised/mild", title:"Potent topical corticosteroid", when:"clobetasol propionate",
-           html:"First-line for localised/mild-to-moderate disease \u2014 <span class='rx'>clobetasol propionate 0.05% ointment</span>, up to 30\u201340 g daily applied to affected skin (large surface-area use is effective and spares systemic side effects). Dermatology-guided."},
-          {step:"Extensive", title:"Oral corticosteroid", when:"prednisolone (lowest effective dose)",
-           fromLabel:"widespread / inadequate topical control",
-           html:"Oral prednisolone (typically <b>0.5 mg/kg/day</b>) to induce control, then taper to lowest effective dose. <b>Co-prescribe bone &amp; GI protection</b> (bisphosphonate/calcium-vit D, PPI) and monitor glucose/BP."},
-          {step:"Steroid-sparing", title:"Add an adjuvant", when:"to reduce steroid burden",
-           fromLabel:"steroid-dependent / complications",
-           html:"<b>Doxycycline 200 mg daily</b> (steroid-sparing option, BLISTER trial), or immunosuppressants (azathioprine, methotrexate, MMF) \u2014 dermatology-initiated; GP supports shared-care monitoring."},
-          {step:"Refractory", title:"Specialist escalation", when:"resistant disease",
-           fromLabel:"inadequate response",
-           html:"Other systemic agents / biologics (e.g. rituximab, omalizumab) per specialist."}
-        ]},
-        {b:"warn", html:"Long-term steroids in frail elderly carry major risks \u2014 <b>bone protection, GI protection, glucose, BP, infection surveillance</b>. Immunosuppressants need baseline screening + regular bloods. Secondary skin infection is common \u2192 treat promptly. Review possible drug triggers (DPP-4 inhibitors) with the team."}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Disease control & treatment complications",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Disease activity (new blisters/itch, healing)","Each review","Worsening / not controlled \u2192 dermatology"],
-          ["Steroid complications","Regular","Glucose, BP, weight; bone protection; infection; mood"],
-          ["Immunosuppressant bloods (shared care)","Per protocol","FBC/LFT/U&E surveillance; withhold + advise on abnormalities"],
-          ["Skin infection","Each review","Increasing redness/pain/pus/odour \u2192 swab + antibiotics"]
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"Soon after diagnosis", title:"Establish shared care", html:"Confirm dermatology plan, start skin/wound care, district nursing, bone/GI protection if on steroids, trigger review."},
-          {n:"2", when:"Regular reviews", title:"Control & complications", html:"Disease activity, steroid/immunosuppressant monitoring, infection, nutrition, carer support."},
-          {n:"3", when:"As disease settles", title:"Taper & maintain", html:"Support gradual steroid taper per dermatology; many achieve remission and treatment can be reduced/stopped."}
-        ]}
-      ]},
-    {t:"loop", icon:"\ud83d\udd01", title:"Not controlled / deteriorating? Check",
-      arrow:"\u2026if blistering persists or the patient deteriorates",
-      intro:"Exclude infection and complications before assuming treatment failure.",
-      checks:[
-        {b:"1 \u00b7 Infection", html:"Secondary bacterial infection / sepsis \u2192 swab, treat, may need admission."},
-        {b:"2 \u00b7 Adherence/technique", html:"Topical steroid applied adequately to all affected areas; oral steroid taken/tapered correctly?"},
-        {b:"3 \u00b7 Drug trigger", html:"Ongoing DPP-4 inhibitor / other trigger \u2014 review with the team."},
-        {b:"4 \u00b7 Complications", html:"Fluid/protein loss, steroid harms, immobility \u2192 manage; consider admission if frail."},
-        {b:"5 \u00b7 Escalate", html:"Active/extensive disease \u2192 dermatology for systemic/steroid-sparing escalation."}
-      ],
-      back:"Infection + triggers + adherence addressed \u2192 dermatology escalation"},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"\ud83d\udd34 Sepsis / extensive disease", html:"\u201cWidespread blistering with fever, feeling very unwell, or extensive raw skin \u2014 seek urgent assessment (infection/fluid loss risk).\u201d"},
-          {t:"\ud83e\udda0 Skin infection", html:"\u201cSpreading redness, pus, increasing pain or odour around the blisters \u2014 contact us; it may need antibiotics.\u201d"},
-          {t:"\ud83d\udc8a Steroid risks", html:"\u201cOn steroids: don\u2019t stop suddenly; report signs of infection, high sugars (thirst, frequency), or new tummy pain.\u201d"},
-          {t:"\ud83d\udc41\ufe0f Mucosal/eye", html:"\u201cBlisters/soreness in the mouth, eyes or genitals \u2014 tell us; this needs specialist review.\u201d"}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
-      arrow:"refer all suspected; urgent if severe",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"All suspected", html:"Refer to dermatology for biopsy + immunofluorescence and treatment initiation \u2014 do not manage blistering disease without confirmation."},
-          {t:"Urgent / emergency", html:"Extensive disease, systemically unwell/sepsis, significant fluid loss, or frail patient unable to cope at home \u2192 urgent/admission."},
-          {t:"Mucosal involvement", html:"Oral/ocular/genital involvement, or suspected pemphigus (flaccid blisters, Nikolsky positive) \u2192 urgent specialist."},
-          {t:"Treatment complications", html:"Steroid/immunosuppressant complications, or refractory disease \u2192 dermatology."}
-        ]},
-        {b:"say", html:"These blisters are caused by the immune system attacking the skin; it\u2019s treatable but needs a skin specialist to confirm it with a biopsy and guide treatment, usually steroid creams or tablets. We\u2019ll arrange dressings and keep a close eye on the skin and on any side effects of treatment."}
-      ]}
-  ]
+  lead:'<div class="mg-layers"><a href="#recognise"><b>Recognise</b><small>Prodrome → tense blisters</small></a><a href="#redflags"><b>Red flags</b><small>Pemphigus, sepsis, extent</small></a><a href="#gp-start"><b>While you wait</b><small>What the GP can start</small></a><a href="#steroid-safety"><b>Steroid safety</b><small>Bone, card, sugar, BP</small></a></div>',
+  glance:[
+    {lbl:"Who", val:"Over 70s", sub:"often frail, neurological comorbidity"},
+    {lbl:"Picture", val:"Itch → tense blisters", sub:"on urticated skin; mouth usually spared"},
+    {lbl:"Confirm", val:"Biopsy + DIF", sub:"dermatology; ± BP180/BP230 serology"},
+    {lbl:"Localised", val:"Clobetasol 0.05%", sub:"very potent topical steroid"},
+    {lbl:"Extensive", val:"Topical ± oral", sub:"prednisolone or doxycycline start"},
+    {lbl:"Danger", val:"Pemphigus · sepsis", sub:"mucosal erosions = urgent"}
+  ],
+  quickSub:"If you read nothing else, read these five cards. Sources for each point are named in the sections below and in the <a href=\"#provenance\">Evidence</a> panel.",
+  quick:[
+    {tone:"amber", h:"Think of it before the blisters appear", html:"An older person with <b>intense, persistent itch</b> and <b>urticated or eczematous plaques</b> that don’t behave like eczema may be in the <b>non-bullous (prodromal) phase</b> of pemphigoid — weeks to months before <b>large, tense, fluid-filled blisters</b> appear. Scabies, eczema and drug rash are the usual wrong labels."},
+    {tone:"red", h:"Mucosal erosions or flaccid blisters = think pemphigus, act urgently", html:"<b>Painful mouth erosions</b>, <b>flaccid</b> blisters that rupture into raw areas, a positive Nikolsky sign or a younger/middle-aged patient points to <b>pemphigus vulgaris</b> — rarer and more dangerous. Same-day/urgent dermatology discussion (BAD 2017 pemphigus guideline). Widespread raw skin or a systemically unwell patient → admit."},
+    {tone:"purple", h:"Check the drug list — especially gliptins", html:"DPP-4 inhibitor SmPCs (e.g. sitagliptin, linagliptin) state: <b>if bullous pemphigoid is suspected, the gliptin should be discontinued</b>; treat the whole class (alogliptin, saxagliptin, vildagliptin) with the same caution. Arrange alternative glucose control. Also consider loop diuretics, recent antibiotics and immune checkpoint inhibitors."},
+    {tone:"blue", h:"Very potent topical steroid is first-line and systemic-sparing", html:"<b>Clobetasol propionate 0.05%</b> is first-line for localised disease and can be used over large areas in extensive disease (BAD 2012). Oral prednisolone or a <b>doxycycline-start strategy</b> (BLISTER, Lancet 2017) are specialist-guided choices for extensive disease. Topical steroid can often be started on dermatology advice while the biopsy is awaited."},
+    {tone:"green", h:"Steroids in the frail: protect bone, carry the card, watch sugars", html:"Prednisolone ≥7.5 mg/day expected for ≥3 months → <b>start bone protection at the same time</b>, don’t wait for DXA (NOGG 2024). Steroid emergency card for at-risk patients (NatPSA/2020/005). Check glucose and BP, look for infection, taper — never stop abruptly."}
+  ],
+  pathwaySub:"The consultation in six moves. The red step is where harm happens — missing pemphigus or sepsis.",
+  pathway:[
+    {title:"Suspect it", html:"Older patient, itch ± urticated plaques, tense blisters on flexures, trunk and limbs. Ask about <b>new drugs in the last months</b> (gliptins especially), mouth/eye/genital soreness, and how they are coping at home."},
+    {title:"Screen for danger", html:"<b>Mucosal erosions or flaccid blisters</b> (pemphigus), <b>extensive raw skin</b>, fever, sepsis features (NEWS2), dehydration, or a frail person unable to manage → same-day dermatology/medical admission.", alert:true},
+    {title:"Exclude mimics", html:"Bullous impetigo (swab), scabies (burrows, contacts), insect bites, herpes simplex/zoster, contact dermatitis, fixed drug eruption, SJS/TEN (unwell + mucosa + dusky skin → 999/admit), oedema blisters in heart failure."},
+    {title:"Refer to confirm", html:"All suspected autoimmune blistering disease → dermatology for <b>lesional biopsy (histology) + perilesional biopsy for direct immunofluorescence</b> ± BP180/BP230 serology. Urgency matched to extent and frailty."},
+    {title:"Start what is safe", html:"On dermatology advice: <b>clobetasol 0.05%</b> to affected skin, emollient and soap substitute, blister care, stop a likely trigger (gliptin), treat secondary infection, district nurse for dressings."},
+    {title:"Shared care", html:"Support the dermatology regimen (topical, doxycycline, prednisolone or steroid-sparing agent), bone protection, steroid card, glucose/BP, infection vigilance, and a slow taper as disease settles."}
+  ],
+  sections:[
+
+    {id:"recognise", nav:"Recognise", title:"Recognising bullous pemphigoid", sub:"A disease of older people: most patients are over 70. The prodrome is the diagnostic opportunity most often missed.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Typical picture","Elderly patient; intense itch then <b>large, tense, fluid-filled blisters</b> (clear or blood-stained) on erythematous or urticated skin — flexures, inner thighs, lower abdomen, trunk and limbs. Blisters don’t rupture easily (<b>Nikolsky negative</b>). Healing erosions, crusts and milia may follow"],
+         ["Prodromal (non-bullous) phase","Weeks to months of <b>itch with urticated, eczematous or excoriated plaques</b> and no blisters. Some patients never blister. Suspect pemphigoid in an older person with persistent, unexplained generalised itch or “eczema” that fails to settle"],
+         ["Mucosa","<b>Usually spared</b>; oral involvement occurs in a minority and is mild. Prominent mucosal disease should make you think of pemphigus or mucous membrane pemphigoid"],
+         ["Associations","Neurological disease (dementia, Parkinson’s disease, stroke), frailty and immobility are commonly associated — many patients live in care homes"],
+         ["Triggers / context","Often idiopathic; can be drug-associated — <b>gliptins/DPP-4 inhibitors</b> have the strongest signal, with loop diuretics, some antibiotics and PD-1/PD-L1 checkpoint inhibitors also reported. Review medication"],
+         ["Mechanism","Autoantibodies (IgG) against hemidesmosomal proteins <b>BP180 and BP230</b> at the dermo-epidermal junction → <b>subepidermal</b> split, so the roof is thick and blisters stay tense"],
+         ["Course","Chronic and relapsing, but often remits over months to a few years; treatment can usually be tapered and stopped. Mortality is higher than in age-matched peers, largely reflecting age, frailty and treatment harms"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Diagnosis is dermatology-confirmed", html:"Skin biopsy of a fresh blister edge for <b>histology</b> (subepidermal blister, eosinophils) and <b>perilesional skin for direct immunofluorescence</b> (linear IgG and/or C3 along the basement membrane). Serology for anti-BP180/BP230 supports the diagnosis and can track activity.", src:"BAD 2012 bullous pemphigoid guideline"},
+         {tone:"amber", h:"The pre-bullous phase", html:"Itch with urticated or eczematous lesions can precede blisters by months. DIF on perilesional skin can be positive before blisters form, so a biopsy is worth discussing when a frail older person has refractory unexplained itch.", src:"EADV 2022 S2k bullous pemphigoid guideline"}
+       ]},
+       {b:"why", html:"Bullous pemphigoid needs <strong>dermatology confirmation by biopsy and immunofluorescence</strong> because treatment is prolonged immunosuppression in a frail group, and it must be distinguished from pemphigus (more dangerous, mucosal) and from common mimics. The GP’s role is prompt recognition and referral, then shared-care support of the steroid regimen, vigilance for complications, and review of drug triggers — notably DPP-4 inhibitors."}
+     ]},
+
+    {id:"differential", nav:"Pemphigoid vs pemphigus", title:"Differentials — above all, is this pemphigus?", sub:"Pemphigus vulgaris is rarer, affects a younger age group, starts in the mouth and can be fatal without treatment. It changes the urgency.",
+     blocks:[
+       {b:"table", head:["Feature","Bullous pemphigoid","Pemphigus vulgaris"], rows:[
+         ["Age","Usually &gt;70","Usually middle age (40s–60s)"],
+         ["Blisters","<b>Tense</b>, large, often on urticated base; intact blisters common","<b>Flaccid</b>, fragile, rupture quickly → painful erosions; intact blisters rare"],
+         ["Level of split","Subepidermal (BP180/BP230)","Intraepidermal (desmoglein 3 ± 1)"],
+         ["Nikolsky sign","Negative","Often positive"],
+         ["Mucosa","Usually spared","<b>Oral erosions in most</b>, often the first sign (can precede skin lesions by months); eyes, genitals, larynx"],
+         ["Itch vs pain","Itch dominates","Pain and soreness dominate; eating and swallowing affected"],
+         ["Urgency","Routine–urgent by extent and frailty","<b>Urgent</b> dermatology; admit if extensive, unable to eat/drink or unwell"],
+         ["Specialist treatment","Topical clobetasol; oral prednisolone or doxycycline; steroid-sparing agents","Systemic steroids plus early steroid-sparing therapy; rituximab now established"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Pemphigus vulgaris — do not sit on it", html:"Persistent painful <b>oral erosions</b> not explained by aphthae, candida or herpes, especially with skin erosions, need urgent dermatology (and oral medicine/ENT/ophthalmology as needed). Diagnosis is by biopsy with DIF and serology for desmoglein antibodies.", src:"BAD 2017 pemphigus vulgaris guideline"},
+         {tone:"blue", h:"Rituximab has changed pemphigus care", html:"The BAD pemphigus guideline positions <b>rituximab</b> as an effective treatment across pemphigus, alongside systemic corticosteroids and steroid-sparing immunosuppressants. The GP needs to know the patient is heavily immunosuppressed (infection risk, vaccine timing).", src:"BAD 2017 pemphigus vulgaris guideline"}
+       ]},
+       {b:"table", head:["Mimic","Clue","Action"], rows:[
+         ["Bullous impetigo","Younger, honey crust, contacts, rapid spread","Swab; treat per local antimicrobial guidance"],
+         ["Scabies (can also trigger bullae in older people)","Burrows (web spaces, wrists), itchy contacts, care-home outbreak","Treat patient and contacts; re-examine if blisters persist"],
+         ["Herpes simplex / zoster","Grouped vesicles, dermatomal, pain","Antivirals; urgent ophthalmology if eye involved"],
+         ["Contact dermatitis / insect bites","Localised, pattern matches exposure","Avoid trigger; topical steroid"],
+         ["Stevens–Johnson syndrome / TEN","Unwell, fever, <b>mucosal involvement</b>, dusky/targetoid skin, new drug in last 8 weeks","<b>999 / same-day admission</b>; stop culprit drug"],
+         ["Oedema blisters","Tense bullae on swollen legs in heart failure/immobility","Treat oedema; blister care"],
+         ["Dermatitis herpetiformis, linear IgA disease, mucous membrane pemphigoid","Coeliac link; younger; scarring mucosal disease","Dermatology (biopsy + DIF distinguishes)"]
+       ]},
+       {b:"why", html:"The tense-versus-flaccid distinction reflects where the split is. In pemphigoid the whole epidermis forms the blister roof, so blisters survive; in pemphigus only the upper epidermis lifts, so blisters break into raw, painful, infection-prone erosions and mucosa is involved. That is why pemphigus behaves more like a burn and why mouth ulcers in a middle-aged patient deserve a biopsy rather than repeated mouthwash."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — same-day or urgent action", sub:"Blistering disease in a frail older person can decompensate quickly through fluid loss, infection and inability to cope.",
+     blocks:[
+       {b:"warn", html:"<b>Same-day assessment / admission</b> for: suspected <b>SJS/TEN</b>; suspected <b>pemphigus</b> with extensive erosions or unable to eat/drink; <b>extensive raw skin</b>; fever, rigors, new confusion or other <b>sepsis</b> features; dehydration or AKI; a frail person or carer unable to manage dressings and care at home."},
+       {b:"cards", items:[
+         {tone:"red", h:"Sepsis from infected erosions", html:"Eroded skin is a portal for <i>Staphylococcus aureus</i> and streptococci, and steroids blunt fever. Use NEWS2 and your local sepsis pathway; a frail patient with new confusion, falls or reduced intake needs same-day assessment."},
+         {tone:"red", h:"Mucosal disease", html:"Oral, ocular or genital erosions, dysphagia or hoarseness → urgent dermatology; eye involvement needs ophthalmology (risk of scarring in mucous membrane pemphigoid and pemphigus).", src:"BAD 2017 pemphigus vulgaris guideline"},
+         {tone:"amber", h:"Extensive or rapidly progressive disease", html:"Widespread blistering or rapid spread despite topical therapy needs urgent dermatology review for systemic treatment rather than a routine appointment.", src:"BAD 2012 bullous pemphigoid guideline"},
+       ]}
+     ]},
+
+    {id:"triggers", nav:"Drug triggers", title:"Drug triggers — review every medicine", sub:"Drug-associated pemphigoid may settle faster once the culprit is stopped, but not always.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Gliptins (DPP-4 inhibitors)","Strongest signal. Sitagliptin (Januvia) SmPC section 4.4 (emc): post-marketing reports of bullous pemphigoid with DPP-4 inhibitors; <b>“If bullous pemphigoid is suspected, Januvia should be discontinued”</b>. The linagliptin (Trajenta) SmPC carries the same instruction; treat other gliptins with the same caution. Latency can be months to years after starting"],
+         ["Loop diuretics","Furosemide is the classic older association; review need and alternatives with the prescriber"],
+         ["Immune checkpoint inhibitors","PD-1/PD-L1 inhibitors (e.g. pembrolizumab, nivolumab) — inform the oncology team, who will manage the immune-related adverse event"],
+         ["Others reported","Penicillins and other antibiotics, spironolactone, NSAIDs, ACE inhibitors, terbinafine — case-report level; weigh against the need for the drug"],
+         ["Practical step","Stop a suspected gliptin, replace it with alternative glucose control (think about hypoglycaemia risk in the frail, and that steroids will raise glucose), <b>record the reaction</b>, report via the MHRA Yellow Card scheme, and tell the dermatologist"]
+       ]},
+       {b:"why", html:"The old card advised discussing with dermatology or the diabetes team before stopping a gliptin. The product information is more direct: if pemphigoid is suspected, discontinue. Stopping is low-risk because alternatives exist — but pick one that suits the patient, since oral steroids will worsen glycaemic control at the same time."}
+     ]},
+
+    {id:"gp-start", nav:"While you wait", title:"What the GP can start while awaiting dermatology", sub:"Ideally after a same-week advice-and-guidance or telephone discussion, and never at the cost of delaying the biopsy.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"🩹 Blister/wound care", html:"Leave small intact blisters. Large tense blisters may be punctured at the base with a sterile needle to drain fluid, <b>leaving the roof on</b> as a natural dressing. Non-adherent dressings to erosions; gentle handling; avoid adhesive tapes on fragile skin."},
+         {t:"🧴 Emollients & hygiene", html:"Generous emollient and soap substitute; keep skin clean; antiseptic bath additives are sometimes used on dermatology advice. Emollients are flammable when soaked into dressings and clothing — warn about naked flames."},
+         {t:"💊 Review triggers", html:"Stop a suspected gliptin (SmPC); review loop diuretics and recent new drugs."},
+         {t:"🦴 Pressure care", html:"Pressure-area care, repositioning and falls prevention in frail/immobile patients."},
+         {t:"🍽️ Nutrition & fluids", html:"Maintain nutrition and hydration (extensive disease → fluid and protein loss); dietitian if needed."},
+         {t:"🧠 Support", html:"Carer support, district-nursing involvement for dressings and steroid application, psychological support; itch disturbs sleep. Sedating antihistamines add falls and confusion risk in older people \u2014 use cautiously if at all. Check whether the patient or care home can realistically apply large quantities of ointment; inability to cope at home is an admission criterion in itself."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Very potent topical steroid", html:"<b>Clobetasol propionate 0.05%</b> to affected skin is effective and avoids systemic steroid harms; it can usually be started on dermatology advice before the biopsy result. Quantities are large (tens of grams a day in extensive disease) — prescribe generously and arrange help to apply it. Dose and quantity per dermatology and BNF.", src:"BAD 2012 bullous pemphigoid guideline"},
+         {tone:"amber", h:"Take the biopsy before heavy treatment if possible", html:"Potent topical or systemic steroid can reduce the diagnostic yield of the biopsy. Where treatment cannot wait, tell dermatology what has been started and when.", src:"EADV 2022 S2k bullous pemphigoid guideline"},
+         {tone:"plain", h:"Secondary infection", html:"Swab crusted or purulent erosions; treat clinically infected skin per local antimicrobial guidance. Doxycycline, if chosen by dermatology as disease treatment, also covers many skin pathogens."},
+       ]},
+       {b:"warn", html:"Starting <b>oral prednisolone</b> in primary care for suspected pemphigoid should normally be a dermatology-agreed decision: it commits a frail patient to months of steroid with bone, glucose, infection and adrenal consequences, and can blur the biopsy. Suspected pemphigus is not a GP-start condition — it needs urgent specialist care."}
+     ]},
+
+    {id:"ladder", nav:"Treatment ladder", title:"Specialist-led treatment ladder the GP must understand", sub:"Most patients are started in dermatology and continued in primary care. Know what each step means for monitoring.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Localised/mild", title:"Very potent topical corticosteroid", when:"clobetasol propionate 0.05%",
+          html:"First-line for localised or mild disease — <span class='rx'>clobetasol propionate 0.05%</span> to affected skin. Also effective in extensive disease: EADV 2022 suggests about <b>20–30 g/day in mild–moderate and 30–40 g/day in extensive disease</b>; the trial regimen cited by BAD 2012 was 40 g/day applied whole-body, with better survival and fewer adverse events than prednisone 1 mg/kg in extensive disease. Practicality (who applies it) often limits this. Dermatology-guided, then tapered over months."},
+         {step:"Extensive", title:"Oral prednisolone", when:"lowest effective dose",
+          fromLabel:"widespread / inadequate topical control",
+          html:"Oral prednisolone (the BLISTER comparator was <b>0.5 mg/kg/day</b>) to induce control, then taper to the lowest effective dose. <b>Start bone protection at the same time</b> (NOGG 2024), consider GI protection in those at risk, steroid emergency card, and monitor glucose and BP."},
+         {step:"Alternative start", title:"Doxycycline-start strategy", when:"BLISTER trial",
+          fromLabel:"where steroid harm is the bigger worry",
+          html:"<span class='rx'>Doxycycline 200 mg daily</span> as the initial strategy (± limited topical steroid) was non-inferior for short-term blister control and substantially safer at a year. Counsel on photosensitivity and GI upset; take upright with water."},
+         {step:"Steroid-sparing", title:"Add an adjuvant", when:"to reduce steroid burden",
+          fromLabel:"steroid-dependent / complications",
+          html:"Immunosuppressants (azathioprine, methotrexate, mycophenolate mofetil) — dermatology-initiated with baseline screening; GP supports shared-care blood monitoring per local protocol."},
+         {step:"Refractory", title:"Specialist escalation", when:"resistant disease",
+          fromLabel:"inadequate response",
+          html:"Other systemic agents or biologics (e.g. rituximab, omalizumab, dupilumab) per specialist. NICE appraisal of dupilumab for bullous pemphigoid (ID6479) was listed as awaiting development at the time of writing."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"BLISTER: what it showed", html:"253 patients randomised to start doxycycline 200 mg/day or prednisolone 0.5 mg/kg/day. At 6 weeks, <b>74%</b> (83/112) on doxycycline vs <b>91%</b> (92/101) on prednisolone had ≤3 blisters — adjusted difference 18.6%, within the pre-set 37% non-inferiority margin. Related severe, life-threatening or fatal events at 52 weeks: <b>18%</b> vs <b>36%</b>.", src:"BLISTER trial, Williams et al., Lancet 2017"},
+         {tone:"green", h:"So which start?", html:"A trade-off discussed with the patient: prednisolone controls blisters faster; a doxycycline start roughly halves serious treatment-related harm. In frail patients with diabetes, osteoporosis or infection risk, that matters.", src:"BLISTER trial, Williams et al., Lancet 2017"}
+       ]},
+       {b:"warn", html:"Long-term steroids in frail elderly patients carry major risks — <b>bone, GI, glucose, BP, infection, mood and adrenal suppression</b>. Immunosuppressants need baseline screening and regular bloods. Secondary skin infection is common → treat promptly."}
+     ]},
+
+    {id:"steroid-safety", nav:"Steroid safety", title:"Steroid safety — the GP’s main shared-care job", sub:"Topical clobetasol over large areas is absorbed too; do not assume it is systemically inert.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Bone protection — start now, not after DXA", html:"Anyone starting <b>≥7.5 mg/day prednisolone</b> (or equivalent) expected to continue for <b>≥3 months</b>: start bone-protective treatment (oral bisphosphonate first-line, or IV zoledronate) <b>at the same time</b>; DXA can follow. Ensure adequate calcium and vitamin D.", src:"NOGG 2024 UK osteoporosis guideline"},
+         {tone:"amber", h:"Steroid emergency card", html:"Issue an NHS Steroid Emergency Card to patients at risk of adrenal insufficiency from exogenous steroid (the alert’s supporting guidance lists prednisolone ≥5 mg/day for ≥4 weeks or equivalent). Explain sick-day rules and never stopping abruptly. Very large quantities of whole-body clobetasol can also contribute to adrenal suppression, especially alongside oral steroid — agree with dermatology whether a card is needed.", src:"NatPSA/2020/005 Steroid Emergency Card"},
+         {tone:"plain", h:"Glucose and blood pressure", html:"Steroids raise afternoon glucose and BP. Check glucose/HbA1c and BP at baseline and during treatment; people with diabetes need a plan to adjust therapy (especially if the gliptin has just been stopped)."},
+         {tone:"plain", h:"Infection and vaccination", html:"Immunosuppressed patients are at risk of skin and systemic infection, and of atypical presentation. Keep seasonal flu, COVID-19 and pneumococcal vaccines up to date (Green Book ch.7); live vaccines are contraindicated above the ch.6 threshold (e.g. prednisolone &gt;20 mg/day for &gt;14 days) or with other significant immunosuppression — seek specialist advice.", src:"UKHSA Green Book ch.6 and ch.7"},
+         {tone:"plain", h:"GI protection", html:"Consider a PPI for patients on oral steroid with additional GI risk (older age, NSAID, antiplatelet or anticoagulant)."},
+         {tone:"plain", h:"Skin atrophy from topical clobetasol", html:"Large-area very potent topical steroid can thin skin, cause purpura and be absorbed systemically; the dermatology plan should include a taper to the least frequent application that controls disease.", src:"EADV 2022 S2k bullous pemphigoid guideline"}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Follow-up and monitoring in shared care", sub:"Every row has an action. Most relapses happen during the taper.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Disease activity (new blisters, itch, healing)","Each review","A few new blisters a week during taper may be acceptable per dermatology; worsening or not controlled → dermatology"],
+         ["Steroid complications","Regular","Glucose, BP, weight; bone protection in place; infection; mood and sleep; proximal weakness"],
+         ["Bone","At start of oral steroid","Bisphosphonate/zoledronate started with the steroid (NOGG 2024); DXA when practical"],
+         ["Immunosuppressant bloods (shared care)","Per local shared-care protocol","FBC/LFT/U&amp;E surveillance; withhold and seek advice on abnormalities"],
+         ["Skin infection","Each review","Increasing redness, pain, pus or odour → swab and antibiotics"],
+         ["Doxycycline","During treatment","Photosensitivity, oesophageal irritation, GI upset; interactions (e.g. iron, antacids, calcium)"],
+         ["Drug trigger","At diagnosis and any relapse","Gliptin stopped? New culprit drugs added since?"]
+       ]},
+       {b:"timeline", items:[
+         {n:"1", when:"Soon after diagnosis", title:"Establish shared care", html:"Confirm dermatology plan, start skin/wound care, district nursing, bone/GI protection if on steroids, steroid card, trigger review."},
+         {n:"2", when:"Regular reviews", title:"Control and complications", html:"Disease activity, steroid/immunosuppressant monitoring, infection, nutrition, carer support."},
+         {n:"3", when:"As disease settles", title:"Taper &amp; maintain", html:"Support gradual steroid taper per dermatology; many achieve remission and treatment can be reduced and stopped."}
+       ]}
+     ]},
+
+    {id:"notcontrolled", nav:"Not controlled?", title:"Not controlled or deteriorating? Check before blaming the treatment", sub:"Exclude infection and practical problems before assuming treatment failure.",
+     blocks:[
+       {b:"dl", rows:[
+         ["1 · Infection","Secondary bacterial infection or sepsis → swab, treat, may need admission"],
+         ["2 · Adherence/technique","Topical steroid applied adequately to all affected areas (who is applying it?); oral steroid taken and tapered correctly?"],
+         ["3 · Drug trigger","Ongoing DPP-4 inhibitor or other trigger — stop and inform the team"],
+         ["4 · Complications","Fluid/protein loss, steroid harms, immobility → manage; consider admission if frail"],
+         ["5 · Diagnosis","Is this really pemphigoid? New mucosal disease or flaccid erosions → urgent re-review for pemphigus or another blistering disease"],
+         ["6 · Escalate","Active or extensive disease → dermatology for systemic or steroid-sparing escalation"]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When and where to refer", sub:"Refer all suspected autoimmune blistering disease; the urgency is set by extent, mucosa and frailty.",
+     blocks:[
+       {b:"table", head:["Situation","Urgency","Where / what to send"], rows:[
+         ["Suspected SJS/TEN; extensive raw skin; septic; unable to eat/drink or cope","<b>Same day / 999</b>","Acute medicine or on-call dermatology; drug list with start dates"],
+         ["Suspected pemphigus (mucosal erosions, flaccid blisters)","<b>Urgent</b> (same-day discussion)","Dermatology ± oral medicine/ophthalmology; photos, duration, weight, ability to eat"],
+         ["Extensive or rapidly spreading bullous pemphigoid","Urgent (days)","Dermatology; photos, extent, frailty, treatment started, gliptin status"],
+         ["Localised or prodromal suspected pemphigoid","Urgent — most patients with suspected pemphigoid need urgent referral (PCDS); use advice &amp; guidance the same week if local pathway allows","Dermatology for biopsy + DIF; start clobetasol on advice"],
+         ["Steroid/immunosuppressant complications or refractory disease","Urgent or routine by severity","Dermatology; bloods, glucose, BP"],
+         ["Eye involvement","Urgent","Ophthalmology"]
+       ]},
+       {b:"say", html:"These blisters are caused by the immune system attacking the skin; it’s treatable but needs a skin specialist to confirm it with a small skin sample and guide treatment, usually strong steroid creams, sometimes tablets or an antibiotic called doxycycline. We’ll arrange dressings and keep a close eye on the skin and on any side effects of treatment."}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Safety-netting", sub:"Give it to the carer or care-home staff in writing as well.",
+     blocks:[
+       {b:"tiles", v:"safety", items:[
+         {t:"🔴 Sepsis / extensive disease", html:"“Widespread blistering with fever, shivering, confusion, feeling very unwell, or large areas of raw skin — call 999 or get urgent help the same day.”"},
+         {t:"🦠 Skin infection", html:"“Spreading redness, pus, increasing pain or smell around the blisters — contact us the same day; it may need antibiotics.”"},
+         {t:"💊 Steroid risks", html:"“On steroid tablets: don’t stop suddenly, carry your steroid card, and tell us about signs of infection, high sugars (thirst, passing lots of urine) or new tummy pain or black stools.”"},
+         {t:"👁️ Mucosal/eye", html:"“Blisters or soreness in the mouth, eyes or genitals, or trouble swallowing — tell us promptly; this needs specialist review.”"}
+       ]},
+       {b:"say", html:"You have a condition where the immune system makes blisters on the skin. It isn’t catching, and it usually settles over months to a couple of years. The main treatment is a strong steroid ointment — you’ll need a lot of it, and the nurses can help apply it. I’d also like to stop your sitagliptin, because it can bring this on, and we’ll use a different tablet for your diabetes. If you get a temperature, feel muddled or the skin becomes red, hot and smelly, don’t wait — ring us or 111 the same day."}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Most harm comes from delay, mislabelling and unprotected steroids.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Calling the prodrome eczema or scabies", html:"Repeated scabies treatments or mild steroids for an older person’s itchy urticated rash delays diagnosis. Refer for biopsy when it doesn’t behave.", src:"EADV 2022 S2k bullous pemphigoid guideline"},
+         {tone:"red", h:"Treating mouth erosions as ulcers or thrush", html:"Persistent oral erosions in a middle-aged adult may be pemphigus; biopsy, don’t just repeat mouthwash.", src:"BAD 2017 pemphigus vulgaris guideline"},
+         {tone:"amber", h:"Leaving the gliptin running", html:"The SmPC says discontinue if pemphigoid is suspected; not doing so can prolong disease."},
+         {tone:"green", h:"Oral steroid without bone protection", html:"Frail older patients on prednisolone for months need bone protection from day one, not after DXA.", src:"NOGG 2024 UK osteoporosis guideline"},
+         {tone:"plain", h:"Under-prescribing topical steroid", html:"Clobetasol works when enough is applied to all affected skin; a 30 g tube is not enough for extensive disease. Check who applies it.", src:"BAD 2012 bullous pemphigoid guideline"},
+         {tone:"plain", h:"Stopping steroids abruptly", html:"Adrenal suppression is likely after weeks of prednisolone; taper per dermatology and issue a steroid emergency card.", src:"NatPSA/2020/005 Steroid Emergency Card"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card — the classic older-patient blistering case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"plain", h:"Classic scenario", html:"An 82-year-old woman with type 2 diabetes (metformin and sitagliptin started a year ago) and mild dementia. Her daughter reports three months of “eczema” that itches all night and now large, tense, fluid-filled blisters on her thighs and tummy. No mouth soreness, afebrile, eating and drinking. She is worried it’s “something catching” from the care home."},
+       {tone:"plain", h:"Examiner-style checkpoints", html:"Links itch prodrome + tense blisters + age to pemphigoid; asks about <b>mouth/eyes</b> and systemic features to exclude pemphigus, SJS and sepsis; recognises the <b>gliptin</b> as a likely trigger and stops it with an alternative plan for glucose; arranges <b>dermatology for biopsy + DIF</b> at the right urgency; starts clobetasol on advice with blister care and district nursing; if prednisolone is planned, addresses <b>bone protection, steroid card, glucose</b>; reassures it isn’t infectious; involves the daughter and care home; clear safety-net."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Named sources for every recommendation. No clinician review is recorded for this page yet.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>British Association of Dermatologists’ guidelines for the management of bullous pemphigoid 2012</b> (Venning et al., Br J Dermatol 2012;167:1200–14)<span class="rd"> — still the current BAD BP guideline (no newer BAD BP guideline found, September 2026; the BAD 2024 national reaudit, Skin Health Dis 2025, reported increasing doxycycline use); diagnosis by biopsy + DIF, topical clobetasol, systemic steroids, tetracyclines, supportive care</span></li>'+
+         '<li><b>British Association of Dermatologists’ guidelines for the management of pemphigus vulgaris 2017</b> (Harman et al., Br J Dermatol 2017;177:1170–1201)<span class="rd"> — pemphigus diagnosis and treatment including rituximab</span></li>'+
+         '<li><b>BLISTER trial</b> — Williams HC et al. Doxycycline versus prednisolone as an initial treatment strategy for bullous pemphigoid. Lancet 2017 (PMID 28279484)<span class="rd"> — doxycycline 200 mg/day vs prednisolone 0.5 mg/kg/day; 74% vs 91% blister control at 6 weeks; related severe/life-threatening/fatal events 18% vs 36% at 52 weeks</span></li>'+
+         '<li><b>EADV updated S2k guideline for the management of bullous pemphigoid</b> (Borradori et al., JEADV 2022)<span class="rd"> — European consensus on diagnosis, non-bullous presentations and treatment</span></li>'+
+         '<li><b>NOGG 2024 — UK clinical guideline for the prevention and treatment of osteoporosis</b><span class="rd"> — ≥7.5 mg/day prednisolone for ≥3 months: start bone protection at the same time</span></li>'+
+         '<li><b>National Patient Safety Alert NatPSA/2020/005/NHSPS — Steroid Emergency Card</b> (13 August 2020)<span class="rd"> — identifying and carding patients at risk of adrenal crisis</span></li>'+
+         '<li><b>Sitagliptin (Januvia) and linagliptin (Trajenta) SmPCs (electronic Medicines Compendium)</b><span class="rd"> — post-marketing reports of bullous pemphigoid with DPP-4 inhibitors; discontinue if suspected</span></li>'+
+         '<li><b>UKHSA Green Book chapters 6 and 7</b><span class="rd"> — ch.6 contraindications incl. live vaccines and steroid thresholds; ch.7 immunisation of individuals with underlying medical conditions (immunosuppression)</span></li>'+
+         '<li><b>NICE ID6479</b> — Dupilumab for treating bullous pemphigoid (technology appraisal, awaiting development)</li>'+
+         '<li>Further reading: Primary Care Dermatology Society (PCDS) clinical guidance page on bullous pemphigoid; BAD patient information leaflet on pemphigoid.</li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Bullous pemphigoid and pemphigus in primary care — BAD 2012 bullous pemphigoid guideline, BAD 2017 pemphigus vulgaris guideline, BLISTER trial (Lancet 2017), EADV 2022 S2k guideline, NOGG 2024 and NatPSA/2020/005. Diagnosis is dermatology-confirmed; systemic treatment is specialist-led. Verify all doses against the current BNF before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

@@ -42,7 +42,7 @@
         id: 'vascular', tier: 'urgent',
         label: 'Possible vascular claudication (not neurogenic)',
         action: 'Pulses, ABPI; PAD pathway.',
-        source: 'NICE NG147 PAD',
+        source: 'NICE CG147 PAD',
         when: i => i.vascular,
       },
       {

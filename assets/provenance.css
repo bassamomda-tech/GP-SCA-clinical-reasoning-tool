@@ -68,10 +68,11 @@ body > .rgp-prov{max-width:1140px;margin-left:auto;margin-right:auto}
 }
 .pv-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 auto;min-width:0}
 .pv-chip{
-  display:inline-block;padding:2px 9px;border-radius:99px;
+  display:inline-block;white-space:nowrap;padding:2px 9px;border-radius:99px;
   font-size:11.5px;font-weight:600;line-height:1.5;
   background:var(--bg,#f6f2e9);border:1px solid var(--line,#e7e0d1);color:var(--ink-2,#2a3744);
   text-decoration:none;
+  max-width:min(100%,380px);overflow:hidden;text-overflow:ellipsis;vertical-align:top;
 }
 a.pv-chip:hover{border-color:var(--teal-3,#136a65);color:var(--teal,#0c4a47)}
 .pv-chip-rest{color:var(--muted,#5d6673);font-weight:500;background:transparent;border-style:dashed}

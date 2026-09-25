@@ -291,9 +291,9 @@ window.EBM_TOPICS = [
 
   { id:'tamsulosin-luts', cat:'Women’s & men’s health', name:'Alpha-blocker (tamsulosin) for BPH/LUTS', verdict:'help',
     numbers:'Meaningful symptom improvement within weeks; add 5-ARI for larger prostates.',
-    detail:'For bothersome male voiding lower urinary tract symptoms from benign prostatic enlargement, alpha-blockers such as tamsulosin relax prostatic smooth muscle and improve symptoms and flow within a few weeks, making them first-line in NICE NG97. For men with larger prostates (or a raised PSA reflecting size), adding a 5-alpha-reductase inhibitor such as finasteride shrinks the gland over months and reduces the risk of progression, acute retention and surgery. Patients should be counselled about postural hypotension and dizziness, and about intra-operative floppy iris syndrome if cataract surgery is planned.',
-    note:'Alpha-blocker first-line for voiding LUTS (NICE NG97); add 5-ARI if large prostate. Warn re postural hypotension & floppy-iris.',
-    src:{label:'NICE NG97', url:'https://www.nice.org.uk/guidance/ng97'} },
+    detail:'For bothersome male voiding lower urinary tract symptoms from benign prostatic enlargement, alpha-blockers such as tamsulosin relax prostatic smooth muscle and improve symptoms and flow within a few weeks, making them first-line in NICE CG97. For men with larger prostates (or a raised PSA reflecting size), adding a 5-alpha-reductase inhibitor such as finasteride shrinks the gland over months and reduces the risk of progression, acute retention and surgery. Patients should be counselled about postural hypotension and dizziness, and about intra-operative floppy iris syndrome if cataract surgery is planned.',
+    note:'Alpha-blocker first-line for voiding LUTS (NICE CG97); add 5-ARI if large prostate. Warn re postural hypotension & floppy-iris.',
+    src:{label:'NICE CG97', url:'https://www.nice.org.uk/guidance/cg97'} },
 
   /* ---------------- Prevention / bone / vaccines ---------------- */
   { id:'vitd', cat:'Prevention & bone', name:'Vitamin D supplementation', verdict:'nuance',

@@ -322,10 +322,10 @@ window.RGP_CASES = [
       { id:"palpitations",     title:"Palpitations",                  setting:"Symptom workup",         status:"full",  path:"cases/palpitations.html", guideline:"ESC 2024" },
       { id:"ckd",              title:"Chronic Kidney Disease",        setting:"Primary-care review",    status:"full",  path:"cases/ckd.html", guideline:"NICE NG203 / KDIGO 2024" },
       { id:"tia-stroke",       title:"TIA & Stroke",                  setting:"Acute · Secondary prevention", status:"full", path:"cases/tia-stroke.html", guideline:"NICE NG128" },
-      { id:"pad",              title:"Peripheral Arterial Disease",   setting:"Diagnosis & management", status:"full",  path:"cases/peripheral-arterial-disease.html", guideline:"NICE NG224" },
+      { id:"pad",              title:"Peripheral Arterial Disease",   setting:"Diagnosis & management", status:"full",  path:"cases/peripheral-arterial-disease.html", guideline:"NICE CG147" },
       { id:"angina",           title:"Stable Angina",                 setting:"Diagnosis & management", status:"full",  path:"cases/angina.html", guideline:"NICE CG126 / NG185" },
       { id:"hypercholesterolaemia", title:"Hypercholesterolaemia",     setting:"Lipid modification · CVD prevention", status:"full", path:"cases/hypercholesterolaemia.html", guideline:"NICE NG238 / QRISK3" },
-      { id:"mi-secondary-prevention", title:"MI — Secondary Prevention", setting:"Post-MI · cardiac rehab · meds", status:"full", path:"cases/mi-secondary-prevention.html", guideline:"NICE NG185 / CG172" },
+      { id:"mi-secondary-prevention", title:"MI — Secondary Prevention", setting:"Post-MI · cardiac rehab · meds", status:"full", path:"cases/mi-secondary-prevention.html", guideline:"NICE NG185" },
       { id:"aki",              title:"Acute Kidney Injury",           setting:"Recognition · STOP drugs · staging", status:"full", path:"cases/aki.html", guideline:"NICE NG148 / KDIGO" },
       { id:"dvt",              title:"DVT",                           setting:"Wells · D-dimer · DOAC", status:"full", path:"cases/dvt.html", guideline:"NICE NG158" },
     ]
@@ -347,7 +347,7 @@ window.RGP_CASES = [
       { id:"t1dm",             title:"Type 1 Diabetes",               setting:"New diagnosis / insulin",status:"full",  path:"cases/type-1-diabetes.html", guideline:"NICE NG17" },
       { id:"hypothyroidism",   title:"Hypothyroidism",                setting:"Diagnosis & review",     status:"full",  path:"cases/hypothyroidism.html", guideline:"NICE NG145" },
       { id:"hyperthyroidism",  title:"Hyperthyroidism",               setting:"Diagnosis & review",     status:"full",  path:"cases/hyperthyroidism.html", guideline:"NICE NG145" },
-      { id:"osteoporosis",     title:"Osteoporosis",                  setting:"FRAX & treatment",       status:"full",  path:"cases/osteoporosis.html", guideline:"NICE NG222 / NOGG 2021" },
+      { id:"osteoporosis",     title:"Osteoporosis",                  setting:"FRAX & treatment",       status:"full",  path:"cases/osteoporosis.html", guideline:"NICE CG146 / NOGG 2021" },
       { id:"fatigue",          title:"Fatigue & Tiredness",          setting:"Symptom framework",     status:"full",  path:"cases/fatigue.html", guideline:"NICE / NG12 / NG206" },
       { id:"obesity",          title:"Obesity",                      setting:"Tiered pathway · GLP-1 · bariatric", status:"full", path:"cases/obesity.html", guideline:"NICE CG189 / NG246" },
       { id:"addisons-disease", title:"Addison's Disease",             setting:"Adrenal insufficiency · crisis", status:"full", path:"cases/addisons-disease.html", guideline:"NICE NG243 / NICE" },
@@ -363,7 +363,7 @@ window.RGP_CASES = [
       { id:"crohns",           title:"Crohn's Disease",               setting:"GP role in IBD",         status:"full",  path:"cases/crohns.html", guideline:"NICE NG129" },
       { id:"uc",               title:"Ulcerative Colitis",            setting:"GP role in IBD",         status:"full",  path:"cases/ulcerative-colitis.html", guideline:"NICE NG130" },
       { id:"diverticulosis",   title:"Diverticulosis & -itis",        setting:"Acute & chronic",        status:"full",  path:"cases/diverticulosis.html", guideline:"NICE NG147" },
-      { id:"constipation",     title:"Constipation",                  setting:"Chronic constipation",   status:"full",  path:"cases/constipation.html", guideline:"UK-based guidelines" },
+      { id:"constipation",     title:"Constipation",                  setting:"Chronic constipation",   status:"full",  path:"cases/constipation.html", guideline:"NICE NG12 · Rome IV · BNF" },
       { id:"diarrhoea",        title:"Diarrhoea",                     setting:"Acute infective · chronic · FIT", status:"full", path:"cases/diarrhoea.html", guideline:"NICE / NG12" },
     ]
   },
@@ -373,7 +373,7 @@ window.RGP_CASES = [
       { id:"depression",       title:"Depression",                    setting:"New presentation",       status:"full",  path:"cases/depression.html", guideline:"NICE NG222" },
       { id:"anxiety",          title:"Generalised Anxiety",           setting:"Initial assessment · SCA",     status:"full",  path:"cases/anxiety.html", guideline:"NICE NG222 / NICE" },
       { id:"dementia",         title:"Dementia",                      setting:"Cognitive assessment · SCA", status:"full",  path:"cases/dementia.html", guideline:"NICE NG97" },
-      { id:"insomnia",         title:"Insomnia",                      setting:"CBT-I first-line",       status:"full",  path:"cases/insomnia.html", guideline:"UK-based guidelines · CBT-I" },
+      { id:"insomnia",         title:"Insomnia",                      setting:"CBT-I first-line",       status:"full",  path:"cases/insomnia.html", guideline:"NICE TA77 · NICE MTG70 · CBT-I" },
       { id:"ocd",              title:"OCD",                           setting:"CBT/ERP · SSRI",         status:"full",  path:"cases/ocd.html", guideline:"NICE CG31" },
       { id:"ptsd",             title:"PTSD",                          setting:"TF-CBT / EMDR",          status:"full",  path:"cases/ptsd.html", guideline:"NICE NG116" },
       { id:"alcohol",          title:"Alcohol & Problem Drinking",    setting:"AUDIT · brief intervention · detox", status:"full", path:"cases/alcohol.html", guideline:"NICE CG115 / NG12" },
@@ -461,7 +461,7 @@ window.RGP_CASES = [
   {
     group: "Neurodevelopmental",
     items: [
-      { id:"autism",           title:"Autism in Children",            setting:"Recognition & referral", status:"full",  path:"cases/autism.html", guideline:"NICE NG213 / DSM-5" },
+      { id:"autism",           title:"Autism in Children",            setting:"Recognition & referral", status:"full",  path:"cases/autism.html", guideline:"NICE CG128 / DSM-5" },
       { id:"adhd",             title:"ADHD",                          setting:"Recognition & shared care", status:"full", path:"cases/adhd.html", guideline:"NICE NG87" },
     ]
   },
@@ -490,8 +490,8 @@ window.RGP_CASES = [
       { id:"cmpa-reflux",      title:"CMPA & Infant Reflux",          setting:"Infant · CMPA vs reflux", status:"full", path:"cases/cmpa-reflux.html", guideline:"NICE NG1 / NICE / iMAP" },
       { id:"childhood-limp",   title:"Childhood Limp",                setting:"Age-based · SUFE · septic · NG12", status:"full", path:"cases/childhood-limp.html", guideline:"NICE / NG12" },
       { id:"childhood-msk",    title:"Childhood MSK Presentations",   setting:"pGALS · JIA · growing pains · NG12", status:"full", path:"cases/childhood-msk.html", guideline:"pGALS / NICE NG12" },
-      { id:"constipation-children", title:"Constipation in Children", setting:"Disimpaction · maintenance", status:"full", path:"cases/constipation-children.html", guideline:"NICE NG99 / NICE" },
-      { id:"wheeze-children",  title:"Wheeze in Children",            setting:"Viral wheeze vs asthma", status:"full", path:"cases/wheeze-children.html", guideline:"BTS-SIGN / NICE NG115" },
+      { id:"constipation-children", title:"Constipation in Children", setting:"Disimpaction · maintenance", status:"full", path:"cases/constipation-children.html", guideline:"NICE CG99 / NICE" },
+      { id:"wheeze-children",  title:"Wheeze in Children",            setting:"Viral wheeze vs asthma", status:"full", path:"cases/wheeze-children.html", guideline:"BTS/NICE/SIGN NG245" },
     ]
   },
   {

@@ -10,85 +10,90 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Osgood-Schlatter management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🦵",
   title:"Osgood-Schlatter Disease",
-  stemTitle:"Osgood-Schlatter \u2014 a benign, self-limiting cause of adolescent knee pain",
-  stemSub:"Primary-care management of Osgood-Schlatter disease \u2014 a clinical diagnosis of traction apophysitis at the tibial tuberosity in active adolescents; treat with activity modification and analgesia, reassure about the good prognosis, and recognise the red flags that suggest another cause.",
-  guideline:"RCH Melbourne clinical guideline",
+  eyebrow:"Protocol · adolescents · suspected Osgood-Schlatter",
+  reviewed:"24 September 2026",
+  nextReview:"24 September 2027",
+  stemTitle:"Suspected Osgood-Schlatter disease in primary care \u2014 a clinical diagnosis once the red flags and the hip have been checked",
+  stemSub:"For adolescents with activity-related pain at the tibial tubercle. Osgood-Schlatter is a traction apophysitis, diagnosed clinically when the presentation is typical and the examination is reassuring. Manage with symptom-guided activity modification, rehabilitation and short-term analgesia. Adapted from Royal Children\u2019s Hospital Melbourne guidance; <b>local paediatric, radiology and urgent referral pathways take precedence</b>.",
+  guideline:"RCH Melbourne clinical guideline (adapted) \u00b7 Victorian paediatric knee referral criteria",
   glance:[
-    {lbl:"Who", val:"Active adolescents", sub:"growth spurt; running/jumping"},
-    {lbl:"Hallmark", val:"Tender tibial tuberosity", sub:"swelling/bump below knee"},
-    {lbl:"Diagnosis", val:"Clinical", sub:"no imaging routinely"},
-    {lbl:"1st-line", val:"Activity modification", sub:"+ relative rest"},
-    {lbl:"Pain relief", val:"Ice + analgesia", sub:"paracetamol/NSAID"},
-    {lbl:"Red flag", val:"Night/rest pain, systemic, effusion", sub:"= reconsider"}
+    {lbl:"Who", val:"Active adolescents", sub:"growth spurt; running, jumping, kicking"},
+    {lbl:"Hallmark", val:"Tender tibial tubercle", sub:"\u00b1 prominence; pain on resisted extension"},
+    {lbl:"Diagnosis", val:"Clinical", sub:"imaging only if atypical"},
+    {lbl:"1st-line", val:"Activity modification", sub:"symptom-guided, not total rest"},
+    {lbl:"Always check", val:"The hip", sub:"SUFE / Perthes refer to the knee"},
+    {lbl:"Red flag", val:"Night/rest pain, limp, systemic", sub:"= not typical OSD"}
   ],
   flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Diagnose clinically",
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Assess and diagnose clinically",
       blocks:[
         {b:"kv", rows:[
-          ["Typical","Active adolescent (often 10\u201315y, during growth spurt; common in football/basketball/running) with anterior knee pain over the <b>tibial tuberosity</b>"],
-          ["Signs","Tenderness \u00b1 bony swelling/prominence at the tibial tuberosity; pain worse with activity (running, jumping, kneeling, stairs) and eased by rest; pain on resisted knee extension"],
-          ["Cause","Traction apophysitis \u2014 repetitive quadriceps/patellar-tendon traction on the growing tibial tuberosity apophysis"],
-          ["Diagnosis","Clinical \u2014 imaging not routinely required; often bilateral"]
+          ["Typical","Active adolescent (often 10\u201315 years, around the growth spurt) with activity-related pain localised to the <b>tibial tubercle</b>, eased by rest"],
+          ["Signs","Localised tenderness \u00b1 prominence or swelling at the tubercle \u00b7 pain on resisted knee extension or quadriceps loading \u00b7 generally well \u00b7 no significant intra-articular findings"],
+          ["Examine","Gait and ability to weight-bear \u00b7 knee range of movement \u00b7 effusion, warmth or restricted movement \u00b7 ligament and meniscal signs if there was trauma \u00b7 <b>hip range of movement and gait</b> \u00b7 compare with the other knee"],
+          ["Imaging","None when the presentation is typical, the examination is reassuring and there are no red flags. Plain X-ray or specialist advice if atypical, severe, persistent, traumatic or uncertain. Ultrasound is not routinely indicated, and a normal X-ray does not exclude infection, malignancy or early stress injury"]
         ]},
-        {b:"why", html:"Osgood-Schlatter is a benign, self-limiting overuse condition of the growing skeleton. It is diagnosed clinically from the classic site and activity-related pattern; imaging is reserved for atypical features or to exclude another cause."}
+        {b:"why", html:"Osgood-Schlatter is a clinical diagnosis \u2014 but only once the examination has excluded the alternatives. Night or rest pain, a limp or systemic features are not \u201catypical OSD\u201d: they send the patient down a different diagnostic pathway."}
       ]},
-    {t:"node", d:"safety", n:"2", tag:"Safety-net", title:"Features that suggest another diagnosis",
+    {t:"node", d:"safety", n:"2", tag:"Safety-net", title:"Differential and red flags",
       blocks:[
         {b:"tiles", v:"safety", items:[
-          {t:"🔴 Bone tumour clue", html:"Persistent night pain, rest pain, systemic symptoms, or a mass away from the tuberosity \u2192 X-ray; consider osteosarcoma (around the knee in adolescents)."},
-          {t:"🔴 Septic / inflammatory", html:"Hot swollen joint, fever, effusion, marked systemic upset \u2192 urgent assessment (septic arthritis, JIA)."},
-          {t:"🟠 Hip pathology", html:"In this age group always check the hip \u2014 SCFE/Perthes can refer pain to the knee."},
-          {t:"🟠 Acute injury", html:"Significant trauma, locking, instability, large effusion \u2192 consider fracture/avulsion, ligament/meniscal injury."}
+          {t:"\ud83d\udd34 Same-day emergency", html:"Suspected septic arthritis or osteomyelitis \u00b7 hot swollen joint with fever \u00b7 inability to weight-bear with severe pain \u00b7 suspected acute tibial tubercle avulsion or fracture \u00b7 suspected SUFE (limp, hip pain, restricted hip movement)."},
+          {t:"\ud83d\udd34 Urgent assessment and imaging", html:"Night or rest pain \u00b7 progressive or disproportionate pain \u00b7 persistent limp \u00b7 a mass or focal bony tenderness away from the tubercle \u00b7 unexplained weight loss or fever \u2014 consider malignancy, infection or other bone pathology."},
+          {t:"\ud83d\udfe0 Hip pathology", html:"SUFE and Perthes can present as knee pain \u2014 examine hip range of movement and gait every time."},
+          {t:"\ud83d\udfe0 Other diagnoses", html:"Patellofemoral pain \u00b7 Sinding\u2013Larsen\u2013Johansson (inferior pole of patella) \u00b7 patellar or quadriceps tendinopathy \u00b7 osteochondritis dissecans \u00b7 meniscal or ligament injury \u00b7 inflammatory arthritis \u00b7 large effusion, locking or instability."}
         ]},
-        {b:"why", html:"Anterior knee pain in an adolescent is usually benign, but the can\u2019t-miss diagnoses are referred hip pathology (SCFE/Perthes) and, rarely, a bone tumour around the knee \u2014 night/rest pain and systemic features should prompt imaging."}
+        {b:"why", html:"The can\u2019t-miss diagnoses are referred hip pathology, infection and, rarely, a bone tumour around the knee. Localise the pain precisely: tibial tubercle is Osgood-Schlatter; the inferior pole of the patella is Sinding\u2013Larsen\u2013Johansson."}
       ]},
-    {t:"node", d:"life", n:"3", tag:"Non-drug \u00b7 cornerstone", title:"Activity modification + rehab",
+    {t:"node", d:"life", n:"3", tag:"Non-drug \u00b7 cornerstone", title:"Activity modification and rehabilitation",
       blocks:[
         {b:"tiles", v:"life", items:[
-          {t:"🏃 Relative rest", html:"Reduce \u2014 not necessarily stop \u2014 aggravating high-impact activity (running, jumping, kneeling); modify training to pain tolerance."},
-          {t:"🧊 Ice", html:"Ice after activity for symptom relief."},
-          {t:"🧘 Stretch + strengthen", html:"Quadriceps/hamstring stretching and graded strengthening; physiotherapy if persistent."},
-          {t:"🦵 Protection", html:"Knee pad for kneeling; infrapatellar strap may help some."},
-          {t:"😌 Reassure", html:"Explain it resolves once growth completes; activity does not cause lasting harm."}
+          {t:"\ud83c\udfc3 Modify activity", html:"Reduce or temporarily stop activities that clearly provoke pain \u2014 especially jumping, sprinting, kicking and kneeling \u2014 and keep lower-impact activity going. Complete avoidance of all sport is not usually needed. Return gradually as symptoms allow."},
+          {t:"\u26a0\ufe0f When to stop", html:"Do not continue sport if pain causes limping, marked pain during activity, or worse symptoms later that day or the next morning."},
+          {t:"\ud83e\uddd8 Graded rehabilitation", html:"Quadriceps and hamstring flexibility (calf and hip where tight) \u00b7 progressive quadriceps, hip and trunk strengthening \u00b7 lower-limb control \u00b7 gradual return to impact."},
+          {t:"\ud83e\uddca Ice and protection", html:"Ice after activity; knee pad for kneeling; an infrapatellar strap helps some."},
+          {t:"\ud83d\ude0c Reassure", html:"Normal activity does not usually cause permanent damage, but repeatedly exercising through significant pain can prolong symptoms. The bony prominence may remain after the pain settles."}
         ]}
       ]},
     {t:"node", d:"drug", n:"4", tag:"Symptom relief", title:"Analgesia",
       blocks:[
         {b:"kv", rows:[
-          ["Simple analgesia","Paracetamol and/or ibuprofen for pain, particularly around activity \u2014 short-term, to support continued participation"],
-          ["No role for","Routine imaging, injections, or restriction from all sport \u2014 activity to tolerance is encouraged"]
+          ["Simple analgesia","Paracetamol and/or ibuprofen at age- and weight-appropriate doses (local paediatric formulary), shortest effective duration, for comfort and tolerable daily activity \u2014 not to enable painful high-impact sport"],
+          ["Before ibuprofen","Check asthma sensitivity, renal impairment, dehydration, GI ulceration or bleeding risk, and other NSAIDs"],
+          ["No role for","Routine imaging or injections in a typical presentation \u2014 <b>no corticosteroid injection</b> around the patellar tendon or tubercle"]
         ]}
       ]},
-    {t:"node", d:"monitor", n:"5", tag:"Follow-up", title:"Prognosis + review",
+    {t:"node", d:"monitor", n:"5", tag:"Follow-up", title:"Review and prognosis",
       blocks:[
         {b:"timeline", items:[
-          {n:"1", when:"Weeks\u2013months", title:"Self-limiting", html:"Symptoms fluctuate with activity; most settle as the apophysis fuses at skeletal maturity."},
-          {n:"2", when:"If persistent", title:"Physiotherapy", html:"Refer physio for ongoing pain / strengthening programme."},
-          {n:"3", when:"Atypical/refractory", title:"Reconsider + image", html:"Night/rest pain, systemic features, or no improvement \u2192 X-ray / specialist."}
+          {n:"1", when:"Ongoing", title:"Self-limiting", html:"Symptoms fluctuate with activity; most settle as the apophysis fuses at skeletal maturity."},
+          {n:"2", when:"Not improving", title:"Review", html:"Review if not improving after a period of activity modification and rehabilitation \u2014 sooner if pain worsens or function deteriorates."},
+          {n:"3", when:"Beyond ~18 months", title:"Specialist", html:"Symptoms persisting beyond about 18 months despite appropriate management, or after skeletal maturity \u2192 specialist referral."}
         ]}
       ]},
     {t:"node", d:"refer", n:"6", tag:"Refer", title:"When to refer",
-      arrow:"atypical or refractory",
+      arrow:"atypical, persistent or red flag",
       blocks:[
         {b:"tiles", v:"refer", items:[
-          {t:"Urgent", html:"Suspected bone tumour (night/rest pain, mass), septic arthritis, or SCFE/Perthes (hip)."},
-          {t:"Physiotherapy", html:"Persistent symptoms for a structured rehab programme."},
-          {t:"Orthopaedics", html:"Refractory pain into adulthood, or an unfused ossicle causing ongoing symptoms."}
+          {t:"Same day", html:"Suspected septic arthritis or osteomyelitis, acute tubercle avulsion or fracture, inability to weight-bear, or suspected SUFE."},
+          {t:"Urgent", html:"Night or rest pain, progressive pain, persistent limp, a mass or focal bony tenderness away from the tubercle, large effusion, locking or instability."},
+          {t:"Physiotherapy", html:"Symptoms restricting sport or school, recurrent pain despite modification, deficits in strength or control, or a structured return-to-sport plan needed."},
+          {t:"Orthopaedics", html:"Persistent symptoms beyond about 18 months despite management, marked functional restriction, diagnostic uncertainty, suspected avulsion, a symptomatic persistent ossicle, or symptoms after skeletal maturity."}
         ]},
-        {b:"say", html:"This is Osgood-Schlatter \u2014 a common growing-pain at the bony bump just below the knee, from the tendon pulling during sport while the bone is still growing. It\u2019s harmless and settles once growth finishes. Keep active within comfort, ease off the painful activities a bit, use ice and simple painkillers. Tell me if there\u2019s pain at night or at rest."}
+        {b:"say", html:"This is Osgood-Schlatter disease \u2014 irritation where the knee tendon pulls on the growing bone just below the kneecap. It\u2019s common in active teenagers and settles as growth finishes, though the bump may stay. Keep active with things that don\u2019t hurt, ease off jumping, kicking and kneeling for now, and use ice and simple painkillers if needed. Come back if there\u2019s pain at night or at rest, a limp, a fever, or if it isn\u2019t settling."}
       ]}
   ],
-  foot:"Management of Osgood-Schlatter disease in primary care \u2014 a benign, self-limiting traction apophysitis; image only for atypical features. Source: Royal Children's Hospital Melbourne clinical guideline (Osgood-Schlatter disease)."
+  foot:"Suspected Osgood-Schlatter disease in primary care \u2014 a clinical diagnosis once red flags and the hip have been checked; image only for atypical, severe, persistent or traumatic presentations. Adapted from Royal Children's Hospital Melbourne guidance and the Victorian paediatric knee referral criteria; local paediatric pathways take precedence."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

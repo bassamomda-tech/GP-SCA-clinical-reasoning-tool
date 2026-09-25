@@ -10,143 +10,143 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Anal fissure protocol">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🩸",
   title:"Anal fissure — the complete guide",
-  eyebrow:"Protocol · a cycle to break, not just a tear to heal",
-  stemTitle:"The fissure is kept open by a cycle of hard stool, pain and sphincter spasm — so stool softening is not supportive care, it is the treatment the topical agents depend on",
-  stemSub:"One page for the whole condition. Recognise the hallmark — severe pain on defecation with bright-red bleeding — and the distinction that matters: acute heals with stool softening alone; chronic means more than 6 weeks and needs a sphincter relaxant. Prescribe <b>topical GTN 0.4% or diltiazem 2% for a full 6–8 weeks</b>, and warn about the <b>GTN headache that is the usual reason the course fails</b>. And think again when the fissure is <b>lateral, multiple or atypical</b> — that is a prompt for Crohn's, infection or malignancy, not a stronger cream.",
-  guideline:"BNF · NICE NG12",
-  reviewed:"14 September 2026",
-  nextReview:"14 March 2027",
+  eyebrow:"Protocol · adults · a cycle to break, not just a tear to heal",
+  stemTitle:"A fissure is kept open by hard stool, pain and sphincter spasm — so individualised stool softening is the foundation the topical treatments depend on",
+  stemSub:"One page for adults. Recognise severe pain on defecation with bright-red bleeding, usually posterior midline. Most acute fissures improve with stool softening and symptom relief; persistent symptoms, or a fissure present for 6 weeks or more, should prompt consideration of a topical sphincter relaxant and/or referral. <b>Rectogesic (GTN 0.4%)</b> is licensed for pain in chronic fissure, with modest healing benefit, and headache is very common. <b>Diltiazem 2%</b> is an unlicensed alternative. A lateral, multiple, painless, indurated, large or non-healing fissure means reconsidering the diagnosis. <b>This pathway is for adults</b> — refer children with persistent or recurrent fissure early.",
+  guideline:"MHRA SPC (Rectogesic) · Greater Manchester formulary · NICE NG12",
+  reviewed:"25 September 2026",
+  nextReview:"25 September 2027",
   meta:[
-    {t:"Chronic = >6 weeks → topical GTN or diltiazem", tone:"tw"},
-    {t:"Lateral or multiple → think Crohn's", tone:"tw"},
-    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+    {t:"Adults only — no Rectogesic under 18", tone:"tw"},
+    {t:"Atypical fissure → reconsider the diagnosis", tone:"tw"},
+    {t:"v2.1 · reviewed Sep 2026", tone:"ok"}
   ],
-  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>Atypical → think again</small></a><a href="#nondrug"><b>Soften</b><small>Break the cycle</small></a><a href="#drug"><b>Topical</b><small>GTN · diltiazem</small></a><a href="#monitor"><b>Review</b><small>6–8 weeks</small></a><a href="#refer"><b>Refer</b><small>Non-healing</small></a></div>',
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>Atypical → think again</small></a><a href="#nondrug"><b>Soften</b><small>Individualised</small></a><a href="#drug"><b>Topical</b><small>GTN · diltiazem</small></a><a href="#monitor"><b>Review</b><small>6–8 weeks</small></a><a href="#refer"><b>Refer</b><small>Colorectal</small></a></div>',
   quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"blue", h:"The hallmark, and the acute/chronic split", html:"Severe pain on or after defecation — patients describe \"passing glass\" — with bright-red bleeding; often posterior midline, and linked to hard stool. Chronic means present for more than 6 weeks, often with a skin tag or sentinel pile and visible fibres at the base. That split decides the treatment: acute heals with stool softening; chronic needs a sphincter relaxant."},
-    {tone:"green", h:"Stool softening breaks the cycle — it IS the treatment", html:"The fissure is caused and perpetuated by hard stool → pain → sphincter spasm → poor healing. Fibre, fluids and an osmotic or bulk laxative to keep stools soft is the single most important measure, and the reason topical agents work at all. <b>Warm sitz baths relax the sphincter and ease pain.</b>"},
-    {tone:"amber", h:"Chronic fissure: topical GTN 0.4% or diltiazem 2%, for a FULL 6–8 weeks", html:"Topical GTN 0.4% ointment twice daily, or topical diltiazem 2% twice daily, for 6–8 weeks to relax the internal sphincter and allow healing — continuing the stool softening throughout. <b>Allow the full course before deeming it failed</b>; stopping at three weeks is the commonest reason a fissure is labelled refractory."},
-    {tone:"red", h:"⚠ GTN headache is why the course fails", html:"<b>Topical GTN commonly causes headache, which limits adherence.</b> Warn about it explicitly at the point of prescribing and offer diltiazem if it is not tolerated — a patient who stops an unexplained-headache cream after four days has not had a treatment failure, they have had a counselling failure."},
-    {tone:"amber", h:"Lateral, multiple or atypical → think again", html:"An atypical, lateral or multiple fissure should prompt thought of Crohn's disease, infection or malignancy — examine and refer rather than escalating the cream. Fissures are typically posterior midline; a lateral one is a different question."},
-    {tone:"blue", h:"Refractory goes for botulinum toxin or sphincterotomy", html:"Not healed after stool softening plus an adequate topical course → refer for botulinum toxin injection or lateral sphincterotomy. Examine gently — the fissure is often too painful for a digital rectal examination, and forcing it achieves nothing."}
+    {tone:"blue", h:"The hallmark, and acute versus chronic", html:"Severe pain on or after defecation with bright-red bleeding, usually posterior midline, often after hard stool. <b>Acute:</b> under 6 weeks. <b>Chronic:</b> 6 weeks or more, often with a sentinel pile, hypertrophied anal papilla, exposed sphincter fibres or indurated edges."},
+    {tone:"green", h:"Soft, easily passed stools", html:"Fluids, gradual fibre where appropriate, no straining — but choose or add an <b>osmotic laxative</b> if stools stay hard or fibre alone is not enough; fibre without enough fluid, or with faecal loading, can make things worse. Continue after healing to reduce recurrence."},
+    {tone:"amber", h:"Persistent or chronic: consider a sphincter relaxant", html:"<b>Rectogesic 0.4%</b> (GM first choice, prescribe by brand) intra-anally every 12 hours, for up to 8 weeks — licensed for pain in chronic fissure; healing benefit is modest. Or <b>diltiazem 2%</b> (unlicensed) twice daily for about 6–8 weeks. It may also be considered earlier in adults with persistent pain despite initial care."},
+    {tone:"red", h:"⚠ GTN: headache and contraindications", html:"Headache is very common (around 57% in SPC trials) and can be severe — warn before prescribing; stop and consider diltiazem or referral if it is not tolerated. <b>Do not use with PDE-5 inhibitors</b> (sildenafil, tadalafil, vardenafil) or other nitrates. Avoid in pregnancy; not recommended when breastfeeding."},
+    {tone:"amber", h:"Atypical → reconsider the diagnosis", html:"Lateral, multiple, painless, indurated, unusually large, non-healing or recurrent → consider Crohn's, HIV or immunosuppression, TB, syphilis, inflammatory or haematological disease, malignancy or trauma — examine and refer rather than escalating the cream."},
+    {tone:"blue", h:"Persistent → colorectal assessment", html:"Not healed despite stool regulation and topical therapy → colorectal surgery, where the specialist chooses between botulinum toxin, sphincterotomy and sphincter-preserving options according to continence, obstetric history and sphincter risk."}
   ],
-  pathwaySub:"Five steps, and the cycle explains why the order matters.",
+  pathwaySub:"Five steps.",
   pathway:[
-    {title:"Confirm, and consider atypical causes", html:"Typical posterior midline fissure with pain on defecation; chronic if over 6 weeks. Lateral, multiple or atypical → think Crohn's, infection or malignancy.", alert:true},
-    {title:"Soften the stool and fix the habits", html:"Fibre, fluids, a laxative, no straining, sitz baths, gentle hygiene — and reassure that most acute fissures heal in weeks."},
-    {title:"Acute: short topical anaesthetic. Chronic: a sphincter relaxant", html:"GTN 0.4% or diltiazem 2% twice daily for 6–8 weeks, with the headache warned about."},
-    {title:"Review healing and tolerability", html:"At 6–8 weeks for the topical course; switch GTN to diltiazem if headache limits it."},
-    {title:"Refer the non-healing and the atypical", html:"Botulinum toxin or lateral sphincterotomy; or investigate another cause."}
+    {title:"Confirm, and look for atypical or red-flag features", html:"Typical posterior midline fissure; atypical features, abscess, fistula or colorectal symptoms change the pathway.", alert:true},
+    {title:"Individualised stool softening", html:"Fluids, fibre where appropriate, an osmotic laxative if stools stay hard; short topical anaesthetic for severe pain."},
+    {title:"Persistent or chronic: topical relaxant", html:"Rectogesic or diltiazem, with headache and contraindications checked."},
+    {title:"Review at 6–8 weeks", html:"Healing, tolerability, stool consistency, atypical features."},
+    {title:"Refer the persistent and the atypical", html:"Colorectal assessment; investigate another cause where indicated."}
   ],
   sections:[
 
     {id:"confirm", nav:"Confirm", title:"Step 1 — confirm, and consider atypical causes",
      blocks:[
        {b:"table", head:["Element","Detail"], rows:[
-         ["<b>Typical</b>","Severe pain on or after defecation (\"passing glass\") with bright-red bleeding; often posterior midline; linked to hard stool"],
-         ["<b>Acute versus chronic</b>","Chronic = present for more than 6 weeks, often with a skin tag or sentinel pile and visible fibres"],
-         ["<b>Atypical, lateral or multiple</b>","Consider IBD (Crohn's), infection, malignancy or another cause → examine and refer"],
-         ["<b>Examine</b>","Gentle inspection — often too painful for a digital rectal examination; don't force it"]
+         ["<b>Typical</b>","Severe pain on or after defecation with bright-red blood on the paper; usually posterior midline; linked to hard stool"],
+         ["<b>Acute versus chronic</b>","Acute under 6 weeks; chronic 6 weeks or more — sentinel pile, hypertrophied papilla, exposed internal sphincter fibres, indurated edges, recurrent or persistent symptoms"],
+         ["<b>Atypical</b>","Lateral, multiple, painless, indurated, unusually large, non-healing or recurrent → consider Crohn's, HIV or immunosuppression, TB, syphilis, inflammatory or autoimmune disease, haematological disease, anal or colorectal malignancy, trauma or iatrogenic injury"],
+         ["<b>Examine</b>","Inspect gently where possible. A digital rectal examination is often too painful at first and need not be forced — but if examination is incomplete, arrange review or specialist assessment rather than assuming the fissure is uncomplicated. DRE may be appropriate later if another anorectal diagnosis needs considering"]
        ]},
-       {b:"why", html:"Anal fissures are caused and perpetuated by a cycle of hard stool → pain → sphincter spasm → poor healing, so stool softening is the foundation, and topical agents (GTN or diltiazem) work by relaxing the sphincter to allow healing. Atypical fissures — lateral or multiple — should prompt thought of Crohn's or other pathology, because the typical fissure has a typical position for a mechanical reason."}
-     ]},
-
-    {id:"nondrug", nav:"Soften", title:"Step 2 — stool softening and hygiene",
-     blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"green", h:"🌾 Fibre and fluids", html:"Soften stool to break the hard-stool–pain cycle — the single most important measure."},
-         {tone:"blue", h:"💊 Laxative", html:"<b>Add an osmotic or bulk laxative to keep stools soft and easy to pass.</b>"},
-         {tone:"amber", h:"🚽 Don't strain", html:"<b>Avoid straining and prolonged toileting; respond to the urge.</b>"},
-         {tone:"green", h:"🛁 Sitz baths", html:"<b>Warm baths relax the sphincter and ease pain.</b>"},
-         {tone:"green", h:"🧼 Hygiene", html:"<b>Gentle cleaning; pat dry; avoid irritants.</b>"},
-         {tone:"blue", h:"🫶 Reassure", html:"<b>Most acute fissures heal with these measures within weeks</b> — worth saying, because the pain is severe enough that patients assume otherwise."}
+         {tone:"red", h:"⚠ Beyond a simple fissure", html:"Perianal abscess or fistula, systemic illness or immunosuppression → urgent assessment. Diarrhoea, abdominal pain or perianal Crohn's features → gastroenterology."},
+         {tone:"purple", h:"Colorectal cancer features <span class='tw'>2WW</span>", html:"A fissure does not exclude colorectal pathology. Blood mixed with stool, change in bowel habit, unexplained weight loss, iron-deficiency anaemia, an abdominal or rectal mass, or persistent unexplained rectal bleeding → apply <b>NICE NG12</b>: offer FIT, and refer on the suspected colorectal cancer pathway if FIT is ≥10 µg Hb/g; a rectal or anal mass or unexplained anal ulceration → consider a suspected cancer pathway referral. See <a href='haemorrhoids.html'>haemorrhoids</a>."}
        ]}
      ]},
 
-    {id:"drug", nav:"Topical", title:"Step 3 — topical relief, then sphincter relaxants",
+    {id:"nondrug", nav:"Soften", title:"Step 2 — individualised stool softening",
      blocks:[
-       {b:"table", head:["Step","What","When"], rows:[
-         ["<b>Acute</b>","Optimise laxatives; a short course of topical local anaesthetic (e.g. lidocaine) before defecation for pain","<b>First-line — most acute fissures heal</b>"],
-         ["<b>Chronic</b>","Topical GTN 0.4% ointment BD, or topical diltiazem 2% BD, for 6–8 weeks to relax the internal sphincter and promote healing. Continue stool softening","<b>More than 6 weeks, or not healing</b>"],
-         ["<b>Refractory</b>","<b>Refer for botulinum toxin injection or lateral sphincterotomy</b>","<b>Not healed after an adequate topical course</b>"]
-       ]},
-       {b:"warn", html:"Topical GTN commonly causes headache, which limits adherence — warn about it and consider diltiazem if it is not tolerated. <b>Allow a full 6–8 week course before deeming it failed.</b>"}
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🌾 Soft, easily passed stools", html:"Adequate fluids; increase dietary fibre gradually where appropriate. If stools stay hard, or fibre alone is not enough, choose or add an <b>osmotic laxative</b> and titrate to avoid diarrhoea. Bulk fibre can worsen symptoms without enough fluid or with faecal loading."},
+         {tone:"amber", h:"🚽 Don't strain", html:"Avoid straining and prolonged sitting on the toilet; respond to the urge."},
+         {tone:"green", h:"🛁 Warm baths", html:"Warm sitz baths can ease pain and sphincter spasm."},
+         {tone:"blue", h:"🧴 Short topical anaesthetic", html:"Lidocaine before defecation for severe pain — a short course, generally up to about 14 days; reassess if pain persists rather than continuing indefinitely."},
+         {tone:"green", h:"🔁 Keep going after healing", html:"Continue stool regulation after healing to reduce recurrence."}
+       ]}
      ]},
 
-    {id:"monitor", nav:"Review", title:"Steps 4–5 — healing, tolerability and review",
+    {id:"drug", nav:"Topical", title:"Step 3 — topical sphincter relaxants",
+     blocks:[
+       {b:"table", head:["Treatment","How","Notes"], rows:[
+         ["<b>Rectogesic (GTN 0.4%) rectal ointment</b> — GM first choice, prescribe by brand","Intra-anally every 12 hours; maximum 8 weeks in adults","Licensed for pain associated with chronic anal fissure; the SPC reports modest pain benefit and no statistically significant healing effect versus placebo. Continue stool softening and reassess. Not for under-18s"],
+         ["<b>Diltiazem 2%</b> cream or ointment","Twice daily for about 6–8 weeks","<b>Unlicensed</b> — prescribe per the GM formulary and specials arrangements. Used where GTN is not tolerated or unsuitable. Local irritation, pruritus or dermatitis can occur"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"⚠ GTN — avoid or seek advice", html:"PDE-5 inhibitors (sildenafil, tadalafil, vardenafil) or other nitrates · hypotension or hypovolaemia · migraine or recurrent headache · significant anaemia · severe hepatic or renal disease · significant valvular disease or hypertrophic obstructive cardiomyopathy · closed-angle glaucoma · pregnancy (do not use) · breastfeeding (not recommended)."},
+         {tone:"amber", h:"⚠ GTN — warn about", html:"Headache is very common (around 57% in SPC trials) and may be severe. Dizziness and postural hypotension — take care driving. Additive hypotension with antihypertensives, diuretics, beta-blockers, ACE inhibitors, calcium-channel blockers, tricyclics, alcohol and sedatives."}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"Step 4 — review at 6–8 weeks",
      blocks:[
        {b:"table", head:["What","When","Action"], rows:[
-         ["<b>Pain and healing</b>","<b>Each review</b>","Acute fissures heal in weeks; chronic over 6–8 weeks of topical therapy"],
-         ["<b>GTN tolerability</b>","<b>On topical GTN</b>","<b>Headache → switch to diltiazem</b>"],
-         ["<b>Stool consistency</b>","<b>Ongoing</b>","<b>Keep soft — essential to healing and to preventing recurrence</b>"],
-         ["<b>Atypical features</b>","<b>If not healing</b>","<b>Reconsider Crohn's or another cause → examine and refer</b>"]
-       ]},
-       {b:"dl", rows:[
-         ["<b>After conservative measures</b>","Assess pain and healing; ensure the stool is soft; topical anaesthetic if needed"],
-         ["<b>6–8 weeks (chronic)</b>","<b>Assess healing on GTN or diltiazem; switch if GTN is not tolerated</b>"],
-         ["<b>If not healed</b>","<b>Refractory chronic fissure → colorectal surgery</b>"]
+         ["<b>Pain and healing</b>","6–8 weeks","Healing, or persisting symptoms?"],
+         ["<b>GTN tolerability</b>","On GTN","Headache or other intolerance → stop; diltiazem or referral"],
+         ["<b>Stool consistency</b>","Ongoing","Keep soft — essential to healing and recurrence prevention"],
+         ["<b>Atypical features</b>","If not healing","Reconsider the diagnosis and refer"]
        ]}
      ]},
 
     {id:"nothealing", nav:"Not healing?", title:"Not healing? Re-check before referral",
-     sub:"Confirm soft stool and an adequate topical course, and reconsider the cause.",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"green", h:"1 · Stool soft?", html:"<b>Genuinely soft stools — the prerequisite for healing?</b>"},
-         {tone:"amber", h:"2 · Adequate course", html:"<b>A full 6–8 weeks of topical GTN or diltiazem completed?</b>"},
-         {tone:"red", h:"3 · Tolerability", html:"<b>GTN headache limiting use → switch to diltiazem.</b>"},
-         {tone:"amber", h:"4 · Atypical?", html:"Lateral, multiple or atypical → reconsider Crohn's, infection, malignancy."},
-         {tone:"blue", h:"5 · Refer", html:"Persistent chronic fissure → colorectal (botulinum toxin or sphincterotomy)."}
+         {tone:"green", h:"1 · Stool soft?", html:"Genuinely soft stools, with an osmotic laxative if needed?"},
+         {tone:"amber", h:"2 · Adequate course?", html:"Topical treatment used as directed for its course?"},
+         {tone:"red", h:"3 · Tolerated?", html:"GTN stopped early because of headache → diltiazem."},
+         {tone:"amber", h:"4 · Atypical?", html:"Lateral, multiple, painless, indurated or large → reconsider the cause."},
+         {tone:"blue", h:"5 · Refer", html:"Persistent fissure → colorectal assessment."}
        ]}
      ]},
 
     {id:"safety", nav:"Safety-net", title:"Safety-netting",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"🔴 Atypical bleeding", html:"\"Bleeding mixed in with stool, change in bowel habit, weight loss or tiredness — come back; we'll investigate beyond a fissure.\""},
-         {tone:"amber", h:"🟠 Not healing", html:"\"If it's not healing after the cream course, we'll re-examine and may refer.\""},
-         {tone:"amber", h:"🤕 GTN headache", html:"\"The GTN cream often causes headaches — if so, tell us and we'll switch you to an alternative.\""},
-         {tone:"green", h:"🌾 Soft stool", html:"\"Keeping stools soft is the key — keep up fibre, fluids and the laxative even once it heals.\""}
+         {tone:"red", h:"🔴 Atypical bleeding or bowel change", html:"\"Blood mixed in with your stool, a change in bowel habit, weight loss or tiredness — come back so we can look further.\""},
+         {tone:"red", h:"🔴 Swelling, fever or discharge", html:"\"A painful swelling, fever or discharge near the back passage needs to be seen urgently.\""},
+         {tone:"amber", h:"🤕 GTN headache", html:"\"The GTN ointment often causes headaches — if it does, tell us and we'll switch you.\""},
+         {tone:"green", h:"🌾 Soft stool", html:"\"Keeping stools soft is the key — keep it up even once it heals.\""}
        ]}
      ]},
 
     {id:"refer", nav:"Refer", title:"When to refer",
      blocks:[
        {b:"cards", items:[
-         {tone:"amber", h:"Refractory chronic fissure", html:"Not healed after stool softening plus an adequate topical GTN or diltiazem course → colorectal (botulinum toxin or lateral sphincterotomy)."},
-         {tone:"amber", h:"Atypical fissure", html:"Lateral, multiple or atypical → consider Crohn's, infection or malignancy → appropriate referral. See <a href='crohns-disease.html'>Crohn's disease</a>."},
-         {tone:"red", h:"Diagnostic doubt or red flags", html:"<b>Features suggesting other pathology → investigate or refer.</b> Apply the NG12 colorectal criteria where they are met — see <a href='haemorrhoids.html'>haemorrhoids</a> for the full routes."},
-         {tone:"cream", h:"GP management", html:"Diagnosis and the atypical check, stool softening, topical anaesthetic, the GTN or diltiazem course with its headache counselling, and the healing review all belong here. Related pages: <a href='haemorrhoids.html'>haemorrhoids</a> · <a href='constipation-adult.html'>constipation</a> · <a href='crohns-disease.html'>Crohn's disease</a> · <a href='ibs.html'>IBS</a>."}
+         {tone:"amber", h:"Colorectal surgery", html:"Pain not resolved within about 6–8 weeks despite adequate stool regulation and topical therapy, recurrent fissures despite adherence, or a fissure persisting after about 12–16 weeks even if symptoms have settled. The specialist selects between botulinum toxin, lateral internal sphincterotomy, fissurectomy or advancement flap. Sphincterotomy is highly effective but carries a risk of flatus or faecal incontinence — higher with previous obstetric sphincter injury, existing incontinence, older age or sphincter injury."},
+         {tone:"amber", h:"Atypical fissure", html:"Consider Crohn's, infection, inflammatory disease, immunosuppression or malignancy → appropriate referral. See <a href='crohns-disease.html'>Crohn's disease</a>."},
+         {tone:"amber", h:"Children", html:"Early constipation management and analgesia; do not use Rectogesic routinely under 18 — refer persistent or recurrent fissure early to paediatrics or paediatric surgery. See <a href='constipation-child.html'>constipation in children</a>."},
+         {tone:"cream", h:"GP management", html:"Diagnosis and the atypical check, individualised stool softening, short topical anaesthetic, the topical relaxant with its counselling, and the review belong here. Related pages: <a href='haemorrhoids.html'>haemorrhoids</a> · <a href='constipation-adult.html'>constipation</a> · <a href='crohns-disease.html'>Crohn's disease</a> · <a href='ibs.html'>IBS</a>."}
        ]},
-       {b:"say", html:"This is a small tear, kept open by hard stools and muscle spasm — so the key is softening the stool, and a cream that relaxes the muscle to let it heal over a few weeks. The cream can cause headaches; tell me if so and we'll switch."}
+       {b:"say", html:"This is a small tear, kept open by hard stools and muscle spasm — so the key is keeping your stools soft. If it doesn't settle, an ointment that relaxes the muscle can ease the pain; it often causes headaches, so tell me if it does and we'll switch."}
      ]},
 
     {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
      blocks:[{b:"cards", cols:2, items:[
-       {tone:"cream", h:"Classic scenario", html:"A 29-year-old woman has 3 months of severe pain on opening her bowels, \"like passing glass\", with bright-red blood on the paper. Her GP prescribed <b>GTN 0.4% ointment</b> six weeks ago; she used it for <b>five days and stopped because of severe headaches</b>, and assumed the treatment had not worked. She is <b>still constipated</b> and takes no laxative. On gentle inspection there is a <b>posterior midline fissure with a skin tag</b>."},
-       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises this as a chronic fissure (over 6 weeks, sentinel skin tag) needing a sphincter relaxant, not just conservative measures; identifies that the GTN course was never completed and that the headache — not the drug's efficacy — is why it \"failed\", which is the central insight in the case; switches to topical diltiazem 2% BD and explains the full 6–8 week course is required; addresses the untreated constipation, since no topical agent heals a fissure that is being re-torn, and prescribes a laxative rather than advising fibre alone; <b>examines gently and does not force a DRE</b>; confirms the fissure is posterior midline — typical — so Crohn's is not the immediate question, but knows lateral or multiple would change that; <b>gives sitz baths and hygiene advice</b>; and <b>safety-nets non-healing and atypical bleeding</b>, with review at 6–8 weeks."}
+       {tone:"cream", h:"Classic scenario", html:"A 29-year-old woman has 3 months of severe pain on opening her bowels with bright-red blood on the paper. She was prescribed <b>Rectogesic</b> six weeks ago, used it for <b>five days and stopped because of severe headaches</b>, and assumed it had not worked. She is <b>still constipated</b> and takes no laxative. Gentle inspection shows a <b>posterior midline fissure with a skin tag</b>."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises a chronic fissure; identifies headache, not inefficacy, as why the course stopped; checks contraindications and pregnancy plans; offers diltiazem 2%, explaining it is unlicensed; treats the constipation with an osmotic laxative rather than fibre alone; examines gently without forcing a DRE; confirms the typical site; asks about colorectal red flags; safety-nets and reviews at 6–8 weeks, with colorectal referral if it persists."}
      ]}]},
 
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — glyceryl trinitrate 0.4% rectal ointment dosing and its headache profile; the unlicensed/specials status of topical diltiazem 2%; topical local anaesthetic preparations and laxative classes</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b><span class="rd"> — referenced for the atypical-bleeding safety-net, where a fissure does not account for the pattern of bleeding or bowel change</span></li>'+
+         '<li><b>MHRA SPC — Rectogesic 4 mg/g rectal ointment</b><span class="rd"> — indication (pain in chronic fissure), dosing, 8-week maximum, headache in ~57%, contraindications, interactions, pregnancy and breastfeeding, under-18s</span></li>'+
+         '<li><b>Greater Manchester Medicines Management Group formulary — gastro-intestinal system</b><span class="rd"> — Rectogesic first choice by brand; diltiazem 2% unlicensed</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — FIT and colorectal referral; rectal and anal mass or ulceration</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — laxative classes and topical anaesthetic preparations</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Anal fissure. The fissure is kept open by a cycle of hard stool, pain and sphincter spasm, so stool softening with fibre, fluids and a laxative is the treatment the topical agents depend on. Acute fissures heal with conservative measures plus a short course of topical local anaesthetic. Chronic means more than 6 weeks: topical GTN 0.4% or diltiazem 2% twice daily for a FULL 6–8 weeks. Warn about GTN headache — it is the usual reason the course is abandoned — and switch to diltiazem if it is not tolerated. A lateral, multiple or atypical fissure prompts thought of Crohn's, infection or malignancy. Refractory disease goes for botulinum toxin or lateral sphincterotomy. Verify all doses against the current BNF before prescribing."
+  foot:"Anal fissure in adults. Individualised stool softening — an osmotic laxative if fibre alone is not enough — is the foundation. Persistent or chronic (6 weeks or more): consider Rectogesic 0.4% (licensed for pain; modest healing benefit; headache very common; not with PDE-5 inhibitors; not in pregnancy or under 18) or unlicensed diltiazem 2%. Atypical fissures and colorectal red flags change the pathway (NICE NG12). Persistent fissure → colorectal assessment, where the procedure is chosen individually. Sources: MHRA SPC, Greater Manchester formulary, NICE NG12, BNF."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

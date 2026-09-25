@@ -50,7 +50,7 @@ RGPTriage.register('dizziness-triage', {
       when:(i)=>!!i.pregnant && !!i.pv_bleeding },
     { id:'gi_bleed', tier:'emergency', label:'?GI haemorrhage / hypovolaemia',
       action:'Same-day admission for resuscitation. Blatchford / Rockall · urgent OGD.',
-      source:'NICE NG141', sourceUrl:'https://www.nice.org.uk/guidance/ng141',
+      source:'NICE CG141', sourceUrl:'https://www.nice.org.uk/guidance/cg141',
       when:(i)=>!!i.melaena_haematemesis || (!!i.anticoag && (i.sbp<100)) },
     { id:'shock', tier:'emergency', label:'Shock — SBP <90 or HR >130',
       action:'Call 999 — same-day admission.',

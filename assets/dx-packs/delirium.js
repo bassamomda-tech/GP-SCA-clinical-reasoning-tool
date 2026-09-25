@@ -34,7 +34,7 @@
         label: 'Delirium with sepsis / hypoxia / hypoglycaemia',
         action: 'Same-day admission / sepsis pathway — treat the acute cause urgently.',
         patientPhrase: '"The confusion is coming from a serious acute illness — they need hospital care today."',
-        source: 'NICE NG51 / CG103',
+        source: 'NICE NG253 / CG103',
         when: i => i.sepsis,
       },
       {
@@ -68,7 +68,7 @@
     ],
     sources: [
       { label: 'NICE CG103 — Delirium', url: 'https://www.nice.org.uk/guidance/cg103' },
-      { label: 'NICE NG51 — Sepsis', url: 'https://www.nice.org.uk/guidance/ng51' }
+      { label: 'NICE NG253 — Sepsis', url: 'https://www.nice.org.uk/guidance/ng253' }
     ],
   });
 

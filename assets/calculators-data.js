@@ -121,13 +121,13 @@ window.RGP_CALCULATORS = [
     title: 'QRISK3 (10-year CV risk)',
     category: 'Cardiovascular',
     description: 'Predicts 10-year risk of MI / stroke. Proprietary algorithm.',
-    usefulFor: 'Statin decisions (NICE NG181: offer statin if ≥10%).',
+    usefulFor: 'Statin decisions (NICE NG238: offer statin if ≥10%).',
     kind: 'external',
     externalUrl: 'https://qrisk.org/',
     externalReason: 'QRISK3 uses a complex, regularly-updated algorithm (BMI, ethnicity, deprivation, atypical antipsychotics, SLE, etc.). Use the official ClinRisk site for the score — primary-care GP systems integrate this directly.',
     refs:[
       { label:'qrisk.org', url:'https://qrisk.org/' },
-      { label:'NICE NG181 CVD risk', url:'https://www.nice.org.uk/guidance/ng181' },
+      { label:'NICE NG238 CVD risk', url:'https://www.nice.org.uk/guidance/ng238' },
     ],
   },
 
@@ -401,7 +401,7 @@ window.RGP_CALCULATORS = [
     },
     refs:[
       { label:'RCP NEWS2', url:'https://www.rcp.ac.uk/improving-care/resources/national-early-warning-score-news-2/' },
-      { label:'NICE NG51 Sepsis', url:'https://www.nice.org.uk/guidance/ng51' },
+      { label:'NICE NG253 Sepsis', url:'https://www.nice.org.uk/guidance/ng253' },
     ],
   },
 
@@ -449,7 +449,7 @@ window.RGP_CALCULATORS = [
     title: 'GAD-7 (anxiety)',
     category: 'Mental health',
     description: 'Generalised anxiety severity over the last 2 weeks (7 items, 0\u201321).',
-    usefulFor: 'Anxiety diagnosis & monitoring. NICE NG113 stepped care.',
+    usefulFor: 'Anxiety diagnosis & monitoring. NICE CG113 stepped care.',
     resultLabel: 'GAD-7', resultMax: 21,
     inputs: [
       { group:'Over the last 2 weeks, how often have you been bothered by:', id:'g1', kind:'likert', label:'1. Feeling nervous, anxious or on edge' },
@@ -470,7 +470,7 @@ window.RGP_CALCULATORS = [
       return            { label:'Severe',     severity:'severe', action:'Step 3+ \u2014 pharmacological + high-intensity CBT; specialist if no response.', detail:'Consider MH referral. Assess function and risk.' };
     },
     refs:[
-      { label:'NICE NG113 Generalised anxiety', url:'https://www.nice.org.uk/guidance/cg113' },
+      { label:'NICE CG113 Generalised anxiety', url:'https://www.nice.org.uk/guidance/cg113' },
       { label:'GAD-7 (Spitzer 2006)', url:'https://pubmed.ncbi.nlm.nih.gov/16717171/' },
     ],
   },
@@ -733,7 +733,7 @@ window.RGP_CALCULATORS = [
     },
     refs:[
       { label:'NICE NG246 Obesity', url:'https://www.nice.org.uk/guidance/ng246' },
-      { label:'NICE CG189 Obesity', url:'https://www.nice.org.uk/guidance/cg189' },
+      { label:'NICE CG189 Obesity (replaced by NG246, 2025)', url:'https://www.nice.org.uk/guidance/cg189' },
     ],
   },
 
@@ -745,7 +745,7 @@ window.RGP_CALCULATORS = [
     title: 'FRAX (10-year fracture risk)',
     category: 'Bone',
     description: 'WHO 10-year probability of major osteoporotic / hip fracture.',
-    usefulFor: 'Osteoporosis treatment decisions (NICE NG222 / NOGG).',
+    usefulFor: 'Osteoporosis treatment decisions (NICE CG146 / NOGG).',
     kind: 'external',
     externalUrl: 'https://frax.shef.ac.uk/FRAX/tool.aspx?country=1',
     externalReason: 'FRAX uses a proprietary algorithm with 12 country-calibrated inputs (age, sex, BMI, prior fracture, parent hip Hx, smoker, glucocorticoid, RA, secondary osteoporosis, alcohol, optional BMD). Use the official UK tool.',
@@ -758,14 +758,14 @@ window.RGP_CALCULATORS = [
     id: 'qfracture',
     title: 'QFracture (10-year fracture risk)',
     category: 'Bone',
-    description: 'UK fracture risk calculator \u2014 preferred by NICE NG222.',
+    description: 'UK fracture risk calculator \u2014 preferred by NICE CG146.',
     usefulFor: 'Initial osteoporosis risk assessment ages 30\u201399.',
     kind: 'external',
     externalUrl: 'https://qfracture.org/',
     externalReason: 'Proprietary algorithm. Use the official ClinRisk site.',
     refs:[
       { label:'qfracture.org', url:'https://qfracture.org/' },
-      { label:'NICE NG222 Osteoporosis', url:'https://www.nice.org.uk/guidance/ng222' },
+      { label:'NICE CG146 Osteoporosis', url:'https://www.nice.org.uk/guidance/cg146' },
     ],
   },
 

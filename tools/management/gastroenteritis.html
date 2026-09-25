@@ -4,133 +4,150 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gastroenteritis — Protocol · Reasoning GP</title>
-<meta name="description" content="Acute gastroenteritis: dehydration is what causes harm, so oral rehydration is the mainstay and antibiotics rarely help. Includes the E. coli O157 rule against antibiotics and antimotility drugs, when stool testing changes management, the 48-hour exclusion rule and UKHSA notification." />
+<meta name="description" content="Acute gastroenteritis in adults and older children: severity-based dehydration assessment, surgical and metabolic mimics including DKA, fluids and feeding first, suspected STEC and HUS, C. difficile per NICE NG199, when stool testing changes management, exclusion and Health Protection Team notification; NICE CG84 for under-5s." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/gastroenteritis.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Gastroenteritis protocol">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🦠",
   title:"Gastroenteritis — the complete guide",
-  eyebrow:"Protocol · UKHSA · rehydrate, reassure, safety-net",
-  stemTitle:"Most gastroenteritis is viral and self-limiting, so the clinical work is not choosing a treatment — it is spotting dehydration, spotting the surgical mimic, and not reaching for antibiotics or loperamide in the one situation where they cause harm",
-  stemSub:"One page for the whole condition. <b>Dehydration is the main cause of harm</b>, so oral rehydration little and often is the mainstay and admission is driven by fluid status. Identify the minority with invasive disease or a surgical mimic — appendicitis, DKA, obstruction. In suspected E. coli O157, avoid both antibiotics and antimotility drugs because they increase the risk of haemolytic uraemic syndrome. Send stool only when it will change management, and apply the public-health duties: <b>48 hours' exclusion after the last episode</b>, and UKHSA notification.",
-  guideline:"NICE CG84 · UKHSA · BNF",
-  reviewed:"14 September 2026",
-  nextReview:"14 March 2027",
+  eyebrow:"Protocol · adults and older children · UKHSA",
+  stemTitle:"Most gastroenteritis is self-limiting, so the clinical work is assessing dehydration, spotting the surgical or metabolic mimic, and knowing when antibiotics and antimotility drugs cause harm",
+  stemSub:"<b>This pathway is primarily for adults and older children in primary care.</b> For children under 5, use NICE CG84 and current paediatric guidance for dehydration assessment, ORS and admission thresholds — see the <a href='#children'>children</a> box. Dehydration drives urgency; fluids little and often, with continued feeding, are the mainstay. In suspected STEC (including E. coli O157), avoid antimotility drugs and do not start antibiotics without specialist or public-health advice. Send stool when the result will change management or public-health action, and follow UKHSA and local Health Protection Team guidance on exclusion and notification.",
+  guideline:"UKHSA · NICE NG199 (C. difficile) · NICE CG84 (under-5s) · Greater Manchester formulary · BNF",
+  reviewed:"25 September 2026",
+  nextReview:"25 September 2027",
   meta:[
-    {t:"E. coli O157: no antibiotics, no loperamide — HUS risk", tone:"tw"},
-    {t:"Exclusion: 48h after the last episode", tone:"tw"},
-    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+    {t:"Suspected STEC: no antimotility drugs; antibiotics only on advice", tone:"tw"},
+    {t:"Exclusion: at least 48h after the last episode", tone:"tw"},
+    {t:"v2.1 · reviewed Sep 2026", tone:"ok"}
   ],
-  lead:'<div class="mg-layers"><a href="#safety"><b>Admit?</b><small>Fluid status</small></a><a href="#assess"><b>Assess</b><small>Organism clues</small></a><a href="#treat"><b>Rehydrate</b><small>Antibiotics rarely</small></a><a href="#stool"><b>Stool</b><small>If it changes things</small></a><a href="#publichealth"><b>Public health</b><small>48h · notify</small></a></div>',
+  lead:'<div class="mg-layers"><a href="#safety"><b>Severity</b><small>Dehydration · mimics</small></a><a href="#assess"><b>Assess</b><small>Organism clues</small></a><a href="#treat"><b>Treat</b><small>Fluids first</small></a><a href="#stool"><b>Stool</b><small>If it changes things</small></a><a href="#publichealth"><b>Public health</b><small>Exclude · notify</small></a><a href="#children"><b>Children</b><small>CG84</small></a></div>',
   quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"red", h:"⚠ Dehydration is what causes harm — and what decides admission", html:"Reduced urine output, lethargy, tachycardia, hypotension, reduced skin turgor, sunken eyes — especially in infants and the elderly → admit. Unable to tolerate fluids, with persistent vomiting → same-day assessment for IV fluids. <b>In children use the NICE CG84 dehydration assessment</b> rather than a global impression."},
-    {tone:"red", h:"⛔ E. coli O157: no antibiotics, no antimotility drugs", html:"<b>Both increase the risk of haemolytic uraemic syndrome.</b> Watch for HUS — pallor, reduced urine output, bruising — especially in children. So bloody diarrhoea is precisely where the instinct to \"give something\" must be resisted, and loperamide is also avoided in suspected C. difficile and in all children."},
-    {tone:"green", h:"Oral rehydration is the mainstay", html:"Fluids little and often; oral rehydration salts for those at risk of dehydration. <b>Continue breastfeeding and a normal diet as tolerated</b> — the old advice to starve the gut is wrong. Good hand hygiene to limit spread."},
-    {tone:"amber", h:"Antibiotics are usually NOT indicated", html:"<b>Most cases are viral and need none.</b> Consider them only for a specific organism or clinical picture — systemically unwell, immunocompromised, or a confirmed organism needing treatment — guided by the stool result and microbiology advice. <b>C. difficile: stop the precipitant and treat per protocol.</b>"},
-    {tone:"blue", h:"The organism clues are in the history", html:"Bloody → Campylobacter, Shigella, E. coli O157, Salmonella. Profuse watery with recent travel → viral or ETEC. Recent antibiotics → C. difficile. And ask the questions that change the public-health response: sick contacts, travel, suspect food, and occupation as a food handler or carer."},
-    {tone:"purple", h:"🟣 Statutory duties — notification and exclusion", html:"Suspected infectious bloody diarrhoea or food poisoning, and certain organisms, are NOTIFIABLE to UKHSA. Exclusion: off work or school until 48 hours after the last episode of diarrhoea or vomiting — stricter for food handlers, healthcare and care staff, and young children. <b>No swimming for 2 weeks after the last episode</b>, particularly with Cryptosporidium."}
+    {tone:"red", h:"⚠ Assess dehydration and the ability to keep fluids down", html:"Consider same-day assessment or admission for shock, severe dehydration, persistent vomiting or inability to maintain fluids, worsening renal function or significant electrolyte disturbance, sepsis, or inability to manage safely at home. Frailty, older age, pregnancy and comorbidity lower the threshold. Individual signs — reduced urine output, tachycardia, skin turgor — prompt assessment rather than automatic admission."},
+    {tone:"red", h:"⛔ Suspected STEC — including E. coli O157", html:"Particularly bloody diarrhoea with severe abdominal pain: <b>avoid antimotility drugs and do not start antibiotics without specialist or public-health advice</b> — both raise the risk of haemolytic uraemic syndrome. Bloody diarrhoea has other causes that may need different treatment, so send stool and assess for dehydration and sepsis."},
+    {tone:"red", h:"⚠ Suspected HUS → hospital", html:"Pallor, increasing lethargy, reduced or dark urine, oedema, unexplained bruising or bleeding, worsening abdominal pain or reduced consciousness → urgent hospital assessment with FBC and platelets, renal function, electrolytes, blood film and haemolysis markers per the local pathway."},
+    {tone:"green", h:"Fluids and feeding are the treatment", html:"Fluids little and often; oral rehydration salts where diarrhoea or vomiting is substantial, or with frailty, older age, pregnancy or comorbidity — ordinary fluids may be enough otherwise. Continue breastfeeding and a normal diet as tolerated."},
+    {tone:"amber", h:"Antibiotics are not routine", html:"Consider only when a specific pathogen or syndrome warrants it, usually guided by stool results, severity, host factors and microbiology or public-health advice. Being systemically unwell or immunocompromised lowers the threshold for testing and advice — it does not automatically mean antibiotics."},
+    {tone:"amber", h:"📋 Notification and exclusion", html:"Notify the local Health Protection Team (proper officer) promptly when food poisoning, a notifiable organism, an outbreak or a public-health risk is suspected. Stay off work, school or nursery until <b>at least 48 hours</b> after the last episode; food handlers, healthcare and care staff, young children and specific organisms may need longer exclusion or clearance."}
   ],
-  pathwaySub:"Five steps, and the first is a triage decision rather than a diagnosis.",
+  pathwaySub:"Five steps; the first is a severity decision.",
   pathway:[
-    {title:"Decide who needs admission or urgent review", html:"Dehydration or shock, unable to tolerate fluids, bloody diarrhoea with sepsis, or a high-risk group. <b>And exclude the surgical mimic.</b>", alert:true},
-    {title:"Assess and look for organism clues", html:"History, hydration status, red-flag mimics, and the exposure questions that drive public-health action."},
-    {title:"Rehydrate — and prescribe sparingly", html:"Oral rehydration and continued feeding; selected symptom relief in adults; antibiotics only when indicated."},
-    {title:"Send stool only when it changes management", html:"Blood or systemic illness, travel, recent antibiotics, immunocompromise, prolonged symptoms, or public-health need."},
-    {title:"Apply the public-health rules", html:"48-hour exclusion, UKHSA notification, hygiene advice, and no swimming for 2 weeks."}
+    {title:"Assess severity and exclude the mimic", html:"Dehydration, oral intake, sepsis, home support; surgical and metabolic mimics.", alert:true},
+    {title:"History, exposures and organism clues", html:"Blood, fever, travel, recent antibiotics, healthcare exposure, suspect food, contacts, occupation."},
+    {title:"Fluids first; prescribe sparingly", html:"Rehydration and feeding; selected symptom relief in adults; antibiotics only when indicated."},
+    {title:"Send stool when it changes management", html:"Blood, systemic illness, outbreak, immunocompromise, C. difficile risk, persistence, relevant travel, high-risk occupations."},
+    {title:"Public health", html:"Exclusion, Health Protection Team notification, hygiene, organism-specific swimming advice."}
   ],
   sections:[
 
-    {id:"safety", nav:"Admit?", title:"Step 1 — who needs admission or urgent review",
+    {id:"safety", nav:"Severity", title:"Step 1 — severity and the mimics",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"🔴 Dehydration or shock", html:"Reduced urine output, lethargy, tachycardia, hypotension, reduced skin turgor, sunken eyes — especially infants and the elderly → admit."},
-         {tone:"red", h:"🔴 Unable to tolerate fluids", html:"Persistent vomiting, cannot maintain oral intake → same-day assessment or IV fluids."},
-         {tone:"red", h:"🔴 Bloody diarrhoea or sepsis", html:"Blood in the stool, high fever, severe abdominal pain, systemic toxicity → assess for invasive infection or a surgical cause."},
-         {tone:"amber", h:"🟠 High-risk groups", html:"Frail elderly, infants, immunocompromised, significant comorbidity — lower the admission threshold."}
-       ]},
-       {b:"why", html:"Most gastroenteritis is self-limiting and viral; the clinical task is identifying dehydration — the main cause of harm — and the minority with invasive or serious disease, or a surgical mimic such as appendicitis, DKA or obstruction."}
-     ]},
-
-    {id:"assess", nav:"Assess", title:"Step 2 — assessment and organism clues",
-     blocks:[
-       {b:"table", head:["Element","Detail"], rows:[
-         ["<b>History</b>","Onset, frequency, blood or mucus, vomiting, fever, abdominal pain; sick contacts, recent travel, suspect food, recent antibiotics (C. difficile), occupation (food handler or carer)"],
-         ["<b>Hydration</b>","Thirst, urine output, dizziness on standing; in children use the NICE CG84 dehydration assessment"],
-         ["<b>Red-flag mimics</b>","Right iliac fossa pain (appendicitis), severe or localised pain, DKA in a person with diabetes, obstruction"],
-         ["<b>Organism clues</b>","Bloody → Campylobacter, Shigella, E. coli O157, Salmonella. Profuse watery with travel → viral or ETEC. Recent antibiotics → C. difficile"]
+         {tone:"red", h:"🔴 Same-day assessment or admission", html:"Shock or severe dehydration · persistent vomiting or inability to maintain oral fluids · worsening renal function or significant electrolyte disturbance · sepsis · suspected HUS · inability to manage safely at home. Persistent vomiting needs same-day assessment; IV fluids may be needed depending on dehydration, renal function and response to antiemetic and supervised oral rehydration."},
+         {tone:"amber", h:"🟠 Assess, don't reflexively admit", html:"Check observations, fluid intake and urine output, capillary glucose where relevant, and renal function and electrolytes if indicated; consider home support, frailty and pregnancy. Mildly reduced urine output can often be managed with supervised oral rehydration if the patient can drink. Tachycardia may reflect fever, pain or anxiety; skin turgor and sunken eyes are less reliable in older adults."},
+         {tone:"red", h:"🔴 Surgical and metabolic mimics", html:"Peritonism or guarding · severe or localised pain, or pain out of proportion · abdominal distension · bilious vomiting · appendicitis · obstruction · pancreatitis · mesenteric ischaemia · ectopic pregnancy · adrenal crisis · sepsis from another source. <b>In diabetes, check capillary glucose and ketones</b> with vomiting, abdominal pain, dehydration or systemic illness — do not wait for the diarrhoea to settle before assessing for DKA."}
        ]}
      ]},
 
-    {id:"treat", nav:"Rehydrate", title:"Step 3 — rehydrate; antibiotics rarely",
+    {id:"assess", nav:"Assess", title:"Step 2 — history and organism clues",
      blocks:[
-       {b:"table", head:["Step","When","Treatment"], rows:[
-         ["<b>Step 1 — oral rehydration and continued feeding</b>","<b>All patients</b>","Encourage fluids little and often; oral rehydration salts for those at risk of dehydration. Continue breastfeeding and a normal diet as tolerated. Good hand hygiene to limit spread"],
-         ["<b>Step 2 — symptom relief in selected adults</b>","<b>Adults, no red flags</b>","An antiemetic for distressing vomiting — cyclizine 50 mg TDS or prochlorperazine 5–10 mg TDS. For NON-bloody diarrhoea in adults, loperamide 4 mg then 2 mg after each loose stool (maximum 16 mg daily). AVOID antimotility drugs in bloody diarrhoea, suspected E. coli O157 or C. difficile, and avoid in children"],
-         ["<b>Step 3 — antibiotics only if indicated</b>","<b>Specific cases; reserve</b>","Most cases need none. Consider per organism and clinical picture — systemically unwell, immunocompromised, or a confirmed organism needing treatment — guided by the stool result and microbiology advice. C. difficile: stop the precipitant and treat per protocol"]
-       ]},
-       {b:"warn", html:"E. coli O157: avoid antibiotics and antimotility agents — they increase the risk of haemolytic uraemic syndrome (HUS). Watch for HUS — pallor, reduced urine output, bruising — especially in children."}
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>History</b>","Onset, frequency, blood or mucus, vomiting, fever, abdominal pain; sick contacts, recent travel, suspect food, recent antibiotics or healthcare exposure, PPI use, occupation (food handler, healthcare or care worker)"],
+         ["<b>Bloody diarrhoea</b>","Consider STEC, Campylobacter, Shigella, Salmonella, C. difficile, inflammatory bowel disease and ischaemic colitis"],
+         ["<b>Profuse watery diarrhoea</b>","Viral infection, toxin-mediated illness, or travel-related infection"],
+         ["<b>Recent antibiotics or hospital exposure</b>","Consider C. difficile"],
+         ["<b>Travel</b>","Bacterial, viral or parasitic causes, according to destination and duration"],
+         ["<b>Severe localised pain or peritonism</b>","Reconsider gastroenteritis — assess for a surgical cause"]
+       ]}
      ]},
 
-    {id:"stool", nav:"Stool", title:"Step 4 — when to send stool",
+    {id:"treat", nav:"Treat", title:"Step 3 — fluids first; prescribe sparingly",
      blocks:[
-       {b:"table", head:["Send stool if","Why","Action"], rows:[
-         ["<b>Blood or mucus, or systemically unwell</b>","Invasive bacterial infection","<b>Culture, with microbiology advice</b>"],
-         ["<b>Recent travel abroad</b>","Parasites or atypical organisms","<b>Culture plus ova, cysts and parasites</b>"],
-         ["<b>Recent antibiotics or hospital stay</b>","C. difficile","<b>C. difficile toxin testing</b>"],
-         ["<b>Immunocompromised, or prolonged (over 7 days)</b>","Persistent or atypical infection","<b>Culture, with parasitology</b>"],
-         ["<b>Public-health need, outbreak, or food handler</b>","Notifiable disease or exclusion","<b>Notify and culture</b>"]
+       {b:"table", head:["Step","When","Treatment"], rows:[
+         ["<b>Rehydration and feeding</b>","Everyone","Fluids little and often. Oral rehydration salts where diarrhoea or vomiting is substantial, or with frailty, older age, pregnancy or comorbidity; ordinary fluids may be enough for otherwise healthy adults without significant dehydration. Continue breastfeeding and a normal diet as tolerated — do not starve or restrict to clear fluids"],
+         ["<b>Loperamide</b> — adults only","Short term, for uncomplicated, non-bloody, afebrile watery diarrhoea","Not routinely necessary and generally self-care in Greater Manchester. Check the dose against the product information. <b>Avoid</b> with blood in the stool, high fever, suspected STEC, C. difficile or dysentery, inflammatory colitis or a UC flare, abdominal distension or ileus, suspected toxic megacolon — and in children"],
+         ["<b>Antiemetic</b> — selected adults","Distressing vomiting, no red flags","Cyclizine or prochlorperazine can help but are not routine; limited evidence in uncomplicated viral gastroenteritis. Consider sedation and falls, extrapyramidal effects (prochlorperazine), anticholinergic effects (cyclizine), QT prolongation, older age and pregnancy — and do not let them delay assessment of severe vomiting or atypical pain"],
+         ["<b>Antibiotics</b>","Only when a specific pathogen or syndrome warrants it","Guided by stool results, severity, host factors and microbiology or public-health advice — e.g. severe shigellosis, severe or extra-intestinal Salmonella, selected severe or high-risk Campylobacter, cholera or enteric fever, amoebic dysentery, immunocompromise, sepsis"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"C. difficile", html:"Suspected C. difficile needs stool testing and a severity assessment. Stop non-essential precipitating antibiotics and review PPIs and laxatives. <b>No loperamide.</b> Treat confirmed or strongly suspected infection per NICE NG199 and local microbiology guidance; seek urgent specialist advice if severe or rapidly worsening. A positive result without compatible diarrhoea does not necessarily mean active infection."},
+         {tone:"blue", h:"Self-care prescribing", html:"Uncomplicated diarrhoea is generally a self-care condition under the Greater Manchester OTC policy; loperamide remains on the formulary for appropriate use."}
+       ]}
+     ]},
+
+    {id:"stool", nav:"Stool", title:"Step 4 — send stool when it changes management",
+     blocks:[
+       {b:"table", head:["Send stool if","Test"], rows:[
+         ["<b>Blood, mucus or pus; systemic illness or high fever</b>","Culture, with microbiology advice"],
+         ["<b>Suspected food poisoning, outbreak or cluster</b>","Culture; Health Protection Team guides further testing"],
+         ["<b>Recent antibiotics, healthcare exposure, or suspected C. difficile</b>","C. difficile testing"],
+         ["<b>Immunocompromised</b>","Culture, with a low threshold for wider testing on microbiology advice"],
+         ["<b>Not improving by about day 7, persisting beyond 10–14 days, or recurrent</b>","Culture; parasite testing guided by travel, exposure and clinical context"],
+         ["<b>Recent travel to a relevant destination</b>","Culture; ova, cysts and parasites only if the destination, duration, persistence, exposure or immunocompromise make Giardia, Entamoeba or another parasite plausible"],
+         ["<b>Food handler, healthcare or care worker</b>","Per the Health Protection Team — testing and clearance requirements depend on the setting and organism"]
        ]}
      ]},
 
     {id:"publichealth", nav:"Public health", title:"Step 5 — exclusion, notification and advice",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"purple", h:"🚫 Exclusion — a legal duty for food handlers", html:"Stay off work or school until 48 hours after the last episode of diarrhoea or vomiting. For food handlers this is a statutory requirement under food-safety law, not advice — and it is stricter than 48 hours for some organisms; healthcare and care staff and young children also have stricter rules. Check the UKHSA table for the specific organism."},
-         {tone:"purple", h:"📋 Notify", html:"Suspected infectious bloody diarrhoea or food poisoning, and certain organisms, are notifiable to public health (UKHSA)."},
-         {tone:"green", h:"🧼 Hygiene", html:"Handwashing; don't prepare food for others; don't share towels; clean surfaces."},
-         {tone:"blue", h:"🏊 Avoid swimming", html:"No swimming for 2 weeks after the last episode, especially with Cryptosporidium."}
+         {tone:"amber", h:"🚫 Exclusion", html:"Stay away from work, school, nursery or social-care settings until <b>at least 48 hours</b> after the last episode of diarrhoea or vomiting. Food handlers, healthcare and care staff, young children and specified infections may need longer exclusion or microbiological clearance — check current UKHSA and local Health Protection Team guidance."},
+         {tone:"amber", h:"📋 Notification", html:"Notify the local Health Protection Team (proper officer) promptly when food poisoning, a notifiable organism, an outbreak or cluster, or a public-health risk is suspected, using the current UKHSA notification table. Not every case of presumed viral gastroenteritis is individually notifiable."},
+         {tone:"green", h:"🧼 Hygiene", html:"Handwashing with soap and water; don't prepare food for others; don't share towels; clean toilets and surfaces."},
+         {tone:"blue", h:"🏊 Swimming", html:"Avoid swimming until at least 48 hours after symptoms stop. For suspected or confirmed Cryptosporidium or Giardia, follow the specific UKHSA exclusion — typically 2 weeks after the diarrhoea has resolved."}
+       ]}
+     ]},
+
+    {id:"children", nav:"Children", title:"Children — use NICE CG84 for under-5s",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Assessment", html:"Use the NICE CG84 dehydration assessment and traffic-light approach for under-5s, and current local paediatric guidance. Lower the threshold for assessment in infants, under-5s, children with comorbidity or poor social support."},
+         {tone:"green", h:"Treatment", html:"Continue breastfeeding and formula feeds; use age-appropriate oral rehydration solution. <b>No loperamide in children.</b> Antiemetics only per paediatric guidance."},
+         {tone:"red", h:"Bloody diarrhoea in young children", html:"Needs prompt assessment and stool testing; watch closely for HUS."}
        ]}
      ]},
 
     {id:"refer", nav:"Refer", title:"Refer and safety-net",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Admit", html:"Dehydration or shock, unable to maintain fluids, suspected HUS, sepsis, or a surgical abdomen."},
-         {tone:"purple", h:"Public health", html:"<b>Outbreaks, notifiable organisms, food-poisoning clusters → UKHSA.</b>"},
-         {tone:"amber", h:"Investigate further", html:"Diarrhoea lasting more than 7–14 days, or chronic and relapsing → reconsider IBD, coeliac disease and malabsorption. See <a href='../algorithms/chronic-diarrhoea.html'>chronic diarrhoea pathway</a>."},
-         {tone:"cream", h:"GP management", html:"Hydration assessment, oral rehydration, selective symptom relief, stool testing decisions, the public-health duties and the safety-net all belong here. Related pages: <a href='ibs.html'>IBS</a> · <a href='coeliac-disease.html'>coeliac disease</a> · <a href='crohns-disease.html'>Crohn's disease</a> · <a href='ulcerative-colitis.html'>ulcerative colitis</a> · <a href='dka.html'>DKA</a>."}
+         {tone:"red", h:"Hospital", html:"Shock or severe dehydration, inability to maintain fluids after assessment, suspected HUS, sepsis, a surgical abdomen, DKA, or severe or rapidly worsening C. difficile."},
+         {tone:"blue", h:"Health Protection Team", html:"<b>Food poisoning, outbreaks, notifiable organisms, or high-risk occupations.</b>"},
+         {tone:"amber", h:"Investigate further", html:"Diarrhoea lasting more than 10–14 days, or chronic and relapsing → reconsider IBD, coeliac disease and malabsorption. See <a href='../algorithms/chronic-diarrhoea.html'>chronic diarrhoea pathway</a>."},
+         {tone:"cream", h:"GP management", html:"Severity assessment, rehydration, selective symptom relief, stool testing decisions, the public-health duties and the safety-net belong here. Related pages: <a href='ibs.html'>IBS</a> · <a href='coeliac-disease.html'>coeliac disease</a> · <a href='crohns-disease.html'>Crohn's disease</a> · <a href='ulcerative-colitis.html'>ulcerative colitis</a> · <a href='dka.html'>DKA</a>."}
        ]},
-       {b:"say", html:"This is a tummy bug — usually a virus that clears in a few days. The most important thing is sips of fluid little and often. Antibiotics don't usually help, and anti-diarrhoea tablets can actually be harmful with some bugs, so I'm not giving either. Please stay off work or school until 48 hours after the last episode. Come back urgently if you can't keep fluids down, pass much less urine, or see blood."}
+       {b:"say", html:"This looks like a tummy bug, which usually clears in a few days. The most important thing is fluids, little and often, and eating normally when you can. Antibiotics don't usually help, and anti-diarrhoea tablets can be harmful with some bugs, so I'm not giving them. Please stay off work or school until at least 48 hours after the last episode. Come back urgently if you can't keep fluids down, pass much less urine, feel very drowsy or faint, notice bruising, or the pain gets much worse."}
      ]},
 
     {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
      blocks:[{b:"cards", cols:2, items:[
-       {tone:"cream", h:"Classic scenario", html:"A 24-year-old <b>chef</b> attends with 2 days of profuse diarrhoea, now with <b>visible blood</b>, cramping abdominal pain and a temperature of 38.2°C. He ate at a barbecue 3 days ago and <b>two friends are also unwell</b>. He is passing urine normally and tolerating fluids. He asks for \"something to stop it\" and an antibiotic, and needs to be back at work tomorrow for a busy service."},
-       {tone:"cream", h:"Examiner-style checkpoints", html:"Declines loperamide and explains WHY — bloody diarrhoea raises the possibility of E. coli O157, where antimotility drugs and antibiotics both increase the risk of haemolytic uraemic syndrome; this is the whole case and must be explained rather than simply refused; <b>declines the antibiotic on the same grounds, pending stool culture</b>; sends stool because there is blood, systemic upset AND a possible outbreak; recognises the statutory dimension: he is a food handler, so exclusion is stricter than 48 hours and this is notifiable to UKHSA — and addresses the work pressure honestly rather than accommodating it; <b>asks about the unwell contacts as a cluster</b>; <b>assesses hydration properly</b> and gives oral rehydration advice; <b>warns specifically about HUS features</b> — pallor, reduced urine, bruising; and <b>safety-nets fluid intolerance and worsening pain.</b>"}
+       {tone:"cream", h:"Classic scenario", html:"A 24-year-old <b>chef</b> attends with 2 days of profuse diarrhoea, now with <b>visible blood</b>, cramping abdominal pain and a temperature of 38.2°C. He ate at a barbecue 3 days ago and <b>two friends are also unwell</b>. He is passing urine normally and tolerating fluids. He asks for \"something to stop it\" and an antibiotic, and needs to be back at work tomorrow."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Declines loperamide and explains why — bloody diarrhoea with fever raises possible STEC, where antimotility drugs increase HUS risk; does not start an antibiotic without microbiology or public-health advice, pending stool culture; sends stool because of blood, systemic upset and a possible cluster; recognises he is a food handler, so the Health Protection Team guides his exclusion and clearance, and notifies suspected food poisoning; assesses hydration properly; warns about HUS features; addresses the work pressure honestly; safety-nets."}
      ]}]},
 
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>NICE CG84 — Diarrhoea and vomiting caused by gastroenteritis in under 5s</b><br><a href="https://www.nice.org.uk/guidance/cg84" rel="noopener">nice.org.uk/guidance/cg84</a><span class="rd"> — the paediatric dehydration assessment referenced for children</span></li>'+
-         '<li><b>UKHSA — Managing outbreaks and exclusion of cases of infectious gastrointestinal disease; Notifiable diseases and causative organisms</b><br><a href="https://www.gov.uk/guidance/notifiable-diseases-and-causative-organisms-how-to-report" rel="noopener">gov.uk — notifiable diseases</a><span class="rd"> — the 48-hour exclusion rule with stricter requirements for food handlers, healthcare and care staff and young children; the statutory notification duty for suspected food poisoning and specified organisms; and the 2-week swimming exclusion for Cryptosporidium</span></li>'+
-         '<li><b>UKHSA / PHE — E. coli O157 and haemolytic uraemic syndrome</b><span class="rd"> — the recommendation against antibiotics and antimotility agents in suspected E. coli O157 because of the increased HUS risk, and the HUS features to watch for in children</span></li>'+
-         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — cyclizine, prochlorperazine and loperamide doses, and the contraindications to loperamide</span></li>'+
+         '<li><b>UKHSA — Notifiable diseases and causative organisms; managing gastrointestinal infections and exclusion</b><br><a href="https://www.gov.uk/guidance/notifiable-diseases-and-causative-organisms-how-to-report" rel="noopener">gov.uk — notifiable diseases</a><span class="rd"> — notification via the Health Protection Team; 48-hour exclusion and stricter groups; Cryptosporidium and Giardia swimming exclusion</span></li>'+
+         '<li><b>UKHSA — STEC and haemolytic uraemic syndrome</b><span class="rd"> — avoid antimotility agents; antibiotics only on specialist advice; HUS recognition</span></li>'+
+         '<li><b>NICE NG199 — Clostridioides difficile infection: antimicrobial prescribing</b><br><a href="https://www.nice.org.uk/guidance/ng199" rel="noopener">nice.org.uk/guidance/ng199</a><span class="rd"> — precipitants, severity, treatment</span></li>'+
+         '<li><b>NICE CG84 — Diarrhoea and vomiting caused by gastroenteritis in under 5s</b><br><a href="https://www.nice.org.uk/guidance/cg84" rel="noopener">nice.org.uk/guidance/cg84</a><span class="rd"> — dehydration assessment, ORS and admission thresholds in under-5s</span></li>'+
+         '<li><b>Greater Manchester Medicines Management Group formulary — gastro-intestinal system; OTC policy</b><span class="rd"> — self-care position; loperamide</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — antiemetic and loperamide cautions and contraindications</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Acute gastroenteritis in primary care \u2014 NICE CG84 (under-5s, 2009) and UKHSA guidance. Dehydration is the main cause of harm and drives admission; oral rehydration little and often, with continued feeding, is the mainstay. Antibiotics are usually not indicated. In suspected E. coli O157, avoid BOTH antibiotics and antimotility drugs — they increase the risk of haemolytic uraemic syndrome — and avoid loperamide in bloody diarrhoea, C. difficile and all children. Send stool only when it changes management. Exclusion is 48 hours after the last episode, stricter for food handlers and care staff, and suspected food poisoning is notifiable to UKHSA. Verify all doses against the current BNF and local microbiology guidance."
+  foot:"Acute gastroenteritis in adults and older children; NICE CG84 for under-5s. Assess dehydration and the ability to maintain fluids; admit for shock, severe dehydration, persistent vomiting despite assessment, renal or electrolyte derangement, sepsis, suspected HUS or unsafe home circumstances. Exclude surgical and metabolic mimics, including DKA. Fluids and feeding are the mainstay; antibiotics only when a specific pathogen or syndrome warrants it. Suspected STEC: no antimotility drugs, antibiotics only on specialist advice. C. difficile per NICE NG199. Send stool when it changes management. At least 48 hours' exclusion; notify the local Health Protection Team when indicated. Sources: UKHSA, NICE NG199, NICE CG84, Greater Manchester formulary, BNF. Verify doses against the current BNF and local microbiology guidance."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

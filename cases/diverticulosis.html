@@ -717,7 +717,7 @@ body.mode-clinic .sca-only{display:none!important}
 
 </style>
 
-<link rel="stylesheet" href="../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../assets/provenance.css?v=14">
 </head>
 <body class="mode-both" id="bodyEl">
 <button class="sb-toggle" aria-label="Open case list">
@@ -848,7 +848,7 @@ body.mode-clinic .sca-only{display:none!important}
           </tr>
           <tr>
             <td class="q">Bowel habit change &mdash; new or persistent<em>&ldquo;Has your bowel habit changed recently? Any new constipation or diarrhoea that is not settling? Any change in the shape or calibre of your stools?&rdquo;</em></td>
-            <td class="why">A new persistent change in bowel habit in a patient over 40 is a 2WW CRC red flag and must not be attributed to diverticulosis alone. Ribbon-like stools from an obstructing sigmoid cancer can exactly mimic the change in bowel habit seen in diverticular stricture. Age &ge;40 + new change in bowel habit &gt;6 weeks = 2WW CRC referral.<span class="why-sub">Age &ge;40 + change in bowel habit &gt;6 weeks + no other explanation &rarr; 2WW CRC referral even in known diverticulosis; the two conditions coexist frequently</span></td>
+            <td class="why">A new persistent change in bowel habit at any age needs FIT (NICE NG12) and must not be attributed to diverticulosis alone. Ribbon-like stools from an obstructing sigmoid cancer can exactly mimic the change in bowel habit seen in diverticular stricture. FIT ≥10 µg Hb/g → 2WW CRC referral.<span class="why-sub">New change in bowel habit &rarr; FIT; &ge;10 &micro;g Hb/g &rarr; 2WW CRC referral even in known diverticulosis; the two conditions coexist frequently</span></td>
             <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">Referral</span></td>
           </tr>
           <tr>
@@ -1269,7 +1269,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td style="font-weight:600">Complicated diverticulitis (CRP &gt;150 or peritonism)</td><td><span class="ref-urg rurg-999">Same-day hospital</span></td><td style="font-size:12px">CRP + FBC + U&amp;E; do not give oral antibiotics (IV needed); IV access if available; arrange direct hospital admission; contact surgical/medical on-call; write clear referral letter with CRP result and examination findings</td><td style="font-size:12px;color:var(--r)">Do not send home with oral antibiotics if CRP &gt;150 or peritonism is present; do not arrange outpatient CT &mdash; this needs same-day hospital assessment</td></tr>
           <tr><td style="font-weight:600">Hinchey III&ndash;IV peritonism / perforation</td><td><span class="ref-urg rurg-999">999 immediately</span></td><td style="font-size:12px">999 immediately; IV access + fluid bolus if available; note time of symptom onset; do not give opiates that might mask examination findings if patient is being assessed imminently</td><td style="font-size:12px;color:var(--r)">Do not delay for investigations; do not give oral laxatives or enemas; do not attempt abdominal imaging in primary care &mdash; 999 first</td></tr>
           <tr><td style="font-weight:600">Post-recovery colonoscopy (after 1st episode)</td><td><span class="ref-urg rurg-r">6&ndash;8 weeks post-recovery</span></td><td style="font-size:12px">Arrange colonoscopy referral at resolution of acute episode; document the reason (CRC exclusion) clearly in referral; ensure patient is aware this is cancer exclusion, not routine check; chase if not received within 8 weeks</td><td style="font-size:12px;color:var(--r)">Do not arrange colonoscopy during the acute attack (perforation risk); do not omit post-recovery colonoscopy &mdash; CRC must be excluded after every first episode of diverticulitis</td></tr>
-          <tr><td style="font-weight:600">2WW CRC referral &mdash; red flags in diverticular disease</td><td><span class="ref-urg rurg-2">2-week wait</span></td><td style="font-size:12px">Send 2WW referral if: age &ge;40 + symptoms &gt;6 weeks; weight loss + change in bowel habit; palpable mass; PR bleeding with altered bowel habit; unexplained iron deficiency anaemia; do not delay referral based on presence of diverticulosis</td><td style="font-size:12px;color:var(--r)">Do not attribute persistent symptoms to diverticulosis without CRC exclusion; the presence of diverticulosis should not reduce the threshold for 2WW referral</td></tr>
+          <tr><td style="font-weight:600">2WW CRC referral &mdash; red flags in diverticular disease</td><td><span class="ref-urg rurg-2">2-week wait</span></td><td style="font-size:12px">Offer FIT (NICE NG12) for change in bowel habit, rectal bleeding, weight loss or iron-deficiency anaemia; send a 2WW referral if FIT &ge;10 &micro;g Hb/g or there is a rectal mass; do not delay referral based on presence of diverticulosis</td><td style="font-size:12px;color:var(--r)">Do not attribute persistent symptoms to diverticulosis without CRC exclusion; the presence of diverticulosis should not reduce the threshold for 2WW referral</td></tr>
           <tr><td style="font-weight:600">Elective sigmoid colectomy (&ge;2 episodes)</td><td><span class="ref-urg rurg-r">Routine colorectal surgery</span></td><td style="font-size:12px">Discuss with patient after second episode; refer to colorectal surgery clinic; document episode history, severity, and antibiotic use; ensure colonoscopy has been done to exclude CRC; patient preference is central to surgical decision-making</td><td style="font-size:12px;color:var(--r)">Do not recommend elective surgery after a single uncomplicated episode without discussing at a joint colorectal surgery + patient consultation; elective colectomy has significant risks that must be discussed</td></tr>
           <tr><td style="font-weight:600">Colovesical fistula</td><td><span class="ref-urg rurg-2">Urgent urology + colorectal surgery</span></td><td style="font-size:12px">Urine M/C/S (polymicrobial expected); arrange CT fistulogram; refer simultaneously to urology and colorectal surgery; ensure patient takes cranberry juice or similar to acidify urine (reduces bacterial adhesion) while awaiting specialist review</td><td style="font-size:12px;color:var(--r)">Do not treat colovesical fistula as a simple UTI with repeated antibiotic courses; the underlying fistula will not close without surgical repair</td></tr>
         </tbody>
@@ -2243,13 +2243,13 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=100"></script>
+<script src="../assets/site.js?v=102"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
 <script src="../assets/topic-links.js?v=7"></script>
 
 <div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
-<script src="../assets/provenance.js?v=14"></script>
+<script src="../assets/provenance.js?v=15"></script>
 </body>
 </html>

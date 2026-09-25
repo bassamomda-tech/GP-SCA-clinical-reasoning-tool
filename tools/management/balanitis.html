@@ -10,113 +10,109 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Balanitis management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🔬",
   title:"Balanitis",
-  stemTitle:"Balanitis — ongoing management",
-  stemSub:"Primary-care management of balanitis \u2014 hygiene and irritant avoidance for all, cause-directed treatment (candidal, bacterial, dermatological), and recognising when to consider diabetes or refer.",
-  guideline:"BNF",
-  foot:"Management pathway for an already-confirmed diagnosis. Not a substitute for clinical judgement, the patient\u2019s individual context, or your local formulary. Verify drugs and doses against the current BNF.",
+  eyebrow:"Protocol · adults 16+ · assessment and management",
+  reviewed:"24 September 2026",
+  nextReview:"24 September 2027",
+  stemTitle:"Balanitis \u2014 a description, not a diagnosis: find the cause, treat that, and refer what persists",
+  stemSub:"Primary-care management of balanitis and balanoposthitis in <b>adults (16 and over)</b>; children need a separate pathway. Balanitis has many causes: irritant or contact dermatitis and dermatoses are common, and <b>Candida is a minority cause</b> that is often secondary to an underlying skin condition. Hygiene and irritant avoidance for everyone, cause-directed treatment, and a low threshold for STI assessment, biopsy or referral when a lesion persists.",
+  guideline:"BASHH balanoposthitis guideline (2025) \u00b7 NICE NG12 \u00b7 Greater Manchester antimicrobial guidelines \u00b7 local formulary",
+  foot:"Balanitis in adults. Candida is a minority cause; irritant dermatitis and dermatoses are common. Interpret swab results cautiously. Do not forcibly retract a non-retractile foreskin, and treat paraphimosis as an emergency. Consider a suspected penile cancer pathway referral per NICE NG12. Sources: BASHH balanoposthitis guideline (2025), NICE NG12, Greater Manchester antimicrobial guidelines and the local formulary.",
   glance:[
-    {lbl:"Commonest", val:"Candida / irritant", sub:"+ poor hygiene"},
-    {lbl:"All patients", val:"Hygiene + emollient", sub:"avoid irritants/soap"},
-    {lbl:"Candidal", val:"Topical clotrimazole", sub:"\u00b1 hydrocortisone"},
-    {lbl:"Bacterial", val:"Per swab", sub:"flucloxacillin / per result"},
-    {lbl:"Recurrent", val:"Check glucose", sub:"?diabetes"},
-    {lbl:"Refer", val:"BXO / persistent / ?cancer", sub:"derm/urology"}
+    {lbl:"Commonest", val:"Irritant / dermatosis", sub:"Candida is a minority cause"},
+    {lbl:"All patients", val:"Hygiene + emollient", sub:"soap substitute; avoid irritants"},
+    {lbl:"Candidal", val:"Clotrimazole 1% BD", sub:"7\u201314 days \u00b1 short hydrocortisone"},
+    {lbl:"Bacterial", val:"By clinical syndrome", sub:"local antimicrobial guidance"},
+    {lbl:"Check", val:"Glucose / HbA1c", sub:"severe, persistent or recurrent"},
+    {lbl:"Emergency", val:"Paraphimosis", sub:"same-day urology"}
   ],
   flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Identify the cause",
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Assess and find the cause",
       blocks:[
         {b:"kv", rows:[
-          ["Common causes","Candidal, irritant/contact dermatitis (soaps, overwashing), poor hygiene; bacterial; STIs"],
-          ["Dermatoses","Lichen sclerosus (BXO), psoriasis, lichen planus, Zoon\u2019s balanitis"],
-          ["Assess","Examine; swab if infection suspected; consider STI screen if relevant"],
-          ["Recurrent","Recurrent candidal balanitis \u2192 <b>check for diabetes</b> (glucose/HbA1c)"]
+          ["Causes","Irritant or allergic dermatitis (soaps, over-washing as well as poor hygiene) \u00b7 candidal \u00b7 anaerobic or aerobic bacterial \u00b7 HSV, syphilis and other STIs \u00b7 lichen sclerosus \u00b7 lichen planus \u00b7 psoriasis \u00b7 Zoon\u2019s balanitis \u00b7 fixed drug eruption \u00b7 circinate balanitis (reactive arthritis) \u00b7 penile intraepithelial neoplasia \u00b7 penile cancer"],
+          ["Examine","Glans, foreskin and whole shaft \u00b7 erythema, erosions, ulcers, papules, plaques, discharge, scarring \u00b7 foreskin retractability and phimosis \u00b7 meatus and urinary stream \u00b7 inguinal nodes. <b>Do not forcibly retract a non-retractile foreskin</b>; replace a retracted foreskin before the patient leaves"],
+          ["History","Sexual history, new partners and STI risk \u00b7 diabetes, immunosuppression \u00b7 recent antibiotics \u00b7 products used on the area"],
+          ["Tests","Sub-preputial swab if infection is suspected, symptoms are severe or persistent, there is discharge, or treatment has failed \u2014 <b>growth of Candida or bacteria does not prove the cause</b>. HSV NAAT for ulcers or vesicles; syphilis testing for an ulcer; STI screen as indicated; consider HIV testing in severe, persistent, atypical or recurrent disease. Urinalysis for glucose or HbA1c in severe, persistent or recurrent cases"]
         ]},
-        {b:"why", html:"Balanitis is a syndrome with several causes, so treatment is <strong>cause-directed</strong> after hygiene measures. Two things shouldn\u2019t be missed: <strong>diabetes</strong> behind recurrent candidal balanitis, and <strong>lichen sclerosus (BXO)</strong> or rarely penile intraepithelial neoplasia/cancer behind persistent or atypical lesions."}
+        {b:"why", html:"Clinical appearances suggest a cause but are not diagnostic, so treatment follows the most likely cause and is reassessed rather than repeated. Two things should not be missed: <strong>lichen sclerosus</strong>, which scars and carries an increased risk of penile squamous-cell carcinoma, and a <strong>persistent lesion</strong> that needs biopsy or a suspected cancer referral."}
       ]},
     {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Hygiene and irritant avoidance",
       blocks:[
         {b:"tiles", v:"life", items:[
-          {t:"🚿 Gentle hygiene", html:"Wash daily with water, retract foreskin to clean and dry; avoid overwashing."},
-          {t:"🧼 Avoid irritants", html:"Stop soaps, shower gels, perfumed products on the area; use an emollient/soap substitute."},
-          {t:"🧺 Dry thoroughly", html:"Dry gently after washing; avoid moisture trapping."},
-          {t:"🚭 General", html:"Optimise glycaemic control if diabetic; treat partner if relevant (candida/STI)."},
-          {t:"🩲 Clothing", html:"Loose cotton underwear to reduce moisture/friction."}
+          {t:"\ud83d\udebf Gentle hygiene", html:"Wash daily with water; retract the foreskin to clean and dry only if it retracts comfortably; avoid over-washing."},
+          {t:"\ud83e\uddfc Avoid irritants", html:"Stop soaps, shower gels and perfumed products on the area; use an emollient as a soap substitute."},
+          {t:"\ud83e\uddfa Dry thoroughly", html:"Dry gently after washing; loose cotton underwear to reduce moisture and friction."},
+          {t:"\ud83d\udc91 Partners", html:"Candidal balanitis is not usually an STI. Assess and treat symptomatic partners if indicated; asymptomatic partners do not routinely need treatment. Suspected STI \u2192 sexual-health pathway with partner notification."},
+          {t:"\u26a0\ufe0f Condoms", html:"Creams and emollients can weaken latex condoms \u2014 counsel on this."}
         ]}
       ]},
     {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 by cause", title:"Cause-directed treatment",
       blocks:[
         {b:"ladder", steps:[
           {step:"All", title:"Hygiene + irritant avoidance", when:"foundation",
-           html:"Many irritant/candidal cases settle with hygiene + stopping irritants + emollient/soap substitute alone."},
-          {step:"Candidal", title:"Topical antifungal", when:"clotrimazole \u00b1 hydrocortisone",
+           html:"Many irritant cases settle with stopping irritants and an emollient soap substitute alone."},
+          {step:"Candidal", title:"Topical antifungal", when:"suspected candidal balanoposthitis",
            fromLabel:"candidal balanitis",
-           html:"<b>Clotrimazole 1% cream BD\u2013TDS</b> for ~2 weeks; add <b>hydrocortisone 1%</b> if markedly inflamed. <b>Fluconazole 150 mg single oral dose</b> if severe; treat partner if recurrent."},
-          {step:"Bacterial", title:"Antibiotic per swab", when:"bacterial infection",
+           html:"<b>Clotrimazole 1% or miconazole 2% cream twice daily for 7\u201314 days.</b> If markedly inflamed, add <b>hydrocortisone 1%</b> for a short course (up to 14 days unless specialist advice). <b>Fluconazole 150 mg as a single oral dose</b> only for severe symptoms, after checking interactions and liver disease. Reassess rather than repeatedly re-prescribing."},
+          {step:"Bacterial", title:"By clinical syndrome", when:"suspected bacterial infection",
            fromLabel:"bacterial balanitis",
-           html:"Treat per swab (e.g. <b>flucloxacillin 500 mg QDS</b>, or anaerobic cover with metronidazole); consider STI pathways where relevant."},
-          {step:"Dermatosis", title:"Topical steroid / refer", when:"lichen sclerosus / dermatoses",
+           html:"Assess the clinical syndrome and take a sub-preputial swab where appropriate; <b>do not treat a culture result alone</b>. Follow the Greater Manchester antimicrobial guidelines or seek sexual-health or microbiology advice, particularly with discharge, ulceration, lymphadenopathy, recurrence or suspected STI. Suspected <b>anaerobic</b> balanoposthitis (foul odour, discharge, erosions, oedema): metronidazole per local guidance."},
+          {step:"Dermatosis", title:"Lichen sclerosus and other dermatoses", when:"suspected dermatosis",
            fromLabel:"inflammatory dermatosis",
-           html:"Potent topical steroid for lichen sclerosus (often dermatology-guided); treat psoriasis/lichen planus accordingly."}
+           html:"Suspected lichen sclerosus \u2014 porcelain-white or pale patches, scarring, progressive phimosis, fissuring, meatal narrowing \u2014 should not be treated repeatedly as infection. Ultra-potent topical steroid through the local dermatology or urology pathway. Treat psoriasis or lichen planus accordingly."}
         ]},
-        {b:"warn", html:"<b>Recurrent candidal balanitis \u2192 screen for diabetes.</b> Persistent/atypical lesions, or suspected lichen sclerosus (BXO) / penile cancer, need referral \u2014 don\u2019t keep re-treating empirically."}
+        {b:"warn", html:"<b>Do not keep re-treating empirically.</b> A lesion that persists, or looks atypical, needs STI testing, biopsy or referral. Lichen sclerosus needs long-term safety-netting for new lumps, erosions, ulcers or texture change."}
       ]},
     {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response and recurrence",
       blocks:[
         {b:"table", head:["What","When","Action"], rows:[
-          ["Resolution","After treatment","Most settle; persistence \u2192 reassess/swab/refer"],
-          ["Recurrence","If recurrent","Check glucose/HbA1c; reconsider cause; treat partner"],
-          ["Atypical lesion","Any time","Suspected BXO/dysplasia/cancer \u2192 refer"],
-          ["Phimosis/scarring","Follow-up","Developing phimosis (BXO) \u2192 urology"]
+          ["Uncomplicated episode","Resolving","No routine review needed"],
+          ["Not improving","Within 7\u201314 days","Review: reassess cause, swab, test for STI, consider referral"],
+          ["Recurrence","Any","Glucose/HbA1c, immunosuppression, reconsider cause and irritants"],
+          ["Persistent or atypical lesion","Any time","STI testing, biopsy or referral; NICE NG12 criteria"],
+          ["Phimosis, scarring, meatal or urinary symptoms","Any time","Urology"]
         ]}
       ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"After treatment", title:"Review", html:"Confirm resolution; reinforce hygiene/irritant avoidance."},
-          {n:"2", when:"If recurrent", title:"Investigate", html:"Check diabetes, reconsider cause, treat partner, swab."},
-          {n:"3", when:"If persistent/atypical", title:"Refer", html:"BXO, dysplasia, or non-resolving \u2192 dermatology/urology."}
-        ]}
-      ]},
-    {t:"loop", icon:"🔁", title:"Not resolving / recurrent? Re-check",
+    {t:"loop", icon:"\ud83d\udd01", title:"Not resolving / recurrent? Re-check",
       arrow:"\u2026if balanitis persists or recurs",
-      intro:"Reconsider cause and look for diabetes or a dermatosis.",
+      intro:"Reconsider the cause before prescribing again.",
       checks:[
-        {b:"1 \u00b7 Diabetes", html:"Recurrent candidal balanitis \u2192 check glucose/HbA1c."},
-        {b:"2 \u00b7 Right cause", html:"Confirm candidal vs bacterial vs irritant vs dermatosis (swab/examine)."},
-        {b:"3 \u00b7 Irritants", html:"Soaps/overwashing still contributing?"},
-        {b:"4 \u00b7 Partner / STI", html:"Recurrent candida \u2014 treat partner; consider STI screen."},
-        {b:"5 \u00b7 Refer", html:"Suspected BXO / dysplasia / cancer, or non-resolving \u2192 derm/urology."}
+        {b:"1 \u00b7 Right cause", html:"Irritant vs dermatosis vs candidal vs bacterial vs STI \u2014 re-examine; interpret swabs cautiously."},
+        {b:"2 \u00b7 Irritants", html:"Soaps or over-washing still contributing?"},
+        {b:"3 \u00b7 Glucose and immunity", html:"Glucose/HbA1c; consider immunosuppression and HIV testing where indicated."},
+        {b:"4 \u00b7 STI", html:"HSV, syphilis and STI screen; sexual-health pathway if suspected."},
+        {b:"5 \u00b7 Refer", html:"Suspected lichen sclerosus, dysplasia or cancer, or non-resolving \u2192 dermatology, urology or GUM."}
       ],
-      back:"Diabetes checked, cause confirmed, irritants removed \u2192 derm/urology if persistent/atypical"},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      back:"Cause re-checked, irritants removed, glucose and STIs tested \u2192 refer if persistent or atypical"},
+    {t:"node", d:"safety", n:"5", tag:"Safety-net", title:"Safety-netting",
       blocks:[
         {b:"tiles", v:"safety", items:[
-          {t:"🔴 Suspicious lesion", html:"\u201cA non-healing sore, lump, white patches or persistent change on the penis \u2014 come back; we\u2019ll examine and may refer.\u201d"},
-          {t:"🩸 Glucose", html:"\u201cIf this keeps coming back, we\u2019ll check for diabetes, which can be the underlying reason.\u201d"},
-          {t:"🔒 Tight foreskin", html:"\u201cIf the foreskin becomes tight/scarred or you can\u2019t retract it \u2014 tell us (it can need specialist input).\u201d"},
-          {t:"🧼 Hygiene", html:"\u201cGentle washing with water and avoiding soaps usually prevents recurrence.\u201d"}
+          {t:"\ud83d\udd34 Emergency", html:"\u201cIf the foreskin is pulled back and won\u2019t go forward again, you can\u2019t pass urine, or there is rapidly increasing swelling, severe pain, discolouration or you feel unwell \u2014 go to A&E the same day.\u201d"},
+          {t:"\ud83d\udd34 Persistent change", html:"\u201cA sore that doesn\u2019t heal, a lump, a velvety red or scaly patch, bleeding, or a change you can\u2019t see under a tight foreskin \u2014 come back; we\u2019ll examine and may refer.\u201d"},
+          {t:"\ud83d\udd52 Not improving", html:"\u201cIf it isn\u2019t clearly better within one to two weeks, or keeps coming back, book a review.\u201d"},
+          {t:"\ud83e\uddfc Prevention", html:"\u201cGentle washing with water and a soap substitute usually prevents recurrence.\u201d"}
         ]}
       ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"When to refer",
       arrow:"persistent, atypical, or red flags",
       blocks:[
         {b:"tiles", v:"refer", items:[
-          {t:"🔴 Suspected cancer", html:"Non-healing/suspicious penile lesion \u2192 urology suspected-cancer pathway."},
-          {t:"Lichen sclerosus (BXO)", html:"Suspected BXO, phimosis or scarring \u2192 dermatology/urology (may need circumcision)."},
-          {t:"Persistent / recurrent", html:"Not responding to cause-directed treatment \u2192 dermatology/GUM."},
-          {t:"STI", html:"Suspected STI \u2192 GUM/sexual health."}
+          {t:"\ud83d\udd34 Same day", html:"Suspected paraphimosis \u00b7 urinary retention \u00b7 rapidly progressive swelling \u00b7 severe pain, tissue discolouration or suspected necrotising infection \u00b7 systemic illness or spreading cellulitis."},
+          {t:"2WW \u00b7 NICE NG12", html:"Consider a suspected penile cancer pathway referral for a penile mass or ulcerated lesion once an STI has been excluded, a persistent lesion after STI treatment, or unexplained or persistent symptoms affecting the foreskin or glans. Also: a velvety red or glazed, warty, scaly or indurated lesion, a bleeding or non-healing ulcer, unexplained inguinal nodes, or a lesion hidden by phimosis."},
+          {t:"Urology", html:"Pathological or progressive phimosis \u00b7 recurrent balanoposthitis with scarring \u00b7 meatal stenosis or weak stream \u00b7 lichen sclerosus with structural change \u00b7 recurrence despite appropriate treatment."},
+          {t:"Dermatology / GUM", html:"Diagnostic uncertainty needing biopsy \u00b7 suspected dermatosis \u00b7 suspected STI (with partner notification)."}
         ]},
-        {b:"say", html:"Balanitis usually comes from a yeast or irritation, and gentle hygiene plus the right cream clears most cases. If it keeps returning, I\u2019ll check for diabetes, and any lasting or unusual change I\u2019d want a specialist to see."}
+        {b:"say", html:"Balanitis means inflammation of the head of the penis, and it has several causes \u2014 most often irritation from soaps, and sometimes a yeast or a skin condition. Gentle washing with water and a soap substitute helps in every case, and I\u2019ll treat the most likely cause. If it isn\u2019t better in a week or two, or keeps coming back, I\u2019ll want to look again and may test or refer, rather than just giving more cream."}
       ]}
   ]
 });

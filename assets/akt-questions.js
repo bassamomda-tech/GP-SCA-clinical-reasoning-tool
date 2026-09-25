@@ -322,7 +322,7 @@ window.AKT_QUESTIONS = [
   { id:'rn3', cat:'Renal & Urology',
     stem:'A 70-year-old man has a 3-month history of weak urinary stream, hesitancy and nocturia. PSA and DRE are normal; symptoms are bothersome. What is an appropriate first-line drug?',
     opts:['Finasteride','An alpha-blocker (e.g. tamsulosin)','An anticholinergic','A loop diuretic','An antibiotic'],
-    ans:1, exp:'Bothersome voiding LUTS from benign prostatic enlargement are treated first-line with an alpha-blocker (e.g. tamsulosin) for rapid symptom relief; a 5-alpha-reductase inhibitor is added for larger prostates (NICE NG97).',
+    ans:1, exp:'Bothersome voiding LUTS from benign prostatic enlargement are treated first-line with an alpha-blocker (e.g. tamsulosin) for rapid symptom relief; a 5-alpha-reductase inhibitor is added for larger prostates (NICE CG97).',
     link:'../cases/male-luts.html' },
   // ---------- Women's health extra ----------
   { id:'wh4', cat:'Women\u2019s Health',

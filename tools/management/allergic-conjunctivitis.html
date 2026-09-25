@@ -4,92 +4,141 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Allergic Conjunctivitis — Protocol · Reasoning GP</title>
+<meta name="description" content="Allergic conjunctivitis in primary care: prominent itch, usually bilateral; minimum eye assessment; trigger reduction and cool compresses; sodium cromoglicate or olopatadine per the Greater Manchester formulary; oral antihistamines for coexisting rhinitis; no ocular steroids in primary care; referral of VKC and AKC." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/allergic-conjunctivitis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Allergic conjunctivitis management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"👁️",
-  title:"Allergic Conjunctivitis",
-  stemTitle:"Allergic conjunctivitis \u2014 itch is the clue; treat by allergen avoidance + antihistamine",
-  stemSub:"Primary-care management of allergic conjunctivitis \u2014 recognise the bilateral itchy eye, exclude sinister red-eye mimics, treat with allergen avoidance, topical/oral antihistamines and mast-cell stabilisers, and refer the severe sight-threatening forms.",
-  guideline:"BSACI",
-  glance:[
-    {lbl:"Hallmark", val:"Bilateral ITCH", sub:"+ watery/stringy discharge"},
-    {lbl:"1st-line", val:"Allergen avoidance", sub:"+ cool compress"},
-    {lbl:"Topical", val:"Antihistamine / MCS", sub:"e.g. olopatadine, sodium cromoglicate"},
-    {lbl:"Systemic", val:"Oral antihistamine", sub:"if rhinitis too"},
-    {lbl:"Avoid", val:"Topical steroids (GP)", sub:"specialist only"},
-    {lbl:"Red flag", val:"Pain / \u2193vision / photophobia", sub:"= same-day eye review"}
+  title:"Allergic conjunctivitis — the complete guide",
+  eyebrow:"Protocol · adults and children · itchy red eyes",
+  stemTitle:"Prominent itching, usually in both eyes, with watery or stringy discharge — exclude corneal and intraocular disease, then reduce triggers and use topical anti-allergy drops",
+  stemSub:"<b>Primary-care management of allergic conjunctivitis.</b> Typical allergic conjunctivitis is usually benign, but severe or chronic forms can affect the cornea and threaten vision. Record visual acuity, pupils, cornea, pattern of redness, pain and photophobia, and contact-lens use before calling it allergy. Treat with trigger reduction and cool compresses, then a topical mast-cell stabiliser or antihistamine per the Greater Manchester formulary. Add an oral antihistamine when rhinitis coexists — not as automatic escalation for eye symptoms alone. <b>Do not start ocular corticosteroids for an undifferentiated red eye in primary care.</b>",
+  guideline:"BSACI rhinitis guideline (2017) · BSACI/RCPath allergy testing in primary care (2025) · College of Optometrists CMG · Greater Manchester formulary · MHRA SPCs",
+  reviewed:"25 September 2026",
+  nextReview:"25 September 2027",
+  meta:[
+    {t:"No ocular steroids for an undifferentiated red eye", tone:"tw"},
+    {t:"Cromoglicate first choice (GM formulary)", tone:"ok"},
+    {t:"v2.1 · reviewed Sep 2026", tone:"ok"}
   ],
-  flow:[
-    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Exclude sight-threatening red eye",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Not allergic", html:"Significant pain, photophobia, reduced acuity, unilateral marked redness, fixed/irregular pupil \u2192 same-day ophthalmology (keratitis, uveitis, angle-closure)."},
-          {t:"🔴 Contact-lens wearer", html:"Red painful eye in lens wearer \u2192 same-day (microbial keratitis)."},
-          {t:"🟠 Vernal / atopic keratoconjunctivitis", html:"Severe, chronic, photophobia, corneal involvement (often children/young atopic) \u2192 ophthalmology \u2014 sight-threatening."},
-          {t:"🟠 Suspected herpes", html:"Vesicular rash, dendritic ulcer, unilateral \u2192 urgent ophthalmology; avoid steroids."}
-        ]},
-        {b:"why", html:"Itch is the defining symptom of allergic conjunctivitis and a comfortable eye with normal vision is reassuring. Pain, photophobia or reduced vision means a different, potentially sight-threatening diagnosis \u2014 and topical steroids must not be started in primary care for an undiagnosed red eye."}
-      ]},
-    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Confirm + classify",
-      blocks:[
-        {b:"kv", rows:[
-          ["Typical features","Bilateral itch, redness, watery/stringy discharge, lid swelling, conjunctival chemosis; often with allergic rhinitis (\u2018hay fever eyes\u2019)"],
-          ["Seasonal vs perennial","Pollen (seasonal) vs dust mite/animal dander (perennial)"],
-          ["Atopy","Personal/family history of asthma, eczema, allergic rhinitis"],
-          ["Severe forms","Vernal/atopic keratoconjunctivitis \u2014 chronic, photophobia, corneal risk \u2192 specialist"]
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Treatment", title:"Stepped management",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Step 1", title:"Allergen avoidance + cool compress", when:"all patients",
-           html:"Reduce exposure (pollen/dust mite/pets), wraparound sunglasses, avoid rubbing, cool compresses, lubricant drops to dilute allergen."},
-          {step:"Step 2", title:"Topical antihistamine / mast-cell stabiliser", when:"first-line drug",
-           fromLabel:"if symptoms persist",
-           html:"Dual-action drops (e.g. <b>olopatadine 1 mg/mL, 1 drop BD</b>), or antihistamine (antazoline) / mast-cell stabiliser (<b>sodium cromoglicate 2%, 1\u20132 drops QDS</b>) \u2014 cromoglicate needs regular use over days for full effect."},
-          {step:"Step 3", title:"Oral antihistamine", when:"+ rhinitis / inadequate",
-           fromLabel:"if associated rhinitis",
-           html:"Non-sedating oral antihistamine (<b>cetirizine or loratadine 10 mg once daily</b>), especially when nasal symptoms coexist."},
-          {step:"Step 4", title:"Specialist topical steroid / immunotherapy", when:"severe/refractory",
-           fromLabel:"ophthalmology-led",
-           html:"Short topical corticosteroid only under ophthalmology; consider allergen immunotherapy for refractory allergic disease."}
-        ]},
-        {b:"warn", html:"Do not initiate topical corticosteroids in primary care for a red eye \u2014 risk of masking herpes simplex keratitis, raising IOP and causing cataract. Refer if steroids are being considered."}
-      ]},
-    {t:"node", d:"life", n:"4", tag:"Non-drug", title:"Self-care",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🌼 Avoidance", html:"Monitor pollen counts, keep windows shut, shower/change after outdoors; reduce dust-mite/pet exposure."},
-          {t:"🚫 Don\u2019t rub", html:"Rubbing worsens mast-cell degranulation and risks keratoconus in chronic atopic disease."},
-          {t:"🕶️ Barrier", html:"Wraparound sunglasses; balm around eyes to trap pollen."},
-          {t:"👓 Lenses", html:"Avoid contact lenses during flares."}
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review & seasonal control", blocks:[{b:"timeline", items:[{n:"1", when:"2\u20134 weeks", title:"Assess response", html:"Review response to allergen avoidance + topical antihistamine/mast-cell stabiliser. Mast-cell stabilisers (e.g. sodium cromoglicate) need <b>regular use over days\u2013weeks</b> for full effect \u2014 set expectations."},{n:"2", when:"Seasonal", title:"Start before peak", html:"For seasonal (hay-fever) conjunctivitis, start treatment <b>before the pollen season</b> and use regularly through it; add an oral antihistamine if nasal symptoms coexist."},{n:"3", when:"Refractory", title:"Step up / refer", html:"Persistent despite optimal drops \u2192 reconsider diagnosis, consider short-term topical steroid under ophthalmology, or perennial-allergen review."}]},{b:"say", html:"Allergy drops work best taken regularly \u2014 and for hay fever, starting before the season really helps. Let\u2019s review how you\u2019re getting on in a few weeks."}]},
-    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral + review",
-      arrow:"red flags or severe disease",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Same-day ophthalmology", html:"Pain, photophobia, reduced vision, suspected keratitis/uveitis/herpes, contact-lens red eye."},
-          {t:"Ophthalmology (routine)", html:"Vernal/atopic keratoconjunctivitis, corneal involvement, steroid consideration, refractory disease."},
-          {t:"Allergy", html:"Severe multi-system allergic disease for immunotherapy assessment."}
-        ]},
-        {b:"say", html:"Itchy, watery, red eyes from allergy are uncomfortable but harmless. Avoiding the trigger, cool compresses and anti-allergy eye drops (plus a hay-fever tablet if your nose is affected) usually settle it. If your eye becomes painful, sensitive to light, or your vision drops, get it checked the same day."}
-      ]}
+  lead:'<div class="mg-layers"><a href="#assess"><b>Assess</b><small>Is it allergic?</small></a><a href="#drops"><b>Drops</b><small>Choosing safely</small></a><a href="#oral"><b>Oral</b><small>With rhinitis</small></a><a href="#severe"><b>VKC · AKC</b><small>Refer</small></a><a href="#refer"><b>Refer</b><small>When and where</small></a></div>',
+  quickSub:"The five that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Same-day eye assessment", html:"Pain · photophobia · reduced or altered vision · corneal opacity or ulceration · fixed or abnormal pupil · marked unilateral redness · suspected herpes simplex keratitis · a contact-lens wearer with a <b>painful, photophobic, vision-affected or significantly red eye</b> — stop lens wear and bring the lenses, case and solution. Contact-lens wear alone does not mandate same-day referral."},
+    {tone:"green", h:"Itch, usually both eyes", html:"Prominent itching with watery or stringy discharge, chemosis and lid swelling, often with hay fever or atopy. Itch is not diagnostic on its own — blepharitis, dry eye and contact-lens problems itch too. Marked unilateral disease → reconsider the diagnosis."},
+    {tone:"green", h:"Topical drops, chosen safely", html:"<b>Sodium cromoglicate 2%</b> (Greater Manchester first choice) or <b>olopatadine</b> (alternative), selected for age, pregnancy, contact lenses and preservatives. Both contain benzalkonium chloride — consider preservative-free products with frequent use, dry eye or corneal disease."},
+    {tone:"red", h:"⚠ No ocular steroids in primary care", html:"Do not start them for an undifferentiated red eye. They can mask or worsen HSV, fungal, bacterial or acanthamoeba keratitis, raise intraocular pressure, cause cataract and delay healing."},
+    {tone:"amber", h:"VKC and AKC can threaten sight", html:"Vernal keratoconjunctivitis (children and young people) and atopic keratoconjunctivitis (with chronic atopic dermatitis) → ophthalmology, especially with photophobia or corneal involvement."}
   ],
-  foot:"Management of allergic conjunctivitis in primary care; painful/photophobic or vision-threatening red eye needs urgent ophthalmology. Verify against current BSACI guidance."
+  pathwaySub:"Six steps.",
+  pathway:[
+    {title:"Confirm the picture and check red flags", html:"Visual acuity, pupils, cornea, pattern of redness, pain and photophobia, contact-lens history; fluorescein if corneal disease or foreign body is possible.", alert:true},
+    {title:"Self-care", html:"Practical trigger reduction, cool compresses, no rubbing, lenses out during flares; pharmacy self-care for mild seasonal symptoms."},
+    {title:"Topical therapy", html:"Cromoglicate or a topical antihistamine per the GM formulary and the patient's circumstances."},
+    {title:"Treat coexisting rhinitis", html:"Oral antihistamine or intranasal treatment when nasal symptoms are present; assess for asthma."},
+    {title:"Persistent, severe or atypical", html:"Reconsider the diagnosis and refer; VKC, AKC, corneal involvement or steroid consideration → ophthalmology."},
+    {title:"Allergy referral only when it changes management", html:"Troublesome symptoms despite optimised treatment with a relevant, confirmed allergen."}
+  ],
+  sections:[
+
+    {id:"assess", nav:"Assess", title:"Step 1 — is it allergic?",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Minimum assessment</b>","Visual acuity · pupil appearance and response · corneal appearance · laterality and pattern of redness · pain and photophobia · discharge · contact-lens use · fluorescein where corneal disease, foreign body or a contact-lens complication is possible"],
+         ["<b>Typical features</b>","Prominent itch, usually both eyes; redness; watery or stringy discharge; lid swelling and chemosis; often with allergic rhinitis"],
+         ["<b>Pattern</b>","Seasonal (pollen) or perennial (house-dust mite, animal dander)"],
+         ["<b>Atopy</b>","Personal or family history of asthma, eczema or allergic rhinitis"],
+         ["<b>Differentials</b>","Viral conjunctivitis · blepharitis · dry eye · toxic or medicamentosa conjunctivitis · giant papillary conjunctivitis (contact lenses) · keratitis · anterior uveitis · herpes simplex · acute angle closure"]
+       ]}
+     ]},
+
+    {id:"selfcare", nav:"Self-care", title:"Step 2 — self-care",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🌼 Reduce triggers where practical", html:"Keep windows shut when pollen is high; shower and change after being outdoors; wraparound sunglasses. Target house-dust-mite measures where practical — evidence for individual avoidance measures is limited, so they should not replace effective treatment."},
+         {tone:"green", h:"❄️ Comfort", html:"Cool compresses; lubricant drops to dilute allergen; do not rub the eyes."},
+         {tone:"blue", h:"👓 Contact lenses", html:"Leave lenses out during active symptoms."},
+         {tone:"blue", h:"🏪 Self-care prescribing", html:"Consider pharmacy self-care for uncomplicated mild seasonal symptoms. Follow the Greater Manchester formulary and local OTC and self-care prescribing policy."}
+       ]}
+     ]},
+
+    {id:"drops", nav:"Drops", title:"Step 3 — topical drops, chosen safely",
+     blocks:[
+       {b:"table", head:["Drop","Dose","Notes"], rows:[
+         ["<b>Sodium cromoglicate 2%</b> (mast-cell stabiliser) — GM first choice","1–2 drops in each eye up to four times daily","Licensed for prevention and treatment of acute, seasonal and perennial allergic conjunctivitis. Most useful used regularly, including before and throughout a predictable pollen season; onset may be slower than a topical antihistamine. Transient stinging or burning"],
+         ["<b>Olopatadine 1 mg/mL</b> (dual-action antihistamine) — GM alternative","1 drop in each eye twice daily","Seasonal allergic conjunctivitis; from 3 years for the referenced product; continue for up to 4 months if needed. Local irritation, dry eye and eye pain can occur — take care with dry eye or a compromised cornea"],
+         ["<b>Contact lenses and preservatives</b>","Both","Both contain benzalkonium chloride: remove soft lenses before use and wait at least 15 minutes before reinserting. Consider preservative-free products with frequent or prolonged use, dry eye, ocular-surface disease or several topical preparations"],
+         ["<b>Pregnancy and breastfeeding</b>","Both","Check the specific product information"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"⚠ Antazoline/xylometazoline — short-term alternative only", html:"May give short-term relief in adults and children aged 12 and over, for <b>no more than 7 consecutive days</b>. Avoid in contact-lens wearers, narrow-angle glaucoma and with MAOIs. Caution in hypertension, cardiovascular disease, hyperthyroidism, diabetes, phaeochromocytoma, urinary retention and long-QT syndrome. Rebound redness, systemic sympathomimetic effects and drowsiness can occur. Not equivalent to cromoglicate or olopatadine as a general first-line option."},
+         {tone:"red", h:"⚠ Ocular corticosteroids", html:"Do not initiate for an undifferentiated red eye in primary care. For severe allergic disease, use only within an ophthalmology-led or locally agreed specialist plan."}
+       ]}
+     ]},
+
+    {id:"oral", nav:"Oral", title:"Step 4 — treat coexisting rhinitis",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"When rhinitis coexists", html:"Add a non-sedating oral antihistamine — for adults, <b>cetirizine or loratadine 10 mg once daily</b> — or intranasal treatment, per the BSACI guideline. Assess for asthma where there are respiratory symptoms."},
+         {tone:"amber", h:"Not automatic escalation", html:"Persistent isolated eye symptoms despite appropriate topical treatment → review the diagnosis, adherence and contact-lens use, and consider referral, rather than adding an oral antihistamine by default."},
+         {tone:"blue", h:"Cautions", html:"Cetirizine can cause drowsiness in some people — advise on driving and alcohol. Doses differ in children, older adults and renal impairment; check pregnancy and breastfeeding advice for the product. For children, use the BNF for Children."}
+       ]}
+     ]},
+
+    {id:"severe", nav:"VKC · AKC", title:"Severe forms — vernal and atopic keratoconjunctivitis",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Vernal keratoconjunctivitis (VKC)", html:"Mainly children and young people, often boys and often seasonal; severe itch, photophobia, thick mucus, papillary disease; may involve the cornea → ophthalmology."},
+         {tone:"amber", h:"Atopic keratoconjunctivitis (AKC)", html:"Chronic disease with atopic dermatitis, usually in adolescents or adults; can cause significant corneal disease → ophthalmology. Rubbing in chronic atopic disease is linked to keratoconus."}
+       ]},
+       {b:"why", html:"Not all chronic allergic conjunctivitis is sight-threatening — VKC and AKC may become so, especially with corneal involvement."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Step 5 — review and referral",
+     blocks:[
+       {b:"table", head:["When","Situation","Action"], rows:[
+         ["<b>Same day</b>","Any same-day feature in the quick answer","Local urgent eye pathway, eye casualty or ED"],
+         ["<b>Self-care</b>","Mild, typical, self-limiting symptoms","Safety-net; review if not improving or recurrent"],
+         ["<b>1–2 weeks</b>","New topical treatment with no clear improvement — sooner if worsening","Reassess: diagnosis, adherence, contact lenses, preservative exposure"],
+         ["<b>Ophthalmology</b>","Suspected VKC or AKC · photophobia or corneal signs · steroids being considered · persistent or recurrent disease despite appropriate treatment","Per local pathway — not routine GP follow-up"],
+         ["<b>Allergy</b>","Troublesome rhinitis or conjunctivitis despite optimised treatment · suspected occupational allergy · significant quality-of-life impact · allergen identification would change management","Specialist referral rather than routine primary-care testing; immunotherapy is specialist-led and needs a clinically relevant, confirmed allergen"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Safety-net", html:"\"If your eye becomes painful, sensitive to light, or your vision changes — or if you wear contact lenses and your eye becomes painful — get it checked the same day.\""},
+         {tone:"cream", h:"GP management", html:"Assessment, self-care and safe drop choice belong here. Related pages: <a href='allergic-rhinitis.html'>allergic rhinitis</a> · <a href='dry-eye-disease.html'>dry eye disease</a> · <a href='blepharitis.html'>blepharitis</a> · <a href='uveitis.html'>uveitis</a>."}
+       ]},
+       {b:"say", html:"This looks like allergy in the eyes. It's usually not serious. Cool compresses, not rubbing, and anti-allergy drops used regularly — starting before the pollen season if it's hay fever — usually settle it, plus a hay-fever tablet if your nose is affected too. Take contact lenses out while it's flared. If your eye becomes painful, sensitive to light, or your vision changes, get it checked the same day."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 12-year-old with asthma and eczema has itchy, sticky eyes every spring, now worse, with light sensitivity. His parent asks for the steroid drops a friend used."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Checks acuity and photophobia; recognises possible VKC; explains why steroid drops are not started in primary care; refers to ophthalmology; offers interim trigger reduction, cool compresses and cromoglicate with age and lens advice; asks about asthma control; safety-nets."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>BSACI guideline for the diagnosis and management of allergic and non-allergic rhinitis (2017)</b><span class="rd"> — allergic rhinoconjunctivitis, avoidance, ocular and systemic treatment, immunotherapy</span></li>'+
+         '<li><b>BSACI / Royal College of Pathologists — guidance on laboratory allergy testing in primary care (2025)</b><span class="rd"> — test only when the result will change management</span></li>'+
+         '<li><b>College of Optometrists — Clinical Management Guideline: allergic conjunctivitis</b><span class="rd"> — assessment and referral</span></li>'+
+         '<li><b>Greater Manchester Medicines Management Group formulary — eye and respiratory</b><span class="rd"> — cromoglicate first choice; olopatadine alternative, up to 4 months</span></li>'+
+         '<li><b>MHRA SPCs — Opatanol (olopatadine), sodium cromoglicate 2%, Otrivine-Antistin (antazoline/xylometazoline)</b><span class="rd"> — doses, ages, duration limits, contraindications, preservatives</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Allergic conjunctivitis in primary care. Prominent itching, usually bilateral, with watery or stringy discharge. Record visual acuity, pupils, cornea, pain and photophobia, and contact-lens use. Pain, photophobia, visual change, corneal signs, marked unilateral redness or a painful red eye in a contact-lens wearer: same-day eye assessment. Trigger reduction and cool compresses; sodium cromoglicate 2% (GM first choice) or olopatadine; antazoline/xylometazoline only short term (12+, maximum 7 days). Oral antihistamine for coexisting rhinitis. No ocular steroids for an undifferentiated red eye. VKC and AKC: ophthalmology. Sources: BSACI (2017), BSACI/RCPath (2025), College of Optometrists CMG, Greater Manchester formulary, MHRA SPCs."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

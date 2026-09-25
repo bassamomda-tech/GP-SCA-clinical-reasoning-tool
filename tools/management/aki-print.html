@@ -11,14 +11,14 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790241765963737 tools/management/aki.html">
+<meta name="omelette-print-source" content="v1790316402604106 tools/management/aki.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="AKI protocol">
 <doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"\u{1FAD8}",
@@ -40,7 +40,7 @@ MG.render({
   lead:'<div class="mg-layers"><a href="#confirm"><b>Stage it</b><small>KDIGO vs baseline</small></a><a href="#severe"><b>The killers</b><small>K\u207a \u00b7 overload \u00b7 uraemia</small></a><a href="#cause"><b>Find the cause</b><small>Pre \u00b7 intrinsic \u00b7 post</small></a><a href="#refer"><b>Refer</b><small>Who can stay at home</small></a></div>',
   quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"red", h:"\u26a0 Potassium and the ECG come first", html:"<b>Hyperkalaemia kills before renal failure does.</b> <b>K\u207a \u22656.5 mmol/L, or \u22656.0 with ECG changes \u2192 999.</b> ECG is <b>mandatory at K\u207a \u22656.0</b>: peaked T waves \u2192 widening QRS \u2192 sine wave \u2192 VF. <b>Treat on the ECG before the blood results return if it is abnormal.</b>"},
+    {tone:"red", h:"\u26a0 Potassium and the ECG come first", html:"<b>Hyperkalaemia kills before renal failure does.</b> <b>K\u207a \u22656.5 mmol/L, or hyperkalaemic ECG changes at any K\u207a \u2192 999 (UKKA 2023).</b> ECG is <b>mandatory at K\u207a \u22656.0</b>: peaked T waves \u2192 widening QRS \u2192 sine wave \u2192 VF. <b>Treat on the ECG before the blood results return if it is abnormal.</b>"},
     {tone:"red", h:"Review the drug chart before anything else", html:"Stopping NSAIDs, ACEi/ARB and diuretics is often the single most effective intervention. <b>40\u201360% of community AKI resolves</b> when precipitants are removed and fluid balance restored. NSAIDs alone cause about <b>10%</b> of community AKI, and the <b>\u201ctriple whammy\u201d (NSAID + ACEi/ARB + diuretic)</b> is a preventable cause of AKI deaths."},
     {tone:"amber", h:"Stage against their own baseline", html:"KDIGO: creatinine rise \u226526 \u00b5mol/L (KDIGO states \u226526.5 \u00b5mol/L) within 48 hours, or \u22651.5\u00d7 baseline within 7 days, or urine output &lt;0.5 mL/kg/h for &gt;6 hours. Stage 1: 1.5\u20131.9\u00d7. Stage 2: 2.0\u20132.9\u00d7. Stage 3: \u22653\u00d7, or creatinine \u2265354 \u00b5mol/L, or RRT. Use the most recent stable value within 3 months as baseline \u2014 and <b>stage on absolute creatinine, not eGFR</b>, which lags in rapidly changing AKI."},
     {tone:"blue", h:"Three categories, three actions", html:"<b>Pre-renal (about 70%)</b> \u2014 restore perfusion. <b>Intrinsic (about 25%)</b> \u2014 remove the insult; blood + protein on dipstick with systemic illness is possible glomerulonephritis \u2192 urgent nephrology. <b>Post-renal (about 5%)</b> \u2014 relieve obstruction; <b>renal USS within 24 hours whenever obstruction is possible</b>."},
@@ -78,7 +78,7 @@ MG.render({
      blocks:[
        {b:"warn", html:"Anuria, an obstructed and infected urinary tract (pyonephrosis), or hyperkalaemia are emergencies \u2014 arrange immediate admission and do not wait for repeat bloods."},
        {b:"cards", items:[
-         {tone:"red", h:"Hyperkalaemia \u2014 K\u207a \u22656.5 mmol/L", html:"Or <b>\u22656.0 with ECG changes</b>: peaked T waves, wide QRS, sine wave. Weakness, palpitations \u2192 <b>999 \u2014 cardiac arrest risk</b>. <b>ECG is mandatory at K\u207a \u22656.0.</b>"},
+         {tone:"red", h:"Hyperkalaemia \u2014 K\u207a \u22656.5 mmol/L", html:"Or <b>hyperkalaemic ECG changes at any K\u207a</b> (UKKA 2023): peaked T waves, wide QRS, sine wave. Weakness, palpitations \u2192 <b>999 \u2014 cardiac arrest risk</b>. <b>ECG is mandatory at K\u207a \u22656.0.</b>"},
          {tone:"red", h:"Oliguria or anuria", html:"Urine output <b>&lt;0.5 mL/kg/h for 6+ hours</b>, or complete anuria \u2192 <b>999 \u2014 severe AKI</b>."},
          {tone:"red", h:"Pulmonary oedema", html:"Breathlessness at rest, crackles, falling saturations, pink frothy sputum \u2192 <b>999 \u2014 fluid overload</b>. Loss of fluid excretion accumulates rapidly."},
          {tone:"red", h:"Uraemic encephalopathy", html:"Confusion, drowsiness, <b>asterixis (flapping tremor)</b>, <b>pericardial rub</b> \u2192 <b>999 \u2014 dialysis urgency</b>. Uraemic pericarditis is an absolute emergency."},
@@ -256,7 +256,7 @@ MG.render({
          '<li><b>NICE NG148 (2013); NHS England AKI Programme; Think Kidneys</b><span class="rd"> \u2014 sick-day rules guidance and the national prevention programme</span></li>'+
          '<li><b>Taskforce on Kidney Health (2020)</b><span class="rd"> \u2014 up to 30% of AKI survivors have no formal review within 3 months</span></li>'+
          '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 myeloma: aged 60 and over with hypercalcaemia or leukopenia and a suspicion of myeloma, offer very urgent FBC and protein electrophoresis with Bence Jones protein</span></li>'+
-         '<li>NICE CG182 \u2014 Chronic kidney disease (the CKD guideline cited for post-AKI surveillance); RCGP / NHS England joint guidance on post-AKI discharge<span class="rd"> \u2014 BP target &lt;130/80 with proteinuria, and GP review within 1 week of an AKI discharge</span></li>'+
+         '<li>NICE NG203 \u2014 Chronic kidney disease (the CKD guideline cited for post-AKI surveillance); RCGP / NHS England joint guidance on post-AKI discharge<span class="rd"> \u2014 BP target &lt;130/80 with proteinuria, and GP review within 1 week of an AKI discharge</span></li>'+
          '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses; patiromer and sodium zirconium cyclosilicate; renal dose adjustment for digoxin, DOACs, opioids, gabapentinoids, lithium and methotrexate</span></li>'+
          '</ul></div>'}
      ]}

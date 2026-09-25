@@ -4,98 +4,232 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sinusitis — Protocol · Reasoning GP</title>
+<meta name="description" content="Acute sinusitis and chronic rhinosinusitis in UK primary care: NICE NG79 10-day rule, nasal steroid and antibiotic choices, orbital and intracranial red flags, EPOS 2020 chronic disease and nasal polyps, referral and SCA practice.">
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/sinusitis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Sinusitis management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
-  icon:"👃",
+  icon:"\u{1F443}",
   title:"Sinusitis (Rhinosinusitis)",
-  stemTitle:"Acute &amp; chronic rhinosinusitis \u2014 mostly self-limiting",
-  stemSub:"Primary-care management of rhinosinusitis \u2014 reassure and treat acute viral cases symptomatically, reserve antibiotics for the minority, step up to intranasal steroids for prolonged/chronic disease, and recognise the orbital/intracranial complications that need same-day referral. NICE NG79.",
-  guideline:"NICE NG79",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Acute sinusitis — time is the treatment; spot the orbit, the brain and the chronic nose",
+  stemSub:"One page for acute sinusitis in adults and children, plus recognising chronic rhinosinusitis (CRS) and nasal polyps. Acute sinusitis is usually viral, lasts about 2–3 weeks and most people get better without antibiotics. The skill is in the 10-day rule, in spotting the few who need an antibiotic or a hospital, and in noticing when “sinusitis” is really chronic, unilateral or something else.",
+  guideline:"NICE NG79 (2017) · EPOS 2020 · NICE NG12 (2015, last updated 2026) · NICE TA1134 (2026)",
+  meta:[
+    {t:"NICE NG79 · Sinusitis (acute): antimicrobial prescribing (2017)"},
+    {t:"EPOS 2020 · chronic rhinosinusitis &amp; nasal polyps"},
+    {t:"NICE NG12 · suspected cancer (last updated 2026)", tone:"tw"},
+    {t:"NICE TA1134 · dupilumab CRSwNP (2026)"},
+    {t:"BNF / BNFC own all doses"}
+  ],
+  lead:'<div class="mg-layers"><a href="#diagnose"><b>Diagnosis</b><small>Acute vs chronic, the 10-day rule</small></a><a href="#redflags"><b>Red flags</b><small>Orbit, brain, sepsis</small></a><a href="#ladder"><b>Treat</b><small>Self-care → steroid → antibiotic</small></a><a href="#chronic"><b>Chronic &amp; polyps</b><small>EPOS 2020</small></a><a href="#refer"><b>Refer</b><small>Same-day · urgent · routine</small></a></div>',
   glance:[
-    {lbl:"Most cases", val:"Viral, self-limiting", sub:"resolve \u226410 days"},
-    {lbl:"Symptom relief", val:"Analgesia + saline", sub:"\u00b1 decongestant"},
-    {lbl:">10 days", val:"Intranasal steroid", sub:"high-dose option"},
-    {lbl:"Antibiotic", val:"Rarely", sub:"if very unwell / no improvement"},
-    {lbl:"Chronic (>12 wk)", val:"INCS + saline", sub:"\u00b1 ENT"},
-    {lbl:"Red flag", val:"Orbital / neuro signs", sub:"= same-day"}
+    {lbl:"Usual cause", val:"Viral", sub:"lasts ~2–3 weeks (NG79)"},
+    {lbl:"≤10 days", val:"No antibiotic", sub:"self-care (NG79)"},
+    {lbl:">10 days, not improving", val:"No / back-up antibiotic", sub:"± high-dose nasal steroid 14 days, ≥12 y"},
+    {lbl:"Immediate antibiotic", val:"Only if very unwell / high risk", sub:"NG79"},
+    {lbl:"Chronic", val:"≥12 weeks", sub:"EPOS 2020 definition"},
+    {lbl:"Red flag", val:"Orbital / intracranial", sub:"= hospital same day"}
   ],
-  flow:[
-    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Complications needing urgent referral",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Orbital", html:"Periorbital swelling/erythema, proptosis, painful or restricted eye movements, double vision, reduced acuity \u2192 same-day (orbital cellulitis)."},
-          {t:"🔴 Intracranial", html:"Severe frontal headache, swelling of the forehead, photophobia, neck stiffness, focal neurology, seizures, reduced consciousness \u2192 999/admit."},
-          {t:"🟠 Systemically very unwell", html:"Sepsis features \u2192 urgent assessment."},
-          {t:"🟠 Immunocompromised / unilateral persistent", html:"Lower threshold to refer; persistent unilateral symptoms \u2192 ENT (exclude tumour/fungal)."}
-        ]},
-        {b:"why", html:"Acute sinusitis is overwhelmingly benign, but spread to the orbit or cranium is sight- and life-threatening. The examiner wants the red flags verbalised before any reassurance or prescription."}
-      ]},
-    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Classify acute vs chronic",
-      blocks:[
-        {b:"kv", rows:[
-          ["Acute (<12 weeks)","Nasal blockage/discharge + facial pain/pressure \u00b1 reduced smell; usually post-viral. Most resolve within 2\u20133 weeks"],
-          ["Bacterial more likely","Symptoms &gt;10 days without improvement, or \u2018double-sickening\u2019 (initial improvement then worsening with fever, purulent discharge, severe localised pain)"],
-          ["Chronic (\u226512 weeks)","Persistent nasal obstruction, discharge, facial pressure, hyposmia \u00b1 nasal polyps; consider allergy/asthma overlap"],
-          ["Diagnosis","Clinical \u2014 imaging not routine. CT only if chronic refractory / pre-surgical / complications (specialist)"]
-        ]}
-      ]},
-    {t:"node", d:"life", n:"3", tag:"Non-drug · core", title:"Self-care", blocks:[{b:"tiles", v:"life", items:[{t:"💧 Symptom relief", html:"Analgesia, fluids, warmth; nasal saline irrigation may ease congestion."},{t:"⏳ Expect resolution", html:"Usually viral and self-limiting (~2\u20133 weeks); antibiotics rarely change the course."},{t:"🚭 Triggers", html:"Avoid smoking/irritants; manage allergic rhinitis which predisposes."}]},{b:"why", html:"Acute sinusitis is mostly viral and self-limiting, so analgesia, saline and reassurance are the mainstay."}]},
-    {t:"node", d:"drug", n:"4", tag:"Medication \u00b7 acute", title:"Symptomatic first, antibiotics rarely",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Step 1", title:"Self-care + analgesia", when:"all acute cases",
-           html:"Paracetamol/ibuprofen, nasal saline irrigation, adequate fluids, warm compresses. Reassure most resolve without antibiotics; safety-net."},
-          {step:"Step 2", title:"High-dose intranasal corticosteroid", when:"symptoms >10 days",
-           fromLabel:"if no improvement after ~10 days",
-           html:"<b>Mometasone 2 sprays (50 microgram/spray) each nostril once daily</b> (for symptoms \u226510 days) \u2014 may modestly speed resolution (NG79). Brief topical decongestant (<5 days) for congestion if needed."},
-          {step:"Step 3", title:"Antibiotic \u2014 only if indicated", when:"systemically unwell / high risk",
-           fromLabel:"reserve for the minority",
-           html:"Back-up or immediate: <b>phenoxymethylpenicillin 500 mg QDS for 5 days</b> first-line (<b>doxycycline 200 mg day 1 then 100 mg OD</b>, or <b>clarithromycin 500 mg BD</b>, if penicillin-allergic); <b>co-amoxiclav 500/125 mg TDS</b> if very unwell/high-risk. Most acute sinusitis does NOT need antibiotics."}
-        ]},
-        {b:"warn", html:"Avoid routine antibiotics \u2014 acute sinusitis is usually viral and self-limiting. Limit decongestants to &lt;5\u20137 days (rebound congestion / rhinitis medicamentosa)."}
-      ]},
-    {t:"node", d:"drug", n:"5", tag:"Medication \u00b7 chronic", title:"Chronic rhinosinusitis",
-      blocks:[
-        {b:"kv", rows:[
-          ["Mainstay","Daily <b>nasal saline irrigation</b> + <b>intranasal corticosteroid</b> (correct technique, prolonged trial)"],
-          ["Allergy","Treat coexisting allergic rhinitis (antihistamine/INCS); avoid triggers"],
-          ["Polyps","Intranasal steroid drops/spray; short oral steroid course in selected cases (specialist)"],
-          ["Stop smoking","Improves symptoms and surgical outcomes"]
-        ]}
-      ]},
-    {t:"node", d:"monitor", n:"6", tag:"Follow-up", title:"Review + escalation",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"Acute, safety-net", title:"Self-limiting", html:"Return if &gt;10 days without improvement, double-sickening, or any red flag."},
-          {n:"2", when:"Chronic, 4\u20138 weeks", title:"Assess INCS response", html:"Check technique/adherence; continue if improving."},
-          {n:"3", when:"Refractory", title:"ENT referral", html:"Chronic symptoms despite optimal medical therapy, polyps, unilateral disease."}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer", title:"When to refer",
-      arrow:"complications, chronic or unilateral disease",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Same-day", html:"Orbital or intracranial complications, sepsis."},
-          {t:"ENT (routine)", html:"Chronic rhinosinusitis refractory to medical therapy; nasal polyps for assessment/surgery (FESS)."},
-          {t:"Urgent ENT / 2WW", html:"Persistent unilateral symptoms, unilateral bloody discharge, or mass \u2014 exclude malignancy."},
-          {t:"Allergy", html:"Significant coexisting allergic rhinitis/asthma."}
-        ]},
-        {b:"say", html:"Most sinus infections are viral and settle within a couple of weeks with simple measures \u2014 painkillers, salt-water rinses and time. Antibiotics rarely help. Come back urgently if you get swelling or redness around the eye, a severe headache, or you feel very unwell."}
-      ]}
+  quickSub:"If you read nothing else on this page, read these cards. Doses are those printed in NICE NG79; check the current BNF/BNFC before prescribing.",
+  quick:[
+    {tone:"red", h:"⚠ Orbit, brain or sepsis → hospital, same day", html:"<b>Periorbital oedema/cellulitis, a displaced eyeball, double vision, ophthalmoplegia or newly reduced visual acuity</b>; <b>swelling over the frontal bone, severe frontal headache, signs of meningitis or focal neurology</b>; or a <b>severe systemic infection</b>. Refer to hospital (NICE NG79). Do not prescribe and review."},
+    {tone:"amber", h:"The 10-day rule", html:"Symptoms <b>for about 10 days or less</b> → <b>no antibiotic</b>, self-care. Symptoms <b>for around 10 days or more with no improvement</b> → <b>no antibiotic or a back-up antibiotic</b>, and consider a <b>high-dose nasal corticosteroid for 14 days</b> (age ≥12, off-label). (NICE NG79)"},
+    {tone:"blue", h:"Immediate antibiotic is the exception", html:"Only if <b>systemically very unwell</b>, <b>symptoms and signs of a more serious illness</b>, or <b>high risk of complications</b> because of pre-existing comorbidity. Adult first choice: <b>phenoxymethylpenicillin 500 mg four times a day for 5 days</b>; if very unwell/high risk: <b>co-amoxiclav 500/125 mg three times a day for 5 days</b>. (NICE NG79)"},
+    {tone:"purple", h:"Twelve weeks changes the diagnosis", html:"Symptoms <b>≥12 weeks</b> with nasal blockage or discharge ± facial pain/pressure ± reduced smell = <b>chronic rhinosinusitis</b> (EPOS 2020). Different disease, different treatment: <b>saline rinses + intranasal steroid</b> with technique teaching, not repeated antibiotics."},
+    {tone:"plain", h:"One-sided is not sinusitis until proven otherwise", html:"<b>Unilateral</b> symptoms, <b>bleeding</b>, <b>crusting</b> or <b>cacosmia</b> are EPOS 2020 alarm symptoms needing specialist referral — think tumour, vasculitis/granuloma, fungal disease or foreign body (in children)."}
   ],
-  foot:"Management of acute and chronic rhinosinusitis in primary care; orbital/intracranial complications are emergencies. Verify against current NICE NG79, NICE NG79 and EPOS guidance."
+  pathwaySub:"The consultation in six moves. The red step is where harm happens — do it before you talk about antibiotics.",
+  pathway:[
+    {title:"Confirm it is rhinosinusitis", html:"Nasal blockage/congestion or discharge (anterior or post-nasal) plus facial pain/pressure and/or reduced smell. Clinical diagnosis — <b>no swabs, no X-ray, no CT</b> in uncomplicated acute disease. Note the duration in days."},
+    {title:"Screen for danger", html:"Look at the eyes (swelling, redness, position, movements, acuity), the forehead, the neck and the neurology, and take observations. Any orbital, intracranial or severe systemic feature → <b>hospital</b> (NICE NG79).", alert:true},
+    {title:"Apply the 10-day rule", html:"≤10 days → no antibiotic. >10 days and not improving → no antibiotic or back-up antibiotic ± high-dose nasal steroid 14 days (≥12 y). Very unwell / high risk → immediate antibiotic (NICE NG79)."},
+    {title:"Self-care and expectations", html:"Paracetamol or ibuprofen for pain or fever; lasts about 2–3 weeks; antibiotics make little difference to most people and cause side effects (diarrhoea, nausea) and resistance."},
+    {title:"Safety-net", html:"Return if symptoms worsen rapidly or significantly, do not improve after 3 weeks, or any eye/head red flag develops. If a back-up script is given, explain exactly when to use it."},
+    {title:"Look beyond the acute episode", html:"Recurrent or ≥12-week symptoms → think CRS ± polyps, allergic rhinitis, asthma, smoking, dental source; one-sided, bloody or crusting → ENT."}
+  ],
+  sections:[
+
+    {id:"diagnose", nav:"Diagnose", title:"Confirming the diagnosis", sub:"Rhinosinusitis is a clinical diagnosis made from history and a focused examination. Duration drives almost every decision.",
+     blocks:[
+       {b:"table", head:["Category","Definition / features","What it means for you"], rows:[
+         ["<b>Acute sinusitis</b>","Symptoms for <b>&lt;12 weeks</b>: nasal blockage/congestion or discharge, facial pain/pressure, reduced smell; in children often cough (NG79 describes nasal blockage, discharge, dental/facial pain and reduced sense of smell)","Usually follows a viral URTI. Most resolve in about <b>2–3 weeks</b> without antibiotics (NICE NG79)"],
+         ["<b>≤10 days</b>","Early, usually viral","<b>No antibiotic</b>; self-care (NICE NG79)"],
+         ["<b>&gt;10 days, no improvement</b>","Bacterial infection somewhat more likely, but most still get better","No antibiotic or back-up antibiotic; consider high-dose nasal steroid 14 days (≥12 y) (NICE NG79)"],
+         ["<b>Chronic rhinosinusitis</b>","<b>≥12 weeks</b> of ≥2 symptoms, one of which must be nasal blockage/obstruction/congestion or nasal discharge, ± facial pain/pressure, ± reduction or loss of smell (EPOS 2020)","Saline + intranasal steroid; look for polyps; refer if failing — see <a href='#chronic'>Chronic &amp; polyps</a>"],
+         ["<b>Recurrent acute</b>","Repeated separate episodes with symptom-free intervals","Look for allergic rhinitis, dental disease, immunodeficiency, anatomical problem → consider ENT"]
+       ]},
+       {b:"dl", rows:[
+         ["History","Duration in days; course (improving, static, “double-sickening” after early improvement); unilateral or bilateral; colour of discharge and any blood; smell; dental pain; fever; eye or visual symptoms; headache character; previous episodes; allergy, asthma, aspirin sensitivity, smoking"],
+         ["Examination","Temperature, pulse, RR, BP (sepsis screen); facial tenderness; <b>eyes — lids, globe position, movements, acuity</b>; anterior rhinoscopy with an otoscope (polyps, pus, septum, crusting, mass); teeth (upper molar/premolar source); neck stiffness and neurology if headache is severe"],
+         ["Investigations","<b>None routinely</b> in acute sinusitis. Plain sinus X-ray has no role. CT sinuses is a specialist investigation (complications, CRS before surgery, suspected tumour). Consider bloods only if systemically unwell or immunocompromised"],
+         ["Differentials","Viral URTI/common cold; allergic or non-allergic rhinitis; dental abscess; migraine or tension-type headache (“sinus headache” is usually migraine); temporal arteritis in older adults; trigeminal neuralgia; nasal foreign body (child, unilateral foul discharge); sinonasal tumour; granulomatosis with polyangiitis"]
+       ]},
+       {b:"why", html:"Most people who say “sinus” have a viral cold or a primary headache. The duration question does more work than any sign: NICE NG79 hinges both the antibiotic decision and the nasal-steroid option on whether symptoms have lasted around 10 days, and EPOS 2020 re-labels anything past 12 weeks as a chronic disease with a different management plan."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — same-day hospital", sub:"Rare but sight- and life-threatening. Verbalise these before any reassurance.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Intraorbital / periorbital complications", html:"<b>Periorbital oedema or cellulitis</b>, a <b>displaced eyeball</b>, <b>double vision</b>, <b>ophthalmoplegia</b>, or <b>newly reduced visual acuity</b> → refer to hospital. Orbital cellulitis can threaten sight within hours; children with ethmoid sinusitis are a classic group.", src:"NICE NG79"},
+         {tone:"red", h:"Intracranial complications", html:"<b>Swelling over the frontal bone</b> (Pott’s puffy tumour), <b>symptoms or signs of meningitis</b>, <b>severe frontal headache</b>, or <b>focal neurological signs</b> → refer to hospital (999 if reduced consciousness, seizures or rapidly deteriorating).", src:"NICE NG79"},
+         {tone:"red", h:"Severe systemic infection", html:"Acute sinusitis with signs of a <b>severe systemic infection</b> → refer to hospital. Use your local sepsis tools (NEWS2 in adults) to judge severity.", src:"NICE NG79"},
+         {tone:"amber", h:"EPOS alarm features", html:"EPOS 2020 lists as alarm symptoms needing immediate referral: periorbital oedema/erythema, displaced globe, double or reduced vision, ophthalmoplegia, severe headache, frontal swelling, signs of sepsis, signs of meningitis or neurological signs — and also <b>unilateral symptoms, bleeding, crusting and cacosmia</b>.", src:"EPOS 2020"}
+       ]},
+       {b:"warn", html:"<b>Do not issue a back-up antibiotic to someone with an eye or neurological red flag.</b> Oral antibiotics in primary care do not treat orbital or intracranial complications; these need hospital assessment, IV antibiotics and often imaging and surgery."},
+       {b:"why", html:"The paranasal sinuses sit next to the orbit (thin lamina papyracea) and the anterior cranial fossa, and venous drainage is valveless. Spread gives orbital cellulitis/abscess, cavernous sinus thrombosis, meningitis, subdural empyema and brain abscess. The examiner wants to hear you check the eyes and ask about headache and neck stiffness in every “sinus” consultation."}
+     ]},
+
+    {id:"atrisk", nav:"Who is at risk", title:"Who needs a lower threshold", sub:"NICE NG79 ties the immediate-antibiotic decision to how unwell the person is and their risk of complications.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Immediate antibiotic triggers", html:"<b>Systemically very unwell</b>; <b>symptoms and signs of a more serious illness or condition</b>; or <b>high risk of complications</b> because of pre-existing comorbidity → offer an immediate antibiotic (or refer if red flags).", src:"NICE NG79"},
+         {tone:"blue", h:"High-risk comorbidity — clinical judgement", html:"Examples a GP would weigh: significant immunosuppression (chemotherapy, high-dose steroids, uncontrolled diabetes), significant heart, lung, renal or liver disease, cystic fibrosis. NG79 does not list comorbidities — these examples are clinical judgement; document your reasoning."},
+         {tone:"plain", h:"Predisposing factors to ask about", html:"Allergic rhinitis, asthma, smoking, dental infection of upper teeth, nasal polyps, previous sinus surgery. These do not change the NG79 antibiotic rule but shape advice and follow-up.", src:"EPOS 2020"},
+         {tone:"plain", h:"Children", html:"The same 10-day framework applies. Nasal corticosteroid option is for <b>age ≥12</b>; doxycycline is contraindicated under 12. Unilateral foul discharge in a small child → foreign body until proven otherwise.", src:"NICE NG79"}
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Primary-care management of acute sinusitis", sub:"Every step below is from NICE NG79 (2017). Paediatric doses: see the NG79 table / BNFC.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Self-care, no antibiotic", when:"symptoms ≤10 days (and most people beyond)", tone:"green",
+          html:"<b>Paracetamol or ibuprofen</b> for pain or fever. Explain the natural history: usually viral, <b>lasts about 2–3 weeks</b>, most get better without antibiotics. Some people find <b>nasal saline</b> or a short course of a <b>topical nasal decongestant</b>, but NG79 found <b>not enough evidence to recommend</b> these. Safety-net clearly."},
+         {step:"Step 2", title:"High-dose nasal corticosteroid for 14 days", when:">10 days and not improving, age ≥12",
+          fromLabel:"if symptoms around 10 days or more without improvement",
+          html:"<b>Consider</b> a high-dose nasal corticosteroid <b>for 14 days</b> for adults and children aged 12 and over. This is <b>off-label</b> — obtain and document informed consent. It may improve symptoms but is unlikely to affect how long they last, could cause systemic effects (particularly if already taking another corticosteroid), and may be difficult to use correctly. High-dose regimens used in the studies NICE reviewed: <b>mometasone 200 micrograms twice a day</b> or <b>fluticasone 110 micrograms twice a day</b>."},
+         {step:"Step 3", title:"No antibiotic, or a back-up antibiotic", when:">10 days and not improving",
+          fromLabel:"shared decision",
+          html:"Offer <b>no antibiotic or a back-up antibiotic prescription</b> (patient-led or delayed collection). Explain that a back-up script is to be used only if symptoms <b>do not improve within 7 days</b> or <b>worsen rapidly or significantly</b> at any time, and to seek help if they become very unwell. NG79 found back-up or no antibiotic about as effective as immediate antibiotics for most people."},
+         {step:"Step 4", title:"Immediate antibiotic", when:"systemically very unwell / serious illness / high risk", tone:"amber",
+          fromLabel:"the minority",
+          html:"Adults (≥18 y), NG79 table: <b>first choice phenoxymethylpenicillin 500 mg four times a day for 5 days</b>. Penicillin allergy or intolerance: <b>doxycycline 200 mg on day 1 then 100 mg once a day for 4 days</b> (5 days total; not in pregnancy or under 12), or <b>clarithromycin 500 mg twice a day for 5 days</b>, or in pregnancy <b>erythromycin 250–500 mg four times a day or 500–1000 mg twice a day for 5 days</b>. If <b>systemically very unwell, signs of a more serious illness, or at high risk of complications</b>: <b>co-amoxiclav 500/125 mg three times a day for 5 days</b>."},
+         {step:"Step 5", title:"Second choice if worsening", when:"worse after ≥2–3 days on first choice", tone:"red", warn:true,
+          fromLabel:"re-assess first — is this a complication?",
+          html:"Re-examine for red flags. If none, NG79 second choice is <b>co-amoxiclav 500/125 mg three times a day for 5 days</b>. If co-amoxiclav was used first, or there is penicillin allergy, <b>seek local microbiology advice</b>. Any orbital, intracranial or severe systemic feature → hospital."}
+       ]},
+       {b:"table", head:["Situation","NG79 choice (adult ≥18 y)","Notes"], rows:[
+         ["First choice","Phenoxymethylpenicillin 500 mg QDS, 5 days","Narrow spectrum; take on an empty stomach"],
+         ["Penicillin allergy / intolerance","Doxycycline 200 mg day 1, then 100 mg OD for 4 days; <b>or</b> clarithromycin 500 mg BD, 5 days","Check interactions for clarithromycin (statins, DOACs, QT-prolonging drugs) — per BNF"],
+         ["Pregnancy + penicillin allergy","Erythromycin 250–500 mg QDS or 500–1000 mg BD, 5 days","Doxycycline contraindicated in pregnancy"],
+         ["Very unwell / serious illness / high risk","Co-amoxiclav 500/125 mg TDS, 5 days","Consider whether hospital is more appropriate"],
+         ["Worsening on first choice after ≥2–3 days","Co-amoxiclav 500/125 mg TDS, 5 days","If co-amoxiclav already used or penicillin-allergic → microbiology advice"],
+         ["Children","See NG79 table / BNFC for weight- or age-banded doses","Doxycycline contraindicated under 12"]
+       ]},
+       {b:"warn", html:"Topical decongestants (e.g. xylometazoline) should be used only for a few days — prolonged use causes rebound congestion (rhinitis medicamentosa). Check the product licence and BNF for age limits and duration."},
+       {b:"why", html:"NG79 found antibiotics make only a small difference to how long symptoms last and that the benefit is outweighed by side effects for most people, with an antimicrobial-resistance cost. The nasal steroid option exists because it gives some symptom benefit for the prolonged group without that cost — but it is off-label, so consent must be recorded."}
+     ]},
+
+    {id:"selfcare", nav:"Self-care", title:"Self-care advice that NICE supports", sub:"What to tell the patient, and what to steer them away from.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Pain and fever", html:"<b>Paracetamol or ibuprofen</b> at the correct dose for age. Check NSAID cautions (asthma with NSAID sensitivity, renal disease, GI bleeding, anticoagulants).", src:"NICE NG79"},
+         {tone:"green", h:"Nasal saline and decongestants", html:"Some people may wish to try nasal saline or a nasal decongestant, but there is not enough evidence to recommend these. Short courses only for decongestants.", src:"NICE NG79"},
+         {tone:"green", h:"Natural course", html:"Acute sinusitis is usually viral and lasts about <b>2–3 weeks</b>; most people get better without antibiotics. Setting this expectation reduces re-attendance.", src:"NICE NG79"},
+         {tone:"green", h:"Antibiotic stewardship message", html:"Explain that antibiotics make little difference for most people, can cause diarrhoea and nausea, and increase resistance — and that this is about benefit to them, not rationing.", src:"NICE NG79"},
+         {tone:"plain", h:"Smoking and triggers", html:"Stopping smoking and managing allergic rhinitis may reduce nasal mucosal irritation; offer stop-smoking support."},
+         {tone:"plain", h:"Pharmacy First (England)", html:"Community pharmacists can manage uncomplicated acute sinusitis in people aged 12+ under the NHS England Pharmacy First service using NG79-based criteria — check local arrangements.", src:"NHS England Pharmacy First 2024"}
+       ]}
+     ]},
+
+    {id:"chronic", nav:"Chronic &amp; polyps", title:"Chronic rhinosinusitis and nasal polyps", sub:"Recognition in primary care, first-line treatment and when to refer. NG79 covers acute sinusitis only; CRS management here follows EPOS 2020.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Definition","<b>≥12 weeks</b> of ≥2 symptoms, one being nasal blockage/obstruction/congestion or nasal discharge (anterior/posterior), ± facial pain/pressure, ± reduction or loss of smell (EPOS 2020)"],
+         ["Phenotypes","<b>With nasal polyps (CRSwNP)</b> — loss of smell prominent, often associated with asthma and aspirin/NSAID sensitivity (N-ERD); <b>without polyps (CRSsNP)</b> — facial pressure and discharge more prominent. EPOS 2020 also classifies as localised (often unilateral) vs diffuse, and type 2 vs non-type 2"],
+         ["Primary-care examination","Anterior rhinoscopy: polyps are pale, grey, insensate and mobile (unlike the pink, tender inferior turbinate). <b>A unilateral polyp or mass is an alarm finding</b>"],
+         ["Look for","Asthma (ask; check control), allergic rhinitis, NSAID sensitivity, smoking, occupational exposures, dental disease"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"First-line: appropriate medical therapy", html:"<b>Nasal saline irrigation</b> plus <b>intranasal corticosteroid</b> (spray, or drops for polyps), with <b>education on technique and adherence</b>. Reassess after an adequate trial (EPOS 2020 suggests around 6–12 weeks).", src:"EPOS 2020"},
+         {tone:"amber", h:"Refer if uncontrolled", html:"Symptoms persisting despite a proper trial of saline and intranasal steroid with good technique → routine ENT referral for endoscopy, CT and consideration of surgery (endoscopic sinus surgery).", src:"EPOS 2020"},
+         {tone:"red", h:"Refer urgently: alarm features", html:"<b>Unilateral symptoms, bleeding, crusting, cacosmia</b>; also orbital or neurological features. These suggest tumour, vasculitis/granuloma, fungal or other non-CRS pathology.", src:"EPOS 2020"},
+         {tone:"blue", h:"Oral steroids and antibiotics", html:"Short courses of systemic corticosteroid for polyps and long-term antibiotics are specialist decisions in EPOS 2020; repeated systemic steroid courses carry cumulative harm (bone, glucose, eyes).", src:"EPOS 2020"},
+         {tone:"blue", h:"Biologics — dupilumab", html:"<b>Dupilumab</b>, as an add-on to intranasal corticosteroids, is recommended as an option for <b>severe CRSwNP in adults</b> when not controlled well enough by systemic corticosteroids or sinus surgery, who have had <b>at least 1 sinus surgery</b>, with <b>SNOT-22 ≥50</b>. Specialist-initiated; replaces the terminated appraisal TA648.", src:"NICE TA1134 (2026)"},
+         {tone:"blue", h:"What the GP needs to know about dupilumab", html:"Subcutaneous injection prescribed by the specialist service. Known adverse effects include injection-site reactions and conjunctivitis/keratitis — ask about eye symptoms. Record it on the GP medication list as a hospital-prescribed drug. Check vaccines and interactions per the SPC/BNF.", src:"BNF / dupilumab SPC"}
+       ]},
+       {b:"why", html:"CRS is a chronic inflammatory disease, not a long infection — which is why repeated antibiotic courses do not help and a well-used steroid spray does. Most “failed” steroid sprays fail on technique (aim towards the outer wall of the nostril, head tilted forward, not sniffing hard) and on stopping after a week."}
+     ]},
+
+    {id:"groups", nav:"Special groups", title:"Special groups", sub:"Where the default pathway changes.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Pregnancy", html:"First-choice phenoxymethylpenicillin can be used. If penicillin-allergic, NG79 names <b>erythromycin</b> as the option in pregnancy; <b>doxycycline is contraindicated</b>. Nasal steroid in pregnancy: check UKTIS/BNF.", src:"NICE NG79"},
+         {tone:"plain", h:"Children under 12", html:"No nasal-steroid recommendation (NG79 option is age ≥12); no doxycycline. Use NG79/BNFC age-banded doses if an antibiotic is needed. Periorbital swelling in a child with a cold needs same-day assessment.", src:"NICE NG79"},
+         {tone:"plain", h:"Immunocompromised", html:"Counts as high risk of complications → immediate antibiotic may be appropriate, low threshold for hospital. (Clinical point beyond NG79: consider invasive fungal sinusitis in poorly controlled diabetes or neutropenia with facial numbness or black eschar.)", src:"NICE NG79"},
+         {tone:"plain", h:"Older adults", html:"New one-sided facial pain, headache or nasal symptoms in older people — consider temporal arteritis, dental source and sinonasal tumour before labelling it sinusitis."},
+         {tone:"plain", h:"Asthma and NSAID sensitivity", html:"CRSwNP is associated with asthma and NSAID-exacerbated respiratory disease; avoid ibuprofen if NSAID-sensitive, and review asthma control.", src:"EPOS 2020"}
+       ]}
+     ]},
+
+    {id:"followup", nav:"Follow-up", title:"Follow-up and review", sub:"Acute sinusitis needs a safety-net, not routine review. CRS needs planned reassessment.",
+     blocks:[
+       {b:"table", head:["When","Who","What to do"], rows:[
+         ["Any time","Acute — red flag develops","Hospital same day (NICE NG79)"],
+         ["Worsens rapidly or significantly","Acute, on no/back-up antibiotic","Reassess; use back-up script if agreed; exclude complications"],
+         ["After ≥2–3 days on antibiotic, worsening","Acute, on first choice","Reassess; second choice co-amoxiclav or microbiology advice (NICE NG79)"],
+         ["Not improved by ~3 weeks","Acute","Review diagnosis: dental source, CRS developing, unilateral pathology, headache disorder"],
+         ["~6–12 weeks","CRS on saline + INCS","Check technique and adherence; if not controlled → ENT (EPOS 2020)"],
+         ["Ongoing","CRSwNP on dupilumab","Specialist-led review; GP records drug, watches for eye symptoms (NICE TA1134)"]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral", sub:"Urgency, where, and what to send.",
+     blocks:[
+       {b:"table", head:["Urgency","Indication","Where / what to send"], rows:[
+         ["<b>999 / same day</b>","Orbital signs, intracranial signs, meningism, focal neurology, severe systemic infection (NICE NG79)","ED / on-call ENT or ophthalmology (orbital) / medical take; obs, NEWS2, antibiotics given, allergy status"],
+         ["<b>Urgent ENT</b>","Unilateral persistent symptoms, unilateral bloodstained discharge, crusting, cacosmia, unilateral polyp or mass (EPOS 2020 alarm features)","Urgent ENT per local pathway; duration, side, bleeding, smoking, occupational exposure (wood dust, leather), examination findings"],
+         ["<b>Suspected cancer pathway</b>","Head and neck criteria in NICE NG12 (e.g. laryngeal: age ≥45 with persistent unexplained hoarseness or unexplained neck lump; oral ulcer >3 weeks; unexplained thyroid lump)","Suspected-cancer referral per NG12. NG12 has no separate sinonasal criterion — use clinical judgement and local ENT pathways for a suspected sinonasal tumour"],
+         ["<b>Routine ENT</b>","CRS not controlled after an adequate trial of saline + INCS; bilateral nasal polyps; recurrent acute sinusitis","Treatments tried and for how long, technique checked, asthma/NSAID history, SNOT-22 if available"],
+         ["<b>Other</b>","Dental source (upper molar pain) → dentist; significant allergic rhinitis/asthma → optimise or allergy clinic","—"]
+       ]}
+     ]},
+
+    {id:"safetynet", nav:"Safety-net", title:"Safety-netting", sub:"Specific, time-bound and in plain words.",
+     blocks:[
+       {b:"say", html:"“This looks like a sinus infection that’s most likely caused by a virus. These usually last two to three weeks and get better on their own — antibiotics make very little difference for most people and can upset your stomach. Paracetamol or ibuprofen will help the pain. If you’re not getting any better after about ten days, come back and we can talk about a steroid nose spray. Please come back <b>straight away</b> — or go to A&amp;E — if you get <b>swelling or redness around your eye</b>, <b>double vision or your eyesight changes</b>, a <b>very bad headache</b>, <b>swelling on your forehead</b>, a <b>stiff neck</b>, you <b>feel confused</b>, or you feel <b>very unwell</b>.”"},
+       {b:"say", html:"Back-up script: “I’ve left a prescription for an antibiotic, but I hope you won’t need it. Only collect it if you’re getting significantly worse, or if you’re no better after 7 days. If you feel very unwell, don’t just start the tablets — get seen.”"}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Where consultations go wrong.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Antibiotics at day 3", html:"Coloured discharge alone is not a reason for antibiotics. Under 10 days → no antibiotic unless very unwell or high risk.", src:"NICE NG79"},
+         {tone:"amber", h:"Missing the eye", html:"Not examining eye movements and acuity in someone with facial swelling. Periorbital signs mean hospital, not a back-up script.", src:"NICE NG79"},
+         {tone:"amber", h:"Wrong steroid dose", html:"The NG79 high-dose option was studied at <b>mometasone 200 micrograms twice daily</b> (off-label), not the standard allergic-rhinitis dose — and for 14 days, with documented consent.", src:"NICE NG79"},
+         {tone:"amber", h:"Treating CRS like a long acute infection", html:"Repeated antibiotic courses for 3-month symptoms instead of saline + intranasal steroid with technique teaching.", src:"EPOS 2020"},
+         {tone:"amber", h:"Ignoring one side", html:"Labelling unilateral blockage with bloodstained discharge or crusting as sinusitis. It is an alarm feature — examine and refer.", src:"EPOS 2020"},
+         {tone:"amber", h:"“Sinus headache”", html:"Recurrent frontal pain without nasal blockage or discharge is rarely sinusitis — consider migraine or tension-type headache."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"plain", h:"Classic scenario", html:"A 34-year-old teacher, 6 days of blocked nose, green discharge and cheek pain after a cold, afebrile, observations normal. She has a school trip next week and says “I always need antibiotics for my sinuses.” Variant: day 14 and not improving; or a child with a swollen red eyelid."},
+       {tone:"plain", h:"Examiner-style checkpoints", html:"Establishes duration and course; checks eyes, forehead, neck and neurology and says so; explores her previous experience and the school-trip concern; explains the natural history (2–3 weeks) and why antibiotics add little at day 6; offers self-care; sets a clear 10-day review point with the steroid-spray / back-up option; gives specific red-flag safety-netting; asks about recurrence, smoking, allergy and one-sided symptoms. In the day-14 variant: offers high-dose nasal steroid (off-label, consent) and no or back-up antibiotic per NG79. In the eyelid variant: same-day hospital."}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Sources for this page.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG79 — Sinusitis (acute): antimicrobial prescribing (October 2017)</b><br><a href="https://www.nice.org.uk/guidance/ng79" rel="noopener">nice.org.uk/guidance/ng79</a><span class="rd"> — 10-day rule, self-care, high-dose nasal corticosteroid (≥12 y, 14 days, off-label), back-up prescribing, antibiotic choices and doses, hospital referral criteria</span></li>'+
+         '<li><b>EPOS 2020 — European Position Paper on Rhinosinusitis and Nasal Polyps (Fokkens et al., Rhinology 2020)</b><br><a href="https://www.rhinologyjournal.com/Documents/Supplements/EPOS2020_executive_summary.pdf" rel="noopener">EPOS 2020 executive summary</a><span class="rd"> — CRS definition, phenotypes, alarm symptoms, appropriate medical therapy</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (2015, last updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — head and neck suspected-cancer criteria</span></li>'+
+         '<li><b>NICE TA1134 — Dupilumab for treating severe chronic rhinosinusitis with nasal polyps (February 2026)</b><br><a href="https://www.nice.org.uk/guidance/ta1134" rel="noopener">nice.org.uk/guidance/ta1134</a><span class="rd"> — eligibility criteria; replaces terminated appraisal TA648</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Acute sinusitis and recognition of chronic rhinosinusitis in primary care — NICE NG79 (2017), EPOS 2020, NICE NG12 and NICE TA1134 (2026). Antibiotic doses are those printed in NG79 for adults; children’s doses per NG79/BNFC. Orbital and intracranial complications are emergencies. Verify all doses against the current BNF/BNFC before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

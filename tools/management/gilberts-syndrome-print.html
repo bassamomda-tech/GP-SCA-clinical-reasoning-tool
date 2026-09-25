@@ -4,122 +4,129 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gilbert's syndrome — Protocol · Reasoning GP</title>
-<meta name="description" content="Gilbert's syndrome: recognising isolated unconjugated hyperbilirubinaemia with normal LFTs and no haemolysis, the pattern that makes it a diagnosis of reassurance needing no treatment or monitoring, and the drug-handling caution with irinotecan." />
+<meta name="description" content="Gilbert's syndrome in adults: confirming persistent isolated unconjugated hyperbilirubinaemia with normal liver blood tests and no haemolysis, what it is not, when to reassess, and the irinotecan alert for oncology."  />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/gilberts-syndrome.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790196272852298 tools/management/gilberts-syndrome.html">
+<meta name="omelette-print-source" content="v1790316448292392 tools/management/gilberts-syndrome.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Gilbert's syndrome protocol">
 <doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🟡",
-  title:"Gilbert's syndrome — the complete guide",
-  eyebrow:"Protocol · a diagnosis of reassurance",
-  stemTitle:"Recognising the pattern is the whole of the management — it needs no treatment and no monitoring, and naming it confidently is what spares the patient years of repeated liver work-up",
-  stemSub:"One page for the whole condition. Isolated raised unconjugated bilirubin with entirely normal liver enzymes and no haemolysis — that pattern, in an otherwise well person, is Gilbert's. Confirm it once, exclude what it is not, then <b>reassure: benign, lifelong, no treatment, no monitoring</b>. Two things to tell the patient: jaundice appearing with fasting, illness or stress is harmless and self-resolving, and the reduced glucuronidation matters for a few drugs — notably irinotecan — so it is worth mentioning at prescribing.",
-  guideline:"BNF · irinotecan SPC · NICE NG12",
-  reviewed:"14 September 2026",
-  nextReview:"14 March 2027",
+  title:"Gilbert's syndrome — recognising and confirming the typical primary-care pattern",
+  eyebrow:"Protocol · adults · a diagnosis of reassurance",
+  stemTitle:"In an otherwise well adult, persistent isolated unconjugated hyperbilirubinaemia with normal liver blood tests and no haemolysis is most consistent with Gilbert's syndrome — confirm the pattern, review the context, then reassure",
+  stemSub:"For adults only; not for neonates, infants or children with jaundice. Confirm the typical pattern, review previous results and the clinical context, and reassess anything marked, progressive, conjugated, mixed or atypical. <b>Once a typical diagnosis is established there is no treatment and no routine monitoring.</b> Record the diagnosis as a clinical diagnosis (not an allergy), with a medication alert so oncology reviews it before any irinotecan is considered.",
+  guideline:"BSG abnormal liver blood tests (2017) · irinotecan SPC · MHRA · NICE NG12",
+  reviewed:"25 September 2026",
+  nextReview:"25 March 2027",
   meta:[
-    {t:"No treatment and no monitoring needed", tone:"ok"},
-    {t:"Irinotecan toxicity — flag at prescribing", tone:"tw"},
-    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+    {t:"Adults only", tone:"ok"},
+    {t:"No routine monitoring once confirmed", tone:"ok"},
+    {t:"Irinotecan — oncology must review", tone:"tw"},
+    {t:"v2.1 · reviewed Sep 2026", tone:"ok"}
   ],
-  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>The pattern</small></a><a href="#exclude"><b>Exclude</b><small>What it is NOT</small></a><a href="#tests"><b>Test once</b><small>Then stop</small></a><a href="#advice"><b>Advice</b><small>Drugs · triggers</small></a><a href="#refer"><b>Refer</b><small>Rarely</small></a></div>',
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>The pattern</small></a><a href="#exclude"><b>Exclude</b><small>What it is NOT</small></a><a href="#tests"><b>Test</b><small>Once, if typical</small></a><a href="#advice"><b>Advice</b><small>Drugs · triggers</small></a><a href="#refer"><b>Refer</b><small>If it does not fit</small></a></div>',
   quickSub:"The five that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"blue", h:"The pattern: isolated unconjugated bilirubin, normal everything else", html:"Common (around 5%) inherited reduced UGT1A1 enzyme activity → mild unconjugated hyperbilirubinaemia. Isolated raised bilirubin, predominantly unconjugated, with NORMAL ALT, ALP, GGT and albumin, and no anaemia or haemolysis. <b>Genetic testing is rarely needed</b> — this is pattern recognition plus exclusion."},
-    {tone:"green", h:"No treatment, no monitoring, no special diet", html:"<b>Benign and lifelong; it does not damage the liver or shorten life.</b> <b>Confirmed Gilbert's needs no monitoring and no specialist follow-up.</b> Recognising it avoids unnecessary investigation and years of anxiety about a harmless finding — which is the actual clinical value of making the diagnosis."},
-    {tone:"amber", h:"⚠ Drug handling — flag it at prescribing", html:"Reduced glucuronidation can affect certain drugs — notably increased toxicity with irinotecan, and relevant for some others such as atazanavir. Tell the patient to mention Gilbert's if they are ever prescribed chemotherapy, and record it prominently so it is visible at prescribing."},
-    {tone:"blue", h:"The triggers are worth naming — they cause the visits", html:"Jaundice may appear with fasting, intercurrent illness, dehydration, stress, exercise or alcohol — harmless and self-resolving. Explaining this, and that a mildly raised bilirubin on any future blood test is expected, is what prevents a repeat work-up every time it is noticed."},
-    {tone:"red", h:"⚠ Do not attribute an unwell patient to Gilbert's", html:"Conjugated hyperbilirubinaemia, pale stools, dark urine or pruritus → cholestasis or obstruction, a different pathway entirely. Raised ALT, ALP or GGT, or low albumin → investigate as liver disease. Anaemia with high reticulocytes → investigate haemolysis. Significant symptoms, weight loss or hepatomegaly → investigate. Painless obstructive jaundice is a suspected-cancer presentation, not a Gilbert's flare."}
+    {tone:"blue", h:"The pattern, in an otherwise well adult", html:"Common (around 5%) inherited reduced UGT1A1 activity → mild, persistent, <b>predominantly unconjugated</b> hyperbilirubinaemia with <b>normal ALT/AST, ALP and GGT</b> and no evidence of haemolysis. Interpret it alongside previous results, the history, examination, medicines and alcohol. <b>Genetic testing and imaging are rarely needed.</b>"},
+    {tone:"green", h:"No treatment or routine monitoring — once established", html:"Benign and lifelong; it does not cause chronic liver disease or shorten life. <b>No treatment, routine monitoring or specialist follow-up is needed once a typical diagnosis is established and alternative causes have been reasonably excluded.</b>"},
+    {tone:"amber", h:"⚠ Irinotecan — not a GP decision", html:"Reduced UGT1A1 activity may increase exposure to SN-38, the active metabolite, and the risk of severe neutropenia and diarrhoea. <b>The oncology team must review the current irinotecan SPC</b> — including whether it is contraindicated, whether dose modification or UGT1A1 testing is needed. Recording Gilbert's alone is not sufficient risk management."},
+    {tone:"blue", h:"Triggers make it more noticeable", html:"Jaundice may become more noticeable during fasting, illness, dehydration, stress or strenuous exercise, and usually settles when the trigger resolves. Advise normal eating and hydration and avoiding prolonged fasting; no special diet is needed."},
+    {tone:"red", h:"⚠ Do not attribute new or atypical findings to Gilbert's", html:"Conjugated or mixed hyperbilirubinaemia, abnormal ALT/AST, ALP or GGT, anaemia or haemolysis, a marked or rising bilirubin, or significant systemic symptoms each need assessment in their own right. Gilbert's does not explain significant or progressive symptoms."}
   ],
-  pathwaySub:"Five steps, and four of them are about what this is not.",
+  pathwaySub:"Five steps, and most of them are about what this is not.",
   pathway:[
-    {title:"Confirm the benign pattern", html:"Isolated unconjugated hyperbilirubinaemia, normal LFTs, no haemolysis, otherwise well."},
-    {title:"Exclude what it is not", html:"Haemolysis, liver disease, conjugated or obstructive jaundice, and any systemically unwell patient.", alert:true},
-    {title:"Do the confirmatory tests ONCE", html:"Split bilirubin, LFTs, FBC with reticulocytes and film — then stop testing."},
-    {title:"Reassure and give the practical advice", html:"Benign and lifelong; the triggers; the drug-handling point; and that future raised bilirubin is expected."},
-    {title:"Refer only if the pattern does not fit", html:"Hepatology for atypical features; haematology if haemolysis is found. Otherwise no follow-up."}
+    {title:"Confirm the typical pattern", html:"Persistent isolated predominantly unconjugated bilirubin, normal ALT/AST, ALP and GGT, no haemolysis, otherwise well — reviewed against previous results."},
+    {title:"Exclude what it is not", html:"Haemolysis, other causes of unconjugated bilirubin, liver disease, conjugated or mixed jaundice, and any systemically unwell patient.", alert:true},
+    {title:"Test once, repeat only if needed", html:"Repeat LFTs with split bilirubin and FBC; add reticulocytes, film, LDH and haptoglobin where haemolysis is suspected. Repeat only if uncertain, rising or atypical."},
+    {title:"Reassure and give the practical advice", html:"Benign and lifelong; the triggers; the irinotecan alert; and what a future result does and does not mean."},
+    {title:"Refer if the pattern does not fit", html:"Route by the abnormality and your local pathway. Otherwise no routine follow-up."}
   ],
   sections:[
 
-    {id:"confirm", nav:"Confirm", title:"Step 1 — confirm the benign pattern",
+    {id:"confirm", nav:"Confirm", title:"Step 1 — confirm the typical pattern",
      blocks:[
        {b:"table", head:["Element","Detail"], rows:[
-         ["<b>What it is</b>","Common (around 5%) inherited reduced UGT1A1 enzyme activity → mild UNCONJUGATED hyperbilirubinaemia"],
-         ["<b>Presentation</b>","Usually incidental; intermittent mild jaundice (scleral icterus) during fasting, intercurrent illness, dehydration, stress or exertion; otherwise asymptomatic"],
-         ["<b>Key biochemistry</b>","Isolated raised bilirubin (predominantly unconjugated), with NORMAL ALT, ALP, GGT and albumin"],
-         ["<b>Diagnosis</b>","Clinical and biochemical — the typical pattern plus normal FBC, blood film and reticulocytes (no haemolysis) plus normal LFTs; genetic testing rarely needed"]
+         ["<b>Who this covers</b>","Adults. Not neonates, infants or children — their jaundice has a different differential and referral threshold"],
+         ["<b>What it is</b>","Common (around 5%) inherited reduced UGT1A1 enzyme activity → mild unconjugated hyperbilirubinaemia"],
+         ["<b>Presentation</b>","Usually incidental; intermittent mild scleral icterus with fasting, illness, dehydration, stress or strenuous exercise. Most are otherwise asymptomatic"],
+         ["<b>Key biochemistry</b>","Persistent isolated raised bilirubin, <b>predominantly unconjugated</b>, with NORMAL ALT/AST, ALP and GGT and no evidence of haemolysis. Usually mild"],
+         ["<b>Context to review</b>","Previous bilirubin and liver blood tests, the degree and trend of elevation, symptoms and examination, medicines and alcohol"],
+         ["<b>Diagnosis</b>","Clinical and biochemical — the typical pattern with no evidence of haemolysis. A single result is not enough on its own. Genetic testing rarely needed"]
        ]},
-       {b:"why", html:"Gilbert's is a diagnosis of pattern recognition and exclusion: isolated unconjugated hyperbilirubinaemia with normal liver enzymes and no anaemia or haemolysis. Recognising it avoids unnecessary investigation and anxiety over a harmless finding — and stating it plainly in the record is what stops the next clinician starting again."}
+       {b:"why", html:"The BSG guideline asks for abnormal liver blood tests to be interpreted against previous results, the history and the current clinical state. A stable typical pattern in a well adult is most consistent with Gilbert's; stating that clearly in the record is what stops the next clinician starting again."}
      ]},
 
     {id:"exclude", nav:"Exclude", title:"Step 2 — exclude the things it is NOT",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"amber", h:"🟠 Haemolysis", html:"Anaemia, high reticulocytes, low haptoglobin, raised LDH → investigate haemolysis, not Gilbert's."},
-         {tone:"amber", h:"🟠 Liver disease", html:"Raised ALT, ALP or GGT, low albumin, or conjugated hyperbilirubinaemia → investigate as deranged LFTs or hepatobiliary disease."},
-         {tone:"red", h:"🔴 Conjugated or obstructive", html:"Pale stools, dark urine, pruritus, conjugated bilirubin → imaging and exclude obstruction or cholestasis — a different pathway. <b>Painless obstructive jaundice is a suspected-cancer presentation.</b>"},
-         {tone:"amber", h:"🟠 Unwell or systemic", html:"Significant symptoms, weight loss or hepatomegaly → do NOT attribute to Gilbert's; investigate."}
+         {tone:"amber", h:"🟠 Other causes of unconjugated bilirubin", html:"Haemolysis; ineffective erythropoiesis; resorption of a large haematoma; drugs impairing hepatic uptake or conjugation; Crigler–Najjar syndrome; laboratory or sampling variation. <b>A marked, progressive or atypical unconjugated bilirubin needs reassessment</b> — discuss with hepatology, gastroenterology or clinical biochemistry rather than labelling it Gilbert's."},
+         {tone:"amber", h:"🟠 Haemolysis", html:"Anaemia, high reticulocytes, raised LDH or low haptoglobin → investigate haemolysis, not Gilbert's."},
+         {tone:"amber", h:"🟠 Liver disease", html:"Abnormal ALT/AST, ALP or GGT, or concern about synthetic function (low albumin, prolonged INR) → investigate as abnormal liver blood tests. Normal albumin is reassuring but neither necessary nor specific for Gilbert's."},
+         {tone:"amber", h:"🟠 Conjugated or mixed hyperbilirubinaemia", html:"Not typical of Gilbert's. Investigate for hepatocellular, cholestatic, drug-related or hereditary disease; <b>imaging is guided by the clinical and biochemical pattern</b>. Pale stools, dark urine and pruritus support cholestasis, but their absence does not exclude it."},
+         {tone:"purple", h:"🟣 Jaundice at 40 and over <span class='tw'>2WW</span>", html:"Unexplained jaundice needs prompt assessment, especially with cholestatic liver tests, dark urine, pale stools, weight loss or abdominal symptoms. <b>In adults aged 40 and over with jaundice, refer on the suspected pancreatic cancer pathway (NICE NG12).</b>"},
+         {tone:"amber", h:"🟠 Unwell or systemic", html:"Significant symptoms, weight loss, abdominal pain, pruritus or hepatosplenomegaly → do NOT attribute to Gilbert's; investigate. The absence of hepatomegaly does not exclude liver disease."}
        ]}
      ]},
 
-    {id:"tests", nav:"Test once", title:"Step 3 — what to check, once",
+    {id:"tests", nav:"Test", title:"Step 3 — what to check, and when to repeat",
      blocks:[
        {b:"table", head:["Test","Expected in Gilbert's","If abnormal"], rows:[
-         ["<b>Split bilirubin</b>","<b>Predominantly unconjugated</b>","<b>Conjugated → hepatobiliary work-up</b>"],
-         ["<b>LFTs (ALT, ALP, GGT, albumin)</b>","<b>Normal</b>","<b>Deranged → investigate liver disease</b>"],
-         ["<b>FBC, reticulocytes and blood film</b>","<b>Normal, no haemolysis</b>","<b>Haemolysis → investigate</b>"],
-         ["<b>Repeat bilirubin (e.g. fasting and non-fasting)</b>","<b>Mild fluctuation</b>","<b>Persistently high conjugated → refer</b>"]
-       ]}
+         ["<b>Repeat LFTs with split bilirubin</b>","Predominantly unconjugated; ALT/AST, ALP, GGT normal","Conjugated or mixed, or abnormal enzymes → hepatobiliary work-up guided by the pattern"],
+         ["<b>FBC</b>","Normal","Anaemia → add reticulocytes, film, LDH, haptoglobin"],
+         ["<b>Reticulocytes, film, LDH, haptoglobin</b>","Consider where there is anaemia, a rising bilirubin, suspected haemolysis or diagnostic uncertainty — not needed for every classic presentation","Haemolysis → investigate"],
+         ["<b>Repeat bilirubin</b>","Only if the diagnosis is uncertain, the bilirubin is rising or the context is atypical. Use the laboratory's usual sampling; a fasting provocation test is not needed","Rising or marked → reassess (Step 2)"]
+       ]},
+       {b:"why", html:"Once a stable typical pattern has been established, no routine bilirubin monitoring is required. Do not deliberately induce prolonged fasting to prove the diagnosis."}
      ]},
 
     {id:"advice", nav:"Advice", title:"Step 4 — reassurance and living with it",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"green", h:"😌 Reassure", html:"Benign, lifelong; does not damage the liver or shorten life; no treatment or special diet needed."},
-         {tone:"blue", h:"💡 Triggers", html:"Jaundice may appear with fasting, illness, dehydration, stress, exercise or alcohol — harmless and self-resolving."},
-         {tone:"amber", h:"💊 Drug handling", html:"Reduced glucuronidation can affect certain drugs — notably increased toxicity with irinotecan; relevant for some others (e.g. atazanavir). Flag it at prescribing."},
-         {tone:"green", h:"🩸 Future tests", html:"Explain that an isolated mildly raised bilirubin on future bloods is expected — this avoids a repeat work-up."}
+         {tone:"green", h:"😌 Reassure", html:"Benign and lifelong; does not cause chronic liver disease or shorten life. No treatment, special diet or routine monitoring once established."},
+         {tone:"blue", h:"💡 Triggers", html:"Fasting, illness, dehydration, stress or strenuous exercise can make jaundice more noticeable; it usually settles when the trigger resolves. Keep to normal meals and hydration."},
+         {tone:"amber", h:"💊 Irinotecan and other drugs", html:"<b>Irinotecan:</b> potentially increased toxicity — oncology must review the current SPC, contraindications, dose and the need for UGT1A1 testing. <b>Atazanavir</b> can cause or accentuate unconjugated hyperbilirubinaemia; interpret jaundice alongside the other liver tests. For any other drug, check the current SPC or seek specialist advice."},
+         {tone:"blue", h:"🗂 Recording it", html:"Code it as a clinical diagnosis, <b>not an allergy or adverse drug reaction</b>, with a medication alert so it is visible at oncology prescribing."},
+         {tone:"green", h:"🩸 Future tests", html:"A future isolated, predominantly unconjugated bilirubin with otherwise normal liver blood tests may be expected. <b>New abnormalities, a rising bilirubin or new symptoms should not automatically be put down to Gilbert's.</b>"}
        ]}
      ]},
 
-    {id:"refer", nav:"Refer", title:"Step 5 — when (rarely) to refer",
+    {id:"refer", nav:"Refer", title:"Step 5 — when to refer or discuss",
      blocks:[
        {b:"cards", items:[
-         {tone:"blue", h:"Hepatology", html:"Diagnostic uncertainty, conjugated hyperbilirubinaemia, abnormal LFTs, or atypical features. See <a href='../algorithms/abnormal-lfts.html'>abnormal LFTs pathway</a>."},
-         {tone:"amber", h:"Haematology", html:"<b>If haemolysis is found on screening.</b>"},
-         {tone:"green", h:"No routine follow-up", html:"<b>Confirmed Gilbert's needs no monitoring and no specialist follow-up.</b>"},
-         {tone:"cream", h:"GP management", html:"Recognising the pattern, the one-off confirmatory tests, the exclusions, the reassurance and the drug-handling note all belong here — and then nothing further. Related pages: <a href='../algorithms/abnormal-lfts.html'>abnormal LFTs</a> · <a href='../algorithms/jaundice.html'>jaundice pathway</a> · <a href='fatty-liver.html'>fatty liver disease</a>."}
+         {tone:"blue", h:"Discuss or refer — route by the abnormality", html:"Conjugated or mixed hyperbilirubinaemia · abnormal ALT/AST, ALP or GGT · low albumin or prolonged INR · anaemia or haemolysis · marked or progressive bilirubin · hepatosplenomegaly · weight loss, abdominal pain, pruritus or systemic illness · diagnostic uncertainty · possible inherited bilirubin disorder other than Gilbert's · children or young people. See the <a href='../algorithms/abnormal-lfts.html'>abnormal LFTs pathway</a>."},
+         {tone:"green", h:"No routine follow-up", html:"<b>Once a typical diagnosis is established and alternative causes have been reasonably excluded, no routine follow-up or specialist referral is needed.</b>"},
+         {tone:"cream", h:"GP management", html:"Confirming the pattern, the exclusions, the reassurance, the record and the irinotecan alert all belong here. Related pages: <a href='../algorithms/abnormal-lfts.html'>abnormal LFTs</a> · <a href='../algorithms/jaundice.html'>jaundice pathway</a> · <a href='fatty-liver.html'>fatty liver disease</a>."}
        ]},
-       {b:"say", html:"This is Gilbert's syndrome — a very common, harmless variation where bilirubin runs a little high, especially when you're fasting, unwell or stressed, which can give a slight yellow tinge to the eyes. It doesn't harm your liver and needs no treatment or monitoring. Just mention it if you're ever prescribed certain chemotherapy drugs."}
+       {b:"say", html:"Your results fit Gilbert's syndrome — a very common, harmless variation where bilirubin runs a little high, especially when you're fasting, unwell or stressed, which can give a slight yellow tinge to the eyes. It doesn't harm your liver and needs no treatment or regular tests. If a future blood test shows the same thing on its own, that's expected — but new symptoms or other abnormal results should still be checked. If you're ever offered chemotherapy, make sure the team knows you have Gilbert's."}
      ]},
 
     {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
      blocks:[{b:"cards", cols:2, items:[
-       {tone:"cream", h:"Classic scenario", html:"A 24-year-old man attends anxious about an <b>incidental bilirubin of 42 µmol/L</b> found on bloods taken for fatigue. <b>ALT, ALP, GGT and albumin are all normal</b>, FBC is normal. He mentions his eyes look \"a bit yellow\" when he skips meals during exam periods, and that <b>his father was told something similar years ago</b>. He has found alarming material online about liver failure and asks whether he needs a scan and hepatology referral."},
-       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises the pattern — isolated unconjugated hyperbilirubinaemia with normal enzymes and no haemolysis — and names Gilbert's confidently rather than hedging, since a confident diagnosis is the therapeutic act here; requests split bilirubin plus reticulocytes and film to complete the one-off confirmation rather than either over-investigating or skipping the exclusions; <b>explicitly excludes haemolysis and cholestasis</b>, and can say what would change the picture; <b>declines the scan and hepatology referral with a reason</b>, explaining that no monitoring is needed; addresses the fatigue separately rather than attributing it to Gilbert's, which does not cause symptoms; <b>explains the fasting and stress triggers and the family pattern</b>; <b>warns that future blood tests will show it and that this is expected</b>, to prevent repeat work-ups; and <b>records the drug-handling caution, mentioning irinotecan.</b>"}
+       {tone:"cream", h:"Classic scenario", html:"A 24-year-old man attends anxious about an <b>incidental bilirubin of 42 µmol/L</b> found on bloods taken for fatigue. <b>ALT, ALP and GGT are normal</b>, FBC is normal. His eyes look \"a bit yellow\" when he skips meals during exams, and <b>his father was told something similar years ago</b>. He has read about liver failure online and asks for a scan and a hepatology referral."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Reviews previous results and repeats LFTs with split bilirubin to confirm the typical unconjugated pattern; says it is <b>most consistent with Gilbert's</b> rather than hedging or over-claiming; <b>considers haemolysis and cholestasis</b> and says what would change the picture; <b>declines the scan and referral with a reason</b>; <b>assesses the fatigue separately</b> rather than attributing it to Gilbert's; explains the triggers and the family pattern; explains what a future result does and does not mean; and <b>records the diagnosis with an irinotecan alert for oncology</b>."}
      ]}]},
 
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>BNF and the irinotecan Summary of Product Characteristics</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — reduced glucuronidation and the increased toxicity risk with irinotecan, and the relevance to atazanavir</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b><span class="rd"> — referenced for the exclusion card only: painless obstructive jaundice is a suspected pancreatic or biliary cancer presentation and must not be attributed to Gilbert\u2019s</span></li>'+
+         '<li><b>BSG — Guidelines on the management of abnormal liver blood tests (Newsome et al., Gut 2018; published online 2017)</b><br><a href="https://gut.bmj.com/content/67/1/6" rel="noopener">gut.bmj.com/content/67/1/6</a><span class="rd"> — interpreting an isolated raised bilirubin against previous results and context; repeat LFTs with split bilirubin and FBC</span></li>'+
+         '<li><b>Irinotecan Summary of Product Characteristics, and MHRA safety communication</b><br><a href="https://www.medicines.org.uk/emc" rel="noopener">medicines.org.uk/emc</a><span class="rd"> — Gilbert\u2019s syndrome / reduced UGT1A1 activity, SN-38 exposure, neutropenia and diarrhoea</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — jaundice in adults aged 40 and over: suspected pancreatic cancer pathway</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Gilbert's syndrome. A benign diagnosis of reassurance: isolated raised unconjugated bilirubin with normal ALT, ALP, GGT and albumin, and no anaemia or haemolysis, in an otherwise well person. Confirm once with split bilirubin, LFTs and FBC with reticulocytes and film — then stop testing. No treatment, no monitoring, no special diet, no specialist follow-up. Jaundice with fasting, illness, dehydration, stress or exercise is harmless and self-resolving. Reduced glucuronidation increases irinotecan toxicity — record it so it is visible at prescribing. Never attribute conjugated hyperbilirubinaemia, deranged enzymes, haemolysis or a systemically unwell patient to Gilbert's."
+  foot:"Gilbert's syndrome (adults). In an otherwise well adult, persistent isolated predominantly unconjugated hyperbilirubinaemia with normal liver blood tests and no evidence of haemolysis is most consistent with Gilbert's syndrome. Confirm the pattern and review previous results and the clinical context; genetic testing and imaging are rarely required. Once a typical diagnosis is established there is no treatment or routine monitoring. Reassess marked, progressive, conjugated or mixed hyperbilirubinaemia, abnormal liver tests, haemolysis or systemic symptoms. Jaundice at 40 and over: NICE NG12 suspected pancreatic cancer pathway. Record the diagnosis (not as an allergy) and ensure oncology reviews the irinotecan SPC before it is considered. Sources: BSG abnormal liver blood tests guideline, irinotecan SPC and MHRA, NICE NG12."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

@@ -105,10 +105,10 @@
         const shNote = sh > 0 ? ' ⚠ Item 10 (self-harm) positive — assess risk TODAY regardless of total.' : '';
         if (s < 10)  return { label:'Low likelihood', severity:'low',  action:'Reassure; re-screen later in perinatal period.', detail:'' + shNote };
         if (s <= 12) return { label:'Possible depression', severity:'med', action:'Clinical assessment; repeat in 2 weeks; consider support.', detail:'Borderline — use clinical judgement.' + shNote };
-        return        { label:'Likely depression', severity:'high', action:'Full assessment; perinatal mental-health pathway (NICE NG192).', detail:'≥ 13 suggests a depressive illness.' + shNote };
+        return        { label:'Likely depression', severity:'high', action:'Full assessment; perinatal mental-health pathway (NICE CG192).', detail:'≥ 13 suggests a depressive illness.' + shNote };
       },
       refs:[
-        { label:'NICE NG192 Perinatal mental health', url:'https://www.nice.org.uk/guidance/ng192' },
+        { label:'NICE CG192 Perinatal mental health', url:'https://www.nice.org.uk/guidance/cg192' },
         { label:'Cox EPDS 1987', url:'https://pubmed.ncbi.nlm.nih.gov/3651732/' },
       ],
     },

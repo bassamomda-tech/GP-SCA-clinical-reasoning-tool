@@ -1,4 +1,4 @@
-/* Triage — Abdominal pain · NICE · NG12 · NG136 (AAA) */
+/* Triage — Abdominal pain · NICE · NG12 · NG156 (AAA) */
 RGPTriage.register('abdo-pain-triage', {
   title: 'Abdominal pain — symptom triage',
   subtitle: 'Surgical abdomen: appendicitis, perforation, ischaemia, AAA, ectopic, testicular / ovarian torsion. NICE + NG12.',
@@ -51,8 +51,8 @@ RGPTriage.register('abdo-pain-triage', {
       action:'Same-day admission for CT angiography. Especially elderly with AF / anticoag.',
       when:(i)=>!!i.sudden_severe && (i.age>=65 || !!i.anticoag) && !i.peritonism },
     { id:'gi_bleed', tier:'emergency', label:'?Upper GI bleed',
-      action:'Same-day admission. Blatchford/Rockall. Urgent OGD per NICE NG141.',
-      source:'NICE NG141', sourceUrl:'https://www.nice.org.uk/guidance/ng141',
+      action:'Same-day admission. Blatchford/Rockall. Urgent OGD per NICE CG141.',
+      source:'NICE CG141', sourceUrl:'https://www.nice.org.uk/guidance/cg141',
       when:(i)=>!!i.haematemesis_melaena || (!!i.anticoag && (i.sbp && i.sbp<100)) },
     { id:'cholangitis', tier:'emergency', label:"?Ascending cholangitis (Charcot's triad)",
       action:'Same-day admission. IV antibiotics. ERCP for biliary decompression.',
@@ -72,6 +72,6 @@ RGPTriage.register('abdo-pain-triage', {
   sources:[
     {label:'NICE NG156 AAA', url:'https://www.nice.org.uk/guidance/ng156'},
     {label:'NICE NG12 Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12'},
-    {label:'NICE NG141 Upper GI bleed', url:'https://www.nice.org.uk/guidance/ng141'}
+    {label:'NICE CG141 Upper GI bleed', url:'https://www.nice.org.uk/guidance/cg141'}
   ],
 });

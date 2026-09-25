@@ -112,7 +112,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
 .node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
 .intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
 </style><link rel="stylesheet" href="../../assets/alg-diagram.css">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head><body>
 <div class="alg-header">
   <h1>🚨 Anaphylaxis &mdash; Emergency Recognition &amp; Management</h1>
@@ -287,7 +287,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div>Refer everyone</div><div>NICE CG134: <b>refer all patients after a suspected anaphylactic reaction to a specialist allergy service</b> to identify the trigger and reduce the risk of further reactions.</div>
+      <div>Refer everyone</div><div>NICE NG258: <b>refer all patients after a suspected anaphylactic reaction to a specialist allergy service</b> to identify the trigger and reduce the risk of further reactions.</div>
       <div>What the clinic adds</div><div>Allergen testing (skin-prick / specific IgE), confirmation of the trigger, advice on cross-reactivity, and where appropriate <b>immunotherapy</b> (e.g. venom, some foods).</div>
       <div>Document the suspected trigger</div><div>Record the food/drug/insect, timing and co-factors (exercise, alcohol, NSAIDs) on the referral; flag drug culprits as an <b>allergy</b> in the record to prevent re-exposure.</div>
       <div>Interim advice</div><div>Strict avoidance of the suspected trigger until specialist review; carry both AAIs meanwhile.</div>
@@ -317,10 +317,10 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
 
 </div>
 
-<div class="alg-foot"><strong>Educational use only.</strong> Based on the Resuscitation Council UK Anaphylaxis Guidelines (2021), NICE CG134 (2011, updated 2021), MHRA 2021 Drug Safety Update and the BNF, as summarised in the GEMS "Anaphylaxis" guide. IM adrenaline is first-line; antihistamines/steroids have no role in acute resuscitation. Follow current Resus Council UK guidance and your local emergency protocol.</div>
+<div class="alg-foot"><strong>Educational use only.</strong> Based on the Resuscitation Council UK Anaphylaxis Guidelines (2021), NICE NG258 (2026, replaced CG134), MHRA 2021 Drug Safety Update and the BNF, as summarised in the GEMS "Anaphylaxis" guide. IM adrenaline is first-line; antihistamines/steroids have no role in acute resuscitation. Follow current Resus Council UK guidance and your local emergency protocol.</div>
 
 <script>(function(){const STORE="rgp.alg.anaphylaxis.v1";const flow=document.getElementById("flow");const pDone=document.getElementById("pDone");const pFill=document.getElementById("pFill");const total=flow.querySelectorAll(".node").length;function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll("input[type=checkbox]")].map(c=>c.checked)));}function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||"[]");[...flow.querySelectorAll("input[type=checkbox]")].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}function update(){const done=[...flow.querySelectorAll("input[type=checkbox]")].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+"%";save();}flow.addEventListener("change",e=>{if(e.target.type==="checkbox")update();});flow.addEventListener("click",e=>{const btn=e.target.closest(".why-btn");if(!btn)return;const exp=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!exp));btn.nextElementSibling.classList.toggle("open",!exp);});document.getElementById("resetBtn").addEventListener("click",()=>{flow.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);flow.querySelectorAll(".why-drawer").forEach(d=>d.classList.remove("open"));flow.querySelectorAll(".why-btn").forEach(b=>b.setAttribute("aria-expanded","false"));localStorage.removeItem(STORE);update();});load();update();})();</script><script src="../../assets/alg-nav.js?v=2"></script>
 <script src="../../assets/topic-links.js?v=7"></script>
 <script src="../../assets/alg-diagram.js"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 </body></html>

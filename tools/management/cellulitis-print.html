@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cellulitis &amp; erysipelas — Protocol · Reasoning GP</title>
+<meta name="description" content="Cellulitis and erysipelas in adults and children on one page: is it really cellulitis (and the bilateral red leg mimics), necrotising fasciitis, sepsis and orbital red flags, Eron severity and admission, NICE NG141 antibiotic choices including penicillin allergy, pregnancy and infection near the eyes or nose, review at 2–3 days, recurrence and lymphoedema, bites, safety-netting and an SCA case." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/cellulitis.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790316402604106 tools/management/cellulitis.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Cellulitis management card">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F9A0}",
+  title:"Cellulitis and erysipelas",
+  eyebrow:"Protocol · diagnose &amp; manage in one place",
+  stemTitle:"Cellulitis — is it even cellulitis? Then grade it, treat it, review it, and stop it coming back",
+  stemSub:"One page for adults and children. Confirm an acute, usually unilateral infection (bilateral red legs are rarely cellulitis), exclude necrotising fasciitis, sepsis and orbital involvement, grade severity (Eron) to decide home versus hospital, prescribe per NICE NG141 for 5–7 days, mark the edge and review if not improving in 2–3 days, and treat whatever let the infection in.",
+  guideline:"NICE NG141 (2019) · NICE NG253 &amp; NG254 sepsis (2025) · NICE NG184 bites (2020) · NICE NG15 stewardship (2015) · BLS/LSN cellulitis in lymphoedema (2025) · Eron classification (Eron 2003; CREST 2005)",
+  meta:[
+    {t:"NICE NG141 · cellulitis &amp; erysipelas (2019)"},
+    {t:"NICE NG253 / NG254 · sepsis (2025)", tone:"tw"},
+    {t:"NICE NG184 · bites (2020) · NG152 leg ulcer (2020)"},
+    {t:"BLS/LSN lymphoedema cellulitis (2025)"},
+    {t:"Eron classification (Eron 2003 · CREST 2005)"},
+    {t:"Doses: NG141 tables · else BNF / BNFC"}
+  ],
+  lead:'<div class="mg-layers"><a href="#confirm"><b>Is it cellulitis?</b><small>Mimics first</small></a><a href="#redflags"><b>Emergencies</b><small>Nec fasc · sepsis · orbit</small></a><a href="#severity"><b>Grade it</b><small>Eron I–IV</small></a><a href="#treat"><b>Antibiotics</b><small>NG141 choices</small></a><a href="#recurrence"><b>Stop it recurring</b><small>Portal · oedema</small></a></div>',
+  glance:[
+    {lbl:"Is it cellulitis?", val:"Acute + usually unilateral", sub:"bilateral = rarely infection"},
+    {lbl:"Exclude", val:"Nec fasc · sepsis · orbit", sub:"pain out of proportion"},
+    {lbl:"Grade it", val:"Eron I–IV", sub:"III/IV → hospital"},
+    {lbl:"First-line (adult)", val:"Flucloxacillin 500 mg–1 g QDS", sub:"5–7 days · NG141"},
+    {lbl:"Review", val:"Not improving in 2–3 days", sub:"mark the edge"},
+    {lbl:"Recurrence", val:"Treat the portal + oedema", sub:"prophylaxis = specialist"}
+  ],
+  quickSub:"If you read nothing else, read these six cards. Doses appear only where NICE NG141 states them; everything else is “dose per BNF/BNFC”.",
+  quick:[
+    {tone:"red", h:"⚠ Refer same day: the conditions that kill or blind", html:"<b>NG141</b>: refer to hospital if there are signs of a more serious condition — <b>orbital cellulitis, osteomyelitis, septic arthritis, necrotising fasciitis or sepsis</b>. Pain out of proportion to the skin signs is the earliest clue to necrotising fasciitis. Use <b>NG253</b> (16+) / <b>NG254</b> (under 16s) to assess sepsis risk."},
+    {tone:"amber", h:"Most “bilateral cellulitis” is not infection", html:"NG141 asks you first to <b>exclude non-infective causes</b> of redness such as chronic venous insufficiency. Bilateral warm red lower legs are usually <b>venous (stasis) eczema, lipodermatosclerosis or lymphoedema</b>. Also think DVT, gout, contact dermatitis. Antibiotics will not help these."},
+    {tone:"blue", h:"Adults: flucloxacillin 500 mg–1 g QDS for 5–7 days", html:"Penicillin allergy: <b>clarithromycin 500 mg BD</b>, <b>erythromycin 500 mg QDS in pregnancy</b>, or <b>doxycycline 200 mg on day 1 then 100 mg OD</b> (not in pregnancy). Near the eyes or nose: <b>co-amoxiclav 500/125 mg TDS for 7 days</b> (allergy: clarithromycin 500 mg BD + metronidazole 400 mg TDS, 7 days). All NG141."},
+    {tone:"purple", h:"Grade severity before deciding where to treat", html:"Eron I: oral antibiotics at home. Eron II: consider admission or community IV/OPAT. Eron III–IV: hospital. Lower the threshold for <b>children under 1, frail, immunocompromised</b>, lymphangitis, facial/periorbital infection, or failure of oral treatment."},
+    {tone:"green", h:"Mark it and set a review trigger", html:"Consider marking the edge with a single-use surgical marker (erythema is harder to see on darker skin — feel for warmth and swelling too). Tell the patient redness can take time to fade, but to <b>return if it worsens rapidly or does not start to improve within 2–3 days</b>."},
+    {tone:"plain", h:"Treat the way in — and don't reflexively give prophylaxis", html:"Tinea pedis, leg ulcers, eczema, oedema and lymphoedema drive recurrence. NG141: <b>do not routinely offer antibiotic prophylaxis</b>; specialists may consider a trial after 2+ treated episodes in 12 months, reviewed at least 6-monthly."}
+  ],
+  pathwaySub:"The whole consultation in six moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Is it cellulitis?", html:"Acute onset, <b>usually one limb</b>, hot, red, swollen, tender, spreading. Look for the portal (toe-web tinea, ulcer, wound, bite, eczema). Bilateral, chronic, itchy or scaly redness → think venous eczema, lipodermatosclerosis, lymphoedema before infection."},
+    {title:"Exclude the emergencies", html:"Pain out of proportion, rapid spread, dusky/blistered/necrotic skin, crepitus or anaesthesia → <b>necrotising fasciitis: 999</b>. Sepsis risk per NG253/NG254. Eyelid swelling with proptosis, painful eye movements or reduced vision → <b>orbital cellulitis</b>. Hot joint that will not move → septic arthritis.", alert:true},
+    {title:"Grade severity and place of care", html:"Eron class I–IV plus host factors (age under 1, frailty, immunosuppression, diabetes, lymphoedema) and site (near eyes or nose). Decide: home with oral, community IV/OPAT, or hospital."},
+    {title:"Prescribe per NG141", html:"Oral first line if the person can swallow and severity does not need IV. Flucloxacillin for most; allergy, pregnancy and face have specific alternatives. 5–7 days, based on clinical assessment. Elevate the limb, analgesia, swab only if the skin is broken."},
+    {title:"Review", html:"Reassess if worsening rapidly or not starting to improve in 2–3 days: wrong diagnosis? abscess? complication? resistant or unusual organism? need for IV? Redness may lag behind improvement — judge the whole picture, not the colour alone."},
+    {title:"Prevent the next episode", html:"Treat tinea pedis, ulcers, eczema; manage oedema and lymphoedema (compression via the relevant service once the acute episode settles); weight, diabetes and skin care. Prophylaxis only via specialist, per NG141 and BLS/LSN 2025."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Is it cellulitis?", title:"Confirm the diagnosis — and rule out the mimics", sub:"The commonest error is antibiotics for bilateral venous eczema. NG141's first recommendation is to exclude other causes of skin redness.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Cellulitis","Acute infection of the deeper dermis and subcutaneous tissue. Hot, red, swollen, tender, <b>poorly demarcated</b> spreading area, usually on <b>one lower leg</b>; may have fever, malaise, rigors, lymphangitis (red streak) or tender regional nodes. Blistering can occur"],
+         ["Erysipelas","A more superficial form involving the upper dermis and lymphatics: <b>sharply demarcated, raised, shiny</b> edge, often on the face or lower leg; mainly streptococcal. NG141 manages it in the same way as cellulitis"],
+         ["Usual organisms","<b>Streptococcus pyogenes</b> (group A strep) and <b>Staphylococcus aureus</b>. NG141's committee discouraged adding penicillin V to flucloxacillin, finding little benefit from the combination"],
+         ["Portal of entry","Toe-web <b>tinea pedis</b> (the classic), leg ulcer, traumatic wound, insect or animal bite, eczema, injecting drug use, recent surgery. Always look between the toes"],
+         ["Host factors","Oedema and <b>lymphoedema</b>, venous insufficiency, obesity, diabetes, immunosuppression, previous cellulitis, peripheral arterial disease — they raise both the risk and the chance of complications"],
+         ["Darker skin","Erythema may look purple, dark brown or be subtle. Rely on warmth, swelling, tenderness and spread. NG141 notes marking may be harder to interpret on darker skin"]
+       ]},
+       {b:"table", head:["Mimic","Clues that it is NOT cellulitis","What to do"], rows:[
+         ["<b>Venous (stasis) eczema</b>","<b>Bilateral</b>, itchy, scaly or weeping, chronic or relapsing, varicose veins, haemosiderin staining; patient systemically well; little tenderness","Emollient + topical steroid, compression once arterial supply checked (ABPI). No antibiotics"],
+         ["<b>Lipodermatosclerosis</b>","Woody, tender induration of the lower medial leg (“inverted champagne bottle”), bilateral, subacute or chronic, venous disease","Manage venous disease; the acute phase is painful and red but not infected"],
+         ["<b>DVT</b>","Unilateral calf swelling, pitting oedema, dilated superficial veins, risk factors; less surface redness and heat than cellulitis","Wells score and pathway per NICE NG158. The two can coexist"],
+         ["<b>Gout / pseudogout</b>","Exquisitely painful red swollen <b>joint</b> (first MTP, ankle, knee), rapid onset, history of attacks, periarticular redness","Manage per NICE NG219; a hot joint with fever that cannot be moved is septic arthritis until proven otherwise"],
+         ["<b>Contact dermatitis</b>","Itch rather than pain, well-demarcated to the contact area (dressings, topical antibiotics), vesicles, no fever","Stop the allergen, topical steroid"],
+         ["<b>Lymphoedema without infection</b>","Chronic, non-pitting swelling, skin thickening; redness absent or chronic","Lymphoedema service; treat only if an acute inflammatory episode (see lymphoedema section)"],
+         ["Others","Insect bite reaction (itch, central punctum, early), erythema nodosum (tender nodules on both shins), superficial thrombophlebitis (tender cord), ruptured Baker's cyst, drug reaction, early herpes zoster (dermatomal pain before rash)","Treat the cause"]
+       ]},
+       {b:"why", html:"Cellulitis is <strong>acute and usually unilateral</strong>. Simultaneous bilateral leg cellulitis is uncommon, so bilateral redness should push you towards venous eczema, lipodermatosclerosis or lymphoedema first. Repeated antibiotic courses for chronic non-infective redness cause harm (C. difficile, resistance, missed diagnosis), which is why NG141 opens by asking you to exclude non-infective causes and why NICE NG15 asks prescribers to document the indication and review every antibiotic course."}
+     ]},
+
+    {id:"redflags", nav:"Emergencies", title:"Red flags — 999 or same-day hospital", sub:"NG141 lists the conditions that mean hospital: orbital cellulitis, osteomyelitis, septic arthritis, necrotising fasciitis and sepsis.",
+     blocks:[
+       {b:"warn", html:"<b>Do not “trial oral antibiotics” on a suspected necrotising soft-tissue infection.</b> It is a surgical emergency. Pain out of proportion to what you can see is the earliest and most reliable clue — the skin often looks deceptively unimpressive at first."},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Necrotising fasciitis → 999", html:"Severe pain <b>out of proportion</b> to the visible signs, rapid spread (over hours), swelling and tenderness extending beyond the erythema, dusky or purple skin, <b>haemorrhagic bullae</b>, skin necrosis, <b>crepitus</b>, numbness over the area, and a systemically very unwell patient. Risk: diabetes, injecting drug use, recent surgery or trauma, immunosuppression, chickenpox in children. Emergency surgical referral.", src:"NICE NG141 (refer) · PCDS necrotising fasciitis · UKHSA group A strep (2022)"},
+         {tone:"red", h:"🔴 Sepsis", html:"Assess sepsis risk in anyone who looks unwell: new confusion, fast breathing, low blood pressure, very fast heart rate, mottled or ashen skin, not passing urine. People 16 and over: use the NG253 risk criteria; under 16s: NG254; pregnant or recently pregnant: NG255. High risk → 999 / emergency transfer. Remember immunosuppressed and older people may not mount a fever.", src:"NICE NG253 · NG254 · NG255 (2025)"},
+         {tone:"red", h:"🔴 Orbital cellulitis", html:"Eyelid swelling with <b>proptosis</b>, <b>painful or restricted eye movements</b>, double vision, <b>reduced visual acuity or colour vision</b>, relative afferent pupillary defect, chemosis, or being too swollen to examine the eye → same-day emergency assessment (ophthalmology/ENT, paediatrics for children). Sight- and life-threatening (cavernous sinus thrombosis, abscess).", src:"NICE NG141 (refer) · College of Optometrists CMG · ENT UK orbital cellulitis pathway (2017)"},
+         {tone:"red", h:"🔴 Septic arthritis / osteomyelitis", html:"A hot, swollen joint the patient will not move, or deep bone pain under an ulcer or wound (especially a diabetic foot) → same-day hospital assessment.", src:"NICE NG141"},
+         {tone:"amber", h:"🟠 Diabetic foot infection", html:"Cellulitis on a diabetic foot is a different pathway: probe for bone and check pulses. A limb- or life-threatening problem (e.g. suspected deep soft-tissue or bone infection, ischaemia with ulceration, gangrene, sepsis) → refer immediately to acute services and inform the multidisciplinary foot care service.", src:"NICE NG19 diabetic foot"},
+         {tone:"amber", h:"🟠 Lymphangitis", html:"A red streak tracking proximally with tender nodes indicates lymphatic spread. NG141 lists lymphangitis among the features where you should consider referral or specialist advice.", src:"NICE NG141"}
+       ]},
+       {b:"why", html:"Necrotising fasciitis spreads along fascial planes beneath skin that may look only mildly red. By the time bullae, necrosis and crepitus appear, the window has narrowed. Children with <b>chickenpox</b> who develop a new spreading red painful area, or high fever returning after the spots have settled, need prompt assessment for invasive group A streptococcal infection."}
+     ]},
+
+    {id:"severity", nav:"Grade it", title:"Severity and place of care — the Eron classification", sub:"NG141 asks you to take severity into account when deciding on treatment and referral. The Eron classification (as adopted in the CREST 2005 guideline) is the tool most used in the UK.",
+     blocks:[
+       {b:"table", head:["Eron class","Picture","Usual place of care"], rows:[
+         ["<b>I</b>","No signs of systemic toxicity; no uncontrolled comorbidity","<b>Oral antibiotics at home</b>"],
+         ["<b>II</b>","Systemically unwell, <b>or</b> systemically well but with a comorbidity that may complicate or delay resolution (e.g. peripheral arterial disease, chronic venous insufficiency, morbid obesity)","Consider admission; oral treatment with close review, or community IV/OPAT where available"],
+         ["<b>III</b>","Significant systemic upset (acute confusion, tachycardia, tachypnoea, hypotension), <b>or</b> unstable comorbidity that may interfere with response, <b>or</b> limb-threatening infection from vascular compromise","<b>Hospital</b> for IV antibiotics"],
+         ["<b>IV</b>","Sepsis or severe life-threatening infection such as necrotising fasciitis","<b>Emergency admission</b> (999)"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Refer to hospital", html:"Any symptoms or signs of orbital cellulitis, osteomyelitis, septic arthritis, necrotising fasciitis or sepsis. In practice also Eron class III and IV.", src:"NICE NG141 · Eron/CREST 2005"},
+         {tone:"amber", h:"Consider referral or specialist advice", html:"Severely unwell; higher risk of complications (<b>children under 1 year</b>, <b>frail</b>, immunocompromised or significant comorbidity); infection <b>near the eyes or nose</b> (including periorbital cellulitis); possible uncommon pathogens (penetrating injury, water exposure, infection acquired abroad); <b>lymphangitis</b>; spreading infection not responding to oral antibiotics; or unable to take oral antibiotics.", src:"NICE NG141"},
+         {tone:"blue", h:"Community IV / OPAT", html:"For people who need IV treatment but are otherwise well enough to stay at home, explore locally available outpatient parenteral antibiotic therapy (OPAT) or virtual ward services rather than defaulting to admission.", src:"NICE NG141"},
+         {tone:"green", h:"Home with oral antibiotics", html:"Eron I, able to take tablets, reliable follow-up, safety-net understood. Give oral antibiotics first line if the person can take oral medicines and severity does not require IV.", src:"NICE NG141"}
+       ]},
+       {b:"why", html:"The Eron classification was published in 2003 and adopted in the 2005 CREST (Northern Ireland) cellulitis guideline. It is a severity tool, not a diagnostic one: a systemically well patient with bilateral red legs is not “Eron I cellulitis” — they may not have cellulitis at all."}
+     ]},
+
+    {id:"treat", nav:"Antibiotics", title:"Antibiotic treatment — NICE NG141 choices", sub:"Oral first line; 5–7 days based on clinical assessment. Doses below are the ones NG141 states for adults. Children: choice per NG141, doses per BNFC.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st-line", title:"Flucloxacillin", when:"adults, most cases",
+          html:"<b>Flucloxacillin 500 mg to 1 g four times a day, orally, for 5–7 days</b> (NG141). Course length is based on clinical assessment; a longer course may be needed if improvement is slow. The product information advises taking it on an empty stomach (at least 1 hour before food or 2 hours after) — check the patient knows. QDS dosing is the adherence problem to plan for."},
+         {step:"Allergy", title:"Penicillin allergy or flucloxacillin unsuitable", when:"true allergy",
+          fromLabel:"non-penicillin cover",
+          html:"<b>Clarithromycin 500 mg twice a day</b> for 5–7 days; <b>or in pregnancy erythromycin 500 mg four times a day</b> for 5–7 days; <b>or doxycycline 200 mg on the first day then 100 mg once a day</b> (5–7 days in total; <b>not in pregnancy</b> and not in children under 12). All NG141. Check the allergy history is genuine — a rash with a viral illness in childhood or GI upset is not allergy."},
+         {step:"Face", title:"Infection near the eyes or nose", when:"triangle from bridge of nose to corners of mouth, or around the eyes",
+          fromLabel:"broader cover",
+          html:"<b>Co-amoxiclav 500/125 mg three times a day for 7 days</b>; penicillin allergy: <b>clarithromycin 500 mg twice a day plus metronidazole 400 mg three times a day, 7 days</b> (NG141). Consider referral or specialist advice for all of these — intracranial and orbital complications are the concern."},
+         {step:"Severe", title:"Severe infection / IV", when:"Eron III–IV, hospital or OPAT",
+          fromLabel:"secondary care",
+          html:"NG141 lists IV options for severe infection (including flucloxacillin, clarithromycin, clindamycin, co-amoxiclav, cefuroxime and ceftriaxone) and vancomycin, teicoplanin or linezolid if MRSA is suspected or confirmed — chosen by the hospital or OPAT team per local policy. If IV is started, <b>review by 48 hours</b> and switch to oral when possible."},
+         {step:"Support", title:"Everything that isn't the antibiotic", when:"every case",
+          fromLabel:"the non-drug half",
+          html:"<b>Elevate</b> the affected limb; paracetamol or ibuprofen for pain; fluids; <b>treat the portal</b> (topical antifungal for tinea pedis, ulcer care); manage predisposing conditions (diabetes, venous insufficiency, eczema, oedema). Consider a <b>swab only if the skin is broken</b> (NG141) — it guides treatment if the first choice fails."}
+       ]},
+       {b:"table", head:["Situation","Adults (NG141)","Children (NG141 choice; dose per BNFC)"], rows:[
+         ["First choice","Flucloxacillin 500 mg–1 g QDS, 5–7 days","Flucloxacillin; co-amoxiclav is an alternative first choice if flucloxacillin is unsuitable (if only the taste of the oral solution is the problem, consider flucloxacillin capsules)"],
+         ["Penicillin allergy","Clarithromycin 500 mg BD; erythromycin 500 mg QDS in pregnancy; or doxycycline 200 mg day 1 then 100 mg OD","Clarithromycin"],
+         ["Near eyes or nose","Co-amoxiclav 500/125 mg TDS, 7 days","Co-amoxiclav"],
+         ["Near eyes or nose + allergy","Clarithromycin 500 mg BD + metronidazole 400 mg TDS, 7 days","Clarithromycin + metronidazole"],
+         ["Severe / IV","Hospital or OPAT choice per NG141 table and local policy","Hospital; babies under 1 month — specialist advice"]
+       ]},
+       {b:"cards", items:[
+         {tone:"blue", h:"Course length and the “still red” problem", html:"Give 5–7 days based on clinical assessment. Explain that <b>the skin can take some time to return to normal</b> after the course, so residual redness at day 7 is not by itself a reason to extend or change antibiotics — look at pain, heat, swelling, spread and how the person feels.", src:"NICE NG141"},
+         {tone:"plain", h:"Stewardship", html:"Document the clinical indication, dose, route and duration or review date in the notes; review at every contact. Avoid back-to-back courses for chronic non-infective redness.", src:"NICE NG15 (2015)"},
+         {tone:"amber", h:"MRSA and previous results", html:"When choosing, take account of previous microbiology results and MRSA status. Known MRSA colonisation with a failing first-line course → discuss with microbiology.", src:"NICE NG141"},
+         {tone:"amber", h:"Uncommon pathogens", html:"Penetrating injury, exposure to fresh or salt water, or infection acquired outside the UK may mean unusual organisms — consider specialist or microbiology advice rather than standard flucloxacillin.", src:"NICE NG141"}
+       ]},
+       {b:"warn", html:"<b>Abscess:</b> a fluctuant, pointing collection needs <b>incision and drainage</b> — antibiotics alone will not clear pus. Drain (or refer for drainage) and send pus for culture."}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Special groups and special sites", sub:"Children, pregnancy, the face, bites, ulcers, water and lymphoedema each change the plan.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Children", html:"NG141 applies from 72 hours of age. <b>Children under 1 year</b> are at higher risk of complications — consider referral or specialist advice. Doses per BNFC. Periorbital (preseptal) cellulitis is commoner in children and can progress to orbital cellulitis: low threshold for same-day paediatric assessment. Assess sepsis with NG254.", src:"NICE NG141 · NICE NG254 (2025)"},
+         {tone:"blue", h:"Pregnancy", html:"Flucloxacillin is the first choice. If penicillin-allergic, <b>erythromycin 500 mg four times a day for 5–7 days</b>; <b>avoid doxycycline</b>. Pregnant or recently pregnant people who are unwell need a sepsis assessment using NICE NG255.", src:"NICE NG141 · NICE NG255 (2025)"},
+         {tone:"red", h:"Near the eyes or nose", html:"The area from the bridge of the nose to the corners of the mouth, or immediately around the eyes, carries a risk of serious intracranial complications. <b>Co-amoxiclav</b> (or clarithromycin + metronidazole) for 7 days, and consider referral or specialist advice. Any orbital sign → same-day emergency.", src:"NICE NG141"},
+         {tone:"amber", h:"Human and animal bites", html:"Cellulitis after a bite is managed under the bites guideline, not NG141: <b>co-amoxiclav</b> is the first choice for treating an infected bite, with alternatives for penicillin allergy set out in NG184. Assess tetanus and, where relevant, rabies and blood-borne virus risk.", src:"NICE NG184 (2020)"},
+         {tone:"amber", h:"Leg ulcer infection", html:"Redness around a chronic ulcer is often inflammation or colonisation, not infection. Offer antibiotics only with symptoms or signs of infection (e.g. redness or swelling spreading beyond the ulcer, localised warmth, increased pain or fever), per the leg ulcer guideline.", src:"NICE NG152 (2020)"},
+         {tone:"amber", h:"Diabetic foot", html:"Manage infection on a diabetic foot under NG19: clinical diagnosis, a soft-tissue or bone sample from the base of the debrided wound where possible, and referral to the multidisciplinary foot care service (immediately to acute services if limb- or life-threatening).", src:"NICE NG19 diabetic foot"},
+         {tone:"blue", h:"Lymphoedema", html:"People with lymphoedema get cellulitis repeatedly and each episode damages lymphatics further. The BLS/LSN guideline sets out antibiotic choice, duration, when to admit and when to start prophylaxis for this group — follow it and involve the lymphoedema service. Resume compression when it can be tolerated.", src:"BLS/LSN 2025 cellulitis in lymphoedema"},
+         {tone:"plain", h:"Older and frail people", html:"May present with confusion, falls or “off legs” rather than fever. Frailty is a trigger to consider referral. Check renal function and interactions (clarithromycin with statins, DOACs and QT-prolonging drugs — check BNF).", src:"NICE NG141 · BNF"}
+       ]},
+       {b:"why", html:"Facial cellulitis is singled out because venous drainage from the central face and orbit connects to the cavernous sinus. Co-amoxiclav (or clarithromycin plus metronidazole) is chosen to cover the wider range of organisms seen with sinus-related and facial infection."}
+     ]},
+
+    {id:"review", nav:"Review", title:"Review — not improving at 2–3 days", sub:"Mark the edge, give a clear trigger, and when it fails ask “why?” before reaching for a stronger antibiotic.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Marked border + symptoms","If worsening rapidly at any time, or not improving within <b>2–3 days</b>","Reassess: other diagnoses, complications (orbital cellulitis, septic arthritis, osteomyelitis, lymphangitis, necrotising fasciitis, sepsis), uncommon or resistant bacteria"],
+         ["IV antibiotics","By <b>48 hours</b>","Switch to oral if possible (hospital/OPAT)"],
+         ["End of course","Day 5–7","Confirm improving; residual redness alone is not treatment failure; extend only if genuinely still active"],
+         ["Portal of entry","Every contact","Tinea pedis treated, ulcer care in place, eczema controlled, oedema managed"],
+         ["Recurrence","After each episode","Count episodes in 12 months; review predisposing factors; involve lymphoedema/dermatology service if recurring"]
+       ]},
+       {b:"tiles", v:"safety", items:[
+         {t:"1 · Is it cellulitis at all?", html:"Bilateral, chronic, itchy, not spreading? → venous eczema, lipodermatosclerosis, lymphoedema. Stop antibiotics and treat the real cause."},
+         {t:"2 · A missed emergency", html:"Pain out of proportion (necrotising fasciitis), hot swollen calf (DVT), hot immobile joint (septic arthritis), bone under an ulcer (osteomyelitis)."},
+         {t:"3 · Dose and adherence", html:"Actually taking flucloxacillin four times a day, at the stated dose, away from food? QDS regimens are often missed."},
+         {t:"4 · Abscess", html:"A fluctuant collection needs drainage — antibiotics will not clear pus."},
+         {t:"5 · Organism", html:"MRSA history, water exposure, bite, travel, immunosuppression → swab if broken skin, microbiology advice, consider hospital."},
+         {t:"6 · Portal still open", html:"Untreated tinea pedis or an open ulcer keeps reseeding the infection."}
+       ]},
+       {b:"why", html:"Oedema and inflammation can make the area look worse for the first 24–48 hours even when treatment is working. That is why the review trigger combines spread beyond the line with systemic features and pain — not the colour alone."}
+     ]},
+
+    {id:"recurrence", nav:"Recurrence", title:"Recurrent cellulitis, prophylaxis and lymphoedema", sub:"Prevention is mostly skin and oedema care. Antibiotic prophylaxis is specialist-led in NG141.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"Manage predisposing conditions", html:"Diabetes, venous insufficiency, eczema, oedema and lymphoedema. Treat tinea pedis and keep toe webs dry; moisturise dry cracked skin; weight management; treat venous disease; compression (after checking arterial supply) once the acute episode has settled.", src:"NICE NG141 · BLS/LSN 2025"},
+         {tone:"red", h:"Do not routinely offer prophylaxis", html:"NG141 says <b>do not routinely offer antibiotic prophylaxis</b> to prevent recurrent cellulitis or erysipelas. Give advice about seeking medical help if symptoms recur.", src:"NICE NG141"},
+         {tone:"amber", h:"When a specialist may consider it", html:"For adults treated in hospital or under specialist advice for <b>at least 2 separate episodes in the previous 12 months</b>, specialists may consider a trial of antibiotic prophylaxis, using shared decision-making (frequency and severity of episodes, the person's preferences, resistance and adverse effects).", src:"NICE NG141"},
+         {tone:"amber", h:"Review prophylaxis at least every 6 months", html:"Review effectiveness, adverse effects, continued need and resistance at least every 6 months. The protective effect fades after stopping, so weigh this with the patient.", src:"NICE NG141"},
+         {tone:"blue", h:"Lymphoedema-specific guidance", html:"For people with lymphoedema the BLS/LSN guideline (revised August 2025) covers antibiotic choice for acute episodes, prophylaxis criteria and review, and non-drug risk reduction — use it alongside NG141 and refer to the lymphoedema service. Follow its doses; confirm in BNF.", src:"BLS/LSN 2025 cellulitis in lymphoedema"}
+       ]},
+       {b:"why", label:"Why the evidence is cautious", html:"The PATCH I trial (NEJM 2013) of low-dose penicillin V for 12 months in people with recurrent leg cellulitis reduced recurrences while it was being taken, but the benefit waned after it stopped. Prophylaxis therefore buys time; it does not replace treating oedema, skin breaks and tinea. That, and resistance, is why NG141 makes it a specialist decision with 6-monthly review."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral — who, how fast, where", sub:"Urgency first, then destination. Send observations, the marked border (or a photo), allergy status and antibiotics already given.",
+     blocks:[
+       {b:"table", head:["Urgency","Who","Where / what to send"], rows:[
+         ["<b>999</b>","Suspected necrotising fasciitis; high-risk sepsis (NG253/NG254); Eron IV","ED / surgical team; observations, time of first symptoms, allergies"],
+         ["<b>Same day</b>","Orbital signs; septic arthritis or osteomyelitis; Eron III; severe or rapidly spreading infection; child under 1 who is unwell; diabetic foot with severe infection","Ophthalmology/ENT (eye), paediatrics, medical/surgical take or SDEC per local pathway"],
+         ["<b>Same day / next day advice</b>","Eron II; periorbital (preseptal) cellulitis; infection near eyes or nose; lymphangitis; failing oral antibiotics; cannot take oral antibiotics; frail or immunocompromised","SDEC, OPAT or virtual ward; discuss with microbiology for unusual organisms"],
+         ["<b>Routine</b>","Recurrent cellulitis; lymphoedema; diagnostic doubt (?venous eczema, ?lipodermatosclerosis); non-healing ulcer","Lymphoedema service, dermatology, tissue viability or vascular (leg ulcer) service"]
+       ]},
+       {b:"say", html:"Most cellulitis clears with tablets, rest and keeping the leg up. But if you become unwell, or it isn't turning the corner after two or three days, a short spell of drip antibiotics — sometimes at home through the community team — sorts it quickly. Either way we'll treat whatever let the infection in, so it doesn't keep coming back."}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Safety-netting — what the patient must know", sub:"Give a concrete trigger, a time frame and a route. Write it in the notes.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Call 999 or go to A&amp;E", html:"“If the pain becomes severe and out of keeping with how the skin looks, the skin turns dark, purple or blistered, or you feel very unwell — cold and clammy, confused, very breathless, or passing little urine.”", src:"NICE NG141 · NICE NG253 (2025)"},
+         {tone:"amber", h:"🟠 Contact us the same day", html:"“If the redness spreads well past the line I've drawn, you get fever or shivering, or it isn't starting to get better within 2 to 3 days.”", src:"NICE NG141"},
+         {tone:"red", h:"👁 Face and eyes", html:"“If your eye starts to bulge, it hurts to move your eye, you see double or your vision gets blurred — go to A&amp;E straight away.”", src:"NICE NG141"},
+         {tone:"blue", h:"⏳ It fades slowly", html:"“The redness can take a while to fade even after the tablets finish — that's normal if the pain, heat and swelling are going.”", src:"NICE NG141"},
+         {tone:"green", h:"🦶 The way in", html:"“Athlete's foot, cracked skin or a leg ulcer is often how the germ gets in. Treating that is how we stop it coming back.”", src:"NICE NG141"}
+       ]},
+       {b:"say", html:"This is a skin infection called cellulitis. I've drawn around the edge of the redness so we can both see whether it's spreading. Take the flucloxacillin four times a day on an empty stomach, before food, for the full course, and keep your leg raised above hip level when you're sitting. It should start to feel better in two or three days, though the redness can take longer to fade. If it spreads past the line, you get fever or shivers, or it isn't improving in two to three days, contact us the same day. If the pain becomes severe and out of keeping with how it looks, or you feel very unwell, call 999."}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"The errors that recur in complaints, audits and exam stations.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Treating bilateral red legs as cellulitis","Usually venous eczema or lipodermatosclerosis — check for itch, scale, chronicity, varicose veins, and whether the patient is well"],
+         ["Missing necrotising fasciitis","Pain out of proportion is the early sign. Re-examine anyone with severe pain and modest skin changes, and do not reassure over the phone"],
+         ["Missing orbital involvement","Check eye movements, acuity and colour vision in every case of periorbital swelling, especially in children"],
+         ["Under-treating the face","Infection near the eyes or nose needs co-amoxiclav (or clarithromycin + metronidazole) for 7 days and consideration of referral"],
+         ["Doxycycline in pregnancy or young children","Use erythromycin in pregnancy if penicillin-allergic; doxycycline is not for children under 12"],
+         ["Changing antibiotics for residual redness","Skin takes time to settle; judge pain, heat, swelling and spread"],
+         ["Ignoring the portal","Not treating tinea pedis or oedema guarantees recurrence"],
+         ["Reflex prophylaxis","NG141: not routinely; specialist-led, after 2+ treated episodes in 12 months, reviewed 6-monthly"],
+         ["Using NG141 for bites or diabetic feet","Bites → NG184; diabetic foot → NG19; leg ulcer infection → NG152"],
+         ["No documented safety-net","Record the trigger (2–3 days / spread past line), the route (same day vs 999) and that the patient understood"]
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card — a classic scenario and what the examiner is looking for.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"plain", h:"Classic scenario", html:"A 72-year-old woman with heart failure and varicose veins phones asking for “antibiotics for cellulitis again” — her third course this year. On video both shins are red, itchy and scaly, she is afebrile and feels well. Her daughter wants her “on something permanent”."},
+       {tone:"plain", h:"Examiner-style checkpoints", html:"Recognises that bilateral chronic itchy redness in a well patient is probably venous eczema, not cellulitis; explains why antibiotics will not help without dismissing the concern; offers emollient, topical steroid and a plan for oedema and compression after arterial assessment; addresses the prophylaxis request honestly (NG141: not routine, specialist-led); arranges review; and safety-nets for true cellulitis (one leg, hot, painful, spreading, feeling unwell)."},
+       {tone:"plain", h:"Variant — the one you must not miss", html:"A 45-year-old man with diabetes and a small cut on the shin 24 hours ago now has severe pain, a faintly red leg, a heart rate of 120 and feels awful. The checkpoint is recognising pain out of proportion, sepsis risk and possible necrotising fasciitis, and arranging a 999 transfer rather than oral antibiotics."},
+       {tone:"plain", h:"Variant — the child's eye", html:"A 4-year-old with a swollen red eyelid after a cold. The checkpoints are examining eye movements, vision and proptosis, distinguishing preseptal from orbital cellulitis, and arranging same-day paediatric assessment, with clear safety-netting for the parent."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every recommendation on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG141 — Cellulitis and erysipelas: antimicrobial prescribing (September 2019)</b><br><a href="https://www.nice.org.uk/guidance/ng141" rel="noopener">nice.org.uk/guidance/ng141</a><span class="rd"> — excluding other causes, marking, oral-first, 5–7 day course, adult doses, allergy, pregnancy, near eyes/nose, reassessment triggers, referral, prophylaxis</span></li>'+
+         '<li><b>NICE NG253 — Suspected sepsis in people aged 16 or over</b> and <b>NICE NG254 — Suspected sepsis in under 16s</b> (2025; replaced NG51)<span class="rd"> — sepsis risk assessment</span></li>'+
+         '<li><b>NICE NG255 — Suspected sepsis in pregnant or recently pregnant people</b> (2025)</li>'+
+         '<li><b>NICE NG184 — Human and animal bites: antimicrobial prescribing (2020)</b></li>'+
+         '<li><b>NICE NG152 — Leg ulcer infection: antimicrobial prescribing (2020)</b> · <b>NICE NG19 — Diabetic foot problems</b></li>'+
+         '<li><b>NICE NG15 — Antimicrobial stewardship: systems and processes (2015)</b></li>'+
+         '<li><b>NICE NG158 — Venous thromboembolic diseases</b> · <b>NICE NG219 — Gout</b><span class="rd"> — mimics</span></li>'+
+         '<li><b>British Lymphology Society &amp; Lymphoedema Support Network — Guidelines on the management of cellulitis in lymphoedema (revised August 2025)</b><br><a href="https://www.thebls.com/public/uploads/documents/document-91311757952788.pdf" rel="noopener">thebls.com</a></li>'+
+         '<li><b>Eron classification</b> (Eron et al., J Antimicrob Chemother 2003) as adopted in <b>CREST — Guidelines on the management of cellulitis in adults (2005, Northern Ireland)</b><span class="rd"> — severity classes and place of care</span></li>'+
+         '<li><b>Primary Care Dermatology Society — Necrotising fasciitis</b> · <b>UKHSA — Group A strep: what you need to know (2022)</b><span class="rd"> — necrotising fasciitis features; chickenpox and invasive group A strep</span></li>'+
+         '<li><b>College of Optometrists — Clinical Management Guideline: preseptal and orbital cellulitis</b> · <b>ENT UK orbital cellulitis pathway (2017)</b><span class="rd"> — orbital red flags</span></li>'+
+         '<li><b>BNF / BNFC</b><span class="rd"> — all doses not stated in NG141, including children’s doses and administration advice</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Cellulitis and erysipelas in adults and children — NICE NG141 (2019), NICE NG253/NG254/NG255 sepsis (2025), NICE NG184 bites (2020), NICE NG152 leg ulcer infection (2020), NICE NG15 antimicrobial stewardship (2015), BLS/LSN cellulitis in lymphoedema (2025) and the Eron/CREST 2005 severity classification. Necrotising fasciitis, sepsis and orbital cellulitis are emergencies; bilateral lower-leg redness is rarely infective. Adult doses are those stated in NG141; children’s doses per BNFC. Verify all doses against the current BNF/BNFC and local antimicrobial guidance before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

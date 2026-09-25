@@ -10,12 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Male LUTS protocol">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"\u{1F6BA}",
@@ -50,7 +50,7 @@ MG.render({
     {title:"Characterise the symptoms", html:"<b>Voiding versus storage versus post-micturition</b>, with <b>IPSS plus the bother score</b> and a <b>3-day frequency-volume chart</b>. Consider the full differential \u2014 LUTS in men is not a synonym for BPH."},
     {title:"Do the mandatory work-up", html:"<b>Urine dipstick, U&amp;E, DRE</b> in every man; <b>PSA after a documented discussion</b>; post-void residual where retention is possible. <b>Do not over-investigate mild uncomplicated LUTS.</b>"},
     {title:"Conservative first, then by phenotype", html:"Fluid timing, caffeine and alcohol, bladder retraining, double voiding, pelvic floor, weight, activity, constipation, <b>medication review \u2014 which can be curative on its own</b>. Then the drug that matches the pattern."},
-    {title:"Review with the right clock", html:"<b>4\u20136 weeks</b> for an alpha-blocker (IPSS, postural BP), <b>3\u20136 months</b> for a 5-ARI, <b>sodium on day 3 and day 7</b> for desmopressin, then annual IPSS, PSA trend, DRE and renal function."}
+    {title:"Review with the right clock", html:"<b>4\u20136 weeks</b> for an alpha-blocker (IPSS, postural BP), <b>3\u20136 months</b> for a 5-ARI, <b>sodium at baseline and day 3</b> for desmopressin (plus day 4\u20138 and one month if 65 or over), then annual IPSS, PSA trend, DRE and renal function."}
   ],
   sections:[
 
@@ -118,7 +118,7 @@ MG.render({
          ["<b>Post-void residual (PVR)</b>","Bladder ultrasound after voiding, where retention is possible","A PVR &gt;300 mL is chronic urinary retention and an absolute indication for urology referral regardless of symptom severity \u2014 silent retention causes progressive renal failure. Also check it before any antimuscarinic \u2014 avoid if &gt;150 mL; confirm &lt;150 mL first"],
          ["<b>Not routinely needed in primary care</b>","\u2014","Uroflowmetry, urodynamics and transrectal ultrasound are secondary care. PSA velocity needs serial measurements over time"]
        ]},
-       {b:"warn", html:"The two sources for this page give different age-specific PSA thresholds, so both are stated rather than one silently chosen. NICE working thresholds \u2014 refer if PSA is at or above: \u2265 3.0 ng/mL at 50\u201359, \u2265 4.0 at 60\u201369, \u2265 5.0 at \u226570, with a lower threshold of 2.5\u20133.5 in the 40s where there is a family history or Black ethnicity. Some sources (including EAU-derived tables) instead use upper limits of normal of &lt;2.5 at age &lt;50, &lt;3.5 at 50\u201359, &lt;4.5 at 60\u201369 and &lt;6.5 at \u226570. Use your local laboratory's age-specific reference range and the current NICE figures \u2014 and remember the principle that matters more than the number: <b>an abnormal DRE goes on the cancer pathway whatever the PSA</b>."}
+       {b:"warn", html:"<b>Age-specific PSA thresholds for men with symptoms (NICE NG12):</b> refer on the suspected-cancer pathway if PSA is above <b>2.5 ng/mL at 40\u201349, 3.5 at 50\u201359, 4.5 at 60\u201369 and 6.5 at 70\u201379</b>; use clinical judgement under 40 and at 80 or over. For asymptomatic men aged 50\u201369 who choose a test, the Prostate Cancer Risk Management Programme threshold is <b>\u2265 3.0 ng/mL</b>. Remember the principle that matters more than the number: <b>an abnormal DRE goes on the cancer pathway whatever the PSA</b>."}
      ]},
 
     {id:"lifestyle", nav:"Conservative", title:"Conservative measures \u2014 first-line, not optional",
@@ -154,7 +154,7 @@ MG.render({
           html:"<b>Solifenacin 5 mg OD</b> (preferred anticholinergic \u2014 once daily, well tolerated), tolterodine 2 mg BD, or oxybutynin \u2014 <b>avoid oxybutynin in the frail elderly</b>. <b>Mirabegron 50 mg OD</b> (beta-3 agonist, <b>NICE TA290</b>) where anticholinergic burden or cognitive concern applies; check BP and avoid in severe uncontrolled hypertension. Check the PVR before starting \u2014 avoid if &gt;150 mL (confirm &lt;150 mL). Can be added to an alpha-blocker for mixed symptoms."},
          {step:"Step 5", title:"Desmopressin \u2014 confirmed nocturnal polyuria only", when:"diary confirms it and fluid measures have failed",
           fromLabel:"treat the real driver first",
-          html:"<b>Desmopressin 25\u2013100 micrograms nocte</b> (oral or intranasal; 50\u2013100 micrograms is the usual range). Check sodium at baseline, day 3 and day 7, then periodically \u2014 stop if hyponatraemic. Avoid if eGFR &lt;50, in heart failure, on diuretics, and with caution in men &gt;65 with cardiac or renal disease. Treat the actual driver where there is one \u2014 OSA, ankle oedema, evening diuretic, poorly controlled diabetes or heart failure."},
+          html:"<b>Oral desmopressin 100 micrograms at bedtime</b>, increased weekly only if needed to 200 then 400 micrograms (Desmotabs SmPC), or <b>Noqdirna 50 micrograms sublingually</b> 1 hour before bedtime in men (Noqdirna SmPC). Check sodium at baseline and <b>3 days after starting</b> or after any dose increase (NICE CG97) \u2014 stop if below normal. Initiation over 65 is not recommended (Desmotabs SmPC); if used at 65 or over, check sodium at baseline, day 4\u20138 and one month and do not exceed 50 micrograms of Noqdirna (Noqdirna SmPC). Avoid if eGFR &lt;50, in heart failure and on diuretics. Treat the actual driver where there is one \u2014 OSA, ankle oedema, evening diuretic, poorly controlled diabetes or heart failure."},
          {step:"Step 6", title:"Refer for surgery", when:"refractory after 6 months of optimised therapy",
           fromLabel:"maximal medical therapy failed",
           html:"<b>TURP, HoLEP</b>, or the day-case alternatives <b>Rezum and Urolift</b>; also <b>prostate artery embolisation</b>. <b>Success is around 70\u201380%.</b>"}
@@ -174,7 +174,7 @@ MG.render({
          ["Watchful waiting","If IPSS \u22647","Review at 12 months; reassess sooner if IPSS worsens by \u22653 points"],
          ["<b>PSA surveillance</b>","Annual, unless already in a surveillance programme","A PSA doubling time under 2 years is an urgent urology referral \u2014 velocity is more sensitive for clinically significant cancer than the absolute value. A rising PSA on a 5-ARI, even when \u201cnormal\u201d, is urgent."],
          ["<b>Medication safety</b>","Annual","Review anticholinergic burden \u2014 switch men >65 from an antimuscarinic to mirabegron (STOPP/START recommends deprescribing; longitudinal studies show HR 1.2\u20131.4 for cognitive decline)"],
-         ["Sodium on desmopressin","<b>Baseline, day 3, day 7, then periodically</b>","Stop if hyponatraemic \u2014 hyponatraemia is the risk that governs this drug"]
+         ["Sodium on desmopressin","<b>Baseline and 3 days after starting or any dose increase</b> (NICE CG97); if 65 or over, baseline, day 4\u20138 and one month (Noqdirna SmPC), then periodically","Stop if hyponatraemic \u2014 hyponatraemia is the risk that governs this drug"]
        ]},
        {b:"cards", items:[
          
@@ -228,10 +228,10 @@ MG.render({
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
          '<li>NICE CG97 \u2014 Lower urinary tract symptoms in men (2010, updated 2015)<br><a href="https://www.nice.org.uk/guidance/cg97" rel="noopener">nice.org.uk/guidance/cg97</a><span class="rd"> \u2014 IPSS, conservative measures as first-line, the drug ladder by phenotype, and support for primary care pharmacotherapy trials. Some references cite this guidance as NG97 following renumbering \u2014 check the current NICE listing</span></li>'+
          '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 prostate: suspected-cancer pathway for a malignant-feeling DRE or a PSA above the age-specific range; bladder and renal: visible haematuria at 45 and over, non-visible haematuria at 60 and over with dysuria or raised WCC</span></li>'+
-         '<li><b>NICE CG97 \u2014 Lower urinary tract symptoms in men: management</b><br><a href="https://www.nice.org.uk/guidance/cg97" rel="noopener">nice.org.uk/guidance/cg97</a><span class="rd"> \u2014 the age-specific PSA referral thresholds used on this page (\u2265 3.0 at 50\u201359, \u2265 4.0 at 60\u201369, \u2265 5.0 at \u226570; 2.5\u20133.5 in the 40s with family history or Black ethnicity)</span></li>'+
+         '<li><b>NICE CG97 \u2014 Lower urinary tract symptoms in men: management</b><br><a href="https://www.nice.org.uk/guidance/cg97" rel="noopener">nice.org.uk/guidance/cg97</a><span class="rd"> \u2014 drug ladder, desmopressin for nocturnal polyuria and sodium check at 3 days (CG97 does not set PSA referral thresholds; those on this page come from NICE NG12)</span></li>'+
          '<li><b>NICE TA290 \u2014 Mirabegron for overactive bladder</b><br><a href="https://www.nice.org.uk/guidance/ta290" rel="noopener">nice.org.uk/guidance/ta290</a><span class="rd"> \u2014 the beta-3 agonist option, and the case for it over antimuscarinics where anticholinergic burden matters</span></li>'+
          '<li><b>MTOPS (NEJM 2003) and CombAT (BJU Int 2010)</b><span class="rd"> \u2014 combination alpha-blocker plus 5-ARI reduces clinical progression by 67% versus monotherapy, and is most cost-effective in men at high progression risk</span></li>'+
-         '<li>EAU Guidelines on Non-neurogenic Male LUTS (2023) \u00b7 SIGN 120 \u00b7 NICE QS45<span class="rd"> \u2014 IPSS as the tracked outcome measure, and the alternative age-specific PSA upper limits of normal quoted in the work-up section</span></li>'+
+         '<li>EAU Guidelines on Non-neurogenic Male LUTS (2023) \u00b7 SIGN 120 \u00b7 NICE QS45<span class="rd"> \u2014 IPSS as the tracked outcome measure</span></li>'+
          '<li><b>STOPP/START v3 criteria</b><span class="rd"> \u2014 deprescribing antimuscarinics in men over 65, and the cognitive-decline association (HR 1.2\u20131.4) behind the annual anticholinergic burden review</span></li>'+
          '<li><b>Cochrane systematic review (2014) \u2014 bladder training</b><span class="rd"> \u2014 urgency episodes reduced by about 50%, with efficacy similar to antimuscarinics at 6 months and better long-term adherence</span></li>'+
          '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: tamsulosin, alfuzosin, doxazosin, finasteride, dutasteride, solifenacin, tolterodine, oxybutynin, mirabegron, desmopressin, tadalafil</span></li>'+

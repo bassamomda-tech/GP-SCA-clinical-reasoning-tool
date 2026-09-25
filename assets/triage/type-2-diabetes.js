@@ -74,8 +74,8 @@ RGPTriage.register('type-2-diabetes-triage', {
       tier:'emergency',
       label:'Sepsis with hyperglycaemia — high NEWS2 + infection source',
       action:'Call 999 — sepsis pathway',
-      source:'NICE NG51',
-      sourceUrl:'https://www.nice.org.uk/guidance/ng51',
+      source:'NICE NG253',
+      sourceUrl:'https://www.nice.org.uk/guidance/ng253',
       patientPhrase:'"You\'ve got signs of a serious infection. I need to send you in straight away."',
       when: i => i.fever_unwell && i.hr != null && i.hr > 110 && i.rr != null && i.rr > 22
     },

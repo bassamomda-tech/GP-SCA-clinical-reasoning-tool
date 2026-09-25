@@ -18,7 +18,7 @@ MedChooser.register('ibs', {
     // Red flags (NG12)
     { group:'Red flags (exclude cancer first)', id:'rectal_bleed', label:'Rectal bleeding' },
     { group:'Red flags (exclude cancer first)', id:'weight_loss', label:'Unexplained weight loss' },
-    { group:'Red flags (exclude cancer first)', id:'change_60', label:'Change in bowel habit, age ≥60' },
+    { group:'Red flags (exclude cancer first)', id:'change_60', label:'Persistent change in bowel habit (FIT)' },
     { group:'Red flags (exclude cancer first)', id:'mass', label:'Abdominal / rectal mass' },
     { group:'Red flags (exclude cancer first)', id:'anaemia', label:'Iron-deficiency anaemia' },
     { group:'Red flags (exclude cancer first)', id:'fh_ca', label:'FH bowel or ovarian cancer' },
@@ -42,7 +42,7 @@ MedChooser.register('ibs', {
   flags: (f) => {
     const out = [];
     const ng12 = f.rectal_bleed || f.weight_loss || f.change_60 || f.mass || f.anaemia || f.night;
-    if (ng12) out.push({ tone:'red', text:'NICE NG12 — alarm feature present: this is NOT IBS until cancer excluded. FIT + FBC/ferritin; refer on the suspected lower-GI cancer (2WW) pathway. Abdominal/rectal mass → examine + urgent referral.' });
+    if (ng12) out.push({ tone:'red', text:'NICE NG12 — alarm feature present: this is NOT IBS until cancer excluded. FIT + FBC/ferritin; refer on the suspected lower-GI cancer (2WW) pathway if FIT ≥10 µg Hb/g. Abdominal/rectal mass → examine + urgent referral.' });
     if (f.fh_ca) out.push({ tone:'amber', text:'FH bowel/ovarian cancer — consider CA-125 if ovarian features; lower threshold for FIT and referral' });
     if (f.preg) out.push({ tone:'amber', text:'Pregnancy/breastfeeding — most IBS drugs restricted; bulk-forming laxatives + dietary measures first' });
     return out;

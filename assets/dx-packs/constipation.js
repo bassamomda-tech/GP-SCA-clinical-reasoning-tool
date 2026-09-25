@@ -19,7 +19,7 @@
     { group: 'Secondary-cause clues', id: 'hypercalc_sx', kind: 'check', label: 'Thirst / polyuria / confusion / bone pain (calcium)' },
     { group: 'Secondary-cause clues', id: 'neuro', kind: 'check', label: 'Neuro disease (Parkinson\u2019s, MS, cord lesion) / new neuro signs' },
 
-    { group: 'Red flags', id: 'new_change', kind: 'check', label: 'New onset / change in bowel habit (esp. ≥60)' },
+    { group: 'Red flags', id: 'new_change', kind: 'check', label: 'New onset / change in bowel habit (FIT at any age)' },
     { group: 'Red flags', id: 'rectal_bleed', kind: 'check', label: 'Rectal bleeding' },
     { group: 'Red flags', id: 'weight_loss', kind: 'check', label: 'Unintentional weight loss' },
     { group: 'Red flags', id: 'mass_anaemia', kind: 'check', label: 'Abdominal / rectal mass / iron-deficiency anaemia' },

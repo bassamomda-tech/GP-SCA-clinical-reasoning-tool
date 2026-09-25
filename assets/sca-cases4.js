@@ -33,7 +33,7 @@
     checkpoints:[
       { dom:'tasks', text:'Reads the picture out loud: Hb 96 + MCV 72 + ferritin 9 = iron-deficiency anaemia — and states that in a 68-year-old this is a FIND-THE-BLEED problem, not a diet problem' },
       { dom:'tasks', text:'Takes the GI history her framing was hiding: dyspepsia, darker stools, weight, NSAID/aspirin use — and dismantles the diet story gently with her own facts (chicken, fish, eggs)' },
-      { dom:'tasks', text:'Orders the right work-up: FIT test (NICE NG12/DG56 — FIT \u226510 \u00b5g Hb/g triggers 2WW lower-GI referral), coeliac serology, and flags that upper symptoms + IDA usually means OGD as well' },
+      { dom:'tasks', text:'Orders the right work-up: FIT test (NICE NG12 / HTG690 — FIT \u226510 \u00b5g Hb/g triggers 2WW lower-GI referral), coeliac serology, and flags that upper symptoms + IDA usually means OGD as well' },
       { dom:'tasks', text:'Starts iron correctly as TREATMENT alongside — not instead of — investigation: one tablet daily, vitamin C, dark stools warned, recheck in 2\u20134 weeks' },
       { dom:'rto',   text:'Hears the Brian constraint in minute one and addresses it as part of the plan, not an obstacle to it — carer\u2019s assessment, respite options, the daughter loop' },
       { dom:'rto',   text:'Names the pre-built story for what it is, kindly: "the diet explanation was doing a job for you — let\u2019s deal with what it was protecting you from"' },
@@ -50,11 +50,11 @@
     ],
     learning:'Iron-deficiency anaemia in anyone over 60 is a gastrointestinal blood loss problem until proven otherwise — NICE NG12 offers FIT, and FIT \u226510 \u00b5g Hb/g mandates 2WW lower-GI referral; coexisting upper symptoms usually add an OGD, plus coeliac serology for everyone. Prescribing iron without investigating the cause is the classic fail. The hidden agenda is the consultation: she is a sole carer whose real terror is leaving her husband — investigation only happens if the candidate plans around Brian out loud.',
     knowledge:{
-      guideline:'NICE NG12 (May 2025) + DG56 FIT · BSG iron-deficiency anaemia guideline',
+      guideline:'NICE NG12 (May 2025) + HTG690 FIT · BSG iron-deficiency anaemia guideline',
       points:[
         { h:'Diagnose the pattern', t:'Hb 96 + MCV 72 + ferritin 9 = unequivocal iron-deficiency anaemia. Over 60, IDA = occult GI blood loss until excluded — diet alone almost never empties ferritin to single figures in someone eating chicken, fish and eggs.' },
         { h:'Red flags & same-day action', t:'Melaena, haematemesis, syncope, chest pain or breathlessness at rest with Hb <100 → same-day admission. Her "darker stools for 2\u20133 months" is the buried red flag the diet story was built to cover — it must be asked for directly.' },
-        { h:'Investigate', t:'FIT (NICE NG12/DG56): \u226510 \u00b5g Hb/g → 2WW lower-GI referral. Coeliac serology (TTG-IgA) for all IDA. Dyspepsia + weight change + IDA = discuss upper-GI scope (OGD) — many centres do bidirectional endoscopy for IDA at this age. Review NSAID/aspirin use.' },
+        { h:'Investigate', t:'FIT (NICE NG12 / HTG690): \u226510 \u00b5g Hb/g → 2WW lower-GI referral. Coeliac serology (TTG-IgA) for all IDA. Dyspepsia + weight change + IDA = discuss upper-GI scope (OGD) — many centres do bidirectional endoscopy for IDA at this age. Review NSAID/aspirin use.' },
         { h:'Refer — the thresholds out loud', t:'FIT \u226510 → urgent suspected-cancer (2WW) colorectal pathway, NICE NG12, named as such. Do not let a negative FIT close the case if symptoms persist — ongoing unexplained IDA still warrants referral discussion.' },
         { h:'Manage alongside', t:'Ferrous sulfate/fumarate once daily (alternate-day dosing if intolerant), with vitamin C; warn about black stools (and that this must not mask NEW melaena); recheck FBC at 2\u20134 weeks expecting Hb rise ~10 g/L; continue 3 months past normalisation to refill stores.' },
         { h:'Safety-net & follow-up', t:'999/same-day triggers said in plain words (tarry stools, blood, faintness, chest tightness); FIT kit returned this week with a chase date; named GP follow-up call for every result; carer\u2019s assessment referral documented so the plan survives her cancelling.' },

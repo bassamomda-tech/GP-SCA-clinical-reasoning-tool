@@ -59,7 +59,7 @@ RGPTriage.register('hypertension-triage', {
       tier:'emergency',
       label:'Suspected aortic dissection — high BP + interscapular pain',
       action:'Call 999 — CT aortogram in hospital',
-      source:'NICE CG175 / ACS pathway',
+      source:'Clinical red flag (no NICE guideline for aortic dissection)',
       patientPhrase:'"Your pattern of pain with this blood pressure can be a tear in a major artery — I need to send you in urgently."',
       referralTemplate:'? Aortic dissection.\nBP [SBP]/[DBP], inter-arm difference [value]. Chest/back pain radiating.',
       when: i => i.chest_pain && i.sbp != null && i.sbp >= 160

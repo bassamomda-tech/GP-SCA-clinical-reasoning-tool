@@ -69,9 +69,38 @@
       var printHref = location.pathname.replace(/\.html$/, '-print.html');
       var hasCopy = false;
       fetch(printHref, { method: 'HEAD' }).then(function(r){ hasCopy = r.ok; }).catch(function(){});
+      /* Print the paginated copy from a hidden same-origin frame, so the print
+         dialog opens straight away and the reader stays on the protocol.
+         The copy is laid out at A4 width so doc-page paginates correctly. */
+      function printCopy(){
+        printBtn.disabled = true;
+        var lbl = printBtn.querySelector('.lbl'), old = lbl ? lbl.textContent : '';
+        if (lbl) lbl.textContent = 'Preparing…';
+        var done = function(){ printBtn.disabled = false; if (lbl) lbl.textContent = old; };
+        var f = document.createElement('iframe');
+        f.setAttribute('aria-hidden','true'); f.tabIndex = -1;
+        f.style.cssText = 'position:fixed;left:-10000px;top:0;width:820px;height:1160px;border:0;visibility:hidden';
+        f.onload = function(){
+          var w = f.contentWindow;
+          var go = function(){
+            try { w.focus(); w.print(); }
+            catch(e){ window.location.href = printHref; }
+            done();
+            setTimeout(function(){ if (f.parentNode) f.parentNode.removeChild(f); }, 60000);
+          };
+          var ready = (w.document.fonts && w.document.fonts.ready) ? w.document.fonts.ready : Promise.resolve();
+          ready.then(function(){ setTimeout(go, 900); }, function(){ setTimeout(go, 900); });
+        };
+        f.onerror = function(){ done(); window.location.href = printHref; };
+        f.src = printHref;
+        document.body.appendChild(f);
+      }
       printBtn.addEventListener('click', function(){
-        if (hasCopy) window.location.href = printHref;
-        else window.print();
+        if (hasCopy) { printCopy(); return; }
+        /* The HEAD check may not have finished (slow network, cache) — check again before falling back. */
+        fetch(printHref, { method: 'GET', cache: 'no-store' }).then(function(r){
+          if (r.ok) printCopy(); else window.print();
+        }).catch(function(){ window.print(); });
       });
     }
     document.body.insertBefore(bar, document.body.firstChild);

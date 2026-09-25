@@ -4,90 +4,127 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Greater Trochanteric Pain Syndrome — Protocol · Reasoning GP</title>
+<meta name="description" content="Greater trochanteric pain syndrome in adults: confirming lateral hip pain from gluteal tendinopathy, excluding the hip joint, spine and red flags, progressive loading, selective injection and when to image or refer." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/greater-trochanteric-pain-syndrome.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="GTPS management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🦵",
-  title:"Greater Trochanteric Pain Syndrome",
-  stemTitle:"GTPS (gluteal tendinopathy) \u2014 lateral hip pain, load-managed",
-  stemSub:"Primary-care management of greater trochanteric pain syndrome \u2014 recognise lateral hip pain from gluteal tendinopathy/bursitis, distinguish it from hip OA and referred spinal pain, and treat with load management, physiotherapy and selective injection.",
-  guideline:"NICE HTG248 (shockwave therapy)",
-  glance:[
-    {lbl:"Hallmark", val:"Lateral hip pain", sub:"tender over trochanter"},
-    {lbl:"Worse", val:"Lying on side / stairs", sub:"single-leg stance"},
-    {lbl:"1st-line", val:"Load management + physio", sub:"gluteal strengthening"},
-    {lbl:"Pain relief", val:"Analgesia / topical NSAID", sub:"short-term"},
-    {lbl:"Selective", val:"Corticosteroid injection", sub:"short-term relief"},
-    {lbl:"Exclude", val:"Hip OA / spinal referral", sub:"groin pain = hip joint"}
+  title:"Greater trochanteric pain syndrome — the complete guide",
+  eyebrow:"Protocol · adults · lateral hip pain",
+  stemTitle:"GTPS is a clinical syndrome of lateral hip pain, usually gluteal tendinopathy — confirm it on examination, exclude the hip joint, the spine and red flags, then educate and progressively reload",
+  stemSub:"For <b>suspected or clinically diagnosed GTPS</b> in primary care. GTPS is lateral peritrochanteric hip pain, most commonly from gluteus medius/minimus tendinopathy, with or without bursopathy or partial tendon tearing. Confirm it with a focused hip, lumbar and neurological examination, and exclude intra-articular hip disease, fracture, systemic disease and referred spinal pain. <b>First-line care is education, reducing compressive load and progressive gluteal strengthening.</b> Analgesia supports rehabilitation; a corticosteroid injection gives short-term relief only and is selective; shockwave therapy is a specialist option under NICE special arrangements.",
+  guideline:"NICE HTG248 (shockwave therapy) · local MSK pathway · BNF",
+  reviewed:"25 September 2026",
+  nextReview:"25 September 2027",
+  meta:[
+    {t:"Exercise is first-line", tone:"ok"},
+    {t:"Injection: selective, short-term", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Diagnose + distinguish from mimics",
-      blocks:[
-        {b:"kv", rows:[
-          ["Typical","Pain over the <b>lateral</b> hip/greater trochanter, worse lying on that side, climbing stairs, single-leg stance and prolonged walking/standing; tender on direct palpation"],
-          ["Cause","Gluteus medius/minimus tendinopathy \u00b1 trochanteric bursitis (a load-related tendinopathy, not primarily inflammatory)"],
-          ["vs Hip OA","OA pain is typically <b>groin</b> pain with restricted/painful internal rotation \u2014 examine the hip joint"],
-          ["vs Spinal referral","Lumbar/L1\u2013L3 referral or radiculopathy \u2014 check back, neurology; trochanteric tenderness absent"]
-        ]},
-        {b:"why", html:"GTPS is a clinical diagnosis from focal lateral tenderness and pain on loading the abductors. The reasoning step is separating it from hip OA (groin pain, reduced rotation) and lumbar referred pain \u2014 they need different management."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 cornerstone", title:"Load management + rehab",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🏋️ Gluteal strengthening", html:"Progressive abductor/gluteal loading via physiotherapy \u2014 the most effective treatment for gluteal tendinopathy."},
-          {t:"⚖️ Reduce provocative load", html:"Avoid hip adduction/compression: don\u2019t cross legs, avoid \u2018hanging\u2019 on one hip when standing, modify side-lying (pillow between knees)."},
-          {t:"🛏️ Sleep", html:"Avoid lying on the painful side; cushion the legs."},
-          {t:"⚖️ Weight", html:"Weight loss if overweight reduces load."},
-          {t:"🚶 Activity modify", html:"Reduce stairs/hills temporarily; graded return; relative rest, not complete rest."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Symptom relief", title:"Analgesia + injection (selective)",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Step 1", title:"Simple analgesia", when:"to support rehab",
-           html:"Paracetamol 1 g QDS and/or topical or short-course oral NSAID (ibuprofen 400 mg TDS or naproxen 250\u2013500 mg BD; consider comorbidity/risk). Pain relief enables the loading programme."},
-          {step:"Step 2", title:"Physiotherapy-led programme", when:"mainstay",
-           fromLabel:"primary treatment",
-           html:"Structured education + progressive gluteal loading over weeks\u2013months; evidence favours exercise over injection at 12 months."},
-          {step:"Step 3", title:"Corticosteroid injection", when:"selective, short-term",
-           fromLabel:"if severe / not settling",
-           html:"Local corticosteroid injection gives short-term relief but no long-term advantage over exercise \u2014 use selectively to enable rehab; counsel re recurrence."}
-        ]},
-        {b:"warn", html:"Counsel on the slow but generally good prognosis. Exercise/load management outperforms injection in the medium term \u2014 injection is an adjunct, not a cure."}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Follow-up", title:"Review",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"6\u20138 weeks", title:"Assess rehab response", html:"Check adherence to loading programme + load-management advice; reinforce."},
-          {n:"2", when:"3 months", title:"Escalate if needed", html:"Persistent \u2192 ensure physiotherapy input, consider injection; re-examine diagnosis."},
-          {n:"3", when:"Refractory", title:"Imaging / referral", html:"Atypical or refractory \u2192 USS/MRI (tendon tear), MSK/orthopaedic opinion."}
-        ]}
-      ]},
-    {t:"node", d:"safety", n:"5", tag:"Safety-net", title:"When it isn\u2019t GTPS", blocks:[{b:"tiles", v:"safety", items:[{t:"\ud83d\udfe0 Hip-joint / referred", html:"Groin pain, restricted/painful internal rotation, or mechanical locking \u2192 consider hip OA or intra-articular pathology (image)."},{t:"\ud83d\udd34 Systemic / sinister", html:"Night pain, rest pain, fever, weight loss or a history of cancer \u2192 exclude infection/malignancy/fracture."},{t:"\ud83d\udcac Safety-net", html:"If pain is constant, wakes you at night, or you feel generally unwell, come back \u2014 we\u2019ll look beyond the tendon."}]}]},
-    {t:"node", d:"refer", n:"6", tag:"Refer", title:"When to refer",
-      arrow:"refractory or diagnostic doubt",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Physiotherapy", html:"First-line for the loading programme \u2014 refer early."},
-          {t:"MSK / orthopaedics", html:"Refractory after conservative care, suspected gluteal tendon tear, or diagnostic uncertainty."},
-          {t:"Imaging", html:"USS/MRI if tear suspected or for guided injection."},
-          {t:"Reconsider diagnosis", html:"Groin pain/reduced rotation \u2192 hip OA pathway; back/neuro signs \u2192 spinal cause."}
-        ]},
-        {b:"say", html:"This is pain from the tendons on the outer hip \u2014 often from how the hip is loaded. It usually improves with a physiotherapy strengthening programme and simple changes like not lying on that side or crossing your legs. It can take a couple of months. An injection can help short-term if needed, but the exercises do the lasting work."}
-      ]}
+  lead:'<div class="mg-layers"><a href="#diagnose"><b>Diagnose</b><small>Examine</small></a><a href="#exclude"><b>Exclude</b><small>Hip · spine · red flags</small></a><a href="#rehab"><b>Rehab</b><small>Load + exercise</small></a><a href="#relief"><b>Relief</b><small>Analgesia · injection</small></a><a href="#refer"><b>Refer</b><small>Image · MSK</small></a></div>',
+  quickSub:"The five that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"A clinical syndrome, not a single pathology", html:"Lateral hip pain, worse lying on the affected side, on stairs and on single-leg loading, with <b>focal peritrochanteric tenderness and pain or weakness on resisted abduction</b>, and no dominant alternative diagnosis. Tenderness alone is not enough. Bilateral symptoms happen and do not by themselves suggest systemic disease."},
+    {tone:"amber", h:"Think joint and spine, not just tendon", html:"Groin-dominant pain, painful or restricted internal rotation, catching or locking, or a positive impingement test → assess for intra-articular hip pathology. Back pain, dermatomal symptoms, a neurological deficit or pain reproduced by spinal movement → a spinal contribution. <b>Either can coexist with GTPS.</b>"},
+    {tone:"green", h:"Education and progressive loading work best", html:"Reduce compressive load (no leg-crossing, no hanging on one hip, pillow between the knees), keep active, and progressively strengthen the hip abductors and extensors. This is the <b>preferred first-line treatment and the best longer-term strategy for most people</b>."},
+    {tone:"amber", h:"Injection is an adjunct, not a cure", html:"A peritrochanteric corticosteroid injection can give short-term relief to enable rehabilitation, but recurrence is common. Consider it only after the diagnosis is secure and a structured programme has been tried — or earlier if pain is preventing rehabilitation. <b>A time point alone should not trigger an injection.</b>"},
+    {tone:"red", h:"⚠ Red flags — not GTPS until proved otherwise", html:"Inability to weight-bear, severe pain after trauma, fracture risk (osteoporosis, long-term steroids), fever or a hot swollen area, unexplained weight loss, persistent night or rest pain, a history of cancer, a mass, or rapidly progressive symptoms."}
   ],
-  foot:"Management of greater trochanteric pain syndrome (gluteal tendinopathy) in primary care; a clinical diagnosis managed with load management and exercise. Verify against current specialist guidance."
+  pathwaySub:"Five steps. The examination decides the rest.",
+  pathway:[
+    {title:"Examine the hip, the spine and the nerves", html:"Gait and weight-bearing · trochanteric and gluteal tendon palpation · resisted abduction and external rotation · single-leg stance if safe · hip range, especially internal rotation · FABER/FADIR if intra-articular pathology suspected · lumbar and sacroiliac examination · power, reflexes, sensation · Trendelenburg gait, leg length.", alert:true},
+    {title:"Exclude the mimics and the red flags", html:"Hip OA, impingement, labral tear, occult or insufficiency fracture, avascular necrosis, inflammatory arthritis, referred lumbar pain, infection, malignancy."},
+    {title:"Educate and reload", html:"Reduce compression and high abductor load, stay active, progressive gluteal strengthening. Allow an adequate trial of about 12 weeks, reviewing sooner if pain is severe."},
+    {title:"Support with analgesia; inject selectively", html:"Analgesia only to support rehabilitation. Injection if progress stalls or pain blocks rehab."},
+    {title:"Image or refer if it does not fit or does not progress", html:"Suspected tear, marked weakness, red flags, diagnostic uncertainty or failure of an adequate, adherent programme."}
+  ],
+  sections:[
+
+    {id:"diagnose", nav:"Diagnose", title:"Step 1 — confirm the clinical syndrome",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>What it is</b>","A clinical syndrome of lateral peritrochanteric hip pain, most commonly gluteus medius/minimus tendinopathy, with or without bursopathy or partial tendon tearing. Mixed pathology can occur — bursitis is not synonymous with GTPS"],
+         ["<b>History</b>","Lateral hip pain, worse lying on that side, on stairs, hills, single-leg stance and prolonged walking or standing"],
+         ["<b>Examination supports GTPS</b>","Focal peritrochanteric tenderness · pain or weakness on resisted abduction · pain on resisted external rotation · pain or difficulty in single-leg stance"],
+         ["<b>Always also examine</b>","Gait and weight-bearing · hip range, especially internal rotation · FABER/FADIR if intra-articular pathology suspected · lumbar spine and sacroiliac joints · power, reflexes and sensation · Trendelenburg gait, abductor weakness, leg-length discrepancy"],
+         ["<b>Imaging</b>","<b>Not routine</b> when the diagnosis is clinically clear and there are no red flags"]
+       ]},
+       {b:"why", html:"Trochanteric tenderness supports the diagnosis but is not sufficient on its own. It is the combination — the history, focal tenderness, painful or weak resisted abduction and no dominant alternative — that makes the diagnosis."}
+     ]},
+
+    {id:"exclude", nav:"Exclude", title:"Step 2 — exclude the joint, the spine and the red flags",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"🟠 Intra-articular hip", html:"Groin-dominant pain, painful or restricted internal rotation, catching or locking, positive impingement test → hip OA, femoroacetabular impingement or labral pathology. Hip OA can also cause buttock or lateral pain, and GTPS can radiate anteriorly — so groin pain is a pointer, not a rule."},
+         {tone:"amber", h:"🟠 Spinal contribution", html:"Back pain, dermatomal symptoms, neurological deficit, or pain reproduced by spinal movement → consider lumbar referral or radiculopathy. Trochanteric tenderness can still be present, and GTPS may coexist."},
+         {tone:"red", h:"🔴 Fracture", html:"Inability to weight-bear, severe pain after trauma, osteoporosis or long-term corticosteroids, or pain out of proportion to the examination → exclude occult or insufficiency fracture."},
+         {tone:"red", h:"🔴 Infection, malignancy, systemic", html:"Fever, a hot swollen area, unexplained weight loss, persistent night or rest pain, a history of cancer, a palpable mass or rapidly progressive symptoms → reconsider; do not label as GTPS. Also consider avascular necrosis and inflammatory arthritis."}
+       ]}
+     ]},
+
+    {id:"rehab", nav:"Rehab", title:"Step 3 — education and progressive loading",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"⚖️ Reduce compression", html:"Avoid crossing the legs, standing hanging on one hip, and lying directly on the painful side; pillow between the knees in bed. Modify stairs, hills and prolonged single-leg loading."},
+         {tone:"green", h:"🚶 Stay active", html:"Continue tolerable activity and general conditioning while reducing the activities that provoke lateral compression or high abductor load. <b>Progressively reload rather than resting completely.</b>"},
+         {tone:"green", h:"🏋️ The loading programme", html:"Isometric or low-irritability abductor loading first where needed → progressive strengthening of the hip abductors and extensors → functional single-leg loading → correction of movement and load patterns → graded return to walking, stairs, running or sport."},
+         {tone:"blue", h:"⏳ An adequate trial", html:"Allow around 12 weeks of an adherent programme before judging it to have failed, reviewing sooner if pain is severe or function is significantly restricted. Weight loss, if overweight, reduces load."}
+       ]},
+       {b:"why", html:"Education and exercise-based rehabilitation are the preferred first-line treatment. In the comparative evidence summarised by NICE, corticosteroid injection gave faster short-term improvement but home training gave better longer-term outcomes."}
+     ]},
+
+    {id:"relief", nav:"Relief", title:"Step 4 — analgesia and selective injection",
+     blocks:[
+       {b:"table", head:["Option","Use","Safeguards"], rows:[
+         ["<b>Simple analgesia or a short NSAID course</b>","Only to support rehabilitation, for the shortest effective duration, per the local formulary","Reduce the paracetamol maximum for low body weight, liver disease, frailty or excess alcohol. Before an oral NSAID: renal function, blood pressure, heart failure, ulcer or GI-bleed risk, anticoagulant or antiplatelet use, NSAID-sensitive asthma. Gastroprotection by individual GI risk. Never combine NSAIDs. A topical NSAID can be tried, though evidence for deep peritrochanteric pain is limited"],
+         ["<b>Peritrochanteric corticosteroid injection</b>","If symptoms persist after an adequate programme — re-examine first — or where short-term relief is needed to enable rehabilitation","An adjunct, never first-line. Benefit is mainly short term; recurrence and deterioration occur. Avoid intratendinous injection. Discuss tendon damage, skin or fat atrophy, infection, bleeding and transient hyperglycaemia. Image guidance if anatomy is uncertain, a tear is suspected, a previous injection failed, or local MSK practice requires it"],
+         ["<b>Extracorporeal shockwave therapy (ESWT)</b>","Refractory GTPS only, through an appropriately governed specialist or MSK service","<b>Not routine primary-care treatment.</b> NICE HTG248 allows it only with special arrangements for governance, consent and audit: the evidence on efficacy and safety is uncertain, and pain can temporarily worsen"]
+       ]},
+       {b:"warn", html:"Analgesia should support rehabilitation — not enable continued painful loading."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Step 5 — imaging and referral",
+     blocks:[
+       {b:"table", head:["Situation","Action"], rows:[
+         ["<b>Hip OA or fracture suspected · significant trauma · atypical symptoms · marked restriction of hip movement · persistent uncertainty</b>","Plain radiograph"],
+         ["<b>Significant tendon tear suspected · marked abductor weakness or Trendelenburg gait · refractory despite adequate rehabilitation · specialist intervention being considered</b>","Ultrasound or MRI, usually via MSK services. Ultrasound is not automatically required for an injection"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Urgent", html:"Inability to weight-bear · suspected fracture · suspected septic arthritis, osteomyelitis or malignancy · severe acute pain with systemic features."},
+         {tone:"blue", h:"MSK or orthopaedics", html:"Suspected full-thickness or major partial tendon tear · marked abductor weakness or Trendelenburg gait · failure after a reasonable, adherent programme · diagnostic uncertainty · operative treatment being considered. Surgery is reserved for selected structural tendon pathology under specialist care — it is not the usual next step."},
+         {tone:"blue", h:"Physiotherapy or MSK", html:"Persistent symptoms affecting activity · difficulty implementing or progressing the loading · significant abductor weakness or movement-control problems · a structured return to sport or work."},
+         {tone:"cream", h:"GP management", html:"The examination, the exclusions, the education and loading plan, analgesia and selective injection all belong here. Related pages: <a href='osteoarthritis.html'>osteoarthritis</a> · <a href='../algorithms/hip-pain.html'>hip pain pathway</a> · <a href='sciatica.html'>sciatica</a>."}
+       ]},
+       {b:"say", html:"This is pain from the tendons on the outside of the hip, usually from how the hip is loaded. It normally gets better with a strengthening programme and simple changes — not lying on that side, not crossing your legs, and not standing hanging on one hip. It can take a few months. An injection can help in the short term if the pain is stopping you doing the exercises, but the exercises are what do the lasting work. Come back if you can't put weight on the leg, if it's painful at rest or at night, or if you feel unwell."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 56-year-old woman has had <b>right lateral hip pain for four months</b>, worse lying on her right side at night and climbing stairs. She is tender over the greater trochanter and <b>resisted abduction reproduces the pain</b>; hip internal rotation is full and pain-free, and her back and neurology are normal. She has read about steroid injections and wants one today."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Examines the hip joint, the spine and the nerves rather than relying on tenderness; explains why the findings fit GTPS and not hip OA; explains load reduction and a progressive strengthening programme as the first-line plan; discusses injection honestly — short-term relief, recurrence, risks — and agrees when it would help rather than refusing outright; checks NSAID safety before prescribing; and safety-nets for fracture, infection and night or rest pain."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE HTG248 — Extracorporeal shockwave therapy for refractory greater trochanteric pain syndrome</b><br><a href="https://www.nice.org.uk/guidance/htg248" rel="noopener">nice.org.uk/guidance/htg248</a><span class="rd"> — ESWT only with special arrangements; the comparative evidence on injection versus home training</span></li>'+
+         '<li><b>Local MSK and physiotherapy pathway</b><span class="rd"> — referral routes, image-guided injection and imaging access</span></li>'+
+         '<li><b>BNF and local formulary</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — analgesic and NSAID doses, cautions and gastroprotection</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Greater trochanteric pain syndrome (adults). A clinical syndrome of lateral hip pain, usually gluteal tendinopathy. Confirm it with a focused hip, lumbar and neurological examination and exclude intra-articular hip disease, fracture, systemic disease and referred spinal pain. First-line management is education, avoiding compressive loads and progressive gluteal strengthening; analgesia only supports rehabilitation. A corticosteroid injection gives short-term relief and should be selective, never a substitute for exercise. Image or refer for diagnostic uncertainty, marked weakness, a suspected tear, red flags or failure of an adequate programme. ESWT is a specialist option with uncertain benefit and risk, under NICE HTG248 special arrangements. Sources: NICE HTG248, local MSK pathway, BNF."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

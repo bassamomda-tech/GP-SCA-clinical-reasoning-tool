@@ -1005,7 +1005,7 @@ RGPLabs.register('generic', {
               source:'BSH B12/folate guidelines',
               sourceUrl:'https://b-s-h.org.uk/guidelines/',
               patientPhrase:'"Your B12 is very low — that\'s a fixable cause of tiredness. We\'ll start an injection straight away."',
-              noteTemplate:'B12 deficiency. B12 [value], MCV [value].\nIF antibody, gastric parietal cell Ab.\nHydroxocobalamin 1 mg IM alternate days × 6 (daily if neurology). Maintenance 1 mg IM 3-monthly (pernicious anaemia) or follow guidelines for dietary.',
+              noteTemplate:'B12 deficiency. B12 [value], MCV [value].\nIF antibody, gastric parietal cell Ab.\nHydroxocobalamin 1 mg IM 3×/week for 2 weeks (if neurology: alternate days until no further improvement, then 2-monthly — BNF). Maintenance 1 mg IM 3-monthly (pernicious anaemia, no neurology) or follow guidelines for dietary.',
               when:(v) => v < 100
             },
             {
@@ -1085,7 +1085,7 @@ RGPLabs.register('generic', {
               action:'urgent', label:'Markedly raised CRP — investigate source',
               rule:'CRP >100 with symptoms',
               timeframe:'Same day',
-              source:'NICE NG51 · NG12',
+              source:'NICE NG253 · NG12',
               patientPhrase:'"Your inflammation marker is high — that suggests an infection or something we need to find. Let\'s examine you today."',
               when:(v, ctx) => v > 100 && ctx.symptoms
             },
@@ -1149,16 +1149,17 @@ RGPLabs.register('generic', {
           rules:[
             {
               action:'cancer', label:'Raised PSA — prostate cancer 2WW',
-              rule:'PSA above age-specific threshold (>3 if <60, >4 if 60–69, >5 if ≥70) — see NG12',
+              rule:'PSA above age-specific threshold (>2.5 if 40–49, >3.5 if 50–59, >4.5 if 60–69, >6.5 if 70–79; clinical judgement under 40 and 80+) — see NG12',
               timeframe:'2 weeks',
               source:'NICE NG12 §1.6 urological / Macmillan',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
               patientPhrase:'"Your PSA is raised for your age. The next step is a specialist assessment — that\'s standard, not a sign anything is definitely wrong."',
               noteTemplate:'2WW — prostate cancer (NG12 §1.6.4).\nPSA [value], age [value]. DRE [findings].\nRepeat PSA only if very small rise. Otherwise urology 2WW.',
               when:(v, ctx) => ctx.age != null && (
-                (ctx.age < 60 && v > 3) ||
-                (ctx.age >= 60 && ctx.age < 70 && v > 4) ||
-                (ctx.age >= 70 && v > 5)
+                (ctx.age < 50 && v > 2.5) ||
+                (ctx.age >= 50 && ctx.age < 60 && v > 3.5) ||
+                (ctx.age >= 60 && ctx.age < 70 && v > 4.5) ||
+                (ctx.age >= 70 && v > 6.5)
               )
             }
           ]

@@ -10,12 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Adult constipation protocol">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🟤",
@@ -40,7 +40,7 @@ MG.render({
     {tone:"amber", h:"Check the drug list before the laxative", html:"Opioids, iron, calcium-channel blockers, antimuscarinics — plus hypothyroidism, hypercalcaemia, diabetes, IBS and mechanical causes. Identifying and switching a constipating medicine treats the cause rather than the symptom, and is quicker than any titration."},
     {tone:"green", h:"Fibre without fluid makes it worse", html:"Increase dietary fibre GRADUALLY to avoid bloating, with adequate fluid alongside — fibre without fluid worsens things. Plus the mechanical tricks that genuinely help: respond to the urge, an unhurried routine after meals to use the gastrocolic reflex, and knees above hips on a footstool, leaning forward."},
     {tone:"blue", h:"Titrate to effect, then withdraw gradually", html:"Once regular soft stools are achieved, titrate DOWN and withdraw gradually rather than stopping abruptly, maintaining the lifestyle measures. Stopping suddenly is why patients conclude they need laxatives permanently."},
-    {tone:"purple", h:"🟣 NICE NG12 — the colorectal route", html:"Aged 60 and over with a change in bowel habit, rectal bleeding, unintentional weight loss, iron-deficiency anaemia, or an abdominal or rectal mass → investigate on the suspected-cancer pathway. <b>Use FIT (refer at ≥10 µg Hb/g) where the NG12 criteria direct it.</b> Restated in <a href='#refer'>Refer</a>."}
+    {tone:"purple", h:"🟣 NICE NG12 — the colorectal route", html:"<b>Offer FIT</b> for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, or an abdominal mass → FIT, with a 2WW referral at ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT. Restated in <a href='#refer'>Refer</a>."}
   ],
   pathwaySub:"Five steps, and the first two are what prevent harm.",
   pathway:[
@@ -127,7 +127,7 @@ MG.render({
     {id:"refer", nav:"Refer", title:"When to refer",
      blocks:[
        {b:"cards", items:[
-         {tone:"purple", h:"2WW · NICE NG12", html:"Alarm features suggesting colorectal cancer — a change in bowel habit aged 60 and over, rectal bleeding, unintentional weight loss, iron-deficiency anaemia, or an abdominal or rectal mass → suspected-cancer pathway, with FIT (refer at ≥10 µg Hb/g) where the criteria direct it."},
+         {tone:"purple", h:"2WW · NICE NG12", html:"Alarm features suggesting colorectal cancer — a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, or an abdominal mass → FIT, with a 2WW referral at ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT."},
          {tone:"amber", h:"Refractory", html:"Chronic constipation unresponsive to optimised lifestyle plus combination laxatives — consider prucalopride or specialist referral."},
          {tone:"red", h:"Impaction not resolving", html:"<b>Faecal impaction failing oral and rectal treatment.</b>"},
          {tone:"blue", h:"Secondary cause", html:"Suspected metabolic, neurological or structural cause needing investigation."},
@@ -148,7 +148,7 @@ MG.render({
          '<li><b>British Dietetic Association — dietary management of chronic constipation in adults (2025)</b><span class="rd"> — the definition and chronicity threshold, the secondary causes and constipating drug list, the non-drug measures including toileting position, the laxative ladder with ispaghula, macrogol and lactulose doses, senna and bisacodyl doses, the contraindication to bulk-forming agents in opioid-induced constipation and impaction, the high-dose macrogol impaction regimen, and titrate-then-withdraw</span></li>'+
          '<li><b>NICE TA345 (naloxegol) · TA651 (naldemedine) — opioid-induced constipation</b><span class="rd"> — the osmotic-plus-stimulant regimen and naloxegol 25 mg once daily for refractory opioid-induced constipation</span></li>'+
          '<li>NICE TA211 — Prucalopride for the treatment of chronic constipation in women<span class="rd"> — the position of prucalopride in refractory chronic constipation</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the colorectal routes for a change in bowel habit aged 60 and over, rectal bleeding, weight loss, iron-deficiency anaemia and abdominal or rectal mass, and FIT at \u226510 \u00b5g Hb/g</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the FIT-guided colorectal routes for a change in bowel habit, iron-deficiency anaemia, rectal bleeding, abdominal pain, weight loss and abdominal or rectal mass, and FIT at \u226510 \u00b5g Hb/g</span></li>'+
          '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — laxative classes and doses, and the naloxegol licence</span></li>'+
          '</ul></div>'}
      ]}

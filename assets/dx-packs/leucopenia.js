@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Leucopenia (low WCC / neutropenia)
-   Shared-id triage + differential. BSH · NICE NG143.
+   Shared-id triage + differential. BSH · NICE CG151.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -20,16 +20,16 @@
   if (window.RGPTriage) RGPTriage.register('leucopenia-triage', {
     title: 'Leucopenia / neutropenia — triage',
     subtitle: 'Enter neutrophils / tick features. Surfaces febrile neutropenia and marrow pathways.',
-    guideline: 'BSH · NICE NG143',
+    guideline: 'BSH · NICE CG151',
     inputs: INPUTS,
     defaultMessage: 'No emergency rule fired. Repeat FBC + film; review drugs; check B12/folate; assess for infection/autoimmune; refer haematology if severe, persistent, or other lines affected.',
     rules: [
       {
         id: 'febrile_neutropenia', tier: 'emergency',
         label: 'Febrile neutropenia — neutrophils <1.0 + fever / unwell',
-        action: 'Call 999 / same-day admission — neutropenic sepsis pathway (antibiotics within 1h, NICE NG143).',
+        action: 'Call 999 / same-day admission — neutropenic sepsis pathway (antibiotics within 1h, NICE CG151).',
         patientPhrase: '"Your immune cells are very low and you have a fever — that is an emergency, I am arranging admission now."',
-        source: 'NICE NG143', sourceUrl: 'https://www.nice.org.uk/guidance/ng143',
+        source: 'NICE CG151', sourceUrl: 'https://www.nice.org.uk/guidance/cg151',
         when: i => (i.neutrophils != null && i.neutrophils < 1.0) && (i.fever || false) || (i.fever && i.drugs),
       },
       {
@@ -62,7 +62,7 @@
       }
     ],
     sources: [
-      { label: 'NICE NG143 — Neutropenic sepsis', url: 'https://www.nice.org.uk/guidance/ng143' },
+      { label: 'NICE CG151 — Neutropenic sepsis', url: 'https://www.nice.org.uk/guidance/cg151' },
       { label: 'BSH — Neutropenia', url: 'https://b-s-h.org.uk/guidelines/' }
     ],
   });
@@ -70,7 +70,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('leucopenia-dx', {
     title: 'Leucopenia / neutropenia — differential',
     subtitle: 'The engine weights benign, drug, viral, autoimmune and nutritional causes, and always surfaces febrile neutropenia and marrow malignancy.',
-    guideline: 'BSH · NICE NG143',
+    guideline: 'BSH · NICE CG151',
     patientPresenting: "My white cell count is low, doctor — should I be worried about infections?",
     inputs: INPUTS,
     diagnoses: [
@@ -96,7 +96,7 @@
         guideUrl: '' },
 
       { id: 'febrile_neutropenia', name: 'Febrile neutropenia', summary: 'Neutrophils <1.0 + fever / unwell', baseline: 1, category: 'cant-miss',
-        keyExam: 'Fever, septic, source.', nextIx: '\u26A1 999 / admission — antibiotics within 1h (NICE NG143).',
+        keyExam: 'Fever, septic, source.', nextIx: '\u26A1 999 / admission — antibiotics within 1h (NICE CG151).',
         patientPhrase: 'Low immune cells with a fever is an emergency needing hospital antibiotics today.',
         guideUrl: '', redFlagAction: '\u26A1 Neutropenic sepsis pathway' },
       { id: 'marrow', name: 'Marrow failure / malignancy', summary: 'Other cytopenias, B-symptoms, blasts', baseline: 1, category: 'cant-miss',
@@ -127,7 +127,7 @@
       marrow: ['other_lines', 'b_symptoms'],
     },
     sources: [
-      { label: 'NICE NG143 — Neutropenic sepsis', url: 'https://www.nice.org.uk/guidance/ng143' },
+      { label: 'NICE CG151 — Neutropenic sepsis', url: 'https://www.nice.org.uk/guidance/cg151' },
       { label: 'BSH — Neutropenia', url: 'https://b-s-h.org.uk/guidelines/' }
     ],
   });

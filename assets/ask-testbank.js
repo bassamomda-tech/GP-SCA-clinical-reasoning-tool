@@ -54,7 +54,7 @@ window.ASK_TESTBANK = [
 
   /* ---- NICE NG12 2-week-wait ---- */
   { t:'NG12 — bowel (FIT)', q:'58-year-old with a 6-week change in bowel habit — do I need to refer?',
-    must:[ ['FIT','faecal immunochemical'], ['2WW','two-week','2-week','urgent suspected','USC'] ], why:'FIT ≥10 → USC colorectal (NG12/DG56)' },
+    must:[ ['FIT','faecal immunochemical'], ['2WW','two-week','2-week','urgent suspected','USC'] ], why:'FIT ≥10 → USC colorectal (NG12 / HTG690)' },
   { t:'NG12 — post-menopausal bleeding', q:'62-year-old with an episode of post-menopausal bleeding — what now?',
     must:[ ['2WW','two-week','2-week','urgent suspected','USC'], ['endometrial','gynae'] ], why:'PMB 55+ → USC endometrial (NG12)' },
   { t:'NG12 — visible haematuria', q:'60-year-old with painless visible haematuria — what is the pathway?',

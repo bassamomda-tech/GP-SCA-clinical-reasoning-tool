@@ -28,7 +28,7 @@
       'Suspected meningococcal sepsis (non-blanching rash, very unwell) → emergency transfer + pre-hospital benzylpenicillin if it does not delay transfer',
       'Neutropenic patient with fever/unwellness → emergency admission (neutropenic sepsis)',
       'Lower-risk but uncertain → urgent review/reassessment with explicit safety-netting'],
-    source:'NICE NG51 (Sepsis)' },
+    source:'NICE NG253 / NG254 (Sepsis, 2025)' },
 
   { id:'scabies', title:'Scabies', category:'Dermatology', icon:'🦠',
     overview:'An intensely itchy contagious skin infestation by the mite Sarcoptes scabiei. It is common, spreads through close/prolonged skin contact (including within households and care settings), and is frequently misdiagnosed as eczema. Treatment must include all close contacts simultaneously, or it recurs.',

@@ -88,7 +88,7 @@
     referral:[
       'Any suspicion → immediate emergency admission (surgery + critical care)',
       'Never arrange outpatient review — emergency referral only'],
-    source:'NICE / Sepsis (NG51)' },
+    source:'NICE / Sepsis (NG253)' },
 
   { id:'night-terrors-nightmares', title:'Night terrors and nightmares', category:'Paediatrics', icon:'🌙',
     overview:'Common, usually benign childhood sleep phenomena. Night terrors are a non-REM parasomnia of partial arousal with apparent terror and no recall; nightmares are frightening REM dreams from which the child wakes and remembers. Reassurance and good sleep hygiene are the mainstays.',
@@ -510,7 +510,7 @@
       'Complex physical rehabilitation needs → critical-care follow-up clinic / rehabilitation services',
       'New or unresolving organ dysfunction → relevant specialty',
       'Persistent cognitive impairment → appropriate specialist assessment'],
-    source:'NICE NG188 (post-critical illness) / FICM guidance' },
+    source:'NICE CG83 (rehabilitation after critical illness) / FICM guidance' },
 
   { id:'fibroids', title:'Uterine fibroids (leiomyomas)', category:'Women’s health', icon:'🌸',
     overview:'Benign, oestrogen-dependent smooth-muscle tumours of the uterus — the commonest gynaecological tumour. Many are asymptomatic, but they are an important cause of heavy menstrual bleeding, bulk-related symptoms and, occasionally, subfertility. They typically regress after the menopause.',

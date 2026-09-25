@@ -1,11 +1,11 @@
 /* ============================================
    Medication Chooser — Male LUTS
-   NICE NG97 · NICE LUTS in men · BNF
+   NICE CG97 · NICE LUTS in men · BNF
    ============================================ */
 MedChooser.register('male-luts', {
   title: 'Male LUTS — drug selection',
   subtitle: 'Match the drug to the dominant symptom: voiding (α-blocker ± 5-ARI), storage/OAB (antimuscarinic / mirabegron), or nocturnal polyuria. Tick the profile; cards re-tier live.',
-  guideline: 'NICE NG97 · NICE LUTS in men · BNF',
+  guideline: 'NICE CG97 · NICE LUTS in men · BNF',
 
   factors: [
     // Symptom pattern
@@ -52,7 +52,7 @@ MedChooser.register('male-luts', {
       name:'α-blocker (tamsulosin / alfuzosin)',
       examples:'Tamsulosin 400 µg OD',
       step:'Voiding · 1st-line',
-      source:'NICE NG97 §1.6 (moderate–severe)',
+      source:'NICE CG97 §1.6 (moderate–severe)',
       sideEffects:'Postural hypotension, dizziness, retrograde ejaculation, IFIS at cataract surgery',
       monitor:'Postural BP; review at 4–6 weeks',
       counsel:'"This relaxes the muscle at the bladder outlet so you pass water more easily — it works within days. It can cause dizziness on standing and dry orgasms."',
@@ -73,7 +73,7 @@ MedChooser.register('male-luts', {
       name:'5α-reductase inhibitor (finasteride / dutasteride)',
       examples:'Finasteride 5 mg OD',
       step:'Voiding · large prostate',
-      source:'NICE NG97 §1.6.10',
+      source:'NICE CG97 §1.6.10',
       sideEffects:'↓ libido, ED, ejaculatory dysfunction, gynaecomastia; ↓ PSA by ~50%',
       monitor:'Slow onset (3–6 months); halve PSA reference range',
       counsel:'"This gradually shrinks the prostate over several months, so it works slowly but reduces the chance of needing surgery. It can affect sexual function."',
@@ -94,7 +94,7 @@ MedChooser.register('male-luts', {
       name:'α-blocker + 5-ARI combination',
       examples:'Tamsulosin + finasteride / dutasteride',
       step:'Voiding · combination',
-      source:'NICE NG97 §1.6.12',
+      source:'NICE CG97 §1.6.12',
       sideEffects:'Combined effects of both classes',
       monitor:'As above',
       counsel:'"We can combine the fast-acting relaxant with the prostate-shrinking tablet — quick relief now, plus protection against it getting worse."',
@@ -112,7 +112,7 @@ MedChooser.register('male-luts', {
       name:'Antimuscarinic (solifenacin / tolterodine)',
       examples:'Solifenacin 5 mg OD',
       step:'Storage / OAB',
-      source:'NICE NG97 §1.6.16',
+      source:'NICE CG97 §1.6.16',
       sideEffects:'Dry mouth, constipation, blurred vision, cognitive effects, urinary retention',
       monitor:'Residual volume; cognition in elderly; review 4–6 weeks',
       counsel:'"This calms an overactive bladder to reduce urgency and frequency. It can give a dry mouth and constipation; tell us if you struggle to pass water."',
@@ -153,7 +153,7 @@ MedChooser.register('male-luts', {
       name:'Desmopressin (nocturnal polyuria)',
       examples:'Desmopressin nocte',
       step:'Nocturia',
-      source:'NICE NG97 §1.6.20',
+      source:'NICE CG97 §1.6.20',
       sideEffects:'Hyponatraemia (can be severe), fluid retention, headache',
       monitor:'Na⁺ at baseline, 3 days, 1 month; avoid >65 with cardiovascular risk',
       counsel:'"This concentrates your urine overnight so you\'re not up so often — but we must check your sodium because it can drop dangerously."',

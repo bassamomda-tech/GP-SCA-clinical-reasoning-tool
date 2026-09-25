@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delirium &amp; agitation in palliative care — Protocol · Reasoning GP</title>
+<meta name="description" content="Delirium and agitation in palliative care at home: recognising hypoactive and hyperactive delirium with the 4AT, hunting reversible causes (opioid toxicity, hypercalcaemia, retention, drugs, withdrawal), non-drug care, antipsychotic and benzodiazepine choices and cautions, terminal agitation, carer safety and when to admit." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/palliative-delirium-agitation.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790316534730122 tools/management/palliative-delirium-agitation.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Palliative delirium and agitation management card">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"🕊️",
+  title:"Delirium and agitation in palliative care",
+  eyebrow:"Protocol · recognise, reverse, calm, then medicate",
+  stemTitle:"Delirium &amp; agitation in palliative care — look for the cause before you sedate",
+  stemSub:"One page for delirium and agitation in people with advanced illness at home or in a care home, from months before death to the last hours. Delirium is common, often missed when it is quiet, and frequently reversible: opioid toxicity, hypercalcaemia, infection, urinary retention, constipation, hypoxia, drugs and withdrawal. Treat the cause where that fits the person’s goals, use non-drug care for everyone, reserve an antipsychotic for distress or danger, and keep benzodiazepines for anxiety, withdrawal and the last days.",
+  guideline:"NICE CG103 (2010, updated 2023) · NICE NG31 (2015) · NICE NG97 (2018) · NICE NG71 (2017) · MHRA DSU Dec 2021",
+  meta:[
+    {t:"NICE CG103 delirium (updated 2023)"},
+    {t:"NICE NG31 last days of life (2015)"},
+    {t:"NG97 dementia · NG71 Parkinson’s", tone:"tw"},
+    {t:"MHRA Drug Safety Update Dec 2021 · haloperidol"},
+    {t:"Doses: BNF / local palliative formulary"}
+  ],
+  lead:'<div class="mg-layers"><a href="#recognise"><b>Recognise</b><small>4AT · hypoactive</small></a><a href="#causes"><b>Reverse</b><small>The cause hunt</small></a><a href="#drugs"><b>Medicate</b><small>Antipsychotic vs benzo</small></a><a href="#terminal"><b>Last days</b><small>Terminal agitation</small></a><a href="#refer"><b>Where</b><small>Home, hospice, hospital</small></a></div>',
+  glance:[
+    {lbl:"First", val:"Find the cause", sub:"drugs, retention, bowels, calcium, infection"},
+    {lbl:"Screen", val:"4AT", sub:"score 4+ = possible delirium"},
+    {lbl:"Everyone", val:"Non-drug care", sub:"familiar faces, light, glasses, calm"},
+    {lbl:"Distress / danger", val:"Antipsychotic", sub:"short term, lowest dose"},
+    {lbl:"Benzodiazepine", val:"Not alone in delirium", sub:"anxiety, withdrawal, last days"},
+    {lbl:"Parkinson’s / Lewy", val:"Avoid haloperidol", sub:"seek specialist advice"}
+  ],
+  quickSub:"If you read nothing else on this page, read these cards. Doses are deliberately not given here: use the BNF and your local palliative care formulary or specialist team.",
+  quick:[
+    {tone:"red", h:"⚠ Quiet delirium is still delirium", html:"<b>Hypoactive delirium</b> (drowsy, withdrawn, slow, not eating) is the commonest form in advanced illness and is easily mistaken for depression, fatigue or ‘just dying’. Any <b>acute change</b> in attention, alertness, cognition or behaviour over hours to days is delirium until shown otherwise. Use the <b>4AT</b>."},
+    {tone:"amber", h:"Look for the cause before you sedate", html:"Opioid toxicity (especially with falling renal function), <b>hypercalcaemia</b>, infection, <b>urinary retention</b>, <b>constipation</b>, hypoxia, new drugs (anticholinergics, steroids, benzodiazepines), and <b>withdrawal</b> from alcohol, nicotine or benzodiazepines. A full bladder or rectum is found by examining, not by prescribing."},
+    {tone:"blue", h:"Match the drug to the problem", html:"Delirium with distress or risk → <b>antipsychotic</b>, short term, lowest dose (NICE CG103; NG31). Anxiety or agitation without delirium, alcohol withdrawal, or the last days → <b>benzodiazepine</b>. A benzodiazepine on its own can make delirium worse."},
+    {tone:"purple", h:"Parkinson’s and Lewy body dementia", html:"Haloperidol and other dopamine-blocking drugs (including levomepromazine, metoclopramide, prochlorperazine) can cause severe motor worsening and sensitivity reactions. <b>Do not stop Parkinson’s medicines abruptly.</b> Seek specialist advice early."},
+    {tone:"green", h:"Carers need a plan, not just a prescription", html:"Explain what delirium is, that it fluctuates and is not ‘going mad’, what they can do, how to stay safe, and exactly who to ring day and night. Carer exhaustion is a common reason a home death plan fails."}
+  ],
+  pathwaySub:"Six moves. The red step is where harm happens: sedation given for a cause that could have been fixed.",
+  pathway:[
+    {title:"Recognise", html:"Acute, fluctuating change in attention, awareness or behaviour. Ask the family ‘is this new?’. Do a <b>4AT</b>. Decide whether it is hyperactive, hypoactive or mixed."},
+    {title:"Check for danger and reversible causes", html:"Opioid toxicity, hypercalcaemia, sepsis, retention, impaction, hypoxia, hypoglycaemia, new drugs, withdrawal, raised intracranial pressure. <b>Examine the bladder and rectum.</b> Review every drug started or changed.", alert:true},
+    {title:"Set the goals", html:"Where is the person in their illness? Weeks to months: investigate and treat causes that match their wishes. Last days: comfort first, but still exclude the quick fixes (bladder, bowel, pain, opioid toxicity)."},
+    {title:"Non-drug care for everyone", html:"Calm, familiar people, light by day and dark at night, glasses and hearing aids, orientation, fluids if wanted, pain relief, mobility where possible. Avoid moving the person between rooms or settings unless necessary."},
+    {title:"Medicate for distress or danger", html:"Antipsychotic for distressing delirium or risk of harm; benzodiazepine for anxiety, alcohol withdrawal and terminal agitation. Short trial, lowest dose, reviewed within 24 hours. Doses per BNF / local palliative formulary."},
+    {title:"Support, review, escalate", html:"Give the carers a plan and a number. Review daily. Seek specialist palliative care advice if the diagnosis is uncertain, there is no response, or sedation is unwanted (NG31). Hospice or hospital if the cause needs it or home is no longer safe."}
+  ],
+  sections:[
+
+    {id:"recognise", nav:"Recognise", title:"Recognising delirium in advanced illness", sub:"Delirium is an acute disturbance of attention and awareness that fluctuates. It is common towards the end of life and is often multifactorial.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Indicators of delirium", html:"Recent (hours to days) changes or fluctuations in <b>cognitive function</b> (poor concentration, slow responses, confusion), <b>perception</b> (visual or auditory hallucinations), <b>physical function</b> (reduced mobility or activity, restlessness, agitation, changes in appetite or sleep) and <b>social behaviour</b> (withdrawal, lack of cooperation, mood or attitude change). These can be reported by the person, a carer or a care worker.", src:"NICE CG103 (2010, updated 2023)"},
+         {tone:"blue", h:"Assess with the 4AT", html:"If indicators are present, a health or social care practitioner who is competent to do so should carry out an assessment using the <b>4AT</b> (CG103, 2023 update). The 4AT takes under two minutes, needs no special training, and can be done on a home visit.", src:"NICE CG103 (2023 update); the4at.com"},
+         {tone:"red", h:"Hypoactive delirium is the one you miss", html:"Drowsy, quiet, slow to respond, eating and drinking less, withdrawn. Distress may be less obvious but the person can still be frightened by hallucinations or delusions. Families often describe it as ‘not himself’ or ‘sleeping all the time’.", src:"NICE CG103 (2010, updated 2023)"},
+         {tone:"purple", h:"Delirium or dementia — if unsure, treat as delirium", html:"Dementia is gradual; delirium is acute and fluctuating, and the two often coexist. If you cannot tell whether the picture is delirium, dementia, or delirium on dementia, <b>treat for delirium first</b>.", src:"NICE CG103 (2010, updated 2023)"}
+       ]},
+       {b:"table", head:["4AT item","What you do","Scoring"], rows:[
+         ["<b>1. Alertness</b>","Observe; if asleep, try to wake with speech or a gentle touch","Normal or mildly sleepy &lt;10 s after waking = 0 · clearly abnormal = 4"],
+         ["<b>2. AMT4</b>","Age, date of birth, place, current year","No mistakes = 0 · one mistake = 1 · two or more or untestable = 2"],
+         ["<b>3. Attention</b>","Months of the year backwards, starting at December","7 or more correct = 0 · starts but fewer than 7, or refuses = 1 · untestable = 2"],
+         ["<b>4. Acute change or fluctuating course</b>","From history (family, carers, notes) — change over the last 2 weeks still evident in the last 24 hours","No = 0 · yes = 4"],
+         ["<b>Total</b>","","<b>4 or more</b>: possible delirium ± cognitive impairment · <b>1–3</b>: possible cognitive impairment · <b>0</b>: delirium or severe cognitive impairment unlikely (but delirium still possible if item 4 information is incomplete)"]
+       ]},
+       {b:"dl", rows:[
+         ["Hyperactive","Restless, agitated, pulling at clothes or lines, calling out, hallucinating, trying to get out of bed; carries the obvious safety risks and exhausts carers"],
+         ["Hypoactive","Withdrawn, drowsy, reduced speech and movement; the commonest form in advanced cancer and the most often missed"],
+         ["Mixed","Swings between the two, often worse in the evening and at night"],
+         ["Terminal agitation (terminal restlessness)","Restlessness and distress in the last days of life, often as part of an irreversible terminal delirium; see <a href='#terminal'>Last days</a>"]
+       ]},
+       {b:"why", html:"In the community the key diagnostic information is usually the history from someone who knows the person: ‘was she like this last week?’. Hypoactive delirium in particular is labelled as depression, tiredness or dying, and the reversible cause is never looked for. The 4AT’s fourth item depends on that collateral history, so always ask the carer."}
+     ]},
+
+    {id:"causes", nav:"Causes", title:"Reversible causes — the cause hunt", sub:"Delirium in advanced illness is usually multifactorial. Look for every contributor, then decide which ones are worth treating given where the person is.",
+     blocks:[
+       {b:"table", head:["Cause","Clues","First action at home"], rows:[
+         ["<b>Opioid toxicity</b>","Drowsiness, pinpoint pupils, <b>myoclonic jerks</b>, hallucinations, vivid dreams, new confusion; recent dose increase, <b>falling eGFR</b> or dehydration","Reduce the opioid dose or omit the next doses, keep fluids up, and seek advice about switching opioid; see <a href='opioid-prescribing.html'>opioid prescribing</a> and <a href='palliative-pain.html'>palliative pain</a>"],
+         ["<b>Hypercalcaemia</b>","Thirst, polyuria, constipation, nausea, drowsiness, confusion; myeloma, breast, lung, renal, squamous cancers","Adjusted calcium the same day if treatment would be wanted; see <a href='malignant-hypercalcaemia.html'>malignant hypercalcaemia</a>"],
+         ["<b>Infection</b>","Chest, urine, skin, line; fever may be absent","Treat if consistent with the goals of care; avoid assuming a positive urine dip explains delirium in an older person"],
+         ["<b>Urinary retention</b>","Palpable or percussible bladder, dribbling, distress when touched; anticholinergics and opioids cause it","Examine; bladder scan or catheterise via the district nursing team"],
+         ["<b>Constipation / faecal impaction</b>","No bowel action, overflow diarrhoea, opioid use, hypercalcaemia","Abdominal and rectal examination; see <a href='palliative-constipation.html'>palliative constipation</a>"],
+         ["<b>Hypoxia</b>","Breathlessness, cyanosis, low saturations; pneumonia, effusion, PE, heart failure","Treat the cause if appropriate; oxygen only if hypoxaemic; see <a href='palliative-breathlessness.html'>palliative breathlessness</a>"],
+         ["<b>Drugs — anticholinergics</b>","Hyoscine hydrobromide, oxybutynin, amitriptyline, cyclizine, antihistamines, tricyclics; cumulative anticholinergic burden","Stop or switch; review the whole list"],
+         ["<b>Drugs — corticosteroids</b>","Insomnia, agitation, euphoria or psychosis after starting or increasing dexamethasone","Give steroids in the morning, reduce to the lowest effective dose; see <a href='palliative-corticosteroids.html'>palliative corticosteroids</a>"],
+         ["<b>Other drugs</b>","Benzodiazepines, Z-drugs, gabapentinoids, antidepressants, antiemetics, recently started or increased","Stop or reduce what is not essential"],
+         ["<b>Alcohol withdrawal</b>","Tremor, sweating, tachycardia, hallucinations 1–3 days after stopping or reducing heavy drinking (often because the person can no longer get to the shop)","Benzodiazepine-based withdrawal management; see <a href='alcohol-problem-drinking.html'>alcohol</a> and <a href='#special'>special groups</a>"],
+         ["<b>Nicotine withdrawal</b>","Irritability, restlessness and craving in a heavy smoker who can no longer get outside to smoke","Offer nicotine replacement (patch); see <a href='smoking-cessation.html'>smoking cessation</a>"],
+         ["<b>Benzodiazepine or other drug withdrawal</b>","Long-term benzodiazepine, SSRI, antipsychotic or Parkinson’s medicines stopped because the person can no longer swallow","Continue by another route or taper; see <a href='benzodiazepines-z-drugs.html'>benzodiazepines</a>"],
+         ["<b>Metabolic</b>","Hyponatraemia, hypoglycaemia (steroids, diabetes medicines with poor intake), uraemia, liver failure","Bloods if they would change management"],
+         ["<b>Brain</b>","Primary or secondary brain tumour, raised intracranial pressure (headache, vomiting), seizures (including non-convulsive), stroke","Specialist advice; dexamethasone or anticonvulsant decisions are specialist-guided"],
+         ["<b>Uncontrolled symptoms and distress</b>","Pain (especially if the person cannot say so), breathlessness, fear, unresolved worries","Treat the symptom; use observational pain tools in people who cannot report pain"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Opioid toxicity with renal decline", html:"Morphine and its metabolites accumulate as renal function falls, causing drowsiness, myoclonus, hallucinations and agitation that can be mistaken for terminal agitation and ‘treated’ with more sedation. Seek specialist advice before prescribing strong opioids in moderate to severe renal or hepatic impairment.", src:"NICE CG140 (2012, updated 2016)"},
+         {tone:"amber", h:"Treat reversible causes first", html:"Even in the last days of life, treat reversible causes of agitation, anxiety or delirium, for example psychological causes or metabolic disorders such as renal failure or hyponatraemia, where that fits the person’s wishes.", src:"NICE NG31 s1.5"},
+         {tone:"amber", h:"Antimuscarinics for secretions cause delirium", html:"Hyoscine hydrobromide and atropine cross the blood–brain barrier. NG31: monitor for <b>delirium, agitation or excessive sedation</b> when they are used for respiratory secretions. (Glycopyrronium and hyoscine butylbromide cross it less, a pharmacological point rather than an NG31 recommendation.) See <a href='palliative-respiratory-secretions.html'>respiratory secretions</a>.", src:"NICE NG31 s1.5"},
+         {tone:"plain", h:"Identify and manage the underlying causes", html:"In people diagnosed with delirium, identify and manage the possible underlying cause or combination of causes — there is often more than one.", src:"NICE CG103 (2010, updated 2023)"}
+       ]},
+       {b:"why", html:"In advanced cancer, drugs are among the commonest and most reversible contributors, and they are the ones the prescriber controls. A structured review of every drug started, increased, or stopped in the last two weeks often finds the answer before any blood test."}
+     ]},
+
+    {id:"assess", nav:"Assess", title:"Assessment at home — what to do on the visit", sub:"Proportionate: do what would change management and what the person would want.",
+     blocks:[
+       {b:"dl", rows:[
+         ["History from carers","When did it start, is it fluctuating, what is different (sleep, eating, drinking, bowels, urine), falls, any new or changed medicines, alcohol and smoking, what the person has said they would want"],
+         ["Medication review","Opioid dose changes and renal function; anticholinergics; steroids and timing; benzodiazepines, Z-drugs, gabapentinoids; anything stopped because swallowing has failed (including Parkinson’s medicines, antiepileptics, benzodiazepines, antidepressants)"],
+         ["Examination","Alertness and 4AT; pupils and myoclonus (opioid toxicity); hydration; temperature, pulse, respiratory rate, oxygen saturation; chest; <b>abdomen and bladder</b>; <b>rectal examination</b> if constipation is possible; pressure areas and skin; pain behaviours; focal neurology"],
+         ["Capillary glucose","Easy at the bedside; hypoglycaemia is a quick fix, especially on steroids or diabetes medicines with poor intake"],
+         ["Bloods, if they would change management","FBC, U&amp;E and eGFR, <b>adjusted calcium</b>, LFTs, CRP, glucose; sodium on steroids or with SIADH-associated cancers"],
+         ["Urine","Dipstick is unreliable for diagnosing UTI in older adults and in catheterised people; send a sample only if symptoms point to the urinary tract"],
+         ["Capacity","Delirium commonly removes capacity for specific decisions; assess each decision, involve any LPA for health and welfare, and act in best interests"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Decide how far to investigate", html:"Consider investigations only if they are likely to change care, and base the decision on the person’s wishes and the likely prognosis. Someone with weeks to months to live and a first episode of delirium usually warrants bloods; someone clearly in the last hours does not.", src:"NICE NG31 s1.1"},
+         {tone:"blue", h:"Capacity and best interests", html:"Assume capacity; assess it for the specific decision; support the person to decide. If they lack capacity, act in their best interests, considering their past and present wishes and consulting those close to them and any attorney.", src:"Mental Capacity Act 2005"}
+       ]}
+     ]},
+
+    {id:"nondrug", nav:"Non-drug care", title:"Non-drug care — for everyone, before and alongside any drug", sub:"This is the foundation, not an optional extra. It is also what the family can do.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"Familiar people", html:"The same carers where possible; a familiar voice reassures. Encourage family to sit with the person, talk calmly and use simple sentences."},
+         {t:"Orientation", html:"Clock and calendar in view, light during the day and dim at night, gentle reminders of where they are and who is with them. Do not argue with hallucinations; acknowledge the fear and redirect."},
+         {t:"Senses", html:"Glasses and hearing aids in and working; clear any earwax; interpreter if needed."},
+         {t:"Body", html:"Fluids if wanted and safe, mouth care, bowel and bladder care, pain control, mobilise if able, avoid unnecessary lines and catheters."},
+         {t:"Sleep", html:"Reduce night-time noise and interruptions; avoid giving medicines and care at night where possible."},
+         {t:"Environment", html:"Avoid moving the person between rooms or settings unless necessary. Remove hazards; keep a low bed or mattress on the floor if falls are a risk."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Reorientate and reassure", html:"Ensure effective communication and reorientation (explaining where the person is, who they are and what your role is) and provide reassurance. Consider involving family, friends and carers to help with this.", src:"NICE CG103 (2010, updated 2023)"},
+         {tone:"green", h:"De-escalate first", html:"If a person with delirium is distressed or a risk to themselves or others, first use verbal and non-verbal de-escalation techniques. Drug treatment is for when these are ineffective or inappropriate.", src:"NICE CG103 (2010, updated 2023)"}
+       ]},
+       {b:"why", html:"Most of these measures come from delirium-prevention programmes in hospital, but they translate directly to a bedroom at home. They cost nothing, help the carers feel useful, and reduce the dose of any drug that is needed."}
+     ]},
+
+    {id:"drugs", nav:"Drugs", title:"Drug treatment — choose by the problem, not by habit", sub:"All doses per the BNF and your local palliative care formulary or specialist team. Start low, review within 24 hours, and stop when the delirium settles.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"Treat the cause and use non-drug care", when:"always",
+          html:"Stop or reduce culprit drugs, relieve retention and impaction, treat pain, infection, hypercalcaemia or hypoxia where that fits the plan. Many episodes need no psychoactive drug at all."},
+         {step:"2", title:"Antipsychotic for distressing delirium or risk of harm", when:"de-escalation ineffective or inappropriate",
+          fromLabel:"distress or danger",
+          html:"NICE CG103: consider <b>short-term haloperidol</b> (usually <b>1 week or less</b>), taking into account the MHRA advice on its risks in older people, starting at the lowest clinically appropriate dose and titrating cautiously. NICE NG31 (last days): consider a trial of an antipsychotic for delirium or agitation. Oral if the person can swallow, subcutaneous if not. <b>Dose per BNF / local palliative formulary.</b>"},
+         {step:"3", title:"A more sedating antipsychotic", when:"haloperidol unsuitable or insufficient",
+          fromLabel:"specialist-guided",
+          html:"<b>Levomepromazine</b> is broader-spectrum and more sedating; palliative care guidelines (for example the Scottish Palliative Care Guidelines) use it when haloperidol is ineffective or unsuitable. It causes hypotension and is also a dopamine antagonist, so it carries the same Parkinson’s and Lewy body risk. Usually on specialist advice; <b>dose per local palliative formulary</b>."},
+         {step:"4", title:"Benzodiazepine — for the right indication", when:"anxiety, withdrawal, last days",
+          fromLabel:"not as sole agent in delirium",
+          html:"NG31: consider a trial of a benzodiazepine for anxiety or agitation in the last days. A benzodiazepine <b>alone can worsen delirium</b>, so outside the last days reserve it for alcohol or benzodiazepine withdrawal, seizures, marked anxiety, or as an add-on to an antipsychotic for severe agitation. Midazolam SC is the usual community choice; <b>dose per BNF</b>."},
+         {step:"5", title:"Specialist advice", when:"uncertain, not responding, or over-sedated",
+          fromLabel:"do not escalate alone",
+          html:"Seek specialist palliative care advice if the diagnosis is uncertain, the delirium or agitation does not respond to an antipsychotic, or treatment causes unwanted sedation (NG31). Continuous sedation for refractory distress is a specialist decision."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Antipsychotic: short term, lowest dose", html:"If a person with delirium is distressed or a risk to themselves or others and de-escalation is ineffective or inappropriate, consider short-term (usually for 1 week or less) haloperidol, starting at the lowest clinically appropriate dose and titrating cautiously according to symptoms.", src:"NICE CG103 (2010, updated 2023)"},
+         {tone:"blue", h:"Last days: benzodiazepine or antipsychotic", html:"For a person in the last days of life: consider a trial of a benzodiazepine to manage anxiety or agitation, and a trial of an antipsychotic to manage delirium or agitation. Prescribe these anticipatorily with the indication, dose, route and maximum frequency written down.", src:"NICE NG31 s1.5–1.6"},
+         {tone:"red", h:"Haloperidol in older people", html:"The MHRA reminded prescribers of the risks of haloperidol for acute delirium in older people: use only when non-drug measures have failed and there are no contraindications (including Parkinson’s disease and dementia with Lewy bodies); lowest dose, shortest time; a <b>baseline ECG</b> and correction of any electrolyte disturbance are recommended before starting, with cardiac and electrolyte monitoring during treatment; watch for extrapyramidal effects (such as dysphagia, parkinsonism, hypersalivation).", src:"MHRA Drug Safety Update Dec 2021"},
+         {tone:"amber", h:"QT and cardiac risk", html:"Haloperidol prolongs the QT interval. Consider the person’s other QT-prolonging drugs (for example some antiemetics, antidepressants, macrolides, methadone) and electrolytes. In the last days, when an ECG would not change management and the aim is comfort, this is a clinical judgement (not covered by the MHRA advice) — discuss with the specialist team.", src:"MHRA Drug Safety Update Dec 2021"},
+         {tone:"blue", h:"When to call for advice", html:"Seek specialist advice if the diagnosis of agitation or delirium is uncertain, if the agitation or delirium does not respond to antipsychotic treatment, or if treatment causes unwanted sedation.", src:"NICE NG31 s1.5"},
+         {tone:"plain", h:"Renal and hepatic impairment, frailty", html:"Benzodiazepines and many psychoactive drugs accumulate in renal and hepatic impairment and in frail older people. Use the lowest starting dose, longer intervals, and review sedation daily. Check dose adjustments in the BNF or with the palliative care pharmacist."}
+       ]},
+       {b:"warn", html:"<b>Do not use a benzodiazepine as the only drug for delirium</b> unless the cause is alcohol or benzodiazepine withdrawal, or the person is in the last days and the aim is comfort. It can worsen confusion, cause falls and mask the cause."},
+       {b:"why", html:"The old card gave specific starting doses from local palliative guidance. Those doses were not traceable to a guideline that could be verified for this page, so they have been removed. Palliative doses vary with age, frailty, renal function, previous exposure and route: use the BNF ‘Prescribing in palliative care’ section, your local palliative formulary or anticipatory prescribing chart, and the specialist palliative care advice line."}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Parkinson’s, Lewy body dementia, dementia and withdrawal", sub:"The groups where a routine prescription causes the most harm.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Parkinson’s disease — avoid dopamine antagonists", html:"NICE NG71 warns that antipsychotics such as phenothiazines (for example levomepromazine, prochlorperazine) and butyrophenones (haloperidol) can worsen motor features; metoclopramide is also a dopamine antagonist. NG71 names quetiapine (and clozapine, with registration and blood monitoring) for hallucinations and delusions in Parkinson’s; in delirium at the end of life, seek specialist advice. See <a href='parkinsons.html'>Parkinson’s disease</a>.", src:"NICE NG71 (2017)"},
+         {tone:"red", h:"Do not stop Parkinson’s medicines abruptly", html:"Abrupt withdrawal or failed absorption of antiparkinsonian medicines risks acute akinesia and a neuroleptic malignant-like syndrome, which itself causes confusion and distress. When swallowing fails, get specialist advice about an alternative route; local Parkinson’s nil-by-mouth guidance often uses a transdermal dopamine agonist.", src:"NICE NG71 (2017)"},
+         {tone:"blue", h:"Dementia with Lewy bodies", html:"In dementia with Lewy bodies and Parkinson’s disease dementia, antipsychotics can worsen motor features and in some cases cause severe antipsychotic sensitivity reactions (NG97). CG103 advises using antipsychotics with caution or not at all in Parkinson’s disease or dementia with Lewy bodies, and the MHRA lists both as contraindications to haloperidol. Discuss with a specialist first.", src:"NICE NG97 (2018); NICE CG103; MHRA Drug Safety Update Dec 2021"},
+         {tone:"amber", h:"Dementia — antipsychotic caution", html:"Only offer antipsychotics in dementia if the person is at risk of harming themselves or others, or has agitation, hallucinations or delusions causing severe distress. Discuss benefits and harms (including increased risk of stroke and death) with the person and their family first, and use the lowest effective dose for the shortest possible time, with regular review. Look for pain, constipation, retention and infection first. See <a href='dementia.html'>dementia</a>.", src:"NICE NG97 (2018)"},
+         {tone:"blue", h:"Alcohol withdrawal and delirium tremens", html:"Acute alcohol withdrawal is managed with a benzodiazepine. For delirium tremens NICE CG100 recommends oral lorazepam first line, with parenteral lorazepam or haloperidol if symptoms persist or oral medication is declined — this usually means admission unless the person is dying and has chosen to stay at home. Give thiamine.", src:"NICE CG100 (2010, updated 2017)"},
+         {tone:"blue", h:"Parkinson’s or Lewy body — in the last days", html:"The NG31 route (antipsychotic for delirium) still needs adapting: avoid haloperidol and levomepromazine where possible, rely more on non-drug care and a benzodiazepine for distress, and agree the plan with the palliative care team and Parkinson’s specialist.", src:"NICE NG31 s1.5; NICE NG71 (2017)"}
+       ]},
+       {b:"why", html:"A single out-of-hours dose of haloperidol or metoclopramide can leave a person with Parkinson’s or Lewy body dementia rigid, unable to swallow and more distressed. Put the diagnosis and ‘avoid dopamine antagonists’ on the anticipatory prescribing chart and the shared care record so the OOH clinician sees it."}
+     ]},
+
+    {id:"terminal", nav:"Last days", title:"Terminal agitation versus reversible delirium", sub:"The same bedside picture can be a fixable problem or the dying process. The job is to tell them apart quickly and honestly.",
+     blocks:[
+       {b:"table", head:["","Reversible delirium","Terminal agitation (last days)"], rows:[
+         ["<b>Timing</b>","Any point in the illness; often a clear trigger","Last days to hours, with other signs of dying"],
+         ["<b>Other signs</b>","Recent drug change, new symptoms, infection, abnormal bloods","NG31 signs of dying: falling consciousness, Cheyne–Stokes breathing, mottled skin, noisy secretions, progressive weight loss and weakness"],
+         ["<b>Aim</b>","Find and treat the cause; restore the person","Comfort and dignity; relieve distress for the person and the family"],
+         ["<b>Investigation</b>","Bloods and review where they would change management","Only if they would change care; still check bladder, bowel, pain and opioid toxicity"],
+         ["<b>Drugs</b>","Short-term antipsychotic for distress or danger","Benzodiazepine and/or antipsychotic, PRN then by syringe pump if needed"],
+         ["<b>Outlook</b>","Often improves within days; may recur","Usually irreversible; the person may still settle with good symptom control"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Recognising dying is a working diagnosis", html:"Agitation is one of the signs that someone may be entering the last days of life, but improvement can happen. Monitor for further changes at least every 24 hours and reconsider reversible causes if the picture changes.", src:"NICE NG31 s1.1"},
+         {tone:"red", h:"The four quick fixes before sedating", html:"NG31 notes that agitation on its own can reflect unmet needs such as <b>unrelieved pain</b> or a <b>full bladder or rectum</b>. Check for these, and for <b>opioid toxicity</b>, before sedating: all are common, quickly treated, and produce restlessness that sedation only hides.", src:"NICE NG31 s1.5"},
+         {tone:"blue", h:"Anticipatory medicines and the syringe pump", html:"Prescribe anticipatory medicines for anxiety, agitation and delirium with the indication, dose, route and frequency. NG31: consider a syringe pump for continuous symptom control if more than 2 or 3 doses of any ‘as required’ medicine have been given within 24 hours; discuss with the district nurses and specialist team. See <a href='care-of-the-dying.html#anticipatory'>anticipatory medicines</a> and <a href='care-of-the-dying.html#pump'>syringe pumps</a>.", src:"NICE NG31 s1.5–1.6; QS144 (2017) statement 3"},
+         {tone:"blue", h:"Refractory distress", html:"If agitation continues despite appropriate treatment, or sedation is unwanted, or continuous sedation is being considered, seek specialist palliative care advice. Any sedation should be proportionate to the distress, discussed with the person where possible and the family, and documented.", src:"NICE NG31 s1.5"}
+       ]},
+       {b:"warn", html:"Terminal agitation is a diagnosis made after the quick fixes are excluded, not instead of them. See the whole last-days pathway on <a href='care-of-the-dying.html'>care of the dying</a>."}
+     ]},
+
+    {id:"carers", nav:"Carers &amp; safety", title:"Carer support and safety at home", sub:"Delirium is frightening to watch, and most of the care at home is delivered by family.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Explain what is happening", html:"Offer the person and family information that delirium is common and usually temporary (though in the last days it may not resolve). Explain that it comes and goes and is caused by the illness or treatment rather than ‘going mad’. Offer written information and involve them in reorientation.", src:"NICE CG103 (2010, updated 2023)"},
+         {tone:"green", h:"Carers’ own needs", html:"Identify carers, offer a carer’s assessment, and make sure they have practical and emotional support, respite options and a named contact. Night-sitting services and hospice at home can make a home death plan sustainable.", src:"NICE NG142 (2019)"},
+         {tone:"blue", h:"24/7 access to advice", html:"Make sure the family and carers have the numbers for the district nurses, out-of-hours GP, 111 and the specialist palliative care advice line, and that the plan is on the shared record (for example EPaCCS or the summary care record) so OOH clinicians see it.", src:"NICE NG142 (2019)"},
+         {tone:"red", h:"Safety at home", html:"Remove trip hazards, sharp objects and car keys; supervise medicines and remove stockpiles; lower the bed or use a floor mattress; do not leave a very agitated person alone. If someone is at immediate risk (to themselves or a carer) and cannot be settled, call 999 or arrange urgent assessment."}
+       ]},
+       {b:"say", html:"“What you are seeing is called delirium. It is a kind of confusion that comes on quickly when someone is very unwell, and it is caused by the illness or the medicines rather than by anything you have done. It tends to come and go, and is often worse at night. We are going to look for anything we can fix — like a full bladder, constipation, an infection or a medicine — and we have calming medicines if he is distressed. The most helpful things you can do are to stay nearby, speak calmly, keep the room quietly lit, and not argue if he sees things that are not there. If he becomes frightened, violent, or you cannot manage, ring this number at any time.”"},
+       {b:"why", html:"Families often feel they have failed when a person they are caring for becomes agitated. Naming delirium, giving them tasks and a number to ring, and checking on their own sleep and support is part of the treatment."}
+     ]},
+
+    {id:"refer", nav:"Where", title:"Home, hospice or hospital — and who to call", sub:"Decide with the person (or from their known wishes) and the family. Being at home is not a reason to withhold treatment of a reversible cause they would want.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"999 / same-day admission", html:"Suspected sepsis, hypercalcaemia or another reversible cause needing hospital treatment, where active treatment is in keeping with the person’s wishes; suspected <b>spinal cord compression</b>, stroke or seizures; delirium tremens; serious risk to self or others that cannot be managed at home. See <a href='mscc.html'>MSCC</a> and <a href='neutropenic-sepsis.html'>neutropenic sepsis</a>."},
+         {tone:"blue", h:"Specialist palliative care advice — same day", html:"Diagnosis of agitation or delirium uncertain; no response to antipsychotic; unwanted sedation; Parkinson’s or Lewy body dementia; renal failure with opioid toxicity; considering continuous sedation.", src:"NICE NG31 s1.5"},
+         {tone:"blue", h:"Hospice in-patient unit", html:"Refractory symptoms, complex delirium, or a family who can no longer manage safely at home despite support. Discuss preferred place of care and death, and update the plan if the person’s wishes change.", src:"NICE NG142 (2019)"},
+         {tone:"blue", h:"Stay at home, with support", html:"District nursing, hospice at home, night-sitting, anticipatory medicines in the house, a clear plan for OOH, and review within 24 hours. Most delirium in the last days can be managed at home when this is in place.", src:"NICE NG31 s1.6; NICE NG142 (2019)"}
+       ]},
+       {b:"table", head:["Situation","Urgency","Who / what to send"], rows:[
+         ["Hypercalcaemia in someone for whom treatment is wanted","Same day","Acute oncology or medical take; calcium result, drug list, cancer diagnosis, escalation plan"],
+         ["Suspected sepsis, active treatment wanted","Same day / 999","Acute medicine or SDEC as locally agreed; ReSPECT form and treatment escalation plan"],
+         ["Refractory agitation, last days","Same day","Specialist palliative care advice line; PRN use over 24 hours, current syringe pump contents"],
+         ["Parkinson’s or Lewy body with delirium","Same day advice","Palliative care team and Parkinson’s nurse; current Parkinson’s regimen and when doses were last taken"],
+         ["Carers exhausted or unsafe","Same or next day","Hospice at home, respite or in-patient hospice; social care; carer’s assessment"],
+         ["Recurrent delirium weeks to months before death","Routine or urgent","Palliative care team; medication review; advance care planning discussion about future episodes"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Review", title:"Review and follow-up", sub:"Delirium changes by the hour. Plan the next contact before you leave.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Symptoms and distress","At least every 24 hours (district nurse, GP, OOH as needed)","Is the cause being treated? Is the person calmer? Is the family coping?"],
+         ["PRN use","Daily","More than 2 or 3 PRN doses in 24 hours (NG31) → review cause, then consider a syringe pump with specialist advice"],
+         ["Antipsychotic","Daily; stop after the delirium settles (usually within a week)","Watch sedation, falls, extrapyramidal effects; stop rather than continue by default"],
+         ["Opioid and renal function","When opioid toxicity is suspected","Reduce or switch opioid; review after changes"],
+         ["Recognising dying","Every 24 hours","Improvement can happen; update the plan and the family"],
+         ["After recovery","Follow-up visit","Explain what happened, what caused it, what to watch for; update anticipatory prescribing and advance care plan"]
+       ]}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Where good intentions lead to harm.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Sedating without examining", html:"Prescribing or giving a sedative over the phone for ‘restlessness’ without anyone checking for retention, impaction, pain or opioid toxicity.", src:"NICE NG31 s1.5"},
+         {tone:"red", h:"Calling hypoactive delirium ‘dying’ or ‘depression’", html:"A quiet, sleepy person who is new to being like this may have hypercalcaemia, opioid toxicity or an infection that could be reversed.", src:"NICE CG103 (2010, updated 2023)"},
+         {tone:"amber", h:"Benzodiazepine alone for delirium", html:"Outside the last days and alcohol withdrawal, a benzodiazepine alone can deepen the confusion, cause falls and hide the cause."},
+         {tone:"amber", h:"Haloperidol in Parkinson’s or Lewy body dementia", html:"The commonest serious prescribing error in this topic; often from an OOH prescription for agitation or vomiting.", src:"MHRA Drug Safety Update Dec 2021; NICE NG71 (2017)"},
+         {tone:"amber", h:"Forgetting withdrawal", html:"The smoker who can no longer get outside, the heavy drinker who can no longer get to the shop, and the person whose long-term benzodiazepine or Parkinson’s medicines stopped when swallowing failed."},
+         {tone:"plain", h:"Leaving the antipsychotic running", html:"CG103 recommends a short course, usually a week or less. Review and stop when the delirium settles.", src:"NICE CG103 (2010, updated 2023)"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only — the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"plain", h:"Classic scenario", html:"Telephone call from the wife of a 72-year-old man with metastatic lung cancer at home. For two days he has been muddled and seeing insects on the walls, and last night he tried to climb out of bed. His oxycodone was increased last week and he started dexamethasone for appetite. He has not opened his bowels for five days. She asks for ‘something to knock him out’ so she can sleep."},
+       {tone:"plain", h:"Examiner-style checkpoints", html:"Recognises delirium and its fluctuating course; explores her fears and exhaustion; identifies likely contributors (opioid increase, steroids, constipation, possible hypercalcaemia, retention, infection); arranges a same-day visit rather than prescribing blind; considers bloods including calcium in line with his wishes; explains non-drug measures; discusses a short-term antipsychotic if distressed, with doses per BNF, and avoids a benzodiazepine alone; checks for Parkinson’s or dementia; plans carer support, night-sitting and OOH handover; safety-nets with a 24-hour number. <a href='../../cases/palliative-care.html'>Open the palliative care casebook chapter →</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Sources used on this page. No clinician has yet reviewed this page.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG103 — Delirium: prevention, diagnosis and management in hospital and long-term care</b> (2010, updated January 2023)<br><a href="https://www.nice.org.uk/guidance/cg103" rel="noopener">nice.org.uk/guidance/cg103</a><span class="rd"> — indicators of delirium, 4AT (2023 update), treat as delirium if unsure, underlying causes, reorientation, de-escalation, short-term antipsychotic. Its scope is hospital and long-term care; it is applied here by analogy to home care.</span></li>'+
+         '<li><b>NICE NG31 — Care of dying adults in the last days of life</b> (2015)<br><a href="https://www.nice.org.uk/guidance/ng31" rel="noopener">nice.org.uk/guidance/ng31</a><span class="rd"> — reversible causes, benzodiazepine for anxiety or agitation, antipsychotic for delirium or agitation, specialist advice triggers, anticipatory prescribing, antimuscarinic side effects</span></li>'+
+         '<li><b>NICE QS144 — Care of dying adults in the last days of life</b> (2017)<span class="rd"> — anticipatory medicines statement</span></li>'+
+         '<li><b>NICE NG97 — Dementia: assessment, management and support</b> (2018)<br><a href="https://www.nice.org.uk/guidance/ng97" rel="noopener">nice.org.uk/guidance/ng97</a><span class="rd"> — antipsychotic caution in dementia, Lewy body and Parkinson’s disease dementia sensitivity</span></li>'+
+         '<li><b>NICE NG71 — Parkinson’s disease in adults</b> (2017)<br><a href="https://www.nice.org.uk/guidance/ng71" rel="noopener">nice.org.uk/guidance/ng71</a><span class="rd"> — avoid dopamine antagonists, quetiapine/clozapine for psychosis, do not stop medicines abruptly</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Haloperidol: reminder of risks when used in elderly patients for the acute treatment of delirium</b> (December 2021)<span class="rd"> — contraindications including Parkinson’s and Lewy body dementia, baseline ECG, lowest dose</span></li>'+
+         '<li><b>NICE CG100 — Alcohol-use disorders: diagnosis and management of physical complications</b> (2010, updated 2017)<span class="rd"> — alcohol withdrawal and delirium tremens</span></li>'+
+         '<li><b>NICE CG140 — Palliative care for adults: strong opioids</b> (2012, updated 2016)<span class="rd"> — renal and hepatic impairment, specialist advice</span></li>'+
+         '<li><b>NICE NG142 — End of life care for adults: service delivery</b> (2019)<span class="rd"> — carers, 24/7 access, coordination</span></li>'+
+         '<li><b>Mental Capacity Act 2005</b><span class="rd"> — capacity and best interests</span></li>'+
+         '<li><b>Scottish Palliative Care Guidelines — Delirium</b> (Right Decisions, NHS Scotland)<span class="rd"> — practical palliative prescribing including levomepromazine when haloperidol is unsuitable; used as a background reference, not for doses</span></li>'+
+         '<li><b>BNF — Prescribing in palliative care; Palliative Care Formulary</b><span class="rd"> — all doses, routes and syringe pump compatibility</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Delirium and agitation in palliative care — NICE CG103 (2010, updated 2023), NICE NG31 (2015), NICE NG97 (2018), NICE NG71 (2017), NICE CG100, NICE CG140, NICE NG142 and the MHRA Drug Safety Update (December 2021). Look for reversible causes before sedating, adapt drug choice for Parkinson’s and Lewy body dementia, and seek specialist palliative care advice early. Doses are not given on this page: verify all doses against the current BNF and your local palliative care formulary before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

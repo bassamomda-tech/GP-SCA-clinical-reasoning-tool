@@ -215,7 +215,7 @@ MedChooser.register('migraine', {
 
   sources: [
     { label:'NICE CG150 — headaches', url:'https://www.nice.org.uk/guidance/cg150' },
-    { label:'NICE CG150 — Headaches in over 12s', url:'https://www.nice.org.uk/guidance/ng150' },
+    { label:'NICE CG150 — Headaches in over 12s', url:'https://www.nice.org.uk/guidance/cg150' },
     { label:'MHRA — Topiramate: Pregnancy Prevention Programme', url:'https://www.gov.uk/drug-safety-update' },
     { label:'BNF — Migraine', url:'https://bnf.nice.org.uk/treatment-summaries/migraine/' }
   ],

@@ -718,7 +718,7 @@ body.mode-clinic .sca-only{display:none!important}
 
 </style>
 
-<link rel="stylesheet" href="../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../assets/provenance.css?v=14">
 </head>
 <body class="mode-both" id="bodyEl">
 <button class="sb-toggle" aria-label="Open case list">
@@ -773,7 +773,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="ns-item"><span class="ns-val">IPSS ≥20</span><span class="ns-lbl">Severe — consider surgery / specialist</span></div>
     <div class="ns-item"><span class="ns-val">Qmax &lt;10</span><span class="ns-lbl">ml/s — bladder outflow obstruction</span></div>
     <div class="ns-item"><span class="ns-val">PVR &gt;300</span><span class="ns-lbl">ml — acute retention risk; catheterise</span></div>
-    <div class="ns-item"><span class="ns-val">PSA &gt;3</span><span class="ns-lbl">ng/mL — consider 2WW prostate cancer referral</span></div>
+    <div class="ns-item"><span class="ns-val">PSA &gt;age threshold</span><span class="ns-lbl">NICE NG12: &gt;2.5 (40–49), &gt;3.5 (50–59), &gt;4.5 (60–69), &gt;6.5 (70–79) ng/mL — 2WW prostate cancer referral</span></div>
     <div class="ns-item"><span class="ns-val">30 ml</span><span class="ns-lbl">Prostate volume threshold for 5-ARI benefit</span></div>
     <div class="ns-item"><span class="ns-val">4–6 wks</span><span class="ns-lbl">Minimum alpha-blocker trial before reassessment</span></div>
   </div>
@@ -1097,7 +1097,7 @@ body.mode-clinic .sca-only{display:none!important}
         <span class="tc-badge tcb-u">2WW / urgent urology</span>
         <ul class="tc-items">
           <li class="tc-item"><strong>Visible (macroscopic) haematuria</strong><em>Same-day urgent 2WW referral to urology. Never attribute to BPE alone.</em></li>
-          <li class="tc-item"><strong>PSA above age threshold</strong><em>PSA &gt;3 ng/mL at any age, or disproportionate to prostate size. 2WW prostate cancer referral. Discuss with patient before referring.</em></li>
+          <li class="tc-item"><strong>PSA above age threshold</strong><em>PSA above the age-specific threshold (NICE NG12: &gt;2.5 ng/mL at 40&ndash;49, &gt;3.5 at 50&ndash;59, &gt;4.5 at 60&ndash;69, &gt;6.5 at 70&ndash;79), or disproportionate to prostate size. 2WW prostate cancer referral. Discuss with patient before referring.</em></li>
           <li class="tc-item"><strong>Hard or irregular prostate on DRE</strong><em>Suspicious DRE findings regardless of PSA level. 2WW prostate cancer referral. Prostate cancer can exist with normal PSA.</em></li>
           <li class="tc-item"><strong>New bone pain + LUTS</strong><em>Possible metastatic prostate cancer. Urgent PSA + 2WW. Spinal cord compression: immediate imaging.</em></li>
           <li class="tc-item"><strong>Recurrent UTIs in a man</strong><em>Two or more UTIs in 12 months. Urgent urology for cystoscopy and upper tract imaging.</em></li>
@@ -1252,7 +1252,7 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="rt">
         <thead><tr><th style="width:22%">Investigation</th><th style="width:34%">Clinical question it answers</th><th>What result changes management?</th></tr></thead>
         <tbody>
-          <tr><td class="q">PSA (prostate-specific antigen) + informed consent discussion</td><td class="why">Screens for prostate cancer. PSA &gt;3 ng/mL in any man warrants consideration of 2WW referral. PSA rises physiologically with prostate size (BPE), infection (prostatitis), and after DRE, catheterisation, ejaculation (within 48h), or vigorous cycling. PSA has a 15% false-negative rate for prostate cancer.</td><td class="why">PSA &gt;3 ng/mL &rarr; 2WW prostate cancer referral if no benign explanation. PSA &lt;1 in a man over 60 = low cancer risk. Rising PSA over time (&gt;0.75 ng/mL/year) is more concerning than a single elevated value.</td></tr>
+          <tr><td class="q">PSA (prostate-specific antigen) + informed consent discussion</td><td class="why">Screens for prostate cancer. PSA above the age-specific threshold (NICE NG12: &gt;2.5 ng/mL at 40&ndash;49, &gt;3.5 at 50&ndash;59, &gt;4.5 at 60&ndash;69, &gt;6.5 at 70&ndash;79) warrants 2WW referral. PSA rises physiologically with prostate size (BPE), infection (prostatitis), and after DRE, catheterisation, ejaculation (within 48h), or vigorous cycling. PSA has a 15% false-negative rate for prostate cancer.</td><td class="why">PSA above the NICE NG12 age-specific threshold &rarr; 2WW prostate cancer referral if no benign explanation. PSA &lt;1 in a man over 60 = low cancer risk. Rising PSA over time (&gt;0.75 ng/mL/year) is more concerning than a single elevated value.</td></tr>
           <tr><td class="q">Urine dipstick &amp; MSU (midstream urine)</td><td class="why">Mandatory NICE CG97 first-line test. Blood = haematuria (requires further investigation). Nitrites + leucocytes = UTI. Glucose = undiagnosed DM. Protein = possible renal disease.</td><td class="why">UTI &rarr; treat first, re-evaluate LUTS after. Blood negative culture &rarr; cystoscopy + upper tract imaging. Positive culture &rarr; treat UTI, repeat dipstick 6 weeks later.</td></tr>
           <tr><td class="q">Post-void residual volume (PVR &mdash; bladder scan)</td><td class="why">Objective measure of bladder emptying. PVR &gt;150 mL = impaired emptying. PVR &gt;300 mL = significant retention requiring catheterisation. PVR correlates with symptoms of incomplete emptying but not always &mdash; some high PVRs are asymptomatic.</td><td class="why">PVR &gt;300 mL &rarr; catheterise + urology referral urgently. PVR 150&ndash;300 mL &rarr; consider urology referral; NICE recommends review. PVR &lt;150 mL &rarr; safe to trial alpha-blocker in primary care.</td></tr>
           <tr><td class="q">Renal function (U&amp;E, eGFR, creatinine)</td><td class="why">BPE causing bilateral ureteric obstruction leads to obstructive uropathy and rising creatinine. Indicated in: high PVR, bilateral hydronephrosis, severe LUTS, poor voiding function. Renal impairment also affects drug dosing (antimuscarinics, mirabegron).</td><td class="why">Rising creatinine + LUTS &rarr; upper tract ultrasound urgently; urology referral. eGFR &lt;15 &rarr; avoid antimuscarinics. eGFR &lt;30 &rarr; dose adjustment for mirabegron.</td></tr>
@@ -1320,7 +1320,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B &mdash; Suspected &mdash; Refer for Confirmation</div>
         <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Urology referral</span>
-        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Prostate cancer (localised)</h4><p>Raised PSA &gt;3 ng/mL and/or abnormal DRE. 2WW prostate cancer referral. Multi-parametric MRI then biopsy if MRI suspicious.</p></div>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Prostate cancer (localised)</h4><p>PSA above the age-specific threshold (NICE NG12) and/or abnormal DRE. 2WW prostate cancer referral. Multi-parametric MRI then biopsy if MRI suspicious.</p></div>
         <div class="ddx-card ddx-c"><h4>Urethral stricture</h4><p>Fixed obstructive uropathy &mdash; prior catheterisation, urethral surgery, or STI. Not responsive to alpha-blockers. Urethrogram then urethrotomy/urethroplasty.</p></div>
       </div>
       <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
@@ -1338,7 +1338,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td style="font-weight:600">0&ndash;7</td><td><span class="conf-badge conf-gp">Mild</span></td><td>Symptoms present but QoL minimally affected. Patient not significantly bothered. May not seek help until prompted.</td><td>Watchful waiting. Lifestyle modification (fluids, caffeine, alcohol). Reassurance. Annual review.</td><td>No (unless red flags or haematuria)</td></tr>
           <tr><td style="font-weight:600">8&ndash;19</td><td><span class="conf-badge conf-sus">Moderate</span></td><td>Symptoms causing noticeable bother. Nocturia waking 2&ndash;3 times. Weak stream with effort. QoL affected but not severely.</td><td>Alpha-blocker (tamsulosin 400 mcg OD) first-line. Add 5-ARI if prostate &gt;30 mL. Consider antimuscarinic if OAB component. Review at 4&ndash;6 weeks with repeat IPSS.</td><td>Consider if poor response to 2 drugs</td></tr>
           <tr><td style="font-weight:600">20&ndash;35</td><td><span class="conf-badge conf-emerg">Severe</span></td><td>Symptoms severely impact QoL. Nocturia &gt;3 times. Significant straining and incomplete emptying. High PVR risk.</td><td>Pharmacotherapy as above plus urology referral. Uroflowmetry and PVR measurement essential. Surgery (TURP or HoLEP) may be needed.</td><td>Yes &mdash; urology for surgery consideration</td></tr>
-          <tr><td style="font-weight:600">Any + raised PSA</td><td><span class="conf-badge conf-emerg">Urgent</span></td><td>PSA &gt;3 ng/mL without benign explanation. Or PSA &gt;0.75 ng/mL/year rise.</td><td>2WW prostate cancer referral. Do not start pharmacotherapy until cancer excluded or discussed with urology.</td><td>Yes &mdash; 2WW</td></tr>
+          <tr><td style="font-weight:600">Any + raised PSA</td><td><span class="conf-badge conf-emerg">Urgent</span></td><td>PSA above the NICE NG12 age-specific threshold without benign explanation. Or PSA &gt;0.75 ng/mL/year rise.</td><td>2WW prostate cancer referral. Do not start pharmacotherapy until cancer excluded or discussed with urology.</td><td>Yes &mdash; 2WW</td></tr>
           <tr><td style="font-weight:600">Any + retention</td><td><span class="conf-badge conf-emerg">Emergency</span></td><td>Complete inability to void. Bladder distended and painful. PVR &gt;300 mL or unable to measure.</td><td>Catheterise immediately. If unable, 999. After TWOC attempt at 4 weeks: if fails, long-term catheter or urology for surgery.</td><td>Yes &mdash; urology urgently</td></tr>
         </tbody>
       </table>
@@ -1387,7 +1387,7 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="ref-table">
         <thead><tr><th>Condition</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
         <tbody>
-          <tr><td style="font-weight:600">Raised PSA &gt;3 ng/mL or abnormal DRE</td><td><span class="ref-urg rurg-2">2WW</span></td><td style="font-size:12px">Repeat PSA if recent DRE, catheterisation, UTI, or ejaculation within 48h. Ensure no confounding factors. Counsel patient before making 2WW referral &mdash; explain what the referral means (investigation, not diagnosis). Complete NICE 2WW referral form including PSA value, DRE findings, IPSS, and relevant history.</td><td style="font-size:12px;color:var(--r)">Do not start alpha-blocker without informing urology of cancer suspicion. Do not reassure the patient there is &ldquo;nothing to worry about&rdquo; before cancer is excluded. Do not delay 2WW for &ldquo;another PSA in 3 months.&rdquo;</td></tr>
+          <tr><td style="font-weight:600">PSA above age-specific threshold (NICE NG12) or abnormal DRE</td><td><span class="ref-urg rurg-2">2WW</span></td><td style="font-size:12px">Repeat PSA if recent DRE, catheterisation, UTI, or ejaculation within 48h. Ensure no confounding factors. Counsel patient before making 2WW referral &mdash; explain what the referral means (investigation, not diagnosis). Complete NICE 2WW referral form including PSA value, DRE findings, IPSS, and relevant history.</td><td style="font-size:12px;color:var(--r)">Do not start alpha-blocker without informing urology of cancer suspicion. Do not reassure the patient there is &ldquo;nothing to worry about&rdquo; before cancer is excluded. Do not delay 2WW for &ldquo;another PSA in 3 months.&rdquo;</td></tr>
           <tr><td style="font-weight:600">Acute urinary retention</td><td><span class="ref-urg rurg-999">Emergency</span></td><td style="font-size:12px">Attempt catheterisation in practice (12&ndash;14 Fr Foley catheter, sterile technique). If successful: refer to urology for trial without catheter (TWOC) at 4 weeks + commence alpha-blocker post-catheter. If unsuccessful: 999 / A&amp;E immediately. Document residual volume at catheterisation.</td><td style="font-size:12px;color:var(--r)">Do not send a man in acute retention home &ldquo;to see if it resolves.&rdquo; Do not attempt suprapubic catheterisation unless specifically trained. Do not discharge without a urology follow-up plan.</td></tr>
           <tr><td style="font-weight:600">Severe LUTS (IPSS &ge;20) / failed medical management</td><td><span class="ref-urg rurg-4">Routine urology</span></td><td style="font-size:12px">Document 2 failed drug classes (alpha-blocker + 5-ARI as minimum). Provide IPSS before and after treatment. Arrange uroflowmetry and PVR measurement if not already done. Ensure renal function checked. Discuss surgical options (TURP, HoLEP, prostate embolisation) so patient has realistic expectations.</td><td style="font-size:12px;color:var(--r)">Do not refer without having tried at least one pharmacotherapy. Do not refer without including medication history, IPSS, PSA, and PVR in the referral letter. Do not promise surgical cure.</td></tr>
           <tr><td style="font-weight:600">Visible (macroscopic) haematuria</td><td><span class="ref-urg rurg-2">Same-day 2WW</span></td><td style="font-size:12px">Urine dipstick to confirm blood. MSU culture to exclude UTI. If culture positive: treat and repeat dipstick in 6 weeks. If blood positive + culture negative: same-day 2WW bladder cancer referral regardless of LUTS history. CT urogram and flexible cystoscopy.</td><td style="font-size:12px;color:var(--r)">Do not attribute visible haematuria to BPE. Do not delay 2WW to &ldquo;repeat MSU first.&rdquo; Do not treat with antibiotics alone without culture confirmation.</td></tr>
@@ -1599,9 +1599,9 @@ body.mode-clinic .sca-only{display:none!important}
           <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
             <li>Synthetic ADH analogue &rarr; reduces urine production at night by ~30&ndash;50%</li>
             <li>Only use if nocturnal polyuria confirmed on 3-day bladder diary</li>
-            <li>Desmopressin 120&ndash;240 mcg sublingual at bedtime (or 200 mcg oral)</li>
-            <li>CONTRAINDICATED: hyponatraemia history, heart failure, CKD (eGFR &lt;50), age &gt;65 with high fall risk</li>
-            <li>Check Na+ at 3 days, 1 month, then 3-monthly &mdash; hyponatraemia risk is significant</li>
+            <li>Oral desmopressin 100 mcg at bedtime, titrated weekly to 200 then 400 mcg only if needed (Desmotabs SmPC), or Noqdirna 50 mcg sublingual at bedtime in men (Noqdirna SmPC)</li>
+            <li>CONTRAINDICATED: hyponatraemia history, heart failure, CKD (eGFR &lt;50). Initiation over 65 not recommended (Desmotabs SmPC)</li>
+            <li>Check Na+ at baseline and 3 days after starting or any dose increase (NICE CG97); if 65 or over, baseline, day 4&ndash;8 and 1 month (Noqdirna SmPC) &mdash; hyponatraemia risk is significant</li>
           </ul>
           <div style="font-size:11px;background:var(--r-bg);border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--r);font-weight:600">Restrict fluid from 1 hour before to 8 hours after dose. Hyponatraemia (Na &lt;130) is the most dangerous adverse effect &mdash; monitor closely.</div>
         </div>
@@ -1839,7 +1839,7 @@ body.mode-clinic .sca-only{display:none!important}
           <thead><tr><th>Drug class / test</th><th>What to check</th><th>Timing</th><th>Action threshold</th></tr></thead>
           <tbody>
             <tr><td class="q">IPSS (all treatments)</td><td class="why">Symptom response to treatment</td><td>4&ndash;6 weeks, 3 months, then annually</td><td>No improvement (&lt;3 points) at 4&ndash;6 weeks &rarr; step up or refer</td></tr>
-            <tr><td class="q">PSA (all patients)</td><td class="why">Prostate cancer surveillance</td><td>At diagnosis, then annually</td><td>PSA &gt;3 ng/mL or rising &gt;0.75/year &rarr; 2WW. Double if on 5-ARI &ge;6 months.</td></tr>
+            <tr><td class="q">PSA (all patients)</td><td class="why">Prostate cancer surveillance</td><td>At diagnosis, then annually</td><td>PSA above the NICE NG12 age-specific threshold or rising &gt;0.75/year &rarr; 2WW. Double if on 5-ARI &ge;6 months.</td></tr>
             <tr><td class="q">Post-void residual (PVR)</td><td class="why">Bladder emptying safety</td><td>Baseline; repeat if deterioration</td><td>PVR &gt;300 mL &rarr; catheterise + urology. PVR 150&ndash;300 mL &rarr; urology referral.</td></tr>
             <tr><td class="q">Renal function (U&E, eGFR)</td><td class="why">Obstructive uropathy; drug dosing</td><td>Baseline; annually if at risk</td><td>Rising creatinine + high PVR &rarr; urgent upper tract ultrasound + urology</td></tr>
             <tr><td class="q">Blood pressure (alpha-blockers, tadalafil)</td><td class="why">Postural hypotension risk</td><td>Baseline, 4&ndash;6 weeks, annually</td><td>SBP &lt;90 or symptomatic hypotension &rarr; reduce dose or switch drug</td></tr>
@@ -2122,7 +2122,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="algo-branch-lbl">&#x1F7E0; Urgent &mdash; 2WW / days</div>
           <ul class="algo-list">
             <li>Visible haematuria &mdash; 2WW bladder cancer</li>
-            <li>PSA &gt;3 ng/mL &mdash; 2WW prostate cancer</li>
+            <li>PSA above age-specific threshold (NICE NG12) &mdash; 2WW prostate cancer</li>
             <li>Hard/irregular prostate on DRE &mdash; 2WW</li>
             <li>New bone pain + LUTS (metastatic PCa?)</li>
             <li>PVR &gt;300 mL (catheterise + urgent urology)</li>
@@ -2150,7 +2150,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div><strong>IPSS 8&ndash;19 (Moderate):</strong> Alpha-blocker &plusmn; 5-ARI if prostate &gt;30mL</div>
           <div><strong>IPSS 20&ndash;35 (Severe):</strong> Dual therapy + urology referral for surgery</div>
           <div><strong>Any + PVR &gt;300 mL:</strong> Catheterise + urology urgently</div>
-          <div><strong>Any + PSA &gt;3:</strong> 2WW prostate cancer referral</div>
+          <div><strong>Any + PSA above age threshold (NG12):</strong> 2WW prostate cancer referral</div>
         </div>
       </div>
       <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem">
@@ -2169,7 +2169,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="num-grid" style="margin-bottom:1rem">
       <div class="num-card num-highlight"><div class="num-val">IPSS &le;7</div><div class="num-lbl">Mild LUTS &mdash; watchful waiting</div></div>
       <div class="num-card num-highlight"><div class="num-val">IPSS &ge;20</div><div class="num-lbl">Severe LUTS &mdash; urology referral</div></div>
-      <div class="num-card"><div class="num-val">PSA &gt;3</div><div class="num-lbl">ng/mL &mdash; 2WW prostate cancer referral</div></div>
+      <div class="num-card"><div class="num-val">PSA &gt;age threshold</div><div class="num-lbl">NG12: &gt;2.5 / 3.5 / 4.5 / 6.5 ng/mL at 40s / 50s / 60s / 70s &mdash; 2WW prostate cancer referral</div></div>
       <div class="num-card"><div class="num-val">PVR &gt;300</div><div class="num-lbl">mL &mdash; catheterise; acute retention risk</div></div>
       <div class="num-card"><div class="num-val">Qmax &lt;10</div><div class="num-lbl">ml/s &mdash; bladder outflow obstruction confirmed</div></div>
       <div class="num-card"><div class="num-val">30 mL</div><div class="num-lbl">Prostate volume threshold for 5-ARI benefit</div></div>
@@ -2245,7 +2245,7 @@ body.mode-clinic .sca-only{display:none!important}
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
       <div class="flag-item flag-red"><strong>&#x1F534; Red flags / A&E:</strong> Acute retention (cannot void) &middot; Haematuria + clot retention &middot; Bilateral leg weakness + saddle anaesthesia (cauda equina) &middot; Urosepsis (fever + retention)</div>
-      <div class="flag-item flag-amber"><strong>&#x1F7E0; 2WW urgent:</strong> Visible haematuria &middot; PSA &gt;3 ng/mL &middot; Hard / irregular prostate on DRE &middot; New bone pain + LUTS &middot; PVR &gt;300 mL persistently</div>
+      <div class="flag-item flag-amber"><strong>&#x1F7E0; 2WW urgent:</strong> Visible haematuria &middot; PSA above age-specific threshold (NG12) &middot; Hard / irregular prostate on DRE &middot; New bone pain + LUTS &middot; PVR &gt;300 mL persistently</div>
     </div>
     <div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
       <div class="flag-item flag-pink"><strong>&#x1F6E1;&#xFE0F; Safeguarding:</strong> Dehydration from self-restriction &middot; Carer neglect in retention &middot; LUTS in young men (STI, abuse) &middot; Social isolation from urgency</div>
@@ -2360,7 +2360,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="sdp-row"><div class="sdp-cond">Storage / OAB (PVR &lt;150mL)</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill ccb-pill">Mirabegron 50mg OD</div><div class="sdp-note">Preferred over solifenacin</div></div>
           <div class="sdp-row"><div class="sdp-cond">LUTS + erectile dysfunction</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill arb-pill">Tadalafil 5mg OD</div><div class="sdp-note">NOT with nitrates; NOT with alpha-blocker</div></div>
           <div class="sdp-row"><div class="sdp-cond">Poorly controlled hypertension</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill acei-pill">Doxazosin 2&ndash;8mg OD</div><div class="sdp-note">Dual action: BP + LUTS</div></div>
-          <div class="sdp-row"><div class="sdp-cond">Nocturia + nocturnal polyuria</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill arb-pill">Desmopressin 120&ndash;240mcg</div><div class="sdp-note">Check Na+; avoid if eGFR &lt;50 or HF</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Nocturia + nocturnal polyuria</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill arb-pill">Desmopressin 100 mcg oral or Noqdirna 50 mcg SL</div><div class="sdp-note">Check Na+; avoid if eGFR &lt;50 or HF</div></div>
           <div class="sdp-pivot">&#x26D4; Tadalafil + nitrates = fatal &middot; Antimuscarinic + PVR &gt;150mL = retention &middot; Double PSA on 5-ARI &middot; Tell ophthalmologist about tamsulosin before cataract surgery &middot; Never attribute visible haematuria to BPE</div>
         </div>
       </div>
@@ -2577,7 +2577,7 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=100"></script>
+<script src="../assets/site.js?v=102"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
@@ -2587,6 +2587,6 @@ function resetScorecard(){
 <script src="../assets/topic-links.js?v=7"></script>
 
 <div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
-<script src="../assets/provenance.js?v=14"></script>
+<script src="../assets/provenance.js?v=15"></script>
 </body>
 </html>

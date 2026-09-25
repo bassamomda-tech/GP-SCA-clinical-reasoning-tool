@@ -4,94 +4,153 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dry Eye Disease — Protocol · Reasoning GP</title>
+<meta name="description" content="Dry eye disease in primary care: symptoms suggest but do not confirm, same-day red-eye triage, lubricant-first stepped care, lid and MGD treatment, Sjögren's via the local pathway, and specialist-only ciclosporin under NICE TA369." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/dry-eye-disease.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Dry eye disease management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"💧",
-  title:"Dry Eye Disease",
-  stemTitle:"Dry eye \u2014 lubricate, treat lid disease, manage chronically",
-  stemSub:"Primary-care management of dry eye disease \u2014 confirm the typical picture, exclude sinister red-eye causes, treat with a stepped ladder of ocular lubricants and lid hygiene, address contributing factors, and refer the minority needing specialist therapy.",
-  guideline:"College of Optometrists CMG · TFOS DEWS II · NICE TA369",
-  glance:[
-    {lbl:"1st-line", val:"Ocular lubricants", sub:"drops by day"},
-    {lbl:"Nocturnal", val:"Ointment/gel", sub:"at night"},
-    {lbl:"Lid disease", val:"Lid hygiene + warmth", sub:"blepharitis/MGD"},
-    {lbl:"Preservative", val:"Preservative-free", sub:"if frequent / sensitive"},
-    {lbl:"Screen", val:"Sj\u00f6gren / drugs", sub:"systemic causes"},
-    {lbl:"Red flag", val:"Pain / \u2193vision / red", sub:"= same-day eye review"}
+  title:"Dry eye disease — the complete guide",
+  eyebrow:"Protocol · adults · chronic ocular-surface disease",
+  stemTitle:"Dry-eye symptoms are common and usually chronic — but symptoms suggest dry eye, they do not confirm it",
+  stemSub:"<b>Assessment and management of dry eye disease in primary care.</b> Persistent, moderate or atypical symptoms need an ocular-surface examination by an optometrist or ophthalmologist. Start with regular ocular lubricants — preservative-free when used frequently — add a gel or ointment at night, treat blepharitis and meibomian gland dysfunction (MGD), and modify environmental and medication contributors. <b>Do not routinely prescribe oral antibiotics for dry eye alone.</b> Pain, photophobia, reduced vision, corneal signs or a painful red eye in a contact-lens wearer need same-day eye assessment.",
+  guideline:"College of Optometrists CMG · TFOS DEWS II · BSR Sjögren guideline (2024) · NICE TA369 (ciclosporin only)",
+  reviewed:"25 September 2026",
+  nextReview:"25 September 2027",
+  meta:[
+    {t:"Painful red eye = not simple dry eye", tone:"tw"},
+    {t:"No routine antibiotics for dry eye alone", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
-  flow:[
-    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Exclude serious red-eye pathology",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Sight-threatening", html:"Significant eye pain, photophobia, reduced acuity, marked redness, contact-lens wearer with red painful eye \u2192 same-day ophthalmology (keratitis, uveitis, ulcer)."},
-          {t:"🟠 Not settling", html:"Persistent symptoms despite optimal treatment, or atypical features \u2192 optometry/ophthalmology."},
-          {t:"🟠 Severe surface disease", html:"Filamentary keratitis, corneal involvement, vision affected \u2192 refer."},
-          {t:"🩺 Systemic clue", html:"Dry eyes + dry mouth + arthralgia \u2192 consider Sj\u00f6gren\u2019s; screen and refer rheumatology."}
-        ]},
-        {b:"why", html:"Dry eye is common and benign, but it shares symptoms with sight-threatening causes of red eye. Confirm a white, comfortable-vision eye with grittiness/burning before treating; pain or reduced vision changes the pathway entirely."}
-      ]},
-    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Confirm + find contributors",
-      blocks:[
-        {b:"kv", rows:[
-          ["Typical features","Grittiness, burning, foreign-body sensation, fluctuating blur relieved by blinking; worse with screens, air-con, wind; often bilateral"],
-          ["Lid disease","Blepharitis / meibomian gland dysfunction is a frequent driver \u2014 crusting, lid-margin telangiectasia"],
-          ["Contributors","Screen use (reduced blink), contact lenses, low humidity/air-con, ageing, post-menopause"],
-          ["Drugs / systemic","Antihistamines, anticholinergics, diuretics, isotretinoin, HRT; Sj\u00f6gren\u2019s, rheumatoid, thyroid eye disease, rosacea"]
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Treatment ladder", title:"Lubricants + lid care, stepped",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Step 1", title:"Ocular lubricant drops", when:"daytime",
-           html:"Hypromellose or carbomer drops as needed. If used &gt;4\u20136\u00d7/day or sensitive eyes \u2192 <b>preservative-free</b> preparations."},
-          {step:"Step 2", title:"Night-time ointment/gel", when:"add for nocturnal symptoms",
-           fromLabel:"if symptoms on waking",
-           html:"Paraffin-based ointment or carbomer gel at night (blurs vision \u2014 use at bedtime)."},
-          {step:"Step 3", title:"Lid hygiene for MGD/blepharitis", when:"if lid disease",
-           fromLabel:"if blepharitis/MGD present",
-           html:"Warm compresses, lid massage and cleaning daily; consider a course of oral <b>doxycycline 100 mg once daily</b> for moderate\u2013severe MGD/ocular rosacea (specialist/extended primary care)."},
-          {step:"Step 4", title:"Specialist therapies", when:"refractory",
-           fromLabel:"if not controlled",
-           html:"Topical ciclosporin, punctal plugs, autologous serum \u2014 ophthalmology-initiated."}
-        ]},
-        {b:"warn", html:"Frequent preserved drops (benzalkonium) can themselves cause ocular surface toxicity \u2014 switch to preservative-free for high-frequency or long-term use."}
-      ]},
-    {t:"node", d:"life", n:"4", tag:"Non-drug \u00b7 every patient", title:"Self-care + environment",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"💻 Screen breaks", html:"20-20-20 rule; conscious blinking; lower screen below eye level."},
-          {t:"💨 Environment", html:"Reduce air-con/heater draughts; humidify; avoid smoke."},
-          {t:"👓 Lenses", html:"Reduce contact-lens wear time; lubricant-compatible lenses."},
-          {t:"💊 Drug review", html:"Review drying medications where possible."},
-          {t:"🧴 Lid routine", html:"Daily warm compress + lid hygiene if blepharitis."}
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review & long-term control", blocks:[{b:"timeline", items:[{n:"1", when:"4\u20136 weeks", title:"Assess lubricant regimen", html:"Review symptom control on regular <b>ocular lubricants</b> (drops by day, ointment at night) + lid hygiene/warm compresses for blepharitis/MGD. Preservative-free if frequent use (>6\u00d7/day)."},{n:"2", when:"If inadequate", title:"Step up", html:"Increase drop viscosity/frequency, add lid care, treat blepharitis; consider topical anti-inflammatory (e.g. ciclosporin) via ophthalmology for moderate\u2013severe disease."},{n:"3", when:"Ongoing", title:"Chronic condition", html:"Explain dry eye is usually <b>chronic and managed not cured</b>; address contributing factors (screen breaks, environment, medications, Sj\u00f6gren\u2019s) and review periodically."}]},{b:"say", html:"Dry eye is usually a long-term thing we manage rather than cure \u2014 using the drops regularly, even when comfortable, keeps it under control. We\u2019ll review and step things up if needed."}]},
-    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral + review",
-      arrow:"red flags or refractory disease",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Same-day ophthalmology", html:"Pain, photophobia, reduced vision, marked redness, contact-lens red eye."},
-          {t:"Optometry/ophthalmology", html:"Persistent symptoms despite optimal lubricants + lid care; corneal involvement."},
-          {t:"Rheumatology", html:"Suspected Sj\u00f6gren\u2019s (dry eyes + dry mouth \u00b1 arthralgia)."},
-          {t:"Review", html:"Reassess response and technique; step up the ladder as needed."}
-        ]},
-        {b:"say", html:"Dry eye is common and not dangerous, but it can be persistent. Regular lubricating drops \u2014 preservative-free if you use them a lot \u2014 plus warm compresses for the eyelids usually help, along with screen breaks. If you get eye pain or your vision drops, get seen the same day."}
-      ]}
+  lead:'<div class="mg-layers"><a href="#assess"><b>Assess</b><small>Signs, not just symptoms</small></a><a href="#treat"><b>Treat</b><small>Lubricant-first</small></a><a href="#lids"><b>Lids</b><small>Blepharitis · MGD</small></a><a href="#sjogren"><b>Sjögren\'s</b><small>When to think of it</small></a><a href="#refer"><b>Refer</b><small>When and where</small></a></div>',
+  quickSub:"The five that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Same-day eye assessment", html:"Moderate or severe pain · photophobia · reduced or deteriorating vision · corneal opacity or staining · suspected ulcer or keratitis · significant ciliary injection · hypopyon · <b>painful red eye in a contact-lens wearer</b> · recent ocular surgery or trauma · chemical injury · proptosis or painful/restricted eye movements."},
+    {tone:"amber", h:"Symptoms suggest — they do not confirm", html:"Grittiness, burning and blur that clears with blinking are suggestive. Persistent, moderate or atypical symptoms need assessment of visual acuity, the ocular surface, cornea and eyelids by an optometrist or ophthalmologist."},
+    {tone:"green", h:"Lubricants first, used regularly", html:"Ocular lubricant drops by day; <b>preservative-free</b> if drops are needed frequently — typically more than 4–6 times daily — or if sensitive to preservatives. Gel or ointment at bedtime for symptoms on waking."},
+    {tone:"amber", h:"No routine oral antibiotics", html:"Doxycycline is for persistent moderate–severe MGD or ocular rosacea despite good lid care, usually via an optometry or ophthalmology pathway — not for dry eye alone."},
+    {tone:"blue", h:"Think Sjögren's — without over-calling it", html:"Consider it with persistent troublesome dry eyes <b>and</b> dry mouth, dental caries, oral candida, parotid swelling, fatigue, inflammatory arthralgia or autoimmune disease. Arthralgia is not required; dry eyes and dry mouth alone are common. Use the local pathway."}
   ],
-  foot:"Management of dry eye disease in primary care; sight-threatening red eye needs urgent ophthalmology. Sources: College of Optometrists dry eye CMG; TFOS DEWS II; NICE TA369 (ciclosporin)."
+  pathwaySub:"Five steps. The first is to make sure this is not a painful red eye.",
+  pathway:[
+    {title:"Triage the red eye", html:"Pain, photophobia, reduced vision, corneal signs or a contact-lens wearer with a painful red eye → same-day eye assessment.", alert:true},
+    {title:"Assess and look for contributors", html:"Visual acuity, lids, cornea, contact-lens and medication history, systemic clues."},
+    {title:"Lubricants, stepped", html:"Drops by day, preservative-free if frequent; gel or ointment at night; lipid-containing drops for evaporative disease."},
+    {title:"Treat lids and environment", html:"Lid hygiene for blepharitis/MGD; screen breaks, airflow, smoke; review drying medicines."},
+    {title:"Review, re-assess or refer", html:"Review at 4–6 weeks if persistent, treated or uncertain; community optometry first, hospital for corneal or severe disease."}
+  ],
+  sections:[
+
+    {id:"assess", nav:"Assess", title:"Step 1 — assess: signs, not just symptoms",
+     blocks:[
+       {b:"table", head:["Element","Detail"], rows:[
+         ["<b>Suggestive symptoms</b>","Grittiness, burning, foreign-body sensation, fluctuating blur relieved by blinking; worse with screens, air-conditioning and wind; usually bilateral"],
+         ["<b>Examine in primary care</b>","Visual acuity · conjunctival injection · corneal clarity or opacity · pupils where indicated · eyelids and lid margins · contact-lens history · pain, photophobia and visual disturbance · medication and systemic review"],
+         ["<b>Formal dry-eye assessment</b>","Fluorescein staining, tear break-up time, conjunctival hyperaemia and eyelid/MGD status — usually by an optometrist or ophthalmologist"],
+         ["<b>Contributors</b>","Screen use (reduced blinking) · contact lenses · low humidity and air-conditioning · ageing · blepharitis/MGD · rosacea · seborrhoeic dermatitis"],
+         ["<b>Medicines to review</b>","Antihistamines · anticholinergics · tricyclic and other antidepressants · beta-blockers · isotretinoin · some diuretics · preservatives in eye drops. HRT has been linked in some studies. Modify only where clinically appropriate — do not stop essential treatment for dry-eye symptoms alone"],
+         ["<b>Other diagnoses</b>","Blepharitis · allergic or infective conjunctivitis · marginal keratitis · anterior uveitis · corneal abrasion or ulcer · herpes simplex keratitis · thyroid eye disease · incomplete lid closure · neuropathic ocular pain (severe symptoms with few signs)"]
+       ]},
+       {b:"why", html:"A contact-lens wearer with a painful red eye should never be treated as uncomplicated dry eye. A red eye with pain on eye movement, proptosis, diplopia or systemic illness points to orbital or preseptal disease."}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Step 2 — lubricants, stepped",
+     blocks:[
+       {b:"table", head:["Step","What","Notes"], rows:[
+         ["<b>1 · Daytime drops</b>","Hypromellose or carbomer drops, used regularly","<b>Preservative-free</b> if needed frequently — typically more than 4–6 times daily — or if sensitive to preservatives. Occasional use of preserved drops does not need an automatic switch"],
+         ["<b>2 · Evaporative / MGD pattern</b>","Lipid-containing lubricant","Where evaporative dry eye or MGD predominates, per the local formulary"],
+         ["<b>3 · Night-time</b>","Carbomer gel or paraffin-based ointment at bedtime","Ointment blurs vision for several hours — use at bedtime; no driving or hazardous activity until vision is clear. Gel if ointment is poorly tolerated"],
+         ["<b>4 · Specialist therapies</b>","Ciclosporin, punctal occlusion, autologous serum","Optometry or ophthalmology only — see Specialist"]
+       ]},
+       {b:"warn", html:"Frequent preserved (benzalkonium-containing) drops can themselves aggravate ocular-surface disease — another reason to use preservative-free drops for high-frequency or long-term use."}
+     ]},
+
+    {id:"lids", nav:"Lids", title:"Step 3 — treat the lids and the environment",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🔥 Lid hygiene for blepharitis/MGD", html:"A warm (not hot) compress for 5–10 minutes, gentle lid massage, then lid-margin cleaning — once or twice daily, continued long-term. See <a href='blepharitis.html'>blepharitis</a>."},
+         {tone:"amber", h:"💊 Oral antibiotics — not for dry eye alone", html:"For persistent moderate–severe MGD or ocular rosacea despite adequate lid care, consider assessment by an independent-prescribing optometrist or ophthalmologist for possible time-limited systemic treatment. Evidence is limited; doxycycline 100 mg daily is a standard systemic dose, not a low-dose regimen; pregnancy, age, photosensitivity, oesophagitis and interactions all apply."},
+         {tone:"green", h:"💻 Screens and blinking", html:"Regular blink breaks during long visual tasks; screen slightly below eye level. The 20-20-20 rule is practical advice, not an evidence-based regimen."},
+         {tone:"green", h:"💨 Environment", html:"Avoid direct fan, heater and air-conditioning airflow; wraparound glasses outdoors in wind; avoid smoke and irritants. A humidifier may help in a dry room but is not essential. Normal hydration — extra water does not treat dry eye."},
+         {tone:"blue", h:"👓 Contact lenses", html:"Reduce wear time and use lubricants compatible with the lens; lens wearers with pain or redness need the same-day pathway."}
+       ]}
+     ]},
+
+    {id:"sjogren", nav:"Sjögren's", title:"Sjögren's and systemic causes",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"When to think of it", html:"Persistent troublesome dry eyes and dry mouth · difficulty swallowing dry food · recurrent dental caries or oral candida · needing drops very frequently · parotid or salivary-gland swelling · inflammatory arthralgia, fatigue or systemic features · associated autoimmune disease. Arthralgia is not required."},
+         {tone:"blue", h:"What to do", html:"There is no single primary-care screening test. Depending on local arrangements, initial tests may include FBC, U&amp;E, LFT, ESR/CRP, immunoglobulins, ANA and ENA (anti-Ro/SSA) — interpret clinically; normal serology does not exclude it. If suspicion persists, refer via the local sicca or rheumatology pathway; dental, ophthalmology or oral-medicine input may also be needed."}
+       ]},
+       {b:"why", html:"Sjögren disease can combine aqueous deficiency, MGD and ocular-surface inflammation, which is why coordinated ophthalmic and systemic assessment matters (BSR 2024)."}
+     ]},
+
+    {id:"specialist", nav:"Specialist", title:"Specialist therapies — not primary-care steps",
+     blocks:[
+       {b:"cards", cols:3, items:[
+         {tone:"blue", h:"Topical ciclosporin", html:"Specialist treatment for selected adults with severe keratitis in dry-eye disease that has not improved despite adequate artificial tears (NICE TA369). Response is reassessed at 3–6 months."},
+         {tone:"blue", h:"Punctal occlusion", html:"Considered by optometry or ophthalmology after ocular-surface inflammation has been assessed and controlled — plugs can worsen symptoms by retaining inflammatory tear products."},
+         {tone:"blue", h:"Autologous serum", html:"Highly specialist — usually reserved for severe, refractory ocular-surface disease through commissioned services."}
+       ]}
+     ]},
+
+    {id:"troubleshoot", nav:"Not settling?", title:"Not settling? Re-check before escalating",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"1 · Red flags", html:"Any pain, photophobia, reduced vision or corneal signs → same-day pathway."},
+         {tone:"amber", h:"2 · Drops and technique", html:"Used regularly? Frequent preserved drops? Right drop for the pattern (lipid-containing for evaporative disease)?"},
+         {tone:"amber", h:"3 · Lids", html:"Is lid hygiene actually being done, daily?"},
+         {tone:"blue", h:"4 · Contributors", html:"Medicines, contact lenses, screens and environment reviewed?"},
+         {tone:"blue", h:"5 · Right diagnosis?", html:"Systemic features (Sjögren's)? Severe symptoms with few signs (neuropathic pain)? Persistent unilateral redness?"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Step 5 — review and referral",
+     blocks:[
+       {b:"table", head:["When","Situation","Action"], rows:[
+         ["<b>Same day</b>","Moderate/severe pain · photophobia · reduced or deteriorating vision · corneal ulcer, opacity, thinning or infiltrate · contact-lens wearer with a painful red eye · suspected infection or significant inflammation · corneal melt or impending perforation · chemical injury or significant trauma","Local urgent eye pathway — eye casualty, same-day ophthalmology advice or ED"],
+         ["<b>Soon</b>","Filamentary keratitis","Optometry or ophthalmology, per local pathway"],
+         ["<b>Routine</b>","Persistent symptoms after about 4 weeks of appropriate management · moderate/severe disease needing examination or escalation · recurrent unexplained unilateral redness · neuropathic ocular pain · persistent staining or visual fluctuation affecting function","Community optometry or a dry-eye service first where available; hospital ophthalmology for corneal or severe disease"],
+         ["<b>Systemic</b>","Suspected Sjögren's or other autoimmune disease","Local sicca or rheumatology pathway after clinical assessment"],
+         ["<b>Review at 4–6 weeks</b>","Persistent or moderate symptoms, treatment prescribed, or diagnosis uncertain","Check acuity and red flags, adherence and drop technique, preservative exposure, lid care, contact lenses, medicines and systemic symptoms. Mild disease improving with self-care can be safety-netted"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Safety-net", html:"\"If your eye becomes painful, sensitive to light, or your vision drops or does not clear with blinking — or if you wear contact lenses and your eye becomes painful — get it checked the same day.\""},
+         {tone:"cream", h:"GP management", html:"Triage, contributors, lubricants and lid care belong here. Related pages: <a href='blepharitis.html'>blepharitis</a> · <a href='allergic-conjunctivitis.html'>allergic conjunctivitis</a> · <a href='rosacea.html'>rosacea</a> · <a href='uveitis.html'>uveitis</a>."}
+       ]},
+       {b:"say", html:"Dry eye is common and not dangerous, but it tends to be long-term — something we manage rather than cure. Use the drops regularly, even on good days, and warm compresses for the eyelids help too. Screen breaks and avoiding air blowing at your face make a difference. If your eye becomes painful, sensitive to light, or your vision drops, get seen the same day."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 58-year-old woman has gritty, burning eyes for months, worse at her computer. She uses preserved drops ten times a day, has a dry mouth, and asks for antibiotics a friend was given."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Checks red flags and visual acuity; recognises frequent preserved drops as a problem and switches to preservative-free; adds night gel and lid care; explains why antibiotics are not for dry eye alone; asks about Sjögren's features and uses the local pathway; arranges optometry assessment and gives a clear safety-net."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>College of Optometrists — Clinical Management Guideline: dry eye (keratoconjunctivitis sicca)</b><span class="rd"> — lifestyle measures, lubricants, lid treatment, escalation by severity</span></li>'+
+         '<li><b>TFOS DEWS II (2017)</b><span class="rd"> — definition, classification and stepped management</span></li>'+
+         '<li><b>UK consensus on the assessment and management of dry eye disease</b><span class="rd"> — assessment elements and referral urgency</span></li>'+
+         '<li><b>College of Optometrists — Clinical Management Guideline: ocular rosacea</b><span class="rd"> — tetracyclines for selected patients</span></li>'+
+         '<li><b>British Society for Rheumatology — guideline on management of adult and juvenile onset Sjögren disease (2024)</b><span class="rd"> — ocular and systemic assessment</span></li>'+
+         '<li><b>NICE TA369 — Ciclosporin for treating dry eye disease that has not improved despite treatment with artificial tears</b><br><a href="https://www.nice.org.uk/guidance/ta369" rel="noopener">nice.org.uk/guidance/ta369</a><span class="rd"> — specialist ciclosporin only</span></li>'+
+         '<li><b>Greater Manchester Medicines Management Group formulary — eye</b><span class="rd"> — lubricant options, preservative-free and lipid products</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Dry eye disease in primary care. Symptoms suggest but do not confirm dry eye — persistent or moderate disease needs ocular-surface assessment. Pain, photophobia, reduced vision, corneal signs or a painful red eye in a contact-lens wearer: same-day eye assessment. Lubricants first, preservative-free if used more than 4–6 times daily; gel or ointment at night; lid care for blepharitis/MGD. No routine oral antibiotics for dry eye alone. Sources: College of Optometrists CMGs (dry eye, ocular rosacea), TFOS DEWS II, UK dry-eye consensus, BSR Sjögren guideline (2024), NICE TA369 (ciclosporin), Greater Manchester formulary."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

@@ -128,7 +128,7 @@
       'Suspected empyema/parapneumonic effusion or non-resolving pneumonia → respiratory',
       'Cough/symptoms or X-ray changes not resolving, or with weight loss/haemoptysis (especially smoker/ex-smoker ≥40) → urgent chest X-ray and 2WW suspected lung-cancer pathway (NICE NG12)',
       'Recurrent pneumonia (especially same site) → respiratory (exclude obstruction/malignancy)'],
-    source:'NICE NG138/NG191 (Pneumonia) / NICE NG12' },
+    source:'NICE NG138/CG191 (Pneumonia) / NICE NG12' },
 
   { id:'pneumothorax', title:'Pneumothorax (collapsed lung)', category:'Respiratory', icon:'🫁',
     overview:'Air in the pleural space causing the lung to collapse. It ranges from a small spontaneous pneumothorax in a young, otherwise well person to a life-threatening tension pneumothorax. The cardinal presentation is sudden pleuritic chest pain with breathlessness, and the must-not-miss is tension pneumothorax — a clinical emergency.',

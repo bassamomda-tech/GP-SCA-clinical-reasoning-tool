@@ -11,14 +11,14 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790241765963737 tools/management/sick-day-rules.html">
+<meta name="omelette-print-source" content="v1790316534730122 tools/management/sick-day-rules.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Sick day rules protocol">
 <doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"\u{1F321}\u{FE0F}",
@@ -51,7 +51,7 @@ MG.render({
   pathway:[
     {title:"Screen for the emergency", html:"Vomiting and unable to keep fluids down \u00b7 rising or large ketones \u00b7 drowsy, deep breathing, abdominal pain (DKA) \u00b7 marked dehydration or AKI \u00b7 sepsis (NEWS2 \u22655) \u00b7 very high glucose with HHS features in an older patient with type 2 diabetes.", alert:true},
     {title:"Map the drug list", html:"Three overlapping groups: <b>insulin</b> (never stop), the <b>SADMAN</b> drugs (hold), and <b>long-term steroids or adrenal insufficiency</b> (increase). Also lithium, DOACs and digoxin."},
-    {title:"Quantify the two risks", html:"<b>Capillary glucose every 2\u20134 hours</b>, blood or urine ketones if glucose is &gt;13\u201315 mmol/L or the patient feels unwell, fluid status, and <b>U&amp;E if there has been diarrhoea and vomiting on SADMAN drugs</b>."},
+    {title:"Quantify the two risks", html:"<b>Capillary glucose every 2\u20134 hours</b>, blood or urine ketones if glucose is &gt;13 mmol/L or the patient feels unwell, fluid status, and <b>U&amp;E if there has been diarrhoea and vomiting on SADMAN drugs</b>."},
     {title:"Act on each group", html:"Hold the SADMAN drugs, keep insulin going with correction doses by glucose and ketones, double the steroid, and maintain fluids and carbohydrate."},
     {title:"Decide home versus admit, then write it down", html:"The pivotal question is behavioural \u2014 can they keep fluids down and follow the plan? Then a written sick-day card with hold list, ketone thresholds, when to seek help and <b>when to restart</b>."}
   ],
@@ -107,7 +107,7 @@ MG.render({
     {id:"ladder", nav:"Act", title:"The three actions \u2014 continue, hold, increase",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"red", h:"\ud83d\udc89 Insulin \u2014 NEVER stop", html:"Continue basal insulin even if not eating \u2014 stopping insulin is the commonest avoidable cause of DKA. <b>Monitor glucose every 2\u20134 hours</b> including overnight if unwell. Check ketones if the glucose is &gt;13\u201315 mmol/L or the patient feels unwell. Correction doses: extra rapid-acting insulin, often around 10\u201320% of the total daily dose, per the individual plan \u2014 <b>repeat 2-hourly with a recheck</b>. <b>Stay hydrated \u2014 sip regularly, aiming for about 3 L a day</b>; sugary drinks if not eating and the glucose is not high, water or sugar-free if it is."},
+         {tone:"red", h:"\ud83d\udc89 Insulin \u2014 NEVER stop", html:"Continue basal insulin even if not eating \u2014 stopping insulin is the commonest avoidable cause of DKA. <b>Monitor glucose every 2\u20134 hours</b> including overnight if unwell. Check ketones if the glucose is &gt;13 mmol/L or the patient feels unwell. Correction doses: extra rapid-acting insulin, often around 10\u201320% of the total daily dose, per the individual plan \u2014 <b>repeat 2-hourly with a recheck</b>. <b>Stay hydrated \u2014 sip regularly, aiming for about 3 L a day</b>; sugary drinks if not eating and the glucose is not high, water or sugar-free if it is."},
          {tone:"red", h:"\ud83d\udc8a Steroids \u2014 DOUBLE, don't hold", html:"Oral, intercurrent illness or fever: double the usual oral hydrocortisone (or equivalent) for the duration, then return to normal on recovery. Vomiting or unable to take oral: give IM hydrocortisone \u2014 the emergency injection, which anyone can give \u2014 and seek urgent help. Surgery or procedures need additional peri-procedure cover, arranged in advance. Check the patient has a steroid emergency card, MedicAlert, and an in-date IM hydrocortisone kit."}
        ]},
        {b:"table", head:["SADMAN drug \u2014 HOLD","Examples","Why"], rows:[

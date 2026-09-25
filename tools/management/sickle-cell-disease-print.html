@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sickle cell disease — Protocol · Reasoning GP</title>
+<meta name="description" content="Sickle cell disease in primary care, children and adults: same-day red flags (acute chest syndrome, stroke, sequestration, aplastic crisis, priapism, fever), fast analgesia per NICE CG143, penicillin and Green Book vaccines, hydroxycarbamide shared care, trait counselling, pregnancy, transition and stigma in pain care." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/sickle-cell-disease.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790316534730122 tools/management/sickle-cell-disease.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Sickle cell disease management card">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1FA78}",
+  title:"Sickle cell disease",
+  eyebrow:"Protocol · children and adults · shared care with haematology",
+  stemTitle:"Sickle cell disease — prevent crises, treat pain fast, spot the emergencies",
+  stemSub:"The specialist haemoglobinopathy team owns disease-modifying treatment; the GP keeps people well between clinic visits. Four jobs: recognise the life-threatening complications early, never delay or ration analgesia, keep infection prevention (penicillin and vaccines) watertight, and make shared-care drugs, pregnancy planning, school, work and transition work for the patient.",
+  guideline:"NICE CG143 (2012) · NICE QS58 (2014) · BSH hydroxycarbamide 2018 · BSH ACS 2015 · UKHSA Green Book ch.7/25",
+  meta:[
+    {t:"NICE CG143 (2012, surveillance 2023) · QS58 (2014)"},
+    {t:"BSH 2018 hydroxycarbamide · BSH 2015 acute chest · BSH 2016 transfusion · BSH 2021 pregnancy · RCOG GTG 61"},
+    {t:"UKHSA Green Book ch.7 · ch.25 · ch.19", tone:"tw"},
+    {t:"Sickle Cell Society adult standards 2018 · paediatric standards 2019"},
+    {t:"RCEM 2024 BPG · APPG ‘No One’s Listening’ 2021"},
+    {t:"Not yet clinician-reviewed — BNF/BNFC owns all doses"}
+  ],
+  lead:'<div class="mg-layers"><a href="#redflags"><b>Same-day red flags</b><small>999 / direct to hospital</small></a><a href="#pain"><b>Painful crisis</b><small>Fast analgesia, no pethidine</small></a><a href="#prevent"><b>Infection prevention</b><small>Penicillin + Green Book</small></a><a href="#drugs"><b>Specialist drugs</b><small>Hydroxycarbamide shared care</small></a></div>',
+  glance:[
+    {lbl:"Infection", val:"Functional hyposplenism", sub:"penicillin + vaccines lifelong"},
+    {lbl:"Crisis pain", val:"Analgesia ≤ 30 min", sub:"NICE CG143 / QS58 (hospital)"},
+    {lbl:"Never", val:"Pethidine", sub:"NICE CG143"},
+    {lbl:"Chest / neuro / fever", val:"Same day", sub:"ACS · stroke · sepsis"},
+    {lbl:"Hydroxycarbamide", val:"Contraception, both sexes", sub:"BSH 2018 · pre-conception plan with haematology"},
+    {lbl:"Children", val:"Annual TCD age 2–16", sub:"HbSS / HbSβ⁰"}
+  ],
+  quickSub:"If you read nothing else on this page, read these cards. Hospital standards (NICE CG143/QS58) tell you what the patient should get on arrival — your job is to get them there fast and with a clear handover.",
+  quick:[
+    {tone:"red", h:"⚠ Five presentations are emergencies, not ‘another crisis’", html:"<b>Chest symptoms, hypoxia or fever with pain</b> (acute chest syndrome), <b>any focal neurology, seizure or sudden severe headache</b> (stroke), <b>sudden pallor, lethargy or enlarging spleen in a child</b> (splenic sequestration), <b>unusual tiredness and pallor with a low reticulocyte count</b> (aplastic crisis, usually parvovirus B19), and <b>priapism not settling</b>. Plus <b>fever</b> in anyone with functional hyposplenism. 999 or direct to the patient’s haemoglobinopathy unit / ED — do not observe at home."},
+    {tone:"amber", h:"Pain: treat it, don’t judge it", html:"NICE CG143 sets <b>analgesia within 30 minutes</b> of hospital presentation and <b>no pethidine</b>; RCEM 2024 now asks EDs for <b>15 minutes</b>. In primary care: believe the patient, follow their <b>individualised care plan</b>, and if home analgesia has not controlled the pain, arrange admission — do not ‘try a bit longer’. The APPG 2021 inquiry found attitudes underpinned by racism in sickle pain care."},
+    {tone:"blue", h:"Infection prevention is the GP’s core deliverable", html:"Functional hyposplenism → <b>lifelong penicillin prophylaxis</b> (dose per BNF/BNFC by age; erythromycin if allergic, per haematology) plus the <b>Green Book asplenia schedule</b>: pneumococcal (re-immunise every 5 years), MenACWY, MenB, annual flu, COVID-19 per current programme. Code it, recall it, check repeat-prescription gaps."},
+    {tone:"purple", h:"Hydroxycarbamide: the one drug you must monitor", html:"Specialist-initiated (BSH 2018: offer to all children with HbSS/HbSβ⁰ from 9 months, and to adults with recurrent crises or acute chest syndrome). Cytotoxic: <b>FBC monitoring per shared-care protocol must never lapse</b>, fever may mean neutropenia, <b>contraception for men and women</b>, and a <b>pre-conception plan with haematology</b> (usually stopped before conception; RCOG advises at least 3 months). Crizanlizumab (MHRA revoked Jan 2024) and voxelotor (withdrawn Sept 2024) are no longer options."},
+    {tone:"green", h:"The bigger GP role", html:"Trait counselling and partner testing (1 in 4 risk if both carriers), pre-conception referral, school and work letters, mental health, transition planning from school year 9 (NICE NG43), and advocacy: the patient’s own knowledge of their disease is the best information you have."}
+  ],
+  pathwaySub:"Every contact with a person with sickle cell disease, in five moves. The red step is where harm happens.",
+  pathway:[
+    {title:"Know the patient", html:"Genotype (HbSS, HbSC, HbSβ-thal), <b>baseline Hb</b>, usual crisis pattern, spleen status, hydroxycarbamide or transfusion programme, the named haemoglobinopathy centre and the <b>individualised care plan</b>. This is what lets you see a deviation from normal."},
+    {title:"Screen for the emergencies", html:"Chest, neuro, fever, pallor/spleen, priapism, uncontrolled pain. Check temperature, SpO₂ against their baseline, RR, HR, conscious level; in children feel the spleen. Any positive → 999 / direct to hospital today with a written handover.", alert:true},
+    {title:"Treat pain promptly", html:"If it is a simple painful episode that the patient normally manages at home: agree analgesia per their plan, fluids, warmth, and a clear time limit. Pain not controlled by their home analgesia → hospital (the CG143 30-minute clock starts there)."},
+    {title:"Prevent the next one", html:"Penicillin adherence, vaccines, hydroxycarbamide monitoring, triggers (dehydration, cold, hypoxia, infection), smoking, sleep-disordered breathing, mental health, contraception and pre-conception plans."},
+    {title:"Close the loop", html:"Confirm annual specialist review is happening (TCD in children, renal, retinal, echo per centre), code the diagnosis and hyposplenism, and write the school/work letter the patient needs."}
+  ],
+  sections:[
+
+    {id:"confirm", nav:"Confirm", title:"Confirming the diagnosis and knowing the baseline", sub:"Most people are diagnosed by newborn screening (England, since universal blood-spot screening). The GP rarely diagnoses sickle cell disease, but must know the genotype and the baseline.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Diagnosis","Specialist or newborn-screening confirmed haemoglobinopathy — commonly <b>HbSS</b> (sickle cell anaemia), also <b>HbSC</b> and <b>HbSβ-thalassaemia</b> (β⁰ behaves like HbSS). Confirmation is by haemoglobin analysis (HPLC/electrophoresis) in the lab, not the FBC."],
+         ["Trait is not disease","<b>Sickle cell trait (HbAS)</b> is a carrier state: usually asymptomatic, no penicillin or asplenia vaccines needed. It matters for reproductive counselling, anaesthesia and, per UKMEC 2025, choice of contraception (see pregnancy section)."],
+         ["Baseline","Record the patient’s <b>baseline Hb</b> (it varies widely between genotypes and individuals — always compare with their own value), baseline SpO₂, usual symptoms, genotype, splenic status, transfusion history and antibodies, hydroxycarbamide dose."],
+         ["Hyposplenism","Most people with HbSS are functionally hyposplenic from early childhood → lifelong risk of overwhelming infection with encapsulated organisms (pneumococcus, meningococcus, Haemophilus) and salmonella."],
+         ["Shared care","Every patient should be under a <b>specialist haemoglobinopathy team</b> (Specialist Haemoglobinopathy Team / Haemoglobinopathy Coordinating Centre network). The GP is the continuity, prevention and first-contact layer — not the manager of disease-modifying therapy."]
+       ]},
+       {b:"why", html:"Knowing the genotype and personal baseline is what lets you recognise a deviation — a fever, an Hb 20 g/L below usual, a new SpO₂ of 92% in someone whose baseline is 98% — and act before a crisis becomes life-threatening. A ‘normal-looking’ set of observations can be abnormal for this patient, and vice versa."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — same-day actions", sub:"These are the complications that kill. None is safe to observe in primary care. Send to the patient’s haemoglobinopathy centre or ED per their care plan; 999 if unstable.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Acute chest syndrome", html:"New chest pain, cough, breathlessness, fever, tachypnoea or <b>falling SpO₂</b> in anyone with SCD — especially during or after a painful crisis. Defined by fever and/or respiratory symptoms with a new infiltrate on CXR. A leading cause of death: <b>999 / same-day hospital</b>, oxygen if hypoxic. Do not treat as simple chest infection in the community.", src:"BSH 2015 acute chest syndrome guideline · NICE QS58 statement 4"},
+         {tone:"red", h:"🔴 Stroke or TIA", html:"Focal weakness, speech disturbance, facial droop, seizure, sudden severe headache, new confusion. <b>999</b>. Children are at highest risk (peak around age 7). Acute ischaemic stroke in SCD is treated with urgent (exchange) transfusion to bring HbS below 30% — make sure the receiving team knows the patient has SCD so haematology is involved from the start.", src:"BSH 2016 red cell transfusion in SCD Part II"},
+         {tone:"red", h:"🔴 Splenic sequestration (mainly young children)", html:"Sudden pallor, lethargy, abdominal pain or distension, <b>rapidly enlarging spleen</b>, falling Hb well below baseline, shock. <b>999</b> — can be fatal within hours. Parents are taught to feel the spleen; take their concern seriously.", src:"Sickle Cell Society paediatric standards 2019 · BSH 2016 transfusion Part II"},
+         {tone:"red", h:"🔴 Aplastic crisis (parvovirus B19)", html:"Unusual tiredness, pallor, breathlessness, Hb well below baseline with a <b>low reticulocyte count</b>, often after a viral illness. Same-day hospital: may need transfusion. Siblings with SCD exposed to the same virus are also at risk.", src:"BSH 2016 red cell transfusion in SCD Part II"},
+         {tone:"red", h:"🔴 Fever in functional hyposplenism", html:"Fever in SCD is <b>potential overwhelming sepsis</b> until proven otherwise — even in a well-looking child on penicillin. Same-day hospital assessment for cultures and prompt empirical antibiotics per local protocol; follow the patient’s care plan threshold.", src:"UKHSA Green Book ch.7 (asplenia/splenic dysfunction)"},
+         {tone:"red", h:"🔴 Priapism", html:"A painful unwanted erection. Patients are taught first measures (empty bladder, fluids, analgesia, gentle exercise). If it is <b>not settling within about 2 hours</b>, attend ED urgently per the local care plan — ischaemic damage and permanent erectile dysfunction become likely beyond about 4 hours. Recurrent short (‘stuttering’) episodes → urology and haematology review.", src:"Local haemoglobinopathy (HCC) priapism protocols (2-hour threshold) · AUA/SMSNA priapism guideline 2022 (ischaemic priapism > 4 h)"},
+         {tone:"amber", h:"Painful crisis not settling with home analgesia", html:"If the patient’s usual home regimen has not controlled the pain, or pain is atypical (abdominal, chest, back with fever), they need hospital. Hospital standard: <b>assessment and analgesia within 30 minutes</b>, reassessment every 30 minutes until controlled, then at least every 4 hours.", src:"NICE CG143 · NICE QS58 statements 1–2"},
+         {tone:"amber", h:"Other same-day features", html:"Severe or worsening abdominal pain (girdle syndrome, hepatic sequestration, cholecystitis), jaundice darker than usual, sudden visual loss (retinal detachment / haemorrhage), marked drop in urine output, symptomatic anaemia, pregnancy with any of the above.", src:"Sickle Cell Society adult standards 2018 · RCEM 2024 SCD best practice guideline"}
+       ]},
+       {b:"warn", html:"<b>Do not let a patient be ‘held’ in primary care for an opioid review, a callback slot or a GP appointment tomorrow.</b> Phone the haemoglobinopathy team or ED, send a written summary (genotype, baseline Hb and SpO₂, drugs, what analgesia has been taken and when), and document the time of decision. RCEM 2024 asks EDs to see and treat pain within 15 minutes and have specialty review within 30 minutes of recognising a complication — your handover helps them hit that."},
+       {b:"why", html:"Acute chest syndrome often develops <em>during</em> a painful crisis, so a patient who ‘just has pain’ on day 1 can be hypoxic on day 2. NICE QS58 statement 4 specifically asks hospitals to assess for ACS if there are abnormal respiratory signs, chest pain, fever or hypoxia — the same features should prompt referral from primary care."}
+     ]},
+
+    {id:"pain", nav:"Painful crisis", title:"Acute painful episodes — principles for primary care", sub:"Most painful episodes are managed at home by the patient using their own plan. The GP’s job is to support that plan and escalate without delay when it fails.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Home", title:"Patient-led self-management", when:"mild–moderate pain, no red flags",
+          html:"Follow the <b>individualised care plan</b> from the haemoglobinopathy team: regular paracetamol, an NSAID if appropriate (check renal function, pregnancy, asthma), and a weak or oral strong opioid if the plan includes it. Increase fluids, keep warm, rest; treat any trigger (infection). Doses per BNF/BNFC.", tone:"green"},
+         {step:"GP contact", title:"Assess, don’t interrogate", when:"same day", fromLabel:"patient asks for help",
+          html:"Pain score, site, how it compares with usual crises, what has been taken and when; temperature, SpO₂, RR, HR, chest, neuro, abdomen/spleen. <b>Believe the pain score.</b> Prescribe adequate analgesia with <b>laxative and antiemetic</b> if opioids are used. Agree a specific time limit and route back."},
+         {step:"Escalate", title:"Pain not controlled with home analgesia", when:"hospital today", fromLabel:"do not ‘wait and see’", tone:"amber",
+          html:"Direct to the haemoglobinopathy day unit or ED per the care plan. In hospital: <b>analgesia within 30 minutes</b>, consider a strong opioid if moderate–severe pain or ineffective previous analgesia, reassess every 30 minutes, PCA if repeated boluses are needed within 2 hours, and hourly adverse-event monitoring for the first 6 hours on strong opioids.",
+          warn:"<b>Never pethidine</b> (NICE CG143) — risk of norpethidine toxicity and seizures."},
+         {step:"Red flag", title:"Any complication", when:"999", fromLabel:"chest · neuro · fever · pallor · priapism", tone:"red",
+          html:"See the red-flag section. Pain plus hypoxia, fever or chest signs = possible acute chest syndrome."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Hospital standards the patient is entitled to", html:"Pain assessment, clinical assessment and appropriate analgesia <b>within 30 minutes</b> of presentation; pain relief reassessed every 30 minutes until satisfactory, then at least every 4 hours; hourly monitoring for opioid adverse events for the first 6 hours; assessment for acute chest syndrome; information on discharge.", src:"NICE QS58 statements 1–4 and 6"},
+         {tone:"blue", h:"Emergency department standard (newer)", html:"Assess and offer analgesia <b>within 15 minutes</b> of arrival; reassess within 15 minutes if severe pain; decision on complications within 1 hour; specialty review within 30 minutes of recognising a significant complication.", src:"RCEM 2024 best practice guideline (v3.2)"},
+         {tone:"amber", h:"Use the patient’s knowledge", html:"NICE CG143 asks clinicians to take into account the patient’s own knowledge of their condition and their individualised care plan when choosing analgesia and dose. Patients who have lived with SCD for years usually know what works; a request for a specific opioid is not by itself drug-seeking.", src:"NICE CG143"},
+         {tone:"red", h:"Racism and stigma in pain care", html:"The APPG inquiry found sub-standard care in EDs and on general wards, low awareness of SCD, negative attitudes and attitudes underpinned by racism, including delayed analgesia and patients being labelled as drug-seeking. Deaths have followed. Name the diagnosis clearly in referrals and document the pain score.", src:"APPG on Sickle Cell and Thalassaemia ‘No One’s Listening’ (Nov 2021)"}
+       ]},
+       {b:"why", html:"Vaso-occlusive pain is ischaemic pain: delay increases suffering and the risk of complications, and under-treatment is a recognised cause of harm and mistrust. The 2023 NICE surveillance of CG143 found no new evidence to change its recommendations, so the 30-minute standard and the pethidine prohibition remain current."}
+     ]},
+
+    {id:"prevent", nav:"Infection prevention", title:"Infection prevention — penicillin and vaccines", sub:"Functional hyposplenism means lifelong risk. Vaccines do not cover every strain, so both prophylaxis and immunisation are needed.",
+     blocks:[
+       {b:"table", head:["Measure","What to give","Source / notes"], rows:[
+         ["<b>Penicillin prophylaxis</b>","Phenoxymethylpenicillin (penicillin V) twice daily, started in infancy after newborn screening and usually continued lifelong; erythromycin if penicillin-allergic. <b>Dose per BNF/BNFC by age band</b>.","UKHSA Green Book ch.7 (lifelong prophylaxis for asplenia/splenic dysfunction); Sickle Cell Society paediatric standards 2019 (target: prescribed by 3 months of age)"],
+         ["<b>Pneumococcal</b>","Routine childhood PCV plus the at-risk schedule; <b>re-immunise every 5 years</b> for asplenia/splenic dysfunction including SCD. The current chapter uses PCV20 in the at-risk programme (replacing PPV23 from 2026) — check the live chapter for product and ages.","UKHSA Green Book ch.25 (pneumococcal, updated 2025–2026)"],
+         ["<b>Meningococcal</b>","<b>MenACWY</b> conjugate and <b>MenB</b> (with a second MenB dose 4 weeks later if not completed in infancy), in addition to the routine schedule. Check the live ch.7 table for age-specific doses, including any Hib dose for the incompletely immunised.","UKHSA Green Book ch.7"],
+         ["<b>Influenza</b>","<b>Annual</b> flu vaccine from 6 months of age (asplenia/splenic dysfunction is a clinical risk group).","UKHSA Green Book ch.19 (influenza)"],
+         ["<b>COVID-19</b>","Per the current seasonal programme eligibility — check each season’s JCVI advice and Green Book ch.14a.","UKHSA Green Book ch.14a"],
+         ["<b>Hepatitis B</b>","Consider for people on regular transfusion programmes if advised by the haematology team.","Check UKHSA Green Book ch.18 for current indications"],
+         ["<b>Travel</b>","Malaria prophylaxis and bite avoidance are essential — malaria is dangerous in SCD; hyposplenic travellers need rigorous advice. Typhoid and other travel vaccines per destination.","Travel health guidance; haematology advice"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Make it a system, not a memory", html:"Code ‘sickle cell disease’ <b>and</b> ‘hyposplenism/splenic dysfunction’ so the patient enters flu, pneumococcal and COVID recalls. Audit penicillin repeat issues: a gap in collection is a gap in protection. Adolescents commonly stop — ask directly.", src:"UKHSA Green Book ch.7"},
+         {tone:"amber", h:"Emergency antibiotic plan", html:"Many centres give a <b>standby antibiotic supply</b> and a card telling the patient to seek same-day medical review for any fever. Prophylaxis does not make fever safe.", src:"UKHSA Green Book ch.7 · Sickle Cell Society adult standards 2018"}
+       ]},
+       {b:"why", html:"Before newborn screening and penicillin prophylaxis, invasive pneumococcal disease was a major cause of death in young children with SCD. Prophylaxis plus conjugate vaccines transformed survival — which is why non-adherence and missed boosters are safety issues, not administrative ones."}
+     ]},
+
+    {id:"drugs", nav:"Specialist drugs", title:"Specialist and shared-care drugs the GP must know", sub:"Hydroxycarbamide is the main disease-modifying drug in UK practice. Two newer drugs have been withdrawn.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Hydroxycarbamide — who and why", html:"Should be <b>offered to all children with HbSS or HbSβ⁰ from 9 months of age</b> regardless of clinical severity, and to adults with HbSS/HbSβ⁰ with recurrent painful crises or acute chest syndrome; <b>considered in HbSC</b> with recurrent crises. Reduces painful crises, acute chest syndrome and transfusion need, and has a role in primary stroke prevention in children. Specialist-initiated and dose-titrated.", src:"BSH 2018 hydroxycarbamide guideline"},
+         {tone:"red", h:"Hydroxycarbamide — monitoring", html:"Cytotoxic and myelosuppressive: <b>FBC (neutrophils, platelets, reticulocytes)</b> plus renal and liver function per the local shared-care protocol — more frequently at start and after dose change. Fever, sore throat or bleeding → same-day FBC. Do not stop it abruptly for minor issues; discuss with haematology.", src:"BSH 2018 hydroxycarbamide guideline · local ICB shared-care protocol"},
+         {tone:"red", h:"Hydroxycarbamide — fertility, pregnancy, breastfeeding", html:"<b>Contraception for both men and women</b> while taking it. Planning pregnancy: BSH 2018 advises considering stopping it pre-conception (men and women) unless at high risk of serious SCD complications; RCOG Green-top 61 advises stopping <b>at least 3 months before conception</b> — agree the plan with haematology. Breastfeeding: discuss with haematology and check the BNF. Unplanned pregnancy on hydroxycarbamide → urgent haematology/obstetric referral.", src:"BSH 2018 hydroxycarbamide guideline · RCOG Green-top Guideline 61"},
+         {tone:"plain", h:"Transfusion programmes and iron", html:"Simple or exchange transfusion is used acutely and long-term (e.g. secondary stroke prevention keeping HbS below 30%). Long-term transfusion causes iron overload (chelation is specialist-managed) and red cell alloantibodies — record antibody status and the transfusing centre on the GP record.", src:"BSH 2016 red cell transfusion in SCD Parts I and II"},
+         {tone:"amber", h:"Crizanlizumab — no longer available", html:"NICE TA743 (Nov 2021) recommended it under managed access, but the <b>MHRA revoked the UK conditional marketing authorisation on 10 January 2024</b> after the STAND trial did not confirm benefit; NICE withdrew TA743 and no new patients can start.", src:"NICE TA743 (withdrawn) · MHRA revocation 2024"},
+         {tone:"amber", h:"Voxelotor — withdrawn worldwide", html:"NICE TA981 (June 2024) recommended it for haemolytic anaemia in SCD from age 12; <b>Pfizer withdrew it from all markets on 25 September 2024</b> (imbalance in vaso-occlusive crises and deaths) and MHRA issued a recall; NICE withdrew TA981. MHRA advised prescribers to contact patients to stop treatment; abrupt withdrawal has been reported to precipitate crises, so any patient still taking it should be reviewed by their haematology team.", src:"NICE TA981 (withdrawn) · MHRA drug alert EL(24)A/44, 30 Sept 2024"}
+       ]},
+       {b:"dl", rows:[
+         ["Folic acid","Traditionally prescribed daily because of chronic haemolysis; practice now varies between centres. <b>Prescribe if the haematology team recommends it</b>, dose per BNF/BNFC. Higher-dose folic acid is standard pre-conception and in pregnancy (BSH 2021)."],
+         ["Iron","Do <b>not</b> give iron routinely — low MCV or anaemia in SCD is usually not iron deficiency, and transfused patients may be iron-overloaded. Check ferritin first."],
+         ["Opioids","Long-term opioid prescribing for chronic sickle pain should be agreed with the haemoglobinopathy / pain team; review regularly, and never withhold acute analgesia because of a chronic-pain plan."],
+         ["Things to avoid","Pethidine (NICE CG143); dehydrating drugs without care; oestrogen-containing contraception without specialist discussion (VTE risk — check UKMEC 2025)."]
+       ]},
+       {b:"why", html:"Hydroxycarbamide works mainly by raising fetal haemoglobin (HbF), which reduces sickling. Its benefit depends on adherence and on the dose being escalated safely, which in turn depends on FBC monitoring not lapsing — the GP is often the person who notices a missed blood test or repeat prescription."}
+     ]},
+
+    {id:"lifestyle", nav:"Everyday life", title:"Self-management, triggers and everyday life", sub:"Most crises have a trigger. Consistent self-management reduces them alongside the drugs.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"💧 Stay hydrated", html:"Dehydration precipitates sickling — drink more in heat, illness, exercise, and on flights. Water bottle access at school and work."},
+         {t:"🌡️ Keep warm", html:"Cold, wind and sudden temperature change (including cold-water swimming) trigger vaso-occlusion — layers, avoid getting chilled."},
+         {t:"🏔️ Avoid hypoxia", html:"Take care at altitude and on long flights (seek haematology advice); treat sleep-disordered breathing; stop smoking and avoid second-hand smoke; anaesthesia needs planning."},
+         {t:"🦠 Early infection care", html:"Fever is an emergency (hyposplenism). Keep penicillin and vaccines up to date; malaria prophylaxis when travelling."},
+         {t:"🏃 Exercise sensibly", html:"Regular moderate activity is encouraged; avoid extreme exertion, overheating and dehydration; rest and fluids during sport."},
+         {t:"🧠 Mind and mood", html:"Chronic pain, unpredictable admissions and stigma affect mood, sleep, education and work. Screen for depression and anxiety and refer to psychology (many centres have a haemoglobinopathy psychologist)."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"School letters (children)", html:"Ask the school for an individual healthcare plan: unrestricted water and toilet access, keeping warm (indoor break in cold weather), sensible PE with rests, a plan for pain and fever at school, and support for absences so education is protected.", src:"Sickle Cell Society paediatric standards 2019"},
+         {tone:"green", h:"Work letters (adults)", html:"Reasonable adjustments: temperature-controlled environment, hydration and breaks, flexibility for appointments and crises. SCD can meet the Equality Act 2010 definition of disability. Fit notes as needed.", src:"Sickle Cell Society adult standards 2018"},
+         {tone:"blue", h:"Psychological support", html:"Access to psychology is part of the national standards for children and adults; ask about school/work stress, mood and fear of hospital. Signpost the Sickle Cell Society and local support groups.", src:"Sickle Cell Society adult standards 2018 · paediatric standards 2019"},
+         {tone:"plain", h:"Chronic pain", html:"Some adults develop chronic daily pain (avascular necrosis of hip/shoulder, leg ulcers, neuropathic pain). Refer back to haematology for assessment of the cause; joint pain may need orthopaedic review.", src:"Sickle Cell Society adult standards 2018"}
+       ]}
+     ]},
+
+    {id:"pregnancy", nav:"Trait & pregnancy", title:"Trait counselling, screening, contraception and pregnancy", sub:"Reproductive decisions are where primary care adds most for carriers as well as for people with SCD.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"National screening programme", html:"The NHS Sickle Cell and Thalassaemia Screening Programme offers <b>antenatal screening to all pregnant women, ideally by 10 weeks</b> (family origin questionnaire with booking bloods) so that prenatal diagnosis can be offered by 12+6 weeks, and <b>newborn screening for SCD</b> via the blood spot.", src:"NHS England/UKHSA Sickle Cell and Thalassaemia Screening Programme"},
+         {tone:"blue", h:"Carrier (trait) counselling", html:"If both partners are carriers (e.g. HbAS + HbAS), each pregnancy has a <b>1 in 4</b> chance of SCD, <b>1 in 2</b> of carrier status and <b>1 in 4</b> of neither. Offer partner testing and referral to a haemoglobinopathy counsellor; preconception testing is available on request through the GP.", src:"NHS England/UKHSA Sickle Cell and Thalassaemia Screening Programme"},
+         {tone:"blue", h:"Pre-conception (person with SCD)", html:"Refer to haematology before pregnancy: plan hydroxycarbamide cessation (RCOG: at least 3 months before conception), review ACE inhibitors and other teratogens, update vaccines, higher-dose folic acid, partner testing, and screening for end-organ damage. Pregnancy is high-risk: joint haematology–obstetric care.", src:"BSH 2021 SCD in pregnancy · RCOG Green-top Guideline 61 · BSH 2018 hydroxycarbamide guideline"},
+         {tone:"amber", h:"Contraception", html:"Effective contraception matters (hydroxycarbamide, pregnancy risk). Oestrogen raises VTE risk and SCD is itself prothrombotic; For <b>sickle cell trait</b>, <b>UKMEC 2025</b> notes a small increase in VTE risk and, lacking evidence for a category, advises considering methods other than CHC; primary-care implementation advice suggests recalling people with trait who use CHC for review. Check the current UKMEC table for SCD before prescribing; progestogen-only methods and the LNG-IUD are commonly used.", src:"CoSRH (FSRH) UKMEC 2025"}
+       ]},
+       {b:"why", html:"Antenatal screening only works if booking happens early: a late booking removes the window for prenatal diagnosis. GPs who see women planning pregnancy or with early positive tests can make the difference by booking promptly and asking about family origin and partner status."}
+     ]},
+
+    {id:"children", nav:"Children & transition", title:"Children and young people, and transition", sub:"Most children are known from newborn screening. The early years carry the highest risk of sepsis, sequestration and stroke.",
+     blocks:[
+       {b:"table", head:["Issue","What should happen","GP role"], rows:[
+         ["Newborn screening","Screen-positive babies seen by a specialist and started on penicillin early (paediatric standards target: by 3 months of age)","Check the baby is under a paediatric haemoglobinopathy team and penicillin is on repeat"],
+         ["Stroke screening","<b>Annual transcranial Doppler (TCD) from age 2 to at least 16</b> in HbSS and HbSβ⁰; abnormal TCD → regular transfusion or hydroxycarbamide per specialist","Encourage attendance; missed TCDs are a safety issue"],
+         ["Splenic sequestration","Parents taught to feel the spleen and recognise pallor and lethargy","Any parental concern about a big spleen or pallor → 999 / same-day hospital"],
+         ["Growth and development","Growth, puberty, school progress and sleep (adenotonsillar hypertrophy and nocturnal hypoxia) reviewed","Plot growth; ask about snoring and school absence"],
+         ["Enuresis","Common in SCD because of reduced urine-concentrating ability","Normalise it, do not restrict fluids"],
+         ["Transition","Planning should start by <b>school year 9 (age 13–14)</b> with a named worker and a coordinated plan into adult haemoglobinopathy services","Support self-management, confidential consultations, and continuity of prescriptions and vaccines through the handover"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Transition planning", html:"Transition is a high-risk period for disengagement, missed penicillin and ED attendances. Planning should begin by school year 9 and be developmentally appropriate.", src:"NICE NG43 (2016) transition from children’s to adults’ services"},
+         {tone:"blue", h:"TCD standard", html:"Annual TCD from age 2 until at least 16 in HbSS and HbSβ⁰, performed by accredited practitioners; stroke risk peaks around age 7.", src:"Sickle Cell Society paediatric standards 2019"}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Follow-up and monitoring", sub:"Specialist annual review screens for end-organ damage; the GP makes sure it happens and actions results that come back to primary care.",
+     blocks:[
+       {b:"table", head:["What","When","Who / action"], rows:[
+         ["Hydroxycarbamide FBC (neutrophils, platelets, retics) + U&amp;E, LFT","More often at start/dose change, then per shared-care protocol","GP or specialist per local shared-care agreement; unexpected cytopenia → discuss same day with haematology"],
+         ["Annual specialist review","At least annually","Haemoglobinopathy team: Hb and haemolysis markers, BP, urine albumin:creatinine (sickle nephropathy), SpO₂, growth in children"],
+         ["TCD (children)","Annually, age 2 to at least 16 (HbSS/HbSβ⁰)","Paediatric haemoglobinopathy team"],
+         ["Retinal screening","Per centre (proliferative retinopathy is more common in HbSC)","Ophthalmology via haematology; sudden visual change → same day"],
+         ["Pulmonary hypertension / cardiac","Echo when symptomatic or per centre","Breathlessness out of keeping with anaemia → tell haematology"],
+         ["Ferritin (transfused patients)","Per haematology","Iron overload and chelation are specialist-managed"],
+         ["Vaccines and penicillin","Flu annually; pneumococcal every 5 years; check penicillin repeats","GP recall system (UKHSA Green Book ch.7/25)"],
+         ["Mental health, pain, school/work","Every review","GP: PHQ-9/GAD-7 where appropriate, letters, psychology referral"]
+       ]},
+       {b:"timeline", items:[
+         {n:"1", when:"Lifelong", title:"Prophylaxis and vaccines", html:"Penicillin prophylaxis, the Green Book asplenia schedule, folic acid if advised, hydroxycarbamide where indicated (specialist-initiated) — GP supports adherence."},
+         {n:"2", when:"Each contact", title:"Prevent crises", html:"Hydration, warmth, trigger avoidance; treat infection promptly with a low threshold for same-day review. Confirm annual review and TCD in children."},
+         {n:"3", when:"Acute", title:"Escalate fast", html:"Severe pain, fever, chest symptoms, neurological signs, pallor or big spleen, priapism → urgent admission; never undertreat sickle pain."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral — urgency, where and what to send", sub:"Everyone with SCD should be under a specialist team. Use the patient’s care plan for acute routes.",
+     blocks:[
+       {b:"table", head:["Urgency","Situation","Where","What to send"], rows:[
+         ["<b>999</b>","Stroke/TIA signs, seizure, suspected ACS with hypoxia, sequestration, shock, sepsis","ED (pre-alert)","Genotype, baseline Hb and SpO₂, drugs incl. hydroxycarbamide, analgesia given and time, care plan"],
+         ["<b>Same day</b>","Fever, pain not controlled with home analgesia, priapism not settling (~2 h), aplastic picture, new visual loss, pregnancy with complications","Haemoglobinopathy day unit or ED per care plan","As above; phone the on-call haematologist if possible"],
+         ["<b>Urgent (days)</b>","Unexpected cytopenia on hydroxycarbamide (non-febrile), unplanned pregnancy on hydroxycarbamide, recurrent stuttering priapism","Haematology ± urology/obstetrics","Results, medication, contraception history"],
+         ["<b>Routine</b>","Not under a specialist team; pre-conception planning; chronic pain; leg ulcers; avascular necrosis; psychology","Haemoglobinopathy team, pain team, psychology, orthopaedics","Summary of crises, admissions and current issues"],
+         ["<b>Counselling</b>","Carrier couples; trait found incidentally; family testing","Haemoglobinopathy counsellor / antenatal screening team","Both partners’ results where available"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Emergency routes", html:"Acute chest syndrome, stroke, sepsis/fever, sequestration, aplastic crisis, priapism, uncontrolled crisis: hospital today. The ED standard is analgesia within 15 minutes and specialty review within 30 minutes of recognising a complication.", src:"RCEM 2024 best practice guideline · NICE CG143"},
+         {tone:"plain", h:"Specialist (all patients)", html:"Disease-modifying therapy, transfusion programmes, annual review, TCD, transition, pregnancy planning and monitoring sit with the haemoglobinopathy team.", src:"Sickle Cell Society adult standards 2018 · paediatric standards 2019"}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Safety-netting", sub:"Specific, written, and matched to the patient’s care plan.",
+     blocks:[
+       {b:"say", html:"“Your sickle cell team looks after the specialist side, but day to day we help keep you well: the daily penicillin and your vaccines because your spleen doesn’t protect you properly, and the blood tests if you take hydroxycarbamide. If you get a crisis, keep warm, drink plenty and take your painkillers as your plan says. <b>If the pain isn’t controlled by your usual painkillers, go to hospital — don’t wait for an appointment with us.</b> And some things are always an emergency: a temperature, chest pain or breathlessness, weakness or trouble speaking, a painful erection that won’t go down after about two hours, or, for your child, sudden paleness, floppiness or a swollen tummy. For those, call 999 or go straight to hospital and tell them you have sickle cell.”"},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Always same day", html:"Temperature, chest pain, breathlessness, new neurology or severe headache, sudden pallor or tiredness, big spleen in a child, priapism not settling, pain not controlled by the home plan.", src:"NICE QS58 statement 4 · BSH 2015 acute chest syndrome guideline"},
+         {tone:"green", h:"Carry the plan", html:"Encourage patients to carry their individualised care plan and a card stating diagnosis, genotype, baseline Hb and the haemoglobinopathy centre contact, and to tell ED staff they have sickle cell disease.", src:"NICE CG143 · Sickle Cell Society adult standards 2018"}
+       ]}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Most of the harm in SCD comes from delay and from assumptions.",
+     blocks:[
+       {b:"dl", rows:[
+         ["‘Just another crisis’","Missing acute chest syndrome, sequestration or stroke because the patient has had pain before. Examine the chest, check SpO₂ against baseline, look at the neurology and spleen every time."],
+         ["Rationing analgesia","Delaying opioids, asking for proof of pain, or labelling the patient as drug-seeking — identified by the APPG 2021 inquiry as a pattern contributing to avoidable deaths."],
+         ["Pethidine","Still occasionally requested by habit — NICE CG143 says do not offer it."],
+         ["Treating fever as viral at home","Fever in hyposplenism needs same-day assessment even on penicillin."],
+         ["Iron for anaemia","Anaemia in SCD is haemolytic; iron can worsen overload in transfused patients. Check ferritin first."],
+         ["Lapsed monitoring","Hydroxycarbamide without FBC monitoring, or penicillin and vaccines drifting in adolescence."],
+         ["Assuming trait is harmless for every decision","Trait matters for partner testing and, under UKMEC 2025, for CHC choice."],
+         ["Outdated drug lists","Crizanlizumab and voxelotor have been withdrawn in the UK — do not refer patients expecting to start them."]
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only — the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 22-year-old man with HbSS phones: he has had leg and back pain for two days, taking his usual codeine and ibuprofen, and asks for ‘something stronger’. He mentions a cough since last night. He has previously had a bad experience in ED, where he felt he was treated as a drug seeker, and wants to avoid hospital."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Takes the pain at face value and asks for the pain score and what has been taken; spots the cough as a possible acute chest syndrome and checks fever, breathlessness and SpO₂; explains clearly why today needs hospital, not a stronger prescription; acknowledges the previous ED experience and offers a written handover and a call to the haemoglobinopathy team; safety-nets; checks penicillin and hydroxycarbamide adherence at follow-up. <a href='../../cases/anaemia.html'>Open the anaemia casebook chapter →</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every recommendation on this page is traceable to a named source. Status checked September 2026.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG143 — Sickle cell disease: managing acute painful episodes in hospital (2012; 2023 surveillance: no update needed)</b><br><a href="https://www.nice.org.uk/guidance/cg143" rel="noopener">nice.org.uk/guidance/cg143</a><span class="rd"> — analgesia within 30 minutes, no pethidine, strong opioid boluses, PCA, individualised care plans, acute chest syndrome awareness</span></li>'+
+         '<li><b>NICE QS58 — Sickle cell disease quality standard (2014)</b><br><a href="https://www.nice.org.uk/guidance/qs58" rel="noopener">nice.org.uk/guidance/qs58</a><span class="rd"> — timely assessment and analgesia, reassessment every 30 minutes, opioid monitoring, acute chest syndrome, discharge information</span></li>'+
+         '<li><b>RCEM — Management of acute presentations of sickle cell disease in the ED (best practice guideline, v3.2, 2024)</b><span class="rd"> — 15-minute analgesia target, 1-hour complication decision, 30-minute specialty review</span></li>'+
+         '<li><b>BSH — Guidelines for the use of hydroxycarbamide in children and adults with SCD (Qureshi et al., Br J Haematol 2018;181:460–475)</b><span class="rd"> — indications (children from 9 months), contraception for both sexes, consider stopping pre-conception</span></li>'+
+         '<li><b>RCOG Green-top Guideline 61 — Management of sickle cell disease in pregnancy (2011)</b><span class="rd"> — stop hydroxycarbamide at least 3 months before conception</span></li>'+
+         '<li><b>BSH — Guideline on the management of acute chest syndrome in SCD (Howard et al., Br J Haematol 2015;169:492–505)</b></li>'+
+         '<li><b>BSH — Guidelines on red cell transfusion in SCD, Part I and Part II (Davis et al., Br J Haematol 2016/2017)</b><span class="rd"> — stroke (HbS &lt;30%), sequestration, red cell aplasia</span></li>'+
+         '<li><b>BSH — Management of SCD in pregnancy (Br J Haematol 2021)</b></li>'+
+         '<li><b>UKHSA Green Book</b> — ch.7 (immunisation of individuals with underlying medical conditions: asplenia/splenic dysfunction, lifelong antibiotic prophylaxis), ch.25 (pneumococcal; PCV20 5-yearly re-immunisation for asplenia/splenic dysfunction), ch.19 (influenza), ch.14a (COVID-19)</li>'+
+         '<li><b>Sickle Cell Society / UK Forum on Haemoglobin Disorders — Standards for the clinical care of adults with SCD in the UK (2nd ed., 2018)</b> and <b>Sickle cell disease in childhood: standards and recommendations for clinical care (3rd ed., 2019)</b></li>'+
+         '<li><b>NHS Sickle Cell and Thalassaemia Screening Programme</b> — antenatal screening by 10 weeks with the family origin questionnaire; newborn blood spot screening</li>'+
+         '<li><b>NICE TA743 (crizanlizumab, 2021) — withdrawn</b> after MHRA revoked the UK marketing authorisation (10 January 2024); <b>NICE TA981 (voxelotor, 2024) — withdrawn</b> after global market withdrawal (25 September 2024) and MHRA recall</li>'+
+         '<li><b>APPG on Sickle Cell and Thalassaemia — ‘No One’s Listening’ (November 2021)</b></li>'+
+         '<li><b>NICE NG43 — Transition from children’s to adults’ services (2016)</b></li>'+
+         '<li><b>CoSRH (formerly FSRH) — UKMEC 2025</b> — sickle cell trait: small VTE risk increase, no category assigned, consider methods other than CHC</li>'+
+         '<li><b>AUA/SMSNA — priapism guideline (J Urol 2022)</b> — ischaemic priapism beyond 4 hours</li>'+
+         '<li><b>BNF / BNFC</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all doses: penicillin V, folic acid, analgesics</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Sickle cell disease in primary care, children and adults — NICE CG143 and QS58, RCEM 2024, BSH hydroxycarbamide (2018), acute chest syndrome (2015), transfusion (2016) and pregnancy (2021) guidelines, UKHSA Green Book ch.7/19/25/14a, Sickle Cell Society standards (2018 adult, 2019 paediatric), NICE NG43, UKMEC 2025. Acute chest syndrome, stroke, sepsis, sequestration, aplastic crisis and priapism are emergencies. Follow the patient’s individualised care plan and local haemoglobinopathy protocols, and verify all doses against the current BNF/BNFC before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

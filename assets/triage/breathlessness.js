@@ -33,11 +33,11 @@ RGPTriage.register('breathlessness-triage', {
       when:(i)=>!!i.stridor_swelling_urticaria || (!!i.after_food_drug_sting && (i.spo2 && i.spo2<92)) },
     { id:'life_threat_asthma', tier:'emergency', label:'Life-threatening asthma',
       action:'Call 999. Nebulised salbutamol/ipratropium, IV hydrocortisone, magnesium.',
-      source:'BTS-SIGN 2024',
+      source:'BTS/SIGN 158 (2019, acute asthma)',
       when:(i)=>!!i.known_asthma && (!!i.exhaustion_silent || (i.peak_flow_pct && i.peak_flow_pct<33) || (i.spo2 && i.spo2<92)) },
     { id:'severe_asthma', tier:'emergency', label:'Acute severe asthma',
       action:'Same-day admission. Nebulised salbutamol, oral prednisolone 40mg.',
-      source:'BTS-SIGN 2024',
+      source:'BTS/SIGN 158 (2019, acute asthma)',
       when:(i)=>!!i.known_asthma && ((i.peak_flow_pct && i.peak_flow_pct<50) || !!i.unable_complete_sentences || (i.hr && i.hr>110) || (i.rr && i.rr>=25)) },
     { id:'tension_ptx', tier:'emergency', label:'?Tension pneumothorax',
       action:'Call 999. Needle decompression 2nd ICS MCL if peri-arrest.',
@@ -70,6 +70,6 @@ RGPTriage.register('breathlessness-triage', {
     {label:'NICE NG106 Heart failure', url:'https://www.nice.org.uk/guidance/ng106'},
     {label:'NICE NG115 COPD', url:'https://www.nice.org.uk/guidance/ng115'},
     {label:'NICE NG158 VTE', url:'https://www.nice.org.uk/guidance/ng158'},
-    {label:'BTS-SIGN 2024 Asthma', url:'https://www.brit-thoracic.org.uk/'}
+    {label:'BTS/SIGN 158 (2019) acute asthma', url:'https://www.brit-thoracic.org.uk/'}
   ],
 });

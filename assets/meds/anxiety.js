@@ -5,7 +5,7 @@
 MedChooser.register('anxiety', {
   title: 'GAD — pharmacological selection',
   subtitle: 'NICE stepped care: sertraline is first-line drug treatment for GAD. Psychological therapy runs alongside. Tick the profile; cards re-tier live.',
-  guideline: 'NICE NG113 · BNF',
+  guideline: 'NICE CG113 · BNF',
 
   factors: [
     // Demographics
@@ -62,7 +62,7 @@ MedChooser.register('anxiety', {
       name:'Sertraline (SSRI)',
       examples:'25–50 mg OD → 200 mg',
       step:'First-line',
-      source:'NICE NG113 §1.2.21',
+      source:'NICE CG113 §1.2.21',
       sideEffects:'Early ↑ anxiety/jitteriness, nausea, sexual dysfunction, hyponatraemia',
       monitor:'Review at 1–2 weeks (1 week if <30); warn re early symptom worsening',
       counsel:'"Anxiety often feels worse for the first week or two before it improves — that\'s expected, not a sign it\'s failing. Start low, build up slowly."',
@@ -89,7 +89,7 @@ MedChooser.register('anxiety', {
       name:'Alternative SSRI (escitalopram / paroxetine)',
       examples:'Escitalopram 10 mg OD · Paroxetine 20 mg OD',
       step:'2nd-line',
-      source:'NICE NG113 §1.2.22',
+      source:'NICE CG113 §1.2.22',
       sideEffects:'As SSRIs; escitalopram QTc; paroxetine marked discontinuation + weight gain',
       monitor:'Review 1–2 weeks; ECG if QTc risk',
       counsel:'"If the first one didn\'t suit you, a different tablet in the same family is the usual next step."',
@@ -112,7 +112,7 @@ MedChooser.register('anxiety', {
       name:'SNRI (duloxetine / venlafaxine)',
       examples:'Duloxetine 30–60 mg OD · Venlafaxine MR 75 mg',
       step:'2nd / 3rd-line',
-      source:'NICE NG113 §1.2.23',
+      source:'NICE CG113 §1.2.23',
       sideEffects:'Nausea, ↑ BP (venlafaxine), discontinuation symptoms',
       monitor:'BP at baseline + titration; taper slowly',
       counsel:'"A different class that lifts mood and eases anxiety. We\'ll check your blood pressure as we go up."',
@@ -135,7 +135,7 @@ MedChooser.register('anxiety', {
       name:'Pregabalin',
       examples:'150 mg/day in 2–3 doses → 600 mg',
       step:'Alternative',
-      source:'NICE NG113 §1.2.24 · Class C controlled drug',
+      source:'NICE CG113 §1.2.24 · Class C controlled drug',
       sideEffects:'Sedation, dizziness, weight gain, dependence/misuse, respiratory depression with opioids',
       monitor:'Misuse risk; renal dose adjustment; taper to stop',
       counsel:'"An option if antidepressants don\'t suit you — but it can be habit-forming, so we\'ll use it carefully and review."',
@@ -160,7 +160,7 @@ MedChooser.register('anxiety', {
       name:'Benzodiazepine',
       examples:'Diazepam — crisis use only, ≤2–4 weeks',
       step:'Avoid (routine)',
-      source:'NICE NG113 §1.2.27',
+      source:'NICE CG113 §1.2.27',
       sideEffects:'Dependence, tolerance, sedation, falls, cognitive impairment',
       monitor:'Strictly time-limited; do not repeat',
       counsel:'"These calm things very quickly but become habit-forming within weeks, so they\'re only for a short crisis, not ongoing treatment."',

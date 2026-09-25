@@ -3,97 +3,270 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hypertension in Pregnancy — Protocol · Reasoning GP</title>
+<title>Hypertension in pregnancy &amp; postpartum — Protocol · Reasoning GP</title>
+<meta name="description" content="Hypertension in pregnancy and after birth for GPs: NICE NG133 definitions and thresholds, aspirin prophylaxis risk factors, same-day maternity red flags, switching ACE inhibitors, ARBs and thiazides, labetalol, nifedipine and methyldopa, breastfeeding-compatible postnatal treatment, the 6–8 week review, postnatal pre-eclampsia and long-term cardiovascular risk." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/hypertension-pregnancy.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Hypertension in pregnancy management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
-  icon:"🤰",
-  title:"Hypertension in Pregnancy",
-  stemTitle:"Hypertension in pregnancy &amp; pre-eclampsia \u2014 recognise, refer, prevent",
-  stemSub:"Primary-care role in hypertensive disorders of pregnancy \u2014 recognise pre-eclampsia and refer urgently, use pregnancy-safe antihypertensives, offer aspirin prophylaxis to those at risk, switch teratogenic drugs pre-conception, and follow up postpartum cardiovascular risk. NICE NG133 \u00b7 2026.",
-  guideline:"NICE NG133",
+  icon:"\u{1F930}",
+  title:"Hypertension in pregnancy and postpartum",
+  eyebrow:"Protocol · pre-conception to long-term follow-up",
+  stemTitle:"Hypertension in pregnancy — prevent, recognise, refer, and follow up for life",
+  stemSub:"The GP sees these women at four moments: before conception (switch the drugs, plan aspirin), in early pregnancy (confirm the switch, check aspirin was started), when something goes wrong (a headache, a raised BP, a postnatal visit) and for the rest of her life (a hypertensive pregnancy is a cardiovascular risk marker). Pre-eclampsia can present for the first time <b>after</b> the birth, often once community midwifery care has ended.",
+  guideline:"NICE NG133 (2019, updated 2023) · NICE NG201 (2021) · NICE NG194 (2021) · NICE HTG630 (formerly DG49, 2022) · NICE NG136 · MBRRACE-UK 2025",
+  meta:[
+    {t:"NICE NG133 · Hypertension in pregnancy (2019, updated Apr 2023)"},
+    {t:"NICE NG201 antenatal · NG194 postnatal (2021)"},
+    {t:"NICE HTG630 (ex-DG49) PLGF testing 2022"},
+    {t:"MBRRACE-UK Saving Lives 2025", tone:"tw"},
+    {t:"BNF owns all doses"}
+  ],
+  lead:'<div class="mg-layers"><a href="#redflags"><b>Same-day</b><small>Symptoms + BP ≥160/110</small></a><a href="#aspirin"><b>Aspirin</b><small>High/moderate risk factors</small></a><a href="#preconception"><b>Switch drugs</b><small>ACEi · ARB · thiazide</small></a><a href="#postnatal"><b>Postnatal</b><small>Breastfeeding-safe drugs</small></a><a href="#longterm"><b>For life</b><small>CVD risk · recurrence</small></a></div>',
   glance:[
-    {lbl:"Safe agents", val:"Labetalol 100 mg BD / nifedipine MR", sub:"+ methyldopa"},
-    {lbl:"STOP", val:"ACEi / ARB / thiazide", sub:"teratogenic"},
-    {lbl:"Prophylaxis", val:"Aspirin 75\u2013150 mg", sub:"from 12 wks if at risk"},
-    {lbl:"Pre-eclampsia", val:"BP \u2191 + proteinuria", sub:"\u226520 weeks"},
-    {lbl:"Severe", val:"BP \u2265160/110", sub:"= same-day"},
-    {lbl:"Red flag", val:"Headache / RUQ / visual", sub:"= emergency"}
+    {lbl:"Hypertension", val:"≥140/90", sub:"NG133 definition"},
+    {lbl:"Severe", val:"≥160/110", sub:"same-day secondary care"},
+    {lbl:"Antenatal target", val:"≤135/85", sub:"on treatment (NG133)"},
+    {lbl:"Aspirin", val:"75–150 mg daily", sub:"12 weeks → birth if at risk"},
+    {lbl:"Stop", val:"ACEi / ARB", sub:"preferably within 2 working days of notification"},
+    {lbl:"Postnatal review", val:"6–8 weeks", sub:"GP or specialist"}
   ],
-  flow:[
-    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Pre-eclampsia / severe HTN \u2014 emergency",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Severe hypertension", html:"BP \u2265160/110 in pregnancy \u2192 same-day obstetric assessment."},
-          {t:"🔴 Pre-eclampsia symptoms", html:"Severe headache, visual disturbance, RUQ/epigastric pain, vomiting, sudden face/hand/foot swelling, reduced fetal movements \u2192 immediate obstetric assessment (999/maternity triage)."},
-          {t:"🔴 Eclampsia / HELLP", html:"Seizure, or HELLP (haemolysis, \u2191LFTs, low platelets) \u2192 999 emergency."},
-          {t:"🟠 New HTN \u226520 weeks", html:"New hypertension after 20 weeks \u00b1 proteinuria \u2192 urgent assessment for pre-eclampsia (BP, urine PCR, bloods, PlGF-based testing in secondary care)."}
-        ]},
-        {b:"why", html:"Pre-eclampsia is a leading cause of maternal and fetal morbidity and can deteriorate rapidly. Any new hypertension or pre-eclampsia symptoms after 20 weeks needs same-day obstetric assessment \u2014 the GP recognises and refers, secondary care manages."}
-      ]},
-    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Classify the disorder",
-      blocks:[
-        {b:"kv", rows:[
-          ["Chronic hypertension","Present pre-pregnancy or before 20 weeks"],
-          ["Gestational hypertension","New hypertension after 20 weeks WITHOUT proteinuria/organ involvement"],
-          ["Pre-eclampsia","New hypertension after 20 weeks WITH proteinuria or maternal organ/uteroplacental dysfunction"],
-          ["Pre-conception","Optimise BP; switch teratogenic drugs; plan aspirin; discuss risks"]
-        ]}
-      ]},
-    {t:"node", d:"life", n:"3", tag:"Non-drug · core", title:"Monitoring & safety advice", blocks:[{b:"tiles", v:"life", items:[{t:"🩺 Self-monitoring", html:"Support BP monitoring and awareness of pre-eclampsia symptoms (headache, visual changes, epigastric pain, swelling)."},{t:"🚫 Avoid teratogens", html:"Avoid ACEi/ARB and thiazides in pregnancy \u2014 use labetalol, nifedipine or methyldopa."},{t:"👶 Aspirin prophylaxis", html:"Offer aspirin 75\u2013150 mg from 12 weeks if at risk of pre-eclampsia."}]},{b:"why", html:"In pregnancy the priority non-drug actions are recognising pre-eclampsia early, avoiding teratogenic antihypertensives, and offering aspirin prophylaxis to those at risk."}]},
-    {t:"node", d:"drug", n:"4", tag:"Medication", title:"Pregnancy-safe antihypertensives",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"1st-line", title:"Labetalol", when:"unless contraindicated",
-           html:"Oral <b>labetalol 100 mg BD (titrate, up to 2.4 g/day)</b> is first-line (avoid in asthma). Target BP per NG133 (e.g. \u2264135/85)."},
-          {step:"Alternatives", title:"Nifedipine MR / methyldopa", when:"if labetalol unsuitable",
-           fromLabel:"if not tolerated/contraindicated",
-           html:"<b>Modified-release nifedipine 10\u201320 mg BD</b>, or <b>methyldopa 250 mg BD\u2013TDS</b> (avoid in depression; stop within 2 days postpartum)."},
-          {step:"STOP teratogens", title:"Discontinue ACEi/ARB/thiazide", when:"immediately",
-           fromLabel:"switch at pregnancy/pre-conception",
-           html:"ACE inhibitors, ARBs and thiazide diuretics are teratogenic/fetotoxic \u2014 switch to a safe agent pre-conception or as soon as pregnancy confirmed."}
-        ]},
-        {b:"warn", html:"ACEi/ARBs cause fetal renal damage and oligohydramnios \u2014 women of childbearing potential on these for chronic HTN should have a pre-conception plan to switch."}
-      ]},
-    {t:"node", d:"drug", n:"5", tag:"Prevention", title:"Aspirin prophylaxis",
-      blocks:[
-        {b:"kv", rows:[
-          ["Who","Offer <b>aspirin 75\u2013150 mg from 12 weeks until birth</b> if \u22651 high-risk factor (previous pre-eclampsia, chronic HTN, CKD, diabetes, autoimmune e.g. SLE/APS) or \u22652 moderate-risk factors (first pregnancy, age \u226540, BMI \u226535, family history, multiple pregnancy, &gt;10y since last pregnancy)"],
-          ["Calcium","Consider calcium supplementation in those with low dietary intake (reduces pre-eclampsia risk)"],
-          ["Surveillance","Ensure engaged with antenatal care + BP/urine monitoring schedule"]
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"6", tag:"Follow-up", title:"Postpartum + future risk",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"Postnatal", title:"BP review", html:"Continue/adjust antihypertensives; many gestational cases resolve. Methyldopa stopped within 2 days. Safe agents while breastfeeding (e.g. enalapril, labetalol, nifedipine per specialist advice)."},
-          {n:"2", when:"6\u20138 weeks", title:"Confirm resolution", html:"Check BP normalised; if still hypertensive, investigate/treat as chronic HTN."},
-          {n:"3", when:"Long-term", title:"Cardiovascular risk", html:"Pre-eclampsia/gestational HTN raises future CVD and HTN risk \u2014 lifestyle advice + periodic BP checks; counsel for future pregnancies (aspirin)."}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer", title:"Referral",
-      arrow:"obstetric-led care",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Emergency / same-day", html:"Severe HTN \u2265160/110, pre-eclampsia symptoms, eclampsia/HELLP, reduced fetal movements."},
-          {t:"Obstetrics", html:"All new gestational hypertension/pre-eclampsia, and chronic HTN needs obstetric-led antenatal care."},
-          {t:"Pre-conception", html:"Women with chronic HTN/CKD/diabetes \u2014 medication review + aspirin plan."}
-        ]},
-        {b:"say", html:"High blood pressure in pregnancy needs close monitoring because of a condition called pre-eclampsia. We use blood-pressure tablets that are safe in pregnancy and stop any that aren\u2019t. If you get a bad headache, visual spots, upper tummy pain or sudden swelling, contact maternity straight away."}
-      ]}
+  quickSub:"If you read nothing else, read these six cards. Every threshold is from NICE NG133 unless another source is named.",
+  quick:[
+    {tone:"red", h:"⚠ Symptoms of pre-eclampsia = same-day maternity assessment", html:"Severe headache, visual disturbance (blurring, flashing lights), pain just below the ribs or epigastrium, vomiting, sudden swelling of face, hands or feet — in pregnancy <b>from 20 weeks or after the birth</b> → check BP and urine, then same-day obstetric assessment. BP <b>≥160/110</b> alone is enough. Fitting, reduced consciousness or suspected HELLP → <b>999</b>."},
+    {tone:"red", h:"⚠ Postnatal pre-eclampsia presents to the GP", html:"The midwife has signed off, the woman comes to you with a headache on day 5 or day 12. <b>Measure the BP in every postnatal woman with headache</b>. Pre-eclampsia, eclampsia and HELLP can first appear after birth; Postnatal headache needs a BP check and a same-day assessment if pre-eclampsia is possible."},
+    {tone:"blue", h:"Stop ACE inhibitors and ARBs — ideally before conception", html:"NG133: stop ACEi/ARB, <b>preferably within 2 working days of notification of pregnancy</b>, and offer an alternative; thiazides carry a possible risk of congenital abnormality and neonatal complications. Better still, switch pre-conception: MBRRACE-UK 2025 found that half of the women who died of hypertensive disorders (2021–23) had pre-existing hypertension and were on antihypertensives before pregnancy."},
+    {tone:"amber", h:"Aspirin 75–150 mg from 12 weeks until birth", html:"<b>One high-risk factor</b> (hypertensive disease in a previous pregnancy, CKD, SLE or antiphospholipid syndrome, type 1 or 2 diabetes, chronic hypertension) <b>or more than one moderate factor</b> (first pregnancy, age ≥40, interval &gt;10 years, BMI ≥35 at first visit, family history of pre-eclampsia, multi-fetal pregnancy). It is an unlicensed indication — explain that."},
+    {tone:"blue", h:"Pregnancy drugs: labetalol, then nifedipine, then methyldopa", html:"Offer treatment at <b>sustained BP ≥140/90</b> and aim for <b>≤135/85</b>. Labetalol first (not in asthma), nifedipine if labetalol is unsuitable, methyldopa if both are unsuitable. <b>Methyldopa is stopped within 2 days of birth</b> (NG133; postnatal depression risk)."},
+    {tone:"green", h:"A hypertensive pregnancy is a lifelong risk marker", html:"After birth: <b>enalapril</b> first-line postnatally (nifedipine or amlodipine first-line if of Black African or Caribbean family origin), compatible with breastfeeding. Review at <b>6–8 weeks</b>. Code the diagnosis, tell her about her increased future risk of hypertension and cardiovascular disease, keep checking her BP, and plan aspirin for the next pregnancy."}
   ],
-  foot:"Primary-care recognition and support of hypertensive disorders of pregnancy under obstetric-led care; pre-eclampsia is an emergency. Verify against current NICE NG133 and specialist/obstetric advice."
+  pathwaySub:"Six moves across the reproductive lifetime. The red step is where women come to harm — raised BP or symptoms after 20 weeks or after the birth that are not sent for same-day assessment.",
+  pathway:[
+    {title:"Before conception", html:"Any woman who could become pregnant and is on an <b>ACE inhibitor, ARB or thiazide</b>: discuss the risks, agree a switch plan (or switch now if planning), start folic acid, optimise weight and smoking status. Flag high-risk conditions (CKD, diabetes, SLE/APS, chronic hypertension) for aspirin and early booking."},
+    {title:"Early pregnancy", html:"Stop ACEi/ARB (preferably within 2 working days of notification) and substitute. Check that aspirin has been advised from 12 weeks if she meets NG133 criteria. Chronic hypertension → obstetric-led care with a clinician trained in hypertensive disorders."},
+    {title:"From 20 weeks: recognise", html:"<b>New BP ≥140/90</b>, or proteinuria, or <b>any pre-eclampsia symptom</b> → same-day maternity assessment. <b>BP ≥160/110</b> → same-day, admission likely. Seizure or collapse → 999. Do not treat new gestational hypertension in the surgery and wait.", alert:true},
+    {title:"Treat to target (with obstetrics)", html:"Labetalol → nifedipine → methyldopa, target ≤135/85. PLGF-based testing (NICE HTG630) and ongoing monitoring are done in secondary care; the GP keeps prescriptions aligned and safety-nets."},
+    {title:"After birth", html:"BP checks in the first 2 weeks (midwife/GP per NG133 schedule), switch methyldopa, use breastfeeding-compatible drugs, consider reducing treatment when BP &lt;140/90 and reduce when &lt;130/80. <b>Any postnatal headache → BP.</b>"},
+    {title:"6–8 weeks and for life", html:"Medical review: BP, urine for protein, medication plan. Still on treatment or still proteinuric → specialist route. Then: code it, counsel about cardiovascular risk and recurrence, check BP regularly, plan aspirin for next time."}
+  ],
+  sections:[
+
+    {id:"classify", nav:"Definitions", title:"Classify the hypertensive disorder", sub:"The label drives the pathway. All definitions are from NICE NG133 (terms used in the guideline).",
+     blocks:[
+       {b:"table", head:["Term","NG133 definition","GP implication"], rows:[
+         ["<b>Hypertension</b>","Diastolic BP <b>≥90 mmHg</b> or systolic <b>≥140 mmHg</b>","Repeat the reading with the correct cuff before acting, but do not &lsquo;watch and wait&rsquo; after 20 weeks"],
+         ["<b>Severe hypertension</b>","BP <b>≥160/110 mmHg</b>","Same-day secondary care; NG133 advises admission"],
+         ["<b>Chronic hypertension</b>","Present at booking or <b>before 20 weeks</b>, or already on antihypertensives when referred to maternity services. Primary or secondary","Pre-conception switch; aspirin (a high-risk factor); obstetric-led care; lifelong management under NG136 after the pregnancy"],
+         ["<b>Gestational hypertension</b>","New hypertension <b>after 20 weeks</b> <b>without</b> significant proteinuria","Same-day maternity assessment to exclude pre-eclampsia; follow-up and treatment then led by obstetrics"],
+         ["<b>Pre-eclampsia</b>","New hypertension after 20 weeks <b>with</b> one or more of: proteinuria; maternal organ dysfunction; uteroplacental dysfunction (see below)","Same-day assessment. Can be superimposed on chronic hypertension, and can first present postnatally"],
+         ["<b>Severe pre-eclampsia</b>","Pre-eclampsia with severe hypertension not responding to treatment, or with ongoing/recurring severe headaches, visual scotomata, nausea or vomiting, epigastric pain, oliguria, or progressive deterioration in blood tests (rising creatinine or liver transaminases, falling platelets), or fetal compromise","Emergency obstetric care; 999 if unwell in the community"],
+         ["<b>Eclampsia</b>","A convulsive condition associated with pre-eclampsia","999 — left lateral, protect the airway"],
+         ["<b>HELLP syndrome</b>","Haemolysis, elevated liver enzymes and low platelet count","Often presents as epigastric or RUQ pain and malaise — easily mistaken for gastritis or gallstones"]
+       ]},
+       {b:"dl", rows:[
+         ["Significant proteinuria","Urinary protein:creatinine ratio (<b>uPCR) &gt;30 mg/mmol</b> or albumin:creatinine ratio (<b>ACR) &gt;8 mg/mmol</b>. A dipstick of 1+ or more should be quantified with uPCR or ACR (NG133)"],
+         ["Maternal organ dysfunction","Renal insufficiency (creatinine <b>≥90 µmol/L</b>); liver involvement (ALT or AST <b>&gt;40 IU/L</b>, with or without RUQ or epigastric pain); neurological (eclampsia, altered mental status, blindness, stroke, clonus, severe headaches, persistent visual scotomata); haematological (platelets <b>&lt;150 × 10⁹/L</b>, DIC, haemolysis)"],
+         ["Uteroplacental dysfunction","Fetal growth restriction, abnormal umbilical artery Doppler, or stillbirth"],
+         ["White-coat effect","NG133 recognises white-coat hypertension in pregnancy — but it is diagnosed by the specialist team with ambulatory or home monitoring, not assumed in the surgery"]
+       ]},
+       {b:"why", html:"Proteinuria is not required for pre-eclampsia: NG133 (2019) uses a broader definition in which new hypertension plus <b>any</b> organ or placental involvement counts. A woman with BP 150/95 at 34 weeks, a negative dipstick and a platelet count of 120 has pre-eclampsia. The GP rarely has those bloods on the day, which is why new hypertension after 20 weeks is always a same-day referral rather than a surgery work-up."}
+     ]},
+
+    {id:"redflags", nav:"Same-day / 999", title:"Red flags — same-day maternity assessment or 999", sub:"Applies from 20 weeks of pregnancy and throughout the postnatal period. Local pathways decide whether that is maternity triage, the day assessment unit or the emergency department — know yours before you need it.",
+     blocks:[
+       {b:"warn", html:"<b>Do not send a symptomatic woman home with a repeat BP appointment.</b> Pre-eclampsia can deteriorate within hours. The GP job is to recognise, measure BP and urine if it does not delay transfer, and hand over to the obstetric team the same day."},
+       {b:"cards", items:[
+         {tone:"red", h:"999 — blue-light transfer", html:"Seizure (eclampsia), reduced consciousness, focal neurology or stroke symptoms, severe breathlessness (pulmonary oedema), suspected placental abruption (abdominal pain with bleeding or a hard tender uterus), collapse. Postnatal too.", src:"NICE NG133"},
+         {tone:"red", h:"BP ≥160/110", html:"Severe hypertension on repeat measurement → same-day secondary care; NG133 recommends admission and BP every 15–30 minutes until below 160/110. Arrange immediate transfer, not a letter.", src:"NICE NG133"},
+         {tone:"red", h:"Symptoms of pre-eclampsia", html:"Severe headache (especially not relieved by simple analgesia), visual disturbance (blurring, flashing lights, scotomata), severe pain just below the ribs or epigastric/RUQ pain, vomiting, sudden swelling of face, hands or feet → same-day assessment <b>even if the BP in the surgery is normal</b>.", src:"NICE NG201 · NICE NG133"},
+         {tone:"red", h:"New hypertension ≥140/90 after 20 weeks", html:"Gestational hypertension or pre-eclampsia until proven otherwise → same-day assessment by a healthcare professional trained in the management of hypertensive disorders of pregnancy (bloods, uPCR, fetal assessment, PLGF-based testing).", src:"NICE NG133 · NICE HTG630"},
+         {tone:"amber", h:"Reduced fetal movements", html:"Reduced or changed fetal movements → same-day contact with the maternity unit. Hearing a heartbeat on a handheld Doppler confirms viability only; it does not replace same-day maternity assessment.", src:"NICE NG201 · RCOG GTG57"},
+         {tone:"amber", h:"Proteinuria without hypertension", html:"Dipstick 1+ or more should be quantified (uPCR or ACR) per NG133. After 20 weeks without hypertension or symptoms: consider UTI and discuss with the maternity team per local pathway; a new rise in BP may follow — safety-net and recheck BP.", src:"NICE NG133 (quantification) · local maternity pathway"},
+         {tone:"red", h:"Postnatal red flags", html:"Headache, visual disturbance, epigastric pain, vomiting, breathlessness or BP ≥160/110 in the weeks after birth → same-day obstetric or medical assessment per local pathway. Consider also postdural-puncture headache, migraine, cerebral venous sinus thrombosis, stroke and infection.", src:"NICE NG194 · NICE NG133"}
+       ]},
+       {b:"why", html:"MBRRACE-UK 2025 (deaths 2021–23) found that different care may have made a difference to the outcome for most of the women who died from hypertensive disorders, and that none of them had PLGF testing, even where pre-eclampsia was suspected. The mortality rate from hypertensive disorders was not significantly different from 2018–20 and remained nearly four times its lowest point (2012–14). The recurring failures are unrecognised symptoms, unmeasured BP and delayed escalation — all things that happen at the first point of contact."}
+     ]},
+
+    {id:"aspirin", nav:"Aspirin", title:"Pre-eclampsia risk and aspirin prophylaxis", sub:"Risk assessment is done at booking by the midwife, but GPs see these women first and prescribe the aspirin in many areas.",
+     blocks:[
+       {b:"table", head:["Risk level","NG133 risk factors","Action"], rows:[
+         ["<b>High</b> (any one)","Hypertensive disease during a previous pregnancy · chronic kidney disease · autoimmune disease such as SLE or antiphospholipid syndrome · type 1 or type 2 diabetes · chronic hypertension","Advise <b>aspirin 75–150 mg daily from 12 weeks until the birth</b>"],
+         ["<b>Moderate</b> (more than one)","Nulliparity · age <b>40 or older</b> · pregnancy interval of <b>more than 10 years</b> · BMI <b>35 kg/m² or more</b> at first visit · family history of pre-eclampsia · multi-fetal pregnancy","Advise <b>aspirin 75–150 mg daily from 12 weeks until the birth</b> if more than one moderate factor"],
+         ["One moderate factor only","—","Aspirin not recommended by NG133 on that basis alone; routine antenatal BP and urine surveillance (NG201)"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Practicalities", html:"Unlicensed indication for aspirin — explain and document. Many units use 150 mg; follow the local maternity protocol within the NG133 range. Start at 12 weeks (not later than needed) and continue <b>until the birth</b>; do not stop at 36 weeks unless the obstetric team advises.", src:"NICE NG133"},
+         {tone:"plain", h:"What not to use for prevention", html:"NG133 advises against using nitric oxide donors, progesterone, diuretics or low-molecular-weight heparin to prevent hypertensive disorders, and against recommending magnesium, folic acid, antioxidants (vitamins C and E), fish or algal oils or garlic <em>solely</em> for this purpose.", src:"NICE NG133"},
+         {tone:"plain", h:"Calcium", html:"NG133 makes no recommendation on calcium for pre-eclampsia prevention. WHO recommends calcium supplementation in populations with <b>low dietary calcium intake</b> — relevant mainly outside the UK; discuss with the obstetric team rather than prescribing routinely.", src:"WHO 2018 calcium in pregnancy recommendation"},
+         {tone:"blue", h:"Antenatal surveillance", html:"NG201: measure BP and test urine for proteinuria at every antenatal appointment, and give information about pre-eclampsia symptoms. Make sure women with chronic hypertension are booked early and seen in an obstetric-led clinic.", src:"NICE NG201"}
+       ]},
+       {b:"why", html:"Aspirin works best when started early in pregnancy, which is why NG133 says from 12 weeks. A woman with chronic hypertension, diabetes or CKD who books late, or whose midwife assessment misses a previous hypertensive pregnancy, may never be advised it. A GP who sees her at a pregnancy-confirmation or medication-review appointment can close that gap."}
+     ]},
+
+    {id:"preconception", nav:"Pre-conception", title:"Pre-conception and early pregnancy — switching antihypertensives", sub:"The most GP-owned part of the pathway. Every woman of childbearing potential on an ACE inhibitor, ARB or thiazide needs a plan.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"ACE inhibitors and ARBs", html:"Tell women that there is an <b>increased risk of congenital abnormalities</b> if these are taken during pregnancy and to discuss alternatives if planning pregnancy. If she becomes pregnant on one, <b>stop it, preferably within 2 working days of notification of pregnancy</b>, and offer an alternative. Later-pregnancy exposure is associated with fetal renal damage, oligohydramnios and skull ossification defects.", src:"NICE NG133 · BNF"},
+         {tone:"blue", h:"Thiazide and thiazide-like diuretics", html:"Advise that there <b>may be an increased risk of congenital abnormalities and neonatal complications</b>, and to discuss alternative treatment with the clinician managing her hypertension if planning pregnancy.", src:"NICE NG133"},
+         {tone:"plain", h:"Other antihypertensives", html:"Advise women on other antihypertensives (e.g. calcium-channel blockers, beta-blockers) that the limited evidence has <b>not shown an increased risk of congenital malformation</b>. Review each drug against the BNF pregnancy section.", src:"NICE NG133"},
+         {tone:"blue", h:"Women of childbearing potential starting treatment", html:"NG136 applies to adults with primary hypertension but refers women considering pregnancy, pregnant or breastfeeding to NG133. When starting an ACEi or ARB in a woman who could conceive, document contraception and the pregnancy plan; consider a calcium-channel blocker or labetalol if pregnancy is planned soon.", src:"NICE NG136 · NICE NG133"},
+         {tone:"green", h:"Get her ready for pregnancy", html:"MBRRACE-UK 2025 highlighted pre-pregnancy counselling: explain her risk factors, optimise medications, and support weight loss and smoking cessation. Add folic acid; women with diabetes or on certain other drugs may need the higher dose (per BNF/NG3).", src:"MBRRACE-UK 2025"},
+         {tone:"amber", h:"Chronic hypertension in pregnancy — lifestyle", html:"Offer advice on weight management, exercise, healthy eating and lowering salt intake. Arrange obstetric-led care, and make sure aspirin from 12 weeks has been advised (chronic hypertension is a high-risk factor).", src:"NICE NG133"}
+       ]},
+       {b:"warn", html:"Stopping an ACE inhibitor without replacing it leaves the woman untreated during the weeks when BP may already be high. <b>Switch, do not just stop</b> — and check the BP again within a week or two (or per obstetric advice)."},
+       {b:"why", html:"Half of the women who died from hypertensive disorders in MBRRACE-UK 2021–23 had pre-existing hypertension and were already on antihypertensives before pregnancy. Those women were known to primary care. A pre-conception conversation at the annual hypertension review, and a same-week switch when a positive test is reported, are the GP's highest-yield interventions."}
+     ]},
+
+    {id:"antenatal", nav:"Antenatal treatment", title:"Antenatal thresholds, targets and drug choices", sub:"Management is obstetric-led; the GP needs the thresholds to know when BP is out of range and to prescribe consistently.",
+     blocks:[
+       {b:"table", head:["Situation","Offer treatment when","Target","Monitoring (secondary care, NG133)"], rows:[
+         ["<b>Chronic hypertension</b>","Sustained BP <b>≥140/90</b> (continue existing treatment if safe in pregnancy)","<b>135/85</b>","PLGF-based testing if pre-eclampsia is suspected (20+0 to 36+6 weeks)"],
+         ["<b>Gestational hypertension 140/90–159/109</b>","BP remains above 140/90","<b>≤135/85</b>","Not routinely admitted; BP once or twice a week until ≤135/85; urine protein and bloods; PLGF-based testing"],
+         ["<b>Pre-eclampsia</b>","BP ≥140/90","<b>≤135/85</b>","Admission if clinical concern, BP ≥160/110 or a risk model (fullPIERS or PREP-S) suggests it; frequent BP and bloods"],
+         ["<b>Severe hypertension ≥160/110</b>","All women","<b>≤135/85</b>","Admit; BP every 15–30 minutes until &lt;160/110"]
+       ]},
+       {b:"ladder", steps:[
+         {step:"1st", title:"Labetalol", when:"first-line in pregnancy",
+          html:"Offer <b>labetalol</b> unless contraindicated. <b>Avoid in asthma.</b> <b>Dose per BNF</b> (hypertension in pregnancy) and the obstetric plan. For chronic hypertension NG133 lists labetalol, nifedipine or methyldopa, basing the choice on pre-existing treatment, side-effect profiles, risks (including fetal effects) and her preference."},
+         {step:"2nd", title:"Nifedipine (modified-release)", when:"if labetalol is unsuitable",
+          fromLabel:"asthma, intolerance or not controlled",
+          html:"Consider <b>nifedipine</b> where labetalol is not suitable. Use a modified-release preparation and prescribe by brand; <b>dose per BNF</b> (use in pregnancy is off-label). Headache and flushing are common side effects — do not dismiss a new severe headache as a drug effect without checking BP."},
+         {step:"3rd", title:"Methyldopa", when:"if labetalol and nifedipine unsuitable",
+          fromLabel:"both unsuitable",
+          html:"Consider <b>methyldopa</b>. <b>Dose per BNF.</b> Contraindicated in depression (BNF). <b>Must be stopped within 2 days of the birth</b> and switched (NG133), because of the risk of postnatal depression."},
+         {step:"Never", title:"ACE inhibitors, ARBs, thiazides", when:"not in pregnancy",
+          fromLabel:"do not use", tone:"red",
+          html:"Not used to treat hypertension in pregnancy. Diuretics are also not used to <em>prevent</em> hypertensive disorders (NG133)."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"PLGF-based testing", html:"PLGF-based tests (DELFIA Xpress PLGF 1-2-3, DELFIA Xpress sFlt-1/PLGF 1-2-3 ratio, Elecsys sFlt-1/PLGF ratio, Triage PLGF Test) used with standard clinical assessment help decide on care in suspected preterm pre-eclampsia (20+0 to 36+6 weeks); one test per episode of suspicion. Secondary-care test — the reason same-day referral beats a GP work-up.", src:"NICE HTG630 (formerly DG49, 2022) · NICE NG133"},
+         {tone:"plain", h:"The GP's role while she is under obstetrics", html:"Issue the prescriptions the obstetric team asks for, promptly; do not change antihypertensives without discussing; make sure repeat templates no longer contain the old ACE inhibitor; keep aspirin on repeat until birth; see and measure BP in any woman who attends with symptoms.", src:"NICE NG133"}
+       ]}
+     ]},
+
+    {id:"postnatal", nav:"Postnatal", title:"After the birth — monitoring, tapering and breastfeeding-compatible drugs", sub:"This is when care passes back to the community. Transfer letters vary in quality; read them for the diagnosis, the drug, the target and who is checking the BP.",
+     blocks:[
+       {b:"table", head:["Diagnosis","BP measurement after birth (NG133)","Treatment rules"], rows:[
+         ["<b>Gestational hypertension</b>","Daily for the first 2 days, at least once between day 3 and day 5, and as clinically indicated if treatment is changed","On treatment: continue; <b>consider reducing if BP &lt;140/90</b>; <b>reduce if &lt;130/80</b>. Not on treatment: start if BP <b>≥150/100</b>"],
+         ["<b>Pre-eclampsia</b>","At least 4 times a day while an inpatient. Not treated: at least once between day 3 and day 5. Treated: every 1–2 days for up to 2 weeks after transfer to community care, until off treatment and no hypertension. Ask about severe headache and epigastric pain each time BP is measured","Same as above: continue; consider reducing &lt;140/90; reduce &lt;130/80; start if ≥150/100"],
+         ["<b>Chronic hypertension</b>","Daily for the first 2 days, at least once between day 3 and day 5, and as clinically indicated if treatment is changed","Aim to keep BP <b>below 140/90</b>; continue treatment and review at 2 weeks and 6–8 weeks"]
+       ]},
+       {b:"ladder", steps:[
+         {step:"1st", title:"Enalapril", when:"first-line postnatally, including breastfeeding",
+          html:"NG133: offer <b>enalapril</b>, with monitoring of maternal renal function and serum potassium. Use once-daily medicines where possible. Dose per BNF. Remember the next pregnancy: she needs contraception advice and a plan to switch before conceiving again."},
+         {step:"Alt 1st", title:"Nifedipine or amlodipine", when:"Black African or Caribbean family origin",
+          fromLabel:"by family origin",
+          html:"For women of Black African or Caribbean family origin, consider <b>nifedipine</b>, or <b>amlodipine</b> if she has previously used it to control her BP successfully."},
+         {step:"2nd", title:"Combination", when:"not controlled on one drug",
+          fromLabel:"if BP not controlled",
+          html:"Consider <b>nifedipine (or amlodipine) plus enalapril</b>."},
+         {step:"3rd", title:"Add or swap to atenolol or labetalol", when:"not tolerated or not effective",
+          fromLabel:"if still not controlled",
+          html:"Consider <b>adding atenolol or labetalol</b> to the combination, or swapping one of the medicines already used for atenolol or labetalol."},
+         {step:"Avoid", title:"Diuretics and ARBs while breastfeeding", when:"where possible", tone:"red",
+          fromLabel:"breastfeeding",
+          html:"NG133: where possible, avoid diuretics or angiotensin receptor blockers in women who are breastfeeding or expressing milk. Switch any remaining <b>methyldopa</b> within 2 days of birth."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Breastfeeding reassurance", html:"Tell women that the antihypertensives above pass into breast milk mostly at low levels and are compatible with breastfeeding. Babies of mothers on antihypertensives should have their wellbeing, especially feeding adequacy, assessed at least daily for the first 2 days. Most drug information refers to term babies — seek advice for preterm infants.", src:"NICE NG133"},
+         {tone:"amber", h:"The 2-week review", html:"Women who go home on antihypertensives need a review of that treatment around <b>2 weeks after birth / transfer to community care</b> — often falls to the GP. Taper against the thresholds above; do not leave her on a pregnancy-dose regimen indefinitely.", src:"NICE NG133"}
+       ]},
+       {b:"warn", html:"<b>Postnatal pre-eclampsia is a GP presentation.</b> A woman a week after birth with a headache is often assumed to have tiredness, dehydration, a spinal headache or migraine. <b>Measure the BP and dip the urine every time.</b> BP ≥160/110, or hypertension with any symptom, needs same-day assessment; eclampsia can occur postnatally without a prior diagnosis of pre-eclampsia."}
+     ]},
+
+    {id:"review", nav:"6–8 week review", title:"The 6–8 week review and early follow-up", sub:"NG133 offers a medical review 6–8 weeks after the birth, with the GP or a specialist. NG194 sets out the general postnatal check; this is the hypertension-specific part.",
+     blocks:[
+       {b:"table", head:["What","When","Action threshold"], rows:[
+         ["BP","2 weeks (if on treatment) and <b>6–8 weeks</b>","Still needing antihypertensives at 6–8 weeks after pre-eclampsia <b>or</b> gestational hypertension → <b>specialist assessment of her hypertension</b> (NG133)"],
+         ["Urine for protein","6–8 weeks after pre-eclampsia","Proteinuria (dipstick 1+ or more) → further review with GP or specialist at 3 months to assess kidney function; if kidney function is abnormal then, consider specialist kidney referral (per NICE CKD guideline). No proteinuria and normotensive → reassure: relative risk of end-stage kidney disease is raised but absolute risk is low; no further renal follow-up needed"],
+         ["Medication","6–8 weeks","Stop, reduce or confirm long-term plan; record which drug worked; contraception and the pre-pregnancy switch plan if on an ACE inhibitor"],
+         ["Chronic hypertension","6–8 weeks","Medical review in primary care or with specialist; return to NG136 management and annual review"],
+         ["Diagnosis coding","At the review","Code gestational hypertension or pre-eclampsia (with gestation and severity if known) — it changes aspirin eligibility next time and CVD risk conversations for life"],
+         ["Mental health and debrief","At the review","A traumatic or preterm birth after severe pre-eclampsia is common — ask about mood (NG194), and offer a debrief with the maternity team if wanted"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"If BP is still raised at 6–8 weeks", html:"After gestational hypertension or pre-eclampsia, persistent hypertension may be previously unrecognised chronic hypertension. Consider secondary causes in young women (renal disease, hyperaldosteronism, phaeochromocytoma, coarctation) per NG136 criteria for specialist referral in people under 40.", src:"NICE NG136 · NICE NG133"},
+         {tone:"plain", h:"Chronic hypertension — back to routine care", html:"Return to NG136 targets for her age and continue a pregnancy-compatible regimen if further pregnancies are planned; if an ACE inhibitor is chosen, pair it with contraception advice and a pre-conception switch plan.", src:"NICE NG136 · NICE NG133"}
+       ]}
+     ]},
+
+    {id:"longterm", nav:"Long-term risk", title:"Long-term cardiovascular risk and future pregnancies", sub:"The pregnancy is over, but the risk signal is not. This conversation is part of the 6–8 week review and worth repeating.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Future cardiovascular risk", html:"Tell women who have had a hypertensive disorder of pregnancy that it is associated with an <b>increased risk of hypertension and cardiovascular disease later in life</b>. Discuss how to reduce it: not smoking, healthy weight, physical activity, healthy diet and reducing salt.", src:"NICE NG133"},
+         {tone:"amber", h:"Keep checking BP", html:"NG133 does not set a fixed interval. A practical (non-NICE) approach is to code the diagnosis and offer <b>at least annual BP measurement</b>, with formal CVD risk assessment when she reaches the age range in NICE guidance — recognising that standard risk scores do not include a pregnancy history."},
+         {tone:"blue", h:"Recurrence in a future pregnancy", html:"Recurrence is common: NG133 gives an overall risk of about <b>1 in 5</b> for a hypertensive disorder in a future pregnancy, and a risk of pre-eclampsia of up to about <b>1 in 6</b>, higher when the previous pre-eclampsia led to an early (preterm) birth. NG133 suggests pre-pregnancy counselling after pre-eclampsia or hypertension with birth before 34 weeks. Hypertensive disease in a previous pregnancy is itself a <b>high-risk factor for aspirin</b>.", src:"NICE NG133 (risk of recurrence of hypertensive disorders)"},
+         {tone:"green", h:"Before the next pregnancy", html:"Advise her to reach and keep a healthy BMI before the next pregnancy, to book early, and that she will be advised aspirin 75–150 mg from 12 weeks. NG133: after pre-eclampsia, the likelihood of recurrence increases with an interpregnancy interval of more than 10 years.", src:"NICE NG133"},
+         {tone:"plain", h:"Kidney disease", html:"After pre-eclampsia with no proteinuria and no hypertension at 6–8 weeks, the relative risk of end-stage kidney disease is increased but the absolute risk is low and no further renal follow-up is needed.", src:"NICE NG133"}
+       ]},
+       {b:"why", html:"Most women who have pre-eclampsia are young and see a GP rarely afterwards. The 6–8 week review and the coded diagnosis are what let a future clinician recognise that her BP of 138/88 at 45 is not &lsquo;borderline&rsquo; but part of a pattern. The recurrence figures are approximate NICE estimates — use them to frame the conversation, not to predict for an individual."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral and safety-netting", sub:"Urgency first, then destination, then what to send.",
+     blocks:[
+       {b:"table", head:["Situation","Urgency","Where","Send / say"], rows:[
+         ["Seizure, reduced consciousness, stroke signs, pulmonary oedema, suspected abruption","<b>999</b>","Nearest obstetric unit (or ED postnatally, per ambulance protocol)","Gestation or days postnatal, BP, symptoms, time of onset"],
+         ["BP ≥160/110 in pregnancy or postnatally","<b>Same day, immediate</b>","Maternity triage / obstetric assessment unit (postnatal per local pathway)","Repeated BP readings, urine dip, drugs, symptoms"],
+         ["New BP ≥140/90 after 20 weeks, or any pre-eclampsia symptom","<b>Same day</b>","Maternity triage / day assessment unit","BP readings, urine dip result, symptoms, aspirin status"],
+         ["Reduced or changed fetal movements","<b>Same day</b>","Maternity unit","Advise to call immediately, not to wait until the next day"],
+         ["Chronic hypertension, newly pregnant","<b>Urgent booking</b> (days)","Obstetric-led antenatal clinic via midwife","Drug switched, aspirin advised, baseline renal function"],
+         ["Woman with chronic hypertension/CKD/diabetes planning pregnancy","Routine","Pre-conception review (GP ± obstetric medicine clinic)","Medication plan, HbA1c/renal function as relevant"],
+         ["Still on antihypertensives at 6–8 weeks after pre-eclampsia or gestational hypertension","Routine","Specialist hypertension assessment","BP diary, drug history"],
+         ["Abnormal kidney function at the 3-month review (proteinuria persisted at 6–8 weeks after pre-eclampsia)","Routine — consider","Renal specialist, per NICE CKD guideline","uPCR/ACR, eGFR, BP"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"🔴 Safety-net in pregnancy", html:"“If you get a bad headache that doesn't go with paracetamol, blurred vision or flashing lights, pain under your ribs, vomiting, or sudden swelling of your face, hands or feet — or if the baby moves less — call the maternity unit straight away, day or night. Don't wait for your next appointment.”", src:"NICE NG201 · NICE NG133"},
+         {tone:"red", h:"🔴 Safety-net after the birth", html:"“High blood pressure can still cause problems for several weeks after the baby is born. The same warning signs apply — a bad headache, vision changes, pain under the ribs, vomiting or feeling very unwell — and you should get checked the same day.”", src:"NICE NG194 · NICE NG133"}
+       ]},
+       {b:"say", html:"Your blood pressure is higher than it should be at this stage of pregnancy. Most of the time this is managed well, but occasionally it is the start of a condition called pre-eclampsia, which can affect you and the baby and can change quickly. The midwives and doctors at the hospital can do blood tests and a special test on the placenta today that I can't do here, so I'd like you to go to the maternity unit this afternoon. I'll phone ahead so they're expecting you."}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Where things go wrong in primary care.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Headache after birth treated as migraine or tiredness", html:"No BP measured. Every postnatal headache needs a BP: pre-eclampsia can first present after the birth, and NG194 asks about headache at postnatal contacts.", src:"NICE NG194"},
+         {tone:"red", h:"Epigastric pain treated as reflux", html:"Epigastric or RUQ pain from 20 weeks or postnatally, especially with vomiting, may be HELLP or liver involvement in pre-eclampsia. Measure BP and refer the same day.", src:"NICE NG133"},
+         {tone:"amber", h:"ACE inhibitor still on repeat", html:"Pregnancy confirmed, but the ACEi or ARB stays on the repeat template and is reissued. Stop (preferably within 2 working days of notification), substitute, and remove it from repeats.", src:"NICE NG133"},
+         {tone:"amber", h:"Aspirin never started", html:"High-risk woman (chronic hypertension, diabetes, CKD, previous hypertensive pregnancy) not advised aspirin from 12 weeks because booking was late or history not recorded.", src:"NICE NG133"},
+         {tone:"amber", h:"Methyldopa continued postnatally", html:"Methyldopa should be stopped within 2 days of birth. A woman still taking it at the GP check with low mood needs a switch and a mood assessment.", src:"NICE NG133"},
+         {tone:"plain", h:"Normal surgery BP taken as reassurance", html:"Symptoms of pre-eclampsia need same-day assessment even if the surgery BP is normal. Bloods, PLGF and fetal assessment are secondary-care tests.", src:"NICE NG133 · NICE HTG630"},
+         {tone:"plain", h:"Diuretic or ARB started for postnatal BP in a breastfeeding mother", html:"Avoid where possible; use enalapril, nifedipine or amlodipine, then atenolol or labetalol.", src:"NICE NG133"},
+         {tone:"plain", h:"Diagnosis not coded", html:"Without a code there is no trigger for aspirin in the next pregnancy or for future BP checks.", src:"NICE NG133"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"Day 9 after her first baby, a 31-year-old attends a routine-slot video consultation with a headache for two days that she puts down to lack of sleep. She had &lsquo;borderline&rsquo; BP near term, was not discharged on treatment and is breastfeeding. She asks for something stronger than paracetamol that is safe in breastfeeding."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Converts to face-to-face or arranges an immediate BP check; asks about visual symptoms, epigastric pain, vomiting, swelling and breathlessness; considers the differential (pre-eclampsia, postdural-puncture headache, CVST, migraine); if BP is raised or symptoms are present, arranges same-day assessment and explains why without alarming; does not prescribe and discharge; safety-nets clearly; plans the 6–8 week review and future-risk conversation. <a href='../../cases/hypertension.html'>Open the hypertension casebook chapter →</a>"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every threshold on this page traces to a named source. No clinician review has yet been recorded for this card.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG133 — Hypertension in pregnancy: diagnosis and management</b> (published June 2019, last updated April 2023)<br><a href="https://www.nice.org.uk/guidance/ng133" rel="noopener">nice.org.uk/guidance/ng133</a><span class="rd"> — definitions, aspirin risk factors, ACEi/ARB/thiazide advice, treatment thresholds and targets, labetalol/nifedipine/methyldopa, postnatal monitoring and breastfeeding-compatible drugs, 6–8 week review, recurrence and long-term risk. The 2023 update aligned PLGF recommendations with NICE diagnostics guidance</span></li>'+
+         '<li><b>NICE HTG630 (formerly DG49) — PLGF-based testing to help diagnose suspected preterm pre-eclampsia</b> (July 2022; moved to HealthTech guidance with recommendations unchanged)<br><a href="https://www.nice.org.uk/guidance/htg630" rel="noopener">nice.org.uk/guidance/htg630</a><span class="rd"> — PLGF-based testing with clinical assessment at 20+0 to 36+6 weeks</span></li>'+
+         '<li><b>NICE NG201 — Antenatal care</b> (August 2021)<br><a href="https://www.nice.org.uk/guidance/ng201" rel="noopener">nice.org.uk/guidance/ng201</a><span class="rd"> — BP and urine at every appointment, information about pre-eclampsia symptoms, fetal movements</span></li>'+
+         '<li><b>NICE NG194 — Postnatal care</b> (April 2021)<br><a href="https://www.nice.org.uk/guidance/ng194" rel="noopener">nice.org.uk/guidance/ng194</a><span class="rd"> — postnatal symptom advice, headache differential, the postnatal check; defers to NG133 for hypertension</span></li>'+
+         '<li><b>NICE NG136 — Hypertension in adults: diagnosis and management</b> (2019, updated since)<br><a href="https://www.nice.org.uk/guidance/ng136" rel="noopener">nice.org.uk/guidance/ng136</a><span class="rd"> — diagnosis and long-term management once pregnancy and breastfeeding are over; specialist referral of younger adults</span></li>'+
+         '<li><b>MBRRACE-UK — Saving Lives, Improving Mothers’ Care 2025</b> (deaths 2021–23)<br><a href="https://www.npeu.ox.ac.uk/mbrrace-uk/reports/maternal-reports/maternal-report-2021-2023" rel="noopener">npeu.ox.ac.uk/mbrrace-uk</a><span class="rd"> — hypertensive-disorder deaths, absence of PLGF testing, pre-pregnancy counselling</span></li>'+
+         '<li><b>RCOG Green-top Guideline No. 57 — Reduced fetal movements</b> (2011; check for the current edition)<span class="rd"> — same-day assessment; handheld Doppler confirms viability only; assessment happens in the maternity unit</span></li>'+
+         '<li><b>WHO recommendation on calcium supplementation during pregnancy (2018)</b><span class="rd"> — calcium for populations with low dietary calcium intake</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all doses: labetalol, nifedipine MR, methyldopa, enalapril, amlodipine, aspirin; pregnancy and breastfeeding sections</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Hypertension in pregnancy and the postnatal period for primary care — NICE NG133 (2019, updated 2023), NICE NG201, NICE NG194, NICE HTG630 (formerly DG49), NICE NG136 and MBRRACE-UK 2025. Management is obstetric-led during pregnancy; pre-eclampsia, including postnatal pre-eclampsia, is an emergency. Doses are indicative only — verify against the current BNF and local maternity protocols before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

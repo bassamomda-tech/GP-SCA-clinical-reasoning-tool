@@ -165,7 +165,7 @@ RGPDiagnostic.register('headache', {
       baseline: 2,
       category: 'less-common',
       keyExam: 'Trigger zones in V2/V3 distribution — light touch, shaving, brushing teeth, cold wind. Normal cranial nerve exam between paroxysms (red flag if not).',
-      nextIx: 'MRI head with dedicated trigeminal sequences (NICE NG217) to exclude tumour, vascular loop, MS plaque.',
+      nextIx: 'MRI head with dedicated trigeminal sequences to exclude tumour, vascular loop, MS plaque.',
       patientPhrase: 'A nerve to the face is misfiring — likely a blood vessel pressing on it. Brief stabs of pain rather than constant. Carbamazepine reduces attacks in 90%.',
       guideUrl: 'https://www.nice.org.uk/guidance/cg173', guideLabel: 'NICE CG173',
       caseLink: null,

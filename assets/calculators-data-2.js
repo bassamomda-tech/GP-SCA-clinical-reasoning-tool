@@ -258,7 +258,7 @@
       externalReason: 'QDiabetes uses a multi-variable algorithm (ethnicity, BMI, deprivation, steroids, antipsychotics, etc.). Use the official ClinRisk site.',
       refs:[
         { label:'qdiabetes.org', url:'https://qdiabetes.org/' },
-        { label:'NICE PH38 / NG38 diabetes prevention', url:'https://www.nice.org.uk/guidance/ph38' },
+        { label:'NICE PH38 diabetes prevention', url:'https://www.nice.org.uk/guidance/ph38' },
       ],
     },
 

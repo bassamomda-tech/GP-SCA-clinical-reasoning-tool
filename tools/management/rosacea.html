@@ -4,122 +4,143 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rosacea — Protocol · Reasoning GP</title>
+<meta name="description" content="Rosacea: phenotype-led assessment, skincare and sun protection, first-line topicals, time-limited oral tetracyclines, brimonidine safety, ocular rosacea urgency, and when to refer." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/rosacea.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Rosacea management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🧴",
-  title:"Rosacea",
-  stemTitle:"Rosacea — ongoing management",
-  stemSub:"Primary-care management of rosacea by dominant feature \u2014 trigger avoidance and sun protection for all, topicals for papules/pustules and erythema, oral antibiotics for more severe disease \u2014 with the ocular and rhinophyma referral routes.",
-  guideline:"BNF",
-  foot:"Management pathway for an already-confirmed diagnosis. Not a substitute for clinical judgement, the patient\u2019s individual context, or your local formulary. Verify drugs and doses against the current BNF.",
-  glance:[
-    {lbl:"Treat by", val:"Dominant feature", sub:"erythema / papulopustular / ocular"},
-    {lbl:"All patients", val:"Sun protection", sub:"+ trigger avoidance"},
-    {lbl:"Flushing/erythema", val:"Brimonidine 0.33% gel", sub:"transient effect"},
-    {lbl:"Papulopustular 1st", val:"Ivermectin 10mg/g OD", sub:"or azelaic/metronidazole"},
-    {lbl:"Moderate\u2013severe", val:"Doxycycline 40mg MR OD", sub:"anti-inflammatory dose"},
-    {lbl:"Refer", val:"Ocular / rhinophyma", sub:"resistant"}
+  title:"Rosacea — phenotype-led assessment and ongoing primary-care management",
+  eyebrow:"Protocol · adults · chronic relapsing facial dermatosis",
+  stemTitle:"Rosacea is managed by its dominant features — gentle skincare and sun protection for everyone, then the treatment that matches what you see, with the eyes checked at every review",
+  stemSub:"A chronic, relapsing condition managed according to its <b>dominant phenotype</b>. Advise gentle skincare, moisturising, trigger modification and daily sun protection for everyone. Offer ivermectin, azelaic acid or metronidazole for papulopustular disease; consider a <b>time-limited</b> oral tetracycline for more severe disease, with antibiotic stewardship. Use brimonidine cautiously for persistent erythema, warning about rebound and cardiovascular effects. <b>Ask about the eyes at every review — eye pain, photophobia or visual change needs urgent ophthalmology.</b> Refer persistent or resistant disease, significant ocular disease, rhinophyma, diagnostic uncertainty or substantial psychological impact.",
+  guideline:"BAD rosacea guideline (2021) · PCDS · MHRA Drug Safety Updates (brimonidine) · Greater Manchester formulary · SPCs",
+  reviewed:"25 September 2026",
+  nextReview:"25 September 2027",
+  meta:[
+    {t:"Treat the dominant feature", tone:"ok"},
+    {t:"Eye pain or visual change → urgent ophthalmology", tone:"tw"},
+    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Identify the dominant feature",
-      blocks:[
-        {b:"kv", rows:[
-          ["Subtypes / features","Erythematotelangiectatic (flushing, redness, telangiectasia) \u00b7 papulopustular \u00b7 phymatous (rhinophyma) \u00b7 ocular"],
-          ["Diagnosis","Clinical: central facial involvement, flushing, no comedones (distinguishes from acne)"],
-          ["Ocular","Ask about gritty/dry/red eyes, blepharitis \u2014 often missed"],
-          ["Impact","Psychosocial impact can be significant despite \u2018mild\u2019 appearance"]
-        ]},
-        {b:"why", html:"Rosacea has no cure, so management <strong>targets the dominant feature</strong>: redness/flushing, inflammatory papulopustules, telangiectasia, or eyes \u2014 each responds to different treatments. Distinguishing it from acne (no comedones) and spotting ocular rosacea (commonly overlooked) are the key diagnostic steps."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Triggers, sun protection and skin care",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"☀️ Sun protection", html:"Daily broad-spectrum SPF \u2014 UV is a major trigger and driver."},
-          {t:"🌶️ Identify triggers", html:"Common: sun, heat, spicy food, alcohol, hot drinks, stress, temperature change \u2014 keep a diary."},
-          {t:"🧼 Gentle skin care", html:"Non-soap cleanser, fragrance-free emollients; avoid astringents/abrasives."},
-          {t:"👓 Eye care", html:"Lid hygiene + artificial tears for ocular rosacea/blepharitis."},
-          {t:"💄 Camouflage", html:"Green-tinted make-up can help persistent redness."},
-          {t:"🧠 Reassure", html:"Explain it\u2019s chronic and relapsing but controllable; address psychosocial impact."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 by feature", title:"Match treatment to the feature",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Erythema/flushing", title:"Topical brimonidine (as needed)", when:"persistent redness",
-           html:"<b>Brimonidine 3\u00a0mg/g (0.33%) gel once daily</b> as needed gives transient reduction of redness (lasts ~12\u00a0h; can rebound). Manage flushing by trigger avoidance. Persistent telangiectasia may need laser/IPL (refer)."},
-          {step:"Papulopustular 1", title:"Topical (first-line)", when:"first-line for papules/pustules",
-           fromLabel:"inflammatory lesions",
-           html:"<b>Ivermectin 10\u00a0mg/g (1%) cream once daily</b> first-line; alternatives <b>azelaic acid 15% gel BD</b> or <b>metronidazole 0.75% cream/gel BD</b>. Allow 8\u201312 weeks."},
-          {step:"Papulopustular 2", title:"Oral antibiotic", when:"moderate\u2013severe / resistant",
-           fromLabel:"inadequate topical response",
-           html:"<b>Doxycycline 40\u00a0mg modified-release once daily</b> (anti-inflammatory dose, preferred) \u2014 or doxycycline 100\u00a0mg OD / lymecycline 408\u00a0mg OD \u2014 combined with topical therapy; review and stop when controlled."},
-          {step:"Ocular", title:"Lid hygiene \u00b1 oral antibiotic", when:"ocular rosacea",
-           fromLabel:"eye involvement",
-           html:"Lid hygiene + ocular lubricants; <b>oral doxycycline</b> (40\u00a0mg MR OD or 100\u00a0mg OD) if needed; refer to ophthalmology if not settling or keratitis suspected."}
-        ]},
-        {b:"warn", html:"<b>Topical steroids worsen rosacea</b> (steroid-induced rosacea) \u2014 do not use. Ocular rosacea with eye pain or visual symptoms needs ophthalmology (risk of keratitis)."}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response and maintenance",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Lesion / redness response","After several weeks","Inadequate \u2192 step up; maintain on topical once controlled"],
-          ["Oral antibiotic","Review at ~6\u201312 weeks","Stop when controlled; maintain on topical"],
-          ["Ocular symptoms","Each review","Not settling / eye pain \u2192 ophthalmology"],
-          ["Triggers","Ongoing","Reinforce avoidance and sun protection"]
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"After starting topical", title:"Response review", html:"Assess at several weeks; add oral antibiotic if moderate\u2013severe; reinforce triggers/sun protection."},
-          {n:"2", when:"~6\u201312 weeks (if oral)", title:"Antibiotic review", html:"Stop oral antibiotic when controlled; continue topical maintenance."},
-          {n:"3", when:"Ongoing", title:"Maintenance", html:"Chronic relapsing \u2014 maintain topical + lifestyle; refer for laser/rhinophyma/ocular as needed."}
-        ]}
-      ]},
-    {t:"loop", icon:"🔁", title:"Not responding? Re-check",
-      arrow:"\u2026if rosacea persists",
-      intro:"Confirm the feature, the trial, and exclude steroid use before escalating.",
-      checks:[
-        {b:"1 \u00b7 Right target", html:"Treatment matched to the dominant feature (redness vs papulopustular vs ocular)?"},
-        {b:"2 \u00b7 Steroid?", html:"Topical steroid being used (worsens rosacea)? Stop it."},
-        {b:"3 \u00b7 Adequate trial", html:"Topicals need weeks; oral antibiotic an adequate course?"},
-        {b:"4 \u00b7 Triggers / sun", html:"Sun protection and trigger avoidance in place?"},
-        {b:"5 \u00b7 Refer", html:"Resistant, telangiectasia, rhinophyma, or ocular \u2192 specialist."}
-      ],
-      back:"Feature matched, steroid stopped, adequate trial \u2192 refer (dermatology/ophthalmology)"},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Eye symptoms", html:"\u201cEye pain, light sensitivity or blurred vision \u2014 seek prompt eye assessment (rosacea can affect the cornea).\u201d"},
-          {t:"🚫 Steroid creams", html:"\u201cDon\u2019t use steroid creams on your face for this \u2014 they make rosacea worse.\u201d"},
-          {t:"☀️ Sun & triggers", html:"\u201cDaily sunscreen and avoiding your triggers are as important as the creams.\u201d"},
-          {t:"🫶 Chronic but controllable", html:"\u201cThis comes and goes long-term, but we can keep it well controlled.\u201d"}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
-      arrow:"by feature and severity",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Ophthalmology", html:"Ocular rosacea not responding, or any eye pain/visual symptoms (keratitis risk)."},
-          {t:"Dermatology", html:"Resistant papulopustular disease, or for laser/IPL of persistent erythema/telangiectasia."},
-          {t:"Rhinophyma", html:"Phymatous change \u2192 dermatology/plastic surgery for surgical/laser options."},
-          {t:"Diagnostic doubt", html:"Uncertain diagnosis or atypical features."}
-        ]},
-        {b:"say", html:"Rosacea is a long-term but controllable condition. The biggest wins are daily sunscreen and avoiding your personal triggers, plus a cream for the spots and redness \u2014 and importantly, no steroid creams, as they make it worse."}
-      ]}
-  ]
+  lead:'<div class="mg-layers"><a href="#assess"><b>Assess</b><small>Phenotype · differential</small></a><a href="#everyone"><b>Everyone</b><small>Skin · sun · triggers</small></a><a href="#treat"><b>Treat</b><small>By feature</small></a><a href="#eyes"><b>Eyes</b><small>Every review</small></a><a href="#refer"><b>Refer</b><small>By feature</small></a></div>',
+  quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"Document the dominant phenotype", html:"Persistent centrofacial erythema · transient flushing · telangiectasia · papules and pustules · phymatous change · ocular features · burning, stinging, dryness or oedema. <b>Features coexist</b> — they are not mutually exclusive subtypes. No comedones helps distinguish it from acne."},
+    {tone:"green", h:"Everyone: skin, sun and triggers", html:"Gentle non-soap cleanser, fragrance-free moisturiser, daily broad-spectrum sun protection, and identifying personal triggers (heat, sun, alcohol, spicy food, hot drinks, stress). Green-tinted camouflage can help persistent redness."},
+    {tone:"blue", h:"Papules and pustules: three first-line topicals", html:"Offer <b>ivermectin, azelaic acid or metronidazole</b>, chosen by irritancy, preference, cost and formulary — no single one is universally first. Ivermectin may suit suspected Demodex-associated lesions. Judge after 8–12 weeks; continue as maintenance if effective."},
+    {tone:"amber", h:"Oral antibiotics: time-limited, with stewardship", html:"For more severe disease or an inadequate topical response: an oral tetracycline for about 3 months, then review. <b>Contraindicated in pregnancy; generally avoided under 12.</b> Avoid minocycline unless there is no suitable alternative, and avoid unnecessary continuation."},
+    {tone:"amber", h:"Brimonidine: persistent erythema only, with care", html:"Not for papules, pustules or telangiectasia. Start with a small amount and titrate; warn about <b>rebound or exacerbation (up to 16%)</b>, burning and contact dermatitis. Do not apply to irritated, broken or recently lasered skin — systemic effects (bradycardia, hypotension, dizziness) are possible."},
+    {tone:"red", h:"⚠ The eyes — ask every time", html:"Gritty or dry eyes, blepharitis, recurrent styes, photophobia, pain, blurred or reduced vision, pain on eye movement, sticky discharge, contact-lens use. <b>Eye pain, photophobia, reduced vision, pain on eye movement or suspected keratitis → same-day ophthalmology.</b>"}
+  ],
+  pathwaySub:"Five steps. Match the treatment to what you see.",
+  pathway:[
+    {title:"Document the phenotype and check the differential", html:"Coexisting features; acne, seborrhoeic dermatitis, periorificial dermatitis, contact dermatitis, lupus, dermatomyositis, photodermatosis, steroid-induced rosacea."},
+    {title:"Skincare, sun protection and triggers for everyone", html:"Plus the psychological impact."},
+    {title:"Treat by dominant feature", html:"Topicals for papulopustular disease; time-limited oral tetracycline if more severe; brimonidine cautiously for persistent erythema; propranolol for selected troublesome flushing."},
+    {title:"Ask about the eyes at every review", html:"Lid hygiene, warm compresses, lubricants; urgent ophthalmology for eye pain or visual change.", alert:true},
+    {title:"Review and refer by feature", html:"Topicals at 8–12 weeks; oral antibiotics at 6–12 weeks. Refer resistant disease, telangiectasia or erythema for laser/IPL, rhinophyma, ocular disease, doubt or distress."}
+  ],
+  sections:[
+
+    {id:"assess", nav:"Assess", title:"Step 1 — phenotype and differential",
+     blocks:[
+       {b:"table", head:["Feature","Notes"], rows:[
+         ["<b>Persistent centrofacial erythema</b>","Fixed redness — brimonidine, laser/IPL"],
+         ["<b>Transient flushing</b>","Trigger management; propranolol in selected troublesome cases"],
+         ["<b>Telangiectasia</b>","Does not respond to ivermectin, metronidazole, doxycycline or brimonidine — laser/IPL"],
+         ["<b>Papules and pustules</b>","Topical ivermectin, azelaic acid or metronidazole; oral tetracycline if more severe"],
+         ["<b>Phymatous change</b>","Not reversed by topicals or antibiotics — specialist laser or surgical debulking"],
+         ["<b>Ocular features</b>","Carries corneal risk — not simply another subtype (see Step 4)"],
+         ["<b>Burning, stinging, dryness, oedema</b>","Gentle skincare; choose less irritant topicals"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🔎 Differential diagnosis", html:"Acne vulgaris · seborrhoeic dermatitis · periorificial dermatitis · contact dermatitis · lupus · dermatomyositis · photodermatosis · steroid-induced rosacea. <b>Diagnostic uncertainty or an atypical distribution → dermatology advice.</b>"},
+         {tone:"blue", h:"🧠 Psychological impact", html:"Ask about distress, avoidance, low mood, anxiety, work and social impact, and body-image concerns. Consider psychological support or skin camouflage; BAD recommends psychological support where rosacea is associated with anxiety or depression."}
+       ]}
+     ]},
+
+    {id:"everyone", nav:"Everyone", title:"Step 2 — for everyone",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"☀️ Sun protection", html:"Daily broad-spectrum sunscreen — UV is a major trigger."},
+         {tone:"green", h:"🧼 Gentle skincare", html:"Non-soap cleanser and fragrance-free moisturiser; avoid astringents, abrasives and irritant products."},
+         {tone:"green", h:"🌶️ Triggers", html:"Heat, sun, alcohol, spicy food, hot drinks, stress and temperature change — a diary helps identify personal triggers."},
+         {tone:"amber", h:"🚫 Facial steroids", html:"<b>Avoid routine topical corticosteroids on the face</b> — they can induce or worsen steroid rosacea. If a potent steroid has been used regularly, assess for steroid-induced disease and avoid abrupt unsupervised withdrawal of prolonged potent use; seek dermatology advice if needed."}
+       ]}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Step 3 — treat by the dominant feature",
+     blocks:[
+       {b:"table", head:["Feature","Treatment","Notes"], rows:[
+         ["<b>Papules and pustules — first-line</b>","<b>Ivermectin 10 mg/g cream</b> once daily, or <b>azelaic acid 15% gel</b> twice daily, or <b>metronidazole 0.75% cream or gel</b> twice daily — per the local formulary","Choose by irritancy, preference and cost. Warn about initial irritation, especially azelaic acid. Judge after 8–12 weeks; continue as maintenance if effective. Avoid topical antibiotic monotherapy as a general strategy"],
+         ["<b>Papules and pustules — more severe or inadequate topical response</b>","<b>Doxycycline 40 mg modified-release</b> once daily, <b>doxycycline 100 mg</b> once daily, or <b>lymecycline 408 mg</b> once daily, for an initial course of about 3 months","Review at 6–12 weeks and stop once controlled where possible. Add or continue a topical only if helpful and tolerated. Contraindicated in pregnancy (use specialist or local advice for an alternative); generally avoided under 12. Photosensitivity; take doxycycline with plenty of water and stay upright; separate from antacids, iron, calcium and magnesium. Avoid minocycline unless no suitable alternative"],
+         ["<b>Persistent erythema</b>","<b>Brimonidine 3 mg/g (0.33%) gel</b>: small amount once daily initially, increasing cautiously by response, within the maximum daily amount","Transient benefit. Rebound or exacerbation in up to 16% (MHRA). Burning, contact dermatitis. Not on irritated, broken or recently lasered skin — bradycardia, hypotension, orthostatic hypotension and dizziness reported (MHRA). Stop if redness or burning worsens"],
+         ["<b>Troublesome transient flushing</b>","Trigger management; consider <b>propranolol</b> in carefully selected patients, often specialist- or local-pathway-led","Check asthma or COPD, bradycardia, hypotension and heart block first. Does not treat fixed erythema or telangiectasia"],
+         ["<b>Telangiectasia or persistent erythema not controlled</b>","Laser or IPL","Specialist; availability and commissioning vary locally"],
+         ["<b>Rhinophyma</b>","Laser or surgical debulking","Specialist; not reversed by topicals or antibiotics"]
+       ]}
+     ]},
+
+    {id:"eyes", nav:"Eyes", title:"Step 4 — ocular rosacea",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"👁️ Ask at every review", html:"Gritty or dry eyes · blepharitis and recurrent styes · photophobia · eye pain · blurred or reduced vision · pain on eye movement · sticky discharge · contact-lens use."},
+         {tone:"green", h:"🧽 Treat", html:"Regular lid hygiene, warm compresses and ocular lubricants — preservative-free if used frequently. <b>Do not treat persistent ocular symptoms with facial rosacea therapy alone.</b> An oral tetracycline may help where ocular and skin disease coexist."},
+         {tone:"red", h:"🚨 Same-day or urgent ophthalmology", html:"Eye pain · photophobia · reduced or blurred vision · pain on eye movement · suspected keratitis or corneal involvement. These do not wait for treatment failure."},
+         {tone:"blue", h:"📅 Routine ophthalmology", html:"Persistent troublesome symptoms despite appropriate lid hygiene and lubrication."}
+       ]}
+     ]},
+
+    {id:"troubleshoot", nav:"Not responding?", title:"Not responding? Re-check before escalating",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Right target?", html:"Is the treatment matched to the dominant feature? Telangiectasia and rhinophyma do not respond to topicals or antibiotics."},
+         {tone:"amber", h:"2 · Facial steroid?", html:"Any topical steroid use — assess for steroid-induced disease."},
+         {tone:"amber", h:"3 · Adequate trial?", html:"Topicals 8–12 weeks; oral tetracycline an adequate course."},
+         {tone:"blue", h:"4 · Right diagnosis?", html:"Recheck the differential — periorificial dermatitis, seborrhoeic dermatitis, lupus, contact dermatitis."},
+         {tone:"green", h:"5 · Then refer", html:"Resistant disease, laser/IPL, rhinophyma, ocular disease or distress → specialist."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"When to refer",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Ophthalmology — same day or urgent", html:"Eye pain, photophobia, reduced vision, pain on eye movement, suspected keratitis."},
+         {tone:"blue", h:"Ophthalmology — routine", html:"Persistent ocular symptoms despite lid hygiene and lubrication."},
+         {tone:"blue", h:"Dermatology", html:"Resistant papulopustular disease · laser/IPL for persistent erythema or telangiectasia · severe flushing needing propranolol · diagnostic uncertainty or atypical distribution · substantial psychological impact."},
+         {tone:"blue", h:"Rhinophyma", html:"Dermatology or plastic surgery for laser or surgical debulking."},
+         {tone:"cream", h:"GP management", html:"Phenotype-led treatment, skincare and sun advice, time-limited antibiotics and the eye check at every review belong here. Related pages: <a href='acne.html'>acne</a> · <a href='blepharitis.html'>blepharitis</a> · <a href='seborrhoeic-dermatitis.html'>seborrhoeic dermatitis</a>."}
+       ]},
+       {b:"say", html:"Rosacea is long-term and tends to come and go, but it can be kept well controlled. Daily sunscreen, gentle skincare and working out your triggers matter as much as the creams. We'll match the treatment to what's bothering you most — spots, redness or flushing — and review it after a couple of months. Please don't use steroid creams on your face for this. If your eyes become painful, sensitive to light or your vision blurs, get them checked the same day."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 42-year-old woman has a <b>red face with papules and pustules</b> over the cheeks and nose, worse with wine and hot drinks. She has been using her partner's <b>hydrocortisone cream</b>. Her eyes feel gritty. She is <b>trying to conceive</b> and asks for tablets because the creams \"take too long\"."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Documents the phenotype and differential; addresses the facial steroid; offers a first-line topical and explains the 8–12-week timescale; explains why a tetracycline is not suitable when trying to conceive; checks the eyes, advises lid hygiene and safety-nets for eye pain or visual change; discusses triggers, sunscreen and the emotional impact; and arranges review."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>British Association of Dermatologists — guidelines for the management of people with rosacea 2021</b><br><a href="https://doi.org/10.1111/bjd.20485" rel="noopener">doi.org/10.1111/bjd.20485</a><span class="rd"> — phenotype-led management, first-line topicals, oral tetracyclines, propranolol for flushing, ocular care, laser/IPL and debulking, psychological support</span></li>'+
+         '<li><b>Primary Care Dermatology Society — Rosacea</b><br><a href="https://www.pcds.org.uk" rel="noopener">pcds.org.uk</a><span class="rd"> — primary-care treatment pathway</span></li>'+
+         '<li><b>MHRA Drug Safety Updates — brimonidine gel (Mirvaso)</b><span class="rd"> — exacerbation or rebound in up to 16%; systemic cardiovascular effects</span></li>'+
+         '<li><b>Greater Manchester formulary, BNF and SPCs</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — doses, pregnancy, interactions and cautions</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Rosacea. A chronic, relapsing condition managed by the dominant phenotype. Gentle skincare, moisturising, trigger modification and daily sun protection for everyone. Papulopustular: ivermectin, azelaic acid or metronidazole first-line; a time-limited oral tetracycline (about 3 months, reviewed at 6–12 weeks) for more severe disease, avoiding it in pregnancy. Brimonidine cautiously for persistent erythema — rebound in up to 16% and cardiovascular effects (MHRA). Avoid routine facial steroids. Ask about the eyes at every review: eye pain, photophobia or visual change needs urgent ophthalmology. Refer resistant disease, telangiectasia for laser/IPL, rhinophyma, significant ocular disease, diagnostic uncertainty or substantial psychological impact. Sources: BAD rosacea guideline (2021), PCDS, MHRA, Greater Manchester formulary, SPCs."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

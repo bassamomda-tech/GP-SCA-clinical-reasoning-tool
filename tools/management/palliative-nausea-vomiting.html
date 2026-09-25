@@ -4,110 +4,290 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Palliative Nausea &amp; Vomiting — Protocol · Reasoning GP</title>
+<meta name="description" content="Nausea and vomiting in palliative care in the community: find the reversible cause, choose the antiemetic by mechanism, switch to the subcutaneous route when vomiting, recognise malignant bowel obstruction, and apply the MHRA metoclopramide and domperidone restrictions." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/palliative-nausea-vomiting.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Palliative nausea and vomiting management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
-  icon:"🕊️",
-  title:"Palliative Nausea & Vomiting — Step-by-Step",
-  stemTitle:"Nausea &amp; vomiting in palliative care &mdash; find the cause, pick the antiemetic by mechanism",
-  stemSub:"A practical protocol: treat reversible causes, then choose the antiemetic that matches the likely cause/receptor \u2014 prokinetic for gastric stasis, haloperidol for chemical/metabolic, cyclizine for raised ICP/vestibular, levomepromazine broad-spectrum \u2014 by mouth or syringe pump if unable to swallow. GMEC Palliative Care 2025 / PCF8.",
-  guideline:"GMEC 2025 · PCF8",
-  glance:[
-    {lbl:"Gastric stasis", val:"Metoclopramide 10 mg TDS", sub:"prokinetic; 10mg TDS"},
-    {lbl:"Chemical / drugs", val:"Haloperidol 1.5 mg OD–BD", sub:"1.5mg nocte (D2)"},
-    {lbl:"Raised ICP / vestibular", val:"Cyclizine 50 mg TDS", sub:"50mg TDS (H1)"},
-    {lbl:"Broad / refractory", val:"Levomepromazine 6.25 mg", sub:"6.25mg nocte"},
-    {lbl:"Chemo / radiotherapy", val:"Ondansetron 4–8 mg BD", sub:"5HT3 (constipating)"},
-    {lbl:"Can't swallow", val:"CSCI syringe pump", sub:"convert to SC"}
+  icon:"\u{1F54A}️",
+  title:"Nausea and vomiting in palliative care",
+  eyebrow:"Protocol · community palliative care",
+  stemTitle:"Palliative nausea &amp; vomiting — find the cause, then pick the antiemetic by mechanism",
+  stemSub:"One page for the GP managing nausea and vomiting in someone with advanced illness at home or in a care home. Look for a reversible cause first, choose the antiemetic that matches the likely mechanism, give it regularly and by a route that works (subcutaneous when vomiting), and recognise malignant bowel obstruction early. Doses on this page are those stated in the Scottish Palliative Care Guidelines (2025); everything else is dose per BNF.",
+  guideline:"Scottish Palliative Care Guidelines 2025 · NICE NG31 (2015) · MHRA DSU 2013/2014",
+  meta:[
+    {t:"Scottish Palliative Care Guidelines — Nausea &amp; vomiting (2025)"},
+    {t:"NICE NG31 · Care of dying adults (2015)"},
+    {t:"MHRA DSU · metoclopramide 2013 · domperidone 2014", tone:"tw"},
+    {t:"Doses: Scottish PCG 2025 or BNF"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Assess", title:"Find the likely cause first",
-      blocks:[
-        {b:"p", html:"The antiemetic choice follows the <strong>cause and its receptor pathway</strong> \u2014 so assess before prescribing. Treat reversible causes and review the drug chart."},
-        {b:"table", head:["Likely cause","Clues","Receptor target"], rows:[
-          ["Gastric stasis / functional obstruction","Large-volume vomits, early satiety, hiccups, on opioids","Prokinetic (D2 gut + 5HT4)"],
-          ["Chemical / metabolic","Opioids, hypercalcaemia, uraemia, drugs, infection","Chemoreceptor trigger zone (D2)"],
-          ["Raised ICP / vestibular / movement","Headache, neuro signs, movement-related","Vomiting centre (H1, AChM)"],
-          ["Bowel obstruction","Colic, distension, altered bowel habit","See GI obstruction (specialist)"],
-          ["Chemo / radiotherapy","Recent treatment","5HT3"]
-        ]},
-        {b:"warn", html:"<b>Always treat reversible causes:</b> constipation, hypercalcaemia (check corrected calcium), opioid toxicity/over-rapid titration, drugs, infection, raised ICP, gastritis. Examine the abdomen and do a PR to exclude impaction."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug · core", title:"Supportive measures", blocks:[{b:"tiles", v:"life", items:[{t:"🍽️ Eating environment", html:"Small, frequent meals; avoid strong smells; cool/bland food; calm environment."},{t:"🧊 Comfort", html:"Good mouth care, fresh air, acupressure bands; address anxiety which worsens nausea."},{t:"🔄 Reversible causes", html:"Address constipation, hypercalcaemia, raised ICP, drugs and gastric stasis."}]},{b:"why", html:"Choosing the right antiemetic depends on the cause, and non-drug measures plus correcting reversible causes (constipation, hypercalcaemia) are an integral part of control."}]},
-    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 match the antiemetic", title:"First-line antiemetic by cause",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Gastric stasis", title:"Metoclopramide (prokinetic)", when:"large-volume vomits / opioids",
-           html:"<b>Metoclopramide 10mg TDS</b> (or domperidone 10mg TDS if needs to avoid extrapyramidal effects). Prokinetic \u2014 <b>contraindicated in complete bowel obstruction / colic</b> (stop if it precipitates colic)."},
-          {step:"Chemical/metabolic", title:"Haloperidol", when:"opioids, hypercalcaemia, uraemia, drugs",
-           fromLabel:"CTZ-mediated nausea",
-           html:"<b>Haloperidol 0.5\u20131.5mg nocte</b> (potent D2 antiemetic at low dose). First choice for opioid-induced and metabolic nausea."},
-          {step:"Raised ICP/vestibular", title:"Cyclizine", when:"ICP, motion, mechanical bowel",
-           fromLabel:"vomiting-centre mediated",
-           html:"<b>Cyclizine 50mg TDS</b> (H1/antimuscarinic). Useful in raised ICP (with dexamethasone), vestibular and mechanical obstruction."},
-          {step:"5HT3", title:"Ondansetron", when:"chemo / radiotherapy / post-op",
-           fromLabel:"5HT3-mediated",
-           html:"<b>Ondansetron 4\u20138mg BD</b> \u2014 reserve for chemo/radiotherapy-related; <b>strongly constipating</b>, so co-prescribe laxatives and don't use long-term as a default."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 not settling", title:"Switch, combine, or go broad-spectrum",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"2a", title:"Optimise & give regularly", when:"first move",
-           html:"Ensure the antiemetic is given <b>regularly</b> (not just PRN) and by a route that works (if vomiting, use SC/buccal). Allow 24\u201348h, treat reversible causes."},
-          {step:"2b", title:"Switch to match a re-assessed cause", when:"wrong target",
-           fromLabel:"no response",
-           html:"Re-evaluate the cause and switch class (e.g. metoclopramide \u2192 haloperidol)."},
-          {step:"2c", title:"Levomepromazine (broad-spectrum)", when:"refractory / multiple causes",
-           fromLabel:"failed single agents",
-           html:"<b>Levomepromazine 6.25mg nocte</b> (broad-spectrum; sedating). Effective when the cause is unclear or multifactorial."},
-          {step:"2d", title:"Add dexamethasone", when:"adjunct",
-           fromLabel:"raised ICP / obstruction / adjunct",
-           html:"<b><span class='rx'>Dexamethasone 4\u20138 mg daily</span></b> (up to 16 mg daily in raised ICP) as an adjuvant antiemetic (esp. raised ICP, bowel obstruction, or chemo) \u2014 see Corticosteroids protocol."}
-        ]},
-        {b:"warn", html:"<b>Don't combine two D2 antagonists</b> (e.g. metoclopramide + haloperidol + levomepromazine) \u2014 extrapyramidal risk. Switch rather than stack within the same class."}
-      ]},
-    {t:"node", d:"drug", n:"5", tag:"Step 3 \u00b7 unable to swallow", title:"Convert to subcutaneous / syringe pump",
-      blocks:[
-        {b:"table", head:["Antiemetic","SC / CSCI dose (24h)"], rows:[
-          ["Metoclopramide","30\u201360mg/24h CSCI (not in complete obstruction)"],
-          ["Haloperidol","1.5\u20135mg/24h CSCI (+ 0.5\u20131.5mg SC PRN)"],
-          ["Cyclizine","100\u2013150mg/24h CSCI (+ 50mg SC PRN; may precipitate with other drugs)"],
-          ["Levomepromazine","5\u201325mg/24h CSCI (+ 5mg SC PRN)"]
-        ]},
-        {b:"warn", html:"If persistent/high-volume vomiting or bowel obstruction \u2192 <b>seek specialist palliative care advice</b> (may need a CSCI combination, hyoscine butylbromide for colic, or octreotide)."}
-      ]},
-    {t:"node", d:"monitor", n:"6", tag:"Review", title:"Review & safety-net",
-      blocks:[
-        {b:"kv", rows:[
-          ["Review","Reassess at 24\u201348h: vomiting frequency, oral intake, hydration; titrate or switch."],
-          ["Hydration","Assess for dehydration; consider SC fluids if symptomatic and appropriate."],
-          ["Don't forget","Constipation and hypercalcaemia are the commonest reversible drivers \u2014 re-check both if not settling."]
-        ]}
-      ]},
-    {t:"node", d:"safety", n:"7", tag:"Safety-net · anticipatory", title:"When to escalate", blocks:[{b:"tiles", v:"safety", items:[{t:"🔴 Obstruction", html:"Large-volume vomiting, colic, distension → suspect obstruction → urgent review."},{t:"📞 Refractory", html:"Uncontrolled despite a cause-directed antiemetic → palliative team; consider CSCI/combination."},{t:"💧 Dehydration", html:"Unable to keep fluids down → assess hydration in line with goals of care."}]}]},
-    {t:"node", d:"refer", n:"8", tag:"Refer / advice", title:"When to seek specialist advice",
-      arrow:"refractory or obstructive",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Specialist palliative care", html:"Refractory nausea/vomiting despite cause-matched + broad-spectrum antiemetics, or complex CSCI combinations."},
-          {t:"Bowel obstruction", html:"Suspected malignant bowel obstruction \u2014 specialist management (antisecretory, hyoscine butylbromide, octreotide; surgical opinion if appropriate)."},
-          {t:"Reversible cause", html:"Hypercalcaemia \u2192 see hypercalcaemia pathway; raised ICP \u2192 dexamethasone + imaging."}
-        ]},
-        {b:"say", html:"Sickness in this situation usually has a specific cause, so we choose the anti-sickness medicine that targets it \u2014 and if you can't keep tablets down we'll give it under the skin instead. We'll also check simple things like constipation or calcium levels that can make it worse."}
-      ]}
-  ]
+  lead:'<div class="mg-layers"><a href="#cause"><b>Find the cause</b><small>Reversible first</small></a><a href="#mechanism"><b>Match the drug</b><small>Mechanism → antiemetic</small></a><a href="#route"><b>Route</b><small>SC / syringe pump</small></a><a href="#mbo"><b>Bowel obstruction</b><small>Red flags · refer</small></a></div>',
+  glance:[
+    {lbl:"Gastric stasis", val:"Prokinetic", sub:"metoclopramide — not in complete obstruction or colic"},
+    {lbl:"Chemical / metabolic / drugs", val:"Haloperidol", sub:"D2 at the chemoreceptor trigger zone"},
+    {lbl:"Raised ICP / vestibular / movement", val:"Cyclizine", sub:"H1 + antimuscarinic, vomiting centre"},
+    {lbl:"Mixed / unclear / refractory", val:"Levomepromazine", sub:"broad-spectrum, sedating"},
+    {lbl:"Anxiety / anticipatory", val:"Address the fear", sub:"explanation ± anxiolytic"},
+    {lbl:"Vomiting or can't swallow", val:"Subcutaneous", sub:"PRN SC or syringe pump (CSCI)"}
+  ],
+  quickSub:"If you read nothing else on this page, read these five cards.",
+  quick:[
+    {tone:"red", h:"⚠ Think bowel obstruction", html:"Colicky pain, distension, large-volume or faeculent vomiting, and absent or reduced flatus and stool in someone with abdominal or pelvic cancer → <b>suspect malignant bowel obstruction</b>. <b>Stop the prokinetic</b> (metoclopramide) if there is colic or complete obstruction, and <b>stop stimulant laxatives</b>. Discuss the same day with specialist palliative care and, if the person is fit and wishes it, the surgical team."},
+    {tone:"amber", h:"Treat the cause before the symptom", html:"Look for <b>constipation</b> (examine; PR if appropriate), <b>hypercalcaemia</b> (corrected calcium), <b>new or increased opioid</b>, other drugs, infection, <b>renal failure</b>, raised intracranial pressure and gastritis. The antiemetic is chosen for the cause — so the assessment <em>is</em> the prescription."},
+    {tone:"blue", h:"Match the drug to the mechanism", html:"Gastric stasis → <b>metoclopramide</b>. Chemical / metabolic / drug-induced → <b>haloperidol</b>. Raised ICP, vestibular, movement-related → <b>cyclizine</b>. Mixed, unclear or not settling → <b>levomepromazine</b>. Give it <b>regularly</b>, not just PRN."},
+    {tone:"purple", h:"Vomiting? The tablet isn't getting in", html:"If the person is vomiting or can't swallow, switch to <b>subcutaneous</b> PRN doses and, if they need more than 2 or 3 PRN doses in 24 hours, a <b>continuous subcutaneous infusion (syringe pump)</b> (NICE NG31). Leave <b>anticipatory</b> antiemetic prescriptions in the home."},
+    {tone:"plain", h:"Know the MHRA limits — and the exceptions", html:"Metoclopramide: <b>short-term, lowest dose</b> because of extrapyramidal effects and tardive dyskinesia (MHRA 2013). Domperidone: <b>cardiac risk</b>, lowest dose, shortest time (MHRA 2014). Palliative use often exceeds these — do it deliberately, document why, and monitor. <b>Parkinson's disease: seek specialist advice before any dopamine antagonist.</b>"}
+  ],
+  pathwaySub:"The consultation in six moves. The red step is the one that changes the whole plan.",
+  pathway:[
+    {title:"Characterise the symptom", html:"Nausea or vomiting or both? Pattern (constant vs intermittent), volume and content of vomits, relation to food, movement, opioids or position. Early satiety, fullness and relief after large vomits point to gastric stasis; constant nausea with little vomiting points to a chemical cause."},
+    {title:"Screen for obstruction and emergencies", html:"Colic, distension, faeculent vomiting, no flatus → malignant bowel obstruction. Headache worse in the morning with neurological signs → raised ICP. Confusion, thirst, polyuria, constipation → hypercalcaemia. These change the drug and the setting of care.", alert:true},
+    {title:"Look for reversible causes", html:"Examine the abdomen and mouth (candida), check the drug chart (new opioid, antibiotics, SSRIs, NSAIDs, iron, digoxin), consider bloods if they would change management: U&amp;E, corrected calcium, LFTs, glucose, CRP."},
+    {title:"Choose by mechanism", html:"Pick one antiemetic that fits the likely cause. Prescribe it regularly plus a PRN dose, by a route that works. Add non-drug measures."},
+    {title:"Review in 24–48 hours", html:"Not better? Check it was taken and absorbed, re-assess the cause, then switch class or move to a broad-spectrum agent. Avoid stacking drugs that cancel or duplicate each other."},
+    {title:"Plan ahead", html:"Anticipatory SC antiemetic in the home, syringe pump if needed, hydration discussed against goals of care, specialist palliative care for anything refractory or obstructive. In the last days follow <a href='care-of-the-dying.html'>care of the dying</a>."}
+  ],
+  sections:[
+
+    {id:"cause", nav:"Find the cause", title:"Assessment — find the likely cause first", sub:"The antiemetic follows the cause and its receptor pathway. Assess before prescribing, and always treat what is reversible.",
+     blocks:[
+       {b:"table", head:["Likely cause","Clues","Pathway / receptor","Usual first choice"], rows:[
+         ["<b>Gastric stasis / functional outflow problem</b>","Early satiety, fullness, epigastric discomfort, hiccups, large-volume vomits that relieve nausea; opioids, ascites, hepatomegaly, autonomic neuropathy","Gut — dopamine (D2) and 5HT4","Prokinetic: metoclopramide (not if complete obstruction or colic)"],
+         ["<b>Chemical / metabolic / drug-induced</b>","Constant nausea, little relief from vomiting; opioids, hypercalcaemia, uraemia, liver failure, sepsis, other drugs","Chemoreceptor trigger zone — D2","Haloperidol"],
+         ["<b>Raised intracranial pressure</b>","Headache (often morning), vomiting without much nausea, focal neurology, known brain tumour or metastases","Vomiting centre — H1, muscarinic","Cyclizine; dexamethasone is often used alongside on specialist advice"],
+         ["<b>Vestibular / movement-related</b>","Worse on moving or turning the head, vertigo, skull-base disease, opioid-related movement sickness","Vestibular — H1, muscarinic","Cyclizine"],
+         ["<b>Bowel obstruction</b>","Colic, distension, altered bowel habit, faeculent vomits, abdominal or pelvic tumour","Mechanical / vagal afferents","See the bowel obstruction section — specialist input"],
+         ["<b>Chemotherapy / radiotherapy</b>","Recent or ongoing oncology treatment","5HT3 (gut and CTZ)","Follow the oncology team's regimen; 5HT3 antagonist (e.g. ondansetron) usually belongs here"],
+         ["<b>Anxiety / anticipatory</b>","Nausea before appointments or treatment, fear, panic","Cortical","Explanation, reassurance; anxiolytic if needed"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Reversible causes to look for every time", html:"<b>Constipation</b> (the commonest and most missed), <b>hypercalcaemia</b>, <b>opioid initiation or dose increase</b>, other <b>drugs</b>, <b>infection</b> (including urinary and oral candida), <b>raised intracranial pressure</b>, <b>renal failure</b> (uraemia and accumulation of drugs), gastritis or peptic ulcer, and severe cough. Treat what can be treated.", src:"Scottish PCG 2025 nausea &amp; vomiting"},
+         {tone:"plain", h:"Examination that changes the plan", html:"Abdomen for distension, masses, tenderness, bowel sounds and hepatomegaly; rectal examination where faecal loading is suspected and it is acceptable to the person; mouth for candida and ulcers; hydration; neurological signs; the drug chart and any recent changes."},
+         {tone:"blue", h:"Bloods — only if they change management", html:"U&amp;E and creatinine, <b>corrected calcium</b>, LFTs, glucose and CRP when you would act on the result. In the last days of life, avoid investigations that are unlikely to affect care unless there is a clinical need.", src:"NICE NG31"},
+         {tone:"plain", h:"Assess in the dying person too", html:"In the last days of life, still assess for the likely causes of nausea and vomiting, including medicines that may be contributing, and discuss the options with the person and those important to them.", src:"NICE NG31"}
+       ]},
+       {b:"why", html:"Most palliative nausea is multifactorial, but naming the dominant mechanism gets the right drug first time in most patients. Constipation and new opioids are the two most common drivers in community practice, and both are quick to check and treat."}
+     ]},
+
+    {id:"reversible", nav:"Reversible causes", title:"Reversible causes — what to do about each", sub:"Correcting the cause often works better than any antiemetic.",
+     blocks:[
+       {b:"table", head:["Cause","What to check","Action"], rows:[
+         ["<b>Constipation</b>","Bowel history, abdominal examination, PR if appropriate","Treat constipation actively; review opioid laxative co-prescription. See <a href='palliative-constipation.html'>palliative constipation</a>"],
+         ["<b>Hypercalcaemia</b>","Corrected calcium; thirst, polyuria, confusion, drowsiness, constipation","Usually needs hospital or hospice admission for IV fluids and a bisphosphonate if in keeping with goals of care; haloperidol for the nausea meanwhile"],
+         ["<b>Opioid started or increased</b>","Timing; opioid nausea often settles within about a week","Regular haloperidol for the first days; if persistent consider the dose or an opioid switch with specialist advice. See <a href='palliative-pain.html'>palliative pain</a>"],
+         ["<b>Other drugs</b>","Antibiotics, SSRIs, NSAIDs, iron, digoxin, carbamazepine, chemotherapy","Stop, reduce or switch if possible; check digoxin level if toxicity is possible"],
+         ["<b>Infection</b>","Urine, chest, oral candida","Treat if in keeping with goals of care"],
+         ["<b>Raised intracranial pressure</b>","Known brain tumour or metastases, headache, neurology","Cyclizine; dexamethasone and imaging or oncology discussion as appropriate. See <a href='palliative-corticosteroids.html'>corticosteroids</a>"],
+         ["<b>Renal failure / uraemia</b>","U&amp;E, drug accumulation","Lower antiemetic doses; review renally cleared drugs (including opioids)"],
+         ["<b>Gastritis / peptic ulcer</b>","NSAIDs, steroids, dyspepsia","PPI; review NSAID and steroid"],
+         ["<b>Anxiety</b>","Anticipatory pattern, fear of what's happening","Explain, explore fears; consider an anxiolytic. See <a href='palliative-anxiety-depression.html'>anxiety &amp; depression</a>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Hypercalcaemia is easily missed", html:"Nausea, constipation, confusion and drowsiness are easily attributed to “the cancer” or opioids. Check a corrected calcium when these cluster, particularly with myeloma, breast, lung or renal cancer or bone metastases, and discuss admission if treatment is appropriate."},
+         {tone:"amber", h:"Drugs can cause and complicate it", html:"Review every medicine. Certain drugs worsen other conditions: for example <b>cyclizine may exacerbate heart failure</b>, which matters when choosing an antiemetic for someone with cardiac disease.", src:"NICE NG31"}
+       ]}
+     ]},
+
+    {id:"nondrug", nav:"Non-drug", title:"Non-drug measures", sub:"An integral part of control, not an afterthought.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"\u{1F37D}️ Eating environment", html:"Small, frequent meals; avoid strong cooking smells; cool, bland food; a calm environment. Don't pressure the person to eat."},
+         {t:"\u{1F9CA} Comfort", html:"Good mouth care, fresh air, sips of cold drinks, ice chips; acupressure wrist bands if the person finds them helpful."},
+         {t:"\u{1F9E0} Anxiety", html:"Explain what is causing the sickness and what the plan is. Anxiety worsens nausea and is worth addressing directly."},
+         {t:"\u{1F6BD} Practical", html:"A bowl and tissues within reach, protect bedding, help with positioning in the drowsy patient to reduce aspiration risk."},
+         {t:"\u{1F4CB} Carers need a plan", html:"Tell carers what to do if vomiting starts: which PRN medicine, who to ring in and out of hours, and when to call urgently. Check the anticipatory medicines and the authorisation chart are in the home."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Discuss and consider non-drug methods", html:"Discuss the options for treating nausea and vomiting with the dying person and those important to them, and consider non-pharmacological methods alongside medicines.", src:"NICE NG31"},
+       ]}
+     ]},
+
+    {id:"mechanism", nav:"Match the drug", title:"First-line antiemetic by mechanism", sub:"One drug that fits the cause, given regularly with a PRN dose. Doses are those stated by the Scottish Palliative Care Guidelines (2025); verify against the current BNF.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Gastric stasis", title:"Metoclopramide (prokinetic)", when:"fullness, early satiety, large-volume vomits, opioids",
+          html:"<b>Metoclopramide 10 mg orally up to four times a day</b>, or <b>30–60 mg over 24 hours by subcutaneous infusion</b> (unlicensed route, dose and duration) (Scottish PCG 2025). In renal or hepatic failure start at <b>5 mg up to three times a day</b>. <b>Contraindicated in complete bowel obstruction</b>; stop if it causes colic. Do not combine with an anticholinergic such as cyclizine, which blocks the prokinetic effect. Domperidone <b>10 mg orally up to three times a day</b> is the alternative in Parkinson’s disease or other akinetic-rigid disorders, or where the risk of extrapyramidal effects or tardive dyskinesia is high, within the MHRA restrictions (Scottish PCG 2025)."},
+         {step:"Chemical / metabolic", title:"Haloperidol", when:"opioids, hypercalcaemia, uraemia, drugs, sepsis",
+          fromLabel:"CTZ-mediated nausea",
+          html:"<b>Haloperidol 500 micrograms orally at night or twice daily</b>, or <b>500 micrograms–1 mg subcutaneously daily</b>, or <b>1 mg over 24 hours by subcutaneous infusion</b>, titrated to effect; lower doses in renal failure and in older or frail people (Scottish PCG 2025). Potent D2 antagonist at low dose. <b>Avoid in Parkinson's disease</b> and Parkinson-plus syndromes."},
+         {step:"Raised ICP / vestibular", title:"Cyclizine", when:"raised ICP, motion-related, vestibular; mechanical causes",
+          fromLabel:"vomiting-centre mediated",
+          html:"<b>Cyclizine 25–50 mg orally or subcutaneously three times a day</b>, or <b>50–150 mg over 24 hours by subcutaneous infusion</b> (Scottish PCG 2025; SC route unlicensed). Antihistamine and antimuscarinic: dry mouth, drowsiness, may worsen heart failure. Can precipitate in syringe pumps with some drugs — check compatibility."},
+         {step:"Mixed / refractory", title:"Levomepromazine (broad-spectrum)", when:"cause unclear, multiple causes, or first-line failed",
+          fromLabel:"broad-spectrum",
+          html:"<b>Levomepromazine 2.5–6.25 mg orally at night or twice daily</b>; <b>2.5 mg SC 12-hourly as needed</b> (more often initially, e.g. 3-hourly, to gain control); or <b>5–10 mg over 24 hours by subcutaneous infusion</b> (Scottish PCG 2025). Sedating and can cause postural hypotension — warn the person and carers."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Chemotherapy and radiotherapy", html:"Nausea linked to current oncology treatment should follow the oncology team's regimen; contact the acute oncology service if it is uncontrolled. 5HT3 antagonists such as ondansetron are <b>constipating</b> — co-prescribe a laxative and do not use as a default long-term palliative antiemetic. Dose per local palliative formulary / BNF."},
+         {tone:"blue", h:"Dexamethasone as an adjunct", html:"Corticosteroids are used for raised intracranial pressure and as adjuvant antiemetics, including in bowel obstruction, usually with specialist advice. Dose per BNF or specialist; give in the morning, review the need regularly and monitor glucose. See <a href='palliative-corticosteroids.html'>palliative corticosteroids</a>."},
+         {tone:"amber", h:"Don't combine prokinetic and anticholinergic", html:"Avoid prescribing a prokinetic (metoclopramide) with an anticholinergic (cyclizine, hyoscine) at the same time — the anticholinergic cancels the prokinetic effect.", src:"Scottish PCG 2025 nausea &amp; vomiting"},
+         {tone:"amber", h:"Don't stack dopamine antagonists", html:"Metoclopramide, haloperidol, levomepromazine and prochlorperazine all block D2. Combining them multiplies extrapyramidal and sedative effects — <b>switch within the class rather than add</b>, and involve specialists for combinations."}
+       ]},
+       {b:"why", html:"Each antiemetic acts at a different site: prokinetics on the gut, haloperidol on the chemoreceptor trigger zone, cyclizine on the vomiting centre and vestibular apparatus. A drug aimed at the wrong site simply doesn't work — which is why a cyclizine prescription for opioid nausea, or a haloperidol prescription for gastric stasis, often fails."}
+     ]},
+
+    {id:"notsettling", nav:"Not settling", title:"Not settling — switch, combine or go broad", sub:"Reassess at 24–48 hours. The fault is usually the route, the regularity or the diagnosis, not the dose.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"2a", title:"Is it being taken and absorbed?", when:"first check",
+          html:"Is the antiemetic given <b>regularly</b> rather than PRN only? Is the person vomiting it back? If so, switch to the <b>subcutaneous</b> route. Allow 24–48 hours on an adequate dose and keep treating reversible causes."},
+         {step:"2b", title:"Re-assess the cause and switch class", when:"wrong target",
+          fromLabel:"no response",
+          html:"Re-take the history: has obstruction developed? has calcium risen? a new drug? Switch to the drug that fits the revised mechanism, e.g. metoclopramide → haloperidol."},
+         {step:"2c", title:"Combine two drugs with different actions", when:"partial response",
+          fromLabel:"first-line partly effective",
+          html:"If first-line treatment is only partly effective, a combination of antiemetics with <b>different</b> mechanisms may be appropriate (e.g. haloperidol with cyclizine) — never prokinetic with anticholinergic, and not two D2 antagonists."},
+         {step:"2d", title:"Levomepromazine", when:"refractory or multifactorial",
+          fromLabel:"failed single agents",
+          html:"Replace, rather than add to, other D2 antagonists. Broad-spectrum; sedating at higher doses."},
+         {step:"2e", title:"Specialist palliative care", when:"still uncontrolled",
+          fromLabel:"escalate",
+          html:"Refractory symptoms, complex syringe pump combinations, suspected obstruction, or Parkinson's disease → phone the community specialist palliative care team or hospice advice line.", warn:"Don't keep adding drugs at home without a named plan."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Combinations are legitimate when partial", html:"If first-line treatment is only partly effective, a combination of antiemetics may be appropriate — choose drugs with different receptor actions and review the whole regimen.", src:"Scottish PCG 2025 nausea &amp; vomiting"},
+         {tone:"plain", h:"Hydration", html:"Assess hydration. Discuss the risks and benefits of clinically assisted hydration with the person and those important to them in the context of their goals of care; subcutaneous fluids are an option in some community settings.", src:"NICE NG31"}
+       ]}
+     ]},
+
+    {id:"route", nav:"Route", title:"Route — subcutaneous and syringe pump", sub:"When someone is vomiting, oral antiemetics are unreliable. Move to subcutaneous early rather than late.",
+     blocks:[
+       {b:"table", head:["Antiemetic","Oral","SC PRN / regular","CSCI over 24 h"], rows:[
+         ["<b>Metoclopramide</b>","10 mg up to four times a day (5 mg up to three times a day in renal or hepatic failure)","Dose per local palliative formulary / BNF","30–60 mg (unlicensed; not in complete obstruction or colic)"],
+         ["<b>Haloperidol</b>","500 micrograms at night or twice daily","500 micrograms–1 mg daily","1 mg, titrated to effect"],
+         ["<b>Cyclizine</b>","25–50 mg three times a day","25–50 mg three times a day (unlicensed route)","50–150 mg (unlicensed route); check compatibility"],
+         ["<b>Levomepromazine</b>","2.5–6.25 mg at night or twice daily","2.5 mg 12-hourly as needed (more often initially)","5–10 mg"]
+       ]},
+       {b:"p", html:"All doses in the table are from the Scottish Palliative Care Guidelines nausea and vomiting guideline (2025); lower doses in older, frail and renally impaired people. Check syringe pump compatibility (e.g. cyclizine with other drugs) with the local pharmacy or palliative team, and verify against the current BNF."},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Anticipatory prescribing", html:"When someone is likely to need them, prescribe anticipatory medicines — including an antiemetic — with the route, dose and indications clearly stated, so community nurses can give them without delay out of hours.", src:"NICE NG31"},
+         {tone:"blue", h:"When to start a syringe pump", html:"Consider a syringe pump for continuous symptom control if more than 2 or 3 doses of any PRN medicine have been given within 24 hours; it also makes sense when the person can't swallow or keeps vomiting oral medication. Reassess at least every 24 hours and update the care plan.", src:"NICE NG31"}
+       ]},
+       {b:"warn", html:"Buccal or rectal options exist but absorption is unreliable in vomiting patients. If in doubt, give it SC."}
+     ]},
+
+    {id:"mhra", nav:"MHRA safety", title:"MHRA safety advice the GP must know", sub:"Two Drug Safety Updates shape antiemetic prescribing. Palliative practice sometimes goes beyond them — that must be a deliberate, documented decision.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Metoclopramide — neurological effects (MHRA DSU 2013)", html:"Risk of acute <b>extrapyramidal reactions</b> and irreversible <b>tardive dyskinesia</b>, higher with high doses and long-term use. The MHRA restricted use to <b>short-term (up to 5 days)</b>: adults 10 mg up to three times a day, <b>maximum 30 mg (0.5 mg/kg) in 24 hours</b>. Oral 10 mg four times a day in palliative care already exceeds this. Palliative use for gastric stasis is often longer and at higher CSCI doses (e.g. 30–60 mg/24 h): this is outside the licence — document the indication, review regularly and stop if extrapyramidal symptoms appear.", src:"MHRA DSU Aug 2013 metoclopramide"},
+         {tone:"red", h:"Domperidone — cardiac risk (MHRA DSU 2014)", html:"Small increased risk of <b>QT prolongation, serious ventricular arrhythmia and sudden cardiac death</b>, higher in people over 60, at daily doses above 30 mg, and with QT-prolonging drugs or CYP3A4 inhibitors. Restricted to nausea and vomiting at the <b>lowest dose for the shortest time</b> (adults: 10 mg up to three times daily, maximum 30 mg/day, normally no more than one week). Contraindicated with cardiac conduction problems or significant cardiac disease and severe hepatic impairment.", src:"MHRA DSU May 2014 domperidone"},
+         {tone:"amber", h:"Prokinetic beyond a week needs monitoring", html:"Treatment with metoclopramide or domperidone for longer than one week needs closer monitoring because of the cardiac risks.", src:"Scottish PCG 2025 nausea &amp; vomiting"},
+         {tone:"amber", h:"QT and the palliative drug chart", html:"Haloperidol, levomepromazine, ondansetron and domperidone can all prolong the QT interval, as can many other drugs in advanced illness. Consider cumulative risk, electrolytes (potassium, magnesium) and cardiac history — while keeping comfort the priority near the end of life."}
+       ]}
+     ]},
+
+    {id:"groups", nav:"Special groups", title:"Special groups", sub:"Where the usual choices can do harm.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Parkinson's disease and Parkinson-plus", html:"Dopamine antagonists that cross the blood–brain barrier (metoclopramide, haloperidol, levomepromazine, prochlorperazine) can severely worsen parkinsonism. The antiemetic guideline should not be used for people with Parkinson's disease, Parkinson-plus syndromes or myasthenia gravis <b>without specialist palliative care advice</b>. Domperidone (which acts peripherally) is often the choice, within the MHRA cardiac restrictions; never stop Parkinson's medicines abruptly.", src:"Scottish PCG 2025 nausea &amp; vomiting"},
+         {tone:"amber", h:"Renal failure", html:"Uraemia causes nausea, and many drugs accumulate. Use lower doses of metoclopramide (start 5 mg up to three times a day) and haloperidol, and review opioids. Seek advice in severe renal impairment.", src:"Scottish PCG 2025 nausea &amp; vomiting"},
+         {tone:"amber", h:"Older and frail people", html:"Start low: lower haloperidol doses in older and frail people. Watch for sedation, falls, postural hypotension (levomepromazine) and anticholinergic confusion and urinary retention (cyclizine).", src:"Scottish PCG 2025 nausea &amp; vomiting"},
+         {tone:"amber", h:"Heart failure", html:"Cyclizine may exacerbate heart failure — consider this when choosing an antiemetic in someone with cardiac disease.", src:"NICE NG31"},
+         {tone:"blue", h:"Last days of life", html:"Keep assessing for causes, discuss options, consider non-drug methods and prescribe anticipatory antiemetics. For obstructive bowel disorders in the last days, consider hyoscine butylbromide first, and octreotide if not improved within 24 hours. See <a href='../management/care-of-the-dying.html'>care of the dying</a>.", src:"NICE NG31"},
+         {tone:"plain", h:"Brain tumours and metastases", html:"Raised intracranial pressure: cyclizine, and discuss dexamethasone with oncology or palliative care. New or worsening neurology in someone not known to have brain disease needs urgent discussion if investigation would change management."}
+       ]}
+     ]},
+
+    {id:"mbo", nav:"Bowel obstruction", title:"Malignant bowel obstruction — red flags and referral", sub:"Common in ovarian and colorectal cancer. Early recognition changes both the drugs and the conversation.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Red flags", html:"Colicky abdominal pain; distension; large-volume, bilious or faeculent vomiting; reduced or absent flatus and stool; high-pitched or absent bowel sounds; known intra-abdominal or pelvic malignancy or previous abdominal surgery or radiotherapy. Exclude severe constipation, which can mimic it."},
+         {tone:"red", h:"Same-day actions", html:"<b>Stop metoclopramide</b> if there is colic or the obstruction may be complete, and <b>stop stimulant and bulk laxatives</b>. Move all medicines to the SC route. Phone specialist palliative care the same day; if the person is fit for and wants intervention, discuss urgently with the surgical team (possible surgery, stent or venting)."},
+         {tone:"blue", h:"Last days of life with obstruction", html:"In the last days of life with an obstructive bowel disorder, consider <b>hyoscine butylbromide</b> as first-line, and <b>octreotide</b> if symptoms don't improve within 24 hours of starting it.", src:"NICE NG31"},
+       ]},
+       {b:"dl", rows:[
+         ["Medical management — usually specialist-led","Antisecretory and antispasmodic <b>hyoscine butylbromide</b> for colic; antiemetic (cyclizine is commonly used; haloperidol or levomepromazine as alternatives); <b>octreotide</b> for high-volume vomiting under specialist advice; dexamethasone sometimes tried. Doses per specialist or BNF."],
+         ["Partial obstruction","Where the obstruction is partial and there is no colic, a prokinetic may be tried with caution and a softening laxative continued — stop the prokinetic if colic develops."],
+         ["Goals, eating and hydration","Many people with inoperable obstruction can still sip and take small amounts for pleasure; the aim is usually to reduce vomiting to a tolerable level rather than stop it completely. Discuss hydration, NG tubes and place of care openly."]
+       ]},
+       {b:"why", html:"The pitfall is continuing a prokinetic into a complete obstruction: metoclopramide increases peristalsis against a blockage and worsens colic. Once obstruction is suspected, the drug choice switches from “make the gut move” to “reduce secretions and spasm”."}
+     ]},
+
+    {id:"followup", nav:"Follow-up", title:"Follow-up and monitoring", sub:"Every row has a trigger to act.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Symptom response","24–48 hours after a change","Vomiting frequency, nausea score, oral intake. Not settling → check route and regularity, reassess cause, switch or combine"],
+         ["Bowels","Every review","Constipation re-check if not settling; laxatives with every opioid and with 5HT3 antagonists"],
+         ["Extrapyramidal effects","With any D2 antagonist","Restlessness (akathisia), stiffness, tremor, abnormal movements → stop or reduce and seek advice"],
+         ["Sedation and hypotension","Levomepromazine, cyclizine","Falls risk, drowsiness; adjust dose"],
+         ["Calcium, renal function","If clinically suspected and it would change management","Hypercalcaemia or worsening renal function → treat or adjust drugs"],
+         ["Prokinetic duration","Beyond one week (metoclopramide, domperidone)","Document indication; closer monitoring for cardiac risk (Scottish PCG 2025); stop metoclopramide if extrapyramidal effects (MHRA)"],
+         ["Syringe pump","At least daily","Site, compatibility, PRN use in the last 24 hours → adjust the 24-hour dose"],
+         ["Hydration","Each review","Signs of dehydration; revisit the plan against goals of care"]
+       ]},
+       {b:"kv", rows:[
+         ["Don't forget","Constipation and hypercalcaemia are the commonest reversible drivers — re-check both if not settling."],
+         ["Communication","Update the care plan, community nursing team and out-of-hours record (e.g. shared care record) with the antiemetic plan."]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer and seek advice", sub:"Specialist palliative care advice is a phone call away — use it early.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Same day", html:"Suspected malignant bowel obstruction; suspected hypercalcaemia needing treatment; new neurological signs suggesting raised ICP where investigation or steroids would change management; severe dehydration if active treatment is wanted.", src:"Scottish PCG 2025 nausea &amp; vomiting"},
+         {tone:"blue", h:"Specialist palliative care", html:"Refractory nausea or vomiting despite a cause-matched drug and a broad-spectrum agent; complex syringe pump combinations; Parkinson's disease or myasthenia gravis; bowel obstruction.", src:"Scottish PCG 2025 nausea &amp; vomiting"},
+       ]},
+       {b:"kv", rows:[
+         ["Acute oncology","Nausea and vomiting during or soon after chemotherapy or radiotherapy — use the patient's oncology helpline."],
+         ["Surgical opinion","Suspected bowel obstruction in someone fit for and wanting intervention — discussion about surgery, stenting or venting gastrostomy."]
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Safety-netting", sub:"Patient and carer wording.",
+     blocks:[
+       {b:"tiles", v:"safety", items:[
+         {t:"\u{1F534} Obstruction", html:"Tummy swelling, cramping pain, vomiting large amounts or dark, smelly vomit, no wind or stool → call the same day."},
+         {t:"\u{1F4DE} Not settling", html:"Still being sick 24 hours after the new medicine, or can't keep any tablets down → call so we can switch to injections."},
+         {t:"\u{1F4A7} Fluids", html:"Can't keep fluids down, very dry, passing very little urine → call to review hydration in line with your wishes."},
+         {t:"\u{1F9E0} New symptoms", html:"New confusion, severe headache, drowsiness, or abnormal movements or stiffness → call the same day."}
+       ]},
+       {b:"say", html:"Sickness in this situation usually has a specific cause, so we choose the anti-sickness medicine that targets it. We'll also check simple things like constipation, your calcium level and your other medicines, which can make it worse. Take the medicine regularly, not just when you feel sick. If you're being sick and can't keep tablets down, ring the number on your plan — the nurses can give it as a small injection under the skin, or through a small pump, instead."}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Where community management goes wrong.",
+     blocks:[
+       {b:"dl", rows:[
+         ["PRN-only antiemetic","Nausea is continuous; the drug should be regular with a PRN on top."],
+         ["Oral drugs in a vomiting patient","Switch to SC early and leave anticipatory medicines."],
+         ["Metoclopramide into obstruction","Stop it with colic or complete obstruction."],
+         ["Cyclizine with metoclopramide","The anticholinergic cancels the prokinetic."],
+         ["Two D2 antagonists together","Extrapyramidal risk; switch, don't stack."],
+         ["Missed constipation or hypercalcaemia","The two commonest reversible drivers."],
+         ["Haloperidol or metoclopramide in Parkinson's","Seek specialist advice; domperidone with MHRA precautions is usually preferred."],
+         ["Ondansetron as default","Constipating; mainly for chemotherapy or radiotherapy nausea."],
+         ["Forgetting the MHRA limits","Off-licence palliative use is acceptable only when deliberate, documented and monitored."]
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card.",
+     blocks:[{b:"dl", rows:[
+       ["Classic scenario","Home visit: a 68-year-old woman with metastatic ovarian cancer, on modified-release morphine increased last week, has had nausea for four days and vomited twice today. Her daughter asks for “something stronger for the sickness”. She hasn't opened her bowels for five days and has mild colicky pain."],
+       ["Examiner-style checkpoints","Characterises the pattern; asks about bowels, colic and distension and considers obstruction; thinks of opioid increase, constipation and hypercalcaemia; chooses a drug by mechanism and avoids metoclopramide if obstruction is possible; moves to SC and leaves anticipatory medicines; involves specialist palliative care; explores the person's wishes about hospital; safety-nets the daughter clearly. <a href='../management/care-of-the-dying.html'>Care of the dying →</a>"]
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Named sources for this page.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>Scottish Palliative Care Guidelines — Nausea and vomiting (2025, updating the 2019 guideline)</b><br><a href="https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-management/nausea-and-vomiting/" rel="noopener">rightdecisions.scot.nhs.uk</a><span class="rd"> — antiemetic doses (oral, SC, CSCI), prokinetic + anticholinergic caution, monitoring beyond one week, Parkinson’s caution</span></li>'+
+         '<li><b>Scottish Palliative Care Guidelines — Bowel obstruction</b><br><a href="https://www.palliativecareguidelines.scot.nhs.uk/scottish-palliative-care-guidelines/symptoms/non-pain-symptoms/bowel-obstruction/" rel="noopener">palliativecareguidelines.scot.nhs.uk</a><span class="rd"> — recognition, stopping prokinetics and laxatives, hyoscine butylbromide, octreotide under specialist advice</span></li>'+
+         '<li><b>NICE NG31 — Care of dying adults in the last days of life (2015)</b><br><a href="https://www.nice.org.uk/guidance/ng31" rel="noopener">nice.org.uk/guidance/ng31</a><span class="rd"> — assess causes, discuss options, non-drug methods, anticipatory prescribing, hyoscine butylbromide then octreotide in obstruction, cyclizine and heart failure, hydration</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Metoclopramide: risk of neurological adverse effects (2013)</b><span class="rd"> — up to 5 days, maximum 30 mg/day (0.5 mg/kg)</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Domperidone: risks of cardiac side effects (May 2014)</b><span class="rd"> — 10 mg up to three times daily, maximum 30 mg/day, normally no longer than 1 week; contraindications</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all other doses, ondansetron, dexamethasone, hyoscine butylbromide, octreotide</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Nausea and vomiting in palliative care in the community — Scottish Palliative Care Guidelines (2025), NICE NG31 and MHRA Drug Safety Updates (metoclopramide 2013, domperidone 2014). Many palliative uses are unlicensed or off-label. Seek specialist palliative care advice early, and verify all doses against the current BNF before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

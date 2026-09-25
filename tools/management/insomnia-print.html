@@ -4,221 +4,229 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Insomnia — Protocol · Reasoning GP</title>
-<meta name="description" content="Insomnia in one page: the red flags (suicide risk, mania, OSA, RBD), characterising the sleep problem and hunting the cause, the differentials beyond primary insomnia, CBT-I with real instructions, the CG046 stepped-care drug gates (Z-drugs 3–7 days, melatonin MR in over-55s, daridorexant TA922), deprescribing established benzo and Z-drug users, and referral routes." />
+<meta name="description" content="Insomnia in adults in one page: red flags (suicide risk, mania, OSA and driving, night sweats), characterising the sleep problem and finding the cause, CBT-I first-line, short gated hypnotics with stop dates under the Greater Manchester formulary, melatonin MR for eligible over-55s, daridorexant per NICE TA922, and patient-paced deprescribing." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/insomnia.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790196272852298 tools/management/insomnia.html">
+<meta name="omelette-print-source" content="v1790316494957944 tools/management/insomnia.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Insomnia protocol">
 <doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🌙",
   title:"Insomnia — the complete guide",
   eyebrow:"Protocol · assess &amp; manage in one place",
-  stemTitle:"Find the thief, fix the behaviour, keep tablets brief — and know the way off them",
-  stemSub:"One page for the whole condition. Screen the red flags (suicide risk, mania, OSA, night sweats, RBD), characterise the insomnia and hunt the cause, run real CBT-I — sleep restriction and stimulus control with actual instructions, not a hygiene leaflet — use the CG046 stepped-care drug gates when you must (Z-drug 3–7 days, melatonin MR in the over-55s, daridorexant per TA922 with its stop rule), and walk established benzo/Z-drug users off with the taper that works. TA922 · MTG70 · C&amp;W APC CG046.",
-  guideline:"NICE TA922 · NICE MTG70 · C&amp;W APC CG046",
-  reviewed:"8 September 2026",
-  nextReview:"8 March 2027",
+  stemTitle:"Find the cause, deliver CBT-I, use hypnotics only when clearly indicated — and agree the way off",
+  stemSub:"One page for the whole condition. Look for the dangerous and treatable causes (mood and suicide risk, mania, OSA, night sweats, parasomnias). Characterise the insomnia with a sleep diary. Offer CBT-I — face-to-face or digital — as the first-line treatment for chronic insomnia, not a sleep-hygiene leaflet. Use hypnotics only for severe impairment, for the shortest time, with an agreed stop date, following the Greater Manchester formulary; melatonin MR for eligible over-55s where locally supported; daridorexant per NICE TA922. Help established benzodiazepine and Z-drug users reduce at their own pace.",
+  guideline:"NICE TA922 · NICE MTG70 · NICE TA77 · NICE NG202 · DVLA · BAP · Greater Manchester formulary and benzodiazepine/Z-drug resource pack · MHRA SPCs",
+  reviewed:"25 September 2026",
+  nextReview:"25 September 2027",
   meta:[
-    {t:"NICE TA922 daridorexant · MTG70 Sleepio"},
-    {t:"C&amp;W CG046 stepped care (Jan 2025) · MHRA · BAP"},
-    {t:"2WW · NG12 criteria that surface here", tone:"tw"},
-    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+    {t:"CBT-I first-line for chronic insomnia"},
+    {t:"Hypnotics: shortest course, agreed stop date", tone:"tw"},
+    {t:"v2.1 · reviewed Sep 2026", tone:"ok"}
   ],
-  lead:"<div class='mg-layers'><a href='#severe'><b>Red flags</b><small>Suicide · mania · OSA · RBD</small></a><a href='#history'><b>Characterise</b><small>Diary · ISI · the cause list</small></a><a href='#cbti'><b>CBT-I</b><small>Sleep restriction is the engine</small></a><a href='#taper'><b>The way off</b><small>Deprescribing that works</small></a></div>",
-  quickSub:"If you read nothing else on this page, read these six cards. Every figure traces to the source cited under <a href='#provenance'>Evidence</a>.",
+  lead:"<div class='mg-layers'><a href='#severe'><b>Red flags</b><small>Mood · mania · OSA · night sweats</small></a><a href='#history'><b>Characterise</b><small>Diary · causes</small></a><a href='#cbti'><b>CBT-I</b><small>First-line</small></a><a href='#stepped'><b>Drugs</b><small>Short, gated</small></a><a href='#taper'><b>The way off</b><small>Deprescribing</small></a></div>",
+  quickSub:"If you read nothing else on this page, read these five cards. Every figure traces to the source cited under <a href='#provenance'>Evidence</a>.",
   quick:[
-    {tone:"red", h:"⚠ Insomnia is an independent suicide risk factor — screen every time", html:"Meta-analyses show a 2.2× suicide risk in insomnia independent of depression, and each SD increase in severity adds ~40% risk. Screen briefly (PHQ-9 question 9) at every insomnia consultation; active ideation → crisis referral. And reduced NEED for sleep with elevated mood and racing thoughts is mania, not insomnia → same-day psychiatric assessment."},
-    {tone:"amber", h:"Screen OSA before any tablet — hypnotics make it worse", html:"Snoring + witnessed apnoeas + unrefreshing sleep → STOP-BANG (≥3 intermediate, ≥5 high risk; 94% sensitivity for moderate–severe OSA) and Epworth (≥10 → sleep study). OSA is undiagnosed in ~80% of UK cases, carries a 7× road-accident risk, and hypnotics suppress arousal and worsen hypoxia. <b>Advise not to drive until assessed (DVLA)</b> — urgency up for professional drivers."},
-    {tone:"blue", h:"CBT-I beats every drug — and sleep restriction is the active ingredient", html:"Effect size ~0.9–1.0 vs 0.5–0.7 for hypnotics (sleep hygiene alone: 0.2), no rebound, benefits lasting 12+ months after stopping. From the 2-week diary: set the bed window to actual sleep time (never &lt;5 h), fixed wake time 7 days/week, extend 15–30 min once efficiency &gt;85%. Warn about the hard first fortnight (daytime sleepiness — caution driving). Digital CBT-I (Sleepio — NICE MTG70; Sleepstation; free Sleepful.org.uk) is offered to ALL patients at every step."},
-    {tone:"green", h:"The drug gates (CG046): short, gated, with stop rules", html:"Short-term insomnia with severe impairment likely to resolve → Z-drug 3–7 days (zopiclone 7.5 mg first-line, 3.75 mg elderly; zolpidem 10/5 mg second) — never beyond 2 weeks. Chronic + aged ≥55 → melatonin MR 2 mg (3-week initial course; if responding a further 10 weeks only — stop by 13 weeks if no improvement). Chronic + CBT-I tried/failed/unavailable → daridorexant 50 mg (25 mg hepatic impairment or moderate CYP3A4 inhibitors) per TA922 — ISI + agreed goals at initiation, review 1 and 3 months, stop by 12 weeks if no benefit, no other hypnotics for the month before."},
-    {tone:"purple", h:"The repeat slip is where dependence starts", html:"Dependence develops in ~40% of Z-drug (zopiclone, zolpidem, zaleplon) users beyond 4 weeks, and ~1.5 million people in the UK are on long-term Z-drugs — most started with one 'two-week' script that auto-repeated. Three sentences said out loud at every hypnotic prescription: “two weeks at most · it stops working used nightly · the stop date is already agreed.” No auto-repeat. And zopiclone impairs driving for 12 hours — the morning after counts (MHRA); document the warning."},
-    {tone:"teal", h:"Coming off: invitation, diazepam switch, 5–10% steps, CBT-I alongside", html:"Most patients reduce successfully when invited (letters alone work in ~1 in 5). Switch difficult cases to diazepam (5 mg ≈ zopiclone 7.5 ≈ zolpidem 10 ≈ temazepam 10 ≈ lorazepam 0.5), taper 5–10% of the current dose every 1–4 weeks — smaller steps at the bottom (a faster structured option is 25% every 2 weeks); never stop abruptly (seizure risk at high benzo doses). CBT-I alongside roughly doubles the odds: ~90% success vs ~60% without. Rebound insomnia for 1–2 weeks after each step is withdrawal passing, not relapse — forewarn or they restart."}
+    {tone:"red", h:"⚠ Ask about mood and suicidal thoughts when it matters", html:"When insomnia is severe or persistent, or comes with depression, acute stress, substance use or functional decline, ask about mood, hopelessness and suicidal thoughts. A positive answer needs a <b>direct clinical risk assessment</b> — PHQ-9 item 9 is not one. Active intent, imminent risk or inability to stay safe → urgent local mental-health or crisis assessment. <b>Reduced need for sleep</b> with elevated or irritable mood, energy, pressured speech or grandiosity suggests mania → same-day mental-health assessment."},
+    {tone:"amber", h:"Assess for OSA — and act on sleepiness and driving", html:"Assess for OSA when there are two or more relevant features — snoring, witnessed apnoeas, choking, unrefreshing sleep, morning headaches, nocturia, fragmented sleep, cognitive impairment or sleepiness (NICE NG202). Epworth and STOP-BANG support the assessment; neither decides referral alone. <b>If excessive sleepiness is affecting driving, the patient must stop driving until it is controlled</b> (DVLA). Prioritise HGV/PSV and safety-critical workers. Use sedatives cautiously and individually in suspected OSA."},
+    {tone:"blue", h:"CBT-I is first-line for chronic insomnia", html:"It tackles the behaviours and beliefs that keep insomnia going, and its benefit can last after treatment ends; hypnotics give mainly short-term symptom relief. Offer face-to-face or digital CBT-I (Sleepio, NICE MTG70, where commissioned) by availability, suitability and preference — after medical assessment where OSA, pregnancy or another sleep disorder is possible."},
+    {tone:"green", h:"Drugs: short, gated, with a stop date", html:"<b>Short-term, severe:</b> Z-drug, lowest dose, defined quantity — zopiclone first choice, zolpidem alternative under the <b>Greater Manchester formulary</b> (local sequencing, not superior efficacy). <b>Aged 55+, chronic:</b> melatonin MR where licensed and locally supported, usually up to 13 weeks. <b>Chronic, CBT-I failed or unsuitable:</b> daridorexant per NICE TA922 — review within 3 months and stop if response is inadequate."},
+    {tone:"amber", h:"The repeat prescription is where long-term use starts", html:"No automatic repeats. Agree the stop date at the first prescription. Warn about next-day impairment and never combining with alcohol, opioids or other sedatives. Long-term users: a planned, patient-paced reduction with CBT-I alongside — never abrupt cessation."}
   ],
-  pathwaySub:"The whole consultation in five moves. The red step is where the dangerous causes hide.",
+  pathwaySub:"The whole consultation in five moves.",
   pathway:[
-    {title:"Screen the red flags", html:"Suicidal ideation (2.2× independent risk — PHQ-9 Q9 every time) → crisis. Reduced sleep NEED + elevated mood = mania → same-day psychiatry. Snoring + witnessed apnoeas + Epworth ≥10 → sleep study, no hypnotics, driving advice. Night sweats + weight loss → investigate (ESR, CRP, CXR, FBC) — never 'menopause' by default. Nocturnal chest pain or PND → same-day ECG + BNP. Nocturnal seizure features → EEG + neurology. Sedative/alcohol withdrawal → withdrawal management.", alert:true},
-    {title:"Characterise and hunt the thief", html:"Onset vs maintenance vs early-morning waking (EMW = classic depression); acute (&lt;3 months, triggered) vs chronic (≥3 nights/week for ≥3 months + daytime impairment). 2-week sleep diary (SOL, WASO, efficiency). The cause list: OSA, RLS (ferritin), depression/anxiety/PTSD, pain, nocturia, GORD, menopause, shift work — and the drug list (caffeine half-life 5–7 h, alcohol, SSRIs, steroids, beta-blockers, diuretics after 4pm, decongestants)."},
-    {title:"Score, examine, test only on suspicion", html:"ISI (&gt;14 = moderate–severe; the CBT-I outcome measure), PHQ-9, GAD-7, Epworth, STOP-BANG; BMI, neck circumference (&gt;40 cm M / &gt;35 cm F), Mallampati, tonsils. Bloods only as targeted: ferritin (RLS), TFTs, HbA1c, CRP/FBC. Polysomnography is NOT for primary insomnia."},
-    {title:"CBT-I for everyone; drugs by the gates", html:"Sleep restriction + stimulus control + cognitive work + wind-down, digital CBT-I offered to all. Then: short-term severe → Z-drug 3–7 days; chronic ≥55 → melatonin MR 2 mg (13-week rule); chronic + CBT-I failed/unavailable → daridorexant (TA922, 12-week rule). ISI and agreed goals at any drug initiation."},
-    {title:"Review, deprescribe, and keep re-running the cause list", html:"2–4 weeks: diary + ISI, engagement check, Z-drug stop-date enforcement. 6–8 weeks: ISI down ≥5? efficiency &gt;85%? Established sedative users: the invitation, the diazepam switch and the 5–10% taper with CBT-I alongside. The thief changes over time — re-screen mood, OSA, pain, alcohol at every review."}
+    {title:"Look for the dangerous and treatable causes", html:"Mood and suicide risk, mania, OSA and driving, night sweats with systemic features, nocturnal chest pain or dyspnoea, nocturnal seizures, substance withdrawal.", alert:true},
+    {title:"Characterise the insomnia", html:"Onset, maintenance or early waking; acute or chronic; 2-week sleep diary; the cause list; substances and medicines."},
+    {title:"Score and examine; test only on suspicion", html:"ISI to measure severity and response; Epworth and STOP-BANG as aids; targeted tests only."},
+    {title:"CBT-I, then drugs only if gated", html:"CBT-I for chronic insomnia; hypnotics short-term with a stop date; melatonin MR or daridorexant when criteria are met."},
+    {title:"Review, deprescribe, re-check the causes", html:"Review at 2–4 weeks after starting CBT-I or a hypnotic; patient-paced tapering for long-term users."}
   ],
   sections:[
-    {id:"severe", nav:"Red flags", title:"Red flags — exclude the dangerous causes first", sub:"Insomnia affects ~35% of adults; these presentations are the ones that must not be managed as routine insomnia.",
+    {id:"severe", nav:"Red flags", title:"Red flags — do not manage these as routine insomnia",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"🔴 Suicidal ideation", html:"Severe insomnia is an independent suicide risk factor (2.2× in meta-analyses; +40% per SD of severity, independent of depression). Actively screen with PHQ-9 Q9 at every consultation; active ideation → immediate crisis referral."},
-         {tone:"red", h:"🔴 Mania", html:"Reduced NEED for sleep with elevated mood, grandiosity and racing thoughts is a classic manic prodrome — not insomnia → same-day psychiatric assessment (72+ hours without sleep in mania → emergency). Psychotic symptoms → urgent CMHT. Missing it delays the bipolar diagnosis."},
-         {tone:"red", h:"🔴 Nocturnal chest pain / dyspnoea", html:"Nocturnal angina or paroxysmal nocturnal dyspnoea (heart failure) → same-day ECG and BNP."},
-         {tone:"amber", h:"🟠 OSA — witnessed apnoeas + snoring", html:"Cardiovascular risk and a 7× road-accident risk; undiagnosed in ~80% of UK cases. Epworth ≥10 → sleep study; advise not to drive until assessed and treated (DVLA Group 1). Hypnotics suppress arousal and worsen hypoxia — screen BEFORE any tablet, especially the overweight snorer."},
-         {tone:"amber", h:"🟠 Excessive daytime somnolence", html:"Falling asleep involuntarily during activities → OSA, narcolepsy or idiopathic hypersomnia (Epworth &gt;10). Occupational and driving risk — HGV/PSV licences raise the urgency."},
-         {tone:"amber", h:"🟠 Night sweats + weight loss", html:"Lymphoma, TB or other malignancy — do not attribute to 'menopause' without investigation in an at-risk patient: ESR, CRP, CXR, FBC — see the NG12 card under <a href='#workup'>Work-up</a>."},
-         {tone:"amber", h:"🟠 Nocturnal seizures", html:"Tongue biting, incontinence, post-ictal confusion on waking → EEG + neurology referral."},
-         {tone:"amber", h:"🟠 Substance withdrawal", html:"Alcohol, benzodiazepine or opioid withdrawal causes severe (rebound) insomnia — manage the withdrawal, don't sedate over it."}
+         {tone:"red", h:"🔴 Suicide risk", html:"Ask about mood, hopelessness and suicidal thoughts when insomnia is severe, persistent, or comes with depression, acute stress, substance use or functional decline. A positive answer needs a direct assessment of thoughts, intent, plan, means, previous attempts and protective factors. Active intent, imminent risk, inability to maintain safety or severe self-neglect → urgent local mental-health or crisis assessment."},
+         {tone:"red", h:"🔴 Mania", html:"<b>Reduced need for sleep</b> — not merely inability to sleep — with elevated or irritable mood, increased energy, pressured speech, grandiosity, impulsivity or psychotic symptoms → same-day mental-health assessment, particularly with psychosis, risk-taking, inability to self-care or risk to others."},
+         {tone:"red", h:"🔴 Nocturnal chest pain or breathlessness", html:"Assess according to the acute chest pain, breathlessness or suspected heart-failure pathway — do not attribute these to insomnia."},
+         {tone:"amber", h:"🟠 OSA and sleepiness", html:"Assess for OSA with two or more relevant features (NICE NG202). If excessive sleepiness is affecting driving, the patient must not drive until it is satisfactorily controlled (DVLA); vocational drivers need rapid assessment."},
+         {tone:"amber", h:"🟠 Night sweats and systemic features", html:"Do not attribute persistent drenching night sweats to menopause or poor sleep without assessment. Take a focused history and examine; investigate according to the presentation rather than a fixed panel. See the NG12 card under <a href='#workup'>Work-up</a>."},
+         {tone:"amber", h:"🟠 Nocturnal seizures", html:"Tongue biting, witnessed tonic-clonic movements, injury, incontinence or post-ictal confusion → urgent assessment via the first-seizure or neurology pathway."},
+         {tone:"amber", h:"🟠 Substance withdrawal", html:"Alcohol, benzodiazepine or opioid withdrawal causes severe rebound insomnia — manage the withdrawal rather than sedating over it."}
        ]}
      ]},
 
-    {id:"history", nav:"Characterise", title:"History — characterise the problem, then hunt the thief", sub:"The type of insomnia is highly discriminating, and the 2-week diary drives everything downstream.",
+    {id:"history", nav:"Characterise", title:"History — characterise the problem, then find the cause",
      blocks:[
-       {b:"table", head:["Ask about","Detail","Discriminates"], rows:[
-         ["<b>Type</b>","Sleep-onset (SOL &gt;30 min) vs sleep-maintenance (WASO) vs early-morning waking","Onset + racing thoughts = anxiety/hyperarousal or delayed phase · maintenance = depression, pain, OSA, nocturia · EMW (waking ≥2 h early, can't return) = a biological marker of depression — PHQ-9 mandatory · alcohol also fragments the second half"],
-         ["<b>Duration</b>","Acute &lt;3 months with an identifiable trigger (bereavement, stress, illness) vs chronic = ≥3 nights/week for ≥3 months WITH daytime impairment","No daytime impairment = a short sleeper, not a patient. Chronic insomnia requires CBT-I"],
-         ["<b>2-week sleep diary</b>","Bedtime, SOL, WASO, total sleep, rise time, naps, caffeine/alcohol, quality 1–10 (wearable data taken with salt)","Quantifies sleep efficiency (asleep ÷ in bed × 100; &lt;85% = clinically significant) and sets the sleep-restriction window; exposes felt-vs-actual mismatch"],
-         ["<b>The cause list — every time</b>","OSA (snoring, apnoeas, collar size) · RLS (evening leg urge relieved by movement → ferritin) · depression/anxiety/PTSD (nightmares + hypervigilance = trauma pathway) · pain · nocturia (prostate? diuretic timing?) · GORD · menopause (night sweats → the HRT guide, not zopiclone) · shift work / circadian mismatch · bipolar history","The thief list — it changes over time, so re-screen at every review"],
-         ["<b>Substances</b>","Caffeine (half-life 5–7 h — a 3pm coffee is active at midnight; tea, cola, energy drinks, co-codamol-with-caffeine, dark chocolate) · alcohol (sedates onset, suppresses REM and slow-wave sleep, rebound waking 3–4 h in) · nicotine · cannabis (long-term architecture disruption)","The commonest maintaining factors"],
-         ["<b>Medications</b>","SSRIs (especially fluoxetine/sertraline — dose in the morning) · corticosteroids (morning dosing) · beta-blockers (reduced melatonin, nightmares) · diuretics after 4pm · decongestants · stimulants · theophylline · recently stopped sedatives (rebound)","Fix the timing before adding anything"],
-         ["<b>Expectation reset</b>","Sleep need falls with age (6–7 h at 70 is normal; the normal range is 6–9 h); brief waking 1–2× a night is normal","The 8-hour rule is a myth that fuels the anxiety that fuels the insomnia"]
+       {b:"table", head:["Ask about","Detail","Why it matters"], rows:[
+         ["<b>Type</b>","Sleep-onset vs sleep-maintenance vs early-morning waking","Onset with racing thoughts suggests anxiety, hyperarousal or delayed phase; maintenance suggests depression, pain, OSA, nocturia or alcohol. Early-morning waking should prompt assessment of mood, alcohol, circadian timing and medical symptoms — depression is one possible cause"],
+         ["<b>Duration</b>","Acute (under 3 months, often triggered) vs chronic (3+ nights a week for 3+ months with daytime impairment)","Chronic insomnia is treated with CBT-I"],
+         ["<b>2-week sleep diary</b>","Bedtime, time to fall asleep, time awake in the night, total sleep, rise time, naps, caffeine and alcohol","Estimates sleep efficiency and sets the sleep-restriction window"],
+         ["<b>The cause list</b>","OSA · restless legs · depression, anxiety, PTSD · pain · nocturia · GORD · menopause · shift work or circadian mismatch · bipolar history · parasomnias, narcolepsy, seizures","Causes change over time — re-check at review"],
+         ["<b>Substances</b>","Caffeine (including later in the day, tea, cola, energy drinks, caffeine-containing analgesics) · alcohol (fragments the second half of the night) · nicotine · cannabis","Common maintaining factors"],
+         ["<b>Medicines</b>","SSRIs (consider morning dosing) · corticosteroids (morning) · beta-blockers · diuretics late in the day · decongestants · stimulants · recently stopped sedatives (rebound)","Adjust timing before adding anything"],
+         ["<b>Expectations</b>","Sleep need varies and falls with age; brief waking in the night is normal","Unrealistic targets fuel sleep anxiety"]
        ]}
      ]},
 
-    {id:"differentials", nav:"Differentials", title:"Beyond primary insomnia — the differential table", sub:"Chronic insomnia disorder is the commonest — but each of these has a different treatment, and two of them are neurology flags.",
+    {id:"differentials", nav:"Differentials", title:"Beyond chronic insomnia — the differential table",
      blocks:[
        {b:"table", head:["Diagnosis","Pattern","Action"], rows:[
-         ["<b>Chronic (primary) insomnia disorder</b>","Hyperarousal, conditioned arousal, dysfunctional sleep beliefs; perpetuated by compensatory behaviours (early to bed, napping, lying awake worrying)","<b>CBT-I first-line</b>"],
-         ["<b>Obstructive sleep apnoea</b>","Snoring, witnessed apnoeas, unrefreshing sleep, obesity, neck &gt;40 cm","<b>Epworth + STOP-BANG → sleep study. No hypnotics</b>"],
-         ["<b>Restless legs syndrome (Willis-Ekbom)</b>","Irresistible evening/night urge to move the legs, relieved by movement; affects 5–10% of adults, underdiagnosed. Secondary: iron deficiency, pregnancy, CKD, peripheral neuropathy","Ferritin — treat if &lt;50 µg/L (replete towards &gt;75; iron is the dopamine-synthesis cofactor, so treat below threshold even without anaemia) — often curative"],
-         ["<b>Circadian rhythm disorders</b>","Delayed phase (teens/young adults — asleep 2–4am, can't wake) vs advanced phase (elderly — sleepy at 7pm, wake at 3am). They sleep normally on their own schedule","Light timing ± melatonin timing — a different toolkit, frequently misdiagnosed as insomnia or depression"],
-         ["<b>Depression / anxiety</b>","The commonest psychiatric comorbidity; insomnia is both symptom and risk factor","Treat the depression properly — a Z-drug on top of untreated depression fixes neither; CBT-I works even with comorbid depression"],
-         ["<b>Periodic limb movement disorder</b>","<b>Partner reports repetitive leg kicking; fragments sleep maintenance</b>","<b>Polysomnography diagnosis; dopamine agonists effective</b>"],
-         ["<b>Paradoxical insomnia</b>","Severe reported insomnia with near-normal sleep on actigraphy/polysomnography — 5–10% of chronic presentations, genuinely distressed","CBT-I with cognitive restructuring for sleep-state misperception — equally effective"],
-         ["<b>Drug / alcohol related</b>","Alcohol dependence → chronic insomnia (suppressed slow-wave and REM, rebound waking); benzodiazepine rebound insomnia on cessation is often WORSE than the original","Treat the dependence; see <a href='#taper'>the taper</a>"]
+         ["<b>Chronic insomnia disorder</b>","Hyperarousal, conditioned arousal, unhelpful sleep beliefs, compensatory behaviours","<b>CBT-I first-line</b>"],
+         ["<b>Obstructive sleep apnoea</b>","Two or more of: snoring, witnessed apnoeas, choking, unrefreshing sleep, morning headache, nocturia, fragmented sleep, cognitive impairment, sleepiness","Assess and refer per NICE NG202; sedatives only with individual caution; driving advice if sleepy"],
+         ["<b>Restless legs syndrome</b>","Evening urge to move the legs, relieved by movement; linked to iron deficiency, pregnancy, CKD, neuropathy","Check ferritin and iron status; correct iron deficiency and review contributory medicines, caffeine and alcohol. Persistent or troublesome symptoms → specialist advice on alpha-2-delta ligands versus dopamine agonists, explaining augmentation and impulse-control risks. See <a href='restless-legs.html'>restless legs</a>"],
+         ["<b>Periodic limb movements</b>","Partner reports repetitive leg movements","Periodic limb movements on a sleep study are not automatically a disorder; treat clinically significant RLS or another cause, with specialist interpretation"],
+         ["<b>Circadian rhythm disorders</b>","Delayed phase (young people) or advanced phase (older adults); normal sleep on their own schedule","Timing, not sedation — light and melatonin timing depend on the disorder and schedule; sleep-specialist advice for complex shift-work or delayed-phase cases"],
+         ["<b>Depression or anxiety</b>","Common comorbidity; insomnia is both symptom and risk factor","Treat the mood disorder; CBT-I still works with comorbid depression"],
+         ["<b>Paradoxical insomnia</b>","Severe reported insomnia with near-normal objective sleep","CBT-I with cognitive work on sleep-state misperception"],
+         ["<b>REM sleep behaviour disorder</b>","Dream enactment with injury risk","Sleep or neurology assessment — isolated RBD may precede an α-synuclein disorder; give safety advice and avoid over-stating future risk"],
+         ["<b>Drug or alcohol related</b>","Alcohol dependence; benzodiazepine rebound","Treat the dependence; see <a href='#taper'>the way off</a>"]
        ]}
      ]},
 
-    {id:"workup", nav:"Work-up", title:"Examination, scores and targeted tests", sub:"Scores in clinic, bloods only on suspicion — and polysomnography is not for primary insomnia.",
+    {id:"workup", nav:"Work-up", title:"Examination, scores and targeted tests",
      blocks:[
-       {b:"table", head:["What","Detail","Threshold / action"], rows:[
-         ["<b>BMI + neck circumference</b>","BMI &gt;30; neck &gt;40 cm (M) / &gt;35 cm (F); Mallampati score; tonsillar hypertrophy","The OSA anatomy screen"],
-         ["<b>Epworth Sleepiness Scale</b>","8-item, validated, done in clinic","<b>≥10 = excessive daytime somnolence → sleep study (8–9 borderline)</b>"],
-         ["<b>STOP-BANG</b>","Snoring · Tired · Observed apnoea · Pressure (hypertension) · BMI &gt;35 · Age &gt;50 · Neck &gt;40 cm · Gender male","<b>≥3 intermediate, ≥5 high risk; 94% sensitivity for moderate–severe OSA</b>"],
-         ["<b>ISI — Insomnia Severity Index</b>","7 items, 2 minutes — the treatment outcome measure","&gt;14 = moderate–severe; expect a ≥5-point (typically 5–7) fall over 6–8 weeks of CBT-I; completed at any drug initiation"],
-         ["<b>PHQ-9 / GAD-7</b>","Depression and anxiety scores","≥10 = moderate on each; EMW → PHQ-9 mandatory"],
-         ["<b>Targeted bloods</b>","Ferritin (RLS — treat &lt;50 µg/L) · TFTs (hyperthyroidism) · HbA1c (nocturnal hypoglycaemia) · CRP/FBC (systemic causes)","Only where the history points"],
-         ["<b>NOT routinely</b>","Polysomnography — not needed for primary insomnia; reserve for suspected OSA (where home oximetry is insufficient), PLMD or narcolepsy. EEG only for suspected nocturnal seizures","Over-testing medicalises"]
+       {b:"table", head:["What","Detail","Use"], rows:[
+         ["<b>BMI, neck circumference, upper airway</b>","Obesity, large neck, crowded oropharynx, tonsils","Part of the OSA assessment"],
+         ["<b>Epworth Sleepiness Scale</b>","8 items","Part of the assessment — not the sole referral criterion; some people with OSA are not sleepy"],
+         ["<b>STOP-BANG</b>","Snoring, tiredness, observed apnoea, pressure, BMI, age, neck, male sex","Risk stratification, not diagnosis"],
+         ["<b>Insomnia Severity Index (ISI)</b>","7 items","Quantify severity and monitor response alongside daytime function and the patient's goals"],
+         ["<b>PHQ-9 / GAD-7</b>","Mood and anxiety","Screening aids — not a suicide-risk assessment"],
+         ["<b>Targeted tests</b>","Ferritin and iron status if RLS is suspected · TFTs if symptoms or signs suggest thyroid disease · others only for a specific clinical indication","No fixed 'insomnia blood panel'"],
+         ["<b>Not routinely</b>","Polysomnography for insomnia alone","Reserve for suspected OSA, PLMD, narcolepsy or parasomnia per the sleep service"]
        ]},
        {b:"cards", items:[
-         {tone:"purple", h:"NG12 criteria that surface here <span class='tw'>2WW</span>", html:"Insomnia itself has no NICE NG12 criterion, and this page does not invent one. The cancer question arrives through the night-sweats route:<br>• Unexplained night sweats with weight loss, fever or lymphadenopathy → investigate (FBC, ESR/CRP, CXR) and refer per the lymphoma criteria — unexplained lymphadenopathy or splenomegaly → 2-week-wait referral; features suggesting leukaemia → <b>urgent FBC within 48 hours</b>.<br>• Cough ≥3 weeks with weight loss or haemoptysis in the night-sweats work-up → urgent chest X-ray (TB and lung cancer share the route).<br>Never file night sweats under 'menopause' or 'poor sleep' without this screen in an at-risk patient.", src:"NICE NG12 (updated May 2025) · house rule"}
+         {tone:"purple", h:"NG12 — where the night-sweats route leads <span class='tw'>2WW</span>", html:"Insomnia itself has no NICE NG12 criterion. Night sweats come in through the lymphoma recommendations: <b>consider a suspected cancer pathway referral for lymphoma in adults with unexplained lymphadenopathy or splenomegaly</b>, taking into account associated symptoms such as fever, night sweats, weight loss, pruritus or breathlessness (NICE NG12). Otherwise, investigate night sweats, weight loss, fever or cough according to the clinical presentation and the current NG12 and local cancer pathways."}
        ]}
      ]},
 
-    {id:"cbti", nav:"CBT-I", title:"CBT-I with actual instructions — sleep restriction is the engine", sub:"More effective than any medication for chronic insomnia, with benefits that persist after it stops. The hygiene leaflet alone is not a treatment.",
+    {id:"cbti", nav:"CBT-I", title:"CBT-I — the first-line treatment for chronic insomnia",
      blocks:[
        {b:"cards", items:[
-         {tone:"green", h:"⏱️ Sleep restriction — the part that works", html:"From the diary: in bed 9 h but asleep 6 h → set the bed window to ~6 h (never &lt;5 h). Fixed wake time 7 days/week; bed only when the window opens. Efficiency &gt;85% for a week → extend 15–30 min. Brutal for 1–2 weeks (warn: daytime sleepiness — caution driving), then sleep pressure (the adenosine drive) rebuilds and consolidates the night. Sleep compression — gradual narrowing over weeks — is the gentler variant for older adults or marked daytime fatigue."},
-         {tone:"green", h:"🪑 Stimulus control", html:"Bed = sleep + sex only — no reading, TV, phones or worrying. Awake &gt;20 minutes (felt, not clock-watched) → get up, dim light, boring activity, return when sleepy; repeat as needed. No visible clock. This breaks the conditioned arousal (bed = wakefulness and anxiety) that maintains chronic insomnia."},
-         {tone:"green", h:"🧠 Cognitive work + relaxation", html:"Target the catastrophising ('I'll be useless tomorrow' — the sleep-deprived function better than they predict; 'I must get 8 hours' — 6–9 h is the normal range); paradoxical intention for sleep effort. Prescribe a specific relaxation technique: progressive muscle relaxation, 4–7–8 diaphragmatic breathing, or MBSR."},
-         {tone:"green", h:"💻 Digital CBT-I — offer to ALL, at every step", html:"Sleepio (NICE MTG70 — NHS-funded in some areas; free for cancer patients via Macmillan), Sleepstation (local funding), or the free Sleepful.org.uk. Efficacy comparable to face-to-face for mild–moderate insomnia; NHS Talking Therapies deliver CBT-I in some areas and treat the comorbid mood disorder concurrently."},
-         {tone:"plain", h:"📵 Hygiene — the supporting cast, never the treatment", html:"Fixed wake time is the single most evidence-based measure (the anchor — it entrains the circadian clock; no compensatory lie-ins). No caffeine after 2pm; alcohol not within 3 h of bed and &lt;14 units/week; no vigorous exercise within 2–3 h of bed (it raises core temperature and cortisol — morning exercise + daylight is optimal); screens out 1 h before (blue light suppresses melatonin up to 2 h); room cool (16–18°C), dark, quiet; naps ≤20 min before 3pm only if essential. Hygiene alone: effect size ~0.2 — necessary, not sufficient."}
+         {tone:"green", h:"⏱️ Sleep restriction or compression", html:"Calculate the initial window from the sleep diary (time actually asleep), usually not below 5 hours unless supervised by a trained CBT-I clinician. Fixed wake time 7 days a week; go to bed only when the window opens; extend by 15–30 minutes when sleep efficiency is consistently good. The first 1–2 weeks may be difficult — daytime sleepiness can increase. Use gradual compression rather than abrupt restriction where there is frailty, marked sleepiness or safety concern."},
+         {tone:"amber", h:"⚠ When sleep restriction needs care or supervision", html:"Bipolar disorder or recent mania · epilepsy (sleep loss can worsen seizure control) · untreated OSA or significant sleepiness · pregnancy · severe depression or suicidality · older or frail adults · safety-critical occupations · unable to keep a fixed wake time. Reassess driving and occupational risk."},
+         {tone:"green", h:"🪑 Stimulus control", html:"Bed for sleep and sex only. If awake and frustrated for what feels like about 20 minutes, get up, keep lights dim, do something quiet, and return when sleepy. No clock-watching. This breaks the link between bed and wakefulness."},
+         {tone:"green", h:"🧠 Cognitive work and relaxation", html:"Address catastrophic beliefs about sleep and next-day function; teach a specific relaxation technique such as progressive muscle relaxation or slow breathing."},
+         {tone:"green", h:"💻 Face-to-face or digital CBT-I", html:"Offer by availability, suitability and preference. NICE MTG70 recommends Sleepio as a primary-care option for people who would otherwise get sleep hygiene or sleeping pills; other digital products depend on local commissioning. NHS Talking Therapies deliver CBT-I in some areas. Complete a medical assessment first where OSA, pregnancy, significant comorbidity or another sleep disorder is possible."},
+         {tone:"plain", h:"📵 Sleep hygiene — supportive, not a treatment on its own", html:"Fixed wake time; limit caffeine later in the day; avoid alcohol near bedtime; daytime light and exercise; a cool, dark, quiet room; limit screens before bed; avoid long or late naps."}
        ]},
-       {b:"why", html:"CBT-I outperforms hypnotics in every head-to-head trial (d ≈ 0.9–1.0 vs 0.5–0.7), with no rebound, no dependence, and effects lasting 12+ months — hypnotic benefit stops the night the tablet does. That is why every guideline puts it first, and why the honest consultation sells the hard fortnight of sleep restriction rather than the easy script."}
+       {b:"why", html:"CBT-I addresses the maintaining factors; hypnotics mainly give short-term symptom relief and do not treat them — which is why CBT-I comes first for chronic insomnia."}
      ]},
 
-    {id:"stepped", nav:"Drug gates", title:"The stepped-care drug decision (CG046) — duration drives the gate", sub:"Digital CBT-I is offered to everyone at every step; drugs are adjunctive and gated. ISI + agreed goals at every initiation.",
+    {id:"stepped", nav:"Drugs", title:"Drug options — short, gated, with stop dates",
      blocks:[
        {b:"table", head:["Situation","Option","Rules"], rows:[
-         ["Short-term insomnia (&lt;3 months), severe impairment, likely to resolve (bereavement, crisis, acute stressor)","<b>Z-drug, 3–7 days preferred</b>","Zopiclone 3.75–7.5 mg: 7.5 mg first-line (3.75 mg elderly/hepatic/renal) or zolpidem 5–10 mg: 10 mg second-line (5 mg elderly) — never exceeding 2 weeks, ideally intermittent (2–3 nights/week), stop date agreed AT prescription, review at course end"],
-         ["<b>Chronic insomnia + aged ≥55</b>","<b>Melatonin MR 2 mg (Circadin®/generic)</b>","1–2 h before bed, after food; 3-week initial course; responding → a further 10 weeks only; STOP if no improvement by 13 weeks. Avoid in hepatic impairment. No dependence, hangover or rebound; reduces sleep latency 15–20 min"],
-         ["Chronic insomnia + CBT-I tried-and-failed, unavailable, unsuitable or refused","<b>Daridorexant (NICE TA922)</b>","Daridorexant 25–50 mg: 50 mg within 30 min of bed, ≥7 h in bed after; 25 mg in moderate hepatic impairment or with moderate CYP3A4 inhibitors (ciclosporin, ciprofloxacin) — avoid strong inhibitors (clarithromycin, azoles). No other hypnotics for 1 month before. Dual orexin-receptor antagonist — no classical dependence/rebound; caution narcolepsy-like symptoms. Review at 1 and 3 months; STOP by 12 weeks if no benefit (no taper needed); reassess ≥6-monthly — efficacy beyond 1 year uncertain"],
-         ["<b>Depression + insomnia</b>","<b>Mirtazapine 15–30 mg nocte</b>","Treats both (H1 + 5-HT2C antagonism); 15 mg is MORE sedating than 30 mg; weight gain — useful in weight-loss depression. For depression, not for pure insomnia"],
-         ["<b>What NOT to reach for</b>","—","Sedating antihistamines (promethazine, OTC Nytol) — tolerance in days, anticholinergic burden, hangover. Amitriptyline 10–25 mg nocte off-label — anticholinergic, avoid in the elderly and QTc risk; not evidence-based for pure insomnia. Quetiapine for sleep — no. Benzodiazepines (temazepam) — no advantage over Z-drugs, same trap. Nightly long-term ANY hypnotic — the problem, not the plan"],
-         ["<b>RLS (found on the cause hunt)</b>","<b>Iron first, dopamine agonist second</b>","Ferrous sulfate 200 mg BD if ferritin &lt;50 µg/L (recheck at 3 months; IV iron if not tolerated) — often curative. Refractory idiopathic RLS: pramipexole 0.088 mg or ropinirole 0.25 mg nocte with specialist oversight (augmentation risk)"],
-         ["<b>Circadian disorders</b>","<b>Timing, not sedation</b>","Melatonin 0.5–3 mg taken 2–6 h before the desired sleep time (delayed phase) or morning bright light; chronotherapy under sleep-specialist guidance"]
+         ["<b>Short-term insomnia</b> — severe impairment or distress, likely to resolve soon, non-drug measures considered","<b>Z-drug</b>","Lowest effective dose, defined quantity, agreed stop date. Greater Manchester formulary: <b>zopiclone first choice, zolpidem alternative</b> — local sequencing; NICE TA77 found no compelling difference and advises the lowest-cost option unless adverse effects justify a switch. Licensed for up to 28 days; local practice favours a much shorter course. Zopiclone 3.75 mg or zolpidem 5 mg in older or frail adults"],
+         ["<b>Chronic insomnia, aged 55+</b>","<b>Melatonin MR 2 mg</b>","Where licensed and locally supported — check the Greater Manchester formulary, which does not routinely support adult melatonin for primary insomnia. 1–2 hours before bed after food; usually up to 13 weeks; review benefit and adverse effects (somnolence, dizziness, headache, abnormal dreams); stop if ineffective. Check the SPC for hepatic impairment"],
+         ["<b>Chronic insomnia</b> — 3+ months with considerable daytime impact, CBT-I tried and unsuccessful, or unavailable or unsuitable","<b>Daridorexant (NICE TA922)</b>","50 mg once nightly within 30 minutes of bed; 25 mg in moderate hepatic impairment or with moderate CYP3A4 inhibitors (e.g. ciprofloxacin, ciclosporin). <b>Contraindicated in narcolepsy</b> and with strong CYP3A4 inhibitors (e.g. clarithromycin, itraconazole, ritonavir); not recommended in severe hepatic impairment; no renal adjustment; avoid grapefruit in the evening. <b>Review within 3 months and stop if the response is inadequate</b>; if continued, review periodically"],
+         ["<b>Depression with insomnia</b>","<b>Mirtazapine</b>","Only where there is a clear depressive indication. Sedation, appetite and weight gain, morning impairment; lower doses are often more sedating, but response varies. Not for insomnia alone"],
+         ["<b>Not routine</b>","—","Sedating antihistamines, amitriptyline and quetiapine are not routine treatments for insomnia — anticholinergic, cardiovascular, cognitive and falls risks. Benzodiazepines offer no advantage over Z-drugs"]
        ]},
-       {b:"warn", html:"Every hypnotic script carries three sentences said out loud: “two weeks at most · it stops working used nightly · we've agreed the stop date.” Written on the script, coded, no auto-repeat — <b>the 10-year zopiclone patient started with one unreviewed repeat</b>. Counsel next-day driving (impaired driving is an offence; <b>zopiclone impairs for 12 hours — MHRA; document it</b>), falls in the elderly, and never with alcohol or opioids. <b>Avoid Z-drugs in COPD/OSA and severe hepatic impairment.</b>"},
-       {b:"say", html:"Sleeping tablets work for a fortnight and then quietly stop working — but the programme where we compress and rebuild your sleep works for years, and it's yours to keep. The first two weeks are genuinely tough; that's the treatment working, not failing."}
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"⚠ Driving and next-day impairment", html:"All hypnotics can cause next-day impairment, especially with alcohol, opioids, other sedatives, older age or sleep deprivation. Do not drive or operate machinery if drowsy or not fully alert. Follow each product's minimum interval: zolpidem — at least 8 hours after a 10 mg dose (MHRA); daridorexant — about 9 hours (SPC), with extra caution in the first days. Discuss occupational driving and document it."},
+         {tone:"amber", h:"⚠ Daridorexant — misuse and sedation", html:"No physical dependence or withdrawal signal in clinical studies and no taper is needed, but abuse liability similar to zolpidem was seen at supratherapeutic doses in recreational drug users — caution with addiction histories. Additive effects with alcohol and other CNS depressants."}
+       ]},
+       {b:"warn", html:"At every hypnotic prescription: the stop date agreed now, no automatic repeat, the next-day impairment warning, and never with alcohol, opioids or other sedatives. Take extra care in older adults (falls), respiratory disease and suspected OSA."},
+       {b:"say", html:"Sleeping tablets can help for a short spell, but they tend to stop working if taken every night and can be hard to stop. The sleep programme is harder for the first week or two, but it's the treatment that keeps working after it ends."}
      ]},
 
-    {id:"taper", nav:"The way off", title:"Deprescribing established benzo and Z-drug users — the taper that works", sub:"~1.5 million people in the UK are on long-term Z-drugs. Structured withdrawal with CBT-I alongside succeeds in ~90% vs ~60% without.",
+    {id:"taper", nav:"The way off", title:"Deprescribing for long-term benzodiazepine and Z-drug users",
      blocks:[
        {b:"ladder", steps:[
-         {step:"1st", title:"The invitation, not the ambush", when:"identify + engage", fromLabel:"search the repeat list",
-          html:"&gt;4 weeks' continuous use = dependent until proven otherwise (dependence develops in ~40% beyond 4 weeks). Frame it as protection: falls, fractures, memory, driving, the drug no longer working. Most patients reduce successfully when invited — letter interventions alone work in ~1 in 5. Never stop abruptly: seizure/delirium risk at high benzo doses."},
-         {step:"2nd", title:"Switch to diazepam when needed", when:"short-acting drug, difficult withdrawal, high dose", fromLabel:"long half-life = smooth taper",
-          html:"Diazepam 5 mg ≈ zopiclone 7.5 mg ≈ zolpidem 10 mg ≈ temazepam 10 mg ≈ lorazepam 0.5 mg (halve the calculated dose if frail). Direct taper of the original drug is fine for low-dose Z-drug users; switch for lorazepam/alprazolam or anyone bouncing between doses."},
-         {step:"3rd", title:"Taper 5–10% every 1–4 weeks", when:"patient-controlled pace", fromLabel:"slower at the bottom",
-          html:"Reduce by 5–10% of the CURRENT dose every 1–4 weeks, smaller absolute steps as the dose falls (liquid diazepam below 2 mg). A faster structured alternative — 25% every 2 weeks — suits some motivated low-dose users. The patient owns the pace: hold at any step, never go back up more than one. Weeks for short use; many months for years-long use — and that's success, not failure."},
-         {step:"4th", title:"Support the gaps", when:"alongside", fromLabel:"withdrawal ≠ relapse",
-          html:"CBT-I in parallel (the sleep still needs a treatment — success ~90% vs ~60% without, and relapse roughly halves). Warn of transient rebound insomnia + anxiety for 1–2 weeks after each step — predictable pharmacology, not the old insomnia returning; forewarn or they restart. NO 'rescue' benzos from OOH/locums — flag the record. Pregabalin/propranolol are NOT routine substitutes."}
+         {step:"1st", title:"The invitation, not the ambush", when:"identify and engage", fromLabel:"review the repeat list",
+          html:"Continuous use beyond 2–4 weeks makes tolerance, physical dependence and withdrawal more likely. Assess each person's dose, duration, pattern of use, comorbidity and any previous withdrawal symptoms — dependence is not addiction, and not everyone is dependent. Frame reduction as protection: falls, memory, driving, and the drug no longer working."},
+         {step:"2nd", title:"Taper the current drug, or switch selectively", when:"choose the method", fromLabel:"direct taper is often right",
+          html:"A direct taper of the current drug is often appropriate, particularly for uncomplicated low-dose Z-drug use. Consider a diazepam transition only in selected patients, after checking age, liver function, interactions, misuse risk and local policy — diazepam accumulates in older adults and hepatic impairment. Dose-equivalence tables are approximate (SPS) and are not an automatic substitution schedule."},
+         {step:"3rd", title:"Small steps, patient-paced", when:"reduce", fromLabel:"slower at lower doses",
+          html:"Start with a small reduction — commonly 5–10% of the current dose every 2–4 weeks — then slow or hold according to withdrawal symptoms. Smaller reductions are usually needed at lower doses and after long-term use. Weeks for short use; many months for years-long use."},
+         {step:"4th", title:"Support alongside", when:"throughout", fromLabel:"review before increasing",
+          html:"CBT-I alongside the taper. Rebound insomnia may occur during reduction and does not necessarily mean the original condition has returned — review the symptoms and the pace before increasing the dose. Agree a plan for out-of-hours requests."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"⚠ Never stop abruptly", html:"Seizure and delirium risk is highest with high-dose, long-duration benzodiazepine use, short half-life agents, alcohol dependence and previous withdrawal seizures."},
+         {tone:"red", h:"⚠ Opioids and other CNS depressants", html:"Benzodiazepines or Z-drugs with opioids risk respiratory depression (MHRA) — prioritise these patients. The same caution applies with pregabalin, gabapentin, sedating antihistamines and alcohol."}
        ]},
        {b:"kv", rows:[
-         ["Driving","On any benzo/Z-drug: a legal duty not to drive impaired; most taper patients drive safely — document the conversation. High doses or daytime sedation → advise off the road + DVLA rules"],
-         ["The elderly on nightly temazepam 'for 20 years'","Highest gain: falls and cognition improve measurably off sedatives. Same method, gentler pace, big-print taper chart, pharmacist sync"],
-         ["Opioids co-prescribed","Benzo + opioid = the respiratory-depression combination (MHRA warning) — prioritise these patients for reduction"]
+         ["Specialist advice","High doses, several drugs, alcohol dependence, seizure history, significant psychiatric comorbidity, pregnancy, or previous complicated withdrawal → community drug service or specialist prescribing support"],
+         ["Older adults on long-term hypnotics","Often the biggest gain in falls and cognition; same method, gentler pace, clear written chart"],
+         ["Driving","Document the conversation; daytime sedation → advise not to drive and apply DVLA rules"]
        ]}
      ]},
 
-    {id:"monitor", nav:"Review", title:"Review rhythm and safety-netting", sub:"The review IS the treatment for engagement — and the stop dates only work if someone enforces them.",
+    {id:"monitor", nav:"Review", title:"Review rhythm and safety-netting",
      blocks:[
        {b:"table", head:["What","When","Action"], rows:[
-         ["<b>Sleep diary + ISI vs baseline</b>","<b>2–4 weeks into CBT-I</b>","Efficiency &gt;85% → extend the window. Not engaging → explore why before any tablet. Z-drug started? → enforce the stop date"],
-         ["<b>Full CBT-I review</b>","<b>6–8 weeks</b>","ISI down ≥5 points? Not responding → Talking Therapies / Sleepio, or re-hunt the comorbidity (depression, undiagnosed OSA)"],
-         ["<b>Any hypnotic issued</b>","<b>At the agreed stop date — in the diary, not 'PRN'</b>","Stopped? Good. Wants more? The review is the CBT-I conversation again, not a repeat"],
-         ["<b>Melatonin</b>","3 weeks, then 13-week rule; reassess 3–6 months","Stop if no improvement by 13 weeks; long-term use is considered safe but review regularly"],
-         ["<b>Daridorexant</b>","<b>1 month and 3 months</b>","Working → continue with ≥6-monthly reassessment; not → stop by 12 weeks (no taper)"],
-         ["<b>Taper patients</b>","Every 1–2 steps","Withdrawal symptoms vs pace; celebrate milestones — dose-reduction charts motivate"],
-         ["<b>The cause list</b>","<b>Every review</b>","<b>Mood, OSA symptoms, pain, alcohol — the thief changes over time</b>"]
+         ["<b>After starting CBT-I or a hypnotic</b>","<b>2–4 weeks</b>","Diary and ISI against baseline, daytime function, driving, mood, adverse effects, adherence and goals. Earlier review after a sedative in frailty, respiratory disease, opioid use, alcohol dependence or occupational driving"],
+         ["<b>CBT-I progress</b>","<b>6–8 weeks</b>","Sleep efficiency above about 85% is a useful guide, not a universal target. Not improving → re-check the causes, depression and OSA"],
+         ["<b>Z-drug</b>","<b>At the agreed stop date</b>","Stopped, or the CBT-I conversation again — not a repeat"],
+         ["<b>Melatonin MR</b>","<b>By 13 weeks</b>","Stop if ineffective"],
+         ["<b>Daridorexant</b>","<b>Within 3 months</b>","Stop if response is inadequate; if continued, review periodically"],
+         ["<b>Tapering</b>","<b>Every 1–2 steps</b>","Symptoms versus pace"]
        ]},
        {b:"cards", items:[
-         {tone:"red", h:"📞 999 / same-day", html:"Suicidal crisis · acute mania (72+ h without sleep) · hypnotic overdose with alcohol (respiratory depression). Same-day GP: new suicidal ideation, mania symptoms, functional collapse from rebound insomnia mid-taper."},
-         {tone:"cream", h:"💬 Safety-net scripts", html:"“Drowsy the morning after a sleeping tablet — don't drive; if impaired it's the same offence as drink-driving.” · “These tablets stop working used nightly and get hard to stop — the stop date is on the packet.” · “Loud snoring with breathing pauses and daytime sleepiness needs a different assessment — and no sleeping tablets meanwhile.” · “If low mood or hopeless thoughts ride along with the bad nights, tell us — treating that treats the sleep.” · “Never with alcohol or strong painkillers — the combination suppresses breathing.”"}
+         {tone:"red", h:"📞 Urgent or same day", html:"Suicidal crisis · suspected mania · hypnotic overdose, especially with alcohol · new suicidal thoughts, or functional collapse mid-taper."},
+         {tone:"cream", h:"💬 Safety-net scripts", html:"“If you feel drowsy the morning after a sleeping tablet, don't drive.” · “These tablets tend to stop working if taken every night, and can be hard to stop — we've agreed the stop date.” · “Loud snoring with pauses in breathing and daytime sleepiness needs its own assessment — tell us.” · “If low mood or hopeless thoughts come with the bad nights, tell us.” · “Never with alcohol or strong painkillers.”"}
        ]}
      ]},
 
-    {id:"loop", nav:"Still not sleeping?", title:"Still not sleeping? Re-run this loop before any (more) tablets", sub:"The answer is usually on this list.",
+    {id:"loop", nav:"Still not sleeping?", title:"Still not sleeping? Re-run this loop before any more tablets",
      blocks:[
        {b:"cards", items:[
-         {tone:"amber", h:"1 · The thief", html:"OSA screened properly (STOP-BANG)? RLS + ferritin? Depression re-screened? Nocturia cause? Menopause?"},
-         {tone:"amber", h:"2 · Real CBT-I?", html:"Actual sleep restriction with a set window — or just a hygiene leaflet? Engagement checked?"},
-         {tone:"amber", h:"3 · Substances", html:"Afternoon caffeine, evening alcohol, cannabis withdrawal, nicotine — honestly counted?"},
-         {tone:"amber", h:"4 · Drug timing", html:"SSRI in the morning? Steroids early? Diuretic before 4pm? Beta-blocker dreams?"},
-         {tone:"amber", h:"5 · Rebound", html:"Recently stopped or reduced a sedative — is this withdrawal insomnia mislabelled as relapse?"},
-         {tone:"amber", h:"6 · The clock", html:"Shift worker or delayed-phase teenager? That's circadian, not insomnia — light timing and melatonin timing, a different toolkit. All addressed → the daridorexant criteria, or the sleep clinic."}
+         {tone:"amber", h:"1 · The cause", html:"OSA assessed properly? RLS and iron status? Mood re-checked? Nocturia, pain, menopause?"},
+         {tone:"amber", h:"2 · Real CBT-I?", html:"Structured sleep restriction or compression and stimulus control — or only a hygiene leaflet? Engagement checked?"},
+         {tone:"amber", h:"3 · Substances", html:"Caffeine, alcohol, cannabis, nicotine — honestly counted?"},
+         {tone:"amber", h:"4 · Medicine timing", html:"SSRI or steroid in the morning? Diuretic earlier in the day?"},
+         {tone:"amber", h:"5 · Rebound", html:"Recently reduced a sedative — withdrawal-related insomnia rather than relapse?"},
+         {tone:"amber", h:"6 · The clock", html:"Shift work or delayed phase? Circadian — a different toolkit. All addressed → daridorexant criteria, or the sleep service."}
        ]}
      ]},
 
-    {id:"refer", nav:"Refer", title:"Refer — who, when, how urgently", sub:"Sleep clinic and friends.",
+    {id:"refer", nav:"Refer", title:"Refer — who, when, how urgently",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Urgent / same-day", html:"Active suicidal ideation → crisis team/999 · suspected acute mania → same-day psychiatric assessment."},
-         {tone:"amber", h:"Sleep service (respiratory)", html:"STOP-BANG ≥3 or Epworth ≥10 → home oximetry or polysomnography — urgency up for professional drivers, HGV/PSV licences or road incidents. Also: severe parasomnias and circadian disorders resistant to primary-care measures."},
-         {tone:"amber", h:"Neurology", html:"Suspected narcolepsy (cataplexy — sudden bilateral weakness with emotion, hypnagogic hallucinations, sleep paralysis → MSLT; misdiagnosed for 8–10 years on average; DVLA implications). REM sleep behaviour disorder (acting out dreams — ~80% develop Parkinson's, Lewy body dementia or MSA within 10–15 years: a synucleinopathy prodrome needing monitoring). Refractory RLS after iron replacement (dopamine-agonist decisions + augmentation risk)."},
-         {tone:"blue", h:"Mental health", html:"Depression/anxiety/PTSD driving it (nightmares + hypervigilance = trauma-focused pathway, not hypnotics) · bipolar disorder · any risk. NHS Talking Therapies: CBT-I self-referral where commissioned, treating mood concurrently."},
-         {tone:"plain", h:"Refractory insomnia", html:"Chronic insomnia despite genuine CBT-I + the daridorexant consideration → sleep/insomnia clinic. Endocrine drivers (hyperthyroidism, Cushing's, menopause needing HRT) → the relevant specialty or the <a href='hrt-prescribing.html'>HRT protocol</a>."},
-         {tone:"plain", h:"Complex dependence", html:"High-dose or multi-drug sedative dependence, alcohol co-dependence, or failed structured tapers → community drug service / specialist prescribing support."},
-         {tone:"green", h:"GP manages", html:"The whole core pathway: the cause hunt, CBT-I coaching and digital referral, the gated prescriptions with stop dates, the taper programme, and the reviews."}
+         {tone:"red", h:"Urgent or same day", html:"Active suicidal intent or imminent risk → local crisis pathway · suspected mania → same-day mental-health assessment."},
+         {tone:"amber", h:"Sleep service", html:"Suspected OSA per NICE NG202, prioritising vocational drivers, safety-critical workers, near misses or unstable cardiovascular disease · severe parasomnias · circadian disorders not responding to primary-care measures."},
+         {tone:"amber", h:"Neurology or sleep medicine", html:"Suspected narcolepsy (cataplexy, sleep paralysis, hypnagogic hallucinations) — also a DVLA issue · probable REM sleep behaviour disorder · RLS needing specialist treatment decisions."},
+         {tone:"blue", h:"Mental health", html:"Depression, anxiety or PTSD driving the insomnia (nightmares with hypervigilance → trauma-focused care) · bipolar disorder · risk. NHS Talking Therapies where CBT-I is commissioned."},
+         {tone:"plain", h:"Refractory insomnia", html:"Chronic insomnia despite genuine CBT-I and consideration of daridorexant → sleep or insomnia service. Endocrine drivers → the relevant specialty or the <a href='hrt-prescribing.html'>HRT protocol</a>."},
+         {tone:"plain", h:"Complex dependence", html:"High-dose or multiple sedatives, alcohol co-dependence, or failed tapers → community drug service or specialist prescribing support."},
+         {tone:"green", h:"GP manages", html:"The cause assessment, CBT-I and digital referral, gated prescriptions with stop dates, the taper programme and the reviews."}
        ]}
      ]},
 
     {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only — the Casebook keeps the full teaching case.",
      blocks:[{b:"cards", cols:2, items:[
-       {tone:"cream", h:"Classic scenario", html:"A 48-year-old HGV driver requests 'more zopiclone' — started 8 months ago after his divorce, now nightly 7.5 mg plus two cans of lager to 'top it up'. He snores heavily (his new partner sleeps elsewhere), naps in the cab, and his collar size is 18. He is irritable about being asked anything beyond the repeat."},
-       {tone:"cream", h:"Examiner-style checkpoints", html:"Spots the triple hazard: nightly Z-drug + alcohol + probable OSA in a professional driver; runs <b>STOP-BANG and Epworth</b> and refers for a sleep study with the <b>DVLA/driving conversation documented</b>; screens <b>mood and suicide risk</b> given the divorce; declines the repeat without ambush — <b>the invitation framing</b> — and agrees a <b>diazepam-equivalent taper with CBT-I alongside</b>, warning that rebound is withdrawal, not relapse; addresses the <b>alcohol-as-sleep-aid trap</b> (rebound waking 3–4 h in); and books the 2-week review with a diary. <a href='../../cases/insomnia.html'>Open the full casebook chapter →</a>"}
+       {tone:"cream", h:"Classic scenario", html:"A 48-year-old HGV driver requests 'more zopiclone' — started 8 months ago after his divorce, now nightly 7.5 mg plus two cans of lager to 'top it up'. He snores heavily, naps in the cab, and his collar size is 18. He is irritable about being asked anything beyond the repeat."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises nightly Z-drug plus alcohol plus probable OSA in a vocational driver; assesses OSA features with Epworth and STOP-BANG as aids and refers urgently; advises that he must not drive while excessive sleepiness affects driving, and documents it; asks directly about mood and suicidal thoughts given the divorce; declines an automatic repeat without ambush and agrees a patient-paced reduction with CBT-I alongside; addresses alcohol as a sleep aid; books review with a sleep diary. <a href='../../cases/insomnia.html'>Open the full casebook chapter →</a>"}
      ]}]},
 
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>NICE TA922 \u2014 Daridorexant for chronic insomnia (2023)</b><br><a href="https://www.nice.org.uk/guidance/ta922" rel="noopener">nice.org.uk/guidance/ta922</a><span class="rd"> \u2014 the CBT-I gate, dosing, and the 3-month/12-week review-and-stop rules</span></li>'+
-         '<li><b>NICE MTG70 \u2014 Sleepio</b><span class="rd"> \u2014 digital CBT-I with face-to-face-comparable efficacy; Sleepstation and Sleepful.org.uk as alternatives</span></li>'+
-         '<li><b>Coventry &amp; Warwickshire APC CG046 insomnia pathway (Jan 2025)</b><span class="rd"> \u2014 the stepped-care gates operationalised: Z-drug 3\u20137 days, melatonin 13-week stop, daridorexant 12-week stop, ISI + agreed goals at initiation</span></li>'+
-         '<li><b>MHRA \u2014 Z-drug and benzodiazepine guidance</b><span class="rd"> \u2014 the 12-hour zopiclone driving impairment, the benzo+opioid respiratory-depression warning</span></li>'+
-         '<li><b>BAP sleep guidelines \u00b7 European Insomnia Guideline 2023 \u00b7 ICSD-3</b><span class="rd"> \u2014 the CBT-I effect sizes (d\u22480.9\u20131.0 vs 0.5\u20130.7 for hypnotics; hygiene alone ~0.2), definitions, and the differential framework</span></li>'+
-         '<li><b>NICE NG12 \u2014 Suspected cancer (updated May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 the lymphoma/leukaemia routes behind the night-sweats rule</span></li>'+
-         '<li><b>RLS Foundation UK \u00b7 BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 the ferritin threshold and dopamine-agonist cautions; verify all doses before prescribing</span></li>'+
+         '<li><b>NICE TA922 — Daridorexant for treating long-term insomnia</b><br><a href="https://www.nice.org.uk/guidance/ta922" rel="noopener">nice.org.uk/guidance/ta922</a><span class="rd"> — eligibility; assess within 3 months and stop if inadequate response</span></li>'+
+         '<li><b>NICE MTG70 — Sleepio to treat insomnia and insomnia symptoms</b><br><a href="https://www.nice.org.uk/guidance/mtg70" rel="noopener">nice.org.uk/guidance/mtg70</a><span class="rd"> — digital CBT-I in primary care</span></li>'+
+         '<li><b>NICE TA77 — Zaleplon, zolpidem and zopiclone for the short-term management of insomnia</b><br><a href="https://www.nice.org.uk/guidance/ta77" rel="noopener">nice.org.uk/guidance/ta77</a><span class="rd"> — no compelling difference; lowest-cost option</span></li>'+
+         '<li><b>NICE NG202 — Obstructive sleep apnoea/hypopnoea syndrome and obesity hypoventilation syndrome in over 16s</b><br><a href="https://www.nice.org.uk/guidance/ng202" rel="noopener">nice.org.uk/guidance/ng202</a><span class="rd"> — assess with two or more features; Epworth not the sole criterion</span></li>'+
+         '<li><b>DVLA — assessing fitness to drive: excessive sleepiness and OSA</b><span class="rd"> — must not drive until satisfactorily controlled</span></li>'+
+         '<li><b>Greater Manchester Medicines Management Group — formulary and benzodiazepine and Z-drug prescribing resource pack</b><span class="rd"> — zopiclone first choice, zolpidem alternative; melatonin position; short courses</span></li>'+
+         '<li><b>MHRA — zolpidem driving advice; benzodiazepines and opioids</b><span class="rd"> — 8-hour interval after 10 mg zolpidem; respiratory depression</span></li>'+
+         '<li><b>MHRA SPC — Quviviq (daridorexant)</b><span class="rd"> — contraindications, CYP3A4 interactions, 9-hour driving interval, abuse liability</span></li>'+
+         '<li><b>NHS Specialist Pharmacy Service — benzodiazepine dose equivalents</b><span class="rd"> — equivalences are approximate</span></li>'+
+         '<li><b>BAP consensus on insomnia · NICE NG12 (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — CBT-I first-line; lymphoma referral criteria</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Insomnia in adults \u2014 TA922 (daridorexant), MTG70 (Sleepio), the C&amp;W CG046 stepped-care pathway (Jan 2025), MHRA sedative guidance, BAP and the European Insomnia Guideline 2023, ICSD-3, and NICE NG12 (May 2025) for the night-sweats routes. Assessment and management are merged on this page; the former algorithm is retired. Cross-links: benzodiazepine &amp; Z-drug weaning, depression, HRT, OSA. Verify every dose against the current BNF before prescribing."
+  foot:"Insomnia in adults. Look for the dangerous and treatable causes first; ask about mood and suicidal thoughts when insomnia is severe or persistent — PHQ-9 item 9 is not a risk assessment. Assess for OSA with two or more features (NICE NG202); excessive sleepiness affecting driving means no driving until controlled (DVLA). CBT-I, face-to-face or digital (NICE MTG70), is first-line for chronic insomnia. Hypnotics: lowest dose, shortest course, agreed stop date — zopiclone first choice under the Greater Manchester formulary. Melatonin MR for eligible over-55s where locally supported; daridorexant per NICE TA922, reviewed within 3 months. Long-term users: patient-paced tapering with CBT-I; never stop abruptly. Sources: NICE TA922, MTG70, TA77, NG202, NG12; DVLA; MHRA; Greater Manchester formulary; SPS; BAP. Verify every dose against the current BNF."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

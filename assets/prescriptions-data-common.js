@@ -71,9 +71,9 @@ Safety-net/2WW: dysphagia, weight loss, GI bleed, vomiting, ≥55 new dyspepsia.
       'Don\u2019t ignore the urge to go; consider a footstool to aid posture.',
       'Return if no bowel movement with abdominal pain/vomiting/distension, blood in stool, or unexplained change in bowel habit.',
     ],
-    followUp: 'Review response; taper laxatives gradually once regular. Persistent/new change ≥60 or red flags → investigate.',
+    followUp: 'Review response; taper laxatives gradually once regular. Persistent or new change in bowel habit, or red flags → FIT and investigate.',
     redFlags: [
-      'New change in bowel habit ≥60, rectal bleeding, weight loss, abdominal/rectal mass, iron-deficiency anaemia → 2WW colorectal.',
+      'New change in bowel habit, rectal bleeding, weight loss or iron-deficiency anaemia → FIT (NICE NG12), 2WW if ≥10 µg Hb/g; abdominal/rectal mass → 2WW.',
       'Vomiting + distension + no flatus → obstruction (admit).',
     ],
     emisText: `Constipation (no red flags):

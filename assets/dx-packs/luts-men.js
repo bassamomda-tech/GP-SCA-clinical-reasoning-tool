@@ -24,7 +24,7 @@
   if (window.RGPTriage) RGPTriage.register('luts-men-triage', {
     title: 'LUTS in men — triage',
     subtitle: 'Tick features. Surfaces retention, prostate-cancer 2WW and infection pathways.',
-    guideline: 'NICE NG97 · NG12',
+    guideline: 'NICE CG97 · NG12',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Assess with IPSS, urine dip, PR exam, U&E and PSA (after counselling); manage by predominant symptom (conservative → alpha-blocker / 5-ARI / antimuscarinic).',
     rules: [
@@ -33,7 +33,7 @@
         label: 'Acute urinary retention, or chronic retention with renal impairment',
         action: 'Catheterise (same-day); acute retention → urology; check U&E for obstructive AKI.',
         patientPhrase: '"Your bladder is not emptying — we need to relieve it today and check the kidneys."',
-        source: 'NICE NG97',
+        source: 'NICE CG97',
         when: i => i.retention,
       },
       {
@@ -62,7 +62,7 @@
         id: 'manage', tier: 'routine',
         label: 'Uncomplicated LUTS — assess & manage by symptom',
         action: 'IPSS, frequency-volume chart; lifestyle; alpha-blocker (voiding), antimuscarinic (storage), 5-ARI if large prostate.',
-        source: 'NICE NG97',
+        source: 'NICE CG97',
         when: i => true,
       }
     ],
@@ -75,7 +75,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('luts-men-dx', {
     title: 'LUTS in men — differential',
     subtitle: 'The engine weights BPH, overactive bladder, prostatitis/UTI and polyuria, and always surfaces prostate cancer and retention when triggered.',
-    guideline: 'NICE NG97',
+    guideline: 'NICE CG97',
     patientPresenting: "I'm up several times a night to pass water, doctor, and my stream isn't what it was.",
     inputs: INPUTS,
     diagnoses: [

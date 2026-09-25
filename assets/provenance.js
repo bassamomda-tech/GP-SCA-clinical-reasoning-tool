@@ -233,6 +233,11 @@ function build(){
 
   var next = parseDate(nextOverride) || (rev ? addMonths(rev, cycle) : null);
 
+  /* Keep the footer stamp in step with the strip, so a page never shows two different review dates. */
+  try{ var rf=document.querySelector('.rgp-reviewed');
+    if(rf && rev){ rf.innerHTML='<b>Reviewed: '+fmt(rev)+'</b>'+(next?' \u00b7 next review due '+fmt(next):'')+' \u00b7 citations verified against the named sources'; }
+  }catch(e){}
+
   var state = 'unrecorded', word = 'Review not recorded', glyph = '–';
   if(rev && next){
     var days = Math.round((next.d - new Date()) / 86400000);
@@ -288,8 +293,8 @@ function build(){
   }
   var chipHtml = chips.map(function(c){
     var u = niceUrl(c);
-    return u ? '<a class="pv-chip" href="' + u + '" target="_blank" rel="noopener">' + esc(c) + '</a>'
-             : '<span class="pv-chip">' + esc(c) + '</span>';
+    return u ? '<a class="pv-chip" href="' + u + '" target="_blank" rel="noopener" title="' + esc(c) + '">' + esc(c) + '</a>'
+             : '<span class="pv-chip" title="' + esc(c) + '">' + esc(c) + '</span>';
   }).join('');
 
   var srcRow = '<div class="pv-row pv-src"><span class="pv-lbl">Anchored to</span>'

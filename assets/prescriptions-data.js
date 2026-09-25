@@ -150,7 +150,7 @@ Counsel: restart hormonal contraception 5 days after UPA / next day after LNG. P
     ],
     counselling: [
       'Take triptan at the FIRST sign of pain — not aura.',
-      'Combine triptan + NSAID for additive effect (NICE NG150).',
+      'Combine triptan + NSAID for additive effect (NICE CG150).',
       'Avoid using > 10 days/month — risk of medication-overuse headache.',
       'Headache diary helps identify triggers and frequency.',
       'Avoid caffeine and reduce screen / stress triggers.',
@@ -167,7 +167,7 @@ Counsel: restart hormonal contraception 5 days after UPA / next day after LNG. P
 COUNSEL: take triptan EARLY in attack; avoid > 10 days/month use (MOH risk); keep a headache diary; review in 4 wks.`,
     sources: [
       { label:'NICE CG150 — Headaches in over 12s', url:'https://www.nice.org.uk/guidance/cg150' },
-      { label:'NICE NG150 Headaches', url:'https://www.nice.org.uk/guidance/cg150' },
+      { label:'NICE CG150 Headaches', url:'https://www.nice.org.uk/guidance/cg150' },
     ],
   },
 
@@ -210,7 +210,7 @@ COUNSEL: take triptan EARLY in attack; avoid > 10 days/month use (MOH risk); kee
 COUNSEL: review at 3 months; aim ≥ 50% reduction; keep diary; lifestyle measures.`,
     sources: [
       { label:'NICE CG150 — Headaches in over 12s', url:'https://www.nice.org.uk/guidance/cg150' },
-      { label:'NICE NG150', url:'https://www.nice.org.uk/guidance/cg150' },
+      { label:'NICE CG150', url:'https://www.nice.org.uk/guidance/cg150' },
       { label:'MHRA Topiramate pregnancy warning 2024', url:'https://www.gov.uk/government/publications/topiramate-introduction-of-new-safety-measures' },
     ],
   },

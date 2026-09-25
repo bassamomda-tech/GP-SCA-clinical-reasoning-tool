@@ -49,7 +49,7 @@
     ],
     learning:'An angry complaint consultation is three consultations wearing one voice: the procedural (give the complaints route fully, fast and undefensively — it is her right), the collegial (neither trash nor whitewash a colleague; commit to significant-event review and be honest that reflux-pattern symptoms without red flags genuinely mimic reflux), and the human — the hidden agenda. Here it is double: witnessed-arrest trauma slammed shut ("I\u2019m not doing tears") and exported guilt ("I gave him my Gaviscon"). Meet both, then convert the energy into the living work: post-MI rehab and mood for him, acute-stress care for her, and a dated follow-up.',
     knowledge:{
-      guideline:'NHS complaints procedure · GMC Good Medical Practice (candour, colleagues) · NICE CG172 secondary prevention post-MI',
+      guideline:'NHS complaints procedure · GMC Good Medical Practice (candour, colleagues) · NICE NG185 secondary prevention post-MI',
       points:[
         { h:'Diagnose the consultation', t:'Anger this organised is usually carrying something: here, witnessed cardiac arrest of a spouse (acute stress reaction — insomnia, intrusive replay) plus exported guilt (her own fortnight of "stop fussing"). The complaint is real AND it is a vehicle. Treat all three layers.' },
         { h:'The complaints route — give it properly', t:'Practice complaints procedure: practice manager, written acknowledgement, investigation, written response within agreed timescales; escalation to the ICB or Parliamentary & Health Service Ombudsman if unsatisfied. Complaining must cost the patient nothing relationally — say so explicitly.' },

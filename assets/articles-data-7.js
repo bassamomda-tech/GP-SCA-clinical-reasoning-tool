@@ -199,11 +199,11 @@
       'Support lifestyle risk reduction: stop smoking, reduce alcohol and processed meat, maintain a healthy weight and be active',
       'Provide information, manage symptoms, and coordinate surveillance/follow-up after treatment'],
     referral:[
-      'NICE NG12 2WW colorectal pathway: refer adults with an abdominal/rectal mass; aged ≥40 with abdominal pain + unexplained weight loss; aged ≥50 with unexplained rectal bleeding; aged ≥60 with iron-deficiency anaemia or a change in bowel habit; and use FIT (≥10 µg Hb/g) to support urgent referral in other symptomatic adults',
+      'NICE NG12 colorectal pathway: offer FIT for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, an abdominal mass, or anaemia at 60+ → 2WW if FIT ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT',
       'Suspected bowel obstruction or significant GI bleeding → emergency admission',
       'Positive screening FIT → colonoscopy via the screening programme',
       'Suspected Lynch syndrome/FAP → clinical genetics'],
-    source:'NICE NG12 / NICE DG56 (FIT) / NHS Bowel Cancer Screening' },
+    source:'NICE NG12 / NICE HTG690 (FIT) / NHS Bowel Cancer Screening' },
 
   { id:'breast-cancer', title:'Breast cancer', category:'Women’s health', icon:'🎗️',
     overview:'The commonest cancer in women in the UK (and a rare but real diagnosis in men). Early detection through screening and prompt referral of symptomatic patients markedly improves outcomes. The primary-care role is examination, recognising the NICE NG12 referral criteria, and supporting risk assessment for those with a family history.',

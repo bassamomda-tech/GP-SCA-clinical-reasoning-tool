@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Blurry / Reduced Vision
-   Shared-id triage + differential. NICE NG12 (GCA).
+   Shared-id triage + differential. BSR 2020 (GCA).
    ============================================ */
 (function () {
   const INPUTS = [

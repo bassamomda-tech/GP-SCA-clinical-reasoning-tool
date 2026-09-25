@@ -349,7 +349,7 @@
       'Ensure patients understand and attend their surveillance colonoscopies',
       'Safety-net for new symptoms between surveillance episodes'],
     referral:[
-      'Colorectal symptoms meeting NICE NG12 thresholds → 2WW colorectal pathway: e.g. ≥40 with abdominal pain + weight loss; ≥50 with unexplained rectal bleeding; ≥60 with iron-deficiency anaemia or change in bowel habit; use FIT (≥10 µg Hb/g) to guide urgent referral in symptomatic patients',
+      'Colorectal symptoms (NICE NG12): offer FIT for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, an abdominal mass, or anaemia at 60+ → 2WW if FIT ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT',
       'Polyps found → colonoscopic polypectomy and histology, then risk-based surveillance',
       'Suspected hereditary polyposis / Lynch syndrome → clinical genetics + specialist surveillance',
       'Positive screening FIT → colonoscopy via the screening programme'],

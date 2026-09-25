@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Vision Loss
-   Shared-id triage + differential. NICE NG12 (GCA) · stroke.
+   Shared-id triage + differential. BSR 2020 (GCA) · stroke.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,7 +22,7 @@
   if (window.RGPTriage) RGPTriage.register('vision-loss-triage', {
     title: 'Vision loss — triage',
     subtitle: 'Tick features. Vision loss is an emergency until proven otherwise — surfaces GCA, occlusion, detachment, stroke.',
-    guideline: 'NICE NG12 · NG128',
+    guideline: 'BSR 2020 GCA · NICE NG128',
     inputs: INPUTS,
     defaultMessage: 'Sudden vision loss is sight-threatening — arrange same-day emergency ophthalmology unless clearly chronic/refractive. Always check acuity, pupils (RAPD), fields and fundus.',
     rules: [
@@ -73,7 +73,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('vision-loss-dx', {
     title: 'Vision loss — differential',
     subtitle: 'The engine sorts by tempo and character — surfacing GCA, retinal artery/vein occlusion, retinal detachment, optic neuritis and stroke, and treating amaurosis fugax as a TIA.',
-    guideline: 'NICE NG12 · NG128',
+    guideline: 'BSR 2020 GCA · NICE NG128',
     patientPresenting: "I've suddenly lost vision in one eye, doctor.",
     inputs: INPUTS,
     diagnoses: [

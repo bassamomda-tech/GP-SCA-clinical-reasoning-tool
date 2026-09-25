@@ -4,230 +4,211 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Raynaud's Phenomenon — Protocol · Reasoning GP</title>
-<meta name="description" content="Raynaud's in one page: screen for critical digital ischaemia and systemic disease, confirm the triphasic colour change, separate primary from secondary (age, symmetry, nailfold capillaries, ANA), investigate only where it changes management, then lifestyle first and nifedipine MR for troublesome attacks — with the specialist therapies and referral thresholds set out." />
+<meta name="description" content="Raynaud's phenomenon in primary care: critical digital ischaemia and ulcers, primary versus secondary classification, selective investigation, lifestyle first, nifedipine for troublesome attacks, specialist therapy for secondary disease, and hand–arm vibration syndrome." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/raynauds.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790196272852298 tools/management/raynauds.html">
+<meta name="omelette-print-source" content="v1790316534730122 tools/management/raynauds.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Raynaud's protocol">
 <doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
   icon:"🥶",
   title:"Raynaud's phenomenon — the complete guide",
-  eyebrow:"Protocol · assess &amp; manage in one place",
-  stemTitle:"Primary or secondary decides everything — and the nailfold is the best bedside test you are not doing",
-  stemSub:"One page for the whole condition. Screen for critical digital ischaemia and the systemic disease that Raynaud's often announces; confirm the triphasic colour change; then classify primary versus secondary on age, symmetry, tissue damage, nailfold capillaries and ANA — because primary is benign and managed with warmth, while secondary may be early systemic sclerosis with a closing window for disease modification. Investigate only where it changes management, treat lifestyle-first, and use nifedipine MR when attacks are troublesome. BSR · Cochrane.",
-  guideline:"BSR · Cochrane",
-  reviewed:"8 September 2026",
-  nextReview:"8 March 2027",
+  eyebrow:"Protocol · adults · assess &amp; manage in one place",
+  stemTitle:"Primary or secondary decides the plan — and critical digital ischaemia decides the urgency",
+  stemSub:"One page for the whole condition. Screen for critical digital ischaemia, digital ulcers and features of connective tissue disease; confirm episodic colour change with cold or stress; then classify primary versus secondary on age at onset, symmetry, tissue damage, nailfold changes and ANA. Primary Raynaud's is common and benign and is managed with warmth and trigger avoidance; secondary Raynaud's, most often systemic sclerosis, needs rheumatology. Investigate where it changes management, and use nifedipine — the only medicine licensed for Raynaud's in the UK — when attacks are troublesome despite lifestyle measures.",
+  guideline:"BSR systemic sclerosis guideline (2024) · EULAR SSc recommendations (2023) · PCDS · nifedipine SPCs · HSE (HAVS) · NHS England commissioning policy · BNF",
+  reviewed:"25 September 2026",
+  nextReview:"25 September 2027",
   meta:[
-    {t:"British Society for Rheumatology"},
-    {t:"Cochrane reviews · BNF"},
-    {t:"2WW · NG12 criteria that surface here", tone:"tw"},
-    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+    {t:"Critical ischaemia or gangrene → same day", tone:"tw"},
+    {t:"Nifedipine: licensed, prescribe MR by brand", tone:"ok"},
+    {t:"v2.1 · reviewed Sep 2026", tone:"ok"}
   ],
-  lead:"<div class='mg-layers'><a href='#severe'><b>Red flags</b><small>Ulcers · asymmetry · systemic</small></a><a href='#classify'><b>Classify</b><small>Primary vs secondary</small></a><a href='#ladder'><b>Treat</b><small>Warmth first, then nifedipine</small></a><a href='#refer'><b>Refer</b><small>Vascular · rheumatology</small></a></div>",
+  lead:"<div class='mg-layers'><a href='#severe'><b>Red flags</b><small>Ischaemia · ulcers · systemic</small></a><a href='#classify'><b>Classify</b><small>Primary vs secondary</small></a><a href='#lifestyle'><b>Lifestyle</b><small>First-line</small></a><a href='#ladder'><b>Drugs</b><small>Nifedipine, then specialist</small></a><a href='#refer'><b>Refer</b><small>Rheumatology · vascular</small></a></div>",
   quickSub:"If you read nothing else on this page, read these six cards. Every figure traces to the source cited under <a href='#provenance'>Evidence</a>.",
   quick:[
-    {tone:"red", h:"⚠ Digital ulceration or gangrene is a same-day referral", html:"Tissue loss, black necrotic areas or non-healing fingertip ulcers → same-day vascular surgery: critical limb ischaemia can cause irreversible tissue damage within hours. Systemic sclerosis carries a 40% digital-ulcer risk; 30% of SSc patients develop digital ulcers and 10% require amputation. Sudden severe pain with a cold pale digit not responding to warming within 30 minutes → acute arterial occlusion, 999."},
-    {tone:"amber", h:"Asymmetry is not Raynaud's until proven otherwise", html:"Unilateral or single-digit involvement is atypical for primary Raynaud's and suggests a structural vascular abnormality (atherosclerosis, embolism, thoracic outlet compression) → 2-week vascular assessment with imaging to exclude occlusion. Primary disease is bilateral and symmetrical, fingers more than toes, with the thumbs often spared — because digital arteries there have less sympathetic innervation."},
-    {tone:"blue", h:"Age at onset is the strongest predictor", html:"Primary Raynaud's affects 3–5% of the population and accounts for 90% of all cases, with a benign prognosis; it rarely develops after age 40. Age at onset is the strongest predictor: onset under 30 (&lt;30 years) is 95% primary, while onset over 40 (&gt;40 years) is 50% secondary. Primary Raynaud's has a low risk of progression to CTD (&lt;1%, and up to 1–2% across series, over 10 years) — but that is exactly why new ulcers, asymmetry or systemic features in a “known primary” patient mandate urgent reassessment."},
-    {tone:"green", h:"Nailfold capillaroscopy — the best bedside test, done with a dermatoscope", html:"Use a dermatoscope or ophthalmoscope at 10–40× magnification. Normal: regular parallel loops. Abnormal: dilated loops, dropout (avascular areas), haemorrhages → refer rheumatology. Abnormal capillaries have 92% sensitivity for systemic sclerosis and predict progression to definite CTD in 80% at 5 years; normal capillaries virtually exclude significant CTD (99% negative predictive value)."},
-    {tone:"purple", h:"Lifestyle IS the treatment — and core warmth beats hand warmth", html:"Lifestyle modification can reduce attack frequency by 50%, and 60% of patients improve with lifestyle alone. Maintain core temperature, not just the extremities — sympathetic vasoconstriction is triggered by core hypothermia; wearing a hat (30% of body heat is lost through the head) reduces digital vasospasm frequency by 30%. Never plunge cold hands into hot water — it causes painful reactive hyperaemia and can trigger chilblains; rewarm gradually with lukewarm water."},
-    {tone:"teal", h:"Nifedipine MR — the only CCB with RCT evidence, and stop it in summer", html:"Nifedipine MR 30 mg OD (up to 60 mg) reduces attack frequency by 30–40% and severity by 30%, NNT 6; the modified-release formulation has fewer side effects than immediate-release. Start in October before winter; check BP at 2 weeks; warn about ankle swelling (20%), headache (15%) and flushing. Step the dose down or stop in the warmer months (April–September) and restart in October — this improves adherence and reduces the oedema burden."}
+    {tone:"red", h:"⚠ Critical digital ischaemia is an emergency", html:"New digital ulceration, tissue necrosis or gangrene, persistent severe pain, or a digit that stays pale or blue and does not reperfuse with gentle warming → <b>urgent same-day clinical assessment</b>, contacting the local vascular, rheumatology/systemic sclerosis or acute medical service according to the findings. Suspected acute arterial occlusion or critical limb ischaemia → emergency vascular assessment. BSR 2024: severe digital vasculopathy with new necrosis or critical ischaemia is an emergency needing assessment, preferably within 48 hours."},
+    {tone:"amber", h:"Asymmetry is atypical", html:"Asymmetry, single-digit involvement, abnormal pulses or an abnormal Allen test are atypical for primary Raynaud's — consider embolism or occlusion, atherosclerosis, hypothenar hammer syndrome, thoracic outlet disease, thromboangiitis obliterans, trauma or vibration injury. Arrange vascular assessment or imaging with urgency set by pain, colour persistence, tissue loss, pulses and progression; emergency advice if acute ischaemia is suspected."},
+    {tone:"blue", h:"Age at onset and the features decide primary versus secondary", html:"Primary Raynaud's is more likely with young onset, bilateral symmetrical attacks, no tissue damage, a normal examination and no systemic features. Consider secondary disease at any age — particularly with later onset, male sex, asymmetry, severe or progressive symptoms, ulcers or pitting scars, puffy fingers, sclerodactyly, abnormal nailfolds or pulses, or symptoms of connective tissue disease. No single feature — age, ANA titre or asymmetry — decides it alone."},
+    {tone:"green", h:"Lifestyle is first-line for everyone", html:"Keep the whole body warm; gloves or heated mittens; avoid known triggers and sudden cold; rewarm numb digits gradually with warm — not scalding — water and avoid direct heat, because burns can occur when sensation is reduced; stop smoking; review triggering medicines and decongestants."},
+    {tone:"green", h:"Nifedipine when attacks are troublesome", html:"A long-acting dihydropyridine calcium-channel blocker — usually nifedipine, the only medicine licensed for Raynaud's in the UK (amlodipine is an alternative). Start low and titrate against response, BP and the specific product information; do not interchange modified-release preparations. Common effects: headache, flushing, dizziness, hypotension, peripheral oedema. Seasonal use is an optional, patient-led choice."},
+    {tone:"amber", h:"Secondary disease and digital ulcers are specialist-led", html:"PDE-5 inhibitors (sildenafil or tadalafil) for refractory or systemic sclerosis-associated Raynaud's and digital ulcer healing; IV prostanoids (iloprost) for severe disease; bosentan to prevent new digital ulcers in systemic sclerosis — all specialist-started, with specialist wound care. <b>PDE-5 inhibitors must never be combined with nitrates.</b>"}
   ],
-  pathwaySub:"The whole consultation in five moves. The red step catches both the dying digit and the early scleroderma.",
+  pathwaySub:"The whole consultation in five moves.",
   pathway:[
-    {title:"Screen for critical ischaemia and systemic disease", html:"Digital ulceration or gangrene → same-day vascular surgery. Severe pain or permanent colour change → same-day (acute arterial occlusion). Asymmetric or single-digit → 2-week vascular. Systemic symptoms (weight loss, fever, arthralgia, rash, muscle weakness) → 2-week rheumatology. Digital pitting or sclerodactyly → urgent rheumatology. Onset over 40, especially male smokers → urgent rheumatology for early systemic sclerosis or vasculitis. Rapidly progressive → routine rheumatology.", alert:true},
-    {title:"Confirm the diagnosis clinically", html:"Triphasic colour change — white (pallor) → blue (cyanosis) → red (hyperaemia), episodes lasting 15–20 minutes, though not all patients have all three phases. Triggers: cold, emotional stress, vibration. Bilateral, symmetrical, fingers more than toes, thumbs often spared, palms and soles spared. Ask for photographs of attacks and a symptom diary (frequency, severity 0–10, duration, triggers, functional impact). Take a drug and occupational history."},
-    {title:"Classify primary versus secondary", html:"Primary: onset in the teens–20s, symmetrical, no tissue damage, normal nailfold capillaries, negative ANA. Secondary: onset over 30, asymmetric, digital ulcers or pitting scars, abnormal capillaries, positive autoantibodies, systemic symptoms — commonest cause systemic sclerosis, then SLE, RA, Sjögren's, MCTD and vasculitis. Also consider drug-induced, hand–arm vibration syndrome, hypothyroidism, carpal tunnel, thoracic outlet, cryoglobulinaemia, hepatitis C and haematological causes."},
-    {title:"Examine and investigate selectively", html:"BP both arms, pulses, hands and feet for ulcers, pitting, calcinosis and sclerodactyly, nailfold capillaries, Allen's test, skin (telangiectasia, malar rash, livedo), systemic signs, and carpal tunnel/thoracic outlet tests. Bloods only if over 30 or red flags: FBC, ESR/CRP, ANA, TFTs ± protein electrophoresis. Do NOT investigate typical primary Raynaud's in young women."},
-    {title:"Treat lifestyle-first, then nifedipine, and review", html:"Warmth, trigger avoidance, smoking cessation and culprit-drug review for everyone. Nifedipine MR 30 mg OD for moderate–severe attacks or functional impairment, up to 60 mg. Review at 2 and 6 weeks, then 3–6-monthly with seasonal dose adjustment. Refer refractory or secondary disease."}
+    {title:"Screen for critical ischaemia and systemic disease", html:"Non-recovering or necrotic digit → same-day emergency. Digital ulcer → urgent. Asymmetry → urgent vascular. Systemic or CTD features → urgent rheumatology.", alert:true},
+    {title:"Confirm the diagnosis", html:"Episodic, well-demarcated colour change (white, then often blue and red) with cold or emotional stress; photographs and a diary help."},
+    {title:"Classify primary versus secondary", html:"Age at onset, symmetry, tissue damage, nailfold changes, ANA, systemic features, drugs and occupation."},
+    {title:"Examine and investigate selectively", html:"Pulses and both-arm BP; hands for ulcers, pitting and sclerodactyly; bloods when onset is later or features suggest secondary disease."},
+    {title:"Lifestyle first, then nifedipine; review", html:"Refer secondary disease, digital ulcers and refractory symptoms."}
   ],
   sections:[
-    {id:"severe", nav:"Red flags", title:"Red flags — critical limb ischaemia and systemic disease", sub:"Exclude emergency vascular compromise and the secondary causes needing urgent specialist input.",
+    {id:"severe", nav:"Red flags", title:"Red flags — critical ischaemia and systemic disease",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"🔴 Digital ulceration / gangrene", html:"Tissue loss, black necrotic areas, non-healing fingertip ulcers → same-day vascular surgery referral (critical limb ischaemia)."},
-         {tone:"red", h:"🔴 Severe pain / permanent colour change", html:"Persistent cyanosis, or severe burning pain not relieved by warming → same-day assessment (acute arterial occlusion)."},
-         {tone:"amber", h:"🟠 Asymmetric symptoms", html:"Unilateral or single-digit involvement → 2-week vascular assessment (arterial occlusion, thoracic outlet syndrome)."},
-         {tone:"amber", h:"🟠 Systemic symptoms", html:"Weight loss, fevers, arthralgia, rash, muscle weakness → 2-week rheumatology (connective tissue disease, vasculitis)."},
-         {tone:"amber", h:"🟠 Digital pitting / sclerodactyly", html:"Tight shiny skin on the fingers, loss of fingertip pulp → urgent rheumatology (systemic sclerosis)."},
-         {tone:"amber", h:"🟠 Onset over 40 — especially male smokers", html:"→ urgent rheumatology (early systemic sclerosis, vasculitis). Young males with severe Raynaud's have a higher risk of underlying connective tissue disease than the typical primary demographic of young women with mild symptoms."},
-         {tone:"blue", h:"🔵 Rapidly progressive", html:"Increasing frequency or severity over weeks, new functional impairment → routine rheumatology (secondary Raynaud's)."},
-         {tone:"plain", h:"⚪ Unilateral facial or ear symptoms", html:"One-sided face, ear or nose involvement → routine ENT or neurology (temporal arteritis, neurological cause)."}
-       ]},
-       {b:"why", html:"Critical limb ischaemia can lead to irreversible tissue damage within hours, and digital ulcers suggest severe underlying vasculopathy — systemic sclerosis carries a 40% digital-ulcer risk. Missing early systemic sclerosis delays disease-modifying treatment. Asymmetric presentation is atypical for primary Raynaud's and suggests a structural vascular abnormality; single-digit involvement warrants imaging to exclude occlusion."}
-     ]},
-
-    {id:"confirm", nav:"Confirm", title:"Confirmation — the targeted history", sub:"Raynaud's is a clinical diagnosis. Confirm the classic triphasic colour change and the triggers.",
-     blocks:[
-       {b:"table", head:["Feature","Detail","Why"], rows:[
-         ["<b>Classic features</b>","Triphasic colour change: white (pallor) → blue (cyanosis) → red (hyperaemia). Not all patients have all three phases. Episodes last 15–20 minutes","Pathognomonic — sequential arteriolar vasospasm (white), deoxygenated blood pooling (blue) and reperfusion (red). Some report only white or blue; the red phase may be a painful burning sensation"],
-         ["<b>Triggers</b>","Cold exposure, emotional stress, vibration. Ask about occupational triggers (tools, typing)","Directs both avoidance advice and the HAVS question"],
-         ["<b>Distribution</b>","Bilateral and symmetrical; fingers more than toes; thumbs often spared; typically spares the palm and sole","Bilateral symmetry distinguishes primary from secondary — structural vascular lesions cause asymmetry. Thumb sparing occurs because those digital arteries have less sympathetic innervation"],
-         ["<b>Symptom diary</b>","Ask the patient to photograph attacks and record frequency, severity (0–10), duration, triggers and functional impact; bring it to the next appointment","Photographic evidence is invaluable — many patients struggle to describe episodes, and the diary quantifies treatment response"],
-         ["<b>Drug history</b>","Beta-blockers, chemotherapy (bleomycin, cisplatin), ergot derivatives, clonidine, interferon, cocaine, amphetamines — all can cause or worsen Raynaud's","<b>Symptoms may resolve 2–4 weeks after stopping the culprit</b>"],
-         ["<b>Occupational</b>","Vibrating tools (drill, chainsaw), repetitive trauma (typing, manual labour)","<b>May qualify for industrial injuries benefit</b>"]
+         {tone:"red", h:"🔴 Acute digital ischaemia", html:"Persistent painful pallor or cyanosis that does not reperfuse with gentle warming, tissue necrosis or gangrene, or absent or markedly reduced pulses → urgent same-day assessment; suspected arterial occlusion or critical limb ischaemia → emergency vascular."},
+         {tone:"red", h:"🔴 New or non-healing digital ulcer", html:"Urgent same-day clinical assessment via the local rheumatology/systemic sclerosis, vascular or acute service according to the findings — BSR 2024 treats new necrosis as needing assessment preferably within 48 hours."},
+         {tone:"amber", h:"🟠 Asymmetric or single-digit", html:"Vascular assessment or imaging, with urgency set by severity and the examination findings."},
+         {tone:"amber", h:"🟠 Features of connective tissue disease", html:"Puffy fingers, sclerodactyly or skin tightening or itching, telangiectasia, calcinosis, reflux or dysphagia, breathlessness, cough or reduced exercise tolerance, inflammatory arthritis, rash, proximal weakness, sicca symptoms, or unexplained weight loss → rheumatology, with urgency set by severity and the local pathway."},
+         {tone:"blue", h:"🔵 Later onset or worsening", html:"Later onset, or a known 'primary' pattern that becomes more severe or develops new features → directed investigation for secondary disease; refer if found."}
        ]}
      ]},
 
-    {id:"classify", nav:"Classify", title:"Classification — primary versus secondary", sub:"This distinction determines investigation, treatment and referral. Primary is benign; secondary may be the first sign of connective tissue disease.",
+    {id:"confirm", nav:"Confirm", title:"Confirm — the targeted history",
      blocks:[
-       {b:"table", head:["Feature","Primary (benign)","Secondary (worrying)"], rows:[
-         ["<b>Onset</b>","<b>Younger (teens–20s)</b>","<b>Older (&gt;30)</b>"],
-         ["<b>Pattern</b>","<b>Symmetrical, no tissue damage</b>","<b>Asymmetrical, ulcers or pitting scars</b>"],
-         ["<b>Nailfold capillaries / ANA</b>","<b>Normal / negative</b>","<b>Abnormal / positive autoantibodies</b>"],
-         ["<b>Association</b>","None. Prevalence 3–5% of the population, 90% of all Raynaud's cases, benign prognosis","Connective-tissue disease — systemic sclerosis (most common), SLE, rheumatoid arthritis, Sjögren's, mixed connective tissue disease, vasculitis. Requires investigation"]
-       ]},
-       {b:"table", head:["Other category","Detail","Action"], rows:[
-         ["<b>Drug-induced</b>","Beta-blockers, chemotherapy (cisplatin, bleomycin), interferon, clonidine, ergotamine","Review medication and consider alternatives — symptoms may resolve 2–4 weeks after cessation"],
-         ["<b>Occupational — hand–arm vibration syndrome (HAVS)</b>","<b>Requires more than 5 years of vibration-tool use</b>","HSE notification, occupational health referral, advise on compensation claims"],
-         ["<b>Other causes</b>","Hypothyroidism, carpal tunnel syndrome, thoracic outlet syndrome, cryoglobulinaemia, hepatitis C, haematological (polycythaemia, thrombocytosis)","Investigate as the history directs"]
-       ]},
-       {b:"why", html:"Age at onset is the strongest predictor — primary Raynaud's rarely develops after 40, and onset over 40 carries around a 50% chance of secondary disease. Secondary Raynaud's carries significant morbidity: 30% of systemic sclerosis patients develop digital ulcers and 10% require amputation. Early rheumatology input enables disease-modifying treatment (methotrexate, mycophenolate) before irreversible fibrosis. Connective tissue disease screening is cost-effective in new-onset Raynaud's over 30; a positive ANA has high sensitivity for systemic sclerosis but low specificity, and abnormal nailfold capillaries predict progression to definite CTD in 80% at 5 years."}
-     ]},
-
-    {id:"exam", nav:"Examination", title:"Examination — vascular and systemic disease", sub:"Focus on digital perfusion, tissue damage and signs of underlying connective tissue disease.",
-     blocks:[
-       {b:"table", head:["What","How / findings","Significance"], rows:[
-         ["<b>Vital signs</b>","BP in both arms (a difference over 20 mmHg suggests subclavian stenosis), radial pulse symmetry, temperature","Screens for structural arterial disease"],
-         ["<b>Hands and feet</b>","Digital ulcers, pitting scars, gangrene, calcinosis, sclerodactyly (tight shiny skin), nailfold changes","<b>Tissue damage = secondary Raynaud's requiring rheumatology referral</b>"],
-         ["<b>Nailfold capillaries</b>","Dermatoscope or ophthalmoscope at 10–40× magnification. Normal: regular parallel loops. Abnormal: dilated loops, dropout (avascular areas), haemorrhages","Abnormal → refer rheumatology. 92% sensitivity for systemic sclerosis; normal capillaries virtually exclude significant CTD (99% NPV)"],
-         ["<b>Vascular examination</b>","Allen's test (ulnar and radial artery patency), brachial/radial/ulnar pulses, capillary refill time (&lt;2 seconds is normal), Buerger's test (pallor on elevation)","Asymmetry → vascular imaging. An abnormal Allen's test (incomplete palmar arch) occurs in 5% of the population but increases digital ischaemia risk — refer for imaging"],
-         ["<b>Skin</b>","Telangiectasia (face, hands — systemic sclerosis), malar rash (SLE), digital infarcts, livedo reticularis, calcinosis cutis","Points to the specific CTD"],
-         ["<b>Systemic signs</b>","Lung crackles (interstitial lung disease), weak proximal muscles (myositis), dry eyes or mouth (Sjögren's), joint swelling (inflammatory arthritis)","<b>Present → urgent rheumatology</b>"],
-         ["<b>Neurological</b>","Carpal tunnel signs (Tinel's, Phalen's) — can coexist with or mimic Raynaud's. Thoracic outlet tests (Adson's, Wright's)","Identifies the mimics"]
-       ]},
-       {b:"why", html:"Nailfold capillaroscopy is the single best bedside predictor of secondary Raynaud's. Digital ulcers are not just a marker of severity — they are a treatment trigger: their presence mandates a phosphodiesterase-5 inhibitor (sildenafil) or an endothelin receptor antagonist (bosentan) to prevent recurrence and amputation."}
-     ]},
-
-    {id:"workup", nav:"Work-up", title:"Investigations — screen for secondary causes", sub:"Investigate ALL new Raynaud's over 30, or any red flags. Do NOT investigate typical primary Raynaud's in young women.",
-     blocks:[
-       {b:"table", head:["Test","Detail","Interpretation"], rows:[
-         ["<b>Primary-care bloods</b>","FBC (anaemia in CTD; polycythaemia or thrombocytosis), ESR/CRP (inflammatory disease), ANA (connective tissue disease screen), TFTs (hypothyroidism), protein electrophoresis (cryoglobulinaemia if indicated). Do if age over 30 or red flags","The whole primary-care panel"],
-         ["<b>ANA interpretation</b>","Positive (≥1:80) → refer rheumatology for the further autoantibody panel (anti-Scl70, anti-centromere, anti-RNP). Negative does NOT exclude CTD — 15% of systemic sclerosis is ANA-negative, and clinical suspicion overrides a negative ANA","Titre matters: 1:160 or higher is more significant. ANA has around 93% sensitivity for systemic sclerosis but only ~50% specificity, with many false positives in healthy and older people"],
-         ["<b>Specialist bloods</b>","Rheumatology will request the ENA panel (anti-Scl70 = diffuse SSc, anti-centromere = limited SSc), anti-CCP/RF, cryoglobulins, complement C3/C4, ANCA","<b>Do NOT order these in primary care</b>"],
-         ["<b>Imaging — when needed</b>","Chest X-ray if lung symptoms (ILD in SSc). Doppler arterial ultrasound if asymmetric, weak pulses, or severe unilateral disease","NOT routine in bilateral symmetrical Raynaud's — Doppler detects structural arterial disease but is normal in functional vasospasm"],
-         ["<b>Do NOT investigate</b>","Young women with typical bilateral symmetrical symptoms, no tissue damage and no systemic features","Diagnosis is primary Raynaud's — reassure, give lifestyle advice, review if it worsens. Over-investigation generates false-positive autoantibodies, anxiety and unnecessary referrals"]
-       ]},
-       {b:"cards", items:[
-         {tone:"purple", h:"NG12 criteria that surface here <span class='tw'>2WW</span>", html:"Raynaud's phenomenon has no NICE NG12 criterion of its own, and this page does not invent one — the urgency here is vascular and rheumatological. Two NG12 routes can nevertheless arise from the secondary work-up:<br>• Unexplained weight loss, fever or night sweats with lymphadenopathy or splenomegaly in the systemic screen → the lymphoma 2-week-wait route, with urgent FBC where the features suggest leukaemia. The constitutional symptoms that trigger a rheumatology referral here overlap with the haematological criteria.<br>• Raynaud's of recent onset can rarely be paraneoplastic — where a systemic screen shows unexplained weight loss with no CTD found, follow the relevant urgent suspected-cancer pathway for the site suggested by symptoms rather than attributing it to vasospasm.", src:"NICE NG12 (updated May 2025) · house rule"}
+       {b:"table", head:["Feature","Detail"], rows:[
+         ["<b>Colour change</b>","Episodic, well-demarcated pallor, often followed by cyanosis and then redness on rewarming — characteristic, not pathognomonic; pallor or cyanosis alone is common. May affect toes, ears, nose or nipples. Mimics include acrocyanosis, erythromelalgia, peripheral arterial and embolic disease"],
+         ["<b>Triggers</b>","Cold, temperature change, emotional stress, vibration"],
+         ["<b>Distribution</b>","Usually fingers, often toes; bilateral and symmetrical in primary disease"],
+         ["<b>Diary and photographs</b>","Attack photographs and a record of frequency, severity, duration and triggers support diagnosis and measure response"],
+         ["<b>Medicines and substances</b>","Non-selective beta-blockers, ergotamine and triptans, some chemotherapy (e.g. bleomycin, cisplatin), interferon, sympathomimetic decongestants, stimulants such as amphetamines and cocaine, and nicotine can cause or aggravate it"],["<b>Systemic enquiry</b>","Ulcers or pitting scars, puffy fingers, skin tightening or itching, rash, joint pain, myalgia or weakness, reflux or dysphagia, breathlessness or cough, dry eyes or mouth, weight loss"],
+         ["<b>Occupation</b>","Vibrating tools — ask specifically. Hand–arm vibration risk depends on intensity, duration, cumulative exposure and individual susceptibility"]
        ]}
      ]},
 
-    {id:"ladder", nav:"Treat", title:"Treatment — lifestyle first, then the drug ladder", sub:"Start lifestyle measures FIRST. Escalate pharmacotherapy for moderate–severe symptoms or functional impairment. Verify doses in the BNF.",
+    {id:"classify", nav:"Classify", title:"Classify — primary versus secondary",
+     blocks:[
+       {b:"table", head:["Category","Picture","Route"], rows:[
+         ["<b>Primary Raynaud's</b>","Young onset, symmetrical, no tissue damage, normal examination, no systemic features","Primary care: lifestyle, diary, CCB if troublesome"],
+         ["<b>Secondary, no tissue loss</b>","Features of connective tissue disease, abnormal nailfolds or pulses, drug or vibration cause","Directed investigation; rheumatology, vascular or occupational health by findings"],
+         ["<b>Systemic sclerosis digital vasculopathy</b>","Digital ulcers, pitting scars, puffy fingers, sclerodactyly","Rheumatology/systemic sclerosis service; same day for new ulcers or necrosis"],
+         ["<b>Acute digital ischaemia</b>","Persistent painful pallor or cyanosis, necrosis, absent pulses","Same day; emergency vascular for suspected occlusion"]
+       ]},
+       {b:"table", head:["Feature","Primary","Secondary"], rows:[
+         ["<b>Onset</b>","Usually teens or twenties","Often later — after about 30–40"],
+         ["<b>Pattern</b>","Symmetrical; no tissue damage","Asymmetrical, severe, or with ulcers or pitting scars"],
+         ["<b>Nailfolds and ANA</b>","Normal; negative","Abnormal capillaries; positive ANA or specific autoantibodies"],
+         ["<b>Associations</b>","None; common and benign","Systemic sclerosis (most common), SLE, Sjögren's, mixed connective tissue disease, myositis, vasculitis, rheumatoid arthritis"]
+       ]},
+       {b:"table", head:["Other cause","Action"], rows:[
+         ["<b>Drug-induced</b>","Review and, where appropriate and safe, change the culprit"],
+         ["<b>Hand–arm vibration syndrome</b>","Occupational health referral; the employer has duties under the Control of Vibration at Work Regulations, including risk assessment and exposure reduction. Reporting and benefit routes (RIDDOR, Industrial Injuries Disablement Benefit) should follow occupational health advice. Vibration-related Raynaud's does not in itself need vascular surgery"],
+         ["<b>Structural or other</b>","Atherosclerosis, embolism, thoracic outlet syndrome, carpal tunnel syndrome, hypothyroidism, cryoglobulinaemia or haematological causes — investigate as the history directs"]
+       ]}
+     ]},
+
+    {id:"exam", nav:"Examination", title:"Examination",
+     blocks:[
+       {b:"table", head:["What","How or finding","Significance"], rows:[
+         ["<b>Pulses and BP</b>","Radial and ulnar pulses; BP in both arms","Asymmetry or a clear arm-to-arm BP difference → vascular assessment"],
+         ["<b>Hands and feet</b>","Ulcers, pitting scars, gangrene, calcinosis, sclerodactyly, puffy fingers","Tissue damage means secondary disease until shown otherwise"],
+         ["<b>Nailfolds</b>","Dilated loops, capillary dropout or haemorrhages — a dermatoscope can help those trained in it, but it is operator-dependent and not equivalent to formal videocapillaroscopy","Possible scleroderma-pattern abnormality → rheumatology. A normal view is reassuring but does not exclude connective tissue disease if suspicion remains"],
+         ["<b>Skin and systems</b>","Telangiectasia, rash, livedo; chest crackles; proximal weakness; joint swelling; dry eyes or mouth","Points to a specific connective tissue disease → urgent rheumatology"],
+         ["<b>Mimics</b>","Carpal tunnel and thoracic outlet signs","Identifies coexisting or alternative causes"]
+       ]}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Investigations — when they change management",
+     blocks:[
+       {b:"table", head:["Test","When","Interpretation"], rows:[
+         ["<b>Directed bloods</b>","When secondary disease is suspected or the presentation is atypical: FBC, ESR or CRP, ANA; renal function and urinalysis if connective tissue disease or vasculitis is possible; TFTs if indicated; CK if weakness suggests myositis; electrophoresis, hepatitis serology or cryoglobulins only if the history points there","ANA supports a diagnosis only in the right clinical context — a low-titre positive ANA alone should not trigger referral. A negative ANA does not override strong clinical suspicion"],
+         ["<b>Specialist autoantibodies</b>","Anti-centromere, anti-Scl-70 and others","Usually coordinated by rheumatology, per local arrangements"],
+         ["<b>Imaging</b>","Chest X-ray for respiratory symptoms; arterial imaging for asymmetry or absent pulses","Not needed for typical bilateral primary Raynaud's"],
+         ["<b>Not needed</b>","Typical bilateral, symmetrical Raynaud's starting young, with no tissue damage, normal examination and no systemic features","Reassure and give lifestyle advice; investigate if the picture changes"]
+       ]},
+       {b:"cards", items:[
+         {tone:"blue", h:"No NG12 criterion for Raynaud's", html:"Raynaud's phenomenon is not itself a NICE suspected-cancer referral criterion. If independent cancer symptoms or signs are present, follow the relevant NICE NG12 pathway rather than attributing them to Raynaud's."}
+       ]}
+     ]},
+
+    {id:"lifestyle", nav:"Lifestyle", title:"Lifestyle — first-line for everyone",
+     blocks:[
+       {b:"table", head:["Measure","What to do"], rows:[
+         ["<b>🧤 Keep warm</b>","Whole-body warmth: layers, hat, gloves or mittens; pre-warm the car; heated gloves or hand warmers for outdoor work"],
+         ["<b>❄️ Temperature change</b>","Avoid sudden cold, including cold drinks and freezer aisles; rewarm gradually with warm, not scalding, water, and avoid direct heat sources when sensation is reduced"],
+         ["<b>🤲 During an attack</b>","Move somewhere warm, swing the arms, clench and unclench the hands, rewarm gently"],
+         ["<b>🚭 Smoking</b>","Stop — nicotine causes vasoconstriction; refer to the stop-smoking service; nicotine vapes also constrict vessels"],
+         ["<b>🎯 Triggers</b>","Stress management where stress triggers attacks; reduce caffeine if it seems to"],
+         ["<b>💊 Medicines</b>","Avoid sympathomimetic decongestants; review a non-selective beta-blocker — do not stop a beta-blocker needed for a cardiac indication without discussion"],
+         ["<b>🧴 Skin</b>","Regular emollient; protect the fingers; prompt attention to any break in the skin"],
+         ["<b>🔧 Vibration</b>","Exposure reduction and the employer's risk assessment matter most — anti-vibration gloves do not reliably prevent transmission; involve occupational health"]
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Drugs", title:"Drug treatment — nifedipine, then specialist",
      blocks:[
        {b:"table", head:["Severity","Approach","Detail"], rows:[
-         ["<b>Mild primary Raynaud's</b>","<b>Lifestyle only — first-line</b>","Infrequent attacks, minimal functional impact, no digital damage. Annual review. Offer nifedipine if it worsens"],
-         ["<b>Moderate–severe primary Raynaud's</b>","<b>Nifedipine MR — first-line drug</b>","30 mg OD, increasing to 60 mg OD if tolerated and needed; start low if elderly or frail; trial 4–6 weeks"],
-         ["<b>Secondary Raynaud's / digital ulcers</b>","<b>Specialist therapy — refer</b>","Rheumatology will prescribe PDE5 inhibitors, endothelin antagonists and prostacyclin analogues — not initiated in primary care"]
-       ]},
-       {b:"ladder", steps:[
-         {step:"Step 1", title:"Nifedipine MR 30 mg OD", when:"moderate–severe attacks", fromLabel:"most evidence",
-          html:"Start in October before winter. Warn about ankle swelling (20%), headache (15%) and flushing. Check BP at 2 weeks. Nifedipine MR 10 mg OD titrated to 20 mg BD (i.e. 10–20 mg per dose) is an alternative lower-dose regimen where tolerability is a concern."},
-         {step:"Step 2", title:"Nifedipine MR 60 mg OD", when:"partial response", fromLabel:"maximum tolerated dose",
-          html:"<b>Monitor BP and oedema.</b>"},
-         {step:"Step 3", title:"Alternative calcium-channel blocker", when:"nifedipine not tolerated", fromLabel:"less evidence",
-          html:"Amlodipine 5–10 mg OD (less evidence but better tolerated if nifedipine causes headaches), or diltiazem 60 mg TDS (avoid in cardiac disease)."},
-         {step:"Step 4", title:"Fluoxetine 20 mg OD (off-label)", when:"CCBs unsuitable", fromLabel:"some evidence in primary disease",
-          html:"Consider where there is comorbid depression or anxiety. Warn about serotonin syndrome if on other antidepressants."},
-         {step:"Step 5", title:"Refer rheumatology — specialist options", when:"refractory to a CCB", fromLabel:"secondary care",
-          html:"Sildenafil 25–50 mg TDS, IV iloprost infusions (critical digital ischaemia), bosentan (digital ulcers in systemic sclerosis), botulinum toxin, sympathectomy."}
+         ["<b>Mild primary</b>","Lifestyle only","Review if it worsens"],
+         ["<b>Troublesome attacks despite lifestyle</b>","<b>Long-acting dihydropyridine CCB</b> — usually nifedipine (licensed for Raynaud's); amlodipine is an alternative","Start at a low dose and titrate cautiously against response, BP and the specific product information and local formulary; modified-release preparations differ and are not interchangeable — prescribe by brand. Trial for several weeks. Seasonal use is an optional, patient-led adjustment"],
+         ["<b>First CCB not tolerated</b>","Switch dihydropyridine CCB","e.g. nifedipine ↔ amlodipine; seek advice in cardiac disease"],
+         ["<b>Refractory, secondary, or digital ulcers</b>","Refer — specialist therapy","Sildenafil or tadalafil (off-label) for refractory or systemic sclerosis-associated Raynaud's and digital ulcer healing or secondary prevention; bosentan second line to prevent new digital ulcers in systemic sclerosis; IV iloprost for severe or refractory disease; botulinum toxin — all specialist-initiated, with specialist wound care. PDE-5 inhibitors must never be combined with nitrates. Fluoxetine is an off-label, specialist-considered option only (limited evidence; it raises nifedipine levels via CYP3A4)"]
        ]},
        {b:"kv", rows:[
-         ["Monitoring","BP at 2 weeks then 3-monthly; ask about ankle swelling and headaches; review the symptom diary; step the dose down in spring if symptoms are controlled"],
-         ["Contraindications","Pregnancy (nifedipine is relatively safe but use caution), unstable angina, recent MI, severe aortic stenosis, heart failure"],
-         ["Interactions","Nifedipine + alpha-blockers = severe hypotension. Grapefruit juice increases nifedipine levels, as do CYP3A4 inhibitors (erythromycin, itraconazole)"]
+         ["Warn about","Common: headache, flushing, dizziness, hypotension, peripheral oedema"],
+         ["Monitor","BP and side effects after starting or changing the dose; response against the diary"],
+         ["Cautions","Clinically significant aortic stenosis, unstable angina, recent myocardial infarction, cardiogenic shock, hypotension, significant hepatic impairment, heart failure — check the SPC for the prescribed product"],["Pregnancy and breastfeeding","SPCs differ: some nifedipine prolonged-release products list pregnancy and breastfeeding as contraindications, while BSR pregnancy guidance (2022) considers nifedipine compatible. Check the SPC of the product prescribed and seek obstetric, maternal-medicine or medicines-in-pregnancy advice before treating in pregnancy"],
+         ["Interactions","Additive hypotension with other antihypertensives and alpha-blockers; grapefruit and CYP3A4 inhibitors (e.g. clarithromycin, itraconazole, fluoxetine) raise levels; rifampicin lowers them"]
        ]},
-       {b:"why", html:"Nifedipine is the only CCB with RCT evidence in Raynaud's — it reduces attack frequency by 30–40% and severity by 30%, NNT 6, and the modified-release formulation causes fewer side effects than immediate-release. The lifestyle-first approach respects the benign nature of primary Raynaud's and avoids medicalising a common physiological variant — 60% improve with lifestyle alone. Specialist therapies are not initiated in primary care because of high cost (£200–500/month), the need for specialist monitoring, and their role in severe secondary disease — sildenafil reduces digital-ulcer burden by 50% in systemic sclerosis but has no role in uncomplicated primary Raynaud's."},
-       {b:"say", html:"For most people this is harmless, and the key is keeping your whole body warm and avoiding triggers, with a tablet if attacks are frequent. I'll just check there are no signs it's linked to another condition — and you should seek help urgently if a finger stays discoloured or develops a sore."}
+       {b:"say", html:"For most people Raynaud's is harmless, and the most effective things are keeping your whole body warm, avoiding sudden cold and not smoking. If attacks are still troublesome, there's a tablet that relaxes the blood vessels. I'll check there's nothing linked to another condition — and please get seen the same day if a finger stays white or blue and painful after warming, or develops a sore."}
      ]},
 
-    {id:"lifestyle", nav:"Lifestyle", title:"Non-pharmacological management — first-line for everyone", sub:"Lifestyle modification is PRIMARY TREATMENT, not an optional add-on: it can reduce attack frequency by 50%.",
+    {id:"monitor", nav:"Monitor", title:"Follow-up and safety-netting",
      blocks:[
-       {b:"table", head:["Measure","What to do","Why"], rows:[
-         ["<b>🧤 Keep warm — core temperature</b>","Maintain whole-body warmth, not just the extremities. Layers, thermal base layers, a hat (30% of body heat is lost through the head). Pre-warm the car and home","Sympathetic vasoconstriction is triggered by core hypothermia, not just local cold — wearing a hat decreases digital vasospasm frequency by 30%"],
-         ["<b>❄️ Avoid rapid temperature changes</b>","Acclimatise gradually. Do NOT plunge hands into hot water during an attack — lukewarm rewarming only","Rapid rewarming causes painful reactive hyperaemia and can trigger chilblains"],
-         ["<b>🔥 Heated gloves and hand warmers</b>","Battery-powered heated gloves (£50–150) for outdoor work; disposable hand warmers in pockets; electrically heated insoles for the feet","Practical and effective for occupational exposure"],
-         ["<b>🚭 Smoking cessation</b>","Refer to the stop-smoking service. Vaping also contains nicotine — avoid","Nicotine causes vasoconstriction and smoking doubles attack frequency; in systemic sclerosis it worsens digital ulcers and increases amputation risk 3-fold. Non-negotiable in secondary disease"],
-         ["<b>🎯 Avoid triggers</b>","Identify personal triggers (emotional stress, caffeine, cold drinks, air conditioning); stress-management techniques if stress-triggered; reduce caffeine if it is a trigger","Personalised avoidance beats generic advice"],
-         ["<b>🏃 Exercise regularly</b>","30 minutes of moderate exercise 5×/week — swimming in a heated pool is ideal (warm plus aerobic)","Improves peripheral circulation"],
-         ["<b>🤲 Hand exercises during an attack</b>","Swing the arms in circles, clench and unclench the fists to promote blood flow; gradual rewarming only","Shortens the attack without the hyperaemia"],
-         ["<b>💊 Review medications</b>","Beta-blockers worsen Raynaud's — discuss alternatives. OTC decongestants (pseudoephedrine) can trigger attacks — avoid","Often the single most effective change"],
-         ["<b>🧴 Moisturise hands</b>","<b>Emollient (Diprobase, Epaderm) 3–4× daily</b>","Prevents skin cracking and fissures, which are entry points for infection"],
-         ["<b>🔧 Occupational modification</b>","With vibration tools: anti-vibration gloves, limit exposure duration, take warm-up breaks. Inform the employer","<b>HSE duty to reduce vibration exposure</b>"],
-         ["<b>🩹 Skin care</b>","Protect the skin and give prompt attention to any breaks or ulcers, especially in secondary disease","Prevents ulcer progression"]
+       {b:"table", head:["When","What"], rows:[
+         ["<b>After starting or changing a vasodilator</b>","BP, adverse effects and benefit against the diary; adjust the dose"],
+         ["<b>Stable primary Raynaud's</b>","Periodic review; re-examine and test further only if new features emerge — do not repeat the ANA in an unchanged patient"],
+         ["<b>Re-assess if</b>","A digital ulcer, asymmetry, systemic features, a positive ANA, or disease refractory to lifestyle and a calcium-channel blocker — possible evolution to secondary disease"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"📞 Same-day emergency", html:"A digit that stays white or blue and painful despite rewarming · blackened or breaking-down skin."},
+         {tone:"amber", h:"🟠 Urgent", html:"A new digital ulcer or non-healing wound · rapidly worsening attacks · new systemic symptoms."},
+         {tone:"cream", h:"💬 Safety-net scripts", html:"“A finger or toe that stays painful, pale or blue after warming, or develops a sore or blackened skin — get seen the same day.” “Joint pains, rashes, trouble swallowing, breathlessness or tight skin on the fingers — tell us.” “Whole-body warmth and not smoking are the most effective everyday measures.”"}
        ]}
      ]},
 
-    {id:"monitor", nav:"Monitor", title:"Follow-up, monitoring and safety-netting", sub:"Review by severity and risk — and never assume stable primary Raynaud's stays benign.",
-     blocks:[
-       {b:"table", head:["When","What","Action"], rows:[
-         ["<b>2 weeks</b>","If starting nifedipine: check BP, ask about ankle swelling, headache and flushing","<b>Adjust the dose if needed; confirm the patient has a symptom diary</b>"],
-         ["<b>6 weeks</b>","<b>Review the symptom diary — frequency, severity, functional impact</b>","Ineffective → increase to 60 mg or consider an alternative CCB. Effective → continue and review in 3 months"],
-         ["<b>3–6 monthly</b>","Primary Raynaud's on treatment: BP, symptom control, side effects; review the medication list for culprit drugs","Consider stepping the dose down in the warmer months (April–September) and restarting in October"],
-         ["<b>Annual review</b>","Stable primary Raynaud's: check for new systemic symptoms, examine the hands for tissue damage, repeat ANA if new features emerge","Reassure if unchanged; discharge if asymptomatic for 2 years and the patient is confident self-managing"],
-         ["<b>Re-refer if</b>","Known primary Raynaud's develops digital ulcers, asymmetric symptoms, systemic features, a positive ANA, or becomes refractory to a CCB plus lifestyle","Urgent rheumatology referral — it may have evolved to secondary disease"]
-       ]},
-       {b:"cards", items:[
-         {tone:"red", h:"📞 999", html:"Sudden severe pain with a cold pale digit not responding to warming within 30 minutes → acute arterial occlusion. Black discolouration or tissue breakdown → critical ischaemia."},
-         {tone:"amber", h:"🟠 Same-day", html:"A new digital ulcer or non-healing wound · rapidly worsening attacks (daily, severe pain) · new systemic symptoms (fever, weight loss, joint swelling, muscle weakness)."},
-         {tone:"cream", h:"💬 Safety-net scripts", html:"“A finger or toe that stays painful, pale or blue, or develops a sore, ulcer or blackened skin — seek urgent help.” “Joint pains, rashes, swallowing problems or skin tightening — tell us; we may need to investigate further.” “Keeping your whole body warm and avoiding sudden cold is the most effective everyday measure.” “Smoking makes attacks worse — stopping genuinely helps.”"}
-       ]},
-       {b:"why", html:"Evolution to secondary Raynaud's is rare but important to catch — 1–2% of primary patients develop connective tissue disease over 10 years, so new ulcers, systemic symptoms or sudden worsening mandate urgent reassessment. Seasonal dose adjustment reduces unnecessary drug exposure: many patients can stop nifedipine in summer and restart in October, improving adherence and reducing ankle oedema. Non-healing ulcers can become superinfected (cellulitis, osteomyelitis) or progress to gangrene requiring amputation — same-day assessment enables early antibiotics, wound care and escalation of vasodilator therapy."}
-     ]},
-
-    {id:"loop", nav:"Not improving?", title:"Not improving? Re-check before escalating", sub:"Reconsider a secondary cause and the aggravating factors.",
+    {id:"loop", nav:"Not improving?", title:"Not improving? Re-check before escalating",
      blocks:[
        {b:"cards", items:[
-         {tone:"amber", h:"1 · Secondary disease?", html:"Asymmetry, ulcers, abnormal nailfold capillaries, positive ANA → rheumatology."},
-         {tone:"amber", h:"2 · Aggravating drugs", html:"<b>Beta-blockers or vasoconstrictors still in use?</b>"},
-         {tone:"amber", h:"3 · Triggers", html:"<b>Cold exposure, vibration, smoking and stress genuinely addressed?</b>"},
-         {tone:"amber", h:"4 · Drug trial", html:"Has an adequate nifedipine dose been tried and tolerated for 4–6 weeks?"},
-         {tone:"amber", h:"5 · Critical?", html:"<b>Persistent pain, ulcers or gangrene → urgent referral.</b>"}
+         {tone:"amber", h:"1 · Secondary disease?", html:"Asymmetry, ulcers, abnormal nailfolds, positive ANA or systemic features → rheumatology."},
+         {tone:"amber", h:"2 · Aggravating drugs", html:"Decongestants, stimulants, a non-selective beta-blocker still in use?"},
+         {tone:"amber", h:"3 · Triggers", html:"Cold, vibration, smoking and stress genuinely addressed?"},
+         {tone:"amber", h:"4 · Adequate trial", html:"Nifedipine at a tolerated, titrated dose for several weeks?"},
+         {tone:"red", h:"5 · Critical?", html:"Persistent pain, ulcers or tissue breakdown → urgent referral."}
        ]}
      ]},
 
-    {id:"refer", nav:"Refer", title:"Referral criteria", sub:"Refer secondary Raynaud's, severe primary disease, or diagnostic uncertainty.",
+    {id:"refer", nav:"Refer", title:"Referral criteria",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Same-day", html:"Digital gangrene or severe ulceration → vascular surgery (acute critical limb ischaemia). Severe pain with permanent colour change → medical on-call (acute arterial occlusion)."},
-         {tone:"amber", h:"2-week urgent", html:"Systemic symptoms (weight loss, fever, muscle weakness, rash) → rheumatology. Digital pitting scars or sclerodactyly → rheumatology (systemic sclerosis). Positive ANA with clinical features → rheumatology."},
-         {tone:"blue", h:"Routine rheumatology", html:"Age at onset over 40 · abnormal nailfold capillaries · rapidly progressive symptoms · refractory to lifestyle plus nifedipine · functional impairment (unable to work or limited daily activities)."},
-         {tone:"blue", h:"Vascular surgery", html:"Asymmetric or unilateral symptoms · absent pulses or a positive Allen's test · occupational HAVS if severe and persistent despite trigger avoidance."},
-         {tone:"green", h:"Primary care manages", html:"Primary Raynaud's criteria met — age &lt;30, bilateral symmetrical, mild symptoms, normal examination, negative bloods if done: lifestyle advice, a nifedipine trial if moderate–severe, and annual review."}
-       ]},
-       {b:"why", html:"Early rheumatology referral in secondary Raynaud's prevents irreversible complications — systemic sclerosis patients benefit from immunosuppression before the fibrotic phase, and the window of opportunity is the first 3–5 years, so delayed referral is a missed chance for disease modification. Functional impairment justifies specialist input even in primary Raynaud's — patients unable to work in cold environments, handle frozen food or perform daily tasks benefit from advanced therapies."}
+         {tone:"red", h:"Same-day emergency", html:"Critical digital ischaemia or gangrene → local vascular or acute pathway."},
+         {tone:"red", h:"Same-day assessment", html:"New digital ulcer or necrosis → local rheumatology/systemic sclerosis, vascular or acute service according to the findings."},{tone:"amber", h:"Rheumatology", html:"Pitting scars, puffy fingers, sclerodactyly or other connective tissue disease features; a positive ANA with clinical features or abnormal nailfolds; systemic symptoms — urgency by severity and the local pathway."},
+         {tone:"amber", h:"Vascular", html:"Asymmetric or single-digit disease, absent or unequal pulses, abnormal Allen test — urgency by severity; emergency for suspected acute ischaemia."},
+         {tone:"blue", h:"Routine rheumatology", html:"Later-onset Raynaud's under investigation; abnormal nailfolds; refractory to lifestyle and a calcium-channel blocker; significant functional impact."},
+         {tone:"blue", h:"Occupational health", html:"Suspected hand–arm vibration syndrome."},
+         {tone:"green", h:"Primary care manages", html:"Typical primary Raynaud's: lifestyle advice, a symptom diary, a CCB if troublesome, and review if it changes. Use the local Greater Manchester referral and advice-and-guidance routes."}
+       ]}
      ]},
 
     {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
      blocks:[{b:"cards", cols:2, items:[
-       {tone:"cream", h:"Classic scenario", html:"A 46-year-old male groundworker describes two winters of fingers “going dead white then blue” — but only on the right hand, worst in the index and middle fingers. He uses a breaker most days, smokes 15 a day, and has a small non-healing sore on one fingertip he says he caught on a fence. He wants “circulation tablets like my wife got”."},
-       {tone:"cream", h:"Examiner-style checkpoints", html:"Refuses to treat this as primary Raynaud's: identifies <b>onset over 40, male smoker, asymmetry and a non-healing digital ulcer</b> as three separate red flags; arranges <b>same-day vascular assessment for the ulcer</b> rather than prescribing nifedipine; examines <b>nailfold capillaries with a dermatoscope</b>, checks <b>BP both arms, pulses and Allen's test</b>; sends <b>FBC, ESR/CRP, ANA and TFTs</b>; recognises <b>HAVS</b> with its occupational-health, HSE and compensation implications; addresses <b>smoking as non-negotiable</b>; and safety-nets <b>a digit not rewarming within 30 minutes</b>."}
+       {tone:"cream", h:"Classic scenario", html:"A 46-year-old male groundworker describes two winters of fingers “going dead white then blue” — only on the right hand, worst in the index and middle fingers. He uses a breaker most days, smokes 15 a day, and has a small non-healing sore on one fingertip. He wants “circulation tablets like my wife got”."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does not treat this as primary Raynaud's: recognises later onset, asymmetry and a non-healing digital ulcer; arranges same-day assessment of the ulcer and vascular assessment for the asymmetry rather than simply prescribing; checks pulses and both-arm BP and looks for connective tissue disease features; sends FBC, ESR/CRP, ANA and TFTs; recognises possible hand–arm vibration syndrome and involves occupational health; addresses smoking; safety-nets a digit that does not recover with warming."}
      ]}]},
 
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>British Society for Rheumatology guidelines</b><span class="rd"> \u2014 systemic sclerosis screening, nailfold capillaroscopy, and the specialist therapy ladder (sildenafil, iloprost, bosentan)</span></li>'+
-         '<li><b>Cochrane reviews</b><span class="rd"> \u2014 nifedipine reducing attack frequency 30\u201340% and severity 30%, NNT 6; the modified-release tolerability advantage</span></li>'+
-         '<li><b>NICE NG12 \u2014 Suspected cancer (updated May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 the lymphoma and unexplained-weight-loss routes that can arise from the systemic screen</span></li>'+
-         '<li><b>HSE \u2014 Control of Vibration at Work Regulations</b><span class="rd"> \u2014 the employer duty behind the HAVS advice, notification and compensation route</span></li>'+
-         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 nifedipine, amlodipine and diltiazem dosing, contraindications and interactions: verify before prescribing</span></li>'+
+         '<li><b>British Society for Rheumatology — 2024 guideline for management of systemic sclerosis</b> (Rheumatology 2024, doi:10.1093/rheumatology/keae394)<span class="rd"> — nailfold assessment, calcium-channel blockers, PDE-5 inhibitors, prostanoids, bosentan; severe digital vasculopathy as an emergency</span></li>'+'<li><b>British Society for Rheumatology — prescribing in pregnancy and breastfeeding: comorbidity medications (2022)</b><span class="rd"> — nifedipine in pregnancy</span></li>'+'<li><b>Primary Care Dermatology Society — Raynaud\'s phenomenon</b><span class="rd"> — risk features for secondary disease; long-acting nifedipine or amlodipine first-line</span></li>'+
+         '<li><b>EULAR — recommendations for the treatment of systemic sclerosis (2023 update)</b><span class="rd"> — calcium-channel blockers first-line; PDE-5 inhibitors, iloprost and bosentan for severe disease and digital ulcers</span></li>'+
+         '<li><b>MHRA SPCs — nifedipine prolonged-release products</b><span class="rd"> — contraindications, pregnancy and breastfeeding, interactions; products differ and are not interchangeable</span></li>'+
+         '<li><b>NHS England — clinical commissioning policy: sildenafil and bosentan for digital ulceration in systemic sclerosis</b><span class="rd"> — specialist-initiated therapy</span></li>'+
+         '<li><b>HSE — Control of Vibration at Work Regulations; RIDDOR</b><span class="rd"> — hand–arm vibration syndrome duties and reporting</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — nifedipine dosing, cautions and interactions</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Primary-care assessment and management of Raynaud\u2019s phenomenon \u2014 British Society for Rheumatology guidance, Cochrane reviews, HSE vibration regulations, and NICE NG12 (May 2025) for the routes arising from the systemic screen. Assessment and management are merged on this page; the former algorithm is retired. Verify every dose and interaction against the current BNF before prescribing."
+  foot:"Raynaud's phenomenon in primary care. Critical digital ischaemia or gangrene: same-day emergency assessment. Digital ulcers, connective tissue disease features and asymmetry: urgent specialist assessment. Classify primary versus secondary on age at onset, symmetry, tissue damage, nailfolds and ANA. Lifestyle is first-line; nifedipine (licensed; modified-release by brand) for troublesome attacks; specialist-initiated therapy for secondary disease and digital ulcers. Sources: BSR (2024), BSR pregnancy guidance (2022), EULAR (2023), PCDS, nifedipine SPCs, NHS England commissioning policy, HSE, BNF. Verify doses against the current BNF."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

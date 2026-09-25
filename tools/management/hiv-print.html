@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HIV in primary care — Protocol · Reasoning GP</title>
+<meta name="description" content="HIV in adults for UK primary care on one page: who to test and indicator conditions, seroconversion and AIDS-defining red flags, window periods, giving a positive result, PEP and PrEP, ART drug interactions, comorbidity, vaccines, annual cervical screening, contraception, pregnancy, confidentiality and safeguarding." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hiv.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790316448292392 tools/management/hiv.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="HIV management card">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F9EC}",
+  title:"HIV in primary care (adults)",
+  eyebrow:"Protocol · test, link, share care",
+  stemTitle:"HIV — test widely, link fast, and check every new prescription",
+  stemSub:"The GP's job in HIV is to find it (indicator conditions, seroconversion, opt-out testing), get a new diagnosis into specialist care quickly, and support a person on lifelong antiretroviral therapy (ART). That means U=U, drug interactions, cardiovascular, bone, renal and mental health, vaccines, cervical screening, contraception and pregnancy. Diagnosis confirmation and ART are specialist-led.",
+  guideline:"BHIVA/BASHH/BIA adult HIV testing 2020 · NICE NG60 (updated 2025) · BHIVA ART 2022 (2025 interim update) · UK PEP 2021 · BASHH/BHIVA PrEP 2025",
+  meta:[
+    {t:"BHIVA/BASHH/BIA HIV testing 2020"},
+    {t:"NICE NG60 · HIV testing (2016, upd. Sep 2025)"},
+    {t:"BHIVA ART 2022 · 2025 interim update"},
+    {t:"UK PEP 2021 · BASHH/BHIVA PrEP 2025 · NICE TA1106", tone:"tw"},
+    {t:"Green Book ch.7 · BHIVA vaccines 2015"},
+    {t:"BNF + Liverpool checker own all doses"}
+  ],
+  lead:'<div class="mg-layers"><a href="#test"><b>Who to test</b><small>Indicator conditions, prevalence</small></a><a href="#diagnose"><b>Test &amp; result</b><small>Window periods, giving a positive</small></a><a href="#prevent"><b>PEP / PrEP</b><small>72 hours, where to send</small></a><a href="#interactions"><b>Interactions</b><small>Check before every script</small></a></div>',
+  glance:[
+    {lbl:"Test", val:"4th-gen Ag/Ab", sub:"window 45 days (BHIVA 2020)"},
+    {lbl:"Treatment", val:"ART for all", sub:"specialist-initiated, lifelong"},
+    {lbl:"U=U", val:"Undetectable = untransmittable", sub:"sexual transmission"},
+    {lbl:"PEP", val:"≤72 h", sub:"ideally within 24 h (UK PEP 2021)"},
+    {lbl:"GP role", val:"Interactions + comorbidity", sub:"shared care"},
+    {lbl:"Red flag", val:"Seroconversion / AIDS illness", sub:"urgent test, refer or admit"}
+  ],
+  quickSub:"The five things that prevent harm. Each card names its source; full references are in the Evidence section at the foot of the page.",
+  quick:[
+    {tone:"red", h:"⚠ Breathless, desaturating on exertion, with dry cough?", html:"In someone with known or possible HIV, think <b>Pneumocystis pneumonia (PCP)</b>. Other AIDS-defining presentations: oesophageal candidiasis, TB, cryptococcal meningitis (headache, fever), cerebral toxoplasmosis (focal neurology), CMV retinitis (visual loss), Kaposi's sarcoma. <b>Same-day admission</b>, and send an HIV test. Source: BHIVA/BASHH/BIA 2020 testing guideline."},
+    {tone:"amber", h:"Seroconversion looks like glandular fever", html:"Fever, rash, sore throat, mouth ulcers and lymphadenopathy 2–6 weeks after exposure. A 4th-generation antigen/antibody test detects most infections, but a negative test <b>inside the 45-day window</b> needs repeating. Viral load is very high at this stage, so the person is at their most infectious. Source: BHIVA/BASHH/BIA 2020."},
+    {tone:"purple", h:"Exposure in the last 72 hours = PEP today", html:"Post-exposure prophylaxis should start <b>as soon as possible, ideally within 24 hours and no later than 72 hours</b>, as a 28-day course. Send the person <b>now</b> to sexual health, or to the ED out of hours. Do not book a routine appointment. Source: UK PEP guideline 2021 (BASHH/BHIVA)."},
+    {tone:"blue", h:"Every new prescription: run the interaction check", html:"Boosted regimens (<b>ritonavir, cobicistat</b>) interact widely. Examples: <b>simvastatin</b>; inhaled or intranasal <b>fluticasone/budesonide</b>, which can cause Cushing's syndrome; <b>PPIs with rilpivirine or atazanavir</b>; <b>antacids, calcium and iron with integrase inhibitors</b>; St John's wort. Use the University of Liverpool HIV Drug Interactions checker. Source: University of Liverpool HIV Drug Interactions; BNF/SmPC."},
+    {tone:"green", h:"Undetectable = untransmittable", html:"A person on ART with a <b>sustained undetectable viral load</b> cannot pass HIV on through sex. The UK uses <50 copies/mL; the PARTNER studies used <200. For PEP decisions, UK guidance relies on it once the partner has been on ART for ≥6 months with an undetectable viral load within the last 6 months and good adherence. Say this plainly at diagnosis. It reduces stigma and supports adherence. Source: BHIVA U=U statement; UK PEP guideline 2021."}
+  ],
+  pathwaySub:"The primary-care path, from suspicion to shared care. The red step is where delay does the most harm.",
+  pathway:[
+    {title:"Think of it", html:"Indicator condition, seroconversion-type illness, AIDS-defining presentation, risk disclosed, patient requests a test, or a new registration in a high-prevalence area. <b>Offer the test as routine</b>. Pre-test counselling is not required; say what the test is for and that the result will come back to them."},
+    {title:"Recognise the unwell patient", html:"Hypoxia on exertion, meningism, focal neurology, visual loss, severe oral or oesophageal candidiasis with weight loss, or suspected TB → <b>same-day admission</b> with HIV testing done in hospital. An exposure within 72 hours → <b>same-day PEP</b>.", alert:true},
+    {title:"Test correctly", html:"<b>4th-generation antigen/antibody venous test</b>. Record the date of the last exposure. If the test falls inside the 45-day window, repeat it at 45 days. A reactive result is confirmed by the laboratory on a second sample, not by the GP."},
+    {title:"Give the result and link to care", html:"Give a positive result <b>in person</b> and plainly, with support. Refer directly to the local HIV service. The patient should be assessed <b>within 2 weeks</b>, and sooner if unwell or pregnant (BHIVA Standards of Care 2018). Discuss partner notification, which the HIV/sexual health team leads, and ask about children."},
+    {title:"Share care for life", html:"ART is started and monitored by the specialist team. The GP records ART on the practice system so interaction alerts fire, runs the interaction check on every new drug, and manages CVD, bone, renal and mental health. The GP also keeps vaccinations, <b>annual cervical screening</b> and contraception up to date."}
+  ],
+  sections:[
+
+    {id:"test", nav:"Who to test", title:"Who to test — normalise the offer", sub:"Late diagnosis drives illness, death and onward transmission, and many late diagnoses follow earlier healthcare contacts where no one offered a test.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Local prevalence decides the routine offer", html:"Diagnosed prevalence among people aged 15–59: <b>high = 2–5 per 1,000</b>, <b>extremely high = ≥5 per 1,000</b>. In these areas, offer an HIV test to everyone <b>registering with a GP</b>. Also offer one to anyone having blood taken who has not had an HIV test in the past 12 months. Use UKHSA surveillance data to find your local prevalence.", src:"NICE NG60 (upd. 2025) · NICE QS157"},
+         {tone:"blue", h:"Test anyone, at any prevalence, with", html:"An <b>indicator condition</b> (table below); symptoms of seroconversion; a diagnosis of any STI; a partner with HIV; injecting drug use; sex between men, including their female partners; people from, or whose partners are from, countries of high prevalence; sex workers; and anyone who asks. Offer testing again for people with ongoing risk.", src:"BHIVA/BASHH/BIA 2020 testing guideline"},
+         {tone:"plain", h:"Antenatal and other settings", html:"HIV is screened for in every pregnancy (NHS Infectious Diseases in Pregnancy Screening), and testing is routine for everyone attending sexual health (GUM) services. Emergency departments in high-prevalence areas of England run <b>opt-out blood-borne virus testing</b> (HIV, hepatitis B and C) on anyone who has blood taken. GPs will receive results and referrals from this programme.", src:"NHS England ED opt-out BBV testing · BHIVA pregnancy 2025"},
+         {tone:"plain", h:"Consent and approach", html:"Lengthy pre-test counselling is <b>not required</b>. Explain the test and how the result will reach them, then check they are happy to go ahead. Record the offer and whether it was declined. Normalising the offer (“we offer this test to everyone”) removes the implied judgement.", src:"BHIVA/BASHH/BIA 2020 testing guideline"}
+       ]},
+       {b:"table", head:["Indicator condition group","Examples — offer an HIV test"], rows:[
+         ["<b>AIDS-defining</b>","Pneumocystis pneumonia; oesophageal candidiasis; tuberculosis; Kaposi's sarcoma; cerebral toxoplasmosis; cryptococcal meningitis; CMV retinitis; non-Hodgkin lymphoma; invasive cervical cancer; HIV wasting"],
+         ["<b>Respiratory / infection</b>","Bacterial pneumonia, especially recurrent; unexplained fever; mononucleosis-like (glandular-fever-like) illness; hepatitis B or C; any sexually transmitted infection"],
+         ["<b>Skin and mouth</b>","Herpes zoster in a younger adult or across several dermatomes; severe or new seborrhoeic dermatitis; severe or treatment-resistant psoriasis; oral candidiasis; oral hairy leukoplakia; recurrent or severe genital herpes or vaginal candidiasis"],
+         ["<b>Blood and systemic</b>","Unexplained lymphadenopathy; unexplained weight loss; unexplained leucopenia, lymphopenia or thrombocytopenia; chronic diarrhoea of unknown cause"],
+         ["<b>Neurology</b>","Peripheral neuropathy of unknown cause; cognitive impairment or dementia in a younger person; Guillain–Barré syndrome; aseptic meningitis"],
+         ["<b>Cancers</b>","Lymphoma; anal cancer or anal intraepithelial neoplasia; high-grade cervical dysplasia; primary lung cancer in a younger person"]
+       ]},
+       {b:"why", html:"Indicator conditions either define AIDS or carry an undiagnosed HIV prevalence above about 1 in 1,000, which is the level at which testing is cost-effective. Missing the diagnosis would also change how the condition itself is treated. The GP sees many of them first: shingles, seborrhoeic dermatitis, recurrent thrush, unexplained cytopenias and glandular-fever-like illness. Testing at that point is the single highest-yield HIV action in primary care (BHIVA/BASHH/BIA 2020; NICE NG60)."}
+     ]},
+
+    {id:"urgent", nav:"Red flags", title:"Red flags — seroconversion and advanced HIV", sub:"Two opposite ends of the illness: very early (highly infectious, easy to mistake for a virus) and very late (low CD4, opportunistic infection).",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Suspected PCP — admit", html:"Progressive exertional breathlessness over weeks, dry cough, fever, and <b>desaturation on exertion</b>, often with a near-normal chest examination. Oral candidiasis is a common clue. Same-day admission.", src:"BHIVA/BASHH/BIA 2020 (AIDS-defining conditions)"},
+         {tone:"red", h:"Neurological presentation — admit", html:"Headache with fever or meningism (cryptococcal meningitis), focal deficit or seizure (toxoplasmosis, lymphoma, PML), or new confusion. Treat as a medical emergency.", src:"BHIVA/BASHH/BIA 2020 (AIDS-defining conditions)"},
+         {tone:"red", h:"Visual loss, floaters — same day", html:"CMV retinitis in advanced HIV. Refer to same-day ophthalmology and inform the HIV team.", src:"BHIVA/BASHH/BIA 2020 (AIDS-defining conditions)"},
+         {tone:"amber", h:"Seroconversion illness", html:"Fever, maculopapular rash, pharyngitis, mouth or genital ulcers, lymphadenopathy, myalgia, sometimes aseptic meningitis. Onset is 2–6 weeks after exposure. Ask about risk in every “glandular fever” with a negative monospot. Send a 4th-generation test <b>and tell the lab it is a query seroconversion</b>. Repeat at 45 days if negative, or discuss HIV RNA with virology.", src:"BHIVA/BASHH/BIA 2020 testing guideline"},
+         {tone:"amber", h:"Weight loss, sweats, chronic diarrhoea, TB features", html:"Constitutional symptoms with lymphadenopathy or cytopenias: test for HIV in parallel with the cancer or TB work-up, not after it.", src:"BHIVA/BASHH/BIA 2020 · NICE NG60"},
+         {tone:"blue", h:"Exposure within 72 hours", html:"Condomless anal or vaginal sex with a partner of unknown status from a higher-prevalence group, or with a partner who has HIV and a detectable or unknown viral load. Also sexual assault, or sharing injecting equipment. Refer the <b>same day</b> for PEP assessment.", src:"UK PEP guideline 2021 (BASHH/BHIVA)"}
+       ]},
+       {b:"warn", html:"<b>A negative HIV test during a seroconversion illness does not exclude HIV.</b> Record the exposure date, repeat the test at 45 days after it, and advise condoms and no blood donation meanwhile. The people most likely to transmit HIV are those who are newly infected and undiagnosed."}
+     ]},
+
+    {id:"diagnose", nav:"Test & result", title:"Testing, window periods, and giving a positive result", sub:"Use the right test, time it correctly, and deliver a result that the patient will act on.",
+     blocks:[
+       {b:"table", head:["Test","What it detects","Window / use"], rows:[
+         ["<b>4th-generation laboratory test</b> (venous)","p24 antigen + HIV-1/2 antibody","First-line. <b>Window period 45 days</b>: a negative test 45 days after the last exposure excludes HIV from that exposure (BHIVA/BASHH/BIA 2020)"],
+         ["Point-of-care test / self-test / self-sampling","Mostly antibody only (some combined)","Useful for access and for people unwilling to have venous blood. Antibody-only tests have a <b>longer window</b>, so a reactive result always needs laboratory confirmation"],
+         ["HIV RNA (viral load)","Viral genetic material","Not a screening test. Specialist or virology use when acute infection is strongly suspected with a negative serology, and for monitoring on ART"],
+         ["After PEP","—","HIV test <b>45 days after completing</b> the 28-day course. For sexual exposures, testing at 12 weeks aligns with syphilis testing (UK PEP 2021)"]
+       ]},
+       {b:"ladder", steps:[
+         {step:"Before", title:"Know how the result will be given", when:"at the time of testing", html:"Agree how the patient will hear the result and check the contact number. A negative result can usually be given by phone or text with the window-period caveat. Plan to give a reactive or positive result <b>face to face</b>."},
+         {step:"Reactive", title:"A reactive screening result", when:"lab rings or reports", fromLabel:"not yet a diagnosis", html:"The laboratory will confirm on further assays and usually ask for a <b>second sample</b> to exclude a labelling error. Many labs and HIV services will advise directly. Call the local HIV service for same-day advice if unsure."},
+         {step:"Tell", title:"Giving a positive result", when:"in person, protected time", fromLabel:"the conversation", html:"Give the result early and clearly. Allow silence. Then give the key facts: <b>HIV is treatable</b>; with ART people have a <b>near-normal life expectancy</b>; once the virus is undetectable it <b>cannot be passed on sexually</b>. Check safety, support and suicide risk. Offer written information and a peer-support organisation."},
+         {step:"Link", title:"Referral to the HIV service", when:"within 2 weeks", fromLabel:"BHIVA Standards of Care 2018", html:"Refer directly, and phone as well where you can. The service should see new diagnoses <b>no later than 2 weeks</b> after the result, and sooner (in some cases within 24 hours) if unwell or pregnant. The clinic does the baseline CD4 count, viral load and resistance testing, and screens for opportunistic infection. Send the result, symptoms, current medicines (including OTC and herbal remedies), pregnancy status and any safeguarding concern. <b>Confirm the patient attended</b>. Failure to link into care is a recognised loss point."},
+         {step:"Then", title:"Partners, children, and the record", when:"same visit or soon after", fromLabel:"often forgotten", html:"Partner notification is led by the HIV or sexual health service. Ask whether the patient has <b>children</b> or other dependants who may need testing. Code HIV and record ART on the GP system with the patient's knowledge, so that <b>interaction alerts work</b>. Many patients worry about who can see their record; explain how it is used."}
+       ]},
+       {b:"say", html:"“The test has come back positive for HIV. I know that is a lot to take in, so let's take it slowly. The most important thing I want you to hear is that HIV today is a treatable long-term condition. With treatment, people live a normal lifespan, and once the virus is undetectable in your blood you cannot pass it on to partners through sex. I would like to get you seen by the HIV team within the next week or two. What's going through your mind right now?”"}
+     ]},
+
+    {id:"prevent", nav:"PEP & PrEP", title:"Prevention — PEP, PrEP, condoms and U=U", sub:"PEP is an emergency. PrEP is a planned prevention method. The GP's job is to recognise when each is needed and send the person to the right service quickly.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"PEP — post-exposure prophylaxis", html:"Start <b>as soon as possible, ideally within 24 h, and no later than 72 h</b>. The course is <b>28 days</b>; the guideline's first-line regimen is tenofovir disoproxil/emtricitabine plus raltegravir. <b>Recommended</b> after receptive anal sex with a partner of unknown status from a higher-prevalence group, or with a partner with HIV and a detectable or unknown viral load; other exposures are risk-assessed by the PEP service. Available from sexual health clinics, and from the ED out of hours.", src:"UK PEP guideline 2021 (BASHH/BHIVA)"},
+         {tone:"green", h:"When PEP is not recommended", html:"<b>Not recommended</b> after any kind of condomless sex with a partner with HIV who has been on ART for <b>at least 6 months</b>, has an undetectable viral load within the last 6 months, and reports good adherence. If there is <b>any doubt</b> about the partner's ART history, adherence or viral load, give PEP after receptive anal sex.", src:"UK PEP guideline 2021 (BASHH/BHIVA)"},
+         {tone:"blue", h:"PrEP — pre-exposure prophylaxis", html:"Oral <b>tenofovir-emtricitabine</b>, taken daily or event-based. It is free through NHS sexual health services, which also do the monitoring: regular HIV and STI testing and renal function. The 2025 guideline moves away from trial-based eligibility towards <b>individual risk assessment and equity of access</b>. It adds event-based dosing options for all PrEP users and advises that eGFR should be ≥60 to start TD-FTC.", src:"BASHH/BHIVA PrEP guideline 2025"},
+         {tone:"blue", h:"Long-acting injectable PrEP", html:"<b>Cabotegravir</b> injection every 2 months is recommended for adults and young people (≥35 kg) at high risk of HIV <b>who cannot take oral PrEP</b>. It is delivered by sexual health services, not in primary care.", src:"NICE TA1106 (Nov 2025)"},
+         {tone:"blue", h:"GP role in PrEP", html:"Raise PrEP when someone discloses ongoing risk, is diagnosed with an STI (especially rectal STI or syphilis), has had PEP, or has a partner with HIV who is not suppressed. Refer or signpost to sexual health. When a patient on PrEP is prescribed something new, check it against <b>tenofovir</b>: <b>NSAIDs</b> and other nephrotoxic drugs matter.", src:"BASHH/BHIVA PrEP guideline 2025"},
+         {tone:"green", h:"U=U and condoms", html:"A partner with a sustained undetectable viral load does not transmit HIV sexually. Condoms still protect against other STIs and pregnancy. U=U applies to sex; it is not guidance on sharing injecting equipment.", src:"BHIVA U=U position statement"}
+       ]},
+       {b:"warn", html:"<b>Do not make someone wait for PEP.</b> A request for an “HIV test” the day after a condom broke, or after an assault, is a PEP request. Ask when the exposure was. After sexual assault, also offer referral to a <b>sexual assault referral centre (SARC)</b>, emergency contraception and safeguarding support."}
+     ]},
+
+    {id:"art", nav:"ART basics", title:"Antiretroviral therapy — what the GP needs to know", sub:"The specialist team initiates, changes and monitors ART. The GP needs to know the drug classes (for interactions), the rules, and what must never be stopped.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"All", title:"ART for everyone diagnosed", when:"as soon as possible", html:"Lifelong combination ART is recommended for everyone with HIV <b>regardless of CD4 count</b>. It suppresses viral replication, restores immunity, prevents transmission and gives a near-normal life expectancy. Most first-line regimens are built around an <b>integrase inhibitor</b> (dolutegravir or bictegravir), often as a single daily tablet."},
+         {step:"2025", title:"What changed in the 2025 interim update", when:"BHIVA ART 2022 (2025 interim update)", fromLabel:"recent", html:"The update <b>removes abacavir</b> from first-line recommendations for most people and advises switching away from it where clinically appropriate. It makes first-line dolutegravir/lamivudine an option <b>at any CD4 count and baseline viral load</b> (still not with M184V resistance). It adds evidence on long-acting injectable <b>cabotegravir/rilpivirine</b>, including viral load monitoring frequency and off-label use in some people who are not virally suppressed. Specialists make these changes; GPs should expect regimen changes in their patients."},
+         {step:"Inject", title:"Long-acting injectable ART", when:"clinic-administered", fromLabel:"cabotegravir + rilpivirine", html:"Given by injection every 1–2 months in the HIV clinic. The GP system may not show it as a prescription, so <b>record it manually</b>; it still interacts, for example rilpivirine with enzyme inducers. Missed injection visits matter; tell the clinic if the patient is admitted or unwell."},
+         {step:"Never", title:"Do not stop or interrupt ART", when:"including acute illness and admission", fromLabel:"patient safety", html:"Stopping or interrupting ART risks viral rebound, resistance and transmission. If a new drug interacts, <b>change the new drug</b>, not the ART, and discuss any ART change with the HIV team. On admission, make sure ART continues; check the medicines reconciliation."},
+         {step:"Low CD4", title:"Opportunistic infection prophylaxis", when:"specialist-directed", fromLabel:"advanced HIV", html:"People with a low CD4 count (typically <200 cells/µL) are given prophylaxis, for example co-trimoxazole against PCP, by the HIV team until immune recovery. Repeat prescriptions may pass to the GP; check the stop date with the clinic."}
+       ]},
+       {b:"why", html:"ART does not cure HIV, but continuous treatment keeps the virus undetectable. The GP's most important ART task is <b>not prescribing a drug that knocks ART levels down</b>, which causes treatment failure and resistance, or one that ART pushes to toxic levels. That is why the interaction section below matters more than knowing the regimens (BHIVA ART 2022, 2025 interim update)."}
+     ]},
+
+    {id:"interactions", nav:"Interactions", title:"Drug interactions the GP must check", sub:"Check every new prescription, OTC purchase and supplement. Use the University of Liverpool HIV Drug Interactions checker (hiv-druginteractions.org, free app) and the BNF. If in doubt, phone the HIV pharmacist.",
+     blocks:[
+       {b:"table", head:["Drug / class","Problem ART","What to do"], rows:[
+         ["<b>Statins</b>","Boosted regimens (ritonavir, cobicistat) raise statin levels; risk of myopathy and rhabdomyolysis","<b>Simvastatin is contraindicated</b> with boosters. Atorvastatin and rosuvastatin may need dose limits with boosters; check the Liverpool checker for the specific combination"],
+         ["<b>Inhaled / intranasal / injected corticosteroids</b>","Ritonavir or cobicistat (CYP3A4 inhibition)","<b>Fluticasone and budesonide</b>, including nasal sprays, can cause <b>iatrogenic Cushing's syndrome and adrenal suppression</b>. Joint injections of triamcinolone or methylprednisolone carry the same risk. Beclometasone is usually the preferred inhaled steroid with boosters; check first"],
+         ["<b>PPIs / H2 blockers / antacids</b>","<b>Rilpivirine</b> (oral) and <b>atazanavir</b> need gastric acid to be absorbed","<b>PPIs are contraindicated with rilpivirine</b>; PPIs are generally not recommended with atazanavir. H2 blockers and antacids need timed separation. Watch for OTC omeprazole purchases"],
+         ["<b>Polyvalent cations</b>: antacids, calcium, iron, magnesium, zinc, multivitamins","<b>Integrase inhibitors</b> (dolutegravir, bictegravir, raltegravir) are chelated and absorption falls","Separate doses: for example, take dolutegravir 2 h before or 6 h after cation-containing products. With food, iron or calcium supplements may be co-administered with some integrase inhibitors; check the specific product. Remember iron for anaemia and calcium/vitamin D for bones"],
+         ["<b>Enzyme inducers</b>: carbamazepine, phenytoin, phenobarbital, rifampicin, <b>St John's wort</b>","Most ART classes, whose levels fall","Risk of ART failure and resistance. Avoid, or seek specialist advice before starting"],
+         ["<b>Metformin</b>","Dolutegravir raises metformin levels","Dose adjustment may be needed; check the Liverpool checker and monitor"],
+         ["<b>Anticoagulants (DOACs, warfarin)</b>","Boosters and enzyme-inducing ART","Levels up or down; some combinations are not recommended. Check before starting AF or VTE treatment"],
+         ["<b>Sedatives, opioids, erectile dysfunction drugs, some antipsychotics and antidepressants</b>","Boosters","For example, midazolam, sildenafil and quetiapine levels rise. Check dose and suitability"],
+         ["<b>Hormonal contraception and HRT</b>","Enzyme-inducing ART (e.g. efavirenz) and some boosted regimens","See the contraception section. Unboosted integrase inhibitors and rilpivirine generally do not reduce contraceptive efficacy"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Make the record do the work", html:"Hospital-prescribed ART often does not appear on the GP prescribing record, so interaction alerts do not fire. Add ART as a “hospital/specialist-issued” medicine and update it at every clinic letter. Ask the patient which pills they take now."},
+         {tone:"amber", h:"Ask about OTC, herbal and recreational drugs", html:"Indigestion remedies, supplements, St John's wort, and recreational drugs used in chemsex (for example MDMA, GHB and ketamine with boosters) all interact. Ask without judgement."}
+       ]},
+       {b:"why", html:"Fluticasone is the classic example. A boosted protease inhibitor stops the liver breaking fluticasone down, so a “low-dose” inhaler or nasal spray builds up to systemic steroid levels. Patients then present with Cushingoid features, or with adrenal crisis when the inhaler is stopped. The same logic makes simvastatin dangerous. The fix is always to choose a different co-medication, not to alter the ART."}
+     ]},
+
+    {id:"comorbid", nav:"Comorbidity", title:"Long-term comorbidity — the GP's territory", sub:"People with well-controlled HIV now mostly face the conditions of ageing, often earlier. The GP leads on most of these.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Cardiovascular risk — QRISK3 underestimates it", html:"Standard risk tools <b>underestimate CVD risk in people treated for HIV</b>; use clinical judgement when interpreting QRISK3. Manage smoking, blood pressure, diabetes and lipids actively.", src:"NICE NG238 (2023)"},
+         {tone:"red", h:"Statins for everyone with HIV aged 40 and over", html:"BHIVA recommends a statin for primary prevention in <b>all people living with HIV aged ≥40</b>, regardless of cholesterol or calculated risk, based on the REPRIEVE trial. BHIVA names pitavastatin 4 mg (the trial drug) first-line when available in the UK, with <b>atorvastatin 20 mg</b> as the alternative. Check the interaction with the ART regimen first.", src:"BHIVA rapid guidance on statins (Nov 2023, upd. Mar 2024)"},
+         {tone:"amber", h:"Bone health", html:"Fragility fracture and osteoporosis risk is higher in HIV; tenofovir disoproxil contributes. Assess fracture risk (FRAX) in older adults and those with risk factors. Treat per standard osteoporosis pathways. Separate calcium doses from integrase inhibitors.", src:"BHIVA monitoring 2016 (2019 interim update)"},
+         {tone:"amber", h:"Renal function — read creatinine carefully", html:"Tenofovir disoproxil can cause tubular toxicity (glycosuria, proteinuria, falling phosphate). <b>Dolutegravir, bictegravir, cobicistat and rilpivirine</b> block tubular creatinine secretion. This causes a small, early, non-progressive creatinine rise <b>without true GFR loss</b>. Discuss progressive decline with the HIV team. Review NSAIDs and other nephrotoxic drugs.", src:"BHIVA monitoring 2016 (2019 update) · product SmPCs"},
+         {tone:"blue", h:"Mental health, cognition and substance use", html:"Depression, anxiety, and alcohol and drug use are more common. Stigma, disclosure fears and past trauma are frequent drivers. Screen, treat, and <b>check antidepressant and antipsychotic interactions</b>. Some ART (for example efavirenz, and dolutegravir in a minority) can cause sleep or mood effects; tell the HIV team. New cognitive decline in a younger person with HIV needs specialist input.", src:"BHIVA ART 2022 (2025 interim update)"},
+         {tone:"plain", h:"Cancer screening and liver", html:"Anal and cervical cancer risk is higher (see screening below), and lung cancer is more common with smoking. Hepatitis B and C co-infection are common; screen and vaccinate as advised by the HIV team.", src:"BHIVA monitoring 2016 (2019 interim update)"}
+       ]},
+       {b:"why", html:"Life expectancy with treated HIV is near-normal, but chronic immune activation and past ART exposure raise cardiovascular, renal, bone and some cancer risks. Smoking rates are also higher. Most of this is standard primary-care chronic disease management, adjusted for interactions and for risk tools that underestimate risk."}
+     ]},
+
+    {id:"vaccines", nav:"Vaccines & screening", title:"Vaccination and cervical screening", sub:"Non-live vaccines are safe at any CD4 count, though they may work less well at low counts. Live vaccines depend on the CD4 count.",
+     blocks:[
+       {b:"table", head:["Vaccine / screen","Recommendation","Note"], rows:[
+         ["<b>Live vaccines</b> (MMR, varicella, yellow fever, oral typhoid, live zoster)","<b>Do not give if CD4 <200 cells/µL</b>. Above 200, give only after discussion with the HIV team; a suppressed viral load increases safety","<b>BCG is not given to people with HIV at any CD4 count.</b> Check with the HIV team before any live vaccine (BHIVA vaccines 2015; Green Book ch.7)"],
+         ["<b>Shingles</b>","<b>Shingrix</b> (non-live, 2 doses) is the vaccine used","From 1 Sept 2025, all <b>severely immunosuppressed adults aged 18+</b> are eligible. Check whether the patient meets the Green Book ch.28a definition with the HIV team. Zostavax (live) is contraindicated at low CD4"],
+         ["<b>Influenza</b>","Annually (inactivated)","Clinical risk group (Green Book ch.19)"],
+         ["<b>Pneumococcal</b>","Yes","Clinical risk group (Green Book ch.25); follow the current schedule for immunosuppression"],
+         ["<b>Hepatitis B</b>","Screen, then vaccinate if non-immune","Responses are weaker; the HIV team may use higher-dose or extra doses and check anti-HBs"],
+         ["<b>Hepatitis A, HPV</b>","By risk","HPV is offered to GBMSM up to 45 years through sexual health services; hepatitis A by risk"],
+         ["<b>COVID-19</b>","Per current seasonal programme eligibility","Immunosuppressed groups are prioritised"],
+         ["<b>Cervical screening</b>","<b>Annual</b> for people with a cervix living with HIV, within the normal screening age range","At diagnosis, screening is arranged by or with the HIV team. The GP must ensure <b>annual recall</b> is set; the default 3- or 5-yearly call will otherwise apply (NHSCSP colposcopy management, immunosuppressed section)"]
+       ]},
+       {b:"warn", html:"<b>The cervical screening interval is the most common primary-care failure in HIV care.</b> Under HPV primary screening, most people are recalled at 3 or 5 years. People with HIV need <b>annual</b> screening under national programme guidance. Flag it on the recall system at diagnosis and check it at every review."}
+     ]},
+
+    {id:"repro", nav:"Pregnancy & contraception", title:"Contraception, pregnancy and infant feeding", sub:"Check interactions before prescribing contraception. Pregnancy is managed jointly with the HIV team and obstetrics.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Contraception — method choice with ART", html:"<b>Copper IUD, LNG-IUD and DMPA injection</b> are not significantly affected by ART. With <b>enzyme-inducing ART</b> (particularly efavirenz), the combined pill, patch, ring, progestogen-only pill and <b>implant</b> may be less effective; offer an unaffected method. Unboosted integrase inhibitors (dolutegravir, raltegravir, bictegravir) and rilpivirine have no clinically significant effect. Check each regimen in the Liverpool checker.", src:"FSRH CEU ART–contraception interactions (Feb 2023)"},
+         {tone:"amber", h:"Emergency contraception", html:"The <b>copper IUD</b> is most effective and unaffected by ART. If oral emergency contraception is used with enzyme-inducing ART, FSRH advises a double dose of levonorgestrel (3 mg). Ulipristal is not recommended with enzyme inducers.", src:"FSRH CEU drug interactions with hormonal contraception (2022)"},
+         {tone:"blue", h:"Pregnancy", html:"Everyone is screened antenatally. A pregnant person with HIV needs <b>urgent referral to the HIV and antenatal team</b>, and should continue ART. Most people with a suppressed viral load can plan a vaginal birth. Babies receive post-natal prophylaxis. The 2025 guideline simplifies this into low-risk and high-risk infant pathways.", src:"BHIVA pregnancy & postpartum guideline 2025"},
+         {tone:"green", h:"Infant feeding", html:"The 2025 guideline gives more detailed support for people who choose to <b>breast- or chest-feed</b>. It is supported where the parent has an undetectable viral load and agrees to extra monitoring of parent and infant. The alternative, formula feeding, removes the risk. This is a specialist-supported decision; the GP should not simply advise against it.", src:"BHIVA pregnancy & postpartum guideline 2025"},
+         {tone:"plain", h:"Pre-conception", html:"People planning pregnancy should be virally suppressed. Discuss conception with the HIV team, including U=U for partners, folic acid, and checking ART safety in early pregnancy. In a partner without HIV, PrEP may be relevant if the partner with HIV is not suppressed.", src:"BHIVA pregnancy & postpartum guideline 2025"}
+       ]}
+     ]},
+
+    {id:"confidential", nav:"Confidentiality & safeguarding", title:"Confidentiality, disclosure and safeguarding", sub:"The patient chooses whom to tell. The doctor's duties to third parties are narrow and specific.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Confidentiality", html:"HIV status is sensitive personal information. Share it with other clinicians who need it for care, which the patient usually expects. Discuss what is coded and who sees it. <b>Employers, insurers and family members</b> do not receive information without explicit consent.", src:"GMC confidentiality guidance (serious communicable diseases)"},
+         {tone:"amber", h:"Partners who may be at risk", html:"First, <b>encourage and support</b> the patient to tell partners, or use anonymous partner notification through the HIV or sexual health service. The GMC says you <b>may</b> disclose to a known sexual contact at risk if the patient has not told them and cannot be persuaded to. Tell the patient first, do not reveal the patient's identity where practicable, and be ready to justify the decision. Seek advice from a defence body or the HIV team before doing so.", src:"GMC confidentiality guidance (serious communicable diseases)"},
+         {tone:"plain", h:"HIV and the law", html:"U=U and condom use are relevant to reckless-transmission law in England and Wales; the HIV clinical team usually advises. BHIVA's position is that criminalisation does not serve public health. The GP's role is to support disclosure, not to police it.", src:"BHIVA position statement on HIV and the law"},
+         {tone:"red", h:"Safeguarding children", html:"<b>Ask about children</b> of every newly diagnosed parent, and about siblings of a child with HIV. Children of parents with HIV should have their HIV status established, however well they appear. This is done through the HIV or paediatric service, not left to chance. A young person with HIV, a child being sexually exploited, or an under-13 with an STI or HIV raises standard safeguarding duties.", src:"BHIVA/CHIVA/BASHH “Don't forget the children” (2009)"}
+       ]},
+       {b:"why", html:"Children born before a parent's diagnosis can reach adolescence with undiagnosed HIV, and in the UK some have first presented with AIDS-defining illness or died. The consensus guidance followed exactly such deaths. It asks every adult HIV service to test the children of their patients. The GP knows the household and is often best placed to raise it."}
+     ]},
+
+    {id:"followup", nav:"Follow-up & refer", title:"Follow-up, monitoring and referral", sub:"The HIV clinic monitors viral load and CD4. The GP monitors everything else and reacts to clinic results.",
+     blocks:[
+       {b:"table", head:["What","Who / when","GP action"], rows:[
+         ["Viral load","HIV clinic: frequently after starting ART, then typically 6-monthly once stable (BHIVA monitoring 2016, 2019 update). The 2025 ART update revised monitoring frequency, including for long-acting injectables; follow the clinic plan","If the clinic reports detectable virus, look for interactions, vomiting or diarrhoea, and adherence barriers such as mental health, housing or drug use"],
+         ["CD4 count","HIV clinic; less often once suppressed and CD4 >200","Low CD4 changes live-vaccine decisions and prophylaxis; check the latest value in clinic letters"],
+         ["U&E, eGFR, urine protein, phosphate","HIV clinic or shared","Interpret creatinine in light of dolutegravir, bictegravir, cobicistat or rilpivirine; discuss progressive decline"],
+         ["CVD risk, lipids, BP, HbA1c","<b>GP</b>, at least annually from 40","Statin from 40 per BHIVA 2023; manage risk factors; remember QRISK3 underestimates risk (NICE NG238)"],
+         ["Cervical screening","<b>GP / screening programme</b>, annually","Check recall is set to annual"],
+         ["Vaccines","<b>GP</b>, flu annually; others by eligibility","Check CD4 before any live vaccine"],
+         ["Medication review","<b>GP</b>, every new drug and at least annually","Interaction check; confirm the ART on record matches the latest clinic letter"],
+         ["Mental health, alcohol, smoking","<b>GP</b>, opportunistically","Screen and treat; check interactions"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Same day / admit", html:"Suspected PCP, meningitis, focal neurology, visual loss, suspected TB with systemic illness, severe dehydration or inability to take ART. Exposure within 72 h needs PEP at sexual health or the ED.", src:"UK PEP guideline 2021 · BHIVA/BASHH/BIA 2020"},
+         {tone:"blue", h:"HIV service — urgent", html:"<b>Every new diagnosis</b>, seen within 2 weeks, and sooner (within 24 h in some cases) if unwell or pregnant. Suspected seroconversion with a positive test. A pregnant person with HIV. Include medicines, symptoms, pregnancy status and any safeguarding concern.", src:"BHIVA Standards of Care 2018"},
+         {tone:"blue", h:"Sexual health / GUM", html:"PEP and PrEP, STI screening, partner notification, and HPV vaccination for GBMSM up to 45.", src:"UK PEP 2021 · BASHH/BHIVA PrEP 2025 · Green Book ch.18a (HPV)"},
+         {tone:"plain", h:"HIV pharmacist / clinic advice", html:"Before any interacting prescription, or when the Liverpool checker shows a red or amber interaction and you are unsure about an alternative.", src:"BHIVA ART 2022 (2025 interim update)"}
+       ]},
+       {b:"say", html:"“Your HIV medicine is working well, and because your virus is undetectable you can't pass it on through sex. Two things from my side. First, before you start any new medicine, including things from the chemist like indigestion remedies, supplements or nasal sprays, check with us or your pharmacist, because some of them clash with your HIV tablets. Second, you need a smear test <em>every year</em>, not every few years. If you get breathless when you walk, a new severe headache, changes in your vision, or you can't keep your HIV tablets down, contact us or the HIV clinic the same day.”"}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Where HIV care goes wrong in general practice.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Not testing the indicator condition", html:"Treating shingles in a 30-year-old, seborrhoeic dermatitis, recurrent candidiasis or a glandular-fever-like illness without offering an HIV test. Each of these is a missed diagnosis opportunity.", src:"BHIVA/BASHH/BIA 2020 · NICE NG60"},
+         {tone:"amber", h:"Falsely reassuring a negative test", html:"A negative test less than 45 days after exposure does not exclude HIV. Repeat it, and record the exposure date.", src:"BHIVA/BASHH/BIA 2020 testing guideline"},
+         {tone:"red", h:"Booking a routine appointment for PEP", html:"PEP only works within 72 hours, and works best within 24. Send the patient that day.", src:"UK PEP guideline 2021 (BASHH/BHIVA)"},
+         {tone:"red", h:"Prescribing fluticasone or simvastatin with a booster", html:"This is the classic serious interaction. It usually happens when ART is not on the GP record. Record ART and check every new drug.", src:"University of Liverpool HIV Drug Interactions · BNF"},
+         {tone:"amber", h:"3- or 5-yearly smear recall", html:"People with HIV need annual cervical screening. Set the recall.", src:"NHS England cervical screening: programme &amp; colposcopy management"},
+         {tone:"amber", h:"Live vaccine without a CD4 check", html:"Giving live vaccines (MMR, varicella, yellow fever) when the CD4 count is below 200; giving BCG at any CD4 count.", src:"BHIVA vaccines 2015 · Green Book ch.7"},
+         {tone:"plain", h:"Forgetting the children", html:"No one asks the newly diagnosed parent whether their children have been tested.", src:"BHIVA/CHIVA/BASHH “Don't forget the children” (2009)"},
+         {tone:"plain", h:"Under-treating CVD risk", html:"Relying on a QRISK3 score below 10% and not offering the BHIVA-recommended statin to people aged 40 and over.", src:"NICE NG238 · BHIVA statin statement 2023"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only. The Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"plain", h:"Classic scenario", html:"A 32-year-old man has a second episode of shingles in a year. The rash is now resolving, and he mentions he has lost weight. He has never had an HIV test and is worried about “what it means” if he has one. A variant: a 40-year-old woman with HIV on a boosted regimen asks for a fluticasone nasal spray for hay fever.", src:"BHIVA/BASHH/BIA 2020 testing guideline"},
+       {tone:"plain", h:"Examiner-style checkpoints", html:"Recognises recurrent zoster and weight loss as indicator conditions. Offers the test in a normalising way and explores his concerns. Asks about exposure timing and explains the 45-day window. Plans how the result will be given, and safety-nets for red-flag symptoms. In the variant, spots the booster–fluticasone interaction and chooses a safer alternative after checking. <a href='../../cases/hiv.html'>Open the HIV casebook chapter →</a>", src:"BHIVA ART 2022 (2025 interim update)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Named sources for every recommendation on this page. Status checked September 2026.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>BHIVA/BASHH/BIA — Adult HIV testing guidelines 2020</b><br><a href="https://bhiva.org/clinical-guideline/hiv-testing-guidelines/" rel="noopener">bhiva.org/clinical-guideline/hiv-testing-guidelines</a><span class="rd"> — prevalence strata, indicator conditions, 45-day 4th-generation window period, ED testing, consent</span></li>'+
+         '<li><b>NICE NG60 — HIV testing: increasing uptake among people who may have undiagnosed HIV</b> (2016; last updated September 2025)<br><a href="https://www.nice.org.uk/guidance/ng60" rel="noopener">nice.org.uk/guidance/ng60</a><span class="rd"> — testing on GP registration and with blood tests in high/extremely high prevalence areas; use of UKHSA surveillance data (2025 amendment to rec 1.1.1); replaced PH33 and PH34</span></li>'+
+         '<li><b>NICE QS157 — HIV testing: encouraging uptake</b> (2017)<span class="rd"> — GP offer on registration and with blood tests in high/extremely high prevalence areas</span></li>'+
+         '<li><b>BHIVA guidelines on antiretroviral treatment for adults living with HIV-1 2022 (2025 interim update, October 2025)</b><br><a href="https://bhiva.org/clinical-guideline/hiv-1-treatment-guidelines/" rel="noopener">bhiva.org/clinical-guideline/hiv-1-treatment-guidelines</a><span class="rd"> — ART for all, abacavir removed from first line for most, long-acting cabotegravir/rilpivirine, interaction principles</span></li>'+
+         '<li><b>BASHH/BHIVA — UK guideline for the use of HIV post-exposure prophylaxis 2021</b><br><a href="https://bhiva.org/clinical-guideline/pep-guidelines/" rel="noopener">bhiva.org/clinical-guideline/pep-guidelines</a><span class="rd"> — 72-hour limit, 28-day course, first-line regimen, when PEP is not recommended, 45-day post-PEP test</span></li>'+
+         '<li><b>BASHH/BHIVA — Guidelines on the use of HIV pre-exposure prophylaxis (PrEP) 2025</b> (replaces the 2018 guideline)<br><a href="https://bhiva.org/clinical-guideline/PrEP-guidelines/" rel="noopener">bhiva.org/clinical-guideline/PrEP-guidelines</a><span class="rd"> — risk assessment and equity, event-based dosing options for all, eGFR ≥60 for TD-FTC</span></li>'+
+         '<li><b>NICE TA1106 — Cabotegravir for preventing HIV-1 in adults and young people</b> (November 2025)<br><a href="https://www.nice.org.uk/guidance/ta1106" rel="noopener">nice.org.uk/guidance/ta1106</a><span class="rd"> — long-acting injectable PrEP where oral PrEP cannot be used</span></li>'+
+         '<li><b>BHIVA guidelines for the routine investigation and monitoring of adult HIV-1-positive individuals 2016 (2019 interim update)</b><br><a href="https://bhiva.org/clinical-guideline/monitoring-guidelines/" rel="noopener">bhiva.org/clinical-guideline/monitoring-guidelines</a><span class="rd"> — viral load and CD4 frequency, renal and bone monitoring</span></li>'+
+         '<li><b>BHIVA guidelines on the use of vaccines in HIV-positive adults 2015</b> and <b>UKHSA Green Book</b> ch.7 (immunosuppression), ch.19 (influenza), ch.18a (HPV), ch.25 (pneumococcal), ch.28a (shingles)<br><a href="https://bhiva.org/clinical-guideline/vaccination-guidelines/" rel="noopener">bhiva.org/clinical-guideline/vaccination-guidelines</a><span class="rd"> — no live vaccines at CD4 &lt;200, no BCG; Shingrix eligibility for severely immunosuppressed adults 18+ from September 2025</span></li>'+
+         '<li><b>BHIVA rapid guidance on the use of statins for primary prevention of CVD in people living with HIV</b> (November 2023, updated March 2024)<span class="rd"> — statin for all aged ≥40; pitavastatin 4 mg first-line when available, atorvastatin 20 mg as alternative</span></li>'+
+         '<li><b>NICE NG238 — Cardiovascular disease: risk assessment and reduction, including lipid modification</b> (2023)<br><a href="https://www.nice.org.uk/guidance/ng238" rel="noopener">nice.org.uk/guidance/ng238</a><span class="rd"> — QRISK3 underestimates risk in people treated for HIV</span></li>'+
+         '<li><b>NHS Cervical Screening Programme — Cervical screening: programme and colposcopy management</b> (screening and management of immunosuppressed individuals)<span class="rd"> — annual screening for people with HIV</span></li>'+
+         '<li><b>BHIVA guidelines on the management of HIV in pregnancy and the postpartum period 2025</b><br><a href="https://bhiva.org/clinical-guideline/pregnancy-guidelines/" rel="noopener">bhiva.org/clinical-guideline/pregnancy-guidelines</a><span class="rd"> — antenatal screening, infant feeding, simplified infant prophylaxis</span></li>'+
+         '<li><b>FSRH CEU Guidance — Drug interactions between HIV antiretroviral therapy and contraception (February 2023)</b>; <b>FSRH CEU — Drug interactions with hormonal contraception (2022)</b><span class="rd"> — method choice with enzyme-inducing ART; emergency contraception</span></li>'+
+         '<li><b>BHIVA Standards of Care for people living with HIV 2018</b><span class="rd"> — new diagnoses assessed within 2 weeks</span></li>'+
+         '<li><b>BHIVA U=U position statement</b> and <b>BHIVA position statement on HIV, the law and the work of the clinical team</b></li>'+
+         '<li><b>GMC — Confidentiality: disclosing information about serious communicable diseases</b><br><a href="https://www.gmc-uk.org/professional-standards/the-professional-standards/confidentiality---disclosing-information-about-serious-communicable-diseases" rel="noopener">gmc-uk.org</a></li>'+
+         '<li><b>BHIVA/CHIVA/BASHH — “Don’t forget the children” (2009)</b><span class="rd"> — HIV testing of children of parents living with HIV</span></li>'+
+         '<li><b>NHS England — Blood-borne virus opt-out testing in emergency departments</b> (expanded 2025) and <b>DHSC HIV Action Plan for England 2025 to 2030</b></li>'+
+         '<li><b>University of Liverpool HIV Drug Interactions</b><br><a href="https://www.hiv-druginteractions.org" rel="noopener">hiv-druginteractions.org</a><span class="rd"> — interaction checking; <b>BNF</b> for all doses</span></li>'+
+         '<li><b>Summaries of Product Characteristics</b> (dolutegravir, bictegravir, cobicistat, rilpivirine, atazanavir)<span class="rd"> — creatinine secretion inhibition; acid-reducing agent and cation interactions</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"HIV in adults in primary care: BHIVA/BASHH/BIA testing 2020, NICE NG60, BHIVA ART 2022 (2025 interim update), UK PEP 2021, BASHH/BHIVA PrEP 2025, NICE TA1106, BHIVA monitoring and vaccine guidelines, UKHSA Green Book, FSRH CEU and BHIVA pregnancy 2025. Diagnosis confirmation and ART are specialist-led. Check every co-prescription with the Liverpool HIV interactions checker, and verify all doses against the current BNF."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

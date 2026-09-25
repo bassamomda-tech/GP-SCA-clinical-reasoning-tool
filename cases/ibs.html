@@ -718,7 +718,7 @@ body.mode-clinic .sca-only{display:none!important}
 
 </style>
 
-<link rel="stylesheet" href="../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../assets/provenance.css?v=14">
 </head>
 <body class="mode-both" id="bodyEl">
 <button class="sb-toggle" aria-label="Open case list">
@@ -893,7 +893,7 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="rf-table">
         <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
         <tbody>
-          <tr><td class="rf-flag">Rectal bleeding (any amount)</td><td class="rf-why">May indicate CRC, IBD, or ischaemic colitis. Never attribute to haemorrhoids in a patient with altered bowel habit without active exclusion. Age &ge;40 with PR bleeding and changed bowel habit = 2WW under NICE NG12.</td><td><span class="rf-action rfa-same">2WW CRC referral</span></td></tr>
+          <tr><td class="rf-flag">Rectal bleeding (any amount)</td><td class="rf-why">May indicate CRC, IBD, or ischaemic colitis. Never attribute to haemorrhoids in a patient with altered bowel habit without active exclusion. Rectal bleeding with pain or weight loss under 50, any rectal bleeding at 50+, or a change in bowel habit → FIT under NICE NG12; 2WW if ≥10 µg Hb/g.</td><td><span class="rf-action rfa-same">2WW CRC referral</span></td></tr>
           <tr><td class="rf-flag">Unintentional weight loss (&gt;3 kg)</td><td class="rf-why">IBS never causes weight loss. Any significant unintentional weight loss alongside GI symptoms mandates urgent investigation for malignancy, IBD, or malabsorption. IBS diagnosis should not be made alongside unexplained weight loss.</td><td><span class="rf-action rfa-same">Urgent investigation + 2WW</span></td></tr>
           <tr><td class="rf-flag">Nocturnal symptoms waking from sleep</td><td class="rf-why">IBS does not disrupt sleep architecture. Diarrhoea or severe pain waking the patient from sleep strongly suggests organic disease &mdash; IBD, microscopic colitis, or colorectal cancer. This symptom alone warrants urgent investigation.</td><td><span class="rf-action rfa-same">Urgent GI investigation</span></td></tr>
           <tr><td class="rf-flag">Age &ge;50 with new onset bowel symptoms</td><td class="rf-why">First presentation of IBS-type symptoms at age &ge;50 has a significantly higher prior probability of CRC. IBS diagnosis should only be made in this age group after organic pathology has been actively excluded.</td><td><span class="rf-action rfa-same">Investigate before IBS diagnosis</span></td></tr>
@@ -1119,7 +1119,7 @@ body.mode-clinic .sca-only{display:none!important}
         <h3>Same-Day GP / Urgent Referral</h3>
         <span class="tc-badge tcb-u">Days to 2 weeks</span>
         <ul class="tc-items">
-          <li class="tc-item"><strong>Rectal bleeding + altered bowel habit, age &ge;40</strong><em>2WW colorectal cancer referral under NICE NG12 &mdash; do not attribute to haemorrhoids without active CRC exclusion</em></li>
+          <li class="tc-item"><strong>Rectal bleeding or altered bowel habit</strong><em>FIT under NICE NG12 → 2WW colorectal if ≥10 µg Hb/g &mdash; do not attribute to haemorrhoids without active CRC exclusion</em></li>
           <li class="tc-item"><strong>Unintentional weight loss &gt;3 kg</strong><em>Urgent investigation within 2 weeks; 2WW CRC consideration depending on associated features; never attribute to IBS</em></li>
           <li class="tc-item"><strong>Palpable abdominal or rectal mass</strong><em>2WW CRC pathway even in a patient with known IBS history presenting with this new finding</em></li>
           <li class="tc-item"><strong>Raised CRP / calprotectin &gt;200 &mu;g/g</strong><em>Urgent IBD or malignancy workup; fast-track GI referral for colonoscopy and biopsy</em></li>
@@ -1485,7 +1485,7 @@ body.mode-clinic .sca-only{display:none!important}
         <thead><tr><th>Condition</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
         <tbody>
           <tr>
-            <td style="font-weight:600">Rectal bleeding + changed bowel habit &plusmn; age &ge;40</td>
+            <td style="font-weight:600">FIT ≥10 µg Hb/g, or a rectal mass</td>
             <td><span class="ref-urg rurg-2">2WW CRC</span></td>
             <td style="font-size:12px">Complete 2WW referral form with red flag trigger documented; advise patient about timeline and what to expect; do not wait for any test results before making the referral</td>
             <td style="font-size:12px;color:var(--r)">Do not wait for IBS treatment response before referring; do not attribute rectal bleeding to IBS or haemorrhoids without CRC exclusion</td>
@@ -2086,7 +2086,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="algo-branch algo-red">
           <div class="algo-branch-lbl">&#128308; Emergency / 2WW</div>
           <ul class="algo-list">
-            <li>Rectal bleeding + altered bowel habit, age &ge;40 &rarr; 2WW CRC</li>
+            <li>Rectal bleeding, altered bowel habit, weight loss or IDA &rarr; FIT; &ge;10 &micro;g Hb/g &rarr; 2WW CRC</li>
             <li>Peritonism / obstruction &rarr; 999</li>
             <li>Palpable abdominal or rectal mass &rarr; 2WW</li>
             <li>Unintentional weight loss &gt;3 kg &rarr; urgent investigation</li>
@@ -2632,7 +2632,7 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=100"></script>
+<script src="../assets/site.js?v=102"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
@@ -2642,6 +2642,6 @@ function resetScorecard(){
 <script src="../assets/topic-links.js?v=7"></script>
 
 <div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
-<script src="../assets/provenance.js?v=14"></script>
+<script src="../assets/provenance.js?v=15"></script>
 </body>
 </html>

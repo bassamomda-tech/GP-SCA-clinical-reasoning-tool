@@ -352,7 +352,7 @@
       'Cough ≥3 weeks unexplained, haemoptysis, or weight loss (especially smoker/ex-smoker ≥40) → urgent chest X-ray and 2WW suspected lung-cancer pathway if indicated (NICE NG12)',
       'Failure to improve, recurrent infection, or non-resolving CXR changes → respiratory',
       'Underlying chronic lung disease needing optimisation → respiratory review'],
-    source:'NICE NG138/NG191 (pneumonia) / NG120 (cough) / NICE NG12' },
+    source:'NICE NG138/CG191 (pneumonia) / NG120 (cough) / NICE NG12' },
 
   { id:'chiari', title:'Chiari malformation', category:'Neurology', icon:'🧠',
     overview:'A structural defect in which part of the cerebellum (the tonsils) herniates through the foramen magnum. Chiari I — the type usually seen in adults — is often an incidental finding, but can cause characteristic cough-related headache and, importantly, a syrinx (syringomyelia) with progressive neurological damage.',

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Axial spondyloarthritis (ankylosing spondylitis) — Protocol · Reasoning GP</title>
+<meta name="description" content="Axial spondyloarthritis and ankylosing spondylitis in primary care: recognising inflammatory back pain, the NICE NG65 referral criteria and HLA-B27, red flags in the rigid spine, exercise and NSAIDs, biologics and JAK inhibitors under NICE TAs and BSR 2025, shared care, pregnancy and driving." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/ankylosing-spondylitis.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790316402604106 tools/management/ankylosing-spondylitis.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Ankylosing spondylitis management card">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"🦴",
+  title:"Axial spondyloarthritis (ankylosing spondylitis)",
+  eyebrow:"Protocol · recognise, refer &amp; share care",
+  stemTitle:"Axial spondyloarthritis — spot inflammatory back pain early, then keep people moving",
+  stemSub:"One page for the whole condition, from the young adult with “mechanical” back pain who has been seen five times to the established patient on a biologic. Primary care owns the two moments that matter most: the delayed diagnosis, and the rigid spine that fractures after a minor fall. NICE NG65 sets the referral rules; rheumatology owns biologics under NICE technology appraisals and BSR 2025.",
+  guideline:"NICE NG65 (2017) · NICE QS170 (2018) · NICE TA383 · TA407 · TA718 · TA719 · TA829 · TA861 · TA918 · TA920 · BSR 2025 axSpA b/tsDMARD guideline · BSR 2019 biologic DMARD safety guideline · MHRA DSU April 2023 (JAK inhibitors) · BSR 2022 pregnancy prescribing guideline",
+  meta:[
+    {t:"NICE NG65 Spondyloarthritis in over 16s (2017)"},
+    {t:"NICE QS170 Spondyloarthritis (2018)"},
+    {t:"NICE TA383 TNF-alpha inhibitors · TA407 · TA718 · TA719 · TA829 · TA861 · TA918 · TA920"},
+    {t:"BSR 2025 axSpA b/tsDMARD guideline"},
+    {t:"Same-day ophthalmology for uveitis · NG65", tone:"tw"},
+    {t:"Doses per BNF"}
+  ],
+  lead:'<div class="mg-layers"><a href="#recognise"><b>Recognise</b><small>inflammatory back pain</small></a><a href="#criteria"><b>NG65 referral rules</b><small>4 criteria, or 3 + HLA-B27</small></a><a href="#redflags"><b>Red flags</b><small>fracture · uveitis · cauda equina</small></a><a href="#ladder"><b>Treat</b><small>exercise → NSAID → biologic</small></a></div>',
+  glance:[
+    {lbl:"Refer if", val:"Back pain &gt;3 m, onset &lt;45", sub:"+ ≥4 NG65 criteria (or 3 + HLA-B27 positive)"},
+    {lbl:"Do not rule out on", val:"Normal CRP/ESR or negative HLA-B27", sub:"NICE NG65"},
+    {lbl:"Cornerstone", val:"Specialist physio + exercise", sub:"lifelong"},
+    {lbl:"1st-line drug", val:"NSAID", sub:"lowest effective dose, with gastroprotection"},
+    {lbl:"Active despite NSAIDs", val:"Rheumatology", sub:"TNFi / IL-17i / JAKi"},
+    {lbl:"Red eye", val:"Same-day ophthalmology", sub:"acute anterior uveitis"}
+  ],
+  quickSub:"The five things that prevent harm. Each card names its source; the full list is under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"purple", h:"Chronic back pain in a young adult: apply NG65", html:"Low back pain that started <b>before age 45</b> and has lasted <b>longer than 3 months</b> → count the NG65 criteria. <b>4 or more → refer to rheumatology.</b> <b>Exactly 3 → request HLA-B27</b> and refer if positive. The list is in <a href=\"#criteria\">Referral criteria</a> below."},
+    {tone:"amber", h:"Normal bloods do not rule it out", html:"NG65 advises <b>not</b> ruling out spondyloarthritis solely because <b>CRP/ESR are normal</b> or <b>HLA-B27 is negative</b>. Many people with axial SpA have normal inflammatory markers, and early disease may not show on a plain X-ray. A normal result is not a reason to stop at “mechanical back pain”."},
+    {tone:"red", h:"A rigid spine breaks easily", html:"New or changed neck or back pain after <b>even minor trauma</b> (a fall from standing, a low-speed collision) in someone with established axSpA is a <b>fracture until proven otherwise</b> → same-day imaging and specialist assessment. New neurological symptoms, saddle anaesthesia or bladder change → emergency pathway."},
+    {tone:"red", h:"Painful red eye = same day", html:"Eye pain, redness, photophobia or blurred vision in someone with (or suspected of) SpA → <b>same-day ophthalmology</b>. Do not start steroid drops without a slit lamp. See <a href=\"../management/uveitis.html\">Uveitis protocol</a>."},
+    {tone:"green", h:"Exercise first, NSAID second, biologic via rheumatology", html:"Refer to a <b>specialist physiotherapist</b> for a structured exercise programme; offer an <b>NSAID at the lowest effective dose with gastroprotection</b>; if one NSAID at maximum tolerated dose for 2–4 weeks does not give adequate relief, consider switching to another. Persistently active disease → rheumatology for TNF inhibitor, IL-17 inhibitor or JAK inhibitor."}
+  ],
+  pathwaySub:"The consultation in six moves. The red step is where patients come to harm.",
+  pathway:[
+    {title:"Hear inflammatory back pain", html:"Onset before 45, insidious, &gt;3 months, early-morning stiffness, night waking in the second half of the night, better with movement not rest, alternating buttock pain, rapid response to NSAIDs. Ask directly about eyes, skin, bowels, heels and family history."},
+    {title:"Screen for danger", html:"Fracture after minor trauma in a known rigid spine, cauda equina features, suspected acute anterior uveitis, and the usual back-pain red flags (cancer, infection) come first.", alert:true},
+    {title:"Count the NG65 criteria", html:"4 or more of the 9 → refer. Exactly 3 → HLA-B27, refer if positive. Fewer, but suspicion remains → explain, safety-net and invite reassessment if new features develop."},
+    {title:"Refer to rheumatology — do not wait for proof", html:"Normal CRP, ESR, HLA-B27 or plain X-ray do not exclude it. Send the criteria you counted, extra-articular features, NSAID response and bloods. Start NSAID and physiotherapy while waiting."},
+    {title:"Share the care", html:"Rheumatology confirms the diagnosis (SIJ X-ray, MRI using an inflammatory back pain protocol) and decides on biologics. Primary care maintains NSAID safety, exercise, cardiovascular and bone health, vaccinations and biologic safety-netting."},
+    {title:"Review and re-escalate", html:"Flare, new extra-articular disease, loss of response, pregnancy planning or new comorbidity → back to the rheumatology team through the advice line or rapid-access route."}
+  ],
+  sections:[
+
+    {id:"recognise", nav:"Recognise", title:"Recognising axial SpA — the delay-to-diagnosis problem", sub:"Axial spondyloarthritis includes radiographic disease (ankylosing spondylitis, with sacroiliitis on X-ray) and non-radiographic axial SpA (inflammation on MRI without X-ray change). Both are treated the same way.",
+     blocks:[
+       {b:"p", html:"Diagnosis in the UK is typically delayed by several years. The usual reasons are in primary care’s gift to fix: back pain in a young adult is assumed to be mechanical, normal CRP or X-ray is taken as reassurance, and extra-articular clues (uveitis, psoriasis, IBD, heel pain) are managed in separate consultations and never connected. NICE NG65 was written partly to shorten this delay by giving clear primary-care referral triggers."},
+       {b:"table", head:["Feature","Inflammatory (think axSpA)","Mechanical"], rows:[
+         ["Onset","Before 45 (often teens–30s), insidious","Any age, often after a strain or load"],
+         ["Duration","&gt;3 months, persistent or recurrent","Often episodic and self-limiting"],
+         ["Stiffness","Prolonged early-morning stiffness","Brief stiffness"],
+         ["Night","Wakes in the <b>second half of the night</b>","Pain on turning, eased by rest"],
+         ["Movement","<b>Better with exercise</b>, worse with rest","Worse with activity, better with rest"],
+         ["Buttock pain","Often alternating sides (sacroiliitis)","Uncommon; may radiate unilaterally"],
+         ["NSAIDs","Marked improvement <b>within 48 hours</b>","Partial or modest response"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Extra-articular features to ask about", html:"Acute anterior uveitis, psoriasis (skin, scalp, nails), inflammatory bowel disease, enthesitis (heel or plantar fascia pain), dactylitis (“sausage” digit), peripheral arthritis, preceding GI or GU infection (reactive arthritis).", src:"NICE NG65 (2017)"},
+         {tone:"blue", h:"Who is at risk", html:"A first-degree relative with spondyloarthritis or psoriasis, known HLA-B27 positivity, personal history of uveitis, IBD or psoriasis. Women are under-recognised: axSpA is not a disease of young men only, and non-radiographic disease is common in women.", src:"NICE NG65 (2017)"}
+       ]},
+       {b:"why", label:"Why the delay matters", html:"Early diagnosis brings early physiotherapy, NSAID optimisation and, where indicated, biologics that control inflammation, preserve function and keep people in work. The <b>GP is usually the first and most frequent contact</b> — and the one who can see the whole pattern across consultations."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags and same-day actions", sub:"Established axSpA changes the meaning of trauma. Screen for these before anything else.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Suspected spinal fracture", html:"A fused or rigid spine is brittle and acts like a long bone: fractures (often cervical or thoracolumbar) occur after <b>minimal force</b> and can be unstable. Suspected spinal fracture (new or changed pain after a fall or other trauma) → NG65: refer to a specialist to confirm the fracture and carry out a stability assessment; in practice this means the same day via ED or the spinal team. Plain X-ray can miss these; CT (± MRI) is usually needed. If immobilising, keep the spine in the person’s current (possibly flexed) position and do not apply a semi-rigid collar or force the neck straight (NG41).", src:"NICE NG65 (2017) · NICE NG41 (2016) spinal injury"},
+         {tone:"red", h:"Suspected cauda equina syndrome", html:"Bilateral sciatica, saddle or perineal numbness, new bladder or bowel disturbance, sexual dysfunction → emergency referral for same-day MRI. Rarely, longstanding AS causes a slowly progressive cauda equina syndrome (CES-AS, with dural ectasia) as well as the acute disc form. See <a href=\"../management/cauda-equina.html\">Cauda equina protocol</a>.", src:"GIRFT 2023 national suspected cauda equina pathway · CES-AS: J Rheumatol 2019;46(12):1582"},
+         {tone:"red", h:"Acute anterior uveitis", html:"Painful red eye, photophobia, blurred vision → same-day ophthalmological assessment. Give the patient a direct route for future attacks.", src:"NICE NG65 (2017)"},
+         {tone:"amber", h:"Infection on a biologic or JAK inhibitor", html:"Fever or significant infection in someone on a TNF inhibitor, IL-17 inhibitor or JAK inhibitor → assess promptly; symptoms and CRP may be blunted. Consider TB (including extrapulmonary) and opportunistic infection. BSR advises temporarily pausing biologic treatment during a serious infection until recovery — contact the rheumatology team.", src:"BSR 2019 biologic DMARD safety guideline"},
+         {tone:"amber", h:"The usual back-pain red flags still apply", html:"NG59 asks you to think about alternative diagnoses for low back pain — cancer, infection, trauma, and inflammatory disease such as spondyloarthritis. Features such as new pain over 50, weight loss, a history of cancer, fever, immunosuppression or progressive neurological deficit point away from simple inflammatory back pain.", src:"NICE NG59 (2016)"}
+       ]}
+     ]},
+
+    {id:"criteria", nav:"Referral criteria", title:"NG65 referral criteria for suspected axial SpA", sub:"The same criteria appear on the site’s <a href=\"../management/uveitis.html\">Uveitis protocol</a>.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Low back pain criteria", html:"Low back pain that <b>started before age 45</b> and has lasted <b>longer than 3 months</b>: refer to rheumatology if <b>4 or more</b> of the 9 additional criteria are present: onset before 35, waking in the second half of the night because of symptoms, buttock pain, improvement with movement, improvement within 48 hours of NSAIDs, a first-degree relative with SpA, current or past arthritis, current or past enthesitis, current or past psoriasis. Uveitis is not one of these 9.", src:"NICE NG65 (2017)"},
+         {tone:"blue", h:"Exactly 3 criteria", html:"If exactly 3 additional criteria are present, request an <b>HLA-B27</b> test; if positive, refer to rheumatology for SpA assessment.", src:"NICE NG65 (2017)"},
+         {tone:"blue", h:"When criteria are not met", html:"If referral criteria are not met but suspicion remains, advise the person to seek reassessment if new features develop — NG65 notes this is especially appropriate with current or past uveitis, IBD or psoriasis.", src:"NICE NG65 (2017)"},
+         {tone:"blue", h:"Do not rule it out too early", html:"NG65 advises against ruling out SpA solely because HLA-B27 is negative or CRP/ESR are normal.", src:"NICE NG65 (2017)"},
+         {tone:"blue", h:"Peripheral presentations", html:"Refer <b>dactylitis</b> for SpA assessment. Refer enthesitis (and, similarly, arthritis) without an apparent mechanical cause if it is persistent or at multiple sites, <b>or</b> if any of these are also present: back pain without a mechanical cause, current or past uveitis, current or past psoriasis, GI or GU infection, IBD, or a first-degree relative with SpA or psoriasis.", src:"NICE NG65 (2017)"}
+       ]},
+       {b:"warn", html:"<b>Do not wait for an X-ray to show sacroiliitis.</b> Radiographic change takes years to appear and non-radiographic axSpA may never show it. Imaging for suspected axSpA is ordered and interpreted by rheumatology: NG65 describes a plain X-ray of the sacroiliac joints first, then MRI using an <b>inflammatory back pain protocol</b> if the X-ray does not show sacroiliitis (NICE QS170 statement 2). A standard lumbar spine MRI is not the right test."}
+     ]},
+
+    {id:"assess", nav:"Assess", title:"Initial assessment and investigations in primary care", sub:"Tests support the referral; none of them decides it.",
+     blocks:[
+       {b:"dl", rows:[
+         ["History","Pattern of pain (table above), duration, age at onset, NSAID response, sleep, function and work; eye, skin, bowel, heel and joint symptoms; family history; recent GI or GU infection"],
+         ["Examination","Spinal movement (lumbar flexion, lateral flexion, chest expansion, occiput-to-wall distance), sacroiliac tenderness, entheses (Achilles, plantar fascia), peripheral joints, skin, nails, scalp, eyes"],
+         ["Bloods","CRP and ESR (a raised CRP supports the referral; a normal one does not exclude); FBC; renal function and LFTs before regular NSAIDs"],
+         ["HLA-B27","Request when <b>exactly 3</b> NG65 criteria are present; positive → refer. Present in a minority of the general population, so it is not a diagnostic test on its own"],
+         ["Imaging","Leave SIJ X-ray and MRI to rheumatology unless local pathways ask otherwise. Do not order a lumbar spine X-ray to “exclude” axSpA"],
+         ["What to send","The criteria you counted, HLA-B27 and CRP, extra-articular features, NSAID trial and response, and any red flags excluded"]
+       ]},
+       {b:"why", html:"HLA-B27 only tips the balance when the clinical picture is borderline, which is why NG65 uses it for the “exactly 3 criteria” group. Testing everyone with back pain generates false reassurance (negative in some people with axSpA) and false alarm (positive in many people without it)."}
+     ]},
+
+    {id:"ladder", nav:"Treat", title:"Management — exercise, NSAIDs, then biologics", sub:"The same ladder applies before and after diagnosis is confirmed. Primary care can start steps 1 and 2 while the referral is pending.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Specialist physiotherapy and structured exercise", when:"everyone, lifelong", tone:"green",
+          html:"Refer to a <b>specialist physiotherapist</b> to start an individualised, structured exercise programme (stretching, strengthening, postural and cardiovascular exercise). Consider <b>hydrotherapy</b> as an adjunct for pain and function. Signpost the National Axial Spondyloarthritis Society (NASS) for exercise resources and local groups. Encourage stopping smoking."},
+         {step:"Step 2", title:"NSAID — regular, lowest effective dose, with gastroprotection", when:"first-line drug",
+          fromLabel:"symptomatic disease",
+          html:"Offer an NSAID at the lowest effective dose, with clinical assessment, monitoring of risk factors and <b>gastroprotective treatment</b>. If an NSAID at maximum tolerated dose for <b>2–4 weeks</b> does not give adequate relief, <b>consider switching to another NSAID</b>. Choice and dose per BNF; consider GI, renal and cardiovascular risk."},
+         {step:"Adjunct", title:"Analgesia and local steroid", when:"as needed",
+          fromLabel:"adjunctive",
+          html:"Paracetamol or a short course of a weak opioid for breakthrough pain (doses per BNF). Local corticosteroid injection for enthesitis, sacroiliitis or peripheral joints is a specialist decision. Long-term oral corticosteroids have no role in axial disease."},
+         {step:"Step 3", title:"Biologic or targeted synthetic DMARD", when:"active disease despite NSAIDs",
+          fromLabel:"persistently active disease, assessed by rheumatology",
+          html:"<b>TNF inhibitor</b> (adalimumab, certolizumab pegol, etanercept, golimumab, infliximab — NICE TA383), <b>IL-17 inhibitor</b> (secukinumab TA407/TA719, ixekizumab TA718, bimekizumab TA918) or <b>JAK inhibitor</b> (upadacitinib TA829/TA861, tofacitinib TA920). Initiated and prescribed by rheumatology (usually homecare); activity is judged with ASDAS, BASDAI and spinal pain."},
+         {step:"Peripheral only", title:"Conventional DMARD", when:"peripheral arthritis", tone:"amber",
+          fromLabel:"peripheral, not axial, disease",
+          html:"Sulfasalazine or methotrexate may be used by rheumatology for <b>peripheral</b> joint disease. They do <b>not</b> treat axial (spinal) disease. Monitoring under the local shared-care protocol; doses per BNF."}
+       ]},
+       {b:"warn", html:"<b>Do not use methotrexate or sulfasalazine for spinal symptoms</b>, and do not let a partial NSAID response stall escalation: persistent inflammatory symptoms despite two NSAID trials plus exercise is a reason to go back to rheumatology, not to add opioids."}
+     ]},
+
+    {id:"drugs", nav:"Specialist drugs", title:"Biologics and JAK inhibitors — what the GP must know", sub:"Rheumatology prescribes; the GP sees the complications first. Record specialist-prescribed drugs on the practice system so interactions and alerts fire.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"TNF inhibitors (NICE TA383)", html:"Adalimumab, certolizumab pegol, etanercept, golimumab and infliximab for active AS or non-radiographic axSpA that has not responded adequately to, or cannot tolerate, NSAIDs. Biosimilars are standard. A monoclonal TNFi is preferred where there is moderate-to-severe or recurrent uveitis.", src:"NICE TA383 · BSR 2025 axSpA b/tsDMARD guideline"},
+         {tone:"blue", h:"IL-17 inhibitors", html:"Secukinumab (NICE TA407 for AS; TA719 for non-radiographic axSpA), ixekizumab (TA718) and bimekizumab (TA918). <b>Not started in active IBD</b>; may be considered if IBD is inactive after gastroenterology review. New diarrhoea or rectal bleeding on an IL-17 inhibitor → consider new or flaring IBD.", src:"BSR 2025 axSpA b/tsDMARD guideline"},
+         {tone:"amber", h:"JAK inhibitors — MHRA restriction", html:"Upadacitinib (NICE TA829, TA861) and tofacitinib (TA920). MHRA advises use in people aged <b>65 or over</b>, <b>current or past long-term smokers</b>, or those with other <b>cardiovascular or malignancy risk factors</b> only if there is no suitable alternative, and caution in people with other risk factors for VTE. Tell the specialist team about new CV events, VTE or cancer.", src:"MHRA Drug Safety Update April 2023"},
+         {tone:"amber", h:"Infection and vaccination", html:"Before starting, rheumatology screens for TB and hepatitis B and C, and assesses HIV risk (testing per protocol) — BSR 2019 safety guideline. On treatment: <b>no live vaccines</b> without specialist advice (for example yellow fever, oral typhoid, MMR, varicella); non-live vaccines are encouraged — annual influenza, pneumococcal, COVID-19 per current programme, and non-live shingles vaccine (Shingrix) where eligible.", src:"UKHSA Green Book ch.6 · BSR 2019 biologic DMARD safety guideline"},
+         {tone:"plain", h:"Response and review", html:"Response is assessed with validated indices (ASDAS, BASDAI, spinal pain) <b>3–4 months</b> after starting, then every <b>6–12 months</b>. In sustained remission, <b>tapering</b> may be considered by the specialist team; <b>stopping</b> altogether is not recommended.", src:"BSR 2025 axSpA b/tsDMARD guideline"},
+         {tone:"plain", h:"Surgery, illness and pauses", html:"Before elective surgery or during a significant infection the rheumatology team advises whether and when to pause the drug. BSR 2019 generally advises withholding a biologic for about one dosing interval before elective surgery and pausing during serious infection. Do not stop it on the patient’s behalf without that conversation, and make sure a pause has a restart plan.", src:"BSR 2019 biologic DMARD safety guideline"}
+       ]},
+       {b:"why", html:"Drug choice follows the whole disease: monoclonal TNF inhibitors for recurrent uveitis, avoid IL-17 inhibitors in active IBD, IL-17 or TNF inhibitors for significant psoriasis, and JAK inhibitors only after weighing the MHRA risk factors. Your referral letter should mention eyes, skin and bowel for this reason."}
+     ]},
+
+    {id:"comorbid", nav:"Comorbidity", title:"Extra-articular disease, cardiovascular risk and bone health", sub:"axSpA is a systemic inflammatory disease, not just back pain. These are the long-term jobs for primary care.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Cardiovascular risk", html:"Discuss cardiovascular risk factors with all people with spondyloarthritis. Inflammation, long-term NSAIDs and smoking add risk. Assess formal CVD risk and offer lipid and BP management as for anyone else.", src:"NICE NG65 (2017) · NICE NG238 (2023)"},
+         {tone:"blue", h:"Osteoporosis and vertebral fracture", html:"Consider regular osteoporosis assessment (summaries of NG65 give every 2 years). Be aware that <b>spinal DXA can read falsely high</b> because of syndesmophytes and ligament calcification; hip DXA is more reliable. Manage bone health with fracture-risk assessment and treatment thresholds as for other patients.", src:"NICE NG65 (2017) · NOGG 2024"},
+         {tone:"blue", h:"Uveitis", html:"The commonest extra-articular feature. Recurrences are common; the patient needs a fast route to eye services and must not reuse old steroid drops without examination. Recurrent uveitis may change the biologic choice.", src:"NICE NG65 (2017)"},
+         {tone:"blue", h:"IBD and psoriasis", html:"New persistent diarrhoea, blood or weight loss → faecal calprotectin and gastroenterology referral per local pathway; new psoriasis → treat and tell rheumatology. Both affect drug choice.", src:"BSR 2025 axSpA b/tsDMARD guideline"}
+       ]},
+       {b:"dl", rows:[
+         ["Fatigue and mood","Common and under-treated; screen for depression and anxiety; poor sleep often reflects uncontrolled inflammation"],
+         ["Respiratory","Reduced chest expansion from costovertebral fusion; encourage exercise and stopping smoking"],
+         ["Cardiac","Aortic regurgitation and conduction disease are recognised in longstanding AS — listen for a murmur and act on new breathlessness, syncope or palpitations"],
+         ["Work","Early workplace adjustments, occupational health and Access to Work support keep people employed"]
+       ]}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Pregnancy, driving and work", sub:"Plan ahead: most problems here come from stopping medicines without advice.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Pregnancy and conception", html:"Refer for pre-conception advice from rheumatology. Many TNF inhibitors are compatible with pregnancy and may be continued to maintain disease control; the specialist team decides on timing. JAK inhibitors are not used in pregnancy. Men planning to conceive should also discuss their medicines. Use the minimum effective dose to keep disease suppressed.", src:"BSR 2022 pregnancy prescribing guideline"},
+         {tone:"blue", h:"NSAIDs in pregnancy", html:"MHRA advises avoiding NSAIDs from <b>20 weeks</b> of pregnancy unless clinically essential (oligohydramnios, fetal renal dysfunction), and they are contraindicated in the third trimester; they may also affect fertility around conception. Check current BNF advice and involve the obstetric and rheumatology teams.", src:"MHRA Drug Safety Update 2023 (NSAIDs in pregnancy) · BSR 2022 pregnancy prescribing guideline (comorbidity medications)"},
+         {tone:"amber", h:"Babies exposed to biologics", html:"If the mother received an immunosuppressive biologic during pregnancy, tell the midwife and health visitor: Green Book advice is that the infant <b>should not receive rotavirus vaccine</b> and <b>BCG (if indicated) is deferred until 6 months</b>. Seek specialist advice for breastfeeding exposure and check the current Green Book.", src:"UKHSA Green Book ch.6 · BSR 2022 pregnancy prescribing guideline"},
+         {tone:"plain", h:"Driving", html:"DVLA: drivers must tell DVLA if their AS affects their ability to drive safely (for example neck fusion limiting the ability to look round). Car and motorcycle licence holders can report online or on form G1; bus, coach and lorry licence holders use form G1V. Practical adaptations such as extra mirrors help many people keep driving.", src:"DVLA A–Z: ankylosing spondylitis and driving"}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Follow-up and monitoring in shared care", sub:"Every row has an action. Local shared-care protocols decide the biologic and DMARD blood-test schedule.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Disease activity (symptoms, stiffness, function, CRP)","Each review; ASDAS/BASDAI by rheumatology","Persistently active despite NSAIDs and exercise → rheumatology for escalation"],
+         ["NSAID safety","At start, then at least annually on regular NSAIDs","BP, renal function, GI symptoms; keep gastroprotection; stop or switch if eGFR falls, BP rises or dyspepsia/bleeding"],
+         ["Biologic / JAK inhibitor","Per shared-care protocol; response 3–4 months then 6–12 monthly (specialist)","Infections, new CV events, VTE or cancer on JAKi → tell rheumatology; no live vaccines"],
+         ["Conventional DMARD (peripheral disease)","Per local shared-care protocol","FBC, LFTs, renal function; act on protocol thresholds"],
+         ["Cardiovascular risk","At diagnosis and periodically","Formal risk assessment; lipids, BP, smoking cessation"],
+         ["Bone health","Regularly (consider every 2 years), per NG65","Fracture-risk assessment; prefer hip DXA; treat per NOGG thresholds"],
+         ["Eyes, skin, bowel","Every review","New uveitis → same day; new IBD or psoriasis → relevant specialty and rheumatology"],
+         ["Vaccination","Annually","Influenza, pneumococcal, COVID-19 and shingles (non-live) as eligible"]
+       ]},
+       {b:"timeline", items:[
+         {n:"1", when:"2–4 weeks after starting an NSAID", title:"Response review", html:"Symptom control, stiffness, sleep, tolerability. Inadequate response at maximum tolerated dose → consider switching NSAID."},
+         {n:"2", when:"While waiting for rheumatology", title:"Keep things moving", html:"Physiotherapy started, NSAID optimised, red flags and eyes safety-netted; update the referral if new features appear."},
+         {n:"3", when:"Annual", title:"Holistic review", html:"Function, work, mood and fatigue; NSAID and drug monitoring; CV risk and bone health; extra-articular features; vaccinations; driving; pregnancy plans."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral — urgency, where, what to send", sub:"Refer suspected axSpA routinely but promptly; complications go faster.",
+     blocks:[
+       {b:"table", head:["Situation","Urgency / where","What to send or do"], rows:[
+         ["Suspected fracture in a rigid spine after trauma","<b>Same day</b> — emergency department / spinal team","Mechanism, pain change, neurology; immobilise in usual posture"],
+         ["Suspected cauda equina syndrome","<b>Emergency</b> — same-day MRI via local pathway","Symptoms, timing, bladder/bowel/saddle findings"],
+         ["Suspected acute anterior uveitis","<b>Same day</b> — eye casualty or urgent eye service","Do not start steroid drops"],
+         ["Suspected axSpA meeting NG65 criteria","Rheumatology (routine, or early inflammatory arthritis/axSpA pathway where available)","Criteria counted, HLA-B27, CRP/ESR, extra-articular features, NSAID response"],
+         ["Established axSpA, persistently active despite NSAIDs and exercise","Rheumatology — advice line or expedited review","NSAIDs tried with doses and duration, function, work impact"],
+         ["Physiotherapy","Specialist physiotherapist (MSK / rheumatology physio)","Diagnosis and goals; ask for a structured programme"],
+         ["New IBD symptoms or psoriasis","Gastroenterology / dermatology per local pathway; inform rheumatology","Relevant results; current biologic"],
+         ["Pregnancy planning","Rheumatology pre-conception advice","Current drugs and disease activity"]
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Safety-netting", sub:"Patient wording that covers the dangerous branches.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"🔴 Painful red eye", html:"“If an eye becomes painful and red, light hurts, or your vision blurs, get it seen by an eye service the same day — it can be treated quickly but needs a specialist examination.”", src:"NICE NG65 (2017)"},
+         {tone:"red", h:"🦴 After a fall or knock", html:"“Because your spine is stiff, it can break after a fall that would not hurt most people. If you have new or different neck or back pain after any fall or accident, get checked urgently — don’t wait to see if it settles.”", src:"NICE NG65 (2017)"},
+         {tone:"red", h:"🚨 Nerve symptoms", html:"“Numbness between your legs or around your bottom, trouble passing urine or controlling your bladder or bowel, or weakness in both legs — go to A&amp;E straight away.”", src:"GIRFT 2023 national suspected cauda equina pathway"},
+         {tone:"amber", h:"🦠 On a biologic", html:"“If you get a fever or feel unwell with an infection, contact us or your rheumatology team the same day. Tell anyone offering you a vaccine that you take this medicine.”", src:"UKHSA Green Book ch.6"}
+       ]},
+       {b:"say", html:"Your back pain has the pattern we see in a condition called axial spondyloarthritis — inflammation in the joints of the spine and pelvis. It’s common, it’s treatable, and it is often missed for years, so I’d like a rheumatologist to see you. Your blood tests being normal doesn’t rule it out. In the meantime, regular exercise is the single most useful treatment, and an anti-inflammatory taken regularly, with a stomach-protecting tablet, often helps a lot. If you ever get a painful red eye, get it seen the same day."}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"How axSpA gets missed or mismanaged in primary care.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Reassured by normal tests", html:"Normal CRP/ESR or negative HLA-B27 used to close the question. NG65 says not to rule out SpA on these alone.", src:"NICE NG65 (2017)"},
+         {tone:"amber", h:"Waiting for the X-ray to change", html:"A normal lumbar spine or pelvic X-ray does not exclude early or non-radiographic disease; referral should follow the clinical criteria.", src:"NICE NG65 (2017)"},
+         {tone:"amber", h:"The eye clinic and the back clinic never meet", html:"Uveitis, psoriasis, IBD and heel pain managed in separate consultations with no one asking about the back.", src:"NICE NG65 (2017)"},
+         {tone:"amber", h:"PRN NSAIDs judged a failure", html:"Occasional use at low dose is not an adequate trial. Use regularly at maximum tolerated dose for 2–4 weeks, then switch before calling NSAIDs ineffective.", src:"NICE NG65 (2017)"},
+         {tone:"amber", h:"Missing the fracture", html:"Post-fall pain in a fused spine attributed to a flare or a soft-tissue injury; a normal plain film accepted as reassurance.", src:"NICE NG65 (2017)"},
+         {tone:"amber", h:"Stopping a biologic without a plan", html:"Biologics stopped for a minor infection or before surgery without specialist advice and never restarted — or live vaccines given to someone on one.", src:"BSR 2019 biologic DMARD safety guideline · UKHSA Green Book ch.6"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"plain", h:"Classic scenario", html:"A 28-year-old woman with 18 months of low back pain, seen three times with “mechanical back pain”. She wakes at 4 am stiff, feels better after a walk, and ibuprofen “works within a day”. She had an eye infection treated in eye casualty last year. CRP is normal. She wants a stronger painkiller and a sick note."},
+       {tone:"plain", h:"Examiner-style checkpoints", html:"Takes an inflammatory back-pain history and asks about eyes, skin, bowels, heels and family; counts the NG65 criteria (onset before 35, second-half-of-night waking, better with movement, NSAID response within 48 hours = 4) and refers without waiting for HLA-B27; explains that normal CRP does not exclude it; recognises the “eye infection” may have been uveitis; starts regular NSAID with gastroprotection and physiotherapy; addresses work and her ideas about opioids; safety-nets red eye and trauma."}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page is traceable to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG65 — Spondyloarthritis in over 16s: diagnosis and management (published February 2017, updated June 2017)</b><br><a href="https://www.nice.org.uk/guidance/ng65" rel="noopener">nice.org.uk/guidance/ng65</a><span class="rd"> — referral criteria, HLA-B27 for exactly 3 criteria, not ruling out on normal CRP/ESR or negative HLA-B27, same-day ophthalmology for uveitis, physiotherapy and hydrotherapy, NSAIDs with gastroprotection, cardiovascular and osteoporosis assessment, spinal fracture</span></li>'+
+         '<li><b>NICE QS170 — Spondyloarthritis quality standard (2018)</b><br><a href="https://www.nice.org.uk/guidance/qs170" rel="noopener">nice.org.uk/guidance/qs170</a><span class="rd"> — MRI with inflammatory back pain protocol when X-ray does not show sacroiliitis; specialist physiotherapy</span></li>'+
+         '<li><b>NICE technology appraisals</b><span class="rd"> — TA383 TNF-alpha inhibitors for AS and non-radiographic axSpA; TA407 secukinumab (AS); TA719 secukinumab (nr-axSpA); TA718 ixekizumab; TA829 upadacitinib (AS); TA861 upadacitinib (nr-axSpA); TA918 bimekizumab (AS and nr-axSpA); TA920 tofacitinib (AS)</span></li>'+
+         '<li><b>BSR 2025 guideline for the treatment of axial spondyloarthritis with biologic and targeted synthetic DMARDs</b> (Rheumatology 2025;64(6))<span class="rd"> — drug choice with uveitis and IBD, response assessment at 3–4 months then 6–12 monthly, tapering not withdrawal</span></li>'+
+         '<li><b>MHRA Drug Safety Update, April 2023 — Janus kinase inhibitors</b><span class="rd"> — restrictions in people aged 65+, smokers and those with CV or malignancy risk factors</span></li>'+
+         '<li><b>BSR 2019 biologic DMARD safety guideline in inflammatory arthritis</b> (Rheumatology 2019;58(2))<span class="rd"> — pre-treatment screening, infection, perioperative pauses</span></li>'+
+         '<li><b>MHRA Drug Safety Update 2023 — NSAIDs from 20 weeks of pregnancy</b></li>'+
+         '<li><b>BSR 2022 guideline on prescribing drugs in pregnancy and breastfeeding</b> (immunomodulatory drugs; comorbidity medications)<span class="rd"> — pregnancy planning and drug compatibility</span></li>'+
+         '<li><b>UKHSA Green Book, chapter 6</b><span class="rd"> — live vaccines in immunosuppression; infants exposed to biologics in utero (no rotavirus, BCG deferred to 6 months)</span></li>'+
+         '<li><b>NICE NG238 (2023)</b> CVD risk assessment and lipid modification · <b>NOGG 2024</b> osteoporosis · <b>NICE NG59</b> low back pain and sciatica · <b>NICE NG41</b> spinal injury · <b>GIRFT 2023</b> national suspected cauda equina pathway · <b>DVLA</b> A–Z health conditions</li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all doses</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Axial spondyloarthritis (including ankylosing spondylitis) in adults — NICE NG65 (2017), NICE QS170, NICE TA383/TA407/TA718/TA719/TA829/TA861/TA918/TA920, BSR 2025 axSpA guideline, MHRA 2023 JAK inhibitor advice. Diagnosis and management are merged on this page; see also the <a href=\"../management/uveitis.html\">Uveitis protocol</a>. No doses are given here: verify all doses against the current BNF and local shared-care protocols."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

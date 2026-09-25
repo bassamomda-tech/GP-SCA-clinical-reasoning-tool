@@ -119,7 +119,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
 .node-head-inner{flex:1}
 </style>
 <link rel="stylesheet" href="../../assets/alg-diagram.css">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body>
 
@@ -152,7 +152,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
       <li><b>Bowel obstruction</b> — severe pain, distension, vomiting, no flatus → admit</li>
       <li><b>Rectal bleeding</b> or <b>iron-deficiency anaemia</b></li>
       <li><b>Unexplained weight loss</b>, abdominal/rectal mass</li>
-      <li><b>Persistent change in bowel habit ≥6 weeks aged ≥50/60</b></li>
+      <li><b>Persistent change in bowel habit</b> at any age → FIT (NICE NG12)</li>
     </ul></div></div>
     <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
       <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Admit / 2WW</span><div class="body">Obstruction → emergency admission. Cancer red flags → <b>FIT + colorectal 2WW</b> (don't wait for FIT if criteria already met).</div></div></div>
@@ -213,8 +213,8 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
     <div class="rfgrid">
       <div class="rftile"><b>Rectal bleeding (bright red / dark)</b> Especially if unprovoked, mixed with stool, or with altered stool — 2WW lower GI cancer referral</div>
       <div class="rftile"><b>Unintentional weight loss ≥5% in 6 months</b> With new constipation → 2WW colorectal cancer. Check FBC, CRP, CEA</div>
-      <div class="rftile"><b>Change in bowel habit &gt;6 weeks age &gt;60</b> New looser stools OR constipation → 2WW colorectal referral per NICE NG12</div>
-      <div class="rftile"><b>Iron-deficiency anaemia</b> Unexplained IDA in men or postmenopausal women → 2WW lower GI. Check ferritin, FBC</div>
+      <div class="rftile"><b>Persistent change in bowel habit</b> Any age, new looser stools or constipation → FIT → 2WW colorectal if ≥10 µg Hb/g (NICE NG12)</div>
+      <div class="rftile"><b>Iron-deficiency anaemia</b> Any adult → FIT → 2WW colorectal if ≥10 µg Hb/g (NICE NG12); men and post-menopausal women also need upper and lower GI investigation (BSG 2021). Check ferritin, FBC</div>
       <div class="rftile"><b>Abdominal / rectal mass</b> Palpable mass on examination → same-day surgical assessment or urgent imaging</div>
       <div class="rftile"><b>Acute intestinal obstruction</b> Absolute constipation + vomiting + distension + no flatus → 999 / A&amp;E immediately</div>
       <div class="rftile"><b>Neurological symptoms</b> Saddle anaesthesia, new urinary retention, bilateral leg weakness → 999 cauda equina</div>
@@ -226,7 +226,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <b>NICE NG12</b> mandates 2WW referral for adults ≥40 with rectal bleeding + change in bowel habit, or ≥60 with change in bowel habit alone. Colorectal cancer affects ~43,000 UK patients/year; early diagnosis is the single biggest determinant of survival (90% 5-year survival Stage I vs 10% Stage IV). Missing a palpable mass or saddle anaesthesia can result in irreversible harm — cauda equina decompression must occur within hours. Volvulus and obstruction have 15–20% mortality if treatment delayed beyond 24h.
+      <b>NICE NG12</b> offers FIT for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, and rectal bleeding, abdominal pain or weight loss at 50+ — with a 2WW referral if FIT is ≥10 µg Hb/g; a rectal mass is referred without waiting for FIT. Colorectal cancer affects ~43,000 UK patients/year; early diagnosis is the single biggest determinant of survival (90% 5-year survival Stage I vs 10% Stage IV). Missing a palpable mass or saddle anaesthesia can result in irreversible harm — cauda equina decompression must occur within hours. Volvulus and obstruction have 15–20% mortality if treatment delayed beyond 24h.
     </div>
   </div>
 </div>
@@ -362,7 +362,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
     <div class="kv">
       <div><span class="pill pill-red">999</span> Emergency</div><div>Acute complete obstruction, peritonism, haemodynamic instability, suspected volvulus or perforation</div>
       <div><span class="pill pill-red">Same-day</span></div><div>Suspected faecal impaction with overflow, acute urinary retention with constipation (neurological concern), high-grade cauda equina symptoms</div>
-      <div><span class="pill pill-purple">2WW</span> Colorectal</div><div>Per NICE NG12: age ≥40 rectal bleeding + change in bowel habit · age ≥50 unexplained rectal bleeding · age ≥60 change in bowel habit or IDA · palpable rectal/abdominal mass</div>
+      <div><span class="pill pill-purple">2WW</span> Colorectal</div><div>Per NICE NG12, offer FIT for: change in bowel habit or IDA at any age · rectal bleeding with abdominal pain or weight loss under 50 · rectal bleeding, abdominal pain or weight loss at 50+ · abdominal mass · anaemia at 60+ → 2WW if FIT ≥10 µg Hb/g · rectal mass → 2WW without FIT</div>
       <div>Urgent gastroenterology</div><div>Suspected IBD (elevated calprotectin, bloody mucus, systemic symptoms) · New-onset constipation with iron deficiency in any age</div>
       <div>Routine gastroenterology / colorectal</div><div>Refractory constipation failing 6-month optimised primary care treatment · Suspected defaecatory dysfunction (for anorectal physiology) · Suspected slow-transit constipation for transit studies</div>
       <div>Specialist nurse / Physio</div><div>Defaecatory dysfunction → pelvic floor biofeedback. Refer to continence nurse or specialist physiotherapist</div>
@@ -516,6 +516,6 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
 <script src="../../assets/alg-nav.js?v=2"></script>
 <script src="../../assets/topic-links.js?v=7"></script>
 <script src="../../assets/alg-diagram.js"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 </body>
 </html>

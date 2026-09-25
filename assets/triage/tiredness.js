@@ -79,8 +79,8 @@ RGPTriage.register('tiredness', {
       action:'Call 999 — same-day admission',
       patientPhrase:'"Your blood pressure / heart rate is low/high enough that I need to send you straight to hospital — I\'m going to call an ambulance now."',
       referralTemplate:'EMERGENCY ADMISSION — haemodynamic instability\nVitals: [enter SBP/HR/RR/SpO₂]\nPresenting symptom: tiredness with red-flags as documented.\nNEWS2 calculated and communicated to crew.',
-      source:'NEWS2 / NICE NG51 sepsis',
-      sourceUrl:'https://www.nice.org.uk/guidance/ng51',
+      source:'NEWS2 / NICE NG253 sepsis',
+      sourceUrl:'https://www.nice.org.uk/guidance/ng253',
       when: i => (i.sbp != null && i.sbp < 90) || (i.hr != null && i.hr > 130 && (i.altered_consc || i.chest_pain))
     },
     {
@@ -413,7 +413,7 @@ RGPTriage.register('tiredness', {
       label:'Severe B12 deficiency (B12 <100 ng/L) or B12 + neurology',
       action:'Start IM hydroxocobalamin loading; urgent if neurological signs',
       patientPhrase:'"Your B12 is very low — that\'s a fixable cause of tiredness. We\'ll start an injection straight away."',
-      referralTemplate:'B12 deficiency.\nB12 [value] ng/L, MCV [value], IF antibody pending.\nHydroxocobalamin 1 mg IM alternate days × 6 (or daily if neurology).\nIf neurology — refer same-week.',
+      referralTemplate:'B12 deficiency.\nB12 [value] ng/L, MCV [value], IF antibody pending.\nHydroxocobalamin 1 mg IM 3×/week for 2 weeks (if neurology: alternate days until no further improvement, then 2-monthly — BNF).\nIf neurology — refer same-week.',
       source:'BSH B12/folate guidelines · BNF',
       when: i => i.b12 != null && i.b12 < 100
     },
@@ -423,9 +423,9 @@ RGPTriage.register('tiredness', {
       label:'Possible sepsis — fevers + tachycardia + tachypnoea (NEWS2 ≥5)',
       action:'Same-day senior review / admission per local sepsis pathway',
       patientPhrase:'"You\'ve got signs that suggest a serious infection. I need to send you in to be checked properly today."',
-      referralTemplate:'? Sepsis — NICE NG51.\nNEWS2: HR [value], RR [value], SpO₂ [value], Temp [value], SBP [value], AVPU [value].\nSource: [?]. Blood cultures + lactate on arrival.',
-      source:'NICE NG51 sepsis',
-      sourceUrl:'https://www.nice.org.uk/guidance/ng51',
+      referralTemplate:'? Sepsis — NICE NG253.\nNEWS2: HR [value], RR [value], SpO₂ [value], Temp [value], SBP [value], AVPU [value].\nSource: [?]. Blood cultures + lactate on arrival.',
+      source:'NICE NG253 sepsis',
+      sourceUrl:'https://www.nice.org.uk/guidance/ng253',
       when: i => i.fevers && i.hr != null && i.hr > 110 && i.rr != null && i.rr > 22
     },
 
@@ -486,8 +486,8 @@ RGPTriage.register('tiredness', {
     { label:'NICE NG12 — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'Macmillan Rapid Referral Guidelines', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
     
-    { label:'NICE NG51 — Sepsis', url:'https://www.nice.org.uk/guidance/ng51' },
-    { label:'NICE NG143 — Neutropenic sepsis', url:'https://www.nice.org.uk/guidance/ng143' },
+    { label:'NICE NG253 — Sepsis', url:'https://www.nice.org.uk/guidance/ng253' },
+    { label:'NICE CG151 — Neutropenic sepsis', url:'https://www.nice.org.uk/guidance/cg151' },
     { label:'NICE NG145 — Thyroid disease', url:'https://www.nice.org.uk/guidance/ng145' },
     { label:'NICE NG148 — Acute kidney injury', url:'https://www.nice.org.uk/guidance/ng148' },
     { label:'NICE NG28 — Type 2 diabetes', url:'https://www.nice.org.uk/guidance/ng28' },

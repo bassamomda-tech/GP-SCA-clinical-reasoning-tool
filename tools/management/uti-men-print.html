@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UTI in men — Protocol · Reasoning GP</title>
+<meta name="description" content="Lower and upper UTI in men on one page: diagnosis without the dipstick, differentials (prostatitis, epididymo-orchitis, STI, retention), admission criteria, antibiotic choices and durations from NICE NG109, NG110 and NG111, catheter-associated UTI (NG113), recurrence and urology referral (NG112), NG12 haematuria rules and safety-netting." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/uti-men.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1790316674199239 tools/management/uti-men.html">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="UTI in men management card">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F6B9}",
+  title:"UTI in men",
+  eyebrow:"Protocol · lower &amp; upper UTI in one place",
+  stemTitle:"Urinary tract infection in men — culture it, place it, then treat for long enough",
+  stemSub:"Lower UTI (cystitis), acute pyelonephritis, acute prostatitis and catheter-associated UTI in men aged 16 and over. A UTI in a man is never ‘simple’: send a midstream urine before antibiotics, decide which part of the tract is infected, and give a full 7-day course as a minimum. Recurrence is a reason to refer, not to re-treat.",
+  guideline:"NICE NG109 (2018, updated 2025) · NG110 (2018, updated 2024) · NG111 (2018, updated 2024) · NG112 (2018, updated 2024) · NG113 (2018) · NG12 · NG253 (2025) · UKHSA UTI diagnostic tools (2025)",
+  meta:[
+    {t:"NICE NG109 · lower UTI (updated 2025)"},
+    {t:"NICE NG111 · pyelonephritis (updated Sep 2024)"},
+    {t:"NICE NG110 · prostatitis (updated Sep 2024)"},
+    {t:"NG112 recurrent · NG113 catheter"},
+    {t:"NICE NG12 · haematuria 2WW", tone:"tw"},
+    {t:"MHRA Jan 2024 · fluoroquinolones"},
+    {t:"BNF owns all doses not stated by NICE"}
+  ],
+  lead:'<div class="mg-layers"><a href="#diagnose"><b>Diagnose</b><small>Symptoms + MSU, not dipstick</small></a><a href="#redflags"><b>Admit?</b><small>Sepsis, retention, abscess</small></a><a href="#abx"><b>Antibiotics</b><small>NG109 · NG111 · NG110</small></a><a href="#refer"><b>Refer</b><small>Recurrence · NG12</small></a></div>',
+  glance:[
+    {lbl:"Always", val:"MSU first", sub:"before antibiotics — NG109/110/111"},
+    {lbl:"Dipstick", val:"Don’t rule out", sub:"men under 65 — UKHSA 2025"},
+    {lbl:"Cystitis", val:"7 days", sub:"trimethoprim or nitrofurantoin"},
+    {lbl:"Pyelonephritis", val:"7–14 days", sub:"drug-dependent — NG111"},
+    {lbl:"Prostatitis", val:"14 days + review", sub:"NG110"},
+    {lbl:"Recurrent", val:"Urology", sub:"any man — NG112"}
+  ],
+  quickSub:"If you read nothing else on this page, read these cards. Each is traced to the guideline in its source line and under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Look for the man who needs a hospital, not a prescription", html:"Features of <b>sepsis</b>, <b>acute urinary retention</b>, suspected <b>prostatic abscess</b>, → hospital. A man significantly dehydrated or unable to take oral fluids and medicines → consider referral or specialist advice (NG111). Prostatitis or pyelonephritis <b>not improving 48 hours</b> after starting antibiotics also needs reassessment and usually referral (NG110, NG111; sepsis risk assessment per NG253)."},
+    {tone:"amber", h:"Culture every man — before the first dose", html:"NG109, NG110 and NG111 all say: <b>obtain a midstream urine sample before antibiotics are taken</b> and send for culture and susceptibility testing. <b>Do not use a dipstick to rule out UTI in a man</b> (UKHSA 2025). Check previous culture results before choosing a drug."},
+    {tone:"blue", h:"Place the infection — it decides the drug and the duration", html:"Bladder only (dysuria, frequency, no fever) → <b>7 days</b>. Fever, loin pain, rigors → <b>pyelonephritis</b> (NG111). Fever with perineal, rectal or ejaculatory pain, or a tender prostate → <b>acute prostatitis</b> (NG110, <b>14 days then review</b>). Scrotal pain → epididymo-orchitis. Discharge → think STI."},
+    {tone:"plain", h:"Lower UTI: trimethoprim or nitrofurantoin, 7 days", html:"<b>Trimethoprim 200 mg twice a day for 7 days</b>, or <b>nitrofurantoin 100 mg modified-release twice a day for 7 days</b> (or 50 mg four times a day) if <b>eGFR ≥45 ml/min</b>. Immediate prescription — no back-up/delayed option in men (NG109)."},
+    {tone:"purple", h:"Fluoroquinolones: only when the alternatives won’t do", html:"<b>MHRA (January 2024)</b>: systemic fluoroquinolones only when other recommended antibiotics are inappropriate, because of disabling, potentially long-lasting tendon, musculoskeletal, neurological and psychiatric effects. NG110 (updated Sept 2024) lists <b>trimethoprim 200 mg BD for 14 days</b> as an alternative first choice when a fluoroquinolone is not appropriate (seek specialist advice)."},
+    {tone:"green", h:"Recurrence = urology, and haematuria = NG12", html:"<b>Refer or seek specialist (urology) advice for every man with recurrent UTI</b> (≥2 in 6 months or ≥3 in 12 months) (NG112). Visible haematuria that <b>persists or recurs after successful UTI treatment</b> in a man <b>≥45</b> is a <b>2WW</b> urology referral (NG12)."}
+  ],
+  pathwaySub:"The whole consultation in six moves. The red step is where men come to harm.",
+  pathway:[
+    {title:"Hear the story", html:"Onset, dysuria, frequency, urgency, nocturia, haematuria, fever, rigors, loin pain, perineal/rectal/ejaculatory pain, scrotal pain, urethral discharge, voiding difficulty and a sense of incomplete emptying. Sexual history (new partner, condom use). Catheter? Recent instrumentation or prostate biopsy? Previous UTIs and culture results."},
+    {title:"Screen for danger", html:"Observations every time: temperature, pulse, BP, respiratory rate, SpO₂, mental state. Sepsis features, a palpable painful bladder or no urine passed, severe perineal pain with fever (abscess) → 999 / same-day hospital. Vomiting, significant dehydration or unable to take oral medicines → consider same-day referral or specialist advice (NG111). Use the NG253 risk approach for suspected sepsis.", alert:true},
+    {title:"Place the infection", html:"Examine abdomen (suprapubic tenderness, palpable bladder), renal angles, external genitalia (epididymal/testicular tenderness, meatal discharge). Consider a <b>gentle</b> digital rectal examination if prostatitis is suspected — a very tender, boggy, warm prostate supports it. Decide: cystitis, pyelonephritis, prostatitis, epididymo-orchitis, or something else."},
+    {title:"Sample, then treat", html:"MSU for culture <b>before</b> the first dose. Add STI testing (first-void urine NAAT) where indicated. Start the NG109 / NG111 / NG110 regimen that matches the site, using previous cultures and eGFR. Offer analgesia."},
+    {title:"Review", html:"Culture result → check the drug matches sensitivities. Not improving within <b>48 hours</b> or worse at any time → reassess, think of an alternative diagnosis or the wrong site, and escalate. Prostatitis → review at <b>14 days</b>."},
+    {title:"Close the loop", html:"Recurrent UTI → urology (NG112). Persistent visible haematuria after the infection has cleared → NG12. LUTS persisting after resolution → assess for bladder outflow obstruction. Defer any PSA test until well after the infection has settled."}
+  ],
+  sections:[
+
+    {id:"diagnose", nav:"Diagnose", title:"Diagnosing UTI in a man", sub:"Symptoms plus culture. The dipstick can mislead in both directions, and a negative one must not end the assessment.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Treat as complicated","In men there is no ‘uncomplicated cystitis’ pathway: NICE gives men an <b>immediate antibiotic, a 7-day course and a culture in every case</b> (NG109). Anatomy (a longer urethra) means infection is less common than in women, so when it happens it more often reflects an underlying problem — outflow obstruction, stones, a catheter, or prostatic involvement."],
+         ["Symptoms of lower UTI","Dysuria, frequency, urgency, new nocturia, suprapubic pain, visible haematuria, cloudy urine. <b>No fever, rigors or loin pain</b>."],
+         ["Dipstick","UKHSA’s 2025 quick reference tools: <b>do not use urine dipsticks to rule out UTI in men under 65</b>. A positive dipstick does not tell you the organism or its sensitivities; a negative one does not exclude infection. Send an MSU."],
+         ["Asymptomatic bacteriuria","Rare in men under 65 (UKHSA 2025). In older and catheterised men it is common and should <b>not</b> be treated without symptoms."],
+         ["Previous cultures","Look at the last 12 months of urine results before choosing a drug — prior resistance is the best predictor of treatment failure (NG109 asks prescribers to take previous culture and susceptibility results into account)."],
+         ["Upper UTI","Fever, rigors, loin/flank pain or renal-angle tenderness, nausea or vomiting → treat as <b>acute pyelonephritis</b> (NG111). Lower-tract symptoms may be absent."],
+         ["Prostatitis","Fever and systemic upset with lower-tract symptoms plus <b>perineal, suprapubic, penile, rectal or ejaculatory pain</b>, or voiding difficulty; tender prostate on DRE → <b>acute prostatitis</b> (NG110)."]
+       ]},
+       {b:"why", html:"The dipstick’s nitrite and leucocyte results were validated mainly in women; in men the pre-test probability, the organisms and the sites of infection differ, and prostatic infection can be present with a modest urinary picture. Because every man is getting a culture anyway, the dipstick adds little — and a falsely reassuring negative is the classic way a man with prostatitis goes home untreated."}
+     ]},
+
+    {id:"ddx", nav:"Differentials", title:"Differential diagnosis — what else burns?", sub:"Dysuria in a man is not synonymous with cystitis. The age and sexual history reshape the list.",
+     blocks:[
+       {b:"table", head:["Condition","Pointers","What to do"], rows:[
+         ["<b>Acute prostatitis</b>","Fever, rigors, myalgia; perineal/rectal/ejaculatory pain; voiding difficulty; exquisitely tender prostate. May follow prostate biopsy or catheterisation","NG110 regimen — 14 days then review; hospital if septic, in retention or ?abscess"],
+         ["<b>Epididymo-orchitis</b>","Unilateral scrotal pain and swelling, tender epididymis, ± urinary symptoms or urethral discharge","STI screen (gonorrhoea culture/NAAT, chlamydia NAAT) and MSU; treat per local/sexual-health guidance. <b>Exclude testicular torsion</b> — sudden severe pain in a younger man is torsion until proven otherwise"],
+         ["<b>Urethritis / STI</b>","Dysuria with <b>urethral discharge</b>, meatal irritation, new or casual partner; often little frequency or urgency; usually younger men","First-void urine NAAT for chlamydia and gonorrhoea; refer to sexual health for full screen, treatment and partner notification. UKHSA 2025: consider STI in sexually active men"],
+         ["<b>Acute urinary retention</b>","Painful inability to void, palpable bladder; may be precipitated by infection, anticholinergics, constipation, alcohol or prostatitis","Same-day catheterisation (hospital/urology per local pathway)"],
+         ["<b>Chronic retention / BPE with overflow</b>","Poor stream, dribbling, nocturia, painless palpable bladder; incomplete emptying predisposes to UTI","Check renal function; post-void residual; LUTS assessment"],
+         ["<b>Pyelonephritis</b>","Loin pain, fever, rigors, vomiting","NG111 regimen; low threshold for admission"],
+         ["<b>Urinary tract stone</b>","Colicky loin-to-groin pain, haematuria; an infected obstructed kidney is an emergency","Fever + obstruction → same-day urology"],
+         ["<b>Bladder cancer / CIS</b>","Older man, smoker or occupational dye exposure; visible haematuria, persistent irritative symptoms, sterile pyuria","Apply NG12 once infection excluded or treated"],
+         ["<b>Reactive arthritis, balanitis, drug-induced cystitis</b>","Arthritis/conjunctivitis after STI; glans inflammation; ketamine use","Targeted history"]
+       ]},
+       {b:"why", html:"The single most useful discriminator is <b>where the pain is</b>: suprapubic (bladder), loin (kidney), perineum/rectum (prostate), scrotum (epididymis/testis), or tip of the penis with discharge (urethra). The second is <b>fever</b>: a febrile man with urinary symptoms has, at the least, upper-tract or prostatic involvement and does not get a 7-day cystitis course."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — 999, same-day hospital or urgent review", sub:"The decision that matters most is made before the prescription is written.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Suspected sepsis", html:"Any man with a urinary source and signs of sepsis (altered mental state, raised respiratory rate, low BP, tachycardia, mottled or non-blanching skin, not passing urine) → assess risk using the national structured approach and arrange emergency transfer if high risk. Do not delay transfer to obtain a urine sample.", src:"NICE NG253 (2025)"},
+         {tone:"red", h:"Prostatitis needing hospital", html:"<b>Refer to hospital</b> if symptoms or signs suggest a more serious illness or condition — for example <b>sepsis, acute urinary retention or prostatic abscess</b> — or if symptoms are <b>not improving 48 hours after starting the antibiotic</b>.", src:"NICE NG110"},
+         {tone:"red", h:"Pyelonephritis needing hospital", html:"Refer if there are symptoms or signs suggesting a more serious illness such as sepsis. <b>Consider referral or specialist advice</b> if significantly dehydrated or unable to take oral fluids and medicines, or at higher risk of complications (known or suspected structural or functional abnormality of the genitourinary tract, or underlying disease such as diabetes or immunosuppression).", src:"NICE NG111"},
+         {tone:"red", h:"Acute urinary retention", html:"Painful, palpable bladder and unable to void → same-day catheterisation via local urology/ED pathway. A febrile man in retention may have prostatitis or abscess."},
+         {tone:"amber", h:"Obstructed infected kidney", html:"Fever and loin pain with colic, known stone, single kidney or hydronephrosis → same-day urology: this needs drainage, not just antibiotics."},
+         {tone:"amber", h:"Scrotal pain — think torsion", html:"Acute severe testicular pain, especially in adolescents and young men → emergency urology assessment. Do not label it epididymo-orchitis and send home without excluding torsion."},
+         {tone:"amber", h:"Not improving at 48 hours", html:"For pyelonephritis: <b>reassess if symptoms worsen at any time or do not start to improve within 48 hours</b> of taking the antibiotic. For lower UTI in men that worsens, consider alternative diagnoses and follow the pyelonephritis or prostatitis guidance.", src:"NICE NG111 · NG109"}
+       ]},
+       {b:"warn", html:"Older and frail men may present with delirium, falls or reduced oral intake rather than urinary symptoms — and are the group most at risk from sepsis. Conversely, a positive dipstick in an older man with delirium is <b>not</b> a diagnosis: look for another cause as well."}
+     ]},
+
+    {id:"assess", nav:"Assess &amp; test", title:"Assessment and investigations in primary care", sub:"What to do in the room, and what the results mean.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Observations","Temperature, heart rate, BP, respiratory rate, SpO₂, level of consciousness — recorded in every man with suspected UTI; the basis of sepsis risk stratification (NG253)."],
+         ["Abdominal and renal-angle exam","Suprapubic tenderness; palpable bladder (retention); renal-angle tenderness (pyelonephritis)."],
+         ["Genital exam","Epididymal/testicular tenderness and swelling; meatal discharge; phimosis or balanitis."],
+         ["DRE","If prostatitis is suspected, a <b>gentle</b> examination only — a tender, warm, boggy prostate supports the diagnosis. Avoid vigorous prostatic massage in acute infection."],
+         ["MSU for culture","<b>Before</b> antibiotics — required by NG109 (lower UTI in men), NG111 (pyelonephritis) and NG110 (prostatitis). Label clinical details (symptoms, antibiotics given, catheter)."],
+         ["STI testing","First-void urine NAAT for chlamydia and gonorrhoea if sexually active with risk, urethral discharge or epididymo-orchitis; refer to sexual health for full screen."],
+         ["Bloods","Not needed for simple cystitis. For pyelonephritis/prostatitis being managed at home, <b>U&amp;E/eGFR</b> guides drug choice (nitrofurantoin, trimethoprim, ciprofloxacin dose), and FBC/CRP help at review."],
+         ["PSA","<b>Do not check PSA during a UTI or prostatitis</b> — infection raises it. If indicated for other reasons, wait at least 6 weeks after treatment of a urinary infection or prostatitis (UKHSA Prostate Cancer Risk Management Programme)."],
+         ["Imaging","Not routine for a single episode of cystitis. Arranged via urology for recurrence, suspected obstruction/stones, failure to respond, or suspected abscess."]
+       ]},
+       {b:"why", html:"Culture is not just a formality in men: it tells you whether the empirical drug covers the organism, and it builds the history that decides the next episode’s treatment and whether the man meets the recurrence threshold for urology referral."}
+     ]},
+
+    {id:"abx", nav:"Antibiotics", title:"Antibiotic choice — by site of infection", sub:"Doses and durations below are those stated in the named NICE guideline. Everything else: dose per BNF.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Lower", title:"Lower UTI (cystitis) in men — NICE NG109", when:"immediate prescription, 7 days", tone:"blue",
+          html:"<b>First choice:</b> <b>trimethoprim 200 mg twice a day for 7 days</b>, or <b>nitrofurantoin 100 mg modified-release twice a day for 7 days</b> (or 50 mg four times a day) <b>if eGFR ≥45 ml/min</b>. Choose using previous culture results and local resistance. <b>No second-choice drug is listed for men:</b> if symptoms do not improve or worsen, consider alternative diagnoses, follow the pyelonephritis (NG111) or prostatitis (NG110) guidance, and base the antibiotic on the culture result."},
+         {step:"Upper", title:"Acute pyelonephritis — NICE NG111 (adults 16+)", when:"7–14 days depending on drug", tone:"amber", fromLabel:"fever, rigors, loin pain",
+          html:"<b>First-choice oral options:</b><br>• <b>Cefalexin 500 mg twice or three times a day</b> (up to 1–1.5 g three or four times a day for severe infection) for <b>7–10 days</b><br>• <b>Co-amoxiclav 500/125 mg three times a day for 7–10 days</b> — only if culture results available and susceptible<br>• <b>Trimethoprim 200 mg twice a day for 14 days</b> — only if culture results available and susceptible<br>• <b>Ciprofloxacin 500 mg twice a day for 7 days</b> — only if other first choices are unsuitable, taking account of the MHRA fluoroquinolone safety warnings<br>IV options are for hospital; review IV antibiotics by 48 hours and step down to oral where possible."},
+         {step:"Prostate", title:"Acute prostatitis — NICE NG110 (updated Sept 2024)", when:"14 days, then review", tone:"purple", fromLabel:"perineal/rectal pain, fever, tender prostate",
+          html:"<b>First choice:</b> a fluoroquinolone — <b>ciprofloxacin 500 mg twice a day for 14 days then review</b> (or <b>ofloxacin 200 mg twice a day</b>) — <b>or, if a fluoroquinolone is not appropriate, trimethoprim 200 mg twice a day for 14 days then review</b> (seek specialist advice; guided by susceptibilities when available). <b>Second choice, after discussion with a specialist:</b> <b>levofloxacin 500 mg once a day</b> or <b>co-trimoxazole 960 mg twice a day</b>, each for 14 days then review. At review, decide whether to stop or continue for a <b>further 14 days</b>."},
+         {step:"Catheter", title:"Catheter-associated UTI — NICE NG113", when:"7 days lower; longer if upper", tone:"plain", fromLabel:"indwelling catheter",
+          html:"<b>Remove, or if not possible change, the catheter as soon as possible</b> if it has been in place for <b>more than 7 days</b> — but <b>do not let this delay antibiotics</b>. Obtain a urine sample before antibiotics. Without upper UTI symptoms: first-choice oral options, each for <b>7 days</b>: <b>nitrofurantoin 100 mg modified-release twice a day</b> (if eGFR ≥45), <b>trimethoprim 200 mg twice a day</b> (if low risk of resistance), or <b>amoxicillin 500 mg three times a day</b> (only if culture results available and susceptible). With upper UTI symptoms: <b>cefalexin 500 mg two or three times a day for 7–10 days</b>, <b>co-amoxiclav 500/125 mg three times a day for 7–10 days</b> (only if culture susceptible), <b>trimethoprim 200 mg twice a day for 14 days</b> (only if culture susceptible), or <b>ciprofloxacin 500 mg twice a day for 7 days</b> (only if other first choices unsuitable). Nitrofurantoin does not reach the kidney — never use it for upper-tract infection."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Nitrofurantoin and the kidneys", html:"NG109 recommends nitrofurantoin for lower UTI only when <b>eGFR ≥45 ml/min</b>. MHRA/BNF: at eGFR 30–44 it may be used with caution only as a <b>short course (3–7 days)</b> for lower UTI with suspected or proven multidrug-resistant organisms, when benefit outweighs risk. It achieves little tissue concentration and is <b>not suitable for pyelonephritis or prostatitis</b>.", src:"NICE NG109 · MHRA · BNF"},
+         {tone:"blue", h:"Fluoroquinolone safeguards", html:"MHRA January 2024: prescribe systemic fluoroquinolones only when other recommended antibiotics are inappropriate. Warn about tendon pain/swelling (stop and seek advice), muscle pain, peripheral neuropathy, mood or sleep change, and aortic symptoms; avoid co-prescribing a corticosteroid; extra caution over 60, in renal impairment and after solid-organ transplant. Record the discussion.", src:"MHRA Drug Safety Update Jan 2024"},
+         {tone:"plain", h:"Trimethoprim cautions", html:"Can raise serum potassium and creatinine — caution with ACE inhibitors/ARBs, spironolactone and CKD. Avoid with methotrexate (marrow suppression). Resistance is common: previous culture results matter most. Doses per BNF beyond those stated by NICE.", src:"BNF"},
+         {tone:"plain", h:"Pain relief", html:"For prostatitis: <b>paracetamol</b> (with or without a low-dose weak opioid such as codeine), or <b>ibuprofen</b> if preferred and suitable. Similar advice suits cystitis and pyelonephritis; avoid NSAIDs with AKI, dehydration or CKD.", src:"NICE NG110"}
+       ]},
+       {b:"warn", html:"Match the drug to the <b>site</b>: a febrile man given nitrofurantoin for 3 days is under-treated on two counts. Men are not given the 3-day course used in women; the minimum is 7 days for cystitis and 14 days (then review) for prostatitis."}
+     ]},
+
+    {id:"prostate", nav:"Prostatitis", title:"Acute prostatitis — what the GP must get right", sub:"Frequently missed, frequently under-treated, and the commonest reason a ‘UTI’ in a man comes back.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Recognise it", html:"Systemic illness (fever, rigors, myalgia) with lower urinary tract symptoms and pain in the perineum, rectum, penis or on ejaculation; voiding difficulty. Risk rises after <b>prostate biopsy</b>, catheterisation or instrumentation. Tender prostate on gentle DRE."},
+         {tone:"amber", h:"Sample, then treat for 14 days", html:"<b>MSU before antibiotics</b>; then ciprofloxacin (first choice) or trimethoprim (if a fluoroquinolone is not appropriate) for <b>14 days then review</b>; continue for a further 14 days if clinically needed.", src:"NICE NG110"},
+         {tone:"red", h:"Who goes to hospital", html:"Sepsis, <b>acute urinary retention</b>, suspected <b>prostatic abscess</b>, or not improving <b>48 hours</b> after starting antibiotics.", src:"NICE NG110"},
+         {tone:"plain", h:"Why the long course", html:"Few antibiotics penetrate prostatic tissue well; fluoroquinolones and trimethoprim do. Short courses risk relapse and chronic bacterial prostatitis. The NG110 visual summary notes fluoroquinolones cover a wider range of urinary pathogens than trimethoprim.", src:"NICE NG110"},
+         {tone:"plain", h:"After it settles", html:"Persisting LUTS, relapse with the same organism, or symptoms beyond 3 months (chronic prostatitis/chronic pelvic pain syndrome) → urology. Recurrent infection meets the NG112 threshold for referral.", src:"NICE NG112"}
+       ]},
+       {b:"p", html:"See the dedicated <a href=\"prostatitis.html\">acute prostatitis protocol</a> for the full picture, including chronic prostatitis/chronic pelvic pain syndrome."}
+     ]},
+
+    {id:"groups", nav:"Special groups", title:"Special groups", sub:"The same principles, with different traps.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"plain", h:"Older and frail men", html:"UKHSA 2025 has a separate tool for adults over 65: dipsticks are <b>not</b> used to diagnose UTI in this group, because asymptomatic bacteriuria is common. Base the decision on new urinary symptoms and signs of infection, send a culture, and consider other causes of delirium.", src:"UKHSA UTI diagnostic tools 2025"},
+         {tone:"plain", h:"Catheterised men", html:"Do not treat asymptomatic bacteriuria. Treat symptomatic infection per NG113 and replace a long-term catheter that has been in more than 7 days, without letting it delay antibiotics.", src:"NICE NG113"},
+         {tone:"plain", h:"CKD", html:"Nitrofurantoin not recommended at eGFR <45 (NG109). Trimethoprim can raise potassium and creatinine. Ciprofloxacin and cefalexin doses may need adjusting — check BNF renal dosing.", src:"NICE NG109 · BNF"},
+         {tone:"plain", h:"Diabetes, immunosuppression, structural abnormality", html:"Higher risk of complications from pyelonephritis → consider referral or specialist advice early.", src:"NICE NG111"},
+         {tone:"plain", h:"Young, sexually active men", html:"UTI is uncommon; urethritis from chlamydia or gonorrhoea is a common mimic. Consider an STI in sexually active men and test with first-void urine NAAT.", src:"UKHSA UTI diagnostic tools 2025"},
+         {tone:"plain", h:"After prostate biopsy or urological surgery", html:"Fever after a recent biopsy is urosepsis until proven otherwise — same-day contact with the urology team that did the procedure."}
+       ]}
+     ]},
+
+    {id:"followup", nav:"Follow-up", title:"Follow-up and monitoring", sub:"Every row has an action.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Symptom response","<b>48 hours</b> (sooner if worse)","Not starting to improve or worse at any time → reassess: wrong site (prostate/kidney), wrong drug (check culture), complication (retention, abscess, obstruction), or alternative diagnosis (NG109/NG111/NG110)"],
+         ["Culture result","When reported (usually 48–72 h)","Organism resistant to the drug given and symptoms persisting → change to a susceptible agent. Sensitive and improving → complete course"],
+         ["Prostatitis","<b>14 days</b>","Review: stop, or continue for a further 14 days (NG110)"],
+         ["Pyelonephritis on IV treatment","By 48 hours","Review IV antibiotics and step down to oral where possible (NG111)"],
+         ["Haematuria","After treatment","Visible haematuria that persists or recurs after successful UTI treatment in a man ≥45 → 2WW (NG12). Consider repeat urine to confirm non-visible haematuria has cleared"],
+         ["LUTS","After recovery","Persisting voiding symptoms → LUTS assessment (frequency-volume chart, IPSS, DRE, renal function, post-void residual via local pathway)"],
+         ["Recurrence","Ongoing","≥2 UTIs in 6 months or ≥3 in 12 months → urology referral (NG112)"],
+         ["PSA","If indicated","Defer until well after the infection has resolved"]
+       ]},
+       {b:"timeline", items:[
+         {n:"1", when:"Day 0", title:"Sample, treat, safety-net", html:"MSU before first dose; site-specific antibiotic; analgesia; written safety-net."},
+         {n:"2", when:"48 hours", title:"Response and culture", html:"Improving? Culture matches? If not, reassess and escalate."},
+         {n:"3", when:"End of course / 14 days", title:"Resolution", html:"Confirm resolution. Prostatitis → decide on further 14 days."},
+         {n:"4", when:"Weeks later", title:"Close the loop", html:"Haematuria cleared? LUTS persisting? Recurrence threshold met? PSA if needed."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral — who, how urgently, what to send", sub:"Recurrence in a man is an indication for urology, not for prophylaxis started in primary care.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / emergency department", html:"Suspected sepsis at high risk; acute urinary retention; suspected obstructed infected kidney; suspected torsion.", src:"NICE NG253 (2025)"},
+         {tone:"red", h:"Same-day hospital / urology", html:"Prostatitis with sepsis, retention or suspected abscess, or not improving 48 hours after starting antibiotics; pyelonephritis with signs of serious illness.", src:"NICE NG110 · NG111"},
+         {tone:"amber", h:"Consider specialist advice", html:"Pyelonephritis in a man who is significantly dehydrated, cannot take oral fluids and medicines, or has a structural/functional abnormality of the renal tract, diabetes or immunosuppression.", src:"NICE NG111"},
+         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> — bladder / kidney", html:"Aged <b>≥45</b> with <b>unexplained visible haematuria without UTI</b>, or <b>visible haematuria that persists or recurs after successful treatment of UTI</b>. Aged <b>≥60</b> with <b>unexplained non-visible haematuria</b> and either <b>dysuria</b> or a <b>raised white cell count</b> on a blood test (bladder). <b>Consider non-urgent</b> referral for bladder cancer in men <b>≥60</b> with <b>recurrent or persistent unexplained UTI</b>.", src:"NICE NG12"},
+         {tone:"blue", h:"Urology — routine/soon", html:"<b>Men with recurrent UTI</b> (≥2 in 6 months or ≥3 in 12 months): refer or seek specialist advice on further investigation and management — usually urology. Also: relapse with the same organism, suspected stones or obstruction, chronic prostatitis.", src:"NICE NG112"},
+         {tone:"plain", h:"Sexual health", html:"Urethritis, epididymo-orchitis with STI risk, positive NAAT — for full screen, treatment and partner notification.", src:"UKHSA UTI diagnostic tools 2025"}
+       ]},
+       {b:"dl", rows:[
+         ["What to send","Dates and number of episodes; each culture result with organism and sensitivities; antibiotics used; symptoms between episodes (LUTS, haematuria); eGFR; DRE findings; relevant history (catheter, stones, diabetes, prior surgery)."],
+         ["While waiting","Treat each episode on culture results; don’t start long-term prophylaxis in a man without specialist advice; safety-net for fever, retention and haematuria."]
+       ]},
+       {b:"p", html:"See also the <a href=\"recurrent-uti.html\">recurrent UTI protocol</a> and <a href=\"benign-prostate-enlargement.html\">benign prostatic enlargement protocol</a>."}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Safety-netting", sub:"Specific, time-bound, and in words the patient will remember.",
+     blocks:[
+       {b:"tiles", v:"safety", items:[
+         {t:"🔴 Call 999 or go to A&amp;E", html:"“If you become confused, very drowsy, breathless, your skin goes mottled or blotchy, or you stop passing urine — that could be sepsis. Call 999.”"},
+         {t:"🔴 Can’t pass urine", html:"“If you can’t pass urine and your lower tummy is painful and swollen, go to A&amp;E — that needs a catheter the same day.”"},
+         {t:"⚠️ Spreading infection", html:"“If you get a high temperature, shivering, pain in your back or side, pain between your legs or in your back passage, or you’re being sick and can’t keep tablets down, contact us or 111 the same day.”"},
+         {t:"⏱️ Not better in 48 hours", html:"“If you’re not starting to feel better within two days, or you’re getting worse at any point, come back — we’ll check the urine result and may change the antibiotic.”"},
+         {t:"💊 Finish the course", html:"“Take every tablet, even once you feel better — men need a longer course than women because infection can hide in the prostate.”"},
+         {t:"❗ Ciprofloxacin", html:"“If you get pain or swelling in a tendon, especially the back of the ankle, muscle pain, pins and needles, or changes in mood or sleep, stop the tablets and contact us straight away.”"}
+       ]},
+       {b:"say", html:"I think you have a urine infection. In men we always send the sample to the lab and give a full week of antibiotics, because the infection can involve the prostate. I’ll check the result in a couple of days. If you get a fever, shivers, back pain, pain between your legs, can’t pass urine, or feel very unwell, get help the same day — and if it keeps coming back, we’ll ask the urology team to look for a cause."}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"How UTIs in men go wrong in primary care.",
+     blocks:[
+       {b:"tiles", v:"refer", items:[
+         {t:"Using the women’s pathway", html:"3-day courses, back-up prescriptions and dipstick-only diagnosis are for women under 65 — not men (NG109)."},
+         {t:"No culture", html:"Starting antibiotics without an MSU leaves you blind at 48 hours and at the next episode."},
+         {t:"Missing the prostate", html:"A febrile man with perineal pain given 7 days of nitrofurantoin — wrong drug, wrong length."},
+         {t:"Nitrofurantoin for the kidney", html:"It does not achieve useful levels in renal or prostatic tissue; avoid in upper UTI and in eGFR <45."},
+         {t:"Reflex ciprofloxacin", html:"Fluoroquinolones only when alternatives are inappropriate (MHRA 2024) — and document the counselling."},
+         {t:"Calling urethritis a UTI", html:"Discharge in a young man is an STI until tested; he and his partners need sexual-health care."},
+         {t:"Re-treating recurrence", html:"The third UTI in a year in a man is a referral (NG112), not another prescription."},
+         {t:"Forgetting the haematuria", html:"Visible haematuria blamed on infection must be shown to clear; persistence in a man ≥45 is a 2WW (NG12)."},
+         {t:"PSA during infection", html:"A falsely raised PSA triggers anxiety and unnecessary referral — wait until the infection has fully settled."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card — the Casebook keeps the full teaching cases.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 58-year-old man phones about burning on passing urine for 3 days and asks for “the same antibiotics my wife had”. On questioning he has felt shivery overnight and has an ache “down below, near the back passage”. He is due to travel for work tomorrow."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does not simply issue a 3-day course; asks about fever, loin and perineal pain, voiding, discharge and sexual history; recognises possible prostatitis and arranges a face-to-face assessment with observations; requests an MSU before antibiotics; explains why men need a longer course (7 days cystitis; 14 days then review for prostatitis) and discusses fluoroquinolone risks or the trimethoprim alternative; safety-nets for sepsis and retention with specific actions while travelling; plans 48-hour review and urology if recurrent."},
+       {tone:"cream", h:"Variation — the repeat visitor", html:"A 67-year-old with his third culture-positive UTI this year wants “something stronger to keep at home”. Checkpoints: recognises the NG112 threshold, explains urology referral and investigation, reviews LUTS and haematuria, does not start prophylaxis without specialist advice, and applies NG12 if visible haematuria has persisted."},
+       {tone:"cream", h:"Variation — the young man", html:"A 24-year-old with dysuria and a clear urethral discharge after a new partner. Checkpoints: considers STI over UTI, non-judgemental sexual history, first-void NAAT, sexual-health referral and partner notification, avoids a blind UTI antibiotic."}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every dose and threshold on this page is traceable to a named source. No clinician has yet reviewed this page.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG109 — Urinary tract infection (lower): antimicrobial prescribing (2018, updated May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng109" rel="noopener">nice.org.uk/guidance/ng109</a><span class="rd"> — men: immediate antibiotic, MSU before antibiotics, trimethoprim 200 mg BD or nitrofurantoin 100 mg MR BD (eGFR ≥45) for 7 days; worsening → alternative diagnoses, NG111/NG110</span></li>'+
+         '<li><b>NICE NG111 — Pyelonephritis (acute): antimicrobial prescribing (2018, updated September 2024)</b><br><a href="https://www.nice.org.uk/guidance/ng111" rel="noopener">nice.org.uk/guidance/ng111</a><span class="rd"> — MSU before antibiotics; referral and specialist-advice criteria; cefalexin, co-amoxiclav, trimethoprim, ciprofloxacin regimens; 48-hour reassessment and IV review</span></li>'+
+         '<li><b>NICE NG110 — Prostatitis (acute): antimicrobial prescribing (2018, updated September 2024)</b><br><a href="https://www.nice.org.uk/guidance/ng110" rel="noopener">nice.org.uk/guidance/ng110</a><span class="rd"> — hospital referral criteria; MSU; ciprofloxacin 500 mg BD / ofloxacin 200 mg BD, or trimethoprim 200 mg BD, 14 days then review; levofloxacin and co-trimoxazole after specialist discussion; analgesia; MHRA 2024 note</span></li>'+
+         '<li><b>NICE NG112 — Urinary tract infection (recurrent): antimicrobial prescribing (2018, updated December 2024)</b><br><a href="https://www.nice.org.uk/guidance/ng112" rel="noopener">nice.org.uk/guidance/ng112</a><span class="rd"> — definition of recurrence; refer men with recurrent UTI to urology (also NICE QS90 statement 5)</span></li>'+
+         '<li><b>NICE NG113 — Urinary tract infection (catheter-associated): antimicrobial prescribing (2018)</b><br><a href="https://www.nice.org.uk/guidance/ng113" rel="noopener">nice.org.uk/guidance/ng113</a><span class="rd"> — catheter removal/change after 7 days without delaying antibiotics; lower and upper CAUTI regimens and doses; MHRA 2024 fluoroquinolone note</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — bladder and kidney cancer haematuria thresholds (≥45 visible; ≥60 non-visible with dysuria or raised WCC; consider non-urgent referral ≥60 with recurrent/persistent unexplained UTI)</span></li>'+
+         '<li><b>NICE NG253 — Suspected sepsis in people aged 16 or over: recognition, assessment and early management (November 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng253" rel="noopener">nice.org.uk/guidance/ng253</a><span class="rd"> — replaces NG51 for adults; sepsis risk assessment and escalation</span></li>'+
+         '<li><b>UKHSA — Diagnosis of urinary tract infections: quick reference tools for primary care (last updated 7 July 2025)</b><span class="rd"> — do not use dipsticks to rule out UTI in men under 65; asymptomatic bacteriuria rare in men under 65; consider STI in sexually active men; separate over-65 and catheter tools</span></li>'+
+         '<li><b>MHRA Drug Safety Update (January 2024) — fluoroquinolones</b><span class="rd"> — use only when other recommended antibiotics are inappropriate</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — renal dose adjustment, nitrofurantoin at eGFR 30–44 (with MHRA advice), interactions</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"UTI in men (lower and upper) — NICE NG109 (updated 2025), NG110 (updated 2024), NG111 (updated 2024), NG112 (updated 2024), NG113, NG12 and NG253 (2025); UKHSA UTI diagnostic tools (2025); MHRA January 2024 fluoroquinolone advice. Doses shown are those stated in the named NICE guideline; all others per BNF. Follow local antimicrobial guidance where it differs, and verify all doses against the current BNF before prescribing."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

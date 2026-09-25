@@ -3,136 +3,285 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rheumatoid Arthritis — Protocol · Reasoning GP</title>
+<title>Rheumatoid arthritis — Protocol · Reasoning GP</title>
+<meta name="description" content="Rheumatoid arthritis in primary care on one page: recognising persistent synovitis and referring within 3 working days (NICE NG100, QS33), the csDMARD ladder, BSR 2025 shared-care monitoring, once-weekly methotrexate safety, flares, vaccines, pregnancy, CVD and bone risk." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/rheumatoid-arthritis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
-<link rel="stylesheet" href="../../assets/provenance.css?v=13">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body data-screen-label="Rheumatoid arthritis management card">
 <div class="mg-wrap" id="mgRoot"></div>
 <script src="../../assets/management-engine.js?v=22"></script>
-<script src="../../assets/provenance.js?v=14"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 <script>
 MG.render({
-  icon:"🖐️",
-  title:"Rheumatoid Arthritis — The Complete Guide",
-  stemTitle:"RA made simple &mdash; refer early (the window matters), the GP owns the shared-care safety",
-  stemSub:"One pathway: recognise inflammatory arthritis and refer URGENTLY within the treat-to-target window, understand the DMARD/biologic ladder the specialist uses, run the shared-care blood monitoring that keeps patients safe, treat flares, know the drugs' red-flag toxicities and the infection/live-vaccine rules, manage cardiovascular + osteoporosis risk, and handle pregnancy and the acutely unwell patient. NICE NG100 \u00b7 NICE.",
-  guideline:"NICE NG100 \u00b7 BSR",
+  icon:"\u{1F590}️",
+  title:"Rheumatoid arthritis in adults",
+  eyebrow:"Protocol · recognise, refer, keep the drugs safe",
+  stemTitle:"Rheumatoid arthritis — refer early, then own the shared-care safety net",
+  stemSub:"One page for primary care. The GP does not diagnose the subtype or start DMARDs: the job is to recognise persistent synovitis and get it to rheumatology within days (the early months are a therapeutic window), then run the shared-care monitoring, spot drug toxicity and infection, manage flares with the team, and look after the cardiovascular, bone, vaccine and pregnancy risks that RA and its treatment carry.",
+  guideline:"NICE NG100 (2018, updated 2020) · NICE QS33 (2013, updated 2020) · BSR 2025 csDMARD guideline · BSR 2022 pregnancy guideline · MHRA DSU Sept 2020 &amp; Apr 2023 · UKHSA Green Book ch.28a · NICE NG238 · NOGG 2024",
+  meta:[
+    {t:"NICE NG100 · RA in adults (2018, upd. 2020)"},
+    {t:"NICE QS33 · refer within 3 working days", tone:"tw"},
+    {t:"BSR 2025 csDMARD prescribing &amp; monitoring"},
+    {t:"BSR 2022 pregnancy &amp; breastfeeding"},
+    {t:"MHRA DSU 2020 · methotrexate once weekly"},
+    {t:"Green Book ch.28a · NG238 · NOGG 2024"},
+    {t:"BNF owns all doses"}
+  ],
+  lead:'<div class="mg-layers"><a href="#recognise"><b>Recognise</b><small>Persistent synovitis</small></a><a href="#refer"><b>Refer <span class="tw">3 days</span></b><small>Don’t wait for RF</small></a><a href="#dmards"><b>DMARDs</b><small>What the specialist starts</small></a><a href="#monitor"><b>Shared care</b><small>BSR 2025 monitoring</small></a></div>',
   glance:[
-    {lbl:"Refer if", val:"Small-joint / >6wk", sub:"don't wait for bloods/X-ray"},
-    {lbl:"Urgency", val:"Early = better", sub:"treat-to-target window"},
-    {lbl:"1st-line", val:"Methotrexate", sub:"weekly + folic acid"},
-    {lbl:"NEVER", val:"MTX daily", sub:"weekly dosing only — fatal error"},
-    {lbl:"GP role", val:"Shared-care bloods", sub:"FBC/LFT/U&E monitoring"},
-    {lbl:"Flare", val:"Steroid bridge", sub:"+ contact rheumatology"}
+    {lbl:"Refer if", val:"Persistent synovitis", sub:"small joints hands/feet or >1 joint"},
+    {lbl:"How fast", val:"3 working days", sub:"NICE QS33 statement 1"},
+    {lbl:"Bloods", val:"Don’t wait", sub:"normal RF/CRP does not exclude RA"},
+    {lbl:"1st line", val:"csDMARD", sub:"MTX, leflunomide or SSZ"},
+    {lbl:"NEVER", val:"MTX daily", sub:"once weekly only"},
+    {lbl:"Target", val:"Remission", sub:"DAS28 &lt;2.6 (or low activity ≤3.2)"}
   ],
-  flow:[
-
-    {t:"node", d:"found", n:"1", tag:"Step 1 · recognise & refer", title:"Recognise inflammatory arthritis — refer URGENTLY, don't wait",
-      blocks:[
-        {b:"kv", rows:[
-          ["The picture","<b>Persistent (>6 weeks) symmetrical small-joint pain + swelling</b> (MCPs, PIPs, wrists, MTPs), with <b>early-morning stiffness >30\u201360 min</b> that eases with use \u2014 the opposite of OA. Fatigue, difficulty with fine tasks/jars"],
-          ["<b>Refer urgently \u2014 before results</b>","NICE NG100: refer any suspected persistent synovitis of undetermined cause <b>without waiting for blood tests or X-rays</b>; <b>very urgent if small joints of hands/feet, multiple joints, or symptoms \u22653 months</b>. Early treatment changes the disease course \u2014 the window matters"],
-          ["Bloods (send, don't wait on)","<b>Rheumatoid factor</b>; if negative, <b>anti-CCP</b> (more specific, prognostic); <b>CRP/ESR</b>, FBC, LFTs, U&E. Seronegative RA exists \u2014 normal RF/CRP does NOT exclude it, refer on clinical grounds"],
-          ["X-rays","Hands + feet baseline (may be normal early \u2014 erosions are late); don't let normal films delay referral"],
-          ["Squeeze test","Pain on squeezing across the MCP or MTP row is a useful bedside clue to inflammatory joint disease"]
-        ]},
-        {b:"why", html:"RA is a <strong>treat-to-target emergency of the clock</strong>: the first months are a therapeutic window where early DMARDs prevent erosions and disability. The GP's job is not to diagnose subtype or start DMARDs \u2014 it's to <em>recognise inflammatory arthritis and get it to rheumatology fast</em>, then own the shared-care safety net."},
-        {b:"warn", html:"<b>A hot, swollen single joint is septic arthritis until proven otherwise</b> \u2192 same-day. And an RA patient on immunosuppression with fever/sepsis needs urgent assessment (Step 5). Don't anchor a new mono-arthritis on 'RA flare'."}
-      ]},
-
-    {t:"node", d:"drug", n:"2", tag:"Step 2 · the DMARD ladder", title:"What the specialist starts — and why the GP must know it",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"1st", title:"Conventional DMARD — usually methotrexate", when:"first-line, started in secondary care",
-           html:"<b><span class='rx'>Methotrexate 7.5\u201315 mg ONCE WEEKLY</span></b> (oral or SC), titrated to <span class='rx'>20\u201325 mg weekly</span>, <b>with <span class='rx'>folic acid 5 mg</span></b> on a different day; often with a short steroid bridge. Alternatives/combinations: <span class='rx'>sulfasalazine 500 mg OD titrated to 1 g BD</span>, <span class='rx'>leflunomide 10\u201320 mg OD</span>, <span class='rx'>hydroxychloroquine 200\u2013400 mg OD</span>. Aim: remission or low disease activity (treat-to-target, DAS28)."},
-          {step:"2nd", title:"Biologic DMARDs", when:"inadequate response to \u22652 cDMARDs",
-           fromLabel:"specialist-initiated",
-           html:"<b>TNF inhibitors</b> (adalimumab, etanercept, infliximab), or rituximab, tocilizumab, abatacept \u2014 per NICE TA criteria. Screen + treat latent TB and hepatitis B before starting; big infection-risk implications for primary care."},
-          {step:"3rd", title:"Targeted synthetic (JAK inhibitors)", when:"further lines",
-           fromLabel:"specialist",
-           html:"Baricitinib, tofacitinib, upadacitinib \u2014 oral; MHRA cautions re VTE, MACE and malignancy in at-risk/older patients. Same infection vigilance."}
-        ]},
-        {b:"warn", html:"<b>Methotrexate is weekly \u2014 never daily.</b> Daily dosing causes fatal pancytopenia/mucositis and is a classic, lethal prescribing error (dispensing, hospital admission, care home). On every MTX script/record: dose, day of the week, folic acid, and 2.5mg tablets ONLY (never mix strengths). Trimethoprim/co-trimoxazole + MTX = both antifolates \u2192 marrow suppression: <b>avoid</b>."}
-      ]},
-
-    {t:"node", d:"monitor", n:"3", tag:"Step 3 · shared-care monitoring", title:"The GP's core job — DMARD blood monitoring",
-      blocks:[
-        {b:"table", head:["Drug","Monitor","Watch for"], rows:[
-          ["Methotrexate","<b>FBC, LFTs, U&E</b> \u2014 2-weekly until stable dose, then ~every 2\u20133 months","Neutropenia, transaminitis, macrocytosis; <b>pneumonitis</b> (dry cough/breathlessness \u2192 stop + urgent)"],
-          ["Leflunomide","FBC, LFTs + <b>BP/weight</b> (hypertension)","Marrow, hepatotoxicity, hypertension, diarrhoea; very long half-life (washout with cholestyramine for toxicity/pregnancy)"],
-          ["Sulfasalazine","FBC, LFTs","Neutropenia, hepatotoxicity (early months); harmless orange urine"],
-          ["Hydroxychloroquine","No routine bloods; baseline + annual eye review","<b>Retinal toxicity</b> \u2014 formal retinopathy screening"],
-          ["Biologics / JAK","Per shared-care protocol","Infection surveillance is the dominant primary-care task"]
-        ]},
-        {b:"kv", rows:[
-          ["The rule","Follow the <b>shared-care agreement</b> \u2014 don't issue DMARDs you're not set up to monitor. Abnormal results (neutropenia, transaminases >3\u00d7 ULN, rising creatinine) \u2192 withhold + contact rheumatology same day"],
-          ["Sick-day sense","Intercurrent infection \u2192 hold methotrexate/biologics until recovered (specialist advice); never restart blindly"]
-        ]}
-      ]},
-
-    {t:"node", d:"safety", n:"4", tag:"Step 4 · flares & symptoms", title:"Managing flares and day-to-day symptoms",
-      blocks:[
-        {b:"kv", rows:[
-          ["Flare","Increased pain/swelling/stiffness across joints. <b>Short steroid bridge</b> (oral prednisolone or IM/intra-articular depot) + contact rheumatology; don't just escalate NSAIDs. Persistent/frequent flares \u2192 DMARD needs stepping up (specialist)"],
-          ["Analgesia","NSAID + PPI for symptom relief (lowest dose, shortest time; renal/GI/CV caution); paracetamol adjunct \u2014 these do NOT modify disease, the DMARD does"],
-          ["Single hot joint","Exclude septic arthritis (aspirate) and gout before calling it an RA flare \u2014 same-day if systemically unwell"],
-          ["Function","OT (aids, joint protection, splints), physio, podiatry (foot RA is disabling and under-treated)"]
-        ]}
-      ]},
-
-    {t:"node", d:"life", n:"5", tag:"Step 5 · whole-person risk", title:"CVD, bones, infection, vaccines, pregnancy",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"❤️ Cardiovascular", html:"RA is an independent CV risk factor (inflammation) — QRISK3 includes it; be proactive with BP, lipids, smoking. RA patients die of CVD."},
-          {t:"🦴 Osteoporosis", html:"Disease + steroids raise fracture risk — assess bone health (FRAX), co-prescribe bone protection with steroids (see osteoporosis card)."},
-          {t:"🦠 Infection", html:"Immunosuppressed — low threshold for assessment; a septic patient on biologics/MTX is an emergency; counsel to report infections early."},
-          {t:"💉 Vaccines", html:"Annual flu, pneumococcal, COVID; <b>AVOID LIVE vaccines</b> on significant immunosuppression (shingles — use the non-live Shingrix; check before yellow fever/MMR)."},
-          {t:"🤰 Pregnancy", html:"<b>Methotrexate + leflunomide are teratogenic — stop MTX ≥3 months pre-conception (both partners), leflunomide needs washout.</b> Hydroxychloroquine + sulfasalazine are pregnancy-compatible; plan with rheumatology."},
-          {t:"🚭 Smoking", html:"Worsens RA activity AND blunts treatment response — cessation is disease-modifying."}
-        ]}
-      ]},
-
-    {t:"loop", icon:"🔁", title:"Worsening or 'not right'? Work through this",
-      arrow:"\u2026don't mislabel it a flare",
-      checks:[
-        {b:"1 · Septic joint?", html:"Single hot joint + unwell → aspirate/same-day, not 'flare'."},
-        {b:"2 · Drug toxicity?", html:"Breathless/dry cough (MTX pneumonitis), mouth ulcers/bruising (marrow), jaundice (liver) → stop + urgent bloods."},
-        {b:"3 · Infection on immunosuppression", html:"Fever/sepsis → urgent; hold DMARD/biologic."},
-        {b:"4 · True flare", html:"Multi-joint inflammatory worsening → steroid bridge + rheumatology, step up DMARD."},
-        {b:"5 · Under-treated", html:"Persistent activity between flares → not at target → specialist escalation."},
-        {b:"6 · Comorbidity", html:"CV event, fracture, mood — the whole-person risks RA carries."}
-      ],
-      back:"Toxicity/sepsis excluded → rheumatology for target-driven escalation"},
-
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"What the patient must know",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 MTX warning signs", html:"\u201cOn methotrexate: a new dry cough or breathlessness, mouth ulcers, unusual bruising, or a sore throat/fever \u2014 stop it and contact us the same day.\u201d"},
-          {t:"💊 Weekly, not daily", html:"\u201cMethotrexate is ONCE a week on your chosen day \u2014 taking it daily is dangerous. Always tell any new doctor or pharmacist it\u2019s weekly.\u201d"},
-          {t:"🦠 Infections", html:"\u201cYour treatment lowers immunity \u2014 tell us early about infections, and avoid \u2018live\u2019 vaccines without checking with us first.\u201d"},
-          {t:"🤰 Pregnancy", html:"\u201cSome of these drugs harm a pregnancy \u2014 don\u2019t try for a baby without planning it with us first (applies to men on some drugs too).\u201d"}
-        ]}
-      ]},
-
-    {t:"node", d:"refer", n:"7", tag:"Refer", title:"Rheumatology — urgency levels",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Very urgent", html:"Suspected RA with small-joint (hands/feet) involvement, multiple joints, or symptoms ≥3 months — refer without waiting for tests (NG100)."},
-          {t:"Same day", html:"Suspected septic arthritis; immunosuppressed + febrile/septic; MTX pneumonitis; significant cytopenia."},
-          {t:"Flare / escalation", html:"Frequent or severe flares, or persistent disease activity → target-driven DMARD/biologic escalation."},
-          {t:"Shared-care queries", html:"Abnormal monitoring bloods, drug interaction questions, pre-pregnancy planning."},
-          {t:"Allied health", html:"OT, physio, podiatry, specialist nurse — function + self-management."}
-        ]},
-        {b:"say", html:"This looks like inflammatory arthritis, and the single most important thing is getting you to the specialist quickly \u2014 treating it early genuinely changes how the disease behaves. Once you\u2019re on treatment, my job is the regular blood checks that keep it safe, and being the person you call the moment anything feels off."}
-      ]}
+  quickSub:"If you read nothing else, read these cards. Every card names the source it comes from; the evidence panel at the bottom lists them in full.",
+  quick:[
+    {tone:"red", h:"⚠ Suspected persistent synovitis → refer urgently, before results", html:"Refer any adult with <b>suspected persistent synovitis of undetermined cause</b>. Refer <b>urgently</b> — <b>even with a normal acute-phase response, negative anti-CCP or negative rheumatoid factor</b> — if the <b>small joints of the hands or feet</b> are affected, <b>more than one joint</b> is affected, or there has been a <b>delay of 3 months or longer</b> since symptoms began. QS33 sets the standard: seen by rheumatology referral within <b>3 working days</b> of presenting in primary care. <span class='tw'>URGENT</span>"},
+    {tone:"red", h:"Methotrexate is ONCE WEEKLY", html:"Inadvertent daily dosing of once-weekly methotrexate has caused fatal toxicity (sepsis, renal failure, aplastic anaemia). The MHRA (Drug Safety Update, Sept 2020) asks prescribers to <b>record the day of the week</b> on the prescription, check the patient understands, and use the <b>patient card</b> supplied with oral packs. Never mix tablet strengths."},
+    {tone:"amber", h:"Symptoms on a DMARD = check bloods the same day", html:"<b>Sore throat, fever, mouth ulcers, unexplained bruising or bleeding</b> → same-day FBC (neutropenia / marrow suppression). <b>New dry cough or breathlessness on methotrexate</b> → think pneumonitis. Withhold the DMARD and discuss with rheumatology per the shared-care protocol (BSR 2025)."},
+    {tone:"blue", h:"Shared care is risk-stratified now", html:"The <b>BSR 2025 csDMARD guideline</b> replaced BSR/BHPR 2017 and moved to <b>risk-stratified monitoring</b>: closer blood tests while starting, then <b>FBC, renal function, ALT/AST and albumin every 3 months</b> in maintenance for people without risk factors, with frequency adjusted to individual toxicity risk. Hydroxychloroquine needs no routine blood monitoring — it needs eye screening."},
+    {tone:"purple", h:"Vaccines: live ones need thought, Shingrix is now broad", html:"Annual flu, pneumococcal and COVID-19 per the current programme. From <b>1 September 2025</b> <b>Shingrix (non-live)</b> is offered to <b>all severely immunosuppressed adults aged 18+</b> (2 doses, 8 weeks to 6 months apart). Check the Green Book before any <b>live</b> vaccine."},
+    {tone:"green", h:"Treat the whole patient", html:"RA raises cardiovascular risk (QRISK3 includes RA — no separate multiplier), and RA plus glucocorticoids raise fracture risk (FRAX has an RA input). Smoking cessation, BP, lipids, bone protection and mood are part of RA care, and the <b>annual review</b> covers them."}
   ],
-  foot:"Rheumatoid arthritis in adults \u2014 NICE NG100, BSR guidance, shared-care/MHRA methotrexate safety. Verify doses against the current BNF; DMARDs are specialist-initiated."
+  pathwaySub:"The primary-care journey in six moves. The red step is where the time-critical harm happens.",
+  pathway:[
+    {title:"Recognise inflammatory joint pain", html:"Joint <b>swelling</b> (soft, boggy synovitis), <b>early-morning stiffness</b> that eases with use, symmetrical small-joint involvement (MCPs, PIPs, wrists, MTPs), fatigue. Positive squeeze test across the MCP or MTP row. Different from OA: stiffness is prolonged and swelling is soft, not bony."},
+    {title:"Refer urgently — do not wait for tests", html:"Suspected persistent synovitis of the small joints of hands/feet, more than one joint, or ≥3 months since onset → <b>urgent rheumatology referral</b>. Send bloods in parallel, but a normal CRP or a negative RF/anti-CCP must not delay or downgrade the referral.", alert:true},
+    {title:"Bridge the wait sensibly", html:"Analgesia and, if needed, an NSAID with gastroprotection at the lowest effective dose. <b>Avoid starting oral steroids before the rheumatologist sees them</b> unless agreed with the team — steroids can mask synovitis and blur the diagnosis (local advice varies)."},
+    {title:"Specialist starts a csDMARD + bridging steroid", html:"First-line conventional DMARD <b>monotherapy</b> (oral methotrexate, leflunomide or sulfasalazine; hydroxychloroquine for mild or palindromic disease), with <b>short-term bridging glucocorticoids</b>. Treat to target: <b>CRP and disease activity (DAS28) monthly</b> until remission or low disease activity."},
+    {title:"Shared care: monitor, prescribe, act on results", html:"Once stable, the GP takes on prescribing and blood monitoring under a <b>shared-care agreement</b> (BSR 2025 schedule). Act on abnormal results and toxicity symptoms the same day; hold DMARDs in significant infection per the protocol."},
+    {title:"Long-term: flares, comorbidity, annual review", html:"Flares → rheumatology advice line (advice within 1 working day, QS33). Annual review: disease activity, function, comorbidity (CVD, osteoporosis, depression), complications (lung, eyes, cervical spine, vasculitis), vaccines, and pregnancy plans."}
+  ],
+  sections:[
+
+    {id:"recognise", nav:"Recognise", title:"Recognising rheumatoid arthritis", sub:"The GP diagnosis is “suspected persistent synovitis”. That is enough to refer; the specialist confirms RA.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Typical picture","<b>Persistent symmetrical polyarthritis</b> of the small joints — MCPs, PIPs, wrists and MTPs — with <b>soft swelling</b>, <b>early-morning stiffness</b> that eases with activity, and fatigue. Difficulty with fine tasks, jar lids, buttons, walking on the forefoot (“walking on pebbles”)"],
+         ["Examination","Look for <b>synovitis</b>: warm, soft, boggy swelling and tenderness over joint lines. <b>Squeeze test</b>: pain on lateral compression across the MCPs or MTPs is a useful bedside sign of small-joint synovitis. Record which joints are swollen — this is what the rheumatologist needs"],
+         ["Onset patterns","Usually insidious over weeks; can be acute polyarthritis; can be <b>palindromic</b> (episodic attacks lasting days, fully resolving) — still refer; occasionally a large-joint or older-onset presentation mimicking polymyalgia rheumatica"],
+         ["Extra-articular clues","Rheumatoid nodules, dry eyes/mouth (secondary Sjögren’s), scleritis/episcleritis, interstitial lung disease (breathlessness, dry crackles), anaemia, weight loss, vasculitic rash or nail-fold infarcts"],
+         ["Risk context","Smoking (the strongest modifiable risk factor and associated with anti-CCP-positive disease), family history of RA or autoimmunity, female sex, middle age — but RA occurs at any adult age"]
+       ]},
+       {b:"table", head:["Feature","Inflammatory (RA)","Mechanical / OA"], rows:[
+         ["Morning stiffness","Prolonged, typically well over 30 minutes","Brief, usually under 30 minutes"],
+         ["Swelling","Soft, boggy synovial swelling","Bony (Heberden’s / Bouchard’s nodes)"],
+         ["Joints","MCPs, PIPs, wrists, MTPs; spares DIPs","DIPs, PIPs, thumb base (CMC), knees, hips"],
+         ["Effect of activity","Improves with use","Worse with use, better with rest"],
+         ["Systemic","Fatigue, raised CRP/ESR (not always)","None"]
+       ]},
+       {b:"why", html:"NICE NG100 frames the primary-care decision around <b>persistent synovitis</b>, not a laboratory diagnosis. Blood tests have limited sensitivity early on: seronegative RA exists and the CRP can be normal. The most common harm is the reassuring normal blood test that delays referral beyond the treatment window."}
+     ]},
+
+    {id:"differential", nav:"Differentials &amp; red flags", title:"Differentials and same-day red flags", sub:"Not every swollen joint is RA, and a flare label can hide something dangerous.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Hot, swollen single joint = septic arthritis until proven otherwise", html:"Especially in someone already on DMARDs or steroids, or with a prosthetic joint. <b>Same-day</b> assessment and joint aspiration before antibiotics. Do not call a new monoarthritis an “RA flare” without excluding sepsis and crystal arthritis.", src:"BSR/BHPR 2006 hot swollen joint guideline"},
+         {tone:"red", h:"Febrile or septic on immunosuppression", html:"Fever, rigors, hypotension or new confusion on methotrexate, leflunomide, biologics or JAK inhibitors → <b>same-day hospital assessment</b>; check FBC for neutropenia. Hold the DMARD and inform rheumatology.", src:"BSR 2025 csDMARD guideline"},
+         {tone:"red", h:"New cough or breathlessness on methotrexate", html:"Possible <b>methotrexate pneumonitis</b> (or infection, or RA-associated interstitial lung disease). Withhold methotrexate and seek same-day advice; hypoxia or rapid progression → admit.", src:"BSR 2025 csDMARD guideline"},
+         {tone:"amber", h:"Neck pain with neurological symptoms in long-standing RA", html:"Atlanto-axial instability can cause cord compression: new limb weakness, paraesthesia, gait change or sphincter symptoms → urgent assessment. Cervical spine complications are on the NG100 annual review list.", src:"NICE NG100 (annual review)"},
+         {tone:"amber", h:"Red eye in RA", html:"Painful red eye with reduced vision may be <b>scleritis</b> → same-day ophthalmology. Gritty dry eyes are more often secondary Sjögren’s. Eye disease is part of the NG100 annual review.", src:"NICE NG100 (annual review)"},
+         {tone:"plain", h:"Differentials to hold in mind", html:"Viral polyarthritis (parvovirus B19, hepatitis B/C — often self-limiting within weeks), psoriatic arthritis, reactive arthritis, gout/CPPD, SLE and other connective tissue disease, polymyalgia rheumatica, hand OA, hypothyroidism. If synovitis persists, the differential is for the rheumatologist — refer anyway.", src:"NICE NG100 (refer suspected persistent synovitis of undetermined cause)"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral — the time-critical step", sub:"NICE NG100 and QS33: refer on clinical suspicion, not on blood results.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Urgent rheumatology referral", html:"Adult with <b>suspected persistent synovitis</b> and any of: <b>small joints of the hands or feet</b> affected; <b>more than one joint</b> affected; <b>3 months or longer</b> between symptom onset and seeking advice. Refer urgently <b>even if</b> the acute-phase response is normal and RF or anti-CCP is negative.", src:"NICE NG100 (referral for specialist treatment)"},
+         {tone:"blue", h:"The service standard: 3 working days", html:"Adults with suspected persistent synovitis affecting more than one joint, or the small joints of the hands and feet, are <b>referred to rheumatology within 3 working days</b> of presenting in primary care. Specialist care should then start csDMARD monotherapy <b>within 6 weeks of referral</b>.", src:"NICE QS33 statements 1 and 2"},
+         {tone:"blue", h:"Send bloods — but don’t wait for them", html:"<b>Rheumatoid factor</b> in suspected RA with synovitis on examination; <b>anti-CCP</b> if RF is negative (anti-CCP is also prognostic). Add <b>CRP/ESR, FBC, U&amp;E, LFTs</b> (baseline for DMARDs), and consider urate, TSH and hepatitis/parvovirus serology if the history suggests it.", src:"NICE NG100 (investigations)"},
+         {tone:"blue", h:"X-ray hands and feet", html:"NG100 recommends <b>X-rays of the hands and feet</b> in suspected persistent synovitis to establish whether erosions are present — early films are often normal. Baseline radiographic damage and anti-CCP both predict progression. Never let a normal X-ray delay referral.", src:"NICE NG100 (investigations)"},
+         {tone:"plain", h:"What to put in the referral", html:"Which joints are swollen (not just painful), duration, morning stiffness, function, any steroid already given (and when), extra-articular features, smoking status, relevant comorbidity (liver disease, alcohol, CKD, lung disease, pregnancy plans — all affect DMARD choice), and results available so far.", src:"NICE NG100 · QS33"}
+       ]},
+       {b:"warn", html:"<b>Avoid giving oral steroids “to see if it helps” before the rheumatology assessment</b> unless the team advises it. They settle synovitis, so the specialist may not see it, and they can delay the diagnosis. If symptoms are severe, phone the rheumatology advice line."},
+       {b:"say", html:"I think the swelling in your hands is coming from inflammation in the joints, and the most useful thing I can do is get you seen by the joint specialists quickly — treating this kind of arthritis early really does change how it behaves. I’ll send some blood tests today, but even if they come back normal that doesn’t rule it out, so I’m referring you now rather than waiting."}
+     ]},
+
+    {id:"dmards", nav:"DMARD ladder", title:"What rheumatology starts — the treat-to-target ladder", sub:"DMARDs are specialist-initiated. The GP needs to know what each drug is, why it was chosen, and what can go wrong.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", title:"csDMARD monotherapy", when:"newly diagnosed active RA — as soon as possible",
+          html:"NG100: offer <b>first-line conventional DMARD monotherapy</b> with <b>oral methotrexate, leflunomide or sulfasalazine</b>, escalating the dose as tolerated. <b>Consider hydroxychloroquine</b> as an alternative for <b>mild or palindromic disease</b>. Methotrexate is used most often in practice; it is taken <b>once weekly</b> with folic acid (dose and day per BNF and the shared-care protocol)."},
+         {step:"Bridge", title:"Short-term bridging glucocorticoid", when:"when starting a new csDMARD",
+          fromLabel:"NG100",
+          html:"NG100: consider <b>short-term bridging treatment with glucocorticoids</b> when starting a new csDMARD, because DMARDs take weeks to work. Route and dose are specialist decisions (oral taper, IM depot or intra-articular). Continue long-term glucocorticoids only after discussing long-term complications and when all other options have been offered."},
+         {step:"Target", title:"Treat to target", when:"monthly until target",
+          fromLabel:"NG100",
+          html:"Target is <b>remission (DAS28 &lt;2.6)</b>, or <b>low disease activity (DAS28 ≤3.2)</b> if remission cannot be achieved. Measure <b>CRP and disease activity monthly</b> in specialist care until the target is reached, adjusting treatment each time."},
+         {step:"2nd", title:"Add or combine csDMARDs", when:"target not met despite dose escalation",
+          fromLabel:"step-up",
+          html:"NG100: offer an additional csDMARD (oral methotrexate, leflunomide, sulfasalazine or hydroxychloroquine) in combination in a step-up strategy when the target has not been reached despite dose escalation."},
+         {step:"3rd", title:"Biologic or targeted synthetic DMARDs", when:"per NICE technology appraisals",
+          fromLabel:"specialist-only",
+          html:"TNF inhibitors, abatacept, tocilizumab/sarilumab, rituximab and JAK inhibitors, prescribed and supplied by the hospital under NICE technology appraisals. The GP needs to <b>record them on the practice system</b> (hospital-only drugs are often invisible to other prescribers), and treat infection, vaccination and surgery as immunosuppressed care."}
+       ]},
+       {b:"table", head:["Drug","What the GP must know","Key toxicity / interaction"], rows:[
+         ["<b>Methotrexate</b>","Once weekly, oral or subcutaneous, with folic acid on a different day; alcohol within national limits (discuss with the team)","Marrow suppression, hepatotoxicity, pneumonitis, mouth ulcers. <b>Avoid trimethoprim and co-trimoxazole</b> (additive antifolate → marrow suppression, BNF). NSAIDs and reduced renal function raise levels"],
+         ["<b>Leflunomide</b>","Once daily; very long half-life. Check <b>blood pressure and weight</b> as well as bloods","Hepatotoxicity, hypertension, diarrhoea, weight loss, marrow suppression. Needs a <b>cholestyramine washout</b> before a planned pregnancy or after serious toxicity"],
+         ["<b>Sulfasalazine</b>","Dose titrated up over weeks; orange urine/tears expected","Neutropenia and hepatotoxicity mostly in the first months; rash; reversible oligospermia"],
+         ["<b>Hydroxychloroquine</b>","No routine blood monitoring; <b>retinopathy screening</b> is the safety check","Retinal toxicity with long-term use; rarely QT prolongation"],
+         ["<b>Glucocorticoids</b>","Short courses to bridge or treat flares","Bone loss, diabetes, hypertension, infection, adrenal suppression; plan bone protection and a steroid card where relevant"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"JAK inhibitors: MHRA restrictions (April 2023)", html:"Tofacitinib, baricitinib, upadacitinib, filgotinib and abrocitinib carry increased risks of major cardiovascular events, malignancy, VTE, serious infection and death. In people <b>aged 65 or over</b>, <b>current or past long-time smokers</b>, or with other <b>cardiovascular or malignancy risk factors</b>, use them only if there are <b>no suitable treatment alternatives</b>; use with caution if VTE risk factors. Specialist-prescribed — the GP role is to record the drug, flag new CV/VTE/cancer symptoms and infections to the team.", src:"MHRA Drug Safety Update April 2023 (JAK inhibitors)"}
+       ]},
+       {b:"why", html:"Treat-to-target works because the first months are the window in which uncontrolled synovitis produces irreversible erosions. The rheumatology team escalates every month the target is missed; the GP’s contribution is getting the patient there early and keeping them safely on treatment for years afterwards."}
+     ]},
+
+    {id:"monitor", nav:"Shared care", title:"Shared-care monitoring — BSR 2025", sub:"The BSR 2025 csDMARD guideline (published November 2025) replaced BSR/BHPR 2017 and introduced risk-stratified monitoring. Your local shared-care protocol states the exact schedule.",
+     blocks:[
+       {b:"table", head:["Phase","Tests","Frequency (BSR 2025)"], rows:[
+         ["Baseline (specialist)","Weight, BP, FBC, renal function, ALT/AST, albumin; screen for hepatitis B/C, HIV and TB risk as appropriate; chest X-ray/lung assessment before methotrexate if indicated","Before starting any csDMARD"],
+         ["Initiation / dose change","FBC, renal function (U&amp;E, creatinine/eGFR), ALT and/or AST, albumin","Frequent early testing, then monthly for the first months — usually done or directed by rheumatology until the dose is stable"],
+         ["Maintenance — no risk factors","FBC, renal function, ALT/AST, albumin","<b>Every 3 months</b>"],
+         ["Maintenance — risk factors for toxicity","Same panel","<b>More frequent</b>, tailored to the level of risk; reassess toxicity risk <b>at least annually</b>"],
+         ["Leflunomide extra","Blood pressure and weight","At each monitoring visit per protocol"],
+         ["Hydroxychloroquine","No routine blood tests (unless on another DMARD)","<b>Annual retinopathy screening</b> after 5 years of use, or after 1 year if at high risk of retinopathy"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Act on results — same day", html:"A new significant fall in white cells, neutrophils or platelets, a rising ALT/AST, falling albumin, a significant rise in creatinine, or a rising MCV → <b>withhold the DMARD and discuss with rheumatology</b> the same day. Use the action thresholds in your shared-care protocol; <b>trends</b> matter as much as a single value.", src:"BSR 2025 csDMARD guideline"},
+         {tone:"amber", h:"Don’t prescribe what you can’t monitor", html:"Only continue a DMARD prescription when bloods are up to date. If the patient has missed monitoring, contact them before issuing. Hospital-prescribed drugs must be on the GP record so that interactions are caught.", src:"BSR 2025 csDMARD guideline (shared care agreements)"},
+         {tone:"amber", h:"Intercurrent infection and surgery", html:"Significant infection → usually <b>withhold csDMARDs until recovered</b> and restart per the team’s advice. Around surgery, follow the shared-care and surgical team plan — do not stop or restart blindly.", src:"BSR 2025 csDMARD guideline"},
+         {tone:"blue", h:"Hydroxychloroquine eyes", html:"Annual retinopathy monitoring after 5 years of continuous use, or after 1 year in those at high risk (e.g. higher dose relative to weight, CKD, tamoxifen). Ask about visual symptoms at review.", src:"BSR 2025 csDMARD guideline · RCOphth 2020 HCQ screening"}
+       ]},
+       {b:"warn", html:"<b>Common interaction traps:</b> trimethoprim or co-trimoxazole with methotrexate (serious marrow suppression); new NSAIDs or a drop in eGFR raising methotrexate levels; alcohol excess with methotrexate or leflunomide. Check the BNF interactions for any new drug on a patient taking a DMARD."}
+     ]},
+
+    {id:"mtx", nav:"Methotrexate safety", title:"Methotrexate — once-weekly safety", sub:"The single most important prescribing safety issue on this page.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Weekly, never daily", html:"Inadvertent daily dosing of once-weekly methotrexate has caused serious and fatal toxicity (sepsis, renal failure, aplastic anaemia). Before prescribing, <b>confirm the patient knows the dose is weekly</b>; <b>record the day of the week</b> on the prescription; remind them about the <b>patient card</b> in oral packs; tablets are supplied in blister packs.", src:"MHRA Drug Safety Update Sept 2020"},
+         {tone:"amber", h:"One strength only", html:"Prescribe a single tablet strength (usually 2.5 mg tablets) so the number of tablets is unambiguous; flag the weekly day prominently on repeat templates and in care-home MAR charts.", src:"BNF (methotrexate) · NPSA 2006 oral methotrexate alert"},
+         {tone:"blue", h:"Folic acid", html:"Given on a different day from methotrexate to reduce GI and mucosal side effects and liver enzyme rises. Dose and day per the shared-care protocol and BNF.", src:"BSR 2025 csDMARD guideline · BNF"},
+         {tone:"blue", h:"Signs of toxicity", html:"Mouth ulcers, sore throat, fever, bruising or bleeding, severe diarrhoea or vomiting, new cough or breathlessness → stop the next dose, same-day FBC/LFT/U&amp;E, discuss with rheumatology. Suspected overdose → hospital (folinic acid rescue is a hospital decision).", src:"MHRA Drug Safety Update Sept 2020 · BSR 2025 csDMARD guideline"}
+       ]}
+     ]},
+
+    {id:"flare", nav:"Flares", title:"Flares and symptom control", sub:"A flare is a signal that disease control is not good enough, and a prompt to rule out mimics first.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"Is it a flare?", when:"first",
+          html:"Several joints with increased swelling, stiffness and pain, often with fatigue and a rising CRP. <b>A single hot joint is not a flare until sepsis and crystals are excluded.</b> Consider infection, drug toxicity and missed doses."},
+         {step:"2", title:"Contact rheumatology", when:"same day or next working day",
+          fromLabel:"QS33",
+          html:"QS33 statement 4: adults with RA and flares or possible treatment side effects should <b>receive advice within 1 working day</b> of contacting rheumatology. Most units have an advice line or patient-initiated review."},
+         {step:"3", title:"Short-term glucocorticoid", when:"as agreed with the team",
+          fromLabel:"NG100",
+          html:"NG100: offer <b>short-term glucocorticoids for managing flares</b> in recent-onset or established disease to rapidly decrease inflammation (oral, IM or intra-articular; route and dose per team and BNF). Recurrent flares mean the DMARD strategy needs reviewing, not repeated steroid courses."},
+         {step:"4", title:"Symptom control alongside", when:"throughout",
+          fromLabel:"NG100",
+          html:"NG100: consider oral <b>NSAIDs</b> for symptom control at the <b>lowest effective dose for the shortest time</b>, with a <b>PPI</b>, after assessing GI, renal and cardiovascular risk. Analgesia (e.g. paracetamol) as adjunct. These relieve symptoms but do not modify disease."}
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"Multidisciplinary support", html:"Access to <b>physiotherapy</b> (exercise, fitness, joint function), <b>occupational therapy</b> (hand function, aids, splints), <b>podiatry</b> (foot problems) and psychological support; a named contact in the specialist team.", src:"NICE NG100 (multidisciplinary team)"},
+         {tone:"green", h:"Self-management and education", html:"Offer education about the condition, treatment and flare plans; QS33 statement 3 expects opportunities for self-management education throughout the disease.", src:"NICE QS33 statement 3 · NICE NG100"}
+       ]}
+     ]},
+
+    {id:"comorbid", nav:"Comorbidity", title:"Comorbidity — heart, bones, lungs, mood", sub:"RA shortens life mostly through cardiovascular disease, infection and lung disease. These are primary-care jobs.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Cardiovascular risk", html:"RA is an independent CVD risk factor. <b>QRISK3</b> includes RA as a variable, so no extra multiplier is applied. Assess CVD risk and offer statin therapy per NG238 thresholds; address smoking, BP, lipids, weight and activity. NICE indicator IND108: CVD risk assessment with an RA-adjusted tool in the preceding 15 months (ages 30–84).", src:"NICE NG238 (2023) · NICE IND108"},
+         {tone:"amber", h:"Osteoporosis", html:"RA and glucocorticoids both raise fracture risk; <b>FRAX</b> has a rheumatoid arthritis input. People on <b>high-dose glucocorticoids (≥7.5 mg/day prednisolone or equivalent for 3 months or more)</b> are at <b>very high</b> fracture risk — start bone protection at the same time as the steroid, without waiting for DXA. Calcium/vitamin D as appropriate.", src:"NOGG 2024"},
+         {tone:"amber", h:"Lung disease", html:"RA-associated interstitial lung disease and bronchiectasis occur; lung disease is on the NG100 annual review list. New persistent breathlessness or dry cough → examine, CXR, and discuss with rheumatology (also consider methotrexate pneumonitis and infection).", src:"NICE NG100 (annual review)"},
+         {tone:"blue", h:"Depression and fatigue", html:"Depression is common in RA and is part of the NG100 annual review; screen and treat. Fatigue often reflects active disease, anaemia or poor sleep — check disease control first.", src:"NICE NG100 (annual review)"},
+         {tone:"green", h:"Smoking", html:"Smoking is associated with more severe, anti-CCP-positive disease and adds to CVD risk. Stopping is one of the few changes the patient controls that helps both.", src:"NICE NG100 · NICE NG238 (2023)"}
+       ]}
+     ]},
+
+    {id:"vaccines", nav:"Vaccines &amp; infection", title:"Vaccines and infection on immunosuppression", sub:"Check the current Green Book chapter before giving any live vaccine.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Shingrix — all severely immunosuppressed adults 18+", html:"From <b>1 September 2025</b> the shingles programme includes <b>all severely immunosuppressed people aged 18 and over</b> (no upper age limit): <b>2 doses of Shingrix</b>, the second <b>8 weeks to 6 months</b> after the first. Decide on eligibility by clinical assessment, discussing with the treating specialist where needed. Ideally vaccinate before starting significant immunosuppression.", src:"UKHSA Green Book ch.28a (Aug 2025)"},
+         {tone:"red", h:"Live vaccines", html:"Live vaccines (e.g. MMR, yellow fever, oral typhoid, live zoster) are contraindicated in significant immunosuppression. The Green Book states that long-term stable low-dose steroids, alone or with low-dose non-biological oral immune modulators such as <b>methotrexate ≤25 mg/week</b>, are not considered sufficiently immunosuppressive to preclude live vaccines — but biologics, JAK inhibitors and higher doses usually are. Check with the specialist before any live vaccine.", src:"UKHSA Green Book ch.6"},
+         {tone:"blue", h:"Inactivated vaccines", html:"Annual <b>influenza</b>, <b>pneumococcal</b> vaccination and <b>COVID-19</b> boosters per the current seasonal programme for immunosuppressed people. Since early 2026 the pneumococcal vaccine for adult clinical risk groups (including immunosuppression) is <b>PCV20 (Prevenar 20)</b>, replacing PPV23 — check Green Book ch.25 for the schedule. Inactivated vaccines are safe; response may be reduced.", src:"UKHSA Green Book ch.19 · ch.25 · ch.14a · UKHSA PCV20 programme change (2026)"},
+         {tone:"amber", h:"Infection vigilance", html:"Low threshold to see and examine immunosuppressed patients with fever. Significant infection → usually withhold csDMARDs/biologics until recovered (per team advice). Consider neutropenic sepsis if on DMARDs with fever — FBC the same day.", src:"BSR 2025 csDMARD guideline"}
+       ]}
+     ]},
+
+    {id:"pregnancy", nav:"Pregnancy", title:"Pregnancy, contraception and breastfeeding", sub:"Plan pregnancies with rheumatology. The BSR 2022 guideline changed some long-held rules.",
+     blocks:[
+       {b:"table", head:["Drug","Before conception (women)","Fathers"], rows:[
+         ["<b>Methotrexate</b> (≤25 mg/week)","<b>Stop at least 1 month before conception</b>. If exposed within the month before conception, continue folic acid 5 mg daily up to 12 weeks of pregnancy. Not compatible with pregnancy","Paternal exposure to low-dose methotrexate is <b>compatible</b> — men do not need to stop"],
+         ["<b>Leflunomide</b>","Not compatible with pregnancy; stop with a <b>cholestyramine washout</b> before conception. Unplanned pregnancy on leflunomide → stop immediately, washout, and early referral","Paternal exposure compatible"],
+         ["<b>Sulfasalazine</b>","Compatible throughout pregnancy (folic acid 5 mg daily periconception and in the first trimester) and breastfeeding","Can cause reversible reduced sperm count"],
+         ["<b>Hydroxychloroquine</b>","Compatible throughout pregnancy and breastfeeding","Compatible"],
+         ["<b>Prednisolone</b>","Compatible (lowest effective dose)","Compatible"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"Correction to older teaching", html:"The traditional rule “stop methotrexate 3 months before conception in both partners” has been replaced in UK rheumatology practice by <b>1 month for women</b> and <b>no need to stop for men</b> on low-dose methotrexate. Local leaflets may still quote 3 months — follow the rheumatology team’s plan.", src:"BSR 2022 pregnancy &amp; breastfeeding guideline"},
+         {tone:"blue", h:"Contraception and planning", html:"Women of childbearing potential on methotrexate or leflunomide need effective contraception and a pre-conception discussion with rheumatology. Disease is best controlled before pregnancy; switching to pregnancy-compatible drugs is planned in advance.", src:"BSR 2022 pregnancy &amp; breastfeeding guideline"}
+       ]}
+     ]},
+
+    {id:"review", nav:"Follow-up", title:"Follow-up, annual review and safety-netting", sub:"The annual review is coordinated by rheumatology (QS33 statement 5); much of it lands in primary care.",
+     blocks:[
+       {b:"table", head:["What","When","Who / action"], rows:[
+         ["Disease activity (CRP, DAS28)","<b>Monthly</b> until target, then per specialist plan","Rheumatology; ask about flares at every GP contact"],
+         ["DMARD bloods","Per BSR 2025 schedule (3-monthly in low-risk maintenance)","GP under shared care; act on abnormal results same day"],
+         ["Annual review","<b>Every year</b>","Disease activity and damage; function (e.g. HAQ); comorbidities (hypertension, IHD, osteoporosis, depression); complications (vasculitis, cervical spine, lung, eyes); MDT cross-referral; need for surgery; impact on life and work"],
+         ["CVD risk","At least annually","QRISK3; statin per NG238; BP, lipids, smoking"],
+         ["Bone health","At steroid courses and annual review","FRAX with RA input; NOGG 2024 treatment thresholds"],
+         ["Vaccines","Annually (flu, COVID) and once (Shingrix, pneumococcal)","Practice immunisation team"],
+         ["Hydroxychloroquine eyes","Annually after 5 years (or 1 year if high risk)","Ophthalmology/optometry screening service"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same day", html:"“If you get a sore throat, fever, mouth ulcers, unexplained bruising or bleeding, or a new cough or breathlessness while on this treatment, don’t take your next dose and contact us the same day.”", src:"BSR 2025 csDMARD guideline"},
+         {tone:"amber", h:"💊 Weekly means weekly", html:"“Methotrexate is taken once a week, on the same day each week — taking it every day is dangerous. Show your card to any doctor, nurse or pharmacist.”", src:"MHRA Drug Safety Update Sept 2020"},
+         {tone:"blue", h:"🦠 Infections and vaccines", html:"“This treatment lowers your resistance to infection. Tell us early if you’re unwell, and check with us before any travel or ‘live’ vaccine.”", src:"UKHSA Green Book ch.6"},
+         {tone:"green", h:"🔁 Flares", html:"“If your joints flare, ring the rheumatology advice line — they should get back to you within a working day.”", src:"NICE QS33 statement 4"}
+       ]},
+       {b:"say", html:"Your arthritis treatment works well, but it needs regular blood tests to keep it safe — that’s the part we look after here. If you ever get a sore throat with a temperature, mouth ulcers, bruising, or a new cough or breathlessness, hold your next methotrexate dose and ring us the same day. And if you’re thinking about a pregnancy, tell us early so we can plan the medicines with your specialist."}
+     ]},
+
+    {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Where primary care most often goes wrong with RA.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Waiting for a positive RF", html:"A negative RF, negative anti-CCP or normal CRP does not exclude RA. Refer on persistent synovitis.", src:"NICE NG100 (referral)"},
+         {tone:"red", h:"Trimethoprim for a UTI on methotrexate", html:"Additive antifolate effect can cause severe marrow suppression. Choose an alternative antibiotic and check interactions.", src:"BNF (methotrexate interactions)"},
+         {tone:"amber", h:"Steroids before the specialist sees them", html:"NG100 places glucocorticoids as short-term bridging when a csDMARD is started, or for flares — not as a substitute for referral. Steroids given before assessment can settle synovitis and make the diagnosis harder; discuss with rheumatology first (local practice varies).", src:"NICE NG100 (bridging and flare glucocorticoids) · local rheumatology advice"},
+         {tone:"amber", h:"Calling a hot single joint a flare", html:"Septic arthritis is more common and more dangerous in immunosuppressed RA patients. Aspirate first.", src:"BSR/BHPR 2006 hot swollen joint guideline"},
+         {tone:"amber", h:"Quoting 3 months off methotrexate for both partners", html:"BSR 2022: stop 1 month before conception in women; men on low-dose methotrexate can continue.", src:"BSR 2022 pregnancy &amp; breastfeeding guideline"},
+         {tone:"blue", h:"Forgetting the hospital-only drugs", html:"Biologics and JAK inhibitors missing from the GP record mean missed interactions, live-vaccine errors and unrecognised infection risk.", src:"BSR 2025 csDMARD guideline (shared care agreements)"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card — the classic scenario and what the examiner is looking for.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"plain", h:"Classic scenario", html:"A 42-year-old teacher with 8 weeks of painful, stiff hands, worst for about an hour each morning, now struggling to write on the board. Swollen MCPs on both hands, positive squeeze test. She smokes, is hoping to try for a baby next year, and asks for “strong anti-inflammatories so I can get through term”. Her previous RF was negative.", src:"NICE NG100 · QS33 (scenario basis)"},
+       {tone:"plain", h:"Examiner-style checkpoints", html:"Recognises inflammatory arthritis and persistent synovitis; <b>refers urgently despite the negative RF</b> and explains why early treatment matters; offers symptom relief safely (NSAID lowest dose with PPI after risk check) without starting steroids before specialist review; sends bloods and X-rays in parallel; raises smoking cessation; addresses the pregnancy plan honestly (some first-line DMARDs need planning around conception) and signposts rheumatology pre-conception advice; safety-nets for a hot single joint; explores the impact on work.", src:"NICE NG100 · QS33 · BSR 2022 pregnancy guideline"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named source below.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG100 — Rheumatoid arthritis in adults: management (July 2018, last updated October 2020)</b><br><a href="https://www.nice.org.uk/guidance/ng100" rel="noopener">nice.org.uk/guidance/ng100</a><span class="rd"> — referral of suspected persistent synovitis, investigations (RF, anti-CCP, X-rays), csDMARD monotherapy first line, hydroxychloroquine for mild/palindromic disease, bridging and flare glucocorticoids, treat-to-target (DAS28), NSAIDs, MDT, annual review</span></li>'+
+         '<li><b>NICE QS33 — Rheumatoid arthritis in over 16s (2013, updated January 2020)</b><br><a href="https://www.nice.org.uk/guidance/qs33" rel="noopener">nice.org.uk/guidance/qs33</a><span class="rd"> — referral within 3 working days; csDMARD within 6 weeks of referral with monthly monitoring; education; advice within 1 working day for flares/side effects; annual review</span></li>'+
+         '<li><b>BSR 2025 — Guideline for the prescription and monitoring of conventional synthetic DMARDs</b> (Rheumatology 2025, doi:10.1093/rheumatology/keaf522; replaces BSR/BHPR 2017)<span class="rd"> — risk-stratified monitoring, maintenance 3-monthly bloods without risk factors, annual toxicity-risk review, hydroxychloroquine eye screening</span></li>'+
+         '<li><b>BSR 2022 — Guideline on prescribing drugs in pregnancy and breastfeeding: immunomodulatory anti-rheumatic drugs and corticosteroids</b> (Rheumatology 2023;62(4))<span class="rd"> — methotrexate stop 1 month pre-conception, paternal exposure compatible, leflunomide washout, SSZ/HCQ compatible</span></li>'+
+         '<li><b>MHRA Drug Safety Update (April 2023) — Janus kinase (JAK) inhibitors: new measures to reduce risks of major cardiovascular events, malignancy, VTE, serious infections and increased mortality</b><br><a href="https://www.gov.uk/drug-safety-update/janus-kinase-jak-inhibitors-new-measures-to-reduce-risks-of-major-cardiovascular-events-malignancy-venous-thromboembolism-serious-infections-and-increased-mortality" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — use only if no suitable alternatives in ≥65s, smokers, CV/malignancy risk</span></li>'+
+         '<li><b>MHRA Drug Safety Update (September 2020) — methotrexate once-weekly: reminder of dosing errors</b><span class="rd"> — record day of week, patient card, blister packs</span></li>'+
+         '<li><b>UKHSA Green Book</b> ch.28a (shingles, updated August 2025), ch.6 (contraindications/immunosuppression), ch.19, ch.25, ch.14a<span class="rd"> — Shingrix for severely immunosuppressed adults 18+ from September 2025; live vaccines (methotrexate ≤25 mg/week with low-dose steroid not a contraindication); inactivated vaccines; PCV20 replaced PPV23 for adult risk groups from early 2026</span></li>'+
+         '<li><b>RCOphth 2020 — Hydroxychloroquine and chloroquine retinopathy: recommendations on monitoring</b><span class="rd"> — annual screening after 5 years, or after 1 year with risk factors (&gt;5 mg/kg/day, eGFR &lt;60, tamoxifen)</span></li>'+
+         '<li><b>NPSA 2006 patient safety alert — oral methotrexate</b> (via BNF)<span class="rd"> — prescribe a single tablet strength (usually 2.5 mg)</span></li>'+
+         '<li><b>NICE NG238 — Cardiovascular disease: risk assessment and reduction, including lipid modification (2023)</b> and NICE indicator IND108<span class="rd"> — QRISK3 (includes RA), statin thresholds, annual CVD risk assessment in RA</span></li>'+
+         '<li><b>NOGG 2024 — UK clinical guideline for the prevention and treatment of osteoporosis</b><span class="rd"> — FRAX with RA input; high-dose glucocorticoids</span></li>'+
+         '<li><b>BSR/BHPR 2006 — Management of the hot swollen joint in adults</b><span class="rd"> — aspirate before antibiotics; septic arthritis until proven otherwise</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all doses; methotrexate interactions (trimethoprim, co-trimoxazole, NSAIDs)</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Rheumatoid arthritis in adults — NICE NG100 (2018, updated 2020), NICE QS33, BSR 2025 csDMARD prescribing and monitoring guideline, BSR 2022 pregnancy guideline, MHRA Drug Safety Update Sept 2020, UKHSA Green Book, NICE NG238, NOGG 2024. DMARDs are specialist-initiated; follow your local shared-care protocol for exact monitoring intervals and action thresholds, and verify all doses against the current BNF."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
