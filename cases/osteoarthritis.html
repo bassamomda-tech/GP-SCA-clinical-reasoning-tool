@@ -995,7 +995,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="sca-cp sca-only" style="margin-top:.85rem">
       <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
       <div class="sca-grid">
-        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"For classic osteoarthritis with your features, NICE guidance says we don't need an X-ray or blood tests to make the diagnosis — it's a clinical diagnosis. I won't be ordering imaging today."</div></div>
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"For classic osteoarthritis with your features, the NICE NG226 guideline says we don't need an X-ray or blood tests to make the diagnosis — it's a clinical diagnosis. I won't be ordering imaging today."</div></div>
         <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Ordering routine X-ray for typical OA — not indicated per NICE NG226</li><li>Not checking eGFR before prescribing oral NSAID in a patient with hypertension (CKD risk)</li></ul></div>
       </div>
     </div>
@@ -1141,7 +1141,7 @@ body.mode-clinic .sca-only{display:none!important}
           <li>No PPI required — key advantage over oral NSAIDs</li>
           <li>Review at 4 weeks; if inadequate → add oral NSAID + PPI</li>
         </ul>
-        <div style="font-size:11px;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--g);font-weight:600;margin-top:.5rem">Topical diclofenac does NOT require PPI co-prescription. Prescribing oral NSAID before trying topical for peripheral OA = NICE error.</div>
+        <div style="font-size:11px;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--g);font-weight:600;margin-top:.5rem">Topical diclofenac does NOT require PPI co-prescription. Prescribing oral NSAID before trying topical for knee OA departs from NICE NG226 (offer topical NSAID first for knee OA; consider for other joints).</div>
       </div>
       <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--b)">
         <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .55rem;font-size:11.5px">Step 2 — Oral NSAID + PPI (always co-prescribed)</div>
@@ -1165,8 +1165,8 @@ body.mode-clinic .sca-only{display:none!important}
       </div>
     </div>
 
-    <!-- ═══ Interactive Medication Chooser (live, NICE/BNF tiered) ═══ -->
-    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+    <!-- ═══ Interactive Medication Chooser (live, NICE NG226 / BNF tiered) ═══ -->
+    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE NG226 / BNF</div>
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="osteoarthritis"></div>
 
@@ -1192,7 +1192,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="sub-divider">7F — Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
       <div class="dc" id="dc-topnsaid">
-        <div class="dc-head"><div><div class="dc-name">Topical Diclofenac Gel</div><div class="dc-examples">Voltarol 1% gel; diclofenac diethylamine 1.16%</div><div class="dc-rec-badge" id="rec-topnsaid">✓ NICE Step 1</div></div><div class="dc-badges"><span class="dc-step step1">Step 1 (peripheral OA)</span><span class="dc-dose">Apply 3–4× daily to joint</span></div></div>
+        <div class="dc-head"><div><div class="dc-name">Topical Diclofenac Gel</div><div class="dc-examples">Voltarol 1% gel; diclofenac diethylamine 1.16%</div><div class="dc-rec-badge" id="rec-topnsaid">✓ NICE NG226 first-line</div></div><div class="dc-badges"><span class="dc-step step1">Step 1 (peripheral OA)</span><span class="dc-dose">Apply 3–4× daily to joint</span></div></div>
         <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
           <div class="dc-item">NICE NG226 first-line pharmacological choice for peripheral joint OA (knee, hand)</div>
           <div class="dc-item">Significantly less systemic absorption — fewer GI and CVD side effects than oral NSAIDs</div>
@@ -1269,7 +1269,7 @@ body.mode-clinic .sca-only{display:none!important}
       </div>
 
       <div class="dc" id="dc-caps">
-        <div class="dc-head"><div><div class="dc-name">Topical Capsaicin</div><div class="dc-examples">Axsain 0.075%; Zacin 0.025%</div><div class="dc-rec-badge" id="rec-caps">✓ NICE adjunct</div></div><div class="dc-badges"><span class="dc-step step2">Topical adjunct</span><span class="dc-dose">Apply 3–4× daily; consistent use essential</span></div></div>
+        <div class="dc-head"><div><div class="dc-name">Topical Capsaicin</div><div class="dc-examples">Axsain 0.075%; Zacin 0.025%</div><div class="dc-rec-badge" id="rec-caps">Adjunct (not recommended in NICE NG226)</div></div><div class="dc-badges"><span class="dc-step step2">Topical adjunct</span><span class="dc-dose">Apply 3–4× daily; consistent use essential</span></div></div>
         <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
           <div class="dc-item">Adjunct or alternative to topical NSAID for knee and hand OA (NICE NG226)</div>
           <div class="dc-item">Depletes substance P from sensory nerve terminals → reduces pain transmission</div>
@@ -1796,16 +1796,17 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=102"></script>
+<script src="../assets/site.js?v=104"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
 <!-- Medication Chooser engine + topic data -->
 <script src="../assets/medchooser.js"></script>
-<script src="../assets/meds/osteoarthritis.js"></script>
-<script src="../assets/topic-links.js?v=7"></script>
+<script src="../assets/meds/osteoarthritis.js?v=20260926a"></script>
+<script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
+<script src="chooser-guard.js?v=1"></script>
 </body>
 </html>

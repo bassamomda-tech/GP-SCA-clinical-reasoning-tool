@@ -176,7 +176,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   pearls:['In Parkinson’s, use domperidone (peripheral) — metoclopramide and prochlorperazine worsen it by blocking central D2.'],
   note:'Each antiemetic targets a specific emetic receptor — knowing the cause picks the drug and predicts the side-effects.',
-  links:{ case:'cases/vomiting.html', caseLabel:'Nausea & vomiting' },
+  links:{ algorithm:'tools/algorithms/nausea-vomiting-adults.html', algorithmLabel:'Nausea & vomiting' },
 },
 {
   id:'pharma-aminosalicylates', domain:'Pharmacology', class:'Gastrointestinal', icon:'🩹',
@@ -312,7 +312,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   pearls:['Treating the number without finding the bleeding source can be fatal — investigate the cause of IDA.'],
   note:'Replace the substrate for haemoglobin, but absorption physiology (alternate-day) and the underlying cause matter more than the salt chosen.',
-  links:{ patho:'patho-iron-anaemia', pathoLabel:'Iron-deficiency anaemia', case:'cases/iron-deficiency-anaemia.html', caseLabel:'IDA' },
+  links:{ patho:'patho-iron-anaemia', pathoLabel:'Iron-deficiency anaemia', case:'cases/anaemia.html', caseLabel:'IDA' },
 },
 {
   id:'pharma-b12-folate', domain:'Pharmacology', class:'Haematology', icon:'🩸',

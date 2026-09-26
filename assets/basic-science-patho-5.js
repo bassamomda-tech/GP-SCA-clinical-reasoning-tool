@@ -247,7 +247,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   implications:[
     { clue:'Avoid amoxicillin/ampicillin', why:'Causes a florid maculopapular rash in EBV.' },
-    { clue:'Advise against contact sport ~4 weeks', why:'Splenic rupture risk while enlarged.' },
+    { clue:'Advise against heavy lifting for ≥1 month and contact sport for ~8 weeks', why:'Splenic rupture risk while enlarged.' },
     { clue:'Monospot/EBV serology confirms', why:'Atypical lymphocytes on film support it.' },
   ],
   pearls:[

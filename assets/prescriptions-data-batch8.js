@@ -105,7 +105,7 @@
       { name: 'Mefloquine', dose: '250 mg', freq: 'Once weekly', route: 'PO', days: '2–3 weeks before → 4 weeks after' },
     ],
     altRegimens: [
-      { label: 'Chloroquine + proguanil', drugs: 'Only for areas without significant resistance (limited use now) — check current guidance.' },
+      { label: 'Chloroquine + proguanil', drugs: 'No longer available in the UK: proguanil (Paludrine) discontinued Dec 2023 and chloroquine (Avloclor) tablets discontinued (NaTHNaC). Where it is the country recommendation, use an alternative (atovaquone-proguanil, doxycycline or mefloquine).' },
       { label: 'Pregnancy', drugs: 'Avoid travel to endemic areas if possible; if essential, specialist travel advice (some regimens unsuitable).' },
       { label: 'Start timing (tolerance test)', drugs: 'Mefloquine started 2–3 weeks ahead allows a tolerance check; Malarone/doxycycline started 1–2 days before.' },
     ],
@@ -137,7 +137,7 @@
     category: 'Dermatology',
     eyebrow: 'Topical minoxidil ± oral finasteride',
     indication: 'Male androgenetic alopecia (bitemporal recession + vertex thinning). Largely cosmetic; reassure and discuss options. Topical minoxidil and/or oral finasteride maintain/regrow hair only while continued.',
-    contraindications: 'Finasteride: men only; sexual side effects (libido/erectile/ejaculatory — usually reversible), reduces PSA by ~50% (interpret with care/double the value), women of childbearing potential must not handle crushed tablets (teratogenic). Minoxidil: initial shedding, scalp irritation.',
+    contraindications: 'Finasteride: men only; sexual side effects (libido/erectile/ejaculatory — may persist after stopping); depression and suicidal ideation — ask about history of depression/suicidal ideation before prescribing, give the patient alert card (MHRA 2026); reduces PSA by ~50% (interpret with care/double the value), women of childbearing potential must not handle crushed tablets (teratogenic). Minoxidil: initial shedding, scalp irritation.',
     duration: 'Continuous; assess at 6–12 months',
     drugs: [
       { name: 'Minoxidil 5% topical solution/foam', dose: 'Apply to dry scalp', freq: 'OD–BD (per product)', route: 'Topical', days: 'Continuous (≥6–12 mo trial)' },
@@ -152,7 +152,8 @@
       'This is the common inherited type of balding and isn\u2019t harmful — treatment is optional and aimed at slowing loss or partial regrowth.',
       'Both minoxidil (a scalp solution) and finasteride (a tablet) only work while you keep using them; stopping reverses the gains over months.',
       'You may notice a little extra shedding in the first weeks of minoxidil — that\u2019s expected.',
-      'Finasteride can rarely affect libido or sexual function (usually reversible); it also lowers a prostate (PSA) blood test, so tell any doctor checking your PSA that you take it.',
+      'Finasteride can affect libido or sexual function in a small number of men, and this may occasionally persist after stopping; it also lowers a prostate (PSA) blood test, so tell any doctor checking your PSA that you take it.',
+      'Finasteride has been linked to low mood, depression and suicidal thoughts — stop it and seek medical advice straight away if you notice any change in mood. Read the patient alert card in the pack.',
       'Women must not handle the crushed/broken finasteride tablets, especially if pregnant.',
     ],
     followUp: 'Assess response at 6–12 months (photos help). Continue if benefit; benefit lost if stopped. Atypical/scarring/patchy loss → dermatology.',
@@ -162,7 +163,7 @@
     emisText: `Male pattern hair loss (androgenetic):
 - Cosmetic; reassure. Options (work only while continued):
   - Minoxidil 5% topical OD-BD (expect early shedding).
-  - Finasteride 1 mg OD (sexual SEs usually reversible; halves PSA — interpret x2; women not to handle crushed tabs/teratogenic).
+  - Finasteride 1 mg OD (sexual SEs may persist after stopping; depression/suicidal ideation - asked re mood history, advised to stop and seek advice if mood changes, alert card (MHRA 2026); halves PSA — interpret x2; women not to handle crushed tabs/teratogenic).
   - Combination > either alone.
 - Assess 6-12 months (photos). Atypical/scarring/patchy → dermatology.`,
     sources: [

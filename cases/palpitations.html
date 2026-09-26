@@ -748,7 +748,7 @@ body.mode-clinic .sca-only{display:none!important}
   <div class="tb-inner">
     <div class="tb-brand">
       <div class="tb-icon">PA</div>
-      <div><div class="tb-title">Palpitations · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE AF 2024 / ESC AF Guidelines 2024</div></div>
+      <div><div class="tb-title">Palpitations · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG196 AF (2021) / ESC AF Guidelines 2024</div></div>
     </div>
     <div class="mode-group">
       <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
@@ -1131,7 +1131,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Benign Ectopic Beats (VE / SVEB)</h4><p>Single thump or "missed beat" followed by a compensatory pause. Very common — present in most adults. Confirmed on Holter with symptom-rhythm correlation showing ectopic without sustained arrhythmia. Often worsened by caffeine, alcohol, fatigue. Reassurance is the primary treatment; lifestyle modification reduces frequency.</p></div>
         <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Sinus Tachycardia (secondary cause)</h4><p>Gradually building fast regular rhythm driven by a physiological trigger: anxiety, pain, fever, anaemia, dehydration, thyrotoxicosis. Identified by gradual onset and gradual offset on Holter, and by identifying and treating the underlying cause. Treat the cause, not the rhythm.</p></div>
         <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Drug/Caffeine-Induced Palpitations</h4><p>Temporal correlation between new medication or increased caffeine/alcohol intake and onset of palpitations. Often confirmed by complete resolution after drug withdrawal or lifestyle change. No ongoing investigation needed if arrhythmia excluded on ECG and symptoms fully resolve.</p></div>
-        <div class="ddx-card ddx-a"><h4>Perimenopausal Palpitations (after exclusion)</h4><p>Confirmed only after cardiac arrhythmia and thyroid disease are excluded on ECG, TFTs, and Holter. Associated with hot flushes, irregular periods, sleep disturbance. Managed with HRT (NICE-recommended for perimenopausal symptoms) alongside cardiac reassurance.</p></div>
+        <div class="ddx-card ddx-a"><h4>Perimenopausal Palpitations (after exclusion)</h4><p>Confirmed only after cardiac arrhythmia and thyroid disease are excluded on ECG, TFTs, and Holter. Associated with hot flushes, irregular periods, sleep disturbance. Managed with HRT (NICE NG23: offer HRT for menopause-associated vasomotor symptoms) alongside cardiac reassurance.</p></div>
       </div>
       <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Suspected — Refer</div>
@@ -1264,7 +1264,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dc-badges"><span class="dc-step step1">1st line rate control</span><span class="dc-dose">1.25–10 mg OD</span></div>
         </div>
         <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div>
-          <div class="dc-item">Rate control in AF — first-line per NICE AF 2024 (especially in patients with co-existing hypertension or IHD)</div>
+          <div class="dc-item">Rate control in AF — first-line strategy per NICE NG196 (2021) (especially in patients with co-existing hypertension or IHD)</div>
           <div class="dc-item">SVT prophylaxis — reduces episode frequency while awaiting cardiology referral for ablation</div>
           <div class="dc-item">Functional ectopics aggravated by sympathetic drive (anxiety, high stress, perimenopausal)</div>
           <div class="dc-item">Palpitations with hypertension, anxiety, or tremor — dual indication</div>
@@ -1525,7 +1525,7 @@ body.mode-clinic .sca-only{display:none!important}
 <!-- CLINIC + SCA SUMMARIES -->
 <div class="sum-section clinic-only" id="sum-clinic">
   <div class="sum-hdr" onclick="toggleSum('clinic')">
-    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Palpitations — Clinical Decision Framework</div><div class="sum-sub">NICE AF 2024 · ESC AF Guidelines 2024</div></div></div>
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Palpitations — Clinical Decision Framework</div><div class="sum-sub">NICE NG196 AF (2021) · ESC AF Guidelines 2024</div></div></div>
     <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
   </div>
   <div class="sum-body closed" id="sum-body-clinic">
@@ -1594,7 +1594,7 @@ body.mode-clinic .sca-only{display:none!important}
 </div>
 
 <div class="page-footer">
-  <p><strong>Palpitations · GP Clinical Reasoning Framework v2</strong> · NICE NG196 · ESC Guidelines for AF (2024) · REVERT Trial (Appelboam et al., Lancet 2015) · REDUCE-AF Trial (Voskoboinik et al., NEJM 2020) · DVLA Assessing Fitness to Drive (2024)</p>
+  <p><strong>Palpitations · GP Clinical Reasoning Framework v2</strong> · NICE NG196 (2021) · NICE NG23 Menopause (updated 2024) · ESC Guidelines for AF (2024) · REVERT Trial (Appelboam et al., Lancet 2015) · REDUCE-AF Trial (Voskoboinik et al., NEJM 2020) · DVLA Assessing Fitness to Drive (2024)</p>
   <p style="margin-top:4px">Teaching clinicians why each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence · DVLA standards should be verified at GOV.UK at the point of use</p>
 </div>
 </div>
@@ -1787,6 +1787,7 @@ function calcScore(){
   var missed = [];
   allCbs.forEach(function(cb){ if(!cb.checked){ missed.push(cb.closest('.sc-item').querySelector('.sc-item-text').textContent.trim()); } });
   var ms = document.getElementById('sc-missed-section');
+  if(!ms) return;
   if(missed.length < allCbs.length && missed.length > 0){
     ms.style.display='block';
     document.getElementById('sc-missed-list').innerHTML = missed.map(function(m){ return '<div class="sc-missed-item">- '+m.substring(0,120)+'</div>'; }).join('');
@@ -1802,13 +1803,14 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=102"></script>
+<script src="../assets/site.js?v=104"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
-<script src="../assets/topic-links.js?v=7"></script>
+<script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
+<script src="chooser-guard.js?v=1"></script>
 </body>
 </html>

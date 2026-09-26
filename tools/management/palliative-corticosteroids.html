@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Corticosteroids in Palliative Care — Protocol · Reasoning GP</title>
+<meta name="description" content="Dexamethasone in palliative care on one page: the dose for each indication from a named source, give it by 2pm, check glucose in the late afternoon, set a review date, reduce to the lowest dose that works, issue a Steroid Emergency Card, and decide what to do in the last days." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/palliative-corticosteroids.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,71 +20,195 @@
 <script>
 MG.render({
   icon:"🕊️",
-  title:"Corticosteroids in Palliative Care — Step-by-Step",
-  stemTitle:"Dexamethasone in palliative care &mdash; right indication, right dose, give early in the day, then review and taper",
-  stemSub:"A practical protocol for the many palliative uses of dexamethasone: pick the dose by indication (cord compression, raised ICP, SVCO, nerve/liver-capsule pain, bowel obstruction, anorexia), give before 2pm, cover the stomach, set a clear review date, and taper to the lowest effective dose \u2014 monitoring glucose. GMEC Palliative Care 2025 / PCF8.",
-  guideline:"GMEC 2025 · PCF8",
-  glance:[
-    {lbl:"Drug", val:"Dexamethasone", sub:"~7\u00d7 potency of prednisolone"},
-    {lbl:"Cord compression / ICP", val:"16mg/day", sub:"high dose, urgent"},
-    {lbl:"Appetite / nausea adjunct", val:"2\u20134mg/day", sub:"low dose"},
-    {lbl:"Timing", val:"Before 2pm", sub:"avoid insomnia"},
-    {lbl:"Always", val:"PPI + glucose checks", sub:"+ steroid card if prolonged"},
-    {lbl:"Then", val:"Review 5\u20137 days, taper", sub:"stop if no benefit"}
+  title:"Corticosteroids in palliative care",
+  eyebrow:"Protocol · prescribe, monitor and stop in one place",
+  stemTitle:"Dexamethasone in palliative care: a named indication, a dose from a named source, given by 2pm, with a review date, glucose checks and a Steroid Emergency Card",
+  stemSub:"Dexamethasone is used for many things in advanced illness: emergencies such as spinal cord compression, raised intracranial pressure and SVC obstruction, and symptom relief such as appetite, nausea, bowel obstruction and pain from nerve compression or a stretched liver capsule. It works fast and the harms build just as fast. Decide what you are treating and how you'll know it has worked. Give the dose in the morning, or split it with the second dose by 2pm. Check glucose in the late afternoon. Stop a trial that isn't helping, reduce one that is to the lowest effective dose, and give a Steroid Emergency Card to anyone likely to be on it for 4 weeks or more.",
+  guideline:"NICE NG234 (2023) · NICE NG243 (2024) · National Patient Safety Alert NatPSA/2020/005/NHSPS · MHRA Drug Safety Update (September 2007) · NOGG (2021, updated 2024) · JBDS 08 (2023) · Scottish Palliative Care Guidelines (2025)",
+  meta:[
+    {t:"NICE NG234 spinal metastases and MSCC (2023)"},
+    {t:"NICE NG243 adrenal insufficiency (2024) · NatPSA 2020 Steroid Emergency Card"},
+    {t:"Scottish Palliative Care Guidelines 2025 · BNF"},
+    {t:"MHRA DSU Sep 2007 · NOGG 2024 · JBDS 08 (2023)"},
+    {t:"No NG12 criterion applies", tone:"tw"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Indication", title:"Choose the dose by indication",
-      blocks:[
-        {b:"table", head:["Indication","Typical dexamethasone dose"], rows:[
-          ["Spinal cord / cauda equina compression","16mg/day (with urgent MRI + oncology) \u2014 see MSCC pathway"],
-          ["Raised intracranial pressure / brain mets","8\u201316mg/day"],
-          ["Superior vena cava obstruction","16mg/day (+ urgent oncology) \u2014 see SVCO pathway"],
-          ["Nerve compression / liver-capsule pain","4\u20138mg/day (adjuvant analgesic)"],
-          ["Malignant bowel obstruction","6.6\u201316mg/day (oral or SC)"],
-          ["Anorexia / poor appetite / nausea adjunct","2\u20134mg/day (short courses)"]
-        ]},
-        {b:"warn", html:"<b>Dexamethasone \u2248 7\u00d7 the glucocorticoid potency of prednisolone</b> (2mg dexamethasone \u2248 15mg prednisolone). Confirm the indication justifies steroids \u2014 the benefit must outweigh the considerable side-effect burden."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug · core", title:"Steroid-care measures", blocks:[{b:"tiles", v:"life", items:[{t:"🕘 Morning dosing", html:"Give once daily in the morning to reduce insomnia; review need regularly and stop if no benefit."},{t:"🩸 Monitor glucose", html:"Watch for steroid-induced hyperglycaemia; check glucose, especially in diabetes."},{t:"🦠 Infection/gastric care", html:"Be alert to masked infection and gastric irritation; gastroprotection if also on NSAID."}]},{b:"why", html:"Simple steroid-care measures \u2014 morning dosing, glucose monitoring, infection vigilance and a clear review/stop point \u2014 prevent avoidable harm from palliative steroids."}]},
-    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 start safely", title:"Start with the safety wrap-around",
-      blocks:[
-        {b:"kv", rows:[
-          ["Timing","Give the whole dose <b>before 2pm</b> (ideally morning) to avoid steroid-induced insomnia/agitation."],
-          ["Gastroprotection","Co-prescribe a <b>PPI</b> (esp. with NSAID/anticoagulant/antiplatelet)."],
-          ["Glucose","Check capillary glucose \u2014 steroids commonly cause/worsen hyperglycaemia (monitor, esp. in diabetes)."],
-          ["Route","Oral; or SC/CSCI (dexamethasone) if unable to swallow (note SC dose, e.g. 3.3mg/mL injection)."],
-          ["Document","Set a clear <b>review date</b> and the planned duration at the outset; issue a steroid card if prolonged."]
-        ]}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Step 2 \u00b7 review & taper", title:"Review at 5\u20137 days, then taper",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"3a", title:"Review benefit at 5\u20137 days", when:"the decision point",
-           html:"<b>If no clear benefit by 5\u20137 days \u2192 stop</b> (taper not needed if &lt;1\u20132 weeks &amp; recent start). Don't continue an ineffective steroid."},
-          {step:"3b", title:"If benefit \u2192 reduce to lowest effective dose", when:"taper",
-           fromLabel:"working",
-           html:"Reduce gradually as symptoms allow to the lowest dose that maintains benefit; the right maintenance dose is the smallest that works."},
-          {step:"3c", title:"Taper to stop if on >3 weeks", when:"avoid adrenal crisis",
-           fromLabel:"prolonged course",
-           html:"Don't stop abruptly after &gt;3 weeks (HPA suppression) \u2014 taper. During intercurrent illness, don't omit (sick-day steroid rules)."}
-        ]},
-        {b:"warn", html:"Side effects: hyperglycaemia, insomnia/agitation, oral candidiasis, proximal myopathy, mood change, fluid retention, infection risk, GI ulceration. Re-weigh benefit vs harm at every review."}
-      ]},
-    {t:"node", d:"safety", n:"5", tag:"Safety-net · anticipatory", title:"When to reassess / escalate", blocks:[{b:"tiles", v:"safety", items:[{t:"🩸 Hyperglycaemia", html:"Symptomatic high glucose → adjust/treat; involve the team."},{t:"🛑 No benefit", html:"No symptomatic benefit after a defined trial → taper and stop."},{t:"💊 Abrupt-stop risk", html:"Avoid abrupt withdrawal after prolonged use \u2014 risk of adrenal insufficiency."}]}]},
-    {t:"node", d:"refer", n:"6", tag:"Refer / advice", title:"When to seek advice",
-      arrow:"emergency indications & uncertainty",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Oncological emergency", html:"Cord compression, SVCO, raised ICP \u2014 high-dose <b>dexamethasone (e.g. 16 mg daily)</b> is a holding measure; arrange urgent oncology/radiotherapy (see relevant pathways)."},
-          {t:"Specialist palliative care", html:"Uncertain indication, steroid-related complications, or difficulty tapering."},
-          {t:"Diabetes", html:"Steroid-induced hyperglycaemia needing insulin/oral agent adjustment."}
-        ]},
-        {b:"say", html:"This steroid can quickly reduce swelling and ease symptoms, but it has side effects, so we use the lowest dose that helps, take it in the morning, protect your stomach, keep an eye on your sugar levels, and review within a week to decide whether to continue or come off it."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#redflags'><b>Red flags</b><small>MSCC, ICP, SVCO, crisis</small></a><a href='#indications'><b>Dose by indication</b><small>Named source for each</small></a><a href='#start'><b>Start safely</b><small>By 2pm, glucose, card</small></a><a href='#taper'><b>Review and reduce</b><small>Stop what isn't working</small></a><a href='#refer'><b>Refer</b><small>Who and when</small></a></div>",
+  quickSub:"The six points that change what you do. Each traces to a source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Suspected cord compression: 16 mg now", html:"For suspected MSCC, give <b>dexamethasone 16 mg orally</b> (or the parenteral equivalent) as soon as possible, and arrange same-day assessment and MRI through the acute oncology or MSCC coordinator. Continue 16 mg daily until surgery or radiotherapy, then reduce gradually to stop (NICE NG234)."},
+    {tone:"amber", h:"Trial, then review", html:"Each course should have a named target and a review date. If there is no benefit, stop. If it helps, reduce to the lowest dose that keeps the benefit. The Scottish guideline suggests halving every 3 to 5 days down to 2 mg daily, then reducing more slowly."},
+    {tone:"cream", h:"By 2pm", html:"Give a single dose in the morning, or split it with the second dose <b>no later than 2pm</b>, to reduce insomnia and agitation (Scottish Palliative Care Guidelines 2025)."},
+    {tone:"blue", h:"Check glucose in the late afternoon", html:"A morning dose causes glucose to peak in the <b>late afternoon or early evening</b>, so check then. If capillary glucose is <b>above 8 mmol/L</b>, the Scottish guideline points to the Diabetes UK End of Life Guidance for Diabetes Care."},
+    {tone:"amber", h:"Steroid Emergency Card", html:"Give an NHS Steroid Emergency Card to anyone taking the equivalent of <b>prednisolone 5 mg or more daily for 4 weeks or more</b> (NatPSA/2020/005/NHSPS). For dexamethasone that means <b>750 micrograms a day or more</b>, which covers almost every palliative course. Teach sick-day rules (NICE NG243)."},
+    {tone:"blue", h:"Equivalence and route", html:"Dexamethasone 750 micrograms is about equal in anti-inflammatory effect to prednisolone 5 mg (BNF), about 6 to 7 times as potent. Oral dexamethasone 4 mg is taken as roughly equal to <b>3.3 mg SC</b> (Scottish guideline)."}
+  ],
+  pathwaySub:"Five steps for every course. The red step decides whether this is an emergency.",
+  pathway:[
+    {title:"Is this an oncological emergency?", html:"New back pain with neurological symptoms (MSCC), headache with vomiting or new focal signs (raised ICP), swelling of the face and arms with breathlessness (SVCO). Give the emergency dose and phone acute oncology the same day, if that fits the patient's goals.", alert:true},
+    {title:"Name the target and the dose", html:"What symptom are you treating, which dose does the source give, and how will you and the patient know it has worked?"},
+    {title:"Start with the safety bundle", html:"Morning dosing (last dose by 2pm), gastroprotection if at risk, a baseline and late-afternoon glucose, an oral thrush check, a Steroid Emergency Card if the course may reach 4 weeks, and a written review date."},
+    {title:"Review within a week", html:"No benefit: stop (short courses can usually stop abruptly). Benefit: reduce to the lowest effective dose. Re-weigh benefit against harm at every review."},
+    {title:"Plan the end", html:"A tapering plan for longer courses, sick-day rules, and a decision in advance about what happens to the steroid in the last days of life."}
+  ],
+  sections:[
+
+    {id:"redflags", nav:"Red flags", title:"Red flags: when steroids are part of an emergency, or the cause of one", sub:"Some presentations need a steroid today. Others are complications of steroids already prescribed.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Suspected metastatic spinal cord compression", html:"Back or neck pain in someone with cancer, with any neurological symptoms (limb weakness, sensory change, bladder or bowel dysfunction). Offer <b>dexamethasone 16 mg orally</b> as soon as possible, arrange immediate discussion with the MSCC coordinator and MRI within 24 hours. If imaging then rules out MSCC, stop the dexamethasone. See <a href='mscc.html'>MSCC</a>.", src:"NICE NG234 (2023)"},
+         {tone:"red", h:"Raised intracranial pressure", html:"Headache worse in the morning or on lying down, vomiting, drowsiness, new focal signs or seizures in someone with brain tumour or metastases. The Scottish guideline gives <b>dexamethasone 8 to 16 mg immediately</b>, then 4 to 8 mg twice daily (second dose by 2pm), with gastroprotection. Arrange urgent oncology discussion and CT if appropriate.", src:"Scottish Palliative Care Guidelines 2025: Raised intracranial pressure"},
+         {tone:"red", h:"Superior vena cava obstruction", html:"Swelling of the face, neck and arms, distended chest veins, breathlessness or stridor. The Scottish guideline gives <b>dexamethasone 16 mg immediately</b>, then 8 mg twice daily (second dose by 2pm), with gastroprotection, while acute oncology arranges stenting or radiotherapy. See <a href='svco.html'>SVCO</a>.", src:"Scottish Palliative Care Guidelines 2025: Superior vena cava obstruction"},
+         {tone:"red", h:"Adrenal crisis", html:"Vomiting, collapse, hypotension, confusion or severe abdominal pain in someone on long-term steroids who has missed doses or has an intercurrent illness. Give <b>hydrocortisone 100 mg IM or IV immediately</b> and arrange emergency admission if that fits the goals of care.", src:"NICE NG243 (2024)"},
+         {tone:"amber", h:"Very high glucose or new thirst and polyuria", html:"Steroid-induced hyperglycaemia can progress to a hyperosmolar state, especially in someone with diabetes who is also dehydrated. Check capillary glucose and ketones. Seek same-day advice if the patient is unwell, and adjust treatment in line with the goals of care.", src:"JBDS 08 (2023) · Scottish Palliative Care Guidelines 2025: Dexamethasone"},
+         {tone:"amber", h:"New psychiatric symptoms", html:"Insomnia, agitation, euphoria, low mood, suicidal thoughts or psychosis, often within days of starting. Warn patients and carers in advance. Take particular care if there is a personal or family history of severe mood disorder. Reduce or stop the steroid where possible. See <a href='palliative-anxiety-depression.html'>palliative anxiety and depression</a>.", src:"MHRA Drug Safety Update, September 2007"},
+         {tone:"amber", h:"Masked infection or perforation", html:"Steroids blunt fever, pain and peritonism. A patient on dexamethasone may have serious sepsis or a perforated viscus with few signs. Keep a low threshold for assessment if they are unexpectedly unwell."}
+       ]},
+       {b:"why", html:"Dexamethasone reduces the oedema around a tumour, which is why it helps quickly in cord compression, raised intracranial pressure, SVC obstruction and bowel obstruction. It buys time for definitive treatment. It doesn't replace that treatment. A delay in MRI or oncology discussion while the steroid 'seems to be working' can cost the patient the ability to walk."}
+     ]},
+
+    {id:"indications", nav:"Dose by indication", title:"Dose by indication, and where each dose comes from", sub:"Where no guideline gives a figure, the dose is 'per BNF' or on specialist advice. Don't use a generic range.",
+     blocks:[
+       {b:"table", head:["Indication","Dexamethasone dose","Source"], rows:[
+         ["<b>Suspected or confirmed MSCC</b>","16 mg orally (or parenteral equivalent) as soon as possible, then 16 mg daily while awaiting surgery or radiotherapy; reduce gradually after it starts, and stop. Stop if MSCC is ruled out.","NICE NG234 (2023)"],
+         ["<b>Raised intracranial pressure</b>","8 to 16 mg immediately, then 4 to 8 mg twice daily (second dose by 2pm). Stop promptly if no benefit; reduce gradually in responders.","Scottish Palliative Care Guidelines 2025"],
+         ["<b>SVC obstruction</b>","16 mg immediately, then 8 mg twice daily from the next day (second dose by 2pm). Stop promptly if no benefit; reduce gradually in responders.","Scottish Palliative Care Guidelines 2025"],
+         ["<b>Malignant bowel obstruction</b>","6 to 16 mg parenterally for 4 to 7 days may reverse partial obstruction. Stop if there is no response.","Scottish Palliative Care Guidelines 2025"],
+         ["<b>Anorexia</b>","4 mg in the morning. The effect on appetite tends to fade after 3 to 4 weeks, so use it for a defined period.","Scottish Palliative Care Guidelines 2025: Anorexia/cachexia"],
+         ["<b>Refractory nausea; adjuvant for nerve compression or liver capsule pain</b>","Listed as indications. Dose per BNF or specialist palliative advice.","Scottish Palliative Care Guidelines 2025 · BNF"]
+       ]},
+       {b:"cards", items:[
+         {tone:"blue", h:"How strong is dexamethasone?", html:"In anti-inflammatory effect, dexamethasone 750 micrograms is roughly equal to prednisolone 5 mg or hydrocortisone 20 mg. So 4 mg dexamethasone is about 27 mg prednisolone, and 16 mg is over 100 mg prednisolone. It has little mineralocorticoid effect, so it causes less fluid retention than the same anti-inflammatory dose of prednisolone.", src:"BNF: glucocorticoid therapy, equivalent anti-inflammatory doses"},
+         {tone:"blue", h:"Subcutaneous dexamethasone", html:"If the patient can't swallow, dexamethasone can be given SC once or twice daily. For practical purposes the Scottish guideline treats <b>4 mg oral as about equal to 3.3 mg SC</b>, because oral bioavailability is around 80%. Check the injection strength before converting.", src:"Scottish Palliative Care Guidelines 2025: Dexamethasone"},
+         {tone:"cream", h:"Is there a better option?", html:"Appetite, fatigue and nausea often have other treatments with fewer long-term harms. Consider the prognosis: a steroid for appetite makes more sense for a few weeks of better quality of life than for several months, when harms build up. See <a href='palliative-nausea-vomiting.html'>palliative nausea</a> and <a href='palliative-pain.html'>palliative pain</a>.", src:"Scottish Palliative Care Guidelines 2025: Anorexia/cachexia"}
+       ]}
+     ]},
+
+    {id:"start", nav:"Start safely", title:"Starting safely: the bundle for every course", sub:"Set up these six things at the start, when it's easiest.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Timing","Single morning dose, or two doses with the second <b>no later than 2pm</b>. Dexamethasone lasts long enough for once-daily dosing."],
+         ["Gastroprotection","Consider a PPI if the patient also takes aspirin, an NSAID or an anticoagulant, or has had a GI bleed. The Scottish ICP and SVCO guidelines pair high-dose steroid courses with gastroprotection (usually a PPI)."],
+         ["Glucose","Baseline glucose, then capillary glucose in the late afternoon or early evening while on treatment, especially with known diabetes."],
+         ["Mouth","Look for oral candida at every review. Treat it promptly, as it spoils eating and taste."],
+         ["Steroid Emergency Card","If the course may reach 4 weeks or more at 750 micrograms of dexamethasone daily or above. Explain sick-day rules."],
+         ["Documentation","The indication, target symptom, planned review date and planned duration, in the notes and on the prescription or care plan so out-of-hours clinicians can see it."]
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"Morning dosing", html:"Doses should not be taken after 2pm, to reduce sleep disturbance. If a higher dose is needed in divided doses, give the second one by 2pm.", src:"Scottish Palliative Care Guidelines 2025: Dexamethasone"},
+         {tone:"cream", h:"Gastroprotection for the patient at risk", html:"Consider prophylactic gastroprotection in patients also taking aspirin or NSAIDs, or who have had a GI bleed. Steroid courses for raised ICP and SVCO are given with gastroprotection.", src:"Scottish Palliative Care Guidelines 2025: Dexamethasone; Raised ICP; SVCO"},
+         {tone:"amber", h:"Warn about mood and sleep", html:"Tell patients and carers that steroids can cause sleeplessness, agitation, low or high mood and, rarely, psychosis, usually within days or weeks of starting or after dose changes. Ask them to report it.", src:"MHRA Drug Safety Update, September 2007"}
+       ]},
+       {b:"say", html:"This steroid can reduce swelling around the tumour and often helps quickly. But it has side effects, so we'll use it as a trial: take it in the morning, we'll check your sugar in the late afternoon, and we'll review in a few days. If it isn't helping we'll stop it. If it is, we'll bring the dose down to the lowest amount that still works. Please carry this card, and don't stop it suddenly without talking to us."}
+     ]},
+
+    {id:"glucose", nav:"Glucose", title:"Steroid-induced hyperglycaemia", sub:"Common, predictable, and easy to miss if you check fasting glucose only.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"When to check", html:"Once-daily morning dexamethasone produces a rise in glucose in the <b>late afternoon or early evening</b>. Check capillary glucose then. A fasting check can be normal.", src:"Scottish Palliative Care Guidelines 2025: Dexamethasone"},
+         {tone:"blue", h:"What level prompts action", html:"If capillary glucose is <b>above 8 mmol/L</b>, the Scottish guideline refers to the Diabetes UK End of Life Guidance for Diabetes Care for management.", src:"Scottish Palliative Care Guidelines 2025: Dexamethasone"},
+         {tone:"cream", h:"Targets at the end of life", html:"The end-of-life diabetes guidance relaxes targets (roughly 6 to 15 mmol/L), aims to avoid both hypoglycaemia and symptomatic hyperglycaemia, and keeps monitoring and injections to the minimum. A morning sulfonylurea or morning insulin fits the steroid pattern. Doses per the guidance and BNF.", src:"Diabetes UK / TREND End of Life Guidance for Diabetes Care (2021, updated 2024), as referenced by the Scottish Palliative Care Guidelines 2025"},
+         {tone:"cream", h:"In hospital or hospice", html:"The JBDS guideline gives detailed algorithms for monitoring and treating steroid-induced hyperglycaemia in inpatients, including when to start gliclazide or insulin and how to reduce them as the steroid is weaned.", src:"JBDS 08: Management of hyperglycaemia and steroid (glucocorticoid) therapy (revised January 2023)"},
+         {tone:"amber", h:"As the steroid comes down", html:"Glucose falls as the steroid dose falls. Reduce any glucose-lowering treatment at the same time to avoid hypoglycaemia, especially when eating is poor.", src:"JBDS 08 (2023)"}
+       ]},
+       {b:"why", html:"Glucocorticoids raise glucose mainly after meals and for several hours after the dose. A morning dose therefore produces a peak in the afternoon and evening and a near-normal fasting glucose by the next morning. That's why a fasting test misses it, and why treatment that acts in the daytime (a morning sulfonylurea or morning intermediate-acting insulin) fits the pattern. See <a href='diabetes-unwell-insulin.html'>diabetes when unwell</a>."}
+     ]},
+
+    {id:"taper", nav:"Review and reduce", title:"Review, reduce and stop", sub:"Decide at the start how long the trial will be, and hold to it.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"Review the benefit within about a week", when:"decision point", tone:"cream",
+          html:"Is the target symptom better? If there's no clear benefit, stop. A trial that hasn't worked in a week is unlikely to work later, and continuing it only adds harm."},
+         {step:"2", title:"No benefit, short course: stop", when:"under 3 weeks", tone:"green", fromLabel:"not working",
+          html:"The Scottish guideline allows dexamethasone to be <b>stopped abruptly</b> if it has been taken for <b>less than 3 weeks at no more than 6 mg daily</b> and relapse is unlikely, unless the patient has had repeated courses or stopped long-term steroids within the past year."},
+         {step:"3", title:"Benefit: reduce to the lowest effective dose", when:"working", tone:"cream", fromLabel:"helpful",
+          html:"Reduce fairly quickly at first, <b>for example by 50% every 3 to 5 days down to 2 mg daily</b>, then more slowly as the physiological range approaches, <b>for example 500 micrograms every 5 to 7 days</b> (Scottish guideline). If symptoms return, go back to the previous dose."},
+         {step:"4", title:"Long courses", when:"over 3 weeks or high dose", tone:"amber", fromLabel:"prolonged",
+          html:"The adrenal axis may be suppressed. Taper under supervision. NICE NG243 advises a slower taper, once physiological doses are reached, for people who have taken glucocorticoids for more than 12 weeks. If withdrawal symptoms or signs of adrenal insufficiency appear, seek endocrine advice."}
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"After MSCC treatment", html:"After surgery or once radiotherapy starts, reduce the 16 mg dose gradually until stopped. If dexamethasone was given before imaging and MSCC was ruled out, stop it without tapering.", src:"NICE NG234 (2023)"},
+         {tone:"amber", h:"Don't stop suddenly by accident", html:"Admission, vomiting, or loss of the oral route can all cause an unplanned stop. Put the steroid on the care plan and the anticipatory prescription so out-of-hours teams know it matters.", src:"NatPSA/2020/005/NHSPS · NICE NG243 (2024)"}
+       ]}
+     ]},
+
+    {id:"adrenal", nav:"Emergency card", title:"Adrenal suppression, the Steroid Emergency Card and sick-day rules", sub:"Almost every palliative dexamethasone course is at a dose that suppresses the adrenal glands.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Who gets a card", html:"Everyone taking long-term glucocorticoids at a dose equivalent to <b>prednisolone 5 mg or more daily for 4 weeks or more</b>, by any route. For dexamethasone the equivalent is 750 micrograms daily. The card tells emergency clinicians to give hydrocortisone promptly.", src:"National Patient Safety Alert NatPSA/2020/005/NHSPS (August 2020) · NICE NG243 (2024)"},
+         {tone:"amber", h:"Sick-day rules and emergency plan", html:"People at risk of adrenal insufficiency, and their carers, should be told about sick-day rules and what to do in a crisis, and offered a steroid card. If vomiting or diarrhoea prevents oral absorption, they need parenteral hydrocortisone.", src:"NICE NG243 (2024)"},
+         {tone:"red", h:"Suspected adrenal crisis", html:"Give <b>hydrocortisone 100 mg IM or IV immediately</b>, then seek emergency care. If the patient is severely unwell, the guideline continues with 200 mg IV over 24 hours or 50 mg IM or IV 4 times a day.", src:"NICE NG243 (2024)"},
+         {tone:"blue", h:"Bone health if the prognosis is long", html:"For someone likely to be on the equivalent of prednisolone 7.5 mg a day or more (over 1 mg dexamethasone) for 3 months or more, NOGG advises starting bone protection at the same time as the steroid in higher-risk people. In most palliative care this is not relevant, but it may be for longer-term brain tumour or myeloma patients. See <a href='osteoporosis.html'>osteoporosis</a>.", src:"NOGG (2021, updated 2024)"}
+       ]},
+       {b:"why", html:"Exogenous glucocorticoid switches off the body's own cortisol production. On the steroid, the patient is covered. Stop it suddenly, or add a stress such as infection, vomiting or surgery, and they may have too little cortisol. The national alert followed deaths from adrenal crisis in people whose steroid dependence wasn't recognised. The card exists so that the paramedic or emergency doctor recognises the risk quickly."}
+     ]},
+
+    {id:"sideeffects", nav:"Side effects", title:"Side effects to look for at every review", sub:"Most side effects depend on dose and duration. The lowest dose for the shortest time is the best prevention.",
+     blocks:[
+       {b:"table", head:["Problem","What to look for","What to do"], rows:[
+         ["Hyperglycaemia","Thirst, polyuria, tiredness; late-afternoon glucose above 8 mmol/L","Treat per the end-of-life diabetes guidance; reduce the steroid if possible"],
+         ["Insomnia and mood change","Poor sleep, agitation, euphoria, low mood, psychosis","Move all doses before 2pm; reduce the dose; seek advice if severe"],
+         ["Oral candida","White plaques, sore mouth, altered taste","Treat promptly; check at every review"],
+         ["Proximal myopathy","Difficulty standing from a chair or climbing stairs","Reduce to the lowest effective dose; it is a common reason for falls"],
+         ["Dyspepsia and GI bleeding","Indigestion, melaena, especially with NSAIDs or anticoagulants","Gastroprotection in those at risk; review the NSAID"],
+         ["Infection","Fever may be absent; unexpected deterioration","Low threshold to assess"],
+         ["Fluid retention and weight gain","Oedema, moon face","Explain; review dose"],
+         ["Skin","Thinning, bruising, poor wound healing","Explain; protect pressure areas"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"Psychiatric reactions", html:"All systemic steroids can cause affective, psychotic and behavioural reactions, sleep disturbance and cognitive changes. They can also occur during or soon after dose reduction.", src:"MHRA Drug Safety Update, September 2007"},
+         {tone:"blue", h:"Interactions", html:"Enzyme-inducing antiepileptics (phenytoin, carbamazepine) reduce dexamethasone levels, which matters in patients with brain tumours. Dexamethasone can also alter levels of other drugs. Check the BNF interactions for each new drug.", src:"BNF: dexamethasone interactions"}
+       ]}
+     ]},
+
+    {id:"lastdays", nav:"Last days", title:"Steroids in the last days of life", sub:"Decide in advance, with the patient and family if possible.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Stop or continue?", html:"When a patient is dying and can no longer swallow, many steroids can simply be stopped, since adrenal suppression is no longer the main concern. Continue it, SC, where it is controlling a symptom that would otherwise be distressing, such as headache or seizures from a brain tumour, or severe pain."},
+         {tone:"cream", h:"Giving it SC", html:"Dexamethasone lasts long enough to be given as a once- or twice-daily SC injection, converting at about 4 mg oral to 3.3 mg SC.", src:"Scottish Palliative Care Guidelines 2025: Dexamethasone"},
+         {tone:"cream", h:"Review every medicine", html:"In the last days, review medicines, stop those that aren't helping, and plan individualised anticipatory medicines for the symptoms likely to occur.", src:"NICE NG31 (2015)"}
+       ]},
+       {b:"warn", html:"If you stop dexamethasone in someone with a brain tumour, plan for the return of headache, vomiting or seizures. Put anticipatory medicines for seizures (for example midazolam) in place and tell the family what might happen."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: who, how quickly, and for what", sub:"The steroid is often started in primary care. The definitive treatment usually isn't.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Immediately: MSCC coordinator or acute oncology", html:"Suspected spinal cord compression: dexamethasone 16 mg, MRI within 24 hours, and a plan for surgery or radiotherapy.", src:"NICE NG234 (2023)"},
+         {tone:"red", h:"Same day: acute oncology", html:"Suspected SVC obstruction or raised intracranial pressure, where active treatment fits the patient's goals.", src:"Scottish Palliative Care Guidelines 2025: SVCO; Raised ICP"},
+         {tone:"red", h:"Emergency: suspected adrenal crisis", html:"Hydrocortisone 100 mg IM or IV, then emergency admission if appropriate.", src:"NICE NG243 (2024)"},
+         {tone:"cream", h:"Specialist palliative care", html:"Uncertain indication, difficulty weaning, steroid-related complications, psychiatric side effects, or decisions about steroids in the last days.", src:"Scottish Palliative Care Guidelines 2025: Dexamethasone"},
+         {tone:"cream", h:"Diabetes team", html:"Hyperglycaemia that is not controlled by simple measures, or a patient on insulin whose steroid dose is changing.", src:"Diabetes UK / TREND End of Life Guidance for Diabetes Care (2021, updated 2024) · JBDS 08 (2023)"},
+         {tone:"blue", h:"NG12: no criterion applies", html:"Steroid use is not a suspected-cancer criterion in NICE NG12 (updated April 2026). The emergencies above have their own pathways (NG234 for MSCC; acute oncology for SVCO and raised ICP).", src:"NICE NG12 (updated April 2026)"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice case. The <a href='../../cases/palliative-care.html'>palliative care casebook</a> has the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Scenario", html:"A 71-year-old woman with metastatic lung cancer and type 2 diabetes was started on dexamethasone 8 mg daily by the oncology team 5 weeks ago 'for appetite and energy'. She now cannot get out of a chair easily, is sleeping badly, has a sore mouth, and her daughter reports glucose readings of 18 in the evening. Her daughter asks whether she should just stop the tablets.", src:"Practice scenario, built on the Scottish Palliative Care Guidelines 2025, NatPSA 2020 and NICE NG243"},
+       {tone:"cream", h:"What the examiner is looking for", html:"Checks what the steroid was for and whether it is still helping. Recognises <b>proximal myopathy, insomnia, oral candida and steroid hyperglycaemia</b>. Explains why she <b>must not stop suddenly</b> after 5 weeks, and gives a Steroid Emergency Card and sick-day rules. Plans a <b>taper</b> (halving to 2 mg, then slower) and moves the dose to the morning. Treats thrush. Manages glucose using the end-of-life targets and checks in the late afternoon. Asks about the benefit of the steroid, discusses goals of care, and liaises with oncology or palliative care.", src:"Scottish Palliative Care Guidelines 2025 · NatPSA/2020/005/NHSPS · NICE NG243"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Primary sources only. Doses are from the named guideline. Where none gives a figure, the page says 'per BNF'.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG234 — Spinal metastases and metastatic spinal cord compression (2023)</b><br><a href="https://www.nice.org.uk/guidance/ng234" rel="noopener">nice.org.uk/guidance/ng234</a><span class="rd"> — dexamethasone 16 mg orally (or parenteral equivalent) as soon as possible, then 16 mg daily while awaiting surgery or radiotherapy; reduce gradually after treatment starts; stop if MSCC is ruled out</span></li>'+
+         '<li><b>NICE NG243 — Adrenal insufficiency: identification and management (2024)</b><br><a href="https://www.nice.org.uk/guidance/ng243" rel="noopener">nice.org.uk/guidance/ng243</a><span class="rd"> — steroid cards and sick-day information for people on exogenous glucocorticoids at risk; parenteral hydrocortisone if oral absorption fails; hydrocortisone 100 mg IM or IV for adrenal crisis; slower taper after more than 12 weeks</span></li>'+
+         '<li><b>National Patient Safety Alert NatPSA/2020/005/NHSPS — Steroid Emergency Card to support early recognition and treatment of adrenal crisis in adults (August 2020)</b><br><a href="https://www.england.nhs.uk/publication/national-patient-safety-alert-steroid-emergency-card-to-support-early-recognition-and-treatment-of-adrenal-crisis-in-adults/" rel="noopener">england.nhs.uk</a><span class="rd"> — card for prednisolone 5 mg daily or equivalent for 4 weeks or more, by any route</span></li>'+
+         '<li><b>Scottish Palliative Care Guidelines (Healthcare Improvement Scotland, 2025)</b>: Dexamethasone medicines information; Raised intracranial pressure; Superior vena cava obstruction; Bowel obstruction; Anorexia/cachexia<br><a href="https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/" rel="noopener">rightdecisions.scot.nhs.uk</a><span class="rd"> — a UK national guideline. No doses after 2pm; late-afternoon glucose checks, with CBG above 8 mmol/L referring to the end-of-life diabetes guidance; gastroprotection if also on aspirin or NSAIDs or after a GI bleed; 4 mg oral about equal to 3.3 mg SC; abrupt stop allowed if under 3 weeks at 6 mg or less; reduce by 50% every 3 to 5 days to 2 mg, then 500 micrograms every 5 to 7 days; raised ICP 8 to 16 mg then 4 to 8 mg twice daily; SVCO 16 mg then 8 mg twice daily; bowel obstruction 6 to 16 mg parenterally for 4 to 7 days; anorexia 4 mg in the morning, effect fading after 3 to 4 weeks</span></li>'+
+         '<li><b>MHRA Drug Safety Update, September 2007</b> — Systemic corticosteroids: psychiatric side effects<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a></li>'+
+         '<li><b>Joint British Diabetes Societies for Inpatient Care, JBDS 08 — Management of hyperglycaemia and steroid (glucocorticoid) therapy (revised January 2023)</b><br><a href="https://abcd.care/resource/current/jbds-08-management-hyperglycaemia-and-steroid-glucocorticoid-therapy" rel="noopener">abcd.care</a></li>'+
+         '<li><b>Diabetes UK / TREND — End of Life Guidance for Diabetes Care (4th edition 2021, updated 2024)</b><br><a href="https://www.diabetes.org.uk" rel="noopener">diabetes.org.uk</a><span class="rd"> — relaxed targets, minimal monitoring, steroid-induced hyperglycaemia at the end of life</span></li>'+
+         '<li><b>NOGG — UK clinical guideline for the prevention and treatment of osteoporosis (2021, updated 2024)</b><br><a href="https://www.nogg.org.uk" rel="noopener">nogg.org.uk</a><span class="rd"> — start bone protection with glucocorticoids in high-risk people expected to take 7.5 mg prednisolone or equivalent daily for 3 months or more</span></li>'+
+         '<li><b>NICE NG31 — Care of dying adults in the last days of life (2015)</b><br><a href="https://www.nice.org.uk/guidance/ng31" rel="noopener">nice.org.uk/guidance/ng31</a></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — equivalent anti-inflammatory doses (dexamethasone 750 micrograms about equal to prednisolone 5 mg); dexamethasone interactions; doses for indications that no guideline quantifies</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion applies to this topic</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Corticosteroids in palliative care: NICE NG234 (2023), NG243 (2024) and NG31 (2015), National Patient Safety Alert NatPSA/2020/005/NHSPS, MHRA Drug Safety Update (September 2007), JBDS 08 (2023), the Diabetes UK / TREND end-of-life diabetes guidance, NOGG and the Scottish Palliative Care Guidelines (2025). Check all doses against the current BNF and local palliative care guidance before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

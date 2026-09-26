@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gonorrhoea — Protocol · Reasoning GP</title>
+<meta name="description" content="Gonorrhoea in primary care, rebuilt on BASHH 2025: culture before treatment, ceftriaxone 1 g IM as the single first-line treatment, when a test of cure is still needed, partner notification look-backs, rising ceftriaxone resistance in England, and the 4CMenB vaccine programme that began in August 2025." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/gonorrhoea.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,9 +18,189 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({"icon":"🦠","title":"Gonorrhoea","guideline":"BASHH 2025 — Neisseria gonorrhoeae","stemTitle":"Gonorrhoea — refer to GUM for ceftriaxone + culture","stemSub":"Primary-care management of gonorrhoea — diagnose by NAAT, but refer to sexual health for culture/sensitivities and IM ceftriaxone because of antimicrobial resistance, ensure partner notification and test of cure, and recognise disseminated and neonatal disease. BASHH.","glance":[{"lbl":"Test","val":"NAAT (+ culture)","sub":"culture before treatment"},{"lbl":"1st-line","val":"Ceftriaxone 1 g IM","sub":"single dose"},{"lbl":"Refer","val":"GUM / sexual health","sub":"resistance → culture"},{"lbl":"Always","val":"Test of cure","sub":"+ partner notification"},{"lbl":"Co-treat?","val":"Per chlamydia result","sub":"often co-infected"},{"lbl":"Red flag","val":"DGI / neonatal / PID","sub":"= urgent"}],"flow":[{"t":"node","d":"safety","n":"1","tag":"Safety-net","title":"Serious presentations","blocks":[{"b":"tiles","v":"safety","items":[{"t":"🔴 Disseminated GC","html":"Fever, migratory polyarthralgia, tenosynovitis, pustular rash, septic arthritis → urgent referral/admission."},{"t":"🔴 Neonatal/ophthalmia","html":"Gonococcal conjunctivitis in neonate (or adult hyperacute purulent conjunctivitis) → same-day ophthalmology/specialist — sight-threatening."},{"t":"🟠 PID / epididymo-orchitis","html":"Treat early to protect fertility; exclude testicular torsion in acute scrotal pain."},{"t":"🦠 Resistance","html":"Rising cephalosporin/azithromycin resistance — hence culture + sensitivities and GUM-led treatment."}]},{"b":"why","html":"Gonorrhoea management is dominated by antimicrobial resistance: a culture with sensitivities should be taken before treatment, and treatment (IM ceftriaxone) plus follow-up is best delivered through sexual-health services with test of cure."}]},{"t":"node","d":"found","n":"2","tag":"Foundation","title":"Diagnose","blocks":[{"b":"kv","rows":[["Symptoms","Men: urethral discharge + dysuria. Women: often asymptomatic, or discharge/IMB/pelvic pain. Also rectal/pharyngeal (often asymptomatic)"],["Test","NAAT (vulvovaginal swab / first-void urine / rectal / pharyngeal); <b>culture + sensitivities</b> before treatment where possible (resistance)"],["Co-infection","Test for chlamydia, HIV, syphilis"],["Refer","Sexual health for culture-guided treatment, partner notification, test of cure"]]}]},{"t":"node","d":"life","n":"3","tag":"Non-drug · prevention","title":"Safer sex & prevention","blocks":[{"b":"tiles","v":"life","items":[{"t":"🚫 Abstain","html":"No sex until 7 days after both patient and partner(s) treated and symptom-free."},{"t":"🧴 Condoms","html":"Consistent condom use reduces reinfection and onward transmission; discuss PrEP eligibility if at HIV risk."},{"t":"🔁 Screening","html":"Offer regular STI screening for those at ongoing risk; reinforce partner notification."}]},{"b":"why","html":"With rising resistance, preventing reinfection matters as much as treatment — abstinence during the treatment window, condoms and partner treatment are central."}]},{"t":"node","d":"drug","n":"4","tag":"Medication","title":"Treatment","blocks":[{"b":"ladder","steps":[{"step":"1st-line","title":"Ceftriaxone 1 g IM single dose","when":"empirical / per sensitivities","html":"Given after culture taken; if sensitivities known and susceptible, <b>ciprofloxacin 500 mg single dose</b> may be used. GUM-led."},{"step":"Always","title":"Test of cure","when":"all cases","fromLabel":"confirm clearance","html":"Test of cure for ALL gonorrhoea (NAAT ± culture) at ~2 weeks — because of resistance."},{"step":"Always","title":"Partner notification + abstain","when":"all cases","fromLabel":"prevent reinfection","html":"Notify + treat partners; abstain until treated and 7 days after, and symptoms resolved."}]},{"b":"warn","html":"Do not treat gonorrhoea casually in primary care without culture and sexual-health involvement — resistance and the need for test of cure make GUM the appropriate setting."}]},{"t":"node","d":"follow","n":"5","tag":"Follow-up · essential","title":"Test of cure & partner notification","blocks":[{"b":"timeline","items":[{"n":"1","when":"Always — test of cure","title":"Repeat NAAT at 2 weeks","html":"A <b>test of cure is mandatory in gonorrhoea</b> (rising resistance) — repeat NAAT at <b>2 weeks</b> after treatment (culture earlier if persistent symptoms). Confirms eradication."},{"n":"2","when":"Partner notification","title":"Trace & treat contacts","html":"Notify and treat partners (look-back: 2 weeks for symptomatic men, 3 months otherwise). Advise <b>abstinence for 7 days</b> after both partners treated and symptoms resolved."},{"n":"3","when":"Always offer","title":"Full STI screen","html":"Test for chlamydia, HIV and syphilis; offer hepatitis B vaccination; document partner notification outcome."}]},{"b":"say","html":"Because gonorrhoea is getting harder to treat, I want you back in two weeks for a repeat swab to be sure it's gone — and your recent partners need testing and treating too."}]},{"t":"node","d":"refer","n":"6","tag":"Refer","title":"Referral","blocks":[{"b":"tiles","v":"refer","items":[{"t":"GUM / sexual health","html":"All cases — culture, <b>ceftriaxone 1 g IM single dose</b>, partner notification, test of cure."},{"t":"Urgent","html":"Disseminated gonococcal infection, ophthalmia neonatorum, PID."},{"t":"Obstetrics/paediatrics","html":"Pregnancy / neonatal exposure."}]},{"b":"say","html":"Gonorrhoea is a bacterial infection treated with a single antibiotic injection — but because the bug is becoming resistant, the sexual-health clinic takes a sample first to pick the right antibiotic, and you’ll have a follow-up test to confirm it’s gone. Recent partners need testing and treatment too."}]}],"foot":"Management of gonorrhoea in primary care, with sexual-health (GUM) leading culture-guided treatment and test of cure due to antimicrobial resistance. Sources: BASHH 2025 — Neisseria gonorrhoeae. Verify against current BASHH guidance."});
+MG.render({
+  icon:"🦠",
+  title:"Gonorrhoea",
+  eyebrow:"Protocol · culture first, one injection, then trace",
+  stemTitle:"Gonorrhoea — take a culture before anyone treats, give ceftriaxone 1 g, and treat resistance as a live threat",
+  stemSub:"Gonorrhoea is the STI where the antibiotic matters. Ceftriaxone-resistant cases in England more than doubled between 2024 and 2025, so every diagnosis needs a culture with sensitivities, a single first-line injection given by a service that can follow it up, a test of cure when the rules say so, and partners treated before sex resumes. The GP's job is to suspect it, sample it, spot the complications and get the patient to sexual health quickly. Built on the BASHH 2025 gonorrhoea guideline, UKHSA surveillance and the Green Book gonorrhoea chapter.",
+  guideline:"BASHH Neisseria gonorrhoeae 2025 · UKHSA STI data 2025 and ceftriaxone-resistance reports 2026 · Green Book gonorrhoea chapter (June 2025) · MHRA DSU January 2024",
+  meta:[
+    {t:"BASHH gonorrhoea 2025"},
+    {t:"UKHSA resistance surveillance 2026"},
+    {t:"Green Book: gonorrhoea (4CMenB) 2025"},
+    {t:"MHRA fluoroquinolones Jan 2024"},
+    {t:"BASHH PID 2019 · epididymo-orchitis 2020"},
+    {t:"No NG12 criterion applies", tone:"tw"}
+  ],
+  quickSub:"Six cards that carry the whole consultation. Every figure traces to a source listed under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Some presentations cannot wait", html:"A <b>hot swollen joint, pustular rash or tenosynovitis</b> with fever in a sexually active person may be disseminated gonococcal infection — admit. <b>Hyperacute purulent conjunctivitis</b> in an adult or a newborn can destroy the cornea within days — same-day ophthalmology. Pelvic pain with tenderness is PID — treat today."},
+    {tone:"blue", h:"Culture before treatment", html:"A positive NAAT tells you it is there; only a <b>culture</b> tells you what will kill it. BASHH 2025 advises culture swabs from the relevant sites taken <b>at the same time as the NAAT</b> in anyone clinically suspected, and confirming infection before treating. That is why a positive NAAT goes to sexual health rather than straight to a prescription."},
+    {tone:"green", h:"One first-line drug", html:"<b>Ceftriaxone 1 g intramuscularly as a single dose</b> is the sole first-line empirical treatment in BASHH 2025 — no routine azithromycin alongside. Ciprofloxacin is <b>no longer first line</b>, even when the isolate is susceptible: BASHH 2025 allows <b>ciprofloxacin 500 mg orally once</b> for known-susceptible infection only where clinically judged appropriate, in line with the MHRA January 2024 fluoroquinolone restriction."},
+    {tone:"amber", h:"Resistance is rising in England", html:"UKHSA recorded <b>29 ceftriaxone-resistant cases in 2025</b>, more than double the 13 in 2024, and <b>88 in total since the first case in 2015</b> (to 31 August 2026), 25 of them extensively drug-resistant. Most are linked to travel to or from the Asia-Pacific region. Ask about travel and partners abroad."},
+    {tone:"blue", h:"Test of cure: not for everyone now", html:"For anogenital infection treated with ceftriaxone 1 g when the strain is known to be susceptible, a routine test of cure is <b>no longer needed</b>. It is still required for <b>pharyngeal infection, unknown susceptibility, any other treatment, pregnancy, and persistent symptoms</b> — by NAAT at least 2 weeks after treatment."},
+    {tone:"green", h:"There is now a vaccine", html:"Since <b>1 August 2025</b>, sexual health services offer <b>two doses of 4CMenB</b> to GBMSM at high risk of gonorrhoea. Studies suggest <b>30–40% protection</b>. Signpost eligible patients — the GP does not give it for this indication."}
+  ],
+  pathwaySub:"Five moves. The red step is where sight, joints and fertility are lost.",
+  pathway:[
+    {title:"Suspect it", html:"Urethral discharge and dysuria in men; vaginal discharge, dysuria, intermenstrual bleeding or pelvic pain in women — though many women have no symptoms. Rectal and pharyngeal infection are usually silent. Ask about partners, sites of sex, and travel."},
+    {title:"Screen for the dangerous presentations", html:"Septic arthritis, tenosynovitis, pustular rash or fever → disseminated infection, admit. Purulent conjunctivitis → same-day eye assessment. Pelvic tenderness → PID. Acute scrotal pain → exclude torsion. Newborn with sticky eyes → same day.", alert:true},
+    {title:"Sample every site at risk", html:"Dual chlamydia–gonorrhoea NAAT: vulvovaginal swab or first-void urine, plus rectal and pharyngeal swabs by history. Offer HIV and syphilis serology. Where you suspect gonorrhoea clinically, arrange culture at the same time — in practice, via sexual health."},
+    {title:"Send for treatment", html:"A positive gonorrhoea NAAT → sexual health service within days for culture, ceftriaxone 1 g IM, partner notification and a decision on test of cure. Do not give an oral antibiotic 'to cover it' while waiting."},
+    {title:"Close the loop", html:"Abstain until 7 days after the patient and partners have finished treatment. Confirm the clinic attendance. Offer the 4CMenB vaccine route to eligible patients, and condoms and regular testing to all."}
+  ],
+  sections:[
+
+    {id:"redflags", nav:"Red flags", title:"Red flags and complications", sub:"Uncomplicated gonorrhoea is a sexual health referral. These presentations are emergencies or near-emergencies in their own right.",
+     blocks:[
+       {b:"warn", html:"Never dismiss a hot joint or a purulent red eye in a young, sexually active adult without taking a sexual history. Disseminated and ocular gonorrhoea are rare but move fast, and the treatment is parenteral."},
+       {b:"cards", items:[
+         {tone:"red", h:"Disseminated gonococcal infection", html:"Fever with migratory arthralgia, tenosynovitis of the wrist or hand, scattered pustular or haemorrhagic skin lesions, or a septic joint. Mucosal sites are often symptom-free. <b>Admit</b> for blood and joint cultures, swabs from all mucosal sites and intravenous treatment. BASHH 2025 updated its recommendations on diagnosing disseminated infection.", src:"BASHH gonorrhoea 2025"},
+         {tone:"red", h:"Gonococcal conjunctivitis", html:"Hyperacute, copious purulent discharge with lid swelling. It can progress to <b>blinding keratoconjunctivitis</b>, so prompt diagnosis matters. BASHH advises <b>empirical systemic plus topical treatment</b> when gonococcal eye infection is suspected. Same-day ophthalmology.", src:"BASHH gonorrhoea 2025"},
+         {tone:"red", h:"Ophthalmia neonatorum", html:"Purulent conjunctivitis in a newborn may be gonococcal or chlamydial. Gonococcal disease threatens the cornea within days. <b>Same-day</b> paediatric or ophthalmic assessment for swabs and systemic treatment; test and treat both parents.", src:"College of Optometrists CMG — ophthalmia neonatorum · BASHH gonorrhoea 2025"},
+         {tone:"red", h:"Pelvic inflammatory disease", html:"Lower abdominal pain with cervical motion or adnexal tenderness. Rule out ectopic pregnancy. Treat empirically the same day: <b>ceftriaxone 1 g IM once, plus doxycycline 100 mg twice daily and metronidazole 400 mg twice daily for 14 days</b>. BASHH advises against omitting ceftriaxone, and gonococcal PID particularly needs it.", src:"BASHH PID guideline 2018 with 2019 update"},
+         {tone:"red", h:"Acute scrotal pain", html:"Sudden severe pain is torsion until excluded — same-day urology. Subacute unilateral pain with urethral discharge suggests sexually acquired epididymo-orchitis: first-void urine NAAT, ceftriaxone plus doxycycline per the BASHH regimen, and partner notification.", src:"BASHH epididymo-orchitis guideline 2020"},
+         {tone:"amber", h:"Pregnancy", html:"Gonorrhoea in pregnancy is treated with <b>intramuscular ceftriaxone monotherapy</b>, ideally directly observed. Quinolones and gentamicin are avoided. A test of cure is required. Inform the maternity team because of the risk to the baby at delivery.", src:"BASHH gonorrhoea 2025"}
+       ]}
+     ]},
+
+    {id:"resistance", nav:"Resistance", title:"Why resistance drives every decision", sub:"Gonorrhoea has become resistant to each antibiotic class used against it in turn. Cephalosporins are the last class still used as empirical monotherapy.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"The England numbers", html:"<b>29 ceftriaxone-resistant cases were reported in 2025</b> against 13 in 2024. Since the first case in 2015, the total reported in England had reached <b>88</b> by 31 August 2026, of which <b>25 were extensively drug-resistant</b> — resistant to both first- and second-line options. A further 21 cases had been reported in 2026 by that date.", src:"UKHSA — STI quarterly report, England, provisional data, September 2026"},
+         {tone:"amber", h:"Where it comes from", html:"Most ceftriaxone-resistant cases are linked to <b>travel to or from the Asia-Pacific region</b>, where resistance is common, or to sexual contact with someone who has travelled. Take a travel and partner history in every case.", src:"UKHSA ceftriaxone-resistant gonorrhoea reports 2025–2026"},
+         {tone:"blue", h:"What the GP can do about it", html:"Get the culture taken before treatment. Do not treat on a NAAT alone with an oral antibiotic. Make sure the patient actually reaches sexual health, and that partners are treated. Those steps are what let resistant strains be found and contained.", src:"BASHH gonorrhoea 2025"},
+         {tone:"blue", h:"The national picture", html:"There were <b>63,943 gonorrhoea diagnoses</b> in England in 2025 — 19.1% of new STI diagnoses — down from 71,802 in 2024. Rates remain disproportionately high in GBMSM, people aged 15 to 24 and some Black and Mixed ethnic groups.", src:"UKHSA — STIs and chlamydia screening in England: 2025 report (June 2026)"}
+       ]},
+       {b:"why", label:"Why a falling case count does not mean the problem is shrinking", html:"Total diagnoses fell between 2024 and 2025, but resistant cases more than doubled. A small number of treatment-resistant infections can seed onward transmission through sexual networks, and a strain resistant to ceftriaxone is usually resistant to most alternatives too. Surveillance depends on cultures being taken, which is why culture-before-treatment is non-negotiable."}
+     ]},
+
+    {id:"diagnose", nav:"Samples", title:"Which sample, which test", sub:"NAAT finds it. Culture characterises it. You usually need both.",
+     blocks:[
+       {b:"table", head:["Site","NAAT sample","Culture"], rows:[
+         ["Vagina / cervix","Vulvovaginal swab — self- or clinician-taken","Endocervical swab in sexual health"],
+         ["Penile urethra","First-void urine","Urethral swab; microscopy in sexual health for men with discharge"],
+         ["Rectum","Rectal swab (after receptive anal sex)","Rectal swab"],
+         ["Pharynx","Pharyngeal swab (after oral sex)","Pharyngeal swab"],
+         ["Eye / joint / blood","—","Conjunctival swab; joint aspirate and blood cultures in suspected dissemination"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Always test the throat", html:"BASHH 2025 recommends <b>pharyngeal testing for everyone with urogenital gonorrhoea and for all contacts</b>. Pharyngeal infection is usually silent, harder to eradicate and a reservoir for resistance.", src:"BASHH gonorrhoea 2025"},
+         {tone:"blue", h:"Culture timing", html:"Culture swabs should be taken <b>at the same time as the NAAT</b> from anyone suspected clinically, and before any antibiotic. A NAAT-positive person without culture should have culture taken before treatment.", src:"BASHH gonorrhoea 2025"},
+         {tone:"blue", h:"Full screen", html:"Test for chlamydia on the same dual NAAT, and offer HIV and syphilis serology. Offer hepatitis B testing and vaccination where risk applies.", src:"BASHH gonorrhoea 2025 — associated infections"},
+         {tone:"amber", h:"Chlamydia co-infection", html:"Co-infection is common. Dual therapy is no longer given routinely: if chlamydia is found, treat it separately with <b>doxycycline 100 mg twice daily for 7 days</b>.", src:"BASHH gonorrhoea 2025 · BASHH chlamydia 2026"}
+       ]}
+     ]},
+
+    {id:"treat", nav:"Treatment", title:"Treatment", sub:"Sexual health services give it. You need to know what it is, so you can explain it and avoid undermining it.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"First line", when:"empirical or susceptibility unknown", tone:"green", title:"Ceftriaxone 1 g IM, single dose", html:"The only first-line empirical regimen in BASHH 2025, for anogenital and pharyngeal infection. The earlier practice of adding azithromycin has been dropped. Third-generation cephalosporins have negligible cross-allergy with penicillin, so a penicillin allergy is not a bar unless there has been a severe reaction such as anaphylaxis to any beta-lactam."},
+         {step:"Known ciprofloxacin-susceptible", when:"sensitivities available", fromLabel:"if culture or genotype shows susceptibility", tone:"cream", title:"Ciprofloxacin 500 mg orally, single dose — not first line", html:"Effective when phenotypic or genotypic testing <b>before treatment</b> shows susceptibility, but BASHH 2025 no longer recommends it first line because of the MHRA restriction: it may be used only where clinically judged appropriate, for example when ceftriaxone is unsuitable. Respect the MHRA fluoroquinolone restrictions and avoid it in pregnancy and after a previous serious quinolone reaction."},
+         {step:"Ceftriaxone not possible", when:"allergy, failure or resistance", fromLabel:"specialist decision", tone:"amber", title:"Specialist alternative guided by sensitivities", html:"Alternatives are chosen by the sexual health service from the culture result. Spectinomycin is no longer available in the UK. Suspected treatment failure or a resistant isolate is managed with UKHSA and the reference laboratory."},
+         {step:"Always", when:"every case", fromLabel:"alongside any regimen", tone:"cream", title:"Partners, abstinence and the right follow-up", html:"Partner notification at diagnosis. No sex until 7 days after the patient and partners have completed treatment. Test of cure where indicated."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Fluoroquinolone restrictions", html:"Since <b>January 2024</b>, systemic fluoroquinolones should only be used when other recommended antibiotics have failed, will not work because of resistance, or are unsafe. Warn about tendon, musculoskeletal and neuropsychiatric reactions, and take care over 60, with corticosteroids, renal impairment and after transplant.", src:"MHRA Drug Safety Update, January 2024 · BASHH gonorrhoea 2025"},
+         {tone:"amber", h:"Why not treat in the practice?", html:"Most practices cannot take gonococcal cultures reliably, and the treatment decision depends on them. Giving ceftriaxone without culture loses the sensitivities; giving an oral antibiotic 'to cover it' may fail and select resistance.", src:"BASHH gonorrhoea 2025"}
+       ]}
+     ]},
+
+    {id:"testofcure", nav:"Test of cure", title:"Test of cure — who still needs one", sub:"This changed in 2025. The old rule of a test of cure for everyone no longer applies.",
+     blocks:[
+       {b:"table", head:["Situation","Test of cure?"], rows:[
+         ["Anogenital infection, ceftriaxone 1 g given, isolate known to be susceptible","<b>Not routinely needed</b> — no treatment failures have been reported with ceftriaxone for ceftriaxone-susceptible genital infection"],
+         ["Pharyngeal infection","<b>Yes</b>"],
+         ["Susceptibility not known","<b>Yes</b>"],
+         ["Treated with anything other than ceftriaxone","<b>Yes</b>"],
+         ["Pregnant","<b>Yes</b>"],
+         ["Persistent symptoms or signs","<b>Yes</b> — and culture before re-treatment"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Timing", html:"A NAAT test of cure should be done <b>at least 2 weeks after treatment</b>. Earlier NAATs may detect residual nucleic acid from killed organisms and give a false 'failure'.", src:"BASHH gonorrhoea 2025"},
+         {tone:"blue", h:"A positive test of cure", html:"Could be treatment failure, reinfection from an untreated partner, or residual nucleic acid. Sexual health will take a culture before re-treating and report a suspected failure to UKHSA.", src:"BASHH gonorrhoea 2025 · UKHSA"}
+       ]},
+       {b:"say", html:"“The injection is very effective. Because this infection is becoming resistant to antibiotics, the clinic will grow the bug to check which drugs work, and depending on the result they may ask you back for a repeat swab in a couple of weeks.”"}
+     ]},
+
+    {id:"partners", nav:"Partners", title:"Partner notification and abstinence", sub:"Gonorrhoea is concentrated in sexual networks. Partner notification is how the network is treated.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"At diagnosis", title:"Start the conversation", html:"Explain why partners matter and that sexual health health advisers can contact them anonymously. Partner notification should be pursued for everyone with gonorrhoea."},
+         {n:"2", when:"Symptomatic penile urethral infection", title:"Look back 2 weeks", html:"Notify all partners since, and in the <b>2 weeks before</b>, symptom onset — or the last partner if that was longer ago."},
+         {n:"3", when:"Any other site, or no symptoms", title:"Look back 3 months", html:"Notify all partners in the <b>preceding 3 months</b>."},
+         {n:"4", when:"Contacts", title:"Test and treat", html:"Contacts are tested at all exposed sites — including the throat — and usually treated epidemiologically with ceftriaxone after culture, without waiting for their results."},
+         {n:"5", when:"Abstinence", title:"Seven days after everyone is treated", html:"No sex until <b>7 days after</b> the patient and their partner(s) have completed treatment, and symptoms have gone."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Travel and overseas partners", html:"Ask specifically about sex abroad or with partners who have travelled, particularly to the Asia-Pacific region. Tell the clinic — it changes their threshold for test of cure and for alerting UKHSA.", src:"UKHSA ceftriaxone-resistant gonorrhoea reports 2025–2026"},
+         {tone:"cream", h:"If the patient will not tell a partner", html:"Offer provider notification through the sexual health service. If fear of a partner is the reason, treat that as a domestic abuse or safeguarding disclosure.", src:"BASHH gonorrhoea 2025 · BASHH partner notification statement 2012"}
+       ]}
+     ]},
+
+    {id:"prevention", nav:"Prevention", title:"Prevention: the 4CMenB programme, doxyPEP and condoms", sub:"For the first time there is a vaccine route for gonorrhoea. It is delivered by sexual health services, but GPs are asked about it.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Who is offered 4CMenB", html:"From <b>1 August 2025</b> in England: gay, bisexual and other men who have sex with men at high risk — a <b>bacterial STI in the previous 12 months</b> and/or <b>five or more partners in the previous 3 months</b>. Clinicians may use discretion for others at similar risk, such as sex workers having condomless sex.", src:"Green Book — gonorrhoea chapter (UKHSA, June 2025)"},
+         {tone:"green", h:"How it is given", html:"<b>Two doses</b> of 4CMenB (Bexsero), the second at least <b>4 weeks</b> after the first, with no maximum interval. Offered opportunistically in specialist sexual health services, ideally at the visit where an STI is managed.", src:"Green Book — gonorrhoea chapter (UKHSA, June 2025)"},
+         {tone:"blue", h:"How well it works", html:"Observational studies in people vaccinated against meningococcal B disease suggest about <b>30–40% protection</b> against gonorrhoea. It reduces risk; it does not replace condoms or testing. JCVI advised the targeted programme in November 2023.", src:"Green Book — gonorrhoea chapter (June 2025) · JCVI advice November 2023"},
+         {tone:"blue", h:"DoxyPEP", html:"BASHH recommends doxycycline post-exposure prophylaxis — <b>200 mg within 72 hours</b>, ideally within 24, of condomless sex — for GBMSM and trans women at elevated risk, to prevent <b>syphilis</b>. Its effect on gonorrhoea is smaller, and it is not a gonorrhoea treatment.", src:"BASHH doxyPEP guideline 2025"},
+         {tone:"green", h:"Condoms and regular testing", html:"Condoms for anal and vaginal sex reduce transmission. Anyone with ongoing risk should test regularly, including throat and rectal sites where relevant, and be offered HIV PrEP where appropriate.", src:"BASHH gonorrhoea 2025 — health promotion"},
+         {tone:"blue", h:"Early signs of impact", html:"UKHSA now reports gonorrhoea diagnoses separately for GBMSM to track the effect of doxyPEP and 4CMenB, both introduced in summer 2025. Diagnoses in GBMSM fell in 2025.", src:"UKHSA — STIs and chlamydia screening in England: 2025 report"}
+       ]}
+     ]},
+
+    {id:"young", nav:"Under-16s", title:"Young people and safeguarding", sub:"Gonorrhoea in a child or young person always prompts the safeguarding question.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Under 13", html:"A child under 13 cannot consent to sexual activity in law. Gonorrhoea at this age requires a safeguarding referral to children's social care and involvement of the safeguarding lead.", src:"Working Together to Safeguard Children 2026 (DfE)"},
+         {tone:"amber", h:"13 to 15", html:"Confidential assessment and treatment through sexual health if the young person is competent (Gillick) and the Fraser criteria are met. Explore partner age, coercion, exploitation and substance use, and share information with safeguarding services when there is risk of significant harm.", src:"Working Together to Safeguard Children 2026 · Gillick (House of Lords 1985)"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer", sub:"Every confirmed gonorrhoea goes to sexual health. The question is how fast, and whether something else needs to happen first.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Admit or same day", html:"Suspected <b>disseminated gonococcal infection</b> (septic arthritis, tenosynovitis, pustular rash, fever); <b>purulent conjunctivitis</b> in an adult or newborn; <b>PID</b> with systemic illness, pregnancy or possible abscess; <b>acute scrotal pain</b> with torsion not excluded; suspected <b>ectopic pregnancy</b>.", src:"BASHH gonorrhoea 2025 · BASHH PID 2019 · BASHH epididymo-orchitis 2020 · College of Optometrists CMG"},
+         {tone:"red", h:"Safeguarding, same day", html:"Any child under 13 with gonorrhoea, or a young person at risk of sexual exploitation.", src:"Working Together to Safeguard Children 2026 (DfE)"},
+         {tone:"amber", h:"Sexual health — within days", html:"<b>Every positive gonorrhoea NAAT</b>, and every patient with urethral discharge or a clinical picture of gonorrhoea: culture, ceftriaxone, partner notification and a test-of-cure decision. Flag recent travel or overseas partners.", src:"BASHH gonorrhoea 2025"},
+         {tone:"amber", h:"Suspected treatment failure", html:"Persistent symptoms or a positive test of cure after ceftriaxone: back to sexual health for culture. The service reports suspected ceftriaxone failure to UKHSA.", src:"BASHH gonorrhoea 2025 · UKHSA"},
+         {tone:"cream", h:"Pregnancy", html:"Share the diagnosis and treatment with the maternity team, and make sure the test of cure is recorded before delivery.", src:"BASHH gonorrhoea 2025"}
+       ]},
+       {b:"p", html:"No NG12 suspected-cancer criterion maps to this presentation. Gonorrhoea is not a notifiable disease for clinicians in England; laboratory reporting and resistance surveillance are handled through UKHSA."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 28-year-old man has had three days of urethral discharge and dysuria after a holiday in South-East Asia. He asks for 'a course of antibiotics today' because he is seeing his girlfriend at the weekend and does not want to go to a clinic.", src:"Practice scenario based on BASHH gonorrhoea 2025"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Takes a <b>sexual and travel history</b> including sites of sex; checks for <b>testicular pain, joint or skin symptoms</b>; explains why an oral antibiotic today is the wrong answer — <b>culture first</b>, then <b>ceftriaxone 1 g IM</b>, because of <b>rising resistance linked to Asia-Pacific travel</b>; arranges <b>same-week sexual health</b>, sending a first-void urine NAAT if that helps; advises <b>no sex until 7 days after both are treated</b>; handles telling his girlfriend with honesty and offers <b>provider notification</b>; offers <b>HIV and syphilis testing</b>; and explains a likely <b>test of cure</b> because susceptibility is unknown.", src:"BASHH gonorrhoea 2025 · UKHSA resistance reports 2026"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to one of these primary sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>BASHH — UK national guideline for the management of infection with <i>Neisseria gonorrhoeae</i>, 2025</b> (Fifer et al., International Journal of STD and AIDS, 2025)<br><a href="https://doi.org/10.1177/09564624251345195" rel="noopener">doi.org/10.1177/09564624251345195</a><span class="rd"> — ceftriaxone 1 g IM as sole first-line empirical treatment; ciprofloxacin 500 mg single dose no longer first line but may be used for known-susceptible infection where clinically appropriate; culture taken with the NAAT; pharyngeal testing for all cases and contacts; routine test of cure no longer needed for susceptible anogenital infection treated with ceftriaxone, but still needed for pharyngeal infection, unknown susceptibility, other regimens, pregnancy and persistent symptoms; NAAT test of cure at least 2 weeks after treatment; partner-notification look-back of 2 weeks (symptomatic urethral) or 3 months; abstinence until 7 days after completion of treatment; pregnancy, conjunctivitis and disseminated infection</span></li>'+
+         '<li><b>UKHSA — Sexually transmitted infections quarterly report, England: provisional data, September 2026</b><br><a href="https://www.gov.uk/government/publications/sti-quarterly-surveillance-reports-provisional-data/sexually-transmitted-infections-quarterly-report-england-provisional-data-september-2026" rel="noopener">gov.uk — STI quarterly report, September 2026</a><span class="rd"> — 88 ceftriaxone-resistant cases since 2015, to 31 August 2026 (25 XDR); 21 in 2026 to date; 29 in 2025 against 13 in 2024; association with Asia-Pacific travel</span></li>'+
+         '<li><b>UKHSA — Sexually transmitted infections and screening for chlamydia in England: 2025 report (June 2026)</b><br><a href="https://www.gov.uk/government/statistics/sexually-transmitted-infections-stis-annual-data-tables/sexually-transmitted-infections-and-screening-for-chlamydia-in-england-2025-report" rel="noopener">gov.uk — STI annual data 2025</a><span class="rd"> — 63,943 gonorrhoea diagnoses in 2025 (19.1% of new STI diagnoses); 71,802 in 2024; GBMSM-stratified reporting after doxyPEP and 4CMenB</span></li>'+
+         '<li><b>UKHSA — Immunisation against infectious disease (Green Book): gonorrhoea chapter (June 2025)</b><br><a href="https://assets.publishing.service.gov.uk/media/684ff21577c424182b0c4e66/Green_book_chapter_gonorrhoea_16June2025.pdf" rel="noopener">gov.uk — Green Book gonorrhoea chapter (16 June 2025)</a><span class="rd"> — 4CMenB programme from 1 August 2025; eligibility of GBMSM with a bacterial STI in 12 months and/or 5 or more partners in 3 months; clinical discretion for others at similar risk; two doses at least 4 weeks apart; 30–40% protection. Follows JCVI advice of November 2023</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Fluoroquinolone antibiotics: must now only be prescribed when other commonly recommended antibiotics are inappropriate (January 2024)</b><br><a href="https://www.gov.uk/drug-safety-update/fluoroquinolone-antibiotics-must-now-only-be-prescribed-when-other-commonly-recommended-antibiotics-are-inappropriate" rel="noopener">gov.uk — Drug Safety Update</a><span class="rd"> — restriction applying to ciprofloxacin</span></li>'+
+         '<li><b>BASHH — UK national guideline for the use of doxycycline post-exposure prophylaxis (2025)</b><br><a href="https://doi.org/10.1177/09564624251352053" rel="noopener">doi.org/10.1177/09564624251352053</a><span class="rd"> — doxyPEP for syphilis prevention in GBMSM and trans women at elevated risk</span></li>'+
+         '<li><b>BASHH — UK national guideline for the management of pelvic inflammatory disease (2018, 2019 update)</b><br><a href="https://www.bashh.org/_userfiles/pages/files/resources/pidupdate2019.pdf" rel="noopener">bashh.org — PID 2019 update</a><span class="rd"> — ceftriaxone 1 g IM plus doxycycline and metronidazole for 14 days</span></li>'+
+         '<li><b>BASHH — UK national guideline for the management of epididymo-orchitis (2020)</b><br><a href="https://www.bashh.org/_userfiles/pages/files/resources/eo2020.pdf" rel="noopener">bashh.org — epididymo-orchitis 2020</a><span class="rd"> — ceftriaxone plus doxycycline for sexually acquired epididymo-orchitis</span></li>'+
+         '<li><b>BASHH — UK national guideline for the management of <i>Chlamydia trachomatis</i>, 2026</b><br><a href="https://doi.org/10.1177/09564624261475950" rel="noopener">doi.org/10.1177/09564624261475950</a><span class="rd"> — treatment of chlamydia co-infection with doxycycline</span></li>'+
+         '<li><b>BASHH — Statement on partner notification for sexually transmissible infections (2012)</b><span class="rd"> — provider and patient referral</span></li>'+
+         '<li><b>College of Optometrists — Clinical Management Guideline: ophthalmia neonatorum</b><br><a href="https://www.college-optometrists.org/clinical-guidance/clinical-management-guidelines/ophthalmianeonatorum" rel="noopener">college-optometrists.org — ophthalmia neonatorum</a></li>'+
+         '<li><b>Department for Education — Working Together to Safeguard Children (2026)</b><br><a href="https://www.gov.uk/government/publications/working-together-to-safeguard-children--2" rel="noopener">gov.uk — Working Together</a><span class="rd"> — statutory safeguarding guidance, replacing the 2023 edition</span></li>'+
+         '<li><b>Gillick v West Norfolk and Wisbech AHA (House of Lords, 1985)</b><span class="rd"> — competence to consent and the Fraser criteria</span></li>'+
+         '<li><b>BNF — ceftriaxone, ciprofloxacin</b><br><a href="https://bnf.nice.org.uk/drugs/ceftriaxone/" rel="noopener">bnf.nice.org.uk — ceftriaxone</a><span class="rd"> — cautions and administration</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Gonorrhoea in primary care — BASHH Neisseria gonorrhoeae guideline 2025, UKHSA STI surveillance (2025 annual report; ceftriaxone-resistance reports to September 2026), Green Book gonorrhoea chapter (June 2025), MHRA Drug Safety Update January 2024, and BASHH PID (2019) and epididymo-orchitis (2020) guidelines. Sexual health services lead culture, treatment, partner notification and test of cure."
+});
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

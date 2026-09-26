@@ -108,7 +108,7 @@ RGPDiagnostic.register('tatt', {
       nextIx:'FBC, ferritin, B12/folate, U&E, LFTs. If male / post-menopausal female with IDA → 2WW lower GI pathway (NICE NG12). Coeliac screen (tTG IgA) for all new IDA.',
       patientPhrase:'Your tiredness is because your blood doesn\'t carry enough oxygen — and we need to find where the iron is leaking from. Replacing iron is the easy bit.',
       guideUrl: '', guideLabel: 'BSG iron deficiency anaemia guideline (2021)',
-      caseLink:'../cases/tatt.html',
+      caseLink:'../cases/fatigue.html',
     },
     {
       id:'b12_def',

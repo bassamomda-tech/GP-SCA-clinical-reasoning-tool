@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hepatitis A — Protocol · Reasoning GP</title>
+<meta name="description" content="Hepatitis A in primary care on one page: HAV IgM and liver tests, the statutory duty to notify on suspicion, signs of acute liver failure, supportive care, exclusion until 7 days after jaundice, vaccine and HNIG for contacts within 14 days (28 days in chronic liver disease), and the NG12 jaundice rule for people aged 40 and over." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/hepatitis-a.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,83 +21,192 @@
 MG.render({
   icon:"🦠",
   title:"Hepatitis A",
-  stemTitle:"Hepatitis A \u2014 a notifiable, self-limiting infection: supportive care + public health",
-  stemSub:"Primary-care management of hepatitis A \u2014 confirm with serology, notify public health (UKHSA), give supportive care for this usually self-limiting illness, recognise the rare fulminant case, and arrange post-exposure prophylaxis and prevention. NICE \u00b7 UKHSA \u00b7 2026.",
-  guideline:"UKHSA",
-  glance:[
-    {lbl:"Notify", val:"UKHSA \u2014 urgently", sub:"notifiable disease"},
-    {lbl:"Confirm", val:"Hep A IgM", sub:"+ LFTs"},
-    {lbl:"Treatment", val:"Supportive", sub:"self-limiting"},
-    {lbl:"Transmission", val:"Faecal-oral", sub:"hygiene + exclusion"},
-    {lbl:"Prevention", val:"Vaccine + PEP", sub:"contacts/travel"},
-    {lbl:"Red flag", val:"Fulminant hepatic failure", sub:"= emergency"}
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Hepatitis A: notify on suspicion, watch the INR and the conscious level, and protect the household within 14 days",
+  stemSub:"One page for acute hepatitis A in primary care. The illness itself usually needs only supportive care. The GP's work is to confirm it with HAV IgM, spot the rare patient heading for liver failure, and meet the legal duty to notify. The notification lets the health protection team vaccinate close contacts while prophylaxis still works. Keep the case out of work or school until a week after jaundice starts. And remember that jaundice in someone aged 40 or over is a suspected cancer referral until another cause is proved.",
+  guideline:"UKHSA Public health control and management of hepatitis A (2024) · UKHSA Green Book ch.17 (2024) · Health Protection (Notification) Regulations 2010 · BSG abnormal liver blood tests (Newsome 2018) · NICE NG12 (updated April 2026)",
+  meta:[
+    {t:"UKHSA 2024 · hepatitis A public health management"},
+    {t:"Green Book ch.17 · hepatitis A vaccine"},
+    {t:"Notifiable · Health Protection (Notification) Regulations 2010", tone:"tw"},
+    {t:"BSG 2018 · abnormal liver blood tests"}
   ],
-  flow:[
-    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Fulminant hepatitis \u2014 rare but critical",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Acute liver failure", html:"Drowsiness/confusion (encephalopathy), bruising/bleeding (coagulopathy), worsening jaundice, persistent vomiting \u2192 emergency admission."},
-          {t:"🟠 Dehydration", html:"Unable to maintain fluids with vomiting \u2192 assess/admit."},
-          {t:"🟠 At-risk hosts", html:"Chronic liver disease (esp. hepatitis B/C) or immunocompromise \u2192 higher complication risk, lower admission threshold."},
-          {t:"🩺 Cholestatic / relapsing", html:"Prolonged jaundice/pruritus or biphasic relapse can occur \u2014 reassess; usually still self-limiting."}
-        ]},
-        {b:"why", html:"Hepatitis A almost always resolves without specific treatment and does not become chronic, but rare fulminant hepatic failure (more likely with older age or pre-existing liver disease) is an emergency the GP must recognise."}
-      ]},
-    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Recognise + confirm",
-      blocks:[
-        {b:"kv", rows:[
-          ["Presentation","Prodrome (fever, malaise, nausea, anorexia, RUQ discomfort) then jaundice, dark urine, pale stools; often milder/anicteric in children"],
-          ["Transmission","Faecal-oral \u2014 contaminated food/water, travel to endemic areas, household/sexual contact, MSM, IVDU; incubation ~2\u20136 weeks"],
-          ["Confirm","<b>Hepatitis A IgM</b> (acute infection) + LFTs (markedly raised transaminases); IgG indicates past infection/immunity"],
-          ["Assess","Hydration, severity, liver synthetic function (consider INR/bilirubin), comorbidity, contacts, occupation (food handler/carer)"]
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Management", title:"Supportive care",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Step 1", title:"Supportive treatment", when:"mainstay",
-           html:"Rest, fluids, antiemetic if needed, simple analgesia; manage symptoms. No specific antiviral. Most recover fully in weeks."},
-          {step:"Step 2", title:"Protect the liver", when:"during illness",
-           fromLabel:"reduce liver stress",
-           html:"Avoid alcohol; review/avoid hepatotoxic drugs (and caution with paracetamol dosing); avoid unnecessary medication."},
-          {step:"Step 3", title:"Monitor recovery", when:"follow LFTs",
-           fromLabel:"track resolution",
-           html:"Recheck LFTs to confirm resolution; reassure no chronic carriage. Escalate if synthetic failure/encephalopathy."}
-        ]},
-        {b:"warn", html:"Counsel on infectivity: most infectious in the 2 weeks before and ~1 week after jaundice onset \u2014 strict hand hygiene; do not prepare food for others; avoid sex during infectious period."}
-      ]},
-    {t:"node", d:"life", n:"4", tag:"Public health", title:"Notify, exclude, prevent",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"📋 Notify UKHSA", html:"Hepatitis A is a <b>notifiable disease</b> \u2014 notify the local health protection team (they coordinate contact tracing + prophylaxis)."},
-          {t:"🚫 Exclusion", html:"Exclude from work/school until 7 days after onset of jaundice (longer/stricter for food handlers, healthcare and young children) \u2014 per UKHSA."},
-          {t:"💉 Contacts (PEP)", html:"Hepatitis A vaccine \u00b1 human normal immunoglobulin for close contacts per UKHSA risk assessment, ideally within 14 days of exposure."},
-          {t:"🛡️ Prevention", html:"Vaccinate travellers to endemic areas, MSM, chronic liver disease, occupational risk; food/water hygiene advice."}
-        ]}
-      ]},
-    {t:"node", d:"monitor", n:"5", tag:"Follow-up", title:"Recovery",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"During illness", title:"Symptom + hydration review", html:"Safety-net for encephalopathy/bleeding/vomiting; reinforce hygiene + exclusion."},
-          {n:"2", when:"Weeks", title:"Confirm resolution", html:"Repeat LFTs to normalisation; reassure full recovery and lifelong immunity."},
-          {n:"3", when:"Contacts", title:"Prophylaxis", html:"Ensure contacts assessed/vaccinated per UKHSA."}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral",
-      arrow:"severity + public health",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Emergency", html:"Fulminant hepatitis (encephalopathy, coagulopathy), severe dehydration."},
-          {t:"UKHSA / health protection", html:"Notification + outbreak/contact management + PEP coordination."},
-          {t:"Hepatology", html:"Diagnostic uncertainty, prolonged/relapsing course, or underlying chronic liver disease."}
-        ]},
-        {b:"say", html:"Hepatitis A is a liver infection caught from contaminated food or water. The good news is it clears on its own and doesn\u2019t become long-term \u2014 the treatment is rest, fluids and avoiding alcohol. It\u2019s very catching though, so wash hands carefully, don\u2019t prepare food for others, and we must inform public health so close contacts can be protected."}
-      ]}
+  lead:"<div class='mg-layers'><a href='#redflags'><b>Red flags</b><small>liver failure, NG12 jaundice</small></a><a href='#tests'><b>Confirm</b><small>HAV IgM plus LFTs and INR</small></a><a href='#notify'><b>Notify</b><small>statutory, on suspicion</small></a><a href='#contacts'><b>Contacts</b><small>vaccine within 14 days</small></a></div>",
+  quickSub:"The six points that change what you do today. Each one is traced to a named primary source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Drowsy, confused, bleeding or vomiting everything? Admit today", html:"<b>Encephalopathy</b> (confusion, drowsiness, day-night reversal, flap), <b>coagulopathy</b> (raised INR, bruising or bleeding), deepening jaundice with persistent vomiting, or inability to keep fluids down means possible <b>acute liver failure</b>. Arrange same-day hospital assessment. The risk is highest in <b>older adults</b> and in those with <b>pre-existing liver disease</b>."},
+    {tone:"purple", h:"Statutory duty: notify on clinical suspicion", html:"Acute infectious hepatitis is notifiable under the <b>Health Protection (Notification) Regulations 2010</b>. The registered medical practitioner must notify the proper officer, through the local <b>UKHSA health protection team</b>, <b>in writing within 3 days</b>. For urgent cases the Regulations require oral notice as soon as practicable, and UKHSA asks for a <b>telephone call within 24 hours</b>. Do not wait for laboratory confirmation. Phone for hepatitis A, because contact prophylaxis is time-limited."},
+    {tone:"blue", h:"Confirm with HAV IgM, and check the INR", html:"<b>Hepatitis A IgM</b> confirms acute infection. HAV IgG alone means past infection or vaccination. Send <b>LFTs</b> (ALT is typically very high), <b>INR</b>, a full blood count and <b>U&amp;E</b>. If HAV IgM is negative, complete an acute hepatitis screen for hepatitis B, C and E, and review drugs and alcohol."},
+    {tone:"purple", h:"Jaundice at 40 or over: NG12 cancer pathway unless proved otherwise", html:"NICE NG12 recommendation 1.2.4: refer people using a suspected cancer pathway referral for <b>pancreatic cancer</b> if they are <b>aged 40 and over and have jaundice</b>. A positive HAV IgM with a hepatitic picture explains the jaundice. Painless or cholestatic jaundice without a confirmed infective cause does not, and needs the 2WW referral."},
+    {tone:"cream", h:"Care is supportive; exclusion is 7 days after jaundice", html:"There is no specific treatment. Offer rest, fluids, antiemetics and paracetamol at standard doses. Advise no alcohol and review hepatotoxic drugs. The case is infectious from about <b>2 weeks before symptoms</b> until <b>1 week after jaundice</b> starts. Exclude from work, school or nursery until <b>7 days after the onset of jaundice</b>. If there is no jaundice, count from dark urine or pale stools, or failing those from the first symptoms."},
+    {tone:"green", h:"Contacts: vaccine within 14 days, plus HNIG for some", html:"The health protection team offers <b>hepatitis A vaccine</b> to susceptible close contacts within <b>14 days</b> of exposure. <b>Human normal immunoglobulin (HNIG)</b> is added for contacts <b>aged over 60</b> or <b>immunosuppressed</b>, within 14 days. It is added for contacts with <b>chronic liver disease, including hepatitis B or C</b>, up to <b>28 days</b> after exposure."}
   ],
-  foot:"Management of hepatitis A in primary care \u2014 a notifiable, usually self-limiting infection; fulminant failure is an emergency. Follow UKHSA notification/exclusion/PEP guidance. Verify against current NICE and the Green Book."
+  pathwaySub:"The consultation in five moves. The first two are where harm happens if they are skipped.",
+  pathway:[
+    {title:"Screen for liver failure", html:"Conscious level, asterixis, bruising or bleeding, and the ability to keep fluids down. Check for pre-existing liver disease, alcohol use and age over 60. Any sign of encephalopathy or a raised INR means same-day admission."},
+    {title:"Test and think wider", html:"HAV IgM, LFTs, INR, FBC and U&amp;E. If HAV IgM is negative, screen for hepatitis B, C and E, and review medicines and alcohol. Aged 40 or over with jaundice and no infective explanation: NG12 pancreatic cancer pathway."},
+    {title:"Notify", html:"Phone the local health protection team on suspicion. Have ready the patient's occupation (food handler, healthcare or care worker), any school or nursery attended, household and sexual contacts, and recent travel or foods eaten."},
+    {title:"Support and exclude", html:"Supportive care at home, no alcohol, a medicines review, strict hand hygiene, no food preparation for others, and exclusion until 7 days after jaundice (or after dark urine, pale stools or first symptoms if there is no jaundice)."},
+    {title:"Follow to recovery, then prevent", html:"Repeat LFTs until they are normal. Reassure that hepatitis A does not become chronic and leaves lifelong immunity. Check that contacts have been dealt with, and use the episode to offer vaccination to others in at-risk groups."}
+  ],
+  sections:[
+    {id:"redflags", nav:"Red flags", title:"Red flags: liver failure, and jaundice that is not hepatitis A", sub:"Most patients recover at home. These are the ones who must not be missed.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Encephalopathy", html:"New confusion, drowsiness, slowed thinking, day-night reversal or a liver flap in a jaundiced patient is <b>acute liver failure until proved otherwise</b>. Arrange same-day hospital assessment. Avoid sedatives.", src:"BSG abnormal liver blood tests (Newsome 2018)"},
+         {tone:"red", h:"🔴 Coagulopathy", html:"A raised <b>INR</b>, spontaneous bruising, gum or nose bleeding. The INR is the best early marker of falling liver synthetic function. Check it at diagnosis and again if the patient deteriorates. Synthetic failure needs urgent secondary care.", src:"BSG abnormal liver blood tests (Newsome 2018)"},
+         {tone:"red", h:"🔴 Unable to maintain hydration", html:"Persistent vomiting, reduced urine output or AKI on U&amp;E. Admit for fluids and monitoring, especially an older adult or someone with other illness."},
+         {tone:"amber", h:"🟠 Higher-risk hosts", html:"<b>Older adults</b> and people with <b>chronic liver disease</b>, including chronic hepatitis B or C, or alcohol-related liver disease, have a higher case fatality. Review them more often and have a low threshold for specialist advice.", src:"Green Book ch.17 (2024)"},
+         {tone:"amber", h:"🟠 Prolonged or relapsing course", html:"A small proportion have <b>cholestatic hepatitis</b>, with jaundice and itch lasting weeks to months, or a <b>relapse</b> after apparent recovery. Both usually still resolve, but discuss with hepatology and exclude other causes.", src:"UKHSA hepatitis A guidance (2024)"},
+         {tone:"purple", h:"Jaundice aged 40 and over — NICE NG12 suspected cancer <span class='tw'>2WW</span>", html:"<b>NICE NG12 1.2.4:</b> refer people using a suspected cancer pathway referral for pancreatic cancer if they are aged 40 and over and have jaundice. Where HAV IgM is positive with a hepatitic LFT pattern, the infection explains the jaundice. Where the serology is negative, or the picture is <b>painless, obstructive or cholestatic</b>, make the referral.", src:"NICE NG12 (updated April 2026), rec 1.2.4"}
+       ]},
+       {b:"why", html:"Hepatitis A does not become chronic, so its danger lies almost entirely in the first few weeks. It can fail the liver acutely, rarely, and mostly in older people or livers that were already damaged. Failure shows first as a rising INR and subtle confusion, long before the patient looks critically ill. The other trap is diagnostic: a hepatitis A outbreak in the news makes it easy to label every jaundiced patient as infective, and the NG12 age rule exists because painless jaundice in middle age is a classic presentation of pancreatic cancer."}
+     ]},
+
+    {id:"suspect", nav:"Suspect", title:"Who to suspect: exposure, incubation and presentation", sub:"Spread is faecal-oral. Most UK cases are linked to travel, a household or sexual contact, or a food-borne outbreak.",
+     blocks:[
+       {b:"table", head:["Feature","Detail"], rows:[
+         ["<b>Incubation</b>","Usually about <b>28–30 days</b>, occasionally as short as <b>15</b> or as long as <b>50 days</b>. Ask about travel and exposures over the previous two months."],
+         ["<b>Exposures</b>","Travel to countries with high or intermediate prevalence · household or sexual contact with a case · sex between men · injecting drug use · contaminated food (including shellfish and frozen berries in past outbreaks) or water · nurseries and residential settings"],
+         ["<b>Prodrome</b>","Fever, malaise, anorexia, nausea, vomiting, aversion to smoking or fatty food, and right upper quadrant discomfort, lasting days to about a week"],
+         ["<b>Icteric phase</b>","<b>Dark urine</b> and <b>pale stools</b> come first, then <b>jaundice</b>, often with itch. The fever usually settles as jaundice appears. There may be tender hepatomegaly."],
+         ["<b>Age effect</b>","Young children often have a mild or silent infection and can spread it unnoticed. Adults are usually symptomatic and are more often jaundiced."],
+         ["<b>Duration</b>","Most adults recover over several weeks. Fatigue can last longer. Infection does not become chronic and gives lifelong immunity."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🌍 Travel history", html:"Ask where, when, and whether they were vaccinated. Hepatitis A is one of the most common vaccine-preventable infections in travellers. A single dose before travel gives good protection, so an unvaccinated traveller is a missed prevention opportunity.", src:"Green Book ch.17 (2024)"},
+         {tone:"blue", h:"🏳️‍🌈 Sexual history", html:"Outbreaks among <b>gay, bisexual and other men who have sex with men</b> recur. Ask sensitively about sexual contacts, which matters for tracing contacts. Offer a full STI and HIV screen, and vaccination of partners through the health protection team.", src:"Green Book ch.17 (2024) · UKHSA hepatitis A guidance (2024)"},
+         {tone:"cream", h:"🍽️ Occupation matters", html:"<b>Food handlers</b>, healthcare and social care workers, and staff or children in <b>nurseries</b> create the biggest risk of onward spread. Record the occupation, and any setting attended, at the first contact, because it drives the public health response.", src:"UKHSA hepatitis A guidance (2024)"},
+         {tone:"blue", h:"🔁 The same picture, a different virus", html:"<b>Hepatitis E</b> causes an almost identical acute illness and can be acquired in the UK as well as abroad. Test for HEV IgM when hepatitis A, B and C are negative.", src:"BSG abnormal liver blood tests (Newsome 2018)"}
+       ]}
+     ]},
+
+    {id:"tests", nav:"Confirm", title:"Confirming it: serology, liver tests and what else to send", sub:"One set of bloods should confirm the diagnosis, grade the severity and rule out the other causes.",
+     blocks:[
+       {b:"table", head:["Test","What it tells you","Action"], rows:[
+         ["<b>HAV IgM</b>","Acute or recent hepatitis A. Usually positive by the time symptoms appear.","Positive: notify (if not already done) and manage as below."],
+         ["<b>HAV IgG / total antibody</b>","Past infection or vaccination, which means immunity","Positive IgG with negative IgM: this is not acute hepatitis A. Look for another cause."],
+         ["<b>ALT / AST</b>","Typically very high, often into the thousands, in a hepatitic pattern","Very high values alone do not predict a poor outcome. The INR and conscious level matter more."],
+         ["<b>Bilirubin, ALP, GGT</b>","Bilirubin rises with jaundice. A dominant ALP rise suggests cholestasis or obstruction.","A cholestatic or obstructive picture needs imaging and makes NG12 more relevant."],
+         ["<b>INR</b> (or prothrombin time)","Liver synthetic function","Raised: discuss urgently with the medical or hepatology team."],
+         ["<b>FBC, U&amp;E, glucose</b>","Dehydration, AKI, hypoglycaemia in severe disease","Abnormal results in an unwell patient: admit."],
+         ["<b>Acute hepatitis screen</b>","HBsAg and anti-HBc IgM, HCV antibody or RNA, HEV IgM, plus a medication and alcohol review","Send if HAV IgM is negative, or at the same time if the history is unclear."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🧪 Testing on suspicion", html:"Do not delay notification until the result is back. Notification is required on clinical suspicion. The health protection team may arrange oral fluid or other testing of contacts and genotyping of the case during an outbreak investigation.", src:"Health Protection (Notification) Regulations 2010 · UKHSA hepatitis A guidance (2024)"},
+         {tone:"cream", h:"📈 Repeat bloods", html:"Repeat LFTs and INR within a few days if the patient is unwell, older or has liver disease. Then repeat every 1–2 weeks until they are clearly improving. Transaminases should fall steadily. A rising bilirubin with a rising INR is the warning pattern.", src:"BSG abnormal liver blood tests (Newsome 2018)"}
+       ]}
+     ]},
+
+    {id:"notify", nav:"Notify", title:"The statutory duty: notify, and what the health protection team does next", sub:"Notification is the single step that protects the patient's household, workplace and community.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"⚖️ Legal requirement", html:"<b>Acute infectious hepatitis</b> is a notifiable disease under the <b>Health Protection (Notification) Regulations 2010</b>. The attending registered medical practitioner must notify the proper officer of the local authority, in practice through the <b>UKHSA health protection team</b>. This is based on clinical suspicion. Do not wait for laboratory confirmation. The laboratory has a separate duty to report a positive HAV IgM.", src:"Health Protection (Notification) Regulations 2010 · UKHSA notifiable diseases guidance"},
+         {tone:"purple", h:"⏱️ Timing", html:"The Regulations require notice <b>in writing within 3 days</b> of forming the suspicion, and oral notice as soon as reasonably practicable when the case is urgent. UKHSA guidance asks for urgent cases to be phoned to the health protection team <b>within 24 hours</b>, and all cases reported (for example online) within 3 days. Hepatitis A usually qualifies, because contact vaccination must happen within 14 days. Follow the phone call with the written notification.", src:"Health Protection (Notification) Regulations 2010 · UKHSA notifiable diseases guidance"},
+         {tone:"blue", h:"📋 Information to give", html:"Demographics, onset dates (first symptom and jaundice), occupation and workplace, school or nursery, household and sexual contacts, travel, foods eaten, and whether any contacts are pregnant, over 60, immunosuppressed or have liver disease.", src:"UKHSA hepatitis A guidance (2024)"},
+         {tone:"green", h:"🤝 What the team then does", html:"The team identifies close contacts, offers vaccine or HNIG, and advises on exclusion for the case and for high-risk contacts. It looks for a common source and manages any outbreaks in nurseries, schools, food premises or among MSM. The GP's role is to notify early and to help with the practical steps.", src:"UKHSA hepatitis A guidance (2024)"}
+       ]}
+     ]},
+
+    {id:"care", nav:"Supportive care", title:"Supportive care at home", sub:"No antiviral treatment exists. The aim is comfort, hydration and avoiding any further load on the liver.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Comfort", tone:"cream", title:"Symptom control", when:"everyone", fromLabel:"from day one",
+          html:"Rest as needed. Small frequent meals and oral fluids. An antiemetic if vomiting, dose per BNF, with caution in severe hepatic impairment. <b>Paracetamol at standard doses</b> for pain or fever: avoid large doses and reduce the dose in low body weight (BNF). Use a sedating antihistamine or emollient for itch."},
+         {step:"Liver", tone:"amber", title:"Reduce the load on the liver", when:"until LFTs recover", fromLabel:"medicines review",
+          html:"<b>No alcohol</b> until the liver tests are normal. Review all medicines, including over-the-counter and herbal products, and stop non-essential hepatotoxic drugs. Avoid NSAIDs if the patient is dehydrated, and avoid sedatives and opioids that could mask or worsen encephalopathy. For oestrogen-containing contraception, check the FSRH UKMEC category for acute viral hepatitis."},
+         {step:"Review", tone:"cream", title:"Planned follow-up", when:"within days, then 1–2 weekly", fromLabel:"do not leave it open",
+          html:"Early review of hydration, conscious level and INR. Then LFTs until they return to normal. Safety-net clearly for confusion, bleeding and persistent vomiting."}
+       ]},
+       {b:"warn", html:"<b>Watch the older or already-cirrhotic patient closely.</b> The case fatality of hepatitis A rises with age and with pre-existing liver disease. For these patients, check the INR at diagnosis, review within 48 hours, and have a low threshold for discussion with hepatology."},
+       {b:"say", html:"This is hepatitis A, a liver infection you catch from traces of the virus on hands, food or water. The good news is that it clears on its own. It doesn't become a long-term infection, and once you've had it you're immune for life. There isn't a tablet that kills the virus, so the treatment is rest, fluids, no alcohol, and letting the liver recover. I'll check your blood tests to make sure that's happening. If you become confused or very drowsy, start bruising or bleeding, or can't keep fluids down, you need to be seen that day."}
+     ]},
+
+    {id:"exclusion", nav:"Exclusion", title:"Infectivity, hygiene and exclusion", sub:"The virus is shed in stool, mostly before the patient knows they are ill.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Infectious period","From about <b>2 weeks before the first symptoms</b> until <b>1 week after the onset of jaundice</b>. If there is no jaundice, until 1 week after other clinical features such as dark urine or pale stools."],
+         ["Exclusion of the case","Stay away from work, school or nursery until <b>7 days after the onset of jaundice</b>. If there is no jaundice, count 7 days from the onset of dark urine or pale stools, or from the first symptoms (fatigue, nausea, fever) if there were none. The health protection team advises on individual cases."],
+         ["Food handlers","Exclude until 7 days after the onset of jaundice. The health protection team advises on return and on the premises, and there may be an investigation of the food business."],
+         ["Children in nurseries","Young children often have silent infection and poor hygiene. The team assesses the setting as a whole and may offer vaccine to other children and staff."],
+         ["Hygiene at home","Wash hands thoroughly with soap and water after using the toilet and before handling food. Do not prepare food for others. Clean toilets and surfaces with a chlorine-based product. Do not share towels."],
+         ["Sex","Avoid sexual contact, including oral-anal contact, during the infectious period. Partners should be assessed for vaccination."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🏫 The exclusion table", html:"UKHSA's exclusion table for children and young people settings gives hepatitis A as <b>exclusion until 7 days after onset of jaundice</b>. For a case without jaundice, UKHSA's 2024 hepatitis A guidance counts from dark urine or pale stools, or from the first symptoms. The local health protection team manages the setting.", src:"UKHSA: Health protection in children and young people settings (exclusion table) · UKHSA hepatitis A guidance (2024)"},
+         {tone:"green", h:"✅ Soap and water, not just gel", html:"Give cases and close contacts spoken and written advice on handwashing. <b>Soap and running water</b> is the standard in the household and in care settings, because alcohol-based rubs are less reliable against hepatitis A.", src:"UKHSA hepatitis A guidance (2024)"}
+       ]}
+     ]},
+
+    {id:"contacts", nav:"Contacts", title:"Contacts and post-exposure prophylaxis", sub:"Organised by the health protection team after notification. The GP may be asked to give the vaccine or HNIG.",
+     blocks:[
+       {b:"table", head:["Close contact","Offer","Time window"], rows:[
+         ["<b>Healthy, susceptible</b> household, sexual or other close contact aged <b>1 year and over</b>","<b>Hepatitis A vaccine</b>, single dose","Within <b>14 days</b> of exposure (the health protection team dates the exposure)"],
+         ["Aged <b>over 60</b>, or <b>immunosuppressed</b>","Hepatitis A vaccine <b>plus HNIG</b>","Within <b>14 days</b> of exposure"],
+         ["<b>Chronic liver disease</b>, including chronic hepatitis B or C","Hepatitis A vaccine <b>plus HNIG</b>","HNIG up to <b>28 days</b> after exposure, because the consequences of infection are more severe"],
+         ["<b>Infants under 1 year</b>","Individual assessment by the health protection team. Hepatitis A vaccines are licensed from age 1.","As advised by the team"],
+         ["<b>Beyond the window</b>, or already symptomatic","Prophylaxis is unlikely to help. Test if symptomatic and advise hygiene.","—"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"💉 Why vaccine rather than immunoglobulin", html:"A single dose of hepatitis A vaccine gives rapid protection, and it outperforms HNIG at controlling community spread. HNIG is reserved for those at higher risk of severe disease, where it may add protection on top of the vaccine. The health protection team arranges the supply of HNIG.", src:"UKHSA hepatitis A immunoglobulin guidance (2024)"},
+         {tone:"cream", h:"🩺 GP role", html:"Give the vaccine promptly when the team asks, and record it. Flag any contacts known to be pregnant, immunosuppressed or to have liver disease. Tell symptomatic contacts to come forward for testing, and notify any new case.", src:"UKHSA hepatitis A guidance (2024)"},
+         {tone:"green", h:"🤰 Pregnant contacts", html:"Hepatitis A vaccine is inactivated, and it can be given in pregnancy when the risk of infection is significant. Discuss with the health protection team.", src:"Green Book ch.17 (2024)"},
+         {tone:"amber", h:"🟠 Completing the course", html:"A contact who receives one dose after exposure should be offered a <b>second (booster) dose</b> later if they remain in a risk group, such as MSM or a person with chronic liver disease, for long-term protection.", src:"Green Book ch.17 (2024)"}
+       ]}
+     ]},
+
+    {id:"prevent", nav:"Prevention", title:"Pre-exposure vaccination: who should already be protected", sub:"Each case is a prompt to check the people around it and the practice's at-risk groups.",
+     blocks:[
+       {b:"table", head:["Group","Why"], rows:[
+         ["<b>Travellers</b> to countries of high or intermediate prevalence","The most common route of UK infection. One dose before travel. A second dose 6–12 months later gives long-term protection."],
+         ["<b>Chronic liver disease</b>, including hepatitis B or C and alcohol-related liver disease","Hepatitis A on a damaged liver carries a higher risk of liver failure and death."],
+         ["<b>Gay, bisexual and other men who have sex with men</b>","Recurrent outbreaks through sexual transmission"],
+         ["<b>People who inject drugs</b>","Outbreaks linked to poor hygiene and shared equipment"],
+         ["<b>Haemophilia</b>","Historical risk from plasma-derived clotting factors"],
+         ["<b>Occupational risk</b>","Certain laboratory, sewage and other exposed workers, as set out in the Green Book"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"✅ Schedule", html:"Monovalent inactivated vaccine: a <b>single dose</b>, then a <b>booster at 6–12 months</b> for long-term protection. Combined hepatitis A and B, and hepatitis A and typhoid, vaccines exist for people who need both. A delayed booster does not mean restarting the course.", src:"Green Book ch.17 (2024)"},
+         {tone:"blue", h:"🔎 Use the case", html:"When you diagnose hepatitis A, check the vaccination status of the practice's at-risk patients in the same household or network, such as partners with chronic liver disease or MSM contacts. Offer pre-exposure vaccination to anyone the health protection team has not already covered.", src:"Green Book ch.17 (2024)"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: who, where and how fast", sub:"The urgency is set by the liver and by public health.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day: medical admission", html:"Encephalopathy · raised INR or bleeding · persistent vomiting or dehydration · AKI · hypoglycaemia · severe illness in an older adult or someone with chronic liver disease.", src:"BSG abnormal liver blood tests (Newsome 2018)"},
+         {tone:"purple", h:"Statutory: notify the health protection team", html:"On clinical suspicion, by telephone within 24 hours when urgent public health action is needed, and in writing within 3 days. This triggers contact tracing, vaccine or HNIG, and exclusion advice.", src:"Health Protection (Notification) Regulations 2010 · UKHSA notifiable diseases guidance"},
+         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> · NICE NG12 1.2.4", html:"Refer people using a suspected cancer pathway referral for <b>pancreatic cancer</b> if they are <b>aged 40 and over and have jaundice</b>. Use this whenever the jaundice is not explained by a confirmed acute hepatitis, particularly if it is painless, obstructive or cholestatic.", src:"NICE NG12 (updated April 2026), rec 1.2.4"},
+         {tone:"amber", h:"Soon: hepatology", html:"Pre-existing chronic liver disease · prolonged cholestasis or a relapsing course · LFTs not improving over several weeks · diagnostic uncertainty with a negative acute hepatitis screen.", src:"BSG abnormal liver blood tests (Newsome 2018)"},
+         {tone:"green", h:"Stays in primary care", html:"Well, drinking, alert, INR normal: supportive care, notification, exclusion, LFTs until normal, and a check that contacts have been dealt with.", src:"UKHSA hepatitis A guidance (2024)"}
+       ]},
+       {b:"say", html:"We have to tell the public health team about hepatitis A by law. That isn't about you having done anything wrong. It's so they can offer a vaccine to the people you live with, because if they get it within two weeks it can stop them catching it. Please stay off work for a week after the yellowness started, and don't cook for anyone else until then."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card. The Casebook holds the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 34-year-old chef rings for results. His ALT is 2,400 and his bilirubin is raised, after two weeks of malaise and a week of dark urine following a trip abroad. HAV IgM is positive. He wants to go back to work tomorrow because the restaurant is short-staffed. He lives with his partner and their 3-year-old, who goes to nursery.", src:"UKHSA hepatitis A guidance (2024)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Asks about <b>confusion, bleeding and vomiting</b> and checks the <b>INR</b>. Explains the <b>statutory notification</b>, and phones the health protection team. Advises <b>exclusion until 7 days after jaundice</b> and explains why this is essential for a <b>food handler</b>. Identifies the partner and the nursery child as close contacts who need <b>vaccine within 14 days</b>. Gives hygiene advice with soap and water. Advises no alcohol and reviews medicines. Arranges repeat LFTs. Handles his concern about the job with empathy, without giving way on exclusion.", src:"Health Protection (Notification) Regulations 2010 · UKHSA hepatitis A guidance (2024)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>UKHSA — Public health control and management of hepatitis A (2024 updated guidance, 13 February 2024)</b><br><a href="https://assets.publishing.service.gov.uk/media/65ccdbbd1d93950012946677/Hepatitis-A-guidance-13-february-2024.pdf" rel="noopener">assets.publishing.service.gov.uk — hepatitis A guidance 2024</a><span class="rd"> — infectious period, exclusion, food handlers, contact management, post-exposure prophylaxis</span></li>'+
+         '<li><b>UKHSA — Hepatitis A immunoglobulin (issued 2024)</b><br><a href="https://www.gov.uk/government/publications/immunoglobulin-when-to-use/hepatitis-a-immunoglobulin-issued-2024" rel="noopener">gov.uk — hepatitis A immunoglobulin</a><span class="rd"> — HNIG within 14 days for over-60s and immunosuppressed, up to 28 days in chronic liver disease</span></li>'+
+         '<li><b>UKHSA — Hepatitis A: the Green Book, chapter 17 (updated 12 January 2024)</b><br><a href="https://assets.publishing.service.gov.uk/media/65a1743269fbd3000d25c075/Greenbook-chapter-17-hepatitis-A-12January24.pdf" rel="noopener">assets.publishing.service.gov.uk — Green Book chapter 17</a><span class="rd"> — incubation 15–50 days, case fatality by age and liver disease, pre-exposure groups, schedule</span></li>'+
+         '<li><b>The Health Protection (Notification) Regulations 2010 (SI 2010/659)</b> and <b>UKHSA — Notifiable diseases and how to report them</b><br><a href="https://www.legislation.gov.uk/uksi/2010/659/contents/made" rel="noopener">legislation.gov.uk — SI 2010/659</a> · <a href="https://www.gov.uk/guidance/notifiable-diseases-and-how-to-report-them" rel="noopener">gov.uk — notifiable diseases</a><span class="rd"> — acute infectious hepatitis; written notice within 3 days, oral notice if urgent (UKHSA: telephone within 24 hours)</span></li>'+
+         '<li><b>UKHSA — Health protection in children and young people settings: exclusion table</b><br><a href="https://www.gov.uk/government/publications/health-protection-in-schools-and-other-childcare-facilities" rel="noopener">gov.uk — children and young people settings</a><span class="rd"> — exclusion until 7 days after onset of jaundice</span></li>'+
+         '<li><b>BSG — Newsome PN et al. Guidelines on the management of abnormal liver blood tests. Gut 2018;67:6–19</b><br><a href="https://gut.bmj.com/content/67/1/6" rel="noopener">gut.bmj.com — BSG 2018</a><span class="rd"> — acute hepatitis screen including HEV, urgent referral for synthetic failure</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (2015, updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — recommendation 1.2.4, jaundice aged 40 and over</span></li>'+
+         '<li><b>BNF — paracetamol, antiemetics: hepatic impairment</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — dosing cautions in liver disease</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Acute hepatitis A in primary care — UKHSA Public health control and management of hepatitis A (2024), UKHSA hepatitis A immunoglobulin guidance (2024), UKHSA Green Book chapter 17 (2024), Health Protection (Notification) Regulations 2010, BSG abnormal liver blood tests (Newsome 2018) and NICE NG12 (updated April 2026). Contact prophylaxis is decided by the local health protection team. Not a substitute for clinical judgement."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Varicocele — Protocol · Reasoning GP</title>
+<meta name="description" content="Varicocele in primary care on one page: confirm the typical left-sided, reducible swelling, image the right-sided, sudden or non-reducing one, reassure most men, the NG257 (2026) fertility pathway and when repair is worth considering, adolescent testicular growth, and the NG12 testicular and haematuria criteria." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/varicocele.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316674199239 tools/management/varicocele.html">
+<meta name="omelette-print-source" content="v1790380066109502 tools/management/varicocele.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -23,94 +24,160 @@
 MG.render({
   icon:"🔵",
   title:"Varicocele",
-  stemTitle:"Varicocele — ongoing management",
-  stemSub:"Primary-care management of a varicocele \u2014 reassurance and conservative measures for the common benign case, while recognising the red flags (right-sided, acute, non-reducing) and the fertility and adolescent-growth referral triggers. NICE / BAUS \u00b7 2026.",
-  guideline:"BAUS",
-  glance:[
-    {lbl:"Typical", val:"Left-sided", sub:"\u2018bag of worms\u2019, reducible"},
-    {lbl:"Red flag", val:"Right-sided / acute", sub:"?renal mass \u2192 USS"},
-    {lbl:"Most cases", val:"Reassure", sub:"+ scrotal support"},
-    {lbl:"Refer if", val:"Subfertility", sub:"+ varicocele"},
-    {lbl:"Adolescent", val:"Testicular asymmetry", sub:"refer"},
-    {lbl:"Pain", val:"Simple analgesia", sub:"+ support"}
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Varicocele: usually a harmless left-sided swelling, occasionally the clue to a mass above it",
+  stemSub:"Most varicoceles are left-sided, soft, reduce on lying down and need nothing more than explanation. The job in general practice is to spot the few that do not fit that pattern and image them, to connect a varicocele with a couple’s fertility plans using the 2026 NICE fertility guideline, to watch testicular growth in adolescents, and to separate a varicose plexus from a testicular lump that meets NG12.",
+  guideline:"NICE NG257 (2026) · NICE NG12 (updated April 2026) · ESUR-SPIWG 2020 (international) · EAU Sexual and Reproductive Health 2025 (international) · EAU/ESPU Paediatric Urology 2024 (international)",
+  meta:[
+    {t:"NICE NG257 (Mar 2026) · fertility"},
+    {t:"ESUR-SPIWG 2020 · international imaging"},
+    {t:"EAU 2025 and EAU/ESPU 2024 · international"},
+    {t:"2WW · NG12 testis and haematuria", tone:"tw"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm and screen for red flags",
-      blocks:[
-        {b:"kv", rows:[
-          ["Typical","Soft \u2018bag of worms\u2019 above/around the testis, usually <b>left-sided</b>, decompresses when lying flat, may have dragging ache"],
-          ["Red flags","<b>Right-sided, sudden-onset, or non-reducing (persists lying down)</b> \u2192 image to exclude a retroperitoneal/renal mass"],
-          ["Assess","Pain, testicular size/asymmetry, fertility concern; examine standing + Valsalva"],
-          ["Grade","Subclinical \u2192 large/visible \u2014 informs referral for fertility/symptoms"]
-        ]},
-        {b:"why", html:"Most varicoceles are benign and left-sided (anatomy of the left testicular vein). The crucial exception is a <strong>right-sided, acute, or non-reducing</strong> varicocele, which can be caused by an obstructing abdominal/renal mass and needs imaging \u2014 the one thing not to miss in an otherwise reassuring presentation."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Reassurance and conservative measures",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"💬 Reassurance", html:"Most varicoceles are harmless and need no treatment \u2014 explain and reassure."},
-          {t:"🩲 Scrotal support", html:"Supportive underwear can ease dragging discomfort."},
-          {t:"💊 Analgesia", html:"Simple analgesia (paracetamol/NSAID) for mild discomfort."},
-          {t:"📋 Fertility context", html:"If trying to conceive, discuss semen analysis and the role of referral."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Symptomatic relief only",
-      blocks:[
-        {b:"kv", rows:[
-          ["Pain","Simple analgesia (paracetamol \u00b1 NSAID) for discomfort \u2014 there is no specific drug treatment"],
-          ["Definitive treatment","Surgical ligation or radiological embolisation \u2014 specialist, for specific indications (node 7)"]
-        ]},
-        {b:"why", html:"There is no medical therapy that resolves a varicocele \u2014 management is reassurance and analgesia, with referral for the minority who meet intervention criteria (significant pain, subfertility, or adolescent testicular growth concerns)."}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Symptoms, fertility, growth",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Pain / size","As needed","Significant or worsening \u2192 consider referral"],
-          ["Fertility","If trying to conceive","Semen analysis; varicocele + abnormal semen \u2192 refer"],
-          ["Adolescent testicular size","Periodically","Asymmetry / failure to grow \u2192 refer"],
-          ["Red-flag change","Any time","New right-sided/non-reducing \u2192 urgent imaging"]
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"At presentation", title:"Assess + reassure", html:"Exclude red flags; reassure; conservative measures; discuss fertility if relevant."},
-          {n:"2", when:"As needed", title:"Symptom review", html:"Review persistent pain or fertility concerns; refer if criteria met."},
-          {n:"3", when:"Adolescents", title:"Growth monitoring", html:"Monitor testicular size; refer if asymmetry develops."}
-        ]}
-      ]},
-    {t:"loop", icon:"🔁", title:"Persistent problem? Re-check before referral",
-      arrow:"\u2026if pain or fertility concern persists",
-      intro:"Confirm the indication and exclude red flags before referral.",
-      checks:[
-        {b:"1 \u00b7 Red flag", html:"Right-sided / acute / non-reducing \u2192 imaging for renal/abdominal mass."},
-        {b:"2 \u00b7 Pain", html:"Significant, persistent pain despite support/analgesia \u2192 urology."},
-        {b:"3 \u00b7 Fertility", html:"Subfertility + abnormal semen analysis + palpable varicocele \u2192 referral."},
-        {b:"4 \u00b7 Adolescent", html:"Testicular asymmetry / growth arrest \u2192 paediatric urology."},
-        {b:"5 \u00b7 Reassure", html:"Otherwise asymptomatic \u2192 reassurance, no intervention needed."}
-      ],
-      back:"Red flags excluded, indication confirmed \u2192 refer urology"},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Acute scrotum", html:"\u201cSudden severe testicular pain, swelling, redness \u2014 seek urgent help (rule out torsion/other emergencies).\u201d"},
-          {t:"⚠️ Right-sided / won\u2019t reduce", html:"\u201cIf a new swelling is on the right, came on suddenly, or doesn\u2019t go down lying flat \u2014 tell us; we\u2019ll arrange a scan.\u201d"},
-          {t:"👶 Fertility", html:"\u201cIf you\u2019re trying for a baby and having difficulty, let us know \u2014 we can check a semen sample.\u201d"},
-          {t:"🩲 Reassurance", html:"\u201cMost varicoceles are harmless \u2014 a support and simple painkillers are usually all that\u2019s needed.\u201d"}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
-      arrow:"urgent for red flags; routine for fertility/symptoms",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Urgent imaging", html:"Right-sided, acute-onset, or non-reducing varicocele \u2192 USS to exclude renal/retroperitoneal mass."},
-          {t:"Subfertility", html:"Palpable varicocele with abnormal semen analysis in a couple trying to conceive \u2192 urology/fertility."},
-          {t:"Significant pain", html:"Persistent bothersome pain despite conservative measures \u2192 urology."},
-          {t:"Adolescent", html:"Testicular asymmetry or growth arrest \u2192 paediatric urology."}
-        ]},
-        {b:"say", html:"This is a very common and usually harmless swelling of the veins in the scrotum. We don\u2019t normally need to treat it, but I\u2019ll refer you if it\u2019s painful or if it\u2019s affecting fertility \u2014 and let me know straight away if a new swelling appears on the right side."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#examine'><b>Examine</b><small>standing, then lying</small></a><a href='#redflags'><b>Atypical?</b><small>right, sudden, non-reducing</small></a><a href='#fertility'><b>Fertility</b><small>NG257 semen pathway</small></a><a href='#refer'><b>Refer</b><small>imaging, urology, 2WW</small></a></div>",
+  quickSub:"The six points that change what you do today. Each traces to a named primary source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"amber", h:"Right-sided, sudden or not reducing: scan the abdomen", html:"A varicocele that is <b>isolated on the right</b>, appears <b>suddenly</b>, or <b>does not empty when the man lies flat</b> may be caused by something pressing on the veins above it, such as a renal or retroperitoneal mass. The ESUR scrotal imaging group (international) advises extending the ultrasound to the abdomen for an isolated right varicocele, and supports doing so for one of acute onset, particularly if it stays unchanged lying down. Arrange it urgently; no NICE guideline sets a timescale."},
+    {tone:"green", h:"Most men need only explanation", html:"A soft, left-sided ‘bag of worms’ above the testis that fills on standing and empties lying down is a benign dilatation of the pampiniform venous plexus. It is found in around one man in seven. No medicine shrinks it, and most never need treatment."},
+    {tone:"blue", h:"Trying for a baby? NG257 has changed", html:"NICE NG257 (March 2026), which replaced CG156, says to <b>consider radiological or surgical treatment</b> for a varicocele <b>detected on clinical examination</b> in a man with an <b>abnormal semen analysis</b>, taking account of the female partner’s fertility. Repeat an abnormal semen analysis, ideally 3 months later."},
+    {tone:"cream", h:"Adolescents: measure the testes", html:"The EAU/ESPU paediatric guideline (international) offers surgery when the testis on the varicocele side stays smaller by <b>more than 2 mL or 20%</b>, and in several other situations. Otherwise, reassess growth at each review rather than treating the varicocele itself."},
+    {tone:"blue", h:"Grade it at the bedside", html:"Examine standing, with a Valsalva manoeuvre, and again lying flat. Grade 1: felt only on Valsalva. Grade 2: felt standing without Valsalva. Grade 3: visible through the scrotal skin. A varicocele seen only on ultrasound (subclinical) is not treated."},
+    {tone:"purple", h:"A lump in the testis itself is a different pathway", html:"NICE NG12: consider a suspected cancer pathway referral for testicular cancer with a <b>non-painful enlargement or change in shape or texture of the testis</b>, and consider a <b>direct access ultrasound</b> for <b>unexplained or persistent testicular symptoms</b>. Men aged 45 and over with unexplained visible haematuria meet NG12 for renal and bladder cancer."}
+  ],
+  pathwaySub:"The consultation in five moves. The red step is the one that must not be skipped.",
+  pathway:[
+    {title:"Is it a typical varicocele?", html:"Left-sided, soft, above and behind the testis, fills on standing and empties on lying flat. If it is <b>right-sided alone, sudden in onset, painful from the start, or does not empty lying down</b>, or the boy is prepubertal, it is atypical and needs abdominal imaging.", alert:true},
+    {title:"Feel the testes separately", html:"Size, consistency and any lump within the body of the testis. A lump in the testis is not a varicocele. Compare volumes by eye or orchidometer and record them, especially in adolescents."},
+    {title:"Ask what bothers him", html:"Dragging ache, cosmetic concern, fertility plans, or an anxious teenager. The answer decides whether this is reassurance, symptom relief, a fertility work-up or a paediatric referral."},
+    {title:"Conservative care", html:"Explanation, supportive underwear, simple analgesia and advice to rest lying down when the ache builds. Nothing else is needed for most men."},
+    {title:"Refer on a specific indication", html:"Urgent imaging for atypical features; urology for persistent troublesome pain; fertility assessment under NG257 when a couple has not conceived; paediatric urology for a persistently smaller testis; NG12 pathways for a testicular lump or visible haematuria."}
+  ],
+  sections:[
+    {id:"understand", nav:"Understand", title:"What a varicocele is, and why it is usually on the left", sub:"The anatomy explains both the typical presentation and the warning signs.",
+     blocks:[
+       {b:"kv", rows:[
+         ["What it is","Dilated, tortuous veins of the pampiniform plexus in the spermatic cord, caused by reflux down the testicular (internal spermatic) vein"],
+         ["How common","Roughly 15% of adult men, and noticeably commoner among men investigated for infertility. Usually appears around puberty and is rare before about 10 years of age"],
+         ["Side","About 90% are left-sided. The left testicular vein drains at a right angle into the left renal vein, a longer column with more back-pressure; the right drains obliquely into the inferior vena cava"],
+         ["Symptoms","Often none. A dull, dragging ache that builds through the day or on standing and eases lying down. A visible or palpable swelling"],
+         ["Possible effects","Impaired semen quality in some men, reduced growth of the testis on the affected side in some adolescents, and occasionally pain"]
+       ]},
+       {b:"why", html:"Because the left testicular vein joins the left renal vein, anything that obstructs the left renal vein (a renal tumour or its venous extension, a large retroperitoneal mass, or compression between the aorta and superior mesenteric artery) can produce a left varicocele that does not empty when the man lies down. A right-sided varicocele on its own is unusual, because the right vein enters the large, low-pressure vena cava, so it too raises the question of something above. That is the reasoning behind the imaging advice: the sign is a clue about the abdomen, not the scrotum."}
+     ]},
+
+    {id:"examine", nav:"Examine", title:"Examination and grading", sub:"Examine standing first, then lying. The change between the two is the key sign.",
+     blocks:[
+       {b:"table", head:["Step","What you are checking","What it tells you"], rows:[
+         ["<b>Standing, relaxed</b>","Visible veins through the skin; palpable ‘bag of worms’ above the testis","Grade 3 if visible; grade 2 if palpable without Valsalva"],
+         ["<b>Standing, Valsalva</b>","Veins that fill or become palpable only on straining","Grade 1"],
+         ["<b>Lying flat</b>","Does the swelling empty?","Emptying is typical. <b>Failure to empty is a red flag</b> for venous obstruction above"],
+         ["<b>Side</b>","Left, right or both","Isolated right-sided: atypical, image the abdomen"],
+         ["<b>Each testis</b>","Size, consistency, any discrete lump, tenderness","A lump in the testis itself follows NG12, not this page"],
+         ["<b>Abdomen</b>","Loin or abdominal mass","A mass with an atypical varicocele needs urgent investigation"],
+         ["<b>Urine</b>","Dipstick for blood","Visible haematuria at 45 or over meets NG12"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Clinical grades", html:"Grade 1, palpable only with Valsalva; grade 2, palpable at rest standing; grade 3, visible. A <b>subclinical</b> varicocele is one found only on ultrasound; neither UK nor European guidance supports treating it, and routine scrotal ultrasound to hunt for non-palpable varicoceles is not advised.", src:"EAU Sexual and Reproductive Health 2025 (international)"},
+         {tone:"blue", h:"When ultrasound helps", html:"Doppler ultrasound confirms the diagnosis when the examination is uncertain, measures testicular volume and excludes a testicular lesion. ESUR recommends recording the largest vein diameter and reflux, lying and standing, and measuring both testes.", src:"ESUR-SPIWG 2020 · International"}
+       ]},
+       {b:"why", html:"A reducible left-sided varicocele that a man has noticed for years is almost always benign. The features that change the plan are all found on a two-minute examination: the side, whether it empties lying down, how quickly it appeared, and whether the testis itself is normal. Recording them also gives you a baseline if the man re-presents."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — the varicocele that is a clue to something else", sub:"Uncommon, but the reason every varicocele deserves a proper examination.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Isolated right-sided varicocele", html:"ESUR recommends extending the ultrasound to the abdomen to look for congenital venous anomalies and abdominal or retroperitoneal disease. The EAU/ESPU paediatric guideline asks for an abdominal ultrasound in every isolated right varicocele to rule out a retroperitoneal mass. Request the scan urgently.", src:"ESUR-SPIWG 2020 (international) · EAU/ESPU Paediatric Urology 2024 (international)"},
+         {tone:"amber", h:"Sudden onset, or does not empty lying down", html:"A varicocele of acute onset on either side, particularly one unchanged in the supine position, justifies abdominal imaging in the ESUR view, because an obstructing renal or retroperitoneal mass is possible.", src:"ESUR-SPIWG 2020 · International"},
+         {tone:"amber", h:"Prepubertal boy", html:"Varicoceles are rare before puberty. The EAU/ESPU paediatric guideline recommends a standard abdominal ultrasound in all prepubertal boys with a varicocele to exclude a retroperitoneal mass.", src:"EAU/ESPU Paediatric Urology 2024 (international)"},
+         {tone:"red", h:"Acute scrotal pain", html:"Sudden severe pain, a high-riding or horizontal testis, or vomiting in a young man: torsion until proved otherwise, same-day surgical assessment. A varicocele does not cause acute severe pain.", src:"BASHH epididymo-orchitis 2020"},
+         {tone:"purple", h:"NG12 testicular cancer criteria", html:"NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for testicular cancer in men with a <b>non-painful enlargement or change in shape or texture of the testis</b>. Consider a <b>direct access ultrasound scan</b> for testicular cancer in men with <b>unexplained or persistent testicular symptoms</b>. A lump in the testis is never explained away by a coexisting varicocele.", src:"NICE NG12 (2015, updated April 2026)"},
+         {tone:"purple", h:"NG12 renal cancer criterion", html:"NICE NG12 has no varicocele criterion. The renal criterion that may apply: refer people <b>aged 45 and over</b> using a suspected cancer pathway for bladder or renal cancer if they have <b>unexplained visible haematuria without urinary tract infection</b>, or <b>visible haematuria that persists or recurs after successful treatment</b> of a urinary tract infection.", src:"NICE NG12 (2015, updated April 2026)"}
+       ]},
+       {b:"warn", html:"No NICE guideline sets a pathway for an atypical varicocele. The advice to image the abdomen rests on the ESUR and EAU/ESPU guidelines (international) and on the venous anatomy. Request an urgent ultrasound with the reason stated, and use an NG12 pathway only if its own criteria are met."}
+     ]},
+
+    {id:"conservative", nav:"Conservative", title:"Conservative care for the typical varicocele", sub:"What most men need, and what they do not.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"Explanation", html:"A common, benign widening of the veins, like a varicose vein, that does not turn into cancer, and most men with one have normal fertility."},
+         {t:"Supportive underwear", html:"Snug briefs or athletic support reduce the dragging ache, particularly on long days standing or during exercise."},
+         {t:"Simple analgesia", html:"Paracetamol or an NSAID for a flare of aching, taken as needed (dose per BNF)."},
+         {t:"Lying down", html:"The ache eases as the veins empty; a rest period helps at the end of the day."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"No medicine treats a varicocele", html:"Management is explanation and symptom relief. Treatment of the varicocele itself is by surgical ligation or radiological embolisation, and NG257 found no important difference between the two for fertility outcomes.", src:"NICE NG257 (2026)"},
+         {tone:"green", h:"Subclinical varicoceles are left alone", html:"A varicocele seen only on ultrasound is not treated, and a man with a palpable varicocele and normal semen does not need repair for fertility.", src:"EAU Sexual and Reproductive Health 2025 (international)"}
+       ]}
+     ]},
+
+    {id:"fertility", nav:"Fertility", title:"Fertility: connecting the varicocele to the couple", sub:"The one area where UK guidance now actively supports treatment. NICE NG257 (March 2026) replaced CG156.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", when:"when to assess", tone:"blue", title:"Start assessment at the right time", html:"NG257: offer clinical assessment and investigation if a couple has not conceived after <b>1 year</b> of regular unprotected vaginal intercourse. Offer referral at presentation if the partner trying to conceive is <b>36 or over</b>, or either partner has a known or suspected cause of infertility or a history of predisposing factors."},
+         {step:"2", when:"semen analysis", tone:"blue", title:"Semen analysis, repeated if abnormal", html:"If the first result is abnormal, NG257 advises a <b>repeat about 3 months later</b> to cover a full cycle of sperm production, or as soon as possible if azoospermia or severe oligozoospermia is found."},
+         {step:"3", when:"clinical varicocele plus abnormal semen", tone:"cream", title:"Consider treatment of the varicocele", html:"NG257: <b>consider radiological or surgical treatment</b>, taking female fertility factors into account, for a varicocele detected on clinical examination in a man with an abnormal semen analysis. Where severe female factors make natural conception impossible, treating the varicocele may not help the couple."},
+         {step:"4", when:"refer", tone:"cream", title:"Fertility clinic or urology", html:"Refer the couple together under local fertility pathways, with both partners’ results. The specialist weighs repair against assisted conception, bearing in mind that live-birth data after repair are limited."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"What changed in 2026", html:"CG156 (2013) advised against surgery for varicocele as a fertility treatment. NG257 reviewed newer evidence of higher pregnancy rates after treatment in men with a clinical varicocele and abnormal semen, and now says to consider it.", src:"NICE NG257 (2026)"},
+         {tone:"blue", h:"European position", html:"EAU 2025 (international) recommends repair for infertile men with a clinical varicocele, abnormal semen parameters and no other male cause, and advises against treating a subclinical varicocele or a man with normal semen.", src:"EAU Sexual and Reproductive Health 2025 (international)"}
+       ]},
+       {b:"say", html:"The swelling you’ve noticed is a varicocele, a cluster of widened veins. Lots of men have one and still become fathers without any treatment. Because you’re trying for a baby, the sensible step is to check a semen sample. If that shows a problem, fixing the veins is worth discussing with the specialist, alongside tests for your partner."}
+     ]},
+
+    {id:"adolescent", nav:"Adolescents", title:"Adolescents: it is the testis you are watching", sub:"No UK guideline covers adolescent varicocele; the EAU/ESPU paediatric urology guideline (2024) is used and labelled international.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Offer surgery for these", html:"EAU/ESPU recommends that families are informed about and offered surgery for a varicocele with a <b>persistently small testis, a size difference of more than 2 mL or 20%</b>. Surgery can also be considered for a symptomatic varicocele, bilateral palpable varicoceles, other testicular conditions affecting fertility, abnormal semen quality in older adolescents, or cosmetic distress.", src:"EAU/ESPU Paediatric Urology 2024 (international)"},
+         {tone:"cream", h:"Otherwise, monitor", html:"Examine standing, grade it, and record both testicular volumes. Recheck at intervals through puberty; refer to paediatric urology if a persistent size difference develops or the young person is troubled by it.", src:"EAU/ESPU Paediatric Urology 2024 (international)"},
+         {tone:"amber", h:"Prepubertal or right-sided", html:"Abdominal ultrasound, to rule out a retroperitoneal mass, for every prepubertal boy with a varicocele and every isolated right-sided varicocele.", src:"EAU/ESPU Paediatric Urology 2024 (international)"},
+         {tone:"green", h:"Talking to teenagers", html:"Reassure that it is common at this age, that it does not affect sexual function, and that fertility is usually normal. Offer a chaperone and a private conversation, and invite them back if the ache or appearance bothers them.", src:"EAU/ESPU Paediatric Urology 2024 (international)"}
+       ]}
+     ]},
+
+    {id:"followup", nav:"Follow-up", title:"Review and safety-netting", sub:"Most men need no routine follow-up. These are the points worth building in.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"First visit", title:"Examine, grade and decide", html:"Typical: explain and offer conservative measures. Atypical: urgent abdominal and scrotal ultrasound. Testicular lump: NG12 pathway."},
+         {n:"2", when:"If trying to conceive", title:"Semen analysis", html:"Arrange at the NG257 time point, repeat an abnormal result at about 3 months, then refer the couple."},
+         {n:"3", when:"Adolescents", title:"Growth checks", html:"Record testicular volumes at intervals through puberty; persistent difference over 2 mL or 20% means paediatric urology."},
+         {n:"4", when:"Any time", title:"Change in character", html:"A new right-sided swelling, a varicocele that no longer empties lying down, a lump in the testis, or visible haematuria: return promptly."}
+       ]},
+       {b:"say", html:"This is a common and usually harmless swelling of the veins. Supportive underwear and painkillers help with the ache. Come back if a swelling appears on the right side, if it stops going down when you lie flat, if you feel a lump in the testicle itself, or if you ever see blood in your urine."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — which pathway, how fast", sub:"Match the referral to the specific indication.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day", html:"Acute severe scrotal pain or suspected torsion: surgical assessment now.", src:"BASHH epididymo-orchitis 2020"},
+         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> · NICE NG12", html:"Consider a suspected cancer pathway referral for testicular cancer in men with a <b>non-painful enlargement or change in shape or texture of the testis</b>; consider a <b>direct access ultrasound scan</b> for testicular cancer in men with <b>unexplained or persistent testicular symptoms</b>. Refer people <b>aged 45 and over</b> with <b>unexplained visible haematuria without urinary tract infection, or visible haematuria that persists or recurs after successful treatment</b> of a urinary tract infection, for bladder or renal cancer.", src:"NICE NG12 (2015, updated April 2026)"},
+         {tone:"amber", h:"Urgent imaging", html:"Isolated right-sided, sudden-onset or non-reducing varicocele, or any varicocele in a prepubertal boy: urgent scrotal and abdominal (renal and retroperitoneal) ultrasound, stating the reason. Act on the result; a mass goes to the appropriate cancer pathway.", src:"ESUR-SPIWG 2020 (international) · EAU/ESPU Paediatric Urology 2024 (international)"},
+         {tone:"blue", h:"Fertility assessment", html:"A couple not conceiving after 1 year, or sooner under NG257, where the man has a clinical varicocele and an abnormal (repeated) semen analysis: refer for consideration of radiological or surgical treatment alongside assessment of the female partner.", src:"NICE NG257 (2026)"},
+         {tone:"cream", h:"Paediatric urology", html:"Adolescent with a persistent testicular volume difference of more than 2 mL or 20%, bilateral palpable varicoceles, symptoms, or significant distress.", src:"EAU/ESPU Paediatric Urology 2024 (international)"},
+         {tone:"cream", h:"Urology, routine", html:"Persistent, troublesome pain or discomfort despite support and analgesia, after other causes of scrotal pain have been considered."}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 31-year-old man has noticed a soft swelling above his left testis for a year. It aches after a day on his feet. He and his partner (34) have been trying for a baby for 14 months. He has read online that ‘varicoceles cause infertility and need an operation’ and asks to be referred for surgery today.", src:"NICE NG257 (2026)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Examines <b>standing and lying</b>, grades it and checks <b>that it empties</b>; feels <b>each testis</b> for a lump; explains that many men with a varicocele father children; arranges <b>semen analysis</b> and assessment of <b>both partners</b> under NG257 rather than a direct surgical referral; explains that if semen is abnormal, <b>treatment is worth considering</b> under the 2026 guideline; and safety-nets for a right-sided or non-reducing swelling and a testicular lump.", src:"NICE NG257 (2026) · NICE NG12 (2015, updated April 2026) · ESUR-SPIWG 2020 (international)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every figure on this page traces to one of these primary sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>NICE NG257 — Fertility problems: assessment and treatment (March 2026; replaced CG156)<br><a href="https://www.nice.org.uk/guidance/ng257" rel="noopener">nice.org.uk/guidance/ng257</a><span class="rd"> — assessment after 1 year; earlier referral at 36 or over or with a known cause; repeat abnormal semen analysis at about 3 months; consider radiological or surgical treatment for a clinically detected varicocele with abnormal semen, taking female factors into account</span></li>'+
+         '<li>NICE NG12 — Suspected cancer: recognition and referral (2015, updated April 2026)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — testis: non-painful enlargement or change in shape or texture; direct access ultrasound for unexplained or persistent testicular symptoms; visible haematuria aged 45 and over. NG12 contains no varicocele criterion</span></li>'+
+         '<li>Freeman S, Bertolotto M, Richenberg J, et al. Ultrasound evaluation of varicoceles: guidelines and recommendations of the ESUR Scrotal and Penile Imaging Working Group. Eur Radiol 2020 (with the systematic review, J Ultrasound 2020) <b>international</b><span class="rd"> — imaging supine and standing; vein diameter and reflux; testicular volume; extend to the abdomen for isolated right-sided and acute or non-reducing varicoceles</span></li>'+
+         '<li>European Association of Urology — Guidelines on Sexual and Reproductive Health, male infertility (2025) <b>international</b><br><a href="https://uroweb.org/guidelines/sexual-and-reproductive-health" rel="noopener">uroweb.org/guidelines/sexual-and-reproductive-health</a><span class="rd"> — clinical grading; repair for clinical varicocele with abnormal semen and no other male factor; no treatment for subclinical varicocele or normal semen</span></li>'+
+         '<li>EAU/ESPU — Guidelines on Paediatric Urology, varicocele in children and adolescents (2024) <b>international</b><br><a href="https://uroweb.org/guidelines/paediatric-urology" rel="noopener">uroweb.org/guidelines/paediatric-urology</a><span class="rd"> — surgery for a persistent testicular size difference over 2 mL or 20% and other indications; abdominal ultrasound in prepubertal boys and isolated right varicoceles</span></li>'+
+         '<li>BASHH — UK national guideline for the management of epididymo-orchitis (2020; Int J STD AIDS 2021)<br><a href="https://www.bashh.org" rel="noopener">bashh.org</a><span class="rd"> — acute scrotal pain and exclusion of torsion</span></li>'+
+         '<li>BNF — paracetamol and NSAID dosing<br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Varicocele in adolescents and adults: fertility per NICE NG257 (March 2026); suspected cancer criteria per NICE NG12 (updated April 2026); imaging of atypical varicoceles per ESUR-SPIWG 2020, and adolescent management per EAU/ESPU 2024 and EAU 2025, all international as no UK guideline covers them. Not a substitute for clinical judgement or local referral pathways."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

@@ -188,7 +188,7 @@ RGPDiagnostic.register('dizziness', {
       nextIx: 'FBC, ferritin, B12/folate. If IDA — work up cause (coeliac, GI loss).',
       patientPhrase: 'Your blood doesn\'t carry enough oxygen at the moment. Replacing iron and finding the cause sorts the lightheadedness.',
       guideUrl: '', guideLabel: 'BSG iron deficiency anaemia guideline (2021)',
-      caseLink: '../cases/tatt.html',
+      caseLink: '../cases/vertigo.html',
     },
     {
       id: 'hypoglycaemia',

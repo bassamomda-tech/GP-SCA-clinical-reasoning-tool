@@ -24,7 +24,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     'FAST symptoms with full recovery is still a TIA — act, don’t reassure.',
   ],
   note:'The penumbra is why speed matters: every minute of occlusion converts salvageable brain into permanent deficit.',
-  links:{ case:'cases/tia.html', caseLabel:'TIA case', algorithm:'tools/algorithms/tia.html', algorithmLabel:'TIA pathway' } },
+  links:{ case:'cases/tia-stroke.html', caseLabel:'TIA case', algorithm:'tools/algorithms/tia.html', algorithmLabel:'TIA pathway' } },
 
 { id:'patho-vte', domain:'Pathophysiology', system:'Cardiovascular', icon:'🦵',
   title:'Venous thromboembolism (DVT)', blurb:'How Virchow’s triad turns a calf vein into a limb- and life-threatening clot.',
@@ -70,7 +70,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     'PE can present as unexplained breathlessness or syncope with few chest signs.',
   ],
   note:'PE kills through acute right-heart failure — risk-stratify on haemodynamics, not just clot size.',
-  links:{ case:'cases/pulmonary-embolism.html', caseLabel:'PE case', drug:'pharma-doac', drugLabel:'DOACs' } },
+  links:{ case:'cases/dvt.html', caseLabel:'PE case', drug:'pharma-doac', drugLabel:'DOACs' } },
 
 { id:'patho-pad', domain:'Pathophysiology', system:'Cardiovascular', icon:'🦶',
   title:'Peripheral arterial disease', blurb:'Why atherosclerosis in the legs causes claudication, rest pain and ulcers.',
@@ -185,7 +185,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     'Always exclude secondary causes (hypothyroidism, alcohol, diabetes) first.',
   ],
   note:'Cholesterol is an exposure, not an event — the lower and earlier the LDL, the fewer the arteries clog.',
-  links:{ case:'cases/high-cholesterol.html', caseLabel:'Cholesterol case', drug:'pharma-statin', drugLabel:'Statins' } },
+  links:{ case:'cases/hypercholesterolaemia.html', caseLabel:'Cholesterol case', drug:'pharma-statin', drugLabel:'Statins' } },
 
 { id:'patho-postural-hypotension', domain:'Pathophysiology', system:'Cardiovascular', icon:'🧍',
   title:'Postural (orthostatic) hypotension', blurb:'Why standing up causes dizziness when baroreflexes or volume fail.',
@@ -416,7 +416,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     'Consider mesothelioma with asbestos exposure and a pleural effusion.',
   ],
   note:'Lung cancer is mutation-driven and silent early — the whole strategy is to act fast on red flags.',
-  links:{ algorithm:'tools/algorithms/haemoptysis.html', algorithmLabel:'Haemoptysis pathway' } },
+  links:{ algorithm:'tools/algorithms/chronic-cough.html', algorithmLabel:'Chronic cough pathway (haemoptysis)' } },
 
 { id:'patho-sarcoidosis', domain:'Pathophysiology', system:'Respiratory', icon:'🔘',
   title:'Sarcoidosis', blurb:'Why non-caseating granulomas form in the lungs and beyond — and why many resolve.',

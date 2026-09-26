@@ -349,7 +349,7 @@
       'Ensure patients understand and attend their surveillance colonoscopies',
       'Safety-net for new symptoms between surveillance episodes'],
     referral:[
-      'Colorectal symptoms (NICE NG12): offer FIT for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, an abdominal mass, or anaemia at 60+ → 2WW if FIT ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT',
+      'Colorectal symptoms meeting NICE NG12 thresholds → 2WW colorectal pathway: e.g. ≥40 with abdominal pain + weight loss; ≥50 with unexplained rectal bleeding; ≥60 with iron-deficiency anaemia or change in bowel habit; use FIT (≥10 µg Hb/g) to guide urgent referral in symptomatic patients',
       'Polyps found → colonoscopic polypectomy and histology, then risk-based surveillance',
       'Suspected hereditary polyposis / Lynch syndrome → clinical genetics + specialist surveillance',
       'Positive screening FIT → colonoscopy via the screening programme'],
@@ -450,7 +450,7 @@
       'Address safeguarding where the history or pattern is concerning, and arrange rehabilitation/physiotherapy'],
     referral:[
       'Open fracture, gross deformity, dislocation, or neurovascular compromise → emergency orthopaedics/ED',
-      'Suspected pathological fracture (minimal trauma, preceding bone pain, known/possible malignancy) → urgent investigation; suspected myeloma → very urgent protein electrophoresis/BJP and FBC, suspected bone metastasis/sarcoma → relevant 2WW pathway (NICE NG12)',
+      'Suspected pathological fracture (minimal trauma, preceding bone pain, known/possible malignancy) → urgent investigation; suspected myeloma → FBC, calcium, ESR/plasma viscosity, protein electrophoresis and serum free light chains together (BJP if free light chains unavailable), suspected bone metastasis/sarcoma → relevant 2WW pathway (NICE NG12)',
       'Fragility fracture → fracture-liaison/bone-health assessment for osteoporosis management',
       'Suspected non-accidental injury → follow safeguarding procedures'],
     source:'NICE NG38 (fractures) / NICE NG12' },

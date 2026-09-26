@@ -54,7 +54,7 @@ window.SCA_KB = {
       { h:'Realistic surgical expectations', t:'Be clear a replacement is decided on quality of life and failed conservative care, not on an X-ray — set expectations early.' }
     ],
     community: [
-      { h:'Self-management resources', t:'Versus Arthritis, the ESCAPE-pain programme, local physiotherapy/exercise referral and weight-management services.' }
+      { h:'Self-management resources', t:'Arthritis UK, the ESCAPE-pain programme, local physiotherapy/exercise referral and weight-management services.' }
     ]
   },
 
@@ -215,7 +215,7 @@ window.SCA_PLAYBOOK = {
     management: {
       reflectIce: '“You were dreading being told you need a replacement like your mate — let me reassure you: most people manage well for years without surgery, and we decide that on how you’re living, never on a scan.”',
       psychosocial: 'Anchor the plan to getting him back on the hills — exercise as treatment (not rest), and a little weight loss framed as offloading the joint for longer walks.',
-      sharedPlan: ['Core: therapeutic exercise (strengthening + aerobic) ± weight loss — offered to everyone','Topical NSAID first-line; short oral NSAID + PPI for flares (cautious re age); avoid opioids','Refer physiotherapy; signpost Versus Arthritis / ESCAPE-pain'],
+      sharedPlan: ['Core: therapeutic exercise (strengthening + aerobic) ± weight loss — offered to everyone','Topical NSAID first-line; short oral NSAID + PPI for flares (cautious re age); avoid opioids','Refer physiotherapy; signpost Arthritis UK / ESCAPE-pain'],
       safetyNet: ['Hot, very swollen, painful joint with feeling unwell → urgent review','Surgical opinion only if quality of life suffers despite conservative care; review in 6 weeks']
     }
   },

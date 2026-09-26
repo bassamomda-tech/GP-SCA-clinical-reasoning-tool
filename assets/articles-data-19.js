@@ -213,10 +213,10 @@
       'Non-specific symptoms: fatigue (anaemia), recurrent infections (immune dysfunction), and weight loss',
       'Other features: hypercalcaemia (thirst, confusion, constipation), kidney impairment, hyperviscosity, and an unexplained raised ESR/plasma viscosity or rouleaux on the film',
       'SPINAL CORD COMPRESSION (from vertebral disease) and acute kidney injury or severe hypercalcaemia are emergencies',
-      'Key investigations: FBC, calcium, renal function, ESR/plasma viscosity, and protein electrophoresis with serum free light chains and urine Bence Jones protein; imaging for bone lesions'],
+      'Key investigations: FBC, calcium, renal function, ESR/plasma viscosity, and serum protein electrophoresis with serum free light chains, sent together (urine Bence Jones protein if free light chains are unavailable); imaging for bone lesions'],
     management:[
       'Suspect myeloma in older patients with unexplained persistent bone/back pain, pathological fracture, hypercalcaemia, anaemia, renal impairment, or recurrent infection',
-      'Order the right first-line tests: FBC, calcium, renal function, ESR/plasma viscosity, and very urgent serum protein electrophoresis and serum free light chains (and urine Bence Jones protein)',
+      'Order the right first-line tests together, not in stages (NICE NG12, 2025): FBC, calcium, ESR/plasma viscosity, serum protein electrophoresis and serum free light chains (urine Bence Jones protein if free light chains are unavailable), plus renal function',
       'Refer urgently to haematology for confirmation (bone marrow, imaging) and treatment',
       'Treatment is specialist: combination therapy (e.g. proteasome inhibitors, immunomodulatory drugs, anti-CD38 antibodies, steroids) ± autologous stem-cell transplant; it is treatable but not usually curable, with a relapsing-remitting course',
       'Supportive care: bisphosphonates for bone disease, analgesia, treatment of hypercalcaemia and renal impairment, transfusion, and infection prevention/prompt treatment',
@@ -224,7 +224,7 @@
       'Vaccinate and manage infection risk; provide psychological and palliative/supportive care',
       'Monitor for relapse and complications on long-term shared follow-up'],
     referral:[
-      'Suspected myeloma → very urgent protein electrophoresis and serum free light chains/Bence Jones protein, and urgent haematology referral (NICE NG12)',
+      'Suspected myeloma (60+ with persistent bone/back pain or unexplained fracture) → FBC, calcium, ESR/plasma viscosity, serum protein electrophoresis and serum free light chains together (Bence Jones if free light chains unavailable); suspected cancer pathway referral if the results suggest myeloma (NICE NG12)',
       'Suspected spinal cord compression (back pain with neurology/bladder-bowel dysfunction) → emergency (same-day) referral + MRI',
       'Severe hypercalcaemia or acute kidney injury → emergency admission',
       'Confirmed myeloma → haematology MDT'],

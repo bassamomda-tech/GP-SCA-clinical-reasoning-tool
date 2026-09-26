@@ -32,7 +32,7 @@
         return        { label:'High severity',      severity:'severe', action:'Urgent hospital admission; assess for critical care.', detail:'30-day mortality 15–40%. Score 4–5 — consider ITU review.' };
       },
       refs:[
-        { label:'NICE NG138 Pneumonia', url:'https://www.nice.org.uk/guidance/ng138' },
+        { label:'NICE NG250 Pneumonia (2025)', url:'https://www.nice.org.uk/guidance/ng250' },
         { label:'BTS CAP guideline', url:'https://www.brit-thoracic.org.uk/' },
       ],
     },

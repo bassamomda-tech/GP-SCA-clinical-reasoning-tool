@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Palliative Constipation — Protocol · Reasoning GP</title>
+<meta name="description" content="Constipation in palliative care on one page: rule out obstruction, cord compression and hypercalcaemia, prescribe a laxative with every strong opioid, combine a stimulant with a softener or macrogol, clear a loaded rectum, and use a PAMORA when opioid constipation does not respond." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/palliative-constipation.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316534730122 tools/management/palliative-constipation.html">
+<meta name="omelette-print-source" content="v1790380012917942 tools/management/palliative-constipation.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,79 +23,196 @@
 <script>
 MG.render({
   icon:"🕊️",
-  title:"Palliative Constipation — Step-by-Step",
-  stemTitle:"Constipation in palliative care &mdash; prevent it on opioids, then escalate the laxative ladder",
-  stemSub:"A practical protocol: anticipate and prevent opioid-induced constipation, combine a stimulant with a softener/osmotic, add rectal measures for loaded rectum, and reach for a PAMORA (naloxegol / methylnaltrexone) when opioid constipation is refractory \u2014 while excluding bowel obstruction. GMEC Palliative Care 2025 / PCF8.",
-  guideline:"GMEC 2025 · PCF8",
-  glance:[
-    {lbl:"On opioids", val:"Always co-prescribe", sub:"laxative from day 1"},
-    {lbl:"First-line", val:"Stimulant + softener", sub:"senna + macrogol/docusate"},
-    {lbl:"Loaded rectum", val:"Rectal measures", sub:"suppositories / enema"},
-    {lbl:"Refractory opioid", val:"PAMORA", sub:"naloxegol / methylnaltrexone"},
-    {lbl:"Avoid", val:"Bulk-forming", sub:"useless if poor fluid intake"},
-    {lbl:"Exclude", val:"Bowel obstruction", sub:"before stimulants"}
+  title:"Palliative constipation",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Constipation in palliative care — rule out the blockage and the cord first, then a laxative with every opioid, then a PAMORA",
+  stemSub:"Opioids, immobility, poor intake and several common drugs make constipation close to universal in advanced illness. Before any laxative, check it isn't bowel obstruction, cord compression or hypercalcaemia. Then prescribe a regular laxative with every strong opioid, pair a stimulant with a softener or macrogol, clear a loaded rectum from below, and add a peripherally acting opioid antagonist when opioid constipation still doesn't respond.",
+  guideline:"NICE CG140 (2012, updated 2016) · NICE TA345 (2015) · NICE TA651 (2020) · Scottish Palliative Care Guidelines: Constipation (2025)",
+  meta:[
+    {t:"NICE CG140 · strong opioids (2016)"},
+    {t:"NICE TA345 naloxegol · TA651 naldemedine"},
+    {t:"Scottish Palliative Care Guidelines 2025"},
+    {t:"NICE NG234 MSCC (2023) · BNF · SPCs"},
+    {t:"NG12 (updated April 2026) · HTG690 FIT, only if no cancer diagnosis yet", tone:"tw"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Assess", title:"Assess and exclude obstruction",
-      blocks:[
-        {b:"kv", rows:[
-          ["History","Frequency &amp; consistency vs normal, last bowel motion, straining, overflow diarrhoea, colic, nausea."],
-          ["Examine","Abdomen + <b>PR</b> (hard stool, impaction, empty rectum, masses). Empty ballooned rectum may suggest higher obstruction."],
-          ["Reversible factors","Opioids, antimuscarinics, 5HT3 antiemetics (ondansetron), dehydration, hypercalcaemia, immobility, low intake."],
-          ["Exclude","<b>Bowel obstruction</b> \u2014 colic + distension + vomiting + no flatus \u2192 don't give stimulant laxatives; see GI obstruction."]
-        ]}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug · core", title:"Bowel-care measures", blocks:[{b:"tiles", v:"life", items:[{t:"💧 Hydration & diet", html:"Encourage fluids and fibre where tolerated and consistent with goals; respect reduced intake near end of life."},{t:"🚽 Toileting", html:"Privacy, comfortable positioning, and timing around meals support defecation."},{t:"💊 Prevent opioid constipation", html:"Co-prescribe a regular laxative with every opioid \u2014 prevention is easier than treatment."}]},{b:"why", html:"Bowel care and laxative co-prescription with opioids prevent the constipation that otherwise causes major distress \u2014 non-drug measures support this."}]},
-    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 prevent & treat", title:"The oral laxative ladder",
-      blocks:[
-        {b:"p", html:"<b>Anticipate opioid-induced constipation \u2014 co-prescribe a laxative whenever you start a strong opioid.</b> Combine a stimulant with a softener/osmotic."},
-        {b:"ladder", steps:[
-          {step:"1a", title:"Stimulant + osmotic/softener", when:"first-line combination",
-           html:"<b>Senna 7.5\u201315mg nocte</b> (stimulant) + <b>macrogol (Laxido/Movicol) 1\u20133 sachets/day</b> (osmotic), or <b>docusate 100\u2013200mg BD</b> (softener + mild stimulant). Titrate to a comfortable soft stool every 1\u20133 days."},
-          {step:"1b", title:"Increase / adjust", when:"inadequate",
-           fromLabel:"persisting",
-           html:"Up-titrate doses; if stool hard \u2192 favour the osmotic/softener; if soft but not passed \u2192 favour the stimulant. Maintain fluids."},
-          {step:"1c", title:"Avoid these", when:"not useful here",
-           fromLabel:"",
-           html:"Avoid <b>bulk-forming</b> laxatives (ispaghula) \u2014 ineffective with poor fluid intake and risk obstruction. Lactulose often causes bloating/flatulence \u2014 not preferred."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 loaded rectum", title:"Rectal measures",
-      blocks:[
-        {b:"table", head:["Finding on PR","Measure"], rows:[
-          ["Soft stool in rectum","Bisacodyl suppository (stimulant)"],
-          ["Hard stool in rectum","Glycerin suppository (softening) ± bisacodyl"],
-          ["Impaction / no result","Phosphate or arachis-oil retention enema (avoid arachis if peanut allergy); consider manual evacuation"]
-        ]},
-        {b:"warn", html:"Build up oral laxatives once the rectum is cleared to prevent recurrence. Re-examine if overflow diarrhoea \u2014 it usually signals impaction, not true diarrhoea."}
-      ]},
-    {t:"node", d:"drug", n:"5", tag:"Step 3 \u00b7 refractory opioid constipation", title:"PAMORA / unable to swallow",
-      blocks:[
-        {b:"kv", rows:[
-          ["PAMORA","Opioid-induced constipation unresponsive to optimised laxatives \u2192 a peripherally-acting \u00b5-opioid antagonist: <b>naloxegol 25mg OD</b> (oral) or <b>methylnaltrexone SC</b> (rapid effect). Exclude obstruction first."],
-          ["Unable to swallow","Continue rectal measures; PAMORA (methylnaltrexone SC); review at every visit \u2014 constipation persists into the dying phase."],
-          ["Switch opioid","Consider switching to an opioid with less constipation burden if otherwise appropriate (specialist)."]
-        ]}
-      ]},
-    {t:"node", d:"monitor", n:"6", tag:"Review", title:"Review & safety-net",
-      blocks:[
-        {b:"kv", rows:[
-          ["Review","Record bowel motions; titrate laxatives to effect; don't stop when symptoms improve if opioids continue."],
-          ["Safety-net","No bowel motion for 3 days, colic + distension + vomiting \u2192 reassess for impaction/obstruction."]
-        ]}
-      ]},
-    {t:"node", d:"safety", n:"7", tag:"Safety-net · anticipatory", title:"When to escalate", blocks:[{b:"tiles", v:"safety", items:[{t:"🔴 Obstruction", html:"Colicky pain, vomiting, distension, no flatus → suspect bowel obstruction → urgent review (avoid stimulants)."},{t:"📞 Refractory", html:"No result despite escalating laxatives → palliative team; consider impaction (PR exam) and manual measures."},{t:"💊 Opioid-induced", html:"Refractory opioid-induced constipation → consider peripheral opioid antagonist (specialist)."}]}]},
-    {t:"node", d:"refer", n:"8", tag:"Refer", title:"When to escalate",
-      arrow:"obstruction or refractory",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Suspected obstruction", html:"Colic, distension, vomiting, no flatus \u2192 urgent assessment; do not give stimulant laxatives."},
-          {t:"Specialist palliative care", html:"Refractory constipation despite optimised laxatives + PAMORA."},
-          {t:"Reversible cause", html:"Hypercalcaemia \u2192 hypercalcaemia pathway; cord compression with bowel dysfunction \u2192 MSCC/cauda equina pathway."}
-        ]},
-        {b:"say", html:"These painkillers almost always slow the bowels, so we give a laxative alongside them from the start and adjust it to keep things comfortable \u2014 it's expected, not a sign anything's wrong."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#redflags'><b>Red flags</b><small>Obstruction, cord, calcium</small></a><a href='#ladder'><b>Oral ladder</b><small>Stimulant plus softener</small></a><a href='#rectal'><b>Rectal</b><small>Clear it from below</small></a><a href='#pamora'><b>PAMORA</b><small>When laxatives fail</small></a><a href='#refer'><b>Refer</b><small>Same day or specialist</small></a></div>",
+  quickSub:"The six points that change what you do. Each one traces to a source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Is it really constipation?", html:"Colicky pain, a swollen abdomen, vomiting and no flatus mean <b>possible bowel obstruction</b>, and stimulant laxatives and PAMORAs could make it worse. New back pain, leg weakness or numbness, or new loss of bladder or bowel control in someone with cancer means <b>possible spinal cord compression</b>. Assess the same day before prescribing anything."},
+    {tone:"amber", h:"A laxative with every strong opioid", html:"When you start a strong opioid, prescribe a <b>regular laxative at an effective dose</b> at the same time. Tell the patient that nearly everyone on a strong opioid gets constipated and that the laxative takes a few days to work, so they need to take it every day (NICE CG140)."},
+    {tone:"cream", h:"A stimulant, plus a softener or macrogol if needed", html:"Start a regular <b>stimulant</b> (senna or bisacodyl) and add a <b>softener</b> (docusate) or an <b>osmotic</b> (macrogol) when stools are hard or the stimulant alone isn't enough. Avoid bulk-forming laxatives, which don't work well when the patient drinks little and the gut is slow (Scottish Palliative Care Guidelines 2025)."},
+    {tone:"blue", h:"Examine the rectum", html:"A rectal exam decides the next step, unless it would cause undue distress. <b>A loaded rectum needs suppositories or an enema</b>, not just more oral laxative. Overflow diarrhoea around impacted stool is common and is often mistaken for real diarrhoea."},
+    {tone:"cream", h:"PAMORA when the opioid is the cause", html:"If opioid constipation continues despite laxatives, NICE recommends <b>naloxegol</b> (TA345) or <b>naldemedine</b> (TA651) by mouth. Specialists can use <b>methylnaltrexone</b> injections. All three are <b>contraindicated in known or suspected mechanical obstruction</b>."},
+    {tone:"green", h:"Keep it going", html:"Keep the laxative going for as long as the opioid is prescribed, and review it whenever the opioid is started or the dose changes. Aim for a soft stool that passes comfortably at the patient's usual frequency, not a set number of days."}
+  ],
+  pathwaySub:"Five steps in order. The red one is where harm happens.",
+  pathway:[
+    {title:"Rule out the dangerous causes", html:"Bowel obstruction, metastatic spinal cord compression, hypercalcaemia. Any of these changes the plan and the urgency. <b>Examine before you prescribe.</b>", alert:true},
+    {title:"Assess and remove what is causing it", html:"Compare with the patient's normal pattern. Take a drug history (opioids, antimuscarinics, 5-HT3 antiemetics, iron, calcium channel blockers, diuretics). Check intake, mobility and privacy. <b>Abdomen and PR.</b>"},
+    {title:"Oral laxatives, titrated", html:"A regular stimulant, adding a softener or macrogol as needed. Adjust according to the stool: if it's hard, increase the softener or macrogol; if it's soft but not passed, increase the stimulant. If there is colic, stop the stimulant."},
+    {title:"Rectal measures if the rectum is loaded", html:"Glycerol suppository for hard stool, bisacodyl suppository for soft stool, an enema if they don't work, and manual evacuation as a last resort with analgesia. Then restart the oral laxatives so it doesn't recur."},
+    {title:"PAMORA, then specialist", html:"Opioid constipation that doesn't respond to laxatives: <b>naloxegol or naldemedine</b> by mouth. Methylnaltrexone SC is led by specialists. If it still doesn't respond, contact the specialist palliative care team."}
+  ],
+  sections:[
+
+    {id:"redflags", nav:"Red flags", title:"Red flags: rule these out before prescribing a laxative", sub:"Constipation can be the first sign of something that needs same-day action. In someone with cancer, look for these first.",
+     blocks:[
+       {b:"warn", html:"Stimulant laxatives and PAMORAs should not be given if bowel obstruction is suspected. The SPCs for methylnaltrexone, naloxegol and naldemedine all list known or suspected mechanical GI obstruction as a contraindication because of the risk of perforation."},
+       {b:"cards", items:[
+         {tone:"red", h:"Colic, distension, vomiting, no flatus", html:"<b>Possible malignant or mechanical bowel obstruction.</b> Stop stimulant laxatives and do not start a PAMORA. Assess the same day. Depending on the patient's goals, that may be a surgical opinion or palliative management of obstruction led by the specialist team. High obstruction can present with little distension and early vomiting. Low obstruction can present with marked distension and late faeculent vomiting.", src:"Methylnaltrexone SPC · naloxegol SPC · naldemedine SPC · Scottish Palliative Care Guidelines 2025"},
+         {tone:"red", h:"Constipation with new back pain or leg symptoms in someone with cancer", html:"New bowel or bladder problems together with back pain, radicular or band-like pain, leg weakness, altered sensation or unsteady walking mean possible <b>metastatic spinal cord compression</b>. Contact the MSCC coordinator immediately. If there are neurological symptoms or signs, offer oral dexamethasone 16 mg (or the parenteral equivalent) as soon as possible unless contraindicated, and arrange MRI of the whole spine as soon as possible and always within 24 hours. See <a href='mscc.html'>MSCC</a>.", src:"NICE NG234 (2023)"},
+         {tone:"amber", h:"Constipation with thirst, confusion, nausea or drowsiness", html:"Consider <b>hypercalcaemia of malignancy</b>. Check corrected calcium and renal function the same day if treatment would fit the patient's goals. Hypercalcaemia is a treatable cause of constipation that laxatives won't fix. See <a href='malignant-hypercalcaemia.html'>malignant hypercalcaemia</a>.", src:"Scottish Palliative Care Guidelines 2025"},
+         {tone:"amber", h:"Severe or persistent abdominal pain on a PAMORA", html:"PAMORAs can cause abdominal pain. Severe or persistent pain may mean perforation, especially if the bowel wall is already weakened (GI tract malignancy, peptic ulcer, Crohn's disease, Ogilvie's syndrome). <b>Stop the drug and review the patient urgently.</b>", src:"Naldemedine SPC · methylnaltrexone SPC"},
+         {tone:"amber", h:"Overflow: liquid stool after days without a proper bowel movement", html:"In a constipated patient, liquid leakage usually means <b>faecal impaction with overflow</b>, not a new infection. Examine the rectum before prescribing loperamide, because an antidiarrhoeal given for overflow makes the impaction worse."},
+         {tone:"purple", h:"NG12: new constipation with no cancer diagnosis yet", html:"Most patients here already have a known diagnosis, and then NG12 does not apply. But if a patient who is having palliative care for a non-cancer condition, or who has no diagnosis, develops a <b>change in bowel habit</b>, NICE HTG690 (2023, formerly DG56) and NG12 (updated April 2026) apply: <b>offer FIT</b>, and refer on a suspected cancer pathway if <b>FIT is at least 10 micrograms of haemoglobin per gram of faeces</b>. The same threshold appears under <a href='#refer'>Refer</a>.", src:"NICE NG12 (updated April 2026) · NICE HTG690 (2023, formerly DG56)"}
+       ]},
+       {b:"why", html:"In advanced illness, constipation is usually caused by several things at once: opioids, immobility, dehydration, eating little, weakness, and drugs such as antimuscarinics and 5-HT3 antagonists. That makes it easy to put every new bowel symptom down to 'the morphine'. The three causes above are the ones where assuming this delays treatment that changes the outcome. Cord compression is most treatable before the patient loses the ability to walk, and hypercalcaemia can often be reversed."}
+     ]},
+
+    {id:"assess", nav:"Assess", title:"Assessment that decides the treatment", sub:"What the patient means by 'constipated', which drugs are involved, and what the rectum shows.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>What has changed</b>","How often, how hard and how much effort, compared with the patient's normal. When did they last open their bowels, and was it a proper bowel movement? Is there a feeling of incomplete emptying, colic, bloating, nausea or appetite loss? Some patients mean pain on passing stool rather than infrequency. Others have not noticed they have gone a week."],
+         ["<b>Drug review</b>","Opioids (all, including codeine and tramadol), antimuscarinics (hyoscine, tricyclics, some antipsychotics), 5-HT3 antiemetics such as ondansetron, iron, calcium and aluminium-containing antacids, verapamil and other calcium channel blockers, diuretics that dehydrate the patient, and vinca alkaloid chemotherapy. Stop or switch any you can."],
+         ["<b>Contributing factors</b>","Eating and drinking little, immobility and weakness, no privacy or a commode in a shared room, pain on defecation (fissure, haemorrhoids), depression, and autonomic or neurological problems."],
+         ["<b>Examination</b>","Abdomen: distension, masses, tenderness, bowel sounds. Rectal or stoma exam, unless it would cause undue distress: hard stool, soft stool, an empty rectum, or a mass. <b>A ballooned empty rectum</b> can mean the stool is higher up or the problem is further up the bowel."],
+         ["<b>Tests, only if the result would change the plan</b>","Corrected calcium and U and E. Abdominal X-ray is rarely needed, but can help separate high faecal loading from obstruction when the diagnosis is unclear and the patient's goals favour investigation."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Macrogol needs fluid", html:"Macrogols only work if the patient drinks the water they are mixed with. Be cautious in frail or nauseated patients who may not manage the volume. A docusate softener may suit them better.", src:"Scottish Palliative Care Guidelines 2025"},
+         {tone:"blue", h:"Evidence on laxatives is thin", html:"The Cochrane review of laxatives in palliative care found few trials and no good evidence that any one laxative is better than another. The choice is based on how the drug works, what the patient can tolerate, and what they prefer.", src:"Candy et al., Cochrane Database Syst Rev 2015"}
+       ]}
+     ]},
+
+    {id:"prevent", nav:"Prevent", title:"Prevention: the laxative goes on the same prescription as the opioid", sub:"Opioid constipation does not wear off with tolerance, unlike nausea and drowsiness.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Prescribe it on day one", html:"Everyone starting a strong opioid should get a laxative, <b>taken regularly at an effective dose</b>, not just as needed. Most palliative patients on opioids need a regular oral laxative.", src:"NICE CG140 (2012, updated 2016) · Scottish Palliative Care Guidelines 2025"},
+         {tone:"cream", h:"Tell the patient what to expect", html:"Explain that constipation affects nearly all patients on strong opioids, that the laxative takes time to work, and that they need to keep taking it. Patients who expect constipation report it sooner.", src:"NICE CG140 (2012, updated 2016)"},
+         {tone:"amber", h:"Review when the opioid changes", html:"Review the laxative whenever the opioid is started, the dose goes up, or the opioid is switched. A higher opioid dose often needs a higher laxative dose.", src:"Scottish Palliative Care Guidelines 2025"},
+         {tone:"amber", h:"Optimise the laxative before switching opioid", html:"Don't switch to another strong opioid to treat constipation until the laxatives have been properly optimised.", src:"NICE CG140 (2012, updated 2016)"},
+         {tone:"green", h:"Non-drug measures that help", html:"Privacy and time, a commode or toilet rather than a bedpan, feet raised on a footstool, and trying after a meal or a warm drink. Encourage fluid and fibre only as far as the patient can manage and wants to. Near the end of life, food and drink are for comfort, not bowel function."}
+       ]},
+       {b:"say", html:"These painkillers slow the bowel down in almost everyone, so I'm giving you a laxative to take every day from today. It takes a few days to work. If your bowels still haven't moved properly after three or four days, or if they get uncomfortable, ring us and we'll adjust it. Don't wait until it's painful."}
+     ]},
+
+    {id:"ladder", nav:"Oral ladder", title:"The oral laxative ladder", sub:"Start with a regular stimulant, add a softener or macrogol as needed, and adjust it to the stool. Doses from the Scottish Palliative Care Guidelines (2025), otherwise per BNF.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"Regular stimulant, with or without a softener", when:"first line", tone:"cream",
+          html:"<b>Senna 15 to 30 mg at night</b> (works in about 8 to 12 hours), or <b>bisacodyl 5 to 10 mg at night</b> (6 to 12 hours). Where stools are hard, add <b>docusate 100 mg twice daily</b> (softener, with some stimulant effect) or <b>macrogol 1 to 3 sachets daily</b>. Adjust every 1 to 2 days according to the result."},
+         {step:"2", title:"Adjust according to the stool", when:"partial response", tone:"cream", fromLabel:"not yet comfortable",
+          html:"If the stool is <b>hard</b>, increase the softener or macrogol. If it is <b>soft but not passed</b>, increase the stimulant. If there is <b>colic</b>, stop the stimulant and continue with the softener or osmotic alone. For <b>faecal impaction</b>, macrogol is licensed at up to 8 sachets a day for a maximum of 3 days, provided the patient can drink the fluid (per BNF and SPC)."},
+         {step:"3", title:"Rectal measures", when:"rectum loaded or no result", tone:"amber", fromLabel:"PR shows stool",
+          html:"Clear the rectum with suppositories or an enema (see <a href='#rectal'>Rectal measures</a>), then continue the oral laxatives so it doesn't come back."},
+         {step:"4", title:"PAMORA for opioid constipation", when:"laxatives optimised, still constipated", tone:"amber", fromLabel:"opioid is the main cause",
+          html:"Naloxegol or naldemedine by mouth. Methylnaltrexone SC, led by a specialist. See <a href='#pamora'>PAMORA</a>. First exclude obstruction."}
+       ]},
+       {b:"table", head:["Laxative","Type","Practical points"], rows:[
+         ["Senna","Stimulant","First choice with an opioid. Can cause colic, so reduce or stop it if colic occurs. Take at night so it works by the morning."],
+         ["Bisacodyl (tablet or suppository)","Stimulant","An alternative to senna. The suppository acts faster and is useful when there is soft stool in the rectum."],
+         ["Docusate sodium","Softener (surface-wetting)","Useful when the patient can't manage macrogol volumes. Weak on its own, so pair it with a stimulant."],
+         ["Macrogol (e.g. Laxido, Movicol)","Osmotic","Effective softener. Each sachet must be mixed with water, so it is less suitable for patients who drink little or feel nauseated."],
+         ["Lactulose","Osmotic","Bloating, flatulence and a sweet taste limit its use. Slower. Needs fluid."],
+         ["Co-danthramer / co-danthrusate","Combined stimulant and softener","Fewer tablets, but less flexible to titrate. Dantron-containing products are restricted to constipation in terminally ill patients because of carcinogenicity in animal studies. It can colour urine red and cause perianal skin irritation in incontinent patients."],
+         ["Ispaghula and other bulk-forming laxatives","Bulk-forming","<b>Avoid.</b> Unsuitable when fluid intake is low and the gut is slow, and may make faecal loading worse."]
+       ]},
+       {b:"why", html:"Opioids cause constipation in two ways. They slow propulsive movement of the gut, and they increase absorption of fluid from the stool. So an opioid-constipated bowel usually needs both a push (stimulant) and softer contents (softener or osmotic). A softener alone produces soft stool that stays in the bowel, and a stimulant alone pushes hard stool and causes colic. CG140 and the Scottish guideline both expect the laxative to be prescribed regularly, not left as needed; the Scottish guideline starts with a stimulant and adds a softener as required."}
+     ]},
+
+    {id:"rectal", nav:"Rectal", title:"Rectal measures: base the choice on the PR findings", sub:"When the rectum is loaded, oral laxatives alone work slowly and add colic.",
+     blocks:[
+       {b:"table", head:["Finding","First measure","If that fails"], rows:[
+         ["Soft stool in the rectum","Bisacodyl suppository (placed against the rectal wall, not into the stool)","Repeat next day, or a small-volume enema"],
+         ["Hard stool in the rectum","Glycerol suppository to soften and lubricate, with or without bisacodyl","Arachis oil retention enema overnight to soften, then a stimulant suppository or phosphate enema"],
+         ["Impaction that doesn't respond","Enema","Manual evacuation with adequate analgesia, with or without sedation, by an experienced clinician. Then build the oral laxatives back up"],
+         ["Empty rectum, but the patient feels constipated","No rectal treatment","Consider stool higher up or obstruction. Increase oral treatment if obstruction is excluded"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Arachis oil contains peanut oil", html:"An arachis oil enema is <b>contraindicated in peanut allergy</b>, and its SPC also lists soya hypersensitivity. Ask before you prescribe it.", src:"Arachis oil enema SPC"},
+         {tone:"cream", h:"Planned rectal treatment", html:"Some patients can't empty the rectum with oral laxatives alone, for example after cord compression or with severe weakness. For them, schedule <b>rectal treatment every 1 to 3 days</b> (e.g. glycerol and bisacodyl suppositories), moving to an enema if needed, rather than waiting until they are impacted.", src:"Scottish Palliative Care Guidelines 2025"}
+       ]},
+       {b:"warn", html:"Once the rectum is clear, restart and increase the regular oral laxatives the same day. Otherwise the rectum fills up again within days and the patient goes through the same thing again."}
+     ]},
+
+    {id:"pamora", nav:"PAMORA", title:"PAMORAs: when the opioid is the problem and laxatives aren't working", sub:"Peripherally acting mu-opioid receptor antagonists block opioid receptors in the gut without reversing pain relief, because they barely cross the blood–brain barrier.",
+     blocks:[
+       {b:"table", head:["Drug","Where it fits","Dose (SPC)","Key cautions"], rows:[
+         ["<b>Naloxegol</b> (oral)","NICE TA345 (2015): opioid constipation in adults whose constipation has not responded adequately to laxatives","<b>25 mg once daily in the morning</b>, on an empty stomach. <b>12.5 mg starting dose</b> in moderate or severe renal impairment, or with moderate CYP3A4 inhibitors","Contraindicated in known or suspected GI obstruction and with strong CYP3A4 inhibitors. Stop maintenance laxatives when you start it, until you can judge the effect"],
+         ["<b>Naldemedine</b> (oral)","NICE TA651 (2020): opioid constipation in adults who have already had laxatives. Suitable where there are other causes of constipation too","<b>200 micrograms once daily</b>","Contraindicated in known or suspected GI obstruction or high risk of recurrence. Caution where the gut wall may be weakened"],
+         ["<b>Methylnaltrexone</b> (SC)","For opioid constipation in advanced illness when laxatives haven't worked. In Scotland it is restricted to clinicians with palliative care expertise","<b>8 mg (38 to 61 kg), 12 mg (62 to 114 kg), 0.15 mg/kg outside those ranges</b>. Usually every other day, never more than once in 24 hours. <b>Severe renal impairment (CrCl under 30 mL/min)</b>: 8 mg for 62 to 114 kg, or halve the mg/kg dose outside that range","Contraindicated in known or suspected mechanical obstruction or acute surgical abdomen. Can work within a few hours, so have a commode ready"]
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"What NICE means by 'inadequate response'", html:"TA345 defines it as opioid constipation symptoms of at least moderate severity in at least one of four stool domains (incomplete bowel movement, hard stools, straining, false alarms) <b>while taking at least one laxative class for at least 4 days in the previous 2 weeks</b>. It's a useful check that the laxatives have had a fair trial first.", src:"NICE TA345 (2015)"},
+         {tone:"cream", h:"Mixed-cause constipation still qualifies", html:"Opioid constipation often occurs alongside other causes (immobility, other drugs, low intake). NICE judged that naldemedine is still appropriate for treating the opioid component.", src:"NICE TA651 (2020)"},
+         {tone:"amber", h:"Abdominal pain and withdrawal", html:"Abdominal pain, diarrhoea and nausea are the common side effects. Rarely, especially in patients on high opioid doses or with a disrupted blood–brain barrier, opioid-withdrawal-like symptoms occur. Stop the PAMORA and review if pain is severe or persistent.", src:"Naloxegol SPC · naldemedine SPC · methylnaltrexone SPC"},
+         {tone:"blue", h:"Supply of naloxegol", html:"Naloxegol tablets were affected by a UK supply disruption in 2024. Check availability with the community pharmacy and have naldemedine as the alternative (NHS Scotland Medicines Supply Alert Notice 2024-17)."}
+       ]},
+       {b:"why", html:"PAMORAs target the cause of opioid constipation rather than working around it. That is why a trial is worth considering once laxatives have genuinely been optimised. They don't treat constipation from immobility, hypercalcaemia or low intake. They are also dangerous if the real problem is obstruction, which is the only situation where making the bowel contract harder does harm. Hence the SPC contraindications and the need to examine the patient before prescribing."}
+     ]},
+
+    {id:"special", nav:"Special situations", title:"Special situations", sub:"Unable to swallow, the last days of life, stomas and neurological bowel.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Can't swallow tablets", html:"Use liquid preparations where possible. Use rectal measures as the main route if oral is not possible. Methylnaltrexone SC is an option for opioid constipation, and in Scotland it is restricted to clinicians with palliative care expertise.", src:"Methylnaltrexone SPC · Scottish Palliative Care Guidelines 2025"},
+         {tone:"green", h:"The last days of life", html:"As death approaches, eating and drinking fall and bowel activity slows. Constipation matters only if it causes distress. Stop oral laxatives that can no longer be swallowed. Use rectal measures only if a loaded rectum is causing discomfort or restlessness. Care should be individualised to the dying person's needs and wishes. See <a href='care-of-the-dying.html'>care of the dying</a>.", src:"NICE NG31 (2015)"},
+         {tone:"cream", h:"Stoma", html:"Examine the stoma as you would the rectum. The same oral approach applies to a colostomy. Get stoma nurse advice for an ileostomy, and if there is a parastomal hernia with colic, consider obstruction."},
+         {tone:"amber", h:"Cord compression or paraplegia", html:"Neurological bowel dysfunction often needs a regular timed routine with planned rectal treatment every 1 to 3 days, as well as oral laxatives. Agree the plan with the patient and district nurses.", src:"Scottish Palliative Care Guidelines 2025 · NICE NG234 (2023)"},
+         {tone:"blue", h:"Opioid switching", html:"Optimise the laxatives fully before considering a switch of strong opioid. Any switch, sometimes to an opioid that causes less constipation, is a decision to make with the specialist team.", src:"NICE CG140 (2012, updated 2016)"}
+       ]}
+     ]},
+
+    {id:"review", nav:"Review", title:"Review and safety-netting", sub:"Record bowel movements, adjust the laxatives, and review whenever the opioid changes.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"Day 1", title:"Start or adjust", html:"Start regular stimulant plus softener or macrogol alongside the opioid. Give a bowel chart or explain how to keep one."},
+         {n:"2", when:"Day 3 to 4", title:"Check by phone", html:"Has there been a comfortable bowel movement? Adjust the stool according to type. Examine the rectum if nothing has passed, or if there is overflow."},
+         {n:"3", when:"Each opioid change", title:"Re-titrate", html:"Increase the laxative when the opioid goes up. Don't stop the laxative while the opioid continues, even if the bowels are fine."},
+         {n:"4", when:"Laxatives optimised but still stuck", title:"Consider a PAMORA", html:"Check the TA345 definition of inadequate response. Exclude obstruction. Start naloxegol or naldemedine."}
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Tell carers: call the same day if", html:"Colicky pain with vomiting or a swollen, tight abdomen. No wind passed. New back pain, leg weakness or numbness, or loss of bladder control. Severe abdominal pain after a PAMORA dose.", src:"NICE NG234 (2023) · methylnaltrexone SPC"},
+         {tone:"amber", h:"Call within a day or two if", html:"No proper bowel movement for several days despite the laxatives. Straining, rectal pain, or liquid leakage (overflow). New confusion, thirst or drowsiness (check calcium)."}
+       ]},
+       {b:"say", html:"Constipation is something we expect with these medicines, not a sign that anything is going wrong, and there are several steps we can take. What I do need to know about straight away is tummy pain that comes in waves with being sick, or any new weakness or numbness in your legs. Those aren't constipation, and we'd want to see you that day."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: who, how quickly, and for what", sub:"Most palliative constipation is managed in primary care with the district nurses. These are the exceptions.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day: suspected cord compression", html:"Constipation or bladder dysfunction with back pain or neurological symptoms in someone with cancer. Contact the <b>MSCC coordinator immediately</b>, offer <b>oral dexamethasone 16 mg</b> as soon as possible if there are neurological symptoms or signs (unless contraindicated), and arrange whole-spine MRI within 24 hours.", src:"NICE NG234 (2023)"},
+         {tone:"red", h:"Same day: suspected bowel obstruction", html:"Colic, distension, vomiting, no flatus. Hospital or specialist palliative assessment depending on goals of care. Stop stimulants and do not give a PAMORA.", src:"Methylnaltrexone SPC · naloxegol SPC · naldemedine SPC"},
+         {tone:"amber", h:"Urgent: hypercalcaemia", html:"Raised corrected calcium with symptoms: follow the malignant hypercalcaemia pathway (IV fluids and a bisphosphonate in hospital or hospice if appropriate to goals).", src:"Scottish Palliative Care Guidelines 2025"},
+         {tone:"cream", h:"Specialist palliative care", html:"Constipation that doesn't respond despite optimised oral laxatives, rectal measures and an oral PAMORA. Consideration of methylnaltrexone. Opioid switching. Manual evacuation needing sedation."},
+         {tone:"cream", h:"District nursing", html:"Suppositories and enemas at home, bowel charts, and bowel care planning for bed-bound or paraplegic patients."},
+         {tone:"purple", h:"Suspected cancer pathway <span class='tw'>2WW</span> · NICE NG12 (updated April 2026)", html:"Only for a patient <b>without a known cancer diagnosis</b> who has a change in bowel habit: offer FIT (NICE HTG690, 2023, formerly DG56) and <b>refer using a suspected cancer pathway referral for colorectal cancer if the FIT result is at least 10 micrograms of haemoglobin per gram of faeces</b>. FIT is not the route for a rectal mass, an unexplained anal mass or unexplained anal ulceration; refer those directly. A FIT result under 10 does not override strong clinical concern.", src:"NICE NG12 (updated April 2026) · NICE HTG690 (2023, formerly DG56)"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice case. The <a href='../../cases/palliative-care.html'>palliative care casebook</a> has the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Scenario", html:"A 71-year-old man with metastatic prostate cancer started modified-release morphine for bone pain 10 days ago. His daughter rings: he hasn't opened his bowels properly for 6 days, has 'a bit of diarrhoea' in his pad, feels sick, and has a new ache between his shoulder blades. He was given senna 'if needed' and hasn't taken it.", src:"Practice scenario, built on NICE CG140 and NICE NG234"},
+       {tone:"cream", h:"What the examiner is looking for", html:"Recognises that the leakage is probably <b>overflow</b>, not diarrhoea. Asks about <b>leg weakness, numbness and bladder control</b>, because thoracic back pain in metastatic prostate cancer is a red flag for MSCC. Asks about <b>thirst and confusion</b> (calcium). Arranges an examination including PR. Explains that the laxative should have been <b>regular from day one</b>, without blaming anyone. Clears the rectum, then starts regular senna with docusate or macrogol. Plans review in 2 to 3 days, and a PAMORA if it doesn't respond. Gives clear safety-netting to the daughter.", src:"NICE CG140 · NICE NG234 · Scottish Palliative Care Guidelines 2025"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Primary sources only. Doses are from the named guideline or SPC. Where none gives a figure, the page says 'per BNF'.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG140 — Palliative care for adults: strong opioids for pain relief (2012, updated 2016)</b><br><a href="https://www.nice.org.uk/guidance/cg140" rel="noopener">nice.org.uk/guidance/cg140</a><span class="rd"> — a regular laxative at an effective dose for everyone starting a strong opioid; constipation affects nearly all patients; laxative treatment takes time; optimise laxatives before switching opioid</span></li>'+
+         '<li><b>NICE TA345 — Naloxegol for treating opioid-induced constipation (2015)</b><br><a href="https://www.nice.org.uk/guidance/ta345" rel="noopener">nice.org.uk/guidance/ta345</a><span class="rd"> — recommended when constipation has not responded adequately to laxatives; the definition of inadequate response (at least one laxative class for at least 4 days in the previous 2 weeks)</span></li>'+
+         '<li><b>NICE TA651 — Naldemedine for treating opioid-induced constipation (2020)</b><br><a href="https://www.nice.org.uk/guidance/ta651" rel="noopener">nice.org.uk/guidance/ta651</a><span class="rd"> — recommended in adults who have had laxative treatment, including mixed-cause constipation</span></li>'+
+         '<li><b>Scottish Palliative Care Guidelines — Constipation (Healthcare Improvement Scotland, 2025 update)</b><br><a href="https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-management/constipation/" rel="noopener">rightdecisions.scot.nhs.uk</a><span class="rd"> — a UK national guideline. A regular stimulant with or without a softener; senna 15 to 30 mg and bisacodyl 5 to 10 mg at night; docusate 100 mg twice daily; macrogol 1 to 3 sachets daily (up to 8 a day for up to 3 days in impaction); caution with macrogol volume; avoid bulk-forming laxatives; stop the stimulant if colic occurs; rectal exam unless distressing; planned rectal treatment every 1 to 3 days; oral PAMORAs; methylnaltrexone restricted to palliative care expertise (SMC)</span></li>'+
+         '<li><b>Summaries of Product Characteristics</b>: Moventig (naloxegol), Rizmoic (naldemedine), Relistor (methylnaltrexone), arachis oil enema<br><a href="https://www.medicines.org.uk/emc" rel="noopener">medicines.org.uk/emc</a><span class="rd"> — PAMORA doses, renal and CYP3A4 adjustments (naloxegol 12.5 mg start; methylnaltrexone reduced in severe renal impairment), stopping maintenance laxatives when naloxegol starts, contraindication in known or suspected GI obstruction, peanut and soya contraindication for arachis oil</span></li>'+
+         '<li><b>NICE NG234 — Spinal metastases and metastatic spinal cord compression (2023)</b><br><a href="https://www.nice.org.uk/guidance/ng234" rel="noopener">nice.org.uk/guidance/ng234</a><span class="rd"> — bowel or bladder dysfunction as a feature of MSCC; contact the MSCC coordinator immediately; dexamethasone 16 mg; whole-spine MRI within 24 hours</span></li>'+
+         '<li><b>NICE NG31 — Care of dying adults in the last days of life (2015)</b><br><a href="https://www.nice.org.uk/guidance/ng31" rel="noopener">nice.org.uk/guidance/ng31</a><span class="rd"> — individualised symptom management in the last days</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b> and <b>NICE HTG690 (formerly DG56) — Quantitative faecal immunochemical testing to guide colorectal cancer pathway referral in primary care (2023)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a> · <a href="https://www.nice.org.uk/guidance/htg690" rel="noopener">nice.org.uk/guidance/htg690</a><span class="rd"> — FIT for a change in bowel habit; suspected cancer pathway referral at FIT of at least 10 micrograms Hb per gram. Applies only where there is no existing cancer diagnosis</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — laxative doses not stated in the Scottish guideline (lactulose, co-danthramer, enemas, impaction regimens); restriction of dantron-containing products to terminally ill patients</span></li>'+
+         '<li><b>Candy B et al. Laxatives for the management of constipation in people receiving palliative care. Cochrane Database Syst Rev 2015;(5):CD003448</b><span class="rd"> — limited trial evidence and no laxative shown to be better than another</span></li>'+
+         '<li><b>NHS Scotland Medicines Supply Alert Notice 2024-17</b><span class="rd"> — naloxegol supply disruption</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Palliative constipation: NICE CG140 (strong opioids), TA345 (naloxegol), TA651 (naldemedine), NG234 (MSCC), NG31 (last days of life) and NG12 / HTG690 (FIT, only where there is no cancer diagnosis), with the Scottish Palliative Care Guidelines (2025) and product SPCs. Check all doses against the current BNF and your local palliative care formulary before prescribing."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

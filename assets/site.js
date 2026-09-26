@@ -334,7 +334,7 @@ window.RGP_CASES = [
     group: "Respiratory",
     items: [
       { id:"asthma-review",    title:"Asthma",                        setting:"Poor control",           status:"full",  path:"cases/asthma.html", guideline:"NICE NG245 / BTS-SIGN 2024" },
-      { id:"chest-infections", title:"Chest Infections",              setting:"Bronchitis vs CAP · CRB-65 · sepsis", status:"full", path:"cases/chest-infections.html", guideline:"NICE NG138 / CG191" },
+      { id:"chest-infections", title:"Chest Infections",              setting:"Bronchitis vs CAP · CRB-65 · sepsis", status:"full", path:"cases/chest-infections.html", guideline:"NICE NG250 (2025)" },
       { id:"copd",             title:"COPD",                          setting:"Chronic management",     status:"full",  path:"cases/copd.html", guideline:"NICE NG115 / GOLD 2024" },
       { id:"breathlessness",   title:"Breathlessness",                setting:"Symptom workup",         status:"full",  path:"cases/breathlessness.html", guideline:"NICE NG106 / NG115" },
       { id:"osa",             title:"Obstructive Sleep Apnoea",      setting:"OSAHS · CPAP · DVLA",    status:"full",  path:"cases/osa.html", guideline:"NICE NG202" },
@@ -391,7 +391,7 @@ window.RGP_CASES = [
       { id:"cervical-screening", title:"Cervical Screening",          setting:"HPV primary · symptoms ≠ screening", status:"full", path:"cases/cervical-screening.html", guideline:"NHSCSP / NG12" },
       { id:"contraception",    title:"Contraception consultation",    setting:"Choice & counselling",   status:"full",  path:"cases/contraception.html", guideline:"FSRH 2024 / UKMEC" },
       { id:"pcos",             title:"PCOS",                          setting:"Diagnosis & long-term",  status:"full",  path:"cases/pcos.html", guideline:"Rotterdam · International PCOS guideline 2023" },
-      { id:"infertility",      title:"Infertility",                   setting:"Couple assessment",      status:"full",  path:"cases/infertility.html", guideline:"NICE CG156" },
+      { id:"infertility",      title:"Infertility",                   setting:"Couple assessment",      status:"full",  path:"cases/infertility.html", guideline:"NICE NG257" },
       { id:"premenstrual-disorder", title:"Premenstrual Disorder (PMDD)", setting:"PMS · PMDD · symptom diary", status:"full", path:"cases/premenstrual-disorder.html", guideline:"RCOG / NICE" },
       { id:"amenorrhoea",      title:"Amenorrhoea",                   setting:"Primary/secondary · the axis", status:"full", path:"cases/amenorrhoea.html", guideline:"NICE / RCOG" },
     ]

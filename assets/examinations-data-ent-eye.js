@@ -64,7 +64,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     { finding:'Unilateral swelling + trismus + uvular deviation', meaning:'Peritonsillar abscess (quinsy) — urgent ENT' },
     { finding:'Persistent ulcer/white-red patch >3 weeks', meaning:'?Oral malignancy — 2-week-wait' },
   ],
-  links:{ calc:'tools/calculators.html#feverpain', calcLabel:'FeverPAIN', case:'cases/neck-lump.html', caseLabel:'Neck lump (algorithm)', algorithm:'tools/algorithms/neck-lump.html' },
+  links:{ calc:'tools/calculators.html#feverpain', calcLabel:'FeverPAIN', algorithm:'tools/algorithms/neck-lump.html' },
 },
 
 {

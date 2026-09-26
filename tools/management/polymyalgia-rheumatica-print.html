@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Polymyalgia Rheumatica — Protocol · Reasoning GP</title>
+<meta name="description" content="Polymyalgia rheumatica in primary care on one page: the BSR inclusion and exclusion approach, the pre-steroid blood panel including the NG12 myeloma tests, prednisolone 15 mg with the one-week response check, the BSR taper, bone protection from day one, relapse and methotrexate, the GCA safety net, and when to refer." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/polymyalgia-rheumatica.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316534730122 tools/management/polymyalgia-rheumatica.html">
+<meta name="omelette-print-source" content="v1790380066109502 tools/management/polymyalgia-rheumatica.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,110 +23,190 @@
 <script>
 MG.render({
   icon:"🦴",
-  title:"Polymyalgia Rheumatica",
-  stemTitle:"Confirmed Polymyalgia Rheumatica — ongoing management",
-  stemSub:"Primary-care management of PMR \u2014 the steroid response that confirms the diagnosis, the slow tapering regimen with bone protection, monitoring for relapse and steroid harm \u2014 with the giant cell arteritis safety net. NICE / BSR \u00b7 2026.",
-  guideline:"BSR",
-  glance:[
-    {lbl:"First-line", val:"Prednisolone 15 mg", sub:"dramatic response"},
-    {lbl:"Response", val:"~70% in 1 week", sub:"poor response = rethink"},
-    {lbl:"Taper", val:"Over ~1\u20132 years", sub:"slowly, by regimen"},
-    {lbl:"Always", val:"Bone protection", sub:"+ steroid card"},
-    {lbl:"Monitor", val:"ESR/CRP + symptoms", sub:"+ steroid harms"},
-    {lbl:"Emergency", val:"GCA", sub:"visual loss \u2192 same-day"}
+  title:"Polymyalgia rheumatica",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Polymyalgia rheumatica — screen the mimics before the first tablet, judge the response at one week, then taper slowly",
+  stemSub:"For the over-50 with new bilateral shoulder and hip girdle aching, early-morning stiffness and a raised ESR or CRP. Take the full pre-steroid blood panel (including the NG12 myeloma tests), start prednisolone 15 mg, treat a poor response as a diagnostic alarm rather than a dosing problem, protect bone from day one, taper over one to two years, and keep asking about giant cell arteritis. Sources: BSR/BHPR PMR guideline 2009 · NICE NG12 (updated April 2026) · NOGG 2024 · NICE NG243 · EULAR/ACR 2015 and 2012 (international).",
+  guideline:"BSR/BHPR PMR guideline (Dasgupta et al. 2009) · NICE NG12 (updated April 2026) · NOGG 2024",
+  meta:[
+    {t:"BSR/BHPR PMR guideline · Dasgupta 2009"},
+    {t:"NICE NG12 · myeloma 1.10.4–1.10.5", tone:"tw"},
+    {t:"NOGG 2024 · NICE NG243 (2024)"},
+    {t:"MHRA methotrexate (Sep 2020) · Green Book ch 6"},
+    {t:"EULAR/ACR 2015 and 2012 (international)"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm clinically and exclude mimics + GCA",
-      blocks:[
-        {b:"kv", rows:[
-          ["Clinical picture","Age \u226550, bilateral shoulder \u00b1 pelvic-girdle pain + morning stiffness &gt;45 min, raised ESR/CRP"],
-          ["Confirm by response","A <b>dramatic response</b> to low-dose steroid within a week supports the diagnosis"],
-          ["Exclude mimics","RA, malignancy, infection, hypothyroidism, myositis (CK), late-onset inflammatory arthritis"],
-          ["Pre-steroid bloods","FBC, ESR/CRP, U&amp;E, LFT, TFT, CK, calcium, glucose, protein electrophoresis, RF/anti-CCP, urine dip"]
-        ]},
-        {b:"warn", html:"<b>Always screen for giant cell arteritis</b> (new headache, scalp tenderness, jaw claudication, visual symptoms) \u2014 it coexists with PMR and threatens sight. GCA needs <b>immediate high-dose steroid + same-day referral</b>."},
-        {b:"why", html:"PMR is a clinical diagnosis confirmed retrospectively by the steroid response \u2014 a <em>poor</em> response should make you doubt the diagnosis, not just increase the dose. The pre-steroid blood panel exists to catch the mimics (myeloma, malignancy, myositis) that masquerade as girdle pain before you commit to a year or more of steroids."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Support the steroid course",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🦴 Bone health", html:"Calcium/vit D and bone protection from the outset (long steroid course \u2014 see drugs)."},
-          {t:"🪪 Steroid card", html:"Issue a steroid emergency card; teach sick-day rules and never stop abruptly."},
-          {t:"🏃 Activity", html:"Gentle exercise to maintain muscle and joint function as pain settles."},
-          {t:"⚖️ Weight & diet", html:"Anticipate steroid appetite/weight gain and glucose effects \u2014 dietary advice."},
-          {t:"💉 Vaccination", html:"Keep immunisations up to date; avoid live vaccines on higher-dose steroids."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Steroids \u2014 induce, then taper slowly",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Start", title:"Prednisolone 15 mg daily", when:"reassess at 1 week",
-           html:"Expect marked improvement within a week. If no meaningful response, <b>reconsider the diagnosis</b> before escalating."},
-          {step:"Taper", title:"Reduce slowly", when:"per BSR regimen",
-           fromLabel:"once symptoms controlled + inflammatory markers settled",
-           html:"Gradually reduce (e.g. to 10 mg over ~8 weeks, then by 1 mg every 4\u20138 weeks) over <b>1\u20132 years</b>, guided by symptoms not ESR/CRP alone."},
-          {step:"Relapse", title:"Step back up", when:"smallest effective increase",
-           fromLabel:"symptoms recur on tapering",
-           html:"Return to the last effective dose; taper more slowly thereafter. Frequent relapse \u2192 steroid-sparing agent."},
-          {step:"Steroid-sparing", title:"Methotrexate", when:"specialist \u2014 relapsing/steroid-dependent",
-           fromLabel:"multiple relapses / steroid toxicity",
-           html:"Consider <span class='rx'>methotrexate 7.5\u201320 mg once weekly</span>, with <span class='rx'>folic acid 5 mg</span> on a different day, via rheumatology for relapsing or steroid-dependent disease."}
-        ]},
-        {b:"kv", rows:[
-          ["Bone protection","Co-prescribe a bisphosphonate + calcium/vit D (prolonged steroid course \u2014 high fracture risk)"],
-          ["Gastroprotection","PPI if indicated (GI risk, NSAID use)"]
-        ]},
-        {b:"warn", html:"<b>Never stop steroids abruptly</b> (adrenal crisis). Steroid harms accumulate \u2014 monitor BP, glucose, weight, bone, mood, infection risk throughout."}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response, relapse and steroid harm",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Symptoms + ESR/CRP","Each review (more during taper)","Guide tapering; relapse \u2192 step back up"],
-          ["BP, glucose, weight","Regularly","Steroid-induced hypertension/diabetes \u2014 treat"],
-          ["Bone / fracture risk","At start + ongoing","Ensure bone protection in place"],
-          ["GCA features","Every contact","New headache/visual/jaw symptoms \u2192 emergency"]
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"1 week", title:"Confirm response", html:"Marked improvement supports PMR; poor response \u2192 reconsider diagnosis."},
-          {n:"2", when:"Through the taper (e.g. 0,1\u20133,6 weeks then regularly)", title:"Tapering reviews", html:"Reduce per regimen guided by symptoms; monitor steroid side effects."},
-          {n:"3", when:"Ongoing to ~1\u20132 years", title:"Long-term review", html:"Aim to withdraw steroids; manage relapses; bone and metabolic surveillance."}
-        ]}
-      ]},
-    {t:"loop", icon:"🔁", title:"Not responding / relapsing? Re-check",
-      arrow:"\u2026if response is poor or symptoms relapse",
-      intro:"A poor steroid response is a diagnostic alarm, not a dosing problem.",
-      checks:[
-        {b:"1 \u00b7 Diagnosis", html:"Poor response \u2192 reconsider \u2014 RA, malignancy, infection, myositis."},
-        {b:"2 \u00b7 GCA", html:"New cranial/visual symptoms \u2192 treat as GCA urgently."},
-        {b:"3 \u00b7 Taper speed", html:"Relapsing on tapering \u2192 slow the taper; return to last effective dose."},
-        {b:"4 \u00b7 Adherence", html:"Confirm steroid taken; address side-effect-driven non-adherence."},
-        {b:"5 \u00b7 Steroid-sparing", html:"Frequent relapse/toxicity \u2192 rheumatology for methotrexate."}
-      ],
-      back:"Diagnosis reconfirmed, GCA excluded \u2192 adjust taper / rheumatology referral"},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Giant cell arteritis", html:"\u201cNew severe headache, scalp tenderness, jaw pain on chewing, or ANY visual change \u2014 seek same-day help; sight can be lost permanently.\u201d"},
-          {t:"💊 Don\u2019t stop steroids", html:"\u201cNever stop steroids suddenly \u2014 carry your steroid card, and double the dose if seriously unwell (sick-day rules).\u201d"},
-          {t:"🦠 Infection", html:"\u201cSteroids mask infection \u2014 report fevers or feeling unwell.\u201d"},
-          {t:"🦴 Bones", html:"\u201cTake your bone-protection tablets \u2014 long steroid courses weaken bones.\u201d"}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
-      arrow:"emergency for GCA; rheumatology for atypical/relapsing",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Emergency", html:"Suspected GCA, especially with visual symptoms \u2192 same-day high-dose steroid + urgent referral."},
-          {t:"Diagnostic doubt", html:"Atypical features, poor steroid response, age &lt;50, or abnormal screening bloods."},
-          {t:"Relapsing / steroid-dependent", html:"Frequent relapses or steroid toxicity \u2192 rheumatology (methotrexate)."},
-          {t:"Complications", html:"Significant steroid complications needing specialist input."}
-        ]},
-        {b:"say", html:"The good news is PMR usually responds dramatically to a steroid \u2014 you should feel much better within a week. We\u2019ll then reduce it slowly over a year or more, protect your bones, and I\u2019ll explain the warning signs of a related eye condition you must act on immediately."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#recognise'><b>Is it PMR?</b><small>Core features and exclusions</small></a><a href='#bloods'><b>Bloods first</b><small>Before the first tablet</small></a><a href='#start'><b>Start and judge</b><small>15 mg, review at 1 week</small></a><a href='#refer'><b>Refer</b><small>Atypical, GCA, relapsing</small></a></div>",
+  quickSub:"The six points that prevent the common PMR mistakes. Each figure is traced to the source named under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Ask about GCA in every patient, at every visit", html:"New headache, scalp tenderness, jaw or tongue claudication, or any visual disturbance in someone with PMR means possible <b>giant cell arteritis</b>: prednisolone 40–60 mg the same day and same-day referral to the GCA pathway (60 mg if sight is already lost). The 15 mg PMR dose does not protect against GCA-related visual loss. See the <a href='giant-cell-arteritis.html'>GCA page</a>.", src:"BSR GCA guideline 2020 · BSR/BHPR PMR guideline 2009"},
+    {tone:"purple", h:"Aged 60 or over with persistent bone pain — offer the NG12 myeloma tests", html:"NICE NG12 (updated April 2026): in people aged 60 and over with <b>persistent bone pain, particularly back pain, or unexplained fracture</b>, offer FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains (urine Bence Jones protein if serum free light chains are not available). If the results suggest myeloma, refer using a suspected cancer pathway referral.", src:"NICE NG12 (updated April 2026) recs 1.10.4–1.10.5"},
+    {tone:"amber", h:"Bloods before the first tablet", html:"A steroid will flatten the ESR and CRP and can mask the mimics. The BSR panel: <b>FBC, ESR or plasma viscosity and/or CRP, U&amp;E, LFT, bone profile, protein electrophoresis (consider urine Bence Jones protein), TSH, CK, rheumatoid factor and urine dipstick</b>; ANA and anti-CCP may be added.", src:"BSR/BHPR PMR guideline 2009"},
+    {tone:"blue", h:"15 mg, then a one-week verdict", html:"Start <b>prednisolone 15 mg daily</b>. Expect <b>at least 70% global improvement within 1 week</b> and inflammatory markers back to normal by about 4 weeks. A partial or absent response is a reason to reconsider the diagnosis, not to keep raising the dose.", src:"BSR/BHPR PMR guideline 2009 · RCP/BSR concise guidance 2010"},
+    {tone:"cream", h:"Slow taper over one to two years", html:"BSR template: <b>15 mg for 3 weeks → 12.5 mg for 3 weeks → 10 mg for 4–6 weeks → then reduce by 1 mg every 4–8 weeks</b>. Most people need treatment for 1–2 years. Relapse → back to the previous dose that controlled symptoms.", src:"BSR/BHPR PMR guideline 2009"},
+    {tone:"green", h:"Bone protection starts with the steroid", html:"Postmenopausal women and men aged 50 or over starting 7.5 mg or more of prednisolone a day for 3 months or longer — which covers almost everyone with PMR — should start bone-protective treatment at the same time, without waiting for a DXA scan. Add an NHS Steroid Emergency Card.", src:"NOGG 2024 · NatPSA/2020/005"}
+  ],
+  pathwaySub:"Five moves. The first one is the step most often skipped.",
+  pathway:[
+    {title:"Check for GCA and the dangerous mimics first", html:"Headache, scalp tenderness, jaw claudication or visual symptoms → treat as GCA today. Weight loss, night pain, neurological signs, peripheral synovitis or a very high or normal ESR/CRP → think again before labelling PMR.", alert:true},
+    {title:"Confirm the clinical picture", html:"Age over 50, symptoms for more than 2 weeks, bilateral shoulder and/or pelvic girdle aching, morning stiffness lasting more than 45 minutes, and a raised acute phase response. Examine shoulders, hips, small joints, muscles (for weakness rather than pain) and the temporal arteries."},
+    {title:"Take the pre-steroid bloods", html:"The BSR panel, plus the NG12 myeloma tests (serum protein electrophoresis and serum free light chains) where the patient is 60 or over with persistent bone or back pain. Chest X-ray if systemic symptoms or other red flags suggest it."},
+    {title:"Start 15 mg and review at one week", html:"At least 70% better within a week supports PMR. Start bone protection, calcium and vitamin D, and a Steroid Emergency Card. Poor response → reconsider the diagnosis and discuss with rheumatology."},
+    {title:"Taper slowly, watch for relapse and harm", html:"Follow the BSR taper, reviewing at weeks 1–3 and 6, then months 3, 6, 9 and 12. Relapse → back to the last effective dose. Frequent relapse, steroid dependence or toxicity → rheumatology for methotrexate or other options."}
+  ],
+  sections:[
+    {id:"recognise", nav:"Is it PMR?", title:"Is it PMR? — the core picture and what should make you doubt it", sub:"PMR is a clinical diagnosis. The BSR approach is to confirm the core features, actively exclude the alternatives, and use the steroid response as the final check.",
+     blocks:[
+       {b:"table", head:["Core feature","Detail","Comment"], rows:[
+         ["<b>Age</b>","Over 50","The older the patient, the more likely PMR — but also malignancy. Onset under 60 is an atypical feature"],
+         ["<b>Duration</b>","More than 2 weeks","Symptoms lasting longer than 2 months at diagnosis count as a chronic, atypical onset"],
+         ["<b>Distribution</b>","Bilateral shoulder and/or pelvic girdle aching","Shoulder involvement is usual; its absence is atypical"],
+         ["<b>Stiffness</b>","Morning stiffness lasting more than 45 minutes","Inflammatory stiffness is central; pain without stiffness points elsewhere"],
+         ["<b>Acute phase response</b>","Raised ESR and/or CRP","A normal or an extremely high acute phase response is atypical and needs a reason"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Exclusions to work through", html:"Active infection; cancer; other inflammatory rheumatic disease (rheumatoid arthritis, other connective tissue disease, calcium pyrophosphate disease, spondyloarthritis); drug-induced myalgia (statins); endocrine causes (hypothyroidism); neurological disease (such as Parkinson's); and other causes of shoulder or hip pain. Each carries a different treatment.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"blue", h:"What the classification criteria add", html:"The EULAR/ACR 2012 provisional criteria apply only to people aged 50 or over with bilateral shoulder aching and an abnormal ESR or CRP. Score: morning stiffness over 45 minutes 2; hip pain or limited movement 1; absent RF and/or anti-CCP 2; no other joint pain 1 — 4 or more classifies as PMR (5 or more with ultrasound). Sensitivity 68%, specificity 78%: a research tool, not a diagnostic test.", src:"EULAR/ACR 2012 PMR classification criteria (Dasgupta et al., Ann Rheum Dis 2012) — international"}
+       ]},
+       {b:"why", html:"Many conditions produce aching shoulders and a raised ESR in an older person, and several of them — myeloma, other cancers, infection, late-onset rheumatoid arthritis — will partly improve on prednisolone. That is why the BSR asks for the exclusions to be worked through and the bloods taken before the first tablet, and why a half-hearted response is more likely to mean a different diagnosis than an inadequate dose."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — GCA, cancer and the atypical picture", sub:"The features that change the destination. The NG12 criterion is stated here and repeated with the same threshold under Refer.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Features of giant cell arteritis", html:"New headache, scalp tenderness, jaw or tongue claudication, visual disturbance (including transient loss or double vision) → prednisolone 40–60 mg the same day (60 mg if sight is already lost) and same-day referral to the GCA pathway. Visual symptoms → same-day ophthalmology.", src:"BSR GCA guideline 2020"},
+         {tone:"purple", h:"NICE NG12 — myeloma", html:"People aged 60 and over with persistent bone pain, particularly back pain, or unexplained fracture: offer FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains (urine Bence Jones protein if serum free light chain testing is not available). If the results suggest myeloma, refer using a suspected cancer pathway referral.", src:"NICE NG12 (updated April 2026) recs 1.10.4–1.10.5"},
+         {tone:"amber", h:"Atypical features — look for another diagnosis", html:"Age under 60; chronic onset (over 2 months); no shoulder involvement; no inflammatory stiffness; prominent systemic features, weight loss, night pain or neurological signs; features of another rheumatic disease; a normal or extremely high acute phase response.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"amber", h:"Weakness rather than pain", html:"True proximal weakness, a raised CK or a rash points towards myositis or another muscle disease, not PMR.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"amber", h:"Swollen small joints", html:"Peripheral synovitis, especially with a positive RF or anti-CCP, suggests late-onset rheumatoid arthritis, which needs disease-modifying treatment rather than a PMR taper.", src:"BSR/BHPR PMR guideline 2009 · EULAR/ACR 2012 (international)"},
+         {tone:"amber", h:"Fever and a very high CRP", html:"Consider infection (including endocarditis and septic arthritis) before steroid, and large-vessel GCA when systemic symptoms dominate.", src:"BSR/BHPR PMR guideline 2009 · BSR GCA guideline 2020"}
+       ]},
+       {b:"warn", html:"<b>A dramatic response does not exclude cancer.</b> Paraneoplastic and myeloma-related pain can partly improve on steroid. Make sure the pre-steroid results, including electrophoresis and free light chains, have been reviewed before you rely on the response."}
+     ]},
+
+    {id:"bloods", nav:"Bloods", title:"Before the first tablet — the pre-steroid panel", sub:"Once the steroid starts, the ESR and CRP fall and the chance to see the mimics is lost.",
+     blocks:[
+       {b:"table", head:["Test","What it is looking for"], rows:[
+         ["<b>FBC</b>","Anaemia of inflammation; cytopenias suggesting marrow disease"],
+         ["<b>ESR or plasma viscosity, and/or CRP</b>","The acute phase response that supports the diagnosis and becomes the baseline for monitoring"],
+         ["<b>U&amp;E and LFT</b>","Renal impairment (myeloma); raised ALP (also seen in GCA and PMR)"],
+         ["<b>Bone profile</b>","Hypercalcaemia (myeloma, malignancy); baseline before bone-protective treatment"],
+         ["<b>Serum protein electrophoresis, plus serum free light chains</b>","Paraprotein or light-chain disease. Serum free light chains are part of the NG12 myeloma panel for those aged 60 or over with persistent bone pain; urine Bence Jones protein if not available"],
+         ["<b>TSH</b>","Hypothyroid myopathy"],
+         ["<b>CK</b>","Myositis or statin myopathy"],
+         ["<b>Rheumatoid factor</b> (ANA and anti-CCP may be considered)","Late-onset rheumatoid arthritis and connective tissue disease"],
+         ["<b>Urine dipstick</b>","Blood or protein suggesting vasculitis, renal disease or infection"],
+         ["<b>Glucose or HbA1c</b>","Baseline before a long glucocorticoid course"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Chest X-ray", html:"Worth adding where there are systemic symptoms, smoking history, weight loss or other features suggesting an alternative diagnosis. It is not part of the BSR core panel.", src:"BSR/BHPR PMR guideline 2009 · clinical practice"},
+         {tone:"cream", h:"If the story is typical and the bloods are clear", html:"A patient with typical core features, no atypical features and a clear screen can be started on prednisolone in primary care. Document that the exclusions were considered.", src:"BSR/BHPR PMR guideline 2009"}
+       ]}
+     ]},
+
+    {id:"start", nav:"Start", title:"Starting treatment — 15 mg and the one-week verdict", sub:"The first week is both treatment and a diagnostic test.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Prednisolone 15 mg once daily", html:"The BSR standard starting dose. Assess the response at 1 week. The international EULAR/ACR 2015 recommendations use the lowest effective dose in a range of 12.5–25 mg prednisone-equivalent daily — 15 mg sits within it.", src:"BSR/BHPR PMR guideline 2009 · EULAR/ACR 2015 (international)"},
+         {tone:"green", h:"What a good response looks like", html:"At least 70% global improvement in symptoms within 1 week, and ESR or CRP back to normal by about 4 weeks.", src:"BSR/BHPR PMR guideline 2009 · RCP/BSR concise guidance 2010"},
+         {tone:"amber", h:"A poor response is a diagnostic alarm", html:"Less than the expected improvement should prompt review of the diagnosis — rheumatoid arthritis, malignancy, infection, myositis, large-vessel GCA — and discussion with rheumatology, rather than simply increasing the dose.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"cream", h:"Intramuscular methylprednisolone — an alternative", html:"In milder disease, IM methylprednisolone 120 mg every 3–4 weeks, reducing by 20 mg every 2–3 months, may be used and can lower the cumulative steroid dose. Usually agreed with rheumatology.", src:"BSR/BHPR PMR guideline 2009 · EULAR/ACR 2015 (international)"},
+         {tone:"blue", h:"NSAIDs", html:"NSAIDs are not a substitute for glucocorticoid in PMR. At most, short-term use for other pain, weighed against their GI, renal and cardiovascular risks in older people.", src:"EULAR/ACR 2015 (international)"}
+       ]},
+       {b:"say", html:"If this is polymyalgia, the tablet should make a big difference within a week — most people feel at least two-thirds better. If it doesn't, that's important information in itself, and I'd want to look again at what's causing your pain rather than just giving you more."}
+     ]},
+
+    {id:"taper", nav:"Taper", title:"The taper — slow, symptom-led, usually 1–2 years", sub:"The BSR schedule is a template. Reduce on symptoms, supported by ESR or CRP.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", when:"3 weeks", tone:"cream", title:"15 mg daily", html:"Review at 1 week for the response; confirm the pre-steroid results are clear."},
+         {step:"2", when:"3 weeks", tone:"cream", fromLabel:"symptoms controlled", title:"12.5 mg daily", html:"Check for returning stiffness and for any GCA symptoms."},
+         {step:"3", when:"4–6 weeks", tone:"cream", fromLabel:"still controlled", title:"10 mg daily", html:"The dose at which the long slow phase begins."},
+         {step:"4", when:"every 4–8 weeks", tone:"amber", fromLabel:"stable on 10 mg", title:"Reduce by 1 mg at a time", html:"Slower at the lower doses, where relapse is most common. Alternate-day steps (for example 10 mg and 7.5 mg on alternate days) can smooth a reduction. Below physiological doses, think about adrenal recovery (NICE NG243)."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Relapse — back to the dose that worked", html:"Returning girdle pain and stiffness, usually with a rising ESR or CRP, → go back to the previous dose that controlled symptoms, hold it, then taper more slowly. If it happens repeatedly, involve rheumatology.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"blue", h:"A rising ESR without symptoms", html:"Look for another cause (infection, for example) and review sooner, rather than increasing the dose on a blood test alone.", src:"BSR/BHPR PMR guideline 2009"}
+       ]},
+       {b:"say", html:"We'll come down in small steps over the next year or two. Please don't change the dose yourself or stop suddenly. If the stiffness comes back as we reduce, let me know — usually we just go back one step and go more slowly."}
+     ]},
+
+    {id:"protect", nav:"Protect", title:"Protect bone, adrenals and metabolism throughout the course", sub:"PMR is a low-dose illness but a long one. Cumulative steroid causes most of the harm.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"Bone protection now, DXA later", html:"Postmenopausal women and men aged 50 or over starting 7.5 mg or more of prednisolone a day for 3 months or more should start bone-protective treatment at the same time, without waiting for a DXA scan. Calcium and vitamin D per BNF. See the <a href='osteoporosis.html'>osteoporosis page</a>.", src:"NOGG 2024"},
+         {tone:"amber", h:"Steroid Emergency Card and sick-day rules", html:"Anyone on 5 mg or more of prednisolone a day for 4 weeks or longer should carry an NHS Steroid Emergency Card. Explain that the tablets must never stop suddenly, and what to do if they are vomiting, acutely unwell or having surgery. Adrenal crisis management follows NICE NG243.", src:"NatPSA/2020/005 (2020) · NICE NG243 (2024)"},
+         {tone:"cream", h:"Gastroprotection", html:"Consider a PPI where there is additional GI risk — older age, previous ulcer, or concurrent NSAID, antiplatelet or anticoagulant. Dose per BNF.", src:"BNF · clinical practice"},
+         {tone:"blue", h:"Blood pressure, glucose, weight, mood, eyes", html:"Record at baseline and check at reviews. Steroid-induced hyperglycaemia and hypertension are treated on their own merits. Ask about cataract and glaucoma symptoms over a long course.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"blue", h:"Vaccines", html:"Keep inactivated vaccines (influenza, pneumococcal, COVID-19) up to date. PMR doses are usually below the high-dose steroid thresholds for live vaccines, but check the Green Book chapter 6 thresholds — and any added immunosuppressant — before a live vaccine.", src:"UKHSA Green Book chapter 6"},
+         {tone:"green", h:"Activity", html:"Encourage regular activity as stiffness settles, to maintain muscle strength and limit steroid-related weight gain; physiotherapy for persisting stiffness or deconditioning.", src:"EULAR/ACR 2015 (international)"}
+       ]}
+     ]},
+
+    {id:"relapse", nav:"Relapse", title:"Relapse, steroid dependence and steroid-sparing options", sub:"When the taper keeps failing, the answer is usually specialist input, not a bigger dose for longer.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Methotrexate", html:"May be considered alongside glucocorticoid for patients at high risk of relapse or prolonged therapy, or with comorbidities that make steroid harm more likely. Usually rheumatology-initiated. <b>Once weekly</b>; oral doses in 2.5 mg tablets only, with the total weekly dose in milligrams on the prescription. Dose and folic acid per BNF.", src:"EULAR/ACR 2015 (international) · MHRA Drug Safety Update (September 2020) · BNF"},
+         {tone:"blue", h:"IL-6 blockade — specialist only", html:"In the SAPHYR trial of relapsing PMR, sustained remission at week 52 was 28.3% with sarilumab plus a 14-week taper versus 10.3% with placebo plus a 52-week taper. Any IL-6 inhibitor for PMR is a specialist decision; there is no NICE technology appraisal for PMR at the time of writing.", src:"Spiera et al., N Engl J Med 2023 (SAPHYR)"},
+         {tone:"amber", h:"Signs the diagnosis needs revisiting", html:"Inability to get below about 10 mg, repeated relapse, a new pattern of joint swelling, or emerging systemic symptoms → rheumatology review of the diagnosis as well as the treatment.", src:"BSR/BHPR PMR guideline 2009 (referral triggers) · clinical practice"},
+         {tone:"red", h:"Relapse with cranial or visual features", html:"This is GCA until proved otherwise — prednisolone 40–60 mg the same day and same-day GCA pathway referral.", src:"BSR GCA guideline 2020"}
+       ]}
+     ]},
+
+    {id:"followup", nav:"Follow-up", title:"Follow-up schedule", sub:"The BSR schedule for the first year, with extra visits for relapse or adverse effects.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"0", when:"Week 0", title:"Diagnose and start", html:"Pre-steroid bloods reviewed; prednisolone 15 mg; bone protection, calcium and vitamin D; Steroid Emergency Card; blood pressure, weight and glucose recorded; GCA symptoms explained."},
+         {n:"1", when:"Weeks 1–3", title:"Response check", html:"At least 70% better supports PMR. Poor response → reconsider the diagnosis and discuss with rheumatology."},
+         {n:"2", when:"Week 6", title:"Early taper", html:"ESR or CRP should be back to normal by about 4 weeks. Continue the taper if symptoms are controlled."},
+         {n:"3", when:"Months 3, 6, 9 and 12", title:"Taper reviews", html:"Symptoms, ESR or CRP, FBC, U&amp;E, glucose, blood pressure, weight, bone health and GCA screen at each visit."},
+         {n:"4", when:"Year 2 and stopping", title:"Coming off", html:"Most patients stop within 1–2 years. Review adrenal symptoms at the end of the taper and whether bone-protective treatment should continue."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"At every review", html:"Response and stiffness; GCA symptoms; steroid adverse effects; ESR or CRP; and the next step of the taper agreed with the patient.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"cream", h:"Written plan", html:"Give the patient a written taper schedule with the date of each step, and the symptoms that mean they should call the same day.", src:"BSR/BHPR PMR guideline 2009 · clinical practice"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, where, how fast", sub:"Most typical PMR is managed in primary care. These are the exceptions.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day — suspected GCA", html:"Headache, scalp tenderness, jaw or tongue claudication, or visual symptoms → prednisolone 40–60 mg now (60 mg if sight lost) and the GCA fast-track pathway; any visual symptom → same-day ophthalmology.", src:"BSR GCA guideline 2020"},
+         {tone:"purple", h:"Suspected cancer pathway <span class='tw'>2WW</span> · NICE NG12 myeloma", html:"People aged 60 and over with persistent bone pain, particularly back pain, or unexplained fracture: offer FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains (urine Bence Jones protein if serum free light chains are not available). <b>Refer using a suspected cancer pathway referral if the results suggest myeloma.</b>", src:"NICE NG12 (updated April 2026) recs 1.10.4–1.10.5"},
+         {tone:"amber", h:"Rheumatology before or soon after starting steroid", html:"Atypical features: age under 60, chronic onset, no shoulder involvement, no inflammatory stiffness, prominent systemic features, weight loss, night pain, neurological signs, features of another rheumatic disease, or a normal or extremely high acute phase response.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"amber", h:"Rheumatology — treatment problems", html:"Incomplete response to 15 mg, relapse or inability to reduce the dose, contraindications to glucocorticoid, or a need for treatment beyond about 2 years.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"blue", h:"Other routes", html:"Proximal weakness with a raised CK → rheumatology or neurology for myositis work-up. Fever with a very high CRP → same-day assessment for infection.", src:"BSR/BHPR PMR guideline 2009"},
+         {tone:"green", h:"Primary care management", html:"Typical PMR with a clear screen and a good response at 1 week: GP-led taper, bone protection and the review schedule above.", src:"BSR/BHPR PMR guideline 2009"}
+       ]},
+       {b:"say", html:"Most people with polymyalgia are looked after entirely by their GP. The steroid should help a lot within a week; after that we reduce it slowly and protect your bones. The one thing I need you to act on straight away is a new headache, a sore scalp, pain in your jaw when you chew, or any change in your eyesight — that could be a related condition that affects the eyes, and it needs treatment that day."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card for the exam and for real consultations.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 68-year-old man has had 5 weeks of aching across both shoulders and thighs, can barely get out of bed in the morning for the first hour, and has lost 4 kg. His CRP is 48. He asks for 'the steroid my friend had for the same thing' because he is going on holiday next week.", src:"Scenario built on BSR/BHPR PMR guideline 2009 features"},
+       {tone:"cream", h:"What a strong consultation does", html:"Confirms the core features and <b>asks about GCA symptoms</b>; notices that <b>weight loss is an atypical feature</b>; takes the full <b>pre-steroid panel</b> including electrophoresis and <b>serum free light chains</b> (NG12 myeloma, if he has persistent bone or back pain); negotiates starting <b>15 mg</b> once results allow, with a <b>1-week response check</b> arranged around the holiday; explains that a poor response would change the diagnosis; starts <b>bone protection</b> and issues a <b>Steroid Emergency Card</b>; and safety-nets GCA symptoms clearly.", src:"BSR/BHPR PMR guideline 2009 · NICE NG12 (updated April 2026) · NOGG 2024"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page is traceable to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>BSR and BHPR guidelines for the management of polymyalgia rheumatica</b> (Dasgupta et al., Rheumatology 2010;49:186–190; published online 2009)<br><a href="https://academic.oup.com/rheumatology/article/49/1/186/1789113" rel="noopener">academic.oup.com/rheumatology/article/49/1/186/1789113</a><span class="rd"> — core inclusion and exclusion criteria; pre-steroid core investigations; atypical features and referral triggers; prednisolone 15 mg with 70% improvement at 1 week; taper 15 mg ×3 weeks, 12.5 mg ×3 weeks, 10 mg ×4–6 weeks, then 1 mg every 4–8 weeks; IM methylprednisolone 120 mg every 3–4 weeks; follow-up weeks 0, 1–3, 6 and months 3, 6, 9, 12; 1–2 years of treatment</span></li>'+
+         '<li><b>Treatment of polymyalgia rheumatica: British Society for Rheumatology guideline scope</b> (Toyoda et al., Rheumatology Advances in Practice 2024;8:rkae002)<br><a href="https://academic.oup.com/rheumap/article/8/1/rkae002/7606885" rel="noopener">academic.oup.com/rheumap/article/8/1/rkae002/7606885</a><span class="rd"> — scope only: an updated BSR PMR guideline is in development and had not been published when this page was checked, so the 2009 guideline remains the UK reference</span></li>'+
+         '<li><b>Concise guidance: diagnosis and management of polymyalgia rheumatica</b> (Royal College of Physicians with BSR, Clinical Medicine 2010)<span class="rd"> — markers normal by about 4 weeks; alternate-day reductions</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b> (2015, updated April 2026)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — recs 1.10.4–1.10.5 (myeloma, amended 2025): tests for people aged 60 and over with persistent bone pain, particularly back pain, or unexplained fracture; suspected cancer pathway referral if results suggest myeloma</span></li>'+
+         '<li><b>British Society for Rheumatology guideline on diagnosis and treatment of giant cell arteritis</b> (Mackie et al., Rheumatology 2020;59:e1–e23)<br><a href="https://academic.oup.com/rheumatology/article/59/3/e1/5714024" rel="noopener">academic.oup.com/rheumatology/article/59/3/e1/5714024</a><span class="rd"> — GCA safety net: prednisolone 40–60 mg, 60 mg with established visual loss, same-day referral</span></li>'+
+         '<li><b>NOGG 2024 — UK clinical guideline for the prevention and treatment of osteoporosis</b> (National Osteoporosis Guideline Group)<br><a href="https://www.nogg.org.uk/sites/nogg/download/NOGG-Guideline-2024.pdf" rel="noopener">nogg.org.uk</a><span class="rd"> — start bone protection with 7.5 mg/day or more of prednisolone for 3 months or longer in postmenopausal women and men aged 50 or over</span></li>'+
+         '<li><b>NICE NG243 — Adrenal insufficiency: identification and management</b> (2024)<br><a href="https://www.nice.org.uk/guidance/ng243" rel="noopener">nice.org.uk/guidance/ng243</a><span class="rd"> — sick-day dosing, adrenal crisis and glucocorticoid withdrawal</span></li>'+
+         '<li><b>National Patient Safety Alert NatPSA/2020/005/NHSPS — Steroid Emergency Card</b> (NHS England, August 2020)<br><a href="https://www.england.nhs.uk/publication/national-patient-safety-alert-steroid-emergency-card-to-support-early-recognition-and-treatment-of-adrenal-crisis-in-adults/" rel="noopener">england.nhs.uk</a><span class="rd"> — card for adults on 5 mg or more of prednisolone a day for 4 weeks or longer</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Methotrexate once-weekly for autoimmune diseases</b> (September 2020)<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — once-weekly dosing, 2.5 mg tablets, total dose in milligrams</span></li>'+
+         '<li><b>UKHSA Green Book, chapter 6 — Contraindications and special considerations</b><br><a href="https://www.gov.uk/government/publications/contraindications-and-special-considerations-the-green-book-chapter-6" rel="noopener">gov.uk</a><span class="rd"> — corticosteroid thresholds for live vaccines</span></li>'+
+         '<li><b>2015 recommendations for the management of polymyalgia rheumatica: a EULAR/ACR collaborative initiative</b> (Dejaco et al., Ann Rheum Dis 2015;74:1799–1807) — international<span class="rd"> — initial dose 12.5–25 mg prednisone-equivalent; IM methylprednisolone as an alternative; early methotrexate for those at high risk of relapse or steroid harm; no NSAIDs as a substitute; exercise</span></li>'+
+         '<li><b>2012 provisional classification criteria for polymyalgia rheumatica: a EULAR/ACR collaborative initiative</b> (Dasgupta et al., Ann Rheum Dis 2012;71:484–492) — international<span class="rd"> — entry criteria and scoring; sensitivity 68%, specificity 78%</span></li>'+
+         '<li><b>Sarilumab for relapse of polymyalgia rheumatica during glucocorticoid taper (SAPHYR)</b> (Spiera et al., N Engl J Med 2023;389:1263–1272)<span class="rd"> — sustained remission at week 52: 28.3% vs 10.3%</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — prednisolone, methylprednisolone, PPIs, bisphosphonates, calcium and vitamin D, methotrexate and folic acid</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Polymyalgia rheumatica in adults — BSR/BHPR PMR guideline 2009 (the updated BSR guideline is in development; scope published 2024), RCP/BSR concise guidance 2010, BSR GCA guideline 2020, NICE NG12 (updated April 2026), NICE NG243 (2024), NOGG 2024, NatPSA/2020/005, MHRA Drug Safety Update (September 2020) and UKHSA Green Book chapter 6; EULAR/ACR 2015 and 2012 as international sources. Check every dose against the current BNF before prescribing; this page does not replace clinical judgement or your local pathway."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

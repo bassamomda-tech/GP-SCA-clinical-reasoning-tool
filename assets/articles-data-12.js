@@ -42,7 +42,7 @@
     management:[
       'Determine the pattern and look for reversible/systemic causes: review drugs, recent triggers, and check ferritin and thyroid function as appropriate',
       'Reassure and explain telogen effluvium — it usually recovers over months once the trigger resolves; correct any iron deficiency',
-      'Androgenetic alopecia: explain the options — topical minoxidil (men and women), and oral finasteride in men (counsel on side effects); set realistic expectations; treatment is long-term',
+      'Androgenetic alopecia: explain the options — topical minoxidil (men and women), and oral finasteride in men (counsel on side effects — sexual dysfunction that may persist after stopping, and depression/suicidal ideation; ask about mood history first, MHRA 2026); set realistic expectations; treatment is long-term',
       'Alopecia areata: many small patches regrow spontaneously; options include topical/intralesional corticosteroids; provide reassurance and psychological support, and refer extensive/rapidly progressive disease',
       'Refer suspected scarring alopecia promptly — early treatment can limit permanent loss',
       'Address the significant psychological impact; signpost support groups and wig/prosthesis services where relevant',

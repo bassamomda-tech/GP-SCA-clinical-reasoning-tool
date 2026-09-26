@@ -481,7 +481,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   pearls:['Long-term steroids must be increased in illness and never stopped suddenly — the opposite of most drugs.'],
   note:'Glucocorticoid-receptor activation gives both the anti-inflammatory benefit and every metabolic side-effect — and HPA suppression dictates the taper and sick-day rules.',
-  links:{ patho:'patho-addisons', pathoLabel:'Adrenal insufficiency', case:'cases/sick-day-rules.html', caseLabel:'Sick-day rules' },
+  links:{ patho:'patho-addisons', pathoLabel:'Adrenal insufficiency', case:'cases/addisons-disease.html', caseLabel:'Sick-day rules' },
 },
 {
   id:'pharma-adrenal-replacement', domain:'Pharmacology', class:'Endocrine & Metabolic', icon:'💊',

@@ -20,131 +20,237 @@
 MG.render({
   icon:"🧴",
   title:"Atopic Eczema — The Complete Guide",
-  stemTitle:"Eczema made simple &mdash; drown it in emollient, match the steroid to the site, step up and down",
-  stemSub:"One pathway: confirm the diagnosis, get the emollient dose and technique right (the treatment everyone under-does), pick topical steroid potency by SITE not just severity with fingertip-unit quantities, use calcineurin inhibitors to spare the face, recognise and treat the two infections (bacterial + eczema herpeticum), prevent flares with weekend therapy, and know the systemic/biologic ladder behind a dermatology referral. NICE CG57 \u00b7 NICE.",
-  guideline:"NICE CG57 \u00b7 NICE",
-  glance:[
-    {lbl:"Base for all", val:"Emollient 250\u2013500g/wk", sub:"even when clear"},
-    {lbl:"Dose steroids in", val:"Fingertip units", sub:"1 FTU = 2 adult palms"},
-    {lbl:"Potency by", val:"SITE", sub:"mild on face, up limbs/trunk"},
-    {lbl:"Face/flexure sparing", val:"Tacrolimus / pimecrolimus", sub:"no skin atrophy"},
-    {lbl:"Emergency", val:"Eczema herpeticum", sub:"same-day aciclovir"},
-    {lbl:"Refer for", val:"Dupilumab / JAK", sub:"TA534 / TA814"}
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Atopic eczema — a generous emollient base, the right steroid for the right skin, and two infections you must not miss",
+  stemSub:"Most eczema that ‘isn’t working’ is under-treated rather than untreatable. The job in primary care is to confirm it is atopic eczema, grade both the skin and its impact, build a daily emollient habit, match topical steroid potency to the body site and the flare, recognise bacterial infection and eczema herpeticum, prevent repeat flares, and know when the specialist ladder — phototherapy, systemic immunosuppressants, biologics and JAK inhibitors — is the right next step. Sources: NICE CG57 (2007, updated 2023) · NICE NG190 (2021) · NICE TA81, TA82, TA177, TA534, TA681, TA814, TA986, TA1077 · MHRA Drug Safety Updates · BAD patient information · EuroGuiDerm 2022 (international).",
+  guideline:"NICE CG57 (2007, updated June 2023) · NICE NG190 (2021) · NICE TA534 / TA681 / TA814 / TA986 / TA1077 · MHRA Drug Safety Update (Dec 2018, Sep 2021, Nov 2022, Apr 2023, May 2024)",
+  meta:[
+    {t:"NICE CG57 · atopic eczema in under 12s (updated 2023)"},
+    {t:"NICE NG190 · infected eczema (2021)"},
+    {t:"NICE TA81 · TA82 · TA177 · TA534 · TA681 · TA814 · TA986 · TA1077"},
+    {t:"MHRA DSU · emollient fire risk · steroid withdrawal · JAK inhibitors"},
+    {t:"EuroGuiDerm 2022 · ESCD 2022 (international, adults and hands)"},
+    {t:"2WW · NICE NG12 unilateral nipple change", tone:"tw"}
   ],
-  flow:[
-
-    {t:"node", d:"found", n:"1", tag:"Step 1 · confirm", title:"Confirm the diagnosis, grade severity + impact",
-      blocks:[
-        {b:"kv", rows:[
-          ["Diagnosis (UK Working Party)","Itchy skin PLUS \u22653 of: visible flexural dermatitis (or cheeks/extensors if <18mo), personal history of flexural involvement, dry skin in last year, personal atopy (asthma/rhinitis \u2014 or 1st-degree relative if <4y), onset <2 years"],
-          ["Grade severity","<b>Clear \u00b7 mild \u00b7 moderate \u00b7 severe</b> \u2014 AND the impact separately (POEM/DLQI, sleep loss, school/work days, mood): a small area can be severe by impact"],
-          ["Triggers","Soaps/detergents, heat, wool/synthetics, stress, infection, aeroallergens (dust mite/pollen/pet), and \u2014 in poorly-controlled infants \u2014 food allergy (cow's milk, egg)"],
-          ["Baseline","Map affected sites (drives potency choice), current products + actual quantities used, adherence, and steroid-phobia beliefs (ask directly \u2014 it's the top adherence barrier)"]
-        ]},
-        {b:"why", html:"Eczema is <strong>stepped care on an emollient base</strong>: emollients are the continuous treatment that reduces flares and steroid need \u2014 topical steroid potency steps up and down on top. The two commonest reasons for 'treatment failure' are <em>emollient under-use</em> and <em>steroid under-use from phobia</em> \u2014 both fixed by education, not escalation."},
-        {b:"warn", html:"Not all eczema is atopic. Consider <b>contact dermatitis</b> (hands/occupational, sharp margins \u2192 patch testing), <b>discoid eczema</b>, <b>seborrhoeic</b> (scalp/face folds), <b>venous eczema</b> (lower legs + venous signs), and \u2014 the mimic to fear \u2014 <b>cutaneous T-cell lymphoma</b> in fixed, treatment-resistant 'eczema' in an adult."}
-      ]},
-
-    {t:"node", d:"life", n:"2", tag:"Step 2 · emollients", title:"Emollients — the treatment everyone under-doses",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🧴 Quantity", html:"Prescribe GENEROUSLY: ~250\u2013500g/week (adult), 250g/week (child) of a leave-on emollient. If a 500g tub lasts a month, they're not using enough."},
-          {t:"⏱️ Frequency", html:"Apply at least BD and after washing \u2014 and continue when the skin is clear (this is what prevents flares). Smooth on in the direction of hair growth, don't rub."},
-          {t:"🧼 Soap substitute", html:"Stop all soap/bubble bath/shower gel \u2014 use the emollient (or a dedicated wash) instead. Lukewarm, short baths; pat dry."},
-          {t:"🥇 Order + gap", html:"Emollient first; wait ~15\u201330 min before the topical steroid so you don't dilute or spread it. Different products, different tubes."},
-          {t:"🎯 Choose by preference", html:"Greasier ointments (e.g. 50:50, epaderm) hold moisture best but are less cosmetically acceptable \u2192 lighter creams/lotions by day, ointment at night. Adherence beats theory."},
-          {t:"🔥 Fire risk", html:"Paraffin-based emollients on skin/dressings/clothing are a FIRE HAZARD \u2014 warn about naked flames, smoking, and that bedding/clothing can ignite even after washing."}
-        ]},
-        {b:"warn", html:"Pump dispensers or a clean spoon (not fingers into the tub) reduce bacterial contamination. Aqueous cream is <b>not</b> a good leave-on emollient (SLS content stings/irritates) \u2014 fine only as a brief wash-off if at all."}
-      ]},
-
-    {t:"node", d:"drug", n:"3", tag:"Step 3 · steroids", title:"Topical corticosteroids — potency by site, dosed in fingertip units",
-      blocks:[
-        {b:"table", head:["Potency","Named example","Where / when"], rows:[
-          ["<b>Mild</b>","Hydrocortisone 1%","Face, flexures, infants; mild flares anywhere. Safe on the face short-term"],
-          ["<b>Moderate</b>","Clobetasone butyrate 0.05% (Eumovate); betamethasone valerate 0.025%","Moderate flares on trunk/limbs; brief courses on face only if mild-potency fails"],
-          ["<b>Potent</b>","Betamethasone valerate 0.1% (Betnovate); mometasone 0.1% (Elocon, OD); fluticasone 0.05%","Severe/lichenified eczema on trunk/limbs; hands & feet (thick skin). NOT routine on face"],
-          ["<b>Very potent</b>","Clobetasol propionate 0.05% (Dermovate)","Specialist-guided; palms/soles, severe lichenification only"]
-        ]},
-        {b:"kv", rows:[
-          ["Dose in fingertip units (FTU)","<b>1 FTU</b> (last finger crease to tip, from a 5mm nozzle) \u2248 0.5g \u2248 covers <b>2 adult palms</b> of skin. Face+neck ~2.5 FTU \u00b7 one arm ~3 \u00b7 one leg ~6 \u00b7 trunk front ~7 \u00b7 whole hand ~1. Apply <b>OD\u2013BD to active skin until clear + 48h</b>, then stop (emollient continues)"],
-          ["Match potency to SITE not just severity","Thin skin (face, flexures, genitals, infants) \u2192 mild; thick skin (palms, soles, lichenified plaques) \u2192 potent. Same flare, different potency by body area"],
-          ["Safety","Used correctly for flares, TCS are safe. Atrophy/striae/telangiectasia come from prolonged POTENT steroid on thin skin \u2014 not from appropriate courses. Counter steroid phobia explicitly or they'll under-treat"]
-        ]},
-        {b:"ladder", steps:[
-          {step:"Add-on", title:"Topical calcineurin inhibitor (TCI)", when:"face/flexure or steroid-sparing",
-           html:"<b>Tacrolimus 0.03% (child) / 0.1% (adult) ointment BD</b>, or pimecrolimus 1% cream (milder). No skin atrophy \u2192 ideal for face, eyelids, flexures, or where steroids are being over-relied on. Warn of transient stinging/burning first few days; advise sun protection. 2nd-line (after TCS) per licence."},
-          {step:"Itch/sleep", title:"Short-term sedating antihistamine", when:"sleep wrecked by itch during a flare",
-           fromLabel:"acute flare only",
-           html:"<b><span class='rx'>Chlorphenamine 4 mg</span></b> (child: BNFC age band) or <b><span class='rx'>hydroxyzine 25 mg</span></b> at night, SHORT courses only. <b>Non-sedating antihistamines are NOT routinely recommended</b> (eczema itch is not histamine-driven) \u2014 they don't help the eczema."},
-          {step:"Maintenance", title:"'Weekend' (proactive) therapy", when:"frequent flares at the same sites",
-           fromLabel:"\u22652\u20133 flares/month at recurrent spots",
-           html:"Once control achieved, apply the TCS (or tacrolimus) to those recurrent sites on <b>2 consecutive days per week</b> while continuing daily emollient \u2014 halves flare frequency and total steroid used."}
-        ]},
-        {b:"warn", html:"<b>Bandaging/wet wraps</b> (occlusion) increase potency and absorption \u2014 initiate with specialist/nurse guidance, and never over infected skin. Review potent-TCS quantity in children (growth) but reassure appropriate use is safe."}
-      ]},
-
-    {t:"node", d:"safety", n:"4", tag:"Step 4 · infection", title:"The two infections — bacterial and the emergency",
-      blocks:[
-        {b:"table", head:["Infection","Recognise","Action"], rows:[
-          ["<b>Bacterial (Staph/Strep)</b>","Weeping, golden crusting, pustules, rapid worsening, failure to respond","<b>Flucloxacillin</b> (clarithromycin/erythromycin if penicillin-allergic) 5\u20137 days ONLY if unwell/spreading \u2014 NICE NG190: don't routinely swab or treat colonised eczema. Optimise TCS + emollient; swab if recurrent/not responding"],
-          ["<b>Eczema herpeticum</b> (HSV) \u2014 EMERGENCY","Rapidly worsening, PAINFUL eczema; clustered <b>monomorphic punched-out</b> erosions/vesicles; fever/malaise; not responding to steroids","<b>Same-day:</b> oral (or IV if unwell/widespread) <b>aciclovir</b> + urgent dermatology; <b>same-day ophthalmology if near the eye</b> (sight-threatening). Don't wait for swabs"]
-        ]},
-        {b:"warn", html:"A painful, rapidly spreading flare that isn't responding to steroids is eczema herpeticum until proven otherwise \u2014 pain + monomorphic punched-out lesions are the giveaway (bacterial infection is crusted/weepy and less painful). Missing it risks disseminated HSV and, periocularly, blindness."}
-      ]},
-
-    {t:"node", d:"monitor", n:"5", tag:"Step 5 · review", title:"Review — control, quantities, growth",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Control + flare frequency + impact","Each review (POEM)","Step potency up/down; add weekend therapy if frequent flares"],
-          ["Emollient QUANTITY on repeat","Each review","Check the actual amount dispensed \u2014 under-use is the #1 failure; re-prescribe 250\u2013500g/wk generously"],
-          ["TCS potency vs site + steroid phobia","Each review","Right potency for the area; re-teach FTU; re-address phobia (drives under-treatment)"],
-          ["Technique + adherence","Each review","Emollient-then-steroid order, frequency, soap substitute actually stopped?"],
-          ["Growth (children on potent/extensive TCS)","Periodically","Monitor height/weight; reassure appropriate use is safe \u2014 the eczema harms growth/sleep more than the steroid"]
-        ]},
-        {b:"say", html:"There are two treatments and they do different jobs. The moisturiser is the one that keeps the eczema away \u2014 use loads, every day, even when the skin looks perfect. The steroid cream is the firefighter \u2014 a good layer on the angry patches until they settle and a couple of days after, then stop. Used that way the steroid is safe; the mistake most people make is using too little of both."}
-      ]},
-
-    {t:"loop", icon:"🔁", title:"Not controlled? Run this BEFORE escalating",
-      arrow:"\u2026it's rarely 'stronger drugs needed'",
-      intro:"Most uncontrolled eczema is emollient under-use, steroid phobia, or unrecognised infection.",
-      checks:[
-        {b:"1 · Emollient dose", html:"Genuinely 250\u2013500g/week, often, including when clear? (Check the repeat quantity, not what they say.)"},
-        {b:"2 · Steroid phobia", html:"Under-treating flares from fear? Using too-mild a potency for the site? Re-teach FTU + safety."},
-        {b:"3 · Infection", html:"Weeping/crusting (bacterial) or painful punched-out lesions (herpeticum)? Treat before escalating."},
-        {b:"4 · Triggers + contact", html:"Soap still in use? Occupational/hand pattern → think contact dermatitis + patch testing. Food allergy in a poorly-controlled infant."},
-        {b:"5 · Right diagnosis?", html:"Fixed, single-site, treatment-resistant 'eczema' in an adult → biopsy (cutaneous T-cell lymphoma). Annular → tinea (do skin scrapings; steroids worsen it)."},
-        {b:"6 · Escalate", html:"Optimal topical care + still severe/uncontrolled → dermatology (phototherapy / systemic / biologic)."}
-      ],
-      back:"Emollient + technique + infection + triggers + diagnosis all addressed → refer dermatology"},
-
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"What the patient must know",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Eczema herpeticum", html:"\u201cRapidly spreading, PAINFUL eczema with clusters of little blisters or punched-out sores, feeling unwell \u2014 same-day help; near the eye, that's urgent.\u201d"},
-          {t:"🟠 Infected eczema", html:"\u201cWeeping, golden crusting or pustules with the skin getting worse fast \u2014 contact us; it may need an antibiotic.\u201d"},
-          {t:"🧴 Never stop the moisturiser", html:"\u201cKeep it going every day even when clear \u2014 stopping is what brings the flare back.\u201d"},
-          {t:"🔥 Fire safety", html:"\u201cMoisturisers soak into clothes and bedding and can catch fire \u2014 keep away from flames and don't smoke near them.\u201d"}
-        ]}
-      ]},
-
-    {t:"node", d:"refer", n:"7", tag:"Refer", title:"Dermatology — and the systemic ladder behind it",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Same day", html:"Eczema herpeticum → dermatology (+ ophthalmology if periocular); severe erythroderma."},
-          {t:"Urgent / soon", html:"Severe eczema not controlled by optimal topical therapy; psychological/social impact severe; recurrent serious infections."},
-          {t:"Routine", html:"Diagnostic doubt or suspected contact allergy → patch testing; failure of moderate potency + TCI; frequent flares needing maintenance review."},
-          {t:"What secondary care adds", html:"Phototherapy (narrowband UVB); systemic immunosuppression \u2014 ciclosporin (fastest), methotrexate, azathioprine, mycophenolate; then <b>dupilumab (TA534)</b> and oral <b>JAK inhibitors \u2014 abrocitinib/upadacitinib/baricitinib (TA814)</b> for moderate\u2013severe disease failing systemics."},
-          {t:"Children + food allergy", html:"Moderate\u2013severe infant eczema uncontrolled despite optimal topical care + suspected food trigger → paediatric/allergy (not blanket exclusion diets)."}
-        ]},
-        {b:"say", html:"I'm sending you to the skin team \u2014 not because we've run out of options, but because the next treatments (light therapy, tablets that calm the immune system, or the newer targeted injections and tablets) are theirs to start and monitor. The emollient-and-steroid routine carries on throughout."}
-      ]}
+  lead:"<div class='mg-layers'><a href='#flags'><b>Red flags</b><small>Herpeticum, nipple, erythroderma</small></a><a href='#emollients'><b>Emollients</b><small>250–500 g a week in children</small></a><a href='#steroids'><b>Steroids</b><small>Potency by site</small></a><a href='#refer'><b>Refer</b><small>Same-day to routine</small></a></div>",
+  quickSub:"Six cards that cover most eczema consultations. Each figure traces to a source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Eczema herpeticum: start aciclovir today", html:"Eczema that suddenly becomes painful and worsens fast, with clusters of uniform punched-out erosions or blisters, sometimes with fever — suspect herpes simplex. NICE CG57 says to start <b>systemic aciclovir immediately</b> and arrange <b>same-day specialist dermatology advice</b>; if the skin around the eye is involved, <b>same-day ophthalmology as well</b>. Do not wait for a swab result."},
+    {tone:"cream", h:"Emollients are the treatment, not an extra", html:"NICE CG57: emollients form the basis of management and continue <b>even when the skin is clear</b>. In children, prescribe leave-on emollients in large quantities — <b>250–500 g a week</b> — with a supply for nursery or school. Use them as the soap substitute too. Emollient <b>bath additives are no longer recommended</b> (CG57 2023 update)."},
+    {tone:"cream", h:"Potency follows the body site", html:"Mild potency on the face and neck (a moderate for 3–5 days in a severe flare); moderate or potent only for 7–14 days in the axillae and groin; no potent steroids under 12 months and no very potent steroids in children without specialist advice (NICE CG57). Apply <b>once or twice daily only</b> (NICE TA81)."},
+    {tone:"amber", h:"Not every weepy flare needs an antibiotic", html:"NICE NG190: do not routinely give an antibiotic to someone who is not systemically unwell. Localised, non-severe infection → consider topical <b>fusidic acid 2% three times daily for 5–7 days</b>. Widespread infection or systemically unwell → <b>oral flucloxacillin 500 mg four times daily for 5–7 days</b> in adults (clarithromycin if penicillin-allergic). Do not swab at first presentation."},
+    {tone:"blue", h:"Grade two things: skin and life", html:"NICE CG57 grades physical severity as clear, mild, moderate or severe <b>and</b> separately asks about sleep, school or work, mood and family life at every review. A child with small patches and no sleep has severe disease by impact."},
+    {tone:"purple", h:"One-sided nipple ‘eczema’ is a breast pathway", html:"NICE NG12: refer using a suspected cancer pathway referral (for an appointment within 2 weeks) for breast cancer in people <b>aged 50 and over</b> with any of the following in <b>one nipple only</b>: discharge, retraction or other changes of concern. Persistent unilateral nipple or areolar eczema that fails treatment may be Paget’s disease.", src:"NICE NG12 (2015, last updated April 2026)"}
   ],
-  foot:"Atopic eczema in primary care \u2014 NICE CG57, NG190 (infection), TA534 (dupilumab), TA814 (JAK inhibitors), NICE. Verify doses and potencies against the current BNF/BNFc before prescribing."
+  pathwaySub:"Five moves from first look to specialist ladder. The first step is where harm happens.",
+  pathway:[
+    {title:"Screen for the dangerous presentations", html:"Eczema herpeticum (painful, rapidly spreading, punched-out erosions) · periocular involvement · a systemically unwell child or adult with spreading infection · erythroderma (most of the skin surface red and inflamed) · unilateral nipple change in someone aged 50 or over · fixed, atypical plaques in an adult that never clear. Any of these changes the plan before routine treatment starts.", alert:true},
+    {title:"Confirm it is atopic eczema and grade it", html:"Use the NICE CG57 diagnostic criteria in children (itch plus three or more features). In adults, think about contact dermatitis, seborrhoeic dermatitis, psoriasis, scabies, tinea and venous eczema before settling on atopic eczema. Record physical severity <b>and</b> impact on sleep, schooling or work, and mood. Map the sites — they decide potency."},
+    {title:"Build the emollient base", html:"A leave-on emollient the person will actually use, in generous quantities, applied several times a day and after washing, and used instead of soap. Explain the fire risk on fabric (MHRA). Continue when clear."},
+    {title:"Treat flares by site, then keep control", html:"Topical steroid of the right potency for the site, once or twice daily, until the flare settles. For frequent flares at the same sites, discuss twice-weekly proactive treatment (EuroGuiDerm 2022, international). Topical calcineurin inhibitors are a second-line option where steroids have not controlled eczema or carry a risk of atrophy (NICE TA82)."},
+    {title:"Review, troubleshoot, escalate", html:"Check quantities issued, technique and steroid fears before stepping up. Treat infection per NG190. Refer when CG57 criteria are met — urgently if severe disease has not responded to a week of optimal topical treatment — for phototherapy, systemic treatment or biologics under the NICE technology appraisals."}
+  ],
+  sections:[
+    {id:"flags", nav:"Red flags", title:"Red flags — act on these first", sub:"Most eczema is a chronic, fluctuating nuisance. These presentations are not.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Eczema herpeticum (widespread herpes simplex)", html:"Rapidly worsening, painful eczema with clustered, uniform, punched-out erosions or vesicles, often with fever or malaise, and poor response to the usual treatment. Start systemic aciclovir immediately and get same-day specialist dermatology advice. It can be fatal or cause blindness if missed.", src:"NICE CG57 (updated 2023) · NICE QS44 statement 7"},
+         {tone:"red", h:"Herpeticum around the eyes", html:"Periocular lesions → systemic aciclovir plus same-day ophthalmology and dermatology advice.", src:"NICE CG57 (updated 2023)"},
+         {tone:"red", h:"Systemically unwell with spreading infection", html:"Fever, malaise or rapidly spreading cellulitis on a background of eczema → oral antibiotic per NG190, and consider hospital assessment if the person is very unwell or not tolerating oral treatment.", src:"NICE NG190 (2021)"},
+         {tone:"red", h:"Erythroderma", html:"Inflammation involving most of the skin surface, with shivering, feeling unwell or fluid loss. Needs same-day specialist assessment — temperature control, fluid balance and infection risk make it a medical problem, not just a skin one."},
+         {tone:"purple", h:"Unilateral nipple change aged 50 and over <span class='tw'>2WW</span>", html:"Refer using a suspected cancer pathway referral (for an appointment within 2 weeks) for breast cancer in people aged 50 and over with any of the following symptoms in one nipple only: discharge, retraction or other changes of concern. Consider a suspected cancer pathway referral in people with skin changes that suggest breast cancer. Eczema confined to one nipple and areola that does not settle with treatment is the classic presentation of Paget’s disease.", src:"NICE NG12 (2015, last updated April 2026) recs 1.4.1 and 1.4.2"},
+         {tone:"amber", h:"Fixed, atypical ‘eczema’ in an adult", html:"New-onset eczema-like patches in later adult life, especially on sun-protected sites (buttocks, trunk), that are fixed in position, variably coloured and never fully clear despite adequate treatment, need dermatology review and biopsy to exclude cutaneous T-cell lymphoma (mycosis fungoides). There is no NG12 criterion for this — refer on clinical suspicion."},
+         {tone:"amber", h:"Severe disease not responding after a week", html:"Severe atopic eczema that has not responded to optimal topical treatment after 1 week, or bacterially infected eczema where treatment has failed, meets the criteria for urgent (within 2 weeks) specialist referral.", src:"NICE CG57 (updated 2023)"}
+       ]},
+       {b:"why", html:"Herpes simplex spreads easily across a broken skin barrier. The lesions are uniform because they arise at the same time, and they erode quickly, leaving round punched-out sores that can merge into larger raw areas. Bacterial infection, by contrast, tends to weep and crust yellow and is usually less painful. The practical rule is that a <b>sudden painful deterioration</b> in someone with eczema is herpeticum until you have looked carefully — and treating early with aciclovir is safe even when you turn out to be wrong."}
+     ]},
+
+    {id:"diagnose", nav:"Diagnose", title:"Is it atopic eczema? Diagnosis and look-alikes", sub:"The label drives everything else, so confirm it before treating.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>NICE CG57 criteria (children)</b>","An itchy skin condition <b>plus three or more</b> of: visible flexural dermatitis (or cheeks and/or extensor surfaces if aged 18 months or under); a personal history of flexural dermatitis (or cheeks/extensors at 18 months or under); a history of dry skin in the last 12 months; a personal history of asthma or allergic rhinitis (or atopic disease in a first-degree relative if under 4); onset before age 2 (this criterion is not used in children under 4)."],
+         ["<b>Skin of colour</b>","NICE CG57 notes that in Asian, Black Caribbean and Black African children eczema may affect the extensor surfaces rather than the flexures, and discoid or follicular patterns can occur. Redness is harder to see — rely on itch, texture, thickening and colour change."],
+         ["<b>Adults</b>","The same pattern applies, but eczema in adulthood is more often something else, or atopic eczema with a second process on top. Hands, face and eyelids in particular raise the question of contact allergy."],
+         ["<b>Triggers to ask about</b>","Soaps and detergents, heat and sweating, wool and rough fabrics, house dust mite, pets and pollen, stress, and infection. In infants with moderate or severe eczema that does not settle, ask about reactions to cow’s milk and egg."]
+       ]},
+       {b:"table", head:["Look-alike","Clue","What to do"], rows:[
+         ["<b>Allergic contact dermatitis</b>","Hands, eyelids, face, or a sharp edge matching a product or jewellery; worse at work","Patch testing via dermatology (ESCD 2022 recommends it for all chronic hand eczema)"],
+         ["<b>Seborrhoeic dermatitis</b>","Greasy yellow scale on scalp, eyebrows, nasolabial folds, chest","Antifungal-based treatment rather than escalating steroids"],
+         ["<b>Psoriasis</b>","Well-defined plaques with silvery scale; nails; extensor surfaces","Different treatment ladder"],
+         ["<b>Scabies</b>","Burrows in finger webs and wrists, night itch, others in the house itchy","Treat the household"],
+         ["<b>Tinea</b>","Annular, spreading edge, one-sided; worse after steroid","Skin scrapings; stop steroid"],
+         ["<b>Venous eczema</b>","Lower legs with varicose veins, haemosiderin, oedema","Treat venous disease; compression if arterial supply adequate"],
+         ["<b>Cutaneous T-cell lymphoma</b>","Fixed patches in an adult, sun-protected sites, never clearing","Dermatology and biopsy"]
+       ]}
+     ]},
+
+    {id:"grade", nav:"Grade", title:"Grading severity and impact", sub:"Two separate scores — the skin and the life around it — both recorded at each review.",
+     blocks:[
+       {b:"table", head:["Physical severity (NICE CG57)","What you see and hear"], rows:[
+         ["<b>Clear</b>","Normal skin, no evidence of active eczema"],
+         ["<b>Mild</b>","Areas of dry skin, infrequent itching, with or without small areas of redness"],
+         ["<b>Moderate</b>","Areas of dry skin, frequent itching, redness, with or without excoriation and localised skin thickening"],
+         ["<b>Severe</b>","Widespread dry skin, incessant itching and redness, with or without excoriation, extensive thickening, bleeding, oozing, cracking and pigment change"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Impact matters as much as area", html:"Ask about sleep (the child’s and the parents’), school or work absence, mood, bullying, self-consciousness and family strain. Impact can move someone up a treatment step even when the physical score looks moderate.", src:"NICE CG57 (updated 2023) · NICE QS44 statement 3"},
+         {tone:"blue", h:"Treatment follows the grade", html:"Mild: emollients plus mild potency steroid. Moderate: emollients, moderate potency steroid, topical calcineurin inhibitors, bandages. Severe: emollients, potent steroid, topical calcineurin inhibitors, bandages, phototherapy and systemic therapy — the last two are specialist.", src:"NICE CG57 (updated 2023) · NICE QS44 statement 2"}
+       ]}
+     ]},
+
+    {id:"emollients", nav:"Emollients", title:"Emollients — quantity, technique and safety", sub:"The treatment everyone under-uses. Check the repeat quantities, not just what the patient says.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"How much", html:"NICE CG57: leave-on emollients prescribed in large quantities — <b>250–500 g a week</b> for children — and easily available at nursery, pre-school or school. Adults with widespread dry skin usually need at least as much. A 500 g tub lasting a month means it is not being used enough.", src:"NICE CG57 (updated 2023)"},
+         {tone:"cream", h:"How often and how", html:"Use emollients more often and in larger amounts than any other treatment, every day, even when the skin is clear. BAD advises moisturising often — at least 2–3 times a day — smoothing it on in the direction of hair growth rather than rubbing it in.", src:"NICE CG57 · BAD atopic eczema leaflet (Aug 2025)"},
+         {tone:"cream", h:"Wash with it", html:"Use the emollient (or an emollient soap substitute) in place of soap, bubble bath and shower gel. NICE CG57’s 2023 update says <b>do not offer emollient bath additives</b> to children with eczema — the BATHE trial found no added benefit over standard care.", src:"NICE CG57 (updated June 2023)"},
+         {tone:"cream", h:"Choice and preference", html:"Offer a choice of unperfumed emollients. Ointments hold moisture best but feel greasy; creams and lotions are easier by day. The best emollient is the one that gets used; review and switch if it stings or is disliked.", src:"NICE CG57 (updated 2023)"},
+         {tone:"amber", h:"Aqueous cream", html:"Aqueous cream contains sodium lauryl sulfate and can cause stinging, burning, itch and redness, especially in children with eczema. If it irritates, stop and switch to an SLS-free emollient. It is not a good leave-on emollient.", src:"MHRA Drug Safety Update (March 2013) · aqueous cream"},
+         {tone:"amber", h:"Order of application", html:"Leave about 20–30 minutes between the emollient and the topical steroid so the steroid is not diluted and made less effective.", src:"BAD topical corticosteroids leaflet (Feb 2024)"},
+         {tone:"red", h:"Fire risk — tell every patient", html:"Emollient residue dried onto clothing, bedding, dressings or hair acts as an accelerant if the fabric catches fire. This applies to <b>paraffin-based and paraffin-free</b> products. Advise no smoking and keeping away from naked flames; washing fabric does not fully remove the risk.", src:"MHRA Drug Safety Update (Dec 2018)"},
+         {tone:"green", h:"Hygiene", html:"Use a pump dispenser, or take emollient out of a tub with a clean spoon or spatula rather than fingers, to avoid contaminating the supply with bacteria."}
+       ]},
+       {b:"say", html:"Think of the moisturiser as the main treatment and the steroid as the fire engine. The moisturiser keeps the fire from starting, so it goes on every day, lots of it, even when your skin looks perfect. The steroid only comes out when there is a flare."}
+     ]},
+
+    {id:"steroids", nav:"Topical steroids", title:"Topical corticosteroids — potency by site, quantity by fingertip unit", sub:"Used correctly, topical steroids are safe and effective. Under-treatment from fear is more common than harm from over-use.",
+     blocks:[
+       {b:"table", head:["Potency","Examples (check BNF/BNFC)","Where it fits"], rows:[
+         ["<b>Mild</b>","Hydrocortisone 0.5–2.5%","Face and neck; mild eczema anywhere; infants"],
+         ["<b>Moderate</b>","Clobetasone butyrate 0.05%","Moderate flares on trunk and limbs; face and neck for 3–5 days only in a severe flare; axillae and groin for 7–14 days"],
+         ["<b>Potent</b>","Betamethasone valerate 0.1%, mometasone furoate 0.1%","Severe eczema on trunk and limbs, thick skin; not on the face or neck in children; not under 12 months without specialist supervision"],
+         ["<b>Very potent</b>","Clobetasol propionate 0.05%","Specialist advice only in children; short courses on thick skin such as palms and soles in adults"]
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"Site and age rules", html:"Tailor potency to severity, which can vary by site. Mild potency for the face and neck except 3–5 days of moderate potency for severe flares. Moderate or potent for 7–14 days only in vulnerable sites such as the axillae and groin. No potent steroids under 12 months without specialist dermatological supervision; no very potent steroids in children without specialist advice. In children aged 12 months or more, use potent steroids for as short a time as possible and no longer than 14 days.", src:"NICE CG57 (updated 2023)"},
+         {tone:"cream", h:"Frequency", html:"Prescribe topical corticosteroids for application <b>only once or twice daily</b>. More frequent application adds cost and exposure without benefit; some products are licensed once daily.", src:"NICE TA81 (2004)"},
+         {tone:"blue", h:"How much — the fingertip unit", html:"One fingertip unit is the amount squeezed from a standard tube along an adult finger from the tip to the first crease — enough to cover an area the size of two adult hands with fingers together.", src:"BAD topical corticosteroids leaflet (Feb 2024)"},
+         {tone:"blue", h:"Regional quantities in adults", html:"Measured fingertip units per application: face and neck about 2.5, one arm about 3, one hand about 1, one leg about 6, front or back of trunk about 7 each, one foot about 2 (Long and Finlay, Clin Exp Dermatol 1991)."},
+         {tone:"amber", h:"Topical steroid withdrawal reactions", html:"Long-term, continuous or inappropriate use of topical steroids — particularly moderate to high potency — can be followed on stopping by redness, burning and stinging worse than the original condition. Use the lowest effective potency for the shortest time, review repeat prescriptions, and ask about symptoms after stopping.", src:"MHRA Drug Safety Update (Sep 2021)"},
+         {tone:"blue", h:"Potency is now on the pack", html:"From 2024, topical steroid packs are being relabelled to show their potency (mild, moderate, potent or very potent) so patients can tell them apart. Where the pack shows it, use it when explaining which cream goes where; the same update repeats the warning about withdrawal reactions after prolonged high-potency use.", src:"MHRA Drug Safety Update (May 2024)"},
+         {tone:"green", h:"Address steroid fears directly", html:"Discuss benefits and harms with the patient or carer and emphasise that, applied correctly, the benefits outweigh possible harms. Skin thinning comes from prolonged potent use on thin skin, not from short, correctly targeted courses.", src:"NICE CG57 (updated 2023)"}
+       ]},
+       {b:"warn", html:"Wet wraps and occlusive bandages increase absorption and effectively raise potency. They should be started by a trained health professional and not used over infected skin. In children using potent steroids or large quantities, keep an eye on growth as part of routine review."}
+     ]},
+
+    {id:"flare", nav:"Flares and control", title:"Getting control, keeping control", sub:"Treat the flare, then stop the next one.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", when:"every patient", tone:"cream", title:"Emollient base", html:"Generous leave-on emollient several times a day, used as a soap substitute, continued when clear."},
+         {step:"2", when:"flare", tone:"cream", title:"Topical steroid matched to site and severity", fromLabel:"flare", html:"Once or twice daily to active eczema until the flare settles, then stop and keep the emollient going. Early treatment of a flare with the right potency usually shortens it."},
+         {step:"3", when:"frequent flares at the same sites", tone:"cream", title:"Proactive twice-weekly treatment", fromLabel:"2 or more flares a month in the same places", html:"Once controlled, apply the steroid (or a topical calcineurin inhibitor) to the usual flare sites on two days a week, alongside daily emollient. EuroGuiDerm (international, 2022) recommends proactive treatment of this kind to reduce the risk of relapse; tacrolimus 0.1% in adults and 0.03% in children has trial evidence over up to a year."},
+         {step:"4", when:"steroid not controlling, or atrophy risk", tone:"amber", title:"Topical calcineurin inhibitor", fromLabel:"second line", html:"NICE TA82: <b>tacrolimus</b> ointment for moderate to severe eczema in adults and children aged 2 and over not controlled by topical steroids where there is a serious risk of important adverse effects (particularly irreversible skin atrophy); <b>pimecrolimus</b> cream for moderate eczema on the face and neck in children aged 2–16. Not for mild eczema and never first line. TA82 advises initiation by a physician with a special interest in dermatology — follow local shared-care arrangements. Warn about transient burning and stinging and advise sun protection."},
+         {step:"5", when:"still severe", tone:"amber", title:"Specialist treatment", fromLabel:"referral", html:"Phototherapy, systemic immunosuppressants, biologics and JAK inhibitors — see <a href='#specialist'>the specialist ladder</a>."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Antihistamines — narrow roles only", html:"Not routinely. Offer a <b>1-month trial of a non-sedating antihistamine</b> in severe eczema, or mild to moderate eczema with severe itch or urticaria; continue while it helps and review every 3 months. Offer a <b>7–14-day trial of an age-appropriate sedating antihistamine</b> to children aged 6 months or over during an acute flare when sleep disturbance is significant. Doses per BNFC.", src:"NICE CG57 (updated 2023)"},
+         {tone:"cream", h:"Bandages and wet wraps", html:"Occlusive medicated dressings and dry bandages are an option for localised areas of chronic lichenified eczema; whole-body occlusion is a specialist technique. Do not use over infected skin.", src:"NICE CG57 (updated 2023)"}
+       ]}
+     ]},
+
+    {id:"infection", nav:"Infection", title:"Infection — bacterial and viral", sub:"Eczema skin is almost always colonised with Staphylococcus aureus. Treat infection, not swab results.",
+     blocks:[
+       {b:"table", head:["","Bacterial infection","Eczema herpeticum"], rows:[
+         ["<b>Looks like</b>","Weeping, yellow crusts, pustules, rapid worsening; sometimes fever","Painful, clustered, uniform punched-out erosions or blisters, spreading quickly; often fever and malaise"],
+         ["<b>Swab?</b>","Not routinely at first presentation. Swab if infection recurs frequently; consider if worsening or not improving as expected","Viral swab can be sent, but do not wait for it"],
+         ["<b>Treatment</b>","Not systemically unwell: antibiotic not routinely needed — continue emollient and steroid. Localised, not severe: consider topical fusidic acid 2% three times daily for 5–7 days. Widespread or systemically unwell: oral flucloxacillin 500 mg four times daily for 5–7 days in adults; clarithromycin 250 mg twice daily for 5–7 days if penicillin-allergic (erythromycin in pregnancy; children per NG190/BNFC)","Systemic aciclovir immediately (dose per BNF/BNFC); IV if very unwell or widespread"],
+         ["<b>Refer</b>","Urgent (within 2 weeks) if treatment of infected eczema has failed","Same-day dermatology; same-day ophthalmology if around the eyes"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Avoid prolonged topical antibiotics", html:"Extended or repeated topical antibiotic use drives resistance. Keep courses short and localised.", src:"NICE NG190 (2021)"},
+         {tone:"green", h:"Replace contaminated products", html:"After an infection, consider new supplies of emollient, especially tubs that fingers have been in. This is sensible practice rather than a guideline recommendation."}
+       ]}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Infants, food allergy, hands and adults", sub:"Where the guideline for children stops and other sources take over.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Infants and cow’s milk", html:"For bottle-fed babies under 6 months with moderate or severe eczema not controlled by optimal emollients and mild topical steroid, offer a 6–8-week trial of an extensively hydrolysed protein or amino acid formula in place of cow’s milk formula. Refer for specialist dietary advice if a cow’s milk-free diet continues beyond 8 weeks.", src:"NICE CG57 (updated 2023)"},
+         {tone:"blue", h:"When to think food allergy", html:"Infants and young children with moderate or severe eczema not controlled by optimal treatment, particularly with a history of immediate reactions, should be referred for specialist allergy investigation. Cow’s milk, egg and nuts are the commonest. Avoid blanket exclusion diets without specialist input.", src:"NICE CG57 (updated 2023) · NICE QS44 statement 6"},
+         {tone:"blue", h:"Chronic hand eczema (international)", html:"Hand eczema lasting more than 3 months or flaring twice or more in a year counts as chronic. The ESCD guideline recommends patch testing for all chronic hand eczema, alongside occupational history, glove use and replacing soap with emollients.", src:"International: ESCD hand eczema guideline (Contact Dermatitis 2022)"},
+         {tone:"amber", h:"Severe chronic hand eczema — alitretinoin", html:"Oral alitretinoin is an option for adults with severe chronic hand eczema unresponsive to potent topical steroids, with a DLQI of 15 or more. It is started and monitored by a dermatologist, and is teratogenic — a pregnancy prevention programme is mandatory.", src:"NICE TA177 (2009)"},
+         {tone:"blue", h:"Adults — no UK guideline", html:"NICE CG57 covers children under 12. For adults, the same principles apply; the European EuroGuiDerm guideline (international, 2022, living update 2025) is the reference for adult treatment choices, and the NICE technology appraisals set NHS eligibility for systemic drugs.", src:"International: EuroGuiDerm atopic eczema guideline (J Eur Acad Dermatol Venereol 2022)"},
+         {tone:"cream", h:"Pregnancy and breastfeeding", html:"Emollients and topical steroids of appropriate potency remain the mainstay. Systemic immunosuppressants, JAK inhibitors and alitretinoin need specialist review before conception — several are contraindicated. Check the BNF and SPC for each drug."}
+       ]}
+     ]},
+
+    {id:"specialist", nav:"Specialist ladder", title:"What the specialist can add", sub:"You will not start these, but patients ask — and you share the monitoring.",
+     blocks:[
+       {b:"table", head:["Step","Options","NHS position"], rows:[
+         ["<b>Phototherapy</b>","Narrowband UVB","Specialist, for severe disease not controlled topically"],
+         ["<b>Conventional systemic</b>","Ciclosporin (the only one licensed for atopic dermatitis), methotrexate, azathioprine, mycophenolate mofetil","Specialist-initiated; usually the first systemic step, and at least 1 must have failed (or be unsuitable) before the NICE-appraised biologics and JAK inhibitors below"],
+         ["<b>Biologic — dupilumab</b>","Anti-IL-4/IL-13 injection","NICE TA534 (2018): adults with moderate to severe disease not responding to at least 1 other systemic therapy, or where these are contraindicated or not tolerated"],
+         ["<b>Biologic — tralokinumab</b>","Anti-IL-13 injection","NICE TA814 (2022): adults, same position after systemic therapy"],
+         ["<b>Biologic — lebrikizumab</b>","Anti-IL-13 injection","NICE TA986 (2024): people aged 12 and over weighing 40 kg or more, after at least 1 systemic immunosuppressant, where dupilumab or tralokinumab would otherwise be offered"],
+         ["<b>Biologic — nemolizumab</b>","Anti-IL-31 receptor injection","NICE TA1077 (2025): people aged 12 and over weighing 30 kg or more, after at least 1 systemic immunosuppressant, where a biologic would otherwise be offered"],
+         ["<b>Oral JAK inhibitors</b>","Abrocitinib, upadacitinib, baricitinib","NICE TA814 (2022): abrocitinib and upadacitinib for adults and young people aged 12 and over after at least 1 systemic therapy; NICE TA681 (2021): baricitinib for adults after at least 1 systemic therapy"],
+         ["<b>Stopping rule</b>","Response at 16 weeks","Stop if the response is inadequate — at least a 50% reduction in EASI and a 4-point reduction in DLQI is the threshold used (for example NICE TA986)"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"JAK inhibitors — MHRA restrictions", html:"Increased risk of major cardiovascular events, malignancy, venous thromboembolism, serious infection and death was identified across the class. In people aged 65 or over, current or long-term past smokers, or those with other cardiovascular or malignancy risk factors, use only if no suitable alternative exists; caution in people with VTE risk factors. Tell the practice if a patient on a JAK inhibitor develops chest pain, breathlessness, leg swelling or signs of infection.", src:"MHRA Drug Safety Update (Apr 2023)"},
+         {tone:"amber", h:"Dupilumab — eye problems", html:"Conjunctivitis is common (up to 1 in 10). Dry eye, blepharitis and keratitis are less common, and ulcerative keratitis is rare. New or worsening eye symptoms need prompt assessment; persistent or severe symptoms → ophthalmology.", src:"MHRA Drug Safety Update (Nov 2022)"},
+         {tone:"blue", h:"Topical calcineurin inhibitors and cancer risk", html:"Since TA82 was issued, the European Medicines Agency recommended greater caution to reduce potential risks of skin cancer and lymphoma — hence second-line use, the shortest effective course and sun protection.", src:"NICE TA82 (2004; static-list note)"}
+       ]}
+     ]},
+
+    {id:"review", nav:"Review", title:"Review and troubleshooting — before you escalate", sub:"Most uncontrolled eczema is emollient under-use, steroid fear or unrecognised infection.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"1 · How much is being used?", html:"Look at issue dates and quantities on the repeat list. A child who needs 250–500 g of emollient a week but collects 500 g a month is under-treated.", src:"NICE CG57 (updated 2023)"},
+         {tone:"blue", h:"2 · Is the potency right for the site?", html:"Mild steroid on thick, lichenified limb eczema will not work; potent steroid on the face will cause harm. Re-map the sites.", src:"NICE CG57 (updated 2023)"},
+         {tone:"blue", h:"3 · Is fear stopping treatment?", html:"Ask directly what the patient or parent has heard about steroids — online accounts of withdrawal reactions are a common reason for stopping early. Separate appropriate short courses from the long-term continuous use that MHRA describes.", src:"MHRA Drug Safety Update (Sep 2021)"},
+         {tone:"amber", h:"4 · Is it infected?", html:"Weeping and crusting, or painful punched-out lesions. Treat before stepping up.", src:"NICE NG190 (2021) · NICE CG57"},
+         {tone:"amber", h:"5 · Is it the right diagnosis?", html:"Contact allergy (hands, eyelids, face), tinea made worse by steroid, scabies, or in an adult with fixed patches, lymphoma. Reconsider before adding systemic drugs."},
+         {tone:"green", h:"6 · Education", html:"Show how to apply, how much, and in what order; give written instructions for each product and site. Education is part of the treatment, not an add-on.", src:"NICE CG57 (updated 2023) · NICE QS44"}
+       ]},
+       {b:"say", html:"You have two different treatments that do two different jobs. The moisturiser keeps the eczema away and it goes on every day in big amounts. The steroid is for the red, itchy flare — a thin layer, once or twice a day, on the angry patches until they settle, then stop. Used like that it is safe. The commonest reason eczema doesn’t get better is using too little of both, not the creams being too weak."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, where and how fast", sub:"Criteria for children come from NICE CG57; the same thresholds are a reasonable guide in adults.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day", html:"Suspected eczema herpeticum → systemic aciclovir now and same-day dermatology advice; periocular herpeticum → same-day ophthalmology too. Erythroderma or a systemically unwell patient with spreading infection → same-day assessment.", src:"NICE CG57 (updated 2023)"},
+         {tone:"purple", h:"Suspected cancer pathway <span class='tw'>2WW</span> · NICE NG12", html:"Refer using a suspected cancer pathway referral (for an appointment within 2 weeks) for breast cancer in people aged 50 and over with any of the following symptoms in one nipple only: discharge, retraction or other changes of concern. Consider a suspected cancer pathway referral for breast cancer in people with skin changes that suggest breast cancer.", src:"NICE NG12 (2015, last updated April 2026) recs 1.4.1 and 1.4.2"},
+         {tone:"amber", h:"Urgent (within 2 weeks) — dermatology", html:"Severe atopic eczema that has not responded to optimal topical therapy after 1 week; or treatment of bacterially infected eczema has failed.", src:"NICE CG57 (updated 2023)"},
+         {tone:"blue", h:"Routine — dermatology", html:"Diagnosis uncertain; management has not controlled the eczema satisfactorily based on the child’s, parent’s or carer’s own assessment; facial eczema not responding to appropriate treatment; suspected contact allergic dermatitis; significant social or psychological problems such as sleep disturbance or poor school attendance; severe and recurrent infections.", src:"NICE CG57 (updated 2023)"},
+         {tone:"blue", h:"Allergy or paediatrics", html:"Infants and young children with moderate or severe eczema not controlled by optimal treatment and a suspected food allergy — specialist allergy investigation rather than home exclusion diets.", src:"NICE CG57 (updated 2023) · NICE QS44 statement 6"},
+         {tone:"blue", h:"Adults with persistent atypical plaques", html:"Fixed, never-clearing patches in sun-protected sites → dermatology for biopsy to exclude cutaneous T-cell lymphoma. Urgency by clinical judgement — no NG12 criterion applies."},
+         {tone:"green", h:"Keep in primary care", html:"Mild to moderate eczema responding to emollients and site-appropriate topical steroids, with proactive treatment for recurrent sites and a written plan.", src:"NICE CG57 (updated 2023)"}
+       ]},
+       {b:"say", html:"I’d like the skin specialists to see you — not because we have run out of ideas but because the next options, like light treatment or tablets and injections that calm the immune system, are ones they start and monitor. Keep going with the moisturiser and steroid plan in the meantime; that carries on whatever they add."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only — the casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A mother brings her 3-year-old whose eczema has been ‘bad for months’. He wakes three times a night scratching. She stopped the hydrocortisone because she read that steroids thin the skin and cause withdrawal, and the 500 g emollient tub from six weeks ago is still half full. Today one elbow is weeping and crusted.", src:"NICE CG57 (updated 2023)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Grades severity and impact (sleep); explores the steroid fear and separates short, site-appropriate courses from long-term misuse; recalculates emollient need (250–500 g a week) and shows technique; checks for herpeticum before assuming bacterial infection; manages localised infection per NG190 without reflex oral antibiotics; gives a written plan including fire safety; safety-nets painful spreading sores; agrees review. <a href='../../cases/eczema.html'>Open the full casebook chapter →</a>", src:"NICE CG57 · NICE NG190 · MHRA DSU (Dec 2018, Sep 2021)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every figure on this page is traceable to a named primary source.",
+     blocks:[
+       {b:"html", html:"<div class='card'><h3>Evidence panel</h3><ul class='evlist'>"+
+         "<li><b>NICE CG57 — Atopic eczema in under 12s: diagnosis and management</b> (December 2007, last updated June 2023)<br><a href='https://www.nice.org.uk/guidance/cg57' rel='noopener'>nice.org.uk/guidance/cg57</a><span class='rd'> — diagnostic criteria, severity grading, emollients 250–500 g a week, no bath additives (2023), potency by site and age, antihistamine trials, cow’s milk and allergy referral, eczema herpeticum, referral criteria</span></li>"+
+         "<li><b>NICE QS44 — Atopic eczema in under 12s</b> (quality standard, September 2013)<br><a href='https://www.nice.org.uk/guidance/qs44' rel='noopener'>nice.org.uk/guidance/qs44</a><span class='rd'> — stepped care, psychological impact, emollient provision, specialist referral, allergy investigation, eczema herpeticum</span></li>"+
+         "<li><b>NICE NG190 — Secondary bacterial infection of eczema and other common skin conditions: antimicrobial prescribing</b> (2021)<br><a href='https://www.nice.org.uk/guidance/ng190' rel='noopener'>nice.org.uk/guidance/ng190</a><span class='rd'> — no routine antibiotic or swab, topical fusidic acid 2% TDS 5–7 days, flucloxacillin 500 mg QDS or clarithromycin 250 mg BD for 5–7 days</span></li>"+
+         "<li><b>NICE TA81 — Frequency of application of topical corticosteroids for atopic eczema</b> (2004)<br><a href='https://www.nice.org.uk/guidance/ta81' rel='noopener'>nice.org.uk/guidance/ta81</a><span class='rd'> — once or twice daily only</span></li>"+
+         "<li><b>NICE TA82 — Tacrolimus and pimecrolimus for atopic eczema</b> (2004)<br><a href='https://www.nice.org.uk/guidance/ta82' rel='noopener'>nice.org.uk/guidance/ta82</a><span class='rd'> — second-line positions, age limits, specialist initiation, EMA caution note</span></li>"+
+         "<li><b>NICE TA177 — Alitretinoin for severe chronic hand eczema</b> (2009)<br><a href='https://www.nice.org.uk/guidance/ta177' rel='noopener'>nice.org.uk/guidance/ta177</a></li>"+
+         "<li><b>NICE TA534 — Dupilumab for moderate to severe atopic dermatitis</b> (2018); <b>TA681 — Baricitinib</b> (2021); <b>TA814 — Abrocitinib, tralokinumab or upadacitinib</b> (2022); <b>TA986 — Lebrikizumab</b> (July 2024); <b>TA1077 — Nemolizumab</b> (July 2025)<br><a href='https://www.nice.org.uk/guidance/ta814' rel='noopener'>nice.org.uk/guidance/ta814</a> · <a href='https://www.nice.org.uk/guidance/ta986' rel='noopener'>ta986</a> · <a href='https://www.nice.org.uk/guidance/ta1077' rel='noopener'>ta1077</a><span class='rd'> — eligibility after at least 1 systemic therapy, age and weight limits, 16-week EASI 50 plus DLQI 4-point stopping rule</span></li>"+
+         "<li><b>NICE NG12 — Suspected cancer: recognition and referral</b> (2015, last updated April 2026)<br><a href='https://www.nice.org.uk/guidance/ng12' rel='noopener'>nice.org.uk/guidance/ng12</a><span class='rd'> — breast: one-nipple changes aged 50 and over (refer), skin changes suggesting breast cancer (consider)</span></li>"+
+         "<li><b>MHRA Drug Safety Update</b> — Emollients: risk of severe and fatal burns with paraffin-containing and paraffin-free emollients (December 2018); Topical corticosteroids: topical steroid withdrawal reactions (September 2021); Dupilumab: ocular adverse reactions (November 2022); JAK inhibitors: new measures to reduce risks (April 2023); Topical steroids: new potency labelling (May 2024); Aqueous cream: may cause skin irritation (March 2013)<br><a href='https://www.gov.uk/drug-safety-update' rel='noopener'>gov.uk/drug-safety-update</a></li>"+
+         "<li><b>British Association of Dermatologists patient information</b> — Atopic eczema (August 2025); Emollient use in skin conditions (January 2023); Topical corticosteroids (February 2024); Topical calcineurin inhibitors (May 2025)<br><a href='https://www.bad.org.uk/pils/atopic-eczema' rel='noopener'>bad.org.uk/pils/atopic-eczema</a></li>"+
+         "<li><b>Long CC, Finlay AY. The finger-tip unit — a new practical measure.</b> Clin Exp Dermatol 1991<br><a href='https://pubmed.ncbi.nlm.nih.gov/1806320/' rel='noopener'>pubmed.ncbi.nlm.nih.gov/1806320</a><span class='rd'> — regional fingertip-unit quantities</span></li>"+
+         "<li><b>EuroGuiDerm guideline on atopic eczema</b> (Wollenberg et al., J Eur Acad Dermatol Venereol 2022; living update 2025) — <i>international; used for adults where no UK guideline exists</i><br><a href='https://doi.org/10.1111/jdv.18429' rel='noopener'>Part II, non-systemic treatments (JEADV 2022;36:1904–26)</a> · <a href='https://pubmed.ncbi.nlm.nih.gov/40317496/' rel='noopener'>living update (systemic therapy), JEADV 2025</a><span class='rd'> — proactive twice-weekly topical treatment (Part II)</span></li>"+
+         "<li><b>ESCD — Guidelines for diagnosis, prevention and treatment of hand eczema</b> (Thyssen et al., Contact Dermatitis 2022;86:357–78) — <i>international</i><br><a href='https://pubmed.ncbi.nlm.nih.gov/34971008/' rel='noopener'>pubmed.ncbi.nlm.nih.gov/34971008</a></li>"+
+         "<li><b>BNF / BNFC</b><br><a href='https://bnf.nice.org.uk' rel='noopener'>bnf.nice.org.uk</a><span class='rd'> — topical steroid potency classes, aciclovir, antihistamine and paediatric antibiotic doses</span></li>"+
+         "</ul></div>"}
+     ]}
+  ],
+  foot:"Atopic eczema in primary care — NICE CG57 (updated June 2023), NICE NG190 (2021), NICE TA81, TA82, TA177, TA534, TA681, TA814, TA986 and TA1077, NICE NG12 (updated April 2026), MHRA Drug Safety Updates (2013–2024), BAD patient information, and EuroGuiDerm 2022 and ESCD 2022 (international). Check every dose and potency against the current BNF or BNFC before prescribing."
 });
 </script>
 
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

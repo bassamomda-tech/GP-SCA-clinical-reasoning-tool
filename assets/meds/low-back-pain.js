@@ -1,11 +1,11 @@
 /* ============================================
    Medication Chooser — Low back pain & sciatica
-   NICE NG59 · NICE neuropathic pain (CG173) · BNF
+   NICE NG59 · BNF
    ============================================ */
 MedChooser.register('low-back-pain', {
   title: 'Low back pain & sciatica — analgesia selection',
-  subtitle: 'NICE NG59 analgesic ladder plus the neuropathic arm for sciatica. Tick the patient profile; cards re-tier live.',
-  guideline: 'NICE NG59 · CG173 (neuropathic) · BNF',
+  subtitle: 'NICE NG59 analgesic options for low back pain and sciatica. Tick the patient profile; cards re-tier live.',
+  guideline: 'NICE NG59 · BNF',
 
   factors: [
     // Presentation
@@ -57,15 +57,15 @@ MedChooser.register('low-back-pain', {
       id:'nsaid',
       name:'Oral NSAID',
       examples:'Ibuprofen 400 mg TDS · Naproxen 250–500 mg BD',
-      step:'1st-line (low back pain)',
-      source:'NICE NG59 §1.2.1',
+      step:'Consider (low back pain)',
+      source:'NICE NG59',
       sideEffects:'GI bleed/ulcer, renal impairment, fluid retention, raised BP, bronchospasm in sensitive asthma',
       monitor:'Lowest effective dose, shortest time; co-prescribe PPI; renal function if at risk',
       counsel:'"An anti-inflammatory is the most effective tablet for back pain — take it with food and a stomach-protecting tablet, at the lowest dose for the shortest time."',
       detail:{
         'Dose': 'Naproxen 250–500 mg BD or ibuprofen 400 mg TDS, with a PPI; shortest effective course',
         'Interactions': 'Anticoagulants/antiplatelets (bleed), ACEi/ARB + diuretic (triple-whammy AKI), other NSAIDs',
-        'Key teaching': 'NICE NG59: oral NSAID is first-line for low back pain (NOT paracetamol alone). Always weigh GI/renal/cardiac risk and add gastroprotection.'
+        'Key teaching': 'NICE NG59: consider an oral NSAID for low back pain, at the lowest effective dose for the shortest time, taking GI, liver and cardiorenal risk into account (do NOT offer paracetamol alone). Evidence of NSAID benefit in sciatica is limited.'
       },
       evaluate(f){
         if (f.pud) return { tier:'avoid', reasons:[{kind:'bad', text:'Peptic ulcer / GI bleed history — NSAID contraindicated (or only with strong gastroprotection + specialist judgement)'}] };
@@ -76,9 +76,9 @@ MedChooser.register('low-back-pain', {
         if (f.anticoag) r.push({kind:'bad', text:'On anticoagulant/antiplatelet — increased bleeding; avoid if possible'});
         if (f.preg) r.push({kind:'bad', text:'Pregnancy — avoid (esp. 3rd trimester)'});
         if (f.elderly) r.push({kind:'neutral', text:'Elderly — higher GI/renal risk; PPI cover, short course'});
-        if (f.acute && !f.cvd && !f.elderly) r.push({kind:'good', text:'Acute low back pain — first-line analgesic'});
+        if (f.acute && !f.cvd && !f.elderly) r.push({kind:'good', text:'Acute low back pain — NSAID is the analgesic NG59 recommends considering'});
         const safe = !f.cvd && !f.anticoag && !f.preg;
-        return { tier: safe ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'good', text:'First-line for low back pain'}] };
+        return { tier: safe ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'good', text:'NG59: consider for low back pain'}] };
       }
     },
 
@@ -88,17 +88,17 @@ MedChooser.register('low-back-pain', {
       name:'Weak opioid (± paracetamol)',
       examples:'Codeine 30–60 mg QDS · Co-codamol',
       step:'Acute, if NSAID unsuitable',
-      source:'NICE NG59 §1.2.1',
+      source:'NICE NG59',
       sideEffects:'Constipation, drowsiness, nausea, dependence with prolonged use',
       monitor:'Short course only; review; co-prescribe laxative',
       counsel:'"A short course of a stronger painkiller if the anti-inflammatory isn\'t enough or isn\'t suitable — only for a week or two, as it can be constipating and habit-forming."',
       detail:{
         'Dose': 'Codeine 30–60 mg QDS (often as co-codamol) for a short acute course',
         'Interactions': 'Other sedatives, CNS depressants',
-        'Key teaching': 'NICE NG59: consider a weak opioid (± paracetamol) for acute low back pain ONLY if an NSAID is contraindicated, not tolerated, or ineffective. Avoid opioids for chronic low back pain.'
+        'Key teaching': 'NICE NG59: consider a weak opioid (± paracetamol) for acute low back pain ONLY if an NSAID is contraindicated, not tolerated, or ineffective. Do not offer opioids for chronic low back pain or chronic sciatica.'
       },
       evaluate(f){
-        if (f.chronic && !f.acute) return { tier:'avoid', reasons:[{kind:'bad', text:'Chronic low back pain — NICE advises against opioids (poor long-term benefit, harm)'}] };
+        if (f.chronic && !f.acute) return { tier:'avoid', reasons:[{kind:'bad', text:'Chronic low back pain — NICE NG59: do not offer opioids (poor long-term benefit, harm)'}] };
         if (f.opioid_risk) return { tier:'avoid', reasons:[{kind:'bad', text:'Opioid misuse risk — avoid'}] };
         const r = [];
         if (f.tried_nsaid || f.pud || f.ckd || f.asthma_nsaid) r.push({kind:'good', text:'NSAID unsuitable/ineffective — short acute opioid course is the NG59 fallback'});
@@ -108,28 +108,26 @@ MedChooser.register('low-back-pain', {
       }
     },
 
-    // -------- NEUROPATHIC AGENT --------
+    // -------- ANTIDEPRESSANTS (amitriptyline / duloxetine) --------
     {
       id:'neuropathic',
-      name:'Neuropathic agent (sciatica)',
-      examples:'Amitriptyline 10 mg nocte · Duloxetine 60 mg OD',
-      step:'Sciatica / radicular pain',
-      source:'NICE CG173 (neuropathic pain)',
-      sideEffects:'Amitriptyline — sedation, dry mouth, retention; duloxetine — nausea, insomnia, raised BP',
-      monitor:'Titrate; review at 4 weeks; ECG if cardiac risk (TCA)',
-      counsel:'"Sciatica pain comes from an irritated nerve, so ordinary painkillers help less. These tablets calm the nerve signals — they take a couple of weeks to build up."',
+      name:'Antidepressants (amitriptyline · duloxetine)',
+      examples:'Amitriptyline · Duloxetine',
+      step:'NOT recommended for low back pain',
+      source:'NICE NG59',
+      sideEffects:'Amitriptyline — sedation, dry mouth, retention, QT; duloxetine — nausea, insomnia, raised BP',
+      monitor:'If already taking one for back pain: review and taper',
+      counsel:'"Antidepressant-type tablets such as amitriptyline or duloxetine haven\'t been shown to help back pain enough to outweigh their side effects, so the guidance advises against them for this. If your mood is low, we\'ll look at that separately."',
       detail:{
-        'Dose': 'Amitriptyline 10 mg nocte titrated; or duloxetine 60 mg OD; (gabapentin/pregabalin are options in general neuropathic pain but NOT recommended for sciatica)',
+        'Dose': 'N/A for low back pain — dose per BNF only for a separate indication (e.g. co-existing depression)',
         'Interactions': 'TCA — QT drugs, other sedatives; duloxetine — serotonergic drugs, hepatic',
-        'Key teaching': 'For the radicular (neuropathic) component of sciatica, follow neuropathic-pain guidance (amitriptyline/duloxetine/gabapentin/pregabalin as a first-line choice) — but see the gabapentinoid caution for sciatica specifically.'
+        'Key teaching': 'NICE NG59: do not offer SSRIs, SNRIs or tricyclic antidepressants for managing low back pain. For sciatica NG59 makes no antidepressant recommendation (research recommendation only) — any trial is a specialist or pain-service decision. NICE CG173 excludes sciatica, which is covered by NG59. Treat co-existing depression in its own right.'
       },
       evaluate(f){
-        if (!f.sciatica) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Reserve for neuropathic (radicular) sciatic pain, not mechanical back pain'}] };
-        if (f.cardiac_tca) return { tier:'acceptable', reasons:[{kind:'bad', text:'IHD/arrhythmia/long QT — avoid amitriptyline; prefer duloxetine'}] };
-        const r = [{kind:'good', text:'Sciatica with neuropathic pain — appropriate first-line neuropathic agent'}];
-        if (f.elderly) r.push({kind:'bad', text:'Elderly — amitriptyline anticholinergic/falls; low dose or duloxetine'});
-        if (f.avoid_sedation) r.push({kind:'neutral', text:'Sedation — dose amitriptyline at night or choose duloxetine'});
-        return { tier:'preferred', reasons: r };
+        const r = [{kind:'bad', text:'NICE NG59 — do not offer SSRIs, SNRIs or TCAs for low back pain'}];
+        if (f.sciatica) r.push({kind:'neutral', text:'Sciatica — NG59 makes no antidepressant recommendation; specialist / pain-service decision only'});
+        if (f.cardiac_tca) r.push({kind:'bad', text:'IHD/arrhythmia/long QT — TCA caution'});
+        return { tier:'avoid', reasons: r };
       }
     },
 
@@ -139,17 +137,17 @@ MedChooser.register('low-back-pain', {
       name:'Gabapentinoid',
       examples:'Pregabalin · Gabapentin',
       step:'NOT recommended for sciatica',
-      source:'NICE NG59 §1.3.1',
+      source:'NICE NG59',
       sideEffects:'Sedation, dizziness, weight gain, dependence (Class C controlled)',
       monitor:'Misuse potential; taper to stop',
-      counsel:'"We used to use these for sciatica but the evidence shows they don\'t help and carry risks, so NICE advises against them for this."',
+      counsel:'"We used to use these for sciatica but the evidence shows they don\'t help and carry risks, so the guidance advises against them for this."',
       detail:{
         'Dose': 'N/A for sciatica',
-        'Key teaching': 'NICE NG59 explicitly recommends NOT offering gabapentinoids, other antiepileptics, or oral corticosteroids for sciatica. They remain options in other neuropathic-pain conditions.'
+        'Key teaching': 'NICE NG59: do not offer gabapentinoids or other antiepileptics for low back pain, and do not offer gabapentinoids, other antiepileptics, oral corticosteroids or benzodiazepines for sciatica. They remain options in other neuropathic-pain conditions (NICE CG173).'
       },
       evaluate(f){
         if (f.sciatica) return { tier:'avoid', reasons:[{kind:'bad', text:'NICE NG59 — do not offer gabapentinoids for sciatica (no benefit, dependence risk)'}] };
-        return { tier:'avoid', reasons:[{kind:'bad', text:'Not indicated for mechanical low back pain'}] };
+        return { tier:'avoid', reasons:[{kind:'bad', text:'NICE NG59 — do not offer gabapentinoids for low back pain'}] };
       }
     },
 
@@ -159,7 +157,7 @@ MedChooser.register('low-back-pain', {
       name:'Paracetamol (not as sole agent)',
       examples:'Paracetamol 1 g QDS',
       step:'Adjunct only',
-      source:'NICE NG59 §1.2.1',
+      source:'NICE NG59',
       sideEffects:'Well tolerated; hepatotoxic in overdose / low body weight',
       monitor:'Dose by weight in frail/low-weight adults',
       counsel:'"On its own paracetamol doesn\'t do much for back pain, but it\'s a safe tablet to combine with the others to take the edge off."',
@@ -183,7 +181,7 @@ MedChooser.register('low-back-pain', {
       monitor:'—',
       counsel:'"Strong painkillers and diazepam-type tablets don\'t help back pain in the long run and carry real risks, so we steer away from them."',
       detail:{
-        'Key teaching': 'NICE NG59 advises against routine strong opioids (esp. chronic), benzodiazepines, and does not recommend muscle relaxants for low back pain.'
+        'Key teaching': 'NICE NG59: do not offer opioids for chronic low back pain or chronic sciatica, and do not offer benzodiazepines for sciatica. Benzodiazepines and muscle relaxants are avoided for low back pain in practice because of dependence and sedation.'
       },
       evaluate(f){
         const r = [{kind:'bad', text:'Not recommended for low back pain / sciatica — poor evidence, dependence and harm'}];
@@ -195,9 +193,8 @@ MedChooser.register('low-back-pain', {
 
   sources: [
     { label:'NICE NG59 — Low back pain and sciatica in over 16s', url:'https://www.nice.org.uk/guidance/ng59' },
-    { label:'NICE NG59 — low back pain and sciatica', url:'https://www.nice.org.uk/guidance/ng59' },
-    { label:'NICE CG173 — Neuropathic pain in adults', url:'https://www.nice.org.uk/guidance/cg173' },
-    { label:'NICE NG12 — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE CG173 — Neuropathic pain in adults (excludes sciatica)', url:'https://www.nice.org.uk/guidance/cg173' },
+    { label:'NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'BNF — Analgesics', url:'https://bnf.nice.org.uk/treatment-summaries/analgesics/' }
   ],
 });

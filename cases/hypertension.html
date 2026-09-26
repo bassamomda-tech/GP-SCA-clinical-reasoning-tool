@@ -943,7 +943,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tbody>
             <tr><td class="factor">Type 2 diabetes</td><td>Higher CVD + renal risk; ACEi/ARB = dual cardio-renal protection</td><td class="impact">Step 1 → ACEi/ARB regardless of age or ethnicity</td></tr>
             <tr><td class="factor">CKD / ACR &gt;3</td><td>Renoprotective drug required; eGFR affects dose and safety</td><td class="impact">ACEi/ARB preferred; tighter BP target &lt;130/80; eGFR &lt;30 = adjust drugs</td></tr>
-            <tr><td class="factor">HF with reduced EF</td><td>CCB contraindicated — worsens HF outcomes</td><td class="impact">Avoid CCB; ACEi + bisoprolol + spiro per NICE HF guideline</td></tr>
+            <tr><td class="factor">HF with reduced EF</td><td>Rate-limiting CCBs (verapamil, diltiazem) and short-acting dihydropyridines worsen HF outcomes</td><td class="impact">Avoid verapamil/diltiazem (amlodipine acceptable if BP needs it); ACEi + beta-blocker + MRA + SGLT2i per NICE NG106</td></tr>
             <tr><td class="factor">Established CVD (MI, stroke, PVD)</td><td>High-risk: Stage 1 treated regardless of QRISK3</td><td class="impact">Treat Stage 1 without QRISK3 threshold; atorvastatin 80mg</td></tr>
             <tr><td class="factor">Gout (active/recurrent)</td><td>Thiazides → urate retention → gout flare</td><td class="impact">Avoid indapamide at Step 3</td></tr>
             <tr><td class="factor">Asthma / Severe COPD</td><td>Beta-blockers → bronchospasm — absolute contraindication</td><td class="impact">Avoid bisoprolol; use alpha-blocker (doxazosin) at Step 4</td></tr>
@@ -994,7 +994,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="ice-card ice-e">
         <div class="ice-label">🎯 Expectations</div>
         <div class="ice-phrase">"I completely understand why you felt starting tablets today was the right step. Can I explain what I think will actually give you the best protection — and then we decide together?"</div>
-        <div class="ice-why">Validates the request without complying reflexively. Positions NICE guidance as shared reasoning, not as GP refusal. Maintains the relationship while explaining clinical rationale.</div>
+        <div class="ice-why">Validates the request without complying reflexively. Positions NICE NG136 as shared reasoning, not as GP refusal. Maintains the relationship while explaining clinical rationale.</div>
       </div>
     </div>
 
@@ -1530,7 +1530,7 @@ body.mode-clinic .sca-only{display:none!important}
             <li><strong>ACEi/ARB contraindicated:</strong> pregnancy (teratogenic — stop immediately if pregnancy confirmed), bilateral renal artery stenosis, hyperkalaemia K⁺ &gt;5.5. ACEi + ARB together — do not combine (↑ AKI + hyperkalaemia, no extra BP benefit).</li>
             <li><strong>CCB caution:</strong> severe aortic stenosis (avoid peripheral vasodilation), decompensated HF (verapamil/diltiazem — avoid; amlodipine safe in HF).</li>
             <li><strong>Thiazide caution:</strong> gout history (precipitates attack), hyponatraemia risk in elderly, worsens glucose in DM — benefit still outweighs in most.</li>
-            <li><strong>3-month lifestyle trial before drug:</strong> NICE permits deferring medication in Stage 1 HTN (clinic 140–159/90–99, ABPM 135–149/85–94) with QRISK3 &lt;10% and no organ damage, if patient willing to engage with lifestyle changes.</li>
+            <li><strong>Lifestyle first in lower-risk stage 1:</strong> NICE NG136 advises discussing drug treatment in stage 1 HTN (clinic 140–159/90–99, ABPM/HBPM 135–149/85–94) for under-80s with target organ damage, CVD, renal disease, diabetes or 10-year CVD risk &#8805;10%; below that, lifestyle advice alone is reasonable if the patient is willing to engage (consider drug treatment if under 60, as 10-year risk underestimates lifetime risk).</li>
           </ul>
         </div>
       </div>
@@ -1539,8 +1539,8 @@ body.mode-clinic .sca-only{display:none!important}
 
     <!-- 7D-GUIDE end -->
     <!-- 7D: Medication -->
-    <!-- ═══ Interactive Medication Chooser (live, NICE/BNF tiered) ═══ -->
-    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+    <!-- ═══ Interactive Medication Chooser (live, NICE NG136/BNF tiered) ═══ -->
+    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE NG136 / BNF</div>
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="hypertension"></div>
 
@@ -2234,7 +2234,7 @@ body.mode-clinic .sca-only{display:none!important}
 </div>
 
 <div class="page-footer">
-  <p><strong>Hypertension · GP Clinical Reasoning Framework v2</strong> · NICE NG136 (2019, updated 2024) · NICE (Jan 2026) · QRISK3 · BHF · GMC Good Medical Practice</p>
+  <p><strong>Hypertension · GP Clinical Reasoning Framework v2</strong> · NICE NG136 (2019, last updated February 2026) · QRISK3 · BHF · GMC Good Medical Practice</p>
   <p style="margin-top:4px">v3: Dual tailored summaries (Clinic + SCA) with visual algorithms · v2: Clinical stem · Open Q first · ICE in all modes · Psychosocial impact (Step 1E + Step 7E) · Lay language DDx (Step 5) · Safeguarding (Step 1B) · Expectation management (Step 7A) · SCA RAG checkpoints after every step</p>
   <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence over any framework</p>
 </div>
@@ -2440,16 +2440,17 @@ function resetScorecard(){
   </main>
 </div><!-- /app -->
 
-<script src="../assets/site.js?v=102"></script>
+<script src="../assets/site.js?v=104"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
 <!-- Medication Chooser engine + topic data -->
 <script src="../assets/medchooser.js"></script>
 <script src="../assets/meds/hypertension.js"></script>
-<script src="../assets/topic-links.js?v=7"></script>
+<script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
+<script src="chooser-guard.js?v=1"></script>
 </body>
 </html>

@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Otitis Media &amp; Otitis Externa — Protocol · Reasoning GP</title>
+<title>Otitis Media and Otitis Externa — Protocol · Reasoning GP</title>
+<meta name="description" content="The painful or discharging ear in primary care: acute otitis media with the NG91 antibiotic criteria and anaesthetic drops, otitis externa treated topically, glue ear with NG233 active observation, and the red flags — mastoiditis, necrotising otitis externa and the adult with a one-sided effusion." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/otitis-media-externa.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316494957944 tools/management/otitis-media-externa.html">
+<meta name="omelette-print-source" content="v1790420447098187 tools/management/otitis-media-externa.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,77 +23,164 @@
 <script>
 MG.render({
   icon:"👂",
-  title:"Otitis Media & Otitis Externa",
-  stemTitle:"Earache \u2014 AOM (often viral) vs otitis externa, steward antibiotics",
-  stemSub:"Primary-care management of the painful ear \u2014 distinguish acute otitis media (mostly self-limiting, back-up antibiotics) from otitis externa (topical treatment), exclude mastoiditis &amp; malignant otitis externa, and manage glue ear conservatively. NICE NG91/NG98 \u00b7 2026.",
-  guideline:"NICE NG91 / NG98",
-  glance:[
-    {lbl:"AOM", val:"Bulging red drum + pain", sub:"often viral, self-limiting"},
-    {lbl:"AOM antibiotic", val:"Amoxicillin", sub:"back-up or immediate by criteria"},
-    {lbl:"Otitis externa", val:"Itchy, discharging canal", sub:"topical antibiotic/steroid drops"},
-    {lbl:"Glue ear (OME)", val:"Hearing loss, dull drum", sub:"active observation 6\u201312 wks"},
-    {lbl:"🔴 Mastoiditis", val:"Post-auricular swelling, pinna pushed out", sub:"admit"},
-    {lbl:"🔴 Malignant OE", val:"Diabetic/immunosupp, severe pain", sub:"urgent ENT"}
+  title:"Otitis media and otitis externa",
+  eyebrow:"Protocol · the painful or discharging ear in one place",
+  stemTitle:"Middle ear or ear canal? Look at the drum, then look behind the ear",
+  stemSub:"One page for the painful ear in primary care. Separate acute otitis media (usually self-limiting — pain relief first, antibiotics by NG91 criteria) from otitis externa (a topical problem) and glue ear (a hearing problem), and catch the few that are dangerous: mastoiditis, necrotising otitis externa in the diabetic or immunosuppressed patient, intracranial spread, and the adult with a one-sided effusion. NICE NG91 (2018, updated 2022) · NICE NG233 (2023) · NICE NG98 (2018) · UKHSA antimicrobial summary · ENT UK (2007) · BNF and BNFC.",
+  guideline:"NICE NG91 (2018, updated March 2022) · NICE NG233 (2023) · NICE NG98 (2018) · NICE NG143 (2019) · UKHSA Summary of antimicrobial prescribing guidance (2025) · ENT UK aminoglycoside consensus (2007) · BNF and BNFC",
+  meta:[
+    {t:"NICE NG91 (2018, updated 2022) · acute otitis media"},
+    {t:"NICE NG233 (2023) · glue ear under 12s"},
+    {t:"NICE NG98 (2018) · hearing loss in adults"},
+    {t:"UKHSA antimicrobial summary (2025) · otitis externa"},
+    {t:"ENT UK 2007 · aminoglycoside drops"},
+    {t:"Cochrane 2010 · AAO-HNSF 2014 (international)"}
   ],
-  flow:[
-    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Exclude the dangerous ear",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Mastoiditis", html:"Post-auricular swelling/erythema/tenderness, a pinna pushed forward &amp; down, systemic upset (often a child) \u2192 <b>same-day admission</b> (IV antibiotics \u00b1 surgery)."},
-          {t:"🔴 Malignant (necrotising) otitis externa", html:"Elderly diabetic/immunosuppressed, severe deep pain (often out of proportion, worse at night), granulation tissue in the canal, \u00b1 facial nerve palsy \u2192 <b>urgent ENT/admission</b>."},
-          {t:"🔴 Intracranial / other complications", html:"AOM with severe headache, neck stiffness, focal neurology, or facial palsy \u2192 emergency (meningitis, abscess, facial nerve involvement)."},
-          {t:"🟠 Don\u2019t miss", html:"Foreign body, cholesteatoma (foul discharge, attic retraction), referred pain (dental/TMJ/throat/tonsil cancer), and Ramsay Hunt (vesicles + facial palsy)."}
-        ]},
-        {b:"why", html:"Most earache is benign and self-limiting, but a few presentations are limb/life-threatening: mastoiditis (a complication of AOM) and malignant otitis externa (in the diabetic/immunosuppressed) both need urgent specialist care. Always look behind and around the ear, not just in it."}
-      ]},
-    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Distinguish the three",
-      blocks:[
-        {b:"kv", rows:[
-          ["Acute otitis media (AOM)","Rapid-onset ear pain \u00b1 fever/irritability (often young child); <b>bulging, red/cloudy tympanic membrane</b>, loss of light reflex; may perforate &amp; discharge then ease. Mostly viral, self-limiting (~3 days)"],
-          ["Otitis externa (OE)","Itchy/painful, discharging, tender ear canal (pain on moving the tragus/pinna); swollen, eczematous or debris-filled canal; associated with water/swimming, eczema, cotton-bud trauma"],
-          ["Otitis media with effusion (glue ear)","Painless hearing loss, dull retracted drum, fluid level/bubbles; common in children; usually resolves spontaneously"],
-          ["Examine","Both ears, pinna/tragus, behind the ear (mastoid), throat &amp; teeth (referred pain); hearing"]
-        ]}
-      ]},
-    {t:"node", d:"life", n:"3", tag:"Non-drug · core", title:"Ear care", blocks:[{b:"tiles", v:"life", items:[{t:"💧 Keep ears dry", html:"Keep water out during treatment; avoid swimming."},{t:"👂 Avoid trauma", html:"Stop cotton-bud use and scratching; insert nothing into the canal."},{t:"🧴 Aural toilet", html:"Gentle cleaning/microsuction improves drop penetration in otitis externa."}]},{b:"why", html:"Keeping the ear dry, stopping cotton-bud trauma and aural toileting are essential \u2014 drops work far better when the canal is clean and protected."}]},
-    {t:"node", d:"drug", n:"4", tag:"Management", title:"Treat by diagnosis",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"AOM \u2013 analgesia", title:"Pain relief first", when:"all AOM",
-           html:"<b>Paracetamol/ibuprofen</b> regularly (the mainstay); most resolve without antibiotics. Reassure &amp; safety-net."},
-          {step:"AOM \u2013 antibiotic", title:"Back-up or immediate", when:"by criteria",
-           fromLabel:"stewardship",
-           html:"<b>No/back-up antibiotic</b> for most; <b>immediate amoxicillin (500 mg TDS in adults; child dose by age/weight)</b> (clarithromycin if pen-allergic) if systemically very unwell, &lt;2yrs with bilateral AOM, otorrhoea/perforation, or high-risk. 5\u20137 day course."},
-          {step:"Otitis externa", title:"Topical first-line", when:"OE",
-           fromLabel:"localised treatment",
-           html:"<b>Topical antibiotic + steroid drops</b> (e.g. with aural toilet/wick if swollen); keep the ear dry; analgesia; avoid cotton buds. Antifungal drops if fungal (otomycosis). Oral antibiotics only if spreading cellulitis/systemic."},
-          {step:"Glue ear (OME)", title:"Active observation", when:"OME",
-           fromLabel:"conservative",
-           html:"<b>Active observation for 6\u201312 weeks</b> (most resolve); recheck hearing; persistent bilateral OME with hearing/developmental impact \u2192 ENT (grommets/hearing aids). Otovent autoinflation can help."}
-        ]},
-        {b:"warn", html:"Avoid aminoglycoside ear drops if the tympanic membrane is perforated unless specialist-advised (ototoxicity). Recurrent AOM or persistent OME affecting hearing/speech needs ENT/audiology."}
-      ]},
-    {t:"node", d:"monitor", n:"5", tag:"Follow-up", title:"Review &amp; safety-net",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"AOM", title:"Safety-net", html:"Return if not improving in 3 days, systemically worse, or post-auricular swelling/pain (mastoiditis)."},
-          {n:"2", when:"OE", title:"Reassess", html:"Review if not settling \u2014 consider fungal cause, need for aural toilet/wick, or malignant OE in at-risk patients."},
-          {n:"3", when:"OME", title:"Recheck hearing", html:"Re-examine &amp; test hearing at 6\u201312 weeks; refer if persistent with impact."}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral",
-      arrow:"emergency vs routine",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"🔴 Same-day / admit", html:"Mastoiditis, malignant otitis externa, intracranial/facial-nerve complications."},
-          {t:"ENT (urgent)", html:"Severe/non-resolving OE needing microsuction, suspected cholesteatoma (foul discharge, attic retraction)."},
-          {t:"ENT / audiology (routine)", html:"Persistent OME with hearing impact; recurrent AOM; grommets."},
-          {t:"🟣 2WW", html:"Persistent unilateral middle-ear effusion in an adult (esp. nasopharyngeal concern) \u2192 NG12."}
-        ]},
-        {b:"say", html:"This is an ear infection \u2014 in most cases, especially in children, it clears on its own within a few days, so regular painkillers are the most important thing. I\u2019ll give a \u2018just-in-case\u2019 antibiotic to use only if things aren\u2019t improving. Come back urgently if the ear pushes forward with swelling behind it, your child becomes very unwell, or the pain becomes severe."}
-      ]}
+  quickSub:"Six cards that cover most of the decisions. Every figure traces to a primary source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Look behind the ear before you look in it", html:"Swelling, redness or tenderness over the mastoid, with the pinna pushed forwards and outwards, in an unwell child is <b>mastoiditis</b>. NICE NG91: refer to hospital any child or young person with acute otitis media and a severe systemic infection or an acute complication — mastoiditis, meningitis, intracranial abscess, sinus thrombosis or facial nerve paralysis.", src:"NICE NG91 (2018, updated 2022)"},
+    {tone:"red", h:"Severe ear-canal pain in a diabetic: think necrotising otitis externa", html:"Pain out of proportion to the findings (often worse at night), persistent discharge, granulation tissue in the canal floor, or a facial nerve palsy in someone with <b>diabetes, immunosuppression or older age</b> → discuss with ENT the <b>same day</b>. It is a skull-base osteomyelitis, not a stubborn otitis externa. UK consensus definitions: Hodgson et al., BMJ Open 2023.", src:"Hodgson et al., BMJ Open 2023 · UKHSA antimicrobial summary (2025)"},
+    {tone:"green", h:"Acute otitis media: pain relief first", html:"NICE NG91: most children and young people get better within about 3 days without antibiotics, though it can last up to a week. Offer <b>paracetamol or ibuprofen</b>. Where no immediate antibiotic is given and the drum is intact, <b>phenazone with lidocaine ear drops</b> are an option (added to NG91 in March 2022).", src:"NICE NG91 (2018, updated March 2022)"},
+    {tone:"cream", h:"Antibiotic? No, back-up or immediate — by NG91 criteria", html:"<b>Immediate</b> for the systemically very unwell, anyone with signs of a more serious illness, or those at high risk of complications. <b>Consider</b> no, back-up or immediate for <b>otorrhoea</b> or <b>under 2s with both ears affected</b>. Otherwise no antibiotic or a back-up. First choice <b>amoxicillin for 5 to 7 days</b>; clarithromycin (erythromycin in pregnancy) if allergic; co-amoxiclav second line.", src:"NICE NG91 (2018, updated 2022) · BNFC"},
+    {tone:"blue", h:"Otitis externa is treated in the canal, not by mouth", html:"UKHSA antimicrobial summary: analgesia and local heat first; then <b>topical acetic acid or a topical antibiotic with or without steroid</b> for 7 days — cure rates are similar at 7 days (Cochrane, Kaushik 2010). Keep the ear dry and clean the canal if drops cannot get in. <b>Oral flucloxacillin</b> only if cellulitis spreads beyond the canal or there are systemic signs — and refer to exclude necrotising otitis externa.", src:"UKHSA antimicrobial summary (2025) · Cochrane, Kaushik 2010"},
+    {tone:"amber", h:"Glue ear: watch for 3 months; one-sided effusion in an adult: look further", html:"NICE NG233: children with otitis media with effusion have <b>active observation for 3 months</b>, with autoinflation for those who can manage it, before hearing aids or grommets are considered. In adults, NICE NG98: consider a <b>suspected cancer pathway referral</b> to ENT for adults of Chinese or south-east Asian family origin with hearing loss and a middle-ear effusion not associated with an upper respiratory tract infection (nasopharyngeal cancer).", src:"NICE NG233 (2023) · NICE NG98 (2018)"}
   ],
-  foot:"Management of otitis media, otitis externa &amp; glue ear in primary care; exclude mastoiditis and malignant otitis externa, and steward antibiotics. Verify against current NICE NG91 (OME), NG98 (AOM) and NICE otitis externa."
+  pathwaySub:"Five moves. The first step is the one that protects patients — do not skip it because the drum looks obvious.",
+  pathway:[
+    {title:"Screen for the dangerous ear", html:"Mastoid swelling or tenderness · a pinna pushed forwards · severe headache, neck stiffness, drowsiness or focal signs · facial weakness · severe canal pain in a diabetic or immunosuppressed patient · a very unwell or febrile young child (NICE NG143). Any of these changes the destination before any drug is chosen (NICE NG91).", alert:true},
+    {title:"Decide where the problem is", html:"<b>Middle ear:</b> red, bulging or cloudy drum, often after a cold — acute otitis media. <b>Ear canal:</b> pain on moving the tragus or pinna, a swollen, moist or debris-filled canal — otitis externa. <b>Painless dull drum with muffled hearing:</b> glue ear. A normal ear with earache → look for referred pain (teeth, jaw joint, throat)."},
+    {title:"Acute otitis media: pain relief, then the antibiotic decision", html:"Paracetamol or ibuprofen for everyone. Ear drops with an anaesthetic if no immediate antibiotic and no perforation. Antibiotic strategy by the NICE NG91 criteria; amoxicillin 5 to 7 days when needed."},
+    {title:"Otitis externa: clean, dry, topical", html:"Remove the cause (water, cotton buds, hearing-aid moulds, dermatitis), clear debris so drops reach the skin, and use a 7-day topical course. Oral antibiotics only for spreading cellulitis or systemic signs (UKHSA antimicrobial summary)."},
+    {title:"Plan the follow-up", html:"Acute otitis media: back-up antibiotic if not improving in 3 days. Otitis externa: review if not settling within a week or two — think fungal, a blocked canal, or necrotising disease. Glue ear: 3 months of active observation with a hearing check (NICE NG233)."}
+  ],
+  sections:[
+    {id:"distinguish", nav:"Which ear", title:"Telling the three apart at the bedside", sub:"History narrows it; the otoscope and the tragus decide it.",
+     blocks:[
+       {b:"table", head:["","Acute otitis media","Otitis externa","Otitis media with effusion (glue ear)"], rows:[
+         ["<b>Typical patient</b>","Young child after a cold; less often an adult","Swimmers, people with eczema or psoriasis, cotton-bud users, hearing-aid wearers, diabetics","Young children, often after an episode of acute otitis media; children with Down syndrome or cleft palate"],
+         ["<b>Main symptom</b>","Rapid-onset earache, fever, irritability, ear-pulling in infants","Itch then pain, discharge, a blocked feeling","Muffled hearing, inattention, speech or behaviour concerns; <b>little or no pain</b>"],
+         ["<b>Key sign</b>","Red, bulging or cloudy drum with loss of landmarks; discharge if the drum has perforated","Pain on moving the tragus or pinna; red, swollen canal with debris; drum may be hard to see","Dull or retracted drum, fluid level or bubbles, reduced mobility"],
+         ["<b>First step</b>","Analgesia; antibiotic by NICE NG91 criteria","Aural toilet if needed; topical drops (UKHSA antimicrobial summary)","Active observation for 3 months (NICE NG233)"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Examine more than the drum", html:"Both ears, the pinna and tragus, <b>behind the ear</b> (the mastoid), the facial nerve, the throat and teeth, the jaw joint, and the neck. Test hearing informally and note any asymmetry. A child also needs temperature, heart rate, capillary refill and a general look using the NICE NG143 traffic-light approach if febrile and under 5.", src:"NICE NG91 · NICE NG143 (2019)"},
+         {tone:"amber", h:"A discharging ear hides the drum", html:"Otorrhoea with a history of acute pain that eased suddenly suggests a perforated drum from acute otitis media. Chronic painless discharge, especially foul-smelling, with a pocket or crust in the upper part of the drum suggests <b>cholesteatoma</b> — an ENT problem, not a drops problem. Treat what you can see and re-examine once the canal is clean.", src:"ENT UK 2007 · NICE NG91"}
+       ]}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — the ears that need someone else today", sub:"Rare, but each one is missed by looking only in the canal.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Acute mastoiditis", html:"Post-auricular swelling, redness and tenderness, a pinna pushed forwards and outwards, fever and a sick child, usually during or after acute otitis media. NICE NG91: refer to hospital.", src:"NICE NG91 (2018, updated 2022)"},
+         {tone:"red", h:"Intracranial or facial nerve complications", html:"Severe headache, neck stiffness, drowsiness, vomiting, seizures or focal neurology, or a new facial palsy with an ear infection → emergency referral for meningitis, abscess, venous sinus thrombosis or facial nerve involvement (NICE NG91).", src:"NICE NG91 (2018, updated 2022)"},
+         {tone:"red", h:"Necrotising (malignant) otitis externa", html:"Severe, persistent, often night-time ear pain and discharge in a person with diabetes or immunosuppression or in an older adult, with granulation tissue in the canal, failure of topical treatment, or cranial nerve palsies (VII first). Discuss with ENT the same day; the UK consensus (Hodgson 2023) sets out the case definitions ENT and infection teams use. The UKHSA antimicrobial summary also says to refer to exclude it when cellulitis spreads beyond the canal.", src:"Hodgson et al., BMJ Open 2023 · UKHSA antimicrobial summary (2025)"},
+         {tone:"red", h:"The febrile, unwell young child", html:"Earache is common in febrile children, but so is serious bacterial illness. Use the NICE NG143 traffic-light features; any red feature needs same-day assessment whatever the ears look like.", src:"NICE NG143 (2019)"},
+         {tone:"amber", h:"Adult with a one-sided middle-ear effusion", html:"NICE NG98: for adults of Chinese or south-east Asian family origin with hearing loss and a middle-ear effusion not associated with an upper respiratory tract infection, consider a suspected cancer pathway referral to ENT (nasopharyngeal carcinoma). In any adult, a persistent one-sided effusion without a preceding cold deserves an ENT look at the postnasal space.", src:"NICE NG98 (2018)"},
+         {tone:"amber", h:"Don’t-miss mimics", html:"Ramsay Hunt syndrome (vesicles in the canal or on the pinna with facial weakness), a foreign body, cholesteatoma, and referred pain from dental disease, the jaw joint or the throat — including a persistent one-sided earache with a sore throat or hoarseness in a smoker, which needs a full head and neck examination.", src:"NICE NG98 · NICE NG91"}
+       ]},
+       {b:"why", html:"<b>Why look behind the ear?</b> Mastoiditis is a complication of the middle-ear infection you are looking at, and the drum can look no worse than an ordinary otitis media. Necrotising otitis externa is the reverse trap: the canal looks like ordinary otitis externa, but the pain and the patient’s risk factors are what give it away."}
+     ]},
+
+    {id:"aom", nav:"Otitis media", title:"Acute otitis media — managing the pain and the antibiotic decision", sub:"NICE NG91. The evidence behind it is mainly in children and young people; adults are treated on the same principles with adult doses from the BNF.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Pain relief and explanation", when:"everyone", fromLabel:"the mainstay",
+          html:"<b>Paracetamol or ibuprofen</b> at the right dose for age or weight (BNFC). Explain the usual course: about 3 days, sometimes up to a week (NICE NG91). Tell parents what to watch for."},
+         {step:"Step 2", title:"Anaesthetic ear drops", when:"no immediate antibiotic, drum intact", fromLabel:"added March 2022",
+          html:"NICE NG91: consider <span class='rx'>phenazone 40 mg/g with lidocaine 10 mg/g ear drops, 4 drops two or three times a day for up to 7 days</span> — only if an immediate oral antibiotic is not being given and there is no perforation or otorrhoea."},
+         {step:"Step 3", title:"No antibiotic or a back-up prescription", when:"most children", fromLabel:"stewardship",
+          html:"NICE NG91: offer no antibiotic or a <b>back-up prescription</b>, to be used if symptoms do not start to improve within 3 days or worsen significantly at any time. For children of any age with <b>otorrhoea</b>, or <b>under 2 with infection in both ears</b>, consider no, back-up or immediate antibiotic — these groups benefit more (NNT about 3 and 4 in the NG91 evidence summary)."},
+         {step:"Step 4", title:"Immediate antibiotic", when:"systemically very unwell or high risk", fromLabel:"first choice amoxicillin",
+          html:"NICE NG91: immediate prescription for the systemically very unwell, those with symptoms or signs of a more serious illness, and those at high risk of complications from a pre-existing condition. <b>Amoxicillin for 5 to 7 days</b> (dose by age per NICE NG91 and BNFC). Penicillin allergy: <b>clarithromycin</b>, or <b>erythromycin</b> in pregnancy. Second choice for worsening symptoms after at least 2 to 3 days of a first choice: <b>co-amoxiclav</b>. Adults: doses per BNF."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"What does not help", html:"Decongestants and antihistamines add side effects without a clinically meaningful benefit in acute otitis media (Coleman and Moore, Cochrane 2008). A perforation that discharges during an acute infection usually heals once the infection settles; check that it has.", src:"Coleman and Moore, Cochrane 2008"},
+         {tone:"amber", h:"Recurrent acute otitis media", html:"Frequent episodes, persistent perforation or discharge, or concerns about hearing and speech → ENT or audiology. Long-term antibiotic prophylaxis is not a primary care decision.", src:"NICE NG91 · NICE NG233"}
+       ]},
+       {b:"say", html:"This is a middle-ear infection. Most clear up by themselves in about three days, and antibiotics make only a small difference while giving some children tummy upsets and rashes. The most important thing is regular pain relief. I’ll give you a prescription to use only if it isn’t starting to get better in three days, or sooner if it gets much worse. If there’s swelling behind the ear, the ear sticks out, or your child becomes very unwell or drowsy, bring them straight back."}
+     ]},
+
+    {id:"oe", nav:"Otitis externa", title:"Acute otitis externa — clean, dry and topical", sub:"There is no NICE guideline for otitis externa. The UKHSA antimicrobial summary, the Cochrane review and ENT UK guidance give the UK approach; the AAO-HNSF guideline is international.",
+     blocks:[
+       {b:"table", head:["Step","What","Source"], rows:[
+         ["<b>1 — everyone</b>","Analgesia and local heat (for example a warm flannel); remove or prevent the cause — water, cotton buds, hearing-aid moulds, irritant products, dermatitis","UKHSA antimicrobial summary (2025)"],
+         ["<b>2 — topical treatment</b>","<b>Topical acetic acid 2%</b> (over-12s) or a <b>topical antibiotic with or without steroid</b> (for example a neomycin–corticosteroid combination) for 7 days. Similar cure rates at 7 days; acetic acid is less effective when treatment has to continue beyond a week","UKHSA antimicrobial summary · Cochrane, Kaushik 2010 · doses per BNF/SPC"],
+         ["<b>3 — cannot see the drum?</b>","If swelling or debris stop drops reaching the skin, the canal needs cleaning (microsuction) or a wick — refer to an ENT or aural care clinic","Clinical practice"],
+         ["<b>4 — spreading infection</b>","Cellulitis beyond the canal or systemic signs → <b>oral flucloxacillin</b> (clarithromycin if allergic; doses per BNF) <b>and refer</b> to exclude necrotising otitis externa","UKHSA antimicrobial summary (2025)"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Perforated drum or grommet: care with aminoglycosides", html:"Aminoglycoside drops (neomycin, gentamicin, framycetin) are ototoxic if they reach the middle ear. ENT UK consensus: with a perforation or patent grommet, use them only when there is obvious infection, for no more than 2 weeks, explain why to the patient, and do a baseline audiogram where practical. If the drum cannot be seen, a non-aminoglycoside drop (for example a quinolone) avoids the question.", src:"ENT UK consensus, Phillips et al., Clin Otolaryngol 2007"},
+         {tone:"blue", h:"Oral antibiotics are rarely needed", html:"The AAO-HNSF guideline (international) advises against systemic antibiotics as initial therapy for uncomplicated diffuse otitis externa unless infection spreads beyond the canal or host factors (such as diabetes or immunosuppression) call for them. The UKHSA antimicrobial summary says the same for UK practice.", src:"AAO-HNSF 2014 (international) · UKHSA antimicrobial summary (2025)"},
+         {tone:"cream", h:"Fungal otitis externa", html:"White, black or fluffy debris and itch, often after antibiotic drops, suggests otomycosis. Clean the canal and use an antifungal ear preparation (dose per BNF); antibiotic-steroid drops can make it worse. Send a swab if it keeps coming back.", src:"BNF · Cochrane, Kaushik 2010"},
+         {tone:"green", h:"Keeping it from coming back", html:"Keep the ears dry during treatment and for a while after (cotton wool with petroleum jelly in the shower, no swimming), stop cotton buds, treat underlying eczema or psoriasis, and consider acidifying drops before and after swimming for people who get it repeatedly.", src:"UKHSA antimicrobial summary (2025) · AAO-HNSF 2014 (international)"}
+       ]},
+       {b:"warn", html:"Otitis externa that is not settling after a full topical course, in a person with diabetes or immunosuppression, is necrotising otitis externa until proven otherwise. Do not prescribe a third course of drops — discuss with ENT the same day."}
+     ]},
+
+    {id:"ome", nav:"Glue ear", title:"Otitis media with effusion — a hearing problem, not an infection", sub:"NICE NG233 (2023) for children under 12, which replaced CG60. Adults with a new effusion follow NICE NG98. A fuller page: <a href='otitis-media-effusion.html'>Otitis media with effusion</a>.",
+     blocks:[
+       {b:"kv", rows:[
+         ["<b>Children — first 3 months</b>","NICE NG233: <b>active observation for 3 months</b> from onset (or from diagnosis if onset is unknown), with a hearing assessment and support for hearing at home and school. NG233 advises against antibiotics, antihistamines, decongestants, mucolytics, leukotriene receptor antagonists and anti-reflux medicines for glue ear, and steroids are not recommended"],
+         ["<b>Autoinflation</b>","NICE NG233: consider autoinflation during the observation period for children likely to manage the technique (a nasal balloon)"],
+         ["<b>Persistent with hearing loss</b>","After 3 months, discuss hearing aids or grommets with the family, using the NG233 decision table of benefits and risks. The audiological threshold for grommets is set by the ENT service"],
+         ["<b>Down syndrome or cleft palate</b>","NICE NG233 identifies craniofacial conditions such as Down syndrome and cleft palate as major risk factors: glue ear is more common and more persistent, so these children are managed with the specialist team rather than by watchful waiting in primary care"],
+         ["<b>Adults</b>","A new effusion not explained by a cold needs ENT assessment. NICE NG98: consider a suspected cancer pathway referral for adults of Chinese or south-east Asian family origin with hearing loss and a middle-ear effusion not associated with an upper respiratory tract infection"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Why wait 3 months?", html:"Most effusions after an ear infection clear spontaneously within weeks to months. NG233 uses active observation — hearing checked, school informed, speech watched — rather than treatment in that window, because grommets and hearing aids help only when the effusion persists.", src:"NICE NG233 (2023)"},
+         {tone:"amber", h:"Refer sooner", html:"In practice, speech and language delay, developmental or educational concerns, another sensory impairment, or a parent who is worried about hearing are reasons for earlier audiology or ENT referral rather than waiting out the full 3 months."}
+       ]}
+     ]},
+
+    {id:"review", nav:"Review", title:"Follow-up and safety-netting", sub:"What to arrange, and what to tell patients.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"Acute otitis media · 3 days", title:"Is it starting to improve?", html:"If not, use the back-up prescription. Worsening at any time, a new swelling behind the ear or a child who becomes very unwell → same-day review (NICE NG91)."},
+         {n:"2", when:"Otitis externa · 1 to 2 weeks", title:"Has the topical course worked?", html:"If not: clean the canal, think fungal, check for a foreign body or dermatitis, and think necrotising otitis externa in anyone at risk."},
+         {n:"3", when:"Perforation · about 6 weeks", title:"Has the drum healed?", html:"A perforation still present after about 6 weeks, or continuing discharge, needs ENT review."},
+         {n:"4", when:"Glue ear · 3 months", title:"Re-examine and check hearing", html:"Persistent effusion with hearing loss → discuss hearing aids or grommets (NICE NG233)."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Return the same day if…", html:"Swelling, redness or pain behind the ear; the ear sticking out; severe headache, stiff neck, drowsiness or a fit; weakness of the face; or a child who becomes floppy, pale or very unwell.", src:"NICE NG91 · NICE NG143"},
+         {tone:"green", h:"Practical ear care", html:"Keep water out of an ear with otitis externa or a perforation; no cotton buds; finish the full drop course; lie with the ear up for a few minutes after drops so they reach the canal skin.", src:"UKHSA antimicrobial summary (2025)"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — urgency and destination", sub:"There is no NICE NG12 criterion for these presentations; the suspected-cancer route for the ear comes from NICE NG98.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Same day / admit", html:"Mastoiditis; meningitis, intracranial abscess, sinus thrombosis or facial nerve palsy; a severe systemic infection (NICE NG91). Suspected necrotising otitis externa (Hodgson 2023). A febrile child with NG143 red features.", src:"NICE NG91 · NICE NG143 · Hodgson et al., BMJ Open 2023"},
+         {tone:"amber", h:"Urgent ENT", html:"Otitis externa with a canal too swollen for drops (microsuction or wick). Cellulitis beyond the canal once oral antibiotics are started (UKHSA antimicrobial summary). NICE NG98: consider a suspected cancer pathway referral for an adult of Chinese or south-east Asian family origin with hearing loss and a middle-ear effusion not associated with a cold.", src:"UKHSA antimicrobial summary (2025) · NICE NG98 (2018)"},
+         {tone:"cream", h:"Routine ENT or audiology", html:"Suspected cholesteatoma or chronic discharge; a perforation that has not healed; recurrent acute otitis media; glue ear persisting beyond 3 months with hearing loss (NICE NG233); recurrent or chronic otitis externa.", src:"NICE NG233 (2023) · ENT UK 2007"},
+         {tone:"blue", h:"Related pages", html:"<a href='otitis-media-effusion.html'>Otitis media with effusion</a> for glue ear in detail; the <a href='../../cases/hearing-loss.html'>hearing loss casebook chapter</a> for adults with a new hearing problem.", src:"NICE NG233 · NICE NG98"}
+       ]},
+       {b:"say", html:"Your ear canal skin is inflamed — it’s a bit like eczema with an infection on top. The drops do the work, but only if they can reach the skin, so keep the ear dry and don’t put anything in it. If the pain gets much worse, especially at night, or the drops haven’t helped in a week or so, come back — with your diabetes we need to make sure it isn’t spreading deeper."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 72-year-old man with type 2 diabetes (HbA1c 78 mmol/mol) has had a painful, discharging right ear for 5 weeks. He has used two courses of antibiotic-steroid drops from the pharmacy and a walk-in centre. The pain now keeps him awake. He asks for “stronger drops”.", src:"Hodgson et al., BMJ Open 2023 · UKHSA antimicrobial summary (2025)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises that <b>pain out of proportion, night pain and failed topical treatment in a diabetic</b> point to <b>necrotising otitis externa</b>; examines the canal for granulation tissue and checks <b>cranial nerves, especially VII</b>; does not issue a third course of drops; arranges <b>same-day ENT</b> assessment; explains why in plain language without alarming; addresses glycaemic control; and safety-nets for facial weakness, headache or feeling unwell.", src:"Hodgson et al., BMJ Open 2023 · AAO-HNSF 2014 (international)"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG91 — Otitis media (acute): antimicrobial prescribing</b> (March 2018, updated March 2022)<br><a href="https://www.nice.org.uk/guidance/ng91" rel="noopener">nice.org.uk/guidance/ng91</a><span class="rd"> — course about 3 days, up to 1 week; paracetamol or ibuprofen; phenazone 40 mg/g with lidocaine 10 mg/g ear drops, 4 drops two or three times a day for up to 7 days (no immediate antibiotic, no perforation or otorrhoea); no, back-up or immediate antibiotic; back-up used if no improvement within 3 days; immediate for systemically very unwell, more serious illness or high risk; consider for otorrhoea or under 2 with bilateral infection; amoxicillin 5–7 days, clarithromycin or erythromycin (pregnancy) if allergic, co-amoxiclav second choice; referral to hospital for severe systemic infection or complications</span></li>'+
+         '<li><b>NICE NG233 — Otitis media with effusion in under 12s</b> (August 2023; replaced CG60)<br><a href="https://www.nice.org.uk/guidance/ng233" rel="noopener">nice.org.uk/guidance/ng233</a><span class="rd"> — 3 months of active observation; autoinflation; hearing aids or grommets; do not offer antibiotics, antihistamines, decongestants, mucolytics, leukotriene receptor antagonists or anti-reflux medicines; Down syndrome and cleft palate as risk factors</span></li>'+
+         '<li><b>NICE NG98 — Hearing loss in adults: assessment and management</b> (2018)<br><a href="https://www.nice.org.uk/guidance/ng98" rel="noopener">nice.org.uk/guidance/ng98</a><span class="rd"> — consider suspected cancer pathway referral for adults of Chinese or south-east Asian family origin with hearing loss and a middle-ear effusion not associated with an upper respiratory tract infection</span></li>'+
+         '<li><b>NICE NG143 — Fever in under 5s: assessment and initial management</b> (2019)<br><a href="https://www.nice.org.uk/guidance/ng143" rel="noopener">nice.org.uk/guidance/ng143</a><span class="rd"> — traffic-light assessment of the febrile young child</span></li>'+
+         '<li><b>UKHSA — Summary of antimicrobial prescribing guidance: managing common infections</b> (2025)<span class="rd"> — acute otitis externa: analgesia and local heat; topical acetic acid or topical antibiotic with or without steroid, similar cure at 7 days; oral flucloxacillin and referral to exclude necrotising otitis externa if cellulitis extends beyond the canal or systemic signs</span></li>'+
+         '<li><b>ENT UK — Evidence review and ENT-UK consensus report for the use of aminoglycoside-containing ear drops in the presence of an open middle ear</b> (Phillips JS, et al., Clin Otolaryngol 2007;32:330–336)<span class="rd"> — only with obvious infection, no longer than 2 weeks, explain to the patient, baseline audiometry where practical</span></li>'+
+         '<li><b>Hodgson SH, et al. UK consensus definitions for necrotising otitis externa: a Delphi study.</b> BMJ Open 2023;13:e061349<span class="rd"> — UK case definitions and consensus statements for necrotising otitis externa</span></li>'+
+         '<li><b>Kaushik V, Malik T, Saeed SR. Interventions for acute otitis externa.</b> Cochrane Database Syst Rev 2010;(1):CD004740<span class="rd"> — topical treatments effective; acetic acid comparable at 1 week but less effective when treatment extends beyond a week</span></li>'+
+         '<li><b>Coleman C, Moore M. Decongestants and antihistamines for acute otitis media in children.</b> Cochrane Database Syst Rev 2008;(3):CD001727<span class="rd"> — no clinically meaningful benefit, more adverse effects</span></li>'+
+         '<li><b>International — AAO-HNSF Clinical practice guideline: acute otitis externa</b> (Rosenfeld RM, et al., Otolaryngol Head Neck Surg 2014;150(1 Suppl):S1–S24)<span class="rd"> — used only where no UK guideline covers the point: topical rather than systemic therapy for uncomplicated disease; systemic therapy only for spread beyond the canal or host factors</span></li>'+
+         '<li><b>BNF and BNFC</b> — amoxicillin, clarithromycin, erythromycin, co-amoxiclav, flucloxacillin, ear preparations, paracetamol, ibuprofen<br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a> · <a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"The painful ear in primary care — NICE NG91 (2018, updated 2022), NG233 (2023), NG98 (2018) and NG143 (2019), the UKHSA Summary of antimicrobial prescribing guidance (2025), ENT UK (2007), Hodgson et al. (BMJ Open 2023), Cochrane (Kaushik 2010) and, where no UK guidance exists, the international AAO-HNSF guideline (2014). Verify doses in the BNF or BNFC before prescribing. Not a substitute for clinical judgement."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

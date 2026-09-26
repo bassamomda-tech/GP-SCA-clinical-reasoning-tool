@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Psoriasis — Protocol · Reasoning GP</title>
+<meta name="description" content="Chronic plaque psoriasis in primary care on one page: same-day referral for erythroderma and generalised pustular psoriasis, severity and impact at every review, the NICE CG153 topical sequence by body site with its week counts, annual PEST screening for psoriatic arthritis, cardiovascular risk, and when to refer for phototherapy, systemic or biologic treatment." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/psoriasis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316534730122 tools/management/psoriasis.html">
+<meta name="omelette-print-source" content="v1790420447098187 tools/management/psoriasis.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -23,105 +24,177 @@
 MG.render({
   icon:"🧴",
   title:"Psoriasis",
-  stemTitle:"Chronic plaque psoriasis — ongoing management",
-  stemSub:"Primary-care management of chronic plaque psoriasis \u2014 the topical ladder by site, recognising psoriatic arthritis and cardiovascular comorbidity, and referral for phototherapy/systemics. NICE CG153.",
-  guideline:"NICE CG153",
-  glance:[
-    {lbl:"Trunk/limbs 1st", val:"Potent TCS + vit D", sub:"separate AM/PM, 4 wks"},
-    {lbl:"Then", val:"Vit D analogue OD", sub:"or twice-daily"},
-    {lbl:"Scalp", val:"Potent TCS", sub:"\u00b1 vit D / coal tar"},
-    {lbl:"Face/flexures", val:"Mild TCS short", sub:"\u00b1 calcineurin inhibitor"},
-    {lbl:"Screen", val:"PsA + CVD", sub:"PEST tool"},
-    {lbl:"Refer", val:"Extensive / PsA / erythroderma", sub:""}
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Psoriasis — spot the unstable skin, treat by site on a clock, and look past the plaques to the joints, heart and mood",
+  stemSub:"Psoriasis is a lifelong inflammatory disease that happens to show on the skin. The primary-care job is to recognise the rare forms that need a hospital today, score severity and impact, run the CG153 topical sequence by body site with its fixed review points and steroid breaks, screen every year for psoriatic arthritis, assess cardiovascular risk and mood, and refer when topical treatment is not enough. Sources: NICE CG153 (2012, updated 2017) · NICE QS40 (2013) · NICE NG65 (2017) · NICE technology appraisals · MHRA Drug Safety Update (Dec 2018, Sep 2020, Sep 2021, Apr 2023) · BAD biologics guideline 2023 · BNF and SPCs.",
+  guideline:"NICE CG153 (2012, updated 2017) · NICE QS40 (2013) · NICE NG65 (2017) · NICE TA350 · MHRA Drug Safety Update (Dec 2018, Sep 2020, Sep 2021, Apr 2023) · BAD biologics guideline 2023",
+  meta:[
+    {t:"NICE CG153 · psoriasis (2012, updated 2017)"},
+    {t:"NICE QS40 · psoriasis quality standard (2013)"},
+    {t:"NICE NG65 · spondyloarthritis (2017)"},
+    {t:"MHRA DSU · methotrexate weekly · steroid withdrawal · JAK · emollient fire"},
+    {t:"BAD biologic therapy guideline 2023 (Smith et al.)"},
+    {t:"2WW · NICE NG12 suspected SCC (consider)", tone:"tw"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm type, assess severity + comorbidity",
-      blocks:[
-        {b:"kv", rows:[
-          ["Type","Chronic plaque (commonest); also guttate, flexural, pustular, erythrodermic, nail, scalp"],
-          ["Severity / impact","Body surface area, sites, and impact on quality of life (DLQI)"],
-          ["Screen PsA","Use a tool (e.g. PEST) \u2014 joint pain/stiffness/swelling; early detection prevents joint damage"],
-          ["Comorbidity","Cardiovascular risk, metabolic syndrome, depression \u2014 assess and manage"]
-        ]},
-        {b:"why", html:"Psoriasis is a systemic inflammatory condition, not just a skin rash \u2014 so beyond topical treatment you must <strong>screen for psoriatic arthritis</strong> (irreversible joint damage if missed) and manage <strong>cardiovascular risk</strong>. Topical therapy is organised by <em>site</em>, because potency tolerated on the trunk would harm the face and flexures."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Education, emollients and risk factors",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🧴 Emollients", html:"Regular emollients reduce scale and itch and improve other treatments\u2019 penetration."},
-          {t:"🚭 Smoking & 🍷 alcohol", html:"Both worsen psoriasis and CV risk \u2014 cessation/reduction helps."},
-          {t:"⚖️ Weight", html:"Weight loss improves disease and response to systemics; manage metabolic risk."},
-          {t:"🧠 Psychological", html:"Screen for depression/anxiety \u2014 high impact; offer support."},
-          {t:"☀️ Sunlight / triggers", html:"Moderate natural sunlight may help; note triggers (drugs e.g. lithium/\u03b2-blockers, strep, stress)."},
-          {t:"🩺 CV risk", html:"Assess and treat cardiovascular risk factors as part of routine care."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 topical, by site", title:"The topical ladder",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Trunk/limbs 1", title:"Potent TCS + vitamin D analogue", when:"separate applications, up to 4 weeks",
-           html:"<b>Potent corticosteroid (e.g. betamethasone valerate 0.1%) in the morning</b> and <b><span class='rx'>calcipotriol 50 micrograms/g ointment</span> (vitamin D analogue) in the evening</b> for up to 4 weeks \u2014 or a combined <b>calcipotriol + betamethasone</b> product (Dovobet/Enstilar) once daily up to 4 weeks (then review steroid use)."},
-          {step:"Trunk/limbs 2", title:"Vitamin D analogue alone", when:"if inadequate",
-           fromLabel:"after 8 weeks if needed",
-           html:"<b><span class='rx'>Calcipotriol 50 micrograms/g, once\u2013twice daily</span></b> (maximum 100 g/week) as ongoing therapy; or potent steroid BD for up to 4 weeks; or a coal tar preparation."},
-          {step:"Scalp", title:"Potent TCS for scalp", when:"\u00b1 vit D / coal tar / salicylic acid",
-           fromLabel:"scalp disease",
-           html:"<span class='rx'>Betamethasone valerate 0.1% scalp application</span> or equivalent potent steroid, once daily for up to 4 weeks; add a vitamin D analogue or a descaling agent; use scalp-specific formulations."},
-          {step:"Face/flexures/genitals", title:"Mild TCS short course", when:"delicate sites",
-           fromLabel:"flexural / facial disease",
-           html:"Short-term <b>mild/moderate steroid (e.g. hydrocortisone 1%)</b>; consider a <b>topical calcineurin inhibitor (tacrolimus 0.1% BD)</b> for steroid-sparing at these delicate sites."}
-        ]},
-        {b:"warn", html:"Limit potent steroid courses (\u22644\u20138 weeks; have a steroid-free break) to avoid skin atrophy and destabilisation. Abruptly stopping potent steroids over large areas risks pustular/erythrodermic flare. <b>Don\u2019t use potent steroids long-term on the face/flexures.</b>"}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response, joints and comorbidity",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Skin response + QoL","After ~4\u20138 weeks per step","Inadequate \u2192 step up / refer"],
-          ["Steroid use","Each course","Enforce treatment breaks; watch for atrophy"],
-          ["PsA screen","Annually","Joint symptoms \u2192 rheumatology"],
-          ["Cardiovascular / metabolic","Routinely","Manage BP, lipids, glucose, weight, smoking"]
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"4\u20138 weeks", title:"Topical response", html:"Assess response and adherence; rotate/step up; manage steroid breaks."},
-          {n:"2", when:"Annual", title:"Holistic review", html:"PsA screen, cardiovascular/metabolic risk, mental health, treatment review."},
-          {n:"3", when:"On flare/change", title:"Reassess", html:"Unstable, extensive, or new arthritis \u2192 escalate/refer."}
-        ]}
-      ]},
-    {t:"loop", icon:"🔁", title:"Not responding? Check before escalating",
-      arrow:"\u2026if plaques persist",
-      intro:"Confirm adequate, correctly-sited topical therapy and look for triggers.",
-      checks:[
-        {b:"1 \u00b7 Adherence/technique", html:"Used for the full course; right product for the site?"},
-        {b:"2 \u00b7 Emollients", html:"Regular emollient base to reduce scale and aid penetration?"},
-        {b:"3 \u00b7 Triggers", html:"Drugs (lithium, \u03b2-blockers, antimalarials), infection, stress, alcohol?"},
-        {b:"4 \u00b7 PsA missed?", html:"Joint symptoms \u2192 rheumatology referral."},
-        {b:"5 \u00b7 Escalate", html:"Extensive/refractory \u2192 dermatology for phototherapy/systemics/biologics."}
-      ],
-      back:"Adequate topical therapy, triggers addressed \u2192 refer for phototherapy/systemics"},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Erythroderma / pustular", html:"\u201cWidespread redness/peeling of most of the skin, or widespread pustules with fever/feeling unwell \u2014 seek same-day help.\u201d"},
-          {t:"🦴 Joint symptoms", html:"\u201cJoint pain, stiffness or swelling \u2014 tell us; psoriasis can affect the joints and early treatment protects them.\u201d"},
-          {t:"💊 Steroid use", html:"\u201cDon\u2019t suddenly stop strong steroid creams over large areas \u2014 it can trigger a severe flare; follow the plan.\u201d"},
-          {t:"🫀 Whole-body health", html:"\u201cPsoriasis links to heart and metabolic health \u2014 we\u2019ll keep an eye on those too.\u201d"}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
-      arrow:"emergency for erythroderma/pustular; routine for extensive/PsA",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Emergency", html:"Erythrodermic or generalised pustular psoriasis \u2192 same-day admission/dermatology."},
-          {t:"Extensive / refractory", html:"Not controlled by optimised topical therapy \u2192 dermatology (phototherapy, systemics, biologics)."},
-          {t:"Psoriatic arthritis", html:"Suspected PsA \u2192 rheumatology (don\u2019t delay \u2014 prevents joint damage)."},
-          {t:"Diagnostic doubt / nail/severe scalp", html:"Uncertainty or major functional/psychosocial impact."}
-        ]},
-        {b:"say", html:"Psoriasis is long-term but very manageable. We treat the skin with creams matched to where it is, and I\u2019ll also check your joints and heart-health, because psoriasis is more than skin-deep. If creams aren\u2019t enough, dermatology has light therapy and tablets/injections."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#flags'><b>Red flags</b><small>Erythroderma, pustular</small></a><a href='#assess'><b>Assess</b><small>Severity, impact, joints</small></a><a href='#topical'><b>Topicals</b><small>By site, by the week</small></a><a href='#refer'><b>Refer</b><small>Same day to routine</small></a></div>",
+  quickSub:"Six cards that cover most psoriasis consultations. Each figure traces to a source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Erythroderma or generalised pustular: same day", html:"Red, inflamed skin over most of the body, or sheets of sterile pustules, often with fever, shivering or feeling unwell. NICE CG153: refer <b>immediately for same-day specialist assessment and treatment</b>. These are skin-failure states, not a bad flare.", src:"NICE CG153 (2012, updated 2017)"},
+    {tone:"cream", h:"Trunk and limbs: steroid plus vitamin D, on a clock", html:"Start a <b>potent corticosteroid once daily plus vitamin D or an analogue once daily</b>, applied separately (one morning, one evening), for up to <b>4 weeks</b>. Not controlled by <b>8 weeks</b> → vitamin D alone twice daily. Not controlled after a further <b>8–12 weeks</b> → potent steroid twice daily for up to 4 weeks, or a coal tar preparation.", src:"NICE CG153 (2012, updated 2017)"},
+    {tone:"amber", h:"Potency follows the site", html:"Face, flexures and genitals: <b>mild or moderate steroid only, for no more than 2 weeks</b>; no potent or very potent steroid there. Aim for a <b>4-week break</b> between courses of potent or very potent steroid anywhere. Review every new topical at <b>4 weeks</b> in adults and <b>2 weeks</b> in children.", src:"NICE CG153 (2012, updated 2017)"},
+    {tone:"blue", h:"Ask about joints every year", html:"Offer an <b>annual psoriatic arthritis assessment</b> to everyone with psoriasis, using a validated tool such as the <b>PEST</b> (a score of 3 or more suggests arthritis). Refer to rheumatology as soon as it is suspected — PEST misses inflammatory back pain, so ask about that separately.", src:"NICE CG153 · Ibrahim et al., Clin Exp Rheumatol 2009"},
+    {tone:"blue", h:"More than skin: heart and mood", html:"Offer adults with <b>severe psoriasis</b> a cardiovascular risk assessment at presentation and <b>at least every 5 years</b>. Assess for depression as part of the impact assessment. Smoking, alcohol and weight worsen both the skin and the risk.", src:"NICE CG153 (2012, updated 2017) · NICE QS40"},
+    {tone:"green", h:"Know when the creams have done their job", html:"Refer for phototherapy or systemic treatment when psoriasis cannot be controlled topically and has a significant impact, and is extensive (for example <b>more than 10% body surface area or PASI above 10</b>), localised but disabling, or has relapsed after phototherapy. Children are referred at presentation.", src:"NICE CG153 (2012, updated 2017)"}
+  ],
+  pathwaySub:"Five moves from first look to specialist ladder. The first step is where harm happens.",
+  pathway:[
+    {title:"Screen for the unstable forms", html:"Erythroderma · generalised pustular psoriasis · systemic upset (fever, malaise) with widespread change · acute, unstable or rapidly spreading disease · a single fixed scaly plaque that never responds (think Bowen’s disease or squamous cell carcinoma). Any of these changes the plan before routine treatment.", alert:true},
+    {title:"Assess severity and impact", html:"Record body surface area, the static Physician’s Global Assessment (clear to very severe), nails and high-impact sites (face, scalp, palms, soles, flexures, genitals). Separately assess impact on physical, psychological and social wellbeing — the DLQI helps — and screen for depression."},
+    {title:"Treat by site, with review dates", html:"Trunk and limbs, scalp, and face/flexures/genitals each have their own CG153 sequence. Give enough emollient and active treatment, explain how to use it, and book a review at 4 weeks (2 weeks for children)."},
+    {title:"Look beyond the skin", html:"Annual PEST for psoriatic arthritis; cardiovascular risk for severe psoriasis; smoking, alcohol, weight and mood. Check for drugs that aggravate psoriasis."},
+    {title:"Escalate on criteria", html:"Refer when topical treatment fails or disease is extensive or disabling — for phototherapy, methotrexate or ciclosporin, and then biologics under the NICE technology appraisals. Refer suspected psoriatic arthritis to rheumatology without waiting."}
+  ],
+  sections:[
+
+    {id:"flags", nav:"Red flags", title:"Red flags — act on these first", sub:"Chronic plaque psoriasis is a long-term condition. These are not.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Erythroderma", html:"Inflammation affecting most of the skin surface, with scaling, shivering, feeling unwell and risk of fluid loss, heat loss and infection. Refer immediately for same-day specialist assessment and treatment.", src:"NICE CG153 (2012, updated 2017)"},
+         {tone:"red", h:"Generalised pustular psoriasis", html:"Widespread sterile pustules on red skin, often with fever and malaise. It can be triggered by stopping systemic or potent topical corticosteroids. Same-day specialist assessment and treatment.", src:"NICE CG153 (2012, updated 2017)"},
+         {tone:"amber", h:"Acute, unstable or rapidly spreading psoriasis", html:"Psoriasis that is changing quickly or behaving unpredictably needs urgent specialist advice rather than another topical course (clinical practice). CG153 notes that systemic upset such as fever and malaise is common in the unstable forms, so record it at every assessment."},
+         {tone:"purple", h:"A plaque that never clears <span class='tw'>2WW</span>", html:"Consider a suspected cancer pathway referral for people with a skin lesion that raises the suspicion of squamous cell carcinoma. A solitary, fixed, scaly or crusted plaque that fails to respond, bleeds or ulcerates is not psoriasis until proven otherwise.", src:"NICE NG12 (updated April 2026), recommendation 1.7.4"},
+         {tone:"amber", h:"New joint pain, swelling or stiffness", html:"Suspected psoriatic arthritis → rheumatology as soon as it is suspected. Dactylitis (a whole swollen ‘sausage’ digit) and enthesitis without a mechanical cause are referral triggers on their own.", src:"NICE CG153 (2012, updated 2017) · NICE NG65 (2017)"},
+         {tone:"amber", h:"Children and young people", html:"Children and young people with any type of psoriasis should be referred to a specialist at presentation.", src:"NICE CG153 (2012, updated 2017)"}
+       ]},
+       {b:"why", html:"In erythroderma and generalised pustular psoriasis the skin stops working as a barrier and a thermostat. People lose fluid, protein and heat through inflamed skin, and bacteria get in. That is why CG153 treats them as same-day emergencies — the risks are sepsis, dehydration and hypothermia, not the appearance of the skin. Abruptly stopping oral or potent topical steroids over a large area is one well-recognised trigger."}
+     ]},
+
+    {id:"assess", nav:"Assess", title:"Assessment: severity, impact, joints and risk", sub:"What to record at diagnosis and at each treatment review.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Type</b>","Chronic plaque (most common), guttate (often after a streptococcal throat infection), scalp, flexural (inverse), nail, palmoplantar pustular, and the unstable forms — erythrodermic and generalised pustular."],
+         ["<b>Severity</b>","The static Physician’s Global Assessment (clear, nearly clear, mild, moderate, severe, very severe) and the percentage of body surface area affected. Note nails and high-impact, difficult-to-treat sites: face, scalp, palms, soles, flexures, genitals. PASI is used by specialists to decide on systemic and biologic treatment."],
+         ["<b>Impact</b>","Ask about physical, psychological and social wellbeing. The <b>DLQI</b> (adults) or <b>CDLQI</b> (children) helps. Impact cannot be predicted from how much skin is involved."],
+         ["<b>Mood</b>","Assess for depression as part of the impact assessment and offer support."],
+         ["<b>Joints</b>","An annual assessment for psoriatic arthritis, with a validated tool such as PEST."],
+         ["<b>Cardiovascular risk</b>","Adults with severe psoriasis: a validated risk assessment at presentation and at least every 5 years (more often if indicated)."],
+         ["<b>Aggravators</b>","Smoking, alcohol, obesity, stress, streptococcal infection, and drugs — lithium, beta-blockers, antimalarials and withdrawal of systemic corticosteroids are commonly implicated."]
+       ]},
+       {b:"table", head:["PEST question (score 1 for each yes)","Why it matters"], rows:[
+         ["Have you ever had a swollen joint (or joints)?","Peripheral synovitis"],
+         ["Has a doctor ever told you that you have arthritis?","Established inflammatory disease"],
+         ["Do your fingernails or toenails have holes or pits?","Nail disease is strongly linked with PsA"],
+         ["Have you had pain in your heel?","Enthesitis"],
+         ["Have you had a finger or toe completely swollen and painful for no apparent reason?","Dactylitis"],
+         ["<b>Total 3 or more</b>","Suggests psoriatic arthritis → rheumatology referral. PEST does not detect axial disease: ask about inflammatory back pain separately."]
+       ]},
+       {b:"p", html:"PEST was developed and validated by Ibrahim et al. (Clin Exp Rheumatol 2009); a score of 3 or more had sensitivity 0.97 and specificity 0.79 in the original study. CG153 names it as an example of a validated tool for primary care."}
+     ]},
+
+    {id:"general", nav:"Everyday care", title:"Education, emollients and the whole person", sub:"What every person with psoriasis should hear.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"🧴 Emollients", html:"Regular emollients soften scale and ease itch, and make active treatments easier to apply."},
+         {t:"🔥 Fire risk", html:"Emollient residue on clothing, bedding or dressings makes fabric catch fire faster — paraffin-free products included. No smoking or naked flames; wash fabrics often (MHRA)."},
+         {t:"🚭 Smoking and alcohol", html:"Both are linked with worse psoriasis and higher cardiovascular risk. Offer help to stop or cut down."},
+         {t:"⚖️ Weight", html:"Obesity is linked with more severe disease and cardiometabolic risk. Support weight loss."},
+         {t:"🧠 Mood", html:"Psoriasis can be stigmatising. Ask about mood, sleep, work and relationships."},
+         {t:"💊 Drug check", html:"Review medicines that can trigger or worsen psoriasis before escalating treatment."}
+       ]},
+       {b:"say", html:"Psoriasis is a long-term condition that comes and goes. The creams work well when they’re used in short, planned courses with breaks, so I’ll give you a plan with dates. I’ll also check your joints and your heart health, because psoriasis can affect more than the skin."}
+     ]},
+
+    {id:"topical", nav:"Topicals by site", title:"The CG153 topical sequence, by body site", sub:"Each step has a time limit and a review. Clearance, near clearance or satisfactory control is the target.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Trunk and limbs 1", when:"up to 4 weeks", title:"Potent steroid once daily plus vitamin D once daily", tone:"cream",
+          html:"Apply separately — one in the morning, the other in the evening. Example potent steroid: betamethasone valerate 0.1%. Example vitamin D analogue: calcipotriol 50 micrograms/g. Review at 4 weeks."},
+         {step:"Trunk and limbs 2", when:"after a maximum of 8 weeks", title:"Vitamin D or an analogue alone, twice daily", tone:"cream", fromLabel:"not controlled",
+          html:"Stops continuous steroid exposure while keeping active treatment going."},
+         {step:"Trunk and limbs 3", when:"after a further 8–12 weeks", title:"Potent steroid twice daily for up to 4 weeks, or coal tar", tone:"cream", fromLabel:"still not controlled",
+          html:"Either a potent corticosteroid twice daily for up to 4 weeks, or a coal tar preparation once or twice daily. Short-contact dithranol is an option for treatment-resistant trunk or limb psoriasis."},
+         {step:"Specialist", when:"when topicals fail", title:"Refer for phototherapy or systemic treatment", tone:"amber", fromLabel:"topicals not enough",
+          html:"Very potent steroids on the trunk and limbs are reserved for specialist settings under careful supervision, for a maximum of 4 weeks."}
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"If two applications a day will not happen", html:"Offer a combined product containing calcipotriol monohydrate and betamethasone dipropionate once daily for up to 4 weeks for adults who cannot use separate morning and evening applications.", src:"NICE CG153 (2012, updated 2017)"},
+         {tone:"cream", h:"Scalp", html:"Potent steroid once daily for up to 4 weeks. Not controlled → a different formulation (shampoo or mousse) and/or descaling first (salicylic acid, emollients, oils). Still not controlled after a further 4 weeks → combined calcipotriol with betamethasone once daily for up to 4 weeks, or vitamin D alone once daily if steroids cannot be used and disease is mild to moderate. Then very potent steroid up to twice daily for 2 weeks (adults only) or specialist referral.", src:"NICE CG153 (2012, updated 2017)"},
+         {tone:"amber", h:"Face, flexures and genitals", html:"Mild or moderate potency steroid once or twice daily for <b>no longer than 2 weeks</b>. If that fails or psoriasis flares when it stops, a topical calcineurin inhibitor twice daily for up to 4 weeks (off-label), <b>initiated by a clinician with expertise in psoriasis</b>. Never potent or very potent steroids at these sites.", src:"NICE CG153 (2012, updated 2017)"},
+         {tone:"amber", h:"Steroid breaks and limits", html:"Aim for a <b>4-week break</b> between courses of potent or very potent steroids; use vitamin D or a non-steroid option in the gap. Continuous use can cause irreversible atrophy and striae, make psoriasis unstable, and cause systemic effects when more than 10% of the skin is treated.", src:"NICE CG153 (2012, updated 2017)"},
+         {tone:"amber", h:"Calcipotriol ceiling", html:"Calcipotriol 50 micrograms/g ointment: no more than <b>100 g a week</b> in adults. Combined calcipotriol with betamethasone (Dovobet): no more than <b>15 g a day or 100 g a week</b> of all calcipotriol-containing products together, on no more than <b>30%</b> of the body surface.", src:"SPC: calcipotriol 50 micrograms/g ointment · SPC: Dovobet ointment and gel"},
+         {tone:"blue", h:"Topical steroid withdrawal", html:"Long-term continuous use of topical steroids can very rarely lead to withdrawal reactions — redness, burning and stinging after stopping. Advise people to seek review before restarting. Planned courses with breaks reduce the risk.", src:"MHRA Drug Safety Update September 2021"}
+       ]},
+       {b:"warn", html:"<b>Review every new topical at 4 weeks in adults (2 weeks in children).</b> Check tolerability, response, adherence and technique, and remind people about the 4-week steroid break. If there is little or no improvement, discuss the next step then rather than repeating the same prescription."}
+     ]},
+
+    {id:"specialist", nav:"Specialist options", title:"Phototherapy, systemic and biologic treatment", sub:"What happens after referral, and what the GP needs to know.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>When systemic treatment is offered</b>","Psoriasis cannot be controlled with topical treatment <b>and</b> has a significant impact on wellbeing <b>and</b> one or more of: extensive disease (for example more than 10% body surface area or PASI above 10); localised disease with significant functional impairment or high distress (for example severe nail disease or high-impact sites); phototherapy ineffective, unsuitable or followed by rapid relapse."],
+         ["<b>Phototherapy</b>","Narrowband UVB for plaque or guttate psoriasis that cannot be controlled with topical treatment."],
+         ["<b>Conventional systemics</b>","Methotrexate is usually first choice; ciclosporin where rapid or short-term control is needed, for palmoplantar pustulosis, or when conception is being considered; acitretin in selected cases. Specialist-initiated, often under shared care."],
+         ["<b>Biologics and small molecules</b>","Recommended through NICE technology appraisals. For example, TA350 (secukinumab) applies when psoriasis is severe — <b>PASI 10 or more and DLQI above 10</b> — and has not responded to, cannot tolerate, or is contraindicated for standard systemic therapy such as ciclosporin, methotrexate or PUVA. The BAD 2023 guideline sets drug choice within these criteria."]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Methotrexate is once weekly", html:"Inadvertent daily dosing has caused fatal overdose. Agree and write the day of the week in full on the prescription, confirm the person understands weekly dosing, and warn about the risk of taking it more often.", src:"MHRA Drug Safety Update September 2020"},
+         {tone:"amber", h:"JAK inhibitors", html:"JAK inhibitors used for inflammatory disease, including psoriatic arthritis, carry risks of major cardiovascular events, malignancy, VTE, serious infection and increased mortality. The MHRA restricts use in people aged 65 or over, current or past long-term smokers, and those with cardiovascular or malignancy risk factors unless there is no suitable alternative.", src:"MHRA Drug Safety Update April 2023"},
+         {tone:"blue", h:"People on biologics", html:"Keep the specialist medicine on the GP record. Avoid live vaccines unless the specialist team advises otherwise, and have a low threshold to assess fever or infection. Continue cardiovascular and mood care in primary care.", src:"BAD biologic therapy guideline 2023 (Smith et al., Br J Dermatol 2024)"},
+         {tone:"cream", h:"Shared care monitoring", html:"Methotrexate and ciclosporin need blood monitoring (and blood pressure for ciclosporin) under a shared-care agreement. Follow the local protocol and the BNF monitoring requirements.", src:"BNF · local shared-care protocol"}
+       ]}
+     ]},
+
+    {id:"review", nav:"Review", title:"Follow-up rhythm", sub:"Planned reviews stop steroid overuse and catch the arthritis.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"4 weeks (2 in children)", title:"New topical review", html:"Tolerability, response (severity and impact), adherence, technique, and the steroid break."},
+         {n:"2", when:"8 weeks", title:"Trunk and limb decision point", html:"Not controlled on steroid plus vitamin D → vitamin D alone twice daily."},
+         {n:"3", when:"Annually", title:"Holistic review", html:"PEST for psoriatic arthritis, mood, smoking, alcohol, weight, quantities of topical steroid being used."},
+         {n:"4", when:"At least every 5 years", title:"Cardiovascular risk (severe psoriasis)", html:"Validated risk tool; more often if indicated."}
+       ]},
+       {b:"table", head:["Not responding? Check","Question","Fix"], rows:[
+         ["<b>Quantity</b>","Enough to cover the area for the whole course?","Prescribe realistic amounts."],
+         ["<b>Technique</b>","Scale removed first on the scalp? Right formulation for the site?","Descale; switch to shampoo, mousse or gel."],
+         ["<b>Adherence</b>","Two separate applications too much?","Combined once-daily product."],
+         ["<b>Triggers</b>","New drugs, infection, alcohol, stress?","Address the trigger."],
+         ["<b>Diagnosis</b>","A single plaque that never moves?","Consider Bowen’s disease, SCC, or cutaneous lymphoma — biopsy or refer."]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral: same day to routine", sub:"From CG153 and NG65, plus the NG12 criterion that can hide behind a ‘psoriasis’ label.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day · dermatology", html:"<b>Generalised pustular psoriasis or erythroderma</b> → immediate referral for same-day specialist assessment and treatment.", src:"NICE CG153 (2012, updated 2017)"},
+         {tone:"amber", h:"Urgent · dermatology advice", html:"Acute, unstable or rapidly worsening widespread psoriasis that is not erythrodermic or pustular — seek specialist advice urgently rather than starting another topical course. This tier is clinical practice; CG153 itself names only the same-day tier."},
+         {tone:"purple", h:"Suspected cancer pathway <span class='tw'>2WW</span> · NICE NG12", html:"Consider a suspected cancer pathway referral for people with a skin lesion that raises the suspicion of squamous cell carcinoma.", src:"NICE NG12 (updated April 2026), recommendation 1.7.4"},
+         {tone:"amber", h:"Rheumatology", html:"Suspected psoriatic arthritis → rheumatology as soon as it is suspected. Under NG65, refer people with dactylitis, or enthesitis without a mechanical cause, for spondyloarthritis assessment; and urgently refer suspected new-onset inflammatory arthritis.", src:"NICE CG153 (2012, updated 2017) · NICE NG65 (2017)"},
+         {tone:"cream", h:"Routine · dermatology", html:"Diagnostic uncertainty · severe or extensive disease (for example more than 10% of the body surface) · not controlled with topical therapy · acute guttate psoriasis needing phototherapy · nail disease with a major functional or cosmetic impact · major impact on physical, psychological or social wellbeing · <b>any child or young person at presentation</b>.", src:"NICE CG153 (2012, updated 2017) · NICE QS40"},
+         {tone:"cream", h:"Also consider", html:"Mental health support for significant depression; smoking cessation, alcohol and weight services; cardiology or lipid clinic as indicated by risk assessment."}
+       ]},
+       {b:"say", html:"The creams haven’t controlled this after a fair trial, so I’d like the dermatology team to see you. They can offer light treatment and tablets or injections that work on the immune system. And because your finger joints have been swelling, I’m also asking the joint specialists to see you — treating that early protects the joints."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 44-year-old HGV driver with plaque psoriasis on his elbows, knees and scalp asks for ‘more of the strong cream’. He has used betamethasone every day for six months. He smokes 20 a day, drinks 30 units a week, and mentions a swollen, painful middle finger and sore heels.", src:"Scenario built on NICE CG153 (2012, updated 2017)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Assesses severity <b>and</b> impact; recognises <b>continuous potent steroid use</b> and explains the 4-week break with vitamin D in between; spots <b>dactylitis and heel pain</b> (PEST 2 so far — asks the other three) and refers to rheumatology without waiting; addresses smoking and alcohol; offers a cardiovascular risk assessment; screens mood; books a 4-week review; safety-nets on widespread redness or pustules.", src:"NICE CG153 · NICE NG65 · Ibrahim et al. 2009"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every figure on this page traces to one of these primary sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG153 — Psoriasis: assessment and management (2012, updated 2017)</b><br><a href="https://www.nice.org.uk/guidance/cg153" rel="noopener">nice.org.uk/guidance/cg153</a><span class="rd"> — same-day referral for erythroderma and generalised pustular psoriasis; referral of children at presentation; severity, impact and depression assessment; annual psoriatic arthritis assessment with a validated tool such as PEST; cardiovascular risk at presentation and every 5 years in severe psoriasis; topical sequences for trunk and limbs, scalp, and face/flexures/genitals with their week limits; 4-week steroid breaks; review at 4 weeks (adults) and 2 weeks (children); criteria for phototherapy and systemic therapy</span></li>'+
+         '<li><b>NICE QS40 — Psoriasis quality standard (2013)</b><br><a href="https://www.nice.org.uk/guidance/qs40" rel="noopener">nice.org.uk/guidance/qs40</a><span class="rd"> — assessing severity and impact at diagnosis and review; referral; cardiovascular risk; psoriatic arthritis assessment</span></li>'+
+         '<li><b>NICE NG65 — Spondyloarthritis in over 16s: diagnosis and management (2017)</b><br><a href="https://www.nice.org.uk/guidance/ng65" rel="noopener">nice.org.uk/guidance/ng65</a><span class="rd"> — referral for dactylitis, enthesitis and suspected inflammatory arthritis</span></li>'+
+         '<li><b>NICE TA350 — Secukinumab for moderate to severe plaque psoriasis (2015)</b><br><a href="https://www.nice.org.uk/guidance/ta350" rel="noopener">nice.org.uk/guidance/ta350</a><span class="rd"> — PASI 10 or more and DLQI above 10 after failure of standard systemic therapy; the same thresholds recur across the psoriasis biologic appraisals</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — recommendation 1.7.4, squamous cell carcinoma</span></li>'+
+         '<li><b>MHRA Drug Safety Update</b> — emollients and fire risk (December 2018); methotrexate once-weekly dosing (September 2020); topical corticosteroid withdrawal reactions (September 2021); JAK inhibitors (April 2023)<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a></li>'+
+         '<li><b>Smith CH, Yiu ZZN et al. British Association of Dermatologists guidelines for biologic therapy for psoriasis 2023: a pragmatic update. Br J Dermatol 2024;190:270–2</b><br><a href="https://doi.org/10.1093/bjd/ljad347" rel="noopener">doi.org/10.1093/bjd/ljad347</a></li>'+
+         '<li><b>Ibrahim GH et al. Evaluation of an existing screening tool for psoriatic arthritis in people with psoriasis and the development of a new instrument: the PEST questionnaire. Clin Exp Rheumatol 2009;27:469–74</b></li>'+
+         '<li><b>SPCs</b> — calcipotriol 50 micrograms/g ointment (maximum 100 g a week); Dovobet ointment and gel (maximum 15 g a day, 100 g a week, 30% body surface area). <b>BNF</b> — topical corticosteroid potency and shared-care monitoring<br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Psoriasis — NICE CG153 (2012, updated 2017), QS40 (2013), NG65 (2017), TA350, NG12 (updated April 2026), MHRA Drug Safety Updates, the BAD biologic therapy guideline 2023, SPCs and the BNF. Check doses and quantities against the current BNF and SPC before prescribing, and follow local shared-care protocols for systemic treatment."
 });
 </script>
 

@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Giant Cell Arteritis — Protocol · Reasoning GP</title>
+<meta name="description" content="Giant cell arteritis in primary care on one page: who to suspect, prednisolone 40–60 mg the same day (60 mg for established visual loss), same-day referral to the GCA fast-track pathway (specialist review within 3 working days), ultrasound or biopsy within a week, the BSR taper, bone protection from day one, tocilizumab for relapsing disease, and driving after sight loss." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/giant-cell-arteritis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316448292392 tools/management/giant-cell-arteritis.html">
+<meta name="omelette-print-source" content="v1790380012917942 tools/management/giant-cell-arteritis.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,103 +23,203 @@
 <script>
 MG.render({
   icon:"👁️",
-  title:"Giant Cell Arteritis — The Complete Guide",
-  stemTitle:"GCA made simple &mdash; suspect it, steroid TODAY, refer same-day — sight is the clock",
-  stemSub:"One pathway: recognise the new headache + systemic picture in the over-50s, start high-dose steroid IMMEDIATELY on clinical suspicion (don't wait for biopsy), refer same-day to the GCA pathway, arrange temporal artery biopsy/ultrasound within the treatment window, run the long steroid taper with bone + PPI cover, and watch for relapse and steroid harms. BSR \u00b7 NICE.",
-  guideline:"BSR 2020",
-  glance:[
-    {lbl:"Suspect if", val:">50 + new headache", sub:"+ raised ESR/CRP"},
-    {lbl:"Act", val:"Steroid NOW", sub:"don't wait for biopsy"},
-    {lbl:"No visual loss", val:"Pred 40\u201360mg", sub:"OD"},
-    {lbl:"Visual sx", val:"IV methylpred", sub:"same-day ophthal"},
-    {lbl:"Confirm", val:"TA biopsy / USS", sub:"within ~1\u20132 weeks"},
-    {lbl:"Cover", val:"Bone + PPI", sub:"long taper 12\u201324mo"}
+  title:"Giant cell arteritis",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Giant cell arteritis — steroid in the same consultation, specialist the same day, sight is the clock",
+  stemSub:"For the over-50 with a new headache, scalp tenderness, jaw claudication or visual disturbance and a raised ESR or CRP. Start prednisolone before anyone confirms anything, get the patient onto the local fast-track GCA pathway, make sure ultrasound or biopsy happens within a week, protect bone, stomach and adrenals from the first prescription, and run a slow taper with a plan for relapse. Sources: BSR GCA guideline 2020 · NICE TA518 · NOGG 2024 · NICE NG243 · DVLA · EULAR 2018/2023 and ACR/EULAR 2022 (international).",
+  guideline:"BSR GCA guideline (Mackie et al. 2020) · NICE TA518 (2018) · NOGG 2024",
+  meta:[
+    {t:"BSR GCA guideline · Mackie 2020"},
+    {t:"NICE TA518 · tocilizumab (2018)"},
+    {t:"NOGG 2024 · NICE NG243 (2024)"},
+    {t:"DVLA · visual field defect duty", tone:"tw"},
+    {t:"EULAR 2018/2023 · ACR/EULAR 2022 (international)"},
+    {t:"No NG12 criterion maps to GCA"}
   ],
-  flow:[
-
-    {t:"node", d:"found", n:"1", tag:"Step 1 · recognise", title:"Recognise it — the over-50 with a new headache",
-      blocks:[
-        {b:"kv", rows:[
-          ["Core features","<b>Age >50</b> (usually >60) + <b>new-onset headache</b> (often temporal), <b>scalp tenderness</b> (combing hair), <b>jaw claudication</b> (aching on chewing \u2014 the most specific symptom), temporal artery tenderness/thickening/absent pulse"],
-          ["<b>Visual symptoms = emergency</b>","Amaurosis fugax (transient visual loss), diplopia, or sudden painless visual loss \u2014 anterior ischaemic optic neuropathy. <b>Visual loss can be permanent and bilateral within days</b> \u2014 the whole point of treating fast"],
-          ["Systemic","Malaise, fever, weight loss, jaw/tongue claudication; <b>~40\u201350% have PMR</b> (shoulder/hip girdle pain + stiffness) \u2014 ask about it, and ask GCA symptoms in every PMR patient"],
-          ["Bloods","<b>ESR (often >50) + CRP</b> \u2014 usually both raised (CRP more sensitive); FBC (normocytic anaemia, thrombocytosis), LFTs (raised ALP). <b>Normal inflammatory markers make GCA unlikely but don't fully exclude</b> if the clinical picture is strong"]
-        ]},
-        {b:"warn", html:"<b>GCA is an ophthalmic emergency.</b> Untreated, it blinds \u2014 irreversibly, and often the second eye within days of the first. The GP's job is to <b>suspect it and start steroid the same hour</b>, not to wait for confirmation. Treat first, confirm second."}
-      ]},
-
-    {t:"node", d:"drug", n:"2", tag:"Step 2 · treat NOW", title:"Start steroid immediately — before biopsy",
-      blocks:[
-        {b:"table", head:["Situation","Steroid","Then"], rows:[
-          ["<b>No visual symptoms</b> (uncomplicated GCA)","<b>Prednisolone 40\u201360mg OD</b>, start today","Same-day/urgent GCA pathway referral; biopsy/USS within the window"],
-          ["<b>Visual symptoms or jaw/tongue claudication</b> (impending/established visual loss)","<b>IV methylprednisolone 500mg\u20131g OD \u00d73 days</b> (specialist) \u2014 while arranging <b>same-day ophthalmology</b>","Don't delay the first steroid dose to arrange transfer \u2014 give oral pred immediately if IV not instantly available"]
-        ]},
-        {b:"kv", rows:[
-          ["The rule","<b>Do NOT wait for the temporal artery biopsy or specialist review to start steroids</b> \u2014 steroids started promptly don't materially reduce biopsy yield for ~1\u20132 weeks, and every hour of delay risks sight. Clinical suspicion = treat"],
-          ["Start cover at the same time","<b>PPI</b> (gastroprotection), <b>bone protection</b> (bisphosphonate + calcium/vit D \u2014 this is high-dose long-course steroid), <b>low-dose aspirin</b> only if separately indicated (not routine). Safety-net the diabetic (sugars will rise)"],
-          ["Steroid card + sick-day rules","Issue a steroid emergency card; counsel never to stop abruptly; sick-day dosing for intercurrent illness (adrenal suppression on long courses)"]
-        ]}
-      ]},
-
-    {t:"node", d:"found", n:"3", tag:"Step 3 · confirm", title:"Confirm the diagnosis — within the window",
-      blocks:[
-        {b:"kv", rows:[
-          ["Temporal artery biopsy","The traditional gold standard \u2014 ideally within <b>1\u20132 weeks</b> of starting steroids (yield persists a while). Skip lesions mean a negative biopsy doesn't exclude GCA \u2014 treat on clinical grounds if the picture fits"],
-          ["Temporal artery ultrasound","'Halo sign' \u2014 increasingly first-line where available (fast-track GCA clinics); can reduce need for biopsy"],
-          ["Large-vessel imaging","PET-CT / MRA / CT for large-vessel GCA (aortitis) in atypical/systemic presentations \u2014 specialist-led"],
-          ["Don't let confirmation delay treatment","The sequence is always treat \u2192 refer \u2192 confirm, never the reverse"]
-        ]}
-      ]},
-
-    {t:"node", d:"monitor", n:"4", tag:"Step 4 · taper & monitor", title:"The long taper — slow, with relapse vigilance",
-      blocks:[
-        {b:"table", head:["Phase","Approach","Watch"], rows:[
-          ["Induction","40\u201360mg until symptoms + markers settle (~2\u20134 weeks)","Rapid symptom response is typical + supports the diagnosis"],
-          ["Taper","<b>Gradual reduction over 12\u201324 months</b> (e.g. to 20mg, then slower to 10mg, then 1mg steps) \u2014 guided by symptoms + ESR/CRP, NOT markers alone","Relapse (headache/visual/PMR symptoms return, markers rise) \u2192 increase dose to the last effective level"],
-          ["Steroid-sparing","<b>Methotrexate or tocilizumab</b> for relapsing disease or to limit steroid toxicity \u2014 specialist-initiated","Reduces cumulative steroid exposure"],
-          ["Monitoring","ESR/CRP + symptoms at each review; BP, glucose/HbA1c, weight; bone health","Steroid harms accumulate \u2014 this is a big cumulative dose over 1\u20132 years"]
-        ]},
-        {b:"kv", rows:[
-          ["Relapse is common","Most relapses happen during tapering \u2014 don't rush it; a visual relapse is an emergency (back to high dose + same-day ophthalmology)"],
-          ["Steroid harms to actively manage","Osteoporosis (bone protection from day one), diabetes/hyperglycaemia, hypertension, weight gain, mood/psychosis, cataract/glaucoma, infection, adrenal suppression"]
-        ]},
-        {b:"say", html:"We start the steroid straight away \u2014 today \u2014 because it protects your sight, and we sort the confirming tests around it. You\u2019ll be on steroids for a good while, coming down very slowly over a year or two; never stop them suddenly, and if the headache or any visual symptoms come back as we reduce, tell us at once."}
-      ]},
-
-    {t:"loop", icon:"🔁", title:"Symptoms back or not settling? Act fast",
-      arrow:"\u2026sight is always the priority",
-      checks:[
-        {b:"1 · Visual relapse", html:"Any visual symptom → high-dose steroid + same-day ophthalmology, no delay."},
-        {b:"2 · Tapering too fast?", html:"Headache/PMR + rising markers on reduction → back up to last effective dose, taper slower."},
-        {b:"3 · Right diagnosis?", html:"No steroid response at all → question GCA; consider mimics (other headache, infection, malignancy)."},
-        {b:"4 · Steroid harm", html:"Hyperglycaemia, fracture, mood, infection → manage proactively; consider steroid-sparing agent."},
-        {b:"5 · Large-vessel disease", html:"Persistent systemic symptoms/limb claudication → large-vessel GCA imaging."},
-        {b:"6 · Adrenal", html:"Unwell/intercurrent illness on long course → sick-day steroid rules, don't under-cover."}
-      ],
-      back:"Relapsing/steroid-toxic → rheumatology for methotrexate/tocilizumab"},
-
-    {t:"node", d:"safety", n:"5", tag:"Safety-net", title:"What the patient must know",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Visual symptoms", html:"\u201cAny loss of vision, double vision, or a curtain over your sight \u2014 999 / same-day eye emergency; take your steroid and get seen immediately.\u201d"},
-          {t:"💊 Never stop steroids", html:"\u201cDon\u2019t stop the steroid suddenly \u2014 it must come down slowly over many months. Carry your steroid card.\u201d"},
-          {t:"🤒 When unwell", html:"\u201cIf you get an infection or can\u2019t keep tablets down, you may need MORE steroid, not less \u2014 contact us (sick-day rules).\u201d"},
-          {t:"⚠️ Relapse", html:"\u201cIf the headache, scalp tenderness or jaw ache comes back as we reduce the dose \u2014 tell us straight away.\u201d"}
-        ]}
-      ]},
-
-    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Same-day pathways",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Same-day ophthalmology", html:"ANY visual symptom (current or transient) — impending/established visual loss; IV methylprednisolone territory."},
-          {t:"Urgent GCA pathway / rheumatology", html:"All suspected GCA — for temporal artery biopsy/ultrasound within the window and taper planning. Start steroid before referral."},
-          {t:"Steroid-sparing", html:"Relapsing disease or significant steroid toxicity → methotrexate/tocilizumab."},
-          {t:"Large-vessel", html:"Atypical/systemic or limb claudication → large-vessel imaging (PET/MRA)."}
-        ]},
-        {b:"say", html:"This is one of the few times in general practice where I treat before I\u2019ve proven the diagnosis \u2014 because waiting risks your sight. Steroid now, specialist and tests today, and then a slow, careful reduction with us watching for any return of symptoms."}
-      ]}
+  lead:"<div class='mg-layers'><a href='#recognise'><b>Suspect</b><small>Over 50, new cranial symptoms</small></a><a href='#treat'><b>Treat now</b><small>Prednisolone today</small></a><a href='#confirm'><b>Confirm</b><small>USS or biopsy within 1 week</small></a><a href='#refer'><b>Refer</b><small>Same working day</small></a></div>",
+  quickSub:"The six things that decide whether this patient keeps their sight. Each figure is traced to the source named under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Treat on suspicion — do not wait for any test", html:"When GCA is strongly suspected, the GP starts glucocorticoid in the same consultation and refers urgently to the local GCA pathway at the same time. Neither ultrasound, biopsy nor the specialist appointment should hold back the first dose. Most GCA-related sight loss happens before treatment starts or soon after it, which is why the BSR guideline puts the prescription before the confirmation.", src:"BSR GCA guideline 2020 (Mackie et al.)"},
+    {tone:"red", h:"Dose: 40–60 mg — and 60 mg if sight is already lost", html:"Uncomplicated GCA: <b>prednisolone 40–60 mg once daily</b> as a single morning dose. <b>Established visual loss: 60 mg daily</b>, to protect the other eye. <b>Acute or intermittent visual loss</b> (amaurosis, a curtain, new diplopia): the specialist may give <b>IV methylprednisolone 500 mg–1 g daily for up to 3 days</b> — but if IV treatment is not immediately available, oral prednisolone is given now rather than delayed.", src:"BSR GCA guideline 2020"},
+    {tone:"amber", h:"Seen by a specialist the same working day — and never later than 3 working days", html:"The BSR standard is specialist assessment <b>ideally on the same working day and in all cases within 3 working days</b> of referral. Any visual symptom turns that into a same-day eye assessment. Know your local fast-track route (rheumatology hot clinic, ophthalmology or acute medicine) before you need it.", src:"BSR GCA guideline 2020"},
+    {tone:"blue", h:"Confirmation must happen within a week of the first dose", html:"Diagnosis is confirmed by <b>ultrasound of the temporal and axillary arteries</b>, a <b>temporal artery biopsy at least 1 cm long</b>, or both. Glucocorticoid quickly reduces the sensitivity of both tests, so they should be done <b>within 1 week</b> of starting treatment. A negative biopsy does not overrule a strong clinical picture.", src:"BSR GCA guideline 2020 · EULAR imaging 2023 (international)"},
+    {tone:"cream", h:"Bone protection starts with the steroid, not after a DXA", html:"Anyone starting 7.5 mg or more of prednisolone a day for 3 months or longer — which is everyone with GCA — who is a postmenopausal woman or a man aged 50 or over should start bone-protective treatment at the same time, without waiting for a bone density scan. Add an NHS Steroid Emergency Card and sick-day advice. PPI: consider. Aspirin: not routinely.", src:"NOGG 2024 · NatPSA/2020/005 · BSR GCA guideline 2020"},
+    {tone:"purple", h:"Sight loss and driving — a statutory duty", html:"A driver who develops a visual field defect must tell DVLA, and anyone who can no longer meet the eyesight standard for driving must stop driving. Say this explicitly to anyone with GCA-related visual loss, and record that you said it.", src:"DVLA Assessing fitness to drive (2025) · GOV.UK"}
   ],
-  foot:"Giant cell arteritis (temporal arteritis) in adults \u2014 BSR 2020 and NICE. Treat on clinical suspicion; verify doses against the current BNF before prescribing."
+  pathwaySub:"Five moves, in this order. The first two happen in the same consultation.",
+  pathway:[
+    {title:"Suspect it in anyone over 50 with new cranial or visual symptoms", html:"New headache (often temporal), scalp tenderness, jaw or tongue claudication, visual disturbance, or polymyalgic symptoms with systemic upset. Check <b>ESR and CRP, FBC, U&amp;E, LFT and glucose</b> the same day — but do not wait for them if the story is strong. Examine the temporal arteries, fundi, visual acuity and fields.", alert:true},
+    {title:"Start prednisolone today", html:"<b>40–60 mg once daily</b> for uncomplicated disease; <b>60 mg</b> where sight is already lost. Acute or intermittent visual loss: same-day ophthalmology or the acute GCA pathway for consideration of IV methylprednisolone — give oral prednisolone first if that transfer is not instant."},
+    {title:"Refer to the GCA fast-track pathway the same day", html:"Specialist review ideally the same working day, and in all cases within 3 working days. Tell the team what you have prescribed and when, because the imaging or biopsy clock started with the first tablet."},
+    {title:"Protect from the first prescription", html:"Bone-protective treatment (NOGG 2024), calcium and vitamin D per BNF, consider a PPI, Steroid Emergency Card and sick-day rules, and a baseline for blood pressure, glucose or HbA1c and weight. Low-dose aspirin is not given routinely for GCA."},
+    {title:"Taper slowly, watch for relapse and harm", html:"Hold the starting dose until symptoms and inflammatory markers settle (at least 3–4 weeks), then follow the BSR taper towards zero over 12–18 months. Relapsing or steroid-toxic disease goes back to the specialist for methotrexate or tocilizumab (NICE TA518)."}
+  ],
+  sections:[
+    {id:"recognise", nav:"Suspect", title:"Who to suspect — the over-50 with something new above the neck", sub:"GCA is a large- and medium-vessel vasculitis of people aged 50 and over. The diagnosis is clinical first and confirmed later.",
+     blocks:[
+       {b:"table", head:["Feature","What to ask or look for","Why it matters"], rows:[
+         ["<b>New headache</b>","Recent-onset, often temporal or occipital, different from any headache the patient has had before","The commonest presenting symptom; it is the newness in an older person that counts"],
+         ["<b>Scalp tenderness</b>","Pain brushing or combing the hair, or lying on a pillow","A cranial ischaemia clue that other headaches rarely give"],
+         ["<b>Jaw or tongue claudication</b>","Ache in the jaw muscles that builds while chewing and eases on stopping","Linked with a higher risk of ischaemic eye complications — lowers your threshold for same-day review"],
+         ["<b>Visual disturbance</b>","Transient loss (amaurosis fugax), a curtain, blurring, new double vision, or sudden painless loss","Sight loss may already be permanent; the other eye is the one you are now protecting"],
+         ["<b>Temporal artery signs</b>","Tender, thickened, beaded or pulseless artery","Supportive — a normal artery on examination does not exclude GCA"],
+         ["<b>Polymyalgic and systemic features</b>","Shoulder and hip girdle stiffness, fatigue, fever, weight loss, night sweats","PMR and GCA overlap; systemic-only presentations may be large-vessel GCA"],
+         ["<b>Inflammatory markers</b>","ESR and CRP, FBC (anaemia, thrombocytosis), LFTs (raised ALP)","Usually raised; normal markers make GCA less likely but do not rule it out when the clinical picture is strong"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"How the classification criteria weigh the features", html:"The ACR/EULAR 2022 criteria (for research classification, not diagnosis) require age 50 or over and a score of 6 or more. <b>Positive biopsy or temporal halo on ultrasound +5</b>; <b>ESR 50 mm/h or more or CRP 10 mg/L or more +3</b>; <b>sudden visual loss +3</b>; <b>+2 each</b> for morning stiffness in the shoulders or neck, jaw or tongue claudication, new temporal headache, scalp tenderness, an abnormal temporal artery, bilateral axillary involvement on imaging, and FDG-PET activity throughout the aorta. Sensitivity 87%, specificity 94.8% in validation.", src:"ACR/EULAR 2022 GCA classification criteria (Ponte et al., Ann Rheum Dis 2022) — international"},
+         {tone:"amber", h:"Presentations that are easy to miss", html:"Large-vessel GCA may present with fever, weight loss, raised markers and no headache, or with arm claudication, unequal arm blood pressures or a subclavian bruit. Some patients present with stroke (especially vertebrobasilar) or sudden visual loss as the first event. Ask about cranial symptoms in every patient with PMR, and about girdle stiffness in every patient with suspected GCA.", src:"BSR GCA guideline 2020 · EULAR imaging 2023 (international)"}
+       ]},
+       {b:"why", html:"The pre-test question is simple: is this person over 50 with something new — a headache they have never had, jaw pain on chewing, scalp soreness, a visual event — alongside an inflammatory picture? Primary care cannot confirm GCA, and does not need to. The GP's contribution is recognising the pattern and acting in the same consultation. The classification criteria are useful for understanding which features carry weight, but they were built for research cohorts and should never be used to argue a patient out of treatment."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — the features that make it an emergency", sub:"Sight and stroke are the stakes. These features change the destination and the dose, not just the urgency.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Acute or intermittent visual loss", html:"Amaurosis fugax, sudden painless loss, a field defect or new diplopia → <b>same-day ophthalmology or the acute GCA pathway</b>. The specialist may give IV methylprednisolone 500 mg–1 g daily for up to 3 days; start oral prednisolone first if IV treatment is not immediately available.", src:"BSR GCA guideline 2020"},
+         {tone:"red", h:"Established visual loss", html:"Sight already lost in one eye → <b>prednisolone 60 mg daily</b> to protect the fellow eye, and same-day eye assessment. Recovery of lost vision is uncommon; the aim is the other eye.", src:"BSR GCA guideline 2020"},
+         {tone:"red", h:"Stroke or TIA symptoms", html:"Focal neurology in a patient with GCA features → 999 or the acute stroke pathway, with the GCA suspicion stated clearly so steroid is not forgotten.", src:"BSR GCA guideline 2020 · clinical practice"},
+         {tone:"amber", h:"Jaw or tongue claudication", html:"A marker of ischaemic risk. It does not change the recommended dose range, but it should push the referral to the same working day.", src:"BSR GCA guideline 2020"},
+         {tone:"amber", h:"Limb claudication, bruits or unequal arm pressures", html:"Suggests large-vessel involvement → specialist imaging (ultrasound of axillary arteries, FDG-PET, MRI or CT).", src:"EULAR imaging recommendations 2023 (international)"},
+         {tone:"blue", h:"No NG12 criterion maps to GCA", html:"GCA itself is not a suspected-cancer presentation. If the steroid response is poor or atypical, reconsider the diagnosis (infection, malignancy, other vasculitis) rather than simply increasing the dose. The myeloma criterion that applies to polymyalgic presentations is on the <a href='polymyalgia-rheumatica.html#redflags'>PMR page</a>.", src:"NICE NG12 (updated April 2026)"}
+       ]},
+       {b:"warn", html:"<b>Visual symptoms are never a routine referral.</b> Transient visual loss that has fully recovered is still a warning of imminent permanent loss — treat it as seriously as a current deficit."}
+     ]},
+
+    {id:"treat", nav:"Treat now", title:"Start the steroid in this consultation", sub:"Single daily dose, prescribed today, with the referral going out at the same time.",
+     blocks:[
+       {b:"table", head:["Presentation","Glucocorticoid","Who and where"], rows:[
+         ["<b>Suspected GCA, no visual or ischaemic complication</b>","<b>Prednisolone 40–60 mg once daily</b>","GP starts it; urgent referral to the local GCA pathway the same day"],
+         ["<b>Acute or intermittent visual loss</b>","<b>IV methylprednisolone 500 mg–1 g daily for up to 3 days</b>, then oral prednisolone","Specialist-given; same-day ophthalmology or acute GCA pathway. If IV is not immediately possible, give oral prednisolone now"],
+         ["<b>Established visual loss</b>","<b>Prednisolone 60 mg daily</b>","Same-day eye assessment; the aim is to protect the fellow eye"],
+         ["<b>Relapse during the taper</b>","Back to the last dose that controlled the disease; an ischaemic relapse is treated as new GCA","Discuss with the specialist team the same day if cranial or visual features return"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"How to prescribe it", html:"A <b>single daily dose</b>, rather than divided or alternate-day dosing, as a morning dose. Give enough tablets to reach the specialist review and beyond. Record the date and time of the first dose on the referral — the specialist needs it to schedule imaging or biopsy.", src:"BSR GCA guideline 2020 · BNF"},
+         {tone:"green", h:"What response to expect", html:"Most patients improve symptomatically within 1–7 days of starting 40–60 mg. Established visual loss, stroke or tissue necrosis will not reverse. A patient whose symptoms do not respond should prompt the specialist to reconsider the diagnosis.", src:"BSR GCA guideline 2020"}
+       ]},
+       {b:"say", html:"I think the headache and the ache in your jaw may be caused by inflammation in the arteries of your head, which can affect your eyesight. I want you to start a steroid tablet today, before any tests, because it protects your sight. I'm also arranging for you to be seen by the specialist team today or as soon as they can, and they'll do a scan or a small biopsy to confirm it."}
+     ]},
+
+    {id:"protect", nav:"Protect", title:"Protect bone, stomach and adrenals from the first prescription", sub:"This is a high-dose course lasting a year or more. The harms are predictable, so the protection starts on day one.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Bone protection now, DXA later", html:"Postmenopausal women and men aged 50 or over starting <b>7.5 mg or more of prednisolone a day for 3 months or more</b> should start bone-protective treatment at the same time, without waiting for a DXA scan. Calcium and vitamin D per BNF alongside. See the <a href='osteoporosis.html'>osteoporosis page</a> for drug choice.", src:"NOGG 2024"},
+         {tone:"cream", h:"Gastroprotection — consider", html:"Consider a proton pump inhibitor for gastrointestinal protection, particularly in older patients or those with other GI risk factors. Dose per BNF.", src:"BSR GCA guideline 2020 · BNF"},
+         {tone:"amber", h:"Aspirin — not routine", html:"Antiplatelet or anticoagulant treatment is not recommended routinely for GCA. Continue aspirin where the patient already has a separate indication, such as established cardiovascular disease.", src:"BSR GCA guideline 2020"},
+         {tone:"amber", h:"Steroid Emergency Card and sick-day rules", html:"Anyone on 5 mg or more of prednisolone a day for 4 weeks or longer should carry an NHS Steroid Emergency Card. Explain that the steroid must never stop suddenly, and what to do during illness, vomiting or surgery. Emergency management of suspected adrenal crisis follows NICE NG243.", src:"NatPSA/2020/005 (2020) · NICE NG243 (2024)"},
+         {tone:"blue", h:"Baseline and ongoing checks", html:"Blood pressure, glucose or HbA1c, weight and mood at baseline and at reviews. Tell people with diabetes to expect higher readings and to test more often. Ask about eye symptoms of cataract and glaucoma over the longer course.", src:"BSR GCA guideline 2020 · BSR/BHPR GCA guideline 2010"},
+         {tone:"blue", h:"Vaccines", html:"Induction doses of 40–60 mg, and a taper that stays above 20 mg for more than 2 weeks, fall within the Green Book corticosteroid thresholds that contraindicate live vaccines (and for 3 months after) — check chapter 6 before any live vaccine. Inactivated vaccines (influenza, pneumococcal, COVID-19) should be kept up to date.", src:"UKHSA Green Book chapter 6"}
+       ]},
+       {b:"why", html:"Fracture risk rises within weeks of starting a glucocorticoid and at doses well below those used in GCA, which is why NOGG says not to wait for a scan. The Steroid Emergency Card exists because patients on long courses have died of unrecognised adrenal crisis when their steroid was omitted during an admission or an intercurrent illness."}
+     ]},
+
+    {id:"confirm", nav:"Confirm", title:"Confirming the diagnosis — the one-week window", sub:"Specialist-led. The GP's role is to get the patient into the pathway fast enough for the tests to still work.",
+     blocks:[
+       {b:"table", head:["Test","What it shows","Timing and caveats"], rows:[
+         ["<b>Ultrasound — temporal and axillary arteries</b>","Halo sign (wall swelling) and a non-compressible artery; axillary involvement suggests large-vessel disease","Recommended as the first-line imaging test for suspected GCA. Sensitivity falls quickly on steroid — scan within 1 week"],
+         ["<b>Temporal artery biopsy</b>","Granulomatous inflammation of the arterial wall","At least 1 cm long; within 1 week of starting steroid. Skip lesions mean a negative biopsy does not exclude GCA"],
+         ["<b>FDG-PET, MRI or CT</b>","Aortic and large-branch inflammation","Specialist choice for suspected large-vessel GCA or systemic presentations"],
+         ["<b>Bloods</b>","ESR, CRP, FBC, LFT, U&amp;E, glucose","Baseline for monitoring; they support but never confirm the diagnosis"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Ultrasound or biopsy — either can confirm", html:"The BSR accepts a biopsy of at least 1 cm, an ultrasound of the temporal and axillary arteries, or both as confirmatory tests. Many UK fast-track clinics now scan first and biopsy only when the scan is negative or equivocal but suspicion remains.", src:"BSR GCA guideline 2020"},
+         {tone:"blue", h:"Why imaging comes first internationally", html:"The 2023 EULAR imaging update recommends ultrasound of the temporal and axillary arteries as the first imaging test in all patients with suspected GCA, with pooled sensitivity 88% and specificity 96% against clinical diagnosis. FDG-PET or MRI are alternatives.", src:"EULAR imaging recommendations 2023 (Dejaco et al.) — international"}
+       ]},
+       {b:"warn", html:"<b>The sequence is always treat, refer, confirm.</b> Never withhold or stop steroid to improve test yield, and never cancel a strongly suspected diagnosis on a single negative test."}
+     ]},
+
+    {id:"taper", nav:"Taper", title:"The taper — slow, symptom-led, 12–18 months", sub:"There is no trial-proven regimen. The BSR schedule below is a template for patients without relapse; the specialist adjusts it.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", when:"at least 3–4 weeks", tone:"red", title:"Hold the starting dose", html:"Continue 40–60 mg until symptoms and laboratory abnormalities have resolved."},
+         {step:"2", when:"every 2 weeks", tone:"amber", fromLabel:"symptoms gone, markers settled", title:"Reduce by 10 mg to 20 mg", html:"Each step is reviewed for returning headache, jaw pain, visual symptoms or polymyalgic stiffness."},
+         {step:"3", when:"every 2–4 weeks", tone:"amber", fromLabel:"stable on 20 mg", title:"Reduce by 2.5 mg to 10 mg", html:"The pace slows as the dose falls, because relapse is most common in the lower half of the taper."},
+         {step:"4", when:"every 1–2 months", tone:"cream", fromLabel:"stable on 10 mg", title:"Reduce by 1 mg towards zero", html:"Provided there is no return of symptoms, signs or inflammatory markers, the aim is to stop within about 12–18 months overall. Below physiological doses, think about adrenal recovery (NICE NG243)."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Symptoms lead, markers follow", html:"Reduce on the basis of symptoms and signs together with ESR and CRP. A rising marker alone, with no symptoms, is a reason to review closely and look for another cause (infection, for example), not an automatic reason to increase the dose.", src:"BSR GCA guideline 2020"},
+         {tone:"green", h:"Shared care from about 3 months", html:"Once the patient is stable, follow-up from around month 3 is often shared with primary care. Agree in writing who adjusts the dose, who checks bloods, and how the patient reaches the team quickly if symptoms return.", src:"BSR/BHPR GCA guideline 2010"}
+       ]},
+       {b:"say", html:"We'll bring the dose down step by step over the next year or so. Please don't reduce it yourself or stop it suddenly — your body gets used to it. If the headache, the jaw ache or anything with your eyes comes back as the dose comes down, ring us that day."}
+     ]},
+
+    {id:"relapse", nav:"Relapse", title:"Relapse and steroid-sparing treatment", sub:"Relapse is common during tapering. Steroid-sparing drugs are specialist-initiated; the GP needs to know when to ask for them.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Ischaemic relapse — treat as new GCA", html:"Returning visual symptoms or jaw or tongue claudication → back to high-dose treatment (40–60 mg) and same-day specialist or ophthalmology contact.", src:"BSR GCA guideline 2020"},
+         {tone:"amber", h:"Non-ischaemic relapse", html:"Headache, polymyalgic symptoms or systemic symptoms with a rising ESR or CRP → return to the last dose that controlled the disease, taper more slowly, and inform the specialist team.", src:"BSR GCA guideline 2020"},
+         {tone:"cream", h:"Methotrexate", html:"May be considered with a glucocorticoid taper for patients at high risk of steroid toxicity or who relapse. Specialist-initiated, once weekly; oral doses prescribed in 2.5 mg tablets with the total dose in milligrams written on the prescription. Dose per BNF.", src:"BSR GCA guideline 2020 · MHRA Drug Safety Update (September 2020)"},
+         {tone:"cream", h:"Tocilizumab — NICE TA518", html:"Recommended with a tapering glucocorticoid course (and alone after glucocorticoids) for adults with <b>relapsing or refractory</b> GCA who have not had it before, <b>stopped after 1 year of uninterrupted treatment at most</b>. Specialist-prescribed; the GP records it on the repeat list as hospital-supplied so interactions and infection risk are visible.", src:"NICE TA518 (2018)"},
+         {tone:"blue", h:"The trial behind tocilizumab", html:"In GiACTA, sustained remission at week 52 was 56% with weekly tocilizumab plus a 26-week prednisone taper, against 14% with a 26-week taper alone and 18% with a 52-week taper alone.", src:"Stone et al., N Engl J Med 2017 (GiACTA)"},
+         {tone:"amber", h:"Infection on IL-6 blockade", html:"Tocilizumab suppresses CRP and fever, so a patient can have a serious infection with a normal CRP. Assess clinically, and have a low threshold for same-day review.", src:"Tocilizumab SPC · clinical practice"}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Follow-up and monitoring in the first year", sub:"The earlier BSR/BHPR schedule is still a practical template; local shared-care protocols take precedence.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"0", when:"Day of suspicion", title:"Treat, refer, baseline", html:"Prednisolone started; referral sent; ESR, CRP, FBC, U&amp;E, LFT, glucose; bone protection, calcium and vitamin D, Steroid Emergency Card; blood pressure and weight recorded."},
+         {n:"1", when:"Weeks 1, 3 and 6", title:"Early reviews", html:"Symptom response, visual symptoms, FBC, ESR or CRP, U&amp;E and glucose at each visit. Confirm the ultrasound or biopsy was done within the week."},
+         {n:"2", when:"Months 3, 6, 9 and 12", title:"Taper reviews", html:"Relapse screen (cranial, visual, polymyalgic, systemic), bloods, blood pressure, glucose, weight, mood and bone health. Extra visits for any relapse or adverse effect."},
+         {n:"3", when:"Year 2 and when stopping", title:"Coming off", html:"Final reductions below physiological doses, with attention to adrenal symptoms; review whether bone-protective treatment should continue once the steroid stops."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"What the bloods are for", html:"FBC, ESR or CRP, U&amp;E and glucose at each visit in the first year track disease activity and steroid harm together.", src:"BSR/BHPR GCA guideline 2010"},
+         {tone:"cream", h:"Relapse checklist for every review", html:"Headache, scalp tenderness, jaw or tongue claudication, any visual event, shoulder or hip girdle stiffness, fever, weight loss, arm claudication. Ask them all, every time.", src:"BSR GCA guideline 2020"}
+       ]}
+     ]},
+
+    {id:"driving", nav:"Driving", title:"Driving after GCA-related sight loss", sub:"A statutory duty sits with the licence holder; the GP's job is to tell them clearly and document it.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"Visual field defect — must tell DVLA", html:"Drivers must tell DVLA if they have a visual field defect. Group 1 drivers need a binocular field of at least 120° on the horizontal (at least 50° to the left and right) with no significant defect within 20° of fixation above or below the horizontal meridian.", src:"DVLA Assessing fitness to drive (November 2025) · GOV.UK visual field defects and driving"},
+         {tone:"purple", h:"Eyesight standard", html:"Anyone who cannot read a number plate at 20 metres, or whose acuity is below 6/12 with both eyes open (or in the only eye), must not drive and must notify DVLA. Sight in only one eye has its own GOV.UK guidance, and bus and lorry (Group 2) standards are stricter.", src:"DVLA Assessing fitness to drive (November 2025) · GOV.UK"},
+         {tone:"cream", h:"What to say and record", html:"Tell the patient that the duty to notify is theirs, that the eye team will assess their fields and acuity, and not to drive until they know they meet the standard. Record the advice in the notes.", src:"DVLA Assessing fitness to drive (November 2025)"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, where, how fast", sub:"Every suspected GCA is referred on the day of suspicion. The only question is which door.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 or emergency department", html:"Stroke or TIA symptoms, or a patient too unwell to travel to a clinic. State the GCA suspicion and the steroid given.", src:"BSR GCA guideline 2020 · clinical practice"},
+         {tone:"red", h:"Same-day ophthalmology or acute GCA pathway", html:"Any visual symptom — transient or current, including new diplopia. Consideration of IV methylprednisolone 500 mg–1 g daily for up to 3 days; established visual loss → prednisolone 60 mg daily.", src:"BSR GCA guideline 2020"},
+         {tone:"amber", h:"GCA fast-track pathway — same working day, within 3 working days at the latest", html:"All other suspected GCA, with prednisolone 40–60 mg already started. Ultrasound or biopsy to happen within 1 week of the first dose.", src:"BSR GCA guideline 2020"},
+         {tone:"amber", h:"Back to the specialist — relapse or toxicity", html:"Repeated relapses, inability to taper, or significant steroid harm → methotrexate or tocilizumab (TA518: relapsing or refractory disease, 1 year maximum).", src:"NICE TA518 (2018) · BSR GCA guideline 2020"},
+         {tone:"blue", h:"Large-vessel imaging", html:"Arm claudication, unequal arm pressures, bruits, or persistent systemic inflammation despite treatment → specialist for FDG-PET, MRI, CT or axillary ultrasound.", src:"EULAR imaging recommendations 2023 (international)"},
+         {tone:"purple", h:"Statutory — DVLA", html:"Visual field defect, or unable to meet the eyesight standard after GCA-related sight loss → the patient must tell DVLA and must not drive until cleared.", src:"DVLA Assessing fitness to drive (November 2025)"}
+       ]},
+       {b:"say", html:"This is one of the few times I start treatment before the diagnosis is proven, because waiting could cost you your sight. You'll start the steroid now, the specialist team will see you today or very soon, and they'll arrange the scan or biopsy. If anything changes with your vision before then, go straight to the eye emergency service or A and E."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card for the exam and for real consultations.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 74-year-old woman phones about a headache for 10 days, worse over the right temple, and says her jaw aches when she eats toast. Yesterday the vision in her right eye went grey for about a minute and came back. She drives her husband to his dialysis appointments three times a week.", src:"Scenario built on BSR GCA guideline 2020 features"},
+       {tone:"cream", h:"What a strong consultation does", html:"Recognises GCA from the new headache, jaw claudication and transient visual loss; treats the visual event as an emergency despite recovery; arranges <b>same-day</b> ophthalmology or the acute GCA pathway and gives <b>prednisolone</b> now rather than waiting for the transfer; explains why steroid comes before tests; starts <b>bone protection</b>, issues a <b>Steroid Emergency Card</b>; and handles the <b>driving</b> question honestly — including the practical impact on her husband's dialysis transport — while explaining that any field defect must be reported to DVLA.", src:"BSR GCA guideline 2020 · NOGG 2024 · DVLA (2025)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page is traceable to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>British Society for Rheumatology guideline on diagnosis and treatment of giant cell arteritis</b> (Mackie et al., Rheumatology 2020;59:e1–e23; executive summary 2020;59:487–494)<br><a href="https://academic.oup.com/rheumatology/article/59/3/e1/5714024" rel="noopener">academic.oup.com/rheumatology/article/59/3/e1/5714024</a><span class="rd"> — treat on suspicion; prednisolone 40–60 mg; IV methylprednisolone 500 mg–1 g for up to 3 days in acute visual loss; 60 mg in established visual loss; specialist within 3 working days, ideally same day; ultrasound or biopsy (at least 1 cm) within 1 week; single daily dose; taper template; aspirin not routine; consider PPI; methotrexate and tocilizumab</span></li>'+
+         '<li><b>BSR and BHPR guidelines for the management of giant cell arteritis</b> (Dasgupta et al., Rheumatology 2010;49:1594–1597)<br><a href="https://academic.oup.com/rheumatology/article/49/8/1594/1789465" rel="noopener">academic.oup.com/rheumatology/article/49/8/1594/1789465</a><span class="rd"> — first-year follow-up schedule (weeks 0, 1, 3, 6; months 3, 6, 9, 12) and bloods at each visit; shared care from month 3</span></li>'+
+         '<li><b>NICE TA518 — Tocilizumab for treating giant cell arteritis</b> (2018)<br><a href="https://www.nice.org.uk/guidance/ta518" rel="noopener">nice.org.uk/guidance/ta518</a><span class="rd"> — relapsing or refractory disease, not previously treated with tocilizumab, stopped after 1 year at most</span></li>'+
+         '<li><b>NOGG 2024 — UK clinical guideline for the prevention and treatment of osteoporosis</b> (National Osteoporosis Guideline Group)<br><a href="https://www.nogg.org.uk/sites/nogg/download/NOGG-Guideline-2024.pdf" rel="noopener">nogg.org.uk</a><span class="rd"> — start bone protection at the same time as 7.5 mg/day or more of prednisolone for 3 months or longer in postmenopausal women and men aged 50 or over</span></li>'+
+         '<li><b>NICE NG243 — Adrenal insufficiency: identification and management</b> (2024)<br><a href="https://www.nice.org.uk/guidance/ng243" rel="noopener">nice.org.uk/guidance/ng243</a><span class="rd"> — sick-day dosing, adrenal crisis and glucocorticoid withdrawal</span></li>'+
+         '<li><b>National Patient Safety Alert NatPSA/2020/005/NHSPS — Steroid Emergency Card</b> (NHS England, August 2020)<br><a href="https://www.england.nhs.uk/publication/national-patient-safety-alert-steroid-emergency-card-to-support-early-recognition-and-treatment-of-adrenal-crisis-in-adults/" rel="noopener">england.nhs.uk</a><span class="rd"> — card for adults on 5 mg or more of prednisolone a day for 4 weeks or longer</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Methotrexate once-weekly for autoimmune diseases</b> (September 2020)<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — once-weekly dosing, 2.5 mg tablets, total dose in milligrams</span></li>'+
+         '<li><b>UKHSA Green Book, chapter 6 — Contraindications and special considerations</b><br><a href="https://www.gov.uk/government/publications/contraindications-and-special-considerations-the-green-book-chapter-6" rel="noopener">gov.uk</a><span class="rd"> — high-dose corticosteroids and live vaccines</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive: a guide for medical professionals</b> (November 2025) and GOV.UK visual disorders guidance<br><a href="https://www.gov.uk/guidance/visual-disorders-assessing-fitness-to-drive" rel="noopener">gov.uk/guidance/visual-disorders-assessing-fitness-to-drive</a><span class="rd"> — visual field defect notification, eyesight standard, Group 1 field requirements</span></li>'+
+         '<li><b>2022 ACR/EULAR classification criteria for giant cell arteritis</b> (Ponte et al., Ann Rheum Dis 2022;81:1647–1653) — international<span class="rd"> — item weights, age 50 or over, score 6 or more; sensitivity 87.0%, specificity 94.8%</span></li>'+
+         '<li><b>EULAR recommendations for the use of imaging in large vessel vasculitis in clinical practice: 2023 update</b> (Dejaco et al., Ann Rheum Dis 2024) — international<span class="rd"> — temporal and axillary ultrasound first line; pooled sensitivity 88%, specificity 96%; FDG-PET or MRI as alternatives</span></li>'+
+         '<li><b>2018 update of the EULAR recommendations for the management of large vessel vasculitis</b> (Hellmich et al., Ann Rheum Dis 2020;79:19–30) — international<span class="rd"> — immediate high-dose glucocorticoid 40–60 mg; methotrexate or tocilizumab reduce relapse and glucocorticoid exposure</span></li>'+
+         '<li><b>Trial of tocilizumab in giant-cell arteritis (GiACTA)</b> (Stone et al., N Engl J Med 2017;377:317–328)<span class="rd"> — sustained remission at week 52: 56% weekly tocilizumab vs 14% and 18% on taper alone</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b> (2015, updated April 2026)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — checked: no criterion maps to GCA itself; the myeloma criterion for polymyalgic presentations is on the PMR page</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — prednisolone, methylprednisolone, PPIs, bisphosphonates, calcium and vitamin D, methotrexate</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Giant cell arteritis in adults — BSR GCA guideline 2020 (Mackie et al.), BSR/BHPR 2010, NICE TA518 (2018), NICE NG243 (2024), NOGG 2024, NatPSA/2020/005, MHRA Drug Safety Update (September 2020), UKHSA Green Book chapter 6 and DVLA (2025); EULAR 2018 and 2023 and ACR/EULAR 2022 as international sources. Treat on clinical suspicion. Check every dose against the current BNF before prescribing; this page does not replace clinical judgement or your local GCA pathway."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

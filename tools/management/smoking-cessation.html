@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Smoking Cessation — Protocol · Reasoning GP</title>
+<meta name="description" content="Stopping smoking in primary care on one page: very brief advice at every contact, referral to stop smoking services, varenicline, cytisinicline, combination NRT, bupropion and nicotine vapes under NICE NG209, quit-date timing, pregnancy and carbon monoxide testing, mental illness, and the drug interactions that change when someone stops smoking." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/smoking-cessation.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,118 +20,188 @@
 <script>
 MG.render({
   icon:"🚭",
-  title:"Smoking Cessation — The Complete Guide",
-  stemTitle:"Stopping smoking &mdash; 30-second advice at every contact, then the most effective drug + support",
-  stemSub:"One pathway: deliver Very Brief Advice to every smoker (Ask\u2013Advise\u2013Act, ~30s), set a quit date, then combine behavioural support with the most effective pharmacotherapy \u2014 varenicline (back in UK supply), combination NRT, or a licensed vape \u2014 tailor for pregnancy and severe mental illness, and remember the CYP1A2 interaction that changes drug levels the day they stop. NICE NG209 \u00b7 NICE.",
-  guideline:"NICE NG209 \u00b7 NICE",
-  glance:[
-    {lbl:"Every contact", val:"Very Brief Advice", sub:"Ask \u00b7 Advise \u00b7 Act (~30s)"},
-    {lbl:"Most effective", val:"Varenicline 1mg BD", sub:"or combination NRT"},
-    {lbl:"NRT", val:"Patch + short-acting", sub:"together, not alone"},
-    {lbl:"Option", val:"Licensed vape", sub:"effective adult quit aid"},
-    {lbl:"Support", val:"Stop-smoking service", sub:"\u00d72\u20133 quit rate"},
-    {lbl:"Watch on quitting", val:"Clozapine / olanzapine / theophylline", sub:"CYP1A2 levels rise"}
+  title:"Smoking cessation",
+  eyebrow:"Protocol · advise, treat and follow up in one place",
+  stemTitle:"Ask everyone, advise briefly, then pair behavioural support with an effective treatment",
+  stemSub:"One page for helping people stop smoking. Ask about smoking at every contact and give very brief advice, refer to a stop smoking service, and match behavioural support with one of the options NICE NG209 (updated February 2025) rates as most likely to work — varenicline, cytisinicline, combination NRT or a nicotine vape. Time the quit date to the drug, adapt for pregnancy and mental illness, and check the medicines whose levels rise when tobacco smoke stops. NICE NG209 · NICE QS207 (2022) · MHRA DSU Aug 2020 · SPCs · NCSCT.",
+  guideline:"NICE NG209 (2021, updated Feb 2025) · NICE QS207 (Dec 2022) · MHRA Drug Safety Update (Aug 2020) · SPCs · BNF · NCSCT",
+  meta:[
+    {t:"NICE NG209 (2021, updated Feb 2025)"},
+    {t:"NICE QS207 (Dec 2022)"},
+    {t:"MHRA DSU Aug 2020 · clozapine levels on stopping smoking"},
+    {t:"SPCs · varenicline, cytisinicline, bupropion, NRT"},
+    {t:"NCSCT very brief advice · SPS smoking interactions"},
+    {t:"Rebuilt from primary sources · Sep 2026", tone:"ok"}
   ],
-  flow:[
-
-    {t:"node", d:"found", n:"1", tag:"Step 1 · every contact", title:"Very Brief Advice — 30 seconds, every smoker, every time",
-      blocks:[
-        {b:"kv", rows:[
-          ["ASK","Record smoking status at every opportunity \u2014 it's the trigger for everything else"],
-          ["ADVISE","\u201cThe best thing for your health is to stop \u2014 and the most effective way is with support + medication, not willpower alone.\u201d Clear, personal, non-judgemental"],
-          ["ACT","Offer referral to the local stop-smoking service + pharmacotherapy TODAY \u2014 don't lecture, don't wait for them to be 'ready'; the offer itself prompts quit attempts"],
-          ["Assess dependence","Cigarettes/day, <b>time to first cigarette</b> (<30 min = highly dependent), previous attempts + what happened, triggers, motivation, comorbidity"]
-        ]},
-        {b:"why", html:"Smoking is the single largest preventable cause of death. <strong>Opportunistic VBA plus an offer of help meaningfully increases quit attempts</strong> \u2014 you don't need the patient to arrive motivated. And combining behavioural support with pharmacotherapy roughly TRIPLES success versus unaided willpower, which is why 'just offer support' is not enough on its own."}
-      ]},
-
-    {t:"node", d:"drug", n:"2", tag:"Step 2 · pharmacotherapy", title:"Choose the drug — most effective first",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"1st-line", title:"Varenicline", when:"most effective single agent \u2014 back in UK supply",
-           html:"<b>Start 1\u20132 weeks BEFORE the quit date</b>; titrate 0.5mg OD \u2192 0.5mg BD \u2192 <b>1mg BD</b>; 12-week course (extend 12 more weeks in abstainers to prevent relapse). Withdrawn 2021 (nitrosamine impurity) but <b>re-available from 2025</b>. Counsel: nausea (with food), vivid dreams, insomnia; review mood \u2014 monitor in psychiatric illness though the serious-neuropsychiatric-risk signal was not confirmed (EAGLES)."},
-          {step:"1st-line", title:"Combination NRT", when:"widely available, very effective",
-           fromLabel:"if varenicline unsuitable/declined",
-           html:"<b>Long-acting patch + a short-acting form TOGETHER</b> \u2014 <span class='rx'>nicotine patch 21 mg/24 h</span> (or 15 mg/16 h) for more than 10 cigarettes a day, plus <span class='rx'>gum 2\u20134 mg</span>, lozenge, inhalator or nasal spray as needed \u2014 more effective than any single form. Patch for the baseline, short-acting for breakthrough cravings. Start on quit date (or 2 weeks before, patch-led, per newer evidence); titrate to cravings; safe in CVD."},
-          {step:"Option", title:"Licensed nicotine vape", when:"patient prefers / other options failed",
-           fromLabel:"effective adult quit aid",
-           html:"NG209 supports vapes as an effective quit aid for adults trying to stop \u2014 combine with behavioural support. <b>Not for non-smokers, under-18s, or in pregnancy</b> as a first choice. Frame as a route OFF tobacco, not a permanent habit."},
-          {step:"Alternatives", title:"Cytisine · bupropion", when:"other agents unsuitable",
-           fromLabel:"further options",
-           html:"<b><span class='rx'>Cytisinicline/cytisine 1.5 mg</span></b> \u2014 plant-derived partial agonist, given as a tapering 25-day course (six tablets daily on days 1\u20133, reducing to two daily by days 21\u201325); effective and increasingly available. <b>Bupropion 150mg OD \u00d76 days \u2192 150mg BD</b>, start 1\u20132 weeks pre-quit \u2014 avoid in seizure risk, eating disorders, pregnancy."}
-        ]},
-        {b:"warn", html:"<b>The CYP1A2 interaction \u2014 easy to miss:</b> tobacco smoke (not nicotine) induces CYP1A2, so <b>stopping smoking RAISES levels of clozapine, olanzapine, theophylline, and affects warfarin/insulin</b>. On the quit date these can climb into toxicity \u2014 flag it: clozapine/theophylline need level monitoring + likely dose reduction; review insulin (requirements often fall). This applies to a sudden switch to vaping too (no combustion = no induction)."}
-      ]},
-
-    {t:"node", d:"life", n:"3", tag:"Step 3 · behavioural support", title:"Maximise the quit — support is half the treatment",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"📅 Quit date + 'not a puff'", html:"Set a firm quit date; the 'not a single puff' rule from that day is more successful than cutting down (though cut-down-to-quit with NRT is an option for the unready)."},
-          {t:"🤝 Specialist service", html:"Refer to the local stop-smoking service — structured behavioural support DOUBLES to TRIPLES success. The single highest-yield referral in the consultation."},
-          {t:"🧠 Triggers + coping", html:"Map routines/triggers (coffee, alcohol, breaks), plan alternatives; pre-empt the weight-gain worry (real but far outweighed by the health gain)."},
-          {t:"👨‍👩‍👧 Household", html:"Encourage co-habiting smokers to quit together; smoke-free home + car protects children (and cuts relapse)."},
-          {t:"📱 Tools + money", html:"NHS Quit Smoking app, helpline; the financial saving is a powerful, concrete motivator."}
-        ]},
-        {b:"say", html:"Stopping smoking is the single best thing you can do for your health, and you're far more likely to succeed with support and medication than willpower alone. I'll refer you to the stop-smoking service and we'll start a treatment around your quit date. Most people need a few goes \u2014 a slip isn't failure, it's information for the next attempt."}
-      ]},
-
-    {t:"node", d:"safety", n:"4", tag:"Step 4 · special groups", title:"Tailor the approach",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🤰 Pregnancy", html:"Behavioural support + CO monitoring first-line; offer <b>NRT if needed</b> (intermittent/short-acting, or remove the patch overnight); <b>avoid varenicline + bupropion</b>. A licensed vape is less harmful than smoking if it's what helps her quit."},
-          {t:"🧠 Severe mental illness", html:"Smoking rates far higher, life expectancy hit hardest \u2014 offer cessation ACTIVELY (don't assume they won't). Monitor mental state, and <b>clozapine/olanzapine levels rise on quitting</b> \u2192 dose review."},
-          {t:"🫁 High-value comorbidity", html:"COPD, CVD, diabetes, pre-surgery, cancer treatment \u2014 cessation is the highest-value single intervention; prioritise and re-offer every time."},
-          {t:"🧒 Young people", html:"Behavioural support; <b>do NOT initiate vaping in non-smokers</b>; involve youth services."}
-        ]}
-      ]},
-
-    {t:"node", d:"monitor", n:"5", tag:"Step 5 · follow-up", title:"Support the attempt through to abstinence",
-      blocks:[
-        {b:"table", head:["When","Focus","Action"], rows:[
-          ["Quit date (or 1\u20132 wks before for varenicline/bupropion)","Start","Begin pharmacotherapy, confirm the plan + service referral, set 'not a puff'"],
-          ["1\u20134 weeks","Review","Adherence, side effects, cravings/withdrawal, mood; titrate NRT up if still craving; CO reading if available; troubleshoot triggers"],
-          ["12 weeks +","Relapse prevention","Complete/extend the course; congratulate; plan high-risk situations; a lapse = learning, re-attempt promptly"],
-          ["On quitting: interacting drugs","Around quit date","Clozapine/theophylline levels + doses; insulin requirement (often falls); warfarin INR"]
-        ]},
-        {b:"say", html:"We'll check in within the first few weeks \u2014 that's when cravings and side effects peak and when a bit of dose adjustment keeps you on track. Keep going even if you slip; the people who succeed are usually the ones who just start the next attempt quickly."}
-      ]},
-
-    {t:"loop", icon:"🔁", title:"Struggling or relapsed? Work through this",
-      arrow:"\u2026relapse is part of quitting, not the end",
-      checks:[
-        {b:"1 · Enough medication?", html:"Combination NRT (patch + short-acting), not single-form? NRT titrated up for breakthrough cravings? Varenicline at full 1mg BD?"},
-        {b:"2 · Behavioural support engaged?", html:"Actually referred to and attending the stop-smoking service, or going it alone?"},
-        {b:"3 · Triggers unmanaged?", html:"Alcohol, other household smokers, work breaks — the specific relapse setting addressed?"},
-        {b:"4 · Side effects driving it?", html:"Nausea/dreams on varenicline, skin on patches → switch form/agent rather than abandon."},
-        {b:"5 · Switch agent", html:"Failed on one → try another (varenicline ↔ combination NRT ↔ vape ↔ cytisine); combining approaches is reasonable."},
-        {b:"6 · Re-offer", html:"Not ready today → leave the door open, re-offer at the next contact; most quitters take several attempts."}
-      ],
-      back:"Re-attempt with a different/stronger combination + service support"},
-
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"What the patient must know",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"💊 Other medicines", html:"\u201cIf you take clozapine, olanzapine or a theophylline inhaler tablet \u2014 tell us the day you stop; smoking changes how your body handles them and the dose may need adjusting.\u201d"},
-          {t:"💉 Diabetes", html:"\u201cIf you're on insulin, your sugars may change when you stop \u2014 check more often for the first couple of weeks.\u201d"},
-          {t:"🤰 Pregnancy", html:"\u201cWe'll use support and, if needed, nicotine replacement \u2014 not the tablets. Any step away from cigarettes protects the baby.\u201d"},
-          {t:"🔁 A slip isn't failure", html:"\u201cIf you have a cigarette, don't write off the whole attempt \u2014 get straight back on the plan and tell us.\u201d"}
-        ]}
-      ]},
-
-    {t:"node", d:"refer", n:"7", tag:"Refer", title:"Signposting",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Stop-smoking service", html:"Local specialist behavioural support + medication — the highest-yield referral; doubles–triples success."},
-          {t:"Community pharmacy", html:"Pharmacy cessation schemes for NRT supply + brief support."},
-          {t:"Mental health / maternity", html:"Integrated cessation support for severe mental illness and pregnancy."}
-        ]},
-        {b:"say", html:"I'm putting you in touch with the stop-smoking service \u2014 they're the experts and the people who use them do far better than those who try alone. We'll pick the treatment that suits you and get going around your quit date; I'll keep an eye on anything else it affects."}
-      ]}
+  lead:"<div class='mg-layers'><a href='#vba'><b>Ask and advise</b><small>Every contact</small></a><a href='#choose'><b>Choose treatment</b><small>With support</small></a><a href='#interactions'><b>Interactions</b><small>Levels rise on quitting</small></a><a href='#pregnancy'><b>Pregnancy</b><small>CO test and NRT</small></a><a href='#refer'><b>Refer</b><small>Stop smoking service</small></a></div>",
+  quickSub:"Six points that change what you do in the room. Each traces to a named source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"green", h:"Ask, advise, act — at every contact", html:"Record smoking status, advise that the most effective way to stop is with specialist support plus medication or a nicotine vape, and offer a referral there and then. The NCSCT model is <b>Ask – Advise – Act</b>, and it takes well under a minute. You don’t need the person to be ‘ready’ — the offer itself prompts quit attempts.", src:"NICE QS207 statements 1–3 · NCSCT very brief advice"},
+    {tone:"cream", h:"Support plus an effective treatment", html:"NICE NG209: behavioural support combined with <b>varenicline</b>, <b>cytisinicline</b>, <b>combination NRT (short-acting plus long-acting)</b> or a <b>nicotine-containing e-cigarette</b> is more likely to lead to a successful quit than other options. Offer behavioural support whichever option the person chooses.", src:"NICE NG209 (updated Feb 2025)"},
+    {tone:"blue", h:"Time the quit date to the drug", html:"NICE NG209: <b>varenicline</b> — start 1 to 2 weeks before the quit date; <b>cytisinicline</b> — quit date within the first 5 days; <b>bupropion</b> — quit date within the first 2 weeks; <b>NRT</b> — have it ready to start the day before the quit date.", src:"NICE NG209 (updated Feb 2025)"},
+    {tone:"red", h:"Levels rise when the smoke stops", html:"Tobacco smoke (not nicotine) induces CYP1A2. On stopping — including switching to NRT or a vape — levels of <b>clozapine, olanzapine and theophylline</b> can rise within days. The MHRA advises checking clozapine levels when someone stops smoking or switches to e-cigarettes. NRT and vapes do not reverse this.", src:"MHRA DSU Aug 2020 · SPS smoking interactions"},
+    {tone:"amber", h:"Age limits and contraindications", html:"NICE NG209: do not offer <b>varenicline, cytisinicline or bupropion under 18</b>, and do not offer <b>cytisinicline at 66 or over</b>. Cytisinicline is contraindicated in pregnancy, breastfeeding, unstable angina, recent MI or stroke and significant arrhythmia; bupropion in seizure disorder or any seizure history and in current or past bulimia or anorexia nervosa.", src:"NICE NG209 · SPC cytisinicline · SPC Zyban"},
+    {tone:"green", h:"Pregnancy: CO test, opt-out referral, NRT", html:"Carbon monoxide testing at the first antenatal appointment, with an <b>opt-out referral</b> to stop smoking support for a reading of <b>4 ppm or above</b>. NG209 supports NRT in pregnancy and <b>financial incentives</b> for biochemically validated abstinence. Varenicline, cytisinicline and bupropion are not used in pregnancy.", src:"NICE NG209 (pregnancy recommendations)"}
   ],
-  foot:"Smoking cessation in primary care \u2014 NICE NG209 and NICE. Very Brief Advice + combined behavioural support and pharmacotherapy. Varenicline is back in UK supply (2025); check local availability. Verify doses against the current BNF before prescribing."
+  pathwaySub:"Five steps from the first question to staying stopped. Step 1 is the one to screen before anything else.",
+  pathway:[
+    {title:"Check what stopping will change", html:"Before the quit date: <b>clozapine, olanzapine, theophylline or aminophylline, warfarin, insulin, erlotinib or methadone</b>? Pregnant or breastfeeding? History of seizures or an eating disorder (bupropion)? Recent MI, stroke or unstable angina (cytisinicline)? Severe mental illness needing closer review? These shape the choice of drug and the monitoring plan.", alert:true},
+    {title:"Very brief advice and an offer", html:"<b>Ask</b> and record smoking status. <b>Advise</b> that the best way to stop is with specialist support plus medication or a vape. <b>Act</b>: refer to the local stop smoking service or start treatment today (NCSCT; NICE QS207). If not ready to stop in one go, offer a harm-reduction route (QS207 statement 4)."},
+    {title:"Assess dependence and history", html:"Cigarettes per day, time to the first cigarette after waking (within 30 minutes suggests higher dependence), past attempts and what helped or got in the way, triggers, other household smokers, and preferences about medication and vaping."},
+    {title:"Choose and start treatment", html:"Behavioural support <b>plus</b> varenicline, cytisinicline, combination NRT or a nicotine vape (NG209). Bupropion is a further option. Set the quit date to suit the drug, and give practical instructions and a follow-up date."},
+    {title:"Follow up and prevent relapse", html:"Review in the first weeks: side effects, cravings, mood, NRT dose, CO reading if available, and levels of interacting drugs. A lapse is information for the next attempt. Re-offer at every future contact."}
+  ],
+  sections:[
+    {id:"vba", nav:"Ask and advise", title:"Very brief advice — every smoker, every time", sub:"NICE QS207 sets asking, advising and offering treatment as the expected standard. The NCSCT model makes it fit any consultation.",
+     blocks:[
+       {b:"kv", rows:[
+         ["ASK","Ask whether the person smokes and record it — at key contacts and whenever the record is out of date (NICE QS207 statement 1)"],
+         ["ADVISE","Advise on the most effective way to stop: <b>specialist support combined with medication or a nicotine vape</b>. Keep it personal and free of judgement (NCSCT; QS207 statement 2)"],
+         ["ACT","Offer referral to the local stop smoking service and/or start treatment now; for those who decline, leave the door open and record the offer (QS207 statement 3)"],
+         ["Not ready to stop in one go?","Offer harm reduction: cutting down with the help of licensed nicotine products, temporary abstinence, or switching completely to a vape (NICE QS207 statement 4; NG209)"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Don’t wait for motivation", html:"Very brief advice is designed to be given opportunistically by any health professional, to any smoker, in almost any setting. Offering help, rather than asking whether someone wants to stop, generates more quit attempts.", src:"NCSCT very brief advice · NICE QS207 statements 2–3"},
+         {tone:"blue", h:"Why the service matters", html:"People who get help from specialist stop smoking support are around three times more likely to stop than those who try alone. Referral is the single highest-yield action in the consultation.", src:"NCSCT clinical case for stop smoking services · NICE NG209"}
+       ]},
+       {b:"say", html:"Can I check — do you smoke at the moment? The single most useful thing I can tell you is that people who stop with support from the stop smoking service plus a treatment, like tablets, nicotine replacement or a vape, are far more likely to succeed than going cold turkey. Would you like me to refer you today?"},
+       {b:"why", html:"<b>Why every contact?</b> Most people who smoke want to stop and most attempts are unaided, which is the least successful route. A brief, routine offer of effective help shifts people from unaided attempts to supported ones. <b>Why record it?</b> Smoking status drives risk assessment (cardiovascular risk, pregnancy, surgery) and the interaction checks below."}
+     ]},
+
+    {id:"choose", nav:"Choose treatment", title:"Choosing a treatment — the NG209 options", sub:"All options are paired with behavioural support. Doses are from the SPCs — check the current BNF and SPC before prescribing.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Option", title:"Varenicline", when:"adults 18 and over", fromLabel:"back in NHS supply",
+          html:"Partial agonist at nicotinic receptors. Start <b>1 to 2 weeks before the quit date</b> (NICE NG209). SPC titration: <span class='rx'>0.5 mg once daily on days 1–3, 0.5 mg twice daily on days 4–7, then 1 mg twice daily</span> for a <b>12-week course</b>; a further 12 weeks may be considered for people who have stopped, to reduce relapse. Common effects: nausea (take with food and water), abnormal dreams, insomnia, headache. Branded varenicline was withdrawn in 2021 because of a nitrosamine impurity; an MHRA-approved generic returned to NHS use in England in November 2024."},
+         {step:"Option", title:"Cytisinicline (cytisine)", when:"adults 18 to 65", fromLabel:"added to NG209 in 2025",
+          html:"Plant-derived partial agonist with a fixed <b>25-day course</b> of 1.5 mg tablets (SPC): <span class='rx'>days 1–3, 1 tablet every 2 hours (max 6 a day); days 4–12, every 2.5 hours (max 5); days 13–16, every 3 hours (max 4); days 17–20, every 5 hours (max 3); days 21–25, 1–2 a day</span>. NG209: set the quit date <b>within the first 5 days</b>; no difference in effectiveness was found against varenicline. Not under 18 or at 66 and over (NG209). Contraindicated in pregnancy, breastfeeding, unstable angina, recent MI or stroke and clinically significant arrhythmia (SPC)."},
+         {step:"Option", title:"Combination NRT", when:"from 12 years; pregnancy; heart disease", fromLabel:"patch plus a fast-acting form",
+          html:"A <b>long-acting patch plus a short-acting product</b> (gum, lozenge, inhalator, mouth or nasal spray) used together — combination beats a single form (Cochrane, Lindson 2019: RR 1.25, high certainty). Patch strength by dependence per SPC: for 10 or more cigarettes a day, for example <span class='rx'>21 mg/24 h</span> or <span class='rx'>25 mg/16 h</span>, stepping down over the course. NG209: have NRT ready the day before the quit date; starting the patch before quit day (‘preloading’) modestly increases quitting (Cochrane, Theodoulou 2023: RR 1.25, moderate certainty). Titrate the short-acting form to cravings."},
+         {step:"Option", title:"Nicotine-containing e-cigarette", when:"adults who want to use one", fromLabel:"not a licensed medicine",
+          html:"NICE NG209 lists nicotine vapes among the most effective options when combined with behavioural support. Give clear, up-to-date information: they are <b>not licensed medicines</b> (none was licensed and on the UK market at the time of the 2025 update), they are <b>much less harmful than smoking</b> because most harmful components of smoke are absent, and <b>long-term harms are not yet known</b>. Aim for complete switching, then stopping vaping in time. Cochrane (Lindson et al, updated 2025) found high-certainty evidence that nicotine vapes increase quit rates compared with NRT."},
+         {step:"Further option", title:"Bupropion", when:"adults 18 and over", fromLabel:"check contraindications",
+          html:"SPC: <span class='rx'>150 mg once daily for 6 days, then 150 mg twice daily</span>, for <b>7 to 9 weeks</b>. NG209: set the quit date within the <b>first 2 weeks</b> of treatment. Dose-related seizure risk (about 1 in 1,000 at the maximum dose): contraindicated with a current seizure disorder or any history of seizures, current or past <b>bulimia or anorexia nervosa</b>, and other conditions listed in the SPC. Not for use in pregnancy."}
+       ]},
+       {b:"table", head:["Treatment","When to set the quit date (NG209)","Course (SPC)"], rows:[
+         ["Varenicline","Start 1–2 weeks before the quit date","12 weeks; a further 12 may be considered"],
+         ["Cytisinicline","Within the first 5 days","25 days"],
+         ["Bupropion","Within the first 2 weeks","7–9 weeks"],
+         ["NRT","Ready to start the day before (or preload)","Typically about 8–12 weeks, stepping down per SPC"],
+         ["Nicotine vape","As agreed with the person","Aim to stop vaping once confident of staying smoke-free"]
+       ]},
+       {b:"why", html:"<b>Why these options?</b> The NG209 committee found that behavioural support plus varenicline, cytisinicline, combination NRT or a nicotine vape gave the best chance of success, with similar effectiveness among them. That puts the person’s preference, contraindications and past experience at the centre of the choice. <b>Neuropsychiatric safety:</b> the EAGLES trial (Anthenelli et al, Lancet 2016) found no significant increase in serious neuropsychiatric events with varenicline or bupropion compared with nicotine patch or placebo, in people with or without stable psychiatric disorders — mood should still be reviewed during treatment."}
+     ]},
+
+    {id:"support", nav:"Behavioural support", title:"Behavioural support — half of the treatment", sub:"NICE NG209 asks for behavioural support whichever option the person chooses. What that looks like in general practice.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"📅 Quit date and ‘not a puff’", html:"Agree a date, timed to the drug. From then, aim for no cigarettes at all. For those not ready, cutting down with licensed nicotine products is a legitimate step (QS207 statement 4)."},
+         {t:"🤝 Stop smoking service", html:"Weekly support over the first weeks, CO monitoring and access to medication — offered by local authority services and community pharmacies."},
+         {t:"🧠 Triggers and routines", html:"Plan for the high-risk moments: alcohol, coffee, work breaks, stress, other smokers. Rehearse what to do instead."},
+         {t:"🏠 Home and car", html:"Encourage a smoke-free home and car, and invite household smokers to stop at the same time."},
+         {t:"⚖️ Weight worries", html:"Some weight gain is common after stopping. Acknowledge it and plan activity and eating, but be clear the health gain far outweighs it."},
+         {t:"📱 Digital and phone support", html:"Signpost the NHS Quit Smoking app and national helpline as extras, not replacements for a service referral."}
+       ]},
+       {b:"say", html:"Stopping is much more likely to work with support and a treatment than on willpower alone. I’ll refer you to the stop smoking service, we’ll pick the treatment that suits you and set a quit date that fits it. If you slip, that isn’t failure — it tells us what to change for the next go."}
+     ]},
+
+    {id:"interactions", nav:"Interactions", title:"Medicines that change when someone stops smoking", sub:"Polycyclic aromatic hydrocarbons in tobacco smoke induce CYP1A2. The induction wears off after stopping, so levels of some drugs rise. Nicotine itself — from NRT or a vape — does not cause the induction.",
+     blocks:[
+       {b:"table", head:["Medicine","What happens on stopping","What to do"], rows:[
+         ["Clozapine","Levels rise, possibly within 2–3 days — risk of drowsiness, hypersalivation, tachycardia, seizures and gut hypomotility","Tell the mental health team before the quit date; <b>check plasma levels</b> when stopping or switching to vapes (MHRA DSU Aug 2020); dose reduction is usually needed (SPS)"],
+         ["Olanzapine","Levels rise","Monitor for sedation and adverse effects; consider dose reduction with the prescriber (SPS)"],
+         ["Theophylline, aminophylline","Levels rise — nausea, arrhythmia, seizures","Check levels and reduce the dose as needed (SPS; BNF)"],
+         ["Warfarin","Clearance falls; INR may rise","Check the INR more often after the quit date (SPS)"],
+         ["Insulin","Requirements may change","Advise closer glucose monitoring in the first weeks (SPS)"],
+         ["Erlotinib, methadone and others","Smoking alters levels","Check the SPS list and the SPC for anything else the person takes"]
+       ]},
+       {b:"warn", html:"<b>The interaction follows the smoke, not the nicotine.</b> Someone on clozapine who switches overnight from cigarettes to a vape or NRT has lost the enzyme induction just as if they had stopped altogether. The same applies to people admitted to a smoke-free hospital. Plan it with the prescriber before the quit date."},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Restarting smoking reverses it", html:"If someone relapses after the dose was reduced, levels will fall again — ask about smoking status at every review of clozapine, olanzapine and theophylline.", src:"SPS managing specific interactions with smoking · BNF interactions"},
+         {tone:"blue", h:"MHRA: when to check clozapine levels", html:"Stopping smoking or switching to e-cigarettes, interacting medicines, pneumonia or other serious infection, suspected reduced metabolism, or suspected toxicity.", src:"MHRA DSU Aug 2020"}
+       ]}
+     ]},
+
+    {id:"pregnancy", nav:"Pregnancy", title:"Pregnancy and the year after birth", sub:"NICE NG209 has a dedicated set of recommendations. Smoking in pregnancy is the setting where the stakes and the support are highest.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"CO test and opt-out referral", html:"Carbon monoxide testing is offered at the booking appointment; a reading of <b>4 ppm or above</b> triggers an <b>opt-out referral</b> to stop smoking support. Ask about smoking at later appointments too.", src:"NICE NG209 (pregnancy)"},
+         {tone:"cream", h:"NRT is the medicinal option", html:"Explain that most harm comes from the other components of tobacco smoke rather than nicotine, and that any risk from NRT is much lower than from smoking. Short-acting forms, patches, or both can be used; a 16-hour patch removed at bedtime is a practical choice.", src:"NICE NG209 (pregnancy) · SPC NRT"},
+         {tone:"green", h:"Financial incentives", html:"NG209 recommends financial incentives (such as vouchers) for pregnant women who stop, conditional on abstinence verified biochemically, for example a CO reading below 4 ppm.", src:"NICE NG209 (incentives evidence review)"},
+         {tone:"blue", h:"Vapes in pregnancy", html:"NICE checked the recommendations in 2023 against a large trial of e-cigarettes versus patches in pregnancy and did not change them, but added text on the uncertainty about their effectiveness and safety. If a pregnant woman is already using a vape to stay off cigarettes, staying smoke-free is the priority.", src:"NICE NG209 (2023 surveillance)"},
+         {tone:"amber", h:"Not in pregnancy", html:"Varenicline, cytisinicline and bupropion are not used in pregnancy; cytisinicline is contraindicated in pregnancy and breastfeeding.", src:"SPC cytisinicline · SPC varenicline · SPC Zyban"}
+       ]},
+       {b:"say", html:"The nicotine isn’t what harms the baby — it’s the carbon monoxide and the other chemicals in the smoke. Nicotine replacement is much safer than smoking, and the midwife’s stop smoking team can give you support and, in many areas, vouchers when you stay stopped."}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"People who need a different approach", sub:"Where the plan changes because of the person, not the product.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"🧠 Severe mental illness", html:"Smoking rates are far higher and life expectancy most affected, so offer help actively. EAGLES showed no significant excess of serious neuropsychiatric events with varenicline or bupropion in stable psychiatric illness; review mood and mental state during the attempt, and plan the <b>clozapine and olanzapine</b> changes with the mental health team.", src:"Anthenelli et al, Lancet 2016 · MHRA DSU Aug 2020"},
+         {tone:"blue", h:"❤️ Cardiovascular and respiratory disease", html:"Stopping is among the most valuable single interventions in COPD, coronary and cerebrovascular disease and diabetes. NRT can be used in stable cardiovascular disease; check cytisinicline contraindications (unstable angina, recent MI or stroke, significant arrhythmia).", src:"SPC cytisinicline · NICE NG209"},
+         {tone:"cream", h:"🧒 Young people", html:"NRT can be used from 12 years. Do not offer varenicline, cytisinicline or bupropion under 18. Vapes are not for young people who don’t smoke, and sale to under-18s is illegal.", src:"NICE NG209 (updated Feb 2025)"},
+         {tone:"blue", h:"🏥 Before surgery or admission", html:"Hospitals are expected to offer treatment on admission (QS207 statement 5). A planned operation is a strong motivator — refer early and consider the interaction checks for anyone admitted.", src:"NICE QS207 statement 5"},
+         {tone:"cream", h:"👴 Older adults", html:"Cytisinicline is not offered at 66 or over (NG209); varenicline, combination NRT and vapes remain options.", src:"NICE NG209 (updated Feb 2025)"}
+       ]}
+     ]},
+
+    {id:"followup", nav:"Follow up", title:"Follow-up and relapse prevention", sub:"The first few weeks decide most quit attempts. Build the review in at the start.",
+     blocks:[
+       {b:"table", head:["When","Focus","Action"], rows:[
+         ["Before the quit date","Start the drug (timing per NG209)","Varenicline 1–2 weeks before; cytisinicline quit within 5 days; bupropion quit within 2 weeks; NRT ready or preloaded"],
+         ["Quit date","Interacting medicines","Clozapine and theophylline levels; INR if on warfarin; glucose if on insulin"],
+         ["Weeks 1–4","Side effects, cravings, mood","Adjust NRT, take varenicline with food, consider CO reading; troubleshoot triggers"],
+         ["End of course","Staying stopped","Varenicline: consider a further 12 weeks in people who have stopped (SPC); plan for high-risk situations"],
+         ["Any lapse","Learn and restart","Restart promptly; consider switching or combining options"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Enough treatment?", html:"Single-form NRT at too low a dose is the commonest gap — move to combination and titrate the fast-acting form.", src:"Cochrane, Lindson 2019 · SPC NRT"},
+         {tone:"amber", h:"2 · Support in place?", html:"Actually referred and attending, or going it alone?", src:"NICE NG209 · NCSCT"},
+         {tone:"amber", h:"3 · Side effects driving relapse?", html:"Nausea or dreams on varenicline, skin reactions to patches → switch product rather than abandon the attempt.", src:"SPC varenicline · SPC NRT"},
+         {tone:"green", h:"4 · Try another option", html:"Any of varenicline, cytisinicline, combination NRT or a vape can follow a failed attempt with another; re-offer at the next contact.", src:"NICE NG209 (updated Feb 2025)"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer and signpost", sub:"Stopping smoking is managed in primary care and stop smoking services. There is no NG12 criterion for smoking itself — smoking raises risk, but the cancer referral criteria are symptom-based.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Local stop smoking service", html:"Behavioural support, CO monitoring and access to medication. The highest-yield referral in the consultation.", src:"NICE NG209 · NCSCT"},
+         {tone:"cream", h:"Community pharmacy", html:"NHS pharmacy smoking cessation services can supply treatment and support, including continuing support started in hospital.", src:"NHS England community pharmacy smoking cessation service · NICE QS207 statement 5"},
+         {tone:"amber", h:"Mental health team", html:"Before the quit date for anyone on clozapine or olanzapine, so that levels and doses can be managed.", src:"MHRA DSU Aug 2020 · SPS"},
+         {tone:"green", h:"Maternity stop smoking support", html:"Opt-out referral from booking for a CO reading of 4 ppm or above; incentive schemes where available.", src:"NICE NG209 (pregnancy)"},
+         {tone:"blue", h:"Symptoms, not smoking, trigger cancer referral", html:"Unexplained haemoptysis, persistent cough, weight loss or other symptoms are assessed against NICE NG12 on their own merits; smoking history lowers the threshold for chest X-ray in the NG12 lung criteria.", src:"NICE NG12 (updated April 2026)"}
+       ]},
+       {b:"say", html:"I’m going to put you in touch with the stop smoking service — the people who use it do much better than those who try alone. We’ll get a treatment started around your quit date, and I’ll keep an eye on anything else your stopping affects."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 46-year-old man with schizophrenia, stable on clozapine, attends for a medication review. He smokes 25 cigarettes a day, has tried to stop twice using a single nicotine patch, and says his sister stopped with a vape. He wants to try again because his first child is due in the summer."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Uses <b>Ask–Advise–Act</b> without judgement; explores past attempts and why single-form NRT failed; offers <b>behavioural support plus</b> varenicline, cytisinicline, <b>combination NRT</b> or a <b>vape</b> and lets him choose; sets the quit date to suit the drug; recognises that <b>clozapine levels will rise</b> whether he stops or switches to a vape, and arranges <b>levels and liaison with the mental health team</b> before the quit date (MHRA DSU Aug 2020); reassures about neuropsychiatric safety (EAGLES) while planning a mood review; refers to the stop smoking service; and mentions support for his partner through maternity services.", src:"NICE NG209 · MHRA DSU Aug 2020 · Anthenelli et al, Lancet 2016"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every recommendation and figure on this page traces to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG209 — Tobacco: preventing uptake, promoting quitting and treating dependence</b> (November 2021, last updated February 2025)<br><a href="https://www.nice.org.uk/guidance/ng209" rel="noopener">nice.org.uk/guidance/ng209</a><span class="rd"> — behavioural support with varenicline, cytisinicline, combination NRT or a nicotine vape as most likely to succeed; quit-date timing for each drug; no varenicline, cytisinicline or bupropion under 18, no cytisinicline at 66 or over; information about nicotine vapes; pregnancy: CO testing, opt-out referral at 4 ppm or above, NRT, financial incentives; 2023 surveillance on vapes in pregnancy</span></li>'+
+         '<li><b>NICE QS207 — Tobacco: treating dependence</b> (15 December 2022)<br><a href="https://www.nice.org.uk/guidance/qs207" rel="noopener">nice.org.uk/guidance/qs207</a><span class="rd"> — asking about tobacco, advice, offering support and treatment, harm reduction, treatment on hospital admission</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Clozapine and other antipsychotics: monitoring blood concentrations for toxicity</b> (August 2020)<br><a href="https://www.gov.uk/drug-safety-update/clozapine-and-other-antipsychotics-monitoring-blood-concentrations-for-toxicity" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — check levels on stopping smoking or switching to e-cigarettes</span></li>'+
+         '<li><b>NHS Specialist Pharmacy Service — Managing specific interactions with smoking; Considering drug interactions with smoking</b><br><a href="https://www.sps.nhs.uk/articles/managing-specific-interactions-with-smoking/" rel="noopener">sps.nhs.uk</a><span class="rd"> — CYP1A2 induction by smoke not nicotine; clozapine, olanzapine, theophylline, warfarin, insulin, erlotinib, methadone</span></li>'+
+         '<li><b>Summaries of Product Characteristics</b> — varenicline (titration, 12 + 12 weeks); cytisinicline 1.5 mg (25-day schedule, contraindications, not recommended over 65); Zyban (150 mg daily for 6 days then twice daily, 7–9 weeks, seizure and eating-disorder contraindications); NiQuitin and Nicorette Invisi patches (strength by cigarettes per day)</li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — smoking cessation drugs and theophylline interactions</span></li>'+
+         '<li><b>NCSCT — Very Brief Advice on Smoking; the clinical case for stop smoking services</b><br><a href="https://www.ncsct.co.uk" rel="noopener">ncsct.co.uk</a><span class="rd"> — Ask, Advise, Act; around three times the chance of stopping with specialist support</span></li>'+
+         '<li><b>NHS England — NHS rolls out stop-smoking pill</b> (November 2024)<br><a href="https://www.england.nhs.uk/2024/11/nhs-rolls-out-stop-smoking-pill-to-help-tens-of-thousands-quit/" rel="noopener">england.nhs.uk</a><span class="rd"> — MHRA-approved generic varenicline returned to NHS use</span></li>'+
+         '<li><b>Anthenelli RM, et al. EAGLES trial.</b> Lancet 2016;387:2507–20<span class="rd"> — no significant increase in neuropsychiatric adverse events with varenicline or bupropion versus nicotine patch or placebo</span></li>'+
+         '<li><b>Lindson N, et al. Different doses, durations and modes of delivery of NRT.</b> Cochrane 2019 (CD013308)<span class="rd"> — combination versus single-form NRT RR 1.25, high certainty</span></li>'+
+         '<li><b>Theodoulou A, et al.</b> Cochrane 2023 (CD013308.pub2)<span class="rd"> — preloading NRT before quit day RR 1.25, moderate certainty</span></li>'+
+         '<li><b>Lindson N, et al. Electronic cigarettes for smoking cessation.</b> Cochrane living review (CD010216, updated 2025)<span class="rd"> — high-certainty evidence that nicotine vapes increase quit rates compared with NRT</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Smoking cessation in adults — NICE NG209 (2021, updated February 2025) and QS207 (2022), MHRA Drug Safety Update (August 2020), the SPCs and BNF, NHS Specialist Pharmacy Service interaction guidance, NCSCT training materials, and Cochrane reviews for effect sizes. Verify every dose against the current BNF and SPC before prescribing, and check local stop smoking service arrangements."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

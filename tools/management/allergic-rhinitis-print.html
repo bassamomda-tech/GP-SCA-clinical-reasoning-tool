@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Allergic Rhinitis — Protocol · Reasoning GP</title>
+<meta name="description" content="Allergic rhinitis on one page: confirm it is allergic and bilateral, grade it, get the nasal steroid technique right, step up to a combination spray, never a depot steroid injection, protect exam-season teenagers from sedating antihistamines, treat the asthma alongside, and refer for immunotherapy at the right point." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/allergic-rhinitis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316402604106 tools/management/allergic-rhinitis.html">
+<meta name="omelette-print-source" content="v1790379962369223 tools/management/allergic-rhinitis.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -23,105 +24,180 @@
 MG.render({
   icon:"👃",
   title:"Allergic Rhinitis",
-  stemTitle:"Allergic rhinitis — ongoing management",
-  stemSub:"Primary-care management of allergic rhinitis \u2014 allergen avoidance and nasal saline, antihistamines for mild disease and intranasal corticosteroids for moderate\u2013severe, with attention to inhaler-style technique and comorbid asthma. NICE / BSACI \u00b7 2026.",
-  guideline:"BSACI",
-  glance:[
-    {lbl:"Mild / intermittent", val:"Antihistamine", sub:"cetirizine/loratadine 10 mg OD"},
-    {lbl:"Mod\u2013severe / persistent", val:"Intranasal steroid", sub:"first-line"},
-    {lbl:"Combined", val:"INCS + antihistamine spray", sub:"if INCS alone insufficient"},
-    {lbl:"With asthma", val:"Consider LTRA", sub:"treat both"},
-    {lbl:"Technique", val:"Crucial", sub:"spray angled away from septum"},
-    {lbl:"Refer", val:"Refractory / immunotherapy", sub:"allergy clinic"}
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"The spray works if it is used properly: technique, regularity, then step up",
+  stemSub:"Sneezing, itch, a running and blocked nose on both sides, tied to pollen, dust mite or animals, is allergic rhinitis. Most treatment failure is not drug failure: it is a steroid spray used intermittently or aimed at the septum. Grade the severity, choose a non-sedating antihistamine or a regular intranasal corticosteroid, step up to a combination spray, use a short oral steroid course only as rescue and never a depot injection, look for the asthma that travels with it, and refer for immunotherapy when optimal treatment still fails. Sources: BSACI rhinitis guideline 2017 · BSACI immunotherapy 2011 · ARIA-EAACI 2024–2025 (international) · MHRA Drug Safety Update (September 2019, April 2024) · NICE NG245 · UKTIS · SPCs and BNF.",
+  guideline:"BSACI rhinitis guideline (Scadding et al 2017) · BSACI immunotherapy guideline (Walker et al 2011) · ARIA-EAACI 2024–2025 (international) · MHRA Drug Safety Update (September 2019; April 2024) · NICE NG245 (2024)",
+  meta:[
+    {t:"BSACI rhinitis 2017 · immunotherapy 2011"},
+    {t:"ARIA-EAACI 2024–2025 · international"},
+    {t:"MHRA DSU · montelukast 2019 and 2024"},
+    {t:"NICE NG245 asthma (2024) · UKTIS"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Characterise the rhinitis",
-      blocks:[
-        {b:"kv", rows:[
-          ["Pattern","Seasonal (pollen) vs perennial (house dust mite, pets, mould); intermittent vs persistent"],
-          ["Severity","Impact on sleep, daily activity, work/school \u2014 drives step of treatment"],
-          ["Comorbidity","Allergic conjunctivitis, asthma (treat together \u2014 \u2018one airway\u2019), nasal polyps"],
-          ["Red flags","Unilateral symptoms, bloody discharge, crusting, or anosmia \u2192 consider structural/sinister cause"],
-          ["Pregnancy / children","Saline lavage is safe and first-line; if a nasal steroid is needed choose a <b>low-bioavailability</b> one (fluticasone propionate, mometasone, budesonide) at the lowest effective dose; monitor growth on long-term use in children; LTRA only if also asthmatic"]
-        ]},
-        {b:"why", html:"Severity and persistence set the step: mild intermittent disease responds to antihistamines, but moderate\u2013severe or persistent rhinitis needs an <strong>intranasal corticosteroid</strong> as the most effective single agent. Treating coexisting asthma matters because the upper and lower airway behave as one."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Allergen avoidance and nasal care",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🌼 Allergen avoidance", html:"Pollen (stay in when high, shower/change clothes), house dust mite (bedding, reduce soft furnishings), pets."},
-          {t:"💧 Nasal saline", html:"Saline irrigation/douching clears allergens and improves symptoms \u2014 a useful adjunct."},
-          {t:"🌬️ Spray technique", html:"Teach correct intranasal technique \u2014 head forward, aim away from the septum \u2014 the commonest reason sprays \u2018fail\u2019."},
-          {t:"🚭 Irritants", html:"Avoid smoke and other nasal irritants."},
-          {t:"👓 Eye measures", html:"For conjunctivitis: avoidance, lubricants, antihistamine drops."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 stepwise", title:"By severity",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Mild", title:"Antihistamine", when:"non-sedating oral or intranasal",
-           html:"Non-sedating oral antihistamine \u2014 <b>cetirizine 10 mg once daily</b> or <b>loratadine 10 mg once daily</b> (fexofenadine 120\u2013180 mg OD an alternative) \u2014 or an intranasal antihistamine for mild/intermittent symptoms."},
-          {step:"Mod\u2013severe", title:"Intranasal corticosteroid", when:"first-line, regular use",
-           fromLabel:"moderate\u2013severe / persistent",
-           html:"A regular intranasal corticosteroid is the most effective treatment \u2014 e.g. <b>fluticasone propionate or mometasone, 1\u20132 sprays per nostril once daily</b>; takes days\u2013weeks for full effect \u2014 use continuously through the season."},
-          {step:"Step up", title:"INCS + intranasal antihistamine", when:"combination spray",
-           fromLabel:"INCS alone insufficient",
-           html:"A combined intranasal steroid + antihistamine spray; add an oral antihistamine for eye/systemic symptoms; LTRA if comorbid asthma. Target the dominant symptom: <b><span class='rx'>nasal ipratropium 0.03%, 2 sprays per nostril 2\u20133 times daily</span></b> for persistent watery rhinorrhoea, antihistamine / mast-cell-stabiliser eye drops for conjunctivitis, a brief (&lt;7-day) decongestant for blockage."},
-          {step:"Rescue", title:"Short oral steroid", when:"severe, time-limited",
-           fromLabel:"severe uncontrolled (e.g. exams/event)",
-           html:"A short course of oral prednisolone occasionally for severe symptoms \u2014 e.g. <b>prednisolone ~0.5 mg/kg (typically 20\u201330 mg) once daily for 5\u20137 days</b>; <b>never depot steroid injections</b>."}
-        ]},
-        {b:"warn", html:"Avoid <b>long-term intranasal decongestants</b> (rhinitis medicamentosa \u2014 rebound congestion). Do <b>not</b> use depot corticosteroid injections for hay fever."}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Control, technique and asthma",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Symptom control","Each review","Step up/down; ensure continuous INCS use in season"],
-          ["Spray technique","Each review","Re-teach \u2014 poor technique is the top cause of failure"],
-          ["Adherence","Each review","INCS needs regular use; manage expectation of delayed effect"],
-          ["Asthma control","If comorbid","Worsening rhinitis often worsens asthma \u2014 treat both"]
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"2\u20134 weeks", title:"Response review", html:"Assess INCS effect and technique; step up if uncontrolled."},
-          {n:"2", when:"Seasonal", title:"Pre-season start", html:"For seasonal disease, start INCS ~2 weeks before the season."},
-          {n:"3", when:"If refractory", title:"Reassess / refer", html:"Reconsider diagnosis, adherence, technique; consider immunotherapy referral."}
-        ]}
-      ]},
-    {t:"loop", icon:"🔁", title:"Not controlled? Check before escalating",
-      arrow:"\u2026if symptoms persist",
-      intro:"Technique and adherence are the usual culprits.",
-      checks:[
-        {b:"1 \u00b7 Technique", html:"Watch them use the spray \u2014 correct head position, aim away from septum."},
-        {b:"2 \u00b7 Adherence", html:"Used regularly (not just when blocked)? INCS needs continuous use."},
-        {b:"3 \u00b7 Allergen", html:"Ongoing exposure (pets, dust mite, occupation)?"},
-        {b:"4 \u00b7 Diagnosis", html:"Unilateral, anosmia, polyps, or non-allergic rhinitis \u2192 reconsider."},
-        {b:"5 \u00b7 Step up / refer", html:"Combination spray; refractory \u2192 allergy clinic / immunotherapy."}
-      ],
-      back:"Technique + adherence + allergen addressed \u2192 step up / refer"},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Anaphylaxis", html:"\u201cIf you have a food/venom allergy: lip/face/throat swelling, breathing difficulty, or collapse \u2014 use the adrenaline pen if prescribed and call 999.\u201d"},
-          {t:"⚠️ Unilateral / bleeding", html:"\u201cOne-sided blockage, bloody discharge, or loss of smell \u2014 get reviewed (we\u2019ll check for other causes).\u201d"},
-          {t:"🌬️ Technique", html:"\u201cThe spray only works if used correctly and regularly \u2014 aim it slightly away from the middle of your nose.\u201d"},
-          {t:"🫁 Asthma", html:"\u201cIf your chest gets tight or wheezy when your nose flares, tell us \u2014 we treat them together.\u201d"}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
-      arrow:"refractory or for immunotherapy",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Refractory", html:"Symptoms uncontrolled despite optimal technique, adherence and combination therapy."},
-          {t:"Immunotherapy", html:"Candidate for allergen immunotherapy (e.g. severe single-allergen disease) \u2192 allergy clinic."},
-          {t:"Diagnostic doubt", html:"Unilateral symptoms, anosmia, nasal polyps, or suspected structural cause \u2192 ENT."},
-          {t:"Severe / occupational", html:"Occupational rhinitis or significant impact needing specialist input."}
-        ]},
-        {b:"say", html:"For ongoing symptoms a steroid nasal spray, used correctly and regularly, is the most effective treatment \u2014 it takes a week or two to work, so don\u2019t give up early. If we still can\u2019t control it, an allergy clinic can consider longer-term options."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#confirm'><b>Confirm</b><small>bilateral, allergic, graded</small></a><a href='#redflags'><b>Rule out</b><small>unilateral, blood, crusting</small></a><a href='#ladder'><b>Treat</b><small>spray technique, step up</small></a><a href='#refer'><b>Refer</b><small>ENT or allergy clinic</small></a></div>",
+  quickSub:"Six cards that change what you do today. Each figure traces to a named source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"Moderate or persistent symptoms: a regular intranasal steroid", html:"Topical nasal corticosteroids are the <b>treatment of choice for moderate to severe disease</b> and outperform a leukotriene receptor antagonist on every rhinitis outcome. ARIA-EAACI 2024–2025 likewise recommends an intranasal steroid over an oral antihistamine. Used <b>every day</b>, not as needed, and started before the season for pollen allergy.", src:"BSACI 2017 · ARIA-EAACI 2024–2025 (international)"},
+    {tone:"cream", h:"Technique is the commonest reason sprays “don’t work”", html:"Head tilted forward, nozzle just inside the nostril, <b>aimed outwards away from the septum</b> (right hand for the left nostril and vice versa), gentle sniff, no hard snort. Aiming at the septum causes crusting and nosebleeds and wastes the dose. Watch the patient do it.", src:"BSACI SOP, topical nasal corticosteroid spray (2023)"},
+    {tone:"green", h:"Not controlled on one spray: combine", html:"An intranasal steroid plus intranasal antihistamine is <b>more effective than either alone</b> and is the second-line step for rhinitis poorly controlled on monotherapy. Azelastine with fluticasone propionate: <b>one spray into each nostril twice daily</b>, age 12 and over.", src:"BSACI 2017 · Dymista SPC"},
+    {tone:"amber", h:"Never a depot steroid injection", html:"Intramuscular depot corticosteroid (for example triamcinolone) has an <b>adverse risk–benefit profile and is not recommended</b>, especially as early-season prevention: the release timing is wrong and the dose cannot be withdrawn if harm occurs. For rare severe rescue use a short oral course instead.", src:"BSACI 2017"},
+    {tone:"blue", h:"Exam-season teenagers: avoid sedating antihistamines", html:"In a UK case-control study of 1,834 students, those who dropped a grade between winter mock and summer exams were more likely to have had rhinitis symptoms during the exam period (<b>OR 1.4</b>) and to have taken a <b>sedating antihistamine (OR 1.7)</b>. First-generation antihistamines impair cognition and driving and are not recommended.", src:"Walker et al, J Allergy Clin Immunol 2007 · BSACI 2017"},
+    {tone:"amber", h:"Montelukast is not a rhinitis drug on its own", html:"ARIA-EAACI 2024–2025 recommends an oral antihistamine over an LTRA and advises against adding an LTRA to an oral antihistamine. If montelukast is used (usually for coexisting asthma), warn about <b>sleep disturbance, nightmares, mood change, anxiety, depression and suicidal thoughts</b>: the MHRA strengthened these warnings in April 2024.", src:"ARIA-EAACI 2024–2025 (international) · MHRA DSU April 2024"}
+  ],
+  pathwaySub:"Five moves. The red step catches the tumour, vasculitis or foreign body hiding behind a “hay fever” label.",
+  pathway:[
+    {title:"Screen for what it is not", html:"<b>Unilateral</b> blockage or discharge, <b>heavily blood-stained</b> discharge, <b>facial or nasal pain</b>, <b>severe crusting</b>, a new loss of smell with one-sided symptoms, cranial nerve signs or a neck lump. These need ENT, not an antihistamine. Ask about cocaine use, occupational exposures and decongestant overuse.", alert:true},
+    {title:"Confirm, classify, look for asthma", html:"Two or more of blockage, running (front or back), sneezing or itch, for at least an hour on most days. Is there a trigger (pollen season, dust, animals, work)? Grade it: <b>intermittent or persistent</b>, <b>mild or moderate–severe</b> (sleep, school, work, leisure affected?). Ask about <b>wheeze, cough and night symptoms</b>, eye symptoms and oral itch with raw fruit."},
+    {title:"Treat to severity, with technique taught", html:"Allergen reduction and saline douching for all. Mild or intermittent: <b>non-sedating oral antihistamine</b> (cetirizine or loratadine 10 mg once daily) or an intranasal antihistamine. Moderate–severe or persistent: <b>regular intranasal corticosteroid</b>, demonstrated in the room."},
+    {title:"Review at 2–4 weeks: check before stepping up", html:"Technique, daily use, ongoing exposure, and the diagnosis itself. Then step up: <b>combination intranasal steroid plus antihistamine spray</b>; add targeted agents (ipratropium for a dripping nose, eye drops for conjunctivitis, a decongestant for no more than 7 days). Short oral prednisolone only as rescue; <b>no depot injections</b>."},
+    {title:"Refer when optimal treatment fails", html:"Allergy clinic for <b>immunotherapy assessment</b> when a single dominant allergen drives symptoms despite correct use of optimal therapy; ENT for structural disease, polyps or red flags; occupational health or respiratory for work-related rhinitis with asthma."}
+  ],
+  sections:[
+    {id:"confirm", nav:"Confirm and grade", title:"Is it allergic rhinitis, and how bad is it?", sub:"The history carries the diagnosis. Allergy tests confirm sensitisation; they do not replace a clear story.",
+     blocks:[
+       {b:"table", head:["Question","What supports allergic rhinitis","What points elsewhere"], rows:[
+         ["<b>Symptoms</b>","Two or more of: nasal blockage, anterior or posterior rhinorrhoea, sneezing or nasal itch, lasting an hour or more on most days; itchy watery eyes","Blockage alone, thick coloured discharge, facial pain and reduced smell suggest rhinosinusitis or polyps"],
+         ["<b>Side</b>","Both sides","One side only: septal deviation, foreign body, polyp or tumour"],
+         ["<b>Timing</b>","Seasonal (tree pollen spring, grass pollen early summer, weeds and moulds late summer) or perennial (house dust mite, animals, moulds)","No pattern, triggered by smells, temperature or alcohol: non-allergic (vasomotor) rhinitis"],
+         ["<b>Triggers</b>","Worse outdoors on high-pollen days, on making beds, near pets, at work with improvement on holiday","Worse with regular decongestant spray: rhinitis medicamentosa"],
+         ["<b>Associated</b>","Allergic conjunctivitis, eczema, asthma, oral itch with raw fruit or nuts","Nosebleeds, crusting, systemic symptoms: vasculitis or granulomatous disease"],
+         ["<b>Examination</b>","Pale swollen turbinates, clear secretions, transverse nasal crease in children, allergic shiners; check the chest","Polyps (grey, insensate, mobile), septal perforation, unilateral mass"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Grade it: this chooses the first drug", html:"<b>Intermittent:</b> symptoms on fewer than 4 days a week or for fewer than 4 consecutive weeks. <b>Persistent:</b> 4 or more days a week and for 4 or more consecutive weeks. <b>Mild:</b> sleep, daily activities, school or work, and leisure all unaffected, and symptoms not troublesome. <b>Moderate–severe:</b> any one of those impaired.", src:"ARIA classification (Bousquet et al 2008), international"},
+         {tone:"blue", h:"When allergy testing helps", html:"Skin prick testing or specific IgE confirms sensitisation to a suspected allergen. It is most useful when the trigger is unclear, symptoms are perennial, avoidance advice depends on it (for example a pet or occupational allergen), or immunotherapy is being considered. A positive test without matching symptoms is sensitisation, not allergy.", src:"BSACI 2017"}
+       ]},
+       {b:"why", html:"Classifying by <b>impact</b> rather than by season is what makes the treatment choice logical: a person with persistent, sleep-disturbing symptoms needs a regular intranasal steroid from the outset, however “mild” the complaint sounds. Seasonal versus perennial matters for timing and for allergen advice, not for the choice of step."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags and look-alikes", sub:"Allergic rhinitis is bilateral and painless. Anything else deserves a closer look before treatment.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Unilateral symptoms, heavy bleeding or pain: refer to ENT", html:"Patients with <b>unilateral symptoms, heavily blood-stained discharge or pain</b> require ENT referral. One-sided blockage usually reflects septal deviation, but foreign body (especially children), antrochoanal polyp and tumour must be considered. Refer urgently if there is a visible mass, cranial nerve signs, proptosis or a neck lump.", src:"BSACI 2017"},
+         {tone:"amber", h:"Severe crusting, especially high in the nose", html:"Unusual in rhinitis and warrants investigation: chronic rhinosinusitis, nose picking, <b>granulomatosis with polyangiitis</b>, sarcoidosis or other vasculitis (particularly with bleeding), <b>cocaine use</b>, or crusting from non-invasive ventilation.", src:"BSACI 2017"},
+         {tone:"blue", h:"No NG12 criterion for the nose", html:"NICE NG12 contains <b>no suspected cancer referral criterion for sinonasal cancer</b>; its head and neck recommendations cover the larynx, oral cavity and thyroid. Sinister nasal features are therefore referred to ENT on clinical grounds, urgently where a tumour is suspected.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"red", h:"Oral itch that progresses beyond the mouth", html:"Birch-pollen-allergic patients often get mild, immediate oral itch or tingling with raw apples, stone fruit, kiwi, carrot, celery or nuts (pollen food syndrome). Throat tightness, breathing difficulty, vomiting or collapse, or reactions to cooked foods, are <b>not</b> typical: treat as anaphylaxis if acute (999, adrenaline) and refer to allergy.", src:"BSACI pollen food syndrome guideline (Skypala et al 2022)"},
+         {tone:"amber", h:"Rebound congestion from decongestant sprays", html:"Prolonged topical decongestant use causes rhinitis medicamentosa (rebound congestion) and mucosal atrophy. The licence limits xylometazoline to <b>7 consecutive days</b> in adults and children over 12 (5 days in children aged 6–12). Ask directly about over-the-counter spray use.", src:"Otrivine SPC (xylometazoline)"},
+         {tone:"amber", h:"Rhinitis that started at work", html:"Symptoms that improve on days off and holidays suggest occupational rhinitis (flour, laboratory animals, latex, wood dust, isocyanates). It often precedes occupational asthma: ask about chest symptoms and refer early.", src:"BSACI 2017"}
+       ]},
+       {b:"warn", html:"Loss of smell alone, with bilateral blockage and polyps visible on anterior rhinoscopy, points to <b>chronic rhinosinusitis with nasal polyps</b>, which is a different pathway: intranasal steroid drops or sprays and ENT review, not escalating antihistamines."}
+     ]},
+
+    {id:"nondrug", nav:"Every patient", title:"For every patient: allergen reduction, saline and a taught technique", sub:"Cheap measures that make every drug work better.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"🌼 Pollen", html:"Check pollen forecasts; keep windows shut on high-count days and evenings; wraparound sunglasses; shower and change clothes after being outdoors; dry laundry indoors in peak season; car pollen filter."},
+         {t:"🛏️ House dust mite", html:"Barrier covers for mattress and pillows, hot wash bedding at 60 °C weekly, reduce soft furnishings and clutter in the bedroom, damp-dust. Single measures alone make little difference; combined measures in the bedroom are more realistic."},
+         {t:"🐈 Animals", html:"Keep pets out of the bedroom; removal is the only reliably effective step, and the benefit takes months because allergen persists in the home."},
+         {t:"💧 Saline douching", html:"Nasal saline irrigation clears allergen and mucus and is a <b>useful add-on</b>, especially in moderate to severe disease and in pregnancy and childhood. Douche before the steroid spray, not after."},
+         {t:"🌬️ Spray technique", html:"Shake, head forward, nozzle just inside, <b>aim towards the outer wall of the nostril</b> using the opposite hand, gentle sniff. Stop if nosebleeds occur and re-check the angle."},
+         {t:"🚭 Irritants", html:"Tobacco smoke and strong fumes worsen nasal hyper-reactivity in both allergic and non-allergic rhinitis."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"Saline has trial evidence behind it", html:"A Cochrane review of saline irrigation in allergic rhinitis found it may reduce patient-reported symptom severity compared with no saline, with only minor adverse effects (stinging, ear fullness, nosebleeds), in adults and children.", src:"Cochrane (Head et al) 2018"},
+         {tone:"cream", h:"The technique leaflet", html:"BSACI publishes standard operating procedures for using a nasal corticosteroid spray and for nasal douching, suitable to print or send with the prescription.", src:"BSACI SOP, topical nasal corticosteroid spray (2023)"}
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Drug ladder", title:"The drug ladder, step by step", sub:"Start at the step that matches severity, not always at the bottom. Doses are those stated in the product licence; check the BNF or BNFC for children and special groups.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Mild", title:"Non-sedating oral or intranasal antihistamine", when:"mild or intermittent", tone:"green",
+          html:"<b>Cetirizine 10 mg once daily</b> or <b>loratadine 10 mg once daily</b> (adults); <b>fexofenadine 120 mg once daily</b> for seasonal allergic rhinitis (adults and 12 and over). Fast onset, good for itch, sneeze and eye symptoms, weaker for blockage. An intranasal antihistamine (azelastine) acts within minutes and suits intermittent symptoms. <b>Avoid sedating antihistamines</b> (chlorphenamine, promethazine)."},
+         {step:"Mod–severe", title:"Regular intranasal corticosteroid", when:"first-line for moderate–severe or persistent", tone:"cream", fromLabel:"moderate–severe, persistent, or blocked",
+          html:"For example <b>mometasone furoate 50 micrograms per spray, 2 sprays into each nostril once daily</b> (adults), reducing to 1 spray each side once controlled; or <b>fluticasone propionate 50 micrograms per spray, 2 sprays into each nostril once daily</b> (adults). Children: lower doses and licensed ages differ by product, so check BNFC. Use every day; the effect builds over days. For pollen allergy start about 2 weeks before the expected season."},
+         {step:"Step up", title:"Combination steroid plus antihistamine spray", when:"poorly controlled on one agent", tone:"cream", fromLabel:"correct technique and daily use, still uncontrolled",
+          html:"<b>Azelastine with fluticasone propionate, 1 spray into each nostril twice daily</b> (12 years and over), replacing the single-agent spray. It is licensed for moderate to severe rhinitis when monotherapy is insufficient. Add an oral antihistamine only if eye symptoms persist."},
+         {step:"Target", title:"Add-ons for the dominant symptom", when:"residual problem", tone:"cream", fromLabel:"one symptom still troublesome",
+          html:"<b>Watery drip:</b> ipratropium 0.03% nasal spray, <b>2 sprays (42 micrograms) into each nostril 2–3 times daily</b> (adults); it does not help blockage or sneeze. <b>Eyes:</b> antihistamine or mast-cell-stabiliser drops (for example sodium cromoglicate), dose per BNF. <b>Blockage limiting spray penetration:</b> a topical decongestant for a few days before the steroid spray, <b>never beyond 7 days</b>."},
+         {step:"Rescue", title:"Short oral corticosteroid course", when:"severe, uncontrolled, time-critical", tone:"amber", fromLabel:"severe symptoms despite adherence",
+          html:"Rarely needed. BSACI gives as an example <b>prednisolone 0.5 mg/kg each morning for 5 days</b>, as short-term rescue during a severe exacerbation despite compliance with conventional treatment (for example before exams), always <b>alongside</b> the intranasal steroid. <b>Never a depot intramuscular steroid.</b>"}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Which nasal steroid?", html:"ARIA-EAACI 2024–2025 conditionally favours <b>fluticasone furoate or fluticasone propionate</b> over other intranasal steroids (a conditional recommendation), and azelastine-fluticasone over olopatadine-mometasone. It advises against adding a decongestant to an intranasal steroid as routine combination therapy.", src:"ARIA-EAACI 2024–2025 Part I (international)"},
+         {tone:"blue", h:"Oral options ranked", html:"Intranasal steroid over oral antihistamine; oral antihistamine over LTRA; oral antihistamine over ocular antihistamine for eye symptoms; and against adding an LTRA to an oral antihistamine.", src:"ARIA-EAACI 2024–2025 Part II (international)"},
+         {tone:"amber", h:"Depot steroid: the harm is real", html:"Depot triamcinolone for hay fever is still requested each spring. BSACI states depot preparations have an adverse risk–benefit profile and are not recommended; published harms include disfiguring subcutaneous fat atrophy at the injection site, alongside the systemic effects of weeks of unremovable steroid.", src:"BSACI 2017"},
+         {tone:"cream", h:"Leukotriene receptor antagonists", html:"Intranasal steroids are superior to LTRAs on all aspects of allergic rhinitis. An LTRA has a place mainly where asthma coexists and it is already indicated for the chest.", src:"BSACI 2017 · NICE NG245 (2024)"}
+       ]}
+     ]},
+
+    {id:"asthma", nav:"Asthma link", title:"One airway: find and treat the asthma", sub:"Rhinitis and asthma travel together; poorly treated rhinitis makes asthma harder to control.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Ask every rhinitis patient about the chest", html:"Wheeze, cough, night waking, exercise limitation and reliever use. Treating rhinitis is associated with benefits for asthma, and uncontrolled rhinitis is a recognised factor in poor asthma control. If asthma is suspected, follow the objective testing pathway.", src:"BSACI 2017 · NICE NG245 (2024)"},
+         {tone:"amber", h:"Montelukast: warn, document, review", html:"September 2019: be alert to neuropsychiatric reactions, including newly recognised <b>speech disturbance (stuttering)</b> and <b>obsessive-compulsive symptoms</b>. April 2024: warnings strengthened with a boxed warning on the patient leaflet and SPC. Tell patients and parents to report sleep disturbance, nightmares, anxiety, depression, behaviour change or suicidal thoughts, and weigh continuing if they occur.", src:"MHRA DSU September 2019 · MHRA DSU April 2024"},
+         {tone:"cream", h:"Where an LTRA fits in asthma", html:"In the 2024 joint asthma guideline, an LTRA is one option (with a LAMA) for a trial add-on of 8–12 weeks in people not controlled on moderate-dose MART where FeNO and eosinophils are not raised. It is not a treatment for rhinitis alone.", src:"NICE NG245 (2024)"}
+       ]}
+     ]},
+
+    {id:"special", nav:"Pregnancy, children, exams", title:"Pregnancy, children, students and drivers", sub:"The groups where drug choice and counselling change.",
+     blocks:[
+       {b:"table", head:["Group","What to do","Source"], rows:[
+         ["<b>Pregnancy</b>","Start with non-drug measures and saline. If needed, <b>loratadine or cetirizine</b> are the preferred antihistamines (the largest body of reassuring data). Intranasal steroids reach the fetus in very small amounts and are acceptable at standard doses; <b>avoid decongestants</b>. Rhinitis of pregnancy (non-allergic congestion) is common and resolves after delivery","UKTIS · BSACI 2017"],
+         ["<b>Breastfeeding</b>","Non-sedating antihistamines and intranasal steroids at usual doses; avoid sedating antihistamines (infant drowsiness)","BNF"],
+         ["<b>Children</b>","Prefer intranasal steroids with <b>negligible systemic absorption</b>: mometasone furoate, fluticasone furoate or fluticasone propionate. <b>Betamethasone nasal drops</b> are highly absorbed and should be used short-term only. Monitor height on prolonged treatment. Child doses and licensed ages per BNFC","BSACI 2017 · BNFC"],
+         ["<b>Teenagers in exam season</b>","Start the intranasal steroid before the pollen season, never a sedating antihistamine; rescue oral steroid course only if severe despite adherence","Walker et al 2007 · BSACI 2017"],
+         ["<b>Drivers and machine operators</b>","First-generation antihistamines carry the BNF cautionary warning about drowsiness and driving; drowsiness can persist the next day. Choose a non-sedating agent and warn that some people are still affected, and that alcohol adds to it","BNF · BSACI 2017"],
+         ["<b>Older adults</b>","Avoid sedating and anticholinergic antihistamines (falls, confusion); ipratropium spray may worsen glaucoma or urinary retention in susceptible people, per SPC","BNF"]
+       ]},
+       {b:"say", html:"“This spray is safe to use in pregnancy at the normal dose, because so little gets into your bloodstream. If you need a tablet as well, loratadine or cetirizine have the most reassuring pregnancy information.”"}
+     ]},
+
+    {id:"followup", nav:"Follow-up", title:"Review, and what to check before escalating", sub:"Most “failed” treatment is fixable in the review appointment.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"2–4 weeks", title:"Response review", html:"Watch the spray technique; confirm daily use; check eyes and chest. Controlled: continue through the season, then stop, restarting before next season. Not controlled: run the checks below, then step up."},
+         {n:"2", when:"End of season / annually", title:"Plan next year", html:"Pollen allergy: agree a date to start the intranasal steroid about two weeks before the season, with the antihistamine ready. Perennial: step down to the lowest effective dose."},
+         {n:"3", when:"Despite optimal care", title:"Reassess and refer", html:"Poor control after correct technique, adherence, allergen reduction and a combination spray: reconsider the diagnosis, then refer (allergy for immunotherapy, ENT for structural disease)."}
+       ]},
+       {b:"table", head:["Check","Ask or look for","Fix"], rows:[
+         ["<b>Technique</b>","Aiming at the septum, snorting the dose into the throat, nosebleeds or crusting","Demonstrate; opposite hand, outward angle, gentle sniff"],
+         ["<b>Adherence</b>","Using the steroid only on bad days; stopped after a week “because it didn’t work”","Explain it is a preventer that builds over days; link it to brushing teeth"],
+         ["<b>Exposure</b>","Pet in the bedroom, damp home, new job, pollen on clothes and hair","Targeted avoidance; consider testing to confirm the allergen"],
+         ["<b>Other drugs</b>","Regular decongestant spray, beta-blockers, ACE inhibitors, NSAIDs (with polyps), oral contraceptives","Stop decongestant; review contributory drugs"],
+         ["<b>Diagnosis</b>","Unilateral, polyps, reduced smell, crusting, non-allergic triggers","ENT or non-allergic rhinitis pathway"]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: allergy clinic, ENT, or elsewhere", sub:"No NICE NG12 criterion applies to rhinitis; red-flag nasal features are referred to ENT on clinical grounds.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"ENT: urgently when a tumour is possible", html:"Unilateral persistent symptoms, heavily blood-stained discharge, pain, a visible mass, severe high crusting, or a neck lump or cranial nerve signs. Also nasal polyps not responding to topical treatment, or a structural problem limiting treatment.", src:"BSACI 2017"},
+         {tone:"cream", h:"Allergy clinic: immunotherapy assessment", html:"The main UK indication for immunotherapy is <b>IgE-mediated seasonal pollen rhinitis that has not responded adequately to optimal pharmacotherapy</b>. Subcutaneous immunotherapy is also effective for house dust mite perennial rhinitis. Courses last <b>3–5 years</b>; subcutaneous injections are given only in specialist clinics with adrenaline and resuscitation facilities to hand. Sublingual tablets are specialist-initiated.", src:"BSACI immunotherapy (Walker et al 2011) · BSACI 2017"},
+         {tone:"cream", h:"Allergy clinic: other reasons", html:"Diagnostic uncertainty needing specialist testing; suspected occupational allergy; reactions suggesting food allergy beyond simple pollen food syndrome; rhinitis with difficult asthma.", src:"BSACI pollen food syndrome guideline (Skypala et al 2022) · BSACI 2017"},
+         {tone:"cream", h:"Local pathway", html:"In the North West, the North West Allergy and Clinical Immunology Network (NWACIN) referral and management pathway for rhinitis and rhinoconjunctivitis in primary care (version 6, October 2023, hosted by Manchester University NHS Foundation Trust) sets out the primary care steps expected before referral. Check it before referring.", src:"NWACIN pathway v6 (2023), Greater Manchester"}
+       ]},
+       {b:"say", html:"“The steroid spray is the most effective treatment, but only if it goes in at the right angle every day, so let me show you. If it still isn’t enough after that and a combined spray, an allergy clinic can look at desensitisation, which is a three-year course that can change the allergy itself.”"}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only: the Casebook holds the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 17-year-old with grass pollen hay fever has A-level exams in three weeks. Chlorphenamine from the pharmacy makes her sleepy; a friend had “the hay fever injection” and she wants the same. She uses a nasal spray “when it’s really bad”. She has had a night-time cough for two weeks.", src:"Walker et al, J Allergy Clin Immunol 2007"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Explains why a <b>depot steroid is not offered</b> without dismissing her; switches to a non-sedating antihistamine and a <b>regular</b> intranasal steroid with a technique demonstration; asks about the <b>cough as possible asthma</b> and plans objective testing; agrees a rescue plan (short oral prednisolone course) if severe despite adherence; plans pre-season treatment next year and discusses immunotherapy if control remains poor.", src:"BSACI 2017 · NICE NG245 (2024)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every figure on this page is traceable to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>Scadding GK et al, BSACI guideline for the diagnosis and management of allergic and non-allergic rhinitis (revised edition 2017). Clin Exp Allergy 2017;47:856–89</b><br><a href="https://onlinelibrary.wiley.com/doi/10.1111/cea.12953" rel="noopener">doi.org/10.1111/cea.12953</a><span class="rd"> — intranasal steroid as treatment of choice for moderate–severe disease; combination spray as second line; intranasal steroid superior to LTRA; depot steroid not recommended; oral prednisolone (example 0.5 mg/kg each morning for 5 days) as rare rescue; first-generation antihistamines not recommended; ENT red flags; low-absorption steroids in children; saline as add-on</span></li>'+
+         '<li><b>Walker SM et al, BSACI guideline: immunotherapy for allergic rhinitis. Clin Exp Allergy 2011;41:1177–200</b><br><a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1365-2222.2011.03794.x" rel="noopener">doi.org/10.1111/j.1365-2222.2011.03794.x</a><span class="rd"> — main UK indication: IgE-mediated seasonal pollen rhinitis inadequately responsive to optimal pharmacotherapy</span></li>'+
+         '<li><b>Skypala IJ et al, BSACI guideline for the diagnosis and management of pollen food syndrome in the UK. Clin Exp Allergy 2022;52:1018–34</b><span class="rd"> — typical triggers and features needing referral</span></li>'+
+         '<li><b>BSACI standard operating procedure: topical nasal corticosteroid spray (2023)</b><span class="rd"> — technique</span></li>'+
+         '<li><b>Sousa-Pinto B, Bousquet J et al, ARIA-EAACI Guidelines 2024–2025 Revision, Part I (intranasal) and Part II (oral and ocular). Allergy 2025–2026</b> (international)<span class="rd"> — intranasal steroid over oral antihistamine; oral antihistamine over LTRA; against LTRA added to antihistamine; fluticasone preferred; against routine decongestant added to intranasal steroid</span></li>'+
+         '<li><b>Bousquet J et al, ARIA 2008 update. Allergy 2008;63 Suppl 86</b> (international)<span class="rd"> — intermittent or persistent, mild or moderate–severe classification</span></li>'+
+         '<li><b>MHRA Drug Safety Update, September 2019</b> — montelukast: neuropsychiatric reactions including speech disorders and obsessive-compulsive symptoms; <b>MHRA Drug Safety Update, April 2024</b> — montelukast: reminder and strengthened (boxed) warnings<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a></li>'+
+         '<li><b>NICE NG245, Asthma: diagnosis, monitoring and chronic asthma management (BTS, NICE, SIGN), November 2024</b><br><a href="https://www.nice.org.uk/guidance/ng245" rel="noopener">nice.org.uk/guidance/ng245</a><span class="rd"> — LTRA or LAMA 8–12 week add-on trial; follow MHRA montelukast advice</span></li>'+
+         '<li><b>NICE NG12, Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no sinonasal cancer criterion (head and neck recommendations cover larynx, oral cavity and thyroid)</span></li>'+
+         '<li><b>Walker S et al, Seasonal allergic rhinitis is associated with a detrimental effect on examination performance in United Kingdom teenagers: case-control study. J Allergy Clin Immunol 2007;120:381ff</b><span class="rd"> — OR 1.4 for symptoms, OR 1.7 for sedating antihistamines</span></li>'+
+         '<li><b>Head K et al, Saline irrigation for allergic rhinitis. Cochrane Database Syst Rev 2018 (CD012597)</b></li>'+
+         '<li><b>UKTIS monographs: use of loratadine and of cetirizine in pregnancy; medicinesinpregnancy.org hay fever leaflet</b><br><a href="https://uktis.org" rel="noopener">uktis.org</a></li>'+
+         '<li><b>SPCs:</b> Telfast 120 mg (fexofenadine); Nasonex (mometasone); Flixonase (fluticasone propionate); Dymista (azelastine/fluticasone); Rinatec (ipratropium, per MHRA UKPAR); Otrivine (xylometazoline)<br><a href="https://www.medicines.org.uk/emc" rel="noopener">medicines.org.uk/emc</a></li>'+
+         '<li><b>BNF / BNFC</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — cetirizine, loratadine, children’s doses, cautionary labels</span></li>'+
+         '<li><b>North West Allergy and Clinical Immunology Network (NWACIN), Rhinitis/rhinoconjunctivitis referral and management pathway for primary care, version 6 (October 2023)</b>, hosted by Manchester University NHS Foundation Trust<br><a href="https://mft.nhs.uk/app/uploads/2024/05/RHINITISRHINOCONJUNCTIVITIS-Referral-and-Management-Pathway-for-Primary-Care.pdf" rel="noopener">mft.nhs.uk (PDF)</a><span class="rd"> — local primary care pathway</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Allergic rhinitis in primary care: diagnosis, stepwise treatment and referral. Sources: BSACI rhinitis guideline 2017, BSACI immunotherapy guideline 2011, BSACI pollen food syndrome guideline 2022, ARIA-EAACI 2024–2025 (international), MHRA Drug Safety Update September 2019 and April 2024, NICE NG245 (2024), NICE NG12 (updated April 2026), UKTIS, and product SPCs. Verify doses against the current BNF or BNFC and your local formulary before prescribing."
 });
 </script>
 

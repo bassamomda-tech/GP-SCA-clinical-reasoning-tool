@@ -5,7 +5,7 @@
 MedChooser.register('constipation', {
   title: 'Constipation — laxative selection',
   subtitle: 'Stepwise laxative choice (BNF) by stool type, cause and special situations. Tick the patient profile; cards re-tier live.',
-  guideline: 'BNF · NICE NG12',
+  guideline: 'BNF constipation treatment summary · NICE NG12 (red flags) · NICE TA211 · NICE TA345',
 
   factors: [
     // Stool / pattern
@@ -55,7 +55,7 @@ MedChooser.register('constipation', {
       name:'Bulk-forming laxative',
       examples:'Ispaghula husk (Fybogel)',
       step:'1st-line (if adequate fluids)',
-      source:'BNF · NICE NG12',
+      source:'BNF — Constipation treatment summary',
       sideEffects:'Bloating, flatulence, obstruction if inadequate fluid',
       monitor:'Stool frequency/consistency; ensure good fluid intake',
       counsel:'"This adds bulk and softens the stool — but only works if you drink plenty of water with it. Don\'t take it just before bed."',
@@ -81,7 +81,7 @@ MedChooser.register('constipation', {
       name:'Osmotic — macrogol',
       examples:'Macrogol 3350 (Movicol) 1–3 sachets/day',
       step:'1st/2nd-line · disimpaction',
-      source:'BNF · NICE NG12',
+      source:'BNF — Constipation treatment summary',
       sideEffects:'Bloating, cramps, diarrhoea if over-titrated',
       monitor:'Titrate to soft formed stool; high-dose regimen for impaction',
       counsel:'"This draws water into the bowel to soften and move things along. For a blockage we sometimes use several sachets a day for a few days to clear it."',
@@ -107,7 +107,7 @@ MedChooser.register('constipation', {
       name:'Osmotic — lactulose',
       examples:'Lactulose 15 mL BD',
       step:'Osmotic alternative',
-      source:'BNF · NICE NG12',
+      source:'BNF — Constipation treatment summary',
       sideEffects:'Bloating, flatulence, cramps (more than macrogol); takes 1–2 days',
       monitor:'Stool response; takes up to 48 h',
       counsel:'"A sugary syrup that softens the stool. It can cause some wind and bloating, and takes a day or two to work."',
@@ -130,7 +130,7 @@ MedChooser.register('constipation', {
       name:'Stimulant laxative',
       examples:'Senna 7.5–15 mg nocte · Bisacodyl',
       step:'Add-on (soft but not moving)',
-      source:'BNF · NICE NG12',
+      source:'BNF — Constipation treatment summary',
       sideEffects:'Cramping, abdominal pain; long-term — usually safe (myth of "lazy bowel" overstated)',
       monitor:'Stool response next morning',
       counsel:'"This stimulates the bowel to push the stool along — works overnight. Useful when the stool is soft but just isn\'t coming."',
@@ -155,7 +155,7 @@ MedChooser.register('constipation', {
       name:'Suppository / enema',
       examples:'Glycerol supp · Bisacodyl supp · Phosphate enema',
       step:'Rapid / impaction (rectal loading)',
-      source:'BNF · NICE NG12',
+      source:'BNF — Constipation treatment summary',
       sideEffects:'Local irritation; phosphate enema — electrolyte shifts in frail/renal',
       monitor:'Response; caution with phosphate enemas in renal impairment/elderly',
       counsel:'"For a quick result or to clear a hard stool low down — these work within the hour. We\'ll choose the gentlest one that will do the job."',
@@ -223,6 +223,7 @@ MedChooser.register('constipation', {
     
     { label:'NICE NG12 — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'NICE TA211 — Prucalopride for chronic constipation in women', url:'https://www.nice.org.uk/guidance/ta211' },
+    { label:'NICE TA345 — Naloxegol for treating opioid-induced constipation', url:'https://www.nice.org.uk/guidance/ta345' },
     { label:'BNF — Constipation treatment summary', url:'https://bnf.nice.org.uk/treatment-summaries/constipation/' }
   ],
 });

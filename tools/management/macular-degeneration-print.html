@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Age-Related Macular Degeneration — Protocol · Reasoning GP</title>
+<meta name="description" content="Age-related macular degeneration in primary care on one page: recognise suspected wet AMD and refer to a macula service within 1 working day (NICE NG82), know the anti-VEGF criteria, give honest advice on smoking and AREDS-type supplements, cover Charles Bonnet syndrome, certification, low-vision support and the DVLA eyesight standard." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/macular-degeneration.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316494957944 tools/management/macular-degeneration.html">
+<meta name="omelette-print-source" content="v1790420447098187 tools/management/macular-degeneration.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -23,74 +24,173 @@
 MG.render({
   icon:"👁️",
   title:"Age-Related Macular Degeneration",
-  stemTitle:"AMD \u2014 spot wet AMD fast, support dry AMD, modify risk",
-  stemSub:"Primary-care role in age-related macular degeneration \u2014 urgent referral of suspected wet AMD for sight-saving anti-VEGF, supportive management and risk-factor modification for dry AMD, low-vision support and DVLA advice. NICE NG82 \u00b7 2026.",
-  guideline:"NICE NG82",
-  glance:[
-    {lbl:"Wet AMD", val:"Rapid central loss + distortion", sub:"= sight emergency"},
-    {lbl:"Refer wet", val:"Macula clinic \u22641 week", sub:"fast-track"},
-    {lbl:"Treatment", val:"Anti-VEGF injections", sub:"ophthalmology"},
-    {lbl:"Dry AMD", val:"Gradual, no cure", sub:"support + monitor"},
-    {lbl:"Modify", val:"Stop smoking + diet", sub:"\u00b1 AREDS2 in selected"},
-    {lbl:"Red flag", val:"Sudden distortion/loss", sub:"= urgent referral"}
+  eyebrow:"Protocol · the GP’s part in a specialist-treated condition",
+  stemTitle:"AMD — a working day matters for wet disease; honesty and support matter for the rest",
+  stemSub:"The macula service treats AMD; the GP decides how fast someone gets there. New distortion or a fall in central vision in an older adult is suspected wet AMD until an eye specialist says otherwise, and NICE NG82 wants it with a macula service within 1 working day. Around that one decision sit the conversations only primary care tends to have: smoking, whether the shop-bought eye vitamins are worth it, hallucinations the patient is too frightened to mention, certification, falls, and whether they can still drive. NICE NG82 (2018) · NICE QS180 (2019) · NICE TA155, TA294, TA672, TA800, TA1022 · DVLA.",
+  guideline:"NICE NG82 (January 2018) · NICE QS180 (2019) · NICE TA155, TA294, TA672, TA800, TA1022 · AREDS (2001) and AREDS2 (2013) trials · DVLA Assessing fitness to drive (visual disorders)",
+  meta:[
+    {t:"NICE NG82 · 2018"},
+    {t:"NICE QS180 · 2019"},
+    {t:"NICE TA155, TA294, TA672, TA800, TA1022 · anti-VEGF"},
+    {t:"DVLA · statutory notification duty", tone:"tw"},
+    {t:"No NG12 criterion applies"}
   ],
-  flow:[
-    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Wet AMD \u2014 urgent, sight-saving",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Suspect wet AMD", html:"Rapid (days\u2013weeks) central visual loss, new metamorphopsia (straight lines wavy/distorted), central scotoma, micropsia \u2192 <b>urgent referral to macula service (within 1 week)</b>."},
-          {t:"⏱️ Time-critical", html:"Anti-VEGF works best early \u2014 do not \u2018watch and wait\u2019; treat distortion/sudden loss as an emergency referral."},
-          {t:"🔴 Sudden painless loss (other)", html:"Exclude retinal detachment, vascular occlusion, vitreous haemorrhage \u2192 same-day eye assessment."},
-          {t:"🟠 Amsler grid change", html:"New distortion on home Amsler monitoring in a known AMD patient \u2192 fast-track back to macula clinic."}
-        ]},
-        {b:"why", html:"Distinguishing wet from dry AMD is the key GP task: wet AMD causes rapid, treatable sight loss and demands urgent referral for anti-VEGF, whereas dry AMD progresses slowly and has no specific drug treatment."}
-      ]},
-    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Dry vs wet",
-      blocks:[
-        {b:"kv", rows:[
-          ["Dry (non-neovascular)","~90% of cases; gradual central visual decline over years; drusen, RPE changes/geographic atrophy; no leakage"],
-          ["Wet (neovascular)","Choroidal neovascularisation \u2192 rapid central loss + distortion/haemorrhage; treatable with anti-VEGF"],
-          ["Symptoms","Difficulty reading/recognising faces, central blur/distortion, need for brighter light; peripheral vision preserved"],
-          ["Risk factors","Age, smoking, family history, hypertension, poor diet (low antioxidants), pale iris"]
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Treatment (specialist-led)", title:"What happens in the eye clinic",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Wet AMD", title:"Intravitreal anti-VEGF", when:"specialist",
-           html:"Ranibizumab/aflibercept (and others) injections per macula service \u2014 stabilise/improve vision in many if treated early. GP role: urgent referral + support adherence to injection schedule."},
-          {step:"Dry AMD", title:"No specific drug", when:"support + monitor",
-           fromLabel:"dry type",
-           html:"No licensed treatment to reverse dry AMD; focus on risk modification, monitoring for conversion to wet, and low-vision support."},
-          {step:"Selected", title:"AREDS2 supplements", when:"intermediate/advanced one eye",
-           fromLabel:"specialist-guided",
-           html:"AREDS2-formula antioxidant supplements may slow progression in selected intermediate/advanced AMD \u2014 NOT beta-carotene in smokers (lung cancer risk); confirm appropriateness."}
-        ]}
-      ]},
-    {t:"node", d:"life", n:"4", tag:"Non-drug \u00b7 every patient", title:"Risk modification + support",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🚭 Stop smoking", html:"The strongest modifiable risk factor \u2014 offer cessation support."},
-          {t:"🥗 Diet", html:"Diet rich in leafy greens/oily fish; manage BP/cardiovascular risk."},
-          {t:"\uD83D\uDCCF Amsler grid", html:"Home Amsler monitoring \u2014 report any new distortion promptly (fast-track)."},
-          {t:"🔍 Low-vision support", html:"Refer to low-vision services; magnifiers, lighting, ECLO; register as sight-impaired if eligible."},
-          {t:"🚗 DVLA", html:"Advise re visual standards for driving; notify DVLA if standards not met."}
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Monitoring & self-check", blocks:[{b:"timeline", items:[{n:"1", when:"Dry AMD", title:"Slow progression", html:"No specific treatment for dry AMD \u2014 optimise modifiable risk: <b>stop smoking</b>, diet rich in leafy greens/fish, manage BP; consider <b>AREDS2 supplements</b> for intermediate/advanced disease (specialist-guided). Optimise lighting/low-vision aids."},{n:"2", when:"Every visit", title:"Amsler self-monitoring", html:"Teach <b>Amsler grid</b> home monitoring \u2014 new distortion (metamorphopsia) or sudden central vision change suggests conversion to <b>wet AMD</b>."},{n:"3", when:"Suspected wet AMD", title:"Rapid referral", html:"New distortion/rapid central vision loss \u2192 <b>rapid-access macular clinic within days</b> (anti-VEGF is time-critical to preserve vision). Register sight impairment + low-vision support as appropriate."}]},{b:"say", html:"Use the Amsler grid at home \u2014 if lines start to look wavy or a blank spot appears, contact us straight away, because the treatable (wet) type needs to be seen within days."}]},
-    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral",
-      arrow:"urgent vs supportive",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Urgent macula clinic", html:"Suspected wet AMD (rapid loss/distortion) \u2014 within 1 week."},
-          {t:"Ophthalmology / optometry", html:"New visual symptoms for diagnosis; dry AMD monitoring."},
-          {t:"Low-vision / ECLO", html:"Visual rehabilitation, registration, social support."},
-          {t:"Same-day", html:"Sudden painless loss to exclude other retinal/vascular emergencies."}
-        ]},
-        {b:"say", html:"There are two types of macular degeneration. The \u2018dry\u2019 type is slow and we manage it by stopping smoking, eating well and monitoring. The \u2018wet\u2019 type comes on fast and is treatable with eye injections \u2014 but only if caught quickly. So if your central vision suddenly blurs or straight lines look wavy, contact us urgently."}
-      ]}
+  lead:"<div class='mg-layers'><a href='#flags'><b>Red flags</b><small>Distortion = 1 working day</small></a><a href='#types'><b>Early or late?</b><small>The NG82 language</small></a><a href='#treat'><b>Anti-VEGF</b><small>Who qualifies</small></a><a href='#living'><b>Living with AMD</b><small>Smoking, vitamins, support</small></a><a href='#refer'><b>Refer</b><small>At the right speed</small></a></div>",
+  quickSub:"The six points that change what you do in the room. Each traces to a source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Suspected wet AMD → macula service within 1 working day", html:"New visual distortion (straight lines bending), a new central blur or grey patch, or a fall in reading vision in someone over about 50 is suspected <b>late AMD (wet active)</b>. NICE NG82 asks for an <b>urgent referral to a macula service, normally within 1 working day</b>, whether or not the person reports impaired vision. It does not need to go through an emergency department. Use the local direct route (often via an optometrist with OCT or a rapid-access macular clinic) rather than a routine ophthalmology letter.", src:"NICE NG82 (2018)"},
+    {tone:"amber", h:"Treatment should start within 14 days of referral", html:"Once late AMD (wet active) is confirmed and anti-VEGF is appropriate, NG82 says to treat <b>as soon as possible and within 14 days of referral</b> to the macula service, and QS180 makes this a quality statement. Every day lost before referral eats into that window. Chase a referral that has gone quiet.", src:"NICE NG82 (2018) · NICE QS180 statement 3 (2019)"},
+    {tone:"blue", h:"Say ‘early’ and ‘late’, not only ‘dry’ and ‘wet’", html:"NG82 classifies AMD as <b>early</b> (graded low, medium or high risk of progression by drusen size and pigment change) and <b>late</b>: <b>wet active</b> (treatable neovascular disease), <b>wet inactive</b> (scar or atrophy after neovascular disease), <b>dry</b> (geographic atrophy) and <b>indeterminate</b>. NG82 specifically warns against calling wet inactive disease ‘dry AMD’. A letter that says ‘dry AMD’ does not mean the eye cannot convert.", src:"NICE NG82 (2018)"},
+    {tone:"cream", h:"Stopping smoking is the one thing the patient controls", html:"Age, family history and smoking are the established risk factors for AMD, and smoking is the modifiable one. Offer stop-smoking support at every contact, particularly when one eye is already affected. The link between smoking and supplements matters too: <b>beta-carotene raised lung-cancer risk in smokers</b> in two large trials, so anyone who smokes or has recently stopped should not take a beta-carotene formula.", src:"College of Optometrists (AMD risk factors) · ATBC trial, NEJM 1994 · CARET, NEJM 1996"},
+    {tone:"green", h:"Ask about hallucinations — and name Charles Bonnet syndrome", html:"People losing central vision can see vivid, silent images — faces, patterns, animals — while knowing they are not real. Many hide it, fearing dementia. NG82 lists the possibility of these hallucinations (<b>Charles Bonnet syndrome</b>) among the topics to discuss with people who have AMD. Naming it is often the most reassuring thing you do in the consultation.", src:"NICE NG82 (2018)"},
+    {tone:"purple", h:"Driving: the patient has a legal duty to tell DVLA", html:"A Group 1 (car) driver must be able to read a number plate at <b>20 metres</b>, have acuity of at least <b>6/12 (decimal 0.5) with both eyes open</b>, glasses allowed, and meet the field standard. Drivers must tell DVLA if an eye condition affects <b>both eyes</b> (or the only seeing eye), or if they have been told they may not meet the standard. Bus and lorry drivers must report a condition in <b>one or both eyes</b>. Record the advice given.", src:"DVLA Assessing fitness to drive (visual disorders) · GOV.UK Eye conditions and driving"}
   ],
-  foot:"Primary-care recognition and support of AMD; wet AMD is an urgent referral for anti-VEGF. Verify against current NICE NG82 and the Royal College of Ophthalmologists guidance."
+  pathwaySub:"Five moves, in this order. The first is the one that saves sight.",
+  pathway:[
+    {title:"Is this new, central and distorted?", html:"Ask about <b>new distortion</b> (door frames, tiles, text bending), a <b>new central smudge or blank</b>, colours looking washed out, and how fast it came on. Check near and distance acuity in each eye with the usual correction, and use an Amsler chart if you have one. Painless, recent, central change in an older adult = <b>suspected wet AMD</b> until shown otherwise.", alert:true},
+    {title:"Refer at the right speed", html:"Suspected late AMD (wet active): <b>macula service within 1 working day</b> (NICE NG82). Sudden profound painless loss, a curtain or shower of floaters and flashes, or loss with jaw claudication or headache: <b>same-day</b> — these are not AMD pathways. Stable, long-standing, slowly progressive central loss already known to the eye service: routine review and support."},
+    {title:"Know what the eye clinic will do", html:"OCT confirms or excludes neovascular disease (fluorescein angiography only if OCT cannot). Anti-VEGF injections are offered to eyes meeting the criteria in NICE TA155, TA294, TA672, TA800 and TA1022 — typically <b>acuity 6/12 to 6/96</b>, no permanent structural damage at the fovea, a lesion of <b>12 disc areas or less</b> and recent disease progression — and NG82 lets specialists consider treatment below 6/96 in the better-seeing eye."},
+    {title:"Support the person, not just the macula", html:"Smoking cessation. An honest answer about supplements. Ask about hallucinations, falls, low mood, and managing medicines and money. Low-vision services, the eye clinic liaison officer (ECLO) and a <b>certificate of vision impairment (CVI)</b> as soon as the person is eligible (NICE QS180 statement 6)."},
+    {title:"Safety-net the other eye and the road", html:"Anyone with AMD in one eye is at risk in the other. Teach them to check each eye separately and to act on new distortion the same way. Give the DVLA advice and document it."}
+  ],
+  sections:[
+    {id:"flags", nav:"Red flags", title:"Red flags — speed of referral decides the outcome", sub:"Wet AMD damages the macula over days to weeks, and the result of anti-VEGF depends on how much vision is left when treatment starts.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 New distortion or central loss — suspected wet active AMD", html:"New metamorphopsia, a central scotoma, micropsia or a noticeable fall in reading vision over days or weeks. <b>Urgent referral to a macula service, normally within 1 working day</b>, even if the person says their vision is fine. NG82 is explicit that this is urgent rather than an emergency: it does not need a same-day A&amp;E attendance, but it must not wait for a routine clinic.", src:"NICE NG82 (2018)"},
+         {tone:"red", h:"🔴 Sudden painless profound loss — same day, different pathway", html:"Vision lost over seconds to hours, a dark curtain, or a shower of new floaters with flashing lights suggests retinal artery or vein occlusion, retinal detachment or vitreous haemorrhage. <b>Same-day eye assessment</b>. Transient or sudden loss with vascular risk factors needs the stroke and TIA pathway as well.", src:"College of Optometrists CMGs (sudden loss of vision, retinal detachment)"},
+         {tone:"red", h:"🔴 Over 50 with headache, scalp tenderness or jaw claudication", html:"Visual loss, diplopia or amaurosis with these features is giant cell arteritis until proved otherwise. <b>Same-day</b> assessment and steroids per the GCA pathway — do not let an AMD label on the record distract you.", src:"BSR guideline on giant cell arteritis (2020)"},
+         {tone:"amber", h:"🟠 A known AMD patient with a new change", html:"Anyone already under the macula service (including those told their eye is ‘dry’ or ‘inactive’) who notices new distortion or a drop in vision should be re-seen quickly. Contact the macula service directly using the route on the clinic letter rather than starting a new referral from scratch.", src:"NICE NG82 (2018)"}
+       ]},
+       {b:"why", html:"<b>Why 1 working day and not 1 week?</b> Older referral habits often allowed up to a week for ‘fast-track’ macula referrals. NG82 set the benchmark at 1 working day for the referral and 14 days from referral to first treatment. Untreated neovascular lesions leak, bleed and scar; once the fovea is scarred, anti-VEGF can no longer restore it and the eye stops meeting the treatment criteria."}
+     ]},
+
+    {id:"history", nav:"Assess", title:"Assessment in primary care", sub:"You will not confirm AMD without imaging, but a focused history and simple tests tell you how fast to act.",
+     blocks:[
+       {b:"table", head:["Ask or check","What you are looking for","Changes what"], rows:[
+         ["<b>Onset and tempo</b>","Days to weeks (neovascular) versus months to years (early or dry disease)","Recent change → 1 working day referral"],
+         ["<b>Distortion</b>","Straight edges bending; words dropping out of a line; faces looking wrong","The single most useful symptom for wet disease"],
+         ["<b>Each eye separately</b>","The good eye masks the bad one — many notice only when they cover an eye","Test and teach monocular checking"],
+         ["<b>Acuity</b>","Distance and near acuity in each eye with the usual glasses (pinhole if none)","Record the baseline; below 6/12 binocular raises the driving question"],
+         ["<b>Amsler chart</b>","Wavy lines, missing areas, a distorted centre","Supports referral; a normal Amsler result does not rule out wet AMD"],
+         ["<b>Other causes</b>","Diabetes (maculopathy), recent cataract surgery, drugs such as hydroxychloroquine, central serous chorioretinopathy in younger adults","Different pathway; still refer promptly if central vision is falling"],
+         ["<b>Function and safety</b>","Reading, medicines, money, cooking, falls, driving, living alone, mood","Low-vision, social care and ECLO referral; DVLA advice"],
+         ["<b>Hallucinations</b>","Formed images, patterns, people — with insight","Name Charles Bonnet syndrome; not a sign of dementia or psychosis on its own"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🧪 The Amsler chart — useful, not reassuring", html:"The Amsler grid is cheap and quick and a clearly distorted result supports urgent referral. But the NG82 evidence review found self-monitoring with an Amsler chart has <b>low sensitivity</b> compared with OCT, so a normal grid does not cancel a convincing history. The College of Optometrists describes it as the only widely available standardised home self-monitoring tool — useful, provided patients also act on symptoms.", src:"NICE NG82 evidence review (2018) · College of Optometrists"},
+         {tone:"blue", h:"🔬 What confirms it", html:"NG82: offer <b>optical coherence tomography (OCT)</b> to people with suspected late AMD (wet active); offer <b>fundus fluorescein angiography</b> only if OCT does not exclude neovascular disease, and not if examination and OCT already exclude it. Many areas route suspected wet AMD through community optometrists with OCT who can refer directly to the macula service.", src:"NICE NG82 (2018)"}
+       ]}
+     ]},
+
+    {id:"types", nav:"Classification", title:"Early and late AMD — the NG82 language", sub:"Clinic letters now use this classification. Knowing it tells you what the patient has been told and what to watch for.",
+     blocks:[
+       {b:"table", head:["Category (NG82)","What the eye shows","What it means for the patient"], rows:[
+         ["<b>Early AMD — low risk</b>","Medium drusen (63 to under 125 micrometres) or pigment changes","Usually little visual effect; smoking advice; act on new symptoms"],
+         ["<b>Early AMD — medium risk</b>","Large drusen (125 micrometres or more), reticular drusen, or medium drusen with pigment change","Higher chance of progression; same advice"],
+         ["<b>Early AMD — high risk</b>","Large or reticular drusen with pigment change, adult vitelliform lesion, or small non-foveal geographic atrophy (under 175 micrometres)","The group where supplements are most debated; monitor for conversion"],
+         ["<b>Late AMD (wet active)</b>","Choroidal neovascularisation and its variants (including polypoidal choroidal vasculopathy and retinal angiomatous proliferation)","Treatable with anti-VEGF — the urgent category"],
+         ["<b>Late AMD (wet inactive)</b>","Fibrous scar, sub-foveal atrophy or fibrosis after neovascular disease","Treatment stopped or no longer helpful; NG82 says do not call this ‘dry AMD’"],
+         ["<b>Late AMD (dry)</b>","Geographic atrophy without neovascular disease, or significant loss from dense drusen or pigment change","No drug treatment is recommended in NICE NG82 or a NICE TA; low-vision support; can still convert to wet"],
+         ["<b>Late AMD (indeterminate)</b>","Changes that do not fit neatly — rarer subtypes","Specialist follow-up as advised"]
+       ]},
+       {b:"why", html:"Patients are often told ‘you have the dry type, nothing can be done’ and stop paying attention to new symptoms. The NG82 classification makes clear that early and dry disease can progress to wet active disease, which is treatable. The practical message is the same for everyone with AMD: <b>new distortion means an urgent call, not the next routine appointment</b>."}
+     ]},
+
+    {id:"treat", nav:"Anti-VEGF", title:"What happens in the macula service", sub:"Treatment is specialist-led, but GPs are asked about it constantly — and adherence to an injection schedule is a primary-care conversation.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Confirm wet active disease", when:"within days of referral", fromLabel:"OCT ± angiography",
+          html:"OCT first; fluorescein angiography only if OCT leaves neovascular disease unresolved (NICE NG82). The aim is to start treatment in an eligible eye within 14 days of referral (NG82; QS180 statement 3)."},
+         {step:"Step 2", title:"Intravitreal anti-VEGF", when:"eyes meeting the TA criteria", fromLabel:"first-line treatment",
+          html:"NICE technology appraisals recommend <b>ranibizumab (TA155)</b>, <b>aflibercept (TA294)</b>, <b>brolucizumab (TA672)</b>, <b>faricimab (TA800)</b> and <b>bevacizumab gamma (TA1022, December 2024)</b> when the eye has best-corrected acuity between <b>6/12 and 6/96</b>, no permanent structural damage to the central fovea, a lesion of <b>12 disc areas or less</b> in greatest linear dimension, and evidence of recent disease progression. TA1022 asks services to use the least expensive suitable option. The NG82 committee found no clinically significant difference in effectiveness or safety between the anti-VEGF agents it reviewed."},
+         {step:"Step 3", title:"Outside the usual criteria", when:"acuity worse than 6/96", fromLabel:"specialist judgement",
+          html:"NG82 allows anti-VEGF to be considered in eyes with acuity <b>worse than 6/96</b> if it is expected to improve overall visual function — for example when the affected eye is the better-seeing eye."},
+         {step:"Not offered", title:"Photodynamic therapy alone", when:"wet active AMD", fromLabel:"do not offer",
+          html:"NG82: do not offer photodynamic therapy alone, or as a first-line adjunct to anti-VEGF, for late AMD (wet active); as a second-line adjunct only within a trial."},
+         {step:"Ongoing", title:"Monitoring and injections", when:"often for years", fromLabel:"adherence",
+          html:"Treatment and monitoring intervals are set by the macula service. Missed visits risk reactivation and permanent loss. Help with transport, carers’ time, anxiety about injections and other appointments that clash."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"⚠️ After an injection — what needs a same-day call", html:"A painful red eye, worsening vision or increasing floaters in the days after an intravitreal injection may be endophthalmitis. The patient should contact the eye unit’s emergency number the same day, not wait for a GP appointment.", src:"SPC: ranibizumab, aflibercept, faricimab (endophthalmitis warning)"},
+         {tone:"blue", h:"ℹ️ Dry and wet inactive AMD", html:"NICE NG82 and the NICE technology appraisals recommend no drug treatment for late AMD (dry). The work is rehabilitation, low-vision aids and support, plus prompt action if new distortion suggests conversion to wet disease.", src:"NICE NG82 (2018)"}
+       ]}
+     ]},
+
+    {id:"living", nav:"Living with AMD", title:"Risk factors, supplements and everyday advice", sub:"The consultations after diagnosis are where primary care makes the biggest difference.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"🚭 Smoking", html:"Increasing age, a family history and cigarette smoking are the established risk factors; smoking is the one that can be changed. Refer to the local stop-smoking service. For someone with one affected eye, the fellow eye is the reason to stop now.", src:"College of Optometrists, Optometry in Practice (modifiable risk factors for AMD)"},
+         {tone:"amber", h:"💊 AREDS-type supplements — what the evidence does and does not say", html:"<b>NG82 made no recommendation for or against supplements</b> in routine care; it made a <b>research recommendation</b> on antioxidant and zinc supplements for early AMD at high risk of progression. The trial evidence: in AREDS (Arch Ophthalmol 2001) high-dose antioxidants plus zinc reduced progression to advanced AMD by about <b>25% over 5 years</b> in people with intermediate AMD or advanced AMD in one eye; no benefit was shown for people with little or no AMD. AREDS2 (JAMA 2013) replaced beta-carotene with lutein and zeaxanthin. Supplements are bought, not prescribed; they are not a treatment for wet AMD and do not replace urgent referral.", src:"NICE NG82 research recommendation (2018) · AREDS Report No. 8, Arch Ophthalmol 2001 · AREDS2, JAMA 2013"},
+         {tone:"red", h:"🚫 No beta-carotene for smokers or recent ex-smokers", html:"Beta-carotene supplements increased lung-cancer incidence in male smokers (ATBC trial) and in smokers and asbestos-exposed workers (CARET trial). If a patient is choosing a supplement, steer them away from beta-carotene formulations if they smoke or have smoked recently.", src:"ATBC Study Group, NEJM 1994 · Omenn et al. (CARET), NEJM 1996"},
+         {tone:"green", h:"🥬 Diet and general health", html:"A diet rich in green leafy vegetables, fruit and oily fish is sensible general advice and costs nothing. Blood pressure and cardiovascular risk management are good practice, though their direct effect on AMD progression is less certain.", src:"AREDS2, JAMA 2013 (dietary lutein and zeaxanthin)"},
+         {tone:"green", h:"💡 Making the most of remaining vision", html:"Bright, directed task lighting; high-contrast labels; large-print or audio formats; magnifiers from the low-vision service; phone and tablet accessibility settings. Remove trip hazards and ask about falls.", src:"NICE QS180 (2019) · NICE NG82 (2018)"},
+         {tone:"cream", h:"🧠 Mood and isolation", html:"Losing reading and face recognition is a bereavement for many people. Ask about low mood and loneliness, and involve family, voluntary-sector sight-loss services and social care where the person wants it.", src:"NICE NG82 (2018) — information and support"}
+       ]},
+       {b:"say", html:"There are two sides to this. The part we can do something about is the ‘wet’ change, which can be treated with injections if it is caught quickly — so if straight lines ever start to bend or a new smudge appears, ring the eye clinic the same day, not at your next appointment. The other side is making daily life easier and protecting the eyes you have: stopping smoking is the biggest single thing, and I’m happy to talk honestly about the eye vitamins."}
+     ]},
+
+    {id:"support", nav:"Support and CVI", title:"Information, certification and low-vision services", sub:"NG82 and QS180 treat information and support as part of the treatment, not an afterthought.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"📄 Certificate of vision impairment", html:"QS180 statement 6: adults with serious eye disorders should be given a <b>certificate of vision impairment</b> as soon as they are eligible, with information about the support that follows. Certification is completed by a consultant ophthalmologist and leads to registration as sight impaired or severely sight impaired with the local council, which opens access to rehabilitation and some concessions.", src:"NICE QS180 statement 6 (2019)"},
+         {tone:"green", h:"🗂️ Topics NG82 asks us to cover", html:"The diagnosis and what it means for daily life; what treatment can and cannot achieve; the possibility of <b>visual hallucinations (Charles Bonnet syndrome)</b>; the benefits and entitlements that come with certification and registration; and signposting to other sources of support. Information should be in an accessible format at the first appointment and whenever asked for.", src:"NICE NG82 (2018)"},
+         {tone:"cream", h:"🤝 Eye clinic liaison officer and rehabilitation", html:"The ECLO in the eye clinic links patients to emotional and practical support. Council sensory-impairment and rehabilitation teams provide mobility training, daily-living skills and home assessments. Low-vision clinics provide magnifiers and training in how to use them.", src:"NICE NG82 (2018) — low vision services"},
+         {tone:"blue", h:"👁️ Charles Bonnet syndrome — how to explain it", html:"Formed visual hallucinations in someone with significant sight loss, with preserved insight and no other psychiatric or neurological features. Explain that the brain is filling in missing input. Look for other causes (delirium, dementia, drugs, Parkinson’s disease) if insight is lost or other symptoms appear.", src:"NICE NG82 (2018)"}
+       ]}
+     ]},
+
+    {id:"driving", nav:"Driving", title:"Driving and the DVLA — a statutory duty", sub:"The legal duty to tell DVLA rests with the driver; the clinician’s job is to advise clearly and record it.",
+     blocks:[
+       {b:"table", head:["Standard","Group 1 (car, motorcycle)","Group 2 (bus, lorry)"], rows:[
+         ["<b>Number plate</b>","Read a standard number plate at <b>20 metres</b>, with glasses or contact lenses if needed","As Group 1, plus the stricter acuity standard"],
+         ["<b>Acuity</b>","At least <b>6/12 (decimal 0.5)</b> with both eyes open, or in the only eye","At least 6/7.5 in the better eye and 6/60 in the other (DVLA Group 2 standard)"],
+         ["<b>Field</b>","At least 120° horizontally, with at least 50° to each side and no significant defect in the central area","Normal binocular field of at least 160°"],
+         ["<b>When to tell DVLA</b>","An eye condition affecting <b>both eyes</b> (or the only eye), or if told they may not meet the standard","An eye condition affecting <b>one or both eyes</b>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"purple", h:"⚖️ The driver’s duty", html:"Drivers must meet the eyesight standard at all times. They must tell DVLA if they have an eye condition that affects both eyes (Group 1) or either eye (Group 2), or if a GP, optometrist or eye specialist has told them they may not meet the standard. Failing to report a condition that affects driving can lead to a fine of up to £1,000. DVLA may arrange an eyesight test with one of its contracted opticians.", src:"GOV.UK Eye conditions and driving · DVLA Assessing fitness to drive (visual disorders)"},
+         {tone:"purple", h:"⚖️ If the patient keeps driving", html:"Explain the standard and record the advice. If a patient who clearly does not meet the standard continues to drive, follow the GMC confidentiality guidance on reporting concerns to DVLA: try to persuade them first, tell them you intend to disclose, then contact the DVLA medical adviser if they still drive.", src:"DVLA Assessing fitness to drive · GMC Confidentiality: patients’ fitness to drive (2017)"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, when, how", sub:"Most of the value of primary care in AMD sits in getting this speed right.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day — not AMD pathways", html:"Sudden profound painless loss, a curtain or new shower of floaters with flashes, or loss with GCA features → same-day eye assessment (and the GCA pathway where relevant). A painful red eye after an intravitreal injection → the eye unit’s emergency line.", src:"College of Optometrists CMGs · BSR GCA guideline (2020)"},
+         {tone:"red", h:"Within 1 working day — suspected wet active AMD", html:"New distortion, new central scotoma or a recent fall in central vision → <b>urgent referral to a macula service, normally within 1 working day</b>, via the local rapid-access or optometrist-with-OCT route. It is urgent, not an A&amp;E emergency.", src:"NICE NG82 (2018)"},
+         {tone:"amber", h:"Rapid re-access — known AMD with new symptoms", html:"Contact the macula service directly using the details on the clinic letter; do not wait for the next scheduled visit.", src:"NICE NG82 (2018)"},
+         {tone:"cream", h:"Routine — slow change and support needs", html:"Gradual central loss without distortion → optometrist review, with referral per local pathway. Low-vision clinic, ECLO, council rehabilitation team and certification for anyone whose sight loss limits daily life.", src:"NICE NG82 (2018) · NICE QS180 (2019)"},
+         {tone:"blue", h:"No NG12 criterion applies", html:"AMD is not a suspected-cancer presentation. A new pigmented lesion seen at the fundus by an optometrist is a separate ocular-oncology route handled by the eye service.", src:"NICE NG12 (updated April 2026)"}
+       ]},
+       {b:"say", html:"I’d like the eye specialists to see you within a working day, because the type of change you are describing can be treated with injections and the sooner that starts, the more sight it protects. It isn’t an A&amp;E emergency, but it isn’t something to leave either. If it gets suddenly much worse, or you see a curtain or lots of new floaters, contact us or the eye unit straight away."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card; the Casebook holds full teaching cases.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 78-year-old widow says the lines on her crossword ‘went wobbly’ in her right eye four days ago. She was told two years ago she had ‘the dry type, nothing to be done’, so she nearly didn’t come. She still drives to the shops, smokes ten a day, and asks quietly whether seeing ‘children in the garden who aren’t there’ means she is losing her mind."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises new distortion as <b>suspected wet active AMD</b> despite the ‘dry’ label; arranges a <b>macula-service referral within 1 working day</b> and explains why; checks <b>acuity in each eye</b>; names <b>Charles Bonnet syndrome</b> and reassures; gives <b>clear DVLA advice</b> and records it; raises <b>smoking</b> and warns against beta-carotene; safety-nets for sudden loss; offers <b>low-vision support</b>."}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation above traces to one of these primary sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG82 — Age-related macular degeneration</b> (January 2018)<br><a href="https://www.nice.org.uk/guidance/ng82" rel="noopener">nice.org.uk/guidance/ng82</a><span class="rd"> — classification (early low/medium/high risk; late wet active, wet inactive, dry, indeterminate); urgent referral to a macula service normally within 1 working day for suspected late AMD (wet active), not an emergency referral; OCT, and fluorescein angiography only if OCT does not exclude neovascular disease; anti-VEGF within 14 days of referral; anti-VEGF may be considered below 6/96; no clinically significant difference between anti-VEGF agents; photodynamic therapy not offered alone or as first-line adjunct; information topics including Charles Bonnet syndrome and certification; research recommendation on antioxidant and zinc supplements; low sensitivity of Amsler self-monitoring (evidence review)</span></li>'+
+         '<li><b>NICE QS180 — Serious eye disorders</b> (February 2019)<br><a href="https://www.nice.org.uk/guidance/qs180" rel="noopener">nice.org.uk/guidance/qs180</a><span class="rd"> — statement 3: late AMD (wet active) starts treatment within 14 days of referral; statement 6: certificate of vision impairment as soon as eligible</span></li>'+
+         '<li><b>NICE TA155 — Ranibizumab and pegaptanib for age-related macular degeneration</b> (2008); <b>TA294 — Aflibercept</b> (2013); <b>TA672 — Brolucizumab</b> (2021); <b>TA800 — Faricimab</b> (June 2022); <b>TA1022 — Bevacizumab gamma</b> (December 2024)<br><a href="https://www.nice.org.uk/guidance/ta1022" rel="noopener">nice.org.uk/guidance/ta1022</a><span class="rd"> — eligibility: best-corrected acuity 6/12 to 6/96, no permanent structural damage to the central fovea, lesion 12 disc areas or less, recent disease progression; use the least expensive suitable option</span></li>'+
+         '<li><b>Age-Related Eye Disease Study Research Group. AREDS Report No. 8.</b> Arch Ophthalmol 2001;119:1417–36<span class="rd"> — antioxidants plus zinc reduced progression to advanced AMD by about 25% over 5 years in people with intermediate AMD or advanced AMD in one eye</span></li>'+
+         '<li><b>AREDS2 Research Group. Lutein + zeaxanthin and omega-3 fatty acids for age-related macular degeneration.</b> JAMA 2013;309:2005–15<span class="rd"> — lutein and zeaxanthin as a replacement for beta-carotene</span></li>'+
+         '<li><b>ATBC Cancer Prevention Study Group.</b> NEJM 1994;330:1029–35 and <b>Omenn GS, et al. (CARET).</b> NEJM 1996;334:1150–5<span class="rd"> — beta-carotene increased lung-cancer incidence in smokers and asbestos-exposed workers</span></li>'+
+         '<li><b>College of Optometrists</b> — Clinical Management Guidelines and Optometry in Practice review of modifiable risk factors for AMD<br><a href="https://www.college-optometrists.org/category-landing-pages/clinical-topics/amd" rel="noopener">college-optometrists.org</a><span class="rd"> — age, family history and smoking as established risk factors; the Amsler chart as the standard home self-monitoring tool despite limited sensitivity; sudden loss of vision and retinal detachment as same-day presentations</span></li>'+
+         '<li><b>Royal College of Ophthalmologists — Age-related macular degeneration services: commissioning guidance</b> (2021; evidence base updated 2024)<br><a href="https://www.rcophth.ac.uk" rel="noopener">rcophth.ac.uk</a><span class="rd"> — service standards and referral routes for neovascular AMD</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive: visual disorders</b>, and <b>GOV.UK — Eye conditions and driving</b><br><a href="https://www.gov.uk/guidance/visual-disorders-assessing-fitness-to-drive" rel="noopener">gov.uk</a><span class="rd"> — Group 1: 20 m number plate, 6/12 binocular, field standard; tell DVLA if both eyes (or the only eye) are affected; Group 2: one or both eyes; fine up to £1,000</span></li>'+
+         '<li><b>GMC — Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA</b> (2017)</li>'+
+         '<li><b>BSR guideline on the diagnosis and treatment of giant cell arteritis</b> (Mackie SL, et al., Rheumatology 2020)<span class="rd"> — same-day assessment for suspected GCA with visual symptoms</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b> (updated April 2026)<span class="rd"> — no criterion applies to AMD</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Age-related macular degeneration in primary care — NICE NG82 (2018), NICE QS180 (2019), NICE TA155, TA294, TA672, TA800 and TA1022, the AREDS and AREDS2 trials, and DVLA visual standards. Treatment decisions belong to the macula service; check local referral routes. Not a substitute for clinical judgement."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

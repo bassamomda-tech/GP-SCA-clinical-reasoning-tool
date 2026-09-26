@@ -118,7 +118,7 @@ body{background:var(--bg, #f6f2e9) !important}
         <tbody>
           <tr class="open-q-row">
             <td class="q"><strong>🟢 OPEN QUESTION — always start here</strong><em>"Can you describe exactly what the sensation is like — where is it, and what triggers it? Take your time."</em></td>
-            <td class="why"><strong>Classic stable angina has four diagnostic features that spontaneously emerge in the narrative: central/retrosternal location, pressure or tightness quality, exertional onset, and relief with rest.</strong> WHO/NICE criteria: typical angina = all three; atypical = two; non-cardiac = one or zero. A patient who says "a heavy squeezing in my chest when I walk uphill, gone in a few minutes when I stop" has given you the diagnosis in one sentence. Closed questions lose the nuance that determines typical vs atypical vs non-anginal classification — which drives the pre-test probability calculation for CTCA.<span class="why-sub">In SCA: a candidate who immediately asks "does it radiate to your arm?" has foregone the most diagnostic information source. The open narrative is the examination.</span></td>
+            <td class="why"><strong>Classic stable angina has four diagnostic features that spontaneously emerge in the narrative: central/retrosternal location, pressure or tightness quality, exertional onset, and relief with rest.</strong> NICE CG95 criteria (constricting discomfort in chest/neck/shoulders/jaw/arms; brought on by exertion; relieved by rest or GTN within about 5 minutes): typical angina = all three; atypical = two; non-anginal = one or zero. A patient who says "a heavy squeezing in my chest when I walk uphill, gone in a few minutes when I stop" has given you the diagnosis in one sentence. Closed questions lose the nuance that determines typical vs atypical vs non-anginal classification — which drives the pre-test probability calculation for CTCA.<span class="why-sub">In SCA: a candidate who immediately asks "does it radiate to your arm?" has foregone the most diagnostic information source. The open narrative is the examination.</span></td>
             <td><span class="chg chg-ddx">Typical vs atypical vs non-anginal classification</span><span class="chg chg-inv">Pre-test probability for CTCA</span><span class="chg chg-ps">Paternal MI fear</span></td>
           </tr>
           <tr><td class="q">Is the pain present right now?<em>"Is the chest pain there at this moment, while you're sitting here with me?"</em></td><td class="why"><strong>This is the most urgent question — if pain is present at rest, this is ACS until proven otherwise.</strong> The entire subsequent management pathway changes: resting pain persisting &gt;20 minutes despite GTN = STEMI/NSTEMI protocol, ECG immediately, 999. A patient with ongoing chest pain at rest in the GP surgery needs action before history-taking, not a full SOCRATES assessment.<span class="why-sub">Many patients are too polite to volunteer that they are currently in pain. Ask directly. A resting ECG before history completion is appropriate if pain is present.</span></td><td><span class="chg chg-999">Rest pain: ACS protocol immediately</span><span class="chg chg-ddx">Stable vs unstable angina</span></td></tr>
@@ -760,8 +760,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
     <!-- 7E Drug Selector -->
-    <!-- ═══ Interactive Medication Chooser (live, NICE/BNF tiered) ═══ -->
-    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+    <!-- ═══ Interactive Medication Chooser (live, NICE CG126/BNF tiered) ═══ -->
+    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE CG126 / BNF</div>
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="angina"></div>
 
@@ -1424,16 +1424,17 @@ body{background:var(--bg, #f6f2e9) !important}
   </main>
 </div><!-- /app -->
 
-<script src="script.js"></script>
-<script src="../assets/site.js?v=102"></script>
+<script src="script.js?v=2"></script>
+<script src="../assets/site.js?v=104"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 <!-- Medication Chooser engine + topic data -->
 <script src="../assets/medchooser.js"></script>
 <script src="../assets/meds/angina.js"></script>
-<script src="../assets/topic-links.js?v=7"></script>
+<script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
+<script src="chooser-guard.js?v=1"></script>
 </body>
 </html>

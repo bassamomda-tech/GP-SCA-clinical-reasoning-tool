@@ -76,7 +76,7 @@
   var foot = document.querySelector('.alg-foot');
   if (foot) {
     var src = (foot.textContent.split(/Based on:/i)[1] || '');
-    var re = /(NICE\s+(?:NG|CG)\s*\d+|SIGN\s*\d+|\bCKS\b)/gi, m;
+    var re = /(NICE\s+(?:NG|CG)\s*\d+|SIGN\s*\d+)/gi, m;
     while ((m = re.exec(src)) && chips.length < 3) { var t = m[1].replace(/\s+/g,' ').trim(); if (chips.indexOf(t) < 0) chips.push(t); }
   }
   if (!chips.length) chips.push('RCGP SCA');

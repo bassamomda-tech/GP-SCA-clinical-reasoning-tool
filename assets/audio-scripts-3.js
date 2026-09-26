@@ -5,7 +5,7 @@
    assessment → non-drug management → drug management → safety-netting →
    referral. Original summaries based on NICE / NG guidance.
    ============================================================ */
-window.RGP_AUDIO_TRACKS = (window.RGP_AUDIO_TRACKS || []).concat([
+window.RGP_AUDIO_LIST = (window.RGP_AUDIO_LIST || []).concat([
 
   /* ---------------- NEUROLOGY ---------------- */
   { id:'nice-headache', cat:'Neurology', ic:'🧠', dur:'5 min', title:'Headache & migraine', sub:'NICE clinician summary',

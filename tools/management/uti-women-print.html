@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>UTI in Women — Protocol · Reasoning GP</title>
+<meta name="description" content="Lower urinary tract infection in women on one page: diagnose on symptoms with the UKHSA rules (no dipstick at 65 and over), treat with NG109 short courses, manage pregnancy and pyelonephritis, prevent recurrence with the NG112 ladder, and refer haematuria on the NG12 thresholds." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/uti-women.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316674199239 tools/management/uti-women.html">
+<meta name="omelette-print-source" content="v1790420447098187 tools/management/uti-women.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,134 +23,197 @@
 <script>
 MG.render({
   icon:"💧",
-  title:"UTI in Women — The Complete Guide",
-  stemTitle:"UTI in women made simple &mdash; treat the simple one short, protect pregnancy, break the recurrent cycle",
-  stemSub:"One pathway: diagnose lower UTI (and when the dipstick lies), give the right short course, handle pregnancy trimester-by-trimester, catch pyelonephritis, and \u2014 the real skill \u2014 work up and prevent RECURRENT UTI with the full non-antibiotic and prophylaxis ladder plus vaginal oestrogen. NICE NG109 \u00b7 NG112 \u00b7 NICE.",
-  guideline:"NICE NG109 \u00b7 NG112",
-  glance:[
-    {lbl:"Simple lower UTI", val:"Nitrofurantoin 3d", sub:"100mg MR BD, eGFR \u226545"},
-    {lbl:"Dipstick", val:"Only helps <65", sub:"never dip the elderly/catheter"},
-    {lbl:"Pregnancy", val:"Culture + treat ABU", sub:"trimester-aware abx, 7d"},
-    {lbl:"Recurrent =", val:"\u22652/6mo or \u22653/yr", sub:"work up + prevent"},
-    {lbl:"Postmenopausal", val:"Vaginal oestrogen", sub:"first-line prevention"},
-    {lbl:"Non-antibiotic", val:"Methenamine / D-mannose", sub:"before nightly abx"}
+  title:"UTI in women",
+  eyebrow:"Protocol · diagnose, treat and prevent in one place",
+  stemTitle:"Diagnose on symptoms, treat short, and never let a dipstick overrule the history",
+  stemSub:"One page for lower urinary tract infection in women aged 16 and over. Decide on symptoms using the UKHSA rules (and do not dipstick anyone aged 65 or over), choose a short NG109 course, handle pregnancy with culture and a 7-day course, spot pyelonephritis and sepsis, and — the harder skill — confirm, investigate and prevent recurrence with the NG112 ladder. Haematuria and recurrent infection in older women map onto NG12. NICE NG109 (2018) · NG111 (2018) · NG112 (2018, updated 2024) · UKHSA (2025) · MHRA · NICE NG12 (updated April 2026).",
+  guideline:"NICE NG109 (2018) · NICE NG111 (2018) · NICE NG112 (2018, updated Dec 2024) · UKHSA UTI diagnostic tools (updated July 2025) · MHRA Drug Safety Update (Sep 2014, Apr 2023, Jan 2024) · BNF · NICE NG12 (updated April 2026)",
+  meta:[
+    {t:"NICE NG109 (2018) · lower UTI"},
+    {t:"NICE NG111 (2018) · pyelonephritis"},
+    {t:"NICE NG112 (2018, updated 2024) · recurrent UTI"},
+    {t:"UKHSA diagnostic tools (2025)"},
+    {t:"MHRA DSU · nitrofurantoin 2014 and 2023"},
+    {t:"2WW · NICE NG12 haematuria", tone:"tw"}
   ],
-  flow:[
-
-    {t:"node", d:"found", n:"1", tag:"Step 1 · diagnose", title:"Diagnose lower UTI — and know when the dipstick misleads",
-      blocks:[
-        {b:"kv", rows:[
-          ["Clinical diagnosis (<65, no catheter)","\u22653 urinary symptoms (dysuria, frequency, urgency, suprapubic pain, haematuria, cloudy urine) and no vaginal discharge \u2192 treat empirically without a dipstick. New dysuria is ~50% likely UTI on its own"],
-          ["<b>When the dipstick LIES</b>","<b>Do NOT dipstick anyone \u226565 or any catheterised patient</b> \u2014 asymptomatic bacteriuria is common and a positive dip doesn't mean UTI. Over-65: diagnose on new/worsening urinary symptoms or signs of systemic infection, not the stick"],
-          ["When to CULTURE","Pregnant \u00b7 recurrent \u00b7 treatment failure \u00b7 atypical \u00b7 suspected pyelonephritis \u00b7 \u226565 \u00b7 catheter \u00b7 visible/persistent non-visible haematuria \u2014 send before/with starting"],
-          ["Exclude the mimics","Vaginal discharge/itch (thrush, BV, STI \u2014 test if at risk), atrophic vaginitis, interstitial cystitis (chronic, sterile), overactive bladder, urethral syndrome"],
-          ["Over-65 caution","Don't attribute confusion alone to 'UTI' without urinary symptoms/signs of sepsis \u2014 the classic over-diagnosis that misses the real cause"]
-        ]},
-        {b:"warn", html:"<b>Pyelonephritis</b> \u2014 loin/back pain, fever, rigors, nausea/vomiting, systemic upset (\u00b1 the lower-UTI symptoms) \u2192 different pathway: culture always, <b>broader/longer antibiotic</b> (e.g. cefalexin 7\u201310 days, or per local guidance), and admit if sepsis features, pregnancy, vomiting, or not improving. Sepsis screen (NEWS2) if unwell."}
-      ]},
-
-    {t:"node", d:"drug", n:"2", tag:"Step 2 · treat the simple one", title:"Uncomplicated lower UTI — short course, right agent",
-      blocks:[
-        {b:"table", head:["Line","Antibiotic","Notes"], rows:[
-          ["<b>1st</b>","<b>Nitrofurantoin 100mg MR BD \u00d7 3 days</b>","Avoid if eGFR <45 (ineffective + toxic); avoid at term in pregnancy"],
-          ["1st alt","Trimethoprim 200mg BD \u00d7 3 days","Only if low resistance risk; avoid in 1st-trimester pregnancy (folate antagonist)"],
-          ["2nd","Nitrofurantoin (if not 1st) / pivmecillinam 400mg then 200mg TDS / fosfomycin 3g single dose","Per culture + local resistance; fosfomycin useful for resistant organisms"],
-          ["Symptom relief","Paracetamol/ibuprofen; hydration","Some mild UTIs settle with self-care \u00b1 back-up (delayed) prescription \u2014 an option if symptoms mild"]
-        ]},
-        {b:"kv", rows:[
-          ["Review","At 48h or on culture: not improving \u2192 reassess, check sensitivities, reconsider diagnosis / upper UTI"],
-          ["Don't treat asymptomatic bacteriuria","In non-pregnant women (including the elderly) \u2014 drives resistance, no benefit"]
-        ]}
-      ]},
-
-    {t:"node", d:"drug", n:"3", tag:"Step 3 · pregnancy", title:"Pregnancy — treat everything, mind the trimester",
-      blocks:[
-        {b:"kv", rows:[
-          ["Screen + treat asymptomatic bacteriuria","Routine antenatal MSU; ABU in pregnancy risks pyelonephritis + preterm birth \u2192 treat on culture, <b>7 days</b>, and do a <b>test of cure</b>"],
-          ["1st trimester","<b>Avoid trimethoprim</b> (folate antagonist \u2014 neural tube risk). Nitrofurantoin acceptable; or per culture (cefalexin, amoxicillin if sensitive)"],
-          ["3rd trimester / term","<b>Avoid nitrofurantoin at term</b> (neonatal haemolysis risk). Use cefalexin or culture-directed"],
-          ["Pyelonephritis in pregnancy","Lower threshold to admit \u2014 obstetric + IV antibiotics"],
-          ["Recurrent in pregnancy","Obstetric input; prophylaxis decisions are specialist"]
-        ]},
-        {b:"warn", html:"The trimester map in one line: <b>trimethoprim out early</b> (folate), <b>nitrofurantoin out late</b> (haemolysis) \u2014 cefalexin is the reliable middle-ground when unsure. Always culture in pregnancy."}
-      ]},
-
-    {t:"node", d:"found", n:"4", tag:"Step 4 · recurrent UTI", title:"Recurrent UTI — the work-up before the prophylaxis",
-      blocks:[
-        {b:"kv", rows:[
-          ["Definition","\u22652 in 6 months or \u22653 in 12 months. Distinguish <b>relapse</b> (same organism <2 weeks \u2014 think stone/incomplete treatment) from <b>reinfection</b> (different organism/later \u2014 the usual pattern)"],
-          ["Work up","Confirm with cultures (don't build a prevention plan on unproven 'UTIs'); post-void residual/bladder scan if incomplete emptying suspected; <b>visible haematuria or \u226545 with unexplained non-visible \u2192 2WW urology</b> (bladder cancer); glucose (undiagnosed diabetes); consider USS/referral if stones, atypical organisms (Proteus \u2192 stones), or persistent haematuria"],
-          ["Find + fix reversibles","Incomplete emptying/constipation, spermicide/diaphragm use, dehydration, postmenopausal atrophy, poor glycaemic control, urinary retention"],
-          ["The mimics again","Recurrent 'UTI' with negative cultures = interstitial cystitis, atrophic vaginitis, or overactive bladder \u2014 not antibiotics"]
-        ]},
-        {b:"why", html:"The commonest error in recurrent UTI is a nightly antibiotic started on a stack of <em>unconfirmed</em> episodes with the reversibles never addressed. Culture-confirm, treat the atrophy, fix the emptying and the spermicide first \u2014 many 'recurrent UTI' patients need no long-term antibiotic at all."}
-      ]},
-
-    {t:"node", d:"drug", n:"5", tag:"Step 5 · prevention ladder", title:"Prevention — non-antibiotic first, then prophylaxis",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"1st", title:"Behavioural + non-antibiotic measures", when:"everyone",
-           html:"Hydration (aim ~1.5\u20132L, RCT evidence), don't delay voiding, post-coital voiding, wipe front-to-back, stop spermicide/diaphragm. <b>D-mannose</b> (2g/day \u2014 modest evidence, low harm) and <b>methenamine hippurate 1g BD</b> (ALTBI trial: non-inferior to antibiotic prophylaxis \u2014 the non-antibiotic prophylaxis of choice)."},
-          {step:"1st (postmenopausal)", title:"Vaginal oestrogen", when:"postmenopausal recurrent UTI",
-           fromLabel:"the highest-yield single measure",
-           html:"<b>Topical vaginal oestrogen</b> \u2014 <span class='rx'>estradiol 10 microgram vaginal tablet daily for 2 weeks, then twice weekly</span>; or <span class='rx'>estriol 0.01% cream 0.5 mg daily for 2\u20133 weeks, then twice weekly</span>; or an <span class='rx'>estradiol-releasing ring changed every 3 months</span>. It restores the protective vaginal flora, substantially reduces recurrence, safe long-term (see HRT/GSM guidance). Try before any antibiotic prophylaxis in this group."},
-          {step:"2nd", title:"Self-start (standby) antibiotics", when:"clear recurrent pattern, reliable patient",
-           fromLabel:"reduce total antibiotic exposure",
-           html:"A 3-day back-up course \u2014 <span class='rx'>nitrofurantoin 100 mg MR BD</span> or <span class='rx'>trimethoprim 200 mg BD</span> \u2014 which the patient starts on symptom onset (with a culture where possible) \u2014 avoids continuous exposure while still treating fast. Good for infrequent-but-definite recurrences."},
-          {step:"3rd", title:"Single post-coital dose", when:"clear coital trigger",
-           fromLabel:"intercourse-associated UTI",
-           html:"<span class='rx'>Nitrofurantoin 50\u2013100 mg</span> or <span class='rx'>trimethoprim 100 mg</span> as a single dose within 2 hours of intercourse \u2014 targeted prophylaxis with far less total antibiotic than nightly dosing."},
-          {step:"4th", title:"Continuous antibiotic prophylaxis", when:"failed the above",
-           fromLabel:"last resort \u2014 trial + review",
-           html:"<b>Nightly nitrofurantoin 50\u2013100mg or trimethoprim 100mg</b> \u2014 <b>trial 3\u20136 months then review</b> (resistance, recurrence returns after stopping in many). Rotate agents by resistance; not a 'forever' prescription. Counsel resistance + side effects."}
-        ]}
-      ]},
-
-    {t:"node", d:"monitor", n:"6", tag:"Step 6 · review", title:"Response & recurrence review",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Symptom response","48h","Not improving \u2192 culture/sensitivities, reconsider diagnosis / upper UTI"],
-          ["Culture","When sent","Narrow/adjust to sensitivities; Proteus \u2192 image for stones"],
-          ["Pregnancy test of cure","After treatment","Confirm clearance; ongoing antenatal surveillance"],
-          ["Prophylaxis efficacy","3\u20136 months","Working + tolerated? Stop-trial to reassess; resistance check"],
-          ["Recurrence + haematuria","Ongoing","Persistent haematuria or \u226545 \u2192 urology 2WW; escalate work-up"]
-        ]},
-        {b:"say", html:"For a one-off infection, a short antibiotic course usually clears it \u2014 come back if you're not better in two days, or urgently if you get back pain, fevers or feel really unwell. For the recurring ones, the aim is to need antibiotics LESS: drinking more, the vaginal oestrogen if you're past the menopause, and a non-antibiotic tablet like methenamine often break the cycle without a nightly antibiotic."}
-      ]},
-
-    {t:"loop", icon:"🔁", title:"Not responding or recurring? Re-check",
-      arrow:"\u2026reconsider organism, diagnosis, reversibles",
-      checks:[
-        {b:"1 · Culture", html:"Resistant organism? Adjust to sensitivities. Same organism <2 weeks = relapse → think stone/incomplete treatment."},
-        {b:"2 · Upper UTI?", html:"Loin pain, fever, systemic upset → treat as pyelonephritis ± admit."},
-        {b:"3 · Right diagnosis?", html:"Negative cultures + symptoms → interstitial cystitis, atrophy, OAB, STI/vaginitis — not more antibiotics."},
-        {b:"4 · Reversibles", html:"Emptying, constipation, spermicide, atrophy, glycaemic control, dehydration."},
-        {b:"5 · Investigate", html:"Visible haematuria, ≥45 with non-visible, Proteus, persistent → urology / imaging / cancer pathway."}
-      ],
-      back:"Culture-guided, upper UTI excluded, reversibles fixed → prevention ladder / urology"},
-
-    {t:"node", d:"safety", n:"7", tag:"Safety-net", title:"What the patient must know",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Pyelonephritis / sepsis", html:"\u201cLoin or back pain, fever or shivering, vomiting, or feeling very unwell or confused \u2014 urgent help the same day.\u201d"},
-          {t:"🤰 Pregnancy", html:"\u201cIf you're pregnant, any urine infection needs prompt treatment \u2014 don't leave it; contact us.\u201d"},
-          {t:"🩸 Blood in urine", html:"\u201cVisible blood that persists after treatment \u2014 tell us; it needs checking.\u201d"},
-          {t:"⏱️ Not improving", html:"\u201cNo better in 48 hours \u2014 come back; we may need a different antibiotic.\u201d"}
-        ]}
-      ]},
-
-    {t:"node", d:"refer", n:"8", tag:"Refer", title:"When to refer",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Urgent / admit", html:"Pyelonephritis with sepsis/systemic illness, pregnancy, vomiting, or unable to tolerate oral treatment."},
-          {t:"2WW urology", html:"Visible haematuria (any age), or unexplained non-visible haematuria ≥45 → bladder-cancer pathway."},
-          {t:"Recurrent / complicated", html:"Recurrent UTI failing the prevention ladder, suspected stones (Proteus), incomplete emptying, or structural concern → urology."},
-          {t:"Pregnancy", html:"Recurrent bacteriuria or pyelonephritis in pregnancy → obstetric input."}
-        ]},
-        {b:"say", html:"Most of these clear with a short course and simple measures. If they keep coming back, we've got a whole ladder of prevention \u2014 and only if those don't work do we consider a long-term antibiotic, always with a review date."}
-      ]}
+  quickSub:"The six decisions that matter most. Every figure traces to a primary source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Loin pain, fever or rigors is not cystitis", html:"Flank or back pain, a temperature, shaking chills, vomiting or new confusion alongside urinary symptoms means <b>acute pyelonephritis</b> — possibly with sepsis. Nitrofurantoin does not reach the kidney, so it is the wrong drug. NICE NG111: send a urine for culture, use cefalexin as the first oral choice, and refer to hospital anyone with signs of a more serious illness such as sepsis. Assess sepsis risk with NICE NG253 (NG255 if pregnant or recently pregnant).", src:"NICE NG111 (2018) · NICE NG253 and NG255 (2025)"},
+    {tone:"amber", h:"Aged 65 or over? Do not dipstick", html:"UKHSA: bacteria in the urine without infection become common with age, so a positive dipstick in an older woman proves nothing and does not justify an antibiotic. Diagnose on <b>new dysuria alone, or two or more new signs</b> (fever, new frequency or urgency, new incontinence, new or worse delirium or functional decline, new suprapubic pain, visible haematuria) and send a urine for culture. Fever with confusion alone means look for another source first.", src:"UKHSA UTI diagnostic tools (updated July 2025)"},
+    {tone:"cream", h:"First line: nitrofurantoin 3 days, if the kidneys allow", html:"NICE NG109 for a non-pregnant woman: <b>nitrofurantoin 100 mg modified-release twice a day for 3 days</b> (eGFR 45 ml/min or more), or <b>trimethoprim 200 mg twice a day for 3 days</b> if resistance is unlikely. Second choice when these fail after 48 hours or are unsuitable: nitrofurantoin (if not used first), pivmecillinam or fosfomycin. A back-up prescription is a reasonable choice for milder symptoms.", src:"NICE NG109 (2018) · MHRA DSU Sep 2014"},
+    {tone:"amber", h:"Pregnant: culture, treat for 7 days, avoid the wrong drug at the wrong time", html:"NICE NG109: send a midstream urine <b>before</b> the first dose and give an immediate antibiotic — <b>nitrofurantoin for 7 days</b> first (not at term: neonatal haemolysis), then cefalexin, or amoxicillin only if the culture shows it is sensitive. Asymptomatic bacteriuria found on antenatal screening is also treated for 7 days. The BNF lists trimethoprim as a teratogenic risk in the first trimester.", src:"NICE NG109 (2018) · BNF trimethoprim"},
+    {tone:"purple", h:"Haematuria and recurrent UTI in older women are cancer questions", html:"NICE NG12: suspected cancer pathway referral for <b>bladder or renal cancer at age 45 and over</b> with unexplained visible haematuria without UTI, or visible haematuria that persists or recurs after successful treatment of UTI; and for bladder cancer at <b>60 and over</b> with unexplained non-visible haematuria plus either dysuria or a raised white cell count. Consider a <b>non-urgent</b> referral at 60 and over for recurrent or persistent unexplained UTI.", src:"NICE NG12 (updated April 2026)"},
+    {tone:"green", h:"Recurrent UTI: prevent before you prophylax", html:"NICE NG112 sets an order: self-care and behavioural measures, then <b>vaginal oestrogen</b> after the menopause, then a <b>single antibiotic dose after a known trigger</b>, and only then <b>methenamine hippurate or daily antibiotic prophylaxis</b>, each with a set review. Culture every episode first — many recurrent “UTIs” are something else.", src:"NICE NG112 (2018, updated Dec 2024)"}
   ],
-  foot:"UTI in adult women (non-pregnant & pregnant) \u2014 NICE NG109 (lower UTI), NG112 (antimicrobial prescribing), NG111 (pyelonephritis), NICE. Verify doses against the current BNF before prescribing."
+  pathwaySub:"The consultation in five moves. The first step is where women come to harm, so it always comes first.",
+  pathway:[
+    {title:"Screen for upper tract infection and sepsis", html:"Loin pain, temperature, rigors, vomiting, new confusion, tachycardia or low blood pressure. Any of these moves her off the cystitis path to the pyelonephritis path (NICE NG111) and a sepsis risk assessment (NICE NG253, or NG255 in pregnancy). Ask about pregnancy in every woman of childbearing age.", alert:true},
+    {title:"Diagnose on symptoms, by age", html:"<b>Under 65:</b> two or more of dysuria, new nocturia and urine cloudy to the naked eye makes UTI likely; use a dipstick only when the picture is less clear (UKHSA). Ask about vaginal discharge or irritation first — it points to another diagnosis. <b>65 and over:</b> no dipstick; diagnose on the UKHSA signs and send a culture."},
+    {title:"Choose the right short course", html:"Non-pregnant: nitrofurantoin or trimethoprim for 3 days, or a back-up prescription if symptoms are mild (NICE NG109). Pregnant: culture first, then 7 days. Check eGFR before nitrofurantoin, and the date of any recent trimethoprim."},
+    {title:"Review at 48 hours or on the culture", html:"Symptoms that are not starting to improve within 48 hours, or that worsen, need reassessment: check the culture, switch to a second-choice drug, and reconsider the diagnosis and the kidney (NICE NG109)."},
+    {title:"If it keeps coming back: confirm, look for causes, prevent", html:"Recurrent UTI is two or more in 6 months or three or more in 12 months (NICE NG112). Culture each episode, ask the NG12 question about haematuria and age, look for reversible causes, then climb the NG112 prevention ladder with a review date on each rung."}
+  ],
+  sections:[
+    {id:"diagnose", nav:"Diagnose", title:"Making the diagnosis — the symptoms carry more weight than the stick", sub:"The UKHSA tools split women by age. The rules below are for women without a catheter; catheter-associated infection follows a different pathway.",
+     blocks:[
+       {b:"table", head:["Situation","What decides it","Action"], rows:[
+         ["<b>Under 65, two or more key signs</b>","Dysuria, new nocturia, urine cloudy to the naked eye","UTI likely. Treat empirically or offer a back-up prescription for mild symptoms; no dipstick needed (UKHSA)"],
+         ["<b>Under 65, one key sign, or other new urinary symptoms</b>","Urgency, frequency, visible haematuria or suprapubic tenderness","Dipstick may guide treatment (UKHSA): <b>nitrite positive, or leukocyte and blood positive</b> → UTI likely; <b>leukocyte positive, nitrite negative</b> → UTI as likely as another cause, send a culture; <b>all three negative</b> → UTI less likely, think again"],
+         ["<b>Under 65, none of the key signs</b>","—","UTI less likely. Look for another cause before treating"],
+         ["<b>65 and over</b>","New dysuria alone, or two or more of: fever, new frequency or urgency, new incontinence, new or worse delirium or functional decline, new suprapubic pain, visible haematuria","<b>Do not dipstick</b> (UKHSA). Send a urine for culture and treat on the clinical picture. Fever and delirium alone → exclude other infections first"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"When to send a culture", html:"Before antibiotics in every <b>pregnant</b> woman (NICE NG109) and every woman aged <b>65 and over</b> with suspected UTI (UKHSA). Also send one when symptoms fail to improve on treatment, when infection recurs, when resistance is likely (recent antibiotics, previous resistant isolate), when the dipstick is equivocal, and in suspected pyelonephritis (NICE NG111).", src:"NICE NG109 · NICE NG111 · UKHSA (2025)"},
+         {tone:"amber", h:"The mimics that get antibiotics they do not need", html:"Vaginal discharge or itch (thrush, bacterial vaginosis, trichomonas), urethritis from a sexually transmitted infection or from irritants after sex, and genitourinary syndrome of menopause all cause dysuria. UKHSA lists urethritis and menopausal genitourinary symptoms as alternatives to consider. Offer STI testing where there is risk. Recurrent ‘UTI’ with negative cultures also raises bladder pain syndrome and overactive bladder.", src:"UKHSA UTI diagnostic tools (2025)"},
+         {tone:"blue", h:"Asymptomatic bacteriuria — treat only in pregnancy", html:"In a non-pregnant woman, bacteria in the urine without symptoms are not an infection and antibiotics bring harm without benefit. The UKHSA tool for older adults makes the point directly: a positive dipstick from asymptomatic bacteriuria is not harmful and antibiotics are not beneficial. Pregnancy is the exception — see the pregnancy section.", src:"UKHSA UTI diagnostic tools (2025) · NICE NG109"},
+         {tone:"green", h:"Pharmacy First covers the simple case", html:"Community pharmacies in England can treat uncomplicated lower UTI in <b>women aged 16 to 64</b> under the NHS England Pharmacy First pathway, using nitrofurantoin. Pregnancy, a catheter and recurrent UTI (two in 6 months or three in 12 months) are excluded, as are fever, vomiting and loin pain — so these women come to the practice.", src:"NHS England Pharmacy First clinical pathways (2024) · NICE NG109"}
+       ]},
+       {b:"why", html:"<b>Why the age split?</b> The proportion of women carrying bacteria without infection rises with age — UKHSA notes that by 80 around half of older adults in care have asymptomatic bacteriuria. In that group a dipstick lights up whatever the cause of the symptoms, so it cannot discriminate. In younger women the dipstick adds something only when the history is ambiguous; with two or more key symptoms it changes nothing."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — who is not on the cystitis path", sub:"Screen these before choosing a drug. Most change the destination as well as the antibiotic.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Suspected sepsis", html:"Fever or low temperature, rigors, rapid breathing, tachycardia, low blood pressure, mottled skin, new confusion or reduced urine output with a urinary source. Use the NICE NG253 risk criteria (NG255 in pregnancy or within 6 weeks of pregnancy) and send high-risk patients by ambulance.", src:"NICE NG253 (2025) · NICE NG255 (2025)"},
+         {tone:"red", h:"Acute pyelonephritis", html:"Loin or flank pain and tenderness, fever, nausea or vomiting, with or without lower urinary symptoms. NICE NG111: refer to hospital if there are signs of more serious illness; consider referral or specialist advice if she is pregnant, significantly dehydrated or unable to take oral fluids and medicines, or at higher risk of complications.", src:"NICE NG111 (2018)"},
+         {tone:"purple", h:"Visible haematuria at 45 and over", html:"NICE NG12: unexplained visible haematuria without UTI, or visible haematuria that persists or recurs after successful UTI treatment, at age 45 or over → <b>suspected cancer pathway referral</b> for bladder and renal cancer. Treat the infection, then recheck: blood that remains once the infection has cleared cannot be put down to the UTI.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"purple", h:"Non-visible haematuria at 60 and over", html:"NICE NG12: aged 60 or over with unexplained non-visible haematuria and either dysuria or a raised white cell count on a blood test → suspected cancer pathway referral for bladder cancer. Recurrent or persistent unexplained UTI at 60 or over → <b>consider a non-urgent</b> bladder cancer referral.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"amber", h:"Pregnancy", html:"Every urinary infection in pregnancy is treated immediately, cultured first and followed up, and pyelonephritis in pregnancy has a low threshold for referral (NICE NG109, NG111). Fever in pregnancy is assessed against NICE NG255.", src:"NICE NG109 · NICE NG111 · NICE NG255"},
+         {tone:"amber", h:"Treatment failure or an unusual picture", html:"No improvement after 48 hours of a first-choice drug, a resistant organism, a relapse with the same organism soon after treatment, or <i>Proteus</i> on culture (which favours stone formation) should prompt culture review, a second-choice drug and a thought about stones or obstruction.", src:"NICE NG109 (2018)"}
+       ]},
+       {b:"warn", html:"Confusion in an older woman is not a UTI until the urinary signs say so. UKHSA: fever and delirium without urinary signs → look for other infections and other causes of delirium before treating the urine. A dipstick will not settle it."}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Treating uncomplicated lower UTI in non-pregnant women", sub:"NICE NG109 doses for women aged 16 and over. Check the BNF for renal adjustment and interactions before prescribing.",
+     blocks:[
+       {b:"table", head:["Choice","Antibiotic (NICE NG109)","Points to check"], rows:[
+         ["<b>First</b>","<span class='rx'>Nitrofurantoin 100 mg modified-release twice a day for 3 days</span> (or 50 mg four times a day for 3 days if MR is unavailable)","Only if eGFR is 45 ml/min or more. MHRA (Sep 2014): contraindicated below 45, except that eGFR 30–44 may be used with caution for a short course against suspected or proven multidrug-resistant bacteria when benefit outweighs risk"],
+         ["<b>First</b>","<span class='rx'>Trimethoprim 200 mg twice a day for 3 days</span>","Only if the risk of resistance is low — for example no trimethoprim in the past 3 months and a previous culture showing sensitivity. BNF: interactions with methotrexate and hyperkalaemia risk"],
+         ["<b>Second</b>","Nitrofurantoin (if not used first), <b>pivmecillinam</b> or <b>fosfomycin</b> — doses per NICE NG109 and BNF","For symptoms not improving after at least 48 hours of a first-choice drug, or when first choices are unsuitable. Use the culture result where you have one"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Immediate or back-up prescription", html:"NICE NG109: for a non-pregnant woman, consider a <b>back-up antibiotic prescription</b> (to use if symptoms do not start to improve within 48 hours or worsen at any time) or an <b>immediate prescription</b>. Weigh how severe the symptoms are, the risk of complications, previous culture results and her own preference.", src:"NICE NG109 (2018)"},
+         {tone:"green", h:"Self-care alongside", html:"NICE NG109: paracetamol for pain, or ibuprofen if preferred and suitable, and enough fluid to avoid dehydration. NG109 found no evidence for cranberry products or urine alkalinising agents as treatment.", src:"NICE NG109 (2018)"},
+         {tone:"amber", h:"Nitrofurantoin — the lung and the liver", html:"MHRA (April 2023) reminded prescribers of acute and chronic pulmonary reactions and hepatic reactions with nitrofurantoin, after a death from acute lung injury following a 10-day course. Use with caution in known lung or liver disease, tell patients to stop and seek advice if they develop breathlessness, cough or jaundice, and review long-term use.", src:"MHRA Drug Safety Update (April 2023)"},
+         {tone:"blue", h:"When the culture comes back", html:"NICE NG109: review the antibiotic when the result arrives and change it if the organism is resistant and symptoms are not already improving. A resistant organism in a woman who is better needs no change.", src:"NICE NG109 (2018)"}
+       ]},
+       {b:"say", html:"This looks like a straightforward bladder infection. A three-day course usually settles it, and most women feel better within a couple of days. If you are not starting to improve in 48 hours, or you get pain in your back or side, a temperature or shivers, or you feel really unwell, contact us that day — that can mean the infection has moved up to the kidney."}
+     ]},
+
+    {id:"pregnancy", nav:"Pregnancy", title:"Pregnancy — culture, 7 days, and the trimester traps", sub:"All bacteriuria in pregnancy is treated, symptomatic or not.",
+     blocks:[
+       {b:"table", head:["Choice","Antibiotic (NICE NG109)","Caution"], rows:[
+         ["<b>First</b>","<span class='rx'>Nitrofurantoin 100 mg modified-release twice a day for 7 days</span> (or 50 mg four times a day), if eGFR 45 ml/min or more","<b>Avoid at term</b> — may produce neonatal haemolysis (NICE NG109, BNF)"],
+         ["<b>Second</b>","<span class='rx'>Cefalexin 500 mg twice a day for 7 days</span>","For no improvement after 48 hours or when nitrofurantoin is unsuitable"],
+         ["<b>Second</b>","<span class='rx'>Amoxicillin 500 mg three times a day for 7 days</span>","<b>Only</b> with a culture showing sensitivity — resistance is common"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Always culture, always treat now", html:"NICE NG109: obtain a midstream urine before antibiotics and send it for culture and susceptibility testing, and offer an <b>immediate</b> antibiotic — the back-up option does not apply in pregnancy. Review the choice when the result arrives.", src:"NICE NG109 (2018)"},
+         {tone:"amber", h:"Asymptomatic bacteriuria found on screening", html:"Antenatal care includes a midstream urine culture early in pregnancy (NICE NG201). NICE NG109 recommends treating bacteriuria found this way with nitrofurantoin, amoxicillin or cefalexin, chosen by the culture result, for 7 days. Most maternity units then repeat the culture after treatment to confirm clearance — follow your local obstetric protocol.", src:"NICE NG109 (2018) · NICE NG201 (2021)"},
+         {tone:"red", h:"Trimethoprim in the first trimester", html:"The BNF lists trimethoprim as a teratogenic risk in the first trimester because it is a folate antagonist. It is not among the NICE NG109 choices for pregnant women — use it only on specialist or microbiology advice.", src:"BNF trimethoprim · NICE NG109"},
+         {tone:"red", h:"Pyelonephritis in pregnancy", html:"NICE NG111: first oral choice is cefalexin 500 mg two or three times a day for 7 to 10 days, and consider referral or specialist advice for every pregnant woman with pyelonephritis. Assess sepsis risk with NICE NG255; a pregnant woman with fever and loin pain usually needs same-day obstetric assessment.", src:"NICE NG111 (2018) · NICE NG255 (2025)"}
+       ]},
+       {b:"why", html:"<b>Why pregnancy is different.</b> Physiological dilatation of the ureters and slower urine flow let bacteria ascend, so untreated bacteriuria in pregnancy progresses to pyelonephritis far more often than outside it, and pyelonephritis is linked to preterm birth. That is why NICE NG201 screens for it and NICE NG109 treats it without waiting for symptoms, for 7 days rather than 3."}
+     ]},
+
+    {id:"pyelo", nav:"Pyelonephritis", title:"Acute pyelonephritis in primary care", sub:"NICE NG111 oral options for adults who can be managed at home. Doses are for non-pregnant women unless stated.",
+     blocks:[
+       {b:"table", head:["Antibiotic (NICE NG111)","Dose and duration","When"], rows:[
+         ["<b>Cefalexin</b>","<span class='rx'>500 mg two or three times a day for 7 to 10 days</span> (higher doses per BNF for severe infection)","First oral choice, including in pregnancy"],
+         ["<b>Co-amoxiclav</b>","<span class='rx'>500/125 mg three times a day for 7 to 10 days</span>","Only if the culture shows sensitivity"],
+         ["<b>Trimethoprim</b>","<span class='rx'>200 mg twice a day for 14 days</span>","Only if the culture shows sensitivity; not in pregnancy"],
+         ["<b>Ciprofloxacin</b>","<span class='rx'>500 mg twice a day for 7 days</span>","MHRA (January 2024): systemic fluoroquinolones only when other recommended antibiotics are inappropriate — have failed, will not work because of resistance, or are unsafe"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Who goes to hospital", html:"NICE NG111: refer anyone with symptoms or signs suggesting a more serious illness (for example sepsis). Consider referral or specialist advice for pregnancy, significant dehydration or inability to take oral fluids and medicines, a higher risk of complications (structural or functional abnormality, immunosuppression), and recurrent pyelonephritis or lower UTI.", src:"NICE NG111 (2018)"},
+         {tone:"blue", h:"Culture every time, and do not use nitrofurantoin", html:"Send a midstream urine before the first dose and review the drug when the result is back (NICE NG111). Nitrofurantoin and fosfomycin do not achieve useful kidney tissue levels, so they have no role in upper UTI.", src:"NICE NG111 (2018) · BNF"}
+       ]},
+       {b:"warn", html:"Reassess anyone whose symptoms worsen or fail to improve within 48 hours of an oral antibiotic, or sooner if she becomes more unwell (NICE NG111). A woman with pyelonephritis who is vomiting cannot absorb oral treatment and needs hospital care."}
+     ]},
+
+    {id:"recurrent", nav:"Recurrent UTI", title:"Recurrent UTI — confirm it, then look for the reason", sub:"NICE NG112 defines recurrent UTI as two or more infections in 6 months, or three or more in 12 months. A fuller page: <a href='recurrent-uti.html'>Recurrent UTI</a>.",
+     blocks:[
+       {b:"kv", rows:[
+         ["<b>Confirm the pattern</b>","Culture each suspected episode before treatment (NICE NG112). A prevention plan built on unconfirmed episodes risks months of antibiotics for bladder pain syndrome, atrophy or urethritis"],
+         ["<b>Relapse or reinfection?</b>","The same organism returning within about 2 weeks of treatment suggests relapse — think of a stone, an abscess or incomplete treatment. A different organism, or recurrence later, is reinfection, the usual pattern in women"],
+         ["<b>Reversible factors</b>","Spermicide or diaphragm use, constipation, incomplete bladder emptying, low fluid intake, genitourinary syndrome of menopause, poorly controlled diabetes (check HbA1c if not known)"],
+         ["<b>Cancer question</b>","Age 60 or over with recurrent or persistent unexplained UTI → consider a non-urgent bladder cancer referral; haematuria at the NG12 thresholds → suspected cancer pathway (NICE NG12)"],
+         ["<b>When to refer</b>","NICE NG112: seek specialist advice for recurrent upper UTI, recurrent lower UTI where the cause is unknown, and suspected cancer. Imaging (ultrasound) is guided by the specialist or by features such as <i>Proteus</i>, relapse with the same organism, or loin pain"]
+       ]},
+       {b:"why", html:"The commonest error in recurrent UTI is a nightly antibiotic started on the strength of a stack of <em>uncultured</em> episodes, with no one having asked about spermicide, constipation or vaginal atrophy. Confirm, correct and then prevent — in that order. Many women never need long-term antibiotics once the first two steps are done."}
+     ]},
+
+    {id:"prevent", nav:"Prevention", title:"The NG112 prevention ladder", sub:"Each rung is tried, reviewed and kept only if it works. Not for pregnant women, who need specialist advice.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Rung 1", title:"Self-care and behavioural measures", when:"everyone with recurrent UTI", fromLabel:"no prescription",
+          html:"NICE NG112: advise on behavioural and personal hygiene measures and self-care — for example avoiding dehydration, not delaying urination (including after sex), and avoiding spermicide. In premenopausal women who drank little, an extra 1.5 litres of water a day cut recurrences from 3.2 to 1.7 a year (Hooton, JAMA Intern Med 2018). NG112 says women may wish to try <b>D-mannose</b> (the trial used 2 g daily, as 200 ml of a 1% solution) or <b>cranberry products</b>, with limited or uncertain evidence and a note on sugar content; cranberry has no evidence of benefit in older women."},
+         {step:"Rung 2", title:"Vaginal oestrogen after the menopause", when:"postmenopausal women", fromLabel:"the highest-yield single measure",
+          html:"NICE NG112: consider vaginal oestrogen if behavioural measures are not enough, and review within 12 months. In the key trial, <span class='rx'>estriol cream 0.5 mg nightly for 2 weeks then twice weekly</span> for 8 months cut recurrence from 62.8% to 16.0% (NNT 3). BNF alternatives include <span class='rx'>estradiol 10 microgram vaginal tablets daily for 2 weeks then twice weekly</span>. Oral HRT does not reduce UTI recurrence (NG112)."},
+         {step:"Rung 3", title:"Single-dose antibiotic after a trigger", when:"a clear trigger such as intercourse", fromLabel:"targeted antibiotic",
+          html:"NICE NG112: if rungs 1 and 2 are not effective or not appropriate, consider a single dose taken on exposure to an identifiable trigger — <span class='rx'>trimethoprim 200 mg</span> or <span class='rx'>nitrofurantoin 100 mg</span> (eGFR 45 or more); second choices <span class='rx'>amoxicillin 500 mg</span> or <span class='rx'>cefalexin 500 mg</span>. Far less antibiotic exposure than nightly dosing."},
+         {step:"Rung 4", title:"Methenamine hippurate or daily antibiotic prophylaxis", when:"the earlier rungs have not worked", fromLabel:"review within 6 months",
+          html:"NICE NG112 (updated Dec 2024): consider <b>methenamine hippurate</b> as an alternative to daily antibiotics (dose per BNF, usually 1 g twice a day); review within 6 months and then every 12 months. Tell her not to use over-the-counter urine-alkalinising sachets (potassium or sodium citrate) with it, as they make it less effective; seek specialist advice before using it in pregnancy or for recurrent upper or complicated UTI. The ALTAR trial found it non-inferior to daily low-dose antibiotics (Harding, BMJ 2022). Daily antibiotic prophylaxis: <span class='rx'>trimethoprim 100 mg at night</span> or <span class='rx'>nitrofurantoin 50–100 mg at night</span>; second choices <span class='rx'>amoxicillin 250 mg</span> or <span class='rx'>cefalexin 125 mg at night</span>. Review within 6 months, including whether to stop. Mind the nitrofurantoin lung and liver warning (MHRA April 2023)."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Standby courses", html:"Some clinicians agree a standby 3-day course that a reliable woman starts at the first symptoms, after dropping off a urine sample. NICE NG112 does not list this as a prevention option, so treat it as a shared decision: it treats episodes rather than preventing them, and each course still counts towards her antibiotic exposure. The NICE NG109 back-up prescription is the nearest guideline equivalent.", src:"NICE NG109 · NICE NG112 (context)"},
+         {tone:"amber", h:"Review is part of the prescription", html:"NICE NG112 attaches a review to every prevention treatment: vaginal oestrogen within 12 months, methenamine hippurate within 6 months then every 12 months, and antibiotic prophylaxis within 6 months. At each review ask whether it is working, whether it is tolerated, what the latest culture shows, and whether a trial without it makes sense.", src:"NICE NG112 (2018, updated Dec 2024)"}
+       ]}
+     ]},
+
+    {id:"review", nav:"Review", title:"Follow-up and safety-netting", sub:"What to check, and when.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"48 hours", title:"Is she starting to improve?", html:"Not improving or worse → reassess, check the culture, switch to a second-choice drug, reconsider the diagnosis and look for pyelonephritis (NICE NG109)."},
+         {n:"2", when:"Culture result", title:"Match the drug to the bug", html:"Change only if the organism is resistant and she is not already improving. <i>Proteus</i> or relapse with the same organism → think of stones."},
+         {n:"3", when:"After treatment", title:"Haematuria check", html:"If there was visible haematuria, confirm it has gone. Persistent or recurrent visible haematuria at 45 or over → NICE NG12 suspected cancer pathway."},
+         {n:"4", when:"Pregnancy", title:"Confirm clearance", html:"Follow the local obstetric protocol for a repeat culture after treatment, and keep the antenatal team informed."},
+         {n:"5", when:"6 to 12 months", title:"Prevention review", html:"Vaginal oestrogen within 12 months; methenamine or antibiotic prophylaxis within 6 months (NICE NG112)."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Tell her to act the same day if…", html:"Back or side pain, a temperature or shivering, vomiting, feeling very unwell or confused — these can mean a kidney infection or sepsis. NICE NG109 asks that safety-netting advice covers worsening symptoms and signs of pyelonephritis or sepsis.", src:"NICE NG109 · NICE NG253"},
+         {tone:"green", h:"And come back routinely if…", html:"No improvement in 48 hours; symptoms that return soon after finishing; blood in the urine that persists after treatment; or a third infection within a year — that last one opens the recurrent UTI work-up.", src:"NICE NG109 · NICE NG112 · NICE NG12"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — where, and how fast", sub:"The route depends on what you are worried about.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"red", h:"Same day / emergency", html:"Suspected sepsis (NICE NG253; NG255 in pregnancy). Pyelonephritis with signs of more serious illness, vomiting or inability to take oral treatment (NICE NG111). Pyelonephritis in pregnancy — discuss with obstetrics the same day.", src:"NICE NG111 · NICE NG253 · NICE NG255"},
+         {tone:"purple", h:"2WW — suspected cancer pathway (NICE NG12)", html:"<b>Bladder and renal cancer:</b> aged 45 and over with unexplained visible haematuria without urinary tract infection, or visible haematuria that persists or recurs after successful treatment of urinary tract infection. <b>Bladder cancer:</b> aged 60 and over with unexplained non-visible haematuria and either dysuria or a raised white cell count on a blood test. Consider a <b>non-urgent</b> referral for bladder cancer at 60 and over with recurrent or persistent unexplained urinary tract infection.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"amber", h:"Urology or specialist advice", html:"NICE NG112: recurrent upper UTI; recurrent lower UTI where the cause is unknown; suspected cancer. Also relapse with the same organism, <i>Proteus</i> or suspected stones, incomplete emptying or a structural concern, and failure of the whole prevention ladder.", src:"NICE NG112 (2018, updated Dec 2024)"},
+         {tone:"cream", h:"Other pathways on this site", html:"Men, children and catheter-associated infection follow different rules: see <a href='uti-men.html'>UTI in men</a>, <a href='uti-children.html'>UTI in children</a> and <a href='recurrent-uti.html'>Recurrent UTI</a>. Pregnant women with recurrent bacteriuria need obstetric input.", src:"NICE NG109 · NICE NG112"}
+       ]},
+       {b:"say", html:"Most bladder infections clear with a short course and never come back. If they keep returning, we have a set of steps to try before any long-term antibiotic — and we’ll check each one after a few months so you’re not left on something that isn’t helping."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only — the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 62-year-old woman asks for “another course of the usual antibiotic”: her fourth urine infection this year. Two were treated by phone without a sample. She mentions in passing that the last one had “a bit of blood” in it. She is postmenopausal, not on HRT, and has noticed vaginal dryness.", src:"NICE NG112 · NICE NG12"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Screens for <b>pyelonephritis and sepsis</b> before anything else; <b>sends a culture</b> this time rather than repeating an empirical course; picks up the <b>haematuria</b> and applies the NG12 age thresholds (45 visible; 60 non-visible with dysuria or raised white cells; non-urgent referral at 60 for recurrent unexplained UTI); asks about <b>spermicide, emptying, constipation and diabetes</b>; offers <b>vaginal oestrogen</b> as the first prevention step with a 12-month review; explains why a nightly antibiotic is not first; and safety-nets for loin pain and fever. <a href='../../cases/uti-women.html'>Open the full casebook chapter →</a>", src:"NICE NG112 · NICE NG12 · NICE NG109"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG109 — Urinary tract infection (lower): antimicrobial prescribing</b> (October 2018)<br><a href="https://www.nice.org.uk/guidance/ng109" rel="noopener">nice.org.uk/guidance/ng109</a><span class="rd"> — back-up or immediate prescription for non-pregnant women; nitrofurantoin 100 mg MR twice a day for 3 days (eGFR 45 or more) or trimethoprim 200 mg twice a day for 3 days if low resistance risk; second choices nitrofurantoin, pivmecillinam, fosfomycin; pregnancy: culture first, immediate antibiotic, nitrofurantoin 7 days (not at term), cefalexin 500 mg twice a day or amoxicillin 500 mg three times a day (culture only) for 7 days; asymptomatic bacteriuria in pregnancy; self-care; reassess at 48 hours</span></li>'+
+         '<li><b>NICE NG111 — Pyelonephritis (acute): antimicrobial prescribing</b> (October 2018)<br><a href="https://www.nice.org.uk/guidance/ng111" rel="noopener">nice.org.uk/guidance/ng111</a><span class="rd"> — cefalexin 500 mg two or three times a day 7–10 days; co-amoxiclav 500/125 mg three times a day 7–10 days and trimethoprim 200 mg twice a day 14 days only with culture; ciprofloxacin 500 mg twice a day 7 days; referral criteria including pregnancy</span></li>'+
+         '<li><b>NICE NG112 — Urinary tract infection (recurrent): antimicrobial prescribing</b> (October 2018, updated December 2024)<br><a href="https://www.nice.org.uk/guidance/ng112" rel="noopener">nice.org.uk/guidance/ng112</a><span class="rd"> — definition (2 in 6 months or 3 in 12 months); behavioural measures, D-mannose and cranberry; vaginal oestrogen with 12-month review; single-dose prophylaxis (trimethoprim 200 mg, nitrofurantoin 100 mg; amoxicillin 500 mg, cefalexin 500 mg); methenamine hippurate with 6-month then 12-month review; daily prophylaxis (trimethoprim 100 mg, nitrofurantoin 50–100 mg; amoxicillin 250 mg, cefalexin 125 mg) with 6-month review; specialist referral criteria; estriol trial NNT 3</span></li>'+
+         '<li><b>UKHSA — Urinary tract infection: diagnostic tools for primary care</b> (updated July 2025)<br><a href="https://www.gov.uk/government/publications/urinary-tract-infection-diagnosis" rel="noopener">gov.uk/government/publications/urinary-tract-infection-diagnosis</a><span class="rd"> — under 65: dysuria, new nocturia, cloudy urine (two or more = UTI likely); dipstick interpretation; urethritis and menopausal genitourinary symptoms as alternatives; 65 and over: do not dipstick, diagnostic signs, send culture</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b> (2015, updated April 2026)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — bladder and renal cancer: 45 and over with visible haematuria; bladder cancer: 60 and over with non-visible haematuria plus dysuria or raised white cell count; non-urgent referral at 60 and over with recurrent or persistent unexplained UTI</span></li>'+
+         '<li><b>NICE NG253 — Suspected sepsis in people aged 16 or over</b> and <b>NICE NG255 — Suspected sepsis in pregnant or recently pregnant people</b> (both November 2025)<br><a href="https://www.nice.org.uk/guidance/ng253" rel="noopener">nice.org.uk/guidance/ng253</a> · <a href="https://www.nice.org.uk/guidance/ng255" rel="noopener">nice.org.uk/guidance/ng255</a></li>'+
+         '<li><b>NICE NG201 — Antenatal care</b> (2021)<br><a href="https://www.nice.org.uk/guidance/ng201" rel="noopener">nice.org.uk/guidance/ng201</a><span class="rd"> — screening for asymptomatic bacteriuria by midstream urine culture early in pregnancy</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Nitrofurantoin now contraindicated in most patients with an eGFR below 45 ml/min</b> (September 2014)<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — eGFR 30–44: short course with caution for multidrug-resistant infection only</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Nitrofurantoin: reminder of the risks of pulmonary and hepatic adverse drug reactions</b> (April 2023)<br><a href="https://www.gov.uk/drug-safety-update/nitrofurantoin-reminder-of-the-risks-of-pulmonary-and-hepatic-adverse-drug-reactions" rel="noopener">gov.uk/drug-safety-update</a></li>'+
+         '<li><b>MHRA Drug Safety Update — Fluoroquinolone antibiotics: must now only be prescribed when other commonly recommended antibiotics are inappropriate</b> (January 2024)<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a></li>'+
+         '<li><b>NHS England — Pharmacy First clinical pathways</b> (uncomplicated UTI in women aged 16 to 64)<br><a href="https://www.england.nhs.uk/primary-care/pharmacy/pharmacy-services/pharmacy-first/" rel="noopener">england.nhs.uk</a><span class="rd"> — exclusions include pregnancy, catheter and recurrent UTI</span></li>'+
+         '<li><b>BNF</b> — nitrofurantoin, trimethoprim, pivmecillinam, fosfomycin, cefalexin, methenamine hippurate, estriol, estradiol<br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — trimethoprim teratogenic risk in the first trimester; nitrofurantoin at term; renal dosing and interactions</span></li>'+
+         '<li><b>Harding C, et al. Alternative to prophylactic antibiotics for the treatment of recurrent urinary tract infections in women (ALTAR).</b> BMJ 2022;376:e068229<span class="rd"> — methenamine hippurate non-inferior to daily antibiotic prophylaxis</span></li>'+
+         '<li><b>Hooton TM, et al. Effect of increased daily water intake in premenopausal women with recurrent urinary tract infections.</b> JAMA Intern Med 2018;178:1509–1515<span class="rd"> — an extra 1.5 L daily: 1.7 versus 3.2 episodes a year</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Lower urinary tract infection in women aged 16 and over — NICE NG109 (2018), NG111 (2018), NG112 (2018, updated 2024), NG12 (updated April 2026), NG253 and NG255 (2025), UKHSA diagnostic tools (2025) and MHRA Drug Safety Updates (2014, 2023, 2024). Verify every dose against the current BNF and your local formulary before prescribing. Not a substitute for clinical judgement."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

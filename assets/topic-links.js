@@ -38,7 +38,7 @@
     var entry = lookup(cur); if (!entry) return;
     var others = ORDER.filter(function(t){
       if (t === cur.type || !entry[t]) return false;
-      if (t === 'a' && (RETIRED_ALG.indexOf(entry.a) !== -1 || RETIRED_ALG.indexOf(entry.m) !== -1)) return false;
+      if (t === 'a' && RETIRED_ALG.indexOf(entry.a) !== -1) return false;
       return true;
     });
     if (!others.length) return;

@@ -5,7 +5,7 @@
    assessment → management (non-drug emphasis) → safety-netting →
    referral. Original summaries based on NICE / NG guidance.
    ============================================================ */
-window.RGP_AUDIO_TRACKS = [
+window.RGP_AUDIO_LIST = [
 
   /* ---------------- CARDIOVASCULAR ---------------- */
   { id:'nice-hypertension', cat:'Cardiovascular', ic:'🫀', dur:'5 min', title:'Hypertension', sub:'NICE clinician summary',

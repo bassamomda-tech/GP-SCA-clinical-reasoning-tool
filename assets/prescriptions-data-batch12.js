@@ -5,14 +5,14 @@
 
   { id:'cap', title:'Community-acquired pneumonia', category:'Infections',
     eyebrow:'CRB-65 severity · amoxicillin 1st line',
-    indication:'Adult CAP diagnosed clinically (± CXR). Assess severity with CRB-65 and treat at the appropriate setting. Antibiotic choice and duration per NICE NG138.',
-    contraindications:'CRB-65 ≥2 (or clinical concern/comorbidity) → consider hospital. Sepsis/severe → admit. Penicillin allergy → use alternative. Review at 48–72 h; lack of response → reassess/CXR/admit.',
-    duration:'5 days (review; extend if not improving)',
+    indication:'Adult CAP diagnosed clinically (± CXR). Assess severity with CRB-65 and treat at the appropriate setting. Antibiotic choice and duration per NICE NG250 (2025; replaced NG138/CG191).',
+    contraindications:'CRB-65 is used with clinical judgement: 0 → usually home; 1 → primary care with safety-netting or other community options (virtual ward, SDEC, hospital at home) or hospital; ≥2 → consider hospital referral. Sepsis/cardiorespiratory failure → admit. Penicillin allergy → use alternative. Review at 48–72 h; lack of response → reassess/CXR/admit.',
+    duration:'5 days (stop at 5 days if clinically stable; review if not improving)',
     drugs:[
-      { name:'CRB-65 0\u20131 (low severity): Amoxicillin', dose:'500 mg', freq:'TDS', route:'PO', days:'5 days' },
+      { name:'Low severity (clinical judgement + CRB-65): Amoxicillin', dose:'500 mg', freq:'TDS', route:'PO', days:'5 days' },
       { name:'Penicillin allergy / atypical: doxycycline OR clarithromycin', dose:'doxy 200 mg then 100 mg / clarith 500 mg', freq:'OD / BD', route:'PO', days:'5 days' },
-      { name:'Moderate severity (CRB-65 2): amoxicillin + (if atypical suspected) a macrolide', dose:'500 mg + 500 mg', freq:'TDS + BD', route:'PO', days:'5 days' },
-      { name:'Safety-net + reassess at 48\u201372 h; CRB-65 \u22652 \u2192 consider admission', dose:'\u2014', freq:'\u2014', route:'Advice', days:'\u2014' },
+      { name:'Moderate severity: amoxicillin + (if atypical suspected) a macrolide', dose:'500 mg + 500 mg', freq:'TDS + BD', route:'PO', days:'5 days' },
+      { name:'Safety-net + reassess at 48\u201372 h; CRB-65 \u22652 \u2192 consider hospital referral', dose:'\u2014', freq:'\u2014', route:'Advice', days:'\u2014' },
     ],
     altRegimens:[
       { label:'High severity / sepsis', drugs:'Admit; hospital IV antibiotics per local policy.' },
@@ -25,12 +25,12 @@
       'Stop smoking and keep up vaccinations (flu/pneumococcal) to reduce future infections.',
     ],
     followUp:'Reassess at 48\u201372 h. If not improving \u2192 CXR/reassess/admit. Consider repeat CXR at ~6 weeks if smoker/>50 to exclude underlying pathology.',
-    redFlags:['CRB-65 \u22652, sepsis, hypoxia, or unable to manage at home \u2192 admit.','Haemoptysis / not resolving \u2192 CXR to exclude malignancy.'],
-    emisText:`Community-acquired pneumonia (NG138):
-- Assess CRB-65. Low (0-1): amoxicillin 500 mg TDS 5d (pen-allergic: doxycycline 200 mg then 100 mg OD, or clarithromycin 500 mg BD, 5d).
-- Moderate (2): amoxicillin + macrolide if atypical suspected; consider admission.
+    redFlags:['Sepsis, cardiorespiratory failure, hypoxia, or unable to manage at home \u2192 admit; CRB-65 \u22652 \u2192 consider hospital referral.','Haemoptysis / not resolving \u2192 CXR to exclude malignancy.'],
+    emisText:`Community-acquired pneumonia (NICE NG250):
+- Assess CRB-65 + clinical judgement (0: usually home; 1: primary care with safety-netting or community options; 2+: consider hospital). Low severity: amoxicillin 500 mg TDS 5d (pen-allergic: doxycycline 200 mg then 100 mg OD, or clarithromycin 500 mg BD, 5d).
+- Moderate: amoxicillin + macrolide if atypical suspected. Stop at 5 days if clinically stable.
 - High/sepsis \u2192 admit. Reassess 48-72 h; smoker/>50 \u2192 CXR ~6 wks.`,
-    sources:[{ label:'NICE NG138 \u2014 Pneumonia (community-acquired): antimicrobial prescribing', url:'https://www.nice.org.uk/guidance/ng138' }],
+    sources:[{ label:'NICE NG250 \u2014 Pneumonia: diagnosis and management (2025; replaced NG138/CG191)', url:'https://www.nice.org.uk/guidance/ng250' }],
   },
 
   { id:'acute-cough-bronchitis', title:'Acute cough / acute bronchitis', category:'Infections',

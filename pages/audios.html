@@ -177,12 +177,6 @@
     <h2><span class="eyebrow">Listen now · external</span>UK primary-care podcasts &amp; audio platforms</h2>
     <p style="font-size:14px;color:var(--ink-2);line-height:1.6;max-width:74ch;margin:-2px 0 4px">While our own audio feed is in build, here are the established UK general-practice and NICE-aligned podcasts worth subscribing to — free, CPD-countable, and updated regularly. Opens in a new tab.</p>
     <div class="page-grid">
-      <a class="page-card" style="text-decoration:none;color:inherit" href="https://gpnotebook.com/en-GB/podcast" target="_blank" rel="noopener noreferrer">
-        <div class="page-card-eyebrow">🎧 GPnotebook</div>
-        <h3>GPnotebook Podcast</h3>
-        <p>Bite-sized, regular primary-care chats — clinical tips and hot topics. Earn CPD while you listen.</p>
-        <span class="page-card-cta">Open gpnotebook.com/podcast ↗</span>
-      </a>
       <a class="page-card" style="text-decoration:none;color:inherit" href="https://www.nbmedical.com/podcast" target="_blank" rel="noopener noreferrer">
         <div class="page-card-eyebrow">🎧 NB Medical</div>
         <h3>NB Hot Topics Podcast</h3>
@@ -204,7 +198,7 @@
       <a class="page-card" style="text-decoration:none;color:inherit" href="https://www.bmj.com/podcasts" target="_blank" rel="noopener noreferrer">
         <div class="page-card-eyebrow">🎧 BMJ</div>
         <h3>BMJ Podcasts</h3>
-        <p>Talk Medicine, Best Practice and education podcasts — research and clinical reviews from the BMJ.</p>
+        <p>Talk Medicine and education podcasts — research and clinical reviews from the BMJ.</p>
         <span class="page-card-cta">Open bmj.com/podcasts ↗</span>
       </a>
       <a class="page-card" style="text-decoration:none;color:inherit" href="https://fairhealth.org.uk/podcasts/" target="_blank" rel="noopener noreferrer">
@@ -261,12 +255,12 @@
 </div>
 
 </main></div>
-<script src="../assets/site.js?v=102"></script>
-<script src="../assets/audio-scripts-1.js"></script>
-<script src="../assets/audio-scripts-2.js"></script>
-<script src="../assets/audio-scripts-3.js"></script>
-<script src="../assets/audio-scripts-4.js"></script>
-<script src="../assets/audio-scripts-5.js"></script>
+<script src="../assets/site.js?v=104"></script>
+<script src="../assets/audio-scripts-1.js?v=2"></script>
+<script src="../assets/audio-scripts-2.js?v=2"></script>
+<script src="../assets/audio-scripts-3.js?v=2"></script>
+<script src="../assets/audio-scripts-4.js?v=2"></script>
+<script src="../assets/audio-scripts-5.js?v=2"></script>
 <script>
 /* ---- Learn on the Go: hands-free TTS player ----
    Narrates common GP scenarios + the latest guideline updates using the
@@ -274,8 +268,8 @@
    position in localStorage so a refresh resumes where you were. */
 (function(){
   // Library scripts live in external data files (assets/audio-scripts-*.js)
-  // loaded before this script; each pushes onto window.RGP_AUDIO_TRACKS.
-  var TRACKS = (window.RGP_AUDIO_TRACKS || []);
+  // loaded before this script; each pushes onto window.RGP_AUDIO_LIST.
+  var AUDIO_LIST = (window.RGP_AUDIO_LIST || []);
 
   var $ = function(s){ return document.querySelector(s); };
   var list = $('#logList');
@@ -291,10 +285,10 @@
   // ---- build playlist ----
   var catSlug = function(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); };
   var cats = [];
-  TRACKS.forEach(function(t){ if(cats.indexOf(t.cat)<0) cats.push(t.cat); });
+  AUDIO_LIST.forEach(function(t){ if(cats.indexOf(t.cat)<0) cats.push(t.cat); });
   list.innerHTML = cats.map(function(cat){
-    var rows = TRACKS.filter(function(t){return t.cat===cat;}).map(function(t){
-      var idx = TRACKS.indexOf(t);
+    var rows = AUDIO_LIST.filter(function(t){return t.cat===cat;}).map(function(t){
+      var idx = AUDIO_LIST.indexOf(t);
       return '<div class="log-item" data-item="'+idx+'" data-cat="'+catSlug(cat)+'">'+
         '<button class="log-track" data-i="'+idx+'" type="button">'+
           '<span class="log-track-ic">'+t.ic+'</span>'+
@@ -310,7 +304,7 @@
     }).join('');
     return '<div class="log-cat-h" data-cat="'+catSlug(cat)+'" id="acat-'+catSlug(cat)+'">'+cat+'</div>'+rows;
   }).join('');
-  $('#logCount').textContent = TRACKS.length+' briefings';
+  $('#logCount').textContent = AUDIO_LIST.length+' briefings';
   // ---- left category rail: filter the playlist by category ----
   var rail = document.getElementById('logRail');
   var layout = document.getElementById('logLayout');
@@ -322,9 +316,9 @@
   if(rail){
     rail.innerHTML = '<div class="dir-rail-top"><span class="dir-rail-title">Filter by category</span></div>'
       + '<div class="dir-rail-sec"><div class="dir-rail-list">'
-      + '<a class="dir-check on" href="#" data-acat="all"><span style="flex:1;color:var(--ink);font-size:13px;font-weight:600">All categories</span><span class="dir-check-n">'+TRACKS.length+'</span></a>'
+      + '<a class="dir-check on" href="#" data-acat="all"><span style="flex:1;color:var(--ink);font-size:13px;font-weight:600">All categories</span><span class="dir-check-n">'+AUDIO_LIST.length+'</span></a>'
       + cats.map(function(cat){
-          var n = TRACKS.filter(function(t){return t.cat===cat;}).length;
+          var n = AUDIO_LIST.filter(function(t){return t.cat===cat;}).length;
           return '<a class="dir-check" href="#acat-'+catSlug(cat)+'" data-acat="'+catSlug(cat)+'">'
             + '<span style="flex:1;color:var(--ink);font-size:13px">'+cat+'</span>'
             + '<span class="dir-check-n">'+n+'</span></a>';
@@ -433,12 +427,12 @@
   audioEl.addEventListener('ended', function(){
     if(mode!=='file') return;
     setBar(1);
-    if(state.autoplay && state.i < TRACKS.length-1){ playIndex(state.i+1); }
+    if(state.autoplay && state.i < AUDIO_LIST.length-1){ playIndex(state.i+1); }
     else { state.playing=false; setPlayIcon(false); }
   });
   audioEl.addEventListener('error', function(){
     // file failed to load — fall back to narration so the user still hears something
-    if(mode==='file'){ mode=null; if(supported) speak(TRACKS[state.i]); }
+    if(mode==='file'){ mode=null; if(supported) speak(AUDIO_LIST[state.i]); }
   });
 
   var utter = null;
@@ -484,7 +478,6 @@
       [/\bNICE\b/g, 'NICE'],
       [/\bNG(\d+)\b/g, 'guideline N G $1'],
       [/\bCG(\d+)\b/g, 'guideline C G $1'],
-      [/\bCKS\b/g, 'C K S'],
       [/\bCHA2DS2-VASc\b/gi, 'CHADS-VASc'],
       [/\bORBIT\b/g, 'ORBIT'],
       [/\bHbA1c\b/gi, 'H B A one C'],
@@ -606,7 +599,7 @@
       if(tts.idx >= tts.chunks.length){
         setBar(1); setTime(ttsTotal, ttsTotal);
         clearInterval(ttsKeepAlive); ttsKeepAlive = null;
-        if(state.autoplay && state.i < TRACKS.length-1){ playIndex(state.i+1); }
+        if(state.autoplay && state.i < AUDIO_LIST.length-1){ playIndex(state.i+1); }
         else { state.playing=false; setPlayIcon(false); }
         return;
       }
@@ -655,10 +648,10 @@
   function ttsTotalOrFile(){ return mode==='file' ? (audioEl.duration||0) : ttsTotal; }
 
   function playIndex(i){
-    if(i<0||i>=TRACKS.length) return;
+    if(i<0||i>=AUDIO_LIST.length) return;
     stopAll();
     state.i = i; state.playing = true;
-    var t = TRACKS[i];
+    var t = AUDIO_LIST[i];
     setNow(t); highlight(); setBar(0); setPlayIcon(true); setTime(0, 0);
     try{ localStorage.setItem(STORE, JSON.stringify({i:i, rate:state.rate})); }catch(e){}
     if(t.audioUrl){
@@ -689,7 +682,7 @@
   $('#logStop').addEventListener('click', function(){ stopAll(); state.playing=false; setPlayIcon(false); setBar(0); setTime(0,0); });
   $('#logBack').addEventListener('click', function(){ if(state.i>=0) playIndex(state.i); });
   $('#logPrev').addEventListener('click', function(){ playIndex(Math.max(0,state.i-1)); });
-  $('#logNext').addEventListener('click', function(){ playIndex(Math.min(TRACKS.length-1,state.i+1)); });
+  $('#logNext').addEventListener('click', function(){ playIndex(Math.min(AUDIO_LIST.length-1,state.i+1)); });
   $('#logRew').addEventListener('click', function(){ skip(-15); });
   $('#logFwd').addEventListener('click', function(){ skip(15); });
 

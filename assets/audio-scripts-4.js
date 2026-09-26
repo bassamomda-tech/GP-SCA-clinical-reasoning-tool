@@ -5,7 +5,7 @@
    factors → red flags → assessment → non-drug management → drug management →
    safety-netting → referral. Original summaries based on NICE / NG.
    ============================================================ */
-window.RGP_AUDIO_TRACKS = (window.RGP_AUDIO_TRACKS || []).concat([
+window.RGP_AUDIO_LIST = (window.RGP_AUDIO_LIST || []).concat([
 
   /* ---------------- DERMATOLOGY ---------------- */
   { id:'nice-acne', cat:'Dermatology', ic:'🧴', dur:'5 min', title:'Acne vulgaris', sub:'NICE clinician summary',

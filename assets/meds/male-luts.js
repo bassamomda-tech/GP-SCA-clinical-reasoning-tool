@@ -74,9 +74,9 @@ MedChooser.register('male-luts', {
       examples:'Finasteride 5 mg OD',
       step:'Voiding · large prostate',
       source:'NICE CG97 §1.6.10',
-      sideEffects:'↓ libido, ED, ejaculatory dysfunction, gynaecomastia; ↓ PSA by ~50%',
-      monitor:'Slow onset (3–6 months); halve PSA reference range',
-      counsel:'"This gradually shrinks the prostate over several months, so it works slowly but reduces the chance of needing surgery. It can affect sexual function."',
+      sideEffects:'↓ libido, ED, ejaculatory dysfunction (may persist after stopping — MHRA 2026), gynaecomastia; depression/suicidal ideation (finasteride; precautionary for dutasteride); ↓ PSA by ~50%',
+      monitor:'Slow onset (3–6 months); halve PSA reference range; ask about prior depression before starting and review mood (MHRA 2026)',
+      counsel:'"This gradually shrinks the prostate over several months, so it works slowly but reduces the chance of needing surgery. It can affect sexual function, occasionally even after stopping, and has been linked to low mood — tell us promptly if your mood changes."',
       detail:{ 'Key teaching':'For enlarged prostate (>30 g / PSA >1.4) to reduce progression + retention/surgery risk. Teratogenic — handling caution. Halves PSA.' },
       evaluate(f){
         const r = [];

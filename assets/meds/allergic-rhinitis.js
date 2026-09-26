@@ -180,7 +180,7 @@ MedChooser.register('allergic-rhinitis', {
       source:'NICE',
       sideEffects:'Rhinitis medicamentosa (rebound congestion) with >5–7 days use',
       monitor:'Max 5–7 days if ever used',
-      counsel:'"Decongestant sprays work fast but cause rebound blockage if used more than about a week, so we avoid them as a regular treatment."',
+      counsel:'"Decongestant sprays work fast but cause rebound blockage if used for more than 5 days in a row, so we avoid them as a regular treatment."',
       detail:{
         'Key teaching': 'Avoid for ongoing management — limit to ≤5–7 days if ever used (e.g. to allow INCS penetration).'
       },

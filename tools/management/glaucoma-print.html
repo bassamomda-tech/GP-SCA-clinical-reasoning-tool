@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316448292392 tools/management/glaucoma.html">
+<meta name="omelette-print-source" content="v1790380012917942 tools/management/glaucoma.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -23,81 +23,171 @@
 MG.render({
   icon:"👁️",
   title:"Glaucoma",
-  stemTitle:"Glaucoma \u2014 the GP role: spot acute angle-closure, support chronic care",
-  stemSub:"Primary-care role in glaucoma \u2014 immediate recognition and referral of acute angle-closure (an emergency), supporting adherence to IOP-lowering drops in chronic open-angle glaucoma/OHT, awareness of systemic drug interactions, and the DVLA implications. NICE NG81 \u00b7 2026.",
-  guideline:"NICE NG81",
-  glance:[
-    {lbl:"Diagnosis/Rx", val:"Specialist (HES)", sub:"GP supports"},
-    {lbl:"Chronic 1st-line", val:"Prostaglandin analogue", sub:"e.g. latanoprost"},
-    {lbl:"Aim", val:"Lower IOP", sub:"preserve visual field"},
-    {lbl:"GP role", val:"Adherence + interactions", sub:"+ DVLA"},
-    {lbl:"Acute", val:"Red painful eye + halos", sub:"= emergency"},
-    {lbl:"Red flag", val:"Acute angle-closure", sub:"= same-day ophthalmology"}
+  eyebrow:"Protocol · the GP’s part in a specialist-led condition",
+  stemTitle:"Glaucoma — catch the closed angle today, protect the open angle for decades",
+  stemSub:"The GP rarely diagnoses or titrates glaucoma, but owns three things nobody else sees: the acutely painful red eye that walks into a same-day slot, the systemic medicines that can close a narrow angle or clash with eye drops, and the long-term conversation about adherence, family risk and driving. Sources: NICE NG81 (2017, updated January 2022), RCOphth angle-closure guideline (2022), College of Optometrists CMGs, DVLA visual standards, SPCs.",
+  guideline:"NICE NG81 (2017, updated 2022) · RCOphth angle-closure guideline 2022 · College of Optometrists CMGs · DVLA visual disorders standards",
+  meta:[
+    {t:"NICE NG81 · 2017, updated Jan 2022"},
+    {t:"RCOphth angle closure 2022 · College of Optometrists CMGs"},
+    {t:"SPCs: latanoprost, timolol, brimonidine, topiramate"},
+    {t:"DVLA · statutory notification duty", tone:"tw"},
+    {t:"No NG12 criterion applies"}
   ],
-  flow:[
-    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Acute angle-closure glaucoma \u2014 emergency",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Recognise", html:"Sudden severe eye pain + headache, red eye, hazy cornea, fixed mid-dilated oval pupil, haloes around lights, nausea/vomiting, reduced vision."},
-          {t:"🚑 Act", html:"<b>Immediate same-day ophthalmology / ED</b> \u2014 sight-threatening; lie patient flat, urgent IOP-lowering by specialist."},
-          {t:"💊 Precipitants", html:"Dilating drops, dim light, and drugs (anticholinergics, tricyclics, some antihistamines, topiramate) can precipitate \u2014 caution in at-risk eyes."},
-          {t:"🟠 Sudden visual field loss", html:"Any acute visual loss \u2192 urgent eye assessment."}
-        ]},
-        {b:"why", html:"Acute angle-closure is the glaucoma emergency the GP must recognise: delay causes permanent sight loss within hours. Chronic open-angle glaucoma, by contrast, is painless and asymptomatic until advanced \u2014 detected on optometry screening."}
-      ]},
-    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Understand the GP role",
-      blocks:[
-        {b:"kv", rows:[
-          ["Diagnosis","Made in the hospital eye service / optometry \u2014 IOP, optic disc, visual fields, OCT, gonioscopy. GP does not diagnose or titrate"],
-          ["Chronic open-angle glaucoma (COAG)","Painless, progressive optic neuropathy with characteristic field loss; often raised IOP. Treated to slow progression"],
-          ["Ocular hypertension (OHT)","Raised IOP without damage \u2014 treated/monitored to prevent conversion to COAG"],
-          ["GP contribution","Support adherence, repeat prescriptions, watch systemic effects/interactions, encourage screening of at-risk relatives, DVLA advice"]
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Medication (specialist-led)", title:"IOP-lowering therapy",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"1st-line", title:"Prostaglandin analogue drops", when:"COAG / OHT needing treatment",
-           html:"<b>Latanoprost 50 micrograms/mL, 1 drop once daily at night</b> \u2014 first-line per NG81 (a topical beta-blocker e.g. <b>timolol 0.25\u20130.5% BD</b> is an alternative). Side effects: iris/lash changes, periocular pigmentation, hyperaemia."},
-          {step:"Add / alternative", title:"Beta-blocker, others", when:"if PGA insufficient/unsuitable",
-           fromLabel:"escalate / combine",
-           html:"Topical beta-blocker (e.g. <b>timolol 0.25\u20130.5%, 1 drop BD</b> \u2014 caution: asthma/COPD, bradycardia, heart block), carbonic anhydrase inhibitor, alpha-agonist; combination drops."},
-          {step:"Procedural", title:"SLT / surgery", when:"per specialist",
-           fromLabel:"specialist decision",
-           html:"Selective laser trabeculoplasty (often offered early per NG81) or trabeculectomy/MIGS for inadequate control."}
-        ]},
-        {b:"warn", html:"Topical beta-blockers are systemically absorbed \u2014 can cause bronchospasm and bradycardia; check for asthma/COPD/heart block. Punctal occlusion/closed eyes after instillation reduces systemic absorption."}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Shared-care monitoring",
-      blocks:[
-        {b:"table", head:["What","Who/When","Action"], rows:[
-          ["IOP, discs, visual fields, OCT","HES/optometry, per risk","Specialist titrates treatment to target IOP"],
-          ["Adherence + technique","GP reviews","Reinforce daily drops; address barriers \u2014 non-adherence drives progression"],
-          ["Systemic effects","GP","Beta-blocker effects, interactions; review with comorbidity"],
-          ["At-risk relatives","Opportunistic","First-degree relatives \u2192 encourage regular optometry (free NHS sight tests if eligible)"]
-        ]}
-      ]},
-    {t:"node", d:"life", n:"5", tag:"Advice", title:"DVLA + self-management",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🚗 DVLA", html:"Significant binocular visual-field loss is notifiable; advise patients of DVLA duty and document."},
-          {t:"💧 Drop technique", html:"Teach instillation; punctal occlusion; spacing if multiple drops; adherence aids."},
-          {t:"👨‍👩‍👧 Family screening", html:"First-degree relatives at higher risk \u2014 advise regular eye checks."},
-          {t:"⚠️ Drug awareness", html:"Caution with anticholinergics/topiramate in those at angle-closure risk."}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral pathways",
-      arrow:"emergency vs routine",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Same-day", html:"Acute angle-closure or sudden visual loss \u2192 emergency ophthalmology."},
-          {t:"Ophthalmology (routine)", html:"Optometry referral of suspected glaucoma/OHT for diagnosis + treatment."},
-          {t:"Back to HES", html:"Progression, poor control, intolerance, or adherence concerns."}
-        ]},
-        {b:"say", html:"Glaucoma is usually painless and treated by the eye clinic with daily pressure-lowering drops \u2014 the key is using them every day, because they protect your sight without you feeling any difference. If you ever get a sudden very painful red eye with haloes and sickness, that\u2019s an emergency \u2014 get seen the same day."}
-      ]}
+  lead:"<div class='mg-layers'><a href='#flags'><b>Red flags</b><small>Acute angle closure = same day</small></a><a href='#treat'><b>Treatment</b><small>SLT first, then drops</small></a><a href='#drugs'><b>Drug safety</b><small>Angle closers and beta-blockers</small></a><a href='#driving'><b>Driving</b><small>Both eyes = tell DVLA</small></a></div>",
+  quickSub:"The six points that change what you do in the room. Each traces to a source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"A painful red eye with haloes is angle closure until proven otherwise", html:"Sudden eye pain or brow ache, blurred vision, coloured haloes round lights, nausea or vomiting, a red eye with a hazy cornea and a mid-dilated, poorly reacting pupil. This is an ophthalmic emergency: <b>phone the on-call eye team for same-day assessment</b>. The College of Optometrists classes acute angle closure as a same-day referral; sight can be lost within hours."},
+    {tone:"amber", h:"Some everyday prescriptions can shut a narrow angle", html:"Topiramate (acute myopia with secondary angle closure, typically in the first month), anticholinergics including nebulised ipratropium reaching the eye, tricyclics and other pupil-dilating drugs. In a new painful red eye, <b>ask what was started recently</b>. Topiramate must be stopped as fast as clinically possible, per its SPC."},
+    {tone:"blue", h:"First-line treatment is now laser, not drops", html:"NICE NG81 (January 2022 update) recommends <b>360° selective laser trabeculoplasty (SLT)</b> as first treatment for newly diagnosed COAG and for ocular hypertension with IOP of 24 mmHg or more at risk of sight loss. A generic prostaglandin analogue is offered when SLT is unsuitable, declined, or not enough on its own."},
+    {tone:"amber", h:"Beta-blocker drops act on the lungs and heart", html:"Timolol eye drops are contraindicated in asthma or a history of asthma, severe COPD, sinus bradycardia, sick sinus syndrome and second- or third-degree heart block without a pacemaker (SPC). <b>Check every repeat list for timolol in combination bottles</b> when someone develops wheeze or bradycardia."},
+    {tone:"purple", h:"Driving: a statutory duty to tell DVLA", html:"Car and motorcycle drivers must tell DVLA about an eye condition that affects <b>both eyes</b> (or the only seeing eye). Bus and lorry drivers must tell DVLA if it affects <b>one or both eyes</b>. DVLA treats glaucoma as progressive, so it cannot be accepted as an ‘exceptional case’ for field defects. Record the advice given."},
+    {tone:"green", h:"Relatives aged 40 or over get a free NHS sight test", html:"Parents, siblings and children aged 40 or over of someone with diagnosed glaucoma qualify for a free NHS sight test, as do everyone aged 60 or over and people already diagnosed with glaucoma (NHSBSA). NG81 asks clinicians to tell people that glaucoma can run in families. <b>This is the single most useful family conversation</b> in a condition that is silent until late."}
   ],
-  foot:"Primary-care support of glaucoma under hospital eye service care; acute angle-closure is an emergency. Verify against current NICE NG81 and DVLA Assessing Fitness to Drive (visual fields)."
+  pathwaySub:"Five moves for any glaucoma consultation. The first is where sight is lost.",
+  pathway:[
+    {title:"Is this acute angle closure?", html:"Sudden pain, haloes, blurred vision, vomiting, red eye, cloudy cornea, fixed mid-dilated pupil. If yes: <b>same-day ophthalmology by phone now</b>, lie the patient flat while you arrange it, treat pain and vomiting, and stop any precipitating drug. Do not send them home to see an optometrist tomorrow.", alert:true},
+    {title:"Which type, and who is managing it?", html:"Chronic open-angle glaucoma (COAG), ocular hypertension (OHT), suspected COAG, or angle-closure disease. Diagnosis and treatment decisions sit with the hospital eye service or an accredited community glaucoma service. Your job is to know the plan and the drops."},
+    {title:"Check the medicines both ways", html:"Eye drops that affect the body (timolol and asthma, COPD, bradycardia; brimonidine and MAOIs or tricyclics) and body medicines that affect the eye (topiramate, anticholinergics, long-term steroids). Reconcile the repeat list with the clinic letter."},
+    {title:"Support adherence and technique", html:"NG81 asks for eye-drop technique to be demonstrated and observed, and for adherence and technique to be checked whenever IOP is not controlled. Missed drops cause silent field loss. Ask how many doses were missed last week, not whether they use them."},
+    {title:"Driving, family, follow-up", html:"Advise on the DVLA duty, suggest first-degree relatives aged 40 or over get a free sight test, and make sure the person is not lost to follow-up: missed monitoring appointments are a common route to preventable sight loss."}
+  ],
+  sections:[
+    {id:"flags", nav:"Red flags", title:"Red flags and emergencies", sub:"Only acute angle closure is a same-day eye emergency in this topic. No NG12 suspected-cancer criterion maps to glaucoma.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Acute angle closure (acute primary angle closure crisis)", html:"Sudden unilateral eye pain or brow ache, reduced vision, rainbow-coloured haloes, nausea and vomiting (sometimes abdominal pain), a red eye with corneal haze and a mid-dilated, sluggish or fixed pupil. The eye may feel hard. Often starts in dim light or after pupil dilation. <b>Same-day ophthalmology.</b>", src:"College of Optometrists CMG, primary angle closure · Murray, Community Eye Health J 2018"},
+         {tone:"red", h:"Drug-induced secondary angle closure", html:"Acute myopia with blurred vision and eye pain, often bilateral, starting within about a month of topiramate. Stop topiramate as rapidly as is clinically possible and refer the same day for IOP-lowering treatment.", src:"Topiramate SPC, section 4.4"},
+         {tone:"amber", h:"Warning attacks: intermittent angle closure", html:"Short episodes of blurred vision, haloes and aching, often in the evening or in dim light, settling with sleep or bright light. These can precede an acute crisis. Arrange urgent eye assessment rather than routine review.", src:"College of Optometrists CMG, primary angle closure"},
+         {tone:"amber", h:"Sudden or new visual field loss", html:"Glaucoma loss is gradual and usually unnoticed. A patient who reports sudden field loss needs a different explanation (vascular, retinal, neurological), so assess urgently, not as ‘glaucoma getting worse’.", src:"College of Optometrists CMG, POAG (gradual, symptomless field loss)"},
+         {tone:"blue", h:"No NG12 criterion applies", html:"No suspected-cancer referral criterion in NICE NG12 (updated April 2026) maps to glaucoma or raised eye pressure. Refer by the eye-emergency and glaucoma pathways instead.", src:"NICE NG12 (updated April 2026)"}
+       ]},
+       {b:"why", html:"Acute angle closure is the one presentation in this topic where a GP decision in the next hour decides whether the patient keeps sight in that eye. Pressure can climb high enough to damage the optic nerve within hours. Chronic open-angle glaucoma is the opposite: painless, slow, and found on an optometry check long before the patient notices anything. Mixing the two up — reassuring a painful red eye as conjunctivitis, or panicking over a routine OHT letter — is the characteristic error."}
+     ]},
+
+    {id:"aac", nav:"Acute closure", title:"Acute angle closure — what to do in the surgery", sub:"The eye team does the definitive treatment. The GP recognises it, rings the right person, and does no harm while transfer is arranged.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"Minutes 0–5", title:"Recognise and stop precipitants", html:"Take a brief history: onset, pain, haloes, vomiting, recent dilating drops, new medicines (topiramate, anticholinergics, tricyclics, antihistamines). Check acuity, look at the pupil and cornea. <b>Stop topiramate or any recently started anticholinergic.</b>"},
+         {n:"2", when:"Minutes 5–15", title:"Phone same-day ophthalmology", html:"Speak to the on-call eye team (eye casualty or ophthalmology registrar) and agree transfer. Where there is no direct eye service, send to the emergency department with a clear letter saying ‘suspected acute angle closure’."},
+         {n:"3", when:"While waiting", title:"Position and symptom relief", html:"Lie the patient flat on their back: Murray (2018) describes this as allowing the lens to fall back and relieve pupil block. Give an antiemetic and analgesia. Do not dilate the pupil."},
+         {n:"4", when:"If the eye team advises", title:"First-line IOP lowering", html:"Specialist emergency treatment typically starts with <b>acetazolamide 500 mg</b> (intravenously, or orally if not vomiting), with topical beta-blocker, alpha-agonist or prostaglandin drops, then pilocarpine 2% or 4% once pressure starts to fall (Murray 2018). Give acetazolamide from the surgery only on the eye team’s advice and after checking for sulfonamide allergy and significant renal impairment (dose and cautions per BNF)."},
+         {n:"5", when:"Afterwards", title:"Definitive treatment and the other eye", html:"The cardinal treatment is laser peripheral iridotomy, done as soon as practical; the fellow eye is usually treated too because it shares the anatomy (RCOphth angle-closure guideline 2022). Ask at follow-up whether this has happened."}
+       ]},
+       {b:"warn", html:"<b>Do not</b> put mydriatic drops into an eye you suspect of angle closure to ‘get a better look’, and do not send the patient to a high-street optometrist as an alternative to same-day hospital care."}
+     ]},
+
+    {id:"types", nav:"Types", title:"The conditions behind the word ‘glaucoma’", sub:"The plan, the drops and the urgency all differ by type. Read the clinic letter with this table in mind.",
+     blocks:[
+       {b:"table", head:["Condition","What it means","What usually happens"], rows:[
+         ["<b>Chronic open-angle glaucoma (COAG)</b>","Progressive optic neuropathy with characteristic field loss, angle open. Often but not always with raised IOP. The most common form in the UK — about 2% of people over 40, rising to 4–5% over 80 (College of Optometrists CMG)","360° SLT first-line for newly diagnosed COAG that is not advanced; generic prostaglandin analogue if SLT unsuitable; surgery with augmentation for advanced disease (NG81)"],
+         ["<b>Ocular hypertension (OHT)</b>","IOP above normal with no optic nerve damage or field loss","Treat if IOP is 24 mmHg or more and the person is at risk of visual impairment in their lifetime: 360° SLT, or generic PGA if SLT is unsuitable or not enough (NG81)"],
+         ["<b>Suspected COAG</b>","Optic disc or field changes that might be glaucoma, not yet confirmed","Monitoring in the hospital or community glaucoma service; treatment decisions depend on risk"],
+         ["<b>Primary angle closure disease</b>","The drainage angle is narrow or closed; from ‘suspect’ (anatomy only) through angle closure to angle-closure glaucoma with nerve damage","Laser iridotomy and/or lens extraction by the eye team. The RCOphth 2022 guideline limits referral and prophylactic laser in angle-closure suspects to those with ‘plus’ risk features"],
+         ["<b>Secondary glaucoma</b>","Raised IOP from another cause: steroids, uveitis, trauma, pigment dispersion, drug-induced angle closure","Treat the cause as well as the pressure; the eye team leads"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Who is at higher risk of COAG", html:"Increasing age, a first-degree relative with glaucoma, African or African-Caribbean ancestry, raised IOP, thin corneas and high myopia. These people benefit most from regular sight tests.", src:"College of Optometrists CMG, POAG"},
+         {tone:"blue", h:"Who is at higher risk of angle closure", html:"Long-sighted (hypermetropic) eyes with a shallow anterior chamber, older age, female sex, South or East Asian ancestry and a family history. The same people are those most at risk from pupil-dilating drugs.", src:"College of Optometrists CMG, primary angle closure"}
+       ]}
+     ]},
+
+    {id:"findings", nav:"Case-finding", title:"How glaucoma is found and referred", sub:"Almost all chronic glaucoma is picked up at a sight test. Knowing the NG81 thresholds lets you read an optometry letter sensibly.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Referral thresholds (NG81)","Refer for further investigation and diagnosis if there is optic nerve head damage, a visual field defect consistent with glaucoma, or IOP of 24 mmHg or more on Goldmann-type applanation tonometry — after considering a repeat measurement on another occasion to confirm the field defect or IOP, unless clinical circumstances say otherwise."],
+         ["Referral filtering","The College of Optometrists advises that in England, unless an urgent or emergency referral is needed, patients should have referral filtering (repeat measures or enhanced services) before hospital referral where local arrangements exist."],
+         ["What the GP adds","A GP rarely needs to be the referrer for chronic glaucoma. If a patient brings an optometrist’s note, check whether the referral has already gone direct; duplicate referrals delay care."],
+         ["Monitoring (NG81)","People with OHT or suspected COAG are reviewed at intervals set by risk; people with confirmed COAG at intervals set by their risk of progression. Treatment to lower IOP needs to work for months before it is judged a success."]
+       ]},
+       {b:"why", html:"The 24 mmHg figure matters because NG81 now uses one threshold for both referral and treatment of OHT. A letter saying ‘IOP 22, discs healthy, recheck in 12 months’ is appropriate optometric care, not a missed diagnosis — and a GP re-referral in that situation adds nothing but waiting-list time."}
+     ]},
+
+    {id:"treat", nav:"Treatment", title:"Treatment — laser first, drops if needed, surgery for advanced disease", sub:"All specialist-initiated. Doses follow the SPC; check the BNF for current cautions.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", tone:"cream", title:"360° selective laser trabeculoplasty (SLT)", when:"newly diagnosed COAG (not advanced) or OHT with IOP ≥24 mmHg at risk", html:"A short outpatient laser treatment to the drainage meshwork. NICE found no meaningful difference between SLT and eye drops in reaching target IOP, quality of life, adverse events or adherence, and it removes the daily-drop burden. The effect can wear off and SLT can be repeated."},
+         {step:"Alternative", tone:"cream", title:"Generic prostaglandin analogue (PGA) eye drops", when:"SLT unsuitable, declined, or not enough", fromLabel:"if laser is not suitable or IOP is still too high", html:"For example latanoprost 50 micrograms/mL, <b>one drop into the affected eye once daily, best in the evening</b> (SPC). Warn about gradual, permanent browning of the iris (mostly in mixed-colour irides, usually in the first 8 months), longer, darker and thicker lashes (reversible), redness and periorbital darkening."},
+         {step:"If not tolerated", tone:"amber", title:"Switch rather than stop", when:"intolerance", fromLabel:"if side effects", html:"NG81 advises offering an alternative generic PGA first, then a beta-blocker. If neither is tolerated: a non-generic PGA, carbonic anhydrase inhibitor, sympathomimetic (for example brimonidine), miotic, or a combination. Preservative-free preparations can help ocular surface irritation."},
+         {step:"Beta-blocker", tone:"amber", title:"Timolol eye drops", when:"when chosen by the eye team", html:"<b>One drop of 0.25% twice daily</b>, increased to 0.5% twice daily if response is inadequate; IOP rechecked at about 4 weeks (timolol SPC). Contraindicated in asthma or past asthma, severe COPD, sinus bradycardia, sick sinus syndrome and second- or third-degree heart block without a pacemaker."},
+         {step:"Advanced / uncontrolled", tone:"cream", title:"Surgery with pharmacological augmentation", when:"advanced COAG or progression despite two classes", fromLabel:"specialist decision", html:"NG81 recommends offering surgery with augmentation (for example mitomycin C) for advanced COAG, with interim generic PGA while waiting, and considering SLT or surgery for COAG at risk of sight loss despite medicines from two therapeutic classes."}
+       ]},
+       {b:"warn", html:"Never stop a patient’s glaucoma drops in primary care because of a side effect without speaking to the eye team first. Switching class or preparation is almost always possible; stopping loses the pressure control silently."}
+     ]},
+
+    {id:"drugs", nav:"Drug safety", title:"Medicines safety — both directions", sub:"The area where the GP prevents most harm. Drops reach the circulation; tablets and inhalers reach the eye.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Timolol and other beta-blocker drops", html:"Systemically absorbed: bronchospasm (deaths reported in asthma), bradycardia, heart block, hypotension, masking of hypoglycaemia. Contraindicated in asthma or history of asthma, severe COPD, sinus bradycardia, sick sinus syndrome, sino-atrial block and second- or third-degree AV block not controlled with a pacemaker; use with caution in mild to moderate COPD. Check combination bottles (for example with latanoprost, dorzolamide or brimonidine).", src:"Timolol SPC, sections 4.3–4.4"},
+         {tone:"amber", h:"Brimonidine", html:"Contraindicated in infants under 2 years (reports of apnoea, bradycardia, hypotension and loss of consciousness) and in people on MAOIs or antidepressants affecting noradrenergic transmission, such as tricyclics and mianserin.", src:"Brimonidine SPC, section 4.3"},
+         {tone:"red", h:"Topiramate", html:"Can cause acute myopia with secondary angle-closure glaucoma, usually within the first month. Symptoms: sudden blurred vision and/or eye pain. Stop as rapidly as is clinically possible and arrange same-day IOP lowering.", src:"Topiramate SPC, section 4.4"},
+         {tone:"amber", h:"Nebulised ipratropium", html:"Acute angle closure has been reported with nebulised ipratropium plus salbutamol. Keep the solution and mist out of the eyes — the SPC recommends giving it via a mouthpiece — and warn susceptible patients about eye protection, particularly in people predisposed to narrow-angle glaucoma.", src:"Ipratropium nebuliser SPC (Atrovent UDVs)"},
+         {tone:"amber", h:"Other pupil-dilating drugs", html:"Anticholinergics, tricyclic antidepressants, some antihistamines, SSRIs and sympathomimetics have been implicated in angle closure in predisposed eyes. The risk is in narrow angles, not in treated open-angle glaucoma — the label ‘avoid in glaucoma’ usually means ‘avoid in untreated narrow angles’.", src:"Khurana et al., J Curr Glaucoma Pract 2012"},
+         {tone:"amber", h:"Corticosteroids", html:"Prolonged topical steroid eye drops can raise IOP and cause glaucomatous nerve damage; steroid eye drops should not be used for more than 10 days except under ophthalmic supervision with IOP checks. Remember long-term inhaled, nasal, periocular and oral steroids in known glaucoma too.", src:"Prednisolone acetate eye drops SPC (Pred Forte)"}
+       ]},
+       {b:"why", html:"The asymmetry is worth teaching: for someone with treated open-angle glaucoma, an anticholinergic is usually fine; for someone with undiagnosed narrow angles, the same tablet can precipitate a crisis. That is why the history of haloes and evening aching matters more than the word ‘glaucoma’ in the problem list. Conversely, a patient with ‘well-controlled asthma’ who starts timolol drops at the eye clinic may deteriorate weeks later without anyone linking the two."}
+     ]},
+
+    {id:"adherence", nav:"Adherence", title:"Adherence, technique and living with drops", sub:"The daily routine is the treatment. Most failure is silent.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"💧 Show, then watch", html:"NG81 asks for correct instillation technique to be demonstrated and then observed when drops are first prescribed, and for technique and adherence to be checked if IOP is not controlled."},
+         {t:"⏱️ Close the eye, press the corner", html:"Gently closing the eyelids or pressing on the inner corner of the eye for 2 minutes after a drop reduces systemic absorption and increases local effect (timolol SPC)."},
+         {t:"🕰️ Spacing", html:"Where more than one drop is used, leave a few minutes between them so the first is not washed out. Put evening PGA drops by the toothbrush."},
+         {t:"🖐️ Practical barriers", html:"Arthritis, tremor and poor vision make squeezing bottles hard. Ask about compliance aids, dispensing devices or a carer. Preservative-free units if the eye surface is sore."},
+         {t:"🗓️ Keep the appointments", html:"The eye clinic measures whether treatment is working; no symptoms mean nothing. Missed monitoring is a common cause of avoidable sight loss."},
+         {t:"👨‍👩‍👧 Family", html:"Tell relatives that glaucoma runs in families; parents, siblings and children aged 40 or over get a free NHS sight test."}
+       ]},
+       {b:"say", html:"These drops don’t make you feel any different, and that’s exactly why they’re easy to forget. They’re protecting the side vision you’d only notice once it had gone, and once it’s gone it doesn’t come back. Can you show me how you put them in?"}
+     ]},
+
+    {id:"driving", nav:"Driving", title:"Driving and the DVLA", sub:"A statutory duty on the patient, and a documented advice duty on the clinician.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"Car and motorcycle (Group 1)", html:"The licence holder must tell DVLA if they have an eye condition affecting <b>both eyes</b>, or the remaining eye if they have sight in only one. DVLA arranges an Esterman binocular field test with a contracted optician at no cost. Failing to tell DVLA can lead to a fine of up to £1,000.", src:"DVLA · GOV.UK Eye conditions and driving (car or motorcycle)"},
+         {tone:"purple", h:"Bus, coach and lorry (Group 2)", html:"The licence holder must tell DVLA about an eye condition affecting <b>one or both eyes</b>, using form V1V.", src:"DVLA · GOV.UK Eye conditions and driving (bus, coach or lorry)"},
+         {tone:"blue", h:"What the field standard is", html:"For Group 1, DVLA requires a binocular field of at least 120° horizontally, extending at least 50° left and right, with no significant defect in the binocular field encroaching within 20° of fixation above or below the horizontal meridian (measured with a Goldmann III4e-equivalent target). Glaucoma is always treated as a progressive condition, so it cannot be accepted as an ‘exceptional case’ under the field rules.", src:"DVLA Assessing fitness to drive — visual disorders"},
+         {tone:"cream", h:"What to record", html:"That the patient was told of the duty to inform DVLA, when, and what they said. If a patient continues to drive against advice with a condition that makes them unsafe, follow GMC confidentiality guidance on disclosure to DVLA.", src:"DVLA Assessing fitness to drive · GMC confidentiality guidance"}
+       ]},
+       {b:"why", html:"Most people with early glaucoma, or glaucoma in one eye, keep their Group 1 licence. The purpose of the conversation is not to take the car away but to make sure the licensing decision is based on a proper binocular field test rather than on the patient’s own impression, which is unreliable because glaucoma field loss is not noticed until advanced."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, how fast, to whom", sub:"Urgency depends on the angle, not the word ‘glaucoma’.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day — eye casualty or on-call ophthalmology", html:"Suspected acute angle closure. Drug-induced angle closure (stop topiramate). Any painful red eye with reduced vision and an abnormal pupil.", src:"College of Optometrists CMG, primary angle closure · RCOphth 2022"},
+         {tone:"amber", h:"Urgent eye assessment", html:"Symptoms of intermittent angle closure (evening haloes and aching that settle). Newly noticed visual field loss. Suspected steroid-induced pressure rise.", src:"College of Optometrists CMG · Pred Forte SPC"},
+         {tone:"blue", h:"Routine — usually via the optometrist", html:"Suspected COAG or OHT found at a sight test, following NG81 thresholds (optic nerve damage, field defect, or IOP 24 mmHg or more after repeat) and any local referral-filtering scheme.", src:"NICE NG81 · College of Optometrists CMG, POAG"},
+         {tone:"cream", h:"Back to the glaucoma clinic", html:"Intolerance of drops, contraindication discovered (new asthma on timolol), adherence the patient cannot sustain, lost to follow-up, or a patient who wants to discuss laser instead of drops.", src:"NICE NG81"},
+         {tone:"blue", h:"No 2WW pathway applies", html:"There is no NICE NG12 (updated April 2026) suspected-cancer criterion for glaucoma, so no suspected cancer pathway referral card applies to this page.", src:"NICE NG12 (updated April 2026)"}
+       ]},
+       {b:"say", html:"I think the pressure inside your eye has shot up suddenly. It’s treatable, but it needs the eye specialists today, not tomorrow — I’m phoning them now so they’re expecting you."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card; the Casebook holds the full case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 66-year-old man with COPD on timolol and latanoprost for glaucoma attends with six weeks of worsening breathlessness. He admits he stopped the drops for a fortnight because they ‘made no difference’. He drives a taxi and his sister has just been told she has glaucoma.", src:"SCA practice scenario (site-authored), built on NICE NG81 and timolol SPC"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Links the breathlessness to <b>systemic absorption of timolol</b>; contacts the eye team about switching class rather than stopping drops alone; explains <b>why drops that feel like nothing still matter</b>; demonstrates punctal occlusion; addresses the <b>DVLA duty</b> (both eyes for Group 1; check what medical standard his local taxi licensing authority applies); and tells him his relatives aged 40 or over are entitled to a <b>free NHS sight test</b>.", src:"NICE NG81 · timolol SPC · DVLA · NHSBSA"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation above traces to one of these primary sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG81 — Glaucoma: diagnosis and management</b> (2017, updated January 2022)<br><a href="https://www.nice.org.uk/guidance/ng81" rel="noopener">nice.org.uk/guidance/ng81</a><span class="rd"> — referral thresholds (optic nerve damage, field defect, IOP 24 mmHg or more), 360° SLT first-line, generic PGA when SLT unsuitable, the intolerance sequence, surgery with augmentation, eye-drop technique and adherence checks, family information</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b> (2015, updated April 2026)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — checked: no criterion applies to glaucoma</span></li>'+
+         '<li><b>Royal College of Ophthalmologists — Management of angle-closure glaucoma</b> (clinical guideline, 2022)<br><a href="https://www.rcophth.ac.uk/resources-listing/management-of-angle-closure-glaucoma-guideline/" rel="noopener">rcophth.ac.uk</a><span class="rd"> — laser peripheral iridotomy as the cardinal treatment of acute closure; referral of angle-closure suspects with ‘plus’ features</span></li>'+
+         '<li><b>RCOphth and College of Optometrists — Designing glaucoma care pathways using GLAUC-STRAT-FAST</b> (2022)<br><a href="https://www.rcophth.ac.uk/wp-content/uploads/2022/04/Designing-Glaucoma-Care-Pathways-using-GLAUC-STRAT-FAST.pdf" rel="noopener">rcophth.ac.uk</a><span class="rd"> — risk-stratified glaucoma pathways and community monitoring</span></li>'+
+         '<li><b>College of Optometrists — Clinical Management Guidelines</b>: primary open angle glaucoma; ocular hypertension; primary angle closure / primary angle closure glaucoma<br><a href="https://www.college-optometrists.org/clinical-guidance/clinical-management-guidelines" rel="noopener">college-optometrists.org</a><span class="rd"> — prevalence and risk factors, same-day referral for acute angle closure, referral filtering</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive: visual disorders</b>, and GOV.UK <i>Eye conditions and driving</i> (car or motorcycle; bus, coach or lorry)<br><a href="https://www.gov.uk/guidance/visual-disorders-assessing-fitness-to-drive" rel="noopener">gov.uk/guidance/visual-disorders-assessing-fitness-to-drive</a><span class="rd"> — notification duty (both eyes for Group 1, one or both for Group 2), the Group 1 field standard, glaucoma as a progressive condition, the £1,000 fine</span></li>'+
+         '<li><b>NHS Business Services Authority — free NHS sight tests</b><br><a href="https://www.nhsbsa.nhs.uk/help-travel-eye-care-wigs-and-fabric-support-costs/sight-tests-glasses-and-contact-lenses" rel="noopener">nhsbsa.nhs.uk</a><span class="rd"> — eligibility for parents, siblings and children aged 40 or over of someone with glaucoma, everyone aged 60 or over, and people diagnosed with glaucoma</span></li>'+
+         '<li><b>Summaries of Product Characteristics (emc)</b>: latanoprost 50 micrograms/mL; timolol 0.25% and 0.5%; brimonidine 0.2%; topiramate; Atrovent UDVs (ipratropium); Pred Forte (prednisolone acetate)<br><a href="https://www.medicines.org.uk/emc" rel="noopener">medicines.org.uk/emc</a><span class="rd"> — doses, contraindications, nasolacrimal occlusion, topiramate angle closure, nebulised anticholinergic warning, steroid-induced IOP rise</span></li>'+
+         '<li><b>Murray D. Emergency management: angle-closure glaucoma.</b> Community Eye Health J 2018;31(103):64<br><a href="https://cehjournal.org/articles/10.56920/cehj.13" rel="noopener">cehjournal.org</a><span class="rd"> — symptoms, supine positioning, acetazolamide 500 mg, pilocarpine 2% or 4% once pressure falls</span></li>'+
+         '<li><b>Khurana AK, Khurana B, Khurana AK. Drug-induced angle-closure glaucoma.</b> J Curr Glaucoma Pract 2012;6(1):6–8<span class="rd"> — drug classes implicated in angle closure</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — current doses and cautions for acetazolamide and all eye drops</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Glaucoma in primary care: recognising acute angle closure, medicines safety, adherence, family risk and driving. Sources: NICE NG81 (2017, updated January 2022), RCOphth angle-closure guideline (2022), College of Optometrists CMGs, DVLA visual disorders standards, SPCs and the BNF. Diagnosis and treatment decisions belong to the eye service. Not a substitute for clinical judgement or your local formulary."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

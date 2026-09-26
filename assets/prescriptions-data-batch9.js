@@ -267,7 +267,7 @@
     ],
     altRegimens: [
       { label: 'Alternatives', drugs: 'Valaciclovir or famciclovir (less frequent dosing) as alternatives to aciclovir for episodic/suppressive therapy.' },
-      { label: 'Pregnancy', drugs: 'First episode in pregnancy (esp. 3rd trimester) \u2192 urgent obstetric/GUM input; aciclovir treatment + suppression from ~36 weeks; caesarean if first episode near delivery. Recurrent \u2192 suppression from 36 weeks.' },
+      { label: 'Pregnancy', drugs: 'First episode in pregnancy \u2192 urgent obstetric/GUM input and aciclovir treatment; first episode after 28 weeks (esp. within 6 weeks of delivery) \u2192 caesarean recommended; first episode before 28 weeks \u2192 suppression from 32 weeks. Recurrent \u2192 suppression from 32 weeks (22 weeks if high preterm-birth risk) (BASHH/RCOG 2024).' },
       { label: 'Severe / retention / immunocompromised', drugs: 'Severe disease, urinary retention, or immunocompromise \u2192 consider admission/IV aciclovir/specialist.' },
     ],
     counselling: [

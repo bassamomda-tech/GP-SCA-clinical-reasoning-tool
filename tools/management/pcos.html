@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PCOS — Protocol · Reasoning GP</title>
+<title>PCOS (PMOS) — Protocol · Reasoning GP</title>
+<meta name="description" content="Polycystic ovary syndrome, renamed polyendocrine metabolic ovarian syndrome (PMOS) in 2026: diagnosis and the tests that exclude its mimics, the androgen level that points to a tumour, metabolic and mental-health screening, endometrial protection, hirsutism, weight and fertility, and when to refer." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/pcos.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,109 +20,220 @@
 <script>
 MG.render({
   icon:"🌸",
-  title:"PCOS",
-  stemTitle:"Confirmed Polycystic Ovary Syndrome — ongoing management",
-  stemSub:"Primary-care management of PCOS organised by the patient\u2019s goal \u2014 weight and metabolic health for all, cycle/endometrial protection, hirsutism/acne, and fertility \u2014 with long-term diabetes and endometrial-cancer risk in mind. NICE / international guideline \u00b7 2026.",
-  guideline:"International Evidence-based PCOS Guideline 2023",
-  glance:[
-    {lbl:"Diagnosis", val:"Rotterdam 2/3", sub:"+ exclude mimics"},
-    {lbl:"Core for all", val:"Weight & lifestyle", sub:"biggest lever"},
-    {lbl:"Cycle / endometrium", val:"COC or progestogen", sub:"\u22654 bleeds/yr"},
-    {lbl:"Hirsutism", val:"COC \u00b1 antiandrogen", sub:"+ cosmetic"},
-    {lbl:"Fertility", val:"Letrozole", sub:"specialist"},
-    {lbl:"Screen", val:"HbA1c / glucose", sub:"diabetes risk"}
+  title:"PCOS (now PMOS)",
+  eyebrow:"Protocol · diagnose, screen and treat by goal",
+  stemTitle:"A lifelong endocrine and metabolic condition, not a gynaecology label",
+  stemSub:"Polycystic ovary syndrome was renamed polyendocrine metabolic ovarian syndrome (PMOS) in May 2026, because the ovaries often hold no cysts at all. Confirm the diagnosis and exclude the mimics, notice the androgen level that should make you think of a tumour, screen glucose, blood pressure, lipids, mood and sleep, protect the endometrium when bleeds are rare, then treat whatever matters most to her now: cycles, hair and skin, weight, or fertility. The UK has no published PCOS guideline yet; this page uses the 2023 international guideline alongside RCOG Green-top 33, NICE NG257 (fertility), NICE NG246 (obesity) and NICE PH38 (diabetes prevention), UKMEC 2025 and MHRA advice.",
+  guideline:"International evidence-based PCOS guideline 2023 (international) · RCOG Green-top 33 (2014) · NICE NG257 (2026) · NICE PH38 (2012, updated 2017) · NICE NG246 (2025) · UKMEC 2025 · Society for Endocrinology 2025",
+  meta:[
+    {t:"International PCOS guideline 2023 (international)"},
+    {t:"RCOG Green-top 33 (2014) · NICE NG257 (2026)"},
+    {t:"NICE PH38 (2017) · NG246 (2025) · TA875 (2023) · TA1026 (2024)"},
+    {t:"UKMEC 2025 · MHRA DSU 2013 and 2025"},
+    {t:"NG12: postmenopausal bleeding at 55 or over", tone:"tw"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm PCOS, exclude mimics, map risk + goals",
-      blocks:[
-        {b:"kv", rows:[
-          ["Diagnosis (Rotterdam)","\u22652 of: oligo/anovulation \u00b7 clinical/biochemical hyperandrogenism \u00b7 polycystic ovaries on USS"],
-          ["Exclude mimics","TFTs, prolactin, testosterone (very high \u2192 ?tumour), 17-OHP (CAH); consider Cushing\u2019s"],
-          ["Metabolic risk","BMI/waist, BP, HbA1c or OGTT, lipids \u2014 PCOS carries high T2DM risk"],
-          ["Clarify the goal","Cycle control \u00b7 hirsutism/acne \u00b7 fertility \u00b7 metabolic \u2014 management is goal-led"]
-        ]},
-        {b:"why", html:"PCOS has no single treatment \u2014 you manage the <strong>goal that matters to this woman now</strong>, while protecting against its two long-term risks: <strong>type 2 diabetes</strong> and <strong>endometrial hyperplasia/cancer</strong> from unopposed oestrogen when periods are infrequent. Weight loss improves every domain at once."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 foundation for all", title:"Weight, lifestyle and wellbeing",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"⚖️ Weight management", html:"Even 5\u201310% loss restores cycles, improves hirsutism, fertility and metabolic risk \u2014 the single most effective intervention."},
-          {t:"🥗 Diet", html:"Calorie-balanced healthy diet; no single \u2018PCOS diet\u2019 \u2014 sustainability matters most."},
-          {t:"🏃 Exercise", html:"Regular activity improves insulin sensitivity independent of weight."},
-          {t:"🚭 Smoking", html:"Cessation \u2014 compounds cardiometabolic risk."},
-          {t:"🧠 Psychological", html:"Screen for low mood, anxiety, disordered eating, body-image distress \u2014 common and important."},
-          {t:"💇 Cosmetic measures", html:"For hirsutism: shaving, waxing, laser/electrolysis as adjuncts."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 by goal", title:"Treat the chosen goal",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Cycle / endometrium", title:"COC, or cyclical progestogen", when:"protect the endometrium",
-           html:"A combined pill regulates cycles and treats hyperandrogenism. If COC unsuitable, ensure <b>\u22654 withdrawal bleeds/year</b> with cyclical progestogen — <span class='rx'>medroxyprogesterone acetate 10 mg daily for 14 days</span>, every 1–3 months — or a progestogen IUS, to protect the endometrium."},
-          {step:"Hirsutism / acne", title:"COC \u00b1 antiandrogen", when:"add cosmetic + eflornithine",
-           fromLabel:"if hyperandrogenism is the goal",
-           html:"COC first-line; <span class='rx'>topical eflornithine 11.5% cream BD</span> for facial hirsutism; antiandrogens (<span class='rx'>spironolactone 25–100 mg daily</span>, off-label) specialist-led and with contraception. Allow \u22656 months for effect."},
-          {step:"Fertility", title:"Letrozole (\u00b1 metformin)", when:"specialist-led",
-           fromLabel:"if trying to conceive",
-           html:"Weight optimisation first; <span class='rx'>letrozole 2.5 mg daily on days 2–6</span> (or <span class='rx'>clomifene 50 mg daily on days 2–6</span>) for ovulation induction via specialist — both off-label for this indication; <span class='rx'>metformin</span> may help."},
-          {step:"Metabolic", title:"Metformin", when:"IGT / T2DM",
-           fromLabel:"if metabolic risk",
-           html:"Consider <b>metformin 500 mg OD titrated to 1 g BD</b> if impaired glucose tolerance/T2DM; manage BP and lipids; intensive lifestyle."}
-        ]},
-        {b:"warn", html:"<b>Endometrial protection is mandatory:</b> prolonged amenorrhoea with unopposed oestrogen raises endometrial-cancer risk \u2014 ensure regular withdrawal bleeds or a progestogen IUS. Antiandrogens are teratogenic \u2014 reliable contraception required."}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Long-term risk surveillance",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["HbA1c / glucose","Periodically (e.g. annually if risk factors)","High T2DM risk \u2014 detect early"],
-          ["BP + weight + lipids","Regularly","Manage cardiometabolic risk"],
-          ["Cycle frequency","Ongoing","Ensure \u22654 bleeds/year or endometrial protection"],
-          ["Mood","At reviews","Screen and support mental health"]
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"After agreeing goals", title:"Initiate", html:"Start lifestyle for all; begin goal-specific treatment; arrange baseline metabolic screen."},
-          {n:"2", when:"~6 months (hirsutism)", title:"Response review", html:"Hirsutism treatment is slow \u2014 reassess at \u22656 months; adjust or add."},
-          {n:"3", when:"Annual / periodic", title:"Risk review", html:"Weight, BP, glucose, cycle pattern, mental health, fertility plans."}
-        ]}
-      ]},
-    {t:"loop", icon:"🔁", title:"Not meeting the goal? Re-check",
-      arrow:"\u2026if the chosen goal isn\u2019t achieved",
-      intro:"Optimise weight and confirm an adequate trial before escalating.",
-      checks:[
-        {b:"1 \u00b7 Weight", html:"Has weight management been genuinely supported and engaged with?"},
-        {b:"2 \u00b7 Adequate trial", html:"Hirsutism takes \u22656 months; cycle control needs consistent use."},
-        {b:"3 \u00b7 Endometrium", html:"Amenorrhoeic and unprotected? Address now (hyperplasia risk)."},
-        {b:"4 \u00b7 Mimic missed?", html:"Rapid virilisation, very high testosterone \u2192 reconsider tumour/CAH."},
-        {b:"5 \u00b7 Refer", html:"Fertility, refractory hirsutism, or diagnostic doubt \u2192 specialist."}
-      ],
-      back:"Weight optimised, adequate trial, mimics excluded \u2192 refer (gynae/endocrine/fertility)"},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Endometrial protection", html:"\u201cIf your periods become very infrequent, tell us \u2014 long gaps without a bleed can affect the womb lining and need treatment.\u201d"},
-          {t:"⚠️ Rapid virilisation", html:"\u201cRapidly increasing hair, voice deepening, or balding \u2014 get checked promptly.\u201d"},
-          {t:"🩸 Abnormal bleeding", html:"\u201cBleeding between periods or after sex \u2014 come in for assessment.\u201d"},
-          {t:"💊 COC / pregnancy", html:"\u201cAntiandrogens must not be taken if you might be pregnant \u2014 use reliable contraception.\u201d"}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
-      arrow:"by goal and risk",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Fertility", html:"Subfertility / ovulation induction \u2192 fertility services."},
-          {t:"Refractory hirsutism", html:"Inadequate response to COC + cosmetic \u2192 endocrinology/dermatology for antiandrogens."},
-          {t:"Diagnostic doubt", html:"Very high androgens, rapid virilisation, suspected tumour/CAH/Cushing\u2019s \u2192 endocrinology."},
-          {t:"Endometrial concern", html:"Prolonged amenorrhoea / abnormal bleeding \u2192 gynaecology (assessment of endometrium)."}
-        ]},
-        {b:"say", html:"PCOS is very manageable, and the most powerful step \u2014 whatever your main concern \u2014 is supporting your weight and activity, which improves periods, skin and future health together. Let\u2019s also make sure your womb lining is protected and keep an eye on your diabetes risk."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#diagnose'><b>Diagnose</b><small>two of three, mimics excluded</small></a><a href='#metabolic'><b>Screen</b><small>glucose, BP, lipids, mood</small></a><a href='#cycles'><b>Protect</b><small>a bleed every 3 to 4 months</small></a><a href='#refer'><b>Refer</b><small>tumour, fertility, endometrium</small></a></div>",
+  quickSub:"The six things that change what you do today. Each traces to a source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Rapid virilisation or testosterone above 5 nmol/L is not PCOS until proven otherwise", html:"Deepening voice, clitoromegaly, temporal balding, rapid increase in muscle bulk, or hirsutism that has developed over months rather than years, especially with a total testosterone above 5 nmol/L, should prompt urgent endocrine assessment for an androgen-secreting ovarian or adrenal tumour (Society for Endocrinology 2025). Do not attribute it to PCOS and start a pill."},
+    {tone:"amber", h:"Long gaps between bleeds need a plan for the womb lining", html:"Unopposed oestrogen in anovulatory cycles raises the risk of endometrial hyperplasia and cancer. RCOG Green-top 33 advises inducing a withdrawal bleed with a progestogen at least every 3 to 4 months if she is not on a combined pill or a levonorgestrel IUS. The international guideline puts the premenopausal endometrial cancer risk at two to six times normal, while the absolute risk stays low."},
+    {tone:"blue", h:"The diagnosis is two out of three, after the mimics are excluded", html:"Irregular cycles, clinical or biochemical hyperandrogenism, and polycystic ovarian morphology on ultrasound (or a raised AMH in adults). If both irregular cycles and hyperandrogenism are present, no scan or AMH is needed. Check TSH, prolactin and 17-hydroxyprogesterone, with FSH and oestradiol if the periods have stopped (international guideline 2023)."},
+    {tone:"blue", h:"Screen the metabolic risk whatever her weight", html:"Assess glycaemic status at diagnosis and every 1 to 3 years (the international guideline prefers a 75 g OGTT; HbA1c is used in UK practice), check blood pressure every year, and take a lipid profile at diagnosis. An HbA1c of 42 to 47 mmol/mol puts her in the NICE PH38 high-risk group with a yearly test."},
+    {tone:"green", h:"Modest weight loss improves nearly every feature", html:"In women carrying excess weight, losing 5 to 10% of body weight improves cycles, androgen features, glucose and mood. No specific diet has been shown to beat another, so choose one she can sustain. Screen for disordered eating before prescribing weight loss, and do not dismiss an eating disorder because of her weight."},
+    {tone:"cream", h:"Treat the goal she names, and time the review", html:"Cycles and hirsutism: combined pill first (international guideline), within UKMEC 2025 limits. Facial hair: add cosmetic measures or eflornithine, reviewing at 4 months. Anti-androgens only after 6 months of an inadequate response, with effective contraception. Wanting a baby: weight, folic acid, stop the pill and refer early; letrozole is the first-line ovulation-induction drug in specialist hands."}
+  ],
+  pathwaySub:"Five moves, in the order that keeps her safe.",
+  pathway:[
+    {title:"Screen for the dangerous look-alikes", html:"Ask how fast the symptoms appeared. <b>Rapid virilisation, a testosterone above 5 nmol/L, or cushingoid features</b> point away from PCOS and towards a tumour, Cushing’s syndrome or non-classic CAH. <b>Postmenopausal bleeding</b> in a woman with a PCOS history is an NG12 question, not a PCOS one."},
+    {title:"Confirm the diagnosis and exclude mimics", html:"Use the <b>two-of-three</b> criteria with the 2023 cycle definitions. Take bloods in the early follicular phase if she is cycling: <b>total testosterone</b> (ideally by mass spectrometry) with a free androgen measure, <b>TSH, prolactin, 17-OHP</b>, and FSH with oestradiol if amenorrhoeic. Hormonal contraception confuses androgen results; a 3-month gap is usual before testing. Do not use ultrasound or AMH in adolescents."},
+    {title:"Map the long-term risks", html:"<b>Weight, waist, blood pressure</b>, glucose status (OGTT or HbA1c), <b>lipids</b>, <b>mood, anxiety and eating</b>, and <b>sleep apnoea symptoms</b>. Ask how many bleeds she has had in the last year and when the last one was, because this tells you whether the endometrium needs protecting."},
+    {title:"Agree the goal and treat it", html:"Lifestyle support for everyone. Then by goal: <b>combined pill</b> for cycles and androgen features; <b>cyclical progestogen or LNG-IUS</b> if the pill is unsuitable; <b>cosmetic measures or eflornithine</b> for facial hair; <b>metformin</b> for metabolic risk; <b>weight-management medicines</b> by NICE TA875 and TA1026 criteria; <b>fertility referral</b> if trying to conceive."},
+    {title:"Review every year", html:"Yearly: weight, BP, bleed frequency, mood, medicines and contraception. Glucose every 1 to 3 years, sooner with risk factors or a high-risk HbA1c. Plan pregnancy with an OGTT beforehand. Refer when a mimic is suspected, the endometrium is a concern, fertility treatment is needed, or first-line treatment fails."}
+  ],
+  sections:[
+    {id:"redflags", nav:"Red flags", title:"Red flags — when it is not PCOS, or not only PCOS", sub:"Most women with PCOS have had features since adolescence that evolve slowly. Speed, severity and age at onset are the clues that something else is going on.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Virilisation or very high testosterone", html:"Clitoromegaly, a deepening voice, male-pattern balding, breast atrophy or increased muscle bulk, or hirsutism of recent and rapid onset. A total testosterone above <b>5 nmol/L</b> should prompt investigation for an androgen-secreting ovarian or adrenal neoplasm. Refer urgently to endocrinology and do not start a combined pill first, because it will mask the picture.", src:"Society for Endocrinology androgen excess guideline, Clin Endocrinol 2025"},
+         {tone:"amber", h:"New androgen excess after the menopause", html:"Hirsutism or scalp hair loss that starts after the menopause is not a presentation of PCOS. Check testosterone and refer to endocrinology, as ovarian hyperthecosis and androgen-secreting tumours are the main concerns.", src:"Society for Endocrinology androgen excess guideline, Clin Endocrinol 2025"},
+         {tone:"amber", h:"Cushingoid features", html:"Proximal weakness, easy bruising, wide purple striae, a plethoric round face, or new hypertension with hyperglycaemia. Cushing’s syndrome causes irregular cycles and hirsutism and must be excluded where clinically suggested before labelling PCOS.", src:"International PCOS guideline 2023 (international)"},
+         {tone:"amber", h:"Prolonged amenorrhoea with no endometrial protection", html:"No bleed for more than 3 to 4 months, or irregular or intermenstrual bleeding on a background of long gaps. Offer a progestogen-induced withdrawal bleed and consider a transvaginal scan. A thickened endometrium, or bleeding that is abnormal for her, needs gynaecology assessment.", src:"RCOG Green-top Guideline 33 (2014)"},
+         {tone:"purple", h:"Postmenopausal bleeding at 55 or over <span class='tw'>2WW</span>", html:"A woman with a history of PCOS carries a higher lifetime endometrial risk. NICE NG12 (updated April 2026): refer using a suspected cancer pathway referral for endometrial cancer if she is aged 55 or over with postmenopausal bleeding that cannot be attributed to HRT. Under 55, consider a suspected cancer pathway referral for unexplained postmenopausal bleeding not attributable to HRT.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"amber", h:"Low mood with thoughts of self-harm", html:"Depression and anxiety are much more common in PCOS at every age. Ask directly about suicidal thoughts when mood is low, and follow your usual crisis pathway if risk is present.", src:"International PCOS guideline 2023 (international)"}
+       ]},
+       {b:"why", html:"<b>Why timing matters:</b> PCOS usually declares itself around menarche with irregular cycles, acne and slowly progressive hair growth. Androgen-secreting tumours tend to cause a much steeper rise in testosterone and genuine virilisation within months. A combined pill lowers testosterone and can hide both conditions, so test before treating when the story is atypical."}
+     ]},
+
+    {id:"diagnose", nav:"Diagnosis", title:"Making the diagnosis", sub:"The 2023 international guideline keeps the Rotterdam two-of-three structure, adds AMH as an alternative to ultrasound in adults, and tightens the definitions for adolescents.",
+     blocks:[
+       {b:"table", head:["Feature","What counts","Notes"], rows:[
+         ["<b>Ovulatory dysfunction</b>","Up to 1 year after menarche: irregular cycles are normal. 1 to under 3 years after menarche: cycles under 21 or over 45 days. From 3 years after menarche to the perimenopause: cycles under 21 or over 35 days, or fewer than 8 cycles a year. Any single cycle over 90 days from 1 year after menarche. Primary amenorrhoea by age 15, or more than 3 years after breast development began","Regular cycles do not exclude anovulation. If hyperandrogenism is present, a mid-luteal progesterone can confirm ovulatory dysfunction"],
+         ["<b>Clinical hyperandrogenism</b>","Hirsutism on the modified Ferriman–Gallwey score (a score of 4 to 6 or more, depending on ethnicity), acne, or female-pattern hair loss","Self-treatment with shaving, waxing or laser lowers the visible score, so ask what she does already"],
+         ["<b>Biochemical hyperandrogenism</b>","Total and free testosterone first (free testosterone calculated, or a free androgen index). Androstenedione and DHEAS if the first tests are normal","Liquid chromatography–mass spectrometry is preferred for total testosterone. Hormonal contraception suppresses results; a 3-month break is usual before testing"],
+         ["<b>Polycystic ovarian morphology</b>","Transvaginal ultrasound with 20 or more follicles in at least one ovary, or ovarian volume of 10 mL or more; or a raised AMH in adults","Not needed if cycles are irregular and hyperandrogenism is present. Neither ultrasound nor AMH should be used within 8 years of menarche"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Adolescents need both features", html:"Under 18 or within 8 years of menarche, the diagnosis needs <b>both</b> irregular cycles (by the age-specific definitions) and hyperandrogenism. If she has features but does not yet meet criteria, she is <b>at risk</b>: treat the symptoms, and reassess at full reproductive maturity, which is 8 years after menarche.", src:"International PCOS guideline 2023 (international)"},
+         {tone:"blue", h:"Why the name changed", html:"In May 2026 a global consensus published in the Lancet renamed the condition <b>polyendocrine metabolic ovarian syndrome (PMOS)</b>, reflecting its hormonal, metabolic, skin and mental-health effects. Diagnostic criteria are unchanged. Many patients and records will still say PCOS, so use both names when you explain it.", src:"Lancet 2026 (PMOS nomenclature consensus)"}
+       ]},
+       {b:"why", html:"<b>Ask about the whole timeline:</b> age at menarche, cycle pattern since, when hair growth started and how quickly it has changed, weight trajectory, medicines (including anabolic steroids and valproate), family history of diabetes and PCOS, and contraceptive use. A clear adolescent onset with slow progression is the pattern that makes PCOS likely."}
+     ]},
+
+    {id:"exclude", nav:"Mimics", title:"Tests that exclude the mimics", sub:"Several conditions produce irregular cycles or androgen excess. The international guideline expects them to be excluded before PCOS is confirmed.",
+     blocks:[
+       {b:"table", head:["Test","Looks for","If abnormal"], rows:[
+         ["<b>TSH</b>","Thyroid disease causing cycle disturbance","Treat the thyroid problem and reassess cycles"],
+         ["<b>Prolactin</b>","Hyperprolactinaemia (medicines, pituitary adenoma)","Repeat to confirm, review medicines, and follow the hyperprolactinaemia pathway"],
+         ["<b>17-hydroxyprogesterone</b>","Non-classic congenital adrenal hyperplasia","Refer to endocrinology; timing in the early follicular phase matters"],
+         ["<b>FSH and oestradiol</b>","Premature ovarian insufficiency (high FSH) or hypothalamic amenorrhoea (low FSH and oestradiol)","Relevant when periods have stopped; low weight, intense exercise or restrictive eating point to a hypothalamic cause"],
+         ["<b>Total testosterone</b>","Severity of androgen excess","Above 5 nmol/L, or any level with virilisation, needs endocrine assessment for a tumour"],
+         ["<b>Pregnancy test</b>","Pregnancy as the cause of amenorrhoea","Always first when a period is late"],
+         ["<b>Further tests if features suggest them</b>","Cushing’s syndrome, acromegaly, androgen-secreting tumours","Specialist-led; screening for Cushing’s is not routine without suggestive features"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Practical timing of bloods", html:"If she is having periods, take androgens and 17-OHP in the early follicular phase (days 2 to 5), ideally in the morning. If she has amenorrhoea, take them on any day after a negative pregnancy test. Stop hormonal contraception for about 3 months first if the diagnosis depends on the testosterone result.", src:"Society for Endocrinology androgen excess guideline, Clin Endocrinol 2025"},
+         {tone:"blue", h:"What the tests will not tell you", html:"LH-to-FSH ratio is not a diagnostic criterion. AMH is an adult alternative to ultrasound, not a stand-alone test, and has no role in adolescents. A pelvic ultrasound report of polycystic ovaries in a woman with regular cycles and no androgen features does not make the diagnosis.", src:"International PCOS guideline 2023 (international)"}
+       ]}
+     ]},
+
+    {id:"metabolic", nav:"Metabolic screen", title:"Metabolic and cardiovascular screening", sub:"Insulin resistance is common at every weight. Screen everyone, and do it again at intervals.",
+     blocks:[
+       {b:"table", head:["What","When","Threshold or action"], rows:[
+         ["<b>Glycaemic status</b>","At diagnosis, then every 1 to 3 years depending on risk factors; before pregnancy or fertility treatment","The international guideline prefers a 75 g OGTT; fasting glucose or HbA1c are alternatives. RCOG Green-top 33 advises an OGTT for women who are overweight, or of normal weight with additional risk factors (age over 40, previous gestational diabetes, family history of type 2 diabetes)"],
+         ["<b>HbA1c result</b>","If used","42 to 47 mmol/mol: high risk of type 2 diabetes; offer an intensive lifestyle programme and repeat at least yearly (NICE PH38). 48 mmol/mol or above: diabetes; confirm and manage"],
+         ["<b>Blood pressure</b>","Every year, and when planning pregnancy or fertility treatment","Manage hypertension on the usual thresholds; it also affects UKMEC category for the combined pill"],
+         ["<b>Lipids</b>","At diagnosis, whatever her age or weight","Repeat according to the result and overall cardiovascular risk"],
+         ["<b>Weight and waist</b>","At each review, measured with consent and without stigma","Use lower BMI thresholds for South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean backgrounds (NICE NG246)"],
+         ["<b>Sleep apnoea symptoms</b>","At diagnosis and review","Snoring with unrefreshing sleep, daytime sleepiness or fatigue: use a validated questionnaire such as the Berlin questionnaire, or refer for sleep studies"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Metformin for metabolic features", html:"Consider metformin, alongside lifestyle support, in adults with PCOS and a BMI of 25 or more, for weight, insulin resistance, glucose and lipids. It is off-label for PCOS in the UK. Start low and titrate slowly to limit gastrointestinal effects; <b>dose per BNF</b>. Inositol has limited evidence of benefit.", src:"International PCOS guideline 2023 (international) · BNF metformin"},
+         {tone:"blue", h:"The pregnancy glucose check", html:"Offer a 75 g OGTT when she is planning pregnancy. If it was not done, offer one before 20 weeks; in addition, offer every pregnant woman with PCOS an OGTT at 24 to 28 weeks. Mention this in the referral letter or antenatal booking so it is not missed.", src:"International PCOS guideline 2023 (international)"}
+       ]},
+       {b:"why", html:"<b>Why screen slim women too:</b> the international guideline’s meta-analyses show higher rates of impaired glucose tolerance, type 2 diabetes and gestational diabetes in PCOS independent of BMI. A normal weight lowers the risk but does not remove it."}
+     ]},
+
+    {id:"cycles", nav:"Cycles", title:"Cycles and endometrial protection", sub:"Infrequent bleeds are not harmless. The aim is a bleed at least every 3 to 4 months, or continuous progestogen exposure.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"First choice", title:"Combined oral contraceptive pill", when:"cycle control plus contraception", fromLabel:"if UKMEC allows",
+          html:"The international guideline makes the combined pill the first-line drug for irregular cycles, and it also treats hirsutism and acne. No particular brand is preferred; lower ethinylestradiol doses (20 to 30 micrograms) are favoured. Check UKMEC 2025: BMI of 35 or more, hypertension, migraine with aura, smoking over 35 and several risk factors together can make the combined pill unsuitable."},
+         {step:"Alternative", title:"Levonorgestrel intrauterine system", when:"combined pill unsuitable or not wanted", fromLabel:"continuous protection",
+          html:"Gives continuous endometrial protection and contraception without oestrogen. Useful where UKMEC rules out oestrogen, for example a high BMI or hypertension."},
+         {step:"Alternative", title:"Cyclical oral progestogen", when:"not needing contraception", fromLabel:"induced withdrawal bleed",
+          html:"RCOG Green-top 33: induce a withdrawal bleed with a progestogen at least every 3 to 4 months. Medroxyprogesterone acetate is the usual choice; <b>dose and duration per BNF and SPC</b>. This does not provide contraception."},
+         {step:"Option", title:"Progestogen-only pill", when:"contraception without oestrogen", fromLabel:"limited evidence in PCOS",
+          html:"The international guideline notes that progestogen-only contraception may be considered for endometrial protection, based on general-population evidence."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"When to scan the endometrium", html:"Consider a transvaginal ultrasound if she has had prolonged amenorrhoea without protection, or bleeding that is abnormal for her. RCOG Green-top 33 regards hyperplasia as unlikely when the endometrial thickness is under 7 mm; a thicker or irregular endometrium, or persistent abnormal bleeding, needs gynaecology assessment with biopsy or hysteroscopy.", src:"RCOG Green-top Guideline 33 (2014)"},
+         {tone:"green", h:"What to tell her about cancer risk", html:"Her endometrial cancer risk before the menopause is two to six times that of other women, but the absolute risk remains low and routine screening is not recommended. Regular withdrawal bleeds, weight management and prompt reporting of abnormal bleeding are what protect her. There is no clear link with breast or ovarian cancer, so no extra surveillance is needed.", src:"International PCOS guideline 2023 (international) · RCOG Green-top Guideline 33 (2014)"}
+       ]},
+       {b:"warn", html:"<b>Co-cyprindiol (cyproterone acetate with ethinylestradiol 35 micrograms)</b> carries a higher VTE risk than levonorgestrel pills. MHRA Drug Safety Update (June 2013): it is for moderate to severe androgen-related acne and/or hirsutism in women of reproductive age, for acne only after topical treatment or oral antibiotics have failed, and it should be stopped 3 to 4 cycles after the condition has resolved. It is not to be used solely for contraception. The international guideline keeps it second line, and it must not be combined with another hormonal contraceptive."}
+     ]},
+
+    {id:"androgen", nav:"Hair and skin", title:"Hirsutism, acne and hair loss", sub:"These are often the reason she came. Treatment is slow, so agree on a review point at the start.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"All", title:"Cosmetic and mechanical measures", when:"any time, alongside drugs", fromLabel:"first and ongoing",
+          html:"Shaving, waxing, threading, bleaching, and laser or intense pulsed light (less effective on fair, grey or red hair; laser is rarely NHS-funded). Shaving does not make hair coarser or faster-growing. The international guideline supports laser and light therapy for facial hirsutism."},
+         {step:"Face", title:"Eflornithine 11.5% cream", when:"facial hirsutism", fromLabel:"topical adjunct",
+          html:"Licensed for facial hirsutism in women. Apply twice daily at least 8 hours apart. Improvement may appear within 8 weeks; stop if there is no benefit after 4 months. Hair returns to baseline about 8 weeks after stopping (Vaniqa SPC). Supply of the branded cream has been intermittent, so check local availability."},
+         {step:"First drug", title:"Combined oral contraceptive pill", when:"hirsutism or acne", fromLabel:"within UKMEC",
+          html:"Allow at least 6 months before judging the effect on hair growth. Acne often responds sooner and can be treated in parallel using the usual acne pathway."},
+         {step:"Second line", title:"Anti-androgen", when:"inadequate response after 6 months", fromLabel:"specialist advice",
+          html:"The international guideline supports adding an anti-androgen, such as spironolactone (off-label), after at least 6 months of the combined pill or cosmetic treatment has not worked, with effective contraception because anti-androgens can feminise a male fetus. <b>Dose per specialist and BNF</b>. Check potassium and renal function where indicated."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Female-pattern hair loss", html:"Thinning over the crown with a preserved frontal hairline can be an androgen feature of PCOS. In usual practice, ferritin and thyroid function are checked too, and scarring (which changes the pathway) is looked for. Manage it alongside the other androgen features; see the female pattern hair loss page for the treatment pathway.", src:"International PCOS guideline 2023 (international)"},
+         {tone:"cream", h:"Measure before you treat", html:"Record a modified Ferriman–Gallwey score or take photographs at baseline. Ask how much time she spends on hair removal and how it affects her. Improvement is gradual and is easier to see against a documented baseline at the 6-month review.", src:"International PCOS guideline 2023 (international)"}
+       ]}
+     ]},
+
+    {id:"weight", nav:"Weight", title:"Weight, lifestyle and weight-management medicines", sub:"Lifestyle support is for everyone with PCOS, at every weight. The language matters as much as the advice.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"Target", html:"In women with excess weight, a 5 to 10% loss brings clinically useful improvements in cycles, androgens, glucose and mood. Preventing weight gain is a goal in its own right."},
+         {t:"Diet", html:"No single diet works better in PCOS. Help her pick a sustainable, reduced-energy pattern and refer to a structured programme where available."},
+         {t:"Activity", html:"Adults: at least 150 to 300 minutes of moderate or 75 to 150 minutes of vigorous activity a week, with muscle-strengthening on 2 days, and less sitting."},
+         {t:"Eating", html:"Screen for binge eating and other eating disorders before prescribing weight loss. An eating disorder can exist at any weight."},
+         {t:"Smoking and alcohol", html:"Stopping smoking cuts cardiovascular risk and raises combined-pill eligibility; keep alcohol within low-risk limits."},
+         {t:"Language", html:"Ask permission to discuss weight, avoid blame, and focus on health rather than a number on the scales."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Weight-management medicines", html:"Assess and offer them within the technology appraisal criteria, not by diagnosis. <b>Semaglutide (TA875)</b>: BMI of 35 or more with at least one weight-related comorbidity, or 30 to 34.9 meeting specialist-service referral criteria, used for up to 2 years within a specialist weight-management service. <b>Tirzepatide (TA1026)</b>: BMI of 35 or more with at least one weight-related comorbidity. Lower thresholds apply for some ethnic groups.", src:"NICE TA875 (2023) · NICE TA1026 (2024) · NICE NG246 (2025)"},
+         {tone:"amber", h:"Contraception on GLP-1 medicines", html:"These medicines must not be used in pregnancy or when trying to conceive, and weight loss can restore ovulation unexpectedly. Tirzepatide may reduce oral contraceptive effectiveness: use a non-oral method, or add a barrier method, for 4 weeks after starting and after each dose increase.", src:"MHRA Drug Safety Update (June 2025)"}
+       ]},
+       {b:"why", html:"<b>Why weight loss helps so broadly:</b> insulin resistance and high insulin levels drive ovarian androgen production and lower sex hormone-binding globulin, so free testosterone rises. Reducing insulin resistance, whether through weight loss, activity or metformin, eases the androgen features and can restore ovulation."}
+     ]},
+
+    {id:"fertility", nav:"Fertility", title:"Fertility and pregnancy", sub:"Most women with PCOS can conceive, many with help. Do not delay referral once she is trying.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"Before she tries", html:"Folic acid, stopping smoking, a pre-pregnancy OGTT, blood pressure check, and review of teratogenic medicines (stop anti-androgens, and GLP-1 or tirzepatide medicines, before trying). If her BMI is 30 or more, explain that losing weight may restore ovulation and improves the response to treatment and pregnancy outcomes.", src:"NICE NG257 (2026) · International PCOS guideline 2023 (international)"},
+         {tone:"cream", h:"When to refer", html:"NICE NG257: offer an earlier referral for specialist consultation if she is 36 or over, or if there is a known clinical cause of infertility. Anovulation with irregular cycles is a known cause, so do not wait for a year of trying.", src:"NICE NG257 (2026)"},
+         {tone:"blue", h:"Ovulation induction (specialist)", html:"The international guideline makes <b>letrozole</b> the first-line drug for ovulation induction in anovulatory PCOS with no other fertility factor; <b>clomifene</b>, with or without metformin, is an alternative, and gonadotrophins or laparoscopic ovarian surgery are second line. Letrozole is off-label for this use in the UK. NG257 (March 2026) removed its PCOS-specific ovulation-induction recommendations pending the PMOS guideline in development (GID-NG10436), so these are specialist decisions.", src:"International PCOS guideline 2023 (international) · NICE NG257 (2026)"},
+         {tone:"amber", h:"Pregnancy is higher risk", html:"Gestational diabetes, hypertensive disorders and preterm birth are more common. Flag PCOS at antenatal booking so glucose testing is arranged, and check blood pressure closely.", src:"International PCOS guideline 2023 (international)"}
+       ]}
+     ]},
+
+    {id:"review", nav:"Review", title:"Mental health, sleep and the yearly review", sub:"PCOS is lifelong. The review is where most long-term harm is prevented.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"Diagnosis", title:"Explain and baseline", html:"Explain the diagnosis and the new PMOS name. Record weight, BP, glucose status, lipids and hirsutism score. Screen mood, anxiety, eating and sleep. Agree her goal and the endometrial plan."},
+         {n:"2", when:"3 to 6 months", title:"Early check", html:"Tolerance of the pill or metformin, BP on the combined pill, withdrawal bleeds happening, and eflornithine response at 4 months."},
+         {n:"3", when:"6 months", title:"Hair review", html:"Compare against the baseline score or photos. If response is inadequate, consider an anti-androgen with contraception, or referral."},
+         {n:"4", when:"Every year", title:"Annual review", html:"Weight, BP, cycle pattern and endometrial protection, mood and eating, sleep symptoms, medicines, contraception and pregnancy plans. Glucose every 1 to 3 years, or yearly if HbA1c is 42 to 47 mmol/mol."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Mood, anxiety and body image", html:"Screen everyone for depression and anxiety at diagnosis and when concerns arise. Ask about body image and quality of life. Offer evidence-based psychological therapy on usual general-population pathways.", src:"International PCOS guideline 2023 (international)"},
+         {tone:"blue", h:"The UK guideline is coming", html:"A UK PMOS guideline, GID-NG10436, is in development. Its draft was out for consultation from July to 11 August 2026, and publication is expected on 9 December 2026. Until then it is not guidance: none of the draft recommendations is used on this page, which will be revised when the final guideline is published.", src:"GID-NG10436, in development (expected December 2026)"}
+       ]},
+       {b:"say", html:"PCOS, which is now being called PMOS, is a hormone condition that affects periods, skin and hair, weight, and your future risk of diabetes. It is very common and very manageable. Today we’ll check the things that could be hiding behind your symptoms, make sure the lining of your womb is protected, and pick the treatment for what bothers you most. Then we’ll see you once a year to keep an eye on your sugar, blood pressure and mood."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, where and how fast", sub:"Most PCOS stays in primary care. These are the exceptions.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"purple", h:"Suspected endometrial cancer <span class='tw'>2WW</span>", html:"NICE NG12 (updated April 2026): refer using a suspected cancer pathway referral for endometrial cancer in women aged 55 and over with postmenopausal bleeding that cannot be attributed to HRT. Consider the same referral under 55 for unexplained postmenopausal bleeding not attributable to HRT.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"red", h:"Virilisation or testosterone above 5 nmol/L", html:"Urgent endocrinology referral for suspected androgen-secreting ovarian or adrenal tumour; include the testosterone result and how fast the features developed.", src:"Society for Endocrinology androgen excess guideline, Clin Endocrinol 2025"},
+         {tone:"amber", h:"Endometrial concern before the menopause", html:"Thickened endometrium on scan, persistent intermenstrual or irregular bleeding despite treatment, or long unprotected amenorrhoea: gynaecology for biopsy or hysteroscopy.", src:"RCOG Green-top Guideline 33 (2014)"},
+         {tone:"cream", h:"Trying to conceive", html:"Fertility services at presentation if she is anovulatory, aged 36 or over, or has other known fertility factors.", src:"NICE NG257 (2026)"},
+         {tone:"cream", h:"Diagnostic doubt or suspected mimic", html:"Raised 17-OHP, suspected Cushing’s, markedly raised prolactin, or an unclear picture in an adolescent: endocrinology (paediatric endocrinology for under-16s).", src:"International PCOS guideline 2023 (international)"},
+         {tone:"cream", h:"Treatment not working", html:"Hirsutism not controlled after 6 months of the pill plus cosmetic measures, or the pill unsuitable: endocrinology or dermatology advice on anti-androgens. Severe obesity meeting criteria: specialist weight-management service.", src:"International PCOS guideline 2023 (international) · NICE NG246 (2025)"}
+       ]},
+       {b:"warn", html:"Premenopausal irregular bleeding in PCOS does not meet an NG12 criterion on its own; manage it by protecting the endometrium and refer to gynaecology if abnormal bleeding persists or the endometrium is thickened. A pelvic or abdominal mass found at any age should be managed on the NG12 ovarian pathway."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card; the Casebook holds the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 27-year-old woman has had 4 periods in the past year, facial hair she threads every week, and acne. Her BMI is 33 and her mother has type 2 diabetes. She has read online that PCOS means she cannot have children, and she wants something for the hair. She is not trying to conceive for another year or two.", src:"International PCOS guideline 2023 (international)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Explores her ideas and the fertility worry; asks about <b>speed of onset and virilisation</b>; plans testosterone, <b>TSH, prolactin, 17-OHP</b> and pregnancy test; addresses <b>endometrial protection</b> for infrequent bleeds; checks <b>UKMEC</b> (BMI 33 is category 2) and BP before the pill; arranges <b>glucose, lipids and BP</b>; offers weight support without blame; asks about mood and eating; sets a <b>6-month hair review</b>; explains fertility is usually achievable, with early referral when she is ready.", src:"UKMEC 2025 (FSRH/CoSRH) · RCOG Green-top Guideline 33 (2014)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every figure on this page traces to one of these primary sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li>International evidence-based guideline for the assessment and management of polycystic ovary syndrome (2023) — Monash University with ESHRE, ASRM and partner societies (international: GID-NG10436, the UK PMOS guideline, is still in development). Teede HJ et al., J Clin Endocrinol Metab 2023;108:2447–69<br><a href="https://academic.oup.com/jcem/article/108/10/2447/7242360" rel="noopener">academic.oup.com — JCEM 2023 recommendations</a><span class="rd"> — diagnostic criteria and cycle definitions, adolescent criteria, AMH, exclusion tests, metabolic, BP and lipid screening, OGTT in pregnancy, sleep apnoea, mental health, endometrial cancer risk, 5 to 10% weight loss, activity targets, combined pill, metformin at BMI 25 or more, anti-androgens after 6 months, letrozole first line</span></li>'+
+         '<li>Polyendocrine metabolic ovarian syndrome, the new name for polycystic ovary syndrome: a multistep global consensus process. Lancet, May 2026<br><a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)00717-8/fulltext" rel="noopener">thelancet.com</a><span class="rd"> — the PMOS name change and its rationale</span></li>'+
+         '<li>GID-NG10436 (in development at nice.org.uk) — Polyendocrine metabolic ovarian syndrome (PMOS): draft consultation July to August 2026, publication expected December 2026 (not yet published)<br><a href="https://www.nice.org.uk/guidance/indevelopment/gid-ng10436" rel="noopener">nice.org.uk/guidance/indevelopment/gid-ng10436</a><span class="rd"> — status only; no draft recommendation is used as guidance on this page</span></li>'+
+         '<li>RCOG Green-top Guideline No. 33 — Long-term consequences of polycystic ovary syndrome (2014)<br><a href="https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/long-term-consequences-of-polycystic-ovary-syndrome-green-top-guideline-no-33/" rel="noopener">rcog.org.uk — GTG 33</a><span class="rd"> — withdrawal bleed at least every 3 to 4 months, endometrial thickness under 7 mm, OGTT for higher-risk women, no extra breast or ovarian surveillance, sleep apnoea</span></li>'+
+         '<li>NICE NG257 — Fertility problems: assessment and treatment (March 2026; replaced CG156)<br><a href="https://www.nice.org.uk/guidance/ng257" rel="noopener">nice.org.uk/guidance/ng257</a><span class="rd"> — earlier referral at 36 or over or with a known cause; weight loss advice at BMI 30 or more; PCOS ovulation-induction recommendations removed pending the PMOS guideline</span></li>'+
+         '<li>NICE PH38 — Type 2 diabetes: prevention in people at high risk (2012, updated 2017)<br><a href="https://www.nice.org.uk/guidance/ph38" rel="noopener">nice.org.uk/guidance/ph38</a><span class="rd"> — HbA1c 42 to 47 mmol/mol high-risk range, yearly retest, intensive lifestyle programme</span></li>'+
+         '<li>NICE NG246 — Overweight and obesity management (January 2025, updated January 2026)<br><a href="https://www.nice.org.uk/guidance/ng246" rel="noopener">nice.org.uk/guidance/ng246</a><span class="rd"> — non-stigmatising assessment, ethnicity-adjusted BMI thresholds, specialist services</span></li>'+
+         '<li>NICE TA875 — Semaglutide for managing overweight and obesity (2023) and NICE TA1026 — Tirzepatide for managing overweight and obesity (2024, updated 2025)<br><a href="https://www.nice.org.uk/guidance/ta875" rel="noopener">nice.org.uk/guidance/ta875</a> · <a href="https://www.nice.org.uk/guidance/ta1026" rel="noopener">nice.org.uk/guidance/ta1026</a><span class="rd"> — eligibility criteria</span></li>'+
+         '<li>NICE NG12 — Suspected cancer: recognition and referral (2015, updated April 2026)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — endometrial cancer: postmenopausal bleeding at 55 or over not attributable to HRT</span></li>'+
+         '<li>Society for Endocrinology clinical practice guideline for the evaluation of androgen excess in women. Elhassan YS et al., Clin Endocrinol 2025<br><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cen.15265" rel="noopener">onlinelibrary.wiley.com — Clin Endocrinol 2025</a><span class="rd"> — testosterone above 5 nmol/L and virilisation as triggers for tumour investigation, test timing</span></li>'+
+         '<li>UKMEC 2025 — UK Medical Eligibility Criteria for Contraceptive Use (CoSRH, formerly FSRH, December 2025)<br><a href="https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025_Summary_Tables.pdf" rel="noopener">cosrh.org — UKMEC 2025 summary tables</a><span class="rd"> — combined pill categories for BMI, hypertension and multiple risk factors</span></li>'+
+         '<li>MHRA Drug Safety Update — co-cyprindiol (June 2013) and GLP-1 and dual GIP/GLP-1 medicines: contraception and pregnancy (June 2025)<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — VTE risk and restricted use of co-cyprindiol; tirzepatide and oral contraceptive effectiveness</span></li>'+
+         '<li>BNF and SPCs — metformin, medroxyprogesterone acetate, spironolactone; Vaniqa 11.5% cream SPC<br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a> · <a href="https://www.medicines.org.uk/emc/product/6398/smpc" rel="noopener">medicines.org.uk — Vaniqa SPC</a><span class="rd"> — doses, off-label status, eflornithine twice daily and 4-month stopping rule</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Polycystic ovary syndrome (PMOS) in primary care. Sources: International evidence-based PCOS guideline 2023 (international), RCOG Green-top 33 (2014), NICE NG257 (2026), NICE PH38 (2012, updated 2017), NICE NG246 (2025), NICE TA875 (2023) and TA1026 (2024), NICE NG12 (updated April 2026), UKMEC 2025, Society for Endocrinology 2025 and MHRA Drug Safety Updates. The UK PMOS guideline (GID-NG10436) is in development and not yet published. Check every dose in the current BNF. Not a substitute for clinical judgement."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

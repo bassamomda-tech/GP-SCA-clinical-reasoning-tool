@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Acne Vulgaris — Protocol · Reasoning GP</title>
+<meta name="description" content="Acne vulgaris in primary care on one page: count the lesions to pick the NICE NG198 severity band, choose a fixed topical combination for 12 weeks, add lymecycline or doxycycline only with a non-antibiotic topical, cap antibiotics at 6 months, and refer early for scarring, fulminans or isotretinoin under the MHRA 2023 safeguards." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/acne.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,110 +21,204 @@
 MG.render({
   icon:"🧴",
   title:"Acne Vulgaris",
-  stemTitle:"Acne vulgaris — ongoing management",
-  stemSub:"Primary-care management of acne by severity \u2014 topical combinations first, then oral antibiotics or hormonal options, with a 12-week review rule and clear isotretinoin-referral triggers. NICE NG198.",
-  guideline:"NICE NG198",
-  glance:[
-    {lbl:"Grade", val:"Mild / mod / severe", sub:"+ scarring risk"},
-    {lbl:"First-line", val:"Topical combination", sub:"12-week courses"},
-    {lbl:"Moderate", val:"+ oral antibiotic", sub:"lymecycline 408mg OD"},
-    {lbl:"Antibiotic cap", val:"\u22646 months", sub:"always with topical"},
-    {lbl:"Hormonal (F)", val:"COC / co-cyprindiol", sub:"option"},
-    {lbl:"Refer", val:"Severe / scarring", sub:"isotretinoin"}
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Acne vulgaris — count the lesions, commit to 12 weeks, never let an antibiotic work alone, and refer before the scars set",
+  stemSub:"Acne is judged by the lesion count and by what it is doing to the person. Pick the NG198 severity band from the count, start one fixed topical combination for a full 12 weeks, add an oral tetracycline only alongside a non-antibiotic topical, stop antibiotics by 6 months, keep the gains with maintenance treatment, and refer promptly when there is scarring, pigmentation, fulminans, or a case for isotretinoin under the MHRA safeguards. Sources: NICE NG198 (2021, last updated August 2026) · MHRA Drug Safety Update (June 2013, October 2023) · BNF · product SPCs.",
+  guideline:"NICE NG198 (2021, last updated August 2026) · MHRA Drug Safety Update (June 2013; October 2023) · BNF · SPCs",
+  meta:[
+    {t:"NICE NG198 · acne vulgaris management (2021, updated 2023)"},
+    {t:"MHRA DSU Oct 2023 · isotretinoin safeguards"},
+    {t:"MHRA DSU Jun 2013 · co-cyprindiol"},
+    {t:"BNF · SPCs (Epiduo, Treclin, Duac, Skinoren)"},
+    {t:"SAFA trial · Santer et al., BMJ 2023"},
+    {t:"No NG12 criterion applies", tone:"ok"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Grade severity and scarring risk",
-      blocks:[
-        {b:"kv", rows:[
-          ["Mild","Mostly comedones, few inflammatory lesions"],
-          ["Moderate","More widespread inflammatory papules/pustules"],
-          ["Severe","Nodules/cysts, extensive inflammation, or any scarring"],
-          ["Flag now","<b>Scarring, marked distress, or nodulocystic disease</b> \u2014 these lower the threshold to escalate/refer early"]
-        ]},
-        {b:"why", html:"Severity (and crucially the presence of <strong>scarring or psychological impact</strong>) determines the rung you start on and how fast you escalate. Scarring is irreversible, so visible scars or severe distress justify earlier oral therapy or isotretinoin referral rather than prolonged topical trials."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Skin care and myth-busting",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🧼 Gentle cleansing", html:"Non-alkaline gentle cleanser twice daily; avoid over-washing/scrubbing which irritates."},
-          {t:"🚫 Don't pick", html:"Avoid squeezing/picking \u2014 worsens inflammation and scarring."},
-          {t:"🧴 Non-comedogenic", html:"Oil-free, non-comedogenic moisturisers and make-up; avoid greasy products."},
-          {t:"🍫 Diet myths", html:"Reassure: chocolate/greasy food and poor hygiene don't cause acne; no strict diet needed."},
-          {t:"🧠 Psychological", html:"Acknowledge impact on mood/self-esteem; screen for distress and bullying."},
-          {t:"⏳ Expectations", html:"Explain treatments take \u22656\u20138 weeks; persistence is essential."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 stepwise", title:"The treatment ladder (12-week courses)",
-      blocks:[
-        {b:"p", html:"Offer a <strong>12-week course</strong> at each step and review. NICE first-line options are fixed <strong>topical combinations</strong>; avoid topical + oral antibiotic together, and never use antibiotics as monotherapy."},
-        {b:"ladder", steps:[
-          {step:"Step 1", title:"Topical combination", when:"first-line, any severity",
-           html:"Choose one, applied <b>once daily</b>: <b>adapalene 0.1% + benzoyl peroxide 2.5%</b> (Epiduo, at night); <b>tretinoin 0.025% + clindamycin 1%</b> (Treclin, at night); or <b>benzoyl peroxide 3% + clindamycin 1%</b> (Duac, OD). Alternative: <b>azelaic acid 20% BD</b>. (Benzoyl peroxide alone if pregnant.)"},
-          {step:"Step 2", title:"Add an oral antibiotic", when:"moderate\u2013severe",
-           fromLabel:"inadequate after 12 weeks",
-           html:"Add <b>lymecycline 408\u00a0mg once daily</b> or <b>doxycycline 100\u00a0mg once daily</b> to a topical (BPO \u00b1 retinoid) \u2014 <b>not</b> with a topical antibiotic. If tetracyclines unsuitable (pregnancy, &lt;12\u00a0yrs): <b>erythromycin 500\u00a0mg BD</b>. Max ~6 months; review at 12 weeks."},
-          {step:"Step 2 (F)", title:"Hormonal option (women)", when:"alternative to antibiotic",
-           fromLabel:"women preferring hormonal therapy",
-           html:"A <b>combined oral contraceptive</b>, or <b>co-cyprindiol 2000/35</b> (higher VTE risk \u2014 stop ~3 months after control), combined with topical therapy. Allow up to 6 months to judge benefit."},
-          {step:"Step 3", title:"Refer for isotretinoin", when:"severe / scarring / refractory",
-           fromLabel:"failure or red flags",
-           html:"Refer to dermatology for oral isotretinoin (specialist-only) \u2014 see refer node."}
-        ]},
-        {b:"warn", html:"<b>Never use oral or topical antibiotics as monotherapy</b> (resistance) \u2014 always pair with benzoyl peroxide or a retinoid. <b>Topical retinoids and co-cyprindiol/isotretinoin are contraindicated in pregnancy</b> \u2014 ensure contraception."}
-      ]},
-    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"The 12-week review rule",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Response + tolerability","12 weeks per step","Inadequate \u2192 step up; irritation \u2192 adjust frequency"],
-          ["Antibiotic duration","Review by ~6 months","Stop antibiotic; maintain on topical (retinoid \u00b1 BPO)"],
-          ["Scarring / distress","Each review","New scarring or marked distress \u2192 escalate / refer"],
-          ["Maintenance","After clearance","Continue a topical retinoid \u00b1 BPO to prevent relapse"]
-        ]}
-      ]},
-    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
-      blocks:[
-        {b:"timeline", items:[
-          {n:"1", when:"12 weeks", title:"Step review", html:"Assess response and adherence; step up if inadequate; reinforce realistic timescale."},
-          {n:"2", when:"~6 months (if on antibiotic)", title:"Antibiotic stop", html:"Stop the oral antibiotic; continue topical maintenance to prevent relapse."},
-          {n:"3", when:"Ongoing", title:"Maintenance / escalation", html:"Maintain with topical retinoid \u00b1 BPO; refer if severe/scarring/refractory."}
-        ]}
-      ]},
-    {t:"loop", icon:"🔁", title:"Not clearing? Check before escalating",
-      arrow:"\u2026if acne persists at 12 weeks",
-      intro:"Confirm an adequate, adherent course before moving up or referring.",
-      checks:[
-        {b:"1 \u00b7 Adherence", html:"Used consistently for the full 12 weeks despite slow start / initial irritation?"},
-        {b:"2 \u00b7 Irritation", html:"Reduced application frequency rather than stopping? Moisturiser used?"},
-        {b:"3 \u00b7 Right combo", html:"Antibiotic paired with BPO/retinoid (not antibiotic monotherapy)?"},
-        {b:"4 \u00b7 Aggravators", html:"Comedogenic products, occlusion, anabolic steroids, PCOS (women)?"},
-        {b:"5 \u00b7 Escalate", html:"Adequate trial failed, or scarring/severe \u2192 oral therapy / dermatology."}
-      ],
-      back:"Adherent adequate course, aggravators addressed \u2192 step up / refer for isotretinoin"},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"⚠️ Scarring", html:"\u201cIf you start to see scarring or deep painful lumps, come back \u2014 we may need stronger treatment to prevent permanent marks.\u201d"},
-          {t:"🤰 Pregnancy", html:"\u201cSeveral acne treatments must not be used in pregnancy \u2014 tell us if you\u2019re pregnant or planning, and use reliable contraception with retinoids.\u201d"},
-          {t:"🧠 Mood", html:"\u201cIf the acne is really affecting your mood or confidence, tell us \u2014 that matters and changes our plan.\u201d"},
-          {t:"☀️ Photosensitivity", html:"\u201cDoxycycline can make you burn more easily \u2014 use sun protection.\u201d"}
-        ]}
-      ]},
-    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer dermatology",
-      arrow:"for isotretinoin or diagnostic doubt",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Severe / nodulocystic", html:"Severe acne (incl. conglobata) \u2192 dermatology for oral isotretinoin."},
-          {t:"Scarring", html:"Acne with scarring, or at risk of scarring, not responding to treatment."},
-          {t:"Refractory", html:"Not responding to two completed courses of treatment including an oral antibiotic."},
-          {t:"Psychological", html:"Persistent significant distress despite treatment."},
-          {t:"Urgent", html:"Acne fulminans (systemic upset, ulceration) \u2192 same-day specialist advice."}
-        ]},
-        {b:"say", html:"Acne is very treatable, but it takes a good 8\u201312 weeks to see the benefit, so let\u2019s commit to a course and review. If it\u2019s severe or scarring, there\u2019s a powerful specialist tablet (isotretinoin) the dermatologists can offer."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#flags'><b>Red flags</b><small>Fulminans, scarring, mood</small></a><a href='#grade'><b>Grade</b><small>Count the lesions</small></a><a href='#firstline'><b>First line</b><small>Four 12-week options</small></a><a href='#refer'><b>Refer</b><small>Same day to routine</small></a></div>",
+  quickSub:"Six cards that cover most acne consultations. Each figure traces to a source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Acne fulminans is a same-day referral", html:"Sudden severe inflammatory acne with ulceration or crusting, often with fever, joint pain or feeling unwell. NICE NG198 asks for <b>urgent referral the same day to the on-call hospital dermatology team</b>, for assessment within 24 hours. Do not start an antibiotic and review in 12 weeks.", src:"NICE NG198 (2021, last updated August 2026)"},
+    {tone:"blue", h:"Count, don’t guess", html:"NG198 uses two bands. <b>Mild to moderate:</b> any number of comedones, up to 34 inflammatory lesions, or up to 2 nodules. <b>Moderate to severe:</b> 35 or more inflammatory lesions, or 3 or more nodules. The band decides which first-line options are open.", src:"NICE NG198 (2021, last updated August 2026)"},
+    {tone:"cream", h:"One fixed combination, for 12 weeks", html:"Every NG198 first-line option is a combination of two agents with different actions, used for a <b>12-week course</b> before judging it. Benefit usually takes 6–8 weeks to show, which is why stopping at a month is the commonest reason acne ‘doesn’t respond’.", src:"NICE NG198 (2021, last updated August 2026)"},
+    {tone:"amber", h:"An antibiotic never works alone", html:"No topical antibiotic on its own, no oral antibiotic on its own, and <b>never a topical and an oral antibiotic together</b>. An oral tetracycline goes with adapalene plus benzoyl peroxide, or with azelaic acid. Oral antibiotic courses beyond <b>6 months</b> are for exceptional circumstances only, reviewed every 3 months.", src:"NICE NG198 (2021, last updated August 2026)"},
+    {tone:"amber", h:"Retinoids and tetracyclines: think pregnancy", html:"Topical retinoids and oral tetracyclines are contraindicated in pregnancy and when planning one. Discuss effective contraception or choose another option; benzoyl peroxide alone is the NG198 fallback when these are ruled out. Isotretinoin runs under a formal Pregnancy Prevention Programme.", src:"NICE NG198 (2021, last updated August 2026) · MHRA isotretinoin PPP"},
+    {tone:"green", h:"Scarring and distress move the threshold", html:"Scarring, persistent pigmentary change, and significant psychological distress are each a reason to refer rather than to repeat another course. NG198 is explicit that distress can occur with mild acne too, so ask about mood whatever the lesion count.", src:"NICE NG198 (2021, last updated August 2026)"}
+  ],
+  pathwaySub:"Five moves from first look to specialist. The first step is where harm happens.",
+  pathway:[
+    {title:"Screen for what should not wait", html:"Systemic upset with ulcerating acne (fulminans) · active scarring or post-inflammatory pigmentation · thoughts of self-harm or suicide · features that suggest it is not acne at all (rosacea, perioral dermatitis, folliculitis, drug-induced or androgen-driven disease). Any of these changes the plan before routine treatment.", alert:true},
+    {title:"Grade by lesion count and ask about impact", html:"Count inflammatory lesions and nodules to place the person in the NG198 band. Record scarring, pigmentation and sites (face, back, chest). Ask directly how acne affects mood, confidence, work or school — and whether they pick or squeeze."},
+    {title:"Start one first-line option for 12 weeks", html:"Choose with the person from the four NG198 options, taking account of severity, preference, pregnancy plans, skin irritation and cost. Add basic skin-care advice. Explain that it will take weeks to see change and that early irritation usually settles."},
+    {title:"Review at 12 weeks and decide", html:"Improved → consider maintenance. Not improved → check adherence, technique and irritation, then try a different first-line option. Oral antibiotic in use → plan to stop it by 6 months. Women → the combined pill (or co-cyprindiol) can be added."},
+    {title:"Refer when NG198 criteria are met", html:"Two completed courses without response (mild to moderate), failure of a course containing an oral antibiotic (moderate to severe), scarring, persistent pigmentation, acne conglobata or nodulocystic acne, or significant distress. Isotretinoin is initiated only by a consultant dermatologist-led team."}
+  ],
+  sections:[
+
+    {id:"flags", nav:"Red flags", title:"Red flags — act on these first", sub:"Most acne is chronic and treatable in primary care. These presentations are not.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Acne fulminans", html:"Abrupt, severe, often ulcerated or haemorrhagic inflammatory acne, typically in adolescent males, sometimes with fever, arthralgia, malaise or bone pain. It can follow the start of isotretinoin. Refer urgently the same day to the on-call hospital dermatology team for assessment within 24 hours — some people need admission.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"red", h:"Current risk of self-harm or suicide", html:"Acne — and isotretinoin — can be linked with low mood. If there is current suicidal ideation or a plan, follow your local crisis pathway the same day. Anyone on isotretinoin who develops mood change should stop it and be reviewed promptly by the prescribing team.", src:"NICE NG198 (2021, last updated August 2026) · MHRA DSU October 2023"},
+         {tone:"amber", h:"Scarring or persistent pigmentary change", html:"Acne that is leading to scarring, or leaving persistent pigmentation, is itself a referral criterion. Scars are permanent; repeating another topical course while they form is the classic avoidable harm.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"amber", h:"Acne conglobata or nodulocystic acne", html:"Deep, interconnecting nodules and cysts, sinus tracts, or extensive truncal involvement. Consider referral to a consultant dermatologist-led team rather than working up the primary-care options first.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"amber", h:"Significant psychological distress", html:"Consider referral to mental health services for significant distress or a mental health disorder, including current or past suicidal ideation or self-harm, severe depression or anxiety, or body dysmorphic disorder.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"blue", h:"Sudden acne with virilisation", html:"New acne in a woman with rapid-onset hirsutism, deepening voice, clitoromegaly or menstrual disturbance points to an androgen source (PCOS at one end, an androgen-secreting tumour at the other). Check the history for anabolic steroids and other drugs, and investigate before treating it as ordinary acne."}
+       ]},
+       {b:"why", html:"Acne scars form from deep inflammation in the dermis. Once the collagen is lost or laid down abnormally, no topical or oral acne treatment reverses it. That is why NG198 treats scarring as a reason to refer rather than a reason to keep going — the goal of stepping up quickly is to stop new scars, not to fix old ones."}
+     ]},
+
+    {id:"grade", nav:"Grade", title:"Grading: the lesion count decides the band", sub:"NG198 swapped vague adjectives for numbers. Use them.",
+     blocks:[
+       {b:"table", head:["Band","Lesion count (any one is enough)","What it opens"], rows:[
+         ["<b>Mild to moderate</b>","Any number of non-inflammatory lesions (comedones) · up to 34 inflammatory lesions (papules, pustules), with or without comedones · up to 2 nodules","Adapalene with benzoyl peroxide · tretinoin with clindamycin · benzoyl peroxide with clindamycin"],
+         ["<b>Moderate to severe</b>","35 or more inflammatory lesions, with or without comedones · 3 or more nodules","Adapalene with benzoyl peroxide · tretinoin with clindamycin · <b>adapalene with benzoyl peroxide plus oral lymecycline or doxycycline</b> · <b>azelaic acid plus oral lymecycline or doxycycline</b>"]
+       ]},
+       {b:"dl", rows:[
+         ["<b>Nodules</b>","Firm, often painful lesions 5 mm or more across, sitting under or within the skin and lasting weeks to months. Cysts are similar but fluctuant and pus-filled; both carry the highest scarring risk."],
+         ["<b>Scarring</b>","Look for ice-pick, rolling and boxcar scars on the face, and hypertrophic or keloid scars on the chest, back and jawline. Record them — they change the plan."],
+         ["<b>Pigmentation</b>","Post-inflammatory hyperpigmentation is common in darker skin and can outlast the acne by months. Persistent pigmentary change is an NG198 referral criterion."],
+         ["<b>Impact</b>","Ask about mood, confidence, social withdrawal, bullying, work or school. NG198 highlights that distress does not track the lesion count."]
+       ]},
+       {b:"table", head:["Look-alike","Clue","What to do"], rows:[
+         ["<b>Rosacea</b>","Older adult, central facial flushing, telangiectasia, papules and pustules but <b>no comedones</b>","Different treatment pathway; avoid topical steroids"],
+         ["<b>Perioral dermatitis</b>","Small papules around mouth, nose or eyes, often after topical steroid use","Stop the steroid; treat as perioral dermatitis"],
+         ["<b>Folliculitis</b>","Monomorphic pustules centred on hair follicles, often trunk or beard area; itchy if pityrosporum","Consider bacterial or yeast cause"],
+         ["<b>Drug-induced acne</b>","Monomorphic papules after starting corticosteroids, anabolic steroids, lithium, some anticonvulsants or progestogen-only contraception","Review the drug where possible"],
+         ["<b>Hidradenitis suppurativa</b>","Recurrent painful nodules and sinus tracts in axillae, groin, under breasts","Separate condition; refer if moderate to severe"]
+       ]}
+     ]},
+
+    {id:"skincare", nav:"Skin care", title:"Skin care and what to tell people", sub:"Advice every person gets alongside any prescription.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"🧼 Cleanse gently", html:"A non-alkaline (pH-neutral or slightly acidic) synthetic detergent cleanser twice daily on acne-prone skin; soap bars are more irritant and leave a residue."},
+         {t:"🚫 Hands off", html:"Persistent picking or scratching increases the risk of scarring."},
+         {t:"🧴 Non-comedogenic", html:"Avoid oil-based and comedogenic skin products and make-up; take make-up off at the end of the day."},
+         {t:"🍽️ Diet", html:"There is not enough evidence to recommend any particular diet for acne. Healthy eating is fine; blaming chocolate is not."},
+         {t:"☀️ Sun", html:"Retinoids and benzoyl peroxide make skin more sun-sensitive, and doxycycline causes photosensitivity. Use a non-comedogenic sunscreen."},
+         {t:"⏳ Time", html:"Most treatments take 6–8 weeks to show benefit. Early dryness or irritation usually settles; reduce frequency rather than stop."}
+       ]},
+       {b:"p", html:"The cleansing, picking and diet points above come from the NG198 skin-care recommendations. The sun-protection and irritation advice is standard product guidance from the individual SPCs."},
+       {b:"say", html:"These creams work slowly — most people see a difference at around two months and the full effect at three. If it stings or dries your skin at first, use it every other night for a week rather than giving up."}
+     ]},
+
+    {id:"firstline", nav:"First line", title:"First-line options: four combinations, one 12-week course", sub:"NG198 Table 1, in practical form. Choose one; do not stack them.",
+     blocks:[
+       {b:"table", head:["Option","Severity","Practical points"], rows:[
+         ["<b>Adapalene with benzoyl peroxide</b> (fixed combination gel, e.g. Epiduo 0.1%/2.5%)","Any","Once daily in the evening to all affected areas (SPC). Retinoid: contraindicated in pregnancy. Benzoyl peroxide bleaches hair and fabric."],
+         ["<b>Tretinoin with clindamycin</b> (fixed combination gel, e.g. Treclin 1%/0.025%)","Any","Once daily at bedtime (SPC). Retinoid and antibiotic: contraindicated in pregnancy; do not add an oral antibiotic."],
+         ["<b>Benzoyl peroxide with clindamycin</b> (fixed combination gel, e.g. Duac Once Daily 1%/3%)","Mild to moderate","Once daily in the evening (SPC). Do not add an oral antibiotic."],
+         ["<b>Adapalene with benzoyl peroxide plus oral lymecycline or doxycycline</b>","Moderate to severe","The topical stays when the antibiotic stops. Tetracyclines are contraindicated in pregnancy, breastfeeding and under 12s."],
+         ["<b>Azelaic acid 20% plus oral lymecycline or doxycycline</b>","Moderate to severe","Azelaic acid twice daily (SPC; once daily for the first week in sensitive skin). Useful when retinoids irritate."]
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"Oral tetracycline doses", html:"<b>Lymecycline 408 mg once daily</b> (BNF: at least 8 weeks, age 12 and over). <b>Doxycycline:</b> dose per BNF. Both only in combination with adapalene plus benzoyl peroxide, or with azelaic acid.", src:"BNF (lymecycline) · NICE NG198 (2021, last updated August 2026)"},
+         {tone:"cream", h:"When tetracyclines are unsuitable", html:"If the person cannot tolerate or has a contraindication to lymecycline or doxycycline, NG198 allows them to be replaced by <b>trimethoprim</b> or an <b>oral macrolide such as erythromycin</b> within the same combination. Dose per BNF.", src:"NICE NG198 (2021, last updated August 2026) · BNF"},
+         {tone:"amber", h:"Antibiotic combinations to avoid", html:"Do not use topical antibiotic monotherapy, oral antibiotic monotherapy, or a topical antibiotic combined with an oral antibiotic. Each drives resistance without adding benefit.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"amber", h:"Pregnancy and planning pregnancy", html:"Topical retinoids and oral tetracyclines are contraindicated. Where they are ruled out, <b>benzoyl peroxide monotherapy</b> is the NG198 alternative at any severity. Topical retinoids should also be avoided when planning a pregnancy.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"blue", h:"No triple topical therapy", html:"Three topical agents together were no more effective than two in the NG198 evidence review and add irritation. Use one fixed combination.", src:"NICE NG198 (2021, last updated August 2026) — rationale"},
+         {tone:"green", h:"Why combinations beat single agents", html:"Retinoids clear the blocked follicle, benzoyl peroxide kills <i>C. acnes</i> without selecting resistance, and clindamycin or a tetracycline reduces inflammation. Pairing actions gave better outcomes than any agent alone across every severity in the evidence NG198 reviewed.", src:"NICE NG198 (2021, last updated August 2026) — rationale"}
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Stepping up", title:"When the first course is not enough", sub:"A ladder that respects the 12-week rule.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", when:"first 12 weeks", title:"One NG198 first-line option", tone:"cream",
+          html:"Chosen by severity and preference. Review at 12 weeks. Before judging failure, check it was used every day, on all affected skin, with irritation managed rather than the treatment stopped."},
+         {step:"2", when:"next 12 weeks", title:"A different first-line option", tone:"cream", fromLabel:"not improved after 12 weeks",
+          html:"Mild to moderate acne that has not improved → try a different first-line option. Moderate to severe acne not improved on a regimen without an oral antibiotic → consider one that includes lymecycline or doxycycline (or the NG198 alternatives)."},
+         {step:"2 · women", when:"added to topical", title:"Combined pill or co-cyprindiol", tone:"cream", fromLabel:"hormonal option",
+          html:"For women and girls, NG198 allows a combined oral contraceptive to be added to first-line treatment, or co-cyprindiol (cyproterone acetate with ethinylestradiol) as an alternative — review co-cyprindiol at 6 months. Co-cyprindiol is itself contraceptive: never prescribe it with another hormonal contraceptive."},
+         {step:"3", when:"after 2 completed courses", title:"Refer to a consultant dermatologist-led team", tone:"amber", fromLabel:"criteria met",
+          html:"For isotretinoin, photodynamic therapy or other specialist options. Continue a topical option while waiting."}
+       ]},
+       {b:"warn", html:"<b>Antibiotic stop date.</b> Oral antibiotics should continue beyond <b>6 months</b> only in exceptional circumstances, with review every 3 months and the aim of stopping as soon as possible. Write the stop date in the notes when you start it."},
+       {b:"cards", items:[
+         {tone:"cream", h:"Spironolactone (specialist or local pathway)", html:"Not in NG198. It is used off-licence for persistent acne in women; the UK SAFA trial found spironolactone 50 mg daily rising to 100 mg after 6 weeks improved acne-specific quality of life versus placebo, with greater difference at 24 weeks than 12. Contraindicated in pregnancy. Use only where your local formulary or dermatology service supports it.", src:"Santer et al., BMJ 2023 (SAFA trial) · BAD patient information leaflet"},
+         {tone:"blue", h:"Co-cyprindiol and VTE", html:"The MHRA review found a 1.5–2-fold higher VTE risk with co-cyprindiol than with levonorgestrel-containing pills. It takes at least 3 months to relieve symptoms and the need to continue should be evaluated periodically. Using it alongside another hormonal contraceptive is contraindicated.", src:"MHRA Drug Safety Update June 2013"}
+       ]}
+     ]},
+
+    {id:"maintenance", nav:"Maintenance", title:"Keeping it clear: maintenance and relapse", sub:"Clearance is not the end of treatment.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Maintenance first choice</b>","Consider the fixed combination of topical adapalene with benzoyl peroxide."],
+         ["<b>If not tolerated or contraindicated</b>","Topical adapalene alone, topical azelaic acid alone, or topical benzoyl peroxide alone."],
+         ["<b>Review</b>","Review maintenance treatment after 12 weeks to decide whether it should continue."],
+         ["<b>Relapse after a good response</b>","Consider another 12-week course of the same first-line treatment, or a different one."],
+         ["<b>Relapse after isotretinoin</b>","Mild to moderate relapse → a new 12-week first-line course. Moderate to severe relapse → either a first-line course or re-referral to the dermatology team."],
+         ["<b>Antibiotics</b>","Oral antibiotics are not a maintenance treatment. Stop them and keep the topical."]
+       ]},
+       {b:"timeline", items:[
+         {n:"1", when:"Week 0", title:"Start", html:"Grade, choose one option, give skin-care advice, discuss pregnancy and contraception, note any antibiotic stop date."},
+         {n:"2", when:"Week 12", title:"Judge the course", html:"Better → maintenance. Not better → check adherence and irritation, then a different option, a hormonal add-on, or an antibiotic combination for moderate to severe acne."},
+         {n:"3", when:"By month 6", title:"Stop the antibiotic", html:"Only exceptional cases continue beyond 6 months, with 3-monthly review."},
+         {n:"4", when:"Maintenance plus 12 weeks", title:"Review maintenance", html:"Continue, stop, or refer if relapsing despite maintenance."}
+       ]}
+     ]},
+
+    {id:"isotretinoin", nav:"Isotretinoin", title:"Isotretinoin: what the GP needs to know", sub:"Specialist-initiated, but the patient still sees you.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Who initiates it", html:"NG198 says people who may need isotretinoin should be referred to a consultant dermatologist-led team, in line with MHRA safety advice. The GP does not start it.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"amber", h:"Under 18s: acknowledgement of risk", html:"In January 2026 the MHRA <b>removed the two-prescriber requirement</b> for under-18s. Instead, a streamlined <b>Acknowledgement of Risk form</b> is completed: the patient confirms they understand why isotretinoin is being used and that they can ask for a second opinion, and the prescriber confirms it is clinically indicated. The 2023 counselling and monitoring for mental health and sexual side effects remain in place.", src:"MHRA Drug Safety Update January 2026 (isotretinoin)"},
+         {tone:"amber", h:"Mental health and sexual function", html:"Patients must be counselled about possible psychiatric and sexual side effects, assessed for both before starting, and monitored for both during treatment. Reported sexual effects include erectile dysfunction, reduced libido, vulvovaginal dryness and orgasm difficulties.", src:"MHRA Drug Safety Update October 2023"},
+         {tone:"red", h:"Pregnancy Prevention Programme", html:"Isotretinoin is highly teratogenic. People who can become pregnant need contraception from 4 weeks before, throughout, and for 1 month after treatment, with pregnancy testing and prescriptions limited to 30 days. Pregnancy during or within 1 month of stopping should be reported to the MHRA.", src:"MHRA isotretinoin Pregnancy Prevention Programme materials"},
+         {tone:"blue", h:"What the GP picks up", html:"New low mood, anxiety or suicidal thoughts; sexual dysfunction; a possible pregnancy; severe dry lips and skin; headache with visual disturbance. Contact the prescribing team promptly and stop the drug if there is any suicidal ideation."},
+         {tone:"cream", h:"Record it", html:"Isotretinoin is hospital-prescribed, so it may not appear on the GP repeat list. Add it to the record as a specialist medicine so interacting prescriptions (tetracyclines, vitamin A) are caught."}
+       ]}
+     ]},
+
+    {id:"monitoring", nav:"Troubleshoot", title:"Not working? Check before escalating", sub:"Most treatment failure is a technique problem.",
+     blocks:[
+       {b:"table", head:["Check","Question","Fix"], rows:[
+         ["<b>Duration</b>","Was the course a genuine 12 weeks?","Re-start the clock; set a review date."],
+         ["<b>Adherence</b>","Used daily on all affected skin, not just on spots?","Demonstrate a pea-sized amount spread over the whole area."],
+         ["<b>Irritation</b>","Stopped because of dryness or stinging?","Alternate nights, add a non-comedogenic moisturiser, or switch to azelaic acid."],
+         ["<b>Antibiotic pairing</b>","Is an antibiotic being used without benzoyl peroxide, retinoid or azelaic acid?","Correct the combination; do not combine topical and oral antibiotics."],
+         ["<b>Aggravators</b>","Occlusive cosmetics, anabolic steroids, drug triggers, PCOS features?","Address the cause; consider a hormonal option in women."],
+         ["<b>Diagnosis</b>","Is it really acne?","Reconsider rosacea, perioral dermatitis, folliculitis."]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral: same day to routine", sub:"Referral routes from NG198. No NG12 suspected-cancer criterion applies to acne.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day · on-call dermatology", html:"<b>Acne fulminans</b> → urgent referral the same day to the on-call hospital dermatology team, for assessment within 24 hours.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"red", h:"Same day · crisis mental health", html:"Current suicidal ideation or plans → your local crisis pathway the same day.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"amber", h:"Consultant dermatologist-led team (or accredited GPwER)", html:"Consider referral for: mild to moderate acne not responding to <b>2 completed courses</b> of treatment · moderate to severe acne not responding to previous treatment that <b>contained an oral antibiotic</b> · acne with <b>scarring</b> · acne with <b>persistent pigmentary changes</b> · <b>acne conglobata</b> or nodulocystic acne.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"amber", h:"Mental health services", html:"Consider referral for significant psychological distress or a mental health disorder — including a history of suicidal ideation or self-harm, severe depressive or anxiety disorder, or body dysmorphic disorder.", src:"NICE NG198 (2021, last updated August 2026)"},
+         {tone:"blue", h:"Endocrine assessment", html:"Acne with rapidly progressive virilisation, or a picture suggesting PCOS that needs confirming, is investigated and referred on the endocrine pathway rather than the acne one."},
+         {tone:"green", h:"No suspected-cancer pathway", html:"No NICE NG12 (updated April 2026) criterion maps to acne vulgaris. There is no 2-week-wait card on this page by design.", src:"NICE NG12 (updated April 2026)"}
+       ]},
+       {b:"say", html:"We’ve given two treatments a proper try and it’s still leaving marks, so I’d like the skin specialists to see you. They can offer stronger options, including a tablet called isotretinoin that we can’t start here. Keep using the gel while you wait — it stops things getting worse."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only — the Casebook keeps the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 17-year-old has had facial and back acne for two years. She used a gel ‘for a few weeks’, then lymecycline on its own for nine months from an online service. She now has early rolling scars on her cheeks, is avoiding college photographs, and asks for ‘the strong tablet’ her friend had.", src:"Scenario built on NICE NG198 (2021, last updated August 2026)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Counts lesions and names the severity band; spots the <b>antibiotic monotherapy</b> and the missing 6-month stop; recognises that <b>scarring is a referral criterion</b> now; <b>asks about mood and self-harm</b>; explains that isotretinoin is started by dermatology and, as she is under 18, completes the MHRA Acknowledgement of Risk form with the dermatologist (the two-prescriber rule was removed in January 2026); bridges with adapalene plus benzoyl peroxide; discusses contraception; and safety-nets on mood and fulminans. <a href='../../cases/acne.html'>Open the full casebook chapter →</a>", src:"MHRA Drug Safety Update October 2023 · NICE NG198"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every figure on this page traces to one of these primary sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG198 — Acne vulgaris: management (June 2021, updated December 2023)</b><br><a href="https://www.nice.org.uk/guidance/ng198" rel="noopener">nice.org.uk/guidance/ng198</a><span class="rd"> — severity bands by lesion count; skin-care advice; the four first-line options and 12-week courses; antibiotic combinations to avoid; the 6-month antibiotic limit with 3-monthly review; trimethoprim or macrolide substitution; pregnancy contraindications and benzoyl peroxide alternative; combined oral contraceptive and co-cyprindiol (6-month review); maintenance and relapse; photodynamic therapy; referral criteria including same-day referral for acne fulminans; mental health referral</span></li>'+
+         '<li><b>MHRA Drug Safety Update, October 2023 — Isotretinoin: introduction of new safety measures</b><br><a href="https://www.gov.uk/drug-safety-update/isotretinoin-roaccutanev-introduction-of-new-safety-measures-including-additional-oversight-of-the-initiation-of-treatment-for-patients-under-18-years-of-age" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — October 2023 measures (two independent prescribers for under 18s — requirement removed by the MHRA in January 2026 and replaced by an Acknowledgement of Risk form); assessment and monitoring of mental health and sexual function</span></li>'+
+         '<li><b>MHRA isotretinoin Pregnancy Prevention Programme materials (2023)</b><br><a href="https://www.gov.uk/drug-safety-update/isotretinoin-changes-to-prescribing-guidance-and-additional-risk-minimisation-measures" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — contraception 4 weeks before, during and 1 month after; 30-day prescriptions; reporting of pregnancies</span></li>'+
+         '<li><b>MHRA Drug Safety Update, June 2013 — Co-cyprindiol: balance of benefits and risks remains positive</b><br><a href="https://www.gov.uk/drug-safety-update/cyproterone-acetate-with-ethinylestradiol-co-cyprindiol-balance-of-benefits-and-risks-remains-positive" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — 1.5–2-fold VTE risk versus levonorgestrel pills; at least 3 months to relieve symptoms; periodic review; contraindicated with other hormonal contraception</span></li>'+
+         '<li><b>BNF — lymecycline</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — 408 mg daily for at least 8 weeks in acne; other oral antibiotic doses per current BNF</span></li>'+
+         '<li><b>Summaries of Product Characteristics</b> — Epiduo 0.1%/2.5% gel, Treclin 1%/0.025% gel, Duac Once Daily 1%/3% gel, Skinoren 20% cream<span class="rd"> — strengths and application frequency</span></li>'+
+         '<li><b>Santer M et al. Effectiveness of spironolactone for women with acne vulgaris (SAFA). BMJ 2023</b><span class="rd"> — spironolactone 50 mg rising to 100 mg daily versus placebo in 410 women</span></li>'+
+         '<li><b>British Association of Dermatologists — patient information leaflets: acne; spironolactone</b><br><a href="https://www.bad.org.uk/pils/spironolactone" rel="noopener">bad.org.uk/pils</a><span class="rd"> — off-licence use of spironolactone in women with acne</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><span class="rd"> — checked: no criterion applies to acne vulgaris</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Acne vulgaris — NICE NG198 (2021, last updated August 2026), MHRA Drug Safety Updates on isotretinoin (October 2023; January 2026) and co-cyprindiol (June 2013), BNF and product SPCs. Check doses against the current BNF before prescribing, and follow your local dermatology referral and isotretinoin shared-care arrangements."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

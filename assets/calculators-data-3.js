@@ -369,7 +369,7 @@
       title: 'Oral morphine equivalent (OME)',
       category: 'MSK / pain',
       description: 'Daily opioid dose converted to oral morphine equivalent.',
-      usefulFor: 'Chronic non-cancer pain safety — the 120 mg/day OME ceiling (Faculty of Pain Medicine).',
+      usefulFor: 'Chronic non-cancer pain safety — Opioids Aware (Faculty of Pain Medicine, 2026): ideally ≤50 mg/day OME; seek specialist advice before exceeding 90 mg/day.',
       resultLabel: 'OME', resultUnit:'mg/day',
       formula: 'OME = total daily dose × conversion factor',
       inputs: [
@@ -390,8 +390,8 @@
       },
       interpret(s){
         if (s < 50)  return { label:'Lower dose', severity:'low', action:'Review benefit vs harm at each prescription; aim lowest effective dose.', detail:'' };
-        if (s <= 120) return { label:'Caution zone', severity:'med', action:'Little evidence of benefit above this; review function; avoid further escalation.', detail:'50–120 mg/day OME — harm rises with dose.' };
-        return        { label:'High-risk dose', severity:'high', action:'> 120 mg/day OME: seek specialist pain advice; do not escalate; plan a gradual taper.', detail:'Benefit unlikely to outweigh harm; overdose/dependence risk. Patches (fentanyl/buprenorphine) need specialist conversion tables.' };
+        if (s <= 90) return { label:'Caution zone', severity:'med', action:'Little evidence of benefit above 50 mg/day; review function; avoid further escalation.', detail:'50–90 mg/day OME — harm rises with dose (Opioids Aware 2026: ideally ≤50 mg/day).' };
+        return        { label:'High-risk dose', severity:'high', action:'> 90 mg/day OME: seek specialist pain advice; do not escalate; plan a gradual taper.', detail:'Benefit unlikely to outweigh harm; overdose/dependence risk. Patches (fentanyl/buprenorphine) need specialist conversion tables.' };
       },
       refs:[
         { label:'Faculty of Pain Medicine — Opioids Aware', url:'https://fpm.ac.uk/opioids-aware' },

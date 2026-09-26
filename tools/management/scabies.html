@@ -17,9 +17,210 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({"icon":"🕷️","title":"Scabies","guideline":"NICE","stemTitle":"Scabies — treat the patient and ALL close contacts simultaneously","stemSub":"Primary-care management of scabies — a mite infestation causing intense itch; treat with topical permethrin (two applications) treating all household/close contacts at the same time, give clear application + laundering advice, and recognise crusted (Norwegian) scabies. Sources: BASHH 2025 · UKHSA 2025.","glance":[{"lbl":"1st-line","val":"Permethrin 5% cream","sub":"whole body, 2 doses 1 wk apart"},{"lbl":"Alternative","val":"Malathion","sub":"if permethrin unsuitable"},{"lbl":"Crucial","val":"Treat ALL contacts","sub":"same day, even if asymptomatic"},{"lbl":"Itch","val":"Persists 2–4 weeks","sub":"after successful cure"},{"lbl":"Laundry","val":"Hot wash day 1","sub":"bedding/clothes/towels"},{"lbl":"Severe","val":"Crusted scabies","sub":"= specialist + isolate"}],"flow":[{"t":"node","d":"found","n":"1","tag":"Foundation","title":"Diagnose","blocks":[{"b":"kv","rows":[["Symptoms","Intense generalised itch, <b>worse at night</b>; spares the face/scalp in adults (not in infants/elderly)"],["Signs","Burrows (finger webs, wrists, axillae, genitals, periumbilical), papules, excoriations; penile/scrotal nodules; infants — palms/soles/face"],["Contacts itching","Household/sexual contacts with itch supports diagnosis"],["Crusted (Norwegian)","Hyperkeratotic crusted lesions, may not itch, highly contagious — immunocompromised/elderly/institutional"]]},{"b":"why","html":"Scabies is diagnosed clinically from the intense nocturnal itch and burrows in typical sites. The single most important management principle is simultaneous treatment of all close contacts — untreated contacts cause ‘treatment failure’ by reinfestation."}]},{"t":"node","d":"drug","n":"2","tag":"Treatment","title":"Permethrin + contacts","blocks":[{"b":"ladder","steps":[{"step":"Step 1","title":"Permethrin 5% cream","when":"whole body","html":"Apply to whole body (incl. neck, ears, under nails; whole head in infants/elderly/immunocompromised); leave 8–12h (overnight) then wash off; <b>repeat after 7 days</b>. Reapply to hands if washed during treatment period."},{"step":"Step 2","title":"Treat ALL close contacts simultaneously","when":"same day","fromLabel":"essential","html":"All household members and sexual/skin contacts treated at the same time, even if asymptomatic — the key to preventing reinfestation."},{"step":"Step 3","title":"Alternative","when":"if permethrin unsuitable","fromLabel":"alternative","html":"Malathion 0.5% aqueous; oral ivermectin (specialist/unlicensed) for crusted scabies, outbreaks, or treatment failure."},{"step":"Itch","title":"Treat post-scabetic itch","when":"after treatment","fromLabel":"symptom control","html":"Itch can persist 2–4 weeks after successful cure — emollients, an antihistamine (e.g. <b>chlorphenamine 4 mg at night</b> or cetirizine 10 mg OD), mild topical steroid; reassure this is not treatment failure."}]},{"b":"warn","html":"Itch persisting up to 4 weeks after treatment is expected and does NOT mean failure — avoid repeated re-treatment. Genuine failure = new burrows / contacts not treated."}]},{"t":"node","d":"life","n":"3","tag":"Advice","title":"Laundering + hygiene","blocks":[{"b":"tiles","v":"life","items":[{"t":"🧺 Laundry","html":"On the first treatment day, hot-wash (≥50°C) bedding, clothing and towels used in the previous days; items that can’t be washed → sealed bag for 72h."},{"t":"💅 Application tips","html":"Apply to cool dry skin; don’t apply after a hot bath; cover all areas; reapply to washed hands."},{"t":"🛑 Avoid contact","html":"Avoid close skin contact until first treatment completed."},{"t":"📋 Outbreaks","html":"Care homes/institutions → inform infection control/health protection."}]}]},{"t":"node","d":"follow","n":"4","tag":"Follow-up","title":"Retreatment & itch","blocks":[{"b":"timeline","items":[{"n":"1","when":"Day 7","title":"Second application","html":"Repeat the topical scabicide (permethrin 5%) <b>after 7 days</b> to catch newly-hatched mites. Treat <b>all household/close contacts simultaneously</b>, even if asymptomatic, and decontaminate bedding/clothing (hot wash)."},{"n":"2","when":"Up to 4 weeks","title":"Post-scabetic itch","html":"Warn itch can <b>persist 2–4 weeks after successful treatment</b> — this is not failure. Treat with emollient, antihistamine (e.g. chlorphenamine nocte), mild topical steroid."},{"n":"3","when":"Persistent","title":"Reassess","html":"New burrows or itch beyond 4–6 weeks → re-treat (check application technique/contacts) and consider crusted scabies (immunosuppressed → specialist)."}]},{"b":"say","html":"Do a second treatment in a week, and everyone in the house must be treated the same day even if they have no itch. The itch can last a few weeks after — that doesn't mean it hasn't worked."}]},{"t":"node","d":"safety","n":"5","tag":"Safety-net","title":"When it's more than ordinary scabies","blocks":[{"b":"tiles","v":"safety","items":[{"t":"🟠 Crusted (Norwegian) scabies","html":"Thick, widespread hyperkeratotic crusting (often immunocompromised/elderly) → highly contagious → specialist + infection control."},{"t":"🔴 Secondary infection","html":"Weeping, crusting, spreading redness or systemic symptoms → treat bacterial superinfection."},{"t":"💬 Safety-net","html":"If the skin becomes weepy and infected-looking, or the rash worsens despite treatment, come back."}]}]},{"t":"node","d":"refer","n":"6","tag":"Refer","title":"Referral","blocks":[{"b":"tiles","v":"refer","items":[{"t":"Specialist / urgent","html":"Crusted (Norwegian) scabies — dermatology/infection input, isolation, oral ivermectin."},{"t":"Public health / IPC","html":"Institutional outbreaks."},{"t":"Reassess","html":"Genuine treatment failure (new burrows) — check application + contacts, consider alternative agent."}]},{"b":"say","html":"This is scabies — a tiny mite in the skin causing intense itch, especially at night. The treatment is a cream applied over the whole body and repeated a week later — and crucially, everyone in your household (and close partners) must be treated on the same day, even without itching. Wash bedding and clothes hot on day one. The itch can linger for a few weeks after it’s cured — that’s normal."}]}],"foot":"Management of scabies in primary care; treat all close contacts simultaneously. Crusted scabies needs specialist care. Sources: BASHH 2025 · UKHSA 2025."});
+MG.render({
+  icon:"🕷️",
+  title:"Scabies",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Scabies — one household, one day, two treatments",
+  stemSub:"Scabies is a burrowing-mite infestation that is caught by prolonged skin contact and cured only when everyone who shares that contact is treated together. This page covers recognising it (including the crusted form that spreads through care homes), choosing between permethrin, oral ivermectin and malathion, getting the application right, what to say about the itch that outlasts the mite, and what a care-home outbreak actually requires. Sources: BASHH 2025 · UKHSA 2023 (updated 2025) · BAD 2023 · SPCs · BNF.",
+  guideline:"BASHH scabies guideline 2025 · UKHSA communal-settings guidance 2023 (updated 2025)",
+  meta:[
+    {t:"BASHH 2025 · Morris et al., Int J STD AIDS"},
+    {t:"UKHSA 2023, updated Apr 2025 · closed settings"},
+    {t:"BAD 2023 · permethrin and ivermectin SPCs · BNF"},
+    {t:"Scabies is not notifiable"},
+    {t:"No NG12 criterion applies"}
+  ],
+  lead:"<div class='mg-layers'><a href='#flags'><b>Red flags</b><small>Crusted form, infection</small></a><a href='#treat'><b>Treat</b><small>Two doses, 7–14 days apart</small></a><a href='#contacts'><b>Contacts</b><small>Same day, 8-week window</small></a><a href='#settings'><b>Care homes</b><small>Outbreak = 2 linked cases</small></a></div>",
+  quickSub:"The six things that decide whether this consultation cures the household or starts a second round. Each figure traces to a source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"cream", h:"Two first-line options, both given twice", html:"BASHH 2025 recommends either <b>permethrin 5% cream</b> or <b>oral ivermectin 200 micrograms/kg</b>, and whichever is chosen a <b>second dose 7–14 days after the first</b> — the first kills mites, the second catches those hatched from eggs that survived."},
+    {tone:"amber", h:"The household is the patient", html:"Everyone with prolonged skin contact in the <b>8 weeks before diagnosis</b> is treated, <b>at the same time</b>, with or without itch. An untreated partner or child is the commonest reason scabies ‘fails’."},
+    {tone:"blue", h:"Leave-on times matter", html:"Permethrin stays on for <b>8–12 hours</b> (overnight) before washing off; malathion 0.5% aqueous liquid for <b>24 hours</b>. Anything washed in that window — usually the hands — is re-treated."},
+    {tone:"green", h:"Itch outlasts the mite", html:"Expect the itch to continue for weeks — BAD advises it may take <b>at least a month</b> to settle after successful treatment. Itch alone is not failure; <b>new burrows</b> are."},
+    {tone:"red", h:"Crusted scabies is a different disease", html:"Thick, scaly, often barely itchy plaques in someone frail, immunosuppressed or on potent steroids carry huge mite numbers. It needs <b>specialist-led combined topical and repeated oral ivermectin</b> and infection-control input the same day."},
+    {tone:"blue", h:"Not notifiable — but outbreaks need a plan", html:"Scabies is not a notifiable disease and UKHSA does not require single cases or outbreaks to be reported. In a care home, <b>2 or more linked cases within 8 weeks</b> is an outbreak that needs co-ordinated mass treatment."}
+  ],
+  pathwaySub:"The consultation in five moves. The amber step is the one most often skipped.",
+  pathway:[
+    {title:"Recognise the pattern", html:"Night-time itch, burrows in the finger webs, wrists, axillae, waist and genitals, and someone else at home itching. Look closely at the hands and, in men, the penis and scrotum. In infants and the frail elderly, check palms, soles, scalp and face."},
+    {title:"Screen for the dangerous variants", html:"Crusted plaques, widespread secondary infection, or a patient living in a care home or other closed setting. Each changes who needs to be involved and how fast."},
+    {title:"List the contacts before you prescribe", html:"Count household members, sexual partners and carers with skin contact over the last 8 weeks. Write enough treatment for all of them, or arrange for them to obtain it, so everyone starts on the same day."},
+    {title:"Treat twice and teach the application", html:"Permethrin 5% (or oral ivermectin where suitable) on day 1 and again 7–14 days later. Hand over the application rules and the laundering advice in writing."},
+    {title:"Set expectations and a review point", html:"Warn that itch lasts weeks. Ask them to return if new burrows or new lesions appear, or if itch is not easing 4 weeks after the second treatment — the point at which BASHH suggests considering failure, reinfestation or treatment irritation."}
+  ],
+  sections:[
+    {id:"flags", nav:"Red flags", title:"Red flags — when this is more than ordinary scabies", sub:"Classical scabies is a nuisance; crusted scabies and infected scabies are clinical problems. Decide which one is in front of you before anything else.",
+     blocks:[
+       {b:"warn", html:"A frail or immunosuppressed person with thick, grey-yellow, crumbly scale on the hands, feet, elbows or scalp — often with surprisingly little itch — should be treated as <b>crusted scabies until proven otherwise</b>. The mite load is high enough for brief contact, shared bedding and shed skin to transmit it."},
+       {b:"cards", items:[
+         {tone:"red", h:"Crusted (hyperkeratotic) scabies", html:"Associated with immunosuppression (HIV, transplant, chemotherapy, biologics), neurological impairment and learning disability (e.g. dementia, Down’s syndrome), and misuse of potent or super-potent topical steroids. <b>Arrange specialist (dermatology or infectious diseases) input the same day</b>, alert the setting’s infection-control lead, and do not rely on topical treatment alone.", src:"PCDS scabies guidance · UKHSA 2023 (updated 2025) · BASHH 2025"},
+         {tone:"red", h:"Secondary bacterial infection with systemic features", html:"Spreading cellulitis, fever, or a child who is unwell with widespread infected excoriations needs same-day assessment. Localised impetiginised patches are managed as impetigo alongside the scabicide.", src:"NICE NG153 (2020) — impetigo antimicrobial prescribing"},
+         {tone:"amber", h:"A case in a care home or other closed setting", html:"One case may be the visible tip of an outbreak. Examine or arrange examination of residents and staff with contact, and follow the setting’s scabies plan (see <a href='#settings'>Care homes</a>).", src:"UKHSA 2023 (updated 2025)"},
+         {tone:"amber", h:"Infant under 2 months, or pregnancy", html:"Permethrin 5% cream is licensed from <b>2 months</b>; below that, seek specialist advice. Ivermectin is not recommended in pregnancy or when breastfeeding a young infant; permethrin remains first-line in pregnancy.", src:"Permethrin 5% cream SPC · BASHH 2025"},
+         {tone:"amber", h:"Genital lesions or a sexual contact", html:"Scabies acquired sexually is a marker of STI risk. BASHH recommends offering a <b>full STI screen</b>; penile or scrotal nodules are highly suggestive of scabies.", src:"BASHH 2025"},
+         {tone:"blue", h:"NG12 — no criterion applies", html:"Scabies does not map to any NICE NG12 (2015, updated 2025) suspected-cancer criterion. A persistent, treatment-resistant, scaly eruption in an older adult that does not behave like scabies should still prompt re-examination and, if unexplained, dermatology review for an alternative diagnosis.", src:"NICE NG12 (2015, updated 2025)"}
+       ]},
+       {b:"why", html:"In classical scabies a person carries on average a small number of adult female mites; in crusted scabies the count runs into thousands or more because the host’s immune response fails to contain them. That is why crusted scabies can seed a care-home outbreak from a single resident, why it often itches less than you would expect, and why standard two-dose topical treatment is not enough on its own."}
+     ]},
+
+    {id:"diagnose", nav:"Diagnosis", title:"Making the diagnosis at the bedside", sub:"Scabies is a clinical diagnosis in general practice. Microscopy and dermoscopy help but are rarely available in the room.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>The itch</b>","Generalised, intense, and characteristically worse at night and after a warm bath. A first infestation usually becomes itchy only after several weeks, as sensitisation to the mite develops; a repeat infestation can itch within days. So the absence of itch in a recently exposed contact does not exclude infestation."],
+         ["<b>Burrows</b>","Short, wavy, grey-white tracks a few millimetres long, sometimes with a dark dot at one end (the mite). Look in the <b>finger webs, sides of the fingers, flexor wrists, elbows, anterior axillary folds, waistband, buttocks, nipples/areolae and genitals</b>."],
+         ["<b>The secondary rash</b>","A symmetrical papular eruption over the trunk and limbs that is an allergic response rather than the site of the mites. Excoriations, eczematisation and impetiginisation follow."],
+         ["<b>Nodules</b>","Firm red-brown itchy nodules on the penis, scrotum, buttocks or axillae. They represent a hypersensitivity reaction and can persist for weeks after cure."],
+         ["<b>Infants and the elderly</b>","In infants the palms, soles, scalp, face and neck are often involved, sometimes with vesicles or pustules. In the frail elderly the signs can be subtle, the back may be affected, and crusting should be sought."],
+         ["<b>Contacts</b>","Itch in another household member or a sexual partner is strong supporting evidence."]
+       ]},
+       {b:"table", head:["IACS 2020 level (international)","What it requires"], rows:[
+         ["<b>A — confirmed</b>","Mites, eggs or faeces seen on light microscopy of skin samples, on a person, or on high-powered imaging such as dermoscopy"],
+         ["<b>B — clinical</b>","Scabies burrows; or typical lesions affecting the male genitalia; or typical lesions in a typical distribution with two history features (itch and a close contact with itch or typical lesions)"],
+         ["<b>C — suspected</b>","Typical lesions in a typical distribution with one history feature; or atypical lesions or distribution with two history features"]
+       ]},
+       {b:"p", html:"The International Alliance for the Control of Scabies (IACS) 2020 consensus criteria are summarised in the BASHH 2025 guideline. They are designed for research and public-health use, but they are a useful discipline in practice: a burrow or male genital lesions makes the diagnosis clinically; an itchy rash with a history of itchy contacts makes it likely."},
+       {b:"cards", items:[
+         {tone:"blue", h:"Tests that confirm it", html:"Skin scraping of a burrow for microscopy, the adhesive-tape test, and dermoscopy (the ‘delta-wing’ or ‘jet with contrail’ sign at the end of a burrow) are all described in BASHH 2025. Histology is rarely needed except in crusted or atypical disease.", src:"BASHH 2025"},
+         {tone:"blue", h:"Differential diagnosis", html:"Atopic or contact eczema, insect bites and papular urticaria, dermatitis herpetiformis, pityriasis rosea, drug eruption, bullous pemphigoid in the elderly (itchy, can precede blisters), and in crusted disease psoriasis. Head lice and pubic lice can coexist."}
+       ]}
+     ]},
+
+    {id:"contacts", nav:"Contacts", title:"Who to treat — the contacts decide the outcome", sub:"Treating the index patient alone is the most common reason for apparent treatment failure.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>The look-back window</b>","Close contacts are people who have had skin-to-skin contact with the case, without protective equipment, in the <b>8 weeks before diagnosis</b>. BASHH 2025 and UKHSA use the same window."],
+         ["<b>Who counts</b>","Everyone in the household, current sexual partners, and anyone providing hands-on care. Brief social contact (a handshake, sitting together) carries little risk in classical scabies."],
+         ["<b>Treat without itch</b>","Contacts are treated whether or not they have symptoms, because they may be infested but not yet sensitised."],
+         ["<b>Same day</b>","All contacts start on the same day as the index case, and all repeat on the same day. In closed-setting outbreaks, UKHSA asks that everyone starts within <b>24 hours</b> of each other."],
+         ["<b>Sexual contacts</b>","Offer an STI screen to the patient; partner notification can be supported by the local sexual health service."]
+       ]},
+       {b:"say", html:"This is scabies, a tiny mite that lives in the top layer of skin. It spreads by close skin contact, so everyone you live with and anyone you’re close to needs to use the treatment on the same night as you — even if they’re not itching yet. If one person misses it, the mites just come back to everyone."},
+       {b:"why", html:"Sensitisation to mite proteins takes weeks on first exposure, so a household can contain several infested but symptom-free people at the moment the index case is diagnosed. Treating sequentially — whoever itches next — keeps the mite circulating and makes a curable infestation look like drug resistance."}
+     ]},
+
+    {id:"treat", nav:"Treatment", title:"Treatment — permethrin or ivermectin, twice", sub:"Two first-line treatments are recommended by BASHH 2025. Choose by age, pregnancy, practicality and supply, then give the second dose 7–14 days later.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", title:"Permethrin 5% cream", when:"most patients, including pregnancy and breastfeeding", tone:"cream",
+          html:"Apply a thin layer to cool, dry skin over the <b>whole body</b>. BASHH 2025 advises including the neck, face (avoiding the eyes), ears and scalp; the SPC allows the head and face to be spared in adults unless they are affected, but always include them in infants, the elderly, the immunosuppressed and anyone with lesions there. Wash off after <b>8–12 hours</b>. Adults use up to <b>30 g</b> per application (one tube); children up to about half that, per SPC. Licensed from <b>2 months</b>. <b>Repeat after 7 days</b> (BASHH 2025 accepts 7–14 days)."},
+         {step:"1st", title:"Oral ivermectin 200 micrograms/kg", when:"alternative first-line; useful when topical treatment is impractical", tone:"cream",
+          fromLabel:"equally first-line in BASHH 2025",
+          html:"Ivermectin 3 mg tablets are licensed in the UK for scabies. Give <b>200 micrograms/kg as a single dose</b>, with a second dose after 7–14 days (the SPC allows the second dose within 8–15 days). It is not ovicidal, which is why the repeat matters. Not evaluated in children under <b>15 kg</b>; not recommended in pregnancy. Take as directed in the SPC with regard to food. Particularly useful for people who cannot apply cream reliably, in institutional outbreaks, and when permethrin supply is short."},
+         {step:"2nd", title:"Malathion 0.5% aqueous liquid", when:"permethrin unsuitable or unavailable", tone:"amber",
+          fromLabel:"alternative topical",
+          html:"Apply to the whole body, leave for <b>24 hours</b>, then wash off; <b>repeat after 7 days</b>. Check the minimum age in the BNF. Use the aqueous preparation — alcohol-based products sting excoriated skin. <b>Availability is unreliable:</b> Derbac-M is the only UK malathion product, and it was out of the UK supply chain during the 2023–24 shortage (BAD 2023); check with the local pharmacy before prescribing."},
+         {step:"Specialist", title:"Crusted scabies", when:"always specialist-led", tone:"red",
+          fromLabel:"different regimen",
+          html:"Combination treatment: repeated full-body topical scabicide together with <b>multiple doses of oral ivermectin</b>, plus keratolytics to lift crust, under dermatology or infectious-diseases supervision and with infection-control measures. Do not start a standard two-dose course and discharge."}
+       ]},
+       {b:"table", head:["Agent","Leave on / dose","Repeat","Key cautions"], rows:[
+         ["<b>Permethrin 5% cream</b>","Whole body; wash off after 8–12 h; adults up to 30 g","7–14 days (usually 7)","Licensed from 2 months; safe in pregnancy and breastfeeding; transient burning or stinging common"],
+         ["<b>Ivermectin 3 mg tablets</b>","200 micrograms/kg orally, single dose","7–14 days (SPC: within 8–15 days)","Not in pregnancy; not evaluated under 15 kg; dose per SPC/BNF by weight band"],
+         ["<b>Malathion 0.5% aqueous</b>","Whole body; wash off after 24 h","7 days","Age licence per BNF; UK supply unreliable since 2023"],
+         ["<b>Crotamiton cream</b>","For itch; weak scabicide","—","Symptom relief only; not adequate as sole treatment"]
+       ]},
+       {b:"why", html:"Neither permethrin nor ivermectin reliably kills eggs. Scabies eggs take several days to hatch, so a second treatment a week or so after the first reaches the newly hatched larvae before they mature and lay eggs of their own. Skip the second dose and a few surviving eggs are enough to restart the infestation."}
+     ]},
+
+    {id:"apply", nav:"Application", title:"Application and home measures — where most failures happen", sub:"Most ‘resistant’ scabies is incompletely applied, washed off early, or re-caught from an untreated contact.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"🧴 Cool, dry skin", html:"Apply after the skin has cooled, not straight after a hot bath or shower, which increases absorption into the bloodstream and irritation."},
+         {t:"🖐️ The hidden sites", html:"Between fingers and toes, under the nails (use an old toothbrush), wrists, armpits, genitals, breasts, buttocks, soles of the feet. Ask someone else to do the back."},
+         {t:"⏱️ Don’t wash it off early", html:"Permethrin stays on 8–12 hours; malathion 24 hours. If hands are washed, re-apply to the hands straight away. Nappy changes need re-application to the nappy area."},
+         {t:"🧺 Laundry on day 1", html:"Wash clothing, towels and bedding used recently at <b>50°C or above</b>, or seal items that cannot be washed in a bag for at least <b>72 hours</b>, per UKHSA."},
+         {t:"🛏️ No need to fumigate", html:"Mites survive only a short time off the body. Normal vacuuming is enough for classical scabies; environmental cleaning matters more in crusted scabies."},
+         {t:"🏫 School and work", html:"Exclusion is not required. Advise avoiding close skin contact until the first treatment has been completed; UKHSA advises carers use gloves and aprons for hands-on care until 24 hours after treatment."}
+       ]},
+       {b:"say", html:"Put the cream on at bedtime when your skin is cool, everywhere from your scalp down to the soles of your feet — between your fingers, under your nails, around your bottom and private parts. Leave it on all night. If you wash your hands, put some more on them. Tomorrow, wash it off and put clean clothes and sheets through a hot wash. Then do the whole thing again in a week."}
+     ]},
+
+    {id:"groups", nav:"Special groups", title:"Special groups — pregnancy, infants, older adults, immunosuppression", sub:"The choice of agent narrows in some groups; the principle of treating contacts together does not.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Pregnancy and breastfeeding", html:"<b>Permethrin 5% cream is first-line</b>. Ivermectin is not recommended because of uncertainty about fetal and infant safety and no evidence of superiority. Practical point when breastfeeding: wash cream off the nipples before a feed and re-apply afterwards.", src:"BASHH 2025 · PCDS scabies guidance"},
+         {tone:"amber", h:"Infants and young children", html:"Permethrin is licensed from 2 months; include the scalp, face (avoiding the eyes and mouth), neck and ears. Put mittens on to stop infants licking treated hands. Under 2 months, or under 15 kg if ivermectin is being considered, seek specialist advice.", src:"Permethrin 5% cream SPC · ivermectin 3 mg SPC"},
+         {tone:"cream", h:"Older adults and care-home residents", html:"Signs are often subtle and itch can be attributed to dry skin or ‘senile pruritus’ for months. Treat the head and neck too. Carers need to apply the treatment thoroughly, and residents who cannot co-operate with topical treatment are good candidates for oral ivermectin.", src:"UKHSA 2023 (updated 2025)"},
+         {tone:"amber", h:"Immunosuppression", html:"Higher risk of crusted and atypical disease. Examine carefully for crusting and seek specialist advice early rather than after two failed courses.", src:"BASHH 2025 · PCDS scabies guidance"},
+         {tone:"cream", h:"People with HIV or new sexual partners", html:"Offer HIV and STI testing when scabies is sexually acquired. In clinical practice, unexplained crusted scabies in a younger adult is a reason to think about undiagnosed immunosuppression, including HIV.", src:"BASHH 2025"}
+       ]}
+     ]},
+
+    {id:"settings", nav:"Care homes", title:"Care homes and other closed settings", sub:"What UKHSA’s guidance actually asks of the setting and of the GP — and what it does not.",
+     blocks:[
+       {b:"warn", html:"<b>There is no statutory reporting duty.</b> Scabies is not a notifiable disease, and UKHSA’s 2023 guidance (updated April 2025) states that single cases and outbreaks do not need to be reported to the health protection team (HPT). The setting can contact its local HPT for support if it is struggling to control spread despite following the guidance. Local infection-prevention teams may ask to be told about outbreaks or crusted cases — follow your area’s arrangement."},
+       {b:"dl", rows:[
+         ["<b>Outbreak definition</b>","<b>Two or more linked cases within 8 weeks</b> in the same setting (residents or staff)."],
+         ["<b>Single classical case</b>","Treat the case and identify contacts with skin contact in the previous 8 weeks; contacts are treated at the same time, twice, 7 days apart, even if asymptomatic."],
+         ["<b>Outbreak</b>","Assess everyone in the setting for scabies, identify all contacts (residents, staff and their households, visitors with hands-on contact), then run <b>co-ordinated mass treatment</b> in which everyone starts within 24 hours of each other and repeats together."],
+         ["<b>Crusted case</b>","Specialist-led treatment of the case, a wider contact definition because of the high mite load, enhanced environmental cleaning (UKHSA advises daily vacuuming until 7 days after treatment), and protective equipment for all contact."],
+         ["<b>Exclusion</b>","Not required for cases or contacts. Good infection-prevention practice and protective equipment for hands-on care until 24 hours after treatment."],
+         ["<b>Laundry</b>","Wash at 50°C or above, or seal in a bag for at least 72 hours."],
+         ["<b>Treatment choice</b>","Permethrin, malathion or oral ivermectin; ivermectin is often the most practical option for mass treatment of residents who cannot tolerate or co-operate with whole-body application."]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"The GP’s part in an outbreak", html:"Examine or support examination of residents; prescribe for residents (and advise staff to obtain treatment for themselves and their households) so that everyone can start in the agreed 24-hour window; check weights and contraindications if ivermectin is used; and record who has been treated on which days.", src:"UKHSA 2023 (updated 2025)"},
+         {tone:"blue", h:"Why the timing is so strict", html:"A partially treated home re-infests itself. Outbreaks in care homes are typically prolonged when an index case with unrecognised crusted scabies is missed or when staff and their families are left out.", src:"UKHSA 2023 (updated 2025)"}
+       ]}
+     ]},
+
+    {id:"after", nav:"After treatment", title:"After treatment — itch, nodules, failure and follow-up", sub:"Most return visits are for itch that is expected. The job is to separate that from genuine persistence.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"Day 1", title:"First treatment for everyone", html:"Index case and all contacts apply (or take) treatment on the same day; laundry done; carers use protective equipment for 24 hours."},
+         {n:"2", when:"Day 7 (up to day 14)", title:"Second treatment for everyone", html:"Repeat the full application or the ivermectin dose. The household repeats together."},
+         {n:"3", when:"Weeks 2–4", title:"Itch settling slowly", html:"Itch and the allergic rash usually settle over several weeks; BAD advises that itch may not clear for at least a month. Emollients, a sedating antihistamine at night (dose per BNF), crotamiton cream, and a short course of a topical corticosteroid for eczematised skin help."},
+         {n:"4", when:"More than 4 weeks after the second dose", title:"Re-assess", html:"BASHH 2025: itch persisting beyond this point may reflect treatment failure, reinfestation from an untreated contact, or irritation or allergy from the scabicide. Look for new burrows, re-check how it was applied and whether every contact was treated."}
+       ]},
+       {b:"table", head:["Finding at review","Most likely explanation","Action"], rows:[
+         ["Itch improving, no new lesions","Post-scabetic itch","Reassure; symptomatic treatment; no further scabicide"],
+         ["New burrows or new typical lesions","Failure or reinfestation","Check application and contacts; re-treat everyone together, consider switching agent or using oral ivermectin"],
+         ["Eczematous, sore skin","Irritant dermatitis from treatment or scratching","Emollient and topical corticosteroid; avoid repeated scabicide"],
+         ["Persistent nodules only","Nodular (hypersensitivity) reaction","Potent topical corticosteroid; can take weeks to months"],
+         ["Crusting or spreading in a frail patient","Crusted scabies","Same-day specialist input"]
+       ]},
+       {b:"warn", html:"Repeated courses of scabicide for itch alone cause irritant dermatitis, which itches — and so drives another course. Re-treat only when there is evidence of live infestation or a clear gap in the first treatment."},
+       {b:"say", html:"The mites are gone but your skin is still reacting to what they left behind, so the itch can carry on for a month or so. Keep using the moisturiser and the anti-itch cream. If you see new little tracks or new spots, or if it’s not easing a month after the second treatment, come back and we’ll look again."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, where and how fast", sub:"Most scabies is managed entirely in primary care. These are the exceptions.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day — dermatology or infectious diseases", html:"Suspected <b>crusted scabies</b>. Scabies with spreading cellulitis or systemic illness (acute medical assessment).", src:"BASHH 2025 · UKHSA 2023 (updated 2025)"},
+         {tone:"amber", h:"Dermatology — routine or advice and guidance", html:"Diagnostic doubt; persistent infestation despite two correctly applied courses with all contacts treated; infants under 2 months; persistent troublesome nodules.", src:"PCDS scabies guidance · permethrin SPC"},
+         {tone:"amber", h:"Care-home outbreak support", html:"Setting’s infection-prevention lead, and the local health protection team if the setting is struggling to control spread. Not a statutory notification.", src:"UKHSA 2023 (updated 2025)"},
+         {tone:"cream", h:"Sexual health service", html:"Sexually acquired scabies: STI screening, partner notification, and specialist treatment advice.", src:"BASHH 2025"},
+         {tone:"blue", h:"No 2-week-wait pathway applies", html:"No NICE NG12 suspected-cancer criterion maps to scabies, so there is no purple 2WW card on this page.", src:"NICE NG12 (2015, updated 2025)"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 28-year-old father with three weeks of night-time itch. His partner and 4-year-old are now scratching. He has already used one tube of cream on himself alone, a fortnight ago, and is annoyed it ‘didn’t work’. He wants something stronger.", src:"BASHH 2025 · BAD 2023 patient information"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Examines the finger webs and names the diagnosis; explores why the first course failed without blame (single application, contacts untreated); plans simultaneous treatment for all three, twice, 7 days apart; explains application and laundry; safety-nets for the itch that will outlast the mite; offers an STI screen sensitively.", src:"BASHH 2025 · UKHSA 2023 (updated 2025)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every figure on this page is traceable to a named primary source.",
+     blocks:[
+       {b:"html", html:"<div class='card'><h3>Evidence panel</h3><ul class='evlist'>"+
+         "<li><b>BASHH — National Guideline on the Management of Scabies in adults (2025)</b>. Morris G, Haddow L, Sashidharan PN, et al. Int J STD AIDS 2025<br><a href='https://journals.sagepub.com/doi/10.1177/09564624251321264' rel='noopener'>doi.org/10.1177/09564624251321264</a> · <a href='https://www.bashh.org/resources/135/updated_guideline_scabies_guideline_2025/' rel='noopener'>bashh.org</a><span class='rd'> — permethrin or ivermectin 200 micrograms/kg as first-line, second dose at 7–14 days, 8-week contact window, STI screening, pregnancy advice, itch beyond 4 weeks after the second dose</span></li>"+
+         "<li><b>UKHSA — Management of scabies cases and outbreaks in communal residential settings (2023, updated April 2025)</b><br><a href='https://www.gov.uk/government/publications/scabies-management-advice-for-health-professionals' rel='noopener'>gov.uk — scabies management advice for health professionals</a><span class='rd'> — not notifiable, outbreak = 2 or more linked cases within 8 weeks, mass treatment within 24 hours, no exclusion, protective equipment until 24 hours after treatment, laundry at 50°C or sealed 72 hours, crusted-scabies cleaning</span></li>"+
+         "<li><b>BAD — Scabies patient information leaflet (updated October 2023)</b> and <b>BAD scabies guidance for clinicians (October 2023)</b><br><a href='https://www.bad.org.uk/pils/scabies' rel='noopener'>bad.org.uk/pils/scabies</a><span class='rd'> — leave-on times (permethrin 8–12 h, malathion 24 h), itch may take at least a month to clear, crotamiton for itch, permethrin and malathion shortages</span></li>"+
+         "<li><b>PCDS — Scabies clinical guidance</b> (Primary Care Dermatology Society; web guidance, accessed September 2026)<br><a href='https://www.pcds.org.uk/clinical-guidance/scabies' rel='noopener'>pcds.org.uk/clinical-guidance/scabies</a><span class='rd'> — permethrin as treatment of choice and safe in pregnancy, risk factors for crusted scabies, nodular scabies</span></li>"+
+         "<li><b>Engelman D, et al. The 2020 International Alliance for the Control of Scabies consensus criteria for the diagnosis of scabies. Br J Dermatol 2020</b> (international)<span class='rd'> — IACS diagnostic levels A to C, as summarised in BASHH 2025</span></li>"+
+         "<li><b>SPC — Permethrin 5% w/w cream</b> (emc)<br><a href='https://www.medicines.org.uk/emc/product/6540/smpc' rel='noopener'>medicines.org.uk/emc/product/6540/smpc</a><span class='rd'> — licensed from 2 months, up to 30 g in adults, wash the whole body 8–12 hours after application, re-apply to hands washed within 8 hours</span></li>"+
+         "<li><b>SPC — Ivermectin 3 mg tablets</b> (emc)<br><a href='https://www.medicines.org.uk/emc/product/15513/smpc' rel='noopener'>medicines.org.uk/emc/product/15513/smpc</a><span class='rd'> — 200 micrograms/kg single dose, second dose within 8–15 days, not evaluated under 15 kg</span></li>"+
+                  "<li><b>NICE NG153 — Impetigo: antimicrobial prescribing (2020)</b><br><a href='https://www.nice.org.uk/guidance/ng153' rel='noopener'>nice.org.uk/guidance/ng153</a><span class='rd'> — managing impetiginised scabies</span></li>"+
+         "<li><b>NICE NG12 — Suspected cancer: recognition and referral (2015, updated 2025)</b><br><a href='https://www.nice.org.uk/guidance/ng12' rel='noopener'>nice.org.uk/guidance/ng12</a><span class='rd'> — checked: no criterion applies to scabies</span></li>"+
+         "<li><b>BNF</b><br><a href='https://bnf.nice.org.uk' rel='noopener'>bnf.nice.org.uk</a><span class='rd'> — antihistamine and ivermectin weight-band dosing</span></li>"+
+         "</ul></div>"}
+     ]}
+  ],
+  foot:"Scabies in primary care — BASHH 2025 scabies guideline, UKHSA 2023 guidance on communal residential settings (updated April 2025), BAD 2023 patient information, and the permethrin and ivermectin SPCs. Scabies is not notifiable; crusted scabies needs specialist care."
+});
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

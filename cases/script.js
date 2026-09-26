@@ -75,7 +75,7 @@ function printSummary(){
   if(ac)ac.style.display=ad;
 }
 
-function calcDrug(){
+function calcDrugHTN(){
   const dm=document.getElementById('ds-dm').checked,
     ckd=document.getElementById('ds-ckd').checked,
     cvd=document.getElementById('ds-cvd').checked,
@@ -230,3 +230,38 @@ function resetScorecard(){
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',enhance);
   else enhance();
 })();
+
+
+/* ── Medication quick-reference selector ─────────────────────────────────────
+   The detailed selector logic above (calcDrugHTN) is specific to the hypertension
+   case. Other case pages reuse the same checkbox markup (.ds-wrap) with their own
+   checkbox ids, so calling the hypertension logic there threw an error on the
+   first click. calcDrug() now routes: hypertension ids present → calcDrugHTN();
+   otherwise a generic, error-free summary that points to the drug reference cards.
+   A page may still define its own calcDrug(); it is wrapped so that any error
+   falls back to the generic summary instead of breaking the page. */
+function calcDrugGeneric(){
+  var out=document.getElementById('ds-output'); if(!out) return;
+  if(out.dataset.initial===undefined) out.dataset.initial=out.innerHTML;
+  var wrap=out.closest('.ds-wrap')||document;
+  var picked=[].slice.call(wrap.querySelectorAll('input[type=checkbox]:checked')).map(function(c){
+    var l=c.closest('label'); return (l?l.textContent:c.id).trim();
+  });
+  if(!picked.length){ out.innerHTML=out.dataset.initial; return; }
+  var esc=function(t){return t.replace(/[&<>"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch];});};
+  out.innerHTML='<div style="font-size:12.5px;line-height:1.55;color:var(--ink,#222)"><strong>Selected:</strong> '+picked.map(esc).join(' · ')+
+    '<br><span style="color:var(--g,#555)">Use the drug reference cards below for choice, cautions and monitoring for these characteristics — this quick reference does not auto-select a drug for this topic. Check doses in the BNF.</span></div>'+
+    (out.dataset.initial?'<div style="margin-top:.5rem">'+out.dataset.initial+'</div>':'');
+}
+function calcDrug(){
+  if(document.getElementById('ds-dm')&&document.getElementById('dc-acei')&&document.getElementById('ds-output')){
+    try{ return calcDrugHTN(); }catch(e){ return calcDrugGeneric(); }
+  }
+  return calcDrugGeneric();
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var f=window.calcDrug;
+  if(typeof f==='function' && f!==calcDrug){          /* page-specific override */
+    window.calcDrug=function(){ try{ return f.apply(this,arguments); }catch(e){ return calcDrugGeneric(); } };
+  }
+});

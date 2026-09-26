@@ -992,7 +992,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td class="q">FBC (full blood count)</td><td class="why">Anaemia → tachycardia → can trigger or exacerbate AF. Low platelet count = bleeding risk before anticoagulation. Baseline Hb before starting anticoagulation.</td><td class="why">Anaemia → treat cause (iron, B12, folate, chronic disease). Thrombocytopaenia &lt;50 → specialist input before anticoagulating. Low Hb → investigate before DOAC.</td></tr>
           <tr><td class="q">LFTs (liver function tests)</td><td class="why">Liver disease affects drug metabolism — apixaban and rivaroxaban are hepatically metabolised. Baseline LFTs before amiodarone initiation (hepatotoxicity). Chronic liver disease = coagulopathy — affects anticoagulation safety.</td><td class="why">Moderate-severe liver disease → avoid rivaroxaban; apixaban may be safer. Amiodarone → LFTs every 6 months. Abnormal LFTs → specialist review.</td></tr>
           <tr><td class="q">Echocardiogram</td><td class="why">Identifies structural heart disease (LV dysfunction, valvular disease, LVH, intracardiac thrombus). Mitral stenosis = warfarin mandatory. LV thrombus = anticoagulate before any cardioversion. LA size predicts cardioversion success.</td><td class="why">Mitral stenosis → warfarin not DOAC. EF &lt;40% → HF management + rate control strategy changes. LV thrombus → delay cardioversion until anticoagulated for ≥3 weeks minimum.</td></tr>
-          <tr><td class="q">Holter monitor / 7-day ECG patch</td><td class="why">For suspected paroxysmal AF — symptoms with normal 12-lead ECG. NICE recommends ≥24h ambulatory ECG monitoring. 7-day or longer patch increases yield significantly for paroxysmal AF. Wearable devices increasingly used.</td><td class="why">Paroxysmal AF confirmed → anticoagulate based on CHA₂DS₂-VASc (same as persistent AF). AF burden informs rate vs rhythm discussion.</td></tr>
+          <tr><td class="q">Holter monitor / 7-day ECG patch</td><td class="why">For suspected paroxysmal AF — symptoms with normal 12-lead ECG. NICE NG196: 24-hour ambulatory ECG if episodes are asymptomatic or symptomatic episodes are &lt;24h apart; an ambulatory monitor, event recorder or other ECG technology for an appropriate period if episodes are &gt;24h apart. 7-day or longer patch increases yield significantly for paroxysmal AF. Wearable devices increasingly used.</td><td class="why">Paroxysmal AF confirmed → anticoagulate based on CHA₂DS₂-VASc (same as persistent AF). AF burden informs rate vs rhythm discussion.</td></tr>
           <tr><td class="q">INR (if on warfarin)</td><td class="why">Confirms therapeutic range (target 2–3 for non-valvular AF). TTR (time in therapeutic range) &lt;65% = poor control → DOAC switch. Supratherapeutic INR &gt;4 = bleeding risk. Before cardioversion: INR must be ≥2 for ≥3 weeks.</td><td class="why">INR &lt;2 → cardioversion must wait (unless &lt;48h onset). INR &gt;4 → withhold warfarin + recheck. TTR &lt;65% → switch to DOAC discussion.</td></tr>
         </tbody>
       </table>
@@ -1333,8 +1333,8 @@ body.mode-clinic .sca-only{display:none!important}
 
     </div>
 
-    <!-- ═══ Interactive Medication Chooser (live, NICE/BNF tiered) ═══ -->
-    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+    <!-- ═══ Interactive Medication Chooser (live, NICE NG196/BNF tiered) ═══ -->
+    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE NG196 / BNF</div>
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="atrial-fibrillation"></div>
 
@@ -2051,7 +2051,7 @@ body.mode-clinic .sca-only{display:none!important}
 <div class="page-footer">
   <p><strong>Atrial Fibrillation · GP Clinical Reasoning Framework</strong> · NICE NG196 (2021) · RACE II · EAST-AFNET 4 · ESC AF Guidelines 2023 · CHA₂DS₂-VASc / HAS-BLED</p>
   <p style="margin-top:4px">Includes: Clinical stem · Open Q first · ICE (stroke fear + bleeding fear) · Safeguarding · CHA₂DS₂-VASc + HAS-BLED · WPW drug trap · Rate vs rhythm control · DOAC first-line · Psychosocial (driving, work, anxiety, anticoagulation fears) · SCA RAG checkpoints · Dual collapsible summaries</p>
-  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC/NICE guidelines · Clinical judgement takes precedence over any framework</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC and NICE NG196 guidance · Clinical judgement takes precedence over any framework</p>
 </div>
 
 </div><!-- /page -->
@@ -2281,16 +2281,16 @@ function resetScorecard(){
   </main>
 </div><!-- /app -->
 
-<script src="../assets/site.js?v=102"></script>
+<script src="../assets/site.js?v=104"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
 <!-- Medication Chooser engine + topic data -->
 <script src="../assets/medchooser.js"></script>
 <script src="../assets/meds/atrial-fibrillation.js"></script>
-<script src="../assets/topic-links.js?v=7"></script>
+<script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
 </body>
 </html>

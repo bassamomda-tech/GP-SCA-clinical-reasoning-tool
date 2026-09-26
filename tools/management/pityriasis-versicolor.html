@@ -17,9 +17,191 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({"icon":"🍄","title":"Pityriasis Versicolor","guideline":"NICE","stemTitle":"Pityriasis versicolor — antifungal; warn pigment takes months to recover","stemSub":"Primary-care management of pityriasis versicolor — a common Malassezia overgrowth causing patchy pigment change on the trunk; treat with topical antifungals (oral for extensive/refractory), and counsel that pigment normalises slowly and it commonly recurs. Sources: PCDS — pityriasis versicolor (2023).","glance":[{"lbl":"Cause","val":"Malassezia yeast","sub":"overgrowth, not contagious"},{"lbl":"1st-line","val":"Topical antifungal","sub":"ketoconazole shampoo/cream / selenium"},{"lbl":"Extensive/refractory","val":"Oral itraconazole","sub":"short course"},{"lbl":"Counsel","val":"Pigment recovers slowly","sub":"weeks–months"},{"lbl":"Recurrence","val":"Common","sub":"intermittent prophylaxis"},{"lbl":"Confirm","val":"Clinical ± skin scrape","sub":"Wood’s lamp"}],"flow":[{"t":"node","d":"found","n":"1","tag":"Foundation","title":"Recognise","blocks":[{"b":"kv","rows":[["Typical","Multiple oval macules/patches with fine scale on the trunk/upper arms; <b>hypo- or hyperpigmented</b> (more obvious after sun/tanning); mild or no itch; young adults"],["Cause","Overgrowth of commensal Malassezia yeast — not contagious; favoured by heat/humidity/sweating"],["Confirm","Clinical; gentle scratch shows fine scale; skin scraping microscopy if uncertain; Wood’s lamp may fluoresce"],["Differentials","Pityriasis rosea, vitiligo (no scale, complete depigmentation), pityriasis alba, seborrhoeic dermatitis"]]},{"b":"why","html":"Pityriasis versicolor is a benign yeast overgrowth, easily confused with vitiligo or post-inflammatory change. Recognising the fine scale and pigment variability avoids misdiagnosis; the key counselling point is that the colour change persists long after the yeast is treated."}]},{"t":"node","d":"life","n":"2","tag":"Non-drug · advice","title":"Self-care & recurrence","blocks":[{"b":"tiles","v":"life","items":[{"t":"🌡️ Reduce humidity","html":"Heat and sweating promote it — wear loose, breathable clothing; dry skin well."},{"t":"🧴 Wash routine","html":"Periodic antifungal shampoo (as a body wash) helps prevent recurrence in susceptible people."},{"t":"🎨 Set expectations","html":"Explain pigment change takes months to normalise after the fungus clears — it is not failure."}]},{"b":"why","html":"It is harmless and tends to recur in warm, humid conditions, so realistic expectations and an occasional antifungal wash are the mainstay of non-drug care."}]},{"t":"node","d":"drug","n":"3","tag":"Treatment","title":"Antifungal","blocks":[{"b":"ladder","steps":[{"step":"1st-line","title":"Topical antifungal","when":"most cases","html":"Ketoconazole 2% shampoo applied to affected areas, left ~5 min then washed off, daily for several days (or selenium sulfide shampoo); or topical imidazole cream for limited areas."},{"step":"Extensive/refractory","title":"Oral antifungal","when":"if widespread / topical fails","fromLabel":"if extensive/refractory","html":"Oral <b>itraconazole 200 mg once daily for 7 days</b> (or <b>fluconazole 300 mg once weekly for 2 weeks</b>). Avoid oral terbinafine (ineffective orally for this) — oral itraconazole/fluconazole are the systemic options."},{"step":"Prevention","title":"Intermittent prophylaxis","when":"recurrent","fromLabel":"if recurrent","html":"Periodic antifungal shampoo (e.g. monthly or before summer) to reduce recurrence."}]},{"b":"warn","html":"Counsel clearly: the rash recurs in many people, and the <b>pigment change takes weeks to months to normalise</b> after successful treatment — persistent pale/dark patches are NOT treatment failure."}]},{"t":"node","d":"follow","n":"4","tag":"Follow-up","title":"Pigment & recurrence","blocks":[{"b":"timeline","items":[{"n":"1","when":"After treatment","title":"Pigment lags","html":"Warn that <b>pigment changes take months to normalise</b> after the fungus is cleared — persistent pale/dark patches do not mean treatment failure."},{"n":"2","when":"Recurrent","title":"Prophylaxis","html":"Recurrence is common (esp. in warm/humid conditions) → intermittent topical antifungal (e.g. ketoconazole shampoo) prophylaxis; oral options for frequent relapse."},{"n":"3","when":"Diagnostic doubt","title":"Confirm","html":"Skin scrapings for microscopy if uncertain; reconsider vitiligo, pityriasis alba, or seborrhoeic dermatitis."}]},{"b":"say","html":"The fungus clears quickly but the colour of the skin can take months to even out — that's normal. It often comes back, so an occasional antifungal wash helps keep it away."}]},{"t":"node","d":"safety","n":"5","tag":"Safety-net","title":"When to reconsider","blocks":[{"b":"tiles","v":"safety","items":[{"t":"🟠 Diagnostic doubt","html":"Widespread, persistent or atypical → confirm with scrapings; reconsider vitiligo, pityriasis alba, or seborrhoeic dermatitis."},{"t":"💬 Safety-net","html":"It's harmless, but if the patches keep spreading or don't clear with treatment, come back for a check."}]}]},{"t":"node","d":"refer","n":"6","tag":"Refer","title":"Referral","blocks":[{"b":"tiles","v":"refer","items":[{"t":"Dermatology","html":"Diagnostic uncertainty (e.g. vs vitiligo), extensive/refractory disease."},{"t":"Manage in primary care","html":"Typical disease responding to topical antifungal ± prophylaxis."}]},{"b":"say","html":"This is pityriasis versicolor — a harmless overgrowth of a normal skin yeast that leaves lighter or darker patches, more obvious with a tan. It’s not contagious. An antifungal shampoo used on the skin clears the yeast. Importantly, the colour takes a few months to even out afterwards, and it can come back — a top-up treatment now and then helps prevent that."}]}],"foot":"Management of pityriasis versicolor in primary care — antifungal therapy; pigment recovery is slow and recurrence common. Sources: PCDS — pityriasis versicolor, 2023."});
+MG.render({
+  icon:"🍄",
+  title:"Pityriasis Versicolor",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Pityriasis versicolor — clear the yeast fast, then explain why the colour won’t follow for months",
+  stemSub:"A harmless overgrowth of the Malassezia yeast that lives on everyone’s skin, producing scaly pale, pink or brown patches over the upper trunk. The clinical work is short: confirm the fine scale, exclude vitiligo and the rarer look-alikes, clear it with a ketoconazole shampoo used as a body wash, keep oral itraconazole for widespread or resistant disease, and — the part that decides whether the patient comes back unhappy — explain that pigment takes months to recover and that the rash tends to return. Sources: PCDS · BAD 2023 · ketoconazole and itraconazole SPCs · MHRA 2013 · BNF.",
+  guideline:"PCDS pityriasis versicolor guidance · BAD patient information (June 2023) · itraconazole SPC",
+  meta:[
+    {t:"PCDS clinical guidance · PCDS patient leaflet Dec 2023"},
+    {t:"BAD patient information Jun 2023"},
+    {t:"Ketoconazole 2% shampoo and itraconazole SPCs · BNF"},
+    {t:"MHRA Drug Safety Update August 2013 · oral ketoconazole"},
+    {t:"No NG12 criterion applies"}
+  ],
+  lead:"<div class='mg-layers'><a href='#flags'><b>Is it PV?</b><small>Scale, trunk, not vitiligo</small></a><a href='#topical'><b>Treat</b><small>Shampoo as body wash</small></a><a href='#oral'><b>Oral</b><small>Itraconazole 200 mg × 7 days</small></a><a href='#recur'><b>Prevent</b><small>2–4-weekly wash</small></a></div>",
+  quickSub:"The five points that make this a single consultation. Each figure traces to a source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"blue", h:"Scale is the clue", html:"Oval, well-defined macules over the chest, back, neck and upper arms that are <b>paler or darker than the surrounding skin</b> and show fine, branny scale when the surface is gently stretched or scraped. Little or no itch. Common in young adults and in warm, humid conditions."},
+    {tone:"cream", h:"First-line: ketoconazole shampoo on the skin", html:"PCDS: lather <b>ketoconazole 2% shampoo</b> onto the affected skin, leave for about <b>10 minutes</b>, then rinse — <b>daily for 5 days</b>. Selenium sulfide shampoo or an imidazole cream for small areas are alternatives."},
+    {tone:"amber", h:"Oral only for widespread or resistant disease", html:"PCDS adds <b>itraconazole 200 mg once daily for 7 days</b> in widespread or resistant cases. Check the SPC contraindications first — heart failure, pregnancy and the long CYP3A4 interaction list. <b>Oral terbinafine does not work</b> here, and <b>oral ketoconazole must not be used</b> (MHRA 2013)."},
+    {tone:"green", h:"Colour lags by months — that isn’t failure", html:"Once the yeast has gone the scale disappears, but BAD and PCDS both warn that the <b>pale patches take several months</b> to regain their normal colour. Say this before you prescribe."},
+    {tone:"cream", h:"It comes back — plan for it", html:"Recurrence is common. For people who relapse, PCDS suggests re-treating and then using <b>ketoconazole shampoo as a body wash every 2–4 weeks</b> to keep it away."}
+  ],
+  pathwaySub:"Five steps. The blue step is where misdiagnosis happens.",
+  pathway:[
+    {title:"Look and scrape", html:"Upper trunk distribution, variable colour, and fine scale on gentle scraping. Ask about sun exposure — patches become more obvious when the surrounding skin tans."},
+    {title:"Exclude the look-alikes", html:"No scale and complete depigmentation suggests vitiligo; a herald patch and ‘fir-tree’ pattern suggests pityriasis rosea; ill-defined pale facial patches in a child suggest pityriasis alba. Persistent, unusual or treatment-resistant patches need a second look."},
+    {title:"Confirm if in doubt", html:"Skin scrapings for microscopy (short hyphae and round yeasts) are the confirmatory test; Wood’s light may show yellow fluorescence. Neither is needed when the picture is typical."},
+    {title:"Treat topically, then orally if needed", html:"Ketoconazole 2% shampoo as a body wash for 5 days. Itraconazole 200 mg daily for 7 days only if widespread or resistant, after checking contraindications and interactions."},
+    {title:"Counsel pigment and recurrence", html:"Months for the colour to even out; an intermittent antifungal wash for people who relapse; come back if the patches keep spreading or behave unusually."}
+  ],
+  sections:[
+    {id:"flags", nav:"Red flags", title:"Red flags — when the patches are not pityriasis versicolor", sub:"Pityriasis versicolor itself is never dangerous. The risk lies in labelling something else as PV and treating it with shampoo for a year.",
+     blocks:[
+       {b:"warn", html:"Pityriasis versicolor always has <b>scale</b> (sometimes only visible on scraping) and favours the <b>upper trunk</b>. Patches without scale, patches that are completely white, patches confined to the face, hands or genitals, or patches that fail to respond to a correctly used antifungal should make you reconsider the diagnosis."},
+       {b:"cards", items:[
+         {tone:"amber", h:"No response to two correctly used courses", html:"Confirm with skin scrapings before escalating. If mycology is negative, reconsider the diagnosis rather than repeating antifungals.", src:"PCDS pityriasis versicolor guidance"},
+         {tone:"amber", h:"Persistent hypopigmented or scaly patches in a sun-protected distribution in an adult", html:"Hypopigmented mycosis fungoides (a cutaneous T-cell lymphoma), sarcoidosis and leprosy (in someone from an endemic area, with numbness in the patches) are rare but important mimics. Unexplained, persistent patches that do not respond to treatment warrant dermatology review."},
+         {tone:"amber", h:"Extensive, frequently relapsing disease", html:"Consider factors that favour Malassezia overgrowth: heavy sweating, occlusive clothing, oily skin preparations, and immunosuppression including systemic corticosteroids. Ask about diabetes symptoms where the history suggests it."},
+         {tone:"blue", h:"Pale patches with no scale", html:"Most likely vitiligo (chalk-white, sharply defined, often around the eyes, mouth, hands and genitals) or post-inflammatory hypopigmentation. Antifungals will not help.", src:"PCDS pityriasis versicolor guidance"},
+         {tone:"blue", h:"NG12 — no criterion applies", html:"Pityriasis versicolor does not map to any NICE NG12 (2015, updated 2025) suspected-cancer criterion. A separate, changing pigmented lesion found during the examination is assessed on its own merits.", src:"NICE NG12 (2015, updated 2025)"}
+       ]},
+       {b:"why", html:"Malassezia species are part of normal skin flora. The rash appears when the yeast switches to a hyphal form and multiplies in the stratum corneum. Pale patches arise because yeast metabolites (such as azelaic acid and related compounds) interfere with melanin production and because the scale screens ultraviolet light; dark patches reflect inflammation and thickened scale. That is why clearing the yeast removes the scale quickly but leaves the pigment change for months, and why a scale-free white patch points away from this diagnosis."}
+     ]},
+
+    {id:"recognise", nav:"Recognising it", title:"Recognising it — the clinical picture", sub:"Most diagnoses are made in the first ten seconds of looking at the back. The rest of the history confirms rather than establishes it.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Who</b>","Adolescents and young adults most often; uncommon before puberty and in older adults because sebaceous activity is lower. More frequent in hot, humid climates and after holidays in the sun."],
+         ["<b>Where</b>","Upper trunk, neck, shoulders and upper arms; sometimes the face in children and people from hot climates; occasionally the groin or flexures."],
+         ["<b>What it looks like</b>","Round or oval macules that merge into larger irregular patches. Colour varies — hence ‘versicolor’: pale (hypopigmented) on tanned or darker skin, pink to fawn or brown (hyperpigmented) on pale skin. Fine scale that becomes obvious when the surface is stretched or lightly scraped (the ‘evoked scale’ sign)."],
+         ["<b>Symptoms</b>","Usually none, or mild itch after sweating. The usual reason to present is the cosmetic change, often noticed after sun exposure."],
+         ["<b>Contagious?</b>","No. The yeast is present on everyone’s skin; the rash reflects overgrowth, not infection from someone else."],
+         ["<b>Course</b>","Tends to recur, particularly in summer, in people who have had it before."]
+       ]},
+       {b:"say", html:"This is pityriasis versicolor. It’s caused by a yeast that lives on everybody’s skin — in some people, especially in warm weather, it grows a bit too much and changes the skin colour in patches. It isn’t catching, it isn’t a sign of poor hygiene, and it isn’t harmful."}
+     ]},
+
+    {id:"confirm", nav:"Confirming it", title:"Confirming it — scrapings and Wood’s light", sub:"Tests are for doubt, not for the typical case.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Skin scrapings for microscopy", html:"Scrape scale onto dark paper and send for mycology. Microscopy shows short hyphae with clusters of round yeast cells — the classic ‘spaghetti and meatballs’ appearance. Culture is not routinely useful because Malassezia is a normal commensal."},
+         {tone:"blue", h:"Wood’s light", html:"Affected skin may fluoresce a yellowish colour under Wood’s (ultraviolet) light. Fluorescence is not always present, so a negative result does not exclude the diagnosis.", src:"PCDS pityriasis versicolor guidance"},
+         {tone:"blue", h:"When to test", html:"Atypical site or appearance; no scale; failure of first-line treatment; before starting oral treatment where the diagnosis is not certain; or when a patient has had repeated courses without confirmation."}
+       ]}
+     ]},
+
+    {id:"ddx", nav:"Differentials", title:"Differential diagnosis at a glance", sub:"The discriminating features are scale, completeness of pigment loss, and distribution.",
+     blocks:[
+       {b:"table", head:["Condition","Scale?","Distinguishing features"], rows:[
+         ["<b>Pityriasis versicolor</b>","Fine, branny; may need scraping","Upper trunk; variable colour; young adults; yellow fluorescence under Wood’s light in some"],
+         ["<b>Vitiligo</b>","None","Complete, chalk-white depigmentation; sharp edges; periorificial, hands, genitals; bright white under Wood’s light"],
+         ["<b>Pityriasis rosea</b>","Collarette of scale","Herald patch first; oval patches along skin lines (‘fir-tree’); self-limiting over weeks"],
+         ["<b>Pityriasis alba</b>","Slight","Ill-defined pale patches on the face of children with atopy"],
+         ["<b>Seborrhoeic dermatitis</b>","Greasy, yellowish","Scalp, eyebrows, nasolabial folds, central chest; also Malassezia-related"],
+         ["<b>Post-inflammatory hypopigmentation</b>","None","Follows eczema, psoriasis or injury in the same site"],
+         ["<b>Progressive macular hypomelanosis</b>","None","Symmetrical, ill-defined pale macules on the trunk of young adults, often of darker skin; does not respond to antifungals"],
+         ["<b>Tinea corporis</b>","At the active edge","Annular with a raised scaly border and central clearing; itchy"],
+         ["<b>Hypopigmented mycosis fungoides</b>","Slight or none","Persistent, sun-protected sites, in children and adults with darker skin; biopsy needed"]
+       ]}
+     ]},
+
+    {id:"topical", nav:"Topical treatment", title:"Topical treatment — first-line for almost everyone", sub:"A shampoo used as a body wash reaches the whole affected area more easily than a cream.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st", title:"Ketoconazole 2% shampoo as a body wash", when:"most patients", tone:"cream",
+          html:"PCDS: work into a lather on the affected skin, leave on for about <b>10 minutes</b>, then wash off; repeat <b>daily for 5 days</b>. The product SPC gives a shorter contact time of 3–5 minutes — either is reasonable; the key is covering the whole affected area, including beyond the visible edge. Available on prescription and, for dandruff, over the counter."},
+         {step:"Alt", title:"Selenium sulfide 2.5% shampoo", when:"alternative wash", tone:"cream",
+          fromLabel:"if ketoconazole unsuitable",
+          html:"Apply to the affected skin with a little water, leave on and rinse off; use as directed in the product SPC (dose per BNF). Can irritate; avoid on broken or inflamed skin."},
+         {step:"Alt", title:"Imidazole or terbinafine cream", when:"small, localised areas", tone:"cream",
+          fromLabel:"limited disease",
+          html:"Clotrimazole, miconazole, econazole or ketoconazole 2% cream, or topical terbinafine, applied to the patches and a margin around them (duration per BNF). Impractical for large areas of the back."}
+       ]},
+       {b:"say", html:"Use this shampoo like a shower gel on the patches — lather it up on your chest and back, leave it about ten minutes, then rinse off. Do that every day for five days. The flaky surface will go within a couple of weeks, but the colour will take a lot longer to come back to normal."},
+       {b:"why", html:"Malassezia lives in the upper layer of skin where topical azoles reach high concentrations. Shampoo formulations spread easily over a large, hard-to-reach area such as the back, which is why they outperform creams in practice for anything more than a few patches."}
+     ]},
+
+    {id:"oral", nav:"Oral treatment", title:"Oral treatment — when, which, and what to check", sub:"Oral antifungals are reserved for widespread disease or failure of a correctly used topical course, and they carry real interaction and safety issues.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1st oral", title:"Itraconazole 200 mg once daily for 7 days", when:"widespread or resistant disease", tone:"amber",
+          html:"The regimen recommended by PCDS and set out in the itraconazole capsule SPC for pityriasis versicolor. Capsules are taken <b>immediately after a meal</b> for absorption. Continue or combine with the topical wash."},
+         {step:"Alt oral", title:"Fluconazole", when:"if itraconazole unsuitable", tone:"amber",
+          fromLabel:"alternative",
+          html:"An effective alternative azole. <b>Dose per BNF</b> — several regimens have been used in trials, so follow the formulary rather than a remembered schedule."},
+         {step:"Avoid", title:"Oral terbinafine and oral ketoconazole", when:"never for PV", tone:"red",
+          fromLabel:"do not use",
+          html:"<b>Oral terbinafine is ineffective</b> in pityriasis versicolor because it is not concentrated in the stratum corneum in a way that suppresses Malassezia (topical terbinafine does work). <b>Oral ketoconazole</b> is no longer licensed for fungal infection in the UK after the MHRA concluded in August 2013 that its liver risk outweighs its benefit; topical ketoconazole is unaffected."}
+       ]},
+       {b:"table", head:["Itraconazole check","Why","Source"], rows:[
+         ["<b>Heart failure or ventricular dysfunction</b>","Negative inotropic effect; associated with reports of heart failure — avoid for a non-serious infection","Itraconazole SPC"],
+         ["<b>Pregnancy, or could become pregnant</b>","Must not be used in pregnancy for non-life-threatening indications; women of child-bearing potential use contraception during and for a cycle after treatment, per SPC","Itraconazole SPC"],
+         ["<b>Interacting medicines</b>","Potent CYP3A4 inhibitor — several substrates are contraindicated (risk of QT prolongation and torsade de pointes); check statins, some calcium-channel blockers, anticoagulants and others","Itraconazole SPC · BNF interactions"],
+         ["<b>Liver disease</b>","Rare serious hepatotoxicity; avoid or use with caution and monitoring","Itraconazole SPC"],
+         ["<b>Absorption</b>","Capsules need food and gastric acid; absorption is reduced by antacids and acid suppression","Itraconazole SPC"]
+       ]}
+     ]},
+
+    {id:"pigment", nav:"Pigment", title:"Pigment — the expectation that needs managing", sub:"Most dissatisfaction with PV treatment is about colour, not yeast.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"green", h:"Scale clears first", html:"Once the yeast is eradicated the scale disappears, usually within a few weeks. Lack of scale at review is the sign that treatment has worked.", src:"PCDS pityriasis versicolor guidance"},
+         {tone:"green", h:"Colour takes months", html:"The pale areas take several months to return to their normal colour, and this does not mean treatment has failed. Sun exposure makes the contrast more obvious in the meantime.", src:"BAD patient information (June 2023) · PCDS guidance"},
+         {tone:"cream", h:"Don’t re-treat pale, scale-free skin", html:"Repeated antifungal courses for residual pigment change alone add cost and irritation without benefit. Re-treat only if scale returns or scrapings are positive.", src:"PCDS pityriasis versicolor guidance"}
+       ]},
+       {b:"say", html:"The treatment has worked — you can see the flakiness has gone. The paler patches are just your skin catching up with making its pigment again, and that takes a few months, sometimes until after the next summer. Using sun protection evenly helps the patches blend in."}
+     ]},
+
+    {id:"recur", nav:"Recurrence", title:"Recurrence and prevention", sub:"Recurrence is the rule rather than the exception in people who are prone to it.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"🔁 Re-treat the relapse", html:"Repeat the 5-day ketoconazole wash when scale returns."},
+         {t:"🗓️ Maintenance wash", html:"For recurrent disease, PCDS suggests ketoconazole shampoo as a body wash <b>once every 2–4 weeks</b>; BAD advises an occasional anti-dandruff shampoo used as a short-contact body wash."},
+         {t:"☀️ Before the season", html:"Some people choose to use a short course before a summer holiday or before the warmer months, when relapse is most likely."},
+         {t:"👕 Reduce humidity", html:"Loose, breathable clothing; shower and dry well after sweating; avoid heavy oily skin products on the trunk."}
+       ]},
+       {b:"why", html:"The yeast cannot be eradicated from the skin permanently — it is a normal inhabitant. Prophylaxis aims to keep numbers below the level at which it switches to the hyphal, rash-causing form. For frequent relapses despite a topical maintenance wash, specialist input can be sought about intermittent oral prophylaxis."}
+     ]},
+
+    {id:"groups", nav:"Special groups", title:"Special groups", sub:"Topical treatment is appropriate in almost every group; the oral options narrow quickly.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Pregnancy and breastfeeding", html:"Use topical treatment. Itraconazole must not be used in pregnancy for a non-life-threatening condition; there is no reason to use an oral antifungal for pityriasis versicolor in pregnancy.", src:"Itraconazole SPC"},
+         {tone:"cream", h:"Children", html:"Uncommon before puberty. Facial involvement is more likely; use a mild topical azole cream and avoid eyes. Reconsider pityriasis alba and vitiligo."},
+         {tone:"amber", h:"Immunosuppression", html:"More extensive and more frequently recurring disease is seen with immunosuppression, including systemic steroids. Treat as usual; consider confirmation with scrapings and a lower threshold for specialist advice."},
+         {tone:"amber", h:"Older adults on multiple medicines", html:"Prefer topical treatment; if oral is needed, check every current medicine against the itraconazole interaction list and ask about heart failure.", src:"Itraconazole SPC · BNF"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — rarely, and for a reason", sub:"Nearly all pityriasis versicolor is managed in primary care.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Dermatology — diagnostic uncertainty", html:"Patches that do not behave like PV, negative scrapings, no response to correctly used treatment, or suspicion of vitiligo, mycosis fungoides, sarcoidosis or leprosy. Advice and guidance first where available.", src:"PCDS pityriasis versicolor guidance"},
+         {tone:"amber", h:"Dermatology — frequent relapse despite prophylaxis", html:"For consideration of intermittent oral prophylaxis or other strategies.", src:"PCDS pityriasis versicolor guidance"},
+         {tone:"green", h:"Manage in primary care", html:"Typical disease responding to topical treatment, with or without a maintenance wash.", src:"PCDS pityriasis versicolor guidance · BAD patient information (June 2023)"},
+         {tone:"blue", h:"No 2-week-wait pathway applies", html:"No NICE NG12 suspected-cancer criterion maps to pityriasis versicolor, so there is no purple 2WW card on this page.", src:"NICE NG12 (2015, updated 2025)"}
+       ]},
+       {b:"say", html:"This isn’t anything that needs a specialist. The wash clears the yeast; your colour will even out over the next few months; and if it comes back, which it often does, you already know how to treat it. If the patches start behaving differently — spreading despite treatment, losing all their colour, or going numb — come back and we’ll look again."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 24-year-old man back from a month working abroad is upset by pale patches across his chest and back. He treated them with a ketoconazole wash three months ago; the flaking went but the patches are still pale and he is worried it is vitiligo and wants ‘tablets that work’. He takes simvastatin for familial hypercholesterolaemia.", src:"PCDS pityriasis versicolor guidance · BAD patient information (June 2023)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Examines for scale and explains that its absence means the yeast has gone; distinguishes residual hypopigmentation from vitiligo; explains months-long pigment recovery; declines oral treatment and identifies the itraconazole–simvastatin contraindication; offers a 2–4-weekly maintenance wash; safety-nets for atypical change.", src:"PCDS pityriasis versicolor guidance · itraconazole SPC"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every figure on this page is traceable to a named primary source.",
+     blocks:[
+       {b:"html", html:"<div class='card'><h3>Evidence panel</h3><ul class='evlist'>"+
+         "<li><b>PCDS — Pityriasis versicolor clinical guidance</b> (Primary Care Dermatology Society; web guidance, accessed September 2026) and <b>PCDS patient information leaflet (December 2023)</b><br><a href='https://www.pcds.org.uk/clinical-guidance/pityriasis-versicolor' rel='noopener'>pcds.org.uk/clinical-guidance/pityriasis-versicolor</a><span class='rd'> — ketoconazole shampoo lathered for 10 minutes daily for 5 days, itraconazole 200 mg daily for 7 days in widespread or resistant cases, pigment takes several months, maintenance wash every 2–4 weeks, Wood’s light fluorescence</span></li>"+
+         "<li><b>BAD — Pityriasis versicolor patient information leaflet (updated June 2023)</b><br><a href='https://www.bad.org.uk/pils/pityriasis-versicolor' rel='noopener'>bad.org.uk/pils/pityriasis-versicolor</a><span class='rd'> — not contagious, pale areas take several months to recover and this is not treatment failure, oral treatment for widespread rash or topical failure, occasional anti-dandruff shampoo body wash to reduce recurrence</span></li>"+
+         "<li><b>SPC — Nizoral 2% shampoo (ketoconazole)</b> (emc)<br><a href='https://www.medicines.org.uk/emc/product/1510/smpc' rel='noopener'>medicines.org.uk/emc/product/1510/smpc</a><span class='rd'> — licensed for pityriasis versicolor; 3–5 minute contact time</span></li>"+
+         "<li><b>SPC — Sporanox (itraconazole) 100 mg capsules</b><span class='rd'> — pityriasis versicolor 200 mg once daily for 7 days, taken after a meal; heart failure, pregnancy and CYP3A4 contraindications</span></li>"+
+         "<li><b>MHRA Drug Safety Update (August 2013; vol 7, issue 1) — Oral ketoconazole: do not prescribe or use for fungal infections — risk of liver injury outweighs benefits</b><br><a href='https://www.gov.uk/drug-safety-update/oral-ketoconazole-do-not-prescribe-or-use-for-fungal-infections-risk-of-liver-injury-outweighs-benefits' rel='noopener'>gov.uk/drug-safety-update — oral ketoconazole</a><span class='rd'> — hepatotoxicity risk outweighs benefit; topical ketoconazole unaffected</span></li>"+
+         "<li><b>Gupta AK, Foley KA. Antifungal treatment for pityriasis versicolor. J Fungi (Basel) 2015;1(1):13–29</b> (systematic review)<br><a href='https://pubmed.ncbi.nlm.nih.gov/29376896/' rel='noopener'>pubmed.ncbi.nlm.nih.gov/29376896</a><span class='rd'> — comparative efficacy of topical and oral agents; oral terbinafine ineffective</span></li>"+
+         "<li><b>NICE NG12 — Suspected cancer: recognition and referral (2015, updated 2025)</b><br><a href='https://www.nice.org.uk/guidance/ng12' rel='noopener'>nice.org.uk/guidance/ng12</a><span class='rd'> — checked: no criterion applies to pityriasis versicolor</span></li>"+
+         "<li><b>BNF</b><br><a href='https://bnf.nice.org.uk' rel='noopener'>bnf.nice.org.uk</a><span class='rd'> — selenium sulfide, topical azole, fluconazole doses and itraconazole interactions</span></li>"+
+         "</ul></div>"}
+     ]}
+  ],
+  foot:"Pityriasis versicolor in primary care — PCDS clinical guidance, BAD patient information (June 2023), the ketoconazole shampoo and itraconazole SPCs, and MHRA Drug Safety Update (August 2013) on oral ketoconazole. Pigment recovery takes months and recurrence is common."
+});
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

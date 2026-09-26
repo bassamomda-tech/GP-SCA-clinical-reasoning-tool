@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Trichomoniasis — Protocol · Reasoning GP</title>
+<meta name="description" content="Trichomonas vaginalis in primary care on one page: request a TV NAAT, treat with 7 days of metronidazole rather than a single dose, treat current partners regardless of their result, screen for other STIs and HIV, pregnancy and breastfeeding, treatment failure, and the NG12 criteria for a suspicious cervix." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/trichomoniasis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,9 +18,172 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({"icon":"🦠","title":"Trichomoniasis","guideline":"BASHH 2021 — Trichomonas vaginalis","stemTitle":"Trichomoniasis — metronidazole + sexual-health pathway","stemSub":"Primary-care management of Trichomonas vaginalis — a sexually transmitted protozoal infection — confirm, treat with metronidazole, refer to sexual health for partner notification and full STI screen, and note the pregnancy associations. BASHH.","glance":[{"lbl":"Organism","val":"Trichomonas vaginalis","sub":"protozoan STI"},{"lbl":"Classic","val":"Frothy yellow-green discharge","sub":"‘strawberry cervix’"},{"lbl":"1st-line","val":"Metronidazole 400 mg BD 5–7d","sub":"400 mg BD 5–7d or 2 g stat"},{"lbl":"Refer","val":"GUM / sexual health","sub":"+ full STI screen"},{"lbl":"Always","val":"Treat partner(s)","sub":"abstain until both treated"},{"lbl":"Pregnancy","val":"Associated risks","sub":"treat; specialist advice"}],"flow":[{"t":"node","d":"found","n":"1","tag":"Foundation","title":"Diagnose","blocks":[{"b":"kv","rows":[["Presentation (women)","Frothy yellow-green offensive discharge, vulval itch/soreness, dysuria; ‘strawberry cervix’; up to half asymptomatic"],["Presentation (men)","Usually asymptomatic; may cause urethritis/discharge"],["Confirm","High vaginal swab (posterior fornix) microscopy/culture or NAAT; men: urethral/urine NAAT"],["Full screen","It’s an STI — test HIV, chlamydia, gonorrhoea, syphilis"]]},{"b":"why","html":"Trichomoniasis is a treatable STI that is easily confused with bacterial vaginosis/candida; confirming it matters because it requires systemic metronidazole and partner treatment, and it is associated with adverse pregnancy outcomes and increased HIV transmission."}]},{"t":"node","d":"safety","n":"2","tag":"Safety-net","title":"Considerations","blocks":[{"b":"tiles","v":"safety","items":[{"t":"🤰 Pregnancy","html":"Associated with preterm birth/low birth weight; treat symptomatic infection — <b>metronidazole 400 mg BD for 5–7 days</b> (or 2 g single dose, not in pregnancy); seek specialist advice (avoid high single doses; high-dose regimens not recommended in pregnancy)."},{"t":"🩸 Co-infection / HIV","html":"Increases HIV acquisition/transmission risk; ensure full STI screen + HIV test."},{"t":"🍷 Metronidazole","html":"Avoid alcohol during and for 48h after (disulfiram-like reaction)."}]}]},{"t":"node","d":"life","n":"3","tag":"Non-drug · prevention","title":"Safer sex & prevention","blocks":[{"b":"tiles","v":"life","items":[{"t":"🚫 Abstain during treatment","html":"Avoid sex until patient and partner(s) have completed treatment and are symptom-free."},{"t":"🧴 Condoms","html":"Promote condom use to prevent reinfection and other STIs."},{"t":"🔎 Full screen","html":"Offer testing for other STIs incl. HIV; reinforce partner treatment regardless of their symptoms."}]},{"b":"why","html":"Treatment cures it but partners and reinfection drive recurrence — abstinence during treatment, partner treatment and condoms are the key non-drug measures."}]},{"t":"node","d":"drug","n":"4","tag":"Medication","title":"Treatment","blocks":[{"b":"ladder","steps":[{"step":"1st-line","title":"Metronidazole","when":"oral","html":"Metronidazole 400–500 mg BD for 5–7 days, OR 2 g single dose (not in pregnancy/breastfeeding). Topical agents are less effective — oral preferred."},{"step":"Always","title":"Treat partner(s) + abstain","when":"all cases","fromLabel":"prevent reinfection","html":"Current partners treated simultaneously (often epidemiologically) via sexual health; abstain until both treated and symptom-free."}]},{"b":"warn","html":"Single-dose metronidazole has slightly higher failure rates than the 7-day course in some settings; avoid the 2 g single dose in pregnancy/breastfeeding."}]},{"t":"node","d":"follow","n":"5","tag":"Follow-up","title":"Partner care & retest","blocks":[{"b":"timeline","items":[{"n":"1","when":"Always","title":"Treat partners","html":"Treat <b>current partners simultaneously</b> (metronidazole) regardless of their test result; advise abstinence until both completed treatment and symptom-free. Offer a full STI screen + HIV."},{"n":"2","when":"Counsel","title":"Avoid alcohol","html":"Warn against alcohol during and 48 h after metronidazole (disulfiram-like reaction). The 2 g single dose is avoided in pregnancy/breastfeeding."},{"n":"3","when":"Persistent","title":"Refer to GUM","html":"Treatment failure or recurrent infection → sexual-health clinic (consider adherence, reinfection, resistance)."}]},{"b":"say","html":"Your partner needs treating at the same time even if they have no symptoms, and avoid alcohol while on the tablets. We'll also check for other infections."}]},{"t":"node","d":"refer","n":"6","tag":"Refer","title":"Referral","blocks":[{"b":"tiles","v":"refer","items":[{"t":"GUM / sexual health","html":"Confirmation, full STI screen, partner notification, treatment failure."},{"t":"Obstetrics","html":"Trichomoniasis in pregnancy."},{"t":"Recurrent","html":"Persistent/recurrent → reconsider adherence, reinfection, resistance → specialist."}]},{"b":"say","html":"This is trichomonas, a sexually transmitted infection treated with a course of antibiotics (metronidazole) — avoid alcohol while taking it. Your partner needs treating at the same time, and you should both avoid sex until you’ve finished and symptoms have gone. We’ll arrange a full sexual-health check too."}]}],"foot":"Management of trichomoniasis in primary care, usually with sexual-health involvement for partner notification and screening. Sources: BASHH 2021 — Trichomonas vaginalis. Verify against current BASHH guidance."});
+MG.render({
+  icon:"🦠",
+  title:"Trichomoniasis",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Trichomonas: test with NAAT, give 7 days of metronidazole, and treat the partner too",
+  stemSub:"One page for Trichomonas vaginalis in primary care. It is a sexually transmitted protozoan that mimics bacterial vaginosis and thrush, is often silent in men, and is missed on routine swabs unless a NAAT is requested. Confirm it, treat with the 7-day metronidazole course that outperforms the single dose, treat current partners whatever their result, screen for the other STIs including HIV, and recognise when discharge is not infection at all.",
+  guideline:"BASHH Trichomonas vaginalis 2021 · Kissinger, Lancet Infect Dis 2018 · NICE NG12 (2025)",
+  meta:[
+    {t:"BASHH 2021 · Trichomonas vaginalis"},
+    {t:"BASHH 2023 · STI testing"},
+    {t:"BHIVA/BASHH/BIA 2020 · HIV testing"},
+    {t:"2WW · NG12 cervix and vagina", tone:"tw"}
+  ],
+  lead:"<div class='mg-layers'><a href='#test'><b>Test</b><small>NAAT, not just microscopy</small></a><a href='#treat'><b>Treat</b><small>metronidazole 7 days</small></a><a href='#partners'><b>Partners</b><small>treat regardless of result</small></a><a href='#failure'><b>Not cleared?</b><small>adherence, reinfection, resistance</small></a></div>",
+  quickSub:"The six points that change what you do today. Each traces to a named primary source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"cream", h:"Seven days beats one dose", html:"BASHH 2021 recommends <b>metronidazole 400–500 mg twice daily for 7 days</b>. In a randomised trial of 623 women, persistent infection at test of cure was <b>11% after 7 days versus 19% after a single 2 g dose</b> (relative risk 0.55). The single dose is no longer the default."},
+    {tone:"blue", h:"Ask for a TV NAAT — do not rely on the wet mount", html:"A <b>nucleic acid amplification test</b> on a vulvovaginal swab (women) or first-void urine (men) is the most sensitive test. Microscopy misses a large share of infections, and many laboratories only run TV NAAT when asked. A frothy discharge or a pH above 4.5 is suggestive, not diagnostic."},
+    {tone:"amber", h:"Treat current partners whatever their result", html:"Partners from the <b>4 weeks before presentation</b> should be treated, and current partners are treated and offered a full STI screen <b>even if their own test is negative</b>. Men often carry TV without symptoms and without a positive test. Sexual health services lead partner notification."},
+    {tone:"blue", h:"It is an STI: screen for the rest, including HIV", html:"Offer chlamydia and gonorrhoea NAAT, syphilis serology and an <b>HIV test</b>. Trichomoniasis increases the risk of acquiring and passing on HIV, and a new STI diagnosis is an indication for HIV testing."},
+    {tone:"green", h:"Pregnancy and breastfeeding: treat, using the 7-day course", html:"TV in pregnancy is associated with preterm birth and low birth weight. Treat at any stage with the standard 7-day course; high-dose regimens are not recommended in pregnancy. UKTIS finds no increase in birth defects with metronidazole, and breastfeeding need not be interrupted."},
+    {tone:"purple", h:"Discharge or bleeding with a suspicious cervix is a cancer question", html:"NICE NG12: consider a suspected cancer pathway referral if, on examination, the <b>appearance of the cervix is consistent with cervical cancer</b>, or for vaginal cancer with an <b>unexplained palpable mass in or at the entrance to the vagina</b>. Always look at the cervix when discharge persists."}
+  ],
+  pathwaySub:"The consultation in five moves.",
+  pathway:[
+    {title:"Take a sexual history and look", html:"Symptoms, partners in the last few months, contraception, pregnancy, and previous STIs. Examine with a speculum where appropriate: discharge character, vulvitis, cervical appearance, and anything that is not simply infection (a mass, contact bleeding from an abnormal cervix)."},
+    {title:"Test properly", html:"<b>TV NAAT</b> on a vulvovaginal swab (self-taken is acceptable) or first-void urine in men, alongside <b>chlamydia and gonorrhoea NAAT, syphilis serology and HIV</b>. Consider bacterial vaginosis and candida at the same time."},
+    {title:"Treat with 7 days of metronidazole", html:"<b>Metronidazole 400–500 mg twice daily for 7 days</b>. Counsel on alcohol, the metallic taste and completing the course. No sex until both the patient and current partner(s) have finished treatment."},
+    {title:"Partners through sexual health", html:"Refer or signpost for <b>partner notification</b> covering at least the previous 4 weeks. Current partners are treated epidemiologically, regardless of their own test result."},
+    {title:"Retest if symptoms persist or partner treatment is uncertain", html:"A routine test of cure is not needed if symptoms settle and the partner has been treated. If symptoms persist or recur, or partner treatment is uncertain, retest with NAAT <b>no earlier than about 4 weeks after treatment</b>, and work through adherence, reinfection and resistance."}
+  ],
+  sections:[
+    {id:"recognise", nav:"Recognise", title:"Who has it and how it presents", sub:"Trichomoniasis often looks like something else, and in many people it causes no symptoms at all.",
+     blocks:[
+       {b:"table", head:["","Women","Men"], rows:[
+         ["<b>Where the organism lives</b>","Vagina, urethra and paraurethral glands. The urethra is infected in about 90% of cases but is the only site in fewer than 5%","Mainly the urethra; occasionally the subpreputial sac"],
+         ["<b>Symptoms</b>","Vaginal discharge (sometimes frothy and yellow-green, often not), vulval itch and soreness, dysuria, offensive odour, superficial dyspareunia","Often none. Urethral discharge or dysuria when present"],
+         ["<b>Signs</b>","Vulvitis and vaginitis; the classic punctate haemorrhagic ‘strawberry cervix’ is visible to the naked eye in only a small minority","Usually none"],
+         ["<b>Silent infection</b>","Common — up to half have no symptoms","The majority have no symptoms"],
+         ["<b>Pregnancy</b>","Associated with preterm birth, low birth weight and postpartum sepsis","—"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🔍 The common mimics", html:"<b>Bacterial vaginosis</b> (thin grey discharge, fishy odour, pH above 4.5 — like TV, but not sexually transmitted in the same way and no partner treatment) and <b>vulvovaginal candidiasis</b> (itch, thick white discharge, normal pH). Mixed infection is common, so a positive BV or candida result does not exclude TV.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"amber", h:"🟠 Discharge that is not infection", html:"Cervical ectropion, a retained foreign body (tampon), atrophic vaginitis, cervicitis from chlamydia or gonorrhoea, and — rarely — cervical or vaginal cancer. Examine the cervix before assuming a persisting discharge is a resistant infection.", src:"BASHH STI testing 2023 · NICE NG12"}
+       ]},
+       {b:"why", html:"Trichomoniasis sits in the gap between the vaginal infections GPs treat empirically and the STIs they refer. Because it looks like BV and is often silent in men, it keeps circulating in couples: the woman is treated for BV repeatedly while the untreated partner reinfects her."}
+     ]},
+
+    {id:"test", nav:"Test", title:"Testing: getting the right sample to the right test", sub:"The diagnostic step is where most trichomoniasis is missed.",
+     blocks:[
+       {b:"table", head:["Test","Use","Notes"], rows:[
+         ["<b>TV NAAT</b> — test of choice","Vulvovaginal swab (clinician or self-taken) in women; first-void urine or urethral swab in men","Most sensitive method. <b>Request it specifically</b> if your laboratory does not add it to routine chlamydia and gonorrhoea testing"],
+         ["<b>Wet-mount microscopy</b>","Point-of-care in sexual health clinics","Specific, but misses many infections; a negative result does not exclude TV"],
+         ["<b>Vaginal pH</b>","Supporting only","Above 4.5 in TV and BV; normal in candida"],
+         ["<b>Cervical cytology</b>","Not a diagnostic test","An incidental TV report on cytology should be confirmed with NAAT before treatment where possible"],
+         ["<b>Other STIs</b>","Everyone with TV","Chlamydia and gonorrhoea NAAT, syphilis serology, HIV test; hepatitis B and C testing if risk factors"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🧪 Testing men", html:"Men are tested mainly as <b>partners of women with TV</b>, or with persistent urethritis after standard treatment. A negative test in a male partner does not mean he is uninfected, which is why partners are treated regardless.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"blue", h:"🩸 HIV testing is part of the package", html:"An STI diagnosis is an indication to offer HIV testing. TV causes genital inflammation that increases both acquisition and transmission of HIV.", src:"BHIVA/BASHH/BIA HIV testing 2020"}
+       ]}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags and situations that change the plan", sub:"Trichomoniasis itself is rarely dangerous. What travels with it can be.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Pelvic pain, fever or an acute abdomen", html:"TV does not usually cause pelvic inflammatory disease, but it often coexists with other STIs. Pelvic pain with cervical motion tenderness or fever needs PID assessment; severe pain, peritonism or a possible ectopic pregnancy needs same-day hospital assessment.", src:"BASHH STI testing 2023"},
+         {tone:"amber", h:"🟠 Pregnancy", html:"Associated with preterm labour, low birth weight and postpartum sepsis. Treat promptly with the 7-day course and inform the maternity team.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"amber", h:"🟠 Metronidazole allergy", html:"There is no effective non-nitroimidazole alternative. True allergy needs sexual health or specialist input, where desensitisation may be considered.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"amber", h:"🟠 Under 16, or signs of exploitation", html:"An STI in a young person prompts an assessment of competence, the partner’s age and any coercion, exploitation or abuse. Sexual activity under 13 is always a child protection matter; follow multi-agency referral duties for older children where there is concern.", src:"Working Together to Safeguard Children 2026"},
+         {tone:"purple", h:"Abnormal cervix or vaginal mass — NG12 suspected cancer <span class='tw'>2WW</span>", html:"Consider a suspected cancer pathway referral (for an appointment within 2 weeks) for women, and trans men and non-binary people with female reproductive organs, if on examination <b>the appearance of their cervix is consistent with cervical cancer</b>; and for vaginal cancer in those with an <b>unexplained palpable mass in or at the entrance to the vagina</b>.", src:"NICE NG12 (updated April 2026)"}
+       ]}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Treatment", sub:"Oral nitroimidazoles are the only effective treatment. Topical metronidazole gel does not reach urethral and glandular reservoirs and should not be used.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Recommended", tone:"cream", title:"Metronidazole 7-day course", when:"women and men, including pregnancy and breastfeeding", fromLabel:"first line",
+          html:"<b>Metronidazole 400–500 mg twice daily for 7 days</b> (BASHH 2021). The 7-day course is supported by the Kissinger randomised trial, which found about half the rate of persistent infection compared with the single dose in women."},
+         {step:"Alternative", tone:"amber", title:"Single-dose regimen", when:"only where a 7-day course is genuinely not feasible", fromLabel:"less effective in women",
+          html:"A single 2 g oral dose of metronidazole (or tinidazole 2 g, which is listed as an alternative by BASHH) is simpler but less effective in women. Avoid high single doses in pregnancy. Discuss with sexual health first where possible."},
+         {step:"Always", tone:"cream", title:"Partner treatment and abstinence", when:"every case", fromLabel:"prevents reinfection",
+          html:"Current partners are treated at the same time with the same regimen. No sex, including oral sex, until both have completed treatment."}
+       ]},
+       {b:"table", head:["Counselling point","What to say","Source"], rows:[
+         ["<b>Alcohol</b>","Avoid alcohol during treatment and for <b>48 hours afterwards</b> because of a possible disulfiram-like reaction (flushing, nausea, vomiting, palpitations)","BNF · metronidazole SPC"],
+         ["<b>Side effects</b>","Metallic taste, nausea and gastrointestinal upset are common; take with or after food","Metronidazole SPC"],
+         ["<b>Interactions</b>","Enhances warfarin effect (check INR); raises lithium and busulfan levels","BNF"],
+         ["<b>Completing the course</b>","Most treatment failures are missed doses or an untreated partner, not resistance","BASHH Trichomonas vaginalis 2021"]
+       ]},
+       {b:"why", html:"The single 2 g dose became standard for convenience rather than because it worked best. When it was compared directly with 7 days of 500 mg twice daily in 623 non-pregnant, HIV-negative women, the 7-day course left 11% still infected against 19% with the single dose. BASHH 2021 reflects this, and it is why this page does not present single-dose treatment as an equal first-line option."}
+     ]},
+
+    {id:"partners", nav:"Partners", title:"Partners, abstinence and reinfection", sub:"Reinfection from an untreated partner is the commonest reason trichomoniasis ‘comes back’.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"Diagnosis", title:"Identify contacts", html:"Partners from at least the <b>4 weeks before presentation</b>, or the last partner if longer ago. Sexual health health-advisers can notify partners anonymously."},
+         {n:"2", when:"Same time", title:"Treat current partners", html:"Treat current partners <b>regardless of their own test result</b>, and offer them a full STI screen including HIV."},
+         {n:"3", when:"During treatment", title:"No sex", html:"Avoid sex until both the patient and current partner(s) have completed treatment, and for at least a week after any single-dose regimen."},
+         {n:"4", when:"If symptoms persist", title:"Retest and review", html:"NAAT no earlier than about <b>4 weeks after treatment</b> (earlier tests can detect non-viable organism DNA). Ask directly about missed doses and new or untreated partners."}
+       ]},
+       {b:"say", html:"This is a sexually transmitted infection, and it’s easy to pass back and forth, so your partner needs treating at the same time even if their test comes back clear. The tablets are twice a day for a week. No alcohol until two days after the last one, and no sex until you’ve both finished."},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"✅ Prevention", html:"Condoms reduce the risk of TV and other STIs. Encourage testing with each new partner, and a repeat screen after any new partner.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"cream", h:"🩺 GP role in partner notification", html:"If the patient will not attend sexual health, document the conversation, give written information for partners, and offer treatment to partners who are registered with you.", src:"BASHH Trichomonas vaginalis 2021"}
+       ]}
+     ]},
+
+    {id:"pregnancy", nav:"Pregnancy", title:"Pregnancy and breastfeeding", sub:"Treatment is recommended; the regimen is the standard 7-day course.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"🤰 Pregnancy", html:"TV is associated with preterm birth, low birth weight and postpartum maternal sepsis. Treat with <b>metronidazole 400–500 mg twice daily for 7 days</b> at any gestation; high-dose regimens are not recommended in pregnancy. Inform the maternity team.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"green", h:"✅ Metronidazole safety in pregnancy", html:"Metronidazole has been well studied in pregnancy and is not known to cause birth defects, stillbirth, low birth weight or preterm delivery.", src:"UKTIS metronidazole monograph"},
+         {tone:"green", h:"🍼 Breastfeeding", html:"Metronidazole can be used while breastfeeding. SPS advises that <b>no interruption of breastfeeding is needed</b>, even after 2 g doses, but the infant should be monitored for adverse effects such as diarrhoea or oral thrush. The BNF notes that the manufacturer advises avoiding large single doses, which is one more reason to prefer the 7-day course.", src:"SPS breastfeeding advice · BNF"}
+       ]}
+     ]},
+
+    {id:"failure", nav:"Not cleared?", title:"Persistent or recurrent infection", sub:"Work through the causes in order before assuming resistance.",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Was the course taken?", html:"Missed doses, vomiting, or stopping early because of taste or alcohol are the usual culprits.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"amber", h:"2 · Was the partner treated?", html:"An untreated or new partner is the commonest cause of apparent failure.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"amber", h:"3 · Repeat the standard course", html:"If adherent and reinfection is unlikely, repeat <b>metronidazole 400–500 mg twice daily for 7 days</b>.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"blue", h:"4 · Specialist regimens", html:"Continuing infection after a repeat course is managed by sexual health: higher-dose metronidazole (for example 2 g daily for 5–7 days, or 800 mg three times daily for 7 days), tinidazole, and susceptibility testing.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"red", h:"5 · Is it TV at all?", html:"Re-examine the cervix and vagina. Persisting discharge or bleeding with an abnormal cervix or a vaginal mass follows the NG12 pathway, not another antibiotic.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"blue", h:"6 · Co-infection", html:"Recheck for chlamydia, gonorrhoea, BV and candida, which commonly coexist and cause similar symptoms.", src:"BASHH STI testing 2023"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: who, where and how fast", sub:"Sexual health services are the default partner for every diagnosis.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day", html:"Acute pelvic pain with peritonism, suspected ectopic pregnancy, or severe PID features with systemic illness.", src:"BASHH STI testing 2023"},
+         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> · NICE NG12", html:"Consider a suspected cancer pathway referral (for an appointment within 2 weeks) for women, and trans men and non-binary people with female reproductive organs, if on examination <b>the appearance of their cervix is consistent with cervical cancer</b>; and for vaginal cancer in those with an <b>unexplained palpable mass in or at the entrance to the vagina</b>.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"amber", h:"Soon — sexual health", html:"Every new diagnosis, for partner notification and a full STI screen. Also treatment failure after a repeat course, metronidazole allergy, HIV co-infection, and safeguarding concerns in a young person.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"amber", h:"Maternity team", html:"TV diagnosed in pregnancy: treat and inform, because of the associations with preterm birth and postpartum sepsis.", src:"BASHH Trichomonas vaginalis 2021"},
+         {tone:"green", h:"Stays in primary care", html:"Confirmed uncomplicated TV with a 7-day course, partner treatment arranged, and a safety-net to retest if symptoms continue.", src:"BASHH Trichomonas vaginalis 2021"}
+       ]},
+       {b:"warn", html:"Do not treat recurrent ‘BV’ with repeated metronidazole without testing for TV and asking about partners. Recurrent discharge in a sexually active woman is a reason to test properly, not to prescribe again."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card. The Casebook holds the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 29-year-old woman has had three courses of metronidazole gel for ‘BV’ in six months. The discharge keeps coming back. The latest swab report says Trichomonas vaginalis NAAT positive. She is upset and asks whether it means her husband has been unfaithful.", src:"BASHH Trichomonas vaginalis 2021"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Explains TV as a <b>sexually transmitted infection</b> without assigning blame (it can persist silently for long periods); prescribes <b>oral metronidazole 400–500 mg twice daily for 7 days</b> rather than gel or a single dose; addresses <b>partner treatment regardless of his result</b>; offers a <b>full STI screen and HIV test</b>; covers <b>alcohol for 48 hours</b> and abstinence; examines the cervix; and safety-nets a retest if symptoms persist.", src:"BASHH Trichomonas vaginalis 2021 · BNF"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>BASHH — UK national guideline on the management of Trichomonas vaginalis (2021)</b>. Sherrard J et al. Int J STD AIDS 2022<br><a href="https://www.bashh.org/resources/20/trichomonas_vaginalis_2021/" rel="noopener">bashh.org — Trichomonas vaginalis 2021</a><span class="rd"> — sites of infection, NAAT diagnosis, 7-day metronidazole, pregnancy, partner notification look-back, abstinence, test of cure and treatment failure</span></li>'+
+         '<li><b>Kissinger P et al. Single-dose versus 7-day-dose metronidazole for the treatment of trichomoniasis in women: an open-label, randomised controlled trial. Lancet Infect Dis 2018;18:1251–9</b><br><a href="https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(18)30423-7/abstract" rel="noopener">thelancet.com</a><span class="rd"> — persistent infection 11% (34/312) versus 19% (58/311), relative risk 0.55</span></li>'+
+         '<li><b>BASHH — Summary guidance on testing for sexually transmitted infections (2023)</b><br><a href="https://www.bashh.org/_userfiles/pages/files/resources/bashh_summary_guidance_on_stis_testing_2023.pdf" rel="noopener">bashh.org — STI testing 2023</a><span class="rd"> — accompanying STI screen</span></li>'+
+         '<li><b>BHIVA/BASHH/BIA — Adult HIV testing guidelines (2020)</b><br><a href="https://bhiva.org/clinical-guideline/hiv-testing-guidelines/" rel="noopener">bhiva.org — HIV testing 2020</a><span class="rd"> — HIV testing after an STI diagnosis</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (2015, last updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — cervical and vaginal cancer referral criteria</span></li>'+
+         '<li><b>UKTIS — Use of metronidazole in pregnancy</b><br><a href="https://uktis.org/monographs/use-of-metronidazole-in-pregnancy/" rel="noopener">uktis.org</a><span class="rd"> — no increase in birth defects or adverse outcomes</span></li>'+
+         '<li><b>NHS Specialist Pharmacy Service — Using metronidazole during breastfeeding</b><br><a href="https://sps.nhs.uk/articles/using-metronidazole-during-breastfeeding/" rel="noopener">sps.nhs.uk</a><span class="rd"> — no interruption of breastfeeding needed</span></li>'+
+         '<li><b>BNF and metronidazole SPC</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — alcohol advice, adverse effects and interactions</span></li>'+
+         '<li><b>HM Government — Working Together to Safeguard Children (2026)</b><br><a href="https://www.gov.uk/government/publications/working-together-to-safeguard-children--2" rel="noopener">gov.uk</a><span class="rd"> — safeguarding duties for children and young people</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Trichomonas vaginalis in primary care — BASHH Trichomonas vaginalis guideline 2021, Kissinger et al. Lancet Infect Dis 2018, NICE NG12 (updated April 2026), BHIVA/BASHH/BIA HIV testing 2020, UKTIS, SPS and the BNF. Check every dose against the current BNF and local sexual health pathways. Not a substitute for clinical judgement."
+});
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

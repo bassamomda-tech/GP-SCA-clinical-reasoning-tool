@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Anxiety &amp; Depression (Palliative) — Protocol · Reasoning GP</title>
+<title>Palliative Anxiety and Depression — Protocol · Reasoning GP</title>
+<meta name="description" content="Low mood and anxiety in advanced illness on one page: tell understandable distress from a treatable disorder, ask about suicide, rule out delirium and steroid effects, lead with psychological and spiritual support, match the drug to the time the patient has, and plan for the last days." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/palliative-anxiety-depression.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316534730122 tools/management/palliative-anxiety-depression.html">
+<meta name="omelette-print-source" content="v1790420447098187 tools/management/palliative-anxiety-depression.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,78 +23,217 @@
 <script>
 MG.render({
   icon:"🕊️",
-  title:"Anxiety & Depression in Palliative Care — Step-by-Step",
-  stemTitle:"Mood &amp; anxiety in palliative care &mdash; let prognosis guide the choice between an SSRI and a fast-acting option",
-  stemSub:"A practical protocol: distinguish understandable distress from a treatable disorder, address symptoms and psychosocial/spiritual needs, choose an antidepressant when prognosis allows time for it to work (mirtazapine if poor sleep/appetite), and use benzodiazepines for acute anxiety or when prognosis is short. GMEC Palliative Care 2025.",
-  guideline:"GMEC 2025",
-  glance:[
-    {lbl:"First", val:"Distress vs disorder", sub:"+ psychosocial support"},
-    {lbl:"Anxiety (episodic)", val:"Lorazepam 0.5–1 mg", sub:"0.5\u20131mg SL PRN"},
-    {lbl:"Depression (time)", val:"SSRI", sub:"sertraline / citalopram"},
-    {lbl:"Poor sleep/appetite", val:"Mirtazapine", sub:"15\u201330mg nocte"},
-    {lbl:"Short prognosis", val:"Faster options", sub:"benzo; consider steroid mood lift"},
-    {lbl:"Last days", val:"Midazolam SC", sub:"for distress/agitation"}
+  title:"Palliative anxiety and depression",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Low mood and anxiety in advanced illness: separate grief from a treatable disorder, ask about suicide, and let the time the patient has decide the drug",
+  stemSub:"Sadness and fear are expected when someone is facing the end of their life, and most people need presence, honest information and support rather than a prescription. A smaller group has a depressive or anxiety disorder that responds to treatment. Look for the things that mimic or drive it (uncontrolled pain or breathlessness, hypoactive delirium, steroids, hypercalcaemia, akathisia). Ask directly about suicidal thoughts. Offer psychological, social and spiritual care to everyone. When a drug is needed, an SSRI or mirtazapine takes weeks to work, so it suits a prognosis of months; a benzodiazepine is for acute or episodic anxiety and for the last days.",
+  guideline:"NICE NG222 (2022) · NICE CG91 (2009) · NICE CG113 (2011, updated 2020) · NICE NG225 (2022) · NICE NG31 (2015) · MHRA Drug Safety Update (December 2011; March 2020) · Scottish Palliative Care Guidelines (2025)",
+  meta:[
+    {t:"NICE NG222 depression (2022) · CG91 physical illness (2009)"},
+    {t:"NICE CG113 anxiety · NG225 self-harm (2022)"},
+    {t:"NICE NG31 last days of life (2015)"},
+    {t:"MHRA DSU Dec 2011 (QT) · Mar 2020 (opioid plus benzodiazepine)"},
+    {t:"Scottish Palliative Care Guidelines 2025 · Cochrane"},
+    {t:"No NG12 criterion applies", tone:"tw"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Assess", title:"Distress vs treatable disorder; address the whole person",
-      blocks:[
-        {b:"kv", rows:[
-          ["Normalise","Sadness, fear and worry are understandable \u2014 not every patient needs a drug. But persistent low mood, anhedonia, hopelessness, or disabling anxiety is a treatable disorder."],
-          ["Screen","Consider mood/anxiety tools; ask directly. Assess risk (suicidal ideation) and capacity."],
-          ["Reversible / contributors","Uncontrolled symptoms (pain, breathlessness), steroids, hypercalcaemia, hypoactive delirium, akathisia, financial/spiritual distress."],
-          ["Holistic","Psychological support, counselling, chaplaincy/spiritual care, social work, carer support \u2014 often more valuable than medication."]
-        ]}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Non-drug · core", title:"Psychological & supportive care", blocks:[{b:"tiles", v:"life", items:[{t:"🗣️ Presence & listening", html:"Calm presence, listening, addressing fears and unfinished business often help more than drugs."},{t:"👪 Family & spiritual", html:"Involve family, chaplaincy/spiritual care and the palliative team; treat reversible causes (pain, breathlessness)."},{t:"🛏️ Environment", html:"Quiet, familiar surroundings, routine, and reassurance reduce distress."}]},{b:"why", html:"Psychological, social and spiritual support is first-line for distress at end of life \u2014 medication complements it, never replaces it."}]},
-    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 anxiety", title:"Anxiety \u2014 non-drug first, then anxiolytics",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"2a", title:"Non-drug + treat symptoms", when:"first",
-           html:"Relaxation, breathing techniques, address breathlessness/pain that drive panic; psychological support."},
-          {step:"2b", title:"Benzodiazepine for episodic anxiety", when:"acute / panic",
-           fromLabel:"distressing anxiety",
-           html:"<b>Lorazepam 0.5\u20131mg sublingual PRN</b> (fast). For persistent anxiety, a regular low dose short-term, or diazepam 2mg if longer action wanted."},
-          {step:"2c", title:"SSRI for sustained anxiety", when:"prognosis allows",
-           fromLabel:"weeks\u2013months prognosis",
-           html:"An SSRI (sertraline/citalopram) for generalised anxiety if there's time for it to work (2\u20134 weeks)."},
-          {step:"2d", title:"Last days", when:"short prognosis",
-           fromLabel:"unable to swallow / dying",
-           html:"<b>Midazolam 2.5\u20135mg SC PRN</b> / CSCI for anxiety-related distress in the last days (see Care of the Dying)."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 depression", title:"Depression \u2014 choose by prognosis & symptoms",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"3a", title:"SSRI (prognosis > a few weeks)", when:"time for onset",
-           html:"<b>Sertraline 50mg</b> or <b>citalopram 20mg</b> (max 20mg if elderly/QT) \u2014 first-line when there's time for the 2\u20134 week onset."},
-          {step:"3b", title:"Mirtazapine if poor sleep/appetite", when:"insomnia / anorexia / nausea",
-           fromLabel:"symptom overlap",
-           html:"<b>Mirtazapine 15\u201330mg nocte</b> \u2014 sedating + appetite-stimulating + antiemetic; ideal where insomnia, weight loss or nausea coexist."},
-          {step:"3c", title:"Short prognosis", when:"weeks or less",
-           fromLabel:"no time for an antidepressant",
-           html:"Consider a <b>psychostimulant</b> (e.g. methylphenidate \u2014 specialist) for rapid mood/energy lift, a corticosteroid's transient mood effect, and prioritise psychological/spiritual support."}
-        ]},
-        {b:"warn", html:"Watch for <b>akathisia</b> (drug-induced restlessness) and ensure low mood isn't actually <b>hypoactive delirium</b> or uncontrolled symptoms. Assess suicide risk; escalate urgently if significant."}
-      ]},
-    {t:"node", d:"monitor", n:"5", tag:"Review", title:"Review & safety-net",
-      blocks:[
-        {b:"kv", rows:[
-          ["Review","Reassess at 1\u20132 weeks (sooner if high risk) for response, side effects, akathisia, and ongoing risk."],
-          ["Psychosocial","Keep psychological, social and spiritual support running alongside any drug."]
-        ]}
-      ]},
-    {t:"node", d:"safety", n:"6", tag:"Safety-net · anticipatory", title:"When carers should call", blocks:[{b:"tiles", v:"safety", items:[{t:"📞 Escalating distress", html:"Severe agitation, suicidal ideation, or distress not responding to the plan → contact the palliative team/out-of-hours."},{t:"💊 Anticipatory meds", html:"Ensure anticipatory medications are prescribed and carers know how/when to use them."},{t:"🔄 Review reversible causes", html:"Sudden change → reassess for pain, retention, hypercalcaemia, infection or drug causes."}]}]},
-    {t:"node", d:"refer", n:"7", tag:"Refer", title:"When to refer",
-      arrow:"risk or complexity",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Urgent mental health", html:"Significant suicide risk, psychotic depression, or severe refractory symptoms."},
-          {t:"Specialist palliative care / psychology", html:"Complex distress, existential/spiritual suffering, or refractory anxiety/depression."},
-          {t:"Psychiatry of old age / liaison", html:"Diagnostic uncertainty (depression vs delirium vs dementia)."}
-        ]},
-        {b:"say", html:"It's completely understandable to feel low or anxious facing this \u2014 and there's a lot we can do, from talking support to medication. If we've got time, an antidepressant can really help; if things are more immediate, we'll use something faster-acting, and you'll have support around you throughout."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#redflags'><b>Red flags</b><small>Suicide, delirium, mimics</small></a><a href='#assess'><b>Distress or disorder</b><small>Ask, screen, look wider</small></a><a href='#support'><b>Support first</b><small>Psychological and spiritual</small></a><a href='#depression'><b>Antidepressant</b><small>Chosen by prognosis</small></a><a href='#refer'><b>Refer</b><small>Who and when</small></a></div>",
+  quickSub:"The six points that change what you do. Each traces to a source listed under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Ask about suicide, plainly", html:"Ask about hopelessness, wishes to die, and thoughts or plans of ending life. A wish for death to come soon is common and different from an intent to act, but only asking tells you which. <b>Do not use a risk score or a low/medium/high label</b> to decide what happens next: NICE NG225 advises against it. Plan around the person's own situation."},
+    {tone:"amber", h:"Look for the mimic before you label it", html:"Withdrawn and flat may be <b>hypoactive delirium</b>. Restless and fearful may be <b>akathisia</b>, uncontrolled pain or breathlessness, or <b>steroid-induced</b> mood change (MHRA warned about early psychiatric effects of systemic steroids in September 2007). Low mood with thirst, confusion and constipation raises <b>hypercalcaemia</b>."},
+    {tone:"green", h:"Support is the treatment for most", html:"Listening, honest information, involving family, spiritual care and practical help with money and care needs relieve most distress. For less severe depression NICE NG222 puts psychological approaches ahead of routine antidepressants. That still applies near the end of life, adapted to the patient's energy and time."},
+    {tone:"cream", h:"Antidepressants need weeks", html:"In the palliative care meta-analysis the benefit over placebo appeared at <b>4 to 5 weeks</b> and grew with time (Rayner et al., Palliat Med 2011). Start an SSRI or mirtazapine when prognosis is likely to be months. NICE CG91 suggests sertraline or citalopram in physical illness because they interact less."},
+    {tone:"amber", h:"Benzodiazepines: short-term and with care", html:"Useful for panic, acute fear and the last days, not as a long-term treatment for anxiety (NICE CG113). The Scottish guideline uses <b>lorazepam 500 micrograms SL, 4- to 6-hourly as needed</b>. With an opioid, both can depress breathing: MHRA DSU March 2020."},
+    {tone:"blue", h:"Citalopram QT limit", html:"MHRA (December 2011): maximum <b>citalopram 40 mg</b> daily in adults and <b>20 mg over 65</b> or in hepatic impairment; escitalopram 20 mg and 10 mg. Avoid both in known QT prolongation or with other QT-prolonging drugs. This matters because many palliative patients also take antiemetics or methadone."}
+  ],
+  pathwaySub:"Five steps, repeated at each review. The red step decides whether anyone is unsafe today.",
+  pathway:[
+    {title:"Is anyone unsafe today?", html:"Suicidal plan or intent, psychotic symptoms, severe agitation, or a sudden change in behaviour that may be delirium. Act the same day.", alert:true},
+    {title:"Distress, or a disorder?", html:"Understandable sadness or worry that the person can still find moments of pleasure through, versus pervasive low mood, loss of interest, hopelessness, guilt or disabling anxiety most of the day for 2 weeks or more. Use a brief tool if it helps (PHQ-9, HADS, Brief Edinburgh Depression Scale)."},
+    {title:"Treat what drives it", html:"Pain, breathlessness, nausea, insomnia, steroids, hypercalcaemia, akathisia, delirium, alcohol, and fears that no one has yet asked about."},
+    {title:"Support for everyone", html:"Time to talk, clear information, family and carer support, spiritual care, social work, psychology or counselling where available. Agree what matters most."},
+    {title:"Drug when needed, matched to time", html:"Prognosis of months: an SSRI or mirtazapine, reviewed at 2 weeks (1 week if at increased risk of suicide). Episodic anxiety or panic: SL lorazepam. Weeks or days: prioritise presence and symptom control, and a benzodiazepine for distress in the last days."}
+  ],
+  sections:[
+
+    {id:"redflags", nav:"Red flags", title:"Red flags: who needs action today", sub:"Distress in advanced illness is common and often expected. These presentations are not, and each needs a same-day decision.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Suicidal thoughts with a plan, intent or means", html:"Explore what the person is thinking, what they have considered, and what is keeping them safe. Stored medicines at home (opioids, benzodiazepines, antidepressants) are a real means: agree who holds them. Arrange same-day assessment by the crisis or liaison mental health team. Do not base the decision on a risk score or a low/medium/high category.", src:"NICE NG225 (2022)"},
+         {tone:"red", h:"Psychotic symptoms or severe depression", html:"Delusions of guilt, poverty or bodily decay, refusing food and drink because of depressive beliefs, or complete withdrawal. This needs urgent psychiatric assessment alongside palliative care. The Scottish guideline advises referring severe depression or suicidal ideation to psychological medicine or psychiatry.", src:"Scottish Palliative Care Guidelines 2025: Depression"},
+         {tone:"red", h:"Sudden change in behaviour or attention", html:"A fluctuating level of alertness, disorientation, or new agitation is <b>delirium until shown otherwise</b>. Hypoactive delirium looks like depression. Look for infection, urinary retention, constipation, drugs (opioids, anticholinergics, steroids, benzodiazepines), hypercalcaemia and hyponatraemia. See <a href='palliative-delirium-agitation.html'>palliative delirium</a>.", src:"NICE NG31 (2015): treat reversible causes of agitation, anxiety or delirium"},
+         {tone:"amber", h:"Mood change soon after starting a steroid", html:"Euphoria, irritability, insomnia, low mood, suicidal thoughts or psychosis can start within days of a systemic steroid. Review the need for the steroid and its dose, and warn patients and carers to report mood changes. See <a href='palliative-corticosteroids.html'>palliative corticosteroids</a>.", src:"MHRA Drug Safety Update, September 2007"},
+         {tone:"amber", h:"Restlessness after a new antiemetic or antipsychotic", html:"An inner urge to move, pacing and inability to settle after metoclopramide, haloperidol, levomepromazine or prochlorperazine suggests <b>akathisia</b>. It is often mistaken for anxiety. Reduce or stop the causative drug rather than adding a benzodiazepine."},
+         {tone:"amber", h:"Low mood with thirst, confusion and constipation", html:"Consider <b>hypercalcaemia of malignancy</b>. Check corrected calcium if treatment would fit the patient's goals. See <a href='malignant-hypercalcaemia.html'>malignant hypercalcaemia</a>.", src:"NICE NG31 (2015): treat reversible causes, including metabolic disorders"},
+         {tone:"amber", h:"Agitation, tremor, sweating and fever on serotonergic drugs", html:"Possible <b>serotonin syndrome</b>, especially when an SSRI is combined with tramadol, other serotonergic opioids, tricyclics or linezolid. Stop the serotonergic drugs and seek same-day advice.", src:"Scottish Palliative Care Guidelines 2025: Depression"}
+       ]},
+       {b:"why", html:"Most suicide risk tools have poor positive predictive value: they label many people as high risk who never act, and falsely reassure about people rated low. NG225 therefore asks for a conversation about the person's own circumstances, not a score. In palliative care the specific risks are easy to miss. The person has access to large supplies of dangerous medicines, and the clinician may assume that low mood is simply an understandable response to dying."}
+     ]},
+
+    {id:"assess", nav:"Distress or disorder", title:"Distress or disorder: how to tell, and what else to look for", sub:"Ask everyone. The somatic symptoms of depression (fatigue, poor appetite, weight loss, poor sleep) overlap with advanced illness, so lean on the psychological symptoms.",
+     blocks:[
+       {b:"table", head:["Feature","Understandable distress","Likely depressive disorder"], rows:[
+         ["Mood","Sad about specific losses; still has moments of warmth, humour or pleasure","Low most of the day, most days, for 2 weeks or more; little or nothing lifts it"],
+         ["Interest","Enjoys visits, music, small pleasures when well enough","Pervasive loss of interest, even in things they could still do"],
+         ["Thinking about self","Grief for what is being lost","Guilt, worthlessness, feeling a burden out of proportion"],
+         ["Future","Fear and sadness about dying, but can plan for the time left","Hopelessness about everything, including the time left"],
+         ["Death","May wish it would come soon when suffering is bad","Persistent wish to die, or thoughts of ending life"]
+       ]},
+       {b:"cards", items:[
+         {tone:"blue", h:"Screening tools", html:"All patients should be assessed for depression. Options named in the Scottish guideline are the <b>PHQ-9</b> (primary care), the <b>Brief Edinburgh Depression Scale</b> (designed with palliative patients in mind, as it relies less on physical symptoms) and the <b>Hospital Anxiety and Depression Scale</b>. A tool supports a clinical judgement; it doesn't replace one.", src:"Scottish Palliative Care Guidelines 2025: Depression"},
+         {tone:"blue", h:"Depression with a physical illness", html:"NICE CG91 covers depression in adults with a chronic physical health problem. It asks clinicians to be alert to depression in people with long-term illness, especially where there is functional impairment, and to ask the two core questions about low mood and loss of interest.", src:"NICE CG91 (2009)"},
+         {tone:"blue", h:"Anxiety: what exactly is feared?", html:"Fear of pain, of choking or breathlessness, of being a burden, of dying alone, or about what will happen to children or a partner. Many fears have practical answers such as a plan for breathless episodes, anticipatory medicines at home or a conversation with the family. Generalised worry across many areas, most days for 6 months or more, suggests GAD.", src:"NICE CG113 (2011, updated 2020)"}
+       ]},
+       {b:"kv", rows:[
+         ["Physical drivers","Uncontrolled pain, breathlessness, nausea, insomnia, fatigue, constipation. Treating these often lifts mood."],
+         ["Drug drivers","Steroids, benzodiazepine or opioid withdrawal, metoclopramide and antipsychotics (akathisia), beta-blockers, alcohol."],
+         ["Metabolic","Hypercalcaemia, hyponatraemia, hypothyroidism, hypoxia, uraemia. Test only if the result would change management."],
+         ["Past history","Previous depression, anxiety disorder or self-harm, and what worked before. A previously effective antidepressant is a sensible first choice."],
+         ["Social and spiritual","Finances, housing and care needs, family conflict, children, faith, meaning and unfinished business."]
+       ]}
+     ]},
+
+    {id:"support", nav:"Support first", title:"Psychological, social and spiritual care: the foundation", sub:"Offer these to everyone, whether or not a drug is also needed.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"🗣️ Time and honest information", html:"Unhurried time to talk, and clear answers about what is happening and what to expect. Uncertainty drives much of the anxiety."},
+         {t:"👪 Family and carers", html:"Involve the people who matter to the patient, with consent. Support carers, who are often more anxious than the patient."},
+         {t:"🕯️ Spiritual care", html:"Questions about meaning, faith and legacy. Chaplaincy or a faith leader, or a non-religious pastoral carer, if the patient wishes."},
+         {t:"🧾 Practical help", html:"Benefits under the special rules for end of life, carers' support, equipment, and help with wills and funeral planning. Social work or the hospice family support team."},
+         {t:"🧠 Psychological therapy", html:"Hospice psychology or counselling, and NHS Talking Therapies where prognosis and energy allow. Sessions can be short, flexible and at home."}
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"Less severe depression: psychology first", html:"For less severe depression, NICE NG222 recommends offering psychological or psychosocial interventions first, including guided self-help, group or individual CBT, behavioural activation and counselling. It advises not to offer antidepressants routinely unless that is the person's preference. Adapt the format to fatigue and prognosis.", src:"NICE NG222 (2022)"},
+         {tone:"green", h:"Physical illness: collaborative care", html:"For moderate or severe depression with a chronic physical health problem and functional impairment, CG91 supports collaborative care that joins up mental and physical care, alongside psychological and drug treatment.", src:"NICE CG91 (2009)"},
+         {tone:"green", h:"Anxiety: stepped care", html:"CG113 sets out stepped care for GAD: education and active monitoring, then low-intensity psychological interventions, then high-intensity therapy or drug treatment. In palliative care the steps are compressed and adapted, but the order still guides you.", src:"NICE CG113 (2011, updated 2020)"}
+       ]},
+       {b:"why", html:"Much of the distress in advanced illness comes from uncertainty, loss of control and unaddressed fears, and a prescription doesn't reach any of those. A clear conversation about what is likely to happen, a plan for the symptoms the patient fears, and permission to talk about dying often do more than a drug, and they work straight away. Medication adds to these measures. It doesn't replace them."}
+     ]},
+
+    {id:"anxiety", nav:"Anxiety", title:"Anxiety: from episodic panic to persistent worry", sub:"Treat the fear itself, the symptom that is driving it, and only then reach for a drug. Match the drug to the pattern.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"Non-drug measures and treat the driver", when:"everyone", tone:"green",
+          html:"Explain and reassure. Teach breathing and relaxation techniques. Write a plan for panic or breathless episodes. Treat pain and breathlessness properly (see <a href='palliative-breathlessness.html'>palliative breathlessness</a>). Reduce caffeine and alcohol."},
+         {step:"2", title:"Episodic anxiety or panic", when:"acute", tone:"amber", fromLabel:"distressing episodes",
+          html:"<b>Lorazepam 500 micrograms sublingually, 4- to 6-hourly as needed</b> (Scottish Palliative Care Guidelines 2025). The Scottish lorazepam information allows 500 micrograms to 1 mg orally or SL as needed or in 2 to 3 divided daily doses, and advises short-term use (2 to 4 weeks) because of dependence."},
+         {step:"3", title:"Continuous distressing anxiety", when:"background", tone:"amber", fromLabel:"persists through the day",
+          html:"<b>Diazepam 2 to 5 mg orally at night</b> is the Scottish option for continuous distressing anxiety. Review at every visit, and consider whether an SSRI and psychological therapy are more appropriate if prognosis is long."},
+         {step:"4", title:"Persistent anxiety disorder, prognosis of months", when:"time for an SSRI", tone:"cream", fromLabel:"GAD or panic disorder",
+          html:"An SSRI, with <b>sertraline</b> considered first for GAD (NICE CG113; note that sertraline is not licensed in the UK for GAD). Start low and warn about a temporary increase in jitteriness in the first 1 to 2 weeks. Dose per BNF."},
+         {step:"5", title:"Oral route lost, or last days", when:"cannot swallow", tone:"cream", fromLabel:"unable to take SL",
+          html:"<b>Midazolam SC</b>: the Scottish guideline gives 2 to 5 mg 4- to 6-hourly as needed when oral or SL routes are unavailable, starting at the lower end in frail or benzodiazepine-naive patients. See <a href='#lastdays'>last days</a>."}
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"Not a long-term treatment for GAD", html:"Do not offer a benzodiazepine for GAD except as a short-term measure during a crisis. In palliative care, a crisis and a short prognosis often coincide, so short-term use is usually reasonable. Record the reason and set a review.", src:"NICE CG113 (2011, updated 2020)"},
+         {tone:"amber", h:"With an opioid", html:"Benzodiazepines and opioids together can cause profound sedation, respiratory depression, coma and death. Prescribe the combination only if there is no alternative, at the lowest dose for the shortest time, and tell patients and carers which signs to watch for.", src:"MHRA Drug Safety Update, March 2020"},
+         {tone:"cream", h:"Frailty, falls and delirium", html:"Benzodiazepines increase falls and can precipitate or worsen delirium in older and frail people. Use the lowest dose. If agitation is actually delirium, treat its cause instead and see <a href='palliative-delirium-agitation.html'>palliative delirium</a>.", src:"NICE NG31 (2015): seek advice if agitation or delirium is uncertain or does not respond"}
+       ]}
+     ]},
+
+    {id:"depression", nav:"Antidepressant", title:"Depression: choosing an antidepressant by prognosis and symptoms", sub:"No antidepressant is clearly more effective than another. Choose on time available, interactions, side effects and the symptoms you'd like to help.",
+     blocks:[
+       {b:"table", head:["Drug","Start (source)","Why choose it in palliative care","Watch for"], rows:[
+         ["<b>Sertraline</b>","50 mg once daily (SPC)","Fewer interactions (NICE CG91). Useful after a recent cardiac event (Scottish guideline).","Nausea and diarrhoea early on, hyponatraemia, bleeding with NSAIDs or anticoagulants"],
+         ["<b>Citalopram</b>","20 mg once daily (SPC); max 40 mg, or 20 mg over 65 or in hepatic impairment (MHRA DSU December 2011)","Fewer interactions (NICE CG91). Scottish guideline: helpful for agitated depression or anxiety, and relatively safe where seizures are a risk. Oral solution available.","QT prolongation, especially with other QT-prolonging drugs (methadone, haloperidol, levomepromazine, ondansetron); hyponatraemia"],
+         ["<b>Escitalopram</b>","Dose per BNF; max 20 mg, or 10 mg over 65 (MHRA DSU December 2011)","An alternative to citalopram, with the same Scottish guidance.","As citalopram"],
+         ["<b>Mirtazapine</b>","15 or 30 mg at night (SPC)","The Scottish guideline suggests it when insomnia, nausea or anorexia are also present. Sedating, and less sexual and GI upset than SSRIs.","Daytime drowsiness, weight gain, and rarely neutropenia (sore throat or fever)"]
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"SSRIs first for most", html:"SSRIs are better tolerated and safer in overdose than other classes, and so are often used first. If the patient has previously responded to a particular antidepressant, use that one unless it is contraindicated.", src:"Scottish Palliative Care Guidelines 2025: Depression"},
+         {tone:"cream", h:"Choose drugs with fewer interactions", html:"When choosing an antidepressant for someone with a chronic physical illness, consider <b>sertraline or citalopram</b>, which interact less. If an SSRI must be combined with aspirin or an NSAID, add gastroprotection. Consider mirtazapine where an SSRI would clash with other drugs.", src:"NICE CG91 (2009)"},
+         {tone:"blue", h:"How long until it helps", html:"A meta-analysis of antidepressant trials in palliative care found benefit over placebo at <b>4 to 5 weeks</b>, larger at 6 to 8 weeks and larger again by 9 to 18 weeks. The authors noted that publication bias may have inflated the effect.", src:"Rayner et al., Palliat Med 2011"},
+         {tone:"blue", h:"Evidence in cancer is thin", html:"The Cochrane review of antidepressants for depression in people with cancer found only a few small trials, with very low-certainty evidence. It suggests managing depression in people with cancer much as in the general population, deciding case by case.", src:"Vita et al., Cochrane 2023 (CD011006)"}
+       ]},
+       {b:"ladder", steps:[
+         {step:"A", title:"Prognosis of months", when:"time to respond", tone:"cream",
+          html:"Offer an SSRI or mirtazapine alongside psychological support. Review at 2 weeks, and if there is partial response by 4 weeks, consider increasing the dose per BNF."},
+         {step:"B", title:"Insomnia, poor appetite or nausea", when:"symptom overlap", tone:"cream", fromLabel:"prefer a sedating option",
+          html:"Mirtazapine at night may help sleep, appetite and nausea as well as mood. It can be combined with the antiemetic plan, but check for other serotonergic drugs."},
+         {step:"C", title:"Prognosis of weeks", when:"too short for an antidepressant", tone:"amber", fromLabel:"little time",
+          html:"An antidepressant is unlikely to work in time. Focus on presence, symptom control, sleep and family. Specialist palliative care may consider other options (such as a psychostimulant, which is specialist-initiated and unlicensed for this use)."},
+         {step:"D", title:"Already on an antidepressant", when:"continuing treatment", tone:"green", fromLabel:"established",
+          html:"Continue it while the patient can swallow. Withdraw gradually where possible to avoid discontinuation symptoms (Scottish guideline), but in the last days, stopping because the oral route is lost is accepted practice."}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Interactions", title:"Safety, interactions and side effects", sub:"Palliative prescriptions are long and change often. Check each new drug against the antidepressant.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"Serotonin syndrome", html:"Risk rises when antidepressants are combined with other serotonergic medicines, for example tricyclics and some opioids (tramadol in particular). Watch for agitation, tremor, clonus, sweating, fever and diarrhoea. Avoid St John's wort.", src:"Scottish Palliative Care Guidelines 2025: Depression"},
+         {tone:"amber", h:"QT prolongation", html:"Citalopram and escitalopram prolong the QT interval in a dose-dependent way. They are contraindicated with known QT prolongation or other QT-prolonging drugs. Keep to the reduced maximum doses in older people and in hepatic impairment.", src:"MHRA Drug Safety Update, December 2011"},
+         {tone:"amber", h:"Bleeding", html:"SSRIs increase bleeding risk, especially with NSAIDs, aspirin or anticoagulants. If there is no suitable alternative, co-prescribe gastroprotection. Consider mirtazapine where bleeding risk is high.", src:"NICE CG91 (2009)"},
+         {tone:"blue", h:"Hyponatraemia", html:"SSRIs can cause hyponatraemia, especially in older people and with diuretics. Consider it if confusion, drowsiness or falls appear after starting. Check sodium if doing so fits the goals of care.", src:"BNF: selective serotonin reuptake inhibitors, cautions"},
+         {tone:"blue", h:"Starting and stopping", html:"Warn about early nausea and a temporary rise in anxiety. Explain that improvement takes weeks. When stopping, reduce gradually to avoid discontinuation symptoms, unless the oral route has been lost in the last days.", src:"NICE NG222 (2022) · Scottish Palliative Care Guidelines 2025: Depression"}
+       ]}
+     ]},
+
+    {id:"lastdays", nav:"Last days", title:"Anxiety and distress in the last days of life", sub:"Plan before swallowing becomes difficult, so fear or agitation at night can be managed at home.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Consider a benzodiazepine for anxiety", html:"In the dying person, treat reversible causes of anxiety or agitation first, then consider a trial of a benzodiazepine for anxiety or agitation. Consider an antipsychotic if delirium is the cause. Seek specialist advice if the diagnosis is uncertain or treatment does not work.", src:"NICE NG31 (2015)"},
+         {tone:"cream", h:"Anticipatory prescribing", html:"Prescribe anticipatory medicines individually, stating the indication, dose and route, and discuss them with the patient and those close to them. For anxiety and distress this is usually midazolam SC.", src:"NICE NG31 (2015) · NICE QS144 (2017)"},
+         {tone:"cream", h:"Midazolam doses", html:"<b>Midazolam 2 to 5 mg SC, up to hourly if required</b>, as an anxiolytic sedative in the last days. Seek urgent advice if 3 or more doses in 4 hours bring little benefit, and seek advice or review if more than 6 doses are needed in 24 hours. A syringe pump if needs are regular (dose per BNF and local palliative guidance).", src:"Scottish Palliative Care Guidelines 2025: Care in the last days of life"},
+         {tone:"green", h:"Presence still matters", html:"A calm voice, familiar people, touch, quiet, and explaining to the family what is happening. Offer chaplaincy or spiritual support if wanted. Carers who are frightened pass it on. Tell them what to expect and who to call.", src:"NICE NG31 (2015)"}
+       ]},
+       {b:"warn", html:"The aim in the last days is relief of distress, not sedation for its own sake. Titrate to comfort, review at every visit and record the rationale. Severe distress that doesn't settle needs same-day specialist palliative advice."}
+     ]},
+
+    {id:"review", nav:"Review", title:"Review and safety-netting", sub:"Mood and anxiety change as the illness changes. Build review into the plan.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"First consultation", title:"Assess and support", html:"Ask about mood, anxiety and suicidal thoughts. Look for drivers and mimics. Offer psychological, social and spiritual support. Agree the goals of care."},
+         {n:"2", when:"1 week", title:"If at increased risk of suicide, or aged 18 to 25", html:"Review 1 week after starting an antidepressant, and monitor for suicidal thoughts in the early weeks (NICE NG222)."},
+         {n:"3", when:"2 weeks", title:"Everyone else starting an antidepressant", html:"Review within 2 weeks for side effects, early response, adherence and risk (NICE NG222)."},
+         {n:"4", when:"4 weeks and after", title:"Judge the response", html:"Has mood, sleep, appetite or anxiety improved? Adjust the dose, switch, or stop if it isn't helping. Re-check the prognosis: is it still the right plan?"},
+         {n:"5", when:"Each deterioration", title:"Re-look", html:"New delirium, a new drug (steroid, antiemetic, opioid), hypercalcaemia, or a change in what the patient fears."}
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Tell carers: call urgently if", html:"The person talks about ending their life or has a plan, becomes suddenly confused or agitated, sees or hears things, or becomes very drowsy with slow breathing after a medicine dose.", src:"NICE NG225 (2022) · MHRA Drug Safety Update, March 2020"},
+         {tone:"amber", h:"Call within a day if", html:"Anxiety or low mood is getting worse despite the plan, there are new side effects (restlessness, sickness, diarrhoea, falls), or sleep has broken down."}
+       ]},
+       {b:"say", html:"It's completely understandable to feel low or frightened with everything that's happening, and we can do a lot about it. Talking helps, and so does sorting out the things that are worrying you. If the low mood is more than sadness, a tablet can help, but it takes a few weeks, so we'll decide together whether that makes sense. For the moments of panic there's something that works quickly. If you ever feel you can't go on, please tell us straight away."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: who, how quickly, and for what", sub:"Most distress is managed by the GP, district nurses and the community palliative team together. These are the exceptions.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day: crisis or liaison mental health", html:"Suicidal plan or intent, psychotic depression, or severe agitation with risk to self or others. Make a safety plan and remove access to stored medicines where possible.", src:"NICE NG225 (2022)"},
+         {tone:"amber", h:"Urgent: psychiatry or psychological medicine", html:"Severe depression, suicidal ideation, or diagnostic uncertainty between depression, delirium and dementia.", src:"Scottish Palliative Care Guidelines 2025: Depression"},
+         {tone:"cream", h:"Specialist palliative care", html:"Distress that is complex or does not respond, existential or spiritual suffering, a request to hasten death, prognosis too short for antidepressants, or last-days distress that is hard to control.", src:"NICE NG31 (2015)"},
+         {tone:"cream", h:"Psychological therapy", html:"Hospice psychology or counselling, and NHS Talking Therapies where prognosis allows, for less severe depression and for anxiety disorders.", src:"NICE NG222 (2022) · NICE CG113 (2011, updated 2020)"},
+         {tone:"blue", h:"NG12: no criterion applies", html:"Low mood and anxiety are not suspected-cancer criteria in NICE NG12 (updated April 2026), and these patients usually already have a diagnosis. If a patient without a diagnosis has unexplained weight loss or other symptoms, assess those on their own merits.", src:"NICE NG12 (updated April 2026)"}
+       ]},
+       {b:"say", html:"I'd like someone who specialises in the emotional side of serious illness to see you. That isn't because we're giving up on what we're doing together. It's because they have more time and more tools than I do, and you deserve both."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice case. The <a href='../../cases/palliative-care.html'>palliative care casebook</a> has the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Scenario", html:"A 64-year-old man with metastatic pancreatic cancer and an estimated prognosis of a few months attends with his wife. He has stopped seeing friends, sleeps badly, eats little and says 'there's no point to any of it'. He is on dexamethasone 4 mg, MR morphine, and metoclopramide. His wife asks for 'something to cheer him up'.", src:"Practice scenario, built on NICE NG222, CG91 and NG225"},
+       {tone:"cream", h:"What the examiner is looking for", html:"Separates grief from depression by asking about pleasure, hopelessness and guilt. <b>Asks directly about suicidal thoughts</b> and access to stored medicines, without relying on a risk score. Considers the steroid, akathisia from metoclopramide, hypercalcaemia and delirium. Offers psychological and spiritual support. Explains that an antidepressant takes weeks and fits his prognosis, and chooses <b>mirtazapine</b> because of insomnia, anorexia and nausea, or sertraline. Checks interactions. Reviews at 2 weeks. Involves his wife and the palliative team, and safety-nets clearly.", src:"NICE NG222 · NICE CG91 · NICE NG225 · Scottish Palliative Care Guidelines 2025"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Primary sources only. Doses are from the named guideline, the SPC or the MHRA. Where none gives a figure, the page says 'per BNF'.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG222 — Depression in adults: treatment and management (2022)</b><br><a href="https://www.nice.org.uk/guidance/ng222" rel="noopener">nice.org.uk/guidance/ng222</a><span class="rd"> — psychological interventions first for less severe depression; do not routinely offer antidepressants first line unless the person prefers; review within 2 weeks of starting, or 1 week if aged 18 to 25 or at increased risk of suicide; stop antidepressants gradually</span></li>'+
+         '<li><b>NICE CG91 — Depression in adults with a chronic physical health problem (2009)</b><br><a href="https://www.nice.org.uk/guidance/cg91" rel="noopener">nice.org.uk/guidance/cg91</a><span class="rd"> — be alert to depression in long-term physical illness; collaborative care; consider sertraline or citalopram because they interact less; gastroprotection if an SSRI is combined with aspirin or NSAIDs</span></li>'+
+         '<li><b>NICE CG113 — Generalised anxiety disorder and panic disorder in adults (2011, updated 2020)</b><br><a href="https://www.nice.org.uk/guidance/cg113" rel="noopener">nice.org.uk/guidance/cg113</a><span class="rd"> — stepped care; consider sertraline first for GAD (off-label); no benzodiazepine for GAD except short-term in a crisis</span></li>'+
+         '<li><b>NICE NG225 — Self-harm: assessment, management and preventing recurrence (2022)</b><br><a href="https://www.nice.org.uk/guidance/ng225" rel="noopener">nice.org.uk/guidance/ng225</a><span class="rd"> — do not use risk assessment tools and scales, or global low/medium/high stratification, to predict suicide or decide on treatment</span></li>'+
+         '<li><b>NICE NG31 — Care of dying adults in the last days of life (2015)</b> and <b>QS144 (2017)</b><br><a href="https://www.nice.org.uk/guidance/ng31" rel="noopener">nice.org.uk/guidance/ng31</a><span class="rd"> — treat reversible causes of anxiety, agitation or delirium; consider a benzodiazepine for anxiety or agitation and an antipsychotic for delirium; individualised anticipatory prescribing</span></li>'+
+         '<li><b>MHRA Drug Safety Update, December 2011</b> — Citalopram and escitalopram: QT interval prolongation, new maximum daily doses<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a></li>'+
+         '<li><b>MHRA Drug Safety Update, March 2020</b> — Benzodiazepines and opioids: reminder of risk of potentially fatal respiratory depression</li>'+
+         '<li><b>MHRA Drug Safety Update, September 2007</b> — Systemic corticosteroids: psychiatric side effects</li>'+
+         '<li><b>Scottish Palliative Care Guidelines (Healthcare Improvement Scotland, 2025)</b>: Depression; Breathlessness (anxiety component); Care in the last days of life; Lorazepam and Midazolam medicines information<br><a href="https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/" rel="noopener">rightdecisions.scot.nhs.uk</a><span class="rd"> — a UK national guideline. Assess all patients for depression (PHQ-9, Brief Edinburgh Depression Scale, HADS); no antidepressant clearly superior; SSRIs often first; sertraline after a cardiac event; citalopram or escitalopram for agitated depression; mirtazapine with insomnia, nausea or anorexia; serotonin syndrome with other serotonergic drugs; withdraw gradually; refer severe depression or suicidal ideation. Lorazepam 500 micrograms SL 4- to 6-hourly as needed; diazepam 2 to 5 mg at night for continuous anxiety; midazolam 2 to 5 mg SC 4- to 6-hourly as needed if oral or SL routes are unavailable, and up to hourly in the last days with escalation advice</span></li>'+
+         '<li><b>Rayner L et al. Antidepressants for the treatment of depression in palliative care: systematic review and meta-analysis. Palliat Med 2011;25:36–51</b><span class="rd"> — 25 studies; benefit over placebo from 4 to 5 weeks, increasing to 9 to 18 weeks</span></li>'+
+         '<li><b>Vita G et al. Antidepressants for the treatment of depression in people with cancer. Cochrane Database Syst Rev 2023;(3):CD011006</b><span class="rd"> — few small trials, very low certainty evidence; manage much as in the general population</span></li>'+
+         '<li><b>Summaries of Product Characteristics (emc)</b>: sertraline (depression, 50 mg daily start), citalopram (20 mg daily), mirtazapine (15 or 30 mg at night)<br><a href="https://www.medicines.org.uk/emc" rel="noopener">medicines.org.uk/emc</a></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — escitalopram and SSRI titration, SSRI cautions (hyponatraemia, bleeding), syringe pump doses</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion for low mood or anxiety</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Palliative anxiety and depression: NICE NG222 (2022), CG91 (2009), CG113 (2011, updated 2020), NG225 (2022) and NG31 (2015), with MHRA Drug Safety Updates (September 2007, December 2011, March 2020), product SPCs and the Scottish Palliative Care Guidelines (2025). Check all doses against the current BNF and local palliative care guidance before prescribing."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

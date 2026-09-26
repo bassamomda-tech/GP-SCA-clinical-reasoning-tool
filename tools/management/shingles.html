@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Shingles (Herpes Zoster) — Protocol · Reasoning GP</title>
+<meta name="description" content="Shingles in primary care on one page: the eye, ear and disseminated red flags, who gets an antiviral and when (72 hours, up to a week for some), aciclovir, valaciclovir and famciclovir doses with renal adjustment, pain and post-herpetic neuralgia, who is infectious to whom, and Shingrix eligibility from 2023 and 2025." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/shingles.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,118 +20,211 @@
 <script>
 MG.render({
   icon:"⚡",
-  title:"Shingles (Herpes Zoster) — The Complete Guide",
-  stemTitle:"Shingles made simple &mdash; antiviral early, guard the eye, prevent the neuralgia",
-  stemSub:"One pathway: recognise dermatomal zoster and the danger sites (ophthalmic, Ramsay Hunt, disseminated), start an antiviral within 72h (or while new lesions appear) in those who qualify, control pain and pre-empt post-herpetic neuralgia, advise on infectivity, and vaccinate to prevent recurrence. BNF · UK immunisation schedule.",
-  guideline:"BNF · UK immunisation schedule",
-  glance:[
-    {lbl:"Antiviral", val:"Aciclovir / valaciclovir", sub:"start ≤72h or new lesions"},
-    {lbl:"Always treat", val:">50 · ophthalmic · immunocompromised", sub:"or severe/truncal"},
-    {lbl:"Eye red flag", val:"Hutchinson's sign", sub:"→ same-day ophthalmology"},
-    {lbl:"Ear + palsy", val:"Ramsay Hunt", sub:"antiviral + steroid + ENT"},
-    {lbl:"Pain", val:"Ladder → neuropathic", sub:"amitriptyline / gabapentin"},
-    {lbl:"Infectious", val:"Until crusted", sub:"causes chickenpox in non-immune"}
+  title:"Shingles (herpes zoster)",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Shingles: find the eye, ear and spreading cases first, then decide who needs an antiviral",
+  stemSub:"One page for herpes zoster in primary care. Check the face, the ear and the immune system before anything else. Decide on an antiviral by timing and risk rather than giving it to everyone. Treat pain early and properly, because post-herpetic neuralgia is the complication most patients will live with. Explain who the rash can infect. Finally, check eligibility for Shingrix, which widened in 2023 and again in 2025.",
+  guideline:"Aciclovir, valaciclovir and famciclovir SPCs · BNF · UKHSA Green Book ch.28a (2025) · UKHSA VZV PEP guidance (Feb 2025) · NHS England Pharmacy First shingles pathway · NICE CG173 (2013, updated 2020) · RCOG GTG 13 (2015)",
+  meta:[
+    {t:"SPCs and BNF · antiviral doses"},
+    {t:"Green Book ch.28a · Shingrix"},
+    {t:"UKHSA 2025 · VZV post-exposure prophylaxis"},
+    {t:"NICE CG173 · neuropathic pain and PHN"}
   ],
-  flow:[
-
-    {t:"node", d:"safety", n:"1", tag:"Step 1 · danger sites", title:"Recognise the emergencies before anything else",
-      blocks:[
-        {b:"table", head:["Danger site","Recognise","Action"], rows:[
-          ["<b>Ophthalmic zoster</b>","V1 distribution; rash on nose tip/side (<b>Hutchinson's sign</b>); eye redness/pain/visual change","Antiviral + <b>same-day ophthalmology</b>"],
-          ["<b>Ramsay Hunt</b>","Ear pain + vesicles in canal + facial palsy ± vertigo/hearing loss","Urgent antiviral + oral steroid + ENT"],
-          ["<b>Disseminated / immunocompromised</b>","Widespread or multidermatomal rash; severely immunocompromised","Urgent assessment; consider IV antivirals"],
-          ["Contacts","Infectious until crusted","Avoid pregnant non-immune women, neonates, immunocompromised"]
-        ]},
-        {b:"why", html:"Most shingles is self-limiting, but ophthalmic zoster threatens sight, Ramsay Hunt threatens the facial nerve, and dissemination threatens the immunocompromised — these need urgent antivirals and specialist input regardless of the 72-hour window."}
-      ]},
-
-    {t:"node", d:"found", n:"2", tag:"Step 2 · confirm", title:"Confirm it's zoster",
-      blocks:[
-        {b:"table", head:["Feature","Detail"], rows:[
-          ["Typical","Unilateral, dermatomal, does NOT cross the midline; painful/burning prodrome then grouped vesicles on erythema"],
-          ["Evolution","Vesicles → pustules → crust over 7–10 days; infectious until crusted"],
-          ["Diagnosis","Clinical — no routine swab; viral PCR only if atypical/immunocompromised or diagnostic doubt"],
-          ["Mimics","Consider HSV (recurrent, non-dermatomal), impetigo, contact dermatitis, cellulitis, early bullous disease"]
-        ]}
-      ]},
-
-    {t:"node", d:"drug", n:"3", tag:"Step 3 · antiviral", title:"Antiviral — who, which, when",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Who", title:"Offer an antiviral if", when:"within 72h of rash onset — or while new lesions still appearing",
-           splits:[
-             {cond:"Age", drug:">50 years", note:"Reduces post-herpetic neuralgia risk"},
-             {cond:"Site / severity", drug:"Ophthalmic, Ramsay Hunt, severe rash/pain, truncal", note:"Any danger site = treat regardless of time"},
-             {cond:"Host", drug:"Immunocompromised, or non-truncal in younger adults", note:"Lower threshold; immunocompromised may need IV / admission"}
-           ]},
-          {step:"Which", title:"First-line oral antivirals", when:"7-day course", fromLabel:"choose by adherence",
-           splits:[
-             {cond:"Preferred (OD/BD dosing)", drug:"Valaciclovir 1g TDS ×7d", note:"Or famciclovir 500mg TDS — simpler than aciclovir"},
-             {cond:"Cheapest", drug:"Aciclovir 800mg 5×/day ×7d", note:"Frequent dosing hurts adherence; reduce dose in renal impairment"}
-           ]},
-          {step:"Renal", title:"Dose-adjust in CKD", when:"all antivirals renally cleared", fromLabel:"check eGFR",
-           html:"Reduce dose per eGFR (BNF) — accumulation causes neurotoxicity (confusion, hallucination) especially in the elderly. Maintain hydration."}
-        ]},
-        {b:"warn", html:"Antivirals still benefit the immunocompromised, ophthalmic zoster and Ramsay Hunt even <b>beyond 72 hours</b> if new lesions are appearing. In pregnancy, seek specialist advice — aciclovir is used when benefit outweighs risk (especially near term / ophthalmic)."}
-      ]},
-
-    {t:"node", d:"drug", n:"4", tag:"Step 4 · pain", title:"Pain — the acute ladder and preventing PHN",
-      blocks:[
-        {b:"table", head:["Step","Option","Note"], rows:[
-          ["Mild","Paracetamol ± NSAID","Regular dosing during the acute phase"],
-          ["Moderate","Add codeine / short opioid","Time-limited; avoid long courses"],
-          ["Neuropathic / severe","<b>Amitriptyline 10mg nocte</b> or gabapentin/pregabalin/duloxetine","Titrate; treats the neuropathic component + reduces PHN impact"],
-          ["Topical (localised)","Capsaicin or lidocaine 5% plaster","Especially once healed if localised residual pain"]
-        ]},
-        {b:"why", html:"Post-herpetic neuralgia (pain persisting >90 days) is the commonest complication — risk rises with age, severe rash, severe acute pain and ophthalmic involvement. Early antiviral + good acute analgesia reduce its burden; established PHN follows the neuropathic-pain ladder (see that card)."}
-      ]},
-
-    {t:"node", d:"life", n:"5", tag:"Step 5 · advice & vaccine", title:"Infectivity, self-care, and prevention",
-      blocks:[
-        {b:"table", head:["Topic","Advice"], rows:[
-          ["Infectivity","Contagious (chickenpox in non-immune) from rash until fully crusted — cover lesions; avoid pregnant non-immune women, neonates, immunocompromised; off work if lesions can't be covered or patient works with high-risk groups"],
-          ["Self-care","Keep rash clean and dry; loose clothing; don't share towels; simple analgesia; most heal in 2–4 weeks"],
-          ["Vaccination","<b>Shingrix</b> (recombinant, 2 doses) — the routine NHS zoster vaccine; eligibility widened to include immunocompromised adults and a broadening age cohort. Offer/signpost after recovery — vaccination still worthwhile after an episode"]
-        ]},
-        {b:"say", html:"The rash is catching until it fully scabs over — mainly a risk to people who've never had chickenpox, pregnant women and anyone with a weak immune system, so keep it covered. Once you're better, there's a vaccine that cuts the chance of it coming back — worth having."}
-      ]},
-
-    {t:"loop", icon:"🔁", title:"Not settling / complications? Check", arrow:"…escalate the right pathway",
-      checks:[
-        {b:"1 · Eye", html:"Any V1/nasociliary involvement or eye symptoms → ophthalmology today, don't wait."},
-        {b:"2 · Bacterial superinfection", html:"Increasing redness, warmth, pus, fever → flucloxacillin; swab if uncertain."},
-        {b:"3 · Neuro", html:"Ramsay Hunt (facial palsy/hearing), motor weakness, encephalitis features → urgent specialist."},
-        {b:"4 · Antiviral toxicity", html:"Confusion/hallucinations on aciclovir in CKD/elderly → check dose + renal function."},
-        {b:"5 · Persistent pain", html:"Pain >90 days = PHN → neuropathic-pain ladder; refer if refractory."},
-        {b:"6 · Recurrent / atypical", html:"Recurrent, multidermatomal, or very young → consider immunosuppression/HIV screen."}
-      ],
-      back:"Danger site or complication → same-day specialist pathway"},
-
-    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"What the patient must know",
-      blocks:[
-        {b:"table", head:["Scenario","Advice"], rows:[
-          ["👁️ Eye","Eye pain, redness or changed vision, or rash on the nose — contact us the same day"],
-          ["🔴 Spreading / unwell","Rash spreading widely, high fever, or feeling very unwell — urgent review"],
-          ["🧠 Ear + face","Ear pain with facial droop or hearing change — urgent (Ramsay Hunt)"],
-          ["🤰 Contacts","Keep away from pregnant women, newborns and anyone immunosuppressed until it's scabbed over"]
-        ]}
-      ]},
-
-    {t:"node", d:"refer", n:"7", tag:"Refer", title:"Who needs specialist input",
-      blocks:[
-        {b:"table", head:["Refer","Trigger"], rows:[
-          ["Same-day ophthalmology","Ophthalmic zoster / Hutchinson's sign / any eye involvement"],
-          ["Urgent ENT","Ramsay Hunt syndrome"],
-          ["Urgent medical / admission","Disseminated zoster, severely immunocompromised, suspected encephalitis, or unable to tolerate oral antivirals"],
-          ["Pain clinic","Refractory post-herpetic neuralgia despite the neuropathic ladder"]
-        ]},
-        {b:"say", html:"Most shingles clears up with the tablets and time. The bits I'm watching for are your eye, your ear and any sign it's spreading — those need a specialist quickly, so tell me straight away if they happen."}
-      ]}
+  lead:"<div class='mg-layers'><a href='#redflags'><b>Danger sites</b><small>eye, ear, spreading</small></a><a href='#antiviral'><b>Antiviral</b><small>72 hours, or up to a week</small></a><a href='#pain'><b>Pain</b><small>treat early, watch for PHN</small></a><a href='#vaccine'><b>Shingrix</b><small>65, 70 and immunosuppressed</small></a></div>",
+  quickSub:"The six points that change what you do today. Each one is traced to a named primary source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Tip of the nose, a red eye or a facial palsy? Same-day action", html:"Rash in the ophthalmic division, especially on the <b>tip, side or root of the nose (Hutchinson's sign)</b>, predicts eye involvement. Start an antiviral today and arrange <b>urgent eye assessment</b> if there is a red or painful eye, reduced vision or photophobia. Ear vesicles with a <b>facial palsy</b> (Ramsay Hunt) need an antiviral and same-day ENT advice. Widespread or multi-dermatomal rash in an immunosuppressed patient needs same-day hospital assessment."},
+    {tone:"cream", h:"Not everyone needs an antiviral", html:"Within <b>72 hours</b> of rash onset, treat anyone who is <b>over 50</b>, <b>immunosuppressed</b>, or has a rash off the trunk (for example the <b>neck, limbs or perineum</b>), or <b>moderate or severe</b> pain or rash. Rash in the ophthalmic division is always treated. Some groups are still treated <b>up to a week</b> from onset: immunosuppressed, new blisters still forming, severe pain, high risk of severe disease, or aged 70 and over. A young healthy adult with mild truncal shingles on day 5 usually needs analgesia and advice only."},
+    {tone:"cream", h:"Doses: aciclovir, valaciclovir or famciclovir for 7 days", html:"<b>Aciclovir 800 mg five times daily</b> (about every 4 hours, missing the night dose), or <b>valaciclovir 1 g three times daily</b>, or <b>famciclovir 500 mg three times daily</b>, each for 7 days. Valaciclovir and famciclovir are easier to take. Aciclovir and valaciclovir <b>accumulate in renal impairment</b>, which can cause confusion or hallucinations in older people, so check eGFR and adjust."},
+    {tone:"amber", h:"Treat the pain properly, and name post-herpetic neuralgia early", html:"Pain that lasts <b>90 days or more</b> after the rash is post-herpetic neuralgia. It is more likely with older age and with severe acute pain or rash. If simple analgesia is not enough, NICE CG173 offers <b>amitriptyline, duloxetine, gabapentin or pregabalin</b> for neuropathic pain. Oral steroids have <b>not been shown to prevent PHN</b>."},
+    {tone:"blue", h:"Who can catch it: chickenpox, not shingles", html:"Contact with the fluid in the blisters can give <b>chickenpox</b> to someone who is not immune. The risk from a covered, localised rash on the trunk is remote. Shingles on an <b>exposed site</b> (for example the face), <b>disseminated</b> shingles, or any shingles in an <b>immunosuppressed</b> patient is treated as infectious. Pregnant or immunosuppressed contacts who are not immune may need <b>antiviral prophylaxis</b>."},
+    {tone:"green", h:"Shingrix: two doses and a wider offer", html:"Shingrix replaced Zostavax for the whole programme on 1 September 2023. It is offered to adults as they <b>turn 65 or 70</b>. Anyone aged 70 to 79 who missed it stays eligible until their <b>80th birthday</b>. Since <b>1 September 2025</b>, it is also offered to all <b>severely immunosuppressed adults aged 18 and over</b>. A past episode of shingles does not rule someone out. Check Green Book chapter 28a for how long to wait after an episode."}
   ],
-  foot:"Herpes zoster in adults \u2014 antivirals per BNF (dose-adjust in renal impairment); Shingrix per the current UK immunisation schedule. Verify doses before prescribing."
+  pathwaySub:"The consultation in five moves. Step one is where most of the harm happens if it is missed.",
+  pathway:[
+    {title:"Look for the danger sites", html:"Examine the nose, the eye, the ear canal and the facial nerve. Ask about vision, eye pain and hearing. Establish immune status (chemotherapy, transplant, biologics, high-dose steroids, HIV) and whether the rash is spreading beyond one or two neighbouring dermatomes."},
+    {title:"Confirm it is zoster", html:"Look for one-sided pain or tingling followed by clustered blisters on a red base in a dermatome, stopping at the midline. The diagnosis is clinical. Take a <b>PCR swab from a blister</b> only when it is atypical, in an immunosuppressed patient, or when herpes simplex is a real possibility."},
+    {title:"Decide on the antiviral", html:"Check the day of rash onset and the risk features. If an antiviral is indicated, choose a drug the patient can take reliably, adjust for eGFR, and start it today. If one is not indicated, explain why."},
+    {title:"Treat the pain and set up the review", html:"Use regular simple analgesia. Move to a neuropathic agent early if the pain is burning, shooting or stopping sleep. Warn about post-herpetic neuralgia and agree when the patient should come back."},
+    {title:"Protect others, then prevent the next episode", html:"Advise covering the rash and avoiding people who are not immune. Identify pregnant, immunosuppressed or newborn contacts who may need prophylaxis. Check Shingrix eligibility and plan it for after recovery, timed as the Green Book advises."}
+  ],
+  sections:[
+    {id:"redflags", nav:"Red flags", title:"Red flags: the eye, the ear and the immune system", sub:"Most shingles settles at home. These presentations need action the same day, whatever the day of the rash.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Herpes zoster ophthalmicus", html:"The ophthalmic division of the trigeminal nerve is involved: rash on the forehead, upper eyelid and scalp. Vesicles on the <b>tip, side or root of the nose</b> (Hutchinson's sign, the nasociliary branch) suggest the eye is likely to be affected. Start an oral antiviral today. Arrange <b>urgent hospital eye service assessment</b> for a red or painful eye, reduced vision, photophobia, a corneal lesion or iritis. Mild cases with a quiet eye can be co-managed by the GP and optometrist, with a low threshold for review.", src:"College of Optometrists CMG: herpes zoster ophthalmicus"},
+         {tone:"red", h:"🔴 Ramsay Hunt syndrome", html:"Ear pain with vesicles in the ear canal or on the pinna, or on the palate, with a <b>lower motor neurone facial palsy</b>. There may also be vertigo, tinnitus or hearing loss. Start an antiviral and <b>discuss with ENT the same day</b>. Protect the eye if it will not close. The evidence for antivirals and for added steroids is thin, but treatment is standard practice because the facial nerve outcome is often worse than in Bell's palsy.", src:"Cochrane: Uscategui 2008 (CD006851 antivirals; CD006852 steroids in Ramsay Hunt syndrome)"},
+         {tone:"red", h:"🔴 Disseminated or severe disease, or severe immunosuppression", html:"Rash in <b>several dermatomes</b> or scattered beyond the primary dermatome, visceral symptoms (breathlessness, abdominal pain, hepatitis), or any shingles in someone who is <b>severely immunosuppressed</b> and systemically unwell. Arrange <b>same-day hospital assessment</b> for intravenous aciclovir. These patients are also infectious to others.", src:"Aciclovir SPC · RCOG GTG 13 (2015)"},
+         {tone:"red", h:"🔴 Neurological features", html:"Confusion, drowsiness, severe headache, neck stiffness, seizures, limb weakness or new focal signs during or after shingles suggest <b>encephalitis, meningitis, myelitis or VZV vasculopathy</b> (stroke). Arrange same-day hospital assessment.", src:"Dworkin et al., Clin Infect Dis 2007 (international)"},
+         {tone:"amber", h:"🟠 Pregnancy", html:"Shingles in pregnancy is a reactivation and poses little risk to the baby. The mother is still infectious to susceptible people until the lesions have crusted. Discuss antiviral treatment with the obstetric team before prescribing.", src:"RCOG GTG 13 (2015)"},
+         {tone:"amber", h:"🟠 Secondary bacterial infection", html:"Spreading redness, warmth, pus, honey-coloured crusting or fever. Treat as impetigo or cellulitis using the NICE antimicrobial guidance. Swab if the picture is unclear or it is not responding.", src:"NICE NG153 (2020) · NICE NG141 (2019)"}
+       ]},
+       {b:"why", html:"Shingles is common and usually self-limiting, so it is easy to treat every case the same way. The serious outcomes cluster in a few groups: the eye (keratitis, uveitis, loss of vision), the facial nerve, the immunosuppressed patient whose infection spreads to skin and organs, and the older patient whose pain never settles. Asking about these first stops the routine case from hiding the dangerous one."}
+     ]},
+
+    {id:"confirm", nav:"Diagnose", title:"Is it zoster? Recognising the rash and its mimics", sub:"The diagnosis is clinical. Tests are reserved for the cases where the answer would change management.",
+     blocks:[
+       {b:"table", head:["Stage","What you see or hear","What it means"], rows:[
+         ["<b>Prodrome</b>","Burning, tingling, itching or deep ache in one dermatome, often for 2–3 days before the rash. It may be mistaken for angina, renal colic, a disc problem or a dental abscess.","Consider shingles in unexplained one-sided pain in an older adult. Re-examine the skin in a day or two."],
+         ["<b>Active rash</b>","Red papules become grouped clear blisters on a red base in one dermatome, stopping at the midline. A few scattered lesions outside the dermatome can occur.","The antiviral clock runs from <b>rash onset</b>, not from the start of the pain."],
+         ["<b>Crusting</b>","Blisters turn cloudy, burst and crust, usually over 7–10 days.","Once all lesions are crusted, the patient is no longer infectious."],
+         ["<b>Healing</b>","Crusts separate over 2–4 weeks, sometimes leaving scars or pigment change.","Pain beyond the rash is common. Pain lasting 90 days or more is post-herpetic neuralgia."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🧪 When to swab", html:"Take a <b>viral PCR swab</b> from the base of a fresh blister if the rash is atypical, crosses the midline, involves several dermatomes, occurs in an immunosuppressed patient, or could be herpes simplex. Do not wait for the result before starting treatment when an antiviral is indicated.", src:"Dworkin et al., Clin Infect Dis 2007 (international)"},
+         {tone:"blue", h:"🔍 Look-alikes", html:"<b>Zosteriform herpes simplex</b> (recurs at the same site, often around the mouth, buttocks or genitals), contact dermatitis, insect bites, impetigo, early cellulitis and bullous skin disease. Recurrent 'shingles' in the same place is more often herpes simplex, so swab it.", src:"Dworkin et al., Clin Infect Dis 2007 (international)"},
+         {tone:"amber", h:"🩸 Think about the immune system", html:"Herpes zoster is listed as an <b>HIV indicator condition</b>, so offer an HIV test. This matters most in younger adults and in recurrent, severe or multi-dermatomal disease. Also consider other causes of immunosuppression, including blood cancers and drug treatment.", src:"BHIVA/BASHH/BIA adult HIV testing guidelines 2020"},
+         {tone:"cream", h:"🧒 Children", html:"Shingles in children is usually mild. It is more common after chickenpox in early infancy or in the womb. Shingles in a young child with no such history, or severe disease, raises the question of immunosuppression. Seek paediatric advice rather than treating it as routine."}
+       ]}
+     ]},
+
+    {id:"antiviral", nav:"Antiviral", title:"Who gets an antiviral, which one, and for how long", sub:"Antivirals shorten viral shedding and speed healing when started early. Their effect on post-herpetic neuralgia is modest. The indication depends on timing and risk.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Within 72 h", tone:"cream", title:"Treat if any of these apply", when:"rash started within the last 72 hours", fromLabel:"from rash onset",
+          html:"Aged <b>over 50</b> · <b>immunosuppressed</b> · <b>non-truncal rash</b> (for example the neck, limbs or perineum) · <b>moderate or severe pain</b> · <b>moderate or severe rash</b> (confluent lesions). These are the criteria in the NHS England Pharmacy First shingles pathway. Ophthalmic zoster is outside the pharmacy pathway and is always treated (see Red flags)."},
+         {step:"Up to 1 week", tone:"amber", title:"Still consider treatment if", when:"rash started 3–7 days ago", fromLabel:"later presentation",
+          html:"<b>Immunosuppressed</b> · <b>new blisters still forming</b> · <b>severe pain</b> · <b>high risk of severe shingles</b> · aged <b>70 or over</b>. Ophthalmic zoster and Ramsay Hunt syndrome are treated whenever they present while active."},
+         {step:"Otherwise", tone:"green", title:"No antiviral needed", when:"healthy adult under 50, mild truncal rash, or past the window", fromLabel:"explain why",
+          html:"Offer analgesia and skin care, safety-net for eye or ear symptoms, and arrange review if the pain escalates. Antivirals have little to offer once all the lesions have crusted."}
+       ]},
+       {b:"table", head:["Drug","Dose for shingles in adults","Practical points"], rows:[
+         ["<b>Aciclovir</b>","<b>800 mg five times daily</b> at about 4-hourly intervals, omitting the night-time dose, for <b>7 days</b>","Cheapest. Hard to take reliably. Renal adjustment for herpes zoster: creatinine clearance 10–25 mL/min, 800 mg three times daily; below 10 mL/min, 800 mg twice daily (SPC)."],
+         ["<b>Valaciclovir</b>","<b>1 g three times daily</b> for <b>7 days</b>","A prodrug of aciclovir with better absorption. Immunosuppressed: 1 g three times daily for at least 7 days and for 2 days after the lesions crust (SPC). Reduce the dose in renal impairment (BNF)."],
+         ["<b>Famciclovir</b>","<b>500 mg three times daily</b> for <b>7 days</b>","An alternative where adherence is a concern. Immunosuppressed patients may need a longer course: dose per BNF. Adjust in renal impairment (BNF)."]
+       ]},
+       {b:"warn", html:"<b>Neurotoxicity in renal impairment.</b> Aciclovir and valaciclovir are cleared by the kidneys. In older or dehydrated patients, or those with CKD, they can build up and cause confusion, hallucinations, agitation, tremor or drowsiness, which can be mistaken for encephalitis. Check a recent eGFR, adjust the dose using the SPC or BNF, and advise good fluid intake."},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"💊 What antivirals do and do not do", html:"In trials, starting within 72 hours shortened new lesion formation, viral shedding and time to healing, and reduced acute pain. The reduction in post-herpetic neuralgia is smaller and less consistent. This is why antivirals are aimed at people with a higher risk of complications rather than given to everyone.", src:"Dworkin et al., Clin Infect Dis 2007 (international)"},
+         {tone:"cream", h:"🏪 Community pharmacy", html:"In England, adults aged 18 and over can be assessed and treated for shingles under the <b>Pharmacy First</b> clinical pathway, using the same criteria. Ophthalmic-division rash, known or suspected pregnancy and severe immunosuppression are outside the pharmacy PGD and are referred on: severely immunosuppressed patients, or immunosuppressed patients with a widespread rash or systemic illness, go urgently to A&amp;E.", src:"NHS England Pharmacy First shingles pathway and aciclovir PGD (v1.1, October 2025) · aciclovir SPC"},
+         {tone:"amber", h:"🟠 Topical antivirals", html:"Topical aciclovir cream is licensed for cold sores (herpes simplex of the lips and face), not for shingles. It has no place in herpes zoster.", src:"Aciclovir cream SPC"},
+         {tone:"blue", h:"🧾 Immunosuppressed but well", html:"Treat as soon as possible and follow up closely. Treat for longer, until all lesions have crusted, and have a low threshold for intravenous treatment if new lesions keep appearing or the patient becomes unwell. Tell the patient's specialist team.", src:"Valaciclovir SPC · famciclovir SPC"}
+       ]}
+     ]},
+
+    {id:"pain", nav:"Pain", title:"Pain now: the acute phase", sub:"Acute zoster pain can be severe, and severe acute pain is itself a risk factor for post-herpetic neuralgia. Treat it early and properly.",
+     blocks:[
+       {b:"table", head:["Pain","Option","Notes"], rows:[
+         ["<b>Mild to moderate</b>","Regular paracetamol, with or without an NSAID if there is no contraindication","Regular dosing works better than taking it only when needed. Review NSAID use in older people and in CKD."],
+         ["<b>Moderate to severe, nociceptive</b>","A short course of a weak opioid such as codeine","Keep it short and prescribe a laxative. Avoid long repeat opioid prescriptions."],
+         ["<b>Burning, shooting, electric or allodynic</b>","<b>Amitriptyline, duloxetine, gabapentin or pregabalin</b>","The NICE CG173 first-line choice for neuropathic pain. Start low and titrate. Gabapentinoids are Class C controlled drugs, so counsel on misuse and dependence. Dose per BNF."],
+         ["<b>Severe pain needing short-term rescue</b>","Tramadol, as acute rescue only","NICE CG173 limits tramadol to acute rescue therapy. Watch for serotonin syndrome if combined with amitriptyline or duloxetine."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"🟠 Oral steroids", html:"A 2013 Cochrane review found moderate-certainty evidence that oral corticosteroids given during acute zoster <b>do not prevent post-herpetic neuralgia</b>. The 2023 update judged the evidence very low certainty, neither supporting nor refuting their use. Steroids are not a routine part of treatment. Where they are used, as in Ramsay Hunt syndrome, it is usually on specialist advice.", src:"Cochrane: Han 2013; Jiang 2023 (CD005582)"},
+         {tone:"green", h:"✅ Skin care", html:"Keep the rash clean and dry, and wear loose cotton clothing. A cool compress can ease discomfort. A non-adherent dressing protects the rash and reduces spread. Avoid topical antibiotics and heavy creams on open blisters.", src:"Clinical practice; covering the rash per RCOG GTG 13 (2015)"}
+       ]},
+       {b:"say", html:"Shingles pain can be a mix of ordinary soreness and nerve pain, which feels like burning, stabbing or electric shocks, or like the skin can't bear clothes touching it. Painkillers like paracetamol help the first kind but not the second. If it's the nerve type, there are tablets that work on the nerves. Getting on top of it early matters, because bad pain now makes long-lasting pain more likely."}
+     ]},
+
+    {id:"phn", nav:"PHN", title:"Post-herpetic neuralgia: when the pain outlasts the rash", sub:"The most common long-term complication. It is more likely with older age, severe acute pain, a severe rash, a painful prodrome and ophthalmic involvement.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Definition","Pain in the affected dermatome that persists <b>90 days or more</b> after the rash began. Some sources count pain beyond 30 days as subacute zoster pain."],
+         ["Character","Constant burning or aching, paroxysmal shooting pain, and <b>allodynia</b> (light touch or clothing is painful). Itch can be prominent."],
+         ["Course","Many cases improve over months. A minority, mostly older people, have pain for years, with a significant impact on sleep, mood and independence."],
+         ["What to ask","Sleep, mood and suicidal thoughts, function and falls, and the pain's effect on appetite and weight in older people."]
+       ]},
+       {b:"ladder", steps:[
+         {step:"First line", tone:"cream", title:"One oral neuropathic agent", when:"established PHN", fromLabel:"NICE CG173",
+          html:"Offer a choice of <b>amitriptyline, duloxetine, gabapentin or pregabalin</b>. Choose by comorbidity, interactions, falls risk and preference. Amitriptyline is off-label for neuropathic pain, and needs caution in older people, heart disease and glaucoma. Review early for benefit and side effects."},
+         {step:"Switch", tone:"cream", title:"Try another of the four", when:"not effective or not tolerated", fromLabel:"do not stack blindly",
+          html:"If the first drug does not work at a tolerated dose, offer one of the other three. Consider switching again if the second and third also fail. Combining drugs is usually a specialist decision."},
+         {step:"Localised", tone:"green", title:"Topical options", when:"small area, or oral drugs unwanted", fromLabel:"on healed skin only",
+          html:"NICE CG173 suggests considering <b>capsaicin cream</b> for localised neuropathic pain in people who wish to avoid oral treatment or cannot tolerate it. The 0.075% cream is licensed for PHN once the lesions have healed (SPC). <b>Lidocaine 5% medicated plasters</b> are licensed for PHN (SPC), but they are not among the CG173 recommended options. Use them only as your local formulary allows."},
+         {step:"Refer", tone:"amber", title:"Specialist pain service", when:"severe or refractory pain", fromLabel:"do not escalate opioids",
+          html:"Refer when pain is severe, limiting daily life or not controlled after trying the first-line options, or earlier if the patient is at risk (depression, falls, polypharmacy). Do not start long-term strong opioids in primary care for this pain."}
+       ]},
+       {b:"why", html:"PHN is a neuropathic pain, and nociceptive analgesics such as paracetamol and NSAIDs do little for it. The patients most at risk are often older adults on several medicines. They are exactly the group most likely to be harmed by sedating tricyclics, gabapentinoids and opioids, so doses need to start low, go up slowly and be reviewed on purpose."}
+     ]},
+
+    {id:"infect", nav:"Contacts", title:"Infectivity, contacts and post-exposure prophylaxis", sub:"Shingles cannot be caught from shingles. A person who has never had chickenpox can catch chickenpox from blister fluid.",
+     blocks:[
+       {b:"table", head:["Source of exposure","Infectious risk","Advice"], rows:[
+         ["<b>Localised shingles on a covered site</b> (for example the chest) in an immunocompetent patient","<b>Remote</b>, but not zero","Keep the rash covered until it has crusted. Normal work and school are usually possible."],
+         ["<b>Exposed site</b> (for example ophthalmic or facial shingles)","Treated as <b>infectious</b>, because shedding is greater and the rash is harder to cover","Avoid contact with susceptible pregnant women, newborns and immunosuppressed people until crusted."],
+         ["<b>Disseminated shingles</b>, or any shingles in an <b>immunosuppressed</b> patient","Treated as <b>infectious</b>","As above. In hospital, isolate the patient."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🏫 School and work", html:"There is no need to exclude a child from school or nursery for shingles, unless the rash is weeping and cannot be covered. Healthcare workers with shingles should follow occupational health advice, particularly if they work with high-risk patients.", src:"UKHSA: Health protection in children and young people settings (exclusion table)"},
+         {tone:"amber", h:"🤰 A pregnant contact", html:"If a pregnant woman has had a significant exposure to shingles and has <b>no reliable history of chickenpox</b>, check her <b>VZV IgG</b> urgently. If she is not immune, <b>oral antivirals are now the first-choice prophylaxis</b> at any stage of pregnancy, replacing VZIG. The regimen is aciclovir 800 mg four times daily from day 7 to day 14 after exposure. Ask the local virology or health protection team for advice.", src:"UKHSA VZV PEP guidance (Feb 2025) · RCOG GTG 13 (2015)"},
+         {tone:"amber", h:"🛡️ An immunosuppressed contact", html:"Susceptible immunosuppressed contacts are offered antiviral prophylaxis, normally taken from day 7 to day 14 after exposure. Those with a VZV IgG of <b>150 mIU/mL or above</b> on a quantitative assay are unlikely to benefit. Test and decide with the patient's specialist team or virology.", src:"UKHSA VZV PEP guidance (Feb 2025)"},
+         {tone:"red", h:"👶 A newborn contact", html:"A baby whose mother develops <b>chickenpox (not shingles)</b> from 7 days before to 7 days after delivery, or a neonate exposed to chickenpox or shingles in the first week of life, needs <b>same-day paediatric and virology advice</b>. Maternal shingles around delivery does not carry the same risk, because the baby has the mother's antibody. For these neonates, varicella immunoglobulin is still recommended, alongside antivirals for the highest-risk group.", src:"UKHSA VZV PEP guidance (Feb 2025)"}
+       ]},
+       {b:"say", html:"You can't give anyone shingles, but the fluid in the blisters can give chickenpox to someone who has never had it. Keep the rash covered until it has all scabbed over. Until then, keep away from anyone pregnant, newborn babies, and people whose immune system is weak. If you've been close to someone like that, let me know, because they may need tablets to protect them."}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Pregnancy, immunosuppression and older people", sub:"Groups where the default plan changes.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"🤰 Shingles in a pregnant woman", html:"This is a reactivation, and maternal antibodies protect the baby, so the risk to the fetus is minimal. Decide on antiviral treatment with the obstetric team, taking into account the severity, site and gestation. Aciclovir exposure in pregnancy has not been linked to an increase in malformations.", src:"RCOG GTG 13 (2015) · UKTIS aciclovir monograph"},
+         {tone:"red", h:"🛡️ Severe immunosuppression", html:"Examples include chemotherapy, transplant, high-dose steroids, biologic or other immunosuppressive therapy, and advanced HIV. The risk of dissemination, organ involvement and prolonged shedding is higher. Treat at any stage while the disease is active and continue until the lesions crust. Have a low threshold for same-day hospital assessment and intravenous aciclovir, and contact the specialist team.", src:"Valaciclovir SPC · Green Book ch.28a (2025)"},
+         {tone:"amber", h:"👵 Older people", html:"Older people have the highest risk of post-herpetic neuralgia and of antiviral neurotoxicity. Check eGFR before prescribing. Choose analgesics with falls, cognition and polypharmacy in mind. Review at 1–2 weeks rather than leaving the patient to come back.", src:"Aciclovir SPC · NICE CG173 (2013, updated 2020)"},
+         {tone:"blue", h:"🧾 Renal impairment", html:"Adjust aciclovir, valaciclovir and famciclovir for creatinine clearance, using the SPC or BNF. Maintain hydration. Stop the drug and review if new confusion develops.", src:"Aciclovir SPC · BNF"}
+       ]}
+     ]},
+
+    {id:"vaccine", nav:"Shingrix", title:"Prevention: the Shingrix programme", sub:"A recombinant adjuvanted vaccine given as two doses. It is non-live, so it can be given to immunosuppressed people.",
+     blocks:[
+       {b:"table", head:["Group","Eligibility","Second dose"], rows:[
+         ["<b>Immunocompetent adults</b>","Offered on <b>turning 65 or 70</b> (programme from 1 September 2023). Adults aged <b>70 to 79</b> who were eligible but missed it remain eligible until their <b>80th birthday</b>. Eligibility is being extended in phases towards everyone from age 60.","<b>6–12 months</b> after the first dose (a longer operational interval than the licensed minimum of 8 weeks)."],
+         ["<b>Severely immunosuppressed adults</b>","All aged <b>18 and over</b> from <b>1 September 2025</b> (previously from age 50). There is no upper age limit. The Green Book chapter defines severe immunosuppression.","<b>8 weeks to 6 months</b> after the first dose, so protection builds quickly."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"✅ After an episode of shingles", html:"A previous episode does not exclude anyone. Check the <b>current Green Book chapter</b> for how long to wait after an episode before the first dose, because the advice can differ by immune status. Vaccination reduces the chance of a further episode, which is more common in older and immunosuppressed people.", src:"Green Book ch.28a (2025)"},
+         {tone:"blue", h:"💉 Zostavax", html:"The live vaccine, Zostavax, has not been used in the NHS programme since Shingrix replaced it for all cohorts from 1 September 2023. Someone who had Zostavax and later becomes severely immunosuppressed is offered two doses of Shingrix. For anyone else who had Zostavax, check the current Green Book chapter.", src:"UKHSA shingles programme letter (2023) · Green Book ch.28a (2025)"},
+         {tone:"blue", h:"🔎 Where to check eligibility", html:"Eligibility has changed several times since 2023, and JCVI advised in November 2024 that the offer be extended to people aged 80 and over. Check whether this has been adopted in England. Check the current <b>Green Book chapter 28a</b> and the latest UKHSA and NHS England programme letters rather than relying on memory.", src:"Green Book ch.28a (2025) · UKHSA programme letter (2025)"},
+         {tone:"cream", h:"🩺 Practical", html:"Use the consultation about acute shingles to check eligibility. Plan the first dose for after recovery, timed as the Green Book advises, and put a recall in place for the second dose at the right interval for the patient's immune status.", src:"Green Book ch.28a (2025)"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: who, where and how fast", sub:"Most patients stay in primary care. These do not.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day: hospital eye service", html:"Ophthalmic zoster with a red or painful eye, reduced vision, photophobia, corneal involvement or iritis. The College of Optometrists advises same-day GP antiviral treatment for suspected HZO, with mild cases co-managed and more severe ocular involvement referred to ophthalmology. Refer the same day if vision is reduced or the eye is red and painful, and treat Hutchinson's sign with a low threshold for same-day assessment.", src:"College of Optometrists CMG: herpes zoster ophthalmicus"},
+         {tone:"red", h:"Same day: ENT", html:"Ramsay Hunt syndrome: ear vesicles with a facial palsy, vertigo or hearing loss.", src:"Cochrane: Uscategui 2008 (CD006851, CD006852)"},
+         {tone:"red", h:"Same day: medical admission", html:"Disseminated zoster · severely immunosuppressed and unwell · encephalitis, meningitis, myelitis or stroke features · unable to take oral antivirals or fluids.", src:"Aciclovir SPC · Dworkin et al., Clin Infect Dis 2007 (international)"},
+         {tone:"red", h:"Same day: paediatrics or virology", html:"A baby whose mother develops chickenpox (not shingles) from 7 days before to 7 days after delivery, or a neonate exposed to chickenpox or shingles in the first week of life.", src:"UKHSA VZV PEP guidance (Feb 2025)"},
+         {tone:"amber", h:"Urgent: obstetrics or virology advice", html:"A pregnant woman with shingles who needs a decision on treatment, or a susceptible pregnant contact who may need antiviral prophylaxis.", src:"RCOG GTG 13 (2015) · UKHSA VZV PEP guidance (Feb 2025)"},
+         {tone:"amber", h:"Routine: pain service", html:"Post-herpetic neuralgia that is not controlled after trying the NICE CG173 first-line options, or where treatment is limited by side effects or comorbidity.", src:"NICE CG173 (2013, updated 2020)"},
+         {tone:"green", h:"Stays in primary care", html:"Uncomplicated shingles, with or without an antiviral, plus analgesia, contact advice, early review of pain and a Shingrix check.", src:"NHS England Pharmacy First shingles pathway and aciclovir PGD (v1.1, October 2025) · aciclovir SPC"}
+       ]},
+       {b:"say", html:"Most shingles settles over two to four weeks. There are three things I want you to watch for: your eye, your ear and face, and the rash spreading or you feeling very unwell. If your eye gets red or painful or your sight changes, if your face droops, or if you get a bad headache or feel confused, you need to be seen the same day."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card. The Casebook holds the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 74-year-old man with CKD stage 3b, on day 2 of a painful blistering rash over his left forehead and upper eyelid. He mentions a few spots on the tip of his nose. His wife is caring for their daughter, who is 30 weeks pregnant and has never had chickenpox.", src:"College of Optometrists CMG: herpes zoster ophthalmicus"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises <b>ophthalmic zoster with Hutchinson's sign</b>. Asks about vision, eye pain and photophobia, and arranges <b>same-day eye assessment</b> if there are eye signs. Starts an antiviral today with a <b>renally adjusted dose</b> and warns about confusion. Plans pain relief with <b>PHN risk</b> in mind. Explains infectivity and identifies the <b>pregnant, non-immune contact</b> who needs urgent VZV IgG and possible antiviral prophylaxis. Offers <b>Shingrix</b> after recovery if eligible. Safety-nets clearly.", src:"Green Book ch.28a (2025) · UKHSA VZV PEP guidance (Feb 2025) · aciclovir SPC"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>UKHSA — Shingles (herpes zoster): the Green Book, chapter 28a (updated August 2025)</b><br><a href="https://www.gov.uk/government/publications/shingles-herpes-zoster-the-green-book-chapter-28a" rel="noopener">gov.uk — Green Book chapter 28a</a><span class="rd"> — Shingrix schedule, second-dose intervals, severe immunosuppression, vaccination after an episode</span></li>'+
+         '<li><b>UKHSA/NHS England — Shingles vaccination programme: expansion of Shingrix eligibility to all severely immunosuppressed adults aged 18 and over (letter, 2025)</b><br><a href="https://www.gov.uk/government/publications/expansion-of-shingrix-vaccine-eligibility-to-all-those-who-are-severely-immunosuppressed-and-aged-18-years-and-over-letter" rel="noopener">gov.uk — 2025 programme letter</a><span class="rd"> — eligibility from 1 September 2025, second dose 8 weeks to 6 months</span></li>'+
+         '<li><b>UKHSA/NHS England — Shingles vaccination programme changes from September 2023 (letter)</b><br><a href="https://www.gov.uk/government/publications/shingles-vaccination-programme-changes-from-september-2023-letter" rel="noopener">gov.uk — 2023 programme letter</a><span class="rd"> — Shingrix replaces Zostavax, cohorts turning 65 and 70, phased move to age 60</span></li>'+
+         '<li><b>UKHSA — Guidelines on post-exposure prophylaxis (PEP) for varicella or shingles (February 2025)</b><br><a href="https://www.gov.uk/government/publications/post-exposure-prophylaxis-for-chickenpox-and-shingles" rel="noopener">gov.uk — VZV PEP guidance</a><span class="rd"> — antivirals as first-choice PEP, day 7–14 timing, the 150 mIU/mL threshold, neonates</span></li>'+
+         '<li><b>RCOG — Chickenpox in Pregnancy, Green-top Guideline No. 13 (January 2015)</b><br><a href="https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/chickenpox-in-pregnancy-green-top-guideline-no-13/" rel="noopener">rcog.org.uk — GTG 13</a><span class="rd"> — which zoster exposures count as infectious, pregnancy advice</span></li>'+
+         '<li><b>UKHSA — Health protection in children and young people settings: exclusion table</b><br><a href="https://www.gov.uk/government/publications/health-protection-in-schools-and-other-childcare-facilities" rel="noopener">gov.uk — children and young people settings</a><span class="rd"> — no exclusion for shingles unless weeping and cannot be covered</span></li>'+
+         '<li><b>NHS England — Pharmacy First: shingles clinical pathway (adults 18 and over)</b><br><a href="https://www.nhsbsa.nhs.uk/nhs-pharmacy-first-service-clinical-pathways-patient-group-directions-and-protocol" rel="noopener">nhsbsa.nhs.uk — Pharmacy First clinical pathways</a><span class="rd"> — the 72-hour and one-week treatment criteria</span></li>'+
+         '<li><b>College of Optometrists — Clinical Management Guideline: herpes zoster ophthalmicus</b><br><a href="https://www.college-optometrists.org/clinical-guidance/clinical-management-guidelines/herpeszosterophthalmicus_hzo" rel="noopener">college-optometrists.org — HZO CMG</a><span class="rd"> — Hutchinson&#39;s sign, antiviral within 72 hours, referral of ocular involvement</span></li>'+
+         '<li><b>NICE CG173 — Neuropathic pain in adults: pharmacological management in non-specialist settings (2013, updated 2020)</b><br><a href="https://www.nice.org.uk/guidance/cg173" rel="noopener">nice.org.uk/guidance/cg173</a><span class="rd"> — amitriptyline, duloxetine, gabapentin or pregabalin; switching; capsaicin cream; tramadol as rescue only</span></li>'+
+         '<li><b>NICE NG153 — Impetigo: antimicrobial prescribing (2020)</b> and <b>NICE NG141 — Cellulitis and erysipelas: antimicrobial prescribing (2019)</b><br><a href="https://www.nice.org.uk/guidance/ng153" rel="noopener">nice.org.uk/guidance/ng153</a> · <a href="https://www.nice.org.uk/guidance/ng141" rel="noopener">nice.org.uk/guidance/ng141</a><span class="rd"> — secondary bacterial infection</span></li>'+
+         '<li><b>BHIVA/BASHH/BIA — Adult HIV testing guidelines (2020)</b><br><a href="https://bhiva.org/clinical-guideline/hiv-testing-guidelines/" rel="noopener">bhiva.org — HIV testing 2020</a><span class="rd"> — herpes zoster as an HIV indicator condition</span></li>'+
+         '<li><b>SPCs — aciclovir 800 mg tablets, valaciclovir, famciclovir; BNF</b><br><a href="https://www.medicines.org.uk/emc" rel="noopener">medicines.org.uk/emc</a> · <a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — zoster doses, renal adjustment, immunosuppressed courses</span></li>'+
+         '<li><b>UKTIS — Use of aciclovir/valaciclovir in pregnancy</b><br><a href="https://uktis.org/monographs/use-of-aciclovir-in-pregnancy/" rel="noopener">uktis.org</a><span class="rd"> — no increased malformation risk</span></li>'+
+         '<li><b>Dworkin RH et al. Recommendations for the management of herpes zoster. Clin Infect Dis 2007;44 Suppl 1:S1–S26</b> (international)<br><a href="https://academic.oup.com/cid/article-abstract/44/Supplement_1/S1/334966" rel="noopener">academic.oup.com — CID 2007</a><span class="rd"> — antiviral indications, PHN definition, diagnosis</span></li>'+
+         '<li><b>Han Y et al. Corticosteroids for preventing postherpetic neuralgia. Cochrane Database Syst Rev 2013; updated Jiang X et al. 2023 (CD005582)</b><br><a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD005582.pub5/full" rel="noopener">cochranelibrary.com — CD005582</a><span class="rd"> — steroids do not reliably prevent PHN</span></li>'+
+         '<li><b>Uscategui T et al. Antiviral therapy for Ramsay Hunt syndrome (herpes zoster oticus with facial palsy) in adults. Cochrane Database Syst Rev 2008 (CD006851)</b><br><a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD006851.pub2/full" rel="noopener">cochranelibrary.com — CD006851</a><span class="rd"> — evidence for antivirals in Ramsay Hunt is limited</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Herpes zoster in primary care — aciclovir, valaciclovir and famciclovir SPCs and the BNF, UKHSA Green Book chapter 28a (2025), UKHSA VZV post-exposure prophylaxis guidance (February 2025), RCOG GTG 13 (2015), NHS England Pharmacy First shingles pathway, College of Optometrists HZO CMG and NICE CG173. Check every dose against the current BNF and adjust for renal function. Not a substitute for clinical judgement."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

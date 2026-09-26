@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Osteoarthritis — Protocol · Reasoning GP</title>
+<meta name="description" content="Osteoarthritis in primary care on one page: clinical diagnosis without imaging, therapeutic exercise and weight loss as the core treatment, topical then oral NSAIDs with gastroprotection, the treatments NICE NG226 says not to offer, intra-articular steroid, red flags including NG12 bone sarcoma, and referral for joint replacement without scoring tools." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/osteoarthritis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,112 +20,196 @@
 <script>
 MG.render({
   icon:"🦵",
-  title:"Osteoarthritis — The Complete Guide",
-  stemTitle:"OA made simple &mdash; exercise IS the treatment, drugs are the adjunct, topical before oral",
-  stemSub:"One pathway: diagnose clinically (no X-ray for typical OA), make therapeutic exercise + weight loss the CORE treatment for everyone, climb the analgesia ladder topical-first with the drugs NICE says to avoid, use intra-articular steroid for flares, and refer for joint replacement on quality of life \u2014 not on an X-ray grade. NICE NG226 \u00b7 NICE.",
-  guideline:"NICE NG226 \u00b7 NICE",
-  glance:[
-    {lbl:"Diagnose", val:"Clinically \u226545y", sub:"no imaging if typical"},
-    {lbl:"Core Rx (everyone)", val:"Exercise + weight", sub:"best evidence for pain"},
-    {lbl:"Analgesia 1st", val:"Topical NSAID", sub:"knee/hand"},
-    {lbl:"Then", val:"Oral NSAID + PPI", sub:"lowest dose, shortest time"},
-    {lbl:"Avoid", val:"Paracetamol-alone / opioids", sub:"+ glucosamine, hyaluronan"},
-    {lbl:"Refer on", val:"Quality of life", sub:"NOT the X-ray grade"}
+  title:"Osteoarthritis",
+  eyebrow:"Protocol · diagnose and manage in one place",
+  stemTitle:"Movement is the medicine &mdash; tablets only help people keep moving",
+  stemSub:"A single page for osteoarthritis in primary care. Make the diagnosis on the history (no X-ray for a typical presentation), put therapeutic exercise and weight loss at the centre of every plan, add a topical NSAID before anything oral, know the long list of treatments NICE NG226 says not to offer, use a steroid injection as a short bridge back to exercise, and refer for joint replacement on quality of life rather than on a score. NICE NG226 (2022) · NICE QS87 (updated 2022) · MHRA Drug Safety Updates · BNF and SPCs · NICE NG12 (updated April 2026).",
+  guideline:"NICE NG226 (2022) · NICE QS87 (updated Oct 2022) · MHRA Drug Safety Update (Jun 2013, Jun 2015, Sep 2020) · BNF and SPCs · NICE NG12 (updated April 2026)",
+  meta:[
+    {t:"NICE NG226 (Oct 2022)"},
+    {t:"NICE QS87 (updated Oct 2022)"},
+    {t:"MHRA DSU · diclofenac 2013 · ibuprofen 2015 · opioids 2020"},
+    {t:"BNF · SPCs (ibuprofen, naproxen)"},
+    {t:"2WW · NICE NG12 bone sarcoma", tone:"tw"},
+    {t:"Rebuilt from primary sources · Sep 2026", tone:"ok"}
   ],
-  flow:[
-
-    {t:"node", d:"found", n:"1", tag:"Step 1 · diagnose", title:"Diagnose clinically — and reframe the story",
-      blocks:[
-        {b:"kv", rows:[
-          ["Clinical diagnosis (no imaging)","\u226545y + activity-related joint pain + <b>no morning stiffness, or stiffness \u226430 min</b> \u2192 diagnose without X-ray. Imaging doesn't change management and X-ray severity correlates poorly with symptoms"],
-          ["Assess the impact","Pain, function, sleep, mood, work, which joints, and \u2014 the referral currency \u2014 <b>effect on quality of life</b>"],
-          ["Comorbidity (drives drug choice)","GI risk, CKD, CVD/HF, anticoagulation \u2014 all constrain NSAID use (the mainstay analgesic)"],
-          ["Reset expectations","OA is manageable and not inevitably progressive; the aim is function + pain control, not a 'cure' \u2014 and movement helps rather than harms the joint"]
-        ]},
-        {b:"why", html:"NICE NG226 (2022) deliberately reframed OA around <strong>therapeutic exercise and weight management as the core treatment for everyone</strong>, with drugs as adjuncts \u2014 because exercise has the best evidence for pain and function while long-term analgesia has modest benefit and real harms. An X-ray-led narrative ('bone on bone') drives fear, inactivity and unnecessary intervention \u2014 the words you use are part of the treatment."},
-        {b:"warn", html:"<b>Reconsider the diagnosis if:</b> hot swollen joint (septic/crystal), true inflammatory pattern (prolonged morning stiffness, small-joint symmetrical \u2192 ?RA), rapid deterioration, night pain + weight loss or a mass (?malignancy), or symptoms not fitting OA \u2014 don't anchor on 'wear and tear'."}
-      ]},
-
-    {t:"node", d:"life", n:"2", tag:"Step 2 · core treatment", title:"Exercise + weight — offered to ALL, the actual therapy",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🏃 Therapeutic exercise", html:"<b>First-line for everyone</b> — muscle strengthening + aerobic, tailored and SUSTAINED. Counsel: it may hurt a little at first and benefit takes weeks — that's expected, not damage. Refer physio for a programme."},
-          {t:"⚖️ Weight loss", html:"If overweight — even modest loss meaningfully cuts load-joint (knee/hip) pain; any loss helps, more is better."},
-          {t:"📚 Education & self-management", html:"Explain OA honestly, set functional goals, build self-efficacy — replace the 'bone-on-bone' story."},
-          {t:"🦯 Aids & devices", html:"Walking aids, appropriate footwear; OT for hand OA aids and joint protection."},
-          {t:"🤲 Manual therapy", html:"As an ADJUNCT to exercise (esp. hip/knee) — not a standalone treatment."},
-          {t:"🔥 Heat / TENS", html:"Low-risk symptom adjuncts some patients find helpful."}
-        ]},
-        {b:"say", html:"The single best treatment for your joint isn't a tablet — it's the right exercise, kept up. It'll ache a bit at first and take a few weeks to pay off, but the strengthening is what actually reduces the pain long term. The painkillers just help you move enough to do it."}
-      ]},
-
-    {t:"node", d:"drug", n:"3", tag:"Step 3 · analgesia", title:"The analgesia ladder — adjunct only, topical before oral",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"Step 1", title:"Topical NSAID", when:"knee / hand OA — first-line drug",
-           html:"<b>Topical ibuprofen 5% or diclofenac 1% gel, up to TDS\u2013QDS</b> \u2014 good local effect, minimal systemic absorption/risk. Try this before any oral analgesic for knee and hand OA."},
-          {step:"Step 2", title:"Oral NSAID + gastroprotection", when:"topical insufficient / unsuitable site (e.g. hip)",
-           fromLabel:"lowest dose, shortest time",
-           html:"<b>Ibuprofen 400mg TDS or naproxen 250\u2013500mg BD, WITH a PPI</b> (omeprazole 20mg OD). Lowest effective dose, shortest duration, intermittent where possible. <b>Weigh GI, renal and CV risk</b> \u2014 caution/avoid in elderly, CKD (check eGFR), CVD/HF, and on ACEi + diuretic (triple whammy AKI)."},
-          {step:"Adjuncts", title:"Topical capsaicin · intra-articular steroid", when:"flares / NSAIDs unsuitable",
-           fromLabel:"targeted add-ons",
-           html:"<b>Capsaicin 0.025% cream QDS</b> (knee/hand) \u2014 useful when NSAIDs contraindicated; warn re burning + hand-washing. <b>Intra-articular corticosteroid</b> (methylprednisolone 40mg / triamcinolone) for short-term relief of a significant flare or to enable rehab \u2014 effect is weeks, not months."},
-          {step:"Avoid", title:"What NICE says NOT to use", when:"low-value / harmful",
-           fromLabel:"deprescribing targets",
-           html:"<b>Do NOT routinely offer paracetamol alone</b> (minimal benefit) <b>or weak/strong opioids</b> (limited benefit, real harm \u2014 strong opioids only exceptional + time-limited). <b>Don't offer glucosamine/chondroitin or intra-articular hyaluronan</b> (no benefit)."}
-        ]},
-        {b:"warn", html:"Opioids are a trap in OA: modest short-term analgesia, no long-term function gain, and dependence/hyperalgesia (see the opioid guide). If someone's on regular OA opioids with no functional benefit, the plan is a taper, not a repeat."}
-      ]},
-
-    {t:"node", d:"monitor", n:"4", tag:"Step 4 · review", title:"Review — function first, drug safety, exercise adherence",
-      blocks:[
-        {b:"table", head:["What","When","Action"], rows:[
-          ["Function / pain / QoL","Each review","Worsening QoL despite optimised core treatment → consider referral"],
-          ["Exercise adherence","Each review","The core treatment only works if done — re-motivate, re-refer physio; this is the highest-yield review item"],
-          ["NSAID safety","If on regular oral NSAID","Renal function + BP + GI symptoms; use intermittently; confirm PPI cover"],
-          ["Mood / sleep","As needed","Treat comorbid low mood + poor sleep — they amplify pain perception measurably"],
-          ["Opioid use","Ongoing","Any regular opioid → functional benefit documented? If not → taper"]
-        ]},
-        {b:"say", html:"We'll judge success by what you can DO, not just the pain score. The exercise is the treatment we keep coming back to — if it's slipped, that's usually why things feel worse, not the joint getting dramatically worse."}
-      ]},
-
-    {t:"loop", icon:"🔁", title:"Not controlled? Optimise the core BEFORE escalating",
-      arrow:"\u2026it's usually the exercise, not the joint",
-      checks:[
-        {b:"1 · Exercise", html:"Genuinely being done and sustained? Referred to physio for a real programme?"},
-        {b:"2 · Weight", html:"Load-joint OA + overweight — weight management actually engaged?"},
-        {b:"3 · Analgesia order", html:"Topical tried before oral? NSAID at lowest dose WITH PPI? Capsaicin/IA steroid considered?"},
-        {b:"4 · Another diagnosis", html:"Hot/swollen, inflammatory pattern, rapid change, night pain + red flags → reconsider (septic, crystal, RA, malignancy)."},
-        {b:"5 · Mood/sleep", html:"Depression, poor sleep, catastrophising amplifying pain → treat them."},
-        {b:"6 · QoL", html:"Substantially affecting life despite all the above → refer, regardless of X-ray."}
-      ],
-      back:"Core optimised + QoL still affected → joint-replacement assessment"},
-
-    {t:"node", d:"safety", n:"5", tag:"Safety-net", title:"What the patient must know",
-      blocks:[
-        {b:"tiles", v:"safety", items:[
-          {t:"🔴 Hot swollen joint", html:"\u201cA suddenly hot, swollen, very painful joint with fever — urgent help; that's infection or gout, not arthritis wear.\u201d"},
-          {t:"⚠️ NSAID risks", html:"\u201cIndigestion, black tarry stools, or ankle swelling on anti-inflammatories — tell us; and avoid them if we've flagged your kidneys or stomach.\u201d"},
-          {t:"🦵 Red flags", html:"\u201cRapidly worsening pain, pain waking you at night, weight loss, or a new lump — get checked.\u201d"},
-          {t:"🏃 Keep moving", html:"\u201cRest makes OA joints stiffer — staying active is treatment, even when it aches a little. Hurt doesn't mean harm here.\u201d"}
-        ]}
-      ]},
-
-    {t:"node", d:"refer", n:"6", tag:"Refer", title:"When to refer — on life, not on the X-ray",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Joint replacement", html:"Quality of life substantially affected despite optimal conservative management → orthopaedics. <b>Don't delay for arbitrary X-ray thresholds or age</b> (NG226)."},
-          {t:"Diagnostic doubt", html:"Atypical/inflammatory pattern or suspected alternative diagnosis → rheumatology."},
-          {t:"Urgent", html:"Suspected septic arthritis or sinister cause → same-day."},
-          {t:"Allied health", html:"Physiotherapy (the core), occupational therapy (hand OA/aids), podiatry, weight-management services."}
-        ]},
-        {b:"say", html:"The exercise and, if it applies, some weight loss do the real work; painkillers help you keep moving. If your joint ever stops you doing the things that matter despite all that, we'll talk about a replacement — and that decision is based on how it affects your life, not on what an X-ray looks like."}
-      ]}
+  lead:"<div class='mg-layers'><a href='#diagnose'><b>Diagnose</b><small>History, not X-ray</small></a><a href='#redflags'><b>Red flags</b><small>Not every sore joint is OA</small></a><a href='#core'><b>Core treatment</b><small>Exercise and weight</small></a><a href='#drugs'><b>Drugs</b><small>Topical first</small></a><a href='#refer'><b>Refer</b><small>On quality of life</small></a></div>",
+  quickSub:"The six points that change what you do today. Each is traced to a named source in <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"green", h:"Diagnose on the history — no X-ray needed", html:"If someone is <b>45 or over</b>, has <b>joint pain related to activity</b>, and has either <b>no morning stiffness or stiffness lasting 30 minutes or less</b>, NICE NG226 says make the diagnosis clinically, without investigations. Imaging is kept for atypical features or a suspected alternative or additional diagnosis, and is not used for follow-up or to steer non-surgical treatment.", src:"NICE NG226 rec 1.1.1 · NICE QS87 statement 1"},
+    {tone:"cream", h:"Exercise and weight loss are the treatment", html:"Offer <b>therapeutic exercise tailored to the person</b> (local muscle strengthening plus general aerobic fitness) to everyone with osteoarthritis. For people living with overweight or obesity, offer support to lose weight: <b>any loss is likely to help, and 10% of body weight is likely to help more than 5%</b>. Warn that pain may rise when exercise starts and that sticking with it is what brings the benefit.", src:"NICE NG226 (2022) · NICE QS87 statements 4 and 5"},
+    {tone:"blue", h:"Topical NSAID first — offered for the knee", html:"NG226: <b>offer a topical NSAID for knee osteoarthritis</b> and <b>consider one for other affected joints</b>. Only if topical treatment is ineffective or unsuitable, consider an <b>oral NSAID at the lowest effective dose for the shortest possible time</b>, with a <b>gastroprotective drug such as a PPI</b>, after weighing gastrointestinal, renal, liver and cardiovascular risk.", src:"NICE NG226 (2022) · BNF"},
+    {tone:"amber", h:"The do-not-offer list is long — know it", html:"Do <b>not routinely</b> offer <b>paracetamol or weak opioids</b>, unless used only infrequently for short-term relief when every other drug option is contraindicated, not tolerated or ineffective. Do <b>not</b> offer <b>strong opioids, glucosamine, intra-articular hyaluronan, acupuncture or dry needling, or electrotherapy (including TENS)</b>. Arthroscopic lavage and debridement are not a treatment for osteoarthritis.", src:"NICE NG226 (2022) · MHRA DSU Sep 2020 (opioids)"},
+    {tone:"cream", h:"Steroid injection = weeks of relief, used to unlock exercise", html:"Consider an <b>intra-articular corticosteroid</b> when other drug treatments are ineffective or unsuitable, or to support therapeutic exercise — and tell the person the benefit is <b>short-term, about 2 to 10 weeks</b>. It is a bridge back to the exercise programme, not a stand-alone plan.", src:"NICE NG226 (2022)"},
+    {tone:"green", h:"Refer on quality of life, not on a score or a BMI", html:"Consider referral for joint replacement when symptoms (pain, stiffness, reduced function or progressive deformity) <b>substantially affect quality of life</b> and non-surgical care is ineffective or unsuitable. Use <b>clinical judgement, not scoring tools</b>, and <b>do not exclude</b> people because of age, sex or gender, smoking, comorbidity, or overweight or obesity.", src:"NICE NG226 (2022) · NICE QS87 statements 7 and 8"}
   ],
-  foot:"Osteoarthritis in adults \u2014 NICE NG226 (2022) and NICE. Verify doses against the current BNF before prescribing."
+  pathwaySub:"Five steps through the consultation. Step 1 is the one people skip — do it first.",
+  pathway:[
+    {title:"Is it really osteoarthritis?", html:"Screen for what OA is not: a <b>hot, swollen, exquisitely painful joint</b> (septic or crystal arthritis), an <b>inflammatory pattern</b> (prolonged early-morning stiffness, several small joints of hands or feet, soft-tissue swelling), <b>rest or night pain with weight loss, a mass or a history of cancer</b>, recent trauma, or rapid deterioration. Any of these moves the patient off the OA pathway.", alert:true},
+    {title:"Make the clinical diagnosis and assess the impact", html:"Age 45 or over + activity-related pain + no or short (≤30 minutes) morning stiffness = osteoarthritis, <b>without an X-ray</b> (NICE NG226). Then map the impact: which joints, pain, function, sleep, mood, work and caring roles, and what the person most wants to get back to. Record comorbidities that limit NSAIDs (GI, renal, cardiovascular, anticoagulants)."},
+    {title:"Start the core treatment", html:"Explain the condition honestly and positively, then <b>offer tailored therapeutic exercise</b> (consider a supervised programme or physiotherapy) and, where relevant, <b>weight-loss support</b> (10% beats 5%). Consider walking aids for lower-limb osteoarthritis and manual therapy only alongside exercise."},
+    {title:"Add drugs to support the exercise", html:"<b>Topical NSAID</b> (offer for knee, consider for other joints) → if ineffective or unsuitable, <b>oral NSAID + PPI</b> at the lowest dose for the shortest time → consider an <b>intra-articular steroid</b> for short-term relief. Avoid routine paracetamol, weak opioids and everything on the NG226 do-not-offer list."},
+    {title:"Review, then refer on quality of life", html:"Agree follow-up (QS87). Re-check exercise and weight, drug safety and mood. If symptoms still substantially affect quality of life despite core treatment (QS87 suggests at least 3 months of core treatment before referral for surgery), <b>refer for a joint replacement opinion</b> — without a scoring tool and without BMI, age or smoking barriers."}
+  ],
+  sections:[
+    {id:"diagnose", nav:"Diagnose", title:"Making the diagnosis — the history does the work", sub:"NICE NG226 moved osteoarthritis to a clinical diagnosis. The X-ray adds cost, delay and a frightening story, and rarely changes management.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Clinical criteria (NG226 rec 1.1.1)","Age <b>45 or over</b>, <b>activity-related joint pain</b>, and <b>no morning joint stiffness or stiffness lasting no longer than 30 minutes</b> → diagnose osteoarthritis without investigations"],
+         ["Imaging","Do not routinely image to diagnose; image only for <b>atypical features</b> or features that suggest an <b>alternative or additional diagnosis</b>. Do not routinely image for follow-up or to guide non-surgical management (NICE NG226)"],
+         ["Why not X-ray anyway?","Radiographic change and symptoms match poorly — a severe-looking film can belong to someone who walks miles, and vice versa. Phrases such as ‘bone on bone’ tend to make people fearful and less active"],
+         ["Under 45 or atypical","Think harder: previous injury or meniscal tear, inflammatory arthritis, crystal disease, haemochromatosis (second and third MCP joints), hypermobility, or referred pain from the spine or hip"],
+         ["What to record","Which joints; pain at rest and at night; function (walking distance, stairs, grip); sleep and mood; work and caring roles; weight and BMI; comorbidities and current medicines relevant to NSAID use"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Examination that changes management", html:"Look for an effusion and warmth (a hot joint is not routine OA), bony swelling and crepitus, reduced and painful range of movement, deformity and instability, and gait. In the hand, Heberden’s and Bouchard’s nodes and squaring of the thumb base are typical; soft, boggy MCP or wrist swelling is not.", src:"Clinical practice · NICE NG100 (for the inflammatory alternative)"},
+         {tone:"green", h:"Quality standard: diagnose without imaging", html:"NICE QS87 statement 1 turns the NG226 criteria into a measure of good care: adults aged 45 and over with activity-related joint pain and morning stiffness of 30 minutes or less are diagnosed clinically without imaging.", src:"NICE QS87 statement 1 (updated 2022)"}
+       ]},
+       {b:"why", html:"<b>Why the age of 45?</b> Below it, activity-related joint pain more often has another cause (injury, inflammatory disease, hypermobility), so the clinical rule is less reliable. <b>Why 30 minutes?</b> Short-lived ‘gelling’ after rest is typical of osteoarthritis; stiffness lasting an hour or more points towards an inflammatory arthritis, which needs a different pathway (NICE NG100)."}
+     ]},
+
+    {id:"redflags", nav:"Red flags", title:"Red flags — when a painful joint is not osteoarthritis", sub:"Screen these before labelling someone with ‘wear and tear’. Two NG12 criteria sit here: bone sarcoma in adults with a suggestive X-ray, and myeloma blood tests in people aged 60 and over with persistent bone pain.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Hot swollen joint — septic arthritis until proven otherwise", html:"A single acutely hot, swollen, painful joint, with or without fever, needs <b>same-day assessment and aspiration before antibiotics</b>. Fever may be absent, and a prosthetic joint raises the stakes. Gout and pseudogout look identical at the bedside.", src:"BSR/BHPR, BOA, RCGP and BSAC hot swollen joint guideline (Coakley et al, Rheumatology 2006)"},
+         {tone:"amber", h:"Inflammatory pattern — urgent rheumatology", html:"Suspected persistent synovitis of undetermined cause → refer for specialist opinion. Refer <b>urgently</b> (even with normal CRP, negative anti-CCP or rheumatoid factor) if the <b>small joints of the hands or feet</b> are involved, <b>more than one joint</b> is affected, or there has been a <b>delay of 3 months or longer</b> since symptom onset.", src:"NICE NG100 (2018, updated 2020)"},
+         {tone:"purple", h:"Bone sarcoma — NG12", html:"<b>Consider a suspected cancer pathway referral for adults if an X-ray suggests the possibility of bone sarcoma.</b> Be alert when pain is at rest or at night, is not in the joint itself, is progressive, or comes with a mass or swelling — these are reasons to image rather than to diagnose osteoarthritis clinically.", src:"NICE NG12 (updated April 2026) rec 1.11.1"},
+         {tone:"amber", h:"Persistent bone pain aged 60 and over — myeloma bloods", html:"NICE NG12: offer a <b>full blood count, calcium, and plasma viscosity or ESR</b> to assess for myeloma in people aged 60 and over with <b>persistent bone pain, particularly back pain, or an unexplained fracture</b>. Night pain, weight loss or a previous cancer (metastasis) push the same way.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"red", h:"Fracture or avascular necrosis", html:"Sudden severe pain after minor trauma in an older person (hip or tibial plateau fracture), or rapidly worsening hip pain in someone on long-term steroids or with heavy alcohol use (avascular necrosis) — image promptly rather than labelling as OA.", src:"Clinical practice · NICE NG226 (imaging for atypical features)"},
+         {tone:"blue", h:"Other mimics worth ruling out", html:"Referred pain (lumbar spine to hip or knee; hip to knee — especially in children and in older adults), polymyalgia rheumatica (bilateral shoulder and hip girdle stiffness over 50), gout and pseudogout, haemochromatosis arthropathy, and bursitis or tendinopathy around the joint.", src:"Clinical practice · NICE NG100 (inflammatory arthritis)"}
+       ]},
+       {b:"warn", html:"<b>Night pain alone is common in advanced osteoarthritis</b> — but night pain with weight loss, a mass, systemic upset, pain away from the joint line, or a history of cancer is not. That combination means imaging and blood tests, not an exercise leaflet."}
+     ]},
+
+    {id:"core", nav:"Core treatment", title:"The core treatment — information, exercise and weight", sub:"NICE NG226 builds every plan on these three elements, offered to everyone. Drugs are added only to help people do them.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"📚 Information and self-management", html:"Tailor information to the person (language, culture, accessible format). Explain that osteoarthritis is common, that it does not inevitably get worse, that movement does not wear the joint out, and what each treatment can realistically achieve (NICE NG226; QS87 statement 3)."},
+         {t:"🏃 Therapeutic exercise", html:"Offer exercise <b>tailored to their needs</b> — local muscle strengthening plus general aerobic fitness — and consider <b>supervised sessions</b>. Explain that joint pain may increase when they start and that regular, consistent exercise is beneficial even if it hurts a little at first (NICE NG226)."},
+         {t:"⚖️ Weight management", html:"For people living with overweight or obesity, offer support to lose weight and explain that <b>any amount is likely to help, but 10% of body weight is likely to be better than 5%</b> (NICE NG226; QS87 statement 5)."},
+         {t:"🦯 Walking aids", html:"Consider walking aids for lower-limb osteoarthritis (NICE NG226). Show the person how to use a stick in the opposite hand to the painful hip or knee."},
+         {t:"🤲 Manual therapy", html:"Only <b>alongside</b> therapeutic exercise, never on its own — the evidence is for hip and knee, and the benefit was stronger when combined with exercise (NICE NG226 rationale)."},
+         {t:"🦶 Insoles, braces, tape and splints", html:"Not routinely (NICE NG226). Consider them only where there is joint instability or abnormal loading and exercise alone has not been enough — for example a thumb-base splint for hand osteoarthritis via hand therapy."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"Making exercise happen", html:"Most failures are adherence failures. Agree one specific goal (for example, walking to the shops without stopping), refer to physiotherapy or a group programme where available, set a review date, and ask about it every time. Heat packs and pacing are reasonable self-help measures that carry little risk.", src:"NICE NG226 (supervised exercise) · NICE QS87 statement 4"},
+         {tone:"green", h:"Mood, sleep and pain", html:"Poor sleep and low mood lower pain thresholds and reduce activity. Ask about both at diagnosis and review, and treat depression on its own merits rather than adding analgesics.", src:"NICE NG226 (holistic assessment) · NICE QS87 statement 3"}
+       ]},
+       {b:"say", html:"The most effective treatment for your knee isn’t a tablet — it’s building up the muscles around it and, if it’s relevant, taking some weight off it. It may ache a bit more for the first couple of weeks when you start; that’s normal and it isn’t damage. The tablets are there to help you keep moving while the exercise does the real work."},
+       {b:"why", html:"<b>Why exercise first?</b> NG226 reviewed the evidence and found therapeutic exercise improves pain and function across joints, with benefits that last only as long as the exercise does. <b>Why 10% not 5%?</b> The committee found a dose–response relationship for weight loss in knee and hip osteoarthritis: more loss, more benefit. Drugs, by contrast, give modest short-term relief and carry real harms, which is why NG226 frames them as adjuncts."}
+     ]},
+
+    {id:"drugs", nav:"Drugs", title:"Drug treatment — topical first, then oral with protection", sub:"Every drug here is an adjunct to exercise. Doses are from the SPCs and BNF — check the current BNF before prescribing.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Step 1", title:"Topical NSAID", when:"offer for knee; consider for other joints", fromLabel:"first drug",
+          html:"NICE NG226: <b>offer a topical NSAID to people with knee osteoarthritis</b> and <b>consider one for osteoarthritis in other joints</b> (hand, and others where the joint is superficial). Little systemic absorption, so far fewer GI and renal problems than oral NSAIDs. Product, strength and frequency per BNF and SPC. Topical capsaicin reduced knee pain in the NG226 evidence review but was not recommended because topical NSAIDs were judged a better option."},
+         {step:"Step 2", title:"Oral NSAID plus gastroprotection", when:"topical treatment ineffective or unsuitable", fromLabel:"lowest dose, shortest time",
+          html:"NICE NG226: consider an oral NSAID, taking account of <b>gastrointestinal, renal, liver and cardiovascular toxicity</b> and the person’s risk factors (age, pregnancy, current medicines, comorbidities). Use the <b>lowest effective dose for the shortest possible time</b> and <b>offer a gastroprotective treatment such as a PPI</b> (dose per BNF). SPC doses: <span class='rx'>ibuprofen 1200–1800 mg daily in divided doses</span> (maximum 2400 mg daily); <span class='rx'>naproxen 500 mg–1 g daily in two doses 12 hours apart</span>. Consider intermittent, as-needed use rather than regular dosing."},
+         {step:"Step 3", title:"Intra-articular corticosteroid", when:"other drugs ineffective or unsuitable, or to support exercise", fromLabel:"short-term bridge",
+          html:"NICE NG226: consider an intra-articular corticosteroid injection when other pharmacological treatments are ineffective or unsuitable, or to support therapeutic exercise, and explain that relief is <b>short-term (2 to 10 weeks)</b>. Drug and dose per BNF and SPC. Check the joint is not infected, warn about a post-injection flare and, in diabetes, a temporary rise in blood glucose. Time it so the person can use the window to push on with their exercise."},
+         {step:"Only if…", title:"Paracetamol or a weak opioid", when:"infrequent short-term use only", fromLabel:"not routine",
+          html:"NICE NG226: <b>do not routinely offer paracetamol or weak opioids</b>, unless they are used only <b>infrequently for short-term pain relief</b> and <b>all other pharmacological treatments are contraindicated, not tolerated or ineffective</b>. The committee found no evidence that paracetamol helps osteoarthritis pain, and no evidence that the benefit of weak opioids outweighs harm."}
+       ]},
+       {b:"table", head:["Risk","What to check","Why (source)"], rows:[
+         ["Gastrointestinal","Age, previous ulcer or bleed, anticoagulant, antiplatelet, SSRI or corticosteroid","Offer a PPI with every oral NSAID in osteoarthritis (NICE NG226)"],
+         ["Cardiovascular","Ischaemic heart disease, cerebrovascular disease, peripheral arterial disease, heart failure","Diclofenac is contraindicated in established IHD, PAD, cerebrovascular disease and congestive heart failure NYHA II–IV (MHRA DSU June 2013); ibuprofen at 2400 mg a day or more carries a small increased cardiovascular risk (MHRA DSU June 2015)"],
+         ["Renal","eGFR, BP, and whether the person also takes an ACE inhibitor or ARB plus a diuretic","NSAIDs reduce renal perfusion; the ‘triple’ combination raises the risk of acute kidney injury (BNF interactions)"],
+         ["Liver","Known liver disease","NG226 lists liver toxicity among the NSAID risks to weigh"],
+         ["Review","Ongoing need, BP, renal function and GI symptoms","Lowest dose, shortest time — stop if it is not helping function (NICE NG226)"]
+       ]},
+       {b:"why", html:"<b>Why not paracetamol any more?</b> Older guidance put paracetamol first. The NG226 committee found no evidence that it is effective for osteoarthritis pain, and paracetamol is not risk-free at regular doses, so it moved off the ladder. <b>Why a PPI every time?</b> The evidence showed gastroprotection reduces gastrointestinal bleeding and perforation, and people with osteoarthritis tend to be older with more risk factors."}
+     ]},
+
+    {id:"donot", nav:"Do not offer", title:"What NICE NG226 says not to offer", sub:"Deprescribing and saying no are part of good osteoarthritis care. Explain why, and offer what works instead.",
+     blocks:[
+       {b:"table", head:["Treatment","NG226 position","The reason given"], rows:[
+         ["Strong opioids","<b>Do not offer</b>","The risks outweigh the benefits"],
+         ["Glucosamine","<b>Do not offer</b>","No strong evidence of benefit"],
+         ["Intra-articular hyaluronan","<b>Do not offer</b>","No evidence of benefit for quality of life, function or pain in knee or hip; possible harm in the hip"],
+         ["Acupuncture or dry needling","<b>Do not offer</b>","Not shown to be clinically or cost effective"],
+         ["Electrotherapy (TENS, ultrasound, laser, interferential)","<b>Do not offer</b>","Insufficient evidence of benefit"],
+         ["Paracetamol and weak opioids","<b>Not routinely</b>","Only infrequent short-term use when all other drug options are contraindicated, not tolerated or ineffective"],
+         ["Arthroscopic lavage and debridement","<b>Not a treatment for osteoarthritis</b>","No benefit shown; true mechanical locking is a separate orthopaedic question"],
+         ["Insoles, braces, tape, splints, supports","<b>Not routinely</b>","Only with instability or abnormal loading when exercise alone is insufficient"],
+         ["Rubefacients, antiepileptics, antidepressants for OA pain","<b>No recommendation</b>","Not enough evidence to recommend them for osteoarthritis"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Someone already on a regular opioid for OA", html:"Review the benefit to function. If there is none, agree a slow taper. The MHRA asks prescribers to explain the risk of dependence and addiction even at therapeutic doses, agree an end-of-treatment plan before starting, and taper gradually at the end of treatment.", src:"MHRA DSU Sep 2020 · NICE NG226 (2022)"},
+         {tone:"cream", h:"Someone buying glucosamine or asking for injections", html:"Acknowledge what they want (less pain, not to need surgery), explain simply that the trials show no meaningful benefit, and redirect the effort and money towards a supervised exercise programme and weight loss.", src:"NICE NG226 (2022)"}
+       ]},
+       {b:"say", html:"I know the gel and the tablets don’t take all the pain away. The research on hyaluronic acid injections and glucosamine shows they don’t help more than a dummy treatment, so I’d rather not spend your time on them. What does make a difference is the exercise programme — so let’s put our effort there."}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Special situations", sub:"Where the plan genuinely changes.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"✋ Hand osteoarthritis", html:"Topical NSAID is a ‘consider’, not an ‘offer’, outside the knee. Hand therapy for joint protection, exercises and a thumb-base splint where the base of the thumb is unstable. An inflammatory-looking hand (MCP or wrist swelling, prolonged stiffness) needs the NG100 pathway instead.", src:"NICE NG226 (2022) · NICE NG100"},
+         {tone:"blue", h:"🦴 Hip osteoarthritis", html:"The joint is too deep for a topical NSAID to reach well, so the oral step often comes sooner. Walking aid in the opposite hand. Remember referred pain from the lumbar spine, and hip pain presenting at the knee.", src:"NICE NG226 (2022)"},
+         {tone:"amber", h:"👴 Older people, CKD and cardiovascular disease", html:"The groups in whom oral NSAIDs most often cause harm. Stay topical where possible; if oral, use the lowest dose for the shortest time with a PPI, check renal function and BP, and avoid diclofenac in established cardiovascular disease.", src:"NICE NG226 · MHRA DSU Jun 2013"},
+         {tone:"cream", h:"💼 Work and caring roles", html:"Ask how the joint affects work. Suggest workplace adjustments, a fit note with ‘may be fit’ advice where appropriate, and signposting to occupational health.", src:"NICE NG226 (holistic assessment)"},
+         {tone:"amber", h:"💉 Diabetes and steroid injections", html:"Warn about a temporary rise in blood glucose for a few days after an intra-articular steroid, and advise closer monitoring.", src:"BNF corticosteroids (clinical practice)"}
+       ]}
+     ]},
+
+    {id:"review", nav:"Review", title:"Follow-up — judge success by function", sub:"NICE QS87 statement 6: agree follow-up with the primary care team. What to look at each time.",
+     blocks:[
+       {b:"table", head:["At review","Look for","Then"], rows:[
+         ["Function and quality of life","Walking distance, stairs, sleep, work, the goal agreed last time","Still substantially limited despite core treatment → discuss referral"],
+         ["Exercise","Is it being done, regularly and at the right level?","Re-motivate, re-refer to physiotherapy or a group programme"],
+         ["Weight","Change since last review","Offer weight-management support; restate that 10% is better than 5%"],
+         ["Oral NSAID","BP, renal function, GI symptoms, PPI prescribed, still needed?","Step down to topical or as-needed; stop if no functional gain"],
+         ["Opioids or other drugs NG226 advises against","Any regular use","Plan a taper; explain why"],
+         ["Mood and sleep","Low mood, poor sleep, fear of movement","Treat on their own merits"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"1 · Is it still osteoarthritis?", html:"New swelling, heat, night pain with weight loss, or sudden deterioration → reassess and image (red flags above).", src:"NICE NG226 · NICE NG12 (updated April 2026)"},
+         {tone:"amber", h:"2 · Is the core treatment really in place?", html:"Most ‘failed’ osteoarthritis has had no structured exercise programme. Fix that before escalating drugs.", src:"NICE NG226 · NICE QS87 statement 7"},
+         {tone:"amber", h:"3 · Is the drug order right?", html:"Topical before oral; oral with a PPI at the lowest dose; injection as a bridge. Nothing from the do-not-offer list.", src:"NICE NG226 (2022)"},
+         {tone:"green", h:"4 · Time to refer?", html:"Quality of life still substantially affected after at least 3 months of core treatment → refer for a surgical opinion.", src:"NICE QS87 statement 7 · NICE NG226"}
+       ]},
+       {b:"say", html:"Let’s judge this on what you can do rather than a pain score. If the exercise has slipped, that’s usually why it feels worse — not that the joint has suddenly got much worse. And if despite everything it’s still stopping you doing the things that matter, we’ll talk about a replacement."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer — who, when, how urgently", sub:"Most osteoarthritis is managed in primary care. Refer for surgery on quality of life, and refer urgently when it may not be osteoarthritis at all.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day", html:"Suspected <b>septic arthritis</b> (including a hot swollen prosthetic joint) → same-day orthopaedic or acute assessment, with aspiration before antibiotics. Suspected <b>fracture</b> after a fall.", src:"BSR/BHPR, BOA, RCGP and BSAC hot swollen joint guideline (Rheumatology 2006)"},
+         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> · NICE NG12", html:"<b>Consider a suspected cancer pathway referral for adults if an X-ray suggests the possibility of bone sarcoma.</b> For people aged 60 and over with persistent bone pain (particularly back pain) or an unexplained fracture, offer FBC, calcium and plasma viscosity or ESR to assess for myeloma.", src:"NICE NG12 (updated April 2026) rec 1.11.1"},
+         {tone:"amber", h:"Urgent rheumatology", html:"Suspected inflammatory arthritis — urgently if small joints of the hands or feet, more than one joint, or symptoms for 3 months or more.", src:"NICE NG100 (2018, updated 2020)"},
+         {tone:"green", h:"Orthopaedics — joint replacement", html:"Consider referral for people with <b>hip, knee or shoulder</b> osteoarthritis when joint symptoms (pain, stiffness, reduced function or progressive deformity) <b>substantially affect quality of life</b> and non-surgical management is ineffective or unsuitable. Use <b>clinical assessment rather than scoring tools</b>, and <b>do not exclude</b> people because of age, sex or gender, smoking, comorbidities, or overweight or obesity.", src:"NICE NG226 (2022) · NICE QS87 statement 8"},
+         {tone:"cream", h:"Physiotherapy, hand therapy and weight services", html:"Physiotherapy for a structured, supervised exercise programme; occupational or hand therapy for hand osteoarthritis and aids; podiatry for foot problems; local weight-management services.", src:"NICE NG226 (2022) · NICE QS87 statements 4 and 5"}
+       ]},
+       {b:"warn", html:"<b>Local BMI or smoking thresholds for surgery</b> are not in line with NG226, which says not to exclude people from referral on these grounds. Weight loss and stopping smoking are still worth offering for their own benefits — but as support, not as a gate."},
+       {b:"say", html:"The exercise and the weight loss are doing the real work, and the gel and tablets help you keep moving. If the joint is still stopping you doing what matters to you despite all that, we’ll refer you to talk about a replacement — and that decision rests on how it affects your life, not on what the X-ray looks like or on your weight."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 63-year-old man with two years of right knee pain on walking, stiffness for 10 minutes in the morning, BMI 32. He has read online that his knee is ‘bone on bone’, wants an X-ray and a hyaluronic acid injection, and asks for something stronger than paracetamol. He takes ramipril and indapamide."},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Makes a <b>clinical diagnosis</b> and explains why an X-ray will not change the plan (NG226); screens for <b>red flags</b>; explores what he wants to get back to; offers <b>tailored exercise</b> and warns it may ache at first; raises <b>weight loss</b> sensitively (10% beats 5%); offers a <b>topical NSAID</b>; explains why <b>hyaluronan, glucosamine and strong opioids</b> are not recommended and why paracetamol is no longer routine; spots the <b>ACE inhibitor plus diuretic</b> problem with an oral NSAID and would add a PPI if one were used; and describes referral on <b>quality of life</b>, not on the film or his BMI.", src:"NICE NG226 (2022) · NICE QS87"}
+     ]}]},
+
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every recommendation and figure on this page traces to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG226 — Osteoarthritis in over 16s: diagnosis and management</b> (19 October 2022)<br><a href="https://www.nice.org.uk/guidance/ng226" rel="noopener">nice.org.uk/guidance/ng226</a><span class="rd"> — rec 1.1.1 clinical diagnosis (45 or over, activity-related pain, morning stiffness no longer than 30 minutes); imaging only for atypical features; tailored therapeutic exercise and supervised sessions; weight loss (10% better than 5%); manual therapy only with exercise; walking aids; topical NSAID offered for knee, considered for other joints; oral NSAID at lowest dose for shortest time with gastroprotection; do not routinely offer paracetamol or weak opioids; do not offer strong opioids, glucosamine, intra-articular hyaluronan, acupuncture or dry needling, electrotherapy; intra-articular corticosteroid with 2–10 week relief; referral for joint replacement without scoring tools or exclusions</span></li>'+
+         '<li><b>NICE QS87 — Osteoarthritis in over 16s</b> (2015, updated 19 October 2022)<br><a href="https://www.nice.org.uk/guidance/qs87" rel="noopener">nice.org.uk/guidance/qs87</a><span class="rd"> — statements on clinical diagnosis, information, therapeutic exercise, weight loss, follow-up, at least 3 months of core treatment before referral for surgery, and no scoring tools for referral</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral</b> (2015, updated April 2026)<br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — rec 1.11.1 adults with an X-ray suggesting bone sarcoma; myeloma blood tests in people aged 60 and over with persistent bone pain or unexplained fracture</span></li>'+
+         '<li><b>NICE NG100 — Rheumatoid arthritis in adults: management</b> (2018, updated 2020)<br><a href="https://www.nice.org.uk/guidance/ng100" rel="noopener">nice.org.uk/guidance/ng100</a><span class="rd"> — referral for suspected persistent synovitis, urgent if small joints, more than one joint, or 3 months or more of symptoms</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Diclofenac: new contraindications and warnings</b> (June 2013)<br><a href="https://www.gov.uk/drug-safety-update/diclofenac-new-contraindications-and-warnings" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — contraindicated in established ischaemic heart disease, peripheral arterial disease, cerebrovascular disease and congestive heart failure</span></li>'+
+         '<li><b>MHRA Drug Safety Update — High-dose ibuprofen (≥2400 mg/day): small increase in cardiovascular risk</b> (June 2015)<br><a href="https://www.gov.uk/drug-safety-update/high-dose-ibuprofen-2400mg-day-small-increase-in-cardiovascular-risk" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — no increased risk seen up to 1200 mg a day</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Opioids: risk of dependence and addiction</b> (September 2020)<br><a href="https://www.gov.uk/drug-safety-update/opioids-risk-of-dependence-and-addiction" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — agree a treatment and end-of-treatment plan; taper slowly</span></li>'+
+         '<li><b>Summaries of Product Characteristics — ibuprofen 400 mg tablets; naproxen 250 mg tablets</b> (electronic Medicines Compendium)<span class="rd"> — ibuprofen 1200–1800 mg daily in divided doses, maximum 2400 mg; naproxen 500 mg–1 g daily in two doses 12 hours apart for osteoarthrosis</span></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — topical NSAIDs, PPI prophylaxis doses, intra-articular corticosteroids, NSAID interactions with ACE inhibitors, ARBs and diuretics</span></li>'+
+         '<li><b>BSR and BHPR, BOA, RCGP and BSAC — Guidelines for management of the hot swollen joint in adults</b> (Coakley G, et al., Rheumatology 2006;45:1039–41)<span class="rd"> — aspirate before antibiotics; treat as septic when suspicion is high even without fever</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Osteoarthritis in adults — NICE NG226 (2022) and QS87 (updated 2022), NICE NG12 (updated April 2026), NICE NG100, MHRA Drug Safety Updates (June 2013, June 2015, September 2020), the SPCs and the BNF, and the BSR hot swollen joint guideline. Verify every dose against the current BNF before prescribing. Not a substitute for clinical judgement or your local formulary."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 </body>
 </html>

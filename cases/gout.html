@@ -741,7 +741,7 @@ body.mode-clinic .sca-only{display:none!important}
     <h1>Gout</h1>
   </div>
   <div class="case-head-tags">
-    <span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE</span>
+    <span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE NG219</span>
     <span class="tag">BSR 2017</span>
     <span class="tag">SCA-ready</span>
   </div>
@@ -1579,8 +1579,8 @@ body.mode-clinic .sca-only{display:none!important}
       </div>
     </div>
 
-    <!-- ═══ Interactive Medication Chooser (live, NICE/BNF tiered) ═══ -->
-    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+    <!-- ═══ Interactive Medication Chooser (live, NICE NG219/BNF tiered) ═══ -->
+    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE NG219 / BNF</div>
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="gout"></div>
 
@@ -1665,7 +1665,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dc-item">Prescribe PPI alongside in patients &gt;45 years or with any GI risk factor</div>
         </div>
         <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Take this at the full dose immediately — this is one situation where you do need the highest dose to dampen the inflammation quickly. Take it with food to protect your stomach. I'm also prescribing a stomach-protecting tablet to take alongside it. Continue until the pain fully settles — usually about a week — then stop."</p></div>
-        <div class="dc-sca"><p>NSAID + PPI co-prescription in a patient over 45 is a NICE-mandated quality standard — prescribing an NSAID without PPI gastroprotection in this age group is an SCA prescribing error. Always state PPI explicitly when prescribing NSAIDs for gout in the SCA consultation.</p></div>
+        <div class="dc-sca"><p>NICE NG219 (2022): consider adding a PPI for people taking an NSAID for a gout flare — omitting gastroprotection in an older patient or one with GI risk factors is an SCA prescribing error. Always state PPI explicitly when prescribing NSAIDs for gout in the SCA consultation.</p></div>
       </div>
 
       <div class="dc" id="dc-pred">
@@ -2681,16 +2681,17 @@ function resetScorecard(){
   </main>
 </div>
 
-<script src="../assets/site.js?v=102"></script>
+<script src="../assets/site.js?v=104"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
 <!-- Medication Chooser engine + topic data -->
 <script src="../assets/medchooser.js"></script>
 <script src="../assets/meds/gout.js"></script>
-<script src="../assets/topic-links.js?v=7"></script>
+<script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
+<script src="chooser-guard.js?v=1"></script>
 </body>
 </html>

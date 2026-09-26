@@ -267,7 +267,8 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     { effect:'Shrinks prostate, improves flow, reduces retention/surgery risk', mechanism:'Lower DHT over 6–12 months.' },
   ],
   adverse:[
-    { ae:'Sexual dysfunction (libido, ED, ejaculatory)', mechanism:'Reduced DHT.' },
+    { ae:'Sexual dysfunction (libido, ED, ejaculatory) — may persist after stopping (MHRA 2026)', mechanism:'Reduced DHT.' },
+    { ae:'Depression and suicidal ideation (finasteride; precautionary warning for dutasteride)', mechanism:'Ask about prior depression before prescribing; advise to report mood changes (MHRA 2026).' },
     { ae:'Halves PSA', mechanism:'Double the measured PSA when screening for cancer.' },
     { ae:'Teratogenic — pregnant women must not handle crushed tablets', mechanism:'Disrupts fetal male genital development.' },
   ],

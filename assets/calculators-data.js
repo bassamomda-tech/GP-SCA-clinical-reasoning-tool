@@ -259,7 +259,7 @@ window.RGP_CALCULATORS = [
     title: 'CRB-65',
     category: 'Respiratory',
     description: 'Community-acquired pneumonia severity for primary care.',
-    usefulFor: 'Decides home vs hospital for CAP (NICE NG138). No bloods needed.',
+    usefulFor: 'Informs home vs hospital for CAP alongside clinical judgement (NICE NG250). No bloods needed.',
     resultLabel: 'CRB-65', resultMax: 4,
     inputs: [
       { id:'crb_c', kind:'check', label:'Confusion — AMT ≤ 8 or new disorientation', points:1 },
@@ -269,12 +269,12 @@ window.RGP_CALCULATORS = [
     ],
     compute(v){ return Object.values(v).filter(Boolean).length; },
     interpret(s){
-      if (s === 0) return { label:'Low risk',       severity:'low',  action:'Manage in community — oral amoxicillin.', detail:'30-day mortality < 1%.' };
-      if (s <= 2)  return { label:'Intermediate',   severity:'med',  action:'Consider hospital — assess social factors, hypoxia, comorbidities.', detail:'30-day mortality ~8%.' };
-      return          { label:'High risk',          severity:'severe', action:'Same-day hospital admission. Urgent treatment.', detail:'30-day mortality ≥ 31%.' };
+      if (s === 0) return { label:'Low risk',       severity:'low',  action:'Usually manage at home with safety-netting — oral amoxicillin 5 days (NICE NG250).', detail:'30-day mortality < 1%. Use clinical judgement; refer if sepsis or cardiorespiratory failure.' };
+      if (s === 1) return { label:'Intermediate',   severity:'med',  action:'Primary care with safety-netting, or virtual ward / SDEC / hospital at home / hospital — clinical judgement (NICE NG250).', detail:'Weigh hypoxia, comorbidities, frailty and social factors.' };
+      return          { label:'Higher risk',        severity:'severe', action:'Consider hospital referral (NICE NG250); same-day if sepsis, hypoxia or clinically unwell.', detail:'Mortality rises with each point (score 3–4: high risk).' };
     },
     refs:[
-      { label:'NICE NG138 Pneumonia', url:'https://www.nice.org.uk/guidance/ng138' },
+      { label:'NICE NG250 Pneumonia (2025)', url:'https://www.nice.org.uk/guidance/ng250' },
       { label:'BTS CAP 2009', url:'https://www.brit-thoracic.org.uk/' },
     ],
   },

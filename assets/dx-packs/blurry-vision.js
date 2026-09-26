@@ -25,7 +25,7 @@
   if (window.RGPTriage) RGPTriage.register('blurry-vision-triage', {
     title: 'Blurry / reduced vision — triage',
     subtitle: 'Tick features. Surfaces GCA, acute glaucoma, retinal detachment and vascular occlusion.',
-    guideline: 'NICE NG12',
+    guideline: 'BSR 2020 GCA · NICE NG77 cataracts · NICE NG81 glaucoma · NICE NG82 AMD',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Check acuity + pinhole; gradual painless loss → optician/ophthalmology routine; treat refractive/cataract/AMD pathway; diabetic → retinopathy screening.',
     rules: [
@@ -69,7 +69,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('blurry-vision-dx', {
     title: 'Blurry vision — differential',
     subtitle: 'The engine weights gradual causes (refractive, cataract, AMD) against acute ones, and always surfaces GCA, vascular occlusion, retinal detachment and optic neuritis.',
-    guideline: 'NICE NG12',
+    guideline: 'BSR 2020 GCA · NICE NG77 cataracts · NICE NG81 glaucoma · NICE NG82 AMD',
     patientPresenting: "My vision's gone blurry, doctor — things aren't as sharp as they were.",
     inputs: INPUTS,
     diagnoses: [

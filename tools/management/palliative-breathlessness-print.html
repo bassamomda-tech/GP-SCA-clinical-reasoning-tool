@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Palliative Breathlessness — Protocol · Reasoning GP</title>
+<meta name="description" content="Breathlessness in advanced illness on one page: treat what is reversible, lead with the fan and breathing techniques, trial low-dose oral morphine, keep benzodiazepines for panic, give oxygen only for hypoxaemia, and plan for the last days of life." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/palliative-breathlessness.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790316534730122 tools/management/palliative-breathlessness.html">
+<meta name="omelette-print-source" content="v1790380012917942 tools/management/palliative-breathlessness.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,88 +23,198 @@
 <script>
 MG.render({
   icon:"🕊️",
-  title:"Palliative Breathlessness — Step-by-Step",
-  stemTitle:"Breathlessness in palliative care &mdash; reversible causes, the handheld fan, low-dose opioids and anxiolytics",
-  stemSub:"A practical protocol: treat reversible causes, lead with non-drug measures (the handheld fan is first-line), use low-dose oral morphine to reduce the sensation of breathlessness, add a benzodiazepine for the anxiety component, and reserve oxygen for hypoxia \u2014 converting to a syringe pump in the last days. GMEC Palliative Care 2025 / PCF8.",
-  guideline:"GMEC 2025 · PCF8",
-  glance:[
-    {lbl:"First (non-drug)", val:"Handheld fan", sub:"airflow to the face"},
-    {lbl:"Core drug", val:"Morphine 2.5 mg IR", sub:"IR 2.5\u20135mg PRN"},
-    {lbl:"Anxiety component", val:"Lorazepam 0.5 mg SL", sub:"0.5mg SL PRN"},
-    {lbl:"Oxygen", val:"Only if hypoxic", sub:"not for sensation alone"},
-    {lbl:"Reversible", val:"Effusion / PE / infection", sub:"treat if appropriate"},
-    {lbl:"Last days", val:"CSCI morphine ± midazolam", sub:"syringe pump"}
+  title:"Palliative breathlessness",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Breathlessness in advanced illness: treat what can be reversed, start with the fan, trial low-dose morphine, and give oxygen only for hypoxaemia",
+  stemSub:"Breathlessness in advanced cancer, COPD, heart failure or interstitial lung disease usually has more than one cause, and fear makes it worse. Treat the reversible causes that fit the patient's goals. Teach the fan, positioning and breathing control. Trial low-dose oral morphine for the sensation of breathlessness. Keep benzodiazepines for panic rather than for the breathlessness itself. Offer oxygen only when the patient is hypoxaemic. Plan anticipatory medicines before the last days.",
+  guideline:"NICE NG31 (2015) · NICE NG115 (2018, updated 2019) · NICE NG106 (2018) · BTS home oxygen (2015) · Scottish Palliative Care Guidelines: Breathlessness (2025)",
+  meta:[
+    {t:"NICE NG31 last days of life (2015) · QS144 (2017)"},
+    {t:"NICE NG115 COPD · NG106 heart failure"},
+    {t:"BTS home oxygen 2015 · MHRA DSU March 2020"},
+    {t:"Scottish Palliative Care Guidelines 2025 · Cochrane"},
+    {t:"NG12 (updated April 2026) · chest X-ray only if no diagnosis yet", tone:"tw"}
   ],
-  flow:[
-    {t:"node", d:"found", n:"1", tag:"Assess", title:"Treat reversible causes first",
-      blocks:[
-        {b:"table", head:["Reversible cause","Action (if appropriate to prognosis/wishes)"], rows:[
-          ["Pleural effusion","Drainage ± pleurodesis / indwelling catheter"],
-          ["Anaemia","Transfusion if symptomatic and prognosis allows"],
-          ["Infection (LRTI)","Antibiotics if consistent with goals of care"],
-          ["Bronchospasm (COPD/asthma)","Bronchodilators ± corticosteroid"],
-          ["PE","Anticoagulation \u2014 weigh against prognosis/bleeding"],
-          ["SVC obstruction / lymphangitis","Dexamethasone + urgent oncology (see SVCO pathway)"]
-        ]},
-        {b:"warn", html:"Breathlessness in palliative care is usually <b>multifactorial</b> and there is often an <b>anxiety/panic component</b> that amplifies it \u2014 address both the physical cause and the fear."}
-      ]},
-    {t:"node", d:"life", n:"2", tag:"Step 1 \u00b7 non-drug (first-line)", title:"Non-drug measures \u2014 start here",
-      blocks:[
-        {b:"tiles", v:"life", items:[
-          {t:"🌬️ Handheld fan", html:"<b>First-line</b> \u2014 a stream of cool air to the face (trigeminal) reduces the sensation of breathlessness. Cheap, effective, evidence-based."},
-          {t:"🪑 Positioning", html:"Sit upright / lean forward on a table; open windows; cool room."},
-          {t:"🧘 Breathing & anxiety", html:"Breathing-control techniques, pacing, relaxation; calm reassurance reduces the panic spiral."},
-          {t:"♿ Energy conservation", html:"Activity pacing, aids, plan around the breathlessness; pulmonary-rehab-style techniques."}
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"3", tag:"Step 2 \u00b7 opioid", title:"Low-dose opioid for the breathlessness sensation",
-      blocks:[
-        {b:"ladder", steps:[
-          {step:"3a", title:"Opioid-naive", when:"start low",
-           html:"<b>Immediate-release morphine (Oramorph) 2.5\u20135mg PRN</b> (e.g. 4-hourly + before exertion). If regular need, add small regular/modified-release dose. Frail/renal: start 2.5mg or use oxycodone."},
-          {step:"3b", title:"Already on opioid for pain", when:"use a breathlessness PRN",
-           fromLabel:"on background opioid",
-           html:"Use an extra PRN dose (often the breakthrough dose, or smaller) for breathlessness episodes; titrate cautiously."},
-          {step:"3c", title:"Co-prescribe", when:"always",
-           fromLabel:"prevent side effects",
-           html:"Laxative (opioid constipation) and antiemetic PRN as for pain (see Palliative Pain protocol)."}
-        ]},
-        {b:"why", html:"Low-dose opioids reduce the <strong>central perception</strong> of breathlessness and respiratory drive sensitivity without clinically significant respiratory depression at these doses \u2014 the evidence base supports them as the core pharmacological treatment."}
-      ]},
-    {t:"node", d:"drug", n:"4", tag:"Step 3 \u00b7 anxiety component", title:"Add a benzodiazepine for anxiety/panic",
-      blocks:[
-        {b:"kv", rows:[
-          ["Anxiolytic","<b>Lorazepam 0.5\u20131mg sublingual PRN</b> for episodic breathlessness with anxiety/panic (fast, can be given SL)."],
-          ["Persistent anxiety","Consider a regular low-dose benzodiazepine or, if prognosis allows, an SSRI for background anxiety (see Anxiety/Depression protocol)."],
-          ["Last days of life","<b>Midazolam 2.5\u20135mg SC PRN</b> and/or via CSCI for distressing breathlessness/agitation."]
-        ]}
-      ]},
-    {t:"node", d:"drug", n:"5", tag:"Step 4 \u00b7 oxygen & last days", title:"Oxygen only if hypoxic; convert in last days",
-      blocks:[
-        {b:"kv", rows:[
-          ["Oxygen","Offer a trial <b>only if hypoxic (SpO\u2082 low)</b> and it helps symptomatically \u2014 a fan is as effective as O\u2082 for non-hypoxic breathlessness and less burdensome."],
-          ["Unable to swallow / last days","Convert morphine to <b>CSCI</b>; add <b>midazolam</b> to the syringe pump for the anxiety/agitation component (see Care of the Dying protocol)."]
-        ]}
-      ]},
-    {t:"node", d:"monitor", n:"6", tag:"Review", title:"Review & safety-net",
-      blocks:[
-        {b:"kv", rows:[
-          ["Review","Titrate opioid/anxiolytic to symptom relief; reassess for new reversible causes."],
-          ["Safety-net","Sudden severe breathlessness, chest pain, haemoptysis, or stridor \u2192 reassess for PE, SVCO, effusion, or airway obstruction."]
-        ]}
-      ]},
-    {t:"node", d:"safety", n:"7", tag:"Safety-net · anticipatory", title:"When carers should call", blocks:[{b:"tiles", v:"safety", items:[{t:"📞 Severe/sudden breathlessness", html:"Rapidly worsening or distressing breathlessness → contact the palliative team/out-of-hours for review and anticipatory meds."},{t:"💨 Reversible causes", html:"Reassess for treatable causes (effusion, infection, PE, anaemia, heart failure) where appropriate to goals."},{t:"💊 Anticipatory meds", html:"Ensure anticipatory opioid \u00b1 anxiolytic prescribed; carers know how to use them and the fan/positioning measures."}]}]},
-    {t:"node", d:"refer", n:"8", tag:"Refer", title:"When to refer / seek advice",
-      arrow:"reversible cause or refractory",
-      blocks:[
-        {b:"tiles", v:"refer", items:[
-          {t:"Treat the cause", html:"Effusion (drainage), SVCO (oncology + dexamethasone), infection, bronchospasm \u2014 if consistent with goals of care."},
-          {t:"Specialist palliative care", html:"Refractory breathlessness despite fan + opioid + anxiolytic; complex CSCI."},
-          {t:"Respiratory / oncology", html:"For procedures (pleural intervention, stent) or disease-directed treatment."}
-        ]},
-        {b:"say", html:"Breathlessness is frightening, which itself makes it worse \u2014 so we use a handheld fan, breathing techniques, a low dose of morphine to ease the feeling of breathlessness, and a calming tablet for the panic. Oxygen only helps if your levels are actually low."}
-      ]}
-  ]
+  lead:"<div class='mg-layers'><a href='#redflags'><b>Red flags</b><small>Sudden, stridor, SVCO</small></a><a href='#reversible'><b>Reversible</b><small>Treat if goals allow</small></a><a href='#nondrug'><b>Fan first</b><small>Breathing and positioning</small></a><a href='#opioid'><b>Morphine</b><small>Low dose, titrate</small></a><a href='#refer'><b>Refer</b><small>Who and when</small></a></div>",
+  quickSub:"The six points that change what you do. Each one traces to a source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Sudden or new breathlessness is a new problem", html:"Acute breathlessness, stridor, pleuritic pain, haemoptysis, or swelling of the face and arms needs assessment for <b>PE, airway obstruction, SVCO, a large effusion, pneumothorax or pulmonary oedema</b>. Whether you admit depends on the patient's goals, but the decision should be deliberate, not a default."},
+    {tone:"blue", h:"Treat what can be reversed", html:"Look for and treat reversible causes (for example pulmonary oedema or pleural effusion) when that fits the patient's wishes and how unwell they are. NICE NG31 makes this the first step even in the last days of life."},
+    {tone:"green", h:"The fan works, and it's cheap", html:"A <b>handheld fan directed at the face</b> reduced breathlessness in a randomised crossover trial (Galbraith, JPSM 2010). Combine it with positioning, pursed-lip breathing, pacing and anxiety management (Scottish Palliative Care Guidelines 2025)."},
+    {tone:"cream", h:"Trial low-dose oral morphine", html:"For the frail or opioid-naive: a <b>low dose of oral immediate-release morphine</b> (commonly 2.5 mg) as a monitored therapeutic trial; interval and titration per BNF and local palliative guidance. In opioid-naive patients, <b>doses above 30 mg oral morphine in 24 hours</b> may add no further benefit for breathlessness (Scottish Palliative Care Guidelines 2025). Co-prescribe a laxative."},
+    {tone:"amber", h:"Benzodiazepines are for panic", html:"Cochrane found <b>no evidence that benzodiazepines relieve breathlessness</b> itself (Simon 2016). Use lorazepam 500 micrograms SL only for the panic component. The MHRA (DSU March 2020) warns that benzodiazepines with opioids can cause fatal respiratory depression, so prescribe them together only when there is no alternative."},
+    {tone:"blue", h:"Oxygen only for hypoxaemia", html:"Don't routinely start oxygen for breathlessness. Offer it only if the patient has, or is suspected to have, <b>symptomatic hypoxaemia</b> (NICE NG31). In patients who are not hypoxaemic, oxygen was no better than room air (Abernethy, Lancet 2010)."}
+  ],
+  pathwaySub:"Five steps, repeated at each review. The red step decides whether this is a new emergency.",
+  pathway:[
+    {title:"Is this new, sudden or dangerous?", html:"Stridor, SVCO features, suspected PE, tension pneumothorax, rapidly enlarging effusion, acute pulmonary oedema, sepsis. Decide the setting according to the patient's goals and any advance care plan.", alert:true},
+    {title:"Find what is reversible", html:"Effusion, infection, bronchospasm, heart failure, anaemia, PE, arrhythmia, and ascites splinting the diaphragm. Treat what fits the patient's goals, and check SpO₂ at the first assessment."},
+    {title:"Non-drug measures for everyone", html:"Handheld fan, sitting upright and leaning forward, pursed-lip breathing, pacing, and a written plan for breathless episodes. Teach carers the same techniques."},
+    {title:"Trial low-dose opioid, and add an anxiolytic only for panic", html:"Low-dose oral morphine as a trial, titrated to effect and side effects, with a laxative. Lorazepam SL for panic attacks. Review within a few days."},
+    {title:"Plan ahead", html:"Anticipatory medicines (an opioid and midazolam SC) before the patient can no longer swallow. A syringe pump if needs are regular. Advance care planning about hospital admission."}
+  ],
+  sections:[
+
+    {id:"redflags", nav:"Red flags", title:"Red flags: when breathlessness is a new emergency", sub:"A patient receiving palliative care can still have an acute, treatable event. Recognise it, then decide with the patient what treatment fits.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Stridor, or swelling of the face, neck and arms", html:"<b>Central airway obstruction</b> or <b>superior vena cava obstruction</b>. Arrange same-day oncology or acute oncology assessment if the patient's goals support it. Steroids, stenting or radiotherapy may give real relief. See <a href='svco.html'>SVCO</a>.", src:"NICE NG31 (2015): identify and treat reversible causes"},
+         {tone:"red", h:"Sudden breathlessness with pleuritic pain, haemoptysis or a swollen leg", html:"Possible <b>PE</b>, which is common in cancer. Whether to investigate and anticoagulate depends on prognosis, bleeding risk and the patient's wishes. It is a clinical decision to discuss, not an automatic one. See <a href='pulmonary-embolism.html'>pulmonary embolism</a>.", src:"NICE NG31 (2015): identify and treat reversible causes"},
+         {tone:"red", h:"Acute pulmonary oedema or fast AF", html:"This can often be reversed with diuretics or rate control even in advanced disease. NG31 gives pulmonary oedema as an example of a reversible cause to treat.", src:"NICE NG31 (2015)"},
+         {tone:"amber", h:"A large or re-accumulating pleural effusion", html:"Drainage can give rapid relief. For recurrent malignant effusions, a respiratory team can consider pleurodesis or an indwelling pleural catheter.", src:"NICE NG31 (2015): pleural effusion as a reversible cause"},
+         {tone:"amber", h:"Drowsy, pinpoint pupils or slow breathing on opioids plus a benzodiazepine", html:"Possible <b>opioid toxicity or combined respiratory depression</b>. Review doses, renal function and co-prescribed sedatives. Benzodiazepines and opioids can both cause life-threatening respiratory depression, so monitor closely.", src:"MHRA Drug Safety Update, March 2020"},
+         {tone:"purple", h:"NG12: breathlessness with no diagnosis yet", html:"If the patient has no established diagnosis (for example palliative care for frailty or dementia), NG12 (updated April 2026) still applies. <b>Offer an urgent, direct-access chest X-ray to adults aged 40 and over with 2 or more unexplained symptoms, or who have ever smoked and have 1 or more</b>, from cough, fatigue, shortness of breath, chest pain, weight loss and appetite loss. For mesothelioma, the same applies to 1 or more symptoms with asbestos exposure. The same threshold appears under <a href='#refer'>Refer</a>.", src:"NICE NG12 (updated April 2026)"}
+       ]},
+       {b:"why", html:"Breathlessness in advanced illness is usually chronic and multifactorial, which makes it easy to treat every change as 'the disease progressing'. But a new cause can appear on top of the existing one. PE, effusion, SVCO and pulmonary oedema are all common in advanced cancer and heart failure, and all can be treated. NG31 asks clinicians to look for reversible causes before turning to symptom control alone, even in the last days of life. Whether to act is a shared decision based on the patient's goals, but that decision should be made on purpose."}
+     ]},
+
+    {id:"reversible", nav:"Reversible causes", title:"Reversible causes: treat if it fits the patient's goals", sub:"Consider each of these at the first assessment and again whenever breathlessness gets worse.",
+     blocks:[
+       {b:"table", head:["Cause","Clue","Possible action (if appropriate)"], rows:[
+         ["Pleural effusion","Stony dullness, reduced breath sounds, known malignancy","Therapeutic aspiration. Pleurodesis or an indwelling catheter for recurrence (respiratory team)"],
+         ["Infection","Fever, purulent sputum, new crackles","Antibiotics, if they fit the goals of care. Sometimes the kinder choice is symptom control alone"],
+         ["Bronchospasm (COPD, asthma)","Wheeze, known airways disease","Optimise inhalers, with a short course of oral steroid if needed. See <a href='copd.html'>COPD</a>"],
+         ["Heart failure","Orthopnoea, oedema, raised JVP","Optimise diuretics and heart failure treatment. See <a href='heart-failure.html'>heart failure</a>"],
+         ["Anaemia","Pallor, fatigue, low Hb","Transfusion if symptomatic and the benefit is likely to outweigh the burden"],
+         ["PE","Sudden onset, pleuritic pain, risk factors","Anticoagulation, weighing prognosis and bleeding risk"],
+         ["SVCO or lymphangitis","Facial swelling, distended chest veins, progressive breathlessness with a clear chest X-ray","Acute oncology. Steroids and stenting or radiotherapy. See <a href='svco.html'>SVCO</a>"],
+         ["Ascites","Tense abdomen splinting the diaphragm","Paracentesis"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Check SpO₂ early", html:"Knowing whether the patient is hypoxaemic decides whether oxygen has any role. It also sets a baseline for later reviews.", src:"NICE NG31 (2015) · BTS home oxygen guideline (2015)"},
+         {tone:"cream", h:"Name the goals first", html:"Ask what matters most to the patient: staying at home, avoiding hospital, time with family. Then match investigations to that. Some patients want every reversible cause pursued, others want comfort only.", src:"NICE NG31 (2015)"}
+       ]}
+     ]},
+
+    {id:"nondrug", nav:"Fan first", title:"Non-drug measures: the foundation for every patient", sub:"These work at rest, before activity, and in the last days of life. Teach them to the patient and carers.",
+     blocks:[
+       {b:"tiles", v:"life", items:[
+         {t:"🌬️ Handheld fan", html:"Cool air directed at the face (around the nose and mouth) for a few minutes during an episode. In a randomised crossover trial it reduced breathlessness compared with a fan directed at the legs."},
+         {t:"🪑 Positioning", html:"Sit upright or lean forward with the forearms resting on a table or knees. In bed, prop the patient up. Open a window or cool the room."},
+         {t:"🫁 Breathing control", html:"Pursed-lip breathing (breathe out slowly through pursed lips) and relaxed breathing from the diaphragm. Practise when calm so the techniques are available during an episode."},
+         {t:"🚶 Pacing and energy", html:"Break tasks up, sit to wash and dress, and plan activity around the times of day the patient is at their best. Use equipment and OT assessment."},
+         {t:"🧠 Anxiety and panic", html:"Breathlessness causes fear and fear worsens breathlessness. A calm explanation, a written plan for episodes and a practised routine reduce the panic that makes it worse."}
+       ]},
+       {b:"cards", items:[
+         {tone:"green", h:"The evidence for the fan", html:"Galbraith et al. randomised 50 breathless patients with advanced disease to use a handheld fan on the face or the legs for 5 minutes, then swapped them over. Breathlessness fell significantly only when the fan was directed at the face.", src:"Galbraith et al., J Pain Symptom Manage 2010"},
+         {tone:"green", h:"Recommended in the Scottish guideline", html:"The Scottish guideline recommends pursed-lip breathing, a handheld fan, opening a window, positioning, and strategies for anxiety and fatigue. In the last days of life, it recommends trying a table or handheld fan and a more upright position.", src:"Scottish Palliative Care Guidelines 2025"},
+         {tone:"cream", h:"Non-drug measures in the last days", html:"NG31 advises considering non-pharmacological management of breathlessness in the dying person, alongside treating reversible causes and before or together with drugs.", src:"NICE NG31 (2015)"}
+       ]},
+       {b:"why", html:"Airflow across the face, which is supplied by the trigeminal nerve, seems to change how the brain perceives breathlessness. That may explain why a fan helps even when oxygen levels don't change, and why patients who aren't hypoxaemic can feel oxygen helps: it may be the flow of gas rather than the oxygen. That's why the fan comes first and oxygen is kept for hypoxaemia."}
+     ]},
+
+    {id:"opioid", nav:"Morphine", title:"Low-dose opioid for the sensation of breathlessness", sub:"A monitored trial with a low starting dose and a ceiling. The 30 mg/24 h ceiling and exertion timing are from the Scottish Palliative Care Guidelines (2025); starting dose, interval and conversions are per BNF.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"Opioid-naive, frail, or non-malignant disease", when:"start here", tone:"cream",
+          html:"<b>Oral immediate-release morphine at a low dose</b> (commonly 2.5 mg; interval and titration per BNF and local palliative guidance), as a therapeutic trial. Review the benefit and side effects within a few days. Taken <b>15 to 30 minutes before expected exertion</b>, an opioid can reduce breathlessness on activity (Scottish Palliative Care Guidelines 2025)."},
+         {step:"2", title:"Benefit, with regular need", when:"trial works", tone:"cream", fromLabel:"helpful and tolerated",
+          html:"Titrate carefully. If needs are regular, consider converting to a low-dose modified-release preparation (5 mg MR morphine tablets are available). In opioid-naive patients, <b>more than 30 mg oral morphine in 24 hours may give no extra benefit</b> for breathlessness."},
+         {step:"3", title:"Already on an opioid for pain", when:"background opioid", tone:"amber", fromLabel:"on regular opioid",
+          html:"Use the existing breakthrough dose for breathless episodes and review the total. Titrate as you would for pain, and watch for toxicity. See <a href='palliative-pain.html'>palliative pain</a>."},
+         {step:"4", title:"Renal impairment or not tolerated", when:"caution", tone:"amber", fromLabel:"side effects or low eGFR",
+          html:"Morphine metabolites accumulate in renal impairment. Use a lower dose or longer interval, or ask the specialist palliative care team about an alternative opioid. Dose per BNF."}
+       ]},
+       {b:"cards", items:[
+         {tone:"cream", h:"Always co-prescribe", html:"A regular laxative (a stimulant, with a softener if needed) goes on the same prescription as a regular opioid. Also consider an antiemetic as needed for the first week. See <a href='palliative-constipation.html'>palliative constipation</a>.", src:"NICE CG140 (2012, updated 2016) · Scottish Palliative Care Guidelines 2025"},
+         {tone:"cream", h:"COPD and heart failure too", html:"NICE NG115 supports using opioids, when appropriate, to relieve breathlessness in end-stage COPD that has not responded to other medical treatment. Starting low and titrating carefully is described as safe in cancer, COPD and heart failure.", src:"NICE NG115 (2018, updated 2019) · Scottish Palliative Care Guidelines 2025"},
+         {tone:"blue", h:"How strong is the evidence?", html:"The Cochrane review found <b>low-quality evidence of a small benefit</b> from oral or parenteral opioids for breathlessness. An earlier crossover trial of 20 mg MR morphine daily in refractory breathlessness (mostly COPD) showed modest improvement. The BEAMS trial of 8 or 16 mg/day MR morphine in COPD found no significant fall in worst breathlessness at 1 week. Treat it as an individual trial: continue if it helps, stop if it doesn't.", src:"Barnes et al., Cochrane 2016 · Abernethy et al., BMJ 2003 · Ekström et al., JAMA 2022"},
+         {tone:"amber", h:"Safety counselling", html:"Explain drowsiness and constipation. Tell the patient to follow the agreed dose closely. Tell carers the signs of sedation and respiratory depression (unusual sleepiness, confusion, slow or shallow breathing) and to seek help if they see them.", src:"MHRA Drug Safety Update, March 2020"}
+       ]},
+       {b:"why", html:"Low-dose opioids seem to reduce the brain's perception of breathlessness and the ventilatory response to it. At the low starting doses above, careful titration has not been associated with clinically significant respiratory depression in the populations studied. Most of the harm comes from starting too high, escalating without review, or adding sedatives without monitoring."}
+     ]},
+
+    {id:"anxiolytic", nav:"Benzodiazepines", title:"Benzodiazepines: for the panic, not the breathlessness", sub:"Use them for the anxiety that makes breathless episodes worse, not as a main treatment for breathlessness.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Lorazepam SL","<b>500 micrograms sublingually, 4- to 6-hourly as needed</b>, for breathlessness with panic."],
+         ["Midazolam SC","<b>2 mg SC, 4- to 6-hourly as needed</b> if the oral or SL route is unsuitable."],
+         ["Persistent background anxiety","Consider psychological support and treatment for the anxiety itself (see <a href='palliative-anxiety-depression.html'>palliative anxiety and depression</a>) rather than increasing regular benzodiazepines."]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"No evidence they relieve breathlessness itself", html:"The Cochrane review found no evidence that benzodiazepines relieve breathlessness in advanced cancer or COPD. Use them second- or third-line, when opioids and non-drug measures have failed or when panic is prominent.", src:"Simon et al., Cochrane 2016"},
+         {tone:"amber", h:"Benzodiazepine plus opioid", html:"Both drugs can cause life-threatening respiratory depression. Prescribe them together only if there is no alternative, at the lowest dose, and warn the patient and carers about sedation and slowed breathing.", src:"MHRA Drug Safety Update, March 2020"},
+         {tone:"cream", h:"NG31 and NG115 allow either or both", html:"In the last days of life NG31 advises considering an opioid, a benzodiazepine, or a combination for breathlessness. NG115 lists benzodiazepines, tricyclics, major tranquillisers and oxygen among options, when appropriate, in end-stage COPD.", src:"NICE NG31 (2015) · NICE NG115 (2018, updated 2019)"}
+       ]}
+     ]},
+
+    {id:"oxygen", nav:"Oxygen", title:"Oxygen: only for hypoxaemia", sub:"Patients and families often expect oxygen. What decides whether it helps is the oxygen saturation, not how breathless the patient is.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Don't start it routinely", html:"Do not routinely start oxygen to manage breathlessness in the dying person. Offer it only to people known or clinically suspected to have symptomatic hypoxaemia.", src:"NICE NG31 (2015)"},
+         {tone:"blue", h:"No palliative oxygen for non-hypoxaemic patients", html:"Do not give palliative oxygen to patients with cancer or end-stage cardiorespiratory disease who are not hypoxaemic, or whose hypoxaemia is mild and above long-term oxygen thresholds.", src:"BTS guideline for home oxygen use in adults (2015)"},
+         {tone:"blue", h:"Heart failure", html:"Do not offer long-term home oxygen therapy for advanced heart failure (it may still be indicated for comorbid COPD).", src:"NICE NG106 (2018)"},
+         {tone:"green", h:"Room air works as well", html:"In a double-blind RCT in patients with refractory breathlessness who were not significantly hypoxaemic, oxygen by nasal cannula gave no more relief than medical air.", src:"Abernethy et al., Lancet 2010"},
+         {tone:"amber", h:"If oxygen is given", html:"Treat it as a trial with a clear goal. Explain the fire risk with smoking and open flames, and the burden of tubing and a dry nose. Stop it if there is no benefit. Home oxygen needs a Home Oxygen Order Form and assessment."}
+       ]},
+       {b:"say", html:"Oxygen only helps if your oxygen level is actually low, and yours is normal. That's why the fan and the breathing techniques help you more. The air moving across your face is what eases the feeling. We'll check your level again if things change."}
+     ]},
+
+    {id:"lastdays", nav:"Last days", title:"The last days of life and anticipatory prescribing", sub:"Plan before swallowing becomes difficult, so a breathless crisis at night can be managed at home.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"cream", h:"Individualised anticipatory medicines", html:"Assess which medicines the person is likely to need for symptoms in the last days, including breathlessness and anxiety. Prescribe them early, stating the indication, dose and route. Discuss them with the patient, the people important to them and the team.", src:"NICE NG31 (2015) · NICE QS144 (2017)"},
+         {tone:"cream", h:"Subcutaneous doses in the last days", html:"<b>Midazolam 2 to 5 mg SC, up to hourly if required</b>, as an anxiolytic sedative. An opioid can be given SC for pain or breathlessness, up to hourly if required. <b>If 3 or more doses have been given within 4 hours with little or no benefit, seek urgent advice; if more than 6 doses are needed in 24 hours, seek advice or review.</b> The SC opioid dose depends on current oral use, per BNF conversion.", src:"Scottish Palliative Care Guidelines 2025"},
+         {tone:"cream", h:"Syringe pump", html:"If 3 or more breakthrough doses are needed in 24 hours, review the regular dose (Scottish Palliative Care Guidelines 2025). If needs are regular or oral medicines can no longer be taken, consider a continuous SC infusion of the opioid, with or without midazolam. Doses per BNF and local palliative guidance. See <a href='care-of-the-dying.html'>care of the dying</a>."},
+         {tone:"green", h:"Keep the fan and positioning going", html:"Non-drug measures still help at the end of life: a table or handheld fan, sitting upright, and a calm presence. Show family members what they can do.", src:"Scottish Palliative Care Guidelines 2025"}
+       ]},
+       {b:"warn", html:"In the last days, the aim of midazolam is relief of distress, not sedation for its own sake. Titrate it to comfort, review it at every visit, and record the rationale. If distress is escalating and hard to control, seek specialist palliative advice the same day."}
+     ]},
+
+    {id:"review", nav:"Review", title:"Review and safety-netting", sub:"Breathlessness changes, so the plan needs reviewing.",
+     blocks:[
+       {b:"timeline", items:[
+         {n:"1", when:"First visit", title:"Assess and start", html:"Look for reversible causes, check SpO₂, and teach the fan and breathing control. Start a morphine trial if appropriate, with a laxative. Agree goals and ceilings of treatment."},
+         {n:"2", when:"2 to 3 days", title:"Review the trial", html:"Has breathlessness improved? What are the side effects? Adjust the dose, or stop if there is no benefit."},
+         {n:"3", when:"Each deterioration", title:"Re-look for reversible causes", html:"A new effusion, infection, PE or pulmonary oedema, weighed against the patient's goals."},
+         {n:"4", when:"Before the last days", title:"Anticipatory medicines in the house", html:"An opioid and midazolam SC prescribed, carers know the plan, and the out-of-hours team has the care plan."}
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"Tell carers: call urgently if", html:"Sudden severe breathlessness, new chest pain or coughing up blood, noisy or high-pitched breathing (stridor), a swollen face or arms, or unusual drowsiness with slow breathing after a medicine dose.", src:"NICE NG31 (2015) · MHRA Drug Safety Update, March 2020"},
+         {tone:"amber", h:"Call within a day if", html:"Breathlessness is steadily getting worse despite the plan, a new fever or cough, or side effects from the morphine (sickness, constipation, confusion)."}
+       ]},
+       {b:"say", html:"When you get a breathless attack: sit forward, use the fan on your face, breathe out slowly through pursed lips, and take the morphine dose we agreed. If it isn't settling after that, or if it comes on suddenly with chest pain or you start coughing blood, ring straight away. Don't wait."}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: who, how quickly, and for what", sub:"Most breathlessness in advanced illness is managed in primary care with the community palliative team. These are the exceptions.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day: acute oncology or emergency", html:"Stridor, SVCO, suspected tension pneumothorax, massive haemoptysis, or acute pulmonary oedema, where hospital treatment fits the patient's goals.", src:"NICE NG31 (2015)"},
+         {tone:"amber", h:"Urgent: respiratory or oncology procedures", html:"Pleural aspiration, pleurodesis or an indwelling catheter for effusion. Stenting or radiotherapy for airway or SVC obstruction."},
+         {tone:"cream", h:"Specialist palliative care", html:"Breathlessness that persists despite the fan, an opioid trial and anxiolytics. Opioid intolerance or renal impairment. A complex syringe pump. Distress in the last days that is hard to control. People with end-stage COPD should have access to the full range of palliative care services, including hospice admission.", src:"NICE NG115 (2018, updated 2019)"},
+         {tone:"cream", h:"Breathlessness services, rehabilitation, and heart failure or COPD teams", html:"Where available, breathlessness support services, pulmonary rehabilitation (for COPD, if the patient is able) and heart failure specialist teams can add a lot. Discuss worsening heart failure symptoms despite optimal treatment with the specialist MDT and consider palliative needs.", src:"NICE NG106 (2018) · NICE NG115 (2018, updated 2019)"},
+         {tone:"purple", h:"Suspected cancer pathway <span class='tw'>2WW</span> · NICE NG12 (updated April 2026)", html:"Only for a patient <b>without an established diagnosis</b>: offer an <b>urgent, direct-access chest X-ray</b> to people <b>aged 40 and over</b> with <b>2 or more unexplained symptoms</b> from cough, fatigue, shortness of breath, chest pain, weight loss and appetite loss, or <b>1 or more if they have ever smoked</b> (or, for mesothelioma, have been exposed to asbestos). Refer on a suspected cancer pathway if the chest X-ray suggests lung cancer, or for <b>unexplained haemoptysis at 40 or over</b>.", src:"NICE NG12 (updated April 2026)"}
+       ]},
+       {b:"say", html:"Being breathless is frightening, and the fear itself makes it worse. So we'll tackle both: the fan and the breathing techniques for the attacks, a small dose of morphine to take the edge off the feeling, and something for the panic if you need it. We'll also check for anything we can actually fix, like fluid on the lung."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice case. The <a href='../../cases/palliative-care.html'>palliative care casebook</a> has the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Scenario", html:"A 78-year-old woman with end-stage COPD (FEV₁ 28%) and two admissions this winter. She has been breathless at rest for a month, SpO₂ 93% on air, and is terrified at night. Her son asks for 'home oxygen like the hospital gave her' and says she 'wants to stay home now'.", src:"Practice scenario, built on NICE NG115 and the BTS home oxygen guideline (2015)"},
+       {tone:"cream", h:"What the examiner is looking for", html:"Explores what the son means by oxygen and what 'stay home' means for her. Checks for a reversible cause (infection, heart failure, effusion). Explains kindly why oxygen won't help when her saturation is 93%, and offers the <b>fan and breathing techniques</b>. Offers a <b>trial of low-dose oral morphine</b> with a laxative and a review in 2 to 3 days. Keeps lorazepam for panic and mentions the MHRA opioid–benzodiazepine warning. Starts <b>advance care planning</b> and anticipatory medicines. Offers referral to specialist palliative care.", src:"NICE NG115 · NICE NG31 · MHRA Drug Safety Update, March 2020"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Primary sources only. Doses are from the named guideline. Where none gives a figure, the page says 'per BNF'.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG31 — Care of dying adults in the last days of life (2015)</b><br><a href="https://www.nice.org.uk/guidance/ng31" rel="noopener">nice.org.uk/guidance/ng31</a><span class="rd"> — identify and treat reversible causes (pulmonary oedema, pleural effusion); consider non-pharmacological management; consider an opioid, a benzodiazepine or both; do not routinely start oxygen, offer it only for known or suspected symptomatic hypoxaemia; individualised anticipatory prescribing</span></li>'+
+         '<li><b>NICE QS144 — Care of dying adults in the last days of life (2017)</b>, quality statement 3: anticipatory prescribing<br><a href="https://www.nice.org.uk/guidance/qs144" rel="noopener">nice.org.uk/guidance/qs144</a></li>'+
+         '<li><b>NICE NG115 — COPD in over 16s: diagnosis and management (2018, updated 2019)</b><br><a href="https://www.nice.org.uk/guidance/ng115" rel="noopener">nice.org.uk/guidance/ng115</a><span class="rd"> — opioids, when appropriate, for breathlessness in end-stage COPD that has not responded to other treatment; benzodiazepines, tricyclics, major tranquillisers and oxygen when appropriate; access to multidisciplinary palliative care including hospice</span></li>'+
+         '<li><b>NICE NG106 — Chronic heart failure in adults (2018)</b><br><a href="https://www.nice.org.uk/guidance/ng106" rel="noopener">nice.org.uk/guidance/ng106</a><span class="rd"> — do not offer long-term home oxygen for advanced heart failure; specialist MDT discussion and palliative needs assessment when symptoms worsen</span></li>'+
+         '<li><b>NICE CG140 — Palliative care for adults: strong opioids for pain relief (2012, updated 2016)</b><br><a href="https://www.nice.org.uk/guidance/cg140" rel="noopener">nice.org.uk/guidance/cg140</a><span class="rd"> — a regular laxative with every strong opioid</span></li>'+
+         '<li><b>British Thoracic Society guidelines for home oxygen use in adults (Hardinge et al., Thorax 2015)</b><br><a href="https://www.brit-thoracic.org.uk" rel="noopener">brit-thoracic.org.uk</a><span class="rd"> — no palliative oxygen for patients who are not hypoxaemic or only mildly hypoxaemic, above long-term oxygen thresholds</span></li>'+
+         '<li><b>Scottish Palliative Care Guidelines — Breathlessness (Healthcare Improvement Scotland, 2025 update)</b> and <b>Care in the last days of life</b><br><a href="https://rightdecisions.scot.nhs.uk/scottish-palliative-care-guidelines/symptom-management/breathlessness/" rel="noopener">rightdecisions.scot.nhs.uk</a><span class="rd"> — a UK national guideline. Opioids taken 15 to 30 minutes before expected exertion; above 30 mg oral morphine/24 h may add no benefit in opioid-naive patients; 3 or more breakthrough doses in 24 hours should prompt review; lorazepam 500 micrograms SL and midazolam 2 mg SC 4- to 6-hourly as needed; midazolam 2 to 5 mg SC and SC opioid up to hourly in the last days, with advice if 3 or more doses in 4 hours bring little benefit or more than 6 are needed in 24 hours; fan, pursed-lip breathing, positioning</span></li>'+
+         '<li><b>MHRA Drug Safety Update, March 2020</b> — Benzodiazepines and opioids: reminder of risk of potentially fatal respiratory depression<br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — urgent direct-access chest X-ray for lung cancer and mesothelioma; suspected cancer pathway referral for haemoptysis at 40 or over. Applies only where there is no established diagnosis</span></li>'+
+         '<li><b>Barnes H et al. Opioids for the palliation of refractory breathlessness in adults with advanced disease and terminal illness. Cochrane Database Syst Rev 2016;(3):CD011008</b><span class="rd"> — low-quality evidence of a small benefit</span></li>'+
+         '<li><b>Simon ST et al. Benzodiazepines for the relief of breathlessness in advanced malignant and non-malignant diseases in adults. Cochrane Database Syst Rev 2016;(10):CD007354</b><span class="rd"> — no evidence of a beneficial effect</span></li>'+
+         '<li><b>Galbraith S et al. Does the use of a handheld fan improve chronic dyspnea? J Pain Symptom Manage 2010;39:831–8</b><span class="rd"> — fan to the face beats fan to the legs</span></li>'+
+         '<li><b>Abernethy AP et al. Sustained release morphine for refractory dyspnoea. BMJ 2003;327:523–8</b> · <b>Abernethy AP et al. Effect of palliative oxygen versus room air in relief of breathlessness in patients with refractory dyspnoea. Lancet 2010;376:784–93</b> · <b>Ekström M et al. Effect of regular, low-dose, extended-release morphine on chronic breathlessness in COPD: the BEAMS randomized clinical trial. JAMA 2022;328:2022–32</b></li>'+
+         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — oral morphine starting dose and interval for breathlessness, opioid conversions, syringe pump doses, renal dosing</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Palliative breathlessness: NICE NG31 and QS144 (last days of life), NG115 (COPD), NG106 (heart failure), CG140 (strong opioids) and NG12 (only where there is no established diagnosis), with the BTS home oxygen guideline (2015), MHRA Drug Safety Update (March 2020) and the Scottish Palliative Care Guidelines (2025). Check all doses against the current BNF and local palliative care guidance before prescribing."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

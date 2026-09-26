@@ -301,7 +301,7 @@
       'Provide prognostic information and palliative/supportive care input where appropriate'],
     referral:[
       'Suspected amyloidosis → haematology and a specialist amyloidosis centre for biopsy and typing',
-      'Abnormal serum free light chains / paraprotein with end-organ features → very urgent haematology (and protein electrophoresis/BJP per myeloma pathway, NICE NG12)',
+      'Abnormal serum free light chains / paraprotein with end-organ features → very urgent haematology (with FBC, calcium, ESR/PV, protein electrophoresis and serum free light chains per the NICE NG12 myeloma panel)',
       'Cardiac amyloid features (unexplained restrictive cardiomyopathy/heart failure) → cardiology with amyloid expertise',
       'Hereditary ATTR → clinical genetics and family screening'],
     source:'NICE / UK National Amyloidosis Centre / BSH guidance' },

@@ -155,7 +155,7 @@ small{font-size:.8rem}
       <div class="col"><div class="blabel">Bone health / environment</div><div class="box act"><span class="ttl">Prevent injury</span><div class="body">Assess osteoporosis (FRAX/DXA), treat; home hazard assessment; footwear; address continence.</div></div></div>
     </div></div>
     <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> fracture / head injury / acute medical cause. <span class="pill pill-purple">Falls service / community geriatrics</span> recurrent falls or multifactorial risk; <span class="pill pill-purple">bone health / FLS</span> fragility fracture for osteoporosis treatment.</div></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> fracture / head injury / acute medical cause. <span class="pill pill-amber">Falls service / community geriatrics</span> NICE NG249 criteria for comprehensive assessment; <span class="pill pill-amber">bone health / FLS</span> fragility fracture for osteoporosis treatment.</div></div>
     <div class="arrow"><span class="tag">Step 8 · strength, balance &amp; environment</span></div>
 
     <!-- STEP 8 — LIFESTYLE -->
@@ -172,57 +172,65 @@ small{font-size:.8rem}
 <div class="alg-flow" id="flow">
 
 <div class="node" data-type="SAFETY" data-step="1">
-  <div class="node-row"><div class="node-head"><div class="node-num">1</div><div><span class="node-tag">Safety</span><h3>Red flags — injuries &amp; serious underlying causes</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-row"><div class="node-head"><div class="node-num">1</div><div><span class="node-tag">Safety</span><h3>Red flags — injuries and serious underlying causes</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
   <div class="node-body">
-    <span>After a fall, screen for serious injury and underlying cause BEFORE a routine falls assessment.</span>
+    <span>After a fall, deal with injury and the cause of this fall before the longer-term prevention work. A fall is often the way an acute illness presents in an older person.</span>
     <div class="rfgrid">
-      <div class="rftile"><b>Head injury with LOC / confusion</b> Loss of consciousness, amnesia, vomiting → same-day CT head (NICE head injury criteria: anticoagulation, age &gt;65, skull fracture)</div>
-      <div class="rftile"><b>Hip fracture</b> Unable to weight-bear, shortened/externally rotated leg, hip pain → 999 (displaced NOF fracture — surgical emergency, mortality 30% at 1 year without repair)</div>
-      <div class="rftile"><b>Vertebral fracture</b> Acute back pain after minor trauma in &gt;65 or osteoporosis → XR spine; if severe/neurological signs → 999</div>
-      <div class="rftile"><b>Syncope preceding fall</b> "Blacked out" before falling, palpitations, chest pain → same-day ECG + cardiac review (cardiac syncope, arrhythmia, PE)</div>
-      <div class="rftile"><b>Long lie on floor (&gt;1h)</b> Unable to get up, pressure injury, dehydration, rhabdomyolysis → same-day bloods (CK, U&amp;E, AKI risk)</div>
-      <div class="rftile"><b>New neurological symptoms</b> New weakness, facial droop, ataxia, dysarthria at time of fall → 999 (stroke/TIA — fall was consequence of stroke)</div>
-      <div class="rftile"><b>Hypoglycaemia</b> Known diabetes + confused/sweaty → BM stat; treat &lt;4 mmol/L immediately</div>
-      <div class="rftile"><b>Safeguarding concern</b> Multiple unexplained falls/bruising in care setting or with carer present → safeguarding referral (elder abuse)</div>
+      <div class="rftile"><b>Head injury</b> Loss of consciousness, amnesia, vomiting, new confusion, or any head injury on an anticoagulant or antiplatelet → <span class="pill pill-red">A&amp;E</span>. NICE NG232 (2023): aged 65+ with loss of consciousness or amnesia → CT head within 8 hours of injury; consider CT for people on anticoagulants even without other indications</div>
+      <div class="rftile"><b>Suspected hip fracture</b> Unable to weight-bear, pain in the hip or groin, shortened and externally rotated leg → <span class="pill pill-red">999</span>. NICE CG124: surgery on the day of, or the day after, admission</div>
+      <div class="rftile"><b>Other fractures</b> Wrist, humerus, pelvis or ribs after a low-energy fall; new back pain after a fall in someone with osteoporosis → X-ray; neurological signs → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Blackout before the fall</b> Loss of consciousness, palpitations, chest pain, breathlessness, fall on exertion or when lying → <span class="pill pill-red">Same-day ECG + assessment</span> (arrhythmia, aortic stenosis, PE, MI)</div>
+      <div class="rftile"><b>Long lie</b> On the floor for a long time or unable to get up → <span class="pill pill-red">Same day</span>: pressure damage, hypothermia, dehydration, rhabdomyolysis (CK, U&amp;E, urine dipstick for blood)</div>
+      <div class="rftile"><b>New neurological signs</b> Face, arm or leg weakness, speech disturbance, new ataxia → <span class="pill pill-red">999</span> (stroke — the fall may be a symptom, not the cause)</div>
+      <div class="rftile"><b>Acute illness</b> Fever, new confusion (delirium), breathlessness, black stools or reduced urine output → sepsis, pneumonia, UTI, GI bleed, AKI → <span class="pill pill-red">Same-day assessment</span></div>
+      <div class="rftile"><b>Hypoglycaemia</b> On insulin or a sulfonylurea, sweaty or confused → capillary glucose now; treat if below 4 mmol/L and review the regimen</div>
+      <div class="rftile"><b>Safeguarding</b> Unexplained or repeated injuries, inconsistent history, fear of a carer, neglect → <span class="pill pill-amber">Adult safeguarding referral</span> (Care Act 2014 duty)</div>
+      <div class="rftile"><b>Unable to cope at home now</b> New immobility or carer breakdown → <span class="pill pill-amber">Same-day community response</span> (urgent community response / virtual ward) to avoid a "social admission"</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-  <div class="why-drawer">Hip fracture 30-day mortality is 7–10%, rising to 30% at 1 year without surgical repair — NICE mandates surgery within 36 hours. Long lie (&gt;1 hour) causes rhabdomyolysis in 50% of cases — AKI and hyperkalaemia can be fatal without IV fluids. Cardiac syncope is the cause in ~15% of "falls" — missing this means missing arrhythmias (Stokes-Adams attacks, HOCM, aortic stenosis).</div></div>
+  <div class="why-drawer">Older people often under-report symptoms after a fall, so the injuries and illnesses that kill after a fall need to be looked for actively. A head injury on anticoagulants can bleed slowly. NICE NG232 (2023) sets CT within 8 hours for people aged 65 and over with loss of consciousness or amnesia, and asks clinicians to consider CT for anyone on anticoagulants. Hip fracture is a surgical emergency, and NICE CG124 recommends surgery on the day of, or the day after, admission because delay worsens mortality and recovery. A fall preceded by a blackout is a syncope assessment, not a falls assessment: cardiac causes must be excluded first. Rhabdomyolysis and pressure damage follow a long lie. NG249 lists being unable to get up after a fall as a reason for a comprehensive falls assessment.</div></div>
 </div>
 <div class="connector"></div>
 
 <div class="node" data-type="DIAGNOSE" data-step="2">
-  <div class="node-row"><div class="node-head"><div class="node-num">2</div><div><span class="node-tag">Diagnose</span><h3>Falls risk screening — identify high-risk patients proactively</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-row"><div class="node-head"><div class="node-num">2</div><div><span class="node-tag">Diagnose</span><h3>Case-finding — who needs a comprehensive falls assessment</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
   <div class="node-body">
-    <span>NICE NG249: ask all patients aged ≥65 about falls annually. Two or more falls in 12 months = high risk; offer full multifactorial assessment.</span>
+    <span>NICE NG249 (Falls, 2025) covers people aged 65 and over and people aged 50–64 at higher risk. Ask about falls at routine contacts; many people don't mention them.</span>
     <div class="kv">
-      <div>Falls history</div><div>Number in last 12 months, circumstances (indoor/outdoor, activity), time of day, witnesses, LOC, any injury. Near-miss falls count</div>
-      <div>NICE trigger</div><div>1 fall + injury OR 2+ falls in 12 months = full multifactorial falls risk assessment (NICE NG249)</div>
-      <div>Timed Up and Go (TUG)</div><div>Stand from chair, walk 3m, turn, walk back, sit. &gt;12 seconds = high fall risk. Simple, validated, takes 1 minute</div>
-      <div>Balance/gait</div><div>Observe while walking: wide-based gait, shuffling, reduced arm swing (Parkinson's), off-balance turning (cerebellar)</div>
-      <div>Fear of falling</div><div>Assess falls efficacy — "Are you afraid of falling?" Fear itself causes activity restriction, deconditioning, and more falls (vicious cycle)</div>
+      <div>Falls history</div><div>How many falls in the last year; where, when and doing what; any warning; loss of consciousness; injury; able to get up; near-misses and "trips"</div>
+      <div>NG249 triggers for comprehensive assessment</div><div>A fall in the last year <b>plus</b> any of: living with frailty; injury needing medical or surgical treatment; loss of consciousness related to the fall; unable to get up independently. Check the full NG249 list for other criteria</div>
+      <div>Don't rely on a single tool</div><div>NICE NG249: do not use falls risk prediction tools to predict a person's risk of falling. Use gait, balance and mobility tests as part of the comprehensive assessment, not as a stand-alone score</div>
+      <div>Gait and balance tests</div><div>Timed Up and Go, gait speed, chair stand. The World Falls Guidelines (Montero-Odasso et al., Age Ageing 2022 — international) use gait speed ≤0.8 m/s or TUG &gt;15 seconds as markers of higher risk</div>
+      <div>Observe walking</div><div>Wide-based or unsteady gait, shuffling, reduced arm swing, freezing (Parkinson's), high-stepping (neuropathy, foot drop), antalgic gait, use of furniture for support</div>
+      <div>Fear of falling</div><div>"Are you worried about falling?" Fear leads to restricted activity, deconditioning and more falls. NG249 includes asking about it as part of the assessment</div>
+      <div>Function</div><div>Washing, dressing, stairs, getting in and out of bed and the bath, shopping; who helps; alarms; pets underfoot</div>
+      <div>What matters to the patient</div><div>Goals (staying at home, walking to the shops) guide which interventions they will take up</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-  <div class="why-drawer">Falls are the leading cause of accidental death in over-65s in the UK. One third of adults &gt;65 fall each year; 50% of &gt;80s. TUG test &gt;12 seconds has 87% sensitivity for identifying high-risk fallers. Many patients do not volunteer falls history — they fear losing independence. NICE NG249 (2025) mandates proactive annual questioning.</div></div>
+  <div class="why-drawer">NICE NG249 (2025) replaced the older falls guideline, CG161. It extends the scope to people aged 50–64 at higher risk and moves away from scoring tools. The committee found no single test predicted falls well, because most tools measure one domain such as balance or gait. So NG249 recommends against using prediction tools alone and asks for a comprehensive, multifactorial assessment for those who meet the criteria. Many people don't mention falls because they fear losing independence, so ask directly and normalise the question. In an SCA case, open with the circumstances of the fall and whether there was a blackout: that single distinction sends you down either the syncope or the falls pathway.</div></div>
 </div>
 <div class="connector"></div>
 
 <div class="node" data-type="DIAGNOSE" data-step="3">
   <div class="node-row"><div class="node-head"><div class="node-num">3</div><div><span class="node-tag">Diagnose</span><h3>Multifactorial risk factor assessment — DAME mnemonic</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
   <div class="node-body">
-    <span>Falls are multifactorial. Identify ALL contributing factors — each one addressed reduces fall rate by 10–15%.</span>
+    <span>Falls usually have several contributing causes. Find all of them — each is a separate target for intervention.</span>
     <div class="kv">
-      <div><b>D</b> — Drugs</div><div>Polypharmacy (&gt;4 drugs doubles fall risk). High-risk: <b>sedatives, opioids, antihypertensives</b> (postural hypotension), diuretics, antiepileptics, antipsychotics, tricyclics. Review ALL medications including OTC</div>
-      <div><b>A</b> — Ageing/neurological</div><div>Parkinson's (festination, freezing), cerebellar ataxia, peripheral neuropathy, dementia, stroke, Lewy body disease</div>
-      <div><b>M</b> — Mobility/musculoskeletal</div><div>Muscle weakness (sarcopenia), osteoarthritis (hip/knee), foot problems, inappropriate footwear, previous hip fracture, kyphosis</div>
-      <div><b>E</b> — Environmental</div><div>Loose rugs, poor lighting, slippery floors, no grab rails, high bed/chair, stairs without handrail, cluttered pathways</div>
-      <div>Cardiovascular</div><div>Postural hypotension (drop ≥20 systolic on standing), carotid sinus hypersensitivity, arrhythmia, aortic stenosis</div>
-      <div>Sensory</div><div>Visual impairment (cataracts, glaucoma, macular degeneration), peripheral neuropathy affecting proprioception</div>
+      <div><b>D</b> — Drugs</div><div>Count the medicines and look for fall-risk-increasing drugs: <b>benzodiazepines and Z-drugs, antipsychotics, antidepressants, opioids, antiepileptics</b>, antihypertensives, diuretics and alpha-blockers (postural drop), anticholinergics (confusion), hypoglycaemic agents. Include over-the-counter sleep aids and antihistamines, and alcohol</div>
+      <div><b>A</b> — Ageing and neurology</div><div>Parkinson's disease and parkinsonism, stroke, peripheral neuropathy, cerebellar disease, dementia and delirium, normal-pressure hydrocephalus (gait, cognition, continence)</div>
+      <div><b>M</b> — Mobility and musculoskeletal</div><div>Muscle weakness and sarcopenia, hip or knee osteoarthritis, foot pain and deformity, poor footwear, walking aid that is wrong height or unused, previous fracture, kyphosis</div>
+      <div><b>E</b> — Environment</div><div>Loose rugs, trailing cables, poor lighting (especially at night), stairs without rails, bath or shower access, low chairs or high beds, pets, clutter</div>
+      <div>Cardiovascular</div><div>Orthostatic hypotension, arrhythmia, aortic stenosis, carotid sinus hypersensitivity, vasovagal syncope</div>
+      <div>Sensory</div><div>Poor vision (cataract, macular degeneration, glaucoma, out-of-date glasses, multifocals on stairs), hearing loss, reduced sensation in the feet</div>
+      <div>Continence</div><div>Urgency and nocturia lead to rushing to the toilet at night — a common setting for falls</div>
+      <div>Nutrition and mood</div><div>Weight loss or malnutrition (MUST screen), dehydration, depression, alcohol use</div>
+      <div>Bone health</div><div>Previous fragility fracture, steroid use, low BMI — assess fracture risk (FRAX or QFracture) as part of the falls assessment</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-  <div class="why-drawer">Multifactorial intervention reduces fall rate by 24% vs usual care (Cochrane 2019). Each modifiable risk factor corrected reduces falls independently. Psychotropic medication use doubles fall risk — benzodiazepines, antipsychotics and tricyclics are the highest-risk drugs. Postural hypotension is found in 30% of community-dwelling older adults and is often drug-induced and reversible.</div></div>
+  <div class="why-drawer">A Cochrane review of multifactorial interventions in the community (Hopewell et al., 2018) found they may reduce the rate of falls, with a rate ratio of 0.77 (about 23% fewer falls), though the certainty of the evidence was low and results varied between trials. The benefit depends on actually acting on each risk factor found, not just listing them. Medicines are the most modifiable factor. The STOPPFall tool (Seppala et al., Age Ageing 2021) is a European expert consensus list of fall-risk-increasing drug classes to support deprescribing. Orthostatic hypotension is common, often caused by medicines and reversible.</div></div>
 </div>
 <div class="connector"></div>
 
@@ -230,17 +238,19 @@ small{font-size:.8rem}
   <div class="node-row"><div class="node-head"><div class="node-num">4</div><div><span class="node-tag">Diagnose</span><h3>Targeted examination</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
   <div class="node-body">
     <div class="kv">
-      <div>Postural BP</div><div>Supine BP → standing at 1 min and 3 min. Drop ≥20 systolic = postural hypotension. Symptoms: dizziness, greyout on standing</div>
-      <div>Gait &amp; balance</div><div>TUG test. Observe: foot clearance, step length, arm swing, turning. Berg Balance Scale if formal assessment needed</div>
-      <div>Muscle strength</div><div>Stand from chair without hands (chair stand test — 5 in 30s = adequate). Sarcopenia: grip strength &lt;16 kg (F) / &lt;27 kg (M)</div>
-      <div>Neurology</div><div>Proprioception (big toe joint position sense), vibration (tuning fork at ankle), Romberg's test, cranial nerves, cerebellar testing</div>
-      <div>Vision</div><div>Snellen chart. Refer optician if not reviewed in 2 years. Cataracts, bifocal lenses (increase fall risk on stairs)</div>
-      <div>Feet &amp; footwear</div><div>Peripheral pulses, sensation, nail care, foot deformity. Assess footwear: non-slip sole, correct fit, laces/fastenings secure</div>
-      <div>Cognitive screen</div><div>AMT or MoCA. Cognitive impairment triples fall risk. Affects rehabilitation capacity</div>
+      <div>Lying and standing BP</div><div>Lying for several minutes, then standing at 1 and 3 minutes, asking about symptoms. A systolic fall of 20 mmHg or more is significant (the threshold NICE NG136 uses when checking standing BP); symptoms reproduced on standing matter even with smaller drops</div>
+      <div>Pulse and heart</div><div>Rate and rhythm (AF, bradycardia), ejection systolic murmur (aortic stenosis)</div>
+      <div>Gait and balance</div><div>Timed Up and Go, gait speed or chair stand; watch turning, step length, foot clearance, arm swing; Romberg test</div>
+      <div>Muscle strength</div><div>Rise from a chair without using the arms; grip strength if available. Proximal weakness suggests sarcopenia, vitamin D deficiency, steroids or thyroid disease</div>
+      <div>Neurology</div><div>Tone, rigidity and tremor (Parkinson's), power, reflexes, sensation and joint-position sense in the feet, cerebellar signs, cognition</div>
+      <div>Vision</div><div>Acuity with current glasses; fields; ask when they last had a sight test and whether they wear multifocals outdoors</div>
+      <div>Feet and footwear</div><div>Pain, deformity, nails, sensation, pulses; shoes that are loose, backless, worn or slippery</div>
+      <div>Cognition and mood</div><div>A brief validated cognitive test (e.g. 6-CIT, AMTS, MoCA) and a depression screen; look for delirium</div>
+      <div>Injuries and skin</div><div>Bruises at different stages, pressure areas after a long lie, signs of neglect</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-  <div class="why-drawer">The 5-times sit-to-stand test predicts future falls with 86% sensitivity. Romberg's test positive (falls with eyes closed) = proprioceptive deficit not cerebellar — important for targeting vitamin D and B12. Bifocal/varifocal glasses increase falls on stairs by 40% — single-lens glasses recommended for outdoor use in high-risk patients.</div></div>
+  <div class="why-drawer">Standing BP is the examination most likely to change management, because it points to medicines you can stop or reduce. A symptomatic postural drop can be missed if you only measure sitting BP. Gait and balance testing shows which exercise or aid is needed. A positive Romberg test points to impaired proprioception (neuropathy, B12 deficiency) rather than cerebellar disease. Vision is easily overlooked, and multifocal glasses make it harder to see steps and kerbs. Cognitive impairment changes both the risk and how you deliver interventions, including the involvement of carers.</div></div>
 </div>
 <div class="connector"></div>
 
@@ -248,16 +258,17 @@ small{font-size:.8rem}
   <div class="node-row"><div class="node-head"><div class="node-num">5</div><div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
   <div class="node-body">
     <div class="kv">
-      <div>Bloods <span class="pill pill-blue">First-line</span></div><div>FBC (anaemia), U&amp;E (hyponatraemia → falls risk), glucose (hypoglycaemia), calcium, TFTs (hypothyroidism/hyperthyroidism), B12</div>
-      <div>Vitamin D <span class="pill pill-blue">Essential</span></div><div>25-OH vitamin D. Deficiency (&lt;30 nmol/L) causes proximal myopathy and increases fall risk. Universal supplementation in &gt;65s recommended</div>
-      <div>ECG</div><div>If syncope preceding fall, palpitations, or bradicardia: AF, heart block, prolonged QTc (drug-induced), Brugada</div>
-      <div>DEXA scan</div><div>Fracture risk assessment (FRAX score) for all fallen patients &gt;50. Osteoporosis = silent co-morbidity. FRAX &gt;20% 10yr risk = treatment threshold</div>
-      <div>Long lie bloods</div><div>If &gt;1 hour on floor: CK (&gt;1000 = significant rhabdomyolysis), U&amp;E, urine dipstick (myoglobinuria)</div>
-      <div>Carotid sinus massage</div><div>Consider if unexplained/situational falls — specialist-supervised in cardiology/falls clinic (not primary care)</div>
+      <div>Bloods <span class="pill pill-blue">First-line</span></div><div>FBC (anaemia), U&amp;E (hyponatraemia, AKI, dehydration), glucose/HbA1c, bone profile, TFTs, B12 and folate if neuropathy or cognitive change; LFTs and GGT if alcohol is a concern</div>
+      <div>Vitamin D</div><div>25-OH vitamin D when there are features of deficiency, bone disease or before osteoporosis treatment. Royal Osteoporosis Society thresholds: below 30 nmol/L deficient, 30–50 nmol/L may be inadequate for some, above 50 nmol/L sufficient</div>
+      <div>ECG</div><div>For any unexplained fall, blackout, palpitations, bradycardia or before starting or stopping rate-controlling drugs: heart block, AF, long QT, pre-excitation</div>
+      <div>Fracture risk</div><div>FRAX (with or without BMD) or QFracture; DXA when the result would change treatment. Interpret against the age-dependent NOGG intervention thresholds (National Osteoporosis Guideline Group, 2021)</div>
+      <div>After a long lie</div><div>CK, U&amp;E, urine dipstick for blood (myoglobin); a markedly raised CK with AKI needs hospital care</div>
+      <div>Urine</div><div>Dipstick only if urinary symptoms or systemic infection signs — not as a routine "confusion screen" in older adults</div>
+      <div>Specialist tests</div><div>Ambulatory ECG monitoring, echocardiography (murmur), tilt testing and carotid sinus massage — via cardiology or a falls and syncope service</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-  <div class="why-drawer">Vitamin D deficiency affects 1 in 5 UK adults and up to 50% of care home residents. Supplementation (800 IU daily) reduces fall rate by 19% and fracture rate by 23% (meta-analysis, Bischoff-Ferrari 2009). FRAX score changes management for most fallen older adults — osteoporosis treatment reduces re-fracture risk by 30–50%. Hyponatraemia (Na &lt;130) triples fall risk independently of all other factors.</div></div>
+  <div class="why-drawer">Blood tests look for treatable contributors: anaemia, hyponatraemia (often caused by SSRIs or diuretics), hypoglycaemia, thyroid disease and B12 deficiency. The Royal Osteoporosis Society vitamin D guideline defines deficiency as below 30 nmol/L and recommends loading and maintenance regimens for treatment. Fracture risk assessment is part of every falls assessment because the fracture, not the fall, is what causes most of the harm. NOGG 2021 uses age-dependent intervention thresholds rather than a single fixed percentage. A falls or syncope service can do tilt testing and supervised carotid sinus massage, which do not belong in primary care.</div></div>
 </div>
 <div class="connector"></div>
 
@@ -265,78 +276,84 @@ small{font-size:.8rem}
   <div class="node-row"><div class="node-head"><div class="node-num">6</div><div><span class="node-tag">Refer</span><h3>Referral criteria</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
   <div class="node-body">
     <div class="kv">
-      <div><span class="pill pill-red">999</span></div><div>Hip fracture, head injury with LOC, acute stroke at time of fall, unable to weight-bear with severe pain</div>
-      <div><span class="pill pill-red">Same-day</span></div><div>Long lie &gt;1h with AKI risk | Suspected vertebral fracture with neurology | Cardiac syncope (ECG abnormality)</div>
-      <div><span class="pill pill-purple">Falls clinic</span></div><div>≥2 falls in 12 months + functional impairment | Unexplained syncope | Postural hypotension not responding to medication adjustment | Complex multifactorial falls</div>
-      <div><span class="pill pill-grey">Routine referrals</span></div><div>Physiotherapy (strength and balance — strongest evidence) | Occupational therapy (home hazard assessment) | Optician | Podiatry | Osteoporosis service (if FRAX high) | Neurologist if Parkinson's/cerebellar</div>
-      <div><span class="pill pill-grey">Memory clinic</span></div><div>If cognitive impairment identified on screen — dementia triples fall risk and requires specific management</div>
+      <div><span class="pill pill-red">999</span></div><div>Suspected hip or other major fracture; head injury with reduced consciousness; stroke signs; chest pain or collapse; unable to get up and unwell</div>
+      <div><span class="pill pill-red">Same day</span></div><div>Head injury meeting NICE NG232 criteria (A&amp;E for CT); syncope with red-flag features (exertional, abnormal ECG, structural heart disease); long lie with raised CK or AKI; acute illness presenting as a fall</div>
+      <div><span class="pill pill-amber">Falls service / community geriatrics</span></div><div>People meeting the NG249 criteria for comprehensive falls assessment (fall in the last year plus frailty, injury, loss of consciousness or unable to get up); recurrent unexplained falls; orthostatic hypotension not improved by medicine changes</div>
+      <div><span class="pill pill-amber">Fracture liaison / osteoporosis</span></div><div>Fragility fracture, or high fracture risk above NOGG thresholds needing specialist input</div>
+      <div><span class="pill pill-blue">Physiotherapy / exercise programme</span></div><div>Strength and balance training — the intervention with the strongest evidence (Cochrane, Sherrington 2019)</div>
+      <div><span class="pill pill-blue">Occupational therapy</span></div><div>Home hazard assessment and modification, equipment, bathing and toileting aids</div>
+      <div><span class="pill pill-blue">Other routine referrals</span></div><div>Optometrist (sight test); podiatry (foot pain, deformity, nails); audiology; continence service; dietitian; memory service if cognitive impairment; neurology if a new movement disorder</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-  <div class="why-drawer">Specialist falls clinics reduce fall rate by 30–40% in high-risk patients (NICE NG249). Physiotherapy for strength and balance is the single most effective intervention (NNT approximately 16 to prevent one fall). Home hazard assessment by OT reduces falls by 21% in high-risk patients — especially in those who have previously fallen indoors. Referral to multiple services simultaneously is appropriate and expected.</div></div>
+  <div class="why-drawer">The Cochrane review of exercise for falls prevention in the community (Sherrington et al., 2019) found that exercise reduces the rate of falls by 23% (rate ratio 0.77, high-certainty evidence). Balance and functional exercise reduced falls by 24% (rate ratio 0.76). That makes a referral for strength and balance training the single most useful thing most patients will get from this consultation. Multifactorial falls services use the same assessment approach as NG249 and can co-ordinate several interventions at once. Referring to several services at the same time is expected, not excessive. The fracture liaison service matters because a fragility fracture strongly predicts the next one.</div></div>
 </div>
 <div class="connector"></div>
 
 <div class="node" data-type="TREAT" data-step="7">
-  <div class="node-row"><div class="node-head"><div class="node-num">7</div><div><span class="node-tag">Treat</span><h3>Treatment — medication review &amp; pharmacological interventions</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-row"><div class="node-head"><div class="node-num">7</div><div><span class="node-tag">Treat</span><h3>Treatment — medication review and pharmacological interventions</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
   <div class="node-body">
     <div class="kv">
-      <div>Deprescribing <span class="pill pill-teal">Priority</span></div><div>Stop/reduce: <b>benzodiazepines</b> (taper over 4–8 weeks), <b>antipsychotics</b>, <b>tricyclic antidepressants</b>. Switch to SSRIs if antidepressant needed. Each deprescribed drug reduces falls by ~15%</div>
-      <div>Antihypertensives</div><div>If postural hypotension: reduce dose or switch from alpha-blockers/nitrates/diuretics. Target SBP &gt;120 mmHg standing. Do not sacrifice BP control entirely</div>
-      <div>Vitamin D <span class="pill pill-teal">Universal</span></div><div>Vitamin D3 800–1000 IU OD for all &gt;65. Colecalciferol preferred. For deficiency (&lt;30 nmol/L): loading regimen 300,000 IU over 6–10 weeks then maintenance</div>
-      <div>Calcium</div><div>Only supplement if dietary intake &lt;700 mg/day. Calcium + Vitamin D reduces fall rate by 19% and fracture by 23%. Avoid over-supplementation (CV risk)</div>
-      <div>Osteoporosis treatment</div><div>FRAX 10yr hip fracture &gt;3% OR major osteoporotic fracture &gt;20% → alendronate 70mg weekly (first-line). Check renal function (eGFR &gt;35) and dental health before bisphosphonate</div>
+      <div>Deprescribing <span class="pill pill-teal">Priority</span></div><div>Review every fall-risk-increasing drug with the patient using STOPPFall (Seppala et al., 2021). Taper benzodiazepines and Z-drugs gradually rather than stopping abruptly. Review antipsychotics (especially in dementia), sedating antihistamines, tricyclics and anticholinergic burden</div>
+      <div>Antihypertensives</div><div>With orthostatic hypotension or symptomatic low BP: reduce or stop alpha-blockers, nitrates, diuretics and unnecessary antihypertensives; recheck standing BP. NICE NG136 uses standing BP to guide treatment in people with a postural drop</div>
+      <div>Orthostatic hypotension</div><div>Non-drug measures first: rise slowly, sit on the bed edge, adequate fluids, avoid large meals and alcohol, raise the head of the bed. Drug treatment (e.g. midodrine) is specialist-led</div>
+      <div>Vitamin D</div><div>NICE NG249: evidence is insufficient to recommend vitamin D solely to prevent falls. Follow NHS advice to take 10 micrograms (400 units) a day for bone and muscle health; treat proven deficiency with a loading regimen (about 300,000 units over 6–10 weeks per the Royal Osteoporosis Society), then maintenance</div>
+      <div>Calcium</div><div>Aim for adequate dietary calcium; supplement if intake is low, especially alongside osteoporosis treatment. Dose per BNF</div>
+      <div>Osteoporosis treatment</div><div>When above the NOGG intervention threshold: oral bisphosphonate first line (e.g. alendronic acid 70 mg once weekly, per BNF), after checking renal function, calcium, vitamin D and dental health. Review at 5 years (NOGG 2021)</div>
     </div>
     <div class="ladder">
-      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Vitamin D3 800 IU OD</b> — all patients &gt;65 years. Calcium supplementation if dietary intake inadequate</span></div>
-      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Deprescribe high-risk medications</b> — use STOPPFall criteria. Gradual benzodiazepine taper. Switch antidepressants if tricyclic</span></div>
-      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Bisphosphonate if osteoporosis criteria met</b> — alendronate 70 mg PO weekly. Counsel on administration (30 min upright, fasting). Review after 5 years (drug holiday consideration)</span></div>
-      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Treat underlying conditions</b> — Parkinson's optimisation, heart rate control if AF, cataract surgery, hearing aids, diabetic neuropathy management</span></div>
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Stop or reduce culprit medicines</b> — sedatives, psychotropics, anticholinergics, and antihypertensives causing a postural drop</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Treat the conditions found</b> — cataract referral, Parkinson's optimisation, rate control for AF, pacing for heart block, continence treatment, analgesia for painful joints</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Protect the bones</b> — fracture risk assessment, bisphosphonate if indicated, vitamin D and calcium sufficiency</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Review in 4–6 weeks</b> — BP, symptoms, falls since, adherence and side effects</span></div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-  <div class="why-drawer">STOPPFall criteria (Seppala et al 2021): 13 drug classes independently associated with falls — benzodiazepines increase fall risk 1.5x, antipsychotics 1.5x, tricyclics 2x. Structured deprescribing of psychotropics reduced falls by 66% in a Campbell RCT (1999). Cataract surgery reduces fall rate by 34% (Cochrane) — one of the most effective single interventions available.</div></div>
+  <div class="why-drawer">Psychotropic medicines are among the most important modifiable causes of falls. In a randomised trial, gradual withdrawal of psychotropic medication cut the risk of falls substantially (relative hazard 0.34; Campbell et al., J Am Geriatr Soc 1999), although many participants later restarted them. Stopping is only the first step: keeping medicines stopped needs follow-up. NICE NG249 does not recommend vitamin D purely for falls prevention because the evidence was insufficient, but it points to NHS advice on vitamin D for bone and muscle health. Bone protection addresses the consequence of falls: even the best falls programme will not prevent every fall.</div></div>
 </div>
 <div class="connector"></div>
 
 <div class="node" data-type="LIFESTYLE" data-step="8">
-  <div class="node-row"><div class="node-head"><div class="node-num">8</div><div><span class="node-tag">Lifestyle</span><h3>Exercise &amp; environmental modification — highest-evidence interventions</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-row"><div class="node-head"><div class="node-num">8</div><div><span class="node-tag">Lifestyle</span><h3>Exercise and environmental modification — highest-evidence interventions</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
   <div class="node-body">
     <div class="lsgrid">
-      <div class="lstile"><b>Strength &amp; balance exercise</b> Otago Exercise Programme or Falls Management Exercise (FaME). 2–3 sessions/week for &gt;3 months. Reduces falls by 35–40%. Prescribe via community physiotherapy or exercise on prescription</div>
-      <div class="lstile"><b>Tai Chi</b> Reduces falls by 23–45% in community-dwelling older adults (Cochrane 2019). Particularly effective for balance. Suitable for mild-moderate frailty. Available via community leisure centres</div>
-      <div class="lstile"><b>Home hazard assessment</b> OT referral — remove trip hazards (loose rugs, trailing cables), improve lighting, install grab rails (bathroom, stairs), non-slip bath mat, raised toilet seat</div>
-      <div class="lstile"><b>Footwear review</b> Non-slip soles, adequate ankle support, well-fitting. Advise against walking in socks/slippers without grip. Podiatry for foot deformity</div>
-      <div class="lstile"><b>Personal alarm / fall detector</b> For patients living alone at high risk. Council-funded pendant alarms available. Reduces long-lie complications. Discuss with patient and family</div>
-      <div class="lstile"><b>Diet and protein intake</b> Adequate protein (1.0–1.2 g/kg/day) slows sarcopenia. Dietitian referral if weight loss or malnutrition risk (MUST score)</div>
-      <div class="lstile"><b>Vision correction</b> Annual optician review. Single-lens glasses for outdoor use if high risk on stairs. Cataract surgery if eligible — 34% fall reduction post-surgery</div>
+      <div class="lstile"><b>Strength and balance exercise</b> Progressive, individually tailored programmes such as Otago or FaME, through community physiotherapy or a falls service. Balance and functional exercise reduced the rate of falls by 24% (Cochrane, Sherrington 2019)</div>
+      <div class="lstile"><b>Tai chi</b> May reduce the rate of falls by about 19% (rate ratio 0.81, low-certainty evidence; Cochrane, Sherrington 2019). Useful for people who prefer a class-based activity</div>
+      <div class="lstile"><b>Home hazard assessment</b> OT-led: remove trip hazards, improve lighting (including night lights to the toilet), fit grab rails and stair rails, non-slip mats, raised toilet seat, bed and chair heights</div>
+      <div class="lstile"><b>Footwear</b> Well-fitting, enclosed shoes with a thin firm sole and good grip; avoid walking in socks or loose slippers. Podiatry for foot pain and deformity</div>
+      <div class="lstile"><b>Getting up and alarms</b> Teach how to get up from the floor, or how to keep warm and call for help if they can't. Personal alarm or fall detector for those living alone (via the local council or a private provider)</div>
+      <div class="lstile"><b>Nutrition</b> Screen with MUST; enough protein and energy to maintain muscle; dietitian if malnourished or losing weight</div>
+      <div class="lstile"><b>Alcohol</b> Keep within the UK CMO low-risk limit of 14 units a week, and less if falls or sedating medicines are an issue</div>
+      <div class="lstile"><b>Fear of falling</b> Exercise builds confidence; NICE NG249 suggests considering cognitive behavioural interventions if fear of falling is not helped by exercise</div>
+      <div class="lstile"><b>Vision</b> Regular sight tests; single-vision distance glasses for walking outdoors can help some active people who wear multifocals; cataract surgery where indicated</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-  <div class="why-drawer">Otago Exercise Programme: NNT = 10 to prevent one fall over 12 months (Robertson 2001). Home hazard assessment by OT reduces falls by 21% in high-risk patients who have previously fallen indoors. Personal alarms do not prevent falls but dramatically reduce the consequences of long lies — reducing AKI, rhabdomyolysis, pneumonia, and psychological trauma from floor-level helplessness.</div></div>
+  <div class="why-drawer">Exercise is the best-evidenced falls intervention for people living in the community. The 2019 Cochrane review found high-certainty evidence that exercise reduces the rate of falls by 23%, and that balance and functional training works best. Programmes that combine several types of exercise may do more. For tai chi the effect is smaller and less certain (19%, low-certainty evidence). Home hazard modification works best when delivered by an occupational therapist for people at higher risk. A personal alarm does not prevent falls, but it shortens the time on the floor and the harm that follows. Protein and energy intake support muscle strength.</div></div>
 </div>
 <div class="connector"></div>
 
 <div class="node" data-type="SAFETY" data-step="9">
-  <div class="node-row"><div class="node-head"><div class="node-num">9</div><div><span class="node-tag">Safety</span><h3>Follow-up &amp; safety-netting</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-row"><div class="node-head"><div class="node-num">9</div><div><span class="node-tag">Safety</span><h3>Follow-up and safety-netting</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
   <div class="node-body">
     <div class="kv">
-      <div>4–6 weeks</div><div>Review: Falls diary — any new falls? Deprescribing tolerated? Referrals accepted? Exercise programme started? Vitamin D commenced?</div>
-      <div>3 months</div><div>Formal reassessment — TUG test repeat. Review Vitamin D level. FRAX and DXA result. Bisphosphonate adherence</div>
-      <div>6–12 months</div><div>Annual falls risk review in all &gt;65s. Repeat postural BP. Review medication changes. Falls diary review</div>
-      <div><span class="pill pill-red">999 safety-net</span></div><div>After any fall: "If you cannot get up, call 999. Do not lie on the floor" — educate patient and carers. New facial droop/arm weakness/speech problems = 999</div>
-      <div><span class="pill pill-amber">Same-day</span></div><div>Fall with head injury | Cannot weight-bear | New confusion after fall | Sustained fall injury not previously assessed</div>
-      <div>Falls diary</div><div>Provide NICE falls diary to patient — record date, time, activity, location, symptoms. Patterns guide cause (postural, nocturnal, activity-related)</div>
+      <div>4–6 weeks</div><div>Falls since? Medicine changes tolerated, standing BP rechecked? Referrals accepted and exercise started? Home changes made?</div>
+      <div>3 months</div><div>Repeat gait and balance test; review fracture-risk results and bone treatment; adherence; mood and fear of falling</div>
+      <div>Ongoing</div><div>Ask about falls at routine reviews and medication reviews; repeat the assessment after any new fall or change in health (NICE NG249)</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>"If you fall and can't get up, or you hit your head and feel drowsy, are being sick or are confused, call 999." Face drooping, arm weakness or speech problems — 999</div>
+      <div><span class="pill pill-amber">Same day</span></div><div>A fall with a head injury while on a blood thinner; unable to put weight on a leg; new confusion; a blackout; a new injury that hasn't been checked</div>
+      <div>Falls diary</div><div>Ask the patient or carer to record the date, time, what they were doing and any symptoms for each fall or near-miss — the pattern often points to the cause</div>
+      <div>Carers and family</div><div>With consent, share the plan, the getting-up advice and the warning signs; make sure they know how the alarm works</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-  <div class="why-drawer">Falls diaries improve recall accuracy by 50% and allow identification of patterns that change management (e.g., all falls occur on getting up from bed = postural hypotension; all falls on stairs = environmental). Vitamin D levels should be rechecked after loading dose at 3 months — up to 40% of patients require dose adjustment. Long-term bisphosphonate drug holidays reduce osteonecrosis of jaw risk after 5 years.</div></div>
+  <div class="why-drawer">Falls prevention works only if interventions happen and continue. The follow-up visit is where you find the physiotherapy referral that was never booked or the sleeping tablet that was restarted. A diary helps turn vague reports into patterns: falls on getting out of bed at night suggest postural hypotension or nocturia, and falls on the stairs point to the environment or vision. Clear, specific safety-net advice for the patient and carers covers the two biggest post-fall dangers, head injury on anticoagulants and the long lie. Recording the advice is good practice and protects everyone.</div></div>
 </div>
 
 </div>
 
 <div class="alg-foot">
-  <strong>Educational use only.</strong> Based on NICE NG249 (Falls, 2025), NICE CG146 (Osteoporosis), Cochrane: Interventions for Preventing Falls (2019), Otago Exercise Programme, STOPPFall Criteria (Seppala 2021). Adapt to individual patient context.
+  <strong>Educational use only.</strong> Primary sources: NICE NG249 Falls: assessment and prevention in older people and in people 50 and over at higher risk (2025); NICE NG232 Head injury (2023); NICE CG124 Hip fracture (2011, updated); NICE NG136 Hypertension (2019, updated 2023); National Osteoporosis Guideline Group (NOGG) guideline (2021); Royal Osteoporosis Society, Vitamin D and bone health: a practical clinical guideline; Cochrane: Sherrington et al. 2019 (exercise) and Hopewell et al. 2018 (multifactorial interventions); Campbell et al., J Am Geriatr Soc 1999; STOPPFall (Seppala et al., Age Ageing 2021 — European consensus); World guidelines for falls prevention (Montero-Odasso et al., Age Ageing 2022 — international); Care Act 2014. Always adapt to the individual patient and local pathways.
 </div>
 
 <script>
@@ -356,7 +373,7 @@ small{font-size:.8rem}
 })();
 </script>
 <script src="../../assets/alg-nav.js?v=2"></script>
-<script src="../../assets/topic-links.js?v=7"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
 <script src="../../assets/alg-diagram.js"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 </body>

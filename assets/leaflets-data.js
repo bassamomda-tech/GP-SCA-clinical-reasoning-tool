@@ -1,13 +1,13 @@
 /* ============================================================
    Reasoning GP — Patient Leaflet directory
    Anchored to canonical landing-page URLs at well-known UK
-   patient-info organisations. GP should verify the live page
+   patient-information organisations. GP should verify the live page
    before sharing the link with a patient.
    ============================================================ */
 
 window.LEAFLET_ORGS = {
   nhs:        { name:'NHS',                                short:'NHS',                tone:'#005eb8' },
-  patient:    { name:'Patient.info',                        short:'Patient.info',       tone:'#0e7490' },
+  nhsinform:  { name:'NHS inform (NHS Scotland)',           short:'NHS inform',         tone:'#0e7490' },
   va:         { name:'Versus Arthritis',                    short:'Versus Arthritis',   tone:'#e3372f' },
   bhf:        { name:'British Heart Foundation',            short:'BHF',                tone:'#e2231a' },
   heartuk:    { name:'HEART UK',                            short:'HEART UK',           tone:'#c8102e' },
@@ -70,7 +70,7 @@ window.LEAFLET_SPECIALTIES = [
   { id:'eye',    name:'Eye',                       color:'#0f766e', icon:'\ud83d\udc41',   lead:'rnib',       blurb:'RNIB, Glaucoma UK, Macular Society.' },
   { id:'ent',    name:'ENT',                       color:'#0369a1', icon:'\ud83d\udc42',   lead:'ent',        blurb:'ENT UK and NHS.' },
   { id:'paeds',  name:'Paediatrics',               color:'#ea580c', icon:'\ud83e\uddb8',   lead:'rcpch',      blurb:'RCPCH (parent leaflets) + NHS.' },
-  { id:'general',name:'General symptoms',          color:'#475569', icon:'\u2728',         lead:'nhs',        blurb:'NHS + Patient.info for non-specific presentations.' },
+  { id:'general',name:'General symptoms',          color:'#475569', icon:'\u2728',         lead:'nhs',        blurb:'NHS + NHS inform for non-specific presentations.' },
 ];
 
 /* Conditions array.
@@ -83,23 +83,23 @@ window.LEAFLET_CONDITIONS = [
   { s:'high-blood-pressure', n:'Hypertension', sp:'cardio', syn:['HTN','high BP','raised blood pressure'],
     p:{ o:'bhf', u:'https://www.bhf.org.uk/informationsupport/risk-factors/high-blood-pressure', d:'BHF risk-factor explainer + lifestyle. Booklet PDF.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/high-blood-pressure-hypertension/', d:'NHS plain-English overview, browser-translate widget.' },
-        { o:'patient', u:'https://patient.info/heart-health/high-blood-pressure-hypertension', d:'Patient.info — more clinical detail; Easy-Read variant.' } ],
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/cardiovascular-disease/risk-factors-for-cardiovascular-disease/high-blood-pressure-hypertension/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ],
     t:['NHS Translate widget — Arabic / Polish / Urdu / Bengali / Mandarin / Punjabi'] },
 
   { s:'atrial-fibrillation', n:'Atrial Fibrillation', sp:'cardio', syn:['AF','irregular pulse','irregular heart','afib'],
     p:{ o:'bhf', u:'https://www.bhf.org.uk/informationsupport/conditions/atrial-fibrillation', d:'BHF \u2014 symptoms, anticoagulation, life with AF. Booklet PDF.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/atrial-fibrillation/', d:'NHS overview \u2014 stroke risk, treatment options.' },
-        { o:'patient', u:'https://patient.info/heart-health/abnormal-heart-rhythms-arrhythmias/atrial-fibrillation', d:'Patient.info clinical detail.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/cardiovascular-disease/heart-disease/atrial-fibrillation/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'heart-failure', n:'Heart Failure', sp:'cardio', syn:['HF','HFrEF','HFpEF','congestive cardiac failure','CCF'],
     p:{ o:'bhf', u:'https://www.bhf.org.uk/informationsupport/conditions/heart-failure', d:'BHF \u2014 the standard UK patient resource. Booklet "Living with heart failure".' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/heart-failure/', d:'NHS overview.' },
-        { o:'patient', u:'https://patient.info/heart-health/heart-failure-leaflet', d:'Patient.info clinical leaflet.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/cardiovascular-disease/heart-disease/heart-failure/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'angina', n:'Angina', sp:'cardio', syn:['stable angina','chest pain on exertion'],
     p:{ o:'bhf', u:'https://www.bhf.org.uk/informationsupport/conditions/angina', d:'BHF \u2014 GTN technique, when to call 999.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/angina/', d:'NHS overview.' },
-        { o:'patient', u:'https://patient.info/heart-health/angina-leaflet', d:'Patient.info detail.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/cardiovascular-disease/heart-disease/angina/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'heart-attack', n:'Heart attack (MI)', sp:'cardio', syn:['myocardial infarction','MI','STEMI','NSTEMI'],
     p:{ o:'bhf', u:'https://www.bhf.org.uk/informationsupport/conditions/heart-attack', d:'BHF \u2014 recovery, secondary prevention.' },
@@ -125,12 +125,12 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'dvt', n:'Deep Vein Thrombosis (DVT)', sp:'cardio', syn:['blood clot leg','DVT'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/deep-vein-thrombosis-dvt/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/heart-health/deep-vein-thrombosis-leaflet', d:'Patient.info detail.' },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/blood-and-lymph/deep-vein-thrombosis/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' },
         { o:'bhf', u:'https://www.bhf.org.uk/informationsupport/conditions/deep-vein-thrombosis-dvt', d:'BHF risk-factor angle.' } ] },
 
   { s:'pe', n:'Pulmonary Embolism', sp:'cardio', syn:['PE','clot on the lung'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/pulmonary-embolism/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/chest-lungs/pulmonary-embolism-leaflet', d:'Patient.info detail.' } ] },
+    a:[] },
 
   { s:'pad', n:'Peripheral Arterial Disease', sp:'cardio', syn:['PAD','intermittent claudication','peripheral vascular disease'],
     p:{ o:'bhf', u:'https://www.bhf.org.uk/informationsupport/conditions/peripheral-arterial-disease', d:'BHF \u2014 risk factors, walking programmes.' },
@@ -142,7 +142,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'varicose-veins', n:'Varicose veins', sp:'cardio', syn:[],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/varicose-veins/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/heart-health/varicose-veins-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/a-to-z/varicose-veins/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'palpitations', n:'Palpitations', sp:'cardio', syn:['fluttering heart','skipped beats'],
     p:{ o:'bhf', u:'https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/palpitations', d:'BHF \u2014 when to worry, when not to.' },
@@ -151,11 +151,11 @@ window.LEAFLET_CONDITIONS = [
   /* ============ RESPIRATORY ============ */
   { s:'common-cold', n:'Common Cold & URTI', sp:'resp', syn:['cold','upper respiratory tract infection','URTI','runny nose','man flu'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/common-cold/', d:'NHS — self-care; why antibiotics are not needed.' },
-    a:[ { o:'patient', u:'https://patient.info/chest-lungs/common-cold-leaflet-coryza', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/common-cold/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
   { s:'asthma', n:'Asthma (adult)', sp:'resp', syn:['wheeze','reversible airway'],
     p:{ o:'alung', u:'https://www.asthmaandlung.org.uk/conditions/asthma', d:'Asthma + Lung UK \u2014 the UK lead patient charity. Action-plan template.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/asthma/', d:'NHS overview.' },
-        { o:'patient', u:'https://patient.info/chest-lungs/asthma-leaflet', d:'Patient.info \u2014 more clinical detail.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/lungs-and-airways/asthma/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'asthma-paeds', n:'Childhood Asthma', sp:'resp', syn:['wheeze child','child asthma'],
     p:{ o:'alung', u:'https://www.asthmaandlung.org.uk/conditions/asthma/children', d:'Asthma + Lung UK \u2014 paediatric section + action plan.' },
@@ -164,7 +164,7 @@ window.LEAFLET_CONDITIONS = [
   { s:'copd', n:'COPD', sp:'resp', syn:['chronic obstructive pulmonary disease','emphysema','chronic bronchitis'],
     p:{ o:'alung', u:'https://www.asthmaandlung.org.uk/conditions/copd-chronic-obstructive-pulmonary-disease', d:'Asthma + Lung UK \u2014 self-management, pulmonary rehab.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/chronic-obstructive-pulmonary-disease-copd/', d:'NHS overview.' },
-        { o:'patient', u:'https://patient.info/chest-lungs/chronic-obstructive-pulmonary-disease-leaflet', d:'Patient.info.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/lungs-and-airways/copd/chronic-obstructive-pulmonary-disease/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'pneumonia', n:'Pneumonia', sp:'resp', syn:['chest infection'],
     p:{ o:'alung', u:'https://www.asthmaandlung.org.uk/conditions/pneumonia', d:'Asthma + Lung UK.' },
@@ -194,7 +194,7 @@ window.LEAFLET_CONDITIONS = [
   { s:'type-2-diabetes', n:'Type 2 Diabetes', sp:'endo', syn:['T2DM','sugar diabetes','adult-onset diabetes'],
     p:{ o:'diabetesuk', u:'https://www.diabetes.org.uk/diabetes-the-basics/types-of-diabetes/type-2', d:'Diabetes UK \u2014 the UK lead patient charity. Newly-diagnosed pack.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/type-2-diabetes/', d:'NHS overview.' },
-        { o:'patient', u:'https://patient.info/diabetes/type-2-diabetes', d:'Patient.info clinical detail.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/diabetes/type-2-diabetes/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'type-1-diabetes', n:'Type 1 Diabetes', sp:'endo', syn:['T1DM','insulin-dependent diabetes'],
     p:{ o:'diabetesuk', u:'https://www.diabetes.org.uk/diabetes-the-basics/types-of-diabetes/type-1', d:'Diabetes UK \u2014 lead patient charity.' },
@@ -211,7 +211,7 @@ window.LEAFLET_CONDITIONS = [
   { s:'hypothyroidism', n:'Hypothyroidism', sp:'endo', syn:['underactive thyroid','low thyroid'],
     p:{ o:'thyroiduk', u:'https://www.btf-thyroid.org/hypothyroidism-leaflet', d:'BTF \u2014 specialist thyroid charity leaflet.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/underactive-thyroid-hypothyroidism/', d:'NHS overview.' },
-        { o:'patient', u:'https://patient.info/hormones/thyroid-gland/underactive-thyroid-leaflet', d:'Patient.info.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/glands/underactive-thyroid/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'hyperthyroidism', n:'Hyperthyroidism', sp:'endo', syn:['overactive thyroid','Graves'],
     p:{ o:'thyroiduk', u:'https://www.btf-thyroid.org/hyperthyroidism-leaflet', d:'BTF \u2014 specialist thyroid charity.' },
@@ -224,22 +224,22 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'obesity', n:'Overweight & Obesity', sp:'endo', syn:['weight loss','BMI'],
     p:{ o:'nhs', u:'https://www.nhs.uk/live-well/healthy-weight/', d:'NHS Live Well \u2014 BMI calculator + tools.' },
-    a:[ { o:'patient', u:'https://patient.info/diet-and-lifestyle/overweight-and-obesity-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/nutritional/obesity/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'osteoporosis', n:'Osteoporosis', sp:'endo', syn:['brittle bones','low bone density'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/osteoporosis/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/bones-joints-muscles/osteoporosis-leaflet', d:'Patient.info.' },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/muscle-bone-and-joints/conditions-that-can-affect-multiple-parts-of-the-body/osteoporosis/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' },
         { o:'va', u:'https://versusarthritis.org/about-arthritis/conditions/osteoporosis/', d:'Versus Arthritis \u2014 living-with section.' } ] },
 
   { s:'vitamin-d-deficiency', n:'Vitamin D Deficiency', sp:'endo', syn:[],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/vitamins-and-minerals/vitamin-d/', d:'NHS \u2014 supplement guidance.' },
-    a:[ { o:'patient', u:'https://patient.info/bones-joints-muscles/vitamin-d-deficiency', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/healthy-living/food-and-nutrition/eating-well/vitamin-d/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   /* ============ RENAL ============ */
   { s:'chronic-kidney-disease', n:'Chronic Kidney Disease', sp:'renal', syn:['CKD','kidney failure','reduced kidney function'],
     p:{ o:'kcuk', u:'https://www.kidneycareuk.org/about-kidney-health/conditions/ckd/', d:'Kidney Care UK \u2014 stage-by-stage explainer.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/kidney-disease/', d:'NHS overview.' },
-        { o:'patient', u:'https://patient.info/kidney-urinary-tract/chronic-kidney-disease-leaflet', d:'Patient.info.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/kidneys-bladder-and-prostate/chronic-kidney-disease/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'aki', n:'Acute Kidney Injury', sp:'renal', syn:['AKI'],
     p:{ o:'kcuk', u:'https://www.kidneycareuk.org/about-kidney-health/conditions/aki/', d:'Kidney Care UK.' },
@@ -247,7 +247,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'uti', n:'UTI (urinary tract infection)', sp:'renal', syn:['cystitis','bladder infection'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/urinary-tract-infections-utis/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/kidney-urinary-tract/urine-infection-in-adults', d:'Patient.info.' },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/kidneys-bladder-and-prostate/urinary-tract-infection-uti/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' },
         { o:'bladder', u:'https://www.bladderandboweluk.co.uk/bladder/bladder-conditions/uti-cystitis/', d:'Bladder & Bowel UK.' } ] },
 
   { s:'kidney-stones', n:'Kidney Stones', sp:'renal', syn:['renal calculi','renal colic'],
@@ -256,17 +256,17 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'haematuria', n:'Blood in urine (Haematuria)', sp:'renal', syn:['haematuria','blood in urine'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/blood-in-urine/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/kidney-urinary-tract/blood-in-the-urine-haematuria', d:'Patient.info.' } ] },
+    a:[] },
 
   /* ============ GI & LIVER ============ */
   { s:'gastroenteritis-adult', n:'Gastroenteritis & Food Poisoning (adult)', sp:'gi', syn:['food poisoning','diarrhoea and vomiting','D&V','stomach bug','norovirus','tummy bug'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/diarrhoea-and-vomiting/', d:'NHS — hydration, self-care, when to seek help.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/food-poisoning/', d:'NHS — food poisoning.' },
-        { o:'patient', u:'https://patient.info/digestive-health/gastroenteritis', d:'Patient.info.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/stomach-liver-and-gastrointestinal-tract/gastroenteritis-in-adults/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
   { s:'gord', n:'GORD / Reflux', sp:'gi', syn:['acid reflux','heartburn','GORD','GERD'],
     p:{ o:'guts', u:'https://gutscharity.org.uk/advice-and-information/conditions/gastro-oesophageal-reflux-disease-gord/', d:'Guts UK.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/heartburn-and-acid-reflux/', d:'NHS overview.' },
-        { o:'patient', u:'https://patient.info/digestive-health/dyspepsia-indigestion/acid-reflux-and-oesophagitis', d:'Patient.info.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/stomach-liver-and-gastrointestinal-tract/gastro-oesophageal-reflux-disease-gord/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'peptic-ulcer', n:'Peptic ulcer disease', sp:'gi', syn:['stomach ulcer','duodenal ulcer','PUD'],
     p:{ o:'guts', u:'https://gutscharity.org.uk/advice-and-information/conditions/peptic-ulcer/', d:'Guts UK.' },
@@ -279,7 +279,7 @@ window.LEAFLET_CONDITIONS = [
   { s:'ibs', n:'Irritable Bowel Syndrome', sp:'gi', syn:['IBS','spastic colon'],
     p:{ o:'guts', u:'https://gutscharity.org.uk/advice-and-information/conditions/irritable-bowel-syndrome-ibs/', d:'Guts UK \u2014 the IBS Network is the patient charity; Guts UK leads on info.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/irritable-bowel-syndrome-ibs/', d:'NHS overview.' },
-        { o:'patient', u:'https://patient.info/digestive-health/irritable-bowel-syndrome-leaflet', d:'Patient.info.' } ] },
+        { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/stomach-liver-and-gastrointestinal-tract/irritable-bowel-syndrome-ibs/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'crohns', n:'Crohn\u2019s Disease', sp:'gi', syn:['Crohn','IBD'],
     p:{ o:'cc', u:'https://crohnsandcolitis.org.uk/info-support/information-about-crohns-and-colitis/all-information-about-crohns-and-colitis/diagnosis-treatment/crohns-disease', d:'Crohn\u2019s & Colitis UK \u2014 lead patient charity.' },
@@ -299,7 +299,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'haemorrhoids', n:'Haemorrhoids (piles)', sp:'gi', syn:['piles'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/piles-haemorrhoids/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/digestive-health/rectal-bleeding-blood-in-faeces/piles-haemorrhoids', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/stomach-liver-and-gastrointestinal-tract/haemorrhoids-piles/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'constipation', n:'Constipation', sp:'gi', syn:[],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/constipation/', d:'NHS overview.' },
@@ -324,7 +324,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'iron-deficiency-anaemia', n:'Iron Deficiency Anaemia', sp:'gi', syn:['anaemia','low haemoglobin','low iron'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/iron-deficiency-anaemia/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/digestive-health/anaemia-leaflet/iron-deficiency-anaemia', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/nutritional/iron-deficiency-anaemia/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'anal-fissure', n:'Anal Fissure', sp:'gi', syn:['tear','anal pain'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/anal-fissure/', d:'NHS overview.' },
@@ -332,7 +332,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'b12-folate-anaemia', n:'B12 / Folate Deficiency Anaemia', sp:'gi', syn:['pernicious anaemia','macrocytic anaemia','low B12','low folate'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/vitamin-b12-or-folate-deficiency-anaemia/', d:'NHS overview \u2014 incl. pernicious anaemia.' },
-    a:[ { o:'patient', u:'https://patient.info/digestive-health/anaemia-leaflet/b12-deficiency-and-pernicious-anaemia', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/nutritional/vitamin-b12-or-folate-deficiency-anaemia/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   /* ============ MSK ============ */
   { s:'sprains-strains', n:'Sprains & Strains', sp:'msk', syn:['sprain','strain','soft tissue injury','pulled muscle','twisted ankle','ligament injury'],
@@ -408,7 +408,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'bursitis', n:'Bursitis', sp:'msk', syn:['housemaid\u2019s knee','olecranon bursitis','trochanteric'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/bursitis/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/bones-joints-muscles/bursitis-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'va', u:'https://versusarthritis.org/about-arthritis/conditions/bursitis/', d:'Versus Arthritis \u2014 bursitis: self-care, exercise, when to see a GP.' } ] },
 
   { s:'bunion', n:'Bunions (Hallux Valgus)', sp:'msk', syn:['hallux valgus','big toe'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/bunions/', d:'NHS overview.' },
@@ -420,11 +420,11 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'ganglion', n:'Ganglion Cyst', sp:'msk', syn:['bible cyst','wrist lump'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/ganglion-cyst/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/bones-joints-muscles/ganglion', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/muscle-bone-and-joints/arm-shoulder-and-hand-problems-and-conditions/ganglion-cyst/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'costochondritis', n:'Costochondritis (chest-wall pain)', sp:'msk', syn:['chest wall pain','Tietze'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/costochondritis/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/bones-joints-muscles/chest-pain-non-cardiac/costochondritis', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/muscle-bone-and-joints/chest-and-rib-problems-and-conditions/costochondritis/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   /* ============ DERMATOLOGY ============ */
   { s:'skin-cyst-lipoma', n:'Skin Cyst & Lipoma', sp:'derm', syn:['sebaceous cyst','epidermoid cyst','lipoma','fatty lump','skin lump'],
@@ -432,7 +432,7 @@ window.LEAFLET_CONDITIONS = [
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/lipoma/', d:'NHS — lipoma (fatty lump).' } ] },
   { s:'ingrowing-toenail', n:'Ingrown Toenail', sp:'derm', syn:['ingrowing toenail','onychocryptosis','toenail'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/ingrown-toenail/', d:'NHS — self-care + when to see a GP / podiatry.' },
-    a:[ { o:'patient', u:'https://patient.info/foot-care/ingrowing-toenails-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/skin-hair-and-nails/ingrown-toenail/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
   { s:'eczema', n:'Atopic Eczema', sp:'derm', syn:['atopic dermatitis','dermatitis'],
     p:{ o:'bad', u:'https://www.bad.org.uk/pils/atopic-eczema/', d:'BAD PIL \u2014 the dermatology gold standard leaflet.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/atopic-eczema/', d:'NHS overview.' },
@@ -497,11 +497,11 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'cold-sores', n:'Cold Sores (Herpes Labialis)', sp:'derm', syn:['herpes labialis','HSV lip'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/cold-sores/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/skin-conditions/cold-sores-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/mouth/cold-sore/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'boils', n:'Boils & Abscesses', sp:'derm', syn:['furuncle','carbuncle','skin abscess'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/boils/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/skin-conditions/boils-furuncles-and-carbuncles', d:'Patient.info.' } ] },
+    a:[] },
 
   { s:'seborrhoeic-dermatitis', n:'Seborrhoeic Dermatitis & Dandruff', sp:'derm', syn:['dandruff','seborrhoeic eczema'],
     p:{ o:'bad', u:'https://www.bad.org.uk/pils/seborrhoeic-dermatitis/', d:'BAD PIL.' },
@@ -596,15 +596,15 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'bells-palsy', n:'Bell\u2019s Palsy', sp:'neuro', syn:['facial palsy'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/bells-palsy/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/brain-nerves/bells-palsy-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/brain-nerves-and-spinal-cord/facial-palsy/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'trigeminal-neuralgia', n:'Trigeminal Neuralgia', sp:'neuro', syn:['TN'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/trigeminal-neuralgia/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/brain-nerves/trigeminal-neuralgia-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/brain-nerves-and-spinal-cord/trigeminal-neuralgia/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'bppv', n:'BPPV (positional vertigo)', sp:'neuro', syn:['benign paroxysmal positional vertigo','vertigo'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/benign-paroxysmal-positional-vertigo-bppv/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/ears-nose-throat-mouth/dizziness/benign-paroxysmal-positional-vertigo-bppv', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/ears-nose-and-throat/vertigo/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'meningitis', n:'Meningitis', sp:'neuro', syn:[],
     p:{ o:'meningitis', u:'https://www.meningitisnow.org/meningitis-explained/', d:'Meningitis Now \u2014 specialist charity.' },
@@ -616,12 +616,12 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'restless-legs', n:'Restless Legs Syndrome', sp:'neuro', syn:['RLS','Willis-Ekbom'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/restless-legs-syndrome/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/brain-nerves/restless-legs-syndrome-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/brain-nerves-and-spinal-cord/restless-legs-syndrome/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   /* ============ WOMEN'S HEALTH ============ */
   { s:'dysmenorrhoea', n:'Period Pain (Dysmenorrhoea)', sp:'women', syn:['painful periods','menstrual cramps','dysmenorrhea','period cramps'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/period-pain/', d:'NHS — self-care, pain relief and when to see a GP.' },
-    a:[ { o:'patient', u:'https://patient.info/womens-health/periods-and-period-problems/painful-periods-dysmenorrhoea', d:'Patient.info clinical detail.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/healthy-living/womens-health/girls-and-young-women-puberty-to-around-25/periods-and-menstrual-health/period-pain-dysmenorrhoea/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
   { s:'menopause', n:'Menopause & Perimenopause', sp:'women', syn:['perimenopause','HRT'],
     p:{ o:'rcog', u:'https://www.rcog.org.uk/for-the-public/menopause/', d:'RCOG patient information hub.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/menopause/', d:'NHS overview.' },
@@ -662,11 +662,11 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'vaginal-thrush', n:'Vaginal Thrush', sp:'women', syn:['candidiasis','candida','yeast infection'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/thrush-in-men-and-women/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/sexual-health/vaginal-discharge-female-discharge/vaginal-thrush-yeast-infection', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/sexual-and-reproductive/thrush/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'bv', n:'Bacterial Vaginosis', sp:'women', syn:['BV'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/bacterial-vaginosis/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/sexual-health/vaginal-discharge-female-discharge/bacterial-vaginosis', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/sexual-and-reproductive/bacterial-vaginosis/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   /* ============ MEN'S HEALTH ============ */
   { s:'bph', n:'Benign Prostatic Hyperplasia', sp:'men', syn:['BPH','enlarged prostate','LUTS'],
@@ -675,7 +675,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'ed', n:'Erectile Dysfunction', sp:'men', syn:['impotence','ED'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/erection-problems-erectile-dysfunction/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/mens-health/erectile-dysfunction-impotence', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/sexual-and-reproductive/erectile-dysfunction-impotence', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'prostate-cancer', n:'Prostate Cancer', sp:'men', syn:[],
     p:{ o:'pcuk', u:'https://prostatecanceruk.org/prostate-information-and-support/prostate-cancer', d:'Prostate Cancer UK \u2014 lead patient charity.' },
@@ -709,7 +709,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'hiv', n:'HIV', sp:'sexual', syn:[],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/hiv-and-aids/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/sexual-health/hiv-and-aids-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/immune-system/hiv/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'contraception', n:'Contraception (overview)', sp:'sexual', syn:['birth control','pill','coil','implant'],
     p:{ o:'fsrh', u:'https://www.fsrh.org/standards-and-guidance/fsrh-clinical-guidance-and-statement/contraception-overview/', d:'FSRH \u2014 UK lead body. Method-by-method.' },
@@ -776,7 +776,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'conjunctivitis', n:'Conjunctivitis', sp:'eye', syn:['pink eye','red eye'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/conjunctivitis/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/eye-care/red-eye/conjunctivitis', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/eyes/conjunctivitis/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   /* ============ ENT ============ */
   { s:'epistaxis', n:'Nosebleeds (Epistaxis)', sp:'ent', syn:['nosebleed','bleeding nose','epistaxis'],
@@ -808,15 +808,15 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'otitis-externa', n:'Otitis Externa (Swimmer\u2019s Ear)', sp:'ent', syn:['swimmer\u2019s ear'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/outer-ear-infection/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/ears-nose-throat-mouth/ear-pain-earache/ear-infection-otitis-externa', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/ears-nose-and-throat/otitis-externa/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'otitis-media', n:'Ear Infection (Otitis Media)', sp:'ent', syn:['middle ear infection','glue ear','earache child'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/ear-infections/', d:'NHS overview \u2014 middle-ear infection.' },
-    a:[ { o:'patient', u:'https://patient.info/ears-nose-throat-mouth/ear-pain-earache/ear-infection-otitis-media', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/ears-nose-and-throat/middle-ear-infection-otitis-media/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'labyrinthitis', n:'Labyrinthitis & Vestibular Neuritis', sp:'ent', syn:['vestibular neuritis','dizziness','vertigo'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/labyrinthitis/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/ears-nose-throat-mouth/dizziness/labyrinthitis-and-vestibular-neuritis', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/ears-nose-and-throat/labyrinthitis/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   /* ============ PAEDIATRICS ============ */
   { s:'bronchiolitis', n:'Bronchiolitis', sp:'paeds', syn:['RSV'],
@@ -825,23 +825,23 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'croup', n:'Croup', sp:'paeds', syn:[],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/croup/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/childrens-health/cough-in-children/croup', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/lungs-and-airways/croup/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'gastroenteritis-paeds', n:'Gastroenteritis (children)', sp:'paeds', syn:['D&V','diarrhoea and vomiting'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/diarrhoea-and-vomiting/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/childrens-health/acute-diarrhoea-in-children/gastroenteritis-in-children', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/stomach-liver-and-gastrointestinal-tract/gastroenteritis-in-children-and-babies/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'fever-child', n:'Fever in children', sp:'paeds', syn:['high temperature child','pyrexia'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/fever-in-children/', d:'NHS overview \u2014 traffic light.' },
-    a:[ { o:'patient', u:'https://patient.info/childrens-health/fever-in-children-high-temperature', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/fever-in-children/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'chickenpox', n:'Chickenpox', sp:'paeds', syn:['varicella'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/chickenpox/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/childrens-health/chickenpox-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/chickenpox/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'hand-foot-mouth', n:'Hand, Foot & Mouth Disease', sp:'paeds', syn:['HFMD'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/hand-foot-mouth-disease/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/childrens-health/childhood-skin-conditions/hand-foot-and-mouth-disease', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/hand-foot-and-mouth-disease/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'nappy-rash', n:'Nappy rash', sp:'paeds', syn:[],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/nappy-rash/', d:'NHS overview.' },
@@ -853,7 +853,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'threadworms', n:'Threadworms', sp:'paeds', syn:['pinworm','worms'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/threadworms/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/digestive-health/threadworms-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/stomach-liver-and-gastrointestinal-tract/threadworms/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'constipation-children', n:'Constipation in Children', sp:'paeds', syn:['child constipation','soiling','encopresis'],
     p:{ o:'eric', u:'https://eric.org.uk/childrens-bowels/constipation/', d:'ERIC \u2014 children\u2019s bowel & bladder charity.' },
@@ -866,15 +866,15 @@ window.LEAFLET_CONDITIONS = [
   /* ============ GENERAL SYMPTOMS ============ */
   { s:'fatigue', n:'Tired all the time (TATT)', sp:'general', syn:['fatigue','exhaustion'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/tiredness-and-fatigue/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/signs-symptoms/tiredness-fatigue', d:'Patient.info.' } ] },
+    a:[] },
 
   { s:'weight-loss-unintended', n:'Unintentional weight loss', sp:'general', syn:[],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/unintentional-weight-loss/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/signs-symptoms/loss-of-appetite-weight-loss', d:'Patient.info.' } ] },
+    a:[] },
 
   { s:'cfs', n:'Chronic Fatigue Syndrome / ME', sp:'general', syn:['ME','CFS','myalgic encephalomyelitis'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/chronic-fatigue-syndrome-cfs/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/signs-symptoms/tiredness-fatigue/chronic-fatigue-syndrome', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/brain-nerves-and-spinal-cord/myalgic-encephalomyelitis-me-or-chronic-fatigue-syndrome-cfs/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'long-covid', n:'Long COVID', sp:'general', syn:['post-COVID syndrome'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/covid-19/long-term-effects-of-covid-19-long-covid/', d:'NHS Long COVID hub.' },
@@ -886,15 +886,15 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'stop-smoking', n:'Stopping Smoking', sp:'general', syn:['quit smoking','smoking cessation','vaping'],
     p:{ o:'nhs', u:'https://www.nhs.uk/better-health/quit-smoking/', d:'NHS Better Health \u2014 quit tools + local services.' },
-    a:[ { o:'patient', u:'https://patient.info/healthy-living/smoking-the-facts', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/healthy-living/how-to-stop-smoking/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'alcohol', n:'Cutting Down on Alcohol', sp:'general', syn:['alcohol misuse','drinking','units'],
     p:{ o:'nhs', u:'https://www.nhs.uk/live-well/alcohol-advice/', d:'NHS \u2014 units, risks, cutting down, support.' },
-    a:[ { o:'patient', u:'https://patient.info/healthy-living/alcohol-and-sensible-drinking', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/healthy-living/alcohol/tips-on-cutting-down-alcohol/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'mouth-ulcers', n:'Mouth Ulcers', sp:'general', syn:['aphthous ulcer','canker sore'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/mouth-ulcers/', d:'NHS overview.' },
-    a:[ { o:'patient', u:'https://patient.info/signs-symptoms/mouth-ulcers-leaflet', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/mouth/mouth-ulcer/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'carers-support', n:'Support for Carers', sp:'general', syn:['carer','caring for someone','carer support'],
     p:{ o:'carers', u:'https://www.carersuk.org/help-and-advice/', d:'Carers UK \u2014 rights, benefits, support.' },
@@ -941,7 +941,7 @@ window.LEAFLET_CONDITIONS = [
   /* ============ ADDED v2 — further common presentations ============ */
   { s:'vertigo', n:'Vertigo (dizziness)', sp:'neuro', syn:['dizziness','spinning','room spinning'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/vertigo/', d:'NHS — causes, self-care and when to seek help.' },
-    a:[ { o:'patient', u:'https://patient.info/ears-nose-throat-mouth/dizziness', d:'Patient.info — dizziness overview.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/ears-nose-and-throat/vertigo/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'mastitis', n:'Mastitis & Breastfeeding Problems', sp:'women', syn:['breast infection','blocked duct','breastfeeding pain'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/mastitis/', d:'NHS — breast inflammation/infection, feeding advice, antibiotics.' },
@@ -961,7 +961,7 @@ window.LEAFLET_CONDITIONS = [
 
   { s:'oral-thrush', n:'Oral Thrush', sp:'general', syn:['oral candidiasis','mouth thrush','candida mouth'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/oral-thrush-mouth-thrush/', d:'NHS — causes, treatment, when to see a GP.' },
-    a:[ { o:'patient', u:'https://patient.info/digestive-health/mouth-ulcers/oral-thrush-yeast-infection', d:'Patient.info.' } ] },
+    a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/infections-and-poisoning/oral-thrush-in-adults/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'lactose-intolerance', n:'Lactose Intolerance', sp:'gi', syn:['dairy intolerance','milk intolerance'],
     p:{ o:'nhs', u:'https://www.nhs.uk/conditions/lactose-intolerance/', d:'NHS — symptoms, diagnosis, managing dairy.' },
