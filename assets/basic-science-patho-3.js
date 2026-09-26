@@ -139,7 +139,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     'Screen for type 2 diabetes — they share insulin resistance.',
   ],
   note:'PCOS is really a metabolic disorder wearing a gynaecological mask: insulin resistance is the engine that drives the androgens and the anovulation.',
-  links:{ case:'cases/pcos.html', caseLabel:'PCOS case', algorithm:'tools/algorithms/hirsutism.html', algorithmLabel:'Hirsutism pathway' } },
+  links:{ case:'cases/pcos.html', caseLabel:'PCOS case', algorithm:'tools/management/hirsutism.html', algorithmLabel:'Hirsutism pathway' } },
 
 { id:'patho-vitd', domain:'Pathophysiology', system:'Endocrine & Metabolic', icon:'☀️',
   title:'Vitamin D deficiency & osteomalacia', blurb:'Why low vitamin D weakens bone and disturbs calcium.',
@@ -324,7 +324,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     'New confusion in the elderly can be the only UTI sign — but exclude other causes.',
   ],
   note:'Most UTIs are simply gut bacteria climbing the urinary tract; danger rises the higher they reach.',
-  links:{ case:'cases/uti-women.html', caseLabel:'UTI case', algorithm:'tools/algorithms/recurrent-uti.html', algorithmLabel:'Recurrent UTI pathway' } },
+  links:{ case:'cases/uti-women.html', caseLabel:'UTI case', algorithm:'tools/management/recurrent-uti.html', algorithmLabel:'Recurrent UTI pathway' } },
 
 { id:'patho-renal-stones', domain:'Pathophysiology', system:'Renal', icon:'🪨',
   title:'Renal & ureteric stones', blurb:'Why a crystallising stone causes excruciating colic.',
@@ -486,7 +486,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     'Charcot\u2019s triad (pain, fever, jaundice) signals cholangitis — an emergency.',
   ],
   note:'A stone\u2019s symptoms depend entirely on which duct it blocks — gallbladder neck (colic), inflamed gallbladder (cholecystitis), or bile duct (jaundice).',
-  links:{ algorithm:'tools/algorithms/biliary-colic.html', algorithmLabel:'Biliary colic pathway' } },
+  links:{ algorithm:'tools/management/cholecystitis.html', algorithmLabel:'Biliary colic pathway' } },
 
 { id:'patho-pancreatitis', domain:'Pathophysiology', system:'Gastrointestinal', icon:'🔥',
   title:'Acute pancreatitis', blurb:'Why the pancreas digests itself — and why it can be life-threatening.',

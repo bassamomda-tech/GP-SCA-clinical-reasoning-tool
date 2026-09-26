@@ -32,7 +32,7 @@ MG.render({
     {t:"NG112 recurrent · NG113 catheter"},
     {t:"NICE NG12 · haematuria 2WW", tone:"tw"},
     {t:"MHRA Jan 2024 · fluoroquinolones"},
-    {t:"BNF owns all doses not stated by NICE"}
+    {t:"BNF owns all doses not stated in NICE NG109–NG113"}
   ],
   lead:'<div class="mg-layers"><a href="#diagnose"><b>Diagnose</b><small>Symptoms + MSU, not dipstick</small></a><a href="#redflags"><b>Admit?</b><small>Sepsis, retention, abscess</small></a><a href="#abx"><b>Antibiotics</b><small>NG109 · NG111 · NG110</small></a><a href="#refer"><b>Refer</b><small>Recurrence · NG12</small></a></div>',
   glance:[
@@ -66,7 +66,7 @@ MG.render({
     {id:"diagnose", nav:"Diagnose", title:"Diagnosing UTI in a man", sub:"Symptoms plus culture. The dipstick can mislead in both directions, and a negative one must not end the assessment.",
      blocks:[
        {b:"kv", rows:[
-         ["Treat as complicated","In men there is no ‘uncomplicated cystitis’ pathway: NICE gives men an <b>immediate antibiotic, a 7-day course and a culture in every case</b> (NG109). Anatomy (a longer urethra) means infection is less common than in women, so when it happens it more often reflects an underlying problem — outflow obstruction, stones, a catheter, or prostatic involvement."],
+         ["Treat as complicated","In men there is no ‘uncomplicated cystitis’ pathway: NICE NG109 gives men an <b>immediate antibiotic, a 7-day course and a culture in every case</b> (NG109). Anatomy (a longer urethra) means infection is less common than in women, so when it happens it more often reflects an underlying problem — outflow obstruction, stones, a catheter, or prostatic involvement."],
          ["Symptoms of lower UTI","Dysuria, frequency, urgency, new nocturia, suprapubic pain, visible haematuria, cloudy urine. <b>No fever, rigors or loin pain</b>."],
          ["Dipstick","UKHSA’s 2025 quick reference tools: <b>do not use urine dipsticks to rule out UTI in men under 65</b>. A positive dipstick does not tell you the organism or its sensitivities; a negative one does not exclude infection. Send an MSU."],
          ["Asymptomatic bacteriuria","Rare in men under 65 (UKHSA 2025). In older and catheterised men it is common and should <b>not</b> be treated without symptoms."],
@@ -123,7 +123,7 @@ MG.render({
        {b:"why", html:"Culture is not just a formality in men: it tells you whether the empirical drug covers the organism, and it builds the history that decides the next episode’s treatment and whether the man meets the recurrence threshold for urology referral."}
      ]},
 
-    {id:"abx", nav:"Antibiotics", title:"Antibiotic choice — by site of infection", sub:"Doses and durations below are those stated in the named NICE guideline. Everything else: dose per BNF.",
+    {id:"abx", nav:"Antibiotics", title:"Antibiotic choice — by site of infection", sub:"Doses and durations below are those stated in the named guideline (NICE NG109, NG110 or NG112). Everything else: dose per BNF.",
      blocks:[
        {b:"ladder", steps:[
          {step:"Lower", title:"Lower UTI (cystitis) in men — NICE NG109", when:"immediate prescription, 7 days", tone:"blue",
@@ -138,7 +138,7 @@ MG.render({
        {b:"cards", cols:2, items:[
          {tone:"amber", h:"Nitrofurantoin and the kidneys", html:"NG109 recommends nitrofurantoin for lower UTI only when <b>eGFR ≥45 ml/min</b>. MHRA/BNF: at eGFR 30–44 it may be used with caution only as a <b>short course (3–7 days)</b> for lower UTI with suspected or proven multidrug-resistant organisms, when benefit outweighs risk. It achieves little tissue concentration and is <b>not suitable for pyelonephritis or prostatitis</b>.", src:"NICE NG109 · MHRA · BNF"},
          {tone:"blue", h:"Fluoroquinolone safeguards", html:"MHRA January 2024: prescribe systemic fluoroquinolones only when other recommended antibiotics are inappropriate. Warn about tendon pain/swelling (stop and seek advice), muscle pain, peripheral neuropathy, mood or sleep change, and aortic symptoms; avoid co-prescribing a corticosteroid; extra caution over 60, in renal impairment and after solid-organ transplant. Record the discussion.", src:"MHRA Drug Safety Update Jan 2024"},
-         {tone:"plain", h:"Trimethoprim cautions", html:"Can raise serum potassium and creatinine — caution with ACE inhibitors/ARBs, spironolactone and CKD. Avoid with methotrexate (marrow suppression). Resistance is common: previous culture results matter most. Doses per BNF beyond those stated by NICE.", src:"BNF"},
+         {tone:"plain", h:"Trimethoprim cautions", html:"Can raise serum potassium and creatinine — caution with ACE inhibitors/ARBs, spironolactone and CKD. Avoid with methotrexate (marrow suppression). Resistance is common: previous culture results matter most. Doses per BNF beyond those stated in NICE NG109 and NG110.", src:"BNF"},
          {tone:"plain", h:"Pain relief", html:"For prostatitis: <b>paracetamol</b> (with or without a low-dose weak opioid such as codeine), or <b>ibuprofen</b> if preferred and suitable. Similar advice suits cystitis and pyelonephritis; avoid NSAIDs with AKI, dehydration or CKD.", src:"NICE NG110"}
        ]},
        {b:"warn", html:"Match the drug to the <b>site</b>: a febrile man given nitrofurantoin for 3 days is under-treated on two counts. Men are not given the 3-day course used in women; the minimum is 7 days for cystitis and 14 days (then review) for prostatitis."}
@@ -257,7 +257,7 @@ MG.render({
          '</ul></div>'}
      ]}
   ],
-  foot:"UTI in men (lower and upper) — NICE NG109 (updated 2025), NG110 (updated 2024), NG111 (updated 2024), NG112 (updated 2024), NG113, NG12 and NG253 (2025); UKHSA UTI diagnostic tools (2025); MHRA January 2024 fluoroquinolone advice. Doses shown are those stated in the named NICE guideline; all others per BNF. Follow local antimicrobial guidance where it differs, and verify all doses against the current BNF before prescribing."
+  foot:"UTI in men (lower and upper) — NICE NG109 (updated 2025), NG110 (updated 2024), NG111 (updated 2024), NG112 (updated 2024), NG113, NG12 and NG253 (2025); UKHSA UTI diagnostic tools (2025); MHRA January 2024 fluoroquinolone advice. Doses shown are those stated in the named guideline (NICE NG109–NG113); all others per BNF. Follow local antimicrobial guidance where it differs, and verify all doses against the current BNF before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

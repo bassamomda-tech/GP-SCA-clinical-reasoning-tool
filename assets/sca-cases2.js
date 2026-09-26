@@ -30,9 +30,9 @@
       cues:['"The house gets very quiet at nine o\u2019clock" — the loneliness behind the insomnia.','Looks down and goes quiet when the early repeat is mentioned — shame, not deceit.','"I don\u2019t want to end up doddery like my sister" — fear of falling and of decline, the lever for change.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Connects the fall to the zopiclone explicitly (sedative-hypnotics roughly double fall risk in over-65s) and checks orthostatic symptoms / reviews amlodipine timing' },
+      { dom:'tasks', text:'Connects the fall to the zopiclone explicitly (hypnotics are a recognised cause of night-time falls in older people, and NICE NG249 puts medication review at the centre of a falls assessment) and checks orthostatic symptoms / reviews amlodipine timing' },
       { dom:'tasks', text:'Recognises tolerance and dependence after 12 years — names them without blame, and does NOT escalate to temazepam or prescribe "something stronger"' },
-      { dom:'tasks', text:'Negotiates a gradual taper (e.g. 7.5 → 3.75 mg alternating, over weeks-to-months) — never abrupt cessation; explicitly warns against stopping suddenly' },
+      { dom:'tasks', text:'Negotiates a gradual taper (e.g. 3.75 mg on alternate nights, then nightly, with further steps agreed every few weeks — expect months) — never abrupt cessation; explicitly warns against stopping suddenly' },
       { dom:'tasks', text:'Offers what replaces the tablet: sleep-restriction/CBT-I principles, caffeine and sherry timing, no TV in bed, afternoon nap capped' },
       { dom:'rto',   text:'Hears the grief and the quiet house — the insomnia is partly loneliness, and says so kindly' },
       { dom:'rto',   text:'Handles the early-repeat shame gently — curiosity, not accusation' },
@@ -47,16 +47,16 @@
       { lbl:'Her lever',              txt:'"You said it yourself — you don\u2019t want to end up like your sister. The single best fall-prevention step you can take is the one we\u2019ve just talked about."' },
       { lbl:'Safety-net',             txt:'"The first two weeks of cutting down, sleep gets briefly worse before it resets — that\u2019s the tablet leaving, not your insomnia returning. If you\u2019re struggling, ring me rather than ride it out alone. I want to see you in three weeks either way."' },
     ],
-    learning:'Z-drugs and benzodiazepines in over-65s roughly double fall and fracture risk, and tolerance makes long-term use ineffective for sleep. The exam skill is deprescribing as a negotiation: validate the fear, harness the patient\u2019s own motivation, taper slowly (never stop abruptly), and replace the tablet with something — CBT-I principles and attention to the loneliness driving the 3am waking. Escalating to temazepam is the station\u2019s trapdoor.',
+    learning:'Z-drugs and benzodiazepines raise the risk of falls and fractures in older people, and tolerance makes long-term use ineffective for sleep. The exam skill is deprescribing as a negotiation: validate the fear, harness the patient\u2019s own motivation, taper slowly (never stop abruptly), and replace the tablet with something — CBT-I principles and attention to the loneliness driving the 3am waking. Escalating to temazepam is the station\u2019s trapdoor.',
     knowledge:{
-      guideline:'NICE TA77 / NICE guidance — Insomnia · BNF sedative-hypnotics in elderly · STOPP/START',
+      guideline:'NICE TA77 (2004) — hypnotics for insomnia · NICE NG249 (2025) — falls · BNF zopiclone · NICE MTG70 (Sleepio)',
       points:[
         { h:'Diagnose the real problem', t:'Twelve years of a z-drug = dependence and tolerance, not "insomnia needing a stronger tablet". The 3am waking with afternoon napping and evening loneliness is a behavioural-circadian pattern the tablet cannot fix.' },
         { h:'Red flags & same-day action', t:'The fall IS the red flag: sedative-related nocturnal falls in a 76-year-old predict fracture. Check orthostatic BP, review all sedating/hypotensive medication, ask about syncope, vision and home hazards.' },
-        { h:'Work-up to consider', t:'Falls review: lying/standing BP, medication review (amlodipine timing, OTC sedating antihistamines), gait check, bone health (FRAX — consider DEXA), alcohol units honestly counted (nightly sherry + zopiclone potentiate).' },
-        { h:'Manage — the taper', t:'Switch-equivalent then reduce: zopiclone 7.5 → 3.75 mg, or alternate-night stepping, over 4–12 weeks; some need diazepam-equivalent conversion. Pair every reduction with CBT-I elements: fixed rising time, no TV in bed, nap cap, caffeine cut-off 2pm.' },
+        { h:'Work-up to consider', t:'NICE NG249 multifactorial falls assessment: lying/standing BP, medication review (amlodipine timing, OTC sedating antihistamines), gait check, vision, night-time route to the toilet, bone health (FRAX — consider DEXA), alcohol units honestly counted (nightly sherry + zopiclone potentiate).' },
+        { h:'Manage — the taper', t:'Taper by agreement, never abruptly: a natural first step is 3.75 mg (the BNF starting dose for older people) on alternate nights, then nightly, with further steps agreed with her every few weeks — expect the process to take months. Pair every reduction with CBT-I elements (first-line for chronic insomnia, BAP consensus 2019; digital CBT-I — Sleepio — in NICE MTG70): fixed rising time, no TV in bed, nap cap, caffeine only in the morning.' },
         { h:'Never do', t:'Never stop abruptly after long-term use (rebound insomnia, anxiety, rarely seizures); never escalate to temazepam/another hypnotic; never prescribe past a fall without a falls-and-meds review.' },
-        { h:'Safety-net & follow-up', t:'Warn that sleep transiently worsens for ~2 weeks per step; falls advice for the interim (light on, sit before standing); named review every 2–4 weeks through the taper. Door open if she wobbles — relapse is part of tapering.' },
+        { h:'Safety-net & follow-up', t:'Warn that sleep transiently worsens for a week or two after each step; falls advice for the interim (light on, sit before standing); named review every 2–4 weeks through the taper. Door open if she wobbles — relapse is part of tapering.' },
         { h:'Marking edge', t:'The grief is the engine of the insomnia ("the house gets quiet at nine") and her sister is the engine of change. Candidates who find both convert a medication row into a shared project — that is the Clear Pass.' }
       ]
     }
@@ -85,7 +85,7 @@
     },
     checkpoints:[
       { dom:'tasks', text:'Gives the result plainly and early — a number, what the test measures, and that 47 with his symptoms needs urgent investigation; does NOT bury it in small talk' },
-      { dom:'tasks', text:'Recognises NICE NG12 criteria are met several ways over (FIT \u226510 \u00b5g Hb/g with bowel-habit change; weight loss; iron-deficiency anaemia 60+) and arranges a 2-week-wait lower-GI referral on this call' },
+      { dom:'tasks', text:'Recognises that FIT 47 µg Hb/g (threshold ≥10) meets NICE NG12 (updated April 2026) for a suspected cancer pathway (urgent, still called "two-week wait") lower-GI referral — his bowel-habit change, weight loss and iron-deficiency anaemia are why FIT was the right test (NICE HTG690) — and arranges the referral on this call' },
       { dom:'tasks', text:'Does not allow the piles explanation to stand: haemorrhoids do not cause weight loss, iron deficiency or 8 weeks of looser stools — says so clearly but kindly' },
       { dom:'tasks', text:'Explains colonoscopy honestly — what it involves, sedation, that most FIT-positive patients do NOT have cancer, and that finding things early is the entire point' },
       { dom:'rto',   text:'Finds Raymond — and lets the real fear ("diagnosed late, opened and closed") be said out loud before countering it' },
@@ -94,22 +94,22 @@
       { dom:'gs',    text:'Safety-nets: chase the appointment if not heard within a week; A&E for heavy bleeding, obstruction symptoms; books a named follow-up call and confirms his number' },
     ],
     worked:[
-      { lbl:'The result, straight',   txt:'"The test looks for invisible blood in the stool. Yours came back at 47 — the level where we investigate is 10. With the change in your bowels and the weight loss, this needs looking at properly and quickly. I want to refer you on the urgent two-week pathway today."' },
+      { lbl:'The result, straight',   txt:'"The test looks for invisible blood in the stool. Yours came back at 47 — the level where we investigate is 10. With the change in your bowels and the weight loss, this needs looking at properly and quickly. I want to refer you on the urgent suspected cancer pathway today."' },
       { lbl:'Dismantle "piles", kindly', txt:'"You might be right that the piles contribute. But piles don\u2019t make you lose half a stone, they don\u2019t drop your iron, and they don\u2019t change your mornings for eight weeks. Something else is going on, and I\u2019d be failing you if I put it all on the piles."' },
       { lbl:'Find Raymond',           txt:'"You mentioned your brother\u2019s insides. Tell me what happened to Raymond — because I suspect he\u2019s in this phone call with us."' },
       { lbl:'Reframe the fear',       txt:'"Raymond\u2019s story went the way it did because it was found late. This test is how we make your story a different one. Most people with your result don\u2019t have cancer — and the ones who do, found at this stage, are very often cured."' },
-      { lbl:'The work objection',     txt:'"It\u2019s one morning, with sedation, likely within the fortnight. Your firm can survive a morning. The other road — the one Raymond took — costs a lot more than a morning."' },
-      { lbl:'Safety-net',             txt:'"The hospital should contact you within two weeks — if you\u2019ve heard nothing in a week, ring me, don\u2019t sit on it. Heavy bleeding, can\u2019t open your bowels with pain and bloating, or vomiting — that\u2019s A&E, today. And I\u2019m ringing you after the scope either way."' },
+      { lbl:'The work objection',     txt:'"It’s one morning, with sedation, likely within the next few weeks. Your firm can survive a morning. The other road — the one Raymond took — costs a lot more than a morning."' },
+      { lbl:'Safety-net',             txt:'"The hospital should be in touch quickly — the aim is an answer within four weeks. If you’ve heard nothing in a week, ring me, don’t sit on it. Heavy bleeding, can\u2019t open your bowels with pain and bloating, or vomiting — that\u2019s A&E, today. And I\u2019m ringing you after the scope either way."' },
     ],
-    learning:'NICE NG12: FIT \u226510 \u00b5g Hb/g in a symptomatic adult warrants urgent suspected-cancer (2WW) lower-GI referral — and this man qualifies independently via unexplained weight loss and iron-deficiency anaemia at 60+. The consultation skill is the reframe: the brother\u2019s late diagnosis is the reason FOR the colonoscopy, not against it. Letting "it\u2019s just piles" stand, or softening the urgency to spare his feelings, is how this station is failed.',
+    learning:'NICE NG12 (updated April 2026): FIT ≥10 µg Hb/g warrants a suspected cancer pathway (urgent, formerly "2WW") lower-GI referral. His weight loss and iron-deficiency anaemia are why FIT was offered (NICE HTG690) and add to the urgency — under current NG12 they lead to FIT rather than to referral on their own. The consultation skill is the reframe: the brother\u2019s late diagnosis is the reason FOR the colonoscopy, not against it. Letting "it\u2019s just piles" stand, or softening the urgency to spare his feelings, is how this station is failed.',
     knowledge:{
-      guideline:'NICE NG12 (May 2025) — suspected colorectal cancer · BSG/ACPGBI FIT guidance',
+      guideline:'NICE NG12 (updated April 2026) — suspected colorectal cancer · NICE HTG690 (formerly DG56) — FIT in primary care · BSG iron deficiency anaemia guideline (2021)',
       points:[
         { h:'Diagnose the situation', t:'FIT 47 + 8 weeks looser stools + unintentional weight loss + Hb 128 with ferritin 18 in a 61-year-old: this is a suspected-cancer presentation until colonoscopy says otherwise. "Piles" is an anchor, not an explanation.' },
-        { h:'Red flags — the NG12 thresholds', t:'2WW lower-GI referral: FIT \u226510 \u00b5g Hb/g with abdominal pain/weight loss/bowel-habit change/IDA; ALSO refer even with negative FIT if rectal mass, anal mass/ulceration, or ongoing strong suspicion. IDA in 60+ is an NG12 criterion in its own right.' },
+        { h:'Red flags — the NG12 thresholds', t:'NICE NG12 (updated April 2026): suspected cancer pathway lower-GI referral if FIT ≥10 µg Hb/g. NICE HTG690 sets who is offered FIT — e.g. change in bowel habit, iron-deficiency anaemia, or abdominal pain or weight loss. A low or unreturned FIT does not overrule a rectal or abdominal mass or strong clinical suspicion. Iron-deficiency anaemia at 60+ now leads to FIT, and FIT ≥10 triggers the referral.' },
         { h:'Investigate', t:'Already done: FIT, FBC, ferritin. The referral triggers colonoscopy (gold standard). Do not repeat the FIT to "double-check" — a positive FIT is actioned, never re-tested into silence.' },
-        { h:'Refer — say the pathway out loud', t:'Urgent suspected cancer (2-week-wait) lower-GI referral, NICE NG12, sent today during the call. Tell him what the letter says, when the hospital will ring, and what colonoscopy involves (bowel prep, sedation, one morning).' },
-        { h:'Manage the human being', t:'Most FIT-positives do not have cancer (~1 in 10 do at this level) — honest base-rate hope. Early-stage colorectal cancer is commonly curable; late diagnosis is what killed Raymond. Screen-avoider pattern: he\u2019s skipped two kits — this call is the system\u2019s last good chance.' },
+        { h:'Refer — say the pathway out loud', t:'Suspected cancer pathway (urgent; still often called the two-week wait) lower-GI referral, NICE NG12 (updated April 2026), sent today during the call. The NHS Faster Diagnosis Standard aims for cancer to be diagnosed or ruled out within 28 days of referral. Tell him what the letter says, that the hospital will ring, and what colonoscopy involves (bowel prep, sedation, one morning).' },
+        { h:'Manage the human being', t:'Most people referred with a positive FIT do not have cancer — honest base-rate hope. Early-stage colorectal cancer is commonly curable; late diagnosis is what killed Raymond. Screen-avoider pattern: he\u2019s skipped two kits — this call is the system\u2019s last good chance.' },
         { h:'Safety-net', t:'Chase-the-letter instruction (1 week), interim emergency triggers (obstruction: colicky pain, distension, absolute constipation, vomiting; heavy bleeding → A&E), named GP follow-up after the scope regardless of result.' },
         { h:'Marking edge', t:'The silence after the number lands is the consultation\u2019s hinge — hold it. Then find Raymond before selling the colonoscopy. Candidates who reassure too early ("it\u2019s probably nothing") fail the station while being kind.' }
       ]
@@ -162,7 +162,7 @@
         { t:'0–1',  h:'Open & listen',        d:'He opens with armour: "it\u2019s piles, keep it quick". Note it, don\u2019t fight it. Set the agenda honestly: "the result needs a proper conversation — I have the time if you do."' },
         { t:'1–4',  h:'The result + the story', d:'Give the number early and plainly. Then re-take the history he minimised: stools, the half stone, the tiredness, the skipped screening kits. Hold the silence after the number.' },
         { t:'4–6',  h:'Find Raymond',          d:'"My brother had no luck with his insides" — go through that door. The fear of dying like Raymond is the actual obstacle to the colonoscopy.' },
-        { t:'6–10', h:'Refer & reframe',       d:'2WW lower-GI referral (NICE NG12) made today, said out loud. Colonoscopy demystified. The reframe: Raymond was found late; this is how Trevor gets found early. Work logistics solved concretely.' },
+        { t:'6–10', h:'Refer & reframe',       d:'Suspected cancer pathway lower-GI referral (NICE NG12, updated April 2026) made today, said out loud. Colonoscopy demystified. The reframe: Raymond was found late; this is how Trevor gets found early. Work logistics solved concretely.' },
         { t:'10–12',h:'Safety-net & close',    d:'Chase-the-letter rule (1 week). A&E triggers: obstruction, heavy bleeding. Named follow-up after the scope. Teach-back: "what will you tell your wife tonight?"' }
       ],
       wordPics: {
@@ -172,7 +172,7 @@
       },
       avoid: [
         { dont:'"Try not to worry — it\u2019s probably just the haemorrhoids bleeding a little."', instead:'"The piles may be part of it. But piles don\u2019t cause weight loss or low iron — and I won\u2019t gamble your next ten years on \u2018probably\u2019."', why:'False reassurance is the precise mechanism by which this station — and real patients — are lost.' },
-        { dont:'"The result was abnormal so we\u2019ll repeat the test in a few weeks to see."', instead:'"A positive result is our signal to look properly, once, with the camera — repeating the stool test just delays the answer."', why:'Re-testing a positive FIT is a recognised real-world error NG12 exists to prevent.' },
+        { dont:'"The result was abnormal so we\u2019ll repeat the test in a few weeks to see."', instead:'"A positive result is our signal to look properly, once, with the camera — repeating the stool test just delays the answer."', why:'Re-testing a positive FIT is a recognised real-world error: NICE NG12 (updated April 2026) makes FIT ≥10 the referral trigger.' },
         { dont:'"You really should have returned those screening kits."', instead:'"The kits are hard to face when you\u2019ve watched your brother go through it. You\u2019re facing it now — that\u2019s what counts."', why:'Scolding the avoidance reinforces it; absolving it releases him to act.' }
       ]
     }

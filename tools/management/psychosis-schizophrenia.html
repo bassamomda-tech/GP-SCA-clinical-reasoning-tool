@@ -19,15 +19,15 @@
 <script>
 MG.render({
   icon:"🧠",
-  title:"Psychosis & schizophrenia — the complete guide",
+  title:"Psychosis and schizophrenia — the complete guide",
   eyebrow:"Protocol · diagnose &amp; manage in one place",
   stemTitle:"First-episode psychosis is a time-critical referral — do not wait for diagnostic certainty, because every week of untreated psychosis worsens the outcome",
   stemSub:"One page for the whole condition: assess risk and exclude the organic causes that account for up to a fifth of apparent first episodes, characterise positive, negative and disorganised symptoms with a collateral history, refer urgently to Early Intervention in Psychosis for anyone of any age with a first episode, then hold the two things primary care owns for decades — the annual physical health review that closes a 15–20 year mortality gap, and the relapse signature.",
-  guideline:"NICE CG178 · CG155 · CG185 · Mental Health Act 1983",
+  guideline:"NICE CG178 (2014) · NICE CG155 (2013, updated 2016) · NICE CG185 (2014, updated 2023) · Mental Health Act 1983",
   reviewed:"9 September 2026",
   nextReview:"9 March 2027",
   meta:[
-    {t:"NICE CG178 — psychosis &amp; schizophrenia in adults (2014, upd. 2020)"},
+    {t:"NICE CG178 — psychosis and schizophrenia in adults (2014)"},
     {t:"NICE CG155 — children &amp; young people"},
     {t:"NICE CG185 — bipolar disorder"},
     {t:"NHS England EIP access &amp; waiting time standard"},
@@ -39,17 +39,17 @@ MG.render({
   quick:[
     {tone:"red", h:"⚠ Up to 20% of apparent first-episode psychosis is organic", html:"Autoimmune encephalitis (anti-NMDA receptor), CNS infection, metabolic derangement and substance-induced psychosis must be excluded before a psychiatric diagnosis. <b>Missing encephalitis carries a mortality risk</b> — think of it with rapid onset, seizures, fever or focal signs."},
     {tone:"red", h:"Command hallucinations are immediate danger", html:"Voices instructing violence to self or others → 999 or Mental Health Act assessment. <b>Never manage this alone in primary care.</b> Active suicidal intent with a plan and method: <b>999, and do not leave the person alone.</b>"},
-    {tone:"amber", h:"Refer without waiting for certainty", html:"Duration of untreated psychosis is the strongest MODIFIABLE predictor of outcome — each week of delay worsens prognosis. Refer all first-episode psychosis, at any age, urgently to Early Intervention in Psychosis; the NHS standard is access within 2 weeks. EIP teams assess and confirm the diagnosis — that is their job, not yours."},
+    {tone:"amber", h:"Refer without waiting for certainty", html:"Duration of untreated psychosis is the strongest MODIFIABLE predictor of outcome — each week of delay worsens prognosis. Refer all first-episode psychosis urgently to Early Intervention in Psychosis — CG178 says EIP should be open to anyone with a first episode, whatever their age; the NHS England standard is treatment starting within 2 weeks of referral for at least 60% (ages 14\u201365). EIP teams assess and confirm the diagnosis — that is their job, not yours."},
     {tone:"blue", h:"Negative symptoms are missed, and they predict function", html:"Blunted affect, alogia, avolition, anhedonia and social withdrawal often precede florid psychosis by months — and are <b>the best predictor of functional outcome</b>. Ask about them directly rather than waiting for hallucinations to be reported."},
-    {tone:"purple", h:"Baseline before any antipsychotic", html:"<b>ECG, FBC, U&amp;E, LFT, lipids, HbA1c, weight and BP before starting.</b> QTc &gt;450 ms in men or &gt;470 ms in women — seek advice before prescribing. Aripiprazole 10–15 mg has the most favourable metabolic profile and is NICE-preferred first line."},
+    {tone:"amber", h:"Baseline before any antipsychotic", html:"<b>Weight, waist circumference, pulse and BP, fasting glucose, HbA1c, lipids, prolactin, movement disorders, and diet and activity before starting</b> (CG178), plus FBC, U&amp;E, LFT and TFT as the organic screen. <b>ECG</b> if the SPC requires one, examination shows cardiovascular risk, there is a personal history of cardiovascular disease, or the person is being admitted. QTc &gt;450 ms in men or &gt;470 ms in women — seek advice before prescribing. <b>CG178 names no preferred antipsychotic</b>: the choice is shared, driven by side-effect profile — aripiprazole has one of the more favourable metabolic profiles."},
     {tone:"green", h:"The mortality gap is a GP responsibility", html:"People with schizophrenia die 15–20 years earlier, primarily from cardiovascular disease, and up to 40% on antipsychotics have metabolic syndrome. <b>Annual physical health reviews by GPs reduce that gap</b> — this is the single highest-value long-term action on this page."}
   ],
   pathwaySub:"The whole consultation in five moves. The red step comes before any diagnostic label.",
   pathway:[
     {title:"Assess risk and screen for organic cause", html:"<b>Risk to self or others, command hallucinations, severe self-neglect</b> · <b>delirium, drug-induced, neurological</b> · acute behavioural disturbance. Acute risk → crisis team, considering the <b>Mental Health Act</b>.", alert:true},
     {title:"Characterise the psychosis", html:"<b>Positive, negative and disorganised symptoms</b>, duration, function and insight, with a collateral history — often the most reliable information when insight is impaired."},
-    {title:"Exclude the secondary causes", html:"Full physical examination, first-line bloods, urine drug screen, HIV and syphilis serology, pregnancy test, baseline ECG. Neuroimaging only on indication."},
-    {title:"Refer, then support the treatment", html:"EIP urgently for a first episode at any age; CAMHS if under 18; CMHT for a known relapse. Antipsychotics are <b>specialist-led</b>; <b>CBTp and family intervention sit alongside them as first-line</b>."},
+    {title:"Exclude the secondary causes", html:"Full physical examination, first-line bloods, urine drug screen, HIV and syphilis serology, pregnancy test, and an ECG where CG178 indicates it. Neuroimaging only on indication."},
+    {title:"Refer, then support the treatment", html:"EIP urgently for a first episode at any age; under 18 to CAMHS, or EIP where the local pathway accepts under-18s (CG155); CMHT for a known relapse. Antipsychotics are <b>specialist-led</b>; <b>CBTp and family intervention sit alongside them as first-line</b>."},
     {title:"Own the long game", html:"Annual physical health review, metabolic monitoring, cannabis and smoking cessation, and a documented relapse signature with the patient and carer."}
   ],
   sections:[
@@ -112,7 +112,7 @@ MG.render({
          ["<b>Infection and autoimmune screen</b>","HIV test (recommended in psychosis), syphilis serology; consider NMDA-R antibodies if there is rapid onset, a young female patient, or seizures"],
          ["<b>Urine drug screen</b>","Essential in all first episodes — cannabis, stimulants, opioids, benzodiazepines. A positive result does not exclude primary psychosis"],
          ["<b>Pregnancy test</b>","<b>All women of reproductive age, before initiating antipsychotics</b>"],
-         ["<b>ECG</b>","Baseline QTc before antipsychotics — especially haloperidol and quetiapine. QTc above 450 ms (men) or 470 ms (women): seek advice before prescribing"],
+         ["<b>ECG</b>","Before an antipsychotic when the SPC specifies it, examination has found a cardiovascular risk (for example high BP), there is a personal history of cardiovascular disease, or the person is being admitted (CG178) — and with QT-prolonging drugs such as haloperidol. QTc above 450 ms (men) or 470 ms (women): seek advice before prescribing"],
          ["<b>Neuroimaging</b>","MRI brain if there are focal neurological signs, a first episode in an older adult, seizures, rapid onset or atypical features — request via CMHT or neurology, not routinely from primary care"]
        ]},
        {b:"why", html:"Metabolic, thyroid and infection screening at first presentation is standard, and HIV testing is recommended given the high prevalence of psychiatric manifestations. A baseline ECG is essential before antipsychotic initiation, because QT prolongation increases the risk of torsades de pointes. There is also a bigger reason for the physical examination: people with severe mental illness receive fewer physical health assessments and have a 15–20 year reduced life expectancy, partly from physical comorbidity — so the first presentation is the moment to establish a baseline. Viral encephalitis and CNS tumours can present with psychiatric symptoms, which is why the neurological examination matters most."}
@@ -123,34 +123,34 @@ MG.render({
      blocks:[
        {b:"ladder", steps:[
          {step:"Step 1", title:"Refer to EIP — time-critical", when:"any first episode, any age",
-          html:"All first-episode psychosis at any age goes urgently to Early Intervention in Psychosis; the NHS access standard is 2 weeks. <b>Under 18s go to CAMHS urgently, not adult EIP.</b> <b>Do not wait for diagnostic certainty — EIP teams assess and confirm.</b> A known relapse goes to the <b>CMHT</b>: optimise treatment and address adherence."},
-         {step:"First line", title:"Aripiprazole 10–15 mg OD", when:"no particular sedation need",
+          html:"All first-episode psychosis at any age goes urgently to Early Intervention in Psychosis; the NHS England standard is treatment within 2 weeks of referral for at least 60% (ages 14\u201365). <b>Under 18s go urgently to CAMHS, or to EIP where the local pathway accepts under-18s (CG155).</b> <b>Do not wait for diagnostic certainty — EIP teams assess and confirm.</b> A known relapse goes to the <b>CMHT</b>: optimise treatment and address adherence."},
+         {step:"Often chosen", title:"Aripiprazole 10–15 mg OD", when:"metabolic or prolactin concerns, no sedation need",
           fromLabel:"specialist-advised initiation",
-          html:"<b>Low metabolic side-effect profile — NICE-preferred first line.</b> Initiate <b>only if EIP or the CMHT advise and the patient consents</b>."},
+          html:"<b>Relatively favourable metabolic and prolactin profile.</b> CG178 names no single preferred antipsychotic \u2014 the choice is made with the person (and carer) on side effects. Initiate <b>only if a consultant psychiatrist, EIP or the CMHT advise, and the patient consents</b> (CG178)."},
          {step:"Alternative", title:"Olanzapine 5–10 mg OD", when:"sedation needed",
           fromLabel:"start 5 mg in antipsychotic-naïve patients",
-          html:"<b>Monitor weight, glucose and lipids monthly initially</b> — olanzapine causes significant metabolic syndrome: weight gain, diabetes and dyslipidaemia."},
+          html:"<b>Follow the CG178 monitoring schedule closely</b> (weight weekly for 6 weeks; weight, BP, glucose, HbA1c and lipids at 12 weeks) — olanzapine causes significant metabolic syndrome: weight gain, diabetes and dyslipidaemia."},
          {step:"Bridge only", title:"Lorazepam 1–2 mg PO/IM", when:"acute agitation",
           fromLabel:"short-term only",
           html:"1–2 doses only, pending specialist review. Avoid in respiratory compromise."},
-         {step:"Treatment-resistant", title:"Clozapine — specialist only", when:"after 2 antipsychotics have failed",
+         {step:"Treatment-resistant", title:"Clozapine — specialist only", when:"after adequate trials of at least 2 antipsychotics, one a non-clozapine second-generation drug (CG178)",
           fromLabel:"CMHT-led",
           html:"The only evidence-based treatment for treatment-resistant schizophrenia, but it requires CLOZARIL monitoring registration and mandatory neutrophil monitoring because of a 1–2% agranulocytosis risk. <b>Never initiate in primary care.</b>"}
        ]},
        {b:"table", head:["Stage","What to do"], rows:[
-         ["<b>Before starting any antipsychotic</b>","<b>Baseline ECG, FBC, U&amp;E, LFT, lipids, HbA1c, weight and BP</b>"],
+         ["<b>Before starting any antipsychotic</b>","<b>Weight, waist circumference, pulse, BP, fasting glucose, HbA1c, lipids, prolactin, movement disorders, diet and activity (CG178)</b>; FBC, U&amp;E, LFT; ECG where indicated"],
          ["<b>Week 4</b>","Review side effects — EPS (akathisia, parkinsonism), sedation, weight gain — and adjust the dose with the CMHT"],
-         ["<b>3 months</b>","Metabolic monitoring: weight, BP, fasting glucose, lipids — then annually thereafter"],
+         ["<b>First 6 weeks, then 12 weeks</b>","Weight weekly for the first 6 weeks; at 12 weeks weight, pulse, BP, fasting glucose, HbA1c and lipids — then at 1 year and annually, with waist circumference annually (CG178)"],
          ["<b>No response after 4–6 weeks at an adequate dose</b>","<b>CMHT review for a switch, or clozapine consideration</b>"]
        ]},
        {b:"cards", cols:2, items:[
-         {tone:"blue", h:"🧩 CBT for psychosis (CBTp)", html:"NICE-recommended. Reduces positive symptoms and improves insight. Minimum 16 sessions. Access via CMHT or EIP psychology."},
-         {tone:"green", h:"👨‍👩‍👧 Family intervention", html:"Reduces relapse by 50% where there is high expressed emotion in the family — the single most effective intervention for reducing relapse in those households. Refer the family to a NICE-recommended programme via EIP."},
+         {tone:"blue", h:"🧩 CBT for psychosis (CBTp)", html:"Recommended by CG178 for everyone with first-episode or established psychosis, alongside medication. Reduces positive symptoms and improves insight. At least 16 planned sessions. Access via CMHT or EIP psychology."},
+         {tone:"green", h:"👨‍👩‍👧 Family intervention", html:"Reduces relapse by 50% where there is high expressed emotion in the family — the single most effective intervention for reducing relapse in those households. Offer it to families in close contact (CG178: at least 10 planned sessions over 3 months to 1 year), via EIP."},
          {tone:"amber", h:"🌿 Cannabis cessation", html:"High-potency cannabis doubles relapse risk, and high-potency users have around 5× the risk of psychosis compared with non-users — the most important modifiable environmental risk factor. Brief intervention at every consultation; refer to drug services."},
          {tone:"green", h:"❤️ Physical health promotion", html:"Antipsychotics increase cardiovascular risk — structured exercise 150 minutes a week, a Mediterranean diet and smoking cessation reduce the mortality gap."},
          {tone:"cream", h:"💼 Employment and education", html:"Individual Placement and Support (IPS) via EIP — returning to work or education improves long-term outcomes, and IPS is more effective than traditional vocational services."},
-         {tone:"plain", h:"🤝 Carer support", html:"Signpost Rethink Mental Illness, Mind and local carers' groups. Carer's assessment via the GP or social care. Identify a named carer."},
-         {tone:"plain", h:"🍺 Substance use", html:"Address all substances — alcohol and stimulants worsen psychosis. Dual diagnosis pathway if the comorbidity is significant. Non-judgemental approach."},
+         {tone:"cream", h:"🤝 Carer support", html:"Signpost Rethink Mental Illness, Mind and local carers' groups. Carer's assessment via the GP or social care. Identify a named carer."},
+         {tone:"cream", h:"🍺 Substance use", html:"Address all substances — alcohol and stimulants worsen psychosis. Dual diagnosis pathway if the comorbidity is significant. Non-judgemental approach."},
          {tone:"blue", h:"😴 Sleep hygiene", html:"<b>A regular sleep-wake cycle matters — disruption precipitates relapse.</b> Avoid screens, and caffeine after 2pm. <b>Assess insomnia as an early relapse sign.</b>"}
        ]},
        {b:"why", html:"Antipsychotics are effective in 70–80% of first-episode psychosis when used adequately, and starting at low doses reduces extrapyramidal side effects. Aripiprazole has the most favourable metabolic profile; olanzapine and clozapine cause significant metabolic syndrome. But medication is only half of it: CBTp and family intervention sit alongside antipsychotics as first-line treatment, not as optional extras."}
@@ -162,7 +162,7 @@ MG.render({
        {b:"table", head:["When","What"], rows:[
          ["<b>1–2 weeks</b>","Medication tolerance, EPS — akathisia is restlessness, often mistaken for worsening psychosis — sedation, and compliance"],
          ["<b>4–6 weeks</b>","Treatment response — are positive symptoms improving? Liaise with EIP or CMHT. Weight and BP"],
-         ["<b>3 months</b>","Full metabolic review: weight, BMI, BP, fasting glucose, lipids, HbA1c. Depression screen with PHQ-9"],
+         ["<b>12 weeks</b>","Full metabolic review per CG178: weight, pulse, BP, fasting glucose, HbA1c, lipids (waist circumference is annual). Depression screen with PHQ-9"],
          ["<b>Annual</b>","Full physical health review: cardiovascular risk (QRISK), metabolic monitoring, dental health, eye examination, smoking status, substance use — with SMI register recall"],
          ["<b>Relapse signature</b>","Document the individual early warning signs with the patient and carer — sleep disruption, social withdrawal and irritability often precede florid relapse by 2–4 weeks"]
        ]},
@@ -181,12 +181,12 @@ MG.render({
        {b:"cards", items:[
          {tone:"red", h:"999 / urgent", html:"Command hallucinations to harm, an active suicidal plan, violence risk, an organic emergency such as encephalitis, or being unable to assess safely."},
          {tone:"red", h:"Same-day", html:"First-episode psychosis with significant distress, poor insight, or risk to self or others — contact the crisis team or duty psychiatrist."},
-         {tone:"amber", h:"EIP — urgent", html:"All first-episode psychosis, any age. The NHS access standard is within 2 weeks. Contact the local Early Intervention in Psychosis team directly."},
+         {tone:"amber", h:"EIP — urgent", html:"All first-episode psychosis, any age (CG178). The NHS England standard: treatment within 2 weeks of referral for at least 60% (ages 14\u201365). Contact the local Early Intervention in Psychosis team directly."},
          {tone:"blue", h:"CMHT — routine", html:"<b>At-risk mental state, sub-threshold symptoms, carer concerns.</b> Also the route for a known relapse."},
          {tone:"purple", h:"Section 136 / Mental Health Act", html:"If the patient refuses assessment and poses a risk, police can use s136 powers — but not in a private home or garden. A GP can request an MHA assessment; a section 12 (s12) approved doctor is needed."},
-         {tone:"cream", h:"Children and adolescents", href:"", html:"Under 18 → CAMHS urgent referral, not adult EIP. Consider the CAMHS crisis line."}
+         {tone:"cream", h:"Children and adolescents", href:"", html:"Under 18 → urgent CAMHS referral, or EIP where the local pathway accepts under-18s (CG155). Consider the CAMHS crisis line."}
        ]},
-       {b:"why", html:"Duration of untreated psychosis is the strongest modifiable predictor of outcome — each week of delay worsens prognosis. EIP services reduce relapse rates, improve employment and reduce hospitalisation, and access is mandated for all ages with a first episode. GPs should not wait for certainty of diagnosis — EIP teams assess and confirm."}
+       {b:"why", html:"Duration of untreated psychosis is the strongest modifiable predictor of outcome — each week of delay worsens prognosis. EIP services reduce relapse rates, improve employment and reduce hospitalisation, and CG178 says they should be open to anyone with a first episode, whatever their age. GPs should not wait for certainty of diagnosis — EIP teams assess and confirm."}
      ]},
 
     {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
@@ -198,12 +198,12 @@ MG.render({
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li>NICE CG178 — Psychosis and schizophrenia in adults: prevention and management (2014, updated 2020)<br><a href="https://www.nice.org.uk/guidance/cg178" rel="noopener">nice.org.uk/guidance/cg178</a><span class="rd"> — the EIP referral requirement, first-line antipsychotic choice, the physical health monitoring schedule, and CBTp and family intervention as first-line alongside medication</span></li>'+
+         '<li>NICE CG178 — Psychosis and schizophrenia in adults: prevention and management (2014)<br><a href="https://www.nice.org.uk/guidance/cg178" rel="noopener">nice.org.uk/guidance/cg178</a><span class="rd"> — the EIP referral requirement, shared antipsychotic choice with no single preferred drug, the baseline and ECG criteria, the physical health monitoring schedule, the 4\u20136 week trial, clozapine after 2 antipsychotics, and CBTp (\u226516 sessions) and family intervention (\u226510 sessions) as first-line alongside medication</span></li>'+
          '<li>NICE CG155 — Psychosis and schizophrenia in children and young people (2013, updated 2016)<br><a href="https://www.nice.org.uk/guidance/cg155" rel="noopener">nice.org.uk/guidance/cg155</a><span class="rd"> — the under-18 pathway and CAMHS referral</span></li>'+
          '<li><b>NICE CG185 — Bipolar disorder (2014, updated 2023)</b><br><a href="https://www.nice.org.uk/guidance/cg185" rel="noopener">nice.org.uk/guidance/cg185</a><span class="rd"> — mania with psychosis, and why mood stabilisers rather than antipsychotics alone are needed</span></li>'+
-         '<li>NHS England — Access and Waiting Time Standard for Early Intervention in Psychosis<span class="rd"> — the 2-week access standard for first-episode psychosis, at any age; the source of the \u201cwithin 2 weeks\u201d figure used here</span></li>'+
+         '<li>NHS England — Access and Waiting Time Standard for Early Intervention in Psychosis<span class="rd"> — at least 60% of people with first-episode psychosis (ages 14\u201365) start a package of care following CG178 (NICE QS80) within 2 weeks of referral; the source of the \u201cwithin 2 weeks\u201d figure used here</span></li>'+
          '<li><b>Mental Health Act 1983 (amended 2007)</b><span class="rd"> — compulsory assessment, section 136 place-of-safety powers and their exclusion of private dwellings, and the section 12 approved doctor requirement</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion applies to psychosis; the adjacency is direct-access MRI within 2 weeks for a progressive focal neurological deficit suggesting brain or CNS cancer</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — no criterion applies to psychosis; the adjacency is direct-access MRI within 2 weeks for a progressive focal neurological deficit suggesting brain or CNS cancer</span></li>'+
          '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — aripiprazole, olanzapine, quetiapine, haloperidol, lorazepam and clozapine dosing and monitoring</span></li>'+
          '</ul></div>'}
      ]}

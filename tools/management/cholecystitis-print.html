@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cholecystitis &amp; gallstone disease — Protocol · Reasoning GP</title>
+<title>Cholecystitis and gallstone disease — Protocol · Reasoning GP</title>
 <meta name="description" content="Gallstone disease under NICE CG188: separating biliary colic managed in the community from acute cholecystitis, ascending cholangitis and gallstone pancreatitis, which are surgical emergencies. Ultrasound and LFTs, NSAID analgesia, and laparoscopic cholecystectomy for symptomatic stones." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/cholecystitis.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790379962369223 tools/management/cholecystitis.html">
+<meta name="omelette-print-source" content="v1790455275239348 tools/management/cholecystitis.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,121 +22,239 @@
 <script>
 MG.render({
   icon:"🩺",
-  title:"Cholecystitis & gallstone disease — the complete guide",
+  title:"Cholecystitis and gallstone disease — the complete guide",
   eyebrow:"Protocol · NICE CG188 · fever or jaundice means admission",
   stemTitle:"The whole of the GP decision is separating uncomplicated biliary colic — manage and refer electively — from acute cholecystitis and its dangerous cousins, cholangitis and gallstone pancreatitis, which are surgical emergencies",
-  stemSub:"One page for the whole condition. <b>Fever, jaundice or systemic upset mandates admission</b>: constant right-upper-quadrant pain beyond 6 hours with a positive Murphy's sign is acute cholecystitis, Charcot's triad is cholangitis, and epigastric pain radiating to the back is gallstone pancreatitis. Everything else is biliary colic — NSAID analgesia, an abdominal ultrasound with LFTs, a low-fat diet in the interim, and referral for laparoscopic cholecystectomy for symptomatic stones. <b>Asymptomatic stones generally need nothing.</b>",
-  guideline:"NICE CG188 · NG12",
+  stemSub:"One page for the whole condition, from the first attack of right-upper-quadrant pain to life after cholecystectomy. <b>Fever, jaundice or systemic upset mandates admission</b>: constant right-upper-quadrant pain beyond about 6 hours with fever and a positive Murphy's sign is acute cholecystitis, pain with fever and jaundice (Charcot's triad) is cholangitis, and epigastric pain boring through to the back is gallstone pancreatitis. Everything else is biliary colic — NSAID analgesia, liver function tests and an abdominal ultrasound, avoiding the foods that trigger attacks, and referral for laparoscopic cholecystectomy. <b>Asymptomatic stones in a normal gallbladder need nothing.</b> And <b>painless jaundice is a suspected-cancer presentation until proved otherwise.</b>",
+  guideline:"NICE CG188 (2014) · NICE NG12 (updated April 2026) · BSG 2017 (bile duct stones) · UK Working Party 2005 (pancreatitis) · BNF",
   reviewed:"14 September 2026",
   nextReview:"14 March 2027",
   meta:[
     {t:"NICE CG188 — gallstone disease"},
     {t:"Fever, jaundice or sepsis = emergency admission", tone:"tw"},
     {t:"Asymptomatic stones need no surgery", tone:"ok"},
+    {t:"NICE NG12 (updated April 2026) — painless jaundice", tone:"tw"},
     {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
-  lead:'<div class="mg-layers"><a href="#safety"><b>Emergencies</b><small>Admit today</small></a><a href="#differentiate"><b>Differentiate</b><small>Colic vs chole</small></a><a href="#community"><b>Community</b><small>Analgesia · USS</small></a><a href="#monitor"><b>Follow-up</b><small>Surgery · post-op</small></a><a href="#refer"><b>Refer</b><small>Emergency vs elective</small></a></div>',
+  lead:'<div class="mg-layers"><a href="#safety"><b>Red flags</b><small>Admit today</small></a><a href="#differentiate"><b>Differentiate</b><small>Colic vs chole</small></a><a href="#community"><b>Community</b><small>Analgesia · USS</small></a><a href="#monitor"><b>Follow-up</b><small>Surgery · post-op</small></a><a href="#refer"><b>Refer</b><small>Emergency vs elective</small></a></div>',
   quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"red", h:"⚠ Acute cholecystitis — same-day surgical admission", html:"Constant severe right-upper-quadrant pain lasting more than 6 hours, fever, a positive Murphy's sign, and a systemically unwell patient. <b>Same-day surgical admission</b> — this is not biliary colic that has gone on a bit longer, and it is not manageable in the community."},
-    {tone:"red", h:"⚠ Ascending cholangitis — 999", html:"Charcot's triad: right-upper-quadrant pain plus fever or rigors plus jaundice. <b>Add confusion and hypotension and it is Reynolds' pentad.</b> <b>999 or emergency admission — this is life-threatening sepsis</b>, and the jaundice is what distinguishes it from cholecystitis."},
-    {tone:"red", h:"⚠ Gallstone pancreatitis — emergency admission", html:"Severe epigastric pain radiating to the back, vomiting, raised amylase or lipase → emergency admission. And obstructive jaundice — jaundice with dark urine and pale stools — needs urgent assessment for a CBD stone; if it is painless, consider pancreatic or biliary cancer."},
-    {tone:"blue", h:"Biliary colic: NSAID, ultrasound, low-fat diet, refer", html:"An NSAID (e.g. diclofenac) is effective for biliary colic; paracetamol; an antiemetic for vomiting. Arrange an abdominal ultrasound (first-line for stones) plus LFTs — a raised ALP or bilirubin suggests a CBD stone; FBC and CRP if inflammation is suspected. <b>A low-fat diet reduces symptom episodes while awaiting surgery.</b>"},
-    {tone:"green", h:"Laparoscopic cholecystectomy is the definitive treatment", html:"Refer for laparoscopic cholecystectomy — recommended for symptomatic gallstones and after an episode of cholecystitis. <b>ERCP if there are CBD stones.</b> Asymptomatic gallstones found incidentally on imaging generally need no treatment or surgery."},
-    {tone:"amber", h:"The mimics worth holding in mind", html:"Peptic ulcer disease · acute coronary syndrome, particularly an inferior MI · right basal pneumonia · renal colic · hepatitis. Right-upper-quadrant and epigastric pain is not a specific enough presentation to skip the cardiac and respiratory thought, especially in an older patient with risk factors."}
+    {tone:"red", h:"⚠ Acute cholecystitis — same-day surgical admission", html:"Constant severe right-upper-quadrant pain lasting more than about 6 hours, fever, a positive Murphy's sign, and a systemically unwell patient. <b>Same-day surgical admission</b> — this is not biliary colic that has gone on a bit longer, and it is not manageable in the community. NICE CG188 expects laparoscopic cholecystectomy within 1 week of the diagnosis."},
+    {tone:"red", h:"⚠ Ascending cholangitis — 999", html:"Charcot's triad: right-upper-quadrant pain plus fever or rigors plus jaundice. <b>Add confusion and hypotension and it is Reynolds' pentad.</b> <b>999 or emergency admission — this is life-threatening biliary sepsis</b> needing antibiotics and drainage of the duct. The triad is specific but often incomplete, so fever with jaundice alone is enough to act."},
+    {tone:"red", h:"⚠ Gallstone pancreatitis — emergency admission", html:"Severe epigastric pain radiating to the back, with vomiting, in someone with gallstones → emergency admission. And obstructive jaundice — jaundice with dark urine and pale stools — needs same-day assessment for a bile duct stone; <b>if it is painless, think pancreatic or biliary cancer</b>."},
+    {tone:"blue", h:"Biliary colic: NSAID, LFTs and ultrasound, then refer", html:"An NSAID is the analgesic of choice for biliary colic — as effective as an opioid and it lowers the complication rate compared with placebo. Add an antiemetic for vomiting. Arrange <b>LFTs and an abdominal ultrasound</b> (NICE CG188); a raised ALP or bilirubin, or a dilated duct, points to a bile duct stone. Advise avoiding the foods that trigger attacks until surgery."},
+    {tone:"green", h:"Laparoscopic cholecystectomy is the definitive treatment", html:"Offer referral for laparoscopic cholecystectomy for symptomatic gallbladder stones (NICE CG188). <b>Bile duct stones are cleared at or before the operation, by surgery or ERCP.</b> Asymptomatic gallbladder stones found incidentally in a normal gallbladder and biliary tree need no treatment unless symptoms develop."},
+    {tone:"purple", h:"Painless jaundice — NICE NG12", html:"Aged 40 and over with jaundice → <b>suspected cancer pathway referral for pancreatic cancer</b>. A palpable upper abdominal mass consistent with an enlarged gallbladder (Courvoisier's sign) → consider an urgent direct-access ultrasound for gallbladder cancer. Do not label painless jaundice as \"gallstones\" without imaging."}
   ],
-  pathwaySub:"Five steps, and the first one is triage rather than diagnosis.",
+  pathwaySub:"Six steps, and the first one is triage rather than diagnosis.",
   pathway:[
-    {title:"Screen for the acute complications first", html:"Fever, jaundice, rigors or systemic upset → admission. Charcot's triad → 999.", alert:true},
-    {title:"Differentiate the presentations", html:"Biliary colic (episodic, no fever, settles) versus acute cholecystitis (constant, fever, Murphy's positive) versus asymptomatic stones. Consider the mimics."},
-    {title:"Manage biliary colic in the community", html:"NSAID plus antiemetic, abdominal ultrasound and LFTs, low-fat diet, and safety-net."},
-    {title:"Refer for definitive treatment", html:"Symptomatic stones → elective laparoscopic cholecystectomy; CBD stones → ERCP."},
-    {title:"Follow up, including after surgery", html:"Most resolve; some have post-cholecystectomy loose stools; ongoing pain means reassessing for a retained stone."}
+    {title:"Screen for the acute complications first", html:"Fever, jaundice, rigors, peritonism or systemic upset → admission. Charcot's triad or signs of sepsis → 999.", alert:true},
+    {title:"Assess — history, examination and first tests", html:"Pain pattern and duration, fatty-meal trigger, previous attacks, jaundice, weight loss; temperature, Murphy's sign, a palpable gallbladder; LFTs, FBC and CRP, and an abdominal ultrasound."},
+    {title:"Name the gallstone syndrome and consider the mimics", html:"Biliary colic, acute cholecystitis, bile duct stone, pancreatitis or asymptomatic stones — and keep inferior MI, basal pneumonia, peptic ulcer, renal colic and hepatitis on the list."},
+    {title:"Manage biliary colic in the community", html:"NSAID plus antiemetic, avoid trigger foods, written safety-net."},
+    {title:"Refer for definitive treatment", html:"Symptomatic stones → laparoscopic cholecystectomy; bile duct stones → clearance by surgery or ERCP; painless jaundice → NG12 pathway."},
+    {title:"Follow up, including after surgery", html:"Most people are cured; persistent pain, jaundice or fever after surgery suggests a retained stone or a bile leak; persistent watery stools may be bile acid diarrhoea."}
   ],
   sections:[
 
-    {id:"safety", nav:"Emergencies", title:"Step 1 — the acute complications: admit",
+    {id:"safety", nav:"Red flags", title:"Step 1 — red flags: the acute complications to admit",
+     sub:"Gallstones become dangerous when a stone obstructs the cystic duct long enough to inflame the gallbladder, blocks the bile duct and lets infection in, or impacts at the ampulla and triggers pancreatitis.",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"🔴 Acute cholecystitis", html:"Constant severe RUQ pain for more than 6 hours, fever, positive Murphy's sign, systemically unwell → same-day surgical admission."},
-         {tone:"red", h:"🔴 Ascending cholangitis", html:"Charcot's triad — RUQ pain plus fever or rigors plus jaundice (add confusion and hypotension for Reynolds' pentad) → 999 or emergency admission. Life-threatening sepsis."},
-         {tone:"red", h:"🔴 Gallstone pancreatitis", html:"Severe epigastric pain radiating to the back, vomiting, raised amylase or lipase → emergency admission."},
-         {tone:"amber", h:"🟠 Obstructive jaundice", html:"Jaundice, dark urine, pale stools → urgent assessment for a CBD stone or obstruction. <b>Also consider pancreatic or biliary cancer if it is painless.</b>"}
+         {tone:"red", h:"🔴 Ascending cholangitis — 999", html:"Right-upper-quadrant pain, fever or rigors, and jaundice (Charcot's triad); confusion and hypotension added make Reynolds' pentad and signal septic shock. Biliary obstruction lets gut organisms into a pressurised duct, so bacteraemia follows quickly. <b>999 or emergency admission</b> — hospital treatment is IV antibiotics, fluids and urgent biliary drainage, usually by ERCP. The full triad is present in only a minority of confirmed cases, so do not wait for all three.", src:"International Tokyo Guidelines 2018 (TG18) — acute cholangitis diagnostic criteria"},
+         {tone:"red", h:"🔴 Gallstone pancreatitis — emergency admission", html:"Severe epigastric or right-upper-quadrant pain radiating to the back, with vomiting, in someone known to have or likely to have gallstones. In hospital the diagnosis rests on amylase or lipase at least three times the upper limit of normal, or typical imaging. <b>Emergency admission.</b>", src:"BSG-endorsed UK Working Party guidelines on acute pancreatitis (Gut 2005); International revised Atlanta classification 2012"},
+         {tone:"red", h:"🔴 Acute cholecystitis — same-day surgical admission", html:"Right-upper-quadrant pain lasting more than about 6 hours, fever, local tenderness with a positive Murphy's sign, raised inflammatory markers, and an unwell patient. Ultrasound in hospital typically shows a thickened gallbladder wall and fluid around it. <b>Same-day surgical assessment.</b>", src:"NICE CG188 (2014) — acute cholecystitis"},
+         {tone:"red", h:"🔴 Perforation or gangrene", html:"Sudden severe generalised abdominal pain, peritonism or a rigid abdomen on a background of gallbladder pain, or an older, diabetic or immunosuppressed patient who looks septic with few local signs → <b>999</b>.", src:"Clinical practice; NICE CG188 (2014) — surgical management"},
+         {tone:"amber", h:"🟠 Obstructive jaundice without fever — same day", html:"Jaundice, dark urine and pale stools with pain but no fever suggests a stone in the common bile duct → <b>same-day hepatobiliary or surgical assessment</b> with LFTs and imaging; clotting may be deranged because vitamin K absorption falls when bile cannot reach the gut.", src:"BSG 2017 — Williams et al, Gut 2017 (bile duct stones)"},
+         {tone:"purple", h:"🟣 Painless jaundice — NG12 suspected cancer", html:"Aged 40 and over with jaundice → suspected cancer pathway referral for pancreatic cancer. A mass consistent with an enlarged gallbladder → consider urgent direct-access ultrasound for gallbladder cancer. A palpable, non-tender gallbladder in a jaundiced patient (Courvoisier's sign) makes stones an unlikely cause.", src:"NICE NG12 (updated April 2026) — pancreatic and gallbladder cancer"}
        ]},
-       {b:"why", html:"The GP must separate uncomplicated biliary colic — manage and refer electively — from acute cholecystitis and its dangerous cousins, cholangitis and gallstone pancreatitis, which are surgical emergencies. <b>Fever, jaundice or systemic upset mandates admission.</b>"}
+       {b:"why", html:"The GP must separate uncomplicated biliary colic — manage and refer electively — from acute cholecystitis and its dangerous cousins, cholangitis and gallstone pancreatitis, which are surgical emergencies. <b>Fever, jaundice or systemic upset mandates admission.</b> Cholangitis is the most time-critical: the obstructed, infected duct seeds the bloodstream and the patient can move from rigors to septic shock within hours, which is why a febrile, jaundiced patient with right-upper-quadrant pain is a 999 call rather than an urgent outpatient letter. Painless jaundice reverses the logic — the absence of pain makes cancer, not stones, the leading explanation."}
      ]},
 
-    {id:"differentiate", nav:"Differentiate", title:"Step 2 — differentiate the presentations",
+    {id:"assess", nav:"Assess", title:"Step 2 — assessment and investigations",
+     sub:"History and examination sort the syndrome; LFTs and ultrasound confirm stones and show whether the bile duct is involved.",
      blocks:[
-       {b:"table", head:["Presentation","Features"], rows:[
-         ["<b>Biliary colic</b>","Episodic, severe, constant RUQ or epigastric pain (minutes to hours), often after fatty food, may radiate to the right scapula; NO fever; settles; Murphy's negative"],
-         ["<b>Acute cholecystitis</b>","Inflamed gallbladder — persistent RUQ pain, fever, local peritonism, positive Murphy's sign, raised inflammatory markers"],
-         ["<b>Asymptomatic stones</b>","Incidental gallstones on imaging — generally no treatment or surgery needed"],
-         ["<b>Mimics</b>","Peptic ulcer, ACS or inferior MI, right basal pneumonia, renal colic, hepatitis"]
+       {b:"table", head:["Area","What to establish","Why it matters"], rows:[
+         ["<b>Pain</b>","Site (right upper quadrant or epigastrium), onset, whether it is steady rather than truly colicky, duration, radiation to the right shoulder tip, scapula or back, trigger (often a fatty or large meal), previous identical episodes","Minutes to a few hours and settling = biliary colic; beyond about 6 hours = think cholecystitis; boring through to the back = think pancreatitis"],
+         ["<b>Associated features</b>","Nausea and vomiting, fever or rigors, jaundice, dark urine, pale stools, itch, weight loss, change in appetite","Fever = inflammation or infection; jaundice = bile duct involvement; weight loss or painless jaundice = cancer pathway"],
+         ["<b>Risk factors</b>","Female sex, obesity, rapid weight loss (including after bariatric surgery or very-low-calorie diets), pregnancy, haemolytic disorders (pigment stones), long-term parenteral nutrition, fibrates","Supports the diagnosis; never a reason to skip the mimics in someone who does not fit the stereotype"],
+         ["<b>Medicines</b>","Fibrates (fenofibrate is contraindicated in gallbladder disease), NSAID tolerance, anticoagulants, renal function before an NSAID","Shapes analgesia and flags a drug to stop"],
+         ["<b>Examination</b>","Temperature, pulse, BP, sclera and skin for jaundice; right-upper-quadrant tenderness; Murphy's sign; Boas's sign (an area of skin hyperaesthesia below the right scapula, occasionally present in cholecystitis); a palpable gallbladder; peritonism; chest examination; an ECG if the pain could be cardiac","Fever with a positive Murphy's sign = cholecystitis; a palpable non-tender gallbladder with jaundice = malignancy until proved otherwise; basal crackles = pneumonia"]
+       ]},
+       {b:"table", head:["Investigation","Use","Interpretation"], rows:[
+         ["<b>LFTs</b>","Everyone with suspected gallstone disease (NICE CG188)","A cholestatic pattern (raised ALP, GGT and bilirubin) suggests bile duct obstruction; normal LFTs make a duct stone less likely"],
+         ["<b>Abdominal ultrasound</b>","First-line imaging for suspected gallstones (NICE CG188)","Shows gallbladder stones, wall thickening and fluid in cholecystitis, and the bile duct diameter"],
+         ["<b>FBC and CRP</b>","If inflammation is suspected","A raised white count and CRP support cholecystitis or cholangitis — admission, not outpatient work-up"],
+         ["<b>Amylase or lipase</b>","Epigastric pain radiating to the back","Usually measured in hospital; a level at least three times the upper limit supports pancreatitis (revised Atlanta classification 2012, international)"],
+         ["<b>Clotting</b>","Jaundiced patients","Obstructive jaundice can prolong the INR through vitamin K malabsorption"],
+         ["<b>MRCP</b>","Secondary care — ultrasound has not shown a duct stone but the duct is dilated and/or LFTs are abnormal (NICE CG188)","The non-invasive test of choice for suspected bile duct stones"],
+         ["<b>Endoscopic ultrasound</b>","Secondary care — if MRCP does not allow a diagnosis (NICE CG188)","More sensitive than MRCP for small duct stones"],
+         ["<b>CT abdomen</b>","Secondary care, or NG12 direct access","Pancreatitis complications, alternative diagnoses, and pancreatic cancer in the NG12 age and symptom groups"]
        ]},
        {b:"cards", cols:2, items:[
-         {tone:"blue", h:"🚑 Admit and rest the gut", html:"Acute cholecystitis usually needs admission — IV fluids, analgesia, antiemetic, nil by mouth or a light diet."},
-         {tone:"green", h:"🥗 Diet in biliary colic", html:"For biliary colic awaiting surgery, a low-fat diet reduces symptom episodes."},
-         {tone:"green", h:"⚖️ Risk factors", html:"Address weight, rapid weight loss and other gallstone risk factors over the longer term."},
-         {tone:"blue", h:"💬 Why this split matters", html:"Acute cholecystitis is largely supportive pending surgery; a low-fat diet helps control biliary colic between episodes. The two need different places of care, not different doses."}
+         {tone:"blue", h:"🔎 Murphy's sign — useful, not decisive", html:"Fingers under the right costal margin in the mid-clavicular line; the patient takes a deep breath and <b>stops abruptly</b> as the inflamed gallbladder descends onto the hand. The arrested breath, not simple tenderness, is the positive sign. A positive sign raises the probability of cholecystitis only modestly (positive likelihood ratio around 2.8) and it may be negative in older people and in obesity — ultrasound settles the question.", src:"Trowbridge et al, JAMA 2003 — Does this patient have acute cholecystitis?"},
+         {tone:"blue", h:"🔎 Courvoisier's sign", html:"A palpable, non-tender gallbladder in a jaundiced patient suggests distal obstruction by a tumour of the pancreatic head or bile duct, because a gallbladder scarred by years of stones rarely distends. Treat it as a suspected-cancer finding.", src:"NICE NG12 (updated April 2026) — gallbladder and pancreatic cancer"},
+         {tone:"blue", h:"🔎 How common are duct stones?", html:"Stones in the common bile duct are estimated to be present in around 10–20% of people with symptomatic gallstones, and can cause pain, jaundice, cholangitis and pancreatitis — which is why LFTs and the duct diameter matter on every scan.", src:"BSG 2017 — Williams et al, Gut 2017"},
+         {tone:"cream", h:"🩺 Timing of the scan", html:"Uncomplicated colic: request the ultrasound and LFTs promptly from primary care. Any red flag: do not wait for community imaging — the hospital will scan.", src:"NICE CG188 (2014) — diagnosis"}
        ]}
      ]},
 
-    {id:"community", nav:"Community", title:"Step 3 — biliary colic in the community",
+    {id:"differentiate", nav:"Differentiate", title:"Step 3 — differential diagnosis",
+     sub:"Right-upper-quadrant and epigastric pain is not specific enough to skip the cardiac, respiratory and renal thought, especially in an older patient with risk factors.",
      blocks:[
-       {b:"table", head:["Step","What","When"], rows:[
-         ["<b>Step 1 — analgesia and antiemetic</b>","An NSAID (e.g. diclofenac) is effective for biliary colic; paracetamol; an antiemetic for vomiting. If pain is severe or persistent, or any red flag is present → admit","<b>Acute colic, not septic</b>"],
-         ["<b>Step 2 — investigate</b>","Abdominal ultrasound (first-line for stones) plus LFTs; a raised ALP or bilirubin suggests a CBD stone. FBC and CRP if inflammation is suspected","<b>Arrange promptly to confirm the diagnosis</b>"],
-         ["<b>Step 3 — lifestyle and interim measures</b>","A low-fat diet may reduce attacks; weight management; safety-net for fever, jaundice or persistent pain","<b>While awaiting referral</b>"],
-         ["<b>Step 4 — refer for cholecystectomy</b>","Refer for laparoscopic cholecystectomy — recommended for symptomatic gallstones and after cholecystitis; ERCP if CBD stones","<b>Symptomatic stones — definitive treatment</b>"]
+       {b:"table", head:["Condition","Discriminating features","Next step"], rows:[
+         ["<b>Biliary colic</b>","Episodic steady RUQ or epigastric pain for minutes to a few hours, often after a fatty meal, may radiate to the right scapula; no fever; settles; normal between attacks; Murphy's negative","NSAID, LFTs and ultrasound, avoid trigger foods, refer for cholecystectomy if stones confirmed"],
+         ["<b>Acute cholecystitis</b>","Constant pain beyond about 6 hours, fever, anorexia, vomiting, positive Murphy's sign, raised CRP and white count. Acalculous cholecystitis gives the same picture without stones, mainly in critically ill people","Same-day surgical admission; laparoscopic cholecystectomy within 1 week of diagnosis (NICE CG188)"],
+         ["<b>Common bile duct stone</b>","Pain with jaundice, dark urine, pale stools, cholestatic LFTs and a dilated duct; no fever unless cholangitis has developed","Same-day assessment; MRCP or EUS, then clearance by ERCP or surgery"],
+         ["<b>Ascending cholangitis</b>","Pain, fever or rigors, and jaundice; may be confused or hypotensive","999"],
+         ["<b>Gallstone pancreatitis</b>","Severe epigastric pain radiating to the back, vomiting, epigastric tenderness; raised amylase or lipase in hospital","Emergency admission"],
+         ["<b>Asymptomatic stones</b>","Incidental finding on imaging, normal gallbladder and biliary tree, no typical pain","Reassure — no treatment unless symptoms develop (NICE CG188)"],
+         ["<b>Inferior myocardial infarction or ACS</b>","Epigastric pain with sweating, breathlessness, exertional history, cardiovascular risk factors","ECG; 999 if suspected"],
+         ["<b>Right basal pneumonia</b>","Cough, fever, breathlessness, pleuritic pain, focal chest signs","Treat as pneumonia; assess severity"],
+         ["<b>Peptic ulcer or gastritis</b>","Epigastric burning related to meals, NSAID or aspirin use, dyspepsia; perforation causes sudden peritonism","Manage as dyspepsia; perforation = 999"],
+         ["<b>Renal colic or pyelonephritis</b>","Loin pain to groin, haematuria, dysuria, fever with loin tenderness","Urinalysis; manage per renal pathway"],
+         ["<b>Hepatitis</b>","Malaise, anorexia, tender liver, hepatitic (ALT-predominant) LFTs, risk factors or alcohol","Hepatitis screen; see the abnormal LFTs pathway"],
+         ["<b>Pancreatic or biliary cancer</b>","Painless jaundice, weight loss, new diabetes, a palpable gallbladder, age over 60","NICE NG12 routes — see Refer"]
        ]},
-       {b:"warn", html:"<b>Asymptomatic gallstones generally do not need surgery.</b> Do not manage acute cholecystitis, cholangitis or pancreatitis in the community — these are admissions."}
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🚑 Admit and rest the gut", html:"Acute cholecystitis needs admission — IV fluids, analgesia, an antiemetic and antibiotics are supportive while the early operation is arranged.", src:"Clinical practice; NICE CG188 (2014) — early surgery"},
+         {tone:"green", h:"🥗 Food triggers in biliary colic", html:"Advise people to avoid food and drink that trigger their symptoms until the gallbladder or stones are removed — fatty or large meals are the usual culprits.", src:"NICE CG188 (2014) — information and support"},
+         {tone:"green", h:"⚖️ Risk factors", html:"Address weight gradually over the longer term; rapid weight loss itself promotes stone formation.", src:"Clinical practice; NICE CG188 (2014)"},
+         {tone:"blue", h:"💬 Why this split matters", html:"Colic and cholecystitis need different places of care, not different doses: colic is managed at home and referred electively; cholecystitis is admitted and operated on early.", src:"NICE CG188 (2014)"}
+       ]}
      ]},
 
-    {id:"monitor", nav:"Follow-up", title:"Steps 4–5 — review and post-operative care",
+    {id:"community", nav:"Community", title:"Step 4 — biliary colic in the community",
+     sub:"Analgesia, investigation and a clear plan while the referral goes through.",
+     blocks:[
+       {b:"table", head:["Step","What","When"], rows:[
+         ["<b>Step 1 — analgesia and antiemetic</b>","An NSAID is first choice (for example diclofenac, dose per BNF; an intramuscular or rectal route helps when the patient is vomiting). Paracetamol as an adjunct. An opioid only if an NSAID is contraindicated or ineffective. An antiemetic for vomiting. If pain is severe, persists beyond about 6 hours, or any red flag is present → admit","<b>Acute colic, not septic</b>"],
+         ["<b>Step 2 — investigate</b>","LFTs and an abdominal ultrasound; FBC and CRP if inflammation is suspected","<b>Promptly, to confirm stones and check the duct</b>"],
+         ["<b>Step 3 — interim measures</b>","Avoid trigger foods; plan for breakthrough pain (an NSAID with food, and a PPI if a longer course is needed); written safety-net for fever, jaundice or persistent pain","<b>While awaiting referral</b>"],
+         ["<b>Step 4 — refer for cholecystectomy</b>","Laparoscopic cholecystectomy for symptomatic gallbladder stones; bile duct clearance if duct stones are found","<b>Symptomatic stones — definitive treatment</b>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"cream", h:"💊 Why an NSAID first", html:"In a meta-analysis of 11 randomised trials (1,076 patients), NSAIDs gave complete pain relief more often than placebo and <b>roughly halved the rate of complications</b> such as progression to cholecystitis (RR 0.53). They relieved pain better than antispasmodics and as well as opioids.", src:"Colli et al, Aliment Pharmacol Ther 2012 — NSAIDs in biliary colic"},
+         {tone:"amber", h:"⚠️ NSAID cautions", html:"Check renal function, peptic ulcer history, anticoagulants, heart failure and pregnancy before prescribing, and add gastroprotection for a longer course.", src:"BNF — NSAIDs, cautions and contraindications"},
+         {tone:"cream", h:"💊 Antispasmodics", html:"Hyoscine butylbromide can be added but is less effective than an NSAID for biliary pain. The injection is licensed for acute spasm such as renal or biliary colic: <b>20 mg IM or IV, repeated after 30 minutes if needed</b>. Do not give it intramuscularly to someone taking an anticoagulant (risk of haematoma).", src:"Buscopan Ampoules SPC (emc); Colli et al, Aliment Pharmacol Ther 2012"},
+         {tone:"cream", h:"💉 Parenteral NSAID in the surgery", html:"When the patient is vomiting and an NSAID is not contraindicated, diclofenac <b>75 mg by deep intramuscular injection into the upper outer buttock</b> is the usual practice option; the maximum is 150 mg in 24 hours across all routes. Check renal function history, ulcer history, anticoagulants and pregnancy first.", src:"Voltarol Ampoules SPC (emc) — deep intragluteal injection, maximum 150 mg daily"},
+         {tone:"amber", h:"⚠️ When the pain will not settle", html:"Colic that is still severe after parenteral analgesia, pain beyond about 6 hours, or any fever, jaundice or vomiting that stops fluids → same-day surgical assessment rather than a second dose and home.", src:"NICE CG188 (2014); clinical practice"},
+         {tone:"amber", h:"⚠️ No antibiotics for colic", html:"Uncomplicated biliary colic is not an infection. A patient whose picture needs antibiotics has cholecystitis or cholangitis and needs admission, not an oral course at home.", src:"NICE CG188 (2014) — acute cholecystitis managed in hospital"}
+       ]},
+       {b:"warn", html:"<b>Asymptomatic gallbladder stones do not need surgery.</b> Do not manage acute cholecystitis, cholangitis or pancreatitis in the community — these are admissions."}
+     ]},
+
+    {id:"surgery", nav:"Surgery", title:"Step 5 — definitive treatment and its timing",
+     sub:"The operation is the cure; the timing depends on which syndrome the patient has.",
+     blocks:[
+       {b:"table", head:["Situation","Definitive treatment","Timing"], rows:[
+         ["<b>Symptomatic gallbladder stones (biliary colic)</b>","Laparoscopic cholecystectomy","Elective referral (NICE CG188)"],
+         ["<b>Acute cholecystitis</b>","Early laparoscopic cholecystectomy; percutaneous cholecystostomy if the patient is too unwell for surgery","Within 1 week of diagnosis (NICE CG188)"],
+         ["<b>Common bile duct stones</b>","Bile duct clearance — surgically at the time of laparoscopic cholecystectomy, or by ERCP before or at the time of the operation","Arranged by the specialist team (NICE CG188; BSG 2017)"],
+         ["<b>Mild gallstone pancreatitis</b>","Cholecystectomy","During the same admission, or within 2 weeks with a clear plan (BSG-endorsed UK Working Party 2005)"],
+         ["<b>Gallstone pancreatitis without cholangitis</b>","Early ERCP is not routinely needed — it is reserved for cholangitis or persistent biliary obstruction","Specialist decision"],
+         ["<b>Asymptomatic gallbladder stones</b>","None — reassure","Only if symptoms develop (NICE CG188)"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"✅ Laparoscopic cholecystectomy", html:"The standard operation for symptomatic stones, commonly done as a day case or with one night in hospital. Most people return to light activity within a couple of weeks.", src:"NICE CG188 (2014) — symptomatic gallbladder stones"},
+         {tone:"blue", h:"ℹ️ Not fit for surgery", html:"Ursodeoxycholic acid can dissolve small radiolucent cholesterol stones in a functioning gallbladder, but dissolution is slow and incomplete and stones often recur after stopping. It is not a routine alternative to surgery; dose per BNF.", src:"Ursodeoxycholic acid SPC; BNF"},
+         {tone:"amber", h:"⚠️ Bile duct injury", html:"The most feared complication of cholecystectomy. It presents after surgery as a bile leak with pain, fever, abdominal distension or jaundice — refer back urgently to the operating team or hepatobiliary centre.", src:"NICE CG188 (2014) — surgical management; clinical practice"},
+         {tone:"blue", h:"🏥 How hospitals grade severity", html:"<b>Acute cholecystitis (Tokyo TG18, international):</b> grade I mild — no organ dysfunction; grade II moderate — white count above 18 × 10⁹/L, a palpable tender right-upper-quadrant mass, symptoms for more than 72 hours, or marked local inflammation (gangrene, abscess, biliary peritonitis, emphysematous cholecystitis); grade III severe — cardiovascular, neurological, respiratory, renal, hepatic or haematological dysfunction. <b>Acute pancreatitis (revised Atlanta 2012, international):</b> mild — no organ failure or complications; moderately severe — organ failure resolving within 48 hours or local complications; severe — organ failure persisting beyond 48 hours. Useful context for a referral phone call; the GP decision is still admission.", src:"Yokoe et al, J Hepatobiliary Pancreat Sci 2018 (TG18); Banks et al, Gut 2013 (revised Atlanta)"},
+         {tone:"blue", h:"📊 The trials behind early surgery", html:"In the ACDC trial (618 patients), cholecystectomy within 24 hours of admission had a morbidity of <b>11.8% versus 34.4%</b> for antibiotics and delayed surgery at 7–45 days. In CHOCOLATE (142 high-risk patients), laparoscopic cholecystectomy caused far fewer major complications than percutaneous drainage (<b>12% versus 65%</b>) — frailty alone is not a reason to avoid the operation.", src:"Gutt et al, Ann Surg 2013 (ACDC); Loozen et al, BMJ 2018 (CHOCOLATE)"},
+         {tone:"cream", h:"📝 The referral letter", html:"State the episode type (colic, cholecystitis, pancreatitis or duct stone), ultrasound and LFT results, comorbidities, anticoagulants, and anything that would change timing — so that a cholecystitis episode is treated as a within-1-week operation rather than a routine list. Include the severity grade if the hospital has given one.", src:"NICE CG188 (2014); QS104 (2015) — timely surgery"}
+       ]},
+       {b:"why", html:"Operating early after acute cholecystitis avoids the recurrent attacks, readmissions and spreading infection that accumulate while a patient waits for an interval operation, which is why NICE CG188 sets a 1-week window from diagnosis. After gallstone pancreatitis the logic is the same: until the gallbladder is removed, another stone can pass and trigger a second, sometimes more severe, attack — hence same-admission surgery or a firm plan within 2 weeks. The international Tokyo guidelines favour surgery within 72 hours of symptom onset for grade I–II disease in fit patients; the UK standard remains NICE CG188's 1-week window from diagnosis, and that is the figure to use in a referral."}
+     ]},
+
+    {id:"aftercare", nav:"After surgery", title:"Step 6 — after cholecystectomy",
+     sub:"Most people are cured. The minority who are not need a structured rethink rather than reassurance.",
+     blocks:[
+       {b:"table", head:["Problem","Clues","Action"], rows:[
+         ["<b>Retained or recurrent bile duct stone</b>","Pain, jaundice or fever weeks to months after surgery; cholestatic LFTs; dilated duct","Fever with jaundice = 999 (cholangitis); otherwise urgent hepatobiliary referral for MRCP and ERCP"],
+         ["<b>Bile leak or duct injury</b>","Pain, fever, distension or jaundice in the days after surgery","Same-day referral to the operating team"],
+         ["<b>Bile acid diarrhoea</b>","Persistent watery diarrhoea, often urgent, after cholecystectomy","Test with SeHCAT or serum C4 where available, then a bile acid sequestrant such as colestyramine (dose per BNF)"],
+         ["<b>Persistent dyspepsia or pain</b>","Symptoms that were never biliary — reflux, peptic ulcer, IBS, functional pain","Reassess the original diagnosis rather than assuming a surgical complication"],
+         ["<b>Diet</b>","Worry about fatty food","No need to avoid foods that previously triggered symptoms once the gallbladder is removed (NICE CG188)"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🔬 Bile acid diarrhoea — test, then treat", html:"Bile acid diarrhoea is a recognised cause of chronic diarrhoea after cholecystectomy. BSG advises a positive diagnosis with SeHCAT or serum C4 and then a trial of a bile acid sequestrant; it found insufficient evidence to recommend an empirical trial instead of testing, though empirical treatment may be used where tests are unavailable.", src:"BSG 2018 — Arasaradnam et al, Gut 2018 (chronic diarrhoea)"},
+         {tone:"cream", h:"💊 Colestyramine", html:"Take it apart from other medicines, because it binds them in the gut; dose and interval per BNF.", src:"BNF — colestyramine"}
+       ]}
+     ]},
+
+    {id:"lifestyle", nav:"Self-care", title:"Diet, weight and prevention",
+     blocks:[
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"🥗 Before surgery", html:"Avoid the food and drink that trigger your attacks — for most people, fatty or large meals. Stones will not dissolve with diet, and attacks usually recur until the gallbladder is removed.", src:"NICE CG188 (2014) — information for people with gallstones"},
+         {tone:"green", h:"🍽️ After surgery", html:"A normal diet can be resumed; there is no need to keep avoiding previous trigger foods.", src:"NICE CG188 (2014)"},
+         {tone:"green", h:"⚖️ Weight", html:"Steady rather than rapid weight loss — crash diets and rapid loss after bariatric surgery increase gallstone formation.", src:"Clinical practice; NICE CG188 (2014)"},
+         {tone:"green", h:"🚶 Activity and fibre", html:"General advice that also suits gallstone disease: at least 150 minutes of moderate activity a week, and a diet working towards 30 g of fibre a day. Cohort studies link activity and fibre to fewer gallstones, but neither dissolves stones that are already there.", src:"UK Chief Medical Officers' physical activity guidelines (2019), in line with WHO 2020; SACN Carbohydrates and Health (2015)"},
+         {tone:"green", h:"📓 Finding the triggers", html:"A short food and symptom diary helps people identify their own triggers — usually fatty or large meals, sometimes a big meal after a long gap — and plan around them while they wait.", src:"Clinical practice; NICE CG188 (2014) — avoid trigger foods"},
+         {tone:"blue", h:"ℹ️ After bariatric surgery", html:"Rapid weight loss after bariatric surgery increases gallstone formation. Some bariatric units prescribe ursodeoxycholic acid for the first months after surgery; trial evidence on preventing symptomatic stones is mixed, so this stays a specialist decision rather than something to start in general practice.", src:"Clinical practice; ursodeoxycholic acid SPC"},
+         {tone:"amber", h:"💊 Fibrates", html:"Fenofibrate is contraindicated in gallbladder disease; review the lipid plan with the prescriber if a patient on a fibrate develops symptomatic gallstones.", src:"Fenofibrate SPC; BNF"}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Review, safety-netting and the surgical pathway",
      blocks:[
        {b:"dl", rows:[
-         ["<b>Awaiting ultrasound or referral</b>","Symptom control and safety-net: return urgently if fever, jaundice, rigors or persistent severe pain"],
-         ["<b>After diagnosis</b>","<b>Symptomatic stones → elective laparoscopic cholecystectomy</b>"],
-         ["<b>Post-cholecystectomy</b>","Most symptoms resolve; some patients have post-cholecystectomy loose stools; reassess if there is ongoing pain — consider a retained stone"]
+         ["<b>Awaiting ultrasound or referral</b>","Symptom control and a written plan: return urgently, or call 999 out of hours, if there is fever, rigors, jaundice, dark urine with pale stools, pain beyond a few hours, persistent vomiting or confusion"],
+         ["<b>After diagnosis</b>","<b>Symptomatic stones → elective laparoscopic cholecystectomy.</b> Check the referral has been actioned and that analgesia is adequate"],
+         ["<b>New jaundice in someone with known stones</b>","Same-day LFTs and imaging via the acute team; fever with jaundice = 999; painless jaundice with no stones = NG12 pathway"],
+         ["<b>Post-cholecystectomy</b>","Most symptoms resolve; reassess ongoing pain, jaundice or fever as a possible retained stone or leak, and persistent watery stools as possible bile acid diarrhoea"]
        ]},
        {b:"cards", items:[
-         {tone:"red", h:"🔴 Fever, rigors or jaundice", html:"\"If you get a fever, shivering attacks, or yellow eyes or skin — that's an emergency. Come straight in.\""},
-         {tone:"red", h:"🔴 Severe persistent pain", html:"\"Pain that doesn't settle within a few hours, or severe pain going through to your back with vomiting — seek urgent help.\""},
-         {tone:"amber", h:"🟠 Pale stools, dark urine", html:"\"Pale stools with dark urine means a possible blockage — contact us urgently.\""},
-         {tone:"green", h:"🥗 While you wait", html:"\"A low-fat diet reduces the attacks while you're waiting for the operation.\""}
+         {tone:"red", h:"🔴 Fever, rigors or jaundice", html:"\"If you get a fever, shivering attacks, or yellow eyes or skin — that's an emergency. Come straight in or call 999.\"", src:"International Tokyo Guidelines 2018 (TG18) — cholangitis"},
+         {tone:"red", h:"🔴 Severe persistent pain", html:"\"Pain that doesn't settle within a few hours, or severe pain going through to your back with vomiting — seek urgent help.\"", src:"NICE CG188 (2014); BSG-endorsed UK Working Party 2005"},
+         {tone:"amber", h:"🟠 Pale stools, dark urine", html:"\"Pale stools with dark urine means a possible blockage — contact us the same day.\"", src:"BSG 2017 — Williams et al, Gut 2017"},
+         {tone:"green", h:"🥗 While you wait", html:"\"Avoid the foods that set off your attacks while you're waiting for the operation.\"", src:"NICE CG188 (2014)"}
        ]}
      ]},
 
     {id:"refer", nav:"Refer", title:"Referral — emergency versus elective",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Emergency admission", html:"Acute cholecystitis, ascending cholangitis, gallstone pancreatitis, or obstructive jaundice with sepsis."},
-         {tone:"blue", h:"Upper-GI surgery", html:"Symptomatic gallstones or biliary colic → elective laparoscopic cholecystectomy."},
-         {tone:"amber", h:"Gastroenterology", html:"<b>Suspected CBD stones (for ERCP), or diagnostic uncertainty.</b>"},
-         {tone:"purple", h:"2WW · NICE NG12", html:"Painless obstructive jaundice, or suspected pancreatic or biliary cancer → the NG12 suspected-cancer pathway. Aged 40 and over with jaundice, or 60 and over with weight loss plus upper-abdominal or back pain → urgent direct-access imaging."},
-         {tone:"cream", h:"GP management", html:"Triage of the acute complications, differentiating colic from cholecystitis, analgesia, ultrasound and LFTs, the interim low-fat diet, the surgical referral and post-operative review all belong here. Related pages: <a href='ppi-prescribing.html'>PPI prescribing</a> · <a href='gord.html'>GORD</a> · <a href='fatty-liver.html'>fatty liver disease</a> · <a href='../algorithms/abnormal-lfts.html'>abnormal LFTs pathway</a> · <a href='../algorithms/jaundice.html'>jaundice pathway</a>."}
+         {tone:"red", h:"999 / emergency admission", html:"Ascending cholangitis (Charcot's triad, or fever with jaundice), Reynolds' pentad, gallstone pancreatitis, suspected perforation, or haemodynamic compromise.", src:"International Tokyo Guidelines 2018 (TG18); BSG-endorsed UK Working Party 2005"},
+         {tone:"red", h:"Same-day surgical or hepatobiliary", html:"Acute cholecystitis; obstructive jaundice with a suspected duct stone and no fever; biliary colic that does not settle within about 6 hours despite analgesia.", src:"NICE CG188 (2014); BSG 2017"},
+         {tone:"blue", h:"Upper-GI or general surgery — elective", html:"Symptomatic gallstones or recurrent biliary colic → laparoscopic cholecystectomy.", src:"NICE CG188 (2014)"},
+         {tone:"amber", h:"Gastroenterology or hepatobiliary — urgent", html:"<b>Suspected bile duct stones without sepsis (for MRCP, EUS or ERCP), a retained stone after surgery, or diagnostic uncertainty.</b>", src:"NICE CG188 (2014); BSG 2017 — Williams et al, Gut 2017"},
+         {tone:"purple", h:"2WW · NICE NG12 (updated April 2026)", html:"<b>Aged 40 and over with jaundice</b> → suspected cancer pathway referral for pancreatic cancer. <b>Aged 60 and over with weight loss</b> plus any of diarrhoea, back pain, abdominal pain, nausea, vomiting, constipation or new-onset diabetes → consider an urgent direct-access CT (or ultrasound if CT is not available) for pancreatic cancer. <b>An upper abdominal mass consistent with an enlarged gallbladder</b> → consider an urgent direct-access ultrasound for gallbladder cancer.", src:"NICE NG12 (updated April 2026) — pancreatic and gallbladder cancer"},
+         {tone:"cream", h:"GP management", html:"Triage of the acute complications, differentiating colic from cholecystitis, NSAID analgesia, LFTs and ultrasound, advice on trigger foods, the surgical referral and post-operative review all belong here. Related pages: <a href='ppi-prescribing.html'>PPI prescribing</a> · <a href='gord.html'>GORD</a> · <a href='fatty-liver.html'>fatty liver disease</a> · <a href='../algorithms/abnormal-lfts.html'>abnormal LFTs pathway</a> · <a href='../algorithms/jaundice.html'>jaundice pathway</a>.", src:"NICE CG188 (2014)"}
        ]},
-       {b:"say", html:"Your symptoms fit gallstones. When a stone briefly blocks the gallbladder you get that severe pain after fatty food — we'll arrange a scan and painkillers. The lasting fix is a keyhole operation to remove the gallbladder. But if you get a fever, shivers, or yellow eyes, that's an emergency — come straight in."}
+       {b:"say", html:"Your symptoms fit gallstones. When a stone briefly blocks the gallbladder you get that severe pain after a meal — we'll arrange blood tests and a scan, and anti-inflammatory painkillers are the best treatment for the attacks. The lasting fix is a keyhole operation to remove the gallbladder. Until then, steer clear of the foods that set it off. But if you get a fever, shivers, or yellow eyes, that's an emergency — come straight in or call 999."}
      ]},
 
     {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
      blocks:[{b:"cards", cols:2, items:[
-       {tone:"cream", h:"Classic scenario", html:"A 46-year-old woman has had three episodes of severe right-upper-quadrant pain after takeaway meals over two months, each lasting about two hours then settling. Today the pain has been <b>constant for eight hours</b>, she <b>feels hot and shivery</b>, and she looks unwell. <b>Temperature 38.2 °C</b>, tender RUQ with a <b>positive Murphy's sign</b>. She is not jaundiced. She says she \"just needs stronger painkillers to get through it\" and has childcare to arrange."},
-       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises that this is no longer biliary colic — constant pain beyond 6 hours with fever and a positive Murphy's sign is acute cholecystitis — and arranges SAME-DAY surgical admission rather than analgesia and an outpatient scan; <b>does not accept the patient's framing of the consultation</b>, and explains clearly why this episode is different from the previous three; <b>checks specifically for jaundice and rigors to exclude cholangitis</b>, knowing Charcot's triad would escalate this to a 999 call; considers the mimics — inferior MI and right basal pneumonia — before committing; addresses the childcare barrier practically rather than letting it defer admission, which is the real-world obstacle in this case; <b>does not manage acute cholecystitis in the community</b>; and explains that laparoscopic cholecystectomy will follow the acute episode, so the admission is a step towards the definitive fix rather than an alternative to it."}
+       {tone:"cream", h:"Classic scenario", html:"A 46-year-old woman has had three episodes of severe right-upper-quadrant pain after takeaway meals over two months, each lasting about two hours then settling. Today the pain has been <b>constant for eight hours</b>, she <b>feels hot and shivery</b>, and she looks unwell. <b>Temperature 38.2 °C</b>, tender RUQ with a <b>positive Murphy's sign</b>. She is not jaundiced. She says she \"just needs stronger painkillers to get through it\" and has childcare to arrange.", src:"NICE CG188 (2014) — acute cholecystitis"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Recognises that this is no longer biliary colic — constant pain beyond 6 hours with fever and a positive Murphy's sign is acute cholecystitis — and arranges SAME-DAY surgical admission rather than analgesia and an outpatient scan; <b>does not accept the patient's framing of the consultation</b>, and explains clearly why this episode is different from the previous three; <b>checks specifically for jaundice and rigors to exclude cholangitis</b>, knowing Charcot's triad would escalate this to a 999 call; considers the mimics — inferior MI and right basal pneumonia — before committing; addresses the childcare barrier practically rather than letting it defer admission, which is the real-world obstacle in this case; <b>does not manage acute cholecystitis in the community</b>; and explains that an early laparoscopic cholecystectomy — within a week — is the likely next step, so the admission is a route to the definitive fix rather than an alternative to it.", src:"NICE CG188 (2014); International Tokyo Guidelines 2018 (TG18)"}
      ]}]},
 
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>NICE CG188 — Gallstone disease: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg188" rel="noopener">nice.org.uk/guidance/cg188</a><span class="rd"> — abdominal ultrasound as the first-line investigation, laparoscopic cholecystectomy for symptomatic gallstones and after cholecystitis, ERCP for common bile duct stones, and the position that asymptomatic gallstones generally require no treatment</span></li>'+
-         '<li><b>NICE CG188 \u2014 Gallstone disease: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg188" rel="noopener">nice.org.uk/guidance/cg188</a><span class="rd"> — the distinction between biliary colic and acute cholecystitis including Murphy\u2019s sign and the 6-hour threshold, Charcot\u2019s triad and Reynolds\u2019 pentad for ascending cholangitis, NSAID analgesia for biliary colic, the low-fat diet, and the admission thresholds</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — painless obstructive jaundice and the pancreatic and biliary cancer routes, including urgent direct-access imaging</span></li>'+
-         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — NSAID and antiemetic choices for biliary colic</span></li>'+
+         '<li><b>NICE CG188 (2014) — Gallstone disease: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg188" rel="noopener">nice.org.uk/guidance/cg188</a><span class="rd"> — LFTs and ultrasound for suspected gallstone disease; MRCP when ultrasound shows no duct stone but the duct is dilated or LFTs are abnormal, and EUS if MRCP is not diagnostic; reassurance for asymptomatic gallbladder stones; laparoscopic cholecystectomy for symptomatic stones and within 1 week of diagnosing acute cholecystitis; bile duct clearance at or before surgery; advice to avoid trigger foods until the gallbladder is removed</span></li>'+
+         '<li><b>NICE QS104 (2015) — Gallstone disease quality standard</b><br><a href="https://www.nice.org.uk/guidance/qs104" rel="noopener">nice.org.uk/guidance/qs104</a><span class="rd"> — early laparoscopic cholecystectomy for acute cholecystitis</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — jaundice at 40 and over (pancreatic cancer pathway referral); weight loss at 60 and over with the listed symptoms (urgent direct-access CT); a mass consistent with an enlarged gallbladder (urgent direct-access ultrasound)</span></li>'+
+         '<li><b>BSG 2017 — Williams E, et al. Updated guideline on the management of common bile duct stones. Gut 2017;66:765–82</b><br><a href="https://pubmed.ncbi.nlm.nih.gov/28122906/" rel="noopener">pubmed.ncbi.nlm.nih.gov/28122906</a><span class="rd"> — prevalence of duct stones in symptomatic gallstone disease, MRCP and EUS, ERCP clearance</span></li>'+
+         '<li><b>UK Working Party on Acute Pancreatitis (BSG-endorsed). UK guidelines for the management of acute pancreatitis. Gut 2005;54(Suppl 3):iii1–9</b><br><a href="https://pubmed.ncbi.nlm.nih.gov/15831893/" rel="noopener">pubmed.ncbi.nlm.nih.gov/15831893</a><span class="rd"> — definitive gallstone treatment during the same admission for mild gallstone pancreatitis, or within 2 weeks with a clear plan</span></li>'+
+         '<li><b>Academy of Medical Royal Colleges — Evidence-Based Interventions: early ERCP in acute gallstone pancreatitis without cholangitis</b><br><a href="https://ebi.aomrc.org.uk/interventions/early-endoscopic-retrograde-cholangiopancreatography-ercp-in-acute-gallstone-pancreatitis-without-cholangitis/" rel="noopener">ebi.aomrc.org.uk</a><span class="rd"> — early ERCP not recommended without cholangitis or obstruction</span></li>'+
+         '<li><b>BSG 2018 — Arasaradnam RP, et al. Guidelines for the investigation of chronic diarrhoea in adults. Gut 2018</b><span class="rd"> — SeHCAT or C4 testing for bile acid diarrhoea and bile acid sequestrant treatment</span></li>'+
+         '<li><b>Colli A, et al. Meta-analysis: nonsteroidal anti-inflammatory drugs in biliary colic. Aliment Pharmacol Ther 2012;35:1370–8</b><span class="rd"> — NSAIDs versus placebo, antispasmodics and opioids; complication rate RR 0.53</span></li>'+
+         '<li><b>Trowbridge RL, et al. Does this patient have acute cholecystitis? JAMA 2003;289:80–6</b><span class="rd"> — the modest diagnostic value of Murphy’s sign</span></li>'+
+         '<li><b>Revised Atlanta classification of acute pancreatitis 2012 (international) — Banks PA, et al. Gut 2013;62:102–11</b><span class="rd"> — the threefold amylase or lipase diagnostic threshold</span></li>'+
+         '<li><b>Tokyo Guidelines 2018 (international) — Kiriyama S, et al. J Hepatobiliary Pancreat Sci 2018</b><span class="rd"> — acute cholangitis criteria; Charcot’s triad is specific but insensitive</span></li>'+
+         '<li><b>Tokyo Guidelines 2018 (international) — Yokoe M, et al. Diagnostic criteria and severity grading of acute cholecystitis. J Hepatobiliary Pancreat Sci 2018;25:41–54</b><br><a href="https://pubmed.ncbi.nlm.nih.gov/29032636/" rel="noopener">pubmed.ncbi.nlm.nih.gov/29032636</a><span class="rd"> — grade I–III severity of acute cholecystitis</span></li>'+
+         '<li><b>Gutt CN, et al. Acute cholecystitis: early versus delayed cholecystectomy (ACDC). Ann Surg 2013;258:385–93</b><br><a href="https://pubmed.ncbi.nlm.nih.gov/24022431/" rel="noopener">pubmed.ncbi.nlm.nih.gov/24022431</a><span class="rd"> — morbidity 11.8% (surgery within 24 hours) versus 34.4% (delayed, days 7–45)</span></li>'+
+         '<li><b>Loozen CS, et al. Laparoscopic cholecystectomy versus percutaneous catheter drainage for acute cholecystitis in high risk patients (CHOCOLATE). BMJ 2018;363:k3965</b><span class="rd"> — major complications 12% versus 65%</span></li>'+
+         '<li><b>Summaries of Product Characteristics (emc): Buscopan Ampoules; Voltarol Ampoules</b><br><a href="https://www.medicines.org.uk/emc" rel="noopener">medicines.org.uk/emc</a><span class="rd"> — hyoscine butylbromide 20 mg IM/IV for acute biliary or renal colic, repeated after 30 minutes, not IM with anticoagulants; diclofenac 75 mg deep intragluteal injection, maximum 150 mg daily</span></li>'+
+         '<li><b>UK Chief Medical Officers’ Physical Activity Guidelines (2019)</b><br><a href="https://www.gov.uk/government/publications/physical-activity-guidelines-uk-chief-medical-officers-report" rel="noopener">gov.uk</a><span class="rd"> — 150 minutes of moderate activity a week</span></li>'+
+         '<li><b>SACN — Carbohydrates and Health (2015)</b><br><a href="https://www.gov.uk/government/publications/sacn-carbohydrates-and-health-report" rel="noopener">gov.uk</a><span class="rd"> — 30 g fibre a day for adults</span></li>'+
+         '<li><b>BNF and SPCs</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — NSAID, antispasmodic, colestyramine and ursodeoxycholic acid dosing and cautions; fenofibrate contraindication in gallbladder disease</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Gallstone disease in primary care — NICE CG188, NICE and NG12. The GP decision is triage: fever, jaundice, rigors or systemic upset means admission. Constant RUQ pain beyond 6 hours with a positive Murphy's sign is acute cholecystitis (same-day surgical admission); Charcot's triad is ascending cholangitis (999, life-threatening sepsis); epigastric pain radiating to the back with vomiting is gallstone pancreatitis. Uncomplicated biliary colic is managed in the community with an NSAID, an abdominal ultrasound and LFTs, and a low-fat diet, then referred for elective laparoscopic cholecystectomy. Asymptomatic gallstones generally need no surgery. Painless obstructive jaundice is a suspected-cancer presentation. Verify against current NICE CG188."
+  foot:"Gallstone disease in primary care — NICE CG188, NICE NG12 (updated April 2026), BSG 2017 and the UK Working Party 2005 pancreatitis guideline. The GP decision is triage: fever, jaundice, rigors or systemic upset means admission. Constant RUQ pain beyond about 6 hours with fever and a positive Murphy's sign is acute cholecystitis (same-day surgical admission; cholecystectomy within 1 week); Charcot's triad is ascending cholangitis (999, life-threatening sepsis); epigastric pain radiating to the back with vomiting is gallstone pancreatitis. Uncomplicated biliary colic is managed in the community with an NSAID, LFTs and an abdominal ultrasound, and avoidance of trigger foods, then referred for laparoscopic cholecystectomy. Asymptomatic gallstones need no surgery. Jaundice at 40 and over is an NG12 suspected-cancer referral. Verify doses against the current BNF."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

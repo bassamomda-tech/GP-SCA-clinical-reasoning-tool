@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Peripheral arterial disease — Protocol · Reasoning GP</title>
-<meta name="description" content="Peripheral arterial disease: separating stable claudication from limb-threatening critical and acute ischaemia, ABPI and why it misleads in diabetes, the secondary-prevention bundle that treats PAD as a cardiovascular risk equivalent, supervised exercise as first-line, and the referral speeds." />
+<meta name="description" content="Peripheral arterial disease: separating stable claudication from acute and chronic limb-threatening ischaemia and the NG19 diabetic foot, the history that separates vascular from neurogenic claudication, ABPI and why it misleads in diabetes, the secondary-prevention bundle, supervised exercise first-line, and the referral speeds." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/peripheral-arterial-disease.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,100 +22,148 @@ MG.render({
   title:"Peripheral arterial disease — the complete guide",
   eyebrow:"Protocol · NICE CG147 · coronary disease in the legs",
   stemTitle:"More people with PAD die of a coronary or cerebral event than lose a leg — so the statin, antiplatelet and smoking cessation are the main survival treatment, not adjuncts to the leg symptoms",
-  stemSub:"One page for the whole condition. The first and most important split is <b>stable claudication versus limb-threatening ischaemia</b> — rest pain, tissue loss or the 6 P's all leave primary care today. Then confirm with ABPI, knowing exactly when it misleads; deliver the secondary-prevention bundle that PAD shares with coronary disease, because PAD is a cardiovascular risk equivalent; prescribe supervised exercise as the evidence-based first-line for claudication; and refer the right limbs at the right speed.",
-  guideline:"NICE CG147 · NG19 · NG12",
+  stemSub:"One page for the whole condition, from the first complaint of calf pain to the annual review. The first split is <b>stable claudication versus limb-threatening ischaemia</b> — rest pain, tissue loss or the 6 P's all leave primary care today, and a diabetic foot ulcer with ischaemia goes to acute services immediately (NICE NG19). Then make sure it really is vascular claudication rather than spinal stenosis or arthritis; confirm with ABPI, knowing exactly when it misleads (NICE CG147); deliver the secondary-prevention bundle that PAD shares with coronary disease (NICE NG238, TA210, NG136); prescribe supervised exercise as first-line; and refer the right limbs at the right speed.",
+  guideline:"NICE CG147 (2012, updated 2020) · NICE NG19 (2015) · NICE NG238 (2023) · NICE TA210 (2010) · NICE TA223 (2011) · NICE TA607 (2019) · NICE NG136 (2019) · NICE NG156 (2020) · NICE NG209 (2021) · VSGBI PAD-QIF (2019, updated 2022)",
   reviewed:"14 September 2026",
   nextReview:"14 March 2027",
   meta:[
-    {t:"NICE CG147 — lower limb peripheral arterial disease"},
-    {t:"Acute limb ischaemia: ~6-hour window", tone:"tw"},
-    {t:"ABPI is falsely HIGH in diabetes and CKD", tone:"tw"},
-    {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
+    {t:"NICE CG147 — lower limb peripheral arterial disease (2012, updated 2020)"},
+    {t:"Acute limb ischaemia: hours matter — 999", tone:"tw"},
+    {t:"ABPI can be falsely normal or high in diabetes and CKD", tone:"tw"},
+    {t:"NICE NG238 · TA210 · TA223 · NG19"},
+    {t:"v2.1 · pathway and protocol merged Sep 2026", tone:"ok"}
   ],
-  lead:'<div class="mg-layers"><a href="#safety"><b>Limb threat</b><small>6 P\'s · rest pain</small></a><a href="#confirm"><b>Confirm</b><small>ABPI · the trap</small></a><a href="#bundle"><b>The bundle</b><small>Survival, not legs</small></a><a href="#claudication"><b>Claudication</b><small>Exercise first</small></a><a href="#monitor"><b>Review</b><small>Risk · foot</small></a></div>',
+  lead:'<div class="mg-layers"><a href="#safety"><b>Limb threat</b><small>6 P\'s · rest pain · NG19</small></a><a href="#history"><b>Is it claudication?</b><small>History · differentials</small></a><a href="#confirm"><b>Confirm</b><small>ABPI · the trap</small></a><a href="#bundle"><b>The bundle</b><small>Survival, not legs</small></a><a href="#claudication"><b>Claudication</b><small>Exercise first</small></a><a href="#monitor"><b>Review</b><small>Risk · foot</small></a></div>',
   quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"red", h:"⚠ Acute limb ischaemia — the 6 P's, and the clock", html:"Sudden Pain, Pallor, Pulselessness, Perishing cold, Paraesthesia and Paralysis — the last two mean a threatened limb, act now. Same-day emergency vascular referral or 999: the window to save the limb is roughly 6 hours, and IV heparin while transfer is arranged. <b>This is limb- and life-threatening, not a claudication problem.</b>"},
-    {tone:"red", h:"⚠ Critical limb ischaemia leaves primary care today", html:"Rest pain for 2 weeks or more — worse lying flat, relieved by hanging the leg out of bed — or ulceration or gangrene, with ABPI often below 0.5. Urgent vascular referral for revascularisation; the limb is at risk without it. A diabetic foot ulcer or infection with PAD goes to the same-day MDT foot service — do not sit on it."},
-    {tone:"amber", h:"ABPI in the 'normal' range does not exclude PAD in diabetes", html:"Above 0.9 is normal, 0.5–0.9 fits claudication, below 0.5 suggests critical ischaemia. But medial calcification in diabetes and CKD makes vessels incompressible and the ABPI falsely HIGH (over 1.3). If the story fits, use toe-brachial pressures or waveforms and refer for duplex rather than being reassured by the number."},
-    {tone:"green", h:"The bundle is the survival treatment", html:"Atorvastatin 80 mg for all PAD (LDL ≤2.0 or non-HDL ≤2.6, adding ezetimibe if not met) · clopidogrel 75 mg OD as the first-line antiplatelet in PAD · smoking cessation as the single biggest lever · HbA1c and blood pressure to target. PAD is a cardiovascular risk equivalent — treat the artery everywhere, not just the leg."},
-    {tone:"blue", h:"Supervised exercise is first-line for claudication", html:"2 hours a week for 3 months: walk to near-maximal pain, rest, repeat — it builds collaterals and walking distance. Offer it BEFORE considering angioplasty (CG147); for many patients it is as effective. Naftidrofuryl oxalate is a licensed option for those who decline or cannot manage exercise — review at 3–6 months and stop if there is no benefit."},
-    {tone:"amber", h:"Two things not to do", html:"<b>Avoid pentoxifylline — the evidence is poor.</b> And do not withhold a beta-blocker purely because of PAD: they are safe in most patients and are often needed for coexistent ischaemic heart disease. Foot care matters — well-fitting shoes, daily inspection, prompt treatment of minor injuries, especially in diabetes."}
+    {tone:"red", h:"⚠ Acute limb ischaemia — the 6 P's, and the clock", html:"Sudden Pain, Pallor, Pulselessness, Perishing cold, Paraesthesia and Paralysis — sensory loss or weakness means the limb is already threatened. <b>999 / emergency vascular referral</b>: muscle and nerve die within hours, so do not arrange an outpatient test. This is limb- and life-threatening, not a claudication problem."},
+    {tone:"red", h:"⚠ Chronic limb-threatening ischaemia and the diabetic foot", html:"Rest pain for more than 2 weeks — worse lying flat, eased by hanging the leg out of bed — or ulceration or gangrene: <b>urgent vascular referral, by telephone the same day</b>. A diabetic foot ulcer with ischaemia, gangrene, suspected deep infection or sepsis is limb-threatening: <b>refer immediately to acute services</b> and tell the multidisciplinary foot service (NICE NG19)."},
+    {tone:"amber", h:"A 'normal' ABPI does not exclude PAD in diabetes", html:"Below 0.9 supports PAD; over about 1.3 or incompressible is unreliable. Medial calcification in diabetes and CKD makes the ankle vessels hard to compress and falsely raises the reading. NICE CG147: do not exclude PAD in people with diabetes on a normal or raised ABPI alone — use toe pressures or Doppler waveforms, or refer for duplex, if the story fits."},
+    {tone:"green", h:"The bundle is the survival treatment", html:"<b>Atorvastatin 80 mg</b> for established CVD (NICE NG238), aiming for LDL-C 2.0 mmol/L or less or non-HDL-C 2.6 or less · <b>clopidogrel 75 mg daily</b> for symptomatic PAD (NICE TA210) · smoking cessation as the biggest single lever (NICE NG209) · blood pressure to NICE NG136 targets. No QRISK: PAD is already secondary prevention."},
+    {tone:"blue", h:"Supervised exercise is first-line for claudication", html:"NICE CG147: offer a supervised exercise programme — typically 2 hours a week for 3 months, walking to the point of maximal pain. Angioplasty is for people in whom exercise and risk-factor treatment have not helped enough. <b>Naftidrofuryl oxalate</b> is the only recommended drug (NICE TA223), and only when exercise has not helped enough and the person prefers not to be referred — review at 3–6 months (CG147)."},
+    {tone:"amber", h:"Two things not to do", html:"<b>Do not use cilostazol or pentoxifylline for claudication</b> — NICE TA223 does not recommend them, and the MHRA (April 2013) restricted cilostazol for cardiovascular and bleeding risk. And do not withhold a beta-blocker needed for another indication because of PAD. Foot care matters — well-fitting shoes, daily inspection, prompt treatment of minor injuries, especially in diabetes."}
   ],
-  pathwaySub:"Five steps, and the first one decides whether the other four apply today.",
+  pathwaySub:"Six steps, and the first one decides whether the others apply today.",
   pathway:[
-    {title:"Split stable from limb-threatening", html:"Rest pain, tissue loss or the 6 P's → urgent or same-day vascular, not claudication management.", alert:true},
-    {title:"Confirm with ABPI — and know when it lies", html:"ABPI, pulses, Buerger's test, and a look between the toes and at pressure points. <b>Falsely high in diabetes and CKD → toe pressures or waveforms.</b>"},
-    {title:"Deliver the secondary-prevention bundle", html:"Atorvastatin 80 mg, clopidogrel 75 mg, smoking cessation, glucose and blood pressure to target. <b>This is the part that saves life rather than limb.</b>"},
-    {title:"Treat the claudication with exercise first", html:"Supervised programme 2 h/week × 3 months before any thought of angioplasty; naftidrofuryl where exercise is not possible."},
-    {title:"Review the risk, the walking distance and the foot", html:"Annually for the bundle, every review for symptoms and the foot — and any progression flag moves to the ischaemia pathway."}
+    {title:"Split stable from limb-threatening", html:"The 6 P's → 999. Rest pain, ulcer or gangrene → urgent vascular by telephone. Diabetic foot ulcer with ischaemia → acute services now (NG19). Sudden deterioration or a new cold foot → same-day vascular discussion.", alert:true},
+    {title:"Make sure it is claudication", html:"Reproducible calf, thigh or buttock pain on walking, relieved by <b>standing still</b> within minutes. Pain eased only by sitting or bending forward is neurogenic. Record the walking distance."},
+    {title:"Confirm with ABPI — and know when it lies", html:"Pulses, foot inspection, ABPI in both legs. <b>Falsely normal or high in diabetes and CKD → toe pressures, waveforms or duplex.</b> HbA1c, lipids, renal function, FBC, ECG."},
+    {title:"Deliver the secondary-prevention bundle", html:"Atorvastatin 80 mg, clopidogrel 75 mg, smoking cessation, blood pressure and glucose to target — no risk calculator needed. <b>This is the part that saves life rather than limb.</b>"},
+    {title:"Treat the claudication with exercise first", html:"Supervised programme before any thought of angioplasty; naftidrofuryl only when exercise has not helped enough and the person does not want referral."},
+    {title:"Review the risk, the walking distance and the foot", html:"At 3 months, then annually on the CVD register. Any progression flag moves to the limb-threat pathway."}
   ],
   sections:[
 
-    {id:"safety", nav:"Limb threat", title:"Step 1 — recognise the limb-threatening presentations",
-     sub:"The spectrum runs from stable claudication, managed in primary care, to a leg that is dying.",
+    {id:"safety", nav:"Limb threat", title:"Red flags — is this leg threatened today?",
+     sub:"Stable claudication is a primary-care problem. A leg with rest pain, tissue loss or a sudden loss of circulation is not — and the distinction is clinical, made before any ABPI result.",
      blocks:[
        {b:"table", head:["Presentation","Recognise","Action"], rows:[
-         ["<b>Acute limb ischaemia</b>","Sudden onset: the 6 P's — Pain, Pallor, Pulselessness, Perishing cold, Paraesthesia, Paralysis. <b>The last two mean a threatened limb</b>","Same-day emergency vascular referral or 999 — the window to save the limb is about 6 hours. <b>IV heparin while arranging transfer</b>"],
-         ["<b>Critical limb ischaemia (CLTI)</b>","<b>Rest pain for ≥2 weeks</b>, worse lying flat and relieved by hanging the leg out of bed; <b>ulceration or gangrene</b>; ABPI often below 0.5","Urgent vascular referral for revascularisation — limb loss risk without it"],
-         ["<b>Diabetic foot</b>","Ulcer or infection together with PAD","<b>Same-day or urgent MDT foot service — do not sit on it</b>"]
+         ["<b>Acute limb ischaemia</b>","Sudden onset: the 6 P's — Pain, Pallor, Pulselessness, Perishing cold, Paraesthesia, Paralysis. <b>Sensory loss or weakness means a threatened limb</b>","<b>999 / emergency vascular referral.</b> Hours matter — do not arrange an outpatient test; anticoagulation is started by the receiving team"],
+         ["<b>Chronic limb-threatening ischaemia (CLTI)</b>","<b>Rest pain for more than 2 weeks</b> — burning forefoot or toe pain at night, worse lying flat, eased by hanging the leg out of bed or sleeping in a chair; <b>non-healing ulcer</b> (painful, punched-out, on toes, heel or pressure points) or <b>gangrene</b>; ABPI commonly below 0.5 or low toe pressures","<b>Urgent vascular referral — telephone the on-call team the same day.</b> With spreading infection or sepsis → same-day admission"],
+         ["<b>Diabetic foot with ischaemia</b>","Ulcer with limb-threatening ischaemia, gangrene, suspected deep-tissue infection or sepsis","<b>Refer immediately to acute services and inform the multidisciplinary foot service (NICE NG19)</b>"],
+         ["<b>Sudden deterioration</b>","Walking distance collapsing over days to weeks, a newly cold foot or new pulse loss — acute-on-chronic occlusion","<b>Discuss with vascular the same day</b>"],
+         ["<b>Aortic or cardiac emergency</b>","Sudden back or abdominal pain with collapse or absent femoral pulses (aortic occlusion, dissection or ruptured aneurysm), or chest pain or stroke symptoms","<b>999</b>"]
        ]},
-       {b:"why", html:"The single most important early split is stable versus limb-threatening. <b>Rest pain, tissue loss, or the 6 P's all leave primary care today</b> — and the distinction is clinical, not dependent on an ABPI result. Stable claudication is managed here; a dying leg is a same-day vascular problem where the delay itself causes the amputation."}
+       {b:"why", html:"The single most important split is stable claudication versus limb-threatening ischaemia, and it is made on the history and a look at the foot, not on the ABPI. Acute limb ischaemia is time-critical: muscle and nerve become irreversibly damaged within hours. CLTI needs revascularisation assessment quickly — the Vascular Society of Great Britain and Ireland PAD Quality Improvement Framework (2019, updated 2022) sets targets of revascularisation within 5 days for admitted patients and within 14 days for outpatients, which is only achievable if the GP referral is made by telephone rather than by letter. NG19 treats a diabetic foot ulcer with ischaemia as limb-threatening and asks for immediate referral to acute services, not a routine or next-day foot-clinic slot. In diabetes, neuropathy may remove the pain that would otherwise announce rest pain, so the foot must be looked at, not just asked about."}
      ]},
 
-    {id:"confirm", nav:"Confirm", title:"Step 2 — confirming the diagnosis, and who to suspect",
+    {id:"history", nav:"Is it claudication?", title:"Is it really claudication? — the history that discriminates",
+     sub:"Intermittent claudication is reproducible exercise-induced muscle pain that comes on at a fairly consistent distance and settles within minutes of standing still. Build the diagnosis from the history before touching the Doppler.",
+     blocks:[
+       {b:"dl", rows:[
+         ["<b>Classic features</b>","Calf ache, cramp or tightness on walking, earlier uphill or at pace; not present at the start of walking; relieved by standing still within about 10 minutes (no need to sit or bend); returns at a similar distance. The Edinburgh Claudication Questionnaire formalises this (Leng and Fowkes, J Clin Epidemiol 1992: sensitivity about 91%, specificity about 99% against a physician diagnosis)"],
+         ["<b>Site maps to level</b>","Buttock or hip → aorto-iliac disease (ask men about erectile dysfunction: buttock claudication with impotence and absent femoral pulses is the Leriche pattern) · thigh → iliac or common femoral · calf → superficial femoral or popliteal (commonest) · foot arch → tibial disease, typical of diabetes"],
+         ["<b>Record the distance</b>","Distance or time to onset of pain and to having to stop, on the flat, and what it stops the person doing. This is the baseline for judging exercise therapy and referral"],
+         ["<b>Risk-factor history</b>","Smoking (pack-years, current status), diabetes, hypertension, lipids, CKD, known coronary or cerebrovascular disease, family history of premature vascular disease, previous DVT (venous claudication), sport and age (young athletes: entrapment, compartment syndrome)"],
+         ["<b>Severity staging</b>","Fontaine: I asymptomatic · IIa claudication at more than 200 m · IIb claudication at less than 200 m · III rest pain · IV ulceration or gangrene. Stages III and IV are CLTI and belong in the red flags"]
+       ]},
+       {b:"table", head:["Differential","Discriminating features","Next step"], rows:[
+         ["<b>Neurogenic claudication (lumbar spinal stenosis)</b>","Pain, numbness or weakness down both legs on standing as well as walking; <b>relieved only by sitting or bending forward</b>; walking uphill, pushing a trolley or cycling are easier; pulses and ABPI normal","Neurological examination; see the <a href='sciatica.html'>sciatica</a> protocol; MRI via spinal pathway if limiting"],
+         ["<b>Venous claudication</b>","Bursting thigh pain after previous iliofemoral DVT, swollen leg, relieved slowly by elevation rather than standing still","Venous duplex; vascular opinion"],
+         ["<b>Hip or knee osteoarthritis</b>","Pain at the start of walking, variable distance, joint-line pain on passive movement, eases slowly, often present at rest","Joint examination and X-ray if needed"],
+         ["<b>Chronic exertional compartment syndrome</b>","Young, athletic; tight bursting calf after a set amount of running, slow to settle; pulses normal at rest","Sports medicine or orthopaedic referral for pressure studies"],
+         ["<b>Popliteal artery entrapment</b>","Young athlete with calf claudication; foot pulses weaken with active plantar flexion","Vascular referral"],
+         ["<b>Other</b>","Baker's cyst · radicular pain (dermatomal, cough- or straight-leg-raise-provoked) · painful neuropathy (burning at rest, glove-and-stocking) · statin myalgia (symmetrical, not distance-related)","Treat the cause"]
+       ]},
+       {b:"why", html:"The commonest diagnostic error is labelling lumbar spinal stenosis as vascular claudication, or the reverse. Two questions separate them well: does standing still relieve it (vascular) or do you have to sit or bend forward (neurogenic), and can you cycle or push a trolley uphill without pain (neurogenic)? Mapping the site of pain to the arterial level matters because buttock and thigh claudication with weak femoral pulses points to aorto-iliac disease, which can also cause erectile dysfunction that the patient will not volunteer."}
+     ]},
+
+    {id:"confirm", nav:"Confirm", title:"Examination and investigations — ABPI, and when it misleads",
      blocks:[
        {b:"table", head:["Element","Detail"], rows:[
-         ["<b>Intermittent claudication</b>","Cramping calf pain on walking — or thigh and buttock in aorto-iliac disease — relieved by rest within minutes, and reproducible at a consistent claudication distance"],
-         ["<b>Examine</b>","Absent or reduced pulses, cool foot, hair loss, shiny skin, slow capillary refill, Buerger's test. <b>Check between the toes and over pressure points for ulcers</b>"],
-         ["<b>ABPI</b>","Above 0.9 normal · 0.5–0.9 claudication · below 0.5 suggests critical ischaemia. Falsely HIGH (above 1.3) in diabetes and CKD because calcified vessels are incompressible → use toe-brachial pressures or waveforms instead"],
-         ["<b>Investigate the person, not just the leg</b>","Duplex ± CT or MR angiography (specialist, before intervention). Bloods: U&amp;Es, HbA1c, lipids, FBC. ECG for coexistent ischaemic heart disease"],
-         ["<b>Differentials</b>","Spinal stenosis — neurogenic claudication, eased by leaning forward rather than by simply standing still · venous claudication · arthritis · sciatica"]
+         ["<b>Both legs, shoes off</b>","Colour, temperature gradient, hair and nail changes, shiny atrophic skin. <b>Look between the toes, at the heels and over pressure points</b> for ulcers or fissures — CG147 asks for the legs and feet to be examined for evidence of critical ischaemia"],
+         ["<b>Pulses</b>","Femoral, popliteal, dorsalis pedis and posterior tibial on both sides, recorded as present, weak or absent. A single absent foot pulse is common in healthy people; a pattern of absent pulses in the symptomatic leg is not"],
+         ["<b>Buerger's test and capillary refill</b>","Pallor on elevation with slow return of colour and dependent rubor suggests severe ischaemia — a rubor foot can look deceptively healthy. Prolonged toe capillary refill is supportive but non-specific in a cold room"],
+         ["<b>Bruits, aorta, neurology</b>","Femoral and carotid bruits; palpate for an expansile abdominal mass. Monofilament and vibration sense in diabetes — neuropathy masks rest pain and ulceration. Straight-leg raise and lower-limb neurology if a spinal cause is possible"],
+         ["<b>ABPI</b>","Hand-held Doppler at rest: highest ankle pressure (dorsalis pedis or posterior tibial) in each leg ÷ the higher brachial pressure — recommended for diagnosis in NICE CG147. Practice bands: 0.9–1.3 normal at rest · below 0.9 PAD · 0.5–0.9 fits claudication · below 0.5 severe disease · over 1.3 or incompressible unreliable"],
+         ["<b>Normal ABPI, classic story</b>","Do not reassure yet. In diabetes or CKD request toe pressures or toe-brachial index or Doppler waveforms (CG147 warns against excluding PAD in diabetes on ABPI alone). A vascular lab can repeat the ABPI after exercise"],
+         ["<b>Bloods</b>","HbA1c · full lipid profile (non-HDL-C is the NG238 monitoring measure) · FBC (anaemia worsens symptoms) · U&amp;E and eGFR · urine ACR in diabetes · liver transaminase before a statin (NG238)"],
+         ["<b>ECG</b>","Atrial fibrillation (an embolic source and an anticoagulation decision) and silent ischaemic changes"],
+         ["<b>Imaging — specialist</b>","Duplex ultrasound is the first-line imaging for anyone being considered for revascularisation; contrast-enhanced MR angiography, or CT angiography where MRA is unsuitable, is arranged by the vascular team (CG147). Imaging only changes management if the person would consider an intervention"]
        ]},
-       {b:"warn", html:"An ABPI in the 'normal' range does not exclude PAD in a person with diabetes — medial calcification stiffens the arteries and falsely elevates it. If the story fits, use toe pressures or waveforms and refer for duplex rather than accepting the number. This is the commonest reason PAD is missed in exactly the group at highest risk of losing a limb."}
+       {b:"warn", html:"An ABPI in the 'normal' range does not exclude PAD in a person with diabetes — medial calcification stiffens the arteries and falsely elevates it. If the story fits, use toe pressures or waveforms and refer for duplex rather than accepting the number (NICE CG147). This is the commonest reason PAD is missed in exactly the group at highest risk of losing a limb."}
      ]},
 
-    {id:"bundle", nav:"The bundle", title:"Step 3 — secondary prevention: PAD is a cardiovascular risk equivalent",
+    {id:"risk", nav:"CV risk", title:"Cardiovascular risk — PAD is established atherosclerotic disease",
+     sub:"Symptomatic PAD places the person in the secondary-prevention group. The legs are the presenting complaint; the heart and brain are where most of the mortality lies.",
      blocks:[
-       {b:"table", head:["Domain","Treatment","Target or note"], rows:[
-         ["<b>Statin</b>","<b>Atorvastatin 80 mg</b>","High-intensity for ALL PAD — this is established atherosclerosis. LDL ≤2.0 or non-HDL ≤2.6; add ezetimibe if not met"],
-         ["<b>Antiplatelet</b>","<b>Clopidogrel 75 mg OD — first-line in PAD</b>","Aspirin if clopidogrel is not tolerated. <b>Reduces MI, stroke and vascular death</b>"],
-         ["<b>Smoking</b>","<b>Cessation — the single biggest lever</b>","Continued smoking is the strongest driver of progression and of graft failure"],
-         ["<b>Diabetes and blood pressure</b>","Optimise HbA1c; blood pressure to target (an ACE inhibitor or ARB is reasonable)","Tight control slows progression and protects heart and kidneys"],
-         ["<b>Diet, weight, activity</b>","<b>Cardioprotective diet, weight loss, regular activity</b>","<b>The same package as ischaemic heart disease</b>"]
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"No QRISK3", html:"Risk calculators are for primary prevention. NICE NG238 advises against using a risk assessment tool for people who already have CVD, which includes symptomatic PAD — treat as secondary prevention straight away.", src:"NICE NG238 (2023)"},
+         {tone:"blue", h:"Other vascular beds", html:"Ask about exertional chest pain or breathlessness and TIA or stroke symptoms; listen for carotid and femoral bruits. Polyvascular disease carries the highest event rate and influences antithrombotic decisions such as rivaroxaban plus aspirin.", src:"NICE TA607 (2019)"},
+         {tone:"blue", h:"Diabetes and CKD", html:"HbA1c if not known; if known, control, neuropathy and foot-risk status. CKD, like diabetes, stiffens tibial arteries, makes the ABPI unreliable, and matters for contrast imaging — check eGFR and urine ACR.", src:"NICE NG19 (2015); NICE CG147 (2012, updated 2020)"},
+         {tone:"amber", h:"Abdominal aortic aneurysm", html:"Encourage men aged 66 or over with coronary, cerebrovascular or peripheral arterial disease who have not been screened to self-refer to the NHS AAA screening programme; consider aortic ultrasound in women aged 70 or over with risk factors including PAD.", src:"NICE NG156 (2020)"}
        ]},
-       {b:"why", html:"A person with PAD is at high risk of myocardial infarction and stroke — more will die of a coronary or cerebral event than will lose a leg. So the statin, antiplatelet and smoking-cessation bundle is not an optional adjunct to the leg symptoms: it is the main survival treatment, exactly as in coronary disease. <b>Saying that explicitly to the patient also changes adherence</b>, because tablets for a painful leg feel optional in a way that tablets for a heart attack do not."}
+       {b:"why", html:"Patients understand tablets for leg pain as optional; tablets that reduce heart attack and stroke are not. Framing PAD as the same disease as coronary heart disease, affecting the leg arteries, is both accurate and the best adherence strategy. The corollaries are that no risk score is needed, the statin, antiplatelet and blood pressure decisions follow secondary-prevention rules, and every PAD patient belongs on the practice CVD register with an annual review."}
      ]},
 
-    {id:"claudication", nav:"Claudication", title:"Step 4 — treating the claudication: exercise is first-line",
+    {id:"bundle", nav:"The bundle", title:"Secondary prevention — the survival treatment",
      blocks:[
-       {b:"table", head:["Step","What","Detail"], rows:[
-         ["<b>1 — supervised exercise programme</b>","First-line for intermittent claudication (CG147): 2 hours a week for 3 months","Walk to near-maximal pain, rest, repeat — this builds collaterals and walking distance. Offer it BEFORE considering angioplasty; for many patients it is as effective"],
-         ["<b>2 — optimise the bundle and reassess</b>","<b>Alongside the exercise, if symptoms persist</b>","Ensure the statin, antiplatelet and smoking cessation are genuinely maximised. Treat pain. Naftidrofuryl oxalate is a licensed option for those declining or limited by exercise — review at 3–6 months and stop if there is no benefit"],
-         ["<b>3 — refer for revascularisation</b>","Lifestyle-limiting symptoms despite supervised exercise with risk factors optimised","Angioplasty with or without a stent, or bypass — imaging decides suitability. <b>NOT a substitute for the prevention bundle, which continues regardless</b>"]
+       {b:"table", head:["Domain","Treatment","Target, source and note"], rows:[
+         ["<b>Statin</b>","<b>Atorvastatin 80 mg</b> (lower dose if interactions, renal impairment or intolerance)","NICE NG238 (2023): for people with established CVD. Aim for LDL-C 2.0 mmol/L or less, or non-HDL-C 2.6 mmol/L or less; consider adding ezetimibe if not reached. Rechallenge after muscle symptoms rather than accepting “intolerant”"],
+         ["<b>Antiplatelet</b>","<b>Clopidogrel 75 mg daily</b>","NICE TA210 (2010) recommends clopidogrel for symptomatic PAD; aspirin if clopidogrel is unsuitable"],
+         ["<b>Dual pathway</b>","Rivaroxaban 2.5 mg twice daily plus aspirin","NICE TA607 (2019): an option for symptomatic PAD at high risk of ischaemic events after a bleeding-risk assessment — usually a specialist-guided decision"],
+         ["<b>Smoking</b>","<b>Cessation — the single biggest lever</b>","Offer behavioural support with varenicline, combination NRT or a nicotine-containing e-cigarette, and refer to the stop-smoking service (NICE NG209, 2021). Continued smoking drives progression, graft and stent failure and amputation"],
+         ["<b>Blood pressure</b>","Treat to target","NICE NG136 (2019) clinic targets: below 140/90 mmHg under 80 years, below 150/90 mmHg at 80 and over; type 2 diabetes without CKD uses the same targets"],
+         ["<b>Diabetes</b>","Optimise glycaemic control","Individualised HbA1c target (NICE NG28), reviewed alongside foot-risk status (NICE NG19)"],
+         ["<b>Diet, weight, alcohol, activity</b>","<b>Cardioprotective, Mediterranean-style diet; weight loss; activity</b>","The PREDIMED trial (Estruch et al., NEJM 2018) found fewer major cardiovascular events with a Mediterranean diet. Alcohol within the UK Chief Medical Officers' low-risk guidance of 14 units a week"]
        ]},
        {b:"cards", cols:2, items:[
-         {tone:"amber", h:"⛔ Avoid pentoxifylline", html:"<b>Poor evidence base.</b> Naftidrofuryl is the licensed option where exercise is not achievable."},
-         {tone:"amber", h:"⚠ Do not withhold beta-blockers because of PAD", html:"They are safe in most patients with PAD and are often needed for coexistent ischaemic heart disease or heart failure. This is a long-standing reflex worth unlearning."},
-         {tone:"green", h:"🦶 Foot care", html:"Well-fitting shoes, daily inspection, prompt treatment of minor injuries — especially in diabetes, where neuropathy removes the warning that something is wrong."},
-         {tone:"blue", h:"🚶 Why walking helps", html:"<b>Pushing through the ache and resting recruits collateral supply.</b> Patients find this counter-intuitive and need it explained, or they will rest instead and deteriorate."}
+         {tone:"amber", h:"⚠ Do not withhold beta-blockers because of PAD", html:"A beta-blocker needed for ischaemic heart disease, heart failure or rate control should not be stopped or avoided because of claudication. This is a long-standing reflex worth unlearning."},
+         {tone:"cream", h:"Say it to the patient", html:"“These tablets are protecting your heart and brain, not just your leg.” Saying it explicitly changes adherence, because tablets for a painful leg feel optional in a way that tablets for a heart attack do not.", src:"NICE CG147 (2012, updated 2020)"}
+       ]},
+       {b:"why", html:"A person with PAD is at high risk of myocardial infarction and stroke — more will die of a coronary or cerebral event than will lose a leg. So the statin, antiplatelet and smoking-cessation bundle is the main survival treatment, exactly as in coronary disease. Two corrections to older teaching: the blood-pressure target in PAD, with or without diabetes, is the NG136 one rather than a lower European figure, and lipid targets follow NG238 (LDL-C 2.0 or less, non-HDL-C 2.6 or less). CG147 asks that secondary prevention is offered to everyone with PAD, not only those with symptoms severe enough to refer."}
+     ]},
+
+    {id:"claudication", nav:"Claudication", title:"Treating the claudication — exercise is first-line",
+     blocks:[
+       {b:"table", head:["Step","What","Detail"], rows:[
+         ["<b>1 — supervised exercise programme</b>","First-line for intermittent claudication (NICE CG147): typically 2 hours of supervised exercise a week for 3 months, encouraging walking to the point of maximal pain","Pushing into the ache and resting improves walking distance. Where no programme is available or it is declined: walk most days to near-maximal pain, rest until it settles, continue, and keep a walking diary"],
+         ["<b>2 — optimise the bundle and reassess</b>","<b>If symptoms still limit life</b>","Ensure the statin, antiplatelet and smoking cessation are genuinely in place. <b>Naftidrofuryl oxalate</b> (NICE TA223) only when supervised exercise has not led to satisfactory improvement and the person prefers not to be referred for angioplasty or bypass; review at 3–6 months and stop if there is no benefit (CG147). Dose per BNF"],
+         ["<b>3 — refer for revascularisation</b>","Lifestyle-limiting symptoms despite supervised exercise and risk-factor treatment, in someone who would consider a procedure","Angioplasty with or without stent, or bypass — duplex first, then the vascular team decides (CG147). <b>NOT a substitute for the prevention bundle, which continues regardless</b>"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"⛔ Not cilostazol, not pentoxifylline", html:"NICE TA223 recommends naftidrofuryl and does not recommend cilostazol, pentoxifylline or inositol nicotinate for intermittent claudication. The MHRA (April 2013) restricted cilostazol because of cardiovascular and bleeding events.", src:"NICE TA223 (2011); MHRA DSU (April 2013)"},
+         {tone:"blue", h:"🚶 Why walking helps", html:"<b>Repeated walking into claudication pain, then resting, improves walking distance.</b> Patients are usually told to rest a painful leg, find this counter-intuitive and need it explained, or they will rest instead and deteriorate.", src:"NICE CG147 (2012, updated 2020)"},
+         {tone:"green", h:"🦶 Foot care", html:"Daily inspection, well-fitting shoes, never walk barefoot, prompt treatment of minor injuries. In diabetes, foot-risk classification and podiatry — neuropathy removes the warning that something is wrong.", src:"NICE NG19 (2015)"},
+         {tone:"cream", h:"📏 Measure progress", html:"Record the baseline walking distance at diagnosis and at each review. It is what shows the exercise has worked — or that deterioration warrants referral.", src:"NICE CG147 (2012, updated 2020)"}
        ]}
      ]},
 
-    {id:"monitor", nav:"Review", title:"Step 5 — review: cardiovascular risk, symptoms, the foot",
+    {id:"monitor", nav:"Review", title:"Follow-up — cardiovascular risk, symptoms and the foot",
      blocks:[
        {b:"table", head:["What","When","Action"], rows:[
-         ["<b>Cardiovascular risk bundle</b>","<b>Annually and after any change</b>","Statin adherence and lipids, antiplatelet, blood pressure, HbA1c, smoking status"],
-         ["<b>Symptoms and walking distance</b>","<b>Each review</b>","Worsening claudication or new rest pain → reassess ABPI → vascular referral"],
-         ["<b>Foot check</b>","<b>Each review, more often in diabetes</b>","New ulcer, colour change or rest pain → urgent. Diabetic foot → same-day MDT"],
-         ["<b>Progression flag</b>","<b>Any contact</b>","Rest pain, tissue loss or sudden deterioration = the critical or acute ischaemia pathway"]
+         ["<b>Early review</b>","<b>At about 3 months</b>","Walking distance and diary; exercise programme attended? Smoking status; statin and antiplatelet tolerated; BP and lipids moving towards target. If naftidrofuryl was started, review benefit at 3–6 months (CG147)"],
+         ["<b>Cardiovascular risk bundle</b>","<b>Annually and after any change</b>","CVD-register review: statin adherence and non-HDL-C, antiplatelet, blood pressure, HbA1c, renal function, smoking status"],
+         ["<b>Symptoms and walking distance</b>","<b>Each review</b>","Lifestyle-limiting despite all this → routine vascular referral if the person would consider a procedure. Worsening claudication or new rest pain → reassess and refer at the right speed"],
+         ["<b>Foot check</b>","<b>Each review, more often in diabetes</b>","New ulcer, colour change or rest pain → urgent. Diabetic foot ulcer with ischaemia → acute services (NG19). Repeat ABPI if symptoms change"],
+         ["<b>Documentation</b>","<b>Every contact</b>","Walking distance, ABPI (and whether it is reliable), pulses, foot findings and the safety-net given — the baseline for the next clinician"]
        ]},
-       {b:"say", html:"The leg pain is a warning sign that the same furring-up is happening in the arteries to your heart and brain — so the statin, the antiplatelet and stopping smoking are protecting your life, not just your legs. The best treatment for the walking pain itself is, surprisingly, walking: a structured programme that pushes through the ache and builds new supply. And three things mean you contact us rather than wait — pain in the foot at rest or at night, any new ulcer or black area, and a leg that suddenly becomes pale, cold and numb, which is a 999 call."},
+       {b:"say", html:"The leg pain is a warning sign that the same furring-up is happening in the arteries to your heart and brain — so the statin, the clopidogrel and stopping smoking are protecting your life, not just your legs. The best treatment for the walking pain itself is, surprisingly, walking: a structured programme that pushes into the ache and then rests. And three things mean you contact us rather than wait — pain in the foot at rest or at night, any new sore or dark area on the foot, and a leg that suddenly becomes pale, cold, numb or weak, which is a 999 call."},
        {b:"cards", items:[
-         {tone:"red", h:"🔴 999 — the 6 P's", html:"\"A leg that suddenly becomes painful, pale, cold, numb or weak — call 999. The clock matters for saving the limb.\""},
-         {tone:"amber", h:"🟠 Rest pain", html:"\"Foot pain at night or at rest, eased by hanging it out of bed — contact us urgently.\""},
-         {tone:"amber", h:"🦶 Tissue loss", html:"\"Any new ulcer, black area or non-healing wound on the foot — urgent review.\""},
-         {tone:"green", h:"🚭 Smoking", html:"\"Stopping smoking is the single most powerful thing you can do, for the leg and for your heart.\""}
+         {tone:"red", h:"🔴 999 — the 6 P's", html:"“If your leg suddenly becomes painful, pale, cold, numb or weak, call 999 — do not wait for an appointment.” Chest pain or stroke symptoms: 999.", src:"NICE CG147 (2012, updated 2020)"},
+         {tone:"amber", h:"🟠 Rest pain", html:"“Pain in the foot at night or at rest, especially if it eases when you hang your leg out of bed — contact us urgently.”", src:"NICE CG147 (2012, updated 2020)"},
+         {tone:"amber", h:"🦶 Tissue loss", html:"“Any new sore, ulcer, black or blue area on the foot, or walking distance falling quickly over days or weeks — contact us urgently.”", src:"NICE NG19 (2015)"},
+         {tone:"green", h:"🚭 Smoking", html:"“Stopping smoking is the single most powerful thing you can do, for the leg and for your heart.”", src:"NICE NG209 (2021)"}
        ]}
      ]},
 
@@ -123,45 +171,53 @@ MG.render({
      sub:"Stable versus limb-threat is the key call, every time.",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"red", h:"1 · Is this an emergency?", html:"Rest pain, ulcer or gangrene (critical), or the 6 P's (acute) → urgent or same-day vascular. <b>Do not manage as claudication.</b>"},
-         {tone:"amber", h:"2 · Is the bundle maxed?", html:"Atorvastatin 80 mg, clopidogrel and smoking cessation all actually in place and adhered to?"},
-         {tone:"amber", h:"3 · Was the exercise done?", html:"Was a supervised programme genuinely offered and attended before escalating?"},
-         {tone:"blue", h:"4 · Is the ABPI misleading?", html:"Diabetic with a 'normal' ABPI but classic symptoms → toe pressures or duplex."},
-         {tone:"blue", h:"5 · Is it the right diagnosis?", html:"Neurogenic claudication from spinal stenosis, venous claudication, or MSK pain — reconsider if the story is atypical."},
-         {tone:"red", h:"6 · Diabetic foot", html:"Ulcer plus PAD plus infection → same-day MDT foot service, not a routine referral."}
+         {tone:"red", h:"1 · Is this an emergency?", html:"Rest pain, ulcer or gangrene (CLTI), or the 6 P's (acute) → urgent or emergency vascular. <b>Do not manage as claudication.</b>", src:"NICE CG147 (2012, updated 2020)"},
+         {tone:"amber", h:"2 · Is the bundle in place?", html:"Atorvastatin 80 mg (or the best tolerated statin), clopidogrel and smoking cessation all actually taken and adhered to?", src:"NICE NG238 (2023); NICE TA210 (2010)"},
+         {tone:"amber", h:"3 · Was the exercise done?", html:"Was a supervised programme genuinely offered and attended before escalating?", src:"NICE CG147 (2012, updated 2020)"},
+         {tone:"blue", h:"4 · Is the ABPI misleading?", html:"Diabetic or CKD patient with a 'normal' ABPI but classic symptoms → toe pressures, waveforms or duplex.", src:"NICE CG147 (2012, updated 2020)"},
+         {tone:"blue", h:"5 · Is it the right diagnosis?", html:"Neurogenic claudication from spinal stenosis, venous claudication, arthritis, compartment syndrome — reconsider if the story is atypical.", src:"Leng and Fowkes, J Clin Epidemiol 1992"},
+         {tone:"red", h:"6 · Diabetic foot", html:"Ulcer with ischaemia, gangrene, deep infection or sepsis → acute services immediately, and tell the MDT foot service.", src:"NICE NG19 (2015)"}
        ]}
      ]},
 
-    {id:"refer", nav:"Refer", title:"Vascular referral — how fast",
+    {id:"refer", nav:"Refer", title:"Vascular referral — how fast and to whom",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Same-day / 999", html:"Acute limb ischaemia — the 6 P's. Limb- and life-threatening, with roughly a 6-hour window."},
-         {tone:"red", h:"Urgent vascular", html:"Critical limb ischaemia: rest pain, ulceration or gangrene; ABPI below 0.5."},
-         {tone:"red", h:"Same-day MDT foot service", html:"<b>Diabetic foot ulcer or infection with PAD.</b>"},
-         {tone:"blue", h:"Routine vascular", html:"Lifestyle-limiting claudication despite supervised exercise and optimised risk factors — for revascularisation assessment."},
-         {tone:"cream", h:"GP management", html:"Diagnosis and ABPI, the whole secondary-prevention bundle, the supervised exercise referral, naftidrofuryl, foot care and the annual review all belong here. Related pages: <a href='hypercholesterolaemia.html'>lipid management</a> · <a href='hypertension.html'>hypertension</a> · <a href='type-2-diabetes.html'>type 2 diabetes</a> · <a href='stable-angina.html'>stable angina</a> · <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a>."}
+         {tone:"red", h:"999 / emergency", html:"Acute limb ischaemia — the 6 P's, especially new sensory loss or weakness · suspected aortic emergency · sepsis from a foot.", src:"NICE CG147 (2012, updated 2020)"},
+         {tone:"red", h:"Immediate — acute services", html:"<b>Diabetic foot ulcer with limb-threatening ischaemia, gangrene, suspected deep infection or sepsis</b> — refer to acute services and inform the multidisciplinary foot service.", src:"NICE NG19 (2015)"},
+         {tone:"amber", h:"Urgent vascular — telephone today", html:"CLTI: rest pain for more than 2 weeks, ulceration or gangrene, usually with a low ABPI or toe pressures. People with critical limb ischaemia should be assessed by a vascular multidisciplinary team before treatment decisions (CG147); revascularisation within 14 days for outpatients is the PAD-QIF target.", src:"NICE CG147 (2012, updated 2020); VSGBI PAD-QIF (2019, updated 2022)"},
+         {tone:"amber", h:"Vascular — soon", html:"Rapidly worsening claudication · suspected aorto-iliac disease in a younger patient · suspected popliteal entrapment · diagnostic uncertainty (classic story with a normal or incompressible ABPI).", src:"NICE CG147 (2012, updated 2020)"},
+         {tone:"blue", h:"Routine vascular", html:"Lifestyle-limiting claudication despite supervised exercise and optimised risk factors, in someone who would consider angioplasty or bypass.", src:"NICE CG147 (2012, updated 2020)"},
+         {tone:"cream", h:"GP management", html:"Diagnosis and ABPI, the whole secondary-prevention bundle, the supervised exercise referral, naftidrofuryl where appropriate, smoking cessation, foot care and the annual review all belong here. Related pages: <a href='hypercholesterolaemia.html'>lipid management</a> · <a href='hypertension.html'>hypertension</a> · <a href='type-2-diabetes.html'>type 2 diabetes</a> · <a href='stable-angina.html'>stable angina</a> · <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a> · <a href='smoking-cessation.html'>smoking cessation</a>.", src:"NICE CG147 (2012, updated 2020)"}
        ]},
+       {b:"why", html:"Referral speed follows the limb, not the ABPI number. CG147 positions supervised exercise and risk-factor management before angioplasty for claudication, so a routine referral for intervention is appropriate once those have been tried and the person still has lifestyle-limiting symptoms and wants a procedure. Critical ischaemia is different: the call should be made the same day. Older referral rules based on a fixed ABPI or a 200 m walking distance are not in CG147."},
        {b:"say", html:"I am keeping a close eye on the leg while we get the artery-protecting treatment and the walking programme working. The things that change the plan fast are pain at rest, any wound that will not heal, and a leg that suddenly goes cold and pale."}
      ]},
 
     {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
      blocks:[{b:"cards", cols:2, items:[
-       {tone:"cream", h:"Classic scenario", html:"A 68-year-old man with <b>type 2 diabetes</b> attends with 6 months of <b>right calf cramping after about 200 metres</b>, relieved by standing still for a minute or two. He still smokes 15 a day. <b>Pedal pulses are hard to feel and the foot is cool</b>, but the practice nurse recorded an <b>ABPI of 1.15 — \"normal\"</b>. He takes metformin and ramipril, and <b>no statin</b> (\"I stopped it, my muscles ached\"). He asks whether he needs \"a scan of the arteries\"."},
-       {tone:"cream", h:"Examiner-style checkpoints", html:"Does not accept the ABPI of 1.15 as reassuring in a diabetic — medial calcification falsely elevates it — and arranges toe pressures or duplex; confirms the story is claudication and excludes rest pain and tissue loss explicitly, examining between the toes; <b>frames PAD as a cardiovascular risk equivalent</b> so the tablets are understood as protecting life rather than legs; <b>rechallenges the statin rather than accepting \"intolerant\"</b> — a lower dose or alternative agent — and targets LDL ≤2.0; <b>starts clopidogrel 75 mg as the first-line antiplatelet in PAD</b>, not aspirin; <b>makes smoking cessation the central intervention</b> with a named referral; refers to a supervised exercise programme as first-line and explains why walking through the ache helps, rather than agreeing to an immediate angioplasty assessment; <b>gives the three safety-net triggers</b>; and <b>arranges foot care and annual review</b>."}
+       {tone:"cream", h:"Classic scenario", html:"A 68-year-old man with <b>type 2 diabetes</b> attends with 6 months of <b>right calf cramping after about 200 metres</b>, relieved by standing still for a minute or two. He still smokes 15 a day. <b>Pedal pulses are hard to feel and the foot is cool</b>, but the practice nurse recorded an <b>ABPI of 1.15 — \"normal\"</b>. He takes metformin and ramipril, and <b>no statin</b> (\"I stopped it, my muscles ached\"). He asks whether he needs \"a scan of the arteries\".", src:"NICE CG147 (2012, updated 2020)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Does not accept the ABPI of 1.15 as reassuring in a diabetic — arranges toe pressures or duplex (CG147); confirms the story is vascular rather than neurogenic claudication and explicitly excludes rest pain and tissue loss, examining between the toes; <b>frames PAD as established cardiovascular disease</b>, with no QRISK; <b>rechallenges the statin rather than accepting \"intolerant\"</b> and targets LDL-C 2.0 or less (NG238); <b>starts clopidogrel 75 mg</b> (TA210); <b>makes smoking cessation the central intervention</b> with a named referral (NG209); refers to a supervised exercise programme first and explains why walking into the ache helps, rather than agreeing to an immediate angioplasty assessment; mentions AAA screening; <b>gives the three safety-net triggers</b>; and <b>arranges foot care and annual review</b>.", src:"NICE CG147 (2012, updated 2020); NICE NG238 (2023); NICE TA210 (2010)"}
      ]}]},
 
-    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named primary source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>NICE CG147 — Peripheral arterial disease: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg147" rel="noopener">nice.org.uk/guidance/cg147</a><span class="rd"> — ABPI for diagnosis and its limitations, supervised exercise as first-line for intermittent claudication and offered before angioplasty, naftidrofuryl oxalate where exercise is declined or not possible, the recommendation against pentoxifylline, and the revascularisation referral threshold</span></li>'+
-         '<li><b>NICE NG19 — Diabetic foot problems: prevention and management</b><br><a href="https://www.nice.org.uk/guidance/ng19" rel="noopener">nice.org.uk/guidance/ng19</a><span class="rd"> — the same-day multidisciplinary foot service route for a diabetic foot ulcer or infection with PAD</span></li>'+
-         '<li><b>NICE NG238 — Cardiovascular disease: lipid modification</b><span class="rd"> — high-intensity statin for established atherosclerosis, the LDL ≤2.0 and non-HDL ≤2.6 targets, and ezetimibe escalation</span></li>'+
-         '<li><b>NICE CG147 \u2014 Peripheral arterial disease: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/cg147" rel="noopener">nice.org.uk/guidance/cg147</a><span class="rd"> — clopidogrel as the first-line antiplatelet in PAD, the ABPI thresholds, the falsely elevated ABPI in diabetes and CKD, and the review schedule</span></li>'+
-         '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — naftidrofuryl oxalate dosing and review period; atorvastatin and clopidogrel</span></li>'+
+         '<li><b>NICE CG147 — Peripheral arterial disease: diagnosis and management (2012, updated 2020)</b><br><a href="https://www.nice.org.uk/guidance/cg147" rel="noopener">nice.org.uk/guidance/cg147</a><span class="rd"> — ABPI for diagnosis and not excluding PAD in diabetes on a normal or raised ABPI, foot examination, secondary prevention for all, supervised exercise (2 hours a week for 3 months) before angioplasty, naftidrofuryl criteria and 3–6-month review, duplex as first-line imaging, vascular MDT for critical limb ischaemia</span></li>'+
+         '<li><b>NICE NG19 — Diabetic foot problems: prevention and management (2015)</b><br><a href="https://www.nice.org.uk/guidance/ng19" rel="noopener">nice.org.uk/guidance/ng19</a><span class="rd"> — limb-threatening diabetic foot (ulcer with ischaemia, gangrene, deep infection, sepsis): immediate referral to acute services and inform the MDT foot service; foot-risk classification</span></li>'+
+         '<li><b>NICE NG238 — Cardiovascular disease: risk assessment and reduction, including lipid modification (2023)</b><br><a href="https://www.nice.org.uk/guidance/ng238" rel="noopener">nice.org.uk/guidance/ng238</a><span class="rd"> — atorvastatin 80 mg in established CVD, LDL-C 2.0 or less or non-HDL-C 2.6 or less, ezetimibe, no risk tool in established CVD, baseline transaminase</span></li>'+
+         '<li><b>NICE TA210 — Clopidogrel and modified-release dipyridamole for the prevention of occlusive vascular events (2010)</b><br><a href="https://www.nice.org.uk/guidance/ta210" rel="noopener">nice.org.uk/guidance/ta210</a></li>'+
+         '<li><b>NICE TA223 — Cilostazol, naftidrofuryl oxalate, pentoxifylline and inositol nicotinate for intermittent claudication (2011)</b><br><a href="https://www.nice.org.uk/guidance/ta223" rel="noopener">nice.org.uk/guidance/ta223</a><span class="rd"> — naftidrofuryl recommended; the others not</span></li>'+
+         '<li><b>NICE TA607 — Rivaroxaban for preventing atherothrombotic events in coronary or peripheral artery disease (2019)</b><br><a href="https://www.nice.org.uk/guidance/ta607" rel="noopener">nice.org.uk/guidance/ta607</a></li>'+
+         '<li><b>NICE NG136 — Hypertension in adults (2019)</b> · <b>NICE NG28 — Type 2 diabetes in adults</b> · <b>NICE NG209 — Tobacco (2021)</b> · <b>NICE NG156 — Abdominal aortic aneurysm (2020)</b></li>'+
+         '<li><b>MHRA Drug Safety Update — Cilostazol: cardiovascular and bleeding risks (April 2013)</b></li>'+
+         '<li><b>Vascular Society of Great Britain and Ireland — PAD Quality Improvement Framework (2019, updated 2022)</b><span class="rd"> — revascularisation within 5 days (inpatients) and 14 days (outpatients) for CLTI</span></li>'+
+         '<li>Leng GC, Fowkes FGR. The Edinburgh Claudication Questionnaire. <em>J Clin Epidemiol</em> 1992 · Estruch R et al. PREDIMED. <em>NEJM</em> 2018</li>'+
+         '<li><b>UK Chief Medical Officers’ low-risk drinking guidelines (2016)</b> · <b>BNF</b> — <a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — naftidrofuryl, atorvastatin, clopidogrel and rivaroxaban dosing</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Peripheral arterial disease in adults — NICE CG147, NG19 (diabetic foot), NG238 and NICE. The first call is always stable claudication versus limb-threatening ischaemia: rest pain, tissue loss or the 6 P's leave primary care today. ABPI confirms the diagnosis but is falsely high in diabetes and CKD — use toe pressures if the story fits. PAD is a cardiovascular risk equivalent, so atorvastatin 80 mg, clopidogrel 75 mg and smoking cessation are the survival treatment. Supervised exercise is first-line for claudication and comes before angioplasty. Avoid pentoxifylline, and do not withhold beta-blockers because of PAD. Verify doses against the current BNF before prescribing."
+  foot:"Peripheral arterial disease in adults — NICE CG147, NICE NG19 (diabetic foot), NICE NG238, NICE TA210, NICE TA223, NICE TA607, NICE NG136, NICE NG156, NICE NG209, MHRA (April 2013) and the VSGBI PAD-QIF. The first call is always stable claudication versus limb-threatening ischaemia: rest pain, tissue loss or the 6 P's leave primary care today, and a diabetic foot ulcer with ischaemia goes to acute services immediately. ABPI confirms the diagnosis but can be falsely normal or high in diabetes and CKD. PAD is established cardiovascular disease, so atorvastatin 80 mg, clopidogrel 75 mg and smoking cessation are the survival treatment. Supervised exercise is first-line for claudication and comes before angioplasty. Do not use cilostazol or pentoxifylline, and do not withhold beta-blockers because of PAD. Verify doses against the current BNF before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

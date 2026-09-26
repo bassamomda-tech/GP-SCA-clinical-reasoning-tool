@@ -71,7 +71,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     { finding:'Rest pain, ulcers, ABPI <0.5', meaning:'Critical limb ischaemia — urgent vascular referral' },
     { finding:'Acute 6 Ps', meaning:'Acute limb ischaemia — emergency referral' },
   ],
-  links:{ algorithm:'tools/algorithms/claudication.html', algorithmLabel:'Claudication pathway' },
+  links:{ algorithm:'tools/management/peripheral-arterial-disease.html', algorithmLabel:'Claudication pathway' },
 },
 
 {

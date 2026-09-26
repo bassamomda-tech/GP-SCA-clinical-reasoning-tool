@@ -6,12 +6,13 @@
 <title>Metabolic Syndrome — Protocol · Reasoning GP</title>
 <meta name="description" content="Metabolic syndrome in one page: reclassify the patients who actually have diabetes, established CVD, FH or a secondary cause first; define the cluster with ethnicity-specific thresholds; build the risk picture (QRISK3, NAFLD, OSA, PCOS); then treat every component to target on a foundation of 5–10% weight loss, with special-population caveats and structured annual review." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/metabolic-syndrome.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790380012917942 tools/management/metabolic-syndrome.html">
+<meta name="omelette-print-source" content="v1790455275239348 tools/management/metabolic-syndrome.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -51,7 +52,7 @@ MG.render({
     {title:"Exclude established end-organ disease and secondary causes", html:"Undiagnosed T2DM (HbA1c ≥48, or symptomatic — same-day if ketotic/unwell) · established CVD → secondary prevention (chest pain or new neuro deficit → acute pathway) · BP ≥180/120 with symptoms or end-organ signs → emergency assessment with fundoscopy · FH (TC &gt;7.5, tendon xanthomata, premature family history) → FH pathway · secondary obesity (Cushing's, hypothyroidism, PCOS, hypothalamic, steroids, antipsychotics) · triglycerides &gt;10 mmol/L → pancreatitis risk, urgent action.", alert:true},
     {title:"Define the cluster", html:"Central obesity (ethnicity-specific waist) PLUS ≥2 of raised triglycerides, low HDL, raised BP and raised fasting glucose (IDF) — or ≥3 of 5 (harmonised 2009). Definitions vary (IDF, NCEP ATP III, harmonised) but converge on the same five components. The label matters less than acting on each component and the aggregate risk."},
     {title:"Build the risk picture and screen the cluster", html:"History: diet, activity, alcohol, smoking, sleep and OSA screen, shift work, family history of premature CVD or diabetes, ethnicity, prior gestational diabetes, medications (antipsychotics, steroids, some antiretrovirals), mental health (depression, binge eating), readiness to change. Calculate QRISK3. Examine and test: weight, height, BMI, ethnicity-adjusted waist; standardised BP with ABPM/HBPM to confirm; HbA1c or fasting glucose; fasting lipids (total/HDL/non-HDL, triglycerides); U&amp;E; LFTs; TFTs if indicated; consider urate; urine ACR; FIB-4/ELF if NAFLD; ECG if hypertensive or symptomatic."},
-    {title:"Lifestyle first, then treat each component to target", html:"Foundation: 5–10% weight loss, Mediterranean-style diet, ≥150 min/week + resistance work, alcohol limits, smoking cessation, treat OSA. Then: NHS DPP or NG28 for glycaemia · atorvastatin by QRISK3 · BP per NG136 · weight pharmacotherapy (orlistat, semaglutide/liraglutide) within NICE criteria · bariatric surgery per NG246."},
+    {title:"Lifestyle first, then treat each component to target", html:"Foundation: 5–10% weight loss, Mediterranean-style diet, ≥150 min/week + resistance work, alcohol limits, smoking cessation, treat OSA. Then: NHS DPP or NG28 for glycaemia · atorvastatin by QRISK3 · BP per NG136 · weight pharmacotherapy (orlistat per NICE NG246; semaglutide/liraglutide within NICE TA875/TA664 criteria) · bariatric surgery per NG246."},
     {title:"Structured annual review", html:"Weight/waist, BP, HbA1c, lipids (non-HDL), U&amp;E + ACR, LFTs; recalculate QRISK3; titrate every treatment to target; repeat FIB-4 per risk; drug monitoring per agent; retinal and foot checks if diabetic; mental-health review; reinforce lifestyle. Re-check HbA1c in impaired glucose regulation and re-refer to prevention programmes as needed."}
   ],
   sections:[
@@ -124,8 +125,8 @@ MG.render({
           html:"Atorvastatin 20 mg if QRISK3 ≥10% (NICE NG238); 80 mg for secondary prevention. Aim for a &gt;40% non-HDL reduction."},
          {step:"Blood pressure", title:"Treat to target (NG136)", when:"if hypertensive", fromLabel:"if BP raised",
           html:"ACEi or ARB first-line (especially with diabetes); thresholds and targets by age, diabetes and CKD status. See the <a href='hypertension.html'>hypertension protocol</a>."},
-         {step:"Weight Rx", title:"Pharmacotherapy — orlistat or GLP-1", when:"obesity not responding", fromLabel:"within NICE criteria",
-          html:"Orlistat, or a GLP-1 (semaglutide/liraglutide) within NICE criteria and specialist weight services for eligible patients."},
+         {step:"Weight Rx", title:"Pharmacotherapy — orlistat or GLP-1", when:"obesity not responding", fromLabel:"within NICE TA875/TA664 criteria",
+          html:"Orlistat, or a GLP-1 (semaglutide/liraglutide) within NICE TA875 (semaglutide) or TA664 (liraglutide) criteria and specialist weight services for eligible patients."},
          {step:"Surgery", title:"Bariatric referral", when:"meets thresholds after Tier 3 input", fromLabel:"NG246",
           html:"Consider per NICE NG246 thresholds — e.g. BMI ≥40, or ≥35 with comorbidity; lower thresholds in some ethnic groups and in new-onset T2DM."}
        ]},

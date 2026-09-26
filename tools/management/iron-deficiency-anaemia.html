@@ -23,13 +23,13 @@ MG.render({
   eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
   stemTitle:"Iron deficiency \u2014 confirm it, then find where the iron is going",
   stemSub:"One page for the whole condition. Covers isolated iron deficiency as well as IDA. Iron deficiency is always a finding, never a diagnosis: replacing iron without finding the source is the error that delays a cancer diagnosis.",
-  guideline:"BSH 2021 · BSG · NICE NG12",
+  guideline:"BSG 2021 · BSG · NICE NG12",
   reviewed:"7 September 2026",
   nextReview:"7 March 2027",
   meta:[
     {t:"BSH Iron Deficiency Anaemia (2021)"},
     {t:"NICE NG12 \u00b7 2WW colorectal", tone:"tw"},
-    {t:"NG24 \u00b7 NG8 \u00b7 NG88 \u00b7 NICE"},
+    {t:"NG24 \u00b7 NG203 \u00b7 NG88"},
     {t:"BNF owns all doses"},
     {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
@@ -39,7 +39,7 @@ MG.render({
     {tone:"red", h:"\u26a0 IDA in a man or post-menopausal woman is a red flag", html:"Unexplained IDA in <b>any man</b> or <b>any post-menopausal woman</b> \u2192 <b>urgent suspected colorectal cancer referral</b> and bidirectional endoscopy. <b>NG12: offer a 2WW referral to anyone aged 60+ with IDA</b>, and use <b>FIT</b> to support urgent referral in younger adults. Colorectal cancer is found in about <b>5%</b> of primary-care IDA presentations. <span class='tw'>2WW</span>"},
     {tone:"amber", h:"Ferritin confirms it \u2014 with one caveat", html:"<b>&lt;15 \u00b5g/L</b> definite (specificity ~99%) \u00b7 <b>15\u201330 \u00b5g/L</b> probable \u00b7 <b>30\u2013100 \u00b5g/L</b> possible if inflamed \u00b7 <b>&gt;100 \u00b5g/L</b> unlikely. Ferritin is an <b>acute-phase protein</b> \u2014 always check <b>CRP</b> if ferritin is 30\u2013100, and a <b>transferrin saturation &lt;20%</b> still indicates deficiency when inflamed."},
     {tone:"blue", h:"Always ask: where is the iron going?", html:"Blood loss (menorrhagia, GI), malabsorption (<b>coeliac \u2014 1 in 100 UK adults</b>, iron deficiency in 50% with no GI symptoms), diet, or increased demand. <b>Anti-tTG IgA + total IgA</b> in every unexplained case, on gluten."},
-    {tone:"plain", h:"Replace, and keep going after the Hb normalises", html:"One ferrous salt tablet <b>once daily or alternate-day</b> (BSH 2021 \u2014 same absorption, far fewer side effects than TDS). Recheck <b>Hb at 2\u20134 weeks</b>, expect a rise of <b>10\u201320 g/L per month</b>. <b>Continue for 3 months after the Hb normalises</b> to refill stores."},
+    {tone:"plain", h:"Replace, and keep going after the Hb normalises", html:"One ferrous salt tablet <b>once daily or alternate-day</b> (BSG 2021 \u2014 same absorption, far fewer side effects than TDS). Recheck <b>Hb at 2\u20134 weeks</b>, expect a rise of <b>10\u201320 g/L per month</b>. <b>Continue for 3 months after the Hb normalises</b> to refill stores."},
     {tone:"green", h:"Replace and investigate together", html:"Starting iron does <b>not</b> remove the need to find the source, and neither iron treatment nor anticoagulation is a reason to defer endoscopy. Target ferritin <b>&gt;50 \u00b5g/L</b> after treatment."}
   ],
   pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm \u2014 do not skip it.",
@@ -129,7 +129,7 @@ MG.render({
        ]}
      ]},
 
-    {id:"ladder", nav:"Replace iron", title:"Iron replacement \u2014 oral and IV", sub:"BSH 2021 changed practice: once-daily or alternate-day dosing, not TDS.",
+    {id:"ladder", nav:"Replace iron", title:"Iron replacement \u2014 oral and IV", sub:"BSG 2021 changed practice: once-daily or alternate-day dosing, not TDS.",
      blocks:[
        {b:"ladder", steps:[
          {step:"1st", title:"Oral iron \u2014 once daily or alternate-day", when:"first-line",
@@ -194,16 +194,16 @@ MG.render({
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
          '<li><b>BSH \u2014 Guidelines on the management of iron deficiency anaemia (2021)</b><br><a href="https://b-s-h.org.uk/guidelines" rel="noopener">b-s-h.org.uk/guidelines</a><span class="rd"> \u2014 ferritin thresholds, alternate-day oral dosing, duration of therapy, IV iron indications, non-response work-up</span></li>'+
          '<li><b>NICE NG12 \u2014 Suspected cancer: recognition and referral</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> \u2014 IDA aged 60+ \u2192 2WW colorectal; FIT to support urgent referral; dysphagia, weight loss, haematuria and lymphadenopathy routes</span></li>'+
-         '<li><b>BSH 2021 \u2014 iron deficiency anaemia</b><span class="rd"> \u2014 primary-care investigation, coeliac serology, monitoring intervals, referral</span></li>'+
+         '<li><b>BSG 2021 \u2014 iron deficiency anaemia</b><span class="rd"> \u2014 primary-care investigation, coeliac serology, monitoring intervals, referral</span></li>'+
          '<li><b>BSG \u2014 British Society of Gastroenterology guidelines for the management of iron-deficiency anaemia</b><br><a href="https://www.bsg.org.uk/clinical-resource/" rel="noopener">bsg.org.uk/clinical-resource</a><span class="rd"> \u2014 the gastroenterological work-up: who needs bidirectional endoscopy, coeliac serology before scoping, and capsule endoscopy when upper and lower GI investigation is negative</span></li>'+
          '<li><b>NICE NG24 \u2014 Blood transfusion</b><span class=\"rd\"> \u2014 transfusion thresholds and alternatives, including when IV iron is preferable to transfusion in non-bleeding IDA</span></li>'+
-         '<li><b>NICE NG8 \u2014 Anaemia management in chronic kidney disease</b><span class="rd"> \u2014 functional iron deficiency, reticulocyte Hb content where ferritin is unreliable</span></li>'+
+         '<li><b>NICE NG203 (2021; replaced NG8) \u2014 Chronic kidney disease, including anaemia management</b><span class="rd"> \u2014 functional iron deficiency, reticulocyte Hb content where ferritin is unreliable</span></li>'+
          '<li><b>NICE NG88 \u2014 Heavy menstrual bleeding</b><span class="rd"> \u2014 tranexamic acid, mefenamic acid and LNG-IUS for menorrhagia-related iron loss</span></li>'+
          '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: ferrous salts and elemental iron content, ferric carboxymaltose, tranexamic acid, iron in pregnancy</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Iron deficiency and iron-deficiency anaemia in adults \u2014 BSH 2021, NICE NG12, NICE, NG8 and NG88. Diagnosis and management are merged on this page; there is no separate iron-deficiency pathway to cross-check. Always identify the cause, and verify all doses against the current BNF before prescribing."
+  foot:"Iron deficiency and iron-deficiency anaemia in adults \u2014 BSG 2021, NICE NG12 (updated April 2026), NG203 and NG88. Diagnosis and management are merged on this page; there is no separate iron-deficiency pathway to cross-check. Always identify the cause, and verify all doses against the current BNF before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

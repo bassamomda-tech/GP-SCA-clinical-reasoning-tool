@@ -94,6 +94,18 @@
     'undescended-testis': 'undescended-testis',
     'unwell-diabetes-insulin': 'diabetes-unwell-insulin',
     'urinary-incontinence-female': 'female-urinary-incontinence',
+    'precocious-puberty': 'precocious-puberty',
+    'otitis-media-effusion': 'otitis-media-effusion',
+    'subconjunctival-haemorrhage': 'subconjunctival-haemorrhage',
+    'vulvar-disorders': 'vulvar-disorders',
+    'gestational-hyperglycaemia': 'gestational-diabetes',
+    'recurrent-thrush': 'recurrent-thrush',
+    'nail-disorders': 'nail-disorders',
+    'recurrent-uti': 'recurrent-uti',
+    'hirsutism': 'hirsutism',
+    'uti-children': 'uti-children',
+    'claudication': 'peripheral-arterial-disease',
+    'biliary-colic': 'cholecystitis',
     'urticaria': 'urticaria'
   };
 

@@ -96,7 +96,7 @@ MG.render({
          ["<b>FIB-4 1.30–2.67 — indeterminate</b>","Refer for an ELF test (Enhanced Liver Fibrosis) or FibroScan. Do NOT manage as low risk"],
          ["<b>FIB-4 &gt;2.67 — high risk</b>","PPV 65% for advanced fibrosis or cirrhosis. Urgent hepatology referral; FibroScan plus ELF to confirm the stage; may need a liver biopsy"],
          ["<b>FIB-4 limitations</b>","Less accurate in the over-65s (age &gt;65) (falsely elevated), in acute hepatitis (transaminase spike) and in thrombocytopenia. In the over-65s, a threshold of &gt;2.0 counts as high risk. Always interpret in clinical context"],
-         ["<b>The NG49 pathway</b>","NICE recommends FIB-4 as the primary care fibrosis risk-stratification tool for everyone with MASLD or ALD; indeterminate or high scores go for ELF or FibroScan via the community or secondary care pathway"]
+         ["<b>NG49 and the FIB-4 first step</b>","NICE NG49 (2016) itself uses the ELF test (advanced fibrosis at 10.51 or above); FIB-4 as the first primary care step comes from the BSG abnormal liver blood tests guideline (Newsome et al., Gut 2018). Indeterminate or high scores go for ELF or FibroScan via the community or secondary care pathway"]
        ]},
        {b:"table", head:["Investigation","Detail"], rows:[
          ["<b>First-line in all patients</b>","LFTs (ALT, AST, GGT, ALP, bilirubin, albumin), FBC (platelets for portal hypertension, MCV for alcohol), INR/PT (synthetic function), fasting lipids, HbA1c, TFTs"],
@@ -131,7 +131,7 @@ MG.render({
           html:"Target above 5–7% as a minimum: ≥5% reduces steatosis, ≥7% improves MASH (steatohepatitis — inflammation), ≥10% reduces fibrosis. Diet plus exercise, with referral to a <b>structured tier 2 or tier 3 service</b>. <b>There are no licensed drugs for MASLD in primary care as of 2025.</b>"},
          {step:"With diabetes", title:"GLP-1 agonist — the priority choice", when:"MASLD + type 2 diabetes",
           fromLabel:"dual indication",
-          html:"Semaglutide (Ozempic / Wegovy) or liraglutide (Victoza) — reduces hepatic steatosis, inflammation and fibrosis, with weight-loss and glycaemic benefit. Pioglitazone is the second-line choice if a GLP-1 agonist is contraindicated — it is the only drug with NICE-approved evidence of liver-specific benefit in MASH."},
+          html:"Semaglutide (Ozempic / Wegovy) or liraglutide (Victoza) — reduces hepatic steatosis, inflammation and fibrosis, with weight-loss and glycaemic benefit. Pioglitazone is the second-line choice if a GLP-1 agonist is contraindicated — NICE NG49 (2016) allows pioglitazone or vitamin E for advanced fibrosis, in secondary or tertiary care only."},
          {step:"If alcohol-related", title:"Alcohol cessation — essential, not optional", when:"ALD",
           fromLabel:"the primary treatment",
           html:"Assisted withdrawal with a chlordiazepoxide reducing regimen guided by CIWA. Thiamine 100 mg TDS for Wernicke's prophylaxis. Acamprosate or naltrexone for relapse prevention. Refer to the alcohol team."},
@@ -145,7 +145,7 @@ MG.render({
        {b:"cards", cols:2, items:[
          {tone:"green", h:"💉 Vaccination", html:"All MASLD patients: hepatitis A and B vaccine, annual influenza, COVID-19 up to date, pneumococcal. <b>Cirrhosis counts as immunocompromised — check the vaccination status.</b>"},
          {tone:"red", h:"🚫 Drugs to avoid in liver disease", html:"NSAIDs (GI bleed and AKI risk), opioids and benzodiazepines (encephalopathy), co-amoxiclav (amoxicillin-clavulanate — hepatotoxic), metformin if eGFR &lt;30. In cirrhosis, maximum paracetamol is 2 g/day — not 4 g (the usual 1g × 4), and avoid herbal supplements."},
-         {tone:"blue", h:"🔬 Resmetirom — watch this space", html:"Resmetirom (Rezdiffra) is the first FDA-approved drug for MASH with fibrosis (F2–F3), approved in March 2024 and licensed in the USA. Not yet approved in the UK — a NICE review is pending."}
+         {tone:"blue", h:"🔬 Resmetirom — watch this space", html:"Resmetirom (Rezdiffra) is the first FDA-approved drug for MASH with fibrosis (F2–F3), approved in March 2024 in the USA. The MHRA authorised it in Great Britain on 3 June 2026 for F2–F3 fibrosis; a technology appraisal (ID6529, alongside semaglutide) is in development, so NHS access is not yet routine."}
        ]},
        {b:"why", html:"Weight loss of ≥10% is the only intervention consistently shown to reverse significant hepatic fibrosis in MASLD — for a 100 kg patient, 10 kg. GLP-1 agonists show 59% resolution of MASH and 43% improvement in fibrosis stage in the ESSENCE trial (NEJM 2024), with earlier histological improvement in the LEAN and SUSTAIN programmes, making them the most promising pharmacological option. And HCC risk rises exponentially with fibrosis stage: cirrhosis carries a 2–4% annual HCC risk, which is what makes 6-monthly surveillance cost-effective."}
      ]},
@@ -209,8 +209,8 @@ MG.render({
          '<li><b>BSG NAFLD guidelines (2021)</b><span class="rd"> — fibrosis staging pathway, FibroScan thresholds (8 kPa significant fibrosis, 12 kPa probable cirrhosis) and surveillance</span></li>'+
          '<li><b>NICE CG115 — Alcohol-use disorders</b><br><a href="https://www.nice.org.uk/guidance/cg115" rel="noopener">nice.org.uk/guidance/cg115</a><span class="rd"> — AUDIT-C, assisted withdrawal with chlordiazepoxide, thiamine prophylaxis, and acamprosate or naltrexone for relapse prevention</span></li>'+
          '<li><b>ESSENCE trial (NEJM 2024), and the LEAN and SUSTAIN programmes</b><span class="rd"> — GLP-1 agonists: 59% resolution of MASH and 43% improvement in fibrosis stage</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the hepatocellular carcinoma route: a new liver lesion, a rising AFP, or cirrhosis with new RUQ pain or weight loss</span></li>'+
-         '<li><b>FDA approval of resmetirom (Rezdiffra), March 2024</b><span class="rd"> — the first MASH-specific drug, for F2–F3 fibrosis; NICE review pending, not yet UK-approved</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the hepatocellular carcinoma route: a new liver lesion, a rising AFP, or cirrhosis with new RUQ pain or weight loss</span></li>'+
+         '<li><b>FDA approval of resmetirom (Rezdiffra), March 2024</b><span class="rd"> — the first MASH-specific drug, for F2–F3 fibrosis; MHRA-authorised June 2026; technology appraisal ID6529 in development</span></li>'+
          '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — all doses: atorvastatin, fenofibrate, semaglutide, liraglutide, pioglitazone, spironolactone, furosemide, propranolol, chlordiazepoxide, thiamine</span></li>'+
          '</ul></div>'}
      ]}
