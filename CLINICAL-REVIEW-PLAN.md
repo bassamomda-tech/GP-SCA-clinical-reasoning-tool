@@ -3,7 +3,8 @@
 **Goal:** revise every protocol, algorithm and casebook page for *accuracy* and for *important
 information missing*, judged against one audience: **UK GPs and GP trainees (SCA-facing)**.
 
-**Status:** planned, not started. Nothing has been edited. Awaiting go-ahead.
+**Status:** first pass run in **report-only** mode; no clinical file edited.
+Findings and change specs are in `CLINICAL-REVIEW-FINDINGS-01.md`. §5 and §9 corrected 27 Sep 2026.
 **Branch for all work:** `claude/intelligent-cerf-ly6nvs`
 
 ---
@@ -94,22 +95,30 @@ settled it:
 Anything that turns on a figure published **after May 2026** and not confirmable by search gets
 **flagged to you rather than silently changed**. I will not invent a threshold to fill a gap.
 
-## 5. Already found, before any editing (calibration sample)
+## 5. Calibration sample — corrected 27 Sep 2026
 
-These came out of the structural survey and show the defect classes are real:
+**The original headline finding in this section was wrong and has been withdrawn.** It claimed the
+corpus carried a superseded *flat* CA125 threshold across ~26 files. It does not: the corpus already
+carries the full NICE NG12 April 2026 age bands (≥35 IU/mL at 40–49, ≥31 at 50–59, ≥24 at 60–69,
+≥25 at 70–79, ≥31 at 80+) in 46 passages across 21 files, plus the under-40 rule. My original grep
+had counted the first two entries of each age-band list as standalone flat thresholds. I no longer
+need the CA125 values from you, and the NG12 sweep is not the place to start.
 
-1. **NG12 CA125 is superseded corpus-wide.** 26 statements of a *flat* CA125 threshold
-   (24 × "35 IU/mL", 2 × "31 IU/mL") and **no mention of age-banded thresholds anywhere**.
-   NICE NG12 was updated 15 April 2026 and replaced the flat ≥35 IU/mL rule with **age-banded
-   thresholds for people aged 40+**, and advises against CA125 in isolation under 40. This is an
-   **S2-to-S1 sweep across ~26 files**. The exact band values are not in the search snippets and
-   nice.org.uk is blocked — I need either the domain allowed or the values from you.
-2. **Internal inconsistency** — 35 vs 31 IU/mL for the same test across pages (T4).
-3. **Myeloma screening statements need re-checking** — NG12 removed an incorrect myeloma
-   blood-test recommendation in January 2026; several pages still carry myeloma screening panels.
-4. **`bells-palsy` print mirror has already drifted** from its source protocol.
-5. Asthma content *is* current (NG245, AIR/MART present) — so this is a targeted revision of a
-   good corpus, not a rewrite.
+See `CLINICAL-REVIEW-FINDINGS-01.md` for what the corrected first pass actually found. In summary:
+
+1. **Four corpus-wide sweeps came back clean** — NG12 CA125 bands, nitrofurantoin renal cut-offs,
+   the QRISK 10% threshold, and asthma currency (NG245, AIR/MART).
+2. **The real defect class is different from what this plan assumed.** It is scope-of-practice
+   confusion (GP-facing headline figures that are secondary-care metrics), a page's headline
+   contradicting its own body, and incompleteness at the point of use — not wrong facts.
+3. **Genuine findings so far:** two incomplete CA125 statements, one missing under-40 rule in
+   `abdominal-mass.html`, one `QRISK >10%` that should be `≥10%`, the `bells-palsy` print mirror
+   already divergent, and the `chest-pain` case numstrip leading with hs-troponin/GRACE/D-dimer 500
+   while its own body correctly calls two of the three hospital-only and the third assay-specific.
+4. Asthma is current — so this is targeted revision of a good corpus, not a rewrite.
+
+**Consequence for the plan:** the balance of effort should shift from broad numeric sweeps (Pass A)
+toward the per-page deep review (Pass B), because that is where this corpus's remaining defects are.
 
 ## 6. Execution — four passes
 
@@ -173,6 +182,18 @@ on pages whose content actually changed.
 
 ## 9. Order of work once you say go
 
-Pass A sweep 1 is **NG12** — the largest, highest-severity, most cross-cutting defect found. If
-you supply the CA125 age bands (or allow nice.org.uk) I start there; if not, I start with the
-MHRA and UKMEC sweeps, which I can verify now, and hold NG12 for your input.
+**Revised 27 Sep 2026.** The original order started with an NG12 CA125 sweep that turned out not to
+be needed (§5). Revised order:
+
+1. Apply the batch-01 change specs in `CLINICAL-REVIEW-FINDINGS-01.md` (7 concrete edits, once you
+   approve them and confirm the report-only vs edit-in-place posture).
+2. **Pass B deep review**, batched by clinical domain — promoted ahead of the remaining Pass A
+   sweeps, because the clean sweep results in §5 show the defects live at page level, not in
+   corpus-wide numeric drift.
+3. Remaining Pass A sweeps (MHRA, UKMEC, antibiotics, renal dosing, BP, pregnancy, DVLA, sick-day
+   rules) folded into the domain batches they belong to, rather than run separately.
+4. Pass C gap analysis, then the Pass D integrity gate after every batch.
+
+The first Pass B batch will be cardiovascular, since `chest-pain` is already part-reviewed and the
+scope-of-practice principle established there (§2.6–2.7 of the findings) needs applying uniformly
+across angina, AF, heart failure and hypertension.
