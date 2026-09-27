@@ -24,7 +24,7 @@
       'Acute hypotension with shock, sepsis, GI bleeding, or cardiac features → 999/emergency',
       'Recurrent syncope or suspected cardiac cause (exertional syncope, murmur, abnormal ECG, family history of sudden death) → cardiology',
       'Suspected Addison\u2019s disease or autonomic failure → endocrinology / neurology'],
-    source:'NICE' },
+    source:'NICE CG109 (Transient loss of consciousness) / Clinical practice summary' },
 
   { id:'metabolic-syndrome', title:'Metabolic syndrome', category:'Endocrine & metabolic', icon:'⚖️',
     overview:'A clustering of central obesity, dysglycaemia, hypertension and atherogenic dyslipidaemia, underpinned by insulin resistance, that substantially increases the risk of cardiovascular disease and type 2 diabetes. Its value is as a prompt for aggressive, holistic risk-factor management.',
@@ -36,17 +36,17 @@
       'Look for clues: acanthosis nigricans, raised waist circumference, fatty liver on imaging, hypertension in a younger patient'],
     management:[
       'Lifestyle change is the foundation: sustained weight loss (≥5–10%), a Mediterranean-style diet, regular physical activity (≥150 min/week), smoking cessation and alcohol reduction',
-      'Assess and treat each component to target: blood pressure (NICE thresholds), lipids with a formal QRISK assessment and a statin where indicated, and dysglycaemia (HbA1c)',
+      'Assess and treat each component to target: blood pressure (NICE NG136 thresholds), lipids with a formal QRISK assessment and a statin where indicated, and dysglycaemia (HbA1c)',
       'Calculate cardiovascular risk and treat accordingly; manage impaired glucose regulation/pre-diabetes with structured lifestyle programmes (e.g. NHS Diabetes Prevention Programme)',
       'Screen for and manage associated conditions: NAFLD (FIB-4/fibrosis assessment), OSA (STOP-Bang), PCOS, gout',
       'Consider weight-management pharmacotherapy (e.g. GLP-1 receptor agonists where eligible) and structured weight-management services',
       'Reinforce and review regularly — behaviour change is the hardest and most effective intervention',
-      'Treat each component to target — QRISK-guided statin, BP per NICE, HbA1c — and refer pre-diabetes to the NHS Diabetes Prevention Programme; review at least annually'],
+      'Treat each component to target — QRISK-guided statin, BP per NICE NG136, HbA1c — and refer pre-diabetes to the NHS Diabetes Prevention Programme; review at least annually'],
     referral:[
       'Established type 2 diabetes or cardiovascular disease → relevant disease pathways',
       'Refractory or complex obesity → tier-3 weight-management / specialist services (and bariatric pathways where eligible)',
       'Significant NAFLD/fibrosis, complex dyslipidaemia, or OSA → relevant specialist'],
-    source:'NICE CVD risk (NG238) & obesity guidance' },
+    source:'NICE NG238 (CVD risk reduction) / NICE NG246 (Overweight and obesity management) / NICE NG136 (Hypertension)' },
 
   { id:'miscarriage', title:'Miscarriage', category:'Women\u2019s health', icon:'🤍',
     overview:'Loss of pregnancy before 24 weeks, most commonly in the first trimester. Management combines compassionate, sensitive support with prompt, safe assessment through early-pregnancy services — and always keeping ectopic pregnancy in mind.',
@@ -88,7 +88,7 @@
     referral:[
       'Any suspicion → immediate emergency admission (surgery + critical care)',
       'Never arrange outpatient review — emergency referral only'],
-    source:'NICE / Sepsis (NG253)' },
+    source:'NICE NG253 (Sepsis, 16 and over) / NICE NG254 (Sepsis, under 16s)' },
 
   { id:'night-terrors-nightmares', title:'Night terrors and nightmares', category:'Paediatrics', icon:'🌙',
     overview:'Common, usually benign childhood sleep phenomena. Night terrors are a non-REM parasomnia of partial arousal with apparent terror and no recall; nightmares are frightening REM dreams from which the child wakes and remembers. Reassurance and good sleep hygiene are the mainstays.',
@@ -108,7 +108,7 @@
     referral:[
       'Frequent, violent, or injurious episodes, daytime symptoms, or features suggesting seizures → paediatrics',
       'Significant distress, recurrent nightmares with a possible underlying trauma or anxiety disorder → child mental-health services'],
-    source:'NICE' },
+    source:'Clinical practice summary' },
 
   { id:'pagets-bone', title:'Paget\u2019s disease of bone', category:'Musculoskeletal', icon:'🦴',
     overview:'A disorder of excessive and disorganised bone remodelling producing enlarged, structurally weak bone. It is often asymptomatic and detected via an isolated raised alkaline phosphatase or an incidental X-ray finding; treatment targets bone pain and complications.',
@@ -129,7 +129,7 @@
       'Bone pain, complications (fractures, deafness, neurological compression) or diagnostic uncertainty → rheumatology / metabolic bone service',
       'A sudden increase in pain, swelling or a new mass in affected bone → urgent assessment to exclude osteosarcoma',
       'Skull or spinal involvement with neurological features → urgent specialist referral'],
-    source:'NICE' },
+    source:'Paget’s Association / Ralston et al. JBMR 2019 Paget’s guideline (international)' },
 
   { id:'pms', title:'Premenstrual syndrome (PMS)', category:'Women\u2019s health', icon:'🌸',
     overview:'Cyclical psychological, physical and behavioural symptoms occurring in the luteal phase and resolving with menstruation. The severe form, premenstrual dysphoric disorder (PMDD), causes marked mood disturbance and functional impairment.',
@@ -150,7 +150,7 @@
       'Severe or refractory PMS/PMDD not responding to first-line treatment → gynaecology / specialist PMS service',
       'Diagnostic uncertainty or an underlying mood disorder → mental-health services',
       'Considering GnRH analogues or surgical options → specialist'],
-    source:'NICE / RCOG Green-top guidance' },
+    source:'RCOG Green-top Guideline No. 48 (Premenstrual syndrome, 2016)' },
 
   { id:'pkd', title:'Polycystic kidney disease', category:'Cardiovascular & Renal', icon:'🫘',
     overview:'An inherited (usually autosomal-dominant) disorder characterised by progressive renal cyst formation with declining kidney function, hypertension, and important extrarenal features — notably intracranial (berry) aneurysms.',
@@ -171,7 +171,7 @@
       'Confirmed or suspected ADPKD → nephrology',
       'Sudden severe "thunderclap" headache → 999 (possible aneurysm rupture/SAH)',
       'Rapid progression, complications, tolvaptan eligibility, or transplant/dialysis planning → specialist'],
-    source:'NICE / renal association guidance' },
+    source:'NICE TA358 (tolvaptan) / UK Kidney Association guidance' },
 
   { id:'postnatal-depression', title:'Postnatal depression', category:'Mental health', icon:'🍼',
     overview:'A depressive episode arising within the first year after birth — common, treatable, and important to detect for the wellbeing of both parent and infant. It must be distinguished from transient "baby blues" and, crucially, from postpartum psychosis, which is a psychiatric emergency.',
@@ -216,7 +216,7 @@
       'Diagnostic uncertainty or symptoms refractory to first-line measures → cardiology / autonomic specialist',
       'Significant functional impairment → specialist MDT',
       'Red-flag cardiac features (exertional syncope, structural heart disease, family history of sudden death) → cardiology'],
-    source:'NICE / PoTS UK & Heart Rhythm Society guidance' },
+    source:'PoTS UK / Heart Rhythm Society guidance (international)' },
 
   { id:'pre-eclampsia', title:'Pre-eclampsia', category:'Women\u2019s health', icon:'🤰',
     overview:'A multisystem disorder of pregnancy after 20 weeks defined by new-onset hypertension with proteinuria or other maternal organ dysfunction. It is potentially life-threatening to mother and baby and demands urgent assessment — definitive treatment is delivery.',
@@ -258,7 +258,7 @@
       'A hot, swollen joint with fever → urgent assessment to exclude septic arthritis',
       'Persistent, recurrent or severe arthritis → rheumatology',
       'Eye involvement suggesting anterior uveitis (painful red eye, photophobia, blurred vision) → same-day ophthalmology'],
-    source:'NICE' },
+    source:'Clinical practice summary; STI testing per BASHH' },
 
   { id:'shoulder-impingement', title:'Shoulder impingement (subacromial pain syndrome)', category:'Musculoskeletal', icon:'💪',
     overview:'Pain arising from the rotator-cuff and subacromial structures, provoked by overhead and abduction movements. It is one of the commonest causes of shoulder pain and is managed conservatively in the great majority of cases.',
@@ -279,7 +279,7 @@
       'Suspected full-thickness rotator-cuff tear (significant weakness, acute trauma, persistent night pain) → physiotherapy/orthopaedics ± ultrasound/MRI',
       'No improvement despite conservative care including physiotherapy ± injection → orthopaedics/MSK service',
       'Red flags (mass, significant trauma, suspected instability/dislocation, or constitutional symptoms) → appropriate urgent referral'],
-    source:'NICE — Shoulder pain' },
+    source:'BESS/BOA patient care pathway: subacromial shoulder pain (2015)' },
 
   { id:'skin-picking', title:'Skin picking disorder (excoriation)', category:'Mental health', icon:'🧠',
     overview:'A body-focused repetitive behaviour involving recurrent picking at one\u2019s own skin resulting in lesions, with repeated unsuccessful attempts to stop. It sits within the OCD-related spectrum and frequently coexists with other mental-health conditions.',
@@ -300,7 +300,7 @@
       'Severe, refractory, or significantly comorbid cases → psychology / mental-health services',
       'Significant skin damage or recurrent infection → dermatology / appropriate wound care',
       'Marked impairment or risk → mental-health services'],
-    source:'NICE' },
+    source:'Clinical practice summary' },
 
   { id:'spondylolisthesis', title:'Spondylolisthesis', category:'Musculoskeletal', icon:'🦴',
     overview:'Forward slip of one vertebral body on the one below (most commonly L5 on S1). It may be entirely asymptomatic or cause mechanical back pain with or without radicular or neurogenic claudication symptoms.',
@@ -321,7 +321,7 @@
       'Neurological deficit, neurogenic claudication, or back-pain red flags → spinal / orthopaedic referral with MRI',
       'Cauda equina features (bladder/bowel dysfunction, saddle anaesthesia, bilateral leg symptoms) → emergency',
       'Persistent disabling symptoms despite conservative care, or high-grade/progressive slip → spinal surgery'],
-    source:'NICE — Low back pain & sciatica' },
+    source:'NICE NG59 (Low back pain and sciatica)' },
 
   { id:'male-menopause', title:'The \u2018male menopause\u2019 (late-onset hypogonadism)', category:'Men\u2019s & sexual health', icon:'🚹',
     overview:'A contested lay term for non-specific symptoms in middle-aged men. Some have genuine late-onset hypogonadism (symptomatic, biochemically confirmed low testosterone), but the symptoms are frequently better explained by other, often treatable, conditions.',
@@ -341,7 +341,7 @@
       'Confirmed hypogonadism, raised prolactin/abnormal pituitary hormones, or diagnostic uncertainty → endocrinology',
       'Erectile dysfunction → assess cardiovascular risk and manage per the ED pathway; refer if needed',
       'Depression or other mental-health disorder → manage/refer accordingly'],
-    source:'NICE / BSSM testosterone guidance' },
+    source:'BSSM testosterone guidance' },
 
   { id:'phimosis', title:'Tight foreskin (phimosis)', category:'Men\u2019s & sexual health', icon:'🚹',
     overview:'Inability to retract the foreskin over the glans. It is physiological (normal) in young boys and resolves with age, but pathological in older boys and adults — frequently from scarring such as lichen sclerosus (balanitis xerotica obliterans). Paraphimosis is the urological emergency.',
@@ -361,7 +361,7 @@
       'Paraphimosis → emergency (manual reduction; may need urgent urology)',
       'BXO/pathological phimosis, recurrent balanitis, or failure of topical steroid → urology (consider circumcision)',
       'A suspicious, non-healing or indurated lesion → urology to exclude penile malignancy'],
-    source:'NICE' },
+    source:'Clinical practice summary' },
 
   { id:'vaginismus', title:'Vaginismus', category:'Women\u2019s health', icon:'🌸',
     overview:'Involuntary tightening of the pelvic-floor muscles on attempted vaginal penetration, causing pain or making penetration impossible. Now classified within genito-pelvic pain/penetration disorder, it is common, distressing and very treatable.',
@@ -381,7 +381,7 @@
       'Refractory symptoms or a significant psychological component → psychosexual therapy',
       'Underlying gynaecological or dermatological pathology (e.g. endometriosis, lichen sclerosus) → gynaecology / dermatology',
       'Diagnostic uncertainty → specialist'],
-    source:'NICE' },
+    source:'Clinical practice summary' },
 
   { id:'whiplash', title:'Whiplash (neck sprain)', category:'Musculoskeletal', icon:'🚗',
     overview:'A neck soft-tissue injury caused by sudden acceleration–deceleration forces, most often in a road-traffic collision. It is usually self-limiting, and outcomes are best with reassurance and early active management rather than rest and immobilisation.',
@@ -401,10 +401,10 @@
       'Red flags — significant trauma/mechanism, neurological deficit, or a positive Canadian C-spine rule → emergency imaging/assessment',
       'Persistent or severe symptoms, or radicular features → physiotherapy / MSK service',
       'Chronic whiplash-associated disorder → multidisciplinary / pain management support'],
-    source:'NICE — Neck pain (whiplash injury)' },
+    source:'Clinical practice summary (Canadian C-spine rule for imaging)' },
 
   { id:'ophthalmia-neonatorum', title:'Neonatal conjunctivitis (ophthalmia neonatorum)', category:'Paediatrics', icon:'👁️',
-    overview:'Conjunctivitis in the first 28 days of life. It ranges from a trivial blocked tear duct (a "sticky eye") to sight- and life-threatening gonococcal or chlamydial infection acquired during birth. It is a notifiable condition, and timing of onset guides the likely cause.',
+    overview:'Conjunctivitis in the first 28 days of life. It ranges from a trivial blocked tear duct (a "sticky eye") to sight- and life-threatening gonococcal or chlamydial infection acquired during birth. It was removed from the notifiable-disease list in England and Wales in 2010, and timing of onset guides the likely cause.',
     features:[
       'Sticky/discharging eye(s) with conjunctival redness and lid swelling in a neonate',
       'Gonococcal: hyperacute, profuse purulent discharge, marked lid oedema, onset typically day 1–5 — risk of rapid corneal ulceration/perforation and blindness',
@@ -416,14 +416,14 @@
       'Take urgent swabs before/at referral: bacterial MC&S (including gonococcus) and chlamydia PCR; Gram stain if available',
       'Suspected gonococcal or chlamydial infection needs systemic antibiotics (not topical alone) under specialist guidance, plus treatment and contact-tracing of the mother and partner via sexual health',
       'Simple blocked tear duct: reassure, lacrimal-sac massage and lid hygiene; most resolve by 12 months',
-      'Notify the relevant public-health authority (ophthalmia neonatorum is notifiable) and screen mother/baby for other STIs',
+      'Screen mother/baby (and partners) for other STIs via sexual-health services; ophthalmia neonatorum has not been notifiable in England and Wales since 2010, but gonococcal/chlamydial cases are reported by the laboratory',
       'Safety-net: worsening swelling, corneal haze or a systemically unwell baby needs immediate review'],
     referral:[
       'Hyperacute purulent conjunctivitis / suspected gonococcal infection → same-day ophthalmology + paediatrics (sight-threatening)',
       'Suspected chlamydial conjunctivitis → urgent paediatric/specialist treatment + maternal sexual-health referral',
       'Suspected herpes simplex or systemically unwell neonate → emergency paediatric assessment',
       'Persistent blocked tear duct beyond 12 months → ophthalmology'],
-    source:'NICE (Conjunctivitis — neonatal)' },
+    source:'BASHH chlamydia and gonorrhoea guidelines / Clinical practice summary' },
 
   { id:'opioid-dependence', title:'Opioid dependence and substance misuse', category:'Mental health', icon:'💊',
     overview:'Dependence on opioids (heroin or prescribed/over-the-counter opioids) and other substances, characterised by compulsive use despite harm. Management is harm-reduction-focused and largely shared with specialist drug services; the GP role includes recognition, blood-borne-virus prevention, naloxone provision and safe prescribing.',
@@ -467,7 +467,7 @@
       'Confirmed or suspected Peyronie’s disease → urology/andrology (for monitoring and treatment options)',
       'Significant erectile dysfunction or inability to have intercourse → specialist',
       'Severe psychological distress → psychological support/psychosexual therapy'],
-    source:'NICE / EAU guidelines' },
+    source:'EAU guidelines (international)' },
 
   { id:'pleural-effusion', title:'Pleural effusion', category:'Respiratory', icon:'🫁',
     overview:'An abnormal collection of fluid in the pleural space, classified as transudate or exudate using Light’s criteria. It is a sign of underlying disease — most commonly heart failure (transudate) or malignancy, infection or pulmonary embolism (exudate) — and the priority is to identify the cause.',
@@ -484,11 +484,11 @@
       'Suspected pleural infection/empyema (unwell, sepsis, parapneumonic effusion) needs urgent admission',
       'Provide symptom relief for breathlessness and safety-net for worsening dyspnoea, fever or chest pain'],
     referral:[
-      'Suspected malignancy (unilateral/recurrent effusion, weight loss, haemoptysis, asbestos exposure) → urgent suspected-cancer chest referral (NICE NG12) + respiratory',
+      'Suspected malignancy (unilateral/recurrent effusion, weight loss, haemoptysis, asbestos exposure) → urgent suspected-cancer chest referral (NICE NG12 (updated April 2026)) + respiratory',
       'Undiagnosed exudate or unilateral effusion → respiratory for aspiration/CT',
       'Suspected empyema or systemically unwell → emergency admission',
       'Transudate not resolving despite treating the cause → respiratory'],
-    source:'BTS pleural disease guideline / NICE NG12' },
+    source:'BTS pleural disease guideline / NICE NG12 (updated April 2026)' },
 
   { id:'pics', title:'Post-intensive care syndrome (PICS)', category:'General', icon:'🛏️',
     overview:'New or worsening impairment in physical, cognitive or mental-health function that persists after a critical illness and intensive-care admission. As more patients survive critical illness (including post-COVID), GPs increasingly manage the long recovery, which is easily missed if not actively sought.',
@@ -532,7 +532,7 @@
       'Subfertility or submucosal fibroids distorting the cavity → gynaecology/fertility services',
       'Rapidly enlarging fibroid, or post-menopausal growth → gynaecology to exclude (rare) leiomyosarcoma',
       'Acute severe pain (suspected degeneration/torsion) → same-day gynaecology assessment'],
-    source:'NICE NG88 / NICE (Fibroids)' },
+    source:'NICE NG88 (Heavy menstrual bleeding)' },
 
   { id:'duty-of-candour', title:'Duty of candour (being open after harm)', category:'Ethics & professionalism', icon:'⚖️',
     overview:'A professional and statutory duty to be open and honest with patients when something goes wrong with their care that has caused, or could cause, harm. It applies to individual clinicians (GMC professional duty) and organisations (statutory duty), and is a frequent SCA professionalism scenario.',

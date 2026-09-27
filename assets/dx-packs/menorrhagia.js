@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Menorrhagia (heavy menstrual bleeding)
-   Shared-id triage + differential. NICE NG88 · NICE NG12.
+   Shared-id triage + differential. NICE NG88 · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,23 +22,23 @@
   if (window.RGPTriage) RGPTriage.register('menorrhagia-triage', {
     title: 'Heavy menstrual bleeding — triage',
     subtitle: 'Tick features. Surfaces endometrial / cervical cancer pathways and structural referral (NICE NG88).',
-    guideline: 'NICE NG88 · NG12',
+    guideline: 'NICE NG88 · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. FBC (ferritin), pregnancy test; examine; consider USS if structural features. First-line treatment (no structural cause): LNG-IUS, then tranexamic/mefenamic acid or COC.',
     rules: [
       {
         id: 'endometrial_2ww', tier: 'cancer',
         label: 'Postmenopausal bleeding, or persistent IMB / HMB ≥45 not responding — endometrial pathway',
-        action: 'Gynae 2WW + transvaginal USS (endometrial thickness).',
+        action: 'PMB: gynae suspected cancer pathway referral at 55+ (consider under 55) + transvaginal USS (endometrial thickness) (NICE NG12 (updated April 2026)). Persistent IMB, or 45+ with treatment failure: hysteroscopy ± endometrial biopsy (NICE NG88).',
         patientPhrase: '"This pattern of bleeding needs an urgent specialist look at the womb lining to be safe."',
-        source: 'NICE NG12 §1.7', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.5', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.pmb_or_45_imb,
       },
       {
         id: 'cervical', tier: 'cancer',
         label: 'Suspicious cervix — cervical cancer pathway',
         action: 'Urgent colposcopy / gynae 2WW (do not rely on smear).',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.cervix_suspicious,
       },
       {
@@ -65,14 +65,14 @@
     ],
     sources: [
       { label: 'NICE NG88 — Heavy menstrual bleeding', url: 'https://www.nice.org.uk/guidance/ng88' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('menorrhagia-dx', {
     title: 'Heavy menstrual bleeding — differential (PALM-COEIN)',
     subtitle: 'The engine weights structural (fibroid, polyp, adenomyosis) and non-structural (ovulatory dysfunction, coagulopathy, iatrogenic, idiopathic) causes, and surfaces endometrial / cervical cancer.',
-    guideline: 'NICE NG88 · FIGO PALM-COEIN',
+    guideline: 'NICE NG88 · FIGO PALM-COEIN (international)',
     patientPresenting: "My periods have become really heavy, doctor — I'm flooding and exhausted.",
     inputs: INPUTS,
     diagnoses: [
@@ -106,7 +106,7 @@
         guideUrl: 'https://www.nice.org.uk/guidance/ng88', guideLabel: 'NICE NG88' },
 
       { id: 'malignancy', name: 'Endometrial / cervical cancer', summary: 'PMB, persistent IMB ≥45, suspicious cervix', baseline: 1, category: 'cant-miss',
-        keyExam: 'Suspicious cervix; bulky uterus.', nextIx: '\u26A1 Gynae 2WW + TV USS / colposcopy (NICE NG12).',
+        keyExam: 'Suspicious cervix; bulky uterus.', nextIx: '\u26A1 Gynae 2WW + TV USS / colposcopy (NICE NG12 (updated April 2026)).',
         patientPhrase: 'This bleeding pattern needs an urgent specialist assessment to exclude cancer — most are benign.',
         guideUrl: '', redFlagAction: '\u26A1 Gynae 2WW' }
     ],
@@ -137,7 +137,7 @@
     },
     sources: [
       { label: 'NICE NG88 — Heavy menstrual bleeding', url: 'https://www.nice.org.uk/guidance/ng88' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

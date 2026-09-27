@@ -1,7 +1,7 @@
 /* ============================================
    Diagnostic Tool pack — Jaundice in adults
    Shared-id triage + differential (pre-hepatic / hepatic / post-hepatic).
-   BSG · NICE NG12.
+   BSG · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -27,7 +27,7 @@
   if (window.RGPTriage) RGPTriage.register('jaundice-triage', {
     title: 'Jaundice — red-flag triage',
     subtitle: 'Tick features / enter bloods. Surfaces acute liver failure, cholangitis and malignancy pathways.',
-    guideline: 'BSG · BSG · NG12',
+    guideline: 'BSG · BSG · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No emergency rule fired. Classify by pattern (split bilirubin, ALT vs ALP), USS biliary tree, and run a liver screen; use the differential below.',
     rules: [
@@ -51,7 +51,7 @@
         label: 'Painless obstructive jaundice + weight loss — suspected pancreatic / biliary cancer',
         action: '2WW + urgent CT/USS.',
         patientPhrase: '"Painless jaundice with weight loss needs an urgent scan to find the cause."',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.painless_wl,
       },
       {
@@ -70,8 +70,8 @@
       }
     ],
     sources: [
-      { label:'NICE NG12 — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label:'NICE NG12 (updated April 2026) — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
@@ -85,7 +85,7 @@
       { id: 'gilbert', name: 'Gilbert\u2019s syndrome', summary: 'Mild unconjugated jaundice with fasting/illness, otherwise well', baseline: 6, category: 'common',
         keyExam: 'Normal exam.', nextIx: 'Isolated raised unconjugated bilirubin, normal LFTs/FBC/reticulocytes; reassure.',
         patientPhrase: 'This is a harmless inherited quirk where bilirubin rises a little when you are unwell or fasting — nothing needs treating.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
       { id: 'haemolysis', name: 'Haemolysis (pre-hepatic)', summary: 'Unconjugated jaundice + anaemia + raised reticulocytes', baseline: 3, category: 'less-common',
         keyExam: 'Pallor, splenomegaly, dark urine (no pale stool).', nextIx: 'FBC, reticulocytes, LDH, haptoglobin, DAT, blood film; refer haematology.',
         patientPhrase: 'Red cells are breaking down faster than normal, releasing the yellow pigment. We find why and treat it.',
@@ -101,14 +101,14 @@
       { id: 'drug', name: 'Drug-induced liver injury', summary: 'New hepatotoxic drug; resolves on withdrawal', baseline: 4, category: 'common',
         keyExam: 'Medication timeline.', nextIx: 'Medication review; stop offender; recheck LFTs.',
         patientPhrase: 'A medication is affecting the liver. Stopping it and rechecking usually shows recovery.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
       { id: 'gallstones', name: 'Gallstone obstruction (post-hepatic)', summary: 'Cholestatic, RUQ pain, pale stool / dark urine / itch', baseline: 6, category: 'common',
         keyExam: 'RUQ tenderness, Murphy\u2019s.', nextIx: 'USS biliary tree; MRCP if duct dilatation; refer per cause.',
         patientPhrase: 'A gallstone is blocking the bile drainage. An ultrasound confirms it and treatment relieves the blockage.',
         guideUrl: 'https://www.nice.org.uk/guidance/cg188', guideLabel: 'NICE CG188' },
 
       { id: 'malignancy', name: 'Pancreatic / biliary malignancy', summary: 'Painless obstructive jaundice + weight loss', baseline: 1, category: 'cant-miss',
-        keyExam: 'Cachexia, palpable gallbladder (Courvoisier), hepatomegaly.', nextIx: '\u26A1 2WW + urgent CT/USS (NICE NG12).',
+        keyExam: 'Cachexia, palpable gallbladder (Courvoisier), hepatomegaly.', nextIx: '\u26A1 2WW + urgent CT/USS (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Painless yellowing with weight loss needs an urgent scan to exclude a serious cause of the blockage.',
         guideUrl: '', redFlagAction: '\u26A1 2WW + imaging' },
       { id: 'cholangitis', name: 'Ascending cholangitis', summary: 'Fever + RUQ pain + jaundice (Charcot\u2019s triad)', baseline: 1, category: 'cant-miss',
@@ -118,7 +118,7 @@
       { id: 'liver_failure', name: 'Acute liver failure', summary: 'Jaundice + encephalopathy / coagulopathy', baseline: 1, category: 'cant-miss',
         keyExam: 'Asterixis, drowsiness, bruising.', nextIx: '\u26A1 Same-day admission — INR, glucose, paracetamol level, hepatology.',
         patientPhrase: 'The liver is failing acutely — that is an emergency needing hospital care today.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12', redFlagAction: '\u26A1 Same-day admission' }
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)', redFlagAction: '\u26A1 Same-day admission' }
     ],
     effects: {
       age: (v) => v >= 60 ? { malignancy: +6, gallstones: +3 } : (v < 35 ? { gilbert: +4, viral: +3 } : {}),
@@ -151,8 +151,8 @@
       liver_failure: ['encephalopathy'],
     },
     sources: [
-      { label:'NICE NG12 — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label:'NICE NG12 (updated April 2026) — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

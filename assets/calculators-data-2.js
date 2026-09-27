@@ -285,12 +285,12 @@
       interpret(s){
         if (s < 2.20) return { label:'Hypocalcaemia', severity:'med', action:'Check PTH, vitamin D, Mg²⁺, renal function. Symptomatic/<1.9 → urgent.', detail:'See hypocalcaemia pathway; ECG (QT) if low.' };
         if (s <= 2.60) return { label:'Normal', severity:'low', action:'Within reference range.', detail:'~2.20–2.60 mmol/L.' };
-        if (s < 3.00) return { label:'Mild hypercalcaemia', severity:'high', action:'Recheck fasting + PTH; review drugs (thiazide, calcium/vit D, lithium).', detail:'NICE NG12: persistent raised calcium → consider myeloma screen.' };
+        if (s < 3.00) return { label:'Mild hypercalcaemia', severity:'high', action:'Recheck fasting + PTH; review drugs (thiazide, calcium/vit D, lithium).', detail:'NICE NG12 (updated April 2026): hypercalcaemia with a presentation consistent with myeloma (age ≥60) → myeloma tests.' };
         return         { label:'Significant hypercalcaemia', severity:'severe', action:'Corrected Ca ≥ 3.0 — urgent: IV saline, find cause (PTH, myeloma, malignancy); admit if ≥ 3.5 or symptomatic.', detail:'' };
       },
       refs:[
         { label:'NICE NG132 — Hyperparathyroidism (primary)', url:'https://www.nice.org.uk/guidance/ng132' },
-        { label:'NICE NG12 (myeloma)', url:'https://www.nice.org.uk/guidance/ng12' },
+        { label:'NICE NG12 (updated April 2026) — myeloma', url:'https://www.nice.org.uk/guidance/ng12' },
       ],
     },
 
@@ -337,7 +337,7 @@
       title: 'PSA age-specific threshold',
       category: 'Urology',
       description: 'Age-referenced PSA cut-offs for suspected prostate cancer.',
-      usefulFor: 'NICE NG12 — refer on a suspected cancer pathway if PSA above the age-specific range.',
+      usefulFor: 'NICE NG12 (updated April 2026) — refer on a suspected cancer pathway if PSA above the age-specific range. Under 40 or 80 and over: use clinical judgement.',
       resultLabel: 'PSA vs threshold', resultUnit:'',
       inputs: [
         { id:'psa_age', kind:'select', label:'Age band',
@@ -345,7 +345,7 @@
             { value:45, label:'40–49' },
             { value:55, label:'50–59' },
             { value:65, label:'60–69' },
-            { value:75, label:'≥ 70' },
+            { value:75, label:'70–79' },
           ] },
         { id:'psa_val', kind:'number', label:'PSA', unit:'µg/L', min:0, max:200, step:0.1 },
       ],
@@ -358,11 +358,11 @@
       },
       interpret(r){
         if (r.val == null) return { label:'Enter PSA to compare', severity:'neutral', action:'Use age-specific threshold (PCRMP). Always examine the prostate (DRE).', detail:'' };
-        if (r.val > r.thr) return { label:'Above age-specific range', severity:'high', action:'NICE NG12 — refer on suspected prostate cancer pathway (2-week-wait).', detail:'Also refer if DRE feels malignant regardless of PSA.' };
+        if (r.val > r.thr) return { label:'Above age-specific range', severity:'high', action:'NICE NG12 (updated April 2026) — refer on suspected prostate cancer pathway (2-week-wait).', detail:'Also refer if DRE feels malignant regardless of PSA.' };
         return { label:'Within age range', severity:'low', action:'Reassure; safety-net. Refer anyway if abnormal DRE or rising PSA.', detail:'Repeat/track if symptomatic.' };
       },
       refs:[
-        { label:'NICE NG12 Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
+        { label:'NICE NG12 (updated April 2026) Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
         { label:'PCRMP age-specific PSA', url:'https://www.gov.uk/government/publications/prostate-cancer-risk-management-programme-psa-test-benefits-and-risks' },
       ],
     }

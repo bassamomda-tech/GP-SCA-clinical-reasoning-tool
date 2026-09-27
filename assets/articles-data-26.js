@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 26: S topics, part 1)
    NHS A–Z (letter S) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -13,7 +13,7 @@
       'Altered mental state — new confusion, drowsiness, or "just not right" — is a key and often early red flag',
       'In children/infants: poor feeding, lethargy, abnormal cry, reduced wet nappies, mottling, and a non-blanching rash (meningococcal); the very young can deteriorate rapidly',
       'Higher-risk groups: the very young and old, frail, immunocompromised (including post-splenectomy, on chemotherapy/steroids), pregnant/recently pregnant, indwelling devices, and recent surgery',
-      'Use a structured risk-stratification tool (e.g. NICE sepsis criteria / NEWS2) to identify high-risk features'],
+      'Use a structured risk-stratification tool (e.g. the NICE NG253/NG254 risk-stratification criteria / NEWS2) to identify high-risk features'],
     management:[
       'Have a low threshold to consider sepsis in any acutely unwell person with possible infection — actively ask "could this be sepsis?"',
       'Assess physiology (temperature, heart rate, respiratory rate, blood pressure, oxygen saturations, conscious level, capillary refill, urine output) and risk-stratify',
@@ -53,7 +53,7 @@
       'Outbreaks in care homes/institutions → health protection / infection control',
       'Diagnostic uncertainty → dermatology',
       'Severe secondary infection → treat ± refer'],
-    source:'NICE — Scabies' },
+    source:'BASHH scabies guidance / UKHSA scabies outbreak guidance for care settings / BNF (permethrin 5%, malathion)' },
 
   { id:'scarlet-fever', title:'Scarlet fever', category:'Infectious diseases', icon:'🦠',
     overview:'A childhood illness caused by group A streptococcus, with a characteristic sandpaper rash, fever and sore throat. It is usually mild and treated with antibiotics, but it is notifiable, can cause complications, and matters in the context of invasive group A strep — so recognition, treatment and public-health awareness are important.',
@@ -78,7 +78,7 @@
       'Complications (quinsy, severe otitis media, suspected post-streptococcal nephritis/rheumatic fever) → relevant urgent assessment',
       'Notify public health (notifiable disease)',
       'Diagnostic uncertainty → assessment'],
-    source:'UKHSA / NICE — Scarlet fever' },
+    source:'UKHSA scarlet fever guidance / NICE NG84 (Sore throat (acute): antimicrobial prescribing)' },
 
   { id:'schizophrenia', title:'Schizophrenia', category:'Mental health', icon:'🧠',
     overview:'A severe, chronic psychotic disorder affecting thinking, perception, emotion and behaviour, typically emerging in late adolescence/early adulthood. Early intervention improves prognosis. Care is long-term and shared with specialist services; the GP role includes recognition, physical-health monitoring (markedly reduced life expectancy), and relapse detection.',
@@ -126,7 +126,7 @@
     referral:[
       'Suspected cauda equina syndrome (saddle anaesthesia, bladder/bowel dysfunction, bilateral leg symptoms) → EMERGENCY same-day spinal assessment and MRI',
       'Progressive or severe neurological deficit → urgent spinal assessment',
-      'Red flags for malignancy/infection/fracture → urgent investigation (consider relevant cancer pathway, NICE NG12)',
+      'Red flags for malignancy/infection/fracture → urgent investigation (consider relevant cancer pathway, NICE NG12 (updated April 2026))',
       'Persistent/disabling sciatica not improving with conservative care → spinal service (imaging, injection, surgery)'],
     source:'NICE NG59 (Low back pain and sciatica)' },
 
@@ -153,7 +153,7 @@
       'Red flags (significant pain, neurological signs, rapid progression, very young onset) → urgent specialist assessment (exclude secondary cause/tumour)',
       'Neuromuscular/congenital scoliosis → specialist spinal + relevant specialty',
       'Curves needing bracing or surgery → spinal surgery'],
-    source:'NICE / spinal surgical guidance' },
+    source:'British Scoliosis Society / spinal surgical guidance' },
 
   { id:'sad', title:'Seasonal affective disorder (SAD)', category:'Mental health', icon:'🌥️',
     overview:'A form of depression with a seasonal pattern, typically recurring in autumn/winter and remitting in spring/summer. It is a recognised subtype of depression with the same risks (including suicidality), and is managed along the same lines as depression, with some specific measures.',
@@ -203,7 +203,7 @@
       'Immunocompromised patients, disseminated zoster, or severe disease → urgent specialist/admission (IV antivirals)',
       'Ramsay Hunt syndrome (facial palsy + ear vesicles) → prompt ENT/specialist treatment',
       'Refractory post-herpetic neuralgia → pain service'],
-    source:'NICE — Shingles / Green Book (zoster vaccine)' }
+    source:'BNF (aciclovir, valaciclovir) / NICE CG173 (Neuropathic pain in adults) / Green Book chapter 28a (Shingles)' }
 
   );
 })();

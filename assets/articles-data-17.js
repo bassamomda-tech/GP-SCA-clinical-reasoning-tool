@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 17: L topics, part 2)
    Remaining NHS A–Z (letter L) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -26,9 +26,9 @@
     referral:[
       'Suspected arterial ulcer or low ABPI / critical limb ischaemia (rest pain, cold pulseless foot, gangrene) → urgent vascular surgery (do not compress)',
       'Venous leg ulcer → refer to vascular service for venous-reflux assessment/treatment, and for specialist wound/leg-ulcer care; refer if not healing within expected time',
-      'A non-healing ulcer with atypical or rolled/everted edges → biopsy / urgent skin-cancer (2WW) referral to exclude squamous cell carcinoma (NICE NG12)',
+      'A non-healing ulcer with atypical or rolled/everted edges → biopsy / urgent skin-cancer (2WW) referral to exclude squamous cell carcinoma (NICE NG12 (updated April 2026))',
       'Diabetic/neuropathic foot ulcer, or spreading infection/sepsis → urgent diabetic foot/vascular service or admission'],
-    source:'NICE — Leg ulcer (venous) / SIGN & vascular guidance' },
+    source:'SIGN 120 (Management of chronic venous leg ulcers, 2010) / NICE NG152 (Leg ulcer infection: antimicrobial prescribing, 2020) / NICE CG168 (Varicose veins) / vascular guidance' },
 
   { id:'alcohol-related-liver-disease', title:'Alcohol-related liver disease', category:'Gastroenterology', icon:'🟤',
     overview:'A spectrum of liver injury caused by excess alcohol — from reversible fatty liver (steatosis), through alcoholic hepatitis, to irreversible cirrhosis. Much is silent until advanced or until decompensation. The central interventions are detecting harmful drinking early, supporting abstinence, and recognising the emergencies (severe alcoholic hepatitis, decompensation, withdrawal).',
@@ -51,9 +51,9 @@
     referral:[
       'Severe alcoholic hepatitis, decompensated cirrhosis (ascites, encephalopathy, variceal bleed, jaundice), or suspected Wernicke’s encephalopathy → emergency admission',
       'Significant alcohol-related liver disease or abnormal fibrosis assessment → hepatology',
-      'Cirrhosis → 6-monthly ultrasound surveillance for hepatocellular carcinoma; a suspicious liver lesion → urgent referral (NICE NG12)',
+      'Cirrhosis → 6-monthly ultrasound surveillance for hepatocellular carcinoma; a suspicious liver lesion → urgent referral (NICE NG12 (updated April 2026))',
       'Alcohol dependence → specialist alcohol/substance-misuse services (and assisted withdrawal where needed)'],
-    source:'NICE CG100 / NICE — Alcohol-related liver disease' }
+    source:'NICE CG100 (Alcohol-use disorders: physical complications) / NICE NG50 (Cirrhosis in over 16s)' }
 
   );
 })();

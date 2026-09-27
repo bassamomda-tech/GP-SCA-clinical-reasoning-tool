@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Neck Lump
-   Shared-id triage + differential. NICE NG12 · NICE.
+   Shared-id triage + differential. NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -20,73 +20,73 @@
 
   if (window.RGPTriage) RGPTriage.register('neck-lump-triage', {
     title: 'Neck lump — triage',
-    subtitle: 'Tick features. Surfaces head & neck and haematological 2WW pathways (NICE NG12).',
-    guideline: 'NICE NG12',
+    subtitle: 'Tick features. Surfaces head & neck and haematological 2WW pathways (NICE NG12 (updated April 2026)).',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine; reactive nodes with clear infection → review after treatment; persistent unexplained lump → urgent imaging/referral.',
     rules: [
       {
         id: 'head_neck_2ww', tier: 'cancer',
         label: 'Suspected head & neck cancer — persistent lump >3 weeks / hard fixed node / red-flag symptoms',
-        action: 'Head & neck 2WW (NICE NG12); USS-guided FNA.',
+        action: 'Head & neck 2WW (NICE NG12 (updated April 2026)); USS-guided FNA.',
         patientPhrase: '"A lump that has lasted this long needs an urgent specialist assessment to be safe."',
-        source: 'NICE NG12 §1.9', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.8', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.persistent_3wk || i.hard_fixed_node || i.head_neck_sx,
       },
       {
         id: 'lymphoma_2ww', tier: 'cancer',
         label: 'Possible lymphoma — node + B-symptoms / generalised lymphadenopathy',
         action: 'Urgent FBC, film, LDH; haematology 2WW.',
-        source: 'NICE NG12 §1.10',
+        source: 'NICE NG12 (updated April 2026) §1.10',
         when: i => i.b_symptoms,
       },
       {
         id: 'thyroid', tier: 'urgent',
         label: 'Thyroid nodule / goitre',
         action: 'TFT + USS (U-grading); refer per findings.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.midline_moves_swallow,
       },
       {
         id: 'reactive', tier: 'routine',
         label: 'Likely reactive lymphadenopathy',
         action: 'Treat infection; review in 2–3 weeks; refer if persists / red flags develop.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
-      { label:'NICE NG12 — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label:'NICE NG12 (updated April 2026) — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('neck-lump-dx', {
     title: 'Neck lump — differential',
     subtitle: 'The engine weights reactive nodes, thyroid, salivary and congenital cysts, and always surfaces head & neck cancer and lymphoma.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I've found a lump in my neck, doctor — it's been there a few weeks.",
     inputs: INPUTS,
     diagnoses: [
       { id: 'reactive', name: 'Reactive lymphadenopathy', summary: 'Tender, mobile, recent infection, resolves', baseline: 12, category: 'common',
         keyExam: 'Tender mobile node; source of infection.', nextIx: 'Treat infection; review 2–3 weeks; refer if persists.',
         patientPhrase: 'A gland reacting to a nearby infection is the commonest cause. It usually settles once the infection clears.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
       { id: 'thyroid', name: 'Thyroid nodule / goitre', summary: 'Midline, moves with swallowing', baseline: 5, category: 'common',
         keyExam: 'Moves on swallowing; assess thyroid status.', nextIx: 'TFT + USS (U-grading); FNA per grading.',
         patientPhrase: 'A thyroid lump. We check thyroid function and scan it to decide if anything more is needed.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
       { id: 'salivary', name: 'Salivary gland lump', summary: 'Angle of jaw / below ear, meal-related', baseline: 3, category: 'less-common',
         keyExam: 'Salivary swelling; stone vs mass.', nextIx: 'USS; ENT if persistent mass.',
         patientPhrase: 'A salivary gland swelling, often from a stone. A scan tells us the cause.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
       { id: 'congenital', name: 'Branchial / thyroglossal cyst', summary: 'Young, soft cystic; thyroglossal moves with tongue protrusion', baseline: 3, category: 'less-common',
         keyExam: 'Cystic lump; location.', nextIx: 'USS; ENT for excision.',
         patientPhrase: 'A benign developmental cyst. It is harmless but often removed if bothersome.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
 
       { id: 'head_neck_cancer', name: 'Head & neck cancer', summary: 'Persistent hard/fixed node, smoker, red-flag symptoms', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hard fixed node, oral lesion, hoarseness.', nextIx: '\u26A1 Head & neck 2WW (NICE NG12).',
+        keyExam: 'Hard fixed node, oral lesion, hoarseness.', nextIx: '\u26A1 Head & neck 2WW (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A persistent firm lump needs an urgent specialist assessment to exclude cancer — many prove benign.',
         guideUrl: '', redFlagAction: '\u26A1 Head & neck 2WW' },
       { id: 'lymphoma', name: 'Lymphoma', summary: 'Node + B-symptoms / generalised lymphadenopathy', baseline: 1, category: 'cant-miss',
@@ -117,8 +117,8 @@
       lymphoma: ['b_symptoms'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
-      { label:'NICE NG12 — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label:'NICE NG12 (updated April 2026) — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

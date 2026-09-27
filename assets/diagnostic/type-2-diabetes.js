@@ -1,8 +1,8 @@
-/* Differential — Hyperglycaemia type · NICE NG17 / NG28 · WHO 2019 */
+/* Differential — Hyperglycaemia type · NICE NG17 / NG28 · WHO 2019 (international) */
 RGPDiagnostic.register('type-2-diabetes', {
   title: 'New hyperglycaemia — which type of diabetes?',
   subtitle: 'HbA1c ≥48 confirms diabetes. The differential ranks T2DM vs T1DM/LADA vs MODY vs secondary causes (steroid / pancreatic / Cushing).',
-  guideline: 'NICE NG17 · NG28 · WHO 2019',
+  guideline: 'NICE NG17 · NG28 · WHO 2019 (international)',
   patientPresenting: "HbA1c 78 on a screening blood test. Thirsty. Lost half a stone. Mum has diabetes. Wants to know if she\'s a 'mild' diabetic.",
   inputs: [
     { group:'Demographics', id:'age', kind:'number', label:'Age at presentation', unit:'yrs', step:1 },

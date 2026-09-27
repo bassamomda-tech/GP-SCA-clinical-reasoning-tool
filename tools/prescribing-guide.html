@@ -189,7 +189,7 @@
         <!-- ============ FREE PRESCRIPTION ELIGIBILITY ============ -->
         <div class="pg-panel on" id="tab-free">
           <h2 class="pg-sec-h">Who gets <em>free</em> NHS prescriptions (England)</h2>
-          <p class="pg-sec-p">Prescriptions are <b>free for everyone in Wales, Scotland and Northern Ireland</b>. In England a charge applies (around <b>£9.90 per item, 2025/26 — verify current</b>) unless the patient falls into an exemption below, or holds a prepayment certificate.</p>
+          <p class="pg-sec-p">Prescriptions are <b>free for everyone in Wales, Scotland and Northern Ireland</b>. In England a charge applies (around <b>£9.90 per item, 2025/26 and 2026/27 — verify current</b>) unless the patient falls into an exemption below, or holds a prepayment certificate.</p>
 
           <div class="pg-cards">
             <div class="pg-card">
@@ -426,7 +426,7 @@
    Illustrative — verify locally. */
 const RAG = [
   // ===== Diabetes & endocrine =====
-  { d:'Metformin', use:'Type 2 diabetes', grp:'Diabetes & endocrine', rag:'green', note:'First-line; GP initiation and review.' },
+  { d:'Metformin', use:'Type 2 diabetes', grp:'Diabetes & endocrine', rag:'green', note:'First-line (MR preferred), with an SGLT2 inhibitor as dual therapy for most (NICE NG28, Feb 2026); GP initiation and review.' },
   { d:'Sulfonylureas (gliclazide, glipizide)', use:'Type 2 diabetes', grp:'Diabetes & endocrine', rag:'green', note:'GP initiation; hypo and driving advice.' },
   { d:'SGLT2 inhibitors (dapagliflozin, empagliflozin, canagliflozin)', use:'T2DM, HF, CKD', grp:'Diabetes & endocrine', rag:'green', note:'Green for licensed indications; give sick-day rules and DKA advice.' },
   { d:'DPP-4 inhibitors (sitagliptin, linagliptin)', use:'Type 2 diabetes', grp:'Diabetes & endocrine', rag:'green', note:'GP initiation.' },
@@ -445,7 +445,7 @@ const RAG = [
   // ===== Cardiovascular =====
   { d:'Statins (atorvastatin, simvastatin, rosuvastatin)', use:'Lipid lowering / CVD', grp:'Cardiovascular', rag:'green', note:'GP initiation per QRISK / secondary prevention.' },
   { d:'ACE inhibitors / ARBs', use:'Hypertension, HF, CKD', grp:'Cardiovascular', rag:'green', note:'GP initiation with U&E monitoring.' },
-  { d:'Calcium-channel blockers / thiazides', use:'Hypertension', grp:'Cardiovascular', rag:'green', note:'GP initiation per NICE.' },
+  { d:'Calcium-channel blockers / thiazides', use:'Hypertension', grp:'Cardiovascular', rag:'green', note:'GP initiation per NICE NG136.' },
   { d:'DOACs (apixaban, rivaroxaban, edoxaban, dabigatran)', use:'AF / VTE', grp:'Cardiovascular', rag:'green', note:'Green for stroke prevention in AF / VTE in most areas; check local for some indications.' },
   { d:'Warfarin', use:'Anticoagulation', grp:'Cardiovascular', rag:'green', note:'GP continuation with INR monitoring service.' },
   { d:'Spironolactone / eplerenone', use:'Heart failure, resistant HTN', grp:'Cardiovascular', rag:'green', note:'GP use with U&E monitoring; eplerenone amber in some areas.' },
@@ -460,7 +460,7 @@ const RAG = [
   { d:'Nicorandil', use:'Angina', grp:'Cardiovascular', rag:'green', note:'GP use; ulcer risk awareness.' },
 
   // ===== Respiratory =====
-  { d:'Inhaled therapies (ICS / LABA / LAMA, combinations)', use:'Asthma / COPD', grp:'Respiratory', rag:'green', note:'GP initiation per NICE / GOLD; inhaler technique.' },
+  { d:'Inhaled therapies (ICS / LABA / LAMA, combinations)', use:'Asthma / COPD', grp:'Respiratory', rag:'green', note:'GP initiation per NICE NG245 (asthma) / NG115 (COPD); inhaler technique.' },
   { d:'Montelukast', use:'Asthma', grp:'Respiratory', rag:'green', note:'GP use; neuropsychiatric warning.' },
   { d:'Theophylline / aminophylline', use:'Asthma / COPD', grp:'Respiratory', rag:'green', note:'GP use with level monitoring; brand-specific.' },
   { d:'Roflumilast', use:'Severe COPD', grp:'Respiratory', rag:'amber', note:'Specialist initiation; shared-care weight/mood monitoring.' },
@@ -557,7 +557,7 @@ const RAG = [
   { d:'Morphine / oxycodone (oral)', use:'Severe / cancer pain', grp:'Analgesia & pain', rag:'green', note:'GP can prescribe (Schedule 2 CD); follow opioid-safety and review; specialist advice for escalating non-cancer pain.' },
   { d:'Buprenorphine / fentanyl transdermal patches', use:'Chronic severe pain', grp:'Analgesia & pain', rag:'green', note:'GP continuation for stable pain; not for acute/opioid-naïve; specialist-led initiation often advised.' },
   { d:'Gabapentin / pregabalin', use:'Neuropathic pain', grp:'Analgesia & pain', rag:'green', note:'GP use; Schedule 3 CD — misuse/diversion awareness; taper on stopping.' },
-  { d:'Amitriptyline / duloxetine (neuropathic)', use:'Neuropathic / chronic pain', grp:'Analgesia & pain', rag:'green', note:'GP use per NICE NG215.' },
+  { d:'Amitriptyline / duloxetine (neuropathic)', use:'Neuropathic / chronic pain', grp:'Analgesia & pain', rag:'green', note:'GP use per NICE CG173 (neuropathic pain).' },
   { d:'Capsaicin 0.075% cream', use:'Neuropathic / OA pain', grp:'Analgesia & pain', rag:'green', note:'GP use; specialist advice for high-strength 8% patch (red).' },
   { d:'Lidocaine 5% medicated plasters', use:'Post-herpetic neuralgia', grp:'Analgesia & pain', rag:'amber', note:'Only licensed PHN; specialist/restricted — not for general neuropathic or MSK pain.' },
   { d:'Tapentadol', use:'Severe pain', grp:'Analgesia & pain', rag:'amber', note:'Often restricted/specialist initiation; check local APC.' },

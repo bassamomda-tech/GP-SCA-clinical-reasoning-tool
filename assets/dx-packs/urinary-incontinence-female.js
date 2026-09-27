@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Urinary Incontinence (female)
-   Shared-id triage + differential. NICE NG123 · NICE.
+   Shared-id triage + differential. NICE NG123.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -17,7 +17,7 @@
     { group: 'Contributing', id: 'uti_sx', kind: 'check', label: 'Dysuria / cloudy urine (UTI)' },
     { group: 'Contributing', id: 'caffeine_meds', kind: 'check', label: 'High caffeine / diuretic / contributing drug' },
 
-    { group: 'Red flags', id: 'haematuria', kind: 'check', label: 'Visible haematuria / recurrent UTI / pelvic mass' },
+    { group: 'Red flags', id: 'haematuria', kind: 'check', label: 'Visible haematuria / recurrent unexplained UTI / pelvic mass' },
     { group: 'Red flags', id: 'neuro', kind: 'check', label: 'New neurological symptoms (? cauda equina / cord)' }
   ];
 
@@ -37,9 +37,9 @@
       },
       {
         id: 'cancer_2ww', tier: 'cancer',
-        label: 'Visible haematuria / pelvic mass / recurrent UTI ≥45 — exclude malignancy',
-        action: 'Urology / gynae 2WW as appropriate (NICE NG12).',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        label: 'Visible haematuria at 45+ / pelvic mass / recurrent unexplained UTI at 60+ — exclude malignancy',
+        action: 'NICE NG12 (updated April 2026): unexplained visible haematuria at 45+ without UTI, or persisting or recurring after successful UTI treatment → urology suspected cancer pathway referral; recurrent or persistent unexplained UTI at 60+ → consider non-urgent urology referral; pelvic or abdominal mass (not obviously fibroids) → gynae suspected cancer pathway referral.',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.haematuria,
       },
       {
@@ -53,7 +53,7 @@
         id: 'uti', tier: 'urgent',
         label: 'Symptomatic UTI',
         action: 'Treat infection; reassess continence after treatment.',
-        source: 'NICE',
+        source: 'NICE NG109',
         when: i => i.uti_sx,
       },
       {
@@ -101,8 +101,8 @@
         keyExam: 'Continuous wetness; neuro exam.', nextIx: '\u26A1 Continuous leak → gynae (fistula); new neurology → urgent MRI (cauda equina/cord).',
         patientPhrase: 'A constant leak or new nerve symptoms need urgent specialist assessment to find a treatable cause.',
         guideUrl: '', redFlagAction: '\u26A1 Urgent gynae / neuro' },
-      { id: 'malignancy', name: 'Bladder / pelvic malignancy', summary: 'Visible haematuria / mass / recurrent UTI ≥45', baseline: 1, category: 'cant-miss',
-        keyExam: 'Pelvic mass; haematuria.', nextIx: '\u26A1 Urology / gynae 2WW (NICE NG12).',
+      { id: 'malignancy', name: 'Bladder / pelvic malignancy', summary: 'Visible haematuria ≥45 / pelvic mass / recurrent unexplained UTI ≥60', baseline: 1, category: 'cant-miss',
+        keyExam: 'Pelvic mass; haematuria.', nextIx: '\u26A1 Urology / gynae 2WW (NICE NG12 (updated April 2026)).',
         patientPhrase: 'These features need an urgent specialist look to exclude a serious cause — most are clear.',
         guideUrl: '', redFlagAction: '\u26A1 2WW' }
     ],

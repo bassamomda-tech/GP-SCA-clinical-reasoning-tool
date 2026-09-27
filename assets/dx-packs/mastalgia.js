@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Mastalgia (breast pain)
-   Shared-id triage + differential. NICE NG12
+   Shared-id triage + differential. NICE NG12 (updated April 2026)
    ============================================ */
 (function () {
   const INPUTS = [
@@ -20,7 +20,7 @@
   if (window.RGPTriage) RGPTriage.register('mastalgia-triage', {
     title: 'Breast pain — triage',
     subtitle: 'Tick features. Surfaces breast-cancer 2WW, mastitis/abscess and a cardiac mimic.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Breast pain alone rarely signifies cancer. Examine; reassure cyclical/non-cyclical mastalgia; supportive bra, analgesia; review.',
     rules: [
@@ -28,7 +28,7 @@
         id: 'breast_2ww', tier: 'cancer',
         label: 'Lump / skin or nipple change, or ≥50 with unexplained unilateral symptoms — breast 2WW',
         action: 'Breast 2WW (triple assessment).',
-        source: 'NICE NG12 §1.5', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.4', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.lump || i.skin_nipple || i.age50_unilateral,
       },
       {
@@ -49,12 +49,12 @@
         id: 'manage', tier: 'routine',
         label: 'Mastalgia — reassure & manage',
         action: 'Supportive bra, analgesia/topical NSAID; breast-pain diary; review.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
       
     ],
   });
@@ -62,7 +62,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('mastalgia-dx', {
     title: 'Breast pain — differential',
     subtitle: 'The engine weights cyclical, non-cyclical and chest-wall causes and mastitis, and always surfaces breast cancer and a cardiac mimic.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "My breast has been really painful, doctor — I'm worried it could be something serious.",
     inputs: INPUTS,
     diagnoses: [
@@ -84,7 +84,7 @@
         guideUrl: '' },
 
       { id: 'breast_cancer', name: 'Breast cancer', summary: 'Lump, skin/nipple change, ≥50 unilateral', baseline: 1, category: 'cant-miss',
-        keyExam: 'Discrete lump, skin tethering, nipple change.', nextIx: '\u26A1 Breast 2WW — triple assessment (NICE NG12).',
+        keyExam: 'Discrete lump, skin tethering, nipple change.', nextIx: '\u26A1 Breast 2WW — triple assessment (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A lump or skin/nipple change needs urgent specialist assessment to exclude cancer — most prove benign.',
         guideUrl: '', redFlagAction: '\u26A1 Breast 2WW' },
       { id: 'cardiac', name: 'Cardiac pain (mimic)', summary: 'Exertional / radiating left-sided pain', baseline: 1, category: 'cant-miss',
@@ -113,7 +113,7 @@
       cardiac: ['cardiac'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
       
     ],
   });

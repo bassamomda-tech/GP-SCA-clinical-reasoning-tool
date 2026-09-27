@@ -1,11 +1,11 @@
 /* ============================================
    Medication Chooser — Irritable Bowel Syndrome
-   NICE CG61 · NICE IBS · BNF  (NG12 colorectal red flags)
+   NICE CG61 · BNF  (NICE NG12 (updated April 2026) colorectal red flags)
    ============================================ */
 MedChooser.register('ibs', {
   title: 'IBS — symptom-targeted pharmacotherapy',
   subtitle: 'Drug selection by predominant symptom once red flags are excluded (NICE CG61). Tick the patient profile; cards re-tier live.',
-  guideline: 'NICE CG61 · NICE IBS · BNF',
+  guideline: 'NICE CG61 · BNF',
 
   factors: [
     // Predominant pattern
@@ -15,7 +15,7 @@ MedChooser.register('ibs', {
     { group:'Predominant symptom', id:'diarr', label:'Diarrhoea predominant (IBS-D)' },
     { group:'Predominant symptom', id:'refractory', label:'Refractory ≥12 months despite first-line', note:'Consider 2nd-line / referral' },
 
-    // Red flags (NG12)
+    // Red flags (NICE NG12 (updated April 2026))
     { group:'Red flags (exclude cancer first)', id:'rectal_bleed', label:'Rectal bleeding' },
     { group:'Red flags (exclude cancer first)', id:'weight_loss', label:'Unexplained weight loss' },
     { group:'Red flags (exclude cancer first)', id:'change_60', label:'Persistent change in bowel habit (FIT)' },
@@ -42,7 +42,7 @@ MedChooser.register('ibs', {
   flags: (f) => {
     const out = [];
     const ng12 = f.rectal_bleed || f.weight_loss || f.change_60 || f.mass || f.anaemia || f.night;
-    if (ng12) out.push({ tone:'red', text:'NICE NG12 — alarm feature present: this is NOT IBS until cancer excluded. FIT + FBC/ferritin; refer on the suspected lower-GI cancer (2WW) pathway if FIT ≥10 µg Hb/g. Abdominal/rectal mass → examine + urgent referral.' });
+    if (ng12) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — alarm feature present: this is NOT IBS until cancer excluded. FIT + FBC/ferritin; refer on the suspected lower-GI cancer (2WW) pathway if FIT ≥10 µg Hb/g. Abdominal/rectal mass → examine + urgent referral.' });
     if (f.fh_ca) out.push({ tone:'amber', text:'FH bowel/ovarian cancer — consider CA-125 if ovarian features; lower threshold for FIT and referral' });
     if (f.preg) out.push({ tone:'amber', text:'Pregnancy/breastfeeding — most IBS drugs restricted; bulk-forming laxatives + dietary measures first' });
     return out;
@@ -87,7 +87,7 @@ MedChooser.register('ibs', {
       detail:{
         'Dose': 'Macrogol 1–3 sachets/day titrated; or ispaghula husk',
         'Interactions': 'Separate bulk-forming fibre from other meds by ~30 min',
-        'Key teaching': 'NICE specifically advises AGAINST lactulose in IBS (worsens bloating). Soluble fibre (ispaghula), not insoluble bran.'
+        'Key teaching': 'NICE CG61 specifically advises AGAINST lactulose in IBS (worsens bloating). Soluble fibre (ispaghula), not insoluble bran.'
       },
       evaluate(f){
         if (f.diarr && !f.constip) return { tier:'avoid', reasons:[{kind:'bad', text:'Diarrhoea-predominant — laxative not indicated'}] };
@@ -203,7 +203,7 @@ MedChooser.register('ibs', {
   sources: [
     { label:'NICE CG61 — Irritable bowel syndrome in adults', url:'https://www.nice.org.uk/guidance/cg61' },
     { label:'NICE CG61 — irritable bowel syndrome', url:'https://www.nice.org.uk/guidance/cg61' },
-    { label:'NICE NG12 — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'BNF — Irritable bowel syndrome treatment summary', url:'https://bnf.nice.org.uk/treatment-summaries/irritable-bowel-syndrome/' }
   ],
 });

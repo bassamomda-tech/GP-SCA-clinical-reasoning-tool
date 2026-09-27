@@ -21,7 +21,7 @@
   if (window.RGPTriage) RGPTriage.register('raynauds-triage', {
     title: 'Raynaud\u2019s — triage',
     subtitle: 'Tick features. Surfaces digital ischaemia and secondary (connective-tissue-disease) Raynaud\u2019s.',
-    guideline: 'BSR · NICE NG12',
+    guideline: 'BSR · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Primary Raynaud\u2019s (young, symmetrical, normal ANA/nailfold) → conservative (keep warm, stop smoking) ± nifedipine. Screen for secondary causes if atypical.',
     rules: [
@@ -30,21 +30,21 @@
         label: 'Critical digital ischaemia — ulcers / gangrene / persistent ischaemic digit',
         action: 'Urgent rheumatology/vascular; consider IV prostanoid.',
         patientPhrase: '"A finger that stays white/blue with ulcers needs urgent specialist treatment to save the tissue."',
-        source: 'BSR · NICE NG12',
+        source: 'BSR · NICE NG12 (updated April 2026)',
         when: i => i.ulcers_gangrene,
       },
       {
         id: 'secondary', tier: 'urgent',
         label: 'Suspected secondary Raynaud\u2019s — CTD features / abnormal nailfold / positive ANA / onset >40',
         action: 'ANA, nailfold capillaroscopy; rheumatology referral (scleroderma/lupus screen).',
-        source:'NICE', sourceUrl:'',
+        source:'Clinical practice', sourceUrl:'',
         when: i => i.late_onset_asym || i.ctd_features || i.abnormal_nailfold_ana,
       },
       {
         id: 'primary', tier: 'routine',
         label: 'Primary Raynaud\u2019s',
         action: 'Keep warm, gloves, stop smoking, avoid triggers/beta-blockers; nifedipine if severe; reassure.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
@@ -56,7 +56,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('raynauds-dx', {
     title: 'Raynaud\u2019s — primary vs secondary',
     subtitle: 'The engine distinguishes primary Raynaud\u2019s from secondary (connective tissue disease) and drug/occupational causes, and surfaces critical digital ischaemia.',
-    guideline: 'BSR · NICE NG12',
+    guideline: 'BSR · NICE NG12 (updated April 2026)',
     patientPresenting: "My fingers go white and numb in the cold, doctor, then blue and red.",
     inputs: INPUTS,
     diagnoses: [

@@ -621,7 +621,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   pearls:[
     'Left-sided: obstructive symptoms; right-sided: anaemia.',
-    'Apply NICE NG12 thresholds for 2WW referral.',
+    'Apply NICE NG12 (updated April 2026) criteria: FIT first for most symptomatic presentations, with FIT ≥10 µg Hb/g → suspected cancer (2WW) pathway (NICE HTG690).',
   ],
   note:'Cancer here grows from a removable polyp over years — which is exactly why finding occult blood and scoping early saves lives.',
   links:{} },
@@ -639,7 +639,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   implications:[
     { clue:'Bright-red coating blood is typical', why:'Surface bleeding from a low, distal source.' },
-    { clue:'Never attribute rectal bleeding to piles without excluding cancer', why:'Both can coexist; apply NG12.' },
+    { clue:'Never attribute rectal bleeding to piles without excluding cancer', why:'Both can coexist; apply NICE NG12 (updated April 2026).' },
     { clue:'Treat the constipation', why:'Reducing straining is the core conservative measure.' },
   ],
   pearls:[

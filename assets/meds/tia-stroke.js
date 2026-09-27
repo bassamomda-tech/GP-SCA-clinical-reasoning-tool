@@ -47,7 +47,7 @@ MedChooser.register('tia-stroke', {
     if (f.af && f.acute) out.push({ tone:'amber', text:'AF + recent disabling stroke — delay anticoagulation (haemorrhagic transformation); specialist-led timing (often 1–2 weeks)' });
     if (f.mech_valve) out.push({ tone:'red', text:'Mechanical valve / mitral stenosis — DOACs contraindicated; warfarin only' });
     if (f.bleed_hx) out.push({ tone:'amber', text:'Prior intracranial bleed — antithrombotic decision needs specialist risk–benefit review' });
-    if (f.carotid) out.push({ tone:'amber', text:'Symptomatic carotid stenosis — refer for endarterectomy within NICE timeframe alongside medical therapy' });
+    if (f.carotid) out.push({ tone:'amber', text:'Symptomatic carotid stenosis — refer for endarterectomy within the NICE NG128 timeframe (surgery within 2 weeks of symptom onset) alongside medical therapy' });
     return out;
   },
 
@@ -114,7 +114,7 @@ MedChooser.register('tia-stroke', {
       detail:{
         'Dose': 'Apixaban 5 mg BD (2.5 mg BD if ≥2 of: age ≥80, weight ≤60 kg, creatinine ≥133)',
         'Interactions': 'Other antithrombotics, strong CYP3A4/P-gp inhibitors/inducers, azoles',
-        'Key teaching': 'First-line anticoagulant for AF-related stroke once haemorrhage excluded and timing safe. Preferred over warfarin (NICE). Apixaban has the lowest bleeding profile.'
+        'Key teaching': 'First-line anticoagulant for AF-related stroke once haemorrhage excluded and timing safe. Preferred over warfarin (NICE NG196). Apixaban has the lowest bleeding profile.'
       },
       evaluate(f){
         if (f.mech_valve) return { tier:'avoid', reasons:[{kind:'bad', text:'Mechanical valve / mitral stenosis — DOAC contraindicated; warfarin only'}] };

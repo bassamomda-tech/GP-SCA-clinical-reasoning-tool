@@ -1,8 +1,8 @@
-/* Triage — Chest pain · NICE CG95 / NG185 / NICE · ESC 2023 */
+/* Triage — Chest pain · NICE CG95 / NG185 / NG158 · ESC 2023 (international) */
 RGPTriage.register('chest-pain-triage', {
   title: 'Chest pain — symptom triage',
   subtitle: 'Rule out ACS, PE, aortic dissection, tension pneumothorax, tamponade. NICE CG95 + NG185.',
-  guideline: 'NICE CG95 · NG185 · ESC 2023',
+  guideline: 'NICE CG95 · NG185 · NG158 · ESC 2023 (international)',
   inputs: [
     { group:'Demographics', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
     { group:'Demographics', id:'male', kind:'check', label:'Male sex' },
@@ -60,7 +60,7 @@ RGPTriage.register('chest-pain-triage', {
       action:'ECG (saddle ST), troponin, echo. Refer same-day cardio if tamponade suspected.',
       when:(i)=>!!i.positional_relieves_lean && !!i.pleuritic },
     { id:'unstable_angina', tier:'urgent', label:'?Unstable angina — episodic, settled now',
-      action:'Refer rapid-access chest pain clinic (within 2 weeks) per NICE CG95.',
+      action:'Suspected ACS, now pain-free (NICE CG95): pain within the last 12 h with an abnormal or unavailable ECG → emergency referral (999); pain within the last 12 h with a normal ECG, or last pain 12–72 h ago → urgent same-day hospital assessment; last pain >72 h ago with no complications → detailed clinical assessment with a resting 12-lead ECG and troponin, then use clinical judgement on whether and how urgently to refer. If ACS is excluded but stable angina is possible → CG95 stable chest pain pathway (rapid-access chest pain clinic / CT coronary angiography).',
       source:'NICE CG95', sourceUrl:'https://www.nice.org.uk/guidance/cg95',
       when:(i)=>!!i.central_crushing && !i.severe_now && (i.age>=40 || !!i.cv_risk_factors) }
   ],

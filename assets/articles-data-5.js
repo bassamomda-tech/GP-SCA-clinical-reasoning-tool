@@ -1,5 +1,5 @@
 /* Reasoning GP — Articles data (batch 5: B topics)
-   RCGP/SCA examiner depth. NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -25,9 +25,9 @@
     referral:[
       'Suspected DVT (acute calf pain/swelling) → assess Wells score and arrange D-dimer/ultrasound per the DVT pathway',
       'Pulsatile popliteal swelling (possible popliteal aneurysm) → urgent vascular assessment',
-      'Atypical, rapidly enlarging, or solid swelling → imaging ± soft-tissue sarcoma pathway (NICE NG12 — unexplained enlarging soft-tissue mass → urgent USS/referral)',
+      'Atypical, rapidly enlarging, or solid swelling → imaging ± soft-tissue sarcoma pathway (NICE NG12 (updated April 2026) — unexplained enlarging soft-tissue mass → urgent USS/referral)',
       'Persistent symptomatic cyst or significant underlying joint disease → orthopaedics/MSK'],
-    source:'NICE — Baker’s cyst' },
+    source:'Clinical practice summary' },
 
   { id:'bartholin-cyst', title:'Bartholin’s cyst and abscess', category:'Women’s health', icon:'🌸',
     overview:'Obstruction of a Bartholin’s gland duct produces a cyst; secondary infection produces a painful abscess. Common in women of reproductive age, usually benign, but a solid or persistent Bartholin’s mass in a woman over 40 raises the (rare) possibility of vulval/Bartholin carcinoma.',
@@ -48,11 +48,11 @@
       'Provide self-care advice (warm baths) and safety-net for spreading infection or systemic illness',
       'Biopsy any solid or atypical lesion, and have a low threshold for referral in older women'],
     referral:[
-      'Solid, fixed, irregular or persistent Bartholin mass, especially in a woman >40 → 2WW gynae-oncology referral to exclude vulval/Bartholin carcinoma (NICE NG12 — unexplained vulval lump/ulceration)',
+      'Solid, fixed, irregular or persistent Bartholin mass, especially in a woman >40 → 2WW gynae-oncology referral to exclude vulval/Bartholin carcinoma (NICE NG12 (updated April 2026) — unexplained vulval lump/ulceration)',
       'Large or recurrent abscess/cyst needing definitive surgery → gynaecology',
       'Systemic sepsis or extensive cellulitis → urgent assessment',
       'Confirmed STI → GUM for treatment and partner notification'],
-    source:'NICE NG12' },
+    source:'NICE NG12 (updated April 2026)' },
 
   { id:'bedbugs', title:'Bedbugs', category:'Dermatology', icon:'🐛',
     overview:'Bites from Cimex lectularius — small nocturnal insects living in mattresses, furniture and crevices. They cause itchy bites but do not transmit disease. Management is reassurance, symptom relief and, crucially, environmental eradication, since the skin will keep flaring until the infestation is cleared.',
@@ -76,7 +76,7 @@
       'Diagnostic uncertainty or atypical widespread rash → dermatology',
       'Severe or extensive bullous reactions → dermatology',
       'Persistent infestation despite measures → professional pest control / environmental health'],
-    source:'NICE — Insect bites and stings' },
+    source:'NICE NG182 (Insect bites and stings: antimicrobial prescribing) / Clinical practice summary' },
 
   { id:'behcets', title:'Behçet’s disease', category:'Allergy & immunology', icon:'🔴',
     overview:'A rare, chronic, relapsing systemic vasculitis affecting vessels of all sizes, classically with recurrent oral and genital ulceration plus uveitis. It can also cause skin, joint, vascular, GI and neurological disease. The sight- and life-threatening complications (uveitis, vascular and neuro-Behçet’s) make recognition important.',
@@ -101,7 +101,7 @@
       'Any eye symptom (pain, redness, blurring, floaters) → same-day ophthalmology (uveitis)',
       'Neurological features (severe headache, focal deficit, confusion) or vascular events → urgent specialist/emergency assessment',
       'Severe oral/genital ulceration affecting nutrition/function → specialist input'],
-    source:'NICE / specialist Behçet’s guidance' },
+    source:'EULAR Behçet’s recommendations (international) / NHS Behçet’s Centres of Excellence' },
 
   { id:'benign-brain-tumours', title:'Non-cancerous (benign) brain tumours', category:'Neurology', icon:'🧠',
     aka:'Benign brain tumours',
@@ -123,11 +123,11 @@
       'Address driving (advise the patient to notify the DVLA after a seizure or relevant diagnosis) and provide written information',
       'Support patients and families and coordinate neuro-rehabilitation as needed'],
     referral:[
-      'Progressive, sub-acute loss of central neurological function in an adult → urgent direct-access MRI brain (or CT) within 2 weeks for suspected brain/CNS tumour (NICE NG12)',
-      'Child/young person with newly abnormal cerebellar or other central neurological function → very urgent referral (within 48 hours) (NICE NG12)',
+      'Progressive, sub-acute loss of central neurological function in an adult → urgent direct-access MRI brain (or CT) within 2 weeks for suspected brain/CNS tumour (NICE NG12 (updated April 2026))',
+      'Child/young person with newly abnormal cerebellar or other central neurological function → very urgent referral (within 48 hours) (NICE NG12 (updated April 2026))',
       'Features of raised ICP, rapid deterioration, or new focal deficit/seizure with red flags → emergency assessment',
       'Confirmed tumour → neurosurgery / neuro-oncology MDT'],
-    source:'NICE NG12 / NICE — Brain tumour' },
+    source:'NICE NG12 (updated April 2026) / NICE NG99 (Brain tumours (primary) and brain metastases)' },
 
   { id:'schistosomiasis', title:'Schistosomiasis (bilharzia)', category:'Infectious diseases', icon:'🪱',
     aka:'Bilharzia',
@@ -150,10 +150,10 @@
       'Maintain awareness of the long-term bladder cancer risk in chronic urinary disease'],
     referral:[
       'Acute (Katayama) or complicated schistosomiasis → infectious diseases / tropical medicine',
-      'Visible haematuria, or chronic urinary schistosomiasis → urology (long-term bladder squamous-cell carcinoma risk; investigate per haematuria/NICE NG12 bladder cancer pathway)',
+      'Visible haematuria, or chronic urinary schistosomiasis → urology (long-term bladder squamous-cell carcinoma risk; investigate per haematuria/NICE NG12 (updated April 2026) bladder cancer pathway)',
       'Hepatosplenic disease/portal hypertension → hepatology/gastroenterology',
       'Neurological schistosomiasis (rare: transverse myelitis) → emergency neurology'],
-    source:'NICE / UKHSA / tropical medicine guidance' },
+    source:'UKHSA / tropical medicine guidance' },
 
   { id:'binge-eating', title:'Binge eating disorder (BED)', category:'Mental health', icon:'🍽️',
     overview:'Recurrent episodes of eating unusually large amounts of food with a sense of loss of control and marked distress, but without the regular compensatory behaviours of bulimia. It is the commonest eating disorder, frequently associated with obesity, and is under-recognised because of stigma.',
@@ -226,9 +226,9 @@
     referral:[
       'High-risk infantile haemangioma → urgent dermatology/paediatrics (timely propranolol)',
       'Port-wine stain, especially facial/peri-ocular (?Sturge-Weber) → dermatology ± ophthalmology/neurology',
-      'Large/giant congenital melanocytic naevus, or any changing/atypical pigmented lesion → dermatology (melanoma surveillance; NICE NG12 for suspicious lesions)',
+      'Large/giant congenital melanocytic naevus, or any changing/atypical pigmented lesion → dermatology (melanoma surveillance; NICE NG12 (updated April 2026) for suspicious lesions)',
       '≥6 café-au-lait macules or other NF1 features → paediatrics/genetics'],
-    source:'NICE / BAD guidance' },
+    source:'BAD guidance' },
 
   { id:'bite-animal-human', title:'Bite (animal or human)', category:'General', icon:'🦷',
     overview:'Mammalian bites (dog, cat, human) carry a significant infection risk and, depending on context, rabies and tetanus considerations. Human bites and cat bites are especially prone to infection. Management centres on wound care, risk-assessed antibiotics, and tetanus/rabies/blood-borne-virus assessment.',
@@ -278,7 +278,7 @@
       'Suspected orbital blow-out fracture (diplopia, restricted gaze, infraorbital numbness, enophthalmos) → maxillofacial/ophthalmology',
       'Features of base-of-skull/significant head injury → emergency department (NICE NG232)',
       'Safeguarding concern → follow local child/adult protection procedures'],
-    source:'NICE NG232 (Head injury) / NICE' },
+    source:'NICE NG232 (Head injury)' },
 
   { id:'boils', title:'Boils and carbuncles (furuncles)', category:'Dermatology', icon:'🔴',
     overview:'A boil (furuncle) is a deep bacterial infection of a hair follicle, usually Staphylococcus aureus; a carbuncle is a coalescence of several into a larger, deeper lesion. Most are self-limiting or settle with simple measures; recurrent or severe disease prompts a search for predisposing factors and PVL-Staph.',
@@ -303,7 +303,7 @@
       'Large carbuncle, severe/spreading infection, or sepsis → surgical/medical admission',
       'Recurrent PVL-Staph or treatment-resistant disease → microbiology/dermatology advice',
       'Recurrent flexural abscesses with sinuses/scarring → dermatology (hidradenitis suppurativa)'],
-    source:'NICE — Boils, carbuncles and staphylococcal carriage' },
+    source:'UKHSA PVL-Staphylococcus aureus guidance / BNF' },
 
   { id:'bpd', title:'Borderline (emotionally unstable) personality disorder', category:'Mental health', icon:'🧠',
     overview:'A personality disorder characterised by pervasive instability of emotions, self-image and relationships with marked impulsivity, beginning by early adulthood. Self-harm and suicide risk are high. Care is built on a consistent, validating therapeutic relationship and structured psychological therapy — not medication.',
@@ -349,11 +349,11 @@
       'Ensure patients understand and attend their surveillance colonoscopies',
       'Safety-net for new symptoms between surveillance episodes'],
     referral:[
-      'Colorectal symptoms meeting NICE NG12 thresholds → 2WW colorectal pathway: e.g. ≥40 with abdominal pain + weight loss; ≥50 with unexplained rectal bleeding; ≥60 with iron-deficiency anaemia or change in bowel habit; use FIT (≥10 µg Hb/g) to guide urgent referral in symptomatic patients',
+      'Colorectal symptoms → FIT first (NICE NG12 (updated April 2026) / NICE HTG690): offer FIT for an abdominal mass, a change in bowel habit or iron-deficiency anaemia; aged 40+ with weight loss and abdominal pain; under 50 with rectal bleeding plus abdominal pain or weight loss; 50+ with rectal bleeding, abdominal pain or weight loss; or 60+ with anaemia; refer on the 2WW colorectal pathway if FIT ≥10 µg Hb/g; a rectal mass, unexplained anal mass or anal ulceration → refer without waiting for FIT',
       'Polyps found → colonoscopic polypectomy and histology, then risk-based surveillance',
       'Suspected hereditary polyposis / Lynch syndrome → clinical genetics + specialist surveillance',
       'Positive screening FIT → colonoscopy via the screening programme'],
-    source:'NICE NG12 / BSG polyp surveillance guidance' },
+    source:'NICE NG12 (updated April 2026) / BSG polyp surveillance guidance' },
 
   { id:'bowens-disease', title:'Bowen’s disease (squamous cell carcinoma in situ)', category:'Dermatology', icon:'🩹',
     overview:'An intra-epidermal (in-situ) squamous cell carcinoma presenting as a slow-growing, scaly erythematous patch. It is generally indolent, but a small proportion progress to invasive SCC — so the priorities are correct diagnosis, treatment, and recognising features of invasion.',
@@ -374,11 +374,11 @@
       'In immunosuppressed patients (e.g. transplant recipients) maintain closer surveillance — higher progression risk',
       'Provide patient information on the condition and its low but real malignant potential'],
     referral:[
-      'Suspected invasive SCC (nodule, induration, ulceration, rapid growth, bleeding) → 2WW suspected skin-cancer referral (NICE NG12)',
+      'Suspected invasive SCC (nodule, induration, ulceration, rapid growth, bleeding) → 2WW suspected skin-cancer referral (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty or lesions unsuitable for primary-care treatment → dermatology',
       'Immunosuppressed patients with Bowen’s disease → dermatology for surveillance',
       'Treatment failure or recurrence → dermatology'],
-    source:'NICE NG12 / BAD Bowen’s disease guidance' },
+    source:'NICE NG12 (updated April 2026) / BAD Bowen’s disease guidance' },
 
   { id:'plagiocephaly', title:'Brachycephaly and plagiocephaly (flat head)', category:'Paediatrics', icon:'👶',
     overview:'Positional skull deformities in infants — flattening at the back (brachycephaly) or one side (plagiocephaly) — caused by external moulding, strongly linked to back-sleeping (rightly recommended for SIDS prevention). They are benign and usually improve, but must be distinguished from craniosynostosis.',
@@ -403,7 +403,7 @@
       'Persistent/severe positional deformity not improving, or significant torticollis → paediatrics/physiotherapy',
       'Parental concern or diagnostic uncertainty → paediatric assessment',
       'Any sign of raised intracranial pressure or developmental concern → urgent paediatrics'],
-    source:'NICE — Plagiocephaly and brachycephaly' },
+    source:'Clinical practice summary' },
 
   { id:'breath-holding', title:'Breath-holding spells in babies and children', category:'Paediatrics', icon:'👶',
     overview:'Involuntary, reflexive episodes in young children (usually 6 months–5 years) triggered by upset, pain or frustration, in which the child stops breathing, may change colour, and may briefly lose consciousness. They are benign and self-limiting but frightening for parents; iron deficiency is a treatable contributor.',
@@ -428,7 +428,7 @@
       'Frequent pallid spells or family history of sudden cardiac death/arrhythmia → paediatric cardiology (ECG, ?long QT)',
       'Diagnostic uncertainty → paediatric assessment',
       'Refractory iron deficiency → investigate per cause'],
-    source:'NICE — Breath-holding spells' },
+    source:'Clinical practice summary' },
 
   { id:'fracture', title:'Broken bone (fracture)', category:'Musculoskeletal', icon:'🦴',
     overview:'A break in the continuity of bone, from a hairline crack to a displaced or open injury. Most follow trauma; the primary-care tasks are recognising fractures, identifying those needing emergency care, arranging imaging, and — importantly — considering pathological and fragility fractures and non-accidental injury.',
@@ -450,10 +450,10 @@
       'Address safeguarding where the history or pattern is concerning, and arrange rehabilitation/physiotherapy'],
     referral:[
       'Open fracture, gross deformity, dislocation, or neurovascular compromise → emergency orthopaedics/ED',
-      'Suspected pathological fracture (minimal trauma, preceding bone pain, known/possible malignancy) → urgent investigation; suspected myeloma → FBC, calcium, ESR/plasma viscosity, protein electrophoresis and serum free light chains together (BJP if free light chains unavailable), suspected bone metastasis/sarcoma → relevant 2WW pathway (NICE NG12)',
+      'Suspected pathological fracture (minimal trauma, preceding bone pain, known/possible malignancy) → urgent investigation; suspected myeloma → FBC, calcium, ESR/plasma viscosity, protein electrophoresis and serum free light chains together (BJP if free light chains unavailable), suspected bone metastasis/sarcoma → relevant 2WW pathway (NICE NG12 (updated April 2026))',
       'Fragility fracture → fracture-liaison/bone-health assessment for osteoporosis management',
       'Suspected non-accidental injury → follow safeguarding procedures'],
-    source:'NICE NG38 (fractures) / NICE NG12' },
+    source:'NICE NG38 (fractures) / NICE NG12 (updated April 2026)' },
 
   { id:'bronchiolitis', title:'Bronchiolitis', category:'Paediatrics', icon:'🫁',
     overview:'A common lower-respiratory-tract viral infection of infants (usually <1 year, peak 3–6 months), most often RSV, causing inflammation of the small airways. Most is mild and self-limiting, but a minority — especially young or high-risk infants — develop respiratory distress or feeding failure needing admission.',
@@ -500,10 +500,10 @@
       'Reinforce smoking cessation and review patients who fail to improve'],
     referral:[
       'Suspected pneumonia with high CRB-65 or systemic compromise → admission',
-      'Cough ≥3 weeks (unexplained), especially with haemoptysis, weight loss, or in a smoker/ex-smoker aged ≥40 → urgent chest X-ray and 2WW suspected lung-cancer pathway if indicated (NICE NG12)',
+      'Cough ≥3 weeks (unexplained), especially with haemoptysis, weight loss, or in a smoker/ex-smoker aged ≥40 → urgent chest X-ray and 2WW suspected lung-cancer pathway if indicated (NICE NG12 (updated April 2026))',
       'Recurrent episodes or underlying chronic lung disease → respiratory review',
       'Failure to improve or diagnostic uncertainty → reassess and image'],
-    source:'NICE NG120 (Cough — antimicrobial prescribing) / NICE NG12' },
+    source:'NICE NG120 (Cough — antimicrobial prescribing) / NICE NG12 (updated April 2026)' },
 
   { id:'brucellosis', title:'Brucellosis', category:'Infectious diseases', icon:'🦠',
     overview:'A zoonotic bacterial infection (Brucella species) acquired from infected livestock — via unpasteurised dairy, direct animal contact, or occupational exposure. Rare in the UK and usually imported, it causes a non-specific febrile illness ("undulant fever") and is a classic cause of pyrexia of unknown origin in returning travellers.',
@@ -528,7 +528,7 @@
       'Suspected endocarditis or neurobrucellosis → urgent specialist (cardiology/neurology) assessment',
       'Severe systemic illness → hospital admission',
       'Notify public health (statutorily notifiable)'],
-    source:'UKHSA / NICE — Fever in returning travellers' },
+    source:'UKHSA brucellosis guidance' },
 
   { id:'brugada', title:'Brugada syndrome', category:'Cardiovascular & Renal', icon:'🫀',
     overview:'An inherited (usually autosomal-dominant, often SCN5A) cardiac sodium-channelopathy causing a characteristic ECG pattern and a risk of polymorphic ventricular arrhythmia and sudden cardiac death in a structurally normal heart. It is an important cause of sudden death in young (often male) adults, frequently during sleep or fever.',
@@ -553,7 +553,7 @@
       'Aborted cardiac arrest or sustained ventricular arrhythmia → emergency admission',
       'First-degree relatives of an affected patient → cardiac genetic screening',
       'Need for ICD or arrhythmia management → electrophysiology'],
-    source:'NICE / inherited cardiac conditions guidance' }
+    source:'Inherited cardiac conditions guidance / ESC ventricular arrhythmia guideline (international)' }
 
   );
 })();

@@ -30,7 +30,7 @@
         label: 'Chemical injury',
         action: 'Immediate copious irrigation; same-day ophthalmology.',
         patientPhrase: '"We need to rinse the eye thoroughly right now and get you seen urgently."',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.trauma_chemical,
       },
       {
@@ -38,7 +38,7 @@
         label: 'Acute angle-closure glaucoma — severe pain, halos, fixed pupil, nausea',
         action: 'Same-day emergency ophthalmology — sight-threatening.',
         patientPhrase: '"This could be acute glaucoma — an eye emergency. I am arranging same-day eye assessment now."',
-        source:'NICE', sourceUrl:'https://www.nice.org.uk/guidance/ng81',
+        source:'College of Optometrists CMG (angle closure)', sourceUrl:'https://www.college-optometrists.org/clinical-guidance/clinical-management-guidelines/primaryangleclosure_primaryangleclosureglaucoma_pa',
         when: i => i.aacg,
       },
       {
@@ -52,14 +52,14 @@
         id: 'uveitis_scleritis', tier: 'urgent',
         label: 'Anterior uveitis / scleritis',
         action: 'Same-day/urgent ophthalmology; investigate systemic association.',
-        source: 'NICE',
+        source: 'College of Optometrists CMG',
         when: i => i.ciliary_flush || i.severe_boring_pain || (i.photophobia_pain && i.reduced_vision),
       },
       {
         id: 'conjunctivitis', tier: 'routine',
         label: 'Conjunctivitis / benign localised red eye',
         action: 'Hygiene; treat bacterial/allergic as needed; reassure subconjunctival haemorrhage / episcleritis; safety-net.',
-        source: 'NICE',
+        source: 'College of Optometrists CMG',
         when: i => true,
       }
     ],
@@ -95,7 +95,7 @@
       { id: 'aacg', name: 'Acute angle-closure glaucoma', summary: 'Severe pain, halos, fixed mid-dilated pupil, nausea', baseline: 1, category: 'cant-miss',
         keyExam: 'Hard red eye, fixed mid-dilated pupil, cloudy cornea.', nextIx: '\u26A1 Same-day emergency ophthalmology.',
         patientPhrase: 'A sudden rise in eye pressure is an emergency — same-day eye treatment saves sight.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng81', guideLabel: 'NICE NG81', redFlagAction: '\u26A1 Emergency ophthalmology' },
+        guideUrl: 'https://www.college-optometrists.org/clinical-guidance/clinical-management-guidelines/primaryangleclosure_primaryangleclosureglaucoma_pa', guideLabel: 'College of Optometrists CMG (angle closure)', redFlagAction: '\u26A1 Emergency ophthalmology' },
       { id: 'scleritis', name: 'Scleritis', summary: 'Severe boring pain, tender globe, systemic disease', baseline: 1, category: 'cant-miss',
         keyExam: 'Deep injection, very tender, ± vision loss.', nextIx: '\u26A1 Urgent ophthalmology; investigate systemic vasculitis/RA.',
         patientPhrase: 'A deeper inflammation that can threaten the eye and signal a systemic condition — urgent specialist care needed.',

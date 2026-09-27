@@ -1,11 +1,11 @@
 /* ============================================
    Medication Chooser — Osteoporosis (fragility-fracture prevention)
-   NICE CG146 · BNF · ROS
+   NICE NG259 (July 2026; replaced CG146) · NICE TA464 · NOGG 2024 · BNF · ROS
    ============================================ */
 MedChooser.register('osteoporosis', {
   title: 'Osteoporosis — bone protection',
   subtitle: 'Once treatment is indicated (FRAX/DXA, or a fragility fracture), an oral bisphosphonate is first-line for almost everyone. The decision shifts when swallowing/upper-GI factors, adherence, severe CKD, or very high fracture risk are present. Always optimise calcium/vitamin D first. Tick the profile; cards re-tier live.',
-  guideline: 'NICE CG146 · BNF',
+  guideline: 'NICE NG259 (July 2026; replaced CG146) · NICE TA464 · NOGG 2024 · BNF',
 
   factors: [
     { group:'Risk / indication', id:'fracture', label:'Prior fragility fracture' },
@@ -38,7 +38,7 @@ MedChooser.register('osteoporosis', {
       name:'Calcium + vitamin D (foundation)',
       examples:'Ensure adequate calcium intake + colecalciferol if deficient',
       step:'Foundation — for everyone',
-      source:'NICE CG146',
+      source:'NOGG 2024 · BNF',
       sideEffects:'Constipation, bloating (calcium); usually well tolerated',
       monitor:'Correct deficiency before antiresorptives',
       counsel:'"Before and during bone treatment we make sure your calcium and vitamin D are topped up — the bone tablets don\'t work properly without them."',
@@ -50,7 +50,7 @@ MedChooser.register('osteoporosis', {
       name:'Oral bisphosphonate (alendronate)',
       examples:'Alendronic acid 70 mg once weekly',
       step:'First-line',
-      source:'NICE CG146 · TA464',
+      source:'NICE TA464 · NOGG 2024',
       sideEffects:'Oesophagitis, dyspepsia, rare ONJ / atypical femoral fracture',
       monitor:'Review need at ~5 years (drug holiday in lower-risk)',
       counsel:'"Take it first thing on an empty stomach with a full glass of plain water, then stay upright and don\'t eat for 30 minutes — that protects your gullet. We\'ll review it after about 5 years."',
@@ -74,7 +74,7 @@ MedChooser.register('osteoporosis', {
       name:'IV zoledronate',
       examples:'Zoledronic acid 5 mg IV once yearly',
       step:'2nd-line / adherence / GI issues',
-      source:'NICE CG146 · TA464',
+      source:'NICE TA464 · NOGG 2024',
       sideEffects:'Acute-phase flu-like reaction (first dose), rare ONJ/AFF',
       monitor:'Correct calcium/vit D and check renal function first',
       counsel:'"A once-a-year drip avoids the daily/weekly tablets and the gullet precautions. The first infusion can give a few days of flu-like aching — paracetamol helps."',
@@ -93,7 +93,7 @@ MedChooser.register('osteoporosis', {
       name:'Denosumab (SC)',
       examples:'60 mg SC every 6 months',
       step:'2nd-line (CKD / bisphosphonate-unsuitable)',
-      source:'NICE CG146 · TA204',
+      source:'NICE TA204 · NOGG 2024',
       sideEffects:'Hypocalcaemia, rebound vertebral fractures if stopped, ONJ',
       monitor:'Calcium/vit D before each dose; never delay/stop without follow-on therapy',
       counsel:'"A 6-monthly injection that suits kidney problems. The key rule: it must not be stopped abruptly — bone loss rebounds fast — so we plan ahead and keep the doses on time."',
@@ -112,7 +112,7 @@ MedChooser.register('osteoporosis', {
       name:'HRT / raloxifene',
       examples:'HRT (younger/perimenopausal); raloxifene (SERM)',
       step:'Selected women',
-      source:'NICE CG146',
+      source:'NOGG 2024 · NICE NG23',
       sideEffects:'VTE risk (both); HRT per menopause profile; raloxifene worsens hot flushes',
       monitor:'Assess VTE/breast risk',
       counsel:'"In younger women around menopause, HRT both protects bone and treats flushes. Raloxifene is a bone-only option but can worsen flushes and carries a small clot risk."',
@@ -128,8 +128,8 @@ MedChooser.register('osteoporosis', {
   ],
 
   sources: [
-    { label:'NICE CG146 — Osteoporosis: assessing the risk of fragility fracture', url:'https://www.nice.org.uk/guidance/cg146' },
-    { label:'NICE CG146 — fragility fracture risk', url:'https://www.nice.org.uk/guidance/cg146' },
+    { label:'NICE NG259 — Osteoporosis: risk assessment (July 2026; replaced CG146)', url:'https://www.nice.org.uk/guidance/ng259' },
+    { label:'NOGG 2024 — UK clinical guideline for the prevention and treatment of osteoporosis', url:'https://www.nogg.org.uk/' },
     { label:'NICE TA464 — Bisphosphonates for osteoporosis', url:'https://www.nice.org.uk/guidance/ta464' },
     { label:'Royal Osteoporosis Society — Clinical guidance', url:'https://theros.org.uk/healthcare-professionals/' }
   ],

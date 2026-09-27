@@ -1,17 +1,17 @@
 /* ============================================
    Diagnostic Tool — Headache (flagship)
    ICHD-3 ·
-   SNNOOP10 red flags · NICE NG12 / NG228 / NG240
+   SNNOOP10 red flags · NICE NG12 (updated April 2026) / NG228 / NG240
    ============================================ */
 RGPDiagnostic.register('headache', {
   title: 'Headache — differential diagnosis',
   subtitle: 'Tick what the patient describes. The engine weighs every ticked feature against ICHD-3 primary headache criteria and SNNOOP10 secondary headache red flags, surfacing can\'t-miss diagnoses (SAH, meningitis, GCA, raised ICP, AACG, CO poisoning) the moment a relevant flag is ticked.',
-  guideline: 'ICHD-3 · SNNOOP10 · NICE NG12',
+  guideline: 'ICHD-3 · SNNOOP10 · NICE CG150 · NG228 · NG12 (updated April 2026)',
   patientPresenting: "I've been getting these headaches and they're not going away. My friend googled it and said it could be a brain tumour…",
 
   xlink: {
     url: '../tools/triage-tool.html',
-    label: 'Headache doesn\'t have a dedicated triage dataset yet, but new-onset headache >50 + scalp tenderness fires NICE NG12 GCA pathway in the urgent column.',
+    label: 'Headache doesn\'t have a dedicated triage dataset yet, but new-onset headache >50 + scalp tenderness fires the GCA pathway (BSR 2020) in the urgent column.',
   },
 
   // -----------------------------------------------------
@@ -234,7 +234,7 @@ RGPDiagnostic.register('headache', {
       baseline: 1,
       category: 'cant-miss',
       keyExam: 'Tender, thickened, non-pulsatile temporal arteries. Visual acuity, RAPD, fundoscopy (pale swollen disc = AION).',
-      nextIx: 'Same-day ESR + CRP + FBC + LFTs. ESR ≥50 supports. Start prednisolone 40–60mg PO immediately (60–100mg if visual sx). Urgent rheumatology / ophthalmology referral. Temporal artery biopsy / USS within 1 week — do NOT delay steroids.',
+      nextIx: 'Same-day ESR + CRP + FBC + LFTs. ESR ≥50 supports. Start prednisolone 40–60mg PO immediately (visual symptoms: 60mg PO or IV methylprednisolone per BSR 2020, same-day ophthalmology). Urgent rheumatology / ophthalmology referral. Temporal artery biopsy / USS within 1 week — do NOT delay steroids.',
       patientPhrase: 'The blood vessels supplying the scalp and the eye can become inflamed. Untreated, it can permanently affect vision — so we treat first and confirm afterwards.',
       guideUrl: '', guideLabel: 'BSR giant cell arteritis guideline (2020)',
       redFlagAction: '⚡ Same-day steroids + rheum',
@@ -248,10 +248,10 @@ RGPDiagnostic.register('headache', {
       baseline: 1,
       category: 'cant-miss',
       keyExam: 'Papilloedema, focal neurological deficit, cognitive change, false-localising CN VI palsy. Always do fundoscopy and a focused neuro exam.',
-      nextIx: 'Urgent (2WW) brain & CNS suspected cancer pathway — MRI preferred (NICE NG12). CT same-day if rapid deterioration / GCS drop.',
+      nextIx: 'Progressive sub-acute loss of central neurological function → urgent direct-access MRI brain within 2 weeks (CT if MRI contraindicated) (NICE NG12 (updated April 2026)). Same-day CT / admission if rapid deterioration / GCS drop / papilloedema.',
       patientPhrase: 'Your symptoms suggest something raising the pressure inside the skull. I\'m sending you for an urgent brain scan to see what\'s causing it.',
       guideUrl: '',
-      redFlagAction: '⚡ 2WW brain & CNS',
+      redFlagAction: '⚡ Urgent MRI (NICE NG12, updated April 2026)',
       caseLink: null,
     },
     {
@@ -419,7 +419,7 @@ RGPDiagnostic.register('headache', {
   // -----------------------------------------------------
   sources: [
     { label:'NICE CG150 — headaches', url:'https://www.nice.org.uk/guidance/cg150' },
-    { label:'NICE NG12 Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'NICE NG128 — stroke and TIA', url:'https://www.nice.org.uk/guidance/ng128' },
     { label:'NICE NG240 Meningitis', url:'https://www.nice.org.uk/guidance/ng240' },
     { label:'ICHD-3 classification', url:'https://ichd-3.org/' },

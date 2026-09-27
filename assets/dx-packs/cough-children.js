@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Cough in Children
-   Shared-id triage + differential. NICE NG143 · BTS/SIGN.
+   Shared-id triage + differential. NICE NG143 · NICE NG245 (asthma, 2024, NICE/BTS/SIGN).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -21,7 +21,7 @@
   if (window.RGPTriage) RGPTriage.register('cough-children-triage', {
     title: 'Cough in children — triage',
     subtitle: 'Tick features. Surfaces respiratory distress, pneumonia and inhaled foreign body.',
-    guideline: 'NICE NG143 · BTS/SIGN',
+    guideline: 'NICE NG143 · NICE NG245 (asthma, 2024)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Most childhood cough is viral and self-limiting. Assess work of breathing + SpO₂; treat croup/asthma per pathway; safety-net for distress, chronic wet cough, foreign body.',
     rules: [
@@ -37,14 +37,14 @@
         id: 'foreign_body', tier: 'emergency',
         label: 'Possible inhaled foreign body — sudden choking then symptoms',
         action: 'Same-day — urgent paediatric/ENT (bronchoscopy); CXR.',
-        source: 'BTS',
+        source: 'Clinical practice',
         when: i => i.foreign_body,
       },
       {
         id: 'pneumonia', tier: 'urgent',
         label: 'Possible pneumonia — fever + fast breathing / focal signs',
-        action: 'Assess; antibiotics; admit if unwell/hypoxic (BTS).',
-        source: 'BTS pneumonia',
+        action: 'Assess; antibiotics; admit if unwell/hypoxic (BTS CAP in children, 2011).',
+        source: 'BTS CAP in children (2011)',
         when: i => i.pneumonia,
       },
       {
@@ -71,7 +71,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('cough-children-dx', {
     title: 'Cough in children — differential',
     subtitle: 'The engine weights viral URTI, croup, bronchiolitis, asthma/viral wheeze and pertussis, and always surfaces pneumonia and inhaled foreign body.',
-    guideline: 'NICE NG143 · BTS/SIGN',
+    guideline: 'NICE NG143 · NICE NG245 (asthma, 2024)',
     patientPresenting: "My child's had a cough for a while, doctor.",
     inputs: INPUTS,
     diagnoses: [

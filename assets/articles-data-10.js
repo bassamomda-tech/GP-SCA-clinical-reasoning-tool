@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 10: F topics)
    NHS conditions A–Z (letter F) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -53,7 +53,7 @@
       'Acquired adult flat foot / tibialis posterior tendon dysfunction → podiatry/orthopaedics (early)',
       'Severe symptoms unresponsive to conservative care → orthopaedics',
       'Diabetic/neuropathic foot concerns → podiatry/diabetic foot service'],
-    source:'NICE — Flat feet / orthopaedic guidance' },
+    source:'Orthopaedic guidance' },
 
   { id:'floaters-flashes', title:'Floaters and flashes in the eyes', category:'Ophthalmology', icon:'👁️',
     overview:'Floaters (drifting spots/cobwebs) and flashes (brief arcs of light) are common, usually from age-related posterior vitreous detachment, and mostly benign. But the same symptoms can herald a sight-threatening retinal tear or detachment — so a sudden change demands urgent assessment to examine the retina.',
@@ -78,7 +78,7 @@
       'Visual-field "curtain"/shadow or sudden visual loss → same-day ophthalmology (suspected retinal detachment)',
       'Confirmed retinal tear/detachment → urgent ophthalmology for laser/surgery',
       'Stable long-standing floaters → reassure with safety-netting'],
-    source:'NICE — Retinal detachment / Royal College of Ophthalmologists' },
+    source:'Royal College of Ophthalmologists / College of Optometrists Clinical Management Guidelines' },
 
   { id:'flu', title:'Flu (influenza)', category:'Respiratory', icon:'🤒',
     overview:'An acute viral respiratory illness caused by influenza viruses, typically more abrupt and systemically severe than the common cold. Most healthy people recover with self-care, but it causes significant morbidity, complications and excess deaths in at-risk groups — making vaccination and recognition of complications the key tasks.',
@@ -103,7 +103,7 @@
       'At-risk patients deteriorating, or with significant comorbidity → lower threshold for assessment',
       'Suspected serious complication (myocarditis, encephalitis) → emergency referral',
       'Outbreaks (e.g. care homes) → public-health/health-protection involvement for control and prophylaxis'],
-    source:'NICE — Influenza / UKHSA seasonal guidance / Green Book' },
+    source:'NICE TA168 (influenza antivirals) / UKHSA seasonal guidance / Green Book chapter 19' },
 
   { id:'food-poisoning', title:'Food poisoning', category:'Infectious diseases', icon:'🤢',
     overview:'Illness — usually gastrointestinal — from eating food contaminated with bacteria, viruses, toxins or parasites. Most is self-limiting and managed with rehydration, but recognising dehydration, specific high-risk pathogens, and public-health duties (notification, exclusion) is essential.',
@@ -128,7 +128,7 @@
       'Suspected haemolytic uraemic syndrome (especially a child after bloody diarrhoea) or botulism → emergency admission',
       'Listeria in pregnancy/immunocompromised, or suspected enteric fever → infectious diseases',
       'Notify public health for notifiable causes/outbreaks and apply exclusion rules'],
-    source:'UKHSA / NICE — Gastroenteritis' },
+    source:'UKHSA gastrointestinal infection guidance (notifiable disease)' },
 
   { id:'foot-drop', title:'Foot drop', category:'Neurology', icon:'🦶',
     overview:'Weakness of ankle and toe dorsiflexion causing the foot to drag and a high-stepping gait. It is a sign, not a diagnosis — the priority is to localise the lesion (from spine to peripheral nerve) and recognise the emergencies, especially an acute foot drop as part of cauda equina syndrome.',
@@ -153,7 +153,7 @@
       'Acute foot drop with severe back/leg pain (?L5 radiculopathy) → urgent spinal assessment',
       'Suspected central cause (stroke, MS) or generalised neuropathy/motor neurone disease → neurology (urgent if acute)',
       'Persistent/unexplained foot drop → nerve conduction studies ± neurology/orthopaedics'],
-    source:'NICE / neurology & spinal guidance' },
+    source:'Neurology and spinal guidance' },
 
   { id:'fragile-x', title:'Fragile X syndrome', category:'Paediatrics', icon:'🧬',
     overview:'The commonest inherited cause of learning disability and a leading single-gene cause of autism, due to expansion of the FMR1 gene on the X chromosome. It affects males more severely than females. Recognising it allows diagnosis, support, and crucial genetic counselling for the wider family.',
@@ -178,7 +178,7 @@
       'Family/carrier testing and recurrence-risk counselling → clinical genetics',
       'Associated conditions (seizures, cardiac, behavioural) → relevant specialties',
       'Educational and social-care needs → SEN and support services'],
-    source:'NICE / clinical genetics guidance' },
+    source:'Clinical genetics guidance' },
 
   { id:'frozen-shoulder', title:'Frozen shoulder (adhesive capsulitis)', category:'Musculoskeletal', icon:'💪',
     overview:'A common, self-limiting but often prolonged condition of pain and progressive global restriction of shoulder movement, from inflammation and fibrosis of the joint capsule. It classically passes through painful, stiff ("frozen") and recovering ("thawing") phases over many months to a couple of years.',
@@ -203,7 +203,7 @@
       'Diagnostic uncertainty (e.g. possible arthritis, malignancy, or cuff tear) → imaging/orthopaedics',
       'Rapidly progressive or atypical presentation → reassess for alternative cause',
       'Poorly controlled diabetes complicating recovery → optimise diabetes care'],
-    source:'NICE — Shoulder pain (frozen shoulder)' },
+    source:'BESS/BOA patient care pathway: frozen shoulder' },
 
   { id:'fungal-nail', title:'Fungal nail infection (onychomycosis)', category:'Dermatology', icon:'🦶',
     overview:'A common fungal infection of the nail, usually by dermatophytes, causing thickened, discoloured, crumbly nails — most often the toenails. It is largely a cosmetic and comfort issue, but confirming the diagnosis before long antifungal courses matters, as does not missing the rare but serious mimic, subungual melanoma.',
@@ -224,11 +224,11 @@
       'Refer or biopsy any suspicious pigmented or non-healing nail lesion to exclude subungual melanoma',
       'Set expectations: nails grow slowly, so visible improvement takes many months and recurrence is common'],
     referral:[
-      'Suspected subungual melanoma (new pigmented streak, Hutchinson’s sign, non-healing nail lesion) → urgent 2WW suspected skin-cancer/melanoma referral (NICE NG12)',
+      'Suspected subungual melanoma (new pigmented streak, Hutchinson’s sign, non-healing nail lesion) → urgent 2WW suspected skin-cancer/melanoma referral (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty, treatment failure, or extensive disease → dermatology',
       'Diabetic/ischaemic foot with nail infection → podiatry/diabetic foot service',
       'Consideration of oral antifungals where interactions/comorbidity complicate prescribing → specialist advice'],
-    source:'NICE — Fungal nail infection / NICE NG12' }
+    source:'BAD onychomycosis guideline (2014) / BNF / NICE NG12 (updated April 2026)' }
 
   );
 })();

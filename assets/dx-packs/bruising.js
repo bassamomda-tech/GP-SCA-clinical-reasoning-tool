@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Bruising (easy / unexplained)
-   Shared-id triage + differential. NICE NG12 · BSH.
+   Shared-id triage + differential. NICE NG12 (updated April 2026) · BSH.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -24,16 +24,16 @@
   if (window.RGPTriage) RGPTriage.register('bruising-triage', {
     title: 'Bruising — triage',
     subtitle: 'Tick features. Surfaces leukaemia, severe thrombocytopenia and safeguarding pathways.',
-    guideline: 'NICE NG12 · BSH',
+    guideline: 'NICE NG12 (updated April 2026) · BSH',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Send FBC + film, coagulation screen, LFTs; review drugs; bleeding history (mucosal vs deep); investigate by pattern.',
     rules: [
       {
         id: 'leukaemia_2ww', tier: 'cancer',
         label: 'Possible acute leukaemia — bruising + B-symptoms / pancytopenia features',
-        action: 'Same-day FBC + film; if abnormal, immediate haematology (very urgent FBC = same-day per NG12).',
+        action: 'Same-day FBC + film; if abnormal, immediate haematology (very urgent FBC = same-day per NICE NG12 (updated April 2026)).',
         patientPhrase: '"These features mean I need an urgent blood test today and a specialist opinion to rule out a blood-cell problem."',
-        source: 'NICE NG12 §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.b_symptoms || i.pancytopenia_signs,
       },
       {
@@ -54,19 +54,19 @@
         id: 'vasculitis', tier: 'urgent',
         label: 'Palpable purpura — vasculitis / HSP',
         action: 'Urine dip (renal involvement), BP, bloods; consider HSP / systemic vasculitis; refer if systemic.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.palpable_purpura,
       },
       {
         id: 'assess', tier: 'routine',
         label: 'Bruising — assess pattern & drugs',
         action: 'FBC + film, coagulation, LFTs; review anticoagulant/antiplatelet; bleeding-disorder workup if mucosal/FH.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'BSH — Bleeding disorders', url: 'https://b-s-h.org.uk/guidelines/' }
     ],
   });
@@ -74,7 +74,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('bruising-dx', {
     title: 'Bruising — differential',
     subtitle: 'The engine separates platelet-type from coagulation-type bleeding and weights drug, senile, liver and vasculitic causes, and always surfaces leukaemia and severe thrombocytopenia.',
-    guideline: 'NICE NG12 · BSH',
+    guideline: 'NICE NG12 (updated April 2026) · BSH',
     patientPresenting: "I keep getting bruises without remembering knocking myself, doctor.",
     inputs: INPUTS,
     diagnoses: [
@@ -104,7 +104,7 @@
         guideUrl: '' },
 
       { id: 'leukaemia', name: 'Acute leukaemia / marrow failure', summary: 'Bruising + B-symptoms + anaemia/infections / pancytopenia', baseline: 1, category: 'cant-miss',
-        keyExam: 'Pallor, lymphadenopathy, hepatosplenomegaly, petechiae.', nextIx: '\u26A1 Same-day FBC + film; immediate haematology if abnormal (NICE NG12).',
+        keyExam: 'Pallor, lymphadenopathy, hepatosplenomegaly, petechiae.', nextIx: '\u26A1 Same-day FBC + film; immediate haematology if abnormal (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A few features make me want an urgent blood test today to rule out a serious blood-cell condition.',
         guideUrl: '', redFlagAction: '\u26A1 Same-day FBC + haematology' }
     ],
@@ -135,7 +135,7 @@
       leukaemia: ['b_symptoms', 'pancytopenia_signs'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
       
     ],
   });

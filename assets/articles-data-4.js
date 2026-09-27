@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 4)
    Additional A-list topics. Each: {id,title,category,icon,overview,features[],management[],referral[],source}
-   Authored to RCGP/SCA examiner depth. NICE NG12 (May 2025) 2WW pathways stated explicitly where the
+   Authored to RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where the
    presentation maps to a suspected-cancer criterion. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
@@ -20,7 +20,7 @@
       'Aggressive cardiovascular risk reduction is the core primary-care task: support smoking cessation (the single most important modifier of growth and rupture), treat hypertension, and optimise statin and antiplatelet therapy as for established vascular disease',
       'Keep BP well controlled; review the whole vascular risk profile (lipids, diabetes, weight, exercise)',
       'Ensure patients in surveillance attend their scans; explain what symptoms mandate emergency attendance',
-      'Address fitness-to-drive: DVLA must be told for an AAA ≥6.5 cm (and Group 2 entitlement is affected at lower diameters) — advise the patient of their duty to notify',
+      'Address fitness-to-drive: Group 1: the DVLA must be told for an AAA ≥6.0 cm, and driving is barred at ≥6.5 cm; Group 2 drivers must tell the DVLA of an aneurysm of any size and are barred at ≥5.5 cm — advise the patient of their duty to notify',
       'Safety-net explicitly: any new abdominal or back pain, or collapse, in someone with a known AAA is an emergency until proven otherwise',
       'Provide written information and signpost to the vascular team for repair discussions when the threshold is reached',
       'Review smoking status and BP at every relevant contact while under surveillance'],
@@ -50,13 +50,13 @@
       'Reassess after addressing the cause; persistence despite metabolic improvement warrants a rethink',
       'Document the distribution and onset speed — abrupt, extensive disease changes the differential entirely'],
     referral:[
-      'Suspected malignant acanthosis nigricans (abrupt, florid, mucosal/palmar involvement, weight loss, older non-obese adult) → urgent investigation for occult cancer; with weight loss + upper-GI symptoms arrange urgent direct-access upper-GI endoscopy (NICE NG12) and refer per the relevant 2WW pathway',
+      'Suspected malignant acanthosis nigricans (abrupt, florid, mucosal/palmar involvement, weight loss, older non-obese adult) → urgent investigation for occult cancer; with weight loss + upper-GI symptoms at 55 or over make a suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026)) and refer per the relevant 2WW pathway',
       'Diagnostic uncertainty or extensive/atypical skin disease → dermatology',
       'Suspected endocrinopathy (acromegaly, Cushing’s) → endocrinology'],
-    source:'NICE / BAD guidance' },
+    source:'BAD guidance' },
 
   { id:'achalasia', title:'Achalasia', category:'Gastroenterology', icon:'🫗',
-    overview:'A primary oesophageal motility disorder: failure of lower-oesophageal-sphincter relaxation with loss of peristalsis, causing progressive dysphagia to solids AND liquids, regurgitation and weight loss. Crucially, it is a diagnosis of exclusion — pseudoachalasia from oesophago-gastric cancer can mimic it exactly, so dysphagia must trigger urgent endoscopy.',
+    overview:'A primary oesophageal motility disorder: failure of lower-oesophageal-sphincter relaxation with loss of peristalsis, causing progressive dysphagia to solids AND liquids, regurgitation and weight loss. Crucially, it is a diagnosis of exclusion — pseudoachalasia from oesophago-gastric cancer can mimic it exactly, so dysphagia must trigger an urgent suspected cancer pathway referral.',
     features:[
       'Dysphagia to both solids and liquids from early on (in contrast to a mechanical stricture, which affects solids first) — often slowly progressive over months/years',
       'Regurgitation of undigested food (especially nocturnal, with cough/aspiration risk), chest pain, and heartburn-like symptoms that do not respond to PPIs',
@@ -65,7 +65,7 @@
       'PSEUDOACHALASIA red flags: short symptom duration, older age (>55), marked/rapid weight loss — these point to an underlying tumour at the cardia',
       'Diagnosis after endoscopy excludes mechanical/malignant causes: barium swallow ("bird-beak" tapering, dilated oesophagus) and high-resolution oesophageal manometry (the gold standard)'],
     management:[
-      'Any new dysphagia mandates urgent endoscopy first — do not attribute swallowing difficulty to reflux or anxiety without excluding cancer',
+      'Any new dysphagia mandates a suspected cancer pathway referral first (NICE NG12 (updated April 2026)) — do not attribute swallowing difficulty to reflux or anxiety without excluding cancer',
       'Refer to gastroenterology for confirmation by manometry once a mechanical/malignant cause is excluded',
       'Set expectations: achalasia is treatable but not curable — therapy relieves the obstruction, it does not restore normal peristalsis',
       'Definitive options (specialist-led): pneumatic balloon dilatation, laparoscopic Heller myotomy (often with fundoplication), or peroral endoscopic myotomy (POEM)',
@@ -74,11 +74,11 @@
       'Advise eating slowly, chewing well, plenty of fluid with meals, and sleeping propped up to reduce nocturnal regurgitation/aspiration',
       'Lifelong follow-up: there is a small long-term increased risk of oesophageal squamous-cell carcinoma — maintain awareness and re-refer for new alarm symptoms'],
     referral:[
-      'Dysphagia at any age → urgent direct-access upper-GI endoscopy for suspected oesophageal/stomach cancer (NICE NG12, 2WW pathway) — this takes priority over a motility work-up',
+      'Dysphagia at any age → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026), 2WW pathway) — this takes priority over a motility work-up',
       'Confirmed/suspected achalasia → gastroenterology for manometry and definitive treatment',
       'Aspiration, severe weight loss or inability to maintain nutrition → urgent specialist input',
       'New alarm symptoms during follow-up (worsening dysphagia, weight loss, bleeding) → re-refer on the suspected-cancer pathway'],
-    source:'NICE NG12 / BSG oesophageal guidance' },
+    source:'NICE NG12 (updated April 2026) / BSG oesophageal guidance' },
 
   { id:'acoustic-neuroma', title:'Acoustic neuroma (vestibular schwannoma)', category:'ENT', icon:'👂',
     overview:'A benign, slow-growing tumour of the Schwann cells of the vestibulocochlear (VIII) nerve in the cerebellopontine angle. Although histologically benign, growth threatens hearing, facial-nerve function and — if large — the brainstem. The cardinal primary-care clue is unilateral/asymmetric sensorineural hearing loss or one-sided tinnitus.',
@@ -103,7 +103,7 @@
       'Sudden sensorineural hearing loss → same-day ENT (a separate emergency, not to be missed while considering tumour)',
       'Facial weakness, facial numbness/loss of corneal reflex, or features of raised ICP → urgent neurosurgical referral',
       'Bilateral tumours or suspected NF2 → clinical genetics + specialist skull-base MDT'],
-    source:'NICE NG98 / NICE — Hearing loss in adults' },
+    source:'NICE NG98 (Hearing loss in adults)' },
 
   { id:'acromegaly', title:'Acromegaly', category:'Endocrine & metabolic', icon:'🤲',
     overview:'Chronic excess growth hormone, almost always from a pituitary somatotroph adenoma, producing insidious soft-tissue and skeletal overgrowth and major metabolic and cardiovascular morbidity. Because change is gradual and disfiguring features are often only obvious on comparing old photographs, diagnosis is typically delayed by years.',
@@ -128,7 +128,7 @@
       'Visual-field defect or acute severe headache (consider pituitary apoplexy) → urgent/emergency assessment',
       'Confirmed disease → pituitary MDT (endocrine surgery, neurosurgery)',
       'Comorbidity management (colonoscopy, OSA studies, cardiac assessment) as indicated'],
-    source:'NICE / Society for Endocrinology guidance' },
+    source:'Society for Endocrinology guidance' },
 
   { id:'all', title:'Acute lymphoblastic leukaemia (ALL)', category:'Haematology', icon:'🩸',
     overview:'A malignancy of immature lymphoid precursors with rapid marrow infiltration and failure. It is the commonest childhood cancer (peak 2–5 years) but also occurs in adults. Presentation reflects marrow failure (anaemia, infection, bleeding) plus infiltration; it is a haematological emergency requiring same-day action.',
@@ -149,11 +149,11 @@
       'Primary care supports shared monitoring, vaccinations per protocol, psychological and family support, and survivorship/late-effects care',
       'Maintain a high index of suspicion for relapse and late effects on long-term follow-up'],
     referral:[
-      'Child/young person with unexplained petechiae or hepatosplenomegaly → IMMEDIATE specialist referral; with pallor, persistent fatigue, unexplained infection, generalised lymphadenopathy, persistent/unexplained bone pain, unexplained bruising or unexplained fever → very urgent FBC within 48 hours for leukaemia (NICE NG12, children & young people)',
-      'Adult with possible leukaemia (pallor, fatigue, unexplained persistent/recurrent infection, unexplained bruising/bleeding, hepatosplenomegaly) → very urgent FBC within 48 hours (NICE NG12)',
+      'Child/young person with unexplained petechiae or hepatosplenomegaly → IMMEDIATE specialist referral; with pallor, persistent fatigue, unexplained infection, generalised lymphadenopathy, persistent/unexplained bone pain, unexplained bruising or unexplained fever → very urgent FBC within 48 hours for leukaemia (NICE NG12 (updated April 2026), children & young people)',
+      'Adult with possible leukaemia (pallor, fatigue, unexplained persistent/recurrent infection, unexplained bruising/bleeding, hepatosplenomegaly) → very urgent FBC within 48 hours (NICE NG12 (updated April 2026))',
       'Blasts or significant unexplained cytopenias on the film → same-day discussion with haematology',
       'Febrile/unwell patient on chemotherapy → emergency admission for neutropenic sepsis'],
-    source:'NICE NG12 (Suspected cancer) / BSH leukaemia guidance' },
+    source:'NICE NG12 (updated April 2026) / BSH leukaemia guidance' },
 
   { id:'aml', title:'Acute myeloid leukaemia (AML)', category:'Haematology', icon:'🩸',
     overview:'A malignant clonal proliferation of immature myeloid cells causing rapid marrow failure. It is the commonest acute leukaemia of adults, with incidence rising sharply with age. As with ALL, presentation is dominated by anaemia, infection and bleeding, and it demands very urgent assessment.',
@@ -174,11 +174,11 @@
       'Primary care contributes to shared follow-up, palliative/supportive care where cure is not the goal, and family support',
       'Discuss prognosis honestly — outcomes vary widely with age, fitness and cytogenetics'],
     referral:[
-      'Adult with possible leukaemia (pallor, fatigue, unexplained persistent/recurrent infection, unexplained bruising/bleeding, unexplained petechiae, or hepatosplenomegaly) → very urgent FBC within 48 hours (NICE NG12)',
+      'Adult with possible leukaemia (pallor, fatigue, unexplained persistent/recurrent infection, unexplained bruising/bleeding, unexplained petechiae, or hepatosplenomegaly) → very urgent FBC within 48 hours (NICE NG12 (updated April 2026))',
       'Blasts, unexplained cytopenias or a very high/low white count on the film → same-day haematology discussion',
       'Suspected APML or any bleeding with circulating blasts → emergency admission (DIC risk)',
       'Leucostasis (breathlessness, confusion, visual disturbance) or neutropenic sepsis → emergency'],
-    source:'NICE NG12 (Suspected cancer) / BSH AML guidance' },
+    source:'NICE NG12 (updated April 2026) / BSH AML guidance' },
 
   { id:'acute-pancreatitis', title:'Acute pancreatitis', category:'Gastroenterology', icon:'🔥',
     overview:'Acute inflammation of the pancreas, ranging from mild self-limiting disease to life-threatening necrotising pancreatitis with multi-organ failure. It is a hospital diagnosis and emergency; the primary-care role is rapid recognition, immediate referral, and — after recovery — addressing the cause and the cancer differential.',
@@ -201,9 +201,9 @@
     referral:[
       'Suspected acute pancreatitis → emergency hospital admission (surgical/medical) for resuscitation and severity assessment',
       'Severe disease, necrosis, organ failure or sepsis → critical care / specialist pancreatic centre',
-      'Unexplained first attack with weight loss in a person aged 60+ (with diarrhoea, back/abdominal pain, nausea, vomiting, or new-onset diabetes) → urgent direct-access CT (or USS if CT unavailable) for pancreatic cancer (NICE NG12)',
+      'Unexplained first attack with weight loss in a person aged 60+ (with diarrhoea, back/abdominal pain, nausea, vomiting, or new-onset diabetes) → urgent direct-access CT (or USS if CT unavailable) for pancreatic cancer (NICE NG12 (updated April 2026))',
       'Recurrent attacks or suspected chronic pancreatitis → gastroenterology'],
-    source:'NICE NG104 (Pancreatitis) / NICE NG12' },
+    source:'NICE NG104 (Pancreatitis) / NICE NG12 (updated April 2026)' },
 
   { id:'ards', title:'Acute respiratory distress syndrome (ARDS)', category:'Respiratory', icon:'🫁',
     overview:'A syndrome of acute, diffuse inflammatory lung injury causing non-cardiogenic pulmonary oedema, refractory hypoxaemia and bilateral infiltrates. It is a critical-care diagnosis arising from a precipitant such as sepsis, pneumonia, aspiration or trauma. Primary-care relevance is recognising the rapidly deteriorating, hypoxic patient who needs emergency transfer.',
@@ -275,11 +275,11 @@
       'Encourage uptake of the pre-school vision screen and prompt re-referral for any new squint or visual concern',
       'Reassure that, treated early, vision usually improves substantially'],
     referral:[
-      'Absent/white red reflex (leukocoria) at any age → urgent same-week ophthalmology referral (to exclude congenital cataract and retinoblastoma — NICE NG12 lists an absent red reflex in a child as a suspected-cancer referral)',
+      'Absent/white red reflex (leukocoria) at any age → urgent same-week ophthalmology referral (to exclude congenital cataract and retinoblastoma — NICE NG12 (updated April 2026) lists an absent red reflex in a child as a suspected-cancer referral)',
       'Suspected squint or failed/abnormal vision screen → orthoptics/paediatric ophthalmology',
       'New-onset squint in an older child, or any acute visual loss → urgent ophthalmology',
       'Family history of childhood eye disease → low threshold for assessment'],
-    source:'NICE NG12 / UK National Screening Committee (childhood vision)' },
+    source:'NICE NG12 (updated April 2026) / UK National Screening Committee (childhood vision)' },
 
   { id:'amyloidosis', title:'Amyloidosis', category:'Haematology', icon:'🧬',
     overview:'A group of disorders in which misfolded proteins deposit as insoluble amyloid fibrils in tissues, disrupting organ function. The two that matter most in adult practice are AL amyloidosis (a plasma-cell dyscrasia, related to myeloma) and ATTR amyloidosis (transthyretin, hereditary or wild-type/"senile"). Presentation is protean, so diagnosis is often late.',
@@ -301,10 +301,10 @@
       'Provide prognostic information and palliative/supportive care input where appropriate'],
     referral:[
       'Suspected amyloidosis → haematology and a specialist amyloidosis centre for biopsy and typing',
-      'Abnormal serum free light chains / paraprotein with end-organ features → very urgent haematology (with FBC, calcium, ESR/PV, protein electrophoresis and serum free light chains per the NICE NG12 myeloma panel)',
+      'Abnormal serum free light chains / paraprotein with end-organ features → very urgent haematology (with FBC, calcium, ESR/PV, protein electrophoresis and serum free light chains per the NICE NG12 (updated April 2026) myeloma panel)',
       'Cardiac amyloid features (unexplained restrictive cardiomyopathy/heart failure) → cardiology with amyloid expertise',
       'Hereditary ATTR → clinical genetics and family screening'],
-    source:'NICE / UK National Amyloidosis Centre / BSH guidance' },
+    source:'UK National Amyloidosis Centre / BSH guidance' },
 
   { id:'anabolic-steroid-misuse', title:'Anabolic steroid misuse', category:'Mental health', icon:'💉',
     overview:'Non-prescribed use of anabolic-androgenic steroids (AAS) and related image- and performance-enhancing drugs (IPEDs) to build muscle or improve appearance. Use is rising, often hidden, and carries cardiovascular, endocrine, psychiatric and (with injecting) blood-borne-virus risks. A harm-reduction, non-judgemental approach is essential.',
@@ -329,7 +329,7 @@
       'Persistent hypogonadism, infertility or complex endocrine effects → endocrinology / fertility services',
       'Significant mental-health problems or suicidality (including withdrawal depression) → mental-health services',
       'Ongoing dependence/polydrug use → specialist substance-misuse service'],
-    source:'NICE / Drug misuse guidance / BSSM' },
+    source:'NICE PH52 (Needle and syringe programmes, incl. image- and performance-enhancing drugs) / BSSM' },
 
   { id:'androgen-insensitivity', title:'Androgen insensitivity syndrome (AIS)', category:'Endocrine & metabolic', icon:'⚧',
     overview:'An X-linked disorder of sex development in which a 46,XY individual has partial or complete resistance to androgens due to androgen-receptor dysfunction. In complete AIS, the person is phenotypically female, raised female, but has testes and no uterus. Care is highly specialist and demands sensitive, multidisciplinary support.',
@@ -379,7 +379,7 @@
       'Pre-conception or pregnant women with APS → specialist obstetric/maternal-medicine clinic for aspirin + LMWH planning',
       'Suspected catastrophic APS (multi-organ thrombosis, rapid deterioration) → emergency admission',
       'Recurrent thrombosis on treatment or anticoagulation difficulties → specialist review'],
-    source:'NICE / BSH antiphospholipid guidance' },
+    source:'BSH antiphospholipid guidance' },
 
   { id:'childhood-anxiety', title:'Anxiety disorders in children and young people', category:'Mental health', icon:'🧒',
     overview:'Anxiety disorders are among the commonest mental-health problems of childhood and adolescence — including separation anxiety, generalised anxiety, social anxiety, specific phobias and panic. Distinguishing developmentally normal worry from impairing disorder, and intervening early, prevents chronicity and educational harm.',
@@ -404,7 +404,7 @@
       'Significant risk of self-harm/suicide → urgent CAMHS / crisis assessment',
       'Safeguarding concerns (abuse, neglect, exploitation) → follow local child-safeguarding procedures',
       'Suspected co-existing autism/ADHD driving anxiety → neurodevelopmental assessment pathway'],
-    source:'NICE guidance on childhood anxiety / social anxiety (CG159)' },
+    source:'NICE CG159 (Social anxiety disorder, including children and young people)' },
 
   { id:'asbestosis', title:'Asbestosis', category:'Respiratory', icon:'🫁',
     overview:'Chronic diffuse interstitial pulmonary fibrosis caused by inhaled asbestos fibres, after a long latency (typically 15–40 years). It is one of several asbestos-related diseases; the dominant clinical concern is the strong associated risk of lung cancer and mesothelioma, making the cancer pathway central.',
@@ -425,11 +425,11 @@
       'Provide respiratory follow-up and surveillance per specialist advice',
       'Offer psychological support — an asbestos diagnosis carries significant anxiety about cancer risk'],
     referral:[
-      'New or changing cough, haemoptysis, unexplained chest/shoulder pain, weight loss, or a new/unexplained pleural effusion in someone with asbestos exposure → urgent (2WW) suspected lung-cancer/mesothelioma referral; offer an urgent chest X-ray (within 2 weeks) to assess for lung cancer/mesothelioma (NICE NG12)',
+      'New or changing cough, haemoptysis, unexplained chest/shoulder pain, weight loss, or a new/unexplained pleural effusion in someone with asbestos exposure → urgent (2WW) suspected lung-cancer/mesothelioma referral; offer an urgent chest X-ray (within 2 weeks) to assess for lung cancer/mesothelioma (NICE NG12 (updated April 2026))',
       'Suspected mesothelioma or pleural effusion → urgent respiratory/chest clinic for pleural investigation',
       'Diagnostic uncertainty or progressive interstitial disease → respiratory/ILD service',
       'For benefits/compensation → signpost to the relevant assessment and advice services'],
-    source:'NICE NG12 / BTS asbestos-related disease guidance' },
+    source:'NICE NG12 (updated April 2026) / BTS asbestos-related disease guidance' },
 
   { id:'aspergillosis', title:'Aspergillosis', category:'Respiratory', icon:'🦠',
     overview:'A spectrum of disease caused by Aspergillus moulds, ranging from an allergic reaction in the airways to a fungus ball in an old cavity, to invasive, often fatal infection in the immunocompromised. Recognising which form you are dealing with — and the host — drives entirely different management.',
@@ -451,10 +451,10 @@
       'Primary care: recognise the pattern, refer appropriately, and support adherence and monitoring of long-term antifungals'],
     referral:[
       'Suspected invasive aspergillosis in an immunocompromised patient → emergency admission for urgent antifungal therapy',
-      'Haemoptysis (especially with weight loss, or in a smoker/ex-smoker aged ≥40) → urgent (2WW) suspected lung-cancer referral and urgent chest X-ray to exclude malignancy (NICE NG12) before attributing to aspergillosis',
+      'Haemoptysis (especially with weight loss, or in a smoker/ex-smoker aged ≥40) → urgent (2WW) suspected lung-cancer referral and urgent chest X-ray to exclude malignancy (NICE NG12 (updated April 2026)) before attributing to aspergillosis',
       'Suspected ABPA, aspergilloma or chronic pulmonary aspergillosis → respiratory clinic for confirmation and specialist antifungal management',
       'Massive or recurrent haemoptysis → emergency assessment (consider embolisation/surgery)'],
-    source:'NICE / BTS & IDSA aspergillosis guidance' },
+    source:'BTS / IDSA aspergillosis guidance (IDSA: international)' },
 
   { id:'autism', title:'Autism (autism spectrum condition)', category:'Mental health', icon:'🧩',
     overview:'A lifelong neurodevelopmental condition characterised by differences in social communication and interaction alongside restricted, repetitive patterns of behaviour, interests or activities, with sensory differences. It is a difference, not an illness; the GP role is recognition, referral for assessment, managing co-occurring health needs and making reasonable adjustments.',

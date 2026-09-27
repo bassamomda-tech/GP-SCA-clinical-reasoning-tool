@@ -1,10 +1,10 @@
 /* Reasoning GP — Presenting-complaint red-flag library.
    Keyed by presenting complaint. Each flag is written as a NEGATED screening
    line (what a GP documents having checked and excluded). level: 'emergency'
-   or '2ww' tags the ones that map to a 999/same-day or NICE NG12 two-week-wait
+   or '2ww' tags the ones that map to a 999/same-day or NICE NG12 (updated April 2026) two-week-wait
    pathway. Used by the Consultation Spine to pre-fill the Red flags section the
    moment a complaint is entered, and to offer tappable chips to add more.
-   Educational scaffold — verify against NICE NG12 / NICE.
+   Educational scaffold — verify against NICE NG12 (updated April 2026) and the other guidelines cited.
 
    Entry: keys[] = match strings (lowercase substrings ok); flags[] = {chip, text, level?}.
 */
@@ -94,7 +94,7 @@
   ]);
 
   add(['weight loss','unexplained weight loss'],[
-    {chip:'GI cancer', text:'Unexplained weight loss — screen for GI cancer (consider 2WW per NG12)', level:'2ww'},
+    {chip:'GI cancer', text:'Unexplained weight loss — screen for GI cancer (consider 2WW per NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Dysphagia', text:'No dysphagia', level:'2ww'},
     {chip:'Abdominal mass', text:'No abdominal or pelvic mass', level:'2ww'},
     {chip:'Rectal bleeding', text:'No rectal bleeding or change in bowel habit', level:'2ww'},
@@ -147,15 +147,15 @@
   ]);
 
   add(['rectal bleeding','pr bleeding','blood in stool'],[
-    {chip:'Colorectal Ca', text:'Rectal bleeding — apply NG12 (with weight loss/change in bowel habit/abdo mass, or age threshold) for 2WW colorectal', level:'2ww'},
-    {chip:'FIT', text:'Consider FIT testing per NG12 thresholds'},
+    {chip:'Colorectal Ca', text:'Rectal bleeding — apply NICE NG12 (updated April 2026) (with weight loss/change in bowel habit/abdo mass, or age threshold): offer FIT first; FIT ≥10 µg Hb/g → 2WW colorectal (rectal or anal mass/ulcer → refer directly)', level:'2ww'},
+    {chip:'FIT', text:'Offer FIT per NICE NG12 (updated April 2026) and NICE HTG690 (formerly DG56) — FIT ≥10 µg Hb/g → suspected cancer pathway'},
     {chip:'Massive bleed', text:'No massive rectal bleeding with haemodynamic compromise', level:'emergency'},
     {chip:'Abdominal mass', text:'No abdominal or rectal mass', level:'2ww'},
     {chip:'IDA', text:'No iron-deficiency anaemia', level:'2ww'}
   ]);
 
   add(['change in bowel habit','altered bowel habit','diarrhoea','constipation'],[
-    {chip:'Colorectal Ca', text:'No persistent change in bowel habit with weight loss/bleeding/mass (consider NG12 2WW)', level:'2ww'},
+    {chip:'Colorectal Ca', text:'No persistent change in bowel habit with weight loss/bleeding/mass (offer FIT; FIT ≥10 µg Hb/g → 2WW per NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Abdominal mass', text:'No abdominal or rectal mass', level:'2ww'},
     {chip:'IDA', text:'No unexplained iron-deficiency anaemia', level:'2ww'},
     {chip:'Obstruction', text:'No vomiting, distension and absolute constipation (obstruction)', level:'emergency'},
@@ -163,7 +163,7 @@
   ]);
 
   add(['dysphagia','difficulty swallowing','swallowing problems'],[
-    {chip:'Oesophageal Ca', text:'Dysphagia at any age — urgent direct-access OGD / 2WW upper GI (NG12)', level:'2ww'},
+    {chip:'Oesophageal Ca', text:'Dysphagia at any age — suspected cancer pathway (2WW) upper GI referral (NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Weight loss', text:'No associated weight loss', level:'2ww'},
     {chip:'Aspiration', text:'No aspiration, drooling or inability to manage saliva', level:'emergency'},
     {chip:'Neuro', text:'No new neurological cause (stroke/bulbar)', level:'emergency'}
@@ -200,7 +200,7 @@
   ]);
 
   add(['breast lump','breast pain','breast change'],[
-    {chip:'Breast Ca ≥30', text:'Unexplained breast lump age ≥30 — 2WW breast (NG12)', level:'2ww'},
+    {chip:'Breast Ca ≥30', text:'Unexplained breast lump age ≥30 — 2WW breast (NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Nipple change ≥50', text:'No nipple discharge/retraction or skin change age ≥50', level:'2ww'},
     {chip:'Axillary lump', text:'No unexplained axillary lump', level:'2ww'},
     {chip:'Inflammatory', text:'No erythema/peau d’orange (inflammatory cancer)', level:'2ww'}
@@ -214,13 +214,13 @@
   ]);
 
   add(['hoarseness','hoarse voice','voice change'],[
-    {chip:'Laryngeal Ca', text:'Persistent unexplained hoarseness >3 weeks age ≥45 — 2WW head & neck / CXR (NG12)', level:'2ww'},
+    {chip:'Laryngeal Ca', text:'Persistent unexplained hoarseness >3 weeks age ≥45 — 2WW head & neck / CXR (NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Neck lump', text:'No associated neck lump', level:'2ww'},
     {chip:'Airway', text:'No stridor or breathing difficulty', level:'emergency'}
   ]);
 
   add(['post-menopausal bleeding','postmenopausal bleeding','pmb'],[
-    {chip:'Endometrial Ca', text:'Postmenopausal bleeding — 2WW gynaecology for endometrial cancer (NG12)', level:'2ww'},
+    {chip:'Endometrial Ca', text:'Postmenopausal bleeding aged 55 and over, not attributable to HRT — 2WW gynaecology for endometrial cancer (NICE NG12 (updated April 2026)); under 55 or on HRT — assess, low threshold for referral', level:'2ww'},
     {chip:'On HRT', text:'Unscheduled bleeding pattern on HRT documented'}
   ]);
 
@@ -260,7 +260,7 @@
   add(['child fever','unwell child','febrile child','child unwell'],[
     {chip:'Sepsis/meningitis', text:'No non-blanching rash, neck stiffness, mottling or parental "very unwell" concern', level:'emergency'},
     {chip:'<3 months', text:'Not <3 months with fever ≥38 (urgent paediatric assessment)', level:'emergency'},
-    {chip:'Leukaemia', text:'No unexplained petechiae, hepatosplenomegaly or generalised lymphadenopathy (very urgent FBC — NG12)', level:'2ww'},
+    {chip:'Leukaemia', text:'No unexplained petechiae, hepatosplenomegaly or generalised lymphadenopathy (very urgent FBC — NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Dehydration', text:'No reduced wet nappies, sunken eyes or poor feeding'},
     {chip:'Resp distress', text:'No grunting, recession or cyanosis', level:'emergency'}
   ]);

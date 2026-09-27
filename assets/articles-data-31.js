@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 31: U & V topics)
    NHS A–Z (letters U and V) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -26,7 +26,7 @@
     referral:[
       'Acute severe ulcerative colitis (frequent bloody stools + systemic upset, ?toxic megacolon) → emergency admission',
       'Suspected new IBD (bloody diarrhoea, raised calprotectin) → gastroenterology',
-      'Flare not responding to treatment, or dysplasia/cancer on surveillance → gastroenterology/surgery (colorectal-cancer pathway, NICE NG12, as indicated)',
+      'Flare not responding to treatment, or dysplasia/cancer on surveillance → gastroenterology/surgery (colorectal-cancer pathway, NICE NG12 (updated April 2026), as indicated)',
       'Established disease for surveillance colonoscopy → gastroenterology'],
     source:'NICE NG130 (Ulcerative colitis)' },
 
@@ -53,7 +53,7 @@
       'Bilateral impalpable testes, especially with hypospadias/ambiguous genitalia → urgent assessment (disorder of sex development)',
       'Acquired/ascending testis → surgical referral',
       'Retractile testis → monitor and review (refer if it ascends)'],
-    source:'NICE — Undescended testes' },
+    source:'NHS Newborn and Infant Physical Examination (NIPE) screening programme / paediatric surgical guidance' },
 
   { id:'urethritis', title:'Urethritis (including non-gonococcal urethritis)', category:'Infectious diseases', icon:'🦠',
     overview:'Inflammation of the urethra, usually sexually transmitted — gonococcal (Neisseria gonorrhoeae) or non-gonococcal (commonly Chlamydia trachomatis or Mycoplasma genitalium). It presents mainly in men with discharge/dysuria. Diagnosis is an opportunity for a full sexual-health screen and partner notification.',
@@ -78,7 +78,7 @@
       'Mycoplasma genitalium, treatment failure, or recurrent/persistent urethritis → GUM (resistance-guided treatment)',
       'Complications (epididymo-orchitis, reactive arthritis) → relevant pathway',
       'Suspected gonorrhoea → ensure culture/sensitivities and GUM management'],
-    source:'BASHH / NICE — Urethritis (male)' },
+    source:'BASHH UK national guidelines on non-gonococcal urethritis and Mycoplasma genitalium' },
 
   { id:'urinary-incontinence', title:'Urinary incontinence', category:'Urology', icon:'🚻',
     overview:'Involuntary leakage of urine — common, under-reported, and very treatable, with a major impact on quality of life. The main types are stress, urgency, and mixed incontinence (plus overflow). Accurate assessment of the predominant type guides effective, largely conservative, first-line management.',
@@ -99,11 +99,11 @@
       'Provide containment products and support while treatment takes effect, and address the psychosocial impact',
       'Investigate/refer red flags (haematuria, retention, suspected neurological or fistula causes) appropriately'],
     referral:[
-      'Visible haematuria (age ≥45) or other bladder-cancer red flags → urgent suspected-cancer (2WW) referral (NICE NG12)',
+      'Visible haematuria (age ≥45) or other bladder-cancer red flags → urgent suspected-cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Refractory incontinence, significant prolapse, or for surgical options → urogynaecology/urology/continence service',
       'Voiding difficulty/urinary retention, suspected neurological cause, or palpable bladder → urology',
       'Persistent symptoms despite conservative treatment → specialist'],
-    source:'NICE NG123 (Urinary incontinence and pelvic organ prolapse)' },
+    source:'NICE NG12 (updated April 2026)3 (Urinary incontinence and pelvic organ prolapse)' },
 
   { id:'haematuria', title:'Blood in urine (haematuria)', category:'Urology', icon:'🩸',
     overview:'Blood in the urine — visible (macroscopic) or non-visible (microscopic, detected on dipstick/microscopy). It is a key alarm symptom: although causes are often benign (e.g. UTI), painless visible haematuria is bladder or kidney cancer until proven otherwise, so risk-assessment and appropriate referral are essential.',
@@ -117,18 +117,18 @@
     management:[
       'Confirm haematuria and exclude transient/benign causes (UTI, menstruation, exercise) — re-test after treating a UTI',
       'Assess for a renal (glomerular) cause: check urine protein (ACR), blood pressure, and renal function; significant proteinuria, red-cell casts, hypertension or impaired renal function point to nephrology',
-      'Apply the NICE NG12 cancer-referral criteria for urological cancer (below) — painless visible haematuria especially must not be dismissed',
+      'Apply the NICE NG12 (updated April 2026) cancer-referral criteria for urological cancer (below) — painless visible haematuria especially must not be dismissed',
       'Refer urological causes to urology for investigation (cystoscopy, imaging — CT urogram/ultrasound)',
       'Refer glomerular/renal causes to nephrology',
       'Treat identifiable benign causes (e.g. UTI, stones) and arrange appropriate follow-up',
       'Recheck and monitor persistent non-visible haematuria (blood pressure, renal function, proteinuria) where no cause is found',
       'Provide safety-netting for new visible haematuria and ensure investigations are completed'],
     referral:[
-      'Aged ≥45 with unexplained VISIBLE haematuria (without UTI, or persisting/recurring after UTI treatment) → urgent suspected bladder/renal cancer (2WW) referral (NICE NG12)',
-      'Aged ≥60 with non-visible haematuria plus dysuria or a raised white-cell count → urgent suspected bladder-cancer referral (NICE NG12)',
+      'Aged ≥45 with unexplained VISIBLE haematuria (without UTI, or persisting/recurring after UTI treatment) → urgent suspected bladder/renal cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Aged ≥60 with non-visible haematuria plus dysuria or a raised white-cell count → urgent suspected bladder-cancer referral (NICE NG12 (updated April 2026))',
       'Suspected glomerular/renal cause (proteinuria, casts, hypertension, impaired renal function) → nephrology',
       'Persistent non-visible haematuria with no urological cancer found → monitor / nephrology as indicated'],
-    source:'NICE NG12 / NICE — Haematuria' },
+    source:'NICE NG12 (updated April 2026) / BAUS and UK Kidney Association haematuria guidance' },
 
   { id:'uveitis', title:'Uveitis (including iritis)', category:'Ophthalmology', icon:'👁️',
     overview:'Inflammation of the uveal tract (iris, ciliary body, choroid). Anterior uveitis (iritis) is the commonest form — a painful red eye that is a sight-threatening cause needing same-day ophthalmology. It may be isolated or associated with systemic inflammatory disease, so recurrent/bilateral cases warrant a systemic work-up.',
@@ -153,7 +153,7 @@
       'Posterior uveitis, sudden visual loss, or floaters with reduced vision → urgent ophthalmology',
       'Recurrent/bilateral/atypical uveitis → systemic work-up ± rheumatology',
       'Associated systemic inflammatory disease → relevant specialty'],
-    source:'NICE — Uveitis / Red eye' },
+    source:'College of Optometrists Clinical Management Guidelines (anterior uveitis) / ophthalmology guidance' },
 
   { id:'vaginal-cancer', title:'Vaginal cancer', category:'Women’s health', icon:'🎗️',
     overview:'A rare gynaecological cancer, mostly squamous-cell, more common in older women and linked to HPV. It often presents with abnormal bleeding or discharge. The key is recognising abnormal (especially postmenopausal/post-coital) bleeding and examining/referring rather than attributing symptoms to benign causes.',
@@ -174,11 +174,11 @@
       'Arrange surveillance/follow-up after treatment',
       'Consider the woman’s wider risk (other HPV-related disease) and ensure screening is up to date'],
     referral:[
-      'An unexplained palpable vaginal mass or suspicious vaginal lesion → urgent (2WW) gynae-oncology referral (NICE NG12)',
+      'An unexplained palpable vaginal mass or suspicious vaginal lesion → urgent (2WW) gynae-oncology referral (NICE NG12 (updated April 2026))',
       'Unexplained postmenopausal/post-coital/persistent abnormal bleeding → examine and refer per the suspected-cancer pathway',
       'Confirmed vaginal cancer → gynae-oncology MDT',
       'Abnormal cervical/vaginal cytology → colposcopy'],
-    source:'NICE NG12 / gynae-oncology guidance' },
+    source:'NICE NG12 (updated April 2026) / gynae-oncology guidance' },
 
   { id:'vaginal-discharge', title:'Vaginal discharge', category:'Women’s health', icon:'🌸',
     overview:'A common presentation that is usually physiological or due to common, benign infections (candidiasis, bacterial vaginosis) or sexually transmitted infections. The role is to distinguish these, treat appropriately, offer STI screening where relevant, and recognise the red flags pointing to more serious pathology.',
@@ -199,11 +199,11 @@
       'Manage in pregnancy with pregnancy-safe regimens and appropriate caution',
       'Provide self-care advice (avoid irritants/douching) and review persistent/recurrent symptoms'],
     referral:[
-      'Suspicious cervical/vaginal lesion or unexplained postmenopausal/post-coital bleeding → urgent (2WW) gynae-oncology referral (NICE NG12)',
+      'Cervix or vagina appearing consistent with cancer, or postmenopausal bleeding at 55 or over not attributable to HRT → suspected cancer pathway (2WW) referral (NICE NG12 (updated April 2026)); unexplained post-coital bleeding → examine and refer to gynaecology/colposcopy',
       'Suspected STI/PID, recurrent or treatment-resistant infection → sexual-health (GUM) service',
       'Persistent unexplained discharge despite treatment → gynaecology',
       'Pregnancy with significant infection → manage with specialist advice'],
-    source:'BASHH / NICE — Vaginal discharge' },
+    source:'BASHH UK national guidelines / FSRH–BASHH Management of vaginal discharge in non-GUM settings (2012)' },
 
   { id:'varicose-veins', title:'Varicose veins', category:'Cardiovascular & Renal', icon:'🦵',
     overview:'Dilated, tortuous superficial leg veins from valvular incompetence and venous reflux. They are very common and often a cosmetic concern, but can cause symptoms and progress to skin changes and venous leg ulceration. Recognising the indications for referral (and the complications) guides management.',
@@ -249,11 +249,11 @@
       'Provide information on the usually benign nature and the reasons for any referral/investigation',
       'Arrange semen analysis where fertility is a concern (jointly with fertility services)'],
     referral:[
-      'A new, right-sided, or isolated varicocele, or one that does not decompress on lying down → urgent investigation (ultrasound/CT) for a renal mass (consider NICE NG12 renal-cancer pathway)',
+      'A new, right-sided, or isolated varicocele, or one that does not decompress on lying down → urgent investigation (ultrasound/CT) for a renal mass (consider NICE NG12 (updated April 2026) renal-cancer pathway)',
       'Varicocele with subfertility, testicular atrophy/growth arrest (especially adolescents), or significant pain → urology',
       'Diagnostic uncertainty → urology/ultrasound',
       'Fertility concerns → fertility services + urology'],
-    source:'NICE / urology guidance' },
+    source:'BAUS / EAU guidelines on sexual and reproductive health (varicocele, international) / urology guidance' },
 
   { id:'vasovagal-syncope', title:'Vasovagal syncope (fainting)', category:'Cardiovascular & Renal', icon:'🫀',
     overview:'The commonest cause of transient loss of consciousness — a reflex (neurally mediated) faint from a sudden drop in heart rate and blood pressure. It is benign, but the essential task is distinguishing it from dangerous cardiac syncope and from seizures, using the history and a few key investigations.',

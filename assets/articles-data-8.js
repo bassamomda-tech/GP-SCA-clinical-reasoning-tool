@@ -1,5 +1,5 @@
 /* Reasoning GP — Articles data (batch 8: D topics)
-   RCGP/SCA examiner depth. NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -27,7 +27,7 @@
       'Children with red-flag dehydration signs or unsafe home circumstances → urgent paediatric assessment',
       'Significant electrolyte disturbance or acute kidney injury → urgent assessment',
       'Underlying cause needing specialist input (e.g. DKA, persistent vomiting) → relevant pathway'],
-    source:'NICE NG29 (IV fluids) / NICE — Gastroenteritis' },
+    source:'NICE NG29 (IV fluids in children) / NICE CG84 (Diarrhoea and vomiting in under 5s)' },
 
   { id:'frontotemporal-dementia', title:'Frontotemporal dementia', category:'Neurology', icon:'🧠',
     overview:'A group of dementias from progressive degeneration of the frontal and temporal lobes, typically with younger onset (often 45–65) than Alzheimer’s. Memory is relatively preserved early; the hallmark is change in behaviour/personality or in language, which is frequently mistaken for a psychiatric disorder.',
@@ -127,7 +127,7 @@
       'Localised dental abscess → urgent dental service for definitive treatment',
       'Immunocompromised patient with dental infection → lower threshold for antibiotics and urgent dental/specialist care',
       'Recurrent dental infection → dental review for underlying cause'],
-    source:'NICE — Dental abscess' },
+    source:'SDCEP Drug Prescribing for Dentistry / BNF' },
 
   { id:'retinal-detachment', title:'Detached retina (retinal detachment)', category:'Ophthalmology', icon:'👁️',
     overview:'Separation of the neurosensory retina from the underlying retinal pigment epithelium — a sight-threatening emergency. Prompt recognition and same-day referral are vital, because the visual outcome depends on whether the macula is still attached when surgery is performed.',
@@ -152,7 +152,7 @@
       'Macula-threatening (macula-on) detachment → very urgent surgical assessment',
       'Posterior vitreous detachment symptoms → urgent ophthalmology to exclude a tear',
       'Any associated ocular trauma → urgent ophthalmology'],
-    source:'NICE — Retinal detachment / Royal College of Ophthalmologists' },
+    source:'Royal College of Ophthalmologists / College of Optometrists Clinical Management Guidelines' },
 
   { id:'dyspraxia', title:'Developmental co-ordination disorder (dyspraxia)', category:'Paediatrics', icon:'🧒',
     overview:'A neurodevelopmental disorder of motor co-ordination that is substantially below the expected level for age and not explained by another medical/neurological condition, significantly affecting daily activities and school. It is common, often coexists with other neurodevelopmental conditions, and benefits from early support.',
@@ -177,7 +177,7 @@
       'Coexisting neurodevelopmental concerns (ADHD, autism, learning difficulties) → relevant assessment pathway',
       'Significant functional/educational impact → educational support / SEN processes',
       'Any neurological red flags (regression, focal signs) → urgent paediatric/neurology assessment'],
-    source:'NICE / paediatric neurodevelopmental guidance' },
+    source:'Paediatric neurodevelopmental guidance' },
 
   { id:'gestational-diabetes', title:'Gestational diabetes', category:'Women’s health', icon:'🤰',
     aka:'Diabetes in pregnancy',
@@ -188,7 +188,7 @@
       'Maternal risks: pre-eclampsia, polyhydramnios, increased intervention/operative delivery, and progression to type 2 diabetes',
       'Fetal/neonatal risks: macrosomia, shoulder dystocia/birth injury, neonatal hypoglycaemia, jaundice, and (with pre-existing diabetes) congenital anomaly',
       'Distinguish from pre-existing (type 1/2) diabetes in pregnancy, which carries first-trimester and higher overall risk',
-      'Diagnosis per NICE thresholds on OGTT (fasting ≥5.6 mmol/L or 2-hour ≥7.8 mmol/L)'],
+      'Diagnosis per NICE NG3 thresholds on OGTT (fasting ≥5.6 mmol/L or 2-hour ≥7.8 mmol/L)'],
     management:[
       'Refer promptly to the joint diabetes-antenatal team for multidisciplinary care',
       'First-line is lifestyle: dietary advice (carbohydrate quality/quantity), physical activity, and blood-glucose self-monitoring against pregnancy targets',
@@ -228,7 +228,7 @@
       'Suspected pituitary/hypothalamic lesion → endocrinology/neurosurgery (pituitary MRI)',
       'Severe dehydration/hypernatraemia → emergency admission',
       'Lithium-induced or other nephrogenic DI → review cause ± nephrology/endocrinology'],
-    source:'NICE / Society for Endocrinology (AVP disorders)' },
+    source:'Society for Endocrinology (AVP disorders)' },
 
   { id:'dka', title:'Diabetic ketoacidosis (DKA)', category:'Endocrine & metabolic', icon:'🩸',
     overview:'A life-threatening acute complication of (usually type 1) diabetes from absolute insulin deficiency, causing hyperglycaemia, ketosis and metabolic acidosis. It can be the first presentation of type 1 diabetes — so recognising it in primary care and arranging immediate admission saves lives.',
@@ -278,7 +278,7 @@
       'Sudden visual loss, new significant floaters, or suspected vitreous haemorrhage/retinal detachment → urgent/same-day ophthalmology',
       'Pregnancy in a woman with diabetes → additional retinal screening',
       'Non-attendance at screening → actively encourage and re-refer'],
-    source:'NICE NG (diabetes) / NHS Diabetic Eye Screening Programme' },
+    source:'NICE NG28 (Type 2 diabetes) / NICE NG17 (Type 1 diabetes) / NHS Diabetic Eye Screening Programme' },
 
   { id:'digeorge', title:'DiGeorge syndrome (22q11.2 deletion)', category:'Paediatrics', icon:'🧬',
     overview:'A common chromosomal microdeletion syndrome with highly variable features, classically affecting the heart, parathyroids, thymus (immunity), palate and development. Recognising the pattern matters because of treatable, sometimes dangerous, components — congenital heart disease, hypocalcaemia and immunodeficiency.',
@@ -303,7 +303,7 @@
       'Congenital heart disease → paediatric cardiology',
       'Immunodeficiency / vaccine and blood-product decisions → immunology',
       'Mental-health symptoms (especially emerging psychosis) → psychiatry'],
-    source:'NICE / clinical genetics & immunology guidance' },
+    source:'Clinical genetics and immunology guidance' },
 
   { id:'diphtheria', title:'Diphtheria', category:'Infectious diseases', icon:'🦠',
     overview:'A serious, vaccine-preventable infection caused by toxin-producing Corynebacterium diphtheriae (and related species). Rare in the UK thanks to immunisation, it can cause a life-threatening membranous pharyngitis with airway obstruction and toxin-mediated cardiac and neurological damage. It is a public-health emergency.',
@@ -349,11 +349,11 @@
       'Biopsy or refer a persistent solitary scaly plaque (especially on the lower leg in an older person) to exclude Bowen’s disease/skin cancer',
       'Provide an eczema self-care plan and review response'],
     referral:[
-      'Diagnostic uncertainty, or a persistent solitary scaly plaque (possible Bowen’s/skin cancer) → dermatology (2WW if malignancy suspected — NICE NG12)',
+      'Diagnostic uncertainty, or a persistent solitary scaly plaque (possible Bowen’s/skin cancer) → dermatology (2WW if malignancy suspected — NICE NG12 (updated April 2026))',
       'Severe, widespread, or treatment-resistant disease → dermatology (phototherapy/systemic therapy)',
       'Recurrent secondary infection → review/treat',
       'Suspected tinea not responding → confirm with mycology'],
-    source:'NICE — Eczema (discoid)' },
+    source:'Clinical practice summary / BNF (topical corticosteroid potency)' },
 
   { id:'patellar-dislocation', title:'Dislocated kneecap (patellar dislocation)', category:'Musculoskeletal', icon:'🦵',
     overview:'Lateral displacement of the patella out of the trochlear groove, usually after a twisting injury or direct blow in a young, active person. Most reduce spontaneously or easily, but recurrent instability is common and some have associated osteochondral injury, so assessment and rehabilitation matter.',
@@ -378,7 +378,7 @@
       'Irreducible dislocation or neurovascular compromise → emergency department',
       'Recurrent dislocation/persistent instability → orthopaedics (consider surgery)',
       'First dislocation → physiotherapy and routine orthopaedic/MSK review as indicated'],
-    source:'NICE / orthopaedic guidance' },
+    source:'Orthopaedic guidance' },
 
   { id:'shoulder-dislocation', title:'Dislocated shoulder', category:'Musculoskeletal', icon:'💪',
     overview:'Displacement of the humeral head from the glenoid — the most commonly dislocated major joint. Most are anterior, from a fall or sporting injury. Prompt reduction relieves pain and protects neurovascular structures; recurrence is common, especially in younger patients.',
@@ -403,7 +403,7 @@
       'Irreducible dislocation, fracture-dislocation, or neurovascular deficit → urgent orthopaedics',
       'Recurrent instability, or first dislocation in a young athlete → orthopaedics (consider stabilisation surgery)',
       'Suspected rotator cuff tear (older patient, persistent weakness) → orthopaedics/MSK'],
-    source:'NICE — Shoulder dislocation / BOAST guidance' },
+    source:'BESS/BOA patient care pathway: traumatic shoulder instability / BOAST guidance' },
 
   { id:'dissociative-disorders', title:'Dissociative disorders', category:'Mental health', icon:'🧠',
     overview:'A group of conditions involving a disruption of the normal integration of consciousness, memory, identity, emotion or perception — including dissociative amnesia, depersonalisation/derealisation, and dissociative identity disorder. They are strongly linked to psychological trauma and are diagnoses of exclusion after organic causes are ruled out.',
@@ -428,7 +428,7 @@
       'Significant risk (self-harm/suicide) or acute crisis → urgent mental-health assessment',
       'Diagnostic uncertainty / possible organic cause → relevant investigation (e.g. neurology)',
       'Trauma/abuse or safeguarding concerns → appropriate support and safeguarding pathways'],
-    source:'NICE / trauma & mental-health guidance' },
+    source:'Trauma and mental-health guidance' },
 
   { id:'downs-syndrome', title:'Down’s syndrome (trisomy 21)', category:'Paediatrics', icon:'🧬',
     overview:'The commonest chromosomal cause of learning disability, due to trisomy 21. It is associated with characteristic features and a range of medical conditions across the lifespan. Care is about proactive surveillance for treatable associated conditions, supporting development, and respectful, person-centred care into adulthood.',
@@ -453,7 +453,7 @@
       'Congenital heart disease or other anomaly → relevant specialty',
       'Features of leukaemia, atlantoaxial instability (neurology), or sleep apnoea → urgent/relevant assessment',
       'Adults: cognitive decline, thyroid or mental-health concerns → appropriate services'],
-    source:'NICE / Down’s syndrome health surveillance guidance' },
+    source:'DSMIG Down’s syndrome health surveillance guidance' },
 
   { id:'dupuytrens', title:'Dupuytren’s contracture', category:'Musculoskeletal', icon:'✋',
     overview:'A benign fibroproliferative disorder of the palmar fascia causing nodules and cords that progressively flex the fingers (commonly the ring and little fingers) into the palm. It is slowly progressive and often bilateral; treatment is considered when contracture interferes with hand function.',
@@ -478,7 +478,7 @@
       'Rapidly progressive disease or strong diathesis → earlier specialist review',
       'Diagnostic uncertainty → hand specialist',
       'Recurrence after treatment → hand surgery'],
-    source:'NICE — Dupuytren’s disease' },
+    source:'NICE HTG21 (needle fasciotomy; formerly IPG43) / BSSH guidance' },
 
   { id:'dysentery', title:'Dysentery', category:'Infectious diseases', icon:'🦠',
     overview:'Inflammatory infective diarrhoea with blood and mucus, caused either by bacteria (e.g. Shigella, Campylobacter, invasive E. coli, Salmonella) or by the protozoan Entamoeba histolytica (amoebic dysentery). The priorities are rehydration, identifying the pathogen, judicious antibiotics, and public-health/notification duties.',
@@ -503,7 +503,7 @@
       'Suspected haemolytic uraemic syndrome (oliguria, pallor, bruising, AKI — especially in children after E. coli O157) → emergency admission',
       'Suspected amoebic liver abscess or treatment failure → infectious diseases',
       'Notify public health (notifiable disease) and apply exclusion rules'],
-    source:'UKHSA / NICE — Gastroenteritis' },
+    source:'UKHSA gastrointestinal infection guidance (notifiable disease)' },
 
   { id:'dyslexia', title:'Dyslexia', category:'Paediatrics', icon:'📖',
     overview:'A specific learning difficulty primarily affecting accurate and fluent word reading and spelling, arising from difficulties with phonological processing, despite adequate teaching and intelligence. It is common, persists into adulthood, and benefits from early identification and structured support to protect learning and self-esteem.',
@@ -528,7 +528,7 @@
       'Coexisting neurodevelopmental concerns (ADHD, dyspraxia, speech/language) → relevant assessment',
       'Sensory concerns → optometry/audiology',
       'Associated mental-health difficulties → appropriate support'],
-    source:'NICE / educational & specific learning difficulty guidance' },
+    source:'Educational and specific learning difficulty guidance' },
 
   { id:'dystonia', title:'Dystonia', category:'Neurology', icon:'🧠',
     overview:'A movement disorder of sustained or intermittent involuntary muscle contractions causing abnormal, often twisting, postures and repetitive movements. It ranges from focal (one body region, e.g. cervical dystonia, blepharospasm, writer’s cramp) to generalised, and may be primary/genetic or secondary — including the important drug-induced forms.',
@@ -553,7 +553,7 @@
       'Non-acute/focal/generalised dystonia → neurology / movement-disorder service (for botulinum toxin, etc.)',
       'Young patient with dystonia → neurology (exclude Wilson’s disease and dopa-responsive dystonia)',
       'Severe/refractory or generalised dystonia → specialist (consider deep brain stimulation)'],
-    source:'NICE / movement disorder specialist guidance' }
+    source:'Movement disorder specialist guidance' }
 
   );
 })();

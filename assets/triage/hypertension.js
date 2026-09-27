@@ -1,11 +1,11 @@
 /* ============================================
    Triage Tool — Hypertension
-   NICE NG136 · NG12
+   NICE NG136 · NICE NG12 (updated April 2026)
    ============================================ */
 RGPTriage.register('hypertension-triage', {
   title: 'Hypertension — triage',
   subtitle: 'Once an elevated BP is identified, what action does THIS reading demand? Same-day admission for hypertensive emergency, urgent specialist for accelerated/secondary, or routine ABPM pathway.',
-  guideline: 'NICE NG136 · NICE HTN · NG12',
+  guideline: 'NICE NG136 · NICE NG133 · NICE NG12 (updated April 2026)',
 
   inputs: [
     { group:'Demographics & context', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
@@ -38,7 +38,7 @@ RGPTriage.register('hypertension-triage', {
       tier:'emergency',
       label:'Hypertensive emergency — BP ≥180/120 with end-organ damage',
       action:'Call 999 — same-day admission',
-      source:'NICE NG136 §1.5.5 · NICE HTN',
+      source:'NICE NG136 §1.5.5',
       sourceUrl:'https://www.nice.org.uk/guidance/ng136',
       patientPhrase:'"Your blood pressure is dangerously high AND we have signs that it\'s already affecting your organs. I need to send you to hospital straight away."',
       referralTemplate:'HYPERTENSIVE EMERGENCY — admission.\nBP [SBP]/[DBP] mmHg.\nEnd-organ signs: chest pain / focal neuro / visual loss / acute LVF / encephalopathy / pre-eclampsia / haematuria.\nCreatinine [value], K⁺ [value].',
@@ -78,17 +78,17 @@ RGPTriage.register('hypertension-triage', {
       tier:'cancer',
       label:'Visible haematuria ≥45 with HTN — urological 2WW',
       action:'2-week-wait urological',
-      source:'NICE NG12 §1.6 · NG136',
+      source:'NICE NG12 (updated April 2026) §1.6 · NG136',
       sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       patientPhrase:'"Blood in the urine at your age needs an urgent specialist look to rule out a kidney or bladder cause."',
-      referralTemplate:'2WW — urological cancer (NG12 §1.6.1).\nVisible haematuria, HTN, age [value]. UTI excluded.',
+      referralTemplate:'2WW — urological cancer (NICE NG12 (updated April 2026) §1.6).\nVisible haematuria, HTN, age [value]. UTI excluded.',
       when: i => i.haematuria && i.age != null && i.age >= 45
     },
     {
       tier:'cancer',
       label:'Suspected phaeochromocytoma — paroxysmal triad ± raised metanephrines',
       action:'Urgent endocrine — 2-week-wait local pathway',
-      source:'NICE NG136 · Endocrine Society',
+      source:'NICE NG136 · Endocrine Society 2014 (international)',
       patientPhrase:'"The pattern you describe — bursts of sweating, palpitations and pallor with raised BP — can be a rare adrenal tumour. We\'ll do specific tests and refer urgently."',
       referralTemplate:'? Phaeochromocytoma.\nParoxysmal triad. Plasma/24h metanephrines: [pending / value].\nRefer endocrinology. Alpha-blocker before beta-blocker if treatment needed.',
       when: i => i.paroxysmal || i.metanephrines_high
@@ -154,7 +154,7 @@ RGPTriage.register('hypertension-triage', {
   sources: [
     { label:'NICE NG136 — Hypertension in adults', url:'https://www.nice.org.uk/guidance/ng136' },
     { label:'NICE NG133 — Hypertension in pregnancy', url:'https://www.nice.org.uk/guidance/ng133' },
-    { label:'NICE NG12 — Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) — Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'Macmillan Rapid Referral Guidelines', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
     { label:'NICE NG136 — hypertension', url:'https://www.nice.org.uk/guidance/ng136' }
   ],

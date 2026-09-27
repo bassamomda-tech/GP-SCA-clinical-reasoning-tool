@@ -98,7 +98,7 @@ MedChooser.register('hyperthyroidism', {
       sideEffects:'Hypothyroidism (expected), transient thyroiditis, eye-disease worsening',
       monitor:'Lifelong TFTs; contraception advice',
       counsel:'"A one-off radioactive iodine treatment that\'s a permanent cure. It usually leaves the thyroid underactive, so you\'d take levothyroxine afterwards. There are pregnancy and contact precautions we\'d go through."',
-      detail:{ 'Key teaching':'First-line definitive option for Graves\'/toxic nodular disease per NICE, unless contraindicated. Avoid in pregnancy/breastfeeding; caution/relative contraindication in active thyroid eye disease (can worsen — steroid cover).' },
+      detail:{ 'Key teaching':'First-line definitive option for Graves\'/toxic nodular disease per NICE NG145, unless contraindicated. Avoid in pregnancy/breastfeeding; caution/relative contraindication in active thyroid eye disease (can worsen — steroid cover).' },
       evaluate(f){
         if (f.pregnant_t1 || f.pregnant_late || f.planning) return { tier:'avoid', reasons:[{kind:'bad', text:'Pregnancy/breastfeeding/planning — radioiodine contraindicated; avoid conception for months after'}] };
         if (f.eye) return { tier:'acceptable', reasons:[{kind:'bad', text:'Active thyroid eye disease — can worsen; needs steroid cover / specialist decision'}] };

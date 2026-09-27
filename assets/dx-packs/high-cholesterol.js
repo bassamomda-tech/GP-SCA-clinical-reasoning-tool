@@ -31,7 +31,7 @@
       {
         id: 'severe_tg', tier: 'emergency',
         label: 'Severe hypertriglyceridaemia (>10 mmol/L) — pancreatitis risk',
-        action: 'Urgent: fasting repeat, address cause (alcohol, glucose), specialist if persistent; fibrate/omega-3.',
+        action: 'TG above 20 mmol/L not due to alcohol or poor glycaemic control → urgent specialist review. TG 10–20 → repeat a fasting TG (after 5 days, within 2 weeks), address secondary causes (alcohol, glucose) and seek specialist advice if still above 10 (NICE NG238). Drug treatment such as a fibrate is a specialist decision; do not offer omega-3 fatty acid compounds (NICE NG238).',
         patientPhrase: '"Your triglycerides are very high and can inflame the pancreas — we need to act on this promptly."',
         source: 'NICE NG238',
         when: i => i.tg_very_high || (i.tg != null && i.tg > 10),
@@ -85,7 +85,7 @@
         patientPhrase: 'Another condition may be raising your cholesterol. Treating it can improve the numbers.',
         guideUrl: 'https://www.nice.org.uk/guidance/ng238', guideLabel: 'NICE NG238' },
       { id: 'hypertriglyceridaemia', name: 'Hypertriglyceridaemia', summary: 'High TG, alcohol/glucose-related', baseline: 3, category: 'less-common',
-        keyExam: 'Metabolic factors.', nextIx: 'Fasting repeat; address alcohol/glucose; fibrate/omega-3 if very high.',
+        keyExam: 'Metabolic factors.', nextIx: 'Fasting repeat; address alcohol/glucose; specialist advice if TG stays above 10 mmol/L (urgent specialist review if above 20); no omega-3 fatty acid compounds (NICE NG238).',
         patientPhrase: 'Triglycerides are a different blood fat, often linked to alcohol and sugar. Lifestyle and sometimes medication help.',
         guideUrl: 'https://www.nice.org.uk/guidance/ng238', guideLabel: 'NICE NG238' },
 

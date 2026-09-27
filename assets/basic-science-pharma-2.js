@@ -270,7 +270,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     { ae:'Injection-site reactions', mechanism:'Subcutaneous monoclonal antibody.' },
   ],
   practical:[
-    { point:'Specialist / NICE-criteria use', detail:'For FH or established CVD not at target on maximal oral therapy.' },
+    { point:'Specialist / NICE TA393, TA394 and TA733 criteria', detail:'For FH or established CVD not at target on maximal oral therapy.' },
     { point:'Inclisiran is twice-yearly', detail:'Aids adherence.' },
   ],
   pearls:['PCSK9 inhibition “rescues” LDL receptors from degradation — the opposite problem to familial hypercholesterolaemia where receptors are faulty.'],
@@ -384,7 +384,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   practical:[
     { point:'Titrate dose gradually', detail:'Minimises GI side-effects.' },
-    { point:'NICE/weight & HbA1c criteria', detail:'Continuation depends on response thresholds.' },
+    { point:'NICE NG28 / TA875 weight and HbA1c criteria', detail:'Continuation depends on response thresholds.' },
   ],
   pearls:['The same delayed gastric emptying that aids weight loss causes the early nausea — go slowly.'],
   note:'Agonising GLP-1 hits insulin, glucagon, gastric emptying and appetite at once — explaining glucose control, weight loss and the GI effects.',

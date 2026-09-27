@@ -30,8 +30,8 @@
       {
         id: 'pmb_2ww', tier: 'cancer',
         label: 'Postmenopausal / unscheduled bleeding — endometrial pathway',
-        action: 'Gynae 2WW + TV USS before/alongside HRT decisions (NICE NG12).',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'Gynae 2WW + TV USS before/alongside HRT decisions (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.unscheduled_bleeding,
       },
       {
@@ -65,7 +65,7 @@
     ],
     sources: [
       { label: 'NICE NG23 — Menopause', url: 'https://www.nice.org.uk/guidance/ng23' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
@@ -98,7 +98,7 @@
         guideUrl: '', guideLabel: 'BSG iron deficiency anaemia guideline (2021)' },
 
       { id: 'endometrial', name: 'Endometrial pathology (bleeding)', summary: 'PMB / unscheduled bleeding — exclude before/around HRT', baseline: 1, category: 'cant-miss',
-        keyExam: 'Bleeding history.', nextIx: '\u26A1 Gynae 2WW + TV USS (NICE NG12).',
+        keyExam: 'Bleeding history.', nextIx: '\u26A1 Gynae 2WW + TV USS (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Any unexpected bleeding needs an urgent womb-lining check before we are reassured.',
         guideUrl: '', redFlagAction: '\u26A1 Gynae 2WW' }
     ],

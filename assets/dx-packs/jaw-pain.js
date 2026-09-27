@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Jaw Pain
-   Shared-id triage + differential. NICE · GCA · cardiac mimic.
+   Shared-id triage + differential. BSR GCA (2020) · NICE CG95 (cardiac mimic).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -20,7 +20,7 @@
   if (window.RGPTriage) RGPTriage.register('jaw-pain-triage', {
     title: 'Jaw pain — triage',
     subtitle: 'Tick features. Surfaces GCA, cardiac and spreading dental infection emergencies.',
-    guideline: 'NICE · BSR GCA · CG95',
+    guideline: 'BSR GCA (2020) · NICE CG95',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine TMJ, teeth, sinuses, salivary glands; most jaw pain is TMD or dental — analgesia, dental review, conservative TMD measures.',
     rules: [
@@ -44,21 +44,21 @@
         id: 'infection', tier: 'emergency',
         label: 'Spreading dental/facial infection (Ludwig\u2019s / abscess)',
         action: 'Same-day — airway risk; IV antibiotics + drainage; urgent maxillofacial.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.spreading_infection,
       },
       {
         id: 'dental', tier: 'urgent',
         label: 'Dental cause',
         action: 'Urgent dental review; analgesia ± antibiotics if spreading.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.dental,
       },
       {
         id: 'manage', tier: 'routine',
         label: 'TMD / sinus / neuralgia — assess & manage',
         action: 'TMD → conservative (soft diet, jaw rest, analgesia); sinusitis → treat; trigeminal neuralgia → carbamazepine + neurology.',
-        source: 'NICE',
+        source: 'NICE CG173 (trigeminal neuralgia) · clinical practice',
         when: i => true,
       }
     ],
@@ -71,7 +71,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('jaw-pain-dx', {
     title: 'Jaw pain — differential',
     subtitle: 'The engine weights TMD, dental, sinus, trigeminal neuralgia and salivary causes, and always surfaces GCA, cardiac pain and spreading infection.',
-    guideline: 'NICE · BSR · CG95',
+    guideline: 'BSR GCA (2020) · NICE CG95',
     patientPresenting: "My jaw's been aching, doctor — it hurts when I chew and clicks when I open wide.",
     inputs: INPUTS,
     diagnoses: [

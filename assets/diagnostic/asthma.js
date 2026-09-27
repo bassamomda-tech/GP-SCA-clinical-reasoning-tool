@@ -1,8 +1,8 @@
-/* Differential — Wheeze / dyspnoea · NICE NG245 · BTS-SIGN / GINA */
+/* Differential — Wheeze / dyspnoea · NICE NG245 (2024, joint NICE/BTS/SIGN) · GINA (international) */
 RGPDiagnostic.register('asthma', {
   title: 'Wheeze / chronic dyspnoea — is it really asthma?',
   subtitle: 'Most adult wheeze is asthma, but the differential includes COPD, ACO, vocal-cord dysfunction, heart failure (cardiac asthma), bronchiectasis, and chronic cough phenotypes.',
-  guideline: 'NICE NG245 / BTS-SIGN 2024 / GINA',
+  guideline: 'NICE NG245 (2024, joint NICE/BTS/SIGN) · GINA (international)',
   patientPresenting: "Salbutamol >3x/week, night cough, says her partner can hear her wheezing. Smoked socially in her 20s. Has a cat. Wonders if it's anxiety.",
   inputs: [
     { group:'Demographics', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
@@ -24,7 +24,7 @@ RGPDiagnostic.register('asthma', {
     { group:'Associated', id:'persistent_cough_3wk', kind:'check', label:'Cough or hoarseness >3 weeks' },
     { group:'Associated', id:'haemoptysis', kind:'check', label:'Haemoptysis' },
     { group:'Bloods / tests', id:'eosinophils_high', kind:'check', label:'Blood eosinophils ≥0.3 ×10⁹/L' },
-    { group:'Bloods / tests', id:'feno_high', kind:'check', label:'FeNO ≥50 ppb (adult 17+) or ≥35 ppb (age 12–16) — NG245' },
+    { group:'Bloods / tests', id:'feno_high', kind:'check', label:'FeNO ≥50 ppb (adults 17+) or ≥35 ppb (ages 5–16) — NICE NG245 (2024)' },
     { group:'Bloods / tests', id:'fev1_reversible', kind:'check', label:'FEV1 reversibility ≥12% + 200mL with SABA' },
     { group:'Bloods / tests', id:'fev1_fvc_low', kind:'check', label:'FEV1/FVC <0.7 post-bronchodilator' },
     { group:'Bloods / tests', id:'bnp_raised', kind:'check', label:'NT-proBNP raised' }
@@ -57,7 +57,7 @@ RGPDiagnostic.register('asthma', {
       guideUrl: '', guideLabel: 'BTS bronchiectasis guideline (2019)' },
     { id:'gord_cough', name:'GORD-induced cough', summary:'Chronic cough with reflux symptoms', baseline:3, category:'common',
       keyExam:'Heartburn, regurgitation. Cough worse lying down or after meals.',
-      nextIx:'4–8 week trial of PPI. If responds, supports diagnosis. NICE dyspepsia.',
+      nextIx:'4–8 week trial of PPI. If responds, supports diagnosis. NICE CG184.',
       guideUrl: 'https://www.nice.org.uk/guidance/cg184', guideLabel: 'NICE CG184' },
     { id:'post_viral', name:'Post-viral cough', summary:'Cough lasting up to 8 weeks post URTI; clears spontaneously', baseline:4, category:'common',
       keyExam:'Normal physical exam. Symptoms clearly post-viral.',
@@ -69,9 +69,9 @@ RGPDiagnostic.register('asthma', {
       guideUrl: 'https://www.nice.org.uk/guidance/cg113', guideLabel: 'NICE CG113' },
     { id:'lung_cancer', name:'Lung cancer (occult)', summary:'Persistent cough / haemoptysis ± weight loss in smoker', baseline:1, category:'cant-miss',
       keyExam:'Cachexia, clubbing, lymphadenopathy, focal chest findings, Horner / SVC obstruction.',
-      nextIx:'⚡ Urgent CXR; 2WW lung referral if persistent cough >3 weeks, haemoptysis, or abnormal CXR (NICE NG12).',
+      nextIx:'⚡ Urgent CXR (within 2 weeks) if 40+ with unexplained cough or other chest symptoms (one symptom is enough if ever smoked); suspected lung cancer pathway referral if CXR suggests lung cancer or 40+ with unexplained haemoptysis (NICE NG12 (updated April 2026)).',
       guideUrl: '',
-      redFlagAction:'⚡ 2WW lung' }
+      redFlagAction:'⚡ Urgent CXR / lung pathway' }
   ],
   effects: {
     age:(v)=>{ const o={}; if(v<35){o.copd=-8;o.asthma=+5} if(v>=35&&v<60){o.copd=+3} if(v>=60){o.copd=+8;o.lung_cancer=+5;o.hf=+5} return o; },
@@ -112,8 +112,8 @@ RGPDiagnostic.register('asthma', {
   },
   sources:[
     {label:'NICE NG245 Asthma', url:'https://www.nice.org.uk/guidance/ng245'},
-    {label:'BTS-SIGN 2024', url:'https://www.brit-thoracic.org.uk/'},
+    {label:'BTS/SIGN 158 (acute asthma, 2019)', url:'https://www.brit-thoracic.org.uk/'},
     {label:'NICE NG115 COPD', url:'https://www.nice.org.uk/guidance/ng115'},
-    {label:'NICE NG12 Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12'}
+    {label:'NICE NG12 (updated April 2026) Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12'}
   ],
 });

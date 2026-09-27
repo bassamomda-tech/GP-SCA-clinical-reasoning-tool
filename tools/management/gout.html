@@ -39,7 +39,7 @@ MG.render({
     {tone:"red", h:"\u26a0 Exclude the septic joint first", html:"A hot, swollen, acutely painful joint <b>is septic arthritis until proven otherwise</b> \u2014 especially with fever or systemic upset, immunosuppression, diabetes or a prosthetic joint. Same-day orthopaedics or rheumatology for aspiration <b>before any steroid</b>. Gout and sepsis can co-exist."},
     {tone:"amber", h:"Recognise, then confirm", html:"<b>Suspect</b> gout with rapid-onset severe pain, redness and swelling of one or both 1st MTP joints, or tophi. <b>Consider</b> it in other joints or with chronic inflammatory joint pain. <b>Serum urate \u2265360 \u00b5mol/L</b> supports the diagnosis \u2014 urate dips in a flare, so recheck \u22652 weeks after it settles. <span class='mg-src'>NG219 1.1</span>"},
     {tone:"blue", h:"Treat the flare early", html:"One of: <b>colchicine 500 micrograms 2\u20134 times daily</b>, an <b>NSAID at full anti-inflammatory dose + PPI</b>, or <b>prednisolone 30\u201335 mg for 3\u20135 days</b>. Choose by kidneys, gut, heart and interactions. <b>Never stop established urate-lowering therapy during a flare.</b>"},
-    {tone:"plain", h:"Then treat the urate", html:"Offer <b>urate-lowering therapy</b> to everyone with confirmed gout \u2014 first-line <b>allopurinol</b> 100 mg daily (50 mg in CKD or the elderly), up by 100 mg every ~4 weeks against monthly urate, with <b>colchicine flare cover for up to 6 months</b>. Usually lifelong. <span class='mg-src'>NG219 1.4</span>"},
+    {tone:"cream", h:"Then treat the urate", html:"Discuss <b>urate-lowering therapy</b> with everyone with gout, and offer it for multiple or troublesome flares, CKD stage 3\u20135, diuretic therapy, tophi or chronic gouty arthritis \u2014 first-line <b>allopurinol</b> 100 mg daily (50 mg in CKD or the elderly), up by 100 mg every ~4 weeks against monthly urate, with <b>colchicine flare cover for up to 6 months</b>. Usually lifelong. <span class='mg-src'>NG219 1.5</span>"},
     {tone:"green", h:"Target, not dose", html:"<b>Urate &lt;360 \u00b5mol/L</b> \u2014 or <b>&lt;300</b> with tophi, joint damage or ongoing flares. \u201cOn 100 mg for five years, still flaring\u201d is under-titration \u2014 the commonest failure in UK gout care."}
   ],
   pathwaySub:"The whole consultation in five moves. The red step is where patients come to harm \u2014 do not skip it.",
@@ -55,12 +55,12 @@ MG.render({
     {id:"confirm", nav:"Confirm", title:"Confirming the diagnosis", sub:"The NG219 recognition tiers, the serum-urate rule that catches people out, and the mimics. This is the diagnostic core of the page.",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"teal", h:"<b>Suspect</b> gout", html:"Rapid-onset (often overnight) severe pain, redness and swelling in <b>one or both 1st MTP joints</b>, <b>or</b> the presence of <b>tophi</b> \u2014 look at ears, elbows and fingers.", src:"NG219 1.1.1"},
-         {tone:"teal", h:"<b>Consider</b> gout", html:"The same rapid-onset picture in <b>other joints</b> \u2014 midfoot, ankle, knee, wrist, fingers \u2014 or in someone with <b>chronic inflammatory joint pain</b>. Gout here is routinely mislabelled as cellulitis or osteoarthritis.", src:"NG219 1.1.2"}
+         {tone:"blue", h:"<b>Suspect</b> gout", html:"Rapid-onset (often overnight) severe pain, redness and swelling in <b>one or both 1st MTP joints</b>, <b>or</b> the presence of <b>tophi</b> \u2014 look at ears, elbows and fingers.", src:"NG219 1.1.1"},
+         {tone:"blue", h:"<b>Consider</b> gout", html:"The same rapid-onset picture in <b>other joints</b> \u2014 midfoot, ankle, knee, wrist, fingers \u2014 or in someone with <b>chronic inflammatory joint pain</b>. Gout here is routinely mislabelled as cellulitis or osteoarthritis.", src:"NG219 1.1.2"}
        ]},
        {b:"dl", rows:[
          ["Typical course","Peaks within 24 h; self-resolves over 1\u20132 weeks even untreated. Recurrent attacks, intercritical periods and tophaceous deposits follow if urate stays high"],
-         ["Serum urate <span class='mg-src'>NG219 1.2</span>","<b>\u2265360 \u00b5mol/L supports the diagnosis</b> \u2014 but urate <b>dips during a flare</b>: if &lt;360 and gout is still suspected, <b>recheck \u22652 weeks after it settles</b>. A normal level mid-flare excludes nothing"],
+         ["Serum urate <span class='mg-src'>NG219</span>","<b>\u2265360 \u00b5mol/L supports the diagnosis</b> \u2014 but urate <b>dips during a flare</b>: if &lt;360 and gout is still suspected, <b>recheck \u22652 weeks after it settles</b>. A normal level mid-flare excludes nothing"],
          ["Record the baseline","The pre-treatment urate is the reference against which treat-to-target titration is judged \u2014 document it"],
          ["Aspirate when in doubt","Negatively birefringent needle crystals confirm gout, and the same sample excludes sepsis and CPPD (positively birefringent rhomboids \u2014 older patients, knee or wrist, chondrocalcinosis on X-ray)"],
          ["Imaging alternative","X-ray, ultrasound (<b>double-contour sign</b>) or <b>dual-energy CT</b> where aspiration cannot be done \u2014 but never delay admission for imaging"]
@@ -86,9 +86,9 @@ MG.render({
     {id:"workup", nav:"Work-up", title:"Work-up \u2014 the bloods a gout diagnosis should trigger", sub:"Gout is a metabolic disease. The flare is often the door through which four other conditions are found.",
      blocks:[
        {b:"cards", items:[
-         {tone:"plain", h:"Baseline for everyone", html:"<b>U&amp;E and eGFR</b> (dictates allopurinol starting dose and colchicine dosing), <b>lipids</b>, <b>HbA1c</b>, <b>LFTs</b>, blood pressure and weight."},
-         {tone:"plain", h:"Find the driver", html:"Thiazide and loop diuretics, low-dose aspirin (minor), <b>ciclosporin</b>, alcohol, chemotherapy (tumour lysis), recent surgery, dehydration."},
-         {tone:"purple", h:"NG12 \u2014 no criterion applies", html:"Gout is <b>not</b> a NICE NG12 suspected-cancer criterion, so there is no 2WW route from this diagnosis. See <a href=\"#refer\">Refer</a> for the one situation in which the picture should be switched to an NG12 pathway.", src:"stated explicitly"}
+         {tone:"blue", h:"Baseline for everyone", html:"<b>U&amp;E and eGFR</b> (dictates allopurinol starting dose and colchicine dosing), <b>lipids</b>, <b>HbA1c</b>, <b>LFTs</b>, blood pressure and weight."},
+         {tone:"blue", h:"Find the driver", html:"Thiazide and loop diuretics, low-dose aspirin (minor), <b>ciclosporin</b>, alcohol, chemotherapy (tumour lysis), recent surgery, dehydration."},
+         {tone:"blue", h:"NG12 \u2014 no criterion applies", html:"Gout is <b>not</b> a NICE NG12 suspected-cancer criterion, so there is no 2WW route from this diagnosis. See <a href=\"#refer\">Refer</a> for the one situation in which the picture should be switched to an NG12 pathway.", src:"NICE NG12 (updated April 2026)"}
        ]},
        {b:"dl", rows:[
          ["Assess the burden","Flares per year, tophi, joint damage, urate stones, CKD stage, diuretic use, cardiovascular and metabolic disease \u2014 this is what decides how hard you push ULT"],
@@ -125,7 +125,7 @@ MG.render({
        ]}
      ]},
 
-    {id:"ladder", nav:"Treatment ladder", title:"Urate-lowering therapy \u2014 low start, flare cover, titrate to target", sub:"Offer ULT to everyone with confirmed gout; push hardest where there are recurrent flares, CKD stage 3\u20135, diuretic therapy, tophi, chronic gouty arthritis, urate stones or young onset. Discuss it after a first attack rather than defaulting to waiting.",
+    {id:"ladder", nav:"Treatment ladder", title:"Urate-lowering therapy \u2014 low start, flare cover, titrate to target", sub:"Discuss ULT with everyone with gout; NICE NG219 1.5.1 says offer it, treat-to-target, where there are multiple or troublesome flares, CKD stage 3\u20135, diuretic therapy, tophi or chronic gouty arthritis, and it is also worth pressing where there are urate stones or young onset. Discuss it after a first attack rather than defaulting to waiting.",
      blocks:[
        {b:"ladder", steps:[
          {step:"1st", title:"Allopurinol \u2014 start low, go slow, don't stop", when:"first-line for everyone",
@@ -175,9 +175,9 @@ MG.render({
        {b:"cards", items:[
          {tone:"red", h:"Same day", html:"Suspected septic arthritis \u2192 aspiration before steroids, admission. Systemically unwell with a polyarticular flare."},
          {tone:"amber", h:"Diagnostic doubt", html:"Atypical joints, onset under 30 (enzyme defects, renal disease), or where crystal confirmation is needed."},
-         {tone:"plain", h:"Treatment failure", html:"ULT contraindicated, not tolerated or ineffective; urate &gt;360 despite maximum tolerated ULT; flares or tophi persisting at target \u2192 combination therapy, uricosurics, IL-1 blockade."},
-         {tone:"plain", h:"Intolerance", html:"Allopurinol hypersensitivity \u2014 especially after a rash, where desensitisation and alternatives are specialist calls \u2014 with febuxostat also unsuitable."},
-         {tone:"plain", h:"Complex renal", html:"<b>eGFR &lt;45</b> where standard ULT is constrained, eGFR &lt;30, transplant recipients (azathioprine and ciclosporin interactions), urate nephropathy or stones."},
+         {tone:"blue", h:"Treatment failure", html:"ULT contraindicated, not tolerated or ineffective; urate &gt;360 despite maximum tolerated ULT; flares or tophi persisting at target \u2192 combination therapy, uricosurics, IL-1 blockade."},
+         {tone:"blue", h:"Intolerance", html:"Allopurinol hypersensitivity \u2014 especially after a rash, where desensitisation and alternatives are specialist calls \u2014 with febuxostat also unsuitable."},
+         {tone:"blue", h:"Complex renal", html:"<b>eGFR &lt;45</b> where standard ULT is constrained, eGFR &lt;30, transplant recipients (azathioprine and ciclosporin interactions), urate nephropathy or stones."},
          {tone:"purple", h:"When it is <em>not</em> gout <span class='tw'>NG12</span>", html:"Gout has no 2WW pathway. But if the picture turns out to be an <b>unexplained bone or soft-tissue lump</b>, or <b>unexplained bone pain with weight loss</b>, switch to the relevant NG12 sarcoma or myeloma route rather than managing it as crystal disease."}
        ]},
        {b:"say", html:"Gout is one of the few kinds of arthritis we can effectively switch off \u2014 but the part people miss is that the daily tablet has to be pushed up until your blood level hits the target, and then kept there for good. Do that and the attacks stop; skip it and they always come back."}
@@ -192,11 +192,11 @@ MG.render({
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named recommendation.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>NICE NG219 \u2014 Gout: diagnosis and management (2022)</b><br><a href="https://www.nice.org.uk/guidance/ng219" rel="noopener">nice.org.uk/guidance/ng219</a><span class="rd"> \u2014 recognition tiers (1.1), serum urate and confirmation (1.2), flare management (1.3), urate-lowering therapy and treat-to-target (1.4), referral</span></li>'+
+         '<li><b>NICE NG219 \u2014 Gout: diagnosis and management (2022)</b><br><a href="https://www.nice.org.uk/guidance/ng219" rel="noopener">nice.org.uk/guidance/ng219</a><span class="rd"> \u2014 recognition tiers (1.1.1\u20131.1.2), serum urate and confirmation, flare management, urate-lowering therapy and treat-to-target (1.5, including the 1.5.1 offer criteria), referral</span></li>'+
          '<li><b>NICE NG219 \u2014 Gout: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng219" rel="noopener">nice.org.uk/guidance/ng219</a><span class="rd"> \u2014 primary-care operationalisation: flare drug choice by comorbidity, prophylaxis duration, monitoring intervals</span></li>'+
          '<li><b>British Society for Rheumatology \u2014 Management of gout (2017)</b><span class="rd"> \u2014 treat-to-target thresholds (&lt;360, &lt;300 for tophaceous disease), specialist options</span></li>'+
          '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> \u2014 all doses: colchicine in renal impairment, allopurinol titration, febuxostat, and the azathioprine, warfarin, theophylline and CYP3A4/P-gp interactions</span></li>'+
-         '<li><b>MHRA Drug Safety Update</b><br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> \u2014 febuxostat cardiovascular risk; allopurinol severe cutaneous reactions, DRESS/SJS counselling and HLA-B*58:01</span></li>'+
+         '<li><b>MHRA Drug Safety Update (July 2019)</b><br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> \u2014 febuxostat: increased cardiovascular and all-cause mortality in the CARES trial; avoid in pre-existing major cardiovascular disease unless no other option is appropriate. Allopurinol severe cutaneous reactions, DRESS/SJS counselling and HLA-B*58:01: allopurinol SPC and BNF</span></li>'+
          '</ul></div>'}
      ]}
   ],

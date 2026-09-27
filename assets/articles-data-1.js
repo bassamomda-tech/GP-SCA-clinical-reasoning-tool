@@ -19,7 +19,7 @@
       'Screen when suspicious (e.g. the BDD questionnaire / "Do you worry a lot about your appearance and wish you could think about it less?"); validate that the distress is real and the condition is recognised and treatable',
       'Assess severity, insight, functional impact and risk; document a suicide-risk assessment at every contact',
       'Mild: guided self-help based on CBT principles; signpost reputable resources',
-      'Moderate–severe (NICE OCD/BDD): CBT specifically tailored to BDD (including exposure and response prevention) and/or an SSRI',
+      'Moderate–severe (NICE CG31): CBT specifically tailored to BDD (including exposure and response prevention) and/or an SSRI',
       'SSRIs need OCD-level dosing and patience — e.g. fluoxetine titrated to high dose, trial ≥12 weeks before judging response; continue ≥12 months if effective',
       'Combine CBT + SSRI for severe disease or where one modality is insufficient',
       'Actively discourage cosmetic, dermatological and surgical procedures — they rarely satisfy and often worsen preoccupation or shift it elsewhere',
@@ -31,7 +31,7 @@
       'Moderate–severe, delusional-intensity (absent insight), or refractory to first-line treatment → specialist mental-health / specialist OCD-BDD service',
       'Children and young people → CAMHS',
       'Requests for cosmetic procedures driven by BDD → decline and redirect to mental-health assessment'],
-    source:'NICE CG31 (OCD/BDD) / NICE' },
+    source:'NICE CG31 (OCD and BDD, 2005)' },
 
   { id:'bps', title:'Bladder pain syndrome (interstitial cystitis)', category:'Urology', icon:'💧',
     overview:'Persistent or recurrent pain perceived to relate to the bladder, accompanied by urinary urgency/frequency, in the absence of infection or other identifiable pathology. It is a clinical diagnosis of exclusion, frequently overlaps with other chronic pain syndromes, and is commoner in women.',
@@ -56,7 +56,7 @@
       'Visible haematuria, or unexplained non-visible haematuria with age/risk factors → urology 2WW to exclude bladder cancer',
       'Diagnostic uncertainty or symptoms refractory to conservative measures → urology / urogynaecology',
       'Severe pain limiting function or mental health → pain service / MDT'],
-    source:'NICE / EAU & RCOG guidance' },
+    source:'EAU chronic pelvic pain guidelines (international) / RCOG guidance' },
 
   { id:'cervical-spondylosis', title:'Cervical spondylosis', category:'Musculoskeletal', icon:'🦴',
     overview:'Age-related degenerative change of the cervical spine (disc, facet and osteophyte) causing axial neck pain and stiffness. Most is benign and self-limiting, but it can produce radiculopathy (nerve-root compression) or, less commonly, myelopathy (spinal-cord compression) — the key not-to-miss complication.',
@@ -81,7 +81,7 @@
       'Progressive or severe neurological deficit → urgent',
       'Radiculopathy persisting/disabling beyond ~6 weeks despite conservative care → spinal/MSK service',
       'Red flags for malignancy/infection (systemic upset, night pain, immunosuppression, IVDU) → urgent investigation'],
-    source:'NICE — Neck pain (cervical radiculopathy / non-specific)' },
+    source:'Clinical practice summary (no NICE guideline on neck pain); neuropathic analgesia per NICE CG173 / BNF' },
 
   { id:'me-cfs', title:'Chronic fatigue syndrome (ME/CFS)', category:'Neurology', icon:'🛌',
     overview:'A chronic, disabling, multi-system condition defined by debilitating fatigue, post-exertional malaise, unrefreshing sleep and cognitive dysfunction, persisting ≥3 months and not explained by another condition. NG206 (2021) reframed management — graded exercise therapy as a fixed cure is no longer recommended.',
@@ -122,7 +122,7 @@
     management:[
       'Recognise early — outcomes are better with prompt treatment and referral',
       'Encourage normal use of the limb and avoid immobilisation; refer for physiotherapy/OT (graded motor imagery, desensitisation, mirror therapy)',
-      'Neuropathic analgesia per NICE NG affecting choice (amitriptyline, duloxetine, gabapentin or pregabalin); short courses of other agents as guided',
+      'Neuropathic analgesia per NICE CG173 (Neuropathic pain in adults), with comorbidity affecting choice (amitriptyline, duloxetine, gabapentin or pregabalin); short courses of other agents as guided',
       'Treat associated mood, sleep disturbance and fear-avoidance; provide education and self-management support',
       'Set function-focused goals rather than pain-elimination goals',
       'Vitamin C after wrist fracture has been used for prophylaxis in some settings (local guidance)',
@@ -133,7 +133,7 @@
       'Suspected CRPS after fracture or cast (e.g. pain disproportionate to injury, tight cast symptoms) → orthopaedics/pain',
       'Refractory, spreading or severely disabling symptoms → specialist pain MDT',
       'Diagnostic doubt or atypical neurology → neurology'],
-    source:'Royal College of Physicians CRPS guidance / NICE' },
+    source:'Royal College of Physicians CRPS in adults: UK guidelines (2nd edition, 2018) / NICE CG173 (Neuropathic pain)' },
 
   { id:'cvs', title:'Cyclical vomiting syndrome', category:'Gastroenterology', icon:'🤢',
     overview:'Recurrent, stereotyped episodes of intense nausea and vomiting separated by symptom-free intervals. Commoner in children but increasingly recognised in adults, it is strongly associated with migraine and, in adults, with chronic cannabis use (cannabinoid hyperemesis, an important mimic).',
@@ -158,7 +158,7 @@
       'Red flags — abnormal neuro exam, severe abdominal pain, bilious vomiting, weight loss, or diagnostic uncertainty → paediatrics/gastroenterology (imaging to exclude obstruction/ICP)',
       'Frequent or refractory episodes needing prophylaxis → gastroenterology/neurology',
       'Children with first presentation or atypical features → paediatric assessment'],
-    source:'NICE / BSPGHAN & Rome IV criteria' },
+    source:'BSPGHAN / Rome IV criteria (international)' },
 
   { id:'dementia-subtypes', title:'Dementia subtypes (Alzheimer\u2019s, vascular, Lewy body, frontotemporal)', category:'Neurology', icon:'🧠',
     overview:'The four common dementia syndromes differ in presentation, trajectory and — crucially — in safe prescribing. Recognising the subtype guides treatment choice and avoids harm, above all the severe antipsychotic sensitivity of Lewy body dementia.',
@@ -209,7 +209,7 @@
       'All febrile returning travellers → exclude malaria urgently; discuss with infectious diseases',
       'Pregnancy, significant comorbidity, or extremes of age → lower threshold to admit',
       'Diagnostic uncertainty in an unwell traveller → infectious diseases/tropical medicine'],
-    source:'UKHSA / NICE — Fever in returning travellers' },
+    source:'UKHSA dengue guidance' },
 
   { id:'eds', title:'Ehlers-Danlos syndromes (EDS)', category:'Musculoskeletal', icon:'🧬',
     overview:'A group of heritable connective-tissue disorders causing joint hypermobility, skin hyperextensibility and tissue fragility. Hypermobile EDS (hEDS) is the type usually seen in primary care; the rare vascular type (vEDS) is the dangerous one because of catastrophic arterial, bowel and uterine rupture.',
@@ -234,7 +234,7 @@
       'Aortic root dilatation or cardiac concern → cardiology with echocardiography',
       'Complex or refractory pain/instability → rheumatology / pain / specialist MDT',
       'Significant autonomic or GI dysfunction → relevant specialist'],
-    source:'NICE / 2017 international EDS classification' },
+    source:'2017 international EDS classification (international)' },
 
   { id:'febrile-seizures', title:'Febrile seizures', category:'Paediatrics', icon:'🌡️',
     overview:'Seizures occurring with fever in children (typically 6 months–5 years) without CNS infection, metabolic cause or a history of afebrile seizures. They are common (2–5% of children) and usually benign — the main jobs are excluding serious infection and supporting frightened parents.',
@@ -259,7 +259,7 @@
       'First febrile seizure, any complex features, age <18 months, or diagnostic doubt → same-day paediatric assessment',
       'Suspected meningitis/encephalitis → emergency admission and empirical treatment',
       'Recurrent febrile seizures or parental anxiety needing a rescue plan → paediatrics'],
-    source:'NICE — Febrile seizure' },
+    source:'NICE NG143 (Fever in under 5s) / Clinical practice summary' },
 
   { id:'fgm', title:'Female genital mutilation (FGM)', category:'Women\u2019s health', icon:'🛡️',
     overview:'All procedures involving partial or total removal of the external female genitalia, or other injury to the female genital organs, for non-medical reasons. It is illegal in the UK, a form of child abuse and gender-based violence, and carries specific mandatory reporting and recording duties for clinicians.',
@@ -305,7 +305,7 @@
       'Learning and behavioural difficulties → educational psychology and developmental services',
       'Comorbid ADHD/mental-health needs → CAMHS/paediatrics',
       'Safeguarding concerns → children\u2019s social care'],
-    source:'SIGN 156 / NICE quality standard on FASD' },
+    source:'SIGN 156 / NICE QS204 (Fetal alcohol spectrum disorder, 2022)' },
 
   { id:'food-allergy-intolerance', title:'Food allergy and intolerance', category:'Allergy & immunology', icon:'🥜',
     overview:'Food allergy is an immune-mediated reaction (IgE-mediated or non-IgE-mediated); food intolerance is non-immune (e.g. enzymatic, pharmacological). Distinguishing them — chiefly through an allergy-focused history — directs appropriate testing and avoids both under- and over-investigation.',
@@ -330,7 +330,7 @@
       'Suspected IgE-mediated food allergy, multiple or unclear triggers, or diagnostic uncertainty → allergy clinic',
       'Faltering growth, complex exclusion diets, or multiple food allergies (especially in children) → paediatric allergy/dietetics',
       'Consideration of oral food challenge or component testing → specialist'],
-    source:'NICE CG116 (food allergy in children/young people) / NICE' },
+    source:'NICE CG116 (food allergy in children/young people) / BSACI guidance' },
 
   { id:'frostbite', title:'Frostbite', category:'Dermatology', icon:'❄️',
     overview:'A freezing injury of tissues, usually affecting the extremities (fingers, toes, ears, nose, cheeks), with severity ranging from superficial frostnip to deep tissue loss. It commonly coexists with hypothermia, which is the priority, and early specialist treatment can salvage tissue.',
@@ -353,7 +353,7 @@
       'Coexisting hypothermia or systemic illness → emergency admission',
       'Involvement of face/large areas, or vulnerable patient → low threshold for admission',
       'Homelessness or recurrent cold exposure → social support and safeguarding'],
-    source:'NICE / wilderness & cold-injury guidance' },
+    source:'Wilderness Medical Society frostbite guideline (international)' },
 
   { id:'fnd', title:'Functional neurological disorder (FND)', category:'Neurology', icon:'🧠',
     overview:'Genuine, often disabling neurological symptoms — limb weakness, sensory disturbance, dissociative (non-epileptic) seizures, movement disorders, persistent dizziness — that arise from a problem with nervous-system functioning rather than structural disease. It is diagnosed positively on examination, not merely by exclusion.',
@@ -377,7 +377,7 @@
       'Confirmed FND → specialist neuro-rehabilitation / FND service (physiotherapy + psychology)',
       'Dissociative (non-epileptic) seizures → neurology/psychology pathway',
       'Significant comorbid mental-health needs or risk → mental-health services'],
-    source:'NICE / FND clinical guidance (neurosymptoms.org)' },
+    source:'FND clinical guidance (neurosymptoms.org)' },
 
   { id:'adhd', title:'Attention deficit hyperactivity disorder (ADHD)', category:'Mental health', icon:'🧠',
     overview:'A childhood-onset neurodevelopmental disorder of persistent inattention, hyperactivity and impulsivity that impairs function across more than one setting (home, school, work). Symptoms persist into adulthood in around two-thirds; it is widely under-recognised in girls (more inattentive, less disruptive) and in adults.',
@@ -424,7 +424,7 @@
       'Lithium level ≥1.5 mmol/L or features of toxicity → withhold dose and arrange emergency assessment',
       'Pregnancy or pregnancy planning on a mood stabiliser → perinatal mental-health service',
       'Rising creatinine, thyroid or calcium abnormality → discuss with mental-health team ± relevant specialty'],
-    source:'NICE CG185 / NICE' },
+    source:'NICE CG185 (Bipolar disorder) / BNF (lithium monitoring)' },
 
   { id:'diabetic-foot', title:'Diabetic foot disease', category:'Endocrine & metabolic', icon:'🦶',
     overview:'Foot complications of diabetes arising from peripheral neuropathy and/or peripheral arterial disease, leading to ulceration, infection, Charcot arthropathy and amputation. It is a leading cause of lower-limb amputation, and most amputations are preventable with structured risk assessment and rapid referral.',

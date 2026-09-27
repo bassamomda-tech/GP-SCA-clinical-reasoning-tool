@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 22: P topics, part 1)
    NHS conditions A–Z (letter P) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -16,7 +16,7 @@
       'Investigations: LFTs (obstructive pattern), and urgent imaging — CT is the key staging investigation; CA19-9 is an adjunct'],
     management:[
       'Maintain a high index of suspicion in older adults with unexplained weight loss, jaundice, upper-abdominal/back pain, or new diabetes — and investigate urgently',
-      'Arrange urgent direct-access CT (or ultrasound if CT not available) per NICE NG12 for those with relevant red flags',
+      'Arrange urgent direct-access CT (or ultrasound if CT not available) per NICE NG12 (updated April 2026) for those with relevant red flags',
       'Refer painless obstructive jaundice urgently — do not delay attributing it to gallstones',
       'Refer suspected/confirmed pancreatic cancer to the hepatobiliary/pancreatic MDT for staging and treatment planning',
       'Only a minority have resectable disease (surgery, e.g. Whipple’s, offers the only cure); many need chemotherapy and palliative care',
@@ -24,11 +24,11 @@
       'Involve palliative care early given the often poor prognosis, and provide strong psychological and nutritional support',
       'Address venous thromboembolism risk (common in pancreatic cancer)'],
     referral:[
-      'Aged 40+ with jaundice → urgent suspected pancreatic cancer referral; aged 60+ with weight loss PLUS any of diarrhoea, back pain, abdominal pain, nausea, vomiting, constipation or new-onset diabetes → urgent direct-access CT (NICE NG12)',
+      'Aged 40+ with jaundice → urgent suspected pancreatic cancer referral; aged 60+ with weight loss PLUS any of diarrhoea, back pain, abdominal pain, nausea, vomiting, constipation or new-onset diabetes → urgent direct-access CT (NICE NG12 (updated April 2026))',
       'Painless obstructive jaundice → urgent referral/imaging (do not assume gallstones)',
       'Confirmed/suspected pancreatic cancer → hepatobiliary-pancreatic MDT',
       'Biliary obstruction needing relief → ERCP/stenting; advanced disease → oncology + palliative care'],
-    source:'NICE NG12 / pancreatic cancer guidance' },
+    source:'NICE NG12 (updated April 2026) / NICE NG85 (Pancreatic cancer in adults, 2018)' },
 
   { id:'panic-disorder', title:'Panic disorder', category:'Mental health', icon:'🧠',
     overview:'Recurrent, unexpected panic attacks — sudden surges of intense fear with prominent physical symptoms — plus persistent worry about further attacks or their consequences. It is common, disabling, and frequently misattributed to physical illness, leading to repeated presentations and investigations. It responds well to CBT and SSRIs.',
@@ -43,7 +43,7 @@
       'Take a careful history and do a focused assessment to exclude relevant physical causes — but avoid over-investigation that reinforces health anxiety once panic disorder is clear',
       'Explain the diagnosis and the vicious cycle of panic (catastrophic misinterpretation of normal bodily sensations) — psychoeducation is therapeutic and reassuring',
       'First-line treatment is psychological: CBT is the most effective intervention; offer guided self-help/low-intensity options for milder cases',
-      'Offer an SSRI (or, if not tolerated/effective, consider an alternative such as a different antidepressant per NICE) for moderate–severe or persistent disorder; warn about an initial transient increase in anxiety and the delayed benefit',
+      'Offer an SSRI (or, if not tolerated/effective, consider imipramine or clomipramine per NICE CG113) for moderate–severe or persistent disorder; warn about an initial transient increase in anxiety and the delayed benefit',
       'Do NOT use benzodiazepines (dependence and rebound) or routinely use beta-blockers/sedating antihistamines for panic disorder',
       'Advise on lifestyle: reduce caffeine, alcohol and stimulants; promote exercise, sleep and breathing/relaxation techniques',
       'Treat comorbid depression and address agoraphobic avoidance',
@@ -103,7 +103,7 @@
       'Severe, spreading, or systemic infection → urgent assessment',
       'Chronic or recurrent paronychia not responding, or diagnostic uncertainty → dermatology/hand specialist',
       'Suspected herpetic whitlow → manage as HSV (do not incise)'],
-    source:'NICE — Paronychia' },
+    source:'BNF (flucloxacillin; topical corticosteroids and antifungals) / hand-infection surgical practice' },
 
   { id:'pid', title:'Pelvic inflammatory disease (PID)', category:'Women’s health', icon:'🌸',
     overview:'Infection of the upper female genital tract (uterus, tubes, ovaries), usually from ascending sexually transmitted infection (chlamydia, gonorrhoea) or other organisms. It is a major preventable cause of tubal infertility, ectopic pregnancy and chronic pelvic pain — so the threshold for empirical treatment is deliberately low.',
@@ -128,7 +128,7 @@
       'Severe PID, tubo-ovarian abscess, pregnancy, or failure to respond to oral treatment → hospital admission/gynaecology',
       'Diagnostic uncertainty or surgical abdomen → urgent assessment',
       'STI management and partner notification → sexual-health (GUM) services'],
-    source:'BASHH / NICE — Pelvic inflammatory disease' },
+    source:'BASHH UK national guideline for the management of pelvic inflammatory disease (2019 interim update)' },
 
   { id:'pelvic-organ-prolapse', title:'Pelvic organ prolapse', category:'Women’s health', icon:'🌸',
     overview:'Descent of the pelvic organs (bladder, uterus, rectum, or vaginal vault) into or through the vagina due to weakness of the pelvic floor and supporting tissues. It is very common, especially after childbirth and with age, and although benign it significantly affects quality of life — and is very treatable.',
@@ -151,9 +151,9 @@
     referral:[
       'Symptomatic prolapse failing conservative treatment, higher-grade prolapse, or vault prolapse → urogynaecology/gynaecology for pessary/surgery',
       'Ulcerated or irreducible prolapse, or urinary retention → urgent assessment',
-      'Abnormal/postmenopausal bleeding with prolapse → investigate per the suspected-cancer pathway (NICE NG12)',
+      'Abnormal/postmenopausal bleeding with prolapse → investigate per the suspected-cancer pathway (NICE NG12 (updated April 2026))',
       'Complex urinary/bowel dysfunction → continence/urogynaecology service'],
-    source:'NICE NG123 (Urinary incontinence and pelvic organ prolapse)' },
+    source:'NICE NG12 (updated April 2026)3 (Urinary incontinence and pelvic organ prolapse)' },
 
   { id:'peptic-ulcer', title:'Peptic ulcer (stomach and duodenal ulcers)', category:'Gastroenterology', icon:'🔥',
     overview:'A break in the stomach (gastric) or duodenal mucosa, usually caused by Helicobacter pylori infection or NSAIDs. Most present with dyspepsia; the dangers are bleeding and perforation, and — for gastric ulcers — the need to exclude cancer. Management centres on PPIs, eradicating H. pylori, and stopping NSAIDs.',
@@ -162,23 +162,23 @@
       'Nausea, bloating, early satiety, and heartburn',
       'The two dominant causes are Helicobacter pylori infection and NSAID/aspirin use (review the drug history)',
       'COMPLICATIONS: upper-GI BLEEDING (haematemesis, melaena — an emergency) and PERFORATION (sudden severe abdominal pain, peritonitis — a surgical emergency)',
-      'ALARM features mandating urgent endoscopy: dysphagia, weight loss, GI bleeding, iron-deficiency anaemia, persistent vomiting, an epigastric mass, or age ≥55 with new/persistent dyspepsia',
+      'ALARM features mandating urgent assessment: dysphagia, weight loss, GI bleeding, iron-deficiency anaemia, persistent vomiting, an epigastric mass, or age ≥55 with new/persistent dyspepsia (NICE NG12 (updated April 2026): dysphagia, or ≥55 with weight loss plus dyspepsia, is a suspected cancer pathway referral; ≥55 with treatment-resistant dyspepsia is a consider non-urgent endoscopy criterion)',
       'Gastric ulcers must be confirmed healed and biopsied to exclude gastric cancer; investigations include H. pylori testing and endoscopy where indicated'],
     management:[
       'Identify and address the cause: review and stop NSAIDs/aspirin where possible, and test for Helicobacter pylori (breath/stool antigen test — off PPI/antibiotics appropriately)',
       'Eradicate H. pylori if positive (a 7-day course of a PPI plus two antibiotics) and confirm eradication where indicated',
       'Treat with a full-dose proton pump inhibitor (e.g. 4–8 weeks) to heal the ulcer',
-      'Recognise and act on ALARM features and age ≥55 with new dyspepsia — these need urgent endoscopy to exclude malignancy',
+      'Recognise and act on ALARM features and age ≥55 with dyspepsia — dysphagia, or ≥55 with weight loss, needs a suspected cancer pathway referral (NICE NG12 (updated April 2026)), and treatment-resistant dyspepsia at ≥55 needs consideration of non-urgent endoscopy, to exclude malignancy',
       'Manage upper-GI bleeding (haematemesis/melaena) as an emergency — admit for resuscitation and endoscopy; perforation needs emergency surgical referral',
       'For gastric ulcers, arrange repeat endoscopy to confirm healing and exclude cancer (biopsy)',
       'Advise on lifestyle (reduce alcohol, stop smoking) and review the ongoing need for gastric protection in patients who must continue NSAIDs/antiplatelets',
       'Provide safety-netting for the symptoms of bleeding/perforation'],
     referral:[
       'Haematemesis/melaena (upper-GI bleed) or suspected perforation → emergency admission',
-      'Dysphagia, or age 55+ with weight loss + upper abdominal pain/reflux/dyspepsia → urgent direct-access upper-GI endoscopy for suspected oesophago-gastric cancer (NICE NG12, 2WW)',
+      'Dysphagia, or age 55+ with weight loss + upper abdominal pain/reflux/dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026), 2WW)',
       'Gastric ulcer → endoscopic follow-up to confirm healing and exclude cancer',
       'Refractory or complicated ulcers, or recurrent disease → gastroenterology'],
-    source:'NICE NG12 / NICE CG184 (Dyspepsia) / H. pylori guidance' },
+    source:'NICE NG12 (updated April 2026) / NICE CG184 (Dyspepsia and GORD) / H. pylori guidance' },
 
   { id:'pad', title:'Peripheral arterial disease (PAD)', category:'Cardiovascular & Renal', icon:'🦵',
     overview:'Atherosclerotic narrowing of the arteries to the limbs, usually the legs, causing reduced blood flow. It is a powerful marker of widespread atherosclerosis (and future heart attack/stroke), so it is as much about cardiovascular risk reduction as limb symptoms. Critical limb ischaemia is a limb-threatening emergency.',
@@ -228,7 +228,7 @@
       'Asymmetrical/mononeuritis multiplex (possible vasculitis) or predominantly motor neuropathy → urgent neurology',
       'Diagnostic uncertainty, atypical or severe neuropathy, or no cause found → neurology (nerve conduction studies)',
       'Diabetic foot with sensory loss/ulceration → diabetic foot service'],
-    source:'NICE CG173 (Neuropathic pain) / NICE' },
+    source:'NICE CG173 (Neuropathic pain in adults) / NICE NG19 (Diabetic foot problems)' },
 
   { id:'pernicious-anaemia', title:'Pernicious anaemia (vitamin B12 deficiency)', category:'Haematology', icon:'🩸',
     overview:'An autoimmune cause of vitamin B12 deficiency, in which antibodies against intrinsic factor/gastric parietal cells prevent B12 absorption. B12 deficiency causes a macrocytic anaemia and, importantly, neurological damage that can be irreversible if treatment is delayed — so recognising and treating it promptly matters.',
@@ -252,8 +252,8 @@
       'B12 deficiency with neurological features → treat promptly and refer/seek advice if severe or not improving (haematology/neurology)',
       'Diagnostic uncertainty, or failure to respond to treatment → haematology',
       'Suspected underlying malabsorption (coeliac, Crohn’s) → gastroenterology',
-      'New upper-GI alarm symptoms in pernicious anaemia → investigate per NICE NG12'],
-    source:'NICE — Anaemia (B12 and folate deficiency) / BSH guidance' }
+      'New upper-GI alarm symptoms in pernicious anaemia → investigate per NICE NG12 (updated April 2026)'],
+    source:'NICE NG239 (Vitamin B12 deficiency in over 16s, 2024) / BSH guidance / BNF (hydroxocobalamin)' }
 
   );
 })();

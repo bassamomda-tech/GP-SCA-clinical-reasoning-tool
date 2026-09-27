@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Irregular Periods (oligomenorrhoea / AUB)
-   Shared-id triage + differential. NICE NG12.
+   Shared-id triage + differential. NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -21,49 +21,49 @@
   if (window.RGPTriage) RGPTriage.register('irregular-periods-triage', {
     title: 'Irregular periods — triage',
     subtitle: 'Tick features. Always exclude pregnancy; surfaces endometrial pathway and prolactinoma.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Pregnancy test first; assess by likely cause (PCOS, thyroid, prolactin, perimenopause, hypothalamic); treat cause / regulate cycle.',
     rules: [
       {
         id: 'endometrial_2ww', tier: 'cancer',
         label: 'PMB, or ≥45 with persistent AUB / IMB / unopposed-oestrogen risk — endometrial pathway',
-        action: 'Gynae 2WW + TV USS (NICE NG12).',
-        source: 'NICE NG12 §1.7', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'PMB: gynae suspected cancer pathway referral at 55+ (consider under 55) + TV USS (NICE NG12 (updated April 2026)). 45+ with persistent IMB or unopposed-oestrogen risk: hysteroscopy ± endometrial biopsy (NICE NG88).',
+        source: 'NICE NG12 (updated April 2026) §1.5', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.pmb_or_endo_risk,
       },
       {
         id: 'prolactinoma', tier: 'urgent',
         label: 'Galactorrhoea + headache / visual field loss — ? prolactinoma',
         action: 'Prolactin; if very high or visual symptoms → pituitary MRI + endocrine.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.galactorrhoea,
       },
       {
         id: 'imb', tier: 'urgent',
         label: 'Persistent IMB / PCB — exclude structural / cervical cause',
         action: 'Examine cervix; TV USS ± referral; STI screen.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.imb_pcb,
       },
       {
         id: 'assess', tier: 'routine',
         label: 'Irregular cycles — investigate cause',
         action: 'Pregnancy test; TFT, prolactin, FSH/LH, testosterone/SHBG; pelvic USS if needed; manage by cause.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('irregular-periods-dx', {
     title: 'Irregular periods — differential',
     subtitle: 'The engine weights PCOS, thyroid, hyperprolactinaemia, perimenopause and hypothalamic causes, always excluding pregnancy and surfacing endometrial cancer when risk fires.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "My periods have become really unpredictable, doctor — sometimes weeks apart.",
     inputs: INPUTS,
     diagnoses: [
@@ -93,7 +93,7 @@
         guideUrl: '' },
 
       { id: 'endometrial', name: 'Endometrial hyperplasia / cancer', summary: 'PMB, ≥45 persistent AUB, unopposed-oestrogen risk', baseline: 1, category: 'cant-miss',
-        keyExam: 'Risk factors (obesity, PCOS, nulliparity).', nextIx: '\u26A1 Gynae 2WW + TV USS / hysteroscopy (NICE NG12).',
+        keyExam: 'Risk factors (obesity, PCOS, nulliparity).', nextIx: '\u26A1 Gynae 2WW + TV USS / hysteroscopy (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Persistent abnormal bleeding at your age needs an urgent specialist check of the womb lining.',
         guideUrl: '', redFlagAction: '\u26A1 Gynae 2WW' }
     ],
@@ -121,7 +121,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

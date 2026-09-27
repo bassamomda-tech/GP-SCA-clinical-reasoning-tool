@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 14: I topics)
    NHS conditions A–Z (letter I) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -24,11 +24,11 @@
       'Fulminant or sight-threatening disease (rapidly worsening vision/severe papilloedema) needs urgent surgery — CSF diversion (shunt) or optic-nerve-sheath fenestration',
       'Arrange ongoing monitoring of visual fields and discs, coordinate neurology/ophthalmology follow-up, and counsel on the importance of weight management and reporting visual change'],
     referral:[
-      'Suspected IIH with papilloedema → urgent neurology + same-week ophthalmology; arrange urgent MRI/MR venography to exclude a brain tumour or venous sinus thrombosis (consider the NICE NG12 brain/CNS tumour pathway where a tumour is suspected)',
+      'Suspected IIH with papilloedema → urgent neurology + same-week ophthalmology; arrange urgent MRI/MR venography to exclude a brain tumour or venous sinus thrombosis (consider the NICE NG12 (updated April 2026) brain/CNS tumour pathway where a tumour is suspected)',
       'Rapidly deteriorating vision or fulminant papilloedema → emergency referral (sight-threatening; may need urgent surgery)',
       'Confirmed IIH → joint neurology/ophthalmology follow-up with visual-field monitoring',
       'Pregnancy with IIH, or diagnostic uncertainty → specialist (neurology/obstetric) input'],
-    source:'NICE / IIH consensus guidance' }
+    source:'IIH consensus guidance (Mollan et al., 2018)' }
 
   );
 })();

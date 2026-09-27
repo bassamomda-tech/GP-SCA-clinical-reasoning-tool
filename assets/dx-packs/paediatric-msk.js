@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Paediatric MSK presentations
-   Shared-id triage + differential. NICE · pGALS.
+   Shared-id triage + differential. pGALS · clinical practice.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -19,7 +19,7 @@
   if (window.RGPTriage) RGPTriage.register('paediatric-msk-triage', {
     title: 'Paediatric MSK — triage',
     subtitle: 'Tick features. Surfaces septic arthritis, malignancy and JIA; otherwise reassures benign patterns.',
-    guideline: 'NICE · pGALS',
+    guideline: 'pGALS · clinical practice',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Use pGALS screen; benign patterns (growing pains, hypermobility, overuse) are common — reassure and manage; safety-net for night pain, swelling >6 weeks, systemic features.',
     rules: [
@@ -34,34 +34,34 @@
         id: 'malignancy', tier: 'cancer',
         label: 'Possible malignancy — night pain / systemic features',
         action: 'Urgent FBC + film; paediatric/haematology referral.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.systemic_malig,
       },
       {
         id: 'jia', tier: 'urgent',
         label: 'Possible JIA — persistent synovitis',
         action: 'Paediatric rheumatology referral; eye screening for uveitis.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.jia || i.unilateral_persistent,
       },
       {
         id: 'benign', tier: 'routine',
         label: 'Benign MSK pattern',
         action: 'Reassure; analgesia/physio; activity advice; review if features change.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('paediatric-msk-dx', {
     title: 'Paediatric MSK — differential',
     subtitle: 'The engine weights growing pains, hypermobility and overuse against JIA, and always surfaces septic arthritis and malignancy.',
-    guideline: 'NICE · pGALS',
+    guideline: 'pGALS · clinical practice',
     patientPresenting: "My child keeps getting joint and limb pains, doctor.",
     inputs: INPUTS,
     diagnoses: [
@@ -111,7 +111,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

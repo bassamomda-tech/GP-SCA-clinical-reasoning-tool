@@ -1,11 +1,11 @@
 /* ============================================
    Triage Tool — Asthma
-   NICE NG245 · BTS-SIGN · NG12
+   NICE NG245 (2024, joint NICE/BTS/SIGN) · BTS/SIGN 158 (2019, acute asthma) · NICE NG12 (updated April 2026)
    ============================================ */
 RGPTriage.register('asthma-triage', {
   title: 'Asthma — triage',
   subtitle: 'Acute or new presentation: is this a life-threatening attack, severe acute exacerbation, moderate exacerbation, suspected lung cancer, or routine review?',
-  guideline: 'NICE NG245 · BTS-SIGN · NG12',
+  guideline: 'NICE NG245 (2024, joint NICE/BTS/SIGN) · BTS/SIGN 158 (2019, acute asthma) · NICE NG12 (updated April 2026)',
 
   inputs: [
     { group:'Demographics & context', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
@@ -42,7 +42,7 @@ RGPTriage.register('asthma-triage', {
       tier:'emergency',
       label:'Life-threatening asthma',
       action:'Call 999 — high-flow O₂, nebulised salbutamol + ipratropium, IV hydrocortisone, blue-light',
-      source:'BTS/SIGN 2024 · NICE NG245',
+      source:'BTS/SIGN 158 (2019, acute asthma)',
       sourceUrl:'https://www.brit-thoracic.org.uk',
       patientPhrase:'"This is a life-threatening asthma attack. I\'m calling an ambulance right now — please stay sitting up and use your inhaler."',
       referralTemplate:'LIFE-THREATENING ACUTE ASTHMA.\nFeatures: silent chest / cyanosis / poor effort / confusion / SpO₂ <92% / PEFR <33% / SBP <90 / bradycardia.\nGiven: high-flow O₂, nebulised salbutamol 5 mg + ipratropium 500 mcg, IV hydrocortisone 100 mg.',
@@ -52,7 +52,7 @@ RGPTriage.register('asthma-triage', {
       tier:'emergency',
       label:'Severe acute asthma — admit',
       action:'Same-day admission · nebulised salbutamol, prednisolone 40 mg, O₂ if SpO₂ <94%',
-      source:'BTS/SIGN · NICE NG245',
+      source:'BTS/SIGN 158 (2019, acute asthma)',
       patientPhrase:'"This is a severe asthma attack — we need to send you in for proper treatment and observation."',
       referralTemplate:'Severe acute asthma.\nPEFR 33–50% predicted / RR ≥25 / HR ≥110 / can\'t complete sentences.\nSpO₂ [value]%. Treatment given: salbutamol nebuliser, prednisolone 40 mg PO, O₂ titrated.',
       when: i => (i.pefr_pct != null && i.pefr_pct >= 33 && i.pefr_pct < 50) ||
@@ -66,17 +66,17 @@ RGPTriage.register('asthma-triage', {
       tier:'cancer',
       label:'Haemoptysis ≥40 — urgent CXR + suspected lung cancer 2WW',
       action:'Urgent CXR (≤2 wk) · lung 2WW',
-      source:'NICE NG12 §1.1.1',
+      source:'NICE NG12 (updated April 2026) §1.1.1',
       sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       patientPhrase:'"Coughing up blood at your age has to be checked urgently — I\'m organising a fast chest X-ray."',
-      referralTemplate:'2WW — lung cancer (NG12 §1.1.1).\nAge [value], haemoptysis. Smoker [Y/N]. Weight loss [Y/N]. CXR urgent.',
+      referralTemplate:'2WW — lung cancer (NICE NG12 (updated April 2026) §1.1.1).\nAge [value], haemoptysis. Smoker [Y/N]. Weight loss [Y/N]. CXR urgent.',
       when: i => i.age != null && i.age >= 40 && i.haemoptysis
     },
     {
       tier:'cancer',
       label:'Cough/hoarseness >3 wks + smoker ≥40 + weight loss — suspect lung cancer',
       action:'Urgent CXR · lung 2WW if X-ray suggestive',
-      source:'NICE NG12 §1.1',
+      source:'NICE NG12 (updated April 2026) §1.1',
       patientPhrase:'"A long-standing cough in someone who smokes, with weight loss, needs us to rule out a lung cause urgently."',
       when: i => i.age != null && i.age >= 40 && i.smoker && i.cough_3wk && i.weight_loss
     },
@@ -86,7 +86,7 @@ RGPTriage.register('asthma-triage', {
       tier:'urgent',
       label:'Moderate acute asthma — treat in surgery + same-day review',
       action:'Salbutamol via spacer (10 puffs) · prednisolone 40 mg PO · re-assess after 30 min',
-      source:'BTS/SIGN · NICE NG245',
+      source:'BTS/SIGN 158 (2019, acute asthma)',
       patientPhrase:'"This is a moderate attack — we\'ll give a steroid course and watch you. If you don\'t improve in 30 minutes, we go to hospital."',
       referralTemplate:'Moderate acute asthma.\nPEFR 50–75%. Speech normal. SpO₂ ≥94%.\nGiven: 10 puffs salbutamol via spacer + prednisolone 40 mg × 5/7. Follow-up <48h.',
       when: i => i.pefr_pct != null && i.pefr_pct >= 50 && i.pefr_pct < 75
@@ -129,8 +129,8 @@ RGPTriage.register('asthma-triage', {
 
   sources: [
     { label:'NICE NG245 — Asthma (2024)', url:'https://www.nice.org.uk/guidance/ng245' },
-    { label:'BTS/SIGN — Asthma guidance', url:'https://www.brit-thoracic.org.uk' },
-    { label:'NICE NG12 — Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'BTS/SIGN 158 (2019) — acute asthma', url:'https://www.brit-thoracic.org.uk' },
+    { label:'NICE NG12 (updated April 2026) — Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'Macmillan Rapid Referral', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
     { label:'NICE NG245 — asthma', url:'https://www.nice.org.uk/guidance/ng245' }
   ],

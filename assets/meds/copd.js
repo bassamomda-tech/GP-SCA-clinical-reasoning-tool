@@ -1,11 +1,11 @@
 /* ============================================
    Medication Chooser — COPD inhaler ladder
-   NICE NG115 · NICE COPD · BNF
+   NICE NG115 · BNF
    ============================================ */
 MedChooser.register('copd', {
   title: 'COPD — inhaled therapy ladder',
   subtitle: 'NICE NG115: start with a short-acting reliever, then choose dual therapy by whether there are asthmatic / steroid-responsive features. Tick the profile; cards re-tier live.',
-  guideline: 'NICE NG115 · NICE COPD · BNF',
+  guideline: 'NICE NG115 · BNF',
 
   factors: [
     // Step / control

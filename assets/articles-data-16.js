@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 16: L topics)
    NHS conditions A–Z (letter L) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Acute sensorineural hearing loss with vertigo → same-day ENT (consider stroke and treat as sudden SNHL)',
       'Persistent/recurrent vertigo or incomplete recovery → ENT/audiovestibular and vestibular rehabilitation',
       'Diagnostic uncertainty → urgent assessment'],
-    source:'NICE — Vestibular neuronitis / labyrinthitis' },
+    source:'Clinical practice summary / BNF' },
 
   { id:'laryngeal-cancer', title:'Laryngeal cancer', category:'ENT', icon:'🎗️',
     overview:'Cancer of the voice box, strongly linked to smoking and alcohol. It often presents early with persistent hoarseness, giving a real chance of voice-preserving cure if recognised promptly — so persistent voice change, especially in a smoker, must trigger urgent referral rather than repeated courses of treatment for "laryngitis".',
@@ -49,11 +49,11 @@
       'Provide psychological support and survivorship follow-up; maintain vigilance for recurrence and second primaries',
       'Recognise and act urgently on stridor/airway compromise'],
     referral:[
-      'Aged 45+ with persistent unexplained hoarseness, or an unexplained persistent neck lump → urgent suspected laryngeal/head-and-neck cancer (2WW) referral (NICE NG12)',
+      'Aged 45+ with persistent unexplained hoarseness, or an unexplained persistent neck lump → urgent suspected laryngeal/head-and-neck cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Stridor/airway compromise → emergency ENT',
       'Persistent throat symptoms/otalgia with risk factors → urgent ENT assessment',
       'Confirmed cancer → head-and-neck MDT'],
-    source:'NICE NG12 / head-and-neck cancer guidance' },
+    source:'NICE NG12 (updated April 2026) / head-and-neck cancer guidance' },
 
   { id:'laryngitis', title:'Laryngitis', category:'ENT', icon:'🗣️',
     overview:'Inflammation of the larynx causing hoarseness or voice loss, usually a self-limiting viral infection or from voice overuse. It is benign and short-lived — but the essential discipline is recognising hoarseness that persists, which must be investigated to exclude laryngeal cancer.',
@@ -74,11 +74,11 @@
       'Safety-net for red-flag features (persistent hoarseness, neck lump, swallowing/breathing difficulty, weight loss)',
       'Provide written advice and review if not settling'],
     referral:[
-      'Hoarseness persisting >3 weeks (especially smoker/drinker, age 45+) → urgent suspected laryngeal cancer (2WW) referral for laryngoscopy (NICE NG12)',
+      'Hoarseness persisting >3 weeks (especially smoker/drinker, age 45+) → urgent suspected laryngeal cancer (2WW) referral for laryngoscopy (NICE NG12 (updated April 2026))',
       'Stridor/airway compromise → emergency ENT',
       'Persistent voice problems from misuse/occupational use → speech and language therapy ± ENT',
       'Chronic laryngitis not responding to treatment → ENT'],
-    source:'NICE — Hoarseness / NICE NG12' },
+    source:'ENT UK / NICE NG12 (updated April 2026)' },
 
   { id:'leg-cramps', title:'Leg cramps', category:'Musculoskeletal', icon:'🦵',
     overview:'Sudden, painful, involuntary muscle contractions, typically in the calf and often at night. They are very common, usually benign and idiopathic, especially in older people and pregnancy. The role is reassurance and self-management, while excluding the minority with a secondary cause or a mimic such as claudication or DVT.',
@@ -103,7 +103,7 @@
       'Suspected peripheral arterial disease/claudication → vascular assessment',
       'Persistent, severe, or atypical cramps, or suspected secondary cause → investigate ± relevant specialist',
       'Neurological features (weakness, sensory loss, fasciculation) → neurology'],
-    source:'NICE — Leg cramps' },
+    source:'MHRA Drug Safety Update (quinine, June 2010) / BNF' },
 
   { id:'lichen-planus', title:'Lichen planus', category:'Dermatology', icon:'🟣',
     overview:'A chronic inflammatory condition of the skin and mucous membranes, probably immune-mediated, with characteristic violaceous itchy papules. It is benign but can be persistent and uncomfortable; oral and genital (erosive) forms need attention, and long-standing erosive disease carries a small risk of malignant change.',
@@ -125,10 +125,10 @@
       'Provide patient information and review'],
     referral:[
       'Widespread, erosive, scarring, or treatment-resistant disease → dermatology (± oral medicine/gynaecology)',
-      'Persistent erosive oral or genital lichen planus, or any non-healing/suspicious lesion → specialist monitoring; suspected oral/genital squamous cell carcinoma → urgent 2WW referral (NICE NG12)',
+      'Persistent erosive oral or genital lichen planus, or any non-healing/suspicious lesion → specialist monitoring; suspected oral/genital squamous cell carcinoma → urgent 2WW referral (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty → dermatology (± biopsy)',
       'Scalp involvement with scarring alopecia → dermatology (prompt, to limit permanent loss)'],
-    source:'NICE — Lichen planus' },
+    source:'BAD guidance / Clinical practice summary' },
 
   { id:'lichen-sclerosus', title:'Lichen sclerosus', category:'Dermatology', icon:'⚪',
     overview:'A chronic inflammatory skin condition, most often affecting the anogenital skin, causing intense itch, soreness, white atrophic patches and scarring. It is commonest in women (vulva) but also affects men (glans/foreskin) and children. It is important to treat — both for symptoms/scarring and because of a small associated risk of genital cancer.',
@@ -149,11 +149,11 @@
       'In children, treat and reassure; recognise that the appearance can mimic abuse but be alert to genuine safeguarding concerns',
       'Refer for diagnostic uncertainty, treatment failure, significant scarring, or suspected malignancy; check thyroid function given autoimmune associations'],
     referral:[
-      'Suspected vulval/penile squamous cell carcinoma (a lump, ulcer, or non-healing/thickened area) → urgent 2WW gynae-oncology/urology referral (NICE NG12)',
+      'Suspected vulval/penile squamous cell carcinoma (a lump, ulcer, or non-healing/thickened area) → urgent 2WW gynae-oncology/urology referral (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty, treatment failure, or significant scarring/phimosis → dermatology/gynaecology/urology',
       'Boys/men with BXO and phimosis → urology (circumcision)',
       'Children with diagnostic doubt or safeguarding concern → paediatric/dermatology assessment and safeguarding as appropriate'],
-    source:'NICE / BAD — Lichen sclerosus' },
+    source:'BAD lichen sclerosus guideline (2018)' },
 
   { id:'lipoma', title:'Lipoma', category:'Dermatology', icon:'🟡',
     overview:'A benign tumour of fat — one of the commonest soft-tissue lumps. Lipomas are harmless and usually need only reassurance. The main clinical job is to confidently distinguish a benign lipoma from a soft-tissue sarcoma, since certain features of a soft-tissue mass mandate urgent investigation.',
@@ -174,11 +174,11 @@
       'Manage multiple/familial lipomas with reassurance unless individual lesions are symptomatic/atypical',
       'Provide safety-netting and review as needed'],
     referral:[
-      'An unexplained soft-tissue lump that is >5 cm, deep to fascia, rapidly growing, hard/fixed, or painful → urgent suspected soft-tissue sarcoma referral / direct-access ultrasound (NICE NG12)',
+      'An unexplained soft-tissue lump that is >5 cm, deep to fascia, rapidly growing, hard/fixed, or painful → urgent suspected soft-tissue sarcoma referral / direct-access ultrasound (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty → ultrasound ± referral',
       'Symptomatic or cosmetically troublesome confirmed lipoma → surgical excision (routine)',
       'Recurrent or atypical lesions → specialist assessment'],
-    source:'NICE NG12 / NICE — Lipoma' },
+    source:'NICE NG12 (updated April 2026) — soft-tissue sarcoma' },
 
   { id:'liver-cancer', title:'Liver cancer', category:'Gastroenterology', icon:'🎗️',
     overview:'Primary liver cancer (most often hepatocellular carcinoma) usually arises on a background of cirrhosis/chronic liver disease; the liver is also a very common site of metastatic (secondary) cancer. Outcomes depend on early detection — hence surveillance of at-risk cirrhotic patients — and on recognising the red flags of decompensation and weight loss.',
@@ -199,11 +199,11 @@
       'Provide symptom control (pain, ascites, nutrition) and early palliative care where appropriate',
       'Support patients and families and coordinate follow-up'],
     referral:[
-      'Suspicious liver lesion on ultrasound, or an upper-abdominal mass / unexplained weight loss with liver features → urgent suspected liver cancer referral (NICE NG12)',
+      'Suspicious liver lesion on ultrasound, or an upper-abdominal mass / unexplained weight loss with liver features → urgent suspected liver cancer referral (NICE NG12 (updated April 2026))',
       'At-risk cirrhotic patients → 6-monthly ultrasound surveillance for hepatocellular carcinoma',
       'Decompensating cirrhosis → urgent hepatology assessment (consider HCC)',
       'Confirmed/suspected liver cancer → hepatobiliary MDT'],
-    source:'NICE NG12 / hepatocellular carcinoma surveillance guidance' },
+    source:'NICE NG12 (updated April 2026) / hepatocellular carcinoma surveillance guidance' },
 
   { id:'long-qt', title:'Long QT syndrome', category:'Cardiovascular & Renal', icon:'🫀',
     overview:'A disorder of cardiac repolarisation (prolonged QT interval) that predisposes to a characteristic polymorphic ventricular tachycardia (torsades de pointes), causing syncope, seizures and sudden cardiac death. It may be inherited or acquired (commonly drug-induced) — and recognising and avoiding QT-prolonging drugs is a key, preventable safety issue.',
@@ -228,10 +228,10 @@
       'Suspected congenital long QT syndrome, unexplained syncope with prolonged QT, or family history of sudden cardiac death → cardiology / inherited-cardiac-conditions service',
       'First-degree relatives of affected patients → cardiac screening',
       'Drug-induced long QT → stop the drug, correct electrolytes, and seek advice on alternatives'],
-    source:'NICE / inherited cardiac conditions guidance' },
+    source:'Inherited cardiac conditions guidance / ESC (international)' },
 
   { id:'lung-cancer', title:'Lung cancer', category:'Respiratory', icon:'🎗️',
-    overview:'One of the commonest and most lethal cancers, strongly linked to smoking, usually presenting late. Survival depends heavily on early diagnosis, so the primary-care priorities are recognising the symptoms that warrant an urgent chest X-ray, acting on the NICE NG12 referral criteria, and supporting prevention and screening.',
+    overview:'One of the commonest and most lethal cancers, strongly linked to smoking, usually presenting late. Survival depends heavily on early diagnosis, so the primary-care priorities are recognising the symptoms that warrant an urgent chest X-ray, acting on the NICE NG12 (updated April 2026) referral criteria, and supporting prevention and screening.',
     features:[
       'Common symptoms: a persistent or changing cough (>3 weeks), haemoptysis, breathlessness, chest/shoulder pain, recurrent or non-resolving chest infections, and weight loss/fatigue',
       'Other features: hoarseness (recurrent laryngeal nerve), finger clubbing, supraclavicular/cervical lymphadenopathy, and signs of metastases (bone pain, neurological symptoms)',
@@ -240,7 +240,7 @@
       'Two main types: non-small-cell (commonest) and small-cell lung cancer (more aggressive)',
       'Investigation starts with a chest X-ray; CT, PET-CT, and biopsy/bronchoscopy follow for staging/diagnosis'],
     management:[
-      'Recognise and act on red-flag symptoms — offer an urgent chest X-ray (within 2 weeks) for those meeting NICE criteria, and refer on the suspected-cancer pathway',
+      'Recognise and act on red-flag symptoms — offer an urgent chest X-ray (within 2 weeks) for those meeting NICE NG12 (updated April 2026) criteria, and refer on the suspected-cancer pathway',
       'Examine for clubbing, lymphadenopathy, and signs of metastatic/paraneoplastic disease',
       'Refer to the lung-cancer MDT for staging and treatment planning; treatment depends on type/stage and fitness — surgery, radiotherapy (including stereotactic), chemotherapy, immunotherapy, and targeted therapies',
       'Support smoking cessation at every opportunity (it benefits treatment outcomes and reduces second primaries)',
@@ -249,11 +249,11 @@
       'Provide symptom control (breathlessness, cough, pain), early palliative care input, and psychological/holistic support',
       'Coordinate care, manage comorbidity, and support patients and families through diagnosis and treatment'],
     referral:[
-      'Offer an urgent chest X-ray (2 weeks) for unexplained: cough/breathlessness/chest pain/weight loss/appetite loss/fatigue lasting ≥3 weeks (or any duration in a smoker), and refer on the suspected lung-cancer 2WW pathway; refer immediately for haemoptysis or CXR findings suggestive of cancer (NICE NG12)',
+      'Offer an urgent chest X-ray (within 2 weeks) to people aged 40+ with 2 or more unexplained symptoms, or 1 or more if they have ever smoked: cough, fatigue, breathlessness, chest pain, weight loss, appetite loss; refer on the suspected lung-cancer 2WW pathway if the CXR suggests lung cancer or if aged 40+ with unexplained haemoptysis (NICE NG12 (updated April 2026))',
       'Superior vena cava obstruction or suspected spinal-cord compression → emergency admission',
       'Confirmed/suspected lung cancer → lung-cancer MDT',
       'Eligible ever-smokers → lung health check/screening'],
-    source:'NICE NG12 / NICE NG122 (lung cancer)' },
+    source:'NICE NG12 (updated April 2026) / NICE NG122 (lung cancer)' },
 
   { id:'lyme-disease', title:'Lyme disease', category:'Infectious diseases', icon:'🦠',
     overview:'A tick-borne bacterial infection (Borrelia) acquired from the bite of an infected tick, typically after outdoor activity in grassy/wooded areas. Recognised and treated early it responds well to antibiotics; if missed it can cause neurological, cardiac and joint complications — so the erythema migrans rash and exposure history are key.',
@@ -272,7 +272,7 @@
       'Provide safety-netting and follow-up; warn about a possible Jarisch-Herxheimer reaction on starting treatment',
       'Recognise and refer complications (neurological, cardiac, joint) for specialist assessment and treatment (sometimes IV antibiotics)',
       'Avoid over-diagnosis and unproven "chronic Lyme" treatments; reassess persistent symptoms after adequate treatment and consider other causes',
-      'Lyme disease is notifiable in some settings — follow local/UKHSA guidance'],
+      'Lyme disease is not clinically notifiable in England, but laboratories must report Borrelia detections to UKHSA — follow local/UKHSA guidance'],
     referral:[
       'Lyme disease with neurological involvement (e.g. facial palsy, meningitis, radiculopathy) or cardiac involvement (heart block/carditis) → specialist (neurology/cardiology/infectious diseases); heart block → emergency assessment',
       'Lyme arthritis or treatment failure/diagnostic uncertainty → infectious diseases/relevant specialist',
@@ -302,8 +302,8 @@
       'New, unexplained, or rapidly progressive limb swelling → investigate the cause (exclude DVT; consider malignancy/recurrence)',
       'Confirmed lymphoedema → specialist lymphoedema service for decongestive therapy and compression',
       'Recurrent cellulitis → treat promptly and consider prophylaxis ± specialist input',
-      'Suspected underlying or recurrent cancer causing lymphoedema → relevant cancer pathway (NICE NG12 as appropriate)'],
-    source:'NICE — Lymphoedema' }
+      'Suspected underlying or recurrent cancer causing lymphoedema → relevant cancer pathway (NICE NG12 (updated April 2026) as appropriate)'],
+    source:'British Lymphology Society guidance / Clinical practice summary' }
 
   );
 })();

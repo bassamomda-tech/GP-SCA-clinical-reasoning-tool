@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Hand Pain
-   Shared-id triage + differential. NICE (OA / RA / carpal tunnel / gout).
+   Shared-id triage + differential. NICE NG226 (OA) · NICE NG100 (RA) · NICE NG219 (gout) · clinical practice (carpal tunnel).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -43,7 +43,7 @@
         id: 'fracture', tier: 'urgent',
         label: 'Acute injury — fracture (e.g. scaphoid)',
         action: 'X-ray; scaphoid views + immobilise if anatomical-snuffbox tenderness.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.trauma,
       },
       {
@@ -57,7 +57,7 @@
         id: 'manage', tier: 'routine',
         label: 'Mechanical / nerve hand pain — assess & manage',
         action: 'OA → analgesia/splint/injection; carpal tunnel → splint/injection/surgery; de Quervain/trigger → splint/injection.',
-        source: 'NICE',
+        source: 'NICE NG226 (osteoarthritis) · clinical practice',
         when: i => true,
       }
     ],

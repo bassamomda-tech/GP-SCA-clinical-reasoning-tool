@@ -188,7 +188,7 @@ window.SCA_KNOWLEDGE = {
     guideline: 'NICE NG28 — Type 2 diabetes · Diabetes UK / IDF-DAR Ramadan guidance',
     summary: 'Intensify with organ-protective agents (SGLT2i / GLP-1 RA) before insulin where possible, risk-stratify for fasting, adjust therapy for Ramadan, and address DVLA duties.',
     points: [
-      { h:'Escalation after metformin', t:'HbA1c 84 on metformin + sulfonylurea: NICE supports adding an SGLT2 inhibitor and/or GLP-1 RA — favouring cardio-renal protection and weight loss over reflex insulin.' },
+      { h:'Escalation after metformin', t:'HbA1c 84 on metformin + sulfonylurea: NICE NG28 (updated February 2026) supports adding an SGLT2 inhibitor and/or GLP-1 RA — favouring cardio-renal protection and weight loss over reflex insulin.' },
       { h:'Insulin is treatment, not failure', t:'If insulin is needed, frame it positively; sulfonylureas and insulin carry the greatest hypo (and fasting) risk.' },
       { h:'Ramadan risk-stratify & adjust', t:'Use IDF-DAR risk categories. Pre-Ramadan review; switch SU to a once-daily/lower-hypo agent, reduce/redistribute insulin, move longer-acting doses to iftar, and arrange structured education.' },
       { h:'Faith and safety together', t:'Islamic rulings permit the sick to break/delay a fast; breaking a fast for hypo or illness is protective, not sinful — honour faith without colluding with unsafe practice.' },

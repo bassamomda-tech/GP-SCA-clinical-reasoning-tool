@@ -1,4 +1,4 @@
-/* Reasoning GP — Ready Prescriptions (batch 12): common infections per NICE/BNF */
+/* Reasoning GP — Ready Prescriptions (batch 12): common infections per NICE antimicrobial prescribing guidelines (NG number cited in each entry) and BNF */
 (function(){
   const RX = (window.RGP_PRESCRIPTIONS = window.RGP_PRESCRIPTIONS || []);
   RX.push(
@@ -187,7 +187,7 @@
   { id:'influenza', title:'Influenza (antiviral treatment)', category:'Infections',
     eyebrow:'At-risk + within 48 h + circulating flu',
     indication:'Antivirals (oseltamivir) for at-risk patients with influenza-like illness, when influenza is circulating and treatment can start within 48 h of symptom onset. Healthy non-at-risk adults: supportive care only.',
-    contraindications:'Only when flu is circulating (per UKHSA/PHE notification) and within 48 h (treatment) / 36 h (prophylaxis zanamivir). Dose-adjust oseltamivir in renal impairment. Not a substitute for vaccination.',
+    contraindications:'Only when flu is circulating (per UKHSA notification) and within 48 h (treatment) / 36 h (prophylaxis zanamivir). Dose-adjust oseltamivir in renal impairment. Not a substitute for vaccination.',
     duration:'5 days (treatment)',
     drugs:[
       { name:'At-risk + within 48 h + flu circulating: oseltamivir', dose:'75 mg (adjust if renal impairment)', freq:'BD', route:'PO', days:'5 days' },
@@ -306,12 +306,12 @@
   { id:'acute-prostatitis', title:'Acute bacterial prostatitis', category:'Men\'s & Sexual Health',
     eyebrow:'Prolonged antibiotic with good prostate penetration',
     indication:'Acute prostatitis (fever, perineal/pelvic pain, LUTS, tender prostate). Send MSU/STI screen; treat with a prolonged course of an antibiotic that penetrates the prostate. Assess for sepsis/retention.',
-    contraindications:'Sepsis, acute urinary retention, or severe illness → admit. Avoid prostatic massage (bacteraemia). Adjust to culture; consider STI cause in younger men. Fluoroquinolone cautions.',
-    duration:'14\u201328 days',
+    contraindications:'Sepsis, acute urinary retention, or severe illness → admit. Avoid prostatic massage (bacteraemia). Adjust to culture; consider STI cause in younger men. Fluoroquinolone cautions (MHRA Drug Safety Update, January 2024: use only when other recommended antibiotics are inappropriate).',
+    duration:'14 days, then review (NICE NG110)',
     drugs:[
       { name:'Send MSU (\u00b1 STI screen); assess sepsis/retention', dose:'\u2014', freq:'\u2014', route:'Investigation', days:'\u2014' },
-      { name:'1st line: ciprofloxacin (or ofloxacin)', dose:'cipro 500 mg BD', freq:'BD', route:'PO', days:'14\u201328 days' },
-      { name:'Alt: trimethoprim (if quinolone unsuitable/per sensitivities)', dose:'200 mg', freq:'BD', route:'PO', days:'14\u201328 days' },
+      { name:'1st line: ciprofloxacin (or ofloxacin)', dose:'cipro 500 mg BD', freq:'BD', route:'PO', days:'14 days, then review' },
+      { name:'Alt: trimethoprim (if quinolone unsuitable/per sensitivities)', dose:'200 mg', freq:'BD', route:'PO', days:'14 days, then review' },
       { name:'Analgesia; consider laxative; review with cultures', dose:'\u2014', freq:'PRN', route:'\u2014', days:'\u2014' },
     ],
     altRegimens:[
@@ -328,7 +328,7 @@
     redFlags:['Sepsis, acute urinary retention, or severe illness → admit.','Recurrent/persistent → urology (chronic prostatitis).'],
     emisText:`Acute bacterial prostatitis:
 - MSU \u00b1 STI screen; assess sepsis/retention.
-- Ciprofloxacin 500 mg BD (or ofloxacin) 14-28d; alt trimethoprim 200 mg BD per sensitivities.
+- Ciprofloxacin 500 mg BD (or ofloxacin) 14d then review (NICE NG110); alt trimethoprim 200 mg BD per sensitivities.
 - Analgesia; avoid prostatic massage. Retention/sepsis \u2192 admit. Younger/STI risk \u2192 GUM.`,
     sources:[{ label:'NICE NG110 — Prostatitis (acute)', url:'https://www.nice.org.uk/guidance/ng110' }],
   },

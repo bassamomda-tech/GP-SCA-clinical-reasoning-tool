@@ -343,7 +343,7 @@ window.SCA_LIBRARY = [
   { f:'Gut symptoms', ic:'🌯', sp:'gi', ceg:['New & undifferentiated presentations'],
     v:[
       { t:'Rectal bleeding at 52 — the FIT / 2WW reframe, not “just piles”', ty:'v', live:'rectal-bleeding-2ww', ceg:['Long-term conditions & cancer'] },
-      { t:'Progressive dysphagia — urgent OGD at any age', ty:'v', live:'dysphagia-2ww', ceg:['Long-term conditions & cancer'] },
+      { t:'Progressive dysphagia — suspected cancer referral at any age', ty:'v', live:'dysphagia-2ww', ceg:['Long-term conditions & cancer'] },
       { t:'Recurrent dyspepsia — test-and-treat vs the OGD thresholds (alarm features)', ty:'t', src:134, live:'dyspepsia-alarm', ceg:['Urgent & unscheduled care'] },
       { t:'Reflux that won\u2019t settle — PPI exit strategy', ty:'t', src:87, live:'reflux-ppi-exit' },
       { t:'Bowels never right since the gastroenteritis — IBS vs the FIT-shaped question', ty:'t', src:152, live:'bowel-habit-fit', ceg:['Long-term conditions & cancer'] },

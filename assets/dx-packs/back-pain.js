@@ -2,7 +2,7 @@
    Diagnostic Tool pack — Acute & Subacute Back Pain
    Live triage + differential on a SHARED input schema, so one tick
    drives both the red-flag verdict and the differential.
-   Grounded in NICE NG59 · NICE NG12 · MSCC / CES pathways.
+   Grounded in NICE NG59 · NICE NG12 (updated April 2026) · MSCC / CES pathways.
    ============================================ */
 (function () {
   // ---- One shared input schema for both engines (ids must match across triage rules + dx effects) ----
@@ -38,8 +38,8 @@
 
   if (window.RGPTriage) RGPTriage.register('back-pain-triage', {
     title: 'Low back pain — red-flag triage',
-    subtitle: 'Tick red flags. Surfaces cauda equina, cord compression, AAA, infection, malignancy and fracture pathways per NICE NG59 / NG12.',
-    guideline: 'NICE NG59 · NICE NG12',
+    subtitle: 'Tick red flags. Surfaces cauda equina, cord compression, AAA, infection, malignancy and fracture pathways per NICE NG59 / NICE NG12 (updated April 2026).',
+    guideline: 'NICE NG59 · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired — pattern fits non-specific / mechanical or radicular back pain. Encourage activity, give analgesia, work the differential below, and safety-net explicitly for cauda equina symptoms.',
     rules: [
@@ -64,7 +64,7 @@
         id: 'cord_compression', tier: 'emergency',
         label: 'Metastatic spinal cord compression — known cancer + new severe spinal pain / progressive neurology',
         action: 'Same-day acute oncology / MSCC coordinator; nurse flat; dexamethasone per protocol; urgent whole-spine MRI.',
-        source: 'NICE NG12 / MSCC pathway',
+        source: 'NICE NG12 (updated April 2026) / MSCC pathway',
         when: i => i.cancer_hx && (i.prog_neuro || i.night_pain),
       },
       {
@@ -79,7 +79,7 @@
         label: 'Suspected spinal malignancy — cancer history, or ≥50 with weight loss / progressive night / thoracic pain',
         action: 'Urgent spinal imaging (MRI if any cord signs) ± 2WW to relevant site.',
         patientPhrase: '"Because of these features I want an urgent scan of your spine to rule out a serious cause — most come back reassuring."',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.cancer_hx || (i.age != null && i.age >= 50 && (i.weight_loss || i.night_pain || i.thoracic)),
       },
       {
@@ -106,7 +106,7 @@
     ],
     sources: [
       { label: 'NICE NG59 — Low back pain & sciatica', url: 'https://www.nice.org.uk/guidance/ng59' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'NICE NG156 — Abdominal aortic aneurysm', url: 'https://www.nice.org.uk/guidance/ng156' }
     ],
   });
@@ -114,7 +114,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('back-pain-dx', {
     title: 'Low back pain — differential diagnosis',
     subtitle: 'Most low back pain is non-specific, but the engine ranks the mechanical, radicular, neurogenic and inflammatory causes and always surfaces cauda equina, cord compression, malignancy, infection and AAA when their triggers fire.',
-    guideline: 'NICE NG59 · NG65 · NG12',
+    guideline: 'NICE NG59 · NG65 · NICE NG12 (updated April 2026)',
     patientPresenting: "My back's been killing me, doctor. It started a couple of weeks ago and now it shoots down my leg.",
     inputs: INPUTS,
     diagnoses: [
@@ -142,7 +142,7 @@
         keyExam: 'Focal spinal tenderness, thoracic kyphosis, height loss.',
         nextIx: 'Spinal X-ray; bone-health & FRAX assessment, DXA; analgesia, consider bone-protection.',
         patientPhrase: 'A weakened vertebra has cracked. We will control the pain and protect your bones to prevent the next one.',
-        guideUrl: 'https://www.nice.org.uk/guidance/cg146', guideLabel: 'NICE CG146', caseLink: '../cases/osteoporosis.html' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng259', guideLabel: 'NICE NG259 (July 2026; replaced CG146)', caseLink: '../cases/osteoporosis.html' },
 
       { id: 'cauda_equina', name: 'Cauda equina syndrome', summary: 'Saddle anaesthesia, bladder/bowel dysfunction, bilateral sciatica', baseline: 1, category: 'cant-miss',
         keyExam: 'Saddle sensory loss, reduced anal tone, palpable bladder / post-void residual, bilateral leg signs.',
@@ -156,7 +156,7 @@
         guideUrl: '', redFlagAction: '\u26A1 Same-day MSCC pathway' },
       { id: 'malignancy', name: 'Spinal malignancy / metastasis', summary: '≥50 with weight loss, progressive night or thoracic pain', baseline: 1, category: 'cant-miss',
         keyExam: 'Focal tenderness, neurology, lymphadenopathy, signs of a primary cancer.',
-        nextIx: '\u26A1 Urgent spinal imaging ± 2WW to relevant site (NICE NG12).',
+        nextIx: '\u26A1 Urgent spinal imaging ± 2WW to relevant site (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A few features mean I want to scan your spine urgently to exclude a serious cause — most scans are reassuring.',
         guideUrl: '', redFlagAction: '\u26A1 Urgent MRI / 2WW' },
       { id: 'infection', name: 'Spinal infection (discitis / epidural abscess)', summary: 'Fever + back pain + IVDU / immunosuppression', baseline: 1, category: 'cant-miss',
@@ -214,7 +214,7 @@
     sources: [
       { label: 'NICE NG59 — Low back pain & sciatica', url: 'https://www.nice.org.uk/guidance/ng59' },
       { label:'NICE NG65 — spondyloarthritis', url:'https://www.nice.org.uk/guidance/ng65' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Unsettled / Crying Baby
-   Shared-id triage + differential. NICE · sepsis red flags.
+   Shared-id triage + differential. NICE NG143 · NICE NG254 (sepsis, under 16s) red flags.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -20,7 +20,7 @@
   if (window.RGPTriage) RGPTriage.register('unsettled-baby-triage', {
     title: 'Unsettled baby — triage',
     subtitle: 'Tick features. Surfaces sepsis, surgical causes and occult injury before reassuring colic.',
-    guideline: 'NICE · NG143',
+    guideline: 'NICE NG143',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine fully (temperature, fontanelle, abdomen, hips, scrotum, eyes, skin, digits/hair-tourniquet). Colic is common but a diagnosis of exclusion — support feeding & parents; safety-net.',
     rules: [
@@ -36,7 +36,7 @@
         id: 'surgical', tier: 'emergency',
         label: 'Possible surgical cause — bilious vomiting / distension / blood in stool / scrotal swelling',
         action: 'Same-day surgical/paediatric assessment.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.surgical,
       },
       {
@@ -50,14 +50,14 @@
         id: 'maternal', tier: 'urgent',
         label: 'Parental wellbeing / not coping',
         action: 'Assess parental mental health; health-visitor support; safety-net for shaking risk.',
-        source: 'NICE',
+        source: 'NICE NG194 (postnatal care)',
         when: i => i.maternal_mh,
       },
       {
         id: 'benign', tier: 'routine',
         label: 'Colic / feeding / reflux',
         action: 'Reassure; feeding & winding support; reflux measures; CMPA trial if features; review.',
-        source: 'NICE',
+        source: 'NICE NG194 · NICE NG1 (GORD in children)',
         when: i => true,
       }
     ],
@@ -70,7 +70,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('unsettled-baby-dx', {
     title: 'Unsettled baby — differential',
     subtitle: 'The engine weights colic, feeding/reflux and CMPA against parental factors, and always surfaces sepsis, surgical causes and occult injury.',
-    guideline: 'NICE · NG143',
+    guideline: 'NICE NG143',
     patientPresenting: "My baby won't stop crying, doctor, and we're exhausted.",
     inputs: INPUTS,
     diagnoses: [

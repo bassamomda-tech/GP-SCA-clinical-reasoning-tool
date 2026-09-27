@@ -37,7 +37,7 @@
         id: 'fracture', tier: 'urgent',
         label: 'Acute injury — fracture / significant ligament or meniscal tear',
         action: 'X-ray (Ottawa knee rules); orthopaedics if fracture / locked knee / instability.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.trauma,
       },
       {
@@ -51,14 +51,14 @@
         id: 'tumour', tier: 'cancer',
         label: 'Possible bone tumour — mass / night pain / systemic',
         action: 'Urgent X-ray; sarcoma/2WW pathway.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.mass_night,
       },
       {
         id: 'manage', tier: 'routine',
         label: 'Mechanical knee pain — assess & manage',
         action: 'Analgesia, physio, quads strengthening; image/refer by cause (OA, meniscal, PFPS, bursitis).',
-        source: 'NICE',
+        source: 'NICE NG226 (osteoarthritis) · clinical practice',
         when: i => true,
       }
     ],

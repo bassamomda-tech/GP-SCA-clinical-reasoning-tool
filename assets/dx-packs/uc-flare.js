@@ -1,7 +1,7 @@
 /* ============================================
    Diagnostic Tool pack — Ulcerative Colitis flare
    Shared-id triage + differential. Truelove & Witts severity ·
-   NICE UC · NICE NG130 · exclude infection / toxic megacolon.
+   NICE NG130 · exclude infection / toxic megacolon.
    ============================================ */
 (function () {
   const INPUTS = [

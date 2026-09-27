@@ -1,8 +1,8 @@
-/* Triage — Headache · NICE NG12 · NICE · SNNOOP10 · NICE NG228 / NG240 */
+/* Triage — Headache · NICE NG12 (updated April 2026) · NICE CG150 · SNNOOP10 (international) · NICE NG228 / NG240 */
 RGPTriage.register('headache-triage', {
   title: 'Headache — symptom triage',
-  subtitle: 'NICE headache assessment + SNNOOP10 red flags + NICE NG12 cancer pathway.',
-  guideline: 'NICE · SNNOOP10 · NG228 · NG240',
+  subtitle: 'NICE CG150 headache assessment + SNNOOP10 (international) red flags + NICE NG12 (updated April 2026) cancer pathway.',
+  guideline: 'NICE CG150 · SNNOOP10 (international) · NG228 · NG240 · NICE NG12 (updated April 2026)',
   inputs: [
     { group:'Demographics', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
     { group:'Demographics', id:'cancer_hx', kind:'check', label:'Known/past cancer', note:'brain mets risk' },
@@ -51,10 +51,10 @@ RGPTriage.register('headache-triage', {
       source:'BSR 2020', sourceUrl:'https://academic.oup.com/rheumatology/article/59/3/e1/5714025',
       when:(i)=>(i.age>=50) && (!!i.scalp_tenderness || !!i.jaw_claudication || !!i.visual_loss || !!i.esr_50_plus) },
     { id:'tumour_2ww', tier:'cancer', label:'2WW brain & CNS — progressive HA + red flag',
-      action:'Refer 2WW brain & CNS suspected cancer (NICE NG12). Urgent MRI brain.',
+      action:'Progressive, subacute loss of central neurological function: urgent direct-access MRI brain within 2 weeks, or 2WW brain & CNS suspected cancer referral per local pathway (NICE NG12 (updated April 2026)). Same-day referral if papilloedema or rapidly progressive deficit.',
       proformaUrl:'https://www.nice.org.uk/guidance/ng12/chapter/1-Recommendations-organised-by-site-of-cancer#brain-and-central-nervous-system-cancers',
-      proformaLabel:'NICE NG12 brain pathway',
-      source:'NICE NG12', sourceUrl:'https://www.nice.org.uk/guidance/ng12',
+      proformaLabel:'NICE NG12 (updated April 2026) brain pathway',
+      source:'NICE NG12 (updated April 2026)', sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       when:(i)=>(!!i.gradual_progressive || !!i.worse_lying_morning) && (!!i.cancer_hx || !!i.focal_neuro || !!i.seizure_with_ha || (i.age>=50)) },
     { id:'iih', tier:'urgent', label:'?Raised ICP — progressive HA + papilloedema / visual',
       action:'Urgent ophthalmology (visual fields, OCT) + MRI/MRV brain (exclude CVST).',
@@ -66,7 +66,7 @@ RGPTriage.register('headache-triage', {
   defaultMessage:'No headache red-flag triage rules fired. Continue ICHD-3 primary-headache workup (see differential below).',
   sources:[
     {label:'NICE CG150 — headaches', url:'https://www.nice.org.uk/guidance/cg150'},
-    {label:'NICE NG12 Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12'},
+    {label:'NICE NG12 (updated April 2026) Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12'},
     {label:'NICE NG240 Meningitis', url:'https://www.nice.org.uk/guidance/ng240'},
     {label:'SNNOOP10', url:'https://pubmed.ncbi.nlm.nih.gov/30429301/'}
   ],

@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Crohn's Disease flare
-   Shared-id triage + differential. NICE NG129's · ECCO ·
+   Shared-id triage + differential. NICE NG129's · ECCO (international) ·
    exclude infection / obstruction / abscess.
    ============================================ */
 (function () {
@@ -30,7 +30,7 @@
   if (window.RGPTriage) RGPTriage.register('crohns-flare-triage', {
     title: 'Crohn\u2019s flare — severity triage',
     subtitle: 'Tick features. Surfaces obstruction, abscess/perforation, sepsis and infection-mimic pathways.',
-    guideline: 'NICE NG129 · ECCO',
+    guideline: 'NICE NG129 · ECCO (international)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Confirm active inflammation (CRP, calprotectin, FBC), exclude infection (stool MC&S + C. difficile), and contact the IBD team to optimise treatment.',
     rules: [
@@ -39,21 +39,21 @@
         label: 'Surgical emergency — obstruction / perforation / sepsis',
         action: 'Same-day surgical admission — IV fluids/antibiotics, imaging, IBD + surgical teams.',
         patientPhrase: '"This needs emergency hospital assessment today — there may be a blockage or serious complication."',
-        source: 'ECCO / NICE',
+        source: 'ECCO (international) · NICE NG129',
         when: i => i.peritonism || i.obstruction || (i.hr != null && i.hr > 110) || (i.temp != null && i.temp >= 38.5),
       },
       {
         id: 'abscess', tier: 'urgent',
         label: 'Perianal / intra-abdominal abscess or fistula',
         action: 'Same-day imaging + IBD/surgical referral; antibiotics; do not start/escalate steroids blindly.',
-        source: 'ECCO',
+        source: 'ECCO (international)',
         when: i => i.perianal,
       },
       {
         id: 'infection', tier: 'urgent',
         label: 'Exclude infection mimicking a flare (C. difficile / enteric)',
         action: 'Stool MC&S + C. difficile toxin before escalating immunosuppression.',
-        source: 'ECCO',
+        source: 'ECCO (international)',
         when: i => i.recent_abx && i.diarrhoea,
       },
       {
@@ -80,7 +80,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('crohns-flare-dx', {
     title: 'Worsening Crohn\u2019s — what is driving it?',
     subtitle: 'Not every symptom is active inflammation. The engine weights flare against infection, obstruction, bile-acid diarrhoea and functional overlap, and surfaces abscess / obstruction / IBD-related cancer when triggered.',
-    guideline: 'NICE NG129 · ECCO',
+    guideline: 'NICE NG129 · ECCO (international)',
     patientPresenting: "My Crohn's feels like it's flaring, doctor — more pain, more trips to the toilet, and I'm exhausted.",
     inputs: INPUTS,
     diagnoses: [

@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Halitosis
-   Shared-id triage + differential. NICE · NG12.
+   Shared-id triage + differential. NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -19,49 +19,49 @@
   if (window.RGPTriage) RGPTriage.register('halitosis-triage', {
     title: 'Halitosis — triage',
     subtitle: 'Tick features. Surfaces oral/ENT cancer red flags, then weights the common oral/ENT/systemic causes.',
-    guideline: 'NICE · NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Most halitosis is oral — optimise oral hygiene + dental review; treat ENT/reflux causes; reassure pseudohalitosis.',
     rules: [
       {
         id: 'cancer_2ww', tier: 'cancer',
         label: 'Non-healing oral lesion / neck node, or persistent unilateral nasal symptoms',
-        action: 'Head & neck 2WW (NICE NG12) / urgent ENT.',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'Head & neck 2WW (NICE NG12 (updated April 2026)) / urgent ENT.',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.oral_ulcer || i.unilateral_nasal,
       },
       {
         id: 'dental', tier: 'urgent',
         label: 'Dental infection / abscess',
         action: 'Urgent dental review; treat infection.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.dental_pain,
       },
       {
         id: 'systemic', tier: 'urgent',
         label: 'Systemic cause (diabetic ketosis / hepatic / renal)',
         action: 'Glucose/ketones, U&E, LFT as indicated; treat cause.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.systemic_metabolic,
       },
       {
         id: 'manage', tier: 'routine',
         label: 'Oral / ENT / reflux halitosis — manage',
         action: 'Oral hygiene + tongue cleaning + dental review; treat sinusitis/tonsilloliths; PPI trial if reflux; reassure pseudohalitosis.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('halitosis-dx', {
     title: 'Halitosis — differential',
     subtitle: 'The engine weights oral, ENT, reflux, xerostomia and systemic causes (and pseudohalitosis), and surfaces oral / sinonasal cancer.',
-    guideline: 'NICE · NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I'm worried about persistent bad breath, doctor — it's affecting my confidence.",
     inputs: INPUTS,
     diagnoses: [
@@ -91,7 +91,7 @@
         guideUrl: '' },
 
       { id: 'malignancy', name: 'Oral / sinonasal malignancy', summary: 'Non-healing ulcer / mass / unilateral nasal symptoms', baseline: 1, category: 'cant-miss',
-        keyExam: 'Oral lesion, neck node, unilateral nasal mass.', nextIx: '\u26A1 Head & neck 2WW / urgent ENT (NICE NG12).',
+        keyExam: 'Oral lesion, neck node, unilateral nasal mass.', nextIx: '\u26A1 Head & neck 2WW / urgent ENT (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A non-healing sore or one-sided nasal symptoms need an urgent specialist check to exclude cancer.',
         guideUrl: '', redFlagAction: '\u26A1 2WW / urgent ENT' }
     ],
@@ -118,7 +118,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

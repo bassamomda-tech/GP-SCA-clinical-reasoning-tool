@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790379962369223 tools/management/antiplatelets-anticoagulants.html">
+<meta name="omelette-print-source" content="v1790530756974668 tools/management/antiplatelets-anticoagulants.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,7 +22,7 @@
 <script>
 MG.render({
   icon:"🩸",
-  title:"DOACs, antiplatelets & anticoagulation — the complete guide",
+  title:"DOACs, antiplatelets and anticoagulation — the complete guide",
   eyebrow:"Protocol · NICE NG196 · NG158 · NG128 · BSH · dose by CrCl, never eGFR",
   stemTitle:"DOAC safety was proven at the licensed dose criteria, so the four reduction rules are the whole game — and they must be applied in BOTH directions, because \"2.5 mg BD to be safe\" is under-anticoagulation and causes strokes",
   stemSub:"One page for antithrombotic prescribing. Pick the right CLASS by mechanism — arterial plaque needs an antiplatelet, stasis needs an anticoagulant, and a short list of conditions still needs warfarin. Then dose the DOAC properly using <b>creatinine clearance (Cockcroft-Gault), not the lab eGFR</b>, apply the four reduction rules, set stop dates for DAPT and provoked VTE, know the interactions and the <b>product-specific</b> missed-dose rules, switch without gaps, respond to bleeding by severity, and run the annual review that catches the silent dosing errors.",
@@ -32,8 +32,8 @@ MG.render({
   meta:[
     {t:"NICE NG196 (AF) · NG158 (VTE) · NG128 (stroke/TIA)"},
     {t:"British Society for Haematology guidance"},
-    {t:"Dose by CrCl (Cockcroft-Gault), NOT the lab eGFR", tone:"tw"},
-    {t:"Under-dosing is an error too — audit both directions", tone:"tw"},
+    {t:"Dose by CrCl (Cockcroft-Gault), NOT the lab eGFR"},
+    {t:"Under-dosing is an error too — audit both directions"},
     {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
   lead:'<div class="mg-layers"><a href="#class"><b>Class</b><small>Arterial vs stasis</small></a><a href="#dose"><b>Dose</b><small>CrCl · four rules</small></a><a href="#vte"><b>VTE</b><small>Load · stop date</small></a><a href="#antiplatelet"><b>Antiplatelets</b><small>DAPT durations</small></a><a href="#rules"><b>Day to day</b><small>Interactions · missed</small></a></div>',
@@ -84,7 +84,7 @@ MG.render({
          ["<b>Choosing between them</b>","Apixaban has the best GI-bleed profile but is twice daily. Rivaroxaban and edoxaban are once daily — better for adherence and dosette boxes. Dabigatran is the only one with dyspepsia as a common side effect and is fully renally cleared. <b>Once-daily beats \"best on paper\" if adherence is shaky</b>"],
          ["<b>Under-dosing is an error too</b>","Giving apixaban 2.5 mg BD \"to be safe\" without meeting two criteria is under-anticoagulation, and that means strokes. Audit in both directions"],
          ["<b>Warfarin is still right for</b>","Mechanical valves (INR 2.5–3.5 depending on the valve) · moderate-to-severe mitral stenosis · triple-positive antiphospholipid syndrome · CrCl under 15"],
-         ["<b>Weight over 120 kg or BMI over 40</b>","DOAC evidence thins. Apixaban or rivaroxaban are preferred per ISTH — or seek haematology advice"]
+         ["<b>Weight over 120 kg or BMI over 40</b>","DOAC evidence thins. Apixaban or rivaroxaban are preferred per ISTH guidance (international) — or seek haematology advice"]
        ]},
        {b:"why", html:"DOACs beat warfarin on intracranial haemorrhage, interactions and monitoring burden — which is why they are first-line. But their safety was established at the licensed dose criteria, so the four reduction rules ARE the treatment, not a footnote to it. And they are re-checked rather than set once, because renal function and weight both drift — the dose that was correct at 74 may be an overdose at 81."}
      ]},
@@ -187,7 +187,7 @@ MG.render({
      blocks:[
        {b:"cards", items:[
          {tone:"red", h:"Emergency — 999", html:"Major bleeding, or any neurological change on an anticoagulant → admit immediately. Reversal agents exist and speed matters. Head injury on an anticoagulant goes to A&amp;E however well the patient feels — intracranial bleeding can be delayed."},
-         {tone:"purple", h:"2WW · NICE NG12 — unexplained bleeding or anaemia", html:"<b>Investigate as cancer before blaming the drug.</b> Visible haematuria aged 45 and over → urgent suspected bladder or renal cancer referral. Iron-deficiency anaemia or rectal bleeding aged 50 and over → FIT (refer at ≥10 µg Hb/g) and the colorectal pathway. Unexplained weight loss with abdominal pain aged 40 and over → urgent direct-access imaging."},
+         {tone:"purple", h:"2WW · NICE NG12 (updated April 2026) — unexplained bleeding or anaemia", html:"<b>Investigate as cancer before blaming the drug.</b> Visible haematuria aged 45 and over → urgent suspected bladder or renal cancer referral. Iron-deficiency anaemia, rectal bleeding aged 50 and over, or unexplained weight loss with abdominal pain aged 40 and over → FIT (refer at ≥10 µg Hb/g) and the colorectal pathway."},
          {tone:"amber", h:"Cardiology", html:"Any change to mandated DAPT · triple-therapy planning · a recent stent needing surgery."},
          {tone:"amber", h:"Haematology", html:"Antiphospholipid syndrome · recurrent VTE on treatment · extremes of weight · CrCl under 15 · suspected heparin or DOAC failure."},
          {tone:"blue", h:"Anticoagulation service", html:"<b>Warfarin management, bridging plans and complex switches.</b>"},
@@ -210,8 +210,8 @@ MG.render({
          '<li><b>NICE NG128 — Stroke and TIA in over 16s</b><br><a href="https://www.nice.org.uk/guidance/ng128" rel="noopener">nice.org.uk/guidance/ng128</a><span class="rd"> — clopidogrel 75 mg as long-term secondary prevention, the aspirin plus MR dipyridamole alternative, and the 21-day DAPT course after high-risk TIA or minor stroke</span></li>'+
          '<li>British Society for Haematology — peri-operative management of anticoagulation<span class="rd"> — the 24/48-hour DOAC stop intervals, the longer interval for dabigatran, the no-bridging rule, and the procedures that need no interruption</span></li>'+
          '<li><b>BNF and the individual Summaries of Product Characteristics</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — the four DOAC dose-reduction rules with their exact licence criteria, dosing by creatinine clearance (Cockcroft-Gault) rather than eGFR, and the PRODUCT-SPECIFIC missed-dose rules</span></li>'+
-         '<li><b>ISTH guidance on DOACs at extremes of body weight</b><span class="rd"> — apixaban or rivaroxaban preferred above 120 kg or BMI 40, where DOAC evidence thins</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the haematuria, iron-deficiency anaemia and weight-loss routes applied when a patient on an antithrombotic bleeds</span></li>'+
+         '<li><b>ISTH guidance on DOACs at extremes of body weight (international)</b><span class="rd"> — apixaban or rivaroxaban preferred above 120 kg or BMI 40, where DOAC evidence thins</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the haematuria, iron-deficiency anaemia and weight-loss routes applied when a patient on an antithrombotic bleeds</span></li>'+
          '<li><b>MHRA Drug Safety Updates</b><span class="rd"> — clopidogrel with omeprazole or esomeprazole via CYP2C19; DOAC interactions with enzyme inducers including St John\u2019s Wort; the named reversal agents</span></li>'+
          '</ul></div>'}
      ]}

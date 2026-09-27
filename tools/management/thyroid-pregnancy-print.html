@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790455351292142 tools/management/thyroid-pregnancy.html">
+<meta name="omelette-print-source" content="v1790530892644503 tools/management/thyroid-pregnancy.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -26,14 +26,14 @@ MG.render({
   eyebrow:"Protocol · diagnose &amp; manage in one place",
   stemTitle:"Pregnancy rewrites the reference ranges and raises the levothyroxine requirement — increase the dose early, refer everyone, and use PTU not carbimazole",
   stemSub:"One page for the whole condition: understand why a low first-trimester TSH is normal and non-pregnant ranges mislead, act on the lower treatment threshold by increasing levothyroxine by 30–50% from as early as 4–6 weeks, refer every hyperthyroid woman — including the euthyroid ones — for specialist antithyroid choice, recognise the biphasic course of postpartum thyroiditis, and step the dose back down after delivery so she is not left over-replaced.",
-  guideline:"NICE NG145 · NG12 · MHRA · ATA / Endocrine Society",
+  guideline:"NW London Outpatient Pathways (2021) · MHRA Drug Safety Update (Feb 2019) · ATA pregnancy guideline (2017, international) · NICE NG12 (updated April 2026) · NICE NG145 (2019, non-pregnant disease)",
   reviewed:"9 September 2026",
   nextReview:"9 March 2027",
   meta:[
     {t:"NW London Outpatient Pathways — thyroid dysfunction in pregnancy (Issue 1, March 2021)"},
-    {t:"NICE NG145 — thyroid disease: assessment and management"},
-    {t:"MHRA Drug Safety Update — carbimazole and congenital malformations"},
-    {t:"Endocrine Society / ATA pregnancy guidance"},
+    {t:"NICE NG145 (2019) — thyroid disease outside pregnancy"},
+    {t:"MHRA Drug Safety Update (Feb 2019) — carbimazole and congenital malformations"},
+    {t:"ATA 2017 / Endocrine Society 2012 pregnancy guidance (international)"},
     {t:"NG12: unexplained thyroid lump", tone:"tw"},
     {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
   ],
@@ -43,9 +43,9 @@ MG.render({
     {tone:"red", h:"⚠ Two emergencies and one cancer route", html:"Thyroid storm — fever, tachyarrhythmia, agitation, vomiting → emergency admission. Hyperemesis gravidarum with intractable vomiting → emergency admission for rehydration and assessment. A thyroid nodule or goitre with suspicious features still follows the 2WW cancer pathway (NICE NG12), independent of pregnancy."},
     {tone:"amber", h:"A low TSH in the first trimester is normal", html:"hCG cross-stimulates the TSH receptor, so TSH falls in the first trimester — do not misread it as pathological hyperthyroidism. Rising oestrogen raises thyroxine-binding globulin, lifting total (and free) FT4 and FT3. Apply trimester-specific reference ranges: non-pregnant ranges mislead, and this is the single commonest interpretive error."},
     {tone:"blue", h:"Levothyroxine goes UP, early — the opposite of the instinct", html:"An increase of 30–50% may be needed from as early as 4–6 weeks' gestation to keep TSH normal. If she is already on levothyroxine, discuss the increase as soon as pregnancy is confirmed — do not wait for booking. A common practical approach is to increase immediately on a positive test, then titrate."},
-    {tone:"purple", h:"PTU, not carbimazole", html:"Propylthiouracil is usually used in pregnancy because of the increased risk of congenital abnormalities with carbimazole (MHRA alert) — at the lowest possible dose maintaining euthyroidism. <b>Both cross the placenta, so the specialist balances agent and timing.</b>"},
+    {tone:"amber", h:"PTU, not carbimazole", html:"Propylthiouracil is usually used in pregnancy because of the increased risk of congenital abnormalities with carbimazole (MHRA alert) — at the lowest possible dose maintaining euthyroidism. <b>Both cross the placenta, so the specialist balances agent and timing.</b>"},
     {tone:"green", h:"Refer everyone — including the euthyroid", html:"Urgent antenatal plus endocrinology referral for all overt or subclinical hypo- and hyperthyroidism, and for euthyroid women with a history of thyroid disease (for example treated Graves'). Check TSH and FT4 — adding FT3 if hyperthyroid — immediately, and discuss while awaiting assessment."},
-    {tone:"plain", h:"Step the dose back down after delivery", html:"The pregnancy-driven rise in requirement reverses after birth, so a woman left on her pregnancy dose becomes over-replaced. Drop to the pre-pregnancy dose on specialist advice and check TFTs at 6 weeks postpartum."}
+    {tone:"cream", h:"Step the dose back down after delivery", html:"The pregnancy-driven rise in requirement reverses after birth, so a woman left on her pregnancy dose becomes over-replaced. Drop to the pre-pregnancy dose on specialist advice and check TFTs at 6 weeks postpartum."}
   ],
   pathwaySub:"The whole pathway in five moves. The red step comes before any interpretation of the numbers.",
   pathway:[
@@ -187,16 +187,16 @@ MG.render({
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
          '<li>NW London Outpatient Pathways — Thyroid dysfunction in pregnancy (Issue 1, March 2021)<span class="rd"> — the referral thresholds, the 30–50% levothyroxine increase from 4–6 weeks, the monitoring schedule, and the postpartum step-down</span></li>'+
-         '<li><b>NICE NG145 — Thyroid disease: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng145" rel="noopener">nice.org.uk/guidance/ng145</a><span class="rd"> — diagnosis and management principles, and the specialist-led position for thyroid disease in pregnancy</span></li>'+
-         '<li><b>NICE NG145 — thyroid disease</b><br><a href="https://www.nice.org.uk/guidance/ng145" rel="noopener">nice.org.uk/guidance/ng145</a><span class="rd"> — primary-care assessment, postpartum thyroiditis, and the monitoring intervals</span></li>'+
-         '<li><b>MHRA Drug Safety Update — carbimazole and congenital malformations</b><span class="rd"> — the carbimazole embryopathy risk, the advice on effective contraception, and the preference for propylthiouracil in the first trimester</span></li>'+
-         '<li><b>Endocrine Society and American Thyroid Association pregnancy guidance</b><span class="rd"> — trimester-specific reference ranges, and Graves\u2019 antibody surveillance in pregnancy</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — consider a suspected cancer pathway referral for thyroid cancer in people with an unexplained thyroid lump; pregnancy does not alter this</span></li>'+
+         '<li><b>NICE NG145 — Thyroid disease: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng145" rel="noopener">nice.org.uk/guidance/ng145</a><span class="rd"> — diagnosis and management of thyroid disease outside pregnancy (the non-pregnant hypothyroidism and hyperthyroidism background); NG145 explicitly does not cover managing thyroid disease in pregnancy</span></li>'+
+         '<li><b>Alexander EK et al. — 2017 Guidelines of the American Thyroid Association for the diagnosis and management of thyroid disease during pregnancy and the postpartum.</b> Thyroid 2017;27:315–89 (international)<br><a href="https://pubmed.ncbi.nlm.nih.gov/28056690/" rel="noopener">pubmed 28056690</a><span class="rd"> — levothyroxine increase as soon as pregnancy is confirmed, PTU preferred in the first trimester, postpartum thyroiditis course and follow-up, and TSH screening at 3 and 6 months postpartum in type 1 diabetes</span></li>'+
+         '<li><b>MHRA Drug Safety Update — Carbimazole: increased risk of congenital malformations; strengthened advice on contraception (February 2019)</b><br><a href="https://www.gov.uk/drug-safety-update/carbimazole-increased-risk-of-congenital-malformations-strengthened-advice-on-contraception" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — the carbimazole embryopathy risk (especially first trimester and higher doses), effective contraception during treatment, and use in pregnancy only after an individual benefit–risk assessment at the lowest effective dose</span></li>'+
+         '<li><b>De Groot L et al. — Management of thyroid dysfunction during pregnancy and postpartum: an Endocrine Society clinical practice guideline.</b> J Clin Endocrinol Metab 2012;97:2543–65 (international)<span class="rd"> — trimester-specific reference ranges, and Graves\u2019 antibody surveillance in pregnancy</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — consider a suspected cancer pathway referral for thyroid cancer in people with an unexplained thyroid lump; pregnancy does not alter this</span></li>'+
          '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — levothyroxine, propylthiouracil and carbimazole dosing, and beta-blocker use for adrenergic symptoms</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Thyroid disease in pregnancy — NW London Outpatient Pathways (Issue 1, March 2021), NICE NG145, the MHRA Drug Safety Update on carbimazole, Endocrine Society and ATA pregnancy guidance, and NICE NG12. Antithyroid drugs and antenatal thyroid care are specialist-led: always apply trimester-specific reference ranges and refer urgently. The non-pregnant conditions are covered by the <a href=\"hypothyroidism.html\">hypothyroidism</a> and <a href=\"hyperthyroidism.html\">hyperthyroidism</a> protocols. Verify all doses against the current BNF before prescribing."
+  foot:"Thyroid disease in pregnancy — NW London Outpatient Pathways (Issue 1, March 2021), the MHRA Drug Safety Update on carbimazole (February 2019), ATA (2017) and Endocrine Society (2012) pregnancy guidance (international), NICE NG12 (updated April 2026), and NICE NG145 for thyroid disease outside pregnancy. Antithyroid drugs and antenatal thyroid care are specialist-led: always apply trimester-specific reference ranges and refer urgently. The non-pregnant conditions are covered by the <a href=\"hypothyroidism.html\">hypothyroidism</a> and <a href=\"hyperthyroidism.html\">hyperthyroidism</a> protocols. Verify all doses against the current BNF before prescribing."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

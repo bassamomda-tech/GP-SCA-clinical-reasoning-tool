@@ -1,11 +1,11 @@
 /* ============================================
    Medication Chooser — Constipation (adults)
-   BNF · NICE NG12  (NG12 colorectal red flags)
+   BNF · NICE NG12 (updated April 2026)  (NICE NG12 (updated April 2026) colorectal red flags)
    ============================================ */
 MedChooser.register('constipation', {
   title: 'Constipation — laxative selection',
   subtitle: 'Stepwise laxative choice (BNF) by stool type, cause and special situations. Tick the patient profile; cards re-tier live.',
-  guideline: 'BNF constipation treatment summary · NICE NG12 (red flags) · NICE TA211 · NICE TA345',
+  guideline: 'BNF constipation treatment summary · NICE NG12 (updated April 2026) (red flags) · NICE TA211 · NICE TA345',
 
   factors: [
     // Stool / pattern
@@ -21,7 +21,7 @@ MedChooser.register('constipation', {
     { group:'Cause & context', id:'ibs', label:'IBS-related (avoid lactulose)' },
     { group:'Cause & context', id:'secondary', label:'Possible secondary cause (hypothyroid, hyperCa, drugs)', note:'Treat the cause' },
 
-    // Red flags (NG12)
+    // Red flags (NICE NG12 (updated April 2026))
     { group:'Red flags (exclude cancer)', id:'change_60', label:'Change in bowel habit, age ≥60' },
     { group:'Red flags (exclude cancer)', id:'rectal_bleed', label:'Rectal bleeding' },
     { group:'Red flags (exclude cancer)', id:'weight_loss', label:'Unexplained weight loss' },
@@ -41,7 +41,7 @@ MedChooser.register('constipation', {
   flags: (f) => {
     const out = [];
     const ng12 = f.change_60 || f.rectal_bleed || f.weight_loss || f.mass || f.anaemia;
-    if (ng12) out.push({ tone:'red', text:'NICE NG12 — alarm feature: FIT + FBC/ferritin and refer on the suspected lower-GI cancer (2WW) pathway. Abdominal/rectal mass → examine + urgent referral.' });
+    if (ng12) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — alarm feature: FIT + FBC/ferritin and refer on the suspected lower-GI cancer (2WW) pathway. Abdominal/rectal mass → examine + urgent referral.' });
     if (f.obstruction) out.push({ tone:'red', text:'Suspected bowel obstruction — do NOT give oral laxatives/stimulants; assess for acute admission' });
     if (f.secondary) out.push({ tone:'amber', text:'Screen/treat secondary causes (hypothyroidism, hypercalcaemia, hypokalaemia, culprit drugs) alongside laxatives' });
     if (f.preg) out.push({ tone:'amber', text:'Pregnancy — bulk-forming first, then osmotic (lactulose/macrogol); senna only short-term, avoid near term' });
@@ -116,7 +116,7 @@ MedChooser.register('constipation', {
         'Key teaching': 'Alternative osmotic, useful in pregnancy. Avoid in IBS (bloating). Macrogol generally preferred where both suitable.'
       },
       evaluate(f){
-        if (f.ibs) return { tier:'avoid', reasons:[{kind:'bad', text:'IBS — NICE advises against lactulose (worsens bloating)'}] };
+        if (f.ibs) return { tier:'avoid', reasons:[{kind:'bad', text:'IBS — NICE CG61 advises against lactulose (worsens bloating)'}] };
         const r = [];
         if (f.preg) r.push({kind:'good', text:'Pregnancy — lactulose is a recommended osmotic option'});
         if (f.bulk_intol) r.push({kind:'neutral', text:'Osmotic option, though macrogol usually preferred'});
@@ -221,7 +221,7 @@ MedChooser.register('constipation', {
 
   sources: [
     
-    { label:'NICE NG12 — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'NICE TA211 — Prucalopride for chronic constipation in women', url:'https://www.nice.org.uk/guidance/ta211' },
     { label:'NICE TA345 — Naloxegol for treating opioid-induced constipation', url:'https://www.nice.org.uk/guidance/ta345' },
     { label:'BNF — Constipation treatment summary', url:'https://bnf.nice.org.uk/treatment-summaries/constipation/' }

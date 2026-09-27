@@ -1,7 +1,7 @@
 /* ============================================
    Diagnostic Tool pack — Fits / Funny Turns
    Shared-id triage + differential (seizure vs syncope vs other).
-   NICE NG217 epilepsy · ESC syncope
+   NICE NG217 epilepsy · ESC syncope (international)
    ============================================ */
 (function () {
   const INPUTS = [
@@ -28,7 +28,7 @@
   if (window.RGPTriage) RGPTriage.register('fits-funny-turns-triage', {
     title: 'Fits / funny turns — triage',
     subtitle: 'Tick features. Surfaces cardiac syncope, first seizure and hypoglycaemia pathways.',
-    guideline: 'NICE NG217 · ESC Syncope',
+    guideline: 'NICE NG217 · ESC Syncope (international)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Take a detailed eyewitness account, 12-lead ECG, lying/standing BP and glucose; classify and refer (first-seizure clinic vs syncope pathway).',
     rules: [
@@ -37,7 +37,7 @@
         label: 'Possible cardiac syncope — exertional / no warning / palpitations / abnormal ECG / FH sudden death',
         action: 'Urgent cardiology + 12-lead ECG; advise not to drive; same-week if high risk.',
         patientPhrase: '"Blacking out like this can come from the heart — I want urgent heart tests before anything else."',
-        source: 'ESC Syncope 2018',
+        source: 'ESC Syncope 2018 (international)',
         when: i => i.exertional || i.palpitations_injury || i.cardiac_hx,
       },
       {
@@ -71,7 +71,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('fits-funny-turns-dx', {
     title: 'Transient loss of consciousness — differential',
     subtitle: 'The history is the test. The engine weights epileptic seizure, vasovagal and cardiac syncope, hypoglycaemia and functional events from the before/during/after features, and always surfaces cardiac syncope when triggered.',
-    guideline: 'NICE NG217 · ESC',
+    guideline: 'NICE NG217 · ESC (international)',
     patientPresenting: "I blacked out, doctor — my partner said I went stiff and jerked for a minute or so.",
     inputs: INPUTS,
     diagnoses: [
@@ -127,7 +127,7 @@
     sources: [
       { label: 'NICE NG217 — Epilepsies', url: 'https://www.nice.org.uk/guidance/ng217' },
       { label:'NICE CG109 — transient loss of consciousness', url:'https://www.nice.org.uk/guidance/cg109' },
-      { label: 'ESC 2018 — Syncope', url: 'https://www.escardio.org/Guidelines' }
+      { label: 'ESC 2018 — Syncope (international)', url: 'https://www.escardio.org/Guidelines' }
     ],
   });
 

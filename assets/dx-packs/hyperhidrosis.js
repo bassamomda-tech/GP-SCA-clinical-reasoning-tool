@@ -31,9 +31,9 @@
       {
         id: 'lymphoma_2ww', tier: 'cancer',
         label: 'B-symptoms — drenching night sweats + weight loss + lymphadenopathy',
-        action: 'Urgent FBC, film, LDH, CXR; haematology 2WW (NICE NG12).',
+        action: 'Urgent FBC, film, LDH, CXR; haematology 2WW (NICE NG12 (updated April 2026)).',
         patientPhrase: '"Night sweats with weight loss and gland swelling need urgent blood tests to rule out a blood-cell problem."',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.b_symptoms,
       },
       {
@@ -53,7 +53,7 @@
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
@@ -90,7 +90,7 @@
         guideUrl: '' },
 
       { id: 'lymphoma', name: 'Lymphoma / malignancy', summary: 'Drenching night sweats + weight loss + lymphadenopathy', baseline: 1, category: 'cant-miss',
-        keyExam: 'Lymphadenopathy, hepatosplenomegaly.', nextIx: '\u26A1 FBC, film, LDH, CXR; haematology 2WW (NICE NG12).',
+        keyExam: 'Lymphadenopathy, hepatosplenomegaly.', nextIx: '\u26A1 FBC, film, LDH, CXR; haematology 2WW (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Night sweats with weight loss and gland swelling need urgent tests to exclude a blood-cell cancer.',
         guideUrl: '', redFlagAction: '\u26A1 Haematology 2WW' },
       { id: 'phaeo', name: 'Phaeochromocytoma', summary: 'Episodic sweating + palpitations + headache + hypertension', baseline: 1, category: 'cant-miss',
@@ -127,7 +127,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

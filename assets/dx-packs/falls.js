@@ -39,7 +39,7 @@
         label: 'Fall with syncope / cardiac features',
         action: 'Urgent cardiology + 12-lead ECG; lying/standing BP; review driving.',
         patientPhrase: '"A blackout causing the fall can come from the heart — I want urgent heart tests."',
-        source: 'ESC Syncope',
+        source: 'ESC Syncope 2018 (international)',
         when: i => i.syncope || i.cardiac,
       },
       {

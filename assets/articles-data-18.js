@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 18: M topics, part 1)
    NHS conditions A–Z (letter M) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Severe/complicated malaria (impaired consciousness, organ dysfunction, high parasitaemia, falciparum) → emergency admission for IV artesunate',
       'Pregnant women, children, and the immunocompromised with suspected malaria → urgent specialist input',
       'Notify public health (notifiable disease)'],
-    source:'UKHSA / PHE malaria treatment guidelines' },
+    source:'UKHSA malaria prevention guidelines for UK travellers (formerly PHE) / UK malaria treatment guidelines (British Infection Association, 2016)' },
 
   { id:'malnutrition', title:'Malnutrition (undernutrition)', category:'General', icon:'🍽️',
     overview:'A state of deficient energy, protein or micronutrients that impairs body function and clinical outcomes. It is common and under-recognised — particularly in older, frail, and chronically ill people — and worsens recovery, immunity and mortality. Routine screening and a stepwise "food-first" approach are the foundations of management.',
@@ -49,7 +49,7 @@
       'Consider enteral/parenteral nutrition only where appropriate and via specialist services',
       'Investigate unexplained weight loss for serious underlying disease (including cancer) where indicated'],
     referral:[
-      'Unexplained weight loss with concerning features → investigate for underlying disease (consider relevant NICE NG12 cancer pathways)',
+      'Unexplained weight loss with concerning features → investigate for underlying disease (consider relevant NICE NG12 (updated April 2026) cancer pathways)',
       'Moderate–high malnutrition risk, complex needs, or swallowing problems → dietitian (± speech and language therapy)',
       'Severe malnutrition or refeeding risk → specialist nutrition support (consider admission)',
       'Underlying treatable cause (e.g. GI disease, dental, mental health) → relevant service'],
@@ -78,7 +78,7 @@
       'Asymmetric/unilateral sensorineural hearing loss → MRI to exclude acoustic neuroma (NICE NG98)',
       'Refractory or disabling disease → specialist (intratympanic/surgical options)',
       'Sudden sensorineural hearing loss → same-day ENT (a separate emergency)'],
-    source:'NICE — Ménière’s disease' },
+    source:'DVLA Assessing fitness to drive (vestibular disorders) / NICE NG98 (Hearing loss in adults, 2018) / BNF (betahistine, prochlorperazine)' },
 
   { id:'meningitis', title:'Meningitis', category:'Infectious diseases', icon:'🦠',
     overview:'Inflammation of the meninges, most dangerously from bacterial infection (meningococcal, pneumococcal, Hib). It is a time-critical emergency: bacterial meningitis and meningococcal septicaemia can kill within hours. Immediate recognition, pre-hospital benzylpenicillin, and emergency transfer save lives; viral meningitis is commoner and usually milder.',
@@ -103,7 +103,7 @@
       'Any unwell febrile child with non-specific but concerning signs → urgent assessment (low threshold)',
       'Confirmed case → notify public health for contact prophylaxis',
       'Survivors → audiology and neuro follow-up'],
-    source:'NICE NG240 (Meningitis) / Meningitis guidance' },
+    source:'NICE NG240 (Meningitis (bacterial) and meningococcal disease, 2024) / UKHSA meningococcal disease guidance' },
 
   { id:'mesothelioma', title:'Mesothelioma', category:'Respiratory', icon:'🫁',
     overview:'An aggressive cancer of the mesothelial lining (usually the pleura), almost always caused by past asbestos exposure after a long latency (often 30–40 years). Prognosis is poor and treatment largely palliative, so the priorities are prompt recognition of pleural symptoms with an asbestos history, urgent referral, and supporting compensation.',
@@ -124,11 +124,11 @@
       'Report to the coroner where appropriate (asbestos-related deaths are usually reportable)',
       'Provide psychological support to the patient and family throughout'],
     referral:[
-      'Unexplained pleural effusion, pleural thickening, or chest symptoms with asbestos exposure → urgent suspected mesothelioma/lung-cancer (2WW) referral and urgent chest X-ray (NICE NG12)',
+      'Chest X-ray findings suggesting mesothelioma (e.g. unexplained pleural effusion or pleural thickening) → suspected cancer pathway (2WW) referral; aged 40+ with unexplained chest symptoms (cough, fatigue, breathlessness, chest pain, weight loss, appetite loss) and asbestos exposure → urgent chest X-ray within 2 weeks (NICE NG12 (updated April 2026))',
       'Confirmed/suspected mesothelioma → mesothelioma/lung-cancer MDT',
       'Symptom control needs (breathlessness, pain) → early specialist palliative care',
       'Benefits/compensation → signpost to relevant advice services'],
-    source:'NICE NG12 / BTS mesothelioma guidance' },
+    source:'NICE NG12 (updated April 2026) / BTS guideline for the investigation and management of malignant pleural mesothelioma (2018)' },
 
   { id:'migraine', title:'Migraine', category:'Neurology', icon:'🧠',
     overview:'A common primary headache disorder of recurrent moderate-to-severe headache with associated features, sometimes preceded by aura. It is a major cause of disability. Management has three strands: confident diagnosis (excluding secondary causes), effective acute treatment, and prophylaxis for frequent attacks — while avoiding medication-overuse headache.',
@@ -149,11 +149,11 @@
       'Treat lifestyle triggers (regular sleep/meals, hydration, stress management) and identify/withdraw overused medication',
       'Provide information, a self-management plan, and clear safety-netting for red-flag symptoms'],
     referral:[
-      'Red-flag features (thunderclap, new focal signs, progressive pattern, new onset over 50) → urgent assessment/investigation (consider brain tumour/secondary causes — NICE NG12)',
+      'Red-flag features (thunderclap, new focal signs, progressive pattern, new onset over 50) → urgent assessment/investigation (consider brain tumour/secondary causes — NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty, or migraine not responding to optimal acute and preventive treatment → neurology/headache service',
       'Chronic migraine (≥15 headache days/month) → specialist (anti-CGRP, Botox)',
       'Migraine with aura needing contraceptive advice → avoid combined hormonal contraception; offer alternatives'],
-    source:'NICE — Migraine / NICE CG150' }
+    source:'NICE CG150 (Headaches in over 12s) / MHRA Drug Safety Update (topiramate, June 2024) / UKMEC (CHC in migraine with aura)' }
 
   );
 })();

@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Gynaecomastia
-   Shared-id triage + differential. NICE NG12.
+   Shared-id triage + differential. NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,7 +22,7 @@
   if (window.RGPTriage) RGPTriage.register('gynecomastia-triage', {
     title: 'Gynaecomastia — triage',
     subtitle: 'Tick features. Surfaces male breast cancer and testicular tumour pathways.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine breast + testes; review drugs; bloods (LFT, U&E, TFT, testosterone, LH/FSH, oestradiol, hCG, prolactin) guided by findings; reassure pubertal / drug cause and review.',
     rules: [
@@ -31,41 +31,41 @@
         label: 'Suspected male breast cancer — hard / eccentric / fixed lump, skin or nipple change',
         action: 'Breast 2WW.',
         patientPhrase: '"This lump has features I want a breast specialist to assess quickly to be safe."',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.hard_eccentric,
       },
       {
         id: 'testis_2ww', tier: 'cancer',
         label: 'Testicular mass / rapid gynaecomastia — exclude germ-cell tumour',
         action: 'Urgent testicular USS + hCG/AFP; 2WW if mass confirmed.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.testis_mass,
       },
       {
         id: 'pathological', tier: 'urgent',
         label: 'Pathological cause likely — hypogonadism / liver / renal / thyroid',
         action: 'Targeted bloods + treat underlying cause; endocrine referral if unexplained.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.hypogonadism || i.liver_alcohol || i.renal || i.thyroid_sx,
       },
       {
         id: 'benign', tier: 'routine',
         label: 'Likely physiological / drug-induced / pseudogynaecomastia',
         action: 'Reassure; review/stop offending drug; weight loss; review in 3–6 months.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('gynecomastia-dx', {
     title: 'Gynaecomastia — differential',
     subtitle: 'The engine weights physiological, drug and pathological causes, and always surfaces male breast cancer and testicular tumour when triggered.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "My chest has become tender and a bit swollen, doctor — it's embarrassing.",
     inputs: INPUTS,
     diagnoses: [
@@ -91,7 +91,7 @@
         guideUrl: '' },
 
       { id: 'breast_cancer', name: 'Male breast cancer', summary: 'Hard, eccentric, fixed lump, skin / nipple change', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hard fixed eccentric mass, nipple retraction/discharge, nodes.', nextIx: '\u26A1 Breast 2WW (NICE NG12).',
+        keyExam: 'Hard fixed eccentric mass, nipple retraction/discharge, nodes.', nextIx: '\u26A1 Breast 2WW (NICE NG12 (updated April 2026)).',
         patientPhrase: 'This lump has features I want a specialist to assess quickly — most prove benign, but we do not wait.',
         guideUrl: '', redFlagAction: '\u26A1 Breast 2WW' },
       { id: 'testis_tumour', name: 'Testicular / hCG-secreting tumour', summary: 'Testicular mass or rapid gynaecomastia', baseline: 1, category: 'cant-miss',
@@ -125,7 +125,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

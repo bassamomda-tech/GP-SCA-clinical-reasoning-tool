@@ -41,7 +41,7 @@
         id: 'hcc', tier: 'cancer',
         label: 'Focal liver lesion / suspected hepatocellular carcinoma',
         action: 'Urgent imaging (triple-phase CT/MRI) + AFP; hepatology referral.',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.focal_lesion,
       },
       {
@@ -94,7 +94,7 @@
         patientPhrase: 'There are signs the liver may be scarred. We confirm this and arrange specialist monitoring to protect it.',
         guideUrl: '', redFlagAction: '\u26A1 Fibroscan + hepatology' },
       { id: 'hcc', name: 'Hepatocellular carcinoma', summary: 'Focal lesion / decompensation in chronic liver disease', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hepatomegaly, mass, decompensation.', nextIx: '\u26A1 Urgent triple-phase imaging + AFP; hepatology (NICE NG12).',
+        keyExam: 'Hepatomegaly, mass, decompensation.', nextIx: '\u26A1 Urgent triple-phase imaging + AFP; hepatology (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A spot on the liver needs urgent imaging to rule out a cancer, especially with liver disease.',
         guideUrl: '', redFlagAction: '\u26A1 Urgent imaging + AFP' }
     ],

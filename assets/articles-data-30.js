@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 30: T topics, part 2)
    NHS A–Z (letter T) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -51,9 +51,9 @@
     referral:[
       'Diagnosis and treatment of caries/toothache → dental services (urgent dental care for severe pain/infection)',
       'Dental abscess/spreading infection → urgent dental ± hospital if systemic/airway involvement (see dental abscess)',
-      'Persistent oral ulceration (>3 weeks) or a suspicious oral lesion → urgent suspected oral-cancer (2WW) referral (NICE NG12)',
+      'Persistent oral ulceration (>3 weeks) or a suspicious oral lesion → urgent suspected oral-cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Barriers to dental access → signpost NHS/urgent dental services'],
-    source:'NICE / Delivering Better Oral Health guidance' },
+    source:'Delivering Better Oral Health (OHID, 4th edition 2021; formerly PHE)' },
 
   { id:'transverse-myelitis', title:'Transverse myelitis', category:'Neurology', icon:'🧠',
     overview:'Acute inflammation of the spinal cord causing rapidly evolving motor, sensory and autonomic dysfunction below the level of the lesion. It is a neurological emergency: it must be distinguished urgently from cord COMPRESSION (which needs immediate decompression), and prompt diagnosis allows treatment of the inflammation.',
@@ -78,7 +78,7 @@
       'Confirmed/suspected transverse myelitis → neurology (and treat the cause)',
       'Suspected cord compression (tumour/abscess/disc) → emergency neurosurgical/spinal referral',
       'Underlying MS/NMO/autoimmune disease → neurology for ongoing management'],
-    source:'NICE / neurology guidance' },
+    source:'Neurology guidance / NICE NG234 (Spinal metastases and metastatic spinal cord compression, 2023)' },
 
   { id:'trichomonas', title:'Trichomoniasis', category:'Infectious diseases', icon:'🦠',
     overview:'A sexually transmitted infection caused by the protozoan Trichomonas vaginalis. It causes vaginitis/urethritis but is often asymptomatic. As an STI, diagnosis is an opportunity for a full sexual-health screen and partner notification, and it has specific relevance in pregnancy.',
@@ -103,7 +103,7 @@
       'Pregnancy → treat with specialist advice (adverse-outcome association)',
       'Treatment failure or recurrent infection → GUM',
       'Coexisting STIs → manage per the relevant pathway'],
-    source:'BASHH / NICE — Trichomoniasis' },
+    source:'BASHH UK national guideline on Trichomonas vaginalis (2021)' },
 
   { id:'trigeminal-neuralgia', title:'Trigeminal neuralgia', category:'Neurology', icon:'🧠',
     overview:'A disorder of the trigeminal nerve causing sudden, severe, brief electric-shock-like facial pain in its distribution, often triggered by light touch. It is excruciating and significantly affects quality of life. Most is from neurovascular compression; carbamazepine is first-line, and atypical features warrant imaging to exclude secondary causes.',
@@ -128,7 +128,7 @@
       'Pain not controlled by first-line treatment, or diagnostic uncertainty → neurology',
       'Refractory trigeminal neuralgia → specialist (consider microvascular decompression/ablative procedures)',
       'Severe uncontrolled pain affecting eating/hydration → urgent specialist input'],
-    source:'NICE — Trigeminal neuralgia' },
+    source:'NICE CG173 (Neuropathic pain in adults — carbamazepine for trigeminal neuralgia) / BNF (carbamazepine)' },
 
   { id:'trigger-finger', title:'Trigger finger', category:'Musculoskeletal', icon:'✋',
     overview:'A common condition in which a finger or thumb catches or locks in a bent position due to inflammation/nodularity of the flexor tendon and its sheath (stenosing tenosynovitis). It is benign and often self-limiting or treatable with simple measures, with injection or surgery for persistent cases.',
@@ -153,7 +153,7 @@
       'Diagnostic uncertainty → MSK/hand specialist',
       'Multiple digits or associated inflammatory arthritis → consider rheumatology',
       'Otherwise manage in primary care (splinting, injection)'],
-    source:'NICE — Trigger finger' },
+    source:'BSSH (British Society for Surgery of the Hand) / clinical practice' },
 
   { id:'tongue-tie', title:'Tongue-tie (ankyloglossia)', category:'Paediatrics', icon:'👶',
     overview:'A congenital condition where a short/tight lingual frenulum restricts tongue movement. It is common, often causes no problems, but can interfere with breastfeeding (the main clinical concern in infants). A simple division procedure helps when feeding is significantly affected.',
@@ -178,7 +178,7 @@
       'Faltering growth/feeding concerns → feeding/infant assessment',
       'Persistent feeding problems despite division → lactation/feeding support and review',
       'Asymptomatic tongue-tie → reassure, no intervention'],
-    source:'NICE / UNICEF Baby Friendly — Tongue-tie' },
+    source:'NICE IPG149 (Division of ankyloglossia (tongue-tie) for breastfeeding, 2005) / UNICEF Baby Friendly — Tongue-tie' },
 
   { id:'motion-sickness', title:'Motion sickness (travel sickness)', category:'General', icon:'🚗',
     overview:'Nausea and related symptoms triggered by real or perceived movement, caused by a sensory mismatch between the vestibular system, vision and proprioception. It is common, especially in children, and benign. Management is mostly behavioural, with medication for prevention when needed.',
@@ -203,7 +203,7 @@
       'Atypical features, symptoms without motion, or suspected vestibular/neurological cause → relevant assessment',
       'Severe, disabling motion sickness unresponsive to measures → specialist advice',
       'Suspected vestibular migraine → manage/refer accordingly'],
-    source:'NICE — Motion sickness' },
+    source:'BNF (hyoscine, cinnarizine, promethazine, cyclizine) / UKHSA NaTHNaC travel health advice' },
 
   { id:'type-1-diabetes', title:'Type 1 diabetes', category:'Endocrine & metabolic', icon:'🩸',
     overview:'An autoimmune disease causing destruction of pancreatic beta cells and absolute insulin deficiency, usually presenting in children/young adults but possible at any age. It requires lifelong insulin. Recognising new-onset type 1 promptly (to prevent DKA) and supporting lifelong self-management are the core tasks.',
@@ -217,7 +217,7 @@
     management:[
       'Suspect type 1 diabetes in anyone with osmotic symptoms and weight loss (especially if young/lean or ketotic) — check glucose and KETONES, and refer for SAME-DAY specialist assessment',
       'New-onset type 1, especially with ketosis or if unwell, needs urgent/same-day referral (risk of DKA)',
-      'Treatment is lifelong INSULIN (basal-bolus regimens or pumps) with structured education, carbohydrate counting, and glucose monitoring (including continuous glucose monitoring per NICE)',
+      'Treatment is lifelong INSULIN (basal-bolus regimens or pumps) with structured education, carbohydrate counting, and glucose monitoring (including continuous glucose monitoring per NICE NG17/NG18)',
       'Support self-management: hypoglycaemia recognition/treatment, sick-day rules (never stop insulin), and individualised HbA1c targets',
       'Screen for and manage complications and associated conditions: annual retinal screening, foot checks, renal monitoring (ACR), blood pressure and lipids, and screening for coeliac/thyroid disease',
       'Provide DVLA advice, pre-pregnancy planning, and psychological support (diabetes distress is common)',
@@ -278,7 +278,7 @@
       'Significant comorbidity (ADHD, OCD, severe anxiety) → relevant specialist pathway',
       'Sudden-onset, focal, or atypical movements (reconsider the diagnosis) → neurology',
       'Severe functional/psychosocial impact → specialist support'],
-    source:'NICE / Tourettes Action / neurodevelopmental guidance' }
+    source:'ESSTS European clinical guidelines for Tourette syndrome (international) / Tourettes Action / neurodevelopmental guidance' }
 
   );
 })();

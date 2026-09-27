@@ -10,7 +10,7 @@
    referral / follow-up come from the DIAGNOSIS template (consult-templates.js)
    when a provisional diagnosis is also given (its investigations then take over
    from the symptom-level ix here).
-   [square brackets] = personalise. UK primary care / NICE-aligned —
+   [square brackets] = personalise. UK primary care guideline-aligned —
    educational scaffold, verify before use.
 */
 (function(){
@@ -55,7 +55,7 @@
   add(['cough'],{
     hpc:'[X]-week history of cough, [dry/productive], sputum [colour/blood], diurnal pattern [X]. Associated [breathlessness, wheeze, fever, weight loss, night sweats, reflux, post-nasal drip]. Smoking [pack-years], occupational/TB exposure [X]. ICE: [X].',
     exam:'Well [or unwell]. Temp [], RR [], SpO2 [], HR []. Chest [clear/focal signs/wheeze]. ENT [X]. No clubbing or lymphadenopathy. [PEFR / CXR if indicated.]',
-    ix:'Observations, SpO2. [CXR if cough >3 weeks, haemoptysis, weight loss or focal chest signs — also for the NG12 lung pathway in smokers >40.] [Spirometry, FBC, peak flow as indicated.]',
+    ix:'Observations, SpO2. [CXR if cough >3 weeks, haemoptysis, weight loss or focal chest signs — also for the NICE NG12 (updated April 2026) lung pathway in smokers >40.] [Spirometry, FBC, peak flow as indicated.]',
     safetynet:'Seek urgent help if: coughing up blood, breathless at rest, chest pain, high fever, or weight loss. Return if the cough lasts beyond 3 weeks, as a chest X-ray may be needed.'
   });
 
@@ -83,7 +83,7 @@
   add(['weight loss'],{
     hpc:'[X] history of unexplained weight loss ([X] kg over [X]). Appetite [X], intentional [no]. Associated [GI symptoms, dysphagia, bleeding, cough, night sweats, mood, thyroid symptoms]. Diet/social [X]. ICE: [X].',
     exam:'Weight/BMI [], pallor [], lymphadenopathy [none], thyroid [normal], abdomen [no mass/organomegaly], chest [clear]. [Examination targeted by associated features.]',
-    ix:'Bloods: FBC, ferritin, U&E, LFT, calcium, glucose/HbA1c, TFT, CRP/ESR, coeliac serology. Urinalysis. CXR. [Targeted imaging / 2WW referral by likely source — e.g. CA125, FIT.]',
+    ix:'Bloods: FBC, ferritin, U&E, LFT, calcium, glucose/HbA1c, TFT, CRP/ESR, coeliac serology. Urinalysis. CXR. [Targeted imaging / 2WW referral by likely source — e.g. CA125 (age-specific thresholds per NICE NG12 (updated April 2026); not used alone under 40), FIT.]',
     safetynet:'Return urgently if: difficulty swallowing, vomiting, blood in stool or urine, coughing up blood, or new lumps. This warrants prompt investigation; attend for arranged tests/referral without delay.'
   });
 
@@ -125,28 +125,28 @@
   add(['haematuria'],{
     hpc:'[X] history of [visible/non-visible] blood in urine. Pain [none/loin/dysuria], clots [X], timing in stream [X]. Associated [LUTS, weight loss]. Smoking, occupational exposure, anticoagulation [X]. ICE: [X].',
     exam:'[Well]. BP [], abdomen [no mass], [no] loin tenderness. [PR — prostate if relevant.] Urine dip [confirms blood, X]. [Not menstruating.]',
-    ix:'Urine dip (confirm and exclude UTI) + MSU. [Bloods: FBC, U&E/eGFR; PSA in men if relevant.] BP. [Urgent referral for imaging + cystoscopy per NG12.]',
+    ix:'Urine dip (confirm and exclude UTI) + MSU. [Bloods: FBC, U&E/eGFR; PSA in men if relevant.] BP. [Suspected cancer pathway (2WW) urology referral for imaging + cystoscopy per NICE NG12 (updated April 2026).]',
     safetynet:'Seek urgent help if: unable to pass urine, clots with severe pain, fever with loin pain, or feeling very unwell. Please attend any arranged urology appointment or scan promptly — visible blood in the urine always needs checking.'
   });
 
   add(['rectal bleeding'],{
     hpc:'[X] history of rectal bleeding — colour [bright red/dark], [on paper/in pan/mixed with stool], amount [X]. Associated [change in bowel habit, mucus, pain, weight loss, tenesmus]. PH/FH bowel disease/cancer [X]. ICE: [X].',
     exam:'[Well]. Abdomen [soft, no mass]. Anal inspection [X], PR [no mass, X], [no] blood on glove. [FIT/bloods as indicated.]',
-    ix:'DRE + abdominal examination. FIT test (per NG12 thresholds). [Bloods: FBC, ferritin for iron-deficiency anaemia.] [2WW colorectal referral if criteria met.]',
+    ix:'DRE + abdominal examination. FIT test (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56 — FIT ≥10 µg Hb/g → suspected cancer pathway). [Bloods: FBC, ferritin for iron-deficiency anaemia.] [2WW colorectal referral if FIT ≥10 µg Hb/g, or rectal/anal mass or anal ulceration.]',
     safetynet:'Seek emergency help if: heavy bleeding, light-headedness or fainting, or black tarry stools. Return promptly if there is a persistent change in bowel habit, weight loss, or the bleeding continues — please attend any arranged tests or referral.'
   });
 
   add(['change in bowel habit'],{
     hpc:'[X] history of change in bowel habit [looser/more frequent/constipation], duration [X]. Associated [rectal bleeding, mucus, weight loss, abdominal pain, tenesmus, nocturnal symptoms]. Diet/travel/meds [X]. FH bowel cancer/IBD [X]. ICE: [X].',
     exam:'[Well]. BMI []. Abdomen [soft, no mass/organomegaly], PR [no mass]. Pallor [none]. [FIT / bloods (FBC, ferritin, coeliac) as indicated.]',
-    ix:'FIT test. Bloods: FBC, ferritin, U&E, LFT, coeliac serology, [CRP, TFT]. DRE. [Faecal calprotectin / stool culture if IBD or infection suspected.] [2WW if NG12 criteria met.]',
+    ix:'FIT test. Bloods: FBC, ferritin, U&E, LFT, coeliac serology, [CRP, TFT]. DRE. [Faecal calprotectin / stool culture if IBD or infection suspected.] [2WW if NICE NG12 (updated April 2026) criteria met (FIT ≥10 µg Hb/g).]',
     safetynet:'Return promptly if: rectal bleeding, unexplained weight loss, persistent change lasting more than [a few weeks], or you feel a lump in the tummy. Attend any arranged FIT test, bloods or referral. Seek urgent help if severe pain, vomiting, or unable to pass stool/wind.'
   });
 
   add(['dysphagia'],{
     hpc:'[X] history of difficulty swallowing — [solids/liquids/both], progressive [X], level [throat/chest]. Associated [weight loss, regurgitation, odynophagia, reflux, cough on swallowing, hoarseness]. ICE: [X].',
     exam:'[Well]. Weight/BMI []. Neck [no lump/lymphadenopathy]. Chest clear. [Neuro/cranial nerves if bulbar cause considered.]',
-    ix:'Refer for urgent direct-access upper GI endoscopy (2WW) — dysphagia at any age. [FBC for anaemia.] Do not delay referral for tests.',
+    ix:'Refer on the suspected cancer pathway (2WW) for oesophageal or stomach cancer — dysphagia at any age (NICE NG12 (updated April 2026)). [FBC for anaemia.] Do not delay referral for tests.',
     safetynet:'Difficulty swallowing needs prompt assessment — please attend the arranged urgent endoscopy/clinic. Seek emergency help if: food becomes completely stuck, you cannot swallow your own saliva, choking, or breathing difficulty.'
   });
 
@@ -202,7 +202,7 @@
   add(['post-menopausal bleeding'],{
     hpc:'Postmenopausal bleeding — LMP [X] ([>12 months]). Bleeding [amount, duration, recurrence], associated [pain, discharge]. HRT [X], tamoxifen [X], risk factors [obesity, diabetes]. ICE: [X].',
     exam:'[Well]. Abdomen [soft, no mass]. [Speculum — cervix X; bimanual — uterus X.] BMI [].',
-    ix:'Refer 2WW gynaecology — transvaginal USS (endometrial thickness) ± hysteroscopy and biopsy in clinic. [FBC if heavy.]',
+    ix:'Refer 2WW gynaecology (aged 55 and over, not attributable to HRT — NICE NG12 (updated April 2026)) — transvaginal USS (endometrial thickness) ± hysteroscopy and biopsy in clinic. [FBC if heavy.]',
     safetynet:'Postmenopausal bleeding always needs checking — please attend the arranged 2-week-wait gynaecology appointment. Most causes are not cancer, but it is important to be seen. Return sooner if heavy bleeding, pain or feeling unwell.'
   });
 
@@ -244,7 +244,7 @@
   add(['child fever'],{
     hpc:'[Age] child, [X]-day history of fever [up to X]. Activity/feeding/wet nappies [X], rash [X], focal symptoms [cough, ear, urine, D&V]. Immunisations [up to date], contacts/travel [X]. Parental concern [X]. ICE: [X].',
     exam:'Alert/[interactive], well-perfused, CRT [<2s]. Temp [], HR [], RR [], SpO2 []. No non-blanching rash, neck supple, fontanelle [normal], hydration [X]. ENT/chest/abdomen [X]. [Traffic-light: green/amber/red.]',
-    ix:'Observations with paediatric traffic-light / NEWS. Urine dip (clean catch) to exclude UTI. [Bloods/CXR only if a focus or systemically unwell.] [Very urgent FBC if petechiae/hepatosplenomegaly — leukaemia, NG12.]',
+    ix:'Observations with paediatric traffic-light / NEWS. Urine dip (clean catch) to exclude UTI. [Bloods/CXR only if a focus or systemically unwell.] [Very urgent FBC if petechiae/hepatosplenomegaly — leukaemia, NICE NG12 (updated April 2026).]',
     safetynet:'Call 999 / go to A&E if your child: has a rash that does not fade under a glass, a stiff neck or dislike of light, is unusually drowsy/difficult to wake or floppy, has fast or difficult breathing, becomes pale/mottled/blue, has a fit, or is not passing urine. Seek same-day help if not improving, fewer wet nappies, or you remain worried. Give fluids and antipyretics for comfort.'
   });
 

@@ -54,7 +54,7 @@
       {
         id: 'subclinical', tier: 'routine',
         label: 'Subclinical hypothyroidism (TSH 4–10, normal T4)',
-        action: 'Repeat TFTs + TPO in 3 months; treat if symptomatic, TSH >10, pregnant/planning, or positive antibodies.',
+        action: 'Repeat TFTs + TPO in 3 months; consider levothyroxine if TSH is 10 or more on two tests 3 months apart, or a 6-month trial if symptomatic with TSH above range but under 10 on two tests in people under 65 (NICE NG145); pregnant/planning → specialist advice; positive antibodies predict progression, so monitor (they are not on their own a reason to treat).',
         source: 'NICE NG145',
         when: i => true,
       }
@@ -77,7 +77,7 @@
         patientPhrase: 'Your immune system is gradually reducing thyroid function. A daily tablet replaces the missing hormone and restores energy.',
         guideUrl: 'https://www.nice.org.uk/guidance/ng145', guideLabel: 'NICE NG145' },
       { id: 'subclinical', name: 'Subclinical hypothyroidism', summary: 'TSH 4–10 with normal free T4', baseline: 6, category: 'common',
-        keyExam: 'Often few signs.', nextIx: 'Repeat + TPO in 3 months; treat per symptoms / TSH / pregnancy / antibodies.',
+        keyExam: 'Often few signs.', nextIx: 'Repeat + TPO in 3 months; treat per NICE NG145 (TSH 10 or more twice, or a symptomatic trial under 65); pregnancy → specialist; antibodies guide monitoring.',
         patientPhrase: 'Your thyroid is mildly underactive. We repeat the test and decide together whether treatment is worthwhile.',
         guideUrl: 'https://www.nice.org.uk/guidance/ng145', guideLabel: 'NICE NG145' },
       { id: 'iatrogenic', name: 'Post-treatment / iatrogenic', summary: 'Prior thyroidectomy / radioiodine / neck radiotherapy', baseline: 4, category: 'less-common',

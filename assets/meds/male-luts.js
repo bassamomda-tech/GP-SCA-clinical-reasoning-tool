@@ -1,11 +1,11 @@
 /* ============================================
    Medication Chooser — Male LUTS
-   NICE CG97 · NICE LUTS in men · BNF
+   NICE CG97 · BNF
    ============================================ */
 MedChooser.register('male-luts', {
   title: 'Male LUTS — drug selection',
   subtitle: 'Match the drug to the dominant symptom: voiding (α-blocker ± 5-ARI), storage/OAB (antimuscarinic / mirabegron), or nocturnal polyuria. Tick the profile; cards re-tier live.',
-  guideline: 'NICE CG97 · NICE LUTS in men · BNF',
+  guideline: 'NICE CG97 · BNF',
 
   factors: [
     // Symptom pattern
@@ -101,7 +101,7 @@ MedChooser.register('male-luts', {
       detail:{ 'Key teaching':'Offer combination for bothersome moderate–severe LUTS WITH prostate enlargement — best of immediate + long-term benefit.' },
       evaluate(f){
         const r = [];
-        if ((f.large_prostate || f.progression_risk) && f.bothersome) { r.push({kind:'good', text:'Bothersome symptoms + enlarged prostate — combination is the NICE option'}); return { tier:'preferred', reasons:r }; }
+        if ((f.large_prostate || f.progression_risk) && f.bothersome) { r.push({kind:'good', text:'Bothersome symptoms + enlarged prostate — combination is the NICE CG97 option'}); return { tier:'preferred', reasons:r }; }
         if (f.large_prostate) r.push({kind:'neutral', text:'Reasonable if both rapid relief and progression-prevention wanted'});
         return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'For bothersome symptoms with prostate enlargement'}] };
       }
@@ -174,7 +174,7 @@ MedChooser.register('male-luts', {
       name:'Tadalafil (if comorbid ED)',
       examples:'Tadalafil 5 mg OD',
       step:'LUTS + ED',
-      source:'NICE · BNF',
+      source:'BNF (licensed); not recommended by NICE TA273 for BPH-LUTS',
       sideEffects:'Headache, flushing, dyspepsia; hypotension with nitrates',
       monitor:'Avoid with nitrates / nicorandil',
       counsel:'"A daily low dose can help both the waterworks symptoms and erections at the same time."',

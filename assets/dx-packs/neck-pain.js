@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Neck Pain
-   Shared-id triage + differential. NICE NG12.
+   Shared-id triage + differential. NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -20,7 +20,7 @@
   if (window.RGPTriage) RGPTriage.register('neck-pain-triage', {
     title: 'Neck pain — triage',
     subtitle: 'Tick features. Surfaces cervical myelopathy, infection, fracture and malignancy pathways.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired — pattern fits mechanical or radicular neck pain. Encourage movement, analgesia, reassurance; review at 4–6 weeks; image only if red flags or persisting radiculopathy.',
     rules: [
@@ -29,55 +29,55 @@
         label: 'Cervical myelopathy — gait/hand dysfunction, UMN signs, sphincter involvement',
         action: 'Urgent neurosurgical/spinal referral + MRI; same-day if rapidly progressive.',
         patientPhrase: '"These features suggest pressure on the spinal cord — I want an urgent scan and specialist opinion."',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.myelopathy,
       },
       {
         id: 'infection', tier: 'emergency',
         label: 'Possible spinal infection — fever + risk factors',
         action: 'Same-day admission — CRP, cultures, urgent MRI.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.immuno_fever,
       },
       {
         id: 'malignancy', tier: 'cancer',
         label: 'Suspected malignancy — cancer history / weight loss / progressive night pain',
-        action: 'Urgent spinal imaging ± 2WW (NICE NG12).',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'Urgent spinal imaging ± 2WW (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.cancer_hx,
       },
       {
         id: 'fracture', tier: 'urgent',
         label: 'Possible fracture — trauma / osteoporosis',
         action: 'Imaging (consider CT); immobilise if unstable injury suspected.',
-        source: 'NICE',
+        source: 'NICE NG41 (spinal injury)',
         when: i => i.trauma,
       },
       {
         id: 'radiculopathy', tier: 'urgent',
         label: 'Cervical radiculopathy',
         action: 'Analgesia (neuropathic), physio; MRI + specialist if persists >4–6 weeks or progressive.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.radicular_arm,
       },
       {
         id: 'mechanical', tier: 'routine',
         label: 'Mechanical / whiplash / inflammatory pattern',
         action: 'Keep active, analgesia; whiplash → reassurance + mobilise; inflammatory pattern → bloods/rheumatology.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('neck-pain-dx', {
     title: 'Neck pain — differential',
     subtitle: 'The engine weights mechanical, whiplash, radicular and inflammatory neck pain, and always surfaces cervical myelopathy, infection and malignancy.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "My neck's been stiff and painful, doctor, and now it's shooting down my arm.",
     inputs: INPUTS,
     diagnoses: [
@@ -130,7 +130,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

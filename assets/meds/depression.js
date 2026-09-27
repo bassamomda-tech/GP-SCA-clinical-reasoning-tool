@@ -75,7 +75,7 @@ MedChooser.register('depression', {
       detail:{
         'Dose': 'Sertraline 50 mg OD (25 mg if anxious start); titrate to max 200 mg',
         'Interactions': 'Lowest cardiac-interaction SSRI; still ↑ bleeding with NSAID/anticoagulant',
-        'Key teaching': 'NICE-preferred SSRI in cardiac disease; broadly first choice for new moderate depression.'
+        'Key teaching': 'NICE CG91-preferred SSRI in cardiac disease; broadly first choice for new moderate depression.'
       },
       evaluate(f){
         if (f.maoi) return { tier:'avoid', reasons:[{kind:'bad', text:'Recent MAOI — risk of serotonin syndrome; needs washout'}] };

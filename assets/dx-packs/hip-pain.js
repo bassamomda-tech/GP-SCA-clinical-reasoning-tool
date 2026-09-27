@@ -44,28 +44,28 @@
         id: 'pmr', tier: 'urgent',
         label: 'Possible PMR — ≥50, girdle stiffness, raised inflammatory markers',
         action: 'ESR/CRP; trial steroid with rapid response; watch for GCA.',
-        source: 'NICE PMR',
+        source: 'BSR PMR guideline',
         when: i => i.pmr_shoulder,
       },
       {
         id: 'tumour', tier: 'cancer',
         label: 'Possible bony tumour / metastasis — mass / night pain / systemic',
         action: 'Urgent X-ray ± 2WW.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.mass_night,
       },
       {
         id: 'avn', tier: 'urgent',
         label: 'Possible avascular necrosis — steroids / alcohol, groin pain, normal X-ray',
         action: 'MRI if suspected; orthopaedics.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.steroid_alcohol && i.groin_oa,
       },
       {
         id: 'manage', tier: 'routine',
         label: 'Mechanical hip pain — assess & manage',
         action: 'Analgesia, physio; OA → exercise/weight loss; GTPS → load management/injection; referred → treat spine.',
-        source: 'NICE',
+        source: 'NICE NG226 (osteoarthritis) · clinical practice',
         when: i => true,
       }
     ],
@@ -137,7 +137,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

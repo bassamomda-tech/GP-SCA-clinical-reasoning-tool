@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Diplopia (double vision)
-   Shared-id triage + differential. NICE · stroke / GCA / aneurysm red flags.
+   Shared-id triage + differential. NICE NG128 · BSR GCA (2020) · stroke / GCA / aneurysm red flags.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,7 +22,7 @@
   if (window.RGPTriage) RGPTriage.register('diplopia-triage', {
     title: 'Diplopia — triage',
     subtitle: 'Tick features. Monocular is usually benign; binocular needs urgent neuro assessment — surfaces aneurysm, stroke and GCA.',
-    guideline: 'NICE · NG128 · GCA',
+    guideline: 'NICE NG128 · BSR GCA (2020)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Cover test to confirm monocular vs binocular: monocular → optician/ophthalmology (refractive/cataract); binocular → urgent assessment for the cause.',
     rules: [
@@ -31,7 +31,7 @@
         label: 'Painful IIIrd-nerve palsy with dilated pupil — possible posterior communicating aneurysm',
         action: '999 / same-day — urgent neuroimaging (CT + CTA).',
         patientPhrase: '"This pattern can mean an aneurysm pressing on a nerve — an emergency needing an urgent brain scan today."',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.painful_third_pupil,
       },
       {
@@ -52,14 +52,14 @@
         id: 'binocular', tier: 'urgent',
         label: 'Binocular diplopia — needs cause identified',
         action: 'Urgent ophthalmology/neurology; bloods (glucose, TFT, AChR), imaging by pattern.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.binocular || i.variable_fatigable || i.thyroid_eye || i.isolated_nerve,
       },
       {
         id: 'monocular', tier: 'routine',
         label: 'Monocular diplopia — usually ocular',
         action: 'Optician/ophthalmology — refractive error, cataract, dry eye, astigmatism.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
@@ -72,7 +72,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('diplopia-dx', {
     title: 'Diplopia — differential',
     subtitle: 'Monocular vs binocular is the pivot. The engine weights ocular causes (monocular), microvascular palsy, myasthenia and thyroid eye disease, and always surfaces aneurysm, stroke and GCA.',
-    guideline: 'NICE · NG128',
+    guideline: 'NICE NG128',
     patientPresenting: "I'm seeing double, doctor — it started a couple of days ago.",
     inputs: INPUTS,
     diagnoses: [

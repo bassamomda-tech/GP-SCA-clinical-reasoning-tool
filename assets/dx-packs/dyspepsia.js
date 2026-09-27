@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Dyspepsia
-   Shared-id triage + differential. NICE NG12 (upper GI cancer) ·
+   Shared-id triage + differential. NICE NG12 (updated April 2026) (upper GI cancer) ·
    NICE CG184 dyspepsia/GORD · test-and-treat H. pylori.
    ============================================ */
 (function () {
@@ -27,8 +27,8 @@
 
   if (window.RGPTriage) RGPTriage.register('dyspepsia-triage', {
     title: 'Dyspepsia — red-flag triage',
-    subtitle: 'Tick ALARM features. Surfaces upper-GI 2WW and bleeding pathways per NICE NG12 / CG184.',
-    guideline: 'NICE NG12 · NICE CG184',
+    subtitle: 'Tick ALARM features. Surfaces upper-GI 2WW and bleeding pathways per NICE NG12 (updated April 2026) / CG184.',
+    guideline: 'NICE NG12 (updated April 2026) · NICE CG184',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired — manage as uninvestigated dyspepsia: review meds (stop NSAID), lifestyle, full-dose PPI 4 weeks OR test-and-treat H. pylori. Work the differential below.',
     rules: [
@@ -37,29 +37,29 @@
         label: 'Acute upper-GI bleed — haematemesis / melaena',
         action: 'Same-day admission (Glasgow-Blatchford); resus; urgent OGD.',
         patientPhrase: '"Vomiting blood / black stools means bleeding in the gut — you need to go to hospital now."',
-        source: 'NICE NG12 / CG141', sourceUrl: 'https://www.nice.org.uk/guidance/cg141',
+        source: 'NICE NG12 (updated April 2026) / CG141', sourceUrl: 'https://www.nice.org.uk/guidance/cg141',
         when: i => i.gi_bleed,
       },
       {
         id: 'dysphagia_2ww', tier: 'cancer',
         label: 'Dysphagia at any age — upper GI 2WW',
-        action: 'Upper GI 2WW (OGD ≤2 weeks).',
+        action: 'Upper GI suspected cancer pathway referral (NICE NG12 (updated April 2026); often straight to OGD).',
         patientPhrase: '"Difficulty swallowing always needs an urgent camera test of the food pipe."',
-        source: 'NICE NG12 §1.2', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.2', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.dysphagia,
       },
       {
         id: 'mass_2ww', tier: 'cancer',
         label: 'Upper abdominal mass — suspected gastric / pancreatic cancer',
         action: 'Site-specific 2WW + imaging.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.mass_anaemia,
       },
       {
         id: 'age55_2ww', tier: 'cancer',
         label: 'Age ≥55 + weight loss + upper abdo pain / reflux / dyspepsia — upper GI 2WW',
-        action: 'Upper GI 2WW (OGD).',
-        source: 'NICE NG12 §1.2',
+        action: 'Upper GI suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026) §1.2',
         when: i => i.age != null && i.age >= 55 && i.weight_loss && (i.epigastric || i.reflux || i.postprandial),
       },
       {
@@ -86,7 +86,7 @@
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'NICE CG184 — Dyspepsia & GORD', url: 'https://www.nice.org.uk/guidance/cg184' },
       { label:'NICE CG184 — dyspepsia and GORD', url:'https://www.nice.org.uk/guidance/cg184' }
     ],
@@ -129,7 +129,7 @@
         patientPhrase: 'Indigestion-type pain can sometimes come from the heart, so I am checking that first to be safe.',
         guideUrl: '', redFlagAction: '\u26A1 ECG / troponin' },
       { id: 'malignancy', name: 'Gastric / oesophageal cancer', summary: 'Dysphagia, weight loss, anaemia, mass, age ≥55', baseline: 1, category: 'cant-miss',
-        keyExam: 'Epigastric mass, lymphadenopathy (Virchow\u2019s node), cachexia.', nextIx: '\u26A1 Upper GI 2WW OGD per NICE NG12. Dysphagia at any age, or ≥55 with weight loss + dyspepsia.',
+        keyExam: 'Epigastric mass, lymphadenopathy (Virchow\u2019s node), cachexia.', nextIx: '\u26A1 Upper GI suspected cancer pathway referral per NICE NG12 (updated April 2026). Dysphagia at any age, or ≥55 with weight loss + dyspepsia.',
         patientPhrase: 'A few features mean I want an urgent camera test of the stomach and gullet to rule out something serious — most are clear.',
         guideUrl: '', redFlagAction: '\u26A1 Upper GI 2WW' }
     ],
@@ -165,7 +165,7 @@
     },
     sources: [
       { label: 'NICE CG184 — Dyspepsia & GORD', url: 'https://www.nice.org.uk/guidance/cg184' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

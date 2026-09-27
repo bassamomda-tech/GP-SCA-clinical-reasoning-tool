@@ -43,7 +43,7 @@ window.RGP_CALCULATORS = [
     interpret(s, v){
       const isMale = !v.female;
       if (s === 0)            return { label:'Very low risk', severity:'low',  action:'No anticoagulation. Stroke risk ~0.2%/yr.', detail:'Reassess annually as new risk factors emerge.' };
-      if (s === 1 && isMale)  return { label:'Low risk',      severity:'low',  action:'Consider anticoagulation. Discuss with patient.', detail:'Annual stroke risk ~0.6%. Most guidelines (NICE NG196) recommend offering DOAC unless contraindications.' };
+      if (s === 1 && isMale)  return { label:'Low risk',      severity:'low',  action:'Consider anticoagulation. Discuss with patient.', detail:'Annual stroke risk ~0.6%. NICE NG196: consider anticoagulation (DOAC) for men with a score of 1, taking bleeding risk into account.' };
       if (s === 1 && !isMale) return { label:'Low risk',      severity:'low',  action:'No anticoagulation (sex alone insufficient).', detail:'Score of 1 from female sex alone does not mandate anticoagulation.' };
       if (s === 2)            return { label:'Moderate-high', severity:'med',  action:'Anticoagulation recommended (DOAC 1st line).', detail:'Annual stroke risk ~2%. NICE NG196: offer DOAC (apixaban, rivaroxaban, edoxaban, dabigatran).' };
       if (s >= 3 && s <= 5)   return { label:'High risk',     severity:'high', action:'Anticoagulation strongly recommended.', detail:`Annual stroke risk rises with score (3 → ~3%; 5 → ~7%). Calculate ORBIT (preferred by NICE NG196) to inform — not to refuse — anticoagulation.` };
@@ -60,7 +60,7 @@ window.RGP_CALCULATORS = [
     title: 'HAS-BLED',
     category: 'Cardiovascular',
     description: 'Major bleeding risk on anticoagulation for AF.',
-    usefulFor: 'Identifying modifiable bleeding risk factors — does NOT mean withholding anticoagulation.',
+    usefulFor: 'Identifying modifiable bleeding risk factors — does NOT mean withholding anticoagulation. NICE NG196 recommends ORBIT in preference to HAS-BLED.',
     resultLabel: 'HAS-BLED score', resultMax: 9,
     inputs: [
       { id:'h_htn',  kind:'check', label:'Hypertension uncontrolled (SBP > 160)', points:1 },
@@ -296,8 +296,8 @@ window.RGP_CALCULATORS = [
     compute(v){ return Object.values(v).filter(Boolean).length; },
     interpret(s){
       if (s <= 1) return { label:'No antibiotic',        severity:'low',  action:'Self-care advice. Likely viral.', detail:'Strep risk ~13–18%. Safety-net + analgesia.' };
-      if (s <= 3) return { label:'Backup antibiotic',    severity:'med',  action:'Delayed prescription (if no improvement at 3–5 days).', detail:'Strep risk ~34–58%. Phenoxymethylpenicillin 500 mg QDS × 10d (or clarithromycin 500 mg BD × 5d if allergic).' };
-      return         { label:'Immediate antibiotic',     severity:'high', action:'Phenoxymethylpenicillin 500 mg QDS × 10 days.', detail:'Strep risk ~62–65%. Macrolide if pen-allergic.' };
+      if (s <= 3) return { label:'Backup antibiotic',    severity:'med',  action:'Delayed prescription (if no improvement at 3–5 days).', detail:'Strep risk ~34–40%. NICE NG84: consider no antibiotic or a back-up prescription. Phenoxymethylpenicillin 500 mg QDS or 1 g BD × 5–10 days (or clarithromycin 250–500 mg BD × 5 days if allergic).' };
+      return         { label:'Immediate antibiotic',     severity:'high', action:'Consider immediate antibiotic or back-up prescription (NICE NG84): phenoxymethylpenicillin 500 mg QDS or 1 g BD × 5–10 days.', detail:'Strep risk ~62–65%. Clarithromycin 250–500 mg BD × 5 days if pen-allergic (erythromycin in pregnancy).' };
     },
     refs:[
       { label:'NICE NG84 Sore throat', url:'https://www.nice.org.uk/guidance/ng84' },
@@ -310,7 +310,7 @@ window.RGP_CALCULATORS = [
     title: 'Centor (sore throat)',
     category: 'Respiratory',
     description: 'Alternative streptococcal probability score.',
-    usefulFor: 'Acute pharyngitis — alternative to FeverPAIN. NICE prefers FeverPAIN.',
+    usefulFor: 'Acute pharyngitis — alternative to FeverPAIN. NICE NG84 accepts either FeverPAIN or Centor.',
     resultLabel: 'Centor score', resultMax: 4,
     inputs: [
       { id:'cn_exudate',kind:'check', label:'Tonsillar exudate', points:1 },
@@ -321,8 +321,8 @@ window.RGP_CALCULATORS = [
     compute(v){ return Object.values(v).filter(Boolean).length; },
     interpret(s){
       if (s <= 1) return { label:'Low probability',  severity:'low',  action:'No antibiotic.', detail:'Strep risk ~2–10%. Self-care.' };
-      if (s <= 2) return { label:'Moderate',         severity:'med',  action:'Delayed antibiotic if symptoms worsen.', detail:'Strep risk ~10–18%.' };
-      return         { label:'High probability',     severity:'high', action:'Empirical antibiotic.', detail:'Strep risk ~38–63%. Phenoxymethylpenicillin 500 mg QDS × 10d.' };
+      if (s <= 2) return { label:'Moderate',         severity:'med',  action:'No antibiotic (NICE NG84: Centor 0–2) — self-care and safety-net.', detail:'Strep risk ~10–18%.' };
+      return         { label:'High probability',     severity:'high', action:'Consider immediate antibiotic or back-up prescription (NICE NG84).', detail:'Strep risk ~38–63%. Phenoxymethylpenicillin 500 mg QDS or 1 g BD × 5–10 days (clarithromycin 250–500 mg BD × 5 days if pen-allergic).' };
     },
     refs:[
       { label:'NICE NG84 — Sore throat (acute)', url:'https://www.nice.org.uk/guidance/ng84' },
@@ -499,7 +499,7 @@ window.RGP_CALCULATORS = [
     },
     refs:[
       { label:'NICE CG115 — Alcohol-use disorders', url:'https://www.nice.org.uk/guidance/cg115' },
-      { label:'PHE AUDIT-C', url:'https://www.gov.uk/government/publications/alcohol-use-screening-tests' },
+      { label:'OHID AUDIT-C (formerly PHE, 2020 tool)', url:'https://www.gov.uk/government/publications/alcohol-use-screening-tests' },
     ],
   },
 
@@ -543,7 +543,7 @@ window.RGP_CALCULATORS = [
       return            { label:'Probable dependence', severity:'severe', action:'Refer alcohol service. Plan for assisted withdrawal.', detail:'Withdrawal can cause seizures / DTs \u2014 do NOT advise abrupt cessation without medical supervision.' };
     },
     refs:[
-      { label:'PHE AUDIT-10', url:'https://www.gov.uk/government/publications/alcohol-use-screening-tests' },
+      { label:'OHID AUDIT (formerly PHE, 2020 tool)', url:'https://www.gov.uk/government/publications/alcohol-use-screening-tests' },
       { label:'WHO AUDIT', url:'https://www.who.int/publications/i/item/audit-the-alcohol-use-disorders-identification-test-guidelines-for-use-in-primary-health-care' },
     ],
   },
@@ -719,7 +719,7 @@ window.RGP_CALCULATORS = [
       const bmi = r.bmi;
       const wHR = r.wHR;
       let sev = 'low', label = 'Healthy weight';
-      const detail = wHR != null ? ('Waist:height ratio ' + wHR.toFixed(2) + ' \u2014 ' + (wHR < 0.5 ? 'healthy (<0.5)' : wHR < 0.6 ? 'increased risk (\u22650.5)' : 'very high risk (\u22650.6)') + '.') : '';
+      const detail = (wHR != null ? ('Waist:height ratio ' + wHR.toFixed(2) + ' \u2014 ' + (wHR < 0.5 ? 'healthy (<0.5)' : wHR < 0.6 ? 'increased risk (\u22650.5)' : 'very high risk (\u22650.6)') + '. ') : '') + 'NICE NG246: use lower thresholds (overweight \u226523, obesity \u226527.5 kg/m\u00b2) for people of South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean family background.';
       if (bmi < 18.5)      { sev = 'med';    label = 'Underweight'; }
       else if (bmi < 25)   { sev = 'low';    label = 'Healthy weight'; }
       else if (bmi < 30)   { sev = 'med';    label = 'Overweight'; }
@@ -745,7 +745,7 @@ window.RGP_CALCULATORS = [
     title: 'FRAX (10-year fracture risk)',
     category: 'Bone',
     description: 'WHO 10-year probability of major osteoporotic / hip fracture.',
-    usefulFor: 'Osteoporosis treatment decisions (NICE CG146 / NOGG).',
+    usefulFor: 'Osteoporosis risk assessment and treatment decisions (NICE NG259, July 2026; replaced CG146 / NOGG).',
     kind: 'external',
     externalUrl: 'https://frax.shef.ac.uk/FRAX/tool.aspx?country=1',
     externalReason: 'FRAX uses a proprietary algorithm with 12 country-calibrated inputs (age, sex, BMI, prior fracture, parent hip Hx, smoker, glucocorticoid, RA, secondary osteoporosis, alcohol, optional BMD). Use the official UK tool.',
@@ -758,14 +758,14 @@ window.RGP_CALCULATORS = [
     id: 'qfracture',
     title: 'QFracture (10-year fracture risk)',
     category: 'Bone',
-    description: 'UK fracture risk calculator \u2014 preferred by NICE CG146.',
+    description: 'UK fracture risk calculator \u2014 one of the two tools named in NICE NG259 (FRAX or QFracture at 40\u201390; QFracture only at 30\u201339).',
     usefulFor: 'Initial osteoporosis risk assessment ages 30\u201399.',
     kind: 'external',
     externalUrl: 'https://qfracture.org/',
     externalReason: 'Proprietary algorithm. Use the official ClinRisk site.',
     refs:[
       { label:'qfracture.org', url:'https://qfracture.org/' },
-      { label:'NICE CG146 Osteoporosis', url:'https://www.nice.org.uk/guidance/cg146' },
+      { label:'NICE NG259 Osteoporosis: risk assessment (2026)', url:'https://www.nice.org.uk/guidance/ng259' },
     ],
   },
 
@@ -863,7 +863,7 @@ window.RGP_CALCULATORS = [
     interpret(s){
       if (s < 2.6) return { label:'Remission',   severity:'low',  action:'Maintain therapy. Target = remission.', detail:'NICE NG100 \u2014 treat-to-target.' };
       if (s < 3.2) return { label:'Low activity',severity:'low',  action:'Maintain or slight reduction.', detail:'' };
-      if (s <= 5.1) return { label:'Moderate',   severity:'med',  action:'Escalate therapy \u2014 consider biologic if not yet on one.', detail:'Biologics (anti-TNF / JAK / etc.) per NICE TA if 2 DMARDs failed.' };
+      if (s <= 5.1) return { label:'Moderate',   severity:'med',  action:'Escalate therapy \u2014 consider biologic if not yet on one.', detail:'Biologics (anti-TNF / JAK / etc.) per NICE technology appraisals if 2 or more conventional DMARDs failed (moderate disease: NICE TA715, 2021; severe: NICE TA375).' };
       return            { label:'High activity', severity:'high', action:'Urgent rheumatology review \u2014 escalate to biologic / change regimen.', detail:'' };
     },
     refs:[

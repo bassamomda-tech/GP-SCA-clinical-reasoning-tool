@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — LUTS in Men
-   Shared-id triage + differential. NICE CG97 · NICE NG12.
+   Shared-id triage + differential. NICE CG97 · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -24,7 +24,7 @@
   if (window.RGPTriage) RGPTriage.register('luts-men-triage', {
     title: 'LUTS in men — triage',
     subtitle: 'Tick features. Surfaces retention, prostate-cancer 2WW and infection pathways.',
-    guideline: 'NICE CG97 · NG12',
+    guideline: 'NICE CG97 · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Assess with IPSS, urine dip, PR exam, U&E and PSA (after counselling); manage by predominant symptom (conservative → alpha-blocker / 5-ARI / antimuscarinic).',
     rules: [
@@ -39,23 +39,23 @@
       {
         id: 'prostate_2ww', tier: 'cancer',
         label: 'Suspected prostate cancer — hard/nodular prostate or raised PSA, or bone pain/weight loss',
-        action: 'Urology 2WW (NICE NG12).',
+        action: 'Urology 2WW (NICE NG12 (updated April 2026)).',
         patientPhrase: '"The prostate findings mean I want a specialist to assess this quickly to be safe."',
-        source: 'NICE NG12 §1.6', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.6', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.hard_nodular || i.psa_raised || i.bone_pain_wl,
       },
       {
         id: 'haematuria_2ww', tier: 'cancer',
         label: 'Visible haematuria ≥45 — urological 2WW',
         action: 'Urology 2WW (bladder cancer pathway).',
-        source: 'NICE NG12 §1.6',
+        source: 'NICE NG12 (updated April 2026) §1.6',
         when: i => i.haematuria && i.age != null && i.age >= 45,
       },
       {
         id: 'infection', tier: 'urgent',
         label: 'UTI / prostatitis',
         action: 'Urine culture; treat; reassess LUTS after treatment.',
-        source: 'NICE',
+        source: 'NICE NG109 / NG110',
         when: i => i.dysuria,
       },
       {
@@ -68,7 +68,7 @@
     ],
     sources: [
       { label: 'NICE CG97 — LUTS in men', url: 'https://www.nice.org.uk/guidance/cg97' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
@@ -97,7 +97,7 @@
         guideUrl: 'https://www.nice.org.uk/guidance/cg97', guideLabel: 'NICE CG97' },
 
       { id: 'prostate_cancer', name: 'Prostate cancer', summary: 'Hard/nodular prostate, raised PSA, bone pain / weight loss', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hard craggy asymmetric prostate, bone tenderness.', nextIx: '\u26A1 Urology 2WW; PSA, mpMRI ± biopsy (NICE NG12).',
+        keyExam: 'Hard craggy asymmetric prostate, bone tenderness.', nextIx: '\u26A1 Urology 2WW; PSA, mpMRI ± biopsy (NICE NG12 (updated April 2026)).',
         patientPhrase: 'The prostate findings need an urgent specialist assessment to exclude cancer — many turn out benign.',
         guideUrl: '', redFlagAction: '\u26A1 Urology 2WW' },
       { id: 'retention', name: 'Urinary retention', summary: 'Acute or chronic, palpable bladder ± renal impairment', baseline: 1, category: 'cant-miss',
@@ -132,7 +132,7 @@
     },
     sources: [
       { label: 'NICE CG97 — LUTS in men', url: 'https://www.nice.org.uk/guidance/cg97' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

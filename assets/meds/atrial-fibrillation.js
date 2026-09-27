@@ -1,6 +1,6 @@
 /* ============================================
    Medication Chooser — Atrial Fibrillation
-   NICE NG196 · NICE AF · BNF
+   NICE NG196 · BNF
    Covers anticoagulation + rate control
    ============================================ */
 MedChooser.register('atrial-fibrillation', {

@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Chronic Testicular Pain (orchialgia)
-   Shared-id triage + differential. NICE · EAU · NICE NG12.
+   Shared-id triage + differential. EAU (international) · BASHH · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -21,7 +21,7 @@
   if (window.RGPTriage) RGPTriage.register('chronic-testicular-pain-triage', {
     title: 'Chronic testicular pain — triage',
     subtitle: 'Tick features. Surfaces tumour and the renal-mass varicocele red flag, then benign causes.',
-    guideline: 'NICE · EAU · NICE NG12',
+    guideline: 'EAU (international) · BASHH · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine carefully, urine dip, scrotal USS; manage benign causes; chronic scrotal pain syndrome → analgesia, neuropathic agents, urology if refractory.',
     rules: [
@@ -29,41 +29,41 @@
         id: 'tumour_2ww', tier: 'cancer',
         label: 'Hard testicular mass — suspected cancer',
         action: 'Urgent testicular USS + tumour markers; 2WW urology.',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.mass,
       },
       {
         id: 'renal_mass', tier: 'urgent',
         label: 'New left varicocele not decompressing supine — exclude renal mass',
         action: 'Urgent renal imaging (USS/CT).',
-        source: 'EAU',
+        source: 'EAU (international)',
         when: i => i.left_varicocele_sudden,
       },
       {
         id: 'infection', tier: 'urgent',
         label: 'Recurrent / chronic epididymitis',
         action: 'Urine + STI screen; appropriate antibiotic course; urology if recurrent.',
-        source: 'NICE',
+        source: 'BASHH epididymo-orchitis guideline',
         when: i => i.recurrent_infection,
       },
       {
         id: 'benign', tier: 'routine',
         label: 'Benign / chronic scrotal pain syndrome',
         action: 'Examine + USS; reassure; analgesia + neuropathic agents (amitriptyline/gabapentin); urology/pain clinic if refractory.',
-        source: 'NICE',
+        source: 'EAU chronic pelvic pain (international)',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('chronic-testicular-pain-dx', {
     title: 'Chronic orchialgia — differential',
     subtitle: 'The engine weights varicocele, epididymal cyst, post-vasectomy and referred pain against chronic scrotal pain syndrome, and always surfaces tumour and the renal-mass varicocele flag.',
-    guideline: 'NICE · EAU',
+    guideline: 'EAU (international) · BASHH',
     patientPresenting: "I've had a dull ache in my testicle for months now, doctor — it never fully goes.",
     inputs: INPUTS,
     diagnoses: [
@@ -117,7 +117,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

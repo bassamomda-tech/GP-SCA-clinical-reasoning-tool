@@ -46,7 +46,7 @@
         id: 'acute', tier: 'emergency',
         label: 'Sudden persistent vision loss — occlusion / detachment / acute glaucoma / optic neuritis',
         action: 'Same-day emergency ophthalmology (± neurology).',
-        source: 'NICE',
+        source: 'College of Optometrists CMG',
         when: i => i.persistent_sudden || i.painless_total || i.flashes_floaters_curtain || i.aacg || i.painful_movement,
       },
       {
@@ -60,7 +60,7 @@
         id: 'assess', tier: 'routine',
         label: 'Assess vision loss',
         action: 'Acuity, pupils, fields, fundus; refer per cause; chronic/refractive → optician/ophthalmology routine.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],

@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Limping Child
-   Shared-id triage + differential. NICE · septic arthritis / SUFE red flags.
+   Shared-id triage + differential. BSR septic arthritis · BSCOS · septic arthritis / SUFE red flags.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,7 +22,7 @@
   if (window.RGPTriage) RGPTriage.register('limping-children-triage', {
     title: 'Limping child — triage',
     subtitle: 'Tick features. Surfaces septic arthritis, SUFE, malignancy and safeguarding.',
-    guideline: 'NICE',
+    guideline: 'BSR septic arthritis · BSCOS',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine all joints + spine; a limp in a child is never ignored. Transient synovitis is common but a diagnosis of exclusion — safety-net carefully and review.',
     rules: [
@@ -39,14 +39,14 @@
         label: 'Possible SUFE — overweight adolescent, externally rotated leg',
         action: 'Same-day orthopaedics; non-weight-bearing; AP + frog-lateral hip X-ray.',
         patientPhrase: '"This needs same-day orthopaedic assessment to protect the hip joint."',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.overweight_adolescent,
       },
       {
         id: 'malignancy', tier: 'cancer',
         label: 'Possible malignancy — night pain / systemic / bruising / pallor',
         action: 'Urgent FBC + film + bloods; paediatric/haematology referral.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.systemic_malig,
       },
       {
@@ -60,27 +60,27 @@
         id: 'perthes_jia', tier: 'urgent',
         label: 'Perthes / JIA pattern',
         action: 'X-ray hips (Perthes); persistent synovitis → paediatric rheumatology (JIA).',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.perthes || i.jia,
       },
       {
         id: 'transient', tier: 'routine',
         label: 'Likely transient synovitis / minor injury',
         action: 'Analgesia, rest, review in 48h; return if fever / not weight-bearing.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('limping-children-dx', {
     title: 'Limping child — differential',
     subtitle: 'Age guides the differential. The engine weights transient synovitis, trauma, Perthes and JIA, and always surfaces septic arthritis, SUFE, malignancy and safeguarding.',
-    guideline: 'NICE',
+    guideline: 'BSR septic arthritis · BSCOS',
     patientPresenting: "My child has started limping, doctor.",
     inputs: INPUTS,
     diagnoses: [
@@ -145,7 +145,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 24: P topics, part 3)
    Remaining NHS A–Z (letter P) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -53,7 +53,7 @@
       'Priapism in sickle cell disease → emergency urology + haematology',
       'Non-ischaemic (high-flow, painless, post-trauma) priapism → urology',
       'Recurrent/stuttering priapism → urology ± haematology'],
-    source:'BAUS / NICE — Priapism' },
+    source:'BAUS priapism guidance / EAU guidelines on sexual and reproductive health (priapism, international)' },
 
   { id:'prostate-cancer', title:'Prostate cancer', category:'Urology', icon:'🎗️',
     overview:'The commonest cancer in men, ranging from indolent disease that never causes harm to aggressive, metastasising cancer. Many are detected via PSA testing or incidentally; lower-urinary-tract symptoms are usually due to benign enlargement rather than cancer. The skills are counselled PSA testing, recognising red flags, and appropriate referral.',
@@ -74,11 +74,11 @@
       'Support men through treatment side effects (erectile dysfunction, incontinence, hormonal effects) and bone health on hormone therapy',
       'Provide information, psychological support and survivorship follow-up'],
     referral:[
-      'Prostate feels malignant on DRE, or PSA above the age-specific reference range → urgent suspected prostate-cancer (2WW) referral (NICE NG12)',
+      'Prostate feels malignant on DRE, or PSA above the age-specific reference range → urgent suspected prostate-cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Suspected metastatic spinal cord compression (back pain + neurology/bladder-bowel dysfunction) → emergency referral (MSCC pathway)',
       'Confirmed prostate cancer → urology/uro-oncology MDT',
       'Strong family history (e.g. BRCA) → consider genetics and informed PSA discussion'],
-    source:'NICE NG12 / NICE NG131 (Prostate cancer)' },
+    source:'NICE NG12 (updated April 2026) / NICE NG131 (Prostate cancer)' },
 
   { id:'bph', title:'Benign prostate enlargement (BPH)', category:'Urology', icon:'♂️',
     overview:'Non-cancerous enlargement of the prostate causing lower-urinary-tract symptoms (LUTS) — very common with age. It is benign but troublesome, and its importance lies in distinguishing it from prostate cancer, recognising acute urinary retention, and managing symptoms effectively with lifestyle measures and medication.',
@@ -100,7 +100,7 @@
       'Safety-net for retention and review symptom response'],
     referral:[
       'Acute urinary retention → emergency catheterisation/urology; high-pressure chronic retention with renal impairment → urgent urology',
-      'Suspected prostate cancer (abnormal DRE or raised PSA) → urgent suspected-cancer (2WW) referral (NICE NG12)',
+      'Suspected prostate cancer (abnormal DRE or raised PSA) → urgent suspected-cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Symptoms refractory to medical treatment, or complications (recurrent UTI, stones, haematuria, renal impairment) → urology',
       'Diagnostic uncertainty → urology'],
     source:'NICE CG97 (LUTS in men)' },
@@ -115,7 +115,7 @@
       'Causes/organisms in bacterial forms are usually uropathogens (e.g. E. coli); chronic pelvic pain syndrome has a multifactorial, poorly understood basis',
       'Assessment: urinalysis/culture, examination (avoid vigorous prostatic massage in acute infection), and consider STI testing in younger men'],
     management:[
-      'ACUTE bacterial prostatitis: start prompt antibiotics (a fluoroquinolone or per local guidance) for an extended course (e.g. 2–4 weeks), with analgesia; admit if systemically unwell/septic or in acute retention',
+      'ACUTE bacterial prostatitis: start prompt antibiotics per NICE NG110 or local guidance (ciprofloxacin/ofloxacin, or trimethoprim if a fluoroquinolone is inappropriate — MHRA Drug Safety Update January 2024 restricts systemic fluoroquinolones) for 14 days, then review, with analgesia; admit if systemically unwell/septic or in acute retention',
       'Assess for and manage acute urinary retention and sepsis in acute prostatitis',
       'Chronic bacterial prostatitis: a prolonged course of an antibiotic that penetrates the prostate (e.g. a quinolone) for ~4–6 weeks, guided by culture',
       'Chronic prostatitis/chronic pelvic pain syndrome: explain the diagnosis and set realistic expectations; use a multimodal approach — analgesia, an alpha-blocker (may help LUTS), and consider a trial of antibiotics; address pain and psychological impact',
@@ -128,7 +128,7 @@
       'Recurrent or chronic bacterial prostatitis → urology',
       'Refractory chronic prostatitis/chronic pelvic pain syndrome → urology / pain service / pelvic-floor physiotherapy',
       'Diagnostic uncertainty (exclude other pathology) → urology'],
-    source:'NICE — Prostatitis' },
+    source:'NICE NG110 (Prostatitis (acute): antimicrobial prescribing, 2018) / MHRA Drug Safety Update (fluoroquinolones, January 2024) / EAU urological infections guideline (chronic prostatitis, international)' },
 
   { id:'psoriasis', title:'Psoriasis', category:'Dermatology', icon:'🩹',
     overview:'A common, chronic, immune-mediated inflammatory skin disease with well-defined scaly plaques, following a relapsing-remitting course. It is a systemic condition — associated with psoriatic arthritis, cardiovascular and metabolic disease, and significant psychological impact — so management addresses more than the skin.',
@@ -228,7 +228,7 @@
       'Full STI screen and partner notification → sexual-health (GUM) service',
       'Treatment failure/recurrence → review and re-treat / GUM',
       'Pubic lice in a child → consider safeguarding'],
-    source:'BASHH / NICE — Pubic lice' },
+    source:'BASHH pubic lice guidance / BNF (permethrin, malathion)' },
 
   { id:'pulmonary-embolism', title:'Pulmonary embolism (PE)', category:'Cardiovascular & Renal', icon:'🫁',
     overview:'Obstruction of the pulmonary arteries, usually by thrombus embolising from a deep vein thrombosis. It ranges from small subsegmental clots to massive PE causing haemodynamic collapse and death. It is common, frequently missed, and a time-critical diagnosis — so maintain a high index of suspicion.',
@@ -278,7 +278,7 @@
       'Suspected CTEPH (pulmonary hypertension after PE/with chronic thromboembolic disease) → specialist (potentially curable with surgery)',
       'Right heart failure or rapid deterioration → urgent specialist/admission',
       'Underlying connective-tissue/lung/left-heart disease → relevant specialty alongside PH service'],
-    source:'ESC/ERS pulmonary hypertension guidance / NICE' },
+    source:'ESC/ERS 2022 pulmonary hypertension guidelines (international) / NHS England specialised pulmonary hypertension services' },
 
   { id:'pku', title:'Phenylketonuria (PKU)', category:'Endocrine & metabolic', icon:'🧬',
     overview:'A rare inherited (autosomal-recessive) metabolic disorder in which phenylalanine cannot be metabolised, so it accumulates and damages the developing brain. It is detected by newborn screening and, with a strict lifelong low-phenylalanine diet, children develop normally — making early detection and dietary control transformative.',
@@ -303,7 +303,7 @@
       'Women with PKU planning pregnancy or pregnant → urgent specialist metabolic + obstetric input (pre-conception phenylalanine control)',
       'Difficulties with dietary control or growth → metabolic dietitian/team',
       'Family genetic counselling → clinical genetics'],
-    source:'NICE / newborn screening / specialist metabolic guidance' }
+    source:'NHS Newborn Blood Spot Screening Programme / European PKU guidelines (van Spronsen et al, 2017, international) / specialist metabolic guidance' }
 
   );
 })();

@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Cow's Milk Allergy
-   Shared-id triage + differential. NICE · iMAP.
+   Shared-id triage + differential. NICE CG116 · iMAP (international).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -20,7 +20,7 @@
   if (window.RGPTriage) RGPTriage.register('cows-milk-allergy-triage', {
     title: 'Cow\u2019s milk allergy — triage',
     subtitle: 'Tick features. Surfaces anaphylaxis and the IgE vs non-IgE pathway (iMAP).',
-    guideline: 'NICE · iMAP',
+    guideline: 'NICE CG116 · iMAP (international)',
     inputs: INPUTS,
     defaultMessage: 'No emergency rule fired. Non-IgE CMA → trial of strict cow\u2019s-milk-protein elimination (mother\u2019s diet if breastfed / extensively hydrolysed formula) for 2–4 weeks then planned reintroduction to confirm. IgE-suspected → allergy testing + dietitian.',
     rules: [
@@ -36,34 +36,34 @@
         id: 'ige', tier: 'urgent',
         label: 'Suspected IgE-mediated CMA — immediate reaction',
         action: 'Specific IgE / skin-prick testing; allergy referral + dietitian; written emergency plan ± adrenaline auto-injector.',
-        source:'NICE', sourceUrl:'https://www.nice.org.uk/guidance/cg116',
+        source:'NICE CG116', sourceUrl:'https://www.nice.org.uk/guidance/cg116',
         when: i => i.immediate,
       },
       {
         id: 'lactose', tier: 'routine',
         label: 'Likely lactose intolerance (not allergy)',
         action: 'Distinguish from CMA; lactose-free trial; reassure — different mechanism.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.lactose_pattern && !i.delayed_gi && !i.immediate,
       },
       {
         id: 'non_ige', tier: 'routine',
         label: 'Suspected non-IgE CMA — elimination & reintroduction',
         action: 'Strict CMP elimination 2–4 weeks (maternal diet / eHF), then reintroduce to confirm; dietitian; iMAP ladder.',
-        source: 'iMAP',
+        source: 'iMAP (international)',
         when: i => true,
       }
     ],
     sources: [
       { label:'NICE CG116 — food allergy in under 19s', url:'https://www.nice.org.uk/guidance/cg116' },
-      { label: 'iMAP — Milk allergy guideline', url: 'https://www.allergyuk.org/' }
+      { label: 'iMAP — Milk allergy guideline (international)', url: 'https://www.allergyuk.org/' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('cows-milk-allergy-dx', {
     title: 'Cow\u2019s milk allergy — IgE vs non-IgE vs lactose',
     subtitle: 'The engine separates IgE-mediated (immediate) and non-IgE (delayed) CMA from lactose intolerance, and surfaces anaphylaxis.',
-    guideline: 'NICE · iMAP',
+    guideline: 'NICE CG116 · iMAP (international)',
     patientPresenting: "I think my baby reacts to milk, doctor.",
     inputs: INPUTS,
     diagnoses: [

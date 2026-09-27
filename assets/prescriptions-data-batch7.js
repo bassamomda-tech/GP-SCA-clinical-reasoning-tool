@@ -62,17 +62,17 @@
     duration: 'Lifelong if pernicious anaemia/malabsorption',
     drugs: [
       { name: 'Hydroxocobalamin (no neuro features): loading', dose: '1 mg IM', freq: '3\u00d7/week', route: 'IM', days: '2 weeks' },
-      { name: 'Hydroxocobalamin: maintenance', dose: '1 mg IM', freq: 'Every 3 months', route: 'IM', days: 'Lifelong (if irreversible cause)' },
+      { name: 'Hydroxocobalamin: maintenance', dose: '1 mg IM', freq: 'Every 2–3 months', route: 'IM', days: 'Lifelong (if irreversible cause)' },
       { name: 'Neurological involvement: loading', dose: '1 mg IM', freq: 'Alternate days', route: 'IM', days: 'Until no further improvement' },
       { name: 'Dietary deficiency (vegan): oral cyanocobalamin', dose: '50\u20131000 micrograms', freq: 'OD', route: 'PO', days: 'Ongoing / correct diet' },
     ],
     altRegimens: [
-      { label: 'Pernicious anaemia / malabsorption', drugs: 'Lifelong 3-monthly IM hydroxocobalamin maintenance (neuro: 2-monthly).' },
+      { label: 'Pernicious anaemia / malabsorption', drugs: 'Lifelong IM hydroxocobalamin maintenance every 2–3 months (neuro: 2-monthly) (BNF).' },
       { label: 'Dietary (vegan/vegetarian)', drugs: 'Oral B12 supplement and/or fortified foods; IM if symptomatic/anaemic until corrected.' },
       { label: 'Combined B12 + folate deficiency', drugs: 'Treat B12 first, then add folic acid 5 mg OD.' },
     ],
     counselling: [
-      'Low B12 is treated with vitamin injections \u2014 a course to build up the level, then usually one every three months if the cause is permanent (like pernicious anaemia).',
+      'Low B12 is treated with vitamin injections \u2014 a course to build up the level, then usually one every 2 to 3 months if the cause is permanent (like pernicious anaemia).',
       'If your deficiency is from a vegan/vegetarian diet, tablets or fortified foods may be enough.',
       'Tell us about any numbness, tingling, balance or memory problems \u2014 these need a more intensive injection schedule.',
       'We treat B12 before folate when both are low, to protect the nerves.',
@@ -85,7 +85,7 @@
     ],
     emisText: `B12 deficiency:
 - Combined with folate \u2192 treat B12 FIRST.
-- No neuro: hydroxocobalamin 1 mg IM 3x/week for 2 weeks, then 1 mg IM every 3 months (lifelong if PA/malabsorption).
+- No neuro: hydroxocobalamin 1 mg IM 3x/week for 2 weeks, then 1 mg IM every 2-3 months (lifelong if PA/malabsorption) (BNF).
 - Neuro involvement: 1 mg IM alternate days until no further improvement, then 2-monthly.
 - Dietary/vegan: oral cyanocobalamin 50-1000 mcg OD / fortified foods.
 - Check PA antibodies; recheck FBC; watch K+ early; check ferritin.`,
@@ -320,7 +320,7 @@
       { name: 'Palliative terminal agitation: midazolam', dose: '2.5\u20135 mg', freq: 'PRN / via CSCI', route: 'SC', days: 'Per palliative plan' },
     ],
     altRegimens: [
-      { label: 'Delirium (NICE)', drugs: 'Identify & treat cause; reorientate, optimise environment. If severely distressed/risk and verbal de-escalation fails \u2192 short-term low-dose haloperidol (avoid in Parkinson\u2019s/LBD) \u2014 review daily.' },
+      { label: 'Delirium (NICE CG103)', drugs: 'Identify & treat cause; reorientate, optimise environment. If severely distressed/risk and verbal de-escalation fails \u2192 short-term (usually \u22641 week) low-dose haloperidol (avoid in Parkinson\u2019s/LBD) \u2014 review daily.' },
       { label: 'Dementia (BPSD)', drugs: 'Non-pharmacological first (unmet needs: pain, infection, constipation, environment). Antipsychotic only if severe risk/distress \u2014 lowest dose, time-limited, review.' },
       { label: 'Parkinson\u2019s / Lewy body dementia', drugs: 'Avoid typical/most antipsychotics (severe sensitivity). Use lorazepam; if antipsychotic essential, quetiapine or clozapine (specialist).' },
       { label: 'Alcohol/benzodiazepine withdrawal', drugs: 'Benzodiazepine (e.g. chlordiazepoxide/diazepam) per withdrawal regimen + thiamine; not antipsychotic-first.' },

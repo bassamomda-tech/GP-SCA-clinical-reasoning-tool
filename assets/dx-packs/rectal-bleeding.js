@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Rectal Bleeding
-   Shared-id triage + differential. NICE NG12 (colorectal)
+   Shared-id triage + differential. NICE NG12 (updated April 2026) (colorectal)
    ============================================ */
 (function () {
   const INPUTS = [
@@ -26,8 +26,8 @@
 
   if (window.RGPTriage) RGPTriage.register('rectal-bleeding-triage', {
     title: 'Rectal bleeding — red-flag triage',
-    subtitle: 'Tick features. Surfaces emergency bleeding, colorectal 2WW and upper-GI pathways per NICE NG12.',
-    guideline: 'NICE NG12',
+    subtitle: 'Tick features. Surfaces emergency bleeding, FIT / colorectal suspected cancer and upper-GI pathways per NICE NG12 (updated April 2026).',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired — pattern fits a benign anorectal cause. Examine (abdomen + PR ± proctoscopy), give the differential below, and safety-net for change in bowel habit / weight loss.',
     rules: [
@@ -49,51 +49,51 @@
       },
       {
         id: 'crc_mass', tier: 'cancer',
-        label: 'Abdominal / rectal mass with rectal bleeding — colorectal 2WW',
-        action: 'Lower GI 2WW.',
-        source: 'NICE NG12 §1.3', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        label: 'Abdominal / rectal mass with rectal bleeding — colorectal pathway (rectal mass direct; abdominal mass via FIT)',
+        action: 'Rectal mass: suspected cancer pathway referral without FIT. Abdominal mass: offer FIT; FIT of 10 micrograms Hb/g or more → suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026) §1.3', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.mass,
       },
       {
         id: 'crc_50', tier: 'cancer',
-        label: 'Rectal bleeding at 50+, or under 50 with abdominal pain or weight loss — FIT (NICE NG12)',
+        label: 'Rectal bleeding at 50+, under 50 with abdominal pain or weight loss, or a change in bowel habit at any adult age — FIT (NICE NG12 (updated April 2026))',
         action: 'FIT; 2WW colorectal if ≥10 µg Hb/g. Rectal mass → 2WW without FIT.',
         patientPhrase: '"At your age, rectal bleeding needs a fast referral to rule out a bowel cause — this is standard, not a sign anything terrible has been found."',
-        source: 'NICE NG12 §1.3',
-        when: i => (i.age != null && i.age >= 50 && (i.bright_paper || i.mixed_stool || i.diarrhoea_blood)) || (i.age != null && i.age >= 40 && i.change_bowel),
+        source: 'NICE NG12 (updated April 2026) §1.3',
+        when: i => (i.age != null && i.age >= 50 && (i.bright_paper || i.mixed_stool || i.diarrhoea_blood)) || (i.change_bowel && !(i.age != null && i.age < 18)) || i.weight_loss,
       },
       {
         id: 'ida_2ww', tier: 'cancer',
-        label: 'Rectal bleeding + iron-deficiency anaemia — colorectal 2WW',
-        action: 'Lower GI 2WW (any age).',
-        source: 'NICE NG12 §1.3',
+        label: 'Rectal bleeding + iron-deficiency anaemia — FIT, then colorectal suspected cancer pathway',
+        action: 'Offer FIT at any age (NICE NG12 (updated April 2026); NICE HTG690): FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral. BSG 2021: bidirectional endoscopy for IDA in men and postmenopausal women.',
+        source: 'NICE NG12 (updated April 2026) §1.3',
         when: i => i.iron_def || (i.hb != null && i.hb < 110),
       },
       {
         id: 'ibd', tier: 'urgent',
         label: 'Bloody diarrhoea with urgency / tenesmus — ? inflammatory bowel disease',
         action: 'Faecal calprotectin, stool MC&S; urgent gastroenterology if systemically unwell.',
-        source: 'NICE NG12 / NICE IBD',
+        source: 'NICE HTG320 (faecal calprotectin; formerly DG11) · NICE NG129 / NG130',
         when: i => i.diarrhoea_blood,
       },
       {
         id: 'benign', tier: 'routine',
         label: 'Likely benign anorectal cause, no red flags',
         action: 'Examine (PR ± proctoscopy); treat haemorrhoids / fissure; review and re-examine if persists.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
-      { label:'NICE NG12 — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label:'NICE NG12 (updated April 2026) — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('rectal-bleeding-dx', {
     title: 'Rectal bleeding — differential diagnosis',
     subtitle: 'The engine ranks benign anorectal causes against IBD and diverticular disease, and always surfaces colorectal cancer and an upper-GI bleed when their triggers fire.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I've noticed blood when I go to the toilet, doctor — it's been happening for a few weeks now.",
     inputs: INPUTS,
     diagnoses: [
@@ -120,12 +120,12 @@
       { id: 'angiodysplasia', name: 'Angiodysplasia', summary: 'Older patient, recurrent painless bleeding / iron deficiency', baseline: 2, category: 'less-common',
         keyExam: 'Often normal.', nextIx: 'Colonoscopy ± capsule endoscopy after cancer excluded.',
         patientPhrase: 'Fragile small blood vessels in the bowel can bleed on and off — we look for them once a camera test has excluded other causes.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
 
       { id: 'crc', name: 'Colorectal cancer', summary: 'Change in bowel habit, weight loss, mass, anaemia, age ≥50', baseline: 1, category: 'cant-miss',
-        keyExam: 'Abdominal / rectal mass, hepatomegaly, lymphadenopathy, cachexia.', nextIx: '\u26A1 Lower GI 2WW per NICE NG12. Do not attribute bleeding to piles in ≥50 / red flags without examination.',
+        keyExam: 'Abdominal / rectal mass, hepatomegaly, lymphadenopathy, cachexia.', nextIx: '\u26A1 FIT first per NICE NG12 (updated April 2026) (FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway; rectal mass → refer directly). Do not attribute bleeding to piles in ≥50 / red flags without examination.',
         patientPhrase: 'Because of these features I want an urgent specialist look at the bowel to rule out cancer — most referrals come back clear.',
-        guideUrl: '', redFlagAction: '\u26A1 Lower GI 2WW' },
+        guideUrl: '', redFlagAction: '\u26A1 FIT → colorectal pathway' },
       { id: 'upper_gi', name: 'Upper-GI bleed (melaena)', summary: 'Black tarry stool ± haematemesis, NSAID / varices / ulcer', baseline: 1, category: 'cant-miss',
         keyExam: 'Haemodynamic status; epigastric tenderness; stigmata of liver disease.', nextIx: '\u26A1 Same-day admission, Glasgow-Blatchford, urgent OGD.',
         patientPhrase: 'Black tarry stools usually mean bleeding higher in the gut — that needs hospital assessment today.',
@@ -160,8 +160,8 @@
       upper_gi: ['melaena'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
-      { label:'NICE NG12 — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label:'NICE NG12 (updated April 2026) — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

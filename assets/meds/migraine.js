@@ -4,7 +4,7 @@
    ============================================ */
 MedChooser.register('migraine', {
   title: 'Migraine — acute treatment & prophylaxis',
-  subtitle: 'Two decisions sit side by side: abort the attack, and decide whether prophylaxis is warranted. NICE recommends a triptan + NSAID/paracetamol for the acute attack, and offers propranolol, topiramate or amitriptyline first-line for prevention — choice is driven by comorbidity, contraception, and pregnancy. Tick the profile; cards re-tier live.',
+  subtitle: 'Two decisions sit side by side: abort the attack, and decide whether prophylaxis is warranted. NICE CG150 recommends a triptan + NSAID/paracetamol for the acute attack, and (since June 2025) advises considering propranolol, topiramate or amitriptyline for prevention — choice is driven by comorbidity, contraception, and pregnancy. Tick the profile; cards re-tier live.',
   guideline: 'NICE CG150 · BNF',
 
   factors: [
@@ -60,7 +60,7 @@ MedChooser.register('migraine', {
       counsel:'"Take the triptan as soon as the headache (not the aura) starts, with an anti-inflammatory. If it helps but comes back, you can repeat the triptan after 2 hours — but keep it to no more than about 10 days a month."',
       detail:{
         'Dose':'Sumatriptan 50–100 mg at headache onset; may repeat after ≥2 h if it recurs (max per BNF). Combine with naproxen 250–500 mg or ibuprofen 400 mg. Nasal/SC sumatriptan if vomiting.',
-        'Key teaching':'First-line per NICE — a triptan plus an NSAID (or paracetamol) works better than either alone. Treat early. If one triptan fails, try an alternative triptan before abandoning the class.'
+        'Key teaching':'First-line per NICE CG150 — a triptan plus an NSAID (or paracetamol) works better than either alone. Treat early. If one triptan fails, try an alternative triptan before abandoning the class.'
       },
       evaluate(f){
         if (f.phase === 'prevent') return { tier:'avoid', reasons:[{kind:'neutral', text:'Acute drug — switch the decision toggle to "prophylaxis"'}] };
@@ -108,12 +108,12 @@ MedChooser.register('migraine', {
       counsel:'"I\'ll add something for the sickness — it also helps your body absorb the painkillers. We only use it for a few days at a time."',
       detail:{
         'Dose':'Metoclopramide 10 mg (max 5 days, avoid in young women where possible) or prochlorperazine. Buccal/IM useful if vomiting.',
-        'Key teaching':'Add to acute treatment when nausea/vomiting is prominent — also improves absorption of oral analgesia. Offer even without vomiting per NICE.'
+        'Key teaching':'Add to acute treatment when nausea/vomiting is prominent — also improves absorption of oral analgesia. Offer even without vomiting per NICE CG150.'
       },
       evaluate(f){
         if (f.phase === 'prevent') return { tier:'avoid', reasons:[{kind:'neutral', text:'Acute adjunct — switch to "prophylaxis"'}] };
         if (f.nausea) return { tier:'preferred', reasons:[{kind:'good', text:'Prominent nausea/vomiting — add an antiemetic and use a non-oral route if vomiting'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Useful adjunct; NICE suggests offering even without nausea to aid analgesic absorption'}] };
+        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Useful adjunct; NICE CG150 advises offering even without nausea to aid analgesic absorption'}] };
       }
     },
 

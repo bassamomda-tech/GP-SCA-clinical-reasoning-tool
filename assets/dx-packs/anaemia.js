@@ -2,7 +2,7 @@
    Diagnostic Tool pack — Anaemia (Low Hb)
    Live triage + differential on a SHARED input schema. Numeric indices
    feed both engines via function-effects (enter Hb/MCV/ferritin once).
-   Grounded in NICE NG12 · BSH
+   Grounded in NICE NG12 (updated April 2026) · BSH
    ============================================ */
 (function () {
   const INPUTS = [
@@ -40,8 +40,8 @@
 
   if (window.RGPTriage) RGPTriage.register('anaemia-triage', {
     title: 'Anaemia — red-flag & referral triage',
-    subtitle: 'Enter indices and tick red flags. Surfaces emergency, 2WW cancer and urgent rules per NICE NG12 / BSH.',
-    guideline: 'NICE NG12 · BSH',
+    subtitle: 'Enter indices and tick red flags. Surfaces emergency, 2WW cancer and urgent rules per NICE NG12 (updated April 2026) / BSH.',
+    guideline: 'NICE NG12 (updated April 2026) · BSH',
     inputs: INPUTS,
     defaultMessage: 'No emergency / 2WW rule fired. Define the anaemia by MCV and work up the cause using the differential below; recheck ferritin, B12/folate, reticulocytes, U&E, LFTs, blood film.',
     rules: [
@@ -71,29 +71,29 @@
         id: 'haem_2ww', tier: 'cancer',
         label: 'Suspected haematological malignancy — lymphadenopathy / splenomegaly / night sweats, or pancytopenia',
         action: '2WW haematology + urgent FBC, film, LDH.',
-        source: 'NICE NG12 §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.lymphadenopathy || (i.plt != null && i.plt < 100 && i.wcc != null && i.wcc < 3.5),
       },
       {
         id: 'colorectal_2ww', tier: 'cancer',
-        label: 'Iron-deficiency anaemia ≥60, or any age with rectal bleeding — colorectal 2WW',
-        action: 'Lower GI 2WW + FIT. Coeliac screen (tTG) in all new IDA.',
+        label: 'Iron-deficiency anaemia at any adult age, anaemia at 60+ even without iron deficiency, or iron deficiency with GI blood loss — FIT, then colorectal suspected cancer pathway',
+        action: 'Offer FIT (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56): FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral. BSG 2021: bidirectional endoscopy for IDA in men and postmenopausal women. Coeliac screen (tTG) in all new IDA.',
         patientPhrase: '"Iron-deficient anaemia at your age needs a fast referral to rule out a bowel cause — this is routine, not a diagnosis."',
-        source: 'NICE NG12 §1.3', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
-        when: i => (i.hb != null && i.hb < 120 && i.ferritin != null && i.ferritin < 30 && i.age != null && i.age >= 60) || (i.gi_loss && i.ferritin != null && i.ferritin < 30),
+        source: 'NICE NG12 (updated April 2026) §1.3', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        when: i => (i.hb != null && i.hb < (i.female ? 120 : 130) && i.ferritin != null && i.ferritin < 30 && !i.pregnant && !(i.age != null && i.age < 18)) || (i.hb != null && i.hb < (i.female ? 120 : 130) && i.age != null && i.age >= 60) || (i.gi_loss && i.ferritin != null && i.ferritin < 30),
       },
       {
         id: 'uppergi_2ww', tier: 'cancer',
         label: 'IDA + dysphagia / upper-GI symptoms — upper GI 2WW',
-        action: 'Upper GI 2WW (OGD).',
-        source: 'NICE NG12 §1.2',
+        action: 'Upper GI suspected cancer pathway referral (NICE NG12 (updated April 2026), dysphagia criterion).',
+        source: 'NICE NG12 (updated April 2026) §1.2',
         when: i => i.dysphagia && i.ferritin != null && i.ferritin < 30,
       },
       {
         id: 'nonspecific_2ww', tier: 'cancer',
         label: 'Unexplained weight loss + anaemia — non-site-specific 2WW',
         action: 'Consider GI / lung / haematological 2WW; CXR + FIT as triage.',
-        source: 'NICE NG12 §1.18',
+        source: 'NICE NG12 (updated April 2026) §1.13',
         when: i => i.weight_loss,
       },
       {
@@ -105,7 +105,7 @@
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       
       { label: 'BSH — Anaemia guidelines', url: 'https://b-s-h.org.uk/guidelines/' }
     ],
@@ -114,13 +114,13 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('anaemia-dx', {
     title: 'Anaemia — differential by MCV',
     subtitle: 'Anaemia is a sign, not a diagnosis. MCV is the diagnostic pivot — the engine ranks causes from indices, ferritin and clinical clues. GI malignancy and marrow disorders are always surfaced when their triggers fire.',
-    guideline: 'BSH · NICE NG12',
+    guideline: 'BSH · NICE NG12 (updated April 2026)',
     patientPresenting: "I've been so washed out and breathless, doctor, and a blood test said I'm anaemic. Why am I low on blood?",
     inputs: INPUTS,
     diagnoses: [
       { id: 'ida', name: 'Iron-deficiency anaemia', summary: 'Microcytic + low ferritin; blood loss or malabsorption', baseline: 12, category: 'common',
         keyExam: 'Pallor, koilonychia, glossitis, angular cheilitis; abdomen + PR if older / male.',
-        nextIx: 'Ferritin confirms. tTG-IgA in all IDA. Male / post-menopausal IDA or age ≥60 → 2WW GI endoscopy.',
+        nextIx: 'Ferritin confirms. tTG-IgA in all IDA. IDA (or anaemia at 60+ even without iron deficiency) → FIT per NICE NG12 (updated April 2026); FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway. Male / post-menopausal IDA → bidirectional GI endoscopy (BSG 2021).',
         patientPhrase: 'Your iron stores are empty, so you cannot build enough red cells. The key is finding where the iron is being lost — replacing it is easy.',
         guideUrl: '', guideLabel: 'BSG iron deficiency anaemia guideline (2021)', caseLink: '../cases/anaemia.html' },
       { id: 'acd', name: 'Anaemia of chronic disease', summary: 'Normocytic (or mildly microcytic), normal/raised ferritin, chronic illness', baseline: 7, category: 'common',
@@ -156,12 +156,12 @@
 
       { id: 'gi_malignancy', name: 'GI malignancy behind IDA', summary: 'IDA in adult male / post-menopausal female, or with weight loss / rectal bleeding', baseline: 1, category: 'cant-miss',
         keyExam: 'Abdominal mass, hepatomegaly, PR exam, lymph nodes.',
-        nextIx: '\u26A1 IDA in men / post-menopausal women or age ≥60 → 2WW colorectal ± upper GI endoscopy (NICE NG12). FIT does not exclude it.',
+        nextIx: '\u26A1 IDA in men / post-menopausal women → FIT (NICE NG12 (updated April 2026) with NICE HTG690): FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral. BSG 2021 advises bidirectional (upper and lower GI) endoscopy for IDA in men and postmenopausal women, so a negative FIT does not end the work-up.',
         patientPhrase: 'Iron-deficient anaemia at your age can be the first sign of a bowel problem, so I want to look inside urgently — most come back clear.',
-        guideUrl: '', redFlagAction: '\u26A1 2WW GI endoscopy' },
+        guideUrl: '', redFlagAction: '\u26A1 FIT ± GI endoscopy' },
       { id: 'haem_malignancy', name: 'Marrow disorder / haematological malignancy', summary: 'Pancytopenia, blasts, MCV >115 with no reversible cause, lymphadenopathy', baseline: 1, category: 'cant-miss',
         keyExam: 'Lymphadenopathy, hepatosplenomegaly, bruising / petechiae.',
-        nextIx: '\u26A1 Urgent FBC + film; pancytopenia or blasts → same-day haematology. MDS / leukaemia / lymphoma pathway (NICE NG12).',
+        nextIx: '\u26A1 Urgent FBC + film; pancytopenia or blasts → same-day haematology. MDS / leukaemia / lymphoma pathway (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Several blood lines are affected, so I want a specialist to examine your blood under the microscope this week.',
         guideUrl: '', redFlagAction: '\u26A1 2WW / same-day haematology' }
     ],
@@ -207,7 +207,7 @@
       haem_malignancy: ['lymphadenopathy', 'bruising_infection'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       
       { label:'NICE NG239 — vitamin B12 deficiency', url:'https://www.nice.org.uk/guidance/ng239' }
     ],

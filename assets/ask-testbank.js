@@ -28,11 +28,11 @@ window.ASK_TESTBANK = [
 
   /* ---- respiratory ---- */
   { t:'Asthma — first-line adult', q:'First-line maintenance treatment for newly diagnosed asthma in an adult?',
-    must:[ ['ICS','inhaled corticosteroid','formoterol','AIR','MART'] ], why:'BTS/NICE/SIGN 2024: low-dose ICS/formoterol (AIR/MART) pathway' },
+    must:[ ['ICS','inhaled corticosteroid','formoterol','AIR','MART'] ], why:'NICE/BTS/SIGN NG245 (2024): low-dose ICS/formoterol (AIR/MART) pathway' },
   { t:'COPD — exacerbation', q:'How do I manage an infective exacerbation of COPD in the community?',
     must:[ ['prednisolone'], ['amoxicillin','doxycycline'] ], why:'Pred 30 mg 5 days + first-line antibiotic (NICE NG114)' },
   { t:'Croup', q:'Treatment for a 2-year-old with mild croup?',
-    must:[ ['dexamethasone'], ['0.15'] ], why:'Single dose dexamethasone 0.15 mg/kg (NICE)' },
+    must:[ ['dexamethasone'], ['0.15'] ], why:'Single dose dexamethasone 0.15 mg/kg (BNFC)' },
 
   /* ---- infection / antimicrobials ---- */
   { t:'UTI — uncomplicated woman', q:'Antibiotic choice and duration for an uncomplicated UTI in a non-pregnant woman?',
@@ -46,29 +46,29 @@ window.ASK_TESTBANK = [
   { t:'H. pylori eradication', q:'First-line H. pylori eradication regimen?',
     must:[ ['PPI','omeprazole','lansoprazole'], ['amoxicillin'], ['clarithromycin','metronidazole'], ['7 day','7-day','seven day'] ], why:'PPI + amoxicillin + clari/metro BD 7 days (NICE CG184)' },
   { t:'Shingles — treatment window', q:'A 70-year-old presents with shingles — do I treat, and with what?',
-    must:[ ['aciclovir','valaciclovir','famciclovir'], ['72'] ], why:'Antiviral within 72 h of rash onset (NICE)' },
+    must:[ ['aciclovir','valaciclovir','famciclovir'], ['72'] ], why:'Antiviral within 72 h of rash onset (BNF)' },
   { t:'Chickenpox contact in pregnancy', q:'Pregnant woman with no history of chickenpox exposed to chickenpox — what do I do?',
     must:[ ['varicella','VZV'], ['immunoglobulin','VZIG','aciclovir','antibod'] ], why:'Check VZV IgG; PEP per UKHSA (antivirals/VZIG)' },
   { t:'Scabies', q:'Treatment for scabies?',
-    must:[ ['permethrin'], ['household','contacts'] ], why:'Permethrin 5% whole household simultaneously (NICE)' },
+    must:[ ['permethrin'], ['household','contacts'] ], why:'Permethrin 5% whole household simultaneously (BASHH 2025 scabies guideline / BNF)' },
 
-  /* ---- NICE NG12 2-week-wait ---- */
+  /* ---- NICE NG12 (updated April 2026) 2-week-wait ---- */
   { t:'NG12 — bowel (FIT)', q:'58-year-old with a 6-week change in bowel habit — do I need to refer?',
-    must:[ ['FIT','faecal immunochemical'], ['2WW','two-week','2-week','urgent suspected','USC'] ], why:'FIT ≥10 → USC colorectal (NG12 / HTG690)' },
+    must:[ ['FIT','faecal immunochemical'], ['2WW','two-week','2-week','urgent suspected','USC'] ], why:'FIT ≥10 → USC colorectal (NICE NG12 (updated April 2026) / HTG690)' },
   { t:'NG12 — post-menopausal bleeding', q:'62-year-old with an episode of post-menopausal bleeding — what now?',
-    must:[ ['2WW','two-week','2-week','urgent suspected','USC'], ['endometrial','gynae'] ], why:'PMB 55+ → USC endometrial (NG12)' },
+    must:[ ['2WW','two-week','2-week','urgent suspected','USC'], ['endometrial','gynae'] ], why:'PMB 55+ → USC endometrial (NICE NG12 (updated April 2026))' },
   { t:'NG12 — visible haematuria', q:'60-year-old with painless visible haematuria — what is the pathway?',
-    must:[ ['2WW','two-week','2-week','urgent suspected','USC'], ['bladder','urolog','renal'] ], why:'45+ unexplained visible haematuria → USC bladder/renal (NG12)' },
+    must:[ ['2WW','two-week','2-week','urgent suspected','USC'], ['bladder','urolog','renal'] ], why:'45+ unexplained visible haematuria → USC bladder/renal (NICE NG12 (updated April 2026))' },
   { t:'NG12 — weight loss + IDA', q:'67-year-old man with unexplained weight loss and iron-deficiency anaemia — what now?',
-    must:[ ['2WW','two-week','2-week','urgent suspected','USC','FIT'], ['colorectal','gastrointestinal','GI cancer'] ], why:'IDA + weight loss → FIT + USC colorectal (NG12)' },
+    must:[ ['2WW','two-week','2-week','urgent suspected','USC','FIT'], ['colorectal','gastrointestinal','GI cancer'] ], why:'IDA + weight loss → FIT + USC colorectal (NICE NG12 (updated April 2026))' },
   { t:'NG12 — breast lump', q:'35-year-old woman with a discrete breast lump — how urgently should she be seen?',
-    must:[ ['2WW','two-week','2-week','urgent suspected','USC'] ], why:'30+ unexplained breast lump → USC breast (NG12)' },
+    must:[ ['2WW','two-week','2-week','urgent suspected','USC'] ], why:'30+ unexplained breast lump → USC breast (NICE NG12 (updated April 2026))' },
   { t:'NG12 — ovarian (CA-125)', q:'58-year-old woman with persistent bloating and early satiety — what tests?',
-    must:[ ['CA-125','CA125','CA\u2011125'], ['ovarian'] ], why:'CA-125 first (≥35 → USS) — ovarian pathway (NG12)' },
+    must:[ ['CA-125','CA125','CA\u2011125'], ['ovarian'] ], why:'CA-125 first (age-specific threshold → USS) — ovarian pathway (NICE NG12 (updated April 2026))' },
   { t:'NG12 — PSA', q:'When does a raised PSA warrant urgent referral?',
-    must:[ ['age-specific','age specific','age\u2011specific'] ], why:'PSA above age-specific range → USC prostate (NG12)' },
+    must:[ ['age-specific','age specific','age\u2011specific'] ], why:'PSA above age-specific range → USC prostate (NICE NG12 (updated April 2026))' },
   { t:'NG12 — child petechiae', q:'A feverish 4-year-old has unexplained petechiae — what must I do?',
-    must:[ ['immediate','same day','same-day','emergency','999','very urgent'], ['FBC','full blood count','meningococc'] ], why:'Very urgent FBC + immediate paediatric assessment (NG12 CYP / meningococcal)' },
+    must:[ ['immediate','same day','same-day','emergency','999','very urgent'], ['FBC','full blood count','meningococc'] ], why:'Very urgent FBC + immediate paediatric assessment (NICE NG12 (updated April 2026) CYP / meningococcal)' },
 
   /* ---- endocrine / metabolic / haematology ---- */
   { t:'T2DM — first line', q:'First-line drug treatment for type 2 diabetes?',
@@ -76,9 +76,9 @@ window.ASK_TESTBANK = [
   { t:'Diabetes — diagnostic HbA1c', q:'What HbA1c confirms a diagnosis of type 2 diabetes?',
     must:[ ['48'] ], why:'HbA1c ≥48 mmol/mol (repeat if asymptomatic)' },
   { t:'Folate deficiency', q:'How do I treat folate deficiency anaemia?',
-    must:[ ['5 mg','5mg'], ['4 month','four month','4-month','four-month'] ], why:'Folic acid 5 mg od ~4 months (BNF/NICE); check B12 first' },
+    must:[ ['5 mg','5mg'], ['4 month','four month','4-month','four-month'] ], why:'Folic acid 5 mg od ~4 months (BNF); check B12 first' },
   { t:'B12 — pernicious anaemia', q:'Treatment of B12 deficiency due to pernicious anaemia?',
-    must:[ ['hydroxocobalamin'], ['intramuscular','IM '] ], why:'IM hydroxocobalamin, lifelong maintenance (NICE)' },
+    must:[ ['hydroxocobalamin'], ['intramuscular','IM '] ], why:'IM hydroxocobalamin, lifelong maintenance (NICE NG239 / BNF)' },
   { t:'Hypothyroidism — starting', q:'Starting dose of levothyroxine for an otherwise healthy 45-year-old with overt hypothyroidism?',
     must:[ ['levothyroxine'], ['1.6','100 ','50 '] ], why:'~1.6 µg/kg/day (NICE NG145); recheck TSH 6–8 wks' },
   { t:'Gout — acute', q:'First-line treatment for an acute gout flare?',
@@ -86,7 +86,7 @@ window.ASK_TESTBANK = [
   { t:'Gout — allopurinol start', q:'How do I start allopurinol after a gout flare has settled?',
     must:[ ['100 mg','100mg'], ['urate'] ], why:'Start 100 mg od, titrate to serum urate target (NG219)' },
   { t:'PMR', q:'Starting treatment for polymyalgia rheumatica?',
-    must:[ ['prednisolone'], ['15 mg','15mg'] ], why:'Prednisolone 15 mg od with dramatic-response review (NICE)' },
+    must:[ ['prednisolone'], ['15 mg','15mg'] ], why:'Prednisolone 15 mg od (within the BSR 2015 range of 12.5–25 mg) with dramatic-response review (BSR PMR guideline)' },
   { t:'GCA — urgent', q:'72-year-old with new temporal headache and jaw claudication — what do I do today?',
     must:[ ['prednisolone'], ['urgent','same day','same-day','immediate'] ], why:'Start high-dose pred + urgent specialist referral (GCA)' },
   { t:'Hyperkalaemia — severe', q:'Routine bloods show potassium 6.7 — what do I do?',
@@ -114,7 +114,7 @@ window.ASK_TESTBANK = [
 
   /* ---- dermatology ---- */
   { t:'Eczema — flare', q:'How do I manage an eczema flare on the limbs in an adult?',
-    must:[ ['steroid','corticosteroid','betamethasone','hydrocortisone'], ['emollient'] ], why:'Topical corticosteroid + continued emollients (NICE)' },
+    must:[ ['steroid','corticosteroid','betamethasone','hydrocortisone'], ['emollient'] ], why:'Topical corticosteroid + continued emollients (BNF eczema guidance)' },
 
   /* ---- contraception / UKMEC 2025 (added after the postpartum-patch incident) ---- */
   { t:'Postpartum — CHC patch, breastfeeding 8 wks', q:'Can I prescribe a contraceptive patch for a 30-year-old who gave birth 8 weeks ago and is breastfeeding?',

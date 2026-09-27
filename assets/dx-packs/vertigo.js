@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Vertigo
-   Shared-id triage + differential. NICE NG127 · Bárány Society.
+   Shared-id triage + differential. NICE NG127 · Bárány Society (international).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -24,8 +24,8 @@
 
   if (window.RGPTriage) RGPTriage.register('vertigo-triage', {
     title: 'Vertigo — triage',
-    subtitle: 'Tick features. Surfaces central (stroke) red flags vs peripheral causes per NICE / HINTS.',
-    guideline: 'NICE NG127 · Bárány',
+    subtitle: 'Tick features. Surfaces central (stroke) red flags vs peripheral causes per NICE NG128 / HINTS.',
+    guideline: 'NICE NG127 · Bárány Society (international)',
     inputs: INPUTS,
     defaultMessage: 'No central red flag fired — pattern fits a peripheral cause. Examine (Dix-Hallpike for BPPV, HINTS if acute constant), treat per cause, and safety-net for new neurology.',
     rules: [
@@ -61,7 +61,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('vertigo-dx', {
     title: 'Vertigo — differential (peripheral vs central)',
     subtitle: 'The engine uses trigger, timing and associated features to weight BPPV, vestibular neuritis, Ménière\u2019s and vestibular migraine, and always surfaces a central / stroke cause when red flags fire.',
-    guideline: 'NICE · Bárány · TiTrATE',
+    guideline: 'Bárány Society (international) · TiTrATE',
     patientPresenting: "The room spins, doctor — it comes on when I turn over in bed and lasts a few seconds.",
     inputs: INPUTS,
     diagnoses: [

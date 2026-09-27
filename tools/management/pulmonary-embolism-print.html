@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790455351292142 tools/management/pulmonary-embolism.html">
+<meta name="omelette-print-source" content="v1790530892644503 tools/management/pulmonary-embolism.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -26,7 +26,7 @@ MG.render({
   eyebrow:"Protocol · NICE NG158 · the D-dimer belongs to one group only",
   stemTitle:"The commonest diagnostic error is sending a D-dimer in the Wells-likely patient — in that group they go straight to imaging with interim anticoagulation, and a negative result should not reassure anyone",
   stemSub:"Diagnosis and initial treatment are secondary-care work, but the recognition, the stratification and all of the follow-up are ours. This page carries the presentations that get missed — isolated breathlessness, syncope, an \"atypical chest infection\" that will not settle — the two-level Wells fork, the <b>DOAC loading schedules that differ from AF dosing</b>, the duration decision, pregnancy and cancer, and the CTEPH question at 3–6 months that no one else will ask.",
-  guideline:"NICE NG158 · NG12",
+  guideline:"NICE NG158 (2020, updated 2023) · NICE NG12 (updated April 2026) · ESC 2019 (international, CTEPH follow-up)",
   reviewed:"13 September 2026",
   nextReview:"13 March 2027",
   meta:[
@@ -52,7 +52,7 @@ MG.render({
     {title:"Calculate the two-level Wells score", html:"Likely (>4) → immediate CTPA with interim anticoagulation. Unlikely (≤4) → D-dimer; negative excludes PE, positive goes to CTPA."},
     {title:"Anticoagulate with the right loading schedule", html:"Apixaban 10 mg BD ×7 days → 5 mg BD, or rivaroxaban 15 mg BD ×21 days → 20 mg OD with food."},
     {title:"Handle the special situations", html:"Pregnancy → LMWH empirically. Cancer → DOAC or LMWH, with caution in luminal GI and GU tumours. Unprovoked → a targeted work-up, not a blanket cancer screen."},
-    {title:"Decide duration at 3 months", html:"Provoked → 3 months then stop. Unprovoked or ongoing risk → at least 6 months and often long-term."},
+    {title:"Decide duration at 3 months", html:"Provoked → consider stopping at 3 months. Unprovoked or ongoing risk → offer continuation beyond 3 months after weighing recurrence against bleeding risk (NG158); often long-term."},
     {title:"Ask the CTEPH question at 3–6 months", html:"Persistent unexplained breathlessness → echocardiogram and pulmonary hypertension referral."}
   ],
   sections:[
@@ -113,7 +113,7 @@ MG.render({
          ["<b>Cancer-associated PE</b>","<b>A DOAC (edoxaban, apixaban or rivaroxaban) or LMWH</b>","<b>Caution with DOACs in luminal GI and GU tumours — bleeding risk.</b> Continue while the cancer is active"],
          ["<b>Pregnancy</b>","<b>LMWH throughout</b>","<b>DOACs and warfarin avoided.</b> Treat empirically while investigating"],
          ["<b>Duration — provoked</b>","<b>3 months, then stop</b>","Where a transient factor (surgery, immobility) has resolved"],
-         ["<b>Duration — unprovoked or ongoing risk</b>","<b>At least 6 months, often long-term</b>","Weigh recurrence against bleeding risk, assess bleeding risk formally, and involve the patient in the decision"]
+         ["<b>Duration — unprovoked or ongoing risk</b>","<b>Continue beyond 3 months (NG158), often long-term</b>","Weigh recurrence against bleeding risk, assess bleeding risk formally, and involve the patient in the decision"]
        ]},
        {b:"cards", cols:2, items:[
          {tone:"red", h:"⚠ PE dosing is not AF dosing", html:"DOAC dosing for VTE has a loading phase — a higher dose for the first days or weeks — which AF dosing does not. <b>Getting it wrong under-treats the clot.</b> See <a href='antiplatelets-anticoagulants.html'>antiplatelets and anticoagulants</a> for creatinine clearance, interactions and missed-dose rules."},
@@ -177,14 +177,14 @@ MG.render({
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li>NICE NG158 — Venous thromboembolic diseases: diagnosis, management and thrombophilia testing<br><a href="https://www.nice.org.uk/guidance/ng158" rel="noopener">nice.org.uk/guidance/ng158</a><span class="rd"> — the two-level Wells score and its thresholds, D-dimer restricted to the unlikely group, immediate CTPA with interim anticoagulation in the likely group, DOAC first-line with the apixaban and rivaroxaban loading schedules, LMWH in pregnancy, and the provoked versus unprovoked duration rules</span></li>'+
-         '<li><b>NICE NG158 \u2014 Venous thromboembolic diseases: diagnosis, management and thrombophilia testing</b><br><a href="https://www.nice.org.uk/guidance/ng158" rel="noopener">nice.org.uk/guidance/ng158</a><span class="rd"> — the primary-care recognition set including the atypical presentations, risk factors, and the follow-up schedule</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the targeted routes used where unprovoked VTE is accompanied by new symptoms, in place of an indiscriminate cancer screen</span></li>'+
+         '<li>NICE NG158 — Venous thromboembolic diseases: diagnosis, management and thrombophilia testing (2020, updated 2023)<br><a href="https://www.nice.org.uk/guidance/ng158" rel="noopener">nice.org.uk/guidance/ng158</a><span class="rd"> — the two-level Wells score and its thresholds, D-dimer restricted to the unlikely group, immediate CTPA with interim anticoagulation in the likely group, DOAC first-line with the apixaban and rivaroxaban loading schedules, LMWH in pregnancy, the provoked versus unprovoked duration rules (consider stopping at 3 months if provoked; offer continuation beyond 3 months if unprovoked), no further cancer investigations in unprovoked VTE without relevant symptoms or signs, and antiphospholipid testing only when stopping is planned</span></li>'+
+         '<li><b>ESC 2019 guidelines for the diagnosis and management of acute pulmonary embolism (Konstantinides et al., Eur Heart J 2020) \u2014 international</b><span class="rd"> — evaluation for CTEPH (echocardiography, then specialist referral) in people with persistent or new breathlessness 3\u20136 months after PE; used because no UK guideline covers this follow-up. The atypical presentations and the follow-up schedule on this page are clinical practice rather than NG158 wording</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — the targeted routes used where unprovoked VTE is accompanied by new symptoms, in place of an indiscriminate cancer screen</span></li>'+
          '<li><b>BNF</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — apixaban 10 mg BD for 7 days then 5 mg BD; rivaroxaban 15 mg BD for 21 days then 20 mg OD with food; the LMWH lead-in required before edoxaban or dabigatran</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Pulmonary embolism — NICE NG158 (2020) and NICE NG12 (updated April 2026). Assess stability before scoring: hypotension or syncope with hypoxia is massive PE and a 999 call, not a Wells score. D-dimer is a rule-out test and belongs only to the Wells-unlikely group; the likely group goes straight to CTPA with interim anticoagulation. PE DOAC dosing has a loading phase that AF dosing does not — apixaban 10 mg BD for 7 days then 5 mg BD, rivaroxaban 15 mg BD for 21 days then 20 mg OD with food. LMWH in pregnancy, treated empirically while investigating. Provoked: 3 months. Unprovoked: at least 6 months and often long-term. Ask about breathlessness at 3–6 months and think CTEPH. Verify all doses against the BNF before prescribing."
+  foot:"Pulmonary embolism — NICE NG158 (2020) and NICE NG12 (updated April 2026). Assess stability before scoring: hypotension or syncope with hypoxia is massive PE and a 999 call, not a Wells score. D-dimer is a rule-out test and belongs only to the Wells-unlikely group; the likely group goes straight to CTPA with interim anticoagulation. PE DOAC dosing has a loading phase that AF dosing does not — apixaban 10 mg BD for 7 days then 5 mg BD, rivaroxaban 15 mg BD for 21 days then 20 mg OD with food. LMWH in pregnancy, treated empirically while investigating. Provoked: consider stopping at 3 months. Unprovoked: continue beyond 3 months, often long-term. Ask about breathlessness at 3–6 months and think CTEPH. Verify all doses against the BNF before prescribing."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

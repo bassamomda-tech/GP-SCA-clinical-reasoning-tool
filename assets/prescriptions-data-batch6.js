@@ -17,7 +17,7 @@
     title: 'Chronic pain — analgesic ladder',
     category: 'Neurology & Pain',
     eyebrow: 'Stepwise non-opioid → opioid · review & deprescribe',
-    indication: 'Stepwise analgesia for nociceptive pain (WHO-style ladder), adapted for primary care. For chronic primary pain, NICE advises AGAINST initiating opioids/NSAIDs/paracetamol/gabapentinoids — favour exercise, CBT/ACT, antidepressant. Use this ladder mainly for ongoing nociceptive (e.g. OA, mechanical) pain.',
+    indication: 'Stepwise analgesia for nociceptive pain (WHO-style ladder), adapted for primary care. For chronic primary pain, NICE NG193 (2021) advises AGAINST initiating opioids/NSAIDs/paracetamol/gabapentinoids — favour exercise, CBT/ACT, antidepressant. Use this ladder mainly for ongoing nociceptive (e.g. OA, mechanical) pain.',
     contraindications: 'NSAIDs: GI/renal/cardiovascular risk, elderly, anticoagulants. Opioids: limited efficacy in chronic pain, dependence/tolerance — set a clear goal and review date; avoid escalating doses. Codeine: ultra-rapid CYP2D6 metabolisers, children, breastfeeding.',
     duration: 'Lowest effective dose, shortest time; scheduled review',
     drugs: [
@@ -72,7 +72,7 @@ Review function at each step; deprescribe if no benefit.`,
       { name: 'Soap substitute (use an emollient instead of soap)', dose: 'Wash with', freq: 'Each wash', route: 'Topical', days: 'Ongoing' },
     ],
     altRegimens: [
-      { label: 'Quantities (adult, NICE)', drugs: 'Prescribe 250\u2013500 g/week for widespread eczema. Apply in the direction of hair growth; wait ~15\u201330 min before/after a topical steroid.' },
+      { label: 'Quantities (BNF; NICE CG57 for under-12s)', drugs: 'Prescribe 250\u2013500 g/week for widespread eczema. Apply in the direction of hair growth; wait ~15\u201330 min before/after a topical steroid.' },
       { label: 'Itch / antimicrobial', drugs: 'Consider an emollient with an antipruritic or antimicrobial (e.g. for recurrent infection) per specialist advice; avoid aqueous cream as a leave-on (irritant).' },
       { label: 'Bath additives', drugs: 'Routine bath emollients are no longer recommended (BATHE trial showed no added benefit) \u2014 use leave-on + soap substitute.' },
     ],
@@ -128,7 +128,7 @@ Review function at each step; deprescribe if no benefit.`,
     ],
     followUp: 'Review at 4\u20138 weeks; step down to lowest effective dose. Persistent/relapsing or alarm features \u2192 consider endoscopy/referral. Review long-term PPI annually.',
     redFlags: [
-      'Dysphagia, odynophagia, weight loss, GI bleeding (haematemesis/melaena), iron-deficiency anaemia, epigastric mass, or new dyspepsia \u226555 \u2192 urgent endoscopy/2WW.',
+      'Dysphagia, odynophagia, weight loss, GI bleeding (haematemesis/melaena), iron-deficiency anaemia, epigastric mass, or new dyspepsia ≥55 → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
     ],
     emisText: `Reflux medication ladder (adult):
 - Lifestyle first (weight, meal timing, alcohol/caffeine, smoking, bed head-up).
@@ -136,7 +136,7 @@ Review function at each step; deprescribe if no benefit.`,
 - Step up: H2RA (famotidine 20-40 mg BD).
 - PPI standard dose OD 4-8 weeks (high dose if severe oesophagitis); step down to lowest effective.
 - Uninvestigated dyspepsia: test-and-treat H. pylori.
-- ALARM features / new dyspepsia \u226555 \u2192 urgent endoscopy/2WW. Review long-term PPI.`,
+- ALARM features / new dyspepsia ≥55 → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral (NICE NG12 (updated April 2026)). Review long-term PPI.`,
     sources: [
       { label:'NICE CG184 — GORD and dyspepsia', url:'https://www.nice.org.uk/guidance/cg184' },
     ],

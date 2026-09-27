@@ -142,16 +142,16 @@ MedChooser.register('hypercholesterolaemia', {
       counsel:'"If tablets can\'t get your cholesterol low enough — especially with inherited high cholesterol or existing heart disease — there are injections given every few weeks or twice a year that are very effective."',
       detail:{
         'Dose': 'PCSK9i SC every 2–4 weeks; inclisiran SC at 0, 3 months then 6-monthly; bempedoic acid oral (with ezetimibe)',
-        'Key teaching': 'NICE TA thresholds apply (LDL persistently high despite statin+ezetimibe, e.g. ≥4.0/≥3.5 mmol/L depending on FH/CVD risk). Usually lipid-clinic initiated.'
+        'Key teaching': 'NICE TA393/TA394 (PCSK9i) thresholds apply (LDL persistently high despite statin+ezetimibe, e.g. ≥4.0/≥3.5 mmol/L depending on FH/CVD risk); inclisiran (NICE TA733) after a previous CV event with LDL persistently ≥2.6 mmol/L. Usually lipid-clinic initiated.'
       },
       evaluate(f){
         const r = [];
-        if (f.fh) r.push({kind:'good', text:'FH not at target — common route to PCSK9i/inclisiran (meets NICE thresholds)'});
+        if (f.fh) r.push({kind:'good', text:'FH not at target — common route to PCSK9i/inclisiran (meets NICE TA393/TA394/TA733 thresholds)'});
         if (f.not_target && f.secondary) r.push({kind:'good', text:'High-risk CVD above LDL threshold on statin+ezetimibe — meets TA criteria'});
-        if (f.true_intol && f.injection_ok) r.push({kind:'good', text:'Statin-intolerant and injectable acceptable — option per NICE'});
+        if (f.true_intol && f.injection_ok) r.push({kind:'good', text:'Statin-intolerant and injectable acceptable — option per NICE TA393/TA394'});
         if (!f.injection_ok && !f.true_intol) r.push({kind:'neutral', text:'Reserve for thresholds met / oral options exhausted'});
         const preferred = (f.fh && f.not_target) || (f.not_target && f.secondary);
-        return { tier: preferred ? 'acceptable' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Specialist add-on when NICE LDL thresholds are met'}] };
+        return { tier: preferred ? 'acceptable' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Specialist add-on when NICE TA393/TA394/TA733 LDL thresholds are met'}] };
       }
     },
 

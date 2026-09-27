@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Leucocytosis (raised WCC)
-   Shared-id triage + differential. BSH · NICE NG12.
+   Shared-id triage + differential. BSH · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,7 +22,7 @@
   if (window.RGPTriage) RGPTriage.register('leucocytosis-triage', {
     title: 'Leucocytosis — triage',
     subtitle: 'Enter WCC / differential. Surfaces acute leukaemia and myeloproliferative pathways.',
-    guideline: 'BSH · NICE NG12',
+    guideline: 'BSH · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Most leucocytosis is reactive — review the differential and clinical context, treat infection, repeat FBC + film; investigate if persistent or with B-symptoms.',
     rules: [
@@ -31,14 +31,14 @@
         label: 'Blasts on film / very high WCC — possible acute leukaemia',
         action: 'Same-day haematology — urgent FBC + film discussed immediately.',
         patientPhrase: '"Your blood test needs an urgent specialist look today to rule out a serious blood-cell condition."',
-        source: 'NICE NG12 §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.blasts || (i.wcc != null && i.wcc > 50),
       },
       {
         id: 'mpn_2ww', tier: 'cancer',
         label: 'Persistent unexplained leucocytosis + B-symptoms / splenomegaly',
         action: 'Haematology 2WW — ? CML / lymphoproliferative disorder.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.b_symptoms || (i.persistent && i.lymphocytosis),
       },
       {
@@ -57,7 +57,7 @@
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'BSH — Haematology guidelines', url: 'https://b-s-h.org.uk/guidelines/' }
     ],
   });
@@ -65,7 +65,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('leucocytosis-dx', {
     title: 'Leucocytosis — differential',
     subtitle: 'The differential count directs the cause. The engine weights reactive neutrophilia, lymphocytosis and eosinophilia, and always surfaces acute leukaemia and CML.',
-    guideline: 'BSH · NICE NG12',
+    guideline: 'BSH · NICE NG12 (updated April 2026)',
     patientPresenting: "My white cell count came back high, doctor.",
     inputs: INPUTS,
     diagnoses: [
@@ -114,7 +114,7 @@
       acute_leukaemia: ['blasts', 'wcc'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'BSH — Haematology guidelines', url: 'https://b-s-h.org.uk/guidelines/' }
     ],
   });

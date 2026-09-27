@@ -1,6 +1,6 @@
 /* ============================================
    Medication Chooser — Heavy menstrual bleeding
-   NICE NG88 · BNF  (NG12 endometrial red flags)
+   NICE NG88 · BNF  (NICE NG12 (updated April 2026) endometrial red flags)
    ============================================ */
 MedChooser.register('menorrhagia', {
   title: 'Heavy menstrual bleeding — treatment selection',
@@ -25,7 +25,7 @@ MedChooser.register('menorrhagia', {
     { group:'Demographics / risk', id:'smoker35', label:'Smoker and age ≥35', note:'Avoid COC' },
     { group:'Demographics / risk', id:'anaemia', label:'Iron-deficiency anaemia', note:'Treat + urgency' },
 
-    // Red flags (NG12)
+    // Red flags (NICE NG12 (updated April 2026))
     { group:'Red flags (refer)', id:'pmb', label:'Postmenopausal bleeding' },
     { group:'Red flags (refer)', id:'imb', label:'Persistent intermenstrual / postcoital bleeding' },
     { group:'Red flags (refer)', id:'over45_fail', label:'Age ≥45 with treatment failure / risk factors' },
@@ -36,7 +36,7 @@ MedChooser.register('menorrhagia', {
 
   flags: (f) => {
     const out = [];
-    if (f.pmb) out.push({ tone:'red', text:'NICE NG12 — postmenopausal bleeding (55+): refer on the suspected endometrial/gynae cancer (2WW) pathway; direct-access TVUSS' });
+    if (f.pmb) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — postmenopausal bleeding (55+): refer on the suspected endometrial/gynae cancer (2WW) pathway; direct-access TVUSS' });
     if (f.imb || f.over45_fail) out.push({ tone:'amber', text:'Persistent IMB/PCB, or ≥45 with treatment failure/risk factors — investigate endometrium (TVUSS ± biopsy / refer) before assuming benign HMB' });
     if (f.large_fibroid) out.push({ tone:'amber', text:'Fibroids ≥3 cm / distorted cavity — refer; LNG-IUS may not be retained; consider GnRH analogues / surgical options' });
     if (f.anaemia) out.push({ tone:'amber', text:'Iron-deficiency anaemia — start iron and treat HMB promptly; check ferritin' });
@@ -67,7 +67,7 @@ MedChooser.register('menorrhagia', {
         if (f.no_structural || f.small_fibroid) r.push({kind:'good', text:'No major structural cause — first-line per NG88'});
         if (f.dysmenorrhoea) r.push({kind:'good', text:'Coexisting dysmenorrhoea — often improves too'});
         if (f.vte || f.migraine_aura || f.smoker35) r.push({kind:'good', text:'Oestrogen-avoidant profile — progestogen-only device is safe'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'NICE first-line for HMB'}] };
+        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'NICE NG88 first-line for HMB'}] };
       }
     },
 
@@ -192,7 +192,7 @@ MedChooser.register('menorrhagia', {
   sources: [
     { label:'NICE NG88 — Heavy menstrual bleeding: assessment and management', url:'https://www.nice.org.uk/guidance/ng88' },
     { label:'NICE NG88 — heavy menstrual bleeding', url:'https://www.nice.org.uk/guidance/ng88' },
-    { label:'NICE NG12 — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'BNF — Menorrhagia', url:'https://bnf.nice.org.uk/treatment-summaries/' }
   ],
 });

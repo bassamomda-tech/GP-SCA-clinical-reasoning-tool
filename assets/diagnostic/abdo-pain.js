@@ -1,8 +1,8 @@
-/* Differential — Abdominal pain · NICE / NG12 */
+/* Differential — Abdominal pain · NICE NG12 (updated April 2026) · CG184 · CG188 · CG61 */
 RGPDiagnostic.register('abdo-pain', {
   title: 'Abdominal pain — what is causing it?',
   subtitle: 'The differential ranks by quadrant + character + age/sex: RUQ biliary, epigastric peptic, RIF appendicitis/gynae, LIF diverticulitis/IBS, loin renal, diffuse IBS/mesenteric.',
-  guideline: 'NICE · NG12',
+  guideline: 'NICE NG12 (updated April 2026) · CG184 · CG188 · CG61',
   patientPresenting: "Right-upper-quadrant pain after fish and chips. Comes in waves. 50, female, BMI 32. Wonders if it's gallstones.",
   inputs: [
     { group:'Demographics', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
@@ -43,7 +43,7 @@ RGPDiagnostic.register('abdo-pain', {
       guideUrl: 'https://www.nice.org.uk/guidance/cg188', guideLabel: 'NICE CG188' },
     { id:'peptic_ulcer', name:'Peptic ulcer / gastritis', summary:'Epigastric burning, NSAID / H. pylori / alcohol related', baseline:6, category:'common',
       keyExam:'Epigastric tenderness. Anaemia / melaena = complicated.',
-      nextIx:'H. pylori test + PPI 4 wks. OGD if alarm features (age ≥55 + dyspepsia, weight loss, dysphagia, bleeding).',
+      nextIx:'H. pylori test + PPI 4 wks. OGD / referral per NICE NG12 (updated April 2026): dysphagia, or age 55+ with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral; bleeding → same-day assessment.',
       guideUrl: 'https://www.nice.org.uk/guidance/cg184', guideLabel: 'NICE CG184', caseLink:'../cases/dyspepsia.html' },
     { id:'appendicitis', name:'Appendicitis', summary:'Central → RIF migration + fever + nausea', baseline:3, category:'cant-miss',
       keyExam:"McBurney's tenderness, Rovsing's sign, psoas sign, fever, tachycardia.",
@@ -68,7 +68,7 @@ RGPDiagnostic.register('abdo-pain', {
       guideUrl: 'https://www.nice.org.uk/guidance/ng130', guideLabel: 'NICE NG130', caseLink:'../cases/crohns.html' },
     { id:'uti_pyelo', name:'UTI / pyelonephritis', summary:'Dysuria + suprapubic / loin pain ± fever', baseline:4, category:'common',
       keyExam:'Suprapubic tenderness in UTI; flank tenderness + fever in pyelo.',
-      nextIx:'Urine dip + culture. NICE NG109 — trimethoprim or nitrofurantoin; co-amoxiclav for pyelo.',
+      nextIx:'Urine dip + culture. NICE NG109 (lower UTI) — nitrofurantoin or trimethoprim. Pyelonephritis (NICE NG111) — cefalexin first-line; co-amoxiclav or trimethoprim only if culture shows susceptibility; ciprofloxacin only if others unsuitable (MHRA fluoroquinolone restrictions).',
       guideUrl: 'https://www.nice.org.uk/guidance/ng109', guideLabel: 'NICE NG109' },
     { id:'ectopic', name:'Ectopic pregnancy', summary:'Female of reproductive age + pain + amenorrhoea + PV bleed', baseline:1, category:'cant-miss',
       keyExam:'Cervical motion tenderness, adnexal mass, shoulder-tip pain if ruptured.',
@@ -89,7 +89,7 @@ RGPDiagnostic.register('abdo-pain', {
       redFlagAction:'⚡ Same-day admission' },
     { id:'gi_cancer', name:'GI cancer (occult)', summary:'Weight loss + persistent pain + altered bowel habit in adult ≥50', baseline:1, category:'cant-miss',
       keyExam:'Cachexia, mass, lymphadenopathy. PR for masses/blood.',
-      nextIx:'⚡ Site-specific 2WW per NICE NG12. FIT testing for lower GI.',
+      nextIx:'⚡ Site-specific suspected cancer pathway per NICE NG12 (updated April 2026). Lower GI: FIT first (FIT ≥10 µg Hb/g → colorectal referral; NICE HTG690).',
       guideUrl: '',
       redFlagAction:'⚡ 2WW' }
   ],
@@ -144,6 +144,6 @@ RGPDiagnostic.register('abdo-pain', {
     {label:'NICE CG188 — gallstone disease', url:'https://www.nice.org.uk/guidance/cg188'},
     
     {label:'NICE CG61 IBS', url:'https://www.nice.org.uk/guidance/cg61'},
-    {label:'NICE NG12 Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12'}
+    {label:'NICE NG12 (updated April 2026) Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12'}
   ],
 });

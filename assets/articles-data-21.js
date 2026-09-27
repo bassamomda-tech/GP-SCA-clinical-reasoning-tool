@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 21: O topics)
    NHS conditions A–Z (letter O) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -8,7 +8,7 @@
   { id:'obesity', title:'Obesity', category:'Endocrine & metabolic', icon:'⚖️',
     overview:'Excess body fat that impairs health — a chronic, relapsing condition driving type 2 diabetes, cardiovascular disease, multiple cancers, osteoarthritis, sleep apnoea, fatty liver and mental-health problems. Management is a long-term, non-judgemental, multicomponent partnership, not a one-off instruction to "lose weight".',
     features:[
-      'Classified using BMI (overweight ≥25, obesity ≥30; lower thresholds for South Asian and some other ethnic groups), with waist circumference adding risk information',
+      'Classified using BMI (overweight ≥25, obesity ≥30; thresholds 2.5 kg/m² lower — overweight ≥23, obesity ≥27.5 — for people of South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean family background, NICE NG246), with waist-to-height ratio/waist circumference adding risk information',
       'Drives major comorbidity: type 2 diabetes, hypertension, dyslipidaemia, ischaemic heart disease, obstructive sleep apnoea, osteoarthritis, MASLD/fatty liver, gallstones, several cancers, subfertility, and depression',
       'Usually multifactorial (energy balance, environment, behaviour, genetics, deprivation); consider contributing factors — drugs (e.g. some antipsychotics, steroids, insulin), hypothyroidism, and rarely Cushing’s or syndromic causes',
       'Assess the whole picture: comorbidities, mental health, eating pattern (including binge eating), medication, and the person’s readiness and goals',
@@ -19,8 +19,8 @@
       'Offer a multicomponent approach as the foundation: dietary change (a sustainable calorie deficit), increased physical activity, and behavioural support — refer to structured weight-management programmes (tiered services)',
       'Set realistic, sustained goals (e.g. 5–10% weight loss yields major health benefit) and provide ongoing review and relapse support',
       'Review and adjust weight-promoting medications where possible and treat contributing conditions',
-      'Consider pharmacological treatment (e.g. orlistat, or GLP-1 agonists such as semaglutide/liraglutide per NICE criteria and specialist/tier-3 pathways) as an adjunct to lifestyle measures',
-      'Refer to specialist (tier 3) weight-management and consider bariatric surgery for those meeting NICE criteria (e.g. BMI ≥40, or ≥35 with comorbidity, after specialist assessment) — surgery is highly effective for severe obesity and diabetes',
+      'Consider pharmacological treatment (e.g. orlistat, or GLP-1 agonists such as semaglutide/liraglutide per NICE NG246 and technology appraisals TA875/TA664, and specialist/tier-3 pathways) as an adjunct to lifestyle measures',
+      'Refer to specialist (tier 3) weight-management and consider bariatric surgery for those meeting NICE NG246 criteria (e.g. BMI ≥40, or ≥35 with comorbidity, after specialist assessment) — surgery is highly effective for severe obesity and diabetes',
       'Actively manage cardiovascular and metabolic risk and screen for/treat comorbidities (diabetes, sleep apnoea, fatty liver, mental health)',
       'For children, use family-based lifestyle programmes and involve paediatrics for severe/early-onset or syndromic obesity'],
     referral:[
@@ -28,7 +28,7 @@
       'Suspected secondary/endocrine cause (e.g. Cushing’s) or syndromic obesity → endocrinology/paediatrics',
       'Significant comorbidities (diabetes, OSA, fatty liver, mental health) → relevant pathways',
       'Children with severe, early-onset, or syndromic obesity → paediatrics'],
-    source:'NICE CG189 / NICE NG246 (Overweight and obesity management)' },
+    source:'NICE NG246 (Overweight and obesity management, 2025; replaced CG189)' },
 
   { id:'ocd', title:'Obsessive compulsive disorder (OCD)', category:'Mental health', icon:'🧠',
     overview:'A disorder of recurrent, intrusive, distressing thoughts (obsessions) and repetitive behaviours or mental acts (compulsions) performed to reduce the resulting anxiety. It is common, often hidden through shame, and frequently under-recognised for years — yet it responds well to evidence-based psychological therapy and medication.',
@@ -90,7 +90,7 @@
       'Extensive, recurrent, or unexplained oral candidiasis — especially with weight loss or other features — warrants considering HIV and other immunosuppression',
       'Diagnosis is usually clinical; swab/investigate atypical, severe, or recurrent cases'],
     management:[
-      'Treat the infection: topical antifungal (e.g. nystatin suspension or miconazole oral gel) for localised disease; oral fluconazole for extensive, severe, or unresponsive infection or in immunocompromised patients',
+      'Treat the infection: topical antifungal (e.g. nystatin suspension or miconazole oral gel — miconazole is contraindicated with warfarin, MHRA Drug Safety Update 2016) for localised disease; oral fluconazole for extensive, severe, or unresponsive infection or in immunocompromised patients',
       'Crucially, identify and address the underlying cause — this prevents recurrence',
       'For inhaled-steroid-related thrush: optimise inhaler technique, use a spacer, and rinse the mouth after use; review the steroid dose',
       'Denture care: clean and remove dentures overnight, and treat the denture (soaking) as well as the mouth',
@@ -101,9 +101,9 @@
     referral:[
       'Unexplained, extensive, or recurrent oral candidiasis → investigate for underlying cause (diabetes, immunosuppression) and offer HIV testing',
       'Immunocompromised patients with oral/oesophageal candidiasis (pain/difficulty swallowing) → urgent treatment ± specialist input',
-      'Persistent oral white/red patches that do not resolve with treatment → urgent dental/oral assessment (exclude oral cancer/leukoplakia — NICE NG12)',
+      'Persistent oral white/red patches that do not resolve with treatment → urgent dental/oral assessment (exclude oral cancer/leukoplakia — NICE NG12 (updated April 2026))',
       'Severe or treatment-resistant disease → relevant specialist'],
-    source:'NICE — Candida (oral)' },
+    source:'BNF (nystatin, miconazole, fluconazole) / MHRA Drug Safety Update (miconazole and warfarin, 2016) / BHIVA HIV testing guidelines' },
 
   { id:'orbital-cellulitis', title:'Orbital cellulitis', category:'Ophthalmology', icon:'👁️',
     overview:'A sight- and life-threatening infection of the tissues behind the orbital septum, usually spreading from the sinuses. It must be distinguished urgently from the much commoner and milder preseptal (periorbital) cellulitis. The danger signs — painful/restricted eye movements, proptosis and visual change — demand emergency referral.',
@@ -128,7 +128,7 @@
       'Any visual change, abnormal pupil, or features of intracranial spread → emergency',
       'Preseptal cellulitis in a child, or if orbital involvement cannot be excluded → urgent assessment/admission',
       'Underlying sinus source → ENT'],
-    source:'NICE — Preseptal and orbital cellulitis' },
+    source:'Emergency ophthalmology/ENT practice (no NICE guideline); antibiotic choice per local formulary and BNF' },
 
   { id:'osteoarthritis', title:'Osteoarthritis', category:'Musculoskeletal', icon:'🦴',
     overview:'The commonest form of arthritis — a whole-joint disorder of cartilage loss and bony change causing pain, stiffness and reduced function, especially in the knees, hips, hands and spine. It is not simply "wear and tear"; management is active, centred on exercise, weight and self-management, with surgery for end-stage disease.',
@@ -178,7 +178,7 @@
       'Suspected vertebral osteomyelitis with neurology/bladder-bowel dysfunction (epidural abscess/cord compression) → emergency spinal referral',
       'Diabetic-foot osteomyelitis (deep/probe-to-bone ulcer) → urgent diabetic foot/orthopaedic service',
       'Chronic or recurrent osteomyelitis → orthopaedics + microbiology'],
-    source:'NICE / BOAST & infection guidance' },
+    source:'NICE NG19 (Diabetic foot problems) / BOAST & infection guidance' },
 
   { id:'osteoporosis', title:'Osteoporosis', category:'Musculoskeletal', icon:'🦴',
     overview:'A skeletal disorder of reduced bone density and quality that increases fracture risk — the "silent" disease that declares itself with a fragility fracture. It is common, especially in postmenopausal women and older people, and is both predictable (via risk assessment) and treatable, preventing future, sometimes devastating, fractures.',
@@ -203,7 +203,7 @@
       'Suspected secondary cause needing specialist work-up → relevant specialty',
       'Severe osteoporosis or where parenteral/specialist agents (e.g. teriparatide) may be needed → specialist',
       'Acute fragility fracture → orthopaedics + fracture-liaison/bone-health assessment'],
-    source:'NICE NG (osteoporosis) / NOGG guidance' },
+    source:'NICE NG259 (Osteoporosis: risk assessment, July 2026; replaced CG146) / NICE TA464 (bisphosphonates) / NOGG UK clinical guideline' },
 
   { id:'ovarian-cancer', title:'Ovarian cancer', category:'Women’s health', icon:'🎗️',
     overview:'A leading cause of gynaecological cancer death, often diagnosed late because early symptoms are vague and easily attributed to benign conditions. The key to earlier diagnosis is taking persistent, new abdominal/pelvic symptoms seriously — especially in women over 50 — and investigating with CA-125 and ultrasound.',
@@ -213,10 +213,10 @@
       'Other features: change in bowel habit, unexplained weight loss, fatigue, an abdominal/pelvic mass, or ascites',
       'Risk factors: increasing age, family history/BRCA1-2 and Lynch syndrome, nulliparity, endometriosis, and hormonal factors',
       'Postmenopausal women are most affected, but it occurs at all ages (including germ-cell tumours in younger women)',
-      'Investigations: serum CA-125 first; if raised (≥35 IU/mL), arrange an ultrasound of the abdomen and pelvis, and use the risk-of-malignancy assessment'],
+      'Investigations: serum CA-125 first; if at or above the NICE NG12 (updated April 2026) age-specific threshold (35 IU/mL at 40–49, 31 at 50–59, 24 at 60–69, 25 at 70–79, 31 at 80+; under 40, do not use CA-125 alone), arrange an ultrasound of the abdomen and pelvis, and use the risk-of-malignancy assessment'],
     management:[
       'Take persistent/new abdominal or pelvic symptoms seriously — examine the abdomen/pelvis and measure CA-125 in women (especially ≥50) with relevant symptoms',
-      'If CA-125 is raised (≥35 IU/mL), arrange an ultrasound of the abdomen and pelvis; refer urgently if ultrasound suggests cancer or there is ascites/a pelvic or abdominal mass',
+      'If CA-125 is at or above the NICE NG12 (updated April 2026) age-specific threshold (35 IU/mL at 40–49, 31 at 50–59, 24 at 60–69, 25 at 70–79, 31 at 80+), arrange an urgent ultrasound of the abdomen and pelvis; under 40, do not use CA-125 alone — consider ultrasound for persistent symptoms; refer urgently if ultrasound suggests cancer or there is ascites/a pelvic or abdominal mass',
       'Examine for and act on an abdominal/pelvic mass or ascites → urgent referral regardless of CA-125',
       'Refer confirmed/suspected ovarian cancer to the gynae-oncology MDT for staging and treatment (surgery and chemotherapy)',
       'Assess family history; refer those meeting criteria for genetics (BRCA/Lynch) — relevant to the patient and family risk-reduction',
@@ -224,11 +224,11 @@
       'Be aware that a normal CA-125 does not entirely exclude cancer — persistent symptoms warrant ongoing review/reassessment',
       'Coordinate survivorship and follow-up care'],
     referral:[
-      'Physical examination identifying ascites and/or a pelvic or abdominal mass (not obviously fibroids) → urgent (2WW) gynae-oncology referral (NICE NG12)',
-      'Raised CA-125 (≥35) with ultrasound suggestive of ovarian cancer → urgent referral; CA-125 raised but ultrasound normal → assess/investigate other causes and safety-net',
+      'Physical examination identifying ascites and/or a pelvic or abdominal mass (not obviously fibroids) → urgent (2WW) gynae-oncology referral (NICE NG12 (updated April 2026))',
+      'CA-125 at or above the NICE NG12 (updated April 2026) age-specific threshold (35 IU/mL at 40–49, 31 at 50–59, 24 at 60–69, 25 at 70–79, 31 at 80+) with ultrasound suggestive of ovarian cancer → urgent referral; CA-125 raised but ultrasound normal → assess/investigate other causes and safety-net',
       'Persistent symptoms with normal initial tests → review and reconsider/repeat investigation',
       'Strong family history (BRCA/Lynch) → genetics/familial cancer service'],
-    source:'NICE NG12 / NICE CG122 (Ovarian cancer)' },
+    source:'NICE NG12 (updated April 2026) / NICE CG122 (Ovarian cancer)' },
 
   { id:'ovarian-cyst', title:'Ovarian cyst', category:'Women’s health', icon:'🌸',
     overview:'Fluid-filled sacs on or in the ovary — extremely common, usually benign and often physiological (functional), especially before the menopause. Most cause no symptoms and resolve spontaneously. The clinical priorities are recognising the acute complications (torsion, rupture, haemorrhage) and assessing the risk of malignancy, particularly after the menopause.',
@@ -250,10 +250,10 @@
       'Provide information on the usually benign nature and clear safety-netting'],
     referral:[
       'Suspected ovarian torsion or significant cyst rupture/haemorrhage (sudden severe pelvic pain, unwell) → emergency gynaecology/surgical admission',
-      'Complex/solid or large cyst, ascites, or features suggesting malignancy → urgent (2WW) gynae-oncology referral (NICE NG12)',
+      'Complex/solid or large cyst, ascites, or features suggesting malignancy → urgent (2WW) gynae-oncology referral (NICE NG12 (updated April 2026))',
       'Persistent, symptomatic, or postmenopausal cysts → gynaecology',
       'Premenopausal simple cyst → conservative management with ultrasound follow-up'],
-    source:'NICE / RCOG — Ovarian cysts' },
+    source:'RCOG Green-top Guideline No. 62 (Ovarian masses in premenopausal women, 2011) / RCOG Green-top Guideline No. 34 (Ovarian cysts in postmenopausal women, 2016) / NICE NG12 (updated April 2026)' },
 
   { id:'overactive-bladder', title:'Overactive bladder', category:'Urology', icon:'🚻',
     overview:'A symptom syndrome of urinary urgency, usually with frequency and nocturia, with or without urgency incontinence, in the absence of infection or other obvious pathology. It is common, under-reported through embarrassment, and significantly affects quality of life — and most improve with conservative measures and bladder training.',
@@ -274,11 +274,11 @@
       'Refer to specialist (urology/urogynaecology/continence) for refractory symptoms — further options include botulinum toxin, percutaneous tibial nerve stimulation, and sacral neuromodulation',
       'Provide continence-service support, containment products as needed, and address the psychosocial impact'],
     referral:[
-      'Visible haematuria (age ≥45), or other features suggesting bladder cancer → urgent suspected-cancer (2WW) referral (NICE NG12)',
+      'Visible haematuria (age ≥45), or other features suggesting bladder cancer → urgent suspected-cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Refractory overactive bladder despite conservative treatment and medication → urology/urogynaecology/continence service',
       'Suspected underlying neurological cause, significant voiding difficulty, or high residual volume → urology',
       'Diagnostic uncertainty or significant impact → continence service'],
-    source:'NICE NG123 (Urinary incontinence and pelvic organ prolapse)' },
+    source:'NICE NG12 (updated April 2026)3 (Urinary incontinence and pelvic organ prolapse)' },
 
   { id:'osgood-schlatter', title:'Osgood-Schlatter disease', category:'Musculoskeletal', icon:'🦵',
     overview:'A common, benign cause of activity-related knee pain in growing, active children and adolescents — an overuse traction injury (osteochondrosis) at the tibial tuberosity where the patellar tendon inserts. It is self-limiting, resolving as the growth plate fuses; management is reassurance and activity modification.',
@@ -303,7 +303,7 @@
       'Persistent disabling symptoms despite conservative measures → physiotherapy/orthopaedics',
       'Diagnostic uncertainty → orthopaedics/MSK',
       'Suspected alternative serious cause → urgent investigation as appropriate'],
-    source:'NICE — Osgood-Schlatter disease' }
+    source:'Clinical practice (no NICE guideline); analgesia per BNF/BNFC' }
 
   );
 })();

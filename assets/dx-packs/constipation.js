@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Constipation (adult)
-   Shared-id triage + differential. NICE NG12 (colorectal) · secondary causes (drugs, metabolic, neuro).
+   Shared-id triage + differential. NICE NG12 (updated April 2026) (colorectal) · secondary causes (drugs, metabolic, neuro).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -28,8 +28,8 @@
 
   if (window.RGPTriage) RGPTriage.register('constipation-triage', {
     title: 'Constipation — red-flag triage',
-    subtitle: 'Tick features. Surfaces obstruction, colorectal 2WW and secondary-cause pathways.',
-    guideline: 'NICE NG12',
+    subtitle: 'Tick features. Surfaces obstruction, FIT / colorectal suspected cancer and secondary-cause pathways.',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired — manage as primary constipation: fibre, fluids, mobility, laxatives (bulk → osmotic → stimulant); review meds; work the differential below.',
     rules: [
@@ -38,22 +38,22 @@
         label: 'Possible bowel obstruction — vomiting, distension, no flatus, severe pain',
         action: 'Same-day admission — examination, bloods, abdominal imaging.',
         patientPhrase: '"This pattern can mean the bowel is blocked — you need urgent assessment in hospital today."',
-        source: 'BNF · NICE NG12',
+        source: 'BNF · NICE NG12 (updated April 2026)',
         when: i => i.obstruction,
       },
       {
         id: 'crc_2ww', tier: 'cancer',
-        label: 'Age ≥60 with change in bowel habit, or any age with rectal bleeding + change / mass / anaemia — colorectal 2WW',
-        action: 'Lower GI 2WW ± FIT.',
+        label: 'Change in bowel habit at any adult age, rectal bleeding or unexplained weight loss at 50+, rectal bleeding + weight loss under 50, or a mass / anaemia — FIT, then colorectal suspected cancer pathway',
+        action: 'Offer FIT (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56): FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral. Rectal mass → refer without FIT. Negative FIT: safety-net and refer if clinical concern persists.',
         patientPhrase: '"A change in bowel pattern at your age needs a fast referral to rule out a bowel cause."',
-        source: 'NICE NG12 §1.3', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
-        when: i => (i.age != null && i.age >= 60 && i.new_change) || i.mass_anaemia || (i.rectal_bleed && (i.new_change || i.weight_loss)),
+        source: 'NICE NG12 (updated April 2026) §1.3', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        when: i => (i.new_change && !(i.age != null && i.age < 18)) || i.mass_anaemia || (i.rectal_bleed && (i.new_change || i.weight_loss || (i.age != null && i.age >= 50))) || (i.weight_loss && i.age != null && i.age >= 50),
       },
       {
         id: 'metabolic', tier: 'urgent',
         label: 'Possible secondary cause — thyroid / calcium clues',
         action: 'Check TFT, calcium, U&E, glucose; treat underlying cause.',
-        source: 'BNF · NICE NG12',
+        source: 'BNF · NICE NG12 (updated April 2026)',
         when: i => i.hypothyroid_sx || i.hypercalc_sx,
       },
       {
@@ -67,19 +67,19 @@
         id: 'impaction', tier: 'urgent',
         label: 'Faecal impaction with overflow soiling',
         action: 'Disimpaction regimen (high-dose macrogol); review.',
-        source: 'BNF · NICE NG12',
+        source: 'BNF · NICE NG12 (updated April 2026)',
         when: i => i.overflow,
       },
       {
         id: 'primary', tier: 'routine',
         label: 'Primary constipation, no red flags',
         action: 'Lifestyle + laxative ladder; review meds; toileting advice.',
-        source: 'BNF · NICE NG12',
+        source: 'BNF · NICE NG12 (updated April 2026)',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
       
     ],
   });
@@ -87,7 +87,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('constipation-dx', {
     title: 'Constipation — differential diagnosis',
     subtitle: 'The engine ranks primary, drug-induced, metabolic and outlet causes, and always surfaces colorectal cancer / obstruction when their triggers fire.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I just can't go properly, doctor — I'm straining, bloated, and it's been weeks.",
     inputs: INPUTS,
     diagnoses: [
@@ -116,8 +116,8 @@
         patientPhrase: 'The muscles that coordinate emptying are not relaxing properly. Targeted physiotherapy retrains them.',
         guideUrl: '' },
 
-      { id: 'crc', name: 'Colorectal cancer / obstruction', summary: 'New change in habit ≥60, rectal bleeding, weight loss, mass, obstruction', baseline: 1, category: 'cant-miss',
-        keyExam: 'Abdominal / rectal mass, distension, cachexia.', nextIx: '\u26A1 Lower GI 2WW (NICE NG12); same-day admission if obstruction features.',
+      { id: 'crc', name: 'Colorectal cancer / obstruction', summary: 'New change in habit (any adult age), rectal bleeding, weight loss, mass, obstruction', baseline: 1, category: 'cant-miss',
+        keyExam: 'Abdominal / rectal mass, distension, cachexia.', nextIx: '\u26A1 FIT first (NICE NG12 (updated April 2026)); FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral; rectal mass → refer directly; same-day admission if obstruction features.',
         patientPhrase: 'A recent change in bowel habit at your age needs an urgent specialist look to rule out a bowel cause.',
         guideUrl: '', redFlagAction: '\u26A1 2WW / admit if obstructed' }
     ],
@@ -154,7 +154,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

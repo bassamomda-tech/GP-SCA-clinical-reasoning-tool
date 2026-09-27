@@ -1,8 +1,8 @@
-/* Differential — Chest pain · NICE CG95 / NG185 · ESC 2023 */
+/* Differential — Chest pain · NICE CG95 / NG185 · ESC 2023 (international) */
 RGPDiagnostic.register('chest-pain', {
   title: 'Chest pain — what is causing it?',
   subtitle: 'The differential ranks cardiac (ACS / stable angina / pericarditis) vs respiratory (PE / pneumothorax) vs GI (GORD / oesophageal spasm) vs MSK / psychogenic — plus can\'t-miss aortic dissection.',
-  guideline: 'NICE CG95 / NG185 · ESC 2023',
+  guideline: 'NICE CG95 / NG185 · ESC 2023 (international)',
   patientPresenting: "Central chest tightness on walking uphill. Eases at rest. Smoked 25 pack-years. Dad died of MI at 58. Wants to know if it's the heart or just heartburn.",
   inputs: [
     { group:'Demographics', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
@@ -64,7 +64,7 @@ RGPDiagnostic.register('chest-pain', {
       guideUrl: '' },
     { id:'gord', name:'GORD / oesophageal spasm', summary:'Retrosternal burning ± acid regurgitation, worse lying', baseline:10, category:'common',
       keyExam:'Often normal. Epigastric tenderness sometimes.',
-      nextIx:'4–8 week PPI trial. OGD if dysphagia / weight loss / age >55 + alarm features.',
+      nextIx:'4–8 week PPI trial. OGD / referral per NICE NG12 (updated April 2026): dysphagia, or age 55+ with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral; bleeding → same-day assessment.',
       guideUrl: 'https://www.nice.org.uk/guidance/cg184', guideLabel: 'NICE CG184', caseLink:'../cases/dyspepsia.html' },
     { id:'mskl', name:'Musculoskeletal (costochondritis / Tietze)', summary:'Reproducible on palpation; recent activity / cough', baseline:8, category:'common',
       keyExam:'Localised tenderness on costochondral junctions. Pain reproduced by arm movement.',

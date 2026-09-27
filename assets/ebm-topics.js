@@ -1,7 +1,7 @@
 /* ============================================================
    Reasoning GP — Evidence-Based Medicine: 50+ high-yield topics
    The interventions a UK GP / SCA candidate is asked about most.
-   Sourced from TheNNT, Cochrane, NICE, GPevidence and the major
+   Sourced from TheNNT, Cochrane, numbered NICE guidelines, GPevidence and the major
    landmark trials. Educational synthesis — verify against the primary
    source and current NICE/BNF before acting.
 
@@ -26,7 +26,7 @@ window.EBM_TOPICS = [
   { id:'statin-secondary', cat:'Cardiovascular', name:'Statins — secondary prevention (known CVD)', verdict:'help',
     numbers:'NNT ≈ 39 over 5 yrs to prevent one major vascular event; ≈ 83 to prevent one death.',
     detail:'In patients with established coronary disease, stroke or PAD the baseline risk is high, so the same proportional LDL benefit translates into a large absolute gain. Landmark trials (4S, HPS, PROVE-IT, IMPROVE-IT) show high-intensity statins reduce recurrent MI, stroke, revascularisation and cardiovascular death, with a clear all-cause mortality benefit in this group. Lower is better: adding ezetimibe (or a PCSK9 inhibitor) for those not at target gives further proportional risk reduction. This is one of the highest-value long-term interventions in primary care and should rarely be stopped for mild muscle symptoms without a structured re-challenge.',
-    note:'High-intensity atorvastatin 80 mg after MI/stroke/PAD. Aim for ≥40% LDL reduction; add ezetimibe if not at target.',
+    note:'High-intensity atorvastatin 80 mg after MI/stroke/PAD. Aim for a >40% reduction in non-HDL cholesterol (NICE NG238); add ezetimibe if not at target.',
     src:{label:'TheNNT', url:'https://thennt.com/nnt/statins-for-heart-disease-prevention-with-known-heart-disease/'} },
 
   { id:'aspirin-primary', cat:'Cardiovascular', name:'Aspirin — primary prevention', verdict:'harm',
@@ -43,8 +43,8 @@ window.EBM_TOPICS = [
 
   { id:'doac-af', cat:'Cardiovascular', name:'Anticoagulation (DOAC) in AF', verdict:'help',
     numbers:'NNT ≈ 25/yr to prevent one stroke (rises with CHA₂DS₂-VASc); NNH ≈ 80–100 for a major bleed.',
-    detail:'Anticoagulation reduces AF-related ischaemic stroke by roughly two-thirds — far more effective than aspirin, which is no longer recommended for stroke prevention in AF. The four pivotal DOAC trials (RE-LY, ROCKET-AF, ARISTOTLE, ENGAGE AF) showed DOACs are at least as effective as warfarin with significantly less intracranial haemorrhage and no INR monitoring, which is why NICE makes them first-line. Absolute benefit scales with CHA₂DS₂-VASc, so the decision is driven by that score; HAS-BLED/ORBIT flag modifiable bleeding risks (BP, alcohol, concomitant NSAID/antiplatelet) to optimise — not a reason to withhold anticoagulation.',
-    note:'DOAC first-line (NICE NG196). Offer if CHA₂DS₂-VASc ≥2 (men) / ≥3 (women); consider if 1. Address modifiable bleeding risk; don\u2019t use HAS-BLED to deny treatment.',
+    detail:'Anticoagulation reduces AF-related ischaemic stroke by roughly two-thirds — far more effective than aspirin, which is no longer recommended for stroke prevention in AF. The four pivotal DOAC trials (RE-LY, ROCKET-AF, ARISTOTLE, ENGAGE AF) showed DOACs are at least as effective as warfarin with significantly less intracranial haemorrhage and no INR monitoring, which is why NICE NG196 makes them first-line. Absolute benefit scales with CHA₂DS₂-VASc, so the decision is driven by that score; ORBIT (the NG196 tool) flags bleeding risk; address modifiable factors (BP, alcohol, concomitant NSAID/antiplatelet) to optimise — not a reason to withhold anticoagulation.',
+    note:'DOAC first-line (NICE NG196). Offer if CHA₂DS₂-VASc ≥2; consider for men with a score of 1 (NICE NG196). Assess bleeding risk with ORBIT and address modifiable factors; a high score is not a reason to withhold anticoagulation.',
     src:{label:'NICE NG196', url:'https://www.nice.org.uk/guidance/ng196'} },
 
   { id:'doac-vte', cat:'Cardiovascular', name:'Anticoagulation in DVT/PE', verdict:'help',
@@ -55,7 +55,7 @@ window.EBM_TOPICS = [
 
   { id:'antihtn', cat:'Cardiovascular', name:'Antihypertensives — CVD prevention', verdict:'help',
     numbers:'NNT ≈ 100/5 yrs (mild HTN, low risk) → far lower at higher risk. Larger effect on stroke than MI.',
-    detail:'Meta-analyses show each 10 mmHg fall in systolic BP reduces stroke by ~27% and coronary events by ~17%, with benefit across the spectrum of baseline risk. The absolute gain depends on starting risk: treating mild hypertension in an otherwise low-risk person prevents few events, whereas treating higher-risk patients (prior CVD, diabetes, CKD, older age) prevents many — hence NICE bases drug treatment on stage plus overall risk/target-organ damage. SPRINT suggested tighter control benefits selected high-risk patients but at the cost of more hypotension/AKI, so targets are individualised. Drug class matters less than the BP reduction achieved.',
+    detail:'Meta-analyses show each 10 mmHg fall in systolic BP reduces stroke by ~27% and coronary events by ~17%, with benefit across the spectrum of baseline risk. The absolute gain depends on starting risk: treating mild hypertension in an otherwise low-risk person prevents few events, whereas treating higher-risk patients (prior CVD, diabetes, CKD, older age) prevents many — hence NICE NG136 bases drug treatment on stage plus overall risk/target-organ damage. SPRINT suggested tighter control benefits selected high-risk patients but at the cost of more hypotension/AKI, so targets are individualised. Drug class matters less than the BP reduction achieved.',
     note:'Treat per NICE NG136. Target clinic BP <140/90 (<150/90 if ≥80). Biggest absolute benefit in higher baseline risk.',
     src:{label:'TheNNT', url:'https://thennt.com/nnt/anti-hypertensives-to-prevent-death-heart-attacks-and-strokes/'} },
 
@@ -68,8 +68,8 @@ window.EBM_TOPICS = [
   { id:'sglt2-hf', cat:'Cardiovascular', name:'SGLT2 inhibitor in heart failure', verdict:'help',
     numbers:'NNT ≈ 20 over ~2 yrs to prevent one HF hospitalisation/CV death — benefit across the EF spectrum.',
     detail:'SGLT2 inhibitors are the newest pillar of heart-failure care. DAPA-HF and EMPEROR-Reduced showed dapagliflozin and empagliflozin cut the combined risk of worsening heart failure and cardiovascular death in HFrEF regardless of diabetes status, and DELIVER/EMPEROR-Preserved then extended the benefit to preserved ejection fraction — the first therapy to do so convincingly. The effect appears within weeks and is additive to the other pillars. They are generally well tolerated; the main practical points are genital mycotic infections, the need for sick-day rules (euglycaemic DKA risk) and a small initial eGFR dip that is expected and reversible.',
-    note:'Add dapagliflozin/empagliflozin for HF regardless of diabetes (NICE). Counsel on sick-day rules and genital hygiene.',
-    src:{label:'NICE', url:'https://www.nice.org.uk/guidance/ta902'} },
+    note:'Add dapagliflozin/empagliflozin for HF regardless of diabetes (NICE NG106; TA679/TA773 HFrEF, TA902/TA929 HFpEF). Counsel on sick-day rules and genital hygiene.',
+    src:{label:'NICE NG106; TA679/TA773 HFrEF, TA902/TA929 HFpEF', url:'https://www.nice.org.uk/guidance/ta902'} },
 
   { id:'bb-hf', cat:'Cardiovascular', name:'Beta-blocker in HF (reduced EF)', verdict:'help',
     numbers:'NNT ≈ 23 over ~1 yr to prevent one death in HFrEF.',
@@ -80,20 +80,20 @@ window.EBM_TOPICS = [
   /* ---------------- Diabetes / Endocrine ---------------- */
   { id:'metformin', cat:'Diabetes & endocrine', name:'Metformin in type 2 diabetes', verdict:'help',
     numbers:'UKPDS: reduced diabetes-related death and MI in overweight patients; weight-neutral, no hypos.',
-    detail:'In the UKPDS overweight cohort metformin was the only glucose-lowering drug to reduce diabetes-related death and myocardial infarction, an effect that persisted in 10-year follow-up ("legacy effect"). It lowers HbA1c by around 1\u20131.5% without causing weight gain or hypoglycaemia, and is cheap and well established, which is why it remains first-line in NICE NG28. The main limits are GI intolerance (mitigated by modified-release and slow titration) and the need to withhold/stop as renal function falls (avoid if eGFR <30) and during acute illness to reduce lactic-acidosis risk. Long-term use can lower B12.',
-    note:'First-line in T2DM (NICE NG28). Use MR if GI upset; review dose by eGFR; check B12 if symptomatic.',
+    detail:'In the UKPDS overweight cohort metformin was the only glucose-lowering drug to reduce diabetes-related death and myocardial infarction, an effect that persisted in 10-year follow-up ("legacy effect"). It lowers HbA1c by around 1\u20131.5% without causing weight gain or hypoglycaemia, and is cheap and well established, which is why it remains first-line in NICE NG28 (since the February 2026 update, modified-release metformin with an SGLT2 inhibitor as dual first-line therapy for most). The main limits are GI intolerance (mitigated by modified-release and slow titration) and the need to withhold/stop as renal function falls (avoid if eGFR <30) and during acute illness to reduce lactic-acidosis risk. Long-term use can lower B12.',
+    note:'MR metformin with an SGLT2 inhibitor as dual first-line for most (NICE NG28, updated 18 Feb 2026). Use MR if GI upset; review dose by eGFR; check B12 if symptomatic.',
     src:{label:'NICE NG28', url:'https://www.nice.org.uk/guidance/ng28'} },
 
   { id:'sglt2-renal', cat:'Diabetes & endocrine', name:'SGLT2 inhibitor — CKD / CV protection', verdict:'help',
     numbers:'Reduces CKD progression, HF hospitalisation and CV death; favourable NNT in albuminuric CKD.',
-    detail:'Beyond glucose lowering, SGLT2 inhibitors protect the kidney and heart. CREDENCE (canagliflozin) and DAPA-CKD/EMPA-KIDNEY (dapagliflozin/empagliflozin) showed slowed progression to end-stage kidney disease, fewer cardiovascular events and reduced mortality in chronic kidney disease — and crucially the kidney benefit held even in people without diabetes. The mechanism is haemodynamic (reduced intraglomerular pressure), which also explains the small, expected, reversible early eGFR dip. NICE now recommends adding an SGLT2 inhibitor in CKD with albuminuria alongside an ACEi/ARB.',
-    note:'Add for T2DM with CVD/HF/CKD, and in CKD with ACR ≥3 mg/mmol regardless of diabetes (NICE NG203). Sick-day rules.',
+    detail:'Beyond glucose lowering, SGLT2 inhibitors protect the kidney and heart. CREDENCE (canagliflozin) and DAPA-CKD/EMPA-KIDNEY (dapagliflozin/empagliflozin) showed slowed progression to end-stage kidney disease, fewer cardiovascular events and reduced mortality in chronic kidney disease — and crucially the kidney benefit held even in people without diabetes. The mechanism is haemodynamic (reduced intraglomerular pressure), which also explains the small, expected, reversible early eGFR dip. NICE (NG203; TA775 dapagliflozin, TA942 empagliflozin) now recommends adding an SGLT2 inhibitor in CKD with albuminuria alongside an ACEi/ARB.',
+    note:'In T2DM: dual first-line with MR metformin for most adults, with or without CVD/HF/CKD (NICE NG28, updated Feb 2026). T2DM with CKD: offer if ACR >30 mg/mmol, consider if 3–30 (NICE NG203); CKD without diabetes: dapagliflozin if eGFR 25–75 and uACR ≥22.6 mg/mmol (NICE TA775; empagliflozin TA942). Sick-day rules.',
     src:{label:'NICE NG203', url:'https://www.nice.org.uk/guidance/ng203'} },
 
   { id:'glp1', cat:'Diabetes & endocrine', name:'GLP-1 receptor agonist', verdict:'help',
     numbers:'Reduces major adverse CV events in high-risk T2DM; substantial weight loss.',
     detail:'GLP-1 receptor agonists (e.g. semaglutide, liraglutide, dulaglutide) lower HbA1c, drive clinically meaningful weight loss and — in cardiovascular outcome trials such as LEADER and SUSTAIN-6 — reduced major adverse cardiovascular events in people with type 2 diabetes and established or high cardiovascular risk. They rarely cause hypoglycaemia alone. The dominant adverse effects are gastrointestinal (nausea, vomiting), mitigated by slow up-titration, and they should be paused for sick-days/dehydration. Semaglutide and tirzepatide are also licensed for weight management.',
-    note:'Option for T2DM with obesity/high CV risk per NICE criteria. Titrate slowly to limit GI effects.',
+    note:'NICE NG28 (updated Feb 2026): subcutaneous semaglutide (up to 1 mg weekly) is first-line alongside MR metformin + an SGLT2 inhibitor in established atherosclerotic CVD; consider a GLP-1 RA or tirzepatide in early-onset T2DM (diagnosed under 40); otherwise an option for T2DM with obesity per NG28 criteria. Titrate slowly to limit GI effects.',
     src:{label:'NICE NG28', url:'https://www.nice.org.uk/guidance/ng28'} },
 
   { id:'tight-glucose', cat:'Diabetes & endocrine', name:'Very tight glycaemic control', verdict:'nuance',
@@ -104,14 +104,14 @@ window.EBM_TOPICS = [
 
   { id:'levothyroxine-subclinical', cat:'Diabetes & endocrine', name:'Levothyroxine for subclinical hypothyroidism', verdict:'none',
     numbers:'No improvement in symptoms or quality of life in most trials (especially TSH <10, older adults).',
-    detail:'Subclinical hypothyroidism (raised TSH, normal free T4) is common and often over-treated. The TRUST trial and a large meta-analysis (JAMA 2018) found that giving levothyroxine to older adults with TSH below 10 produced no improvement in tiredness, mood, cognition or quality of life despite normalising TSH — patients felt no better. Treatment is therefore reserved for those most likely to benefit or progress: TSH persistently ≥10, symptomatic younger patients who are TPO-antibody positive, or women who are pregnant or planning pregnancy. Otherwise the right action is to recheck and monitor, avoiding lifelong medicalisation.',
-    note:'Treat if TSH ≥10, or symptomatic/antibody-positive/pre-pregnancy. Otherwise repeat in a few months and monitor.',
+    detail:'Subclinical hypothyroidism (raised TSH, normal free T4) is common and often over-treated. The TRUST trial and a large meta-analysis (JAMA 2018) found that giving levothyroxine to older adults with TSH below 10 produced no improvement in tiredness, mood, cognition or quality of life despite normalising TSH — patients felt no better. Treatment is therefore reserved for those most likely to benefit or progress (NICE NG145): consider levothyroxine if TSH is ≥10 on two tests 3 months apart, or a 6-month trial in symptomatic adults under 65 with TSH above range but <10 on two tests; TPO antibodies raise the risk of progression but are not themselves a treatment criterion, and pregnancy or planned pregnancy needs specialist input. Otherwise the right action is to recheck and monitor, avoiding lifelong medicalisation.',
+    note:'Consider treatment if TSH ≥10 on two tests 3 months apart, or a 6-month trial if symptomatic, under 65 and TSH above range but <10 (NICE NG145); pregnancy/pre-pregnancy needs specialist input. Otherwise repeat in a few months and monitor.',
     src:{label:'GPevidence', url:'https://gpevidence.org/'} },
 
   /* ---------------- Respiratory ---------------- */
   { id:'ics-asthma', cat:'Respiratory', name:'Inhaled corticosteroid in asthma', verdict:'help',
     numbers:'Major reduction in exacerbations and asthma deaths; the single most important asthma intervention.',
-    detail:'Inhaled corticosteroids treat the underlying airway inflammation, and observational and trial data show they substantially reduce exacerbations, hospital admissions and asthma death. The National Review of Asthma Deaths found most fatalities occurred in patients over-reliant on short-acting relievers with inadequate ICS — over-use of SABA is a marker of risk, not control. The 2024 BTS/NICE/SIGN guidance therefore abandons SABA-only treatment in favour of ICS-formoterol regimens (anti-inflammatory reliever, or MART), which cut severe exacerbations compared with SABA reliever strategies. Adherence and inhaler technique are the highest-yield things to check.',
+    detail:'Inhaled corticosteroids treat the underlying airway inflammation, and observational and trial data show they substantially reduce exacerbations, hospital admissions and asthma death. The National Review of Asthma Deaths found most fatalities occurred in patients over-reliant on short-acting relievers with inadequate ICS — over-use of SABA is a marker of risk, not control. The 2024 joint NICE/BTS/SIGN guideline (NG245) therefore abandons SABA-only treatment in favour of ICS-formoterol regimens (anti-inflammatory reliever, or MART), which cut severe exacerbations compared with SABA reliever strategies. Adherence and inhaler technique are the highest-yield things to check.',
     note:'Never SABA alone. Use ICS-formoterol (AIR/MART) per NICE NG245; check adherence + technique first at every review.',
     src:{label:'NICE NG245', url:'https://www.nice.org.uk/guidance/ng245'} },
 
@@ -130,7 +130,7 @@ window.EBM_TOPICS = [
   { id:'oseltamivir', cat:'Respiratory', name:'Oseltamivir (Tamiflu) for influenza', verdict:'none',
     numbers:'Shortens symptoms by ~½–1 day in healthy adults; NNH for nausea/vomiting. No solid reduction in hospitalisation.',
     detail:'The 2014 Cochrane review (which obtained the full clinical study reports) concluded oseltamivir reduces the duration of influenza symptoms by roughly half a day to a day in healthy adults, with no reliable evidence that it reduces hospitalisations or serious complications, and with a measurable increase in nausea and vomiting. The headline claims that drove government stockpiling were not supported once unpublished data were included. There remains a reasonable case for use in genuinely at-risk groups during confirmed circulating influenza, but it is not a treatment for routine healthy adults.',
-    note:'Reserve for at-risk groups during circulating flu (UKHSA/NICE), started early. Not for routine healthy adults.',
+    note:'Reserve for at-risk groups during circulating flu (UKHSA influenza guidance; NICE TA168), started early. Not for routine healthy adults.',
     src:{label:'TheNNT', url:'https://thennt.com/nnt/neuraminidase-inhibitors-tamiflu-relenza-influenza/'} },
 
   /* ---------------- Infections / antibiotics ---------------- */
@@ -148,7 +148,7 @@ window.EBM_TOPICS = [
 
   { id:'abx-sinusitis', cat:'Infections', name:'Antibiotics for acute sinusitis', verdict:'none',
     numbers:'Minimal benefit; most improve without antibiotics by ~2–3 weeks.',
-    detail:'Acute sinusitis is usually viral and resolves over 2\u20133 weeks. Cochrane and the NICE review found antibiotics confer little benefit even when symptoms have lasted ten days, because purulent nasal discharge and facial pain do not reliably indicate a bacterial cause. The evidence supports symptomatic management and, for symptoms persisting beyond about ten days, a high-dose intranasal corticosteroid rather than antibiotics. A back-up antibiotic can be offered for deterioration, with immediate treatment only for systemically very unwell patients or those at risk of serious complications.',
+    detail:'Acute sinusitis is usually viral and resolves over 2\u20133 weeks. Cochrane and the NICE NG79 evidence review found antibiotics confer little benefit even when symptoms have lasted ten days, because purulent nasal discharge and facial pain do not reliably indicate a bacterial cause. The evidence supports symptomatic management and, for symptoms persisting beyond about ten days, a high-dose intranasal corticosteroid rather than antibiotics. A back-up antibiotic can be offered for deterioration, with immediate treatment only for systemically very unwell patients or those at risk of serious complications.',
     note:'No/back-up antibiotic; high-dose nasal steroid if symptoms ≥10 days (NICE NG79).',
     src:{label:'NICE NG79', url:'https://www.nice.org.uk/guidance/ng79'} },
 
@@ -216,14 +216,14 @@ window.EBM_TOPICS = [
   /* ---------------- Neurology / headache ---------------- */
   { id:'triptan', cat:'Neurology', name:'Triptans for acute migraine', verdict:'help',
     numbers:'NNT ≈ 3–6 for pain relief at 2 h; combining with an NSAID improves response.',
-    detail:'Triptans are selective 5-HT1 agonists with a strong evidence base for acute migraine, achieving pain freedom or relief at two hours with numbers-needed-to-treat around 3\u20136 depending on agent and dose. Combining a triptan with an NSAID (e.g. sumatriptan plus naproxen) outperforms either alone. NICE recommends a triptan, alone or with an NSAID/antiemetic, for moderate-to-severe attacks. The key caveats are vascular contraindications (ischaemic heart disease, uncontrolled hypertension) and medication-overuse headache, so triptan use should be limited to fewer than 10 days per month.',
-    note:'Triptan ± NSAID/antiemetic for moderate–severe migraine (NICE). Limit to <10 days/month; avoid in vascular disease.',
+    detail:'Triptans are selective 5-HT1 agonists with a strong evidence base for acute migraine, achieving pain freedom or relief at two hours with numbers-needed-to-treat around 3\u20136 depending on agent and dose. Combining a triptan with an NSAID (e.g. sumatriptan plus naproxen) outperforms either alone. NICE CG150 recommends a triptan, alone or with an NSAID/antiemetic, for moderate-to-severe attacks. The key caveats are vascular contraindications (ischaemic heart disease, uncontrolled hypertension) and medication-overuse headache, so triptan use should be limited to fewer than 10 days per month.',
+    note:'Triptan ± NSAID/antiemetic for moderate–severe migraine (NICE CG150). Limit to <10 days/month; avoid in vascular disease.',
     src:{ label:'NICE CG150 — Headaches', url:'https://www.nice.org.uk/guidance/cg150' } },
 
   { id:'migraine-prophylaxis', cat:'Neurology', name:'Migraine prophylaxis (propranolol/topiramate/amitriptyline)', verdict:'help',
     numbers:'≈ 50% reduction in attack frequency in responders.',
     detail:'When migraines are frequent (roughly four or more headache days a month) or disabling, prophylaxis roughly halves attack frequency in responders. Propranolol, topiramate and amitriptyline are the established first-line options with trial support; candesartan is a useful alternative, and anti-CGRP monoclonals are reserved for refractory cases under specialist care. Prophylaxis needs an adequate trial (6\u20138 weeks at target dose) before judging effect, and a headache diary helps track response. Topiramate is teratogenic and reduces hormonal contraceptive efficacy, so reliable contraception must be ensured in those who could become pregnant.',
-    note:'Offer when ≥4 attacks/month or disabling; trial 6–8 weeks. Topiramate teratogenic — ensure reliable contraception.',
+    note:'Offer when ≥4 attacks/month or disabling; trial 6–8 weeks. Topiramate teratogenic — ensure reliable contraception (MHRA topiramate Pregnancy Prevention Programme, June 2024).',
     src:{ label:'NICE CG150 — Headaches', url:'https://www.nice.org.uk/guidance/cg150' } },
 
   /* ---------------- Gastrointestinal ---------------- */
@@ -235,7 +235,7 @@ window.EBM_TOPICS = [
 
   { id:'hpylori', cat:'Gastrointestinal', name:'H. pylori eradication', verdict:'help',
     numbers:'Cures most peptic ulcers; very favourable NNT for ulcer healing and preventing recurrence.',
-    detail:'Eradicating Helicobacter pylori transformed peptic ulcer disease from a chronic relapsing condition into a curable one: clearing the organism heals ulcers and dramatically reduces recurrence, and it also reduces the long-term risk of gastric cancer. NICE recommends a test-and-treat approach for uninvestigated dyspepsia, using a 7-day triple regimen (a PPI plus two antibiotics). Two practical points improve accuracy and success: stop PPIs for two weeks before testing to avoid false negatives, and confirm eradication after treatment where appropriate (e.g. following a bleeding ulcer).',
+    detail:'Eradicating Helicobacter pylori transformed peptic ulcer disease from a chronic relapsing condition into a curable one: clearing the organism heals ulcers and dramatically reduces recurrence, and it also reduces the long-term risk of gastric cancer. NICE CG184 recommends a test-and-treat approach for uninvestigated dyspepsia, using a 7-day triple regimen (a PPI plus two antibiotics). Two practical points improve accuracy and success: stop PPIs for two weeks before testing to avoid false negatives, and confirm eradication after treatment where appropriate (e.g. following a bleeding ulcer).',
     note:'Test-and-treat for dyspepsia; 7-day triple therapy. Stop PPI 2 weeks before testing; confirm cure when indicated.',
     src:{label:'NICE CG184', url:'https://www.nice.org.uk/guidance/cg184'} },
 
@@ -254,7 +254,7 @@ window.EBM_TOPICS = [
   /* ---------------- Mental health ---------------- */
   { id:'ssri-moderate', cat:'Mental health', name:'Antidepressants — moderate/severe depression', verdict:'help',
     numbers:'NNT ≈ 6–8 for response over placebo in moderate–severe depression.',
-    detail:'For moderate-to-severe depression antidepressants clearly beat placebo: the large Cipriani network meta-analysis (2018, 522 trials) confirmed all studied antidepressants were more effective than placebo, with response NNTs around 6\u20138 and efficacy increasing with depression severity. NICE NG222 offers antidepressants and/or psychological therapy as comparable first-line options, with patient preference central. Key practical points are reviewing early (within 1\u20132 weeks, sooner if under 30 or higher risk) for emergent agitation or suicidality, allowing ~4 weeks for full effect, and continuing for at least six months after remission to prevent relapse.',
+    detail:'For moderate-to-severe depression antidepressants clearly beat placebo: the large Cipriani network meta-analysis (2018, 522 trials) confirmed all studied antidepressants were more effective than placebo, with response NNTs around 6\u20138 and efficacy increasing with depression severity. NICE NG222 offers antidepressants and/or psychological therapy as comparable first-line options, with patient preference central. Key practical points are reviewing early (within 2 weeks; within 1 week if aged 18\u201325 or at increased risk of suicide, NICE NG222) for emergent agitation or suicidality, allowing ~4 weeks for full effect, and continuing for at least six months after remission to prevent relapse.',
     note:'Offer SSRI and/or therapy (NICE NG222). Review at 1–2 weeks; continue ≥6 months after remission; taper to stop.',
     src:{label:'NICE NG222', url:'https://www.nice.org.uk/guidance/ng222'} },
 
@@ -311,7 +311,7 @@ window.EBM_TOPICS = [
   { id:'bisphosphonates', cat:'Prevention & bone', name:'Bisphosphonates for osteoporosis', verdict:'help',
     numbers:'NNT ≈ 20–100 over ~3 yrs to prevent one vertebral fracture (higher risk → lower NNT); hip-fracture benefit in osteoporosis.',
     detail:'Bisphosphonates (alendronate first-line) reduce vertebral fractures robustly and hip/non-vertebral fractures in those with established osteoporosis, with the absolute benefit greatest in the highest-risk patients — hence treatment is directed by FRAX and DEXA rather than age alone. The much-publicised harms, atypical femoral fractures and osteonecrosis of the jaw, are real but rare and are outweighed by fractures prevented in appropriately selected patients. Adherence is a practical limitation (dosing rules, GI upset), and after about 3\u20135 years a treatment review or "drug holiday" is considered in lower-risk patients to balance ongoing benefit against cumulative risk.',
-    note:'Offer when FRAX/DEXA indicates (NICE). Counsel on rare AFF/ONJ; review need after ~3–5 yrs.',
+    note:'Offer when FRAX/DEXA indicates (NICE TA464 / NOGG 2021). Counsel on rare AFF/ONJ; review need after ~3–5 yrs.',
     src:{label:'TheNNT', url:'https://thennt.com/nnt/bisphosphonates-osteoporosis/'} },
 
   { id:'flu-vaccine', cat:'Prevention & bone', name:'Influenza vaccine in older / at-risk adults', verdict:'help',
@@ -328,8 +328,8 @@ window.EBM_TOPICS = [
 
   { id:'weight-glp1', cat:'Prevention & bone', name:'GLP-1 / tirzepatide for obesity', verdict:'help',
     numbers:'Semaglutide ~15%, tirzepatide ~20% mean body-weight loss; improves cardiometabolic risk factors.',
-    detail:'The incretin-based therapies have changed obesity pharmacotherapy. In the STEP programme semaglutide produced around 15% mean weight loss, and SURMOUNT showed tirzepatide achieving roughly 20% — figures previously only seen with bariatric surgery — alongside improvements in blood pressure, glycaemia and lipids, and (in SELECT) a reduction in cardiovascular events in people with obesity and established cardiovascular disease. The main caveats are gastrointestinal side-effects, the need for slow titration, cost and access via NICE/specialist criteria, and substantial weight regain when treatment stops, so they are best framed as long-term therapy rather than a short course.',
-    note:'Option within NICE/specialist criteria for obesity with comorbidity. Weight regain on stopping — frame as long-term; titrate slowly.',
-    src:{label:'NICE', url:'https://www.nice.org.uk/guidance/ta875'} }
+    detail:'The incretin-based therapies have changed obesity pharmacotherapy. In the STEP programme semaglutide produced around 15% mean weight loss, and SURMOUNT showed tirzepatide achieving roughly 20% — figures previously only seen with bariatric surgery — alongside improvements in blood pressure, glycaemia and lipids, and (in SELECT) a reduction in cardiovascular events in people with obesity and established cardiovascular disease. The main caveats are gastrointestinal side-effects, the need for slow titration, cost and access via NICE TA875 (semaglutide) / TA1026 (tirzepatide) / NG246 and specialist criteria, and substantial weight regain when treatment stops, so they are best framed as long-term therapy rather than a short course.',
+    note:'Option within NICE TA875 / TA1026 and specialist criteria for obesity with comorbidity. Weight regain on stopping — frame as long-term; titrate slowly.',
+    src:{label:'NICE TA875 (semaglutide) / TA1026 (tirzepatide) / NG246', url:'https://www.nice.org.uk/guidance/ta875'} }
 
 ];

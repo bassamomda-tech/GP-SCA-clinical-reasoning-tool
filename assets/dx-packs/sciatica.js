@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Sciatica (lumbar radiculopathy)
-   Shared-id triage + differential. NICE NG59 · NICE.
+   Shared-id triage + differential. NICE NG59.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -35,7 +35,7 @@
         id: 'serious', tier: 'cancer',
         label: 'Cancer / infection features',
         action: 'Urgent spinal imaging ± 2WW; admission if infection.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.cancer_immuno,
       },
       {

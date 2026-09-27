@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 11: G topics)
    NHS conditions A–Z (letter G) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -25,10 +25,10 @@
       'Manage risk factors and support healthy, gradual weight management'],
     referral:[
       'Acute cholecystitis, ascending cholangitis (RUQ pain + fever + jaundice), or gallstone pancreatitis → emergency admission',
-      'Painless obstructive jaundice, or jaundice with weight loss/an abdominal mass → urgent direct-access imaging and the suspected pancreatic/biliary cancer pathway (NICE NG12)',
+      'Painless obstructive jaundice, or jaundice with weight loss/an abdominal mass → urgent direct-access imaging and the suspected pancreatic/biliary cancer pathway (NICE NG12 (updated April 2026))',
       'Symptomatic gallstones/biliary colic → elective surgical referral for cholecystectomy',
       'Suspected common-bile-duct stones (abnormal LFTs/dilated ducts) → MRCP/ERCP via specialist'],
-    source:'NICE CG188 (Gallstone disease) / NICE NG12' },
+    source:'NICE CG188 (Gallstone disease) / NICE NG12 (updated April 2026)' },
 
   { id:'gallbladder-cancer', title:'Gallbladder and biliary tract cancer', category:'Gastroenterology', icon:'🎗️',
     overview:'Uncommon but aggressive cancers of the gallbladder and bile ducts (cholangiocarcinoma), usually presenting late with painless obstructive jaundice. Many are found incidentally at cholecystectomy. Recognising painless jaundice and weight loss as red flags, and acting urgently, gives the best chance of timely diagnosis.',
@@ -49,11 +49,11 @@
       'Ensure good supportive and palliative care involvement early given the often poor prognosis',
       'For gallbladder cancer found incidentally at cholecystectomy, ensure specialist review for further management'],
     referral:[
-      'Painless obstructive jaundice, or jaundice with weight loss, or an upper-abdominal mass → urgent direct-access imaging and the suspected hepatobiliary/pancreatic cancer pathway (NICE NG12) — consider urgent referral for adults aged 40+ with jaundice',
+      'Painless obstructive jaundice, or jaundice with weight loss, or an upper-abdominal mass → urgent direct-access imaging and the suspected hepatobiliary/pancreatic cancer pathway (NICE NG12 (updated April 2026)) — consider urgent referral for adults aged 40+ with jaundice',
       'Suspected/confirmed biliary tract cancer → hepatobiliary MDT',
       'Biliary obstruction needing decompression → ERCP/interventional radiology',
       'Advanced/incurable disease → oncology + palliative care'],
-    source:'NICE NG12 / hepatobiliary cancer guidance' },
+    source:'NICE NG12 (updated April 2026) / hepatobiliary cancer guidance' },
 
   { id:'gangrene', title:'Gangrene', category:'General', icon:'🦶',
     overview:'Death of body tissue from loss of blood supply (dry/wet gangrene) or serious infection (gas gangrene, necrotising infection). It is a surgical emergency: the priorities are restoring perfusion, controlling infection, and recognising rapidly spreading, life-threatening necrotising infection that needs immediate surgery.',
@@ -103,10 +103,10 @@
       'Suspected haemolytic uraemic syndrome (child, bloody diarrhoea, pallor, reduced urine) → emergency admission',
       'Persistent (>~2 weeks), bloody, or travel-related diarrhoea, or systemic illness → investigate ± infectious diseases (consider non-infective causes such as IBD/colorectal cancer in older adults)',
       'Notify public health for notifiable causes/outbreaks'],
-    source:'NICE — Gastroenteritis / UKHSA' },
+    source:'NICE CG84 (Diarrhoea and vomiting in under 5s) / UKHSA' },
 
   { id:'gord', title:'Gastro-oesophageal reflux disease (GORD)', category:'Gastroenterology', icon:'🔥',
-    overview:'Reflux of stomach contents causing troublesome heartburn and regurgitation, and sometimes oesophagitis. It is very common and usually managed well in primary care, but the essential discipline is recognising "ALARM"/dysphagia features that mandate urgent endoscopy to exclude oesophageal cancer.',
+    overview:'Reflux of stomach contents causing troublesome heartburn and regurgitation, and sometimes oesophagitis. It is very common and usually managed well in primary care, but the essential discipline is recognising "ALARM"/dysphagia features that mandate an urgent suspected cancer pathway referral to exclude oesophageal cancer.',
     features:[
       'Heartburn (retrosternal burning, often after meals/lying down) and acid regurgitation are the classic symptoms',
       'Other features: water brash, an acid taste, nocturnal cough, hoarseness, and a globus sensation; reflux can trigger asthma-like symptoms',
@@ -115,7 +115,7 @@
       'Complications: oesophagitis, stricture, and Barrett’s oesophagus (a pre-malignant metaplasia needing surveillance)',
       'Diagnosis is usually clinical; endoscopy is reserved for alarm features, treatment failure, or surveillance'],
     management:[
-      'Address dysphagia or any ALARM feature first — these mandate urgent endoscopy regardless of treatment response',
+      'Address dysphagia or any ALARM feature first — these mandate urgent referral (for dysphagia, a suspected cancer pathway referral under NICE NG12 (updated April 2026)) regardless of treatment response',
       'Lifestyle advice: weight loss if overweight, smaller/earlier evening meals, reduce alcohol/caffeine, stop smoking, and raise the head of the bed; review culprit drugs',
       'Offer a full-dose proton pump inhibitor (PPI) for 4–8 weeks as the mainstay; antacids/alginates for symptom relief',
       'Step down to the lowest effective PPI dose or on-demand treatment once controlled; review long-term PPI use periodically',
@@ -124,11 +124,11 @@
       'Manage Barrett’s oesophagus with endoscopic surveillance per specialist guidance',
       'Surgery (fundoplication) is an option for selected patients with proven, refractory, or volume reflux'],
     referral:[
-      'Dysphagia (any age), or aged 55+ with weight loss plus upper abdominal pain/reflux/dyspepsia → urgent direct-access upper-GI endoscopy for suspected oesophago-gastric cancer (NICE NG12, 2WW)',
+      'Dysphagia (any age), or aged 55+ with weight loss plus upper abdominal pain/reflux/dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026), 2WW; this replaced urgent direct-access endoscopy)',
       'GI bleeding (haematemesis/melaena) → emergency admission',
       'Refractory symptoms despite optimal treatment, or for surveillance of Barrett’s → gastroenterology',
       'Consideration of anti-reflux surgery → upper-GI surgery'],
-    source:'NICE NG12 / NICE CG184 (Dyspepsia & GORD)' },
+    source:'NICE NG12 (updated April 2026) / NICE CG184 (Dyspepsia & GORD)' },
 
   { id:'genital-herpes', title:'Genital herpes', category:'Infectious diseases', icon:'🦠',
     overview:'A sexually transmitted infection caused by herpes simplex virus (HSV-1 or HSV-2) that establishes latency and recurs. A first episode can be severe; recurrences are usually milder. Key issues are accurate diagnosis, symptom control, sensitive counselling, and the specific risks in pregnancy.',
@@ -153,7 +153,7 @@
       'Urinary retention, severe systemic illness, or immunocompromise → urgent assessment/admission',
       'Frequent/severe recurrences or diagnostic uncertainty → GUM/sexual-health service',
       'Suspected neonatal herpes (unwell neonate of an affected mother) → emergency paediatrics'],
-    source:'BASHH / NICE — Herpes simplex (genital)' },
+    source:'BASHH genital herpes guideline' },
 
   { id:'genital-warts', title:'Genital warts', category:'Infectious diseases', icon:'🦠',
     overview:'Benign anogenital lumps caused by human papillomavirus (usually low-risk types 6 and 11), the commonest viral STI. They are harmless but distressing; the high-risk oncogenic HPV types (16/18) that cause cancers are different. HPV vaccination has substantially reduced incidence.',
@@ -178,7 +178,7 @@
       'Diagnostic uncertainty, atypical/pigmented or bleeding lesions, or treatment failure → GUM/dermatology (exclude other pathology, including malignancy)',
       'Pregnancy or significant immunosuppression → specialist-guided management',
       'Internal (cervical/anal/urethral) warts → relevant specialist'],
-    source:'BASHH / NICE — Warts (anogenital)' },
+    source:'BASHH anogenital warts guideline' },
 
   { id:'rubella', title:'German measles (rubella)', category:'Infectious diseases', icon:'🦠',
     overview:'A usually mild viral infection — but one with devastating consequences if it infects a non-immune woman in early pregnancy (congenital rubella syndrome). It is rare in the UK thanks to MMR vaccination. The overriding priority is protecting pregnancy and supporting high vaccine uptake.',
@@ -203,7 +203,7 @@
       'Confirmed/suspected congenital rubella → paediatrics + specialist services',
       'Notify public health (notifiable disease)',
       'Non-immune women → offer MMR (outside pregnancy) and document immunity'],
-    source:'UKHSA / Green Book / NICE — Rubella' },
+    source:'UKHSA / Green Book chapter 28 (rubella)' },
 
   { id:'glandular-fever', title:'Glandular fever (infectious mononucleosis)', category:'Infectious diseases', icon:'🦠',
     overview:'A common viral illness, usually caused by Epstein-Barr virus, classically in adolescents and young adults. It is self-limiting but can cause prolonged fatigue and specific complications — notably splenic rupture (hence sport restriction) and a florid rash if amoxicillin is given.',
@@ -228,7 +228,7 @@
       'Airway compromise from tonsillar swelling → emergency ENT assessment',
       'Marked jaundice/hepatitis, severe or atypical illness, or diagnostic doubt → assessment as appropriate',
       'Very prolonged fatigue → reassess and exclude other causes'],
-    source:'NICE — Glandular fever (infectious mononucleosis)' },
+    source:'Clinical practice summary' },
 
   { id:'glaucoma', title:'Glaucoma', category:'Ophthalmology', icon:'👁️',
     overview:'A group of eye diseases that damage the optic nerve, usually associated with raised intraocular pressure, causing progressive, irreversible visual-field loss. Chronic open-angle glaucoma is symptomless until advanced — so screening matters — while acute angle-closure glaucoma is a painful sight-threatening emergency.',
@@ -278,7 +278,7 @@
       'Suspected glomerulonephritis (significant proteinuria/haematuria with abnormal kidney function or hypertension) → nephrology',
       'Nephrotic syndrome → nephrology (and manage thrombotic/infection risk)',
       'Suspected systemic vasculitis/lupus → nephrology + relevant specialty'],
-    source:'NICE / renal association guidance' },
+    source:'UK Kidney Association guidance' },
 
   { id:'goitre', title:'Goitre', category:'Endocrine & metabolic', icon:'🦋',
     overview:'An enlargement of the thyroid gland, which may be diffuse or nodular and associated with normal, over- or under-active thyroid function. Most goitres are benign, but the priorities are assessing thyroid function, recognising compressive symptoms, and identifying the features of a nodule that warrant exclusion of thyroid cancer.',
@@ -299,11 +299,11 @@
       'Address iodine status where relevant and review in pregnancy (goitre/thyroid function can change)',
       'Provide information and arrange appropriate follow-up/monitoring'],
     referral:[
-      'A rapidly enlarging, hard, or fixed thyroid lump, an unexplained thyroid lump, hoarseness with a thyroid mass, cervical lymphadenopathy, or a thyroid nodule in a child → urgent suspected thyroid-cancer referral (NICE NG12)',
+      'A rapidly enlarging, hard, or fixed thyroid lump, an unexplained thyroid lump, hoarseness with a thyroid mass, cervical lymphadenopathy, or a thyroid nodule in a child → urgent suspected thyroid-cancer referral (NICE NG12 (updated April 2026))',
       'Compressive symptoms (dysphagia, stridor, breathing difficulty) → urgent ENT/endocrine-surgery assessment',
       'Nodular goitre/solitary nodule → endocrinology/ultrasound for assessment ± FNA',
       'Significant thyroid dysfunction → endocrinology as needed'],
-    source:'NICE NG12 / British Thyroid Association guidance' },
+    source:'NICE NG12 (updated April 2026) / British Thyroid Association guidance' },
 
   { id:'gonorrhoea', title:'Gonorrhoea', category:'Infectious diseases', icon:'🦠',
     overview:'A common sexually transmitted infection caused by Neisseria gonorrhoeae. It often coexists with chlamydia and is frequently asymptomatic in women. Untreated infection causes pelvic inflammatory disease, infertility and disseminated infection, and antimicrobial resistance is a major and growing concern.',
@@ -328,7 +328,7 @@
       'Complicated infection (PID, epididymo-orchitis), treatment failure, or resistance → GUM/sexual-health service',
       'Suspected ophthalmia neonatorum (neonatal purulent conjunctivitis) → emergency ophthalmology/paediatrics',
       'All cases → sexual-health service for treatment, test of cure, and partner notification'],
-    source:'BASHH / NICE — Gonorrhoea' },
+    source:'BASHH gonorrhoea guideline' },
 
   { id:'gout', title:'Gout', category:'Musculoskeletal', icon:'🦶',
     overview:'A common crystal arthropathy caused by deposition of monosodium urate crystals, producing acutely painful, inflamed joints — classically the big-toe MTP joint. It is strongly linked to hyperuricaemia and metabolic/cardiovascular disease. Management has two limbs: treating the acute attack and preventing recurrence with urate-lowering therapy.',
@@ -353,7 +353,7 @@
       'Diagnostic uncertainty, or gout not responding to treatment → rheumatology',
       'Complex cases (CKD, transplant, intolerance/contraindication to urate-lowering therapy, tophaceous/erosive disease) → rheumatology',
       'Recurrent urate renal stones → urology/renal as appropriate'],
-    source:'NICE NG219 (Gout) / NICE' },
+    source:'NICE NG219 (Gout)' },
 
   { id:'granuloma-annulare', title:'Granuloma annulare', category:'Dermatology', icon:'⭕',
     overview:'A benign, usually self-limiting inflammatory skin condition forming smooth, skin-coloured to red rings of papules, most often on the hands and feet. It is harmless and frequently misdiagnosed as ringworm; the main task is correct recognition, reassurance, and avoiding unnecessary antifungal treatment.',
@@ -378,7 +378,7 @@
       'Widespread/generalised or persistent disease → dermatology (consider phototherapy/systemic options)',
       'Generalised disease → consider screening for diabetes/dyslipidaemia',
       'Cosmetic concern unresponsive to topical treatment → dermatology'],
-    source:'NICE / BAD — Granuloma annulare' },
+    source:'BAD — Granuloma annulare' },
 
   { id:'group-b-strep', title:'Group B streptococcus (in pregnancy and newborns)', category:'Women’s health', icon:'🤰',
     overview:'Group B streptococcus (GBS, Streptococcus agalactiae) is a common gut/genital tract commensal carried by many women. It is usually harmless, but transmission to the baby around birth can cause serious neonatal infection (sepsis, pneumonia, meningitis). Management centres on intrapartum antibiotic prophylaxis for at-risk births.',
@@ -403,7 +403,7 @@
       'Unwell newborn with possible GBS infection (sepsis/respiratory distress/meningitis signs) → emergency neonatal/paediatric assessment',
       'GBS bacteriuria/UTI in pregnancy → treat and flag for intrapartum prophylaxis',
       'Previous baby with GBS disease → ensure documented prophylaxis plan'],
-    source:'RCOG / NICE — Group B streptococcus' },
+    source:'RCOG Green-top Guideline No. 36 (GBS) / NICE NG195 (Neonatal infection)' },
 
   { id:'gum-disease', title:'Gum disease (gingivitis and periodontitis)', category:'General', icon:'🦷',
     overview:'Inflammation of the gums (gingivitis) and, if it progresses, of the deeper supporting structures of the teeth (periodontitis), driven by dental plaque. It is extremely common and a leading cause of tooth loss. It also has important links with diabetes and cardiovascular disease, making oral health a whole-health issue.',
@@ -426,9 +426,9 @@
     referral:[
       'Diagnosis and treatment of gingivitis/periodontitis → dental services',
       'Acute necrotising gingivitis → urgent dental referral (plus metronidazole/analgesia)',
-      'Persistent oral ulceration (>3 weeks), a red/white patch, or an unexplained oral lump → urgent suspected oral-cancer (2WW) referral (NICE NG12)',
+      'Persistent oral ulceration (>3 weeks), a red/white patch, or an unexplained oral lump → urgent suspected oral-cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Drug-induced gingival overgrowth → review medication ± dental/specialist input'],
-    source:'NICE / dental & periodontal guidance / NICE NG12' }
+    source:'SDCEP / British Society of Periodontology guidance / NICE NG12 (updated April 2026)' }
 
   );
 })();

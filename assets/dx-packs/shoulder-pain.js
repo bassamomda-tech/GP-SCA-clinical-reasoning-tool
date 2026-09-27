@@ -31,7 +31,7 @@
         label: 'Referred cardiac / diaphragmatic pain',
         action: 'Assess for ACS / intra-abdominal cause; ECG; do not anchor on the shoulder.',
         patientPhrase: '"Shoulder-tip pain with these features can come from the heart or abdomen — I need to check those first."',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.cardiac_diaphragm,
       },
       {
@@ -45,21 +45,21 @@
         id: 'tumour', tier: 'cancer',
         label: 'Possible bony / soft-tissue tumour — mass / systemic / unremitting night pain',
         action: 'Urgent imaging ± sarcoma/2WW pathway.',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.mass_systemic,
       },
       {
         id: 'trauma', tier: 'urgent',
         label: 'Acute trauma — fracture / dislocation',
         action: 'X-ray; reduce dislocation; orthopaedics as needed.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.trauma,
       },
       {
         id: 'manage', tier: 'routine',
         label: 'Mechanical shoulder pain — assess & manage',
         action: 'Analgesia, physio, subacromial/intra-articular injection; image/refer if not improving.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],

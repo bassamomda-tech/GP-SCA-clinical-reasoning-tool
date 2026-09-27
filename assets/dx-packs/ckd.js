@@ -28,7 +28,7 @@
     subtitle: 'Enter eGFR/ACR. Surfaces AKI, nephrology-referral and reversible-factor pathways (NICE NG203).',
     guideline: 'NICE NG203',
     inputs: INPUTS,
-    defaultMessage: 'No red-flag rule fired. Confirm CKD (two eGFR ≥90 days apart), stage by G/A (eGFR + ACR), optimise BP + ACEi/ARB if ACR raised, manage CV risk, and recheck. Refer per NG203 criteria.',
+    defaultMessage: 'No red-flag rule fired. Confirm CKD (two eGFR ≥90 days apart), stage by G/A (eGFR + ACR), optimise BP + ACEi/ARB if ACR raised, manage CV risk, and recheck. Refer per NG203 criteria, including a 5-year kidney failure risk above 5% on the 4-variable KFRE.',
     rules: [
       {
         id: 'urgent_metabolic', tier: 'emergency',
@@ -40,8 +40,8 @@
       },
       {
         id: 'refer', tier: 'urgent',
-        label: 'Nephrology referral criteria — eGFR <30, ACR ≥70, rapid decline, haematuria+proteinuria, or suspected GN',
-        action: 'Refer nephrology; ACR, urine dip, renal USS; review meds.',
+        label: 'Nephrology referral criteria — 5-year kidney failure risk >5% (4-variable KFRE), ACR ≥70, rapid decline, haematuria+proteinuria, or suspected GN; eGFR <30 → calculate the KFRE',
+        action: 'Refer nephrology (NICE NG203): refer if the 5-year risk of needing kidney replacement therapy is above 5% on the 4-variable Kidney Failure Risk Equation (kidneyfailurerisk.co.uk), which replaced the old eGFR <30 trigger. ACR, urine dip, renal USS; review meds.',
         source: 'NICE NG203', sourceUrl: 'https://www.nice.org.uk/guidance/ng203',
         when: i => (i.egfr != null && i.egfr < 30) || (i.acr != null && i.acr >= 70) || i.rapid_decline || (i.haematuria && i.acr != null && i.acr >= 3) || i.systemic,
       },

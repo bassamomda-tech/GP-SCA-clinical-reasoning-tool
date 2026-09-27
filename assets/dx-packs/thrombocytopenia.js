@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Thrombocytopenia
-   Shared-id triage + differential. NICE · BSH · NICE NG12.
+   Shared-id triage + differential. BSH · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -24,7 +24,7 @@
   if (window.RGPTriage) RGPTriage.register('thrombocytopenia-triage', {
     title: 'Thrombocytopenia — triage',
     subtitle: 'Enter platelets / tick features. Surfaces TTP/DIC emergencies, severe bleeding and marrow pathways.',
-    guideline: 'BSH · NG12',
+    guideline: 'BSH · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No emergency rule fired. Repeat FBC + blood film (exclude EDTA clumping), review drugs, check LFTs/coagulation/B12/folate; refer haematology if unexplained or other lines affected.',
     rules: [
@@ -46,28 +46,28 @@
       {
         id: 'marrow_2ww', tier: 'cancer',
         label: 'Thrombocytopenia + other cytopenias / B-symptoms / blasts',
-        action: 'Urgent FBC + film; haematology (NICE NG12).',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'Urgent FBC + film; haematology (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.other_lines || i.b_symptoms,
       },
       {
         id: 'investigate', tier: 'urgent',
         label: 'Unexplained thrombocytopenia',
         action: 'Repeat with film; drug review; LFTs/coagulation; haematology referral.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.plt != null && i.plt < 100,
       },
       {
         id: 'mild', tier: 'routine',
         label: 'Mild / chronic (100–150), well',
         action: 'Repeat film (exclude clumping); monitor; investigate if progressive.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       { label: 'BSH — Thrombocytopenia', url: 'https://b-s-h.org.uk/guidelines/' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
@@ -136,7 +136,7 @@
     },
     sources: [
       { label: 'BSH — Thrombocytopenia', url: 'https://b-s-h.org.uk/guidelines/' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

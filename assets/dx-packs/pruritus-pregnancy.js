@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Itchiness in Pregnancy
-   Shared-id triage + differential. RCOG GTG 43 (ICP) · NICE.
+   Shared-id triage + differential. RCOG GTG 43 (ICP).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -45,14 +45,14 @@
         id: 'pemphigoid', tier: 'urgent',
         label: 'Pemphigoid gestationis — periumbilical blistering',
         action: 'Dermatology + obstetric referral (fetal risk); potent topical/oral steroid.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.periumbilical_blisters,
       },
       {
         id: 'benign', tier: 'routine',
         label: 'Benign pregnancy dermatosis / candida',
         action: 'Emollients, topical steroid, antihistamine (sedating at night); antifungal for candida; reassure.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],

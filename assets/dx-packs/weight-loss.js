@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Unintentional Weight Loss
-   Shared-id triage + differential. NICE NG12 · NICE.
+   Shared-id triage + differential. NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -21,31 +21,31 @@
 
   if (window.RGPTriage) RGPTriage.register('weight-loss-triage', {
     title: 'Unintentional weight loss — triage',
-    subtitle: 'Tick features. Surfaces site-specific and non-site-specific cancer pathways (NICE NG12).',
-    guideline: 'NICE NG12',
+    subtitle: 'Tick features. Surfaces site-specific and non-site-specific cancer pathways (NICE NG12 (updated April 2026)).',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Confirm and quantify loss; baseline bloods (FBC, U&E, LFT, calcium, glucose/HbA1c, TFT, CRP, coeliac, ferritin) + urinalysis + CXR; targeted exam; review at 1–2 weeks.',
     rules: [
       {
         id: 'site_2ww', tier: 'cancer',
         label: 'Weight loss + site-specific symptom — site-specific 2WW',
-        action: 'Refer per symptom (lung / upper & lower GI / gynae / urological) — NICE NG12.',
+        action: 'Refer per symptom (lung / upper & lower GI / gynae / urological) — NICE NG12 (updated April 2026).',
         patientPhrase: '"Weight loss with this symptom needs a faster referral to rule out a serious cause."',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.site_symptom,
       },
       {
         id: 'nonspecific_2ww', tier: 'cancer',
         label: 'Unexplained weight loss ≥60, or with systemic B-symptoms — non-site-specific 2WW',
         action: 'CXR, FIT, bloods; non-site-specific symptoms pathway / haematology if B-symptoms.',
-        source: 'NICE NG12 §1.18',
+        source: 'NICE NG12 (updated April 2026) §1.13',
         when: i => (i.age != null && i.age >= 60 && i.significant) || i.systemic_b,
       },
       {
         id: 'endocrine', tier: 'urgent',
         label: 'Hyperthyroidism / new diabetes',
         action: 'TFT / HbA1c-glucose; treat; safety-net DKA if lean + ketotic.',
-        source: 'NICE',
+        source: 'NICE NG145 · NICE NG28',
         when: i => i.thyroid_sx || i.diabetes_sx,
       },
       {
@@ -59,12 +59,12 @@
         id: 'assess', tier: 'routine',
         label: 'Weight loss — structured workup',
         action: 'Bloods + CXR + urinalysis; address mood/appetite/chronic disease; review.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
       
     ],
   });
@@ -72,12 +72,12 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('weight-loss-dx', {
     title: 'Unintentional weight loss — differential',
     subtitle: 'The engine weights metabolic, GI, psychiatric and chronic-disease causes, and always surfaces malignancy.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I've lost a lot of weight without trying, doctor — my clothes are hanging off me.",
     inputs: INPUTS,
     diagnoses: [
       { id: 'malignancy', name: 'Malignancy', summary: 'Site-specific symptom, ≥60, B-symptoms', baseline: 4, category: 'cant-miss',
-        keyExam: 'Mass, lymphadenopathy, organomegaly, cachexia.', nextIx: '\u26A1 Site-specific / non-site-specific 2WW (NICE NG12); CXR, FIT, bloods.',
+        keyExam: 'Mass, lymphadenopathy, organomegaly, cachexia.', nextIx: '\u26A1 Site-specific / non-site-specific 2WW (NICE NG12 (updated April 2026)); CXR, FIT, bloods.',
         patientPhrase: 'Unexplained weight loss can be the first sign of a cancer, so we investigate urgently — many come back clear.',
         guideUrl: '', redFlagAction: '\u26A1 2WW pathway' },
       { id: 'hyperthyroid', name: 'Hyperthyroidism', summary: 'Weight loss + heat intolerance + tremor', baseline: 7, category: 'common',
@@ -125,7 +125,7 @@
       chronic_disease: ['chronic_disease'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'NICE NG69 — Eating disorders', url: 'https://www.nice.org.uk/guidance/ng69' }
     ],
   });

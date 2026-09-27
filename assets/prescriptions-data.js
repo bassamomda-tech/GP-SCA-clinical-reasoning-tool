@@ -30,7 +30,7 @@ window.RGP_PRESCRIPTIONS = [
     ],
     followUp: 'Re-test only if symptoms persist or relapsing dyspepsia — urea breath test or stool antigen ≥ 4 weeks after completing treatment AND ≥ 2 weeks off PPI.',
     redFlags: [
-      'Dysphagia, weight loss, GI bleeding, anaemia, persistent vomiting → 2WW upper GI per NICE NG12.',
+      'Dysphagia, weight loss, GI bleeding, anaemia, persistent vomiting → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway (2WW) upper GI referral per NICE NG12 (updated April 2026).',
       'Persistent symptoms despite eradication → consider gastroscopy.',
     ],
     emisText: `H. pylori 1st-line eradication (7 days):
@@ -73,7 +73,7 @@ Counsel: take all 3 together, complete full course, avoid alcohol. Re-test only 
     ],
     followUp: 'Re-test 4+ weeks after treatment if symptoms persist. After 2nd-line failure → gastroenterology referral for susceptibility testing / alternative regimen.',
     redFlags: [
-      'Alarm features (dysphagia, weight loss, anaemia) → 2WW upper GI.',
+      'Alarm features (dysphagia, weight loss, anaemia) → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway (2WW) upper GI referral (NICE NG12 (updated April 2026)).',
       'Two failed eradication courses → gastroenterology referral.',
     ],
     emisText: `H. pylori 2nd-line eradication (7 days):

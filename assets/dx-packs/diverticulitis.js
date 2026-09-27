@@ -1,7 +1,7 @@
 /* ============================================
    Diagnostic Tool pack — Diverticulitis / LIF pain
    Shared-id triage + differential. NICE NG147 ·
-   NICE NG147 · NICE NG12 (colorectal).
+   NICE NG147 · NICE NG12 (updated April 2026) (colorectal).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -29,8 +29,8 @@
 
   if (window.RGPTriage) RGPTriage.register('diverticulitis-triage', {
     title: 'Diverticulitis / LIF pain — triage',
-    subtitle: 'Tick features. Surfaces perforation/sepsis, complicated disease and colorectal 2WW pathways.',
-    guideline: 'NICE NG147 · NG12',
+    subtitle: 'Tick features. Surfaces perforation/sepsis, complicated disease and FIT / colorectal suspected cancer pathways.',
+    guideline: 'NICE NG147 · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. If uncomplicated acute diverticulitis: simple analgesia (avoid NSAID/opioid), clear fluids, consider no/▼ antibiotics per NICE NG147, safety-net; arrange colonoscopy after recovery if cancer not excluded.',
     rules: [
@@ -52,28 +52,28 @@
       {
         id: 'crc_2ww', tier: 'cancer',
         label: 'Cancer red flags — weight loss / persistent change / anaemia / PR bleeding ≥50',
-        action: 'Colonoscopy after acute episode; lower GI 2WW if red flags (NICE NG12).',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'Colonoscopy after acute episode; FIT for colorectal red-flag symptoms, with suspected cancer pathway referral if FIT is 10 micrograms Hb/g or more (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.weight_loss || i.change_persist || (i.pr_bleed && i.age != null && i.age >= 50),
       },
       {
         id: 'gynae', tier: 'urgent',
         label: 'Possible gynaecological cause in a woman',
         action: 'Pregnancy test; consider PID / ovarian pathology / ectopic; pelvic assessment.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.female && i.gynae,
       },
       {
         id: 'uncomplicated', tier: 'routine',
         label: 'Uncomplicated acute diverticulitis / diverticular disease',
-        action: 'Analgesia, fluids, ± antibiotics per NICE; safety-net; colonoscopy after recovery if not previously done.',
+        action: 'Analgesia, fluids, ± antibiotics per NICE NG147; safety-net; colonoscopy after recovery if not previously done.',
         source: 'NICE NG147',
         when: i => true,
       }
     ],
     sources: [
       { label: 'NICE NG147 — Diverticular disease', url: 'https://www.nice.org.uk/guidance/ng147' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
@@ -110,9 +110,9 @@
         patientPhrase: 'The inflammation may have caused a complication that needs hospital treatment today.',
         guideUrl: '', redFlagAction: '\u26A1 Same-day surgical admission' },
       { id: 'crc', name: 'Colorectal cancer', summary: 'Persistent change in habit, weight loss, anaemia, PR bleeding, age ≥50', baseline: 1, category: 'cant-miss',
-        keyExam: 'Mass, cachexia, anaemia.', nextIx: '\u26A1 Lower GI 2WW; colonoscopy after a diverticulitis episode if not already excluded (NICE NG12).',
+        keyExam: 'Mass, cachexia, anaemia.', nextIx: '\u26A1 FIT first; FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway; colonoscopy after a diverticulitis episode if not already excluded (NICE NG12 (updated April 2026); NICE NG147).',
         patientPhrase: 'These features mean I want a specialist to examine the bowel to exclude cancer — most come back clear.',
-        guideUrl: '', redFlagAction: '\u26A1 Lower GI 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 FIT → colorectal pathway' }
     ],
     effects: {
       age: (v) => v >= 60 ? { diverticulitis: +4, crc: +6, ischaemic: +4, gynae: -4 } : (v < 40 ? { gynae: +4, crc: -2 } : {}),
@@ -144,7 +144,7 @@
     },
     sources: [
       { label: 'NICE NG147 — Diverticular disease', url: 'https://www.nice.org.uk/guidance/ng147' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

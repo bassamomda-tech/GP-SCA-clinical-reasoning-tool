@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Haematuria
-   Shared-id triage + differential. NICE NG12
+   Shared-id triage + differential. NICE NG12 (updated April 2026)
    ============================================ */
 (function () {
   const INPUTS = [
@@ -24,8 +24,8 @@
 
   if (window.RGPTriage) RGPTriage.register('haematuria-triage', {
     title: 'Haematuria — triage',
-    subtitle: 'Tick features. Surfaces urological 2WW, nephrology and infection pathways (NICE NG12).',
-    guideline: 'NICE NG12',
+    subtitle: 'Tick features. Surfaces urological 2WW, nephrology and infection pathways (NICE NG12 (updated April 2026)).',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Exclude UTI/transient cause and repeat dip; persistent non-visible haematuria needs BP, eGFR and ACR; refer per age and type.',
     rules: [
@@ -33,7 +33,7 @@
         id: 'clot_retention', tier: 'emergency',
         label: 'Heavy haematuria with clot retention / haemodynamic compromise',
         action: 'Same-day urology / admission — catheter + bladder washout.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.clots && (i.sbp != null && i.sbp < 100),
       },
       {
@@ -41,7 +41,7 @@
         label: 'Visible haematuria ≥45, or non-visible ≥60 with dysuria/raised WCC — urological 2WW',
         action: 'Urology 2WW (cystoscopy + upper-tract imaging).',
         patientPhrase: '"Blood in the urine at your age needs an urgent specialist look at the bladder and kidneys to be safe."',
-        source: 'NICE NG12 §1.6', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.6', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => (i.visible && i.age != null && i.age >= 45) || (i.nonvisible && i.age != null && i.age >= 60 && i.dysuria_frequency),
       },
       {
@@ -55,20 +55,20 @@
         id: 'infection', tier: 'routine',
         label: 'Likely UTI / transient cause',
         action: 'Treat UTI and re-dip after treatment; exclude menstrual/exercise contamination; refer if persists.',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
-      { label:'NICE NG12 — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label:'NICE NG12 (updated April 2026) — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('haematuria-dx', {
     title: 'Haematuria — differential',
     subtitle: 'The engine weights UTI, stones and benign causes against glomerular disease, and always surfaces urological malignancy when its triggers fire.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I've seen blood in my urine, doctor — it gave me a real fright.",
     inputs: INPUTS,
     diagnoses: [
@@ -87,14 +87,14 @@
       { id: 'glomerular', name: 'Glomerular disease', summary: 'Haematuria + proteinuria ± hypertension / oedema', baseline: 3, category: 'less-common',
         keyExam: 'Hypertension, oedema.', nextIx: 'ACR, eGFR, immunology; nephrology referral.',
         patientPhrase: 'The kidney filters may be leaking blood and protein. Kidney specialist tests find the cause.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
       { id: 'transient', name: 'Transient / benign', summary: 'Exercise, menstrual contamination, anticoagulant', baseline: 3, category: 'less-common',
         keyExam: 'History; repeat dip negative.', nextIx: 'Repeat dip when not menstruating / after rest; anticoagulant alone does not explain it — still investigate.',
         patientPhrase: 'Sometimes blood appears briefly from exercise or contamination — we repeat the test to confirm it has cleared.',
-        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12' },
+        guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
 
       { id: 'malignancy', name: 'Urological malignancy (bladder / renal)', summary: 'Painless visible haematuria, ≥45, smoker', baseline: 1, category: 'cant-miss',
-        keyExam: 'Often normal; flank mass rarely.', nextIx: '\u26A1 Urology 2WW — cystoscopy + upper-tract imaging (NICE NG12).',
+        keyExam: 'Often normal; flank mass rarely.', nextIx: '\u26A1 Urology 2WW — cystoscopy + upper-tract imaging (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Painless blood in the urine at your age needs an urgent specialist look to rule out cancer — most are clear.',
         guideUrl: '', redFlagAction: '\u26A1 Urology 2WW' }
     ],
@@ -123,8 +123,8 @@
       malignancy: ['visible', 'smoker', 'age'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
-      { label:'NICE NG12 — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label:'NICE NG12 (updated April 2026) — suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

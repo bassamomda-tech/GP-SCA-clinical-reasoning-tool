@@ -749,7 +749,7 @@ body.mode-clinic .sca-only{display:none!important}
   <div class="tb-inner">
     <div class="tb-brand">
       <div class="tb-icon">T4</div>
-      <div><div class="tb-title">Hypothyroidism · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA / BTA Guidelines / BNF</div></div>
+      <div><div class="tb-title">Hypothyroidism · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA / NICE NG145 / BNF</div></div>
     </div>
     <div class="mode-group">
       <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
@@ -768,7 +768,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="ns-item"><span class="ns-val">0.4–4.0</span><span class="ns-lbl">Normal TSH range (mU/L)</span></div>
     <div class="ns-item"><span class="ns-val">50 mcg</span><span class="ns-lbl">Standard starting dose levothyroxine (25 mcg if elderly/cardiac)</span></div>
     <div class="ns-item"><span class="ns-val">6–8 weeks</span><span class="ns-lbl">Recheck TSH interval after dose change</span></div>
-    <div class="ns-item"><span class="ns-val">TSH &gt;10</span><span class="ns-lbl">Treat subclinical hypothyroidism regardless of symptoms</span></div>
+    <div class="ns-item"><span class="ns-val">TSH &gt;10</span><span class="ns-lbl">Subclinical: consider levothyroxine if TSH ≥10 on 2 tests 3 months apart (NICE NG145)</span></div>
     <div class="ns-item"><span class="ns-val">TSH 4–10</span><span class="ns-lbl">Subclinical: individualise — symptoms, age, TPO antibodies, pregnancy</span></div>
     <div class="ns-item"><span class="ns-val">&lt;2.5 mU/L</span><span class="ns-lbl">TSH target in pregnancy (1st trimester) — urgent obstetric referral</span></div>
     <div class="ns-item"><span class="ns-val">30 min</span><span class="ns-lbl">Levothyroxine: take on empty stomach 30 min before food</span></div>
@@ -1243,13 +1243,13 @@ body.mode-clinic .sca-only{display:none!important}
     </div>
 
     <div class="sub-divider">7D — Levothyroxine dosing guide</div>
-    <div class="step-intro" style="margin-bottom:.75rem;border-left-color:var(--p)"><strong>Levothyroxine dose is based on body weight (~1.6 mcg/kg/day ideal body weight) but is always initiated at a low starting dose and titrated.</strong> Never start at the full calculated dose in one step — this risks over-replacement symptoms (palpitations, anxiety, insomnia) and is dangerous in cardiac patients. Titrate in 25 mcg increments every 6–8 weeks, guided by TSH — never by symptoms alone.</div>
+    <div class="step-intro" style="margin-bottom:.75rem;border-left-color:var(--p)"><strong>Levothyroxine dose is based on body weight (~1.6 mcg/kg/day ideal body weight) but NICE NG145 allows a full starting dose in younger, fit adults.</strong> NICE NG145: consider starting at 1.6 mcg/kg/day (rounded to the nearest 25 mcg) in adults under 65 with no cardiovascular disease; for adults 65 and over or with cardiovascular disease, start 25–50 mcg/day and titrate. A lower start (e.g. 50 mcg) remains reasonable where tolerance is uncertain — full doses risk over-replacement symptoms (palpitations, anxiety, insomnia) and are dangerous in cardiac patients. Titrate in 25 mcg increments every 6–8 weeks, guided by TSH — never by symptoms alone.</div>
     <div class="g3" style="margin-bottom:1rem;gap:10px">
       <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--g)">
         <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .55rem;font-size:11.5px">Standard initiation (otherwise well adult &lt;65)</div>
         <p style="font-size:12.5px;margin:.3rem 0 .5rem"><strong>Levothyroxine 50 mcg OD — fasting, 30 min before breakfast</strong></p>
         <ul style="margin:0;padding-left:1.1rem;font-size:12px;line-height:1.7">
-          <li>Start 50 mcg OD; recheck TSH + free T4 at 6–8 weeks</li>
+          <li>Start 50 mcg OD, or 1.6 mcg/kg/day (nearest 25 mcg) if under 65 with no cardiovascular disease (NICE NG145); recheck TSH + free T4 at 6–8 weeks</li>
           <li>If TSH still elevated: increase by 25 mcg; recheck at 6–8 weeks</li>
           <li>Continue in 25 mcg steps until TSH in target range (0.5–2.5 mU/L)</li>
           <li>Most adults require 75–150 mcg/day at maintenance</li>
@@ -1350,7 +1350,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="dc-section dc-r"><div class="dc-sec-t">✗ Caution / monitoring required</div>
           <div class="dc-item ci-rel">Significant cardiac disease (IHD, arrhythmia, heart failure) — start 25 mcg; very slow titration; ECG before initiation</div>
           <div class="dc-item ci-rel">Untreated Addison's disease — replace cortisol first; levothyroxine can precipitate Addisonian crisis if adrenal reserve is low</div>
-          <div class="dc-item ci-rel">Diabetes mellitus — levothyroxine increases insulin sensitivity; monitor glucose as dose titrates up; insulin requirements may change</div>
+          <div class="dc-item ci-rel">Diabetes mellitus — levothyroxine can increase insulin or antidiabetic requirements (BNF); monitor glucose as dose titrates up</div>
         </div>
         <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Signs of over-replacement (dose too high)</div>
           <div class="dc-item">Palpitations, AF, tachycardia — suppress TSH below normal indicates over-replacement; risk of bone loss and cardiac arrhythmia</div>
@@ -1811,7 +1811,7 @@ body.mode-clinic .sca-only{display:none!important}
 <!-- CLINIC SUMMARY -->
 <div class="sum-section clinic-only" id="sum-clinic">
   <div class="sum-hdr" onclick="toggleSum('clinic')">
-    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Hypothyroidism — Clinical Decision Framework</div><div class="sum-sub">NICE NG145 · BTA Guidelines · BNF</div></div></div>
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Hypothyroidism — Clinical Decision Framework</div><div class="sum-sub">NICE NG145 · BNF</div></div></div>
     <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
   </div>
   <div class="sum-body closed" id="sum-body-clinic">
@@ -1844,7 +1844,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="algo-branch-lbl">🟢 Routine Primary Care</div>
           <ul class="algo-list">
             <li>Overt hypothyroidism: start 50 mcg OD; TSH at 6–8 weeks</li>
-            <li>Subclinical TSH &gt;10: treat regardless of symptoms</li>
+            <li>Subclinical TSH ≥10 on 2 tests 3 months apart: consider levothyroxine (NICE NG145)</li>
             <li>Subclinical TSH 4–10: individualise (symptoms, TPO, age, pregnancy)</li>
             <li>Annual TSH when stable</li>
           </ul>
@@ -1858,7 +1858,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="num-card num-highlight"><div class="num-val">50 mcg OD</div><div class="num-lbl">Standard starting dose (25 mcg elderly/cardiac)</div></div>
       <div class="num-card num-highlight"><div class="num-val">6–8 weeks</div><div class="num-lbl">TSH recheck interval after any dose change</div></div>
       <div class="num-card"><div class="num-val">0.5–2.5</div><div class="num-lbl">TSH target range (lower half for symptom relief)</div></div>
-      <div class="num-card"><div class="num-val">TSH &gt;10</div><div class="num-lbl">Treat subclinical hypothyroidism regardless of symptoms</div></div>
+      <div class="num-card"><div class="num-val">TSH &gt;10</div><div class="num-lbl">Subclinical: consider levothyroxine if TSH ≥10 twice, 3 months apart (NICE NG145)</div></div>
       <div class="num-card"><div class="num-val">TSH 4–10</div><div class="num-lbl">Subclinical — individualise: symptoms, TPO antibodies, age, pregnancy</div></div>
       <div class="num-card"><div class="num-val">&lt;2.5</div><div class="num-lbl">TSH target 1st trimester pregnancy — urgent</div></div>
       <div class="num-card"><div class="num-val">30 min</div><div class="num-lbl">Take levothyroxine fasting 30 min before breakfast</div></div>
@@ -2003,7 +2003,7 @@ body.mode-clinic .sca-only{display:none!important}
 </div>
 
 <div class="page-footer">
-  <p><strong>Hypothyroidism · GP Clinical Reasoning Framework v2</strong> · NICE NG145 · British Thyroid Association Guidelines (2023) · European Thyroid Association Guidelines on Hypothyroidism · BNF Levothyroxine Monograph</p>
+  <p><strong>Hypothyroidism · GP Clinical Reasoning Framework v2</strong> · NICE NG145 · British Thyroid Association Executive Committee statement on management of primary hypothyroidism (Clin Endocrinol 2016) · European Thyroid Association Guidelines on Hypothyroidism (international) · BNF Levothyroxine Monograph</p>
   <p style="margin-top:4px">v3: Dual tailored summaries · Pregnancy protocol as highest-priority safety-net · Calcium interaction as primary counselling point · Antidepressant management integrated · Myxoedema emergency recognition · Subclinical hypothyroidism decision framework</p>
   <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence</p>
 </div>
@@ -2092,6 +2092,9 @@ function printSummary(){
 }
 
 function calcDrug(){
+  // G10: this chooser logic was copied from cases/hypertension.html. On any other topic it must not
+  // run (these pages reuse the ds-* ids with their own labels), so show the neutral summary instead.
+  if(!/\/hypertension(\.html)?$/i.test(location.pathname)){ if(typeof window.calcDrugGeneric==='function') return window.calcDrugGeneric(); return; }
   const dm=document.getElementById('ds-dm').checked,
     ckd=document.getElementById('ds-ckd').checked,
     cvd=document.getElementById('ds-cvd').checked,
@@ -2114,9 +2117,9 @@ function calcDrug(){
   }
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
-    main='thiazide';mainLabel='Indapamide SR 1.5mg';
-    why='HF with fluid overload: thiazide-like diuretic. Add ACEi + bisoprolol + spiro per NICE NG106 HF guideline.';
-    alt='acei';altLabel='+ Ramipril (essential in HFrEF)';altWhy='ACEi + beta-blocker + spiro = cornerstone of HFrEF management';
+    main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
+    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -2126,22 +2129,22 @@ function calcDrug(){
     why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
     alt='';altLabel='';altWhy='';
   } else if(dm||ckd||cvd){
-    main='acei';mainLabel='Ramipril (ACEi)';
-    why='DM / CKD / CVD: ACEi first-line for cardio-renal protection at ANY age and ANY ethnicity (NICE NG136).';
-    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';altWhy='Equal renoprotection. Never combine ACEi + ARB simultaneously.';
+    main=afro?'arb':'acei';mainLabel=afro?'Candesartan / losartan (ARB)':'Ramipril (ACEi)';
+    why=afro?'Type 2 diabetes (or CKD with albuminuria) in a person of Black African or African–Caribbean family origin: ARB in preference to an ACEi (NICE NG136; CKD per NICE NG203).':'Type 2 diabetes: ACEi or ARB first-line at any age (NICE NG136). CKD: ACEi/ARB if ACR >30 mg/mmol, or >3 mg/mmol with diabetes (NICE NG203). Established CVD alone: follow the NG136 age/ethnicity steps.';
+    alt=afro?'ccb':'arb';altLabel=afro?'+ Amlodipine (CCB) at Step 2':'Candesartan (ARB) — if ACEi cough develops';altWhy='ACEi and ARB give equal renoprotection. Never combine ACEi + ARB simultaneously.';
   } else if(afro){
     main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Afro-Caribbean (no DM): CCB more effective in low-renin hypertension. At Step 2: ARB preferred over ACEi.';
+    why='Black African or African–Caribbean family origin (no type 2 diabetes): CCB first-line at any age (NICE NG136). At Step 2 add an ARB in preference to an ACEi, or a thiazide-like diuretic.';
     alt='';altLabel='';altWhy='';
   } else if(age55){
     main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Age ≥55 (no DM, no Afro-Caribbean): CCB preferred over ACEi — greater efficacy in lower-renin patients.';
-    alt=angina?'acei':'arb';
-    altLabel=angina?'+ Ramipril (anti-anginal benefit at Step 2)':'Candesartan (ARB) — if CCB not tolerated';
-    altWhy=angina?'ACEi has additional anti-anginal benefit at Step 2':'ARB is equally effective if CCB causes intolerable oedema';
+    why='Age ≥55 (no type 2 diabetes, not of Black African or African–Caribbean family origin): CCB first-line (NICE NG136).';
+    alt=angina?'acei':'thiazide';
+    altLabel=angina?'+ Ramipril (ACEi) at Step 2':'Indapamide (thiazide-like diuretic) — if a CCB is not suitable';
+    altWhy=angina?'Step 2 per NICE NG136: add an ACEi or ARB (or a thiazide-like diuretic); amlodipine also treats stable angina.':'If a CCB is not suitable (oedema, intolerance, heart failure or high risk of it), offer a thiazide-like diuretic (NICE NG136).';
   } else {
     main='acei';mainLabel='Ramipril (ACEi)';
-    why='Age <55, non-Afro-Caribbean, no DM/CKD/CVD: ACEi is the Step 1 drug of choice (NICE NG136).';
+    why='Age <55, not of Black African or African–Caribbean family origin, no type 2 diabetes/CKD: ACEi (or ARB) is the Step 1 drug of choice (NICE NG136).';
     alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
     altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
   }
@@ -2167,7 +2170,7 @@ function calcDrug(){
     ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
     <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
     ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
-    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es within 1 week of starting ACEi/ARB</div>`;
+    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es 1–2 weeks after starting or up-titrating ACEi/ARB (NICE NG203)</div>`;
 }
 
 function calcScore(){
@@ -2192,6 +2195,7 @@ function calcScore(){
   else if(total < 17){ icon='🟠'; msg='<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check: was ABPM planned and explained? Was QRISK shared as a specific percentage? Was the correct drug chosen for the specific comorbidities? Was the family history fear addressed in the plan? Was a 1-week follow-up named?'; }
   else if(total < 25){ icon='🟢'; msg='<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: ensure lifestyle advice is specific and measurable, QRISK is shared as a number, and the drug choice rationale is explained in plain language tailored to this patient.'; }
   else { icon='🟢'; msg='<strong>Strong pass.</strong> Excellent consultation across all three domains. ICE fully explored including family fear, BP staging with ABPM, correct drug for phenotype and comorbidities, QRISK shared as a number, lifestyle specific and measurable, 1-2-1 rule named, 999 symptoms explicit, closing question asked.'; }
+  if(!/\/hypertension(\.html)?$/i.test(location.pathname)){ msg=(total < 11)?'<strong>Not yet at pass standard.</strong> Focus on the unticked items below: explore ideas, concerns and expectations, test for and rule out serious disease, agree a safe and specific management plan, and name safety-net symptoms explicitly. Review Global Skills — are you finishing data gathering by 6-7 minutes?':(total < 17)?'<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check the unticked items below: was the working diagnosis explained, was the plan shared and tailored to this patient, and was follow-up named?':(total < 25)?'<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: make advice specific and measurable, share risks as numbers where you can, and explain the rationale for the plan in plain language tailored to this patient.':'<strong>Strong pass.</strong> Excellent consultation across all three domains: ICE explored, serious disease addressed, a safe shared plan, explicit safety-netting and follow-up, and a closing question asked.'; }
   document.getElementById('sc-interp-msg').innerHTML = '<div class="interp-icon">'+icon+'</div><div class="interp-text">'+msg+'</div>';
   var missed = [];
   allCbs.forEach(function(cb){ if(!cb.checked){ missed.push(cb.closest('.sc-item').querySelector('.sc-item-text').textContent.trim()); } });
@@ -2220,7 +2224,7 @@ function resetScorecard(){
 <script src="../assets/meds/hypothyroidism.js"></script>
 <script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: September 2026</b> · citations verified against the primary sources listed</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
 <script src="chooser-guard.js?v=1"></script>
 </body>

@@ -52,7 +52,7 @@
         id: 'primary', tier: 'routine',
         label: 'Primary dysmenorrhoea',
         action: 'NSAID first-line ± hormonal contraception; review at 3–6 months; investigate if not responding.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],

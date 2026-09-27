@@ -1,12 +1,12 @@
 /* ============================================
    Diagnostic Tool — Dizziness / Collapse
    TiTrATE framework (Timing, Triggers, exam) · HINTS exam ·
-   ESC Syncope 2018
+   ESC Syncope 2018 (international)
    ============================================ */
 RGPDiagnostic.register('dizziness', {
   title: 'Dizziness / Collapse — differential diagnosis',
   subtitle: '"Dizziness" is four very different things — true vertigo, presyncope, disequilibrium, and true loss of consciousness. The engine applies the TiTrATE framework + ESC Syncope criteria to weight common, less-common, and can\'t-miss causes (posterior-circulation stroke, cardiogenic syncope, aortic stenosis, PE).',
-  guideline: 'NICE · TiTrATE · ESC 2018 · HINTS',
+  guideline: 'NICE CG109 · NG127 · ESC Syncope 2018 (international) · TiTrATE · HINTS',
   patientPresenting: "I keep getting dizzy spells — it feels like the room\u2019s spinning and last week I went down on the bathroom floor.",
 
   xlink: {
@@ -372,7 +372,7 @@ RGPDiagnostic.register('dizziness', {
     { label:'NICE CG109 — transient loss of consciousness', url:'https://www.nice.org.uk/guidance/cg109' },
     { label:'NICE NG128 Stroke / TIA', url:'https://www.nice.org.uk/guidance/ng128' },
     { label:'NICE NG158 VTE', url:'https://www.nice.org.uk/guidance/ng158' },
-    { label:'ESC Syncope guideline 2018', url:'https://academic.oup.com/eurheartj/article/39/21/1883/4939241' },
+    { label:'ESC Syncope guideline 2018 (international)', url:'https://academic.oup.com/eurheartj/article/39/21/1883/4939241' },
     { label:'TiTrATE framework (Newman-Toker)', url:'https://pubmed.ncbi.nlm.nih.gov/26231264/' },
     { label:'HINTS exam', url:'https://www.ahajournals.org/doi/10.1161/STROKEAHA.109.551234' }
   ],

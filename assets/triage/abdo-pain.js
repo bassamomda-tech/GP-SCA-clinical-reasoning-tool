@@ -1,8 +1,8 @@
-/* Triage — Abdominal pain · NICE · NG12 · NG156 (AAA) */
+/* Triage — Abdominal pain · NICE NG12 (updated April 2026) · NG156 (AAA) · NG126 · CG141 */
 RGPTriage.register('abdo-pain-triage', {
   title: 'Abdominal pain — symptom triage',
-  subtitle: 'Surgical abdomen: appendicitis, perforation, ischaemia, AAA, ectopic, testicular / ovarian torsion. NICE + NG12.',
-  guideline: 'NICE · NG12 · NG156 (AAA)',
+  subtitle: 'Surgical abdomen: appendicitis, perforation, ischaemia, AAA, ectopic, testicular / ovarian torsion. NICE NG156, NG126, CG141 + NICE NG12 (updated April 2026).',
+  guideline: 'NICE NG12 (updated April 2026) · NG156 (AAA) · NG126 · CG141',
   inputs: [
     { group:'Demographics', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
     { group:'Demographics', id:'female_fertile', kind:'check', label:'Female of reproductive age' },
@@ -42,7 +42,7 @@ RGPTriage.register('abdo-pain-triage', {
       when:(i)=>!!i.peritonism || (!!i.absent_bowel_sounds && (i.hr>=120 || (i.sbp && i.sbp<90))) },
     { id:'torsion', tier:'emergency', label:'?Testicular torsion',
       action:'Same-day urology — surgical exploration within 6h to save testicle.',
-      source:'NICE NG12', sourceUrl:'https://www.nice.org.uk/guidance/ng12',
+      source:'Surgical emergency — clinical practice (no NICE guideline)', sourceUrl:'',
       when:(i)=>!!i.testicular_pain_swell },
     { id:'appendicitis', tier:'emergency', label:'?Appendicitis',
       action:'Same-day surgical referral. CT abdomen if diagnostic uncertainty.',
@@ -64,14 +64,14 @@ RGPTriage.register('abdo-pain-triage', {
       action:'Same-day surgical assessment. AXR / CT. NBM, IV fluids.',
       when:(i)=>!!i.vomiting_distended },
     { id:'cancer_2ww', tier:'cancer', label:'2WW abdominal cancer pathway',
-      action:'NICE NG12: site-specific 2WW (upper GI / lower GI / pancreatic / ovarian).',
-      source:'NICE NG12', sourceUrl:'https://www.nice.org.uk/guidance/ng12',
+      action:'NICE NG12 (updated April 2026): site-specific 2WW (upper GI / lower GI / pancreatic / ovarian).',
+      source:'NICE NG12 (updated April 2026)', sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       when:(i)=>!!i.weight_loss_systemic && (i.age>=50) }
   ],
   defaultMessage:'No surgical-abdomen triage rules fired. Proceed with abdominal pain workup — see differential below.',
   sources:[
     {label:'NICE NG156 AAA', url:'https://www.nice.org.uk/guidance/ng156'},
-    {label:'NICE NG12 Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12'},
+    {label:'NICE NG12 (updated April 2026) Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12'},
     {label:'NICE CG141 Upper GI bleed', url:'https://www.nice.org.uk/guidance/cg141'}
   ],
 });

@@ -1,7 +1,7 @@
 /* ============================================
    Reasoning GP — Ready Prescriptions (extra batch 1)
    Common infections. Pushes into window.RGP_PRESCRIPTIONS.
-   NICE NG/NICE antimicrobial prescribing guidance.
+   NICE antimicrobial prescribing guidelines (NG number cited in each entry) and BNF.
    ============================================ */
 (function () {
   const RX = (window.RGP_PRESCRIPTIONS = window.RGP_PRESCRIPTIONS || []);
@@ -100,7 +100,7 @@ Safety-net: fever/loin pain/reduced fetal movements → urgent maternity.`,
       { name: 'OR Trimethoprim', dose: '200 mg', freq: 'BD', route: 'PO', days: '7' },
     ],
     altRegimens: [
-      { label: 'Suspected prostatitis', drugs: 'Use a prostate-penetrating agent — ciprofloxacin 500 mg BD or trimethoprim 200 mg BD × 14–28 days; send culture; consider referral.' },
+      { label: 'Suspected prostatitis', drugs: 'Use a prostate-penetrating agent — ciprofloxacin 500 mg BD or trimethoprim 200 mg BD × 14 days then review (NICE NG110; fluoroquinolone only if appropriate, MHRA January 2024); send culture; consider referral.' },
     ],
     counselling: [
       'Men need a longer (7-day) course as UTI is considered complicated.',
@@ -110,11 +110,11 @@ Safety-net: fever/loin pain/reduced fetal movements → urgent maternity.`,
     followUp: 'Review culture. Recurrent UTI in men → investigate (renal tract / prostate). Consider PSA/DRE if LUTS.',
     redFlags: [
       'Fever / loin pain → pyelonephritis. Perineal/pelvic pain + systemic → prostatitis — same-day assessment.',
-      'Visible haematuria (≥45) → urology 2WW.',
+      'Visible haematuria (≥45) that is unexplained, or persists/recurs after UTI treatment → urology suspected cancer pathway (2WW) referral (NICE NG12 (updated April 2026)).',
     ],
     emisText: `Lower UTI in a man (complicated; send culture):
 - Nitrofurantoin 100 mg MR PO BD × 7 days OR Trimethoprim 200 mg PO BD × 7 days.
-If prostatitis suspected: ciprofloxacin 500 mg BD (or trimethoprim) × 14–28 days.
+If prostatitis suspected: ciprofloxacin 500 mg BD (or trimethoprim) × 14 days then review (NICE NG110).
 Safety-net: fever / loin or perineal pain → same-day review. Investigate if recurrent.`,
     sources: [
       { label: 'NICE NG109 — Lower UTI', url: 'https://www.nice.org.uk/guidance/ng109' },

@@ -41,7 +41,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     { finding:'Unilateral nipple eczema not responding to topical steroid', meaning:'?Paget disease — 2-week-wait' },
     { finding:'Cyclical bilateral nodularity, no discrete mass', meaning:'Benign change — reassure, safety-net, review' },
   ],
-  note:'Examination guides urgency but referral is driven by NICE NG12 age thresholds, not by how “benign” a lump feels. Always use a chaperone and document it.',
+  note:'Examination guides urgency but referral is driven by NICE NG12 (updated April 2026) age thresholds, not by how “benign” a lump feels. Always use a chaperone and document it.',
   links:{ leaflet:'tools/leaflets.html', leafletLabel:'Patient leaflets', resource:'pages/resources.html#local-pathways', resourceLabel:'Breast referral pathways' },
 },
 
@@ -212,7 +212,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     ]},
   ],
   outcomes:[
-    { finding:'Low mood, anhedonia, psychomotor retardation, hopelessness', meaning:'Depression — assess severity (PHQ-9) and risk; manage per NICE' },
+    { finding:'Low mood, anhedonia, psychomotor retardation, hopelessness', meaning:'Depression — assess severity (PHQ-9) and risk; manage per NICE NG222' },
     { finding:'Pressured speech, elevated/irritable mood, grandiosity, reduced sleep', meaning:'?Mania/hypomania — urgent psychiatric assessment' },
     { finding:'Hallucinations + delusions + impaired insight', meaning:'Psychosis — urgent mental-health referral; exclude organic causes' },
     { finding:'Expressed suicidal ideation with intent/plan/means', meaning:'High risk — same-day crisis/mental-health team; do not leave alone' },
@@ -303,7 +303,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   outcomes:[
     { finding:'No impairment/disturbance of mind or brain (Stage 1 negative)', meaning:'MCA incapacity test not met — the person makes their own decision, even if you think it unwise.' },
     { finding:'Stage 1 positive but can understand, retain, weigh & communicate', meaning:'HAS capacity for this decision — respect it; document the assessment.' },
-    { finding:'Stage 1 positive and fails ≥1 of the four functional abilities', meaning:'LACKS capacity for THIS decision now → best-interests process (least restrictive).' },
+    { finding:'Stage 1 positive and fails ≥1 of the four functional abilities', meaning:'DOES NOT HAVE capacity for THIS decision now → best-interests process (least restrictive).' },
     { finding:'Capacity varies through the day / with treatment', meaning:'Fluctuating capacity — reassess at the best time; defer non-urgent decisions until capacity returns.' },
     { finding:'Capacitous refusal of recommended treatment', meaning:'An unwise but capacitous decision must be respected — record the discussion and safety-net.' },
     { finding:'Valid & applicable advance decision to refuse treatment', meaning:'Legally binding — follow it; do not start a best-interests process for that treatment.' },

@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Hair Loss (alopecia)
-   Shared-id triage + differential. NICE · derm.
+   Shared-id triage + differential. BAD · clinical practice.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -37,21 +37,21 @@
         id: 'tinea', tier: 'urgent',
         label: 'Tinea capitis (scaly scalp, broken hairs, child)',
         action: 'Scalp scrapings/mycology; oral antifungal (topical alone insufficient); treat household.',
-        source: 'NICE',
+        source: 'BAD tinea capitis guideline (2014)',
         when: i => i.scaly_broken,
       },
       {
         id: 'systemic', tier: 'routine',
         label: 'Diffuse loss — check systemic contributors',
         action: 'Ferritin, TFT (± others); correct deficiency/thyroid.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.thyroid_iron || i.diffuse_shedding,
       },
       {
         id: 'manage', tier: 'routine',
         label: 'Non-scarring alopecia — assess & manage',
-        action: 'Androgenetic → minoxidil ± finasteride (men); areata → often self-resolves, derm if extensive; traction → change styling.',
-        source: 'NICE',
+        action: 'Androgenetic → minoxidil ± finasteride (men; MHRA 2024: warn about psychiatric and sexual side effects); areata → often self-resolves, derm if extensive; traction → change styling.',
+        source: 'Clinical practice · MHRA (finasteride, 2024)',
         when: i => true,
       }
     ],

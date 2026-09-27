@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Foot Pain
-   Shared-id triage + differential. NICE (plantar fasciitis / gout / neuroma).
+   Shared-id triage + differential. NICE NG219 (gout) · clinical practice (plantar fasciitis / neuroma).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -30,7 +30,7 @@
         label: 'Critical limb ischaemia — rest pain / cold pale foot / absent pulses',
         action: 'Same-day vascular referral.',
         patientPhrase: '"The circulation to your foot may be critically reduced — that needs urgent vascular assessment today."',
-        source: 'NICE PAD',
+        source: 'NICE CG147',
         when: i => i.ischaemia,
       },
       {
@@ -59,7 +59,7 @@
         id: 'manage', tier: 'routine',
         label: 'Mechanical foot pain — assess & manage',
         action: 'Plantar fasciitis → stretches/orthotics; neuroma → footwear/injection; OA/overuse → load management, podiatry.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],

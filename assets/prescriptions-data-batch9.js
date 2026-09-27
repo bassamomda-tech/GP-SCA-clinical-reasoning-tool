@@ -328,7 +328,7 @@
 - Recurrent/severe: screen FBC, ferritin, B12, folate, coeliac (\u00b1 IBD/Beh\u00e7et's); correct deficiency.
 - 3-WEEK RULE: any ulcer/lesion >3 wks \u2192 urgent 2WW (oral cancer). Refractory \u2192 oral medicine.`,
     sources: [
-      { label: 'NICE NG12 — Suspected cancer (oral lesions)', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer (oral lesions)', url: 'https://www.nice.org.uk/guidance/ng12' },
     ],
   }
   );

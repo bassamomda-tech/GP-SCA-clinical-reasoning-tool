@@ -65,7 +65,7 @@ RGPDiagnostic.register('hypertension', {
       redFlagAction:'⚡ Endocrinology' },
     { id:'preeclampsia', name:'Pre-eclampsia', summary:'BP ≥140/90 after 20 weeks + proteinuria / end-organ', baseline:1, category:'cant-miss',
       keyExam:'BP, urine dip, oedema, hyperreflexia, RUQ tenderness (HELLP).',
-      nextIx:'Same-day obstetric review. Bloods (FBC, U&E, LFT, urate, PlGF). Treat BP if ≥160/110.',
+      nextIx:'Same-day obstetric review. Bloods (FBC, U&E, LFT, urate, PlGF). Treat BP if ≥140/90, target ≤135/85 (NICE NG133).',
       guideUrl: '',
       redFlagAction:'⚡ Obstetric same-day' },
     { id:'malignant_htn', name:'Malignant / accelerated hypertension', summary:'BP ≥180/120 + end-organ damage (papilloedema, AKI, encephalopathy)', baseline:1, category:'cant-miss',
@@ -109,6 +109,6 @@ RGPDiagnostic.register('hypertension', {
     {label:'NICE NG136 Hypertension', url:'https://www.nice.org.uk/guidance/ng136'},
     {label:'NICE NG136 — hypertension', url:'https://www.nice.org.uk/guidance/ng136'},
     {label:'NICE NG133 Pre-eclampsia', url:'https://www.nice.org.uk/guidance/ng133'},
-    {label:"Endocrine Society Conn's", url:'https://academic.oup.com/jcem/article/101/5/1889/2804729'}
+    {label:"Endocrine Society Conn's (international)", url:'https://academic.oup.com/jcem/article/101/5/1889/2804729'}
   ],
 });

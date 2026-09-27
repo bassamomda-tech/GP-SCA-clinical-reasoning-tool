@@ -179,7 +179,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   implications:[
     { clue:'HbA1c reflects 3 months of glycaemia', why:'It measures glycated haemoglobin — proportional to average glucose over the red-cell lifespan; unreliable in anaemia/haemoglobinopathy.' },
-    { clue:'Metformin is first-line', why:'It reduces hepatic glucose output and improves insulin sensitivity without causing weight gain or hypos.' },
+    { clue:'Metformin is first-line (with an SGLT2i)', why:'It reduces hepatic glucose output and improves insulin sensitivity without causing weight gain or hypos. Since February 2026, NICE NG28 pairs MR metformin with an SGLT2 inhibitor as dual first-line therapy for most adults.' },
     { clue:'SGLT2i and GLP-1 chosen for organ protection', why:'They independently reduce CV and renal events — we now pick agents for outcomes, not just glucose.' },
     { clue:'We screen feet, eyes, kidneys annually', why:'Complications are silent and vascular — early detection prevents ulceration, blindness and ESRF.' },
   ],

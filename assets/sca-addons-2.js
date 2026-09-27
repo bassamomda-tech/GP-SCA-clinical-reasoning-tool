@@ -1467,7 +1467,7 @@
     },
     {
      "h": "Asbestos and the occupational history",
-     "t": "Pipe lagging and boiler insulation work before the 1990s is significant asbestos exposure. Latency for mesothelioma and asbestos-related lung cancer is decades. It is on no template; ask “what work did you do?”. Where symptoms persist after a normal film, NG12 safety-netting applies: arrange review and discuss with the local respiratory or lung cancer team, who will usually go to CT."
+     "t": "Pipe lagging and boiler insulation work before the 1990s is significant asbestos exposure. Latency for mesothelioma and asbestos-related lung cancer is decades. It is on no template; ask “what work did you do?”. Where symptoms persist after a normal film, NICE NG12 (updated April 2026) safety-netting applies: arrange review and discuss with the local respiratory or lung cancer team, who will usually go to CT."
     },
     {
      "h": "Other causes still count",
@@ -1528,7 +1528,7 @@
     "who": "dr",
     "text": "Have you ever coughed up any blood, even a streak or a fleck?",
     "dom": "tasks",
-    "why": "Asks directly about haemoptysis, an NG12 referral criterion"
+    "why": "Asks directly about haemoptysis, an NICE NG12 (updated April 2026) referral criterion"
    },
    {
     "who": "pt",
@@ -1582,7 +1582,7 @@
     "who": "dr",
     "text": "I’m saying I owe you the honest version. An X-ray is a good first look, but it can miss things. You have a cough that won’t settle, a hoarse voice, some weight off, a fleck of blood in the phlegm, and your smoking and asbestos history. Any one of those alone would be small. Together, national guidance says I should refer you urgently for a proper look, even with a normal X-ray.",
     "dom": "tasks",
-    "why": "Explains why the normal CXR does not exclude cancer and states the NG12 basis"
+    "why": "Explains why the normal CXR does not exclude cancer and states the NICE NG12 (updated April 2026) basis"
    },
    {
     "who": "pt",
@@ -1745,7 +1745,7 @@
     {
      "t": "7–10",
      "h": "Explain and refer",
-     "d": "Why a normal film doesn’t exclude cancer; the NG12 features he has; urgent referral to the lung team and a face-to-face this week."
+     "d": "Why a normal film doesn’t exclude cancer; the NICE NG12 (updated April 2026) features he has; urgent referral to the lung team and a face-to-face this week."
     },
     {
      "t": "10–12",
@@ -1767,7 +1767,7 @@
     {
      "dont": "“Any other symptoms?”",
      "instead": "“Have you coughed up any blood at all, even a fleck, and was it in the phlegm?”",
-     "why": "Vague questions let him minimise; the specific question finds an NG12 criterion."
+     "why": "Vague questions let him minimise; the specific question finds an NICE NG12 (updated April 2026) criterion."
     },
     {
      "dont": "“I’m worried this could be cancer, like your friend’s.”",
@@ -1814,8 +1814,8 @@
    "history": {
     "redFlags": [
      "Haemoptysis at 40+ — NICE NG12 (updated April 2026) suspected lung cancer pathway referral, whatever the X-ray showed",
-     "Persistent unexplained hoarseness at 45+ — consider a suspected cancer pathway referral for laryngeal cancer (NICE NG12)",
-     "Unexplained weight loss over 5% in 6 months at 60+ — NICE NG12 1.13.2; asbestos exposure; progressive breathlessness"
+     "Persistent unexplained hoarseness at 45+ — consider a suspected cancer pathway referral for laryngeal cancer (NICE NG12 (updated April 2026))",
+     "Unexplained weight loss over 5% in 6 months at 60+ — NICE NG12 (updated April 2026) 1.13.2; asbestos exposure; progressive breathlessness"
     ],
     "psychosocial": [
      "What work did you do? Asbestos history, dates and protection",
@@ -1834,7 +1834,7 @@
     "reflectIce": "“You hoped this call would end three years of worrying since Tommy died. I can’t give you that today, but I can make sure we look properly and quickly, so you’re not left guessing.”",
     "psychosocial": "Invite him to involve his wife; acknowledge the grief for Tommy; make the surgery responsible for chasing so the waiting is shorter and less lonely.",
     "sharedPlan": [
-     "Suspected cancer pathway referral to the lung team today (NICE NG12, updated April 2026); CT usually arranged by the team",
+     "Suspected cancer pathway referral to the lung team today (NICE NG12 (updated April 2026)); CT usually arranged by the team",
      "Face-to-face this week: examination, measured weight, spirometry; hoarseness followed up if it persists",
      "Record the asbestos exposure; consider COPD and other causes once cancer is excluded"
     ],
@@ -1854,13 +1854,13 @@
    {
     "ic": "🗺️",
     "t": "Hoarseness pathway",
-    "s": "Visual algorithm · NICE NG12 laryngeal",
+    "s": "Visual algorithm · NICE NG12 (updated April 2026) laryngeal",
     "href": "algorithms/hoarseness.html"
    },
    {
     "ic": "🗺️",
     "t": "Weight loss pathway",
-    "s": "Visual algorithm · NICE NG12 1.13.2",
+    "s": "Visual algorithm · NICE NG12 (updated April 2026) 1.13.2",
     "href": "algorithms/weight-loss.html"
    },
    {
@@ -1888,7 +1888,7 @@
     {
      "dom": "tasks",
      "fail": "Accepting “probably bit my cheek” for the fleck of blood.",
-     "why": "Unexplained haemoptysis at 40+ is a NICE NG12 suspected cancer pathway criterion by itself.",
+     "why": "Unexplained haemoptysis at 40+ is a NICE NG12 (updated April 2026) suspected cancer pathway criterion by itself.",
      "fix": "“Was it in what you coughed up, or in your mouth?” Then act on the answer."
     },
     {

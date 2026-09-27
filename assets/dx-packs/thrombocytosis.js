@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Thrombocytosis
-   Shared-id triage + differential. NICE NG12 · BSH.
+   Shared-id triage + differential. NICE NG12 (updated April 2026) · BSH.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -14,22 +14,22 @@
 
     { group: 'MPN clues', id: 'mpn_features', kind: 'check', label: 'Splenomegaly / thrombosis / very high persistent count (? ET)' },
 
-    { group: 'Cancer red flags (NG12)', id: 'cancer_sx', kind: 'check', label: 'Weight loss / haemoptysis / dysphagia / abdo pain / PMB' }
+    { group: 'Cancer red flags (NICE NG12 (updated April 2026))', id: 'cancer_sx', kind: 'check', label: 'Weight loss / haemoptysis / dysphagia / abdo pain / PMB' }
   ];
 
   if (window.RGPTriage) RGPTriage.register('thrombocytosis-triage', {
     title: 'Thrombocytosis — triage',
-    subtitle: 'Enter platelets. Surfaces the NG12 cancer pathway and myeloproliferative referral.',
-    guideline: 'NICE NG12 · BSH',
+    subtitle: 'Enter platelets. Surfaces the NICE NG12 (updated April 2026) cancer pathway and myeloproliferative referral.',
+    guideline: 'NICE NG12 (updated April 2026) · BSH',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Most thrombocytosis is reactive — treat the cause (infection, iron deficiency, inflammation) and repeat; investigate if persistent or unexplained.',
     rules: [
       {
         id: 'cancer_2ww', tier: 'cancer',
-        label: 'Platelets ≥400 + cancer symptom — NG12 pathway',
-        action: 'Consider lung / upper GI / colorectal / endometrial / ovarian 2WW per symptom (NICE NG12 §1.5.21).',
+        label: 'Platelets ≥400 + cancer symptom — NICE NG12 (updated April 2026) pathway',
+        action: 'Consider lung (urgent CXR), upper GI and endometrial investigation or referral per the matching symptom criterion (NICE NG12 (updated April 2026)); colorectal symptoms go to FIT first. Thrombocytosis alone is not a referral criterion.',
         patientPhrase: '"A raised platelet count with your symptom is a signal we should investigate quickly to be safe."',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => (i.plt != null && i.plt >= 400) && i.cancer_sx,
       },
       {
@@ -48,15 +48,15 @@
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'BSH — Myeloproliferative neoplasms', url: 'https://b-s-h.org.uk/guidelines/' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('thrombocytosis-dx', {
     title: 'Thrombocytosis — differential',
-    subtitle: 'Most is reactive. The engine weights reactive causes against essential thrombocythaemia, and surfaces the NG12 occult-cancer pathway.',
-    guideline: 'NICE NG12 · BSH',
+    subtitle: 'Most is reactive. The engine weights reactive causes against essential thrombocythaemia, and surfaces the NICE NG12 (updated April 2026) occult-cancer pathway.',
+    guideline: 'NICE NG12 (updated April 2026) · BSH',
     patientPresenting: "My platelet count came back high, doctor — is that dangerous?",
     inputs: INPUTS,
     diagnoses: [
@@ -77,8 +77,8 @@
         keyExam: 'Splenomegaly, thrombotic events.', nextIx: '\u26A1 Haematology — JAK2/CALR/MPL; exclude reactive; risk-stratify for aspirin/cytoreduction.',
         patientPhrase: 'A bone-marrow condition can overproduce platelets. A specialist confirms it and reduces clotting risk.',
         guideUrl: '', redFlagAction: '\u26A1 Haematology + JAK2' },
-      { id: 'occult_cancer', name: 'Occult malignancy', summary: 'Thrombocytosis + cancer symptom (NG12)', baseline: 1, category: 'cant-miss',
-        keyExam: 'Site-directed exam.', nextIx: '\u26A1 Site-specific 2WW per NG12 (lung/GI/gynae).',
+      { id: 'occult_cancer', name: 'Occult malignancy', summary: 'Thrombocytosis + cancer symptom (NICE NG12 (updated April 2026))', baseline: 1, category: 'cant-miss',
+        keyExam: 'Site-directed exam.', nextIx: '\u26A1 Site-specific 2WW per NICE NG12 (updated April 2026) (lung/GI/gynae).',
         patientPhrase: 'A raised platelet count with these symptoms can point to a hidden cancer, so we investigate quickly.',
         guideUrl: '', redFlagAction: '\u26A1 Site-specific 2WW' }
     ],
@@ -102,7 +102,7 @@
       occult_cancer: ['cancer_sx'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'BSH — Myeloproliferative neoplasms', url: 'https://b-s-h.org.uk/guidelines/' }
     ],
   });

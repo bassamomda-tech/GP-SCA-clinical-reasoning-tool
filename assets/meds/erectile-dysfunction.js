@@ -4,8 +4,8 @@
    ============================================ */
 MedChooser.register('erectile-dysfunction', {
   title: 'Erectile dysfunction — treatment selection',
-  subtitle: 'PDE5-inhibitor-led therapy after cardiovascular and cause assessment (NICE). Tick the patient profile; cards re-tier live.',
-  guideline: 'NICE · BNF',
+  subtitle: 'PDE5-inhibitor-led therapy after cardiovascular and cause assessment (BSSM 2018). Tick the patient profile; cards re-tier live.',
+  guideline: 'BSSM 2018 · BNF',
 
   factors: [
     // Cause / context
@@ -45,7 +45,7 @@ MedChooser.register('erectile-dysfunction', {
       name:'PDE5 inhibitor — on demand',
       examples:'Sildenafil 50 mg · Tadalafil 10–20 mg PRN',
       step:'1st-line',
-      source:'NICE · BNF',
+      source:'BSSM 2018 · BNF',
       sideEffects:'Headache, flushing, dyspepsia, nasal congestion, visual disturbance (sildenafil)',
       monitor:'Trial ×4 at adequate dose, correctly used, before declaring failure',
       counsel:'"Take one tablet before sex — sildenafil works in about an hour (avoid a heavy/fatty meal); you still need arousal for it to work. Try it properly a few times before we judge whether it suits."',
@@ -72,7 +72,7 @@ MedChooser.register('erectile-dysfunction', {
       name:'PDE5 inhibitor — daily',
       examples:'Tadalafil 2.5–5 mg OD',
       step:'1st-line (spontaneity / LUTS)',
-      source:'NICE · BNF',
+      source:'BSSM 2018 · BNF',
       sideEffects:'As PDE5 class; back/muscle ache with tadalafil',
       monitor:'Same contraindications as on-demand',
       counsel:'"A low daily dose means you don\'t have to plan ahead — and if you also have urinary symptoms from the prostate, it can help both at once."',
@@ -97,7 +97,7 @@ MedChooser.register('erectile-dysfunction', {
       name:'Testosterone replacement',
       examples:'Testosterone gel / injection',
       step:'If confirmed hypogonadism',
-      source:'NICE · BSSM',
+      source:'BSSM 2018',
       sideEffects:'Polycythaemia, prostate effects, acne, fluid retention',
       monitor:'Confirm low testosterone ×2 (9am); baseline + monitoring of Hct, PSA, testosterone',
       counsel:'"If blood tests confirm a genuinely low testosterone, replacing it can restore desire and help the tablets work better. We\'ll monitor your blood count and prostate."',
@@ -117,7 +117,7 @@ MedChooser.register('erectile-dysfunction', {
       name:'Alprostadil (2nd-line)',
       examples:'Intracavernosal injection · MUSE intraurethral · topical cream',
       step:'2nd-line (PDE5 failed/unsuitable)',
-      source:'NICE · BNF',
+      source:'BSSM 2018 · BNF',
       sideEffects:'Penile pain, priapism, injection-site effects',
       monitor:'First dose titration with supervision; counsel 4-hour rule',
       counsel:'"If tablets don\'t work or aren\'t suitable, there\'s a medicine given as a tiny injection or pellet into the penis — very effective. We\'ll teach the first dose and what to do if an erection lasts over 4 hours."',
@@ -141,7 +141,7 @@ MedChooser.register('erectile-dysfunction', {
       name:'Vacuum device / specialist referral',
       examples:'Vacuum erection device · urology / andrology',
       step:'Non-drug / refer',
-      source:'NICE',
+      source:'BSSM 2018',
       sideEffects:'Device — bruising, cool/numb erection',
       monitor:'Per device; refer anatomical causes',
       counsel:'"A vacuum pump is a drug-free option that works well for many. For anatomical problems or when treatments fail, the urology team can offer further options including implants."',

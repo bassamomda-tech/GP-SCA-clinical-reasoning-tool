@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 20: N topics)
    NHS conditions A–Z (letter N) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -24,11 +24,11 @@
       'Refer/biopsy any suspicious pigmented or non-healing nail lesion to exclude melanoma',
       'Set expectations — nails grow slowly, so improvement takes months'],
     referral:[
-      'Suspected subungual melanoma (new pigmented streak, Hutchinson’s sign, non-healing lesion) → urgent suspected skin-cancer (2WW) referral (NICE NG12)',
+      'Suspected subungual melanoma (new pigmented streak, Hutchinson’s sign, non-healing lesion) → urgent suspected skin-cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty, severe nail psoriasis/lichen planus, or treatment failure → dermatology',
       'New finger clubbing → investigate for underlying cause (respiratory/cardiac/GI)',
       'Diabetic/ischaemic foot with nail disease → podiatry'],
-    source:'NICE / BAD — Nail disorders' },
+    source:'BAD guidelines for the management of onychomycosis (2014) / NICE NG12 (updated April 2026) (subungual melanoma)' },
 
   { id:'nappy-rash', title:'Nappy rash', category:'Paediatrics', icon:'👶',
     overview:'A common irritant contact dermatitis of the nappy area from prolonged contact with urine and faeces, friction and moisture. It is usually mild and easily managed; the main complication is secondary candidal (or, less often, bacterial) infection, and a few mimics need recognising.',
@@ -53,7 +53,7 @@
       'Suspected significant bacterial infection or systemic illness → assess/treat promptly',
       'Recurrent or unusually severe rash → review for underlying cause',
       'Safeguarding concern (e.g. neglect, unusual injury) → follow safeguarding procedures'],
-    source:'NICE — Nappy rash' },
+    source:'BNFC (barrier preparations, hydrocortisone 1%, clotrimazole)' },
 
   { id:'narcolepsy', title:'Narcolepsy', category:'Neurology', icon:'😴',
     overview:'A chronic neurological disorder of sleep-wake regulation causing excessive daytime sleepiness and, often, cataplexy. It results from loss of hypocretin (orexin) signalling and is frequently diagnosed years late, misattributed to laziness or psychiatric illness. Recognition allows effective treatment and crucial safety advice on driving.',
@@ -78,7 +78,7 @@
       'Diagnostic uncertainty or suspected coexisting sleep disorder (e.g. OSA) → sleep service',
       'Significant mood/psychosocial impact → appropriate support',
       'Driving: advise DVLA notification and abstaining from driving until controlled'],
-    source:'NICE / sleep medicine guidance' },
+    source:'DVLA Assessing fitness to drive (narcolepsy and cataplexy) / BNF (modafinil, sodium oxybate) / sleep medicine guidance' },
 
   { id:'nasal-polyps', title:'Nasal polyps', category:'ENT', icon:'👃',
     overview:'Benign, oedematous swellings of the nasal/sinus lining causing obstruction, reduced smell and rhinorrhoea, usually in the context of chronic rhinosinusitis. They are benign but recurrent; the key safety point is that a UNILATERAL polyp/mass needs ENT assessment to exclude tumour, and that nasal polyps in a young child should prompt consideration of cystic fibrosis.',
@@ -99,11 +99,11 @@
       'In children with polyps, investigate for cystic fibrosis (sweat test) and refer appropriately',
       'Provide information on the chronic, relapsing nature and the importance of ongoing topical treatment'],
     referral:[
-      'Unilateral nasal polyp/mass, bleeding, facial pain/numbness, or orbital/visual symptoms → urgent ENT to exclude sinonasal/nasopharyngeal cancer (NICE NG12)',
+      'Unilateral nasal polyp/mass, bleeding, facial pain/numbness, or orbital/visual symptoms → urgent ENT to exclude sinonasal/nasopharyngeal cancer (a clinical red flag: NICE NG12 (updated April 2026) has no specific sinonasal criterion, so refer on clinical suspicion)',
       'Failure of medical treatment or large obstructing polyps → ENT (consider surgery)',
       'Nasal polyps in a child → paediatrics/ENT and investigate for cystic fibrosis',
       'Severe disease with asthma/aspirin sensitivity → ENT ± respiratory'],
-    source:'NICE — Nasal polyps / ENT UK' },
+    source:'EPOS 2020 (European position paper on rhinosinusitis and nasal polyps, international) / ENT UK' },
 
   { id:'neck-pain', title:'Neck pain', category:'Musculoskeletal', icon:'🦴',
     overview:'A very common, usually benign and self-limiting musculoskeletal complaint (mechanical neck pain or cervical spondylosis). The clinical task is to reassure and manage most cases conservatively while screening for the red flags of myelopathy, serious pathology, and the emergencies that masquerade as neck pain.',
@@ -126,9 +126,9 @@
     referral:[
       'Suspected cervical myelopathy (gait/hand-function change, limb weakness, hyperreflexia, sphincter dysfunction) → urgent spinal/neurosurgical assessment',
       'Significant trauma with suspected fracture/instability → immobilise + emergency assessment',
-      'Suspected infection (fever, IV drug use) or malignancy (cancer history, weight loss, night pain) → urgent investigation/referral (consider relevant NICE NG12 pathway)',
+      'Suspected infection (fever, IV drug use) or malignancy (cancer history, weight loss, night pain) → urgent investigation/referral (consider relevant NICE NG12 (updated April 2026) pathway)',
       'Persistent/severe radiculopathy or failure of conservative treatment → spinal/MSK referral'],
-    source:'NICE — Neck pain' },
+    source:'Clinical practice (no NICE guideline on neck pain); analgesia per BNF; NICE NG234 (Spinal metastases and metastatic spinal cord compression, 2023) for suspected malignancy' },
 
   { id:'neuroblastoma', title:'Neuroblastoma', category:'Paediatrics', icon:'🎗️',
     overview:'A cancer of developing sympathetic nervous-system (neural crest) cells, and one of the commonest solid tumours of early childhood (mostly under 5 years). It is notable for very varied behaviour — from spontaneous regression to aggressive metastatic disease — and for protean presentations that demand a high index of suspicion in young children.',
@@ -149,11 +149,11 @@
       'Support the family and arrange survivorship/late-effects follow-up',
       'Be alert to the emergency presentations (cord compression, severe disease)'],
     referral:[
-      'Unexplained abdominal (or other) mass, or strong suspicion of childhood cancer → very urgent referral/assessment for suspected cancer in children (NICE NG12) — children with an unexplained mass need referral within 48 hours',
+      'Unexplained abdominal (or other) mass, or strong suspicion of childhood cancer → very urgent referral/assessment for suspected cancer in children (NICE NG12 (updated April 2026)) — children with an unexplained mass need referral within 48 hours',
       'Spinal cord compression (paraspinal tumour with neurology) → emergency',
       'Confirmed/suspected neuroblastoma → paediatric oncology MDT',
       'Periorbital bruising/proptosis or "dancing eyes" in a young child → urgent paediatric assessment'],
-    source:'NICE NG12 (Suspected cancer in children & young people)' },
+    source:'NICE NG12 (updated April 2026) — suspected cancer in children and young people' },
 
   { id:'neurofibromatosis-1', title:'Neurofibromatosis type 1', category:'Neurology', icon:'🧬',
     overview:'A common autosomal-dominant neurocutaneous disorder (NF1 gene) predisposing to nerve-sheath and other tumours, with characteristic skin signs. Most live well, but it needs lifelong surveillance for complications — including a lifelong increased risk of malignancy — and recognition of its hallmark café-au-lait macules.',
@@ -175,10 +175,10 @@
       'Provide patient/family information and psychological support'],
     referral:[
       'Suspected NF1 → clinical genetics / specialist neurofibromatosis service for diagnosis and surveillance',
-      'Rapidly growing, painful, or hardening neurofibroma (?malignant peripheral nerve sheath tumour) or new neurological deficit → urgent suspected-cancer/specialist referral (NICE NG12)',
+      'Rapidly growing, painful, or hardening neurofibroma (?malignant peripheral nerve sheath tumour) or new neurological deficit → urgent suspected-cancer/specialist referral (NICE NG12 (updated April 2026))',
       'Children → ophthalmology (optic glioma surveillance) and developmental support; hypertension → investigate (?phaeochromocytoma/renal artery stenosis)',
       'Complications (scoliosis, epilepsy, plexiform neurofibromas) → relevant specialty'],
-    source:'NICE / specialist NF1 guidance' },
+    source:'Revised diagnostic criteria for NF1 (Legius et al, 2021, international) / specialist NF1 guidance' },
 
   { id:'nafld', title:'Non-alcoholic fatty liver disease (MASLD)', category:'Gastroenterology', icon:'🟡',
     overview:'Fat accumulation in the liver not caused by alcohol — now termed metabolic dysfunction-associated steatotic liver disease (MASLD). It is the commonest liver disorder in the UK, closely linked to obesity, type 2 diabetes and metabolic syndrome. Most have simple steatosis, but a subset progress through steatohepatitis to fibrosis and cirrhosis.',
@@ -191,7 +191,7 @@
       'Fibrosis is assessed non-invasively (e.g. FIB-4, then the enhanced liver fibrosis [ELF] test or transient elastography), not by ALT level alone'],
     management:[
       'Confirm the diagnosis and exclude other liver disease (alcohol history, viral/autoimmune/metabolic screen, drug review)',
-      'Assess fibrosis risk — the prognostic priority — using a non-invasive score (e.g. FIB-4) and onward testing (ELF/elastography) per NICE NG49; do not rely on ALT alone',
+      'Assess fibrosis risk — the prognostic priority — using a non-invasive score (e.g. FIB-4, per local/BSG pathways) and onward testing (NICE NG49 recommends the ELF test; elastography where available); do not rely on ALT alone',
       'Lifestyle is the cornerstone: weight loss (a ~7–10% reduction can improve/resolve steatohepatitis), a healthy diet, increased physical activity, and reducing alcohol',
       'Aggressively manage the metabolic comorbidities: optimise diabetes (some agents, e.g. pioglitazone/GLP-1 analogues, benefit the liver under guidance), treat hypertension, and manage lipids (statins are safe and indicated for cardiovascular risk)',
       'Address overall cardiovascular risk — cardiovascular disease, not liver disease, is the commonest cause of death in MASLD',
@@ -201,7 +201,7 @@
     referral:[
       'Advanced fibrosis or high fibrosis-risk score (e.g. high FIB-4/ELF/elastography) → hepatology',
       'Diagnostic uncertainty or suspicion of another liver disease → hepatology',
-      'Progression to cirrhosis → hepatology for HCC surveillance (6-monthly ultrasound ± AFP); suspicious lesion → urgent referral (NICE NG12)',
+      'Progression to cirrhosis → hepatology for HCC surveillance (6-monthly ultrasound ± AFP); suspicious lesion → urgent referral (NICE NG12 (updated April 2026))',
       'Decompensated liver disease → urgent specialist assessment'],
     source:'NICE NG49 (NAFLD)' },
 
@@ -228,7 +228,7 @@
       'Congenital heart disease/cardiomyopathy → cardiology follow-up',
       'Short stature/feeding difficulty → paediatric endocrinology/dietetics',
       'Bleeding tendency → haematology assessment (especially pre-procedure)'],
-    source:'NICE / clinical genetics guidance' },
+    source:'Noonan syndrome clinical management guidelines (DYSCERNE, 2010, international) / clinical genetics guidance' },
 
   { id:'norovirus', title:'Norovirus (vomiting bug)', category:'Infectious diseases', icon:'🤢',
     overview:'The commonest cause of infectious gastroenteritis in the UK — a highly contagious virus causing sudden vomiting and diarrhoea ("winter vomiting bug"). It is self-limiting in most, but causes major outbreaks (hospitals, care homes, schools) and risks dehydration in the vulnerable. Management is supportive with strict infection control.',
@@ -253,7 +253,7 @@
       'Prolonged symptoms (beyond a few days), bloody diarrhoea, or systemic illness → reassess/investigate (reconsider other causes)',
       'Outbreaks in hospitals/care homes/schools → infection-control / health-protection team',
       'Vulnerable/immunocompromised patients → lower threshold for assessment'],
-    source:'UKHSA / NICE — Gastroenteritis (norovirus)' },
+    source:'UKHSA norovirus guidance / UKHSA Health protection in children and young people settings (exclusion) / NICE CG84 (Diarrhoea and vomiting in children under 5)' },
 
   { id:'nosebleed', title:'Nosebleed (epistaxis)', category:'ENT', icon:'👃',
     overview:'Bleeding from the nose — very common and usually minor, most often from the anterior septum (Little’s area). The priorities are effective first aid, recognising the heavier posterior bleed and the haemodynamically significant or anticoagulated patient, and identifying the rare sinister causes.',
@@ -276,9 +276,9 @@
     referral:[
       'Heavy/uncontrolled bleeding, haemodynamic compromise, or a posterior bleed → urgent ENT/emergency assessment',
       'Bleeding not controlled by first aid and anterior cautery/packing → ENT',
-      'Recurrent unilateral epistaxis with nasal obstruction → urgent ENT to exclude sinonasal/nasopharyngeal tumour (NICE NG12); adolescent boy with recurrent severe epistaxis + obstruction → ENT (?juvenile angiofibroma)',
+      'Recurrent unilateral epistaxis with nasal obstruction → urgent ENT to exclude sinonasal/nasopharyngeal tumour (a clinical red flag: NICE NG12 (updated April 2026) has no specific sinonasal criterion, so refer on clinical suspicion); adolescent boy with recurrent severe epistaxis + obstruction → ENT (?juvenile angiofibroma)',
       'Anticoagulated/bleeding-disorder patients with significant epistaxis → assess and manage urgently'],
-    source:'NICE — Epistaxis (nosebleeds)' }
+    source:'BNF (chlorhexidine–neomycin cream: contains arachis oil, avoid in peanut allergy) / ENT first-aid practice' }
 
   );
 })();

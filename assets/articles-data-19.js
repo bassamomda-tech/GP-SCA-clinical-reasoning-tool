@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 19: M topics, part 2)
    Remaining NHS A–Z (letter M) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Suspected Marfan syndrome → cardiology + clinical genetics (and ophthalmology) for diagnosis and surveillance',
       'Aortic root at surgical threshold → cardiac surgery',
       'First-degree relatives → cascade genetic/cardiac screening; pregnancy → specialist cardiac-obstetric care'],
-    source:'NICE / inherited cardiac conditions & Ghent criteria' },
+    source:'Revised Ghent nosology (2010, international) / inherited cardiac conditions & clinical genetics practice' },
 
   { id:'mastitis', title:'Mastitis and breast abscess', category:'Women’s health', icon:'🤱',
     overview:'Inflammation of breast tissue, most often during lactation, usually from milk stasis ± infection. It is common, painful and distressing but generally responds well to continued milk removal and, where needed, antibiotics. The key tasks are preventing progression to abscess and recognising non-lactational and inflammatory-cancer mimics.',
@@ -50,10 +50,10 @@
       'CRUCIALLY: if "mastitis" does not respond to treatment, refer to exclude inflammatory breast cancer'],
     referral:[
       'Suspected breast abscess (fluctuant, localised swelling) → urgent breast/surgical assessment for ultrasound and drainage',
-      'Mastitis not responding to antibiotics, or any suspicion of inflammatory breast cancer → urgent breast (2WW) referral (NICE NG12)',
+      'Mastitis not responding to antibiotics, or any suspicion of inflammatory breast cancer → urgent breast (2WW) referral (NICE NG12 (updated April 2026))',
       'Severe systemic illness/sepsis → admission',
       'Recurrent or non-lactational mastitis → breast clinic'],
-    source:'NICE — Mastitis and breast abscess / NICE NG12' },
+    source:'BNF (flucloxacillin) / Academy of Breastfeeding Medicine Protocol 36 (2022, international) / NICE NG12 (updated April 2026)' },
 
   { id:'molar-pregnancy', title:'Molar pregnancy (hydatidiform mole)', category:'Women’s health', icon:'🤰',
     overview:'A type of gestational trophoblastic disease in which an abnormal pregnancy produces proliferating placental tissue rather than a viable fetus. It presents like an early-pregnancy problem (bleeding, a uterus large for dates, very high hCG). It matters because of the small risk of persistent trophoblastic disease and choriocarcinoma, requiring registration and hCG follow-up.',
@@ -78,7 +78,7 @@
       'All confirmed molar pregnancies → registration with a specialist trophoblastic screening centre and hCG follow-up',
       'Persistent/rising hCG or suspected gestational trophoblastic neoplasia → specialist trophoblastic centre (chemotherapy)',
       'Heavy bleeding or haemodynamic compromise → emergency admission'],
-    source:'RCOG / gestational trophoblastic disease guidance' },
+    source:'RCOG Green-top Guideline No. 38 (Gestational trophoblastic disease, 2020)' },
 
   { id:'moles', title:'Moles and melanoma awareness', category:'Dermatology', icon:'🟤',
     overview:'Most moles (melanocytic naevi) are entirely benign, but a changing or atypical mole can be a melanoma — a potentially lethal skin cancer that is curable when caught early. The core skill is using the weighted 7-point checklist/ABCDE to identify suspicious lesions and refer them urgently.',
@@ -99,11 +99,11 @@
       'Examine the whole skin and regional lymph nodes when assessing a suspicious lesion',
       'Safety-net clearly: any further change in a monitored lesion warrants re-review/referral'],
     referral:[
-      'Suspicious pigmented lesion (7-point checklist score ≥3, or any concerning change/ABCDE feature) → urgent suspected melanoma (2WW) referral (NICE NG12)',
+      'Suspicious pigmented lesion (7-point checklist score ≥3, or any concerning change/ABCDE feature) → urgent suspected melanoma (2WW) referral (NICE NG12 (updated April 2026))',
       'A new pigmented nail streak or Hutchinson’s sign, or a non-healing/atypical lesion → urgent skin-cancer referral',
       'Higher-risk patients (atypical mole syndrome, prior melanoma, family history) → dermatology surveillance',
       'Diagnostic uncertainty → dermatology'],
-    source:'NICE NG12 / NICE — Melanoma and pigmented lesions' },
+    source:'NICE NG12 (updated April 2026) / NICE NG14 (Melanoma: assessment and management)' },
 
   { id:'motor-neurone-disease', title:'Motor neurone disease (MND)', category:'Neurology', icon:'🧠',
     overview:'A progressive, ultimately fatal neurodegenerative disease of the motor neurones (most commonly amyotrophic lateral sclerosis), causing relentless weakness while sensation and (usually) cognition are spared. There is no cure, but early diagnosis, a specialist multidisciplinary team, and proactive symptom and respiratory care transform quality of life.',
@@ -149,11 +149,11 @@
       'Manage treatment effects and survivorship (e.g. dry mouth, swallowing, nutrition, dental care)',
       'Provide information and psychological support'],
     referral:[
-      'Unexplained oral ulceration lasting >3 weeks, a persistent red/white patch, a lump in the oral cavity, or an unexplained neck lump → urgent suspected head-and-neck cancer (2WW) referral (NICE NG12)',
-      'A persistent unexplained lump on the lip or in the mouth → 2WW (NICE NG12)',
-      'Persistent hoarseness or sore throat (especially smoker/drinker) → consider laryngeal cancer pathway',
+      'Unexplained oral ulceration lasting >3 weeks, or a persistent unexplained neck lump → suspected head-and-neck cancer pathway (2WW) referral; a persistent red or red-and-white patch, or a lump in the oral cavity → urgent dental assessment within 2 weeks, the dentist referring on the suspected cancer pathway (NICE NG12 (updated April 2026))',
+      'A persistent unexplained lump on the lip or in the mouth → urgent dental assessment within 2 weeks (dentist refers on the suspected cancer pathway if it is consistent with oral cancer) (NICE NG12 (updated April 2026))',
+      'Persistent unexplained hoarseness at age 45 or over → consider a suspected laryngeal cancer pathway referral (NICE NG12 (updated April 2026)); a persistent sore throat, especially in a smoker/drinker, warrants ENT assessment',
       'Confirmed cancer → head-and-neck MDT'],
-    source:'NICE NG12 / head-and-neck cancer guidance' },
+    source:'NICE NG12 (updated April 2026) / head-and-neck cancer guidance' },
 
   { id:'mouth-ulcers', title:'Mouth ulcers', category:'General', icon:'👄',
     overview:'Painful breaks in the oral mucosa, most commonly benign recurrent aphthous ulcers that heal within 1–2 weeks. The crucial safety task is recognising the persistent (>3 weeks) ulcer that may be oral cancer, and identifying the minority caused by systemic disease.',
@@ -174,11 +174,11 @@
       'Provide written advice and safety-netting on the 3-week rule',
       'Refer severe/refractory recurrent ulceration for specialist (oral medicine) assessment'],
     referral:[
-      'Any unexplained oral ulceration lasting >3 weeks → urgent suspected head-and-neck cancer (2WW) referral (NICE NG12)',
+      'Any unexplained oral ulceration lasting >3 weeks → urgent suspected head-and-neck cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Severe/refractory recurrent aphthous ulceration → oral medicine',
       'Suspected systemic cause (Behçet’s, IBD, coeliac, immunodeficiency) → relevant specialty',
       'Suspected herpetic/other infective cause needing treatment → manage accordingly'],
-    source:'NICE — Aphthous ulcers / NICE NG12' },
+    source:'NICE NG12 (updated April 2026) / BNF (topical oral corticosteroids, antiseptic and anti-inflammatory mouthwashes)' },
 
   { id:'mrsa', title:'MRSA (meticillin-resistant Staphylococcus aureus)', category:'Infectious diseases', icon:'🦠',
     overview:'Staphylococcus aureus resistant to meticillin/flucloxacillin and many beta-lactams. People may be colonised (carrying it harmlessly, often in the nose/skin) or infected (skin/soft-tissue infection, bacteraemia). The priorities are distinguishing colonisation from infection, infection control, and using appropriate antibiotics guided by sensitivities.',
@@ -203,7 +203,7 @@
       'Severe or spreading skin/soft-tissue infection not responding → urgent assessment',
       'Recurrent community MRSA/PVL-SA → microbiology/dermatology advice (decolonisation)',
       'Decolonisation/screening in healthcare pathways → infection-control team'],
-    source:'NICE / UKHSA — MRSA' },
+    source:'HIS/IPS guidelines for the prevention and control of MRSA in healthcare facilities (2021) / UKHSA PVL-SA guidance / BNF' },
 
   { id:'multiple-myeloma', title:'Multiple myeloma', category:'Haematology', icon:'🎗️',
     overview:'A malignancy of plasma cells producing a monoclonal paraprotein, causing bone destruction, marrow failure, kidney injury and hypercalcaemia. It is often diagnosed late because symptoms are non-specific. Recognising the "CRAB" features and unexplained back/bone pain — and ordering the right tests — is the key primary-care skill.',
@@ -216,7 +216,7 @@
       'Key investigations: FBC, calcium, renal function, ESR/plasma viscosity, and serum protein electrophoresis with serum free light chains, sent together (urine Bence Jones protein if free light chains are unavailable); imaging for bone lesions'],
     management:[
       'Suspect myeloma in older patients with unexplained persistent bone/back pain, pathological fracture, hypercalcaemia, anaemia, renal impairment, or recurrent infection',
-      'Order the right first-line tests together, not in stages (NICE NG12, 2025): FBC, calcium, ESR/plasma viscosity, serum protein electrophoresis and serum free light chains (urine Bence Jones protein if free light chains are unavailable), plus renal function',
+      'Order the right first-line tests together, not in stages (NICE NG12 (updated April 2026)): FBC, calcium, ESR/plasma viscosity, serum protein electrophoresis and serum free light chains (urine Bence Jones protein if free light chains are unavailable), plus renal function',
       'Refer urgently to haematology for confirmation (bone marrow, imaging) and treatment',
       'Treatment is specialist: combination therapy (e.g. proteasome inhibitors, immunomodulatory drugs, anti-CD38 antibodies, steroids) ± autologous stem-cell transplant; it is treatable but not usually curable, with a relapsing-remitting course',
       'Supportive care: bisphosphonates for bone disease, analgesia, treatment of hypercalcaemia and renal impairment, transfusion, and infection prevention/prompt treatment',
@@ -224,11 +224,11 @@
       'Vaccinate and manage infection risk; provide psychological and palliative/supportive care',
       'Monitor for relapse and complications on long-term shared follow-up'],
     referral:[
-      'Suspected myeloma (60+ with persistent bone/back pain or unexplained fracture) → FBC, calcium, ESR/plasma viscosity, serum protein electrophoresis and serum free light chains together (Bence Jones if free light chains unavailable); suspected cancer pathway referral if the results suggest myeloma (NICE NG12)',
+      'Suspected myeloma (60+ with persistent bone/back pain or unexplained fracture) → FBC, calcium, ESR/plasma viscosity, serum protein electrophoresis and serum free light chains together (Bence Jones if free light chains unavailable); suspected cancer pathway referral if the results suggest myeloma (NICE NG12 (updated April 2026))',
       'Suspected spinal cord compression (back pain with neurology/bladder-bowel dysfunction) → emergency (same-day) referral + MRI',
       'Severe hypercalcaemia or acute kidney injury → emergency admission',
       'Confirmed myeloma → haematology MDT'],
-    source:'NICE NG12 / NICE NG35 (Myeloma)' },
+    source:'NICE NG12 (updated April 2026) / NICE NG35 (Myeloma)' },
 
   { id:'multiple-sclerosis', title:'Multiple sclerosis (MS)', category:'Neurology', icon:'🧠',
     overview:'A chronic immune-mediated demyelinating disease of the central nervous system, causing neurological symptoms "disseminated in time and space". It typically presents in young adults (more women) and ranges from relapsing-remitting to progressive forms. Early diagnosis and disease-modifying therapy improve long-term outcomes.',
@@ -278,7 +278,7 @@
       'Severe orchitis, suspected pancreatitis, or new hearing loss → urgent assessment',
       'Notify public health (notifiable disease)',
       'Under-vaccinated contacts → offer MMR catch-up'],
-    source:'UKHSA / Green Book / NICE — Mumps' },
+    source:'UKHSA mumps guidance / Green Book chapter 23 (Mumps)' },
 
   { id:'munchausen', title:'Munchausen’s syndrome (factitious disorder)', category:'Mental health', icon:'🧠',
     overview:'A factitious disorder in which a person deliberately feigns, exaggerates, or induces illness in themselves to assume the "sick role" — without an external incentive (which would be malingering). A related, dangerous variant is fabricated or induced illness (FII) in a dependent (usually a child), which is a safeguarding emergency.',
@@ -303,7 +303,7 @@
       'Suspected factitious disorder → mental-health services (psychiatry/psychology)',
       'Coordinate care via a lead clinician/team and information-sharing governance',
       'Coexisting mental-health crisis/risk → urgent mental-health assessment'],
-    source:'NICE / safeguarding & psychiatric guidance' },
+    source:'RCPCH Perplexing presentations and fabricated or induced illness guidance (2021) / Working Together to Safeguard Children (2026) / psychiatric guidance' },
 
   { id:'muscular-dystrophy', title:'Muscular dystrophy', category:'Neurology', icon:'🧬',
     overview:'A group of inherited disorders causing progressive muscle weakness and wasting from defective muscle proteins. Duchenne muscular dystrophy — an X-linked condition of boys — is the commonest and most severe childhood form. There is no cure, but multidisciplinary care, corticosteroids (in DMD), and proactive cardiac/respiratory management greatly improve outcomes.',
@@ -328,7 +328,7 @@
       'Cardiac involvement → cardiology; respiratory decline → respiratory/ventilation service',
       'Orthopaedic complications (contractures, scoliosis) → orthopaedics',
       'Family/carrier testing and reproductive counselling → clinical genetics'],
-    source:'NICE / neuromuscular specialist guidance' }
+    source:'DMD Care Considerations (Birnkrant et al, Lancet Neurology 2018, international) / neuromuscular specialist guidance' }
 
   );
 })();

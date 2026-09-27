@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Haematospermia
-   Shared-id triage + differential. NICE · EAU · NICE NG12.
+   Shared-id triage + differential. EAU (international) · BASHH · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,49 +22,49 @@
   if (window.RGPTriage) RGPTriage.register('haematospermia-triage', {
     title: 'Haematospermia — triage',
     subtitle: 'Tick features. Reassure the young/transient; surfaces urology referral and prostate-cancer pathways.',
-    guideline: 'NICE · EAU · NICE NG12',
+    guideline: 'EAU (international) · BASHH · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine (BP, genital + PR), urine dip/STI screen, PSA if ≥40 after counselling; reassure isolated episodes in younger men.',
     rules: [
       {
         id: 'prostate_2ww', tier: 'cancer',
         label: 'Hard prostate / raised PSA / weight loss — suspected prostate cancer',
-        action: 'Urology 2WW (NICE NG12).',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'Urology 2WW (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.systemic || i.luts_prostate,
       },
       {
         id: 'urology', tier: 'urgent',
         label: 'Age ≥40 with persistent haematospermia, or haematuria',
         action: 'Refer urology — examination, PSA, ± TRUS/MRI to exclude prostate/seminal-vesicle pathology.',
-        source: 'EAU',
+        source: 'EAU (international)',
         when: i => i.over40_persistent || (i.age != null && i.age >= 40 && i.persistent) || i.haematuria,
       },
       {
         id: 'infection', tier: 'urgent',
         label: 'Infective cause (prostatitis / STI)',
         action: 'Urine + STI screen; treat; reassess.',
-        source: 'NICE',
+        source: 'BASHH',
         when: i => i.infection_sx,
       },
       {
         id: 'reassure', tier: 'routine',
         label: 'Isolated haematospermia, young, no red flags',
         action: 'Reassure (usually benign/self-limiting); safety-net to return if persistent or red flags.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('haematospermia-dx', {
     title: 'Haematospermia — differential',
     subtitle: 'Usually benign in younger men. The engine weights idiopathic, infective and procedure-related causes, and surfaces prostate malignancy when red flags fire.',
-    guideline: 'NICE · EAU',
+    guideline: 'EAU (international) · BASHH',
     patientPresenting: "I noticed blood in my semen, doctor — it really worried me.",
     inputs: INPUTS,
     diagnoses: [
@@ -82,7 +82,7 @@
         guideUrl: '' },
 
       { id: 'prostate_cancer', name: 'Prostate / GU malignancy', summary: 'Age ≥40 persistent, hard prostate, raised PSA, weight loss', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hard nodular prostate.', nextIx: '\u26A1 PSA + urology 2WW; mpMRI ± biopsy (NICE NG12).',
+        keyExam: 'Hard nodular prostate.', nextIx: '\u26A1 PSA + urology 2WW; mpMRI ± biopsy (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Persistent blood at your age warrants an urgent specialist check of the prostate — most prove benign.',
         guideUrl: '', redFlagAction: '\u26A1 PSA + urology 2WW' }
     ],
@@ -109,7 +109,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

@@ -114,7 +114,7 @@ MedChooser.register('hypothyroidism', {
       monitor:'Specialist endocrinology supervision',
       counsel:'"Standard thyroxine works for almost everyone. A second hormone (T3) is occasionally tried by specialists, but the evidence is weak and we wouldn\'t start it in primary care."',
       detail:{
-        'Key teaching':'NICE/BTA do NOT recommend routine liothyronine or combination therapy. Consider specialist referral only for the small number with persistent symptoms despite biochemically adequate levothyroxine, after excluding other causes. Do not initiate T3 in primary care.'
+        'Key teaching':'NICE NG145 / BTA do NOT recommend routine liothyronine or combination therapy. Consider specialist referral only for the small number with persistent symptoms despite biochemically adequate levothyroxine, after excluding other causes. Do not initiate T3 in primary care.'
       },
       evaluate(f){
         if (f.persistent_sx) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Persistent symptoms despite normal TSH — first re-check adherence/timing, dose, and other diagnoses; refer before any T3 trial'}] };

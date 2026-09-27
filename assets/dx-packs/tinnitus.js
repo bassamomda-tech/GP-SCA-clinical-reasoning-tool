@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Tinnitus
-   Shared-id triage + differential. NICE NG155 · NICE.
+   Shared-id triage + differential. NICE NG155.
    ============================================ */
 (function () {
   const INPUTS = [

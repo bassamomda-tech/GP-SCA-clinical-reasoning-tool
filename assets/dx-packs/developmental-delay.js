@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Developmental Delay
-   Shared-id triage + differential. NICE · Healthy Child Programme.
+   Shared-id triage + differential. Healthy Child Programme (OHID) · clinical practice.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,7 +22,7 @@
   if (window.RGPTriage) RGPTriage.register('developmental-delay-triage', {
     title: 'Developmental delay — triage',
     subtitle: 'Tick features. Surfaces regression (urgent), neuro signs and the multidisciplinary pathway.',
-    guideline: 'NICE · HCP',
+    guideline: 'Healthy Child Programme (OHID)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Confirm with a structured developmental history/screen; check hearing & vision; refer to community paediatrics / appropriate therapy; involve health visitor.',
     rules: [
@@ -31,7 +31,7 @@
         label: 'Developmental regression / neurological signs',
         action: 'Urgent paediatric/neurology referral — regression needs prompt investigation.',
         patientPhrase: '"Losing skills already gained needs a prompt specialist assessment to find the cause."',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.regression || i.neuro_signs,
       },
       {
@@ -52,7 +52,7 @@
         id: 'refer', tier: 'routine',
         label: 'Developmental delay — assess & refer',
         action: 'Community paediatrics; speech & language / physio / OT; hearing & vision check; review.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
@@ -64,7 +64,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('developmental-delay-dx', {
     title: 'Developmental delay — pattern & cause',
     subtitle: 'The engine characterises the delay (global vs domain-specific), highlights treatable sensory contributors, and always surfaces regression and neurological causes.',
-    guideline: 'NICE · HCP',
+    guideline: 'Healthy Child Programme (OHID)',
     patientPresenting: "I'm worried my child isn't developing like other children, doctor.",
     inputs: INPUTS,
     diagnoses: [

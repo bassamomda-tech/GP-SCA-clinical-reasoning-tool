@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Scrotal Pain / Swelling (acute)
-   Shared-id triage + differential. BASHH 2022 · EAU · NICE NG12.
+   Shared-id triage + differential. BASHH 2022 · EAU (international) · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -23,7 +23,7 @@
   if (window.RGPTriage) RGPTriage.register('scrotal-pain-triage', {
     title: 'Acute scrotum — triage',
     subtitle: 'Tick features. Torsion is time-critical — surfaces it first, then strangulated hernia, infection and tumour.',
-    guideline: 'NICE · EAU · NICE NG12',
+    guideline: 'BASHH · EAU (international) · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No emergency rule fired — but if any doubt about torsion, refer for same-day surgical exploration. Otherwise examine, urine dip/STI screen, and manage by likely cause.',
     rules: [
@@ -32,48 +32,48 @@
         label: 'Suspected testicular torsion',
         action: 'Call surgery NOW — same-day exploration within 6h. Do NOT wait for imaging.',
         patientPhrase: '"This could be a twisted testicle — an emergency. I am sending you straight to hospital for surgery to save it."',
-        source: 'NICE / BAUS',
+        source: 'Clinical practice (urology)',
         when: i => i.sudden_severe || i.high_riding || (i.age != null && i.age < 25 && !i.relieved_elevation && !i.dysuria_discharge),
       },
       {
         id: 'hernia', tier: 'emergency',
         label: 'Strangulated inguinoscrotal hernia',
         action: 'Same-day surgical admission.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.irreducible_lump,
       },
       {
         id: 'tumour_2ww', tier: 'cancer',
         label: 'Painless hard testicular mass — suspected cancer',
-        action: 'Urgent testicular USS + 2WW urology (NICE NG12).',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'Urgent testicular USS + 2WW urology (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.painless_mass,
       },
       {
         id: 'infection', tier: 'urgent',
         label: 'Epididymo-orchitis',
         action: 'Urine + STI screen; antibiotics per likely organism (age-dependent); analgesia, support, review.',
-        source: 'BASHH / NICE',
+        source: 'BASHH',
         when: i => i.dysuria_discharge || i.relieved_elevation || i.gradual,
       },
       {
         id: 'other', tier: 'routine',
         label: 'Other scrotal swelling — assess',
         action: 'Hydrocele / appendix torsion / varicocele as indicated; USS if uncertain.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('scrotal-pain-dx', {
     title: 'Acute scrotum — differential',
     subtitle: 'Torsion must be excluded first in any acute scrotum. The engine weights torsion, epididymo-orchitis, appendix torsion and hydrocele, and always surfaces torsion, strangulated hernia and tumour.',
-    guideline: 'NICE · EAU',
+    guideline: 'BASHH · EAU (international)',
     patientPresenting: "My testicle suddenly became really painful, doctor, and it feels swollen.",
     inputs: INPUTS,
     diagnoses: [
@@ -129,7 +129,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

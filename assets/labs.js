@@ -295,7 +295,7 @@
                 <span class="la-acc-ic">🧪</span>
                 <span class="la-acc-text">
                   <b>Lab results actioning tool</b>
-                  <small>Per-result GP next-steps · NICE / BSH / UK Kidney Association</small>
+                  <small>Per-result GP next-steps · NICE NG12 (updated April 2026) / NG203 / NG145 / NG28 · BSH · UK Kidney Association</small>
                 </span>
               </span>
               <span class="la-acc-caret">▶</span>
@@ -607,7 +607,7 @@
       const hlHtml = this._renderHeadline(headline, rows);
       const rowsHtml = rows.length
         ? rows.map(r => this._renderRow(r)).join('')
-        : `<div class="la-empty"><div class="la-empty-ic">🧪</div><p>Enter lab values (or paste from EMIS) to see action recommendations.<br/>The tool will fire rules from NICE / BSH / UK Kidney Association as you type.</p></div>`;
+        : `<div class="la-empty"><div class="la-empty-ic">🧪</div><p>Enter lab values (or paste from EMIS) to see action recommendations.<br/>The tool will fire rules from numbered NICE guidelines (NG12 updated April 2026, NG203, NG145, NG28…), BSH and UK Kidney Association as you type.</p></div>`;
 
       // Build synthesis (Option C: top lead + bottom plan)
       const synthesis = this._synthesise(rows, ctx, vals);
@@ -642,7 +642,7 @@
             <div class="la-hl-text">
               <div class="la-hl-tier">No action triggers</div>
               <div class="la-hl-title">Enter values to start</div>
-              <div class="la-hl-action">Tool surfaces every NICE / BSH / UK Kidney Association rule that fires for the entered results.</div>
+              <div class="la-hl-action">Tool surfaces every rule (numbered NICE guidelines, BSH, UK Kidney Association) that fires for the entered results.</div>
             </div>
           </header>`;
       }

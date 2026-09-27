@@ -1,17 +1,17 @@
 /* ============================================
    Diagnostic Tool — Tired all the time (TATT)
-   NICE NG12 · NG206
-   NICE NG12 (cancer) cross-linked to Triage Tool
+   NICE NG12 (updated April 2026) · NG206
+   NICE NG12 (updated April 2026) (cancer) cross-linked to Triage Tool
    ============================================ */
 RGPDiagnostic.register('tatt', {
   title: 'Tired all the time — differential diagnosis',
   subtitle: 'TATT is a presenting symptom — not a diagnosis. The engine narrows the differential across organic causes (anaemia, thyroid, diabetes, CKD, coeliac, OSA), mood disorders, and the can\'t-miss bracket (haematological + solid-organ cancer pathways are also surfaced in the Triage Tool).',
-  guideline: 'NICE NG12 · NICE NG206 (ME/CFS)',
+  guideline: 'NICE NG12 (updated April 2026) · NICE NG206 (ME/CFS)',
   patientPresenting: "I\u2019m just exhausted all the time, doctor. I sleep but I never feel rested. My partner says I snore. I\u2019m wondering if it\u2019s my thyroid \u2014 or maybe something worse.",
 
   xlink: {
     url: '../tools/triage-tool.html',
-    label: 'For 2WW cancer pathways and emergency thresholds (anaemia, hyponatraemia, hyperkalaemia, DKA, etc.) — open the Tiredness Triage Tool dataset.',
+    label: 'For suspected cancer (2WW) pathways and emergency thresholds (anaemia, hyponatraemia, hyperkalaemia, DKA, etc.) — open the Tiredness Triage Tool dataset.',
   },
 
   inputs: [
@@ -75,14 +75,14 @@ RGPDiagnostic.register('tatt', {
     { group:'GI / nutritional', id:'b12_neuro', kind:'check', label:'Distal paraesthesia / loss of vibration sense', note:'B12 / SCDC clue' },
 
     // ---- Red flags / can\'t-miss ----
-    { group:'Red flags (NG12 cross-link)', id:'weight_loss_5pct_6m', kind:'check', label:'Weight loss >5% in 6 months — unintentional' },
-    { group:'Red flags (NG12 cross-link)', id:'night_sweats_drench', kind:'check', label:'Drenching night sweats / unexplained fevers' },
-    { group:'Red flags (NG12 cross-link)', id:'lymphadenopathy', kind:'check', label:'Persistent lymphadenopathy >6 weeks' },
-    { group:'Red flags (NG12 cross-link)', id:'bone_pain_bruising', kind:'check', label:'Bone pain / bruising / petechiae' },
-    { group:'Red flags (NG12 cross-link)', id:'haematuria', kind:'check', label:'Visible haematuria' },
-    { group:'Red flags (NG12 cross-link)', id:'persistent_cough', kind:'check', label:'Cough / hoarseness >3 weeks' },
-    { group:'Red flags (NG12 cross-link)', id:'dysphagia', kind:'check', label:'Progressive dysphagia' },
-    { group:'Red flags (NG12 cross-link)', id:'iron_deficiency_male_post_meno', kind:'check', label:'Iron deficiency in adult male / post-menopausal female', note:'NG12 2WW lower GI' },
+    { group:'Red flags (NICE NG12, updated April 2026)', id:'weight_loss_5pct_6m', kind:'check', label:'Weight loss >5% in 6 months — unintentional' },
+    { group:'Red flags (NICE NG12, updated April 2026)', id:'night_sweats_drench', kind:'check', label:'Drenching night sweats / unexplained fevers' },
+    { group:'Red flags (NICE NG12, updated April 2026)', id:'lymphadenopathy', kind:'check', label:'Persistent lymphadenopathy >6 weeks' },
+    { group:'Red flags (NICE NG12, updated April 2026)', id:'bone_pain_bruising', kind:'check', label:'Bone pain / bruising / petechiae' },
+    { group:'Red flags (NICE NG12, updated April 2026)', id:'haematuria', kind:'check', label:'Visible haematuria' },
+    { group:'Red flags (NICE NG12, updated April 2026)', id:'persistent_cough', kind:'check', label:'Cough / hoarseness >3 weeks' },
+    { group:'Red flags (NICE NG12, updated April 2026)', id:'dysphagia', kind:'check', label:'Progressive dysphagia' },
+    { group:'Red flags (NICE NG12, updated April 2026)', id:'iron_deficiency_male_post_meno', kind:'check', label:'Iron deficiency in adult male / post-menopausal female', note:'NICE NG12 (updated April 2026): FIT; BSG 2021: bidirectional endoscopy' },
 
     // ---- Bloods (already done) ----
     { group:'Bloods (if done)', id:'low_hb', kind:'check', label:'Hb low (M <130 / F <120 g/L)' },
@@ -94,7 +94,7 @@ RGPDiagnostic.register('tatt', {
     { group:'Bloods (if done)', id:'high_hba1c', kind:'check', label:'HbA1c ≥48 mmol/mol' },
     { group:'Bloods (if done)', id:'low_egfr', kind:'check', label:'eGFR <60 ml/min/1.73m²' },
     { group:'Bloods (if done)', id:'high_ttg', kind:'check', label:'Anti-tTG IgA positive' },
-    { group:'Bloods (if done)', id:'high_plt', kind:'check', label:'Platelets ≥400 ×10⁹/L', note:'NG12 + symptom = 2WW' }
+    { group:'Bloods (if done)', id:'high_plt', kind:'check', label:'Platelets ≥400 ×10⁹/L', note:'NICE NG12 (updated April 2026): with symptoms → site-specific test' }
   ],
 
   diagnoses: [
@@ -105,7 +105,7 @@ RGPDiagnostic.register('tatt', {
       baseline:12,
       category:'common',
       keyExam:'Pallor (conjunctivae, palmar crease), tachycardia at rest, glossitis, koilonychia, abdomen + PR if older / male.',
-      nextIx:'FBC, ferritin, B12/folate, U&E, LFTs. If male / post-menopausal female with IDA → 2WW lower GI pathway (NICE NG12). Coeliac screen (tTG IgA) for all new IDA.',
+      nextIx:'FBC, ferritin, B12/folate, U&E, LFTs. IDA: FIT (≥10 µg Hb/g → colorectal suspected cancer pathway; NICE NG12, updated April 2026) and bidirectional endoscopy for men / postmenopausal women (BSG 2021). Coeliac screen (tTG IgA) for all new IDA.',
       patientPhrase:'Your tiredness is because your blood doesn\'t carry enough oxygen — and we need to find where the iron is leaking from. Replacing iron is the easy bit.',
       guideUrl: '', guideLabel: 'BSG iron deficiency anaemia guideline (2021)',
       caseLink:'../cases/fatigue.html',
@@ -219,7 +219,7 @@ RGPDiagnostic.register('tatt', {
       baseline:2,
       category:'less-common',
       keyExam:'Normal physical exam. NICE NG206 — diagnosis of exclusion after appropriate workup.',
-      nextIx:'NICE TATT workup negative (FBC, U&E, LFT, TFT, ferritin, HbA1c, B12/folate, calcium, CRP, coeliac, vitamin D). Refer ME/CFS service.',
+      nextIx:'NICE NG206 exclusion tests negative (urinalysis, FBC, U&E, LFT, TFT, ESR/CRP, calcium and phosphate, HbA1c, ferritin, coeliac screen, CK; B12/folate and vitamin D by clinical judgement). Refer ME/CFS service.',
       patientPhrase:'Your body has become stuck in a state where ordinary effort costs disproportionate recovery time. Pacing — staying within your "energy envelope" — is the cornerstone.',
       guideUrl: '',
     },
@@ -230,7 +230,7 @@ RGPDiagnostic.register('tatt', {
       baseline:4,
       category:'common',
       keyExam:'BP, BMI. FSH not routinely needed if >45 with typical sx.',
-      nextIx:'Clinical diagnosis in women >45. FSH only if <45 + investigating POI.',
+      nextIx:'Clinical diagnosis in women 45+ (NICE NG23). Consider FSH at 40–45 with symptoms, or under 40 if POI suspected.',
       patientPhrase:'Hormonal fluctuations are interrupting your sleep and energy. HRT corrects the underlying physiology — it is the treatment, not a luxury.',
       guideUrl: 'https://www.nice.org.uk/guidance/ng23', guideLabel: 'NICE NG23',
     },
@@ -243,10 +243,10 @@ RGPDiagnostic.register('tatt', {
       baseline:1,
       category:'cant-miss',
       keyExam:'Lymphadenopathy, hepatosplenomegaly, bruising / petechiae.',
-      nextIx:'⚡ FBC + film urgently. If suspicious → 2WW haematology (NICE NG12).',
+      nextIx:'⚡ Very urgent FBC + film (within 48 hours). If suggestive of leukaemia → very urgent haematology referral (within 48 hours) (NICE NG12 (updated April 2026)).',
       patientPhrase:'Some of the features make me want to send your blood for a film and a haematologist\'s opinion this week. Most are reassuringly normal — but we don\'t wait.',
       guideUrl: '',
-      redFlagAction:'⚡ 2WW haematology',
+      redFlagAction:'⚡ Very urgent haematology',
     },
     {
       id:'solid_cancer',
@@ -255,7 +255,7 @@ RGPDiagnostic.register('tatt', {
       baseline:1,
       category:'cant-miss',
       keyExam:'Site-directed exam — abdomen, breast, PR, lymph nodes, lungs.',
-      nextIx:'⚡ Site-specific 2WW per NICE NG12. Iron deficiency in adult M / post-menopausal F → lower GI 2WW. Visible haematuria → urology 2WW. Persistent cough → CXR + lung 2WW.',
+      nextIx:'⚡ Site-specific suspected cancer pathway per NICE NG12 (updated April 2026). IDA → FIT (≥10 → colorectal referral) ± bidirectional endoscopy (BSG 2021). Unexplained visible haematuria at 45+ → urology referral. Persistent cough → urgent CXR; lung referral if CXR suggests cancer.',
       patientPhrase:'Several features together flag the need to rule out a hidden cancer. Most 2WW referrals come back clear — but we can\'t wait to find out.',
       guideUrl: '',
       redFlagAction:'⚡ Site-specific 2WW',
@@ -383,10 +383,10 @@ RGPDiagnostic.register('tatt', {
 
   sources: [
     { label:'NICE NG206 — ME/CFS', url:'https://www.nice.org.uk/guidance/ng206' },
-    { label:'NICE NG12 Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'NICE NG206 ME/CFS', url:'https://www.nice.org.uk/guidance/ng206' },
     { label:'NICE NG20 — coeliac disease', url:'https://www.nice.org.uk/guidance/ng20' },
     { label:'NICE NG145 — thyroid disease', url:'https://www.nice.org.uk/guidance/ng145' },
-    { label:'NICE OSA', url:'https://www.nice.org.uk/guidance/ng202' }
+    { label:'NICE NG202 — OSAHS', url:'https://www.nice.org.uk/guidance/ng202' }
   ],
 });

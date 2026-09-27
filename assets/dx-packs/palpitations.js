@@ -1,7 +1,7 @@
 /* ============================================
    Diagnostic Tool pack — Palpitations
    Live triage + differential on a SHARED input schema.
-   Grounded in NICE NG196 · ESC 2024 · ESC syncope.
+   Grounded in NICE NG196 · ESC 2024 AF / ESC 2019 SVT · ESC syncope (international).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -38,8 +38,8 @@
 
   if (window.RGPTriage) RGPTriage.register('palpitations-triage', {
     title: 'Palpitations — red-flag triage',
-    subtitle: 'Tick symptoms / enter vitals. Surfaces the highest-acuity arrhythmia rule — referenced to NICE / ESC 2024.',
-    guideline: 'NICE NG196 · ESC 2024 · ESC 2024',
+    subtitle: 'Tick symptoms / enter vitals. Surfaces the highest-acuity arrhythmia rule — referenced to NICE NG196 / ESC 2024 (international).',
+    guideline: 'NICE NG196 · ESC 2024 AF / ESC 2019 SVT (international)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Most palpitations are benign (ectopics / sinus tachycardia). Capture rhythm during symptoms (12-lead, ambulatory or smartphone ECG), send FBC/TFT/U&E, and work the differential below.',
     rules: [
@@ -48,7 +48,7 @@
         label: 'Haemodynamic instability — fast rate + SBP <90',
         action: 'Call 999 — same-day admission for rhythm assessment/control.',
         patientPhrase: '"Your heart is racing and your blood pressure has dropped — I need to send you straight to hospital."',
-        source: 'Resus Council / ESC 2024',
+        source: 'Resus Council / ESC 2024 (international)',
         when: i => (i.hr != null && i.hr > 150 && i.sbp != null && i.sbp < 90) || (i.sustained && i.sbp != null && i.sbp < 90),
       },
       {
@@ -56,7 +56,7 @@
         label: 'Palpitations + chest pain or severe breathlessness — ? ACS / unstable arrhythmia',
         action: '999 / same-day — 12-lead ECG, troponin.',
         patientPhrase: '"Palpitations together with chest pain need an urgent heart trace in hospital today."',
-        source: 'NICE CG95 / ESC 2024',
+        source: 'NICE CG95 / ESC 2024 (international)',
         when: i => i.chest_pain || (i.breathless && i.sustained),
       },
       {
@@ -64,56 +64,56 @@
         label: 'Syncope during exertion — exclude malignant arrhythmia / outflow obstruction',
         action: 'Same-day cardiology / admission. Advise against driving & exertion meanwhile.',
         patientPhrase: '"Blacking out while active is a warning sign — we need urgent heart tests before you do anything strenuous."',
-        source: 'ESC Syncope 2018',
+        source: 'ESC Syncope 2018 (international)',
         when: i => i.exertional && i.syncope,
       },
       {
         id: 'malignant_ecg', tier: 'urgent',
         label: 'ECG shows pre-excitation / long QT / Brugada / broad-complex',
         action: 'Urgent cardiology — risk of malignant arrhythmia; review driving (DVLA).',
-        source: 'ESC 2024 SVT / 2022 VA',
+        source: 'ESC 2019 SVT / 2022 VA (international)',
         when: i => i.ecg_preexcite,
       },
       {
         id: 'inherited_risk', tier: 'urgent',
         label: 'FH sudden cardiac death <40 / inherited cardiac condition',
         action: 'Urgent cardiology + 12-lead ECG; consider inherited-cardiac-conditions clinic.',
-        source: 'ESC 2022 ventricular arrhythmias',
+        source: 'ESC 2022 ventricular arrhythmias (international)',
         when: i => i.fh_scd,
       },
       {
         id: 'syncope_structural', tier: 'urgent',
         label: 'Syncope/pre-syncope with palpitations, or structural heart disease',
         action: 'Same-week cardiology + ambulatory ECG; review driving.',
-        source: 'NICE NG196 · ESC 2024',
+        source: 'NICE NG196 · ESC 2024 (international)',
         when: i => i.syncope || i.structural,
       },
       {
         id: 'new_af', tier: 'urgent',
         label: 'AF/flutter captured — assess stroke & rate',
         action: 'CHA₂DS₂-VASc + anticoagulation decision; rate control; bloods + echo; same-week review.',
-        source: 'NICE NG196 / ESC 2024',
+        source: 'NICE NG196 / ESC 2024 (international)',
         when: i => i.ecg_af,
       },
       {
         id: 'routine_benign', tier: 'routine',
         label: 'Palpitations without red flags',
         action: 'Capture rhythm during symptoms; FBC, TFT, U&E, glucose; reduce caffeine/alcohol/stimulants; reassure if ectopics on structurally normal heart.',
-        source: 'NICE NG196 · ESC 2024',
+        source: 'NICE NG196 · ESC 2024 (international)',
         when: i => true,
       }
     ],
     sources: [
       
       { label: 'NICE NG196 — Atrial fibrillation', url: 'https://www.nice.org.uk/guidance/ng196' },
-      { label: 'ESC 2024 — SVT / AF', url: 'https://www.escardio.org/Guidelines' }
+      { label: 'ESC 2019 SVT / ESC 2024 AF (international)', url: 'https://www.escardio.org/Guidelines' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('palpitations-dx', {
     title: 'Palpitations — differential diagnosis',
     subtitle: 'Palpitations are a symptom, not a diagnosis. The engine ranks the rhythm differential from regularity, triggers, associated features and any captured ECG. Malignant arrhythmias are always surfaced when their triggers fire.',
-    guideline: 'NICE NG196 · ESC 2024 · ESC 2024',
+    guideline: 'NICE NG196 · ESC 2024 AF / ESC 2019 SVT (international)',
     patientPresenting: "My heart suddenly starts racing and pounding, doctor — sometimes it just skips. It comes out of nowhere and it frightens me.",
     inputs: INPUTS,
     diagnoses: [
@@ -211,7 +211,7 @@
     sources: [
       
       { label: 'NICE NG196 — Atrial fibrillation', url: 'https://www.nice.org.uk/guidance/ng196' },
-      { label: 'ESC 2024 — SVT / AF', url: 'https://www.escardio.org/Guidelines' }
+      { label: 'ESC 2019 SVT / ESC 2024 AF (international)', url: 'https://www.escardio.org/Guidelines' }
     ],
   });
 

@@ -174,7 +174,7 @@
     "who": "dr",
     "text": "Here’s what I’d suggest. A stool test kit you do at home. A blood test for coeliac disease. And, because of the stomach symptoms and the weight, an urgent referral for camera tests of the stomach and bowel on the suspected cancer pathway. These are day procedures — you go home the same day.",
     "dom": "tasks",
-    "why": "FIT, coeliac serology and urgent upper and lower GI assessment in line with NICE NG12 and HTG690"
+    "why": "FIT, coeliac serology and urgent upper and lower GI assessment in line with NICE NG12 (updated April 2026) and HTG690"
    },
    {
     "who": "pt",
@@ -268,7 +268,7 @@
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about melaena, haematemesis, faintness and chest pain; weight loss with dyspepsia at 68 recognised as an NG12 upper GI criterion.",
+    "d": "Asked about melaena, haematemesis, faintness and chest pain; weight loss with dyspepsia at 68 recognised as an NICE NG12 (updated April 2026) upper GI criterion.",
     "pts": 2
    },
    {
@@ -424,7 +424,7 @@
     "reflectIce": "“You’ve been holding on to the diet explanation because the other one might mean hospital and leaving Brian. Let’s make a plan where the tests happen and he’s looked after.”",
     "psychosocial": "Carer’s assessment and sitting service referral today; involve the daughter by phone; book procedures as day cases with Brian’s cover arranged in advance.",
     "sharedPlan": [
-     "FIT this week (NICE HTG690); coeliac serology; urgent upper and lower GI investigation on the suspected cancer pathway (NICE NG12, BSG 2021)",
+     "FIT this week (NICE HTG690); coeliac serology; urgent upper and lower GI investigation on the suspected cancer pathway (NICE NG12 (updated April 2026), BSG 2021)",
      "Oral iron once daily with vitamin C; stop the iron-containing multivitamin; FBC within 4 weeks",
      "Carer’s assessment and sitting service so appointments can be kept"
     ],
@@ -456,7 +456,7 @@
    {
     "ic": "🗺️",
     "t": "Dyspepsia pathway",
-    "s": "Visual algorithm · NICE NG12 upper GI",
+    "s": "Visual algorithm · NICE NG12 (updated April 2026) upper GI",
     "href": "algorithms/dyspepsia.html"
    }
   ],
@@ -466,7 +466,7 @@
     {
      "dom": "tasks",
      "fail": "Prescribing iron and closing the call because she asked for it and the story fits.",
-     "why": "“Management plan not in line with current UK best practice.” IDA at 68 needs investigation for GI loss (BSG 2021; NICE HTG690; NICE NG12).",
+     "why": "“Management plan not in line with current UK best practice.” IDA at 68 needs investigation for GI loss (BSG 2021; NICE HTG690; NICE NG12 (updated April 2026)).",
      "fix": "Say it plainly: “Iron is the meantime, not the answer.” Then FIT, coeliac serology and urgent referral."
     },
     {
@@ -514,7 +514,7 @@
     "No regular medication (no NSAIDs or aspirin)"
    ],
    "allergy": "No known drug allergies",
-   "recent": "11 January: Hb 108 g/L (microcytic), ferritin 9 µg/L — filed “normal — no action” by a locum GP who has since left. Re-attended 2 April with worsening fatigue: Hb 96 g/L, ferritin 6 µg/L. Suspected-cancer (2WW) referral made for colonoscopy and OGD; FIT requested. Significant event logged by the practice manager.",
+   "recent": "11 January: Hb 108 g/L (microcytic), ferritin 9 µg/L — filed “normal — no action” by a locum GP who has since left. Re-attended 2 April with worsening fatigue: Hb 96 g/L, ferritin 6 µg/L. Suspected cancer pathway referral made for colonoscopy and OGD; FIT requested. Significant event logged by the practice manager.",
    "reason": "Practice-booked video call: duty GP to explain the missed result."
   },
   "knowledge": {
@@ -764,7 +764,7 @@
      "No regular medication"
     ],
     "allergy": "NKDA",
-    "recent": "⚠ 11 Jan: Hb 108, ferritin 9 — filed “normal, no action”. 2 Apr: Hb 96, ferritin 6. 2WW colonoscopy and OGD referral sent; FIT requested; significant event logged.",
+    "recent": "⚠ 11 Jan: Hb 108, ferritin 9 — filed “normal, no action”. 2 Apr: Hb 96, ferritin 6. Suspected cancer pathway colonoscopy and OGD referral sent; FIT requested; significant event logged.",
     "reason": "Practice-booked video call: duty GP to explain the missed result."
    },
    "timeMap": [
@@ -879,7 +879,7 @@
     "reflectIce": "“You’ve been waiting thirty years for this letter, and we cost you three months. I understand the arithmetic you’re doing. Let’s get you numbers that are your own.”",
     "psychosocial": "Match his precision; offer to meet with his wife; respect the complaint decision as his; give him a direct line.",
     "sharedPlan": [
-     "Urgent bidirectional endoscopy (BSG 2021) expedited with the delay documented; FIT (NICE NG12, updated April 2026)",
+     "Urgent bidirectional endoscopy (BSG 2021) expedited with the delay documented; FIT (NICE NG12 (updated April 2026))",
      "tTG (NICE NG20); oral iron once daily (BSG 2021, dose per BNF); Hb recheck at about 4 weeks",
      "Significant-event analysis with outcome in writing; results-filing protocol changed; complaint details given"
     ],
@@ -893,7 +893,7 @@
    {
     "ic": "📋",
     "t": "Anaemia",
-    "s": "Case walkthrough · NICE NG12",
+    "s": "Case walkthrough · NICE NG12 (updated April 2026)",
     "href": "../cases/anaemia.html"
    },
    {
@@ -1908,14 +1908,14 @@
   },
   "knowledge": {
    "guideline": "NICE NG12 (updated April 2026) — myeloma · NICE NG234 (2023) spinal metastases and MSCC · NICE NG253 sepsis",
-   "summary": "Persistent back pain at 60+ with anaemia, raised ESR, raised calcium or renal decline needs the NG12 myeloma panel now. Screen cord compression and stop NSAIDs on the same call.",
+   "summary": "Persistent back pain at 60+ with anaemia, raised ESR, raised calcium or renal decline needs the NICE NG12 (updated April 2026) myeloma panel now. Screen cord compression and stop NSAIDs on the same call.",
    "points": [
     {
      "h": "Recognise the pattern",
      "t": "Constant, night-dominant back pain unlike his old lumbago, with Hb 108, ESR 88, adjusted calcium 2.68 and eGFR 72 → 48. Myeloma’s CRAB features (calcium, renal, anaemia, bone) are all present."
     },
     {
-     "h": "NG12 myeloma tests",
+     "h": "NICE NG12 (updated April 2026) myeloma tests",
      "t": "NICE NG12 (updated April 2026), recs 1.10.4–1.10.5: aged 60 and over with persistent bone pain, particularly back pain, or unexplained fracture — offer FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains (urine Bence Jones if free light chains are unavailable). Refer on a suspected cancer pathway if results suggest myeloma."
     },
     {
@@ -2049,7 +2049,7 @@
     "who": "dr",
     "text": "It is. The next step is one set of bloods that look for myeloma’s fingerprint — a protein test and a light-chain test — plus a repeat of your calcium and kidneys. I want those tomorrow morning. If they point to myeloma, you’re referred to the blood specialists on the urgent suspected cancer pathway.",
     "dom": "tasks",
-    "why": "Completes the NG12 myeloma panel promptly and names the referral route"
+    "why": "Completes the NICE NG12 (updated April 2026) myeloma panel promptly and names the referral route"
    },
    {
     "phase": "Shared management",
@@ -2129,7 +2129,7 @@
    },
    {
     "t": "Plans appropriate examination and tests",
-    "d": "Serum protein electrophoresis and serum free light chains (NICE NG12), repeat bone profile and U&E, FBC and film; face-to-face examination including neurology.",
+    "d": "Serum protein electrophoresis and serum free light chains (NICE NG12 (updated April 2026)), repeat bone profile and U&E, FBC and film; face-to-face examination including neurology.",
     "pts": 1
    },
    {
@@ -2291,7 +2291,7 @@
     "reflectIce": "“You’ve been preparing for Eileen’s story. I don’t know yet what this is, but if it’s myeloma, it’s a different condition found at a different point.”",
     "psychosocial": "Encourage him to tell someone close and bring them to haematology; check how he’s coping alone; offer bereavement support.",
     "sharedPlan": [
-     "Serum protein electrophoresis and serum free light chains, repeat bone profile, U&E, FBC and film tomorrow (NICE NG12)",
+     "Serum protein electrophoresis and serum free light chains, repeat bone profile, U&E, FBC and film tomorrow (NICE NG12 (updated April 2026))",
      "Suspected cancer pathway referral to haematology if results suggest myeloma",
      "Stop ibuprofen; regular paracetamol and a short weak opioid with laxative, doses per BNF; fluids"
     ],
@@ -2317,7 +2317,7 @@
    {
     "ic": "📋",
     "t": "Haematological cancers",
-    "s": "Case walkthrough · NICE NG12",
+    "s": "Case walkthrough · NICE NG12 (updated April 2026)",
     "href": "../cases/haematological-cancers.html"
    },
    {
@@ -2340,7 +2340,7 @@
      "dom": "tasks",
      "fail": "Labelling it mechanical back pain and offering physiotherapy or stronger NSAIDs.",
      "why": "“Fails to recognise a serious condition.” Night pain at 72 with anaemia, raised ESR, calcium and falling eGFR is myeloma until excluded.",
-     "fix": "State the pattern and send serum protein electrophoresis and free light chains (NICE NG12)."
+     "fix": "State the pattern and send serum protein electrophoresis and free light chains (NICE NG12 (updated April 2026))."
     },
     {
      "dom": "tasks",
@@ -4870,7 +4870,7 @@
   },
   "knowledge": {
    "guideline": "NICE NG12 (updated April 2026) — suspected colorectal cancer · NICE HTG690 (formerly DG56) — FIT in primary care · BSG iron deficiency anaemia guideline (2021)",
-   "summary": "A FIT of 47 µg Hb/g in a man with an eight-week change in bowel habit, weight loss and iron deficiency anaemia meets NICE NG12 for a suspected cancer pathway (urgent) lower-GI referral, made on this call. Longstanding piles do not explain the picture.",
+   "summary": "A FIT of 47 µg Hb/g in a man with an eight-week change in bowel habit, weight loss and iron deficiency anaemia meets NICE NG12 (updated April 2026) for a suspected cancer pathway (urgent) lower-GI referral, made on this call. Longstanding piles do not explain the picture.",
    "points": [
     {
      "h": "The referral threshold",
@@ -5023,7 +5023,7 @@
     "who": "dr",
     "text": "So I’d like to refer you today on the urgent suspected cancer pathway — what people call the two-week wait. The hospital will contact you, usually within a couple of weeks, and the aim is an answer within about four weeks. The test is usually a camera examination of the bowel: you take a bowel-clearing drink the day before, you’re offered sedation, and it takes a morning.",
     "dom": "tasks",
-    "why": "Urgent NG12 referral on the call, with the test explained honestly"
+    "why": "Urgent NICE NG12 (updated April 2026) referral on the call, with the test explained honestly"
    },
    {
     "who": "pt",
@@ -5117,7 +5117,7 @@
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about obstruction, heavy bleeding and weight loss; identified the NG12 threshold is met.",
+    "d": "Asked about obstruction, heavy bleeding and weight loss; identified the NICE NG12 (updated April 2026) threshold is met.",
     "pts": 2
    },
    {
@@ -5127,7 +5127,7 @@
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Suspected cancer pathway lower-GI referral today (NICE NG12); honest explanation of colonoscopy; practical plan around work.",
+    "d": "Suspected cancer pathway lower-GI referral today (NICE NG12 (updated April 2026)); honest explanation of colonoscopy; practical plan around work.",
     "pts": 2
    },
    {
@@ -5190,7 +5190,7 @@
    ],
    "wordPics": {
     "fail": "Delays the result behind small talk or softens it to “probably nothing”; accepts “it’s just piles”; offers a repeat FIT or routine referral; never finds Raymond; no safety-net or chase instruction.",
-    "pass": "Gives the result plainly, recognises the NG12 threshold is met and makes a suspected cancer pathway referral on the call, explains colonoscopy, and safety-nets with a follow-up.",
+    "pass": "Gives the result plainly, recognises the NICE NG12 (updated April 2026) threshold is met and makes a suspected cancer pathway referral on the call, explains colonoscopy, and safety-nets with a follow-up.",
     "exc": "All of the above, plus: holds the silence after the number; finds Raymond and turns the late diagnosis into the reason for testing; explains kindly why piles cannot account for the weight loss and anaemia; solves the work problem practically; closes with teach-back and a named call after the test."
    },
    "avoid": [
@@ -5252,7 +5252,7 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "FIT 47 µg Hb/g (threshold 10) with an eight-week change in bowel habit — NICE NG12 suspected cancer pathway referral",
+     "FIT 47 µg Hb/g (threshold 10) with an eight-week change in bowel habit — NICE NG12 (updated April 2026) suspected cancer pathway referral",
      "Unintentional weight loss (about half a stone) and iron deficiency anaemia (Hb 128 g/L, ferritin 18 µg/L)",
      "Obstruction symptoms (colicky pain, distension, absolute constipation, vomiting) or heavy bleeding — same-day A&E"
     ],
@@ -5287,7 +5287,7 @@
    {
     "ic": "🗺️",
     "t": "Rectal bleeding",
-    "s": "Visual algorithm · NICE NG12 FIT threshold",
+    "s": "Visual algorithm · NICE NG12 (updated April 2026) FIT threshold",
     "href": "algorithms/rectal-bleeding.html"
    },
    {
@@ -5369,15 +5369,15 @@
   },
   "knowledge": {
    "guideline": "NICE NG12 (updated April 2026) — bladder, renal and prostate cancer · NHS England Faster Diagnosis Standard (October 2023)",
-   "summary": "Unexplained visible haematuria at 45 or over, without a urinary tract infection, meets NICE NG12 for a suspected cancer pathway urology referral — made on the day, not deferred for a beetroot story, test results or a holiday. Smoking and decorating work add to his risk.",
+   "summary": "Unexplained visible haematuria at 45 or over, without a urinary tract infection, meets NICE NG12 (updated April 2026) for a suspected cancer pathway urology referral — made on the day, not deferred for a beetroot story, test results or a holiday. Smoking and decorating work add to his risk.",
    "points": [
     {
-     "h": "The NG12 thresholds",
+     "h": "The NICE NG12 (updated April 2026) thresholds",
      "t": "NICE NG12 (updated April 2026): refer on a suspected cancer pathway for bladder or renal cancer if aged 45 or over with unexplained visible haematuria without urinary tract infection, or visible haematuria that persists or recurs after successful UTI treatment. Aged 60 or over with unexplained non-visible haematuria plus dysuria or a raised white cell count: also refer."
     },
     {
      "h": "Recurrent UTI is a different route",
-     "t": "NICE NG12: consider a non-urgent referral for bladder cancer in people aged 60 and over with recurrent or persistent unexplained UTI. Do not confuse this with the urgent visible-haematuria criterion."
+     "t": "NICE NG12 (updated April 2026): consider a non-urgent referral for bladder cancer in people aged 60 and over with recurrent or persistent unexplained UTI. Do not confuse this with the urgent visible-haematuria criterion."
     },
     {
      "h": "Is it really blood?",
@@ -5389,7 +5389,7 @@
     },
     {
      "h": "The prostate too",
-     "t": "NICE NG12: consider a PSA test and digital rectal examination in men with visible haematuria, and in men with lower urinary tract symptoms. His slow stream is another reason to offer this, with PSA counselling."
+     "t": "NICE NG12 (updated April 2026): consider a PSA test and digital rectal examination in men with visible haematuria, and in men with lower urinary tract symptoms. His slow stream is another reason to offer this, with PSA counselling."
     },
     {
      "h": "What happens next",
@@ -5510,7 +5510,7 @@
     "who": "dr",
     "text": "Beetroot’s a fair thought, but proper red through the whole stream, twice, isn’t something I can put down to vegetables. The rule I follow is simple: visible blood in the urine, over 45, with no infection to explain it, gets an urgent referral to the bladder specialists. I’ll send it today.",
     "dom": "tasks",
-    "why": "Retires the beetroot story and states the NG12 threshold"
+    "why": "Retires the beetroot story and states the NICE NG12 (updated April 2026) threshold"
    },
    {
     "who": "pt",
@@ -5520,7 +5520,7 @@
     "who": "dr",
     "text": "They’ll usually do a camera test of the bladder — a thin flexible tube, with numbing gel, over in a few minutes, home the same day — and a scan of the kidneys. Before then I’d like a urine sample to check for infection, a blood test for your kidneys and blood count, and a blood pressure check. Because your stream is slower, I’d also like to discuss a prostate blood test and examination — we can talk through the pros and cons when you come in.",
     "dom": "tasks",
-    "why": "Explains investigations; MSU, U&E and FBC without delaying; PSA per NG12"
+    "why": "Explains investigations; MSU, U&E and FBC without delaying; PSA per NICE NG12 (updated April 2026)"
    },
    {
     "who": "pt",
@@ -5604,7 +5604,7 @@
    },
    {
     "t": "Plans appropriate examination and tests",
-    "d": "MSU for culture and urine test for blood, U&E and eGFR, FBC, BP; PSA and DRE discussed (NICE NG12); referral not delayed for results.",
+    "d": "MSU for culture and urine test for blood, U&E and eGFR, FBC, BP; PSA and DRE discussed (NICE NG12 (updated April 2026)); referral not delayed for results.",
     "pts": 1
    },
    {
@@ -5624,7 +5624,7 @@
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Suspected cancer pathway urology referral today (NICE NG12); cystoscopy and imaging explained; the cruise timeline addressed.",
+    "d": "Suspected cancer pathway urology referral today (NICE NG12 (updated April 2026)); cystoscopy and imaging explained; the cruise timeline addressed.",
     "pts": 2
    },
    {
@@ -5677,7 +5677,7 @@
     {
      "t": "6–10",
      "h": "Explain and share",
-     "d": "Retire the beetroot story; NG12 threshold; referral today; cystoscopy and imaging; MSU, bloods, PSA discussion. Solve the cruise and mention travel insurance."
+     "d": "Retire the beetroot story; NICE NG12 (updated April 2026) threshold; referral today; cystoscopy and imaging; MSU, bloods, PSA discussion. Solve the cruise and mention travel insurance."
     },
     {
      "t": "10–12",
@@ -5687,7 +5687,7 @@
    ],
    "wordPics": {
     "fail": "Accepts the beetroot explanation or defers referral until after the cruise; waits for urine results before referring; never finds Stan; offers bland reassurance; no safety-net.",
-    "pass": "Establishes true visible haematuria, knows the NG12 threshold and refers on a suspected cancer pathway today, arranges urine and blood tests, explains cystoscopy, and safety-nets.",
+    "pass": "Establishes true visible haematuria, knows the NICE NG12 (updated April 2026) threshold and refers on a suspected cancer pathway today, arranges urine and blood tests, explains cystoscopy, and safety-nets.",
     "exc": "All of the above, plus: challenges the deflection kindly and finds Stan; answers “is this what Stan had?” straight and hopefully; turns the cruise into a reason to be investigated now; discusses PSA; supports him to tell Pam; closes with teach-back and a named call."
    },
    "avoid": [
@@ -5736,7 +5736,7 @@
     },
     {
      "h": "Tracking the referral",
-     "t": "Suspected cancer referrals should be tracked by practice systems; document the NG12 criterion, the safety-net and the follow-up call."
+     "t": "Suspected cancer referrals should be tracked by practice systems; document the NICE NG12 (updated April 2026) criterion, the safety-net and the follow-up call."
     }
    ],
    "community": [
@@ -5749,7 +5749,7 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "Painless, whole-stream visible haematuria at 45 or over without UTI — NICE NG12 suspected cancer pathway referral",
+     "Painless, whole-stream visible haematuria at 45 or over without UTI — NICE NG12 (updated April 2026) suspected cancer pathway referral",
      "Clots, inability to pass urine or heavy persistent bleeding — same-day A&E",
      "Risk factors: 30 pack-years smoking; forty years’ exposure to paints and solvents; slow stream (prostate)"
     ],
@@ -5772,7 +5772,7 @@
     "sharedPlan": [
      "Suspected cancer pathway urology referral today — NICE NG12 (updated April 2026)",
      "MSU for culture and a urine test for blood, U&E and eGFR, FBC, BP — without delaying the referral",
-     "PSA and DRE discussed with counselling (NICE NG12); explanation of cystoscopy and imaging"
+     "PSA and DRE discussed with counselling (NICE NG12 (updated April 2026)); explanation of cystoscopy and imaging"
     ],
     "safetyNet": [
      "Unable to pass urine, clots or heavy persistent bleeding — A&E the same day",
@@ -5784,7 +5784,7 @@
    {
     "ic": "🗺️",
     "t": "Haematuria",
-    "s": "Visual algorithm · NICE NG12 thresholds",
+    "s": "Visual algorithm · NICE NG12 (updated April 2026) thresholds",
     "href": "algorithms/haematuria.html"
    },
    {
@@ -5812,7 +5812,7 @@
     {
      "dom": "tasks",
      "fail": "Accepting beetroot as the explanation, or sending a urine sample and “seeing”.",
-     "why": "Whole-stream red urine twice at 67 meets NICE NG12 for a suspected cancer pathway referral; waiting on tests delays it.",
+     "why": "Whole-stream red urine twice at 67 meets NICE NG12 (updated April 2026) for a suspected cancer pathway referral; waiting on tests delays it.",
      "fix": "Establish that it was true blood, state the threshold, and refer today while arranging the MSU and bloods in parallel."
     },
     {
@@ -5824,7 +5824,7 @@
     {
      "dom": "tasks",
      "fail": "Ignoring the slow stream and the occupational history.",
-     "why": "NICE NG12 advises considering PSA and DRE in men with visible haematuria or LUTS; decorating solvents and smoking add bladder risk.",
+     "why": "NICE NG12 (updated April 2026) advises considering PSA and DRE in men with visible haematuria or LUTS; decorating solvents and smoking add bladder risk.",
      "fix": "Ask about stream and work, record pack-years, and offer a PSA discussion."
     },
     {
@@ -5882,7 +5882,7 @@
     },
     {
      "h": "Recurrence route",
-     "t": "With a breast cancer history and new hip pain, phone the breast or acute oncology team the same day; they direct imaging. NICE NG12 applies to undiagnosed cancer, not suspected recurrence."
+     "t": "With a breast cancer history and new hip pain, phone the breast or acute oncology team the same day; they direct imaging. NICE NG12 (updated April 2026) applies to undiagnosed cancer, not suspected recurrence."
     },
     {
      "h": "Emergency line",

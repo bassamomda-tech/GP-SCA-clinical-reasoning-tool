@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Generalised Body Aches
-   Shared-id triage + differential. NICE (PMR / fibromyalgia / vit D / statin).
+   Shared-id triage + differential. BSR PMR · NICE NG193 (fibromyalgia) · clinical practice (vit D / statin).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,7 +22,7 @@
   if (window.RGPTriage) RGPTriage.register('body-aches-triage', {
     title: 'Generalised body aches — triage',
     subtitle: 'Tick features. Surfaces GCA, myositis and malignancy pathways, then weights the common causes.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Targeted bloods (FBC, ESR/CRP, TFT, calcium/vit D, CK, U&E, LFT); review statins; most cases are viral, PMR, fibromyalgia, thyroid or vitamin D — treat by cause.',
     rules: [
@@ -38,14 +38,14 @@
         id: 'myositis', tier: 'urgent',
         label: 'Possible inflammatory myositis — proximal weakness + raised CK',
         action: 'CK, urgent rheumatology; stop statin; consider malignancy screen.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.myositis,
       },
       {
         id: 'malignancy', tier: 'cancer',
         label: 'Systemic features — weight loss / night sweats / bone pain',
-        action: 'Investigate per NICE NG12 (myeloma screen, imaging) by pattern.',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'Investigate per NICE NG12 (updated April 2026) (myeloma screen, imaging) by pattern.',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.systemic_cancer,
       },
       {
@@ -59,7 +59,7 @@
         id: 'manage', tier: 'routine',
         label: 'Common cause — assess & treat',
         action: 'Viral → reassure; thyroid/vit D → replace; statin myalgia → review; fibromyalgia → explain + non-drug management.',
-        source: 'NICE',
+        source: 'Clinical practice · NICE NG193 (chronic primary pain)',
         when: i => true,
       }
     ],
@@ -72,7 +72,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('body-aches-dx', {
     title: 'Generalised aches — differential',
     subtitle: 'The engine weights viral, PMR, fibromyalgia, thyroid, vitamin D and statin causes, and always surfaces GCA, myositis and malignancy.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I ache all over, doctor — it's been going on for weeks and I'm exhausted.",
     inputs: INPUTS,
     diagnoses: [
@@ -106,7 +106,7 @@
         patientPhrase: 'These features can threaten sight — we start steroids and refer urgently today.',
         guideUrl: '', guideLabel: 'BSR giant cell arteritis guideline (2020)', redFlagAction: '\u26A1 Steroid now + urgent referral' },
       { id: 'myositis_malig', name: 'Inflammatory myositis / malignancy', summary: 'Proximal weakness + high CK, or systemic red flags', baseline: 1, category: 'cant-miss',
-        keyExam: 'Proximal weakness; systemic signs.', nextIx: '\u26A1 CK + urgent rheumatology; malignancy screen per NG12.',
+        keyExam: 'Proximal weakness; systemic signs.', nextIx: '\u26A1 CK + urgent rheumatology; malignancy screen per NICE NG12 (updated April 2026).',
         patientPhrase: 'Muscle weakness with these features needs urgent tests to exclude inflammation of the muscles or an underlying cancer.',
         guideUrl: '', redFlagAction: '\u26A1 CK + urgent referral' }
     ],

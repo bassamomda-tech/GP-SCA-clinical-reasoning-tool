@@ -25,7 +25,7 @@
   if (window.RGPTriage) RGPTriage.register('sensory-neuropathy-triage', {
     title: 'Sensory neuropathy — triage',
     subtitle: 'Tick features. Surfaces Guillain-Barré, vasculitic neuropathy and the metabolic workup.',
-    guideline: 'NICE · peripheral neuropathy workup',
+    guideline: 'Clinical practice · NICE CG173 (neuropathic pain)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Send first-line workup (HbA1c/glucose, B12/folate, U&E, TFT, FBC, LFT, ESR ± immunoglobulins); treat reversible causes; neuropathic-pain management; refer neurology if cause unclear or atypical.',
     rules: [
@@ -34,14 +34,14 @@
         label: 'Possible Guillain-Barré — rapidly ascending weakness ± areflexia / breathing or swallowing difficulty',
         action: 'Same-day admission — neurology, spirometry (FVC), supportive care.',
         patientPhrase: '"Weakness spreading this quickly needs emergency hospital assessment today."',
-        source: 'NICE / neurology',
+        source: 'Clinical practice (neurology)',
         when: i => i.ascending_rapid || i.motor_breathing,
       },
       {
         id: 'vasculitic', tier: 'urgent',
         label: 'Mononeuritis multiplex / systemic features — possible vasculitis',
         action: 'Urgent neurology/rheumatology; ESR/CRP, ANCA, immunology.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.asymmetric_painful || i.systemic_vasculitis,
       },
       {
@@ -61,7 +61,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('sensory-neuropathy-dx', {
     title: 'Sensory neuropathy — differential (cause)',
     subtitle: 'The engine weights the common metabolic/toxic causes by distribution and tempo, separates focal entrapment, and always surfaces Guillain-Barré and vasculitic neuropathy when triggered.',
-    guideline: 'NICE · peripheral neuropathy',
+    guideline: 'Clinical practice · NICE CG173 (neuropathic pain)',
     patientPresenting: "My feet feel numb and tingly, doctor, like walking on cotton wool — it's been creeping up over months.",
     inputs: INPUTS,
     diagnoses: [

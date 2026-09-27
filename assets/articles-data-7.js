@@ -1,5 +1,5 @@
 /* Reasoning GP — Articles data (batch 7: C topics)
-   RCGP/SCA examiner depth. NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -24,10 +24,10 @@
       'Provide alcohol support, analgesia review and structured follow-up'],
     referral:[
       'Suspected chronic pancreatitis → gastroenterology for confirmation and management',
-      'New/worsening pain with weight loss, jaundice, or in a patient aged 60+ with weight loss → urgent direct-access CT for pancreatic cancer (NICE NG12)',
+      'New/worsening pain with weight loss, jaundice, or in a patient aged 60+ with weight loss → urgent direct-access CT for pancreatic cancer (NICE NG12 (updated April 2026))',
       'Complications (pseudocyst, biliary/duodenal obstruction, intractable pain) → specialist/surgical input',
       'Difficult diabetes or malnutrition → endocrinology/dietetics'],
-    source:'NICE NG104 (Pancreatitis) / NICE NG12' },
+    source:'NICE NG104 (Pancreatitis) / NICE NG12 (updated April 2026)' },
 
   { id:'cirrhosis', title:'Cirrhosis', category:'Gastroenterology', icon:'🟤',
     overview:'The end stage of chronic liver injury — diffuse fibrosis and nodular regeneration that distorts liver architecture. It progresses from compensated (often silent) to decompensated disease (ascites, varices, encephalopathy, jaundice). Common causes are alcohol, MASLD/metabolic, and chronic viral hepatitis. Surveillance for hepatocellular carcinoma is essential.',
@@ -49,10 +49,10 @@
       'Recognise decompensation early and refer/admit; provide advance care planning where disease is advanced'],
     referral:[
       'Suspected/confirmed cirrhosis → hepatology for staging, surveillance and complication management',
-      'At-risk cirrhotic patients → 6-monthly ultrasound surveillance for hepatocellular carcinoma; a suspicious liver lesion → urgent referral (NICE NG12 — consider HCC pathway)',
+      'At-risk cirrhotic patients → 6-monthly ultrasound surveillance for hepatocellular carcinoma; a suspicious liver lesion → urgent referral (NICE NG12 (updated April 2026) — consider HCC pathway)',
       'Decompensation (variceal bleed, tense ascites, encephalopathy, jaundice, suspected SBP) → emergency admission',
       'Advanced disease → consider transplant assessment / palliative care'],
-    source:'NICE NG50 (Cirrhosis) / NICE NG12' },
+    source:'NICE NG50 (Cirrhosis) / NICE NG12 (updated April 2026)' },
 
   { id:'c-diff', title:'Clostridioides difficile (C. diff) infection', category:'Infectious diseases', icon:'🦠',
     overview:'A toxin-producing bacterial gut infection that causes antibiotic-associated diarrhoea and colitis, ranging from mild illness to life-threatening pseudomembranous colitis and toxic megacolon. It typically follows antibiotic use, which disrupts the normal gut flora. Recognition, antibiotic stewardship and infection control are central.',
@@ -102,7 +102,7 @@
       'First presentation or atypical features → MRI brain to exclude secondary causes',
       'Refractory or chronic cluster headache → specialist headache service',
       'Significant low mood/suicidality due to pain → mental-health support'],
-    source:'NICE — Headache / SIGN & BASH guidance' },
+    source:'NICE CG150 (Headaches in over 12s) / BASH guidance' },
 
   { id:'coccydynia', title:'Tailbone (coccyx) pain', category:'Musculoskeletal', icon:'🦴',
     aka:'Coccyx pain, coccydynia',
@@ -124,11 +124,11 @@
       'Refractory cases may need specialist pain or, rarely, surgical (coccygectomy) assessment',
       'Provide written self-care advice and review if not improving'],
     referral:[
-      'Red-flag features (unexplained weight loss, night pain, a mass, neurological signs, cancer history) → urgent investigation/appropriate cancer pathway (NICE NG12)',
+      'Red-flag features (unexplained weight loss, night pain, a mass, neurological signs, cancer history) → urgent investigation/appropriate cancer pathway (NICE NG12 (updated April 2026))',
       'Persistent pain despite conservative measures → MSK/pain service (consider injection)',
       'Refractory, disabling coccydynia → specialist pain/surgical assessment',
       'Suspected referred pathology (e.g. rectal, gynaecological) → relevant specialty'],
-    source:'NICE — Coccydynia' },
+    source:'Clinical practice summary' },
 
   { id:'cold-sores', title:'Cold sores (herpes simplex labialis)', category:'Dermatology', icon:'💋',
     overview:'Recurrent perioral blisters caused by herpes simplex virus (usually HSV-1), which establishes latency and reactivates. They are common, self-limiting and benign in healthy people, but carry specific risks in neonates, the immunocompromised, and those with eczema (eczema herpeticum).',
@@ -153,7 +153,7 @@
       'Suspected ocular HSV (red painful eye, dendritic ulcer, visual change) → same-day ophthalmology',
       'Cold sores/HSV exposure in a neonate or significantly immunocompromised patient → urgent specialist assessment',
       'Severe, frequent, or treatment-resistant disease → dermatology'],
-    source:'NICE — Herpes simplex (oral)' },
+    source:'Clinical practice summary / BNF (antivirals)' },
 
   { id:'infantile-colic', title:'Colic (infantile colic)', category:'Paediatrics', icon:'👶',
     overview:'Repeated, prolonged episodes of inconsolable crying in an otherwise healthy, thriving baby, typically in the first few months of life with no identifiable cause. It is benign and self-limiting but very distressing for parents — and the key task is excluding other causes and supporting the family.',
@@ -178,10 +178,10 @@
       'Suspected cow’s-milk protein allergy not responding to dietary measures → paediatrics/dietetics',
       'Diagnostic uncertainty or faltering growth → paediatrics',
       'Parental mental-health concern (postnatal depression) or safeguarding risk → appropriate support/services'],
-    source:'NICE — Colic (infantile)' },
+    source:'Clinical practice summary' },
 
   { id:'colorectal-cancer', title:'Bowel (colorectal) cancer', category:'Gastroenterology', icon:'🎗️',
-    overview:'One of the commonest cancers in the UK, usually arising from adenomatous polyps. Outcomes depend heavily on stage at diagnosis, so the primary-care priorities are promoting screening, using FIT to risk-stratify symptomatic patients, and recognising the NICE NG12 thresholds for urgent referral.',
+    overview:'One of the commonest cancers in the UK, usually arising from adenomatous polyps. Outcomes depend heavily on stage at diagnosis, so the primary-care priorities are promoting screening, using FIT to risk-stratify symptomatic patients, and recognising the NICE NG12 (updated April 2026) thresholds for urgent referral.',
     features:[
       'Change in bowel habit (looser stools/increased frequency), rectal bleeding, abdominal pain, weight loss and iron-deficiency anaemia',
       'Left-sided/rectal tumours: rectal bleeding, change in bowel habit, tenesmus; right-sided tumours: iron-deficiency anaemia and weight loss, often without obvious bleeding',
@@ -192,21 +192,21 @@
     management:[
       'Promote uptake of the national bowel-cancer screening programme in eligible patients',
       'Use FIT to guide urgent referral in symptomatic patients (a faecal haemoglobin ≥10 µg Hb/g supports a suspected-cancer referral), while not letting a negative FIT override strong clinical concern',
-      'Recognise and act on the NICE NG12 referral thresholds (below) — do not delay',
+      'Recognise and act on the NICE NG12 (updated April 2026) referral thresholds (below) — do not delay',
       'Check FBC for iron-deficiency anaemia and examine the abdomen/rectum',
       'Refer confirmed cancers to the colorectal MDT; support patients through staging (CT, MRI rectum) and treatment decisions',
       'Identify possible hereditary cancer (young onset, strong family history, multiple primaries) and refer for genetics/Lynch testing',
       'Support lifestyle risk reduction: stop smoking, reduce alcohol and processed meat, maintain a healthy weight and be active',
       'Provide information, manage symptoms, and coordinate surveillance/follow-up after treatment'],
     referral:[
-      'NICE NG12 colorectal pathway: offer FIT for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, an abdominal mass, or anaemia at 60+ → 2WW if FIT ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT',
+      'NICE NG12 (updated April 2026) colorectal pathway: offer FIT for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, an abdominal mass, or anaemia at 60+ → 2WW if FIT ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT',
       'Suspected bowel obstruction or significant GI bleeding → emergency admission',
       'Positive screening FIT → colonoscopy via the screening programme',
       'Suspected Lynch syndrome/FAP → clinical genetics'],
-    source:'NICE NG12 / NICE HTG690 (FIT) / NHS Bowel Cancer Screening' },
+    source:'NICE NG12 (updated April 2026) / NICE HTG690 (FIT) / NHS Bowel Cancer Screening' },
 
   { id:'breast-cancer', title:'Breast cancer', category:'Women’s health', icon:'🎗️',
-    overview:'The commonest cancer in women in the UK (and a rare but real diagnosis in men). Early detection through screening and prompt referral of symptomatic patients markedly improves outcomes. The primary-care role is examination, recognising the NICE NG12 referral criteria, and supporting risk assessment for those with a family history.',
+    overview:'The commonest cancer in women in the UK (and a rare but real diagnosis in men). Early detection through screening and prompt referral of symptomatic patients markedly improves outcomes. The primary-care role is examination, recognising the NICE NG12 (updated April 2026) referral criteria, and supporting risk assessment for those with a family history.',
     features:[
       'A new discrete breast lump or thickening (the commonest presentation), particularly if hard, irregular, fixed or painless',
       'Skin changes: dimpling/puckering, peau d’orange, nipple inversion (new), or eczema-like change of the nipple/areola (Paget’s disease of the breast)',
@@ -224,11 +224,11 @@
       'Manage treatment-related issues in primary care (e.g. menopausal symptoms on endocrine therapy, bone health, lymphoedema) and survivorship',
       'Provide information and psychological support throughout'],
     referral:[
-      'NICE NG12 2WW breast pathway: refer people aged ≥30 with an unexplained breast lump (± pain); aged ≥50 with unilateral nipple changes (discharge, retraction, other concern); skin changes suggestive of breast cancer; and consider for an axillary lump',
+      'NICE NG12 (updated April 2026) 2WW breast pathway: refer people aged ≥30 with an unexplained breast lump (± pain); aged ≥50 with unilateral nipple changes (discharge, retraction, other concern); skin changes suggestive of breast cancer; and consider for an axillary lump',
       'Aged <30 with an unexplained breast lump → non-urgent referral (consider 2WW if other concerning features)',
       'Strong family history meeting criteria → familial breast-cancer/genetics service',
       'Confirmed cancer → breast MDT'],
-    source:'NICE NG12 / NICE CG164 (familial breast cancer)' },
+    source:'NICE NG12 (updated April 2026) / NICE CG164 (familial breast cancer)' },
 
   { id:'colour-blindness', title:'Colour vision deficiency (colour blindness)', category:'Ophthalmology', icon:'👁️',
     overview:'Reduced ability to distinguish certain colours, usually an inherited (X-linked) red-green deficiency affecting around 1 in 12 men. It is generally a lifelong, non-progressive variation rather than a disease, but acquired colour deficiency can signal eye or systemic disease, and there are practical/occupational implications.',
@@ -253,7 +253,7 @@
       'Suspected drug-induced colour change (e.g. ethambutol, hydroxychloroquine) → review/monitor per protocol and refer as needed',
       'Occupational assessment requirements → relevant occupational/optometry service',
       'Diagnostic uncertainty → optometry/ophthalmology'],
-    source:'NICE / optometry guidance' },
+    source:'College of Optometrists guidance' },
 
   { id:'common-cold', title:'Common cold', category:'Respiratory', icon:'🤧',
     overview:'A self-limiting viral upper-respiratory-tract infection — the commonest acute illness seen in practice. The clinical value lies in confident reassurance, sensible self-care advice, antibiotic stewardship, and recognising the minority who have, or develop, something more serious.',
@@ -278,7 +278,7 @@
       'Complications such as significant bacterial sinusitis, otitis media, or lower-respiratory infection → manage/refer as appropriate',
       'Exacerbation of underlying asthma/COPD → manage per exacerbation pathway',
       'Diagnostic uncertainty or unusually prolonged illness → reassess'],
-    source:'NICE — Common cold' },
+    source:'Clinical practice summary' },
 
   { id:'compartment-syndrome', title:'Compartment syndrome', category:'Musculoskeletal', icon:'🦵',
     overview:'Raised pressure within a closed fascial compartment that compromises tissue perfusion. ACUTE compartment syndrome is a surgical emergency — usually after a fracture or crush injury — that causes irreversible muscle and nerve damage within hours if not decompressed. Chronic exertional compartment syndrome is a separate, non-urgent entity.',
@@ -303,7 +303,7 @@
       'Crush injury, tight cast with escalating pain, or post-fracture deterioration → urgent assessment',
       'Suspected chronic exertional compartment syndrome → elective orthopaedics/sports medicine for testing',
       'Established neurovascular deficit → emergency'],
-    source:'NICE / BOAST (orthopaedic) guidance' },
+    source:'BOAST (orthopaedic) guidance' },
 
   { id:'congenital-heart-disease', title:'Congenital heart disease', category:'Cardiovascular & Renal', icon:'🫀',
     overview:'Structural heart abnormalities present from birth — the commonest group of congenital anomalies. They range from small defects that close spontaneously to complex, life-threatening lesions. With modern care most children survive to adulthood, creating a growing population of adults with congenital heart disease (ACHD) needing lifelong specialist follow-up.',
@@ -328,7 +328,7 @@
       'Suspected congenital heart disease (murmur with symptoms, cyanosis, faltering growth, abnormal saturations) → paediatric cardiology',
       'Adults with congenital heart disease → specialist ACHD service for lifelong follow-up',
       'Pregnancy in a woman with CHD → specialist cardiac-obstetric care'],
-    source:'NICE / paediatric & ACHD cardiology guidance' },
+    source:'Paediatric and ACHD cardiology guidance' },
 
   { id:'ddh', title:'Congenital hip dislocation (developmental dysplasia of the hip)', category:'Paediatrics', icon:'👶',
     overview:'A spectrum of abnormal hip development — from a shallow (dysplastic) socket to frank dislocation — present at or developing after birth. Early detection through newborn screening allows simple, effective treatment; late diagnosis risks the need for surgery and long-term hip problems, so vigilance at every infant check matters.',
@@ -353,7 +353,7 @@
       'Risk factors (breech, family history) → selective hip ultrasound per protocol',
       'Late presentation (limp, abnormal gait, leg-length discrepancy) → urgent orthopaedic assessment',
       'Confirmed DDH → paediatric orthopaedics for treatment and follow-up'],
-    source:'NICE / NIPE screening / BSCOS guidance' },
+    source:'NHS NIPE screening programme / BSCOS guidance' },
 
   { id:'contact-dermatitis', title:'Contact dermatitis', category:'Dermatology', icon:'🧴',
     overview:'Inflammation of the skin from external agents — either irritant (direct damage, dose-dependent, the commoner type) or allergic (a delayed type-IV hypersensitivity to a specific allergen). Identifying and avoiding the cause is the cornerstone; it is a common occupational disease, especially of the hands.',
@@ -378,7 +378,7 @@
       'Severe, widespread, or treatment-resistant disease → dermatology',
       'Occupational dermatitis affecting work → dermatology/occupational health (and report as appropriate)',
       'Diagnostic uncertainty → dermatology'],
-    source:'NICE — Dermatitis (contact)' },
+    source:'BAD guidance / Clinical practice summary' },
 
   { id:'corns-calluses', title:'Corns and calluses', category:'Dermatology', icon:'🦶',
     overview:'Areas of thickened skin (hyperkeratosis) caused by repeated pressure or friction — calluses are diffuse, corns are focal with a central core. They are common and benign, but in people with diabetes or neuropathy they can overlie or precipitate ulceration, so footcare and risk assessment matter.',
@@ -403,7 +403,7 @@
       'Painful, recurrent, or large corns/calluses → podiatry',
       'Underlying foot deformity needing correction → orthopaedics/podiatric surgery',
       'Diagnostic uncertainty → assessment'],
-    source:'NICE — Corns and calluses' },
+    source:'Clinical practice summary' },
 
   { id:'cradle-cap', title:'Cradle cap (infantile seborrhoeic dermatitis)', category:'Paediatrics', icon:'👶',
     overview:'A very common, benign, self-limiting scalp condition of young infants — greasy yellow scales and crusts on the scalp, sometimes spreading to the face and flexures. It is harmless, not itchy, and not due to poor hygiene; reassurance and simple measures are all that is usually needed.',
@@ -428,7 +428,7 @@
       'Severe, widespread, or treatment-resistant disease → dermatology',
       'Secondary infection not responding → review/treat',
       'Associated failure to thrive or systemic features → paediatrics (consider rarer causes)'],
-    source:'NICE — Seborrhoeic dermatitis (infantile)' },
+    source:'Clinical practice summary' },
 
   { id:'craniosynostosis', title:'Craniosynostosis', category:'Paediatrics', icon:'👶',
     overview:'Premature fusion of one or more cranial sutures, restricting skull growth perpendicular to the fused suture and producing a characteristic abnormal head shape. It must be distinguished from benign positional plagiocephaly. Significant or syndromic cases risk raised intracranial pressure and need specialist craniofacial care.',
@@ -453,7 +453,7 @@
       'Features of raised intracranial pressure → urgent assessment',
       'Suspected syndromic craniosynostosis → craniofacial MDT + genetics',
       'Diagnostic uncertainty vs positional plagiocephaly → paediatric assessment'],
-    source:'NICE / craniofacial specialist guidance' },
+    source:'Craniofacial specialist guidance' },
 
   { id:'croup', title:'Croup (laryngotracheobronchitis)', category:'Paediatrics', icon:'👶',
     overview:'A common viral upper-airway infection of young children (usually 6 months–3 years), typically parainfluenza, causing subglottic inflammation. The hallmark is a barking cough with stridor. Most is mild and steroid-responsive; the key is assessing severity and distinguishing it from rarer, dangerous airway emergencies.',
@@ -478,7 +478,7 @@
       'Suspected epiglottitis (toxic, drooling, sitting forward, soft stridor) or bacterial tracheitis → 999 / emergency airway management; do not examine the throat',
       'Suspected inhaled foreign body → urgent assessment',
       'Young infant, recurrent/atypical croup, or significant comorbidity → paediatric assessment'],
-    source:'NICE — Croup' },
+    source:'BNFC (dexamethasone) / Clinical practice summary' },
 
   { id:'cystic-fibrosis', title:'Cystic fibrosis', category:'Respiratory', icon:'🫁',
     overview:'An autosomal-recessive multisystem disease caused by CFTR gene mutations, producing thick secretions that damage the lungs, pancreas and other organs. Most UK cases are detected by newborn screening. Care is highly specialised; life expectancy has risen markedly, including with new CFTR-modulator drugs.',
@@ -525,10 +525,10 @@
       'Investigate visible haematuria and persistent/unexplained urinary symptoms appropriately'],
     referral:[
       'Pyelonephritis/severe or systemic illness, or UTI in pregnancy that is systemically unwell → assess for admission',
-      'Visible haematuria, or non-visible haematuria with risk factors, or recurrent UTI with red flags → urology (consider NICE NG12 bladder/renal cancer pathway, especially age ≥45 with visible haematuria)',
+      'Visible haematuria, or non-visible haematuria with risk factors, or recurrent UTI with red flags → urology (consider NICE NG12 (updated April 2026) bladder/renal cancer pathway, especially age ≥45 with visible haematuria)',
       'Recurrent/complicated UTI, men with recurrent UTI, or structural concern → urology',
-      'Children with UTI → assess/refer per NICE paediatric UTI guidance'],
-    source:'NICE NG109 (UTI — lower) / NICE' },
+      'Children with UTI → assess/refer per NICE NG224 (UTI in under 16s)'],
+    source:'NICE NG109 (UTI — lower) / NICE NG224 (UTI in under 16s)' },
 
   { id:'cyclothymia', title:'Cyclothymia', category:'Mental health', icon:'🧠',
     overview:'A chronic mood disorder of fluctuating subthreshold highs (hypomanic-like) and lows (depressive) that never meet the full criteria for a hypomanic or major depressive episode. It is persistent (≥2 years), often unrecognised, and carries a risk of progression to bipolar disorder.',
@@ -553,7 +553,7 @@
       'Emergence of clear hypomanic/manic or major depressive episodes → specialist review (reconsider bipolar diagnosis)',
       'Significant risk, comorbidity, or functional impairment → community mental-health team',
       'Young people with mood instability → CAMHS'],
-    source:'NICE CG185 (Bipolar disorder) / NICE' }
+    source:'NICE CG185 (Bipolar disorder)' }
 
   );
 })();

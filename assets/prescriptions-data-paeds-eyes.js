@@ -66,7 +66,7 @@ Persistent/atypical/non-healing → exclude lichen sclerosus (BXO)/penile cancer
       { name: 'Preservative-free drops if frequent use / lens wearer', dose: '1 drop', freq: 'PRN', route: 'Topical eye', days: 'Ongoing' },
     ],
     altRegimens: [
-      { label: 'Blepharitis / meibomian gland dysfunction', drugs: 'Warm compresses + lid hygiene/massage twice daily; consider a course of oral doxycycline for posterior blepharitis/ocular rosacea (specialist/NICE-guided).' },
+      { label: 'Blepharitis / meibomian gland dysfunction', drugs: 'Warm compresses + lid hygiene/massage twice daily; consider a course of oral doxycycline for posterior blepharitis/ocular rosacea (specialist-guided; dose per BNF).' },
       { label: 'Inadequate to drops alone', drugs: 'Step up lubricant viscosity / frequency; treat contributing factors (screens, environment, drugs e.g. anticholinergics, systemic disease e.g. Sjögren\u2019s).' },
       { label: 'Severe / not responding', drugs: 'Refer ophthalmology — consider topical ciclosporin, punctal plugs; investigate underlying autoimmune cause.' },
     ],

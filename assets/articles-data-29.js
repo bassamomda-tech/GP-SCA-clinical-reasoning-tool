@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 29: T topics, part 1)
    NHS A–Z (letter T) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Suspected hydatid disease (liver/lung cysts) → infectious diseases/surgery',
       'Complex, imported, or tissue parasitic disease → infectious diseases/tropical medicine',
       'Uncomplicated intestinal tapeworm → treat in primary care'],
-    source:'UKHSA / NICE — Tapeworm / tropical medicine guidance' },
+    source:'UKHSA / BNF (antihelminthics) / tropical medicine guidance' },
 
   { id:'tuberculosis', title:'Tuberculosis (TB)', category:'Infectious diseases', icon:'🦠',
     overview:'A bacterial infection (Mycobacterium tuberculosis), usually pulmonary but able to affect any organ. It may be active (infectious) or latent (dormant). It remains an important diagnosis — especially in higher-risk groups — and is a notifiable, public-health-managed disease requiring prolonged combination antibiotics and contact tracing.',
@@ -74,11 +74,11 @@
       'Promote testicular self-examination/awareness for early detection',
       'Provide information, psychological support, and survivorship follow-up (and surveillance for the contralateral testis)'],
     referral:[
-      'A non-cystic/suspicious mass in the body of the testis → urgent suspected testicular-cancer (2WW) referral; arrange direct-access scrotal ultrasound to assess (NICE NG12)',
+      'A non-cystic/suspicious mass in the body of the testis → urgent suspected testicular-cancer (2WW) referral; arrange direct-access scrotal ultrasound to assess (NICE NG12 (updated April 2026))',
       'Confirmed/suspected testicular cancer → urology/uro-oncology',
       'Fertility preservation before treatment → sperm storage/fertility services',
       'Acute severe testicular pain (exclude torsion) → emergency surgical assessment'],
-    source:'NICE NG12 / testicular cancer guidance' },
+    source:'NICE NG12 (updated April 2026) / testicular cancer guidance' },
 
   { id:'testicular-torsion', title:'Testicular torsion', category:'Urology', icon:'♂️',
     overview:'Twisting of the spermatic cord cutting off the blood supply to the testis — a SURGICAL EMERGENCY. The testis can be saved only if it is untwisted within hours, so any acute testicular pain (especially in adolescents/young men) must be treated as torsion until proven otherwise, with immediate surgical referral.',
@@ -103,7 +103,7 @@
       'Equivocal cases where torsion cannot be excluded → treat as torsion (explore)',
       'Neonatal torsion → urgent specialist assessment',
       'Intermittent torsion (recurrent severe self-resolving pain) → urology for elective fixation'],
-    source:'BAUS / NICE — Scrotal pain' },
+    source:'BAUS / emergency urology practice (acute scrotum)' },
 
   { id:'tetanus', title:'Tetanus', category:'Infectious diseases', icon:'🦠',
     overview:'A life-threatening disease caused by a neurotoxin from Clostridium tetani, entering through contaminated wounds, causing severe muscle spasms. It is rare in the UK thanks to immunisation, so the practical focus is wound risk assessment and appropriate tetanus prophylaxis (vaccine ± immunoglobulin) after injuries.',
@@ -153,7 +153,7 @@
       'Couples/individuals identified as carriers → genetic counselling and antenatal screening',
       'Microcytic anaemia with normal/high ferritin (suspected trait) → haemoglobinopathy screening (electrophoresis/HPLC)',
       'Complications of iron overload or transfusion → haematology'],
-    source:'NICE / NHS Sickle Cell and Thalassaemia Screening / BSH' },
+    source:'NHS Sickle Cell and Thalassaemia Screening Programme / BSH haemoglobinopathy guidance' },
 
   { id:'threadworms', title:'Threadworms (pinworms)', category:'Infectious diseases', icon:'🪱',
     overview:'A very common, benign intestinal worm infection (Enterobius vermicularis), especially in children, causing perianal itch (worse at night). It spreads easily by the faecal-oral route within households. Treatment is simple, but it must be combined with strict hygiene measures and treating the whole household to prevent reinfection.',
@@ -178,7 +178,7 @@
       'Persistent/recurrent infection despite correct treatment and hygiene → review (adherence, reinfection source)',
       'Diagnostic uncertainty or atypical symptoms → assessment',
       'Pregnancy/very young children → follow specific guidance on treatment'],
-    source:'NICE — Threadworm' },
+    source:'BNF/BNFC (mebendazole)' },
 
   { id:'thyroid-cancer', title:'Thyroid cancer', category:'Endocrine & metabolic', icon:'🎗️',
     overview:'An uncommon cancer usually presenting as a thyroid nodule/lump. Most (papillary/follicular) are differentiated and have an excellent prognosis; medullary and anaplastic types are less common. The key skill is recognising the features of a nodule (and the red flags) that warrant urgent referral and exclusion of malignancy.',
@@ -199,11 +199,11 @@
       'Manage post-treatment thyroid hormone replacement, calcium (after total thyroidectomy — hypoparathyroidism risk), and long-term surveillance (including thyroglobulin monitoring for differentiated cancer)',
       'Provide information and psychological support; prognosis for differentiated cancer is generally excellent'],
     referral:[
-      'A rapidly enlarging, hard, or fixed thyroid lump, an unexplained thyroid lump, hoarseness with a thyroid mass, cervical lymphadenopathy with a thyroid nodule, or a thyroid nodule in a child → urgent suspected thyroid-cancer (2WW) referral (NICE NG12)',
+      'A rapidly enlarging, hard, or fixed thyroid lump, an unexplained thyroid lump, hoarseness with a thyroid mass, cervical lymphadenopathy with a thyroid nodule, or a thyroid nodule in a child → urgent suspected thyroid-cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'Stridor/compressive symptoms or a rapidly growing hard mass (?anaplastic) → emergency/urgent assessment',
       'Confirmed thyroid cancer → thyroid MDT',
       'Suspected medullary/familial cancer → genetics + endocrinology'],
-    source:'NICE NG12 / British Thyroid Association guidance' },
+    source:'NICE NG12 (updated April 2026) / British Thyroid Association guidelines (2014)' },
 
   { id:'tinnitus', title:'Tinnitus', category:'ENT', icon:'👂',
     overview:'The perception of sound (ringing, buzzing, hissing) without an external source. It is very common, usually associated with hearing loss, and most often benign — but the GP must recognise the patterns needing urgent referral (notably unilateral/pulsatile tinnitus) and support those whose tinnitus is distressing.',

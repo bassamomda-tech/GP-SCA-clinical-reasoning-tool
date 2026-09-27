@@ -1,8 +1,8 @@
-/* Triage — Dizziness / Collapse · NICE · NG128 · NG158 · ESC 2018 */
+/* Triage — Dizziness / Collapse · NICE CG109 · NG128 · NG158 · ESC 2018 (international) */
 RGPTriage.register('dizziness-triage', {
   title: 'Dizziness / collapse — symptom triage',
   subtitle: 'TiTrATE + ESC Syncope red flags + NICE NG128 / NG158 pathways.',
-  guideline: 'NICE · ESC 2018 · NG128 · NG158',
+  guideline: 'NICE CG109 · ESC 2018 (international) · NG128 · NG158',
   inputs: [
     { group:'Demographics', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
     { group:'Demographics', id:'pregnant', kind:'check', label:'Pregnant / possibly pregnant' },

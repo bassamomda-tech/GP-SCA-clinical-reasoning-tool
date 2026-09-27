@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Premature Ejaculation
-   Shared-id triage + differential. NICE · EAU/ISSM.
+   Shared-id triage + differential. EAU/ISSM (international).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -17,7 +17,7 @@
   if (window.RGPTriage) RGPTriage.register('premature-ejaculation-triage', {
     title: 'Premature ejaculation — triage',
     subtitle: 'Tick features. Identifies treatable contributors (ED, prostatitis, thyroid) and directs management.',
-    guideline: 'NICE · EAU/ISSM',
+    guideline: 'EAU/ISSM (international)',
     inputs: INPUTS,
     defaultMessage: 'No specific contributor flagged. Confirm distress-causing PE, exclude/treat co-existing ED, and offer behavioural techniques ± topical anaesthetic or SSRI (e.g. dapoxetine).',
     rules: [
@@ -25,34 +25,34 @@
         id: 'treat_ed', tier: 'urgent',
         label: 'Co-existing erectile dysfunction — treat ED first',
         action: 'Treat ED (PDE5 inhibitor); PE often improves; assess CV risk (see ED).',
-        source: 'EAU/ISSM',
+        source: 'EAU/ISSM (international)',
         when: i => i.ed,
       },
       {
         id: 'secondary', tier: 'urgent',
         label: 'Acquired PE with prostatitis / thyroid symptoms',
         action: 'Treat underlying cause (prostatitis, thyrotoxicosis); reassess.',
-        source: 'EAU/ISSM',
+        source: 'EAU/ISSM (international)',
         when: i => i.acquired && i.prostatitis_thyroid,
       },
       {
         id: 'manage', tier: 'routine',
         label: 'Premature ejaculation — behavioural + pharmacological',
         action: 'Behavioural techniques (stop-start/squeeze), topical anaesthetic, SSRI (dapoxetine on-demand); psychosexual therapy if relationship/anxiety factors.',
-        source: 'NICE',
+        source: 'EAU/ISSM (international) · BNF',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'EAU/ISSM — Premature ejaculation', url: 'https://uroweb.org/guidelines' }
+      { label: 'EAU/ISSM — Premature ejaculation (international)', url: 'https://uroweb.org/guidelines' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('premature-ejaculation-dx', {
     title: 'Premature ejaculation — type & contributors',
     subtitle: 'The engine distinguishes lifelong, acquired and variable PE, and weights the treatable contributors (ED, anxiety, prostatitis/thyroid).',
-    guideline: 'NICE · EAU/ISSM',
+    guideline: 'EAU/ISSM (international)',
     patientPresenting: "I finish far too quickly, doctor — it's really affecting my relationship.",
     inputs: INPUTS,
     diagnoses: [
@@ -96,7 +96,7 @@
     },
     sources: [
       
-      { label: 'EAU/ISSM — Premature ejaculation', url: 'https://uroweb.org/guidelines' }
+      { label: 'EAU/ISSM — Premature ejaculation (international)', url: 'https://uroweb.org/guidelines' }
     ],
   });
 

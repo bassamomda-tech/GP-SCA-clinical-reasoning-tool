@@ -1,5 +1,5 @@
 /* Reasoning GP — Articles data (batch 6: B–C topics)
-   RCGP/SCA examiner depth. NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -27,7 +27,7 @@
       'Widespread blistering, infection, or systemic illness → urgent dermatology/admission',
       'Suspected pemphigus (flaccid blisters, mucosal involvement, unwell) → urgent dermatology',
       'Difficult-to-control disease or treatment complications → specialist review'],
-    source:'NICE / BAD bullous pemphigoid guidance' },
+    source:'BAD bullous pemphigoid guidance' },
 
   { id:'bunions', title:'Bunions (hallux valgus)', category:'Musculoskeletal', icon:'🦶',
     overview:'A progressive deformity in which the big toe deviates laterally and a bony prominence develops at the first metatarsophalangeal joint. It is common, often familial, and aggravated by footwear. Management is conservative first; surgery is reserved for pain and disability, not appearance.',
@@ -52,7 +52,7 @@
       'Suspected inflammatory or gouty arthritis → appropriate work-up/rheumatology',
       'Complex foot deformity or diabetic/neuropathic foot → podiatry/specialist foot service',
       'Skin breakdown/ulceration over the prominence → urgent podiatry (especially in diabetes)'],
-    source:'NICE — Bunions (hallux valgus)' },
+    source:'Clinical practice summary' },
 
   { id:'burns-scalds', title:'Burns and scalds', category:'Dermatology', icon:'🔥',
     overview:'Thermal (and chemical/electrical) injuries to the skin, ranging from superficial to full-thickness. Most minor burns are managed in primary care, but recognising the burns that need specialist or emergency care — by depth, size, site, mechanism and patient factors — is critical, as is safeguarding.',
@@ -77,7 +77,7 @@
       'Burns to the face, hands, feet, perineum, genitalia, or over major joints; chemical burns; or non-healing burns → specialist burns service',
       'Suspected non-accidental injury → safeguarding procedures',
       'Signs of infection or systemic sepsis → urgent assessment'],
-    source:'NICE / National Burn Care referral guidance' },
+    source:'National Burn Care referral guidance' },
 
   { id:'bursitis', title:'Bursitis', category:'Musculoskeletal', icon:'🦵',
     overview:'Inflammation of a bursa — the fluid-filled sacs that cushion tendons and bones — commonly at the elbow (olecranon), knee (prepatellar), shoulder (subacromial), hip (trochanteric) and ankle. Most is from friction/overuse or pressure; the crucial differential is septic bursitis, which needs prompt treatment.',
@@ -102,7 +102,7 @@
       'Recurrent or refractory bursitis → orthopaedics/MSK (consider bursectomy)',
       'Suspected underlying inflammatory arthritis/gout → rheumatology',
       'Diagnostic uncertainty (e.g. possible septic arthritis) → urgent assessment'],
-    source:'NICE — Bursitis' },
+    source:'Clinical practice summary' },
 
   { id:'carbon-monoxide', title:'Carbon monoxide poisoning', category:'General', icon:'☠️',
     overview:'Poisoning from inhaling carbon monoxide — a colourless, odourless gas produced by faulty fuel-burning appliances, blocked flues, and fires. It binds haemoglobin with high affinity, causing tissue hypoxia. It is easily missed because symptoms are non-specific and "flu-like"; the diagnosis hinges on environmental clues.',
@@ -127,7 +127,7 @@
       'Loss of consciousness, neurological signs, cardiac involvement, or pregnancy → urgent toxicology input ± hyperbaric oxygen',
       'Household exposure → ensure all occupants are assessed and the source made safe',
       'Persisting neuropsychiatric symptoms → appropriate follow-up'],
-    source:'NICE / NPIS (TOXBASE) guidance' },
+    source:'NPIS (TOXBASE) / UKHSA carbon monoxide guidance' },
 
   { id:'cardiomyopathy', title:'Cardiomyopathy', category:'Cardiovascular & Renal', icon:'🫀',
     overview:'A heterogeneous group of diseases of the heart muscle — dilated, hypertrophic, restrictive and arrhythmogenic — causing heart failure, arrhythmia and sudden cardiac death. Hypertrophic cardiomyopathy is the commonest cause of sudden cardiac death in young people, so recognition and family screening matter.',
@@ -152,7 +152,7 @@
       'Exertional syncope, family history of sudden cardiac death, or high arrhythmic risk → urgent cardiology / inherited-cardiac-conditions service (ICD assessment)',
       'First-degree relatives of affected patients → family cardiac screening',
       'Acute decompensated heart failure or sustained arrhythmia → emergency admission'],
-    source:'NICE / ESC cardiomyopathy guidance' },
+    source:'ESC cardiomyopathy guidance (international)' },
 
   { id:'carpal-tunnel', title:'Carpal tunnel syndrome', category:'Musculoskeletal', icon:'✋',
     overview:'Compression of the median nerve at the wrist — the commonest entrapment neuropathy. It causes characteristic hand paraesthesia and, if untreated, thenar weakness and wasting. Most is idiopathic, but identifying secondary causes (pregnancy, hypothyroidism, diabetes) guides management.',
@@ -177,7 +177,7 @@
       'Diagnostic uncertainty → nerve conduction studies / neurology',
       'Suspected underlying systemic cause needing specialist input (e.g. amyloidosis, acromegaly) → relevant specialty',
       'Acute severe or rapidly progressive deficit → urgent assessment'],
-    source:'NICE — Carpal tunnel syndrome' },
+    source:'BSSH carpal tunnel guidance / Clinical practice summary' },
 
   { id:'cataracts', title:'Cataracts in adults', category:'Ophthalmology', icon:'👁️',
     overview:'Progressive clouding of the lens causing painless visual decline — the leading cause of reversible blindness worldwide. It is largely age-related, and modern day-case surgery is highly effective. The primary-care role is recognition, addressing reversible contributors, and timely referral based on functional impact.',
@@ -199,7 +199,7 @@
       'Arrange optometric review and re-refer if vision deteriorates'],
     referral:[
       'Visually significant cataract affecting daily function → routine ophthalmology referral for surgery',
-      'Absent/white red reflex in a child → urgent ophthalmology (congenital cataract; exclude retinoblastoma — NICE NG12)',
+      'Absent/white red reflex in a child → urgent ophthalmology (congenital cataract; exclude retinoblastoma — NICE NG12 (updated April 2026))',
       'Rapidly progressive cataract, or cataract with other eye disease (e.g. diabetic retinopathy, glaucoma) → ophthalmology',
       'Sudden visual loss → same-day ophthalmology (a different pathology)'],
     source:'NICE NG77 (Cataracts in adults)' },
@@ -273,11 +273,11 @@
       'Address fertility and treatment-related concerns sensitively',
       'Ensure women who do not attend screening are encouraged and supported to do so'],
     referral:[
-      'Clinical appearance of the cervix consistent with cervical cancer → urgent 2WW gynae-oncology referral (NICE NG12) — do not wait for screening',
+      'Clinical appearance of the cervix consistent with cervical cancer → urgent 2WW gynae-oncology referral (NICE NG12 (updated April 2026)) — do not wait for screening',
       'Unexplained postmenopausal, post-coital or persistent intermenstrual bleeding → assess and refer per the suspected-cancer pathway',
       'Abnormal screening results → colposcopy via the screening programme',
       'Confirmed cancer → gynae-oncology MDT'],
-    source:'NICE NG12 / NHS Cervical Screening Programme' },
+    source:'NICE NG12 (updated April 2026) / NHS Cervical Screening Programme' },
 
   { id:'cmt', title:'Charcot-Marie-Tooth disease', category:'Neurology', icon:'🧠',
     overview:'The commonest inherited peripheral neuropathy — a group of genetic disorders affecting the peripheral nerves, causing slowly progressive distal motor and sensory loss. It is not life-limiting in most forms, and management is supportive and multidisciplinary, with an emphasis on function and avoiding nerve-toxic drugs.',
@@ -302,7 +302,7 @@
       'Disabling foot deformity or contractures → orthopaedics/podiatry',
       'Significant neuropathic pain or functional decline → relevant specialist/therapy services',
       'Family planning/inheritance questions → clinical genetics'],
-    source:'NICE / neuromuscular specialist guidance' },
+    source:'Neuromuscular specialist guidance' },
 
   { id:'charles-bonnet', title:'Charles Bonnet syndrome', category:'Ophthalmology', icon:'👁️',
     overview:'Complex visual hallucinations occurring in people with significant visual impairment, in the absence of psychiatric or cognitive disease and with full insight that the images are not real. It is common, under-recognised and benign, but distressing — and patients often fear they are "going mad", so explanation and reassurance are therapeutic.',
@@ -327,7 +327,7 @@
       'Treatable eye disease → ophthalmology/optometry to optimise vision',
       'Significant distress or low mood → psychological support / mental-health services',
       'Sight-loss support → low-vision and voluntary services'],
-    source:'NICE / Royal College of Ophthalmologists guidance' },
+    source:'Royal College of Ophthalmologists guidance' },
 
   { id:'chest-infection', title:'Chest infection (lower respiratory tract infection)', category:'Respiratory', icon:'🫁',
     overview:'An umbrella term covering acute bronchitis and community-acquired pneumonia. The central skills are distinguishing self-limiting viral illness from pneumonia, using severity scoring to decide on antibiotics and admission, and recognising the cough that needs imaging for cancer.',
@@ -341,7 +341,7 @@
     management:[
       'Assess severity (CRB-65) and decide management/admission accordingly',
       'Acute bronchitis: usually no antibiotics; self-care and safety-netting, with a back-up prescription only if appropriate',
-      'Community-acquired pneumonia: start antibiotics promptly per local/NICE guidance, guided by severity (e.g. amoxicillin for low-severity; add a macrolide or use alternatives for higher severity/penicillin allergy)',
+      'Community-acquired pneumonia: start antibiotics promptly per local guidance / NICE NG250 (Pneumonia, 2025), guided by severity (e.g. amoxicillin for low-severity; add a macrolide or use alternatives for higher severity/penicillin allergy)',
       'Advise on fluids, antipyretics/analgesia and rest; review and safety-net for deterioration',
       'Arrange admission for high CRB-65, hypoxia, sepsis, inability to cope at home, or significant comorbidity',
       'Arrange a chest X-ray and follow-up for pneumonia, particularly to confirm resolution in older patients/smokers',
@@ -349,10 +349,10 @@
       'Reinforce smoking cessation and ensure relevant vaccinations (influenza, pneumococcal, COVID-19)'],
     referral:[
       'High CRB-65, hypoxia, sepsis, or inability to manage at home → hospital admission',
-      'Cough ≥3 weeks unexplained, haemoptysis, or weight loss (especially smoker/ex-smoker ≥40) → urgent chest X-ray and 2WW suspected lung-cancer pathway if indicated (NICE NG12)',
+      'Cough ≥3 weeks unexplained, haemoptysis, or weight loss (especially smoker/ex-smoker ≥40) → urgent chest X-ray and 2WW suspected lung-cancer pathway if indicated (NICE NG12 (updated April 2026))',
       'Failure to improve, recurrent infection, or non-resolving CXR changes → respiratory',
       'Underlying chronic lung disease needing optimisation → respiratory review'],
-    source:'NICE NG250 (pneumonia, 2025; replaced NG138/CG191) / NG120 (cough) / NICE NG12' },
+    source:'NICE NG250 (pneumonia, 2025; replaced NG138/CG191) / NG120 (cough) / NICE NG12 (updated April 2026)' },
 
   { id:'chiari', title:'Chiari malformation', category:'Neurology', icon:'🧠',
     overview:'A structural defect in which part of the cerebellum (the tonsils) herniates through the foramen magnum. Chiari I — the type usually seen in adults — is often an incidental finding, but can cause characteristic cough-related headache and, importantly, a syrinx (syringomyelia) with progressive neurological damage.',
@@ -377,7 +377,7 @@
       'Progressive neurological deficit → urgent neurosurgical assessment',
       'Diagnostic uncertainty / incidental finding with atypical symptoms → neurology',
       'Associated hydrocephalus or acute deterioration → emergency referral'],
-    source:'NICE / neurosurgical guidance' },
+    source:'Neurosurgical guidance' },
 
   { id:'chickenpox', title:'Chickenpox (varicella)', category:'Infectious diseases', icon:'🦠',
     overview:'A highly contagious primary infection with varicella-zoster virus, usually a mild self-limiting illness in healthy children. It matters most in higher-risk groups — neonates, pregnant women, and the immunocompromised — where it can cause severe disease, and because of its complications.',
@@ -402,7 +402,7 @@
       'Complications (pneumonia, encephalitis/cerebellitis, severe secondary infection, dehydration) → emergency admission',
       'Severe or atypical disease → infectious diseases',
       'Neonatal varicella → urgent paediatric/neonatal assessment'],
-    source:'NICE / Green Book (varicella)' },
+    source:'UKHSA Green Book chapter 34 (varicella) / RCOG Green-top Guideline No. 13 (chickenpox in pregnancy) / BNF' },
 
   { id:'chilblains', title:'Chilblains (pernio)', category:'Dermatology', icon:'❄️',
     overview:'An abnormal inflammatory skin reaction to cold (but non-freezing) exposure, causing itchy, painful, red-purple lesions on the extremities. They are common and benign, usually resolving spontaneously; the main task is reassurance, prevention, and recognising when an underlying condition is driving recurrent or atypical disease.',
@@ -427,7 +427,7 @@
       'Severe ulceration or secondary infection not responding → dermatology',
       'Suspected underlying systemic disease → relevant specialist',
       'Significant peripheral vascular disease → vascular assessment'],
-    source:'NICE — Chilblains' },
+    source:'Clinical practice summary' },
 
   { id:'chlamydia', title:'Chlamydia', category:'Infectious diseases', icon:'🦠',
     overview:'The commonest bacterial sexually transmitted infection in the UK, caused by Chlamydia trachomatis, and frequently asymptomatic. Untreated infection can cause pelvic inflammatory disease, infertility and ectopic pregnancy, so detection (including opportunistic screening), treatment and partner notification are key.',
@@ -452,7 +452,7 @@
       'Suspected LGV, treatment failure, or complex partner notification → GUM/sexual-health service',
       'Pregnancy → treat per pregnancy-safe regimen with test of cure and neonatal awareness',
       'Safeguarding concerns (e.g. STI in a young person/child) → follow safeguarding procedures'],
-    source:'BASHH / NICE — Chlamydia (uncomplicated genital)' },
+    source:'BASHH chlamydia guideline' },
 
   { id:'cholecystitis', title:'Acute cholecystitis', category:'Gastroenterology', icon:'🔶',
     overview:'Acute inflammation of the gallbladder, almost always from a gallstone obstructing the cystic duct. It presents with persistent right-upper-quadrant pain and systemic upset, and is distinguished from uncomplicated biliary colic and from the more dangerous ascending cholangitis. It usually needs admission and, ultimately, cholecystectomy.',
@@ -477,7 +477,7 @@
       'Suspected ascending cholangitis (RUQ pain + fever + jaundice) or biliary sepsis → emergency admission for resuscitation and urgent ERCP',
       'Gallstone pancreatitis → emergency admission (pancreatitis pathway)',
       'Symptomatic gallstones/biliary colic → elective surgical referral for cholecystectomy'],
-    source:'NICE CG188 (Gallstone disease) / NICE' },
+    source:'NICE CG188 (Gallstone disease)' },
 
   { id:'cholesteatoma', title:'Cholesteatoma', category:'ENT', icon:'👂',
     overview:'An abnormal collection of keratinising squamous epithelium in the middle ear/mastoid that progressively expands and erodes surrounding structures. Though not a cancer, it is locally destructive and can cause serious complications (hearing loss, facial palsy, intracranial infection), so a chronically discharging, smelly ear is an ENT red flag.',
@@ -502,7 +502,7 @@
       'Facial nerve palsy, severe vertigo, or features of intracranial complication (severe headache, meningism, neurology) → emergency referral',
       'Confirmed cholesteatoma → ENT for surgery and follow-up',
       'Congenital cholesteatoma (white mass behind an intact drum in a child) → paediatric ENT'],
-    source:'NICE / ENT UK guidance' },
+    source:'ENT UK guidance' },
 
   { id:'cll', title:'Chronic lymphocytic leukaemia (CLL)', category:'Haematology', icon:'🩸',
     overview:'A slowly progressive malignancy of mature B lymphocytes, and the commonest leukaemia in adults — predominantly older people. Many are diagnosed incidentally on a routine FBC showing a lymphocytosis, and many never need treatment ("watch and wait"). The GP role is recognition, monitoring and supporting infection risk.',
@@ -523,11 +523,11 @@
       'Coordinate shared care and supportive/palliative care where appropriate',
       'Be alert to a rising lymphocyte count, new B symptoms, or rapidly enlarging nodes'],
     referral:[
-      'Persistent unexplained lymphocytosis or features of leukaemia (lymphadenopathy, hepatosplenomegaly, unexplained fatigue, infections, bruising) → haematology; possible leukaemia warrants a very urgent FBC within 48 hours (NICE NG12)',
+      'Persistent unexplained lymphocytosis or features of leukaemia (lymphadenopathy, hepatosplenomegaly, unexplained fatigue, infections, bruising) → haematology; possible leukaemia warrants a very urgent FBC within 48 hours (NICE NG12 (updated April 2026))',
       'Suspected Richter’s transformation (rapid nodal growth, systemic symptoms) → urgent haematology',
       'Autoimmune haemolysis or thrombocytopenia → urgent haematology',
       'Recurrent severe infections → haematology (consider immunoglobulin replacement)'],
-    source:'NICE NG12 / BSH CLL guidance' },
+    source:'NICE NG12 (updated April 2026) / BSH CLL guidance' },
 
   { id:'cml', title:'Chronic myeloid leukaemia (CML)', category:'Haematology', icon:'🩸',
     overview:'A myeloproliferative malignancy driven by the BCR-ABL1 fusion gene (the Philadelphia chromosome). Its prognosis has been transformed by tyrosine kinase inhibitors, which now give many patients a near-normal life expectancy. It is often found on a routine FBC showing a markedly raised white-cell count.',
@@ -548,11 +548,11 @@
       'Provide patient information and psychological support; coordinate shared monitoring',
       'Be alert to features of disease progression (rising counts, new symptoms, blast transformation)'],
     referral:[
-      'Unexplained leukocytosis or features suggesting leukaemia → haematology; possible leukaemia warrants a very urgent FBC within 48 hours (NICE NG12)',
+      'Unexplained leukocytosis or features suggesting leukaemia → haematology; possible leukaemia warrants a very urgent FBC within 48 hours (NICE NG12 (updated April 2026))',
       'Very high white-cell count with hyperviscosity (priapism, visual disturbance, thrombosis) → emergency haematology',
       'Suspected accelerated/blast-phase transformation → urgent haematology',
       'TKI intolerance/resistance → specialist review'],
-    source:'NICE NG12 / BSH CML guidance' }
+    source:'NICE NG12 (updated April 2026) / BSH CML guidance' }
 
   );
 })();

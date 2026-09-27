@@ -55,7 +55,7 @@
       id: 'whooley',
       title: 'Whooley questions (depression)',
       category: 'Mental health',
-      description: 'Two-question NICE depression case-finding.',
+      description: 'Two-question depression case-finding (Whooley; NICE CG91).',
       usefulFor: 'Opportunistic screening (esp. chronic disease, antenatal/postnatal).',
       resultLabel: 'Positive answers', resultMax: 2,
       inputs: [
@@ -287,7 +287,7 @@
         return { label:'Frailty less likely', severity:'low', action:'Re-screen periodically.', detail:'' };
       },
       refs:[
-        { label:'NICE frailty / BGS', url:'https://www.bgs.org.uk/' },
+        { label:'BGS Fit for Frailty (2014)', url:'https://www.bgs.org.uk/resources/resource-series/fit-for-frailty' },
         { label:'Raîche PRISMA-7 2008', url:'https://pubmed.ncbi.nlm.nih.gov/18674833/' },
       ],
     },

@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 13: H topics, part 2)
    NHS conditions A–Z (letter H) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Abnormal ECG (pre-excitation/WPW, long QT, conduction disease, sustained arrhythmia) or family history of sudden cardiac death → cardiology',
       'Documented SVT/sustained arrhythmia → cardiology (consider ablation)',
       'Haemodynamically unstable arrhythmia → emergency admission'],
-    source:'NICE — Palpitations' },
+    source:'Clinical practice summary' },
 
   { id:'heatstroke', title:'Heat exhaustion and heatstroke', category:'General', icon:'🌡️',
     overview:'A spectrum of heat illness from heat exhaustion (an early, reversible state) to heatstroke (a life-threatening emergency with core temperature typically >40°C and central nervous system dysfunction). Rapid recognition and aggressive cooling save lives; the vulnerable (elderly, very young, chronically ill) are most at risk.',
@@ -53,7 +53,7 @@
       'Heat exhaustion not improving within 30 minutes, or in a vulnerable person → urgent assessment',
       'Complications (seizures, collapse, reduced urine output, abnormal bleeding) → emergency admission',
       'Recurrent heat illness → review medications and risk factors'],
-    source:'NICE / UKHSA Heat-Health guidance' },
+    source:'UKHSA Heat-Health guidance' },
 
   { id:'hepatitis-a', title:'Hepatitis A', category:'Infectious diseases', icon:'🦠',
     overview:'An acute, faecal-orally transmitted viral hepatitis, usually self-limiting and never chronic. It is associated with travel to endemic areas and contaminated food/water. The main issues are supportive care, recognising the rare fulminant case, public-health notification, and prevention through vaccination and hygiene.',
@@ -78,7 +78,7 @@
       'Severe illness or significant dehydration → admission',
       'Notify public health (notifiable) and arrange contact management/prophylaxis',
       'Pre-existing liver disease with acute hepatitis A → lower threshold for specialist input'],
-    source:'UKHSA / Green Book / NICE — Hepatitis A' },
+    source:'UKHSA / Green Book chapter 17 (hepatitis A)' },
 
   { id:'hepatitis-b', title:'Hepatitis B', category:'Infectious diseases', icon:'🦠',
     overview:'A blood-borne viral infection that can be acute or chronic. Chronic hepatitis B causes progressive liver damage, cirrhosis and hepatocellular carcinoma. It is vaccine-preventable, and effective antiviral treatment plus surveillance markedly reduce complications — so detection, vaccination and specialist linkage are key.',
@@ -100,10 +100,10 @@
       'Provide vaccination against hepatitis A and other supportive measures for those with chronic liver disease'],
     referral:[
       'Chronic hepatitis B → hepatology/infectious diseases for monitoring and antiviral treatment',
-      'Cirrhosis or other at-risk status → 6-monthly hepatocellular carcinoma surveillance; a suspicious liver lesion → urgent referral (NICE NG12)',
+      'Cirrhosis or other at-risk status → 6-monthly hepatocellular carcinoma surveillance; a suspicious liver lesion → urgent referral (NICE NG12 (updated April 2026))',
       'Pregnancy with hepatitis B → coordinate antenatal/neonatal pathway (infant immunoprophylaxis)',
       'Acute liver failure → emergency hepatology; notify public health'],
-    source:'NICE / UKHSA / Green Book — Hepatitis B' },
+    source:'NICE CG165 (Hepatitis B, chronic) / UKHSA / Green Book chapter 18 (hepatitis B)' },
 
   { id:'hepatitis-c', title:'Hepatitis C', category:'Infectious diseases', icon:'🦠',
     overview:'A blood-borne viral infection that frequently becomes chronic and silently progresses to cirrhosis and hepatocellular carcinoma over decades. It is now curable in most people with short courses of direct-acting antivirals — making case-finding in at-risk groups and linkage to treatment a major opportunity.',
@@ -125,10 +125,10 @@
       'Notify public health (notifiable) and support linkage/retention in care'],
     referral:[
       'Confirmed chronic hepatitis C (HCV RNA positive) → hepatitis/hepatology service for direct-acting antiviral treatment',
-      'Cirrhosis → 6-monthly hepatocellular carcinoma surveillance (continue after cure); suspicious lesion → urgent referral (NICE NG12)',
+      'Cirrhosis → 6-monthly hepatocellular carcinoma surveillance (continue after cure); suspicious lesion → urgent referral (NICE NG12 (updated April 2026))',
       'Decompensated liver disease or extrahepatic complications → urgent specialist care',
       'Ongoing injecting/risk → harm-reduction and substance-misuse services; notify public health'],
-    source:'NICE / UKHSA — Hepatitis C' },
+    source:'NICE PH43 (Hepatitis B and C testing) / UKHSA' },
 
   { id:'hernia', title:'Hernia (inguinal, femoral and other abdominal wall hernias)', category:'General', icon:'🩹',
     overview:'A protrusion of a viscus (often bowel) through a defect in the abdominal wall. Most are inguinal and present as a reducible lump; the critical complications are obstruction and strangulation, where the blood supply is compromised — a surgical emergency. Recognising the irreducible, tender hernia is the key skill.',
@@ -153,7 +153,7 @@
       'Femoral hernia → prompt surgical referral (high strangulation risk)',
       'Symptomatic/enlarging inguinal or other hernia → elective surgical referral',
       'Persistent/large or complicated infantile umbilical hernia → paediatric surgery'],
-    source:'NICE — Hernias / surgical guidance' },
+    source:'Clinical practice summary / surgical guidance' },
 
   { id:'hypertension', title:'High blood pressure (hypertension)', category:'Cardiovascular & Renal', icon:'🩺',
     overview:'Persistently raised arterial blood pressure — a major, usually symptomless, modifiable risk factor for stroke, heart attack, heart failure, kidney disease and dementia. The primary-care role is accurate diagnosis (with out-of-office readings), risk assessment, and achieving target control to prevent cardiovascular events.',
@@ -228,7 +228,7 @@
       'Suspected seroconversion illness or an HIV indicator condition → test and refer',
       'Significant exposure → urgent assessment for post-exposure prophylaxis (PEP — time-critical, ideally within 72 hours)',
       'Pregnancy with HIV → specialist HIV-obstetric care; suspected opportunistic infection → urgent specialist/admission'],
-    source:'BHIVA / NICE / UKHSA — HIV' },
+    source:'BHIVA / NICE NG60 (HIV testing) / UKHSA' },
 
   { id:'hives', title:'Hives (urticaria)', category:'Dermatology', icon:'🌸',
     overview:'An itchy, raised wheal-and-flare rash from dermal mast-cell histamine release, often with angioedema. Acute urticaria is common and usually self-limiting; chronic urticaria (>6 weeks) is frequently spontaneous and not allergic. The key safety task is recognising anaphylaxis and significant angioedema.',
@@ -253,7 +253,7 @@
       'Chronic urticaria uncontrolled on up-dosed antihistamines → dermatology/immunology (e.g. omalizumab)',
       'Suspected specific allergy/anaphylactic trigger → allergy/immunology',
       'Suspected hereditary angioedema or urticarial vasculitis → immunology/dermatology'],
-    source:'NICE — Urticaria / BSACI guidance' },
+    source:'BSACI urticaria guidance' },
 
   { id:'hodgkin-lymphoma', title:'Hodgkin lymphoma', category:'Haematology', icon:'🎗️',
     overview:'A cancer of the lymphatic system characterised by Reed-Sternberg cells, with a bimodal age distribution (young adults and older people). It is one of the most curable cancers, especially when caught early — making prompt recognition of persistent lymphadenopathy and "B symptoms" important.',
@@ -274,11 +274,11 @@
       'Provide psychological support and coordinate shared care',
       'Maintain vigilance for relapse and late effects on long-term follow-up'],
     referral:[
-      'Unexplained lymphadenopathy (persistent, especially with B symptoms, or supraclavicular) → suspected haematological cancer pathway / urgent referral for excision biopsy (NICE NG12)',
+      'Unexplained lymphadenopathy (persistent, especially with B symptoms, or supraclavicular) → suspected haematological cancer pathway / urgent referral for excision biopsy (NICE NG12 (updated April 2026))',
       'Superior vena cava obstruction (facial/arm swelling, distended veins, breathlessness) → emergency admission',
       'Confirmed Hodgkin lymphoma → haemato-oncology MDT',
       'Fertility concerns before treatment → fertility services'],
-    source:'NICE NG12 / BSH Hodgkin lymphoma guidance' },
+    source:'NICE NG12 (updated April 2026) / BSH Hodgkin lymphoma guidance' },
 
   { id:'hyperglycaemia', title:'Hyperglycaemia (high blood sugar)', category:'Endocrine & metabolic', icon:'🩸',
     overview:'A raised blood glucose level, usually in the context of diabetes. It ranges from mild, chronic hyperglycaemia (driving long-term complications) to acute hyperglycaemic emergencies — diabetic ketoacidosis (DKA) and the hyperosmolar hyperglycaemic state (HHS) — which are life-threatening and must be recognised promptly.',
@@ -324,11 +324,11 @@
       'Address the substantial psychological impact and consider treating coexisting anxiety',
       'Provide information and a clear stepwise plan, reviewing response at each step'],
     referral:[
-      'Secondary/generalised hyperhidrosis with red flags (night sweats + weight loss/fever/lymphadenopathy) → investigate urgently for an underlying cause (e.g. lymphoma/TB; consider NICE NG12 pathways)',
+      'Secondary/generalised hyperhidrosis with red flags (night sweats + weight loss/fever/lymphadenopathy) → investigate urgently for an underlying cause (e.g. lymphoma/TB; consider NICE NG12 (updated April 2026) pathways)',
       'Focal hyperhidrosis refractory to topical treatment → dermatology (botulinum toxin, systemic options)',
       'Consideration of surgery (sympathectomy) → specialist',
       'Significant psychological impact → psychological support'],
-    source:'NICE — Hyperhidrosis' },
+    source:'Clinical practice summary' },
 
   { id:'hyperparathyroidism', title:'Hyperparathyroidism', category:'Endocrine & metabolic', icon:'🦴',
     overview:'Excess parathyroid hormone (PTH). Primary hyperparathyroidism (an autonomous parathyroid adenoma) is the commonest cause of hypercalcaemia in the community and is often found incidentally on blood tests. Secondary and tertiary forms arise in chronic kidney disease/vitamin D deficiency. Recognising the calcium-PTH pattern is key.',
@@ -351,7 +351,7 @@
     referral:[
       'Severe symptomatic hypercalcaemia (e.g. calcium very high, confusion, dehydration) → emergency admission',
       'Primary hyperparathyroidism → endocrinology/endocrine surgery (parathyroidectomy assessment)',
-      'Hypercalcaemia with suppressed PTH (possible malignancy) → urgent investigation for underlying cancer (NICE NG12 as appropriate)',
+      'Hypercalcaemia with suppressed PTH (possible malignancy) → urgent investigation for underlying cancer (NICE NG12 (updated April 2026) as appropriate)',
       'Secondary/tertiary hyperparathyroidism in CKD → renal/endocrine'],
     source:'NICE NG132 (Hyperparathyroidism, primary)' },
 
@@ -377,7 +377,7 @@
       'Suspected thyroid storm (hyperpyrexia, severe tachyarrhythmia, delirium) → emergency admission',
       'Confirmed hyperthyroidism → endocrinology for definitive treatment',
       'Thyroid eye disease (especially diplopia, proptosis, or any visual change) → ophthalmology (urgent if sight-threatening)',
-      'Suspicious thyroid nodule with hyperthyroidism → assess per thyroid-cancer pathway (NICE NG12) as appropriate'],
+      'Suspicious thyroid nodule with hyperthyroidism → assess per thyroid-cancer pathway (NICE NG12 (updated April 2026)) as appropriate'],
     source:'NICE NG145 (Thyroid disease)' },
 
   { id:'hypoglycaemia', title:'Hypoglycaemia (low blood sugar)', category:'Endocrine & metabolic', icon:'🩸',
@@ -428,7 +428,7 @@
       'Confirmed/chronic hypoparathyroidism → endocrinology for calcium/vitamin D management and monitoring',
       'Post-surgical hypocalcaemia → manage promptly ± specialist advice',
       'Difficult control or complications → endocrinology'],
-    source:'NICE / Society for Endocrinology — Hypoparathyroidism' },
+    source:'Society for Endocrinology — Hypoparathyroidism' },
 
   { id:'hypothyroidism', title:'Underactive thyroid (hypothyroidism)', category:'Endocrine & metabolic', icon:'🦋',
     overview:'Deficient thyroid hormone, most often from autoimmune thyroiditis (Hashimoto’s) or post-treatment of hyperthyroidism. It is common, especially in women and with age, and produces an insidious slowing of metabolism. It is straightforward to diagnose and treat, with levothyroxine, but needs correct dosing and monitoring.',

@@ -308,7 +308,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   practical:[
     { point:'Alternate-day dosing', detail:'Improves fractional absorption and tolerance (hepcidin physiology).' },
     { point:'Continue 3 months after Hb normalises', detail:'To refill stores; recheck FBC/ferritin.' },
-    { point:'Always seek the cause', detail:'IDA in men/postmenopausal women → 2WW GI per NG12.' },
+    { point:'Always seek the cause', detail:'IDA: offer FIT (NICE NG12 (updated April 2026); NICE HTG690); men and postmenopausal women with IDA need bidirectional endoscopy (BSG 2021).' },
   ],
   pearls:['Treating the number without finding the bleeding source can be fatal — investigate the cause of IDA.'],
   note:'Replace the substrate for haemoglobin, but absorption physiology (alternate-day) and the underlying cause matter more than the salt chosen.',

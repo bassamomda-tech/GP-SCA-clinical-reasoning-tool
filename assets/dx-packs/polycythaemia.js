@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Polycythaemia (raised Hb/Hct)
-   Shared-id triage + differential. BSH · NICE.
+   Shared-id triage + differential. BSH.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -47,14 +47,14 @@
         id: 'secondary', tier: 'urgent',
         label: 'Secondary polycythaemia — hypoxia / EPO-driven',
         action: 'Treat hypoxia (smoking, COPD, OSA); investigate renal/EPO tumour if unexplained.',
-        source: 'NICE',
+        source: 'BSH erythrocytosis guideline',
         when: i => i.hypoxia || i.renal_tumour,
       },
       {
         id: 'relative', tier: 'routine',
         label: 'Relative / smoker / unconfirmed',
         action: 'Rehydrate and repeat; smoking cessation; OSA assessment; investigate if persistent.',
-        source: 'NICE',
+        source: 'BSH erythrocytosis guideline',
         when: i => true,
       }
     ],

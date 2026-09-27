@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 9: E topics)
    NHS conditions A–Z (letter E) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -26,9 +26,9 @@
     referral:[
       'Suspected mastoiditis (post-auricular swelling, unwell child) or intracranial complication → emergency ENT admission',
       'Suspected malignant otitis externa (severe pain, granulation, elderly diabetic/immunocompromised) → urgent ENT',
-      'Persistent unilateral middle-ear effusion in an adult → urgent ENT to examine the postnasal space (NICE NG12 — exclude nasopharyngeal cancer)',
+      'Persistent unilateral middle-ear effusion in an adult → urgent ENT to examine the postnasal space (NICE NG12 (updated April 2026) — exclude nasopharyngeal cancer)',
       'Persistent glue ear with hearing/developmental impact, or recurrent AOM → ENT/audiology'],
-    source:'NICE NG91 (Otitis media) / NICE — Otitis externa' },
+    source:'NICE NG91 (Otitis media — acute) / BNF (otitis externa)' },
 
   { id:'earwax', title:'Earwax build-up', category:'ENT', icon:'👂',
     overview:'Excessive or impacted cerumen is a very common, benign cause of hearing loss, blockage and discomfort. Management is simple, but it matters to exclude other causes of hearing loss and to remove wax safely — especially as it commonly prevents proper examination or hearing-aid use.',
@@ -53,7 +53,7 @@
       'Persistent hearing loss after wax clearance → audiology (investigate other causes)',
       'Suspected perforation, trauma, or complication of removal → ENT',
       'Recurrent troublesome wax in hearing-aid users → ear-care/audiology service'],
-    source:'NICE — Earwax / NICE NG98 (Hearing loss)' },
+    source:'NICE NG98 (Hearing loss in adults — earwax)' },
 
   { id:'ebola', title:'Ebola virus disease', category:'Infectious diseases', icon:'🦠',
     overview:'A rare but extremely serious viral haemorrhagic fever caused by Ebola virus, with high mortality. UK relevance is almost entirely in returning travellers from an outbreak area. Early recognition, immediate isolation and urgent notification protect the patient, staff and the public — this is a high-consequence infectious disease.',
@@ -128,7 +128,7 @@
       'Reduced GCS, status epilepticus, or raised ICP → emergency/critical care',
       'Suspected autoimmune/paraneoplastic encephalitis → neurology (immunotherapy ± tumour search)',
       'Post-illness cognitive/neurological sequelae → neuro-rehabilitation'],
-    source:'Encephalitis national guidance / NICE' },
+    source:'ABN/BIA national encephalitis guidelines (2012)' },
 
   { id:'endocarditis', title:'Infective endocarditis', category:'Cardiovascular & Renal', icon:'🫀',
     overview:'Infection of the endocardial surface of the heart, usually a valve, with vegetations of organisms and fibrin. It is uncommon but serious, with high morbidity and mortality, and notoriously difficult to diagnose because of its varied, insidious presentation. Think of it in unexplained fever with a murmur or risk factors.',
@@ -146,7 +146,7 @@
       'Treatment is prolonged IV antibiotics guided by the organism/sensitivities, coordinated by an endocarditis team',
       'Surgery (valve repair/replacement) for heart failure, uncontrolled infection, large/embolising vegetations, or abscess',
       'Identify and treat the source (e.g. dental, skin, lines) and address modifiable risks (dental health, safer practices in IV drug use)',
-      'Antibiotic prophylaxis is no longer routine for most procedures (per NICE), but maintain excellent oral/dental health in at-risk patients — discuss individualised prophylaxis only with specialists',
+      'Antibiotic prophylaxis is no longer routine for most procedures (per NICE CG64), but maintain excellent oral/dental health in at-risk patients — discuss individualised prophylaxis only with specialists',
       'Watch for and manage complications (heart failure, emboli, abscess, AKI) and arrange follow-up'],
     referral:[
       'Suspected infective endocarditis → urgent hospital admission for blood cultures (before antibiotics) and echocardiography — do not start antibiotics first',
@@ -176,7 +176,7 @@
     referral:[
       'Initial treatment failure, severe symptoms, or suspected deep/ovarian endometriosis → gynaecology (specialist endometriosis centre for deep disease)',
       'Fertility a priority → fertility services (do not rely on suppressive hormonal treatment)',
-      'Persistent complex ovarian mass / raised CA-125 with concerning features → urgent gynae-oncology assessment (NICE NG12 — ovarian cancer pathway)',
+      'Persistent complex ovarian mass / CA-125 at or above the NICE NG12 (updated April 2026) age-specific threshold (35 IU/mL at 40–49, 31 at 50–59, 24 at 60–69, 25 at 70–79, 31 at 80+; under 40, do not use CA-125 alone) or other concerning features → urgent gynae-oncology assessment (NICE NG12 (updated April 2026) — ovarian cancer pathway)',
       'Refractory chronic pain → pain service'],
     source:'NICE NG73 (Endometriosis)' },
 
@@ -203,7 +203,7 @@
       'Abscess, severe sepsis, or failure to respond → urgent urology',
       'Sexually transmitted cause → sexual-health service for treatment and partner notification',
       'Recurrent epididymo-orchitis or suspected urological abnormality → urology'],
-    source:'BASHH / NICE — Scrotal pain and swelling' },
+    source:'BASHH epididymo-orchitis guideline' },
 
   { id:'erectile-dysfunction', title:'Erectile dysfunction', category:'Urology', icon:'♂️',
     overview:'The persistent inability to achieve or maintain an erection sufficient for satisfactory sexual activity. It is common and very treatable, but importantly it is often an early marker of cardiovascular disease and may signal endocrine or psychological problems — so it warrants assessment, not just a prescription.',
@@ -228,7 +228,7 @@
       'Failure of, or contraindication to, oral therapy → urology (second-line treatments)',
       'Significant cardiovascular disease needing assessment before treatment → cardiology',
       'Predominantly psychogenic ED or relationship issues → psychosexual counselling'],
-    source:'NICE — Erectile dysfunction / BSSM guidance' },
+    source:'BSSM guidance / BNF' },
 
   { id:'erythema-multiforme', title:'Erythema multiforme', category:'Dermatology', icon:'🎯',
     overview:'An acute, usually self-limiting hypersensitivity reaction with characteristic "target" lesions, most often triggered by infection (classically herpes simplex) and sometimes drugs. The key is recognising it, identifying the trigger, and distinguishing it from the far more dangerous Stevens-Johnson syndrome/toxic epidermal necrolysis.',
@@ -253,7 +253,7 @@
       'Significant ocular involvement → same-day ophthalmology',
       'Severe mucosal disease, extensive EM, or diagnostic uncertainty → dermatology',
       'Recurrent HSV-associated EM → dermatology (suppressive antivirals)'],
-    source:'NICE — Erythema multiforme' },
+    source:'Clinical practice summary' },
 
   { id:'erythema-nodosum', title:'Erythema nodosum', category:'Dermatology', icon:'🔴',
     overview:'A reactive panniculitis (inflammation of subcutaneous fat) producing tender red nodules, classically on the shins. It is a cutaneous sign of an underlying process rather than a disease in itself, so the priority is to find and treat the trigger — which is often benign but occasionally signals serious disease.',
@@ -278,7 +278,7 @@
       'Suspected inflammatory bowel disease → gastroenterology',
       'Persistent, severe, atypical, or diagnostically uncertain disease → dermatology',
       'Underlying cause requiring specialist management → relevant specialty'],
-    source:'NICE — Erythema nodosum' },
+    source:'Clinical practice summary' },
 
   { id:'ecoli-o157', title:'E. coli (Escherichia coli) infection', category:'Infectious diseases', icon:'🦠',
     overview:'Escherichia coli is a normal gut commensal, but some strains cause significant disease — urinary tract infection and sepsis (the commonest Gram-negative bloodstream infection), and, importantly, Shiga toxin-producing E. coli (STEC/E. coli O157) causing bloody diarrhoea and haemolytic uraemic syndrome.',
@@ -328,7 +328,7 @@
       'Refractory/severely disabling tremor → neurology (deep brain stimulation, focused ultrasound)',
       'Sudden-onset, unilateral, or rapidly progressive tremor → neurology (reconsider the diagnosis)',
       'Young-onset tremor with other features (e.g. consider Wilson’s disease) → neurology'],
-    source:'NICE — Tremor / movement disorder guidance' }
+    source:'Movement disorder guidance' }
 
   );
 })();

@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Hirsutism
-   Shared-id triage + differential. Endocrine Society · Society for Endocrinology 2025.
+   Shared-id triage + differential. Endocrine Society (international) · Society for Endocrinology 2025.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -23,7 +23,7 @@
   if (window.RGPTriage) RGPTriage.register('hirsutism-triage', {
     title: 'Hirsutism — triage',
     subtitle: 'Tick features. Surfaces androgen-secreting tumour and Cushing\u2019s pathways.',
-    guideline: 'Endocrine Society · Society for Endocrinology 2025',
+    guideline: 'Endocrine Society (international) · Society for Endocrinology 2025',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Check total testosterone (+ SHBG); if mildly raised and periods irregular, assess for PCOS (Rotterdam); cosmetic measures ± hormonal treatment.',
     rules: [
@@ -32,41 +32,41 @@
         label: 'Rapid virilisation / very high testosterone — exclude androgen-secreting tumour',
         action: 'Urgent endocrine referral; testosterone, DHEAS, imaging (ovary/adrenal).',
         patientPhrase: '"The speed of these changes means I want a specialist to check the hormone-producing glands urgently."',
-        source: 'Endocrine Society',
+        source: 'Endocrine Society (international)',
         when: i => i.rapid_virilisation || i.high_testosterone,
       },
       {
         id: 'cushing', tier: 'urgent',
         label: 'Cushingoid features',
         action: 'Investigate Cushing\u2019s (overnight dexamethasone / 24h urinary cortisol); endocrine referral.',
-        source: 'Endocrine Society (Cushing\u2019s)',
+        source: 'Endocrine Society (Cushing\u2019s) (international)',
         when: i => i.cushing,
       },
       {
         id: 'cah', tier: 'urgent',
         label: 'Possible non-classical CAH (raised 17-OHP)',
         action: 'Endocrine referral; 17-OH-progesterone (early-morning, follicular).',
-        source: 'Endocrine Society',
+        source: 'Endocrine Society (international)',
         when: i => i.high_17ohp,
       },
       {
         id: 'pcos', tier: 'routine',
         label: 'Hirsutism with PCOS features / idiopathic',
         action: 'Assess Rotterdam criteria; metabolic screen; cosmetic measures ± COC / antiandrogen.',
-        source: 'Endocrine Society · PCOS 2023',
+        source: 'Endocrine Society (international) · PCOS 2023',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'Endocrine Society — Hirsutism 2018', url: 'https://www.endocrine.org/clinical-practice-guidelines' }
+      { label: 'Endocrine Society — Hirsutism 2018 (international)', url: 'https://www.endocrine.org/clinical-practice-guidelines' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('hirsutism-dx', {
     title: 'Hirsutism — differential',
     subtitle: 'The engine weights PCOS and idiopathic hirsutism against CAH and Cushing\u2019s, and always surfaces an androgen-secreting tumour when rapid virilisation or very high testosterone fires.',
-    guideline: 'Endocrine Society · PCOS 2023',
+    guideline: 'Endocrine Society (international) · PCOS 2023',
     patientPresenting: "I'm getting coarse dark hair on my face and chest, doctor, and my periods are all over the place.",
     inputs: INPUTS,
     diagnoses: [

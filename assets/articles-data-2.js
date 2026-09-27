@@ -23,7 +23,7 @@
       'Diagnostic uncertainty — atypical site, solid, rapidly growing, or not transilluminating → ultrasound/specialist to exclude other soft-tissue lesions',
       'Significant pain, functional limitation, or nerve compression symptoms → hand surgery',
       'Recurrence after aspiration with ongoing symptoms → surgical excision'],
-    source:'NICE — Ganglion' },
+    source:'Clinical practice summary (BSSH hand-surgery guidance)' },
 
   { id:'gender-dysphoria', title:'Gender dysphoria', category:'Mental health', icon:'⚧',
     overview:'Distress arising from a mismatch between a person\u2019s experienced gender and their sex registered at birth. The GP role is to provide respectful, affirming care, manage co-existing health needs, and refer promptly — not to initiate gender-affirming hormones unaided.',
@@ -47,7 +47,7 @@
       'Significant suicide or self-harm risk → urgent mental-health assessment',
       'Children and young people → specialist children/young-people gender services per current national pathways',
       'Fertility preservation queries → relevant specialist before gender-affirming treatment'],
-    source:'NICE / GMC & GIC pathways' },
+    source:'GMC guidance / NHS England GIC pathways' },
 
   { id:'gilberts', title:'Gilbert\u2019s syndrome', category:'Gastroenterology', icon:'🟡',
     overview:'A common, benign inherited cause of mild unconjugated hyperbilirubinaemia (reduced UGT1A1 activity). It produces intermittent mild jaundice during fasting, illness, exertion or stress, with otherwise normal liver tests and no liver disease.',
@@ -67,7 +67,7 @@
     referral:[
       'Any conjugated (direct) hyperbilirubinaemia, abnormal LFTs, or features of haemolysis → investigate/refer rather than attributing to Gilbert\u2019s',
       'Diagnostic uncertainty or atypical features → gastroenterology'],
-    source:'NICE' },
+    source:'BSG guidelines on abnormal liver blood tests (2018) / Clinical practice summary' },
 
   { id:'growing-pains', title:'Growing pains', category:'Paediatrics', icon:'🧒',
     overview:'Benign idiopathic limb pains of childhood — typically bilateral leg pain in the evening or night with a completely normal examination and normal daytime function. A diagnosis made on classic features with safety-netting, not investigation.',
@@ -88,7 +88,7 @@
       'Persistent or unilateral pain, limp, joint swelling, systemic symptoms, weight loss, or any abnormal examination → paediatric assessment',
       'Progressive night pain localised to one site, or bone tenderness → urgent assessment to exclude malignancy/osteomyelitis',
       'Diagnostic uncertainty or parental anxiety → review/paediatrics'],
-    source:'NICE' },
+    source:'Clinical practice summary' },
 
   { id:'gbs', title:'Guillain-Barré syndrome (GBS)', category:'Neurology', icon:'🧠',
     overview:'An acute immune-mediated polyradiculoneuropathy, often post-infective, causing rapidly progressive, usually ascending weakness with areflexia. It is a neurological emergency because of the risk of respiratory failure and autonomic instability.',
@@ -110,7 +110,7 @@
       'Suspected GBS → immediate emergency admission under neurology/acute medicine',
       'Respiratory difficulty, bulbar symptoms, or rapid progression → 999',
       'Any rapidly progressive weakness with areflexia → urgent assessment'],
-    source:'NICE / ABN guidance' },
+    source:'ABN guidance' },
 
   { id:'myasthenia-gravis', title:'Myasthenia gravis (MG)', category:'Neurology', icon:'🧠',
     overview:'An autoimmune disorder of the neuromuscular junction (usually anti-AChR, sometimes anti-MuSK antibodies) causing fatigable muscle weakness that worsens with activity and improves with rest. Myasthenic crisis with respiratory failure is the key emergency.',
@@ -132,7 +132,7 @@
       'Suspected myasthenic crisis (breathing or swallowing difficulty) → 999',
       'New suspected MG → urgent neurology',
       'Worsening weakness, infection, or before prescribing an interacting drug → specialist advice'],
-    source:'NICE / ABN myasthenia guidance' },
+    source:'ABN myasthenia guidance' },
 
   { id:'haemochromatosis', title:'Haemochromatosis', category:'Endocrine & metabolic', icon:'🩸',
     overview:'Hereditary iron overload (most commonly HFE C282Y homozygosity) causing progressive iron deposition in the liver, pancreas, heart, joints, skin and pituitary. It is common, treatable, and important to catch before end-organ damage occurs.',
@@ -155,7 +155,7 @@
       'Confirmed or strongly suspected iron overload → refer for venesection programme and assessment',
       'Evidence of cirrhosis or organ damage → hepatology (HCC surveillance) / relevant specialist',
       'Diagnostic uncertainty or secondary iron overload → gastroenterology/haematology'],
-    source:'NICE / BSG & BSH iron-overload guidance' },
+    source:'BSH haemochromatosis guideline (2018) / BSG' },
 
   { id:'haemophilia', title:'Haemophilia', category:'Haematology', icon:'🩸',
     overview:'X-linked inherited deficiency of clotting factor VIII (haemophilia A) or IX (haemophilia B) causing a bleeding tendency. Care is led by specialist haemophilia comprehensive-care centres; the GP role is supportive, safety-focused and coordination of routine care.',
@@ -177,7 +177,7 @@
       'Suspected new bleeding disorder → haematology',
       'Any significant bleed, trauma, or head injury → urgent (contact the haemophilia centre immediately)',
       'Pre-procedure planning, or pregnancy in a carrier → specialist'],
-    source:'NICE / UKHCDO' },
+    source:'UKHCDO' },
 
   { id:'head-injury-concussion', title:'Head injury and concussion', category:'Neurology', icon:'🤕',
     overview:'Assessment centres on identifying who needs CT imaging or admission (NICE NG232 criteria) and on giving graded recovery advice for concussion. Anticoagulation and antiplatelet use substantially lower the threshold for imaging.',
@@ -197,7 +197,7 @@
       'Lower the CT threshold markedly for anyone anticoagulated/antiplatelet or aged 65+; give written head-injury advice and a 24-hour observer',
       'Concussion: 24–48 h relative rest then graded symptom-limited return; no same-day return to sport'],
     referral:[
-      'Any NICE red flag (GCS <15, focal neurology, repeated vomiting, post-traumatic seizure, suspected skull fracture, anticoagulated) → emergency CT/admission',
+      'Any NICE NG232 red flag (GCS <15, focal neurology, repeated vomiting, post-traumatic seizure, suspected skull fracture, anticoagulated) → emergency CT/admission',
       'Clinical deterioration after discharge (drowsiness, repeated vomiting, worsening headache, seizure) → 999',
       'Persistent or severe post-concussion symptoms → GP review ± concussion/neurology clinic',
       'Suspected non-accidental injury in a child → safeguarding/urgent paediatrics'],
@@ -224,7 +224,7 @@
       'Significant functional impairment or refractory symptoms → psychological therapy / mental-health service',
       'Genuine pathology not yet appropriately excluded → investigate proportionately (do not over- or under-investigate)',
       'Risk of self-harm → urgent mental-health assessment'],
-    source:'NICE' },
+    source:'Clinical practice summary (CBT-based approach)' },
 
   { id:'hsp', title:'Henoch-Schönlein purpura (IgA vasculitis)', category:'Paediatrics', icon:'🟣',
     overview:'A small-vessel IgA-mediated vasculitis, predominantly in children (peak 3–10 years), classically with palpable purpura, arthralgia, abdominal pain and renal involvement. Usually self-limiting, but renal monitoring for months is essential as nephritis determines long-term prognosis.',
@@ -245,7 +245,7 @@
       'Severe abdominal pain, signs of intussusception, GI bleeding, or a systemically unwell child → urgent paediatrics',
       'Significant renal involvement (hypertension, heavy proteinuria, rising creatinine, nephrotic/nephritic features) → paediatric nephrology',
       'Diagnostic doubt — low platelets, atypical rash, or unwell child → urgent assessment to exclude meningococcal sepsis and ITP'],
-    source:'NICE' },
+    source:'SHARE IgA vasculitis recommendations (international, 2019) / Clinical practice summary' },
 
   { id:'hiatus-hernia', title:'Hiatus hernia', category:'Gastroenterology', icon:'🫃',
     overview:'Protrusion of part of the stomach through the diaphragmatic hiatus into the thorax. Most are sliding hernias, are often asymptomatic or associated with reflux, and are managed as for GORD. Rolling (para-oesophageal) hernias carry a small risk of obstruction or strangulation.',
@@ -263,11 +263,11 @@
       'Surgical (fundoplication / hernia repair) considered for refractory reflux or symptomatic/large para-oesophageal hernias',
       'Manage as GORD: lifestyle measures + a PPI (e.g. omeprazole 20 mg OD) stepped to the lowest effective dose; investigate any iron-deficiency anaemia properly'],
     referral:[
-      'Dysphagia, unexplained weight loss, iron-deficiency anaemia, or persistent vomiting → upper-GI 2WW / endoscopy',
+      'Dysphagia (any age), or aged 55+ with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026)); iron-deficiency anaemia or persistent vomiting → investigate promptly (direct-access endoscopy per NICE NG12 (updated April 2026) criteria)',
       'Symptomatic rolling/para-oesophageal hernia → surgical referral (risk of strangulation)',
       'Acute severe chest/epigastric pain with retching and unable to vomit (?gastric volvulus) → emergency admission',
       'Refractory reflux despite optimal therapy → gastroenterology'],
-    source:'NICE — GORD / Dyspepsia' },
+    source:'NICE CG184 (Dyspepsia and GORD) / NICE NG12 (updated April 2026)' },
 
   { id:'hidradenitis', title:'Hidradenitis suppurativa (HS)', category:'Dermatology', icon:'🔴',
     overview:'A chronic, relapsing, inflammatory follicular skin disease of apocrine-bearing flexural sites (axillae, groin, inframammary, perineal) producing painful nodules, abscesses, sinus tracts and scarring. It is frequently delayed in diagnosis and has a major psychological burden.',
@@ -290,7 +290,7 @@
       'Moderate–severe disease, scarring, or sinus tracts → dermatology (consider biologics such as adalimumab)',
       'Extensive or refractory disease (Hurley II–III) → dermatology ± surgery (de-roofing/wide excision)',
       'Significant psychological impact → mental-health/psychological support'],
-    source:'NICE / BAD HS guidance' },
+    source:'BAD hidradenitis suppurativa guideline (2018) / NICE TA392 (adalimumab)' },
 
   { id:'hoarding', title:'Hoarding disorder', category:'Mental health', icon:'🧠',
     overview:'A persistent difficulty discarding possessions because of a perceived need to save them, with distress at the thought of discarding, leading to accumulation that congests living spaces and impairs function. It is a distinct disorder with real safety and safeguarding implications.',
@@ -312,7 +312,7 @@
       'Significant risk — serious fire/hygiene hazard, self-neglect, or safeguarding of children/vulnerable adults/animals → safeguarding/multi-agency referral',
       'Refractory or severe disorder → mental-health/psychology service',
       'Functional decline or suspected cognitive impairment in older adults → social care/OT and cognitive assessment'],
-    source:'NICE' },
+    source:'NICE CG31 (OCD and related disorders) / Clinical practice summary' },
 
   { id:'hpv', title:'Human papillomavirus (HPV)', category:'Infectious diseases', icon:'🦠',
     overview:'A very common sexually transmitted virus; most infections are transient and clear spontaneously. High-risk types (notably 16 and 18) cause cervical and other anogenital and oropharyngeal cancers and are targeted by screening and vaccination; low-risk types (6 and 11) cause anogenital warts.',
@@ -354,7 +354,7 @@
       'Suspected Huntington\u2019s disease → neurology + clinical genetics (counselling before testing)',
       'Psychiatric symptoms or suicide risk → mental-health services (urgent if risk)',
       'Progressive disability and swallowing/nutrition concerns → MDT and palliative care as appropriate'],
-    source:'NICE / clinical genetics guidance' },
+    source:'Clinical genetics guidance' },
 
   { id:'ipf', title:'Idiopathic pulmonary fibrosis (IPF)', category:'Respiratory', icon:'🫁',
     overview:'A progressive fibrosing interstitial lung disease of unknown cause, typically affecting older adults (especially ex-smokers, men), with a usual interstitial pneumonia (UIP) pattern and a poor prognosis. Early recognition and referral enable antifibrotic treatment and transplant assessment.',
@@ -376,7 +376,7 @@
       'Suspected ILD/IPF (velcro crackles, clubbing, progressive breathlessness, abnormal CXR/spirometry) → respiratory referral',
       'Acute exacerbation or rapid deterioration → urgent assessment',
       'For antifibrotic therapy and lung-transplant assessment → specialist ILD centre'],
-    source:'NICE NG / BTS interstitial lung disease guidance' },
+    source:'NICE CG163 (Idiopathic pulmonary fibrosis) / NICE TA379 (nintedanib) / TA504 (pirfenidone) / BTS interstitial lung disease guidance' },
 
   { id:'ingrown-toenail', title:'Ingrown toenail (onychocryptosis)', category:'Dermatology', icon:'🦶',
     overview:'The nail edge — usually of the great toe — penetrates the adjacent nail fold, causing pain, inflammation, and frequently secondary infection or exuberant granulation tissue. Most respond to conservative care; recurrent cases need nail-edge surgery.',
@@ -396,7 +396,7 @@
       'Recurrent or severe ingrowing → podiatry / minor surgery for partial nail avulsion ± phenolisation',
       'Significant or non-resolving infection/cellulitis → review and antibiotics',
       'Diabetes or peripheral arterial disease → lower threshold for referral and foot-protection input'],
-    source:'NICE' },
+    source:'Clinical practice summary' },
 
   { id:'insect-bites-stings', title:'Insect bites and stings', category:'Dermatology', icon:'🐝',
     overview:'Most bites and stings cause a self-limiting local reaction managed symptomatically. The clinical priorities are recognising anaphylaxis, identifying secondary infection, and considering bites that transmit disease (e.g. tick-borne Lyme).',
@@ -418,7 +418,7 @@
       'Spreading infection or systemic illness → same-day assessment',
       'Tick bite with erythema migrans or systemic features → treat for Lyme disease',
       'Recurrent severe local/systemic reactions → allergy clinic'],
-    source:'NICE' },
+    source:'NICE NG182 (Insect bites and stings: antimicrobial prescribing, 2020)' },
 
   { id:'jet-lag', title:'Jet lag', category:'General', icon:'✈️',
     overview:'A temporary circadian-rhythm (body-clock) disruption after rapidly crossing several time zones, causing sleep disturbance, daytime fatigue, impaired performance and GI upset. It is self-limiting, resolving as the body clock realigns (roughly one day per time zone).',
@@ -436,7 +436,7 @@
       'Self-limiting — use timed bright light, a destination-time routine and good hydration; melatonin at destination bedtime helps eastward/multi-zone travel (counsel on timing)'],
     referral:[
       'Rarely required — if "jet lag" is persistent and unrelated to travel, reconsider for a primary sleep disorder or shift-work disorder'],
-    source:'NICE' },
+    source:'Clinical practice summary / NaTHNaC travel health guidance' },
 
   { id:'jhs', title:'Joint hypermobility syndrome', category:'Musculoskeletal', icon:'🤸',
     overview:'Symptomatic generalised joint hypermobility (overlapping substantially with hypermobile EDS) causing pain, instability, soft-tissue injury and fatigue, with normal initial investigations. Management is supportive and physiotherapy-led.',
@@ -457,7 +457,7 @@
       'Diagnostic doubt or features suggesting vascular EDS / Marfan syndrome → rheumatology / clinical genetics',
       'Refractory pain or instability → rheumatology / MSK / pain MDT',
       'Significant autonomic or GI symptoms → relevant specialty'],
-    source:'NICE / EDS & hypermobility guidance' },
+    source:'EDS and hypermobility guidance' },
 
   { id:'keloid', title:'Keloid scars', category:'Dermatology', icon:'🩹',
     overview:'An overgrowth of dense fibrous scar tissue that extends beyond the boundaries of the original wound (in contrast to hypertrophic scars, which remain within them). Keloids are commoner in darker skin types and at certain sites, and do not regress spontaneously.',
@@ -477,7 +477,7 @@
     referral:[
       'Symptomatic, disfiguring, or treatment-refractory keloids → dermatology/plastic surgery for intralesional steroid, cryotherapy, laser, or excision with adjuvant therapy',
       'Diagnostic uncertainty (e.g. to exclude dermatofibrosarcoma) → specialist'],
-    source:'NICE / BAD' },
+    source:'BAD guidance' },
 
   { id:'keratosis-pilaris', title:'Keratosis pilaris', category:'Dermatology', icon:'🌾',
     overview:'A very common, benign disorder of follicular keratin plugging producing rough "chicken-skin" papules, typically on the upper outer arms, thighs and cheeks. It is harmless, associated with atopy and dry skin, and often improves with age.',
@@ -495,7 +495,7 @@
       'Regular emollient + a urea- or lactic-acid keratolytic, avoid harsh scrubbing, and reassure it is benign and usually improves with age'],
     referral:[
       'Rarely needed; refer only for diagnostic uncertainty or severe/atypical variants (e.g. keratosis pilaris atrophicans) → dermatology'],
-    source:'NICE' },
+    source:'Clinical practice summary' },
 
   { id:'lactose-intolerance', title:'Lactose intolerance', category:'Gastroenterology', icon:'🥛',
     overview:'Symptoms resulting from lactase deficiency and consequent malabsorption of lactose — bloating, flatulence, cramps and diarrhoea after dairy. It is a non-immune, dose-related intolerance, entirely distinct from cow\u2019s-milk protein allergy.',
@@ -515,7 +515,7 @@
       'Red flags — unintentional weight loss, rectal bleeding, iron-deficiency anaemia, nocturnal symptoms → investigate / 2WW as appropriate',
       'Diagnostic uncertainty or a suspected secondary cause (e.g. coeliac disease, IBD) → gastroenterology',
       'Children with faltering growth or extensive dietary restriction → paediatric/dietetic referral'],
-    source:'NICE' },
+    source:'Clinical practice summary' },
 
   { id:'gambling-disorder', title:'Gambling disorder', category:'Mental health', icon:'🎲',
     overview:'A behavioural addiction in which persistent, problematic gambling causes significant harm to finances, relationships, work and mental health. It is strongly associated with depression, substance misuse and suicide, yet is rarely volunteered — ask directly when there are unexplained financial, mood or relationship difficulties.',
@@ -537,7 +537,7 @@
       'Moderate–severe gambling disorder → NHS gambling treatment service / National Gambling Helpline',
       'Comorbid substance misuse → drug and alcohol service',
       'Affected family members → dedicated family support services'],
-    source:'NICE / RCGP / GamCare' },
+    source:'RCGP / GamCare / NHS gambling clinics' },
 
   { id:'globus', title:'Globus pharyngeus', category:'ENT', icon:'👄',
     overview:'A persistent or intermittent sensation of a lump, tightness or foreign body in the throat in the absence of true dysphagia or an actual mass. It is common and benign, but the diagnosis depends on confidently excluding the red flags of head-and-neck and oesophageal malignancy.',
@@ -554,10 +554,10 @@
       'Offer voice care and relaxation strategies; address anxiety where relevant',
       'Review to ensure resolution and re-examine if new symptoms develop — persistence or any red flag changes the plan'],
     referral:[
-      'Dysphagia, odynophagia, unexplained weight loss, a neck lump, persistent unilateral symptoms, hoarseness >3 weeks or globus persisting/progressing → urgent suspected head-and-neck cancer referral (NICE NG12)',
+      'Dysphagia, odynophagia, unexplained weight loss, a neck lump, persistent unilateral symptoms, hoarseness >3 weeks or globus persisting/progressing → urgent suspected head-and-neck cancer referral (NICE NG12 (updated April 2026))',
       'Persistent globus despite reflux treatment and reassurance → ENT for nasendoscopy',
-      'Suspected oesophageal pathology (true dysphagia) → upper-GI 2WW / endoscopy'],
-    source:'NICE NG12 / ENT UK' }
+      'Suspected oesophageal pathology (true dysphagia) → suspected cancer pathway referral for oesophageal cancer (NICE NG12 (updated April 2026))'],
+    source:'NICE NG12 (updated April 2026) / ENT UK' }
 
   );
 })();

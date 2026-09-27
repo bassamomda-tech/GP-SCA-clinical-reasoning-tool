@@ -50,7 +50,7 @@
         id: 'ectopic', tier: 'urgent',
         label: 'Female of reproductive age — exclude ectopic pregnancy',
         action: 'Urgent pregnancy test ± early pregnancy unit.',
-        source: 'NICE',
+        source: 'NICE NG126',
         when: i => i.gynae,
       },
       {
@@ -64,7 +64,7 @@
         id: 'other', tier: 'routine',
         label: 'Atypical — reassess the alternative',
         action: 'Consider UTI/pyelonephritis, MSK, gynae; investigate accordingly.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],

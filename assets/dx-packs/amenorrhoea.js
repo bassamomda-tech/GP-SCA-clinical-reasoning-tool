@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Amenorrhoea
-   Shared-id triage + differential (primary & secondary). RCOG · ESHRE.
+   Shared-id triage + differential (primary & secondary). RCOG · ESHRE (international).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -23,7 +23,7 @@
   if (window.RGPTriage) RGPTriage.register('amenorrhoea-triage', {
     title: 'Amenorrhoea — triage',
     subtitle: 'Tick features. Always exclude pregnancy; surfaces prolactinoma, POI and outflow obstruction.',
-    guideline: 'RCOG · ESHRE',
+    guideline: 'RCOG · ESHRE (international)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Pregnancy test first. Secondary: FSH/LH, oestradiol, prolactin, TFT, testosterone. Primary: assess puberty/secondary sexual characteristics; refer if delayed.',
     rules: [
@@ -31,7 +31,7 @@
         id: 'prolactinoma', tier: 'urgent',
         label: 'Galactorrhoea + headache / visual field loss — ? prolactinoma',
         action: 'Prolactin; pituitary MRI + endocrine if high / visual symptoms.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.galactorrhoea,
       },
       {
@@ -45,14 +45,14 @@
         id: 'outflow_turner', tier: 'urgent',
         label: 'Primary with structural / genetic features (outflow obstruction / Turner\u2019s)',
         action: 'Examine; pelvic USS; karyotype; gynae/endocrine referral.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.outflow || i.short_stature_turner,
       },
       {
         id: 'assess', tier: 'routine',
         label: 'Amenorrhoea — investigate cause',
         action: 'Pregnancy test; hormone profile; manage PCOS / hypothalamic / thyroid; restore cycle / protect bone.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
@@ -65,7 +65,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('amenorrhoea-dx', {
     title: 'Amenorrhoea — differential',
     subtitle: 'The engine weights pregnancy, PCOS, hypothalamic, prolactin, thyroid and POI causes, and the structural causes (outflow obstruction, Turner\u2019s, Asherman\u2019s) in primary/post-surgical cases.',
-    guideline: 'RCOG · ESHRE',
+    guideline: 'RCOG · ESHRE (international)',
     patientPresenting: "My periods have stopped completely, doctor, and I'm not pregnant.",
     inputs: INPUTS,
     diagnoses: [

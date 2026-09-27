@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Hypercalcaemia
-   Shared-id triage + differential. NICE NG132 · NG12.
+   Shared-id triage + differential. NICE NG132 · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -25,7 +25,7 @@
   if (window.RGPTriage) RGPTriage.register('hypercalcaemia-triage', {
     title: 'Hypercalcaemia — triage',
     subtitle: 'Enter calcium / tick features. Surfaces severe hypercalcaemia, malignancy and PTH-driven pathways.',
-    guideline: 'NICE NG132 · NG12',
+    guideline: 'NICE NG132 · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No emergency rule fired. Recheck adjusted calcium; send PTH (the pivot), vitamin D, U&E, phosphate, myeloma screen if indicated; treat cause.',
     rules: [
@@ -40,8 +40,8 @@
       {
         id: 'malignancy_2ww', tier: 'cancer',
         label: 'Hypercalcaemia + weight loss / suppressed PTH — exclude malignancy / myeloma',
-        action: 'Urgent workup: myeloma screen, imaging; 2WW per suspected primary (NICE NG12).',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'Urgent workup: myeloma screen, imaging; 2WW per suspected primary (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.malig_hx || (i.pth_low && i.weight_loss),
       },
       {
@@ -61,7 +61,7 @@
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
@@ -77,7 +77,7 @@
         patientPhrase: 'A parathyroid gland is overactive, raising calcium. It is usually mild; surgery cures it when needed.',
         guideUrl: '' },
       { id: 'malignancy', name: 'Malignancy (PTHrP / bone mets / myeloma)', summary: 'Suppressed PTH, weight loss, often higher calcium', baseline: 5, category: 'cant-miss',
-        keyExam: 'Cachexia, bone tenderness, lymphadenopathy, organomegaly.', nextIx: '\u26A1 Myeloma screen, imaging, PTHrP; 2WW per suspected primary (NICE NG12).',
+        keyExam: 'Cachexia, bone tenderness, lymphadenopathy, organomegaly.', nextIx: '\u26A1 Myeloma screen, imaging, PTHrP; 2WW per suspected primary (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A cancer can raise calcium. We test urgently — finding the cause directs treatment.',
         guideUrl: '', redFlagAction: '\u26A1 Urgent malignancy workup' },
       { id: 'drug', name: 'Drug / supplement-induced', summary: 'Thiazide, lithium, vitamin D / calcium excess', baseline: 4, category: 'common',
@@ -118,7 +118,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

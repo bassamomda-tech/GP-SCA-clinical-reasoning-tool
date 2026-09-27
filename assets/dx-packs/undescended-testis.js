@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Undescended Testis (cryptorchidism)
-   Shared-id triage + differential. NICE · BAUS/EAU paediatric.
+   Shared-id triage + differential. BAUS · EAU paediatric urology (international).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -18,7 +18,7 @@
   if (window.RGPTriage) RGPTriage.register('undescended-testis-triage', {
     title: 'Undescended testis — triage',
     subtitle: 'Tick findings. Surfaces the DSD emergency, bilateral-impalpable urgency and surgical-referral timing.',
-    guideline: 'NICE · BAUS',
+    guideline: 'BAUS · EAU paediatric urology (international)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Re-examine warm/relaxed; retractile testes need only monitoring; true undescended testis → refer paediatric surgery/urology (orchidopexy ideally by 12–18 months).',
     rules: [
@@ -41,14 +41,14 @@
         id: 'refer', tier: 'urgent',
         label: 'True undescended / impalpable / ascended testis',
         action: 'Refer paediatric surgery/urology; orchidopexy by ~18 months (or promptly if older/acquired).',
-        source:'NICE', sourceUrl:'',
+        source:'BAUS · EAU paediatric urology (international)', sourceUrl:'',
         when: i => i.impalpable || i.palpable_groin || i.ascended,
       },
       {
         id: 'retractile', tier: 'routine',
         label: 'Retractile testis',
         action: 'Reassure; annual review (small risk of ascent); no surgery if it stays down.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
@@ -60,7 +60,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('undescended-testis-dx', {
     title: 'Undescended testis — classification',
     subtitle: 'The engine distinguishes retractile, palpable undescended, impalpable and acquired (ascended) testes, and surfaces the bilateral-impalpable DSD red flag.',
-    guideline: 'NICE · BAUS',
+    guideline: 'BAUS · EAU paediatric urology (international)',
     patientPresenting: "I can't always feel my son's testicle in the scrotum, doctor.",
     inputs: INPUTS,
     diagnoses: [

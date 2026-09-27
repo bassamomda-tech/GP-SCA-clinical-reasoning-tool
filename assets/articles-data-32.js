@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 32: V (remainder), W, Y, Z topics)
    NHS A–Z gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Suspected Ménière’s disease, or recurrent/uncertain vertigo → ENT/audiovestibular',
       'Refractory BPPV or persistent vestibular symptoms → ENT/vestibular rehabilitation',
       'Unilateral hearing loss/tinnitus with vertigo → ENT + MRI (exclude acoustic neuroma)'],
-    source:'NICE — Vertigo' },
+    source:'NICE NG12 (updated April 2026)8 (Stroke and TIA in over 16s) / BNF (prochlorperazine) / DVLA vestibular rules' },
 
   { id:'vitiligo', title:'Vitiligo', category:'Dermatology', icon:'⚪',
     overview:'An autoimmune condition causing loss of melanocytes and well-defined depigmented (white) skin patches. It is harmless physically but can have a major psychological impact, especially in darker skin. It is associated with other autoimmune conditions (notably thyroid disease), so screening and holistic support matter.',
@@ -53,7 +53,7 @@
       'Significant psychological impact → psychological support / camouflage services',
       'Associated autoimmune disease detected on screening → relevant management',
       'Diagnostic uncertainty → dermatology'],
-    source:'NICE / BAD — Vitiligo' },
+    source:'BAD guideline for the management of vitiligo (2022)' },
 
   { id:'vomiting-blood', title:'Vomiting blood (haematemesis)', category:'Gastroenterology', icon:'🩸',
     overview:'Vomiting blood indicates upper-gastrointestinal bleeding (proximal to the duodenojejunal junction). It ranges from minor to life-threatening haemorrhage and is a medical emergency requiring rapid assessment, resuscitation and urgent endoscopy. The priorities are recognising the severity and arranging immediate admission.',
@@ -77,7 +77,7 @@
       'Significant haematemesis (or any with shock/ongoing bleeding) → emergency admission for resuscitation and urgent endoscopy',
       'Suspected variceal bleeding (known liver disease) → emergency admission (high mortality)',
       'Stable minor coffee-ground vomiting → urgent assessment and endoscopy',
-      'Alarm features suggesting upper-GI cancer → urgent direct-access endoscopy (NICE NG12)'],
+      'Alarm features suggesting upper-GI cancer (dysphagia at any age, or aged 55+ with weight loss plus upper abdominal pain, reflux or dyspepsia) → suspected cancer pathway referral (NICE NG12 (updated April 2026))'],
     source:'NICE CG141 (Acute upper GI bleeding)' },
 
   { id:'vulval-cancer', title:'Vulval cancer', category:'Women’s health', icon:'🎗️',
@@ -99,11 +99,11 @@
       'Provide information and psychological/sexual-function support; address the impact of treatment',
       'Arrange surveillance/follow-up after treatment'],
     referral:[
-      'An unexplained vulval lump, ulceration, or bleeding → urgent (2WW) gynae-oncology referral (NICE NG12)',
+      'An unexplained vulval lump, ulceration, or bleeding → urgent (2WW) gynae-oncology referral (NICE NG12 (updated April 2026))',
       'Persistent unexplained vulval itch/lesion not responding to treatment → examine and refer/biopsy',
       'Lichen sclerosus/VIN with a non-healing or changing area → biopsy/gynaecology',
       'Confirmed vulval cancer → gynae-oncology MDT'],
-    source:'NICE NG12 / gynae-oncology guidance' },
+    source:'NICE NG12 (updated April 2026) / gynae-oncology guidance' },
 
   { id:'vulvodynia', title:'Vulvodynia (vulval pain)', category:'Women’s health', icon:'🌸',
     overview:'Chronic vulval pain (≥3 months) without a clear identifiable cause — a diagnosis of exclusion, often with a neuropathic/chronic-pain basis. It is common, under-recognised, and distressing, significantly affecting sexual function and quality of life. Management is multimodal, as for other chronic pain conditions.',
@@ -124,11 +124,11 @@
       'Adopt a multidisciplinary, chronic-pain approach and set realistic expectations',
       'Refer to specialist (gynaecology/vulval/pain) services for diagnostic uncertainty or refractory symptoms'],
     referral:[
-      'Diagnostic uncertainty, an abnormal/suspicious lesion, or suspected dermatosis → gynaecology/dermatology (biopsy if needed; 2WW if cancer suspected, NICE NG12)',
+      'Diagnostic uncertainty, an abnormal/suspicious lesion, or suspected dermatosis → gynaecology/dermatology (biopsy if needed; 2WW if cancer suspected, NICE NG12 (updated April 2026))',
       'Refractory vulvodynia → specialist vulval clinic / pain service',
       'Pelvic-floor dysfunction → pelvic-floor physiotherapy',
       'Sexual/psychological difficulties → psychosexual counselling'],
-    source:'NICE / BSSVD — Vulvodynia' },
+    source:'BSSVD — Vulvodynia (British Society for the Study of Vulval Disease guidance)' },
 
   { id:'warts-verrucas', title:'Warts and verrucas', category:'Dermatology', icon:'🖐️',
     overview:'Common benign skin growths caused by human papillomavirus (HPV) — warts on the hands/body and verrucas on the soles of the feet. They are harmless and usually self-limiting (especially in children), so reassurance and simple treatment are the mainstays; persistent or atypical lesions occasionally need review.',
@@ -149,11 +149,11 @@
       'Distinguish from corns/calluses (treated differently) and from sinister lesions',
       'Refer atypical, non-healing, or rapidly changing lesions to exclude malignancy'],
     referral:[
-      'Atypical, rapidly growing, bleeding, or non-healing "wart" (especially older/immunosuppressed) → dermatology / 2WW suspected skin-cancer pathway if malignancy suspected (NICE NG12)',
+      'Atypical, rapidly growing, bleeding, or non-healing "wart" (especially older/immunosuppressed) → dermatology / 2WW suspected skin-cancer pathway if malignancy suspected (NICE NG12 (updated April 2026))',
       'Extensive, resistant, or facial/genital warts → dermatology (genital warts → GUM)',
       'Immunocompromised patients with widespread/resistant warts → dermatology',
       'Diagnostic uncertainty → dermatology'],
-    source:'NICE — Warts and verrucae' },
+    source:'BAD guidelines for the management of cutaneous warts (2014) / BNF (salicylic acid)' },
 
   { id:'wernickes', title:'Wernicke’s encephalopathy', category:'Neurology', icon:'🧠',
     overview:'An acute, life-threatening neurological emergency caused by thiamine (vitamin B1) deficiency, most often in alcohol dependence but also in other causes of malnutrition. It is reversible if treated immediately with thiamine — but if missed, it progresses to irreversible Korsakoff’s syndrome (permanent amnesia). Treat on suspicion; never wait for confirmation.',
@@ -203,7 +203,7 @@
       'Complications (pneumonia, significant dehydration) → admission',
       'Notify public health (notifiable) and arrange contact prophylaxis for vulnerable contacts',
       'Pregnant women → ensure pertussis vaccination is offered/given'],
-    source:'UKHSA / NICE — Whooping cough' },
+    source:'UKHSA guidelines for the public health management of pertussis / Green Book chapter 24 (Pertussis)' },
 
   { id:'wilsons', title:'Wilson’s disease', category:'Gastroenterology', icon:'🧬',
     overview:'A rare inherited (autosomal-recessive) disorder of copper metabolism, causing copper accumulation in the liver, brain and other organs. It is important because it is a TREATABLE cause of liver disease and movement/neuropsychiatric disorders in young people — and is fatal if missed — so it must be considered in unexplained liver or neurological disease in the young.',
@@ -228,7 +228,7 @@
       'Acute (fulminant) liver failure → emergency hepatology (?transplant)',
       'First-degree relatives → genetic counselling and screening',
       'Confirmed disease → specialist (lifelong chelation/zinc therapy)'],
-    source:'NICE / specialist hepatology & neurology guidance' },
+    source:'EASL clinical practice guidelines on Wilson’s disease (international) / specialist hepatology & neurology guidance' },
 
   { id:'wisdom-teeth', title:'Wisdom tooth problems', category:'General', icon:'🦷',
     overview:'The third molars ("wisdom teeth") erupt in late adolescence/early adulthood and commonly become impacted or partially erupted, causing pain and infection (pericoronitis). Most problems are dental, but the GP may see acute pericoronitis or spreading infection — and the role is analgesia, recognising serious infection, and directing to dental care.',
@@ -253,7 +253,7 @@
       'Pericoronitis/impacted wisdom teeth → dental services (consider extraction)',
       'Recurrent problems or suspected pathology around the tooth → dental/maxillofacial',
       'Localised pericoronitis → dental care + self-care/analgesia'],
-    source:'NICE / dental & NICE wisdom-teeth guidance' },
+    source:'NICE TA1 (Extraction of wisdom teeth, 2000) / SDCEP Drug prescribing for dentistry' },
 
   { id:'womb-cancer', title:'Womb (uterine/endometrial) cancer', category:'Women’s health', icon:'🎗️',
     overview:'The commonest gynaecological cancer in the UK, usually endometrial adenocarcinoma in postmenopausal women. Its cardinal symptom — postmenopausal bleeding — usually prompts presentation early, giving a good prognosis when acted upon. Recognising and urgently investigating postmenopausal (and abnormal premenopausal) bleeding is the key task.',
@@ -274,11 +274,11 @@
       'Provide information and psychological support; manage the impact of treatment',
       'Arrange surveillance/follow-up after treatment'],
     referral:[
-      'Postmenopausal bleeding → urgent (2WW) suspected endometrial-cancer referral; women aged ≥55 with postmenopausal bleeding meet the threshold (NICE NG12)',
+      'Postmenopausal bleeding → urgent (2WW) suspected endometrial-cancer referral; women aged ≥55 with postmenopausal bleeding not attributable to HRT meet the threshold (NICE NG12 (updated April 2026)); under 55, consider referral',
       'Unexplained vaginal discharge or abnormal bleeding with risk factors → assess and refer per the suspected-cancer pathway',
       'Confirmed endometrial cancer → gynae-oncology MDT',
       'Suspected Lynch syndrome → clinical genetics'],
-    source:'NICE NG12 / endometrial cancer guidance' },
+    source:'NICE NG12 (updated April 2026) / endometrial cancer guidance' },
 
   { id:'yellow-fever', title:'Yellow fever', category:'Infectious diseases', icon:'🦟',
     overview:'A mosquito-borne viral haemorrhagic fever occurring in parts of sub-Saharan Africa and South America. It ranges from a mild flu-like illness to severe disease with jaundice, haemorrhage and organ failure. It is vaccine-preventable, so the main UK relevance is travel advice/vaccination and recognising it in a returning traveller.',
@@ -351,8 +351,8 @@
     referral:[
       'Complex medical comorbidity (e.g. VTE history, cardiac disease) → specialist contraception (CoSRH/SRH) clinic',
       'Requested sterilisation or complex IUD insertion (e.g. perforation risk, failed fitting) → SRH/gynaecology',
-      'No cancer pathway link (NICE NG12) for this topic'],
-    source:'CoSRH UKMEC 2025 (Dec 2025) / FSRH Contraception After Pregnancy / NICE guidance — Contraception' }
+      'No cancer pathway link (NICE NG12 (updated April 2026)) for this topic'],
+    source:'CoSRH UKMEC 2025 (Dec 2025) / FSRH Contraception After Pregnancy / NICE CG30 (Long-acting reversible contraception)' }
 
   );
 })();

@@ -1,6 +1,6 @@
 /* ============================================
    Reasoning GP — Triage Tool engine
-   Symptom + blood-result triage, NICE/Macmillan
+   Symptom + blood-result triage, NICE NG12 (updated April 2026)/Macmillan
    ============================================
 
    USAGE — embedded as accordion in a case:
@@ -121,7 +121,7 @@
                 <span class="tr-acc-ic">🚦</span>
                 <span class="tr-acc-text">
                   <b>Run the live triage tool</b>
-                  <small>Symptom + blood-result triage · NICE NG12 · Macmillan rapid-referral</small>
+                  <small>Symptom + blood-result triage · NICE NG12 (updated April 2026) · Macmillan rapid-referral</small>
                 </span>
               </span>
               <span class="tr-acc-caret">▶</span>
@@ -174,7 +174,7 @@
             </div>
           </div>
           <div class="tr-disclaimer">
-            <strong>Educational use only.</strong> The tool surfaces published NICE/Macmillan thresholds — it is not a replacement for clinical judgement, full history, or local pathways. Always verify and document.
+            <strong>Educational use only.</strong> The tool surfaces published NICE NG12 (updated April 2026), other numbered NICE guideline and Macmillan thresholds — it is not a replacement for clinical judgement, full history, or local pathways. Always verify and document.
           </div>
         </footer>
       `;

@@ -42,8 +42,8 @@
       {
         id: 'marrow_2ww', tier: 'cancer',
         label: 'Leucopenia + other cytopenias / B-symptoms / blasts',
-        action: 'Urgent FBC + film; haematology (NICE NG12).',
-        source: 'NICE NG12',
+        action: 'Urgent FBC + film; haematology (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.other_lines || i.b_symptoms,
       },
       {

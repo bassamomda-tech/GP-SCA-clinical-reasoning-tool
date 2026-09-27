@@ -1,10 +1,10 @@
 /* ============================================
    Medication Chooser — Generalised Anxiety Disorder
-   NICE CG113 · NICE GAD · BNF
+   NICE CG113 · BNF
    ============================================ */
 MedChooser.register('anxiety', {
   title: 'GAD — pharmacological selection',
-  subtitle: 'NICE stepped care: sertraline is first-line drug treatment for GAD. Psychological therapy runs alongside. Tick the profile; cards re-tier live.',
+  subtitle: 'NICE CG113 stepped care: sertraline is first-line drug treatment for GAD. Psychological therapy runs alongside. Tick the profile; cards re-tier live.',
   guideline: 'NICE CG113 · BNF',
 
   factors: [
@@ -62,14 +62,14 @@ MedChooser.register('anxiety', {
       name:'Sertraline (SSRI)',
       examples:'25–50 mg OD → 200 mg',
       step:'First-line',
-      source:'NICE CG113 §1.2.21',
+      source:'NICE CG113 §1.2.23',
       sideEffects:'Early ↑ anxiety/jitteriness, nausea, sexual dysfunction, hyponatraemia',
       monitor:'Review at 1–2 weeks (1 week if <30); warn re early symptom worsening',
       counsel:'"Anxiety often feels worse for the first week or two before it improves — that\'s expected, not a sign it\'s failing. Start low, build up slowly."',
       detail:{
         'Dose': 'Sertraline 25–50 mg OD; titrate to 200 mg',
         'Interactions': '↑ bleeding with NSAID/anticoagulant; serotonergic load',
-        'Key teaching': 'NICE-named first-line drug for GAD (most cost-effective SSRI). Start low to limit initial activation.'
+        'Key teaching': 'NICE CG113-named first-line drug for GAD (most cost-effective SSRI). Start low to limit initial activation.'
       },
       evaluate(f){
         if (f.maoi) return { tier:'avoid', reasons:[{kind:'bad', text:'Recent MAOI — washout required'}] };
@@ -79,7 +79,7 @@ MedChooser.register('anxiety', {
         if (f.cardiac) r.push({kind:'good', text:'Cardiac disease — sertraline is the safest SSRI'});
         if (f.prior_response) r.push({kind:'good', text:'If it worked before — re-use it'});
         if (f.gibleed || f.nsaid_anticoag) r.push({kind:'bad', text:'Bleeding risk — consider PPI cover'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'NICE first-line drug for GAD'}] };
+        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'NICE CG113 first-line drug for GAD'}] };
       }
     },
 
@@ -89,7 +89,7 @@ MedChooser.register('anxiety', {
       name:'Alternative SSRI (escitalopram / paroxetine)',
       examples:'Escitalopram 10 mg OD · Paroxetine 20 mg OD',
       step:'2nd-line',
-      source:'NICE CG113 §1.2.22',
+      source:'NICE CG113 §1.2.24',
       sideEffects:'As SSRIs; escitalopram QTc; paroxetine marked discontinuation + weight gain',
       monitor:'Review 1–2 weeks; ECG if QTc risk',
       counsel:'"If the first one didn\'t suit you, a different tablet in the same family is the usual next step."',
@@ -112,7 +112,7 @@ MedChooser.register('anxiety', {
       name:'SNRI (duloxetine / venlafaxine)',
       examples:'Duloxetine 30–60 mg OD · Venlafaxine MR 75 mg',
       step:'2nd / 3rd-line',
-      source:'NICE CG113 §1.2.23',
+      source:'NICE CG113 §1.2.24',
       sideEffects:'Nausea, ↑ BP (venlafaxine), discontinuation symptoms',
       monitor:'BP at baseline + titration; taper slowly',
       counsel:'"A different class that lifts mood and eases anxiety. We\'ll check your blood pressure as we go up."',
@@ -135,7 +135,7 @@ MedChooser.register('anxiety', {
       name:'Pregabalin',
       examples:'150 mg/day in 2–3 doses → 600 mg',
       step:'Alternative',
-      source:'NICE CG113 §1.2.24 · Class C controlled drug',
+      source:'NICE CG113 §1.2.25 · Class C controlled drug',
       sideEffects:'Sedation, dizziness, weight gain, dependence/misuse, respiratory depression with opioids',
       monitor:'Misuse risk; renal dose adjustment; taper to stop',
       counsel:'"An option if antidepressants don\'t suit you — but it can be habit-forming, so we\'ll use it carefully and review."',
@@ -149,7 +149,7 @@ MedChooser.register('anxiety', {
         const r = [];
         if (f.opioid) r.push({kind:'bad', text:'Concurrent opioids — risk of respiratory depression'});
         if (f.renal) r.push({kind:'bad', text:'Renal impairment — dose reduction required'});
-        if (f.step === 'sev') r.push({kind:'good', text:'SSRI + SNRI failed — pregabalin is the NICE alternative'});
+        if (f.step === 'sev') r.push({kind:'good', text:'SSRI/SNRI not tolerated or failed — pregabalin is the NICE CG113 alternative'});
         return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Reserve for when antidepressants unsuitable'}] };
       }
     },
@@ -160,12 +160,12 @@ MedChooser.register('anxiety', {
       name:'Benzodiazepine',
       examples:'Diazepam — crisis use only, ≤2–4 weeks',
       step:'Avoid (routine)',
-      source:'NICE CG113 §1.2.27',
+      source:'NICE CG113 §1.2.26',
       sideEffects:'Dependence, tolerance, sedation, falls, cognitive impairment',
       monitor:'Strictly time-limited; do not repeat',
       counsel:'"These calm things very quickly but become habit-forming within weeks, so they\'re only for a short crisis, not ongoing treatment."',
       detail:{
-        'Key teaching': 'NICE: do NOT offer benzodiazepines for GAD except short-term during a crisis. Not for chronic use.'
+        'Key teaching': 'NICE CG113: do NOT offer benzodiazepines for GAD except short-term during a crisis. Not for chronic use.'
       },
       evaluate(f){
         if (f.crisis) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Very short-term (≤2–4 weeks) only, during acute crisis'}] };

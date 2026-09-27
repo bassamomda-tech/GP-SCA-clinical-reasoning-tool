@@ -1,7 +1,7 @@
 /* ============================================
    Diagnostic Tool pack — Chronic Diarrhoea (≥4 weeks)
-   Shared-id triage + differential. NICE NG12 ·
-   NICE IBS / Coeliac / IBD.
+   Shared-id triage + differential. NICE NG12 (updated April 2026) ·
+   NICE CG61 (IBS) · NICE NG20 (coeliac) · NICE NG129 / NG130 (IBD).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -29,8 +29,8 @@
 
   if (window.RGPTriage) RGPTriage.register('chronic-diarrhoea-triage', {
     title: 'Chronic diarrhoea — red-flag triage',
-    subtitle: 'Tick features. Surfaces colorectal 2WW, IBD and dehydration pathways per NICE NG12.',
-    guideline: 'NICE NG12',
+    subtitle: 'Tick features. Surfaces FIT / colorectal suspected cancer, IBD and dehydration pathways per NICE NG12 (updated April 2026).',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Send first-line workup (FBC, U&E, LFT, TFT, CRP, coeliac tTG, faecal calprotectin, stool MC&S) and work the differential below.',
     rules: [
@@ -43,17 +43,17 @@
       },
       {
         id: 'crc_2ww', tier: 'cancer',
-        label: 'Age ≥60 change in habit, or any age with weight loss / rectal bleeding / mass / anaemia — colorectal 2WW',
-        action: 'Lower GI 2WW ± FIT.',
+        label: 'Change in bowel habit (chronic diarrhoea) at any adult age, or weight loss / rectal bleeding with weight loss / mass / anaemia — FIT, then colorectal suspected cancer pathway',
+        action: 'Offer FIT (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56): FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral. Rectal mass → refer without FIT. Negative FIT: safety-net and refer if clinical concern persists.',
         patientPhrase: '"A persistent change in your bowels with these features needs a fast referral to rule out a bowel cause."',
-        source: 'NICE NG12 §1.3', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
-        when: i => (i.age != null && i.age >= 60) || i.weight_loss || i.mass_anaemia || (i.rectal_bleed && i.weight_loss),
+        source: 'NICE NG12 (updated April 2026) §1.3', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        when: i => (i.age != null && i.age >= 18) || i.weight_loss || i.mass_anaemia || (i.rectal_bleed && i.weight_loss),
       },
       {
         id: 'ibd', tier: 'urgent',
         label: 'Suspected IBD — raised calprotectin, bloody diarrhoea, nocturnal symptoms',
         action: 'Refer gastroenterology for colonoscopy; urgent if systemically unwell.',
-        source: 'NICE NG12 / NICE IBD',
+        source: 'NICE HTG320 (faecal calprotectin; formerly DG11) · NICE NG129 / NG130',
         when: i => i.calprotectin_high || (i.blood_mucus && i.nocturnal),
       },
       {
@@ -79,7 +79,7 @@
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
       
     ],
   });
@@ -87,7 +87,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('chronic-diarrhoea-dx', {
     title: 'Chronic diarrhoea — differential diagnosis',
     subtitle: 'The engine ranks IBS, IBD, coeliac and malabsorption causes, and always surfaces colorectal cancer when red flags fire.',
-    guideline: 'NICE · NG12 · NG20',
+    guideline: 'NICE NG12 (updated April 2026) · NICE NG20 · NICE CG61',
     patientPresenting: "My bowels have been loose for a couple of months now, doctor — several times a day, and I'm worn out.",
     inputs: INPUTS,
     diagnoses: [
@@ -124,10 +124,10 @@
         patientPhrase: 'The pancreas is not making enough digestive enzymes, so fat is not absorbed. Enzyme capsules with meals fix it.',
         guideUrl: '' },
 
-      { id: 'crc', name: 'Colorectal cancer', summary: 'Change in habit ≥60, weight loss, rectal bleeding, mass, anaemia', baseline: 1, category: 'cant-miss',
-        keyExam: 'Abdominal / rectal mass, cachexia, lymphadenopathy.', nextIx: '\u26A1 Lower GI 2WW (NICE NG12).',
+      { id: 'crc', name: 'Colorectal cancer', summary: 'Change in habit (any adult age), weight loss, rectal bleeding, mass, anaemia', baseline: 1, category: 'cant-miss',
+        keyExam: 'Abdominal / rectal mass, cachexia, lymphadenopathy.', nextIx: '\u26A1 FIT first (NICE NG12 (updated April 2026)); FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral; rectal mass → refer directly.',
         patientPhrase: 'These features mean I want an urgent specialist look at the bowel to exclude cancer — most come back clear.',
-        guideUrl: '', redFlagAction: '\u26A1 Lower GI 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 FIT → colorectal pathway' }
     ],
     effects: {
       age: (v) => v >= 60 ? { crc: +8, microscopic: +5, ibs_d: -3 } : (v < 45 ? { ibs_d: +6, coeliac: +2, crc: -2 } : {}),
@@ -163,7 +163,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'NICE NG20 — Coeliac disease', url: 'https://www.nice.org.uk/guidance/ng20' }
     ],
   });

@@ -1,12 +1,12 @@
 /* ============================================
    Lab Results Actioning — Generic adult primary care
-   NICE NG12 · BSH · Renal Association
+   NICE NG12 (updated April 2026) · BSH · UK Kidney Association
    UK national societies
    ============================================ */
 RGPLabs.register('generic', {
   title: 'Lab results — generic adult primary care',
   subtitle: 'Enter values (or paste from EMIS / SystmOne). Tool surfaces per-result actions: emergency, 2WW, urgent, treat, drug review, repeat, refer, recall, annotate — each anchored to UK guidance.',
-  guideline: 'NICE · BSH · Renal Association',
+  guideline: 'NICE NG12 (updated April 2026) · NG203 · NG145 · NG28 · BSH · UK Kidney Association',
 
   context: [
     { id:'age',     kind:'number', label:'Age', unit:'yrs', default: null },
@@ -40,7 +40,7 @@ RGPLabs.register('generic', {
               action:'emergency', label:'Pancytopenia — all cell lines low; same-day haematology',
               rule:'Hb low + WCC <4 + platelets <150 (marrow failure / acute leukaemia / aplasia)',
               timeframe:'Same day',
-              source:'BSH · NICE NG12 §1.10',
+              source:'BSH · NICE NG12 (updated April 2026) haematological',
               patientPhrase:'"All three of your blood cell lines are low — we need a blood specialist to see you quickly to find out why."',
               noteTemplate:'Pancytopenia.\nHb [value], WCC [value], Plt [value]. Blood film + reticulocytes urgently.\nSame-day haematology discussion. B12/folate, LFTs, LDH, virology. ?Marrow failure / leukaemia / hypersplenism.',
               when:(v, ctx, all) => v < (ctx.female ? 120 : 130) && all.wcc != null && all.wcc < 4 && all.plt != null && all.plt < 150
@@ -74,13 +74,13 @@ RGPLabs.register('generic', {
               when:(v, ctx) => v >= 70 && v < 100 && ctx.symptoms
             },
             {
-              action:'cancer', label:'Unexplained anaemia ≥60 — colorectal 2WW (NG12 §1.3.3)',
-              rule:'Hb <120 ♀ / <130 ♂ + age ≥60 — refer 2WW (regardless of ferritin if no clear alternative cause)',
-              timeframe:'2 weeks',
-              source:'NICE NG12 §1.3.3 colorectal',
+              action:'urgent', label:'Unexplained anaemia ≥60 — offer FIT (colorectal, NICE NG12 updated April 2026)',
+              rule:'Hb <120 ♀ / <130 ♂ + age ≥60, even without iron deficiency — offer FIT; FIT ≥10 µg Hb/g → colorectal suspected cancer pathway referral (refer despite a lower FIT if clinical concern remains strong)',
+              timeframe:'FIT now; refer within 2 weeks if FIT ≥10',
+              source:'NICE NG12 (updated April 2026) colorectal · NICE HTG690 (formerly DG56)',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
-              patientPhrase:'"At your age, a low blood count needs a faster specialist look at the bowel — this is standard and doesn\'t mean anything is definitely wrong."',
-              noteTemplate:'2WW lower GI — anaemia ≥60 (NG12 §1.3.3).\nHb [value], MCV [value], ferritin [value if known]. DRE [findings]. FIT requested.\nIron studies if not yet done. Anticoagulant: [Y/N — consider as cause but still refer].',
+              patientPhrase:'"At your age, a low blood count needs a quick bowel check — a simple home stool test first, and a faster specialist look if it is positive. This is standard and doesn\'t mean anything is definitely wrong."',
+              noteTemplate:'Anaemia ≥60 — FIT requested (NICE NG12, updated April 2026; HTG690).\nHb [value], MCV [value], ferritin [value if known]. DRE [findings].\nFIT ≥10 µg Hb/g → colorectal suspected cancer pathway referral. Iron studies if not yet done; if IDA in a man / postmenopausal woman → bidirectional endoscopy (BSG 2021). Anticoagulant: [Y/N — consider as cause but still investigate].',
               handoff:{ tool:'triage', topic:'tiredness', label:'Triage — IDA pathway' },
               when:(v, ctx) => ctx.age != null && ctx.age >= 60 && v < (ctx.female ? 120 : 130)
             },
@@ -88,20 +88,20 @@ RGPLabs.register('generic', {
               action:'urgent', label:'Anaemia age 50–59 — order ferritin + FIT, refer if IDA',
               rule:'Hb <120 ♀ / <130 ♂ + age 50–59 — ferritin pending or absent',
               timeframe:'Within days',
-              source:'NICE NG12 §1.3 · BSG FIT',
+              source:'NICE NG12 (updated April 2026) · NICE HTG690 · BSG 2021',
               patientPhrase:'"Your blood count is low. The next step is iron studies and a bowel test — depending on the result we may need a specialist referral."',
-              noteTemplate:'Anaemia age 50–59. Hb [value].\nOrder ferritin + iron studies, FIT, B12/folate. If IDA confirmed → lower GI 2WW (NG12 §1.3.5). DRE done.',
+              noteTemplate:'Anaemia age 50–59. Hb [value].\nOrder ferritin + iron studies, FIT, B12/folate. If IDA confirmed → FIT (≥10 µg Hb/g → colorectal suspected cancer pathway, NICE NG12 updated April 2026); men / postmenopausal women with IDA → bidirectional endoscopy (BSG 2021). DRE done.',
               handoff:{ tool:'triage', topic:'tiredness', label:'Triage — IDA pathway' },
               when:(v, ctx, all) => ctx.age != null && ctx.age >= 50 && ctx.age < 60 && v < (ctx.female ? 120 : 130) && (all.ferritin == null || all.ferritin >= 30)
             },
             {
-              action:'cancer', label:'Iron-deficient anaemia ≥50 — colorectal 2WW',
-              rule:'Hb <120 ♀ / <130 ♂ + ferritin <30 + age ≥50',
-              timeframe:'2 weeks',
-              source:'NICE NG12 §1.3 colorectal',
+              action:'urgent', label:'Iron-deficient anaemia ≥50 — FIT + GI investigation',
+              rule:'Hb <120 ♀ / <130 ♂ + ferritin <30 + age ≥50 — offer FIT (≥10 µg Hb/g → colorectal suspected cancer pathway referral); men and postmenopausal women with IDA → bidirectional endoscopy (BSG 2021)',
+              timeframe:'FIT now; refer within 2 weeks if FIT ≥10',
+              source:'NICE NG12 (updated April 2026) colorectal · NICE HTG690 · BSG 2021 IDA',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
-              patientPhrase:'"Your blood test shows iron-deficient anaemia. In your age group, the safest thing is to rule out a bowel cause quickly — that\'s why I\'m sending an urgent referral."',
-              noteTemplate:'2WW lower GI — iron deficiency anaemia (NG12 §1.3).\nHb [value], MCV [low], ferritin [low].\nDRE done. FIT sent (refer regardless of FIT if age ≥60). PR exam normal.',
+              patientPhrase:'"Your blood test shows iron-deficient anaemia. In your age group, the safest thing is to rule out a bowel cause quickly — we\'ll start with a stool test and arrange a camera test of the gut."',
+              noteTemplate:'Iron deficiency anaemia — FIT sent (NICE NG12, updated April 2026; HTG690).\nHb [value], MCV [low], ferritin [low].\nDRE done. FIT ≥10 µg Hb/g → colorectal suspected cancer pathway referral; refer despite a lower FIT if clinical concern remains strong. Men / postmenopausal women: bidirectional endoscopy (BSG 2021). Coeliac serology.',
               handoff:{ tool:'triage', topic:'tiredness', label:'Triage Tool — IDA pathway' },
               when:(v, ctx, all) => ctx.age != null && ctx.age >= 50 && v < (ctx.female ? 120 : 130) && all.ferritin != null && all.ferritin < 30
             },
@@ -134,12 +134,12 @@ RGPLabs.register('generic', {
               }
             },
             {
-              action:'cancer', label:'Polycythaemia — Hb >185 ♂ / >165 ♀ — refer haematology',
+              action:'urgent', label:'Polycythaemia — Hb >185 ♂ / >165 ♀ — refer haematology',
               rule:'Persistent ↑Hb — consider PV / secondary causes',
-              timeframe:'2 weeks (NG12 §1.10)',
-              source:'NICE NG12 §1.10 haematological · BSH',
+              timeframe:'Within weeks',
+              source:'BSH erythrocytosis guideline',
               patientPhrase:'"Your blood count is high — there are a few causes and we want a haematology team to look quickly."',
-              noteTemplate:'? Polycythaemia.\nHb [value]. Smoker [Y/N], OSA [Y/N], altitude/dehydration. Confirm with repeat after hydration.\nIf confirmed → haematology 2WW; JAK2 testing in secondary care.',
+              noteTemplate:'? Polycythaemia.\nHb [value]. Smoker [Y/N], OSA [Y/N], altitude/dehydration. Confirm with repeat after hydration.\nIf confirmed → haematology referral; JAK2 testing per local pathway.',
               when:(v, ctx) => v > (ctx.female ? 165 : 185)
             }
           ]
@@ -175,14 +175,14 @@ RGPLabs.register('generic', {
               action:'emergency', label:'Leucocytosis >50 — consider leukaemia',
               rule:'WCC >50',
               timeframe:'Same-day haematology phone',
-              source:'NICE NG12 §1.10 · BSH',
+              source:'NICE NG12 (updated April 2026) haematological · BSH',
               when:(v) => v > 50
             },
             {
               action:'cancer', label:'Persistent leucocytosis / unexplained ↑ — haematology 2WW',
               rule:'WCC >20 without clear infective cause',
               timeframe:'2 weeks',
-              source:'NICE NG12 §1.10',
+              source:'NICE NG12 (updated April 2026) haematological · BSH',
               when:(v, ctx) => v > 20 && !ctx.symptoms
             },
             {
@@ -227,7 +227,7 @@ RGPLabs.register('generic', {
               action:'cancer', label:'Lymphocytosis >20 — exclude CLL (haematology 2WW)',
               rule:'Lymphocytes >20 (or >5 persisting) — film + immunophenotyping',
               timeframe:'2 weeks',
-              source:'NICE NG12 §1.10 · BSH CLL',
+              source:'NICE NG12 (updated April 2026) haematological · BSH CLL',
               patientPhrase:'"One type of your white cells is high — usually reactive, but we should check it with a blood-specialist test."',
               noteTemplate:'Lymphocytosis. Lymph [value].\nBlood film + flow cytometry/immunophenotyping. If persistent / >5 → CLL workup. Reactive causes: viral (EBV/CMV), pertussis.',
               when:(v) => v > 20
@@ -293,13 +293,13 @@ RGPLabs.register('generic', {
               when:(v) => v >= 30 && v < 100
             },
             {
-              action:'cancer', label:'Thrombocytosis + cancer-paired symptom — 2WW',
-              rule:'Plt ≥400 + symptoms — lung / oesophageal / gastric / colorectal / endometrial / ovarian',
-              timeframe:'2 weeks',
-              source:'NICE NG12 §1.5.21 thrombocytosis',
+              action:'cancer', label:'Thrombocytosis + cancer-paired symptom — NICE NG12 (updated April 2026) site-specific test',
+              rule:'Plt >400 + symptoms — NICE NG12 (updated April 2026) links thrombocytosis to lung (urgent CXR, age 40+), oesophageal / stomach (non-urgent direct-access OGD, age 55+ with upper GI symptoms) and endometrial cancer (direct-access USS, age 55+); follow the site-specific criterion',
+              timeframe:'Per site-specific criterion',
+              source:'NICE NG12 (updated April 2026) (thrombocytosis criteria)',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
               patientPhrase:'"This blood marker is raised — combined with your symptoms it\'s a signal we shouldn\'t ignore. I\'d like to send a faster referral to be safe."',
-              noteTemplate:'2WW — raised platelets (NG12 §1.5.21).\nPlt [value] + [weight loss / haemoptysis / dysphagia / change bowel / PMB / abdominal mass / cough]. Triggers site-specific 2WW.',
+              noteTemplate:'Raised platelets + symptoms (NICE NG12, updated April 2026).\nPlt [value] + [weight loss / haemoptysis / dysphagia / change bowel / PMB / abdominal mass / cough]. Arrange the site-specific test or referral NG12 gives for these features.',
               handoff:{ tool:'triage', topic:'tiredness', label:'Triage — thrombocytosis cancer rule' },
               when:(v, ctx) => v >= 400 && ctx.symptoms
             },
@@ -381,7 +381,7 @@ RGPLabs.register('generic', {
               action:'annotate', label:'Stable mildly raised K⁺ — known pattern',
               rule:'K⁺ 5.0–5.5 stable across ≥3 months',
               timeframe:'Routine recall',
-              source:'NICE',
+              source:'UK Kidney Association hyperkalaemia 2023',
               patientPhrase:'"Your potassium is slightly raised, but the same as last time — that\'s your baseline. We\'ll just keep an eye on it."',
               when:(v, ctx, all, meta) => v >= 5.0 && v < 5.5 && meta?.trend === 'stable' && meta.daysSince != null && meta.daysSince >= 90
             },
@@ -413,7 +413,7 @@ RGPLabs.register('generic', {
               action:'emergency', label:'Severe hyponatraemia — admit',
               rule:'Na⁺ <125 (or <130 with altered consciousness)',
               timeframe:'Same day',
-              source:'NICE CG174',
+              source:'Society for Endocrinology emergency guidance (acute hyponatraemia)',
               sourceUrl:'',
               patientPhrase:'"Your salt level is very low — we need to bring it up safely in hospital. Don\'t drink large volumes of fluid in the meantime."',
               noteTemplate:'Severe hyponatraemia. Na⁺ [value]. Symptoms [drowsy / fits / vomiting].\nAdmit. Stop offending drugs (thiazide, SSRI, carbamazepine, PPI). Paired serum + urine osmolality if cause unclear.',
@@ -469,8 +469,8 @@ RGPLabs.register('generic', {
           pathways:[{slug:'ckd',label:'CKD'},{slug:'aki',label:'AKI'}],
           rules:[
             {
-              action:'urgent', label:'eGFR <30 — refer renal, drug review',
-              rule:'CKD stage 4–5',
+              action:'urgent', label:'eGFR <30 — discuss with / refer to nephrology, drug review',
+              rule:'CKD stage 4–5 — check KFRE (refer if 5-year risk >5%) and the other NG203 referral criteria',
               timeframe:'2–4 weeks',
               source:'NICE NG203 CKD',
               sourceUrl:'https://www.nice.org.uk/guidance/ng203',
@@ -487,16 +487,16 @@ RGPLabs.register('generic', {
             },
             {
               action:'recall', label:'CKD G3a — primary-care monitoring',
-              rule:'eGFR 45–59 — check ACR, monitor 6-monthly',
-              timeframe:'6 months',
+              rule:'eGFR 45–59 — check ACR; monitor at least annually (more often if ACR raised, per NG203)',
+              timeframe:'12 months (sooner if ACR raised)',
               source:'NICE NG203',
               when:(v) => v >= 45 && v < 60
             },
             {
               action:'urgent', label:'Rapid eGFR decline — accelerated CKD progression',
-              rule:'eGFR drop ≥25% (or ≥15 mL/min) within ≤12 months',
+              rule:'Sustained eGFR drop ≥25% with a change of category, or ≥15 mL/min, within 12 months',
               timeframe:'Same week — repeat + drug review',
-              source:'NICE NG203 §1.2 / Renal Association',
+              source:'NICE NG203 / UK Kidney Association',
               sourceUrl:'https://www.nice.org.uk/guidance/ng203',
               patientPhrase:'"Your kidney function has dropped faster than I\'d expect. Let\'s repeat the test, review your tablets, and check things over before deciding next steps."',
               noteTemplate:'Accelerated eGFR decline.\nCurrent eGFR [value]; previous [prev value] [prev days] ago. Drop [deltaPct]%.\nRepeat U&E + ACR within days. Drug review (ACEi/ARB/NSAID/SGLT2i context-dependent). Hydration, sepsis, obstruction screen.',
@@ -518,22 +518,22 @@ RGPLabs.register('generic', {
           pathways:[{slug:'ckd',label:'CKD / albuminuria'}],
           rules:[
             {
-              action:'urgent', label:'A3 albuminuria — refer renal',
-              rule:'ACR ≥30 — significant proteinuria',
-              timeframe:'2 weeks',
+              action:'urgent', label:'A3 albuminuria — optimise treatment; refer renal if ACR ≥70 or ≥30 with haematuria',
+              rule:'ACR ≥30 — refer if ACR ≥70 (unless due to diabetes and already appropriately treated) or ACR >30 with haematuria (NG203)',
+              timeframe:'Within weeks',
               source:'NICE NG203 CKD',
               patientPhrase:'"There\'s a significant amount of protein in your urine — that\'s a kidney signal we need a specialist to assess."',
-              noteTemplate:'Heavy albuminuria. ACR [value].\nRenal referral. Start ACEi/ARB unless contraindicated. SGLT2i if eligible (DM or non-DM CKD).\nBP target <130/80.',
+              noteTemplate:'Heavy albuminuria. ACR [value].\nRenal referral if NG203 criteria met. Start ACEi/ARB unless contraindicated. SGLT2i if eligible (DM or non-DM CKD).\nBP target per NG136/NG203 (<130/80 if ACR ≥70).',
               handoff:{ tool:'medchooser', topic:'hypertension', label:'MedChooser — ACEi/ARB' },
               when:(v) => v >= 30
             },
             {
-              action:'treat', label:'A2 albuminuria — start ACEi/ARB',
+              action:'treat', label:'A2 albuminuria — ACEi/ARB if diabetes or hypertension',
               rule:'ACR 3–29',
               timeframe:'Within weeks',
               source:'NICE NG203 / NG136',
               patientPhrase:'"There\'s a small amount of protein in your urine — common in diabetes / blood pressure. A tablet protects the kidneys long-term."',
-              noteTemplate:'Microalbuminuria. ACR [value].\nStart ACEi/ARB (e.g. ramipril 1.25 mg → 10 mg) regardless of BP. Recheck ACR + U&E in 1–2 weeks.',
+              noteTemplate:'Microalbuminuria. ACR [value].\nOffer ACEi/ARB (e.g. ramipril, titrated) if diabetes (ACR >3) or hypertension (NG203); SGLT2i if eligible. Recheck ACR + U&E in 1–2 weeks.',
               when:(v) => v >= 3 && v < 30
             }
           ]
@@ -586,7 +586,7 @@ RGPLabs.register('generic', {
               action:'urgent', label:'ALT raised — non-invasive liver screen',
               rule:'ALT 2–10× upper limit (80–400)',
               timeframe:'Routine review',
-              source:'BSG abnormal LFTs · NICE',
+              source:'BSG abnormal LFTs (2018)',
               noteTemplate:'Abnormal LFTs.\nALT [value]. Liver screen: hepatitis B/C, ferritin/transferrin, AMA, ANA, SMA, immunoglobulins, alpha-1 antitrypsin, USS liver. Alcohol history. Repeat in 6 weeks if mild.',
               when:(v) => v > 80
             },
@@ -623,7 +623,7 @@ RGPLabs.register('generic', {
               rule:'ALP >2× ULN — consider obstruction, PBC, malignancy',
               timeframe:'Within days',
               source:'BSG abnormal LFTs',
-              noteTemplate:'Cholestatic LFTs. ALP [value], GGT [value], bilirubin [value].\nUSS biliary tree urgently. AMA, immunoglobulins, ferritin. If jaundice/RUQ pain — admit or 2WW pancreatic / HPB.',
+              noteTemplate:'Cholestatic LFTs. ALP [value], GGT [value], bilirubin [value].\nUSS biliary tree urgently. AMA, immunoglobulins, ferritin. If jaundice/RUQ pain — admit or suspected cancer pathway (pancreatic / HPB) per NICE NG12 (updated April 2026).',
               when:(v) => v > 260
             }
           ]
@@ -650,15 +650,15 @@ RGPLabs.register('generic', {
               action:'urgent', label:'Jaundice — same-day workup',
               rule:'Bilirubin >50 + symptoms or jaundice',
               timeframe:'Same day',
-              source:'NICE NG12 §1.2 / BSG',
+              source:'NICE NG12 (updated April 2026) / BSG',
               patientPhrase:'"You\'re slightly jaundiced and your liver tests are off — we need to investigate this today."',
               when:(v, ctx) => v > 50 && ctx.symptoms
             },
             {
-              action:'cancer', label:'Painless jaundice ≥40 — pancreatic 2WW',
+              action:'cancer', label:'Jaundice ≥40 — pancreatic suspected cancer pathway',
               rule:'Bilirubin >25 + age ≥40 + painless',
               timeframe:'2 weeks',
-              source:'NICE NG12 §1.2.10 pancreatic',
+              source:'NICE NG12 (updated April 2026) pancreatic (age 40+ with jaundice)',
               patientPhrase:'"Painless jaundice in your age group has to be checked quickly to look at the pancreas."',
               when:(v, ctx) => v > 25 && ctx.age != null && ctx.age >= 40 && !ctx.symptoms
             }
@@ -694,17 +694,17 @@ RGPLabs.register('generic', {
               source:'NICE NG145 thyroid disease',
               sourceUrl:'https://www.nice.org.uk/guidance/ng145',
               patientPhrase:'"Your thyroid is significantly underactive — that explains a lot of the tiredness. We\'ll start levothyroxine today and recheck in 6–8 weeks."',
-              noteTemplate:'Profound hypothyroidism.\nTSH [value], fT4 [value].\nLevothyroxine 25–50 mcg OD (lower in elderly / IHD). Recheck TFTs at 6–8 weeks; titrate to TSH 0.4–2.5.\nIf myxoedema (hypothermia / bradycardia / altered consciousness) — admit.',
+              noteTemplate:'Profound hypothyroidism.\nTSH [value], fT4 [value].\nLevothyroxine 1.6 mcg/kg/day if under 65 with no CVD; 25–50 mcg OD if 65+ or CVD (NG145). Recheck TFTs at 6–8 weeks; titrate to TSH within the reference range.\nIf myxoedema (hypothermia / bradycardia / altered consciousness) — admit.',
               handoff:{ tool:'triage', topic:'tiredness', label:'Triage — profound hypothyroidism' },
               when:(v) => v > 20
             },
             {
-              action:'treat', label:'Overt hypothyroidism — start levothyroxine',
-              rule:'TSH >10 (or 4.5–10 + symptomatic with low fT4)',
+              action:'treat', label:'Hypothyroidism — start / consider levothyroxine',
+              rule:'Raised TSH with low fT4 (overt) — treat; TSH ≥10 with normal fT4 on two tests 3 months apart (subclinical) — consider treatment (NG145)',
               timeframe:'1–2 weeks',
               source:'NICE NG145 · BTA',
               patientPhrase:'"You have an underactive thyroid — common and very treatable. We\'ll start a small dose tablet and recheck in 6–8 weeks."',
-              noteTemplate:'Hypothyroidism.\nTSH [value]. Start levothyroxine 50 mcg OD (25 if elderly / IHD / frail). Recheck TFTs in 6–8 wk.\nTPO antibodies if not done.',
+              noteTemplate:'Hypothyroidism.\nTSH [value]. Levothyroxine 1.6 mcg/kg/day if under 65 with no CVD; 25–50 mcg OD if 65+ / CVD / frail (NG145). Recheck TFTs in 6–8 wk.\nTPO antibodies if not done.',
               when:(v, ctx, all) => v > 10 || (v > 4.5 && all.ft4 != null && all.ft4 < 9 && ctx.symptoms)
             },
             {
@@ -756,13 +756,13 @@ RGPLabs.register('generic', {
           pathways:[{slug:'t2dm',label:'Type 2 diabetes'}],
           rules:[
             {
-              action:'treat', label:'New diabetes likely — confirm + start NICE pathway',
+              action:'treat', label:'New diabetes likely — confirm + start NG28 pathway',
               rule:'HbA1c ≥48 — confirm with repeat if asymptomatic',
               timeframe:'Same-week review',
               source:'NICE NG28 type 2 diabetes',
               sourceUrl:'https://www.nice.org.uk/guidance/ng28',
               patientPhrase:'"Your blood tests show diabetes. The good news is we caught it early — there\'s a lot we can do."',
-              noteTemplate:'New T2DM.\nHbA1c [value] mmol/mol. Repeat HbA1c if asymptomatic.\nFull workup: lipids, U&E, ACR, LFT, BP, eyes referral, foot check.\nLifestyle ± metformin per NG28. Structured education (DESMOND).',
+              noteTemplate:'New T2DM.\nHbA1c [value] mmol/mol. Repeat HbA1c if asymptomatic.\nFull workup: lipids, U&E, ACR, LFT, BP, eyes referral, foot check.\nLifestyle + drug treatment per current NICE NG28. Structured education (DESMOND).',
               handoff:{ tool:'medchooser', topic:'type-2-diabetes', label:'MedChooser — T2DM' },
               when:(v) => v >= 48
             },
@@ -770,7 +770,7 @@ RGPLabs.register('generic', {
               action:'recall', label:'Pre-diabetes — DPP referral + lifestyle',
               rule:'HbA1c 42–47',
               timeframe:'Annual',
-              source:'NICE NG28 · NHS DPP',
+              source:'NICE PH38 (preventing type 2 diabetes) · NHS DPP',
               patientPhrase:'"You\'re not diabetic — but you\'re in a window where we can prevent it. The NHS has a programme that helps."',
               noteTemplate:'Pre-diabetes. HbA1c [value].\nRefer NHS Diabetes Prevention Programme. Lifestyle, BMI, BP, lipids. Annual HbA1c.',
               when:(v) => v >= 42 && v < 48
@@ -809,9 +809,9 @@ RGPLabs.register('generic', {
           rules:[
             {
               action:'emergency', label:'Hypoglycaemia — treat now (15-15 rule), 999 if severe',
-              rule:'Glucose <4 (“four is the floor”); <3 or impaired consciousness = level 3 emergency',
+              rule:'Glucose <4 (“four is the floor”); <3 = level 2 (clinically significant); needing help from others / impaired consciousness = level 3 (severe) emergency',
               timeframe:'Immediate',
-              source:'JBDS-IP hypoglycaemia · NICE',
+              source:'JBDS-IP hypoglycaemia · NICE NG28 / NG17',
               sourceUrl:'https://www.nice.org.uk/guidance/ng28',
               patientPhrase:'"Your sugar is low — take fast-acting sugar now and recheck in 15 minutes. If you ever can\u2019t treat it yourself, that\u2019s a 999 call."',
               noteTemplate:'Hypoglycaemia. Glucose [value].\nConscious + able to swallow → 15–20 g fast carbohydrate, recheck 15 min (15-15 rule), then long-acting carb.\nImpaired/unable → IM glucagon / Baqsimi / IV glucose + 999.\nReview drivers: sulfonylurea (24–48 h obs / admit), insulin, missed meals, alcohol, renal/hepatic, Addison\u2019s. Reassess regimen + DVLA advice.',
@@ -843,9 +843,9 @@ RGPLabs.register('generic', {
           pathways:[{slug:'high-cholesterol',label:'High cholesterol'}],
           rules:[
             {
-              action:'cancer', label:'Suspected familial hypercholesterolaemia — refer lipid clinic',
+              action:'refer', label:'Suspected familial hypercholesterolaemia — refer lipid clinic',
               rule:'TC >7.5 + FH premature CVD',
-              timeframe:'2 weeks',
+              timeframe:'Routine',
               source:'NICE CG71 FH',
               sourceUrl:'https://www.nice.org.uk/guidance/cg71',
               patientPhrase:'"Your cholesterol is very high for your age — and with your family history we should get a specialist lipid review."',
@@ -909,7 +909,7 @@ RGPLabs.register('generic', {
               action:'cancer', label:'Moderate hypercalcaemia — myeloma / bone mets screen',
               rule:'Adj Ca²⁺ 2.8–3.0',
               timeframe:'2 weeks',
-              source:'NICE NG12 §1.10.5 myeloma',
+              source:'NICE NG12 (updated April 2026) myeloma (age 60+ with hypercalcaemia → very urgent protein electrophoresis + Bence-Jones)',
               patientPhrase:'"Your calcium is high — there are several causes and we need to investigate all of them quickly."',
               noteTemplate:'Hypercalcaemia. Adj Ca²⁺ [value].\nPTH, vit D, U&E, myeloma screen (SPEP, immunoglobulins, Bence-Jones), CXR, urinary calcium.\nUrgent endo referral if PTH inappropriately normal/raised.',
               when:(v) => v > 2.7 && v <= 3.0
@@ -940,7 +940,7 @@ RGPLabs.register('generic', {
               action:'treat', label:'Vitamin D deficiency — loading regimen',
               rule:'25-OH Vit D <25',
               timeframe:'Start now',
-              source:'NOS · BNF',
+              source:'Royal Osteoporosis Society (formerly NOS) vitamin D guideline · BNF',
               patientPhrase:'"Your vitamin D is low — we\'ll give you a loading course then a daily supplement to maintain levels."',
               noteTemplate:'Vit D deficient. [value] nmol/L.\nLoading: colecalciferol 50,000 IU weekly × 6 OR 20,000 IU twice weekly × 7. Maintenance 800–2000 IU OD.\nCheck Ca²⁺ before loading.',
               when:(v) => v < 25
@@ -949,7 +949,7 @@ RGPLabs.register('generic', {
               action:'treat', label:'Vit D insufficient — daily supplement',
               rule:'25-OH Vit D 25–49',
               timeframe:'Routine',
-              source:'NOS · BNF',
+              source:'Royal Osteoporosis Society (formerly NOS) · BNF',
               when:(v) => v >= 25 && v < 50
             }
           ]
@@ -967,11 +967,11 @@ RGPLabs.register('generic', {
           pathways:[{slug:'low-ferritin',label:'Low ferritin'},{slug:'iron-deficiency',label:'Iron deficiency'},{slug:'high-ferritin',label:'High ferritin'}],
           rules:[
             {
-              action:'cancer', label:'Iron-deficiency + age ≥50 — colorectal 2WW',
-              rule:'Ferritin <30 + age ≥50 + low Hb',
-              timeframe:'2 weeks',
-              source:'NICE NG12 §1.3',
-              patientPhrase:'"Your iron is low. At your age we want to rule out a bowel cause urgently."',
+              action:'urgent', label:'Iron-deficiency anaemia + age ≥50 — FIT + GI investigation',
+              rule:'Ferritin <30 + age ≥50 + low Hb — offer FIT (≥10 µg Hb/g → colorectal suspected cancer pathway referral); men / postmenopausal women → bidirectional endoscopy (BSG 2021)',
+              timeframe:'FIT now; refer within 2 weeks if FIT ≥10',
+              source:'NICE NG12 (updated April 2026) · NICE HTG690 · BSG 2021 IDA',
+              patientPhrase:'"Your iron is low. At your age we want to rule out a bowel cause quickly — starting with a stool test."',
               handoff:{ tool:'triage', topic:'tiredness', label:'Triage — IDA rule' },
               when:(v, ctx, all) => v < 30 && ctx.age != null && ctx.age >= 50 && all.hb != null && all.hb < (ctx.female ? 120 : 130)
             },
@@ -979,7 +979,7 @@ RGPLabs.register('generic', {
               action:'treat', label:'Iron deficiency — start iron + investigate cause',
               rule:'Ferritin <30',
               timeframe:'Now',
-              source:'BSH iron deficiency · NICE',
+              source:'BSG 2021 iron deficiency anaemia · BNF',
               patientPhrase:'"Your iron stores are low — common cause of tiredness. We\'ll start an iron tablet and check what\'s causing it."',
               noteTemplate:'Iron deficiency. Ferritin [value].\nFerrous fumarate 210 mg OD (alternate-day option). Recheck Hb + ferritin at 4–8 wks. Dietary + menstrual + GI source.',
               when:(v) => v < 30
@@ -1005,7 +1005,7 @@ RGPLabs.register('generic', {
               source:'BSH B12/folate guidelines',
               sourceUrl:'https://b-s-h.org.uk/guidelines/',
               patientPhrase:'"Your B12 is very low — that\'s a fixable cause of tiredness. We\'ll start an injection straight away."',
-              noteTemplate:'B12 deficiency. B12 [value], MCV [value].\nIF antibody, gastric parietal cell Ab.\nHydroxocobalamin 1 mg IM 3×/week for 2 weeks (if neurology: alternate days until no further improvement, then 2-monthly — BNF). Maintenance 1 mg IM 3-monthly (pernicious anaemia, no neurology) or follow guidelines for dietary.',
+              noteTemplate:'B12 deficiency. B12 [value], MCV [value].\nIF antibody, gastric parietal cell Ab.\nHydroxocobalamin 1 mg IM 3×/week for 2 weeks (if neurology: alternate days until no further improvement, then 2-monthly — BNF). Maintenance 1 mg IM every 2–3 months (no neurology — BNF) or follow guidelines for dietary.',
               when:(v) => v < 100
             },
             {
@@ -1085,7 +1085,7 @@ RGPLabs.register('generic', {
               action:'urgent', label:'Markedly raised CRP — investigate source',
               rule:'CRP >100 with symptoms',
               timeframe:'Same day',
-              source:'NICE NG253 · NG12',
+              source:'NICE NG253 · NICE NG12 (updated April 2026)',
               patientPhrase:'"Your inflammation marker is high — that suggests an infection or something we need to find. Let\'s examine you today."',
               when:(v, ctx) => v > 100 && ctx.symptoms
             },
@@ -1093,7 +1093,7 @@ RGPLabs.register('generic', {
               action:'cancer', label:'Raised CRP + B-symptoms — haematological 2WW',
               rule:'CRP >30 + drenching night sweats / weight loss',
               timeframe:'2 weeks',
-              source:'NICE NG12 §1.10',
+              source:'NICE NG12 (updated April 2026) haematological',
               when:(v, ctx) => v > 30 && ctx.symptoms
             }
           ]
@@ -1108,7 +1108,7 @@ RGPLabs.register('generic', {
               timeframe:'Same day if GCA features',
               source:'BSR GCA',
               patientPhrase:'"Your inflammation marker is very high — there are a few causes that can\'t wait. Let\'s look at this together today."',
-              noteTemplate:'Markedly raised ESR. [value] mm/hr.\nGCA screen if temporal symptoms / jaw claudication / visual changes — start prednisolone 60 mg if suspected, refer rheum same-day.\nMyeloma screen + CXR. PMR if girdle stiffness.',
+              noteTemplate:'Markedly raised ESR. [value] mm/hr.\nGCA screen if temporal symptoms / jaw claudication / visual changes — start prednisolone 40–60 mg if suspected (60 mg if visual symptoms; BSR 2020), refer rheum same-day.\nMyeloma screen + CXR. PMR if girdle stiffness.',
               when:(v, ctx) => v >= 100 && ctx.age != null && ctx.age >= 50
             }
           ]
@@ -1123,7 +1123,7 @@ RGPLabs.register('generic', {
               action:'treat', label:'Urate >360 with gout history — start allopurinol',
               rule:'Recurrent gout — initiate or uptitrate ULT',
               timeframe:'Routine',
-              source:'BSR gout · NICE gout',
+              source:'BSR gout · NICE NG219',
               when:(v, ctx) => v > 360 && ctx.symptoms
             }
           ]
@@ -1148,13 +1148,13 @@ RGPLabs.register('generic', {
           pathways:[{slug:'high-psa',label:'Raised PSA'}],
           rules:[
             {
-              action:'cancer', label:'Raised PSA — prostate cancer 2WW',
-              rule:'PSA above age-specific threshold (>2.5 if 40–49, >3.5 if 50–59, >4.5 if 60–69, >6.5 if 70–79; clinical judgement under 40 and 80+) — see NG12',
+              action:'cancer', label:'Raised PSA — prostate suspected cancer pathway',
+              rule:'PSA above age-specific threshold (>2.5 if 40–49, >3.5 if 50–59, >4.5 if 60–69, >6.5 if 70–79; clinical judgement under 40 and 80+) — see NICE NG12 (updated April 2026)',
               timeframe:'2 weeks',
-              source:'NICE NG12 §1.6 urological / Macmillan',
+              source:'NICE NG12 (updated April 2026) urological / Macmillan',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
               patientPhrase:'"Your PSA is raised for your age. The next step is a specialist assessment — that\'s standard, not a sign anything is definitely wrong."',
-              noteTemplate:'2WW — prostate cancer (NG12 §1.6.4).\nPSA [value], age [value]. DRE [findings].\nRepeat PSA only if very small rise. Otherwise urology 2WW.',
+              noteTemplate:'Suspected cancer pathway — prostate (NICE NG12, updated April 2026).\nPSA [value], age [value]. DRE [findings].\nRepeat PSA only if very small rise. Otherwise urology suspected cancer pathway referral.',
               when:(v, ctx) => ctx.age != null && (
                 (ctx.age < 50 && v > 2.5) ||
                 (ctx.age >= 50 && ctx.age < 60 && v > 3.5) ||
@@ -1168,12 +1168,12 @@ RGPLabs.register('generic', {
           id:'fit', label:'FIT (faecal immunochemical)', unit:'µg Hb/g', step:1, ref:[0, 10],
           rules:[
             {
-              action:'cancer', label:'FIT ≥10 — lower GI 2WW',
+              action:'cancer', label:'FIT ≥10 — colorectal suspected cancer pathway',
               rule:'FIT ≥10 µg Hb/g',
               timeframe:'2 weeks',
-              source:'NICE NG12 §1.3 / BSG FIT in symptomatic',
+              source:'NICE NG12 (updated April 2026) / NICE HTG690 (formerly DG56) / BSG–ACPGBI FIT 2022',
               patientPhrase:'"Your bowel test is positive enough to warrant an urgent specialist look. This is standard — most people referred this way turn out fine."',
-              noteTemplate:'2WW — lower GI cancer.\nFIT [value]. Symptoms [bowel habit / bleeding / weight loss].\nDRE done.',
+              noteTemplate:'Suspected cancer pathway — colorectal (NICE NG12, updated April 2026).\nFIT [value]. Symptoms [bowel habit / bleeding / weight loss].\nDRE done.',
               when:(v) => v >= 10
             }
           ]
@@ -1185,7 +1185,7 @@ RGPLabs.register('generic', {
               action:'urgent', label:'Calprotectin >250 — strongly suggests IBD',
               rule:'Calprotectin >250 with bowel symptoms',
               timeframe:'2–4 weeks',
-              source:'NICE DG11 · BSG IBD',
+              source:'NICE HTG320 (formerly DG11) · BSG IBD',
               patientPhrase:'"Your bowel marker is raised in a way that suggests inflammation, not cancer. We\'ll arrange a specialist appointment."',
               noteTemplate:'? IBD. Calprotectin [value].\nGastroenterology referral (urgent if >250 + symptoms). Repeat in 2–4 wks for 50–250 range. Exclude infection / NSAIDs.',
               when:(v) => v > 250
@@ -1194,7 +1194,7 @@ RGPLabs.register('generic', {
               action:'repeat', label:'Calprotectin 50–250 — repeat after 2–4 wks',
               rule:'Borderline calprotectin',
               timeframe:'2–4 weeks',
-              source:'NICE DG11',
+              source:'NICE HTG320 (formerly DG11)',
               when:(v) => v >= 50 && v <= 250
             }
           ]
@@ -1241,7 +1241,7 @@ RGPLabs.register('generic', {
               action:'refer', label:'Low testosterone — confirm + LH/FSH + prolactin before TRT',
               rule:'Total testosterone <12 on TWO morning (9am, fasting) samples + symptoms',
               timeframe:'Routine',
-              source:'BSSM hypogonadism · NICE',
+              source:'BSSM 2023 hypogonadism guideline',
               patientPhrase:'"Your testosterone is on the low side. We need a second morning sample and a couple of extra hormone checks before deciding on treatment."',
               noteTemplate:'? Hypogonadism. Testosterone [value] (9am).\nRepeat 9am fasting + SHBG, LH, FSH, prolactin. Low LH/FSH → pituitary (MRI, prolactin). Treat reversibles (weight, opioids, alcohol). PSA + Hct before TRT.',
               when:(v) => v < 12
@@ -1256,7 +1256,7 @@ RGPLabs.register('generic', {
               action:'urgent', label:'Prolactin >5000 — likely macroprolactinoma; endocrine + pituitary MRI',
               rule:'Prolactin grossly raised (>5000 mU/L)',
               timeframe:'Within weeks (same-week if visual field loss / apoplexy)',
-              source:'Endocrine Society · NICE',
+              source:'Endocrine Society 2011 (international)',
               patientPhrase:'"This hormone is high enough that we should arrange a brain (pituitary) scan and a specialist review."',
               noteTemplate:'Marked hyperprolactinaemia. Prolactin [value].\nPituitary MRI + endocrine referral. Check visual fields. Exclude pregnancy, hypothyroidism, drugs (antipsychotics, metoclopramide). Apoplexy (sudden headache + visual loss) → same-day.',
               when:(v) => v > 5000
@@ -1265,7 +1265,7 @@ RGPLabs.register('generic', {
               action:'review', label:'Raised prolactin — exclude drugs / macroprolactin / hypothyroid',
               rule:'Prolactin mildly–moderately raised (500–5000)',
               timeframe:'Within weeks',
-              source:'NICE hyperprolactinaemia',
+              source:'Endocrine Society 2011 (international)',
               patientPhrase:'"Your prolactin is mildly raised — often a tablet or a lab artefact. We\'ll repeat it and check a few things."',
               noteTemplate:'Hyperprolactinaemia. Prolactin [value].\nRequest macroprolactin (PEG). Review drugs (antipsychotics, metoclopramide, SSRI). TFTs, pregnancy test. Repeat. If persistent / symptomatic → endocrine + MRI.',
               when:(v) => v > 500 && v <= 5000
@@ -1278,11 +1278,11 @@ RGPLabs.register('generic', {
           rules:[
             {
               action:'refer', label:'FSH >25 in woman <40 — possible premature ovarian insufficiency',
-              rule:'FSH >25 IU/L on two samples ≥4 weeks apart, age <40',
+              rule:'FSH >25 IU/L on two samples 4–6 weeks apart, age <40',
               timeframe:'Routine (HRT essential)',
-              source:'NICE NG23 menopause · NICE POI',
+              source:'NICE NG23 (menopause, including POI) · ESHRE POI (international)',
               patientPhrase:'"Your hormone test suggests the ovaries are slowing down earlier than usual. This matters for bone and heart health, so we\'ll confirm it and start protective treatment."',
-              noteTemplate:'? Premature ovarian insufficiency. FSH [value], age [value].\nRepeat FSH ≥4 weeks apart + oestradiol. If confirmed → HRT/COC until ~51 (bone/CV protection), gynae/endocrine referral, bone health, fertility discussion.',
+              noteTemplate:'? Premature ovarian insufficiency. FSH [value], age [value].\nRepeat FSH 4–6 weeks apart + oestradiol. If confirmed → HRT/COC until ~51 (bone/CV protection), gynae/endocrine referral, bone health, fertility discussion.',
               when:(v, ctx) => v > 25 && ctx.age != null && ctx.age < 40
             }
           ]
@@ -1305,7 +1305,7 @@ RGPLabs.register('generic', {
               action:'cancer', label:'Paraprotein / abnormal FLC + CRAB — urgent myeloma pathway',
               rule:'Paraprotein present or FLC ratio markedly abnormal (<0.1 or >8) ± CRAB features',
               timeframe:'Very urgent (same-week haematology)',
-              source:'NICE NG12 §1.10 / NG35 myeloma',
+              source:'NICE NG12 (updated April 2026) / NG35 myeloma',
               sourceUrl:'https://www.nice.org.uk/guidance/ng35',
               patientPhrase:'"One of your blood proteins is abnormal — we need a blood-specialist (haematology) review and a few more tests to look into it."',
               noteTemplate:'? Myeloma / paraproteinaemia. FLC ratio [value].\nSent: SPEP + immunofixation, serum FLC, immunoglobulins, urine Bence-Jones, FBC, Ca²⁺, U&E (CRAB), B2-microglobulin.\nMGUS vs myeloma — haematology referral; very urgent if CRAB / FLC ratio extreme.',
@@ -1338,14 +1338,14 @@ RGPLabs.register('generic', {
           pathways:[{slug:'abnormal-cancer-markers',label:'Abnormal tumour markers'}],
           rules:[
             {
-              action:'cancer', label:'CA-125 ≥35 — ovarian cancer pathway (USS + 2WW per RMI)',
-              rule:'CA-125 ≥35 IU/mL in woman with symptoms (bloating, early satiety, pelvic/abdominal pain, urinary urgency)',
-              timeframe:'2 weeks',
-              source:'NICE NG12 §1.4 / CG122 ovarian',
+              action:'cancer', label:'CA-125 at/above NICE NG12 (updated April 2026) age threshold — urgent USS (ovarian pathway)',
+              rule:'Age 40+: urgent direct-access USS if CA-125 ≥35 (40–49), ≥31 (50–59), ≥24 (60–69), ≥25 (70–79) or ≥31 IU/mL (80+); under 40, do not use CA-125 alone — consider USS for persistent symptoms. Symptoms: bloating, early satiety, pelvic/abdominal pain, urinary urgency',
+              timeframe:'Urgent USS (within 2 weeks)',
+              source:'NICE NG12 (updated April 2026) ovarian / CG122',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
               patientPhrase:'"This marker is raised — combined with your symptoms we need an ultrasound and, depending on the result, an urgent gynaecology referral. It often turns out to be benign."',
-              noteTemplate:'? Ovarian cancer. CA-125 [value].\nPelvic + abdominal USS; calculate RMI. If ascites/pelvic mass → 2WW gynae now. Symptoms: bloating, early satiety, pelvic pain, urinary urgency (NG12 §1.4).',
-              when:(v) => v >= 35
+              noteTemplate:'? Ovarian cancer. CA-125 [value].\nPelvic + abdominal USS; calculate RMI. If USS suggests ovarian cancer, or ascites/pelvic mass → gynaecology suspected cancer pathway referral now. Symptoms: bloating, early satiety, pelvic pain, urinary urgency (NICE NG12, updated April 2026).',
+              when:(v, ctx) => { const a = ctx.age; if (a == null || a < 50) return v >= 35; if (a < 60) return v >= 31; if (a < 70) return v >= 24; if (a < 80) return v >= 25; return v >= 31; }
             }
           ]
         },
@@ -1357,7 +1357,7 @@ RGPLabs.register('generic', {
               action:'annotate', label:'Raised IgE / sIgE = sensitisation, not allergy — interpret with history',
               rule:'A positive specific IgE without a matching clinical history does not diagnose allergy',
               timeframe:'Routine',
-              source:'BSACI · NICE allergy',
+              source:'BSACI',
               patientPhrase:'"A positive allergy blood test on its own only shows sensitivity — it has to match your symptoms to count. Let\'s go through the history."',
               noteTemplate:'Allergy testing. Total/specific IgE [value].\nInterpret sIgE strictly against history (sensitisation ≠ clinical allergy). Tryptase if anaphylaxis/mastocytosis suspected. Penicillin de-labelling, OAS, venom immunotherapy as indicated. Provide AAI + plan if true anaphylaxis risk.',
               when:(v) => v > 100
@@ -1421,7 +1421,7 @@ RGPLabs.register('generic', {
   ],
 
   sources: [
-    { label:'NICE NG12 — Suspected cancer recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) — Suspected cancer recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'Macmillan — Rapid referral guidelines', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
     
     { label:'NICE NG203 — Chronic kidney disease', url:'https://www.nice.org.uk/guidance/ng203' },
@@ -1432,7 +1432,7 @@ RGPLabs.register('generic', {
     { label:'NICE NG238 — Lipid modification', url:'https://www.nice.org.uk/guidance/ng238' },
     { label:'NICE NG148 — Acute kidney injury', url:'https://www.nice.org.uk/guidance/ng148' },
     { label:'NICE NG185 — Acute coronary syndromes', url:'https://www.nice.org.uk/guidance/ng185' },
-    { label:'NICE DG11 — Faecal calprotectin in IBD', url:'https://www.nice.org.uk/guidance/dg11' },
+    { label:'NICE HTG320 (formerly DG11) — Faecal calprotectin', url:'https://www.nice.org.uk/guidance/htg320' },
     { label:'BSH — Haematology guidelines', url:'https://b-s-h.org.uk/guidelines/' },
     { label:'Renal Association — Hyperkalaemia 2023', url:'https://ukkidney.org/health-professionals/guidelines' },
     { label:'BSG — Abnormal LFTs / IBD / pancreatitis', url:'https://www.bsg.org.uk/clinical-resource-tag/guidelines/' },

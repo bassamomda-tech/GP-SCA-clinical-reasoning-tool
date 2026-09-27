@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Vaginal Bleeding (abnormal)
-   Shared-id triage + differential. NICE NG12 · NICE.
+   Shared-id triage + differential. NICE NG12 (updated April 2026).
    Covers postmenopausal, pregnancy-related, and non-pregnancy AUB.
    ============================================ */
 (function () {
@@ -24,7 +24,7 @@
   if (window.RGPTriage) RGPTriage.register('vaginal-bleeding-triage', {
     title: 'Abnormal vaginal bleeding — triage',
     subtitle: 'Tick features. Surfaces ectopic, haemorrhage, and endometrial / cervical cancer pathways.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Pregnancy test if reproductive age; examine cervix; categorise (PMB vs IMB/PCB vs pregnancy-related) and investigate accordingly.',
     rules: [
@@ -32,7 +32,7 @@
         id: 'haemorrhage', tier: 'emergency',
         label: 'Heavy bleeding with haemodynamic instability',
         action: 'Call 999 / same-day — resuscitate; gynae/obstetric emergency.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.heavy_unstable,
       },
       {
@@ -46,28 +46,28 @@
       {
         id: 'pmb_2ww', tier: 'cancer',
         label: 'Postmenopausal bleeding — endometrial 2WW',
-        action: 'Gynae 2WW + TV USS (endometrial thickness); unscheduled bleeding on HRT/tamoxifen also needs assessment.',
+        action: 'Gynae suspected cancer pathway referral at 55+ (consider under 55) + TV USS (endometrial thickness) (NICE NG12 (updated April 2026)); unscheduled bleeding on HRT per NICE NG23, and bleeding on tamoxifen also needs assessment.',
         patientPhrase: '"Any bleeding after the menopause must be referred urgently — most causes are benign, but we do not wait."',
-        source: 'NICE NG12 §1.7', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.5', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.postmenopausal,
       },
       {
         id: 'cervical_2ww', tier: 'cancer',
         label: 'Visible cervical lesion / persistent PCB — cervical pathway',
         action: 'Urgent colposcopy / gynae 2WW (do not wait for smear).',
-        source: 'NICE NG12',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.cervical_lesion || i.pcb,
       },
       {
         id: 'assess', tier: 'routine',
         label: 'Abnormal bleeding — assess & investigate',
         action: 'Pregnancy test; STI screen if risk; examine; TV USS / referral per pattern.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label:'NICE NG23 — menopause', url:'https://www.nice.org.uk/guidance/ng23' }
     ],
   });
@@ -75,7 +75,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('vaginal-bleeding-dx', {
     title: 'Abnormal vaginal bleeding — differential',
     subtitle: 'The engine weights cause by life stage — pregnancy-related, cervical/structural, hormonal — and always surfaces endometrial and cervical cancer and ectopic pregnancy.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I've had some unexpected vaginal bleeding, doctor, and I'm worried.",
     inputs: INPUTS,
     diagnoses: [
@@ -101,7 +101,7 @@
         guideUrl: 'https://www.nice.org.uk/guidance/ng23', guideLabel: 'NICE NG23' },
 
       { id: 'endometrial_cancer', name: 'Endometrial cancer', summary: 'Postmenopausal bleeding, unscheduled HRT bleeding', baseline: 1, category: 'cant-miss',
-        keyExam: 'Risk factors (obesity, tamoxifen).', nextIx: '\u26A1 Gynae 2WW + TV USS / hysteroscopy (NICE NG12).',
+        keyExam: 'Risk factors (obesity, tamoxifen).', nextIx: '\u26A1 Gynae 2WW + TV USS / hysteroscopy (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Bleeding after menopause must be urgently checked to exclude womb cancer — most prove benign.',
         guideUrl: '', redFlagAction: '\u26A1 Gynae 2WW' },
       { id: 'cervical_cancer', name: 'Cervical cancer', summary: 'Persistent PCB / IMB, visible lesion', baseline: 1, category: 'cant-miss',
@@ -140,7 +140,7 @@
       ectopic: ['early_preg_pain'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label:'NICE NG126 — ectopic pregnancy and miscarriage', url:'https://www.nice.org.uk/guidance/ng126' }
     ],
   });

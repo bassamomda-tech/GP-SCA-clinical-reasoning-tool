@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Iron Deficiency
-   Shared-id triage + differential (finding the cause). NICE NG12 · BSG · NICE.
+   Shared-id triage + differential (finding the cause). NICE NG12 (updated April 2026) · BSG 2021.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -24,17 +24,17 @@
   if (window.RGPTriage) RGPTriage.register('iron-deficiency-triage', {
     title: 'Iron deficiency — triage',
     subtitle: 'Confirm deficiency, then find the cause. Surfaces GI 2WW and coeliac pathways.',
-    guideline: 'NICE NG12 · BSG',
+    guideline: 'NICE NG12 (updated April 2026) · BSG',
     inputs: INPUTS,
     defaultMessage: 'No 2WW rule fired. Confirm iron deficiency (ferritin <30, or low transferrin saturation if inflammation), screen coeliac (tTG) in all, replace iron, recheck FBC at 2–4 weeks; investigate cause by age/sex.',
     rules: [
       {
         id: 'gi_2ww', tier: 'cancer',
-        label: 'IDA in adult male / post-menopausal female, or age ≥60 — GI 2WW',
-        action: 'Lower + upper GI endoscopy (NICE NG12); FIT does not exclude. Coeliac screen.',
+        label: 'Iron-deficiency anaemia at any adult age, IDA in adult male / post-menopausal female, or age ≥60 — FIT and GI investigation',
+        action: 'Offer FIT (NICE NG12 (updated April 2026); NICE HTG690): FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral. BSG 2021: bidirectional (upper and lower GI) endoscopy for IDA in men and postmenopausal women, so a negative FIT does not end the work-up. Coeliac screen.',
         patientPhrase: '"Iron-deficient anaemia in your situation needs a camera test of the gut to find where iron is being lost."',
-        source: 'NICE NG12 / BSG', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
-        when: i => i.male_or_postmeno || (i.age != null && i.age >= 60 && i.hb != null && i.hb < 120) || i.weight_loss || i.pr_bleed_bowel,
+        source: 'NICE NG12 (updated April 2026) / BSG', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        when: i => i.male_or_postmeno || (i.age != null && i.age >= 60 && i.hb != null && i.hb < 120) || i.weight_loss || i.pr_bleed_bowel || (i.hb != null && i.hb < 120 && i.ferritin != null && i.ferritin < 30 && !i.pregnant && !(i.age != null && i.age < 18)),
       },
       {
         id: 'coeliac', tier: 'urgent',
@@ -46,7 +46,7 @@
       {
         id: 'menstrual', tier: 'routine',
         label: 'Pre-menopausal with menstrual / dietary cause',
-        action: 'Treat menorrhagia; dietary advice; oral iron; recheck; investigate GI only if red flags or non-response.',
+        action: 'Treat menorrhagia; dietary advice; oral iron; recheck. FIT is still offered for iron-deficiency anaemia at any adult age (NICE NG12 (updated April 2026)); further GI investigation if red flags or non-response.',
         source: 'BSG',
         when: i => i.female_menstruating || i.pregnant || i.diet,
       },
@@ -54,12 +54,12 @@
         id: 'replace', tier: 'routine',
         label: 'Iron deficiency — replace & monitor',
         action: 'Oral ferrous salt OD/alternate-day; coeliac screen; recheck Hb in 2–4 weeks; consider IV iron if intolerant/malabsorbing.',
-        source: 'NICE',
+        source: 'BSG 2021 · BNF',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label: 'BSG — Iron deficiency anaemia', url: 'https://www.bsg.org.uk/' }
     ],
   });
@@ -67,7 +67,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('iron-deficiency-dx', {
     title: 'Iron deficiency — cause',
     subtitle: 'Iron deficiency always has a cause. The engine weights menstrual/dietary, GI loss, malabsorption and pregnancy, and always surfaces GI malignancy when red flags fire.',
-    guideline: 'NICE NG12 · BSG',
+    guideline: 'NICE NG12 (updated April 2026) · BSG',
     patientPresenting: "I've been told I'm low in iron, doctor — why would that be?",
     inputs: INPUTS,
     diagnoses: [
@@ -80,7 +80,7 @@
         patientPhrase: 'Your intake or demand for iron outstrips supply. Diet and supplements correct it.',
         guideUrl: '', guideLabel: 'BSG iron deficiency anaemia guideline (2021)' },
       { id: 'gi_loss', name: 'GI blood loss (benign)', summary: 'NSAID/aspirin, ulcer, oesophagitis, angiodysplasia, haemorrhoids', baseline: 6, category: 'common',
-        keyExam: 'Dyspepsia, PR exam.', nextIx: 'Review NSAID; endoscopy per 2WW rules; treat source.',
+        keyExam: 'Dyspepsia, PR exam.', nextIx: 'Review NSAID; FIT / endoscopy per NICE NG12 (updated April 2026) and BSG 2021; treat source.',
         patientPhrase: 'Slow blood loss from the gut depletes iron. We find and treat the source.',
         guideUrl: '', guideLabel: 'BSG iron deficiency anaemia guideline (2021)' },
       { id: 'coeliac', name: 'Coeliac / malabsorption', summary: 'Bloating, diarrhoea, positive tTG', baseline: 4, category: 'common',
@@ -89,9 +89,9 @@
         guideUrl: 'https://www.nice.org.uk/guidance/ng20', guideLabel: 'NICE NG20', caseLink: '../cases/coeliac.html' },
 
       { id: 'gi_malignancy', name: 'GI malignancy', summary: 'Male / post-menopausal IDA, age ≥60, weight loss, PR bleeding', baseline: 1, category: 'cant-miss',
-        keyExam: 'Abdominal/rectal mass, cachexia.', nextIx: '\u26A1 Upper + lower GI 2WW endoscopy (NICE NG12).',
+        keyExam: 'Abdominal/rectal mass, cachexia.', nextIx: '\u26A1 FIT first (NICE NG12 (updated April 2026) with NICE HTG690): FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral. BSG 2021 advises bidirectional (upper and lower GI) endoscopy for iron-deficiency anaemia in men and postmenopausal women.',
         patientPhrase: 'Iron deficiency in your situation can be the first sign of a bowel or stomach cancer, so I want to look inside urgently.',
-        guideUrl: '', redFlagAction: '\u26A1 GI 2WW endoscopy' }
+        guideUrl: '', redFlagAction: '\u26A1 FIT ± GI endoscopy' }
     ],
     effects: {
       age: (v) => v >= 60 ? { gi_malignancy: +8, gi_loss: +4, menstrual: -6 } : (v < 50 ? { menstrual: +4 } : {}),
@@ -118,7 +118,7 @@
       gi_malignancy: ['male_or_postmeno', 'weight_loss', 'age'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
       
     ],
   });

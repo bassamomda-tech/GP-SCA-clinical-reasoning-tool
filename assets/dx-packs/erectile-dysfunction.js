@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Erectile Dysfunction
-   Shared-id triage + differential. NICE ED · BSSM. ED is a CV risk marker.
+   Shared-id triage + differential. BSSM 2018. ED is a CV risk marker.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,7 +22,7 @@
   if (window.RGPTriage) RGPTriage.register('erectile-dysfunction-triage', {
     title: 'Erectile dysfunction — triage',
     subtitle: 'ED is an early cardiovascular risk marker. Tick features — surfaces CV-risk assessment and endocrine pathways.',
-    guideline: 'NICE ED · BSSM',
+    guideline: 'BSSM 2018',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Treat ED as a CV risk marker: bloods (HbA1c, lipids, U&E), morning testosterone, BP; manage CV risk; PDE5 inhibitor first-line unless contraindicated.',
     rules: [
@@ -38,7 +38,7 @@
         id: 'endocrine', tier: 'urgent',
         label: 'Endocrine cause likely — low libido / small testes',
         action: 'Morning testosterone (×2 if low) + LH/FSH, prolactin; refer endocrine if confirmed hypogonadism.',
-        source: 'NICE ED',
+        source: 'BSSM 2018',
         when: i => i.low_libido_endocrine,
       },
       {
@@ -52,7 +52,7 @@
         id: 'manage', tier: 'routine',
         label: 'Erectile dysfunction — assess & treat',
         action: 'History (organic vs psychogenic), bloods, testosterone; PDE5 inhibitor; address drugs and psychological factors.',
-        source: 'NICE ED',
+        source: 'BSSM 2018',
         when: i => true,
       }
     ],
@@ -65,7 +65,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('erectile-dysfunction-dx', {
     title: 'Erectile dysfunction — differential',
     subtitle: 'The engine weights vasculogenic, psychogenic, endocrine, drug and neurogenic causes from onset pattern and risk factors, and always flags ED as a cardiovascular risk marker.',
-    guideline: 'NICE ED · BSSM',
+    guideline: 'BSSM 2018',
     patientPresenting: "I've been having trouble getting and keeping an erection, doctor — it's knocking my confidence.",
     inputs: INPUTS,
     diagnoses: [

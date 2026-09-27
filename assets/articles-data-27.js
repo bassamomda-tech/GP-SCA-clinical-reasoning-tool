@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 27: S topics, part 2)
    NHS A–Z (letter S) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Severe vaso-occlusive crisis not controlled with community analgesia → urgent admission',
       'All patients → specialist haematology for ongoing management and disease-modifying treatment',
       'Family planning/carrier issues → genetic counselling and antenatal screening'],
-    source:'NICE / BSH sickle cell guidance' },
+    source:'NICE CG143 (Sickle cell disease: managing acute painful episodes in hospital) / BSH sickle cell guidance' },
 
   { id:'sinusitis', title:'Sinusitis (rhinosinusitis)', category:'ENT', icon:'👃',
     overview:'Inflammation of the paranasal sinuses, usually following a viral upper-respiratory infection. Acute sinusitis is mostly viral and self-limiting; antibiotics are rarely needed. The key skills are antibiotic stewardship and recognising the rare but serious complications (orbital and intracranial spread).',
@@ -75,10 +75,10 @@
       'Provide patient information and coordinate care with rheumatology/ophthalmology/dentistry'],
     referral:[
       'Suspected Sjögren’s (sicca symptoms with positive antibodies or systemic features) → rheumatology',
-      'Persistent parotid/salivary gland swelling, lymphadenopathy, or B symptoms → urgent assessment to exclude lymphoma (NICE NG12 — suspected haematological cancer)',
+      'Persistent parotid/salivary gland swelling, lymphadenopathy, or B symptoms → urgent assessment to exclude lymphoma (NICE NG12 (updated April 2026) — suspected haematological cancer)',
       'Significant dry eye → ophthalmology; systemic organ involvement → relevant specialty',
       'Associated connective-tissue disease → rheumatology'],
-    source:'NICE / BSR Sjögren’s guidance' },
+    source:'BSR guideline for the management of adults with primary Sjögren’s syndrome (2017)' },
 
   { id:'slapped-cheek', title:'Slapped cheek syndrome (parvovirus B19)', category:'Paediatrics', icon:'👶',
     overview:'A common, usually mild childhood viral illness (erythema infectiosum / "fifth disease") caused by parvovirus B19, with a characteristic facial rash. It is benign in most children, but carries specific risks in pregnancy, in those with chronic haemolysis, and in the immunocompromised — so recognising those at-risk situations is key.',
@@ -103,7 +103,7 @@
       'Patient with chronic haemolysis and sudden severe anaemia (aplastic crisis) → emergency admission (haematology)',
       'Immunocompromised patient with persistent anaemia → specialist assessment',
       'Diagnostic uncertainty in an unwell child → paediatric assessment'],
-    source:'UKHSA / NICE — Parvovirus B19' },
+    source:'UKHSA guidance on viral rash in pregnancy (PHE 2019, now UKHSA) / UKHSA exclusion guidance' },
 
   { id:'social-anxiety', title:'Social anxiety disorder', category:'Mental health', icon:'🧠',
     overview:'A persistent, marked fear of social or performance situations where the person fears scrutiny or negative evaluation, leading to avoidance and significant impairment. It is common, often starts in adolescence, and is under-treated — yet it responds well to psychological therapy, so recognition and referral matter.',
@@ -153,7 +153,7 @@
       'Newborn with an open spinal defect → urgent neonatal/neurosurgical care',
       'Skin markers suggesting tethered cord, or new neurological/urological deterioration → neurosurgery/urology',
       'Ongoing care → multidisciplinary spina bifida team (urology, orthopaedics, neurosurgery, continence)'],
-    source:'NICE / fetal medicine & neurosurgical guidance' },
+    source:'BNF (folic acid 400 micrograms / 5 mg) / NHS Fetal Anomaly Screening Programme / fetal medicine & neurosurgical guidance' },
 
   { id:'squint', title:'Squint (strabismus)', category:'Ophthalmology', icon:'👁️',
     overview:'Misalignment of the eyes, common in childhood. In children the priority is early detection because a constant squint can cause amblyopia (lazy eye) and can occasionally signal serious pathology (e.g. retinoblastoma). A NEW squint at any age, or in an adult, needs careful assessment for a neurological cause.',
@@ -174,11 +174,11 @@
       'Reassure for pseudosquint (benign) after confirming normal alignment',
       'Provide information and arrange appropriate orthoptic/ophthalmology follow-up'],
     referral:[
-      'Childhood squint, or any abnormal red reflex/leukocoria → ophthalmology (urgent for an abnormal red reflex — exclude retinoblastoma, NICE NG12)',
+      'Childhood squint, or any abnormal red reflex/leukocoria → ophthalmology (urgent for an abnormal red reflex — exclude retinoblastoma, NICE NG12 (updated April 2026))',
       'New-onset squint with diplopia or neurological features → urgent assessment (cranial-nerve palsy/raised ICP)',
       'Sudden painful squint or features of raised intracranial pressure → emergency',
       'Stable longstanding/cosmetic squint → routine ophthalmology'],
-    source:'NICE / paediatric ophthalmology guidance' },
+    source:'NICE NG12 (updated April 2026) (absent red reflex) / NHS Newborn and Infant Physical Examination (NIPE) programme / paediatric ophthalmology guidance' },
 
   { id:'stillbirth', title:'Stillbirth', category:'Women’s health', icon:'🕊️',
     overview:'The death of a baby before or during birth (in the UK, at or after 24 completed weeks of pregnancy). It is devastating, and the GP role spans recognising warning signs that prompt urgent assessment, supporting bereaved families with compassionate care, and helping plan and support future pregnancies.',
@@ -203,7 +203,7 @@
       'Suspected intrauterine death → urgent maternity/obstetric care',
       'Bereavement and psychological support → maternity bereavement services and mental-health support',
       'Future pregnancy → specialist antenatal care (higher-risk pathway)'],
-    source:'NICE / RCOG / Saving Babies’ Lives care bundle' }
+    source:'RCOG Green-top Guideline No. 55 (Late intrauterine fetal death and stillbirth) / NHS England Saving Babies’ Lives care bundle (version 3, 2023)' }
 
   );
 })();

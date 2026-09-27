@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790455351292142 tools/management/ppi-prescribing.html">
+<meta name="omelette-print-source" content="v1790530892644503 tools/management/ppi-prescribing.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -22,23 +22,23 @@
 <script>
 MG.render({
   icon:"💊",
-  title:"PPI prescribing & deprescribing — the complete guide",
+  title:"PPI prescribing and deprescribing — the complete guide",
   eyebrow:"Protocol · NICE CG184 · an acute script, not a repeat",
   stemTitle:"Prescribing the first course as an ACUTE script with a review date is the single most effective way to stop a 4-week course becoming a 4-year one",
-  stemSub:"One page for the whole drug class. <b>No PPI is more effective than another — choose on cost</b>, and prescribe capsules rather than tablets. Treat at full dose for a defined course, gastroprotect only the patients who actually have GI-bleed risk factors rather than reflexively with every NSAID, and know the two situations that must not be got wrong: <b>omeprazole and esomeprazole with clopidogrel</b>, and <b>stopping the PPI for 2 weeks before endoscopy or H. pylori testing</b>. Then review every long-term PPI annually and deprescribe — warning about rebound in advance, because rebound heartburn is pharmacology, not relapse.",
-  guideline:"NICE CG184 · NG12",
+  stemSub:"One page for the whole drug class. <b>No PPI is more effective than another — choose on cost</b>, and prescribe capsules rather than tablets. Treat at full dose for a defined course, gastroprotect only the patients who actually have GI-bleed risk factors rather than reflexively with every NSAID, and know the two situations that must not be got wrong: <b>omeprazole and esomeprazole with clopidogrel</b>, and <b>the PPI around investigations</b> — off it for 2 weeks before H. pylori testing, and never letting a PPI trial delay an endoscopy or suspected cancer referral (tell the endoscopy service about any PPI). Then review every long-term PPI annually and deprescribe — warning about rebound in advance, because rebound heartburn is pharmacology, not relapse.",
+  guideline:"NICE CG184 · NG12 (updated April 2026)",
   reviewed:"14 September 2026",
   nextReview:"14 March 2027",
   meta:[
     {t:"NICE CG184 · NICE CG184 and GORD"},
-    {t:"Off PPI ≥2 weeks before endoscopy / H. pylori test", tone:"tw"},
+    {t:"Off PPI ≥2 weeks before H. pylori test · tell endoscopy about any PPI", tone:"tw"},
     {t:"On clopidogrel: avoid omeprazole and esomeprazole", tone:"tw"},
     {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
   lead:'<div class="mg-layers"><a href="#before"><b>Before</b><small>Indication · alarm</small></a><a href="#start"><b>Start</b><small>Cheap · full dose</small></a><a href="#gastroprotect"><b>Protect</b><small>Only if at risk</small></a><a href="#notresponding"><b>Not working?</b><small>Optimise first</small></a><a href="#deprescribe"><b>Deprescribe</b><small>Manage rebound</small></a></div>',
   quickSub:"The six that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"red", h:"⚠ Off the PPI for 2 weeks before endoscopy or H. pylori testing", html:"PPIs mask malignancy at endoscopy and cause false-negative H. pylori tests. Patients going for endoscopy should be off the PPI for at least 2 weeks, and off NSAIDs. <b>Do not start a PPI that delays a needed investigation</b> — the reflex to \"try a PPI first\" in someone with alarm features is exactly how an upper GI cancer gets a three-month delay."},
+    {tone:"red", h:"⚠ The PPI around investigations: H. pylori washout, and never delay the endoscopy", html:"PPIs cause false-negative H. pylori breath and stool tests — stop the PPI for 2 weeks beforehand (NICE CG184). They can also heal and mask malignancy at endoscopy (Bramble et al., Gut 2000), so do not delay a suspected cancer referral to trial a PPI; if a PPI is started for symptom control, tell the endoscopy service — the unit may ask for it to be stopped about 2 weeks before a diagnostic OGD. Review NSAIDs too. <b>Do not start a PPI that delays a needed investigation</b> — the reflex to \"try a PPI first\" in someone with alarm features is exactly how an upper GI cancer gets a three-month delay."},
     {tone:"red", h:"⛔ On clopidogrel, avoid omeprazole and esomeprazole", html:"<b>Both inhibit CYP2C19 and may reduce clopidogrel activation (MHRA).</b> <b>Use lansoprazole or pantoprazole instead.</b> This is one of the commonest avoidable interactions in primary care, because the PPI is often added by a different clinician from the one who started the clopidogrel."},
     {tone:"blue", h:"No PPI beats another — choose on cost, and use capsules", html:"First-line: omeprazole 20 mg or lansoprazole 30 mg CAPSULES once daily — tablets are 4–7× dearer and branded products around 13×. <b>Take 30–60 minutes BEFORE breakfast or the main meal</b> for best acid suppression, which is the single most common adherence error."},
     {tone:"amber", h:"Prescribe the first course as an ACUTE script", html:"Full dose for 4 weeks — 8 weeks if there is oesophagitis or an ulcer — as a 1-month acute prescription with a review, then step down to the lowest effective dose or stop. <b>Only move to a repeat once a long-term need is established.</b> <b>This one habit prevents most inappropriate long-term PPI use.</b>"},
@@ -63,9 +63,9 @@ MG.render({
          ["<b>Review culprit drugs</b>","Stop or reduce drugs that cause or worsen dyspepsia where possible: NSAIDs, aspirin and antiplatelets, calcium-channel blockers, nitrates, theophylline, bisphosphonates, corticosteroids, SSRIs, TCAs, anticholinergics"],
          ["<b>Lifestyle for all</b>","Weight loss, smaller meals, avoid trigger foods (fatty and spicy, coffee, chocolate, alcohol), stop smoking, don't eat 3–4 hours before bed, raise the head of the bed, manage stress"],
          ["<b>Try an alginate first</b>","Consider a trial of an alginate or antacid (e.g. Gaviscon Advance®) and review in 1 month, if referral is not needed"],
-         ["<b>Alarm features?</b>","Dysphagia, weight loss, GI bleed or anaemia, persistent vomiting, epigastric mass, or age 55 and over with new or persistent symptoms → urgent endoscopy or 2WW BEFORE settling on a PPI"]
+         ["<b>Alarm features?</b>","Dysphagia, weight loss, GI bleed or anaemia, persistent vomiting, epigastric mass, or age 55 and over with new or persistent symptoms → urgent assessment and, where NICE NG12 (updated April 2026) criteria are met, a suspected cancer pathway referral BEFORE settling on a PPI"]
        ]},
-       {b:"warn", html:"Patients going for endoscopy should be off the PPI for at least 2 weeks, and off NSAIDs — PPIs mask malignancy and cause false-negative H. pylori tests. <b>Do not start a PPI that delays a needed investigation.</b>"},
+       {b:"warn", html:"PPIs can mask malignancy at endoscopy and cause false-negative H. pylori tests. Stop the PPI for 2 weeks before H. pylori testing (NICE CG184). For endoscopy, <b>do not delay the referral to trial a PPI</b>; if a PPI is started, tell the endoscopy service — the unit may ask for it to be stopped about 2 weeks before a diagnostic OGD. Review NSAIDs too. <b>Do not start a PPI that delays a needed investigation.</b>"},
        {b:"cards", cols:2, items:[
          {tone:"green", h:"🍽️ Lifestyle", html:"Weight loss, smaller meals, avoid late eating and triggers, raise the bed-head, reduce alcohol and caffeine."},
          {tone:"blue", h:"📉 Plan the step-down from the start", html:"Step down to the lowest effective dose or on-demand use once healed; avoid an indefinite PPI by default. <b>The commonest PPI error is leaving patients on full dose indefinitely.</b>"},
@@ -110,7 +110,7 @@ MG.render({
          ["<b>4a — check adherence, timing and lifestyle</b>","<b>First move</b>","Confirm the PPI is taken 30–60 minutes before food, daily, and that trigger foods, alcohol, smoking and culprit drugs (NSAIDs, CCBs, nitrates, bisphosphonates) have been addressed"],
          ["<b>4b — increase to high or double dose</b>","<b>Adherence and timing confirmed, symptoms persist</b>","Step up to a double dose (e.g. omeprazole 40 mg OD, or split BD) for proven or severe oesophagitis, or refractory GORD. Review at 4–8 weeks"],
          ["<b>4c — switch to a different PPI</b>","<b>Dose optimised, still symptomatic</b>","Some patients respond to a different PPI — trial an alternative (omeprazole → lansoprazole or esomeprazole) before declaring failure"],
-         ["<b>4d — test and treat H. pylori</b>","<b>Persistent dyspepsia, not already done</b>","Stop the PPI for 2 weeks, then stool antigen or urea breath test. If positive: 7-day triple therapy — omeprazole 20–40 mg BD plus amoxicillin 1 g BD plus clarithromycin 500 mg BD, or metronidazole if penicillin-allergic"],
+         ["<b>4d — test and treat H. pylori</b>","<b>Persistent dyspepsia, not already done</b>","Stop the PPI for 2 weeks, then stool antigen or urea breath test. If positive: 7-day triple therapy (NICE CG184) — a PPI BD plus amoxicillin 1 g BD plus either clarithromycin 500 mg BD or metronidazole 400 mg BD; if penicillin-allergic, a PPI plus clarithromycin plus metronidazole (doses per BNF)"],
          ["<b>4e — add an alginate, reassess the diagnosis</b>","<b>Breakthrough or atypical symptoms</b>","Add an alginate (Gaviscon Advance®) for breakthrough symptoms. Reconsider functional dyspepsia, cardiac or biliary causes, or the need for endoscopy"]
        ]}
      ]},
@@ -152,7 +152,7 @@ MG.render({
          ["<b>B12 and iron deficiency</b>","Reduced absorption over years","<b>Check if anaemic or fatigued on long-term use; supplement</b>"],
          ["<b>C. difficile, pneumonia, acute interstitial nephritis</b>","Uncommon long-term associations","<b>Lowest effective dose; review the need; stop if AIN is suspected</b>"]
        ]},
-       {b:"warn", html:"Don't ignore NEW alarm features in a patient already on a PPI: dysphagia, weight loss, GI bleeding or iron-deficiency anaemia, persistent vomiting, or an epigastric mass → urgent endoscopy or 2WW, even if the symptoms seem controlled. <b>Symptomatic control on acid suppression is not reassurance.</b>"}
+       {b:"warn", html:"Don't ignore NEW alarm features in a patient already on a PPI: dysphagia, weight loss, GI bleeding or iron-deficiency anaemia, persistent vomiting, or an epigastric mass → urgent assessment or a suspected cancer pathway referral (NICE NG12 (updated April 2026)), even if the symptoms seem controlled. <b>Symptomatic control on acid suppression is not reassurance.</b>"}
      ]},
 
     {id:"loop", nav:"Symptoms back?", title:"Symptoms back after stopping? Re-run the checklist",
@@ -170,7 +170,7 @@ MG.render({
     {id:"refer", nav:"Refer", title:"When to scope or refer",
      blocks:[
        {b:"cards", items:[
-         {tone:"purple", h:"2WW · urgent endoscopy (NICE NG12)", html:"Dysphagia at any age; age 55 and over with weight loss plus upper-abdominal pain, reflux or dyspepsia; GI bleed, iron-deficiency anaemia, persistent vomiting or an epigastric mass. And remember the patient must be off the PPI for 2 weeks before the scope."},
+         {tone:"purple", h:"2WW · suspected cancer pathway (NICE NG12 (updated April 2026))", html:"Suspected cancer pathway referral for oesophageal or stomach cancer: dysphagia at any age; age 55 and over with weight loss plus upper-abdominal pain, reflux or dyspepsia (this replaced urgent direct-access endoscopy in 2025). Consider a suspected cancer pathway referral for an upper abdominal mass consistent with stomach cancer. GI bleed, iron-deficiency anaemia, persistent vomiting or an epigastric mass need urgent assessment in their own right. Do not delay the referral to trial a PPI; if a PPI is started, tell the endoscopy service."},
          {tone:"amber", h:"Refractory GORD or dyspepsia", html:"Persistent symptoms despite optimised dose, a PPI switch, H. pylori eradication and lifestyle change → gastroenterology."},
          {tone:"blue", h:"Confirmed complications", html:"Barrett's oesophagus, severe (LA grade C or D) oesophagitis, or stricture → specialist follow-up plus long-term PPI."},
          {tone:"blue", h:"Suspected Zollinger-Ellison", html:"Refractory or multiple ulcers, diarrhoea, a very high PPI requirement → gastroenterology (fasting gastrin)."},
@@ -188,15 +188,16 @@ MG.render({
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>NICE CG184 — Gastro-oesophageal reflux disease and dyspepsia in adults</b><br><a href="https://www.nice.org.uk/guidance/cg184" rel="noopener">nice.org.uk/guidance/cg184</a><span class="rd"> — the four PPI indications, full-dose courses of 4 weeks (8 with oesophagitis or ulcer), the requirement to be off a PPI for 2 weeks before endoscopy and H. pylori testing, step-down to the lowest effective dose or on-demand use, and the 7-day triple-therapy eradication regimens</span></li>'+
+         '<li><b>NICE CG184 — Gastro-oesophageal reflux disease and dyspepsia in adults (2014, updated 2019)</b><br><a href="https://www.nice.org.uk/guidance/cg184" rel="noopener">nice.org.uk/guidance/cg184</a><span class="rd"> — the four PPI indications, full-dose courses of 4 weeks (8 with oesophagitis or ulcer), the 2-week PPI washout before H. pylori testing (the 2004 washout before endoscopy was removed in the 2014 update), step-down to the lowest effective dose or on-demand use, and the 7-day triple-therapy eradication regimens</span></li>'+
          '<li><b>NICE CG184 \u2014 Gastro-oesophageal reflux disease and dyspepsia in adults</b><br><a href="https://www.nice.org.uk/guidance/cg184" rel="noopener">nice.org.uk/guidance/cg184</a><span class="rd"> — the gastroprotection risk-factor lists for NSAIDs, antiplatelets, anticoagulants and corticosteroids, the equivalence of PPIs with cost-based choice, the dose table, and the deprescribing and rebound guidance</span></li>'+
-         '<li><b>MHRA Drug Safety Update — clopidogrel and proton pump inhibitors</b><span class="rd"> — omeprazole and esomeprazole inhibit CYP2C19 and may reduce clopidogrel activation; lansoprazole or pantoprazole preferred</span></li>'+
-         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (May 2025)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — dysphagia at any age, and age 55 and over with weight loss plus upper-abdominal pain, reflux or dyspepsia, as urgent direct-access endoscopy routes</span></li>'+
+         '<li><b>MHRA Drug Safety Update — clopidogrel and proton pump inhibitors (April 2010)</b><span class="rd"> — omeprazole and esomeprazole inhibit CYP2C19 and may reduce clopidogrel activation; lansoprazole or pantoprazole preferred</span></li>'+
+         '<li><b>Bramble MG et al. — Detection of upper gastrointestinal cancer in patients taking antisecretory therapy prior to gastroscopy (Gut 2000)</b><br><a href="https://pubmed.ncbi.nlm.nih.gov/10716673/" rel="noopener">pubmed.ncbi.nlm.nih.gov/10716673</a><span class="rd"> — acid suppression before the index gastroscopy was associated with missed cancer</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — dysphagia at any age, and age 55 and over with weight loss plus upper-abdominal pain, reflux or dyspepsia, as suspected cancer pathway referrals (recommendations 1.2.1 and 1.2.7, amended 2025, which replaced the urgent direct-access endoscopy route)</span></li>'+
          '<li><b>BNF and the individual Summaries of Product Characteristics</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — the dose table, capsule-versus-tablet formulations and dispersible options, timing before food, and the long-term association warnings (hypomagnesaemia, B12 and iron deficiency, C. difficile, fracture, acute interstitial nephritis)</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"PPI prescribing and deprescribing — NICE CG184, NICE CG184 and GORD, MHRA and NG12. No PPI is more effective than another: choose on cost, prescribe capsules, and take 30–60 minutes before food. Prescribe the first course as an ACUTE script — full dose 4 weeks, 8 with oesophagitis or ulcer — then step down or stop. Gastroprotect only patients with GI-bleed risk factors, and stop the PPI when the culprit drug stops. On clopidogrel, avoid omeprazole and esomeprazole; use lansoprazole or pantoprazole. Off the PPI for 2 weeks before endoscopy or H. pylori testing. Review every long-term PPI annually, and when deprescribing, warn about rebound in advance — it is pharmacology, not relapse. Verify all doses against the current BNF before prescribing."
+  foot:"PPI prescribing and deprescribing — NICE CG184, NICE CG184 and GORD, MHRA and NG12 (updated April 2026). No PPI is more effective than another: choose on cost, prescribe capsules, and take 30–60 minutes before food. Prescribe the first course as an ACUTE script — full dose 4 weeks, 8 with oesophagitis or ulcer — then step down or stop. Gastroprotect only patients with GI-bleed risk factors, and stop the PPI when the culprit drug stops. On clopidogrel, avoid omeprazole and esomeprazole; use lansoprazole or pantoprazole. Off the PPI for 2 weeks before H. pylori testing; never let a PPI trial delay an endoscopy, and tell the endoscopy service about any PPI. Review every long-term PPI annually, and when deprescribing, warn about rebound in advance — it is pharmacology, not relapse. Verify all doses against the current BNF before prescribing."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

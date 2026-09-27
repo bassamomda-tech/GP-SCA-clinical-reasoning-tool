@@ -85,7 +85,7 @@ MedChooser.register('hypertension', {
         if (f.cough_acei) return { tier:'avoid', reasons:[{kind:'bad', text:'Previous ACEi cough — switch to ARB'}] };
         if (f.k_high) return { tier:'avoid', reasons:[{kind:'bad', text:'K⁺ >5.0 — risk of dangerous hyperkalaemia'}] };
 
-        if (f.dm)  r.push({kind:'good', text:'DM → ACEi/ARB renoprotective regardless of age/ethnicity'});
+        if (f.dm)  r.push({kind:'good', text:'DM → ACEi/ARB renoprotective regardless of age/ethnicity (Black African/Caribbean: ARB preferred over ACEi — NICE NG136)'});
         if (f.ckd) r.push({kind:'good', text:'CKD / ACR >3 → proteinuria reduction'});
         if (f.hf)  r.push({kind:'good', text:'HFrEF → mortality benefit'});
         if (f.ihd) r.push({kind:'good', text:'Post-MI / LV dysfunction → secondary prevention'});
@@ -117,7 +117,7 @@ MedChooser.register('hypertension', {
       detail:{
         'Dose': 'Candesartan 8 mg OD → 32 mg',
         'Interactions': 'Same family as ACEi — never combine. NSAIDs, K-sparing diuretics.',
-        'Key teaching': 'Preferred over ACEi in Black African/Caribbean patients with DM at Step 2.'
+        'Key teaching': 'Preferred over ACEi in Black African/Caribbean patients whenever a RAS blocker is used (Step 1 with T2DM, or Step 2) — NICE NG136.'
       },
       evaluate(f){
         const r = [];
@@ -128,7 +128,7 @@ MedChooser.register('hypertension', {
         if (f.angioed)    r.push({kind:'good', text:'Previous angioedema — cautious ARB use possible (specialist if ACEi-related)'});
         if (f.dm)  r.push({kind:'good', text:'DM → equal renoprotection to ACEi'});
         if (f.ckd) r.push({kind:'good', text:'CKD / ACR >3 — proteinuria reduction'});
-        if (f.afro && f.dm) r.push({kind:'good', text:'Black African/Caribbean with DM — ARB preferred over ACEi at Step 2'});
+        if (f.afro && f.dm) r.push({kind:'good', text:'Black African/Caribbean with DM — ARB preferred over ACEi (NICE NG136)'});
 
         if (f.afro && !f.dm) r.push({kind:'bad', text:'Black African/Caribbean (no DM) — CCB superior at Step 1'});
 

@@ -1,11 +1,11 @@
 /* ============================================
    Medication Chooser — Allergic rhinitis
-   NICE · BSACI · BNF
+   BSACI 2017 · BNF
    ============================================ */
 MedChooser.register('allergic-rhinitis', {
   title: 'Allergic rhinitis — treatment selection',
-  subtitle: 'Antihistamine vs intranasal corticosteroid by severity and dominant symptom (BSACI / NICE). Tick the patient profile; cards re-tier live.',
-  guideline: 'NICE · BSACI · BNF',
+  subtitle: 'Antihistamine vs intranasal corticosteroid by severity and dominant symptom (BSACI 2017 / BNF). Tick the patient profile; cards re-tier live.',
+  guideline: 'BSACI 2017 · BNF',
 
   factors: [
     // Severity / pattern
@@ -46,7 +46,7 @@ MedChooser.register('allergic-rhinitis', {
       name:'Oral non-sedating antihistamine',
       examples:'Cetirizine · Loratadine · Fexofenadine',
       step:'1st-line (mild)',
-      source:'NICE · BSACI',
+      source:'BSACI 2017 · BNF',
       sideEffects:'Generally minimal; cetirizine mildly sedating in some',
       monitor:'Symptom response',
       counsel:'"A once-a-day non-drowsy antihistamine for mild symptoms and itchy eyes — works within an hour, good for occasional or pollen-season use."',
@@ -71,7 +71,7 @@ MedChooser.register('allergic-rhinitis', {
       name:'Intranasal corticosteroid',
       examples:'Mometasone · Fluticasone · Budesonide spray',
       step:'1st-line (moderate–severe)',
-      source:'NICE · BSACI',
+      source:'BSACI 2017 · BNF',
       sideEffects:'Local dryness, crusting, epistaxis; rare septal effects with poor technique',
       monitor:'Technique + adherence; takes days–weeks for full effect',
       counsel:'"A steroid nasal spray is the most effective treatment — but it must be used every day and aimed slightly away from the middle of the nose. It takes a week or two to fully work, so don\'t give up early."',
@@ -96,7 +96,7 @@ MedChooser.register('allergic-rhinitis', {
       name:'INCS + intranasal antihistamine spray',
       examples:'Azelastine/fluticasone combination spray',
       step:'Step up (INCS insufficient)',
-      source:'NICE · BSACI',
+      source:'BSACI 2017 · BNF',
       sideEffects:'As components; local irritation, bitter taste',
       monitor:'Technique; review response',
       counsel:'"A combined spray with both a steroid and an antihistamine in one — a step up when the steroid spray alone isn\'t quite controlling things."',
@@ -117,7 +117,7 @@ MedChooser.register('allergic-rhinitis', {
       name:'Leukotriene receptor antagonist',
       examples:'Montelukast 10 mg nocte',
       step:'Adjunct (with asthma)',
-      source:'NICE · BSACI',
+      source:'BSACI 2017 · BNF',
       sideEffects:'Headache, GI upset, neuropsychiatric effects (counsel/monitor mood)',
       monitor:'Mood/behaviour (MHRA warning)',
       counsel:'"A tablet that can help when you have both hay fever and asthma. Let us know about any mood or sleep changes, as these can occasionally occur."',
@@ -137,7 +137,7 @@ MedChooser.register('allergic-rhinitis', {
       name:'Intranasal ipratropium',
       examples:'Ipratropium nasal spray',
       step:'Targeted (rhinorrhoea)',
-      source:'NICE · BNF',
+      source:'BNF',
       sideEffects:'Nasal dryness, epistaxis',
       monitor:'Symptom-targeted use',
       counsel:'"If a constantly runny nose is the main problem, this spray specifically dries up the watery discharge."',
@@ -157,7 +157,7 @@ MedChooser.register('allergic-rhinitis', {
       name:'Short oral corticosteroid (rescue)',
       examples:'Prednisolone short course',
       step:'Rescue (severe, time-limited)',
-      source:'NICE · BSACI',
+      source:'BSACI 2017 · BNF',
       sideEffects:'Short course generally safe; usual steroid cautions',
       monitor:'Occasional, short courses only',
       counsel:'"For severe symptoms at an important time — like exams or a wedding — a few days of steroid tablets can settle things. We never use steroid injections for hay fever."',
@@ -177,7 +177,7 @@ MedChooser.register('allergic-rhinitis', {
       name:'Intranasal decongestant',
       examples:'Xylometazoline',
       step:'Avoid (rebound)',
-      source:'NICE',
+      source:'BNF',
       sideEffects:'Rhinitis medicamentosa (rebound congestion) with >5–7 days use',
       monitor:'Max 5–7 days if ever used',
       counsel:'"Decongestant sprays work fast but cause rebound blockage if used for more than 5 days in a row, so we avoid them as a regular treatment."',

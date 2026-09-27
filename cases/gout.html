@@ -850,7 +850,7 @@ body.mode-clinic .sca-only{display:none!important}
           </tr>
           <tr>
             <td class="q">Previous episodes<em>"Have you had anything like this before? How many episodes have you had in the past year or two?"</em></td>
-            <td class="why">The number of previous episodes directly determines ULT eligibility per NICE NG219: two or more flares per year, or any flare with CKD, tophi, or urolithiasis, meets the threshold for offering allopurinol. First episodes are managed acutely; ULT discussion begins at the second episode. Establish a clear timeline of episodes — many patients have had multiple episodes dismissed as "sprains."<span class="why-sub">≥2 flares per year → ULT should be offered and discussed today; first episode → manage acutely and plan review.</span></td>
+            <td class="why">The number of previous episodes directly shapes ULT eligibility. NICE NG219: offer treat-to-target ULT to people with multiple or troublesome flares, CKD stages 3–5, long-term diuretic therapy, tophi or chronic gouty arthritis, and discuss ULT with everyone after a first or subsequent flare. Establish a clear timeline of episodes — many patients have had multiple episodes dismissed as "sprains."<span class="why-sub">≥2 flares per year → ULT should be offered and discussed today; first episode → manage acutely and plan review.</span></td>
             <td><span class="chg chg-ddx">DDx</span><span class="chg chg-rx">Rx</span></td>
           </tr>
           <tr>
@@ -1513,7 +1513,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
           <p style="margin:0 0 .5rem"><strong>Colchicine 500mcg BD–TDS</strong> — start as early as possible in the attack (within 12 hours is optimal). Maximum 6mg per course. Start with lower frequency (BD or TDS) rather than the old high-loading dose regimen which caused significant GI toxicity.</p>
           <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
-            <li>NICE NG219 first-line for acute gout (preferred over NSAIDs in CKD and elderly)</li>
+            <li>NICE NG219: an NSAID, colchicine or a short course of oral corticosteroid for a flare, chosen by comorbidities and preference (colchicine often suits CKD and older people at adjusted doses)</li>
             <li>Continue until flare fully resolves — usually 5–7 days</li>
             <li>Dose reduction required in CKD (eGFR 10–50: max 500mcg BD; eGFR &lt;10: avoid)</li>
             <li>Drug interactions: statins (rhabdomyolysis risk), ciclosporin (toxicity risk), clarithromycin</li>
@@ -2381,7 +2381,7 @@ body.mode-clinic .sca-only{display:none!important}
 <div class="page-footer">
   <p><strong>Gout · GP Clinical Reasoning Framework v2</strong> · NICE NG219 Gout (2022) · ACR/EULAR 2015 Classification Criteria for Gout · MHRA Drug Safety Update: febuxostat (2019) · BNF Online 2024 · BSR Guidelines on the Management of Gout</p>
   <p style="margin-top:4px">v3: Dual tailored summaries (Clinic + SCA) with visual algorithms · v2: Clinical stem · Open Q first · ICE in all modes · Psychosocial context (1E + 7G) · Lay language DDx (Step 5) · Safeguarding (Step 1) · Expectation management (7A) · SCA RAG checkpoints after every step · SCA Scorecard as standalone section</p>
-  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence over any framework · NICE NG219 (2022): allopurinol is first-line ULT; never start during an acute flare; always co-prescribe colchicine prophylaxis for 6 months; NEVER combine allopurinol with azathioprine</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence over any framework · NICE NG219 (2022): allopurinol is first-line ULT; never start during an acute flare; offer colchicine prophylaxis while the ULT dose is titrated to target (usually 3–6 months); NEVER combine allopurinol with azathioprine</p>
 </div>
 
 </div><!-- /page -->
@@ -2580,9 +2580,9 @@ function __fw_unused_calcDrug(){
   }
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
-    main='thiazide';mainLabel='Indapamide SR 1.5mg';
-    why='HF with fluid overload: thiazide-like diuretic. Add ACEi + bisoprolol + spiro per NICE NG106 HF guideline.';
-    alt='acei';altLabel='+ Ramipril (essential in HFrEF)';altWhy='ACEi + beta-blocker + spiro = cornerstone of HFrEF management';
+    main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
+    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -2592,22 +2592,22 @@ function __fw_unused_calcDrug(){
     why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
     alt='';altLabel='';altWhy='';
   } else if(dm||ckd||cvd){
-    main='acei';mainLabel='Ramipril (ACEi)';
-    why='DM / CKD / CVD: ACEi first-line for cardio-renal protection at ANY age and ANY ethnicity (NICE NG136).';
-    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';altWhy='Equal renoprotection. Never combine ACEi + ARB simultaneously.';
+    main=afro?'arb':'acei';mainLabel=afro?'Candesartan / losartan (ARB)':'Ramipril (ACEi)';
+    why=afro?'Type 2 diabetes (or CKD with albuminuria) in a person of Black African or African–Caribbean family origin: ARB in preference to an ACEi (NICE NG136; CKD per NICE NG203).':'Type 2 diabetes: ACEi or ARB first-line at any age (NICE NG136). CKD: ACEi/ARB if ACR >30 mg/mmol, or >3 mg/mmol with diabetes (NICE NG203). Established CVD alone: follow the NG136 age/ethnicity steps.';
+    alt=afro?'ccb':'arb';altLabel=afro?'+ Amlodipine (CCB) at Step 2':'Candesartan (ARB) — if ACEi cough develops';altWhy='ACEi and ARB give equal renoprotection. Never combine ACEi + ARB simultaneously.';
   } else if(afro){
     main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Afro-Caribbean (no DM): CCB more effective in low-renin hypertension. At Step 2: ARB preferred over ACEi.';
+    why='Black African or African–Caribbean family origin (no type 2 diabetes): CCB first-line at any age (NICE NG136). At Step 2 add an ARB in preference to an ACEi, or a thiazide-like diuretic.';
     alt='';altLabel='';altWhy='';
   } else if(age55){
     main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Age ≥55 (no DM, no Afro-Caribbean): CCB preferred over ACEi — greater efficacy in lower-renin patients.';
-    alt=angina?'acei':'arb';
-    altLabel=angina?'+ Ramipril (anti-anginal benefit at Step 2)':'Candesartan (ARB) — if CCB not tolerated';
-    altWhy=angina?'ACEi has additional anti-anginal benefit at Step 2':'ARB is equally effective if CCB causes intolerable oedema';
+    why='Age ≥55 (no type 2 diabetes, not of Black African or African–Caribbean family origin): CCB first-line (NICE NG136).';
+    alt=angina?'acei':'thiazide';
+    altLabel=angina?'+ Ramipril (ACEi) at Step 2':'Indapamide (thiazide-like diuretic) — if a CCB is not suitable';
+    altWhy=angina?'Step 2 per NICE NG136: add an ACEi or ARB (or a thiazide-like diuretic); amlodipine also treats stable angina.':'If a CCB is not suitable (oedema, intolerance, heart failure or high risk of it), offer a thiazide-like diuretic (NICE NG136).';
   } else {
     main='acei';mainLabel='Ramipril (ACEi)';
-    why='Age <55, non-Afro-Caribbean, no DM/CKD/CVD: ACEi is the Step 1 drug of choice (NICE NG136).';
+    why='Age <55, not of Black African or African–Caribbean family origin, no type 2 diabetes/CKD: ACEi (or ARB) is the Step 1 drug of choice (NICE NG136).';
     alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
     altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
   }
@@ -2633,7 +2633,7 @@ function __fw_unused_calcDrug(){
     ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
     <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
     ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
-    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es within 1 week of starting ACEi/ARB</div>`;
+    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es 1–2 weeks after starting or up-titrating ACEi/ARB (NICE NG203)</div>`;
 }
 
 function calcScore(){
@@ -2658,6 +2658,7 @@ function calcScore(){
   else if(total < 17){ icon='🟠'; msg='<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check: was ABPM planned and explained? Was QRISK shared as a specific percentage? Was the correct drug chosen for the specific comorbidities? Was the family history fear addressed in the plan? Was a 1-week follow-up named?'; }
   else if(total < 25){ icon='🟢'; msg='<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: ensure lifestyle advice is specific and measurable, QRISK is shared as a number, and the drug choice rationale is explained in plain language tailored to this patient.'; }
   else { icon='🟢'; msg='<strong>Strong pass.</strong> Excellent consultation across all three domains. ICE fully explored including family fear, BP staging with ABPM, correct drug for phenotype and comorbidities, QRISK shared as a number, lifestyle specific and measurable, 1-2-1 rule named, 999 symptoms explicit, closing question asked.'; }
+  if(!/\/hypertension(\.html)?$/i.test(location.pathname)){ msg=(total < 11)?'<strong>Not yet at pass standard.</strong> Focus on the unticked items below: explore ideas, concerns and expectations, test for and rule out serious disease, agree a safe and specific management plan, and name safety-net symptoms explicitly. Review Global Skills — are you finishing data gathering by 6-7 minutes?':(total < 17)?'<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check the unticked items below: was the working diagnosis explained, was the plan shared and tailored to this patient, and was follow-up named?':(total < 25)?'<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: make advice specific and measurable, share risks as numbers where you can, and explain the rationale for the plan in plain language tailored to this patient.':'<strong>Strong pass.</strong> Excellent consultation across all three domains: ICE explored, serious disease addressed, a safe shared plan, explicit safety-netting and follow-up, and a closing question asked.'; }
   document.getElementById('sc-interp-msg').innerHTML = '<div class="interp-icon">'+icon+'</div><div class="interp-text">'+msg+'</div>';
   var missed = [];
   allCbs.forEach(function(cb){ if(!cb.checked){ missed.push(cb.closest('.sc-item').querySelector('.sc-item-text').textContent.trim()); } });
@@ -2690,7 +2691,7 @@ function resetScorecard(){
 <script src="../assets/meds/gout.js"></script>
 <script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: September 2026</b> · citations verified against the primary sources listed</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
 <script src="chooser-guard.js?v=1"></script>
 </body>

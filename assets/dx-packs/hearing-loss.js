@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Hearing Loss
-   Shared-id triage + differential. NICE NG98 · NG12.
+   Shared-id triage + differential. NICE NG98 · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -21,7 +21,7 @@
   if (window.RGPTriage) RGPTriage.register('hearing-loss-triage', {
     title: 'Hearing loss — triage',
     subtitle: 'Tick features. Surfaces sudden SNHL (emergency) and acoustic-neuroma referral (NICE NG98).',
-    guideline: 'NICE NG98 · NG12',
+    guideline: 'NICE NG98 · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine ears (otoscopy), tuning-fork tests; treat wax/infection; refer audiology for persistent loss; bilateral gradual loss → hearing aids.',
     rules: [
@@ -44,7 +44,7 @@
         id: 'infection', tier: 'urgent',
         label: 'Ear infection / discharge / perforation',
         action: 'Treat otitis (externa/media); ENT if chronic discharge / cholesteatoma suspected.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.discharge,
       },
       {

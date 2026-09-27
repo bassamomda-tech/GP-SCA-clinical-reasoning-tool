@@ -85,7 +85,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   implications:[
     { clue:'Unexplained bruising/petechiae + infection + fatigue', why:'Pancytopenia from marrow takeover — urgent FBC and film.' },
-    { clue:'Children: petechiae, hepatosplenomegaly, lymphadenopathy → very urgent FBC', why:'NICE NG12 leukaemia pathway.' },
+    { clue:'Children: unexplained petechiae or hepatosplenomegaly → immediate specialist assessment; pallor, fatigue, bruising or generalised lymphadenopathy → very urgent FBC (48 h)', why:'NICE NG12 (updated April 2026) leukaemia pathway.' },
     { clue:'High WCC but failing function', why:'Malignant cells don\u2019t fight infection.' },
   ],
   pearls:[

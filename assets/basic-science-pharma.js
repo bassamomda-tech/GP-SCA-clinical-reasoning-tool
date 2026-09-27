@@ -135,7 +135,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   practical:[
     { point:'Take simvastatin at night', detail:'Cholesterol synthesis peaks nocturnally; atorvastatin/rosuvastatin have long half-lives so timing matters less.' },
     { point:'Watch interactions (CYP3A4)', detail:'Macrolides, some antifungals and grapefruit raise simvastatin/atorvastatin levels → myopathy risk.' },
-    { point:'Check lipids and consider adherence before escalating', detail:'Non-response often reflects adherence; aim for ≥40% non-HDL reduction.' },
+    { point:'Check lipids and consider adherence before escalating', detail:'Non-response often reflects adherence; aim for a >40% non-HDL reduction (NICE NG238).' },
   ],
   pearls:['Most “statin intolerance” can be managed by dose reduction, switching agent, or alternate-day dosing.'],
   note:'Statins do more than lower a number — they stabilise the very plaques that rupture. That’s why they cut events even when baseline cholesterol looks “normal”.',
@@ -170,7 +170,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 /* ---------------- ENDOCRINE / METABOLIC ---------------- */
 {
   id:'pharma-metformin', domain:'Pharmacology', class:'Endocrine & Metabolic', icon:'🍬',
-  title:'Metformin', blurb:'First-line in T2DM — reduces hepatic glucose output and improves insulin sensitivity without hypos.',
+  title:'Metformin', blurb:'First-line in T2DM (MR, with an SGLT2 inhibitor as dual therapy for most — NICE NG28, Feb 2026) — reduces hepatic glucose output and improves insulin sensitivity without hypos.',
   examples:['Metformin (standard & modified-release)'],
   moa:[
     'Activates **AMP-activated protein kinase (AMPK)** in the liver, **reducing hepatic gluconeogenesis** (the main effect).',
@@ -191,7 +191,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     { point:'Renal dosing / sick-day rules', detail:'Reduce below eGFR 45, stop below 30, and withhold during acute dehydrating illness or before contrast.' },
   ],
   pearls:['Check B12 in long-term users with fatigue or neuropathy.'],
-  note:'Metformin lowers glucose by telling the liver to stop making it — not by pushing out insulin. That’s why it doesn’t cause hypos or weight gain, and why it stays first-line.',
+  note:'Metformin lowers glucose by telling the liver to stop making it — not by pushing out insulin. That’s why it doesn’t cause hypos or weight gain, and why it stays first-line — since February 2026 as modified-release metformin paired with an SGLT2 inhibitor for most adults (NICE NG28).',
   links:{ patho:'patho-t2dm', pathoLabel:'Type 2 diabetes', case:'cases/type-2-diabetes.html', caseLabel:'Type 2 diabetes' },
 },
 {

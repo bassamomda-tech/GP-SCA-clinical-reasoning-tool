@@ -211,10 +211,10 @@
             <div class="wu-title">${cfg?.label || 'Workup'}</div>
             <div class="wu-sub">
               ${this.hasTriage() && this.hasDx() ?
-                'Tick symptoms. The tool surfaces every <b>NICE / Macmillan triage rule</b> that fires AND ranks the <b>differential</b> using ICHD-3 / TiTrATE / NICE criteria.' :
+                'Tick symptoms. The tool surfaces every <b>triage rule (NICE NG12, updated April 2026, other numbered NICE guidelines, Macmillan)</b> that fires AND ranks the <b>differential</b> using ICHD-3 / TiTrATE / numbered NICE guideline criteria.' :
                 this.hasTriage() ?
-                  'Tick symptoms. The tool surfaces every <b>NICE / Macmillan triage rule</b> that fires — emergency, 2WW cancer, urgent non-cancer, routine.' :
-                  'Tick symptoms. The engine ranks the <b>differential</b> live using ICHD-3 / TiTrATE / NICE source criteria.'
+                  'Tick symptoms. The tool surfaces every <b>triage rule (NICE NG12, updated April 2026, other numbered NICE guidelines, Macmillan)</b> that fires — emergency, suspected cancer (2WW), urgent non-cancer, routine.' :
+                  'Tick symptoms. The engine ranks the <b>differential</b> live using ICHD-3 / TiTrATE / numbered NICE guideline criteria.'
               }
             </div>
             ${guideline ? `<div class="wu-source-pill">${guideline}</div>` : ''}
@@ -282,7 +282,7 @@
             </div>
           </div>
           <div class="wu-disclaimer">
-            <strong>Educational use only.</strong> Triage thresholds come from published NICE / Macmillan rules. Diagnostic weights are tuned to NICE / ICHD-3 / SNNOOP10 / TiTrATE criteria but are <em>not</em> a validated clinical decision rule. Always confirm with full history, examination, and your local pathway.
+            <strong>Educational use only.</strong> Triage thresholds come from published rules (NICE NG12, updated April 2026, other numbered NICE guidelines, Macmillan). Diagnostic weights are tuned to numbered NICE guidelines / ICHD-3 / SNNOOP10 / TiTrATE criteria but are <em>not</em> a validated clinical decision rule. Always confirm with full history, examination, and your local pathway.
           </div>
         </footer>
       `;
@@ -411,7 +411,7 @@
             <span class="wu-empty-ic">🩺</span>
             <div><b>Tick what the patient describes on the left.</b><br/>
               ${this.hasTriage() && this.hasDx() ? 'The tool will surface every triage rule that fires <em>and</em> rank the differential live.' :
-                this.hasTriage() ? 'The tool will surface every NICE / Macmillan triage rule that fires.' :
+                this.hasTriage() ? 'The tool will surface every triage rule (numbered NICE guidelines / Macmillan) that fires.' :
                 'The differential ranks live.'}
             </div>
           </div>

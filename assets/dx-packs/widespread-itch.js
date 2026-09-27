@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Widespread Itch (pruritus without rash)
-   Shared-id triage + differential. NICE NG12.
+   Shared-id triage + differential. NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -22,49 +22,49 @@
   if (window.RGPTriage) RGPTriage.register('widespread-itch-triage', {
     title: 'Widespread itch — triage',
     subtitle: 'Tick features. Surfaces lymphoma and the systemic (liver / renal / haematological / endocrine) workup.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine for a primary skin cause; if none (only scratch marks), screen systemically: FBC, ferritin, U&E, LFT, TFT, glucose, ± HIV; treat cause + symptomatic relief.',
     rules: [
       {
         id: 'lymphoma_2ww', tier: 'cancer',
         label: 'Itch + B-symptoms — exclude lymphoma',
-        action: 'FBC, film, LDH; haematology 2WW (NICE NG12).',
-        source: 'NICE NG12 §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        action: 'FBC, film, LDH; haematology 2WW (NICE NG12 (updated April 2026)).',
+        source: 'NICE NG12 (updated April 2026) §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.lymphoma_b,
       },
       {
         id: 'cholestasis', tier: 'urgent',
         label: 'Cholestatic itch — jaundice / abnormal LFTs',
         action: 'LFTs + bile acids; USS; investigate obstruction (consider malignancy if painless + weight loss).',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.cholestatic,
       },
       {
         id: 'systemic', tier: 'urgent',
         label: 'Systemic cause — renal / iron / thyroid / polycythaemia',
         action: 'Targeted bloods (U&E, ferritin, TFT, FBC/Hct); treat cause.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.renal || i.iron_def || i.thyroid || i.polycythaemia,
       },
       {
         id: 'skin', tier: 'routine',
         label: 'Primary skin / drug cause',
         action: 'Treat dermatosis (eczema/scabies/urticaria); review drugs; emollients + antihistamine.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('widespread-itch-dx', {
     title: 'Widespread itch — differential',
     subtitle: 'The engine separates primary skin disease and drug cause from systemic itch (cholestatic, renal, iron, thyroid, polycythaemia), and surfaces lymphoma.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I'm itching all over, doctor, but there's no rash to show for it.",
     inputs: INPUTS,
     diagnoses: [
@@ -129,7 +129,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

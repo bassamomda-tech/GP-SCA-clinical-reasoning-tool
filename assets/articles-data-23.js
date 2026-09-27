@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 23: P topics, part 2)
    NHS conditions A–Z (letter P) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Significant comorbidity or risk → mental-health services',
       'Needle phobia preventing essential treatment → psychological support (applied tension/desensitisation)',
       'Children and young people with disabling phobias → CAMHS'],
-    source:'NICE CG159 (Social anxiety disorder) / NICE — Phobias' },
+    source:'NICE CG159 (Social anxiety disorder) / NICE CG113 (panic disorder with agoraphobia) / NICE CG123 (Common mental health problems)' },
 
   { id:'pityriasis-versicolor', title:'Pityriasis versicolor', category:'Dermatology', icon:'🟤',
     overview:'A common, benign superficial skin infection caused by overgrowth of commensal Malassezia yeast, producing scaly patches of altered pigmentation, usually on the trunk. It is harmless and not contagious; recurrence is common. The main task is correct recognition and explaining the slow recovery of skin colour.',
@@ -53,7 +53,7 @@
       'Extensive or recurrent disease not responding to topical treatment → consider oral antifungal ± dermatology',
       'Persistent depigmentation causing distress → reassurance ± dermatology advice',
       'Immunocompromised patients with widespread/atypical disease → dermatology'],
-    source:'NICE — Pityriasis versicolor' },
+    source:'BNF (ketoconazole shampoo, selenium sulfide, topical azoles, oral itraconazole)' },
 
   { id:'plantar-fasciitis', title:'Plantar fasciitis (heel pain)', category:'Musculoskeletal', icon:'🦶',
     overview:'The commonest cause of heel pain — a degenerative/overload condition of the plantar fascia at its attachment to the heel. It is benign and usually self-limiting (though often slow to settle), and responds to load management, stretching and footwear measures. The role is reassurance and excluding other causes of heel pain.',
@@ -78,7 +78,7 @@
       'Atypical features (rest/night pain, bilateral in a young person, systemic/inflammatory features) → investigate/relevant specialty (e.g. rheumatology for spondyloarthropathy)',
       'Suspected calcaneal stress fracture → imaging/orthopaedics',
       'Diagnostic uncertainty → MSK assessment'],
-    source:'NICE — Plantar fasciitis' },
+    source:'Clinical practice (no NICE guideline); NICE IPG311 (Extracorporeal shockwave therapy for refractory plantar fasciitis, 2009)' },
 
   { id:'pleurisy', title:'Pleurisy', category:'Respiratory', icon:'🫁',
     overview:'Inflammation of the pleura causing sharp, localised chest pain that is characteristically worse on breathing in and coughing. It is a symptom/sign of an underlying process — most often viral, but the crucial task is to exclude dangerous causes, especially pulmonary embolism, pneumonia, and pneumothorax.',
@@ -103,7 +103,7 @@
       'Suspected pneumothorax (sudden pleuritic pain + breathlessness) or significant hypoxia → emergency assessment',
       'Pneumonia with severity/sepsis → manage/admit per the pneumonia pathway',
       'Recurrent/unexplained pleurisy or pleural effusion → respiratory (exclude TB, autoimmune disease, malignancy)'],
-    source:'NICE — Pleurisy' },
+    source:'NICE NG158 (Venous thromboembolic diseases) / BTS guideline for pleural disease (2023)' },
 
   { id:'pneumonia', title:'Pneumonia', category:'Respiratory', icon:'🫁',
     overview:'Infection of the lung parenchyma, usually bacterial (commonly Streptococcus pneumoniae), causing consolidation. It ranges from mild community-acquired illness to life-threatening sepsis. The core skills are severity assessment (CRB-65), prompt antibiotics, deciding who needs admission, and recognising the cough that needs imaging for cancer.',
@@ -126,9 +126,9 @@
     referral:[
       'High CRB-65, hypoxia, sepsis, or inability to manage at home → hospital admission',
       'Suspected empyema/parapneumonic effusion or non-resolving pneumonia → respiratory',
-      'Cough/symptoms or X-ray changes not resolving, or with weight loss/haemoptysis (especially smoker/ex-smoker ≥40) → urgent chest X-ray and 2WW suspected lung-cancer pathway (NICE NG12)',
+      'Cough/symptoms not resolving, or with weight loss (especially smoker/ex-smoker ≥40) → urgent chest X-ray within 2 weeks; unexplained haemoptysis at 40+, or chest X-ray findings suggesting lung cancer → suspected lung-cancer pathway (2WW) referral (NICE NG12 (updated April 2026))',
       'Recurrent pneumonia (especially same site) → respiratory (exclude obstruction/malignancy)'],
-    source:'NICE NG250 (Pneumonia, 2025; replaced NG138/CG191) / NICE NG12' },
+    source:'NICE NG250 (Pneumonia, 2025; replaced NG138/CG191) / NICE NG12 (updated April 2026)' },
 
   { id:'pneumothorax', title:'Pneumothorax (collapsed lung)', category:'Respiratory', icon:'🫁',
     overview:'Air in the pleural space causing the lung to collapse. It ranges from a small spontaneous pneumothorax in a young, otherwise well person to a life-threatening tension pneumothorax. The cardinal presentation is sudden pleuritic chest pain with breathlessness, and the must-not-miss is tension pneumothorax — a clinical emergency.',
@@ -153,7 +153,7 @@
       'Suspected pneumothorax → urgent hospital assessment (oxygen, chest X-ray, aspiration/drain)',
       'Secondary pneumothorax (underlying lung disease) → admission/respiratory',
       'Recurrent pneumothorax → thoracic surgery (pleurodesis)'],
-    source:'BTS pleural disease guidance / NICE' },
+    source:'BTS guideline for pleural disease (2023)' },
 
   { id:'polio', title:'Polio (poliomyelitis)', category:'Infectious diseases', icon:'🦠',
     overview:'A viral infection (poliovirus) that is usually asymptomatic or mild, but can invade the nervous system to cause acute flaccid paralysis. Eliminated from the UK by vaccination, it remains a global eradication target, and rare imported cases or vaccine-derived virus mean acute flaccid paralysis must still be taken seriously and notified.',
@@ -203,7 +203,7 @@
       'Diagnostic uncertainty, atypical features, or poor response to steroids → rheumatology',
       'Frequent relapses or difficulty tapering steroids → rheumatology',
       'Steroid complications → manage/relevant specialty'],
-    source:'NICE — Polymyalgia rheumatica / BSR guidance' },
+    source:'BSR guideline for the management of polymyalgia rheumatica (2009; update in development) / BSR guideline for giant cell arteritis (2020)' },
 
   { id:'pcos', title:'Polycystic ovary syndrome (PCOS)', category:'Endocrine & metabolic', icon:'🌸',
     overview:'A common endocrine disorder of reproductive-age women characterised by hyperandrogenism, irregular ovulation, and polycystic ovaries, underpinned by insulin resistance. It causes menstrual disturbance, subfertility and hirsutism/acne, and carries important long-term metabolic risks (type 2 diabetes, cardiovascular disease) and an endometrial-cancer risk.',
@@ -226,9 +226,9 @@
     referral:[
       'Subfertility/difficulty conceiving → fertility services',
       'Rapid-onset virilisation or markedly raised testosterone → urgent endocrinology/gynaecology (exclude an androgen-secreting tumour)',
-      'Prolonged amenorrhoea or abnormal/postmenopausal bleeding → gynaecology for endometrial assessment (consider NICE NG12 endometrial cancer pathway)',
+      'Prolonged amenorrhoea or abnormal/postmenopausal bleeding → gynaecology for endometrial assessment (consider NICE NG12 (updated April 2026) endometrial cancer pathway)',
       'Difficult-to-control symptoms or diagnostic uncertainty → endocrinology/gynaecology'],
-    source:'NICE / international PCOS guidance' },
+    source:'International evidence-based PCOS guideline (2023, international) / RCOG Green-top Guideline No. 33 (Long-term consequences of PCOS, 2014)' },
 
   { id:'ptsd', title:'Post-traumatic stress disorder (PTSD)', category:'Mental health', icon:'🧠',
     overview:'A disorder that can develop after exposure to a traumatic event, characterised by re-experiencing, avoidance, hyperarousal and negative changes in mood/cognition. It is common, often missed, and very treatable with trauma-focused psychological therapy — but requires asking about trauma sensitively, as patients may not volunteer it.',

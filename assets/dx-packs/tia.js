@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — TIA
-   Shared-id triage + differential. NICE NG128 · NICE TIA/Stroke.
+   Shared-id triage + differential. NICE NG128.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -57,7 +57,7 @@
         id: 'mimic', tier: 'routine',
         label: 'Likely TIA mimic — assess the alternative',
         action: 'Evaluate migraine / seizure / hypoglycaemia / functional cause; treat accordingly; safety-net.',
-        source: 'NICE TIA',
+        source: 'NICE NG128',
         when: i => true,
       }
     ],

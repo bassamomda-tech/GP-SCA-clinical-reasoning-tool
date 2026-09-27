@@ -22,7 +22,7 @@
    "meds": [
     "Ramipril",
     "Bendroflumethiazide",
-    "Second antihypertensive, added recently",
+    "amlodipine (added recently)",
     "Tamsulosin",
     "Amitriptyline (at night, for sleep)"
    ],
@@ -31,7 +31,7 @@
    "reason": "Telephone call about “dizzy spells” on standing, made at her daughter’s request."
   },
   "knowledge": {
-   "guideline": "NICE NG249 (2025) · NICE NG136 (updated 2023) · NICE NG5 · NICE CG146 · BNF",
+   "guideline": "NICE NG249 (2025) · NICE NG136 (updated 2023) · NICE NG5 · NICE NG259 (July 2026; replaced CG146) · BNF",
    "summary": "Light-headedness on standing in an 82-year-old on five blood-pressure-lowering drugs is postural hypotension until proven otherwise. The medication review is the treatment, and the hidden falls change the whole plan.",
    "points": [
     {
@@ -44,7 +44,7 @@
     },
     {
      "h": "The drugs are the fix",
-     "t": "A recently added antihypertensive, ramipril, a thiazide, an alpha-blocker (tamsulosin) and a sedating anticholinergic tricyclic (amitriptyline) all lower BP or add to falls risk. NICE NG249 puts medication review at the centre of a falls assessment; NICE NG5 supports a structured medication review. Reduce the recent addition first, and withdraw amitriptyline gradually rather than stopping it abruptly (BNF)."
+     "t": "A recently added amlodipine, ramipril, a thiazide, an alpha-blocker (tamsulosin) and a sedating anticholinergic tricyclic (amitriptyline) all lower BP or add to falls risk. NICE NG249 puts medication review at the centre of a falls assessment; NICE NG5 supports a structured medication review. Reduce the recent addition first, and withdraw amitriptyline gradually rather than stopping it abruptly (BNF)."
     },
     {
      "h": "Falls change the plan",
@@ -52,7 +52,7 @@
     },
     {
      "h": "Bone health",
-     "t": "A fall with injury at 82 calls for a fracture risk assessment (NICE CG146) and examination of the hip if pain persists. A painful hip after a fall needs same-day assessment."
+     "t": "A fall with injury at 82 calls for a fracture risk assessment (NICE NG259) and examination of the hip if pain persists. A painful hip after a fall needs same-day assessment."
     },
     {
      "h": "Check the bloods",
@@ -325,12 +325,12 @@
     "meds": [
      "Ramipril",
      "Bendroflumethiazide",
-     "Second antihypertensive (recently added)",
+     "amlodipine (added recently)",
      "Tamsulosin",
      "Amitriptyline nocte"
     ],
     "allergy": "None recorded",
-    "recent": "⚠ Second antihypertensive added recently. No postural BP on record. Message from daughter: “Mum isn’t safe.”",
+    "recent": "⚠ amlodipine (added recently) added recently. No postural BP on record. Message from daughter: “Mum isn’t safe.”",
     "reason": "Telephone call: “dizzy spells” on standing. “My daughter made me ring.”"
    },
    "timeMap": [
@@ -439,7 +439,7 @@
      "Expectation: to be told she’s fine so her daughter stops worrying"
     ]
    },
-   "diagnosis": "Symptomatic postural hypotension, probably drug-induced (recently added antihypertensive on top of ramipril, bendroflumethiazide, tamsulosin and amitriptyline), worsened by poor intake, with two unreported falls including a long lie.",
+   "diagnosis": "Symptomatic postural hypotension, probably drug-induced (recently added amlodipine on top of ramipril, bendroflumethiazide, tamsulosin and amitriptyline), worsened by poor intake, with two unreported falls including a long lie.",
    "diagnosisLay": "“When you stand up, your blood pressure drops too far for a few seconds, so things go dim. Several of your tablets lower blood pressure, and the new one tipped the balance. Changing the tablets should help a lot.”",
    "management": {
     "reflectIce": "“You’ve kept the falls quiet because you’re frightened of losing your home. This plan is how you stay in it.”",
@@ -447,7 +447,7 @@
     "sharedPlan": [
      "Stop the recent antihypertensive; lying and standing BP and U&E this week (NICE NG136)",
      "Staged review of bendroflumethiazide and tamsulosin; taper amitriptyline (BNF); pharmacist medication review (NICE NG5)",
-     "Comprehensive falls assessment referral (NICE NG249); fracture risk assessment (NICE CG146)"
+     "Comprehensive falls assessment referral (NICE NG249); fracture risk assessment (NICE NG259)"
     ],
     "safetyNet": [
      "999 for a fall with a long lie, blackout or a painful hip",
@@ -1027,7 +1027,7 @@
      "t": "A PDE5 inhibitor such as sildenafil is first-line for most men (BSSM 2017); dose per BNF. BNF: contraindicated with nitrates and nicorandil, and in men for whom sexual activity is inadvisable. Explain it needs sexual stimulation and an adequate trial before judging it ineffective."
     },
     {
-     "h": "NG12 prostate check",
+     "h": "NICE NG12 (updated April 2026) prostate check",
      "t": "NICE NG12 (updated April 2026): consider a PSA test and digital rectal examination to assess for prostate cancer in men with erectile dysfunction. Offer it after explaining what the test can and cannot show."
     },
     {
@@ -1187,7 +1187,7 @@
     "who": "dr",
     "text": "Blood pressure at the practice or pharmacy this week and bloods the same visit. While you’re in, I’d suggest a PSA blood test for the prostate, which guidance advises considering with erection problems — we’ll talk it through first. And the snoring: I’ll send a short sleep questionnaire. If it shows sleep apnoea, it matters for your heart, your erections and, as a lorry driver, your licence.",
     "dom": "tasks",
-    "why": "Plans BP, bloods, NG12 PSA consideration and OSA screen with DVLA relevance"
+    "why": "Plans BP, bloods, NICE NG12 (updated April 2026) PSA consideration and OSA screen with DVLA relevance"
    },
    {
     "who": "pt",
@@ -1265,7 +1265,7 @@
    },
    {
     "t": "Plans appropriate examination and tests",
-    "d": "BP, HbA1c, lipids, QRISK3; consider testosterone; consider PSA and DRE (NICE NG12, updated April 2026); OSA questionnaire (NICE NG202).",
+    "d": "BP, HbA1c, lipids, QRISK3; consider testosterone; consider PSA and DRE (NICE NG12 (updated April 2026)); OSA questionnaire (NICE NG202).",
     "pts": 1
    },
    {
@@ -1348,7 +1348,7 @@
    "wordPics": {
     "fail": "Issues sildenafil with no history, no cardiovascular risk assessment and no nitrate check; or lectures on smoking and refuses the prescription until tests are done; never asks about home or mood; misses the snoring and the driving implications.",
     "pass": "Prescribes sildenafil with nitrate and chest-pain counselling; arranges BP, HbA1c, lipids and QRISK3; notes the snoring; asks about the relationship; basic safety-net and follow-up.",
-    "exc": "All of the above, plus: frames ED as a vascular early warning in plain language tied to his father; uses the explanation to repair his wife’s misreading; screens mood; handles OSA and the DVLA question honestly without scaring him off; considers PSA per NG12; offers stop-smoking support without judgement; invites his wife to the review."
+    "exc": "All of the above, plus: frames ED as a vascular early warning in plain language tied to his father; uses the explanation to repair his wife’s misreading; screens mood; handles OSA and the DVLA question honestly without scaring him off; considers PSA per NICE NG12 (updated April 2026); offers stop-smoking support without judgement; invites his wife to the review."
    },
    "avoid": [
     {
@@ -1436,7 +1436,7 @@
     "psychosocial": "Invite his wife to the review with consent; screen and follow up mood; offer psychosexual or couple support.",
     "sharedPlan": [
      "Sildenafil with counselling (dose per BNF; never with nitrates or nicorandil)",
-     "BP, HbA1c, lipids and QRISK3; atorvastatin if QRISK3 ≥10% (NICE NG238); consider PSA and DRE (NICE NG12, updated April 2026)",
+     "BP, HbA1c, lipids and QRISK3; atorvastatin if QRISK3 ≥10% (NICE NG238); consider PSA and DRE (NICE NG12 (updated April 2026))",
      "STOP-Bang/Epworth and sleep referral if indicated (NICE NG202); stop-smoking referral (NICE NG209)"
     ],
     "safetyNet": [
@@ -1560,7 +1560,7 @@
      "t": "NICE NG240: for strongly suspected meningococcal disease, give intramuscular or intravenous benzylpenicillin or ceftriaxone as soon as possible outside hospital, unless this will delay transfer. Doses per BNFC by age. On the telephone, the only action is emergency transfer."
     },
     {
-     "h": "NG12 overlap",
+     "h": "NICE NG12 (updated April 2026) overlap",
      "t": "NICE NG12 (updated April 2026): children and young people with unexplained petechiae or hepatosplenomegaly need immediate specialist assessment for leukaemia. Hospital assessment covers both concerns."
     },
     {
@@ -1749,7 +1749,7 @@
    },
    {
     "t": "Generates and tests hypotheses",
-    "d": "Meningococcal disease and sepsis versus viral illness with rash; leukaemia considered (NICE NG12, updated April 2026).",
+    "d": "Meningococcal disease and sepsis versus viral illness with rash; leukaemia considered (NICE NG12 (updated April 2026)).",
     "pts": 1
    },
    {
@@ -1934,7 +1934,7 @@
    {
     "ic": "🗺️",
     "t": "Suspected cancer in children",
-    "s": "Visual algorithm · NICE NG12",
+    "s": "Visual algorithm · NICE NG12 (updated April 2026)",
     "href": "algorithms/paediatric-cancer-referral.html"
    }
   ],
@@ -4404,7 +4404,7 @@
     },
     {
      "h": "Red flags",
-     "t": "Intermenstrual or post-coital bleeding, an abnormal endometrium, or a pelvic mass not obviously fibroids change the pathway (a pelvic or abdominal mass not obviously uterine fibroids is a NICE NG12, updated April 2026, suspected cancer referral). None are present here."
+     "t": "Intermenstrual or post-coital bleeding, an abnormal endometrium, or a pelvic mass not obviously fibroids change the pathway (a pelvic or abdominal mass not obviously uterine fibroids is a NICE NG12 (updated April 2026), suspected cancer referral). None are present here."
     }
    ]
   },
@@ -4732,7 +4732,7 @@
    "history": {
     "redFlags": [
      "Intermenstrual or post-coital bleeding, abnormal endometrium",
-     "Pelvic or abdominal mass not obviously fibroids → suspected cancer pathway (NICE NG12, updated April 2026)",
+     "Pelvic or abdominal mass not obviously fibroids → suspected cancer pathway (NICE NG12 (updated April 2026))",
      "Symptomatic anaemia: chest pain, breathlessness at rest, syncope → same-day assessment"
     ],
     "psychosocial": [
@@ -4857,7 +4857,7 @@
     },
     {
      "h": "Which pathway",
-     "t": "NICE NG12 (updated April 2026) endometrial criteria cover postmenopausal bleeding that cannot be attributed to HRT. Bleeding on HRT follows the joint BMS-led guideline (2024), which NG12 signposts. She is 54 and on HRT, so assess via that route rather than labelling it a straightforward NG12 referral."
+     "t": "NICE NG12 (updated April 2026) endometrial criteria cover postmenopausal bleeding that cannot be attributed to HRT. Bleeding on HRT follows the joint BMS-led guideline (2024), which NICE NG12 (updated April 2026) signposts. She is 54 and on HRT, so assess via that route rather than labelling it a straightforward NICE NG12 (updated April 2026) referral."
     },
     {
      "h": "BMS 2024 thresholds",
@@ -5274,8 +5274,8 @@
     },
     {
      "dom": "tasks",
-     "fail": "Labelling it an NG12 two-week-wait without thinking about the HRT, or not knowing the thickness threshold.",
-     "why": "NG12 endometrial criteria cover bleeding not attributable to HRT; bleeding on HRT follows the BMS 2024 route.",
+     "fail": "Labelling it an NICE NG12 (updated April 2026) two-week-wait without thinking about the HRT, or not knowing the thickness threshold.",
+     "why": "NICE NG12 (updated April 2026) endometrial criteria cover bleeding not attributable to HRT; bleeding on HRT follows the BMS 2024 route.",
      "fix": "Urgent TVUS within 6 weeks; above 4 mm on ccHRT → suspected cancer pathway."
     },
     {
@@ -5393,7 +5393,7 @@
     "who": "dr",
     "text": "Thank you, that really helps. Is he himself otherwise — eating, drinking, chatty? Any rash, bruises you can’t explain, or has he looked pale or more tired than usual lately?",
     "dom": "tasks",
-    "why": "Screens for systemic illness and NG12 malignancy features"
+    "why": "Screens for systemic illness and NICE NG12 (updated April 2026) malignancy features"
    },
    {
     "who": "pt",
@@ -5717,7 +5717,7 @@
    {
     "ic": "📋",
     "t": "Childhood limp",
-    "s": "Case walkthrough · BOAST 2022 · NICE NG12",
+    "s": "Case walkthrough · BOAST 2022 · NICE NG12 (updated April 2026)",
     "href": "../cases/childhood-limp.html"
    },
    {
@@ -5805,7 +5805,7 @@
    "summary": "Unexplained postmenopausal bleeding at 55 or over, not attributable to HRT, is a suspected cancer pathway referral for endometrial cancer. One episode is enough.",
    "points": [
     {
-     "h": "The NG12 criterion",
+     "h": "The NICE NG12 (updated April 2026) criterion",
      "t": "NICE NG12 (updated April 2026): refer using a suspected cancer pathway referral for endometrial cancer if aged 55 and over with unexplained postmenopausal bleeding that cannot be attributed to HRT. Under 55: consider a suspected cancer pathway referral. She is 61 and has never used HRT, so she meets the “refer” criterion."
     },
     {
@@ -6108,14 +6108,14 @@
    ],
    "wordPics": {
     "fail": "Agrees it is probably dryness and offers vaginal oestrogen or a watch-and-wait; no suspected cancer referral; or refers abruptly with “we need to rule out cancer” and no support; skips examination because she booked video.",
-    "pass": "Recognises PMB at 61 off HRT as an NG12 suspected cancer referral; makes it today; explains most causes are benign; arranges in-person examination; safety-nets.",
+    "pass": "Recognises PMB at 61 off HRT as an NICE NG12 (updated April 2026) suspected cancer referral; makes it today; explains most causes are benign; arranges in-person examination; safety-nets.",
     "exc": "All of the above, plus: surfaces the cancer fear and the examination dread; offers choice, chaperone and control; checks screening history; explains the pathway steps; commits to reviewing the result with her; teach-back."
    },
    "avoid": [
     {
      "dont": "“It’s probably just dryness — let’s see if it happens again.”",
      "instead": "“Any bleeding after the menopause is something we always check, even once.”",
-     "why": "Waiting for recurrence is not in line with NICE NG12."
+     "why": "Waiting for recurrence is not in line with NICE NG12 (updated April 2026)."
     },
     {
      "dont": "“We need to rule out cancer, so I’m sending you to the cancer clinic.”",
@@ -6166,7 +6166,7 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "Postmenopausal bleeding at 55 or over, not attributable to HRT: suspected cancer pathway referral (NICE NG12, updated April 2026)",
+     "Postmenopausal bleeding at 55 or over, not attributable to HRT: suspected cancer pathway referral (NICE NG12 (updated April 2026))",
      "Blood-stained or watery discharge, weight loss, pelvic pain",
      "Risk factors: obesity, type 2 diabetes, nulliparity, family history"
     ],
@@ -6187,7 +6187,7 @@
     "reflectIce": "“You’ve been hoping I’d say it’s nothing because of what happened to your mum. I’d rather find out properly and fast, so you’re not lying awake guessing.”",
     "psychosocial": "Accommodate the examination dread with a chaperone, choice of speculum, and her control to stop.",
     "sharedPlan": [
-     "Suspected cancer pathway referral for endometrial cancer today (NICE NG12, updated April 2026)",
+     "Suspected cancer pathway referral for endometrial cancer today (NICE NG12 (updated April 2026))",
      "Face-to-face abdominal and speculum examination with chaperone, not delaying the referral",
      "Check cervical screening history and offer screening if due"
     ],
@@ -6201,7 +6201,7 @@
    {
     "ic": "🗺️",
     "t": "Vaginal bleeding pathway",
-    "s": "Visual algorithm · NICE NG12",
+    "s": "Visual algorithm · NICE NG12 (updated April 2026)",
     "href": "algorithms/vaginal-bleeding.html"
    },
    {
@@ -6512,7 +6512,7 @@
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about LUTS, haematuria, erectile dysfunction, bone pain and weight loss that would change the pathway (NICE NG12, updated April 2026).",
+    "d": "Asked about LUTS, haematuria, erectile dysfunction, bone pain and weight loss that would change the pathway (NICE NG12 (updated April 2026)).",
     "pts": 2
    },
    {
@@ -6641,7 +6641,7 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "Lower urinary tract symptoms, erectile dysfunction or visible haematuria — consider PSA and DRE (NICE NG12, updated April 2026)",
+     "Lower urinary tract symptoms, erectile dysfunction or visible haematuria — consider PSA and DRE (NICE NG12 (updated April 2026))",
      "Bone pain, back pain, weight loss or fatigue — possible advanced disease",
      "Family history of prostate cancer in a first-degree relative, or breast or ovarian cancer suggesting a BRCA variant"
     ],
@@ -6664,7 +6664,7 @@
     "sharedPlan": [
      "Balanced discussion of benefits and harms; his decision respected either way",
      "If testing: no ejaculation or vigorous exercise for 48 hours, defer 6 weeks after a UTI",
-     "Raised result for age: repeat and refer (NICE NG12, updated April 2026); MRI before biopsy (NICE NG131)"
+     "Raised result for age: repeat and refer (NICE NG12 (updated April 2026)); MRI before biopsy (NICE NG131)"
     ],
     "safetyNet": [
      "GP discusses the result personally and agrees when to consider repeating it",
@@ -6676,7 +6676,7 @@
    {
     "ic": "🗺️",
     "t": "High PSA",
-    "s": "Visual algorithm · NICE NG12 thresholds",
+    "s": "Visual algorithm · NICE NG12 (updated April 2026) thresholds",
     "href": "algorithms/high-psa.html"
    },
    {
@@ -7725,7 +7725,7 @@
    "summary": "A hard, painless lump in the body of the testis in a young man is testicular cancer until examination and ultrasound say otherwise. Painlessness is the worrying feature, not the comforting one.",
    "points": [
     {
-     "h": "NG12 testicular criteria",
+     "h": "NICE NG12 (updated April 2026) testicular criteria",
      "t": "NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for testicular cancer in men with a non-painful enlargement or change in shape or texture of the testis. Consider a direct-access ultrasound scan for unexplained or persistent testicular symptoms."
     },
     {
@@ -7875,7 +7875,7 @@
     "who": "dr",
     "text": "I think it needs ruling out properly, and fast. I need to examine you in person — I can see you here in the next day or two, with a chaperone if you’d like. Then there’s a national urgent pathway for exactly this: a scan of the testicle and a specialist appointment, usually within two weeks.",
     "dom": "tasks",
-    "why": "Arranges face-to-face examination and the NG12 suspected cancer pathway"
+    "why": "Arranges face-to-face examination and the NICE NG12 (updated April 2026) suspected cancer pathway"
    },
    {
     "who": "pt",
@@ -8036,7 +8036,7 @@
     {
      "t": "6–10",
      "h": "Explain and plan",
-     "d": "Painless and hard is the worrying feature. In-person examination this week, urgent NG12 scan and referral sent today. Cure rates, the other testis, sperm storage, prosthesis."
+     "d": "Painless and hard is the worrying feature. In-person examination this week, urgent NICE NG12 (updated April 2026) scan and referral sent today. Cure rates, the other testis, sperm storage, prosthesis."
     },
     {
      "t": "10–12",
@@ -8046,7 +8046,7 @@
    ],
    "wordPics": {
     "fail": "Accepts “it doesn’t hurt so it’s nothing” and offers review if it grows; relies on a video impression; never asks about the orchidopexy; misses the fear beneath the bravado; no referral, or a referral with no explanation so he may not attend.",
-    "pass": "Recognises a painless hard intratesticular lump as suspicious; arranges examination and an urgent NG12 pathway with ultrasound; notes the undescended-testis history; acknowledges he is worried; gives a basic safety-net.",
+    "pass": "Recognises a painless hard intratesticular lump as suspicious; arranges examination and an urgent NICE NG12 (updated April 2026) pathway with ultrasound; notes the undescended-testis history; acknowledges he is worried; gives a basic safety-net.",
     "exc": "All of the above, plus: explicitly reframes painlessness; draws out the specific fear of losing a testicle and fertility and answers it with accurate facts (cure rates, the other testis, sperm storage, prosthesis); involves the girlfriend on his terms; owns the referral and result; teach-back confirms he will attend."
    },
    "avoid": [
@@ -8095,7 +8095,7 @@
     },
     {
      "h": "Referral ownership",
-     "t": "Document the NG12 criterion, send the referral the same day, and have a system to check he was seen and the scan was reported."
+     "t": "Document the NICE NG12 (updated April 2026) criterion, send the referral the same day, and have a system to check he was seen and the scan was reported."
     }
    ],
    "community": [
@@ -8130,7 +8130,7 @@
     "psychosocial": "Invite his girlfriend if he wants; give reliable written information; acknowledge work and income worries if treatment is needed.",
     "sharedPlan": [
      "Face-to-face examination this week with a chaperone offered",
-     "Same-day NICE NG12 suspected cancer referral and direct-access testicular ultrasound",
+     "Same-day NICE NG12 (updated April 2026) suspected cancer referral and direct-access testicular ultrasound",
      "Explain cure rates, preserved function of the other testis, sperm storage before treatment (NICE NG257) and prosthesis"
     ],
     "safetyNet": [
@@ -8143,7 +8143,7 @@
    {
     "ic": "🗺️",
     "t": "Testicular lump",
-    "s": "Visual algorithm · NICE NG12",
+    "s": "Visual algorithm · NICE NG12 (updated April 2026)",
     "href": "algorithms/testicular-lump.html"
    },
    {

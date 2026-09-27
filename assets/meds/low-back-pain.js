@@ -43,7 +43,7 @@ MedChooser.register('low-back-pain', {
   flags: (f) => {
     const out = [];
     if (f.cauda) out.push({ tone:'red', text:'Cauda equina syndrome — EMERGENCY same-day spinal referral + urgent MRI. Do not manage as simple back pain.' });
-    if (f.myeloma) out.push({ tone:'red', text:'NICE NG12 — ?myeloma: FBC, ESR/plasma viscosity, calcium, renal + serum protein electrophoresis / Bence-Jones protein (urine). Very urgent if hypercalcaemia/renal failure.' });
+    if (f.myeloma) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — ?myeloma: FBC, ESR/plasma viscosity, calcium, renal + serum protein electrophoresis / Bence-Jones protein (urine). Very urgent if hypercalcaemia/renal failure.' });
     if (f.cancer_hx) out.push({ tone:'red', text:'Cancer history with new back pain — consider spinal metastasis / MSCC; urgent imaging + MSCC pathway if neurology' });
     if (f.infection) out.push({ tone:'amber', text:'?Spinal infection (discitis/abscess) — inflammatory markers, blood cultures, urgent imaging/referral' });
     if (f.fracture) out.push({ tone:'amber', text:'?Vertebral fragility fracture — imaging; assess osteoporosis (FRAX, DXA)' });
@@ -194,7 +194,7 @@ MedChooser.register('low-back-pain', {
   sources: [
     { label:'NICE NG59 — Low back pain and sciatica in over 16s', url:'https://www.nice.org.uk/guidance/ng59' },
     { label:'NICE CG173 — Neuropathic pain in adults (excludes sciatica)', url:'https://www.nice.org.uk/guidance/cg173' },
-    { label:'NICE NG12 — Suspected cancer: recognition and referral (updated April 2026)', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) — Suspected cancer: recognition and referral (updated April 2026)', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'BNF — Analgesics', url:'https://bnf.nice.org.uk/treatment-summaries/analgesics/' }
   ],
 });

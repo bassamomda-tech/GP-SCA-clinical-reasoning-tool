@@ -407,7 +407,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     { step:'Spread', detail:'Nodal, metastatic, paraneoplastic effects' },
   ],
   implications:[
-    { clue:'NG12 2WW: haemoptysis, or CXR suggestive', why:'Late presentation means survival hinges on catching red flags early.' },
+    { clue:'NICE NG12 (updated April 2026) 2WW: haemoptysis at 40 or over, or CXR suggestive', why:'Late presentation means survival hinges on catching red flags early.' },
     { clue:'Hoarseness or SVC obstruction = local invasion', why:'Recurrent laryngeal nerve or SVC compression by tumour.' },
     { clue:'Smoking cessation + screening reduce burden', why:'Removes the driver and detects disease earlier.' },
   ],

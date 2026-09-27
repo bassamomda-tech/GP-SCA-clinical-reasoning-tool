@@ -750,7 +750,7 @@ body.mode-clinic .sca-only{display:none!important}
   <div class="tb-inner">
     <div class="tb-brand">
       <div class="tb-icon">BR</div>
-      <div><div class="tb-title">Breathlessness · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG115 (COPD) / NICE NG106 (HF) / NICE NG245 (asthma, joint BTS/SIGN 2024)</div></div>
+      <div><div class="tb-title">Breathlessness · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG115 (COPD) / NICE NG106 (HF) / NICE NG245 (asthma, 2024, joint with BTS and SIGN)</div></div>
     </div>
     <div class="mode-group">
       <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
@@ -773,7 +773,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="ns-item"><span class="ns-val">BNP &lt;100</span><span class="ns-lbl">pg/mL → HF unlikely (in untreated)</span></div>
     <div class="ns-item"><span class="ns-val">MMRC 0–4</span><span class="ns-lbl">Dyspnoea scale — triggers referral at ≥3</span></div>
     <div class="ns-item"><span class="ns-val">Wells ≥5</span><span class="ns-lbl">PE score — high probability, investigate</span></div>
-    <div class="ns-item"><span class="ns-val">15%</span><span class="ns-lbl">FEV₁ improvement after BD → asthma</span></div>
+    <div class="ns-item"><span class="ns-val">≥12% + ≥200 mL</span><span class="ns-lbl">FEV₁ improvement after BD → supports asthma (NICE NG245)</span></div>
     <div class="ns-item"><span class="ns-val">2 weeks</span><span class="ns-lbl">Urgent referral — haemoptysis + risk factors</span></div>
   </div>
 </div>
@@ -863,12 +863,12 @@ body.mode-clinic .sca-only{display:none!important}
           </tr>
           <tr>
             <td class="q">Weight change?<em>"Have you noticed your weight changing — either gaining weight or losing weight — in the last few months?"</em></td>
-            <td class="why">Unexplained weight loss of over 5% in 3 months in a heavy smoker is a red-flag symptom for lung malignancy until proven otherwise — requires urgent 2-week-wait referral. Paradoxically, cachexia in severe COPD also causes weight loss. Weight gain suggests fluid retention (HF).<span class="why-sub">Weight loss + smoking history + breathlessness change = urgent 2-week-wait referral even if the breathlessness seems explicable by COPD.</span></td>
+            <td class="why">Unexplained weight loss of over 5% in 3 months in a heavy smoker is a red-flag symptom for lung malignancy until proven otherwise — requires an urgent chest X-ray within 2 weeks (NICE NG12, updated April 2026) and a suspected cancer pathway referral if the X-ray suggests cancer. Paradoxically, cachexia in severe COPD also causes weight loss. Weight gain suggests fluid retention (HF).<span class="why-sub">Weight loss or breathlessness change in an ever-smoker aged &ge;40 = urgent chest X-ray within 2 weeks (NICE NG12) even if the breathlessness seems explicable by COPD.</span></td>
             <td><span class="chg chg-ref">2ww cancer</span><span class="chg chg-ddx">DDx</span></td>
           </tr>
           <tr>
             <td class="q">Smoking history — pack-years<em>"How long did you smoke for and how many cigarettes a day? [pack-years = (cigs/day ÷ 20) × years smoked]"</em></td>
-            <td class="why">Pack-years is the most important risk stratification tool for COPD, lung cancer, and cardiovascular disease in primary care. Over 20 pack-years + symptoms = spirometry mandatory. Over 30 pack-years + haemoptysis or persistent cough change = 2-week-wait. Quantifying pack-years precisely also validates the importance of smoking cessation as the most impactful single intervention.<span class="why-sub">37.5 pack-years (25/day × 30 years) puts this patient in the high-risk COPD category and requires lung cancer active surveillance consideration.</span></td>
+            <td class="why">Pack-years is the most important risk stratification tool for COPD, lung cancer, and cardiovascular disease in primary care. Over 20 pack-years + symptoms = spirometry mandatory. Aged &ge;40 with unexplained haemoptysis = suspected cancer pathway referral; aged &ge;40 ever-smoker with cough, breathlessness, fatigue, chest pain, weight loss or appetite loss = urgent chest X-ray within 2 weeks (NICE NG12, updated April 2026). Quantifying pack-years precisely also validates the importance of smoking cessation as the most impactful single intervention.<span class="why-sub">37.5 pack-years (25/day × 30 years) puts this patient in the high-risk COPD category and requires lung cancer active surveillance consideration.</span></td>
             <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">2ww + spirometry</span><span class="chg chg-rx">Cessation</span></td>
           </tr>
           <tr>
@@ -892,7 +892,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td class="rf-flag">Frothy pink sputum</td><td class="rf-why">Indicates acute pulmonary oedema — plasma proteins leaking into the alveoli due to high pulmonary venous pressure. Life-threatening HF emergency: furosemide IV, GTN, oxygen, and 999 immediately.</td><td><span class="rf-action rfa-999">999 — acute HF emergency</span></td></tr>
           <tr><td class="rf-flag">Stridor at rest</td><td class="rf-why">Upper airway obstruction — anaphylaxis, epiglottitis, foreign body, or malignant upper airway obstruction. Inspiratory stridor = life-threatening; secure airway urgently or call 999.</td><td><span class="rf-action rfa-999">999 — potential airway emergency</span></td></tr>
           <tr><td class="rf-flag">Rapidly progressive breathlessness over days in a smoker with constitutional symptoms</td><td class="rf-why">Malignant superior vena cava (SVC) obstruction, malignant pleural effusion, or rapidly progressive malignancy-related lung pathology. Requires urgent CXR and same-day respiratory assessment.</td><td><span class="rf-action rfa-same">Same-day respiratory assessment</span></td></tr>
-          <tr><td class="rf-flag">Unexplained weight loss over 5% + persistent breathlessness change + smoking</td><td class="rf-why">Constitutional symptoms in a heavy smoker are malignancy until proven otherwise. Even if COPD is already established, a new cancer can develop on that background. 2-week-wait pathway does not wait for biopsy confirmation.</td><td><span class="rf-action rfa-2">2-week-wait — urgent CT chest</span></td></tr>
+          <tr><td class="rf-flag">Unexplained weight loss over 5% + persistent breathlessness change + smoking</td><td class="rf-why">Constitutional symptoms in a heavy smoker are malignancy until proven otherwise. Even if COPD is already established, a new cancer can develop on that background. NICE NG12 (updated April 2026): urgent chest X-ray within 2 weeks; suspected cancer pathway referral if it suggests cancer.</td><td><span class="rf-action rfa-2">Urgent CXR within 2 weeks (NICE NG12)</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -1007,8 +1007,8 @@ body.mode-clinic .sca-only{display:none!important}
           <li class="tc-item"><strong>Suspected massive PE with haemodynamic instability</strong><em>Systolic BP under 90 mmHg + acute breathlessness → 999; thrombolysis decision in hospital</em></li>
           <li class="tc-item"><strong>Acute pulmonary oedema (pink frothy sputum)</strong><em>Furosemide 40–80 mg IV if available; GTN spray; 999; sit upright</em></li>
           <li class="tc-item"><strong>Tension pneumothorax</strong><em>Tracheal deviation, absent breath sounds, haemodynamic compromise → 999 immediately</em></li>
-          <li class="tc-item"><strong>Anaphylaxis with stridor or angioedema</strong><em>Adrenaline 0.5 mg IM immediately; 999; antihistamine + hydrocortisone IV</em></li>
-          <li class="tc-item"><strong>Acute severe asthma (PEFR under 33% predicted)</strong><em>Oxygen; nebulised salbutamol; IV/IM hydrocortisone; 999 if no response in 15 minutes</em></li>
+          <li class="tc-item"><strong>Anaphylaxis with stridor or angioedema</strong><em>Adrenaline 0.5 mg IM immediately (repeat after 5 min if no improvement); 999; routine hydrocortisone no longer recommended (RCUK 2021)</em></li>
+          <li class="tc-item"><strong>Life-threatening asthma (PEF under 33% best or predicted)</strong><em>Oxygen; nebulised salbutamol; prednisolone 40–50 mg orally (or IV hydrocortisone 100 mg); 999</em></li>
         </ul>
       </div>
       <div class="tc tc-u">
@@ -1095,11 +1095,11 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="rt">
         <thead><tr><th style="width:20%">Investigation</th><th style="width:32%">Clinical question it answers</th><th>Key result + action</th></tr></thead>
         <tbody>
-          <tr><td class="q">Spirometry (post-bronchodilator)</td><td class="why">The only test that can diagnose COPD — FEV₁/FVC under 0.7 post-bronchodilator confirms fixed airflow obstruction. Also distinguishes COPD from asthma (reversibility: over 15% and 200 mL improvement post-BD = asthma; FEV₁/FVC normalises in asthma). GOLD staging determines treatment and monitoring intensity.</td><td class="why">FEV₁/FVC under 0.7 + FEV₁ 50–79% = GOLD stage 2 COPD → SABA + LAMA + pulmonary rehab. FEV₁/FVC under 0.7 + FEV₁ under 30% = GOLD 4 → urgent respiratory referral</td></tr>
+          <tr><td class="q">Spirometry (post-bronchodilator)</td><td class="why">The only test that can diagnose COPD — FEV₁/FVC under 0.7 post-bronchodilator confirms fixed airflow obstruction. Also distinguishes COPD from asthma (bronchodilator reversibility: FEV₁ improvement of ≥12% and ≥200 mL supports asthma — NICE NG245; FEV₁/FVC normalises in asthma). GOLD staging determines treatment and monitoring intensity.</td><td class="why">FEV₁/FVC under 0.7 + FEV₁ 50–79% = GOLD stage 2 COPD → SABA + LAMA + pulmonary rehab. FEV₁/FVC under 0.7 + FEV₁ under 30% = GOLD 4 → urgent respiratory referral</td></tr>
           <tr><td class="q">Chest X-ray (CXR)</td><td class="why">Essential first-line imaging for breathlessness — hyperinflation + flattened diaphragms (COPD), cardiomegaly + pulmonary oedema (HF), pleural effusion, consolidation (pneumonia), mass lesion (malignancy), pleural plaques (asbestos exposure). A normal CXR significantly reduces the probability of many causes but does not exclude early malignancy.</td><td class="why">Mass lesion or pleural effusion in a smoker → 2-week-wait CT chest + urgent respiratory referral. Cardiomegaly + bilateral haziness → HF confirmed; BNP; diuretic. Normal CXR + wheeze → spirometry; PEFR diary</td></tr>
           <tr><td class="q">BNP / NT-proBNP</td><td class="why">The most sensitive blood test for heart failure — NT-proBNP under 400 ng/L makes HF less likely in an untreated patient; 400&ndash;2,000 ng/L &rarr; specialist assessment and echo within 6 weeks; over 2,000 ng/L &rarr; within 2 weeks (NICE NG106). More sensitive than CXR for early HF and is the first-line test for suspected HF before echocardiogram in NICE NG106. Affected by renal function, atrial fibrillation (elevates BNP independent of HF), and obesity (suppresses BNP).</td><td class="why">NT-proBNP over 2000 pg/mL → urgent (within 2 weeks) echocardiogram + cardiology. Over 400 pg/mL → echocardiogram within 6 weeks. Under 100 pg/mL (untreated) → HF unlikely; look for other cause</td></tr>
           <tr><td class="q">FBC</td><td class="why">Anaemia is a significant and under-recognised contributor to breathlessness — haemoglobin under 100 g/L can cause exertional dyspnoea as the presenting or principal symptom. Also identifies polycythaemia (secondary to COPD), neutrophilia (infection), and eosinophilia (asthma, eosinophilic pneumonia).</td><td class="why">Hb under 100 g/L → investigate and treat underlying cause; reassess breathlessness after correction. Eosinophilia + wheeze → consider eosinophilic asthma; check serum IgE</td></tr>
-          <tr><td class="q">Wells PE Score calculation</td><td class="why">The Wells clinical decision rule for PE stratifies probability into low (&lt;2), intermediate (2–6), and high (&gt;6). Low probability → D-dimer (high sensitivity, rules out if negative). High probability → CTPA directly without D-dimer (D-dimer will be positive non-specifically at high Wells, so the negative predictive value is lost).</td><td class="why">Wells over 6 → CTPA without D-dimer; start therapeutic LMWH immediately pending scan if no contraindication. Wells 2–6 → D-dimer; if positive → CTPA. Wells under 2 + D-dimer negative → PE excluded clinically</td></tr>
+          <tr><td class="q">Wells PE Score calculation</td><td class="why">NICE NG158 uses the two-level Wells score: PE likely (&gt;4) or PE unlikely (≤4). PE unlikely → D-dimer (high sensitivity, rules out if negative). PE likely → CTPA directly without D-dimer (D-dimer will be positive non-specifically at high Wells, so the negative predictive value is lost).</td><td class="why">Wells &gt;4 → immediate CTPA without D-dimer; interim therapeutic anticoagulation if CTPA delayed and no contraindication (NICE NG158). Wells ≤4 → D-dimer; if positive → CTPA. Wells ≤4 + D-dimer negative → PE unlikely; consider alternative diagnosis</td></tr>
           <tr><td class="q">D-dimer (only if Wells low to intermediate)</td><td class="why">D-dimer is a fibrin degradation product — highly sensitive but poorly specific for PE (positive in infection, inflammation, malignancy, pregnancy). Only useful when Wells score is low to intermediate — its negative predictive value is over 98% in low-probability patients, making it an excellent rule-out test in that context only.</td><td class="why">D-dimer negative + low Wells → PE excluded. D-dimer positive + any Wells → CTPA required. Never use D-dimer in high Wells-score patients — it will be positive and adds no information, delays CTPA</td></tr>
           <tr><td class="q">Echocardiogram</td><td class="why">Confirms heart failure and quantifies severity — LVEF, wall motion abnormalities, valvular disease, pulmonary pressures. Mandatory for all patients with new HF diagnosis (NICE NG106); required before starting HFrEF-specific treatment (beta-blocker, spironolactone). Should be done within 2 weeks if NT-proBNP over 2000 pg/mL.</td><td class="why">LVEF under 40% = HFrEF → ACEi + beta-blocker + MRA; ICD assessment. LVEF over 50% = HFpEF → treat comorbidities; diuretics for symptoms; cardiology</td></tr>
           <tr><td class="q">U&amp;E + LFTs</td><td class="why">Before starting ACEi/ARB for HF: baseline renal function mandatory (can precipitate acute kidney injury). Before loop diuretics: electrolyte baseline. Elevated LFTs in breathlessness context may suggest right heart failure causing hepatic congestion.</td><td class="why">Creatinine over 150 µmol/L → renal impairment; adjust ACEi dose; monitor closely. Elevated bilirubin + ALP → right heart failure hepatic congestion; echo urgently</td></tr>
@@ -1133,14 +1133,14 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Diagnosable in Primary Care</div>
         <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP can diagnose</span>
-        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>COPD (post-bronchodilator FEV₁/FVC &lt;0.7)</h4><p>Progressive exertional dyspnoea + chronic productive cough in a smoker. Confirmed on spirometry — post-bronchodilator FEV₁/FVC under 0.7. GOLD staging guides treatment intensity. Reversibility under 15% distinguishes from asthma. Treatment: smoking cessation, SABA, LAMA, pulmonary rehab.</p></div>
-        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Asthma</h4><p>Episodic breathlessness + wheeze with diurnal variation (worse at night and morning) and objective confirmation per the BTS/SIGN joint guideline (NICE NG245, 2024): FeNO (or blood eosinophils), then bronchodilator reversibility (FEV₁ ≥12% and ≥200 mL), then PEF variability over 20% on a 2-week diary. Triggers: allergens, cold air, exercise, occupational. Treatment (age ≥12): as-needed low-dose ICS/formoterol (AIR), stepping to MART — NG245 advises never SABA without ICS.</p></div>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>COPD (post-bronchodilator FEV₁/FVC &lt;0.7)</h4><p>Progressive exertional dyspnoea + chronic productive cough in a smoker. Confirmed on spirometry — post-bronchodilator FEV₁/FVC under 0.7. GOLD staging guides treatment intensity. A large bronchodilator response (FEV₁ &gt;400 mL, NICE NG115) suggests asthma rather than COPD. Treatment: smoking cessation, SABA, LAMA, pulmonary rehab.</p></div>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Asthma</h4><p>Episodic breathlessness + wheeze with diurnal variation (worse at night and morning) and objective confirmation per NICE NG245 (2024, joint with BTS and SIGN): FeNO (or blood eosinophils), then bronchodilator reversibility (FEV₁ ≥12% and ≥200 mL), then PEF variability over 20% on a 2-week diary. Triggers: allergens, cold air, exercise, occupational. Treatment (age ≥12): as-needed low-dose ICS/formoterol (AIR), stepping to MART — NG245 advises never SABA without ICS.</p></div>
         <div class="ddx-card ddx-a"><h4>Heart Failure (with GP initiation)</h4><p>NT-proBNP over 400 + echo confirming LVEF under 40% (HFrEF). GP can initiate ACEi + beta-blocker + loop diuretic while echocardiogram is pending if clinical diagnosis is clear. NICE NG106 recommends echocardiogram within 2 weeks for BNP over 2000 pg/mL.</p></div>
       </div>
       <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Suspected — Refer</div>
         <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Refer for confirmation</span>
-        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Lung Cancer</h4><p>Haemoptysis, unexplained weight loss, persistent cough change, or new breathlessness in a smoker over 40 = 2-week-wait referral. Even in the presence of COPD, a new cancer can coexist. CT chest with contrast is the diagnostic imaging of choice — not plain CXR (normal CXR does not exclude early lung cancer).</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Lung Cancer</h4><p>NICE NG12 (updated April 2026): aged ≥40 with unexplained haemoptysis, or chest X-ray suggesting lung cancer = suspected cancer pathway referral; weight loss, cough change or new breathlessness in an ever-smoker aged ≥40 = urgent chest X-ray within 2 weeks. Even in the presence of COPD, a new cancer can coexist. A normal CXR does not exclude early lung cancer — consider urgent referral or CT if suspicion persists.</p></div>
         <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Mesothelioma</h4><p>Former plumber with asbestos exposure + breathlessness + pleural plaques on CXR = mesothelioma until proven otherwise. CT chest + respiratory referral urgently. Latency 20–50 years makes this presentation age-appropriate. Compensation via IIDB/AFCS may be applicable.</p></div>
         <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Pulmonary Fibrosis (IPF)</h4><p>Progressive exertional dyspnoea + fine bibasal Velcro crackles + clubbing in an older adult. HRCT chest is diagnostic. Antifibrotic agents (nintedanib, pirfenidone) under specialist care. Refer to respiratory specialist urgently — early treatment slows progression.</p></div>
         <div class="ddx-card ddx-b"><h4>Severe / Very Severe COPD (GOLD 3–4)</h4><p>FEV₁ under 50% predicted requires respiratory specialist input for optimised triple inhaler therapy, pulmonary rehab referral, home nebuliser assessment, and long-term oxygen therapy (LTOT) assessment if SpO₂ under 92% on air.</p></div>
@@ -1149,7 +1149,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency — Act Now</div>
         <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">Diagnose &amp; act</span>
         <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Pulmonary Embolism (massive or submassive)</h4><p>Haemodynamic instability + acute breathlessness + Wells high probability = massive PE → systemic thrombolysis consideration in hospital. Submassive PE (stable with right heart strain on echo) → CTPA + anticoagulation + specialist input. 999 if ongoing haemodynamic compromise.</p></div>
-        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Acute Severe / Life-Threatening Asthma</h4><p>PEFR under 33% predicted, SpO₂ under 92%, silent chest, exhaustion, or bradycardia = life-threatening asthma. Oxygen 15 L/min; nebulised salbutamol 5 mg + ipratropium 500 mcg; IV/IM hydrocortisone; 999 if not responding in 15 minutes.</p></div>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Acute Severe / Life-Threatening Asthma</h4><p>PEFR under 33% predicted, SpO₂ under 92%, silent chest, exhaustion, or bradycardia = life-threatening asthma. Oxygen 15 L/min; nebulised salbutamol 5 mg + ipratropium 500 mcg; prednisolone 40–50 mg orally (or IV hydrocortisone 100 mg); 999 if not responding in 15 minutes.</p></div>
         <div class="ddx-card ddx-c"><h4>Acute Pulmonary Oedema (HF decompensation)</h4><p>Frothy pink sputum + severe breathlessness + SpO₂ dropping = flash pulmonary oedema. Sit upright; GTN spray (if systolic over 90); furosemide 40–80 mg IV if available; 999. BiPAP in hospital. Mortality up to 10% if not treated immediately.</p></div>
       </div>
     </div>
@@ -1188,7 +1188,7 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="ref-table">
         <thead><tr><th>Condition</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
         <tbody>
-          <tr><td style="font-weight:600">Suspected lung cancer (haemoptysis, weight loss, or new mass on CXR)</td><td><span class="ref-urg rurg-2">2-week wait CT chest</span></td><td style="font-size:12px">CXR same-day; submit 2-week-wait referral via local pathway; smoking cessation; counsel patient on referral reason without creating false certainty about diagnosis; arrange follow-up to discuss results</td><td style="font-size:12px;color:var(--r)">Do not tell the patient they have cancer until CT confirms; do not delay referral waiting for further GP investigations; do not defer because COPD "explains" the symptoms</td></tr>
+          <tr><td style="font-weight:600">Suspected lung cancer (aged ≥40 with unexplained haemoptysis, or CXR suggesting cancer — NICE NG12, updated April 2026)</td><td><span class="ref-urg rurg-2">Suspected cancer pathway (2WW)</span></td><td style="font-size:12px">CXR same-day; submit 2-week-wait referral via local pathway; smoking cessation; counsel patient on referral reason without creating false certainty about diagnosis; arrange follow-up to discuss results</td><td style="font-size:12px;color:var(--r)">Do not tell the patient they have cancer until CT confirms; do not delay referral waiting for further GP investigations; do not defer because COPD "explains" the symptoms</td></tr>
           <tr><td style="font-weight:600">New heart failure (NT-proBNP over 2000 pg/mL)</td><td><span class="ref-urg rurg-2">Echo within 2 weeks (NICE NG106)</span></td><td style="font-size:12px">BNP; CXR; U&amp;E; loop diuretic for symptom relief (furosemide 40 mg OD) while awaiting echo; BP management; weigh patient (baseline for monitoring); advise daily weights; review medications for HF triggers (NSAIDs, CCBs exacerbating fluid retention)</td><td style="font-size:12px;color:var(--r)">Do not start ACEi without baseline U&amp;E; do not start spironolactone without specialist echo-confirmed LVEF; do not give NSAIDs</td></tr>
           <tr><td style="font-weight:600">Suspected mesothelioma (asbestos-exposed plumber + pleural plaques)</td><td><span class="ref-urg rurg-2">Urgent respiratory — 2 weeks</span></td><td style="font-size:12px">Detailed occupational history documentation; CXR; CT chest without delay; inform patient sensitively; mention Industrial Injuries Disablement Benefit (IIDB) and Diffuse Mesothelioma Payment Scheme; provide respiratory specialist referral</td><td style="font-size:12px;color:var(--r)">Do not attribute breathlessness solely to COPD in an asbestos-exposed plumber without excluding pleural pathology on imaging; do not delay CT chest</td></tr>
           <tr><td style="font-weight:600">COPD GOLD stage 2 (moderate)</td><td><span class="ref-urg rurg-r">Routine respiratory + pulmonary rehab</span></td><td style="font-size:12px">Confirm spirometry; prescribe SABA (salbutamol 100 mcg PRN) and LAMA (tiotropium 18 mcg OD); smoking cessation referral; influenza + pneumococcal + COVID vaccines; written COPD self-management plan and rescue pack prescription</td><td style="font-size:12px;color:var(--r)">Do not use ICS alone as monotherapy in COPD (no evidence for bronchodilator-alone ICS vs LABA/LAMA); do not diagnose COPD without post-bronchodilator spirometry</td></tr>
@@ -1577,7 +1577,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="num-card"><div class="num-val">BNP &gt;400</div><div class="num-lbl">pg/mL → HF likely; echo within 6 weeks</div></div>
       <div class="num-card"><div class="num-val">BNP &gt;2000</div><div class="num-lbl">pg/mL → echo within 2 weeks (NICE NG106)</div></div>
       <div class="num-card num-highlight"><div class="num-val">Wells ≥5</div><div class="num-lbl">PE → CTPA directly (no D-dimer)</div></div>
-      <div class="num-card"><div class="num-val">15% + 200mL</div><div class="num-lbl">FEV₁ reversibility → asthma (not COPD)</div></div>
+      <div class="num-card"><div class="num-val">12% + 200mL</div><div class="num-lbl">FEV₁ reversibility supporting asthma (NICE NG245)</div></div>
     </div>
     <div class="sum-sub-hdr">🚦 2 — Triage Algorithm</div>
     <div class="algo-wrap" style="margin-bottom:1rem">
@@ -1585,7 +1585,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="algo-arrow">↓</div>
       <div class="algo-row">
         <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Emergency → 999</div><ul class="algo-list"><li>SpO₂ under 88% at rest</li><li>Massive PE with haemodynamic instability</li><li>Acute pulmonary oedema (pink frothy sputum)</li><li>Acute life-threatening asthma (PEFR &lt;33%)</li><li>Stridor or airway obstruction</li></ul><div class="algo-action red-action">999 immediately — oxygen and support</div></div>
-        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Urgent — same day to 2 weeks</div><ul class="algo-list"><li>Haemoptysis in smoker over 40 → 2ww CT chest</li><li>SpO₂ 88–94% (stable) → same-day secondary care</li><li>Wells ≥5 for PE → same-day CTPA</li><li>New significant effusion on CXR</li><li>Decompensated HF — volume overloaded</li></ul><div class="algo-action amber-action">Appropriate specialist or same-day referral</div></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Urgent — same day to 2 weeks</div><ul class="algo-list"><li>Unexplained haemoptysis aged ≥40 → suspected cancer pathway (NICE NG12)</li><li>SpO₂ 88–94% (stable) → same-day secondary care</li><li>Wells ≥5 for PE → same-day CTPA</li><li>New significant effusion on CXR</li><li>Decompensated HF — volume overloaded</li></ul><div class="algo-action amber-action">Appropriate specialist or same-day referral</div></div>
         <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Routine — GP management</div><ul class="algo-list"><li>Stable COPD reassessment (spirometry)</li><li>New asthma (PEFR diary + trial ICS+SABA)</li><li>Well-controlled HF — monitoring</li><li>Anxiety-related breathlessness after exclusion</li></ul><div class="algo-action green-action">Spirometry, CXR, BNP, FBC, U&amp;E as first-line</div></div>
       </div>
     </div>
@@ -1634,7 +1634,7 @@ body.mode-clinic .sca-only{display:none!important}
 </div>
 
 <div class="page-footer">
-  <p><strong>Breathlessness · GP Clinical Reasoning Framework v2</strong> · NICE NG115 COPD (2018, updated 2019) · NICE NG106 Chronic heart failure (2018, updated September 2025) · NICE NG245 Asthma (joint with BTS/SIGN, 2024) · NICE NG158 Venous thromboembolic diseases (2020, updated 2023) · UPLIFT Trial (Tashkin et al., NEJM 2008) · DVLA Assessing Fitness to Drive (2024)</p>
+  <p><strong>Breathlessness · GP Clinical Reasoning Framework v2</strong> · NICE NG115 COPD (2018, updated 2019) · NICE NG106 Chronic heart failure (2018, updated September 2025) · NICE NG245 Asthma (2024, joint with BTS and SIGN) · NICE NG158 Venous thromboembolic diseases (2020, updated 2023) · UPLIFT Trial (Tashkin et al., NEJM 2008) · DVLA Assessing Fitness to Drive (2024)</p>
   <p style="margin-top:4px">Teaching clinicians why each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence · DVLA standards verified at GOV.UK at the point of use</p>
 </div>
 </div>
@@ -1723,6 +1723,9 @@ function printSummary(){
 }
 
 function calcDrug(){
+  // G10: this chooser logic was copied from cases/hypertension.html. On any other topic it must not
+  // run (these pages reuse the ds-* ids with their own labels), so show the neutral summary instead.
+  if(!/\/hypertension(\.html)?$/i.test(location.pathname)){ if(typeof window.calcDrugGeneric==='function') return window.calcDrugGeneric(); return; }
   const dm=document.getElementById('ds-dm').checked,
     ckd=document.getElementById('ds-ckd').checked,
     cvd=document.getElementById('ds-cvd').checked,
@@ -1745,9 +1748,9 @@ function calcDrug(){
   }
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
-    main='thiazide';mainLabel='Indapamide SR 1.5mg';
-    why='HF with fluid overload: thiazide-like diuretic. Add ACEi + bisoprolol + spiro per NICE NG106 HF guideline.';
-    alt='acei';altLabel='+ Ramipril (essential in HFrEF)';altWhy='ACEi + beta-blocker + spiro = cornerstone of HFrEF management';
+    main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
+    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -1757,22 +1760,22 @@ function calcDrug(){
     why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
     alt='';altLabel='';altWhy='';
   } else if(dm||ckd||cvd){
-    main='acei';mainLabel='Ramipril (ACEi)';
-    why='DM / CKD / CVD: ACEi first-line for cardio-renal protection at ANY age and ANY ethnicity (NICE NG136).';
-    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';altWhy='Equal renoprotection. Never combine ACEi + ARB simultaneously.';
+    main=afro?'arb':'acei';mainLabel=afro?'Candesartan / losartan (ARB)':'Ramipril (ACEi)';
+    why=afro?'Type 2 diabetes (or CKD with albuminuria) in a person of Black African or African–Caribbean family origin: ARB in preference to an ACEi (NICE NG136; CKD per NICE NG203).':'Type 2 diabetes: ACEi or ARB first-line at any age (NICE NG136). CKD: ACEi/ARB if ACR >30 mg/mmol, or >3 mg/mmol with diabetes (NICE NG203). Established CVD alone: follow the NG136 age/ethnicity steps.';
+    alt=afro?'ccb':'arb';altLabel=afro?'+ Amlodipine (CCB) at Step 2':'Candesartan (ARB) — if ACEi cough develops';altWhy='ACEi and ARB give equal renoprotection. Never combine ACEi + ARB simultaneously.';
   } else if(afro){
     main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Afro-Caribbean (no DM): CCB more effective in low-renin hypertension. At Step 2: ARB preferred over ACEi.';
+    why='Black African or African–Caribbean family origin (no type 2 diabetes): CCB first-line at any age (NICE NG136). At Step 2 add an ARB in preference to an ACEi, or a thiazide-like diuretic.';
     alt='';altLabel='';altWhy='';
   } else if(age55){
     main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Age ≥55 (no DM, no Afro-Caribbean): CCB preferred over ACEi — greater efficacy in lower-renin patients.';
-    alt=angina?'acei':'arb';
-    altLabel=angina?'+ Ramipril (anti-anginal benefit at Step 2)':'Candesartan (ARB) — if CCB not tolerated';
-    altWhy=angina?'ACEi has additional anti-anginal benefit at Step 2':'ARB is equally effective if CCB causes intolerable oedema';
+    why='Age ≥55 (no type 2 diabetes, not of Black African or African–Caribbean family origin): CCB first-line (NICE NG136).';
+    alt=angina?'acei':'thiazide';
+    altLabel=angina?'+ Ramipril (ACEi) at Step 2':'Indapamide (thiazide-like diuretic) — if a CCB is not suitable';
+    altWhy=angina?'Step 2 per NICE NG136: add an ACEi or ARB (or a thiazide-like diuretic); amlodipine also treats stable angina.':'If a CCB is not suitable (oedema, intolerance, heart failure or high risk of it), offer a thiazide-like diuretic (NICE NG136).';
   } else {
     main='acei';mainLabel='Ramipril (ACEi)';
-    why='Age <55, non-Afro-Caribbean, no DM/CKD/CVD: ACEi is the Step 1 drug of choice (NICE NG136).';
+    why='Age <55, not of Black African or African–Caribbean family origin, no type 2 diabetes/CKD: ACEi (or ARB) is the Step 1 drug of choice (NICE NG136).';
     alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
     altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
   }
@@ -1798,7 +1801,7 @@ function calcDrug(){
     ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
     <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
     ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
-    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es within 1 week of starting ACEi/ARB</div>`;
+    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es 1–2 weeks after starting or up-titrating ACEi/ARB (NICE NG203)</div>`;
 }
 
 function calcScore(){
@@ -1823,6 +1826,7 @@ function calcScore(){
   else if(total < 17){ icon='🟠'; msg='<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check: was ABPM planned and explained? Was QRISK shared as a specific percentage? Was the correct drug chosen for the specific comorbidities? Was the family history fear addressed in the plan? Was a 1-week follow-up named?'; }
   else if(total < 25){ icon='🟢'; msg='<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: ensure lifestyle advice is specific and measurable, QRISK is shared as a number, and the drug choice rationale is explained in plain language tailored to this patient.'; }
   else { icon='🟢'; msg='<strong>Strong pass.</strong> Excellent consultation across all three domains. ICE fully explored including family fear, BP staging with ABPM, correct drug for phenotype and comorbidities, QRISK shared as a number, lifestyle specific and measurable, 1-2-1 rule named, 999 symptoms explicit, closing question asked.'; }
+  if(!/\/hypertension(\.html)?$/i.test(location.pathname)){ msg=(total < 11)?'<strong>Not yet at pass standard.</strong> Focus on the unticked items below: explore ideas, concerns and expectations, test for and rule out serious disease, agree a safe and specific management plan, and name safety-net symptoms explicitly. Review Global Skills — are you finishing data gathering by 6-7 minutes?':(total < 17)?'<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check the unticked items below: was the working diagnosis explained, was the plan shared and tailored to this patient, and was follow-up named?':(total < 25)?'<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: make advice specific and measurable, share risks as numbers where you can, and explain the rationale for the plan in plain language tailored to this patient.':'<strong>Strong pass.</strong> Excellent consultation across all three domains: ICE explored, serious disease addressed, a safe shared plan, explicit safety-netting and follow-up, and a closing question asked.'; }
   document.getElementById('sc-interp-msg').innerHTML = '<div class="interp-icon">'+icon+'</div><div class="interp-text">'+msg+'</div>';
   var missed = [];
   allCbs.forEach(function(cb){ if(!cb.checked){ missed.push(cb.closest('.sc-item').querySelector('.sc-item-text').textContent.trim()); } });
@@ -1848,7 +1852,7 @@ function resetScorecard(){
 
 <script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: September 2026</b> · citations verified against the primary sources listed</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
 <script src="chooser-guard.js?v=1"></script>
 </body>

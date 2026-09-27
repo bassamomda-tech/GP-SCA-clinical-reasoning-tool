@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Night Sweats
-   Shared-id triage + differential. NICE NG12 · NICE.
+   Shared-id triage + differential. NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -24,16 +24,16 @@
   if (window.RGPTriage) RGPTriage.register('night-sweats-triage', {
     title: 'Night sweats — triage',
     subtitle: 'Tick features. Surfaces lymphoma/malignancy, TB and endocrine pathways.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Most night sweats are benign (menopause, anxiety, environment, drugs). If persistent/unexplained, send FBC, film, LDH, ESR/CRP, TFT, HIV, CXR; review.',
     rules: [
       {
         id: 'lymphoma_2ww', tier: 'cancer',
         label: 'B-symptoms — drenching sweats + weight loss / lymphadenopathy',
-        action: 'Urgent FBC, film, LDH; haematology 2WW (NICE NG12).',
+        action: 'Urgent FBC, film, LDH; haematology 2WW (NICE NG12 (updated April 2026)).',
         patientPhrase: '"Night sweats with weight loss and gland swelling need urgent tests to rule out a blood-cell cancer."',
-        source: 'NICE NG12 §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026) §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => (i.drenching && i.weight_loss) || i.lymphadenopathy,
       },
       {
@@ -47,19 +47,19 @@
         id: 'endocrine', tier: 'urgent',
         label: 'Endocrine cause — thyrotoxicosis / phaeo / hypoglycaemia',
         action: 'TFT; if paroxysmal + hypertension → metanephrines; review diabetes treatment.',
-        source: 'NICE',
+        source: 'NICE NG145 · clinical practice',
         when: i => i.thyroid_sx || i.hypoglyc_phaeo,
       },
       {
         id: 'benign', tier: 'routine',
         label: 'Likely benign (menopause / anxiety / drugs / environment)',
         action: 'Address cause; menopause → HRT options; review meds; reassure; safety-net for B-symptoms.',
-        source: 'NICE',
+        source: 'NICE NG23 (menopause) · clinical practice',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
       
     ],
   });
@@ -67,7 +67,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('night-sweats-dx', {
     title: 'Night sweats — differential',
     subtitle: 'The engine weights menopause, anxiety, drug and infective causes, and always surfaces lymphoma/malignancy, TB and phaeochromocytoma.',
-    guideline: 'NICE NG12',
+    guideline: 'NICE NG12 (updated April 2026)',
     patientPresenting: "I keep waking up drenched in sweat, doctor — I have to change the sheets.",
     inputs: INPUTS,
     diagnoses: [
@@ -128,7 +128,7 @@
       phaeo: ['hypoglyc_phaeo'],
     },
     sources: [
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' },
       { label:'NICE NG23 — menopause', url:'https://www.nice.org.uk/guidance/ng23' }
     ],
   });

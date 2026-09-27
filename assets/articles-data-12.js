@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 12: H topics, part 1)
    NHS conditions A–Z (letter H) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -24,11 +24,11 @@
       'Manage haemorrhoids in pregnancy conservatively (fibre, fluids, topical measures) — they often improve after delivery',
       'Safety-net for new red-flag symptoms and confirm resolution of bleeding'],
     referral:[
-      'Rectal bleeding with red flags — change in bowel habit, weight loss, iron-deficiency anaemia, abdominal/rectal mass, or meeting age/FIT thresholds → suspected colorectal cancer (2WW) pathway (NICE NG12); use FIT to support urgent referral',
+      'Rectal bleeding with red flags — change in bowel habit, weight loss, iron-deficiency anaemia, abdominal/rectal mass, or FIT ≥10 µg Hb/g → suspected colorectal cancer (2WW) pathway (NICE NG12 (updated April 2026) / NICE HTG690); offer FIT first to guide referral, except a rectal mass, unexplained anal mass or anal ulceration → refer without waiting for FIT',
       'Persistent/troublesome or higher-grade haemorrhoids → colorectal/surgical outpatient for banding or surgery',
       'Acutely thrombosed, severely painful external haemorrhoid → urgent surgical assessment',
       'Significant ongoing bleeding/anaemia → urgent assessment'],
-    source:'NICE — Haemorrhoids / NICE NG12' },
+    source:'NICE NG12 (updated April 2026) / NICE HTG690 (FIT)' },
 
   { id:'hair-loss', title:'Hair loss (alopecia)', category:'Dermatology', icon:'💇',
     overview:'Loss of hair, ranging from common patterned (androgenetic) thinning to patchy autoimmune alopecia areata and scarring alopecias. The clinical task is to determine the pattern, identify reversible causes (e.g. thyroid disease, iron deficiency, drugs), and recognise scarring loss, which is permanent and needs prompt referral.',
@@ -53,7 +53,7 @@
       'Extensive, rapidly progressive, or psychologically severe alopecia areata → dermatology',
       'Diagnostic uncertainty or suspected underlying systemic disease → dermatology/relevant specialty',
       'Significant distress → psychological support / patient organisations'],
-    source:'NICE — Alopecia / BAD guidance' },
+    source:'BAD guidance' },
 
   { id:'hand-foot-mouth', title:'Hand, foot and mouth disease', category:'Paediatrics', icon:'🖐️',
     overview:'A common, mild, self-limiting viral illness of young children (usually coxsackievirus/enterovirus), with mouth ulcers and a rash on the hands and feet. It is unrelated to the animal foot-and-mouth disease. Management is supportive; the main issues are hydration, reassurance, and sensible advice on spread.',
@@ -78,7 +78,7 @@
       'An unusually unwell child, severe or atypical disease, or neurological features → urgent paediatric assessment',
       'Immunocompromised or neonatal cases → specialist advice',
       'Diagnostic uncertainty → review'],
-    source:'NICE — Hand, foot and mouth disease' },
+    source:'UKHSA health protection in education and childcare settings / Clinical practice summary' },
 
   { id:'hay-fever', title:'Hay fever (allergic rhinitis)', category:'Allergy & immunology', icon:'🤧',
     overview:'IgE-mediated inflammation of the nasal mucosa from allergen exposure — seasonal (pollens, "hay fever") or perennial (house dust mite, animal dander, moulds). It is very common, often trivialised, but significantly affects quality of life, sleep, school/work, and asthma control. Management is stepwise and largely effective.',
@@ -103,7 +103,7 @@
       'Diagnostic uncertainty or unilateral/atypical nasal symptoms (bleeding, obstruction, anosmia) → ENT',
       'Poorly controlled coexisting asthma → asthma optimisation/respiratory',
       'Nasal polyps or structural problems → ENT'],
-    source:'NICE — Allergic rhinitis / BSACI guidance' },
+    source:'BSACI rhinitis guidance' },
 
   { id:'tension-headache', title:'Headaches (tension-type and overview)', category:'Neurology', icon:'🧠',
     overview:'Headache is one of the commonest presentations. Most are primary (tension-type, migraine, cluster) and benign, but the essential skill is systematically screening for the red flags of a secondary, dangerous cause. Tension-type headache — the most common — is managed with reassurance, lifestyle measures and limited analgesia.',
@@ -127,8 +127,8 @@
       'Thunderclap headache → emergency admission (exclude subarachnoid haemorrhage)',
       'Headache with fever + neck stiffness/photophobia/rash (meningitis/encephalitis), new focal neurology, or features of raised intracranial pressure → emergency assessment',
       'Suspected giant cell arteritis (new headache in over-50s with scalp tenderness/jaw claudication/visual symptoms) → urgent same-day assessment, start steroids, urgent referral',
-      'Progressive headache, or new headache with cancer/immunosuppression → urgent investigation (consider brain tumour pathway, NICE NG12)'],
-    source:'NICE — Headache / NICE CG150' },
+      'Progressive headache, or new headache with cancer/immunosuppression → urgent investigation (consider brain tumour pathway, NICE NG12 (updated April 2026))'],
+    source:'NICE CG150 (Headaches in over 12s)' },
 
   { id:'hearing-loss', title:'Hearing loss', category:'ENT', icon:'👂',
     overview:'Reduced hearing, classified as conductive (outer/middle ear) or sensorineural (cochlea/nerve). It is very common, especially with age, and under-treated despite major impacts on communication, social isolation, mood and (in later life) dementia risk. The priorities are identifying the type, treating reversible causes, and flagging urgent presentations.',
@@ -203,7 +203,7 @@
       'Mobitz II second-degree block, or symptomatic high-grade block → urgent cardiology (pacemaker assessment)',
       'Syncope with suspected conduction disease → urgent cardiology',
       'Incidental first-degree/asymptomatic Mobitz I → review medications, routine monitoring'],
-    source:'NICE / ESC bradycardia & pacing guidance' },
+    source:'ESC bradycardia and pacing guidance (international) / DVLA' },
 
   { id:'heart-failure', title:'Heart failure', category:'Cardiovascular & Renal', icon:'🫀',
     overview:'A clinical syndrome in which the heart cannot pump sufficiently for the body’s needs, causing breathlessness, fatigue and fluid retention. It is common, serious (worse prognosis than many cancers) and increasingly treatable. Accurate diagnosis (with natriuretic peptides and echocardiography) and guideline-based therapy transform outcomes.',

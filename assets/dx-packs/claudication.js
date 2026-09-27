@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Intermittent Claudication
-   Shared-id triage + differential. NICE CG147 PAD · NICE.
+   Shared-id triage + differential. NICE CG147 PAD.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -53,7 +53,7 @@
         id: 'mimic', tier: 'routine',
         label: 'Non-vascular cause likely',
         action: 'Assess spinal stenosis / venous / MSK; treat accordingly; still check pulses.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],

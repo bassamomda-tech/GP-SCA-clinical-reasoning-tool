@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Ankle Swelling (oedema)
-   Shared-id triage + differential. NICE · DVT (Wells) · HF.
+   Shared-id triage + differential. NICE NG158 (DVT, Wells) · NICE NG106 (HF).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -24,7 +24,7 @@
   if (window.RGPTriage) RGPTriage.register('ankle-swelling-triage', {
     title: 'Ankle swelling — triage',
     subtitle: 'Tick features. Surfaces DVT/PE, heart failure and nephrotic pathways.',
-    guideline: 'NICE · Wells · NG106',
+    guideline: 'NICE NG158 (Wells) · NICE NG106',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Bilateral → assess cardiac/renal/hepatic/venous + drug review; unilateral → exclude DVT (Wells + D-dimer/USS). Examine, urine dip, bloods (FBC, U&E, LFT, BNP, albumin).',
     rules: [
@@ -62,7 +62,7 @@
         id: 'manage', tier: 'routine',
         label: 'Dependent / venous / drug-related oedema',
         action: 'Review drugs (CCB); compression for venous; elevation; treat cause.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],

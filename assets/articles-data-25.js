@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 25: Q & R topics)
    NHS conditions A–Z (letters Q and R) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Airway compromise (stridor, drooling, respiratory distress) or spreading deep-neck infection → emergency admission',
       'Unable to swallow/dehydrated or systemically unwell → admission for IV treatment and drainage',
       'Recurrent tonsillitis/quinsy → ENT (consider tonsillectomy)'],
-    source:'NICE — Sore throat / ENT UK guidance' },
+    source:'NICE NG84 (Sore throat (acute): antimicrobial prescribing) / ENT UK guidance' },
 
   { id:'rabies', title:'Rabies', category:'Infectious diseases', icon:'🦠',
     overview:'A viral encephalitis transmitted by the bite/scratch of an infected mammal (especially dogs abroad, and bats). Once symptoms develop it is almost universally fatal — but it is entirely preventable with prompt post-exposure treatment. The key task is risk-assessing animal exposures, especially in travellers, and acting urgently.',
@@ -78,7 +78,7 @@
       'Critical digital ischaemia, digital ulceration, or threatened tissue loss → urgent rheumatology/vascular assessment',
       'Severe symptoms refractory to first-line treatment → specialist',
       'Suspected hand-arm vibration syndrome → occupational health'],
-    source:'NICE — Raynaud’s phenomenon' },
+    source:'BNF (nifedipine) / 2024 BSR guideline for management of systemic sclerosis (secondary Raynaud’s)' },
 
   { id:'rectal-prolapse', title:'Rectal prolapse', category:'Gastroenterology', icon:'🔴',
     overview:'Protrusion of the rectal wall through the anus — either full-thickness (the whole rectal wall) or mucosal (partial). It is commonest at the extremes of age (young children and older women) and, while not usually dangerous, causes distressing symptoms and may rarely become irreducible/strangulated.',
@@ -101,9 +101,9 @@
     referral:[
       'Irreducible/strangulated rectal prolapse → emergency surgical referral',
       'Full-thickness or persistent symptomatic prolapse in adults → colorectal surgery',
-      'Rectal bleeding/change in bowel habit meeting criteria → suspected colorectal cancer pathway (NICE NG12)',
+      'Rectal bleeding/change in bowel habit meeting criteria → FIT first, then suspected colorectal cancer pathway referral if FIT ≥10 µg Hb/g (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56); a rectal mass → direct suspected cancer pathway referral',
       'Recurrent prolapse in a child → paediatrics (and consider cystic fibrosis testing)'],
-    source:'NICE / colorectal surgical guidance' },
+    source:'ACPGBI / colorectal surgical guidance / NICE NG12 (updated April 2026) and HTG690 (FIT)' },
 
   { id:'infant-reflux', title:'Reflux in babies (infant GOR and GORD)', category:'Paediatrics', icon:'👶',
     overview:'Effortless regurgitation of stomach contents in infants — gastro-oesophageal reflux (GOR) is extremely common, normal, and usually needs only reassurance. Gastro-oesophageal reflux DISEASE (GORD) is when reflux causes troublesome symptoms/complications. The key is recognising the well "happy spitter" versus the few with red flags.',
@@ -153,7 +153,7 @@
       'A specific treatable diagnosis (e.g. carpal tunnel syndrome with motor signs) → relevant pathway/surgery',
       'Work-related/occupational factors → occupational health',
       'Diagnostic uncertainty or atypical features → MSK/rheumatology'],
-    source:'NICE / occupational health guidance' },
+    source:'HSE Upper limb disorders in the workplace (HSG60) / occupational health guidance' },
 
   { id:'restless-legs', title:'Restless legs syndrome', category:'Neurology', icon:'🦵',
     overview:'A common neurological disorder causing an irresistible urge to move the legs, usually with unpleasant sensations, worse at rest and in the evening/night and relieved by movement. It disrupts sleep and quality of life. Most is primary, but iron deficiency and other secondary causes are important and treatable.',
@@ -178,7 +178,7 @@
       'Augmentation on dopaminergic treatment → neurology/specialist review',
       'Secondary causes needing specialist management (e.g. severe CKD) → relevant specialty',
       'Significant sleep disorder → sleep service if indicated'],
-    source:'NICE — Restless legs syndrome' },
+    source:'AASM clinical practice guideline for RLS (2024, international) / BNF (ropinirole, pramipexole; gabapentin/pregabalin off-label)' },
 
   { id:'retinoblastoma', title:'Retinoblastoma', category:'Paediatrics', icon:'👁️',
     overview:'The commonest primary intraocular malignancy of childhood, arising in the retina, usually under age 5. It can be hereditary (often bilateral) or sporadic. It is highly curable if caught early — and the cardinal sign is a white pupillary reflex (leukocoria), so a checked red reflex and acting on an abnormal one are vital.',
@@ -199,11 +199,11 @@
       'Support the family through diagnosis and treatment, and arrange long-term follow-up (vision, and second-malignancy surveillance in hereditary disease)',
       'Emphasise that early detection is life- and sight-saving'],
     referral:[
-      'Leukocoria (white pupillary reflex), absent/abnormal red reflex, or new squint in a child → urgent ophthalmology referral (suspected retinoblastoma — NICE NG12 lists an absent red reflex as a suspected-cancer referral)',
+      'Leukocoria (white pupillary reflex), absent/abnormal red reflex, or new squint in a child → urgent ophthalmology referral (suspected retinoblastoma — NICE NG12 (updated April 2026) lists an absent red reflex as a suspected-cancer referral)',
       'Confirmed/suspected retinoblastoma → specialist paediatric ophthalmology/oncology centre',
       'Hereditary disease → clinical genetics and family screening',
       'Any "white eye"/parental concern about the pupil → low threshold for urgent referral'],
-    source:'NICE NG12 / paediatric ophthalmic oncology guidance' },
+    source:'NICE NG12 (updated April 2026) / paediatric ophthalmic oncology guidance' },
 
   { id:'rheumatic-fever', title:'Rheumatic fever', category:'Cardiovascular & Renal', icon:'🫀',
     overview:'An immune-mediated multisystem illness following a group A streptococcal (usually throat) infection, which can damage the heart valves (rheumatic heart disease). It is now rare in the UK but remains a major cause of acquired heart disease globally. Recognition and prevention of recurrence (prophylaxis) protect the heart.',
@@ -228,7 +228,7 @@
       'Carditis/heart failure → urgent cardiology',
       'Established rheumatic heart disease → cardiology follow-up and secondary antibiotic prophylaxis',
       'Sydenham’s chorea → neurology/paediatric specialist'],
-    source:'WHO / Jones criteria / NICE — Sore throat' },
+    source:'WHO / revised Jones criteria (AHA 2015, international) / NICE NG84 (Sore throat (acute): antimicrobial prescribing)' },
 
   { id:'rheumatoid-arthritis', title:'Rheumatoid arthritis', category:'Musculoskeletal', icon:'🦴',
     overview:'A chronic, systemic autoimmune inflammatory arthritis causing symmetrical small-joint synovitis that, untreated, leads to joint destruction and disability. Early diagnosis and prompt disease-modifying treatment ("treat-to-target") dramatically improve outcomes — so urgent referral of suspected RA is a key primary-care responsibility.',
@@ -278,7 +278,7 @@
       'Rickets in children → paediatrics for treatment and monitoring',
       'Atypical, non-responsive, or suspected genetic/phosphate-related disease → endocrinology/metabolic bone specialist',
       'Underlying malabsorption → gastroenterology'],
-    source:'NICE — Vitamin D deficiency / rickets & osteomalacia' },
+    source:'NICE PH56 (Vitamin D: supplement use in specific population groups) / Royal Osteoporosis Society vitamin D guideline / BNF' },
 
   { id:'ringworm', title:'Ringworm and other tinea (fungal skin infections)', category:'Dermatology', icon:'🍄',
     overview:'Common superficial fungal (dermatophyte) infections of the skin, named by site: tinea corporis (body/"ringworm"), tinea pedis (athlete’s foot), tinea cruris (groin/"jock itch"), and tinea capitis (scalp). They are benign and treatable, but accurate diagnosis matters — and steroid creams alone make them worse.',
@@ -303,7 +303,7 @@
       'Extensive, resistant, or diagnostically uncertain disease → dermatology',
       'Tinea pedis complicated by cellulitis → treat the bacterial infection',
       'Immunocompromised patients with widespread/atypical infection → dermatology'],
-    source:'NICE — Fungal skin infection (dermatophyte)' },
+    source:'BAD guidelines for the management of tinea capitis (2014) / BNF (terbinafine, imidazoles)' },
 
   { id:'rosacea', title:'Rosacea', category:'Dermatology', icon:'🌹',
     overview:'A common chronic inflammatory facial skin condition causing flushing, persistent central-face redness, papules/pustules and (over time) telangiectasia and, in some, thickening of the nose (rhinophyma). It is not "acne" and not caused by poor hygiene; management addresses triggers and the predominant features, including the eyes.',
@@ -328,7 +328,7 @@
       'Severe, resistant, or diagnostically uncertain rosacea → dermatology',
       'Rhinophyma → dermatology/plastic surgery',
       'Persistent telangiectasia/erythema → consider laser/IPL via dermatology'],
-    source:'NICE — Rosacea' },
+    source:'BNF (brimonidine, ivermectin, metronidazole, azelaic acid, doxycycline) / Primary Care Dermatology Society (PCDS) rosacea guidance' },
 
   { id:'roseola', title:'Roseola (roseola infantum)', category:'Paediatrics', icon:'👶',
     overview:'A common, benign viral illness of infancy (usually human herpesvirus 6), classically causing several days of high fever followed by a characteristic rash that appears as the fever resolves. It is self-limiting; the main issues are reassurance, managing the fever, and recognising the febrile child who needs assessment.',

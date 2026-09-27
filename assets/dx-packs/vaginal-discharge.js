@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Vaginal Discharge
-   Shared-id triage + differential. BASHH 2023 · NICE.
+   Shared-id triage + differential. BASHH 2023.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -37,14 +37,14 @@
         id: 'pregnancy', tier: 'urgent',
         label: 'Pregnant with offensive discharge / fluid leak',
         action: 'Same-day obstetric assessment — exclude rupture of membranes / chorioamnionitis.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.pregnant_ruptured,
       },
       {
         id: 'foreign_body', tier: 'urgent',
         label: 'Retained foreign body / tampon',
         action: 'Remove; consider toxic shock if systemically unwell.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.retained_foreign,
       },
       {
@@ -58,7 +58,7 @@
         id: 'manage', tier: 'routine',
         label: 'Non-STI discharge — treat by likely organism',
         action: 'BV → metronidazole; thrush → antifungal; reassure physiological discharge.',
-        source: 'NICE',
+        source: 'BASHH',
         when: i => true,
       }
     ],

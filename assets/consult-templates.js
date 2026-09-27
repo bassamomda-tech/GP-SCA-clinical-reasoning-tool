@@ -1,8 +1,8 @@
 /* Reasoning GP — Consultation templates.
    Full, editable consultation drafts keyed by diagnosis, used by the
    Consultation Spine to pre-fill all 9 sections. Square-bracketed [text]
-   marks the parts a clinician should personalise. UK primary-care / NICE
-   aligned; educational scaffold only — verify against NICE/BNF before use.
+   marks the parts a clinician should personalise. UK primary-care guideline
+   aligned (numbered sources per entry); educational scaffold only — verify against NICE/BNF before use.
 
    Each entry: keys[] = match strings (lowercase); s = { section-id: text }.
    Section ids: hpc, redflags, exam, impression, ix, plan, referral, safetynet, followup.
@@ -33,7 +33,7 @@
       exam:'Well, alert. BP [/]. Fundoscopy normal, no papilloedema. Cranial nerves and limb neurology intact. Pericranial/neck muscle tenderness [present]. Neck movements [normal].',
       impression:'Tension-type headache — [episodic / chronic (≥15 days/month for >3 months)]. Normal examination, no red flags. [Screen for medication-overuse headache.]',
       ix:'No investigation indicated — clinical diagnosis, normal exam, no red flags. Headache diary to quantify frequency and analgesic days.',
-      plan:'Acute: [paracetamol / ibuprofen / aspirin] PRN, limiting to <15 days/month to avoid MOH. Reassure benign. Address contributors: posture/ergonomics, regular breaks from screens, sleep, hydration, stress management, exercise. For frequent/chronic: consider a course of [amitriptyline] and/or acupuncture per NICE.',
+      plan:'Acute: [paracetamol / ibuprofen / aspirin] PRN, limiting to <15 days/month to avoid MOH. Reassure benign. Address contributors: posture/ergonomics, regular breaks from screens, sleep, hydration, stress management, exercise. For frequent/chronic: consider a course of [amitriptyline] (BNF; unlicensed use) and/or acupuncture (NICE CG150).',
       referral:'No referral needed. Neurology only if diagnostic doubt or refractory chronic headache.',
       safetynet:'Seek urgent help if sudden severe headache, fever with neck stiffness, new neurological symptoms, visual disturbance, or a change in the usual pattern.',
       followup:'Review in [4–6 weeks] with diary if frequent; otherwise PRN / open access.'
@@ -44,7 +44,7 @@
     keys:['uti','urinary tract infection','lower uti','cystitis','uti women','uti-women'],
     s:{
       hpc:'[X]-day history of dysuria, urinary frequency and urgency [± suprapubic discomfort, cloudy/offensive urine]. No vaginal discharge/irritation. [Not pregnant.] No prior recurrent UTIs / catheter. ICE: wants symptom relief, concerned about [kidney infection].',
-      redflags:'No fever/rigors, no loin pain or flank tenderness, no nausea/vomiting (pyelonephritis). No visible haematuria persisting after treatment (cancer — consider 2WW per NG12 if ≥45 with unexplained haematuria). Not pregnant / no sepsis features. No new confusion (elderly).',
+      redflags:'No fever/rigors, no loin pain or flank tenderness, no nausea/vomiting (pyelonephritis). No visible haematuria persisting after treatment (cancer — consider 2WW per NICE NG12 (updated April 2026) if ≥45 with unexplained haematuria). Not pregnant / no sepsis features. No new confusion (elderly).',
       exam:'Afebrile, well. Abdomen soft, [mild suprapubic tenderness], no loin/renal angle tenderness. [Urine dip: leucocytes/nitrites — supportive.]',
       impression:'Uncomplicated lower urinary tract infection in a non-pregnant woman. No upper-tract or systemic features.',
       ix:'Urine dipstick [nitrite/leucocyte positive]. Send MSU for culture if: pregnant, recurrent, treatment failure, atypical, or ≥65. [Consider no dip and treat empirically if classic symptoms.]',
@@ -93,7 +93,7 @@
       exam:'Kempt, [reactive affect], rapport [good]. No psychomotor retardation/agitation. Speech normal. No psychotic phenomena. Cognition grossly intact. Risk assessed — [low].',
       impression:'[Mild / moderate / severe] depressive episode (PHQ-9 [X]). Risk [low]. No bipolar/psychotic features.',
       ix:'Consider bloods to exclude organic contributors: [FBC, TFT, ferritin, B12/folate, U&E, LFT, HbA1c, calcium, vitamin D]. PHQ-9 / GAD-7 documented.',
-      plan:'Less severe: guided self-help, [NICE-recommended digital CBT], exercise, sleep hygiene; active monitoring. More severe / persistent: offer psychological therapy (CBT) and/or an antidepressant — [sertraline 50mg OD], review at 1–2 weeks (sooner if <30y or higher risk), warn of initial side-effects/anxiety and delayed onset (~4 weeks). Signpost [self-referral to NHS Talking Therapies]. Safety plan agreed.',
+      plan:'Less severe: guided self-help, [digital CBT (NICE NG222)], exercise, sleep hygiene; active monitoring. More severe / persistent: offer psychological therapy (CBT) and/or an antidepressant — [sertraline 50mg OD], review at 1–2 weeks (sooner if <30y or higher risk), warn of initial side-effects/anxiety and delayed onset (~4 weeks). Signpost [self-referral to NHS Talking Therapies]. Safety plan agreed.',
       referral:'Self-referral / refer to NHS Talking Therapies (IAPT). Urgent CMHT / crisis team if significant suicide risk, psychosis, or severe functional impairment. Consider perinatal MH service if pregnant/postnatal.',
       safetynet:'Seek urgent help (GP same-day, 111, crisis line, or A&E) if thoughts of harming self worsen, you feel unable to stay safe, or symptoms deteriorate. Crisis numbers given. Return if no improvement or side-effect concerns.',
       followup:'Review in [1–2 weeks] (within 1 week if <30 or higher risk) to reassess mood, risk and tolerability; then regularly. Continue antidepressant ≥6 months after remission.'
@@ -108,7 +108,7 @@
       exam:'Settled in consultation, [anxious affect]. Pulse [regular], no tremor/goitre. Cardioresp [normal]. Risk assessed — [low].',
       impression:'Generalised anxiety disorder (GAD-7 [X]) [± panic disorder]. Organic causes considered. Risk [low].',
       ix:'Consider [TFT, FBC, glucose/HbA1c] to exclude organic contributors if clinically indicated. GAD-7 / PHQ-9 documented.',
-      plan:'Stepped care (NICE): psychoeducation and active monitoring; low-intensity guided self-help / individual non-facilitated self-help; then high-intensity CBT or applied relaxation. Drug option if functional impairment / preference: an SSRI [sertraline] (warn of initial transient increase in anxiety; review 1–2 weeks). Lifestyle: reduce caffeine/alcohol, exercise, sleep, breathing techniques. Avoid benzodiazepines except short-term crisis.',
+      plan:'Stepped care (NICE CG113): psychoeducation and active monitoring; low-intensity guided self-help / individual non-facilitated self-help; then high-intensity CBT or applied relaxation. Drug option if functional impairment / preference: an SSRI [sertraline] (warn of initial transient increase in anxiety; review 1–2 weeks). Lifestyle: reduce caffeine/alcohol, exercise, sleep, breathing techniques. Avoid benzodiazepines except short-term crisis.',
       referral:'Self-referral to NHS Talking Therapies. CMHT if severe, treatment-resistant, or significant risk.',
       safetynet:'Seek urgent help if thoughts of self-harm, inability to cope, or marked deterioration — crisis numbers provided. Return if no improvement or medication concerns.',
       followup:'Review in [2 weeks] to assess response/tolerability and risk; regular review thereafter.'
@@ -123,7 +123,7 @@
       exam:'BP [/], weight/BMI [], waist []. Feet: pulses [present], monofilament sensation [intact], skin intact, no deformity/ulcer — risk [low]. Injection sites [n/a].',
       impression:'Type 2 diabetes — [reasonably controlled, HbA1c X]. CVD risk [X]. [Microvascular screening status.]',
       ix:'HbA1c [X], lipid profile, U&E/eGFR + urine ACR (nephropathy), [LFT]. BP. Retinal screening and foot check arranged. Document QRISK.',
-      plan:'Individualised HbA1c target [48–58 mmol/mol]. Reinforce diet, weight loss, activity, smoking cessation. Glucose: titrate/step up per NICE — consider [SGLT2 inhibitor] (CVD/HF/CKD benefit) ± add-ons. Cardiorenal protection: statin (atorvastatin 20mg primary prevention), ACE-i/ARB if ACR raised or hypertensive, optimise BP <140/90 (<130/80 if ACR≥70). Annual foot/eye screening, immunisations.',
+      plan:'Individualised HbA1c target [48–58 mmol/mol]. Reinforce diet, weight loss, activity, smoking cessation. Glucose per NICE NG28 (updated Feb 2026): MR metformin + [SGLT2 inhibitor] as dual first-line for most, CV disease or not (DKA-risk check first; care in frailty); established ASCVD → add s/c semaglutide; further add-ons by phenotype. Cardiorenal protection: statin (atorvastatin 20mg primary prevention), ACE-i/ARB if ACR raised or hypertensive, optimise BP <140/90 (<130/80 if ACR≥70). Annual foot/eye screening, immunisations.',
       referral:'Diabetes specialist / nurse if poor control despite optimisation, recurrent hypos, or complex needs. Podiatry if increased foot risk. Ophthalmology per screening. Structured education ([DESMOND]).',
       safetynet:'Seek urgent help if marked thirst/polyuria with vomiting or drowsiness, new foot ulcer/colour change, severe or recurrent hypos, or new chest pain/visual loss.',
       followup:'Recall in [3–6 months] to reassess HbA1c after any change, then annual structured review.'
@@ -138,7 +138,7 @@
       exam:'Clinic BP [/] (repeated). [No papilloedema on fundoscopy.] CVS exam — [normal, no RVH/displaced apex], no radio-femoral delay. [Target-organ assessment.]',
       impression:'[Suspected] hypertension — clinic BP [X/Y]; confirm with ABPM/HBPM. [Stage 1 / 2.] No accelerated features.',
       ix:'Confirm diagnosis with ABPM (or HBPM). Assess target-organ damage and CVD risk: U&E/eGFR, HbA1c, lipids, urine ACR, urine dip (haematuria), 12-lead ECG, fundoscopy. Calculate QRISK3.',
-      plan:'Lifestyle for all: reduce salt, healthy diet, weight, regular exercise, limit alcohol/caffeine, smoking cessation. Offer drug treatment per NICE (stage 2, or stage 1 with target-organ damage/CVD/diabetes/renal disease or QRISK≥10%/age<60): [<55 and not Black African/Caribbean → ACE-i/ARB; ≥55 or Black African/Caribbean → CCB]. Target clinic BP <140/90 (<150/90 if ≥80; <135/85 home).',
+      plan:'Lifestyle for all: reduce salt, healthy diet, weight, regular exercise, limit alcohol/caffeine, smoking cessation. Offer drug treatment per NICE NG136 (stage 2, or stage 1 with target-organ damage/CVD/diabetes/renal disease or QRISK≥10%/age<60): [<55 and not Black African/Caribbean → ACE-i/ARB; ≥55 or Black African/Caribbean → CCB]. Target clinic BP <140/90 (<150/90 if ≥80; <135/85 home).',
       referral:'Same-day referral if accelerated hypertension (≥180/120 with red flags) or suspected phaeo. Specialist if resistant hypertension or suspected secondary cause (young, sudden, refractory).',
       safetynet:'Seek urgent help if severe headache with visual disturbance, chest pain, breathlessness, or new weakness/speech difficulty. Return for results and titration.',
       followup:'Review after ABPM/results to confirm and start treatment; recheck BP and U&E [4 weeks] after starting/changing ACE-i/ARB; then [annual] review once stable.'
@@ -153,7 +153,7 @@
       exam:'Comfortable, speaking in full sentences. RR [], SpO2 []. Chest [clear, good air entry, no wheeze]. PEF [X] ([Y%] best/predicted). Inhaler technique observed.',
       impression:'Asthma — [well / partly / poorly] controlled. [Adherence/technique adequate.] Exacerbation risk [low].',
       ix:'PEF / [spirometry / FeNO per diagnostic pathway]. Review monitoring diary. [No routine bloods.]',
-      plan:'Optimise per NICE/BTS-SIGN stepwise: check adherence and inhaler technique first. [Step up: add/increase ICS, consider MART/LABA.] Personalised asthma action plan issued/updated. Trigger avoidance, smoking cessation, annual flu vaccine, weight where relevant. Step down when stable.',
+      plan:'Optimise per NICE NG245 (2024, joint NICE/BTS/SIGN) stepwise: check adherence and inhaler technique first. [Step up: as-needed ICS/formoterol (AIR) → low-dose MART → moderate-dose MART; check FeNO/eosinophils before further add-ons.] Personalised asthma action plan issued/updated. Trigger avoidance, smoking cessation, annual flu vaccine, weight where relevant. Step down when stable.',
       referral:'Respiratory referral if: diagnostic doubt, poor control despite optimisation, ≥2 courses OCS/year, any life-threatening attack, or possible occupational asthma.',
       safetynet:'Use action plan: increase reliever and seek urgent help / 999 if breathless at rest, reliever not lasting 4h, PEF falling, or unable to speak in sentences. Same-day review for any attack.',
       followup:'Review in [4–8 weeks] after any change; otherwise annual review (sooner if recent exacerbation).'
@@ -168,7 +168,7 @@
       exam:'RR [], SpO2 []. Chest [hyperinflated / wheeze / prolonged expiration]. No peripheral oedema. [BMI/weight]. Inhaler technique observed.',
       impression:'COPD — [GOLD/airflow severity], MRC [X], exacerbation risk [low/high]. [Stable today.]',
       ix:'Spirometry (post-bronchodilator FEV1/FVC <0.7) to confirm/grade. [FBC (eosinophils, polycythaemia/anaemia), CXR if indicated.] Pulse oximetry; consider [BMI, MRC] documented.',
-      plan:'Smoking cessation (single most important). Inhaled therapy per NICE — [SABA/SAMA PRN; LABA+LAMA; add ICS if asthmatic features/eosinophilia or recurrent exacerbations]. Pulmonary rehabilitation (MRC ≥3). Annual flu + pneumococcal vaccines. Self-management plan ± rescue pack. Treat comorbidities, optimise nutrition.',
+      plan:'Smoking cessation (single most important). Inhaled therapy per NICE NG115 — [SABA/SAMA PRN; LABA+LAMA; add ICS if asthmatic features/eosinophilia or recurrent exacerbations]. Pulmonary rehabilitation (MRC ≥3). Annual flu + pneumococcal vaccines. Self-management plan ± rescue pack. Treat comorbidities, optimise nutrition.',
       referral:'Respiratory referral if diagnostic uncertainty, severe/rapidly progressive disease, frequent exacerbations despite optimisation, cor pulmonale, or assessment for LTOT/lung-volume reduction.',
       safetynet:'Use rescue plan: start [antibiotic/steroid] and seek help if worsening breathlessness, increased/purulent sputum or fever; 999 if severe breathlessness, confusion or cyanosis.',
       followup:'Review [at least annually] (twice yearly if severe); reassess after any exacerbation and after treatment changes.'
@@ -179,12 +179,12 @@
     keys:['gord','reflux','gerd','dyspepsia','heartburn','indigestion'],
     s:{
       hpc:'[X]-week history of [retrosternal burning / acid regurgitation / epigastric discomfort], worse [lying/after meals]. [Relation to food/posture.] Lifestyle: [late meals, alcohol, caffeine, smoking, weight]. Current meds [NSAID?]. ICE: [X].',
-      redflags:'ALARM/2WW: no dysphagia, no unexplained weight loss, no GI bleeding (haematemesis/melaena/anaemia), no persistent vomiting, no epigastric mass. [Age ≥55 with treatment-resistant dyspepsia → consider direct-access OGD per NG12.] No new dyspepsia ≥55 with weight loss + (reflux/dyspepsia/upper abdo pain).',
+      redflags:'ALARM/2WW: no dysphagia, no unexplained weight loss, no GI bleeding (haematemesis/melaena/anaemia), no persistent vomiting, no epigastric mass. [Age ≥55 with treatment-resistant dyspepsia → consider non-urgent direct-access OGD per NICE NG12 (updated April 2026).] No new dyspepsia ≥55 with weight loss + (reflux/dyspepsia/upper abdo pain).',
       exam:'Well. Abdomen soft, [mild epigastric tenderness], no mass, no organomegaly. [No anaemia.]',
       impression:'Uninvestigated dyspepsia / GORD, no alarm features. [Likely lifestyle/acid-related.]',
       ix:'Test for H. pylori (stool antigen / breath test) — stop PPI 2 weeks before. [FBC if anaemia suspected.] Review medications (NSAID, CCB, bisphosphonate).',
       plan:'Lifestyle: weight loss, smaller/earlier meals, reduce alcohol/caffeine/fatty foods, raise head of bed, stop smoking, review/stop NSAID. Full-dose PPI [omeprazole 20mg OD] for 4–8 weeks. If H. pylori positive — eradication therapy. Step down to lowest effective dose / PRN once controlled.',
-      referral:'Routine direct-access OGD if ≥55 with treatment-resistant/persistent symptoms. URGENT (2WW) OGD for dysphagia, or ≥55 with weight loss plus upper abdominal pain/reflux/dyspepsia (NG12).',
+      referral:'Routine direct-access OGD if ≥55 with treatment-resistant/persistent symptoms. URGENT suspected cancer pathway (2WW) referral for dysphagia, or ≥55 with weight loss plus upper abdominal pain/reflux/dyspepsia (NICE NG12 (updated April 2026)).',
       safetynet:'Seek urgent help if difficulty swallowing, food sticking, weight loss, vomiting blood or black stools, or symptoms not settling on treatment.',
       followup:'Review in [4–8 weeks] to assess response; if relapsing, lowest-dose maintenance and reassess; refer if persistent.'
     }
@@ -213,7 +213,7 @@
       exam:'[Temp]. Alert, [well-hydrated]. Tympanic membrane [red, bulging, loss of light reflex] / [perforated with discharge]. No post-auricular swelling/tenderness. Chest clear, throat [X], neck supple.',
       impression:'Acute otitis media, [unilateral], child otherwise [systemically well]. No complications.',
       ix:'None — clinical diagnosis.',
-      plan:'Most resolve in 3 days without antibiotics. Analgesia: regular paracetamol/ibuprofen, fluids. Antibiotics per NICE — no/back-up script for most; immediate [amoxicillin 5 days] if systemically unwell, <2y with bilateral AOM, otorrhoea, or high risk. Safety-net the family.',
+      plan:'Most resolve in 3 days without antibiotics. Analgesia: regular paracetamol/ibuprofen, fluids. Antibiotics per NICE NG91 — no/back-up script for most; immediate [amoxicillin 5–7 days] if systemically unwell, <2y with bilateral AOM, otorrhoea, or high risk. Safety-net the family.',
       referral:'No referral. Same-day paediatric/ENT assessment if mastoiditis, intracranial complications, severe systemic illness, or <3 months with fever.',
       safetynet:'Seek urgent help if swelling/redness behind the ear, the ear pushed forward, neck stiffness, drowsiness, high fever not settling, poor fluid intake, or no improvement in 3 days.',
       followup:'PRN. Return if not improving in [3 days], recurrent, or persistent hearing concern (consider OME / glue ear).'
@@ -239,7 +239,7 @@
     keys:['menopause','perimenopause','menopausal symptoms','hrt'],
     s:{
       hpc:'[Age] with [X-month] history of [vasomotor symptoms — hot flushes/night sweats], [menstrual change], [mood/sleep/cognitive symptoms], [urogenital — vaginal dryness/dyspareunia/urinary]. Impact on [QoL/work]. LMP [X]. PMH/contraindications [VTE, breast cancer, migraine]. ICE: considering [HRT].',
-      redflags:'Postmenopausal bleeding (≥12 months amenorrhoea then bleeding — 2WW gynaecology per NG12). Unscheduled/persistent bleeding on HRT. No breast lump / unexplained PV bleeding. Personal history of [breast cancer / VTE / oestrogen-dependent cancer] noted before HRT.',
+      redflags:'Postmenopausal bleeding (≥12 months amenorrhoea then bleeding — aged 55 and over and not attributable to HRT → 2WW (suspected cancer pathway) gynaecology per NICE NG12 (updated April 2026); under 55, assess and refer on clinical judgement). Unscheduled/persistent bleeding on HRT. No breast lump / unexplained PV bleeding. Personal history of [breast cancer / VTE / oestrogen-dependent cancer] noted before HRT.',
       exam:'[BP, BMI]. [Breast/pelvic exam if clinically indicated.] [No abnormality.]',
       impression:'[Peri]menopause with [vasomotor / urogenital] symptoms affecting quality of life. [Suitable for HRT — no contraindication.]',
       ix:'Diagnosis is clinical in women ≥45 with typical symptoms — no FSH needed. [Consider FSH if <45 / atypical / query POI.] [Baseline BP, BMI; bloods only if indicated.]',
@@ -254,12 +254,12 @@
     keys:['iron deficiency anaemia','iron deficiency','anaemia','ida'],
     s:{
       hpc:'[Incidental low Hb / symptoms — fatigue, breathlessness on exertion, dizziness]. Diet [X], menstrual loss [X], GI symptoms [bleeding/altered bowel habit/dyspepsia], NSAID use. Weight loss [no]. ICE: [X].',
-      redflags:'GI malignancy: in men (any age) and postmenopausal women with iron-deficiency anaemia → 2WW lower + upper GI per NG12. No rectal bleeding/altered bowel habit, no dysphagia, no weight loss, no abdominal/rectal mass. [Coeliac considered.]',
+      redflags:'GI malignancy: iron-deficiency anaemia → offer FIT first (NICE NG12 (updated April 2026), updated April 2026; NICE HTG690, formerly DG56) — FIT ≥10 µg Hb/g → suspected colorectal cancer pathway referral; men (any age) and postmenopausal women with IDA → bidirectional endoscopy (upper + lower GI; BSG 2021). No rectal bleeding/altered bowel habit, no dysphagia, no weight loss, no abdominal/rectal mass. [Coeliac considered.]',
       exam:'[Pallor], pulse []. [Koilonychia/glossitis.] Abdomen soft, no mass/organomegaly. [PR if indicated.]',
       impression:'Iron-deficiency anaemia (Hb [X], ferritin [low]). [Cause: menstrual / dietary / GI loss — to determine.]',
-      ix:'FBC, ferritin (confirm iron deficiency), [blood film, B12/folate]. Coeliac serology (tTG-IgA). Urinalysis. In men / postmenopausal women — refer for OGD + colonoscopy. Consider in younger women if atypical or not responding.',
+      ix:'FBC, ferritin (confirm iron deficiency), [blood film, B12/folate]. Coeliac serology (tTG-IgA). Urinalysis. FIT (NICE NG12 (updated April 2026), updated April 2026; HTG690). In men / postmenopausal women — refer for OGD + colonoscopy (BSG 2021). Consider in younger women if atypical or not responding.',
       plan:'Oral iron [ferrous fumarate 210mg OD–BD] (alternate-day dosing improves absorption/tolerance); take with vitamin C, avoid tea/calcium around dose. Treat to normalise Hb then continue 3 months to replenish stores. Dietary advice. Treat underlying cause. Manage menorrhagia if relevant.',
-      referral:'2WW upper + lower GI in men and postmenopausal women with IDA (NG12). Gastroenterology/gynaecology per likely source. Haematology if refractory or unclear.',
+      referral:'IDA: offer FIT first (NICE NG12 (updated April 2026), updated April 2026; NICE HTG690, formerly DG56) — FIT ≥10 µg Hb/g → suspected colorectal cancer pathway referral. Bidirectional endoscopy (upper + lower GI) in men and postmenopausal women with IDA (BSG 2021). Gastroenterology/gynaecology per likely source. Haematology if refractory or unclear.',
       safetynet:'Seek help if rectal bleeding, black stools, weight loss, swallowing difficulty, or worsening breathlessness/chest pain. Return if symptoms persist.',
       followup:'Recheck FBC at [2–4 weeks] (expect Hb rise) and at [2–4 months]; continue iron 3 months after Hb normal; confirm cause addressed.'
     }

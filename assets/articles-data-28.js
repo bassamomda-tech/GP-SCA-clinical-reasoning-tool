@@ -1,12 +1,12 @@
 /* Reasoning GP — Articles data (batch 28: S topics, part 3)
    NHS A–Z (letter S) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
 
   { id:'stomach-cancer', title:'Stomach (gastric) cancer', category:'Gastroenterology', icon:'🎗️',
-    overview:'A cancer that often presents late with vague upper-GI symptoms, contributing to poor survival. The key primary-care skill is recognising the NICE NG12 thresholds — particularly dysphagia and the alarm features warranting urgent direct-access endoscopy — rather than treating persistent dyspepsia as benign.',
+    overview:'A cancer that often presents late with vague upper-GI symptoms, contributing to poor survival. The key primary-care skill is recognising the NICE NG12 (updated April 2026) thresholds — particularly dysphagia and the alarm features warranting a suspected cancer pathway referral — rather than treating persistent dyspepsia as benign.',
     features:[
       'Often vague early symptoms: persistent dyspepsia/epigastric pain, early satiety, nausea, and unintentional weight loss',
       'Alarm features: dysphagia, unexplained weight loss, GI bleeding (haematemesis/melaena), iron-deficiency anaemia, persistent vomiting, and an epigastric mass',
@@ -15,7 +15,7 @@
       'Symptoms overlap heavily with benign dyspepsia/GORD — which is why the alarm features and age thresholds matter',
       'Diagnosis is by upper-GI endoscopy with biopsy, then staging (CT, etc.)'],
     management:[
-      'Recognise and act on the NICE NG12 referral thresholds — do not attribute alarm features to benign dyspepsia',
+      'Recognise and act on the NICE NG12 (updated April 2026) referral thresholds — do not attribute alarm features to benign dyspepsia',
       'Examine for an epigastric mass, hepatomegaly and lymphadenopathy, and check FBC for iron-deficiency anaemia',
       'Test and treat for Helicobacter pylori in uncomplicated dyspepsia, but refer rather than relying on this when alarm features are present',
       'Refer confirmed/suspected gastric cancer to the upper-GI MDT for staging and treatment planning',
@@ -24,11 +24,11 @@
       'Support risk reduction (H. pylori eradication, smoking cessation) and be alert in higher-risk patients (e.g. pernicious anaemia)',
       'Provide information, palliative care input where appropriate, and survivorship follow-up'],
     referral:[
-      'Dysphagia at any age, or aged 55+ with weight loss plus upper abdominal pain/reflux/dyspepsia → urgent direct-access upper-GI endoscopy (NICE NG12, 2WW)',
-      'Upper abdominal mass consistent with stomach cancer → urgent direct-access endoscopy / 2WW referral',
+      'Dysphagia at any age, or aged 55+ with weight loss plus upper abdominal pain/reflux/dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026), 2WW)',
+      'Upper abdominal mass consistent with stomach cancer → consider a suspected cancer pathway (2WW) referral (NICE NG12 (updated April 2026))',
       'GI bleeding (haematemesis/melaena) → emergency admission',
       'Confirmed gastric cancer → upper-GI MDT'],
-    source:'NICE NG12 / oesophago-gastric cancer guidance' },
+    source:'NICE NG12 (updated April 2026) / oesophago-gastric cancer guidance' },
 
   { id:'stress', title:'Stress', category:'Mental health', icon:'🧠',
     overview:'The body’s response to pressure or demands. It is a normal experience, not a mental illness, but chronic or excessive stress harms physical and mental health and may unmask or coexist with anxiety and depression. The GP role is validating it, supporting coping, addressing causes, and recognising when it has tipped into a treatable disorder.',
@@ -53,7 +53,7 @@
       'Risk of self-harm/suicide → urgent mental-health assessment',
       'Problematic alcohol/substance use → relevant services',
       'Work-related stress → occupational health / workplace support'],
-    source:'NICE / mental-health & wellbeing guidance' },
+    source:'NICE NG212 (Mental wellbeing at work, 2022) / NICE CG123 (Common mental health problems) / HSE Management Standards' },
 
   { id:'stye', title:'Stye (hordeolum)', category:'Ophthalmology', icon:'👁️',
     overview:'An acute, painful, localised infection of an eyelid gland (usually staphylococcal) producing a tender red lump on the lid margin. It is common, benign and usually self-limiting. The main tasks are simple self-care, distinguishing it from a chalazion, and recognising the rare spread to preseptal/orbital cellulitis.',
@@ -78,7 +78,7 @@
       'Persistent or troublesome chalazion → ophthalmology for incision and curettage',
       'Recurrent styes, or diagnostic uncertainty → ophthalmology/optometry',
       'A persistent firm eyelid lump with atypical features → exclude eyelid malignancy'],
-    source:'NICE — Styes and chalazia' },
+    source:'College of Optometrists Clinical Management Guidelines (hordeolum; chalazion)' },
 
   { id:'subarachnoid-haemorrhage', title:'Subarachnoid haemorrhage', category:'Neurology', icon:'🧠',
     overview:'Bleeding into the subarachnoid space, usually from a ruptured intracranial (berry) aneurysm. It is a neurological emergency with high mortality. The cardinal presentation is a sudden, severe "thunderclap" headache — and recognising this and arranging immediate emergency assessment is the critical primary-care task.',
@@ -103,7 +103,7 @@
       'Any sudden severe "worst-ever" headache → emergency assessment even if improving',
       'Confirmed SAH → neurosurgical centre',
       'Family history/at-risk relatives → consider screening referral'],
-    source:'NICE — Subarachnoid haemorrhage / neurosurgical guidance' },
+    source:'NICE NG228 (Subarachnoid haemorrhage caused by a ruptured aneurysm, 2022) / neurosurgical guidance' },
 
   { id:'subdural-haematoma', title:'Subdural haematoma', category:'Neurology', icon:'🧠',
     overview:'A collection of blood between the dura and the brain, from torn bridging veins — acute (after significant head injury) or chronic (developing over weeks, often after trivial trauma in older or alcohol-dependent people). Chronic subdural is easily missed, presenting with insidious confusion or fluctuating symptoms; a high index of suspicion is essential.',
@@ -151,9 +151,9 @@
     referral:[
       'Extensive or severe blistering sunburn, or associated heatstroke/significant dehydration → assessment/admission',
       'Sunburn in a young infant, or systemic illness → assessment',
-      'Suspicious or changing pigmented lesion (melanoma concern) noted on examination → 2WW suspected skin-cancer referral (NICE NG12)',
+      'Suspicious or changing pigmented lesion (melanoma concern) noted on examination → 2WW suspected skin-cancer referral (NICE NG12 (updated April 2026))',
       'Disproportionate burning suggesting photosensitivity → review cause/dermatology'],
-    source:'NICE — Sunburn / Skin cancer prevention' },
+    source:'NICE NG34 (Sunlight exposure: risks and benefits, 2016) / NICE NG12 (updated April 2026)' },
 
   { id:'svt', title:'Supraventricular tachycardia (SVT)', category:'Cardiovascular & Renal', icon:'🫀',
     overview:'A regular, rapid tachycardia arising above the ventricles (commonly AV nodal re-entrant tachycardia or AV re-entrant tachycardia, e.g. with an accessory pathway). It causes sudden-onset palpitations and is usually benign but distressing; the priorities are terminating the acute episode and arranging definitive assessment.',
@@ -178,7 +178,7 @@
       'Recurrent or symptomatic SVT → cardiology (consider ablation)',
       'Wolff-Parkinson-White / pre-excitation on ECG → cardiology',
       'Diagnostic uncertainty or to capture the rhythm → ambulatory monitoring / cardiology'],
-    source:'NICE / Resuscitation Council & ESC arrhythmia guidance' },
+    source:'Resuscitation Council UK (adult tachycardia algorithm, 2021) / ESC 2019 SVT guidelines (international)' },
 
   { id:'systemic-sclerosis', title:'Systemic sclerosis (scleroderma)', category:'Allergy & immunology', icon:'🤚',
     overview:'A rare autoimmune connective-tissue disease causing fibrosis and vascular damage of the skin and internal organs. It ranges from limited cutaneous disease (including the CREST pattern) to diffuse disease with serious internal-organ involvement. Early recognition — often via Raynaud’s with red flags — and organ surveillance are key.',
@@ -203,7 +203,7 @@
       'Scleroderma renal crisis (accelerated hypertension + acute kidney injury) → emergency admission (ACE inhibitor)',
       'Pulmonary involvement (breathlessness — interstitial lung disease/pulmonary hypertension) → urgent specialist assessment',
       'Critical digital ischaemia/ulceration → urgent rheumatology/vascular'],
-    source:'NICE / BSR systemic sclerosis guidance' },
+    source:'2024 BSR guideline for management of systemic sclerosis' },
 
   { id:'lupus', title:'Lupus (systemic lupus erythematosus)', category:'Allergy & immunology', icon:'🦋',
     overview:'A chronic multisystem autoimmune disease with a relapsing-remitting course, predominantly affecting women of childbearing age. Its protean presentation makes diagnosis challenging — it should be considered in unexplained multisystem symptoms. Early diagnosis and control reduce organ damage, especially the feared lupus nephritis.',
@@ -228,7 +228,7 @@
       'Suspected lupus nephritis (proteinuria/haematuria, hypertension, renal impairment) → urgent rheumatology/nephrology',
       'Severe organ-threatening disease (neuropsychiatric, severe cytopenias, serositis, renal) → urgent specialist',
       'Pregnancy/planning pregnancy → specialist pre-pregnancy and obstetric care'],
-    source:'NICE / BSR SLE guidance' },
+    source:'BSR guideline for the management of SLE in adults (2018)' },
 
   { id:'self-harm', title:'Self-harm', category:'Mental health', icon:'🧠',
     overview:'Intentional self-poisoning or self-injury, regardless of motive or suicidal intent. It is common, especially in young people, and is the strongest single risk factor for future suicide — so every episode warrants a compassionate, non-judgemental psychosocial assessment, not just treatment of the physical injury.',
@@ -253,7 +253,7 @@
       'Children and young people who have self-harmed → CAMHS assessment',
       'Recurrent self-harm or significant psychiatric comorbidity → community mental-health services',
       'Safeguarding concerns → follow child/adult safeguarding procedures'],
-    source:'NICE NG225 (Self-harm) / NICE' }
+    source:'NICE NG225 (Self-harm, 2022) / TOXBASE (UK National Poisons Information Service)' }
 
   );
 })();

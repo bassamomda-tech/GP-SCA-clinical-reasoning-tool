@@ -54,7 +54,7 @@ MedChooser.register('type-1-diabetes', {
       monitor:'HbA1c, glucose/CGM time-in-range, injection sites, hypo frequency',
       counsel:'"You\'ll take a background insulin to cover the day and a quick one with meals — this flexible approach lets you match insulin to what you eat."',
       detail:{
-        'Components': 'Basal (detemir BD first-line; glargine/degludec alternatives) + rapid-acting analogue (aspart/lispro/glulisine) with meals',
+        'Components': 'Basal (detemir BD first-line in NICE NG17 — Levemir (insulin detemir) is being discontinued in the UK — supply ends ~Dec 2026; glargine/degludec alternatives) + rapid-acting analogue (aspart/lispro/glulisine) with meals',
         'Key teaching': 'NICE NG17: MDI basal–bolus is the regimen of choice for adults. Pair with carbohydrate counting + structured education.'
       },
       evaluate(f){
@@ -69,21 +69,21 @@ MedChooser.register('type-1-diabetes', {
     {
       id:'basal',
       name:'Basal insulin (detemir / glargine / degludec)',
-      examples:'Detemir BD (1st-line) · glargine OD · degludec OD',
+      examples:'Detemir BD (NG17 1st-line; Levemir being discontinued ~Dec 2026) · glargine OD · degludec OD',
       step:'Basal component',
       source:'NICE NG17 §1.7.4',
       sideEffects:'Hypoglycaemia (esp. nocturnal), weight gain',
       monitor:'Fasting glucose, nocturnal hypos',
       counsel:'"This is your background insulin that works steadily through the day and night."',
       detail:{
-        'Dose': 'Detemir BD first-line; glargine OD if BD not tolerated/preference; degludec for problematic nocturnal hypos',
+        'Dose': 'Detemir BD first-line (NICE NG17); glargine OD if BD not tolerated/preference; degludec for problematic nocturnal hypos. Levemir (insulin detemir) is being discontinued in the UK — supply ends ~Dec 2026 — start or switch to an alternative basal (glargine/degludec) per specialist advice',
         'Key teaching': 'Degludec\'s flat, ultra-long profile reduces nocturnal hypoglycaemia and suits variable timing.'
       },
       evaluate(f){
         const r = [];
         if (f.severe_hypos || f.shift) r.push({kind:'good', text:'Nocturnal hypos / variable timing — degludec\'s flat long profile helps'});
         if (f.wants_simple) r.push({kind:'good', text:'Once-daily glargine/degludec simpler than BD detemir'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Basal arm of MDI; detemir BD is NICE first-line'}] };
+        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Basal arm of MDI; detemir BD is NICE NG17 first-line (Levemir being discontinued ~Dec 2026 — plan an alternative basal)'}] };
       }
     },
     // -------- Rapid-acting --------
@@ -152,7 +152,7 @@ MedChooser.register('type-1-diabetes', {
       sideEffects:'Less flexibility, hypo risk with fixed ratios',
       monitor:'Glucose; rigid meal timing required',
       counsel:'"A simpler two-injection routine, but it ties you to fixed meal times and doses — not usually the best fit for type 1."',
-      detail:{ 'Key teaching':'NICE: do not routinely offer twice-daily mixed regimens to adults with T1DM. May suit very specific circumstances (e.g. dexterity, preference).' },
+      detail:{ 'Key teaching':'NICE NG17: do not routinely offer twice-daily mixed regimens to adults with T1DM. May suit very specific circumstances (e.g. dexterity, preference).' },
       evaluate(f){
         const r = [];
         if (f.wants_simple || f.dexterity) r.push({kind:'neutral', text:'Simpler routine where MDI/pump truly not feasible — but flexibility lost'});

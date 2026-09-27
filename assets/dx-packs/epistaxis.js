@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Epistaxis (nosebleed)
-   Shared-id triage + differential. ENT UK · NICE NG12.
+   Shared-id triage + differential. ENT UK · NICE NG12 (updated April 2026).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -21,7 +21,7 @@
   if (window.RGPTriage) RGPTriage.register('epistaxis-triage', {
     title: 'Epistaxis — triage',
     subtitle: 'Tick features. Surfaces uncontrolled/posterior bleeds and the sinonasal tumour red flag.',
-    guideline: 'ENT UK · NICE NG12',
+    guideline: 'ENT UK · NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No emergency rule fired. First aid (lean forward, pinch soft part 10–15 min); if vessel visible → cautery; topical antiseptic; manage cause; safety-net.',
     rules: [
@@ -37,27 +37,27 @@
         id: 'anticoag', tier: 'urgent',
         label: 'On anticoagulant / bleeding disorder',
         action: 'Check INR/clotting; manage bleed; review anticoagulation; ENT if recurrent/severe.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => i.anticoag || i.bleeding_elsewhere,
       },
       {
         id: 'tumour_2ww', tier: 'cancer',
         label: 'Persistent unilateral blood-stained discharge / obstruction — exclude sinonasal tumour',
         action: 'ENT referral (consider 2WW head & neck).',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.unilateral_persistent,
       },
       {
         id: 'manage', tier: 'routine',
         label: 'Anterior epistaxis — manage',
-        action: 'First aid, cautery if vessel seen, Naseptin/antiseptic; humidification; review.',
-        source: 'NICE',
+        action: 'First aid, cautery if vessel seen, Naseptin (not if peanut or soya allergy)/antiseptic; humidification; review.',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
@@ -118,7 +118,7 @@
     },
     sources: [
       
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

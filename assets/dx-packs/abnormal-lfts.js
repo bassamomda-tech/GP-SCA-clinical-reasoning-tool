@@ -61,7 +61,7 @@
         label: 'Painless obstructive jaundice + weight loss — suspected pancreatic / biliary cancer',
         action: '2WW + urgent imaging (CT / USS).',
         patientPhrase: '"Painless jaundice with weight loss needs an urgent scan to find the cause."',
-        source: 'NICE NG12', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
+        source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.painless_jaundice,
       },
       {
@@ -82,7 +82,7 @@
     sources: [
       { label: 'BSG — Abnormal liver blood tests', url: 'https://www.bsg.org.uk/clinical-resource/abnormal-liver-blood-tests/' },
       { label: 'NICE NG49 — Non-alcoholic fatty liver disease', url: 'https://www.nice.org.uk/guidance/ng49' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 
@@ -123,7 +123,7 @@
         guideUrl: '', guideLabel: 'BSH haemochromatosis guideline' },
 
       { id: 'malignancy', name: 'Pancreatic / biliary / liver malignancy', summary: 'Painless obstructive jaundice + weight loss, or focal lesion', baseline: 1, category: 'cant-miss',
-        keyExam: 'Cachexia, palpable gallbladder (Courvoisier), hepatomegaly, mass.', nextIx: '\u26A1 2WW + urgent imaging (CT/USS) for painless jaundice + weight loss (NICE NG12).',
+        keyExam: 'Cachexia, palpable gallbladder (Courvoisier), hepatomegaly, mass.', nextIx: '\u26A1 2WW + urgent imaging (CT/USS) for painless jaundice + weight loss (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Painless jaundice with weight loss needs an urgent scan to exclude a serious cause of the blockage.',
         guideUrl: '', redFlagAction: '\u26A1 2WW + imaging' },
       { id: 'acute_failure', name: 'Acute liver failure', summary: 'Very high ALT + jaundice + coagulopathy / encephalopathy', baseline: 1, category: 'cant-miss',
@@ -166,7 +166,7 @@
     sources: [
       { label: 'BSG — Abnormal liver blood tests', url: 'https://www.bsg.org.uk/clinical-resource/abnormal-liver-blood-tests/' },
       { label: 'NICE NG49 — NAFLD', url: 'https://www.nice.org.uk/guidance/ng49' },
-      { label: 'NICE NG12 — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
+      { label: 'NICE NG12 (updated April 2026) — Suspected cancer', url: 'https://www.nice.org.uk/guidance/ng12' }
     ],
   });
 

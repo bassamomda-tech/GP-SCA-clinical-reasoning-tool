@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Flashes & Floaters
-   Shared-id triage + differential. NICE · retinal detachment pathway.
+   Shared-id triage + differential. College of Optometrists CMGs · retinal detachment pathway.
    ============================================ */
 (function () {
   const INPUTS = [
@@ -29,21 +29,21 @@
         label: 'Retinal tear / detachment — curtain / field loss / reduced acuity / shower of floaters',
         action: 'Same-day emergency ophthalmology — tear/detachment is sight-threatening and treatable.',
         patientPhrase: '"A shadow or curtain over your vision can mean the retina is detaching — that needs same-day eye assessment to save sight."',
-        source:'NICE', sourceUrl:'',
+        source:'College of Optometrists CMG', sourceUrl:'',
         when: i => i.curtain_shadow || i.reduced_acuity || i.shower_floaters,
       },
       {
         id: 'acute_pvd', tier: 'urgent',
         label: 'Acute PVD — new flashes + floaters, vision intact',
         action: 'Ophthalmology assessment within 24h to exclude an associated tear.',
-        source: 'NICE',
+        source: 'College of Optometrists CMG',
         when: i => i.new_flashes_pvd,
       },
       {
         id: 'benign', tier: 'routine',
         label: 'Stable floaters / migraine aura',
         action: 'Reassure long-standing stable floaters; manage migraine aura; safety-net for curtain/field loss.',
-        source: 'NICE',
+        source: 'Clinical practice',
         when: i => true,
       }
     ],
@@ -55,7 +55,7 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('flashes-floaters-dx', {
     title: 'Flashes & floaters — differential',
     subtitle: 'The engine separates benign vitreous floaters and posterior vitreous detachment from retinal tear/detachment, and distinguishes migraine aura.',
-    guideline: 'NICE',
+    guideline: 'College of Optometrists CMGs',
     patientPresenting: "I've started seeing flashes and floaters, doctor — is my eye okay?",
     inputs: INPUTS,
     diagnoses: [

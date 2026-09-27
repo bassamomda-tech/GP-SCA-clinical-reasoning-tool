@@ -1,11 +1,11 @@
 /* ============================================
    Triage Tool — Type 2 Diabetes
-   NICE NG28 · NG17 · NG3 · NG12
+   NICE NG28 · NG17 · NG3 · NICE NG12 (updated April 2026)
    ============================================ */
 RGPTriage.register('type-2-diabetes-triage', {
   title: 'Type 2 Diabetes — triage',
   subtitle: 'New or established T2DM presentation: rule out emergencies (DKA, HHS, sepsis, AKI), suspected pancreatic/GI cancer in unexplained weight loss, urgent referrals (pregnancy, foot ulcer, retinopathy), or routine workup.',
-  guideline: 'NICE NG28 · NG17 · NG12',
+  guideline: 'NICE NG28 · NG17 · NICE NG12 (updated April 2026)',
 
   inputs: [
     { group:'Demographics & context', id:'age', kind:'number', label:'Age', unit:'yrs', step:1 },
@@ -38,7 +38,7 @@ RGPTriage.register('type-2-diabetes-triage', {
     { group:'Bloods / capillary', id:'na', kind:'number', label:'Sodium', unit:'mmol/L', step:1 }
   ],
 
-  defaultMessage: 'No urgent thresholds met — manage in primary care: confirm Dx, lifestyle ± metformin, cardio-renal screen, structured education, annual review.',
+  defaultMessage: 'No urgent thresholds met — manage in primary care: confirm Dx, lifestyle ± MR metformin + SGLT2 inhibitor (NG28 Feb 2026 dual first-line), cardio-renal screen, structured education, annual review.',
 
   rules: [
     // EMERGENCY
@@ -91,19 +91,19 @@ RGPTriage.register('type-2-diabetes-triage', {
     // CANCER (2WW)
     {
       tier:'cancer',
-      label:'New diabetes ≥60 + unexplained weight loss — consider pancreatic cancer 2WW',
-      action:'Urgent abdominal USS + CA19-9 + 2WW pancreatic/upper GI per NG12',
-      source:'NICE NG12 §1.2.10 pancreatic',
+      label:'New diabetes ≥60 + unexplained weight loss — consider pancreatic cancer (urgent direct-access CT)',
+      action:'Consider urgent direct-access CT abdomen (urgent USS if CT unavailable) per NICE NG12 (updated April 2026) 1.2.5; suspected cancer pathway referral if imaging suggests pancreatic cancer, or if aged 40+ with jaundice',
+      source:'NICE NG12 (updated April 2026) §1.2.5 pancreatic',
       sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       patientPhrase:'"New diabetes with weight loss in your age group needs us to rule out a pancreas problem urgently — this is standard, not a sign anything is wrong."',
-      referralTemplate:'2WW — pancreatic cancer (NG12 §1.2.10).\nAge [value], new T2DM, unexplained weight loss.\nUSS abdomen + CA19-9 + LFTs sent.',
+      referralTemplate:'Urgent direct-access CT abdomen — ?pancreatic cancer (NICE NG12 (updated April 2026) §1.2.5).\nAge [value], new T2DM, unexplained weight loss.\nCT (or USS if CT unavailable) requested; LFTs sent. CA19-9 is not part of the NICE NG12 (updated April 2026) pathway.',
       when: i => i.age != null && i.age >= 60 && i.weight_loss && i.hba1c != null && i.hba1c >= 48
     },
     {
       tier:'cancer',
       label:'Visible haematuria + diabetes ≥45 — urological 2WW',
       action:'2WW urological',
-      source:'NICE NG12 §1.6',
+      source:'NICE NG12 (updated April 2026) §1.6',
       patientPhrase:'"Blood in the urine in someone of your age needs an urgent specialist look."',
       when: i => i.haematuria && i.age != null && i.age >= 45
     },
@@ -167,11 +167,11 @@ RGPTriage.register('type-2-diabetes-triage', {
     {
       tier:'routine',
       label:'New diagnosis of T2DM — routine pathway',
-      action:'Lifestyle ± metformin · annual review · QRISK · ACR · foot · eyes',
+      action:'Lifestyle ± MR metformin + SGLT2i (dual first-line, NG28 Feb 2026) · annual review · QRISK · ACR · foot · eyes',
       source:'NICE NG28',
       sourceUrl:'https://www.nice.org.uk/guidance/ng28',
       patientPhrase:'"Your blood tests confirm Type 2 diabetes. The good news: we caught it early. Here\'s what happens now…"',
-      referralTemplate:'New T2DM.\nHbA1c [value], confirm with repeat if asymptomatic. Lifestyle, structured education (DESMOND), metformin if BMI/age appropriate.\nFull pack: U&E + ACR + lipids + LFTs + eyes referral + foot check + QRISK.',
+      referralTemplate:'New T2DM.\nHbA1c [value], confirm with repeat if asymptomatic. Lifestyle, structured education (DESMOND). If medication needed: MR metformin + SGLT2 inhibitor as dual first-line (NICE NG28, Feb 2026), after a DKA-risk check; triple therapy with s/c semaglutide if established ASCVD.\nFull pack: U&E + ACR + lipids + LFTs + eyes referral + foot check + QRISK.',
       when: i => i.hba1c != null && i.hba1c >= 48 && !i.weight_loss && !(i.lean_young) && !(i.glucose != null && i.glucose > 20)
     },
     {
@@ -190,7 +190,7 @@ RGPTriage.register('type-2-diabetes-triage', {
     { label:'NICE NG3 — Diabetes in pregnancy', url:'https://www.nice.org.uk/guidance/ng3' },
     { label:'NICE NG19 — Diabetic foot', url:'https://www.nice.org.uk/guidance/ng19' },
     { label:'NICE NG148 — Acute kidney injury', url:'https://www.nice.org.uk/guidance/ng148' },
-    { label:'NICE NG12 — Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) — Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'JBDS-IP DKA / HHS guidance', url:'https://abcd.care/joint-british-diabetes-societies-jbds-inpatient-care-group' },
     { label:'Macmillan Rapid Referral', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' }
   ],

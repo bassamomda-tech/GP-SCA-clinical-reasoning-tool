@@ -1,12 +1,12 @@
 /* ============================================
    Triage Tool — Tiredness ("TATT")
-   NICE NG12 (suspected cancer) · NICE TATT ·
+   NICE NG12 (updated April 2026) (suspected cancer) · NICE NG206 ·
    Macmillan Rapid Referral · NICE NG56 multimorbidity
    ============================================ */
 RGPTriage.register('tiredness', {
   title: 'Tiredness — symptom + blood-result triage',
-  subtitle: 'Tick symptoms, enter vitals/bloods. Tool surfaces every emergency, 2WW cancer pathway, urgent non-cancer, or routine rule that fires — referenced to NICE NG12 / NICE TATT / Macmillan.',
-  guideline: 'NICE NG12 · NG206 · Macmillan',
+  subtitle: 'Tick symptoms, enter vitals/bloods. Tool surfaces every emergency, 2WW cancer pathway, urgent non-cancer, or routine rule that fires — referenced to NICE NG12 (updated April 2026) and other numbered NICE guidelines / Macmillan.',
+  guideline: 'NICE NG12 (updated April 2026) · NG206 · Macmillan',
 
   inputs: [
     // ---------- Demographics / context ----------
@@ -49,7 +49,7 @@ RGPTriage.register('tiredness', {
     // ---------- Bloods ----------
     { group:'Bloods', id:'hb',    kind:'number', label:'Haemoglobin',   unit:'g/L',  step:1, note:'Anaemia thresholds: M <130, F <120' },
     { group:'Bloods', id:'mcv',   kind:'number', label:'MCV',          unit:'fL',   step:0.1 },
-    { group:'Bloods', id:'plt',   kind:'number', label:'Platelets',    unit:'×10⁹/L', step:1, note:'NG12: ≥400 + symptom = cancer flag' },
+    { group:'Bloods', id:'plt',   kind:'number', label:'Platelets',    unit:'×10⁹/L', step:1, note:'NICE NG12 (updated April 2026): ≥400 + symptom = cancer flag' },
     { group:'Bloods', id:'wcc',   kind:'number', label:'WCC',          unit:'×10⁹/L', step:0.1 },
     { group:'Bloods', id:'neut',  kind:'number', label:'Neutrophils',  unit:'×10⁹/L', step:0.1 },
     { group:'Bloods', id:'k',     kind:'number', label:'Potassium',    unit:'mmol/L', step:0.1 },
@@ -66,7 +66,7 @@ RGPTriage.register('tiredness', {
     { group:'Bloods', id:'vitd',  kind:'number', label:'25-OH Vit D',  unit:'nmol/L', step:1 }
   ],
 
-  defaultMessage: 'No red-flag rules fired — proceed with structured TATT workup (NICE recommends FBC, U&E, LFT, TFT, HbA1c, ferritin, B12/folate, CRP, calcium ± coeliac screen).',
+  defaultMessage: 'No red-flag rules fired — proceed with structured TATT workup (usual first-line bloods: FBC, U&E, LFT, TFT, HbA1c, ferritin, B12/folate, CRP, calcium ± coeliac screen).',
 
   // -------------- RULES --------------
   // Order doesn't matter — engine sorts by tier rank for the headline.
@@ -121,7 +121,7 @@ RGPTriage.register('tiredness', {
       action:'Same-day admission',
       patientPhrase:'"Your salt level is dangerously low — we need to correct this in hospital."',
       referralTemplate:'Hyponatraemia: Na⁺ [value] mmol/L\nNeurological symptoms: [Y/N]. Stop offending drugs (thiazide, SSRI, carbamazepine).',
-      source:'NICE NG12',
+      source:'Society for Endocrinology emergency guidance (2016)',
       sourceUrl:'',
       when: i => (i.na != null && i.na < 125) || (i.na != null && i.na < 130 && i.altered_consc)
     },
@@ -141,8 +141,8 @@ RGPTriage.register('tiredness', {
       label:'Neutropenic sepsis risk — neutrophils <1.0 + fever ≥38°C or immunosuppressed',
       action:'Call 999 — neutropenic sepsis pathway',
       patientPhrase:'"Your immune system is dangerously low and you\'ve got a fever — that\'s a medical emergency. I\'m calling an ambulance now."',
-      referralTemplate:'? Neutropenic sepsis.\nNeutrophils [value] ×10⁹/L, Temp [value] °C.\nImmunosuppressed: [Y/N].\nNICE NG143: empirical piperacillin/tazobactam within 1 hour of arrival.',
-      source:'NICE NG143 neutropenic sepsis',
+      referralTemplate:'? Neutropenic sepsis.\nNeutrophils [value] ×10⁹/L, Temp [value] °C.\nImmunosuppressed: [Y/N].\nNICE CG151: empirical piperacillin with tazobactam immediately on arrival.',
+      source:'NICE CG151 neutropenic sepsis',
       sourceUrl:'https://www.nice.org.uk/guidance/ng143',
       when: i => i.neut != null && i.neut < 1.0 && ((i.temp != null && i.temp >= 38) || i.immuno || i.fevers)
     },
@@ -153,7 +153,7 @@ RGPTriage.register('tiredness', {
       action:'Same-day admission',
       patientPhrase:'"Your calcium level is very high — we need to send you in today to bring it down safely and look for the cause."',
       referralTemplate:'Severe hypercalcaemia: adjusted Ca²⁺ [value] mmol/L\nAdmit for IV fluids ± bisphosphonate. Investigate cause: malignancy, primary hyperparathyroidism, sarcoid.',
-      source:'NICE NG132 · NG12',
+      source:'NICE NG132 · NICE NG12 (updated April 2026)',
       when: i => i.ca != null && i.ca > 3.0
     },
     {
@@ -168,15 +168,15 @@ RGPTriage.register('tiredness', {
     },
 
     // ============ SUSPECTED CANCER (2WW) ============
-    // NICE NG12 — direct rules
+    // NICE NG12 (updated April 2026) — direct rules
     {
       id:'unexplained_wl',
       tier:'cancer',
       label:'Unexplained weight loss + tiredness ≥60 yrs — consider lung, GI, urological 2WW',
       action:'2-week-wait — chest X-ray + FIT + USS as triage',
       patientPhrase:'"Tiredness with weight loss in your age group needs us to rule out a few things urgently — I\'m going to send some tests and a faster referral. This doesn\'t mean it IS cancer, but we don\'t wait."',
-      referralTemplate:'2WW — non-site-specific symptoms (NG12 §1.18)\nAge [value], unexplained weight loss + fatigue.\nBloods: FBC, U&E, LFT, Ca, CRP, ferritin attached.\nCXR ordered. FIT requested. Discuss further imaging at MDT.',
-      source:'NICE NG12 §1.18 (non-site-specific)',
+      referralTemplate:'2WW — non-site-specific symptoms (NICE NG12 (updated April 2026) §1.13)\nAge [value], unexplained weight loss + fatigue.\nBloods: FBC, U&E, LFT, Ca, CRP, ferritin attached.\nCXR ordered. FIT requested. Discuss further imaging at MDT.',
+      source:'NICE NG12 (updated April 2026) §1.13 (non-site-specific)',
       sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       when: i => i.age != null && i.age >= 60 && i.weight_loss
     },
@@ -186,19 +186,19 @@ RGPTriage.register('tiredness', {
       label:'Thrombocytosis (platelets ≥400) + cancer-relevant symptom — consider lung, oesophageal, gastric, colorectal, endometrial, ovarian 2WW',
       action:'2-week-wait + targeted imaging',
       patientPhrase:'"One of your blood markers is raised — combined with your symptoms it\'s a signal we shouldn\'t ignore. I\'d like to send a faster referral to be safe."',
-      referralTemplate:'2WW — raised platelets (NG12 §1.5.21)\nPlt [value] ×10⁹/L + [haemoptysis / weight loss / dysphagia / change in bowel habit / PMB / abdominal mass / cough].\nSite-specific 2WW: lung / upper GI / lower GI / gynae as triggered.',
-      source:'NICE NG12 §1.5.21 thrombocytosis',
+      referralTemplate:'2WW — raised platelets (NICE NG12 (updated April 2026), several sites)\nPlt [value] ×10⁹/L + [haemoptysis / weight loss / dysphagia / change in bowel habit / PMB / abdominal mass / cough].\nSite-specific 2WW: lung / upper GI / lower GI / gynae as triggered.',
+      source:'NICE NG12 (updated April 2026) thrombocytosis (lung / upper GI / endometrial)',
       sourceUrl:'https://www.nice.org.uk/guidance/ng12/chapter/recommendations-organised-by-site-of-cancer',
       when: i => i.plt != null && i.plt >= 400 && (i.weight_loss || i.haemoptysis || i.dysphagia || i.bowel_change || i.pmb || i.abdo_mass || i.cough_3wk)
     },
     {
       id:'cancer_ida_50',
       tier:'cancer',
-      label:'Iron-deficiency anaemia ≥50 (men or post-menopausal women) — colorectal 2WW',
-      action:'Suspected colorectal cancer pathway — FIT + lower GI 2WW',
+      label:'Iron-deficiency anaemia ≥50 (men or post-menopausal women) — FIT → colorectal 2WW',
+      action:'Offer FIT first (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56): FIT ≥10 µg Hb/g → suspected colorectal cancer pathway (2WW). Men and post-menopausal women with IDA → bidirectional endoscopy (BSG 2021)',
       patientPhrase:'"Your blood test shows iron-deficient anaemia. In your age group, the safest thing is to rule out a bowel cause urgently."',
-      referralTemplate:'2WW — colorectal cancer (NG12 §1.3.1).\nIDA: Hb [value] g/L, MCV [value] fL, ferritin [value] µg/L.\nFIT requested. Refer regardless of FIT result if IDA + age ≥60.\nDigital rectal exam performed and documented.',
-      source:'NICE NG12 §1.3 colorectal',
+      referralTemplate:'2WW — colorectal cancer (NICE NG12 (updated April 2026) §1.3).\nIDA: Hb [value] g/L, MCV [value] fL, ferritin [value] µg/L.\nFIT result: [value] µg Hb/g (refer if ≥10). Bidirectional endoscopy for IDA in men / post-menopausal women (BSG 2021).\nDigital rectal exam performed and documented.',
+      source:'NICE NG12 (updated April 2026) §1.3 colorectal',
       sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       when: i => i.age != null && i.age >= 50 && i.hb != null && i.hb < 120 && i.ferritin != null && i.ferritin < 30
     },
@@ -208,28 +208,28 @@ RGPTriage.register('tiredness', {
       label:'Visible haematuria ≥45 — bladder/renal 2WW',
       action:'Urological 2WW',
       patientPhrase:'"Blood in your urine at your age has to be referred quickly to rule out a problem in the bladder or kidneys."',
-      referralTemplate:'2WW — urological cancer (NG12 §1.6.1)\nAge [value], visible haematuria. UTI excluded: [Y/N].\nU&E, eGFR attached.',
-      source:'NICE NG12 §1.6 urological',
+      referralTemplate:'2WW — urological cancer (NICE NG12 (updated April 2026) §1.6)\nAge [value], visible haematuria. UTI excluded: [Y/N].\nU&E, eGFR attached.',
+      source:'NICE NG12 (updated April 2026) §1.6 urological',
       when: i => i.age != null && i.age >= 45 && i.haematuria
     },
     {
       id:'cancer_pr_bleed_50',
       tier:'cancer',
-      label:'Rectal bleeding ≥50 — colorectal 2WW',
-      action:'Lower GI 2WW',
+      label:'Rectal bleeding ≥50 — FIT → colorectal 2WW',
+      action:'Offer FIT first — lower GI 2WW if FIT ≥10 µg Hb/g (NICE NG12 (updated April 2026); NICE HTG690); refer directly if rectal or anal mass / anal ulceration',
       patientPhrase:'"At your age, rectal bleeding always needs to be referred urgently — this is standard, not a sign anything terrible has been found."',
-      referralTemplate:'2WW — colorectal cancer (NG12 §1.3.2).\nAge [value], rectal bleeding. Bowel habit change: [Y/N].',
-      source:'NICE NG12 §1.3 colorectal',
+      referralTemplate:'2WW — colorectal cancer (NICE NG12 (updated April 2026) §1.3).\nAge [value], rectal bleeding. Bowel habit change: [Y/N]. FIT result: [value] µg Hb/g.',
+      source:'NICE NG12 (updated April 2026) §1.3 colorectal',
       when: i => i.age != null && i.age >= 50 && i.pr_bleed
     },
     {
       id:'cancer_bowel_change_60',
       tier:'cancer',
-      label:'Change in bowel habit ≥60 (or ≥50 with anaemia / bleeding) — colorectal 2WW',
-      action:'Lower GI 2WW',
+      label:'Change in bowel habit ≥60 (or ≥50 with anaemia / bleeding) — FIT → colorectal 2WW',
+      action:'Offer FIT first — lower GI 2WW if FIT ≥10 µg Hb/g (NICE NG12 (updated April 2026); NICE HTG690)',
       patientPhrase:'"A change in your bowel pattern at this age needs a faster referral to rule out a bowel cause."',
       referralTemplate:'2WW — colorectal cancer.\nAge [value], persistent bowel-habit change.\nFIT result if available.',
-      source:'NICE NG12 §1.3 colorectal',
+      source:'NICE NG12 (updated April 2026) §1.3 colorectal',
       when: i => i.age != null && i.bowel_change && (i.age >= 60 || (i.age >= 50 && (i.pr_bleed || (i.hb != null && i.hb < 120))))
     },
     {
@@ -238,8 +238,8 @@ RGPTriage.register('tiredness', {
       label:'Haemoptysis ≥40 — urgent CXR + suspected lung cancer 2WW',
       action:'Urgent CXR (≤2 weeks) ± lung 2WW',
       patientPhrase:'"Coughing up blood at your age has to be checked urgently — I\'m organising a fast chest X-ray, and a respiratory clinic visit as well."',
-      referralTemplate:'2WW — lung cancer (NG12 §1.1).\nAge [value], haemoptysis. Smoker: [Y/N]. Weight loss: [Y/N].\nUrgent CXR ordered.',
-      source:'NICE NG12 §1.1 lung',
+      referralTemplate:'2WW — lung cancer (NICE NG12 (updated April 2026) §1.1).\nAge [value], haemoptysis. Smoker: [Y/N]. Weight loss: [Y/N].\nUrgent CXR ordered.',
+      source:'NICE NG12 (updated April 2026) §1.1 lung',
       when: i => i.age != null && i.age >= 40 && i.haemoptysis
     },
     {
@@ -248,8 +248,8 @@ RGPTriage.register('tiredness', {
       label:'Cough/hoarseness >3 weeks ≥40 + smoker — consider lung 2WW',
       action:'Urgent CXR (≤2 weeks)',
       patientPhrase:'"A cough that\'s lasted this long in someone who smokes is something we have to check with an X-ray quickly."',
-      referralTemplate:'Urgent CXR (NG12 §1.1) — suspected lung cancer.\nAge [value], cough/hoarseness >3 weeks, smoker.',
-      source:'NICE NG12 §1.1 lung',
+      referralTemplate:'Urgent CXR (NICE NG12 (updated April 2026) §1.1) — suspected lung cancer.\nAge [value], cough/hoarseness >3 weeks, smoker.',
+      source:'NICE NG12 (updated April 2026) §1.1 lung',
       when: i => i.age != null && i.age >= 40 && i.cough_3wk && i.smoker
     },
     {
@@ -258,18 +258,18 @@ RGPTriage.register('tiredness', {
       label:'Progressive dysphagia — upper GI 2WW',
       action:'Upper GI 2WW (≤2 weeks)',
       patientPhrase:'"Difficulty swallowing always needs an urgent referral to look at the food pipe."',
-      referralTemplate:'2WW — upper GI cancer (NG12 §1.2.1).\nProgressive dysphagia.\nWeight loss: [Y/N], reflux: [Y/N].',
-      source:'NICE NG12 §1.2 upper GI',
+      referralTemplate:'2WW — upper GI cancer (NICE NG12 (updated April 2026) §1.2.1).\nProgressive dysphagia.\nWeight loss: [Y/N], reflux: [Y/N].',
+      source:'NICE NG12 (updated April 2026) §1.2 upper GI',
       when: i => i.dysphagia
     },
     {
       id:'cancer_pmb',
       tier:'cancer',
       label:'Post-menopausal bleeding — endometrial 2WW',
-      action:'Gynae 2WW (TVUSS in 2 weeks)',
+      action:'Gynae 2WW (TVUSS in 2 weeks) if aged 55+ and not attributable to HRT (NICE NG12 (updated April 2026) §1.5.12); under 55 — assess, low threshold for referral',
       patientPhrase:'"Any bleeding after the menopause has to be referred urgently — even though most causes turn out to be benign."',
-      referralTemplate:'2WW — endometrial cancer (NG12 §1.7.4).\nPMB, on HRT: [Y/N], anticoagulant: [Y/N].',
-      source:'NICE NG12 §1.7 gynaecological',
+      referralTemplate:'2WW — endometrial cancer (NICE NG12 (updated April 2026) §1.5.12).\nPMB, on HRT: [Y/N], anticoagulant: [Y/N].',
+      source:'NICE NG12 (updated April 2026) §1.5 gynaecological',
       when: i => i.pmb
     },
     {
@@ -278,18 +278,18 @@ RGPTriage.register('tiredness', {
       label:'Unexplained abdominal / pelvic / breast mass — site-specific 2WW',
       action:'Site-specific 2WW + USS',
       patientPhrase:'"This lump needs a specialist look quickly — I\'m going to refer you on a fast pathway."',
-      referralTemplate:'2WW — site-specific cancer (NG12).\nMass location: [abdominal / pelvic / breast / testicular].\nAge [value], duration [value], FH cancer: [Y/N].',
-      source:'NICE NG12 (multiple sites)',
+      referralTemplate:'2WW — site-specific cancer (NICE NG12 (updated April 2026)).\nMass location: [abdominal / pelvic / breast / testicular].\nAge [value], duration [value], FH cancer: [Y/N].',
+      source:'NICE NG12 (updated April 2026) (multiple sites)',
       when: i => i.abdo_mass
     },
     {
       id:'cancer_lymph_node',
       tier:'cancer',
       label:'Persistent unexplained lymphadenopathy >6 weeks — haematological 2WW',
-      action:'Haematology 2WW (NG12 §1.10)',
+      action:'Haematology 2WW (NICE NG12 (updated April 2026) §1.10)',
       patientPhrase:'"This swollen gland has been there too long without an obvious cause — I\'d like a specialist to look at it quickly."',
-      referralTemplate:'2WW — haematological cancer (NG12 §1.10).\nLymphadenopathy >6 weeks, site [neck/axilla/groin], size [cm].\nB-symptoms: weight loss [Y/N], night sweats [Y/N], fevers [Y/N].\nFBC + film + LDH attached.',
-      source:'NICE NG12 §1.10 haematological',
+      referralTemplate:'2WW — haematological cancer (NICE NG12 (updated April 2026) §1.10).\nLymphadenopathy >6 weeks, site [neck/axilla/groin], size [cm].\nB-symptoms: weight loss [Y/N], night sweats [Y/N], fevers [Y/N].\nFBC + film + LDH attached.',
+      source:'NICE NG12 (updated April 2026) §1.10 haematological',
       when: i => i.lymph_node
     },
     {
@@ -299,7 +299,7 @@ RGPTriage.register('tiredness', {
       action:'Haematology 2WW + urgent FBC + film',
       patientPhrase:'"This combination of symptoms can occasionally point to a problem in the blood cells — I want a specialist to rule it out."',
       referralTemplate:'2WW — suspected lymphoma / haematological cancer.\nFevers + drenching night sweats + weight loss.\nFBC, film, LDH, urgent CXR.',
-      source:'NICE NG12 §1.10 haematological',
+      source:'NICE NG12 (updated April 2026) §1.10 haematological',
       when: i => (i.fevers && i.weight_loss) || (i.lymph_node && i.weight_loss)
     },
     {
@@ -308,8 +308,8 @@ RGPTriage.register('tiredness', {
       label:'Unexplained bone pain + anaemia / hypercalcaemia — consider myeloma',
       action:'Urgent myeloma screen (FBC, ESR, plasma viscosity, Ca, U&E, immunoglobulins, electrophoresis, Bence-Jones) — refer ≤2 weeks',
       patientPhrase:'"Tiredness with bone pain and these blood changes can sometimes mean a blood-cell problem called myeloma — I\'ll send some blood tests and a fast referral."',
-      referralTemplate:'2WW — suspected myeloma (NG12 §1.10.5).\nBone pain + anaemia (Hb [value]) ± hypercalcaemia (Ca [value]).\nMyeloma screen sent.',
-      source:'NICE NG12 §1.10.5 myeloma',
+      referralTemplate:'2WW — suspected myeloma (NICE NG12 (updated April 2026) §1.10).\nBone pain + anaemia (Hb [value]) ± hypercalcaemia (Ca [value]).\nMyeloma screen sent.',
+      source:'NICE NG12 (updated April 2026) §1.10 myeloma',
       when: i => i.bone_pain && ((i.hb != null && i.hb < 120) || (i.ca != null && i.ca > 2.6))
     },
     {
@@ -319,7 +319,7 @@ RGPTriage.register('tiredness', {
       action:'Same-day haematology phone advice — likely admission',
       patientPhrase:'"Several of your blood lines are very low — that needs an urgent specialist opinion today, not in a few weeks."',
       referralTemplate:'Pancytopenia — urgent haematology.\nHb [value] g/L, WCC [value], Plt [value]. Petechiae: [Y/N], fevers: [Y/N].\nFilm + reticulocytes + LDH + urgent haematology call.',
-      source:'NICE NG12 §1.10 + BSH',
+      source:'NICE NG12 (updated April 2026) §1.10 + BSH',
       when: i => i.hb != null && i.hb < 100 && i.plt != null && i.plt < 100 && i.wcc != null && i.wcc < 3.5
     },
     {
@@ -329,7 +329,7 @@ RGPTriage.register('tiredness', {
       action:'Same-day haematology referral',
       patientPhrase:'"Your platelets are low enough to cause bleeding — we need a specialist to look at why today."',
       referralTemplate:'? Acute leukaemia / ITP.\nPlt [value], petechiae/bruising [Y/N].\nNo recent infection / drug cause.',
-      source:'NICE NG12 §1.10 + BSH',
+      source:'NICE NG12 (updated April 2026) §1.10 + BSH',
       when: i => i.bruising && i.plt != null && i.plt < 50
     },
 
@@ -383,7 +383,7 @@ RGPTriage.register('tiredness', {
       action:'Urgent: PTH, vitamin D, myeloma screen, malignancy review',
       patientPhrase:'"Your calcium is high — there are a few causes and we need to investigate them quickly."',
       referralTemplate:'Hypercalcaemia: adjusted Ca²⁺ [value].\nDiff: malignancy (myeloma, bone mets), primary hyperparathyroidism, sarcoid, thiazide, vit D toxicity.\nSent: PTH, vit D, myeloma screen, CXR.',
-      source:'NICE NG132 · NG12',
+      source:'NICE NG132 · NICE NG12 (updated April 2026)',
       when: i => i.ca != null && i.ca >= 2.6 && i.ca <= 3.0
     },
     {
@@ -477,13 +477,13 @@ RGPTriage.register('tiredness', {
       action:'NHS Diabetes Prevention Programme · lifestyle · annual HbA1c',
       patientPhrase:'"You\'re not diabetic — but you\'re in a window where we can prevent it. There\'s an NHS programme that helps with this."',
       referralTemplate:'Pre-diabetes.\nHbA1c [value] mmol/mol. Refer NHS DPP, BMI / BP / lipids documented, lifestyle plan, annual HbA1c.',
-      source:'NICE NG28 / NHS DPP',
+      source:'NICE PH38 / NHS DPP',
       when: i => i.hba1c != null && i.hba1c >= 42 && i.hba1c < 48
     }
   ],
 
   sources: [
-    { label:'NICE NG12 — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
+    { label:'NICE NG12 (updated April 2026) — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'Macmillan Rapid Referral Guidelines', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
     
     { label:'NICE NG253 — Sepsis', url:'https://www.nice.org.uk/guidance/ng253' },

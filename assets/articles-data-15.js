@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 15: J & K topics)
    NHS conditions A–Z (letters J and K) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (May 2025) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -51,9 +51,9 @@
     referral:[
       'Suspected giant cell arteritis (new headache/jaw claudication, scalp tenderness, visual symptoms in over-50s) → urgent same-day assessment, start steroids, urgent referral',
       'Persistent/severe TMD, locking, or failure of conservative measures → oral and maxillofacial surgery / dental specialist',
-      'A jaw mass, persistent unexplained swelling, or red-flag features → urgent assessment (exclude tumour/other pathology; consider relevant NICE NG12 pathway)',
+      'A jaw mass, persistent unexplained swelling, or red-flag features → urgent assessment (exclude tumour/other pathology; consider relevant NICE NG12 (updated April 2026) pathway)',
       'Bruxism/occlusal problems → dentistry for a splint'],
-    source:'NICE — Temporomandibular disorders' },
+    source:'Clinical practice summary' },
 
   { id:'jia', title:'Juvenile idiopathic arthritis (JIA)', category:'Musculoskeletal', icon:'🧒',
     overview:'The commonest chronic inflammatory arthritis of childhood — persistent joint inflammation beginning before age 16 and lasting at least 6 weeks, with no other identified cause. Early recognition and treatment prevent joint damage and disability, and a crucial, often silent, complication is chronic anterior uveitis, which threatens sight.',
@@ -75,10 +75,10 @@
       'Support the child and family with information, psychological support, and transition planning to adult services'],
     referral:[
       'Suspected JIA (persistent joint swelling/arthritis ≥6 weeks, unexplained limp) → paediatric rheumatology',
-      'Suspected malignancy (e.g. leukaemia: bone pain, systemic upset, cytopenias) → very urgent FBC/blood film and referral (NICE NG12); suspected septic arthritis → emergency',
+      'Suspected malignancy (e.g. leukaemia: bone pain, systemic upset, cytopenias) → very urgent FBC/blood film and referral (NICE NG12 (updated April 2026)); suspected septic arthritis → emergency',
       'Established JIA → regular ophthalmology uveitis screening',
       'Suspected macrophage activation syndrome (persistent fever, very high ferritin, cytopenias) → emergency admission'],
-    source:'NICE / BSPAR — Juvenile idiopathic arthritis' },
+    source:'BSPAR — Juvenile idiopathic arthritis' },
 
   { id:'kawasaki', title:'Kawasaki disease', category:'Paediatrics', icon:'🧒',
     overview:'An acute systemic vasculitis of young children (mostly under 5) of unknown cause. Its importance lies in the risk of coronary-artery aneurysms — so prompt recognition and treatment with immunoglobulin within the first 10 days dramatically reduces cardiac complications. It is a key "fever for ≥5 days in a child" diagnosis not to miss.',
@@ -103,7 +103,7 @@
       'Cardiac complications/coronary aneurysm → paediatric cardiology',
       'Diagnostic uncertainty in a persistently febrile unwell child → urgent paediatric assessment',
       'Shock or severe illness → emergency admission'],
-    source:'NICE / RCPCH — Kawasaki disease' },
+    source:'RCPCH — Kawasaki disease' },
 
   { id:'kidney-cancer', title:'Kidney cancer (renal cell carcinoma)', category:'Cardiovascular & Renal', icon:'🎗️',
     overview:'The commonest kidney cancer (renal cell carcinoma) often presents late or incidentally, as early disease is usually silent. The cardinal symptom to act on is visible (frank) haematuria. The classic triad of haematuria, loin pain and a mass is a late finding — so recognising unexplained haematuria and referring urgently is the key task.',
@@ -124,11 +124,11 @@
       'Support risk reduction and general health: smoking cessation, weight and blood-pressure management',
       'Provide information, psychological support, and survivorship/surveillance follow-up'],
     referral:[
-      'Aged 45+ with unexplained visible haematuria (without UTI, or persisting/recurring after treatment of UTI) → urgent suspected renal/bladder cancer (2WW) referral (NICE NG12)',
+      'Aged 45+ with unexplained visible haematuria (without UTI, or persisting/recurring after treatment of UTI) → urgent suspected renal/bladder cancer (2WW) referral (NICE NG12 (updated April 2026))',
       'An unexplained renal mass on imaging → urgent urology referral',
       'Confirmed kidney cancer → uro-oncology MDT',
       'Non-visible haematuria with risk factors → investigate/refer per local haematuria pathway'],
-    source:'NICE NG12 / renal cancer guidance' },
+    source:'NICE NG12 (updated April 2026) / renal cancer guidance' },
 
   { id:'pyelonephritis', title:'Kidney infection (pyelonephritis)', category:'Urology', icon:'🫘',
     overview:'Infection of the upper urinary tract (kidney), usually ascending from the bladder. It is more serious than a lower UTI — it can cause sepsis, renal abscess and lasting kidney damage. The key tasks are recognising it (loin pain, fever, systemic illness), treating promptly, and identifying who needs admission or imaging.',
@@ -141,7 +141,7 @@
       'Investigations: urine dipstick and culture (send before antibiotics), bloods/inflammatory markers if unwell, and imaging (ultrasound/CT) for suspected obstruction/stones, complicated cases, or failure to respond'],
     management:[
       'Assess severity and for sepsis; send a urine culture before starting antibiotics',
-      'Start empirical antibiotics promptly per local guidance (e.g. a 7–10 day course of an appropriate agent such as a fluoroquinolone or cefalexin), then tailor to culture results',
+      'Start empirical antibiotics promptly per local guidance (per NICE NG111, e.g. cefalexin for 7–10 days; ciprofloxacin for 7 days only where other antibiotics are unsuitable — MHRA Drug Safety Update, January 2024), then tailor to culture results',
       'Manage at home those who are systemically well enough, with analgesia, fluids, and clear safety-netting and review',
       'Admit those who are septic, vomiting/unable to take oral treatment/fluids, pregnant and unwell, significantly comorbid, or not improving — for IV antibiotics and assessment',
       'Suspect and urgently image for obstruction (e.g. an infected obstructed/stone-bearing kidney) in severe, non-responding, or high-risk cases — this needs emergency urological drainage',
@@ -202,8 +202,8 @@
       'Suspected Klinefelter syndrome (hypogonadism with raised LH/FSH) → endocrinology (± karyotype) for testosterone replacement',
       'Fertility concerns → fertility services (early — for sperm retrieval/preservation)',
       'Delayed puberty/gynaecomastia in adolescents → paediatric endocrinology',
-      'Associated complications (osteoporosis, diabetes, breast lump) → relevant specialty (a breast lump → 2WW breast pathway, NICE NG12)'],
-    source:'NICE / Society for Endocrinology — Klinefelter syndrome' }
+      'Associated complications (osteoporosis, diabetes, breast lump) → relevant specialty (a breast lump → 2WW breast pathway, NICE NG12 (updated April 2026))'],
+    source:'Society for Endocrinology — Klinefelter syndrome' }
 
   );
 })();

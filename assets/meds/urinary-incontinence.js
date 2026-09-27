@@ -1,11 +1,11 @@
 /* ============================================
    Medication Chooser — Urinary Incontinence (women)
-   NICE NG123 · NICE UI in women · BNF
+   NICE NG123 · BNF
    ============================================ */
 MedChooser.register('urinary-incontinence', {
   title: 'Urinary incontinence (women) — drug selection',
   subtitle: 'Conservative therapy comes first (pelvic floor training for stress; bladder training for urgency). Drugs are adjuncts. Tick the profile; cards re-tier live.',
-  guideline: 'NICE NG123 · NICE UI in women · BNF',
+  guideline: 'NICE NG123 · BNF',
 
   factors: [
     // Type

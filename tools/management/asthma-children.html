@@ -20,14 +20,14 @@
 MG.render({
   icon:"🫁",
   title:"Asthma in children — the complete guide",
-  eyebrow:"Protocol · NICE/BTS/SIGN NG245 · under-recognised severity is what kills",
+  eyebrow:"Protocol · NICE NG245 (2024, joint with BTS and SIGN) · under-recognised severity is what kills",
   stemTitle:"Acute asthma kills children when severity is under-recognised — and a silent chest means less air moving, not less asthma",
   stemSub:"One page for the whole condition. The acute attack comes first, because <b>under-recognition is the mechanism of death</b>: silent chest, cyanosis, poor respiratory effort, exhaustion or drowsiness with SpO₂ below 92% is a 999 call, and a spacer delivers salbutamol as effectively as a nebuliser in most attacks. Then the stepwise preventer ladder — but always recheck inhaler technique, adherence, spacer use and smoke exposure BEFORE stepping up, because those are the commonest reasons for apparent poor control. Every child needs a <b>written action plan</b>, a <b>smoke-free home</b>, and a <b>review after every attack</b>.",
-  guideline:"NICE/BTS/SIGN NG245",
+  guideline:"NICE NG245 (2024, joint with BTS and SIGN) · SIGN 158 (2019) acute asthma section",
   reviewed:"14 September 2026",
   nextReview:"14 March 2027",
   meta:[
-    {t:"NICE/BTS/SIGN NG245 (2024 joint guideline)"},
+    {t:"NICE NG245 (2024, joint with BTS and SIGN)"},
     {t:"Silent chest or SpO₂ &lt;92% = 999", tone:"tw"},
     {t:"Check technique and adherence before every step-up", tone:"tw"},
     {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
@@ -40,13 +40,13 @@ MG.render({
     {tone:"blue", h:"A spacer is as good as a nebuliser in most attacks", html:"SABA via spacer — 2 to 10 puffs, repeated — or a nebuliser; plus oral prednisolone; then reassess. <b>Admit if not responding or if relapsing.</b> The spacer is not the second-best option when no nebuliser is available: it is equally effective in most attacks, which matters in a practice without one."},
     {tone:"amber", h:"Check technique and adherence BEFORE stepping up", html:"Inhaler technique, adherence, spacer use and trigger exposure — especially tobacco smoke — are the commonest reasons for apparent poor control. Recheck all four before every escalation, and step DOWN when control is sustained. Escalating a drug against poor technique produces a higher dose and the same symptoms."},
     {tone:"green", h:"Spacer for all young children, and a written plan for every child", html:"Salbutamol 100 micrograms, 1–2 puffs as needed via spacer (with a mask if young) — frequent use means poor control and needs review. Every child needs a written personalised action plan for the family AND the school, which should hold a reliever and spacer. Annual influenza vaccination; keep immunisations up to date."},
-    {tone:"red", h:"⚠ A smoke-free home is the biggest modifiable trigger", html:"<b>No smoking in the home or car — offer parental cessation support.</b> This is the single largest modifiable factor in childhood asthma control, and it is worth raising every time rather than once."}
+    {tone:"amber", h:"⚠ A smoke-free home is the biggest modifiable trigger", html:"<b>No smoking in the home or car — offer parental cessation support.</b> This is the single largest modifiable factor in childhood asthma control, and it is worth raising every time rather than once."}
   ],
   pathwaySub:"Five steps, and the acute attack is deliberately first.",
   pathway:[
     {title:"Recognise and treat the acute attack", html:"Life-threatening or acute severe features → 999 or urgent admission; SABA via spacer plus oral prednisolone.", alert:true},
     {title:"Confirm the diagnosis and assess control", html:"Symptom pattern, variability, triggers, atopy; objective testing per NG245 where age-appropriate. Under-5s are often treated on clinical suspicion with review."},
-    {title:"Work the NG245 stepwise ladder", html:"SABA → low-dose ICS → LTRA or paediatric MART → paediatric respiratory referral. <b>Recheck technique and adherence at every step.</b>"},
+    {title:"Work the NG245 stepwise ladder", html:"Paediatric low-dose ICS plus SABA from diagnosis (5–11) → paediatric low-dose MART, or an LTRA add-on if MART cannot be managed → paediatric respiratory referral. <b>Recheck technique and adherence at every step.</b>"},
     {title:"Deliver the non-drug essentials", html:"Spacer technique, smoke-free home, written action plan, vaccination, school provision."},
     {title:"Review control, growth and every attack", html:"At least annually; within 48 hours after an acute attack and again at 1–2 weeks."}
   ],
@@ -78,8 +78,8 @@ MG.render({
      blocks:[
        {b:"table", head:["Step","What","When"], rows:[
          ["<b>Reliever — SABA via spacer</b>","Salbutamol 100 micrograms, 1–2 puffs as needed via spacer (plus mask if young). Frequent use means poor control — review","<b>All children</b>"],
-         ["<b>Regular preventer — low-dose ICS</b>","Paediatric low-dose inhaled corticosteroid as a regular preventer, in an age-appropriate device","<b>Symptoms or exacerbations not controlled on SABA alone</b>"],
-         ["<b>Add-on — LTRA or paediatric MART</b>","Per NG245 age bands: add an LTRA, or move to low-dose ICS/formoterol MART in eligible older children. Review the response and STOP add-ons that don't help","<b>Still uncontrolled on low-dose ICS</b>"],
+         ["<b>Regular preventer — low-dose ICS</b>","Paediatric low-dose inhaled corticosteroid as a regular preventer, in an age-appropriate device","<b>From diagnosis in children 5–11: twice-daily paediatric low-dose ICS plus SABA as needed (NG245); not SABA alone</b>"],
+         ["<b>Add-on — LTRA or paediatric MART</b>","Per NG245 (5–11): consider paediatric low-dose MART if the child can manage the regimen; if not, consider adding an LTRA to the low-dose ICS (warn about montelukast neuropsychiatric effects). Review the response and STOP add-ons that don't help","<b>Still uncontrolled on low-dose ICS</b>"],
          ["<b>Specialist — paediatric respiratory</b>","Refer before high-dose therapy, or if the diagnosis is unclear or the disease severe","<b>Escalation needed</b>"]
        ]},
        {b:"warn", html:"Always recheck inhaler technique, adherence, spacer use and trigger exposure (especially tobacco smoke) before stepping up. <b>Step down when control is sustained.</b>"}
@@ -89,7 +89,7 @@ MG.render({
      blocks:[
        {b:"cards", cols:2, items:[
          {tone:"blue", h:"🫧 Spacer technique", html:"Demonstrate and check at every review; a spacer (with mask if needed) for all young children."},
-         {tone:"red", h:"🚭 Smoke-free", html:"No smoking in the home or car — the single biggest modifiable trigger; offer parental cessation."},
+         {tone:"amber", h:"🚭 Smoke-free", html:"No smoking in the home or car — the single biggest modifiable trigger; offer parental cessation."},
          {tone:"green", h:"📄 Action plan", html:"A written personalised asthma action plan for the child, parents and school."},
          {tone:"green", h:"💉 Vaccination", html:"<b>Annual influenza vaccine; keep immunisations up to date.</b>"},
          {tone:"blue", h:"🏫 School", html:"<b>The school should hold a reliever plus spacer and the action plan.</b>"},
@@ -133,14 +133,14 @@ MG.render({
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li>NICE/BTS/SIGN NG245 — Asthma: diagnosis, monitoring and chronic asthma management (2024 joint guideline)<br><a href="https://www.nice.org.uk/guidance/ng245" rel="noopener">nice.org.uk/guidance/ng245</a><span class="rd"> — the objective diagnostic testing by age band, the stepwise paediatric ladder from SABA through low-dose ICS to an LTRA or paediatric MART, the requirement to check technique, adherence and trigger exposure before stepping up, stepping down when control is sustained, and the referral thresholds including before high-dose therapy</span></li>'+
-         '<li><b>BTS/SIGN acute asthma guidance</b><span class="rd"> — the acute severe and life-threatening features including silent chest, cyanosis, poor respiratory effort and SpO\u2082 below 92%; SABA via spacer at 2\u201310 puffs repeated as equivalent to nebulised delivery in most attacks; oral prednisolone; and the post-attack review at 48 hours and 1\u20132 weeks</span></li>'+
+         '<li>NICE NG245 (joint with BTS and SIGN) — Asthma: diagnosis, monitoring and chronic asthma management (2024 joint guideline)<br><a href="https://www.nice.org.uk/guidance/ng245" rel="noopener">nice.org.uk/guidance/ng245</a><span class="rd"> — the objective diagnostic testing by age band, the stepwise paediatric ladder from SABA through low-dose ICS to an LTRA or paediatric MART, the requirement to check technique, adherence and trigger exposure before stepping up, stepping down when control is sustained, and the referral thresholds including before high-dose therapy</span></li>'+
+         '<li><b>BTS/SIGN British guideline on the management of asthma (SIGN 158, 2019) — acute asthma sections only; its chronic-management sections are replaced by NICE NG245 (2024)</b><span class="rd"> — the acute severe and life-threatening features including silent chest, cyanosis, poor respiratory effort and SpO\u2082 below 92%; SABA via spacer at 2\u201310 puffs repeated as equivalent to nebulised delivery in most attacks; oral prednisolone; and the post-attack review at 48 hours and 1\u20132 weeks</span></li>'+
          '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> — salbutamol 100 microgram inhaler dosing, paediatric ICS dose bands, LTRA dosing and prednisolone courses by age</span></li>'+
          '<li><b>UKHSA Green Book, chapter 19 — influenza</b><span class="rd"> — annual influenza vaccination for children with asthma requiring regular preventer therapy</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Asthma in children — NICE/BTS/SIGN NG245 (2024), BTS/SIGN acute asthma guidance and the BNF for Children. Acute asthma kills children when severity is under-recognised: silent chest, cyanosis, poor respiratory effort, exhaustion or drowsiness with SpO₂ below 92% is a 999 call, and a spacer delivers salbutamol as effectively as a nebuliser in most attacks. Always recheck inhaler technique, adherence, spacer use and smoke exposure before stepping up, and step down when control is sustained. Every child needs a written action plan, a spacer, a smoke-free home and annual influenza vaccination. Review after every attack — within 48 hours and again at 1–2 weeks. Verify drugs, doses and age bands against current NG245 and the BNF for Children."
+  foot:"Asthma in children — NICE NG245 (2024, joint with BTS and SIGN), the acute asthma sections of SIGN 158 (2019; chronic management replaced by NG245) and the BNF for Children. Acute asthma kills children when severity is under-recognised: silent chest, cyanosis, poor respiratory effort, exhaustion or drowsiness with SpO₂ below 92% is a 999 call, and a spacer delivers salbutamol as effectively as a nebuliser in most attacks. Always recheck inhaler technique, adherence, spacer use and smoke exposure before stepping up, and step down when control is sustained. Every child needs a written action plan, a spacer, a smoke-free home and annual influenza vaccination. Review after every attack — within 48 hours and again at 1–2 weeks. Verify drugs, doses and age bands against current NG245 and the BNF for Children."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
