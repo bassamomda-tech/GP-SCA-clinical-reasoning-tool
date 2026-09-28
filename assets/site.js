@@ -347,7 +347,7 @@ window.RGP_CASES = [
       { id:"t1dm",             title:"Type 1 Diabetes",               setting:"New diagnosis / insulin",status:"full",  path:"cases/type-1-diabetes.html", guideline:"NICE NG17" },
       { id:"hypothyroidism",   title:"Hypothyroidism",                setting:"Diagnosis & review",     status:"full",  path:"cases/hypothyroidism.html", guideline:"NICE NG145" },
       { id:"hyperthyroidism",  title:"Hyperthyroidism",               setting:"Diagnosis & review",     status:"full",  path:"cases/hyperthyroidism.html", guideline:"NICE NG145" },
-      { id:"osteoporosis",     title:"Osteoporosis",                  setting:"FRAX & treatment",       status:"full",  path:"cases/osteoporosis.html", guideline:"NICE CG146 / NOGG 2021" },
+      { id:"osteoporosis",     title:"Osteoporosis",                  setting:"FRAX & treatment",       status:"full",  path:"cases/osteoporosis.html", guideline:"NICE NG259 (replaced CG146) / NOGG 2024" },
       { id:"fatigue",          title:"Fatigue & Tiredness",          setting:"Symptom framework",     status:"full",  path:"cases/fatigue.html", guideline:"NICE / NG12 / NG206" },
       { id:"obesity",          title:"Obesity",                      setting:"Tiered pathway · GLP-1 · bariatric", status:"full", path:"cases/obesity.html", guideline:"NICE CG189 / NG246" },
       { id:"addisons-disease", title:"Addison's Disease",             setting:"Adrenal insufficiency · crisis", status:"full", path:"cases/addisons-disease.html", guideline:"NICE NG243 / NICE" },
@@ -477,11 +477,11 @@ window.RGP_CASES = [
     ]
   },
   {
-    group: "Oncology & 2WW",
+    group: "Oncology & suspected cancer",
     items: [
-      { id:"breast-cancer",    title:"Breast Cancer",                 setting:"2WW · triple assessment", status:"full", path:"cases/breast-cancer.html", guideline:"NICE NG101 / NG12" },
-      { id:"breast-disorders", title:"Breast Disorders",              setting:"Lump · pain · discharge · 2WW", status:"full", path:"cases/breast-disorders.html", guideline:"NICE NG101 / NG12" },
-      { id:"haematological-cancers", title:"Haematological Cancers",   setting:"Leukaemia · lymphoma · myeloma · 2WW", status:"full", path:"cases/haematological-cancers.html", guideline:"NICE NG12 / NG35" },
+      { id:"breast-cancer",    title:"Breast Cancer",                 setting:"Suspected cancer · triple assessment", status:"full", path:"cases/breast-cancer.html", guideline:"NICE NG101 / NG12" },
+      { id:"breast-disorders", title:"Breast Disorders",              setting:"Lump · pain · discharge · suspected cancer", status:"full", path:"cases/breast-disorders.html", guideline:"NICE NG101 / NG12" },
+      { id:"haematological-cancers", title:"Haematological Cancers",   setting:"Leukaemia · lymphoma · myeloma · suspected cancer", status:"full", path:"cases/haematological-cancers.html", guideline:"NICE NG12 / NG35" },
     ]
   },
   {
@@ -2477,7 +2477,7 @@ function planLine(u){
     const days = Math.ceil((u.sub.nextBilling - Date.now()) / 864e5);
     sub = 'Renews ' + on + (days > 0 ? ' · in ' + (days === 1 ? '1 day' : days + ' days') : '');
   } else sub = (String(u.tierSource || '').indexOf('paypal') !== -1) ? 'Active subscription · renews automatically' : 'Active · no end date';
-  // Substring, not identity: tierSource STACKS when access is granted from more
+  // Substring, not identity: tierSource accumulates when access is granted from more
   // than one place (e.g. 'paypal+referral-credit' once a subscriber's referral is
   // claimed). A strict === here told a paying member their subscription had no
   // renewal the moment they referred someone.

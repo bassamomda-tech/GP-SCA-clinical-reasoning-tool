@@ -278,7 +278,7 @@
       'Rickets in children → paediatrics for treatment and monitoring',
       'Atypical, non-responsive, or suspected genetic/phosphate-related disease → endocrinology/metabolic bone specialist',
       'Underlying malabsorption → gastroenterology'],
-    source:'NICE PH56 (Vitamin D: supplement use in specific population groups) / Royal Osteoporosis Society vitamin D guideline / BNF' },
+    source:'NICE NG247 (Maternal and child nutrition, 2025) / Royal Osteoporosis Society vitamin D guideline / BNF' },
 
   { id:'ringworm', title:'Ringworm and other tinea (fungal skin infections)', category:'Dermatology', icon:'🍄',
     overview:'Common superficial fungal (dermatophyte) infections of the skin, named by site: tinea corporis (body/"ringworm"), tinea pedis (athlete’s foot), tinea cruris (groin/"jock itch"), and tinea capitis (scalp). They are benign and treatable, but accurate diagnosis matters — and steroid creams alone make them worse.',

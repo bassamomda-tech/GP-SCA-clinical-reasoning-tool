@@ -62,7 +62,7 @@ MedChooser.register('ckd', {
       name:'SGLT2 inhibitor (dapagliflozin)',
       examples:'Dapagliflozin 10 mg OD (add to ACEi/ARB)',
       step:'Pillar 2 — cardio-renal',
-      source:'NICE NG203 · TA775',
+      source:'NICE NG203 · TA1075',
       sideEffects:'Genital thrush, volume depletion, rare DKA (esp. T1DM/illness)',
       monitor:'Expect a small initial eGFR dip (haemodynamic, reversible); sick-day rules',
       counsel:'"This tablet has been shown to protect kidneys and the heart, even if you don\'t have diabetes. There may be a small dip in the kidney test at first — that\'s expected and settles. Keep good genital hygiene, and pause it if you\'re unwell or not eating/drinking."',
@@ -139,7 +139,7 @@ MedChooser.register('ckd', {
 
   sources: [
     { label:'NICE NG203 — Chronic kidney disease: assessment and management', url:'https://www.nice.org.uk/guidance/ng203' },
-    { label:'NICE TA775 — Dapagliflozin for CKD', url:'https://www.nice.org.uk/guidance/ta775' },
+    { label:'NICE TA1075 — Dapagliflozin for CKD', url:'https://www.nice.org.uk/guidance/ta1075' },
     { label:'NICE TA877 — Finerenone for CKD in type 2 diabetes', url:'https://www.nice.org.uk/guidance/ta877' },
     { label:'NICE NG203 — chronic kidney disease', url:'https://www.nice.org.uk/guidance/ng203' }
   ],

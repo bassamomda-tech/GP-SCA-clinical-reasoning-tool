@@ -174,7 +174,7 @@ MedChooser.register('male-luts', {
       name:'Tadalafil (if comorbid ED)',
       examples:'Tadalafil 5 mg OD',
       step:'LUTS + ED',
-      source:'BNF (licensed); not recommended by NICE TA273 for BPH-LUTS',
+      source:'BNF (licensed); NICE TA273 (2013) is a terminated appraisal — the company made no evidence submission, so NICE was unable to recommend tadalafil for BPH-LUTS',
       sideEffects:'Headache, flushing, dyspepsia; hypotension with nitrates',
       monitor:'Avoid with nitrates / nicorandil',
       counsel:'"A daily low dose can help both the waterworks symptoms and erections at the same time."',

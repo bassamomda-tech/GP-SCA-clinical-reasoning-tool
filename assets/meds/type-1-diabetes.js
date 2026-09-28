@@ -132,7 +132,7 @@ MedChooser.register('type-1-diabetes', {
       sideEffects:'As pump + CGM; requires engagement with technology',
       monitor:'Specialist HCL service',
       counsel:'"The pump and a glucose sensor talk to each other and adjust insulin automatically — the closest thing to an artificial pancreas."',
-      detail:{ 'Key teaching':'TA943: HCL for adults with HbA1c ≥58 (≥8%) or disabling hypos despite optimised therapy, and all pregnant women / children where appropriate.' },
+      detail:{ 'Key teaching':'TA943: HCL for adults with HbA1c ≥58 mmol/mol (7.5%) or disabling hypos despite optimised therapy, and all pregnant women / children where appropriate.' },
       evaluate(f){
         const r = [];
         if (f.tech_engaged) r.push({kind:'good', text:'Engaged with technology — well suited to HCL'});

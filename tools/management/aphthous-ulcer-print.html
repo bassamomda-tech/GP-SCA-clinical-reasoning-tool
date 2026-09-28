@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790379962369223 tools/management/aphthous-ulcer.html">
+<meta name="omelette-print-source" content="v1790547032747897 tools/management/aphthous-ulcer.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -30,14 +30,14 @@ MG.render({
   reviewed:"25 September 2026",
   nextReview:"25 September 2027",
   meta:[
-    {t:"Unexplained ulcer >3 weeks → 2WW", tone:"tw"},
+    {t:"Unexplained ulcer >3 weeks → suspected cancer pathway referral", tone:"tw"},
     {t:"Less pain is not healing", tone:"tw"},
     {t:"v2.1 · reviewed Sep 2026", tone:"ok"}
   ],
-  lead:'<div class="mg-layers"><a href="#examine"><b>Examine</b><small>And classify</small></a><a href="#urgent"><b>Urgent</b><small>Not just cancer</small></a><a href="#screen"><b>Causes</b><small>Recurrent or severe</small></a><a href="#drug"><b>Topical</b><small>Diagnosed aphthae only</small></a><a href="#refer"><b>Refer</b><small>2WW · dental · oral med</small></a></div>',
+  lead:'<div class="mg-layers"><a href="#examine"><b>Examine</b><small>And classify</small></a><a href="#urgent"><b>Urgent</b><small>Not just cancer</small></a><a href="#screen"><b>Causes</b><small>Recurrent or severe</small></a><a href="#drug"><b>Topical</b><small>Diagnosed aphthae only</small></a><a href="#refer"><b>Refer</b><small>Suspected cancer · dental · oral med</small></a></div>',
   quickSub:"The five that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"purple", h:"The 3-week rule — NICE NG12 <span class='tw'>2WW</span>", html:"<b>Unexplained ulceration in the oral cavity lasting more than 3 weeks</b> → consider a suspected oral cancer pathway referral. Reduced pain does not confirm healing — document whether the lesion has fully resolved. Smoking and alcohol raise the risk but are not required. Restated in <a href='#refer'>Refer</a>."},
+    {tone:"purple", h:"The 3-week rule — NICE NG12 <span class='tw'>Suspected cancer</span>", html:"<b>Unexplained ulceration in the oral cavity lasting more than 3 weeks</b> → consider a suspected oral cancer pathway referral. Reduced pain does not confirm healing — document whether the lesion has fully resolved. Smoking and alcohol raise the risk but are not required. Restated in <a href='#refer'>Refer</a>."},
     {tone:"amber", h:"Lumps and patches are a different route", html:"A lump on the lip or in the mouth, or a red or red-and-white patch consistent with erythroplakia or erythroleukoplakia → <b>urgent dental assessment</b> (NICE NG12). A persistent unexplained neck lump → suspected cancer pathway."},
     {tone:"red", h:"⚠ Urgent, and not only cancer", html:"Airway compromise or rapidly progressive swelling · unable to maintain hydration or nutrition · extensive erosions with skin or eye involvement (possible SJS/TEN) · severe gingivitis with fever · immunocompromised with extensive ulceration · ulceration on methotrexate (possible toxicity) → same-day assessment."},
     {tone:"blue", h:"Minor, major, herpetiform", html:"Minor: usually under 10 mm, heal in about 7–14 days without scarring. Major: over 10 mm, deeper, can take 10–40 days and scar. Herpetiform: many small grouped ulcers, not caused by herpes. <b>A presumed major aphthous ulcer still needs referral if it stays unexplained beyond 3 weeks.</b>"},
@@ -115,7 +115,7 @@ MG.render({
      sub:"Distinguish benign recurrence from a sinister, systemic or drug cause.",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"purple", h:"1 · The 3-week rule <span class='tw'>2WW</span>", html:"Unexplained oral ulceration beyond 3 weeks → suspected oral cancer pathway (NICE NG12)."},
+         {tone:"purple", h:"1 · The 3-week rule <span class='tw'>Suspected cancer</span>", html:"Unexplained oral ulceration beyond 3 weeks → suspected oral cancer pathway (NICE NG12)."},
          {tone:"amber", h:"2 · Deficiency", html:"Iron, B12, folate and coeliac disease screened and corrected, with recurrence reassessed?"},
          {tone:"blue", h:"3 · Systemic disease", html:"IBD, Behçet's, or a medicine cause?"},
          {tone:"amber", h:"4 · Trauma", html:"A sharp tooth or denture → dental review."},
@@ -126,7 +126,7 @@ MG.render({
     {id:"refer", nav:"Refer", title:"When to refer",
      blocks:[
        {b:"cards", items:[
-         {tone:"purple", h:"2WW · NICE NG12 — suspected oral cancer", html:"<b>Unexplained ulceration in the oral cavity lasting more than 3 weeks</b>, or a <b>persistent unexplained neck lump</b> → suspected cancer pathway referral, whether or not symptoms have improved. A lump on the lip or in the mouth, or a red or red-and-white patch consistent with erythroplakia or erythroleukoplakia → urgent dental assessment. Use the local head-and-neck pathway and document duration, exact site, size, induration, risk factors, and examination of the rest of the mouth and the neck."},
+         {tone:"purple", h:"Suspected cancer pathway referral · NICE NG12 — oral cancer", html:"<b>Unexplained ulceration in the oral cavity lasting more than 3 weeks</b>, or a <b>persistent unexplained neck lump</b> → suspected cancer pathway referral, whether or not symptoms have improved. A lump on the lip or in the mouth, or a red or red-and-white patch consistent with erythroplakia or erythroleukoplakia → urgent dental assessment. Use the local head-and-neck pathway and document duration, exact site, size, induration, risk factors, and examination of the rest of the mouth and the neck."},
          {tone:"blue", h:"Oral medicine or OMFS", html:"Severe, frequent or disabling recurrent aphthosis · major or complex aphthosis · recurrence despite correcting a deficiency · suspected Behçet's, IBD or autoimmune blistering disease · suspected lichen planus or other chronic mucosal disease · diagnostic uncertainty. Routine minor aphthae can stay in primary care after appropriate assessment."},
          {tone:"amber", h:"Systemic disease", html:"Suspected Behçet's, IBD or another systemic cause → the relevant specialty. See <a href='crohns-disease.html'>Crohn's disease</a>."},
          {tone:"cream", h:"GP management", html:"Examination, the 3-week rule, the cause screen, self-care and the topical ladder belong here. Related pages: <a href='coeliac-disease.html'>coeliac disease</a> · <a href='iron-deficiency-anaemia.html'>iron deficiency anaemia</a> · <a href='crohns-disease.html'>Crohn's disease</a> · <a href='../algorithms/mouth-ulcers.html'>mouth ulcers pathway</a>."}
