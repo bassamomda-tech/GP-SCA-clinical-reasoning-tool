@@ -772,7 +772,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="ns-item"><span class="ns-val">&lt;1%</span><span class="ns-lbl">Serious pathology</span></div>
     <div class="ns-item"><span class="ns-val">4–6 wks</span><span class="ns-lbl">Start active Rx by</span></div>
     <div class="ns-item"><span class="ns-val">3 months</span><span class="ns-lbl">Chronic LBP threshold</span></div>
-    <div class="ns-item"><span class="ns-val">A&amp;E now</span><span class="ns-lbl">Cauda equina — emergency, not a 2WW</span></div>
+    <div class="ns-item"><span class="ns-val">A&amp;E now</span><span class="ns-lbl">Cauda equina — emergency, not a suspected cancer pathway referral</span></div>
     <div class="ns-item"><span class="ns-val">STarT</span><span class="ns-lbl">Back screening tool</span></div>
     <div class="ns-item"><span class="ns-val">Consider</span><span class="ns-lbl">oral NSAIDs (not paracetamol alone)</span></div>
     <div class="ns-item"><span class="ns-val">≥3/12</span><span class="ns-lbl">Exercise programme + return-to-work support if chronic</span></div>
@@ -1571,8 +1571,8 @@ body.mode-clinic .sca-only{display:none!important}
             </tr>
             <tr>
               <td style="font-weight:600">Suspected spinal malignancy (no neurological compromise)</td>
-              <td><span class="ref-urg rurg-2">Urgent 2-week wait</span></td>
-              <td style="font-size:12px">Arrange urgent bloods (FBC, CRP, PSA, calcium, SPEP); MRI spine within 1–2 weeks; 2WW cancer referral if primary malignancy suspected; inform patient sensitively.</td>
+              <td><span class="ref-urg rurg-2">Urgent suspected cancer pathway referral</span></td>
+              <td style="font-size:12px">Arrange urgent bloods (FBC, CRP, PSA, calcium, SPEP); MRI spine within 1–2 weeks; suspected cancer pathway referral if primary malignancy suspected; inform patient sensitively.</td>
               <td style="font-size:12px;color:var(--r)">Do NOT send routine referral; do NOT reassure patient that "it's probably just back pain" before investigation results are available.</td>
             </tr>
             <tr>
@@ -1605,7 +1605,7 @@ body.mode-clinic .sca-only{display:none!important}
               <li>Routine physiotherapy referral for a patient with foot drop (needs urgent neurosurgery)</li>
               <li>Failing to give dexamethasone in suspected MSCC before transfer</li>
               <li>Not informing the patient what happens next after referral</li>
-              <li>Issuing a 2WW without discussing what this might mean with the patient</li>
+              <li>Issuing a suspected cancer pathway referral without discussing what this might mean with the patient</li>
             </ul>
           </div>
         </div>
@@ -2831,7 +2831,7 @@ body.mode-clinic .sca-only{display:none!important}
   </div><!-- /sum-sca -->
 
   <div class="page-footer">
-    <p><strong>Low Back Pain · GP Clinical Reasoning Framework v2</strong> · NICE NG59 Low Back Pain and Sciatica (2016, updated July 2026) · NICE NG41 Spinal Injury · NICE NG12 Suspected Cancer (2WW) · STarT Back Screening Tool (Keele University) · BNF Online 2024</p>
+    <p><strong>Low Back Pain · GP Clinical Reasoning Framework v2</strong> · NICE NG59 Low Back Pain and Sciatica (2016, updated July 2026) · NICE NG41 Spinal Injury · NICE NG12 Suspected Cancer · STarT Back Screening Tool (Keele University) · BNF Online 2024</p>
     <p style="margin-top:4px">v3: Dual tailored summaries (Clinic + SCA) with visual algorithms · v2: Clinical stem · Open Q first · ICE in all modes · Psychosocial yellow flags (1E + 7G) · Lay language DDx (Step 5) · Safeguarding (Step 1) · Expectation management (7A) · SCA RAG checkpoints after every step · SCA Scorecard as standalone section</p>
     <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence over any framework · Cauda equina is a time-critical emergency — when in doubt, refer immediately</p>
   </div>
@@ -2948,8 +2948,8 @@ function calcDrug(){
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
     main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
+    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -3045,7 +3045,7 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=104"></script>
+<script src="../assets/site.js?v=105"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 

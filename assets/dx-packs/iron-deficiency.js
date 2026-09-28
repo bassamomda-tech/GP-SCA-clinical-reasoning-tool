@@ -23,10 +23,10 @@
 
   if (window.RGPTriage) RGPTriage.register('iron-deficiency-triage', {
     title: 'Iron deficiency — triage',
-    subtitle: 'Confirm deficiency, then find the cause. Surfaces GI 2WW and coeliac pathways.',
+    subtitle: 'Confirm deficiency, then find the cause. Surfaces GI suspected cancer pathway referral and coeliac pathways.',
     guideline: 'NICE NG12 (updated April 2026) · BSG',
     inputs: INPUTS,
-    defaultMessage: 'No 2WW rule fired. Confirm iron deficiency (ferritin <30, or low transferrin saturation if inflammation), screen coeliac (tTG) in all, replace iron, recheck FBC at 2–4 weeks; investigate cause by age/sex.',
+    defaultMessage: 'No suspected cancer pathway rule fired. Confirm iron deficiency (ferritin <30, or low transferrin saturation if inflammation), screen coeliac (tTG) in all, replace iron, recheck FBC at 2–4 weeks; investigate cause by age/sex.',
     rules: [
       {
         id: 'gi_2ww', tier: 'cancer',

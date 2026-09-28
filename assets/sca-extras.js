@@ -200,9 +200,9 @@ window.SCA_EXTRAS = {
       { t:'10–12',h:'Safety-net & close',    d:'A&E triggers: more than a streak of blood, breathless at rest, chest pain. Results follow-up BOOKED with you — never left to a letter. Check what he\'ll tell his wife.' }
     ],
     wordPics: {
-      fail: 'Prescribes the antibiotics and moves on; the haemoptysis line floats past unexamined; no weight or voice questions; "come back if it doesn\'t settle" — the 2WW pathway is never mentioned and the window closes.',
+      fail: 'Prescribes the antibiotics and moves on; the haemoptysis line floats past unexamined; no weight or voice questions; "come back if it doesn\'t settle" — the suspected cancer pathway is never mentioned and the window closes.',
       pass: 'Declines antibiotics with a reason; elicits most red flags including the blood; arranges urgent CXR under NG12; explains it as ruling out something serious; books follow-up and gives A&E triggers.',
-      exc:  'Catches the throwaway about blood and visibly slows the consultation for it; names the cancer question honestly without theatrics ("it\'s the thing I\'d be careless to skip"); the 2WW explanation leaves him informed but not abandoned; cessation is offered as backing, not blame; results route is nailed down to a date.'
+      exc:  'Catches the throwaway about blood and visibly slows the consultation for it; names the cancer question honestly without theatrics ("it\'s the thing I\'d be careless to skip"); the suspected cancer pathway explanation leaves him informed but not abandoned; cessation is offered as backing, not blame; results route is nailed down to a date.'
     },
     avoid: [
       { dont:'"I\'ll give you a course of antibiotics and if it\'s not better in two weeks, come back."', instead:'"An antibiotic would be me treating the easy thing. Three months, voice change, blood — you need an urgent X-ray, this week."', why:'Accepting the patient\'s framing is the designed trapdoor of this station.' },

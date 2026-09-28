@@ -332,7 +332,7 @@
     referral:[
       'Abnormal cervical screening (HPV positive with relevant cytology) → colposcopy per programme',
       'Persistent, extensive, or diagnostically uncertain warts → GUM/dermatology',
-      'Suspicious cervical, anal, vulval, penile or oropharyngeal lesions → appropriate 2WW cancer pathway'],
+      'Suspicious cervical, anal, vulval, penile or oropharyngeal lesions → appropriate suspected cancer pathway referral'],
     source:'UKHSA / NHS Cervical Screening Programme' },
 
   { id:'huntingtons', title:'Huntington\u2019s disease', category:'Neurology', icon:'🧠',
@@ -512,7 +512,7 @@
       'Consider and treat an underlying secondary cause (e.g. coeliac disease) if features are atypical or there are red flags',
       'Confirm by exclusion-and-reintroduction; most tolerate small amounts with meals; use lactase supplements/lactose-free dairy and ensure adequate calcium/vitamin D'],
     referral:[
-      'Red flags — unintentional weight loss, rectal bleeding, iron-deficiency anaemia, nocturnal symptoms → investigate / 2WW as appropriate',
+      'Red flags — unintentional weight loss, rectal bleeding, iron-deficiency anaemia, nocturnal symptoms → investigate / suspected cancer pathway referral as appropriate',
       'Diagnostic uncertainty or a suspected secondary cause (e.g. coeliac disease, IBD) → gastroenterology',
       'Children with faltering growth or extensive dietary restriction → paediatric/dietetic referral'],
     source:'Clinical practice summary' },

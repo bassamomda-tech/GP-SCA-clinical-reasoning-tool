@@ -885,7 +885,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td class="rf-flag">Methotrexate in pregnancy</td><td class="rf-why">Methotrexate is a potent teratogen. Any woman of childbearing age on methotrexate who becomes pregnant or plans to conceive requires immediate withdrawal of methotrexate. Exposure in the first trimester causes miscarriage, neural tube defects, and limb defects.</td><td><span class="rf-action rfa-999">Stop immediately; urgent GI + obstetrics</span></td></tr>
           <tr><td class="rf-flag">Peritonism in Crohn&rsquo;s patient</td><td class="rf-why">Intestinal perforation can occur at any stricture point or ulcer in Crohn&rsquo;s. Peritonism (guarding, rebound, rigidity) is a surgical emergency. In a known Crohn&rsquo;s patient, this is perforation until proven otherwise.</td><td><span class="rf-action rfa-999">999 immediately</span></td></tr>
           <tr><td class="rf-flag">B-symptoms (night sweats, fever, weight loss) in established Crohn&rsquo;s</td><td class="rf-why">Although constitutional symptoms are common in active Crohn&rsquo;s, patients on long-term immunosuppressants have an elevated risk of lymphoma (particularly hepatosplenic T-cell lymphoma with combination azathioprine + anti-TNF). B-symptoms require urgent investigation.</td><td><span class="rf-action rfa-same">Urgent haematology investigation; CT</span></td></tr>
-          <tr><td class="rf-flag">Rectal bleeding + new change in Crohn&rsquo;s patient &ge;40</td><td class="rf-why">Crohn&rsquo;s is a pre-malignant condition; CRC risk is elevated. Any new rectal bleeding or change in bowel habit in an established Crohn&rsquo;s patient aged &ge;40 warrants consideration of CRC alongside disease activity.</td><td><span class="rf-action rfa-same">Urgent colonoscopy; consider 2WW CRC</span></td></tr>
+          <tr><td class="rf-flag">Rectal bleeding + new change in Crohn&rsquo;s patient &ge;40</td><td class="rf-why">Crohn&rsquo;s is a pre-malignant condition; CRC risk is elevated. Any new rectal bleeding or change in bowel habit in an established Crohn&rsquo;s patient aged &ge;40 warrants consideration of CRC alongside disease activity.</td><td><span class="rf-action rfa-same">Urgent colonoscopy; consider colorectal suspected cancer pathway referral</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -2295,8 +2295,8 @@ function calcDrug(){
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
     main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
+    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -2392,7 +2392,7 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=104"></script>
+<script src="../assets/site.js?v=105"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 

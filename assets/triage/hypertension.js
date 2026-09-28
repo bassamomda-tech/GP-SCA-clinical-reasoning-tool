@@ -73,21 +73,21 @@ RGPTriage.register('hypertension-triage', {
       when: i => i.k != null && i.k > 6.5
     },
 
-    // CANCER (2WW)
+    // SUSPECTED CANCER PATHWAY
     {
       tier:'cancer',
-      label:'Visible haematuria ≥45 with HTN — urological 2WW',
-      action:'2-week-wait urological',
+      label:'Visible haematuria ≥45 with HTN — urological suspected cancer pathway referral',
+      action:'Urological suspected cancer pathway referral',
       source:'NICE NG12 (updated April 2026) §1.6 · NG136',
       sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       patientPhrase:'"Blood in the urine at your age needs an urgent specialist look to rule out a kidney or bladder cause."',
-      referralTemplate:'2WW — urological cancer (NICE NG12 (updated April 2026) §1.6).\nVisible haematuria, HTN, age [value]. UTI excluded.',
+      referralTemplate:'Suspected cancer pathway referral — urological cancer (NICE NG12 (updated April 2026) §1.6).\nVisible haematuria, HTN, age [value]. UTI excluded.',
       when: i => i.haematuria && i.age != null && i.age >= 45
     },
     {
-      tier:'cancer',
+      tier:'urgent',
       label:'Suspected phaeochromocytoma — paroxysmal triad ± raised metanephrines',
-      action:'Urgent endocrine — 2-week-wait local pathway',
+      action:'Urgent endocrine referral (local pathway)',
       source:'NICE NG136 · Endocrine Society 2014 (international)',
       patientPhrase:'"The pattern you describe — bursts of sweating, palpitations and pallor with raised BP — can be a rare adrenal tumour. We\'ll do specific tests and refer urgently."',
       referralTemplate:'? Phaeochromocytoma.\nParoxysmal triad. Plasma/24h metanephrines: [pending / value].\nRefer endocrinology. Alpha-blocker before beta-blocker if treatment needed.',

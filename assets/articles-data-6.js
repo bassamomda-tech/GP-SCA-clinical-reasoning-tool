@@ -252,7 +252,7 @@
       'Spasticity management → specialist (neurology, orthopaedics, physiotherapy)',
       'Associated conditions → relevant services (epilepsy, ophthalmology, audiology, dietetics, orthopaedics for hip surveillance)',
       'Progressive deterioration or loss of skills → re-evaluate (CP is non-progressive — consider an alternative diagnosis)'],
-    source:'NICE NG62 (Cerebral palsy in under 25s) / NG119 (management)' },
+    source:'NICE NG62 (Cerebral palsy in under 25s, 2017) / NICE NG119 (Cerebral palsy in adults, 2019)' },
 
   { id:'cervical-cancer', title:'Cervical cancer', category:'Women’s health', icon:'🎗️',
     overview:'A largely preventable cancer caused by persistent high-risk HPV infection, prevented by vaccination and screening and curable when caught early. The primary-care role is promoting prevention and screening, and recognising the symptoms — especially abnormal bleeding — that mandate urgent referral.',
@@ -273,7 +273,7 @@
       'Address fertility and treatment-related concerns sensitively',
       'Ensure women who do not attend screening are encouraged and supported to do so'],
     referral:[
-      'Clinical appearance of the cervix consistent with cervical cancer → urgent 2WW gynae-oncology referral (NICE NG12 (updated April 2026)) — do not wait for screening',
+      'Clinical appearance of the cervix consistent with cervical cancer → gynae-oncology suspected cancer pathway referral (NICE NG12 (updated April 2026)) — do not wait for screening',
       'Unexplained postmenopausal, post-coital or persistent intermenstrual bleeding → assess and refer per the suspected-cancer pathway',
       'Abnormal screening results → colposcopy via the screening programme',
       'Confirmed cancer → gynae-oncology MDT'],
@@ -349,10 +349,10 @@
       'Reinforce smoking cessation and ensure relevant vaccinations (influenza, pneumococcal, COVID-19)'],
     referral:[
       'High CRB-65, hypoxia, sepsis, or inability to manage at home → hospital admission',
-      'Cough ≥3 weeks unexplained, haemoptysis, or weight loss (especially smoker/ex-smoker ≥40) → urgent chest X-ray and 2WW suspected lung-cancer pathway if indicated (NICE NG12 (updated April 2026))',
+      'Cough ≥3 weeks unexplained, haemoptysis, or weight loss (especially smoker/ex-smoker ≥40) → urgent chest X-ray and suspected cancer pathway referral for lung cancer if indicated (NICE NG12 (updated April 2026))',
       'Failure to improve, recurrent infection, or non-resolving CXR changes → respiratory',
       'Underlying chronic lung disease needing optimisation → respiratory review'],
-    source:'NICE NG250 (pneumonia, 2025; replaced NG138/CG191) / NG120 (cough) / NICE NG12 (updated April 2026)' },
+    source:'NICE NG250 (pneumonia, 2025; replaced NG138, partly replaced CG191) / NG120 (cough) / NICE NG12 (updated April 2026)' },
 
   { id:'chiari', title:'Chiari malformation', category:'Neurology', icon:'🧠',
     overview:'A structural defect in which part of the cerebellum (the tonsils) herniates through the foramen magnum. Chiari I — the type usually seen in adults — is often an incidental finding, but can cause characteristic cough-related headache and, importantly, a syrinx (syringomyelia) with progressive neurological damage.',

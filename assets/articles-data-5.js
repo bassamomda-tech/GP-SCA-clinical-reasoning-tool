@@ -48,7 +48,7 @@
       'Provide self-care advice (warm baths) and safety-net for spreading infection or systemic illness',
       'Biopsy any solid or atypical lesion, and have a low threshold for referral in older women'],
     referral:[
-      'Solid, fixed, irregular or persistent Bartholin mass, especially in a woman >40 → 2WW gynae-oncology referral to exclude vulval/Bartholin carcinoma (NICE NG12 (updated April 2026) — unexplained vulval lump/ulceration)',
+      'Solid, fixed, irregular or persistent Bartholin mass, especially in a woman >40 → gynae-oncology suspected cancer pathway referral to exclude vulval/Bartholin carcinoma (NICE NG12 (updated April 2026) — unexplained vulval lump/ulceration)',
       'Large or recurrent abscess/cyst needing definitive surgery → gynaecology',
       'Systemic sepsis or extensive cellulitis → urgent assessment',
       'Confirmed STI → GUM for treatment and partner notification'],
@@ -349,7 +349,7 @@
       'Ensure patients understand and attend their surveillance colonoscopies',
       'Safety-net for new symptoms between surveillance episodes'],
     referral:[
-      'Colorectal symptoms → FIT first (NICE NG12 (updated April 2026) / NICE HTG690): offer FIT for an abdominal mass, a change in bowel habit or iron-deficiency anaemia; aged 40+ with weight loss and abdominal pain; under 50 with rectal bleeding plus abdominal pain or weight loss; 50+ with rectal bleeding, abdominal pain or weight loss; or 60+ with anaemia; refer on the 2WW colorectal pathway if FIT ≥10 µg Hb/g; a rectal mass, unexplained anal mass or anal ulceration → refer without waiting for FIT',
+      'Colorectal symptoms → FIT first (NICE NG12 (updated April 2026) / NICE HTG690): offer FIT for an abdominal mass, a change in bowel habit or iron-deficiency anaemia; aged 40+ with weight loss and abdominal pain; under 50 with rectal bleeding plus abdominal pain or weight loss; 50+ with rectal bleeding, abdominal pain or weight loss; or 60+ with anaemia; refer on the colorectal suspected cancer pathway if FIT ≥10 µg Hb/g; a rectal mass, unexplained anal mass or anal ulceration → refer without waiting for FIT',
       'Polyps found → colonoscopic polypectomy and histology, then risk-based surveillance',
       'Suspected hereditary polyposis / Lynch syndrome → clinical genetics + specialist surveillance',
       'Positive screening FIT → colonoscopy via the screening programme'],
@@ -374,7 +374,7 @@
       'In immunosuppressed patients (e.g. transplant recipients) maintain closer surveillance — higher progression risk',
       'Provide patient information on the condition and its low but real malignant potential'],
     referral:[
-      'Suspected invasive SCC (nodule, induration, ulceration, rapid growth, bleeding) → 2WW suspected skin-cancer referral (NICE NG12 (updated April 2026))',
+      'Suspected invasive SCC (nodule, induration, ulceration, rapid growth, bleeding) → suspected cancer pathway referral for skin cancer (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty or lesions unsuitable for primary-care treatment → dermatology',
       'Immunosuppressed patients with Bowen’s disease → dermatology for surveillance',
       'Treatment failure or recurrence → dermatology'],
@@ -450,7 +450,7 @@
       'Address safeguarding where the history or pattern is concerning, and arrange rehabilitation/physiotherapy'],
     referral:[
       'Open fracture, gross deformity, dislocation, or neurovascular compromise → emergency orthopaedics/ED',
-      'Suspected pathological fracture (minimal trauma, preceding bone pain, known/possible malignancy) → urgent investigation; suspected myeloma → FBC, calcium, ESR/plasma viscosity, protein electrophoresis and serum free light chains together (BJP if free light chains unavailable), suspected bone metastasis/sarcoma → relevant 2WW pathway (NICE NG12 (updated April 2026))',
+      'Suspected pathological fracture (minimal trauma, preceding bone pain, known/possible malignancy) → urgent investigation; suspected myeloma → FBC, calcium, ESR/plasma viscosity, protein electrophoresis and serum free light chains together (BJP if free light chains unavailable), suspected bone metastasis/sarcoma → relevant suspected cancer pathway (NICE NG12 (updated April 2026))',
       'Fragility fracture → fracture-liaison/bone-health assessment for osteoporosis management',
       'Suspected non-accidental injury → follow safeguarding procedures'],
     source:'NICE NG38 (fractures) / NICE NG12 (updated April 2026)' },
@@ -500,7 +500,7 @@
       'Reinforce smoking cessation and review patients who fail to improve'],
     referral:[
       'Suspected pneumonia with high CRB-65 or systemic compromise → admission',
-      'Cough ≥3 weeks (unexplained), especially with haemoptysis, weight loss, or in a smoker/ex-smoker aged ≥40 → urgent chest X-ray and 2WW suspected lung-cancer pathway if indicated (NICE NG12 (updated April 2026))',
+      'Cough ≥3 weeks (unexplained), especially with haemoptysis, weight loss, or in a smoker/ex-smoker aged ≥40 → urgent chest X-ray and suspected cancer pathway referral for lung cancer if indicated (NICE NG12 (updated April 2026))',
       'Recurrent episodes or underlying chronic lung disease → respiratory review',
       'Failure to improve or diagnostic uncertainty → reassess and image'],
     source:'NICE NG120 (Cough — antimicrobial prescribing) / NICE NG12 (updated April 2026)' },

@@ -5355,7 +5355,7 @@
    "reason": "Video consultation about recurrent fainting. Requesting a brain scan."
   },
   "knowledge": {
-   "guideline": "NICE CG109 (updated 2023) · ESC syncope guidelines (2018) · DVLA Assessing fitness to drive (updated September 2025) · NICE CG113 · NICE CG123",
+   "guideline": "NICE CG109 (updated 2023) · ESC syncope guidelines (2018) · DVLA Assessing fitness to drive (updated September 2025) · NICE CG113 · NICE CG123 (withdrawn May 2024)",
    "summary": "Vasovagal syncope is a positive diagnosis made from the history: posture, a provoking factor and a prodrome, with rapid full recovery. With a normal ECG and no red flags she needs no further tests; the health anxiety is the problem to treat.",
    "points": [
     {
@@ -5380,7 +5380,7 @@
     },
     {
      "h": "Health anxiety and driving",
-     "t": "Checking, reassurance-seeking and avoidance maintain health anxiety. Offer psychoeducation and self-referral to NHS Talking Therapies for CBT (stepped care, NICE CG123; NICE CG113 if generalised anxiety). DVLA (September 2025): typical vasovagal syncope with an avoidable trigger, occurring when standing, lets a Group 1 driver continue without notifying DVLA."
+     "t": "Checking, reassurance-seeking and avoidance maintain health anxiety. Offer psychoeducation and self-referral to NHS Talking Therapies for CBT (stepped care; NICE CG113 if generalised anxiety; CG123 withdrawn 2024). DVLA (September 2025): typical vasovagal syncope with an avoidable trigger, occurring when standing, lets a Group 1 driver continue without notifying DVLA."
     }
    ]
   },
@@ -9344,7 +9344,7 @@
    "reason": "Telephone call: requesting levothyroxine."
   },
   "knowledge": {
-   "guideline": "NICE NG145 (thyroid disease) · NICE NG23 (menopause, updated November 2024) · NICE NG222 (depression in adults)",
+   "guideline": "NICE NG145 (thyroid disease) · NICE NG23 (menopause, updated April 2026) · NICE NG222 (depression in adults)",
    "summary": "A mildly raised TSH with normal T4 is subclinical hypothyroidism. Confirm it properly, be honest about what levothyroxine can and cannot do, and look for the likelier causes: perimenopause and low mood after her marriage ended.",
    "points": [
     {

@@ -91,7 +91,7 @@ RGPDiagnostic.register('abdo-pain', {
       keyExam:'Cachexia, mass, lymphadenopathy. PR for masses/blood.',
       nextIx:'⚡ Site-specific suspected cancer pathway per NICE NG12 (updated April 2026). Lower GI: FIT first (FIT ≥10 µg Hb/g → colorectal referral; NICE HTG690).',
       guideUrl: '',
-      redFlagAction:'⚡ 2WW' }
+      redFlagAction:'⚡ Suspected cancer pathway referral' }
   ],
   effects: {
     age:(v)=>{ const o={}; if(v<35){o.diverticulitis=-5;o.gi_cancer=-5;o.aaa=-10;o.ibd=+3;o.appendicitis=+3} if(v>=50){o.diverticulitis=+8;o.gi_cancer=+5;o.aaa=+3} if(v>=65){o.mesenteric_ischaemia=+5;o.aaa=+10} return o; },

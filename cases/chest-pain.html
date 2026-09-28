@@ -771,7 +771,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="ns-item"><span class="ns-val">GRACE ≥140</span><span class="ns-lbl">High-risk ACS → immediate hospital</span></div>
     <div class="ns-item"><span class="ns-val">Wells ≥5</span><span class="ns-lbl">High-probability PE</span></div>
     <div class="ns-item"><span class="ns-val">D-dimer &lt;500</span><span class="ns-lbl">Low-risk PE exclusion threshold</span></div>
-    <div class="ns-item"><span class="ns-val">2wk 2WW</span><span class="ns-lbl">Urgent cardiac/respiratory referral</span></div>
+    <div class="ns-item"><span class="ns-val">≤2 weeks</span><span class="ns-lbl">Urgent cardiac/respiratory referral</span></div>
     <div class="ns-item"><span class="ns-val">999</span><span class="ns-lbl">Call threshold — ACS / dissection / PE</span></div>
     <div class="ns-item"><span class="ns-val">ECG ≤10 min</span><span class="ns-lbl">First ECG target in suspected ACS</span></div>
   </div>
@@ -899,7 +899,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td class="rf-flag">Pleuritic chest pain + acute onset breathlessness + haemoptysis + unilateral calf pain/swelling</td><td class="rf-why">Massive PE. NICE NG158: haemodynamically unstable PE has &gt;10% in-hospital mortality. Requires immediate hospital transfer for consideration of thrombolysis or catheter-directed therapy.</td><td><span class="rf-action rfa-999">999 — high-flow O₂ + IV access</span></td></tr>
           <tr><td class="rf-flag">Sudden severe breathlessness + absent breath sounds one side + tracheal deviation</td><td class="rf-why">Tension pneumothorax. Obstructive shock can develop within minutes. Needle decompression is a GP-level emergency procedure in extremis. Do not delay for CXR.</td><td><span class="rf-action rfa-999">999 — needle decompression if trained</span></td></tr>
           <tr><td class="rf-flag">Chest pain + collapse / near-syncope + haemodynamic instability (pallor, clamminess, low BP)</td><td class="rf-why">Cardiogenic shock from ACS, massive PE, or severe arrhythmia. The combination of chest pain and haemodynamic compromise is a critical emergency regardless of ECG findings at that moment.</td><td><span class="rf-action rfa-999">999 immediately</span></td></tr>
-          <tr><td class="rf-flag">Haemoptysis + weight loss + night sweats + smoker over 40 + persistent unexplained chest pain</td><td class="rf-why">Lung cancer. NICE NG12 (updated April 2026): unexplained haemoptysis aged ≥40 (smoker or not) = suspected cancer pathway referral regardless of CXR findings. CXR can be normal in early-stage lung cancer.</td><td><span class="rf-action rfa-same">2WW urgent referral</span></td></tr>
+          <tr><td class="rf-flag">Haemoptysis + weight loss + night sweats + smoker over 40 + persistent unexplained chest pain</td><td class="rf-why">Lung cancer. NICE NG12 (updated April 2026): unexplained haemoptysis aged ≥40 (smoker or not) = suspected cancer pathway referral regardless of CXR findings. CXR can be normal in early-stage lung cancer.</td><td><span class="rf-action rfa-same">Suspected cancer pathway referral</span></td></tr>
           <tr><td class="rf-flag">Chest pain in post-partum woman or patient on COCP with DVT risk factors</td><td class="rf-why">Pregnancy and puerperium dramatically increase PE risk. COCP + smoking + immobility = high PE probability. Must not be attributed to MSK or anxiety without formal investigation in this context.</td><td><span class="rf-action rfa-same">Same-day assessment / A&amp;E</span></td></tr>
         </tbody>
       </table>
@@ -972,7 +972,7 @@ body.mode-clinic .sca-only{display:none!important}
             <tr><td class="factor">NSAIDs / Cox-2 inhibitors</td><td>NSAIDs can cause or worsen GORD and peptic ulceration. Regular NSAID use is independently associated with increased cardiovascular risk (naproxen = lowest CV risk among oral NSAIDs).</td><td class="impact">If GORD on NSAIDs → PPI co-prescription mandatory. Review NSAID necessity. Avoid COX-2 inhibitors and high-dose NSAIDs in any established IHD.</td></tr>
             <tr><td class="factor">Cocaine / stimulant use</td><td>Cocaine causes coronary vasospasm and promotes thrombosis. It is a cause of ACS in patients under 40 with no traditional risk factors. Concealment is common — non-judgmental questioning essential.</td><td class="impact">Do NOT give beta-blockers in cocaine-induced ACS — paradoxical coronary vasoconstriction. Use benzodiazepines + GTN + CCB. Call 999.</td></tr>
             <tr><td class="factor">Bisphosphonates / tetracyclines</td><td>Oesophageal irritation and ulceration are recognised side effects, particularly if tablets are not taken with adequate water or if the patient lies down after taking.</td><td class="impact">Review drug administration technique. Consider switching to IV bisphosphonate or adjusting dosing schedule if oesophageal symptoms persist.</td></tr>
-            <tr><td class="factor">Smoking history (pack-years)</td><td>Strongest modifiable risk factor for ACS, PE, and lung cancer simultaneously. Heavy smoking history in a patient with unexplained chest pain raises pre-test probability for all three serious diagnoses.</td><td class="impact">Calculate cardiovascular risk (QRISK3). Offer NHS Stop Smoking referral at every contact. Lung cancer 2WW if haemoptysis or unexplained symptoms in smoker &gt;40.</td></tr>
+            <tr><td class="factor">Smoking history (pack-years)</td><td>Strongest modifiable risk factor for ACS, PE, and lung cancer simultaneously. Heavy smoking history in a patient with unexplained chest pain raises pre-test probability for all three serious diagnoses.</td><td class="impact">Calculate cardiovascular risk (QRISK3). Offer NHS Stop Smoking referral at every contact. Suspected lung cancer pathway referral if haemoptysis or unexplained symptoms in smoker &gt;40.</td></tr>
             <tr><td class="factor">Occupational and physical history</td><td>Manual labour (builders, painters, decorators) with recent heavy lifting = plausible MSK mechanism. Sedentary job + long-haul travel = PE risk. Chronic work stress = cardiovascular risk factor.</td><td class="impact">Mechanism assessment for MSK. PE risk calculation for travel history. Psychosocial screening for chronic work-related stress.</td></tr>
             <tr><td class="factor">Alcohol use (units per week)</td><td>Heavy alcohol use is a risk factor for AF (holiday heart syndrome), alcoholic cardiomyopathy, and GORD. It also increases bleeding risk relevant to anticoagulation and antiplatelet therapy decisions.</td><td class="impact">AF screen if heavy alcohol use. AUDIT tool. Bleeding risk informs anticoagulation threshold. GORD management more complex with ongoing alcohol.</td></tr>
           </tbody>
@@ -1101,13 +1101,13 @@ body.mode-clinic .sca-only{display:none!important}
         </ul>
       </div>
       <div class="tc tc-u">
-        <div class="tc-lbl">🟠 Urgent</div><h3>Same-Day or 2WW Assessment</h3>
+        <div class="tc-lbl">🟠 Urgent</div><h3>Same-Day or Within-2-Weeks Assessment</h3>
         <span class="tc-badge tcb-u">Hours to 2 weeks</span>
         <ul class="tc-items">
-          <li class="tc-item"><strong>New exertional chest tightness — possible stable angina</strong><em>No rest pain, no ACS features → same-day ECG + 2WW cardiology referral</em></li>
+          <li class="tc-item"><strong>New exertional chest tightness — possible stable angina</strong><em>No rest pain, no ACS features → same-day ECG + urgent (within 2 weeks) cardiology referral</em></li>
           <li class="tc-item"><strong>Suspected sub-massive PE (haemodynamically stable)</strong><em>Wells score + D-dimer + CT-PA urgently — same-day assessment unit</em></li>
           <li class="tc-item"><strong>Pericarditis with fever or effusion features</strong><em>Sharp positional pain + pericardial rub + systemic illness → same-day review or urgent echo</em></li>
-          <li class="tc-item"><strong>Unexplained haemoptysis aged ≥40</strong><em>Suspected cancer pathway (2WW) referral regardless of CXR result (NICE NG12, updated April 2026)</em></li>
+          <li class="tc-item"><strong>Unexplained haemoptysis aged ≥40</strong><em>Suspected cancer pathway referral regardless of CXR result (NICE NG12, updated April 2026)</em></li>
           <li class="tc-item"><strong>Troponin-positive without classic ACS features</strong><em>Myocarditis, demand ischaemia, PE, or NSTEMI equivalent — same-day cardiology advice</em></li>
           <li class="tc-item"><strong>Suspected Herpes Zoster pre-eruption</strong><em>Dermatomal chest pain in elderly/immunocompromised → antivirals within 72h; do not await rash</em></li>
         </ul>
@@ -1219,8 +1219,8 @@ body.mode-clinic .sca-only{display:none!important}
         <thead><tr><th style="width:20%">Investigation</th><th style="width:32%">Clinical question it answers</th><th>What result changes management?</th></tr></thead>
         <tbody>
           <tr><td class="q">12-lead ECG (mandatory within 10 min of presentation)</td><td class="why">Diagnoses STEMI (ST elevation ≥2mm in ≥2 contiguous leads), identifies new LBBB (treat as STEMI), detects ischaemia (ST depression, T-wave inversion), AF, LVH, pericarditis (global saddle-shaped ST elevation), PE (right heart strain: S1Q3T3, right bundle branch block).</td><td class="why">ST elevation or new LBBB → 999 + aspirin 300mg immediately. Ischaemic changes without ST elevation → urgent hospital (NSTEMI/UA). Pericarditis pattern → colchicine + NSAIDs. Normal ECG does NOT exclude ACS.</td></tr>
-          <tr><td class="q">High-sensitivity Troponin (hs-cTnI or hs-cTnT) at 0h and 2h</td><td class="why">NICE DG40 (2020): high-sensitivity troponin early rule-out of NSTEMI (hospital/ED setting). Troponin rise or fall ≥20% on serial testing = myocardial injury. Very low 0h result below assay-specific threshold + low clinical probability = safely rule-out NSTEMI. Single value insufficient.</td><td class="why">Rise ≥20% on serial measurement = ACS → 999. Below rule-out threshold with low GRACE score + no ECG changes → can rule out NSTEMI. Elevated but non-dynamic = myocarditis, demand ischaemia, PE, renal failure.</td></tr>
-          <tr><td class="q">Chest X-ray (CXR)</td><td class="why">First-line for detecting pneumothorax (visible pleural line), pulmonary oedema (bat-wing shadowing, Kerley B lines), pleural effusion, lung mass, consolidation, mediastinal widening (dissection), or cardiomegaly indicating HF.</td><td class="why">Pneumothorax &gt;2cm or tension → 999 / chest drain. Mediastinal widening → CT-aortogram urgently. Lung mass → 2WW. Pulmonary oedema → diuretics + cardiology. Normal CXR does NOT exclude PE.</td></tr>
+          <tr><td class="q">High-sensitivity Troponin (hs-cTnI or hs-cTnT) at 0h and 2h</td><td class="why">NICE HTG552 (formerly DG40, 2020): high-sensitivity troponin early rule-out of NSTEMI (hospital/ED setting). Troponin rise or fall ≥20% on serial testing = myocardial injury. Very low 0h result below assay-specific threshold + low clinical probability = safely rule-out NSTEMI. Single value insufficient.</td><td class="why">Rise ≥20% on serial measurement = ACS → 999. Below rule-out threshold with low GRACE score + no ECG changes → can rule out NSTEMI. Elevated but non-dynamic = myocarditis, demand ischaemia, PE, renal failure.</td></tr>
+          <tr><td class="q">Chest X-ray (CXR)</td><td class="why">First-line for detecting pneumothorax (visible pleural line), pulmonary oedema (bat-wing shadowing, Kerley B lines), pleural effusion, lung mass, consolidation, mediastinal widening (dissection), or cardiomegaly indicating HF.</td><td class="why">Pneumothorax &gt;2cm or tension → 999 / chest drain. Mediastinal widening → CT-aortogram urgently. Lung mass → suspected cancer pathway referral. Pulmonary oedema → diuretics + cardiology. Normal CXR does NOT exclude PE.</td></tr>
           <tr><td class="q">D-dimer (if PE suspected, low-to-intermediate probability only)</td><td class="why">NICE NG158: use D-dimer ONLY if Wells PE score &lt;5 (low-to-intermediate probability). High sensitivity — if D-dimer &lt;500 µg/L in a low-probability patient, PE is effectively excluded. D-dimer is NOT useful if Wells ≥5 — go straight to CT-PA.</td><td class="why">D-dimer &lt;500 µg/L with Wells &lt;2 = PE excluded. D-dimer positive with any Wells score → CT-PA urgently. Age-adjusted threshold for patients over 50: use age × 10 µg/L as the cut-off.</td></tr>
           <tr><td class="q">Full blood count (FBC)</td><td class="why">Anaemia (Hb &lt;80 in context of chest pain = demand ischaemia risk). WCC elevation = pneumonia, pleuritis, pericarditis, endocarditis. Thrombocytosis = increased VTE risk in malignancy context.</td><td class="why">Severe anaemia + chest pain → transfusion threshold consideration + cardiac review. Elevated WCC + pleuritic chest → antibiotics if consolidation confirmed. Leucocytosis alone is non-specific and must not shift the ACS DDx.</td></tr>
           <tr><td class="q">U&amp;E, eGFR, and glucose</td><td class="why">Baseline renal function before prescribing. Hyperkalaemia contraindication to certain drugs. Hyperglycaemia in ACS context = poor prognostic sign (stress response). eGFR guides safe contrast use for CT-PA.</td><td class="why">AKI + chest pain + low BP → cardiogenic shock → 999. High glucose in ACS context → intensive glycaemic input. eGFR &lt;30 → discuss with radiology re: contrast nephropathy before CT-PA.</td></tr>
@@ -1323,7 +1323,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr style="background:#fef2f2"><td><span class="conf-badge conf-emerg">Emergency</span> Central crushing + radiation</td><td>Onset at rest, &gt;20 min, left arm/jaw radiation, diaphoresis, nausea, tachycardia</td><td>STEMI / NSTEMI</td><td style="font-weight:600;color:var(--r)">Critical</td><td>Aspirin 300mg + 999 immediately. Do not wait for ECG result.</td></tr>
           <tr style="background:#fef2f2"><td><span class="conf-badge conf-emerg">Emergency</span> Tearing maximal onset</td><td>Maximal at very onset, radiates to back, BP difference between arms &gt;20mmHg, no GTN relief</td><td>Aortic dissection</td><td style="font-weight:600;color:var(--r)">Critical</td><td>999 — NO aspirin, NO anticoagulant, NO thrombolytics.</td></tr>
           <tr style="background:#fef2f2"><td><span class="conf-badge conf-emerg">Emergency</span> Pleuritic + haemodynamic instability</td><td>Acute onset breathlessness + pleuritic pain + DVT features + hypotension or SpO₂ &lt;90%</td><td>Massive PE</td><td style="font-weight:600;color:var(--r)">Critical</td><td>999 + high-flow O₂. Thrombolysis in hospital.</td></tr>
-          <tr style="background:var(--a-bg)"><td><span class="conf-badge conf-sus">Urgent</span> Exertional tightness</td><td>Triggered by exertion, relieves &lt;10 min at rest or with GTN, no rest pain, troponin negative</td><td>Stable angina</td><td style="font-weight:600;color:var(--a)">Moderate</td><td>GTN + aspirin 75mg + statin + beta-blocker + 2WW cardiology (CTCA preferred).</td></tr>
+          <tr style="background:var(--a-bg)"><td><span class="conf-badge conf-sus">Urgent</span> Exertional tightness</td><td>Triggered by exertion, relieves &lt;10 min at rest or with GTN, no rest pain, troponin negative</td><td>Stable angina</td><td style="font-weight:600;color:var(--a)">Moderate</td><td>GTN + aspirin 75mg + statin + beta-blocker + urgent (within 2 weeks) cardiology (CTCA preferred).</td></tr>
           <tr style="background:var(--a-bg)"><td><span class="conf-badge conf-sus">Urgent</span> Pleuritic + DVT risk</td><td>Sharp, worse on inspiration, DVT risk factors present, Wells ≥2, positive D-dimer or Wells ≥5</td><td>PE (sub-massive)</td><td style="font-weight:600;color:var(--a)">Moderate–High</td><td>Same-day CT-PA. Anticoagulation if confirmed.</td></tr>
           <tr style="background:var(--g-bg)"><td><span class="conf-badge conf-gp">Routine</span> Positional + tender on palpation</td><td>Reproducible on palpation, worse on movement, clear mechanism, normal ECG + troponin</td><td>MSK / costochondritis</td><td style="font-weight:600;color:var(--g)">Low</td><td>NSAIDs + PPI cover + reassurance. Review in 2 weeks. Exclude ACS first.</td></tr>
           <tr style="background:var(--g-bg)"><td><span class="conf-badge conf-gp">Routine</span> Burning + post-prandial</td><td>Retrosternal burning, worse after meals and on lying flat, antacid relief, normal ECG + troponin</td><td>GORD / oesophageal</td><td style="font-weight:600;color:var(--g)">Low</td><td>PPI trial 4–8 weeks. H. pylori testing. Lifestyle modification.</td></tr>
@@ -1376,8 +1376,8 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td style="font-weight:600">Suspected STEMI / ACS with ECG changes</td><td><span class="ref-urg rurg-999">999 now</span></td><td style="font-size:12px">Aspirin 300mg chewed immediately (unless contraindicated). 12-lead ECG recorded and transmitted if STEMI. GTN if SBP ≥90 mmHg. IV access if trained and available. Patient lying still. Supportive monitoring until ambulance. Next of kin informed.</td><td style="font-size:12px;color:var(--r)">Do NOT delay 999 to obtain investigation results. Do NOT allow patient to drive to hospital. Do NOT leave patient unaccompanied.</td></tr>
           <tr><td style="font-weight:600">Suspected aortic dissection</td><td><span class="ref-urg rurg-999">999 now</span></td><td style="font-size:12px">Both-arm BPs measured and documented in ambulance handover. IV access if available. Morphine IM for pain relief is appropriate. Strict bed rest. Inform receiving team of BP asymmetry and clinical suspicion explicitly.</td><td style="font-size:12px;color:var(--r)">Do NOT give aspirin or any anticoagulation — potentially fatal. Do NOT thrombolyse. Do NOT allow patient to stand or mobilise.</td></tr>
           <tr><td style="font-weight:600">Suspected massive PE (haemodynamically unstable)</td><td><span class="ref-urg rurg-999">999 now</span></td><td style="font-size:12px">High-flow O₂ via non-rebreather mask. IV access. LMWH if clinical suspicion very high and dissection can be excluded clinically. Semi-recumbent position. Supportive monitoring.</td><td style="font-size:12px;color:var(--r)">Do NOT delay resuscitation to confirm diagnosis in haemodynamically unstable PE. Do NOT give anticoagulants if dissection cannot be clinically excluded.</td></tr>
-          <tr><td style="font-weight:600">New suspected stable angina</td><td><span class="ref-urg rurg-2">2WW cardiology</span></td><td style="font-size:12px">GTN spray prescribed with full counselling. Aspirin 75mg OD started. Atorvastatin 40mg OD initiated. Beta-blocker or rate-limiting CCB for symptom control. Lifestyle advice: smoking cessation, graded exercise programme, Mediterranean diet.</td><td style="font-size:12px;color:var(--r)">Do NOT delay secondary prevention treatment while awaiting specialist. Do NOT co-prescribe GTN with phosphodiesterase inhibitors — life-threatening hypotension.</td></tr>
-          <tr><td style="font-weight:600">Suspected lung cancer (haemoptysis/unexplained symptoms in smoker ≥40)</td><td><span class="ref-urg rurg-2">2WW respiratory</span></td><td style="font-size:12px">CXR arranged urgently. Results do not delay 2WW referral for haemoptysis. Spirometry if COPD/dyspnoea also present. Review smoking status and offer cessation support. Inform patient of 2WW process and expected timeline transparently.</td><td style="font-size:12px;color:var(--r)">Do NOT withhold 2WW referral pending CXR result if haemoptysis is the trigger. Do NOT reassure patient before investigation complete.</td></tr>
+          <tr><td style="font-weight:600">New suspected stable angina</td><td><span class="ref-urg rurg-2">≤2 weeks cardiology</span></td><td style="font-size:12px">GTN spray prescribed with full counselling. Aspirin 75mg OD started. Atorvastatin 40mg OD initiated. Beta-blocker or rate-limiting CCB for symptom control. Lifestyle advice: smoking cessation, graded exercise programme, Mediterranean diet.</td><td style="font-size:12px;color:var(--r)">Do NOT delay secondary prevention treatment while awaiting specialist. Do NOT co-prescribe GTN with phosphodiesterase inhibitors — life-threatening hypotension.</td></tr>
+          <tr><td style="font-weight:600">Suspected lung cancer (haemoptysis/unexplained symptoms in smoker ≥40)</td><td><span class="ref-urg rurg-2">Respiratory suspected cancer pathway referral</span></td><td style="font-size:12px">CXR arranged urgently. Results do not delay suspected cancer pathway referral for haemoptysis. Spirometry if COPD/dyspnoea also present. Review smoking status and offer cessation support. Inform patient of suspected cancer pathway referral process and expected timeline transparently.</td><td style="font-size:12px;color:var(--r)">Do NOT withhold suspected cancer pathway referral pending CXR result if haemoptysis is the trigger. Do NOT reassure patient before investigation complete.</td></tr>
           <tr><td style="font-weight:600">Pericarditis (suspected, haemodynamically stable)</td><td><span class="ref-urg rurg-4">2–4 weeks (urgent echo)</span></td><td style="font-size:12px">NSAIDs (ibuprofen 600mg TDS with food) + colchicine 0.5mg BD for 3 months (COPE trial). Exercise restriction until symptom-free and CRP normalised. Echo to exclude effusion. Review at 1–2 weeks for treatment response.</td><td style="font-size:12px;color:var(--r)">Do NOT use NSAIDs if post-MI pericarditis — increases infarct expansion risk. Do NOT allow strenuous physical activity until cardiology clearance.</td></tr>
           <tr><td style="font-weight:600">Musculoskeletal chest pain (after ACS excluded)</td><td><span class="ref-urg rurg-r">Routine GP management</span></td><td style="font-size:12px">NSAIDs with PPI gastroprotection for 7–14 days. Physiotherapy referral if persistent. Heat, rest, graded return to activity. Safety-net with specific 999 criteria. Review at 2–4 weeks with explicit instruction to return if pain pattern changes.</td><td style="font-size:12px;color:var(--r)">Do NOT diagnose MSK before cardiac causes excluded. Do NOT prescribe NSAIDs without PPI in patients over 65 or with GI risk factors. Do NOT reassure a patient that future chest pain is "the same thing" without reassessment.</td></tr>
         </tbody>
@@ -1398,7 +1398,7 @@ body.mode-clinic .sca-only{display:none!important}
             <li>Stopping secondary prevention medication while awaiting cardiology appointment</li>
             <li>Not explaining the reason for referral or what the patient should expect</li>
             <li>Prescribing beta-blockers as the sole agent in cocaine-induced ACS</li>
-            <li>Delaying 2WW referral for haemoptysis pending CXR result</li>
+            <li>Delaying suspected cancer pathway referral for haemoptysis pending CXR result</li>
           </ul>
         </div>
       </div>
@@ -1552,7 +1552,7 @@ body.mode-clinic .sca-only{display:none!important}
             <li>Add long-acting nitrate (isosorbide mononitrate) if symptoms not controlled on monotherapy</li>
             <li>ACEi/ARB: add if concurrent HF, DM, or LV dysfunction confirmed on echocardiogram</li>
           </ul>
-          <div style="font-size:11px;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--a);font-weight:600">Review at 4–6 weeks. CTCA referral (2WW, NICE CG95) — do not wait for symptom resolution to refer</div>
+          <div style="font-size:11px;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--a);font-weight:600">Review at 4–6 weeks. CTCA referral (within 2 weeks, NICE CG95) — do not wait for symptom resolution to refer</div>
         </div>
       </div>
       <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--g)">
@@ -1631,7 +1631,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dc-item">Suspected ACS — chew 300mg immediately before calling 999</div>
           <div class="dc-item">Confirmed IHD, post-MI, post-stent, stable angina: 75mg OD lifelong secondary prevention</div>
           <div class="dc-item">All patients with established cardiovascular disease (NNT ≈ 45 per year to prevent a serious event)</div>
-          <div class="dc-item">New referral for 2WW angina: start aspirin 75mg OD while awaiting CTCA</div>
+          <div class="dc-item">New urgent (within 2 weeks) angina referral: start aspirin 75mg OD while awaiting CTCA</div>
         </div>
         <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
           <div class="dc-item ci-abs">Suspected aortic dissection — risk of haemorrhagic complications is potentially fatal</div>
@@ -1853,7 +1853,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>Same day / within 2 hours — ECG and troponin results</h5><p>If ECG and hs-Troponin organised: give patient results the same day or by end of working day maximum. Do not leave patients waiting overnight for chest pain investigation results without a safety-net conversation first. Named GP or clinician must review and action results.</p><div class="fu-tags"><span class="ft ft-r">Any ECG change or troponin rise → 999 immediately — do not schedule a callback</span></div></div></div>
         <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>Within 48–72 hours — initial treatment response</h5><p>Review whether initial treatment is helping — NSAIDs for MSK/pleuritis, PPI for GORD. Confirm symptom trajectory (improving, stable, or worsening). Named GP contact — not "someone from the surgery will call." If worsening: reconsider the diagnosis immediately.</p><div class="fu-tags"><span class="ft ft-a">SCA: specific named follow-up with a defined purpose earns Relating to Others marks simultaneously</span></div></div></div>
         <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>1–2 weeks — treatment response review</h5><p>Is the initial diagnosis supported by the treatment response? Pain resolved with PPI = consistent with GORD. Pain resolved with NSAIDs = consistent with MSK or pericarditis. Pain unchanged = reconsider the DDx and escalate investigations. Review lifestyle changes agreed at first appointment.</p></div></div>
-        <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>4–6 weeks — specialist investigation results</h5><p>Cardiology: CTCA or ETT result available. Respiratory: 2WW outcome communicated. Gastroenterology: OGD if GORD not responding to PPI. Review and titrate secondary prevention medications for cardiac causes. Cardiac rehabilitation referral confirmed and accepted.</p><div class="fu-tags"><span class="ft ft-b">Post-ACS: cardiac rehab referral must be made and documented at this appointment</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>4–6 weeks — specialist investigation results</h5><p>Cardiology: CTCA or ETT result available. Respiratory: suspected cancer pathway referral outcome communicated. Gastroenterology: OGD if GORD not responding to PPI. Review and titrate secondary prevention medications for cardiac causes. Cardiac rehabilitation referral confirmed and accepted.</p><div class="fu-tags"><span class="ft ft-b">Post-ACS: cardiac rehab referral must be made and documented at this appointment</span></div></div></div>
         <div class="fu-event"><div class="fu-dot fd5">5</div><div class="fu-content"><h5>Annual — cardiovascular risk factor review (if cardiac cause identified)</h5><p>BP + pulse + lipid profile + HbA1c + BMI + smoking status + medication adherence + QRISK3 reassessment + GTN frequency (angina) + psychosocial wellbeing check + medication review. Cardiac rehabilitation completion review. Secondary prevention optimisation.</p></div></div>
       </div>
     </div>
@@ -1874,7 +1874,7 @@ body.mode-clinic .sca-only{display:none!important}
         <tr><td style="font-weight:600">All angina patients</td><td>ECG + GTN frequency</td><td><span style="font-size:11px;font-weight:700;color:var(--g)">6-monthly initially, then annually</span></td><td style="font-size:12px">GTN &gt;3× per week = inadequate control → escalate antianginal. New rest pain = urgent hospital review.</td></tr>
       </tbody></table></div>
       <div class="card" style="overflow:hidden"><table class="rt"><thead><tr><th>Clinical scenario</th><th>Target / threshold</th><th>Action if not met</th></tr></thead><tbody>
-        <tr><td>Suspected ACS — troponin rule-out</td><td style="font-weight:600">hs-cTnI below assay-specific low-risk threshold at 0h (NICE DG40)</td><td>Below threshold + low GRACE + no ECG changes = discharge pathway. Any rise → hospital urgently.</td></tr>
+        <tr><td>Suspected ACS — troponin rule-out</td><td style="font-weight:600">hs-cTnI below assay-specific low-risk threshold at 0h (NICE HTG552, formerly DG40)</td><td>Below threshold + low GRACE + no ECG changes = discharge pathway. Any rise → hospital urgently.</td></tr>
         <tr><td>PE investigation — D-dimer</td><td style="font-weight:600">D-dimer &lt;500 ng/mL (age ×10 ng/mL if &gt;50 years)</td><td>Below threshold + Wells &lt;2 = PE excluded. Elevated = CT-PA urgently without further delay.</td></tr>
         <tr><td>Stable angina — symptom control</td><td style="font-weight:600">GTN use &lt;3× per week; CCS class I–II symptoms</td><td>GTN &gt;3×/week or CCS class III → add second antianginal. CCS class IV = urgent hospital review.</td></tr>
         <tr><td>GORD on PPI treatment</td><td style="font-weight:600">≥75% symptom improvement at 4–8 weeks</td><td>Inadequate response → OGD + H. pylori testing + consider 24h pH/impedance study.</td></tr>
@@ -1918,7 +1918,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="sn-fu">
         <div class="sn-fu-item"><strong>Within 2 hours</strong>ECG + hs-Troponin results reviewed by named clinician. Patient contacted if any abnormality. Do not leave results pending overnight without a safety-net conversation.</div>
         <div class="sn-fu-item"><strong>Within 48–72 hours</strong>Symptom review for new presentations. If not improving: reconsider the diagnosis. Named GP callback — not an open appointment.</div>
-        <div class="sn-fu-item"><strong>Within 2 weeks</strong>Formal treatment response review. Secondary prevention confirmed if cardiac cause. CTCA/2WW referral confirmation and timeline communicated to patient.</div>
+        <div class="sn-fu-item"><strong>Within 2 weeks</strong>Formal treatment response review. Secondary prevention confirmed if cardiac cause. CTCA/suspected cancer pathway referral confirmation and timeline communicated to patient.</div>
       </div>
     </div>
 
@@ -2153,15 +2153,15 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="algo-action red-action">999 immediately</div>
         </div>
         <div class="algo-branch algo-amber">
-          <div class="algo-branch-lbl">🟠 Urgent — same-day or 2WW</div>
+          <div class="algo-branch-lbl">🟠 Urgent — same-day or within 2 weeks</div>
           <ul class="algo-list">
-            <li>New exertional tightness → 2WW angina (CTCA)</li>
+            <li>New exertional tightness → urgent (within 2 weeks) angina assessment (CTCA)</li>
             <li>Pleuritic + DVT risk factors → D-dimer / CT-PA</li>
             <li>Pericarditis features → Echo + NSAIDs + colchicine</li>
-            <li>Unexplained haemoptysis aged ≥40 → 2WW lung cancer (NG12)</li>
+            <li>Unexplained haemoptysis aged ≥40 → suspected lung cancer pathway referral (NG12)</li>
             <li>Troponin positive without classic ACS → same-day cardiology</li>
           </ul>
-          <div class="algo-action amber-action">Same-day or 2WW referral</div>
+          <div class="algo-action amber-action">Same-day or within-2-weeks referral</div>
         </div>
         <div class="algo-branch algo-green">
           <div class="algo-branch-lbl">🟢 Routine — GP management</div>
@@ -2192,7 +2192,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="display:flex;flex-direction:column;gap:3px;font-size:11.5px">
           <div style="padding:.35rem .6rem;background:var(--r-bg);border:1px solid var(--r-bd);border-radius:6px"><strong>Mandatory:</strong> 12-lead ECG (within 10 min) + hs-Troponin 0h/2h + CXR</div>
           <div style="padding:.35rem .6rem;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:6px"><strong>PE suspected (Wells &lt;5):</strong> D-dimer → if elevated → CT-PA. Wells ≥5: go straight to CT-PA</div>
-          <div style="padding:.35rem .6rem;background:var(--b-bg);border:1px solid var(--b-bd);border-radius:6px"><strong>Angina suspected:</strong> CTCA (NICE CG95 first-line) or ETT via 2WW cardiology referral</div>
+          <div style="padding:.35rem .6rem;background:var(--b-bg);border:1px solid var(--b-bd);border-radius:6px"><strong>Angina suspected:</strong> CTCA (NICE CG95 first-line) or ETT via urgent (within 2 weeks) cardiology referral</div>
           <div style="padding:.35rem .6rem;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:6px"><strong>GORD suspected:</strong> Normal ECG + troponin + CXR → PPI trial 4–8 weeks (diagnostic + therapeutic)</div>
           <div style="padding:.35rem .6rem;background:var(--p-bg);border:1px solid var(--p-bd);border-radius:6px"><strong>Pericarditis:</strong> ECG (saddle-shape ST) + Echo (effusion) + CRP (disease activity marker)</div>
         </div>
@@ -2212,7 +2212,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="num-card"><div class="num-val">3× / week</div><div class="num-lbl">GTN use exceeding this = angina poorly controlled</div></div>
       <div class="num-card"><div class="num-val">Colchicine 3m</div><div class="num-lbl">Duration for pericarditis (COPE trial)</div></div>
       <div class="num-card num-highlight"><div class="num-val">NO aspirin</div><div class="num-lbl">In aortic dissection — potentially fatal</div></div>
-      <div class="num-card"><div class="num-val">2WW CTCA</div><div class="num-lbl">First-line for stable angina referral (NICE CG95)</div></div>
+      <div class="num-card"><div class="num-val">≤2 weeks CTCA</div><div class="num-lbl">First-line for stable angina referral (NICE CG95)</div></div>
     </div>
 
     <div class="sum-sub-hdr">💊 4 — Medication Decision &amp; Choice by Cause</div>
@@ -2474,7 +2474,7 @@ body.mode-clinic .sca-only{display:none!important}
             <span style="font-size:10px;color:var(--muted)">→</span>
             <span class="sdp-pill ccb-pill">GTN PRN + bisoprolol + aspirin 75mg + atorvastatin 40mg</span>
           </div>
-          <div style="font-size:10.5px;color:var(--muted)">2WW CTCA referral (NICE CG95). Counsel on 2-dose GTN rule + sildenafil interaction.</div>
+          <div style="font-size:10.5px;color:var(--muted)">Urgent (≤2 weeks) CTCA referral (NICE CG95). Counsel on 2-dose GTN rule + sildenafil interaction.</div>
         </div>
         <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
           <div style="font-size:11px;font-weight:600;color:var(--muted)">GORD — normal cardiac investigations</div>
@@ -2521,7 +2521,7 @@ body.mode-clinic .sca-only{display:none!important}
   <div class="pf-inner">
     <div class="pf-left">
       <div class="pf-title">Chest Pain · GP Clinical Reasoning Framework v2</div>
-      <div class="pf-sub">NICE CG95 (Stable Chest Pain) · NICE NG185 (ACS) · NICE DG40 (hs-troponin, 2020) · NICE NG238 (lipids, 2023) · NICE NG158 (PE) · NICE NG12 (Cancer 2WW, updated April 2026) · NICE CG184 (GORD) · NICE NG106 (Chronic heart failure)</div>
+      <div class="pf-sub">NICE CG95 (Stable Chest Pain) · NICE NG185 (ACS) · NICE HTG552 (hs-troponin, formerly DG40, 2020) · NICE NG238 (lipids, 2023) · NICE NG158 (PE) · NICE NG12 (suspected cancer pathway referral, updated April 2026) · NICE CG184 (GORD) · NICE NG106 (Chronic heart failure)</div>
       <div class="pf-sub">ESC Pericarditis Guidelines 2015 · COPE Trial (Colchicine) · PREDIMED Trial (Mediterranean Diet) · GRACE Score · Wells Score</div>
     </div>
     <div class="pf-right">
@@ -2637,8 +2637,8 @@ function calcDrug(){
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
     main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
+    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -2779,7 +2779,7 @@ if (typeof toggleActor === 'undefined') {
   </main>
 </div><!-- /app -->
 
-<script src="../assets/site.js?v=104"></script>
+<script src="../assets/site.js?v=105"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 

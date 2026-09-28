@@ -2442,7 +2442,7 @@
    "reason": "Wants a straight answer on whether HRT causes breast cancer, after a friend’s comment and a newspaper headline."
   },
   "knowledge": {
-   "guideline": "MHRA Drug Safety Update August 2019 (HRT and breast cancer) · NICE NG23 (2015, updated November 2024 and April 2026) · British Menopause Society Fast Facts: HRT and breast cancer risk (2025)",
+   "guideline": "MHRA Drug Safety Update August 2019 (HRT and breast cancer) · NICE NG23 (2015, updated April 2026) · British Menopause Society Fast Facts: HRT and breast cancer risk (2025)",
    "summary": "The honest answer is a number, not a yes or no. Systemic HRT carries a small, duration-dependent increase in breast cancer risk, largest with combined HRT; in absolute terms most women who take it are not harmed by it.",
    "points": [
     {
@@ -2911,7 +2911,7 @@
    "reason": "Hot flushes, night sweats, poor sleep, irritability and poor memory affecting work — wants to discuss HRT but worried about cancer."
   },
   "knowledge": {
-   "guideline": "NICE NG23 (2015, updated November 2024 and April 2026) · MHRA Drug Safety Update August 2019 (HRT and breast cancer) · NICE NG12 (updated April 2026) · FSRH contraception for women aged over 40 (2017)",
+   "guideline": "NICE NG23 (2015, updated April 2026) · MHRA Drug Safety Update August 2019 (HRT and breast cancer) · NICE NG12 (updated April 2026) · FSRH contraception for women aged over 40 (2017)",
    "summary": "At 51 with typical symptoms this is a clinical diagnosis of perimenopause. HRT is the most effective treatment; the breast-cancer risk is real but small in absolute terms, and she deserves the actual numbers.",
    "points": [
     {
@@ -4355,7 +4355,7 @@
  },
  "male-pattern-hair-loss": {
   "stem": {
-   "name": "Jordan Pryce",
+   "name": "Jordan Ashby",
    "age": "31-year-old man",
    "pmh": [
     "Nil relevant recorded"
@@ -4630,7 +4630,7 @@
     "Mental health & addiction"
    ],
    "stem": {
-    "name": "Jordan Pryce",
+    "name": "Jordan Ashby",
     "age": "31 years · male",
     "pmh": [
      "Nil relevant recorded"
@@ -5330,7 +5330,7 @@
    "reason": "Video consultation: \"Tired all the time for months — wants tests.\""
   },
   "knowledge": {
-   "guideline": "NICE NG12 (updated April 2026) · NICE NG20 (coeliac disease, 2015) · NICE NG206 (ME/CFS, 2021) · NICE NG222 (depression in adults, 2022) · NICE CG113 (generalised anxiety disorder and panic disorder, 2011) · UK CMO low-risk drinking guidelines (2016)",
+   "guideline": "NICE NG12 (updated April 2026) · NICE NG20 (coeliac disease, 2015) · NICE NG206 (ME/CFS, 2021) · NICE NG222 (depression in adults, 2022, updated December 2025) · NICE CG113 (generalised anxiety disorder and panic disorder, 2011) · UK CMO low-risk drinking guidelines (2016)",
    "summary": "Four months of fatigue in a 26-year-old is usually multifactorial, often sleep, mood and stress. Take a structured history, screen red flags, do a focused and explained first-line panel, and explore the life behind it — both, not either.",
    "points": [
     {
@@ -6329,7 +6329,7 @@
    "reason": "Video consultation: still exhausted, weak and breathless on stairs, poor concentration, flashbacks and low mood."
   },
   "knowledge": {
-   "guideline": "NICE CG83 (rehabilitation after critical illness in adults, 2009) · NICE QS158 (2017) · NICE NG116 (post-traumatic stress disorder, 2018) · NICE NG222 (depression in adults, 2022)",
+   "guideline": "NICE CG83 (rehabilitation after critical illness in adults, 2009) · NICE QS158 (2017) · NICE NG116 (post-traumatic stress disorder, 2018) · NICE NG222 (depression in adults, 2022, updated December 2025)",
    "summary": "New physical, cognitive and psychological problems after an ICU stay form post-intensive-care syndrome. Name it, screen each domain including PTSD and risk, and coordinate rehabilitation that should have started at the 2 to 3 month review.",
    "points": [
     {
@@ -8266,7 +8266,7 @@
     },
     {
      "dom": "tasks",
-     "fail": "Direct two-week-wait referral with no FIT, or FIT with no plan for a low result.",
+     "fail": "Direct suspected cancer pathway referral with no FIT, or FIT with no plan for a low result.",
      "why": "Current NICE NG12 (updated April 2026) and HTG690 practice is FIT-led: refer if at least 10 µg Hb/g; refer without FIT only for a rectal or anal mass or anal ulceration; a low FIT must not delay referral if concern persists.",
      "fix": "Offer FIT, examine face to face, and state the conditional plan for each result."
     },
@@ -8327,7 +8327,7 @@
     },
     {
      "h": "Cautions",
-     "t": "Sedating antihistamines impair driving and performance. Decongestant sprays such as xylometazoline: no more than 7 consecutive days (SPC) because of rebound congestion. Montelukast carries neuropsychiatric warnings (MHRA Drug Safety Update September 2019; April 2024) and ARIA-EAACI (international) does not favour it over an oral antihistamine."
+     "t": "Sedating antihistamines impair driving and performance. Decongestant sprays such as xylometazoline: no more than 5 consecutive days (MHRA Drug Safety Update, April 2026) because of rebound congestion. Montelukast carries neuropsychiatric warnings (MHRA Drug Safety Update September 2019; April 2024) and ARIA-EAACI (international) does not favour it over an oral antihistamine."
     },
     {
      "h": "What is not hay fever",

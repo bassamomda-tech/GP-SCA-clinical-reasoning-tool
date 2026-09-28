@@ -66,7 +66,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     'Any mass or swelling → ?tumour',
     'Red skin, fever or systemically unwell → ?septic arthritis / infection',
     'Trauma / seizure / electric shock + loss of rotation and abnormal shape → ?unreduced (posterior) dislocation',
-    'New unexplained shoulder mass or progressive night pain → 2-week-wait / urgent imaging',
+    'New unexplained shoulder mass or progressive night pain → suspected cancer pathway referral / urgent imaging',
   ],
   pathway:[
     { q:'Is it neck or shoulder?', note:'Ask the patient to move the neck first, then the shoulder — which reproduces the pain?', branches:[

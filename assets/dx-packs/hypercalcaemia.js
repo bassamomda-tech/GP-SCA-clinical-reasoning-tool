@@ -40,7 +40,7 @@
       {
         id: 'malignancy_2ww', tier: 'cancer',
         label: 'Hypercalcaemia + weight loss / suppressed PTH — exclude malignancy / myeloma',
-        action: 'Urgent workup: myeloma screen, imaging; 2WW per suspected primary (NICE NG12 (updated April 2026)).',
+        action: 'Urgent workup: myeloma screen, imaging; site-specific suspected cancer pathway referral for the suspected primary (NICE NG12 (updated April 2026)).',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.malig_hx || (i.pth_low && i.weight_loss),
       },
@@ -77,7 +77,7 @@
         patientPhrase: 'A parathyroid gland is overactive, raising calcium. It is usually mild; surgery cures it when needed.',
         guideUrl: '' },
       { id: 'malignancy', name: 'Malignancy (PTHrP / bone mets / myeloma)', summary: 'Suppressed PTH, weight loss, often higher calcium', baseline: 5, category: 'cant-miss',
-        keyExam: 'Cachexia, bone tenderness, lymphadenopathy, organomegaly.', nextIx: '\u26A1 Myeloma screen, imaging, PTHrP; 2WW per suspected primary (NICE NG12 (updated April 2026)).',
+        keyExam: 'Cachexia, bone tenderness, lymphadenopathy, organomegaly.', nextIx: '\u26A1 Myeloma screen, imaging, PTHrP; site-specific suspected cancer pathway referral for the suspected primary (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A cancer can raise calcium. We test urgently — finding the cause directs treatment.',
         guideUrl: '', redFlagAction: '\u26A1 Urgent malignancy workup' },
       { id: 'drug', name: 'Drug / supplement-induced', summary: 'Thiazide, lithium, vitamin D / calcium excess', baseline: 4, category: 'common',

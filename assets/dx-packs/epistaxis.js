@@ -43,7 +43,7 @@
       {
         id: 'tumour_2ww', tier: 'cancer',
         label: 'Persistent unilateral blood-stained discharge / obstruction — exclude sinonasal tumour',
-        action: 'ENT referral (consider 2WW head & neck).',
+        action: 'ENT referral (consider head & neck suspected cancer pathway referral).',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.unilateral_persistent,
       },
@@ -90,9 +90,9 @@
         patientPhrase: 'A bleed from the back of the nose is harder to control and needs hospital treatment.',
         guideUrl: '', redFlagAction: '\u26A1 ED/ENT' },
       { id: 'tumour', name: 'Sinonasal / nasopharyngeal tumour', summary: 'Persistent unilateral discharge / obstruction', baseline: 1, category: 'cant-miss',
-        keyExam: 'Unilateral mass / obstruction.', nextIx: '\u26A1 ENT ± 2WW head & neck.',
+        keyExam: 'Unilateral mass / obstruction.', nextIx: '\u26A1 ENT ± head & neck suspected cancer pathway referral.',
         patientPhrase: 'Persistent one-sided symptoms need an ENT look to exclude a growth — uncommon but important.',
-        guideUrl: '', redFlagAction: '\u26A1 ENT / 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 ENT / suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 60 ? { posterior: +3 } : (v < 16 ? { local_anterior: +4 } : {}),

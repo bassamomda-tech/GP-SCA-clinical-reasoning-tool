@@ -93,9 +93,9 @@
         guideUrl: '' },
 
       { id: 'endometrial', name: 'Endometrial hyperplasia / cancer', summary: 'PMB, ≥45 persistent AUB, unopposed-oestrogen risk', baseline: 1, category: 'cant-miss',
-        keyExam: 'Risk factors (obesity, PCOS, nulliparity).', nextIx: '\u26A1 Gynae 2WW + TV USS / hysteroscopy (NICE NG12 (updated April 2026)).',
+        keyExam: 'Risk factors (obesity, PCOS, nulliparity).', nextIx: '\u26A1 Gynae suspected cancer pathway referral + TV USS / hysteroscopy (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Persistent abnormal bleeding at your age needs an urgent specialist check of the womb lining.',
-        guideUrl: '', redFlagAction: '\u26A1 Gynae 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Gynae suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 45 ? { perimenopause: +12, endometrial: +4, pcos: -4 } : (v < 20 ? { pcos: +2 } : {}),

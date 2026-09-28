@@ -28,7 +28,7 @@
     altRegimens: [
       { label: 'Lesion-directed', drugs: 'Cryotherapy (liquid nitrogen) for isolated hyperkeratotic lesions \u2014 typically a single 5\u201310 second freeze; repeat at 2\u20133 weeks if needed.' },
       { label: 'Extensive field change / refractory', drugs: 'Dermatology for photodynamic therapy or other field treatments.' },
-      { label: 'Suspected SCC/diagnostic doubt', drugs: 'Refer (2WW if suspected SCC); biopsy.' },
+      { label: 'Suspected SCC/diagnostic doubt', drugs: 'Refer (suspected cancer pathway referral if suspected SCC); biopsy.' },
     ],
     counselling: [
       'These are sun-damage spots that are usually harmless but can occasionally turn into a skin cancer, so we treat troublesome ones and protect your skin.',
@@ -38,13 +38,13 @@
     ],
     followUp: 'Review field-therapy response; recheck for lesions that change. Refer/biopsy if suspected SCC or diagnostic doubt; immunosuppressed \u2192 lower threshold/specialist surveillance.',
     redFlags: [
-      'Induration, tenderness, rapid growth, ulceration or bleeding \u2192 suspected SCC \u2192 2WW/biopsy.',
+      'Induration, tenderness, rapid growth, ulceration or bleeding \u2192 suspected SCC \u2192 suspected cancer pathway referral/biopsy.',
     ],
     emisText: `Actinic (solar) keratoses (pre-malignant):
 - All: sun protection (high SPF, cover up) \u00b1 emollient; reassure (low SCC risk).
 - Field therapy: fluorouracil 5% cream OD\u2013BD x4 wks (or fluorouracil 0.5%/salicylic acid 10% OD up to 12 wks); imiquimod 5% 3x/wk x4 wks (\u00b14-wk repeat); or diclofenac 3% gel BD x60\u201390 days (expect inflammation; avoid 5-FU/imiquimod in pregnancy).
 - Isolated hyperkeratotic: cryotherapy. Extensive/refractory \u2192 dermatology (PDT).
-- Induration/tender/rapid/ulcerated/bleeding \u2192 suspected SCC \u2192 2WW/biopsy.`,
+- Induration/tender/rapid/ulcerated/bleeding \u2192 suspected SCC \u2192 suspected cancer pathway referral/biopsy.`,
     sources: [
       { label:'PCDS', url:'https://www.pcds.org.uk' },
     ],

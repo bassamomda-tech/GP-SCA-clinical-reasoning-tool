@@ -24,7 +24,7 @@
       'Manage haemorrhoids in pregnancy conservatively (fibre, fluids, topical measures) — they often improve after delivery',
       'Safety-net for new red-flag symptoms and confirm resolution of bleeding'],
     referral:[
-      'Rectal bleeding with red flags — change in bowel habit, weight loss, iron-deficiency anaemia, abdominal/rectal mass, or FIT ≥10 µg Hb/g → suspected colorectal cancer (2WW) pathway (NICE NG12 (updated April 2026) / NICE HTG690); offer FIT first to guide referral, except a rectal mass, unexplained anal mass or anal ulceration → refer without waiting for FIT',
+      'Rectal bleeding with red flags — change in bowel habit, weight loss, iron-deficiency anaemia, abdominal/rectal mass, or FIT ≥10 µg Hb/g → suspected colorectal cancer pathway (NICE NG12 (updated April 2026) / NICE HTG690); offer FIT first to guide referral, except a rectal mass, unexplained anal mass or anal ulceration → refer without waiting for FIT',
       'Persistent/troublesome or higher-grade haemorrhoids → colorectal/surgical outpatient for banding or surgery',
       'Acutely thrombosed, severely painful external haemorrhoid → urgent surgical assessment',
       'Significant ongoing bleeding/anaemia → urgent assessment'],

@@ -37,7 +37,7 @@
       {
         id: 'mpn_2ww', tier: 'cancer',
         label: 'Persistent unexplained leucocytosis + B-symptoms / splenomegaly',
-        action: 'Haematology 2WW — ? CML / lymphoproliferative disorder.',
+        action: 'Haematology suspected cancer pathway referral — ? CML / lymphoproliferative disorder.',
         source: 'NICE NG12 (updated April 2026)',
         when: i => i.b_symptoms || (i.persistent && i.lymphocytosis),
       },

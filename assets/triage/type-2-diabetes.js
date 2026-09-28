@@ -88,7 +88,7 @@ RGPTriage.register('type-2-diabetes-triage', {
       when: i => i.k != null && i.k > 6.5
     },
 
-    // CANCER (2WW)
+    // SUSPECTED CANCER PATHWAY
     {
       tier:'cancer',
       label:'New diabetes ≥60 + unexplained weight loss — consider pancreatic cancer (urgent direct-access CT)',
@@ -101,8 +101,8 @@ RGPTriage.register('type-2-diabetes-triage', {
     },
     {
       tier:'cancer',
-      label:'Visible haematuria + diabetes ≥45 — urological 2WW',
-      action:'2WW urological',
+      label:'Visible haematuria + diabetes ≥45 — urological suspected cancer pathway referral',
+      action:'Urological suspected cancer pathway referral',
       source:'NICE NG12 (updated April 2026) §1.6',
       patientPhrase:'"Blood in the urine in someone of your age needs an urgent specialist look."',
       when: i => i.haematuria && i.age != null && i.age >= 45

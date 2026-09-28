@@ -198,7 +198,7 @@
       wordPics: {
         fail: 'Prescribes ferrous sulfate against the diet story and says "we\u2019ll recheck in three months"; never asks about stools or dyspepsia; FIT never mentioned; Brian treated as background noise, so every investigation she\u2019s offered is silently declined.',
         pass: 'Names IDA as a find-the-bleed problem; asks the GI questions and surfaces the dark stools; sends FIT and coeliac serology; starts iron correctly alongside; acknowledges the caring load; safety-nets melaena.',
-        exc:  'The pre-built diet story is named kindly and retired with her own facts; the stools question is asked directly and the months of quiet fear behind them acknowledged; Brian becomes part of the prescription (carer\u2019s assessment, sitting service) so the FIT and any scope actually happen; the 2WW threshold (FIT \u226510) stated in advance so the next step is pre-agreed, not a new battle.'
+        exc:  'The pre-built diet story is named kindly and retired with her own facts; the stools question is asked directly and the months of quiet fear behind them acknowledged; Brian becomes part of the prescription (carer\u2019s assessment, sitting service) so the FIT and any scope actually happen; the suspected cancer pathway threshold (FIT \u226510) stated in advance so the next step is pre-agreed, not a new battle.'
       },
       avoid: [
         { dont:'"Your iron is low so I\u2019ll put you on iron tablets and we\u2019ll see how you go."', instead:'"Iron tablets are part of this — but at 68, empty iron stores are a FIND-the-leak problem. Tablets refill the tank; my job is finding the hole."', why:'Iron-without-investigation is the designed fail of every IDA station — and of real-world missed colorectal cancers.' },

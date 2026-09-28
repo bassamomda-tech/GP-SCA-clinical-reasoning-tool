@@ -615,13 +615,13 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     { step:'Spread', detail:'Local invasion, nodal, hepatic metastases' },
   ],
   implications:[
-    { clue:'FIT detects occult blood', why:'Underpins both screening and the symptomatic 2WW pathway.' },
+    { clue:'FIT detects occult blood', why:'Underpins both screening and the symptomatic suspected cancer pathway.' },
     { clue:'Iron-deficiency anaemia in older adults needs investigation', why:'Right-sided tumours often bleed silently.' },
     { clue:'The slow polyp sequence makes screening effective', why:'Removing adenomas prevents cancer.' },
   ],
   pearls:[
     'Left-sided: obstructive symptoms; right-sided: anaemia.',
-    'Apply NICE NG12 (updated April 2026) criteria: FIT first for most symptomatic presentations, with FIT ≥10 µg Hb/g → suspected cancer (2WW) pathway (NICE HTG690).',
+    'Apply NICE NG12 (updated April 2026) criteria: FIT first for most symptomatic presentations, with FIT ≥10 µg Hb/g → suspected cancer pathway (NICE HTG690).',
   ],
   note:'Cancer here grows from a removable polyp over years — which is exactly why finding occult blood and scoping early saves lives.',
   links:{} },

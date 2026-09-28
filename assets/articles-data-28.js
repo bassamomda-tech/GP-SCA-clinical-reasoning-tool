@@ -24,8 +24,8 @@
       'Support risk reduction (H. pylori eradication, smoking cessation) and be alert in higher-risk patients (e.g. pernicious anaemia)',
       'Provide information, palliative care input where appropriate, and survivorship follow-up'],
     referral:[
-      'Dysphagia at any age, or aged 55+ with weight loss plus upper abdominal pain/reflux/dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026), 2WW)',
-      'Upper abdominal mass consistent with stomach cancer → consider a suspected cancer pathway (2WW) referral (NICE NG12 (updated April 2026))',
+      'Dysphagia at any age, or aged 55+ with weight loss plus upper abdominal pain/reflux/dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026))',
+      'Upper abdominal mass consistent with stomach cancer → consider a suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'GI bleeding (haematemesis/melaena) → emergency admission',
       'Confirmed gastric cancer → upper-GI MDT'],
     source:'NICE NG12 (updated April 2026) / oesophago-gastric cancer guidance' },
@@ -53,7 +53,7 @@
       'Risk of self-harm/suicide → urgent mental-health assessment',
       'Problematic alcohol/substance use → relevant services',
       'Work-related stress → occupational health / workplace support'],
-    source:'NICE NG212 (Mental wellbeing at work, 2022) / NICE CG123 (Common mental health problems) / HSE Management Standards' },
+    source:'NICE NG212 (Mental wellbeing at work, 2022) / NICE NG222 (Depression in adults, 2022) / NICE CG113 (Generalised anxiety disorder and panic disorder in adults, 2011, updated 2020) / HSE Management Standards' },
 
   { id:'stye', title:'Stye (hordeolum)', category:'Ophthalmology', icon:'👁️',
     overview:'An acute, painful, localised infection of an eyelid gland (usually staphylococcal) producing a tender red lump on the lid margin. It is common, benign and usually self-limiting. The main tasks are simple self-care, distinguishing it from a chalazion, and recognising the rare spread to preseptal/orbital cellulitis.',
@@ -151,7 +151,7 @@
     referral:[
       'Extensive or severe blistering sunburn, or associated heatstroke/significant dehydration → assessment/admission',
       'Sunburn in a young infant, or systemic illness → assessment',
-      'Suspicious or changing pigmented lesion (melanoma concern) noted on examination → 2WW suspected skin-cancer referral (NICE NG12 (updated April 2026))',
+      'Suspicious or changing pigmented lesion (melanoma concern) noted on examination → suspected cancer pathway referral for skin cancer (NICE NG12 (updated April 2026))',
       'Disproportionate burning suggesting photosensitivity → review cause/dermatology'],
     source:'NICE NG34 (Sunlight exposure: risks and benefits, 2016) / NICE NG12 (updated April 2026)' },
 

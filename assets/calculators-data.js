@@ -745,13 +745,14 @@ window.RGP_CALCULATORS = [
     title: 'FRAX (10-year fracture risk)',
     category: 'Bone',
     description: 'WHO 10-year probability of major osteoporotic / hip fracture.',
-    usefulFor: 'Osteoporosis risk assessment and treatment decisions (NICE NG259, July 2026; replaced CG146 / NOGG).',
+    usefulFor: 'Osteoporosis risk assessment and treatment decisions (NICE NG259, July 2026, which replaced CG146; NOGG 2024).',
     kind: 'external',
     externalUrl: 'https://frax.shef.ac.uk/FRAX/tool.aspx?country=1',
     externalReason: 'FRAX uses a proprietary algorithm with 12 country-calibrated inputs (age, sex, BMI, prior fracture, parent hip Hx, smoker, glucocorticoid, RA, secondary osteoporosis, alcohol, optional BMD). Use the official UK tool.',
     refs:[
       { label:'FRAX UK', url:'https://frax.shef.ac.uk/FRAX/tool.aspx?country=1' },
-      { label:'NOGG 2021', url:'https://www.nogg.org.uk/' },
+      { label:'NOGG 2024', url:'https://www.nogg.org.uk/' },
+      { label:'NICE NG259 Osteoporosis: risk assessment (2026)', url:'https://www.nice.org.uk/guidance/ng259' },
     ],
   },
   {

@@ -36,7 +36,7 @@
     ],
     followUp: 'Ensure dental review. If no oral cause, assess ENT/GI causes. Persistent unexplained halitosis with systemic features → investigate.',
     redFlags: [
-      'Unilateral nasal symptoms, persistent sore throat/dysphagia, oral lesion >3 weeks → exclude sinister causes (2WW where appropriate).',
+      'Unilateral nasal symptoms, persistent sore throat/dysphagia, oral lesion >3 weeks → exclude sinister causes (suspected cancer pathway referral where appropriate).',
     ],
     emisText: `Halitosis:
 - Mainstay: oral hygiene (fluoride brushing BD, interdental + TONGUE cleaning) + DENTIST review (caries/periodontitis).

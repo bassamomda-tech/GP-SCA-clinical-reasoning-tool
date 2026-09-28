@@ -40,10 +40,10 @@
 
   if (window.RGPTriage) RGPTriage.register('anaemia-triage', {
     title: 'Anaemia — red-flag & referral triage',
-    subtitle: 'Enter indices and tick red flags. Surfaces emergency, 2WW cancer and urgent rules per NICE NG12 (updated April 2026) / BSH.',
+    subtitle: 'Enter indices and tick red flags. Surfaces emergency, suspected cancer pathway and urgent rules per NICE NG12 (updated April 2026) / BSH.',
     guideline: 'NICE NG12 (updated April 2026) · BSH',
     inputs: INPUTS,
-    defaultMessage: 'No emergency / 2WW rule fired. Define the anaemia by MCV and work up the cause using the differential below; recheck ferritin, B12/folate, reticulocytes, U&E, LFTs, blood film.',
+    defaultMessage: 'No emergency / suspected cancer pathway rule fired. Define the anaemia by MCV and work up the cause using the differential below; recheck ferritin, B12/folate, reticulocytes, U&E, LFTs, blood film.',
     rules: [
       {
         id: 'severe_symptomatic', tier: 'emergency',
@@ -70,7 +70,7 @@
       {
         id: 'haem_2ww', tier: 'cancer',
         label: 'Suspected haematological malignancy — lymphadenopathy / splenomegaly / night sweats, or pancytopenia',
-        action: '2WW haematology + urgent FBC, film, LDH.',
+        action: 'Suspected cancer pathway referral haematology + urgent FBC, film, LDH.',
         source: 'NICE NG12 (updated April 2026) §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.lymphadenopathy || (i.plt != null && i.plt < 100 && i.wcc != null && i.wcc < 3.5),
       },
@@ -84,15 +84,15 @@
       },
       {
         id: 'uppergi_2ww', tier: 'cancer',
-        label: 'IDA + dysphagia / upper-GI symptoms — upper GI 2WW',
+        label: 'IDA + dysphagia / upper-GI symptoms — upper GI suspected cancer pathway referral',
         action: 'Upper GI suspected cancer pathway referral (NICE NG12 (updated April 2026), dysphagia criterion).',
         source: 'NICE NG12 (updated April 2026) §1.2',
         when: i => i.dysphagia && i.ferritin != null && i.ferritin < 30,
       },
       {
         id: 'nonspecific_2ww', tier: 'cancer',
-        label: 'Unexplained weight loss + anaemia — non-site-specific 2WW',
-        action: 'Consider GI / lung / haematological 2WW; CXR + FIT as triage.',
+        label: 'Unexplained weight loss + anaemia — non-site-specific suspected cancer pathway referral',
+        action: 'Consider GI / lung / haematological suspected cancer pathway referral; CXR + FIT as triage.',
         source: 'NICE NG12 (updated April 2026) §1.13',
         when: i => i.weight_loss,
       },
@@ -163,7 +163,7 @@
         keyExam: 'Lymphadenopathy, hepatosplenomegaly, bruising / petechiae.',
         nextIx: '\u26A1 Urgent FBC + film; pancytopenia or blasts → same-day haematology. MDS / leukaemia / lymphoma pathway (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Several blood lines are affected, so I want a specialist to examine your blood under the microscope this week.',
-        guideUrl: '', redFlagAction: '\u26A1 2WW / same-day haematology' }
+        guideUrl: '', redFlagAction: '\u26A1 Suspected cancer pathway referral / same-day haematology' }
     ],
     effects: {
       age: (v) => v >= 60 ? { gi_malignancy: +8, acd: +3, haem_malignancy: +2 } : {},

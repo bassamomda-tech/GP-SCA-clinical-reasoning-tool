@@ -94,7 +94,7 @@
   ]);
 
   add(['weight loss','unexplained weight loss'],[
-    {chip:'GI cancer', text:'Unexplained weight loss — screen for GI cancer (consider 2WW per NICE NG12 (updated April 2026))', level:'2ww'},
+    {chip:'GI cancer', text:'Unexplained weight loss — screen for GI cancer (consider suspected cancer pathway referral per NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Dysphagia', text:'No dysphagia', level:'2ww'},
     {chip:'Abdominal mass', text:'No abdominal or pelvic mass', level:'2ww'},
     {chip:'Rectal bleeding', text:'No rectal bleeding or change in bowel habit', level:'2ww'},
@@ -119,8 +119,8 @@
   ]);
 
   add(['mole','pigmented lesion','skin lesion','naevus'],[
-    {chip:'Melanoma', text:'Changing pigmented lesion — apply weighted 7-point checklist (consider 2WW melanoma)', level:'2ww'},
-    {chip:'SCC', text:'No non-healing keratinising or crusted lesion (consider 2WW SCC)', level:'2ww'},
+    {chip:'Melanoma', text:'Changing pigmented lesion — apply weighted 7-point checklist (consider suspected cancer pathway referral for melanoma)', level:'2ww'},
+    {chip:'SCC', text:'No non-healing keratinising or crusted lesion (consider suspected cancer pathway referral for SCC)', level:'2ww'},
     {chip:'Asymmetry/colour', text:'No new asymmetry, irregular border, colour change, diameter >7mm'}
   ]);
 
@@ -134,20 +134,20 @@
   add(['dysuria','urinary symptoms','urine infection','uti symptoms'],[
     {chip:'Pyelonephritis', text:'No fever, rigors, loin pain or vomiting (upper UTI)', level:'emergency'},
     {chip:'Sepsis', text:'No signs of urosepsis or new confusion (elderly)', level:'emergency'},
-    {chip:'Visible haematuria', text:'No visible haematuria (consider 2WW urological if ≥45)', level:'2ww'},
+    {chip:'Visible haematuria', text:'No visible haematuria (consider urological suspected cancer pathway referral if ≥45)', level:'2ww'},
     {chip:'Pregnancy', text:'Not pregnant / pregnancy status confirmed'},
     {chip:'Retention', text:'No acute urinary retention'}
   ]);
 
   add(['haematuria','blood in urine'],[
-    {chip:'Bladder/renal Ca', text:'Visible haematuria ≥45 (unexplained or persistent after UTI treatment) — 2WW bladder/renal', level:'2ww'},
-    {chip:'Non-visible ≥60', text:'Non-visible haematuria ≥60 with dysuria or raised WCC — consider 2WW', level:'2ww'},
+    {chip:'Bladder/renal Ca', text:'Visible haematuria ≥45 (unexplained or persistent after UTI treatment) — suspected cancer pathway referral (bladder/renal)', level:'2ww'},
+    {chip:'Non-visible ≥60', text:'Non-visible haematuria ≥60 with dysuria or raised WCC — consider suspected cancer pathway referral', level:'2ww'},
     {chip:'Clot retention', text:'No clot retention or inability to pass urine', level:'emergency'},
     {chip:'Sepsis', text:'No fever/loin pain suggesting infection'}
   ]);
 
   add(['rectal bleeding','pr bleeding','blood in stool'],[
-    {chip:'Colorectal Ca', text:'Rectal bleeding — apply NICE NG12 (updated April 2026) (with weight loss/change in bowel habit/abdo mass, or age threshold): offer FIT first; FIT ≥10 µg Hb/g → 2WW colorectal (rectal or anal mass/ulcer → refer directly)', level:'2ww'},
+    {chip:'Colorectal Ca', text:'Rectal bleeding — apply NICE NG12 (updated April 2026) (with weight loss/change in bowel habit/abdo mass, or age threshold): offer FIT first; FIT ≥10 µg Hb/g → colorectal suspected cancer pathway referral (rectal or anal mass/ulcer → refer directly)', level:'2ww'},
     {chip:'FIT', text:'Offer FIT per NICE NG12 (updated April 2026) and NICE HTG690 (formerly DG56) — FIT ≥10 µg Hb/g → suspected cancer pathway'},
     {chip:'Massive bleed', text:'No massive rectal bleeding with haemodynamic compromise', level:'emergency'},
     {chip:'Abdominal mass', text:'No abdominal or rectal mass', level:'2ww'},
@@ -155,7 +155,7 @@
   ]);
 
   add(['change in bowel habit','altered bowel habit','diarrhoea','constipation'],[
-    {chip:'Colorectal Ca', text:'No persistent change in bowel habit with weight loss/bleeding/mass (offer FIT; FIT ≥10 µg Hb/g → 2WW per NICE NG12 (updated April 2026))', level:'2ww'},
+    {chip:'Colorectal Ca', text:'No persistent change in bowel habit with weight loss/bleeding/mass (offer FIT; FIT ≥10 µg Hb/g → suspected cancer pathway referral per NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Abdominal mass', text:'No abdominal or rectal mass', level:'2ww'},
     {chip:'IDA', text:'No unexplained iron-deficiency anaemia', level:'2ww'},
     {chip:'Obstruction', text:'No vomiting, distension and absolute constipation (obstruction)', level:'emergency'},
@@ -163,7 +163,7 @@
   ]);
 
   add(['dysphagia','difficulty swallowing','swallowing problems'],[
-    {chip:'Oesophageal Ca', text:'Dysphagia at any age — suspected cancer pathway (2WW) upper GI referral (NICE NG12 (updated April 2026))', level:'2ww'},
+    {chip:'Oesophageal Ca', text:'Dysphagia at any age — upper GI suspected cancer pathway referral (NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Weight loss', text:'No associated weight loss', level:'2ww'},
     {chip:'Aspiration', text:'No aspiration, drooling or inability to manage saliva', level:'emergency'},
     {chip:'Neuro', text:'No new neurological cause (stroke/bulbar)', level:'emergency'}
@@ -200,32 +200,32 @@
   ]);
 
   add(['breast lump','breast pain','breast change'],[
-    {chip:'Breast Ca ≥30', text:'Unexplained breast lump age ≥30 — 2WW breast (NICE NG12 (updated April 2026))', level:'2ww'},
+    {chip:'Breast Ca ≥30', text:'Unexplained breast lump age ≥30 — breast suspected cancer pathway referral (NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Nipple change ≥50', text:'No nipple discharge/retraction or skin change age ≥50', level:'2ww'},
     {chip:'Axillary lump', text:'No unexplained axillary lump', level:'2ww'},
     {chip:'Inflammatory', text:'No erythema/peau d’orange (inflammatory cancer)', level:'2ww'}
   ]);
 
   add(['neck lump','lump in neck','swelling in neck'],[
-    {chip:'Head & neck Ca', text:'No persistent unexplained neck lump (consider 2WW head & neck)', level:'2ww'},
+    {chip:'Head & neck Ca', text:'No persistent unexplained neck lump (consider head & neck suspected cancer pathway referral)', level:'2ww'},
     {chip:'Thyroid', text:'No rapidly enlarging or fixed thyroid mass', level:'2ww'},
     {chip:'Lymphoma', text:'No persistent lymphadenopathy with night sweats/weight loss', level:'2ww'},
     {chip:'Airway', text:'No stridor or airway compromise', level:'emergency'}
   ]);
 
   add(['hoarseness','hoarse voice','voice change'],[
-    {chip:'Laryngeal Ca', text:'Persistent unexplained hoarseness >3 weeks age ≥45 — 2WW head & neck / CXR (NICE NG12 (updated April 2026))', level:'2ww'},
+    {chip:'Laryngeal Ca', text:'Persistent unexplained hoarseness >3 weeks age ≥45 — head & neck suspected cancer pathway referral / CXR (NICE NG12 (updated April 2026))', level:'2ww'},
     {chip:'Neck lump', text:'No associated neck lump', level:'2ww'},
     {chip:'Airway', text:'No stridor or breathing difficulty', level:'emergency'}
   ]);
 
   add(['post-menopausal bleeding','postmenopausal bleeding','pmb'],[
-    {chip:'Endometrial Ca', text:'Postmenopausal bleeding aged 55 and over, not attributable to HRT — 2WW gynaecology for endometrial cancer (NICE NG12 (updated April 2026)); under 55 or on HRT — assess, low threshold for referral', level:'2ww'},
+    {chip:'Endometrial Ca', text:'Postmenopausal bleeding aged 55 and over, not attributable to HRT — gynaecology suspected cancer pathway referral for endometrial cancer (NICE NG12 (updated April 2026)); under 55 or on HRT — assess, low threshold for referral', level:'2ww'},
     {chip:'On HRT', text:'Unscheduled bleeding pattern on HRT documented'}
   ]);
 
   add(['pv bleeding','vaginal bleeding','intermenstrual bleeding','postcoital bleeding','irregular bleeding'],[
-    {chip:'Cervical/endometrial', text:'No persistent intermenstrual/postcoital bleeding (consider examination ± 2WW)', level:'2ww'},
+    {chip:'Cervical/endometrial', text:'No persistent intermenstrual/postcoital bleeding (consider examination ± suspected cancer pathway referral)', level:'2ww'},
     {chip:'Postmenopausal', text:'No postmenopausal bleeding', level:'2ww'},
     {chip:'Pregnancy/ectopic', text:'Pregnancy excluded if relevant (ectopic)', level:'emergency'},
     {chip:'Haemodynamic', text:'No heavy bleeding with haemodynamic compromise', level:'emergency'}
@@ -247,14 +247,14 @@
   ]);
 
   add(['lump','swelling','mass'],[
-    {chip:'Soft-tissue sarcoma', text:'No deep, fixed, rapidly enlarging or >5cm soft-tissue lump (consider 2WW sarcoma)', level:'2ww'},
+    {chip:'Soft-tissue sarcoma', text:'No deep, fixed, rapidly enlarging or >5cm soft-tissue lump (consider sarcoma suspected cancer pathway referral)', level:'2ww'},
     {chip:'Lymphadenopathy', text:'No persistent unexplained lymphadenopathy', level:'2ww'},
     {chip:'Inflammatory', text:'No spreading erythema, fever or fluctuance (abscess)', level:'emergency'}
   ]);
 
   add(['testicular','testicle pain','scrotal','scrotal lump'],[
     {chip:'Torsion', text:'No sudden severe testicular pain (torsion — urgent same-day)', level:'emergency'},
-    {chip:'Testicular Ca', text:'No non-tender testicular mass (consider 2WW / urgent USS)', level:'2ww'}
+    {chip:'Testicular Ca', text:'No non-tender testicular mass (consider suspected cancer pathway referral / urgent USS)', level:'2ww'}
   ]);
 
   add(['child fever','unwell child','febrile child','child unwell'],[

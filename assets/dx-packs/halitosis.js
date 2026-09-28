@@ -26,7 +26,7 @@
       {
         id: 'cancer_2ww', tier: 'cancer',
         label: 'Non-healing oral lesion / neck node, or persistent unilateral nasal symptoms',
-        action: 'Head & neck 2WW (NICE NG12 (updated April 2026)) / urgent ENT.',
+        action: 'Head & neck suspected cancer pathway referral (NICE NG12 (updated April 2026)) / urgent ENT.',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.oral_ulcer || i.unilateral_nasal,
       },
@@ -91,9 +91,9 @@
         guideUrl: '' },
 
       { id: 'malignancy', name: 'Oral / sinonasal malignancy', summary: 'Non-healing ulcer / mass / unilateral nasal symptoms', baseline: 1, category: 'cant-miss',
-        keyExam: 'Oral lesion, neck node, unilateral nasal mass.', nextIx: '\u26A1 Head & neck 2WW / urgent ENT (NICE NG12 (updated April 2026)).',
+        keyExam: 'Oral lesion, neck node, unilateral nasal mass.', nextIx: '\u26A1 Head & neck suspected cancer pathway referral / urgent ENT (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A non-healing sore or one-sided nasal symptoms need an urgent specialist check to exclude cancer.',
-        guideUrl: '', redFlagAction: '\u26A1 2WW / urgent ENT' }
+        guideUrl: '', redFlagAction: '\u26A1 Suspected cancer pathway referral / urgent ENT' }
     ],
     effects: {
       oral_hygiene: { oral: +22 },

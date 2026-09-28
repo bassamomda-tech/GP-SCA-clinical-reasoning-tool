@@ -112,7 +112,7 @@
       { id: 'cancer', name: 'IBD-related bowel cancer', summary: 'Long-standing disease, weight loss, new persistent change', baseline: 1, category: 'cant-miss',
         keyExam: 'Mass, anaemia, cachexia.', nextIx: '\u26A1 Colonoscopy via IBD team; surveillance for long-standing colitis.',
         patientPhrase: 'Long-standing inflammation slightly raises bowel-cancer risk, so persistent new change warrants a camera test.',
-        guideUrl: '', redFlagAction: '\u26A1 Colonoscopy / 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Colonoscopy / suspected cancer pathway referral' }
     ],
     effects: {
       known_crohns: { active_flare: +6 },

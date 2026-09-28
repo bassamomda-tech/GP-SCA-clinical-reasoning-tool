@@ -885,7 +885,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td class="rf-flag">Severe UC: &ge;6 bloody stools/day + ANY systemic feature</td><td class="rf-why">Truelove-Witts severe UC criteria: stool frequency &ge;6/day with blood + fever &gt;37.8&deg;C, HR &gt;90, Hb &lt;105, or ESR &gt;30. Requires IV corticosteroids, IV fluids, nutritional support, and colectomy risk assessment. Mortality if not treated promptly.</td><td><span class="rf-action rfa-999">Same-day hospital admission</span></td></tr>
           <tr><td class="rf-flag">Toxic megacolon (colonic dilatation &gt;6cm)</td><td class="rf-why">Transverse colon dilatation &gt;6cm on plain X-ray with systemic toxicity (fever, tachycardia, abdominal distension). Perforation risk is high &mdash; mortality 20&ndash;30% without urgent surgical intervention. Do not perform colonoscopy.</td><td><span class="rf-action rfa-999">999 &mdash; surgical emergency</span></td></tr>
           <tr><td class="rf-flag">Signs of peritonism or perforation</td><td class="rf-why">Sudden severe abdominal pain with peritoneal signs (guarding, rebound, rigidity) in a UC patient indicates perforation until proven otherwise. This is a life-threatening surgical emergency requiring immediate hospital transfer.</td><td><span class="rf-action rfa-999">999 immediately</span></td></tr>
-          <tr><td class="rf-flag">New or changing abdominal mass in longstanding UC</td><td class="rf-why">A palpable abdominal mass in a patient with longstanding UC requires urgent investigation for CRC. UC is a pre-malignant condition; cancer risk increases with disease duration and extent.</td><td><span class="rf-action rfa-same">2WW CRC referral</span></td></tr>
+          <tr><td class="rf-flag">New or changing abdominal mass in longstanding UC</td><td class="rf-why">A palpable abdominal mass in a patient with longstanding UC requires urgent investigation for CRC. UC is a pre-malignant condition; cancer risk increases with disease duration and extent.</td><td><span class="rf-action rfa-same">Colorectal suspected cancer pathway referral</span></td></tr>
           <tr><td class="rf-flag">Acute uveitis (red eye, photophobia, visual change)</td><td class="rf-why">Anterior uveitis is an extraintestinal manifestation of UC that can cause permanent vision loss if untreated. Requires same-day ophthalmology review &mdash; not topical OTC treatments alone.</td><td><span class="rf-action rfa-same">Same-day ophthalmology</span></td></tr>
           <tr><td class="rf-flag">Significant haematochezia causing haemodynamic instability</td><td class="rf-why">Massive colonic haemorrhage in UC can cause haemodynamic compromise. Signs: pallor, hypotension, tachycardia, dizziness on standing. Requires immediate hospital transfer.</td><td><span class="rf-action rfa-999">999 immediately</span></td></tr>
           <tr><td class="rf-flag">C. difficile colitis suspected (recent antibiotics + diarrhoea)</td><td class="rf-why">C. difficile superinfection in UC patients on immunosuppressants is associated with high morbidity and mortality. Cannot be distinguished clinically from a UC flare &mdash; stool cultures mandatory before any immunosuppression.</td><td><span class="rf-action rfa-same">Stool culture urgently; do not start steroids</span></td></tr>
@@ -1285,7 +1285,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C &mdash; Complications &mdash; Act Urgently</div>
         <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">Emergency management</span>
         <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Toxic Megacolon</h4><p>Colonic dilatation &gt;6cm with systemic toxicity; most feared acute complication; perforation risk; requires immediate surgical assessment and IV corticosteroids. Do NOT attempt colonoscopy.</p></div>
-        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Colorectal Cancer in UC</h4><p>Risk: E3 pancolitis &gt;10 years; cumulative 5&ndash;8&times; general population risk; dramatically reduced with surveillance colonoscopy and 5-ASA chemoprevention. 2WW referral if suspected.</p></div>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Colorectal Cancer in UC</h4><p>Risk: E3 pancolitis &gt;10 years; cumulative 5&ndash;8&times; general population risk; dramatically reduced with surveillance colonoscopy and 5-ASA chemoprevention. Suspected cancer pathway referral if suspected.</p></div>
         <div class="ddx-card ddx-c"><h4>Fulminant Colitis / Perforation</h4><p>Peritoneal signs + systemically unwell; perforation can occur without preceding toxic megacolon; 999; IV antibiotics + surgical assessment; emergency colectomy may be required.</p></div>
       </div>
     </div>
@@ -2449,8 +2449,8 @@ function calcDrug(){
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
     main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
+    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -2546,7 +2546,7 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=104"></script>
+<script src="../assets/site.js?v=105"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 

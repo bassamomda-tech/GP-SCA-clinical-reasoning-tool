@@ -74,7 +74,7 @@
       'Support men through treatment side effects (erectile dysfunction, incontinence, hormonal effects) and bone health on hormone therapy',
       'Provide information, psychological support and survivorship follow-up'],
     referral:[
-      'Prostate feels malignant on DRE, or PSA above the age-specific reference range → urgent suspected prostate-cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Prostate feels malignant on DRE, or PSA above the age-specific reference range → suspected cancer pathway referral for prostate cancer (NICE NG12 (updated April 2026))',
       'Suspected metastatic spinal cord compression (back pain + neurology/bladder-bowel dysfunction) → emergency referral (MSCC pathway)',
       'Confirmed prostate cancer → urology/uro-oncology MDT',
       'Strong family history (e.g. BRCA) → consider genetics and informed PSA discussion'],
@@ -100,7 +100,7 @@
       'Safety-net for retention and review symptom response'],
     referral:[
       'Acute urinary retention → emergency catheterisation/urology; high-pressure chronic retention with renal impairment → urgent urology',
-      'Suspected prostate cancer (abnormal DRE or raised PSA) → urgent suspected-cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Suspected prostate cancer (abnormal DRE or raised PSA) → suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Symptoms refractory to medical treatment, or complications (recurrent UTI, stones, haematuria, renal impairment) → urology',
       'Diagnostic uncertainty → urology'],
     source:'NICE CG97 (LUTS in men)' },

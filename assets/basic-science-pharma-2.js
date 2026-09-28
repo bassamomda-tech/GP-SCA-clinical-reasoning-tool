@@ -393,7 +393,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 {
   id:'pharma-insulin', domain:'Pharmacology', class:'Endocrine & Metabolic', icon:'💉',
   title:'Insulin', blurb:'The definitive glucose-lowering hormone — essential in T1DM and advanced T2DM.',
-  examples:['Rapid (aspart, lispro)','Short (Actrapid)','Intermediate (isophane)','Long-acting (glargine, detemir, degludec)'],
+  examples:['Rapid (aspart, lispro)','Short (Actrapid)','Intermediate (isophane)','Long-acting (glargine, detemir [Levemir being discontinued in the UK, 2026], degludec)'],
   moa:[
     'Activates the **insulin receptor** → glucose uptake (GLUT4) into muscle/fat, glycogen synthesis, and suppression of hepatic gluconeogenesis and lipolysis.',
   ],

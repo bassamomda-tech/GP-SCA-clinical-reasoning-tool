@@ -50,7 +50,7 @@
       {
         id: 'tumour', tier: 'cancer',
         label: 'Possible bone tumour — mass / night pain / systemic',
-        action: 'Urgent X-ray; sarcoma/2WW pathway.',
+        action: 'Urgent X-ray; sarcoma suspected cancer pathway.',
         source: 'NICE NG12 (updated April 2026)',
         when: i => i.mass_night,
       },
@@ -104,9 +104,9 @@
         patientPhrase: 'A hot swollen joint with fever could be infected — that is an emergency today.',
         guideUrl: '', redFlagAction: '\u26A1 Aspirate + admit' },
       { id: 'tumour', name: 'Bone tumour', summary: 'Mass, unremitting night pain, systemic, young', baseline: 1, category: 'cant-miss',
-        keyExam: 'Mass, tenderness.', nextIx: '\u26A1 Urgent X-ray; sarcoma/2WW pathway.',
+        keyExam: 'Mass, tenderness.', nextIx: '\u26A1 Urgent X-ray; sarcoma suspected cancer pathway.',
         patientPhrase: 'Night pain with a mass needs an urgent X-ray to exclude a bone tumour.',
-        guideUrl: '', redFlagAction: '\u26A1 Urgent X-ray / 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Urgent X-ray / suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 55 ? { oa: +10, pfps: -4 } : (v < 35 ? { pfps: +8, meniscal_ligament: +2, oa: -6 } : {}),

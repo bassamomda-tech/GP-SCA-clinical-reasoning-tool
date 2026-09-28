@@ -18,9 +18,9 @@ window.SCA_LIB_SPECS = {
 window.SCA_LIBRARY = [
 
   { f:'Chronic cough', ic:'🫁', sp:'resp', ceg:['Long-term conditions & cancer'],
-    note:'One symptom, four different exams: the age, the pack-years and the throwaway line decide whether this is asthma, reflux, a 2WW chest X-ray or a palliative conversation.',
+    note:'One symptom, four different exams: the age, the pack-years and the throwaway line decide whether this is asthma, reflux, an urgent chest X-ray or a palliative conversation.',
     v:[
-      { t:'Persistent cough in a smoker, 56 — the 2WW conversation', ty:'v', live:'cough-smoker-2ww' },
+      { t:'Persistent cough in a smoker, 56 — the suspected cancer pathway conversation', ty:'v', live:'cough-smoker-2ww' },
       { t:'Chronic cough in a young adult — cough-variant asthma vs reflux vs pertussis', ty:'v', live:'cough-young-asthma' },
       { t:'Chronic cough in an older adult — normal CXR, when to still refer', ty:'t', live:'cough-older-cxr' },
       { t:'Haemoptysis in a palliative patient — investigate or palliate?', ty:'t', live:'haemoptysis-palliative', ceg:['Older adults'] },
@@ -153,7 +153,7 @@ window.SCA_LIBRARY = [
       { t:'Dysuria in a young man — STI until proven otherwise', ty:'t', src:109, live:'dysuria-sti', ceg:['Gender, reproductive & sexual health'] },
       { t:'Recurrent UTIs in a woman — prophylaxis ladder, vaginal oestrogen & the post-coital link', ty:'t', live:'recurrent-uti-woman' },
       { t:'UTI symptoms in an 84-year-old — constipation, retention and delirium traps', ty:'v', live:'uti-elderly', ceg:['Older adults'] },
-      { t:'Visible haematuria in an older adult — the 2WW that cannot wait', ty:'t', src:38, live:'haematuria-2ww', ceg:['Long-term conditions & cancer'] },
+      { t:'Visible haematuria in an older adult — the suspected cancer pathway referral that cannot wait', ty:'t', src:38, live:'haematuria-2ww', ceg:['Long-term conditions & cancer'] },
       { t:'New confusion + urinary retention after a new drug — the anticholinergic mimic', ty:'v', src:228, live:'iatrogenic-anticholinergic', ceg:['Prescribing & pharmacology'] },
       { t:'Bedwetting in a 7-year-old — enuresis without shame', ty:'t', src:36, live:'child-enuresis', ceg:['Children & young people'] },
       { t:'Perineal pain + urinary symptoms in a man — prostatitis, not “just a UTI”', ty:'v', live:'prostatitis', ceg:['Gender, reproductive & sexual health'] },
@@ -165,7 +165,7 @@ window.SCA_LIBRARY = [
 
   { f:'Men\u2019s health below the belt', ic:'♂️', sp:'uro', ceg:['Gender, reproductive & sexual health'],
     v:[
-      { t:'Painless testicular lump — the NG12 two-week-wait you never miss', ty:'v', live:'testicular-lump', ceg:['Long-term conditions & cancer'] },
+      { t:'Painless testicular lump — the NG12 suspected cancer pathway referral you never miss', ty:'v', live:'testicular-lump', ceg:['Long-term conditions & cancer'] },
       { t:'Sudden severe scrotal pain in a teenager — torsion, the clock is running', ty:'t', live:'testicular-torsion', ceg:['Urgent & unscheduled care'] },
       { t:'PSA result above the age range — what the number can and can\u2019t say', ty:'v', src:51, live:'psa-result-conversation', ceg:['Investigations & results'] },
       { t:'Blood in the semen — alarming, usually benign, occasionally not', ty:'v', src:21, live:'haematospermia', ceg:['Long-term conditions & cancer'] },
@@ -186,7 +186,7 @@ window.SCA_LIBRARY = [
   { f:'Menopause & HRT', ic:'🌡️', sp:'women', ceg:['Gender, reproductive & sexual health'],
     v:[
       { t:'Husband ringing about his wife\u2019s mood — the third-party call', ty:'t', live:'third-party-meno' },
-      { t:'Postmenopausal bleeding — the NG12 two-week-wait you never miss', ty:'v', live:'pmb-endometrial', ceg:['Long-term conditions & cancer'] },
+      { t:'Postmenopausal bleeding — the NG12 suspected cancer pathway referral you never miss', ty:'v', live:'pmb-endometrial', ceg:['Long-term conditions & cancer'] },
       { t:'HRT counselling — symptoms, options, honest risk', ty:'t', src:94, live:'hrt-counselling', ceg:['Prescribing & pharmacology'] },
       { t:'"Does HRT give you breast cancer?" — numbers that mean something', ty:'v', src:188, live:'hrt-breast-cancer-numbers', ceg:['Investigations & results'] },
       { t:'Unscheduled bleeding ON HRT — when to refer', ty:'t', live:'hrt-unscheduled-bleed', ceg:['Long-term conditions & cancer'] },
@@ -198,7 +198,7 @@ window.SCA_LIBRARY = [
       { t:'Hirsutism and irregular cycles — PCOS named kindly (metabolic + fertility + mood)', ty:'v', src:138, live:'pcos-named' },
       { t:'Heavy periods + fibroids on scan — options ladder', ty:'t', src:172, live:'hmb-fibroids' },
       { t:'Recurrent stress fractures in a runner — RED-S and the eating screen', ty:'t', src:39, live:'red-s-stress-fractures', ceg:['Mental health & addiction'] },
-      { t:'A breast lump at 34 — "too young / painless" myths and the NG12 2WW', ty:'v', live:'breast-lump-2ww', ceg:['Long-term conditions & cancer'] },
+      { t:'A breast lump at 34 — "too young / painless" myths and the NG12 suspected cancer pathway', ty:'v', live:'breast-lump-2ww', ceg:['Long-term conditions & cancer'] },
       { t:'“A different person before my period” — premenstrual dysphoric disorder, not “just PMS”', ty:'v', live:'pmdd', ceg:['Mental health & addiction'] },
     ]},
 
@@ -314,7 +314,7 @@ window.SCA_LIBRARY = [
   { f:'The abnormal blood result', ic:'🧪', sp:'haem', ceg:['Investigations & results'],
     note:'Results stations live or die on one skill: the number explained as a story, then the right next test.',
     v:[
-      { t:'FIT 47 in a man who blames his piles — the 2WW reframe', ty:'t', live:'fit-positive' },
+      { t:'FIT 47 in a man who blames his piles — the suspected cancer pathway reframe', ty:'t', live:'fit-positive' },
       { t:'Microcytic anaemia at 68 — iron isn\u2019t a diagnosis, find the bleed', ty:'v', src:29, live:'anaemia-ida', ceg:['Long-term conditions & cancer'] },
       { t:'B12 deficiency — injections, neurology, and why diet won\u2019t fix it', ty:'t', src:45, live:'b12-deficiency' },
       { t:'Isolated macrocytosis — the result that opens the alcohol door', ty:'t', src:144, live:'macrocytosis-result' },
@@ -342,7 +342,7 @@ window.SCA_LIBRARY = [
 
   { f:'Gut symptoms', ic:'🌯', sp:'gi', ceg:['New & undifferentiated presentations'],
     v:[
-      { t:'Rectal bleeding at 52 — the FIT / 2WW reframe, not “just piles”', ty:'v', live:'rectal-bleeding-2ww', ceg:['Long-term conditions & cancer'] },
+      { t:'Rectal bleeding at 52 — the FIT / suspected cancer pathway reframe, not “just piles”', ty:'v', live:'rectal-bleeding-2ww', ceg:['Long-term conditions & cancer'] },
       { t:'Progressive dysphagia — suspected cancer referral at any age', ty:'v', live:'dysphagia-2ww', ceg:['Long-term conditions & cancer'] },
       { t:'Recurrent dyspepsia — test-and-treat vs the OGD thresholds (alarm features)', ty:'t', src:134, live:'dyspepsia-alarm', ceg:['Urgent & unscheduled care'] },
       { t:'Reflux that won\u2019t settle — PPI exit strategy', ty:'t', src:87, live:'reflux-ppi-exit' },
@@ -352,8 +352,8 @@ window.SCA_LIBRARY = [
       { t:'Rectal bleeding in an adult with a learning disability — adjusted consultation', ty:'t', src:16, live:'rectal-bleed-learning-disability', ceg:['Health disadvantage & vulnerabilities'] },
       { t:'Weight loss with normal first-line tests — what next, and how honestly?', ty:'t', src:85, live:'weight-loss-normal-tests', ceg:['Long-term conditions & cancer'] },
       { t:'Long "IBS" + iron-deficiency anaemia — the coeliac test done right', ty:'v', live:'coeliac-disease', ceg:['Investigations & results'] },
-      { t:'Persistent bloating over 50 — the ovarian CA-125 / 2WW the "IBS" label hides', ty:'v', live:'ovarian-bloating', ceg:['Long-term conditions & cancer'] },
-      { t:'Painless jaundice + weight loss — pancreatic/biliary 2WW, not "just the booze"', ty:'v', live:'painless-jaundice', ceg:['Long-term conditions & cancer'] },
+      { t:'Persistent bloating over 50 — the ovarian CA-125 / suspected cancer pathway the "IBS" label hides', ty:'v', live:'ovarian-bloating', ceg:['Long-term conditions & cancer'] },
+      { t:'Painless jaundice + weight loss — pancreatic/biliary suspected cancer pathway, not "just the booze"', ty:'v', live:'painless-jaundice', ceg:['Long-term conditions & cancer'] },
       { t:'RUQ pain after fatty food — biliary colic, and when it becomes an emergency', ty:'t', live:'biliary-colic', ceg:['Urgent & unscheduled care'] },
     ]},
 
@@ -380,7 +380,7 @@ window.SCA_LIBRARY = [
       { t:'Generalised itch, no rash — the systemic screen (and the lymphoma it hides)', ty:'v', src:145, live:'generalised-itch', ceg:['Long-term conditions & cancer'] },
       { t:'White patches spreading — vitiligo, the contagion myth, and the stigma that weighs most', ty:'v', src:128, live:'vitiligo-meaning', ceg:['Ethnicity, culture & diversity'] },
       { t:'Keloid scar in a young Black woman — options and honesty', ty:'t', src:119, live:'keloid-scar', ceg:['Ethnicity, culture & diversity'] },
-      { t:'A lesion that won\u2019t heal — skin-cancer 2WW behind "just a sore"', ty:'v', src:20, live:'non-healing-lesion', ceg:['Long-term conditions & cancer'] },
+      { t:'A lesion that won\u2019t heal — skin cancer suspected cancer pathway behind "just a sore"', ty:'v', src:20, live:'non-healing-lesion', ceg:['Long-term conditions & cancer'] },
       { t:'Painful forehead rash near the eye — shingles, the antiviral window + Hutchinson\u2019s sign', ty:'v', src:193, live:'shingles-ophthalmic', ceg:['Urgent & unscheduled care'] },
       { t:'Drenching night sweats in a young adult — the lymphoma B-symptom screen, not ‘just stress’', ty:'v', src:48, live:'night-sweats-young', ceg:['Long-term conditions & cancer'] },
       { t:'Fingers turning white in a young girl — Raynaud\u2019s vs connective tissue', ty:'t', src:101, live:'raynauds-young-girl', ceg:['Children & young people'] },
@@ -388,7 +388,7 @@ window.SCA_LIBRARY = [
       { t:'Thick scaly plaques on the elbows — chronic plaque psoriasis, the ladder + the joints/heart it hides', ty:'v', live:'chronic-plaque-psoriasis' },
     ]},
 
-  { f:'Skin lesions & the 2WW', ic:'🔬', sp:'derm', ceg:['Long-term conditions & cancer'],
+  { f:'Skin lesions & the suspected cancer pathway', ic:'🔬', sp:'derm', ceg:['Long-term conditions & cancer'],
     note:'The marks live in structured assessment (7-point checklist / ABCDE) and the decision to refer, not in a confident glance.',
     v:[
       { t:'Changing mole — suspected melanoma, the 7-point checklist', ty:'v', live:'melanoma-2ww' },
@@ -400,10 +400,10 @@ window.SCA_LIBRARY = [
     v:[
       { t:'Sudden one-sided hearing loss — the emergency that isn’t wax', ty:'t', live:'sudden-hearing-loss', ceg:['Urgent & unscheduled care'] },
       { t:'Acute painful red eye in a lens wearer — keratitis, not conjunctivitis', ty:'t', live:'red-eye-triage', ceg:['Urgent & unscheduled care'] },
-      { t:'Persistent mouth ulcer >3 weeks — the oral-cancer 2WW', ty:'v', live:'mouth-ulcer-2ww', ceg:['Long-term conditions & cancer'] },
+      { t:'Persistent mouth ulcer >3 weeks — the oral cancer suspected cancer pathway', ty:'v', live:'mouth-ulcer-2ww', ceg:['Long-term conditions & cancer'] },
       { t:'Asymmetric hearing loss + one-sided tinnitus — the acoustic-neuroma rule (not wax)', ty:'t', src:99, live:'asymmetric-hearing-loss', ceg:['Investigations & results'] },
-      { t:'Persistent hoarseness in a smoker — the laryngeal-cancer 2WW', ty:'v', live:'persistent-hoarseness', ceg:['Long-term conditions & cancer'] },
-      { t:'A persistent neck lump in a smoker — "just a gland" vs the head & neck 2WW', ty:'v', live:'neck-lump-2ww', ceg:['Long-term conditions & cancer'] },
+      { t:'Persistent hoarseness in a smoker — the laryngeal cancer suspected cancer pathway', ty:'v', live:'persistent-hoarseness', ceg:['Long-term conditions & cancer'] },
+      { t:'A persistent neck lump in a smoker — "just a gland" vs the head & neck suspected cancer pathway', ty:'v', live:'neck-lump-2ww', ceg:['Long-term conditions & cancer'] },
       { t:'Blocked nose and sneezing all spring — rhinitis ladder', ty:'t', src:192, live:'rhinitis-ladder' },
       { t:'Unilateral nasal blockage + bleeding — the one-sided rule (sinonasal/NPC)', ty:'v', src:108, live:'unilateral-nasal', ceg:['Long-term conditions & cancer'] },
       { t:'Vertigo: see Collapse & dizziness family', ty:'t', xref:true },

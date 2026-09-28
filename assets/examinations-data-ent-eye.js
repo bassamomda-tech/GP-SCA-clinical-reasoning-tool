@@ -41,7 +41,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   equipment:['Tongue depressor','Pen torch','Gloves'],
   redFlags:[
     'Stridor, drooling, tripod posture, muffled voice → **do not examine throat** — emergency (?epiglottitis)',
-    'Unexplained oral ulcer/lump >3 weeks, persistent hoarseness >3 weeks, neck lump → 2-week-wait head & neck',
+    'Unexplained oral ulcer/lump >3 weeks, persistent hoarseness >3 weeks, neck lump → head & neck suspected cancer pathway referral',
     'Trismus + unilateral peritonsillar swelling + uvular deviation → ?quinsy — urgent ENT',
   ],
   sequence:[
@@ -62,7 +62,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   outcomes:[
     { finding:'Bilateral tonsillar exudate + tender nodes + fever', meaning:'Tonsillitis — FeverPAIN/Centor; antibiotics if high score' },
     { finding:'Unilateral swelling + trismus + uvular deviation', meaning:'Peritonsillar abscess (quinsy) — urgent ENT' },
-    { finding:'Persistent ulcer/white-red patch >3 weeks', meaning:'?Oral malignancy — 2-week-wait' },
+    { finding:'Persistent ulcer/white-red patch >3 weeks', meaning:'?Oral malignancy — suspected cancer pathway referral' },
   ],
   links:{ calc:'tools/calculators.html#feverpain', calcLabel:'FeverPAIN', algorithm:'tools/algorithms/neck-lump.html' },
 },
@@ -73,7 +73,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   indications:['Neck lump or goitre','Suspected hyper- or hypothyroidism','Dysphagia / hoarseness with neck swelling','Thyroid surveillance'],
   equipment:['Glass of water','Stethoscope (bruit)','Tendon hammer (reflexes)'],
   redFlags:[
-    'Hard fixed thyroid nodule, rapid growth, hoarseness, cervical lymphadenopathy → 2-week-wait',
+    'Hard fixed thyroid nodule, rapid growth, hoarseness, cervical lymphadenopathy → suspected cancer pathway referral',
     'Stridor / airway compromise from large goitre → urgent',
     'Thyroid storm features (fever, tachyarrhythmia, agitation) → emergency',
   ],
@@ -94,7 +94,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   ],
   outcomes:[
     { finding:'Diffuse goitre + bruit + eye signs + tremor', meaning:'Graves disease — TFTs, TRAb, refer endocrine' },
-    { finding:'Solitary firm nodule', meaning:'?Thyroid nodule — TFTs + USS; 2-week-wait if suspicious' },
+    { finding:'Solitary firm nodule', meaning:'?Thyroid nodule — TFTs + USS; suspected cancer pathway referral if suspicious' },
     { finding:'Diffuse firm goitre + hypothyroid signs', meaning:'Hashimoto thyroiditis — TFTs, anti-TPO, levothyroxine' },
     { finding:'Midline lump rising with tongue protrusion', meaning:'Thyroglossal cyst' },
   ],

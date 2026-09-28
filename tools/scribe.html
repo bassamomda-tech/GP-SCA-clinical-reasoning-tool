@@ -284,7 +284,7 @@
       <div class="tool-head">
         <div class="tool-eyebrow">Reasoning GP · Clinic tools</div>
         <h1>Consult <em>Scribe</em></h1>
-        <p><b>This feature is on hold and is not available on any plan.</b> It was built to turn a consultation into a ready-to-paste GP record — EMIS Web, SystmOne or SOAP, with examination, impression, plan, safety-netting, a referral draft, NICE NG12 two-week-wait flags and RCGP-style SCA marking. Recording a live consultation engages UK GDPR, patient consent and NHS record-keeping duties, so <b>recording and note generation are disabled for every account</b> until those requirements are completed. The page is kept here for reference only.</p>
+        <p><b>This feature is on hold and is not available on any plan.</b> It was built to turn a consultation into a ready-to-paste GP record — EMIS Web, SystmOne or SOAP, with examination, impression, plan, safety-netting, a referral draft, NICE NG12 suspected cancer pathway flags and RCGP-style SCA marking. Recording a live consultation engages UK GDPR, patient consent and NHS record-keeping duties, so <b>recording and note generation are disabled for every account</b> until those requirements are completed. The page is kept here for reference only.</p>
       </div>
 
       <div class="scr-note" style="border-color:#c98a6b;background:#f7e3da;color:#7a2e12">⚠️ <b>On hold — not available on any plan.</b> Consult Scribe is withheld while its information-governance and consent requirements are completed. Recording a live consultation engages UK GDPR, patient consent and NHS record-keeping duties, and those need to be in place before it is offered. Note generation is disabled for all accounts, and it must not be used with real patients or real patient data.</div>
@@ -454,12 +454,12 @@
                   <div class="scr-chat-log" id="refChatLog"></div>
                   <div class="scr-chips" id="refChips">
                     <button class="scr-chip" data-q="Make the letter more concise.">Shorten</button>
-                    <button class="scr-chip" data-q="Should this referral be urgent / 2-week-wait? Check against NICE NG12 and adjust the letter if needed.">Check urgency</button>
+                    <button class="scr-chip" data-q="Should this referral be urgent / a suspected cancer pathway referral? Check against NICE NG12 and adjust the letter if needed.">Check urgency</button>
                     <button class="scr-chip" data-q="Is this the right specialty? Suggest the most appropriate service and rewrite the letter for it if different.">Right specialty?</button>
                     <button class="scr-chip" data-q="Is this referral appropriate and complete? What would the receiving team want added?">Is it complete?</button>
                   </div>
                   <div class="scr-chat-input">
-                    <textarea id="refChatBox" placeholder="Ask about the referral or request changes — e.g. “add the smoking history”, “should this be 2WW?”, “make it routine”…"></textarea>
+                    <textarea id="refChatBox" placeholder="Ask about the referral or request changes — e.g. “add the smoking history”, “should this be a suspected cancer pathway referral?”, “make it routine”…"></textarea>
                     <button class="scr-btn pri" id="refChatSend">Send</button>
                   </div>
                 </div>
@@ -497,7 +497,7 @@
                 </div>
               </div>
               <div class="scr-tabpane" data-pane="review">
-                <div class="scr-review-intro">Get a second-opinion sense-check on the documented management plan — alignment with good UK primary-care practice, gaps, and any safety / NICE NG12 2WW / safeguarding actions worth considering. Advisory only; your clinical judgement prevails.</div>
+                <div class="scr-review-intro">Get a second-opinion sense-check on the documented management plan — alignment with good UK primary-care practice, gaps, and any safety / NICE NG12 suspected cancer pathway / safeguarding actions worth considering. Advisory only; your clinical judgement prevails.</div>
                 <button class="scr-btn pri" id="reviewBtn">Review this plan</button>
                 <div id="reviewOut"></div>
               </div>
@@ -519,7 +519,7 @@
       </div>
 
       <div class="scr-disc">
-        <b>Safety &amp; governance.</b> Consult Scribe is <b>on hold and not available on any plan</b> — recording, note generation and account sync are disabled for every account while its information-governance and consent requirements are completed. It was only ever a drafting aid and never made clinical decisions: a clinician would review every entry and confirm any NICE NG12 two-week-wait or safeguarding action before saving to the record. Do not enter real patient-identifiable information. Any transcripts already saved stay in this browser only and are not synced.
+        <b>Safety &amp; governance.</b> Consult Scribe is <b>on hold and not available on any plan</b> — recording, note generation and account sync are disabled for every account while its information-governance and consent requirements are completed. It was only ever a drafting aid and never made clinical decisions: a clinician would review every entry and confirm any NICE NG12 suspected cancer pathway or safeguarding action before saving to the record. Do not enter real patient-identifiable information. Any transcripts already saved stay in this browser only and are not synced.
       </div>
 
     </div>
@@ -527,7 +527,7 @@
 </div>
 
 <script src="../assets/cpd-log.js?v=1"></script>
-<script src="../assets/site.js?v=104"></script>
+<script src="../assets/site.js?v=105"></script>
 <script>
 (function(){
   "use strict";
@@ -714,7 +714,7 @@
       tags.push('<span class="mtag">'+esc(SYS_LABEL[h.sys]||h.sys)+'</span>');
       if(h.ctx && h.ctx.age) tags.push('<span class="mtag">'+esc(h.ctx.age)+'y</span>');
       if(h.setting && h.setting!=='gp') tags.push('<span class="mtag">'+esc(h.setting.toUpperCase())+'</span>');
-      if(h.note && h.note.twoww && h.note.twoww.length) tags.push('<span class="mtag tw">2WW</span>');
+      if(h.note && h.note.twoww && h.note.twoww.length) tags.push('<span class="mtag tw">Suspected cancer pathway</span>');
       if(!h.note) tags.push('<span class="mtag">transcript only</span>');
       return '<button class="scr-mem-card'+(h.id===currentId?' cur':'')+'" data-id="'+h.id+'">'+
         '<span class="mdel" data-del="'+h.id+'" title="Delete">\u00d7</span>'+
@@ -1134,9 +1134,9 @@
       '- "plan" = management agreed (investigations, Rx, referrals, advice), as bullet-style lines separated by newlines.',
       '- "safetynet" = specific worsening advice and what to do / when to return.',
       '- "followup" = review interval / arrangement, or "PRN / as needed" if none.',
-      '- "twoww": NICE NG12 (Suspected cancer: recognition and referral, updated April 2026) two-week-wait / urgent suspected cancer pathways that the transcript triggers. ONLY include a flag if the transcript genuinely meets or approaches an NG12 criterion. For each: {flag (the feature found), criterion (precise NG12 threshold incl. qualifying age and any modifying features, e.g. "Unexplained visible haematuria in adults aged 45+"), action (the named action: USC/2WW referral, direct-access test such as FIT/CA-125/CXR/USS/OGD/PSA, or 48h referral — include the named investigation)}. Empty array if none apply. Do not invent a cancer link that is not supported.',
-      '- "missedFlags": red flags or urgent criteria RELEVANT to this presentation that the transcript shows were NOT asked about, NOT documented, or NOT actioned — both (a) same-day EMERGENCY red flags for this presentation, and (b) NICE NG12 2WW criteria the presentation could plausibly trigger but which were not explored or referred. Each: {"flag": the missing question/feature/action, "type": "emergency" or "2ww", "why": one line on why it matters for THIS patient, "action": what to check or do}. Be selective — only flags genuinely relevant to this presentation and age; empty array if the consultation covered them.',
-      '- "referral": if a referral is clearly indicated, draft a short referral letter body (no letterhead, no real identifiers — use [Patient] / [DOB] placeholders), incl. reason, relevant history/findings, and urgency (state 2WW/USC explicitly if NG12 applies). Else "".',
+      '- "twoww": NICE NG12 (Suspected cancer: recognition and referral, updated April 2026) suspected cancer pathway referrals and direct-access tests that the transcript triggers. ONLY include a flag if the transcript genuinely meets or approaches an NG12 criterion. For each: {flag (the feature found), criterion (precise NG12 threshold incl. qualifying age and any modifying features, e.g. "Unexplained visible haematuria in adults aged 45+"), action (the named action: suspected cancer pathway referral, direct-access test such as FIT/CA-125/CXR/USS/OGD/PSA, or 48h referral — include the named investigation)}. Empty array if none apply. Do not invent a cancer link that is not supported.',
+      '- "missedFlags": red flags or urgent criteria RELEVANT to this presentation that the transcript shows were NOT asked about, NOT documented, or NOT actioned — both (a) same-day EMERGENCY red flags for this presentation, and (b) NICE NG12 suspected cancer criteria the presentation could plausibly trigger but which were not explored or referred. Each: {"flag": the missing question/feature/action, "type": "emergency" or "2ww", "why": one line on why it matters for THIS patient, "action": what to check or do}. Be selective — only flags genuinely relevant to this presentation and age; empty array if the consultation covered them.',
+      '- "referral": if a referral is clearly indicated, draft a short referral letter body (no letterhead, no real identifiers — use [Patient] / [DOB] placeholders), incl. reason, relevant history/findings, and urgency (state "suspected cancer pathway referral" explicitly if NG12 applies). Else "".',
       '- "prescriptions": medications the doctor indicated starting/changing. Each {drug, dose, note}. Empty array if none.',
       '- "tasks": admin/follow-up actions (bloods, recall, refer, fit note, results chase, etc) as short strings. Empty array if none.',
       '',
@@ -1259,13 +1259,13 @@
       map.forEach(([k,lbl])=>{ const v=(note[k]||'').trim(); if(v){ out.push(lbl.toUpperCase()+':'); out.push(v); out.push(''); } });
     }
     if(note.twoww && note.twoww.length){
-      out.push('⚠ NICE NG12 — 2-WEEK-WAIT:');
+      out.push('⚠ NICE NG12 — SUSPECTED CANCER PATHWAY:');
       note.twoww.forEach(f=> out.push('• '+f.flag+' — '+f.criterion+' → '+f.action));
     }
     if(note.missedFlags && note.missedFlags.length){
       out.push('');
       out.push('⚠ CHECK — POSSIBLE MISSED RED FLAGS (not covered in consultation):');
-      note.missedFlags.forEach(f=> out.push('• ['+(f.type==='2ww'?'2WW':'EMERGENCY')+'] '+f.flag+(f.why?' — '+f.why:'')+' → '+(f.action||'')));
+      note.missedFlags.forEach(f=> out.push('• ['+(f.type==='2ww'?'SUSPECTED CANCER PATHWAY':'EMERGENCY')+'] '+f.flag+(f.why?' — '+f.why:'')+' → '+(f.action||'')));
     }
     return out.join('\n').trim();
   }
@@ -1291,7 +1291,7 @@
     // 2ww banner
     const tw=$('#twowwWrap');
     if(note.twoww && note.twoww.length){
-      tw.innerHTML = '<div class="scr-2ww"><div class="scr-2ww-top"><span class="scr-2ww-pill">2WW</span><b>NICE NG12 — urgent suspected cancer</b></div>'+
+      tw.innerHTML = '<div class="scr-2ww"><div class="scr-2ww-top"><span class="scr-2ww-pill">Suspected cancer pathway</span><b>NICE NG12 — urgent suspected cancer</b></div>'+
         note.twoww.map(f=>'<div class="scr-2ww-item"><span class="flag">'+esc(f.flag)+'</span> — <span class="crit">'+esc(f.criterion)+'</span><span class="act"><b>Action:</b> '+esc(f.action)+'</span></div>').join('')+
         '</div>';
     } else tw.innerHTML='';
@@ -1301,7 +1301,7 @@
     const missed=(note.missedFlags||[]);
     if(missed.length){
       mw.innerHTML = '<div class="scr-missed"><div class="scr-missed-top"><span class="scr-missed-pill">⚠ CHECK</span><b>Possible missed red flags — not covered in this consultation</b></div>'+
-        missed.map(f=>'<div class="scr-missed-item"><span class="scr-missed-pill'+(f.type==='2ww'?' tw':'')+'">'+(f.type==='2ww'?'2WW':'EMERGENCY')+'</span> <span class="flag">'+esc(f.flag)+'</span>'+(f.why?' — '+esc(f.why):'')+'<span class="act"><b>Consider:</b> '+esc(f.action||'')+'</span></div>').join('')+
+        missed.map(f=>'<div class="scr-missed-item"><span class="scr-missed-pill'+(f.type==='2ww'?' tw':'')+'">'+(f.type==='2ww'?'Suspected cancer pathway':'EMERGENCY')+'</span> <span class="flag">'+esc(f.flag)+'</span>'+(f.why?' — '+esc(f.why):'')+'<span class="act"><b>Consider:</b> '+esc(f.action||'')+'</span></div>').join('')+
       '</div>';
     } else mw.innerHTML='';
 
@@ -1362,7 +1362,7 @@
     const pc=(note.presenting||$('#ctxPc').value||'').trim();
     const age=$('#ctxAge').value.trim();
     const title = pc ? (pc.length>70?pc.slice(0,70)+'…':pc) : 'Clinical case';
-    const tww = (note.twoww&&note.twoww.length) ? ' · NG12 2WW flagged' : '';
+    const tww = (note.twoww&&note.twoww.length) ? ' · NG12 suspected cancer pathway flagged' : '';
     const opts = {
       title: title.charAt(0).toUpperCase()+title.slice(1),
       source: 'Consult Scribe',
@@ -1410,7 +1410,7 @@
       'REQUIREMENTS:',
       '- Write from the correct service: if the setting is OOH or UTC, write as that service (e.g. "seen in the out-of-hours service") and copy the patient\u2019s registered GP; if GP surgery, write as the practice.',
       '- Plain text letter. Structure: practice header line(s) as placeholders [Practice name / address / contact]; [Date]; recipient service + "Dear [Service / Consultant]," (choose the correct specialty from the record).',
-      '- Opening line stating the ask and urgency. If the record contains an NG12 two-week-wait / urgent suspected cancer indication, state "URGENT — 2-week-wait / suspected cancer referral" explicitly and name the suspected pathway.',
+      '- Opening line stating the ask and urgency. If the record contains an NG12 suspected cancer pathway indication, state "URGENT — suspected cancer pathway referral" explicitly and name the suspected pathway.',
       '- Concise paragraphs: reason for referral; relevant history; examination findings & any results; current medication & PMH; what has been done already; specific question/request for the service.',
       '- Use [Patient name], [DOB], [NHS number], [Address] placeholders — never invent identifiers.',
       '- British spelling, professional tone. Sign off "Yours faithfully," / "Kind regards," then [GP name], [GMC no.], [Practice].',
@@ -1433,7 +1433,7 @@
   /* ---------- referral chat ---------- */
   function renderRefChat(){
     const log=$('#refChatLog'); if(!log) return;
-    if(!refChat.length){ log.innerHTML='<div class="scr-chat-empty">Talk through the referral or ask for changes — e.g. \u201cshould this be 2WW?\u201d, \u201cadd the drug history\u201d, \u201cmake it routine\u201d, \u201cwould dermatology be more appropriate?\u201d</div>'; return; }
+    if(!refChat.length){ log.innerHTML='<div class="scr-chat-empty">Talk through the referral or ask for changes — e.g. \u201cshould this be a suspected cancer pathway referral?\u201d, \u201cadd the drug history\u201d, \u201cmake it routine\u201d, \u201cwould dermatology be more appropriate?\u201d</div>'; return; }
     log.innerHTML = refChat.map(m=>'<div class="scr-chat-msg '+(m.role==='you'?'you':'ai')+(m.thinking?' thinking':'')+'">'+esc(m.text)+(m.updated?'<span class="upd">Letter updated</span>':'')+'</div>').join('');
     log.scrollTop=log.scrollHeight;
   }
@@ -1453,7 +1453,7 @@
       'GP REQUEST:', q,
       '',
       'Respond with STRICT JSON only — no markdown — as: {"reply":"<=60 words: your answer / what you changed","letter":<the FULL updated letter text if the letter should change, otherwise null>}.',
-      'Rules: keep [Patient name]/[DOB]-style placeholders; never invent identifiers or clinical facts; if a NICE NG12 2WW criterion applies, keep the urgency explicit; if the referral is inappropriate or incomplete, say so plainly.'
+      'Rules: keep [Patient name]/[DOB]-style placeholders; never invent identifiers or clinical facts; if a NICE NG12 suspected cancer criterion applies, keep the urgency explicit; if the referral is inappropriate or incomplete, say so plainly.'
     ].join('\n');
     let raw='';
     try{
@@ -1551,7 +1551,7 @@
       '',
       'Respond with STRICT JSON only — no markdown — as: {"reply":"<=45 words: what you changed, or the answer if no change","note":<the FULL updated record object in the SAME schema, OR null if the record did not change>}.',
       'Record schema: {"presenting","history","examination","assessment","plan","safetynet","followup","twoww":[{"flag","criterion","action"}],"missedFlags":[{"flag","type","why","action"}],"referral","prescriptions":[{"drug","dose","note"}],"tasks":[]}.',
-      'When you change the record, keep every existing field and only modify what the request implies. Preserve UK GP style and British spelling. Keep NG12 2WW flags accurate. If the request is a question or asks for something that lives outside the record (e.g. a patient-friendly summary), put it in "reply" and set "note" to null.'
+      'When you change the record, keep every existing field and only modify what the request implies. Preserve UK GP style and British spelling. Keep NG12 suspected cancer flags accurate. If the request is a question or asks for something that lives outside the record (e.g. a patient-friendly summary), put it in "reply" and set "note" to null.'
     ].join('\n');
     let raw='';
     try{
@@ -1590,9 +1590,9 @@
       settingBrief(),
       bgBrief(),
       '',
-      'Assess the PLAN against good UK primary-care practice (NICE), including: appropriateness of investigations & prescribing, safety-netting quality, follow-up, and whether any NICE NG12 two-week-wait / urgent or safeguarding action is indicated but missing.',
+      'Assess the PLAN against good UK primary-care practice (NICE), including: appropriateness of investigations & prescribing, safety-netting quality, follow-up, and whether any NICE NG12 suspected cancer pathway, urgent or safeguarding action is indicated but missing.',
       'Return STRICT JSON only — no markdown — as:',
-      '{"verdict":"ok|caution|gap","summary":"<=25 words","strengths":["..1-4.."],"gaps":["..specific gaps/omissions, or empty.."],"safety":["..safety / 2WW / safeguarding actions to consider, or empty.."],"suggestions":["..1-4 concrete, actionable suggestions.."]}',
+      '{"verdict":"ok|caution|gap","summary":"<=25 words","strengths":["..1-4.."],"gaps":["..specific gaps/omissions, or empty.."],"safety":["..safety / suspected cancer pathway / safeguarding actions to consider, or empty.."],"suggestions":["..1-4 concrete, actionable suggestions.."]}',
       'verdict: "ok" = sound plan; "caution" = reasonable but improvable; "gap" = a clinically important omission. Do not invent issues that are not supported; if the plan is good, say so.'
     ].join('\n');
     let raw='';
@@ -1615,7 +1615,7 @@
       '<div class="scr-rev-verdict '+(d.verdict||'caution')+'">'+(VLBL[d.verdict]||'Reviewed')+(d.summary?' — '+esc(d.summary):'')+'</div>'+
       sec('What\u2019s good','strengths' in d?d.strengths:[], 'good')+
       sec('Gaps / omissions', d.gaps, 'gap')+
-      sec('Safety · 2WW · safeguarding', d.safety, 'safety')+
+      sec('Safety · suspected cancer pathway · safeguarding', d.safety, 'safety')+
       sec('Suggestions', d.suggestions, '');
   }
   $('#reviewBtn').addEventListener('click', reviewPlan);
@@ -1638,7 +1638,7 @@
       '',
       'Mark across the THREE SCA domains:',
       '1) Data gathering & diagnosis — focused history, appropriate questions, red-flag screening, ICE elicited, examination/observations chosen, working diagnosis & differentials, use of time.',
-      '2) Clinical management & medical complexity — evidence-based & safe management, shared decision-making, prescribing, safety-netting, follow-up, holistic/comorbidity & risk handling, appropriate referral incl. NICE NG12 2WW where relevant.',
+      '2) Clinical management & medical complexity — evidence-based & safe management, shared decision-making, prescribing, safety-netting, follow-up, holistic/comorbidity & risk handling, appropriate referral incl. NICE NG12 suspected cancer pathway referral where relevant.',
       '3) Relating to others — rapport, active listening, empathy, clear jargon-free explanation, responding to cues & concerns, involving the patient, professionalism.',
       'For EACH domain assign grade one of: "clearpass" | "pass" | "borderline" | "fail". Give 2-3 specific "good" points (what earned the mark) and 2-3 specific "improve" points (what was missing or weak, with WHY it matters for the SCA). One sentence each.',
       'Also give up to 2 "phrases": model wording the candidate could have used (each {label: short tag e.g. "Eliciting ICE" / "Safety-net", text: one example sentence}).',
@@ -1810,18 +1810,18 @@
     history:"3/52 painless visible haematuria, frank red in toilet on ≥2 occasions. No dysuria, frequency, fever or loin/abdo pain. Unintentional weight loss ~3.2kg over 2/12. Smoker 20/day since 20s (current). PMH: hypertension. Drugs: amlodipine. No anticoagulants.",
     examination:"o/e: abdomen soft, non-tender, no palpable mass. Urine dip: blood +++, nitrites neg, leucocytes neg.",
     assessment:"Painless visible haematuria in a 67-year-old current smoker with weight loss. Meets NICE NG12 criterion for suspected bladder/renal cancer — urgent investigation required. Differential: urothelial (bladder) malignancy, renal tract calculi, less likely UTI (dip negative for infection).",
-    plan:"• Urgent suspected cancer (2WW) referral to urology for visible haematuria.\n• Send MSU for MC&S.\n• Bloods today: FBC, U&E/eGFR, bone profile.\n• BP control review separately.\n• Advised re: process and timescales.",
+    plan:"• Suspected cancer pathway referral to urology for visible haematuria.\n• Send MSU for MC&S.\n• Bloods today: FBC, U&E/eGFR, bone profile.\n• BP control review separately.\n• Advised re: process and timescales.",
     safetynet:"Return / attend ED if acute urinary retention, heavy bleeding with clots, or systemic illness (fever, rigors). Hospital to contact with appointment within 2 weeks; chase if not heard within 10 working days.",
     followup:"Review after urology assessment / results back. BP review 4/52.",
     twoww:[
-      {flag:"Painless visible (macroscopic) haematuria, age 67", criterion:"NICE NG12: aged 45+ with unexplained visible haematuria without UTI, or visible haematuria persisting/recurring after successful UTI treatment → suspected bladder cancer", action:"Urgent (2WW) suspected cancer referral to urology"},
-      {flag:"Visible haematuria + smoker, age 67", criterion:"NICE NG12: aged 45+ with unexplained visible haematuria → also consider renal cancer", action:"Urgent (2WW) referral; bloods incl. U&E/eGFR; MSU to exclude infection"}
+      {flag:"Painless visible (macroscopic) haematuria, age 67", criterion:"NICE NG12: aged 45+ with unexplained visible haematuria without UTI, or visible haematuria persisting/recurring after successful UTI treatment → suspected bladder cancer", action:"Suspected cancer pathway referral to urology"},
+      {flag:"Visible haematuria + smoker, age 67", criterion:"NICE NG12: aged 45+ with unexplained visible haematuria → also consider renal cancer", action:"Suspected cancer pathway referral; bloods incl. U&E/eGFR; MSU to exclude infection"}
     ],
     missedFlags:[],
-    referral:"Dear Urology team,\n\nI should be grateful for your URGENT (2-week-wait) assessment of [Patient], DOB [DOB], under the suspected urological cancer pathway.\n\nReason: 67-year-old current smoker (20/day) with 3 weeks of painless visible haematuria on ≥2 occasions, plus ~3.2kg unintentional weight loss over 2 months. No dysuria/frequency/fever. O/E abdomen soft, no mass. Urine dip: blood +++, nitrites/leucocytes negative (no evidence of infection). This meets NICE NG12 criteria for suspected bladder/renal cancer in an adult aged 45+ with unexplained visible haematuria.\n\nPMH: hypertension. Medication: amlodipine. Bloods (FBC, U&E/eGFR, bone profile) and MSU sent today; results to follow.\n\nMany thanks.",
+    referral:"Dear Urology team,\n\nI should be grateful for your URGENT (suspected cancer pathway) assessment of [Patient], DOB [DOB], under the suspected urological cancer pathway.\n\nReason: 67-year-old current smoker (20/day) with 3 weeks of painless visible haematuria on ≥2 occasions, plus ~3.2kg unintentional weight loss over 2 months. No dysuria/frequency/fever. O/E abdomen soft, no mass. Urine dip: blood +++, nitrites/leucocytes negative (no evidence of infection). This meets NICE NG12 criteria for suspected bladder/renal cancer in an adult aged 45+ with unexplained visible haematuria.\n\nPMH: hypertension. Medication: amlodipine. Bloods (FBC, U&E/eGFR, bone profile) and MSU sent today; results to follow.\n\nMany thanks.",
     prescriptions:[],
     tasks:[
-      "Submit 2WW urology e-referral (suspected urological cancer)",
+      "Submit suspected cancer pathway urology e-referral (suspected urological cancer)",
       "Order FBC, U&E/eGFR, bone profile today",
       "Send MSU for MC&S",
       "Safety-net documented; flag to chase referral if no contact in 10 working days",

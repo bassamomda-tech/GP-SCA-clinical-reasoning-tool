@@ -42,7 +42,7 @@
       {
         id: 'malignancy', tier: 'cancer',
         label: 'Suspected malignancy — cancer history / weight loss / progressive night pain',
-        action: 'Urgent spinal imaging ± 2WW (NICE NG12 (updated April 2026)).',
+        action: 'Urgent spinal imaging ± suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.cancer_hx,
       },
@@ -103,9 +103,9 @@
         patientPhrase: 'Pressure on the spinal cord can affect the hands and walking — that needs an urgent scan and specialist.',
         guideUrl: '', redFlagAction: '\u26A1 Urgent MRI + spinal referral' },
       { id: 'serious', name: 'Infection / malignancy', summary: 'Fever + risk factors, or cancer history / systemic features', baseline: 1, category: 'cant-miss',
-        keyExam: 'Fever, focal tenderness, systemic signs.', nextIx: '\u26A1 Urgent imaging; admission for infection; 2WW for malignancy.',
+        keyExam: 'Fever, focal tenderness, systemic signs.', nextIx: '\u26A1 Urgent imaging; admission for infection; suspected cancer pathway referral for malignancy.',
         patientPhrase: 'A few features mean I want urgent tests to exclude an infection or tumour in the spine.',
-        guideUrl: '', redFlagAction: '\u26A1 Urgent imaging / 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Urgent imaging / suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 55 ? { mechanical: +2, serious: +2 } : (v < 40 ? { inflammatory: +3 } : {}),

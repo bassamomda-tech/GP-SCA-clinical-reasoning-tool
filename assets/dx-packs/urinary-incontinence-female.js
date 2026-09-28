@@ -102,9 +102,9 @@
         patientPhrase: 'A constant leak or new nerve symptoms need urgent specialist assessment to find a treatable cause.',
         guideUrl: '', redFlagAction: '\u26A1 Urgent gynae / neuro' },
       { id: 'malignancy', name: 'Bladder / pelvic malignancy', summary: 'Visible haematuria ≥45 / pelvic mass / recurrent unexplained UTI ≥60', baseline: 1, category: 'cant-miss',
-        keyExam: 'Pelvic mass; haematuria.', nextIx: '\u26A1 Urology / gynae 2WW (NICE NG12 (updated April 2026)).',
+        keyExam: 'Pelvic mass; haematuria.', nextIx: '\u26A1 Urology / gynae suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
         patientPhrase: 'These features need an urgent specialist look to exclude a serious cause — most are clear.',
-        guideUrl: '', redFlagAction: '\u26A1 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 60 ? { urge: +3, malignancy: +2 } : {},

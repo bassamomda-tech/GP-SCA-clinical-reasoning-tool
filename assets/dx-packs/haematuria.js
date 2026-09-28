@@ -24,7 +24,7 @@
 
   if (window.RGPTriage) RGPTriage.register('haematuria-triage', {
     title: 'Haematuria — triage',
-    subtitle: 'Tick features. Surfaces urological 2WW, nephrology and infection pathways (NICE NG12 (updated April 2026)).',
+    subtitle: 'Tick features. Surfaces urological suspected cancer pathway referral, nephrology and infection pathways (NICE NG12 (updated April 2026)).',
     guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Exclude UTI/transient cause and repeat dip; persistent non-visible haematuria needs BP, eGFR and ACR; refer per age and type.',
@@ -38,8 +38,8 @@
       },
       {
         id: 'visible_2ww', tier: 'cancer',
-        label: 'Visible haematuria ≥45, or non-visible ≥60 with dysuria/raised WCC — urological 2WW',
-        action: 'Urology 2WW (cystoscopy + upper-tract imaging).',
+        label: 'Visible haematuria ≥45, or non-visible ≥60 with dysuria/raised WCC — urological suspected cancer pathway referral',
+        action: 'Urology suspected cancer pathway referral (cystoscopy + upper-tract imaging).',
         patientPhrase: '"Blood in the urine at your age needs an urgent specialist look at the bladder and kidneys to be safe."',
         source: 'NICE NG12 (updated April 2026) §1.6', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => (i.visible && i.age != null && i.age >= 45) || (i.nonvisible && i.age != null && i.age >= 60 && i.dysuria_frequency),
@@ -81,7 +81,7 @@
         patientPhrase: 'A stone in the urinary tract can cause pain and bleeding. A scan locates it and guides treatment.',
         guideUrl: 'https://www.nice.org.uk/guidance/ng118', guideLabel: 'NICE NG118' },
       { id: 'bph', name: 'BPH / prostate', summary: 'Older man, LUTS, enlarged prostate', baseline: 4, category: 'common',
-        keyExam: 'Enlarged smooth prostate on PR.', nextIx: 'Still investigate per 2WW criteria; PSA after counselling; manage BPH.',
+        keyExam: 'Enlarged smooth prostate on PR.', nextIx: 'Still investigate per suspected cancer pathway criteria; PSA after counselling; manage BPH.',
         patientPhrase: 'An enlarged prostate can cause bleeding, but we still rule out other causes with the right tests.',
         guideUrl: 'https://www.nice.org.uk/guidance/cg97', guideLabel: 'NICE CG97' },
       { id: 'glomerular', name: 'Glomerular disease', summary: 'Haematuria + proteinuria ± hypertension / oedema', baseline: 3, category: 'less-common',
@@ -94,9 +94,9 @@
         guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
 
       { id: 'malignancy', name: 'Urological malignancy (bladder / renal)', summary: 'Painless visible haematuria, ≥45, smoker', baseline: 1, category: 'cant-miss',
-        keyExam: 'Often normal; flank mass rarely.', nextIx: '\u26A1 Urology 2WW — cystoscopy + upper-tract imaging (NICE NG12 (updated April 2026)).',
+        keyExam: 'Often normal; flank mass rarely.', nextIx: '\u26A1 Urology suspected cancer pathway referral — cystoscopy + upper-tract imaging (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Painless blood in the urine at your age needs an urgent specialist look to rule out cancer — most are clear.',
-        guideUrl: '', redFlagAction: '\u26A1 Urology 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Urology suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 45 ? { malignancy: +8, bph: +3, uti: -2 } : (v < 40 ? { glomerular: +3, uti: +2, malignancy: -3 } : {}),

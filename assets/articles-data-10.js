@@ -224,7 +224,7 @@
       'Refer or biopsy any suspicious pigmented or non-healing nail lesion to exclude subungual melanoma',
       'Set expectations: nails grow slowly, so visible improvement takes many months and recurrence is common'],
     referral:[
-      'Suspected subungual melanoma (new pigmented streak, Hutchinson’s sign, non-healing nail lesion) → urgent 2WW suspected skin-cancer/melanoma referral (NICE NG12 (updated April 2026))',
+      'Suspected subungual melanoma (new pigmented streak, Hutchinson’s sign, non-healing nail lesion) → suspected cancer pathway referral for skin cancer/melanoma (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty, treatment failure, or extensive disease → dermatology',
       'Diabetic/ischaemic foot with nail infection → podiatry/diabetic foot service',
       'Consideration of oral antifungals where interactions/comorbidity complicate prescribing → specialist advice'],

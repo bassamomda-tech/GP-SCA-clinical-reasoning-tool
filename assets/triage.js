@@ -32,7 +32,7 @@
   const TOPICS = {};
   const TIERS = {
     emergency: { label:'Emergency', cls:'is-emer', tcls:'t-emer', icon:'🔴', rank:4 },
-    cancer:    { label:'Suspected cancer (2WW)', cls:'is-canc', tcls:'t-canc', icon:'🟣', rank:3 },
+    cancer:    { label:'Suspected cancer pathway', cls:'is-canc', tcls:'t-canc', icon:'🟣', rank:3 },
     urgent:    { label:'Urgent — non-cancer', cls:'is-urg', tcls:'t-urg', icon:'🟠', rank:2 },
     routine:   { label:'Routine', cls:'is-rt', tcls:'t-rt', icon:'🟢', rank:1 },
   };
@@ -310,7 +310,7 @@
               </button>
               ${headlineRule && headlineRule.proformaUrl ? `
                 <a class="tr-btn" href="${headlineRule.proformaUrl}" target="_blank" rel="noopener noreferrer">
-                  <span class="tr-btn-ic">↗</span> ${headlineRule.proformaLabel || 'Open 2WW proforma'}
+                  <span class="tr-btn-ic">↗</span> ${headlineRule.proformaLabel || 'Open suspected cancer referral proforma'}
                 </a>` : ''}
               <button class="tr-btn" data-act="print">
                 <span class="tr-btn-ic">🖨</span> Print summary

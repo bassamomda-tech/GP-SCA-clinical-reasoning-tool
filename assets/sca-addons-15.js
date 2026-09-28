@@ -2944,7 +2944,7 @@
    {
     "ic": "🗺️",
     "t": "Rectal bleeding",
-    "s": "Visual algorithm · FIT and 2WW",
+    "s": "Visual algorithm · FIT and suspected cancer pathway referral",
     "href": "algorithms/rectal-bleeding.html"
    },
    {
@@ -3017,7 +3017,7 @@
    "reason": "“Do I need to be tested or screened? Am I going to get it too?”"
   },
   "knowledge": {
-   "guideline": "[1] BSG/ACPGBI/UKCGG guidelines for the management of hereditary colorectal cancer (Monahan et al., Gut 2020) · [2] NICE NG151 (colorectal cancer, 2020) · [3] NICE DG27 (molecular testing strategies for Lynch syndrome in people with colorectal cancer, 2017) · [4] NICE NG12 (updated April 2026) · [5] ABI Code on Genetic Testing and Insurance (2018) · [6] GMC Confidentiality: good practice in handling patient information (2017)",
+   "guideline": "[1] BSG/ACPGBI/UKCGG guidelines for the management of hereditary colorectal cancer (Monahan et al., Gut 2020) · [2] NICE NG151 (colorectal cancer, 2020) · [3] NICE HTG430 (formerly DG27; molecular testing strategies for Lynch syndrome in people with colorectal cancer, 2017) · [4] NICE NG12 (updated April 2026) · [5] ABI Code on Genetic Testing and Insurance (2018) · [6] GMC Confidentiality: good practice in handling patient information (2017)",
    "summary": "Bowel cancer in a father in his early 40s and other young relatives, labelled hereditary by the hospital, points to an inherited syndrome such as familial adenomatous polyposis (FAP) or Lynch syndrome. Refer promptly to clinical genetics, who can use the family’s known variant if there is one. In FAP, surveillance normally starts in early adolescence, so a 22-year-old who has had none needs prompt action. Testing is his choice. Ask about bowel symptoms, because symptoms need the usual suspected-cancer route.",
    "points": [
     {
@@ -3034,7 +3034,7 @@
     },
     {
      "h": "Lynch syndrome",
-     "t": "Also autosomal dominant, from mismatch repair gene variants. Fewer polyps but a high risk of colorectal, endometrial and other cancers. Colonoscopy surveillance starts at an age set by the gene [1]. NICE NG151 [2] recommends considering daily aspirin to reduce colorectal cancer risk in Lynch syndrome. Tumours of people with colorectal cancer are tested for Lynch syndrome (NICE DG27 [3])."
+     "t": "Also autosomal dominant, from mismatch repair gene variants. Fewer polyps but a high risk of colorectal, endometrial and other cancers. Colonoscopy surveillance starts at an age set by the gene [1]. NICE NG151 [2] recommends considering daily aspirin to reduce colorectal cancer risk in Lynch syndrome. Tumours of people with colorectal cancer are tested for Lynch syndrome (NICE HTG430, formerly DG27 [3])."
     },
     {
      "h": "MUTYH",
@@ -10056,7 +10056,7 @@
  },
  "threadworm": {
   "stem": {
-   "name": "Ivy (attends with her mother)",
+   "name": "Ivy Fenwick (attends with her mother, Sophie Fenwick)",
    "age": "5-year-old girl",
    "pmh": [
     "No significant past medical history recorded"
@@ -10066,7 +10066,7 @@
    ],
    "allergy": "Not recorded",
    "recent": "No recent consultations recorded.",
-   "reason": "Mother booked: “Itchy bottom at night, and I think I’ve seen worms.”"
+   "reason": "Mother (Sophie Fenwick) booked: “Itchy bottom at night, and I think I’ve seen worms.”"
   },
   "knowledge": {
    "guideline": "[1] Greater Manchester Antimicrobial Guidelines, version 16 (GMMMG, October 2024) · [2] UK guidelines for the investigation and management of eosinophilia in returning travellers and migrants (British Infection Association, 2024) · [3] BNF / BNFC: mebendazole · [4] UKHSA: Health protection in children and young people settings, including education",
@@ -10107,7 +10107,7 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello, I’m Dr Shah. Hello Ivy. What’s been happening?",
+    "text": "Hello, I’m Dr Shah. You must be Ivy’s mum, Mrs Fenwick? Hello Ivy. What’s been happening?",
     "dom": "rto",
     "why": "Open start that includes the child"
    },
@@ -10365,7 +10365,7 @@
     "New & undifferentiated presentations"
    ],
    "stem": {
-    "name": "Ivy",
+    "name": "Ivy Fenwick",
     "age": "5 years · female",
     "pmh": [
      "Nil recorded"

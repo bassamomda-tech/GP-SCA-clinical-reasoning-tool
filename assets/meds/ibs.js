@@ -42,7 +42,7 @@ MedChooser.register('ibs', {
   flags: (f) => {
     const out = [];
     const ng12 = f.rectal_bleed || f.weight_loss || f.change_60 || f.mass || f.anaemia || f.night;
-    if (ng12) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — alarm feature present: this is NOT IBS until cancer excluded. FIT + FBC/ferritin; refer on the suspected lower-GI cancer (2WW) pathway if FIT ≥10 µg Hb/g. Abdominal/rectal mass → examine + urgent referral.' });
+    if (ng12) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — alarm feature present: this is NOT IBS until cancer excluded. FIT + FBC/ferritin; refer on the suspected lower-GI cancer pathway if FIT ≥10 µg Hb/g. Abdominal/rectal mass → examine + urgent referral.' });
     if (f.fh_ca) out.push({ tone:'amber', text:'FH bowel/ovarian cancer — consider CA-125 if ovarian features; lower threshold for FIT and referral' });
     if (f.preg) out.push({ tone:'amber', text:'Pregnancy/breastfeeding — most IBS drugs restricted; bulk-forming laxatives + dietary measures first' });
     return out;

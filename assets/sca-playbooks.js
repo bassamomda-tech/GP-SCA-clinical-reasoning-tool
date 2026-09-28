@@ -31,7 +31,7 @@ window.SCA_PLAYBOOKS = [
   },
   {
     id:'bad-news', ic:'🕯️', cat:'Tough conversations', t:'Breaking bad news',
-    when:'A 2WW referral conversation, a new diabetes or dementia diagnosis, a scan result that changes everything. In the SCA you usually break the POSSIBILITY of bad news — "this needs urgent tests" — more often than a confirmed diagnosis.',
+    when:'A suspected cancer pathway referral conversation, a new diabetes or dementia diagnosis, a scan result that changes everything. In the SCA you usually break the POSSIBILITY of bad news — "this needs urgent tests" — more often than a confirmed diagnosis.',
     trap:'The drip-feed of euphemism: "a shadow", "some changes", "just to be safe" — the patient leaves not knowing, which is crueller than knowing. Equal trap: the data dump that buries the news in management detail.',
     open:[
       '"The results are back, and I\u2019m afraid they\u2019re not what we hoped. Would you like someone with you while we talk, or shall I go on?"',
@@ -123,7 +123,7 @@ window.SCA_PLAYBOOKS = [
   },
   {
     id:'self-discharge', ic:'🚪', cat:'Tough conversations', t:'The patient who refuses your advice',
-    when:'Declining the 2WW referral, refusing statins after a TIA, won\u2019t take the antidepressant, discharging against advice, declining admission for the chest pain. The SCA loves this because it tests whether you respect autonomy or just say you do.',
+    when:'Declining the suspected cancer pathway referral, refusing statins after a TIA, won\u2019t take the antidepressant, discharging against advice, declining admission for the chest pain. The SCA loves this because it tests whether you respect autonomy or just say you do.',
     trap:'Two failures: bulldozing (repeat the advice louder until time runs out) and abandoning (fine, your choice, sign here). Both miss the actual task — understanding the refusal.',
     open:[
       '"You\u2019ve heard my advice and it\u2019s not landing — that usually means I\u2019ve missed something that matters to you. What is it?"',

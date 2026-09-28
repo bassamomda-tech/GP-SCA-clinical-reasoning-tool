@@ -4,7 +4,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
 /* ===================== BREAST ===================== */
 {
   id:'breast', system:'Breast', icon:'🎗️', title:'Breast examination',
-  blurb:'Inspection in defined positions, systematic palpation of breast, axilla and nodes — with the 2-week-wait thresholds.',
+  blurb:'Inspection in defined positions, systematic palpation of breast, axilla and nodes — with the suspected cancer pathway referral thresholds.',
   indications:[
     'Breast lump or thickening',
     'Skin or nipple change (dimpling, retraction, eczema, discharge)',
@@ -13,11 +13,11 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   ],
   equipment:['Chaperone (always)','Adequate exposure to waist','Couch at 45°','Tissues'],
   redFlags:[
-    'Unexplained breast lump in anyone **≥30** → 2-week-wait',
-    'Unilateral nipple change / eczema (?Paget) → 2-week-wait',
+    'Unexplained breast lump in anyone **≥30** → suspected cancer pathway referral',
+    'Unilateral nipple change / eczema (?Paget) → suspected cancer pathway referral',
     'Nipple discharge that is bloody or single-duct → refer',
-    'Skin tethering, peau d’orange, fixed/hard mass, axillary nodes → 2-week-wait',
-    'Lump in anyone ≥50 with nipple discharge / retraction / change → 2-week-wait',
+    'Skin tethering, peau d’orange, fixed/hard mass, axillary nodes → suspected cancer pathway referral',
+    'Lump in anyone ≥50 with nipple discharge / retraction / change → suspected cancer pathway referral',
   ],
   sequence:[
     { phase:'Look (inspection)', items:[
@@ -26,7 +26,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     ]},
     { phase:'Feel (palpation)', items:[
       { name:'Systematic palpation', how:'Patient lies at 45°, hand behind head; palpate all quadrants + axillary tail with flat of fingers against chest wall', finding:'Mass — note site, size, shape, consistency, mobility, tethering, tenderness' },
-      { name:'Characterise any lump', finding:'Hard, irregular, fixed, painless → suspicious; smooth, mobile, well-defined → likely benign (fibroadenoma/cyst)', pitfall:'Benign features never exclude cancer — refer by age/2WW rules regardless' },
+      { name:'Characterise any lump', finding:'Hard, irregular, fixed, painless → suspicious; smooth, mobile, well-defined → likely benign (fibroadenoma/cyst)', pitfall:'Benign features never exclude cancer — refer by age/suspected cancer pathway rules regardless' },
       { name:'Nipple', how:'Gently express only if discharge is the complaint', finding:'Bloody/serous, single vs multiple ducts, unilateral vs bilateral' },
     ]},
     { phase:'Regional nodes', items:[
@@ -35,10 +35,10 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     ]},
   ],
   outcomes:[
-    { finding:'Discrete hard irregular fixed lump ± skin/nipple change ± nodes', meaning:'Suspected breast cancer — 2-week-wait referral; do not delay for imaging' },
-    { finding:'Smooth, mobile, well-defined lump in a young woman', meaning:'Likely fibroadenoma — still refer per age rules (≥30 = 2WW; <30 = routine/urgent breast clinic)' },
+    { finding:'Discrete hard irregular fixed lump ± skin/nipple change ± nodes', meaning:'Suspected breast cancer — suspected cancer pathway referral; do not delay for imaging' },
+    { finding:'Smooth, mobile, well-defined lump in a young woman', meaning:'Likely fibroadenoma — still refer per age rules (≥30 = suspected cancer pathway referral; <30 = routine/urgent breast clinic)' },
     { finding:'Tender, fluctuant lump that varies with cycle', meaning:'Likely cyst — triple assessment / aspiration via breast clinic' },
-    { finding:'Unilateral nipple eczema not responding to topical steroid', meaning:'?Paget disease — 2-week-wait' },
+    { finding:'Unilateral nipple eczema not responding to topical steroid', meaning:'?Paget disease — suspected cancer pathway referral' },
     { finding:'Cyclical bilateral nodularity, no discrete mass', meaning:'Benign change — reassure, safety-net, review' },
   ],
   note:'Examination guides urgency but referral is driven by NICE NG12 (updated April 2026) age thresholds, not by how “benign” a lump feels. Always use a chaperone and document it.',
@@ -98,22 +98,22 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   ],
   equipment:['Good (natural) lighting','Dermatoscope if trained','Ruler / measure','Camera for documentation'],
   redFlags:[
-    'Lesion scoring ≥3 on the 7-point checklist, or any one major change → 2-week-wait',
-    'Non-healing lesion / ulcer >4 weeks, or enlarging nodule with surface change → ?SCC — 2-week-wait',
+    'Lesion scoring ≥3 on the 7-point checklist, or any one major change → suspected cancer pathway referral',
+    'Non-healing lesion / ulcer >4 weeks, or enlarging nodule with surface change → ?SCC — suspected cancer pathway referral',
     'Pigmented lesion under a nail (subungual) with new pigment streak → urgent',
     '“Ugly duckling” — a lesion that looks different from all the patient’s others',
   ],
   pathway:[
     { q:'Is the lesion pigmented?', note:'Determines melanoma vs non-melanoma screening', branches:[
-      { condition:'Pigmented', clues:'Brown/black, mole-like, changing', primaryCare:'Apply ABCDE + 7-point checklist + dermoscopy', refer:'2WW if suspicious' },
-      { condition:'Non-pigmented', clues:'Pearly papule, scaly plaque, non-healing ulcer/nodule', primaryCare:'Assess for BCC (pearly, telangiectasia, rolled edge) vs SCC (keratotic, tender, fast-growing)', refer:'2WW for SCC; routine dermatology / consider 2WW for BCC near critical sites' },
+      { condition:'Pigmented', clues:'Brown/black, mole-like, changing', primaryCare:'Apply ABCDE + 7-point checklist + dermoscopy', refer:'Suspected cancer pathway referral if suspicious' },
+      { condition:'Non-pigmented', clues:'Pearly papule, scaly plaque, non-healing ulcer/nodule', primaryCare:'Assess for BCC (pearly, telangiectasia, rolled edge) vs SCC (keratotic, tender, fast-growing)', refer:'Suspected cancer pathway referral for SCC; routine dermatology / consider suspected cancer pathway referral for BCC near critical sites' },
     ]},
     { q:'Apply the 7-point checklist (pigmented)', note:'Major (2 pts each): change in size, irregular shape, irregular colour. Minor (1 pt each): >7 mm, inflammation, oozing/crusting, change in sensation', branches:[
-      { condition:'Score ≥3 or any major feature', primaryCare:'Photograph and document', refer:'**2-week-wait** suspected melanoma' },
+      { condition:'Score ≥3 or any major feature', primaryCare:'Photograph and document', refer:'**Suspected cancer pathway referral** for melanoma' },
       { condition:'Score <3, low concern', primaryCare:'Safety-net; consider photo + review in 4–8 weeks if any doubt', refer:'Refer if change at review' },
     ]},
     { q:'Dermoscopy clues (if trained)', note:'Adjunct only — not a substitute for the checklist', branches:[
-      { condition:'Asymmetry of structure/colour, atypical network, blue-white veil, irregular streaks/dots', primaryCare:'Treat as suspicious', refer:'2-week-wait' },
+      { condition:'Asymmetry of structure/colour, atypical network, blue-white veil, irregular streaks/dots', primaryCare:'Treat as suspicious', refer:'Suspected cancer pathway referral' },
       { condition:'Symmetric, classic benign pattern (e.g. seborrhoeic keratosis “stuck-on”, milia-like cysts)', primaryCare:'Reassure; safety-net', refer:'Refer if uncertain' },
     ]},
   ],
@@ -129,9 +129,9 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     ]},
   ],
   outcomes:[
-    { finding:'Changing pigmented lesion, 7-point ≥3 / ABCDE positive', meaning:'Suspected melanoma — 2-week-wait; do not shave/curette' },
-    { finding:'Pearly papule with telangiectasia / rolled edge', meaning:'Basal cell carcinoma — routine/urgent dermatology (2WW if high-risk site)' },
-    { finding:'Keratotic, tender, fast-growing nodule or non-healing ulcer', meaning:'Squamous cell carcinoma — 2-week-wait' },
+    { finding:'Changing pigmented lesion, 7-point ≥3 / ABCDE positive', meaning:'Suspected melanoma — suspected cancer pathway referral; do not shave/curette' },
+    { finding:'Pearly papule with telangiectasia / rolled edge', meaning:'Basal cell carcinoma — routine/urgent dermatology (suspected cancer pathway referral if high-risk site)' },
+    { finding:'Keratotic, tender, fast-growing nodule or non-healing ulcer', meaning:'Squamous cell carcinoma — suspected cancer pathway referral' },
     { finding:'Stuck-on warty plaque, milia-like cysts on dermoscopy', meaning:'Seborrhoeic keratosis — benign, reassure' },
   ],
   note:'In primary care your job is to apply a structured checklist and refer appropriately — not to make a definitive diagnosis. Photograph anything you choose to monitor and set a clear review interval.',

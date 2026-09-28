@@ -347,7 +347,7 @@ Review function at each step; deprescribe if no benefit.`,
 - Mainstay = oral hygiene (fluoride brushing BD + interdental daily) + DENTIST/hygienist (scaling). Antibiotics do NOT treat chronic gum disease.
 - Chlorhexidine 0.2% mouthwash BD short-term adjunct (staining).
 - ANUG: metronidazole 400 mg TDS 3 days + chlorhexidine + urgent dental review + stop smoking.
-- Optimise smoking/diabetes. Non-healing oral ulcer >3 wks \u2192 2WW.`,
+- Optimise smoking/diabetes. Non-healing oral ulcer >3 wks \u2192 suspected cancer pathway referral.`,
     sources: [
       { label:'SDCEP', url:'https://www.sdcep.org.uk' },
     ],

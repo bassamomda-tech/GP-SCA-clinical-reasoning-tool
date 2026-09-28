@@ -29,7 +29,7 @@
       {
         id: 'lymphoma_2ww', tier: 'cancer',
         label: 'Itch + B-symptoms — exclude lymphoma',
-        action: 'FBC, film, LDH; haematology 2WW (NICE NG12 (updated April 2026)).',
+        action: 'FBC, film, LDH; haematology suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
         source: 'NICE NG12 (updated April 2026) §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.lymphoma_b,
       },
@@ -98,9 +98,9 @@
         guideUrl: '' },
 
       { id: 'lymphoma', name: 'Lymphoma / malignancy', summary: 'Itch + weight loss / night sweats / lymphadenopathy', baseline: 1, category: 'cant-miss',
-        keyExam: 'Lymphadenopathy, hepatosplenomegaly.', nextIx: '\u26A1 FBC, film, LDH; haematology 2WW.',
+        keyExam: 'Lymphadenopathy, hepatosplenomegaly.', nextIx: '\u26A1 FBC, film, LDH; haematology suspected cancer pathway referral.',
         patientPhrase: 'Persistent itch with these features needs urgent tests to exclude a lymph-gland cancer.',
-        guideUrl: '', redFlagAction: '\u26A1 Haematology 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Haematology suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 60 ? { lymphoma: +2, polycythaemia: +1 } : {},

@@ -59,11 +59,11 @@
     management:[
       'Refer to the Early Pregnancy Assessment Unit (EPAU) for confirmation by transvaginal ultrasound ± serial serum hCG',
       'Once confirmed, offer management options: expectant (watchful waiting), medical (misoprostol ± mifepristone), or surgical management — guided by patient choice, gestation and clinical picture',
-      'Give anti-D immunoglobulin where indicated (e.g. surgical management/heavier bleeding in rhesus-negative women per local policy)',
+      'Anti-D immunoglobulin, RhD-negative: no anti-D up to 11+6 weeks (NICE NG126); at 12+0–12+6 weeks offer it with medical or surgical management and consider it for heavy or recurrent bleeding',
       'Provide clear safety-netting (heavy bleeding, pain, fever, signs of sepsis) and analgesia',
       'Offer written information, emotional support and access to bereavement services; advise on timing of and support in future pregnancy',
       'Arrange investigations after recurrent miscarriage and offer early reassurance scanning in subsequent pregnancies',
-      'Always keep ectopic in mind — a positive test with pain/dizziness needs urgent EPAU; give anti-D where indicated, with clear bleeding/sepsis safety-netting and bereavement support'],
+      'Always keep ectopic in mind — a positive test with pain/dizziness needs urgent EPAU; give anti-D where indicated (not before 12+0 weeks, NICE NG126), with clear bleeding/sepsis safety-netting and bereavement support'],
     referral:[
       'Haemodynamic instability or heavy bleeding → 999 / emergency gynaecology',
       'Suspected ectopic pregnancy → urgent EPAU / gynaecology assessment',

@@ -86,8 +86,8 @@ window.EBM_TOPICS = [
 
   { id:'sglt2-renal', cat:'Diabetes & endocrine', name:'SGLT2 inhibitor — CKD / CV protection', verdict:'help',
     numbers:'Reduces CKD progression, HF hospitalisation and CV death; favourable NNT in albuminuric CKD.',
-    detail:'Beyond glucose lowering, SGLT2 inhibitors protect the kidney and heart. CREDENCE (canagliflozin) and DAPA-CKD/EMPA-KIDNEY (dapagliflozin/empagliflozin) showed slowed progression to end-stage kidney disease, fewer cardiovascular events and reduced mortality in chronic kidney disease — and crucially the kidney benefit held even in people without diabetes. The mechanism is haemodynamic (reduced intraglomerular pressure), which also explains the small, expected, reversible early eGFR dip. NICE (NG203; TA775 dapagliflozin, TA942 empagliflozin) now recommends adding an SGLT2 inhibitor in CKD with albuminuria alongside an ACEi/ARB.',
-    note:'In T2DM: dual first-line with MR metformin for most adults, with or without CVD/HF/CKD (NICE NG28, updated Feb 2026). T2DM with CKD: offer if ACR >30 mg/mmol, consider if 3–30 (NICE NG203); CKD without diabetes: dapagliflozin if eGFR 25–75 and uACR ≥22.6 mg/mmol (NICE TA775; empagliflozin TA942). Sick-day rules.',
+    detail:'Beyond glucose lowering, SGLT2 inhibitors protect the kidney and heart. CREDENCE (canagliflozin) and DAPA-CKD/EMPA-KIDNEY (dapagliflozin/empagliflozin) showed slowed progression to end-stage kidney disease, fewer cardiovascular events and reduced mortality in chronic kidney disease — and crucially the kidney benefit held even in people without diabetes. The mechanism is haemodynamic (reduced intraglomerular pressure), which also explains the small, expected, reversible early eGFR dip. NICE (NG203; TA1075 dapagliflozin, TA942 empagliflozin) now recommends adding an SGLT2 inhibitor in CKD with albuminuria alongside an ACEi/ARB.',
+    note:'In T2DM: dual first-line with MR metformin for most adults, with or without CVD/HF/CKD (NICE NG28, updated Feb 2026). T2DM with CKD: offer if ACR >30 mg/mmol, consider if 3–30 (NICE NG203); CKD without diabetes: dapagliflozin if eGFR 20–90 and uACR ≥22.6 mg/mmol (NICE TA1075, 2025; empagliflozin TA942). Sick-day rules.',
     src:{label:'NICE NG203', url:'https://www.nice.org.uk/guidance/ng203'} },
 
   { id:'glp1', cat:'Diabetes & endocrine', name:'GLP-1 receptor agonist', verdict:'help',
@@ -323,7 +323,7 @@ window.EBM_TOPICS = [
   { id:'smoking-cessation', cat:'Prevention & bone', name:'Smoking cessation support', verdict:'help',
     numbers:'Combination pharmacotherapy + behavioural support roughly triples quit rates; the highest-value preventive act.',
     detail:'Stopping smoking is the single most powerful thing most patients can do for their health, and the support that helps them do it is strongly evidence-based. Cochrane reviews show behavioural support plus pharmacotherapy roughly triples successful quit rates versus willpower alone, with varenicline and combination NRT the most effective drug options and bupropion an alternative. Even brief opportunistic advice at each contact increases quit attempts, so the high-yield action is to ask, advise and refer routinely. Cessation slows the decline in lung function in COPD, cuts cardiovascular and cancer risk, and benefits accrue at any age.',
-    note:'Offer at every contact: behavioural support + varenicline/combination NRT/bupropion (NICE NG209).',
+    note:'Offer at every contact: behavioural support + varenicline/cytisinicline/combination NRT/nicotine vape, or bupropion (NICE NG209, updated 2025).',
     src:{label:'NICE NG209', url:'https://www.nice.org.uk/guidance/ng209'} },
 
   { id:'weight-glp1', cat:'Prevention & bone', name:'GLP-1 / tirzepatide for obesity', verdict:'help',

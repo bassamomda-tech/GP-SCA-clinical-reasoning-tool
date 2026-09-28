@@ -11,7 +11,7 @@ RGPDiagnostic.register('tatt', {
 
   xlink: {
     url: '../tools/triage-tool.html',
-    label: 'For suspected cancer (2WW) pathways and emergency thresholds (anaemia, hyponatraemia, hyperkalaemia, DKA, etc.) — open the Tiredness Triage Tool dataset.',
+    label: 'For suspected cancer pathways and emergency thresholds (anaemia, hyponatraemia, hyperkalaemia, DKA, etc.) — open the Tiredness Triage Tool dataset.',
   },
 
   inputs: [
@@ -256,9 +256,9 @@ RGPDiagnostic.register('tatt', {
       category:'cant-miss',
       keyExam:'Site-directed exam — abdomen, breast, PR, lymph nodes, lungs.',
       nextIx:'⚡ Site-specific suspected cancer pathway per NICE NG12 (updated April 2026). IDA → FIT (≥10 → colorectal referral) ± bidirectional endoscopy (BSG 2021). Unexplained visible haematuria at 45+ → urology referral. Persistent cough → urgent CXR; lung referral if CXR suggests cancer.',
-      patientPhrase:'Several features together flag the need to rule out a hidden cancer. Most 2WW referrals come back clear — but we can\'t wait to find out.',
+      patientPhrase:'Several features together flag the need to rule out a hidden cancer. Most suspected cancer pathway referrals come back clear — but we can\'t wait to find out.',
       guideUrl: '',
-      redFlagAction:'⚡ Site-specific 2WW',
+      redFlagAction:'⚡ Site-specific suspected cancer pathway referral',
     },
     {
       id:'addisons',

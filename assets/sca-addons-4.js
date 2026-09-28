@@ -997,7 +997,7 @@
    "reason": "Video appointment booked “about Brian’s tablets”."
   },
   "knowledge": {
-   "guideline": "NICE NG150 (2020) · NICE NG97 (2018) · NICE NG222 (2022) · NICE NG225 (2022) · Care Act 2014 · Mental Capacity Act 2005",
+   "guideline": "NICE NG150 (2020) · NICE NG97 (2018) · NICE NG222 (2022, updated December 2025) · NICE NG225 (2022) · Care Act 2014 · Mental Capacity Act 2005",
    "summary": "A carer who books about her husband but is tearful, exhausted and losing weight is the patient today. Give her permission to be one, assess mood, risk and the weight loss, and turn support into concrete steps: a carer’s assessment, respite and a plan for Brian’s nights.",
    "points": [
     {
@@ -1483,7 +1483,7 @@
    "reason": "Video consultation about poor sleep and being “short with everyone”."
   },
   "knowledge": {
-   "guideline": "NICE NG222 (depression in adults, 2022) · NICE NG225 (self-harm, 2022) · GMC Confidentiality (2017) · Home Office Statutory guidance for chief officers of police on firearms licensing (2021, revised) · DVLA Assessing fitness to drive",
+   "guideline": "NICE NG222 (depression in adults, 2022, updated December 2025) · NICE NG225 (self-harm, 2022) · GMC Confidentiality (2017) · Home Office Statutory guidance for chief officers of police on firearms licensing (2021, revised) · DVLA Assessing fitness to drive",
    "summary": "Early waking, weight loss, loss of interest and hopelessness in a stoical farmer is depression, not insomnia. Ask directly about suicide and the guns, make the firearms safe, involve the crisis team when there is a plan, and know when to inform the police firearms licensing team.",
    "points": [
     {
@@ -3909,7 +3909,7 @@
    "reason": "Video appointment booked: “can’t sleep — wants something to help”."
   },
   "knowledge": {
-   "guideline": "NICE NG248 (2025) · NICE NG225 (2022) · NICE TA77 · NICE NG222 (2022) · BNF",
+   "guideline": "NICE NG248 (2025) · NICE NG225 (2022) · NICE TA77 · NICE NG222 (2022, updated December 2025) · BNF",
    "summary": "“Give me something to sleep, I don’t want the why” is a request to look for the why. Here it is gambling harm with concealed debt and suicidal thinking. Ask about gambling and suicide directly, respond to risk the same day, and treat the gambling as a health problem with specialist help.",
    "points": [
     {
@@ -8288,7 +8288,7 @@
    "reason": "Telephone request — “knee has blown up, wants stronger painkillers”."
   },
   "knowledge": {
-   "guideline": "BSR/BHPR, BOA, RCGP and BSAC guideline for the management of the hot swollen joint in adults (2006; BSR update in development, scope 2025) · NICE NG253 (2025) — suspected sepsis in people aged 16 or over · BNF (metformin, NSAIDs)",
+   "guideline": "BSR/BHPR, BOA, RCGP and BSAC guideline for the management of the hot swollen joint in adults (2006; BSR update in development, scope 2025) · NICE NG253 (updated September 2026) — suspected sepsis in people aged 16 or over · BNF (metformin, NSAIDs)",
    "summary": "A single hot, red, swollen knee he cannot bear weight on, developing over 36 hours, 10 days after a steroid injection, in a man with diabetes who feels shivery, is septic arthritis until proven otherwise. He needs same-day hospital assessment for joint aspiration before antibiotics — not stronger painkillers.",
    "points": [
     {
@@ -8309,7 +8309,7 @@
     },
     {
      "h": "Screen for sepsis",
-     "t": "NICE NG253 (2025): assess anyone with suspected infection for sepsis. High-risk features include new confusion or altered mental state, respiratory rate 25 or more and heart rate over 130. By phone, ask about confusion, breathlessness, mottled or ashen skin and passing urine — any of these means a 999 ambulance."
+     "t": "NICE NG253 (updated September 2026): assess anyone with suspected infection for sepsis. High-risk features include new confusion or altered mental state, respiratory rate 25 or more and heart rate over 130. By phone, ask about confusion, breathlessness, mottled or ashen skin and passing urine — any of these means a 999 ambulance."
     },
     {
      "h": "Crystals and OA do not exclude infection",

@@ -30,7 +30,7 @@ window.RGP_PRESCRIPTIONS = [
     ],
     followUp: 'Re-test only if symptoms persist or relapsing dyspepsia — urea breath test or stool antigen ≥ 4 weeks after completing treatment AND ≥ 2 weeks off PPI.',
     redFlags: [
-      'Dysphagia, weight loss, GI bleeding, anaemia, persistent vomiting → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway (2WW) upper GI referral per NICE NG12 (updated April 2026).',
+      'Dysphagia, weight loss, GI bleeding, anaemia, persistent vomiting → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → upper GI suspected cancer pathway referral per NICE NG12 (updated April 2026).',
       'Persistent symptoms despite eradication → consider gastroscopy.',
     ],
     emisText: `H. pylori 1st-line eradication (7 days):
@@ -73,7 +73,7 @@ Counsel: take all 3 together, complete full course, avoid alcohol. Re-test only 
     ],
     followUp: 'Re-test 4+ weeks after treatment if symptoms persist. After 2nd-line failure → gastroenterology referral for susceptibility testing / alternative regimen.',
     redFlags: [
-      'Alarm features (dysphagia, weight loss, anaemia) → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway (2WW) upper GI referral (NICE NG12 (updated April 2026)).',
+      'Alarm features (dysphagia, weight loss, anaemia) → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → upper GI suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
       'Two failed eradication courses → gastroenterology referral.',
     ],
     emisText: `H. pylori 2nd-line eradication (7 days):
@@ -478,7 +478,7 @@ Eye involvement → same-day ophthalmology (?keratitis).`,
     followUp: 'Review at 2 weeks if not improved. Investigate underlying cause if recurrent (HbA1c, ferritin, B12, folate, HIV testing if risk).',
     redFlags: [
       'Recurrent unexplained thrush in non-immunocompromised adult → offer HIV testing.',
-      'Persistent oral white patches NOT scraping off → ?leucoplakia / dysplasia → 2WW oral cancer.',
+      'Persistent oral white patches NOT scraping off → ?leucoplakia / dysplasia → suspected cancer pathway referral (oral cancer).',
       'Dysphagia / odynophagia → ?oesophageal candidiasis → upper GI endoscopy, consider HIV testing.',
     ],
     emisText: `Oral candidiasis (thrush):

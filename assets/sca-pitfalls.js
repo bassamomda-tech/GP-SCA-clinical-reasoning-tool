@@ -214,7 +214,7 @@ window.SCA_PITFALLS = {
         fix:'Decline with the reason and replace with the better offer: “An antibiotic treats the wrong thing. The right test, urgently, is what actually gets you back on site safely.”' },
       { dom:'rto',
         fail:'The throwaway “coughed up a bit of blood once, probably nothing” rushed past on the way to the systems review.',
-        why:'“Cue missed at the moment it mattered.” Unexplained haemoptysis at 40+ is itself a suspected-cancer (2WW) referral trigger under NG12 — the casualness of the mention IS the test.',
+        why:'“Cue missed at the moment it mattered.” Unexplained haemoptysis at 40+ is itself a suspected cancer pathway referral trigger under NG12 — the casualness of the mention IS the test.',
         fix:'Slow right down: “Tell me about that blood — even once matters to me.” Then act on it explicitly and visibly.' },
       { dom:'rto',
         fail:'Hiding the word cancer entirely — “we’ll do a routine X-ray just to be thorough”.',

@@ -119,7 +119,7 @@
       { id: 'crc', name: 'Colorectal cancer / obstruction', summary: 'New change in habit (any adult age), rectal bleeding, weight loss, mass, obstruction', baseline: 1, category: 'cant-miss',
         keyExam: 'Abdominal / rectal mass, distension, cachexia.', nextIx: '\u26A1 FIT first (NICE NG12 (updated April 2026)); FIT of 10 micrograms Hb/g or more → colorectal suspected cancer pathway referral; rectal mass → refer directly; same-day admission if obstruction features.',
         patientPhrase: 'A recent change in bowel habit at your age needs an urgent specialist look to rule out a bowel cause.',
-        guideUrl: '', redFlagAction: '\u26A1 2WW / admit if obstructed' }
+        guideUrl: '', redFlagAction: '\u26A1 Suspected cancer pathway referral / admit if obstructed' }
     ],
     effects: {
       age: (v) => v >= 60 ? { crc: +8, primary: +2, ibs_c: -3 } : (v < 45 ? { ibs_c: +6, crc: -2 } : {}),

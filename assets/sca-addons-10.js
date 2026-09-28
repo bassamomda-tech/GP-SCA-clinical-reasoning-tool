@@ -3560,7 +3560,7 @@
     },
     {
      "h": "Very Brief Advice",
-     "t": "NCSCT [5]: Ask, Advise, Act in under a minute. NICE NG209 [4]: offer behavioural support with varenicline, combination NRT or nicotine-containing e-cigarettes; refer to a stop-smoking service. NICE NG115 [1]: helping people with COPD who smoke to stop is one of the most important parts of their care, at every stage."
+     "t": "NCSCT [5]: Ask, Advise, Act in under a minute. NICE NG209 [4]: offer behavioural support with varenicline, cytisinicline (cytisine), combination NRT or nicotine-containing e-cigarettes; refer to a stop-smoking service. NICE NG115 [1]: helping people with COPD who smoke to stop is one of the most important parts of their care, at every stage."
     },
     {
      "h": "After the flare",
@@ -4045,7 +4045,7 @@
    "reason": "Video COPD review: “My inhalers just aren’t working any more.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019; reviewed July 2026 with a new biological-therapy section) · [2] NICE TA1142 (dupilumab for uncontrolled COPD with raised blood eosinophils) · [3] NICE NG12 (updated April 2026) · [4] UKHSA Green Book · [5] BNF",
+   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019; reviewed July 2026 with a new biological-therapy section) · [2] NICE TA1142 (dupilumab, March 2026) and NICE TA1166 (mepolizumab, June 2026) for uncontrolled COPD with raised blood eosinophils) · [3] NICE NG12 (updated April 2026) · [4] UKHSA Green Book · [5] BNF",
    "summary": "Before escalating, check technique, adherence, the diagnosis and the non-drug treatments, especially pulmonary rehabilitation. Then apply the NG115 step to triple therapy on its stated criteria, with the pneumonia trade-off discussed and a planned review.",
    "points": [
     {
@@ -4070,7 +4070,7 @@
     },
     {
      "h": "Beyond triple therapy",
-     "t": "Specialist options for continued exacerbations include azithromycin prophylaxis in non-smokers after optimisation (NICE NG115 [1], with CT, sputum culture, ECG and LFT checks first) and, since 2026, biological therapy: dupilumab per NICE TA1142 [2] for uncontrolled COPD with raised blood eosinophils despite maximal inhaled therapy."
+     "t": "Specialist options for continued exacerbations include azithromycin prophylaxis in non-smokers after optimisation (NICE NG115 [1], with CT, sputum culture, ECG and LFT checks first) and, since 2026, biological therapy: dupilumab per NICE TA1142 or mepolizumab per NICE TA1166 [2] for uncontrolled COPD with raised blood eosinophils despite maximal inhaled therapy."
     },
     {
      "h": "Vaccines and cancer awareness",
@@ -7513,7 +7513,7 @@
    "reason": "Video consultation: “I think I’m pregnant and I want to know my options.”"
   },
   "knowledge": {
-   "guideline": "Sexual Offences Act 2003 · GMC 0–18 years (2007, updated 2018) · Working Together to Safeguard Children 2026 · Gillick v West Norfolk and Wisbech AHA (1985) · Abortion Act 1967 · NICE NG140 (abortion care, 2019) · BASHH and Brook Spotting the Signs proforma (2014)",
+   "guideline": "Sexual Offences Act 2003 · GMC 0–18 years (2007, updated 2018) · Working Together to Safeguard Children 2026 · Gillick v West Norfolk and Wisbech AHA (1985) · Abortion Act 1967 · NICE NG140 (abortion care, 2019, updated May 2025) · BASHH and Brook Spotting the Signs proforma (2014)",
    "summary": "A 15-year-old with a 22-year-old partner is a child-protection matter that must be shared, and it is also a young person who needs kind, non-judgemental pregnancy care. Do both: be honest about confidentiality, refer through safeguarding, and support her choices.",
    "points": [
     {
@@ -9505,7 +9505,7 @@
    "reason": "Video consultation requested: “I need help with a pregnancy and I don’t want my mum told.”"
   },
   "knowledge": {
-   "guideline": "Abortion Act 1967 · NICE NG140 (abortion care, 2019) and QS199 (2021) · Family Law Reform Act 1969 s8 · GMC 0–18 years (2007, updated 2018) · Working Together to Safeguard Children 2026 · BASHH and Brook Spotting the Signs proforma (2014)",
+   "guideline": "Abortion Act 1967 · NICE NG140 (abortion care, 2019, updated May 2025) and QS199 (2021) · Family Law Reform Act 1969 s8 · GMC 0–18 years (2007, updated 2018) · Working Together to Safeguard Children 2026 · BASHH and Brook Spotting the Signs proforma (2014)",
    "summary": "At 16 she can consent to her own treatment, and her confidentiality is hers. Your job is warm, non-judgemental care, a sensitive safeguarding check, and a prompt referral, because abortion is time-critical and simpler when early.",
    "points": [
     {

@@ -19,15 +19,15 @@
 
   if (window.RGPTriage) RGPTriage.register('mastalgia-triage', {
     title: 'Breast pain — triage',
-    subtitle: 'Tick features. Surfaces breast-cancer 2WW, mastitis/abscess and a cardiac mimic.',
+    subtitle: 'Tick features. Surfaces breast suspected cancer pathway referral, mastitis/abscess and a cardiac mimic.',
     guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Breast pain alone rarely signifies cancer. Examine; reassure cyclical/non-cyclical mastalgia; supportive bra, analgesia; review.',
     rules: [
       {
         id: 'breast_2ww', tier: 'cancer',
-        label: 'Lump / skin or nipple change, or ≥50 with unexplained unilateral symptoms — breast 2WW',
-        action: 'Breast 2WW (triple assessment).',
+        label: 'Lump / skin or nipple change, or ≥50 with unexplained unilateral symptoms — breast suspected cancer pathway referral',
+        action: 'Breast suspected cancer pathway referral (triple assessment).',
         source: 'NICE NG12 (updated April 2026) §1.4', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.lump || i.skin_nipple || i.age50_unilateral,
       },
@@ -84,9 +84,9 @@
         guideUrl: '' },
 
       { id: 'breast_cancer', name: 'Breast cancer', summary: 'Lump, skin/nipple change, ≥50 unilateral', baseline: 1, category: 'cant-miss',
-        keyExam: 'Discrete lump, skin tethering, nipple change.', nextIx: '\u26A1 Breast 2WW — triple assessment (NICE NG12 (updated April 2026)).',
+        keyExam: 'Discrete lump, skin tethering, nipple change.', nextIx: '\u26A1 Breast suspected cancer pathway referral — triple assessment (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A lump or skin/nipple change needs urgent specialist assessment to exclude cancer — most prove benign.',
-        guideUrl: '', redFlagAction: '\u26A1 Breast 2WW' },
+        guideUrl: '', redFlagAction: '\u26A1 Breast suspected cancer pathway referral' },
       { id: 'cardiac', name: 'Cardiac pain (mimic)', summary: 'Exertional / radiating left-sided pain', baseline: 1, category: 'cant-miss',
         keyExam: 'CV risk; recreate on exertion.', nextIx: '\u26A1 ECG ± troponin; treat as ?ACS if acute.',
         patientPhrase: 'Left-sided pain on exertion can come from the heart, so I will check that to be safe.',

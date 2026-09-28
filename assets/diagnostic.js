@@ -209,7 +209,7 @@
           <span class="dx-xlink-ic">🚦</span>
           <div class="dx-xlink-text">
             <b>This presentation also has a triage view.</b><br/>
-            ${t.xlink.label || 'Use the Triage Tool to surface 2WW and emergency thresholds for the same patient.'}
+            ${t.xlink.label || 'Use the Triage Tool to surface suspected cancer pathway and emergency thresholds for the same patient.'}
           </div>
           <a href="${t.xlink.url || '../tools/triage-tool.html'}">Open Triage Tool ↗</a>
         </div>

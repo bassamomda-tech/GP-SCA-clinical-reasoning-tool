@@ -122,14 +122,14 @@ MedChooser.register('migraine', {
       id:'propranolol',
       name:'Propranolol (beta-blocker)',
       examples:'80 mg/day in divided doses, up to 160 mg',
-      step:'Prophylaxis — first-line',
+      step:'Prophylaxis — CG150 option',
       source:'NICE CG150',
       sideEffects:'Fatigue, cold extremities, bradycardia, vivid dreams; bronchospasm',
       monitor:'HR/BP; review benefit at 2–3 months at adequate dose',
       counsel:'"This is a daily preventer — give it 2–3 months at a proper dose before we judge it. It can make you feel a bit tired or cold-handed at first."',
       detail:{
         'Dose':'Start 80 mg/day (often 40 mg BD), titrate to 80–160 mg/day. Trial for at least 2–3 months at target dose.',
-        'Key teaching':'First-line preventive and the safest of the three in women of childbearing potential and pregnancy. Avoid in asthma.'
+        'Key teaching':'A CG150 preventive to consider (June 2025 amendment) and the safest of the three in women of childbearing potential and pregnancy. Avoid in asthma.'
       },
       evaluate(f){
         if (f.phase === 'acute') return { tier:'avoid', reasons:[{kind:'neutral', text:'Daily preventer — switch to "acute attack" for abortive options'}] };
@@ -140,14 +140,14 @@ MedChooser.register('migraine', {
         if (f.uncontrolled_htn) r.push({kind:'good', text:'Coexisting hypertension — dual benefit'});
         if (f.depression) r.push({kind:'neutral', text:'Use with awareness of possible mood/fatigue effects'});
         if (r.some(x=>x.kind==='bad')) return { tier:'acceptable', reasons:r };
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'First-line prophylaxis; trial 2–3 months at adequate dose'}] };
+        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'CG150 prophylaxis option; trial 2–3 months at adequate dose'}] };
       }
     },
     {
       id:'amitriptyline',
       name:'Amitriptyline (TCA)',
       examples:'10 mg at night, titrate to 25–75 mg',
-      step:'Prophylaxis — first-line',
+      step:'Prophylaxis — CG150 option',
       source:'NICE CG150 (off-label)',
       sideEffects:'Sedation, dry mouth, constipation, weight gain; caution in arrhythmia',
       monitor:'Review at adequate dose; warn re morning drowsiness/driving',
@@ -170,7 +170,7 @@ MedChooser.register('migraine', {
       id:'topiramate',
       name:'Topiramate',
       examples:'25 mg/day, titrate to 50–100 mg in divided doses',
-      step:'Prophylaxis — first-line (with caution)',
+      step:'Prophylaxis — CG150 option (with caution)',
       source:'NICE CG150 · MHRA',
       sideEffects:'Paraesthesia, cognitive slowing, weight loss, renal stones, glaucoma',
       monitor:'Pregnancy prevention programme in women; mood; weight',
@@ -188,7 +188,7 @@ MedChooser.register('migraine', {
         if (f.epilepsy) r.push({kind:'good', text:'Coexisting epilepsy — single drug may treat both'});
         if (f.asthma) r.push({kind:'good', text:'Suitable where propranolol contraindicated'});
         if (f.depression) r.push({kind:'bad', text:'Can worsen mood/cognition — caution with depression'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Effective first-line preventer; weigh cognitive/teratogenic risks'}] };
+        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Effective CG150 preventer option; weigh cognitive/teratogenic risks'}] };
       }
     },
     {

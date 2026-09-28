@@ -49,7 +49,7 @@
       'Provide psychological support and survivorship follow-up; maintain vigilance for recurrence and second primaries',
       'Recognise and act urgently on stridor/airway compromise'],
     referral:[
-      'Aged 45+ with persistent unexplained hoarseness, or an unexplained persistent neck lump → urgent suspected laryngeal/head-and-neck cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Aged 45+ with persistent unexplained hoarseness, or an unexplained persistent neck lump → suspected cancer pathway referral for laryngeal/head-and-neck cancer (NICE NG12 (updated April 2026))',
       'Stridor/airway compromise → emergency ENT',
       'Persistent throat symptoms/otalgia with risk factors → urgent ENT assessment',
       'Confirmed cancer → head-and-neck MDT'],
@@ -74,7 +74,7 @@
       'Safety-net for red-flag features (persistent hoarseness, neck lump, swallowing/breathing difficulty, weight loss)',
       'Provide written advice and review if not settling'],
     referral:[
-      'Hoarseness persisting >3 weeks (especially smoker/drinker, age 45+) → urgent suspected laryngeal cancer (2WW) referral for laryngoscopy (NICE NG12 (updated April 2026))',
+      'Hoarseness persisting >3 weeks (especially smoker/drinker, age 45+) → suspected cancer pathway referral for laryngeal cancer (laryngoscopy) (NICE NG12 (updated April 2026))',
       'Stridor/airway compromise → emergency ENT',
       'Persistent voice problems from misuse/occupational use → speech and language therapy ± ENT',
       'Chronic laryngitis not responding to treatment → ENT'],
@@ -125,7 +125,7 @@
       'Provide patient information and review'],
     referral:[
       'Widespread, erosive, scarring, or treatment-resistant disease → dermatology (± oral medicine/gynaecology)',
-      'Persistent erosive oral or genital lichen planus, or any non-healing/suspicious lesion → specialist monitoring; suspected oral/genital squamous cell carcinoma → urgent 2WW referral (NICE NG12 (updated April 2026))',
+      'Persistent erosive oral or genital lichen planus, or any non-healing/suspicious lesion → specialist monitoring; suspected oral/genital squamous cell carcinoma → suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty → dermatology (± biopsy)',
       'Scalp involvement with scarring alopecia → dermatology (prompt, to limit permanent loss)'],
     source:'BAD guidance / Clinical practice summary' },
@@ -149,7 +149,7 @@
       'In children, treat and reassure; recognise that the appearance can mimic abuse but be alert to genuine safeguarding concerns',
       'Refer for diagnostic uncertainty, treatment failure, significant scarring, or suspected malignancy; check thyroid function given autoimmune associations'],
     referral:[
-      'Suspected vulval/penile squamous cell carcinoma (a lump, ulcer, or non-healing/thickened area) → urgent 2WW gynae-oncology/urology referral (NICE NG12 (updated April 2026))',
+      'Suspected vulval/penile squamous cell carcinoma (a lump, ulcer, or non-healing/thickened area) → gynae-oncology/urology suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty, treatment failure, or significant scarring/phimosis → dermatology/gynaecology/urology',
       'Boys/men with BXO and phimosis → urology (circumcision)',
       'Children with diagnostic doubt or safeguarding concern → paediatric/dermatology assessment and safeguarding as appropriate'],
@@ -249,7 +249,7 @@
       'Provide symptom control (breathlessness, cough, pain), early palliative care input, and psychological/holistic support',
       'Coordinate care, manage comorbidity, and support patients and families through diagnosis and treatment'],
     referral:[
-      'Offer an urgent chest X-ray (within 2 weeks) to people aged 40+ with 2 or more unexplained symptoms, or 1 or more if they have ever smoked: cough, fatigue, breathlessness, chest pain, weight loss, appetite loss; refer on the suspected lung-cancer 2WW pathway if the CXR suggests lung cancer or if aged 40+ with unexplained haemoptysis (NICE NG12 (updated April 2026))',
+      'Offer an urgent chest X-ray (within 2 weeks) to people aged 40+ with 2 or more unexplained symptoms, or 1 or more if they have ever smoked: cough, fatigue, breathlessness, chest pain, weight loss, appetite loss; refer on the suspected cancer pathway for lung cancer if the CXR suggests lung cancer or if aged 40+ with unexplained haemoptysis (NICE NG12 (updated April 2026))',
       'Superior vena cava obstruction or suspected spinal-cord compression → emergency admission',
       'Confirmed/suspected lung cancer → lung-cancer MDT',
       'Eligible ever-smokers → lung health check/screening'],

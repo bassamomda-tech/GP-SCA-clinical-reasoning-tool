@@ -175,7 +175,7 @@
       'Provide safety-netting for the symptoms of bleeding/perforation'],
     referral:[
       'Haematemesis/melaena (upper-GI bleed) or suspected perforation → emergency admission',
-      'Dysphagia, or age 55+ with weight loss + upper abdominal pain/reflux/dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026), 2WW)',
+      'Dysphagia, or age 55+ with weight loss + upper abdominal pain/reflux/dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026))',
       'Gastric ulcer → endoscopic follow-up to confirm healing and exclude cancer',
       'Refractory or complicated ulcers, or recurrent disease → gastroenterology'],
     source:'NICE NG12 (updated April 2026) / NICE CG184 (Dyspepsia and GORD) / H. pylori guidance' },

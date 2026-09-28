@@ -45,7 +45,7 @@
       {
         id: 'tumour_2ww', tier: 'cancer',
         label: 'Painless hard testicular mass — suspected cancer',
-        action: 'Urgent testicular USS + 2WW urology (NICE NG12 (updated April 2026)).',
+        action: 'Urgent testicular USS + urology suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.painless_mass,
       },
@@ -99,9 +99,9 @@
         patientPhrase: 'A hernia has become trapped — that needs emergency surgery today.',
         guideUrl: '', redFlagAction: '\u26A1 Same-day surgery' },
       { id: 'tumour', name: 'Testicular tumour', summary: 'Painless hard mass, age 15–45', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hard, craggy, does not transilluminate.', nextIx: '\u26A1 Testicular USS + tumour markers (AFP, hCG, LDH); urology 2WW.',
+        keyExam: 'Hard, craggy, does not transilluminate.', nextIx: '\u26A1 Testicular USS + tumour markers (AFP, hCG, LDH); urology suspected cancer pathway referral.',
         patientPhrase: 'A painless lump needs an urgent scan to exclude cancer — testicular cancer is very treatable when caught.',
-        guideUrl: '', redFlagAction: '\u26A1 USS + urology 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 USS + urology suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v == null ? {} : (v < 25 ? { torsion: +10, appendix_torsion: +4 } : (v >= 25 && v <= 45 ? { epididymo_orchitis: +4, tumour: +3 } : { epididymo_orchitis: +6, hydrocele: +3, torsion: -4 })),

@@ -49,7 +49,7 @@
       {
         id: 'malignancy_2ww', tier: 'cancer',
         label: 'Painless obstructive jaundice + weight loss — suspected pancreatic / biliary cancer',
-        action: '2WW + urgent CT/USS.',
+        action: 'Suspected cancer pathway referral + urgent CT/USS.',
         patientPhrase: '"Painless jaundice with weight loss needs an urgent scan to find the cause."',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.painless_wl,
@@ -108,9 +108,9 @@
         guideUrl: 'https://www.nice.org.uk/guidance/cg188', guideLabel: 'NICE CG188' },
 
       { id: 'malignancy', name: 'Pancreatic / biliary malignancy', summary: 'Painless obstructive jaundice + weight loss', baseline: 1, category: 'cant-miss',
-        keyExam: 'Cachexia, palpable gallbladder (Courvoisier), hepatomegaly.', nextIx: '\u26A1 2WW + urgent CT/USS (NICE NG12 (updated April 2026)).',
+        keyExam: 'Cachexia, palpable gallbladder (Courvoisier), hepatomegaly.', nextIx: '\u26A1 Suspected cancer pathway referral + urgent CT/USS (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Painless yellowing with weight loss needs an urgent scan to exclude a serious cause of the blockage.',
-        guideUrl: '', redFlagAction: '\u26A1 2WW + imaging' },
+        guideUrl: '', redFlagAction: '\u26A1 Suspected cancer pathway referral + imaging' },
       { id: 'cholangitis', name: 'Ascending cholangitis', summary: 'Fever + RUQ pain + jaundice (Charcot\u2019s triad)', baseline: 1, category: 'cant-miss',
         keyExam: 'Fever, RUQ tenderness, septic.', nextIx: '\u26A1 Same-day admission — IV antibiotics, urgent biliary drainage.',
         patientPhrase: 'Infection has built up behind a blocked bile duct — that needs hospital antibiotics and drainage urgently.',

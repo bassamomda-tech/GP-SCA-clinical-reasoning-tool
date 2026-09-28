@@ -50,7 +50,7 @@
       'Reassess after addressing the cause; persistence despite metabolic improvement warrants a rethink',
       'Document the distribution and onset speed — abrupt, extensive disease changes the differential entirely'],
     referral:[
-      'Suspected malignant acanthosis nigricans (abrupt, florid, mucosal/palmar involvement, weight loss, older non-obese adult) → urgent investigation for occult cancer; with weight loss + upper-GI symptoms at 55 or over make a suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026)) and refer per the relevant 2WW pathway',
+      'Suspected malignant acanthosis nigricans (abrupt, florid, mucosal/palmar involvement, weight loss, older non-obese adult) → urgent investigation for occult cancer; with weight loss + upper-GI symptoms at 55 or over make a suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026)) and refer on the relevant suspected cancer pathway',
       'Diagnostic uncertainty or extensive/atypical skin disease → dermatology',
       'Suspected endocrinopathy (acromegaly, Cushing’s) → endocrinology'],
     source:'BAD guidance' },
@@ -74,7 +74,7 @@
       'Advise eating slowly, chewing well, plenty of fluid with meals, and sleeping propped up to reduce nocturnal regurgitation/aspiration',
       'Lifelong follow-up: there is a small long-term increased risk of oesophageal squamous-cell carcinoma — maintain awareness and re-refer for new alarm symptoms'],
     referral:[
-      'Dysphagia at any age → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026), 2WW pathway) — this takes priority over a motility work-up',
+      'Dysphagia at any age → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026)) — this takes priority over a motility work-up',
       'Confirmed/suspected achalasia → gastroenterology for manometry and definitive treatment',
       'Aspiration, severe weight loss or inability to maintain nutrition → urgent specialist input',
       'New alarm symptoms during follow-up (worsening dysphagia, weight loss, bleeding) → re-refer on the suspected-cancer pathway'],
@@ -425,7 +425,7 @@
       'Provide respiratory follow-up and surveillance per specialist advice',
       'Offer psychological support — an asbestos diagnosis carries significant anxiety about cancer risk'],
     referral:[
-      'New or changing cough, haemoptysis, unexplained chest/shoulder pain, weight loss, or a new/unexplained pleural effusion in someone with asbestos exposure → urgent (2WW) suspected lung-cancer/mesothelioma referral; offer an urgent chest X-ray (within 2 weeks) to assess for lung cancer/mesothelioma (NICE NG12 (updated April 2026))',
+      'New or changing cough, haemoptysis, unexplained chest/shoulder pain, weight loss, or a new/unexplained pleural effusion in someone with asbestos exposure → suspected cancer pathway referral for lung cancer/mesothelioma; offer an urgent chest X-ray (within 2 weeks) to assess for lung cancer/mesothelioma (NICE NG12 (updated April 2026))',
       'Suspected mesothelioma or pleural effusion → urgent respiratory/chest clinic for pleural investigation',
       'Diagnostic uncertainty or progressive interstitial disease → respiratory/ILD service',
       'For benefits/compensation → signpost to the relevant assessment and advice services'],
@@ -451,7 +451,7 @@
       'Primary care: recognise the pattern, refer appropriately, and support adherence and monitoring of long-term antifungals'],
     referral:[
       'Suspected invasive aspergillosis in an immunocompromised patient → emergency admission for urgent antifungal therapy',
-      'Haemoptysis (especially with weight loss, or in a smoker/ex-smoker aged ≥40) → urgent (2WW) suspected lung-cancer referral and urgent chest X-ray to exclude malignancy (NICE NG12 (updated April 2026)) before attributing to aspergillosis',
+      'Haemoptysis (especially with weight loss, or in a smoker/ex-smoker aged ≥40) → suspected cancer pathway referral for lung cancer and urgent chest X-ray to exclude malignancy (NICE NG12 (updated April 2026)) before attributing to aspergillosis',
       'Suspected ABPA, aspergilloma or chronic pulmonary aspergillosis → respiratory clinic for confirmation and specialist antifungal management',
       'Massive or recurrent haemoptysis → emergency assessment (consider embolisation/surgery)'],
     source:'BTS / IDSA aspergillosis guidance (IDSA: international)' },

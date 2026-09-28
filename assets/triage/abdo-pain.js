@@ -63,8 +63,8 @@ RGPTriage.register('abdo-pain-triage', {
     { id:'obstruction', tier:'urgent', label:'?Bowel obstruction — vomiting + distension',
       action:'Same-day surgical assessment. AXR / CT. NBM, IV fluids.',
       when:(i)=>!!i.vomiting_distended },
-    { id:'cancer_2ww', tier:'cancer', label:'2WW abdominal cancer pathway',
-      action:'NICE NG12 (updated April 2026): site-specific 2WW (upper GI / lower GI / pancreatic / ovarian).',
+    { id:'cancer_2ww', tier:'cancer', label:'Abdominal suspected cancer pathways',
+      action:'NICE NG12 (updated April 2026): site-specific suspected cancer pathway referral (upper GI / lower GI / pancreatic / ovarian).',
       source:'NICE NG12 (updated April 2026)', sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       when:(i)=>!!i.weight_loss_systemic && (i.age>=50) }
   ],

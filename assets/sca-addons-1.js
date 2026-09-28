@@ -6358,7 +6358,7 @@
     },
     {
      "h": "Menopause and sleep",
-     "t": "Vasomotor symptoms and broken sleep since stopping HRT are treatable and affect concentration. NICE NG23 (updated 2024): HRT does not appear to increase dementia risk, but it should not be offered to prevent dementia. Reopen HRT for her symptoms as an individual risk–benefit discussion."
+     "t": "Vasomotor symptoms and broken sleep since stopping HRT are treatable and affect concentration. NICE NG23 (updated April 2026): HRT does not appear to increase dementia risk, but it should not be offered to prevent dementia. Reopen HRT for her symptoms as an individual risk–benefit discussion."
     }
    ]
   },
@@ -9297,7 +9297,7 @@
    "reason": "Video consultation (set up by her daughter) to request her zopiclone repeat."
   },
   "knowledge": {
-   "guideline": "NICE TA77 (2004) — hypnotics for insomnia · NICE NG249 (2025) — falls · BNF zopiclone · NICE MTG70 (Sleepio)",
+   "guideline": "NICE TA77 (2004) — hypnotics for insomnia · NICE NG249 (2025) — falls · BNF zopiclone · NICE HTG624 (Sleepio, formerly MTG70)",
    "summary": "Twelve years of nightly zopiclone means tolerance and dependence, not insomnia needing a stronger drug. After a night-time fall, the hypnotic is part of the falls review: taper it slowly by agreement, never stop it abruptly, never escalate to temazepam, and replace it with CBT-I principles.",
    "points": [
     {
@@ -9318,7 +9318,7 @@
     },
     {
      "h": "Replace the tablet with something",
-     "t": "CBT-I is first-line for chronic insomnia (BAP consensus 2019): fixed rising time, bed only for sleep, get up if awake and frustrated, short or no daytime nap, caffeine only in the morning. Digital CBT-I (Sleepio) is recommended in NICE MTG70. Screen mood (NICE NG222) and name the loneliness behind the 3am waking."
+     "t": "CBT-I is first-line for chronic insomnia (BAP consensus 2019): fixed rising time, bed only for sleep, get up if awake and frustrated, short or no daytime nap, caffeine only in the morning. Digital CBT-I (Sleepio) is recommended in NICE HTG624 (formerly MTG70). Screen mood (NICE NG222) and name the loneliness behind the 3am waking."
     },
     {
      "h": "Alcohol and controlled drugs",
@@ -9720,7 +9720,7 @@
    "community": [
     {
      "h": "Support in the community",
-     "t": "Community falls-prevention service and strength-and-balance classes; Cruse Bereavement Support; Age UK for befriending; digital CBT-I (Sleepio, NICE MTG70)."
+     "t": "Community falls-prevention service and strength-and-balance classes; Cruse Bereavement Support; Age UK for befriending; digital CBT-I (Sleepio, NICE HTG624, formerly MTG70)."
     }
    ]
   },

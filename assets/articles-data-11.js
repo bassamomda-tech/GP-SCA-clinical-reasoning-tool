@@ -124,7 +124,7 @@
       'Manage Barrett’s oesophagus with endoscopic surveillance per specialist guidance',
       'Surgery (fundoplication) is an option for selected patients with proven, refractory, or volume reflux'],
     referral:[
-      'Dysphagia (any age), or aged 55+ with weight loss plus upper abdominal pain/reflux/dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026), 2WW; this replaced urgent direct-access endoscopy)',
+      'Dysphagia (any age), or aged 55+ with weight loss plus upper abdominal pain/reflux/dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026); this replaced urgent direct-access endoscopy)',
       'GI bleeding (haematemesis/melaena) → emergency admission',
       'Refractory symptoms despite optimal treatment, or for surveillance of Barrett’s → gastroenterology',
       'Consideration of anti-reflux surgery → upper-GI surgery'],
@@ -403,7 +403,7 @@
       'Unwell newborn with possible GBS infection (sepsis/respiratory distress/meningitis signs) → emergency neonatal/paediatric assessment',
       'GBS bacteriuria/UTI in pregnancy → treat and flag for intrapartum prophylaxis',
       'Previous baby with GBS disease → ensure documented prophylaxis plan'],
-    source:'RCOG Green-top Guideline No. 36 (GBS) / NICE NG195 (Neonatal infection)' },
+    source:'RCOG Green-top Guideline No. 36 (GBS) / NICE NG195 (Neonatal infection, updated May 2026)' },
 
   { id:'gum-disease', title:'Gum disease (gingivitis and periodontitis)', category:'General', icon:'🦷',
     overview:'Inflammation of the gums (gingivitis) and, if it progresses, of the deeper supporting structures of the teeth (periodontitis), driven by dental plaque. It is extremely common and a leading cause of tooth loss. It also has important links with diabetes and cardiovascular disease, making oral health a whole-health issue.',
@@ -426,7 +426,7 @@
     referral:[
       'Diagnosis and treatment of gingivitis/periodontitis → dental services',
       'Acute necrotising gingivitis → urgent dental referral (plus metronidazole/analgesia)',
-      'Persistent oral ulceration (>3 weeks), a red/white patch, or an unexplained oral lump → urgent suspected oral-cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Persistent oral ulceration (>3 weeks), a red/white patch, or an unexplained oral lump → suspected cancer pathway referral for oral cancer (NICE NG12 (updated April 2026))',
       'Drug-induced gingival overgrowth → review medication ± dental/specialist input'],
     source:'SDCEP / British Society of Periodontology guidance / NICE NG12 (updated April 2026)' }
 

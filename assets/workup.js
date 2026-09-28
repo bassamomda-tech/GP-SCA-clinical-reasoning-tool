@@ -30,7 +30,7 @@
   // ---------- Triage tier definitions ----------
   const TIERS = {
     emergency: { label:'Emergency',                   cls:'is-emer', tcls:'t-emer', icon:'🔴', rank:4 },
-    cancer:    { label:'Suspected cancer (2WW)',      cls:'is-canc', tcls:'t-canc', icon:'🟣', rank:3 },
+    cancer:    { label:'Suspected cancer pathway',      cls:'is-canc', tcls:'t-canc', icon:'🟣', rank:3 },
     urgent:    { label:'Urgent — non-cancer',         cls:'is-urg',  tcls:'t-urg',  icon:'🟠', rank:2 },
     routine:   { label:'Routine',                     cls:'is-rt',   tcls:'t-rt',   icon:'🟢', rank:1 },
   };
@@ -213,7 +213,7 @@
               ${this.hasTriage() && this.hasDx() ?
                 'Tick symptoms. The tool surfaces every <b>triage rule (NICE NG12, updated April 2026, other numbered NICE guidelines, Macmillan)</b> that fires AND ranks the <b>differential</b> using ICHD-3 / TiTrATE / numbered NICE guideline criteria.' :
                 this.hasTriage() ?
-                  'Tick symptoms. The tool surfaces every <b>triage rule (NICE NG12, updated April 2026, other numbered NICE guidelines, Macmillan)</b> that fires — emergency, suspected cancer (2WW), urgent non-cancer, routine.' :
+                  'Tick symptoms. The tool surfaces every <b>triage rule (NICE NG12, updated April 2026, other numbered NICE guidelines, Macmillan)</b> that fires — emergency, suspected cancer pathway, urgent non-cancer, routine.' :
                   'Tick symptoms. The engine ranks the <b>differential</b> live using ICHD-3 / TiTrATE / numbered NICE guideline criteria.'
               }
             </div>
@@ -453,7 +453,7 @@
               <div class="tr-hl-btns">
                 ${s.headlineRule.proformaUrl ? `
                   <a class="tr-btn" href="${s.headlineRule.proformaUrl}" target="_blank" rel="noopener noreferrer">
-                    <span class="tr-btn-ic">↗</span> ${s.headlineRule.proformaLabel || 'Open 2WW proforma'}
+                    <span class="tr-btn-ic">↗</span> ${s.headlineRule.proformaLabel || 'Open suspected cancer referral proforma'}
                   </a>` : ''}
                 <button class="tr-btn" onclick="window.print()" type="button">
                   <span class="tr-btn-ic">🖨</span> Print summary
@@ -513,7 +513,7 @@
             ${r.patientPhrase ? `<div class="tr-rule-phrase">${r.patientPhrase}</div>` : ''}
             ${trail}
           </div>
-          ${r.proformaUrl ? `<a class="tr-rule-btn" href="${r.proformaUrl}" target="_blank" rel="noopener noreferrer">${r.proformaLabel || '2WW proforma'} ↗</a>` : ''}
+          ${r.proformaUrl ? `<a class="tr-rule-btn" href="${r.proformaUrl}" target="_blank" rel="noopener noreferrer">${r.proformaLabel || 'Suspected cancer referral proforma'} ↗</a>` : ''}
         </div>
       `;
     }

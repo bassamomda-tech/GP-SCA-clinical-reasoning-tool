@@ -60,7 +60,7 @@
       }
     ],
     sources: [
-      { label: 'NICE NG49 — NAFLD/MASLD', url: 'https://www.nice.org.uk/guidance/ng49' },
+      { label: 'NICE NG49 (MASLD, formerly NAFLD; updated July 2026)', url: 'https://www.nice.org.uk/guidance/ng49' },
       { label: 'BSG — Abnormal liver blood tests', url: 'https://www.bsg.org.uk/clinical-resource/abnormal-liver-blood-tests/' }
     ],
   });
@@ -124,7 +124,7 @@
       hcc: ['focal_lesion'],
     },
     sources: [
-      { label: 'NICE NG49 — NAFLD/MASLD', url: 'https://www.nice.org.uk/guidance/ng49' },
+      { label: 'NICE NG49 (MASLD, formerly NAFLD; updated July 2026)', url: 'https://www.nice.org.uk/guidance/ng49' },
       { label: 'BSG — Abnormal liver blood tests', url: 'https://www.bsg.org.uk/clinical-resource/abnormal-liver-blood-tests/' }
     ],
   });

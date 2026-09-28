@@ -4950,7 +4950,7 @@
    "reason": "Face-to-face. “Nothing touches it — can I have something stronger?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated) · [2] MHRA Drug Safety Update June 2024 (topiramate: pregnancy prevention programme) · [3] British Association for the Study of Headache (BASH) National headache management system for adults (2019) · [4] UK Medical Eligibility Criteria for Contraceptive Use (CoSRH UKMEC 2025) · [5] BNF monographs for propranolol, amitriptyline and topiramate",
+   "guideline": "[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated June 2025) · [2] MHRA Drug Safety Update June 2024 (topiramate: pregnancy prevention programme) · [3] British Association for the Study of Headache (BASH) National headache management system for adults (2019) · [4] UK Medical Eligibility Criteria for Contraceptive Use (CoSRH UKMEC 2025) · [5] BNF monographs for propranolol, amitriptyline and topiramate",
    "summary": "Long-standing migraine that has become near-daily, with co-codamol and a triptan taken on most days, is medication-overuse headache on top of migraine until proved otherwise. The painkillers are now keeping the headache going, so ‘something stronger’ would make it worse. Exclude secondary headache, then withdraw the overused drugs with a warning about the short-term worsening, start a preventer, and review.",
    "points": [
     {

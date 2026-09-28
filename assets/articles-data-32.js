@@ -99,7 +99,7 @@
       'Provide information and psychological/sexual-function support; address the impact of treatment',
       'Arrange surveillance/follow-up after treatment'],
     referral:[
-      'An unexplained vulval lump, ulceration, or bleeding → urgent (2WW) gynae-oncology referral (NICE NG12 (updated April 2026))',
+      'An unexplained vulval lump, ulceration, or bleeding → gynae-oncology suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Persistent unexplained vulval itch/lesion not responding to treatment → examine and refer/biopsy',
       'Lichen sclerosus/VIN with a non-healing or changing area → biopsy/gynaecology',
       'Confirmed vulval cancer → gynae-oncology MDT'],
@@ -124,7 +124,7 @@
       'Adopt a multidisciplinary, chronic-pain approach and set realistic expectations',
       'Refer to specialist (gynaecology/vulval/pain) services for diagnostic uncertainty or refractory symptoms'],
     referral:[
-      'Diagnostic uncertainty, an abnormal/suspicious lesion, or suspected dermatosis → gynaecology/dermatology (biopsy if needed; 2WW if cancer suspected, NICE NG12 (updated April 2026))',
+      'Diagnostic uncertainty, an abnormal/suspicious lesion, or suspected dermatosis → gynaecology/dermatology (biopsy if needed; suspected cancer pathway referral if cancer suspected, NICE NG12 (updated April 2026))',
       'Refractory vulvodynia → specialist vulval clinic / pain service',
       'Pelvic-floor dysfunction → pelvic-floor physiotherapy',
       'Sexual/psychological difficulties → psychosexual counselling'],
@@ -149,7 +149,7 @@
       'Distinguish from corns/calluses (treated differently) and from sinister lesions',
       'Refer atypical, non-healing, or rapidly changing lesions to exclude malignancy'],
     referral:[
-      'Atypical, rapidly growing, bleeding, or non-healing "wart" (especially older/immunosuppressed) → dermatology / 2WW suspected skin-cancer pathway if malignancy suspected (NICE NG12 (updated April 2026))',
+      'Atypical, rapidly growing, bleeding, or non-healing "wart" (especially older/immunosuppressed) → dermatology / suspected cancer pathway referral for skin cancer if malignancy suspected (NICE NG12 (updated April 2026))',
       'Extensive, resistant, or facial/genital warts → dermatology (genital warts → GUM)',
       'Immunocompromised patients with widespread/resistant warts → dermatology',
       'Diagnostic uncertainty → dermatology'],
@@ -274,7 +274,7 @@
       'Provide information and psychological support; manage the impact of treatment',
       'Arrange surveillance/follow-up after treatment'],
     referral:[
-      'Postmenopausal bleeding → urgent (2WW) suspected endometrial-cancer referral; women aged ≥55 with postmenopausal bleeding not attributable to HRT meet the threshold (NICE NG12 (updated April 2026)); under 55, consider referral',
+      'Postmenopausal bleeding → suspected cancer pathway referral for endometrial cancer; women aged ≥55 with postmenopausal bleeding not attributable to HRT meet the threshold (NICE NG12 (updated April 2026)); under 55, consider referral',
       'Unexplained vaginal discharge or abnormal bleeding with risk factors → assess and refer per the suspected-cancer pathway',
       'Confirmed endometrial cancer → gynae-oncology MDT',
       'Suspected Lynch syndrome → clinical genetics'],

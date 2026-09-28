@@ -124,7 +124,7 @@
       'Report to the coroner where appropriate (asbestos-related deaths are usually reportable)',
       'Provide psychological support to the patient and family throughout'],
     referral:[
-      'Chest X-ray findings suggesting mesothelioma (e.g. unexplained pleural effusion or pleural thickening) → suspected cancer pathway (2WW) referral; aged 40+ with unexplained chest symptoms (cough, fatigue, breathlessness, chest pain, weight loss, appetite loss) and asbestos exposure → urgent chest X-ray within 2 weeks (NICE NG12 (updated April 2026))',
+      'Chest X-ray findings suggesting mesothelioma (e.g. unexplained pleural effusion or pleural thickening) → suspected cancer pathway referral; aged 40+ with unexplained chest symptoms (cough, fatigue, breathlessness, chest pain, weight loss, appetite loss) and asbestos exposure → urgent chest X-ray within 2 weeks (NICE NG12 (updated April 2026))',
       'Confirmed/suspected mesothelioma → mesothelioma/lung-cancer MDT',
       'Symptom control needs (breathlessness, pain) → early specialist palliative care',
       'Benefits/compensation → signpost to relevant advice services'],

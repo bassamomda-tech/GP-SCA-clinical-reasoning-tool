@@ -299,22 +299,22 @@ window.SCA_CASES = [
     },
     checkpoints:[
       { dom:'tasks', text:'Elicits the red flags: ≥3 weeks cough, haemoptysis, hoarse voice, weight loss, smoker' },
-      { dom:'tasks', text:'Arranges urgent (2-week-wait) chest X-ray as per NICE NG12 suspected cancer pathway' },
+      { dom:'tasks', text:'Arranges an urgent chest X-ray (within 2 weeks) as per NICE NG12 suspected cancer pathway' },
       { dom:'tasks', text:'Does NOT prescribe antibiotics reflexively' },
       { dom:'tasks', text:'Offers smoking-cessation support proactively even now' },
       { dom:'rto',   text:'Picks up the throwaway about blood and slows down to address it' },
-      { dom:'rto',   text:'Uses honest, lay-language framing of the 2WW — "an urgent X-ray to rule out anything sinister"' },
+      { dom:'rto',   text:'Uses honest, lay-language framing of the suspected cancer pathway — "an urgent X-ray to rule out anything sinister"' },
       { dom:'gs',    text:'Safety-nets: massive haemoptysis, breathlessness at rest, chest pain → A&E' },
       { dom:'gs',    text:'Books explicit follow-up to discuss results — does not leave outcome to a letter' },
     ],
     worked:[
       { lbl:'Open question',       txt:'"Raymond — three months is a long time for a cough. Walk me through how it\'s changed from when it first started."' },
       { lbl:'Pivot on the blood',  txt:'"I want to come back to something you said quickly — a streak of blood last week. Tell me a bit more about that."' },
-      { lbl:'Honesty about 2WW',   txt:'"With your history of smoking and these features, I want to be straight: I\'m going to arrange an urgent X-ray to rule out anything sinister. Most people on this pathway get the all-clear, but it would be wrong of me not to do it properly."' },
+      { lbl:'Honesty about the suspected cancer pathway',   txt:'"With your history of smoking and these features, I want to be straight: I\'m going to arrange an urgent X-ray to rule out anything sinister. Most people on this pathway get the all-clear, but it would be wrong of me not to do it properly."' },
       { lbl:'Smoking',             txt:'"You\'ve quit before for four months — that means you can. When you\'re ready, the stop-smoking team has more in the locker now than they did three years ago."' },
       { lbl:'Safety-net',          txt:'"If you cough up more than a streak of blood, get suddenly breathless, or develop chest pain — A&E, not the surgery."' },
     ],
-    learning:'The marking trapdoor here is the patient asking for antibiotics — accepting the framing makes you miss the 2WW. The single highest-yield behaviour is slowing down on the throwaway phrase ("a streak of blood") and naming the worry explicitly. NICE NG12: ≥40 y/o smoker with unexplained cough → urgent CXR.'
+    learning:'The marking trapdoor here is the patient asking for antibiotics — accepting the framing makes you miss the suspected cancer pathway referral. The single highest-yield behaviour is slowing down on the throwaway phrase ("a streak of blood") and naming the worry explicitly. NICE NG12: ≥40 y/o smoker with unexplained cough → urgent CXR.'
   },
 
   /* ============= 8. VIDEO — T2DM insulin uptitration with Ramadan ============= */

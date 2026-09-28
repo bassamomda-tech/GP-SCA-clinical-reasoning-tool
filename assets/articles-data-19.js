@@ -50,7 +50,7 @@
       'CRUCIALLY: if "mastitis" does not respond to treatment, refer to exclude inflammatory breast cancer'],
     referral:[
       'Suspected breast abscess (fluctuant, localised swelling) → urgent breast/surgical assessment for ultrasound and drainage',
-      'Mastitis not responding to antibiotics, or any suspicion of inflammatory breast cancer → urgent breast (2WW) referral (NICE NG12 (updated April 2026))',
+      'Mastitis not responding to antibiotics, or any suspicion of inflammatory breast cancer → breast suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Severe systemic illness/sepsis → admission',
       'Recurrent or non-lactational mastitis → breast clinic'],
     source:'BNF (flucloxacillin) / Academy of Breastfeeding Medicine Protocol 36 (2022, international) / NICE NG12 (updated April 2026)' },
@@ -99,7 +99,7 @@
       'Examine the whole skin and regional lymph nodes when assessing a suspicious lesion',
       'Safety-net clearly: any further change in a monitored lesion warrants re-review/referral'],
     referral:[
-      'Suspicious pigmented lesion (7-point checklist score ≥3, or any concerning change/ABCDE feature) → urgent suspected melanoma (2WW) referral (NICE NG12 (updated April 2026))',
+      'Suspicious pigmented lesion (7-point checklist score ≥3, or any concerning change/ABCDE feature) → suspected cancer pathway referral for melanoma (NICE NG12 (updated April 2026))',
       'A new pigmented nail streak or Hutchinson’s sign, or a non-healing/atypical lesion → urgent skin-cancer referral',
       'Higher-risk patients (atypical mole syndrome, prior melanoma, family history) → dermatology surveillance',
       'Diagnostic uncertainty → dermatology'],
@@ -149,7 +149,7 @@
       'Manage treatment effects and survivorship (e.g. dry mouth, swallowing, nutrition, dental care)',
       'Provide information and psychological support'],
     referral:[
-      'Unexplained oral ulceration lasting >3 weeks, or a persistent unexplained neck lump → suspected head-and-neck cancer pathway (2WW) referral; a persistent red or red-and-white patch, or a lump in the oral cavity → urgent dental assessment within 2 weeks, the dentist referring on the suspected cancer pathway (NICE NG12 (updated April 2026))',
+      'Unexplained oral ulceration lasting >3 weeks, or a persistent unexplained neck lump → suspected cancer pathway referral for head and neck cancer; a persistent red or red-and-white patch, or a lump in the oral cavity → urgent dental assessment within 2 weeks, the dentist referring on the suspected cancer pathway (NICE NG12 (updated April 2026))',
       'A persistent unexplained lump on the lip or in the mouth → urgent dental assessment within 2 weeks (dentist refers on the suspected cancer pathway if it is consistent with oral cancer) (NICE NG12 (updated April 2026))',
       'Persistent unexplained hoarseness at age 45 or over → consider a suspected laryngeal cancer pathway referral (NICE NG12 (updated April 2026)); a persistent sore throat, especially in a smoker/drinker, warrants ENT assessment',
       'Confirmed cancer → head-and-neck MDT'],
@@ -174,7 +174,7 @@
       'Provide written advice and safety-netting on the 3-week rule',
       'Refer severe/refractory recurrent ulceration for specialist (oral medicine) assessment'],
     referral:[
-      'Any unexplained oral ulceration lasting >3 weeks → urgent suspected head-and-neck cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Any unexplained oral ulceration lasting >3 weeks → suspected cancer pathway referral for head and neck cancer (NICE NG12 (updated April 2026))',
       'Severe/refractory recurrent aphthous ulceration → oral medicine',
       'Suspected systemic cause (Behçet’s, IBD, coeliac, immunodeficiency) → relevant specialty',
       'Suspected herpetic/other infective cause needing treatment → manage accordingly'],

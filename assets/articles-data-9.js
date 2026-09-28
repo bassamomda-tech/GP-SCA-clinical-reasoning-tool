@@ -94,7 +94,7 @@
       'Refer urgently to the early pregnancy assessment unit (EPAU)/gynaecology for assessment with ultrasound and hCG',
       'Suspected ruptured ectopic or haemodynamic instability → 999/emergency admission for resuscitation and surgery — do not delay',
       'Specialist management options depend on the clinical picture and hCG: expectant management, medical treatment with methotrexate, or surgery (usually laparoscopic salpingectomy/salpingotomy)',
-      'Give anti-D prophylaxis to rhesus-negative women per guidance where indicated (e.g. surgical management)',
+      'Anti-D prophylaxis, RhD-negative: no anti-D up to 11+6 weeks (NICE NG126); at 12+0–12+6 weeks offer it with medical or surgical management and consider it for heavy or recurrent bleeding',
       'Provide clear safety-netting for any woman with a pregnancy of unknown location: return immediately for increasing pain, shoulder-tip pain, dizziness or collapse',
       'Offer emotional support — an ectopic is a pregnancy loss as well as an emergency',
       'Counsel on future pregnancy (most go on to have a normal pregnancy) and early scanning next time'],

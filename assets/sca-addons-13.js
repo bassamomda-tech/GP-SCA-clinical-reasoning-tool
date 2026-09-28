@@ -1022,7 +1022,7 @@
    "reason": "“These headaches are destroying me — painkillers do nothing.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, last updated 2025) · [2] BNF sumatriptan and verapamil monographs · [3] NICE NG225 (self-harm: assessment, management and preventing recurrence, 2022) · [4] International Classification of Headache Disorders, 3rd edition (International Headache Society, 2018) (international)",
+   "guideline": "[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated June 2025) · [2] BNF sumatriptan and verapamil monographs · [3] NICE NG225 (self-harm: assessment, management and preventing recurrence, 2022) · [4] International Classification of Headache Disorders, 3rd edition (International Headache Society, 2018) (international)",
    "summary": "Strictly one-sided, severe pain around the eye lasting about an hour, at the same time each night for two weeks, with a red watering eye, a runny nostril on the same side and pacing restlessness, is cluster headache. Name it, explain why tablets fail, and give the acute plan NICE CG150 sets out: high-flow oxygen and/or a subcutaneous or nasal triptan. Consider verapamil for prevention with specialist advice and ECG monitoring, screen red flags and mood, and deal with the smoking and home-oxygen safety issue.",
    "points": [
     {
@@ -6605,7 +6605,7 @@
    "reason": "Booked appointment: “Something I’ve been struggling with for a long time. Hard to explain.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG31 Obsessive-compulsive disorder and body dysmorphic disorder: treatment (2005) · [2] NICE NG222 Depression in adults: treatment and management (2022) · [3] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [4] BNF: selective serotonin re-uptake inhibitors · [5] MHRA: SSRIs and SNRIs, use and safety",
+   "guideline": "[1] NICE CG31 Obsessive-compulsive disorder and body dysmorphic disorder: treatment (2005) · [2] NICE NG222 Depression in adults: treatment and management (2022, updated December 2025) · [3] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [4] BNF: selective serotonin re-uptake inhibitors · [5] MHRA: SSRIs and SNRIs, use and safety",
    "summary": "Intrusive contamination and harm thoughts that drive hours of hand-washing and lock checking, which she knows are excessive and has hidden for years, is obsessive-compulsive disorder. The GP’s job is to name it without judgement, gauge the functional impairment (which sets the NICE CG31 treatment step), screen for depression and suicidal thoughts, reassure that intrusive thoughts are symptoms rather than intentions, and offer CBT including exposure and response prevention (ERP) and/or an SSRI with a clear review plan.",
    "points": [
     {
@@ -8616,7 +8616,7 @@
    "reason": "Booked appointment: “My moods before my period are wrecking my life.”"
   },
   "knowledge": {
-   "guideline": "[1] RCOG Green-top Guideline No. 48 Management of premenstrual syndrome (December 2016; BJOG 2017) · [2] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [3] NICE NG222 Depression in adults: treatment and management (2022) · [4] UKMEC 2025 (FSRH/CoSRH) · [5] BNF: selective serotonin re-uptake inhibitors · [6] DSM-5-TR (APA 2022) (international)",
+   "guideline": "[1] RCOG Green-top Guideline No. 48 Management of premenstrual syndrome (December 2016; BJOG 2017) · [2] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [3] NICE NG222 Depression in adults: treatment and management (2022, updated December 2025) · [4] UKMEC 2025 (FSRH/CoSRH) · [5] BNF: selective serotonin re-uptake inhibitors · [6] DSM-5-TR (APA 2022) (international)",
    "summary": "Severe rage, despair and tearfulness in the week or two before each period, which lift within days of bleeding, with a symptom-free week and damage to relationships, is premenstrual dysphoric disorder (PMDD), the severe end of premenstrual syndrome. The GP should believe her, confirm the cyclical pattern prospectively, rule out a persistent mood disorder, ask directly about suicidal thoughts, and offer RCOG first-line options including an SSRI (continuous or luteal phase) or a new-generation combined pill.",
    "points": [
     {
@@ -9100,19 +9100,19 @@
    "name": "Nadia Karim",
    "age": "34-year-old woman",
    "pmh": [
-    "No relevant history recorded",
-    "New medicine started 1–2 weeks ago (check the record for the drug and why it was started)"
+    "Epilepsy",
+    "Lamotrigine started about ten days ago for epilepsy (the suspected culprit)"
    ],
    "meds": [
-    "Recently started medicine — name from the record or the packet"
+    "Lamotrigine — started about ten days ago for epilepsy"
    ],
    "allergy": "None recorded before this episode",
-   "recent": "About ten days after starting a new tablet: spreading painful rash with blisters and peeling skin, painful mouth sores, red sore eyes, pain passing urine, fever and malaise.",
+   "recent": "About ten days after starting lamotrigine for epilepsy: spreading painful rash with blisters and peeling skin, painful mouth sores, red sore eyes, pain passing urine, fever and malaise.",
    "reason": "Urgent video call: “Is this the tablet?”"
   },
   "knowledge": {
    "guideline": "[1] UK guidelines for the management of Stevens–Johnson syndrome/toxic epidermal necrolysis in adults (British Association of Dermatologists, 2016) · [2] NICE NG253 (suspected sepsis in people aged 16 and over) · [3] MHRA Yellow Card scheme · [4] BNF monographs of the suspected drug (for example lamotrigine, carbamazepine, allopurinol, co-trimoxazole)",
-   "summary": "A painful spreading rash with dusky target-like patches, blisters and peeling skin, erosions of the mouth, eyes and genitals, and fever, about ten days after a new drug, is Stevens–Johnson syndrome or toxic epidermal necrolysis until proven otherwise. Stop the drug, send her to hospital by 999 ambulance with a call ahead, document a severe allergy, and report it on a Yellow Card.",
+   "summary": "A painful spreading rash with dusky target-like patches, blisters and peeling skin, erosions of the mouth, eyes and genitals, and fever, about ten days after a new drug (here lamotrigine, started for epilepsy), is Stevens–Johnson syndrome or toxic epidermal necrolysis until proven otherwise. Stop the drug, send her to hospital by 999 ambulance with a call ahead, document a severe allergy, and report it on a Yellow Card.",
    "points": [
     {
      "h": "Recognise it",
@@ -9207,7 +9207,7 @@
    },
    {
     "who": "pt",
-    "text": "About ten days ago. Nothing else new that I can think of."
+    "text": "It’s lamotrigine, for my epilepsy — I started it about ten days ago. Nothing else new that I can think of."
    },
    {
     "who": "dr",
@@ -9245,17 +9245,17 @@
     "phase": "Immediate management",
     "clock": "6–10 min",
     "who": "dr",
-    "text": "Three things. First, don’t take any more of that tablet — not even tonight’s dose. Put the box in your bag to take with you.",
+    "text": "Three things. First, don’t take any more of the lamotrigine — not even tonight’s dose. Put the box in your bag to take with you.",
     "dom": "tasks",
     "why": "Stops the culprit drug immediately"
    },
    {
     "who": "pt",
-    "text": "But the doctor started it for a reason."
+    "text": "But it’s for my epilepsy. What if I have a fit?"
    },
    {
     "who": "dr",
-    "text": "I know, and the hospital will look after whatever it was treating — they can give a safe alternative if needed. Right now the reaction is the bigger danger. Second, I’m calling an ambulance for you now, rather than you getting there yourself. Please don’t drive.",
+    "text": "I know, and the hospital will look after your epilepsy today — they will give you safe seizure cover and an alternative if needed. Right now the reaction is the bigger danger. Second, I’m calling an ambulance for you now, rather than you getting there yourself. Please don’t drive.",
     "dom": "tasks",
     "why": "Explains stopping safely; 999 ambulance"
    },
@@ -9275,7 +9275,7 @@
    },
    {
     "who": "dr",
-    "text": "Good. Third, I’m recording this tablet on your notes as a serious reaction, so it’s never prescribed again, and I’ll report it to the medicines regulator on a Yellow Card. You should never take it again.",
+    "text": "Good. Third, I’m recording lamotrigine on your notes as a serious reaction, so it’s never prescribed again, and I’ll report it to the medicines regulator on a Yellow Card. You should never take it again.",
     "dom": "tasks",
     "why": "Documents a severe allergy and reports via Yellow Card"
    },
@@ -9354,7 +9354,7 @@
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Explained that the condition the drug treated will be covered in hospital; severe allergy recorded with alert; Yellow Card report.",
+    "d": "Explained that her epilepsy will be covered in hospital (safe seizure cover); severe allergy recorded with alert; Yellow Card report.",
     "pts": 1
    },
    {
@@ -9372,10 +9372,10 @@
     "name": "Nadia Karim",
     "age": "34 years · female",
     "pmh": [
-     "New drug 1–2 weeks ago"
+     "Epilepsy; lamotrigine started about ten days ago"
     ],
     "meds": [
-     "Recently started tablet — see record"
+     "Lamotrigine (started about ten days ago; suspected culprit)"
     ],
     "allergy": "None recorded before this",
     "recent": "⚠ Spreading painful blistering rash, skin peeling, mouth, eye and genital soreness, fever.",

@@ -178,11 +178,11 @@ MedChooser.register('allergic-rhinitis', {
       examples:'Xylometazoline',
       step:'Avoid (rebound)',
       source:'BNF',
-      sideEffects:'Rhinitis medicamentosa (rebound congestion) with >5–7 days use',
-      monitor:'Max 5–7 days if ever used',
+      sideEffects:'Rhinitis medicamentosa (rebound congestion) with >5 consecutive days use',
+      monitor:'Max 5 consecutive days if ever used (MHRA 2026)',
       counsel:'"Decongestant sprays work fast but cause rebound blockage if used for more than 5 days in a row, so we avoid them as a regular treatment."',
       detail:{
-        'Key teaching': 'Avoid for ongoing management — limit to ≤5–7 days if ever used (e.g. to allow INCS penetration).'
+        'Key teaching': 'Avoid for ongoing management — limit to ≤5 consecutive days if ever used (e.g. to allow INCS penetration).'
       },
       evaluate(f){
         return { tier:'avoid', reasons:[{kind:'bad', text:'Not for ongoing use — rebound congestion (rhinitis medicamentosa)'}] };

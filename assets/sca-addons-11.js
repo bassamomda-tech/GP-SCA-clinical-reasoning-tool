@@ -25,7 +25,7 @@
    "reason": "Video consultation: “My sperm test came back abnormal. Is it my fault, and does it mean we’ll never have kids?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG257 Fertility problems: assessment and treatment (March 2026) · [2] NICE QS73 Fertility problems (2014) · [3] NICE NG12 (updated April 2026) Suspected cancer: recognition and referral (updated April 2026) · [4] HFEA Code of Practice (counselling in licensed clinics)",
+   "guideline": "[1] NICE NG257 Fertility problems: assessment and treatment (March 2026) · [2] NICE QS73 Fertility problems (2014, updated March 2026) · [3] NICE NG12 (updated April 2026) Suspected cancer: recognition and referral (updated April 2026) · [4] HFEA Code of Practice (counselling in licensed clinics)",
    "summary": "One abnormal semen analysis is a starting point, not a verdict. Repeat it (ideally at 3 months, sooner if the deficiency is gross), look for modifiable factors, examine the testes face to face, and refer the couple together after a year of trying. Take the self-blame seriously.",
    "points": [
     {
@@ -3038,7 +3038,7 @@
    "reason": "Telephone call: “Could you call me in some steroids and antibiotics so I don’t have to come down?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019) · [2] NICE NG158 (venous thromboembolic diseases, 2020, updated August 2023) · [3] NICE NG114 (COPD exacerbation: antimicrobial prescribing, 2018) · [4] NICE NG106 (chronic heart failure, 2018) · [5] NICE CG191 (pneumonia in adults, 2014) · [6] NICE NG12 (updated April 2026) · [7] GMC Good practice in prescribing and managing medicines and devices (2021)",
+   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019) · [2] NICE NG158 (venous thromboembolic diseases, 2020, updated August 2023) · [3] NICE NG114 (COPD exacerbation: antimicrobial prescribing, 2018) · [4] NICE NG106 (chronic heart failure, 2018, updated September 2025) · [5] NICE NG250 (pneumonia, September 2025; partly replaced CG191) · [6] NICE NG12 (updated April 2026) · [7] GMC Good practice in prescribing and managing medicines and devices (2021)",
    "summary": "More breathlessness in known COPD is not automatically a flare. Ask the questions that separate an infective exacerbation from PE, heart failure, pneumonia and pneumothorax. Sudden onset, pleuritic pain and a swollen calf after a long journey is a PE picture: same-day hospital assessment, not a phoned-in prescription.",
    "points": [
     {
@@ -3051,7 +3051,7 @@
     },
     {
      "h": "The other mimics",
-     "t": "Heart failure: orthopnoea, paroxysmal nocturnal breathlessness, ankle swelling, weight gain (NICE NG106 [4]). Pneumonia: fever, new focal or pleuritic pain, confusion; CRB65 guides severity in primary care (NICE CG191 [5]). Pneumothorax: sudden one-sided pain and breathlessness. Arrhythmia: palpitations, dizziness."
+     "t": "Heart failure: orthopnoea, paroxysmal nocturnal breathlessness, ankle swelling, weight gain (NICE NG106 [4]). Pneumonia: fever, new focal or pleuritic pain, confusion; CRB65 guides severity in primary care (NICE NG250 [5]). Pneumothorax: sudden one-sided pain and breathlessness. Arrhythmia: palpitations, dizziness."
     },
     {
      "h": "Limits of the telephone",
@@ -3540,7 +3540,7 @@
    "reason": "Video consultation: double vision on and off for a few weeks, and a recent few days of blurred, aching vision in the left eye."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG220 (multiple sclerosis in adults, 2022) · [2] NICE NG12 (updated April 2026) · [3] Association of British Neurologists myasthenia gravis management guidelines (2015, updated 2025) · [4] DVLA Assessing fitness to drive (visual disorders: diplopia) · [5] NICE NG228 (subarachnoid haemorrhage, 2022)",
+   "guideline": "[1] NICE NG220 (multiple sclerosis in adults, 2022, updated August 2026) · [2] NICE NG12 (updated April 2026) · [3] Association of British Neurologists myasthenia gravis management guidelines (2015, updated 2025) · [4] DVLA Assessing fitness to drive (visual disorders: diplopia) · [5] NICE NG228 (subarachnoid haemorrhage, 2022)",
    "summary": "Recurrent binocular double vision in a young woman, with a recent painful blurred-vision episode in one eye, is neurological until proved otherwise. Split monocular from binocular, screen for optic neuritis, fatigable weakness and red flags, get her examined in person today, and refer with the right urgency.",
    "points": [
     {
@@ -4566,7 +4566,7 @@
    "reason": "Video consultation: “I’ve restarted my tablets. I can keep driving, can’t I? I need my car for work.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG217 (epilepsies in children, young people and adults, 2022, updated) · [2] DVLA Assessing fitness to drive: neurological disorders (epilepsy and seizures) and leaflet INS9 · [3] GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA or DVA (2017)",
+   "guideline": "[1] NICE NG217 (epilepsies in children, young people and adults, 2022, updated August 2026) · [2] DVLA Assessing fitness to drive: neurological disorders (epilepsy and seizures) and leaflet INS9 · [3] GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA or DVA (2017)",
    "summary": "A breakthrough seizure in established epilepsy means he must stop driving now and tell the DVLA, whatever his tablets are doing. Explore why the doses were missed without blame, fix the supply problem, review control and safety, and support him through the loss of driving.",
    "points": [
     {
@@ -5073,7 +5073,7 @@
    "reason": "Video consultation: “I’m pregnant and I’m on sodium valproate. Should I stop it right now?”"
   },
   "knowledge": {
-   "guideline": "[1] MHRA National Patient Safety Alert NatPSA/2023/013/MHRA (November 2023) and MHRA Drug Safety Update (January 2024): valproate new safety measures · [2] MHRA Drug Safety Update (September 2024): valproate use in men · [3] MHRA Valproate Pregnancy Prevention Programme (Prevent) · [4] NICE NG217 (epilepsies, 2022, updated) · [5] NICE NG247 (maternal and child nutrition, 2025) · [6] BNF sodium valproate",
+   "guideline": "[1] MHRA National Patient Safety Alert NatPSA/2023/013/MHRA (November 2023) and MHRA Drug Safety Update (January 2024): valproate new safety measures · [2] MHRA Drug Safety Update (September 2024): valproate use in men · [3] MHRA Valproate Pregnancy Prevention Programme (Prevent) · [4] NICE NG217 (epilepsies, 2022, updated August 2026) · [5] NICE NG247 (maternal and child nutrition, 2025) · [6] BNF sodium valproate",
    "summary": "A woman on valproate with a positive pregnancy test needs three things today: do not stop the valproate suddenly, start folic acid 5 mg daily, and an urgent referral to the epilepsy specialist team and the obstetric team. Give honest risk information, respect her choices about the pregnancy, and find out why the Pregnancy Prevention Programme did not prevent this.",
    "points": [
     {
@@ -9590,7 +9590,7 @@
    "reason": "Video consultation: “I’m knackered and my gym mate says it’s low testosterone. Can I just get a T boost?”"
   },
   "knowledge": {
-   "guideline": "[1] BSSM guideline on adult testosterone deficiency (Hackett et al., World J Mens Health 2023) · [2] NICE NG202 Obstructive sleep apnoea hypopnoea syndrome and obesity hypoventilation syndrome in over 16s (2021) · [3] NICE NG222 Depression in adults (2022) · [4] NICE PH52 Needle and syringe programmes (2014) · [5] BNF testosterone monographs",
+   "guideline": "[1] BSSM guideline on adult testosterone deficiency (Hackett et al., World J Mens Health 2023) · [2] NICE NG202 Obstructive sleep apnoea hypopnoea syndrome and obesity hypoventilation syndrome in over 16s (2021) · [3] NICE NG222 Depression in adults (2022, updated December 2025) · [4] NICE PH52 Needle and syringe programmes (2014) · [5] BNF testosterone monographs",
    "summary": "Tiredness with low libido in a fit 32-year-old is usually sleep, mood, stress, alcohol, overtraining or a common blood abnormality. Work it up like any tiredness. Test testosterone only when symptoms suggest it, and then properly. Be clear that testosterone is not a tonic and can cause infertility.",
    "points": [
     {

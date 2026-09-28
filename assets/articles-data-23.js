@@ -28,7 +28,7 @@
       'Significant comorbidity or risk → mental-health services',
       'Needle phobia preventing essential treatment → psychological support (applied tension/desensitisation)',
       'Children and young people with disabling phobias → CAMHS'],
-    source:'NICE CG159 (Social anxiety disorder) / NICE CG113 (panic disorder with agoraphobia) / NICE CG123 (Common mental health problems)' },
+    source:'NICE CG159 (Social anxiety disorder) / NICE CG113 (panic disorder with agoraphobia) / NICE CG123 (Common mental health problems; withdrawn May 2024)' },
 
   { id:'pityriasis-versicolor', title:'Pityriasis versicolor', category:'Dermatology', icon:'🟤',
     overview:'A common, benign superficial skin infection caused by overgrowth of commensal Malassezia yeast, producing scaly patches of altered pigmentation, usually on the trunk. It is harmless and not contagious; recurrence is common. The main task is correct recognition and explaining the slow recovery of skin colour.',
@@ -126,9 +126,9 @@
     referral:[
       'High CRB-65, hypoxia, sepsis, or inability to manage at home → hospital admission',
       'Suspected empyema/parapneumonic effusion or non-resolving pneumonia → respiratory',
-      'Cough/symptoms not resolving, or with weight loss (especially smoker/ex-smoker ≥40) → urgent chest X-ray within 2 weeks; unexplained haemoptysis at 40+, or chest X-ray findings suggesting lung cancer → suspected lung-cancer pathway (2WW) referral (NICE NG12 (updated April 2026))',
+      'Cough/symptoms not resolving, or with weight loss (especially smoker/ex-smoker ≥40) → urgent chest X-ray within 2 weeks; unexplained haemoptysis at 40+, or chest X-ray findings suggesting lung cancer → suspected cancer pathway referral for lung cancer (NICE NG12 (updated April 2026))',
       'Recurrent pneumonia (especially same site) → respiratory (exclude obstruction/malignancy)'],
-    source:'NICE NG250 (Pneumonia, 2025; replaced NG138/CG191) / NICE NG12 (updated April 2026)' },
+    source:'NICE NG250 (Pneumonia, 2025; replaced NG138, partly replaced CG191) / NICE NG12 (updated April 2026)' },
 
   { id:'pneumothorax', title:'Pneumothorax (collapsed lung)', category:'Respiratory', icon:'🫁',
     overview:'Air in the pleural space causing the lung to collapse. It ranges from a small spontaneous pneumothorax in a young, otherwise well person to a life-threatening tension pneumothorax. The cardinal presentation is sudden pleuritic chest pain with breathlessness, and the must-not-miss is tension pneumothorax — a clinical emergency.',

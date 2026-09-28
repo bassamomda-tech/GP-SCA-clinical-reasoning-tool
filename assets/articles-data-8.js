@@ -349,7 +349,7 @@
       'Biopsy or refer a persistent solitary scaly plaque (especially on the lower leg in an older person) to exclude Bowen’s disease/skin cancer',
       'Provide an eczema self-care plan and review response'],
     referral:[
-      'Diagnostic uncertainty, or a persistent solitary scaly plaque (possible Bowen’s/skin cancer) → dermatology (2WW if malignancy suspected — NICE NG12 (updated April 2026))',
+      'Diagnostic uncertainty, or a persistent solitary scaly plaque (possible Bowen’s/skin cancer) → dermatology (suspected cancer pathway referral if malignancy suspected — NICE NG12 (updated April 2026))',
       'Severe, widespread, or treatment-resistant disease → dermatology (phototherapy/systemic therapy)',
       'Recurrent secondary infection → review/treat',
       'Suspected tinea not responding → confirm with mycology'],

@@ -33,12 +33,12 @@
     ],
     followUp: 'Review at 4–8 weeks; step down. Annual review if on long-term PPI. Persistent/relapsing → consider OGD / H. pylori test.',
     redFlags: [
-      'Dysphagia, weight loss, GI bleeding/anaemia, persistent vomiting, epigastric mass, ≥55 with new dyspepsia → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway (2WW) upper GI referral (NICE NG12 (updated April 2026)).',
+      'Dysphagia, weight loss, GI bleeding/anaemia, persistent vomiting, epigastric mass, ≥55 with new dyspepsia → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → upper GI suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
     ],
     emisText: `GORD / uninvestigated dyspepsia (no alarm features):
 - Lifestyle advice + Omeprazole 20 mg (or lansoprazole 30 mg) OD × 4–8 weeks; take before breakfast. OR test-and-treat H. pylori.
 - Alginate PRN. Step down to lowest effective dose / PRN.
-Safety-net/urgent assessment: dysphagia, weight loss, GI bleed, vomiting, ≥55 new dyspepsia; suspected cancer pathway (2WW) if dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia (NICE NG12 (updated April 2026)). Review long-term PPI annually.`,
+Safety-net/urgent assessment: dysphagia, weight loss, GI bleed, vomiting, ≥55 new dyspepsia; suspected cancer pathway referral if dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia (NICE NG12 (updated April 2026)). Review long-term PPI annually.`,
     sources: [
       { label: 'NICE CG184 — Dyspepsia & GORD', url: 'https://www.nice.org.uk/guidance/cg184' },
       { label:'NICE CG184 — GORD and dyspepsia', url:'https://www.nice.org.uk/guidance/cg184' },
@@ -73,14 +73,14 @@ Safety-net/urgent assessment: dysphagia, weight loss, GI bleed, vomiting, ≥55 
     ],
     followUp: 'Review response; taper laxatives gradually once regular. Persistent or new change in bowel habit, or red flags → FIT and investigate.',
     redFlags: [
-      'New change in bowel habit, rectal bleeding, weight loss or iron-deficiency anaemia → FIT (NICE NG12 (updated April 2026); NICE HTG690), suspected cancer pathway (2WW) if ≥10 µg Hb/g; rectal mass → direct 2WW; abdominal mass → FIT and assess.',
+      'New change in bowel habit, rectal bleeding, weight loss or iron-deficiency anaemia → FIT (NICE NG12 (updated April 2026); NICE HTG690), suspected cancer pathway referral if ≥10 µg Hb/g; rectal mass → direct suspected cancer pathway referral; abdominal mass → FIT and assess.',
       'Vomiting + distension + no flatus → obstruction (admit).',
     ],
     emisText: `Constipation (no red flags):
 - Lifestyle: fibre, fluids, activity.
 - Laxative ladder: Ispaghula (Fybogel) 1 sachet BD → Macrogol (Movicol) 1–3 sachets/day (titrate) → add Senna 7.5–15 mg ON.
 - Opioid-induced: avoid bulk-forming; macrogol + senna.
-Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change in habit, bleeding, weight loss, mass, IDA; FIT ≥10 µg Hb/g or rectal mass → 2WW. Taper once regular.`,
+Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change in habit, bleeding, weight loss, mass, IDA; FIT ≥10 µg Hb/g or rectal mass → suspected cancer pathway referral. Taper once regular.`,
     sources: [
       { label:'BNF', url:'https://bnf.nice.org.uk' },
     ],
@@ -145,7 +145,7 @@ Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change i
     ],
     followUp: 'Review if not settling or recurrent → consider outpatient procedures. Ensure colorectal cancer excluded where indicated.',
     redFlags: [
-      'Rectal bleeding ≥50 (or <50 with abdominal pain or weight loss), change in bowel habit, weight loss with abdominal pain (≥40), iron-deficiency anaemia, abdominal mass → FIT first (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56); FIT ≥10 µg Hb/g → suspected cancer pathway (2WW) colorectal referral. Rectal mass or unexplained anal mass/ulceration → direct suspected cancer pathway referral.',
+      'Rectal bleeding ≥50 (or <50 with abdominal pain or weight loss), change in bowel habit, weight loss with abdominal pain (≥40), iron-deficiency anaemia, abdominal mass → FIT first (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56); FIT ≥10 µg Hb/g → colorectal suspected cancer pathway referral. Rectal mass or unexplained anal mass/ulceration → direct suspected cancer pathway referral.',
       'Severe pain + irreducible prolapse / strangulation → urgent surgical.',
     ],
     emisText: `Haemorrhoids (after excluding sinister causes):
@@ -153,7 +153,7 @@ Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change i
 - Bulk-forming laxative (ispaghula BD) to soften stool.
 - Short-term topical soothing ± steroid/local-anaesthetic (e.g. Anusol-HC) BD ≤7 days.
 - Persistent/large → banding/surgery referral.
-Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): bleeding ≥50, change in habit, weight loss, IDA, abdominal mass; FIT ≥10 µg Hb/g, rectal or anal mass → 2WW.`,
+Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): bleeding ≥50, change in habit, weight loss, IDA, abdominal mass; FIT ≥10 µg Hb/g, rectal or anal mass → suspected cancer pathway referral.`,
     sources: [
       { label:'BNF', url:'https://bnf.nice.org.uk' },
     ],
@@ -225,7 +225,7 @@ Safety-net: dehydration, bloody diarrhoea + fever → urgent.`,
     ],
     followUp: 'Review response to symptom-directed therapy; consider tricyclic if persistent pain. Reassess diagnosis if new red-flag features.',
     redFlags: [
-      'Weight loss, rectal bleeding, nocturnal symptoms, anaemia, FH bowel/ovarian cancer, age ≥60 change in habit → investigate: FIT first (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56); FIT ≥10 µg Hb/g → suspected cancer pathway (2WW) colorectal referral.',
+      'Weight loss, rectal bleeding, nocturnal symptoms, anaemia, FH bowel/ovarian cancer, age ≥60 change in habit → investigate: FIT first (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56); FIT ≥10 µg Hb/g → colorectal suspected cancer pathway referral.',
       'Raised calprotectin → exclude IBD (NICE HTG320, formerly DG11).',
     ],
     emisText: `IBS (positive diagnosis, red flags excluded):
@@ -271,7 +271,7 @@ Safety-net: weight loss, bleeding, nocturnal/anaemia, ≥60 change in habit → 
 - 1st line: LNG-IUS (Mirena). Check FBC/ferritin, treat iron deficiency.
 - Non-hormonal during periods: Tranexamic acid 1 g TDS (no dysmenorrhoea) OR Mefenamic acid 500 mg TDS (if pain).
 - Alternatives: CHC or norethisterone 5 mg TDS days 5–26.
-Safety-net/2WW: PMB, persistent IMB/PCB, ≥45 treatment failure → gynae + TV USS.`,
+Safety-net/suspected cancer pathway referral: PMB, persistent IMB/PCB, ≥45 treatment failure → gynae + TV USS.`,
     sources: [
       { label: 'NICE NG88 — Heavy menstrual bleeding', url: 'https://www.nice.org.uk/guidance/ng88' },
       { label:'NICE NG88 — Heavy menstrual bleeding', url:'https://www.nice.org.uk/guidance/ng88' },
@@ -342,7 +342,7 @@ Safety-net: pain between periods, deep dyspareunia, worsening → consider endom
     followUp: 'Review in 24–48 h if antibiotics started. Persistent lump after resolution → exclude abscess / (if non-lactational/older) breast pathology.',
     redFlags: [
       'Fluctuant mass → abscess (USS/drainage).',
-      'Non-lactational mastitis or persistent lump/skin change → consider inflammatory breast cancer (2WW if not resolving).',
+      'Non-lactational mastitis or persistent lump/skin change → consider inflammatory breast cancer (suspected cancer pathway referral if not resolving).',
     ],
     emisText: `Lactational mastitis:
 - CONTINUE breastfeeding/expressing (effective milk removal is key) + analgesia (paracetamol ± ibuprofen).

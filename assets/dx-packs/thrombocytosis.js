@@ -78,9 +78,9 @@
         patientPhrase: 'A bone-marrow condition can overproduce platelets. A specialist confirms it and reduces clotting risk.',
         guideUrl: '', redFlagAction: '\u26A1 Haematology + JAK2' },
       { id: 'occult_cancer', name: 'Occult malignancy', summary: 'Thrombocytosis + cancer symptom (NICE NG12 (updated April 2026))', baseline: 1, category: 'cant-miss',
-        keyExam: 'Site-directed exam.', nextIx: '\u26A1 Site-specific 2WW per NICE NG12 (updated April 2026) (lung/GI/gynae).',
+        keyExam: 'Site-directed exam.', nextIx: '\u26A1 Site-specific suspected cancer pathway referral per NICE NG12 (updated April 2026) (lung/GI/gynae).',
         patientPhrase: 'A raised platelet count with these symptoms can point to a hidden cancer, so we investigate quickly.',
-        guideUrl: '', redFlagAction: '\u26A1 Site-specific 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Site-specific suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 60 ? { occult_cancer: +3, et: +2 } : {},

@@ -199,7 +199,7 @@
       'Support lifestyle risk reduction: stop smoking, reduce alcohol and processed meat, maintain a healthy weight and be active',
       'Provide information, manage symptoms, and coordinate surveillance/follow-up after treatment'],
     referral:[
-      'NICE NG12 (updated April 2026) colorectal pathway: offer FIT for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, an abdominal mass, or anaemia at 60+ → 2WW if FIT ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT',
+      'NICE NG12 (updated April 2026) colorectal pathway: offer FIT for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, an abdominal mass, or anaemia at 60+ → suspected cancer pathway referral if FIT ≥10 µg Hb/g; a rectal mass → suspected cancer pathway referral without waiting for FIT',
       'Suspected bowel obstruction or significant GI bleeding → emergency admission',
       'Positive screening FIT → colonoscopy via the screening programme',
       'Suspected Lynch syndrome/FAP → clinical genetics'],
@@ -224,8 +224,8 @@
       'Manage treatment-related issues in primary care (e.g. menopausal symptoms on endocrine therapy, bone health, lymphoedema) and survivorship',
       'Provide information and psychological support throughout'],
     referral:[
-      'NICE NG12 (updated April 2026) 2WW breast pathway: refer people aged ≥30 with an unexplained breast lump (± pain); aged ≥50 with unilateral nipple changes (discharge, retraction, other concern); skin changes suggestive of breast cancer; and consider for an axillary lump',
-      'Aged <30 with an unexplained breast lump → non-urgent referral (consider 2WW if other concerning features)',
+      'NICE NG12 (updated April 2026) breast suspected cancer pathway: refer people aged ≥30 with an unexplained breast lump (± pain); aged ≥50 with unilateral nipple changes (discharge, retraction, other concern); skin changes suggestive of breast cancer; and consider for an axillary lump',
+      'Aged <30 with an unexplained breast lump → non-urgent referral (consider a suspected cancer pathway referral if other concerning features)',
       'Strong family history meeting criteria → familial breast-cancer/genetics service',
       'Confirmed cancer → breast MDT'],
     source:'NICE NG12 (updated April 2026) / NICE CG164 (familial breast cancer)' },

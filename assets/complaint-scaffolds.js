@@ -83,7 +83,7 @@
   add(['weight loss'],{
     hpc:'[X] history of unexplained weight loss ([X] kg over [X]). Appetite [X], intentional [no]. Associated [GI symptoms, dysphagia, bleeding, cough, night sweats, mood, thyroid symptoms]. Diet/social [X]. ICE: [X].',
     exam:'Weight/BMI [], pallor [], lymphadenopathy [none], thyroid [normal], abdomen [no mass/organomegaly], chest [clear]. [Examination targeted by associated features.]',
-    ix:'Bloods: FBC, ferritin, U&E, LFT, calcium, glucose/HbA1c, TFT, CRP/ESR, coeliac serology. Urinalysis. CXR. [Targeted imaging / 2WW referral by likely source — e.g. CA125 (age-specific thresholds per NICE NG12 (updated April 2026); not used alone under 40), FIT.]',
+    ix:'Bloods: FBC, ferritin, U&E, LFT, calcium, glucose/HbA1c, TFT, CRP/ESR, coeliac serology. Urinalysis. CXR. [Targeted imaging / suspected cancer pathway referral by likely source — e.g. CA125 (age-specific thresholds per NICE NG12 (updated April 2026); not used alone under 40), FIT.]',
     safetynet:'Return urgently if: difficulty swallowing, vomiting, blood in stool or urine, coughing up blood, or new lumps. This warrants prompt investigation; attend for arranged tests/referral without delay.'
   });
 
@@ -104,8 +104,8 @@
   add(['mole'],{
     hpc:'[X] history of a changing [pigmented] skin lesion. Changes: [size, shape, colour, itch, bleeding, crusting]. Site [X], duration [X]. Sun exposure/sunburn history, skin type, FH/PH skin cancer [X]. ICE: worried about [skin cancer].',
     exam:'Lesion site [X], [size] mm, [asymmetry, irregular border, colour variation, diameter >7mm, evolution]. 7-point weighted checklist score [X]. [Dermatoscopy if available.] Regional nodes [not enlarged]. [Photograph for record.]',
-    ix:'Clinical assessment ± dermoscopy using the weighted 7-point checklist; photograph for monitoring. Do not biopsy in primary care if melanoma suspected — refer 2WW.',
-    safetynet:'Return promptly if the lesion changes further — grows, changes colour or shape, itches, bleeds or crusts. If a 2-week-wait referral is made, please attend the appointment; it is to check the lesion quickly, not because cancer is confirmed.'
+    ix:'Clinical assessment ± dermoscopy using the weighted 7-point checklist; photograph for monitoring. Do not biopsy in primary care if melanoma suspected — refer on the suspected cancer pathway.',
+    safetynet:'Return promptly if the lesion changes further — grows, changes colour or shape, itches, bleeds or crusts. If a suspected cancer pathway referral is made (appointment within 2 weeks), please attend the appointment; it is to check the lesion quickly, not because cancer is confirmed.'
   });
 
   add(['joint pain'],{
@@ -125,28 +125,28 @@
   add(['haematuria'],{
     hpc:'[X] history of [visible/non-visible] blood in urine. Pain [none/loin/dysuria], clots [X], timing in stream [X]. Associated [LUTS, weight loss]. Smoking, occupational exposure, anticoagulation [X]. ICE: [X].',
     exam:'[Well]. BP [], abdomen [no mass], [no] loin tenderness. [PR — prostate if relevant.] Urine dip [confirms blood, X]. [Not menstruating.]',
-    ix:'Urine dip (confirm and exclude UTI) + MSU. [Bloods: FBC, U&E/eGFR; PSA in men if relevant.] BP. [Suspected cancer pathway (2WW) urology referral for imaging + cystoscopy per NICE NG12 (updated April 2026).]',
+    ix:'Urine dip (confirm and exclude UTI) + MSU. [Bloods: FBC, U&E/eGFR; PSA in men if relevant.] BP. [Urology suspected cancer pathway referral for imaging + cystoscopy per NICE NG12 (updated April 2026).]',
     safetynet:'Seek urgent help if: unable to pass urine, clots with severe pain, fever with loin pain, or feeling very unwell. Please attend any arranged urology appointment or scan promptly — visible blood in the urine always needs checking.'
   });
 
   add(['rectal bleeding'],{
     hpc:'[X] history of rectal bleeding — colour [bright red/dark], [on paper/in pan/mixed with stool], amount [X]. Associated [change in bowel habit, mucus, pain, weight loss, tenesmus]. PH/FH bowel disease/cancer [X]. ICE: [X].',
     exam:'[Well]. Abdomen [soft, no mass]. Anal inspection [X], PR [no mass, X], [no] blood on glove. [FIT/bloods as indicated.]',
-    ix:'DRE + abdominal examination. FIT test (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56 — FIT ≥10 µg Hb/g → suspected cancer pathway). [Bloods: FBC, ferritin for iron-deficiency anaemia.] [2WW colorectal referral if FIT ≥10 µg Hb/g, or rectal/anal mass or anal ulceration.]',
+    ix:'DRE + abdominal examination. FIT test (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56 — FIT ≥10 µg Hb/g → suspected cancer pathway). [Bloods: FBC, ferritin for iron-deficiency anaemia.] [Colorectal suspected cancer pathway referral if FIT ≥10 µg Hb/g, or rectal/anal mass or anal ulceration.]',
     safetynet:'Seek emergency help if: heavy bleeding, light-headedness or fainting, or black tarry stools. Return promptly if there is a persistent change in bowel habit, weight loss, or the bleeding continues — please attend any arranged tests or referral.'
   });
 
   add(['change in bowel habit'],{
     hpc:'[X] history of change in bowel habit [looser/more frequent/constipation], duration [X]. Associated [rectal bleeding, mucus, weight loss, abdominal pain, tenesmus, nocturnal symptoms]. Diet/travel/meds [X]. FH bowel cancer/IBD [X]. ICE: [X].',
     exam:'[Well]. BMI []. Abdomen [soft, no mass/organomegaly], PR [no mass]. Pallor [none]. [FIT / bloods (FBC, ferritin, coeliac) as indicated.]',
-    ix:'FIT test. Bloods: FBC, ferritin, U&E, LFT, coeliac serology, [CRP, TFT]. DRE. [Faecal calprotectin / stool culture if IBD or infection suspected.] [2WW if NICE NG12 (updated April 2026) criteria met (FIT ≥10 µg Hb/g).]',
+    ix:'FIT test. Bloods: FBC, ferritin, U&E, LFT, coeliac serology, [CRP, TFT]. DRE. [Faecal calprotectin / stool culture if IBD or infection suspected.] [Suspected cancer pathway referral if NICE NG12 (updated April 2026) criteria met (FIT ≥10 µg Hb/g).]',
     safetynet:'Return promptly if: rectal bleeding, unexplained weight loss, persistent change lasting more than [a few weeks], or you feel a lump in the tummy. Attend any arranged FIT test, bloods or referral. Seek urgent help if severe pain, vomiting, or unable to pass stool/wind.'
   });
 
   add(['dysphagia'],{
     hpc:'[X] history of difficulty swallowing — [solids/liquids/both], progressive [X], level [throat/chest]. Associated [weight loss, regurgitation, odynophagia, reflux, cough on swallowing, hoarseness]. ICE: [X].',
     exam:'[Well]. Weight/BMI []. Neck [no lump/lymphadenopathy]. Chest clear. [Neuro/cranial nerves if bulbar cause considered.]',
-    ix:'Refer on the suspected cancer pathway (2WW) for oesophageal or stomach cancer — dysphagia at any age (NICE NG12 (updated April 2026)). [FBC for anaemia.] Do not delay referral for tests.',
+    ix:'Refer on the suspected cancer pathway for oesophageal or stomach cancer — dysphagia at any age (NICE NG12 (updated April 2026)). [FBC for anaemia.] Do not delay referral for tests.',
     safetynet:'Difficulty swallowing needs prompt assessment — please attend the arranged urgent endoscopy/clinic. Seek emergency help if: food becomes completely stuck, you cannot swallow your own saliva, choking, or breathing difficulty.'
   });
 
@@ -181,29 +181,29 @@
   add(['breast lump'],{
     hpc:'[X] history of breast [lump/change]. Site [X], size/change [X], pain [X], relation to cycle, skin/nipple change [discharge/retraction], axillary lump [X]. Age [X], HRT/FH breast cancer [X]. ICE: worried about [cancer].',
     exam:'Breast [side] — lump at [position], [size] mm, [mobile/fixed], [skin/nipple change]. Axilla [no nodes]. [Other breast normal].',
-    ix:'None in primary care — refer to the breast clinic (2WW if ≥30 with an unexplained lump). Triple assessment (examination + imaging + biopsy) is done in clinic.',
+    ix:'None in primary care — refer to the breast clinic (suspected cancer pathway referral if ≥30 with an unexplained lump). Triple assessment (examination + imaging + biopsy) is done in clinic.',
     safetynet:'A breast lump needs checking — please attend the arranged breast clinic appointment. Most are not cancer, but it is important to be seen. Return sooner if the lump grows quickly, the skin changes, or you feel unwell.'
   });
 
   add(['neck lump'],{
     hpc:'[X] history of neck lump. Site [X], size/change [X], duration [X], pain [X]. Associated [B symptoms — fever, night sweats, weight loss; sore throat, dental, thyroid symptoms, hoarseness, dysphagia]. Smoking/alcohol [X]. ICE: [X].',
     exam:'Lump at [level], [size] mm, [consistency], [mobile/fixed/tethered], [tender]. Other nodes [X], thyroid [X]. ENT/oral cavity [X]. No stridor.',
-    ix:'USS neck (first-line). [Bloods: FBC, EBV serology, TFT if thyroid.] [2WW head & neck or suspected-haematological referral if persistent or B symptoms.]',
+    ix:'USS neck (first-line). [Bloods: FBC, EBV serology, TFT if thyroid.] [Head & neck or haematological suspected cancer pathway referral if persistent or B symptoms.]',
     safetynet:'Please attend any arranged urgent clinic/ultrasound. Seek urgent help if the lump grows rapidly, you develop difficulty breathing or swallowing, or drenching night sweats and weight loss. Return if a lump persists beyond [3 weeks].'
   });
 
   add(['hoarseness'],{
     hpc:'[X]-week history of hoarseness/voice change. Persistent [X], associated [neck lump, dysphagia, throat pain, reflux, cough, weight loss]. Smoking/alcohol [X], voice use [X]. ICE: [X].',
     exam:'Voice [hoarse]. Neck [no lump/lymphadenopathy]. Oral cavity/oropharynx [X]. No stridor or respiratory distress.',
-    ix:'Refer 2WW head & neck (persistent >3 weeks, age ≥45) for laryngoscopy. [CXR.] [Trial of reflux measures / voice hygiene if no red flags.]',
-    safetynet:'Hoarseness lasting over 3 weeks needs checking — please attend the arranged ENT/2-week-wait appointment. Seek urgent help if you develop difficulty breathing, noisy breathing, or a rapidly growing neck lump.'
+    ix:'Refer on the head & neck suspected cancer pathway (persistent >3 weeks, age ≥45) for laryngoscopy. [CXR.] [Trial of reflux measures / voice hygiene if no red flags.]',
+    safetynet:'Hoarseness lasting over 3 weeks needs checking — please attend the arranged ENT appointment (suspected cancer pathway). Seek urgent help if you develop difficulty breathing, noisy breathing, or a rapidly growing neck lump.'
   });
 
   add(['post-menopausal bleeding'],{
     hpc:'Postmenopausal bleeding — LMP [X] ([>12 months]). Bleeding [amount, duration, recurrence], associated [pain, discharge]. HRT [X], tamoxifen [X], risk factors [obesity, diabetes]. ICE: [X].',
     exam:'[Well]. Abdomen [soft, no mass]. [Speculum — cervix X; bimanual — uterus X.] BMI [].',
-    ix:'Refer 2WW gynaecology (aged 55 and over, not attributable to HRT — NICE NG12 (updated April 2026)) — transvaginal USS (endometrial thickness) ± hysteroscopy and biopsy in clinic. [FBC if heavy.]',
-    safetynet:'Postmenopausal bleeding always needs checking — please attend the arranged 2-week-wait gynaecology appointment. Most causes are not cancer, but it is important to be seen. Return sooner if heavy bleeding, pain or feeling unwell.'
+    ix:'Refer on the gynaecology suspected cancer pathway (aged 55 and over, not attributable to HRT — NICE NG12 (updated April 2026)) — transvaginal USS (endometrial thickness) ± hysteroscopy and biopsy in clinic. [FBC if heavy.]',
+    safetynet:'Postmenopausal bleeding always needs checking — please attend the arranged gynaecology appointment (suspected cancer pathway). Most causes are not cancer, but it is important to be seen. Return sooner if heavy bleeding, pain or feeling unwell.'
   });
 
   add(['pv bleeding'],{
@@ -230,14 +230,14 @@
   add(['lump','swelling','mass'],{
     hpc:'[X] history of a lump/swelling at [site]. Size/change [X], duration [X], pain [X], skin change [X], systemic [fever, weight loss, night sweats]. ICE: [X].',
     exam:'Lump at [site], [size] mm, [consistency], [mobile/fixed/deep], [tender], overlying skin [X], [fluctuant/pulsatile]. Regional nodes [X].',
-    ix:'Clinical assessment with measurement and photograph. [USS first-line for a soft-tissue lump.] [2WW sarcoma referral if deep, fixed, >5cm or rapidly growing.]',
+    ix:'Clinical assessment with measurement and photograph. [USS first-line for a soft-tissue lump.] [Sarcoma suspected cancer pathway referral if deep, fixed, >5cm or rapidly growing.]',
     safetynet:'Seek same-day help if the lump becomes hot, red, rapidly enlarging or very painful with fever (possible infection). Please attend any arranged scan/referral. Return if a lump persists, grows, or becomes fixed/hard.'
   });
 
   add(['testicular'],{
     hpc:'[X] history of [scrotal/testicular] pain or lump. Onset [sudden/gradual], side [X], severity [X], associated [swelling, nausea/vomiting, urinary symptoms, trauma]. Age [X]. ICE: [X].',
     exam:'[Well/distressed]. Scrotum — [side] [swollen/tender], lie [X], cremasteric reflex [X], [mass — separate from/part of testis], transillumination [X]. Abdomen [X].',
-    ix:'Urgent same-day assessment if torsion suspected — do NOT delay for imaging. [Urine dip if epididymo-orchitis.] [Urgent scrotal USS + urology 2WW for a painless lump.]',
+    ix:'Urgent same-day assessment if torsion suspected — do NOT delay for imaging. [Urine dip if epididymo-orchitis.] [Urgent scrotal USS + urology suspected cancer pathway referral for a painless lump.]',
     safetynet:'Call/attend same-day emergency care if: sudden severe testicular pain or swelling — this can be a twisted testicle (torsion) and needs surgery within hours. For a painless lump, please attend the arranged urgent ultrasound/urology appointment.'
   });
 

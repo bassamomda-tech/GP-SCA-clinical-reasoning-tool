@@ -5,7 +5,7 @@
 
   { id:'cap', title:'Community-acquired pneumonia', category:'Infections',
     eyebrow:'CRB-65 severity · amoxicillin 1st line',
-    indication:'Adult CAP diagnosed clinically (± CXR). Assess severity with CRB-65 and treat at the appropriate setting. Antibiotic choice and duration per NICE NG250 (2025; replaced NG138/CG191).',
+    indication:'Adult CAP diagnosed clinically (± CXR). Assess severity with CRB-65 and treat at the appropriate setting. Antibiotic choice and duration per NICE NG250 (2025; replaced NG138, partly replaced CG191).',
     contraindications:'CRB-65 is used with clinical judgement: 0 → usually home; 1 → primary care with safety-netting or other community options (virtual ward, SDEC, hospital at home) or hospital; ≥2 → consider hospital referral. Sepsis/cardiorespiratory failure → admit. Penicillin allergy → use alternative. Review at 48–72 h; lack of response → reassess/CXR/admit.',
     duration:'5 days (stop at 5 days if clinically stable; review if not improving)',
     drugs:[
@@ -30,7 +30,7 @@
 - Assess CRB-65 + clinical judgement (0: usually home; 1: primary care with safety-netting or community options; 2+: consider hospital). Low severity: amoxicillin 500 mg TDS 5d (pen-allergic: doxycycline 200 mg then 100 mg OD, or clarithromycin 500 mg BD, 5d).
 - Moderate: amoxicillin + macrolide if atypical suspected. Stop at 5 days if clinically stable.
 - High/sepsis \u2192 admit. Reassess 48-72 h; smoker/>50 \u2192 CXR ~6 wks.`,
-    sources:[{ label:'NICE NG250 \u2014 Pneumonia: diagnosis and management (2025; replaced NG138/CG191)', url:'https://www.nice.org.uk/guidance/ng250' }],
+    sources:[{ label:'NICE NG250 \u2014 Pneumonia: diagnosis and management (2025; replaced NG138, partly replaced CG191)', url:'https://www.nice.org.uk/guidance/ng250' }],
   },
 
   { id:'acute-cough-bronchitis', title:'Acute cough / acute bronchitis', category:'Infections',

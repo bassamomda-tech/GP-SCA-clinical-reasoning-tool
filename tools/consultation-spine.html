@@ -241,7 +241,7 @@
     { id:'plan', n:6, title:'Management & prescription', hint:'Rx',
       chips:['Conservative / self-care advice','Started:','Continued:','Stopped:','Analgesia ladder','Lifestyle measures'] },
     { id:'referral', n:7, title:'Referral', hint:'onward',
-      chips:['No referral needed','Routine referral','Urgent referral','2WW / urgent suspected cancer','Discussed with specialist'] },
+      chips:['No referral needed','Routine referral','Urgent referral','Suspected cancer pathway referral','Discussed with specialist'] },
     { id:'safetynet', n:8, title:'Safety-net', hint:'worsening advice',
       chips:['Return if symptoms worsen or persist','Seek urgent help if [red flag] develops','Call 999 if [emergency feature]','Review in [timeframe]','Worsening leaflet given','Clear verbal + written advice given'] },
     { id:'followup', n:9, title:'Follow-up', hint:'next step',
@@ -380,7 +380,7 @@
     let html='<button class="cs-chip cs-chip-all" data-rfall="1">+ Insert all</button>';
     html+=entry.flags.map(f=>`<button class="cs-chip ${f.level?('lv-'+f.level):''}" data-ins="${esc(f.text)}">${f.level==='emergency'?'🚨 ':f.level==='2ww'?'🟣 ':''}${esc(f.chip)}</button>`).join('');
     host.innerHTML=html;
-    if(hint) hint.textContent='Red flags for this complaint are pre-filled below as a screen — edit them, or tap a chip to add. 🚨 emergency · 🟣 2-week-wait.';
+    if(hint) hint.textContent='Red flags for this complaint are pre-filled below as a screen — edit them, or tap a chip to add. 🚨 emergency · 🟣 suspected cancer pathway.';
   }
   // re-run red-flag autofill when age changes (e.g. adult age removes a paediatric
   // match) — but never clobber the GP's own edits
@@ -549,7 +549,7 @@
   const CANCER_RE=/(post[\s-]?menopausal bleeding|postcoital bleeding|inter[\s-]?menstrual bleeding|visible h[ae]ematuria|frank h[ae]ematuria|rectal bleeding|pr bleeding|change in bowel habit|breast lump|new breast (mass|lump)|nipple (discharge|retraction)|neck lump|persistent (hoarseness|hoarse voice)|persistent dysphagia|\bdysphagia\b|unexplained weight loss|unexplained (anaemia|an[ae]mia)|iron[\s-]?deficiency an[ae]mia|abdominal mass|pelvic mass|abdominal[\s-]?pelvic mass|enlarged (testis|testicle)|testicular (lump|mass)|raised (psa|prostate specific)|abnormal (psa|prostate)|craggy (prostate|irregular prostate)|haemoptysis|cervical (lump|lymphadenopathy)|persistent (mouth|oral) ulcer|suspicious (mole|naevus|pigmented lesion|skin lesion)|melanoma|jaundice|painless jaundice|axillary lump|raised (ca[\s-]?125|ca125)|ascites|petechiae|hepatosplenomegaly|generalised lymphadenopathy)/i;
   const RANK={emergency:0,'2ww':1,urgent:2,routine:3};
   const LV_LABEL={emergency:'\ud83d\udea8 Emergency · same-day action',
-    '2ww':'\ud83d\udfe3 2-week-wait · suspected cancer','urgent':'\ud83d\udfe0 Urgent','routine':'⚪ Routine referral','done':'✅ Documented'};
+    '2ww':'\ud83d\udfe3 Suspected cancer pathway','urgent':'\ud83d\udfe0 Urgent','routine':'⚪ Routine referral','done':'✅ Documented'};
   function scanActions(){
     const items=[]; const seen=new Set();
     ACT_SECTIONS.forEach(([label,get])=>{
@@ -590,7 +590,7 @@
     if(tab){ tab.classList.toggle('has-actions', n>0); }
   }
   function actionsText(){
-    const items=scanActions(); if(!items.length) return 'No emergency or 2WW actions detected from the current entries.';
+    const items=scanActions(); if(!items.length) return 'No emergency or suspected cancer pathway actions detected from the current entries.';
     const order=['emergency','2ww','urgent','routine','done'];
     return order.filter(l=>items.some(i=>i.level===l)).map(l=>
       LV_LABEL[l].replace(/^[^\sA-Za-z]+\s*/,'').toUpperCase()+'\n'+items.filter(i=>i.level===l).map(i=>'• ['+i.src+'] '+i.text).join('\n')
@@ -600,7 +600,7 @@
     const body=$('.cs-rec-body');
     if(recMode==='actions'){
       const items=scanActions(); updateActionsBadge(items);
-      if(!items.length){ body.innerHTML=`<div class="cs-rec-empty">No emergency or 2-week-wait actions detected yet. As you document red flags, referrals or safety-netting, the required actions surface here automatically.</div>`; return; }
+      if(!items.length){ body.innerHTML=`<div class="cs-rec-empty">No emergency or suspected cancer pathway actions detected yet. As you document red flags, referrals or safety-netting, the required actions surface here automatically.</div>`; return; }
       const order=['emergency','2ww','urgent','routine','done'];
       body.innerHTML='<div class="cs-acts">'+order.filter(l=>items.some(i=>i.level===l)).map(l=>{
         const grp=items.filter(i=>i.level===l);
@@ -683,7 +683,7 @@
     let out=[];
     if(em.length) out.push('Seek urgent same-day help / call 999 if any of these develop or worsen: '+em.join(', ')+'.');
     else out.push('Seek urgent same-day help if symptoms become severe or you feel very unwell.');
-    if(ca.length) out.push('Attend any arranged urgent (2-week-wait) appointment or test — see Actions needed.');
+    if(ca.length) out.push('Attend any arranged suspected cancer pathway appointment or test — see Actions needed.');
     out.push('Return if symptoms persist, worsen, or you remain concerned. [Add review timeframe.]');
     return out.join(' ');
   }
@@ -713,7 +713,7 @@
       plan: dx
         ? '[Management for '+dx+' — no built-in template. Add specific treatment, or check the linked protocol/pathway in Resources.]'
         : '[Management plan. Tip: add a provisional diagnosis above and tap Generate full consultation to load specific management.]',
-      referral:'[Referral if indicated — check Actions needed for any urgent / 2-week-wait flag.]',
+      referral:'[Referral if indicated — check Actions needed for any urgent / suspected cancer pathway flag.]',
       followup:'[Follow-up / safety-netted review interval.]'
     };
   }
@@ -772,7 +772,7 @@
       if(!(window.claude&&window.claude.complete)) throw new Error('unavailable');
       const demo=[state.age?state.age+'-year-old':'',state.sex].filter(Boolean).join(' ');
       const ctx = (pc?`presenting complaint of "${pc}"`:'') + (pc&&dx?' with a ':'') + (dx?`working/provisional diagnosis of "${dx}"`:'');
-      const prompt=`You are an experienced UK GP writing a COMPLETE consultation record for a ${demo||'adult'} patient with a ${ctx||('presentation of "'+queryName+'"')}. Centre the consultation on the provisional diagnosis where given, but make the history and red-flag screen appropriate to the presenting complaint. Return STRICT JSON only (no prose) with these keys, each a concise clinician-shorthand draft the GP will edit. Use [square brackets] for values the GP must personalise. UK primary care, NICE-aligned. Include any relevant NICE NG12 two-week-wait red-flag threshold verbatim where applicable.\nKeys: "hpc" (history of presenting complaint + ICE), "redflags" (specific features screened, negated), "exam" (expected examination/findings), "impression" (diagnosis + differential), "ix" (investigations or 'none indicated' with reason), "plan" (management + specific first-line drug/dose), "referral" (who/urgency or none), "safetynet" (specific worsening advice), "followup" (timeframe + what to reassess).\nEach value is a short paragraph (1–4 lines). JSON only.`;
+      const prompt=`You are an experienced UK GP writing a COMPLETE consultation record for a ${demo||'adult'} patient with a ${ctx||('presentation of "'+queryName+'"')}. Centre the consultation on the provisional diagnosis where given, but make the history and red-flag screen appropriate to the presenting complaint. Return STRICT JSON only (no prose) with these keys, each a concise clinician-shorthand draft the GP will edit. Use [square brackets] for values the GP must personalise. UK primary care, NICE-aligned. Include any relevant NICE NG12 suspected cancer pathway red-flag threshold verbatim where applicable.\nKeys: "hpc" (history of presenting complaint + ICE), "redflags" (specific features screened, negated), "exam" (expected examination/findings), "impression" (diagnosis + differential), "ix" (investigations or 'none indicated' with reason), "plan" (management + specific first-line drug/dose), "referral" (who/urgency or none), "safetynet" (specific worsening advice), "followup" (timeframe + what to reassess).\nEach value is a short paragraph (1–4 lines). JSON only.`;
       let raw=await window.claude.complete({messages:[{role:'user',content:prompt}]});
       raw=(raw||'').replace(/```json|```/g,'').trim();
       const j=JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}')+1));
@@ -798,7 +798,7 @@
     const btn=$('#aiBtn'); const orig=btn.textContent; btn.disabled=true; btn.textContent='✨ Thinking…';
     const demo=[state.age?state.age+'-year-old':'',state.sex].filter(Boolean).join(' ');
     const prompt=`You are an experienced UK GP educator. For a ${demo||'adult'} presenting with "${pc}", return STRICT JSON only (no prose) with keys:
-"redflags": array of 4-7 concise red-flag features to screen for (UK practice; include any relevant NICE NG12 2WW threshold verbatim if applicable),
+"redflags": array of 4-7 concise red-flag features to screen for (UK practice; include any relevant NICE NG12 suspected cancer threshold verbatim if applicable),
 "differential": array of 4-6 likely/important differentials, most likely first,
 "safetynet": array of 3-5 specific worsening-advice statements a GP would give.
 Keep each item short (a clinician's shorthand). JSON only.`;
@@ -847,12 +847,12 @@ Keep each item short (a clinician's shorthand). JSON only.`;
 })();
 </script>
 
-<script src="../assets/complaint-redflags.js?v=3"></script>
-<script src="../assets/complaint-scaffolds.js?v=4"></script>
-<script src="../assets/pathways-redflags.js?v=2"></script>
-<script src="../assets/consult-templates.js?v=4"></script>
+<script src="../assets/complaint-redflags.js?v=4"></script>
+<script src="../assets/complaint-scaffolds.js?v=5"></script>
+<script src="../assets/pathways-redflags.js?v=3"></script>
+<script src="../assets/consult-templates.js?v=5"></script>
 <script src="../assets/cpd-log.js?v=1"></script>
-<script src="../assets/site.js?v=104"></script>
+<script src="../assets/site.js?v=105"></script>
 <script src="../assets/nav-back.js?v=1"></script>
 <script>window.RGP_AI_NOTICE={use:"drafts a consultation record from your input"};</script>
 <script src="../assets/ai-notice.js?v=2"></script>

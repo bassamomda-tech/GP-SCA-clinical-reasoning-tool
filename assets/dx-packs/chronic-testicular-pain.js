@@ -28,7 +28,7 @@
       {
         id: 'tumour_2ww', tier: 'cancer',
         label: 'Hard testicular mass — suspected cancer',
-        action: 'Urgent testicular USS + tumour markers; 2WW urology.',
+        action: 'Urgent testicular USS + tumour markers; urology suspected cancer pathway referral.',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.mass,
       },
@@ -89,9 +89,9 @@
         guideUrl: '' },
 
       { id: 'tumour', name: 'Testicular tumour', summary: 'Hard mass, age 15–45', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hard craggy mass, does not transilluminate.', nextIx: '\u26A1 USS + tumour markers; urology 2WW.',
+        keyExam: 'Hard craggy mass, does not transilluminate.', nextIx: '\u26A1 USS + tumour markers; urology suspected cancer pathway referral.',
         patientPhrase: 'A firm lump needs an urgent scan to exclude cancer — it is very treatable when caught early.',
-        guideUrl: '', redFlagAction: '\u26A1 USS + 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 USS + suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v == null ? {} : (v <= 45 ? { tumour: +2 } : {}),

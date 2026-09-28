@@ -61,21 +61,21 @@ RGPTriage.register('asthma-triage', {
         i.cant_speak
     },
 
-    // CANCER (2WW)
+    // SUSPECTED CANCER PATHWAY
     {
       tier:'cancer',
-      label:'Haemoptysis ≥40 — urgent CXR + suspected lung cancer 2WW',
-      action:'Urgent CXR (≤2 wk) · lung 2WW',
+      label:'Haemoptysis ≥40 — urgent CXR + suspected lung cancer pathway referral',
+      action:'Urgent CXR (≤2 wk) · lung suspected cancer pathway referral',
       source:'NICE NG12 (updated April 2026) §1.1.1',
       sourceUrl:'https://www.nice.org.uk/guidance/ng12',
       patientPhrase:'"Coughing up blood at your age has to be checked urgently — I\'m organising a fast chest X-ray."',
-      referralTemplate:'2WW — lung cancer (NICE NG12 (updated April 2026) §1.1.1).\nAge [value], haemoptysis. Smoker [Y/N]. Weight loss [Y/N]. CXR urgent.',
+      referralTemplate:'Suspected cancer pathway referral — lung cancer (NICE NG12 (updated April 2026) §1.1.1).\nAge [value], haemoptysis. Smoker [Y/N]. Weight loss [Y/N]. CXR urgent.',
       when: i => i.age != null && i.age >= 40 && i.haemoptysis
     },
     {
       tier:'cancer',
       label:'Cough/hoarseness >3 wks + smoker ≥40 + weight loss — suspect lung cancer',
-      action:'Urgent CXR · lung 2WW if X-ray suggestive',
+      action:'Urgent CXR · lung suspected cancer pathway referral if X-ray suggestive',
       source:'NICE NG12 (updated April 2026) §1.1',
       patientPhrase:'"A long-standing cough in someone who smokes, with weight loss, needs us to rule out a lung cause urgently."',
       when: i => i.age != null && i.age >= 40 && i.smoker && i.cough_3wk && i.weight_loss

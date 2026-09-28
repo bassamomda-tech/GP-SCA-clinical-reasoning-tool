@@ -368,8 +368,8 @@ window.SCA_LINKS = {
     { ic:'💠', t:'Women’s health protocols', s:'Incl. HRT preparations', href:'management.html?cat=women-s-health' }
   ],
   'cough-smoker-2ww': [
-    { ic:'🗺️', t:'Chronic cough pathway', s:'NG12 2WW criteria', href:'algorithms/chronic-cough.html' },
-    { ic:'🗺️', t:'Hoarseness pathway', s:'Laryngeal 2WW route', href:'algorithms/hoarseness.html' },
+    { ic:'🗺️', t:'Chronic cough pathway', s:'NG12 suspected cancer pathway criteria', href:'algorithms/chronic-cough.html' },
+    { ic:'🗺️', t:'Hoarseness pathway', s:'Laryngeal suspected cancer pathway', href:'algorithms/hoarseness.html' },
     { ic:'💠', t:'Lifestyle & prevention', s:'Smoking cessation', href:'management.html?cat=lifestyle-and-prevention' }
   ],
   'insulin-ramadan': [

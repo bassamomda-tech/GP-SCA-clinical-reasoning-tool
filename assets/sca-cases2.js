@@ -49,12 +49,12 @@
     ],
     learning:'Z-drugs and benzodiazepines raise the risk of falls and fractures in older people, and tolerance makes long-term use ineffective for sleep. The exam skill is deprescribing as a negotiation: validate the fear, harness the patient\u2019s own motivation, taper slowly (never stop abruptly), and replace the tablet with something — CBT-I principles and attention to the loneliness driving the 3am waking. Escalating to temazepam is the station\u2019s trapdoor.',
     knowledge:{
-      guideline:'NICE TA77 (2004) — hypnotics for insomnia · NICE NG249 (2025) — falls · BNF zopiclone · NICE MTG70 (Sleepio)',
+      guideline:'NICE TA77 (2004) — hypnotics for insomnia · NICE NG249 (2025) — falls · BNF zopiclone · NICE HTG624 (Sleepio, formerly MTG70)',
       points:[
         { h:'Diagnose the real problem', t:'Twelve years of a z-drug = dependence and tolerance, not "insomnia needing a stronger tablet". The 3am waking with afternoon napping and evening loneliness is a behavioural-circadian pattern the tablet cannot fix.' },
         { h:'Red flags & same-day action', t:'The fall IS the red flag: sedative-related nocturnal falls in a 76-year-old predict fracture. Check orthostatic BP, review all sedating/hypotensive medication, ask about syncope, vision and home hazards.' },
         { h:'Work-up to consider', t:'NICE NG249 multifactorial falls assessment: lying/standing BP, medication review (amlodipine timing, OTC sedating antihistamines), gait check, vision, night-time route to the toilet, bone health (FRAX — consider DEXA), alcohol units honestly counted (nightly sherry + zopiclone potentiate).' },
-        { h:'Manage — the taper', t:'Taper by agreement, never abruptly: a natural first step is 3.75 mg (the BNF starting dose for older people) on alternate nights, then nightly, with further steps agreed with her every few weeks — expect the process to take months. Pair every reduction with CBT-I elements (first-line for chronic insomnia, BAP consensus 2019; digital CBT-I — Sleepio — in NICE MTG70): fixed rising time, no TV in bed, nap cap, caffeine only in the morning.' },
+        { h:'Manage — the taper', t:'Taper by agreement, never abruptly: a natural first step is 3.75 mg (the BNF starting dose for older people) on alternate nights, then nightly, with further steps agreed with her every few weeks — expect the process to take months. Pair every reduction with CBT-I elements (first-line for chronic insomnia, BAP consensus 2019; digital CBT-I — Sleepio — in NICE HTG624, formerly MTG70): fixed rising time, no TV in bed, nap cap, caffeine only in the morning.' },
         { h:'Never do', t:'Never stop abruptly after long-term use (rebound insomnia, anxiety, rarely seizures); never escalate to temazepam/another hypnotic; never prescribe past a fall without a falls-and-meds review.' },
         { h:'Safety-net & follow-up', t:'Warn that sleep transiently worsens for a week or two after each step; falls advice for the interim (light on, sit before standing); named review every 2–4 weeks through the taper. Door open if she wobbles — relapse is part of tapering.' },
         { h:'Marking edge', t:'The grief is the engine of the insomnia ("the house gets quiet at nine") and her sister is the engine of change. Candidates who find both convert a medication row into a shared project — that is the Clear Pass.' }
@@ -166,8 +166,8 @@
         { t:'10–12',h:'Safety-net & close',    d:'Chase-the-letter rule (1 week). A&E triggers: obstruction, heavy bleeding. Named follow-up after the scope. Teach-back: "what will you tell your wife tonight?"' }
       ],
       wordPics: {
-        fail: 'Accepts "it\u2019s the piles" and arranges a repeat FIT or routine review; the number is never actually given; Raymond is never explored; the 2WW pathway is not named or is left "for him to think about"; call ends with the patient reassured and unreferred.',
-        pass: 'Gives the result clearly; links FIT + weight loss + anaemia to the need for urgent referral; makes the 2WW referral on the call; explains colonoscopy; touches the brother\u2019s story; basic safety-net.',
+        fail: 'Accepts "it\u2019s the piles" and arranges a repeat FIT or routine review; the number is never actually given; Raymond is never explored; the suspected cancer pathway is not named or is left "for him to think about"; call ends with the patient reassured and unreferred.',
+        pass: 'Gives the result clearly; links FIT + weight loss + anaemia to the need for urgent referral; makes the suspected cancer pathway referral on the call; explains colonoscopy; touches the brother\u2019s story; basic safety-net.',
         exc:  'The number lands early and the silence afterwards is held; Raymond\u2019s late diagnosis is found and explicitly inverted into the reason FOR testing; honest base-rates carry hope without false reassurance; work objections get practical answers; the chase-the-letter instruction, A&E triggers and a named GP follow-up close it. He hangs up scared but going.'
       },
       avoid: [

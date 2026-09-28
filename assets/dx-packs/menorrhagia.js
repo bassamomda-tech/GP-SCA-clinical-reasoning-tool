@@ -37,7 +37,7 @@
       {
         id: 'cervical', tier: 'cancer',
         label: 'Suspicious cervix — cervical cancer pathway',
-        action: 'Urgent colposcopy / gynae 2WW (do not rely on smear).',
+        action: 'Urgent colposcopy / gynae suspected cancer pathway referral (do not rely on smear).',
         source: 'NICE NG12 (updated April 2026)',
         when: i => i.cervix_suspicious,
       },
@@ -106,9 +106,9 @@
         guideUrl: 'https://www.nice.org.uk/guidance/ng88', guideLabel: 'NICE NG88' },
 
       { id: 'malignancy', name: 'Endometrial / cervical cancer', summary: 'PMB, persistent IMB ≥45, suspicious cervix', baseline: 1, category: 'cant-miss',
-        keyExam: 'Suspicious cervix; bulky uterus.', nextIx: '\u26A1 Gynae 2WW + TV USS / colposcopy (NICE NG12 (updated April 2026)).',
+        keyExam: 'Suspicious cervix; bulky uterus.', nextIx: '\u26A1 Gynae suspected cancer pathway referral + TV USS / colposcopy (NICE NG12 (updated April 2026)).',
         patientPhrase: 'This bleeding pattern needs an urgent specialist assessment to exclude cancer — most are benign.',
-        guideUrl: '', redFlagAction: '\u26A1 Gynae 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Gynae suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 45 ? { anovulation: +6, malignancy: +4, fibroids: +3 } : (v < 30 ? { coagulopathy: +3 } : {}),

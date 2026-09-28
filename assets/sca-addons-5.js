@@ -1997,7 +1997,7 @@
    "reason": "Telephoned the surgery upset after receiving the letter. Asking to speak to a doctor today."
   },
   "knowledge": {
-   "guideline": "NICE NG203 (2021) · NICE TA775 (2022) · NICE NG238 (2023) · NICE NG136 (2019) · BNF · KDIGO (international)",
+   "guideline": "NICE NG203 (2021) · NICE TA1075 (2025) · NICE NG238 (2023) · NICE NG136 (2019) · BNF · KDIGO (international)",
    "summary": "A stable eGFR of 52 is CKD G3a. For most people at this stage it is a marker of cardiovascular risk to act on, not a path to dialysis. Classify by eGFR and ACR, protect the kidneys and the heart, and explain it without alarm.",
    "points": [
     {
@@ -2010,7 +2010,7 @@
     },
     {
      "h": "Heart and diabetes",
-     "t": "Offer atorvastatin 20 mg for primary prevention in CKD (NICE NG238). With type 2 diabetes, dapagliflozin is an option in CKD within NICE TA775 criteria, on top of optimised standard care. NG203 blood-pressure target when ACR is under 70: 120–139/under 90 mmHg. In hypertension with type 2 diabetes, NICE NG136 favours an ACE inhibitor or ARB as first choice, so review the current amlodipine-only plan."
+     "t": "Offer atorvastatin 20 mg for primary prevention in CKD (NICE NG238). With type 2 diabetes, dapagliflozin is an option in CKD within NICE TA1075 (2025) criteria, on top of optimised standard care. NG203 blood-pressure target when ACR is under 70: 120–139/under 90 mmHg. In hypertension with type 2 diabetes, NICE NG136 favours an ACE inhibitor or ARB as first choice, so review the current amlodipine-only plan."
     },
     {
      "h": "Medicines safety",
@@ -2375,7 +2375,7 @@
     "psychosocial": "Lift the guilt, correct the online worst-case picture, and pace the medicines discussion so she chooses rather than feels prescribed at.",
     "sharedPlan": [
      "Repeat ACR; ACE inhibitor or ARB if ACR 3 mg/mmol or more with diabetes (NICE NG203)",
-     "Atorvastatin 20 mg (NICE NG238); discuss dapagliflozin (NICE TA775); BP and HbA1c optimised",
+     "Atorvastatin 20 mg (NICE NG238); discuss dapagliflozin (NICE TA1075, 2025); BP and HbA1c optimised",
      "Avoid NSAIDs; metformin dose review if eGFR falls below 45 (BNF)"
     ],
     "safetyNet": [
@@ -2468,7 +2468,7 @@
    "reason": "Video consultation booked for “a sick note — stress at work”."
   },
   "knowledge": {
-   "guideline": "NICE NG222 Depression in adults (2022) · NICE NG225 Self-harm (2022) · NICE CG115 Alcohol-use disorders (2011) · DVLA Assessing fitness to drive",
+   "guideline": "NICE NG222 Depression in adults (2022, updated December 2025) · NICE NG225 Self-harm (2022) · NICE CG115 Alcohol-use disorders (2011) · DVLA Assessing fitness to drive",
    "summary": "A fit note request for “stress” can be the way into a depressive illness. Three months of low mood, anhedonia and biological symptoms is depression; ask directly about suicide before any note is signed.",
    "points": [
     {
@@ -3916,7 +3916,7 @@
    "reason": "Booked a video appointment about headaches, palpitations, tingling and tiredness. Asking for another scan or a neurology referral."
   },
   "knowledge": {
-   "guideline": "NICE CG113 (2011) · NICE CG123 (2011) · NHS Talking Therapies · GMC Decision making and consent (2020)",
+   "guideline": "NICE CG113 (2011) · NICE CG123 (2011; withdrawn May 2024) · NHS Talking Therapies · GMC Decision making and consent (2020)",
    "summary": "Recurrent bodily symptoms, repeated normal tests and reassurance that never lasts point to health anxiety, often alongside generalised anxiety disorder. Treat the anxiety; do not order a test only to buy certainty.",
    "points": [
     {
@@ -3933,7 +3933,7 @@
     },
     {
      "h": "Identify and screen",
-     "t": "NICE CG123: ask about anxiety directly (the GAD-2 questions are a quick start, then GAD-7) and look for depression, panic attacks and risk to self. Ask what started it: a bereavement or a health scare often precedes health anxiety, and the grief may need attention in its own right."
+     "t": "NICE CG123 (2011, withdrawn 2024): ask about anxiety directly (the GAD-2 questions are a quick start, then GAD-7) and look for depression, panic attacks and risk to self. Ask what started it: a bereavement or a health scare often precedes health anxiety, and the grief may need attention in its own right."
     },
     {
      "h": "Stepped care",
@@ -4905,7 +4905,7 @@
     },
     {
      "h": "After the emergency",
-     "t": "Medication review with the heart-failure plan (NICE NG106 advises checking potassium and renal function after starting or changing these drugs). Reintroduce with monitoring. Low-potassium dietary advice; paracetamol or a non-NSAID plan for the knee. Potassium binders (NICE TA599, TA623) are specialist-initiated options if RAAS therapy must continue."
+     "t": "Medication review with the heart-failure plan (NICE NG106 advises checking potassium and renal function after starting or changing these drugs). Reintroduce with monitoring. Low-potassium dietary advice; paracetamol or a non-NSAID plan for the knee. Potassium binders are options if RAAS therapy must continue: sodium zirconium cyclosilicate from a confirmed potassium of 5.5 mmol/L or more (NICE TA1148, April 2026, which updated and replaced TA599), or patiromer from 6.0 mmol/L or more (NICE TA623, 2020); follow local shared-care arrangements."
     },
     {
      "h": "The recall call",
@@ -7296,7 +7296,7 @@
    "reason": "Video consultation. Partner concerned she is “not herself”."
   },
   "knowledge": {
-   "guideline": "NICE CG192 Antenatal and postnatal mental health · NICE NG222 Depression in adults (2022) · NICE NG225 Self-harm (2022)",
+   "guideline": "NICE CG192 Antenatal and postnatal mental health · NICE NG222 Depression in adults (2022, updated December 2025) · NICE NG225 Self-harm (2022)",
    "summary": "Low mood, loss of interest, guilt and detachment from the baby 8 weeks after birth is postnatal depression, not tiredness. Ask directly about thoughts of self-harm and of harm to the baby, screen for psychosis, and deal with the fear of the baby being taken away.",
    "points": [
     {
@@ -9132,7 +9132,7 @@
    "community": [
     {
      "h": "Support",
-     "t": "RNID for information about sudden hearing loss and tinnitus; the British Tinnitus Association for ongoing tinnitus support."
+     "t": "RNID for information about sudden hearing loss and tinnitus; Tinnitus UK (formerly the British Tinnitus Association) for ongoing tinnitus support."
     }
    ]
   },

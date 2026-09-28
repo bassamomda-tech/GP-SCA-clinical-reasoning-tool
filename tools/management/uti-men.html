@@ -30,7 +30,7 @@ MG.render({
     {t:"NICE NG111 · pyelonephritis (updated Sep 2024)"},
     {t:"NICE NG110 · prostatitis (updated Sep 2024)"},
     {t:"NG112 recurrent · NG113 catheter"},
-    {t:"NICE NG12 (updated April 2026) · haematuria 2WW", tone:"tw"},
+    {t:"NICE NG12 (updated April 2026) · haematuria: suspected cancer", tone:"tw"},
     {t:"MHRA Jan 2024 · fluoroquinolones"},
     {t:"BNF owns all doses not stated in NICE NG109–NG113"}
   ],
@@ -50,7 +50,7 @@ MG.render({
     {tone:"blue", h:"Place the infection — it decides the drug and the duration", html:"Bladder only (dysuria, frequency, no fever) → <b>7 days</b>. Fever, loin pain, rigors → <b>pyelonephritis</b> (NG111). Fever with perineal, rectal or ejaculatory pain, or a tender prostate → <b>acute prostatitis</b> (NG110, <b>14 days then review</b>). Scrotal pain → epididymo-orchitis. Discharge → think STI."},
     {tone:"cream", h:"Lower UTI: trimethoprim or nitrofurantoin, 7 days", html:"<b>Trimethoprim 200 mg twice a day for 7 days</b>, or <b>nitrofurantoin 100 mg modified-release twice a day for 7 days</b> (or 50 mg four times a day) if <b>eGFR ≥45 ml/min</b>. Immediate prescription — no back-up/delayed option in men (NG109)."},
     {tone:"amber", h:"Fluoroquinolones: only when the alternatives won’t do", html:"<b>MHRA (January 2024)</b>: systemic fluoroquinolones only when other recommended antibiotics are inappropriate, because of disabling, potentially long-lasting tendon, musculoskeletal, neurological and psychiatric effects. NG110 (updated Sept 2024) lists <b>trimethoprim 200 mg BD for 14 days</b> as an alternative first choice when a fluoroquinolone is not appropriate (seek specialist advice)."},
-    {tone:"green", h:"Recurrence = urology, and haematuria = NG12", html:"<b>Refer or seek specialist (urology) advice for every man with recurrent UTI</b> (≥2 in 6 months or ≥3 in 12 months) (NG112). Visible haematuria that <b>persists or recurs after successful UTI treatment</b> in a man <b>≥45</b> is a <b>2WW</b> urology referral (NG12)."}
+    {tone:"green", h:"Recurrence = urology, and haematuria = NG12", html:"<b>Refer or seek specialist (urology) advice for every man with recurrent UTI</b> (≥2 in 6 months or ≥3 in 12 months) (NG112). Visible haematuria that <b>persists or recurs after successful UTI treatment</b> in a man <b>≥45</b> is a <b>urology suspected cancer pathway referral</b> (NG12)."}
   ],
   pathwaySub:"The whole consultation in six moves. The red step is where men come to harm.",
   pathway:[
@@ -96,7 +96,7 @@ MG.render({
     {id:"redflags", nav:"Red flags", title:"Red flags — 999, same-day hospital or urgent review", sub:"The decision that matters most is made before the prescription is written.",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Suspected sepsis", html:"Any man with a urinary source and signs of sepsis (altered mental state, raised respiratory rate, low BP, tachycardia, mottled or non-blanching skin, not passing urine) → assess risk using the national structured approach and arrange emergency transfer if high risk. Do not delay transfer to obtain a urine sample.", src:"NICE NG253 (2025)"},
+         {tone:"red", h:"Suspected sepsis", html:"Any man with a urinary source and signs of sepsis (altered mental state, raised respiratory rate, low BP, tachycardia, mottled or non-blanching skin, not passing urine) → assess risk using the national structured approach and arrange emergency transfer if high risk. Do not delay transfer to obtain a urine sample.", src:"NICE NG253 (updated September 2026)"},
          {tone:"red", h:"Prostatitis needing hospital", html:"<b>Refer to hospital</b> if symptoms or signs suggest a more serious illness or condition — for example <b>sepsis, acute urinary retention or prostatic abscess</b> — or if symptoms are <b>not improving 48 hours after starting the antibiotic</b>.", src:"NICE NG110"},
          {tone:"red", h:"Pyelonephritis needing hospital", html:"Refer if there are symptoms or signs suggesting a more serious illness such as sepsis. <b>Consider referral or specialist advice</b> if significantly dehydrated or unable to take oral fluids and medicines, or at higher risk of complications (known or suspected structural or functional abnormality of the genitourinary tract, or underlying disease such as diabetes or immunosuppression).", src:"NICE NG111"},
          {tone:"red", h:"Acute urinary retention", html:"Painful, palpable bladder and unable to void → same-day catheterisation via local urology/ED pathway. A febrile man in retention may have prostatitis or abscess."},
@@ -175,7 +175,7 @@ MG.render({
          ["Culture result","When reported (usually 48–72 h)","Organism resistant to the drug given and symptoms persisting → change to a susceptible agent. Sensitive and improving → complete course"],
          ["Prostatitis","<b>14 days</b>","Review: stop, or continue for a further 14 days (NG110)"],
          ["Pyelonephritis on IV treatment","By 48 hours","Review IV antibiotics and step down to oral where possible (NG111)"],
-         ["Haematuria","After treatment","Visible haematuria that persists or recurs after successful UTI treatment in a man ≥45 → 2WW (NG12). Consider repeat urine to confirm non-visible haematuria has cleared"],
+         ["Haematuria","After treatment","Visible haematuria that persists or recurs after successful UTI treatment in a man ≥45 → suspected cancer pathway referral (NG12). Consider repeat urine to confirm non-visible haematuria has cleared"],
          ["LUTS","After recovery","Persisting voiding symptoms → LUTS assessment (frequency-volume chart, IPSS, DRE, renal function, post-void residual via local pathway)"],
          ["Recurrence","Ongoing","≥2 UTIs in 6 months or ≥3 in 12 months → urology referral (NG112)"],
          ["PSA","If indicated","Defer until well after the infection has resolved"]
@@ -191,10 +191,10 @@ MG.render({
     {id:"refer", nav:"Refer", title:"Referral — who, how urgently, what to send", sub:"Recurrence in a man is an indication for urology, not for prophylaxis started in primary care.",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"999 / emergency department", html:"Suspected sepsis at high risk; acute urinary retention; suspected obstructed infected kidney; suspected torsion.", src:"NICE NG253 (2025)"},
+         {tone:"red", h:"999 / emergency department", html:"Suspected sepsis at high risk; acute urinary retention; suspected obstructed infected kidney; suspected torsion.", src:"NICE NG253 (updated September 2026)"},
          {tone:"red", h:"Same-day hospital / urology", html:"Prostatitis with sepsis, retention or suspected abscess, or not improving 48 hours after starting antibiotics; pyelonephritis with signs of serious illness.", src:"NICE NG110 · NG111"},
          {tone:"amber", h:"Consider specialist advice", html:"Pyelonephritis in a man who is significantly dehydrated, cannot take oral fluids and medicines, or has a structural/functional abnormality of the renal tract, diabetes or immunosuppression.", src:"NICE NG111"},
-         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> — bladder / kidney", html:"Aged <b>≥45</b> with <b>unexplained visible haematuria without UTI</b>, or <b>visible haematuria that persists or recurs after successful treatment of UTI</b>. Aged <b>≥60</b> with <b>unexplained non-visible haematuria</b> and either <b>dysuria</b> or a <b>raised white cell count</b> on a blood test (bladder). <b>Consider non-urgent</b> referral for bladder cancer in men <b>≥60</b> with <b>recurrent or persistent unexplained UTI</b>.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"purple", h:"Bladder / kidney <span class='tw'>Suspected cancer</span>", html:"Aged <b>≥45</b> with <b>unexplained visible haematuria without UTI</b>, or <b>visible haematuria that persists or recurs after successful treatment of UTI</b>. Aged <b>≥60</b> with <b>unexplained non-visible haematuria</b> and either <b>dysuria</b> or a <b>raised white cell count</b> on a blood test (bladder). <b>Consider non-urgent</b> referral for bladder cancer in men <b>≥60</b> with <b>recurrent or persistent unexplained UTI</b>.", src:"NICE NG12 (updated April 2026)"},
          {tone:"blue", h:"Urology — routine/soon", html:"<b>Men with recurrent UTI</b> (≥2 in 6 months or ≥3 in 12 months): refer or seek specialist advice on further investigation and management — usually urology. Also: relapse with the same organism, suspected stones or obstruction, chronic prostatitis.", src:"NICE NG112"},
          {tone:"blue", h:"Sexual health", html:"Urethritis, epididymo-orchitis with STI risk, positive NAAT — for full screen, treatment and partner notification.", src:"UKHSA UTI diagnostic tools 2025"}
        ]},
@@ -228,7 +228,7 @@ MG.render({
          {t:"Reflex ciprofloxacin", html:"Fluoroquinolones only when alternatives are inappropriate (MHRA 2024) — and document the counselling."},
          {t:"Calling urethritis a UTI", html:"Discharge in a young man is an STI until tested; he and his partners need sexual-health care."},
          {t:"Re-treating recurrence", html:"The third UTI in a year in a man is a referral (NG112), not another prescription."},
-         {t:"Forgetting the haematuria", html:"Visible haematuria blamed on infection must be shown to clear; persistence in a man ≥45 is a 2WW (NG12)."},
+         {t:"Forgetting the haematuria", html:"Visible haematuria blamed on infection must be shown to clear; persistence in a man ≥45 needs a suspected cancer pathway referral (NG12)."},
          {t:"PSA during infection", html:"A falsely raised PSA triggers anxiety and unnecessary referral — wait until the infection has fully settled."}
        ]}
      ]},

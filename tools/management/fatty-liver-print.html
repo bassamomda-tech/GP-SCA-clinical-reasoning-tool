@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790530756974668 tools/management/fatty-liver.html">
+<meta name="omelette-print-source" content="v1790547037738598 tools/management/fatty-liver.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -30,14 +30,14 @@ MG.render({
   reviewed:"9 September 2026",
   nextReview:"9 March 2027",
   meta:[
-    {t:"NICE NG49 — non-alcoholic fatty liver disease (2016, upd. 2023)"},
+    {t:"NICE NG49 (MASLD, formerly NAFLD; updated July 2026)"},
     {t:"EASL CPG (NAFLD 2016, MAFLD 2023) (international) · BSG NAFLD 2021"},
     {t:"NICE CG115 — alcohol-use disorders"},
     {t:"Nomenclature updated to MASLD (2023)"},
     {t:"NG12: HCC in cirrhosis", tone:"tw"},
     {t:"v1.0 · reviewed Sep 2026", tone:"ok"}
   ],
-  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Decompensation · 2WW</small></a><a href="#confirm"><b>MASLD or ALD?</b><small>Metabolic vs alcohol</small></a><a href="#workup"><b>Stage it</b><small>FIB-4 · ELF · FibroScan</small></a><a href="#ladder"><b>Treat</b><small>CV risk · weight · drugs</small></a><a href="#refer"><b>Refer</b><small>Hepatology · surveillance</small></a></div>',
+  lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Decompensation · suspected cancer</small></a><a href="#confirm"><b>MASLD or ALD?</b><small>Metabolic vs alcohol</small></a><a href="#workup"><b>Stage it</b><small>FIB-4 · ELF · FibroScan</small></a><a href="#ladder"><b>Treat</b><small>CV risk · weight · drugs</small></a><a href="#refer"><b>Refer</b><small>Hepatology · surveillance</small></a></div>',
   quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
     {tone:"red", h:"⚠ Decompensation is the turning point", html:"<b>Jaundice, new ascites, variceal bleeding or encephalopathy → same-day.</b> Median survival after a first decompensation is 1–2 years without transplant. Acute liver failure — ALT &gt;10× ULN with INR &gt;1.5 and encephalopathy — is a medical emergency."},
@@ -67,7 +67,7 @@ MG.render({
          ["<b>Hepatic encephalopathy</b>","Confusion, <b>asterixis (liver flap)</b>, behavioural change in chronic liver disease","<b>Same-day.</b> Look for the precipitant — infection, GI bleed, constipation, drugs"],
          ["<b>RUQ pain + fever + jaundice</b>","<b>Charcot's triad</b>","<b>Same-day — ascending cholangitis</b>, not fatty liver; exclude a biliary cause"],
          ["<b>ALT &gt;3× ULN (or ALT &gt;120)</b>","Needs active investigation","<b>Not simple MASLD</b> — consider acute hepatitis (viral, drug-induced, autoimmune, ischaemic)"],
-         ["<b>Established cirrhosis + new weight loss or RUQ pain</b>","Surveillance failure","2WW if AFP is rising or the USS is abnormal — suspected hepatocellular carcinoma"],
+         ["<b>Established cirrhosis + new weight loss or RUQ pain</b>","Surveillance failure","Urgent hepatology referral (or the local suspected-HCC pathway) if AFP is rising or the USS is abnormal — suspected hepatocellular carcinoma"],
          ["<b>Alcohol: acute binge with deranged LFTs</b>","<b>AST:ALT ratio &gt;2:1, GGT markedly elevated</b>","Same-day if severe alcoholic hepatitis is suspected (Maddrey score &gt;32)"]
        ]},
        {b:"why", html:"MASLD affects about 25% of UK adults but progresses to significant fibrosis in only around 5% — the whole clinical task is identifying that 5%. Decompensation (jaundice, ascites, encephalopathy, variceal bleed) is a major turning point: median survival after the first episode is 1–2 years without transplant. An AST:ALT ratio above 2 in a drinker strongly suggests alcoholic hepatitis — AST is disproportionately elevated because of pyridoxine deficiency. Acute liver failure (ALT &gt;10× ULN + INR &gt;1.5 + encephalopathy) needs same-day specialist assessment."},
@@ -189,7 +189,7 @@ MG.render({
      blocks:[
        {b:"cards", items:[
          {tone:"red", h:"Same-day", html:"Decompensated cirrhosis (jaundice with ascites and encephalopathy), variceal bleed, or acute liver failure (ALT &gt;10× ULN + INR &gt;1.5 + encephalopathy)."},
-         {tone:"purple", h:"2WW · NICE NG12 (updated April 2026)", html:"NG12's liver criterion: consider an urgent direct-access ultrasound (within 2 weeks) to assess for liver cancer in people with an upper abdominal mass consistent with an enlarged liver. A rising AFP or a new lesion on cirrhosis surveillance, or known cirrhosis with new RUQ pain or weight loss, is not itself an NG12 criterion — refer urgently to hepatology or the local suspected-HCC pathway."},
+         {tone:"purple", h:"Suspected cancer · NICE NG12 (updated April 2026)", html:"NG12's liver criterion: consider an urgent direct-access ultrasound (within 2 weeks) to assess for liver cancer in people with an upper abdominal mass consistent with an enlarged liver. A rising AFP or a new lesion on cirrhosis surveillance, or known cirrhosis with new RUQ pain or weight loss, is not itself an NG12 criterion — refer urgently to hepatology or the local suspected-HCC pathway."},
          {tone:"blue", h:"Hepatology (routine)", html:"FIB-4 &gt;2.67 (high risk) · FIB-4 1.30–2.67 (indeterminate — for ELF or FibroScan) · ALT persistently above 3× ULN without a clear cause · suspected autoimmune hepatitis · confirmed hepatitis B or C."},
          {tone:"green", h:"Community FibroScan", html:"Many ICBs have community transient elastography services — refer directly for an indeterminate FIB-4 without a hepatology outpatient appointment. Check the local pathway."},
          {tone:"amber", h:"Alcohol services", html:"Harmful or dependent drinking with abnormal LFTs — community alcohol team (SMART Recovery, CGL, Turning Point). Assisted alcohol withdrawal if dependent."},
@@ -207,7 +207,7 @@ MG.render({
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li>NICE NG49 — Non-alcoholic fatty liver disease: assessment and management (2016, updated 2023)<br><a href="https://www.nice.org.uk/guidance/ng49" rel="noopener">nice.org.uk/guidance/ng49</a><span class="rd"> — the ELF test (advanced fibrosis at 10.51 or above), retesting intervals, and pioglitazone or vitamin E for advanced fibrosis in secondary or tertiary care</span></li>'+
+         '<li>NICE NG49 (MASLD, formerly NAFLD; updated July 2026): assessment and management<br><a href="https://www.nice.org.uk/guidance/ng49" rel="noopener">nice.org.uk/guidance/ng49</a><span class="rd"> — the ELF test (advanced fibrosis at 10.51 or above), retesting intervals, and pioglitazone or vitamin E for advanced fibrosis in secondary or tertiary care</span></li>'+
          '<li><b>BSG — Guidelines on the management of abnormal liver blood tests (Newsome et al., Gut 2018)</b><span class="rd"> — FIB-4 as the first-line primary care fibrosis score and the standard liver aetiology screen including hepatitis B and C</span></li>'+
          '<li><b>NICE NG50 — Cirrhosis in over 16s: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng50" rel="noopener">nice.org.uk/guidance/ng50</a><span class="rd"> — 6-monthly ultrasound (with or without AFP) for HCC surveillance; OGD every 3 years when no varices were found</span></li>'+
          '<li><b>McPherson S et al. Age as a confounding factor for the accurate non-invasive diagnosis of advanced NAFLD fibrosis. Am J Gastroenterol 2017</b><span class="rd"> — FIB-4 low-risk cut-off of 2.0 at age 65 and over</span></li>'+

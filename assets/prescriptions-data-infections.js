@@ -33,7 +33,7 @@
     followUp: 'No routine follow-up. Send culture if pregnant, recurrent, treatment failure, or atypical. ≥3 UTIs/year → investigate ± prophylaxis.',
     redFlags: [
       'Fever, rigors, loin pain, vomiting → pyelonephritis — same-day assessment.',
-      'Visible haematuria (esp. ≥45) persisting after treatment → urology 2WW.',
+      'Visible haematuria (esp. ≥45) persisting after treatment → urology suspected cancer pathway referral.',
       'Recurrent/atypical UTI in men or any child → investigate.',
     ],
     emisText: `Lower UTI (non-pregnant woman):
@@ -110,7 +110,7 @@ Safety-net: fever/loin pain/reduced fetal movements → urgent maternity.`,
     followUp: 'Review culture. Recurrent UTI in men → investigate (renal tract / prostate). Consider PSA/DRE if LUTS.',
     redFlags: [
       'Fever / loin pain → pyelonephritis. Perineal/pelvic pain + systemic → prostatitis — same-day assessment.',
-      'Visible haematuria (≥45) that is unexplained, or persists/recurs after UTI treatment → urology suspected cancer pathway (2WW) referral (NICE NG12 (updated April 2026)).',
+      'Visible haematuria (≥45) that is unexplained, or persists/recurs after UTI treatment → urology suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
     ],
     emisText: `Lower UTI in a man (complicated; send culture):
 - Nitrofurantoin 100 mg MR PO BD × 7 days OR Trimethoprim 200 mg PO BD × 7 days.

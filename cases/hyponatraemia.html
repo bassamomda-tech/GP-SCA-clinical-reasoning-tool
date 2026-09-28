@@ -1126,7 +1126,7 @@ body.mode-clinic .sca-only{display:none!important}
           <li class="tc-item"><strong>Na⁺ 120–129 with mild symptoms (nausea, fatigue, gait instability)</strong><em>Same-day senior GP review; consider same-day medical referral</em></li>
           <li class="tc-item"><strong>Newly identified Na⁺ &lt;130 without clear reversible cause</strong><em>Urgent investigation to exclude malignancy, Addison's, SIADH</em></li>
           <li class="tc-item"><strong>Rapid fall (&gt;10 mmol/L/24h documented)</strong><em>Potentially acute even if number appears "mild"</em></li>
-          <li class="tc-item"><strong>Hyponatraemia with suspected new malignancy</strong><em>2-week wait suspected cancer pathway alongside electrolyte correction</em></li>
+          <li class="tc-item"><strong>Hyponatraemia with suspected new malignancy</strong><em>Suspected cancer pathway referral alongside electrolyte correction</em></li>
           <li class="tc-item"><strong>First presentation of SIADH unresponsive to fluid restriction</strong><em>Urgent endocrinology referral for investigation and tolvaptan consideration</em></li>
         </ul>
       </div>
@@ -1243,7 +1243,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr>
             <td class="q">Respiratory examination</td>
             <td class="why">SIADH from pulmonary cause (pneumonia, TB, malignancy) may be first diagnosed through respiratory signs — dullness, crackles, bronchial breathing<span class="why-sub">Chest X-ray follows any abnormal respiratory exam in SIADH investigation</span></td>
-            <td class="why">Respiratory signs → CXR, sputum culture, consider 2WW if malignancy features</td>
+            <td class="why">Respiratory signs → CXR, sputum culture, consider suspected cancer pathway referral if malignancy features</td>
             <td><span class="mcb mcb-context">Context</span></td>
           </tr>
           <tr>
@@ -1347,7 +1347,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr>
             <td class="q">Chest X-ray</td>
             <td class="why">SIADH from pulmonary malignancy, pneumonia, TB, or abscess; CXR identifies the source in unexplained SIADH — essential first-line investigation</td>
-            <td class="why">Lung lesion on CXR → urgent 2WW referral while managing sodium; pneumonia → antibiotics; TB → respiratory referral</td>
+            <td class="why">Lung lesion on CXR → urgent suspected cancer pathway referral while managing sodium; pneumonia → antibiotics; TB → respiratory referral</td>
           </tr>
           <tr>
             <td class="q">CT brain (urgent — via hospital)</td>
@@ -1435,7 +1435,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Suspected — Refer for Specialist Management</div>
         <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Refer for investigation</span>
         <div class="ddx-card ddx-b" style="margin-bottom:7px"><h4>Adrenal insufficiency (Addison's disease)</h4><p>Hyponatraemia + hyperkalaemia + postural hypotension + fatigue + pigmentation; short synacthen test; emergency if crisis features</p></div>
-        <div class="ddx-card ddx-b" style="margin-bottom:7px"><h4>SIADH from pulmonary/CNS malignancy</h4><p>Unexplained SIADH in patient over 40 with weight loss or smoking history; CXR + urgent 2WW referral</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:7px"><h4>SIADH from pulmonary/CNS malignancy</h4><p>Unexplained SIADH in patient over 40 with weight loss or smoking history; CXR + urgent suspected cancer pathway referral</p></div>
         <div class="ddx-card ddx-b" style="margin-bottom:7px"><h4>Cirrhosis / hepatic hyponatraemia</h4><p>Ascites, spider naevi, hepatomegaly; MELD-Na score; hepatology referral; tolvaptan consideration</p></div>
         <div class="ddx-card ddx-c"><h4>Nephrotic syndrome</h4><p>Massive proteinuria, low albumin, oedema; nephrology referral; treat underlying glomerulonephritis</p></div>
       </div>
@@ -1538,9 +1538,9 @@ body.mode-clinic .sca-only{display:none!important}
           </tr>
           <tr>
             <td style="font-weight:600">Hyponatraemia with suspected malignancy (lung, lymphoma, CNS)</td>
-            <td><span class="ref-urg rurg-2">2WW cancer pathway</span></td>
-            <td style="font-size:12px">Complete 2WW referral form simultaneously with managing sodium; document weight loss, smoking history, CXR findings; fluid restrict in the interim; advise patient honestly that further investigation is needed</td>
-            <td style="font-size:12px;color:var(--r)">Do NOT reassure patient that hyponatraemia is definitely benign until malignancy excluded; do NOT delay 2WW referral to wait for sodium to normalise first</td>
+            <td><span class="ref-urg rurg-2">Suspected cancer pathway</span></td>
+            <td style="font-size:12px">Complete suspected cancer pathway referral form simultaneously with managing sodium; document weight loss, smoking history, CXR findings; fluid restrict in the interim; advise patient honestly that further investigation is needed</td>
+            <td style="font-size:12px;color:var(--r)">Do NOT reassure patient that hyponatraemia is definitely benign until malignancy excluded; do NOT delay suspected cancer pathway referral to wait for sodium to normalise first</td>
           </tr>
           <tr>
             <td style="font-weight:600">Cirrhosis or heart failure with refractory hyponatraemia</td>
@@ -2914,8 +2914,8 @@ function calcDrug(){
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
     main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
+    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -3011,7 +3011,7 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=104"></script>
+<script src="../assets/site.js?v=105"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 

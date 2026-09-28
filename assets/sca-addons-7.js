@@ -25,7 +25,7 @@
    "reason": "Worsening acne with scarring. Requesting isotretinoin (\"Roaccutane\")."
   },
   "knowledge": {
-   "guideline": "NICE NG198 (acne vulgaris, 2021, last updated August 2026) · MHRA Drug Safety Update, October 2023 (isotretinoin) · NICE NG225 (self-harm, 2022) · NICE NG222 (depression in adults, 2022) · BNF",
+   "guideline": "NICE NG198 (acne vulgaris, 2021, last updated August 2026) · MHRA Drug Safety Update, October 2023 (isotretinoin) · NICE NG225 (self-harm, 2022) · NICE NG222 (depression in adults, 2022, updated December 2025) · BNF",
    "summary": "Moderate to severe acne with scarring and major psychological distress warrants a step-up now and referral to a consultant dermatologist-led team for isotretinoin. The suicidal thoughts behind \"it’s ruining my life\" must be asked about directly and managed in their own right.",
    "points": [
     {
@@ -2065,7 +2065,7 @@
     },
     {
      "h": "Why speed matters",
-     "t": "Early disease-modifying treatment, started by rheumatology, reduces joint damage and disability. NICE QS33: assessment in a rheumatology service within 3 weeks of referral."
+     "t": "Early disease-modifying treatment, started by rheumatology, reduces joint damage and disability. NICE QS33 (2013, updated January 2020): referral to rheumatology services within 3 working days of presenting in primary care, and conventional DMARD monotherapy started within 6 weeks of referral."
     }
    ]
   },
@@ -3585,7 +3585,7 @@
    "reason": "Telephone consultation about a lump sensation in her throat."
   },
   "knowledge": {
-   "guideline": "NICE NG12 (updated April 2026) — upper GI and head and neck · NICE CG184 (GORD and dyspepsia in adults, 2014, updated 2019) · NICE CG123 (common mental health problems, 2011)",
+   "guideline": "NICE NG12 (updated April 2026) — upper GI and head and neck · NICE CG184 (GORD and dyspepsia in adults, 2014, updated 2019) · NICE CG123 (common mental health problems, 2011; withdrawn May 2024)",
    "summary": "A midline lump sensation between meals, eased by eating, with throat-clearing and no true dysphagia or other red flags, is globus pharyngeus. Make a positive diagnosis, explain why it points away from cancer, treat contributors, and safety-net precisely.",
    "points": [
     {
@@ -3606,7 +3606,7 @@
     },
     {
      "h": "Health anxiety is part of the treatment",
-     "t": "Name the anxiety without dismissing the symptom. Explain that undirected tests rarely settle health anxiety and can find incidental results. Offer NHS Talking Therapies (self-referral) for persistent anxiety, in line with NICE CG123 stepped care."
+     "t": "Name the anxiety without dismissing the symptom. Explain that undirected tests rarely settle health anxiety and can find incidental results. Offer NHS Talking Therapies (self-referral) for persistent anxiety, in line with stepped care (NICE CG113 for anxiety disorders; CG123 was withdrawn in 2024)."
     },
     {
      "h": "When to refer",
@@ -5098,7 +5098,7 @@
    "reason": "Telephone call for her blood result. Told by reception her red cells are “large”."
   },
   "knowledge": {
-   "guideline": "NICE NG239 (vitamin B12 deficiency in over 16s, 2024) · NICE NG145 (thyroid disease, 2019) · NICE PH24 (alcohol-use disorders: prevention, 2010) · NICE CG115 (alcohol-use disorders: dependence, 2011) · NICE CG100 (alcohol-use disorders: physical complications, 2010) · UK CMO low-risk drinking guidelines (2016) · NICE NG222 (depression in adults, 2022)",
+   "guideline": "NICE NG239 (vitamin B12 deficiency in over 16s, 2024) · NICE NG145 (thyroid disease, 2019) · NICE PH24 (alcohol-use disorders: prevention, 2010) · NICE CG115 (alcohol-use disorders: dependence, 2011) · NICE CG100 (alcohol-use disorders: physical complications, 2010) · UK CMO low-risk drinking guidelines (2016) · NICE NG222 (depression in adults, 2022, updated December 2025)",
    "summary": "An MCV of 105 with a normal haemoglobin, white count and platelets is a finding to explain, not a sign of leukaemia. Work up the common causes, take a non-judgemental alcohol history, and respond to the grief behind the drinking.",
    "points": [
     {
@@ -6098,7 +6098,7 @@
    "reason": "Video appointment to discuss his liver blood test. Works as an accountant."
   },
   "knowledge": {
-   "guideline": "NICE NG49 (non-alcoholic fatty liver disease, 2016) · BSG/BASL abnormal liver blood tests guideline (Newsome et al., 2018) · NICE PH38 (type 2 diabetes: prevention in people at high risk, 2012) · NICE NG136 (hypertension, 2019) · NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · NICE NG246 (overweight and obesity management, 2025)",
+   "guideline": "NICE NG49 (MASLD, formerly NAFLD; updated July 2026) · BSG/BASL abnormal liver blood tests guideline (Newsome et al., 2018) · NICE PH38 (type 2 diabetes: prevention in people at high risk, 2012) · NICE NG136 (hypertension, 2019) · NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · NICE NG246 (overweight and obesity management, 2025)",
    "summary": "A persistently raised ALT with central obesity, raised triglycerides, borderline BP and HbA1c in the high-risk range, minimal alcohol and a negative liver screen is fatty liver disease driven by metabolism (NAFLD, now also called MASLD). Assess fibrosis, not just the ALT, and treat the whole cardiometabolic picture without blame.",
    "points": [
     {
@@ -7063,7 +7063,7 @@
    "reason": "Video consultation requesting stronger pain relief."
   },
   "knowledge": {
-   "guideline": "NICE NG59 (low back pain and sciatica, 2016, updated July 2026) · NICE NG215 (medicines associated with dependence or withdrawal symptoms, 2022) · Faculty of Pain Medicine Opioids Aware (2026 update) · MHRA Drug Safety Update (September 2020) · NICE NG222 (depression in adults, 2022)",
+   "guideline": "NICE NG59 (low back pain and sciatica, 2016, updated July 2026) · NICE NG215 (medicines associated with dependence or withdrawal symptoms, 2022) · Faculty of Pain Medicine Opioids Aware (2026 update) · MHRA Drug Safety Update (September 2020) · NICE NG222 (depression in adults, 2022, updated December 2025)",
    "summary": "Needing more opioid for less effect usually means tolerance and dependence, not undertreatment. For chronic low back pain, do not escalate: validate the pain, treat mood and function, and agree a gradual, supported reduction.",
    "points": [
     {
@@ -7587,7 +7587,7 @@
     },
     {
      "h": "Smoking",
-     "t": "NICE NG209: give very brief advice and offer referral to stop smoking services; varenicline, combination nicotine replacement and nicotine-containing e-cigarettes are all options. Stopping improves treatment outcomes."
+     "t": "NICE NG209: give very brief advice and offer referral to stop smoking services; varenicline, cytisinicline (cytisine), combination nicotine replacement and nicotine-containing e-cigarettes are all options. Stopping improves treatment outcomes."
     },
     {
      "h": "Alcohol",

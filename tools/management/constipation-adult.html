@@ -29,7 +29,7 @@ MG.render({
   meta:[
     {t:"British Dietetic Association — dietary management of chronic constipation in adults (2025)"},
     {t:"No bulk-forming in opioid-induced or impaction", tone:"tw"},
-    {t:"NG12: change in habit → FIT (≥10 µg Hb/g → 2WW)", tone:"tw"},
+    {t:"NG12: change in habit → FIT (≥10 µg Hb/g → refer)", tone:"tw"},
     {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
   lead:'<div class="mg-layers"><a href="#confirm"><b>Confirm</b><small>Drugs · red flags</small></a><a href="#lifestyle"><b>Non-drug</b><small>Fibre · position</small></a><a href="#ladder"><b>Ladder</b><small>Bulk → osmotic → stim</small></a><a href="#review"><b>Titrate</b><small>Then withdraw</small></a><a href="#refer"><b>Refer</b><small>NG12 · refractory</small></a></div>',
@@ -40,7 +40,7 @@ MG.render({
     {tone:"amber", h:"Check the drug list before the laxative", html:"Opioids, iron, calcium-channel blockers, antimuscarinics — plus hypothyroidism, hypercalcaemia, diabetes, IBS and mechanical causes. Identifying and switching a constipating medicine treats the cause rather than the symptom, and is quicker than any titration."},
     {tone:"green", h:"Fibre without fluid makes it worse", html:"Increase dietary fibre GRADUALLY to avoid bloating, with adequate fluid alongside — fibre without fluid worsens things. Plus the mechanical tricks that genuinely help: respond to the urge, an unhurried routine after meals to use the gastrocolic reflex, and knees above hips on a footstool, leaning forward."},
     {tone:"blue", h:"Titrate to effect, then withdraw gradually", html:"Once regular soft stools are achieved, titrate DOWN and withdraw gradually rather than stopping abruptly, maintaining the lifestyle measures. Stopping suddenly is why patients conclude they need laxatives permanently."},
-    {tone:"purple", h:"🟣 NICE NG12 — the colorectal route", html:"<b>Offer FIT</b> for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, or an abdominal mass → FIT, with a 2WW referral at ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT. Restated in <a href='#refer'>Refer</a>."}
+    {tone:"purple", h:"🟣 NICE NG12 — the colorectal route", html:"<b>Offer FIT</b> for a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, or an abdominal mass → FIT, with a suspected cancer pathway referral at ≥10 µg Hb/g; a rectal mass → referral without waiting for FIT. Restated in <a href='#refer'>Refer</a>."}
   ],
   pathwaySub:"Five steps, and the first two are what prevent harm.",
   pathway:[
@@ -127,7 +127,7 @@ MG.render({
     {id:"refer", nav:"Refer", title:"When to refer",
      blocks:[
        {b:"cards", items:[
-         {tone:"purple", h:"2WW · NICE NG12", html:"Alarm features suggesting colorectal cancer — a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, or an abdominal mass → FIT, with a 2WW referral at ≥10 µg Hb/g; a rectal mass → 2WW without waiting for FIT."},
+         {tone:"purple", h:"Suspected cancer · NICE NG12", html:"Alarm features suggesting colorectal cancer — a change in bowel habit or iron-deficiency anaemia at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, or an abdominal mass → FIT, with a suspected cancer pathway referral at ≥10 µg Hb/g; a rectal mass → referral without waiting for FIT."},
          {tone:"amber", h:"Refractory", html:"Chronic constipation unresponsive to optimised lifestyle plus combination laxatives — consider prucalopride or specialist referral."},
          {tone:"red", h:"Impaction not resolving", html:"<b>Faecal impaction failing oral and rectal treatment.</b>"},
          {tone:"blue", h:"Secondary cause", html:"Suspected metabolic, neurological or structural cause needing investigation."},

@@ -115,13 +115,13 @@
     ],
     followUp: 'Review response; examine and biopsy/refer if persistent, or any suspicious lesion. Lichen sclerosus \u2192 ongoing follow-up. Recurrent candida \u2192 check glucose.',
     redFlags: [
-      'Lump, ulcer, persistent white/thickened plaque, bleeding, or non-healing lesion \u2192 exclude lichen sclerosus / VIN / vulval cancer \u2192 examine \u00b1 2WW.',
+      'Lump, ulcer, persistent white/thickened plaque, bleeding, or non-healing lesion \u2192 exclude lichen sclerosus / VIN / vulval cancer \u2192 examine \u00b1 suspected cancer pathway referral.',
     ],
     emisText: `Pruritus vulvae (treat the cause):
 - All: emollient/soap substitute, avoid irritants (soaps/wipes), loose cotton, pat dry.
 - Candida: clotrimazole/fluconazole. Dermatitis/lichen simplex: short topical steroid. Atrophy: topical oestrogen.
 - Lichen sclerosus: potent topical steroid (e.g. clobetasol) + follow-up.
-- Recurrent candida \u2192 check glucose. Lump/ulcer/white plaque/non-healing \u2192 examine, exclude VIN/cancer (2WW).`,
+- Recurrent candida \u2192 check glucose. Lump/ulcer/white plaque/non-healing \u2192 examine, exclude VIN/cancer (suspected cancer pathway referral).`,
     sources: [
       { label:'BASHH', url:'https://www.bashh.org/guidelines' },
     ],
@@ -318,15 +318,15 @@
       'If they keep recurring, we may do blood tests to look for low iron, B12 or folate, or coeliac disease.',
       'One important rule: any ulcer or sore that hasn\u2019t healed within 3 weeks must be checked urgently to rule out mouth cancer \u2014 please come back.',
     ],
-    followUp: 'Symptomatic relief; screen/treat causes if recurrent. ANY ulcer >3 weeks \u2192 urgent (2WW) referral. Severe/refractory \u2192 oral medicine.',
+    followUp: 'Symptomatic relief; screen/treat causes if recurrent. ANY ulcer >3 weeks \u2192 suspected cancer pathway referral. Severe/refractory \u2192 oral medicine.',
     redFlags: [
-      'Single ulcer/oral lesion >3 weeks, induration, or non-healing \u2192 2-week-wait head & neck referral.',
+      'Single ulcer/oral lesion >3 weeks, induration, or non-healing \u2192 head & neck suspected cancer pathway referral.',
       'Recurrent ulcers + systemic features (GI symptoms, genital ulcers, eye signs) \u2192 investigate (IBD/Beh\u00e7et\u2019s/coeliac).',
     ],
     emisText: `Aphthous (mouth) ulcers:
 - Most benign/self-limiting (minor heal <2 wks). Symptomatic: benzydamine spray/rinse, chlorhexidine 0.2%; topical steroid (hydrocortisone oromucosal/beclometasone) during episodes; SLS-free toothpaste.
 - Recurrent/severe: screen FBC, ferritin, B12, folate, coeliac (\u00b1 IBD/Beh\u00e7et's); correct deficiency.
-- 3-WEEK RULE: any ulcer/lesion >3 wks \u2192 urgent 2WW (oral cancer). Refractory \u2192 oral medicine.`,
+- 3-WEEK RULE: any ulcer/lesion >3 wks \u2192 suspected cancer pathway referral (oral cancer). Refractory \u2192 oral medicine.`,
     sources: [
       { label: 'NICE NG12 (updated April 2026) — Suspected cancer (oral lesions)', url: 'https://www.nice.org.uk/guidance/ng12' },
     ],

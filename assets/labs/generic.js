@@ -5,7 +5,7 @@
    ============================================ */
 RGPLabs.register('generic', {
   title: 'Lab results — generic adult primary care',
-  subtitle: 'Enter values (or paste from EMIS / SystmOne). Tool surfaces per-result actions: emergency, 2WW, urgent, treat, drug review, repeat, refer, recall, annotate — each anchored to UK guidance.',
+  subtitle: 'Enter values (or paste from EMIS / SystmOne). Tool surfaces per-result actions: emergency, suspected cancer pathway referral, urgent, treat, drug review, repeat, refer, recall, annotate — each anchored to UK guidance.',
   guideline: 'NICE NG12 (updated April 2026) · NG203 · NG145 · NG28 · BSH · UK Kidney Association',
 
   context: [
@@ -179,10 +179,10 @@ RGPLabs.register('generic', {
               when:(v) => v > 50
             },
             {
-              action:'cancer', label:'Persistent leucocytosis / unexplained ↑ — haematology 2WW',
-              rule:'WCC >20 without clear infective cause',
-              timeframe:'2 weeks',
-              source:'NICE NG12 (updated April 2026) haematological · BSH',
+              action:'urgent', label:'Persistent unexplained leucocytosis — urgent blood film; discuss with haematology',
+              rule:'WCC >20 without clear infective cause. No NICE NG12 criterion rests on the WCC alone: request an urgent blood film and discuss with haematology. If the FBC or film suggests leukaemia, or NG12 leukaemia features are present (pallor, persistent fatigue, unexplained fever, persistent or recurrent infection, generalised lymphadenopathy, unexplained bruising, bleeding or petechiae, hepatosplenomegaly), follow the NG12 route: discuss with haematology the same day',
+              timeframe:'Film + haematology advice within days',
+              source:'NICE NG12 (updated April 2026) leukaemia (features route) · BSH',
               when:(v, ctx) => v > 20 && !ctx.symptoms
             },
             {
@@ -224,10 +224,10 @@ RGPLabs.register('generic', {
           pathways:[{slug:'lymphocytosis',label:'Lymphocytosis'},{slug:'lymphopenia',label:'Lymphopenia'}],
           rules: [
             {
-              action:'cancer', label:'Lymphocytosis >20 — exclude CLL (haematology 2WW)',
-              rule:'Lymphocytes >20 (or >5 persisting) — film + immunophenotyping',
-              timeframe:'2 weeks',
-              source:'NICE NG12 (updated April 2026) haematological · BSH CLL',
+              action:'urgent', label:'Lymphocytosis >20 — exclude CLL (film + immunophenotyping; discuss with haematology)',
+              rule:'Lymphocytes >20 (or >5 persisting) — film + immunophenotyping; discuss with haematology. No NICE NG12 criterion rests on the lymphocyte count alone. If there is unexplained lymphadenopathy or splenomegaly, consider a suspected cancer pathway referral for lymphoma (NICE NG12 (updated April 2026))',
+              timeframe:'Film + haematology advice within 1–2 weeks',
+              source:'BSH CLL · NICE NG12 (updated April 2026) lymphoma (lymphadenopathy / splenomegaly route)',
               patientPhrase:'"One type of your white cells is high — usually reactive, but we should check it with a blood-specialist test."',
               noteTemplate:'Lymphocytosis. Lymph [value].\nBlood film + flow cytometry/immunophenotyping. If persistent / >5 → CLL workup. Reactive causes: viral (EBV/CMV), pertussis.',
               when:(v) => v > 20
@@ -1090,10 +1090,10 @@ RGPLabs.register('generic', {
               when:(v, ctx) => v > 100 && ctx.symptoms
             },
             {
-              action:'cancer', label:'Raised CRP + B-symptoms — haematological 2WW',
-              rule:'CRP >30 + drenching night sweats / weight loss',
-              timeframe:'2 weeks',
-              source:'NICE NG12 (updated April 2026) haematological',
+              action:'urgent', label:'Raised CRP + B-symptoms — urgent assessment; discuss with haematology',
+              rule:'CRP >30 + drenching night sweats / weight loss. Examine for lymphadenopathy and splenomegaly; urgent FBC, film, LDH and CXR; discuss with haematology. NICE NG12 (updated April 2026) routes apply only with their own features: unexplained lymphadenopathy or splenomegaly → consider a suspected cancer pathway referral for lymphoma; unexplained weight loss → follow the NG12 weight-loss recommendations',
+              timeframe:'Within 1–2 weeks',
+              source:'NICE NG12 (updated April 2026) lymphoma and weight-loss routes · BSH',
               when:(v, ctx) => v > 30 && ctx.symptoms
             }
           ]
@@ -1341,7 +1341,7 @@ RGPLabs.register('generic', {
               action:'cancer', label:'CA-125 at/above NICE NG12 (updated April 2026) age threshold — urgent USS (ovarian pathway)',
               rule:'Age 40+: urgent direct-access USS if CA-125 ≥35 (40–49), ≥31 (50–59), ≥24 (60–69), ≥25 (70–79) or ≥31 IU/mL (80+); under 40, do not use CA-125 alone — consider USS for persistent symptoms. Symptoms: bloating, early satiety, pelvic/abdominal pain, urinary urgency',
               timeframe:'Urgent USS (within 2 weeks)',
-              source:'NICE NG12 (updated April 2026) ovarian / CG122',
+              source:'NICE NG12 (updated April 2026) ovarian (primary-care CA125 criteria; moved from CG122 in April 2026)',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
               patientPhrase:'"This marker is raised — combined with your symptoms we need an ultrasound and, depending on the result, an urgent gynaecology referral. It often turns out to be benign."',
               noteTemplate:'? Ovarian cancer. CA-125 [value].\nPelvic + abdominal USS; calculate RMI. If USS suggests ovarian cancer, or ascites/pelvic mass → gynaecology suspected cancer pathway referral now. Symptoms: bloating, early satiety, pelvic pain, urinary urgency (NICE NG12, updated April 2026).',

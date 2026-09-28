@@ -31,7 +31,7 @@ MG.render({
     {t:"KDIGO AKI 2012 \u00b7 staging"},
     {t:"NICE QS76 \u00b7 3-month review"},
     {t:"Think Kidneys \u00b7 sick-day rules"},
-    {t:"2WW \u00b7 NG12 myeloma", tone:"tw"},
+    {t:"NG12 myeloma: very urgent tests", tone:"tw"},
     {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
   lead:'<div class="mg-layers"><a href="#confirm"><b>Stage it</b><small>KDIGO vs baseline</small></a><a href="#severe"><b>The killers</b><small>K\u207a \u00b7 overload \u00b7 uraemia</small></a><a href="#cause"><b>Find the cause</b><small>Pre \u00b7 intrinsic \u00b7 post</small></a><a href="#refer"><b>Refer</b><small>Who can stay at home</small></a></div>',
@@ -85,7 +85,7 @@ MG.render({
          {tone:"red", h:"Rapidly rising creatinine", html:"Creatinine <b>doubled within 24\u201348 hours</b>, or a rise <b>&gt;354 \u00b5mol/L</b> \u2192 <b>same-day medical</b>."},
          {tone:"amber", h:"Obstructive uropathy", html:"Bilateral flank pain, bladder distension, unable to pass urine despite the urge \u2192 <b>same-day urology</b>."},
          {tone:"amber", h:"Nephrotoxin exposure with AKI", html:"Recent high-dose NSAID, contrast or aminoglycoside with a rising creatinine in an unwell patient \u2192 <b>same-day</b>."},
-         {tone:"purple", h:"2WW \u00b7 NICE NG12 \u2014 myeloma", html:"AKI with a raised calcium and anaemia or bone pain, aged 60 and over \u2192 FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains together (urine Bence Jones if free light chain testing is not available), and refer on a suspected cancer pathway if the results suggest myeloma. Myeloma is an intrinsic-renal cause that is repeatedly missed because each abnormality looks explicable on its own."}
+         {tone:"purple", h:"Very urgent tests \u00b7 NICE NG12 \u2014 myeloma", html:"AKI with a raised calcium and anaemia or bone pain, aged 60 and over \u2192 FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains together (urine Bence Jones if free light chain testing is not available), and refer on a suspected cancer pathway if the results suggest myeloma. Myeloma is an intrinsic-renal cause that is repeatedly missed because each abnormality looks explicable on its own."}
        ]},
        {b:"why", html:"AKI kills by three mechanisms. <b>(1) Hyperkalaemia</b> causes fatal arrhythmias \u2014 K\u207a \u22656.5 warrants emergency ECG and IV treatment. <b>(2) Fluid overload</b> causes pulmonary oedema. <b>(3) Uraemia</b> accumulates toxins causing pericarditis, encephalopathy and coagulopathy. NG148 asks for discussion with a nephrologist as soon as possible and within 24 hours for stage 3 AKI, and stage 2 usually needs same-day hospital assessment. Missing severe AKI in primary care is a leading cause of preventable death and a frequent source of medico-legal claims \u2014 the sick-day-rules campaign exists because this safety screen was historically underpowered."}
      ]},
@@ -95,7 +95,7 @@ MG.render({
        {b:"table", head:["Category","Causes and clues","Action"], rows:[
          ["<b>Pre-renal (about 70%)</b> \u2014 most reversible","Reduced renal perfusion: dehydration, vomiting and diarrhoea, haemorrhage, sepsis, cardiac failure, hepatorenal syndrome, and <b>NSAID/ACEi/ARB/diuretic-induced</b>. <b>Clue: concentrated urine, dry mucous membranes, low BP, tachycardia</b>","Restore volume \u2014 oral or IV fluids; treat sepsis"],
          ["<b>Intrinsic (about 25%)</b>","<b>Tubular (ATN)</b> \u2014 ischaemia, nephrotoxins (aminoglycosides, contrast, myoglobin, NSAIDs). <b>Glomerular</b> \u2014 rapidly progressive GN (<b>haematuria + proteinuria + casts</b>). <b>Vascular</b> \u2014 renal artery stenosis, TTP/HUS. <b>Interstitial nephritis (AIN)</b> \u2014 drug-induced (penicillin, NSAIDs, PPIs). Also <b>myeloma</b> and <b>rhabdomyolysis</b>","Dipstick + urine ACR/PCR; <b>if GN suspected \u2192 urgent nephrology</b>"],
-         ["<b>Post-renal (about 5%)</b>","Obstruction: BPH, pelvic malignancy, retroperitoneal fibrosis, stones, urethral stricture, single kidney. Clue: poor stream, nocturia, palpable bladder, bilateral hydronephrosis on USS","<b>Urgent renal-tract USS</b>; catheterise for outflow obstruction. <b>2WW if malignancy suspected</b>"]
+         ["<b>Post-renal (about 5%)</b>","Obstruction: BPH, pelvic malignancy, retroperitoneal fibrosis, stones, urethral stricture, single kidney. Clue: poor stream, nocturia, palpable bladder, bilateral hydronephrosis on USS","<b>Urgent renal-tract USS</b>; catheterise for outflow obstruction. <b>Suspected cancer pathway referral by site if malignancy suspected</b>"]
        ]},
        {b:"dl", rows:[
          ["Key history","Recent illness and fluid intake; <b>medications (NSAIDs, ACEi/ARB, diuretics, antibiotics, contrast)</b>; prior CKD; urinary symptoms; <b>systemic features such as rash or arthralgia \u2014 vasculitis or AIN</b>; BP medication changes"],
@@ -147,7 +147,7 @@ MG.render({
          {step:"2", title:"Dietary potassium restriction", when:"ECG normal",
           fromLabel:"first non-drug step",
           html:"Avoid bananas, oranges, tomatoes, potatoes, leafy greens, nuts, chocolate, and <b>salt substitutes (LoSalt, NoSalt)</b>. <b>Dietary change alone achieves a 0.3\u20130.5 mmol/L reduction.</b>"},
-         {step:"3", title:"Potassium binder", when:"persistent K\u207a \u22656.0 in CKD 3b\u20135 or heart failure (NICE TA599 / TA623)",
+         {step:"3", title:"Potassium binder", when:"persistent K\u207a \u22655.5 in CKD 3b\u20135 or heart failure for sodium zirconium cyclosilicate (NICE TA1148, 2026), \u22656.0 for patiromer (NICE TA623)",
           fromLabel:"usually specialist-initiated",
           html:"<b>Patiromer (Veltassa) 8.4 g OD</b>, or sodium zirconium cyclosilicate (Lokelma) 10 g TDS for up to 72 hours then 5 g OD. Both may need shared care. <b>Now preferred over calcium resonium</b> for outpatient management \u2014 better tolerability and faster action."},
          {step:"4", title:"Recheck and escalate", when:"24\u201348 hours",

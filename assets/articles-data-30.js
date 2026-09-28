@@ -51,7 +51,7 @@
     referral:[
       'Diagnosis and treatment of caries/toothache → dental services (urgent dental care for severe pain/infection)',
       'Dental abscess/spreading infection → urgent dental ± hospital if systemic/airway involvement (see dental abscess)',
-      'Persistent oral ulceration (>3 weeks) or a suspicious oral lesion → urgent suspected oral-cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Persistent oral ulceration (>3 weeks) or a suspicious oral lesion → suspected cancer pathway referral for oral cancer (NICE NG12 (updated April 2026))',
       'Barriers to dental access → signpost NHS/urgent dental services'],
     source:'Delivering Better Oral Health (OHID, 4th edition 2021; formerly PHE)' },
 
@@ -178,7 +178,7 @@
       'Faltering growth/feeding concerns → feeding/infant assessment',
       'Persistent feeding problems despite division → lactation/feeding support and review',
       'Asymptomatic tongue-tie → reassure, no intervention'],
-    source:'NICE IPG149 (Division of ankyloglossia (tongue-tie) for breastfeeding, 2005) / UNICEF Baby Friendly — Tongue-tie' },
+    source:'NICE HTG95 (Division of ankyloglossia (tongue-tie) for breastfeeding, 2005; formerly IPG149) / UNICEF Baby Friendly — Tongue-tie' },
 
   { id:'motion-sickness', title:'Motion sickness (travel sickness)', category:'General', icon:'🚗',
     overview:'Nausea and related symptoms triggered by real or perceived movement, caused by a sensory mismatch between the vestibular system, vision and proprioception. It is common, especially in children, and benign. Management is mostly behavioural, with medication for prevention when needed.',

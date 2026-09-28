@@ -36,7 +36,7 @@ MedChooser.register('menorrhagia', {
 
   flags: (f) => {
     const out = [];
-    if (f.pmb) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — postmenopausal bleeding (55+): refer on the suspected endometrial/gynae cancer (2WW) pathway; direct-access TVUSS' });
+    if (f.pmb) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — postmenopausal bleeding (55+): refer on the suspected endometrial/gynae cancer pathway; direct-access TVUSS' });
     if (f.imb || f.over45_fail) out.push({ tone:'amber', text:'Persistent IMB/PCB, or ≥45 with treatment failure/risk factors — investigate endometrium (TVUSS ± biopsy / refer) before assuming benign HMB' });
     if (f.large_fibroid) out.push({ tone:'amber', text:'Fibroids ≥3 cm / distorted cavity — refer; LNG-IUS may not be retained; consider GnRH analogues / surgical options' });
     if (f.anaemia) out.push({ tone:'amber', text:'Iron-deficiency anaemia — start iron and treat HMB promptly; check ferritin' });

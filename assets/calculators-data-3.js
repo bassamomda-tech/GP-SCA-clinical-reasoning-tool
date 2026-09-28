@@ -67,7 +67,7 @@
         if (s >= 1) return { label:'Positive — assess further', severity:'med', action:'Ask the "help" question + complete PHQ-9; assess risk.', detail:'Either "yes" warrants fuller assessment.' };
         return { label:'Negative', severity:'low', action:'Depression unlikely currently.', detail:'' };
       },
-      refs:[{ label:'NICE NG222 Depression', url:'https://www.nice.org.uk/guidance/ng222' }],
+      refs:[{ label:'NICE CG91 Depression with a chronic physical health problem (Whooley questions)', url:'https://www.nice.org.uk/guidance/cg91' }, { label:'NICE NG222 Depression (management)', url:'https://www.nice.org.uk/guidance/ng222' }],
     },
 
     {

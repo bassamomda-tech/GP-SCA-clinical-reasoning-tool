@@ -176,7 +176,7 @@ window.SCA_KNOWLEDGE = {
     summary: 'A ≥40-year-old smoker with an unexplained persistent cough, haemoptysis, hoarseness or weight loss needs an urgent CXR and a suspected-cancer pathway — not antibiotics.',
     points: [
       { h:'Who gets an urgent CXR (within 2 weeks)', t:'≥40 with ≥2 unexplained features (cough, fatigue, breathlessness, chest pain, weight loss, appetite loss) — or ≥1 such feature if ever-smoked. Offer urgent CXR.' },
-      { h:'Refer suspected lung cancer (2WW)', t:'Direct suspected-cancer referral if CXR suggests lung cancer, or for anyone ≥40 with unexplained haemoptysis.' },
+      { h:'Refer on the suspected lung cancer pathway', t:'Direct suspected-cancer referral if CXR suggests lung cancer, or for anyone ≥40 with unexplained haemoptysis.' },
       { h:'Don’t be anchored', t:'Resist the patient’s framing (“just antibiotics”). Hoarseness >3 weeks in a smoker also warrants a suspected head-and-neck/laryngeal pathway.' },
       { h:'Name the worry honestly', t:'Use clear lay language about an urgent test “to rule out anything serious” — pick up throwaway cues (a streak of blood) and slow down on them.' },
       { h:'Smoking cessation', t:'Offer cessation support proactively (varenicline/NRT + behavioural support); a prior 4-month quit shows capability.' },
@@ -357,9 +357,9 @@ window.SCA_SC_TASKS = {
     { t:'Discovers ICE', d:'Idea (a lingering chest infection), concern, and expectation (antibiotics).', pts:2 },
     { t:'Plans appropriate tests', d:'Urgent CXR within 2 weeks (not antibiotics); spirometry later if indicated.', pts:1 },
     { t:'Generates & tests hypotheses', d:'Lung cancer, COPD, infection, laryngeal cancer — without anchoring on “just a cough”.', pts:1 },
-    { t:'Rules in/out serious disease', d:'Applied NG12; haemoptysis ≥40 warrants a 2WW; massive haemoptysis is an emergency.', pts:2 },
+    { t:'Rules in/out serious disease', d:'Applied NG12; haemoptysis ≥40 warrants a suspected cancer pathway referral; massive haemoptysis is an emergency.', pts:2 },
     { t:'Reaches a working diagnosis', d:'“We need an urgent test to rule out something serious” — honest, clear language.', pts:2 },
-    { t:'Offers a safe, patient-centred plan', d:'Suspected lung-cancer 2WW pathway + urgent CXR; head-and-neck pathway for hoarseness >3 weeks.', pts:2 },
+    { t:'Offers a safe, patient-centred plan', d:'Lung cancer suspected cancer pathway referral + urgent CXR; head-and-neck pathway for hoarseness >3 weeks.', pts:2 },
     { t:'Offers smoking cessation', d:'Proactively offered varenicline/NRT plus behavioural support.', pts:1 },
     { t:'Provides follow-up and safety net', d:'Named in-person follow-up to give results; A&E for massive haemoptysis or breathlessness at rest.', pts:1 }
   ],

@@ -31,7 +31,7 @@
       {
         id: 'lymphoma_2ww', tier: 'cancer',
         label: 'B-symptoms — drenching sweats + weight loss / lymphadenopathy',
-        action: 'Urgent FBC, film, LDH; haematology 2WW (NICE NG12 (updated April 2026)).',
+        action: 'Urgent FBC, film, LDH; haematology suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
         patientPhrase: '"Night sweats with weight loss and gland swelling need urgent tests to rule out a blood-cell cancer."',
         source: 'NICE NG12 (updated April 2026) §1.10', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => (i.drenching && i.weight_loss) || i.lymphadenopathy,
@@ -93,9 +93,9 @@
         guideUrl: 'https://www.nice.org.uk/guidance/ng145', guideLabel: 'NICE NG145' },
 
       { id: 'lymphoma', name: 'Lymphoma / malignancy', summary: 'Drenching sweats + weight loss + lymphadenopathy', baseline: 1, category: 'cant-miss',
-        keyExam: 'Lymphadenopathy, hepatosplenomegaly.', nextIx: '\u26A1 FBC, film, LDH; haematology 2WW.',
+        keyExam: 'Lymphadenopathy, hepatosplenomegaly.', nextIx: '\u26A1 FBC, film, LDH; haematology suspected cancer pathway referral.',
         patientPhrase: 'These features together need urgent tests to exclude a blood-cell cancer.',
-        guideUrl: '', redFlagAction: '\u26A1 Haematology 2WW' },
+        guideUrl: '', redFlagAction: '\u26A1 Haematology suspected cancer pathway referral' },
       { id: 'phaeo', name: 'Phaeochromocytoma', summary: 'Paroxysmal sweats + palpitations + headache + hypertension', baseline: 1, category: 'cant-miss',
         keyExam: 'Paroxysmal hypertension.', nextIx: '\u26A1 Plasma/urine metanephrines; endocrine.',
         patientPhrase: 'Episodes of sweating, palpitations and high blood pressure can rarely signal an adrenal tumour — a test screens for it.',

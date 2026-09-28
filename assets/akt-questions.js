@@ -56,8 +56,8 @@ window.AKT_QUESTIONS = [
   // ---------- Gastro ----------
   { id:'gi1', cat:'Gastrointestinal',
     stem:'A 58-year-old man has had looser, more frequent stools for 6 weeks with 5 kg weight loss and intermittent rectal bleeding. What is the single most important next step?',
-    opts:['Prescribe loperamide','Trial of a low-FODMAP diet','FIT test and urgent (2WW) colorectal referral','Reassure — likely IBS','Course of mebeverine'],
-    ans:2, exp:'A persistent change in bowel habit in a 50+ patient with weight loss and rectal bleeding is a colorectal-cancer red flag — arrange FIT and refer on the suspected cancer (2WW) pathway if FIT ≥10 µg Hb/g, or sooner despite a lower result if clinical concern is strong (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56). Do not anchor on IBS.',
+    opts:['Prescribe loperamide','Trial of a low-FODMAP diet','FIT test and colorectal suspected cancer pathway referral','Reassure — likely IBS','Course of mebeverine'],
+    ans:2, exp:'A persistent change in bowel habit in a 50+ patient with weight loss and rectal bleeding is a colorectal-cancer red flag — arrange FIT and refer on the suspected cancer pathway if FIT ≥10 µg Hb/g, or sooner despite a lower result if clinical concern is strong (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56). Do not anchor on IBS.',
     link:'../cases/diarrhoea.html' },
   { id:'gi2', cat:'Gastrointestinal',
     stem:'A 40-year-old has epigastric pain and reflux for 8 weeks. There are no alarm features. H. pylori stool antigen is positive. What is the most appropriate management?',
@@ -196,7 +196,7 @@ window.AKT_QUESTIONS = [
     link:'../cases/haematological-cancers.html' },
   { id:'ca2', cat:'Cancer & Haematology',
     stem:'A 61-year-old man has 3 months of generalised itch with no rash (only scratch marks), drenching night sweats, weight loss and palpable lymph nodes. What is the most appropriate action?',
-    opts:['Emollient and sedating antihistamine, review in 6 weeks','Examine nodes/spleen, FBC/film/LDH, and urgent (2WW) referral','Topical steroid','Reassure as dry skin','Phototherapy referral'],
+    opts:['Emollient and sedating antihistamine, review in 6 weeks','Examine nodes/spleen, FBC/film/LDH, and suspected cancer pathway referral','Topical steroid','Reassure as dry skin','Phototherapy referral'],
     ans:1, exp:'Generalised itch WITHOUT a rash plus B-symptoms (night sweats, weight loss) and lymphadenopathy is a red flag for lymphoma. Examine nodes/spleen, do FBC/film/LDH/ESR and refer urgently (NICE NG12 (updated April 2026)). Itch without a rash signals systemic disease.',
     link:'../cases/pruritus.html' },
   // ---------- Professional / ethics / safeguarding ----------
@@ -327,8 +327,8 @@ window.AKT_QUESTIONS = [
   // ---------- Women's health extra ----------
   { id:'wh4', cat:'Women\u2019s Health',
     stem:'A 60-year-old woman, 9 years postmenopausal, reports a single episode of vaginal bleeding. What is the most appropriate action?',
-    opts:['Reassure \u2014 likely atrophic','Urgent (2WW) referral for suspected endometrial cancer','Repeat in 3 months','Start HRT','Prescribe vaginal oestrogen and review'],
-    ans:1, exp:'Postmenopausal bleeding is endometrial cancer until proven otherwise \u2014 refer on the suspected-cancer (2WW) pathway for transvaginal ultrasound \u00b1 biopsy (NICE NG12 (updated April 2026); age 55 and over), even if a single episode.',
+    opts:['Reassure \u2014 likely atrophic','Suspected cancer pathway referral for endometrial cancer','Repeat in 3 months','Start HRT','Prescribe vaginal oestrogen and review'],
+    ans:1, exp:'Postmenopausal bleeding is endometrial cancer until proven otherwise \u2014 refer on the suspected cancer pathway for transvaginal ultrasound \u00b1 biopsy (NICE NG12 (updated April 2026); age 55 and over), even if a single episode.',
     link:'../cases/menopause.html' },
   // ---------- Cardiovascular extra ----------
   { id:'cv4', cat:'Cardiovascular',
@@ -349,7 +349,7 @@ window.AKT_QUESTIONS = [
   // ---------- Respiratory extra ----------
   { id:'rs4', cat:'Respiratory',
     stem:'A 55-year-old smoker has had a cough for 4 weeks and reports a small amount of haemoptysis. Chest examination is normal. What is the most appropriate action?',
-    opts:['Reassure \u2014 likely a chest infection','Suspected lung-cancer (2WW) pathway referral (with urgent chest X-ray)','Course of antibiotics','Cough suppressant and review in a month','Spirometry only'],
+    opts:['Reassure \u2014 likely a chest infection','Suspected cancer pathway referral for lung cancer (with urgent chest X-ray)','Course of antibiotics','Cough suppressant and review in a month','Spirometry only'],
     ans:1, exp:'Unexplained haemoptysis at 40 or over is itself a suspected lung-cancer pathway referral; an unexplained persistent cough in a smoker aged 40+ warrants an urgent chest X-ray (NICE NG12 (updated April 2026)). Do not attribute it to infection without imaging.',
     link:'../cases/chest-infections.html' },
   { id:'rs5', cat:'Respiratory',
@@ -361,7 +361,7 @@ window.AKT_QUESTIONS = [
   { id:'dm3', cat:'Dermatology',
     stem:'A 70-year-old has a slowly growing, pearly, rolled-edge nodule with central ulceration and telangiectasia on the nose, present for months. What is the most likely diagnosis?',
     opts:['Basal cell carcinoma','Squamous cell carcinoma','Melanoma','Actinic keratosis','Seborrhoeic keratosis'],
-    ans:0, exp:'A pearly, rolled-edged nodule with telangiectasia and central ulceration that grows slowly is a basal cell carcinoma. Refer to dermatology (routine or 2WW per features); BCCs rarely metastasise but are locally destructive.',
+    ans:0, exp:'A pearly, rolled-edged nodule with telangiectasia and central ulceration that grows slowly is a basal cell carcinoma. Refer to dermatology (routine, or suspected cancer pathway referral per features); BCCs rarely metastasise but are locally destructive.',
     link:'../tools/algorithms/pigmented-skin-lesions.html' },
   { id:'dm4', cat:'Dermatology',
     stem:'A 4-month-old has dry, itchy, erythematous patches on the face and flexures. What is the appropriate first-line management of atopic eczema?',
@@ -370,7 +370,7 @@ window.AKT_QUESTIONS = [
     link:'../cases/eczema.html' },
   { id:'dm5', cat:'Dermatology',
     stem:'A patient has a changing pigmented mole that is asymmetrical, 8mm, with an irregular border and variable colour. What is the most appropriate action?',
-    opts:['Reassure and review in a year','Cryotherapy','Urgent (2WW) suspected-melanoma referral','Shave biopsy in primary care','Topical steroid'],
+    opts:['Reassure and review in a year','Cryotherapy','Suspected cancer pathway referral for melanoma','Shave biopsy in primary care','Topical steroid'],
     ans:2, exp:'A pigmented lesion scoring on the 7-point checklist (change, irregular shape/colour, >7mm) needs urgent suspected-skin-cancer referral (NICE NG12 (updated April 2026)). Do not curette or shave a suspected melanoma in primary care.',
     link:'../tools/algorithms/pigmented-skin-lesions.html' },
   // ---------- Mental health extra ----------
@@ -496,7 +496,7 @@ window.AKT_QUESTIONS = [
   // ---------- Renal / urology extra ----------
   { id:'rn4', cat:'Renal & Urology',
     stem:'A 55-year-old man has visible (frank) haematuria with no pain and no infection. What is the most appropriate action?',
-    opts:['Reassure and repeat dipstick','Urgent (2WW) referral for suspected bladder/renal cancer','Antibiotics','Increase fluid intake and review','Refer routinely in 3 months'],
+    opts:['Reassure and repeat dipstick','Suspected cancer pathway referral for bladder/renal cancer','Antibiotics','Increase fluid intake and review','Refer routinely in 3 months'],
     ans:1, exp:'Unexplained visible haematuria aged 45 and over (without UTI, or persisting after UTI treatment) warrants urgent suspected-cancer referral for cystoscopy/imaging (NICE NG12 (updated April 2026)). Non-visible haematuria with other features also needs referral.',
     link:'../cases/uti-women.html' },
   { id:'rn5', cat:'Renal & Urology',

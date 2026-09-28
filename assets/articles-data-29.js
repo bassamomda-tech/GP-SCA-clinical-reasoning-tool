@@ -74,7 +74,7 @@
       'Promote testicular self-examination/awareness for early detection',
       'Provide information, psychological support, and survivorship follow-up (and surveillance for the contralateral testis)'],
     referral:[
-      'A non-cystic/suspicious mass in the body of the testis → urgent suspected testicular-cancer (2WW) referral; arrange direct-access scrotal ultrasound to assess (NICE NG12 (updated April 2026))',
+      'A non-cystic/suspicious mass in the body of the testis → suspected cancer pathway referral for testicular cancer; arrange direct-access scrotal ultrasound to assess (NICE NG12 (updated April 2026))',
       'Confirmed/suspected testicular cancer → urology/uro-oncology',
       'Fertility preservation before treatment → sperm storage/fertility services',
       'Acute severe testicular pain (exclude torsion) → emergency surgical assessment'],
@@ -199,7 +199,7 @@
       'Manage post-treatment thyroid hormone replacement, calcium (after total thyroidectomy — hypoparathyroidism risk), and long-term surveillance (including thyroglobulin monitoring for differentiated cancer)',
       'Provide information and psychological support; prognosis for differentiated cancer is generally excellent'],
     referral:[
-      'A rapidly enlarging, hard, or fixed thyroid lump, an unexplained thyroid lump, hoarseness with a thyroid mass, cervical lymphadenopathy with a thyroid nodule, or a thyroid nodule in a child → urgent suspected thyroid-cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'A rapidly enlarging, hard, or fixed thyroid lump, an unexplained thyroid lump, hoarseness with a thyroid mass, cervical lymphadenopathy with a thyroid nodule, or a thyroid nodule in a child → suspected cancer pathway referral for thyroid cancer (NICE NG12 (updated April 2026))',
       'Stridor/compressive symptoms or a rapidly growing hard mass (?anaplastic) → emergency/urgent assessment',
       'Confirmed thyroid cancer → thyroid MDT',
       'Suspected medullary/familial cancer → genetics + endocrinology'],

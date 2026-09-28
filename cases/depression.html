@@ -1136,7 +1136,7 @@ body{background:var(--bg, #f6f2e9) !important}
         <span class="tc-badge tcb-r">GP practice pathway</span>
         <ul class="tc-items">
           <li class="tc-item"><strong>Mild depression (PHQ-9 5–9)</strong><em>Watchful waiting, guided self-help, NHS Talking Therapies Step 2 referral, exercise prescription, follow-up in 2–4 weeks</em></li>
-          <li class="tc-item"><strong>Moderate depression (PHQ-9 10–14)</strong><em>NHS Talking Therapies Step 3 referral (CBT/IPT) + consider SSRI; mandatory 1–2 week review after starting medication</em></li>
+          <li class="tc-item"><strong>Moderate depression (PHQ-9 10–14)</strong><em>NHS Talking Therapies Step 3 referral (CBT/IPT); SSRI only if the person prefers it (NICE NG222 1.5.3); mandatory 1–2 week review after starting medication</em></li>
           <li class="tc-item"><strong>Recurrent depression — stable, no current risk</strong><em>Long-term maintenance monitoring, medication review, annual PHQ-9, duration of treatment discussion</em></li>
           <li class="tc-item"><strong>Subthreshold depression (PHQ-9 &lt;5)</strong><em>Active monitoring, lifestyle advice, psychosocial intervention, watchful waiting, review in 4–8 weeks</em></li>
           <li class="tc-item"><strong>Adjustment disorder</strong><em>Supportive counselling, NHS Talking Therapies low-intensity, watchful waiting, psychosocial support — antidepressants not routinely indicated</em></li>
@@ -1220,9 +1220,9 @@ body{background:var(--bg, #f6f2e9) !important}
           </tr>
           <tr>
             <td class="q">Abdominal examination (if unexplained weight loss)</td>
-            <td class="why">Significant weight loss in a middle-aged or older patient with depression requires exclusion of occult malignancy, inflammatory bowel disease, and alcohol-related liver disease before attributing loss to depression alone.<span class="why-sub">Hepatomegaly, splenomegaly, or abdominal mass with depression → urgent 2-week wait cancer pathway investigation if malignancy suspected.</span></td>
-            <td class="why">Organomegaly or mass → urgent 2WW cancer referral; hepatomegaly + depression → alcohol-related liver disease screen</td>
-            <td><span class="mcb mcb-yes">YES — 2WW if positive</span></td>
+            <td class="why">Significant weight loss in a middle-aged or older patient with depression requires exclusion of occult malignancy, inflammatory bowel disease, and alcohol-related liver disease before attributing loss to depression alone.<span class="why-sub">Hepatomegaly, splenomegaly, or abdominal mass with depression → urgent suspected cancer pathway investigation if malignancy suspected.</span></td>
+            <td class="why">Organomegaly or mass → urgent suspected cancer pathway referral; hepatomegaly + depression → alcohol-related liver disease screen</td>
+            <td><span class="mcb mcb-yes">YES — suspected cancer pathway referral if positive</span></td>
           </tr>
           <tr>
             <td class="q">Skin and hair (if organic cause suspected)</td>
@@ -1388,7 +1388,7 @@ body{background:var(--bg, #f6f2e9) !important}
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Diagnosable &amp; Manageable in Primary Care</div>
         <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP can diagnose &amp; treat</span>
         <div class="ddx-card ddx-a"><h4>Mild Depression (PHQ-9 5–9)</h4><p>Two or more core symptoms for ≥2 weeks with mild functional impairment. Watchful waiting, guided self-help, NHS Talking Therapies Step 2, exercise prescription. Antidepressants not first-line for mild depression — NICE NG222 explicitly recommends psychological and social interventions first.</p></div>
-        <div class="ddx-card ddx-a"><h4>Moderate Depression (PHQ-9 10–14)</h4><p>Persistent low mood and/or anhedonia with moderate functional impairment in at least two domains. SSRI combined with NHS Talking Therapies Step 3 (CBT or IPT). NICE NG222 recommends combined individual CBT plus an antidepressant as a first-line option for more severe depression (PHQ-9 ≥16); for less severe depression it recommends psychological interventions first, with an SSRI only if the person prefers.</p></div>
+        <div class="ddx-card ddx-a"><h4>Moderate Depression (PHQ-9 10–14)</h4><p>Persistent low mood and/or anhedonia with moderate functional impairment in at least two domains. NHS Talking Therapies Step 3 (CBT or IPT) first; do not routinely offer an antidepressant first-line (NICE NG222 rec 1.5.3, October 2025). NICE NG222 recommends combined individual CBT plus an antidepressant as a first-line option for more severe depression (PHQ-9 ≥16); for less severe depression it recommends psychological interventions first, with an SSRI only if the person prefers.</p></div>
         <div class="ddx-card ddx-a"><h4>Adjustment Disorder</h4><p>Low mood or anxiety in response to an identifiable stressor, within 3 months, resolving within 6 months of stressor ending. Antidepressants not routinely indicated. Supportive counselling, social support, and watchful waiting are the evidence-based first line.</p></div>
         <div class="ddx-card ddx-a"><h4>Recurrent Depressive Disorder</h4><p>Two or more discrete depressive episodes separated by a period of recovery. Increased recurrence risk with each subsequent episode. NICE NG222: after third episode, discuss long-term maintenance antidepressant therapy as a serious option.</p></div>
       </div>
@@ -1416,8 +1416,8 @@ body{background:var(--bg, #f6f2e9) !important}
         <tbody>
           <tr><td>0–4</td><td>None / minimal</td><td>Watchful waiting; address psychosocial factors; normalise; psychoeducation</td><td><span class="conf-badge conf-gp">Not indicated</span></td><td>Review PRN in 4–8 weeks</td></tr>
           <tr><td>5–9</td><td>Mild</td><td>Guided self-help (NHS Talking Therapies Step 2); structured exercise; active monitoring; sleep hygiene</td><td><span class="conf-badge conf-gp">Not routinely</span></td><td>2–4 weeks; escalate if worsening</td></tr>
-          <tr><td>10–14</td><td>Moderate</td><td>NHS Talking Therapies Step 3 (CBT or IPT); SSRI + therapy combined; social prescribing</td><td><span class="conf-badge conf-sus">Consider SSRI</span></td><td>1–2 weeks after starting medication</td></tr>
-          <tr><td>15–19</td><td>Moderately severe</td><td>SSRI + high-intensity CBT or IPT; consider CMHT input for complex presentations</td><td><span class="conf-badge conf-sus">SSRI recommended</span></td><td>1–2 weeks after starting; 4–6 weeks for full response</td></tr>
+          <tr><td>10–14</td><td>Moderate</td><td>NHS Talking Therapies Step 3 (CBT or IPT); social prescribing; do not routinely offer an antidepressant first-line (NG222 1.5.3)</td><td><span class="conf-badge conf-sus">SSRI only if preferred</span></td><td>1–2 weeks after starting medication</td></tr>
+          <tr><td>15–19</td><td>Moderately severe</td><td>PHQ-9 15 is still less severe (as above); 16–19: SSRI + high-intensity CBT or IPT; consider CMHT input for complex presentations</td><td><span class="conf-badge conf-sus">15: only if preferred · 16+: SSRI option</span></td><td>1–2 weeks after starting; 4–6 weeks for full response</td></tr>
           <tr><td>20–27</td><td>Severe</td><td>SSRI urgently; urgent CMHT referral; consider inpatient admission if suicidal risk present</td><td><span class="conf-badge conf-emerg">SSRI urgent</span></td><td>1 week (same-day if active risk)</td></tr>
         </tbody>
       </table>
@@ -2562,7 +2562,7 @@ body{background:var(--bg, #f6f2e9) !important}
           <div class="algo-branch-lbl">🟢 Routine — primary care</div>
           <ul class="algo-list">
             <li>Mild (PHQ-9 5–9): NHS Talking Therapies Step 2, exercise, watchful waiting</li>
-            <li>Moderate (PHQ-9 10–14): Sertraline 50mg + NHS Talking Therapies Step 3</li>
+            <li>Moderate (PHQ-9 10–14): NHS Talking Therapies Step 3; sertraline 50mg only if preferred (NG222 1.5.3)</li>
             <li>Subthreshold (&lt;5): psychosocial, lifestyle, review</li>
             <li>Adjustment disorder: watchful waiting, counselling</li>
           </ul>
@@ -2576,10 +2576,10 @@ body{background:var(--bg, #f6f2e9) !important}
       <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem">
         <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:.5rem">PHQ-9 Severity &amp; NICE NG222 Pathway</div>
         <div style="display:flex;flex-direction:column;gap:5px;font-size:11.5px">
-          <div style="padding:.4rem .65rem;background:var(--navy);color:#fff;border-radius:6px;font-weight:700">PHQ-9 ≥10 → consider antidepressant · always ask Q9 directly</div>
+          <div style="padding:.4rem .65rem;background:var(--navy);color:#fff;border-radius:6px;font-weight:700">PHQ-9 ≥16 → consider antidepressant (below 16 only if preferred) · always ask Q9 directly</div>
           <div style="padding:.4rem .65rem;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:6px"><strong style="color:var(--g)">PHQ-9 5–9 (mild)</strong> → Watchful waiting · guided self-help · NHS Talking Therapies Step 2 · exercise · not routinely SSRI</div>
-          <div style="padding:.4rem .65rem;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:6px"><strong style="color:var(--a)">PHQ-9 10–14 (moderate)</strong> → Sertraline 50mg + NHS Talking Therapies Step 3 CBT/IPT · review 1–2 wks</div>
-          <div style="padding:.4rem .65rem;background:var(--r-bg);border:1px solid var(--r-bd);border-radius:6px"><strong style="color:var(--r)">PHQ-9 ≥15 (mod-severe)</strong> → SSRI urgently + high-intensity therapy · CMHT if complex</div>
+          <div style="padding:.4rem .65rem;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:6px"><strong style="color:var(--a)">PHQ-9 10–14 (moderate)</strong> → NHS Talking Therapies Step 3 CBT/IPT · sertraline 50mg only if preferred (NG222 1.5.3) · review 1–2 wks</div>
+          <div style="padding:.4rem .65rem;background:var(--r-bg);border:1px solid var(--r-bd);border-radius:6px"><strong style="color:var(--r)">PHQ-9 ≥15 (mod-severe)</strong> → from 16: SSRI + high-intensity therapy (15: as for less severe) · CMHT if complex</div>
           <div style="padding:.4rem .65rem;background:#fee2e2;border:1px solid var(--r-bd);border-radius:6px"><strong style="color:var(--r)">PHQ-9 Q9 ≥1</strong> → Full risk assessment mandatory · safety plan before leaving</div>
           <div style="padding:.4rem .65rem;background:var(--b-bg);border:1px solid var(--b-bd);border-radius:6px;font-size:11px;color:var(--b)"><strong>Bipolar screen always before Rx:</strong> past manic/hypomanic episode? → CMHT first, no SSRI monotherapy</div>
         </div>
@@ -2823,7 +2823,7 @@ body{background:var(--bg, #f6f2e9) !important}
 </div><!-- /sum-sca -->
 <!-- ══════════════════ FOOTER + CLOSE ══════════════════ -->
 <div class="page-footer">
-  <p><strong>Depression · GP Clinical Reasoning Framework v2</strong> · NICE NG222 (2022, updated 2024) · BNF Antidepressants chapter · MHRA Drug Safety Update: SSRIs/SNRIs (2023) · RCGP SCA Blueprint 2024</p>
+  <p><strong>Depression · GP Clinical Reasoning Framework v2</strong> · NICE NG222 (2022, updated December 2025) · BNF Antidepressants chapter · MHRA Drug Safety Update: SSRIs/SNRIs (2023) · RCGP SCA Blueprint 2024</p>
   <p style="margin-top:4px">v2 features: Clinical stem (5 scenarios) · Open Q first principle · ICE in every mode · Psychosocial contexts (1E + 7G) · Lay-language DDx (Step 5) · Safeguarding (Step 1) · Expectation management (7A) · SCA RAG checkpoints after every step · SCA Consultation Scorecard · Patient Actor Brief · Dual tailored summaries (Clinic + SCA)</p>
   <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC before prescribing · Clinical judgement takes precedence over any framework · Depression content validated against NICE NG222 and RCGP curriculum 2024 · This document does not constitute clinical advice for individual patients</p>
 </div>
@@ -2938,8 +2938,8 @@ function calcDrug(){
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
     main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
+    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -3035,7 +3035,7 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=104"></script>
+<script src="../assets/site.js?v=105"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 

@@ -50,7 +50,7 @@
       {
         id: 'tumour', tier: 'cancer',
         label: 'Possible bony tumour / metastasis — mass / night pain / systemic',
-        action: 'Urgent X-ray ± 2WW.',
+        action: 'Urgent X-ray ± suspected cancer pathway referral.',
         source: 'NICE NG12 (updated April 2026)',
         when: i => i.mass_night,
       },
@@ -108,7 +108,7 @@
         patientPhrase: 'The blood supply to the hip bone may be affected — an MRI detects it early so we can act.',
         guideUrl: '', redFlagAction: '\u26A1 MRI + orthopaedics' },
       { id: 'septic_tumour', name: 'Septic arthritis / tumour', summary: 'Hot joint + fever, or mass / night pain / systemic', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hot joint, fever; or mass/systemic.', nextIx: '\u26A1 Aspirate + admit (septic) / urgent X-ray ± 2WW (tumour).',
+        keyExam: 'Hot joint, fever; or mass/systemic.', nextIx: '\u26A1 Aspirate + admit (septic) / urgent X-ray ± suspected cancer pathway referral (tumour).',
         patientPhrase: 'These features need urgent assessment to exclude infection or a tumour.',
         guideUrl: '', redFlagAction: '\u26A1 Urgent assessment' }
     ],

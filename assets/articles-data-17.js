@@ -26,7 +26,7 @@
     referral:[
       'Suspected arterial ulcer or low ABPI / critical limb ischaemia (rest pain, cold pulseless foot, gangrene) → urgent vascular surgery (do not compress)',
       'Venous leg ulcer → refer to vascular service for venous-reflux assessment/treatment, and for specialist wound/leg-ulcer care; refer if not healing within expected time',
-      'A non-healing ulcer with atypical or rolled/everted edges → biopsy / urgent skin-cancer (2WW) referral to exclude squamous cell carcinoma (NICE NG12 (updated April 2026))',
+      'A non-healing ulcer with atypical or rolled/everted edges → biopsy / suspected cancer pathway referral for skin cancer to exclude squamous cell carcinoma (NICE NG12 (updated April 2026))',
       'Diabetic/neuropathic foot ulcer, or spreading infection/sepsis → urgent diabetic foot/vascular service or admission'],
     source:'SIGN 120 (Management of chronic venous leg ulcers, 2010) / NICE NG152 (Leg ulcer infection: antimicrobial prescribing, 2020) / NICE CG168 (Varicose veins) / vascular guidance' },
 

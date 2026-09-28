@@ -27,7 +27,7 @@
 
   if (window.RGPTriage) RGPTriage.register('dyspepsia-triage', {
     title: 'Dyspepsia — red-flag triage',
-    subtitle: 'Tick ALARM features. Surfaces upper-GI 2WW and bleeding pathways per NICE NG12 (updated April 2026) / CG184.',
+    subtitle: 'Tick ALARM features. Surfaces upper-GI suspected cancer pathway referral and bleeding pathways per NICE NG12 (updated April 2026) / CG184.',
     guideline: 'NICE NG12 (updated April 2026) · NICE CG184',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired — manage as uninvestigated dyspepsia: review meds (stop NSAID), lifestyle, full-dose PPI 4 weeks OR test-and-treat H. pylori. Work the differential below.',
@@ -42,7 +42,7 @@
       },
       {
         id: 'dysphagia_2ww', tier: 'cancer',
-        label: 'Dysphagia at any age — upper GI 2WW',
+        label: 'Dysphagia at any age — upper GI suspected cancer pathway referral',
         action: 'Upper GI suspected cancer pathway referral (NICE NG12 (updated April 2026); often straight to OGD).',
         patientPhrase: '"Difficulty swallowing always needs an urgent camera test of the food pipe."',
         source: 'NICE NG12 (updated April 2026) §1.2', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
@@ -51,13 +51,13 @@
       {
         id: 'mass_2ww', tier: 'cancer',
         label: 'Upper abdominal mass — suspected gastric / pancreatic cancer',
-        action: 'Site-specific 2WW + imaging.',
+        action: 'Site-specific suspected cancer pathway referral + imaging.',
         source: 'NICE NG12 (updated April 2026)',
         when: i => i.mass_anaemia,
       },
       {
         id: 'age55_2ww', tier: 'cancer',
-        label: 'Age ≥55 + weight loss + upper abdo pain / reflux / dyspepsia — upper GI 2WW',
+        label: 'Age ≥55 + weight loss + upper abdo pain / reflux / dyspepsia — upper GI suspected cancer pathway referral',
         action: 'Upper GI suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
         source: 'NICE NG12 (updated April 2026) §1.2',
         when: i => i.age != null && i.age >= 55 && i.weight_loss && (i.epigastric || i.reflux || i.postprandial),
@@ -131,7 +131,7 @@
       { id: 'malignancy', name: 'Gastric / oesophageal cancer', summary: 'Dysphagia, weight loss, anaemia, mass, age ≥55', baseline: 1, category: 'cant-miss',
         keyExam: 'Epigastric mass, lymphadenopathy (Virchow\u2019s node), cachexia.', nextIx: '\u26A1 Upper GI suspected cancer pathway referral per NICE NG12 (updated April 2026). Dysphagia at any age, or ≥55 with weight loss + dyspepsia.',
         patientPhrase: 'A few features mean I want an urgent camera test of the stomach and gullet to rule out something serious — most are clear.',
-        guideUrl: '', redFlagAction: '\u26A1 Upper GI 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Upper GI suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 55 ? { malignancy: +6, gord: +1 } : (v < 40 ? { functional: +3, malignancy: -2 } : {}),

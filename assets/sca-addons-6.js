@@ -25,7 +25,7 @@
    "reason": "Telephone request: “strong antacids for bad indigestion”."
   },
   "knowledge": {
-   "guideline": "NICE CG188 (2014) — gallstone disease · NICE QS104 (2015) · NICE NG253 (2025) — suspected sepsis",
+   "guideline": "NICE CG188 (2014) — gallstone disease · NICE QS104 (2015) · NICE NG253 (updated September 2026) — suspected sepsis",
    "summary": "Recurrent severe right upper quadrant pain after fatty meals, lasting hours and radiating to the shoulder blade, is biliary colic. Today’s pain lasting more than 6 hours with fever and feeling unwell suggests acute cholecystitis — same-day hospital assessment, not antacids by phone.",
    "points": [
     {
@@ -42,7 +42,7 @@
     },
     {
      "h": "Sepsis risk",
-     "t": "NICE NG253 (2025): consider sepsis in anyone with a possible infection who is unwell. Ask about breathlessness, confusion, mottled or ashen skin, and passing little urine; any high-risk feature → 999."
+     "t": "NICE NG253 (updated September 2026): consider sepsis in anyone with a possible infection who is unwell. Ask about breathlessness, confusion, mottled or ashen skin, and passing little urine; any high-risk feature → 999."
     },
     {
      "h": "Investigate the gallstones",
@@ -497,7 +497,7 @@
    "reason": "Telephone call from a care-home nurse requesting “something to settle her”."
   },
   "knowledge": {
-   "guideline": "NICE CG103 (2010, updated 2023) — delirium · NICE NG97 (2018) — dementia · NICE NG253 (2025) · MHRA Drug Safety Update (December 2021)",
+   "guideline": "NICE CG103 (2010, updated 2023) — delirium · NICE NG97 (2018) — dementia · NICE NG253 (updated September 2026) · MHRA Drug Safety Update (December 2021)",
    "summary": "An acute, fluctuating change over 24–48 hours in a woman with mild dementia — agitation, sleeplessness, picking at the air — is delirium until proven otherwise. The task is to find and treat the cause, not to sedate the symptom.",
    "points": [
     {
@@ -3912,7 +3912,7 @@
    "reason": "Telephone call requested: “Just need you to confirm I’m okay to keep driving.”"
   },
   "knowledge": {
-   "guideline": "NICE NG217 (epilepsies, 2022) · NICE CG109 (transient loss of consciousness) · DVLA Assessing fitness to drive · GMC confidentiality guidance on fitness to drive (2017)",
+   "guideline": "NICE NG217 (epilepsies, 2022, updated August 2026) · NICE CG109 (transient loss of consciousness) · DVLA Assessing fitness to drive · GMC confidentiality guidance on fitness to drive (2017)",
    "summary": "Tonic-clonic movements, a bitten tongue, incontinence and prolonged confusion describe a generalised seizure, not a faint. He must stop driving now and notify the DVLA, and needs an epilepsy specialist within 2 weeks.",
    "points": [
     {
@@ -4391,7 +4391,7 @@
    "reason": "Video consultation: wants more scans or a referral to someone who will “find what’s wrong”."
   },
   "knowledge": {
-   "guideline": "NICE NG193 (chronic pain, 2021) · NICE NG127 (suspected neurological conditions) · NICE NG222 (depression in adults, 2022) · NICE NG116 (PTSD, 2018)",
+   "guideline": "NICE NG193 (chronic pain, 2021) · NICE NG127 (suspected neurological conditions) · NICE NG222 (depression in adults, 2022, updated December 2025) · NICE NG116 (PTSD, 2018)",
    "summary": "Genuinely disabling symptoms with normal, thorough investigation fit a functional neurological disorder or persistent physical symptoms. The task is a positive explanation, validation, and an active rehabilitation plan — not more tests or dismissal.",
    "points": [
     {
@@ -5387,7 +5387,7 @@
     },
     {
      "h": "The clinical problem still matters",
-     "t": "A 58-year-old woman with abdominal pain needs a proper history and examination via the interpreter. If symptoms are persistent (bloating, early satiety, pelvic or abdominal pain, urinary frequency), NICE NG12 (updated April 2026) recommends CA125, with ultrasound if ≥31 IU/mL at age 50–59. Low mood: assess using NICE NG222 (depression in adults, 2022)."
+     "t": "A 58-year-old woman with abdominal pain needs a proper history and examination via the interpreter. If symptoms are persistent (bloating, early satiety, pelvic or abdominal pain, urinary frequency), NICE NG12 (updated April 2026) recommends CA125, with ultrasound if ≥31 IU/mL at age 50–59. Low mood: assess using NICE NG222 (depression in adults, 2022, updated December 2025)."
     },
     {
      "h": "Emergency exception",
@@ -6324,7 +6324,7 @@
    "reason": "“My eye’s gone blurry and aches — probably a migraine. Could I have some eye drops?”"
   },
   "knowledge": {
-   "guideline": "NICE NG220 (multiple sclerosis in adults, 2022) · DVLA Assessing fitness to drive · Equality Act 2010",
+   "guideline": "NICE NG220 (multiple sclerosis in adults, 2022, updated August 2026) · DVLA Assessing fitness to drive · Equality Act 2010",
    "summary": "Subacute loss of vision in one eye with pain on eye movement and faded colours is optic neuritis until proven otherwise. It needs urgent ophthalmology assessment; a past episode of limb numbness raises the possibility of MS.",
    "points": [
     {
@@ -7270,7 +7270,7 @@
    "reason": "Video consultation — “the wife says I’ve gone yellow”."
   },
   "knowledge": {
-   "guideline": "NICE NG12 (updated April 2026) — suspected cancer: pancreatic · NICE CG188 (2014) · NICE NG253 (2025)",
+   "guideline": "NICE NG12 (updated April 2026) — suspected cancer: pancreatic · NICE CG188 (2014) · NICE NG253 (updated September 2026)",
    "summary": "Painless jaundice with dark urine, pale stools, itch and 6 kg of unintentional weight loss in a 68-year-old is obstructive jaundice until proven otherwise, and pancreatic or biliary cancer must be excluded urgently. Alcohol does not explain this pattern.",
    "points": [
     {
@@ -8266,7 +8266,7 @@
     },
     {
      "h": "Rung 2 — vaginal oestrogen",
-     "t": "NICE NG112 advises considering vaginal oestrogen for postmenopausal women with recurrent UTI when self-care alone is not enough, reviewed within 12 months. Oral HRT does not reduce UTIs. For a peri-menopausal woman with vaginal dryness, vaginal oestrogen is also a treatment for urogenital atrophy in its own right (NICE NG23, updated 2024)."
+     "t": "NICE NG112 advises considering vaginal oestrogen for postmenopausal women with recurrent UTI when self-care alone is not enough, reviewed within 12 months. Oral HRT does not reduce UTIs. For a peri-menopausal woman with vaginal dryness, vaginal oestrogen is also a treatment for urogenital atrophy in its own right (NICE NG23, updated April 2026)."
     },
     {
      "h": "Rung 3 — single-dose prophylaxis",

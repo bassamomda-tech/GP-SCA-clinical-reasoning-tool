@@ -35,7 +35,7 @@
     ],
     followUp: 'Review at 6–8 weeks. Acute fissures usually heal with conservative measures; chronic/non-healing on topical therapy → colorectal referral. Ensure sinister causes excluded where indicated.',
     redFlags: [
-      'Rectal bleeding with change in bowel habit, weight loss, iron-deficiency anaemia, abdominal mass, or age ≥50 → FIT first (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56); FIT ≥10 µg Hb/g → suspected cancer pathway (2WW) colorectal referral. Rectal mass or unexplained anal mass/ulceration → direct suspected cancer pathway referral.',
+      'Rectal bleeding with change in bowel habit, weight loss, iron-deficiency anaemia, abdominal mass, or age ≥50 → FIT first (NICE NG12 (updated April 2026); NICE HTG690, formerly DG56); FIT ≥10 µg Hb/g → colorectal suspected cancer pathway referral. Rectal mass or unexplained anal mass/ulceration → direct suspected cancer pathway referral.',
       'Lateral / multiple / non-healing fissures → consider Crohn\u2019s, infection (HIV/syphilis/TB), or anal carcinoma.',
     ],
     emisText: `Anal fissure:
@@ -43,7 +43,7 @@
 - Pain: lidocaine 5% ointment before defecation (short-term) ± paracetamol.
 - Chronic (≥6 wks): GTN 0.4% rectal ointment BD × 6–8 wks (or diltiazem 2% BD if headache/failed).
 - Not healed after 6–8 wks → colorectal referral (botulinum toxin / sphincterotomy).
-Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): bleeding + change in habit, weight loss, IDA, mass, ≥50; FIT ≥10 µg Hb/g, rectal or anal mass → 2WW. Atypical fissure → exclude IBD/infection/cancer.`,
+Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): bleeding + change in habit, weight loss, IDA, mass, ≥50; FIT ≥10 µg Hb/g, rectal or anal mass → suspected cancer pathway referral. Atypical fissure → exclude IBD/infection/cancer.`,
     sources: [
       { label:'BNF', url:'https://bnf.nice.org.uk' },
     ],

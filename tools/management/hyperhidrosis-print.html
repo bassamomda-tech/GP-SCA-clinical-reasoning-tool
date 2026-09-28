@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hyperhidrosis — Protocol · Reasoning GP</title>
-<meta name="description" content="Hyperhidrosis in one page: separate primary focal from secondary sweating, the red flags (lymphoma night sweats, phaeochromocytoma, carcinoid, TB, serotonin syndrome), the HDSS-scored severity assessment, targeted investigations, the six-step treatment ladder from aluminium chloride to sympathectomy, lifestyle and psychological support, and the 2WW rules." />
+<meta name="description" content="Hyperhidrosis in one page: separate primary focal from secondary sweating, the red flags (lymphoma night sweats, phaeochromocytoma, carcinoid, TB, serotonin syndrome), the HDSS-scored severity assessment, targeted investigations, the six-step treatment ladder from aluminium chloride to sympathectomy, lifestyle and psychological support, and the suspected cancer referral rules." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/hyperhidrosis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790530815494876 tools/management/hyperhidrosis.html">
+<meta name="omelette-print-source" content="v1790547042792010 tools/management/hyperhidrosis.html">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -34,10 +34,10 @@ MG.render({
     {t:"BNF — botulinum toxin type A (severe axillary hyperhidrosis)"},
     {t:"BNF — topical glycopyrronium"},
     {t:"International Hyperhidrosis Society consensus (international)"},
-    {t:"2WW · NG12 criteria that surface here", tone:"tw"},
+    {t:"Suspected cancer · NG12 criteria that surface here", tone:"tw"},
     {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
-  lead:"<div class='mg-layers'><a href='#severe'><b>Red flags</b><small>Night sweats · phaeo · serotonin syndrome</small></a><a href='#history'><b>Classify</b><small>Primary vs secondary · HDSS</small></a><a href='#ladder'><b>Treat</b><small>The six-step ladder</small></a><a href='#refer'><b>Refer</b><small>Dermatology · 2WW · surgery</small></a></div>",
+  lead:"<div class='mg-layers'><a href='#severe'><b>Red flags</b><small>Night sweats · phaeo · serotonin syndrome</small></a><a href='#history'><b>Classify</b><small>Primary vs secondary · HDSS</small></a><a href='#ladder'><b>Treat</b><small>The six-step ladder</small></a><a href='#refer'><b>Refer</b><small>Dermatology · suspected cancer · surgery</small></a></div>",
   quickSub:"If you read nothing else on this page, read these six cards. Every figure traces to the source cited under <a href='#provenance'>Evidence</a>.",
   quick:[
     {tone:"red", h:"⚠ Drenching night sweats are never 'just sweating'", html:"Night sweats with unexplained lymphadenopathy (particularly with night sweats, fever or weight loss) → consider a suspected cancer pathway referral for lymphoma (NICE NG12, updated April 2026) — do not reassure without FBC, ESR and LDH. Nocturnal absence is the single most reliable discriminator of primary hyperhidrosis: primary focal sweating does NOT occur during sleep. Ask it directly — “do you wake up drenched?” — and treat a yes as an investigation trigger, not a nuisance."},
@@ -59,14 +59,14 @@ MG.render({
     {id:"severe", nav:"Red flags", title:"Red flags — exclude secondary hyperhidrosis and serious pathology first", sub:"Generalised or nocturnal sweating in a patient over 25 demands secondary-cause exclusion before the primary label. Act on any of these urgently.",
      blocks:[
        {b:"cards", items:[
-         {tone:"purple", h:"🟣 Lymphoma / haematological malignancy <span class='tw'>2WW</span>", html:"Drenching night sweats with unexplained lymphadenopathy (particularly with night sweats, fever or weight loss) → consider a suspected cancer pathway referral for lymphoma (NICE NG12, updated April 2026). Do not reassure without FBC, ESR and LDH. Any non-tender rubbery nodes → urgent referral.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"purple", h:"🟣 Lymphoma / haematological malignancy <span class='tw'>Suspected cancer</span>", html:"Drenching night sweats with unexplained lymphadenopathy (particularly with night sweats, fever or weight loss) → consider a suspected cancer pathway referral for lymphoma (NICE NG12, updated April 2026). Do not reassure without FBC, ESR and LDH. Any non-tender rubbery nodes → urgent referral.", src:"NICE NG12 (updated April 2026)"},
          {tone:"red", h:"🔴 Serotonin syndrome", html:"Sweating + rigidity + clonus + hyperthermia on a serotonergic drug → stop the precipitant and admit as an emergency (up to 10% mortality untreated). Severe SSRI/SNRI/opioid-induced sweating short of that → urgent medication review."},
          {tone:"red", h:"🔴 Phaeochromocytoma", html:"Episodic sweating + palpitations + headache + hypertension = the classic triad → urgent endocrine referral; check plasma metanephrines (preferred) or 24 h urine catecholamines. Do not delay — rare (2–8 per million) but hypertensive crises carry ~10% mortality if undiagnosed at surgery. A phaeo crisis (severe hypertension + headache + palpitations + sweating) → 999."},
          {tone:"amber", h:"🟠 Carcinoid tumour", html:"Flushing + sweating + diarrhoea + wheeze → 24 h urine 5-HIAA; urgent gastroenterology or endocrine referral if suspected."},
          {tone:"amber", h:"🟠 Tuberculosis", html:"Night sweats + cough ≥3 weeks + haemoptysis + weight loss + risk factors (country of origin, contacts, HIV) → same-day chest X-ray + sputum AFB; refer respiratory/TB service."},
          {tone:"amber", h:"🟠 Severe thyrotoxicosis", html:"Sweating + weight loss + tremor + tachycardia + AF → TFTs; grossly elevated T3/T4 with cardiac instability → same-day acute medical review."}
        ]},
-       {b:"why", html:"Secondary causes account for approximately 30% of hyperhidrosis presenting to primary care, and the pattern — generalised, nocturnal, new after 25, or changed — is what separates them from the benign focal disease that needs no tests at all. The 2WW rule and the phaeo triad are the two items on this card that save lives."}
+       {b:"why", html:"Secondary causes account for approximately 30% of hyperhidrosis presenting to primary care, and the pattern — generalised, nocturnal, new after 25, or changed — is what separates them from the benign focal disease that needs no tests at all. The suspected cancer referral rule and the phaeo triad are the two items on this card that save lives."}
      ]},
 
     {id:"history", nav:"History", title:"History — the primary/secondary discrimination and the HDSS", sub:"The history alone makes the diagnosis in the vast majority. Quantify impact with the Hyperhidrosis Disease Severity Scale.",
@@ -102,7 +102,7 @@ MG.render({
          ["<b>General inspection</b>","Visible sweating at rest; sweat-stained or deliberately dark/loose clothing; anxiety level","Coping behaviours are severity evidence"],
          ["<b>Minor's starch–iodine test</b>","<b>Paint iodine, dry, dust starch — sweat turns blue-black</b>","Maps distribution and severity objectively; guides botulinum injection patterns. Not routine in primary care but improvisable"],
          ["<b>Thyroid</b>","Goitre, bruit, tachycardia, fine tremor, lid lag, exophthalmos; pulse rate and rhythm (AF in new hyperthyroidism)","Thyrotoxicosis screen"],
-         ["<b>Lymph nodes</b>","<b>Cervical, axillary, inguinal chains</b>","Generalised lymphadenopathy + night sweats = haematological malignancy until proven otherwise → 2WW"],
+         ["<b>Lymph nodes</b>","<b>Cervical, axillary, inguinal chains</b>","Generalised lymphadenopathy + night sweats = haematological malignancy until proven otherwise → suspected cancer pathway referral (lymphoma) or very urgent FBC (leukaemia)"],
          ["<b>Blood pressure</b>","Both arms; labile or persistent hypertension in a young patient → phaeochromocytoma concern; postural drop → autonomic neuropathy","Directs the biochemical work-up"],
          ["<b>Axillary skin</b>","Erythrasma (coral-red under Wood's lamp), intertrigo, fungal infection; bromhidrosis (bacterial odour) — distinguish from hyperhidrosis itself","Erythrasma thrives in the warm moist axilla — topical fusidic acid or single-dose azithromycin 1 g; treating the hyperhidrosis cuts recurrence"],
          ["<b>Neurological screen</b>","If unilateral: Horner's (ptosis, miosis, ipsilateral facial anhidrosis), peripheral neuropathy, cord signs; ask about parotid surgery (Frey's)","Localises the secondary neurological causes"]
@@ -121,7 +121,7 @@ MG.render({
          ["<b>24 h urine 5-HIAA</b>","Carcinoid features","&gt;50 mg/24 h strongly suggestive; avoid serotonin-rich foods (banana, avocado, pineapple) for 48 h before collection"]
        ]},
        {b:"cards", items:[
-         {tone:"purple", h:"NG12 criteria that surface here <span class='tw'>2WW</span>", html:"Primary focal hyperhidrosis has no NICE NG12 criterion, and this page does not invent one — the cancer risk lives entirely in the secondary-sweating work-up:<br>• Unexplained lymphadenopathy or splenomegaly → 2-week-wait referral for lymphoma (adults); night sweats, fever, weight loss, pruritus or alcohol-induced node pain strengthen the case.<br>• <b>Pallor, persistent fatigue, unexplained fever, recurrent infection, generalised lymphadenopathy, or unexplained bruising, bleeding or petechiae → very urgent FBC (within 48 hours) for leukaemia</b> — night sweats alone are not an NG12 leukaemia feature.<br>• <b>Aged 40 and over with unexplained cough, weight loss, fatigue, breathlessness, chest pain or appetite loss (2 or more, or 1 or more if ever smoked) → urgent chest X-ray; haemoptysis at 40 and over → suspected cancer pathway referral</b> — the TB/lung-cancer overlap route.<br>A longstanding primary diagnosis never covers NEW nocturnal sweating — re-run this table, not the treatment ladder.", src:"NICE NG12 (updated April 2026) · house rule"}
+         {tone:"purple", h:"NG12 criteria that surface here <span class='tw'>Suspected cancer</span>", html:"Primary focal hyperhidrosis has no NICE NG12 criterion, and this page does not invent one — the cancer risk lives entirely in the secondary-sweating work-up:<br>• Unexplained lymphadenopathy or splenomegaly → consider a suspected cancer pathway referral for lymphoma (adults); night sweats, fever, weight loss, pruritus or alcohol-induced node pain strengthen the case.<br>• <b>Pallor, persistent fatigue, unexplained fever, recurrent infection, generalised lymphadenopathy, or unexplained bruising, bleeding or petechiae → very urgent FBC (within 48 hours) for leukaemia</b> — night sweats alone are not an NG12 leukaemia feature.<br>• <b>Aged 40 and over with unexplained cough, weight loss, fatigue, breathlessness, chest pain or appetite loss (2 or more, or 1 or more if ever smoked) → urgent chest X-ray; haemoptysis at 40 and over → suspected cancer pathway referral</b> — the TB/lung-cancer overlap route.<br>A longstanding primary diagnosis never covers NEW nocturnal sweating — re-run this table, not the treatment ladder.", src:"NICE NG12 (updated April 2026) · house rule"}
        ]}
      ]},
 
@@ -190,7 +190,7 @@ MG.render({
     {id:"refer", nav:"Refer", title:"Refer — who, when, how urgently", sub:"Most primary hyperhidrosis is managed entirely in primary care. These are the exits.",
      blocks:[
        {b:"cards", items:[
-         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> · NICE NG12", html:"Unexplained lymphadenopathy or splenomegaly in an adult (particularly with night sweats, fever, breathlessness, pruritus or weight loss) → consider a suspected cancer pathway referral for lymphoma, with FBC, ESR and LDH done — never reassurance without them.", src:"NICE NG12 (updated April 2026)"},
+         {tone:"purple", h:"Suspected cancer pathway referral · NICE NG12", html:"Unexplained lymphadenopathy or splenomegaly in an adult (particularly with night sweats, fever, breathlessness, pruritus or weight loss) → consider a suspected cancer pathway referral for lymphoma, with FBC, ESR and LDH done — never reassurance without them.", src:"NICE NG12 (updated April 2026)"},
          {tone:"red", h:"Endocrine (urgent)", html:"Positive phaeochromocytoma biochemistry · suspected carcinoid · uncontrolled thyrotoxicosis · acromegaly."},
          {tone:"amber", h:"Dermatology", html:"Primary axillary disease at HDSS ≥3 failing aluminium chloride → NHS botulinum toxin (local funding criteria) — allow a 6–8-week aluminium-chloride trial before referring. Refractory palmoplantar disease → iontophoresis assessment ± botulinum toxin. Skin complications."},
          {tone:"blue", h:"Menopause clinic / gynaecology", html:"Menopausal vasomotor sweating impairing quality of life → HRT discussion; where HRT is contraindicated (e.g. breast cancer): CBT, venlafaxine (off-label, RCT evidence), clonidine or gabapentin. See the <a href='hrt-prescribing.html'>HRT protocol</a>."},

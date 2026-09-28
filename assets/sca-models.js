@@ -266,7 +266,7 @@ window.SCA_MODELS = {
 
     { phase:'Explanation', clock:'6–8 min', who:'dr', text:'I’m going to be straight with you, because you’d want that. A cough lasting this long with a streak of blood, some weight loss and a hoarse voice, in someone who’s smoked — that’s a combination I can’t safely treat as a simple chest infection. Antibiotics wouldn’t be the right or safe answer here.', dom:'tasks', why:'Honest explanation; resists inappropriate antibiotics' },
     { who:'pt', text:'So what happens now?' },
-    { who:'dr', text:'I want an urgent chest X-ray, arranged within two weeks under our fast-track pathway, specifically to look for anything serious — including cancer. I’d rather be upfront with you than dress it up.', dom:'tasks', why:'Acts on NG12 — urgent CXR / 2-week-wait pathway' },
+    { who:'dr', text:'I want an urgent chest X-ray, arranged within two weeks under our fast-track pathway, specifically to look for anything serious — including cancer. I’d rather be upfront with you than dress it up.', dom:'tasks', why:'Acts on NG12 — urgent CXR / suspected cancer pathway' },
 
     { phase:'Shared management', clock:'8–11 min', who:'dr', text:'Most of these turn out to be something treatable, and if it is something more serious, finding it early is exactly what gives us the best chance. The hoarse voice I also want looked at — if it doesn’t settle, there’s a separate fast-track for that. How are you feeling hearing all this?', dom:'rto', why:'Balances honesty with realistic reassurance; checks emotion' },
     { who:'pt', text:'Scared, if I’m honest. But I’d rather know.' },

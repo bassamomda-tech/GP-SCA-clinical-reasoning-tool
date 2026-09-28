@@ -1176,7 +1176,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td class="q">BMI / weight</td><td class="why">BMI &ge;35 = COC UKMEC 3 in UKMEC 2016 (increased VTE risk). Weight &gt;70kg reduces LNG-EC efficacy significantly.<span class="why-sub">Desogestrel POP is weight-independent; Cu-IUD is weight-independent</span></td><td class="why">BMI &gt;35 = advise Cu-IUD for EC; consider LARC over pill</td><td><span class="mcb mcb-yes">YES &mdash; EC &amp; COC</span></td></tr>
           <tr><td class="q">Speculum + bimanual examination</td><td class="why">Required for IUCD/IUS insertion to assess uterine size, position, and detect concurrent cervicitis or pelvic tenderness<span class="why-sub">Must be performed immediately before insertion &mdash; active cervicitis or large fibroids may prevent safe insertion</span></td><td class="why">Fixed retroverted uterus / active cervicitis / uterine anomaly = defer insertion or refer</td><td><span class="mcb mcb-yes">YES &mdash; IUCD/IUS</span></td></tr>
           <tr><td class="q">Abdominal examination</td><td class="why">Assess for pelvic tenderness, guarding (PID), or palpable mass suggesting ovarian pathology in women with IUD and pain<span class="why-sub">Not required for pill prescribing</span></td><td class="why">Peritonism / guarding with IUD in situ = refer same-day</td><td><span class="mcb mcb-context">Context: IUD + pain</span></td></tr>
-          <tr><td class="q">Breast examination</td><td class="why">Indicated if new breast lump reported in history; undiagnosed breast mass = UKMEC 3 for hormonal methods<span class="why-sub">Not a routine requirement before every contraception prescription</span></td><td class="why">Undiagnosed lump = urgent 2-week wait referral; defer hormonal contraception</td><td><span class="mcb mcb-context">Context: breast symptoms</span></td></tr>
+          <tr><td class="q">Breast examination</td><td class="why">Indicated if new breast lump reported in history; undiagnosed breast mass = UKMEC 3 for hormonal methods<span class="why-sub">Not a routine requirement before every contraception prescription</span></td><td class="why">Undiagnosed lump = urgent suspected cancer pathway referral; defer hormonal contraception</td><td><span class="mcb mcb-context">Context: breast symptoms</span></td></tr>
           <tr><td class="q">Skin / implant site examination</td><td class="why">Check implant palpability at review (should be palpable under skin); non-palpable implant may have migrated<span class="why-sub">Only relevant at existing implant review, not at first presentation</span></td><td class="why">Non-palpable implant = arrange X-ray / specialist review; cannot rely on contraceptive effect</td><td><span class="mcb mcb-context">Context: implant review</span></td></tr>
           <tr><td class="q">Cervical inspection (speculum)</td><td class="why">Visually check IUS/IUD threads are visible; overly short threads may indicate expulsion or displacement<span class="why-sub">Only at IUCD/IUS routine check or if patient reports symptoms</span></td><td class="why">Missing threads = arrange USS; if threads seen = device in situ, reassure</td><td><span class="mcb mcb-context">Context: LARC review</span></td></tr>
           <tr><td class="q">Lymph nodes / skin changes</td><td class="why">If contraception requested following possible STI exposure, assess for features of HIV seroconversion illness (lymphadenopathy, rash, fever)<span class="why-sub">Not a routine component</span></td><td class="why">Seroconversion features = urgent HIV test; GUM same-day</td><td><span class="mcb mcb-context">Context: STI risk</span></td></tr>
@@ -2548,8 +2548,8 @@ function calcDrug(){
   let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
   if(hf){
     main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 rather than the NG136 steps. HFrEF: ACEi (or ARB) plus a beta-blocker first-line, then an MRA (spironolactone) and an SGLT2 inhibitor; a loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = cornerstone of HFrEF management (NICE NG106)';
+    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
+    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
   } else if(af){
     main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
     why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
@@ -2645,7 +2645,7 @@ function resetScorecard(){
 }
 
 </script>
-<script src="../assets/site.js?v=104"></script>
+<script src="../assets/site.js?v=105"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js?v=2"></script>
 

@@ -124,7 +124,7 @@
       'Support risk reduction and general health: smoking cessation, weight and blood-pressure management',
       'Provide information, psychological support, and survivorship/surveillance follow-up'],
     referral:[
-      'Aged 45+ with unexplained visible haematuria (without UTI, or persisting/recurring after treatment of UTI) → urgent suspected renal/bladder cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Aged 45+ with unexplained visible haematuria (without UTI, or persisting/recurring after treatment of UTI) → suspected cancer pathway referral for renal/bladder cancer (NICE NG12 (updated April 2026))',
       'An unexplained renal mass on imaging → urgent urology referral',
       'Confirmed kidney cancer → uro-oncology MDT',
       'Non-visible haematuria with risk factors → investigate/refer per local haematuria pathway'],
@@ -202,7 +202,7 @@
       'Suspected Klinefelter syndrome (hypogonadism with raised LH/FSH) → endocrinology (± karyotype) for testosterone replacement',
       'Fertility concerns → fertility services (early — for sperm retrieval/preservation)',
       'Delayed puberty/gynaecomastia in adolescents → paediatric endocrinology',
-      'Associated complications (osteoporosis, diabetes, breast lump) → relevant specialty (a breast lump → 2WW breast pathway, NICE NG12 (updated April 2026))'],
+      'Associated complications (osteoporosis, diabetes, breast lump) → relevant specialty (a breast lump → breast suspected cancer pathway referral, NICE NG12 (updated April 2026))'],
     source:'Society for Endocrinology — Klinefelter syndrome' }
 
   );

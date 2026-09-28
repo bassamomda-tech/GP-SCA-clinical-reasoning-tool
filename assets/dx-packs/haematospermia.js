@@ -29,7 +29,7 @@
       {
         id: 'prostate_2ww', tier: 'cancer',
         label: 'Hard prostate / raised PSA / weight loss — suspected prostate cancer',
-        action: 'Urology 2WW (NICE NG12 (updated April 2026)).',
+        action: 'Urology suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.systemic || i.luts_prostate,
       },
@@ -82,9 +82,9 @@
         guideUrl: '' },
 
       { id: 'prostate_cancer', name: 'Prostate / GU malignancy', summary: 'Age ≥40 persistent, hard prostate, raised PSA, weight loss', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hard nodular prostate.', nextIx: '\u26A1 PSA + urology 2WW; mpMRI ± biopsy (NICE NG12 (updated April 2026)).',
+        keyExam: 'Hard nodular prostate.', nextIx: '\u26A1 PSA + urology suspected cancer pathway referral; mpMRI ± biopsy (NICE NG12 (updated April 2026)).',
         patientPhrase: 'Persistent blood at your age warrants an urgent specialist check of the prostate — most prove benign.',
-        guideUrl: '', redFlagAction: '\u26A1 PSA + urology 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 PSA + urology suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v == null ? {} : (v < 40 ? { idiopathic: +12, prostate_cancer: -4 } : { prostate_cancer: +6 }),

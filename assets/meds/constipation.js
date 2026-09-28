@@ -41,7 +41,7 @@ MedChooser.register('constipation', {
   flags: (f) => {
     const out = [];
     const ng12 = f.change_60 || f.rectal_bleed || f.weight_loss || f.mass || f.anaemia;
-    if (ng12) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — alarm feature: FIT + FBC/ferritin and refer on the suspected lower-GI cancer (2WW) pathway. Abdominal/rectal mass → examine + urgent referral.' });
+    if (ng12) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — alarm feature: FIT + FBC/ferritin and refer on the suspected lower-GI cancer pathway. Abdominal/rectal mass → examine + urgent referral.' });
     if (f.obstruction) out.push({ tone:'red', text:'Suspected bowel obstruction — do NOT give oral laxatives/stimulants; assess for acute admission' });
     if (f.secondary) out.push({ tone:'amber', text:'Screen/treat secondary causes (hypothyroidism, hypercalcaemia, hypokalaemia, culprit drugs) alongside laxatives' });
     if (f.preg) out.push({ tone:'amber', text:'Pregnancy — bulk-forming first, then osmotic (lactulose/macrogol); senna only short-term, avoid near term' });

@@ -320,11 +320,12 @@
         const old = v.fib_age >= 65;
         const low = old ? 2.0 : 1.30;
         if (s < low) return { label:'Low risk advanced fibrosis', severity:'low', action:'Reassure; manage metabolic risk; recheck periodically.', detail:`Below ${low} — advanced fibrosis unlikely.` };
-        if (s <= 2.67) return { label:'Indeterminate', severity:'med', action:'Next-line test: ELF blood test or transient elastography (FibroScan).', detail:'1.30–2.67 — needs further assessment.' };
+        if (s <= 2.67) return { label:'Indeterminate', severity:'med', action:'Next-line test: ELF blood test (NICE NG49) or transient elastography (FibroScan).', detail:'1.30–2.67 — needs further assessment.' };
         return         { label:'High risk advanced fibrosis', severity:'high', action:'Refer hepatology for assessment of cirrhosis.', detail:'> 2.67 — advanced fibrosis likely.' };
       },
       refs:[
-        { label:'NICE NG49 NAFLD', url:'https://www.nice.org.uk/guidance/ng49' },
+        { label:'BSG/BASL 2018 abnormal liver blood tests (FIB-4 in primary care)', url:'https://gut.bmj.com/content/67/1/6' },
+        { label:'NICE NG49 (MASLD, formerly NAFLD; updated July 2026) — ELF test', url:'https://www.nice.org.uk/guidance/ng49' },
         { label:'Sterling FIB-4 2006', url:'https://pubmed.ncbi.nlm.nih.gov/16729309/' },
       ],
     },
@@ -358,7 +359,7 @@
       },
       interpret(r){
         if (r.val == null) return { label:'Enter PSA to compare', severity:'neutral', action:'Use age-specific threshold (PCRMP). Always examine the prostate (DRE).', detail:'' };
-        if (r.val > r.thr) return { label:'Above age-specific range', severity:'high', action:'NICE NG12 (updated April 2026) — refer on suspected prostate cancer pathway (2-week-wait).', detail:'Also refer if DRE feels malignant regardless of PSA.' };
+        if (r.val > r.thr) return { label:'Above age-specific range', severity:'high', action:'NICE NG12 (updated April 2026) — refer on the suspected cancer pathway for prostate cancer.', detail:'Also refer if DRE feels malignant regardless of PSA.' };
         return { label:'Within age range', severity:'low', action:'Reassure; safety-net. Refer anyway if abnormal DRE or rising PSA.', detail:'Repeat/track if symptomatic.' };
       },
       refs:[

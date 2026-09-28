@@ -2040,7 +2040,7 @@
    "reason": "Video consultation to discuss his blood results."
   },
   "knowledge": {
-   "guideline": "NICE NG49 (non-alcoholic fatty liver disease, 2016) · BSG/BASL abnormal liver blood tests guideline (Newsome et al., 2018) · NICE PH38 (type 2 diabetes: prevention in people at high risk, 2012) · NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · Royal Osteoporosis Society vitamin D guideline (2018) · UK Chief Medical Officers’ low-risk drinking guidelines (2016)",
+   "guideline": "NICE NG49 (MASLD, formerly NAFLD; updated July 2026) · BSG/BASL abnormal liver blood tests guideline (Newsome et al., 2018) · NICE PH38 (type 2 diabetes: prevention in people at high risk, 2012) · NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · Royal Osteoporosis Society vitamin D guideline (2018) · UK Chief Medical Officers’ low-risk drinking guidelines (2016)",
    "summary": "A raised ALT with normal bilirubin and ALP, BMI 33, pre-diabetic HbA1c and raised triglycerides is most likely fatty liver disease driven by metabolism (NAFLD, now also called MASLD). Complete a liver screen, assess fibrosis rather than the ALT, treat the metabolic drivers and alcohol, and replace the vitamin D in proportion. No NICE NG12 (updated April 2026) cancer criterion applies.",
    "points": [
     {
@@ -9519,7 +9519,7 @@
     },
     {
      "dom": "tasks",
-     "fail": "Discussing cancer surveillance or a 2WW today.",
+     "fail": "Discussing cancer surveillance or a suspected cancer pathway referral today.",
      "why": "It isn’t relevant to the emergency and uses up time. NICE NG12 (updated April 2026) has no role here.",
      "fix": "Mention surveillance briefly for later follow-up (NICE CG118), after the disposition is agreed."
     },

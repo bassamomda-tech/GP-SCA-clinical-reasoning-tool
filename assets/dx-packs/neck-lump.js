@@ -20,7 +20,7 @@
 
   if (window.RGPTriage) RGPTriage.register('neck-lump-triage', {
     title: 'Neck lump — triage',
-    subtitle: 'Tick features. Surfaces head & neck and haematological 2WW pathways (NICE NG12 (updated April 2026)).',
+    subtitle: 'Tick features. Surfaces head & neck and haematological suspected cancer pathways (NICE NG12 (updated April 2026)).',
     guideline: 'NICE NG12 (updated April 2026)',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Examine; reactive nodes with clear infection → review after treatment; persistent unexplained lump → urgent imaging/referral.',
@@ -28,7 +28,7 @@
       {
         id: 'head_neck_2ww', tier: 'cancer',
         label: 'Suspected head & neck cancer — persistent lump >3 weeks / hard fixed node / red-flag symptoms',
-        action: 'Head & neck 2WW (NICE NG12 (updated April 2026)); USS-guided FNA.',
+        action: 'Head & neck suspected cancer pathway referral (NICE NG12 (updated April 2026)); USS-guided FNA.',
         patientPhrase: '"A lump that has lasted this long needs an urgent specialist assessment to be safe."',
         source: 'NICE NG12 (updated April 2026) §1.8', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.persistent_3wk || i.hard_fixed_node || i.head_neck_sx,
@@ -36,7 +36,7 @@
       {
         id: 'lymphoma_2ww', tier: 'cancer',
         label: 'Possible lymphoma — node + B-symptoms / generalised lymphadenopathy',
-        action: 'Urgent FBC, film, LDH; haematology 2WW.',
+        action: 'Urgent FBC, film, LDH; haematology suspected cancer pathway referral.',
         source: 'NICE NG12 (updated April 2026) §1.10',
         when: i => i.b_symptoms,
       },
@@ -86,13 +86,13 @@
         guideUrl: 'https://www.nice.org.uk/guidance/ng12', guideLabel: 'NICE NG12 (updated April 2026)' },
 
       { id: 'head_neck_cancer', name: 'Head & neck cancer', summary: 'Persistent hard/fixed node, smoker, red-flag symptoms', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hard fixed node, oral lesion, hoarseness.', nextIx: '\u26A1 Head & neck 2WW (NICE NG12 (updated April 2026)).',
+        keyExam: 'Hard fixed node, oral lesion, hoarseness.', nextIx: '\u26A1 Head & neck suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
         patientPhrase: 'A persistent firm lump needs an urgent specialist assessment to exclude cancer — many prove benign.',
-        guideUrl: '', redFlagAction: '\u26A1 Head & neck 2WW' },
+        guideUrl: '', redFlagAction: '\u26A1 Head & neck suspected cancer pathway referral' },
       { id: 'lymphoma', name: 'Lymphoma', summary: 'Node + B-symptoms / generalised lymphadenopathy', baseline: 1, category: 'cant-miss',
-        keyExam: 'Rubbery nodes, hepatosplenomegaly.', nextIx: '\u26A1 FBC, film, LDH; haematology 2WW.',
+        keyExam: 'Rubbery nodes, hepatosplenomegaly.', nextIx: '\u26A1 FBC, film, LDH; haematology suspected cancer pathway referral.',
         patientPhrase: 'Painless gland swelling with these features needs urgent tests to exclude a lymph-gland cancer.',
-        guideUrl: '', redFlagAction: '\u26A1 Haematology 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Haematology suspected cancer pathway referral' }
     ],
     effects: {
       age: (v) => v >= 45 ? { head_neck_cancer: +6, reactive: -2 } : (v < 30 ? { reactive: +4, congenital: +4 } : {}),

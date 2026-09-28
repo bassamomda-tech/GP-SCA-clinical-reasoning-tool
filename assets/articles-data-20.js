@@ -24,7 +24,7 @@
       'Refer/biopsy any suspicious pigmented or non-healing nail lesion to exclude melanoma',
       'Set expectations — nails grow slowly, so improvement takes months'],
     referral:[
-      'Suspected subungual melanoma (new pigmented streak, Hutchinson’s sign, non-healing lesion) → urgent suspected skin-cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Suspected subungual melanoma (new pigmented streak, Hutchinson’s sign, non-healing lesion) → suspected cancer pathway referral for skin cancer (NICE NG12 (updated April 2026))',
       'Diagnostic uncertainty, severe nail psoriasis/lichen planus, or treatment failure → dermatology',
       'New finger clubbing → investigate for underlying cause (respiratory/cardiac/GI)',
       'Diabetic/ischaemic foot with nail disease → podiatry'],
@@ -203,7 +203,7 @@
       'Diagnostic uncertainty or suspicion of another liver disease → hepatology',
       'Progression to cirrhosis → hepatology for HCC surveillance (6-monthly ultrasound ± AFP); suspicious lesion → urgent referral (NICE NG12 (updated April 2026))',
       'Decompensated liver disease → urgent specialist assessment'],
-    source:'NICE NG49 (NAFLD)' },
+    source:'NICE NG49 (MASLD, formerly NAFLD; updated July 2026)' },
 
   { id:'noonan', title:'Noonan syndrome', category:'Paediatrics', icon:'🧬',
     overview:'A relatively common autosomal-dominant genetic condition (RASopathy) with characteristic facial features, short stature, congenital heart disease and a variable bleeding tendency. Recognising it allows cardiac assessment, growth and developmental support, and appropriate genetic counselling.',

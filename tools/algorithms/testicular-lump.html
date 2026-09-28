@@ -9,7 +9,7 @@
 <div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div><span>Progress</span><span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
 <!-- DIAGRAM VIEW -->
 <div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — any solid intratesticular lump is cancer until proven otherwise: examine, exclude torsion, ultrasound urgently and refer on the NICE NG12 2-week-wait pathway, distinguishing the benign transilluminating lesions, then support and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="dg-legend"><span>The full reasoning pathway — any solid intratesticular lump is cancer until proven otherwise: examine, exclude torsion, ultrasound urgently and refer on the NICE NG12 suspected cancer pathway, distinguishing the benign transilluminating lesions, then support and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
   <div class="chart">
   <div class="flow">
 
@@ -24,7 +24,7 @@
       <li>Gynaecomastia or supraclavicular nodes (metastatic markers)</li>
     </ul></div></div>
     <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">2WW + USS / emergency</span><div class="body">Suspected testicular cancer → <b>urgent scrotal ultrasound + 2WW urology</b>. Suspected torsion → <b>same-day emergency surgical exploration</b> (don't wait for imaging).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Suspected cancer + USS / emergency</span><div class="body">Suspected testicular cancer → <b>urgent scrotal ultrasound + urology suspected cancer pathway referral</b>. Suspected torsion → <b>same-day emergency surgical exploration</b> (don't wait for imaging).</div></div></div>
       <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — characterise</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">USS + tumour markers</span><div class="body"><b>Scrotal ultrasound</b> is the key test for any uncertainty. If cancer suspected: <b>AFP, β-hCG, LDH</b> before orchidectomy. Transillumination separates cystic from solid.</div></div></div>
     </div></div>
     <div class="arrow"><span class="tag">Step 3 · which lesion?</span></div>
@@ -33,7 +33,7 @@
     <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
       <div class="col"><div class="blabel">Epididymal cyst / spermatocele</div><div class="box ix"><span class="ttl">Benign</span><div class="body">Smooth, <b>separate from</b> and above/behind the testis, transilluminates. Reassure; refer only if symptomatic.</div></div></div>
       <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Hydrocele / varicocele</div><div class="box ix"><span class="ttl">Benign — but image</span><div class="body">Hydrocele transilluminates, surrounds testis (<b>USS if testis impalpable</b> to exclude underlying tumour). Varicocele = "bag of worms", <b>new left-sided in older man → exclude renal tumour</b>.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Solid tumour</div><div class="box ix"><span class="ttl">Red flag</span><div class="body">Hard, non-transilluminating, <b>part of the testis</b> → testicular cancer → 2WW.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Solid tumour</div><div class="box ix"><span class="ttl">Red flag</span><div class="body">Hard, non-transilluminating, <b>part of the testis</b> → testicular cancer → suspected cancer pathway referral.</div></div></div>
     </div></div>
     <div class="arrow"><span class="tag">Step 7 · manage</span></div>
 
@@ -48,7 +48,7 @@
     <!-- STEP 6 — REFER -->
     <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
       <li><span class="pill pill-red">Same-day</span> suspected torsion (any acute painful swelling, esp. adolescent) → emergency exploration.</li>
-      <li><span class="pill pill-purple">2WW · NICE NG12</span> non-acute solid testicular mass → urgent USS + urology (testicular cancer).</li>
+      <li><span class="pill pill-purple">Suspected cancer · NICE NG12</span> non-acute solid testicular mass → urgent USS + urology (testicular cancer).</li>
       <li><span class="pill pill-blue">Urology</span> symptomatic benign lesions, impalpable testis behind a hydrocele, fertility-affecting varicocele.</li>
     </ul></div></div>
     <div class="arrow"><span class="tag">Step 8 · support &amp; self-care</span></div>
@@ -58,10 +58,10 @@
     <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
 
     <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>999 / same-day</b> if sudden severe testicular pain (torsion). <b>Return</b> if a "benign" lump enlarges, becomes hard, or new heaviness/dragging develops — <b>re-image rather than re-reassure</b>. Ensure the 2WW USS is booked and attended; chase results.</div></div>
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>999 / same-day</b> if sudden severe testicular pain (torsion). <b>Return</b> if a "benign" lump enlarges, becomes hard, or new heaviness/dragging develops — <b>re-image rather than re-reassure</b>. Ensure the urgent USS is booked and attended; chase results.</div></div>
   </div>
   </div>
-  <div class="band"><div class="caution">⚠️ <b>Feel the lump against the testis:</b> anything solid and arising from the testis itself (not transilluminating) is cancer until proven otherwise — arrange urgent ultrasound and 2-week-wait referral. And never let a hydrocele you can't see past go un-scanned: it may hide a tumour.</div></div>
+  <div class="band"><div class="caution">⚠️ <b>Feel the lump against the testis:</b> anything solid and arising from the testis itself (not transilluminating) is cancer until proven otherwise — arrange urgent ultrasound and suspected cancer pathway referral. And never let a hydrocele you can't see past go un-scanned: it may hide a tumour.</div></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -69,8 +69,8 @@
 <div class="node" data-type="SAFETY" data-step="1"><div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Testicular Cancer &amp; Emergencies</h3></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
 <div class="node-body"><p><b>Any new painless testicular lump in a male aged 15–45 = testicular cancer until proven otherwise. Refer for urgent USS same day or within 48 hours.</b></p>
 <div class="rfgrid">
-<div class="rftile"><b>Painless hard testicular mass</b> Testicular cancer (germ cell tumour — seminoma or NSGCT) → 2WW urology / urgent USS within 2 weeks (NICE NG12, updated April 2026: consider direct-access USS for unexplained or persistent testicular symptoms). Peak incidence 25–35 yrs. Most curable cancer if caught early.</div>
-<div class="rftile"><b>Testicular lump + back pain + weight loss</b> Retroperitoneal lymph node metastases from testicular cancer → 2WW. Retroperitoneal spread occurs early — LDH, AFP, beta-hCG tumour markers urgently.</div>
+<div class="rftile"><b>Painless hard testicular mass</b> Testicular cancer (germ cell tumour — seminoma or NSGCT) → urology suspected cancer pathway referral / urgent USS within 2 weeks (NICE NG12, updated April 2026: consider direct-access USS for unexplained or persistent testicular symptoms). Peak incidence 25–35 yrs. Most curable cancer if caught early.</div>
+<div class="rftile"><b>Testicular lump + back pain + weight loss</b> Retroperitoneal lymph node metastases from testicular cancer → suspected cancer pathway referral. Retroperitoneal spread occurs early — LDH, AFP, beta-hCG tumour markers urgently.</div>
 <div class="rftile"><b>Acute scrotal pain + hard testicle</b> Torsion vs incarcerated inguinal hernia → 999. Distinguish from painful lump: torsion = sudden onset pain, high-riding testicle, absent cremasteric reflex. 6-hour window for salvage.</div>
 <div class="rftile"><b>Rapid growth over days/weeks</b> Aggressive germ cell tumour, lymphoma → same-day urology. Even if tender (10% of testicular cancers are painful).</div>
 <div class="rftile"><b>Bilateral testicular atrophy + gynaecomastia</b> Hypogonadism, Klinefelter's, or advanced testicular cancer with endocrine effects → urgent investigations.</div>
@@ -92,7 +92,7 @@
 
 <div class="node" data-type="DIAGNOSE" data-step="3"><div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis — The Testicular Lump</h3></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
 <div class="node-body"><div class="kv">
-<div>Testicular cancer (most important)</div><div>Seminoma (pure — AFP normal, beta-hCG mildly elevated or normal, highly radiosensitive) · NSGCT (AFP elevated ± beta-hCG — embryonal, teratoma, choriocarcinoma, yolk sac). Hard, smooth or nodular, non-tender (usually), intratesticular. 2WW USS.</div>
+<div>Testicular cancer (most important)</div><div>Seminoma (pure — AFP normal, beta-hCG mildly elevated or normal, highly radiosensitive) · NSGCT (AFP elevated ± beta-hCG — embryonal, teratoma, choriocarcinoma, yolk sac). Hard, smooth or nodular, non-tender (usually), intratesticular. Urgent USS and suspected cancer pathway referral.</div>
 <div>Epididymal cyst / spermatocele</div><div>Most common benign scrotal lump. Posterior to testis, transilluminates, smooth, non-tender, clearly separate from testis. Spermatocele: milky fluid, contains spermatozoa. Epididymal cyst: clear fluid. USS confirms. No treatment needed unless symptomatic.</div>
 <div>Hydrocele</div><div>Fluid surrounding testis — transilluminates brightly, fluctuant, obscures testis on palpation. Primary (idiopathic, common in infants and elderly) vs secondary (epididymo-orchitis, trauma, tumour — always USS to exclude underlying cancer in adults).</div>
 <div>Varicocele</div><div>"Bag of worms" sensation superior to testis, worse on standing, improves lying down. Left side more common (left gonadal vein drains into left renal vein at 90°). Associated with subfertility. USS confirms. Secondary varicocele in older man → renal cell carcinoma (left-sided) screen.</div>
@@ -108,8 +108,8 @@
 <div>Cremasteric reflex</div><div>Stroke inner thigh — testis elevates (reflex intact = less likely torsion). Absent cremasteric reflex = torsion until proven otherwise → 999 immediately.</div>
 <div>Abdomen</div><div>Palpate for abdominal/retroperitoneal mass (nodal metastases), hepatomegaly (metastases). Examine for gynaecomastia. Lymphadenopathy (inguinal, supraclavicular — left-sided Virchow's node).</div>
 <div>Tumour markers</div><div><span class="pill pill-blue">AFP</span> (alpha-fetoprotein — elevated in NSGCT, normal in pure seminoma) · <span class="pill pill-blue">beta-hCG</span> (elevated in choriocarcinoma, some seminomas) · <span class="pill pill-blue">LDH</span> (marker of tumour bulk, disease progression) · <span class="pill pill-blue">PLAP</span> (placental alkaline phosphatase — seminoma marker). Request all three before any intervention.</div>
-<div>Scrotal USS</div><div><span class="pill pill-red">Urgent scrotal USS (within 2 weeks)</span> — gold standard for testicular pathology. Sensitivity &gt;98% for testicular tumour. Identifies intratesticular vs extratesticular location. Vascularity (Doppler flow — reduced/absent = torsion). Arranged via 2WW or urgent GP-arranged USS.</div>
-<div>CXR</div><div>Baseline for metastases staging — hilar nodes, pulmonary metastases (especially NSGCT which spreads haematogenously to lungs early). Arranged alongside 2WW referral.</div>
+<div>Scrotal USS</div><div><span class="pill pill-red">Urgent scrotal USS (within 2 weeks)</span> — gold standard for testicular pathology. Sensitivity &gt;98% for testicular tumour. Identifies intratesticular vs extratesticular location. Vascularity (Doppler flow — reduced/absent = torsion). Arranged via the suspected cancer pathway or as urgent GP-arranged direct-access USS.</div>
+<div>CXR</div><div>Baseline for metastases staging — hilar nodes, pulmonary metastases (especially NSGCT which spreads haematogenously to lungs early). Arranged alongside suspected cancer pathway referral.</div>
 </div></div>
 <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Tumour markers (AFP, beta-hCG, LDH) must be drawn before any surgical intervention (orchidectomy) — they serve as baseline values against which response to treatment and recurrence are monitored. If orchidectomy is performed without pre-operative markers, subsequent tumour marker trends cannot be interpreted. AFP is produced by yolk sac tumour elements — it is elevated in 70% of NSGCTs but never elevated in pure seminoma. An elevated AFP in a man with apparent seminoma on biopsy means the tumour contains NSGCT elements (mixed germ cell tumour) and changes the treatment approach.</div></div></div>
 <div class="connector"></div>
@@ -117,10 +117,10 @@
 <div class="node" data-type="REFER" data-step="5"><div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
 <div class="node-body"><div class="kv">
 <div><span class="pill pill-red">999</span></div><div>Suspected testicular torsion (acute scrotal pain + absent cremasteric reflex + high-riding testis). 6-hour window — delay = orchidectomy.</div>
-<div><span class="pill pill-purple">2WW urology</span></div><div>Any intratesticular lump on USS · any solid testicular mass · testicular lump + elevated tumour markers · new hydrocele in adult (underlying cancer exclusion) · testicular lump with constitutional symptoms · <b>NICE NG12 (updated April 2026):</b> non-painful enlargement or change in shape/texture of the testis → 2WW urology</div>
-<div>Urgent USS (GP-arranged, within 48 hrs)</div><div>New testicular lump in male 15–45 — arrange scrotal USS urgently while completing 2WW referral. Both simultaneously — do NOT wait for USS before referring.</div>
+<div><span class="pill pill-purple">Suspected cancer: urology</span></div><div>Any intratesticular lump on USS · any solid testicular mass · testicular lump + elevated tumour markers · new hydrocele in adult (underlying cancer exclusion) · testicular lump with constitutional symptoms · <b>NICE NG12 (updated April 2026):</b> non-painful enlargement or change in shape/texture of the testis → urology suspected cancer pathway referral</div>
+<div>Urgent USS (GP-arranged, within 48 hrs)</div><div>New testicular lump in male 15–45 — arrange scrotal USS urgently while completing suspected cancer pathway referral. Both simultaneously — do NOT wait for USS before referring.</div>
 <div>Urology (routine)</div><div>Confirmed epididymal cyst / spermatocele (symptomatic, patient wishes excision) · confirmed varicocele (subfertility concerns) · hydrocele (primary, adult, symptomatic)</div>
-<div>GUM / sexual health</div><div>Suspected STI-associated epididymo-orchitis — NAAT swabs (chlamydia, gonorrhoea) + contact tracing. Concurrent 2WW if any doubt about cancer.</div>
+<div>GUM / sexual health</div><div>Suspected STI-associated epididymo-orchitis — NAAT swabs (chlamydia, gonorrhoea) + contact tracing. Concurrent suspected cancer pathway referral if any doubt about cancer.</div>
 </div></div>
 <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Testicular torsion has a salvage rate of 97% if operated on within 6 hours of onset, 70% at 12 hours, and nearly 0% at 24 hours. Any clinician who suspects torsion must phone 999 or transfer the patient directly to A&E — there is no role for "watchful waiting" or "return if worse." The clinical rule is: if in doubt, explore. Epididymo-orchitis and torsion can be clinically indistinguishable — Doppler USS can help but should not delay surgical exploration when torsion is clinically likely. A urologist would rather perform an exploration showing epididymo-orchitis than miss a torsion.</div></div></div>
 <div class="connector"></div>
@@ -158,7 +158,7 @@
 
 <div class="node" data-type="SAFETY" data-step="9"><div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
 <div class="node-body"><div class="kv">
-<div>2WW tracking</div><div>Confirm USS appointment booked and hospital received referral. No appointment in 2 weeks → patient phones hospital. Document referral date. USS result communicated to patient promptly.</div>
+<div>Suspected cancer referral tracking</div><div>Confirm USS appointment booked and hospital received referral. No appointment in 2 weeks → patient phones hospital. Document referral date. USS result communicated to patient promptly.</div>
 <div>Epididymo-orchitis — 72 hrs</div><div>Telephone review: pain/swelling improving? If not improving → USS (rule out abscess formation or underlying tumour). Swab results back — correct antibiotics? Partner treated?</div>
 <div>Post-cancer treatment</div><div>Surveillance program (hospital-led): tumour markers + CT + examination every 1–3 months (Stage I) or more frequently if advanced. GP role: support, manage late effects (cisplatin peripheral neuropathy, renal impairment, cardiovascular risk).</div>
 <div>Contralateral testis</div><div>After testicular cancer diagnosis: 2–5% lifetime risk of contralateral testicular cancer. Annual testicular self-examination education. Low threshold for USS of contralateral testis if any new symptom.</div>

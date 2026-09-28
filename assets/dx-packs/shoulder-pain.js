@@ -44,7 +44,7 @@
       {
         id: 'tumour', tier: 'cancer',
         label: 'Possible bony / soft-tissue tumour — mass / systemic / unremitting night pain',
-        action: 'Urgent imaging ± sarcoma/2WW pathway.',
+        action: 'Urgent imaging ± sarcoma suspected cancer pathway.',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.mass_systemic,
       },
@@ -101,7 +101,7 @@
         patientPhrase: 'Shoulder-tip pain can be referred from the heart or abdomen — I will check those to be safe.',
         guideUrl: '', redFlagAction: '\u26A1 ECG / assess viscera' },
       { id: 'septic_tumour', name: 'Septic arthritis / tumour', summary: 'Hot swollen + fever, or mass / unremitting night pain', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hot effusion, fever; or mass/systemic signs.', nextIx: '\u26A1 Septic → aspirate + admit; tumour → urgent imaging ± 2WW.',
+        keyExam: 'Hot effusion, fever; or mass/systemic signs.', nextIx: '\u26A1 Septic → aspirate + admit; tumour → urgent imaging ± suspected cancer pathway referral.',
         patientPhrase: 'A hot swollen joint or a mass needs urgent assessment to exclude infection or tumour.',
         guideUrl: '', redFlagAction: '\u26A1 Aspirate / urgent imaging' }
     ],

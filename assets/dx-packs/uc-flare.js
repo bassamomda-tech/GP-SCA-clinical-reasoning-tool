@@ -104,9 +104,9 @@
         patientPhrase: 'A severely dilated, inflamed bowel is an emergency — we need hospital care immediately.',
         guideUrl: '', redFlagAction: '\u26A1 Emergency admission' },
       { id: 'cancer', name: 'Colorectal cancer / dysplasia', summary: 'Long-standing colitis, new persistent change, weight loss', baseline: 1, category: 'cant-miss',
-        keyExam: 'Mass, anaemia, cachexia.', nextIx: '\u26A1 Colonoscopy via IBD surveillance pathway / 2WW.',
+        keyExam: 'Mass, anaemia, cachexia.', nextIx: '\u26A1 Colonoscopy via IBD surveillance pathway / suspected cancer pathway referral.',
         patientPhrase: 'Long-standing colitis raises bowel-cancer risk, so a persistent new change warrants a camera test.',
-        guideUrl: '', redFlagAction: '\u26A1 Colonoscopy / 2WW' }
+        guideUrl: '', redFlagAction: '\u26A1 Colonoscopy / suspected cancer pathway referral' }
     ],
     effects: {
       known_uc: { mild_mod_flare: +6 },

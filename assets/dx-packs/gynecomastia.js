@@ -29,7 +29,7 @@
       {
         id: 'breast_cancer', tier: 'cancer',
         label: 'Suspected male breast cancer — hard / eccentric / fixed lump, skin or nipple change',
-        action: 'Breast 2WW.',
+        action: 'Breast suspected cancer pathway referral.',
         patientPhrase: '"This lump has features I want a breast specialist to assess quickly to be safe."',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.hard_eccentric,
@@ -37,7 +37,7 @@
       {
         id: 'testis_2ww', tier: 'cancer',
         label: 'Testicular mass / rapid gynaecomastia — exclude germ-cell tumour',
-        action: 'Urgent testicular USS + hCG/AFP; 2WW if mass confirmed.',
+        action: 'Urgent testicular USS + hCG/AFP; suspected cancer pathway referral if mass confirmed.',
         source: 'NICE NG12 (updated April 2026)',
         when: i => i.testis_mass,
       },
@@ -91,9 +91,9 @@
         guideUrl: '' },
 
       { id: 'breast_cancer', name: 'Male breast cancer', summary: 'Hard, eccentric, fixed lump, skin / nipple change', baseline: 1, category: 'cant-miss',
-        keyExam: 'Hard fixed eccentric mass, nipple retraction/discharge, nodes.', nextIx: '\u26A1 Breast 2WW (NICE NG12 (updated April 2026)).',
+        keyExam: 'Hard fixed eccentric mass, nipple retraction/discharge, nodes.', nextIx: '\u26A1 Breast suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
         patientPhrase: 'This lump has features I want a specialist to assess quickly — most prove benign, but we do not wait.',
-        guideUrl: '', redFlagAction: '\u26A1 Breast 2WW' },
+        guideUrl: '', redFlagAction: '\u26A1 Breast suspected cancer pathway referral' },
       { id: 'testis_tumour', name: 'Testicular / hCG-secreting tumour', summary: 'Testicular mass or rapid gynaecomastia', baseline: 1, category: 'cant-miss',
         keyExam: 'Testicular mass; rapid breast enlargement.', nextIx: '\u26A1 Testicular USS + hCG/AFP; urgent referral.',
         patientPhrase: 'Rapid changes can rarely point to a testicular cause — a quick scan and blood test check for it.',

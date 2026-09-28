@@ -2544,10 +2544,10 @@
    "name": "Denise Falk",
    "age": "54-year-old woman",
    "pmh": [
-    "Diabetes mellitus (type and treatment as per record)"
+    "Type 2 diabetes (on metformin)"
    ],
    "meds": [
-    "Diabetes medication — see repeat list"
+    "Metformin (type 2 diabetes)"
    ],
    "allergy": "No known drug allergies recorded",
    "recent": "No previous consultations about her shoulder recorded.",
@@ -2833,10 +2833,10 @@
     "name": "Denise Falk",
     "age": "54 years · female",
     "pmh": [
-     "Diabetes mellitus"
+     "Type 2 diabetes"
     ],
     "meds": [
-     "Diabetes medication — see repeat list"
+     "Metformin (type 2 diabetes)"
     ],
     "allergy": "NKDA",
     "recent": "No previous shoulder consultations.",
@@ -3557,7 +3557,7 @@
  },
  "infantile-colic": {
   "stem": {
-   "name": "Noah",
+   "name": "Noah Lowther",
    "age": "6-week-old boy",
    "pmh": [
     "No problems recorded"
@@ -3567,7 +3567,7 @@
    ],
    "allergy": "Not recorded in the booking note",
    "recent": "No recent consultations recorded.",
-   "reason": "Booked by his mother: “Crying for hours every evening. Nothing settles him.”"
+   "reason": "Booked by his mother, Hannah Lowther: “Crying for hours every evening. Nothing settles him.”"
   },
   "knowledge": {
    "guideline": "[1] NICE NG143 Fever in under 5s: assessment and initial management (2019) · [2] NICE NG254 Suspected sepsis in under 16s (2025) · [3] NICE NG1 Gastro-oesophageal reflux disease in children and young people (2015) · [4] NICE CG116 Food allergy in under 19s: assessment and diagnosis (2011) · [5] NICE CG192 Antenatal and postnatal mental health · [6] ICON: Babies cry, you can cope (UK programme) · [7] DfE Working Together to Safeguard Children (2023)",
@@ -3604,7 +3604,7 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello, I’m Dr Khan. And this must be Noah. What’s been happening?",
+    "text": "Hello, I’m Dr Khan. You must be Noah’s mum — Hannah, is it? And this must be Noah. What’s been happening?",
     "dom": "rto",
     "why": "Open start, greets parent and baby"
    },
@@ -3836,7 +3836,7 @@
     "Mental health & addiction"
    ],
    "stem": {
-    "name": "Noah",
+    "name": "Noah Lowther",
     "age": "6 weeks · male",
     "pmh": [
      "No problems recorded"
@@ -5653,7 +5653,7 @@
  },
  "precocious-puberty": {
   "stem": {
-   "name": "Maya",
+   "name": "Maya Carrick",
    "age": "6-year-old girl",
    "pmh": [
     "No relevant history recorded"
@@ -5916,7 +5916,7 @@
     "New & undifferentiated presentations"
    ],
    "stem": {
-    "name": "Maya",
+    "name": "Maya Carrick",
     "age": "6 years · female",
     "pmh": [
      "No relevant history recorded"
@@ -6135,7 +6135,7 @@
    "reason": "Booked “for antidepressants to feel better”."
   },
   "knowledge": {
-   "guideline": "[1] EAU Guidelines on Sexual and Reproductive Health (2024, international) · [2] ISSM definition of premature ejaculation, Serefoglu et al., J Sex Med 2014 (international) · [3] BNF: dapoxetine; lidocaine with prilocaine · [4] NICE NG222 Depression in adults (2022) · [5] BSSM guidelines on the management of erectile dysfunction (Hackett et al., 2018)",
+   "guideline": "[1] EAU Guidelines on Sexual and Reproductive Health (2024, international) · [2] ISSM definition of premature ejaculation, Serefoglu et al., J Sex Med 2014 (international) · [3] BNF: dapoxetine; lidocaine with prilocaine · [4] NICE NG222 Depression in adults (2022, updated December 2025) · [5] BSSM guidelines on the management of erectile dysfunction (Hackett et al., 2018)",
    "summary": "A request for antidepressants can hide a sexual problem. Here the real agenda is premature ejaculation causing distress and relationship strain. Make it safe to talk, then confirm PE against the ISSM definition, classify lifelong versus acquired (acquired needs a cause looked for), and check for erectile dysfunction, which is treated first if present. Screen mood properly rather than prescribing for ‘feeling low’. Offer behavioural techniques, a topical anaesthetic spray and, if wanted, on-demand dapoxetine or an off-label daily SSRI, with partner involvement and psychosexual therapy where relationship or anxiety factors dominate.",
    "points": [
     {
@@ -6609,11 +6609,11 @@
    "age": "68-year-old man",
    "pmh": [
     "Hypertension",
-    "Heart condition requiring anticoagulation (indication as per record)"
+    "Atrial fibrillation — anticoagulated with apixaban"
    ],
    "meds": [
-    "Anticoagulant (“blood thinner”) — see repeat list",
-    "Antihypertensive medication — see repeat list"
+    "Apixaban (“blood thinner”) — for atrial fibrillation",
+    "Amlodipine — for hypertension"
    ],
    "allergy": "No known drug allergies recorded",
    "recent": "No previous consultations about nosebleeds recorded.",
@@ -6668,7 +6668,7 @@
    },
    {
     "who": "pt",
-    "text": "I keep getting nosebleeds, doctor. Several over the past few weeks. The last one was a real worry, it wouldn’t stop for a good twenty minutes and there was a fair bit of blood. I’m on blood thinners for my heart, and I take tablets for blood pressure. Should I be concerned?"
+    "text": "I keep getting nosebleeds, doctor. Several over the past few weeks. The last one was a real worry, it wouldn’t stop for a good twenty minutes and there was a fair bit of blood. I’m on a blood thinner, apixaban, for my irregular heartbeat — atrial fibrillation — and I take tablets for blood pressure. Should I be concerned?"
    },
    {
     "who": "dr",
@@ -6730,7 +6730,7 @@
    },
    {
     "who": "pt",
-    "text": "I’d have to check the name, it’s on my repeat list. Nothing else on top."
+    "text": "Apixaban — the one without the blood tests. It’s for my atrial fibrillation. Nothing else on top."
    },
    {
     "who": "dr",
@@ -6810,7 +6810,7 @@
    },
    {
     "who": "dr",
-    "text": "Please don’t stop it yourself. It protects you from something serious. I’ll review why you’re on it, check the dose against your kidney tests and weight, and if it’s warfarin I’ll check your INR today. If we need to change anything, I’ll discuss it with whoever looks after your heart.",
+    "text": "Please don’t stop it yourself. It protects you from something serious. I’ll review why you’re on it — your atrial fibrillation — and check the apixaban dose against your age, kidney tests and weight; it doesn’t need INR checks like warfarin. If we need to change anything, I’ll discuss it with whoever looks after your heart.",
     "dom": "tasks",
     "why": "Anticoagulant review without unsafe discontinuation"
    },
@@ -6870,7 +6870,7 @@
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Pulse and BP; anterior rhinoscopy for a bleeding point; FBC, renal function and INR if on warfarin as indicated.",
+    "d": "Pulse and BP; anterior rhinoscopy for a bleeding point; FBC and renal function (apixaban dosing) as indicated; INR only if on warfarin.",
     "pts": 1
    },
    {
@@ -6915,11 +6915,11 @@
     "age": "68 years · male",
     "pmh": [
      "Hypertension",
-     "Heart condition on anticoagulation"
+     "Atrial fibrillation on apixaban"
     ],
     "meds": [
-     "Anticoagulant — see repeat list",
-     "Antihypertensive — see repeat list"
+     "Apixaban (atrial fibrillation)",
+     "Amlodipine (hypertension)"
     ],
     "allergy": "NKDA",
     "recent": "No previous nosebleed consultations.",

@@ -80,7 +80,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   indications:['Breathlessness, cough, wheeze, haemoptysis','Chest pain (pleuritic)','Monitoring of asthma/COPD','Suspected infection, effusion or malignancy'],
   equipment:['Stethoscope','Couch at 45°','SpO₂ probe'],
   redFlags:[
-    'Haemoptysis with weight loss / age >40 smoker → 2-week-wait chest referral / urgent CXR',
+    'Haemoptysis with weight loss / age >40 smoker → lung suspected cancer pathway referral / urgent CXR',
     'Acute severe breathlessness, silent chest, SpO₂ low, exhaustion → **999**',
     'Stridor → upper-airway obstruction — emergency',
     'Unilateral leg swelling + pleuritic pain + breathlessness → ?PE',

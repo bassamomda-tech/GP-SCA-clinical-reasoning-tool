@@ -44,12 +44,12 @@
     keys:['uti','urinary tract infection','lower uti','cystitis','uti women','uti-women'],
     s:{
       hpc:'[X]-day history of dysuria, urinary frequency and urgency [± suprapubic discomfort, cloudy/offensive urine]. No vaginal discharge/irritation. [Not pregnant.] No prior recurrent UTIs / catheter. ICE: wants symptom relief, concerned about [kidney infection].',
-      redflags:'No fever/rigors, no loin pain or flank tenderness, no nausea/vomiting (pyelonephritis). No visible haematuria persisting after treatment (cancer — consider 2WW per NICE NG12 (updated April 2026) if ≥45 with unexplained haematuria). Not pregnant / no sepsis features. No new confusion (elderly).',
+      redflags:'No fever/rigors, no loin pain or flank tenderness, no nausea/vomiting (pyelonephritis). No visible haematuria persisting after treatment (cancer — consider suspected cancer pathway referral per NICE NG12 (updated April 2026) if ≥45 with unexplained haematuria). Not pregnant / no sepsis features. No new confusion (elderly).',
       exam:'Afebrile, well. Abdomen soft, [mild suprapubic tenderness], no loin/renal angle tenderness. [Urine dip: leucocytes/nitrites — supportive.]',
       impression:'Uncomplicated lower urinary tract infection in a non-pregnant woman. No upper-tract or systemic features.',
       ix:'Urine dipstick [nitrite/leucocyte positive]. Send MSU for culture if: pregnant, recurrent, treatment failure, atypical, or ≥65. [Consider no dip and treat empirically if classic symptoms.]',
       plan:'Empirical antibiotic per local formulary: [nitrofurantoin 100mg MR BD 3 days] (avoid if eGFR<45) OR [trimethoprim 200mg BD 3 days] (check local resistance, avoid 1st-trimester pregnancy). Advise hydration, paracetamol/ibuprofen for pain. Self-care for mild symptoms +/- delayed script.',
-      referral:'No referral. Consider urology if recurrent UTI, or 2WW for unexplained visible haematuria (≥45) / persistent UTI with haematuria.',
+      referral:'No referral. Consider urology if recurrent UTI, or a suspected cancer pathway referral for unexplained visible haematuria (≥45) / persistent UTI with haematuria.',
       safetynet:'Return / seek urgent care if fever, rigors, loin pain, vomiting, blood in urine, or no improvement within 48h of antibiotics (suggests resistance or pyelonephritis).',
       followup:'No routine follow-up if resolves. Review culture if sent. If ≥3 UTIs/year, arrange recurrent-UTI assessment.'
     }
@@ -164,7 +164,7 @@
     keys:['copd','chronic obstructive pulmonary disease','copd review'],
     s:{
       hpc:'COPD review. Breathlessness MRC [grade X], cough/sputum [X], exacerbations / OCS / admissions last year [X]. Current inhalers [X], technique/adherence [checked]. Smoking [status / pack-years]. Activity [X]. ICE: [X].',
-      redflags:'No current exacerbation needing acute care (increased breathlessness/sputum volume/purulence with systemic upset). No signs of cor pulmonale (oedema, raised JVP). No haemoptysis or weight loss (consider 2WW lung cancer / CXR). SpO2 [adequate].',
+      redflags:'No current exacerbation needing acute care (increased breathlessness/sputum volume/purulence with systemic upset). No signs of cor pulmonale (oedema, raised JVP). No haemoptysis or weight loss (consider lung suspected cancer pathway referral / CXR). SpO2 [adequate].',
       exam:'RR [], SpO2 []. Chest [hyperinflated / wheeze / prolonged expiration]. No peripheral oedema. [BMI/weight]. Inhaler technique observed.',
       impression:'COPD — [GOLD/airflow severity], MRC [X], exacerbation risk [low/high]. [Stable today.]',
       ix:'Spirometry (post-bronchodilator FEV1/FVC <0.7) to confirm/grade. [FBC (eosinophils, polycythaemia/anaemia), CXR if indicated.] Pulse oximetry; consider [BMI, MRC] documented.',
@@ -179,12 +179,12 @@
     keys:['gord','reflux','gerd','dyspepsia','heartburn','indigestion'],
     s:{
       hpc:'[X]-week history of [retrosternal burning / acid regurgitation / epigastric discomfort], worse [lying/after meals]. [Relation to food/posture.] Lifestyle: [late meals, alcohol, caffeine, smoking, weight]. Current meds [NSAID?]. ICE: [X].',
-      redflags:'ALARM/2WW: no dysphagia, no unexplained weight loss, no GI bleeding (haematemesis/melaena/anaemia), no persistent vomiting, no epigastric mass. [Age ≥55 with treatment-resistant dyspepsia → consider non-urgent direct-access OGD per NICE NG12 (updated April 2026).] No new dyspepsia ≥55 with weight loss + (reflux/dyspepsia/upper abdo pain).',
+      redflags:'ALARM/suspected cancer pathway features: no dysphagia, no unexplained weight loss, no GI bleeding (haematemesis/melaena/anaemia), no persistent vomiting, no epigastric mass. [Age ≥55 with treatment-resistant dyspepsia → consider non-urgent direct-access OGD per NICE NG12 (updated April 2026).] No new dyspepsia ≥55 with weight loss + (reflux/dyspepsia/upper abdo pain).',
       exam:'Well. Abdomen soft, [mild epigastric tenderness], no mass, no organomegaly. [No anaemia.]',
       impression:'Uninvestigated dyspepsia / GORD, no alarm features. [Likely lifestyle/acid-related.]',
       ix:'Test for H. pylori (stool antigen / breath test) — stop PPI 2 weeks before. [FBC if anaemia suspected.] Review medications (NSAID, CCB, bisphosphonate).',
       plan:'Lifestyle: weight loss, smaller/earlier meals, reduce alcohol/caffeine/fatty foods, raise head of bed, stop smoking, review/stop NSAID. Full-dose PPI [omeprazole 20mg OD] for 4–8 weeks. If H. pylori positive — eradication therapy. Step down to lowest effective dose / PRN once controlled.',
-      referral:'Routine direct-access OGD if ≥55 with treatment-resistant/persistent symptoms. URGENT suspected cancer pathway (2WW) referral for dysphagia, or ≥55 with weight loss plus upper abdominal pain/reflux/dyspepsia (NICE NG12 (updated April 2026)).',
+      referral:'Routine direct-access OGD if ≥55 with treatment-resistant/persistent symptoms. URGENT suspected cancer pathway referral for dysphagia, or ≥55 with weight loss plus upper abdominal pain/reflux/dyspepsia (NICE NG12 (updated April 2026)).',
       safetynet:'Seek urgent help if difficulty swallowing, food sticking, weight loss, vomiting blood or black stools, or symptoms not settling on treatment.',
       followup:'Review in [4–8 weeks] to assess response; if relapsing, lowest-dose maintenance and reassess; refer if persistent.'
     }
@@ -239,12 +239,12 @@
     keys:['menopause','perimenopause','menopausal symptoms','hrt'],
     s:{
       hpc:'[Age] with [X-month] history of [vasomotor symptoms — hot flushes/night sweats], [menstrual change], [mood/sleep/cognitive symptoms], [urogenital — vaginal dryness/dyspareunia/urinary]. Impact on [QoL/work]. LMP [X]. PMH/contraindications [VTE, breast cancer, migraine]. ICE: considering [HRT].',
-      redflags:'Postmenopausal bleeding (≥12 months amenorrhoea then bleeding — aged 55 and over and not attributable to HRT → 2WW (suspected cancer pathway) gynaecology per NICE NG12 (updated April 2026); under 55, assess and refer on clinical judgement). Unscheduled/persistent bleeding on HRT. No breast lump / unexplained PV bleeding. Personal history of [breast cancer / VTE / oestrogen-dependent cancer] noted before HRT.',
+      redflags:'Postmenopausal bleeding (≥12 months amenorrhoea then bleeding — aged 55 and over and not attributable to HRT → gynaecology suspected cancer pathway referral per NICE NG12 (updated April 2026); under 55, assess and refer on clinical judgement). Unscheduled/persistent bleeding on HRT. No breast lump / unexplained PV bleeding. Personal history of [breast cancer / VTE / oestrogen-dependent cancer] noted before HRT.',
       exam:'[BP, BMI]. [Breast/pelvic exam if clinically indicated.] [No abnormality.]',
       impression:'[Peri]menopause with [vasomotor / urogenital] symptoms affecting quality of life. [Suitable for HRT — no contraindication.]',
       ix:'Diagnosis is clinical in women ≥45 with typical symptoms — no FSH needed. [Consider FSH if <45 / atypical / query POI.] [Baseline BP, BMI; bloods only if indicated.]',
       plan:'Discuss options and individualised risks/benefits. HRT first-line for vasomotor symptoms: [oestrogen + progestogen if uterus present / oestrogen alone if hysterectomised]; [transdermal preferred if VTE/migraine risk]. Vaginal oestrogen for urogenital symptoms (can be used long-term ± systemic HRT). Non-hormonal options [CBT, SSRI/SNRI] if HRT declined/contraindicated. Lifestyle, contraception advice (still needed until [55/2y after LMP]).',
-      referral:'Menopause specialist / gynaecology if uncertainty, treatment-resistant symptoms, complex history (e.g. prior hormone-sensitive cancer), or POI (<40). 2WW gynae for postmenopausal bleeding.',
+      referral:'Menopause specialist / gynaecology if uncertainty, treatment-resistant symptoms, complex history (e.g. prior hormone-sensitive cancer), or POI (<40). Gynaecology suspected cancer pathway referral for postmenopausal bleeding.',
       safetynet:'Report any postmenopausal or unscheduled bleeding, new breast lump, or calf swelling/breathlessness (VTE) urgently. Return if symptoms not controlled or side-effects.',
       followup:'Review at [3 months] after starting/changing HRT, then [annually]; reassess bleeding pattern, benefits, risks and ongoing need.'
     }

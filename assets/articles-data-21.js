@@ -224,11 +224,11 @@
       'Be aware that a normal CA-125 does not entirely exclude cancer — persistent symptoms warrant ongoing review/reassessment',
       'Coordinate survivorship and follow-up care'],
     referral:[
-      'Physical examination identifying ascites and/or a pelvic or abdominal mass (not obviously fibroids) → urgent (2WW) gynae-oncology referral (NICE NG12 (updated April 2026))',
+      'Physical examination identifying ascites and/or a pelvic or abdominal mass (not obviously fibroids) → gynae-oncology suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'CA-125 at or above the NICE NG12 (updated April 2026) age-specific threshold (35 IU/mL at 40–49, 31 at 50–59, 24 at 60–69, 25 at 70–79, 31 at 80+) with ultrasound suggestive of ovarian cancer → urgent referral; CA-125 raised but ultrasound normal → assess/investigate other causes and safety-net',
       'Persistent symptoms with normal initial tests → review and reconsider/repeat investigation',
       'Strong family history (BRCA/Lynch) → genetics/familial cancer service'],
-    source:'NICE NG12 (updated April 2026) / NICE CG122 (Ovarian cancer)' },
+    source:'NICE NG12 (updated April 2026) / NICE CG122 (Ovarian cancer, updated April 2026; primary-care detection now in NICE NG12, updated April 2026)' },
 
   { id:'ovarian-cyst', title:'Ovarian cyst', category:'Women’s health', icon:'🌸',
     overview:'Fluid-filled sacs on or in the ovary — extremely common, usually benign and often physiological (functional), especially before the menopause. Most cause no symptoms and resolve spontaneously. The clinical priorities are recognising the acute complications (torsion, rupture, haemorrhage) and assessing the risk of malignancy, particularly after the menopause.',
@@ -250,7 +250,7 @@
       'Provide information on the usually benign nature and clear safety-netting'],
     referral:[
       'Suspected ovarian torsion or significant cyst rupture/haemorrhage (sudden severe pelvic pain, unwell) → emergency gynaecology/surgical admission',
-      'Complex/solid or large cyst, ascites, or features suggesting malignancy → urgent (2WW) gynae-oncology referral (NICE NG12 (updated April 2026))',
+      'Complex/solid or large cyst, ascites, or features suggesting malignancy → gynae-oncology suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Persistent, symptomatic, or postmenopausal cysts → gynaecology',
       'Premenopausal simple cyst → conservative management with ultrasound follow-up'],
     source:'RCOG Green-top Guideline No. 62 (Ovarian masses in premenopausal women, 2011) / RCOG Green-top Guideline No. 34 (Ovarian cysts in postmenopausal women, 2016) / NICE NG12 (updated April 2026)' },
@@ -274,7 +274,7 @@
       'Refer to specialist (urology/urogynaecology/continence) for refractory symptoms — further options include botulinum toxin, percutaneous tibial nerve stimulation, and sacral neuromodulation',
       'Provide continence-service support, containment products as needed, and address the psychosocial impact'],
     referral:[
-      'Visible haematuria (age ≥45), or other features suggesting bladder cancer → urgent suspected-cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Visible haematuria (age ≥45), or other features suggesting bladder cancer → suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Refractory overactive bladder despite conservative treatment and medication → urology/urogynaecology/continence service',
       'Suspected underlying neurological cause, significant voiding difficulty, or high residual volume → urology',
       'Diagnostic uncertainty or significant impact → continence service'],

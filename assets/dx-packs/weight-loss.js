@@ -28,7 +28,7 @@
     rules: [
       {
         id: 'site_2ww', tier: 'cancer',
-        label: 'Weight loss + site-specific symptom — site-specific 2WW',
+        label: 'Weight loss + site-specific symptom — site-specific suspected cancer pathway referral',
         action: 'Refer per symptom (lung / upper & lower GI / gynae / urological) — NICE NG12 (updated April 2026).',
         patientPhrase: '"Weight loss with this symptom needs a faster referral to rule out a serious cause."',
         source: 'NICE NG12 (updated April 2026)', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
@@ -36,7 +36,7 @@
       },
       {
         id: 'nonspecific_2ww', tier: 'cancer',
-        label: 'Unexplained weight loss ≥60, or with systemic B-symptoms — non-site-specific 2WW',
+        label: 'Unexplained weight loss ≥60, or with systemic B-symptoms — non-site-specific suspected cancer pathway referral',
         action: 'CXR, FIT, bloods; non-site-specific symptoms pathway / haematology if B-symptoms.',
         source: 'NICE NG12 (updated April 2026) §1.13',
         when: i => (i.age != null && i.age >= 60 && i.significant) || i.systemic_b,
@@ -77,9 +77,9 @@
     inputs: INPUTS,
     diagnoses: [
       { id: 'malignancy', name: 'Malignancy', summary: 'Site-specific symptom, ≥60, B-symptoms', baseline: 4, category: 'cant-miss',
-        keyExam: 'Mass, lymphadenopathy, organomegaly, cachexia.', nextIx: '\u26A1 Site-specific / non-site-specific 2WW (NICE NG12 (updated April 2026)); CXR, FIT, bloods.',
+        keyExam: 'Mass, lymphadenopathy, organomegaly, cachexia.', nextIx: '\u26A1 Site-specific / non-site-specific suspected cancer pathway referral (NICE NG12 (updated April 2026)); CXR, FIT, bloods.',
         patientPhrase: 'Unexplained weight loss can be the first sign of a cancer, so we investigate urgently — many come back clear.',
-        guideUrl: '', redFlagAction: '\u26A1 2WW pathway' },
+        guideUrl: '', redFlagAction: '\u26A1 Suspected cancer pathway referral' },
       { id: 'hyperthyroid', name: 'Hyperthyroidism', summary: 'Weight loss + heat intolerance + tremor', baseline: 7, category: 'common',
         keyExam: 'Tremor, tachycardia, goitre.', nextIx: 'TSH/FT4; treat.',
         patientPhrase: 'An overactive thyroid burns energy and causes weight loss. A blood test confirms it.',

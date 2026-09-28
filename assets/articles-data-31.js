@@ -99,7 +99,7 @@
       'Provide containment products and support while treatment takes effect, and address the psychosocial impact',
       'Investigate/refer red flags (haematuria, retention, suspected neurological or fistula causes) appropriately'],
     referral:[
-      'Visible haematuria (age ≥45) or other bladder-cancer red flags → urgent suspected-cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Visible haematuria (age ≥45) or other bladder-cancer red flags → suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Refractory incontinence, significant prolapse, or for surgical options → urogynaecology/urology/continence service',
       'Voiding difficulty/urinary retention, suspected neurological cause, or palpable bladder → urology',
       'Persistent symptoms despite conservative treatment → specialist'],
@@ -124,7 +124,7 @@
       'Recheck and monitor persistent non-visible haematuria (blood pressure, renal function, proteinuria) where no cause is found',
       'Provide safety-netting for new visible haematuria and ensure investigations are completed'],
     referral:[
-      'Aged ≥45 with unexplained VISIBLE haematuria (without UTI, or persisting/recurring after UTI treatment) → urgent suspected bladder/renal cancer (2WW) referral (NICE NG12 (updated April 2026))',
+      'Aged ≥45 with unexplained VISIBLE haematuria (without UTI, or persisting/recurring after UTI treatment) → suspected cancer pathway referral for bladder/renal cancer (NICE NG12 (updated April 2026))',
       'Aged ≥60 with non-visible haematuria plus dysuria or a raised white-cell count → urgent suspected bladder-cancer referral (NICE NG12 (updated April 2026))',
       'Suspected glomerular/renal cause (proteinuria, casts, hypertension, impaired renal function) → nephrology',
       'Persistent non-visible haematuria with no urological cancer found → monitor / nephrology as indicated'],
@@ -174,7 +174,7 @@
       'Arrange surveillance/follow-up after treatment',
       'Consider the woman’s wider risk (other HPV-related disease) and ensure screening is up to date'],
     referral:[
-      'An unexplained palpable vaginal mass or suspicious vaginal lesion → urgent (2WW) gynae-oncology referral (NICE NG12 (updated April 2026))',
+      'An unexplained palpable vaginal mass or suspicious vaginal lesion → gynae-oncology suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Unexplained postmenopausal/post-coital/persistent abnormal bleeding → examine and refer per the suspected-cancer pathway',
       'Confirmed vaginal cancer → gynae-oncology MDT',
       'Abnormal cervical/vaginal cytology → colposcopy'],
@@ -199,7 +199,7 @@
       'Manage in pregnancy with pregnancy-safe regimens and appropriate caution',
       'Provide self-care advice (avoid irritants/douching) and review persistent/recurrent symptoms'],
     referral:[
-      'Cervix or vagina appearing consistent with cancer, or postmenopausal bleeding at 55 or over not attributable to HRT → suspected cancer pathway (2WW) referral (NICE NG12 (updated April 2026)); unexplained post-coital bleeding → examine and refer to gynaecology/colposcopy',
+      'Cervix or vagina appearing consistent with cancer, or postmenopausal bleeding at 55 or over not attributable to HRT → suspected cancer pathway referral (NICE NG12 (updated April 2026)); unexplained post-coital bleeding → examine and refer to gynaecology/colposcopy',
       'Suspected STI/PID, recurrent or treatment-resistant infection → sexual-health (GUM) service',
       'Persistent unexplained discharge despite treatment → gynaecology',
       'Pregnancy with significant infection → manage with specialist advice'],

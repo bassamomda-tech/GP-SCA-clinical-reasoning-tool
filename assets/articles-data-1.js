@@ -53,7 +53,7 @@
       'Trial bladder-directed self-care for ~3 months before referral — caffeine/trigger-food elimination, timed voiding and a bladder diary — and review response',
       'Amitriptyline: start 10 mg nocte, titrate to 25–50 mg as tolerated; review at 4–6 weeks; warn re drowsiness and anticholinergic effects'],
     referral:[
-      'Visible haematuria, or unexplained non-visible haematuria with age/risk factors → urology 2WW to exclude bladder cancer',
+      'Visible haematuria, or unexplained non-visible haematuria with age/risk factors → urology suspected cancer pathway referral to exclude bladder cancer',
       'Diagnostic uncertainty or symptoms refractory to conservative measures → urology / urogynaecology',
       'Severe pain limiting function or mental health → pain service / MDT'],
     source:'EAU chronic pelvic pain guidelines (international) / RCOG guidance' },

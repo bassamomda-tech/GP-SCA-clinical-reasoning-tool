@@ -34,7 +34,7 @@
       {
         id: 'serious', tier: 'cancer',
         label: 'Cancer / infection features',
-        action: 'Urgent spinal imaging ± 2WW; admission if infection.',
+        action: 'Urgent spinal imaging ± suspected cancer pathway referral; admission if infection.',
         source: 'NICE NG12 (updated April 2026)',
         when: i => i.cancer_immuno,
       },
@@ -88,7 +88,7 @@
         patientPhrase: 'These features can mean nerve compression at the base of the spine — that needs an emergency scan tonight.',
         guideUrl: '', redFlagAction: '\u26A1 Emergency spinal + MRI' },
       { id: 'serious', name: 'Spinal malignancy / infection', summary: 'Cancer history, fever, weight loss, progressive', baseline: 1, category: 'cant-miss',
-        keyExam: 'Systemic features, focal tenderness.', nextIx: '\u26A1 Urgent imaging ± 2WW / admission.',
+        keyExam: 'Systemic features, focal tenderness.', nextIx: '\u26A1 Urgent imaging ± suspected cancer pathway referral / admission.',
         patientPhrase: 'A few features mean urgent tests to exclude a serious spinal cause.',
         guideUrl: '', redFlagAction: '\u26A1 Urgent imaging' }
     ],

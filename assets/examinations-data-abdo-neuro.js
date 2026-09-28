@@ -10,7 +10,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     'Rigid, board-like abdomen / peritonism → **emergency** surgical referral',
     'Pulsatile expansile mass + pain/collapse → ?ruptured AAA — 999',
     'GI bleeding with haemodynamic compromise → emergency',
-    'Weight loss + mass/altered bowel habit / iron-deficiency anaemia → 2-week-wait',
+    'Weight loss + mass/altered bowel habit / iron-deficiency anaemia → suspected cancer pathway referral',
   ],
   sequence:[
     { phase:'General & hands', items:[
@@ -41,7 +41,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     { finding:'RIF tenderness + rebound + Rovsing', meaning:'Appendicitis — surgical referral' },
     { finding:'Hepatomegaly + stigmata of chronic liver disease + ascites', meaning:'Chronic liver disease — LFTs, USS, refer' },
     { finding:'Palpable expansile central mass', meaning:'AAA — urgent USS/CT, vascular referral' },
-    { finding:'Mass + weight loss + altered bowel habit', meaning:'?GI malignancy — 2-week-wait referral' },
+    { finding:'Mass + weight loss + altered bowel habit', meaning:'?GI malignancy — suspected cancer pathway referral' },
     { finding:'Distension + tinkling bowel sounds + vomiting', meaning:'Bowel obstruction — surgical referral' },
   ],
   links:{ algorithm:'tools/algorithms/abdominal-pain.html', algorithmLabel:'Abdominal pain pathway', case:'cases/dyspepsia.html', caseLabel:'Dyspepsia' },

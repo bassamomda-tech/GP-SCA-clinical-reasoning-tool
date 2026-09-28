@@ -1032,7 +1032,7 @@
     },
     {
      "h": "Snoring and smoking",
-     "t": "NICE NG202: use a tool such as STOP-Bang and the Epworth score when OSA is suspected, and refer to a sleep service. NICE NG209: offer referral to stop-smoking support and discuss varenicline, NRT or a nicotine vape. Stopping smoking helps both his heart and his erections."
+     "t": "NICE NG202: use a tool such as STOP-Bang and the Epworth score when OSA is suspected, and refer to a sleep service. NICE NG209: offer referral to stop-smoking support and discuss varenicline, cytisinicline (cytisine), NRT or a nicotine vape. Stopping smoking helps both his heart and his erections."
     },
     {
      "h": "Mood and relationship",
@@ -1996,7 +1996,7 @@
    "reason": "Follow-up video call booked for the parents after his first febrile convulsion."
   },
   "knowledge": {
-   "guideline": "NICE NG143 (fever in under 5s) · NICE NG217 (epilepsies, 2022) · NICE NG254 (sepsis, under 16s)",
+   "guideline": "NICE NG143 (fever in under 5s) · NICE NG217 (epilepsies, 2022, updated August 2026) · NICE NG254 (sepsis, under 16s)",
    "summary": "A brief, generalised, self-limiting seizure during a fever in a young child who recovers fully is a simple febrile seizure. It is frightening to watch but benign. The consultation is mostly about the parent’s shock, guilt and what to do next time.",
    "points": [
     {
@@ -2455,7 +2455,7 @@
    "reason": "Telephone call: headaches with “zigzag lights”; asking for stronger painkillers."
   },
   "knowledge": {
-   "guideline": "UKMEC 2025 (CoSRH) · NICE CG150 (amended 2025) · NICE NG88 · NICE NG209 · MHRA Drug Safety Update (June 2024)",
+   "guideline": "UKMEC 2025 (CoSRH) · NICE CG150 (updated June 2025) · NICE NG88 · NICE NG209 · MHRA Drug Safety Update (June 2024)",
    "summary": "New migraine with aura in a woman on the combined pill is an absolute contraindication to oestrogen. Stop the combined pill today, and at the same time give her safe contraception, a plan for her periods and migraine treatment.",
    "points": [
     {
@@ -3416,7 +3416,7 @@
    "reason": "Video consultation: “a headache that won’t shift” for two days; asking which painkillers are safe in pregnancy."
   },
   "knowledge": {
-   "guideline": "NICE NG133 (2019, updated 2023) · NICE DG49 (2022) · NICE NG201 · NICE CG192",
+   "guideline": "NICE NG133 (2019, updated 2023) · NICE HTG630 (formerly DG49, 2022) · NICE NG201 · NICE CG192",
    "summary": "A persistent headache at 34 weeks with visual disturbance, epigastric pain and new swelling is pre-eclampsia until proven otherwise. It cannot be assessed by video. She needs same-day maternity assessment, and her fear of the hospital is the barrier to solve.",
    "points": [
     {
@@ -3429,7 +3429,7 @@
     },
     {
      "h": "It cannot be done by video",
-     "t": "Assessment needs BP, urine protein, bloods (full blood count, liver and kidney function) and fetal assessment. NICE DG49: placental growth factor (PlGF)-based testing can help rule in or rule out suspected preterm pre-eclampsia between 20 and 36+6 weeks — she is 34 weeks."
+     "t": "Assessment needs BP, urine protein, bloods (full blood count, liver and kidney function) and fetal assessment. NICE HTG630 (formerly DG49): placental growth factor (PlGF)-based testing can help rule in or rule out suspected preterm pre-eclampsia between 20 and 36+6 weeks — she is 34 weeks."
     },
     {
      "h": "Know the trajectory",
@@ -3648,7 +3648,7 @@
    },
    {
     "t": "Plans appropriate examination and tests",
-    "d": "Recognised video cannot assess: BP, urine protein, FBC, liver and kidney function, PlGF-based testing (NICE DG49) and fetal monitoring at the unit.",
+    "d": "Recognised video cannot assess: BP, urine protein, FBC, liver and kidney function, PlGF-based testing (NICE HTG630, formerly DG49) and fetal monitoring at the unit.",
     "pts": 1
    },
    {
@@ -3810,7 +3810,7 @@
     "reflectIce": "“After last time, I completely understand why the unit is the last place you want to go. Let’s make it as easy as possible, because going today protects you and the baby.”",
     "psychosocial": "Ring ahead so she is expected, explain what will happen, arrange for her husband to take her, and offer support for the birth trauma afterwards.",
     "sharedPlan": [
-     "Same-day maternity assessment: BP, urine protein, bloods, fetal monitoring (NICE NG133; PlGF-based testing per NICE DG49)",
+     "Same-day maternity assessment: BP, urine protein, bloods, fetal monitoring (NICE NG133; PlGF-based testing per NICE HTG630 (formerly DG49))",
      "GP phones the unit with a handover including the previous traumatic birth",
      "Husband drives; she does not drive herself"
     ],
@@ -3897,7 +3897,7 @@
    "reason": "Telephone call late morning: sudden severe headache at the gym about 3 hours ago; asking for strong co-codamol."
   },
   "knowledge": {
-   "guideline": "NICE NG228 (2022) · NICE CG150 (amended 2025) · GMC Confidentiality (2017)",
+   "guideline": "NICE NG228 (2022) · NICE CG150 (updated June 2025) · GMC Confidentiality (2017)",
    "summary": "A headache that reaches its peak within minutes, the worst ever, with neck stiffness and vomiting, is subarachnoid haemorrhage until proven otherwise. The onset defines the risk, not how he feels now. 999, not co-codamol.",
    "points": [
     {
@@ -5274,7 +5274,7 @@
     },
     {
      "dom": "tasks",
-     "fail": "Labelling it an NICE NG12 (updated April 2026) two-week-wait without thinking about the HRT, or not knowing the thickness threshold.",
+     "fail": "Labelling it a NICE NG12 (updated April 2026) suspected cancer pathway referral without thinking about the HRT, or not knowing the thickness threshold.",
      "why": "NICE NG12 (updated April 2026) endometrial criteria cover bleeding not attributable to HRT; bleeding on HRT follows the BMS 2024 route.",
      "fix": "Urgent TVUS within 6 weeks; above 4 mm on ccHRT → suspected cancer pathway."
     },
