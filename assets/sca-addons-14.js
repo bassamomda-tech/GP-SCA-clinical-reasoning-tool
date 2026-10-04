@@ -1979,10 +1979,10 @@
     "href": "management/angioedema.html"
    },
    {
-    "ic": "🗺️",
-    "t": "Anaphylaxis pathway",
-    "s": "Visual algorithm · adrenaline first",
-    "href": "algorithms/anaphylaxis.html"
+    "ic": "💠",
+    "t": "Anaphylaxis protocol",
+    "s": "Protocol · adrenaline first",
+    "href": "management/anaphylaxis.html"
    }
   ],
   "pitfalls": {

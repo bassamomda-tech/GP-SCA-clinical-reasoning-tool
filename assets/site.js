@@ -585,7 +585,7 @@ function renderSidebar(host, opts={}){
   // Path prefix: site links are authored relative to project root.
   // From cases/foo.html or tools/foo.html we need '../' to resolve correctly.
   const p = location.pathname;
-  const PRE = /\/(cases|tools)\//.test(p) ? '../' : '';
+  const PRE = getPathPrefix();
 
   let html = `
     <div class="sb-head">
@@ -853,9 +853,9 @@ const RGP_ALG_SPECIALTIES = [
   {label:'Ophthalmology',                icon:'👁️', n:10},
   {label:"Women's Health",               icon:'🌸', n:14},
   {label:'Haematology',                  icon:'🩸', n:11},
-  {label:'Musculoskeletal',              icon:'🦴', n:18},
-  {label:'General & Systemic',           icon:'⚖️', n:9},
-  {label:'Paediatrics',                  icon:'🧒', n:21},
+  {label:'Musculoskeletal',              icon:'🦴', n:17},
+  {label:'General & Systemic',           icon:'⚖️', n:7},
+  {label:'Paediatrics',                  icon:'🧒', n:17},
   {label:'Lab Results',                  icon:'🧪', n:22, hub:true, path:'tools/algorithms/lab-results.html'},
 ];
 
@@ -871,13 +871,13 @@ const RGP_MGMT_SPECIALTIES = [
   {label:'Musculoskeletal & Rheumatology',  icon:'🦴', n:15},
   {label:"Women's Health",                   icon:'🌸', n:15},
   {label:"Urology & Men's Health",           icon:'🚹', n:15},
-  {label:'Children',                        icon:'🧒', n:9},
-  {label:'Allergy & Immunology',            icon:'🤧', n:3},
+  {label:'Children',                        icon:'🧒', n:10},
+  {label:'Allergy & Immunology',            icon:'🤧', n:4},
   {label:'Infections',                      icon:'🦠', n:7},
   {label:'Dermatology',                     icon:'🧴', n:19},
   {label:'ENT & Vestibular',                icon:'👂', n:6},
   {label:'Ophthalmology',                   icon:'👁️', n:8},
-  {label:'Lifestyle & Prevention',          icon:'🌱', n:2},
+  {label:'Lifestyle & Prevention',          icon:'🌱', n:4},
   {label:'Sexual Health',                   icon:'❤️', n:6},
   {label:'Haematology',                     icon:'🩸', n:4},
   {label:'Palliative & End of Life Care',   icon:'🕊️', n:10},
@@ -888,7 +888,11 @@ window.RGP_ALG_SPECIALTIES = RGP_ALG_SPECIALTIES;
 window.RGP_MGMT_SPECIALTIES = RGP_MGMT_SPECIALTIES;
 window.rgpSlug = rgpSlug;
 
+// Root prefix taken from this script's own src ("../assets/site.js" → "../", "../../assets/site.js" → "../../"),
+// so pages two folders deep (e.g. tools/algorithms/lab-results.html) no longer link to /tools/tools/….
+const RGP_ROOT_PRE = (function(){ try { var s=document.currentScript&&document.currentScript.getAttribute('src'); var m=s&&s.match(/^((?:\.\.\/)*)assets\/site\.js/); if(m) return m[1]; } catch(e){} return null; })();
 function getPathPrefix(){
+  if (RGP_ROOT_PRE !== null) return RGP_ROOT_PRE;
   return /\/(cases|tools|pages)\//.test(location.pathname) ? '../' : '';
 }
 
@@ -1542,7 +1546,7 @@ const RGP_ALGORITHMS = [
   { slug:'leucocytosis', label:"Leucocytosis", sys:'Haematology', syn:"" },
   { slug:'leucopenia', label:"Leucopenia", sys:'Haematology', syn:"" },
   { slug:'polycythaemia', label:"Polycythaemia", sys:'Haematology', syn:"" },
-  { slug:'back-pain', label:"Acute & Subacute Back Pain", sys:'Musculoskeletal', syn:"" },
+  { slug:'back-pain', label:"Back Pain — Acute and Chronic", sys:'Musculoskeletal', syn:"acute subacute chronic low back pain persistent sciatica cauda equina red yellow flags start back ng59 exercise deprescribing" },
   { slug:'neck-pain', label:"Neck Pain", sys:'Musculoskeletal', syn:"" },
   { slug:'sciatica', label:"Sciatica", sys:'Musculoskeletal', syn:"" },
   { slug:'shoulder-pain', label:"Shoulder Pain", sys:'Musculoskeletal', syn:"" },
@@ -1554,13 +1558,15 @@ const RGP_ALGORITHMS = [
   { slug:'ankle-pain', label:"Ankle Pain", sys:'Musculoskeletal', syn:"ottawa rules sprain achilles rupture gout osteoarthritis" },
   { slug:'elbow-pain', label:"Elbow Pain / Swelling", sys:'Musculoskeletal', syn:"tennis golfer epicondylitis olecranon bursitis cubital tunnel radial head fracture" },
   { slug:'joint-pain', label:"Joint Pain / Swelling", sys:'Musculoskeletal', syn:"septic arthritis inflammatory mechanical rheumatoid gout reactive das28 dmards" },
-  { slug:'chronic-back-pain', label:"Chronic Low Back Pain (≥12 Weeks)", sys:'Musculoskeletal', syn:"cauda equina red yellow flags ng59 persistent exercise" },
   { slug:'groin-pain', label:"Groin Pain", sys:'Musculoskeletal', syn:"inguinal hernia hip osteoarthritis adductor strain lymphadenopathy femoral meralgia paraesthetica" },
   { slug:'weight-loss', label:"Unintentional Weight Loss", sys:'General & Systemic', syn:"" },
   { slug:'night-sweats', label:"Night Sweats", sys:'General & Systemic', syn:"" },
   { slug:'widespread-itch', label:"Widespread Itch", sys:'General & Systemic', syn:"" },
   { slug:'hair-loss', label:"Hair Loss", sys:'General & Systemic', syn:"" },
   { slug:'falls', label:"Falls", sys:'General & Systemic', syn:"" },
+  { mg:'anaphylaxis', slug:'anaphylaxis', label:"Anaphylaxis", sys:'General & Systemic', syn:"adrenaline auto-injector epipen allergic reaction tryptase ng258" },
+  { mg:'screening-programmes', slug:'screening-programmes', label:"UK Screening Programmes", sys:'General & Systemic', syn:"nhs screening cervical breast bowel fit aaa diabetic eye health check" },
+  { mg:'driving-diseases', slug:'driving-diseases', label:"Driving and Diseases (DVLA)", sys:'General & Systemic', syn:"dvla fitness to drive driving medical conditions group 1 group 2 gmc" },
   { slug:'abdominal-pain-children', label:"Abdominal Pain in Children", sys:'Paediatrics', syn:"" },
   { mg:'constipation-child', slug:'constipation-children', label:"Constipation in Children", sys:'Paediatrics', syn:"" },
   { slug:'cough-children', label:"Cough in Children", sys:'Paediatrics', syn:"" },
@@ -1569,7 +1575,8 @@ const RGP_ALGORITHMS = [
   { slug:'uti-children', label:"UTI in Children", sys:'Paediatrics', syn:"" },
   { slug:'limping-children', label:"Limping in Children", sys:'Paediatrics', syn:"" },
   { slug:'paediatric-msk', label:"Paediatric MSK Presentations", sys:'Paediatrics', syn:"limping child joint pain growing pains" },
-  { slug:'developmental-delay', label:"Developmental Delay in Children", sys:'Paediatrics', syn:"" },
+  { slug:'developmental-delay', label:"Developmental and Speech Delay in Children", sys:'Paediatrics', syn:"speech delay language delay hearing loss audiology m-chat autism dld regression salt hanen ehcp" },
+  { mg:'surgical-problems-children', slug:'surgical-problems-children', label:"Surgical Problems in Children", sys:'Paediatrics', syn:"bilious vomiting volvulus intussusception torsion hernia pyloric stenosis paediatric surgery" },
   { slug:'faltered-growth', label:"Faltered Growth in Children", sys:'Paediatrics', syn:"" },
   { mg:'cmpa', slug:'cows-milk-allergy', label:"Cow's Milk Allergy", sys:'Paediatrics', syn:"cmpa milk protein" },
   { slug:'unsettled-baby', label:"Unsettled Baby", sys:'Paediatrics', syn:"" },

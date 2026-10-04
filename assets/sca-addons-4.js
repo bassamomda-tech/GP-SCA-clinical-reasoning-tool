@@ -439,9 +439,9 @@
    },
    {
     "ic": "🗺️",
-    "t": "Chronic back pain pathway",
+    "t": "Back pain pathway (acute and chronic)",
     "s": "Visual algorithm · inflammatory vs mechanical",
-    "href": "algorithms/chronic-back-pain.html"
+    "href": "algorithms/back-pain.html"
    },
    {
     "ic": "💠",

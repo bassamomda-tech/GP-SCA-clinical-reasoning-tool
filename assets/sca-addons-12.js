@@ -439,10 +439,10 @@
     "href": "../cases/cervical-screening.html"
    },
    {
-    "ic": "🗺️",
-    "t": "Screening programmes",
-    "s": "Visual algorithm · NHS screening",
-    "href": "algorithms/screening-programmes.html"
+    "ic": "💠",
+    "t": "UK screening programmes",
+    "s": "Protocol · NHS screening",
+    "href": "management/screening-programmes.html"
    },
    {
     "ic": "🗺️",

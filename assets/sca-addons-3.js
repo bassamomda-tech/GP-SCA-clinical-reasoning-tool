@@ -8618,10 +8618,10 @@
     "href": "algorithms/scrotal-pain.html"
    },
    {
-    "ic": "🗺️",
+    "ic": "💠",
     "t": "Surgical problems in children",
-    "s": "Visual algorithm · emergencies",
-    "href": "algorithms/surgical-problems-children.html"
+    "s": "Protocol · emergencies",
+    "href": "management/surgical-problems-children.html"
    }
   ],
   "pitfalls": {

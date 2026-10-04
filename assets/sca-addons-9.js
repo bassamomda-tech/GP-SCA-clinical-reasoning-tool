@@ -910,10 +910,10 @@
   },
   "links": [
    {
-    "ic": "🗺️",
-    "t": "Anaphylaxis pathway",
-    "s": "Visual algorithm · NICE NG258 · RCUK 2021",
-    "href": "algorithms/anaphylaxis.html"
+    "ic": "💠",
+    "t": "Anaphylaxis protocol",
+    "s": "Protocol · NICE NG258 · RCUK 2021",
+    "href": "management/anaphylaxis.html"
    },
    {
     "ic": "🗺️",

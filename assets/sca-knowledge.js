@@ -374,7 +374,7 @@ window.SCA_LINKS = {
   'insulin-ramadan': [
     { ic:'🗺️', t:'T2DM & Ramadan pathway', s:'IDF-DAR · fasting adjustments', href:'algorithms/t2dm-ramadan.html' },
     { ic:'📋', t:'Type 2 diabetes', s:'Case walkthrough · NG28', href:'../cases/type-2-diabetes.html' },
-    { ic:'🗺️', t:'Driving & disease', s:'DVLA rules pathway', href:'algorithms/driving-diseases.html' }
+    { ic:'💠', t:'Driving & disease', s:'DVLA rules protocol', href:'management/driving-diseases.html' }
   ],
   'lft-alcohol': [
     { ic:'🗺️', t:'Abnormal LFTs pathway', s:'Pattern reading · fibrosis', href:'algorithms/abnormal-lfts.html' },

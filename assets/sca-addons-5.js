@@ -1931,10 +1931,10 @@
     "href": "dvla.html"
    },
    {
-    "ic": "🗺️",
+    "ic": "💠",
     "t": "Driving and diseases",
-    "s": "Visual algorithm · notification duty",
-    "href": "algorithms/driving-diseases.html"
+    "s": "Protocol · notification duty",
+    "href": "management/driving-diseases.html"
    }
   ],
   "pitfalls": {

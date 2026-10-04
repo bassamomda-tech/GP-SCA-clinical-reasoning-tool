@@ -4998,10 +4998,10 @@
     "href": "management/epilepsy.html"
    },
    {
-    "ic": "🗺️",
+    "ic": "💠",
     "t": "Driving and disease",
-    "s": "Visual algorithm · DVLA rules",
-    "href": "algorithms/driving-diseases.html"
+    "s": "Protocol · DVLA rules",
+    "href": "management/driving-diseases.html"
    },
    {
     "ic": "🚗",
@@ -7996,10 +7996,10 @@
     "href": "dvla.html"
    },
    {
-    "ic": "🗺️",
+    "ic": "💠",
     "t": "Driving and medical conditions",
-    "s": "Visual algorithm · notification rules",
-    "href": "algorithms/driving-diseases.html"
+    "s": "Protocol · notification rules",
+    "href": "management/driving-diseases.html"
    }
   ],
   "pitfalls": {

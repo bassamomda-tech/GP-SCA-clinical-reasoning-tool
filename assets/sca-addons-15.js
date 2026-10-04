@@ -5966,10 +5966,10 @@
   },
   "links": [
    {
-    "ic": "🗺️",
-    "t": "Anaphylaxis pathway",
-    "s": "Visual algorithm · adrenaline first · NICE NG258",
-    "href": "algorithms/anaphylaxis.html"
+    "ic": "💠",
+    "t": "Anaphylaxis protocol",
+    "s": "Protocol · adrenaline first · NICE NG258",
+    "href": "management/anaphylaxis.html"
    },
    {
     "ic": "💠",

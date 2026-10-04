@@ -106,7 +106,11 @@
     'uti-children': 'uti-children',
     'claudication': 'peripheral-arterial-disease',
     'biliary-colic': 'cholecystitis',
-    'urticaria': 'urticaria'
+    'urticaria': 'urticaria',
+    'anaphylaxis': 'anaphylaxis',
+    'screening-programmes': 'screening-programmes',
+    'driving-diseases': 'driving-diseases',
+    'surgical-problems-children': 'surgical-problems-children'
   };
 
   /* resolve(slug, baseFromTools)
