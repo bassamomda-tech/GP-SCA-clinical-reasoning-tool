@@ -357,7 +357,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
     { finding:'Absent red reflex', meaning:'Urgent ophthalmology — congenital cataract / retinoblastoma' },
     { finding:'Positive Barlow/Ortolani or limited abduction', meaning:'DDH — urgent hip ultrasound ± orthopaedic referral' },
     { finding:'Murmur + weak femorals or unwell infant', meaning:'?Duct-dependent lesion/coarctation — urgent cardiac assessment' },
-    { finding:'Undescended testis at 6–8 weeks', meaning:'Recheck; refer if still undescended (re-examine at later review per pathway)' },
+    { finding:'Undescended testis at 6–8 weeks', meaning:'Unilateral: re-examine at 4–5 months (corrected age); refer to paediatric surgery/urology if still undescended, to be seen by 6 months. Bilateral: urgent paediatric referral, seen within 2 weeks (NICE CKS)' },
   ],
   note:'NIPE has four national screening components: eyes, heart, hips and testes. The 6–8 week check repeats them because some conditions (cataract, DDH, CHD, UDT) declare later. The red reflex is mandatory at every check.',
   commonFindings:[
@@ -408,7 +408,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
       { finding:'Inguinal hernia (esp. preterm) — reducible', action:'refer', detail:'Paediatric surgery (higher incarceration risk in infants) — relatively prompt.' },
       { finding:'Irreducible, tender, firm or discoloured inguinal/umbilical swelling; vomiting', action:'urgent', detail:'**Incarcerated hernia → same-day** paediatric surgery / A&E.' },
       { finding:'Hydrocele (transilluminates), reducible, well baby', action:'reassure', detail:'Most resolve by ~1–2 years; review.' },
-      { finding:'Undescended testis at 6–8 weeks (unilateral)', action:'followup', detail:'Re-examine at later review; refer to surgery if still undescended (~by 3–6 months per pathway).' },
+      { finding:'Undescended testis at 6–8 weeks (unilateral)', action:'followup', detail:'Re-examine at 4–5 months (corrected age); if still undescended, refer to paediatric surgery/urology to be seen by 6 months (NICE CKS). Bilateral undescended testes at 6–8 weeks → urgent paediatric referral, seen within 2 weeks.' },
       { finding:'Bilateral undescended testes / any suspected ambiguous genitalia; hypospadias', action:'urgent', detail:'Bilateral UDT or ambiguity → **urgent senior/endocrine** review (exclude CAH); hypospadias → no circumcision, refer urology.' },
     ]},
     { group:'🫁 Breathing, noises & snoring', items:[
