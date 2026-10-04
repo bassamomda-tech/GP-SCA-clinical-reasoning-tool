@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Suspected neutropenic sepsis — Protocol · Reasoning GP</title>
-<meta name="description" content="Suspected neutropenic sepsis in people on anticancer treatment, from the GP and out-of-hours seat: NICE CG151 definition, NG253/NG254 30-day suspicion rule, immediate referral via acute oncology hotline or 999, masked fever, immunotherapy toxicity, clozapine/carbimazole/DMARD neutropenia, children and safety-netting." />
+<meta name="description" content="Suspected neutropenic sepsis in people on anticancer treatment, from the GP and out-of-hours seat: NICE CG151 definition, NG253/NG254 30-day suspicion rule, immediate referral (999 if unstable, otherwise the acute oncology hotline or direct-admission route), masked fever, immunotherapy toxicity, clozapine/carbimazole/DMARD neutropenia, children and safety-netting." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/neutropenic-sepsis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790547042792010 tools/management/neutropenic-sepsis.html">
+<meta name="omelette-print-source" content="v1791135326396479">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -26,59 +26,60 @@ MG.render({
   title:"Suspected neutropenic sepsis",
   eyebrow:"Protocol · recognise &amp; send in, from the GP / out-of-hours seat",
   stemTitle:"Neutropenic sepsis — suspect it on the story, send them in now",
-  stemSub:"Anyone unwell who is having, or has recently had, anticancer treatment has neutropenic sepsis until a hospital proves otherwise. The GP's job is recognition and immediate transfer to the acute oncology pathway — not a blood count, not oral antibiotics and a review tomorrow.",
+  stemSub:"Any patient who becomes unwell during or soon after systemic anticancer treatment should be treated as having possible neutropenic sepsis until urgently assessed. Refer immediately through the acute oncology/haematology pathway. Act on the story, not the temperature or a community FBC. Call 999 if unstable; otherwise use the local oncology hotline or direct-admission route. Do not manage initially with oral antibiotics or routine follow-up.",
   guideline:"NICE CG151 (2012, updated 2024) · NICE NG253 &amp; NG254 (2025, replaced NG51) · UKONS 24-hour triage v3 (2025)",
   meta:[
     {t:"NICE CG151 · neutropenic sepsis (2012; current)"},
     {t:"NICE NG253 · sepsis ≥16 (2025)", tone:"tw"},
     {t:"NICE NG254 · sepsis under 16s (2025)"},
     {t:"UKONS 24-hour triage toolkit v3 (2025)"},
-    {t:"NG51 replaced Nov 2025 — do not cite"},
+    {t:"CG151 for neutropenic sepsis · NG253/NG254 for sepsis recognition (NG51 replaced Nov 2025)"},
     {t:"Doses: verify against current BNF"}
   ],
   lead:'<div class="mg-layers"><a href="#recognise"><b>Recognise</b><small>Who, when, and the definition</small></a><a href="#redflags"><b>Red flags</b><small>Atypical &amp; masked</small></a><a href="#act"><b>Act</b><small>999 / hotline / ED</small></a><a href="#mimics"><b>Non-cancer neutropenia</b><small>Clozapine, DMARDs, carbimazole</small></a><a href="#children"><b>Children</b><small>Open access to the PTC</small></a></div>',
   glance:[
     {lbl:"Suspect", val:"Unwell + anticancer treatment", sub:"within 30 days (NG253/NG254) — or longer if still likely neutropenic"},
-    {lbl:"Define", val:"Neutrophils ≤0.5 × 10⁹/L", sub:"+ temp &gt;38°C or signs of sepsis (CG151)"},
-    {lbl:"Action", val:"Immediate referral", sub:"secondary/tertiary care — acute oncology / ED"},
+    {lbl:"Define", val:"Neutrophils ≤0.5 × 10⁹/L", sub:"+ temp &gt;38°C or signs of sepsis — hospital definition (CG151)"},
+    {lbl:"Action", val:"Immediate referral", sub:"999 if unstable; otherwise acute oncology hotline / direct admission or ED"},
     {lbl:"Hospital", val:"Empiric IV antibiotics immediately", sub:"acute medical emergency (CG151)"},
-    {lbl:"Don't", val:"Wait for an FBC", sub:"or give oral antibiotics and send home"},
+    {lbl:"Don't", val:"Delay referral for a community FBC", sub:"or give oral antibiotics and send home"},
     {lbl:"Masked by", val:"Steroids, paracetamol, age", sub:"fever can be absent"}
   ],
   quickSub:"If you read nothing else on this page, read these cards. Every threshold traces to a named guideline in the <a href=\"#provenance\">Evidence</a> panel.",
   quick:[
     {tone:"red", h:"⚠ Unwell on anticancer treatment = suspected neutropenic sepsis", html:"NICE NG253 (≥16) and NG254 (under 16s): <b>suspect neutropenic sepsis in anyone who becomes unwell and is having, or has had, systemic anticancer treatment within the last 30 days</b> — use clinical judgement about whether older treatment could still cause neutropenia. The same applies to people on <b>immunosuppressant treatment for reasons unrelated to cancer</b>."},
-    {tone:"red", h:"Refer immediately — do not wait for a blood count", html:"NICE CG151: <b>refer patients with suspected neutropenic sepsis immediately for assessment in secondary or tertiary care</b>. The diagnosis is made in hospital; a primary-care FBC only adds delay. Usually <b>999</b>, or direct to the unit via the patient's <b>24-hour acute oncology / chemotherapy hotline</b>."},
-    {tone:"amber", h:"Fever is not required", html:"CG151 diagnoses neutropenic sepsis with a neutrophil count <b>≤0.5 × 10⁹/L</b> plus <b>either</b> a temperature <b>&gt;38°C</b> <b>or</b> other signs or symptoms consistent with clinically significant sepsis. Steroids, paracetamol, dehydration and older age can all blunt the temperature. The UKONS triage tool escalates at <b>≥37.5°C or &lt;36.0°C</b>, or simply “generally unwell”."},
-    {tone:"red", h:"Never temporise with oral antibiotics", html:"CG151 treats suspected neutropenic sepsis as an <b>acute medical emergency</b> with <b>empiric antibiotics offered immediately</b> in hospital (IV piperacillin–tazobactam first-line unless contraindicated). Oral step-down or outpatient care for low-risk patients is a <b>secondary-care decision after a validated risk score</b> — never a GP starting point."},
-    {tone:"blue", h:"Use the alert card and the hotline", html:"CG151 requires patients to be given written and oral information on neutropenic sepsis, <b>how and when to contact 24-hour specialist oncology advice</b>, and how and when to seek emergency care. Ask for the card, ring the number, and hand over “<b>suspected neutropenic sepsis</b>” in those words."},
+    {tone:"red", h:"Refer immediately — do not delay for a community FBC", html:"NICE CG151: <b>refer patients with suspected neutropenic sepsis immediately for assessment in secondary or tertiary care</b>. Do not delay referral while waiting for a community FBC. If blood tests are immediately available without delaying transfer, they may be taken, but the patient still requires immediate acute assessment. <b>999</b> if unstable; otherwise direct to the unit or ED via the patient's <b>24-hour acute oncology / chemotherapy hotline</b>, per the local pathway."},
+    {tone:"amber", h:"Fever is not required to act", html:"In primary care, act on the clinical presentation and treatment history; do not wait for the neutrophil count. In hospital, CG151 defines neutropenic sepsis as a neutrophil count <b>≤0.5 × 10⁹/L</b> plus <b>either</b> a temperature <b>&gt;38°C</b> <b>or</b> other signs or symptoms consistent with clinically significant sepsis. Corticosteroids, paracetamol or NSAIDs, dehydration, older age, severe sepsis and an impaired inflammatory response can all blunt the temperature. The UKONS triage tool escalates at <b>≥37.5°C or &lt;36.0°C</b>, or simply “generally unwell” — a UKONS/acute-oncology escalation trigger, not the NICE definition."},
+    {tone:"red", h:"Never temporise with oral antibiotics", html:"CG151 treats suspected neutropenic sepsis as an <b>acute medical emergency</b> with <b>empiric antibiotics offered immediately</b> by the receiving hospital (hospital treatment, not a GP prescription). <b>Do not initiate oral outpatient treatment from general practice.</b> Oral antibiotics, early discharge or outpatient care are <b>secondary-care decisions after validated risk assessment and oncology review</b>."},
+    {tone:"blue", h:"Use the alert card and the hotline", html:"CG151 requires patients to be given written and oral information on neutropenic sepsis, <b>how and when to contact 24-hour specialist oncology advice</b>, and how and when to seek emergency care. Ask for the card, ring the number (take it from the patient's alert card and the local pathway), and hand over “<b>suspected neutropenic sepsis</b>” in those words."},
     {tone:"green", h:"Not only chemotherapy", html:"Targeted and immunotherapy agents, radiotherapy, haematological cancers, stem-cell transplant — and non-cancer drugs (<b>clozapine, csDMARDs, carbimazole</b>) all cause neutropenia. Immunotherapy adds its own toxicities that look like infection (colitis, pneumonitis, endocrinopathy)."}
   ],
   pathwaySub:"The whole encounter in six moves. The red step is where patients come to harm — do not skip it.",
   pathway:[
     {title:"Ask the question", html:"In <b>every</b> unwell adult or child, ask: <b>are you having any treatment for cancer, or any drug that lowers your immunity?</b> Check the record, the alert card and the date of the last cycle. Telephone triage counts — this question belongs in the first minute."},
-    {title:"Suspect", html:"Having, or within 30 days of, systemic anticancer treatment (NICE NG253/NG254), or on immunosuppressants, <b>and</b> unwell — fever, rigors, hypothermia, feeling “not right”, new confusion, breathlessness, diarrhoea or vomiting."},
-    {title:"Do not wait for tests — send them in", html:"<b>Refer immediately</b> (NICE CG151). No FBC first, no oral antibiotics and review, no “see how you are tomorrow”. If the patient is on the phone: tell them to go now via their hotline or 999.", alert:true},
-    {title:"Choose the route", html:"Shocked, peri-arrest, confused or NEWS2 high → <b>999</b>. Otherwise ring the <b>acute oncology / chemotherapy hotline</b> on the alert card for direct admission to the specified unit, or send to ED. Children → their <b>principal treatment centre / shared-care unit</b> open-access route."},
-    {title:"Stabilise while you wait", html:"ABCDE; oxygen if hypoxic; record a full set of observations (NEWS2 in ≥16s). Do not delay transfer for cannulation, bloods or fluids. Do not use or flush a central line in the surgery."},
-    {title:"Hand over and close the loop", html:"Written handover: cancer type, regimen, date of last treatment, line type, steroids, observations, time of onset. Afterwards check the discharge letter, and that the patient still has a valid alert card and knows the number."}
+    {title:"Suspect", html:"Having, or within 30 days of, systemic anticancer treatment (NICE NG253/NG254), treatment-related marrow suppression that may persist longer, haematological malignancy, stem-cell transplant or CAR-T, or on immunosuppressants or other treatment with a known risk of neutropenia, <b>and</b> unwell — fever, rigors, hypothermia, feeling “not right”, new confusion, breathlessness, diarrhoea or vomiting."},
+    {title:"Do not delay for community tests — send them in", html:"<b>Refer immediately</b> (NICE CG151). Do not delay for a community FBC, no oral antibiotics and review, no “see how you are tomorrow”. If the patient is on the phone: tell them to go now via their hotline or 999.", alert:true},
+    {title:"Choose the route", html:"Shock or hypotension, peri-arrest, new confusion or reduced consciousness, severe breathlessness or hypoxia, rapid deterioration, severe sepsis physiology (NEWS2 high) or unable to travel safely → <b>999</b>. Otherwise, for a clinically stable patient, ring the <b>acute oncology / chemotherapy hotline</b> on the alert card for direct admission to the specified unit where the local pathway permits, or send to ED. Children → their <b>principal treatment centre / shared-care unit</b> open-access route."},
+    {title:"Stabilise while you wait", html:"Begin ABCDE assessment and basic resuscitation within your competence; give oxygen if hypoxic and treat immediately reversible life threats; record a full set of observations (NEWS2 in ≥16s). Do not delay emergency transfer for venous access, blood tests or IV treatment. Do not routinely access, flush or use a PICC, Hickman line or port in primary care unless trained and the local pathway supports it."},
+    {title:"Hand over and close the loop", html:"Written handover: diagnosis and current treatment, date of last systemic treatment, treatment protocol if available, acute symptoms and onset, full observations with times, line type, steroid and antipyretic exposure, antimicrobial prophylaxis, allergies and relevant previous microbiology. Afterwards check the discharge letter, and that the patient still has a valid alert card and knows the number."}
   ],
   sections:[
 
     {id:"recognise", nav:"Recognise", title:"Recognise the at-risk patient and the definition", sub:"Neutropenic sepsis is suspected on the story in primary care and confirmed on a neutrophil count in hospital. You only need the first half.",
      blocks:[
        {b:"kv", rows:[
-         ["Definition (NICE CG151)","Diagnose neutropenic sepsis in patients having anticancer treatment whose <b>neutrophil count is 0.5 × 10⁹/L or lower</b> and who have <b>either a temperature higher than 38°C or other signs or symptoms consistent with clinically significant sepsis</b>"],
+         ["Definition (NICE CG151) — a hospital definition","Diagnose neutropenic sepsis in patients having anticancer treatment whose <b>neutrophil count is 0.5 × 10⁹/L or lower</b> and who have <b>either a temperature higher than 38°C or other signs or symptoms consistent with clinically significant sepsis</b>"],
          ["When to suspect (NICE NG253, NG254)","Anyone who becomes unwell and is having, or has had, <b>systemic anticancer treatment within the last 30 days</b>; or is receiving or has received <b>immunosuppressant treatment for reasons unrelated to cancer</b>. Use clinical judgement about whether older treatment may still be causing neutropenia. Pregnant or recently pregnant: assess sepsis under <b>NICE NG255</b>, still refer immediately"],
-         ["UKONS triage window","The UKONS 24-hour triage tool applies its fever pathway to people who are receiving, or have received, systemic anticancer treatment in the <b>last 6–8 weeks</b>, or who are otherwise immunocompromised — a wider net than 30 days; follow whichever the local acute oncology service uses, and when in doubt ring them"],
+         ["UKONS triage window","The UKONS 24-hour triage tool applies its fever pathway to people who are receiving, or have received, systemic anticancer treatment in the <b>last 6–8 weeks</b>, or who are otherwise immunocompromised. Use the NICE 30-day rule as the minimum national suspicion criterion, and follow the local UKONS/acute-oncology pathway where treatment-related neutropenia may persist beyond 30 days — particularly haematological malignancy, stem-cell transplantation, prolonged marrow suppression or complex regimens. The two do not conflict: NICE sets national sepsis suspicion and referral; UKONS is an oncology triage and access pathway. When in doubt, ring the hotline"],
          ["Timing","Neutropenia typically peaks at the regimen's nadir, but <b>it can happen at any point in a cycle</b> — do not reassure because “it's too early” or “it's too late”"],
          ["Who","Cytotoxic chemotherapy; some targeted agents; haematological cancers (leukaemia, lymphoma, myeloma, MDS) and their treatments; stem-cell transplant and CAR-T recipients; extensive radiotherapy to marrow-bearing bone; plus non-cancer neutropenia (see mimics)"]
        ]},
        {b:"cards", cols:2, items:[
          {tone:"red", h:"Suspect in the unwell patient on treatment", html:"Unwell + systemic anticancer treatment within 30 days, or immunosuppressants → suspected neutropenic sepsis. A normal temperature does not remove the suspicion.", src:"NICE NG253 · NICE NG254"},
+         {tone:"blue", h:"Which threshold comes from which source", html:"<b>&gt;38°C with neutropenia or clinically significant sepsis</b> — part of the formal NICE CG151 definition (hospital). <b>≥37.5°C, &lt;36°C or “generally unwell” after SACT</b> — UKONS/acute-oncology escalation trigger. <b>Any unwell patient within 30 days of SACT</b> — NICE NG253/NG254 suspicion rule.", src:"NICE CG151 · UKONS triage v3 · NICE NG253/NG254"},
          {tone:"amber", h:"The confirmatory definition is a hospital definition", html:"Neutrophils ≤0.5 × 10⁹/L plus temperature &gt;38°C or clinically significant sepsis. You do not need the count to act.", src:"NICE CG151"}
        ]},
-       {b:"why", html:"The old card listed “≤1.0 and falling” as part of the definition and a fixed “~6 weeks” window. Neither is the NICE CG151 definition. NICE NG253 (updated September 2026) sets no fixed window and asks for clinical judgement about whether past treatment could still cause neutropenia; UKONS triage uses 6–8 weeks. The practical message is the same: if they are unwell and on or recently off treatment, send them in."}
+       {b:"why", html:"The old card listed “≤1.0 and falling” as part of the definition and a fixed “~6 weeks” window. Neither is the NICE CG151 definition. NICE NG253 (updated September 2026) uses 30 days plus clinical judgement about whether past treatment could still cause neutropenia; UKONS triage uses 6–8 weeks as an oncology access pathway. The practical message is the same: if they are unwell and on or recently off treatment, send them in."}
      ]},
 
     {id:"redflags", nav:"Red flags", title:"Red flags and atypical presentations", sub:"Neutropenic patients cannot mount a normal inflammatory response. Pus, consolidation and a high fever can all be missing.",
@@ -86,10 +87,10 @@ MG.render({
        {b:"cards", items:[
          {tone:"red", h:"Signs of sepsis or shock → 999", html:"Hypotension, tachycardia, raised respiratory rate, new confusion, mottled skin, reduced urine output, SpO₂ falling. In ≥16s calculate <b>NEWS2</b> — but a low score does not exclude neutropenic sepsis.", src:"NICE NG253"},
          {tone:"red", h:"No fever — still suspected", html:"Hypothermia (&lt;36°C), rigors, “feeling unwell”, lethargy, falls or new confusion in an older person may be the only sign. CG151 includes “other signs or symptoms consistent with clinically significant sepsis” without fever.", src:"NICE CG151"},
-         {tone:"amber", h:"Masked temperature", html:"<b>Steroids</b> (dexamethasone is part of many regimens and antiemetic schedules), <b>paracetamol</b> or other antipyretics, and <b>dehydration</b> can hide a fever. Ask what they have taken and when (UKONS triage v3)."},
-         {tone:"amber", h:"Central venous lines", html:"PICC, Hickman or implanted port: fever or rigors after flushing, redness, tenderness or discharge at the site/tunnel → line infection until proven otherwise. <b>Do not use or flush the line</b> in the surgery; mention the line in the handover."},
+         {tone:"amber", h:"Masked temperature", html:"<b>Steroids</b> (dexamethasone is part of many regimens and antiemetic schedules), <b>paracetamol</b>, <b>NSAIDs</b> or other antipyretics, <b>dehydration</b>, older age, severe sepsis and an impaired inflammatory response can hide a fever. Ask what they have taken and when (UKONS triage v3)."},
+         {tone:"amber", h:"Central venous lines", html:"PICC, Hickman or implanted port: fever or rigors temporally associated with line use, or local erythema, tenderness or discharge, should raise concern for a catheter-related infection and be included in the urgent handover. Do not assume the line is the source. <b>Do not routinely access or flush the line</b> in primary care. Peripheral and line blood cultures are taken in hospital."},
          {tone:"blue", h:"Focus may be subtle", html:"Mouth ulcers/mucositis, perianal pain (avoid rectal examination or temperature), cough without sputum, dysuria, diarrhoea. Neutropenia removes pus and consolidation; absence of a focus is not reassurance."},
-         {tone:"red", h:"Children with cancer", html:"Any fever or unwellness in a child on treatment → immediate referral via the principal treatment centre's open-access route or 999. The under-16 sepsis guideline applies the same 30-day rule.", src:"NICE NG254 · NICE CG151"}
+         {tone:"red", h:"Children with cancer", html:"Any fever or unwellness in a child on treatment → immediate specialist assessment. Stable children generally use the principal treatment centre's or shared-care unit's open-access route, provided they can transfer safely and promptly; call 999 for shock, reduced consciousness or severe respiratory distress. The under-16 sepsis guideline applies the same 30-day rule.", src:"NICE NG254 · NICE CG151"}
        ]},
        {b:"warn", html:"<b>The safest assumption is the dangerous one.</b> A patient who rings out-of-hours saying “I've had chemo and I feel awful but my temperature is normal” still needs same-hour assessment in the acute oncology pathway — not a routine GP appointment tomorrow."}
      ]},
@@ -98,20 +99,20 @@ MG.render({
      blocks:[
        {b:"ladder", steps:[
          {step:"Now", title:"Recognise and resuscitate", when:"immediately",
-          html:"ABCDE approach; oxygen if hypoxic; full observations. <b>Do not delay transfer</b> for cannulation, bloods or fluids. If peri-arrest or shocked, call 999 and follow Resuscitation Council UK ABCDE principles."},
+          html:"Begin ABCDE assessment and basic resuscitation within your competence. Give oxygen if hypoxic and treat immediately reversible life threats, but <b>do not delay emergency transfer</b> for venous access, blood tests or IV treatment — and do not withhold treatment if the patient deteriorates while awaiting an ambulance. If peri-arrest or shocked, call 999 and follow Resuscitation Council UK ABCDE principles. Do not routinely access, flush or use a PICC, Hickman line or port unless trained and the local pathway supports it."},
          {step:"Call", title:"Emergency transfer", when:"same minutes", fromLabel:"999 or hotline",
-          html:"<b>Refer immediately</b> for assessment in secondary or tertiary care (NICE CG151). Usually a <b>999 ambulance</b>; where the patient is stable and the local pathway allows, ring the <b>24-hour acute oncology / chemotherapy hotline</b> for direct admission to the named unit. Say “<b>suspected neutropenic sepsis</b>”."},
+          html:"<b>Refer immediately</b> for assessment in secondary or tertiary care (NICE CG151). Every suspected case requires immediate same-day acute assessment; the route depends on physiology and the local oncology pathway. <b>999</b> for instability (shock, hypoxia, new confusion, peri-arrest, rapid deterioration, unable to travel safely); otherwise ring the <b>24-hour acute oncology / chemotherapy hotline</b> (number from the alert card and local pathway) for direct admission to the named unit, or ED assessment. Say “<b>suspected neutropenic sepsis</b>”."},
          {step:"Hand over", title:"Send the information", when:"before they leave", fromLabel:"what the ED needs",
-          html:"Cancer diagnosis; regimen and <b>date of last dose</b>; oncology/haematology team and hotline; line type; steroid use; observations with times; allergies (especially penicillin); anticoagulants. Copy of the alert card if available."},
-         {step:"Do NOT", title:"The three errors", when:"avoid harm", fromLabel:"pitfalls", tone:"red", warn:true,
-          html:"Do not give oral antibiotics and send home. Do not wait for an FBC result (or send the patient for a “quick blood test” first). Do not arrange a routine or next-day review “to see how things go”."}
+          html:"Cancer diagnosis and current treatment; regimen, treatment protocol if available and <b>date of last dose</b>; acute symptoms and onset; oncology/haematology team and hotline; line type; steroid and antipyretic exposure; antimicrobial prophylaxis; observations with times; allergies (especially penicillin); relevant previous microbiology; anticoagulants. Copy of the alert card if available."},
+         {step:"Do NOT", title:"The errors to avoid", when:"avoid harm", fromLabel:"pitfalls", tone:"red", warn:true,
+          html:"Do not give oral antibiotics and send home. Do not delay referral waiting for an FBC result (or send the patient for a “quick blood test” first), and do not take routine GP bloods that delay transfer. Do not arrange a routine or next-day review “to see how things go”. Do not be reassured by a normal temperature. Do not routinely use or flush a central line. Do not give empiric steroids for suspected immune-related toxicity without specialist advice, unless adrenal crisis is suspected."}
        ]},
        {b:"cards", cols:2, items:[
-         {tone:"red", h:"What the hospital will do", html:"Treat as an acute medical emergency and offer empiric antibiotics immediately; initial IV therapy is beta-lactam monotherapy with <b>piperacillin with tazobactam</b> unless patient-specific or local microbiological contraindications. Risk of septic complications is assessed within 24 hours using a validated score (e.g. MASCC).", src:"NICE CG151"},
+         {tone:"red", h:"What the hospital will do — not a GP prescription", html:"Assess with FBC, renal and liver function, CRP, lactate and blood cultures (with peripheral cultures in patients with a central venous access device where feasible). The receiving hospital gives empiric IV antibiotics immediately according to NICE CG151 and local microbiology guidance: <b>piperacillin with tazobactam</b> is the usual initial beta-lactam monotherapy unless there is a patient-specific or local microbiological contraindication. Check for severe penicillin allergy; local antimicrobial policy takes precedence; do not add a glycopeptide solely because a central venous device is present; do not routinely give aminoglycosides unless there is a patient-specific or local microbiological indication. Risk of septic complications is assessed within 24 hours using a validated score (e.g. MASCC).", src:"NICE CG151"},
          {tone:"amber", h:"Sepsis timing in over-16s", html:"In acute hospital settings NG253 links antibiotic timing to NEWS2: a score of <b>7 or more</b> means high risk and <b>IV broad-spectrum antibiotics within 1 hour</b>. Suspected neutropenic sepsis is managed under CG151 as an immediate emergency whatever the score.", src:"NICE NG253 · NICE CG151"}
        ]},
-       {b:"warn", html:"Low-risk patients may later be switched to oral antibiotics or managed as outpatients — CG151 allows this only after assessment by a clinician competent in complications of anticancer treatment using a <b>validated risk scoring system</b>. That decision is made in secondary care, never in the community."},
-       {b:"why", html:"Neutropenic sepsis is one of the true primary-care emergencies: a patient with no neutrophils can go from “slightly off” to septic shock within hours. The only correct community action is immediate emergency referral for IV antibiotics — never temporise with oral antibiotics, never wait for tests."}
+       {b:"warn", html:"<b>Do not initiate oral outpatient treatment from general practice.</b> Low-risk patients may later be switched to oral antibiotics, discharged early or managed as outpatients — CG151 allows this only after assessment by a clinician competent in complications of anticancer treatment, using a <b>validated risk scoring system</b>, considering social and clinical circumstances, and with a clear safety-net and rapid return pathway. That decision is made in secondary care after oncology review, never in the community."},
+       {b:"why", html:"Neutropenic sepsis is one of the true primary-care emergencies: a patient with no neutrophils can go from “slightly off” to septic shock within hours. The only correct community action is immediate emergency referral for IV antibiotics — never temporise with oral antibiotics, never delay referral for community tests."}
      ]},
 
     {id:"triage", nav:"Phone triage", title:"Telephone and out-of-hours triage", sub:"Most of these patients first reach NHS 111, a receptionist or an out-of-hours clinician. The call is the consultation.",
@@ -119,8 +120,8 @@ MG.render({
        {b:"table", head:["Question","Why it matters","If yes"], rows:[
          ["Any cancer treatment (chemotherapy, tablets, immunotherapy, targeted drugs, radiotherapy) — when was the last dose?","NG253/NG254 30-day rule; UKONS 6–8-week triage window","Treat as suspected neutropenic sepsis if unwell"],
          ["Temperature — highest reading and when?","UKONS: ≥37.5°C or &lt;36.0°C triggers the fever/neutropenia pathway","Emergency assessment; do not advise paracetamol and ring back"],
-         ["Any steroids or paracetamol today?","Both can mask fever (UKONS v3)","Normal temperature does not reassure"],
-         ["Rigors, shivering after line flush, confusion, breathlessness, fewer wees?","Signs of sepsis or line infection","999"],
+         ["Any steroids, paracetamol or NSAIDs today?","All can mask fever (UKONS v3)","Normal temperature does not reassure"],
+         ["Rigors, shivering after line use, confusion, breathlessness, fewer wees?","Signs of sepsis or possible catheter-related infection","999 if confused, breathless, hypotensive or deteriorating; otherwise immediate hotline or direct-admission route"],
          ["Do you have an alert card and hotline number?","CG151: 24-hour specialist oncology advice","Ring it with them, or advise them to ring now and go in"],
          ["Diarrhoea, cough, rash, new pain on immunotherapy?","Immune-related toxicity can mimic or co-exist with infection","Same urgent route via the hotline"]
        ]},
@@ -133,26 +134,26 @@ MG.render({
     {id:"immuno", nav:"Immunotherapy", title:"Immunotherapy and targeted therapy: the differential", sub:"Checkpoint inhibitors rarely cause neutropenia, but they cause toxicities that look like infection — and they can co-exist.",
      blocks:[
        {b:"table", head:["Presentation","Consider","Primary-care action"], rows:[
-         ["Diarrhoea / abdominal pain","Immune-related <b>colitis</b> (can perforate)","Same-day via hotline; do not simply prescribe loperamide"],
-         ["Cough, breathlessness, falling SpO₂","<b>Pneumonitis</b> vs infection","Same-day via hotline/ED"],
-         ["Fatigue, hypotension, vomiting, hyponatraemia","<b>Hypophysitis / adrenal insufficiency</b>","Emergency if hypotensive (possible adrenal crisis); otherwise same-day via hotline"],
+         ["Diarrhoea / abdominal pain","Immune-related <b>colitis</b> (can perforate)","Same-day oncology advice via hotline; do not treat empirically as a routine infection or simply prescribe loperamide without oncology input"],
+         ["Cough, breathlessness, falling SpO₂","<b>Pneumonitis</b> vs infection (may coexist)","Same-day via hotline/ED; do not treat empirically as a routine infection without oncology input"],
+         ["Fatigue, hypotension, vomiting, hyponatraemia","<b>Hypophysitis / adrenal insufficiency</b>","Emergency if hypotensive — give emergency hydrocortisone immediately if adrenal crisis is suspected; otherwise same-day via hotline"],
          ["Polyuria, thirst, high glucose","Immune-related <b>diabetes / DKA</b>","Emergency if ketotic"],
-         ["Jaundice, deranged LFTs","Immune-related <b>hepatitis</b>","Discuss with oncology the same day"],
+         ["Jaundice, deranged LFTs","Immune-related <b>hepatitis</b>","Discuss with oncology the same day; do not treat empirically as a routine infection"],
          ["Fever alone on combination chemo-immunotherapy","<b>Neutropenic sepsis</b> from the chemotherapy component","Neutropenic sepsis pathway"]
        ]},
        {b:"cards", cols:2, items:[
-         {tone:"blue", h:"Same route, different disease", html:"Immunotherapy toxicities follow the same urgent route via the acute oncology hotline. Treatment is specialist-led (often high-dose steroids), so the GP's role is recognition and referral.", src:"NICE NG253 (suspect in anyone unwell on SACT)"},
+         {tone:"blue", h:"Same route, different disease", html:"In patients receiving or previously exposed to immune-checkpoint inhibitors, infection and immune-related toxicity may coexist. Arrange same-day oncology advice via the acute oncology hotline. Do not treat diarrhoea, pneumonitis or hepatitis empirically as a routine infection without oncology input. Steroids may be indicated for some immune-related adverse events but should not be started reflexively before infection and other urgent diagnoses are considered and specialist advice obtained — unless there is a life-threatening immune-related emergency: give emergency hydrocortisone immediately if adrenal crisis is suspected.", src:"NICE NG253 (suspect in anyone unwell on SACT)"},
          {tone:"blue", h:"Late toxicity", html:"Immune-related adverse events can appear months after the last dose, even after treatment has stopped. Ask about immunotherapy in the past, not just current treatment."}
        ]}
      ]},
 
-    {id:"mimics", nav:"Non-cancer neutropenia", title:"Neutropenia from non-cancer drugs", sub:"The same emergency physiology, outside the cancer pathway. NG253 and NG254 extend suspicion to immunosuppressants for reasons unrelated to cancer.",
+    {id:"mimics", nav:"Non-cancer neutropenia", title:"Neutropenia from non-cancer drugs", sub:"The same emergency physiology, outside the cancer pathway — but each drug group has its own pathway. NG253 and NG254 extend suspicion to immunosuppressants for reasons unrelated to cancer.",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Carbimazole / propylthiouracil — agranulocytosis", html:"Sore throat, mouth ulcers, fever or malaise on an antithyroid drug → <b>stop the drug</b> and check an <b>urgent same-day FBC with neutrophil count</b> (the total white count can look normal). If unwell or septic, admit as neutropenic sepsis. Patients must be warned to report these symptoms at the start of treatment.", src:"BNF carbimazole (CSM warning)"},
-         {tone:"red", h:"Clozapine", html:"Neutropenia and agranulocytosis are the reason for mandatory blood monitoring via the clozapine monitoring service. Fever, sore throat or flu-like illness → urgent FBC and contact the mental health team; if unwell, admit. Also consider clozapine-induced myocarditis in early treatment.", src:"BNF clozapine monograph · clozapine SmPC"},
-         {tone:"amber", h:"Conventional synthetic DMARDs", html:"Methotrexate, azathioprine, leflunomide, sulfasalazine, mycophenolate: fever or infection with a low neutrophil count → withhold per shared-care thresholds and contact the specialist team urgently. Methotrexate toxicity with mucositis is a classic neutropenic presentation.", src:"BSR 2025 csDMARD guideline"},
-         {tone:"amber", h:"Other immunosuppression", html:"Biologics, JAK inhibitors, high-dose steroids, post-transplant immunosuppression: NICE NG253 and NG254 ask you to use clinical judgement about neutropenia risk in anyone unwell on (or recently off) immunosuppressants for non-cancer reasons.", src:"NICE NG253 · NICE NG254"}
+         {tone:"red", h:"Carbimazole / propylthiouracil — agranulocytosis", html:"Sore throat, mouth ulcers, fever or malaise on an antithyroid drug → <b>stop the drug</b> and check an <b>urgent same-day FBC with neutrophil count</b> (the total white count can look normal). Urgent assessment if systemically unwell or septic. Do not restart the drug if agranulocytosis is confirmed without specialist advice. Patients must be warned to report these symptoms at the start of treatment.", src:"BNF carbimazole (CSM warning)"},
+         {tone:"red", h:"Clozapine", html:"Neutropenia and agranulocytosis are the reason for mandatory blood monitoring via the clozapine monitoring service. Fever, sore throat or flu-like illness → urgent FBC and contact the mental health team, following the local clozapine monitoring service. Any unwell patient with possible sepsis needs emergency clinical assessment. Do not independently stop clozapine in a clinically stable patient without specialist advice. Consider myocarditis, pneumonia and other causes of fever, especially early in treatment. Smoking cessation can increase clozapine levels and may need dose review.", src:"BNF clozapine monograph · clozapine SmPC"},
+         {tone:"amber", h:"Conventional synthetic DMARDs", html:"Methotrexate, azathioprine, leflunomide, sulfasalazine, mycophenolate: fever or infection with a low neutrophil count → follow the drug-specific shared-care protocol and contact the specialist team urgently about temporary withholding and restart — not every immunosuppressant has identical interruption rules. Methotrexate toxicity with mucositis is a classic neutropenic presentation.", src:"BSR 2025 csDMARD guideline"},
+         {tone:"amber", h:"Other immunosuppression", html:"Biologics, JAK inhibitors, high-dose steroids, post-transplant immunosuppression: NICE NG253 and NG254 ask you to use clinical judgement about neutropenia risk in anyone unwell on (or recently off) immunosuppressants for non-cancer reasons. Follow the drug-specific protocol and contact the specialist team; do not independently stop transplant immunosuppression or antiretroviral therapy.", src:"NICE NG253 · NICE NG254"}
        ]},
        {b:"why", html:"These patients do not carry a chemotherapy alert card and are not on an acute oncology pathway, so the risk is that nobody thinks “neutropenia”. The question “what drugs are you on that affect your immunity?” belongs in every febrile consultation."}
      ]},
@@ -161,7 +162,7 @@ MG.render({
      blocks:[
        {b:"cards", cols:2, items:[
          {tone:"red", h:"Same principle, lower threshold", html:"Suspect neutropenic sepsis in any child who is unwell and has had systemic anticancer treatment within the last 30 days, and refer immediately for assessment in secondary or tertiary care.", src:"NICE NG254 · NICE CG151"},
-         {tone:"amber", h:"Use the open-access route", html:"Parents are usually given a direct number for the shared-care ward or PTC. Ring it with them, or advise them to go straight there; call 999 if the child is shocked, drowsy or struggling to breathe.", src:"NICE CG151 (24-hour specialist advice)"},
+         {tone:"amber", h:"Use the open-access route", html:"Parents are usually given a direct number for the shared-care ward or PTC. Ring it with them, or advise them to go straight there, using the local paediatric oncology shared-care route. Not every febrile child needs 999 — stable children generally use the open-access route if they can transfer safely and promptly; call 999 if the child is shocked, drowsy or struggling to breathe.", src:"NICE CG151 (24-hour specialist advice)"},
          {tone:"amber", h:"Assess with paediatric tools", html:"Use the under-16 sepsis risk stratification (age-specific heart rate, respiratory rate, behaviour, colour).", src:"NICE NG254"},
          {tone:"blue", h:"Teenagers and young adults", html:"16- and 17-year-olds fall under NG253 (≥16) for sepsis assessment but may be under a teenage and young adult cancer service; use the number on their card.", src:"NICE NG253"}
        ]}
@@ -181,17 +182,18 @@ MG.render({
        ]}
      ]},
 
-    {id:"refer", nav:"Refer", title:"Referral routes", sub:"Every route is an emergency route. The only question is which door.",
+    {id:"refer", nav:"Refer", title:"Referral routes", sub:"Every suspected case requires immediate same-day acute assessment. The route depends on physiology and the local oncology pathway: 999 for instability, otherwise direct acute oncology/haematology admission or emergency department assessment.",
      blocks:[
        {b:"table", head:["Situation","Urgency","Where","What to send"], rows:[
-         ["Shocked, confused, peri-arrest, NEWS2 high","<b>Immediate — 999</b>","ED (pre-alert)","Cancer, regimen, last dose, line, obs, allergies"],
-         ["Unwell or febrile, stable, on/within 30 days of SACT","<b>Immediate</b>","Acute oncology hotline → named unit or ED, per local pathway","As above + alert card"],
-         ["Child on cancer treatment, unwell or febrile","<b>Immediate</b>","Shared-care unit / PTC open access, or 999","Treatment protocol, last dose, line"],
+         ["Shock or hypotension, new confusion or reduced consciousness, severe breathlessness or hypoxia, peri-arrest, rapid deterioration, NEWS2 high, or unable to travel safely","<b>Immediate — 999</b>","ED (pre-alert)","Cancer, regimen, last dose, line, obs, allergies"],
+         ["Unwell or febrile, stable, on/within 30 days of SACT","<b>Immediate</b>","Acute oncology hotline (number from the alert card) → named unit or ED, per the local Greater Manchester pathway","As above + alert card"],
+         ["Child on cancer treatment, unwell or febrile","<b>Immediate</b>","Shared-care unit / PTC open access; 999 if shocked, drowsy or in respiratory distress","Treatment protocol, last dose, line"],
          ["Unwell on clozapine, carbimazole, csDMARD","<b>Same hour if unwell</b>; urgent FBC if well","ED/medical take; specialist team informed","Drug, dose, duration, last monitoring result"],
          ["Suspected immunotherapy toxicity","<b>Same day</b> (immediate if unstable)","Acute oncology hotline","Agent, start date, symptoms, obs"]
        ]},
        {b:"cards", cols:2, items:[
          {tone:"red", h:"Refer immediately — all suspected cases", html:"Secondary or tertiary care assessment. There is no “routine” neutropenic sepsis referral.", src:"NICE CG151"},
+         {tone:"amber", h:"Local route — Bolton / Greater Manchester", html:"A generic “ring the hotline” instruction is incomplete without the number: take it from the patient's alert card (for Christie patients, The Christie Hotline). Record the practice's local acute oncology single point of access, the direct-admission route, the paediatric oncology shared-care route and the out-of-hours instructions in the clinical system, including whether stable patients attend a named acute oncology unit or ED. If unstable, 999 first."},
          {tone:"green", h:"After discharge", html:"Read the discharge summary for risk assessment, G-CSF or regimen changes, and any follow-up bloods delegated to primary care."}
        ]}
      ]},
@@ -209,13 +211,15 @@ MG.render({
     {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"Each one appears in serious incident reviews.",
      blocks:[
        {b:"table", head:["Pitfall","Why it's wrong","Do instead"], rows:[
-         ["Sending for an FBC and waiting for the result","Delays antibiotics; CG151 says refer immediately","Refer; the hospital takes the bloods"],
+         ["Sending for a community FBC and waiting for the result","Delays antibiotics; CG151 says refer immediately","Refer; bloods only if immediately available without delaying transfer — the hospital takes the full set"],
          ["Oral antibiotics and review tomorrow","Neutropenic patients can deteriorate within hours","Immediate referral"],
          ["Reassured by a normal temperature","Steroids, paracetamol and age mask fever; CG151 allows sepsis without fever","Act on “unwell”"],
          ["“It's too long since the chemo”","NG253/NG254 30 days plus judgement; UKONS 6–8 weeks; haematology and transplant patients longer","Ask the hotline"],
          ["Forgetting non-cancer causes","Clozapine, carbimazole and DMARDs cause agranulocytosis","Ask about all immunity-lowering drugs"],
-         ["Treating immunotherapy colitis as gastroenteritis","Colitis can perforate; needs specialist steroids","Hotline same day"],
-         ["Citing NG51","Replaced in November 2025 by NG253, NG254 and NG255","Use the current numbers"]
+         ["Treating immunotherapy colitis as gastroenteritis","Colitis can perforate and may need specialist-directed steroids","Hotline same day"],
+         ["Starting steroids reflexively for suspected immune-related toxicity","Infection and toxicity may coexist","Specialist advice first — unless adrenal crisis is suspected (emergency hydrocortisone)"],
+         ["Assuming the line is the source, or flushing it in the surgery","Over-certainty delays other diagnoses; line access belongs in hospital","Note the line in the handover; do not access it"],
+         ["Citing NG51","Replaced in November 2025 by NG253, NG254 and NG255 for general sepsis — but CG151 remains the neutropenic sepsis guideline","Use CG151 for neutropenic sepsis management, and NG253/NG254 for current general sepsis recognition and referral criteria"]
        ]}
      ]},
 
@@ -228,11 +232,11 @@ MG.render({
     {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Named sources for every threshold on this page.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>NICE CG151 — Neutropenic sepsis: prevention and management in people with cancer</b> (September 2012; minor updates to prophylaxis wording 2024; current)<br><a href="https://www.nice.org.uk/guidance/cg151" rel="noopener">nice.org.uk/guidance/cg151</a><span class="rd"> — definition (neutrophils ≤0.5 × 10⁹/L + temperature &gt;38°C or signs of sepsis); immediate referral to secondary/tertiary care; acute emergency with immediate empiric antibiotics; piperacillin–tazobactam; risk scoring; patient information and 24-hour advice; fluoroquinolone prophylaxis; G-CSF</span></li>'+
-         '<li><b>NICE NG253 — Suspected sepsis in people aged 16 or over: recognition, assessment and early management</b> (November 2025; replaces NG51)<br><a href="https://www.nice.org.uk/guidance/ng253" rel="noopener">nice.org.uk/guidance/ng253</a><span class="rd"> — suspect neutropenic sepsis if unwell within 30 days of systemic anticancer treatment or on immunosuppressants; NEWS2-linked antibiotic timing in hospital</span></li>'+
+         '<li><b>NICE CG151 — Neutropenic sepsis: prevention and management in people with cancer</b> (September 2012; minor updates to prophylaxis wording 2024; current)<br><a href="https://www.nice.org.uk/guidance/cg151" rel="noopener">nice.org.uk/guidance/cg151</a><span class="rd"> — definition (neutrophils ≤0.5 × 10⁹/L + temperature &gt;38°C or signs of sepsis); immediate referral to secondary/tertiary care; hospital assessment (FBC, renal and liver function, CRP, lactate, blood cultures including peripheral cultures with a CVAD); acute emergency with immediate empiric antibiotics; piperacillin–tazobactam; no glycopeptide solely for a CVAD; no routine aminoglycosides; risk scoring and outpatient criteria; patient information and 24-hour advice; fluoroquinolone prophylaxis; G-CSF</span></li>'+
+         '<li><b>NICE NG253 — Suspected sepsis in people aged 16 or over: recognition, assessment and early management</b> (November 2025; replaces NG51)<br><a href="https://www.nice.org.uk/guidance/ng253" rel="noopener">nice.org.uk/guidance/ng253</a><span class="rd"> — suspect neutropenic sepsis if unwell within 30 days of systemic anticancer treatment or on immunosuppressants, and refer back to CG151 for its management; NEWS2-linked antibiotic timing in hospital</span></li>'+
          '<li><b>NICE NG254 — Suspected sepsis in under 16s: recognition, diagnosis and early management</b> (November 2025; replaces NG51)<br><a href="https://www.nice.org.uk/guidance/ng254" rel="noopener">nice.org.uk/guidance/ng254</a><span class="rd"> — same neutropenic-sepsis suspicion rule for children; paediatric risk stratification</span></li>'+
          '<li><b>NICE NG255 — Suspected sepsis in pregnant or recently pregnant people: recognition, diagnosis and early management</b> (November 2025; replaces NG51 for this group)<br><a href="https://www.nice.org.uk/guidance/ng255" rel="noopener">nice.org.uk/guidance/ng255</a><span class="rd"> — use for sepsis assessment in pregnant or recently pregnant patients on cancer treatment</span></li>'+
-         '<li><b>UKONS — Oncology/Haematology 24-Hour Triage: Rapid Assessment and Access Toolkit, version 3</b> (January 2025)<br><a href="https://ukons.org/news/24-hour-triage-toolkit-version-3-its-here" rel="noopener">ukons.org</a><span class="rd"> — fever pathway ≥37.5°C or &lt;36.0°C or generally unwell; SACT within 6–8 weeks; steroids/analgesia may mask fever; red = attend now</span></li>'+
+         '<li><b>UKONS — Oncology/Haematology 24-Hour Triage: Rapid Assessment and Access Toolkit, version 3</b> (January 2025)<br><a href="https://ukons.org/news/24-hour-triage-toolkit-version-3-its-here" rel="noopener">ukons.org</a><span class="rd"> — fever pathway ≥37.5°C or &lt;36.0°C or generally unwell; SACT within 6–8 weeks; steroids/analgesia may mask fever; red = attend now — an oncology triage and access pathway, not the NICE diagnostic definition</span></li>'+
          '<li><b>BSR 2025 guideline for the prescription and monitoring of conventional synthetic DMARDs</b> (Rheumatology 2025)<br><a href="https://doi.org/10.1093/rheumatology/keaf522" rel="noopener">doi.org/10.1093/rheumatology/keaf522</a><span class="rd"> — neutropenia thresholds and action for csDMARDs</span></li>'+
          '<li><b>BNF — carbimazole (CSM warning on neutropenia/agranulocytosis) and clozapine monographs; clozapine SmPC</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — non-cancer drug-induced neutropenia; all doses</span></li>'+
          '<li><b>Resuscitation Council UK — ABCDE approach</b><span class="rd"> — initial assessment of the deteriorating patient</span></li>'+
@@ -240,7 +244,7 @@ MG.render({
          '</ul></div>'}
      ]}
   ],
-  foot:"Suspected neutropenic sepsis — NICE CG151, NICE NG253 and NG254 (which replaced NG51 in November 2025), and the UKONS 24-hour triage toolkit v3. The primary-care action is immediate referral; follow your local acute oncology pathway and hotline. Not clinically reviewed — verify all drug doses against the current BNF."
+  foot:"Suspected neutropenic sepsis — NICE CG151 for neutropenic sepsis management, NICE NG253 and NG254 (which replaced NG51 in November 2025) for general sepsis recognition and referral, and the UKONS 24-hour triage toolkit v3. The primary-care action is immediate referral: 999 if unstable, otherwise your local acute oncology pathway and hotline. Not clinically reviewed — verify all drug doses against the current BNF."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>
