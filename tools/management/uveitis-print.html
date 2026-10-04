@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Uveitis — Protocol · Reasoning GP</title>
-<meta name="description" content="Uveitis in primary care: recognise suspected acute anterior uveitis and arrange same-day ophthalmology, remember that posterior, chronic and JIA-associated uveitis may be painless, no primary-care ocular steroids, no indiscriminate uveitis screens, and the NICE NG65 HLA-B27 pathway." />
+<meta name="description" content="Uveitis in primary care: recognise suspected acute anterior uveitis and arrange same-day ophthalmology, remember that posterior, chronic and JIA-associated uveitis may be painless, no primary-care ocular steroids, no indiscriminate uveitis screens, retinal tear or detachment with new flashes and floaters, and the NICE NG65 (over 16s) HLA-B27 pathway." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/uveitis.html">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1790547054109603 tools/management/uveitis.html">
+<meta name="omelette-print-source" content="v1791146960237980">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -24,10 +24,10 @@
 MG.render({
   icon:"👁️",
   title:"Uveitis — recognise acute anterior uveitis and arrange urgent ophthalmology",
-  eyebrow:"Protocol · adults and children · GP recognition card",
+  eyebrow:"Protocol · adults and children (NICE NG65 covers over 16s only) · GP recognition card",
   stemTitle:"A painful, photophobic red eye suggesting acute anterior uveitis needs same-day ophthalmology — but posterior, chronic and JIA-associated uveitis may have little pain or redness",
-  stemSub:"<b>The GP role in uveitis is recognition and urgent referral.</b> Suspected acute anterior uveitis — eye pain, redness, photophobia or blurred vision — needs immediate, same-day ophthalmological assessment (NICE NG65). Intermediate, posterior and panuveitis may present with floaters, flashes, blurred vision, field loss or distortion, with variable redness. Diagnosis needs a slit lamp; treatment is ophthalmology-led. <b>Do not start ocular steroids in primary care</b>, do not delay referral for blood tests, and do not request an indiscriminate uveitis screen.",
-  guideline:"NICE NG65 · College of Optometrists CMG — anterior uveitis · RCOphth JIA uveitis screening guideline (2006)",
+  stemSub:"<b>The GP role in uveitis is recognition and urgent referral.</b> Suspected acute anterior uveitis — eye pain, redness, photophobia or blurred vision — needs immediate, same-day ophthalmological assessment (NICE NG65, for people aged over 16). Children follow the local paediatric ophthalmology/paediatric rheumatology pathway, and symptomatic children need urgent ophthalmological assessment whether or not they have established JIA. New floaters, flashes, visual field loss, a curtain or shadow, distortion or reduced vision need urgent ophthalmic assessment — consider retinal tear or detachment as well as posterior uveitis. Diagnosis needs a slit lamp; treatment is ophthalmology-led. <b>Do not start ocular steroids in primary care</b> unless authorised in a written ophthalmology flare plan, do not delay referral for blood tests, and do not request an indiscriminate uveitis screen.",
+  guideline:"NICE NG65 (over 16s) · College of Optometrists CMGs — anterior uveitis; retinal detachment · RCOphth JIA uveitis screening guideline (2006; local paediatric protocols may supersede)",
   reviewed:"25 September 2026",
   nextReview:"25 September 2027",
   meta:[
@@ -36,41 +36,45 @@ MG.render({
     {t:"v2.1 · reviewed Sep 2026", tone:"ok"}
   ],
   lead:'<div class="mg-layers"><a href="#recognise"><b>Recognise</b><small>And its mimics</small></a><a href="#systemic"><b>Systemic</b><small>Guided, not a panel</small></a><a href="#jia"><b>JIA</b><small>Often painless</small></a><a href="#gprole"><b>GP role</b><small>Bounded</small></a><a href="#refer"><b>Refer</b><small>Same day</small></a></div>',
-  quickSub:"The five that matter. Every figure traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quickSub:"The five that matter. Key sources, with links, are listed under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"red", h:"⚠ Suspected acute anterior uveitis → same day", html:"Deep eye pain · redness, especially around the cornea (ciliary flush) · photophobia, including consensual · blurred vision · watering · small or irregular pupil. Usually progressive over hours to days; not every feature is present → <b>immediate, same-day ophthalmological assessment</b> (NICE NG65)."},
-    {tone:"red", h:"⚠ Posterior, intermediate or panuveitis", html:"New floaters, flashes, blurred or reduced vision, field loss or distortion, with variable redness and pain → urgent ophthalmology through the local pathway (eye casualty, ED or urgent eye service). Do not delay for primary-care investigations."},
-    {tone:"red", h:"⚠ No ocular steroids in primary care", html:"Not for a new episode, and not for known uveitis unless the patient has a written ophthalmology flare plan. Steroids can mask or worsen herpetic, fungal, bacterial or acanthamoeba keratitis; intraocular pressure must be assessed first."},
-    {tone:"amber", h:"JIA-associated uveitis is often painless", html:"It can precede the arthritis and stay silent until complications develop. Make sure children with JIA are in a slit-lamp screening programme and that missed appointments are followed up."},
-    {tone:"blue", h:"Systemic assessment is guided, not a panel", html:"After urgent eye assessment, ask about back pain, arthritis, psoriasis, bowel, skin, mouth and chest symptoms, infection and travel. HLA-B27 testing follows the NICE NG65 pathway; a negative HLA-B27 or normal CRP/ESR does not exclude spondyloarthritis."}
+    {tone:"red", h:"⚠ Suspected acute anterior uveitis → same day", html:"Eye pain · red eye, especially around the cornea (ciliary flush) · photophobia (consensual photophobia is supportive but not required) · blurred vision · watering · small, irregular or abnormal pupil. Usually progressive over hours to days; not every feature is present → <b>immediate, same-day ophthalmological assessment</b> (NICE NG65, over 16s). Do not wait for blood tests or a routine optometry appointment. Children: urgent assessment via the local paediatric ophthalmology pathway."},
+    {tone:"red", h:"⚠ New flashes, floaters or field loss — retinal tear or posterior uveitis", html:"New floaters, flashes, visual field loss, a curtain or shadow, visual distortion or reduced vision require urgent ophthalmic assessment. Consider retinal tear or detachment, vitreous haemorrhage and posterior vitreous detachment as well as intermediate, posterior or panuveitis. <b>A shadow, curtain, sudden field loss or marked visual reduction is an eye emergency</b> — same-day retinal/ophthalmic assessment. Do not attribute these symptoms to uveitis without a dilated fundus examination, and do not delay for primary-care investigations."},
+    {tone:"red", h:"⚠ No ocular steroids in primary care", html:"Do not initiate or restart ocular corticosteroids in primary care for a new episode unless specifically authorised in a written ophthalmology flare plan. If a plan exists, follow it and confirm the required ophthalmology follow-up; if not, obtain urgent ophthalmic advice or assessment. Do not use another person's eye drops, and do not prescribe topical steroid/antibiotic combinations empirically for a red eye. Steroids can mask or worsen herpetic, fungal, bacterial or acanthamoeba keratitis; intraocular pressure must be assessed first."},
+    {tone:"amber", h:"JIA-associated uveitis is often painless", html:"It can precede the arthritis and stay silent until complications develop. Make sure children with JIA are in a specialist slit-lamp screening programme and that missed appointments are followed up. A high-street optometrist examination does not replace slit-lamp screening by an appropriately trained ophthalmic service."},
+    {tone:"blue", h:"Systemic assessment is guided, not a panel", html:"After urgent eye assessment, ask about back pain, arthritis, psoriasis, bowel, skin, mouth and chest symptoms, infection and travel. Do not delay ophthalmology referral for HLA-B27 or other blood tests: once anterior uveitis is confirmed, the ophthalmology or rheumatology pathway guides HLA-B27 testing and referral (NICE NG65). In primary care, record inflammatory back pain, peripheral arthritis, psoriasis, IBD and relevant family history. A negative HLA-B27 or normal CRP/ESR does not exclude spondyloarthritis."}
   ],
   pathwaySub:"Five steps.",
   pathway:[
     {title:"Recognise and check the eye", html:"Visual acuity in each eye, pupils, pattern of redness, cornea, contact-lens use, posterior symptoms.", alert:true},
-    {title:"Refer the same day", html:"Local urgent eye pathway; no steroids first; no blood tests first."},
+    {title:"Refer the same day", html:"Local urgent eye pathway — immediate emergency assessment for severe pain, major visual loss, angle-closure features or a curtain/shadow; no steroids first; no blood tests first."},
     {title:"Supportive advice while waiting", html:"Dark glasses, simple analgesia, no patching, contact lenses out, no driving if vision is impaired."},
-    {title:"Systemic questions, guided by the eye findings", html:"NICE NG65 pathway for HLA-B27 and rheumatology; other specialties per symptoms."},
-    {title:"Bounded GP role in recurrent disease", html:"Fast-track flares; shared-care monitoring only under a written agreement."}
+    {title:"Systemic questions, guided by the eye findings", html:"Record back pain, arthritis, psoriasis, IBD and family history; HLA-B27 and rheumatology referral are guided by ophthalmology or rheumatology after confirmation (NICE NG65); other specialties per symptoms."},
+    {title:"Bounded GP role in recurrent disease", html:"Fast-track flares per a written ophthalmology flare plan; shared-care monitoring only under a current written agreement."}
   ],
   sections:[
 
     {id:"recognise", nav:"Recognise", title:"Step 1 — recognise uveitis and its mimics",
      blocks:[
        {b:"table", head:["Before referral","Detail"], rows:[
-         ["<b>Check</b>","Visual acuity in each eye · pupil size and reaction · pattern of conjunctival injection · corneal appearance · pain and photophobia, including consensual · contact-lens use · recent trauma, surgery or intraocular procedure · new floaters, flashes or field loss · systemic symptoms"],
-         ["<b>Fluorescein</b>","Useful if corneal disease or a foreign body is suspected — but it must not delay referral"],
+         ["<b>Check</b>","Visual acuity in each eye · pupil size and reaction · pattern of conjunctival injection · corneal appearance · pain and photophobia, including consensual · contact-lens use · recent trauma, surgery or intraocular procedure · new floaters, flashes, field loss, curtain or shadow · systemic symptoms"],
+         ["<b>Fluorescein</b>","May help identify corneal epithelial disease or a foreign body, but a negative fluorescein examination does not exclude uveitis, glaucoma, scleritis or posterior eye disease. Not required before referral — in a markedly painful, photophobic or visually impaired eye, referral takes priority"],
          ["<b>Specialist only</b>","Slit-lamp examination, intraocular pressure and dilated fundus examination. Uveitis cannot be excluded in primary care"]
        ]},
        {b:"table", head:["Picture","Features","Action"], rows:[
-         ["<b>Acute anterior uveitis</b>","Pain, photophobia, blurred vision, watering, ciliary flush, small or irregular pupil","Same-day ophthalmology"],
-         ["<b>Chronic anterior uveitis</b>","Mild redness or blurred vision; may be painless","Urgent ophthalmology"],
-         ["<b>Intermediate, posterior or panuveitis</b>","Floaters, flashes, blurred or reduced vision, field loss, distortion; redness and pain variable — panuveitis may be painful and red","Urgent ophthalmology per local pathway"],
-         ["<b>Acute angle-closure glaucoma</b>","Severe eye pain, headache, nausea and vomiting, haloes, markedly reduced vision, fixed mid-dilated pupil, cloudy cornea","Emergency — same day"],
-         ["<b>Microbial keratitis</b>","Painful red eye, often a contact-lens wearer, corneal opacity","Same day"],
-         ["<b>Herpetic keratitis</b>","Unilateral red eye, dendritic lesion on fluorescein, previous cold sores","Same day"],
-         ["<b>Scleritis</b>","Severe boring pain that may wake the patient; deep redness; tender globe","Same day"]
+         ["<b>Acute anterior uveitis</b>","Pain, photophobia, red eye, blurred vision, watering, ciliary flush, small, irregular or abnormal pupil","Same-day ophthalmology — do not wait for blood tests or routine optometry"],
+         ["<b>Chronic anterior uveitis</b>","Mild redness or blurred vision; may be painless","Prompt ophthalmology; urgency depends on vision, complications and the local pathway"],
+         ["<b>Intermediate, posterior or panuveitis</b>","Floaters, blurred or reduced vision, distortion; redness and pain variable — panuveitis may be painful and red","Urgent ophthalmology per local pathway; needs a dilated fundus examination"],
+         ["<b>New flashes or floaters with field loss, curtain or shadow, or visual reduction</b>","Retinal tear or detachment, vitreous haemorrhage, posterior vitreous detachment, vitritis or uveitis, other retinal pathology","Eye emergency — same-day urgent retinal/ophthalmic assessment"],
+         ["<b>New floaters or photopsia without visual loss</b>","Posterior vitreous detachment, retinal tear, inflammatory vitritis","Urgent ophthalmic assessment according to the local pathway"],
+         ["<b>Acute angle-closure glaucoma</b>","Severe eye pain, headache, nausea and vomiting, haloes, markedly reduced vision, fixed mid-dilated pupil, cloudy cornea","Immediate emergency ophthalmic assessment; do not delay for routine referral or investigations"],
+         ["<b>Microbial keratitis</b>","Painful red eye, often a contact-lens wearer, corneal opacity","Same-day ophthalmology — any painful red eye in a contact-lens wearer with reduced vision, corneal opacity or significant photophobia"],
+         ["<b>Herpetic keratitis or keratouveitis</b>","Unilateral red eye, dendritic lesion on fluorescein, previous cold sores; absence of a visible dendrite does not exclude it","Same-day ophthalmology; avoid topical steroids unless directed by ophthalmology"],
+         ["<b>Scleritis</b>","Severe boring pain that may wake the patient; deep redness; tender globe; may be associated with systemic inflammatory disease","Same-day ophthalmology, with systemic assessment after urgent eye review"],
+         ["<b>Known JIA with visual symptoms, red eye, photophobia or abnormal pupil</b>","May have little pain","Urgent ophthalmology"],
+         ["<b>Asymptomatic JIA</b>","Screening, not a GP assessment","Paediatric ophthalmology slit-lamp screening pathway"]
        ]},
-       {b:"why", html:"A small irregular pupil favours anterior uveitis, but pupil appearance alone cannot safely separate uveitis from angle closure."}
+       {b:"why", html:"A small irregular pupil favours anterior uveitis, but pupil appearance alone cannot safely separate uveitis from angle closure. <b>Severe eye pain with nausea or vomiting, haloes, a cloudy cornea and a fixed or mid-dilated pupil is acute angle closure until proven otherwise — an immediate emergency.</b>"}
      ]},
 
     {id:"waiting", nav:"While waiting", title:"Step 2 — supportive advice while awaiting assessment",
@@ -85,15 +89,15 @@ MG.render({
      blocks:[
        {b:"cards", cols:2, items:[
          {tone:"blue", h:"Ask about", html:"Inflammatory back pain, peripheral arthritis, enthesitis and family history · psoriasis · inflammatory bowel disease · oral or genital ulceration or skin lesions (Behçet's) · respiratory, skin or neurological features (sarcoidosis) · infection, travel and immunosuppression."},
-         {tone:"blue", h:"The NICE NG65 HLA-B27 pathway", html:"In anterior uveitis, ask about joint pain, or chronic low back pain that started before age 45 and has lasted more than 3 months. If either is present, check for psoriasis. If there is no psoriasis, HLA-B27 can be tested, with rheumatology referral if positive. <b>A negative HLA-B27, or a normal CRP or ESR, does not exclude spondyloarthritis.</b>"},
-         {tone:"amber", h:"No indiscriminate uveitis screen", html:"Do not delay eye referral for blood tests. Investigation depends on age, granulomatous or non-granulomatous disease, laterality, recurrence, posterior involvement, immunosuppression, infection risk and the ophthalmology findings — so ACE, ANA, syphilis, TB and toxoplasma tests are arranged by ophthalmology or for a specific systemic presentation, not as a routine panel. A first, mild, unilateral, non-granulomatous episode with no systemic features may need no extensive tests."}
+         {tone:"blue", h:"The NICE NG65 HLA-B27 pathway", html:"NICE frames this pathway for people with confirmed acute anterior uveitis (aged over 16); it does not require the GP to arrange HLA-B27 before same-day eye referral. Once anterior uveitis has been confirmed, the ophthalmology or rheumatology pathway should guide HLA-B27 testing and referral. In anterior uveitis, ask about joint pain, or chronic low back pain that started before age 45 and has lasted more than 3 months. If either is present, check for psoriasis. If there is no psoriasis, HLA-B27 can be tested, with rheumatology referral if positive. <b>A negative HLA-B27, or a normal CRP or ESR, does not exclude spondyloarthritis.</b>"},
+         {tone:"amber", h:"No indiscriminate uveitis screen", html:"Do not delay eye referral for blood tests. Investigations are directed by the ophthalmic phenotype and specialist assessment: age, granulomatous or non-granulomatous disease, laterality, recurrent or chronic disease, posterior involvement, immunosuppression, infection risk, travel and exposure history, and the ophthalmology findings — so ACE, ANA, syphilis, TB and toxoplasma tests are arranged by ophthalmology or for a specific systemic presentation, not as a routine panel. A first episode of acute anterior uveitis may still warrant systemic evaluation, depending on the ophthalmic findings and history — this is decided after ophthalmic assessment."}
        ]}
      ]},
 
-    {id:"specialist", nav:"Specialist care", title:"What ophthalmology does",
+    {id:"specialist", nav:"Specialist care", title:"What ophthalmology does — treatment is specialist-led",
      blocks:[
        {b:"table", head:["Situation","Treatment","Notes"], rows:[
-         ["<b>Anterior uveitis</b>","Topical corticosteroid plus a cycloplegic or mydriatic (e.g. cyclopentolate or atropine)","The steroid treats the inflammation; the cycloplegic relieves ciliary spasm, pain and photophobia and helps prevent or break posterior synechiae. Intensity and duration depend on anterior-chamber activity and complications"],
+         ["<b>Anterior uveitis</b>","After slit-lamp examination, assessment of intraocular pressure and exclusion of corneal infection: topical corticosteroid plus a cycloplegic or mydriatic (e.g. cyclopentolate or atropine)","The steroid treats the inflammation; the cycloplegic relieves ciliary spasm, pain and photophobia and helps prevent or break posterior synechiae. Treatment intensity, tapering, cycloplegia and follow-up depend on anterior-chamber activity, intraocular pressure, synechiae, infection risk and posterior involvement. Topical steroids are not started simply because the eye is red and photophobic"],
          ["<b>Intermediate, posterior or panuveitis</b>","Cause- and severity-dependent","May include targeted antimicrobial or antiviral treatment, periocular or intraocular steroid, systemic steroid, or steroid-sparing immunomodulation. Immunosuppression can be harmful if infection is untreated"],
          ["<b>Underlying disease</b>","Treat the systemic cause","Co-managed with the relevant specialty"]
        ]}
@@ -102,31 +106,33 @@ MG.render({
     {id:"jia", nav:"JIA", title:"Children with JIA",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"amber", h:"Screening", html:"Children with known or suspected JIA need paediatric rheumatology and ophthalmology involvement. Paediatric ophthalmology schedules slit-lamp screening by age at arthritis onset, JIA subtype, ANA status and local protocol (RCOphth). Most will already be under paediatric rheumatology — the GP's job is to check screening is in place and to chase missed appointments."},
-         {tone:"red", h:"Symptomatic eye", html:"A red eye, photophobia, visual change or an abnormal pupil in a child with JIA → urgent ophthalmology."}
+         {tone:"amber", h:"Screening", html:"Children with diagnosed JIA should be under paediatric rheumatology and paediatric ophthalmology care with a documented slit-lamp screening schedule. Screening frequency depends on JIA subtype, age at onset, ANA status, disease duration, treatment and local specialist protocol — the 2006 RCOphth schedule may be superseded locally, and the GP is not expected to set intervals. The GP checks that screening is arranged and actively follows up missed appointments, as complications may be irreversible. A high-street optometrist examination does not replace slit-lamp screening by an appropriately trained ophthalmic service — young children may not report visual symptoms."},
+         {tone:"red", h:"Symptomatic eye", html:"A red eye, photophobia, visual change or an abnormal pupil in a child with JIA → urgent ophthalmology. Any symptomatic child, with or without established JIA, needs urgent ophthalmological assessment through the local paediatric ophthalmology pathway — NICE NG65 covers people aged over 16 only."}
        ]}
      ]},
 
     {id:"gprole", nav:"GP role", title:"Step 5 — a bounded GP role in recurrent disease",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"green", h:"Fast-track flares", html:"People with recurrent uveitis often recognise flares early. They should have a written ophthalmology flare plan where appropriate. Without one, do not restart ocular steroids in primary care — arrange urgent ophthalmic advice or assessment."},
+         {tone:"green", h:"Fast-track flares", html:"People with recurrent uveitis often recognise flares early. They should have a written ophthalmology flare plan where appropriate, specifying the symptoms that trigger treatment, the exact medication and dose, when ophthalmology must be contacted, and who is responsible for monitoring intraocular pressure and treatment response. If a plan exists, follow it and confirm ophthalmology follow-up. Without one, do not restart ocular steroids in primary care — arrange urgent ophthalmic advice or assessment. Seek specialist advice for recurrent or persistent flares and for people on biological or targeted synthetic DMARDs (NICE NG65)."},
          {tone:"blue", h:"Eye monitoring is ophthalmology's", html:"Visual acuity, intraocular pressure, cataract, synechiae, macular oedema and treatment response are monitored by ophthalmology — they cannot be reliably assessed in primary care."},
-         {tone:"blue", h:"Shared-care monitoring", html:"GP monitoring of systemic corticosteroids, DMARDs or biologics only under an agreed local shared-care protocol. The initiating specialist keeps responsibility for disease activity and treatment decisions; GP monitoring does not replace ophthalmology follow-up. Seek specialist advice for abnormal results, infection, toxicity or ocular relapse."}
+         {tone:"blue", h:"Shared-care monitoring", html:"GP monitoring of systemic corticosteroids, DMARDs or biologics only under a current local shared-care agreement with clearly documented responsibilities. Ophthalmology remains responsible for ocular disease activity and ocular complications, and the initiating specialist for treatment decisions; GP monitoring does not replace ophthalmology follow-up. Seek specialist advice for abnormal results, infection, toxicity or ocular relapse."}
        ]}
      ]},
 
     {id:"refer", nav:"Refer", title:"Referral",
      blocks:[
        {b:"table", head:["When","Situation","Action"], rows:[
-         ["<b>Same day</b>","Suspected acute anterior uveitis · any painful photophobic red eye with reduced vision · contact-lens-related painful red eye or suspected keratitis · suspected herpetic keratitis · acute angle-closure features · suspected scleritis · abnormal pupil or corneal opacity","Local urgent eye pathway — eye casualty, ED or urgent ophthalmology service"],
-         ["<b>Urgent, per local timeframe</b>","New floaters or flashes with visual loss, field loss or distortion","Urgent ophthalmology — do not delay for investigations"],
-         ["<b>Rheumatology</b>","Anterior uveitis with joint pain or chronic back pain from before age 45, HLA-B27 positive, no psoriasis","Per NICE NG65"],
-         ["<b>Paediatric</b>","Child with JIA","Confirm ophthalmology screening; urgent ophthalmology if symptomatic"],
+         ["<b>Immediate emergency</b>","Severe eye pain, major visual loss, nausea or vomiting, cloudy cornea or fixed pupil (acute angle closure) · new flashes or floaters with a curtain or shadow, sudden field loss or marked visual reduction","Immediate emergency eye assessment — eye casualty or ED; do not delay for routine referral or investigations"],
+         ["<b>Same day</b>","Suspected acute anterior uveitis — painful photophobic red eye, blurred vision or abnormal pupil · contact-lens-related painful red eye or suspected keratitis · suspected herpetic keratitis or keratouveitis · suspected scleritis · corneal opacity","Local urgent eye pathway — eye casualty, ED or urgent ophthalmology service"],
+         ["<b>Urgent, per local timeframe</b>","New floaters or photopsia without visual loss · new distortion","Urgent ophthalmic assessment — consider retinal tear as well as uveitis; do not delay for investigations"],
+         ["<b>Prompt</b>","Suspected chronic or painless anterior uveitis","Prompt ophthalmology; urgency depends on vision, complications and the local pathway"],
+         ["<b>Rheumatology</b>","Confirmed anterior uveitis with joint pain or chronic back pain from before age 45, HLA-B27 positive, no psoriasis","Per NICE NG65 (over 16s) — usually guided by ophthalmology after confirmation"],
+         ["<b>Paediatric</b>","Child with JIA, or any symptomatic child","Confirm specialist slit-lamp screening (not a GP assessment); urgent ophthalmology through the local paediatric pathway if symptomatic"],
          ["<b>Other specialties</b>","Sarcoidosis, IBD, Behçet's, infection","Per the presentation"]
        ]},
        {b:"cards", items:[
-         {tone:"red", h:"Safety-net", html:"\"If the pain, light sensitivity or blurred vision comes back, or you notice new floaters, flashes or a shadow in your vision, contact the eye team or us the same day.\""},
+         {tone:"red", h:"Safety-net", html:"\"If the pain, light sensitivity or blurred vision comes back, or you notice new floaters, flashes, a shadow or curtain, or loss of part of your vision, contact the eye team or us the same day — urgently if your vision suddenly worsens.\""},
          {tone:"cream", h:"GP management", html:"Recognition, same-day referral and the guided systemic questions belong here. Related pages: <a href='ankylosing-spondylitis.html'>axial spondyloarthritis</a> · <a href='allergic-conjunctivitis.html'>allergic conjunctivitis</a> · <a href='dry-eye-disease.html'>dry eye disease</a>."}
        ]},
        {b:"say", html:"This looks like it could be uveitis — inflammation inside the eye. It needs to be seen by the eye team today, because untreated it can affect your sight. They'll examine the eye with a special microscope and usually start steroid and dilating drops. Please don't drive if your vision is blurred. If it keeps coming back, we'll also look for any linked condition elsewhere in the body."}
@@ -138,16 +144,17 @@ MG.render({
        {tone:"cream", h:"Examiner-style checkpoints", html:"Checks acuity and pupils; recognises suspected acute anterior uveitis and refers the same day; declines antibiotic drops and advises against using someone else's steroid drops; does not delay for bloods; links the back pain to possible axial spondyloarthritis and explains the NG65 pathway; advises no driving with blurred vision; safety-nets."}
      ]}]},
 
-    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
+    {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Key sources for this page, with links, versions and access dates.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>NICE NG65 — Spondyloarthritis in over 16s: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng65" rel="noopener">nice.org.uk/guidance/ng65</a><span class="rd"> — same-day ophthalmological assessment for suspected acute anterior uveitis; HLA-B27 and rheumatology pathway; negative HLA-B27 and normal CRP/ESR do not exclude</span></li>'+
-         '<li><b>College of Optometrists — Clinical Management Guideline: uveitis (anterior)</b><span class="rd"> — recognition and referral</span></li>'+
-         '<li><b>Royal College of Ophthalmologists — Guidelines for screening for uveitis in juvenile idiopathic arthritis (2006)</b><span class="rd"> — screening schedule by age, subtype and ANA status</span></li>'+
+         '<li><b>NICE NG65 — Spondyloarthritis in over 16s: diagnosis and management</b><br><a href="https://www.nice.org.uk/guidance/ng65" rel="noopener">nice.org.uk/guidance/ng65</a><span class="rd"> — applies to people aged over 16 (not the basis for paediatric management); same-day ophthalmological assessment for suspected acute anterior uveitis; HLA-B27 and rheumatology pathway; flares in primary or specialist care with specialist advice for recurrent flares or b/tsDMARDs; negative HLA-B27 and normal CRP/ESR do not exclude. Accessed September 2026</span></li>'+
+         '<li><b>College of Optometrists — Clinical Management Guideline: uveitis (anterior)</b><br><a href="https://www.college-optometrists.org/clinical-guidance/clinical-management-guidelines/uveitis_anterior" rel="noopener">college-optometrists.org — CMG: anterior uveitis</a><span class="rd"> — clinical features, treatment principles, referral and follow-up. Accessed September 2026</span></li>'+
+         '<li><b>College of Optometrists — Clinical Management Guidelines: retinal detachment and posterior vitreous detachment</b><br><a href="https://www.college-optometrists.org/clinical-guidance/clinical-management-guidelines" rel="noopener">college-optometrists.org — CMG index</a><span class="rd"> — urgency of new flashes, floaters, field loss and curtain or shadow. Accessed September 2026</span></li>'+
+         '<li><b>Royal College of Ophthalmologists / BSPAR — Guidelines for screening for uveitis in juvenile idiopathic arthritis (guideline dated 14 February 2006)</b><br><a href="https://www.rcophth.ac.uk/" rel="noopener">rcophth.ac.uk</a><span class="rd"> — asymptomatic nature of JIA-associated uveitis; need for slit-lamp screening; active follow-up of missed appointments; screening schedule by age, subtype and ANA status — local paediatric ophthalmology protocols may supersede the detailed schedule</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Uveitis in primary care: recognition and urgent referral. Suspected acute anterior uveitis — eye pain, redness, photophobia or blurred vision — needs same-day ophthalmological assessment (NICE NG65). Floaters, flashes, visual or field loss or distortion: urgent ophthalmology. Posterior, chronic and JIA-associated uveitis may be painless. No ocular steroids in primary care without a written ophthalmology flare plan; no blood tests before referral; no indiscriminate uveitis screen. HLA-B27 per NICE NG65 — negative results do not exclude spondyloarthritis. Sources: NICE NG65, College of Optometrists CMG, RCOphth JIA guideline (2006)."
+  foot:"Uveitis in primary care: recognition and urgent referral. Suspected acute anterior uveitis — eye pain, redness, photophobia or blurred vision — needs same-day ophthalmological assessment (NICE NG65, over 16s; children via the local paediatric ophthalmology pathway). New floaters, flashes, field loss, a curtain or shadow, or distortion: urgent ophthalmic assessment, considering retinal tear or detachment as well as posterior uveitis — an eye emergency with a curtain, sudden field loss or marked visual reduction. Posterior, chronic and JIA-associated uveitis may be painless. No ocular steroids in primary care without a written ophthalmology flare plan; no blood tests before referral; no indiscriminate uveitis screen. HLA-B27 per NICE NG65, guided after confirmation of uveitis and never delaying referral — negative results do not exclude spondyloarthritis. Sources: NICE NG65, College of Optometrists CMG, RCOphth JIA guideline (2006)."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>
