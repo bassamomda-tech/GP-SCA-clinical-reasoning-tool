@@ -86,6 +86,7 @@
 
   function bSay(b){ return '<div class="mg-say">'+b.html+'</div>'; }
   function bWarn(b){ return '<div class="mg-warn">'+b.html+'</div>'; }
+  function bInfo(b){ return '<div class="mg-warn mg-info" style="color:inherit;background:#eef4fb;border-color:#bcd3ec">'+b.html+'</div>'; }
   function bWhy(b){
     return '<div class="mg-why"><button class="mg-why-btn" aria-expanded="false">'+(b.label||'Why?')+
            ' <span class="caret">▾</span></button><div class="mg-why-body">'+b.html+'</div></div>';
@@ -111,7 +112,7 @@
 
   function bHtml(b){ return b.html; }
 
-  var BLOCKS = { p:bP, kv:bKv, table:bTable, tiles:bTiles, ladder:bLadder, timeline:bTimeline, say:bSay, warn:bWarn, why:bWhy, cards:bCards, dl:bDl, html:bHtml };
+  var BLOCKS = { p:bP, kv:bKv, table:bTable, tiles:bTiles, ladder:bLadder, timeline:bTimeline, say:bSay, warn:bWarn, info:bInfo, why:bWhy, cards:bCards, dl:bDl, html:bHtml };
 
   function renderBlocks(blocks){
     if(!blocks) return '';
