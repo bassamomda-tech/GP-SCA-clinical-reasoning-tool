@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ménière's disease — Protocol · Reasoning GP</title>
-<meta name="description" content="Ménière's disease in primary care, diagnosis and management on one page: the Bárány/AAO-HNS criteria, excluding sudden sensorineural hearing loss and vestibular schwannoma, audiometry, acute attack relief, betahistine and salt prophylaxis, DVLA advice and ENT referral." />
+<meta name="description" content="Ménière's disease in primary care, diagnosis and management on one page: the Bárány/AAO-HNS criteria, excluding sudden sensorineural hearing loss and vestibular schwannoma, audiometry, acute attack relief, time-limited and evidence-limited maintenance options, DVLA advice (stop driving and notify for sudden disabling vertigo) and ENT referral." />
 <link rel="canonical" href="https://gpreasoning.uk/tools/management/menieres.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,32 +22,33 @@ MG.render({
   title:"Ménière's disease — the complete guide",
   eyebrow:"Protocol · diagnose &amp; manage in one place",
   stemTitle:"Ménière's disease — exclude sudden hearing loss and central causes, confirm with audiometry, then reduce the attacks",
-  stemSub:"One page for the whole condition: recognise the attack pattern, exclude sudden sensorineural hearing loss (NICE NG98 — seen within 24 hours) and central causes before you label it, confirm with audiometry, image according to NICE criteria, treat the acute attack briefly, and use time-limited, evidence-limited maintenance options with honest review. Give individualised driving advice and escalate disabling disease to ENT.",
-  guideline:"NICE NG98 · NICE NG155 · AAO-HNS 2020 · Bárány Society criteria · ENT UK · DVLA",
+  stemSub:"One page for the whole condition: recognise the attack pattern, exclude sudden sensorineural hearing loss (NICE NG98 — seen within 24 hours) and central causes before you label it, confirm with audiometry, image according to NICE criteria, treat the acute attack briefly, and use time-limited, evidence-limited maintenance options with honest review. If attacks are sudden and disabling, the patient must stop driving and notify the DVLA; escalate disabling disease to ENT.",
+  guideline:"NICE NG98 · NICE NG155 · NICE NG127 · AAO-HNS 2020 · Bárány Society criteria · ENT UK · DVLA",
   reviewed:"25 September 2026",
   nextReview:"25 September 2027",
   meta:[
     {t:"Sudden hearing loss: seen within 24 h", tone:"tw"},
     {t:"Betahistine: time-limited, evidence limited"},
+    {t:"Sudden disabling vertigo: stop driving, notify DVLA", tone:"tw"},
     {t:"v3.1 · reviewed Sep 2026", tone:"ok"}
   ],
   lead:'<div class="mg-layers"><a href="#severe"><b>Exclude first</b><small>Sudden SNHL · central</small></a><a href="#confirm"><b>Confirm</b><small>Probable · definite</small></a><a href="#workup"><b>Tests</b><small>Audiometry · MRI</small></a><a href="#ladder"><b>Treat</b><small>Attack · maintenance</small></a><a href="#refer"><b>Refer</b><small>ENT · driving</small></a></div>',
   quickSub:"If you read nothing else on this page, read these six cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"red", h:"⚠ Sudden hearing loss first", html:"Sudden hearing loss that developed over <b>3 days or less within the last 30 days</b>, not explained by wax, otitis externa or middle-ear disease → <b>immediate referral, seen within 24 hours</b> (NICE NG98). Do not call it a Ménière's attack until sudden SNHL is excluded; steroid treatment is time-sensitive and follows the local ENT pathway. Sudden unilateral loss with vertigo can also be AICA or posterior-circulation ischaemia."},
-    {tone:"amber", h:"The pattern", html:"<b>Probable:</b> 2 or more spontaneous episodes of 20 minutes to 24 hours, with fluctuating hearing, tinnitus or aural fullness, and no better diagnosis. <b>Definite:</b> episodes of 20 minutes to 12 hours plus audiometrically documented low- to mid-frequency SNHL in the affected ear. Not positional, not seconds, not days."},
-    {tone:"blue", h:"Audiometry is the test; MRI by criteria", html:"Audiometry — air and bone conduction, speech discrimination, tympanometry where relevant, both ears compared. Early disease may be non-diagnostic, so serial audiometry may be needed. MRI internal auditory meati for localising signs, audiometric asymmetry (NICE NG98), or persistent unilateral tinnitus (NICE NG155), via the local pathway."},
-    {tone:"green", h:"Two arms of treatment", html:"<b>Acute:</b> a limited course of a vestibular suppressant or antiemetic for the attack only. <b>Maintenance:</b> after ENT or audiovestibular assessment, a time-limited trial of betahistine or a diuretic may be considered — evidence of benefit is limited; review at 3–6 months and stop if ineffective."},
-    {tone:"purple", h:"DVLA — driving", html:"Advise no driving while attacks are sudden, disabling or unpredictable. Notification is required where the condition is likely to affect safe driving; Group 2 standards are stricter — check the current DVLA guidance, and document the advice. Driving instructors, HGV/PSV and safety-critical workers have a lower threshold."},
+    {tone:"red", h:"⚠ Sudden hearing loss first", html:"Sudden hearing loss that developed over <b>3 days or less within the last 30 days</b>, not explained by wax, otitis externa or middle-ear disease → <b>immediate referral, seen within 24 hours</b> (NICE NG98). Do not call it a Ménière's attack until sudden SNHL is excluded; steroid treatment is time-sensitive and follows the local ENT pathway. <b>Do not wait for formal audiometry before referral.</b> Sudden hearing loss with vertigo may be SSNHL, posterior-circulation (e.g. AICA) ischaemia, labyrinthine infarction, Ménière's, or autoimmune or infectious inner-ear disease — a Ménière's label must not delay the urgent SSNHL pathway."},
+    {tone:"amber", h:"The pattern", html:"<b>Probable:</b> 2 or more spontaneous episodes of 20 minutes to 24 hours, with fluctuating hearing, tinnitus or aural fullness, and no better diagnosis. <b>Definite:</b> episodes of 20 minutes to 12 hours plus audiometrically documented low- to mid-frequency SNHL in the affected ear. Not positional, not seconds, not days. These Bárány Society criteria support specialist classification — they are not a primary-care confirmation or rule-out tool."},
+    {tone:"blue", h:"Audiometry is the test; MRI by criteria", html:"Audiometry — air and bone conduction, speech discrimination, tympanometry where relevant, both ears compared. Early disease may be non-diagnostic, so serial audiometry may be needed. MRI internal auditory meati: offer for localising neurological or otological signs (e.g. facial weakness); consider for SNHL asymmetry of 15 dB or more at 2 adjacent frequencies (NICE NG98) or unilateral/asymmetric non-pulsatile tinnitus (NICE NG155), via the local pathway. A normal IAM MRI does not exclude all central causes of vertigo — acute stroke assessment is clinical and pathway-based."},
+    {tone:"green", h:"Two arms of treatment", html:"<b>Acute:</b> a short course of one antiemetic or vestibular suppressant for severe vertigo and nausea during an attack — not continued between attacks. <b>Maintenance:</b> after ENT or audiovestibular assessment, a time-limited trial of betahistine may be considered in selected patients — evidence of benefit is uncertain; review after an agreed period and stop if ineffective. Diuretics are specialist-led, not routine primary-care treatment."},
+    {tone:"purple", h:"DVLA — driving", html:"If vertigo attacks are sudden, unprovoked and disabling, or occur without enough warning to allow safe evasive action, the patient <b>must stop driving and notify the DVLA</b>. Group 2 standards are substantially stricter — confirm the current DVLA requirements and document the advice. Driving instructors, HGV/PSV drivers, pilots, workers at height and other safety-critical workers should stop safety-critical activity immediately pending assessment. The patient holds the legal duty to notify; if they refuse and there is a significant road-safety risk, GMC confidentiality guidance allows disclosure to the DVLA to be considered."},
     {tone:"plain", h:"The course is variable", html:"Vertigo may become less frequent over time, but hearing loss, tinnitus and imbalance can persist or progress. Keep up audiological and specialist follow-up rather than treating 'burn-out' as cure."}
   ],
   pathwaySub:"The whole consultation in five moves.",
   pathway:[
-    {title:"Exclude the dangerous", html:"Sudden SNHL (NG98 time windows), central signs, Ramsay Hunt, bacterial labyrinthitis or cholesteatoma, cardiac and pre-syncopal causes, ototoxic drugs.", alert:true},
-    {title:"Match the pattern", html:"Spontaneous episodes of 20 minutes to 12 or 24 hours with fluctuating aural symptoms; screen out vestibular migraine — the commonest mimic."},
-    {title:"Assess and refer", html:"Otoscopy and tuning forks; ENT or audiovestibular referral for audiometry and imaging by criteria. Do not delay urgent referral for formal audiometry."},
-    {title:"Treat both arms", html:"A limited suppressant course for attacks; lifestyle measures that may help; time-limited maintenance trial after specialist assessment; vestibular rehabilitation between attacks; hearing support."},
-    {title:"Counsel and review", html:"Driving and occupational safety, mood, the Ménière's Society; review maintenance at 3–6 months; reassess if the pattern changes."}
+    {title:"Exclude the dangerous", html:"Sudden SNHL (NG98 time windows), central signs (NICE NG127), Ramsay Hunt, bacterial labyrinthitis or cholesteatoma, cardiac and pre-syncopal causes, ototoxic drugs.", alert:true},
+    {title:"Match the pattern", html:"Spontaneous episodes of 20 minutes to 12 or 24 hours with fluctuating aural symptoms; consider vestibular migraine as a co-equal differential — it can mimic or coexist with Ménière's."},
+    {title:"Assess and refer", html:"Otoscopy (wax, otitis externa, otitis media, perforation); tuning forks if competent; cranial nerves, gait, cerebellar signs, nystagmus and cardiovascular status; ENT or audiovestibular referral for audiometry and imaging by criteria. Do not delay urgent referral for formal audiometry."},
+    {title:"Treat both arms", html:"A short course of one suppressant or antiemetic for severe attacks only — no continuous prochlorperazine or cinnarizine; lifestyle measures that may help; time-limited maintenance trial after specialist assessment; vestibular rehabilitation between attacks; hearing support."},
+    {title:"Counsel and review", html:"Driving and occupational safety, mood, the Ménière's Society; review maintenance at the agreed review point; reassess if the pattern changes."}
   ],
   sections:[
 
@@ -59,41 +60,45 @@ MG.render({
          ["<b>With vertigo and focal neurological signs or new unsteadiness</b>","Emergency stroke pathway"]
        ]},
        {b:"dl", rows:[
-         ["<b>Central vertigo / stroke</b>","Atypical, vertical or direction-changing nystagmus, persistent severe ataxia, new neurological deficit, severe headache or neck pain → urgent stroke assessment. During a Ménière's attack nystagmus is usually horizontal and peripheral-appearing. <b>HINTS is for continuous acute vestibular syndrome</b>, not episodic Ménière's attacks or positional vertigo, and only by a trained, experienced clinician"],
+         ["<b>Central vertigo / stroke (NICE NG127)</b>","Vertical or direction-changing nystagmus, new neurological symptoms, persistent severe ataxia, diplopia, new unilateral hearing loss, severe headache or neck pain → immediate stroke-pathway assessment. During a Ménière's attack nystagmus is usually horizontal, but do not reassure from peripheral-looking nystagmus alone. <b>HINTS is only for sudden-onset acute vestibular syndrome</b> (continuous vertigo, nausea or vomiting and gait unsteadiness) and only if performed by a clinician trained and experienced in the test — not for episodic Ménière's attacks, BPPV or intermittent dizziness"],
          ["<b>Ramsay Hunt</b>","Vertigo with ear pain and vesicles ± facial palsy → same-day assessment"],
          ["<b>Bacterial labyrinthitis / cholesteatoma</b>","Otalgia, discharge, systemic upset, attic crust → urgent ENT"],
          ["<b>Cardiac and drug causes</b>","Pre-syncope or arrhythmia; ototoxic drugs (aminoglycosides, loop diuretics, cisplatin). Lying and standing BP and pulse"],
-         ["<b>Cancer</b>","Ménière's and vestibular schwannoma follow the ENT/audiovestibular pathway, not NG12. Apply NICE NG12 only if separate head-and-neck cancer features are present"]
+         ["<b>Cancer</b>","Do not use a suspected-cancer pathway simply because vestibular schwannoma is being considered — follow the ENT/audiovestibular MRI pathway. Apply NICE NG12 separately if there are independent head-and-neck cancer features"]
        ]}
      ]},
 
     {id:"confirm", nav:"Confirm", title:"The attack pattern and the criteria",
      blocks:[
-       {b:"table", head:["Diagnosis","Practical criteria"], rows:[
+       {b:"table", head:["Diagnosis","Bárány Society classification criteria (specialist)"], rows:[
          ["<b>Probable Ménière's disease</b>","2 or more spontaneous episodes of vertigo or dizziness lasting 20 minutes to 24 hours, with fluctuating hearing loss, tinnitus or aural pressure in the affected ear, and no better diagnosis"],
          ["<b>Definite Ménière's disease</b>","2 or more spontaneous episodes lasting 20 minutes to 12 hours, with audiometrically documented low- to mid-frequency SNHL in the affected ear and fluctuating aural symptoms, and no better diagnosis"]
        ]},
        {b:"dl", rows:[
          ["Associated features","Nausea and vomiting; imbalance for hours to days afterwards; sudden falls without loss of consciousness in some (see Tumarkin attacks)"],
-         ["<b>Vestibular migraine</b>","The commonest mimic — migrainous features, photophobia, headache history, variable duration. Treating the migraine often transforms the symptom burden"],
+         ["<b>Vestibular migraine</b>","A co-equal differential. It may occur without headache during the attack and may coexist with Ménière's disease. Photophobia, phonophobia, visual aura, migraine history and variable episode duration support it but are not essential in every attack. Recurrent vertigo with fluctuating auditory symptoms still needs audiometry and ENT/audiovestibular assessment"],
          ["BPPV","Brief (seconds), positional, no hearing loss"],
-         ["Vestibular neuritis","A single prolonged episode over days, no hearing loss"]
+         ["Vestibular neuritis","A single prolonged episode over days, no hearing loss"],
+         ["Persistent postural-perceptual dizziness","Chronic non-spinning dizziness, worse upright, with motion or busy visual environments"],
+         ["Vestibular schwannoma","Asymmetric SNHL or unilateral tinnitus — MRI by criteria"],
+         ["Superior semicircular canal dehiscence","Sound- or pressure-induced vertigo, autophony"],
+         ["Cardiac syncope and medication-related dizziness","Pre-syncope, palpitations, exertional symptoms; review medicines"]
        ]},
        {b:"table", head:["Examination","Expected in Ménière's","What it excludes"], rows:[
          ["Otoscopy","Normal","Middle-ear disease, cholesteatoma"],
          ["Tuning forks","Weber to the better ear; Rinne positive","Conductive loss"],
-         ["Nystagmus","Horizontal during an attack","Vertical or direction-changing → reconsider"],
+         ["Nystagmus","Horizontal during an attack","Vertical or direction-changing → immediate stroke-pathway assessment"],
          ["Cranial nerves and cerebellar","Normal between attacks","Central pathology"],
          ["Cardiovascular","Lying and standing BP, pulse","Orthostatic and arrhythmic causes"]
        ]},
-       {b:"why", html:"Between attacks the examination is usually normal, so a normal examination does not exclude the diagnosis. Routine vestibular testing and electrocochleography are not required to establish it."}
+       {b:"why", html:"Ménière's disease is diagnosed clinically using the attack pattern, fluctuating aural symptoms, audiometry and exclusion of alternative diagnoses. The Bárány Society criteria support diagnostic classification but do not replace clinical judgement or specialist assessment — do not confirm Ménière's in primary care from symptom duration alone. Between attacks the examination is usually normal, so a normal examination does not exclude the diagnosis. Routine vestibular testing and electrocochleography are not required to establish it."}
      ]},
 
     {id:"workup", nav:"Tests", title:"Audiometry and imaging",
      blocks:[
        {b:"table", head:["Test","Role","Notes"], rows:[
          ["<b>Audiometry</b>","Documents the low- to mid-frequency SNHL and its fluctuation","Air and bone conduction, speech discrimination, tympanometry where relevant, both ears compared. Early disease may need serial audiometry"],
-         ["<b>MRI internal auditory meati</b>","Excludes vestibular schwannoma and central pathology","For localising neurological or otological signs; consider for asymmetry of 15 dB or more at two adjacent frequencies (NICE NG98); consider for persistent unilateral non-pulsatile tinnitus (NICE NG155) — per the local imaging pathway"],
+         ["<b>MRI internal auditory meati</b>","Assesses vestibular schwannoma and cerebellopontine-angle/otological pathology. It does not exclude all central causes and does not replace urgent clinical assessment for posterior-circulation stroke","Offer for localising neurological or otological signs such as facial weakness; consider for SNHL asymmetry of 15 dB or more at 2 adjacent frequencies (NICE NG98). Tinnitus (NICE NG155): with neurological, otological or head-and-neck signs → offer MRI; unilateral or asymmetric non-pulsatile without signs → consider MRI; symmetrical non-pulsatile without signs → do not routinely image; pulsatile → separate vascular-imaging pathway. Per the local imaging pathway"],
          ["<b>Bloods</b>","Only if indicated","Targeted autoimmune investigation for bilateral or rapidly progressive SNHL, systemic autoimmune features, atypical presentation, recurrent sudden loss or other organ involvement"],
          ["<b>Specialist vestibular tests</b>","ENT or audiovestibular-led","Not needed to make the diagnosis"]
        ]}
@@ -102,8 +107,8 @@ MG.render({
     {id:"lifestyle", nav:"Lifestyle", title:"Lifestyle measures — may help some patients",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"green", h:"🧂 Consistent, moderate salt", html:"A consistent, moderate sodium intake, regular meals and hydration may help some people. Evidence is limited — avoid rigid targets, and take care with heart failure, renal disease and hypertension."},
-         {tone:"green", h:"☕ Triggers", html:"Consider reducing caffeine and alcohol if they clearly trigger attacks. Stop smoking."},
+         {tone:"green", h:"🧂 Consistent salt intake", html:"Encourage regular meals, adequate hydration and a consistent — not necessarily low — salt intake. Evidence is limited — avoid rigid dietary restriction or unproven targets, and take care with heart failure, renal disease and hypertension."},
+         {tone:"green", h:"☕ Triggers", html:"Consider reducing caffeine or alcohol if the patient identifies them as triggers. Stopping smoking is generally beneficial. A trigger diary can be useful but should not become burdensome. Lifestyle measures do not replace specialist treatment."},
          {tone:"blue", h:"🧍 Vestibular rehabilitation", html:"For chronic imbalance between attacks — not for acute attacks."},
          {tone:"blue", h:"🦻 Hearing support", html:"Audiology follow-up, hearing aids as needed, tinnitus management; cochlear implant in selected severe cases."},
          {tone:"amber", h:"🪜 Practical safety", html:"Avoid heights, ladders and swimming alone during active disease; plan for a sudden attack."},
@@ -115,16 +120,16 @@ MG.render({
      blocks:[
        {b:"ladder", steps:[
          {step:"Acute", title:"Limited vestibular suppressant or antiemetic", when:"the attack only",
-          html:"<b>Prochlorperazine 5 mg PO TDS</b>, or buccal 3–6 mg BD, or an antihistamine — <b><span class='rx'>cyclizine 50 mg TDS</span></b> or <b><span class='rx'>cinnarizine 30 mg TDS</span></b>. Buccal or parenteral routes if oral treatment cannot be retained. Do not continue between attacks. Check sedation, falls and extrapyramidal effects, especially in older people; severe vomiting or dehydration may need hospital care."},
+          html:"<b>Prochlorperazine 5 mg PO TDS</b>, or buccal 3–6 mg BD, or an antihistamine — <b><span class='rx'>cyclizine 50 mg TDS</span></b> or <b><span class='rx'>cinnarizine 30 mg TDS</span></b>. Check doses against the current SPC and local formulary. Use one principal antiemetic or vestibular suppressant initially and review if symptoms are not controlled — do not stack sedating medicines or give them as an automatic combination. Avoid routine continuation between attacks: sedation, falls and impaired vestibular compensation may worsen persistent imbalance. Cautions: older adults; Parkinson's disease or extrapyramidal symptoms (prochlorperazine); glaucoma and urinary retention; QT-prolonging medicines; sedation and falls; driving and safety-critical work. Severe vomiting, dehydration, inability to mobilise or inability to retain oral treatment → acute medical assessment."},
          {step:"Maintenance", title:"Time-limited trial after specialist assessment", when:"recurrent attacks",
           fromLabel:"evidence limited",
-          html:"After ENT or audiovestibular assessment, consider a time-limited trial of <b>betahistine</b> (commonly 16 mg TDS) — explain that evidence of benefit is limited. Review attack frequency, severity and patient-reported benefit at <b>3–6 months</b>; stop if ineffective. Cautions: <b>asthma, peptic ulcer disease, phaeochromocytoma</b>; GI side effects. Betahistine is not a treatment for tinnitus alone (NICE NG155)."},
+          html:"After ENT or audiovestibular assessment, a time-limited trial of <b>betahistine</b> may be considered in selected patients (dose per specialist or local plan, commonly 16 mg TDS) — explain that evidence of benefit is uncertain. Review attack frequency, severity, hearing and patient-reported benefit after an <b>agreed period</b>; stop if ineffective. <b>Contraindicated in phaeochromocytoma</b>; caution in <b>asthma</b> and <b>active or previous peptic ulcer disease</b>; GI adverse effects; consider interactions with antihistamines and monoamine oxidase inhibitors. Do not offer betahistine for tinnitus alone (NICE NG155)."},
          {step:"Specialist", title:"Diuretic in selected patients", when:"specialist-led or locally agreed",
           fromLabel:"not routine initiation",
-          html:"ENT or audiovestibular services may consider a diuretic in selected patients. Do not start routinely without the local pathway, and check renal function, electrolytes, blood pressure, gout, hyponatraemia risk and other diuretics or antihypertensives."},
+          html:"Diuretics are not a routine primary-care treatment for Ménière's disease, and there is insufficient evidence to present them as standard disease-modifying treatment. ENT or audiovestibular services may consider a trial in selected patients; check renal function, electrolytes, blood pressure, gout, hyponatraemia risk and other diuretics or antihypertensives."},
          {step:"Refractory", title:"ENT procedures", when:"disabling despite the above",
-          fromLabel:"escalate in order",
-          html:"Intratympanic steroid for active disease not responding to non-invasive treatment → intratympanic gentamicin after counselling about hearing and vestibular risk → surgery in selected severe refractory disease (labyrinthectomy usually only with non-usable hearing). Endolymphatic sac surgery is not an established standard equivalent to these."}
+          fromLabel:"specialist choice",
+          html:"Disabling disease despite an adequate specialist-managed treatment trial → ENT/neuro-otology service. Intratympanic steroids, intratympanic gentamicin and surgery (labyrinthectomy usually only with non-usable hearing) have different hearing and vestibular risks; the choice is specialist-led, requires informed consent, and depends on unilateral versus bilateral disease, hearing status, vestibular reserve, drop attacks, occupation, patient preference, risk of bilateral vestibular failure and tinnitus and hearing disability. Gentamicin is not an automatic next step. Endolymphatic sac surgery is not an established standard equivalent to these."}
        ]},
        {b:"warn", html:"<b>Do not continue vestibular suppressants between attacks</b> — they impair central compensation and leave patients unsteady. Long-running repeat prescriptions of prochlorperazine or cinnarizine are a common avoidable harm."}
      ]},
@@ -134,32 +139,32 @@ MG.render({
        {b:"table", head:["What","When","Action"], rows:[
          ["Attack frequency and severity","Each review","Refer if disabling"],
          ["Hearing — serial audiometry","Via ENT or audiology","Track change; hearing support as needed"],
-         ["<b>Maintenance benefit</b>","<b>At 3–6 months</b>","Continue only if helping — not on repeat by default"],
+         ["<b>Maintenance benefit</b>","<b>At the agreed review point</b>","Continue only if helping — not on repeat by default"],
          ["<b>The diagnosis</b>","If features change","New asymmetry or progression → imaging per criteria; central signs → urgent reassessment"],
          ["Mood","Each review","Screen and treat anxiety and depression"],
          ["Driving and occupation","Each review","Reinforce and document the advice"]
        ]},
        {b:"cards", items:[
-         {tone:"amber", h:"⚠ Sudden falls without warning", html:"Falls without loss of consciousness may be otolithic crises (Tumarkin attacks) — urgent specialist assessment, immediate safety precautions and no driving until assessed. But also consider syncope, arrhythmia, seizure, vertebrobasilar ischaemia and mechanical falls; not every unexplained fall in Ménière's is a Tumarkin attack."},
+         {tone:"amber", h:"⚠ Sudden falls without warning", html:"A sudden fall without loss of consciousness may be a Tumarkin otolithic crisis, but the diagnosis is specialist-led — arrange urgent specialist assessment. Until assessed, the patient should not drive, swim alone, climb ladders or work at height. But also consider syncope, arrhythmia, seizure, vertebrobasilar ischaemia and mechanical falls; not every unexplained fall in Ménière's is a Tumarkin attack."},
          {tone:"blue", h:"Bilateral disease", html:"Can develop over time; consider targeted autoimmune investigation where the features suggest it."}
        ]},
        {b:"cards", items:[
          {tone:"red", h:"🔴 Central red flags", html:"“Sudden severe headache, double vision, slurred speech, weakness, or unsteadiness that stays rather than coming in attacks — call 999.”"},
          {tone:"red", h:"👂 Sudden hearing drop", html:"“A sudden drop in hearing — contact us the same day. It needs to be seen within 24 hours.”"},
-         {tone:"purple", h:"🚗 Driving", html:"“Don't drive while attacks can come on suddenly without warning. Check the DVLA rules — you may need to tell them.”"},
+         {tone:"purple", h:"🚗 Driving", html:"“If attacks can come on suddenly without warning, you must stop driving and tell the DVLA. If you drive or work in a safety-critical job, stop that work until you have been assessed.”"},
          {tone:"blue", h:"💊 Tablets for attacks only", html:"“The anti-sickness tablets are for attacks only — taking them all the time keeps you unsteady.”"}
        ]},
-       {b:"say", html:"There are two jobs. When an attack hits, the tablets settle the spinning and sickness — but only for those days, because taking them all the time stops your balance system recovering. The other is reducing how often attacks come: some people find steady salt intake and cutting caffeine helps, and the specialist may suggest a trial of a regular medicine that we'll review honestly after a few months. Please don't drive while attacks can come on without warning."}
+       {b:"say", html:"There are two jobs. When an attack hits, the tablets settle the spinning and sickness — but only for those days, because taking them all the time stops your balance system recovering. The other is reducing how often attacks come: some people find steady salt intake and cutting caffeine helps, and the specialist may suggest a trial of a regular medicine that we'll review honestly after a few months. Please don't drive while attacks can come on without warning — and in that case you need to tell the DVLA."}
      ]},
 
     {id:"loop", nav:"Not responding?", title:"Attacks not controlled? Check these before calling it refractory",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"blue", h:"1 · Is it Ménière's?", html:"Reconsider vestibular migraine, BPPV and vestibular schwannoma if loss is asymmetric."},
+         {tone:"blue", h:"1 · Is it Ménière's?", html:"Reconsider vestibular migraine, BPPV, persistent postural-perceptual dizziness, superior canal dehiscence, and vestibular schwannoma if loss is asymmetric."},
          {tone:"amber", h:"2 · Audiometry done?", html:"Definite disease needs documented SNHL; early disease may need serial testing."},
-         {tone:"amber", h:"3 · Adequate, reviewed trial?", html:"A time-limited maintenance trial, genuinely reviewed at 3–6 months."},
+         {tone:"amber", h:"3 · Adequate, reviewed trial?", html:"A time-limited, specialist-agreed maintenance trial, genuinely reviewed at the agreed point."},
          {tone:"red", h:"4 · Suppressants still running?", html:"Stop continuous prochlorperazine or cinnarizine and add vestibular rehabilitation."},
-         {tone:"blue", h:"5 · Genuinely refractory", html:"Disabling attacks despite optimised treatment, or drop attacks → ENT for intratympanic or surgical options."}
+         {tone:"blue", h:"5 · Genuinely refractory", html:"Disabling attacks despite an adequate specialist-managed trial, or drop attacks → ENT/neuro-otology for specialist-led intratympanic or surgical options, with informed consent."}
        ]}
      ]},
 
@@ -167,7 +172,7 @@ MG.render({
      blocks:[
        {b:"cards", items:[
          {tone:"red", h:"Seen within 24 hours", html:"Sudden hearing loss over 3 days or less within the past 30 days (NICE NG98); Ramsay Hunt; suspected cholesteatoma or bacterial labyrinthitis."},
-         {tone:"red", h:"999 / stroke pathway", html:"Central signs — atypical nystagmus, focal neurology, severe ataxia, diplopia, severe headache or neck pain."},
+         {tone:"red", h:"999 / stroke pathway", html:"Central signs (NICE NG127) — vertical or direction-changing nystagmus, focal neurology, severe ataxia, diplopia, new unilateral hearing loss with vertigo, severe headache or neck pain."},
          {tone:"amber", h:"ENT / audiovestibular", html:"All suspected cases — audiometry, imaging by criteria, diagnosis, maintenance decisions and refractory disease."},
          {tone:"plain", h:"Neurology", html:"Suspected vestibular migraine or another central cause."},
          {tone:"plain", h:"Vestibular physiotherapy", html:"Chronic imbalance between attacks."},
@@ -179,23 +184,25 @@ MG.render({
     {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
      blocks:[{b:"cards", cols:2, items:[
        {tone:"cream", h:"Classic scenario", html:"A 46-year-old woman with three episodes over two months of violent spinning lasting <b>about an hour</b>, each with a blocked feeling and roaring in the left ear. She is a driving instructor and has not mentioned the attacks to anyone at work."},
-       {tone:"cream", h:"Examiner-style checkpoints", html:"Establishes attack duration and spontaneity; asks about hearing, tinnitus and fullness; excludes sudden SNHL (NG98 windows) and central features; considers vestibular migraine; refers for audiometry and ENT assessment; treats attacks with a limited suppressant course; discusses maintenance as a time-limited, evidence-limited trial; and gives individualised, documented driving advice given her occupation."}
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Establishes attack duration and spontaneity; asks about hearing, tinnitus and fullness; excludes sudden SNHL (NG98 windows) and central features; considers vestibular migraine; refers for audiometry and ENT assessment; treats attacks with a limited suppressant course; discusses maintenance as a time-limited, evidence-limited trial; and advises that, while attacks are sudden and disabling, she must stop driving (including instructing) and notify the DVLA — documenting the advice and knowing the duty to notify is hers."}
      ]}]},
 
     {id:"provenance", nav:"Provenance", title:"Evidence", sub:"Every figure on this page is traceable to a named source.",
      blocks:[
        {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
-         '<li><b>NICE NG98 — Hearing loss in adults: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng98" rel="noopener">nice.org.uk/guidance/ng98</a><span class="rd"> — sudden hearing-loss windows; MRI for asymmetry and localising signs</span></li>'+
-         '<li><b>NICE NG155 — Tinnitus: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng155" rel="noopener">nice.org.uk/guidance/ng155</a><span class="rd"> — MRI for persistent unilateral tinnitus; no betahistine for tinnitus alone</span></li>'+
+         '<li><b>NICE NG98 — Hearing loss in adults: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng98" rel="noopener">nice.org.uk/guidance/ng98</a><span class="rd"> — sudden hearing-loss windows; offer MRI for localising signs, consider for asymmetry of 15 dB or more at 2 adjacent frequencies</span></li>'+
+         '<li><b>NICE NG127 — Suspected neurological conditions: recognition and referral</b><br><a href="https://www.nice.org.uk/guidance/ng127" rel="noopener">nice.org.uk/guidance/ng127</a><span class="rd"> — central vertigo red flags; HINTS only for acute vestibular syndrome by trained clinicians</span></li>'+
+         '<li><b>NICE NG155 — Tinnitus: assessment and management</b><br><a href="https://www.nice.org.uk/guidance/ng155" rel="noopener">nice.org.uk/guidance/ng155</a><span class="rd"> — offer, consider or do not routinely image by tinnitus type; pulsatile tinnitus pathway; no betahistine for tinnitus alone</span></li>'+
          '<li><b>AAO-HNS — Clinical Practice Guideline: Ménière\'s disease (2020)</b><span class="rd"> — probable and definite criteria; audiogram; limited suppressant use; betahistine and diuretic evidence; intratympanic and surgical options; vestibular rehabilitation</span></li>'+
          '<li><b>Bárány Society — diagnostic criteria for Ménière\'s disease</b><br><a href="https://www.jvr-web.org/ICVD.html" rel="noopener">jvr-web.org/ICVD.html</a><span class="rd"> — classification</span></li>'+
          '<li><b>ENT UK — management of suspected sudden sensorineural hearing loss (2020)</b><span class="rd"> — urgent assessment and audiometry</span></li>'+
-         '<li><b>DVLA — dizziness or vertigo and driving</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — sudden, disabling or recurrent dizziness; Group 2 standards</span></li>'+
-         '<li><b>BNF · MHRA SPCs</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — prochlorperazine, cyclizine, cinnarizine, betahistine</span></li>'+
+         '<li><b>DVLA — dizziness or vertigo and driving</b><br><a href="https://www.gov.uk/guidance/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — Neurological disorders: recurrent sudden disabling vertigo — stop driving and notify; Group 2 standards</span></li>'+
+         '<li><b>GMC — Confidentiality: patients\' fitness to drive and reporting concerns to the DVLA</b><br><a href="https://www.gmc-uk.org/professional-standards" rel="noopener">gmc-uk.org</a><span class="rd"> — disclosure when a patient will not notify and there is significant risk</span></li>'+
+         '<li><b>BNF · MHRA SPCs</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — prochlorperazine, cyclizine, cinnarizine and betahistine doses, cautions, contraindications and interactions</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Ménière's disease — NICE NG98 and NG155, AAO-HNS 2020, Bárány Society criteria, ENT UK and DVLA. Sudden hearing loss over 3 days or less within 30 days: seen within 24 hours. Probable versus definite disease; audiometry central; MRI by NICE criteria. Limited suppressant courses for attacks only; betahistine or a diuretic as a time-limited, evidence-limited trial after specialist assessment. Individualised, documented driving advice. Verify all doses against the current BNF."
+  foot:"Ménière's disease — NICE NG98 and NG155, AAO-HNS 2020, Bárány Society criteria, ENT UK and DVLA. Sudden hearing loss over 3 days or less within 30 days: seen within 24 hours. Probable versus definite disease; audiometry central; MRI by NICE criteria. A short course of one suppressant for severe attacks only; betahistine as a time-limited, evidence-limited trial after specialist assessment; diuretics specialist-led. HINTS only for acute vestibular syndrome (NICE NG127); a normal IAM MRI does not exclude central causes. Sudden disabling vertigo: stop driving and notify the DVLA; document the advice. Verify all doses against the current BNF."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>
