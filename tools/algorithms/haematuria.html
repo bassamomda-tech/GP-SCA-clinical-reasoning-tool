@@ -114,7 +114,7 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
   <div class="chart">
   <div class="flow">
 
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Haematuria</span><div class="body"><b>Visible (frank)</b> vs <b>non-visible</b> (dip/microscopy). Pain, LUTS, clots, anticoagulation, smoking (bladder-cancer risk), occupational dyes. Confirm; <b>MSU to exclude UTI</b>; U&amp;E, ACR. Exclude menstruation / exercise / myoglobin.</div></div>
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Haematuria</span><div class="body"><b>Visible (frank)</b> vs <b>non-visible</b> (dipstick). Pain, LUTS, clots, anticoagulation, smoking (bladder-cancer risk), occupational dyes. Confirm; <b>MSU if infection suspected</b>; U&amp;E, ACR. Exclude menstruation / exercise / myoglobin.</div></div>
     <div class="arrow"></div>
 
     <!-- STEP 1 — SAFETY -->
@@ -179,19 +179,19 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
     <div class="node-body">
       <span>Haematuria can represent emergency, urgent cancer, or benign pathology. Triage immediately.</span>
       <div class="rfgrid">
-        <div class="rftile"><b>Haemodynamic instability</b> Tachycardia, hypotension, pallor with heavy visible haematuria → 999 (massive haemorrhage, clot retention)</div>
-        <div class="rftile"><b>Clot retention / acute urinary retention</b> Unable to pass urine + visible haematuria + bladder distension → 999 (catheterisation needed urgently)</div>
-        <div class="rftile"><b>Visible haematuria (frank) in ≥45y</b> Unexplained (no UTI), or persisting/recurring after a treated UTI — even a single episode, pain-free or painful → <b>urology suspected cancer pathway referral</b> (NICE NG12 (updated April 2026) — bladder/renal cancer until proven otherwise)</div>
+        <div class="rftile"><b>Haemodynamic instability</b> Tachycardia, hypotension, pallor with heavy visible haematuria → 999 (massive haemorrhage)</div>
+        <div class="rftile"><b>Clot retention / acute urinary retention</b> Visible haematuria with inability to pass urine, bladder distension or suspected clot retention → immediate same-day emergency/urology assessment. 999 if unstable, collapsing or major ongoing haemorrhage</div>
+        <div class="rftile"><b>Visible haematuria (frank) in ≥45y</b> Unexplained (no UTI), or persisting/recurring after a treated UTI → <b>urology suspected cancer pathway referral</b> (NICE NG12, updated April 2026). Do not delay referral when malignancy is clinically suspected.</div>
         <div class="rftile"><b>Flank pain + haematuria + fever</b> Rigors, high fever, unwell → same-day ED (urosepsis from obstructing stone or pyelonephritis)</div>
         <div class="rftile"><b>NVH + age ≥60 with dysuria or raised blood WCC</b> Unexplained non-visible haematuria with dysuria or a raised white cell count on a blood test → urology suspected cancer pathway referral (NICE NG12; bladder cancer can mimic UTI)</div>
         <div class="rftile"><b>Weight loss + haematuria + loin mass</b> Constitutional symptoms, palpable renal mass → urology suspected cancer pathway referral (renal cell carcinoma)</div>
-        <div class="rftile"><b>Anticoagulation + visible haematuria</b> Never attribute VH solely to anticoagulation — cancer co-exists in &gt;10%. Investigate as per normal pathway.</div>
+        <div class="rftile"><b>Anticoagulation + visible haematuria</b> Never attribute VH solely to anticoagulation or antiplatelets. Investigate using the same clinical pathway.</div>
         <div class="rftile"><b>Post-traumatic haematuria</b> Any trauma mechanism + haematuria → same-day/999 for imaging (renal laceration, urethral injury)</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">NICE NG12 recommends a urology suspected cancer pathway referral for visible haematuria in adults ≥45y and NVH in adults ≥60y with dysuria or a raised blood white cell count. Bladder cancer has a 5-year survival of 77% if caught at stage 1 vs 15% at stage 4. In patients with visible haematuria, 20% will have a urological malignancy identified. Anticoagulants do NOT cause haematuria by themselves — a structural cause is found in 10-25% of anticoagulated patients with VH and must be excluded.</div>
+      <div class="why-drawer">NICE NG12 recommends a urology suspected cancer pathway referral for visible haematuria in adults ≥45y and NVH in adults ≥60y with dysuria or a raised blood white cell count. Earlier-stage diagnosis improves bladder cancer outcomes. Anticoagulation does not remove the need for investigation — an underlying cause must still be excluded.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -207,17 +207,17 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
     <div class="node-body">
       <span>Establish the type — this determines the entire pathway and urgency of referral.</span>
       <div class="kv">
-        <div>Visible haematuria (VH)</div><div>Patient can see blood in urine. Also called gross / frank haematuria. <b>Always requires investigation</b> regardless of age (NICE NG12: suspected cancer pathway referral if ≥45y)</div>
+        <div>Visible haematuria (VH)</div><div>Patient can see blood in urine. Also called gross / frank haematuria. <b>Should always be clinically explained.</b> Aged ≥45: unexplained VH, or VH persisting/recurring after successful UTI treatment → suspected cancer pathway (NICE NG12). Younger adults: urological or renal assessment according to symptoms, risk factors and examination findings.</div>
         <div>Non-visible haematuria (NVH)</div><div>Detected on dipstick or MSU only. Previously called microscopic haematuria. Threshold: <b>≥1+ blood on dipstick</b> (confirmed on 2 out of 3 samples)</div>
-        <div>Dipstick interpretation</div><div>Myoglobinuria and haemoglobinuria give false positives. Confirm NVH with <b>urine microscopy (MSU)</b> if dipstick positive. RBC ≥3/HPF on microscopy = significant</div>
-        <div>Exclude contaminants</div><div>Menstruation (repeat post-period), beetroot/rifampicin ingestion (pink urine, dipstick negative), vigorous exercise (resolves 24-48h), urethral trauma (catheterisation)</div>
+        <div>Dipstick interpretation</div><div>Use a fresh reagent strip; investigate ≥1+ blood. Myoglobinuria and haemoglobinuria give false positives. <b>Routine microscopy is not required</b> to confirm dipstick haematuria (NICE NG203) — send microscopy when a renal cause is suspected (dysmorphic red cells, casts), per local laboratory arrangements.</div>
+        <div>Exclude contaminants</div><div>Menstruation (repeat post-period), beetroot/rifampicin ingestion (pink urine, dipstick negative), vigorous exercise (repeat urinalysis after stopping strenuous exercise), urethral trauma (catheterisation)</div>
         <div>Symptomatic vs asymptomatic</div><div>Symptomatic (with LUTS, pain, fever) = likely infection/stone first. Asymptomatic = higher cancer risk. Both require investigation if confirmed.</div>
-        <div>Transient vs persistent</div><div>Single dipstick finding after UTI — treat UTI then re-check dipstick 4-6 weeks post-treatment. Persistent NVH = 2 positive samples → investigate</div>
+        <div>Transient vs persistent</div><div>Treat confirmed UTI, then repeat the dipstick after treatment. With no UTI or transient explanation, 2 of 3 positive reagent-strip tests = persistent NVH → assess. Do not delay investigation when clinical concern is high simply because antibiotics have been prescribed.</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">NVH is present in 2-3% of the general population. Persistent NVH (2+ positive dipstick samples) has a malignancy rate of ~2-3%. A single positive dipstick following a UTI does not require investigation until 4-6 weeks post-treatment — UTI can cause NVH that resolves. NICE NG12 thresholds are based on cancer risk modelling: VH in ≥45y or NVH + dysuria/raised blood white cell count in ≥60y warrants urgent urology referral.</div>
+      <div class="why-drawer">NVH is present in 2-3% of the general population. Persistent NVH is defined as 2 of 3 positive dipstick samples. UTI can cause NVH that resolves — repeat the dipstick after treatment, but do not delay investigation if clinical concern is high. NICE NG12 thresholds are based on cancer risk modelling: VH in ≥45y or NVH + dysuria/raised blood white cell count in ≥60y warrants urgent urology referral.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -237,7 +237,7 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
         <div>Associated LUTS</div><div>Frequency, urgency, nocturia, poor flow, hesitancy → prostate (BPH/cancer), bladder pathology</div>
         <div>Pain features</div><div>Loin-to-groin colicky pain → ureteric calculus. Dull loin ache → renal tumour, pyelonephritis. Suprapubic pain → cystitis, bladder tumour</div>
         <div>Occupational / exposure</div><div><b>Aniline dyes, aromatic amines</b> (leather, printing, rubber industries) → <b>bladder cancer risk</b>. Cyclophosphamide, pioglitazone, phenacetin</div>
-        <div>Smoking history</div><div>Smoking × 2-6 relative risk of bladder cancer. Pack years. Current/ex. Biggest modifiable risk factor for transitional cell carcinoma.</div>
+        <div>Smoking history</div><div>Smoking substantially increases bladder cancer risk. Pack years. Current/ex. Biggest modifiable risk factor for transitional cell carcinoma.</div>
         <div>Systemic features</div><div>Joint pains, rash, oedema, hypertension, recent sore throat/skin infection → glomerulonephritis (IgA nephropathy, post-strep GN, vasculitis)</div>
         <div>Family history</div><div>Polycystic kidney disease (flank pain, hypertension, palpable kidneys), Alport syndrome, von Hippel-Lindau (renal tumours)</div>
         <div>Drugs</div><div>Anticoagulants (warfarin, DOACs), antiplatelets (aspirin, clopidogrel). NSAIDs (papillary necrosis if chronic). Cyclophosphamide (haemorrhagic cystitis)</div>
@@ -245,7 +245,7 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">Occupational exposure to aniline dyes/rubber manufacturing increases bladder cancer risk 4-fold — ask specifically in any haematuria. IgA nephropathy (Berger's disease) is the most common glomerulonephritis worldwide — presents with frank haematuria 24-72h after URTI. Post-streptococcal GN presents 1-3 weeks after throat/skin infection with haematuria, proteinuria, hypertension, and oedema. These require urgent nephrology referral, not urology.</div>
+      <div class="why-drawer">Occupational exposure to aniline dyes/rubber manufacturing increases bladder cancer risk — ask specifically in any haematuria. IgA nephropathy (Berger's disease) is the most common glomerulonephritis worldwide — presents with frank haematuria 24-72h after URTI. Post-streptococcal GN presents 1-3 weeks after throat/skin infection with haematuria, proteinuria, hypertension, and oedema. These require urgent nephrology referral, not urology.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -264,15 +264,15 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
         <div>Blood pressure</div><div>Hypertension + haematuria + proteinuria = <b>glomerulonephritis</b> until proven otherwise. Hypertension common in PKD. Check both arms.</div>
         <div>Abdomen</div><div>Ballottable renal mass → renal carcinoma, PKD (bilateral masses). Suprapubic tenderness → cystitis, retention. Bladder distension → clot retention.</div>
         <div>Flanks</div><div>Renal angle (CVA) tenderness → pyelonephritis, obstructing calculus. Loin mass → renal tumour.</div>
-        <div>DRE (male)</div><div>Prostate size, texture, nodules, asymmetry. Hard/nodular prostate → prostate cancer. Tender/boggy → prostatitis. Check PSA.</div>
-        <div>Pelvic exam (female)</div><div>Exclude gynaecological source — cervical abnormalities, uterine tenderness. Vaginal atrophy in post-menopausal → common cause of NVH.</div>
+        <div>DRE (male)</div><div>Prostate size, texture, nodules, asymmetry. Hard/nodular prostate → prostate cancer. Tender/boggy → prostatitis. Consider PSA after discussion.</div>
+        <div>Pelvic exam (female)</div><div>Exclude gynaecological source — cervical abnormalities, uterine tenderness. Vaginal atrophy can cause urinary symptoms and sample contamination — confirm the blood is urinary; do not assume atrophy explains true haematuria.</div>
         <div>Oedema / fluid</div><div>Peripheral oedema, periorbital puffiness → nephrotic/nephritic syndrome, cardiac/hepatic cause. Assess for ascites.</div>
-        <div>Skin / joints</div><div>Purpuric rash → IgA vasculitis (HSP). Joint disease → SLE, vasculitis (check ANA, ANCA). Skin ulcers → SLE nephritis.</div>
+        <div>Skin / joints</div><div>Purpuric rash → IgA vasculitis (HSP). Joint disease → SLE, vasculitis (nephrology to guide serology). Skin ulcers → SLE nephritis.</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">DRE is essential in males with haematuria — prostate cancer is detected in 3-5% of haematuria investigations. Vaginal atrophy causes NVH in up to 15% of post-menopausal women — this is benign and does not require urology referral if confirmed. Ballottable renal masses require urgent ultrasound — renal cell carcinoma presents asymptomatically in &gt;50% of cases (incidental or haematuria). The 'classic triad' (haematuria, flank pain, palpable mass) occurs in only 10% of RCC.</div>
+      <div class="why-drawer">In men with visible haematuria, consider DRE and PSA where clinically appropriate (NICE NG12). Vaginal atrophy should not be assumed to explain true haematuria — if haematuria meets referral criteria, do not delay referral for a trial of vaginal oestrogen. Ballottable renal masses require urgent ultrasound — renal cell carcinoma presents asymptomatically in &gt;50% of cases (incidental or haematuria). The 'classic triad' (haematuria, flank pain, palpable mass) occurs in only 10% of RCC.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -286,21 +286,21 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
       <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
     </div>
     <div class="node-body">
-      <span>Order systematically — urine, bloods, then imaging. Imaging is mandatory for all confirmed haematuria.</span>
+      <span>Order systematically — urine, bloods, then imaging. Imaging and cystoscopy are selected by urology — CT urography is not routine for every patient.</span>
       <div class="kv">
-        <div>Urine <span class="pill pill-blue">All</span></div><div>MSU for MC&S (exclude infection — do NOT investigate NVH within 4/52 of UTI). Urine dipstick: blood, protein, nitrites, leucocytes. Early morning urine (EMU) × 3 for cytology if high cancer risk (smoker, occupational exposure, ≥60y)</div>
-        <div>Urine protein</div><div>Protein + haematuria → renal cause. ACR (albumin:creatinine ratio) &gt;3 mg/mmol = significant proteinuria → glomerular cause possible; refer to nephrology if ACR ≥30 mg/mmol with haematuria (NICE NG203)</div>
+        <div>Urine <span class="pill pill-blue">All</span></div><div>MSU for MC&S where infection is clinically suspected; repeat dipstick after treatment if haematuria persists or if clinically indicated. Urine dipstick: blood, protein, nitrites, leucocytes. Urine cytology is specialist-directed — not a routine primary-care test.</div>
+        <div>Urine protein</div><div>Protein + haematuria → renal cause. ACR (albumin:creatinine ratio) ≥3 mg/mmol = clinically important proteinuria. Confirm ACR 3–70 mg/mmol on a subsequent early-morning sample (not needed if ≥70). Refer to nephrology if ACR &gt;30 mg/mmol with haematuria, ACR ≥70 mg/mmol, or AKI, progressive eGFR decline, significant hypertension, systemic disease or another suspected renal disorder (NICE NG203).</div>
         <div>Bloods <span class="pill pill-blue">All</span></div><div>FBC (anaemia of malignancy, thrombocytopaenia), U&E/eGFR/creatinine (renal function), coagulation if on anticoagulants</div>
-        <div>PSA (males)</div><div>PSA in males ≥50y (or ≥45y with symptoms/family history). Discuss pros/cons before testing. Raised PSA + haematuria → urology suspected cancer pathway referral</div>
+        <div>PSA (males)</div><div>In men with visible haematuria, consider PSA and DRE where clinically appropriate, after discussing benefits and limitations. Consider UTI/prostatitis, recent ejaculation, instrumentation and urinary retention before testing. Interpret using NG12 age-specific thresholds: 40–49 &gt;2.5; 50–59 &gt;3.5; 60–69 &gt;4.5; 70–79 &gt;6.5 micrograms/L; over 79 clinical judgement. A raised PSA does not automatically explain the haematuria — both may need assessment.</div>
         <div>Calcium / urate</div><div>Hypercalciuria and hyperuricosuria → renal stones. Serum calcium, urate in recurrent stone-formers</div>
-        <div>Glomerulonephritis screen</div><div>If proteinuria + haematuria + HTN: ASOT (post-strep), ANA, ANCA, anti-dsDNA, C3/C4 (complement), anti-GBM antibody, cryoglobulins</div>
-        <div>Imaging <span class="pill pill-blue">Mandatory</span></div><div>CT urogram (CTU) — gold standard for upper tract. OR renal ultrasound as first-line if CTU not immediately available. USS does not exclude bladder tumours adequately.</div>
-        <div>When NOT to investigate</div><div>NVH on single dipstick post-UTI — treat UTI, recheck at 4-6/52. Children with haematuria → paediatric nephrology, not urology algorithm. Exercise-induced transient haematuria resolving &lt;48h — no investigation needed.</div>
+        <div>Glomerulonephritis screen</div><div>Haematuria with significant proteinuria, AKI, hypertension, oedema, systemic symptoms or active urinary sediment → urgent renal assessment. Nephrology should guide the autoimmune/glomerulonephritis blood panel — do not delay referral awaiting serology.</div>
+        <div>Imaging <span class="pill pill-blue">Via urology</span></div><div>Do not arrange CT urography routinely. Refer per NICE criteria and local pathways; urology selects imaging and cystoscopy by age, cancer risk, renal function and suspected source. CTU may be needed when upper-tract urothelial disease is suspected and renal function permits. A normal ultrasound does not exclude bladder cancer.</div>
+        <div>Repeat before investigating</div><div>NVH on a single dipstick with UTI — treat UTI, then repeat dipstick. Children with haematuria → paediatric nephrology, not urology algorithm. Exercise-related haematuria — repeat urinalysis after stopping strenuous exercise; investigate if it persists, recurs, is visible, or is accompanied by proteinuria, renal impairment or other risk factors.</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">CT urogram has sensitivity of 96% for upper tract malignancy and 95% for calculi (vs USS 60-70%). Urine cytology has poor sensitivity (20-40%) for low-grade bladder tumours — cystoscopy remains gold standard for bladder. However, urine cytology is valuable in high-grade/carcinoma in situ (sensitivity 80%). PSA has sensitivity 21% and specificity 91% for prostate cancer — shared decision-making is mandatory before testing. Urine MC&S is mandatory to exclude UTI as confounding cause of NVH.</div>
+      <div class="why-drawer">CT urography involves radiation and iodinated contrast and is not appropriate for every patient — assessment may include renal/bladder ultrasound, CTU or both, depending on context (NICE QS215). Urine cytology is a specialist-directed test and is not a substitute for cystoscopy or upper-tract imaging. PSA has sensitivity 21% and specificity 91% for prostate cancer — shared decision-making is mandatory before testing. Send urine MC&S where infection is suspected — UTI can confound NVH.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -316,18 +316,18 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
     <div class="node-body">
       <span>Apply NICE NG12 thresholds precisely — under-referral risks delayed cancer diagnosis, over-referral wastes suspected cancer pathway capacity.</span>
       <div class="kv">
-        <div><span class="pill pill-red">999</span></div><div>Haemodynamic instability (massive VH), acute clot retention, urosepsis with shock → emergency department immediately</div>
-        <div><span class="pill pill-red">Same-day</span></div><div>Clot retention (stable but unable to void), urosepsis (unwell + fever + haematuria), acute kidney injury on U&E + haematuria</div>
+        <div><span class="pill pill-red">999</span></div><div>Haemodynamic instability (massive ongoing VH), clot retention with collapse or major haemorrhage, urosepsis with shock → emergency department immediately. Do not transfer an unstable patient independently.</div>
+        <div><span class="pill pill-red">Same-day</span></div><div>Clot retention (stable but unable to void), urosepsis (unwell + fever + haematuria), severe flank pain with fever/rigors, AKI with obstruction or sepsis, significant post-traumatic haematuria</div>
         <div><span class="pill pill-purple">Suspected cancer · urology</span></div><div>Visible haematuria ≥45y (unexplained, or persisting/recurring after a treated UTI). NVH ≥60y + dysuria OR raised blood white cell count (NICE NG12, updated April 2026). PSA above the age-specific threshold or malignant-feeling prostate. (Non-urgent, NG12: aged ≥60 with recurrent or persistent unexplained UTI.)</div>
         <div><span class="pill pill-purple">Suspected cancer · urology</span></div><div>Renal mass on USS/imaging suspicious for malignancy. Ureteric mass. Bladder mass on USS. Upper tract filling defect on IVU/CTU.</div>
-        <div><span class="pill pill-amber">Urgent Nephrology</span></div><div>Haematuria + significant proteinuria (ACR &gt;30 mg/mmol). Haematuria + AKI. Haematuria + rapidly rising creatinine. Dysmorphic RBCs/casts on microscopy (RBC casts = glomerulonephritis).</div>
-        <div><span class="pill pill-blue">Routine Urology</span></div><div>Recurrent UTI with haematuria in ≥40y (not responding to treatment). Persistent NVH ≥40y not meeting the suspected cancer pathway criteria. Ureteric calculus not passing spontaneously after 4 weeks.</div>
-        <div>Primary care manage</div><div>Uncomplicated UTI with NVH — treat UTI, recheck. Vaginal atrophy-related NVH (postmenopausal) — topical oestrogen. Exercise-induced transient haematuria. Small distal calculus with adequate analgesia passing spontaneously.</div>
+        <div><span class="pill pill-amber">Urgent Nephrology</span></div><div>Haematuria + ACR &gt;30 mg/mmol, or ACR ≥70 mg/mmol. Haematuria + AKI. Haematuria + rapidly declining eGFR. Dysmorphic RBCs/casts on microscopy (RBC casts = glomerulonephritis). Oedema/nephritic syndrome or systemic vasculitic features (NICE NG203).</div>
+        <div><span class="pill pill-blue">Routine Urology</span></div><div>Persistent NVH not meeting suspected cancer criteria — after repeat dipstick, eGFR, ACR and BP, refer to urology or renal services according to findings and local pathway. Visible haematuria under 45 — urological assessment, routine or urgent according to the clinical picture. Ureteric calculus not passing spontaneously after 4 weeks.</div>
+        <div>Primary care manage</div><div>Uncomplicated UTI with NVH — treat UTI, recheck. Genitourinary menopausal symptoms — vaginal oestrogen (never to delay investigation of true haematuria). Exercise-related NVH that resolves on repeat testing with no proteinuria or other risk factors. Small distal calculus with adequate analgesia passing spontaneously.</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">NICE NG12 (updated April 2026) recommends a suspected cancer pathway referral for VH ≥45y based on cancer risk of ~2-10% per episode. NVH ≥60y + dysuria is a suspected cancer pathway trigger — bladder cancer classically presents with painless VH but 10-15% present with NVH alone. RBC casts on urine microscopy are pathognomonic of glomerulonephritis and mandate urgent nephrology referral — nephrotic range proteinuria (ACR &gt;300 mg/mmol) requires same-day assessment.</div>
+      <div class="why-drawer">NICE NG12 (updated April 2026) recommends a suspected cancer pathway referral for unexplained VH ≥45y, or VH persisting/recurring after successful UTI treatment, and for unexplained NVH ≥60y with dysuria or a raised WCC. RBC casts on urine microscopy are pathognomonic of glomerulonephritis and mandate urgent nephrology referral — nephrotic range proteinuria (ACR &gt;300 mg/mmol) requires same-day assessment.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -344,40 +344,40 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
       <span>Primary care manages UTI, stones (minor), and benign causes. All confirmed malignancy is secondary care.</span>
       <div class="branch">
         <div class="b-card">
-          <div class="b-cond">UTI (cystitis, women)</div>
+          <div class="b-cond">Uncomplicated lower UTI (non-pregnant women)</div>
           <div class="b-drug">Nitrofurantoin <span class="pill pill-teal">1st line</span></div>
-          <div class="b-note">100mg MR BD × 3 days (uncomplicated). Avoid if eGFR &lt;45 (MHRA/BNF; a 3–7 day course may be used with caution at eGFR 30–44 only for suspected or proven multidrug-resistant infection). Trimethoprim 200mg BD × 3 days if nitrofurantoin CI. Recheck dipstick 4-6/52 post-treatment.</div>
+          <div class="b-note">100mg MR BD × 3 days (uncomplicated). Avoid if eGFR &lt;45 (MHRA/BNF; a 3–7 day course may be used with caution at eGFR 30–44 only for suspected or proven multidrug-resistant infection). Trimethoprim 200mg BD × 3 days if nitrofurantoin CI. Follow local Greater Manchester antimicrobial guidance; do not base treatment on dipstick alone. Send MSU for recurrent UTI, treatment failure, atypical symptoms, men, pregnancy, systemic illness or suspected pyelonephritis. Recheck dipstick after treatment.</div>
         </div>
         <div class="b-card">
-          <div class="b-cond">Ureteric calculus (≤5mm)</div>
+          <div class="b-cond">Small distal ureteric calculus</div>
           <div class="b-drug">Medical expulsive therapy</div>
-          <div class="b-note">Tamsulosin 400mcg OD (unlicensed; NICE NG118 supports an alpha-blocker for distal ureteric stones under 10 mm). Adequate analgesia (NSAIDs + paracetamol). 85% of ≤4mm stones pass spontaneously. High fluid intake 2-3L/day.</div>
+          <div class="b-note">Clinically stable, no infection, AKI, uncontrolled pain or obstruction needing intervention: discuss conservative management and consider off-label tamsulosin 400 micrograms OD per NICE NG118/local urology policy (counsel on postural hypotension and ejaculatory effects). Adequate analgesia (NSAIDs + paracetamol). Encourage normal hydration — do not advise forced fluid loading.</div>
         </div>
         <div class="b-card">
           <div class="b-cond">BPH with haematuria</div>
-          <div class="b-drug">Tamsulosin 400mcg OD</div>
-          <div class="b-note">After urology review. 5-alpha reductase inhibitors (finasteride 5mg OD) reduce haematuria risk from BPH. Must exclude prostate cancer first.</div>
+          <div class="b-drug">BPH/LUTS pathway</div>
+          <div class="b-note">Manage BPH via the BPH/LUTS pathway, not this haematuria protocol. Do not attribute haematuria to BPH until it has been assessed against referral criteria; exclude prostate cancer first.</div>
         </div>
         <div class="b-card">
-          <div class="b-cond">Vaginal atrophy (postmenopausal)</div>
-          <div class="b-drug">Topical oestrogen</div>
-          <div class="b-note">Vagifem (estradiol) 10mcg pessary ON for 2 weeks then twice weekly. Systemic absorption minimal. Refer if haematuria persists after 12 weeks treatment.</div>
+          <div class="b-cond">Genitourinary menopausal symptoms</div>
+          <div class="b-drug">Vaginal oestrogen</div>
+          <div class="b-note">Consider for genitourinary menopausal symptoms or recurrent UTI (e.g. estradiol 10 micrograms pessary nightly for 2 weeks, then twice weekly). Confirm the blood is urinary rather than vaginal. Do not use vaginal oestrogen to delay investigation of true visible haematuria or persistent haematuria meeting referral criteria.</div>
         </div>
         <div class="b-card">
           <div class="b-cond">Anticoagulant review</div>
           <div class="b-drug">Do NOT stop anticoagulant</div>
-          <div class="b-note">Investigate haematuria fully (cancer co-exists). Only withhold if massive life-threatening haemorrhage. Review INR if on warfarin — supratherapeutic range.</div>
+          <div class="b-note">Investigate haematuria in anticoagulated and antiplatelet-treated patients using the same pathway. Do not stop routinely. Check INR where relevant and seek specialist/emergency advice before withholding or reversing, except in life-threatening haemorrhage where emergency protocols apply.</div>
         </div>
         <div class="b-card">
           <div class="b-cond">Exercise-induced haematuria</div>
-          <div class="b-drug">Reassurance + rest</div>
-          <div class="b-note">Repeat dipstick 24-48h after cessation of exercise. Resolves completely. No investigation needed if resolves. Investigate if persists &gt;48h post-exercise.</div>
+          <div class="b-drug">Repeat urinalysis</div>
+          <div class="b-note">Repeat urinalysis after stopping strenuous exercise. If haematuria persists, recurs, is visible, or is accompanied by proteinuria, renal impairment or other risk factors, investigate through the appropriate urological or renal pathway.</div>
         </div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">NICE NG109 (lower UTI): nitrofurantoin is first-line for uncomplicated lower UTI — trimethoprim resistance now &gt;30% locally in many UK areas, making nitrofurantoin the preferred empirical choice. Tamsulosin for medical expulsive therapy (MET) is supported by NICE NG118 (renal and ureteric stones, 2019), which advises considering an alpha-blocker for distal ureteric stones under 10 mm. 5-alpha reductase inhibitors reduce haematuria episodes from BPH by 50% at 6 months (NNT ~8).</div>
+      <div class="why-drawer">NICE NG109 (lower UTI): nitrofurantoin is first-line for uncomplicated lower UTI — trimethoprim resistance now &gt;30% locally in many UK areas, making nitrofurantoin the preferred empirical choice. Tamsulosin for medical expulsive therapy (MET) is supported by NICE NG118 (renal and ureteric stones, 2019), which advises considering an alpha-blocker (off-label) for selected distal ureteric stones under 10 mm.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -393,19 +393,19 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
     <div class="node-body">
       <span>Address modifiable risk factors for the underlying cause — reduces recurrence and cancer risk.</span>
       <div class="lsgrid">
-        <div class="lstile"><b>Smoking cessation</b> Bladder cancer risk returns to near-normal 10-15 years after stopping. Refer to NHS Stop Smoking Service. Single most important lifestyle intervention for TCC prevention.</div>
-        <div class="lstile"><b>Hydration</b> 2-2.5L fluid/day reduces urinary stone recurrence by 50% (RCT evidence). Also reduces UTI risk. Plain water preferred over fruit juices (oxalate content).</div>
-        <div class="lstile"><b>Diet (stone prevention)</b> Reduce oxalate-rich foods (spinach, nuts, chocolate) if calcium oxalate stones. Reduce animal protein (uric acid stones). Normal calcium intake — NOT low calcium diet.</div>
+        <div class="lstile"><b>Smoking cessation</b> Reduces bladder cancer risk. Refer to NHS Stop Smoking Service. Single most important lifestyle intervention for TCC prevention.</div>
+        <div class="lstile"><b>Hydration</b> Normal fluid intake tailored to stone risk and comorbidity; avoid dehydration. Plain water preferred over fruit juices (oxalate content).</div>
+        <div class="lstile"><b>Diet (stone prevention)</b> Tailor to stone composition or specialist metabolic assessment — e.g. reduce oxalate-rich foods (spinach, nuts, chocolate) if calcium oxalate stones. Reduce animal protein (uric acid stones). Normal calcium intake — NOT low calcium diet.</div>
         <div class="lstile"><b>Occupational safety</b> Aniline dyes, aromatic amines, polycyclic aromatic hydrocarbons → bladder cancer risk. Ensure appropriate PPE use. Report to occupational health. Notify RIDDOR if occupational bladder cancer confirmed.</div>
-        <div class="lstile"><b>Weight management</b> Obesity increases RCC risk (RR 1.4 per 5kg/m² BMI increase). Metabolic syndrome also increases urinary stone risk via hyperuricosuria.</div>
+        <div class="lstile"><b>Weight management</b> Obesity increases RCC risk. Metabolic syndrome also increases urinary stone risk via hyperuricosuria.</div>
         <div class="lstile"><b>Pelvic floor exercises</b> For women with recurrent UTI — incomplete bladder emptying increases infection risk. Post-void residual &gt;100ml needs investigation.</div>
-        <div class="lstile"><b>Cranberry products</b> Cranberry capsules/juice have modest evidence for reducing recurrent UTI (OR ~0.67). Not proven in single-episode UTI. Advise as adjunct, not replacement for treatment.</div>
+        <div class="lstile"><b>Cranberry products</b> Cranberry capsules/juice have limited, modest evidence for reducing recurrent UTI. Not proven in single-episode UTI. Advise as adjunct, not replacement for treatment.</div>
         <div class="lstile"><b>NSAID review</b> Chronic NSAID use → papillary necrosis + haematuria. Review necessity. Switch to paracetamol where possible. Particularly important in elderly with recurrent NVH.</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">Smoking cessation is the most powerful cancer prevention strategy for bladder cancer — 50% of bladder cancers are attributable to smoking. A 5-year randomised trial (Borghi et al, J Urol 1996) showed that high water intake (urine volume of at least 2 L/day) cut stone recurrence from 27% to 12%. Paradoxically, LOW calcium diets increase calcium oxalate stone risk by increasing intestinal oxalate absorption — patients should be counselled on this counter-intuitive fact (Curhan et al, NEJM 1993).</div>
+      <div class="why-drawer">Smoking cessation is the most powerful cancer prevention strategy for bladder cancer — smoking is the leading modifiable risk factor. A 5-year randomised trial (Borghi et al, J Urol 1996) showed that high water intake (urine volume of at least 2 L/day) cut stone recurrence from 27% to 12%. Paradoxically, LOW calcium diets increase calcium oxalate stone risk by increasing intestinal oxalate absorption — patients should be counselled on this counter-intuitive fact (Curhan et al, NEJM 1993).</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -421,26 +421,26 @@ body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-heigh
     <div class="node-body">
       <span>Close the loop — haematuria must never be left unresolved without a diagnosis.</span>
       <div class="kv">
-        <div>4-6 weeks</div><div>Repeat dipstick after completing UTI treatment. Renal function (U&E/eGFR) if stone or renal pathology. Confirm MSU clearance if treated for infection.</div>
+        <div>After UTI treatment</div><div>Repeat dipstick after completing UTI treatment. Renal function (U&E/eGFR) if stone or renal pathology. Confirm MSU clearance if treated for infection.</div>
         <div>6-8 weeks</div><div>If awaiting a urology suspected cancer appointment — chase referral status. Confirm appointment received. Document in notes if patient declines investigation.</div>
         <div>3 months</div><div>NVH in primary care management — repeat dipstick. If persists → review investigation plan. If new symptoms develop → re-investigate or re-refer urgently.</div>
         <div>Post-stone</div><div>Stone formers: 24h urine collection for metabolic workup (calcium, oxalate, urate, citrate, phosphate, creatinine) — to guide dietary/pharmacological prevention</div>
-        <div>Post-cancer treatment</div><div>Bladder cancer: urology-led surveillance cystoscopy (3-monthly for 2 years, then 6-monthly). RCC: CT surveillance (secondary care). GP role: BP control, eGFR monitoring, psychological support.</div>
+        <div>Post-cancer treatment</div><div>Bladder and renal cancer surveillance is urology-led and follows the patient's documented specialist schedule. GP role: support attendance, manage cardiovascular/renal risk, review relevant symptoms and act on specialist correspondence.</div>
         <div>Safety-net <span class="pill pill-red">999</span></div><div>Heavy visible bleeding, clots, inability to pass urine, collapse, severe pain → 999 immediately</div>
         <div>Safety-net same-day</div><div>Any new VH, frank haematuria, high fever + urinary symptoms, rapidly worsening loin pain, significant medication side effects</div>
-        <div>Unresolved NVH</div><div>Persistent NVH without diagnosis after full investigation (CTU + cystoscopy negative) → IgA nephropathy is likely (most common cause). Annual review: BP, eGFR, ACR. Refer nephrology if eGFR declining or proteinuria worsening.</div>
+        <div>Unresolved NVH</div><div>If urological assessment is negative and NVH persists, monitor BP, eGFR and ACR in primary care. Refer to nephrology if proteinuria increases, ACR exceeds referral thresholds, eGFR declines, hypertension develops, or there are systemic/urinary features of glomerular disease.</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">Persistent NVH without identified cause after negative cystoscopy and CTU is found in 60-70% of cases — IgA nephropathy accounts for a significant proportion. Annual monitoring (BP, eGFR, ACR) is essential — 20-30% of IgA nephropathy patients progress to ESRD over 20 years. Unresolved NVH is not benign — a 7-year follow-up study (Khadra et al) showed 2% developed urological malignancy during surveillance. Document all referrals and patient decisions regarding investigation carefully.</div>
+      <div class="why-drawer">A negative urological evaluation does not establish IgA nephropathy — persistent isolated NVH has a broad differential, including thin-basement-membrane disease, IgA nephropathy, other glomerular disorders and benign unexplained haematuria. Ongoing monitoring (BP, eGFR, ACR) detects progression. Unresolved NVH is not benign — a 7-year follow-up study (Khadra et al) showed 2% developed urological malignancy during surveillance. Document all referrals and patient decisions regarding investigation carefully.</div>
     </div>
   </div>
 
 </div>
 
 <div class="alg-foot">
-  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer, updated April 2026), NICE NG109 (UTI 2018), BAUS/Renal Association joint consensus on the initial assessment of haematuria (2008), NICE NG203 (CKD, 2021), NICE NG118 (renal and ureteric stones, 2019), EAU Guidelines on Urological Infections 2023 (international). Always adapt to patient context and local formulary/protocols.
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer, updated April 2026), NICE NG109 (UTI 2018), BAUS/Renal Association joint consensus on the initial assessment of haematuria (2008), NICE NG203 (CKD, 2021), NICE NG118 (renal and ureteric stones, 2019), NICE QS215 (kidney cancer), EAU Guidelines on Urological Infections 2023 (international). Always adapt to patient context and local formulary/protocols.
 </div>
 
 <script>

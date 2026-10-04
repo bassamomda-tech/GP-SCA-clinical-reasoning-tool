@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Scrotal Pain / Swelling Algorithm · Reasoning GP</title>
+<title>Acute and Chronic Scrotal Pain Algorithm · Reasoning GP</title>
+<meta name="description" content="Acute and Chronic Scrotal Pain in primary care: immediate torsion and emergency screen, focused history and examination, risk-based epididymo-orchitis treatment, and a separate pathway for scrotal pain lasting 3 months or more.">
 <link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/scrotal-pain.html">
 <script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -135,73 +136,80 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
 <div class="stem-banner">
   <div class="sb-icon">🔴</div>
   <div>
-    <b>Scrotal Pain / Swelling — Acute &amp; Chronic Presentations</b>
-    <small>UK primary care algorithm · RCGP SCA preparation · Based on NICE NG12, BASHH, EAU Guidelines (international)</small>
+    <b>Acute and Chronic Scrotal Pain in Primary Care</b>
+    <small>Adults and young people with testicular or scrotal pain, swelling or recurrent/chronic symptoms · Based on BASHH 2020, NICE NG12, GIRFT, Greater Manchester antimicrobial guidance, EAU</small>
   </div>
 </div>
 
+<div class="alg-foot" style="margin:0 0 18px;border-left:4px solid var(--safety);"><strong>Scope:</strong> adults and young people presenting to general practice with testicular or scrotal pain, swelling, lump or recurrent/chronic symptoms. This guide separates four presentations: <b>(1) acute scrotal pain — exclude torsion and other emergencies first</b> (Step 1); (2) acute infective/inflammatory scrotal pain (Steps 2–8); (3) scrotal swelling or mass — see <a href="testicular-lump.html">Scrotal Lumps and Swelling</a>; (4) persistent or recurrent pain lasting ≥3 months (Steps 9–10).<br><strong>This guide does not replace the local emergency urology pathway, local antimicrobial guideline, sexual-health advice or paediatric surgical pathway.</strong></div>
+
 <div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
   <span>Progress</span>
-  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">11</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
 <!-- DIAGRAM VIEW -->
 <div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — the priority is excluding torsion (and Fournier's/strangulated hernia); then work through infective, vascular and referred causes, treat by diagnosis and safety-net. Torsion is a clinical diagnosis — explore, don't wait for imaging.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="dg-legend"><span>The full reasoning pathway — first exclude torsion and other emergencies (Fournier's gangrene, strangulated hernia, trauma, sepsis); then assess infective/inflammatory, referred and structural causes, treat by presentation, and manage pain lasting ≥3 months as a separate chronic pathway. Suspected torsion needs urgent surgical assessment — do not wait for imaging.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
   <div class="chart">
   <div class="flow">
 
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Scrotal pain</span><div class="body"><b>Acute vs chronic</b>, speed of onset, urinary/STI symptoms, trauma, swelling, systemic upset. Examine testes, epididymis, cord, cremasteric reflex, hernial orifices, skin. <b>Age &lt;25 + sudden pain = torsion until proven otherwise.</b></div></div>
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Acute or chronic scrotal pain</span><div class="body"><b>Exact time and mode of onset</b>, severity, nausea/vomiting, fever, urinary/STI symptoms, sexual risk, trauma or surgery, previous episodes. Examine (chaperone offered): testicular position/lie, size, consistency, epididymis, cord, hernial orifices, skin, abdomen. <b>Sudden-onset or severe unilateral pain = surgical emergency until torsion is excluded, at any age.</b> Lump or swelling without acute pain → <a href="testicular-lump.html">Scrotal Lumps and Swelling</a>.</div></div>
     <div class="arrow"></div>
 
     <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — surgical emergencies</span><span class="ttl">Torsion / Fournier's / strangulated hernia?</span><div class="body"><ul>
-      <li><b>Testicular torsion</b> — sudden severe pain, nausea/vomiting, high-riding/horizontal testis, <b>absent cremasteric reflex</b>, age &lt;25 (but any age)</li>
-      <li><b>Fournier's gangrene</b> — necrotising fasciitis: systemically unwell (often diabetic), skin necrosis/crepitus, pain out of proportion</li>
-      <li><b>Strangulated inguinoscrotal hernia</b> — irreducible tender lump + obstruction</li>
+    <div class="box dec"><span class="lbl">Step 1 · Immediate safety screen</span><span class="ttl">Torsion or another emergency possible?</span><div class="body"><ul>
+      <li><b>Possible torsion</b> — sudden severe unilateral pain, high-riding/horizontal testis, nausea/vomiting, absent or uncertain cremasteric reflex, or severe acute pain where torsion cannot be confidently excluded (any age)</li>
+      <li><b>Trauma</b> with expanding haematoma, haematocele or suspected rupture; <b>sepsis</b> or haemodynamic instability</li>
+      <li><b>Fournier's gangrene</b> — severe pain, systemic illness, skin necrosis, bullae, crepitus or rapidly progressive swelling</li>
+      <li><b>Irreducible inguinoscrotal hernia</b>, vomiting or abdominal pain</li>
     </ul></div></div>
     <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — emergency</div><div class="box stop"><span class="lbl">Stop · 999</span><span class="ttl">Emergency surgery</span><div class="body">Suspected torsion → <b>immediate surgical exploration</b> (testicular salvage falls sharply after 6 h — do NOT delay for ultrasound). Fournier's → emergency debridement + IV antibiotics. Strangulated hernia → emergency surgery.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — work up cause</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Urine + swabs ± USS</span><div class="body">Urinalysis/MSU, first-pass urine NAAT + urethral swab if STI risk; consider Doppler USS (cause unclear or chronic). Examine for hernia and referred sources.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — emergency</div><div class="box stop"><span class="lbl">Stop · Emergency transfer</span><span class="ttl">Immediate surgical assessment</span><div class="body">Suspected torsion → <b>immediate transfer via the local emergency pathway</b> to a service able to assess and operate (999 if unstable, severely unwell or unsafe to transfer). <b>Give analgesia</b>; do not delay for ultrasound, urine tests or response to analgesia. Salvage declines with time but may still be possible after 6 h. Children: refer to a centre able to explore — do not transfer just for USS (GIRFT). Fournier's → emergency debridement + IV antibiotics. Strangulated hernia → emergency surgery.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — work up cause</div><div class="box ix"><span class="lbl">Steps 2–5 · Assess &amp; investigate</span><span class="ttl">History, examination, urine ± USS</span><div class="body">Dipstick, MSU, first-pass urine NAAT; HIV/syphilis testing if STI suspected. Doppler USS only if stable and it will not delay surgical review. Lump or persistent symptoms → urgent direct-access USS. Examine for hernia and referred sources.</div></div></div>
     </div></div>
     <div class="arrow"><span class="tag">Step 3 · which cause?</span></div>
 
     <!-- STEP 3 — DECISION -->
     <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Epididymo-orchitis</div><div class="box ix"><span class="ttl">Commonest non-surgical</span><div class="body">Gradual onset, tender epididymis, dysuria/discharge, fever; <b>Prehn's positive</b> (relief on elevation). STI (&lt;35) vs enteric/UTI organisms (&gt;35).</div></div></div>
-      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Chronic scrotal pain</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">Varicocele, hydrocele, spermatocele, post-vasectomy pain, chronic orchalgia; USS to characterise.</div></div></div>
-      <div class="col"><div class="blabel">Referred</div><div class="box ix"><span class="ttl">Not in the scrotum</span><div class="body"><b>Renal/ureteric colic</b>, inguinal hernia, nerve entrapment (ilioinguinal/genitofemoral), AAA — examine the abdomen and loins.</div></div></div>
+      <div class="col"><div class="blabel">Epididymo-orchitis</div><div class="box ix"><span class="ttl">Infective / inflammatory</span><div class="body">Usually gradual onset, tender epididymis, dysuria/discharge, fever. Estimate the likely pathogen (sexually acquired vs enteric) from <b>sexual and urinary risk factors, not age alone</b>. Do not use Prehn's sign to exclude torsion.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Pain ≥3 months</div><div class="box ix"><span class="ttl">Steps 9–10</span><div class="body">Exclude intermittent torsion, cancer, infection, hernia, varicocele, hydrocele/cyst, nerve, referred and pelvic-floor causes; then multimodal management.</div></div></div>
+      <div class="col"><div class="blabel">Referred</div><div class="box ix"><span class="ttl">Not in the scrotum</span><div class="body"><b>Renal/ureteric colic</b>, inguinal hernia, nerve entrapment (ilioinguinal/genitofemoral), lumbar radiculopathy, hip, AAA — examine the abdomen, loins, back and hips.</div></div></div>
     </div></div>
     <div class="arrow"><span class="tag">Step 7 · treat by cause</span></div>
 
     <!-- STEP 7 — TREAT -->
     <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — cause-directed treatment</span><span class="ttl">Antibiotics, analgesia, support</span><div class="body"><ul>
-      <li><b>Epididymo-orchitis — suspected STI (&lt;35):</b> ceftriaxone 1 g IM stat + doxycycline 100 mg BD 10–14 days; refer GUM + partner notification.</li>
-      <li><b>Epididymo-orchitis — enteric/UTI organisms (&gt;35, low STI risk):</b> ofloxacin 200 mg BD 14 days or levofloxacin 500 mg OD 10 days (BASHH 2020; MHRA January 2024 fluoroquinolone restrictions apply); NSAID + scrotal support.</li>
-      <li><b>Chronic pain:</b> analgesia, scrotal support, treat the specific lesion; chronic orchalgia → urology/pain pathway.</li>
+      <li><b>Likely sexually acquired epididymo-orchitis:</b> ceftriaxone 1 g IM single dose + doxycycline 100 mg BD for 14 days (BASHH); local sexual-health pathway and partner notification; no sexual contact until treated, improved and partners assessed.</li>
+      <li><b>Likely enteric/uropathogen</b> (positive dipstick, low STI risk, instrumentation, urinary tract abnormality — not age alone): MSU first; follow Greater Manchester antimicrobial guidance (ofloxacin 200 mg BD 14 days listed); fluoroquinolone only when other recommended antibiotics are inappropriate (MHRA January 2024). <b>Mixed STI/enteric risk</b> → discuss with sexual health/microbiology.</li>
+      <li><b>Analgesia for all:</b> give promptly — it must not delay referral; paracetamol, NSAID if no contraindication, scrotal support. <b>Chronic pain:</b> multimodal pathway — see Steps 9–10.</li>
       <li><b>Referred:</b> treat the source (renal colic pathway, hernia repair).</li>
     </ul></div></div>
     <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
 
     <!-- STEP 6 — REFER -->
     <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">999 / emergency</span> torsion, Fournier's gangrene, strangulated hernia, abscess.</li>
-      <li><span class="pill pill-purple">GUM</span> suspected STI epididymo-orchitis (partner notification). <span class="pill pill-purple">Urology</span> chronic scrotal pain, varicocele/hydrocele needing intervention, failure to improve.</li>
-      <li>Reassess promptly if a presumed epididymo-orchitis does not settle — <b>reconsider torsion or abscess</b>.</li>
+      <li><span class="pill pill-red">Emergency transfer / 999</span> suspected torsion (local emergency pathway; 999 if unstable or unsafe to transfer), Fournier's gangrene, strangulated hernia, trauma with suspected rupture, sepsis.</li>
+      <li><span class="pill pill-purple">Sexual health</span> likely sexually acquired epididymo-orchitis, positive NAAT, partner notification, test of cure. <span class="pill pill-purple">Urology</span> solid intratesticular lesion (suspected cancer pathway), symptomatic/right-sided/bilateral/large varicocele, recurrent uropathogen infection, persistent or disabling chronic pain.</li>
+      <li><span class="pill pill-red">Same-day hospital</span> sepsis, vomiting preventing oral treatment, suspected abscess/infarction, immunocompromise, no improvement at 48–72 h or torsion not excluded — <b>reconsider torsion or abscess</b>.</li>
     </ul></div></div>
     <div class="arrow"><span class="tag">Step 8 · self-care &amp; prevention</span></div>
 
     <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-care &amp; prevention</span><span class="ttl">Symptom relief &amp; risk reduction</span><div class="body"><b>Scrotal support, rest, NSAIDs and ice</b> for epididymo-orchitis · complete the antibiotic course · <b>safer-sex advice and partner treatment</b> for STI cause · hydration/stone-prevention if referred renal colic · realistic expectations for chronic orchalgia (multimodal, may take months).</div></div>
-    <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Supportive care &amp; prevention</span><span class="ttl">Symptom relief &amp; risk reduction</span><div class="body"><b>Prompt analgesia, scrotal support/elevation, rest and local cooling (no direct ice on skin)</b> for epididymo-orchitis · complete the antibiotic course · <b>no sexual contact until treated and partners assessed</b> for STI cause · hydration/stone-prevention if referred renal colic · testicular awareness.</div></div>
+    <div class="arrow"><span class="tag">Steps 9–10 · pain ≥3 months</span></div>
+
+    <!-- STEPS 9–10 — CHRONIC -->
+    <div class="box ix" style="max-width:760px;"><span class="lbl">Steps 9–10 · Chronic scrotal pain (≥3 months)</span><span class="ttl">Exclude, then multimodal management</span><div class="body">Pain ≥3 months affecting function, sleep, sex or quality of life, after urgent, malignant and infective causes have been considered. <b>Urgent direct-access USS</b> for unexplained/persistent symptoms, a new lump or a testis that cannot be assessed — do not routinely repeat a recent normal scan. Explain, support, pelvic-floor physiotherapy, physical activity and psychological therapies; urology or pain service if persistent or disabling. Neuropathic medicines only for a neuropathic phenotype (off-label); <b>no prolonged antibiotics for CPPS without proven infection</b>.</div></div>
+    <div class="arrow"><span class="tag">Step 11 · safety-net</span></div>
 
     <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>999 / same-day</b> if pain becomes sudden and severe, the testis rides high, or there is skin change/crepitus + feeling very unwell (Fournier's). <b>Review</b> epididymo-orchitis at 48–72 h — <b>if not improving, re-examine and consider torsion, abscess or the wrong organism</b>; arrange USS. Chase STI/swab results and partner notification.</div></div>
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 11 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>Emergency assessment</b> for any new acute severe pain — even with known chronic scrotal pain — or skin change/crepitus + feeling very unwell (Fournier's). <b>Review</b> epididymo-orchitis at 48–72 h with microbiology — <b>if not improving, same-day assessment; consider torsion, abscess or the wrong organism</b>. 1–2 weeks: symptoms, adherence and sexual-health follow-up. Persistent swelling, mass or poor response → urgent USS and/or urology.</div></div>
   </div>
   </div>
-  <div class="band"><div class="caution crit">⚠️ <b>Torsion is a clinical diagnosis — explore, don't wait for imaging.</b> Salvage rates fall sharply after 6 hours, and a normal Doppler does not exclude it. And Fournier's gangrene is a surgical emergency: a systemically unwell (often diabetic) man with scrotal pain, swelling and skin changes needs immediate debridement.</div></div>
+  <div class="band"><div class="caution crit">⚠️ <b>Sudden-onset or severe unilateral scrotal pain is a surgical emergency until torsion has been excluded.</b> Give analgesia and transfer immediately — do not wait for ultrasound, urine tests or response to analgesia; no single sign and no normal Doppler excludes torsion. Salvage declines with time, but surgery is still worthwhile after 6 hours. Fournier's gangrene (systemic illness with scrotal pain, swelling and skin changes) needs immediate surgical debridement.</div></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -210,25 +218,27 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
 <div class="node" data-type="SAFETY" data-step="1">
   <div class="node-head">
     <span class="node-tag">Safety</span>
-    <h3>Step 1 — Screen for Emergencies: Testicular Torsion &amp; Can't-Miss Diagnoses</h3>
+    <h3>Step 1 — Immediate Safety Screen: Torsion &amp; Other Emergencies</h3>
   </div>
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
-    <p>Testicular torsion is a surgical emergency. Any acute scrotal pain must exclude torsion FIRST — time to surgery determines testicular viability.</p>
+    <p><b>Sudden-onset or severe unilateral scrotal pain is a surgical emergency until torsion has been excluded.</b> Do not delay urgent transfer or urological assessment for ultrasound, blood tests or response to analgesia. Give appropriate analgesia while arranging immediate transfer.</p>
+    <p>Use the local emergency pathway: transfer immediately to an emergency department or surgical/urological service able to assess and operate. Call 999 for an ambulance if there is haemodynamic instability, severe systemic illness, inability to transfer safely or another emergency indication. <b>Children and young people:</b> refer immediately to a centre able to provide surgical exploration — do not transfer a child merely to obtain an ultrasound (GIRFT).</p>
     <div class="rfgrid">
-      <div class="rftile"><b>Sudden severe scrotal pain</b> Onset &lt;6h, unilateral, severe, may radiate to groin/abdomen → <span class="pill pill-red">999 Emergency</span> suspected torsion</div>
-      <div class="rftile"><b>High-riding testicle</b> Horizontal lie or retracted testis, absent cremasteric reflex → <span class="pill pill-red">999 Emergency</span> urology</div>
-      <div class="rftile"><b>Age &lt;25, acute pain</b> Peak torsion age 12–18y but can occur at any age → <span class="pill pill-red">999 Emergency</span> do not delay for USS</div>
-      <div class="rftile"><b>Systemic sepsis features</b> Fever, rigors, haemodynamic compromise → <span class="pill pill-red">Same-day emergency</span> Fournier's gangrene / severe epididymo-orchitis</div>
-      <div class="rftile"><b>Hard, fixed, painless testicular mass</b> Irregular, non-transilluminable lump → <span class="pill pill-purple">Suspected cancer: urology</span> testicular cancer</div>
-      <div class="rftile"><b>Torsion of appendix testis</b> Localised superior pole tenderness, blue-dot sign → <span class="pill pill-amber">Same-day urology</span> if diagnosis uncertain</div>
-      <div class="rftile"><b>Inguino-scrotal hernia — incarcerated</b> Irreducible lump, vomiting, abdominal pain → <span class="pill pill-red">999 Emergency</span> bowel strangulation</div>
-      <div class="rftile"><b>Trauma + expanding haematoma</b> Following injury, rapidly enlarging swelling → <span class="pill pill-red">Same-day urology</span> testicular rupture</div>
+      <div class="rftile"><b>Sudden severe unilateral testicular/scrotal pain</b> May radiate to groin/abdomen → <span class="pill pill-red">Emergency transfer</span> suspected torsion</div>
+      <div class="rftile"><b>High-riding or horizontal testis</b> With acute pain → <span class="pill pill-red">Emergency transfer</span> suspected torsion</div>
+      <div class="rftile"><b>Nausea/vomiting with acute testicular pain</b> Any age → <span class="pill pill-red">Emergency transfer</span> do not delay for USS</div>
+      <div class="rftile"><b>Sepsis or haemodynamic instability</b> Fever, rigors, haemodynamic compromise → <span class="pill pill-red">999 Emergency</span> Fournier's gangrene / severe epididymo-orchitis</div>
+      <div class="rftile"><b>Absent or uncertain cremasteric reflex</b> With acute pain → <span class="pill pill-red">Emergency transfer</span> suspected torsion</div>
+      <div class="rftile"><b>Severe acute pain — torsion not confidently excluded</b> Including suspected appendage torsion where uncertain → <span class="pill pill-red">Emergency transfer</span> surgical assessment</div>
+      <div class="rftile"><b>Irreducible inguinoscrotal hernia</b> Vomiting or abdominal pain → <span class="pill pill-red">Emergency transfer</span> bowel strangulation</div>
+      <div class="rftile"><b>Trauma with expanding haematoma</b> Haematocele or suspected rupture → <span class="pill pill-red">Emergency transfer</span> testicular rupture</div>
+      <div class="rftile"><b>Fournier's gangrene</b> Severe pain, systemic illness, skin necrosis, bullae, crepitus or rapidly progressive swelling → <span class="pill pill-red">999 Emergency</span> surgical debridement</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">Testicular torsion accounts for 25% of acute scrotal pain referrals. Viability falls sharply: &gt;90% salvage if detorsion within 6h, &lt;10% after 24h (EAU Guidelines, international). The clinical window is narrow. USS can be falsely reassuring and should NEVER delay surgical exploration if clinical suspicion is high. Testicular cancer has a lifetime risk of ~1 in 250 men; painless hard lumps must not be attributed to benign causes without urgent imaging (NICE NG12).</div>
+    <div class="why-drawer">Torsion is time-critical: the chance of testicular salvage declines the longer the testis is twisted. The 6-hour figure conveys urgency, but surgery is not futile after 6 hours — salvage may still be possible later. No single history or examination finding reliably confirms or excludes torsion, and colour Doppler ultrasound has a user-dependent false-negative rate; BASHH advises that suspected clinical torsion needs urgent exploration rather than reassurance from imaging. Give analgesia promptly — it must not delay transfer. A painless lump without acute pain follows the suspected cancer route (NICE NG12) — see <a href="testicular-lump.html">Scrotal Lumps and Swelling</a>.</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -237,25 +247,27 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
 <div class="node" data-type="DIAGNOSE" data-step="2">
   <div class="node-head">
     <span class="node-tag">Diagnose</span>
-    <h3>Step 2 — History-Based Probability: Refine the Differential</h3>
+    <h3>Step 2 — Focused History</h3>
   </div>
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
-    <p>Use history to differentiate epididymo-orchitis from torsion from varicocele/hydrocele/hernia before examination.</p>
+    <p>Take a focused history before examination. Use risk factors, not age alone, to estimate the likely cause and pathogen.</p>
     <div class="kv">
-      <div>Onset</div><div>Sudden (&lt;1h) → torsion / trauma. Gradual (hours–days) → epididymo-orchitis. Insidious (weeks) → malignancy / varicocele</div>
-      <div>Age</div><div>&lt;25y: torsion most likely. 20–40y: STI-related epididymitis. &gt;35y: enteric organisms, UTI association. Any age: malignancy</div>
-      <div>Sexual history</div><div>New partner, unprotected sex → Chlamydia/Gonorrhoea epididymitis. MSHR as appropriate</div>
-      <div>Urinary symptoms</div><div>Dysuria, frequency → UTI/epididymitis. Absent in torsion</div>
-      <div>Previous episodes</div><div>Intermittent: consider intermittent torsion, varicocele</div>
-      <div>Swelling character</div><div>Transilluminates → hydrocele. Reduces lying down → hernia. Bag of worms → varicocele (often left-sided)</div>
-      <div>Systemic features</div><div>Fever → epididymo-orchitis, Fournier's. Weight loss/sweats → TB, malignancy</div>
-      <div>Recent illness / mumps</div><div>Post-viral orchitis. Mumps orchitis rare post-MMR vaccination</div>
+      <div>Onset &amp; pattern</div><div>Exact time and mode of onset. Sudden → torsion / trauma. Gradual (hours–days) → epididymo-orchitis. Intermittent or recurrent episodes. Insidious → structural cause or chronic pain</div>
+      <div>Severity &amp; systemic</div><div>Severity and functional impact. Nausea/vomiting (raises concern for torsion). Fever or systemic symptoms</div>
+      <div>Age</div><div>Relevant (torsion is commoner in young people; enteric infection in older men with urinary pathology) but must not determine the likely pathogen or treatment by itself — combine with sexual and urinary risk</div>
+      <div>Sexual history</div><div>New or multiple sexual partners, condom use, insertive anal intercourse. Previous STI or epididymo-orchitis. Take sensitively and confidentially</div>
+      <div>Urinary symptoms</div><div>Dysuria, frequency, retention or urethral discharge. Previous urinary infection, catheterisation or instrumentation</div>
+      <div>Previous episodes</div><div>Short-lived severe episodes that resolved → suggest intermittent torsion (urgent urology). Recurrent epididymo-orchitis</div>
+      <div>Surgery &amp; trauma</div><div>Trauma, vasectomy, hernia repair or abdominal surgery. Scrotal swelling or lump → see <a href="testicular-lump.html">Scrotal Lumps and Swelling</a></div>
+      <div>Referred sources</div><div>Loin, groin, hip, back or pelvic-floor symptoms</div>
+      <div>Fertility</div><div>Fertility concerns</div>
+      <div>Medicines &amp; comorbidity</div><div>Medication, comorbidity and immunosuppression</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">History alone can guide the urgency of referral before examination. Studies show that acute onset + young age + absent cremasteric reflex has &gt;90% sensitivity for torsion (Barbosa et al., 2013). STI-related epididymitis is the commonest cause in sexually active men aged 18–35; missing this leads to infertility, chronic pain syndrome, and onward transmission. A thorough sexual history is a core RCGP competency and must be taken sensitively.</div>
+    <div class="why-drawer">The history sets the urgency before examination. Age is relevant, but the 2024 European epididymo-orchitis guideline cautions against using age as a surrogate for STI risk — estimate the likely pathogen from sexual and urinary risk factors. Previous brief, self-resolving episodes may represent intermittent torsion. Missing sexually acquired infection risks complications and onward transmission. A thorough sexual history is a core RCGP competency and must be taken sensitively.</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -264,25 +276,28 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
 <div class="node" data-type="DIAGNOSE" data-step="3">
   <div class="node-head">
     <span class="node-tag">Diagnose</span>
-    <h3>Step 3 — Classification of Scrotal Pathology</h3>
+    <h3>Step 3 — Differential Diagnosis by Presentation</h3>
   </div>
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <p>Classify into the main diagnostic categories to guide investigation and management pathway.</p>
     <div class="kv">
-      <div>Testicular Torsion</div><div>Sudden onset, absent cremasteric reflex, high-riding testis. Bell-clapper deformity. Surgical emergency — explore same-day. Age peak 12–18y</div>
-      <div>Epididymo-orchitis</div><div>Gradual onset, tender epididymis ± testis, fever. &lt;35y: STI (Chlamydia, Gonorrhoea). &gt;35y: Enterobacteriaceae (E. coli). Treat empirically then refine by MSU/NAAT</div>
-      <div>Hydrocele</div><div>Painless, transilluminates, surrounds testis. Primary (idiopathic) or secondary (infection, tumour). If secondary cause suspected → USS</div>
-      <div>Varicocele</div><div>"Bag of worms" palpable standing, especially left-sided. May cause aching. Grade I–III. Associated with subfertility — refer if bilateral or right-sided (secondary cause)</div>
-      <div>Epididymal cyst</div><div>Smooth, separate from testis, transilluminates. Reassure if confirmed by USS. No treatment unless symptomatic</div>
-      <div>Inguinal hernia</div><div>Lump extending to groin, reducible lying down, cough impulse. Refer elective if asymptomatic; same-day if irreducible</div>
-      <div>Testicular malignancy</div><div>Hard, irregular, non-tender (or mildly tender), doesn't transilluminate. Peak age 15–40y. NSGCT &gt; seminoma. Suspected cancer pathway referral</div>
-      <div>Chronic orchialgia</div><div>Persistent &gt;3 months, no structural cause identified. Complex pain pathway. Refer urology ± pain team</div>
+      <div>Testicular Torsion</div><div>Sudden-onset severe pain ± nausea/vomiting. High or horizontal testis and absent cremasteric reflex increase concern but do not confirm it. Any age. Immediate emergency transfer — do not wait for imaging</div>
+      <div>Torsion of appendix testis</div><div>Localised upper-pole tenderness ± blue-dot sign. If confidently diagnosed: analgesia, support and safety-net. Urgent surgical review if uncertain or worsening</div>
+      <div>Epididymo-orchitis</div><div>Usually gradual onset, tender epididymis ± testis, ± fever, urinary or urethral symptoms. Likely pathogen from risk factors, not age alone: sexually acquired (Chlamydia, gonorrhoea, M. genitalium) vs enteric/uropathogen (e.g. E. coli). Test before antibiotics where this will not delay treatment</div>
+      <div>Hydrocele</div><div>Usually painless, transilluminates, surrounds testis. In adults assess clinically; USS if the testis cannot be adequately examined or the cause is uncertain. See <a href="testicular-lump.html">Scrotal Lumps and Swelling</a></div>
+      <div>Varicocele</div><div>"Bag of worms" palpable standing, reduces supine, usually left-sided. May cause dragging ache. Supportive treatment; urology if symptomatic, right-sided, bilateral, large or associated with subfertility</div>
+      <div>Epididymal cyst</div><div>Smooth, separate from testis, transilluminates. USS if uncertain; reassure if confirmed benign and asymptomatic</div>
+      <div>Inguinal hernia</div><div>Lump extending to groin, reducible lying down, cough impulse. Elective referral if uncomplicated; emergency if irreducible, vomiting or abdominal pain</div>
+      <div>Testicular malignancy</div><div>Non-painful enlargement or change in shape or texture of the testis, or a solid intratesticular lesion → suspected cancer pathway referral (NICE NG12). An acutely painful mass needs emergency assessment for torsion, trauma or infection first</div>
+      <div>Referred pain</div><div>Renal/ureteric colic, inguinal hernia, ilioinguinal/genitofemoral nerve, lumbar radiculopathy, hip. Scrotal examination often normal — examine abdomen, loins, back and hips</div>
+      <div>Prostatitis / CPPS</div><div>Perineal/testicular pain with LUTS or ejaculatory pain, often without infection — see Step 10</div>
+      <div>Chronic scrotal pain (orchialgia)</div><div>Persistent or recurrent pain ≥3 months after urgent pathology, malignancy and treatable infection have been considered — see Steps 9–10</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">Classification determines the entire management pathway. Epididymo-orchitis has two distinct microbiology pathways (STI vs urinary tract organisms) requiring different antibiotic choices. Varicocele is found in 35–40% of men investigated for subfertility — identifying it enables timely referral. Testicular cancer has a 95%+ 5-year survival if caught stage I, making early suspected cancer pathway referral life-saving. Right-sided varicocele should always prompt USS to exclude renal/retroperitoneal mass compressing the right gonadal vein.</div>
+    <div class="why-drawer">Classification determines the management pathway. Torsion cannot be excluded by any single finding, so diagnostic uncertainty means emergency assessment. Epididymo-orchitis has two microbiological pathways (sexually acquired vs enteric) requiring different antibiotics — choose by risk factors, not age alone. A solid intratesticular lesion needs suspected cancer pathway referral (NICE NG12). Right-sided varicocele should prompt USS to exclude a renal/retroperitoneal mass.</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -295,21 +310,23 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
   </div>
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
-    <p>Examine standing then supine. Ensure privacy, chaperone offered and documented.</p>
+    <p>Examine standing and supine. Ensure privacy; offer a chaperone and document the offer.</p>
     <div class="kv">
-      <div>Vital signs</div><div>Temp, HR, BP, SpO₂ → Fever + tachycardia → epididymo-orchitis / Fournier's gangrene → escalate urgency</div>
-      <div>Inguinal exam</div><div>Palpate inguinal canal, cough impulse → hernia. Lymphadenopathy → infection, malignancy</div>
-      <div>Scrotal skin</div><div>Erythema + crepitus → Fournier's gangrene (emergency). Scrotal oedema → epididymo-orchitis. Skin changes → dermatitis, infection</div>
-      <div>Testicular position</div><div>High-riding, horizontal lie → torsion. Normal position doesn't exclude</div>
-      <div>Cremasteric reflex</div><div>Stroke inner thigh → testis should rise. Absent → torsion (sensitivity 99%, but not 100%)</div>
-      <div>Testis palpation</div><div>Normal smooth ovoid. Hard/irregular → malignancy. Diffuse tender → orchitis. Epididymis tenderness posteriorly → epididymitis. Prehn's sign (pain relief on elevation) unreliable — do not use to exclude torsion</div>
+      <div>Observations</div><div>Temp, HR, BP, RR, SpO₂ and sepsis assessment. Fever + tachycardia → severe epididymo-orchitis / Fournier's gangrene → escalate urgency</div>
+      <div>Abdomen &amp; inguinal</div><div>Abdomen and renal angles (referred pain). Inguinal canals and hernial orifices, cough impulse → hernia. Lymphadenopathy → infection, malignancy</div>
+      <div>Scrotal skin</div><div>Erythema, oedema, necrosis, bullae or crepitus → Fournier's gangrene (emergency). Scrotal oedema/erythema → epididymo-orchitis. Skin changes → dermatitis, infection</div>
+      <div>Testicular position</div><div>Position and lie: high-riding or horizontal testis increases concern for torsion. A normal testicular position does not exclude torsion</div>
+      <div>Cremasteric reflex</div><div>Document as one finding only. An absent cremasteric reflex, high or horizontal testis, sudden pain, nausea/vomiting and marked testicular tenderness increase concern for torsion, but no single examination finding reliably excludes or confirms torsion. A preserved reflex does not exclude torsion</div>
+      <div>Testis, epididymis &amp; cord</div><div>Testicular size, consistency, focal masses and tenderness. Distinguish the testis from an extratesticular swelling. Epididymal tenderness posteriorly → epididymitis. Palpate the spermatic cord. <b>Do not use Prehn's sign to exclude torsion. It is unreliable.</b></div>
       <div>Transillumination</div><div>Torch in dark room → glows red → hydrocele or epididymal cyst. Does not transilluminate → solid lesion or haematocele</div>
-      <div>Standing exam</div><div>Dilated veins standing, disappear lying → varicocele (left side predominant)</div>
+      <div>Varicocele</div><div>Assess standing and supine: dilated veins standing that reduce lying → varicocele (left side predominant). Right-sided or non-reducing → imaging</div>
+      <div>Referred pain</div><div>Neurological, hip and lumbar assessment when referred pain is suspected</div>
+      <div>DRE</div><div>Only when clinically indicated, e.g. suspected prostatitis or significant LUTS</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">The cremasteric reflex has ~99% sensitivity for torsion when absent — its presence is reassuring but not definitive. Prehn's sign (historically taught as differentiating epididymitis from torsion) has been shown to be unreliable (Barada et al.) and should not alter management. Transillumination is a key clinical skill — a glowing swelling almost always reflects a benign fluid collection. Fournier's gangrene is a life-threatening necrotising fasciitis of the perineum — even mild skin changes with systemic upset warrant immediate escalation.</div>
+    <div class="why-drawer">No single sign is diagnostic of torsion: an absent cremasteric reflex raises concern, but a present reflex or normal testicular position does not exclude it. Prehn's sign (historically taught as differentiating epididymitis from torsion) is unreliable and should not alter management. Transillumination is a key clinical skill — a glowing swelling almost always reflects a benign fluid collection. Fournier's gangrene is a life-threatening necrotising fasciitis of the perineum — even mild skin changes with systemic upset warrant immediate escalation.</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -322,20 +339,22 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
   </div>
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
-    <p>Do NOT delay surgical referral for torsion to obtain investigations. Investigations guide management of non-emergency presentations.</p>
+    <p>Do not arrange or await investigations — including ultrasound — when clinical suspicion of torsion is high. For suspected epididymo-orchitis, take samples before antibiotics where this will not delay treatment.</p>
     <div class="kv">
-      <div>Urinalysis + MSU <span class="pill pill-blue">1st line</span></div><div>Dipstick + culture if epididymo-orchitis suspected. Positive nitrites/WBC → bacterial. Negative doesn't exclude STI-related disease</div>
-      <div>NAAT swab <span class="pill pill-blue">1st line STI</span></div><div>Urethral or first-void urine for Chlamydia trachomatis + Neisseria gonorrhoeae if age &lt;35y or sexual risk factors. Refer GUM for full STI screen ideally</div>
-      <div>Scrotal USS Doppler <span class="pill pill-blue">Urgent</span></div><div>If diagnosis uncertain after examination. Shows blood flow (torsion = absent), epididymitis, hydrocele, varicocele, tumour. Do NOT delay surgery for USS if torsion clinically suspected</div>
-      <div>Tumour markers <span class="pill pill-purple">Urgent bloods</span></div><div>AFP, β-hCG, LDH if testicular malignancy suspected. Order before referral. Note: markers normal in 20% of testicular cancers</div>
-      <div>FBC, CRP, U&amp;Es</div><div>If systemic sepsis, severe epididymo-orchitis, or immunocompromised. Not routine for mild presentations</div>
-      <div>STI screen</div><div>HIV, Hep B/C, Syphilis serology if referring to GUM. Offer to all sexually active men</div>
-      <div>NOT needed</div><div>CT/MRI not first-line in primary care. Testicular biopsy not in primary care. Avoid USS if clinical torsion is certain — go straight to theatre</div>
+      <div>Urinalysis + MSU <span class="pill pill-blue">1st line</span></div><div>Urine dipstick. MSU for culture and sensitivities where urinary/enteric infection is possible. Positive nitrites/leucocytes → uropathogen more likely. Negative doesn't exclude STI-related disease</div>
+      <div>NAAT swab <span class="pill pill-blue">1st line STI</span></div><div>First-pass urine (or appropriate) NAAT for Chlamydia trachomatis + Neisseria gonorrhoeae. Consider urethral microscopy/swab if discharge is present and available through sexual health services</div>
+      <div>Scrotal USS Doppler <span class="pill pill-blue">Only if stable</span></div><div>Do not arrange or await USS when clinical suspicion of torsion is high. If torsion is possible but not clinically clear and the patient is stable, an urgent Doppler USS may assist, provided this does not delay surgical review. A negative ultrasound does not reliably exclude intermittent torsion or torsion in an equivocal case</div>
+      <div>Tumour markers <span class="pill pill-purple">Per local pathway</span></div><div>Do not delay urgent urology referral for tumour markers. If a testicular malignancy is suspected, AFP, β-hCG and LDH may be requested according to the local pathway, ideally before definitive treatment. Normal markers do not exclude testicular cancer. Not routine for every scrotal lump</div>
+      <div>FBC, CRP, U&amp;E, blood cultures</div><div>If systemically unwell (usually in hospital). Not routine for mild presentations</div>
+      <div>STI screen</div><div>Offer HIV and syphilis testing where an STI is suspected or confirmed. Consider hepatitis B/C testing according to sexual and injecting-risk history</div>
+      <div>Lump or persistent/unexplained symptoms</div><div>Urgent direct-access scrotal USS (NICE NG12). Urgent urology/suspected cancer referral for non-painful testicular enlargement, change in shape/texture or a suspicious intratesticular lesion — see <a href="testicular-lump.html">Scrotal Lumps and Swelling</a></div>
+      <div>Uropathogen confirmed</div><div>Particularly with recurrent infection or a urinary tract abnormality → arrange urological assessment to exclude obstruction or structural disease (BASHH)</div>
+      <div>Do not routinely include</div><div>PSA during acute prostatitis or active epididymo-orchitis. Testosterone, LH/FSH, fasting glucose or ESR for uncomplicated acute scrotal pain. CT/MRI as first-line. Semen analysis after a single episode — reserve for fertility concerns, bilateral disease or persistent concerns</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">Scrotal USS Doppler has 82–98% sensitivity for torsion but false negatives occur — clinical suspicion overrides a "normal" USS. NAAT testing for STIs is essential as Chlamydia trachomatis is the commonest cause of epididymitis in men under 35 (UKHSA data). Culture alone misses Chlamydia. Tumour markers (AFP/βHCG) ordered before orchiectomy are critical for staging and monitoring response to treatment — a key quality marker in testicular cancer pathways (clinical practice; NICE NG12, updated April 2026, covers referral for a non-painful enlargement or change in shape or texture of the testis).</div>
+    <div class="why-drawer">Colour Doppler ultrasound has a user-dependent false-negative rate, so clinical suspicion overrides a "normal" scan (BASHH). NAAT is needed because culture alone misses Chlamydia. NICE NG12 recommends considering a suspected cancer pathway referral for a non-painful enlargement or change in shape or texture of the testis, and considering direct-access ultrasound for unexplained or persistent testicular symptoms. Tumour markers help staging after referral but must never delay it.</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -349,17 +368,18 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div><span class="pill pill-red">999 Emergency</span></div><div>Suspected testicular torsion (any age, acute onset). Fournier's gangrene. Incarcerated inguinal hernia. Haemodynamic instability</div>
-      <div><span class="pill pill-red">Same-day urology</span></div><div>Testicular trauma + haematoma. Suspected torsion of appendix testis where diagnosis uncertain. Acute epididymo-orchitis + systemic sepsis not improving with oral antibiotics in 48h</div>
-      <div><span class="pill pill-purple">Suspected cancer: urology</span></div><div>Any solid testicular mass. Unexplained hydrocoele in age &gt;40y. Rapidly enlarging testicular swelling. AFP/βHCG raised in scrotal swelling</div>
-      <div><span class="pill pill-amber">Routine Urology</span></div><div>Symptomatic varicocele (pain, or subfertility). Large symptomatic hydrocele. Chronic orchialgia &gt;3 months unresponsive to treatment. Epididymal cyst requiring treatment</div>
-      <div><span class="pill pill-blue">GUM referral</span></div><div>STI-related epididymitis for contact tracing, full STI screen, partner notification. All NAAT positive results</div>
-      <div>Primary care manage</div><div>Uncomplicated epididymo-orchitis responding to antibiotics. Confirmed benign epididymal cyst (USS confirmed). Asymptomatic small varicocele in men not seeking fertility</div>
+      <div><span class="pill pill-red">Emergency transfer / 999</span></div><div>Suspected torsion (any age) — immediate transfer via the local emergency pathway to a service able to assess and operate; 999 ambulance if haemodynamically unstable, severely unwell or unable to transfer safely. Fournier's gangrene. Incarcerated inguinal hernia. Trauma with suspected rupture</div>
+      <div><span class="pill pill-red">Same-day hospital</span></div><div>Sepsis or haemodynamic compromise. Severe pain or vomiting preventing oral treatment. Suspected abscess, infarction or Fournier's gangrene. Immunocompromise with significant infection. Failure to improve after 48–72 h. Diagnostic uncertainty regarding torsion (including suspected appendage torsion)</div>
+      <div><span class="pill pill-purple">Suspected cancer: urology</span></div><div>Non-painful enlargement or change in shape or texture of the testis. Solid intratesticular lesion on USS (NICE NG12). Unexplained or persistent testicular symptoms → urgent direct-access USS</div>
+      <div><span class="pill pill-amber">Urology</span></div><div>Urgent: episodes suggesting intermittent torsion; confirmed uropathogen with recurrent infection or urinary tract abnormality. Routine: varicocele if symptomatic, right-sided, bilateral, large or with subfertility; large symptomatic hydrocele; epididymal cyst requiring treatment; chronic scrotal pain that is persistent, disabling, post-vasectomy, associated with varicocele or not responding to initial measures</div>
+      <div><span class="pill pill-blue">Sexual health</span></div><div>Refer or discuss for: gonorrhoea risk or urethral discharge, positive NAAT, partner notification, contact tracing, test of cure where gonorrhoea is confirmed, suspected or confirmed Mycoplasma genitalium. Mixed STI/enteric risk → discuss with sexual health/microbiology</div>
+      <div>Physiotherapy / pain service</div><div>Pelvic-floor physiotherapy for pelvic-floor overactivity, trigger points or CPPS features. Pain service for neuropathic pain, significant disability, sleep disturbance, psychological comorbidity or failed conservative treatment</div>
+      <div>Primary care manage</div><div>Uncomplicated epididymo-orchitis responding to treatment. Confidently diagnosed appendage torsion. Confirmed benign, asymptomatic hydrocele or epididymal cyst. Asymptomatic small varicocele in men not seeking fertility</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">Torsion is time-critical — every 30-minute delay reduces salvage rates. The suspected cancer pathway for testicular malignancy is mandated by NICE NG12; GP compliance with suspected cancer pathway referral for solid scrotal masses is audited and a significant quality indicator. GUM referral for STI-related epididymitis ensures contact tracing and prevention of onward transmission — Chlamydia is the most common STI in England (UKHSA 2023). Varicocele-associated subfertility affects up to 35% of men with secondary infertility — early referral optimises fertility outcomes.</div>
+    <div class="why-drawer">Torsion is time-critical — use the local emergency pathway; for children and young people the GIRFT pathway supports immediate referral to a centre able to provide surgical exploration. Suspected cancer referral criteria follow NICE NG12. Sexual-health services provide partner notification, contact tracing and test of cure, preventing reinfection and onward transmission. Recurrent uropathogen epididymo-orchitis may indicate obstruction or structural urinary tract disease (BASHH).</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -368,38 +388,50 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
 <div class="node" data-type="TREAT" data-step="7">
   <div class="node-head">
     <span class="node-tag">Treat</span>
-    <h3>Step 7 — Treatment Pathways by Diagnosis</h3>
+    <h3>Step 7 — Acute Treatment by Presentation</h3>
   </div>
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
-    <p>Epididymo-orchitis is the main primary-care-treatable condition. Antibiotic choice depends on likely organism.</p>
+    <p>Treat epididymo-orchitis by likely pathogen using risk factors, not age alone. Follow current BASHH, local sexual-health and Greater Manchester antimicrobial guidance.</p>
     <div class="branch">
       <div class="b-card">
-        <div class="b-cond">Age &lt;35y / STI risk</div>
-        <div class="b-drug">Ceftriaxone + Doxycycline <span class="pill pill-teal">GUM refer</span></div>
-        <div class="b-note">Ceftriaxone 1 g IM stat (ideally GUM) + Doxycycline 100mg BD PO × 10–14 days (BASHH 2020 epididymo-orchitis). Covers Chlamydia and Gonorrhoea. Avoid fluoroquinolones (Gonorrhoea resistance)</div>
+        <div class="b-cond">Likely sexually acquired</div>
+        <div class="b-drug">Ceftriaxone + Doxycycline <span class="pill pill-teal">Sexual health</span></div>
+        <div class="b-note">Ceftriaxone 1 g IM single dose + doxycycline 100 mg BD PO for 14 days (BASHH 2020 regimen, 10–14 days; 14 days standardised here). Use the local sexual-health pathway and gonorrhoea guidance. Avoid fluoroquinolones (gonorrhoea resistance). No sexual contact until treatment completed, symptoms improved and partners assessed/treated per sexual-health advice</div>
       </div>
       <div class="b-card">
-        <div class="b-cond">Age &gt;35y / UTI associated</div>
-        <div class="b-drug">Ofloxacin <span class="pill pill-teal">BASHH 2020</span></div>
-        <div class="b-note">Ofloxacin 200mg BD PO × 14 days. Alternative: Levofloxacin 500mg OD × 10 days. Check local resistance patterns. Send MSU first. MHRA Drug Safety Update (January 2024): fluoroquinolones only when other recommended antibiotics are inappropriate — warn about tendon, neuropsychiatric and other disabling effects</div>
+        <div class="b-cond">Likely enteric / uropathogen</div>
+        <div class="b-drug">Per GM guideline <span class="pill pill-teal">MSU first</span></div>
+        <div class="b-note">Consider with positive urine leucocytes/nitrites, older age with low STI risk, recent urinary instrumentation or catheterisation, urinary tract abnormality or obstruction, recent urological procedure, or no STI features — not age alone. Send MSU before treatment where possible; follow the Greater Manchester antimicrobial guideline and susceptibilities (GM lists ofloxacin 200 mg BD for 14 days for suspected epididymitis in men over 35 with low STI risk). MHRA (January 2024): use a systemic fluoroquinolone only when other commonly recommended antibiotics are inappropriate, taking account of microbiology, contraindications, resistance, previous treatment and local advice. Tell patients to stop and seek advice if tendon pain/swelling, neuropathic symptoms, marked muscle or joint symptoms, severe mood change, confusion or other serious adverse effects</div>
       </div>
       <div class="b-card">
         <div class="b-cond">Analgesia (all)</div>
-        <div class="b-drug">NSAIDs / Paracetamol</div>
-        <div class="b-note">Ibuprofen 400mg TDS with food (if no contraindication) + Paracetamol 1g QDS. Scrotal support / elevation. Ice pack (wrapped)</div>
+        <div class="b-drug">Give promptly</div>
+        <div class="b-note">Analgesia must not delay urgent referral. Paracetamol, if appropriate. NSAID (e.g. ibuprofen 400 mg TDS with food) only after assessing renal, gastrointestinal, cardiovascular, anticoagulant and other contraindications. Scrotal support/elevation. Local cooling — avoid direct ice contact with skin</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Mixed STI + enteric risk</div>
+        <div class="b-drug">Discuss first <span class="pill pill-teal">Sexual health / micro</span></div>
+        <div class="b-note">e.g. insertive anal intercourse with STI risk. Discuss with sexual health/microbiology: ceftriaxone plus an agent covering enteric organisms may be required according to current BASHH/local guidance — not an automatic primary-care prescription; consider fluoroquinolone safety</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Severe illness</div>
+        <div class="b-drug">Same-day hospital <span class="pill pill-red">IV treatment</span></div>
+        <div class="b-note">Sepsis/haemodynamic compromise, severe pain or vomiting preventing oral treatment, suspected abscess/infarction/Fournier's, immunocompromise with significant infection, failure to improve after 48–72 h, or torsion not excluded</div>
       </div>
     </div>
     <div class="ladder" style="margin-top:14px;">
-      <div class="rung"><span class="rn">Hydrocele</span><span class="rt">Watchful waiting if small/asymptomatic. Refer urology if large, symptomatic, or secondary cause suspected (USS first)</span></div>
-      <div class="rung"><span class="rn">Varicocele</span><span class="rt">Supportive care (scrotal support, analgesia). Refer if symptomatic, bilateral, or subfertility concerns. Surgical or radiological embolisation in secondary care</span></div>
+      <div class="rung"><span class="rn">Hydrocele</span><span class="rt">Ultrasound if uncertain or testis not examinable; reassure if confirmed benign and asymptomatic. Refer urology if large or symptomatic</span></div>
+      <div class="rung"><span class="rn">Varicocele</span><span class="rt">Supportive treatment (scrotal support, analgesia). Urology if symptomatic, right-sided, bilateral, large or associated with subfertility. Surgical or radiological embolisation in secondary care</span></div>
       <div class="rung"><span class="rn">Epididymal cyst</span><span class="rt">Reassure if USS confirmed benign. No GP treatment required. Refer urology if symptomatic for excision</span></div>
-      <div class="rung"><span class="rn">Chronic orchialgia</span><span class="rt">NSAIDs + scrotal support 1st line. Consider nerve block referral, low-dose amitriptyline 10mg ON if neuropathic component. MDT approach. Urology ± pain team referral</span></div>
+      <div class="rung"><span class="rn">Suspected torsion</span><span class="rt">Immediate emergency transfer; no delay for USS</span></div>
+      <div class="rung"><span class="rn">Appendage torsion</span><span class="rt">Confident diagnosis: analgesia, support and safety-net; urgent review if uncertain or worsening</span></div>
+      <div class="rung"><span class="rn">Chronic pain</span><span class="rt">Exclude structural disease; multimodal pain, pelvic-floor and urology pathway — see Steps 9–10</span></div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">BASHH guidelines (epididymo-orchitis 2020; gonorrhoea 2025) recommend against fluoroquinolone monotherapy in younger men due to rising Gonorrhoea resistance — ceftriaxone IM covers this. UKHSA antimicrobial resistance surveillance (GRASP) shows &gt;25% Gonorrhoea resistance to ciprofloxacin. For over-35s, fluoroquinolones remain appropriate as STI organisms are less likely and Enterobacteriaceae predominate. Duration of 14 days is important to prevent progression to chronic epididymitis or infertility. Scrotal elevation reduces lymphatic congestion and accelerates recovery (physiological rationale).</div>
+    <div class="why-drawer">BASHH (2020) recommends ceftriaxone plus doxycycline for likely sexually acquired epididymo-orchitis; ceftriaxone covers gonorrhoea, in which fluoroquinolone resistance is common. The 2024 European guideline cautions against using age as a surrogate for STI risk, so choose the regimen from sexual and urinary risk factors. The MHRA (January 2024) restricts systemic fluoroquinolones to situations where other commonly recommended antibiotics are inappropriate because of disabling and potentially long-lasting adverse effects — do not prescribe ciprofloxacin generically for all patients. The Greater Manchester antimicrobial guideline is the operational antibiotic reference for local GP use.</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -408,62 +440,123 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
 <div class="node" data-type="LIFESTYLE" data-step="8">
   <div class="node-head">
     <span class="node-tag">Lifestyle</span>
-    <h3>Step 8 — Non-Pharmacological &amp; Preventive Interventions</h3>
+    <h3>Step 8 — Supportive Care &amp; Prevention</h3>
   </div>
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="lsgrid">
-      <div class="lstile"><b>Scrotal support</b> Supportive underwear or jockstrap. Reduces traction pain in epididymo-orchitis and varicocele. Simple, effective</div>
-      <div class="lstile"><b>Sexual health</b> Consistent condom use. Reduces STI-related epididymitis recurrence. Refer to GUM for contact tracing and STI prevention advice</div>
-      <div class="lstile"><b>Testicular self-examination</b> Monthly self-check post-shower. Teach three-finger technique. Enables early detection of malignancy — report new lumps promptly</div>
-      <div class="lstile"><b>Rest &amp; activity modification</b> Avoid heavy lifting and cycling during acute epididymo-orchitis. Resume gradually once pain settles (&gt;2 weeks typically)</div>
-      <div class="lstile"><b>Heat avoidance</b> For varicocele / subfertility: avoid hot baths, tight underwear, prolonged sitting. Scrotal cooling may modestly improve sperm quality</div>
-      <div class="lstile"><b>Fertility counselling</b> If bilateral varicocele or post-orchitis: refer early to fertility services. Cryopreservation discussion if pre-treatment for cancer</div>
+      <div class="lstile"><b>Analgesia</b> Give promptly; paracetamol if appropriate; NSAID only after checking renal, GI, cardiovascular and anticoagulant contraindications. Do not exceed the maximum daily dose</div>
+      <div class="lstile"><b>Scrotal support / elevation</b> Supportive underwear or jockstrap. May ease pain in epididymo-orchitis, varicocele and chronic scrotal pain</div>
+      <div class="lstile"><b>Sexual health</b> No sexual contact until treatment completed, symptoms improved and partners assessed/treated. Condom use. Sexual-health services for partner notification and STI prevention advice</div>
+      <div class="lstile"><b>Testicular awareness</b> Know what is normal. Report any new lump, swelling or change in shape or texture promptly</div>
+      <div class="lstile"><b>Rest &amp; activity modification</b> Rest and avoid heavy lifting during the acute phase. Resume activity gradually as pain settles</div>
+      <div class="lstile"><b>Local cooling</b> May help acute inflammatory pain. Wrap cold packs — avoid direct ice contact with skin</div>
+      <div class="lstile"><b>Fertility</b> Semen analysis and fertility advice only for fertility concerns, bilateral disease or persistent concerns — not routinely after a single episode. Sperm banking discussion before cancer treatment</div>
       <div class="lstile"><b>Smoking cessation</b> Smoking impairs sperm quality and testicular blood flow. Offer referral to NHS Stop Smoking service</div>
       <div class="lstile"><b>Alcohol reduction</b> Excess alcohol impairs spermatogenesis. AUDIT-C score; brief intervention if score ≥5</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">Testicular self-examination (TSE) is not formally recommended as a population screening tool (USPSTF) but remains valuable in primary care to empower men to present early with new lumps — the majority of men presenting with testicular cancer report finding it themselves. Fertility considerations are important: epididymo-orchitis can cause obstructive azoospermia; the window for intervention is limited. Men diagnosed with testicular cancer should be offered sperm banking before any treatment. Addressing sexual health holistically, including partner treatment, reduces reinfection rates.</div>
+    <div class="why-drawer">Supportive measures relieve symptoms while antibiotics act. Testicular self-examination is not recommended as a population screening tool, but awareness of what is normal helps men present promptly with a new lump. Semen analysis is not routine after a single episode of epididymo-orchitis; reserve it for fertility concerns, bilateral disease or persistent concerns. Men diagnosed with testicular cancer should be offered sperm banking before treatment. Partner notification and treatment reduce reinfection and onward transmission.</div>
   </div>
 </div>
 <div class="connector"></div>
 
-<!-- STEP 9 -->
-<div class="node" data-type="SAFETY" data-step="9">
+<!-- STEP 9 — CHRONIC: DEFINE & EXCLUDE -->
+<div class="node" data-type="DIAGNOSE" data-step="9">
   <div class="node-head">
-    <span class="node-tag">Safety</span>
-    <h3>Step 9 — Follow-Up, Monitoring &amp; Safety-Netting</h3>
+    <span class="node-tag">Diagnose</span>
+    <h3>Step 9 — Chronic Scrotal Pain (≥3 Months): Define &amp; Exclude</h3>
   </div>
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
+    <p>Persistent or recurrent scrotal/testicular pain for at least 3 months that affects function, sleep, sexual activity or quality of life, after urgent pathology, malignancy and treatable infection have been considered.</p>
     <div class="kv">
-      <div>48–72h review</div><div>Epididymo-orchitis: confirm improving with antibiotics. If worsening → escalate to same-day urology. Review MSU / NAAT results</div>
-      <div>2-week review</div><div>Confirm antibiotic course completion. Resolution of symptoms? Residual swelling → arrange scrotal USS. STI test results if pending</div>
-      <div>6-week review</div><div>Persistent swelling or pain at 6 weeks → USS to exclude malignancy or abscess formation. Refer urology if no resolution</div>
-      <div>Safety-net 999</div><div>Sudden severe scrotal pain (torsion). Scrotal skin necrosis / blackening (Fournier's). Collapse, haemodynamic instability</div>
-      <div>Safety-net same-day GP</div><div>Fever not settling after 48h antibiotics. Increasing swelling despite treatment. New systemic symptoms. Unable to tolerate oral antibiotics</div>
-      <div>Fertility follow-up</div><div>Offer semen analysis 3–6 months post-orchitis if fertility concerns raised. Refer fertility services if abnormal</div>
-      <div>Suspected cancer safety net</div><div>Any new solid, painless testicular lump found at follow-up → urology suspected cancer pathway referral regardless of previous negative USS</div>
-      <div>Chronic orchialgia</div><div>Review at 6–8 weeks; if not improving refer urology. Avoid indefinite repeat prescriptions without specialist input</div>
+      <div>Exclude first</div><div>Torsion, including intermittent torsion. Testicular malignancy. Epididymo-orchitis or abscess. Hernia. Varicocele. Hydrocele or epididymal cyst. Post-operative/inguinal nerve pain. Renal colic. Lumbar radiculopathy. Hip or pelvic-floor pathology. Chronic pelvic pain syndrome</div>
+      <div>Terminology</div><div>The EAU uses primary scrotal pain syndrome or primary testicular pain syndrome when there is no proven infection or other local pathology. "Chronic orchialgia" remains understandable clinically but is a descriptive term, not a formally specific disease</div>
+      <div>History</div><div>Vasectomy, hernia repair (ilioinguinal nerve), previous epididymo-orchitis, trauma. LUTS or pain on ejaculation (prostatitis/CPPS). Back, hip or groin pain. Prolonged sitting or cycling. Treatments already tried</div>
+      <div>Impact</div><div>Document pain severity (e.g. 0–10 scale) and functional impact on sleep, work, sexual function and mood. Review sexual, urinary, bowel, musculoskeletal and psychosocial factors, including cancer worry</div>
+      <div>Examination</div><div>As Step 4, plus inguinal tenderness after hernia repair, groin/inner-thigh sensation, lumbar spine and hip, pelvic-floor and trigger-point tenderness. DRE only if prostatitis or significant LUTS</div>
+      <div>Ultrasound</div><div>Request urgent direct-access scrotal ultrasound for unexplained or persistent testicular symptoms, a new lump, uncertain examination or where the testis cannot be adequately assessed. Do not routinely repeat ultrasound when a recent high-quality scan is normal and there has been no change in examination or symptoms</div>
+      <div>Normal ultrasound</div><div>Excludes many structural lesions but does not exclude chronic pain, neuropathic pain, pelvic-floor dysfunction or intermittent torsion</div>
+      <div>Other tests</div><div>Urinalysis, MSU and NAAT if infection is possible. Imaging for referred pain (e.g. renal tract, lumbar spine) only when clinically suspected. Suspected chronic bacterial prostatitis → obtain appropriate cultures and seek urological/microbiological advice</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">Early follow-up for epididymo-orchitis is essential because: abscess formation occurs in 3–8% of cases (requiring drainage), and incomplete antibiotic courses risk chronic epididymitis and infertility. Persistent swelling at 6 weeks must trigger USS because secondary hydroceles and testicular tumours can present sub-acutely — testicular cancer can initially appear as "epididymo-orchitis." The safety-netting script for torsion is the most critical: providing clear written instructions for when to call 999 is a patient safety imperative and RCGP examination competency.</div>
+    <div class="why-drawer">Chronic scrotal pain should only be labelled after structural, malignant, infective and referred causes have been considered — but it should not be presented as a formally specific disease (EAU chronic pelvic pain guidance). Ultrasound is not mandatory in every man and will often be normal; it excludes structural pathology, while repeated normal scans can reinforce reassurance-seeking without changing management.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 10 — CHRONIC: MANAGE -->
+<div class="node" data-type="TREAT" data-step="10">
+  <div class="node-head">
+    <span class="node-tag">Treat</span>
+    <h3>Step 10 — Chronic Scrotal Pain: Multimodal Management</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>The central message is multimodal management, not repeated antibiotic or analgesic prescribing.</p>
+    <div class="kv">
+      <div>Explain</div><div>Explain the diagnosis and that cancer has been excluded, without reinforcing repeated reassurance-seeking. Set realistic, function-based goals</div>
+      <div>Self-management</div><div>Scrotal support and activity modification where helpful. Simple analgesia by shared decision-making — regular use is not necessarily better than as-required; never exceed the maximum daily dose</div>
+      <div>Physical activity &amp; psychology</div><div>NICE NG193 prioritises physical activity and psychological therapies (e.g. CBT, ACT) for chronic primary pain</div>
+      <div>Physiotherapy</div><div>Pelvic-floor physiotherapy if pelvic-floor overactivity, trigger-point tenderness or CPPS features. Physiotherapy for post-hernia-repair or musculoskeletal pain</div>
+      <div>Urology</div><div>If pain is persistent, disabling, post-vasectomy, associated with varicocele or not responding to initial measures. Nerve blocks or surgical options are specialist decisions</div>
+      <div>Pain service</div><div>Neuropathic pain, significant disability, sleep disturbance, psychological comorbidity or failed conservative treatment</div>
+    </div>
+    <div class="ladder" style="margin-top:14px;">
+      <div class="rung"><span class="rn">Neuropathic phenotype</span><span class="rt">Only if convincing: cautious off-label trial using general neuropathic-pain guidance (NICE CG173) — amitriptyline 10 mg at night, titrated cautiously by response and tolerability; or gabapentin, pregabalin or duloxetine depending on comorbidity, interactions and local formulary</span></div>
+      <div class="rung"><span class="rn">Review</span><span class="rt">Review benefit, function and adverse effects within an agreed timeframe. Avoid routine combination of neuropathic-pain medicines in primary care. Taper rather than stop abruptly when clinically appropriate</span></div>
+      <div class="rung"><span class="rn">Cautions</span><span class="rt">Gabapentin/pregabalin: renal dosing, misuse/dependence assessment, controlled-drug prescribing requirements. Amitriptyline: avoid or use great caution in older adults, cardiac conduction disease, glaucoma, urinary retention and substantial anticholinergic burden</span></div>
+      <div class="rung"><span class="rn">Primary pain</span><span class="rt">Do not initiate NSAIDs, opioids, paracetamol or gabapentinoids solely for chronic primary pain (NICE NG193)</span></div>
+      <div class="rung"><span class="rn">Antibiotics</span><span class="rt">Do not prescribe prolonged antibiotics (including fluoroquinolones) for CPPS without evidence of bacterial infection</span></div>
+      <div class="rung"><span class="rn">Tamsulosin</span><span class="rt">Not routine for testicular pain. Consider only with significant LUTS and a prostate-pain/CPPS phenotype; review benefit</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE CG173 supports offering a choice of amitriptyline, duloxetine, gabapentin or pregabalin for neuropathic pain in general — this is not high-quality evidence specifically for chronic orchialgia. For chronic primary pain, NICE NG193 prioritises physical activity and psychological therapies and advises against initiating NSAIDs, opioids, paracetamol or gabapentinoids solely for chronic primary pain. The EAU chronic pelvic pain guidance supports a multimodal, phenotype-directed approach.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 11 -->
+<div class="node" data-type="SAFETY" data-step="11">
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Step 11 — Follow-Up, Monitoring &amp; Safety-Netting</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>48–72h review</div><div>Review acute epididymo-orchitis response and microbiology (MSU / NAAT). Not improving → same-day hospital assessment; reconsider torsion, abscess or the wrong organism</div>
+      <div>1–2 week review</div><div>Assess pain, swelling, fever, treatment adherence and sexual-health follow-up (partner notification; test of cure if gonorrhoea)</div>
+      <div>Persistent swelling / poor response</div><div>Persistent swelling, mass or poor response → urgent ultrasound and/or urology review (a tumour can co-exist with or be masked by infection)</div>
+      <div>Safety-net — emergency</div><div>New acute severe pain at any time → emergency assessment again, even with a history of chronic orchialgia (torsion). Scrotal skin necrosis, blistering or crepitus with feeling very unwell (Fournier's). Collapse, haemodynamic instability</div>
+      <div>Safety-net same-day</div><div>Fever not settling after 48–72 h of antibiotics. Increasing swelling despite treatment. New systemic symptoms. Unable to tolerate oral antibiotics. On a fluoroquinolone: stop and seek advice if tendon pain/swelling, neuropathic symptoms, marked muscle or joint symptoms, severe mood change or confusion</div>
+      <div>Fertility follow-up</div><div>Semen analysis only for fertility concerns, bilateral disease or persistent concerns — not routinely after a single episode. Refer fertility services if abnormal</div>
+      <div>Suspected cancer safety net</div><div>Any new non-painful enlargement or change in shape or texture of the testis → urgent USS / suspected cancer pathway referral (NICE NG12), regardless of a previous normal scan</div>
+      <div>Chronic scrotal pain</div><div>Structured review of function, sleep, sexual function, mood, medicine benefit and adverse effects at agreed intervals. Refer urology/pain service if not improving. Avoid indefinite repeat prescriptions without review</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Early review detects non-response, abscess formation or a missed alternative diagnosis. Persistent swelling must trigger USS because testicular tumours can present sub-acutely and may initially appear as "epididymo-orchitis". Patients with chronic scrotal pain can still develop torsion or other acute pathology — new acute severe pain needs fresh emergency assessment. Clear written safety-netting on when to seek emergency help is a patient safety imperative and RCGP examination competency.</div>
   </div>
 </div>
 
 </div><!-- end flow -->
 
 <div class="alg-foot">
-  <strong>Educational use only.</strong> Pathway based on: BASHH UK national guideline for the management of epididymo-orchitis (2020); BASHH gonorrhoea guideline (2025); EAU Guidelines on Urological Infections (2024, international); MHRA Drug Safety Update (January 2024, fluoroquinolones); NICE NG12 Suspected Cancer Recognition and Referral (updated April 2026); UKHSA Gonococcal Resistance to Antimicrobials Surveillance Programme (GRASP, 2023). Always adapt to individual patient context, local antimicrobial guidelines, and current BASHH updates.
+  <strong>Educational use only.</strong> This guide does not replace the local emergency urology pathway, local antimicrobial guideline, sexual-health advice or paediatric surgical pathway. References: (1) NICE NG12 — Suspected cancer: recognition and referral (testicular symptoms); (2) BASHH UK national guideline for the management of epididymo-orchitis (2020); (3) GIRFT/BAUS Children and Young People: testicular torsion pathway (current version); (4) IUSTI 2024 European guideline on the management of epididymo-orchitis; (5) Greater Manchester Antimicrobial Guidelines (current local version); (6) MHRA Drug Safety Update: fluoroquinolone antibiotics (January 2024); (7) EAU Guidelines on Chronic Pelvic Pain (scrotal pain); (8) NICE CG173 — Neuropathic pain in adults: pharmacological management; (9) NICE NG193 — Chronic pain (primary and secondary) in over 16s.
 </div>
 
 <script>
 (function(){
-  const KEY = 'rgp.alg.scrotalpain.v1';
+  const KEY = 'rgp.alg.scrotalpain.v2';
   const checks = document.querySelectorAll('.node-tick input[type=checkbox]');
   const pDone = document.getElementById('pDone');
   const pFill = document.getElementById('pFill');

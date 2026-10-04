@@ -3286,7 +3286,7 @@
     "ic": "🗺️",
     "t": "Delirium pathway",
     "s": "Visual algorithm · drowsiness in older adults",
-    "href": "algorithms/delirium.html"
+    "href": "algorithms/confusion.html"
    },
    {
     "ic": "🗺️",
@@ -9216,7 +9216,7 @@
     "ic": "🗺️",
     "t": "Delirium",
     "s": "Visual algorithm · NICE CG103",
-    "href": "algorithms/delirium.html"
+    "href": "algorithms/confusion.html"
    },
    {
     "ic": "💠",

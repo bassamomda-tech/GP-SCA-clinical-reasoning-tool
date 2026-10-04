@@ -130,7 +130,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
 <div class="alg-header">
   <h1>🩺 Abdominal Pain in Children</h1>
   <p>RCGP SCA Algorithm — UK Primary Care</p>
-  <div class="alg-meta"><span>NICE CG99</span><span>10-min consult</span></div>
+  <div class="alg-meta"><span>NICE CG99</span><span>NICE NG224</span><span>NICE NG1</span><span>10-min consult</span></div>
 </div>
 
 <div class="stem-banner">
@@ -150,11 +150,11 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
 
 <!-- DIAGRAM VIEW -->
 <div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — exclude the surgical abdomen and the must-not-miss medical causes (DKA, testicular torsion, intussusception), then manage the common functional and constipation-related pain; check glucose, dip urine, examine the testes, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="dg-legend"><span>The full reasoning pathway — exclude the surgical abdomen and the must-not-miss medical causes (DKA, testicular torsion, intussusception), then manage the common functional and constipation-related pain; examine the testes, test urine and glucose/ketones when indicated, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
   <div class="chart">
   <div class="flow">
 
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Abdominal pain in a child</span><div class="body">Onset, site/migration, <b>vomiting (bilious?)</b>, bowel/urinary symptoms, systemic features, age, diet. <b>Examine the abdomen, hernial orifices and testes; dip the urine and check glucose.</b></div></div>
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Abdominal pain in a child</span><div class="body">Onset, site/migration, <b>vomiting (bilious?)</b>, bowel/urinary symptoms, systemic features, age, diet. <b>Examine the abdomen, hernial orifices and testes; test urine and glucose/ketones when clinically indicated.</b></div></div>
     <div class="arrow"></div>
 
     <!-- STEP 1 — SAFETY -->
@@ -165,45 +165,45 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <li><b>DKA</b> — polyuria, polydipsia, weight loss, deep breathing (check glucose/ketones)</li>
     </ul></div></div>
     <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Emergency</span><div class="body">Surgical abdomen / torsion / intussusception / obstruction → <b>emergency surgery</b>. DKA → emergency medical admission. Don't delay for tests.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — work up cause</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Urine + glucose + targeted</span><div class="body"><b>Urine dip (UTI), capillary glucose (DKA)</b> in every child; consider coeliac serology, FBC/CRP; growth/weight review for chronic pain.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Emergency</span><div class="body">Surgical abdomen / torsion / intussusception / obstruction → <b>immediate hospital surgical assessment</b> (999 if unstable, shocked or severely unwell). Suspected DKA → emergency hospital assessment. Do not delay suspected appendicitis, torsion or intussusception for primary-care investigations.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — work up cause</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Urine + glucose + targeted</span><div class="body"><b>Urine test if UTI features or diagnostic uncertainty; capillary glucose + ketones if DKA features</b>; consider coeliac serology (on a gluten-containing diet), FBC/CRP; growth/weight review for chronic pain.</div></div></div>
     </div></div>
     <div class="arrow"><span class="tag">Step 3 · which common cause?</span></div>
 
     <!-- STEP 3 — DECISION -->
     <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Constipation</div><div class="box ix"><span class="ttl">Very common</span><div class="body">Often the cause — palpable faecal loading, infrequent hard stools, withholding; treat and the pain resolves.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Mesenteric adenitis / viral</div><div class="box ix"><span class="ttl">Common</span><div class="body">With/after a viral illness, tender but <b>no peritonism</b>; also gastroenteritis, UTI. Safety-net.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Functional / other</div><div class="box ix"><span class="ttl">Recurrent</span><div class="body">Recurrent (functional) abdominal pain once red flags excluded; consider <b>coeliac</b>, constipation, anxiety, Henoch-Schönlein purpura (purpuric rash + pain).</div></div></div>
+      <div class="col"><div class="blabel">Constipation</div><div class="box ix"><span class="ttl">Very common</span><div class="body">Positive diagnosis from history and examination (infrequent hard stools, painful defaecation, withholding, soiling, faecal mass, fissure) and no red flags; improvement may take time.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Mesenteric adenitis / viral</div><div class="box ix"><span class="ttl">Common</span><div class="body">With/after a viral illness, tender but <b>no peritonism</b> — only after important surgical diagnoses have been considered; also gastroenteritis, UTI. Safety-net.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Functional / other</div><div class="box ix"><span class="ttl">Recurrent</span><div class="body">Functional abdominal pain after structured assessment (Rome IV, growth review, no alarm features); consider <b>coeliac</b>, constipation, anxiety, Henoch-Schönlein purpura (purpuric rash + pain).</div></div></div>
     </div></div>
     <div class="arrow"><span class="tag">Step 7 · manage</span></div>
 
     <!-- STEP 7 — TREAT -->
     <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — by cause</span><span class="ttl">Treat &amp; reassure</span><div class="body"><ul>
-      <li><b>Constipation:</b> macrogol (disimpaction if loaded → maintenance), diet/fluids, toileting routine — pain usually settles.</li>
-      <li><b>UTI:</b> antibiotic per local guidance; recurrent/atypical → imaging per NICE NG224 (2022).</li>
+      <li><b>Constipation:</b> macrogol 3350 with electrolytes, age-specific dosing (treat impaction first → maintenance), diet/fluids, toileting routine — improvement may take time.</li>
+      <li><b>UTI:</b> per NICE NG224 — culture according to age and clinical status, antibiotic per local guidance and BNFC dosing; under 3 months → urgent paediatric assessment; recurrent/atypical → imaging.</li>
       <li><b>Viral / mesenteric adenitis:</b> supportive, fluids, analgesia, safety-net.</li>
-      <li><b>Functional abdominal pain:</b> positive explanation, address school/anxiety, avoid over-investigation; coeliac screen if features.</li>
+      <li><b>Functional abdominal pain:</b> positive explanation after structured assessment, address school/anxiety, selective rather than exhaustive investigation; coeliac screen if features. No routine H. pylori testing.</li>
     </ul></div></div>
     <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
 
     <!-- STEP 6 — REFER -->
     <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">Emergency</span> surgical abdomen, torsion, intussusception, obstruction, DKA.</li>
-      <li><span class="pill pill-purple">Paediatrics</span> diagnostic uncertainty, <b>weight loss / faltering growth, bilious vomiting, GI bleeding, nocturnal pain</b>, positive coeliac serology, or red-flag features.</li>
-      <li>Always <b>dip the urine and check glucose</b> before labelling pain functional.</li>
+      <li><span class="pill pill-red">Emergency</span> shock or severe illness, peritonism with instability, suspected torsion, severe obstruction/intussusception, suspected DKA with significant illness (999 if unstable). <span class="pill pill-orange">Same-day</span> suspected appendicitis, bilious vomiting in a stable child, suspected intussusception, incarcerated hernia.</li>
+      <li><span class="pill pill-purple">Paediatrics</span> diagnostic uncertainty, <b>weight loss / faltering growth, GI bleeding, nocturnal symptoms</b>, positive coeliac serology (paediatric gastroenterology), or red-flag features.</li>
+      <li>Before labelling pain functional: structured assessment, growth review, alarm features checked, and <b>urine/glucose tested where clinically indicated</b>.</li>
     </ul></div></div>
     <div class="arrow"><span class="tag">Step 8 · diet &amp; self-care</span></div>
 
     <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; support</span><span class="ttl">Address the common drivers</span><div class="body"><b>Adequate fibre and fluids and a regular toileting routine</b> for constipation · balanced diet · for functional pain, address <b>school attendance, stress and sleep</b>, reduce reinforcement of symptoms, and support the family with a positive explanation · normal activity encouraged.</div></div>
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; support</span><span class="ttl">Address the common drivers</span><div class="body"><b>Adequate fibre and fluids and a regular toileting routine</b> for constipation · balanced diet · for functional pain, support <b>normal activity including school, stress and sleep</b> (recognising individual circumstances), reduce reinforcement of symptoms, and support the family with a positive explanation · normal activity encouraged.</div></div>
     <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
 
     <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to return</span><div class="body"><b>Same-day / 999</b> if pain becomes severe/constant, the abdomen is rigid, <b>vomiting becomes green/bilious</b>, blood in stool, a swollen tender scrotum, drowsiness with thirst/weight loss (DKA), or a non-blanching rash. Review constipation/functional pain and re-examine if not settling — reconsider the diagnosis.</div></div>
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to return</span><div class="body"><b>Same-day / 999</b> if pain becomes severe/constant, the abdomen is rigid, <b>vomiting becomes green/bilious</b>, blood in stool, a swollen tender scrotum, drowsiness with thirst/weight loss (DKA), or a non-blanching rash. Review constipation/functional pain and re-examine if not settling, or if a parent remains concerned — reconsider the diagnosis.</div></div>
   </div>
   </div>
-  <div class="band"><div class="caution crit">⚠️ <b>Check glucose and examine the testes in every boy:</b> diabetic ketoacidosis and testicular torsion both masquerade as abdominal pain — and bilious vomiting is intestinal obstruction until proven otherwise.</div></div>
+  <div class="band"><div class="caution crit">⚠️ <b>Examine the testes in every boy, and check glucose and ketones when DKA features are present:</b> diabetic ketoacidosis and testicular torsion both masquerade as abdominal pain — and bilious vomiting is possible obstruction or volvulus until proven otherwise.</div></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -219,16 +219,16 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   </div>
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
-    <span>Abdominal pain is extremely common in children — over 90% is benign. But surgical emergencies must not be missed.</span>
+    <span>Abdominal pain is extremely common in children and most is self-limiting, but surgical emergencies must not be missed. Do not delay suspected appendicitis, torsion or intussusception for primary-care investigations.</span>
     <div class="rfgrid">
-      <div class="rftile"><b>Peritonism</b> Guarding, rebound tenderness, rigid board-like abdomen, absent bowel sounds → <span class="pill pill-red">999</span> — perforation / peritonitis</div>
-      <div class="rftile"><b>Bilious vomiting + pain</b> Bowel obstruction, volvulus, intussusception → <span class="pill pill-red">999</span></div>
-      <div class="rftile"><b>Severe RIF pain + fever</b> Evolving appendicitis → <span class="pill pill-red">Same-day surgical</span> — Paediatric Surgery Assessment</div>
-      <div class="rftile"><b>Intussusception features</b> Age 6–18mo, colicky pain, pallor, drawing-up legs, "redcurrant jelly" stools → <span class="pill pill-red">999</span></div>
-      <div class="rftile"><b>Testicular pain + abdominal pain</b> Testicular torsion — surgical emergency up to 6hrs → <span class="pill pill-red">999</span> — always examine genitalia in boys with abdominal pain</div>
-      <div class="rftile"><b>Trauma + abdominal pain</b> Solid organ injury, non-accidental injury — seat-belt sign, bruising pattern → <span class="pill pill-red">999</span> + safeguarding</div>
-      <div class="rftile"><b>DKA presentation</b> Vomiting + abdominal pain + polyuria + known / suspected T1DM → <span class="pill pill-red">999</span></div>
-      <div class="rftile"><b>Sudden-onset severe pain</b> Vascular event, torsion, perforation, pneumonia-referred pain → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Peritonism</b> Peritonism, a rigid abdomen, shock, severe systemic illness or suspected perforation → <span class="pill pill-red">Immediate emergency hospital assessment</span>; 999 if unstable, shocked, severely unwell or cannot be safely transported</div>
+      <div class="rftile"><b>Green / bile-stained vomiting</b> Possible obstruction or volvulus (or intussusception) → stable child: <span class="pill pill-orange">Immediate paediatric surgical / ED assessment</span>; shock, severe pain, marked distension, altered consciousness or rapid deterioration: <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Suspected appendicitis</b> Persistent or worsening localised pain, anorexia, fever, movement-related pain or peritonism → <span class="pill pill-red">Same-day surgical</span> — Paediatric Surgery Assessment</div>
+      <div class="rftile"><b>Intussusception features</b> Age 6–18mo, colicky pain, pallor, drawing-up legs, "redcurrant jelly" stools → <span class="pill pill-orange">Same-day paediatric surgical / ED</span>; <span class="pill pill-red">999</span> if shocked, lethargic or severely unwell</div>
+      <div class="rftile"><b>Testicular pain + abdominal pain</b> Suspected testicular torsion → <span class="pill pill-red">Immediate same-day surgical / urological assessment</span>; do not delay for ultrasound or other investigations; 999 if unstable or cannot be transferred safely — always examine genitalia in boys with abdominal pain</div>
+      <div class="rftile"><b>Significant abdominal trauma</b> Significant trauma, shock, peritonism, a seat-belt sign, concerning bruising or suspected non-accidental injury → <span class="pill pill-red">Emergency hospital assessment</span> + activate safeguarding procedures where appropriate</div>
+      <div class="rftile"><b>DKA presentation</b> Vomiting + abdominal pain + polyuria/polydipsia → immediate capillary glucose and blood/urine ketones; suspected DKA → <span class="pill pill-red">Emergency hospital assessment</span> (999 if significantly unwell)</div>
+      <div class="rftile"><b>Sudden-onset severe pain</b> Testicular or ovarian torsion, volvulus, intussusception, perforation, incarcerated hernia, renal or ovarian pathology, sickle-cell crisis where relevant, trauma; also pneumonia-referred pain → <span class="pill pill-red">Urgent hospital assessment</span>; 999 if unstable</div>
       <div class="rftile"><b>Bloody diarrhoea + pain</b> VTEC / intussusception / inflammatory bowel disease → <span class="pill pill-orange">Same-day ED</span></div>
       <div class="rftile"><b>Fever + RIF + anorexia in girl</b> Also consider ovarian torsion / pelvic inflammatory disease in post-pubertal girls → <span class="pill pill-orange">Same-day surgical / gynaecology</span></div>
     </div>
@@ -236,8 +236,8 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>Appendicitis is the most common surgical emergency in children, with peak incidence at 10–12 years but can occur at any age. Perforation rates are 20–40% in children (higher than adults) because children present later and diagnosis is more challenging due to atypical presentations. Every 6-hour delay in diagnosis doubles perforation risk.</p>
-      <p>Testicular torsion is time-critical — viability is 90–100% if detorsion within 6 hours, dropping to 50% at 12 hours, and &lt;10% at 24 hours. Boys with abdominal pain MUST have the scrotum examined. Torsion can present as lower abdominal pain with minimal testicular symptoms.</p>
+      <p>Appendicitis is the most common surgical emergency in children, with peak incidence at 10–12 years but can occur at any age. Perforation is more common in children than adults because children present later and diagnosis is more challenging due to atypical presentations.</p>
+      <p>Testicular torsion is time-critical — testicular viability falls with every hour of delay, so refer immediately for same-day surgical/urological assessment and do not wait for ultrasound. Boys with abdominal pain MUST have the scrotum examined. Torsion can present as lower abdominal pain with minimal testicular symptoms.</p>
       <p>Non-accidental injury (NAI) should be considered in any child with unexplained abdominal injury, particularly with bruising on the abdominal wall, back, or buttocks. The "seat-belt" bruise pattern across the abdomen in a child not in a road traffic accident is a NAI red flag.</p>
     </div>
   </div>
@@ -268,8 +268,8 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>The classic periumbilical → RIF migration of appendicitis pain occurs in only 50–60% of children — atypical presentations are common and include generalised pain, diarrhoea, and vomiting. The Paediatric Appendicitis Score (PAS) combines clinical and laboratory features and has a sensitivity of 90% for appendicitis — it can be used as a screening tool in primary care to guide urgency of referral.</p>
-      <p>Anorexia is present in &gt;90% of appendicitis cases and is one of the most useful discriminating features — a hungry child with abdominal pain is much less likely to have appendicitis than an anorexic one. Always ask "Has your child been eating normally?" and "Did they want their usual favourite food today?"</p>
+      <p>The classic periumbilical → RIF migration of appendicitis pain is often absent in children — atypical presentations are common and include generalised pain, diarrhoea, and vomiting. Appendicitis is primarily a clinical diagnosis. The Paediatric Appendicitis Score (PAS) is an adjunct within a local pathway, not a diagnostic test — scores do not replace serial clinical examination or surgical assessment.</p>
+      <p>Anorexia is common in appendicitis and is one of the most useful discriminating features — a hungry child with abdominal pain is much less likely to have appendicitis than an anorexic one. Always ask "Has your child been eating normally?" and "Did they want their usual favourite food today?"</p>
     </div>
   </div>
 </div>
@@ -287,19 +287,19 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div>0–3 months</div><div>Infantile colic (diagnosis of exclusion). Constipation. Intussusception (age 3mo+). Testicular torsion in boys. Incarcerated hernia. NAI. Always rule out organic causes before diagnosing colic.</div>
+      <div>0–3 months</div><div>Infantile colic (diagnosis of exclusion). Constipation. Intussusception (age 3mo+). Testicular torsion in boys. Incarcerated hernia. NAI. Always rule out organic causes before diagnosing colic; abdominal pain under 3 months where a serious cause cannot be confidently excluded → same-day paediatric assessment.</div>
       <div>3–12 months</div><div>Intussusception (peak 6–18mo). Hernia. Colic if &lt;3–4mo. Gastroenteritis. UTI. Constipation.</div>
       <div>1–5 years</div><div>Constipation (most common at all ages), mesenteric adenitis (viral), UTI, gastroenteritis, intussusception (up to 5yr), appendicitis (less common &lt;5yr but severe), trauma. Henoch-Schönlein Purpura (HSP): purpura + joint pain + abdominal pain.</div>
       <div>5–12 years</div><div>Appendicitis (peak 10–12yr), functional abdominal pain / FAP (most common cause of recurrent pain), constipation, mesenteric adenitis, IBD (Crohn's/UC), coeliac, gastritis, UTI, renal colic. In girls: ovarian cyst, mittelschmerz, gynaecological.</div>
-      <div>Functional abdominal pain</div><div>Rome IV criteria: ≥4 episodes/month for ≥2 months. No organic explanation found. Associated with anxiety, school stress, family conflict. Accounts for ~10% of all paediatric presentations. Not a diagnosis of exclusion — it IS a diagnosis.</div>
-      <div>Mesenteric adenitis</div><div>Viral illness + RIF pain + lymphadenopathy on USS. Self-limiting. Managed with analgesia and reassurance. Can mimic appendicitis — USS helps distinguish but does not always.</div>
+      <div>Functional abdominal pain</div><div>Rome IV: recurrent pain at least 4 times per month, for at least 2 months, insufficient criteria for another functional GI disorder, and — after appropriate clinical evaluation — no better explanation from another condition. Associated with anxiety, school stress, family conflict. A positive diagnosis, but it requires structured assessment, growth review and consideration of alarm features — not a label after a brief consultation. Rome IV allows selective investigation rather than exhaustive testing. <b>Alarm features:</b> persistent focal RUQ or RLQ pain, GI bleeding, persistent vomiting, nocturnal diarrhoea, weight loss or faltering growth, delayed puberty, fever, arthritis, perianal disease, family history of IBD or coeliac disease, abnormal examination.</div>
+      <div>Mesenteric adenitis</div><div>Viral illness + RIF pain + lymphadenopathy on USS. Diagnose only after important surgical diagnoses have been considered. Self-limiting. Managed with analgesia and reassurance. Can mimic appendicitis — USS helps distinguish but does not always.</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>Functional abdominal pain (FAP) / centrally mediated abdominal pain syndrome (CAPS) is the most common cause of recurrent abdominal pain in school-age children, accounting for 90% of chronic recurrent pain presentations. It is not a diagnosis of exclusion after exhaustive negative investigations — making a positive diagnosis with confidence and communicating it well to families prevents unnecessary tests and builds therapeutic alliance.</p>
-      <p>HSP (Henoch-Schönlein Purpura / IgA vasculitis) must not be missed — it presents as colicky abdominal pain (in 60%), arthritis (in 80%), and purpuric rash on buttocks and legs (100%). Renal involvement (haematuria, proteinuria) in 40% requires monitoring. Any child with purpuric rash + abdominal pain = HSP until proven otherwise.</p>
+      <p>Functional abdominal pain (FAP) / centrally mediated abdominal pain syndrome (CAPS) is the most common cause of recurrent abdominal pain in school-age children, but not all recurrent pain is functional. It is not a diagnosis of exclusion after exhaustive negative investigations — after structured assessment, growth review and checking for alarm features, making a positive diagnosis with confidence and communicating it well to families prevents unnecessary tests and builds therapeutic alliance.</p>
+      <p>HSP (Henoch-Schönlein Purpura / IgA vasculitis) must not be missed — it presents as colicky abdominal pain (in 60%), arthritis (in 80%), and purpuric rash on buttocks and legs (100%). Renal involvement (haematuria, proteinuria) requires urinalysis monitoring over 6 months (UK Kidney Association). Any child with purpuric rash + abdominal pain = HSP until proven otherwise.</p>
     </div>
   </div>
 </div>
@@ -320,17 +320,17 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div>General impression</div><div>Lying very still (peritonism) vs. writhing / rolling (colic). Pallor = significant pathology. Jaundice = hepatobiliary. Dehydration signs. Ill-looking = urgent. Smiling, playing with phone = reassuring for functional.</div>
       <div>Abdomen — observation</div><div>Distension (obstruction, organomegaly, constipation). Scars (previous surgery — adhesions). Visible peristalsis (pyloric stenosis in infant). Bruising (NAI, trauma).</div>
       <div>Abdomen — palpation</div><div>Start away from the pain. McBurney's point (2/3 from umbilicus to ASIS) = appendicitis. Rovsing's sign (LIF pressure → RIF pain) = peritoneal irritation. Rebound / guarding = peritonism. Hepatomegaly, splenomegaly. Faecal mass (constipation).</div>
-      <div>Genitalia (boys)</div><div>Examine scrotum in EVERY boy with abdominal pain — torsion can present as abdominal pain without obvious testicular symptoms. High-riding, horizontal testicle + pain = torsion → 999.</div>
-      <div>Genitalia (girls)</div><div>Consider pelvic pathology in post-pubertal girls. Adnexal tenderness, PID. Consider pregnancy test in adolescent girls — ectopic pregnancy is a surgical emergency.</div>
-      <div>Hernial orifices</div><div>Groin, umbilicus, scars — examine for incarcerated hernia. Tender irreducible hernia = strangulation → 999.</div>
-      <div>Perianal / rectal</div><div>Inspect for fissures (constipation). Do NOT perform PR in primary care. Blood on nappy / underwear → further assessment.</div>
+      <div>Genitalia (boys)</div><div>Examine scrotum in EVERY boy with abdominal pain — torsion can present as abdominal pain without obvious testicular symptoms. High-riding, horizontal testicle + pain = suspected torsion → immediate same-day surgical/urological assessment (999 if unstable); do not delay for ultrasound.</div>
+      <div>Genitalia (girls)</div><div>Consider pelvic pathology in post-pubertal girls. Adnexal tenderness, PID. Offer a confidential pregnancy test to post-menarchal patients where pregnancy is possible — ectopic pregnancy is a surgical emergency.</div>
+      <div>Hernial orifices</div><div>Groin, umbilicus, scars — examine for incarcerated hernia. Tender irreducible hernia = incarcerated/strangulated hernia → same-day surgical assessment; 999 if unstable or peritonitic.</div>
+      <div>Perianal / rectal</div><div>Inspect for fissures (constipation) and perianal disease (Crohn's). Digital rectal examination is not routinely required — only by a competent professional when clinically indicated (NICE CG99). Blood on nappy / underwear → further assessment.</div>
       <div>Skin / joints</div><div>Purpuric rash (HSP), jaundice, pallor, clubbing (IBD), arthritis. Examine joints if HSP suspected.</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>The examination of the scrotum in boys with abdominal pain is life-altering if torsion is present. Studies show that testicular torsion is missed in primary care in up to 20% of cases because the genitalia are not examined. A child with 6 hours of severe abdominal pain presenting at 2am who "just has a tummy ache" may have testicular torsion. Check every time.</p>
+      <p>The examination of the scrotum in boys with abdominal pain is life-altering if torsion is present. Testicular torsion is missed when the genitalia are not examined. A child with severe abdominal pain presenting at 2am who "just has a tummy ache" may have testicular torsion. Check every time.</p>
       <p>Children with peritonism lie very still because movement exacerbates pain. Driving over a speed bump or bumpy car journey increases pain (Dunphy's sign). A child who arrives in the waiting room running around is unlikely to have peritonitis. Observe the child's behaviour before and during the consultation.</p>
     </div>
   </div>
@@ -349,21 +349,21 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div>Urine dipstick / MSU</div><div><span class="pill pill-blue">Mandatory first step</span> All children with abdominal pain. UTI mimics appendicitis (especially in girls). Leucocytes alone can be present in appendicitis (proximal ureteral irritation) — send MSU to confirm.</div>
-      <div>Blood glucose + urine ketones</div><div>Any child with vomiting + pain — exclude DKA. BM strip in surgery takes 30 seconds. Urine dipstick for glucose and ketones.</div>
-      <div>Pregnancy test (urine hCG)</div><div>All post-menarchal girls with lower abdominal pain. Ectopic pregnancy is life-threatening and must be excluded. Urine hCG &gt;25 = pregnant until proven otherwise.</div>
-      <div>FBC + CRP + WBC</div><div>Paediatric Appendicitis Score includes WBC. CRP &gt;50 + WBC &gt;15 + localising signs = high appendicitis risk. However: normal bloods do NOT rule out early appendicitis. Do not be falsely reassured.</div>
-      <div>Stool calprotectin</div><div><span class="pill pill-blue">For chronic / recurrent pain</span> Raised in IBD (sensitivity 90%). &gt;200mcg/g → refer paeds gastro. Normal &lt;50mcg/g → IBD unlikely. Useful first-line test before invasive investigation.</div>
-      <div>Coeliac serology (tTG IgA + total IgA)</div><div>Recurrent abdominal pain + any of: faltering growth, iron deficiency anaemia, fatigue, diarrhoea, family history. Sensitivity 95%.</div>
-      <div>AXR</div><div>Not for diagnosis of idiopathic constipation (NICE CG99, 2010). Useful if suspected bowel obstruction (erect film — air-fluid levels, absent bowel gas). Hospital-initiated.</div>
-      <div>USS abdomen</div><div>Hospital-initiated. Appendicitis (sensitivity 85%, limited by obesity / bowel gas). Intussusception (target sign). Ovarian pathology. Not available in primary care but key investigation in ED.</div>
+      <div>Urine dipstick / MSU</div><div><span class="pill pill-blue">When UTI is plausible</span> Consider urine testing with dysuria, frequency, new bedwetting, malodorous/cloudy urine, haematuria, fever without a clear source, loin/suprapubic tenderness, vomiting, reduced intake, previous UTI or diagnostic uncertainty (NICE NG224). Not routinely needed aged 3 months+ when another infection clearly explains the presentation, unless the child remains unwell or there is uncertainty. Under 3 months with suspected UTI → urgent paediatric assessment and urine culture. Positive leukocyte esterase or nitrite → culture according to age and clinical status. Pyuria can occur with appendicitis but is not a reliable discriminator.</div>
+      <div>Blood glucose + urine ketones</div><div>Check capillary glucose and ketones in children with abdominal pain and vomiting when there is polyuria, polydipsia, weight loss, dehydration, altered consciousness, deep/rapid breathing, recurrent unexplained vomiting or clinical concern about diabetes/metabolic disease. Low threshold in an ill child, but not mandatory in every mild viral illness.</div>
+      <div>Pregnancy test (urine hCG)</div><div>Offer a confidential pregnancy test to post-menarchal patients where pregnancy is possible — particularly with lower abdominal or pelvic pain, delayed or abnormal menstruation, vaginal bleeding, sexual activity, syncope or shoulder-tip pain. Record the urine test as positive or negative per the assay instructions. A positive test with pain, bleeding, syncope or haemodynamic instability → urgent gynaecological assessment; serum hCG and pelvic ultrasound are hospital investigations.</div>
+      <div>FBC + CRP</div><div>Appendicitis is primarily a clinical diagnosis. FBC, CRP, renal function and, where appropriate, group-and-save may support assessment in hospital but cannot exclude early disease; raised values are non-specific. Use scoring systems (e.g. Paediatric Appendicitis Score) only as adjuncts within a local pathway. Do not delay same-day referral for blood tests.</div>
+      <div>Stool calprotectin</div><div><span class="pill pill-blue">Targeted — suspected IBD</span> Consider in children with chronic GI symptoms where IBD is suspected and a local paediatric pathway supports testing (NICE DG11). Interpret with symptoms, growth, FBC, CRP, albumin and stool microbiology. Do not use a single cut-off to rule IBD in or out. Not a reassurance test in acute diarrhoea or recent infection, rectal bleeding, suspected surgical disease, marked weight loss or faltering growth, severe anaemia, a significant abdominal mass or peritonism. A normal result does not override strong clinical concern.</div>
+      <div>Coeliac serology (tTG IgA + total IgA)</div><div>Recurrent abdominal pain + any of: faltering growth, iron deficiency anaemia, fatigue, diarrhoea, family history. Total IgA and IgA tTG first (NICE NG20); IgG-based test if IgA deficient. Ensure the child is eating gluten regularly before testing; do not start a gluten-free diet before diagnosis is confirmed. Positive serology → paediatric gastroenterology; it is not diagnostic in primary care.</div>
+      <div>AXR</div><div>Not for diagnosis of idiopathic constipation — no routine abdominal X-ray or ultrasound (NICE CG99). Useful if suspected bowel obstruction (erect film — air-fluid levels, absent bowel gas). Hospital-initiated.</div>
+      <div>USS abdomen</div><div>Hospital-initiated. Generally first-line imaging for suspected appendicitis in children (limited by obesity / bowel gas), with MRI or CT in hospital if inconclusive and concern persists. Intussusception (target sign). Ovarian pathology. Imaging must not delay surgical referral in a clinically concerning child.</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>Faecal calprotectin is a major advance in distinguishing IBD from functional abdominal pain. It is a neutrophil protein released during gut mucosal inflammation — raised in Crohn's and UC, normal in functional pain. A systematic review (2019) found sensitivity 93% and specificity 94% for IBD at a threshold of 50mcg/g. Requesting this test avoids many unnecessary colonoscopy referrals while appropriately identifying IBD.</p>
-      <p>Normal blood results (FBC, CRP) do NOT rule out early appendicitis — 30% of proven appendicitis cases present with normal CRP and WBC in the first 12 hours. This is a high-stakes clinical decision. If you have a clinical gestalt that "something is wrong," refer even with normal bloods.</p>
+      <p>Faecal calprotectin is a neutrophil protein released during gut mucosal inflammation — raised in Crohn's and UC. NICE DG11 supports it as an option for children with suspected IBD within a quality-assured local paediatric pathway; it is a targeted test interpreted alongside symptoms, growth and blood results, not a stand-alone rule-in or rule-out or a reassurance test.</p>
+      <p>Normal blood results (FBC, CRP) do NOT rule out early appendicitis. Use serial examination and clinical judgement rather than a single score, laboratory threshold or ultrasound result. This is a high-stakes clinical decision. If you have a clinical gestalt that "something is wrong," refer even with normal bloods.</p>
     </div>
   </div>
 </div>
@@ -381,19 +381,19 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div><span class="pill pill-red">999</span></div><div>Peritonism (guarding, rebound, rigid abdomen). Bilious vomiting + pain. Suspected torsion (testicular or ovarian). Suspected intussusception. Severe haematemesis. DKA. Ectopic pregnancy. Shock.</div>
-      <div><span class="pill pill-orange">Same-day surgical</span></div><div>Suspected appendicitis (RIF pain + anorexia + fever). Age &lt;5yr with significant abdominal pain (higher perforation risk, harder to assess). Incarcerated hernia. Bloody diarrhoea + severe pain.</div>
-      <div><span class="pill pill-amber">Same-day paeds/ED</span></div><div>Unable to exclude surgical diagnosis. Significant dehydration. Pain uncontrolled. HSP with severe abdominal or renal involvement. Age &lt;3 months with pain (organic cause more likely). DKA screen positive.</div>
-      <div><span class="pill pill-purple">Paeds outpatient (urgent)</span></div><div>Raised stool calprotectin (suspected IBD). Positive coeliac serology. Recurrent unexplained pain &gt;1 month not responding to simple measures. Weight loss + pain. Jaundice + pain.</div>
-      <div><span class="pill pill-green">Primary care manage</span></div><div>Functional abdominal pain — after appropriate assessment. Constipation-related pain. Mild gastroenteritis — well child. Mesenteric adenitis — diagnosis of exclusion after surgical cause excluded.</div>
-      <div>Safeguarding</div><div>Unexplained bruising over abdomen / back / buttocks. Inconsistent history. Multiple attendances with abdominal pain. Affect not matching reported pain severity. Refer to MASH / named GP.</div>
+      <div><span class="pill pill-red">999</span></div><div>999 or emergency transfer: shock, severe systemic illness or reduced consciousness; peritonism with instability or suspected perforation; suspected testicular or ovarian torsion; suspected DKA with significant illness; severe obstruction/volvulus; severe intussusception features; severe haematemesis; ectopic pregnancy with haemodynamic compromise; severe abdominal trauma.</div>
+      <div><span class="pill pill-orange">Same-day surgical</span></div><div>Suspected appendicitis; persistent focal right lower quadrant pain with fever or anorexia. Bilious vomiting in a stable child. Suspected intussusception. Age &lt;5yr with significant abdominal pain (higher perforation risk, harder to assess). Incarcerated hernia. Severe bloody diarrhoea with abdominal pain. Do not delay for primary-care investigations.</div>
+      <div><span class="pill pill-amber">Same-day paeds/ED</span></div><div>Unable to exclude surgical diagnosis. Significant dehydration. Pain uncontrolled. HSP with severe or persistent abdominal pain, GI bleeding, suspected intussusception, scrotal/testicular involvement, hypertension, nephritic or nephrotic syndrome, reduced renal function or significant persistent proteinuria. Age &lt;3 months with abdominal pain where a serious cause cannot be confidently excluded. Raised glucose/ketones (suspected DKA → emergency if unwell).</div>
+      <div><span class="pill pill-purple">Paeds outpatient (urgent)</span></div><div>Suspected IBD (alarm features ± raised calprotectin within the local paediatric pathway). Positive coeliac serology (paediatric gastroenterology). Recurrent unexplained pain &gt;1 month not responding to simple measures. Weight loss + pain. Jaundice + pain.</div>
+      <div><span class="pill pill-green">Primary care manage</span></div><div>Only when the child is well: functional abdominal pain — after appropriate assessment. Confirmed uncomplicated constipation without red flags. Mild gastroenteritis. Mesenteric adenitis — only after important surgical diagnoses have been considered. Mild, self-limiting viral illness.</div>
+      <div>Safeguarding</div><div>Consider safeguarding if there are unexplained injuries (e.g. bruising over abdomen / back / buttocks), inconsistent or changing explanations, delay in seeking care, concerning caregiver–child interactions, fearfulness, or other information suggesting abuse or neglect. Follow local safeguarding procedures and discuss with the designated safeguarding lead. A parent expressing persistent concern should prompt careful reassessment and safety-netting, not be treated as a red flag for abuse.</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>Children under 5 with appendicitis have higher perforation rates (50–80%) compared to older children because: they cannot localise pain well, parents and clinicians attribute pain to constipation or GE, and the omentum is poorly developed so cannot contain perforation. Any child under 5 with significant unexplained abdominal pain should have a low threshold for same-day surgical assessment.</p>
-      <p>IBD (Crohn's disease) in children can present insidiously over months with abdominal pain, fatigue, and weight loss without obvious bowel symptoms. Perianal disease (fistulae, skin tags) is present in 20% and is pathognomonic of Crohn's. Examine the perianal region and refer early — early treatment prevents bowel damage and growth failure.</p>
+      <p>Children under 5 with appendicitis have higher perforation rates than older children because: they cannot localise pain well, parents and clinicians attribute pain to constipation or GE, and the omentum is poorly developed so cannot contain perforation. Any child under 5 with significant unexplained abdominal pain should have a low threshold for same-day surgical assessment.</p>
+      <p>IBD (Crohn's disease) in children can present insidiously over months with abdominal pain, fatigue, and weight loss without obvious bowel symptoms. Perianal disease (fistulae, skin tags) is a recognised feature of Crohn's. Examine the perianal region and refer early — early treatment prevents bowel damage and growth failure.</p>
     </div>
   </div>
 </div>
@@ -414,31 +414,31 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div class="b-card">
         <div class="b-cond">Functional abdominal pain</div>
         <div class="b-drug">Explanation + CBT / pain management <span class="pill pill-teal">First-line</span></div>
-        <div class="b-note">Positive diagnosis. Validate pain as real. Explain brain-gut connection. CBT, hypnotherapy, mindfulness. Low-FODMAP diet trial (dietitian referral). Avoid excessive medical investigation.</div>
+        <div class="b-note">Positive diagnosis after structured assessment. Validate pain as real. Explain brain-gut connection. CBT and gut-directed hypnotherapy can be considered (local availability varies); mindfulness. Low-FODMAP diets only specialist/dietitian-led. Medication is usually not required in primary care. Avoid excessive medical investigation. Do not routinely test for or eradicate H. pylori.</div>
       </div>
       <div class="b-card">
         <div class="b-cond">Constipation-related pain</div>
         <div class="b-drug">Macrogol + toilet training</div>
-        <div class="b-note">Movicol Paediatric Plain (see constipation algorithm). Pain resolves with bowel function normalised. Distinguish from appendicitis — constipation pain responds quickly to disimpaction.</div>
+        <div class="b-note">Positive diagnosis from history and examination (NICE CG99). Assess and treat faecal impaction before maintenance; macrogol 3350 with electrolytes first line for disimpaction and maintenance, age-specific dosing (see constipation algorithm). Improvement may take time. Do not diagnose constipation if red flags (abdominal distension with vomiting, faltering growth, constipation from the first weeks of life, delayed meconium) are present.</div>
       </div>
       <div class="b-card">
-        <div class="b-cond">GORD / gastritis</div>
-        <div class="b-drug">Omeprazole once daily (weight-banded dose per BNFC)</div>
-        <div class="b-note">4-week trial. If no response → re-evaluate diagnosis. H. pylori: breath test (UBT) if suspected; treat if positive with triple therapy (under specialist guidance).</div>
+        <div class="b-cond">Persistent typical reflux symptoms</div>
+        <div class="b-drug">PPI (weight-banded dose per BNFC) — 4-week trial</div>
+        <div class="b-note">Consider only for persistent, typical heartburn, retrosternal or epigastric pain after appropriate assessment (NICE NG1) — not for nonspecific abdominal pain or isolated regurgitation. Reassess response; refer if symptoms do not resolve or recur. Do not routinely test for or eradicate H. pylori in children with functional abdominal pain — testing is specialist-led for a clear indication such as suspected ulcer disease.</div>
       </div>
     </div>
     <div class="kv" style="margin-top:12px">
-      <div>Analgesia — acute pain</div><div>Paracetamol 15mg/kg PO/PR 4–6hrly + ibuprofen 5–10mg/kg 8hrly if age ≥3mo. <b>Do NOT withhold analgesia pending surgical assessment</b> — it does not mask signs and improves examination quality. Evidence-based.</div>
+      <div>Analgesia — acute pain</div><div>Age/weight-based dosing per BNFC and local formulation guidance: paracetamol 15 mg/kg 4–6-hourly (maximum 4 doses in 24 hours; check the BNFC maximum daily dose) ± ibuprofen 5–10 mg/kg three times daily if age ≥3 months (maximum 30 mg/kg/day). Use lower doses or avoid with renal impairment or dehydration; avoid ibuprofen in significant dehydration, renal disease, GI bleeding or NSAID-sensitive asthma. <b>Do NOT withhold analgesia pending surgical assessment</b> — appropriate analgesia improves cooperation and examination quality, but reassessment remains necessary.</div>
       <div>Mesenteric adenitis</div><div>Self-limiting — analgesia, fluids, reassurance. Duration 1–2 weeks. Follow-up if not improving to exclude missed appendicitis. Antibiotics not indicated (viral aetiology).</div>
-      <div>HSP management</div><div>Analgesia (NSAIDs initially, paracetamol if renal involvement). Urine monitoring weekly x 4 weeks (haematuria / proteinuria). Steroids in specialist setting only for severe abdominal or renal involvement.</div>
-      <div>UTI with abdominal pain</div><div>See fever algorithm — treat with trimethoprim or nitrofurantoin (see Step 7 fever algorithm). Pain and vomiting resolve rapidly once UTI treated.</div>
+      <div>HSP management</div><div>Analgesia — paracetamol; avoid NSAIDs, or use only with specialist/renal advice, if there is renal involvement, dehydration, GI bleeding or hypertension. Urinalysis frequently over 6 months (e.g. weekly for the first 4–6 weeks, then monthly); BP at diagnosis and when renal involvement is suspected or present. Steroids are not routine primary-care treatment — severe abdominal pain or GI bleeding may need specialist-directed corticosteroids after intussusception and other surgical causes are excluded.</div>
+      <div>UTI with abdominal pain</div><div>Manage per NICE NG224: urine culture according to age and clinical status; antibiotic choice per local guidance with age/weight-specific BNFC dosing and contraindications checked; under 3 months → urgent paediatric assessment; upper UTI/pyelonephritis needs a different regimen. Reassess if symptoms do not settle.</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>The evidence strongly supports giving analgesia before surgical assessment — three RCTs and a Cochrane review (2011) showed analgesia does NOT mask signs of appendicitis and significantly reduces patient distress without changing surgical outcomes. Withholding analgesia in a child with abdominal pain is now considered poor practice.</p>
-      <p>For functional abdominal pain, gut-directed hypnotherapy and CBT are more effective than medication in reducing pain episodes and school absenteeism. A systematic review (2017) found CBT reduced pain frequency by 50% vs 25% in controls. Antispasmodics (mebeverine, hyoscine) have weak evidence in children. Avoid unnecessary PPI prescribing — gut microbiome effects.</p>
+      <p>The evidence strongly supports giving analgesia before surgical assessment — three RCTs and a Cochrane review (2011) found analgesia reduces distress without changing surgical outcomes. Withholding analgesia in a child with abdominal pain is poor practice, but signs must still be reassessed after it is given.</p>
+      <p>For functional abdominal pain, gut-directed hypnotherapy and CBT are more effective than medication in reducing pain episodes and school absenteeism. Medication is usually not required in primary care; antispasmodics (mebeverine, hyoscine) have weak evidence in children. Avoid unnecessary PPI prescribing — gut microbiome effects.</p>
     </div>
   </div>
 </div>
@@ -457,8 +457,8 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="node-body">
     <div class="lsgrid">
       <div class="lstile"><b>Normalise and validate</b> Explain that functional pain is real, common, and not dangerous. Avoid catastrophising language ("nothing wrong"). Say instead: "Your gut is very sensitive — it's a real signal from a very sensitive nervous system." This reduces anxiety and pain amplification.</div>
-      <div class="lstile"><b>Maintain normal activities</b> School attendance is critical — every day off school reinforces pain avoidance behaviour. Write to school with management plan. Avoid GP letters that excuse school absence for functional abdominal pain — time off prolongs illness (fit notes apply to employment, not to school).</div>
-      <div class="lstile"><b>Low-FODMAP diet</b> Fermentable carbohydrates trigger IBS-type symptoms. Trial of 4–6 weeks under dietitian guidance can reduce functional pain by 50–60%. Not appropriate without dietitian support — nutritional risk in growing children.</div>
+      <div class="lstile"><b>Maintain normal activities</b> Support normal activity, including school attendance, while recognising individual circumstances. Agree a management plan with the family and, where helpful, the school.</div>
+      <div class="lstile"><b>Low-FODMAP diet</b> Fermentable carbohydrates trigger IBS-type symptoms. Should only be specialist/dietitian-led. Not appropriate without dietitian support — nutritional risk in growing children.</div>
       <div class="lstile"><b>Stress and anxiety management</b> School bullying, academic pressure, family conflict are common triggers. Address with parents and school. Refer CAMHS if anxiety is significant. Mindfulness apps (Headspace for Kids, Calm) are useful adjuncts for children ≥8yr.</div>
       <div class="lstile"><b>Regular eating pattern</b> Skipping meals triggers pain in many children. Regular breakfast, lunch, and dinner. Avoid high-fat, high-spice, and carbonated drinks if symptomatic. Adequate fibre (fruits, vegetables, wholegrains).</div>
       <div class="lstile"><b>Adequate hydration</b> 6–8 cups fluid/day. Dehydration causes GI dysmotility and pain sensitisation. Water preferred. Limit fizzy drinks (carbonation causes bloating and pain).</div>
@@ -467,7 +467,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>School absenteeism is the most important functional outcome in paediatric chronic abdominal pain. Children who miss school develop educational deficits, social isolation, anxiety, and depression — all of which amplify pain. An early, clear message that school attendance is expected and supported reduces long-term morbidity more than any medication.</p>
+      <p>School absenteeism is the most important functional outcome in paediatric chronic abdominal pain. Children who miss school develop educational deficits, social isolation, anxiety, and depression — all of which amplify pain. Supporting normal activity, including school, while recognising the child's individual circumstances is a central part of management.</p>
       <p>The gut-brain axis explains functional abdominal pain mechanistically — visceral hypersensitivity, altered gut motility, and central sensitisation all contribute. Explaining this brain-gut connection using age-appropriate language (e.g., "your stomach has its own little brain that gets stressed when you're worried") has been shown to reduce parent catastrophising and improve treatment compliance.</p>
     </div>
   </div>
@@ -489,17 +489,17 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div>Acute pain — first episode</div><div>Review within 24–48hrs if: suspected appendicitis not meeting 999 threshold, amber features, diagnostic uncertainty. Earlier if deteriorating.</div>
       <div>Functional pain</div><div>Review 4–6 weeks — has the intervention (diet, CBT, school support) helped? Pain diary useful. Growth parameters at each visit. Red flags review.</div>
       <div>IBD / coeliac follow-up</div><div>Once referred and diagnosed: GP role includes monitoring growth, nutrition, medication side effects (e.g., azathioprine monitoring: FBC, LFTs 3-monthly). Annual influenza and pneumococcal vaccination (immunosuppressed).</div>
-      <div>HSP monitoring</div><div>Urine dipstick (blood + protein) weekly for 4 weeks, then monthly for 6 months. BP measurement monthly. Refer paeds nephrology if proteinuria &gt;1+ persists or haematuria + proteinuria together.</div>
-      <div><span class="pill pill-red">Call 999 if:</span></div><div>Pain suddenly much worse. Vomit turns green. Child becomes floppy / pale. Abdomen becomes hard / rigid. Severe difficulty breathing (pneumonia-referred abdominal pain).</div>
-      <div><span class="pill pill-orange">Same-day if:</span></div><div>Pain persists &gt;6hrs and worsening. Fever developing or worsening. Anorexia persisting. Repeated visits with same pain. New mass palpable. Urinary symptoms develop. Parent overriding your reassurance.</div>
+      <div>HSP monitoring</div><div>Frequent urinalysis (blood + protein) over 6 months — e.g. weekly for the first 4–6 weeks, then monthly (UK Kidney Association). BP at diagnosis and when renal involvement is suspected or present. Urgent paediatric/renal referral for hypertension, nephritic or nephrotic syndrome, reduced renal function or significant persistent proteinuria; same-day for severe or persistent abdominal pain, GI bleeding, suspected intussusception or scrotal involvement.</div>
+      <div><span class="pill pill-red">Call 999 if:</span></div><div>Pain suddenly much worse with the child severely unwell. Green vomit with the child unwell or deteriorating (otherwise same-day). Child becomes floppy / pale. Abdomen becomes hard / rigid. Severe difficulty breathing (pneumonia-referred abdominal pain).</div>
+      <div><span class="pill pill-orange">Same-day if:</span></div><div>Persistent or worsening pain, or pain becoming localised. Fever developing or worsening. Anorexia persisting. Green vomiting in a stable child. New mass palpable. Urinary symptoms develop. A parent who remains concerned — reassess carefully rather than reassure.</div>
       <div>Documentation key points</div><div>Record exact location of maximal tenderness, guarding, rebound, bowel sounds, genitalia exam (boys). Signed and timed. If referring for suspected appendicitis — document clinical features that prompted referral clearly.</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>Time-based safety-netting is critical for abdominal pain — "come back if it gets worse" is insufficient. Specify: "If the pain is still there in 6 hours and getting worse, go straight to A&E — do not wait for a GP appointment." This specificity correlates with better decision-making by parents and earlier presentation for surgical assessment.</p>
-      <p>HSP nephritis develops weeks after the initial presentation and is the most serious complication — 5% of children develop chronic kidney disease. Monthly urine and BP monitoring for 6 months is essential and is a primary care responsibility. In practice this follow-up urinalysis and BP monitoring is usually led by the GP, so agree who is doing it at discharge.</p>
+      <p>Time-based safety-netting is critical for abdominal pain — "come back if it gets worse" is insufficient. Specify: "If the pain is getting worse, moving to one place, or your child stops eating, becomes feverish or more unwell, go straight to A&E — do not wait for a GP appointment." This specificity correlates with better decision-making by parents and earlier presentation for surgical assessment.</p>
+      <p>HSP nephritis develops weeks after the initial presentation and is the most serious complication. Frequent urinalysis over 6 months (weekly early, then monthly) with BP checks at diagnosis and when renal involvement is suspected is essential and is often a primary care responsibility. In practice this follow-up urinalysis and BP monitoring is usually led by the GP, so agree who is doing it at discharge.</p>
     </div>
   </div>
 </div>
@@ -507,7 +507,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
 </div>
 
 <div class="alg-foot">
-  <strong>Educational use only.</strong> Based on: NICE NG12 (Suspected cancer, updated April 2026), NICE CG99 (Constipation), NICE HTG320 (formerly DG11; faecal calprotectin for suspected IBD), SHARE guidance on IgA vasculitis (international), Rome IV criteria for functional GI disorders (international), Paediatric Appendicitis Score (Samuel 2002), RCPCH guidance. Always adapt to individual patient context and local guidelines.
+  <strong>Educational use only.</strong> Based on: NICE NG12 (Suspected cancer, updated April 2026), NICE CG99 (Constipation), NICE NG224 (UTI in under 16s), NICE NG143 (Fever in under 5s), NICE NG1 (GORD in children and young people), NICE NG240 (Bacterial meningitis and meningococcal disease), NICE NG20 (Coeliac disease), UK Kidney Association IgA vasculitis complications guidance (2022), NICE HTG320 (formerly DG11; faecal calprotectin for suspected IBD), SHARE guidance on IgA vasculitis (international), Rome IV criteria for functional GI disorders (international), Paediatric Appendicitis Score (Samuel 2002), RCPCH guidance. Always adapt to individual patient context and local guidelines — use local (e.g. Bolton / Greater Manchester) pathways for paediatric surgical referral, acute paediatric assessment, suspected UTI, safeguarding and paediatric gastroenterology.
 </div>
 
 <script>

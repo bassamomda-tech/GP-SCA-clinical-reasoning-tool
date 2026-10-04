@@ -895,7 +895,7 @@
     "ic": "🗺️",
     "t": "Delirium pathway",
     "s": "Visual algorithm · 4AT · NICE CG103",
-    "href": "algorithms/delirium.html"
+    "href": "algorithms/confusion.html"
    },
    {
     "ic": "🗺️",
@@ -2878,7 +2878,7 @@
     "ic": "🗺️",
     "t": "Delirium",
     "s": "Visual algorithm · acute change",
-    "href": "algorithms/delirium.html"
+    "href": "algorithms/confusion.html"
    },
    {
     "ic": "📋",
@@ -5293,7 +5293,7 @@
     "ic": "🗺️",
     "t": "Delirium",
     "s": "Visual algorithm · NICE CG103",
-    "href": "algorithms/delirium.html"
+    "href": "algorithms/confusion.html"
    },
    {
     "ic": "💠",

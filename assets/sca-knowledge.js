@@ -353,8 +353,7 @@ window.SCA_LINKS = {
     { ic:'💠', t:'MSK protocols', s:'Stepwise treatment', href:'management.html?cat=musculoskeletal-and-rheumatology' }
   ],
   'home-visit-confusion': [
-    { ic:'🗺️', t:'Delirium pathway', s:'4AT · PINCH ME', href:'algorithms/delirium.html' },
-    { ic:'🗺️', t:'Confusion pathway', s:'Visual algorithm', href:'algorithms/confusion.html' },
+    { ic:'🗺️', t:'Confusion and delirium pathway', s:'4AT · PINCH ME', href:'algorithms/confusion.html' },
     { ic:'📋', t:'Dementia', s:'Case walkthrough', href:'../cases/dementia.html' }
   ],
   'acne-teen': [

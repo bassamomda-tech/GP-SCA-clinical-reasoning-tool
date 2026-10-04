@@ -8148,7 +8148,7 @@
    },
    {
     "ic": "🗺️",
-    "t": "Scrotal pain and swelling",
+    "t": "Acute and chronic scrotal pain",
     "s": "Visual algorithm · differential",
     "href": "algorithms/scrotal-pain.html"
    }
@@ -8613,15 +8613,9 @@
   "links": [
    {
     "ic": "🗺️",
-    "t": "Scrotal pain and swelling",
+    "t": "Acute and chronic scrotal pain",
     "s": "Visual algorithm · torsion first",
     "href": "algorithms/scrotal-pain.html"
-   },
-   {
-    "ic": "🗺️",
-    "t": "Testicular pain",
-    "s": "Visual algorithm · acute scrotum",
-    "href": "algorithms/testicular-pain.html"
    },
    {
     "ic": "🗺️",

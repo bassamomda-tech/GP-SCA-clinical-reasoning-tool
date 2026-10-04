@@ -126,7 +126,7 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
 
 <!-- DIAGRAM VIEW -->
 <div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — age and duration drive the differential: a persistent unexplained neck lump in an adult needs urgent investigation for head-and-neck cancer and lymphoma. Exclude airway compromise, sort the cause, treat the benign, refer and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="dg-legend"><span>The full reasoning pathway for an adult with a neck lump — age, persistence, progression, site, associated symptoms and examination findings determine urgency. Exclude airway compromise, assess for suspected cancer (NICE NG12), characterise the cause, treat the benign, refer and safety-net. Thyroid swelling (NICE NG145/NG230), lymphadenopathy/lymphoma, salivary-gland mass and suspected TB (NICE NG33) follow their own specialist pathways.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
   <div class="chart">
   <div class="flow">
 
@@ -136,50 +136,50 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     <!-- STEP 1 — SAFETY -->
     <div class="box dec"><span class="lbl">Step 1 · Safety — airway &amp; cancer red flags</span><span class="ttl">Compromise or sinister features?</span><div class="body"><ul>
       <li><b>Stridor / compressive goitre</b> → admit today</li>
-      <li><b>Persistent unexplained lump &gt;3 weeks</b> in an adult</li>
-      <li><b>Hard, fixed/craggy node</b>; hoarseness/dysphagia/oral lesion/unilateral ear pain (head &amp; neck SCC)</li>
-      <li><b>B-symptoms</b> (lymphoma), rapid growth, supraclavicular node</li>
+      <li><b>Persistent unexplained neck lump</b>, unexplained thyroid lump, or unexplained lymphadenopathy/splenomegaly in an adult (NICE NG12)</li>
+      <li><b>Hard, fixed/craggy or progressive node</b>; persistent unexplained hoarseness (≥45), dysphagia/odynophagia, oral lesion, unilateral otalgia, cranial neuropathy</li>
+      <li><b>B-symptoms</b> (increase concern but not required), rapid growth, supraclavicular node, new lateral cystic mass in an adult</li>
     </ul></div></div>
     <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Admit today / Suspected cancer</span><div class="body">Stridor → admit today. Suspected head &amp; neck cancer or lymphoma → urgent suspected-cancer pathway (+ USS ± biopsy). <b>Thyroid lump:</b> palpation can't separate benign (80%) from malignant (20%) → check TFTs &amp; refer (NICE NG145).</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — characterise</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">By pattern</span><div class="body">FBC if ?lymphoma/infective; TFTs for thyroid lump; <b>USS neck ± core biopsy</b> for a persistent lump. <b>Don't reflexively USS incidental findings</b> — most are benign and over-testing causes harm/anxiety.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Admit today / Suspected cancer</span><div class="body">Stridor, drooling or rapidly progressive airway swelling → 999/admit today. Suspected head &amp; neck cancer or lymphoma → suspected cancer pathway (specialist team arranges imaging and tissue diagnosis). <b>Unexplained thyroid lump:</b> suspected cancer pathway (NICE NG12); check TSH but don't delay referral.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — characterise</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">By pattern</span><div class="body">Only where useful: FBC ± film and CRP/ESR for unexplained lymphadenopathy; TSH for a thyroid lump; urgent CXR if aged ≥40 with supraclavicular or persistent cervical nodes. Imaging and tissue diagnosis via the specialist pathway. <b>Don't reflexively USS incidental findings</b> — over-testing causes harm/anxiety.</div></div></div>
     </div></div>
     <div class="arrow"><span class="tag">Step 3 · which cause?</span></div>
 
     <!-- STEP 3 — DECISION -->
     <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
       <div class="col"><div class="blabel">Reactive lymphadenopathy</div><div class="box ix"><span class="ttl">Commonest</span><div class="body">Infective — tender, mobile, recent URTI/skin/dental; resolves with safety-net &amp; review.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Thyroid / congenital</div><div class="box ix"><span class="ttl">Midline, moves on swallowing</span><div class="body">Goitre/nodule → TFTs + USS (thyroid-nodule pathway). Young: thyroglossal cyst (moves on tongue protrusion), branchial cyst, dermoid.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Thyroid / congenital</div><div class="box ix"><span class="ttl">Midline, moves on swallowing</span><div class="body">Goitre/nodule → TSH; USS when malignancy suspected (thyroid pathway, NICE NG145/NG230). Young: thyroglossal cyst (moves on tongue protrusion), branchial cyst, dermoid.</div></div></div>
       <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Malignant</div><div class="box ix"><span class="ttl">Red flag</span><div class="body"><b>Metastatic node (head/neck SCC)</b>, lymphoma, thyroid cancer, salivary-gland tumour.</div></div></div>
     </div></div>
     <div class="arrow"><span class="tag">Step 7 · manage</span></div>
 
     <!-- STEP 7 — TREAT -->
     <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — by diagnosis</span><span class="ttl">Treat benign, fast-track sinister</span><div class="body"><ul>
-      <li><b>Reactive node:</b> treat the source, reassure, <b>review in ~3 weeks</b> — persistence beyond 3 weeks → investigate.</li>
+      <li><b>Reactive node:</b> treat the source, document the presumed diagnosis and a <b>review date with escalation criteria</b> — not resolving as expected → refer rather than repeat antibiotics.</li>
       <li><b>Congenital cysts (thyroglossal/branchial):</b> ENT for excision if symptomatic/recurrent (after excluding malignancy in older patients).</li>
-      <li><b>Thyroid nodule:</b> TFTs + USS (U-grade) → FNA per criteria; thyroid pathway.</li>
-      <li><b>Suspected malignancy:</b> Suspected cancer pathway referral — core/excision biopsy (not FNA) for lymphoma.</li>
+      <li><b>Thyroid nodule:</b> TSH; specialist USS risk stratification (U-grade) → USS-guided FNAC per result (NICE NG230).</li>
+      <li><b>Suspected malignancy:</b> Suspected cancer pathway referral — image-guided tissue diagnosis arranged by the specialist team; no blind biopsy in primary care.</li>
     </ul></div></div>
     <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
 
     <!-- STEP 6 — REFER -->
     <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">Admit today</span> stridor / airway compromise from a compressive goitre.</li>
-      <li><span class="pill pill-purple">Suspected cancer · NICE NG12 (updated April 2026)</span> unexplained neck lump persisting &gt;3 weeks, or suspected lymphoma (with B-symptoms) → urgent pathway + USS; oral/throat lesion → head &amp; neck.</li>
-      <li><span class="pill pill-purple">ENT / haematology / endocrine</span> per cause; thyroid nodule → thyroid clinic.</li>
+      <li><span class="pill pill-red">999 / admit today</span> stridor, drooling, rapidly progressive airway swelling, suspected deep-neck abscess, sepsis, anaphylaxis.</li>
+      <li><span class="pill pill-purple">Suspected cancer · NICE NG12 (updated April 2026)</span> persistent unexplained neck lump; unexplained neck lump or persistent hoarseness at ≥45; unexplained thyroid lump; unexplained lymphadenopathy/splenomegaly (B-symptoms not required); oral/throat lesion → head &amp; neck. No arbitrary observation period.</li>
+      <li><span class="pill pill-purple">ENT / haematology / endocrine</span> per cause; thyroid nodule → thyroid pathway; suspected TB → local TB service.</li>
     </ul></div></div>
     <div class="arrow"><span class="tag">Step 8 · risk reduction</span></div>
 
     <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Prevention &amp; modifiable factors</span><span class="ttl">Address the source &amp; risk</span><div class="body"><b>Smoking and alcohol reduction</b> (the dominant head-and-neck cancer risks; HPV is also relevant) · treat and prevent recurrent local infections (dental, skin) · HIV testing where lymphadenopathy is unexplained · reassurance and clear safety-netting for confirmed benign cysts.</div></div>
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Prevention &amp; modifiable factors</span><span class="ttl">Address the source &amp; risk</span><div class="body"><b>Smoking cessation and alcohol-risk advice</b> (signpost to local NHS services); ask about betel nut/paan; check HPV vaccination status — prevention must not delay diagnostic referral · treat and prevent recurrent local infections (dental, skin) · HIV testing where lymphadenopathy is unexplained · reassurance and clear safety-netting for confirmed benign cysts.</div></div>
     <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
 
     <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Admit today</b> for stridor/breathing difficulty. <b>Review a presumed reactive lump at 3 weeks</b> — if it persists, grows, hardens or fixes, refer urgently rather than re-review. Return sooner with hoarseness, dysphagia, weight loss or night sweats. Ensure the suspected cancer pathway USS/biopsy is booked and results actioned.</div></div>
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Admit today</b> for stridor/breathing difficulty. <b>If observing a presumed reactive lump, document the diagnosis, findings, review date and escalation criteria</b> — if it is not resolving as expected, grows, hardens or fixes, refer rather than re-review. Return sooner with hoarseness, dysphagia, weight loss or night sweats. Ensure the suspected cancer pathway USS/biopsy is booked and results actioned.</div></div>
   </div>
   </div>
-  <div class="band"><div class="caution">⚠️ <b>An unexplained persistent neck lump in an adult is cancer until proven otherwise</b> — arrange urgent ultrasound and refer on the head-and-neck or haematological pathway rather than watching it. A compressive goitre with stridor is a same-day admission.</div></div>
+  <div class="band"><div class="caution">⚠️ <b>An unexplained persistent neck lump in an adult needs careful assessment for malignancy</b> — refer on the appropriate suspected cancer pathway (head-and-neck, thyroid or haematological) rather than watching it; do not delay referral for an arbitrary observation period. Stridor or airway compromise is a 999/same-day admission.</div></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -193,22 +193,24 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     </div>
     <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
     <div class="node-body">
-      <p class="intro">Any neck lump presenting for the first time in a patient over 40 must be assumed malignant until proven otherwise. Don't be falsely reassured by a "soft" or "mobile" lump.</p>
+      <p class="intro">An unexplained neck lump in an adult should be assessed carefully for malignancy. Age, persistence, progression, site, associated symptoms and examination findings determine the urgency of referral. A soft or mobile lump does not exclude malignancy, particularly cystic metastatic disease.</p>
       <div class="rfgrid">
-        <div class="rftile"><b>Hard, fixed, non-tender lump</b> Especially in patient &gt;40 or smoker/drinker. No improvement after 3 weeks → <span class="pill pill-purple">Suspected cancer: Head &amp; Neck</span></div>
-        <div class="rftile"><b>Persistent lump &gt;3 weeks</b> Any age, any character. Unexplained neck mass &gt;3 weeks without obvious infective cause → <span class="pill pill-purple">Suspected cancer: Head &amp; Neck</span></div>
-        <div class="rftile"><b>Associated dysphagia / odynophagia</b> Difficulty or pain on swallowing with neck mass → <span class="pill pill-purple">Suspected cancer: Head &amp; Neck / UGI</span></div>
-        <div class="rftile"><b>Hoarseness &gt;3 weeks</b> With neck lump — laryngeal malignancy with nodal involvement → <span class="pill pill-purple">Suspected cancer: Head &amp; Neck</span></div>
-        <div class="rftile"><b>Unexplained weight loss</b> &gt;5% in 3 months with neck mass → lymphoma or metastatic malignancy → <span class="pill pill-purple">Suspected cancer: Haematology or H&amp;N</span></div>
-        <div class="rftile"><b>Night sweats + fever + lump</b> B-symptoms: drenching night sweats, fever, weight loss + lymphadenopathy → lymphoma → <span class="pill pill-purple">Suspected cancer: Haematology</span></div>
-        <div class="rftile"><b>Airway compromise</b> Stridor, drooling, muffled voice, inability to open mouth — Ludwig's angina or retropharyngeal abscess → <span class="pill pill-red">999</span></div>
-        <div class="rftile"><b>Rapidly enlarging lump</b> Doubling in days with fever (neck abscess) or weeks (aggressive lymphoma / anaplastic thyroid) → <span class="pill pill-red">Same-day assessment</span></div>
-        <div class="rftile"><b>Thyroid mass + features</b> Hard, fixed thyroid mass; nodule &gt;1 cm with hoarseness; solitary nodule with risk factors (previous radiotherapy, family history MTC) → <span class="pill pill-purple">Suspected cancer: Endocrine/H&amp;N</span></div>
+        <div class="rftile"><b>Hard, fixed, non-tender or progressive lump</b> Especially in a smoker/drinker. Refer promptly — do not observe for an arbitrary period → <span class="pill pill-purple">Suspected cancer: Head &amp; Neck</span></div>
+        <div class="rftile"><b>Persistent unexplained neck lump</b> Any adult (oral cancer); any unexplained neck lump at ≥45 (laryngeal cancer); unexplained thyroid lump (thyroid cancer) — NICE NG12 → <span class="pill pill-purple">Suspected cancer: Head &amp; Neck / Thyroid</span></div>
+        <div class="rftile"><b>Associated dysphagia / odynophagia</b> Neck lump with dysphagia or odynophagia requires urgent specialist assessment — select the head-and-neck or upper-GI pathway according to the site and nature of the swallowing difficulty; emergency assessment if airway compromise or unable to swallow secretions → <span class="pill pill-purple">Suspected cancer: Head &amp; Neck / UGI</span></div>
+        <div class="rftile"><b>Persistent unexplained hoarseness</b> In adults aged 45 or over (NICE NG12). Refer sooner if associated with a neck lump, stridor, dysphagia, haemoptysis, weight loss or airway compromise → <span class="pill pill-purple">Suspected cancer: Head &amp; Neck</span></div>
+        <div class="rftile"><b>Unexplained weight loss</b> with neck mass → lymphoma or metastatic malignancy → <span class="pill pill-purple">Suspected cancer: Haematology or H&amp;N</span></div>
+        <div class="rftile"><b>Unexplained lymphadenopathy or splenomegaly</b> In an adult, consider suspected cancer referral even without B-symptoms. Record fever, night sweats, pruritus, weight loss, breathlessness and alcohol-induced node pain → <span class="pill pill-purple">Suspected cancer: Haematology</span></div>
+        <div class="rftile"><b>Airway compromise</b> Stridor, drooling or inability to swallow saliva, muffled voice, rapidly progressive airway symptoms, severe respiratory distress, suspected deep-neck infection with systemic illness, anaphylaxis or collapse — e.g. Ludwig's angina or retropharyngeal abscess → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Rapidly enlarging lump</b> Same-day hospital/ENT assessment if painful, febrile, fluctuant, systemically unwell, or with airway symptoms, neurological signs or vascular compromise → <span class="pill pill-red">Same-day assessment</span>. Rapidly enlarging painless thyroid or neck mass without emergency features → <span class="pill pill-purple">Suspected cancer pathway</span></div>
+        <div class="rftile"><b>Unexplained thyroid lump</b> Suspected cancer pathway referral (NICE NG12); higher concern if hard/fixed, hoarseness, previous neck radiotherapy or family history of medullary thyroid cancer → <span class="pill pill-purple">Suspected cancer: Endocrine/H&amp;N</span></div>
+        <div class="rftile"><b>Supraclavicular node</b> High risk. Aged ≥40: urgent chest X-ray (NICE NG12/local pathway) and consider suspected cancer referral by examination and symptoms. Do not assume the primary site from the side alone → <span class="pill pill-purple">Suspected cancer</span></div>
+        <div class="rftile"><b>New lateral cystic neck mass (adult)</b> Not to be assumed a benign branchial cyst — cystic metastatic SCC (often HPV-related) can mimic it. Refer for specialist imaging/tissue diagnosis → <span class="pill pill-purple">Suspected cancer: Head &amp; Neck</span></div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">A neck lump in a patient over 40 is malignant until proven otherwise — the probability exceeds 50% in this group. NICE NG12 (updated April 2026) advises considering a suspected cancer pathway referral for a persistent unexplained neck lump at any age (oral cancer), for an unexplained neck lump at 45 and over (laryngeal cancer), and for unexplained lymphadenopathy (lymphoma, weighing associated symptoms); a lump persisting beyond about 3 weeks without an infective cause should be referred rather than watched. B-symptoms (any two of: weight loss &gt;10%, fever, drenching night sweats) in combination with lymphadenopathy have a PPV of ~60% for lymphoma. Ludwig's angina (spreading floor-of-mouth cellulitis) can close the airway within hours — stridor or drooling is a 999 emergency. Metastatic squamous cell carcinoma in a neck node (unknown primary) accounts for 2–5% of all head and neck cancers — early detection is curative.</div>
+      <div class="why-drawer">There is no general NICE rule that every neck lump presenting over 40 is malignant, but an unexplained adult neck lump needs careful assessment. NICE NG12 (updated April 2026) advises considering a suspected cancer pathway referral for a persistent unexplained neck lump at any age (oral cancer), for an unexplained neck lump at 45 and over (laryngeal cancer), and for an unexplained thyroid lump (thyroid cancer), and for unexplained lymphadenopathy or splenomegaly (lymphoma, weighing associated symptoms). NICE does not define a universal three-week observation period: a rapidly enlarging, hard, fixed or supraclavicular lump should not be observed, while a clearly improving reactive node with a documented infection may be reviewed clinically. B-symptoms (weight loss, fever, drenching night sweats) increase concern for lymphoma but are not required for referral. Ludwig's angina (spreading floor-of-mouth cellulitis) can close the airway within hours — stridor or drooling is a 999 emergency. Metastatic squamous cell carcinoma in a neck node may be the first presentation of an occult head and neck primary — prompt referral matters.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -226,7 +228,7 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
       <div class="kv">
         <div>Duration and change</div><div>Hours/days = reactive lymphadenopathy or abscess. Weeks–months = lymphoma, malignancy. Years, static = benign cyst or lipoma</div>
         <div>Age and sex</div><div>&lt;20: reactive lymphadenopathy, congenital cysts (branchial/thyroglossal), lymphoma. 20–40: thyroid disease, lymphoma, reactive. &gt;40: metastatic SCC, thyroid cancer, lymphoma</div>
-        <div>Smoking and alcohol</div><div>Both are major risk factors for head and neck SCC. Pack-year history. HPV-associated oropharyngeal cancer rising in non-smokers aged 35–55</div>
+        <div>Smoking and alcohol</div><div>Both are major risk factors for head and neck SCC. Pack-year history. HPV-associated oropharyngeal cancer is rising, including in non-smokers. Betel nut/paan use where culturally relevant</div>
         <div>Associated symptoms</div><div>Sore throat / ear pain / oral ulcer: head and neck primary. Dysphagia: oesophageal/hypopharyngeal. Otalgia (referred ear pain): tongue base or tonsil cancer. Haemoptysis: thyroid/lung</div>
         <div>Constitutional features</div><div>Fever, night sweats, weight loss (B-symptoms) → lymphoma. Fatigue + lymphadenopathy in young → EBV/CMV</div>
         <div>Travel / infections</div><div>TB: country of origin, TB contacts, BCG status. Cat scratch disease: animal contact + LAP in axilla/groin/neck. HIV risk factors</div>
@@ -236,7 +238,7 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">HPV-positive oropharyngeal SCC is rising by 7% per year in the UK and typically presents as a neck node in a non-smoker aged 35–55 — this demographic must not be falsely reassured by absence of risk factors. Referred otalgia (pain in the ear without visible ear cause) is a classic presentation of base-of-tongue or tonsillar carcinoma — always check the oropharynx. BCG status and TB contact history are essential in a UK context given the high rates of TB-related lymphadenopathy in immigrant communities. Cat scratch disease (Bartonella henselae) is a treatable cause of prolonged lymphadenopathy often missed without specific enquiry about animal contact.</div>
+      <div class="why-drawer">HPV-positive oropharyngeal SCC is rising in the UK and often presents as a neck node in a younger non-smoker — this group must not be falsely reassured by absence of risk factors. Referred otalgia (pain in the ear without visible ear cause) is a classic presentation of base-of-tongue or tonsillar carcinoma — always check the oropharynx. BCG status and TB contact history are essential in a UK context given the high rates of TB-related lymphadenopathy in immigrant communities. Cat scratch disease (Bartonella henselae) is a treatable cause of prolonged lymphadenopathy often missed without specific enquiry about animal contact.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -252,19 +254,19 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     <div class="node-body">
       <p class="intro">Location narrows the differential significantly. Combine with consistency and mobility to generate a working diagnosis.</p>
       <div class="kv">
-        <div>Anterior triangle</div><div>Reactive lymphadenopathy (commonest); metastatic SCC; lymphoma; branchial cyst (2nd arch, anterior to SCM, young adult); carotid body tumour (pulsatile, transmitted)</div>
+        <div>Anterior triangle</div><div>Reactive lymphadenopathy (commonest); metastatic SCC; lymphoma; branchial cyst (2nd arch, anterior to SCM — in an adult a new lateral cystic mass must not be assumed benign); carotid body tumour (pulsatile, transmitted)</div>
         <div>Posterior triangle</div><div>Lymphoma; metastatic cancer (especially from posterior scalp/neck primary); TB lymphadenitis; lipoma; accessory nerve neuroma</div>
-        <div>Midline</div><div>Thyroglossal duct cyst (moves on tongue protrusion and swallowing — pathognomonic); dermoid cyst; submental lymphadenopathy; thyroid isthmus</div>
+        <div>Midline</div><div>Thyroglossal duct cyst (moves on tongue protrusion and swallowing — suggestive, not pathognomonic); dermoid cyst; submental lymphadenopathy; thyroid isthmus</div>
         <div>Thyroid region</div><div>Multinodular goitre; toxic adenoma; thyroid cancer (especially if hard/fixed/hoarse); Hashimoto's thyroiditis (diffuse, firm); thyroid cyst</div>
         <div>Parotid / submandibular</div><div>Pleomorphic adenoma (benign, slow-growing); Warthin's tumour (bilateral, smokers); mucoepidermoid carcinoma; submandibular sialadenitis; calculus</div>
-        <div>Characteristics: Benign</div><div>Soft/fluctuant; clearly defined; mobile; tender; present &lt;2 weeks; young patient; recent URTI; spontaneously reduces</div>
-        <div>Characteristics: Malignant concern</div><div>Hard; fixed to skin or deep structures; non-tender; progressive enlargement; rubbery (lymphoma); multiple nodes; &gt;1 cm and persisting &gt;3 weeks</div>
+        <div>Characteristics: Benign</div><div>Clearly defined; mobile; tender; recent onset with recent URTI; spontaneously reduces. Soft or mobile does not exclude malignancy</div>
+        <div>Characteristics: Malignant concern</div><div>Hard; fixed to skin or deep structures; non-tender; progressive enlargement; rubbery (lymphoma); multiple nodes; persistent or progressive without explanation</div>
         <div>Cystic character</div><div>Fluctuant, transilluminates — branchial cyst, thyroglossal, dermoid. NB: metastatic SCC can be cystic (especially HPV-associated)</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">Location is the single most discriminating feature after age. A midline lump moving on tongue protrusion is almost exclusively a thyroglossal duct cyst — no further investigation needed before ENT referral. Branchial cysts historically were treated as benign, but a cystic anterior triangle mass in a patient over 40 is a metastatic HPV-positive SCC until proven otherwise — refer urgently (NG12: persistent unexplained neck lump). Rubbery, matted lymphadenopathy in the posterior triangle is characteristic of lymphoma and should trigger urgent haematology referral. Parotid lumps: 80% of parotid masses are pleomorphic adenomas — but carcinoma is suggested by facial nerve involvement or rapid growth.</div>
+      <div class="why-drawer">Location is the single most discriminating feature after age. A midline mass that moves with swallowing and tongue protrusion is suggestive of a thyroglossal duct cyst, but diagnosis requires specialist assessment if persistent or clinically uncertain. In an adult, a new lateral cystic neck mass should not be assumed to be a benign branchial cyst. Refer for specialist assessment and appropriate imaging/tissue diagnosis, particularly if persistent, enlarging or associated with smoking, HPV-related symptoms, otalgia, dysphagia or mucosal abnormality. Rubbery, matted lymphadenopathy in the posterior triangle is characteristic of lymphoma and should prompt consideration of a suspected cancer referral. Parotid lumps: most are benign (pleomorphic adenoma), but facial nerve involvement or rapid growth is strongly concerning for malignant or invasive disease.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -280,19 +282,20 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     <div class="node-body">
       <p class="intro">A structured head and neck examination takes 3–4 minutes and significantly changes management.</p>
       <div class="kv">
-        <div>Lump characterisation</div><div>Size (measure in mm), consistency (soft/rubbery/hard/fluctuant), borders (smooth/irregular), mobility, overlying skin (erythema/tethering/punctum), tenderness, transilluminability</div>
-        <div>Lymph node chains</div><div>Palpate systematically: submental → submandibular → anterior cervical → posterior cervical → supraclavicular → parotid → occipital → axillary. Document number, size, character</div>
-        <div>Oropharynx</div><div>Inspect with good light: tonsils (asymmetry, mass), posterior pharynx, tongue base. Indirect laryngoscopy if available for hoarseness. Don't miss a mucosal primary</div>
+        <div>Lump characterisation</div><div>Exact site, side and cervical level; maximum dimensions (measure in mm, ideally in three dimensions); duration and growth rate; consistency (soft/rubbery/hard/fluctuant), borders (smooth/irregular), mobility, overlying skin changes (erythema/tethering/punctum), tenderness, fluctuation, transilluminability</div>
+        <div>Lymph node chains</div><div>Palpate systematically: submental → submandibular → anterior cervical → posterior cervical → supraclavicular → parotid → occipital → axillary. Examine all cervical node levels and both supraclavicular fossae. Document number, size, character</div>
+        <div>Oropharynx</div><div>Inspect with good light: oral cavity, tongue, floor of mouth, tonsils (asymmetry, mass), posterior pharynx, tongue base. Record flexible nasendoscopy findings if performed. Don't miss a mucosal primary</div>
+        <div>Cranial nerves</div><div>Examine and record cranial nerve findings (including VII, X, XI, XII) — a cranial neuropathy with a neck lump is a red flag</div>
         <div>Thyroid gland</div><div>Inspect from front — visible goitre. Palpate from behind. Assess swallowing — thyroid moves on swallowing. Note nodularity, tenderness, bruit. Check for tracheal deviation</div>
-        <div>Lump mobility test</div><div>Swallowing → moves = thyroid/thyroglossal. Tongue protrusion → moves = thyroglossal cyst. Fixed to skin = skin primary. Fixed deeply = malignant invasion</div>
-        <div>Salivary glands</div><div>Bimanual palpation of submandibular gland (calculus). Parotid mass — assess facial nerve function (VII). Any weakness = malignancy until proven otherwise</div>
-        <div>Supraclavicular fossa</div><div>Virchow's node (left supraclavicular fossa) = metastatic GI malignancy. Right supraclavicular = thoracic/pulmonary. Always examine carefully</div>
-        <div>General</div><div>Hepatosplenomegaly, axillary LAP, skin for rash or primary tumour (melanoma, SCC). Temperature if infective cause considered</div>
+        <div>Lump mobility test</div><div>Swallowing → moves = thyroid/thyroglossal. Tongue protrusion → moves = thyroglossal cyst. Fixation to skin or deep structures increases concern for malignancy or invasive infection but is not diagnostic</div>
+        <div>Salivary glands</div><div>Bimanual palpation of submandibular gland (calculus). Parotid mass — assess facial nerve function (VII). Any weakness is strongly concerning for malignant or invasive disease → urgent referral</div>
+        <div>Supraclavicular fossa</div><div>High risk — may reflect lymphoma, head-and-neck, lung, breast or gastrointestinal malignancy, or infection. Do not assume the primary site from the side alone. Aged ≥40: urgent chest X-ray per NICE NG12/local pathway and consider suspected cancer referral</div>
+        <div>General</div><div>Hepatosplenomegaly and other nodal stations (axillary, inguinal) where lymphoma is possible, skin for rash or primary tumour (melanoma, SCC). Temperature if infective cause considered</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">Facial nerve palsy with a parotid mass is a surgical emergency — it indicates perineural invasion by malignancy. The oropharyngeal examination is critical and often omitted in primary care — a missed tonsillar asymmetry or base-of-tongue mass causes delayed diagnosis of curable HPV-associated cancer. Virchow's node in the left supraclavicular fossa (Troisier's sign) has a PPV of &gt;70% for GI malignancy. Bimanual palpation of the floor of mouth can reveal submandibular duct calculi that will not be apparent on external examination alone. Systematic palpation of all node chains prevents the common error of fixating on the presenting lump and missing more sinister distant disease.</div>
+      <div class="why-drawer">Facial nerve weakness with a parotid mass is strongly concerning for malignant or invasive disease (e.g. perineural invasion) and needs urgent referral. The oropharyngeal examination is critical and often omitted in primary care — a missed tonsillar asymmetry or base-of-tongue mass causes delayed diagnosis of curable HPV-associated cancer. Supraclavicular nodes (including Virchow's node, Troisier's sign) are high risk but do not identify the primary site — lymphoma, head-and-neck, lung, breast and GI malignancy and infection are all possible. Bimanual palpation of the floor of mouth can reveal submandibular duct calculi that will not be apparent on external examination alone. Systematic palpation of all node chains prevents the common error of fixating on the presenting lump and missing more sinister distant disease.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -306,21 +309,21 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     </div>
     <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
     <div class="node-body">
-      <p class="intro">Investigations should not delay suspected cancer pathway referral if red flags are present. Order in parallel, not sequentially.</p>
+      <p class="intro">Initial tests only where useful, depending on the presentation. Investigations must not delay suspected cancer pathway referral and are not a substitute for tissue diagnosis. Order in parallel, not sequentially.</p>
       <div class="kv">
-        <div>FBC + CRP <span class="pill pill-blue">All</span></div><div>Lymphocytosis/atypical lymphocytes → EBV. Lymphocytosis (mature) → CLL. Raised WBC + CRP → infection. Pancytopenia + LAP → bone marrow infiltration</div>
-        <div>LDH + uric acid <span class="pill pill-blue">Lymphoma screen</span></div><div>LDH raised in lymphoma, leukaemia, aggressive disease. Uric acid raised in rapid cell turnover. Request if B-symptoms or multiple LAP</div>
-        <div>Paul-Bunnell / monospot</div><div>EBV screen — most useful in age 15–25 with bilateral posterior LAP, sore throat, splenomegaly. Sensitivity 85% in acute EBV</div>
-        <div>TFTs + thyroid USS <span class="pill pill-blue">Thyroid lump</span></div><div>TSH first-line. Free T4 if TSH abnormal. USS neck: arrange via secondary care if referred on the suspected cancer pathway. In primary care: TSH + refer. Don't delay referral waiting for TFTs</div>
-        <div>Chest X-ray <span class="pill pill-blue">Suspected lymphoma</span></div><div>Mediastinal widening (Hodgkin's); hilar LAP; lytic bone lesions. Request if B-symptoms, bilateral cervical/supraclavicular LAP, or cough</div>
-        <div>HIV test</div><div>Offer to all patients with unexplained generalised lymphadenopathy &gt;3 months. Persistent generalised lymphadenopathy is a common HIV presentation</div>
-        <div>Mantoux / IGRA test</div><div>Suspect TB lymphadenitis if patient from endemic country, immunosuppressed, or known TB contact. Do not biopsy potential TB node without TB team involvement (risk of fistula)</div>
-        <div>Do NOT order</div><div>CT/MRI in primary care without specialist input (unless patient on suspected cancer pathway). FNA/biopsy in primary care. PET-CT. Tumour markers without indication</div>
+        <div>FBC ± film + CRP/ESR <span class="pill pill-blue">Unexplained lymphadenopathy</span></div><div>Consider FBC with differential/blood film and CRP or ESR according to the clinical picture and local pathway; do not delay suspected cancer referral while awaiting results. <b>Very urgent FBC</b> if features suggest leukaemia (generalised lymphadenopathy, hepatosplenomegaly, unexplained bruising, bleeding, petechiae, persistent fatigue or unexplained fever — NICE NG12). Atypical lymphocytes → EBV; mature lymphocytosis → CLL; pancytopenia + LAP → marrow infiltration</div>
+        <div>LDH, urate, U&amp;E, LFTs <span class="pill pill-blue">Selected patients</span></div><div>Not a diagnostic lymphoma screen. Consider LDH, urate, renal function and liver function in patients with substantial, widespread or rapidly progressive lymphadenopathy, systemic illness or suspected haematological malignancy, usually in discussion with the haematology pathway</div>
+        <div>Paul-Bunnell / monospot</div><div>If infectious mononucleosis is clinically suspected, use the local laboratory EBV testing pathway. Interpret early negative tests cautiously — a negative result does not exclude EBV. Consider FBC, liver enzymes and alternative diagnoses according to the presentation</div>
+        <div>TSH ± FT4/FT3 <span class="pill pill-blue">Thyroid lump</span></div><div>TSH alone is generally the first test in adults (NICE NG145). If TSH raised, add FT4; if TSH suppressed, add FT4 and FT3. Ultrasound is not a generic thyroid test — it is indicated for palpable thyroid enlargement or focal nodularity when malignancy is suspected (NG145), using an established risk-stratification (U-grade) system with ultrasound-guided FNAC according to the result (NICE NG230), usually via the specialist/suspected cancer pathway. Don't delay referral waiting for TFTs</div>
+        <div>Chest X-ray <span class="pill pill-blue">Aged ≥40</span></div><div>Urgent direct-access chest X-ray for adults aged 40 and over with supraclavicular or persistent cervical lymphadenopathy (NICE NG12/local pathway), while considering suspected cancer referral on the wider clinical picture. May show mediastinal widening, hilar LAP or a lung primary</div>
+        <div>HIV test</div><div>Offer where clinically indicated (e.g. unexplained or generalised lymphadenopathy) or as part of local opt-out testing. Persistent generalised lymphadenopathy is a recognised HIV presentation</div>
+        <div>Mantoux / IGRA test</div><div>TB testing and referral only when epidemiology and clinical features support it (endemic country of origin, immunosuppression, TB contact). IGRA and Mantoux assess TB infection and <b>do not exclude active TB</b> (UKHSA). If tuberculous lymphadenitis is suspected, discuss urgently with the local TB service and pathology/microbiology team before sampling where possible. Diagnostic lymph-node aspirate or biopsy may be required; send specimens for histology, mycobacterial microscopy/culture and nucleic-acid amplification testing as advised (NICE NG33)</div>
+        <div>Do NOT order</div><div>Do not arrange CT, MRI, PET-CT or biopsy routinely for an unexplained neck lump if this would delay referral or duplicate the suspected cancer pathway — follow the local pathway; specialist teams usually arrange cross-sectional imaging and tissue diagnosis. Do not perform or arrange blind biopsy in primary care: tissue diagnosis should be image-guided via the head-and-neck, thyroid or haematology pathway (with microbiology, flow cytometry and/or mycobacterial studies as the specialist team advises if TB or lymphoma is possible). No tumour markers without indication</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">Investigations in neck lump are largely to characterise systemic disease and should not delay specialist referral for suspected malignancy. LDH is a cheap, widely available prognostic marker in lymphoma — elevation at diagnosis is incorporated into the International Prognostic Index. Biopsy of a neck node without USS guidance risks inadequate sampling and, critically, risks sinus formation in TB lymphadenitis (cervical TB). FNA under USS guidance in secondary care has sensitivity &gt;90% for lymphoma and metastatic SCC. Monospot/Paul-Bunnell tests have high false-negative rates in early infection and in children — a negative result does not exclude EBV in the first week.</div>
+      <div class="why-drawer">Investigations in neck lump are largely to characterise systemic disease and should not delay specialist referral for suspected malignancy. LDH is a prognostic marker once lymphoma is diagnosed (it forms part of the International Prognostic Index) rather than a diagnostic screen. Blind biopsy of a neck node risks inadequate sampling and, in TB lymphadenitis, sinus formation — but suspected TB nodes may still need aspirate or biopsy, coordinated with the TB and pathology teams (NICE NG33). Image-guided sampling in secondary care is the standard route to tissue diagnosis. Monospot/Paul-Bunnell tests have high false-negative rates in early infection and in children — a negative result does not exclude EBV in the first week.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -336,18 +339,18 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     <div class="node-body">
       <p class="intro">Use NICE NG12 criteria. When in doubt, refer — the cost of over-referral is far less than missed malignancy.</p>
       <div class="kv">
-        <div><span class="pill pill-red">999</span></div><div>Stridor; drooling; muffled 'hot potato' voice; inability to swallow; signs of airway obstruction (Ludwig's angina, epiglottitis, retropharyngeal abscess)</div>
-        <div><span class="pill pill-red">Same-day ED</span></div><div>Rapidly enlarging neck mass with fever + pain (abscess); haemodynamic instability; anaplastic thyroid cancer signs (very rapidly growing, hard, infiltrating)</div>
-        <div><span class="pill pill-purple">Suspected cancer: Head &amp; Neck</span></div><div>Persistent unexplained neck lump at any age (oral cancer) or unexplained neck lump at ≥45 (laryngeal cancer) — NICE NG12 (updated April 2026); in practice refer a lump persisting &gt;3 weeks. Hoarseness &gt;3 weeks + neck lump. Dysphagia + neck lump. Cystic mass age &gt;40. All suspected head and neck SCC</div>
-        <div><span class="pill pill-purple">Suspected cancer: Haematology</span></div><div>B-symptoms + lymphadenopathy. Mediastinal widening on CXR. Lymphadenopathy + pancytopenia or raised LDH. Suspected Hodgkin's or NHL</div>
-        <div><span class="pill pill-purple">Suspected cancer: Endocrine/H&amp;N</span></div><div>Hard/fixed thyroid nodule. Solitary nodule &gt;1 cm with hoarseness or rapid growth. Previous neck irradiation + thyroid nodule. Family history MEN2 / medullary thyroid cancer</div>
-        <div><span class="pill pill-amber">Urgent routine ENT</span></div><div>Branchial cyst age &lt;40 with no red flags. Thyroglossal cyst (surgical excision needed — Sistrunk procedure). Salivary calculus. Pleomorphic adenoma (non-urgent surgical removal)</div>
-        <div><span class="pill pill-blue">Routine GP management</span></div><div>Reactive lymphadenopathy — watch and wait 3–4 weeks maximum. Reassure if clearly infective cause, painful, bilateral, and improving. <b>Always review and re-refer if persists</b></div>
+        <div><span class="pill pill-red">999</span></div><div>Stridor or severe respiratory distress; drooling or inability to swallow saliva; muffled 'hot potato' voice; rapidly progressive airway swelling; suspected deep-neck abscess with airway risk; severe sepsis or haemodynamic instability; anaphylaxis (Ludwig's angina, epiglottitis, retropharyngeal abscess)</div>
+        <div><span class="pill pill-red">Same-day ED</span></div><div>Rapidly enlarging neck mass if painful, febrile, fluctuant, associated with systemic illness, airway symptoms, neurological signs or vascular compromise. A rapidly enlarging painless thyroid or neck mass (possible anaplastic thyroid cancer or lymphoma) without emergency features → urgent suspected cancer referral</div>
+        <div><span class="pill pill-purple">Suspected cancer: Head &amp; Neck</span></div><div>Persistent unexplained neck lump at any age (oral cancer) or unexplained neck lump at ≥45 (laryngeal cancer) — NICE NG12 (updated April 2026). Persistent unexplained hoarseness at ≥45. Refer promptly if unexplained, progressive, hard/fixed, supraclavicular, or with mucosal or neurological symptoms — do not delay to complete an arbitrary observation period. New lateral cystic neck mass in an adult (specialist assessment). Persistent parotid/submandibular swelling. Associated dysphagia/odynophagia (head-and-neck or upper-GI pathway by site), unilateral otalgia, oral ulcer, haemoptysis, weight loss or cranial neuropathy. All suspected head and neck SCC</div>
+        <div><span class="pill pill-purple">Suspected cancer: Haematology</span></div><div>Unexplained lymphadenopathy or splenomegaly in an adult — consider suspected cancer referral even without B-symptoms (NICE NG12). Mediastinal widening on CXR. Lymphadenopathy + pancytopenia. Very urgent FBC if features suggest leukaemia. Suspected Hodgkin's or NHL</div>
+        <div><span class="pill pill-purple">Suspected cancer: Endocrine/H&amp;N</span></div><div>Unexplained thyroid lump (NICE NG12). Higher concern: hard/fixed nodule, hoarseness, rapid growth, previous neck irradiation, family history MEN2 / medullary thyroid cancer. Nodule size alone does not determine malignancy risk</div>
+        <div><span class="pill pill-amber">Urgent routine ENT</span></div><div>Confirmed benign congenital cyst with no red flags (a new lateral cystic mass in an adult goes via specialist assessment, not assumed branchial). Thyroglossal cyst (surgical excision needed — Sistrunk procedure). Salivary calculus. Pleomorphic adenoma (non-urgent surgical removal)</div>
+        <div><span class="pill pill-blue">Routine GP management</span></div><div>Reactive lymphadenopathy with a clear infective cause that is improving — document the presumed diagnosis, findings, review date and escalation criteria. <b>Refer if not resolving as expected</b> rather than repeating antibiotics</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">NICE NG12 (updated April 2026) advises considering a suspected cancer pathway referral for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or an unexplained lump in the neck, and for oral cancer in people with a persistent and unexplained lump in the neck. The key error in GP practice is watching a neck lump for too long — delays of weeks to months before ENT referral are a recurring finding in UK audits of head and neck cancer diagnosis. Thyroglossal duct cysts require the Sistrunk procedure (excision of cyst + central hyoid bone + tract to tongue base) — simple excision alone has 30% recurrence. Pleomorphic adenoma, while benign, undergoes malignant transformation in 5% over 20 years — elective surgical excision is recommended.</div>
+      <div class="why-drawer">NICE NG12 (updated April 2026) advises considering a suspected cancer pathway referral for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or an unexplained lump in the neck, and for oral cancer in people with a persistent and unexplained lump in the neck. The key error in GP practice is watching a neck lump for too long — delays of weeks to months before ENT referral are a recurring finding in UK audits of head and neck cancer diagnosis. Thyroglossal duct cysts require the Sistrunk procedure (excision of cyst + central hyoid bone + tract to tongue base) — simple excision alone carries a higher recurrence risk. Pleomorphic adenoma, while benign, carries a risk of malignant transformation over time — elective surgical excision is usually recommended.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -361,37 +364,37 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     </div>
     <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
     <div class="node-body">
-      <p class="intro">Most primary care management is conservative. Antibiotics only when clear infective cause. Do not treat empirically for malignancy.</p>
+      <p class="intro">Most primary care management is conservative. Do not give antibiotics for an unexplained neck lump — only for a convincing acute bacterial infection. Avoid repeated antibiotic courses for an unexplained persistent mass.</p>
       <div class="branch">
         <div class="b-card">
           <div class="b-cond">Bacterial lymphadenitis</div>
-          <div class="b-drug">Amoxicillin 500 mg TDS × 5 days <span class="pill pill-teal">1st line</span></div>
-          <div class="b-note">If penicillin allergic: clarithromycin 500 mg BD × 5 days. Fluctuant abscess → same-day ENT for drainage. Review at 5–7 days.</div>
+          <div class="b-drug">Antibiotic per current local antimicrobial guideline <span class="pill pill-teal">Only if convincing bacterial syndrome</span></div>
+          <div class="b-note">Choice depends on source (including dental), severity, allergy, pregnancy and local guidance (e.g. Greater Manchester antimicrobial guidance). Review within 48–72 hours if systemically unwell or within 5–7 days if managed in the community. Fluctuant abscess → same-day ENT for drainage rather than repeated antibiotics alone.</div>
         </div>
         <div class="b-card">
           <div class="b-cond">Infectious mononucleosis (EBV)</div>
           <div class="b-drug">Supportive — no antibiotics</div>
-          <div class="b-note">Paracetamol/ibuprofen for fever/pain. Avoid amoxicillin (rash in 80%). Advise contact sports avoidance 4 weeks (splenomegaly rupture risk). Expected resolution 2–6 weeks.</div>
+          <div class="b-note">Manage supportively (paracetamol/ibuprofen for fever/pain). Avoid aminopenicillins when EBV is suspected unless there is a separate clear indication. Give activity advice based on clinical recovery and risk of splenic injury; seek specialist advice for abdominal pain, haemodynamic symptoms or suspected splenic rupture.</div>
         </div>
         <div class="b-card">
           <div class="b-cond">Reactive lymphadenopathy (viral URTI)</div>
           <div class="b-drug">Watch and wait</div>
-          <div class="b-note">Review in 3–4 weeks maximum. Advise to return immediately if enlarging, hard, or associated red flags develop. Set safety-net clearly in writing.</div>
+          <div class="b-note">Document the presumed benign diagnosis, examination findings, review date and explicit escalation criteria. Advise to return immediately if enlarging, hard, or associated red flags develop. Set safety-net clearly in writing. Refer if not resolving as expected.</div>
         </div>
         <div class="b-card">
           <div class="b-cond">Thyroid nodule (benign on USS)</div>
-          <div class="b-drug">TFTs + surveillance</div>
-          <div class="b-note">If euthyroid with benign USS features: monitor with USS 12-monthly. Levothyroxine suppression not recommended. Refer if growth &gt;20% in 12 months.</div>
+          <div class="b-drug">Specialist risk-stratification pathway</div>
+          <div class="b-note">Do not prescribe a fixed 12-month ultrasound schedule for all benign thyroid nodules. Follow the specialist ultrasound/FNAC risk-stratification pathway (NICE NG230). Repeat imaging if symptoms worsen, compression develops, malignancy becomes suspected or the specialist pathway recommends surveillance. Levothyroxine suppression not recommended.</div>
         </div>
       </div>
       <div class="ladder" style="margin-top:14px;">
-        <div class="rung"><span class="rn">TB lymphadenitis</span><span class="rt">Refer to TB clinic — <b>do not start antibiotics empirically</b>. Standard 6-month RHEZ/RH regimen initiated by TB team. Notify the UKHSA Health Protection Team (statutory notification).</span></div>
-        <div class="rung"><span class="rn">Hyperthyroid goitre</span><span class="rt">Refer endocrinology urgently. Interim: <b>propranolol 40 mg TDS</b> for symptomatic tachycardia/tremor while awaiting specialist (not definitive treatment).</span></div>
+        <div class="rung"><span class="rn">TB lymphadenitis</span><span class="rt">Refer suspected active TB urgently to the local TB service — <b>do not initiate empirical TB treatment in primary care</b> unless directed by the specialist TB team; treatment depends on microbiology, resistance, site, interactions and hepatic/renal function. Coordinate tissue sampling with the TB team. Active TB is notifiable — contact the local Health Protection Team according to local arrangements.</span></div>
+        <div class="rung"><span class="rn">Hyperthyroid goitre</span><span class="rt">Refer endocrinology. If clinically significant thyrotoxic symptoms are present, consider symptomatic treatment while awaiting specialist advice, using the local thyroid pathway and checking contraindications (asthma/COPD, heart failure, bradycardia/heart block, hypotension, pregnancy, interacting medicines). Definitive treatment is specialist-directed (NICE NG145). Do not delay urgent referral where malignancy or airway compromise is suspected.</span></div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">Antibiotic prescribing for reactive lymphadenopathy is common and inappropriate — viral causes account for &gt;80% of cases in children and young adults. Amoxicillin in EBV causes a florid maculopapular rash in 80% of cases (due to ampicillin sensitivity, not allergy) and should never be prescribed if mononucleosis is suspected. Splenic rupture in EBV affects 0.1–0.5% of cases and is almost always associated with contact sport or trauma — advice about 4-week avoidance is mandatory. TB is a statutory notifiable disease — all cases must be notified to the UKHSA Health Protection Team. Empirical antibiotics for suspected TB lymphadenitis can sterilise the node and make microbiological diagnosis impossible.</div>
+      <div class="why-drawer">Antibiotic prescribing for reactive lymphadenopathy is common and inappropriate — most cases in children and young adults are viral. Aminopenicillins in EBV commonly cause a maculopapular rash (not true allergy) and should be avoided if mononucleosis is suspected unless there is a separate clear indication. Splenic rupture in EBV is rare and usually associated with contact sport or trauma — give individualised activity advice based on clinical recovery and splenic enlargement risk. Active TB is notifiable — contact the local Health Protection Team according to local arrangements. Empirical antibiotics for suspected TB lymphadenitis can sterilise the node and make microbiological diagnosis impossible.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -405,13 +408,13 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     </div>
     <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
     <div class="node-body">
-      <p class="intro">While the lump is under investigation, use the consultation as an opportunity for primary prevention of head and neck cancer.</p>
+      <p class="intro">While the lump is under investigation, use the consultation as an opportunity for primary prevention of head and neck cancer — but do not allow prevention counselling to delay diagnostic referral.</p>
       <div class="lsgrid">
-        <div class="lstile"><b>Smoking cessation</b> Tobacco is the single biggest modifiable risk factor for head and neck SCC — 75% of cases are attributable to smoking. Refer to NHS stop-smoking service. NRT + varenicline doubles cessation rates.</div>
-        <div class="lstile"><b>Alcohol reduction</b> Alcohol + smoking are synergistic for head and neck cancer risk (relative risk &gt;35× vs neither). Target: ≤14 units/week. Refer to alcohol service if hazardous use.</div>
-        <div class="lstile"><b>HPV vaccination counselling</b> HPV 16/18 causes 60–70% of oropharyngeal SCC. NHS routine vaccination at age 12–13. Advise eligible patients who have not been vaccinated. Consider catch-up referral.</div>
-        <div class="lstile"><b>Safe oral practices</b> Betel nut/paan chewing is a major risk factor for oral SCC in South Asian communities. Advise cessation. Regular dental check-ups for oral mucosal examination.</div>
-        <div class="lstile"><b>Symptom awareness</b> Advise: return promptly for any new hoarseness &gt;2 weeks, dysphagia, ear pain without ear cause, oral ulcer &gt;3 weeks, new neck swelling. Earlier presentation improves outcomes.</div>
+        <div class="lstile"><b>Smoking cessation</b> Tobacco is a major modifiable risk factor for head and neck SCC. Offer smoking cessation advice and signpost to the local NHS stop-smoking service.</div>
+        <div class="lstile"><b>Alcohol reduction</b> Alcohol and smoking together markedly increase head and neck cancer risk. Offer alcohol-risk advice and signpost to local NHS services. Target: ≤14 units/week. Refer to alcohol service if hazardous use.</div>
+        <div class="lstile"><b>HPV vaccination status</b> HPV is an important cause of oropharyngeal SCC. Check HPV vaccination status according to the current NHS programme and advise eligible patients who have not been vaccinated. HPV vaccination is prevention, not a treatment for an existing neck lump.</div>
+        <div class="lstile"><b>Safe oral practices</b> Ask about betel nut/paan use where culturally relevant — a risk factor for oral SCC. Advise cessation. Regular dental check-ups for oral mucosal examination.</div>
+        <div class="lstile"><b>Symptom awareness</b> Advise: return promptly for persistent hoarseness, dysphagia, ear pain without ear cause, oral ulcer &gt;3 weeks, or new neck swelling.</div>
         <div class="lstile"><b>Sun protection</b> Lip SCC and skin primary with nodal metastasis — advise SPF ≥30 on face/neck, avoid midday sun, check moles. Melanoma can present as neck node.</div>
         <div class="lstile"><b>Nutrition and immunity</b> In EBV/reactive LAP: adequate fluids, rest, return to normal activity gradually. Advise no immune-suppressants (high-dose steroids) without specialist guidance in lymphoma.</div>
         <div class="lstile"><b>Psychological support</b> Investigation for suspected neck malignancy causes significant anxiety. Acknowledge this. Offer access to a cancer clinical nurse specialist (CNS) from the point of suspected cancer pathway referral where the local pathway provides one. Signpost Macmillan / CRUK.</div>
@@ -419,7 +422,7 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">Head and neck cancer incidence is rising in the UK, primarily driven by HPV-associated oropharyngeal cancer. The 5-year survival for stage I oropharyngeal SCC is 80–90% versus 30–40% for stage IV — primary prevention and early detection are transformative. UK data shows mean GP delay of 2.3 appointments before suspected cancer pathway referral for head and neck cancer — symptom awareness in patients directly reduces this. Betel nut/areca nut chewing is an under-recognised risk factor in British South Asian communities; oral submucous fibrosis is a direct precancerous consequence. HPV vaccination programme coverage remains suboptimal in catch-up cohorts — every consultation is an opportunity.</div>
+      <div class="why-drawer">Head and neck cancer incidence is rising in the UK, primarily driven by HPV-associated oropharyngeal cancer. Primary prevention and prompt referral of suspicious symptoms both matter, and patient symptom awareness helps avoid repeated consultations before referral. Betel nut/areca nut chewing is an under-recognised risk factor in British South Asian communities; oral submucous fibrosis is a direct precancerous consequence. HPV vaccination programme coverage remains suboptimal in catch-up cohorts — every consultation is an opportunity.</div>
     </div>
   </div>
   <div class="connector"></div>
@@ -433,28 +436,28 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
     </div>
     <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
     <div class="node-body">
-      <p class="intro">If you decide NOT to refer immediately, you accept responsibility for structured review. Three weeks is the maximum safe observation period.</p>
+      <p class="intro">If you decide NOT to refer immediately, you accept responsibility for structured review. The safe observation period depends on the working diagnosis — a rapidly enlarging or unexplained mass should be referred immediately rather than observed.</p>
       <div class="kv">
-        <div>3–4 weeks (max)</div><div>Any neck lump without clear benign cause. At review: if not fully resolved → suspected cancer pathway referral regardless. Do not give a second course of antibiotics and re-review</div>
-        <div>5–7 days</div><div>Bacterial lymphadenitis on antibiotics — confirm improving. Abscess formation (fluctuance) → same-day ENT drainage</div>
-        <div>EBV review</div><div>2–3 weeks: fatigue, splenomegaly resolving? Liver function (hepatitis in 80% EBV). FBC (haemolytic anaemia/thrombocytopenia in 5%). Contact sports advice reiterated</div>
-        <div>Thyroid nodule</div><div>12-monthly USS if benign on initial imaging. TFTs 6-monthly if goitre. Any change in nodule size &gt;20% or new features → re-refer urgent</div>
+        <div>If observing</div><div>Only for a presumed benign cause: document the presumed diagnosis, examination findings, review date and explicit escalation criteria. Review earlier if the lump enlarges, becomes hard/fixed, new symptoms develop or the patient becomes systemically unwell. If not resolving as expected → refer rather than repeatedly prescribing antibiotics</div>
+        <div>48–72 h / 5–7 days</div><div>Bacterial lymphadenitis on antibiotics — review within 48–72 hours if systemically unwell, or 5–7 days if managed in the community; confirm improving. Abscess formation (fluctuance) → same-day ENT drainage</div>
+        <div>EBV review</div><div>No routine FBC/LFTs for every patient. Review if symptoms are worsening or prolonged, jaundice develops, significant abdominal pain develops, there is marked thrombocytopenia or anaemia, diagnostic uncertainty remains, or lymphadenopathy persists or progresses. Reiterate individualised activity advice</div>
+        <div>Thyroid nodule</div><div>No routine "TSH every six months" or annual ultrasound for every benign thyroid lump unless part of a specialist-approved local pathway. Re-refer if symptoms worsen, compression develops or malignancy becomes suspected</div>
         <div><span class="pill pill-red">Safety-net 999</span></div><div>Stridor or breathing difficulty; severe swelling, unable to swallow saliva; rapidly enlarging lump over hours; collapse or anaphylaxis</div>
-        <div><span class="pill pill-red">Safety-net same-day</span></div><div>Lump doubling over 1–2 weeks; new fever + increased pain; new hoarseness or voice change; new dysphagia; skin tethering appearing</div>
-        <div>Documentation</div><div>Document: lump size in mm, site, character. Date of first presentation. Safety-net advice given. Date of next review or suspected cancer pathway referral sent. Mandatory for medicolegal protection</div>
-        <div>Suspected cancer referral tracking</div><div>Record suspected cancer pathway referral date in notes. Check patient has received appointment. Contact secretary if no response within 5 working days</div>
+        <div><span class="pill pill-red">Safety-net same-day</span></div><div>Rapidly enlarging lump; new fever + increased pain or fluctuance; new hoarseness or voice change; new dysphagia; skin tethering appearing</div>
+        <div>Documentation</div><div>Document: lump size in mm (three dimensions), site, side, cervical level, character, growth rate. Date of first presentation. Safety-net advice given. Date of next review or suspected cancer pathway referral sent. Mandatory for medicolegal protection</div>
+        <div>Suspected cancer referral tracking</div><div>Record suspected cancer pathway referral date in notes. Check patient has received appointment. Local process (e.g. Bolton/Greater Manchester, not national guidance): contact the secretary if no response within 5 working days</div>
       </div>
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer">The "watch and wait" approach in neck lumps is a common source of delayed diagnosis — NICE NG12 (updated April 2026) advises considering a suspected cancer pathway referral for a persistent unexplained neck lump (oral cancer) and, at age 45 and over, for an unexplained neck lump (laryngeal cancer); in practice a lump persisting beyond about 3 weeks with no obvious benign cause should be referred rather than watched. A second course of antibiotics for a non-resolving neck lump is inappropriate and causes diagnostic delay — this is a recurrent theme in head and neck cancer inquests. Documentation of lump size in mm at initial presentation is essential medicolegally — if the lump is later found malignant, a contemporaneous record of size demonstrates whether there was unreasonable delay. The MDT at head and neck cancer centres see a median of 40% "unnecessary" suspected cancer pathway referrals — this is acceptable given the consequences of missing malignancy.</div>
+      <div class="why-drawer">The "watch and wait" approach in neck lumps is a common source of delayed diagnosis — NICE NG12 (updated April 2026) advises considering a suspected cancer pathway referral for a persistent unexplained neck lump (oral cancer) and, at age 45 and over, for an unexplained neck lump (laryngeal cancer); NICE does not set a universal three-week observation period — an unexplained, progressive or suspicious lump should be referred rather than watched. A second course of antibiotics for a non-resolving neck lump is inappropriate and causes diagnostic delay — this is a recurrent theme in head and neck cancer inquests. Documentation of lump size in mm at initial presentation is essential medicolegally — if the lump is later found malignant, a contemporaneous record of size demonstrates whether there was unreasonable delay. Many suspected cancer pathway referrals prove benign — this is acceptable given the consequences of missing malignancy.</div>
     </div>
   </div>
 
 </div>
 
 <div class="alg-foot">
-  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer, updated April 2026), Head and Neck Cancer: United Kingdom National Multidisciplinary Guidelines (5th edition, 2016; ENT UK), TB: NICE NG33 and UKHSA, NICE NG145 Thyroid disease (2019), UK National Lymphoma Clinical Studies Group. Always adapt to individual patient context and local pathways.
+  <strong>Educational use only.</strong> References: NICE NG12 Suspected cancer: recognition and referral (updated April 2026), including the symptom/findings tables for lymphoma and chest X-ray criteria; NICE NG145 Thyroid disease: assessment and management (2019); NICE NG230 Thyroid cancer: assessment and management; NICE NG33 Tuberculosis; UKHSA tuberculosis guidance (IGRA/Mantoux do not exclude active TB); current Greater Manchester antimicrobial guidance; local Bolton/Greater Manchester suspected head-and-neck cancer, thyroid, lymphoma and TB referral pathways; Head and Neck Cancer: United Kingdom National Multidisciplinary Guidelines (5th edition, 2016; ENT UK). This page covers the adult neck lump; thyroid swelling, lymphadenopathy/lymphoma, salivary-gland mass and suspected TB follow their own specialist pathways. Always adapt to individual patient context and local pathways.
 </div>
 
 <script>

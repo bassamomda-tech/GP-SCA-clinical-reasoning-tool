@@ -1422,7 +1422,7 @@
     "ic": "🗺️",
     "t": "Delirium",
     "s": "Visual algorithm · new confusion",
-    "href": "algorithms/delirium.html"
+    "href": "algorithms/confusion.html"
    }
   ],
   "pitfalls": {
