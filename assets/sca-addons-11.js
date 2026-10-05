@@ -551,7 +551,7 @@
     },
     {
      "h": "Why it cannot wait",
-     "t": "The College of Optometrists [2] classes acute angle closure as a same-day emergency. Raised pressure damages the optic nerve and can cause permanent visual loss within hours. The eye team lowers the pressure medically and then performs laser peripheral iridotomy, the definitive treatment (RCOphth 2022 [1]), usually treating the other eye too."
+     "t": "The College of Optometrists [2] classes acute angle closure as a same-day emergency. Raised pressure damages the optic nerve and can cause permanent visual loss within hours. The eye team lowers the pressure medically and then gives definitive treatment, usually laser peripheral iridotomy or lens extraction depending on the mechanism (RCOphth 2022 [1]), often treating the other eye too."
     },
     {
      "h": "Do not be misled",
@@ -5606,7 +5606,7 @@
     },
     {
      "h": "Treat what you find",
-     "t": "Treat a confirmed STI per the relevant BASHH guideline (for example the BASHH chlamydia treatment update, 2018) and arrange partner notification. If symptoms suggest acute prostatitis, NICE NG110 [4] applies. Otherwise no treatment is needed; most episodes resolve without intervention."
+     "t": "Treat a confirmed STI per the relevant BASHH guideline (for example the BASHH chlamydia guideline, 2026) and arrange partner notification. If symptoms suggest acute prostatitis, NICE NG110 [4] applies. Otherwise no treatment is needed; most episodes resolve without intervention."
     },
     {
      "h": "When to refer",
@@ -9095,7 +9095,7 @@
     },
     {
      "h": "Driving",
-     "t": "DVLA [6]: Group 1 drivers on diet or tablets that don’t cause hypoglycaemia need not notify. Group 2 (lorry, bus) drivers treated with tablets must notify. Ask what he drives before assuming either."
+     "t": "DVLA [6]: Group 1 drivers on diet or tablets that don’t cause hypoglycaemia need not notify. Group 2 (lorry, bus) drivers treated with tablets that carry a hypoglycaemia risk (sulfonylureas or glinides) must notify. Ask what he drives before assuming either."
     },
     {
      "h": "Safety-net",
@@ -9452,7 +9452,7 @@
     },
     {
      "h": "DVLA",
-     "t": "Group 1 on diet or tablets not causing hypoglycaemia: no need to notify. Group 2 treated with tablets: must notify (DVLA Assessing fitness to drive, November 2025)."
+     "t": "Group 1 on diet or tablets not causing hypoglycaemia: no need to notify. Group 2 treated with tablets carrying hypoglycaemia risk (sulfonylureas or glinides): must notify (DVLA Assessing fitness to drive, November 2025)."
     }
    ],
    "professional": [

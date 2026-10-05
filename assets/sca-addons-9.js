@@ -4846,7 +4846,7 @@
    "reason": "Video consultation: asks for another methotrexate prescription today because she has run out early."
   },
   "knowledge": {
-   "guideline": "MHRA Drug Safety Update (September 2020) · NPSA oral methotrexate alert (2006) · BSR csDMARD guideline (2025) · BNF · FSRH Contraception for women aged over 40 years (2017, amended 2019)",
+   "guideline": "MHRA Drug Safety Update (September 2020) · NPSA oral methotrexate alert (2006) · BSR csDMARD guideline (2025) · BNF · FSRH Contraception for women aged over 40 years (2017, amended May 2025)",
    "summary": "An early methotrexate request is a safety signal. Find out why, exclude daily dosing and toxicity, confirm monitoring is up to date, then issue a safe quantity — or escalate.",
    "points": [
     {

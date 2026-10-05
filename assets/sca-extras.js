@@ -139,7 +139,7 @@ window.SCA_EXTRAS = {
       { t:'1–5',  h:'Focused history + impact', d:'Grade the acne (distribution, cysts, scarring). Then the real history: PE stopped, sleepovers stopped, "headaches" before assemblies. Screen mood explicitly, including hopelessness.' },
       { t:'5–6',  h:'Summarise & share',     d:'"Moderate inflammatory acne with early scarring — and it\'s costing you school and friends. Both halves deserve treatment."' },
       { t:'6–10', h:'Shared management',     d:'First-line fixed-combination topical (adapalene/BPO), how to use it, the 6–8 week truth. Address mum\'s isotretinoin expectation respectfully. Offer Sophie her own follow-up, alone if she prefers.' },
-      { t:'10–12',h:'Safety-net & close',    d:'Mood safety-net with names and numbers (Kooth, Papyrus HOPELINEUK). Review at 4 weeks. End by addressing Sophie, not Karen.' }
+      { t:'10–12',h:'Safety-net & close',    d:'Mood safety-net with names and numbers (Kooth, Papyrus HOPELINE247). Review at 4 weeks. End by addressing Sophie, not Karen.' }
     ],
     wordPics: {
       fail: 'Conducts the whole consultation with the mother while Sophie says nothing; prescribes (or flatly refuses) isotretinoin territory without explaining the referral structure; never asks about mood despite the body language; no follow-up offered.',

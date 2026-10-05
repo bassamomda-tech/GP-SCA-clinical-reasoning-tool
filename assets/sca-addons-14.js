@@ -1532,7 +1532,7 @@
     },
     {
      "h": "Tests: few, and not allergy panels",
-     "t": "Routine allergy testing is not recommended when the history does not point to an allergen [1]. Limited tests only: FBC and CRP or ESR [1][2]; further tests are guided by the history, such as thyroid tests if symptoms suggest thyroid disease. Food elimination diets rarely help chronic spontaneous urticaria."
+     "t": "Routine allergy testing is not recommended when the history does not point to an allergen [1]. Limited tests only: FBC and CRP or ESR, with thyroid function and anti-TPO antibodies because thyroid autoimmunity is common in chronic spontaneous urticaria [1][2]; further tests only if the history points to them. Food elimination diets rarely help chronic spontaneous urticaria."
     },
     {
      "h": "Aggravating, not causing",
@@ -1544,11 +1544,11 @@
     },
     {
      "h": "Pregnancy and breastfeeding",
-     "t": "Ask before prescribing. BSACI [1]: in pregnancy use the lowest dose of loratadine or chlorphenamine, with cetirizine as second-line; when breastfeeding, cetirizine or loratadine at the lowest dose."
+     "t": "Ask before prescribing. In pregnancy, loratadine or cetirizine at the lowest effective dose is usually preferred (check UKTIS); avoid routine sedating antihistamines such as chlorphenamine. When breastfeeding, loratadine is preferred, at the lowest dose."
     },
     {
      "h": "Refractory disease",
-     "t": "If uncontrolled on up-dosed antihistamine, refer to dermatology or immunology. Omalizumab is the preferred add-on [2]; NICE TA339 recommends it for severe disease (UAS7 of 28 or more) despite antihistamine-based treatment, in specialist care [3]. Ciclosporin is a specialist option after that [2]. Montelukast appears in older UK guidance [1]; if used, warn about neuropsychiatric effects [5]."
+     "t": "If uncontrolled on up-dosed antihistamine, refer to dermatology or immunology. Omalizumab is the preferred add-on [2]; NICE TA339 recommends it, in specialist care, for people aged 12 and over with severe disease (UAS7 of 28 or more) despite H1-antihistamines and a leukotriene receptor antagonist [3]. Ciclosporin is a specialist option after that [2]. UK guidance (BSACI [1]; BAD 2021) includes montelukast as an off-label add-on before omalizumab; if used, warn about neuropsychiatric effects [5]."
     },
     {
      "h": "Airway safety-net",
@@ -1781,7 +1781,7 @@
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Examines the skin; checks weal duration and bruising; FBC and CRP or ESR only; no allergy panel.",
+    "d": "Examines the skin; checks weal duration and bruising; FBC, CRP or ESR and thyroid tests only; no allergy panel.",
     "pts": 1
    },
    {
@@ -1948,7 +1948,7 @@
     "sharedPlan": [
      "Daily second-generation non-sedating antihistamine (choice and dose per BNF; pregnancy status checked)",
      "If not controlled after 2–4 weeks, increase up to four times the standard dose (off-label, explained)",
-     "FBC and CRP or ESR only; no allergy panel",
+     "FBC, CRP or ESR and thyroid tests only; no allergy panel",
      "Paracetamol rather than NSAIDs; symptom diary",
      "Refer to dermatology or immunology if uncontrolled (omalizumab, NICE TA339)"
     ],
@@ -1992,7 +1992,7 @@
      "dom": "tasks",
      "fail": "Ordering an allergy panel or advising a strict elimination diet.",
      "why": "BSACI 2015: allergy testing is not recommended in chronic spontaneous urticaria without a suggestive history; it produces false leads.",
-     "fix": "Explain why testing won’t help; FBC and CRP or ESR only."
+     "fix": "Explain why testing won’t help; FBC, CRP or ESR and thyroid tests only."
     },
     {
      "dom": "tasks",
@@ -2055,7 +2055,7 @@
     },
     {
      "h": "Primary care assessment",
-     "t": "NG97 [1]: take a history from the person and from someone who knows him well, supplemented where possible by a structured informant tool; examine; do blood tests to exclude reversible causes (FBC, calcium, glucose, renal and liver function, thyroid function, B12 and folate). Do not rule out dementia solely because the person has a normal score on a cognitive instrument: memory screens are often normal early in bvFTD."
+     "t": "NG97 [1]: take a history from the person and from someone who knows him well, supplemented where possible by a structured informant tool; examine; do blood tests to exclude reversible causes (FBC, ESR or CRP, calcium, HbA1c, renal and liver function, thyroid function, B12 and folate). Do not rule out dementia solely because the person has a normal score on a cognitive instrument: memory screens are often normal early in bvFTD."
     },
     {
      "h": "Referral",
@@ -3064,11 +3064,11 @@
     },
     {
      "h": "First line: aluminium chloride",
-     "t": "Aluminium chloride hexahydrate 20% applied to completely dry skin at night and washed off in the morning, initially nightly, then less often as it works [1]. Irritation is the common problem: apply only to dry skin, reduce frequency and avoid shaving just before use."
+     "t": "Aluminium chloride hexahydrate 20% applied to completely dry skin at night and washed off in the morning, building up the number of nights as tolerated, then reducing to maintenance as it works [1]. Irritation is the common problem: apply only to dry skin, reduce frequency and avoid shaving just before use."
     },
     {
      "h": "Next steps",
-     "t": "Tap-water iontophoresis for palms and soles (usually via dermatology or physiotherapy, or a home device). Oral antimuscarinics such as propantheline for widespread or multi-site sweating; dry mouth, blurred vision and constipation limit use (BNF [3]; dose per BNF). Botulinum toxin A for severe axillary disease, given by a specialist [2]."
+     "t": "Tap-water iontophoresis for palms and soles (usually via dermatology or physiotherapy, or a home device). Oral antimuscarinics such as propantheline for widespread or multi-site sweating; dry mouth, blurred vision and constipation limit use (BNF [3]; dose per BNF). Botulinum toxin A for severe axillary disease, given by a specialist [2]. Topical glycopyrronium cream is an option for severe axillary disease in adults when aluminium chloride and oral antimuscarinics have not worked or are unsuitable (NICE TA1175, 2026)."
     },
     {
      "h": "Referral and surgery",
@@ -4657,7 +4657,7 @@
     },
     {
      "h": "Test",
-     "t": "Plasma free metanephrines or 24-hour urinary fractionated metanephrines are the first-line tests [2]; use whichever your laboratory offers. Some medicines, such as tricyclic antidepressants, can cause false positives. Add TFTs, U&E, glucose or HbA1c and an ECG. Imaging is arranged by the specialist only after positive biochemistry."
+     "t": "Plasma free metanephrines or 24-hour urinary fractionated metanephrines are the first-line tests [2]; use whichever your laboratory offers. Some medicines, such as tricyclic antidepressants, can cause false positives. Add TFTs, U&E, glucose or HbA1c and an ECG. Do not delay an urgent specialist referral while waiting for results (NICE NG136 [1]); imaging is arranged by the specialist only after positive biochemistry."
     },
     {
      "h": "Alpha before beta",
@@ -6135,7 +6135,7 @@
    "reason": "Booked “for antidepressants to feel better”."
   },
   "knowledge": {
-   "guideline": "[1] EAU Guidelines on Sexual and Reproductive Health (2024, international) · [2] ISSM definition of premature ejaculation, Serefoglu et al., J Sex Med 2014 (international) · [3] BNF: dapoxetine; lidocaine with prilocaine · [4] NICE NG222 Depression in adults (2022, updated December 2025) · [5] BSSM guidelines on the management of erectile dysfunction (Hackett et al., 2018)",
+   "guideline": "[1] EAU Guidelines on Sexual and Reproductive Health (Limited Update March 2026, international) · [2] ISSM definition of premature ejaculation, Serefoglu et al., J Sex Med 2014 (international) · [3] BNF: dapoxetine; lidocaine with prilocaine · [4] NICE NG222 Depression in adults (2022, updated December 2025) · [5] BSSM guidelines on the management of erectile dysfunction (Hackett et al., 2018)",
    "summary": "A request for antidepressants can hide a sexual problem. Here the real agenda is premature ejaculation causing distress and relationship strain. Make it safe to talk, then confirm PE against the ISSM definition, classify lifelong versus acquired (acquired needs a cause looked for), and check for erectile dysfunction, which is treated first if present. Screen mood properly rather than prescribing for ‘feeling low’. Offer behavioural techniques, a topical anaesthetic spray and, if wanted, on-demand dapoxetine or an off-label daily SSRI, with partner involvement and psychosexual therapy where relationship or anxiety factors dominate.",
    "points": [
     {
@@ -6156,7 +6156,7 @@
     },
     {
      "h": "Treatment",
-     "t": "Behavioural techniques (stop-start, squeeze) with his partner, and psychosexual therapy for anxiety or relationship factors; combining behavioural and drug treatment is more effective than either alone [1]. Topical lidocaine with prilocaine spray, licensed for lifelong PE, applied before intercourse, dose per BNF [3]; excess is wiped off to avoid numbness in the partner. Dapoxetine, licensed for men aged 18–64: 30 mg 1–3 hours before sex, no more than once in 24 hours; check for orthostatic hypotension first and avoid alcohol [3]. Daily SSRIs are off-label."
+     "t": "Behavioural techniques (stop-start, squeeze) with his partner, and psychosexual therapy for anxiety or relationship factors; combining behavioural and drug treatment may be more effective than either alone [1]. Topical lidocaine with prilocaine spray, licensed for lifelong PE, applied before intercourse, dose per BNF [3]; excess is wiped off to avoid numbness in the partner. Dapoxetine, licensed for men aged 18–64: 30 mg 1–3 hours before sex, no more than once in 24 hours; check for orthostatic hypotension first, avoid alcohol, and do not combine with a PDE5 inhibitor in routine primary care [3]. Daily SSRIs are off-label."
     },
     {
      "h": "Follow-up",
@@ -6645,7 +6645,7 @@
     },
     {
      "h": "Primary-care treatment",
-     "t": "If a bleeding point is visible anteriorly and the clinician is trained, silver nitrate cautery to one side of the septum. Chlorhexidine with neomycin nasal cream reduces crusting and re-bleeding (dose per BNF [1]). Refer to ENT when bleeds keep recurring despite this, or no source is seen."
+     "t": "If a bleeding point is visible anteriorly and the clinician is trained, silver nitrate cautery to one side of the septum. Chlorhexidine with neomycin nasal cream reduces crusting and re-bleeding (dose per BNF [1]; Naseptin contains arachis oil, so check for peanut or soya allergy). Refer to ENT when bleeds keep recurring despite this, or no source is seen."
     },
     {
      "h": "Red flags for another cause",
@@ -8650,7 +8650,7 @@
     },
     {
      "h": "National picture",
-     "t": "NHS England’s adult clinics have waits measured in years. The Levy review (December 2025) led NHS England to announce a single national waiting list and an updated adult service specification [3]. Confirm he is on the NHS list."
+     "t": "NHS England’s adult clinics have waits measured in years. Following the Levy review (December 2025), from 1 October 2026 adult referrals in England go through the Gender National Referral Support Service (GNRSS), which manages a single national waiting list; self-referral is no longer accepted [3]. Confirm his place on that list."
     },
     {
      "h": "Monitoring for safety",
@@ -9137,7 +9137,7 @@
    "points": [
     {
      "h": "Screen for the urgent presentations",
-     "t": "Bilateral undescended testes at the newborn check: senior paediatric review within 24 hours [1]. Any undescended testis with hypospadias, micropenis, bifid scrotum or atypical genitalia: same-day paediatrics for possible disorder of sex development, including congenital adrenal hyperplasia [1][2]. Acute groin or abdominal pain with an undescended testis: possible torsion, immediate emergency surgical assessment [4]."
+     "t": "Bilateral impalpable testes, or a unilateral impalpable testis, at the newborn check: senior paediatric review within 24 hours [1]. Any undescended testis with hypospadias, micropenis, bifid scrotum or atypical genitalia: same-day paediatrics for possible disorder of sex development, including congenital adrenal hyperplasia [1][2]. Acute groin or abdominal pain with an undescended testis: possible torsion, immediate emergency surgical assessment [4]."
     },
     {
      "h": "Examine properly",
@@ -9149,7 +9149,7 @@
     },
     {
      "h": "Refer on the NIPE timetable",
-     "t": "Unilateral at the newborn check: re-examine at 6–8 weeks. Still undescended at 6–8 weeks, or found later: refer to paediatric surgery or urology per the local NIPE pathway [1]. Spontaneous descent after about 6 months (corrected age) is uncommon [2]."
+     "t": "Unilateral palpable at the newborn check: re-examine at 6–8 weeks and, if needed, at 4–5 months (corrected age). Bilateral at 6–8 weeks: urgent paediatric referral, seen within 2 weeks. Still undescended, now impalpable, or found later: refer to paediatric surgery or urology per the local NIPE pathway, aiming for specialist review by 6 months [1]. Spontaneous descent after about 6 months (corrected age) is uncommon [2]."
     },
     {
      "h": "Orchidopexy timing",

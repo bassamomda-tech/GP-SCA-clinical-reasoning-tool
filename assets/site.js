@@ -841,22 +841,22 @@ RGP_TOOLS = RGP_TOOLS.filter(t => RGP_HIDDEN_TOOLS.indexOf(t.id) === -1);
 // Algorithm specialties — surfaced as the Algorithms top-nav dropdown.
 // Counts + labels mirror the section headers in tools/algorithms.html.
 const RGP_ALG_SPECIALTIES = [
-  {label:'Cardiovascular',               icon:'🫀', n:5},
+  {label:'Cardiovascular',               icon:'🫀', n:4},
   {label:'Respiratory',                  icon:'🫁', n:3},
-  {label:'Gastroenterology & Liver',     icon:'🫃', n:15},
-  {label:"Renal, Urology & Men's Health", icon:'🫈', n:16},
-  {label:'Endocrine & Metabolic',        icon:'🦋', n:11},
-  {label:'Neurology',                    icon:'🧠', n:15},
+  {label:'Gastroenterology & Liver',     icon:'🫃', n:16},
+  {label:"Renal, Urology & Men's Health", icon:'🫈', n:13},
+  {label:'Endocrine & Metabolic',        icon:'🦋', n:10},
+  {label:'Neurology',                    icon:'🧠', n:14},
   {label:'Mental Health',                icon:'🧩', n:3},
-  {label:'ENT & Dental',                 icon:'👂', n:20},
+  {label:'ENT & Dental',                 icon:'👂', n:19},
   {label:'Dermatology',              icon:'🧴', n:5},
-  {label:'Ophthalmology',                icon:'👁️', n:10},
-  {label:"Women's Health",               icon:'🌸', n:14},
+  {label:'Ophthalmology',                icon:'👁️', n:9},
+  {label:"Women's Health",               icon:'🌸', n:12},
   {label:'Haematology',                  icon:'🩸', n:11},
   {label:'Musculoskeletal',              icon:'🦴', n:17},
   {label:'General & Systemic',           icon:'⚖️', n:7},
   {label:'Paediatrics',                  icon:'🧒', n:17},
-  {label:'Lab Results',                  icon:'🧪', n:22, hub:true, path:'tools/algorithms/lab-results.html'},
+  {label:'Lab Results',                  icon:'🧪', n:23},
 ];
 
 // Management specialties — surfaced as the Management top-nav dropdown.
@@ -972,10 +972,8 @@ function renderTopNav(activeId){
 
   // Algorithms mega — by specialty (not all topics).
   // NOTE: the nav meta must match what tools/algorithms.html advertises (algShown).
-  // That page counts DOM-VISIBLE cards: the 15 specialty groups (185 cards) plus the
-  // single lab-results hub card. The 22 lab-value pathways sit inside the hidden
-  // 'lab results · abnormal blood tests' group and are stated separately there, so they
-  // are NOT added here — otherwise the nav and the directory disagree.
+  // That page counts every card in its 16 specialty groups, Lab Results included
+  // (183 pathways), so each specialty's n here must equal its card count there.
   const ALG_VISIBLE = RGP_ALG_SPECIALTIES.reduce((n,s)=>n+(s.hub?1:s.n),0);
   const algTotal = ALG_VISIBLE;
   const algMega = `

@@ -223,14 +223,14 @@ window.SCA_CASES = [
       { dom:'rto',   text:'Creates space for Sophie to speak — asks Karen if it\'s OK to hear from Sophie directly first' },
       { dom:'rto',   text:'Manages the mother\'s expectation about isotretinoin without dismissing it' },
       { dom:'gs',    text:'Considers safeguarding the consultation: offers a private follow-up Sophie can attend alone' },
-      { dom:'gs',    text:'Safety-nets — mental health worsening, suicidal ideation; signposts (Mind, Kooth, Papyrus HOPELINEUK)' },
+      { dom:'gs',    text:'Safety-nets — mental health worsening, suicidal ideation; signposts (Mind, Kooth, Papyrus HOPELINE247)' },
     ],
     worked:[
       { lbl:'Inviting Sophie',     txt:'"Karen, thank you for booking this. Sophie — would it be OK if I heard from you first, in your own words?"' },
       { lbl:'Naming the impact',   txt:'"Acne isn\'t just on the skin — it shapes how you walk into a room. Tell me what it\'s been like for you at school."' },
       { lbl:'Reframing isotretinoin', txt:'"Isotretinoin is brilliant when it\'s the right answer, but it lives with the specialists. Let\'s use the first three months really well — that often changes the conversation."' },
       { lbl:'Private follow-up',   txt:'"I\'d love to see you again, Sophie, in four weeks — and you\'re welcome to come on your own if that\'s easier."' },
-      { lbl:'Mental-health safety-net', txt:'"If you feel hopeless or you start having thoughts of hurting yourself — Papyrus HOPELINEUK is open every day; the number is 0800 068 41 41. And I want you to come and find me."' },
+      { lbl:'Mental-health safety-net', txt:'"If you feel hopeless or you start having thoughts of hurting yourself — Papyrus HOPELINE247 is open every day; the number is 0800 068 41 41. And I want you to come and find me."' },
     ],
     learning:'Adolescent acne is almost always also a psychological consultation. The marking failure is letting a parent dominate the airtime and leaving without hearing from the patient themselves. Topical adapalene/BPO is the first-line structure NICE recommends; oral antibiotics are time-limited adjuncts; isotretinoin is consultant-prescribed.'
   },

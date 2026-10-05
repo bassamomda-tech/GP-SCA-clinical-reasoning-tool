@@ -6896,7 +6896,7 @@
     },
     {
      "h": "DVLA once on insulin",
-     "t": "Group 1: notify the DVLA if insulin treatment will last more than 3 months; check glucose no more than 2 hours before driving and every 2 hours while driving; do not drive if glucose is below 5.0 mmol/L. Group 2 has stricter rules."
+     "t": "Group 1: notify the DVLA if insulin treatment will last more than 3 months; check glucose no more than 2 hours before driving and every 2 hours while driving; if it is 5.0 mmol/L or less, eat a snack first; do not drive if glucose is below 4.0 mmol/L. Group 2 has stricter rules."
     },
     {
      "h": "After the acute phase",
@@ -7229,7 +7229,7 @@
    "legal": [
     {
      "h": "DVLA and insulin",
-     "t": "Group 1: notify if insulin will be needed for more than 3 months; glucose check within 2 hours before driving and every 2 hours while driving; do not drive below 5.0 mmol/L. Group 2 (lorry, bus) has additional requirements. Ask what he drives."
+     "t": "Group 1: notify if insulin will be needed for more than 3 months; glucose check within 2 hours before driving and every 2 hours while driving; snack first at 5.0 mmol/L or less; do not drive below 4.0 mmol/L. Group 2 (lorry, bus) has additional requirements. Ask what he drives."
     },
     {
      "h": "Equality Act 2010",
@@ -7398,7 +7398,7 @@
     },
     {
      "h": "DVLA",
-     "t": "Car and van licence (Group 1): no need to tell the DVLA if treated by diet or tablets that do not cause hypoglycaemia, such as metformin and SGLT2 inhibitors. Lorry or bus licence (Group 2): the driver must tell the DVLA if treated with tablets. Insulin must be notified for both groups (Group 1 only if longer than 3 months). Ask what he drives."
+     "t": "Car and van licence (Group 1): no need to tell the DVLA if treated by diet or tablets that do not cause hypoglycaemia, such as metformin and SGLT2 inhibitors. Lorry or bus licence (Group 2): the driver must tell the DVLA if treated with tablets that carry a hypoglycaemia risk (sulfonylureas or glinides). Insulin must be notified for both groups (Group 1 only if longer than 3 months). Ask what he drives."
     },
     {
      "h": "Care processes",
@@ -7734,7 +7734,7 @@
    "legal": [
     {
      "h": "DVLA",
-     "t": "Group 1 (car or van up to 3.5 tonnes): no notification if treated by diet or tablets not carrying hypoglycaemia risk. Group 2 (lorry or bus): must notify if treated with tablets. Insulin: must notify (Group 1 only if treatment will last over 3 months). Sulfonylureas bring glucose monitoring requirements."
+     "t": "Group 1 (car or van up to 3.5 tonnes): no notification if treated by diet or tablets not carrying hypoglycaemia risk. Group 2 (lorry or bus): must notify if treated with tablets carrying hypoglycaemia risk (sulfonylureas or glinides). Insulin: must notify (Group 1 only if treatment will last over 3 months). Sulfonylureas bring glucose monitoring requirements."
     },
     {
      "h": "Free prescriptions",
@@ -8378,7 +8378,7 @@
     },
     {
      "h": "Pregnancy planning",
-     "t": "NICE NG145 does not cover pregnancy. RCOG 2025: a TSH of 0.5–2.5 mU/L is a reasonable target for women with hypothyroidism on levothyroxine; on a positive pregnancy test, increase the dose by 20–30% (or double the dose on two days each week) and check thyroid function promptly. Untreated hypothyroidism reduces fertility and harms pregnancy, so finding it is good news."
+     "t": "NICE NG145 does not cover pregnancy. RCOG 2025: a TSH of 0.5–2.5 mU/L is a reasonable target for women with hypothyroidism on levothyroxine; on a positive pregnancy test, increase the dose by about 25–30% (or double the dose on two days each week) and check thyroid function promptly. Untreated hypothyroidism reduces fertility and harms pregnancy, so finding it is good news."
     },
     {
      "h": "Pre-conception care",

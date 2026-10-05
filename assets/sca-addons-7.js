@@ -25,7 +25,7 @@
    "reason": "Worsening acne with scarring. Requesting isotretinoin (\"Roaccutane\")."
   },
   "knowledge": {
-   "guideline": "NICE NG198 (acne vulgaris, 2021, last updated August 2026) · MHRA Drug Safety Update, October 2023 (isotretinoin) · NICE NG225 (self-harm, 2022) · NICE NG222 (depression in adults, 2022, updated December 2025) · BNF",
+   "guideline": "NICE NG198 (acne vulgaris, 2021, last updated 30 April 2026) · MHRA Drug Safety Updates, October 2023, October 2025 and 22 January 2026 (isotretinoin) · NICE NG225 (self-harm, 2022) · NICE NG222 (depression in adults, 2022, updated December 2025) · BNF",
    "summary": "Moderate to severe acne with scarring and major psychological distress warrants a step-up now and referral to a consultant dermatologist-led team for isotretinoin. The suicidal thoughts behind \"it’s ruining my life\" must be asked about directly and managed in their own right.",
    "points": [
     {
@@ -42,7 +42,7 @@
     },
     {
      "h": "Isotretinoin safety",
-     "t": "MHRA Drug Safety Update October 2023: assess and monitor mental health and sexual function before and during isotretinoin. The Pregnancy Prevention Programme applies to patients who can become pregnant. Lipids and liver function are monitored by the prescribing team."
+     "t": "MHRA Drug Safety Updates (October 2023; changes from 22 January 2026): assess and monitor mental health and sexual function before and during isotretinoin, and complete the updated Acknowledgement of Risk form with every patient. The Pregnancy Prevention Programme applies to patients who can become pregnant. Lipids and liver function are monitored by the prescribing team."
     },
     {
      "h": "Asking about suicide",
@@ -5119,7 +5119,7 @@
     },
     {
      "h": "Alcohol: screen, advise, support",
-     "t": "NICE PH24: use AUDIT-C, then the full AUDIT if positive, and give structured brief advice. UK CMO: no more than 14 units a week, spread over 3 or more days. Assess for dependence and withdrawal risk (NICE CG115); if dependent, advise not to stop suddenly and arrange assisted withdrawal (NICE CG100)."
+     "t": "NICE PH24: use AUDIT-C, then the full AUDIT if positive, and give structured brief advice. UK CMO: no more than 14 units a week, spread over 3 or more days. Assess for dependence and withdrawal risk (NICE CG115); if dependent, advise not to stop suddenly and arrange assisted withdrawal (NICE CG115)."
     },
     {
      "h": "Grief and mood",
@@ -7072,7 +7072,7 @@
     },
     {
      "h": "Recognise dependence",
-     "t": "MHRA Drug Safety Update (September 2020): opioids carry a risk of dependence and addiction even at therapeutic doses; review regularly and discuss the risks. Two concurrent opioids (tramadol and codeine) add harm without clear benefit. Opioids Aware (2026 update): keep the total ideally at or below 50 mg/day oral morphine equivalent, and seek specialist advice before exceeding 90 mg/day."
+     "t": "MHRA Drug Safety Update (September 2020): opioids carry a risk of dependence and addiction even at therapeutic doses; review regularly and discuss the risks. Two concurrent opioids (tramadol and codeine) add harm without clear benefit. Opioids Aware (2026 update): treat about 50 mg/day oral morphine equivalent as a prompt for heightened review, and seek specialist advice when approaching or exceeding 90 mg/day; neither is a safe threshold."
     },
     {
      "h": "What NICE NG59 offers instead",
@@ -7566,7 +7566,7 @@
    "reason": "About 6 weeks of a husky voice. Requesting a throat spray or antibiotics."
   },
   "knowledge": {
-   "guideline": "NICE NG12 (updated April 2026) · NICE NG209 (tobacco, 2021) · NICE CG115 (alcohol-use disorders, 2011) · NICE PH24 (alcohol-use disorders: prevention, 2010)",
+   "guideline": "NICE NG12 (updated April 2026) · NICE NG209 (tobacco, 2021, updated 2025) · NICE CG115 (alcohol-use disorders, 2011) · NICE PH24 (alcohol-use disorders: prevention, 2010)",
    "summary": "Persistent, progressive hoarseness in a 63-year-old heavy smoker and drinker, now with a neck lump and one-sided ear ache, meets the NICE NG12 (updated April 2026) criteria for a suspected laryngeal cancer referral. Refer today; do not prescribe a spray or antibiotics.",
    "points": [
     {
@@ -8070,15 +8070,15 @@
     },
     {
      "h": "Fast-track, and test without delaying treatment",
-     "t": "BSR 2020: refer urgently to the GCA fast-track service — specialist review ideally the same working day and always within 3 working days. Temporal artery biopsy (at least 1 cm) and/or ultrasound within 1 week of starting steroids, because steroids reduce test sensitivity."
+     "t": "BSR 2020: refer urgently to the GCA fast-track service — specialist review ideally the same working day and always within 3 working days. Ultrasound as soon as possible (preferably within 72 hours of starting steroids where feasible) and/or temporal artery biopsy (at least 1 cm) promptly via the pathway, because steroids reduce test sensitivity; never delay treatment for them."
     },
     {
      "h": "PMR and the wider work-up",
-     "t": "BSR/BHPR 2010: PMR is age over 50, bilateral shoulder and/or pelvic girdle aching and morning stiffness, with raised inflammatory markers. Baseline tests include FBC, U&E, LFT, bone profile, protein electrophoresis, TSH, CK, rheumatoid factor and urine dipstick. NICE NG12 (updated April 2026) includes a myeloma pathway for people aged 60 and over, so protein electrophoresis is proportionate here with anaemia and a high ESR."
+     "t": "BSR/BHPR 2010: PMR is age over 50, bilateral shoulder and/or pelvic girdle aching and morning stiffness, with raised inflammatory markers. Baseline tests include FBC, U&E, LFT, bone profile, protein electrophoresis, TSH, CK, rheumatoid factor and urine dipstick. Protein electrophoresis is part of the BSR pre-steroid panel. NICE NG12 (updated April 2026) myeloma testing at 60 and over is triggered by persistent bone pain (particularly back pain) or unexplained fracture; an isolated raised ESR is not itself the trigger."
     },
     {
      "h": "Steroid safety from day one",
-     "t": "NOGG 2024: in a postmenopausal woman starting prednisolone 7.5 mg/day or more for 3 months or longer, start bone protection at the same time without waiting for DXA. BSR 2020: consider a PPI. NatPSA/2020/005: Steroid Emergency Card for 5 mg or more for 4 weeks or longer; sick-day rules per NICE NG243. Monitor glucose and BP."
+     "t": "NOGG 2024: in a postmenopausal woman starting prednisolone 7.5 mg/day or more for 3 months or longer, assess fracture risk at the start; this is a trigger for bone-protective treatment, which need not wait for DXA. A PPI according to GI risk (BSR 2020). NatPSA/2020/005: Steroid Emergency Card for 5 mg or more for 4 weeks or longer; sick-day rules per NICE NG243. Monitor glucose and BP."
     }
    ]
   },
@@ -8501,7 +8501,7 @@
     {
      "dom": "tasks",
      "fail": "Suspecting GCA but waiting for a biopsy or specialist opinion before starting prednisolone.",
-     "why": "BSR 2020: start glucocorticoid on suspicion; biopsy or ultrasound can follow within 1 week.",
+     "why": "BSR 2020: start glucocorticoid on suspicion; ultrasound or biopsy follows urgently via the fast-track pathway.",
      "fix": "“We start the steroids today — we don’t wait for tests.”"
     },
     {
@@ -9546,7 +9546,7 @@
    "reason": "Video consultation booked to discuss his nasal symptoms."
   },
   "knowledge": {
-   "guideline": "NICE NG12 (updated April 2026) — head and neck · NICE NG98 (hearing loss in adults, 2018, updated 2023)",
+   "guideline": "NICE NG12 (updated April 2026) — head and neck · NICE NG98 (hearing loss in adults, 2018)",
    "summary": "Persistent one-sided nasal blockage with blood-stained discharge is not hay fever. With a same-side blocked ear, a neck lump and Southern Chinese family origin, nasopharyngeal carcinoma must be excluded by urgent ENT assessment with nasendoscopy.",
    "points": [
     {
@@ -9563,7 +9563,7 @@
     },
     {
      "h": "The ear criterion",
-     "t": "NICE NG98 (updated 2023): consider a suspected cancer pathway referral to ENT for adults of Chinese or south-east Asian family origin who have hearing loss and a middle-ear effusion not associated with an upper respiratory tract infection. Confirm the effusion on otoscopy at a face-to-face review."
+     "t": "NICE NG98 (2018): consider a suspected cancer pathway referral to ENT for adults of Chinese or south-east Asian family origin who have hearing loss and a middle-ear effusion not associated with an upper respiratory tract infection. Confirm the effusion on otoscopy at a face-to-face review."
     },
     {
      "h": "Examine, but don’t delay",

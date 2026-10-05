@@ -1991,7 +1991,7 @@
     },
     {
      "h": "Sepsis lens",
-     "t": "NICE NG253 [2]: in a person with suspected infection, new confusion or altered mental state is a warning sign. Assess face to face with full observations (respiratory rate, oxygen saturation, blood pressure, heart rate, temperature, level of consciousness) and use NEWS2; high-risk findings need emergency transfer."
+     "t": "NICE NG253 [2]: in a person with suspected infection, new confusion or altered mental state is a warning sign. Assess face to face with full observations (respiratory rate, oxygen saturation, blood pressure, heart rate, temperature, level of consciousness) against the NG253 risk criteria, with NEWS2 as an adjunct where locally adopted (NG253 applies it in acute hospital and ambulance settings); high-risk findings need emergency transfer."
     },
     {
      "h": "COPD matters",
@@ -3492,8 +3492,8 @@
    "reason": "Video consultation: “Sore throat and wiped out. Can I have antibiotics so I can play rugby on Saturday?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG84 Sore throat (acute): antimicrobial prescribing (2018) · [2] Amoxicillin summary of product characteristics, section 4.4 (avoid if infectious mononucleosis suspected) · [3] BNF: phenoxymethylpenicillin, paracetamol, ibuprofen · [4] Ebell MH et al. JAMA 2016 (diagnosis of infectious mononucleosis) · [5] Sylvester JE et al. Sports Health 2019 (splenic rupture timing) · [6] BHIVA/BASHH/BIA Adult HIV testing guidelines (2020) · [7] NICE NG12 Suspected cancer (updated April 2026): lymphoma · [8] NICE NG206 ME/CFS (2021)",
-   "summary": "A young adult with more than a week of severe sore throat, fever, marked fatigue and posterior as well as anterior neck nodes most likely has glandular fever (EBV). Confirm with FBC, a heterophile antibody (Monospot) test and LFTs. It is viral: antibiotics will not help, and amoxicillin causes a florid rash. The key safety message is the spleen: no contact sport or heavy lifting for at least 4 weeks and until reviewed, so no rugby on Saturday. Safety-net for airway obstruction and splenic rupture.",
+   "guideline": "[1] NICE NG84 Sore throat (acute): antimicrobial prescribing (2018) · [2] Amoxicillin summary of product characteristics, section 4.4 (avoid if infectious mononucleosis suspected) · [3] BNF: phenoxymethylpenicillin, paracetamol, ibuprofen · [4] Ebell MH et al. JAMA 2016 (diagnosis of infectious mononucleosis) · [5] Sylvester JE et al. Am Fam Physician 2023 (infectious mononucleosis: rapid evidence review) · [6] BHIVA/BASHH/BIA Adult HIV testing guidelines (2020) · [7] NICE NG12 Suspected cancer (updated April 2026): lymphoma · [8] NICE NG206 ME/CFS (2021)",
+   "summary": "A young adult with more than a week of severe sore throat, fever, marked fatigue and posterior as well as anterior neck nodes most likely has glandular fever (EBV). Confirm with FBC and film and EBV serology (or a heterophile antibody (Monospot) test, per the local laboratory pathway), with LFTs if clinically indicated. It is viral: antibiotics will not help, and amoxicillin causes a florid rash. The key safety message is the spleen: no contact sport or heavy lifting for at least 4 weeks and until reviewed, so no rugby on Saturday. Safety-net for airway obstruction and splenic rupture.",
    "points": [
     {
      "h": "Recognise it",
@@ -3501,7 +3501,7 @@
     },
     {
      "h": "Tests",
-     "t": "FBC and film (lymphocytosis with atypical lymphocytes), heterophile antibody (Monospot) test and LFTs. The heterophile test is about 87% sensitive and 91% specific but can be negative in the first week [4]; repeat it or request EBV serology if negative and suspicion remains. If negative with a mononucleosis-like illness, offer an HIV test: BHIVA/BASHH/BIA 2020 [6] lists mononucleosis-like syndrome as an indicator condition."
+     "t": "FBC and film (lymphocytosis with atypical lymphocytes), and EBV-specific serology as the preferred confirmatory test per the local laboratory pathway; LFTs if jaundice, hepatomegaly or marked systemic illness. A heterophile antibody (Monospot) test, where used, is about 87% sensitive and 91% specific and is unreliable in the first week [4], so a negative result does not exclude EBV when suspicion remains. If negative with a mononucleosis-like illness, offer an HIV test: BHIVA/BASHH/BIA 2020 [6] lists mononucleosis-like syndrome as an indicator condition."
     },
     {
      "h": "No antibiotics, no amoxicillin",
@@ -3513,7 +3513,7 @@
     },
     {
      "h": "The spleen and sport",
-     "t": "Splenic rupture is rare (about 0.1 to 0.5%) but serious; most happen in the first 3 to 4 weeks, and around 90% by day 31 [5]. Advise no contact or collision sport and no heavy lifting for at least 4 weeks from the start of symptoms, and longer while the spleen is enlarged or he is unwell. Many UK NHS services advise about 8 weeks before full contact sport. Agree the return at review, not by guesswork."
+     "t": "Splenic rupture is rare (often quoted as about 0.1 to 0.5%, though exact estimates are uncertain) but potentially fatal; most reported cases occur in the first month, although late rupture can occur [5]. Advise no contact or collision sport and no heavy lifting for at least 4 weeks from the start of symptoms, and longer while the spleen is enlarged or he is unwell. Many UK NHS services advise about 8 weeks before full contact sport. Agree the return at review, not by guesswork."
     },
     {
      "h": "Red flags",
@@ -6415,7 +6415,7 @@
     },
     {
      "h": "NICE NG12 (updated April 2026) routes",
-     "t": "NICE NG12 (updated April 2026) [5]: aged 45 and over with unexplained visible haematuria without UTI, or visible haematuria that persists or recurs after successful UTI treatment → suspected cancer pathway referral (bladder and kidney). Persistent or frequent increased urinary urgency or frequency is also an ovarian cancer symptom in NICE NG12 (updated April 2026): in women aged 40 and over, measure CA125; at 50–59, arrange urgent direct-access pelvic and abdominal ultrasound if CA125 is 31 IU/mL or more. Ask about bloating, early satiety, pelvic pain and weight loss."
+     "t": "NICE NG12 (updated April 2026) [5]: aged 45 and over with unexplained visible haematuria without UTI, or visible haematuria that persists or recurs after successful UTI treatment → suspected cancer pathway referral (bladder and kidney). Persistent or frequent urinary urgency or frequency together with bloating, early satiety, loss of appetite or pelvic or abdominal pain is an ovarian cancer pattern in NICE NG12 (updated April 2026), but isolated urgency with a clear OAB picture does not need CA125: in women aged 40 and over with that pattern, measure CA125; at 50–59, arrange urgent direct-access pelvic and abdominal ultrasound if CA125 is 31 IU/mL or more. Ask about bloating, early satiety, pelvic pain and weight loss."
     },
     {
      "h": "Conservative first",
@@ -6423,7 +6423,7 @@
     },
     {
      "h": "Medication next",
-     "t": "NICE NG123 [1]: if bladder training is ineffective, offer an antimuscarinic after discussing benefits and adverse effects, taking account of total anticholinergic burden. Do not offer immediate-release oxybutynin to older women who may be at higher risk of sudden deterioration in physical or mental health. Review 4 weeks after starting a new OAB medicine. Mirabegron is an option where antimuscarinics are contraindicated, ineffective or not tolerated (NICE TA290 [3]). Doses per BNF [6]."
+     "t": "NICE NG123 [1]: if bladder training is ineffective, offer an antimuscarinic after discussing benefits and adverse effects, taking account of total anticholinergic burden. Do not offer immediate-release oxybutynin to older women who may be at higher risk of sudden deterioration in physical or mental health. Review 4 weeks after starting a new OAB medicine. Mirabegron (NICE TA290 [3]) or vibegron (NICE TA999) is an option where antimuscarinics are contraindicated, ineffective or not tolerated. Doses per BNF [6]."
     },
     {
      "h": "Mirabegron and BP",
@@ -8882,7 +8882,7 @@
     },
     {
      "h": "Driving",
-     "t": "DVLA [5]: Group 1 (car, motorcycle) — must not drive for 1 month. No need to notify DVLA if fully recovered at 1 month with no residual deficit. Multiple TIAs over a short period: 3 months free of attacks and DVLA must be told. Group 2 (bus, coach, lorry): stop driving and notify; relicensing needs 1 year. Record the advice in the notes [6]."
+     "t": "DVLA [5]: Group 1 (car, motorcycle) — must not drive for 1 month. No need to notify DVLA if fully recovered at 1 month with no residual deficit. After multiple TIAs, the 1-month exclusion applies after each episode; notify DVLA where the current guidance requires. Group 2 (bus, coach, lorry): stop driving and notify; relicensing needs 1 year. Record the advice in the notes [6]."
     },
     {
      "h": "Video consultation limits",
@@ -9200,7 +9200,7 @@
    "legal": [
     {
      "h": "DVLA — Group 1",
-     "t": "Must not drive for 1 month after a TIA. No need to notify if fully recovered at 1 month with no residual deficit. Multiple TIAs over a short period: 3 months free of attacks and notify DVLA (DVLA Assessing fitness to drive)."
+     "t": "Must not drive for 1 month after a TIA. No need to notify if fully recovered at 1 month with no residual deficit. After multiple TIAs, the 1-month exclusion applies after each episode; notify DVLA where the current guidance requires (DVLA Assessing fitness to drive)."
     },
     {
      "h": "DVLA — Group 2",

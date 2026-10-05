@@ -48,7 +48,7 @@
     },
     {
      "h": "Falls change the plan",
-     "t": "NICE NG249: offer a comprehensive falls assessment to an older person who has fallen in the past year and is frail, was injured, lost consciousness, or could not get up. She has fallen twice, bruised her hip and lay for a while — she qualifies. NG249 advises against using falls risk prediction tools."
+     "t": "NICE NG249: offer a comprehensive falls assessment to an older person who has fallen in the past year and is frail, was injured, lost consciousness or could not get up, or who has had two or more falls in the past year. She has fallen twice, bruised her hip and lay for a while — she qualifies. NG249 advises against using falls risk prediction tools."
     },
     {
      "h": "Bone health",
@@ -1382,7 +1382,7 @@
    "legal": [
     {
      "h": "DVLA — sleep apnoea",
-     "t": "Group 2 (lorry) drivers must tell DVLA if diagnosed with OSA syndrome or sleepiness that impairs driving, and should stop driving until it is treated and controlled. OSA without daytime sleepiness does not need notifying."
+     "t": "Excessive sleepiness that may impair driving means no driving until it is controlled. Confirmed moderate or severe OSA syndrome with excessive sleepiness must be notified to DVLA (suspected or mild OSA with sleepiness: notify if not controlled within 3 months). Group 2 (lorry) relicensing needs medical confirmation of control and at least annual review. OSA without excessive sleepiness does not need notifying."
     },
     {
      "h": "DVLA — blood pressure",
@@ -1390,7 +1390,7 @@
     },
     {
      "h": "Prescribing",
-     "t": "Generic sildenafil can be prescribed on the NHS without restriction; other PDE5 inhibitors may be subject to prescribing restrictions — check local formulary. Some sildenafil is also available from pharmacies after a consultation."
+     "t": "Generic sildenafil, tadalafil and vardenafil can be prescribed on the NHS without SLS endorsement (generic tadalafil and vardenafil since October 2025); branded products such as Cialis® remain SLS-restricted — check local formulary. Some sildenafil is also available from pharmacies after a consultation."
     }
    ],
    "professional": [
@@ -2001,7 +2001,7 @@
    "points": [
     {
      "h": "Simple or complex",
-     "t": "Simple: generalised, brief, not repeated in the same illness, with full recovery. Complex features: focal, prolonged, repeated within the same illness or incomplete recovery. NICE NG217 notes that febrile seizures lasting longer than 10 minutes or with focal features may carry a higher risk of later epilepsy."
+     "t": "Simple: generalised, brief, not repeated in the same illness, with full recovery. Complex features: focal, lasting longer than 15 minutes, repeated within the same illness or incomplete recovery. Complex febrile seizures carry a somewhat higher risk of later epilepsy and need paediatric assessment."
     },
     {
      "h": "Not epilepsy, not brain damage",
@@ -5315,7 +5315,7 @@
    "reason": "Mother calling for advice. She hopes it is a sprain or growing pains that can be managed at home."
   },
   "knowledge": {
-   "guideline": "BOAST: Management of children with acute musculoskeletal infection (BOA/BSCOS, 2022) · NICE NG12 (updated April 2026) · NICE CG89 (updated December 2025) · NICE NG254",
+   "guideline": "BOAST: Management of children with acute musculoskeletal infection (BOA/BSCOS, 2022) · NICE NG12 (updated April 2026) · NICE CG89 · NICE NG254",
    "summary": "A child who suddenly refuses to bear weight has a serious cause until proven otherwise. With possible fever, septic arthritis or osteomyelitis must be excluded the same day; transient synovitis is a diagnosis made only after that.",
    "points": [
     {
@@ -5659,7 +5659,7 @@
     },
     {
      "h": "Safeguarding awareness",
-     "t": "NICE CG89 (updated December 2025): consider maltreatment where an injury or limp lacks an adequate explanation. Asking about mechanism is routine; no concern arises from this history as given, but the examining team should look for bruising."
+     "t": "NICE CG89: consider maltreatment where an injury or limp lacks an adequate explanation. Asking about mechanism is routine; no concern arises from this history as given, but the examining team should look for bruising."
     }
    ],
    "professional": [
@@ -6295,7 +6295,7 @@
     },
     {
      "h": "If the result is raised",
-     "t": "NICE NG12 (updated April 2026): consider a suspected cancer pathway referral if PSA is above the age-specific threshold (for 50–59 years, above 3.5 micrograms/L). NICE NG131: multiparametric MRI is the first-line investigation for suspected localised prostate cancer, before any biopsy; active surveillance is an option for low-risk disease."
+     "t": "For an asymptomatic man tested under the Programme, a PSA of 3.0 micrograms/L or more (age 50 to 69) prompts urological referral. The NICE NG12 (updated April 2026) age-specific thresholds (for 50–59 years, above 3.5 micrograms/L) apply to symptomatic men. NICE NG131: multiparametric MRI is the first-line investigation for suspected localised prostate cancer, before any biopsy; active surveillance is an option for low-risk disease."
     },
     {
      "h": "Symptoms change the pathway",
@@ -6767,7 +6767,7 @@
     },
     {
      "h": "Refer immediately",
-     "t": "NICE NG69: if an eating disorder is suspected after initial assessment, refer immediately to a community-based, age-appropriate eating disorder service. Do not use a single measure such as BMI or duration of illness to decide whether to offer treatment. Red MEED features need same-day medical admission."
+     "t": "NICE NG69: if an eating disorder is suspected after initial assessment, refer immediately to a community-based, age-appropriate eating disorder service. Do not use a single measure such as BMI or duration of illness to decide whether to offer treatment. One red or two or more amber MEED features need urgent same-day discussion with the acute paediatric and eating disorder teams; admit if she cannot be stabilised safely in the community."
     },
     {
      "h": "Waiting time standard",
@@ -7746,7 +7746,7 @@
     },
     {
      "h": "Fertility and outcome",
-     "t": "Testicular cancer is one of the most curable solid cancers. After removal of one testis, the other usually maintains testosterone and fertility. NICE NG257 (2026, which replaced NG257): offer sperm cryopreservation before treatment that may affect fertility. A prosthesis can be offered at surgery."
+     "t": "Testicular cancer is one of the most curable solid cancers. After removal of one testis, the other usually maintains testosterone and fertility. NICE NG257 (March 2026, which replaced CG156): offer sperm cryopreservation before treatment that may affect fertility. A prosthesis can be offered at surgery."
     }
    ]
   },
@@ -8211,7 +8211,7 @@
    "reason": "Telephone call from mother: “sudden pain in his groin during football, he’s been sick”."
   },
   "knowledge": {
-   "guideline": "EAU Guidelines on Paediatric Urology — acute scrotum (international; no UK guideline) · GMC 0–18 years (2007, updated 2018)",
+   "guideline": "GIRFT/BAUS Children and Young People: testicular torsion pathway · EAU Guidelines on Paediatric Urology — acute scrotum (international) · GMC 0–18 years (2007, updated 2018)",
    "summary": "Sudden severe testicular pain with vomiting in a teenager is torsion until a surgeon says otherwise. The GP’s job is to get him to hospital now, not to diagnose it on the phone.",
    "points": [
     {
@@ -8220,7 +8220,7 @@
     },
     {
      "h": "Time is testis",
-     "t": "The chance of saving the testis falls with every hour of lost blood supply, and outcomes are best when it is untwisted within a few hours of onset. EAU (international): suspected torsion needs urgent surgical exploration."
+     "t": "The chance of saving the testis falls with every hour of lost blood supply, and outcomes are best when it is untwisted within a few hours of onset. EAU (international) and the GIRFT/BAUS pathway: suspected torsion needs urgent surgical exploration — refer directly to a centre able to explore, not for an ultrasound first."
     },
     {
      "h": "Don’t let tests delay theatre",
@@ -8715,7 +8715,7 @@
     },
     {
      "h": "Driving",
-     "t": "DVLA: after a TIA or stroke a car driver must stop driving for at least 1 month and may restart only when a clinician says it is safe. Sudden, disabling or recurrent dizziness must be reported to the DVLA."
+     "t": "DVLA: after a TIA or stroke a car driver must stop driving for at least 1 month and may restart only when a clinician says it is safe. Recurrent sudden, disabling dizziness must be reported to the DVLA."
     }
    ]
   },
@@ -9036,7 +9036,7 @@
    "legal": [
     {
      "h": "DVLA",
-     "t": "After a TIA or stroke a car driver must stop driving for at least 1 month and restart only when a clinician says it is safe. Sudden, disabling or recurrent dizziness must be reported to the DVLA. Tell him not to drive himself to hospital."
+     "t": "After a TIA or stroke a car driver must stop driving for at least 1 month and restart only when a clinician says it is safe. Recurrent sudden, disabling dizziness must be reported to the DVLA. Tell him not to drive himself to hospital."
     },
     {
      "h": "Capacity and refusal",

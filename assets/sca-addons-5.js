@@ -515,7 +515,7 @@
    "reason": "Telephone call about his leg. “It’s just my circulation playing up.”"
   },
   "knowledge": {
-   "guideline": "ESVS acute limb ischaemia guideline (2020, international) · NICE CG147 Peripheral arterial disease (2012, updated 2020) · NICE NG196 Atrial fibrillation (2021, updated 2025) · NICE NG209 Tobacco (2021)",
+   "guideline": "ESVS acute limb ischaemia guideline (2020, international) · NICE CG147 Peripheral arterial disease (2012, updated 2020) · NICE NG196 Atrial fibrillation (2021) · NICE NG209 Tobacco (2021)",
    "summary": "A leg that has suddenly become painful at rest, pale, cold and numb is acute limb ischaemia until proven otherwise. In a man with untreated AF this is most likely an embolus. It needs a 999 ambulance and emergency vascular care now, not painkillers.",
    "points": [
     {
@@ -1532,7 +1532,7 @@
     },
     {
      "h": "Why not disulfiram",
-     "t": "BNF: disulfiram is contraindicated in hypertension (also cardiac failure, coronary artery disease, previous stroke, psychosis and suicide risk). Gordon takes amlodipine for hypertension. Even when suitable, it is started only after at least 24 hours without alcohol and with supervision. NICE CG115: after withdrawal, offer acamprosate or oral naltrexone with psychological support; disulfiram is an alternative only when those are unsuitable."
+     "t": "BNF: disulfiram is contraindicated in hypertension (also cardiac failure, coronary artery disease, previous stroke, psychosis and suicide risk). Gordon takes amlodipine for hypertension. Even when suitable, it is started only after at least 24 hours without alcohol and with supervision. NICE CG115: after withdrawal, offer acamprosate or oral naltrexone with psychological support; consider disulfiram if those are unsuitable or the person prefers it, with a goal of abstinence."
     },
     {
      "h": "DVLA rules",
@@ -3440,7 +3440,7 @@
    "reason": "Urgent telephone request: “needs the morning-after pill”."
   },
   "knowledge": {
-   "guideline": "CoSRH (formerly FSRH) Emergency contraception guideline (2017, amended 2023) · BNF · GMC 0–18 years guidance · Working Together to Safeguard Children (2023) · BASHH and Brook Spotting the Signs proforma (2014) · Mental Capacity Act 2005 · Sexual Offences Act 2003",
+   "guideline": "CoSRH (formerly FSRH) Emergency contraception guideline (2017, amended April 2026) · BNF · GMC 0–18 years guidance · Working Together to Safeguard Children (2023) · BASHH and Brook Spotting the Signs proforma (2014) · Mental Capacity Act 2005 · Sexual Offences Act 2003",
    "summary": "Aimee needs effective emergency contraception today: the copper IUD first, or ulipristal if she prefers a tablet. A 25-year-old partner she met online is a safeguarding cue that needs a gentle, honest exploration — without putting her off care.",
    "points": [
     {
@@ -4889,7 +4889,7 @@
    "points": [
     {
      "h": "Grade the result",
-     "t": "UK Kidney Association bands: mild 5.5–5.9, moderate 6.0–6.4, severe 6.5 mmol/L or more. Severe hyperkalaemia found in the community needs urgent hospital assessment for an ECG, repeat potassium and treatment. Moderate hyperkalaemia in a stable patient can be repeated within one working day, unless unwell or with AKI."
+     "t": "UK Kidney Association bands: mild 5.5–5.9, moderate 6.0–6.4, severe 6.5 mmol/L or more. Severe hyperkalaemia found in the community needs urgent hospital assessment for an ECG, repeat potassium and treatment. Moderate hyperkalaemia (6.0–6.4) needs an ECG and same-day clinical assessment, with a repeat within 24 hours if stable; admission depends on the ECG, the trend, renal function and how he is."
     },
     {
      "h": "Symptoms do not reassure",
@@ -8291,7 +8291,7 @@
     },
     {
      "h": "Visual symptoms change the speed",
-     "t": "A suspected field defect needs formal visual-field testing and prompt specialist review. Sudden severe headache with visual loss or eye-movement problems suggests pituitary apoplexy, which is an emergency (Society for Endocrinology pituitary apoplexy guidelines, 2011). NICE NG12 (updated April 2026) has no criterion for hyperprolactinaemia."
+     "t": "A new visual-field defect needs same-day specialist or emergency assessment, with formal visual fields and urgent MRI. Sudden severe headache with visual loss or eye-movement problems suggests pituitary apoplexy, which is an emergency (Society for Endocrinology pituitary apoplexy guidelines, 2011). NICE NG12 (updated April 2026) has no criterion for hyperprolactinaemia."
     },
     {
      "h": "Treatment and fertility",

@@ -1022,7 +1022,7 @@
    "reason": "“Does this mean I’m dying?”"
   },
   "knowledge": {
-   "guideline": "[1] iwCLL guidelines for diagnosis and treatment of CLL (Hallek et al., Blood 2018) (international) · [2] British Society for Haematology guideline for the treatment of chronic lymphocytic leukaemia (2022) · [3] NICE NG12 (updated April 2026) · [4] UKHSA Green Book chapters 6, 7, 19, 25 and 28a · [5] NICE NG47 (haematological cancers: improving outcomes, 2016)",
+   "guideline": "[1] iwCLL guidelines for diagnosis and treatment of CLL (Hallek et al., Blood 2018) (international) · [2] British Society for Haematology guideline for the treatment of chronic lymphocytic leukaemia (2025) · [3] NICE NG12 (updated April 2026) · [4] UKHSA Green Book chapters 6, 7, 19, 25 and 28a · [5] NICE NG47 (haematological cancers: improving outcomes, 2016)",
    "summary": "An isolated, persistent lymphocytosis of mature B cells in an older adult is most often chronic lymphocytic leukaemia. CLL is diagnosed with a clonal B-lymphocyte count of at least 5 × 10⁹/L confirmed by flow cytometry. Most people found incidentally have early-stage disease that is monitored without treatment, and many never need treatment. Refer to haematology for confirmation and staging, check for symptoms, lymph nodes, spleen and liver enlargement and cytopenias, and give infection and vaccination advice. Be honest that it is a blood cancer, and just as clear that for many it behaves like a long-term condition.",
    "points": [
     {
@@ -8559,7 +8559,7 @@
    "reason": "“My legs feel crawly every evening and it’s ruining my sleep. What can I do, and is it safe for the baby?”"
   },
   "knowledge": {
-   "guideline": "[1] IRLSSG consensus guideline on RLS in pregnancy and lactation, Picchietti et al., Sleep Medicine Reviews 2015 (international) · [2] IRLSSG diagnostic criteria for RLS (international) · [3] British Society for Haematology UK guideline on the management of iron deficiency in pregnancy (2020) · [4] BNF: oral iron preparations and folic acid (doses per BNF) · [5] NICE NG201 Antenatal care (2021) · [6] AASM clinical practice guideline on RLS treatment 2024 (international)",
+   "guideline": "[1] IRLSSG consensus guideline on RLS in pregnancy and lactation, Picchietti et al., Sleep Medicine Reviews 2015 (international) · [2] IRLSSG diagnostic criteria for RLS (international) · [3] British Society for Haematology UK guideline on the management of iron deficiency in pregnancy (2020) · [4] BNF: oral iron preparations and folic acid (doses per BNF) · [5] NICE NG201 Antenatal care (2021) · [6] AASM clinical practice guideline on RLS and PLMD treatment (J Clin Sleep Med 2025) (international)",
    "summary": "An urge to move the legs, worse at rest and in the evening and relieved by movement, in the third trimester is restless legs syndrome until shown otherwise. Up to about one in five pregnant women are affected, and pregnancy-related RLS usually settles after delivery [1]. The GP’s job is to confirm the four core features, exclude mimics (cramps, positional discomfort, oedema and, above all, a unilateral swollen painful leg suggesting DVT), check ferritin, FBC and folate, correct iron and folate, review drugs that worsen it, and use non-drug measures. The usual RLS medicines are avoided in pregnancy; refractory cases need obstetric advice.",
    "points": [
     {
@@ -9559,7 +9559,7 @@
     },
     {
      "h": "Steroids and bone",
-     "t": "Glucocorticoids raise fracture risk quickly, within months, and at bone density levels that would otherwise look safe [1]. NOGG: in postmenopausal women and men 50 and over starting 7.5 mg or more of prednisolone daily for 3 months or more, start bone protection at the same time, without waiting for DXA [1]."
+     "t": "Glucocorticoids raise fracture risk quickly, within months, and at bone density levels that would otherwise look safe [1]. NOGG: in postmenopausal women and men 50 and over starting 7.5 mg or more of prednisolone daily for 3 months or more, consider bone protection, started at the same time as the steroid and without waiting for DXA [1]."
     },
     {
      "h": "Treat now",
@@ -10082,7 +10082,7 @@
     },
     {
      "h": "Age and pregnancy checks",
-     "t": "Aged 6 months to 2 years: off-label, so an individual risk–benefit decision. Under 6 months: hygiene alone for 6 weeks. Pregnancy: hygiene first for 6 weeks; if severe or persistent, seek medicines advice. Breastfeeding: check product information and specialist advice rather than withholding automatically [1][3]."
+     "t": "Aged 6 months to 2 years: off-label, so an individual risk–benefit decision. Under 6 months: hygiene alone for 6 weeks. Pregnancy: hygiene first for 6 weeks; if severe or persistent, seek medicines advice. Breastfeeding: mebendazole can generally be used when clinically appropriate; check the product information if there are additional concerns [1][3]."
     },
     {
      "h": "Practical hygiene",
@@ -10600,11 +10600,11 @@
     },
     {
      "h": "Topical treatment",
-     "t": "Terbinafine 1% cream once daily for 1 week for tinea pedis; irregular use or stopping early risks recurrence [1]. Clotrimazole: follow the licensed duration, which is longer for dermatophyte infections [2]. Doses per BNF [5]."
+     "t": "Terbinafine 1% cream once daily for 1 week for tinea pedis (Lamisil AT SPC); Greater Manchester advises twice daily for 1–2 weeks plus 2 weeks after healing. Irregular use or stopping early risks recurrence [1]. Clotrimazole: follow the licensed duration, which is longer for dermatophyte infections [2]. Doses per BNF [5]."
     },
     {
      "h": "Nails",
-     "t": "Onychomycosis is a reservoir for recurrence. Confirm by nail clippings for microscopy and culture before oral treatment [3]. Oral terbinafine for toenails is usually 12 weeks (12–16 weeks per BAD 2014) [3][4]; check LFTs before starting [4]. Topical nail lacquer only for limited disease with the lunula spared [3]."
+     "t": "Onychomycosis is a reservoir for recurrence. Confirm by nail clippings for microscopy and culture before oral treatment [3]. Oral terbinafine for toenails is usually 12 weeks (12–16 weeks per BAD 2014) [3][4]; check LFTs before starting [4]. Topical nail lacquer only for limited disease with the lunula spared [3], and it is not routinely prescribed in Greater Manchester (self-care)."
     },
     {
      "h": "Oral treatment for skin",

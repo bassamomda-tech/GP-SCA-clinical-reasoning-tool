@@ -4040,7 +4040,7 @@
     },
     {
      "h": "Urgency by count and bleeding",
-     "t": "In usual haematology practice, a count below 20, active or significant bleeding, blasts or fragments on the film, or a systemically unwell patient means same-day assessment. A count of 20–50 with minor mucosal bleeding, as here, needs urgent haematology advice rather than a routine wait. Local pathways set the exact thresholds."
+     "t": "In usual haematology practice, a count below 20, active or significant bleeding, blasts or fragments on the film, or a systemically unwell patient means same-day assessment. A new, unexplained count below 50 — as here, with minor mucosal bleeding — needs same-day haematology advice rather than a routine wait. Local pathways set the exact thresholds."
     },
     {
      "h": "Work the differential",
@@ -7085,7 +7085,7 @@
     },
     {
      "h": "Red flags",
-     "t": "Thoughts of suicide or self-harm, thoughts of harming the baby, new confusion or psychotic symptoms, or rapid change in mental state in the postnatal period need same-day assessment (NICE CG192)."
+     "t": "Thoughts of suicide or self-harm, thoughts of harming the baby, or rapid change in mental state in the postnatal period need same-day assessment; suspected postpartum psychosis (new confusion or psychotic symptoms) needs specialist perinatal assessment within 4 hours (NICE CG192)."
     }
    ]
   },
@@ -9067,7 +9067,7 @@
     },
     {
      "h": "Surveillance — later, not today",
-     "t": "NICE CG118: offer colonoscopic surveillance to people with UC starting 10 years after symptom onset, at intervals set by risk. Worth confirming at follow-up; it is not an NICE NG12 (updated April 2026) suspected-cancer issue and has no place in today’s triage."
+     "t": "NICE CG118: offer colonoscopic surveillance to people with UC starting 10 years after symptom onset (BSG 2025, cited above, advises a baseline assessment at 8 years), at intervals set by risk. Worth confirming at follow-up; it is not an NICE NG12 (updated April 2026) suspected-cancer issue and has no place in today’s triage."
     }
    ]
   },

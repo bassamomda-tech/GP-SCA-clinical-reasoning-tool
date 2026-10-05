@@ -99,10 +99,10 @@ window.SCA_KNOWLEDGE = {
     points: [
       { h:'Diagnose, don’t treat a single reading', t:'Clinic BP ≥140/90 → offer ABPM (or HBPM) to confirm. Stage 1 = clinic ≥140/90 + ABPM ≥135/85; Stage 2 = clinic ≥160/100 + ABPM ≥150/95.' },
       { h:'First-line drug by phenotype', t:'<55 & not Black African/African-Caribbean: ACEi/ARB. Aged ≥55 OR Black African/African-Caribbean family origin (any age, no T2DM): CCB. With T2DM at any age/ethnicity: ACEi/ARB. Step 2: add the other class (CCB + ACEi/ARB) or a thiazide-like diuretic — and in Black African/African-Caribbean patients prefer an ARB over an ACEi when a RAS blocker is added (higher angio-oedema risk with ACEi).' },
-      { h:'Baseline work-up', t:'U&E + eGFR, ACR, HbA1c, lipids, urine dip for haematuria, 12-lead ECG, and a formal QRISK — quantify cardiovascular risk rather than estimating it.' },
+      { h:'Baseline work-up', t:'U&E + eGFR, ACR, HbA1c, lipids, urine dip for haematuria, fundoscopy, 12-lead ECG, and a formal QRISK — quantify cardiovascular risk rather than estimating it.' },
       { h:'Targets', t:'<80 yrs: clinic <140/90 (ABPM/HBPM <135/85). ≥80 yrs: clinic <150/90. Offer atorvastatin 20 mg if QRISK ≥10%.' },
-      { h:'Look for secondary/contributory causes', t:'Young, severe, or resistant hypertension warrants thought about secondary causes; this man’s heavy snoring + daytime somnolence should trigger an OSA (e.g. STOP-BANG/Epworth) screen.' },
-      { h:'Same-day action', t:'Clinic BP ≥180/120 with signs of end-organ damage (papilloedema, chest pain, AKI, new neurology) = same-day specialist assessment.' }
+      { h:'Look for secondary/contributory causes', t:'Young, severe, or resistant hypertension warrants thought about secondary causes — under 40 with confirmed hypertension, NICE NG136 advises considering specialist referral for secondary causes and a lifetime risk–benefit assessment; this man’s heavy snoring + daytime somnolence should trigger an OSA (e.g. STOP-BANG/Epworth) screen.' },
+      { h:'Same-day action', t:'Clinic systolic ≥180 or diastolic ≥120 with retinal haemorrhage or papilloedema, new confusion, chest pain, signs of heart failure or AKI = same-day specialist assessment. Without these, urgent target-organ work-up and review within 7 days.' }
     ]
   },
 
@@ -110,7 +110,7 @@ window.SCA_KNOWLEDGE = {
     guideline: 'NICE NG126 — Ectopic pregnancy & miscarriage · NICE guidance — Ectopic pregnancy',
     summary: 'Any woman of reproductive age with abdominal pain is an ectopic until proven otherwise. The destination is a same-day Early Pregnancy Assessment Unit, not a routine GP review.',
     points: [
-      { h:'Pregnancy is the pivot', t:'Always establish LMP, contraception and possibility of pregnancy. A positive/uncertain pregnancy test with pain and/or bleeding mandates urgent EPAU assessment.' },
+      { h:'Pregnancy is the pivot', t:'Always establish LMP, contraception and possibility of pregnancy. A positive/uncertain pregnancy test with pain (or bleeding at ≥6 weeks, uncertain gestation or with ectopic risk factors) mandates same-day EPAU assessment; 999/A&E if haemodynamically unstable.' },
       { h:'Red flags that raise ectopic risk', t:'Shoulder-tip pain, dizziness/syncope, rectal pressure, haemodynamic compromise, lateralised pain. Risk factors: previous ectopic, PID/chlamydia, tubal surgery, IUD, assisted conception.' },
       { h:'Don’t let the test delay transfer', t:'Advise a urine βhCG but do not wait for it before arranging review if clinical suspicion is high; in EPAU, serial serum βhCG + transvaginal USS guide management.' },
       { h:'Safety-net explicitly', t:'999 for collapse, severe sudden worsening, or heavy bleeding. Be clear it’s an emergency pathway, not “see how it goes”.' },
@@ -125,8 +125,8 @@ window.SCA_KNOWLEDGE = {
     points: [
       { h:'Diagnose clinically', t:'Activity-related joint pain in someone ≥45 with morning stiffness ≤30 min needs no X-ray to diagnose OA. Image only if it would change management or red flags suggest another cause.' },
       { h:'Core treatments', t:'Therapeutic exercise (muscle strengthening + aerobic) and weight loss if overweight are the cornerstones — offered to everyone, not as a last resort.' },
-      { h:'Pharmacology ladder', t:'Topical NSAID first-line for knee OA. Oral NSAID at lowest effective dose for shortest time + PPI cover; weigh GI/renal/CV risk. NICE de-emphasises paracetamol and weak opioids (limited benefit).' },
-      { h:'Adjuncts', t:'Walking aids/poles, appropriate footwear, and pacing/technique advice (e.g. downhill loading). Consider intra-articular steroid for short-term flare relief.' },
+      { h:'Pharmacology ladder', t:'Topical NSAID first-line for knee OA. Oral NSAID at lowest effective dose for shortest time + PPI cover; weigh GI/renal/CV risk. NICE NG226: do not routinely offer paracetamol or weak opioids (only infrequent short-term use when all else is unsuitable); never strong opioids or glucosamine.' },
+      { h:'Adjuncts', t:'Walking aids/poles, appropriate footwear, and pacing/technique advice (e.g. downhill loading). Consider an intra-articular steroid when other drugs are ineffective or unsuitable, or to support exercise — relief is short-term (about 2–10 weeks).' },
       { h:'When to refer', t:'Refer for surgical opinion when symptoms substantially affect quality of life and non-surgical management has failed — not on X-ray appearance alone.' },
       { h:'Safety-net', t:'Hot swollen joint, locking, true giving-way, systemic upset or trauma needs reassessment.' }
     ]
@@ -137,8 +137,8 @@ window.SCA_KNOWLEDGE = {
     summary: 'New, fluctuating confusion over days–weeks in an older adult is delirium until proven otherwise — screen for the precipitant rather than defaulting to “worsening dementia”.',
     points: [
       { h:'Delirium vs dementia', t:'Delirium: acute/subacute onset, fluctuating, impaired attention, often reversible. Use 4AT to assess. A two-week change on a background of mild memory impairment = delirium first.' },
-      { h:'Find the cause (PINCH ME)', t:'Pain, Infection (UTI/chest), Nutrition/dehydration, Constipation, Hydration, Medication (opioids — here co-codamol), Electrolytes. Urinalysis interpreted with caution in the elderly; treat the patient, not the dipstick.' },
-      { h:'Assessment on the visit', t:'Obs (incl. temperature, sats), hydration, focal neurology, abdomen/bladder, medication review, cognitive screen; MSU + bloods (U&E, FBC, CRP, glucose, calcium, B12/folate, TSH).' },
+      { h:'Find the cause (PINCH ME)', t:'Pain, Infection (UTI/chest), Nutrition/dehydration, Constipation, Hydration, Medication (opioids — here co-codamol), Environment — plus electrolytes on bloods. Do not use a urine dipstick to diagnose UTI in an older person; treat the patient, not the dipstick.' },
+      { h:'Assessment on the visit', t:'Obs (incl. temperature, sats, NEWS2) and capillary glucose, hydration, focal neurology, abdomen/bladder, medication review, cognitive screen; bloods (U&E, FBC, CRP, LFTs, glucose, calcium, TFTs, B12/folate given her memory background); urine culture only if urinary symptoms or suspected sepsis without another source.' },
       { h:'Capacity & involving the patient', t:'Address Edith directly, assess capacity for the decisions in hand (MCA — assume capacity, decision-specific), act in best interests if she lacks it.' },
       { h:'The carer is part of the consultation', t:'Identify carer strain (June): offer a carer’s assessment (Care Act 2014), respite, GP carer review, and support — this carries real Relating-to-Others marks.' },
       { h:'Safety-net & escalation', t:'999 for drowsiness, seizure, sudden deterioration; clear plan for who to call and when, and consider whether home management is safe vs admission.' }
@@ -151,10 +151,10 @@ window.SCA_KNOWLEDGE = {
     points: [
       { h:'Grade then treat', t:'Offer a 12-week course of a fixed combination: e.g. topical adapalene + benzoyl peroxide, or a topical retinoid + topical antibiotic, or BPO + topical antibiotic. Avoid topical + oral antibiotic together, and don’t use antibiotics as monotherapy.' },
       { h:'Oral antibiotics', t:'For moderate–severe disease, add a tetracycline (e.g. lymecycline/doxycycline) with a topical retinoid + BPO; review at 12 weeks, max ~6 months to limit resistance.' },
-      { h:'Hormonal option', t:'Combined oral contraceptive (with a topical agent) is an alternative in those who can take it.' },
-      { h:'Refer for isotretinoin', t:'Refer to dermatology for severe/nodulocystic acne, scarring, or failure of two courses — isotretinoin is consultant-initiated with pregnancy-prevention safeguards.' },
-      { h:'Mind first, skin second', t:'Acne carries major psychosocial impact; screen mood and function directly. Offer a private review the young person can attend alone, and consider safeguarding/Gillick where relevant.' },
-      { h:'Safety-net mental health', t:'Signpost Kooth, Mind, and Papyrus HOPELINEUK (0800 068 4141); have a clear plan if mood or self-harm risk worsens.' }
+      { h:'Hormonal option', t:'Combined oral contraceptive (with a topical agent) is a second-line option, based on contraceptive need and contraindications — not a universal add-on.' },
+      { h:'Refer for isotretinoin', t:'Refer to a consultant dermatologist-led team for nodulocystic/conglobate acne, scarring or persistent pigmentation, persistent psychological distress, failure of two completed courses (mild–moderate) or of a course including an oral antibiotic (moderate–severe). Isotretinoin is consultant-initiated with pregnancy-prevention, mental-health and sexual-function safeguards (MHRA).' },
+      { h:'Mind first, skin second', t:'Acne carries major psychosocial impact; screen mood and function directly. Offer a private review the young person can attend alone, and consider safeguarding; at 16 she is presumed competent to consent (Gillick applies to under-16s).' },
+      { h:'Safety-net mental health', t:'Signpost Kooth, Mind, and Papyrus HOPELINE247 (0800 068 4141); have a clear plan if mood or self-harm risk worsens.' }
     ]
   },
 
@@ -164,7 +164,7 @@ window.SCA_KNOWLEDGE = {
     points: [
       { h:'Confidentiality line', t:'For a competent adult, no disclosure or prescribing without consent. You may receive information and give general (non-personal) advice; explain this warmly, not bureaucratically.' },
       { h:'Get the patient in', t:'The key next step is the patient making her own appointment; encourage an open conversation rather than a covert booking.' },
-      { h:'Perimenopause knowledge (NG23)', t:'Diagnose perimenopause clinically from symptoms + menstrual change in women >45 without routine FSH testing. HRT is first-line for vasomotor symptoms and mood where appropriate; consider venlafaxine/CBT as alternatives.' },
+      { h:'Perimenopause knowledge (NG23)', t:'Diagnose perimenopause clinically from symptoms + menstrual change in women aged 45 or over without FSH testing. HRT is first-line for vasomotor symptoms and can be considered for menopause-associated low mood; menopause-specific CBT alongside or instead. SSRIs/SNRIs (e.g. venlafaxine) are not routine first-line for vasomotor symptoms alone.' },
       { h:'Safeguarding radar', t:'A row that frightened a child, “she doesn’t want me near me”, and marital strain warrant gentle exploration of domestic abuse and child welfare — know your local safeguarding route.' },
       { h:'Information you CAN give', t:'Signpost NHS Menopause pages, Women’s Health Concern, Balance app — resources both partners can read.' },
       { h:'Safety-net', t:'If she expresses self-harm or there’s acute risk: Samaritans 116 123, duty doctor, urgent same-day options.' }
@@ -175,11 +175,11 @@ window.SCA_KNOWLEDGE = {
     guideline: 'NICE NG12 — Suspected cancer recognition & referral',
     summary: 'A ≥40-year-old smoker with an unexplained persistent cough, haemoptysis, hoarseness or weight loss needs an urgent CXR and a suspected-cancer pathway — not antibiotics.',
     points: [
-      { h:'Who gets an urgent CXR (within 2 weeks)', t:'≥40 with ≥2 unexplained features (cough, fatigue, breathlessness, chest pain, weight loss, appetite loss) — or ≥1 such feature if ever-smoked. Offer urgent CXR.' },
+      { h:'Who gets an urgent CXR (within 2 weeks)', t:'≥40 with ≥2 unexplained features (cough, fatigue, breathlessness, chest pain, weight loss, appetite loss) — or ≥1 such feature if ever-smoked or asbestos-exposed. Offer urgent CXR.' },
       { h:'Refer on the suspected lung cancer pathway', t:'Direct suspected-cancer referral if CXR suggests lung cancer, or for anyone ≥40 with unexplained haemoptysis.' },
-      { h:'Don’t be anchored', t:'Resist the patient’s framing (“just antibiotics”). Hoarseness >3 weeks in a smoker also warrants a suspected head-and-neck/laryngeal pathway.' },
+      { h:'Don’t be anchored', t:'Resist the patient’s framing (“just antibiotics”). Persistent unexplained hoarseness at 45 or over (smoker or not; ~3 weeks in practice) → consider the head-and-neck (laryngeal) suspected cancer pathway.' },
       { h:'Name the worry honestly', t:'Use clear lay language about an urgent test “to rule out anything serious” — pick up throwaway cues (a streak of blood) and slow down on them.' },
-      { h:'Smoking cessation', t:'Offer cessation support proactively (varenicline/NRT + behavioural support); a prior 4-month quit shows capability.' },
+      { h:'Smoking cessation', t:'Offer cessation support proactively (varenicline, cytisinicline, combination NRT or a nicotine vape + behavioural support — NICE NG209); a prior 4-month quit shows capability.' },
       { h:'Safety-net & follow-up', t:'A&E for massive haemoptysis, rest breathlessness, or chest pain; book a named follow-up to give results in person — never leave a cancer result to a letter.' }
     ]
   },
@@ -190,20 +190,20 @@ window.SCA_KNOWLEDGE = {
     points: [
       { h:'Escalation after metformin', t:'HbA1c 84 on metformin + sulfonylurea: NICE NG28 (updated February 2026) supports adding an SGLT2 inhibitor and/or GLP-1 RA — favouring cardio-renal protection and weight loss over reflex insulin.' },
       { h:'Insulin is treatment, not failure', t:'If insulin is needed, frame it positively; sulfonylureas and insulin carry the greatest hypo (and fasting) risk.' },
-      { h:'Ramadan risk-stratify & adjust', t:'Use IDF-DAR risk categories. Pre-Ramadan review; switch SU to a once-daily/lower-hypo agent, reduce/redistribute insulin, move longer-acting doses to iftar, and arrange structured education.' },
+      { h:'Ramadan risk-stratify & adjust', t:'Use IDF-DAR/BIMA risk categories. Pre-Ramadan review 6–8 weeks ahead (start any new agent before, not during, Ramadan; an SGLT2 inhibitor needs an individual DKA/dehydration risk decision); switch SU to gliclazide with the larger dose at iftar, reduce/redistribute insulin, move longer-acting doses to iftar, and arrange structured education.' },
       { h:'Faith and safety together', t:'Islamic rulings permit the sick to break/delay a fast; breaking a fast for hypo or illness is protective, not sinful — honour faith without colluding with unsafe practice.' },
-      { h:'DVLA duties', t:'On sulfonylurea/insulin: hypo awareness, glucose monitoring before/while driving (Group 1: check within 2 h of driving, every 2 h en route; ≥5 to drive), and the duty to inform DVLA for insulin (and Group 2 implications for a taxi/PCO licence).' },
+      { h:'DVLA duties', t:'On insulin: check glucose within 2 h before driving and every 2 h en route; do not drive below 4.0 mmol/L (snack if 4.0–5.0 — “five to drive”). On a sulfonylurea: hypo awareness and driving advice. Insulin must be notified to the DVLA; Group 2 is stricter, and taxi/private-hire licensing authorities set their own (often Group 2) standards.' },
       { h:'Safety-net hypos', t:'Carry fast sugar; recognise sweating/tremor/confusion; break the fast and treat; clear sick-day rules.' }
     ]
   },
 
   'lft-alcohol': {
-    guideline: 'NICE guidance — Abnormal LFTs · NICE CG115 — Alcohol-use disorders',
-    summary: 'AST:ALT >1 with a high GGT and macrocytosis is an alcohol fingerprint. Quantify units, screen for dependence, assess fibrosis non-invasively, and never advise abrupt cessation if withdrawal risk exists.',
+    guideline: 'BSG 2017 — Abnormal liver blood tests · NICE CG115/CG100 — Alcohol-use disorders · NICE NG50 — Cirrhosis',
+    summary: 'An AST:ALT >2 with a high GGT and macrocytosis supports (but does not prove) alcohol. Quantify units, screen for dependence, assess fibrosis non-invasively, and never advise abrupt cessation if withdrawal risk exists.',
     points: [
-      { h:'Read the pattern', t:'Hepatocellular picture with AST:ALT ratio >1, markedly raised GGT and raised MCV strongly suggests alcohol-related liver injury.' },
-      { h:'Quantify and screen', t:'Calculate actual weekly units (low-risk <14/week, spread out); use AUDIT-C/AUDIT and assess dependence (the 4Cs, morning drinking, the “jittery dry week” = withdrawal).' },
-      { h:'Investigate further', t:'Non-invasive fibrosis assessment (ELF or FIB-4); exclude other causes — viral hepatitis screen, autoimmune profile, ferritin/iron, repeat LFTs.' },
+      { h:'Read the pattern', t:'Hepatocellular picture with an AST:ALT ratio >2 (supportive, not diagnostic), markedly raised GGT and raised MCV suggests alcohol-related liver injury — still send the full liver screen.' },
+      { h:'Quantify and screen', t:'Calculate actual weekly units (lower-risk: no more than 14 units/week, spread over 3+ days); use AUDIT-C/AUDIT and assess dependence (the 4Cs, morning drinking, the “jittery dry week” = withdrawal).' },
+      { h:'Investigate further', t:'Non-invasive fibrosis assessment — transient elastography for harmful drinking (men >50, women >35 units/week; NICE NG50), or the local ELF/FIB-4 pathway; exclude other causes — viral hepatitis screen, autoimmune profile, ferritin/iron, repeat LFTs.' },
       { h:'Withdrawal danger', t:'In likely dependence, abrupt cessation risks seizures/delirium tremens — arrange medically supported reduction; do not just say “stop drinking”.' },
       { h:'Brief intervention & support', t:'Deliver a non-judgemental brief intervention; signpost local alcohol services, Drinkline 0300 123 1110, and consider acamprosate/relapse-prevention via specialist services.' },
       { h:'Marking edge', t:'Honesty about cause without labelling (“alcoholic”), plus recognising the withdrawal risk and the life context (passed-over partnership), wins the Relating/Global marks.' }
@@ -211,14 +211,14 @@ window.SCA_KNOWLEDGE = {
   },
 
   'sleep-paeds': {
-    guideline: 'NICE guidance — Insomnia / childhood sleep · NICE NG222 (depression context)',
+    guideline: 'NICE CKS — Insomnia (children) · BNFC melatonin (specialist-initiated) · NICE NG222 — Depression in adults (for mum)',
     summary: 'A well, thriving 4-year-old who won’t sleep has a behavioural sleep difficulty — managed with consistent behavioural strategy, not medication. The patient who needs treating may be the exhausted mother.',
     points: [
       { h:'Behavioural, not medical', t:'Normal growth, fine at nursery, no snoring/apnoea/red flags points to a sleep-onset association / limit-setting problem — not an organic disorder.' },
       { h:'First-line is behavioural', t:'Consistent bedtime routine, one sleep environment, graduated extinction (“controlled comforting”) or the chair/gradual-retreat method — and warn it takes consistency over ~1–2 weeks.' },
       { h:'Melatonin caution', t:'Melatonin is not routinely recommended for otherwise-healthy young children and is generally specialist-initiated (e.g. in neurodevelopmental conditions); avoid reflexive prescribing.' },
-      { h:'Spot the real patient', t:'Exhausted parent + tearfulness + “worst since he was born” = screen for recurrent depression (PHQ-9) and postnatal-type illness; offer the mother her own appointment.' },
-      { h:'Support the family', t:'Health Visiting team, ICON (coping with crying/parental stress), The Sleep Charity resources; explore the marital strain and support network.' },
+      { h:'Spot the real patient', t:'Exhausted parent + tearfulness + “worst since he was born” = screen for a recurrence of her previous (postnatal) depression with PHQ-9 and risk questions; offer the mother her own appointment.' },
+      { h:'Support the family', t:'Health Visiting team (0–5s), The Sleep Charity resources, NHS Talking Therapies self-referral for Mum; explore the marital strain and support network.' },
       { h:'Safety-net', t:'Clear plan for worsening mood or thoughts of harm — 111 option 2, Samaritans 116 123, and proactive follow-up.' }
     ]
   }

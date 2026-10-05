@@ -54,7 +54,7 @@ window.SCA_KB = {
       { h:'Realistic surgical expectations', t:'Be clear a replacement is decided on quality of life and failed conservative care, not on an X-ray — set expectations early.' }
     ],
     community: [
-      { h:'Self-management resources', t:'Arthritis UK, the ESCAPE-pain programme, local physiotherapy/exercise referral and weight-management services.' }
+      { h:'Self-management resources', t:'Versus Arthritis, the ESCAPE-pain programme, local physiotherapy/exercise referral and weight-management services.' }
     ]
   },
 
@@ -64,7 +64,7 @@ window.SCA_KB = {
       { h:'Home & safety', t:'Hydration, nutrition, falls risk and the practicalities of managing delirium at home shape the home-vs-admission decision.' }
     ],
     legal: [
-      { h:'Mental Capacity Act 2005', t:'Edith likely lacks capacity for this decision now — act in her best interests, least-restrictive option, and involve family. Use a DoLS/its successor if care amounts to a deprivation of liberty.' },
+      { h:'Mental Capacity Act 2005', t:'Confusion alone does not remove capacity — assess it for each decision; if Edith lacks it, act in her best interests, least-restrictive option, and involve family. A deprivation of liberty at home needs Court of Protection authorisation (DoLS covers hospitals and care homes only).' },
       { h:'Safeguarding', t:'Be alert to safeguarding under the Care Act (s42) if neglect or abuse is suspected; check for any LPA for health & welfare.' }
     ],
     professional: [
@@ -80,14 +80,14 @@ window.SCA_KB = {
       { h:'School & self-esteem', t:'Acne in a 16-year-old can drive social withdrawal, bullying and low mood — the psychological impact is part of severity, not a soft add-on.' }
     ],
     legal: [
-      { h:'Gillick competence / Fraser', t:'Assess capacity to consent in her own right; offer to see her alone. Confidentiality applies to under-16s who are competent, with the usual safeguarding caveats.' },
+      { h:'Consent at 16', t:'At 16 she is presumed able to consent to treatment herself (Family Law Reform Act 1969 s8; MCA 2005) — Gillick is for under-16s; offer to see her alone. Confidentiality applies, with the usual safeguarding caveats.' },
       { h:'Isotretinoin & pregnancy', t:'Specialist-initiated isotretinoin carries a Pregnancy Prevention Programme — legally and professionally important to flag (though started in secondary care).' }
     ],
     professional: [
       { h:'Mental-health duty', t:'GMC: actively screen mood and self-harm risk when appearance is affecting wellbeing, and act on it — not just treat the skin.' }
     ],
     community: [
-      { h:'Youth resources', t:'Kooth (online support), YoungMinds, Papyrus (self-harm), the British Skin Foundation, and the school nurse.' }
+      { h:'Youth resources', t:'Kooth (online support), YoungMinds, Papyrus HOPELINE247 (suicide prevention), the British Skin Foundation, and the school nurse.' }
     ]
   },
 
@@ -114,11 +114,11 @@ window.SCA_KB = {
       { h:'Capacity & consent to referral', t:'Standard consent to urgent investigation; driving/occupational implications arise only if a serious diagnosis is later confirmed.' }
     ],
     professional: [
-      { h:'Breaking bad news & candour', t:'Honest, plain-language explanation (SPIKES-style), continuity to give results in person, and GMC duty of candour — resist inappropriate antibiotics.' },
+      { h:'Breaking bad news & candour', t:'Honest, plain-language explanation (SPIKES-style), continuity to give results in person, and GMC honesty and openness — resist inappropriate antibiotics.' },
       { h:'Referral duty', t:'NG12: arrange the urgent CXR / suspected-cancer pathway and safety-net explicitly.' }
     ],
     community: [
-      { h:'Support & cessation', t:'Roy Castle Lung Cancer Foundation, Asthma + Lung UK, Macmillan, and local stop-smoking services (varenicline/NRT + behavioural support).' }
+      { h:'Support & cessation', t:'Roy Castle Lung Cancer Foundation, Asthma + Lung UK, Macmillan, and local stop-smoking services (varenicline, cytisinicline, combination NRT or a nicotine vape + behavioural support — NICE NG209).' }
     ]
   },
 
@@ -127,7 +127,7 @@ window.SCA_KB = {
       { h:'Faith, culture & work', t:'Fasting for Ramadan and driving a taxi for a living are central — the plan must respect faith and protect livelihood, not override either.' }
     ],
     legal: [
-      { h:'DVLA & diabetes', t:'On sulfonylureas/insulin: check glucose ≥5 to drive, test within 2h of driving and every 2h, carry fast sugar. Insulin must be notified to the DVLA; Group 2 rules are stricter (regular monitoring, hypo-awareness).' }
+      { h:'DVLA & diabetes', t:'On insulin: test within 2h before driving and every 2h en route, never drive below 4.0 mmol/L (snack if 4.0–5.0 — “five to drive”), carry fast sugar; on a sulfonylurea, give hypo driving advice. Insulin must be notified to the DVLA; Group 2 rules are stricter (every severe hypo reported, regular monitoring), and taxi/private-hire licensing authorities may apply Group 2 standards.' }
     ],
     professional: [
       { h:'Individualised, shared care', t:'GMC: respect his beliefs, set an individualised HbA1c target, and frame insulin as treatment not failure — decisions made with him.' }
@@ -163,7 +163,7 @@ window.SCA_KB = {
       { h:'Spotting the hidden agenda', t:'GMC: respond to cues and treat the person who needs treating — here, screening maternal mood and risk, not just advising on the child’s sleep.' }
     ],
     community: [
-      { h:'Family & perinatal support', t:'Health Visitor, ICON (infant crying), The Sleep Charity, PANDAS / perinatal mental-health services, Home-Start, and Samaritans for crisis.' }
+      { h:'Family & perinatal support', t:'Health Visitor, The Sleep Charity, PANDAS, NHS Talking Therapies (self-referral), Home-Start, and Samaritans for crisis.' }
     ]
   }
 
@@ -327,7 +327,7 @@ window.SCA_PLAYBOOK = {
     management: {
       reflectIce: '“You came worried something was wrong with Aaron and hoping for something to help him sleep — the good news is he’s well, and there’s a method that really works. But I don’t want to fix his nights and miss how you’re doing.”',
       psychosocial: 'Recognise the mother in her own right — validate the exhaustion, screen and treat her mood, and mobilise practical support so the behavioural plan is even achievable.',
-      sharedPlan: ['Behavioural plan: consistent wind-down, put down sleepy-but-awake, gradual retreat; melatonin not routine (specialist-only)','Mobilise support: Health Visitor, The Sleep Charity, ICON','Assess and treat maternal mood — book her own appointment this week'],
+      sharedPlan: ['Behavioural plan: consistent wind-down, put down sleepy-but-awake, gradual retreat; melatonin not routine (specialist-only)','Mobilise support: Health Visitor, The Sleep Charity, Home-Start','Assess and treat maternal mood — book her own appointment this week'],
       safetyNet: ['Worsening mood or thoughts of self-harm/harming the child → urgent help, 111, Samaritans, 999','Review; advise if the child develops snoring or seems unwell']
     }
   }

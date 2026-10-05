@@ -1991,7 +1991,7 @@
     },
     {
      "h": "Treat on NOGG thresholds",
-     "t": "NICE NG259 (July 2026; replaced CG146): estimate the 10-year fracture risk (FRAX or QFracture). NICE TA464 links bisphosphonate treatment to the NICE fracture-risk assessment (CG146, now NG259) and to NOGG. NOGG 2024: oral alendronate or risedronate, or IV zoledronate, are first-line; people at very high risk are referred for consideration of anabolic treatment."
+     "t": "NICE NG259 (July 2026; replaced CG146): estimate the 10-year fracture risk (FRAX or QFracture). NICE TA464 bases bisphosphonate eligibility on the absolute fracture risk from that NICE assessment (CG146, now NG259). NOGG 2024: oral alendronate or risedronate, or IV zoledronate, are first-line; people at very high risk are referred for consideration of anabolic treatment."
     },
     {
      "h": "Before starting",
@@ -5852,15 +5852,15 @@
     },
     {
      "h": "Fast-track pathway",
-     "t": "BSR 2020: refer urgently to the local GCA fast-track service — specialist review ideally the same working day and in all cases within 3 working days. Temporal artery biopsy (at least 1 cm) and/or ultrasound within 1 week of starting steroids, because steroids reduce test sensitivity. Tests must never delay treatment."
+     "t": "BSR 2020: refer urgently to the local GCA fast-track service — specialist review ideally the same working day and in all cases within 3 working days. Ultrasound of the temporal and axillary arteries (ideally before or within 72 hours of the first dose) and/or temporal artery biopsy (at least 1 cm), arranged urgently through the pathway, because steroids reduce test sensitivity. Tests must never delay treatment."
     },
     {
      "h": "Steroid safety",
-     "t": "NOGG 2024: starting prednisolone 7.5 mg/day or more for 3 months or longer in a postmenopausal woman — start bone protection at the same time, without waiting for DXA. BSR 2020: consider a PPI. NatPSA/2020/005: Steroid Emergency Card for 5 mg or more for 4 weeks or longer; sick-day rules per NICE NG243. Monitor glucose and BP. Never stop suddenly."
+     "t": "NOGG 2024: starting prednisolone 7.5 mg/day or more for 3 months or longer in a postmenopausal woman — start bone protection at the same time, without waiting for DXA. BSR 2020: gastroprotection according to GI risk, not routinely. NatPSA/2020/005: Steroid Emergency Card for 5 mg or more for 4 weeks or longer; sick-day rules per NICE NG243. Monitor glucose and BP. Never stop suddenly."
     },
     {
      "h": "The long course",
-     "t": "BSR 2020: hold the starting dose for at least 3–4 weeks, then taper slowly; most people are off prednisolone within 12–18 months if there is no relapse. Symptoms usually respond within 1–7 days; no response should prompt a rethink."
+     "t": "BSR 2020: hold the starting dose until symptoms and inflammatory markers have settled, then taper slowly to an individualised plan; the course commonly lasts 12–24 months. Symptoms usually respond within 1–7 days; no response should prompt a rethink."
     }
    ]
   },
@@ -7318,7 +7318,7 @@
    "points": [
     {
      "h": "She qualifies for a full assessment",
-     "t": "NICE NG249: offer a comprehensive falls assessment to people who have fallen in the last year and who have had 2 or more falls, were injured, lost consciousness, or were unable to get up on their own. She meets three of these. NG249 advises against using falls risk prediction tools to decide this."
+     "t": "NICE NG249: offer a comprehensive falls assessment to people who have fallen in the last year and who are living with frailty, have had 2 or more falls, had an injury needing treatment, lost consciousness, or were unable to get up on their own. She meets at least two of these. NG249 advises against using falls risk prediction tools to decide this."
     },
     {
      "h": "Medicines first",
@@ -8801,7 +8801,7 @@
     },
     {
      "h": "Hopeful, honest information",
-     "t": "NHS England’s EIP access standard (NICE QS80) expects treatment to start within 2 weeks of referral. Most young people with a first episode are treated in the community, with family intervention and CBT alongside medication (NICE CG178), and many recover well."
+     "t": "NHS England’s EIP access standard (NICE QS80) expects treatment to start within 2 weeks of referral. Most young people with a first episode are treated in the community, with family intervention and CBT alongside medication (NICE CG155), and many recover well."
     }
    ]
   },

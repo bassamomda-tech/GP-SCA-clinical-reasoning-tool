@@ -2041,7 +2041,7 @@
    "reason": "“What on earth are these lumps?”"
   },
   "knowledge": {
-   "guideline": "[1] BTS Clinical Statement on pulmonary sarcoidosis (British Thoracic Society, 2021) · [2] NICE NG33 (tuberculosis, 2016) · [3] NICE NG84 (sore throat (acute): antimicrobial prescribing, 2018) · [4] NICE NG129 (Crohn’s disease, 2019) and NICE NG130 (ulcerative colitis, 2019) · [5] NICE DG11 (faecal calprotectin testing, 2013) · [6] BNF naproxen and ibuprofen monographs",
+   "guideline": "[1] BTS Clinical Statement on pulmonary sarcoidosis (British Thoracic Society, 2021) · [2] NICE NG33 (tuberculosis, 2016) · [3] NICE NG84 (sore throat (acute): antimicrobial prescribing, 2018) · [4] NICE NG129 (Crohn’s disease, 2019) and NICE NG130 (ulcerative colitis, 2019) · [5] NICE HTG320 (formerly DG11; faecal calprotectin testing, 2013) · [6] BNF naproxen and ibuprofen monographs",
    "summary": "Tender, warm, red-purple nodules on both shins that fade like bruises, with fever and aching joints two weeks after a sore throat, is erythema nodosum. The lumps settle on their own over weeks; the task is to look for the cause. Take a targeted history, check bloods including an ASO titre and a pregnancy test, and always request a chest X-ray for sarcoidosis and TB. Treat symptoms with rest, elevation and an NSAID once pregnancy is excluded.",
    "points": [
     {
@@ -2062,7 +2062,7 @@
     },
     {
      "h": "Tests",
-     "t": "FBC, U&E, LFT, CRP or ESR, ASO titre (a throat swab is only useful if the throat is still sore; NICE NG84 [3] covers treatment), pregnancy test, and a chest X-ray. Add calcium and ACE if sarcoidosis is suspected, faecal calprotectin if bowel symptoms (NICE DG11 [5]), and TB testing if at risk."
+     "t": "FBC, U&E, LFT, CRP or ESR, ASO titre (a throat swab is only useful if the throat is still sore; NICE NG84 [3] covers treatment), pregnancy test, and a chest X-ray. Add calcium and ACE if sarcoidosis is suspected, faecal calprotectin if bowel symptoms (NICE HTG320 [5]), and TB testing if at risk."
     },
     {
      "h": "Treat symptoms",
@@ -2579,7 +2579,7 @@
     },
     {
      "h": "Alcohol",
-     "t": "Alcohol response is a useful diagnostic clue, not a treatment. Using drink to steady the hands risks dependence and rebound tremor."
+     "t": "Some people report brief improvement with alcohol, but it is neither a diagnostic test nor a treatment. Using drink to steady the hands risks dependence and rebound tremor."
     }
    ]
   },
@@ -2909,7 +2909,7 @@
     },
     {
      "h": "Alcohol",
-     "t": "The alcohol response is a clue; use it to open a non-judgemental conversation about drinking."
+     "t": "Some people find alcohol briefly steadies the tremor; it is not a diagnostic test, but asking about it opens a non-judgemental conversation about drinking."
     }
    ],
    "legal": [
@@ -4570,7 +4570,7 @@
     },
     {
      "h": "Antiemetics",
-     "t": "RCOG [1]: first line are antihistamines and phenothiazines such as cyclizine, promethazine, prochlorperazine and chlorpromazine (dose per BNF [5]). Second line: ondansetron, whose use should not be discouraged if first line fails; MHRA [2] noted a very small increase in the absolute risk of oral clefts with first-trimester use, to be balanced against poorly managed HG. Metoclopramide is second line, limited to 5 days because of extrapyramidal effects (MHRA [3]). Use a non-oral route if tablets are not kept down."
+     "t": "RCOG [1]: first line are doxylamine/pyridoxine, antihistamines and phenothiazines such as cyclizine, promethazine, prochlorperazine and chlorpromazine (dose per BNF [5]). Second line: ondansetron, whose use should not be discouraged if first line fails; MHRA [2] noted a very small increase in the absolute risk of oral clefts with first-trimester use, to be balanced against poorly managed HG. Metoclopramide is second line, limited to 5 days because of extrapyramidal effects (MHRA [3]). Use a non-oral route if tablets are not kept down."
     },
     {
      "h": "Thiamine and VTE",
@@ -7114,7 +7114,7 @@
     },
     {
      "h": "The eardrum matters",
-     "t": "If the drum is perforated or cannot be seen, avoid aminoglycoside drops unless the ENT UK criteria are met: obvious infection, no more than 2 weeks, risks explained, and ideally baseline audiometry [3]. A non-aminoglycoside preparation is an alternative (per BNF)."
+     "t": "If the drum is perforated or cannot be seen, avoid aminoglycoside drops unless ENT specifically advises them; the ENT UK consensus conditions (obvious infection, no more than 2 weeks, risks explained, ideally baseline audiometry) are a specialist exception [3]. Use a non-aminoglycoside preparation instead (per BNF and local formulary)."
     },
     {
      "h": "When oral antibiotics are needed",
@@ -7468,7 +7468,7 @@
     },
     {
      "h": "Ototoxic drops",
-     "t": "ENT UK consensus (2007): aminoglycoside drops with a perforation only with obvious infection, for no more than 2 weeks, with the risk explained. Record the drum status and your reasoning."
+     "t": "Avoid aminoglycoside drops with a perforation unless ENT specifically advises them; the ENT UK consensus (2007) conditions — obvious infection, no more than 2 weeks, risk explained — are a specialist exception. Record the drum status and your reasoning."
     }
    ],
    "community": [
@@ -7562,7 +7562,7 @@
      "dom": "tasks",
      "fail": "Using aminoglycoside drops when the drum cannot be seen, without thinking about it.",
      "why": "ENT UK consensus sets conditions for ototoxic drops with a perforation.",
-     "fix": "Choose a non-aminoglycoside preparation or meet the consensus conditions and record why."
+     "fix": "Choose a non-aminoglycoside preparation; use an aminoglycoside only on ENT advice, and record why."
     },
     {
      "dom": "tasks",
@@ -7605,7 +7605,7 @@
    "points": [
     {
      "h": "Recognise it",
-     "t": "PCDS [1]: a herald patch, usually 2–5 cm, pink or red with a fine scale and sharp border, appears a few days to two weeks before a crop of smaller oval patches with a collarette of scale along the skin cleavage lines, giving a “Christmas tree” pattern on the back. It mainly affects children and young adults and is probably infective (HHV-6 and HHV-7 reactivation has been implicated)."
+     "t": "PCDS [1]: a herald patch, usually 2–5 cm, pink or red with a fine scale and sharp border, appears a few days to two weeks before a crop of smaller oval patches with a collarette of scale along the skin cleavage lines, giving a “Christmas tree” pattern on the back. It mainly affects children and young adults and its cause is uncertain (HHV-6 and HHV-7 reactivation has been proposed but not established)."
     },
     {
      "h": "Ringworm is the classic confusion",
@@ -7621,7 +7621,7 @@
     },
     {
      "h": "Treatment",
-     "t": "No treatment is needed if it does not itch [2]. For itch, PCDS [1]: an emollient, or a mild to moderately potent topical steroid such as hydrocortisone 1% or clobetasone butyrate 0.05%; a sedating antihistamine at night if sleep is affected (doses per BNF [6]). Antifungals and antibiotics do not help; Cochrane [4] found macrolides not recommended."
+     "t": "No treatment is needed if it does not itch [2]. For itch, PCDS [1]: an emollient, or a mild to moderately potent topical steroid such as hydrocortisone 1% or clobetasone butyrate 0.05%; a sedating antihistamine at night if sleep is affected (doses per BNF [6]). Antifungals do not help, and antibiotics and antivirals are not routine primary-care treatments; Cochrane [4] found only low-certainty evidence for any intervention, and aciclovir is a dermatology option in severe disease."
     },
     {
      "h": "Course",
@@ -7633,7 +7633,7 @@
     },
     {
      "h": "Pregnancy",
-     "t": "Small studies found higher miscarriage rates when pityriasis rosea began before about 15 weeks of pregnancy (Drago 2008; Manduca 2025), although a 2024 matched study found no excess risk [5]. Ask about possible pregnancy; if pregnant, inform the midwife or obstetric team for closer follow-up."
+     "t": "Small studies found higher miscarriage rates when pityriasis rosea began before about 15 weeks of pregnancy (Drago 2008; Manduca 2025), although a 2024 matched study found no excess risk [5]. Ask about possible pregnancy; if pregnant, discuss the uncertain evidence and consider contacting the midwife or obstetric team, who decide on any extra surveillance."
     }
    ]
   },
@@ -7968,7 +7968,7 @@
    "professional": [
     {
      "h": "Antimicrobial stewardship",
-     "t": "Avoid antifungals and antibiotics for a viral, self-limiting rash; explain why rather than prescribing to meet expectation."
+     "t": "Avoid antifungals and antibiotics for a self-limiting rash; explain why rather than prescribing to meet expectation."
     },
     {
      "h": "Non-judgemental sexual history",
@@ -8641,7 +8641,7 @@
     },
     {
      "h": "Second line and referral",
-     "t": "RCOG [1]: second-line includes transdermal estradiol (100 micrograms twice weekly is as effective as 200 micrograms) with cyclical progestogen or an LNG-IUS for endometrial protection. Specialist care for GnRH analogues (with add-back HRT if used beyond 6 months) and, rarely, surgery. Review after two to three cycles of each treatment."
+     "t": "RCOG [1]: second-line includes transdermal estradiol, off-label and usually with specialist advice (100 micrograms twice weekly is as effective as 200 micrograms) with cyclical progestogen or an LNG-IUS for endometrial protection. Specialist care for GnRH analogues (with add-back HRT if used beyond 6 months) and, rarely, surgery. Review after two to three cycles of each treatment."
     }
    ]
   },
@@ -9583,7 +9583,7 @@
    "reason": "Booked appointment: “Terrible pains in my face. Can’t eat properly.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG173 Neuropathic pain in adults: pharmacological management in non-specialist settings (2013) · [2] BNF: carbamazepine · [3] FSRH CEU Guidance: Drug interactions with hormonal contraception (May 2022) · [4] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022)",
+   "guideline": "[1] NICE CG173 Neuropathic pain in adults: pharmacological management in non-specialist settings (2013, updated 2020) · [2] BNF: carbamazepine · [3] FSRH CEU Guidance: Drug interactions with hormonal contraception (May 2022) · [4] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022)",
    "summary": "Seconds-long, electric-shock pains in the right cheek and jaw, set off by brushing, chewing, washing or a breeze, with normal periods in between, is trigeminal neuralgia. The GP must name it confidently, screen explicitly for features of a secondary cause, examine the cranial nerves, start carbamazepine (NICE CG173) with proper counselling and baseline bloods, and take the impact on eating and mood seriously.",
    "points": [
     {
@@ -9592,7 +9592,7 @@
     },
     {
      "h": "Secondary causes",
-     "t": "Features that suggest multiple sclerosis or a compressive lesion and need MRI and neurology referral: sensory loss in the face, other cranial nerve signs, hearing loss, bilateral pain, onset at a young age (often quoted as under 40), a history of optic neuritis or other neurological symptoms, or continuous background pain. Examine facial sensation, corneal reflex and the other cranial nerves."
+     "t": "No clinical feature reliably excludes a secondary cause, so MRI is part of the early work-up for everyone. Features that suggest multiple sclerosis or a compressive lesion make MRI and neurology referral urgent: sensory loss in the face, other cranial nerve signs, hearing loss, bilateral pain, onset at a young age (often quoted as under 40), a history of optic neuritis or other neurological symptoms, or continuous background pain. Examine facial sensation, corneal reflex and the other cranial nerves."
     },
     {
      "h": "Differentials",
@@ -9735,7 +9735,7 @@
    },
    {
     "who": "dr",
-    "text": "This is trigeminal neuralgia. The trigeminal nerve carries feeling from your face, and it sends out sudden bursts of pain when something light touches a trigger area. The pattern you describe is typical, your nerves examine normally and it’s on one side only, so this looks like the common type rather than something growing. I’ll still ask the neurologists to see you, and they can arrange a scan if they think it’s needed.",
+    "text": "This is trigeminal neuralgia. The trigeminal nerve carries feeling from your face, and it sends out sudden bursts of pain when something light touches a trigger area. The pattern you describe is typical, your nerves examine normally and it’s on one side only, so this looks like the common type rather than something growing. I’ll still ask the neurologists to see you, and arrange an MRI scan, which is routine for this, to make sure nothing is pressing on the nerve.",
     "dom": "tasks",
     "why": "Names diagnosis; addresses fear of a tumour honestly"
    },
@@ -9813,7 +9813,7 @@
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Full cranial nerve examination including facial sensation and corneal reflex; baseline FBC, U&E and LFTs; weight; MRI via neurology if red flags or doubt.",
+    "d": "Full cranial nerve examination including facial sensation and corneal reflex; baseline FBC, U&E and LFTs; weight; MRI as part of the early work-up, urgent if red flags.",
     "pts": 1
    },
    {
@@ -9910,7 +9910,7 @@
     },
     {
      "dont": "“It’s definitely nothing serious.”",
-     "instead": "“Your nerves examine normally and it’s one-sided, so it looks like the common type. The neurologists will confirm and decide on a scan.”",
+     "instead": "“Your nerves examine normally and it’s one-sided, so it looks like the common type. A routine MRI scan and the neurologists will confirm it.”",
      "why": "Honest, reasoned reassurance is safer than a blanket promise."
     }
    ]
@@ -9986,7 +9986,7 @@
     "sharedPlan": [
      "Carbamazepine, start low and titrate to the lowest effective dose (NICE CG173; BNF)",
      "Baseline FBC, U&E and LFTs; repeat soon after starting",
-     "Neurology referral for confirmation, MRI if indicated, and options if refractory"
+     "MRI as part of the early work-up; neurology referral for confirmation and options if refractory"
     ],
     "safetyNet": [
      "Rash, fever, sore throat, mouth ulcers or bruising: stop carbamazepine and seek same-day review",

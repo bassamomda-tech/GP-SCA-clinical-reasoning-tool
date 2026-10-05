@@ -383,7 +383,7 @@
     },
     {
      "h": "Safeguarding",
-     "t": "Working Together to Safeguard Children (HM Government, 2023) and NICE NG76 (child abuse and neglect): behaviour change can be a sign of maltreatment, so ask routinely and refer if concerned."
+     "t": "Working Together to Safeguard Children (HM Government, 2026) and NICE NG76 (child abuse and neglect): behaviour change can be a sign of maltreatment, so ask routinely and refer if concerned."
     }
    ],
    "professional": [
@@ -4074,7 +4074,7 @@
     },
     {
      "h": "Vaccines and cancer awareness",
-     "t": "Annual influenza and pneumococcal vaccination; COVID-19 and RSV per current UKHSA Green Book [4] eligibility. NICE NG12 (updated April 2026) [3]: ever-smokers aged 40 and over with an unexplained symptom such as cough, breathlessness, weight loss or chest pain need an urgent chest X-ray; a change from her usual pattern should not be put down to COPD."
+     "t": "Annual influenza vaccination and a one-off pneumococcal vaccine; COVID-19 and RSV per current UKHSA Green Book [4] eligibility. NICE NG12 (updated April 2026) [3]: ever-smokers aged 40 and over with an unexplained symptom such as cough, breathlessness, weight loss or chest pain need an urgent chest X-ray; a change from her usual pattern should not be put down to COPD."
     }
    ]
   },
@@ -5020,7 +5020,7 @@
    "reason": "Video consultation booked with no reason given: \"Personal — would like to speak to a doctor.\""
   },
   "knowledge": {
-   "guideline": "FGM Act 2003 (as amended by the Serious Crime Act 2015) · Multi-agency statutory guidance on FGM (Home Office, updated July 2020) · Mandatory reporting of FGM: procedural information (Home Office/DH) · FGM risk and safeguarding guidance for professionals (DH) · Working Together to Safeguard Children (HM Government, 2023)",
+   "guideline": "FGM Act 2003 (as amended by the Serious Crime Act 2015) · Multi-agency statutory guidance on FGM (Home Office, updated July 2020) · Mandatory reporting of FGM: procedural information (Home Office/DH) · FGM risk and safeguarding guidance for professionals (DH) · Working Together to Safeguard Children (HM Government, 2026)",
    "summary": "A girl at risk of FGM is a child at risk of significant harm. The GP acts on it the same day through a safeguarding referral; the mandatory police-reporting duty is for known FGM in under-18s, not risk.",
    "points": [
     {
@@ -5373,7 +5373,7 @@
     },
     {
      "h": "Safeguarding",
-     "t": "Working Together to Safeguard Children (2023) and the multi-agency statutory guidance on FGM (2020): refer at-risk girls to children’s social care; call 999 if the danger is immediate."
+     "t": "Working Together to Safeguard Children (2026) and the multi-agency statutory guidance on FGM (2020): refer at-risk girls to children’s social care; call 999 if the danger is immediate."
     }
    ],
    "professional": [
@@ -9526,7 +9526,7 @@
     },
     {
      "h": "Access without delay",
-     "t": "Women can self-refer to abortion services [2]. Providers should offer the abortion within 1 week of assessment [3]. Early medical abortion, with both medicines taken at home, is available in England and Wales up to 9 weeks 6 days, so at about 7 weeks she has every option if seen promptly."
+     "t": "Women can self-refer to abortion services [2]. Providers should offer the abortion within 1 week of assessment [2]. Early medical abortion, with both medicines taken at home, is available in England and Wales up to 9 weeks 6 days, so at about 7 weeks she has every option if seen promptly."
     },
     {
      "h": "Holistic care",

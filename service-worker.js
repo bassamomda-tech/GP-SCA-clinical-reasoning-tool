@@ -7,7 +7,7 @@
    - Google Fonts: cache-first (long-lived).
    Bump CACHE_VERSION to force clients to refresh cached files.
 */
-const CACHE_VERSION = 'v225';
+const CACHE_VERSION = 'v226';
 const SHELL_CACHE   = 'rgp-shell-' + CACHE_VERSION;
 const RUNTIME_CACHE = 'rgp-runtime-' + CACHE_VERSION;
 const FONT_CACHE    = 'rgp-fonts-' + CACHE_VERSION;
@@ -106,7 +106,24 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Other same-origin assets — stale-while-revalidate.
+  // Scripts, styles and data files — network-first, so content updates show on
+  // the first load; the cached copy is used only when offline.
+  if (/\.(js|css|json)$/i.test(url.pathname)) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(RUNTIME_CACHE).then((c) => c.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
+
+  // Other same-origin assets (images, icons) — stale-while-revalidate.
   event.respondWith(
     caches.match(req).then((cached) => {
       const network = fetch(req)

@@ -993,7 +993,7 @@
     },
     {
      "h": "Pauline: acute stress after a witnessed arrest",
-     "t": "Intrusive replays and insomnia five days after watching her husband’s arrest are an acute stress reaction. NICE NG116: active monitoring and a review within a month; don’t offer psychologically focused debriefing. Offer trauma-focused CBT if she has acute stress disorder or clinically important symptoms, including within the first month, or if symptoms persist."
+     "t": "Intrusive replays and insomnia five days after watching her husband’s arrest are an acute stress reaction. NICE NG116: active monitoring and a review within a month; don’t offer psychologically focused debriefing. Consider individual trauma-focused CBT within the first month if she has acute stress disorder or clinically important PTSD symptoms; offer it if they persist beyond a month."
     },
     {
      "h": "Guilt: meet it, don’t confirm or dismiss",
@@ -4878,7 +4878,7 @@
     },
     {
      "h": "Who should have had FIT",
-     "t": "NICE HTG690: FIT guides referral for people with symptoms such as a change in bowel habit, iron deficiency anaemia, or (40 and over) unexplained weight loss with abdominal pain. A low or unreturned FIT does not overrule clinical suspicion — a rectal or abdominal mass still warrants referral."
+     "t": "NICE HTG690: FIT guides referral for people with symptoms such as a change in bowel habit, iron deficiency anaemia, or (40 and over) unexplained weight loss with abdominal pain. A low or unreturned FIT does not overrule clinical suspicion, and a rectal or anal mass or unexplained anal ulceration is referred without waiting for FIT."
     },
     {
      "h": "Iron deficiency anaemia in a man",

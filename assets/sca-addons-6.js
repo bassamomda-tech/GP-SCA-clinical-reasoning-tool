@@ -46,7 +46,7 @@
     },
     {
      "h": "Investigate the gallstones",
-     "t": "NICE CG188: LFTs and abdominal ultrasound for suspected gallstone disease; MRCP or endoscopic ultrasound if the duct is dilated or LFTs are abnormal with a normal scan. Offer laparoscopic cholecystectomy for symptomatic gallbladder stones."
+     "t": "NICE CG188: LFTs and abdominal ultrasound for suspected gallstone disease; MRCP if the scan shows no duct stone but the duct is dilated and/or LFTs are abnormal, with endoscopic ultrasound if MRCP is inconclusive. Offer laparoscopic cholecystectomy for symptomatic gallbladder stones."
     },
     {
      "h": "Timing of surgery",
@@ -985,7 +985,7 @@
    "points": [
     {
      "h": "First-line treatment",
-     "t": "Doxycycline 100 mg twice daily for 7 days is the sole first-line treatment (BASHH 2026). Where doxycycline is unsuitable, including pregnancy, use the alternative per BASHH 2026 agreed with sexual health. Check for pregnancy before prescribing. Advise no sex, including with her regular partner, until both have completed treatment and symptoms have settled."
+     "t": "Doxycycline 100 mg twice daily for 7 days is the sole first-line treatment (BASHH 2026). In pregnancy, use azithromycin, erythromycin or amoxicillin per BASHH 2026, with a test of cure no earlier than 3 weeks after treatment; for others who cannot take doxycycline, use the alternative agreed with sexual health. Check for pregnancy before prescribing. Advise no sex, including with her regular partner, until both have completed treatment and symptoms have settled."
     },
     {
      "h": "Timing cannot be known",
@@ -997,7 +997,7 @@
     },
     {
      "h": "Partner notification and screening",
-     "t": "The current partner is treated regardless of his own result, and a health adviser sets the look-back for other partners (BASHH 2026). Offer patient-led or provider-led (anonymous) notification. Offer HIV, syphilis and gonorrhoea testing."
+     "t": "The current partner is tested and usually treated epidemiologically — contacts with symptoms or exposure in the last 2 weeks are treated without waiting for results (BASHH 2026) — and a health adviser sets the look-back for other partners (BASHH 2026). Offer patient-led or provider-led (anonymous) notification. Offer HIV, syphilis and gonorrhoea testing."
     },
     {
      "h": "Contraception and retesting",
@@ -1229,7 +1229,7 @@
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Partner treated regardless of result; patient-led or anonymous provider notification; full STI screen.",
+    "d": "Partner tested and treated epidemiologically; patient-led or anonymous provider notification; full STI screen.",
     "pts": 1
    },
    {
@@ -1275,7 +1275,7 @@
     {
      "t": "5–10",
      "h": "Fertility, treatment, partner",
-     "d": "Accurate fertility message. Doxycycline 7 days or PID regimen. Partner treated regardless; anonymous option. Full STI screen."
+     "d": "Accurate fertility message. Doxycycline 7 days or PID regimen. Partner tested and treated epidemiologically; anonymous option. Full STI screen."
     },
     {
      "t": "10–12",
@@ -1370,7 +1370,7 @@
     "sharedPlan": [
      "Same-day examination and pregnancy test for possible PID",
      "Doxycycline 100 mg twice daily for 7 days, or the BASHH PID regimen if PID is suspected",
-     "Partner treated regardless of result; no sex until both treated",
+     "Partner tested and treated epidemiologically; no sex until both treated",
      "HIV, syphilis and gonorrhoea tests; retest for reinfection"
     ],
     "safetyNet": [
@@ -1486,11 +1486,11 @@
     },
     {
      "h": "Confirm and refer",
-     "t": "NICE NG20: positive serology → refer to gastroenterology for endoscopic duodenal biopsy, still eating gluten. Do not diagnose coeliac disease in adults on serology alone. After diagnosis: lifelong gluten-free diet, dietitian support, bone health assessment, and pneumococcal vaccination for functional hyposplenism."
+     "t": "NICE NG20: positive serology → refer to gastroenterology for endoscopic duodenal biopsy, still eating gluten. Do not diagnose coeliac disease in adults on serology alone. After diagnosis: lifelong gluten-free diet, dietitian support, bone health assessment, and assessment for functional hyposplenism with vaccination per the Green Book (pneumococcal where indicated)."
     },
     {
      "h": "The anaemia in its own right",
-     "t": "BSG 2021: confirm iron deficiency with ferritin, screen all adults with IDA for coeliac disease, ask about menstrual loss and diet, and treat with oral iron while the cause is sought — product and dose per BNF. In premenopausal women, GI investigation is guided by symptoms, age and family history. Faecal calprotectin (NICE DG11) helps separate IBD from IBS in adults with lower GI symptoms."
+     "t": "BSG 2021: confirm iron deficiency with ferritin, screen all adults with IDA for coeliac disease, ask about menstrual loss and diet, and treat with oral iron while the cause is sought — product and dose per BNF. In premenopausal women, GI investigation is guided by symptoms, age and family history, and NICE NG12 (updated April 2026) offers FIT to adults with iron-deficiency anaemia. Faecal calprotectin (NICE DG11) helps separate IBD from IBS in adults with lower GI symptoms."
     },
     {
      "h": "Why the diagnosis matters",
@@ -3462,7 +3462,7 @@
     },
     {
      "h": "Mimics and follow-up",
-     "t": "Ramsay Hunt syndrome (ear or palate vesicles, severe ear pain, hearing loss, vertigo) needs antiviral plus steroid and urgent ENT input. Also consider Lyme disease, parotid masses and bilateral palsy. NICE NG127: refer if no recovery; consider specialist assessment for synkinesis from about 5 months."
+     "t": "Ramsay Hunt syndrome (ear or palate vesicles, severe ear pain, hearing loss, vertigo) needs antiviral plus steroid and urgent ENT input. Also consider Lyme disease, parotid masses and bilateral palsy. Review if not improving by about 3 weeks and consider facial-palsy referral at about 3 months if recovery is incomplete (local pathway); NICE NG127: consider specialist assessment for synkinesis from about 5 months."
     }
    ]
   },
@@ -3929,7 +3929,7 @@
     },
     {
      "h": "Driving — Group 2 and provoked seizures",
-     "t": "Lorry and bus (Group 2) standards are much stricter — typically years off driving. A seizure linked to alcohol or its withdrawal may be treated by the DVLA as provoked, but the DVLA, not the GP, decides — he still stops and notifies."
+     "t": "Lorry and bus (Group 2) standards are much stricter — typically years off driving. The DVLA does not class a seizure linked to alcohol misuse or withdrawal as provoked: its alcohol-related seizure rules apply (Group 1 at least 6 months from the event), plus the misuse or dependence standards if relevant. The DVLA, not the GP, decides — he still stops and notifies."
     },
     {
      "h": "Provoking factors and safety",
@@ -7275,7 +7275,7 @@
    "points": [
     {
      "h": "The NICE NG12 (updated April 2026) criterion",
-     "t": "NICE NG12 (updated April 2026), rec 1.2.4: refer people using a suspected cancer pathway referral for pancreatic cancer if they are aged 40 and over and have jaundice. Roy meets this on jaundice alone."
+     "t": "NICE NG12 (updated April 2026): refer people using a suspected cancer pathway referral for pancreatic cancer if they are aged 40 and over and have jaundice. Roy meets this on jaundice alone."
     },
     {
      "h": "Direct-access CT",
@@ -7420,7 +7420,7 @@
     "who": "dr",
     "text": "Here’s what I’m arranging. I’d like to see you in person today to examine you and take blood tests — liver tests, blood count, kidneys, clotting and sugar. And I’m referring you today on the urgent suspected cancer pathway; the team usually arranges a CT scan quickly.",
     "dom": "tasks",
-    "why": "NICE NG12 (updated April 2026) rec 1.2.4 referral plus same-day bloods and examination"
+    "why": "NICE NG12 (updated April 2026) referral plus same-day bloods and examination"
    },
    {
     "who": "pt",
@@ -7629,7 +7629,7 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "Jaundice at 40 and over — suspected cancer pathway referral (NICE NG12 (updated April 2026), rec 1.2.4)",
+     "Jaundice at 40 and over — suspected cancer pathway referral (NICE NG12 (updated April 2026))",
      "Weight loss at 60 and over with abdominal or back pain, nausea, vomiting, bowel change or new diabetes — urgent direct-access CT",
      "Fever, rigors, RUQ pain, confusion — possible cholangitis, emergency admission"
     ],
@@ -7698,7 +7698,7 @@
     {
      "dom": "tasks",
      "fail": "Advising him to cut down and rechecking LFTs in a few weeks.",
-     "why": "NICE NG12 (updated April 2026) rec 1.2.4: jaundice at 40 and over needs a suspected cancer pathway referral. “Management plan not in line with current UK best practice.”",
+     "why": "NICE NG12 (updated April 2026): jaundice at 40 and over needs a suspected cancer pathway referral. “Management plan not in line with current UK best practice.”",
      "fix": "“This pattern isn’t something I can put down to drink. I’m referring you urgently today.”"
     },
     {
@@ -9260,7 +9260,7 @@
     },
     {
      "h": "Specialist link and referral",
-     "t": "Confirm the NHS gender identity clinic referral is active and record the date; seek advice from a gender specialist or endocrinologist and aim for a shared-care arrangement. Keep monitoring whether or not you prescribe."
+     "t": "Confirm the NHS adult gender service referral is active (in England the single national waiting list is managed by the Gender National Referral Support Service from October 2026) and record the date; seek advice from a gender specialist or endocrinologist and aim for a shared-care arrangement. Keep monitoring whether or not you prescribe."
     },
     {
      "h": "Respect and records",
