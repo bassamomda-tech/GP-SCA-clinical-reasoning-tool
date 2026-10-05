@@ -7360,7 +7360,7 @@
     },
     {
      "h": "Proportionate tests",
-     "t": "Examine hands, nailfolds (a dermatoscope helps), pulses and BP face to face. FBC, ESR or CRP and ANA are reasonable to support a primary diagnosis in a young person; any secondary feature or positive ANA → paediatric or adolescent rheumatology referral."
+     "t": "Examine hands, nailfolds (a dermatoscope helps), pulses and BP face to face. Typical primary Raynaud’s is a clinical diagnosis: no routine bloods or ANA (PCDS), because a positive ANA is often non-specific. If any secondary feature is found, check FBC, ESR or CRP, U&E, LFTs, urinalysis and ANA (ENA and further tests guided by findings) and refer to paediatric or adolescent rheumatology."
     },
     {
      "h": "Warmth first",
@@ -7495,9 +7495,9 @@
    },
    {
     "who": "dr",
-    "text": "Everything so far points to the harmless type. To be thorough, I’d like to see Ruby in person to check her fingers, nail beds, pulses and blood pressure, and do a simple blood test for inflammation and an immune marker. If anything is abnormal, I’d ask the young people’s rheumatology team to see her.",
+    "text": "Everything so far points to the harmless type. To be thorough, I’d like to see Ruby in person to check her fingers, nail beds, pulses and blood pressure, If everything looks normal, she won’t need blood tests. If I find anything unusual, I’d do some blood tests and ask the young people’s rheumatology team to see her.",
     "dom": "tasks",
-    "why": "Face-to-face examination, proportionate bloods and a clear referral trigger"
+    "why": "Face-to-face examination, bloods only if secondary features, and a clear referral trigger"
    },
    {
     "phase": "Shared management",
@@ -7535,7 +7535,7 @@
    },
    {
     "who": "dr",
-    "text": "Perfect. I’ll book the appointment for the hands check and blood test, and we’ll go through the results together. Ruby, if you ever want to talk to me on your own about anything, that’s always fine.",
+    "text": "Perfect. I’ll book the appointment for the hands check, and we’ll go through what I find together. Ruby, if you ever want to talk to me on your own about anything, that’s always fine.",
     "dom": "gs",
     "why": "Closes with follow-up and offers the teenager her own space"
    }
@@ -7563,7 +7563,7 @@
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Face-to-face hands, nailfolds, pulses and BP; FBC, ESR or CRP and ANA as proportionate tests.",
+    "d": "Face-to-face hands, nailfolds, pulses and BP. No routine bloods if typical; FBC, ESR or CRP, U&E, LFTs, urinalysis and ANA only if secondary features.",
     "pts": 1
    },
    {
@@ -7588,7 +7588,7 @@
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Advice on smoking and vaping, decongestants and other triggers; plan for rheumatology if any secondary feature or positive ANA.",
+    "d": "Advice on smoking and vaping, decongestants and other triggers; plan for bloods and rheumatology if any secondary feature.",
     "pts": 1
    },
    {
@@ -7634,7 +7634,7 @@
     {
      "t": "6–8",
      "h": "Explain proportionately",
-     "d": "Raynaud’s in plain words; almost always the harmless type at her age; why you asked the extra questions; face-to-face check and simple bloods."
+     "d": "Raynaud’s in plain words; almost always the harmless type at her age; why you asked the extra questions; face-to-face check, with bloods only if anything unusual."
     },
     {
      "t": "8–12",
@@ -7644,7 +7644,7 @@
    ],
    "wordPics": {
     "fail": "Talks only to the mother; says “just poor circulation” without a secondary screen; or over-investigates and alarms; no practical advice; no safety-net.",
-    "pass": "Recognises Raynaud’s; screens for secondary features; reassures proportionately; arranges examination and basic bloods; gives warmth-first advice and a safety-net.",
+    "pass": "Recognises Raynaud’s; screens for secondary features; reassures proportionately; arranges a face-to-face examination, with bloods only if secondary features; gives warmth-first advice and a safety-net.",
     "exc": "All of the above, plus: keeps Ruby central throughout; addresses ‘is it her heart’ directly; explains why the extra questions matter; negotiates school measures with Ruby and offers a letter; knows nifedipine is off-label in under-18s; offers Ruby time on her own; teach-back from Ruby."
    },
    "avoid": [
@@ -7723,9 +7723,9 @@
     "reflectIce": "“Mum, you asked if it’s her heart — it isn’t. And Ruby, you said PE is the worst, so let’s make a plan for that.”",
     "psychosocial": "Let Ruby choose the practical measures she will use; offer a school letter; offer her time alone.",
     "sharedPlan": [
-     "Face-to-face check: hands, nailfolds, pulses, BP; FBC, ESR or CRP, ANA",
+     "Face-to-face check: hands, nailfolds, pulses, BP; bloods (FBC, ESR or CRP, ANA) only if secondary features",
      "Warmth-first: whole-body warmth, gloves, hand warmers, gentle rewarming; avoid smoking, vaping and decongestants",
-     "School letter; rheumatology if secondary features or positive ANA; nifedipine only with specialist advice if severe"
+     "School letter; bloods and rheumatology if secondary features; nifedipine only with specialist advice if severe"
     ],
     "safetyNet": [
      "Fingertip sores or a finger that won’t warm up → same-day contact",

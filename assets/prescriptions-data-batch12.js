@@ -341,11 +341,11 @@
     duration:'7 days',
     drugs:[
       { name:'Doxycycline (non-pregnant)', dose:'100 mg', freq:'BD', route:'PO', days:'7 days' },
-      { name:'Pregnancy/breastfeeding or doxycycline unsuitable: azithromycin', dose:'1 g then 500 mg OD (per regimen)', freq:'\u2014', route:'PO', days:'1\u20133 days (test of cure \u22653 weeks after in pregnancy)' },
+      { name:'Pregnancy/breastfeeding or doxycycline unsuitable: azithromycin', dose:'1 g, then 500 mg OD for 2 days', freq:'\u2014', route:'PO', days:'3 days (test of cure \u22653 weeks after in pregnancy)' },
       { name:'Full STI/HIV screen + partner notification + avoid sex 7 days (and until partners treated)', dose:'\u2014', freq:'\u2014', route:'Advice', days:'\u2014' },
     ],
     altRegimens:[
-      { label:'Pregnancy', drugs:'Azithromycin (per current guidance); arrange test of cure.' },
+      { label:'Pregnancy', drugs:'Azithromycin 1 g, then 500 mg OD for 2 days (BASHH 2026); test of cure \u22653 weeks after.' },
       { label:'Rectal chlamydia / LGV', drugs:'Doxycycline 7 days (longer for LGV) \u2014 manage via GUM.' },
       { label:'Complicated (PID / epididymo-orchitis)', drugs:'Treat as the complication; extended regimen.' },
     ],
