@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdominal pain in adults — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/abdominal-pain.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/abdominal-pain.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../abdominal-pain.html">← Full abdominal pain algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Abdominal pain in adults</h1>
+      <div class="scope"><b>For:</b> adults ≥18, acute to chronic pain; GP or OOH/111, face to face or remote. <b>Not for:</b> children (<a href="../abdominal-pain-children.html">children's algorithm</a>) or known pregnancy (own pathway; the ectopic screen still applies).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG12</span><span>NG126</span><span>NG147</span><span>NG118</span><span>CG184</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> before the history ask — is the abdomen surgical, is the patient shocked, could she be pregnant? Pain out of proportion to the examination, with a pulsatile mass or with hypotension is a vascular emergency. The old, frail and immunosuppressed present late and softly.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — call 999 now <small>— before any history</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Shock</b> on the whole picture (perfusion, mental state, pulse, BP, trajectory; no single cut-off) · <b>peritonism with compromise</b> · haematemesis or melaena with instability · fever with jaundice and rigors · tender irreducible groin or scrotal lump → <span class="when w999">999</span></li>
+          <li><b>Vascular:</b> sudden severe pain with a pulsatile mass, or back/flank pain with collapse over 50 (“suspected ruptured AAA”); severe constant pain, soft abdomen, AF or vascular disease (“query mesenteric ischaemia”) → <span class="when w999">999</span></li>
+          <li><b>Positive pregnancy test with pain</b> plus instability, syncope, significant bleeding or shoulder-tip pain → <span class="when w999">999</span></li>
+          <li><b>While waiting:</b> ABCDE, observations, nil by mouth, onset time. Analgesia is permitted. Do not delay transfer for bloods, urine or imaging; do not palpate a suspected AAA repeatedly; no laxative, enema or PPI and review.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage <small>— onset and pattern</small></h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Onset</th><th>Think → action</th></tr>
+            <tr><td>Instant, maximal</td><td>Perforation, AAA, ectopic, torsion → blocks 0–2 now</td></tr>
+            <tr><td>Hours, migrating</td><td>Appendicitis → <span class="when wsd">Same-day surgical</span></td></tr>
+            <tr><td>Colicky waves</td><td>Obstruction, renal or biliary colic — obstruction first</td></tr>
+            <tr><td>Days–weeks</td><td>Inflammatory, malignant → NG12 row, block 2</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen <small>— one row is enough</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Could be pregnant</b> (even on contraception) → test; positive + stable → <span class="when wsd">EPU today</span>. Sudden unilateral pain + vomiting (ovarian torsion) → <span class="when wsd">Same-day gynaecology</span>, even if eased.</li>
+            <li><b>Testicular torsion</b> → <span class="when w999">Immediate</span> emergency urology/surgery (4–6 h window).</li>
+            <li><b>Peritonism</b>, epigastric pain to back with vomiting, pain on NSAIDs or steroids; <b>obstruction</b> (vomiting, distension, no flatus; check both groins) → <span class="when wsd">Same-day surgical</span>, <span class="when w999">999</span> if unstable.</li>
+            <li><b>Sepsis or cholangitis</b> (fever + RUQ pain + jaundice); loin pain, fever, vomiting → <span class="when wsd">Same-day acute</span>; <span class="when w999">999</span> if septic or jaundice with rigors.</li>
+            <li><b>Upper GI bleed</b> (haematemesis, coffee-ground vomit, melaena) → <span class="when wsd">Same-day acute</span>; <span class="when w999">999</span> if haematemesis or shock.</li>
+            <li><b>NG12</b> → <span class="when wurg">≤2 weeks</span>: mass or ascites · 40+ weight loss → FIT (≥10 µg Hb/g → refer) · 60+ weight loss + new diabetes or bowel change → CT · 55+ weight loss + upper pain, or dysphagia · jaundice 40+ · women 40+ persistent bloating → CA-125 + urgent ultrasound, never CA-125 alone.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess <small>— once blocks 0–2 are answered</small></h2>
+        <div class="body">
+          <p>☐ Pulse, BP + postural drop, RR, SpO₂, temp, GCS ☐ Ketones if diabetic, on SGLT2 inhibitor or vomiting ☐ ECG if epigastric pain over 40 ☐ Groins and scrotum, always; PR/pelvic only if indicated, chaperone</p>
+          <p><b>Not in the abdomen:</b> DKA (euglycaemic on SGLT2i — withhold), inferior MI, pneumonia, PE, retention. Not: CA 19-9, bowel sounds, a dipstick alone with pelvic pain or over 65.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify <small>— only if the screen is negative</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Appendicitis</b> — pain migrating to RIF over 6–24 h, anorexia → <span class="when wsd">Same-day surgical</span>; normal bloods do not exclude it. <b>Diverticulitis</b> — LIF, fever, over 50 → block 5.</li>
+            <li><b>Biliary colic</b> — post-prandial 1–6 h, no fever → ultrasound. Fever or jaundice → <span class="when wsd">Same-day biliary</span>.</li>
+            <li><b>Dyspepsia</b> — no alarm features → H. pylori test or PPI. Exclude cardiac over 40, pancreatitis.</li>
+            <li><b>Renal colic</b> — loin to groin, haematuria → CT KUB <span class="when wsd">≤24 h</span> (ultrasound if pregnant); fever, single kidney, pregnancy → emergency. Older: AAA first.</li>
+            <li><b>PID</b> → BASHH regimen + sexual health. <b>IBS</b> — positive diagnosis; 50+ or alarm features → tests first.</li>
+            <li><b>Unclassified</b> — say so; never default to “constipation”, “gastritis” or “IBS” → <span class="when wsd">review 12–24 h</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— doses per BNF and local formulary</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Analgesia — give it;</b> paracetamol first (max 4 g/24 h; less if low weight or liver disease). NSAID for renal or biliary colic unless GI bleed/ulcer, renal impairment, dehydration, heart failure, anticoagulation, pregnancy, CVD, frailty, ACE inhibitor + diuretic.</li>
+            <li><b>Diverticulitis, well:</b> consider no antibiotic, review 48 h. Unwell, immunosuppressed or comorbid: co-amoxiclav 500/125 mg TDS 5 days. Avoid NSAIDs and opioids where possible.</li>
+            <li><b>Dyspepsia, no alarm features:</b> stop NSAID; full-dose PPI 4 weeks, or H. pylori test and treat (2-week PPI washout first).</li>
+            <li><b>Lower UTI, non-pregnant woman:</b> nitrofurantoin 3 days, per local guidance. Men, pregnancy: 7 days + MSU.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer routinely</h2>
+        <div class="body">
+          <ul>
+            <li>Symptomatic gallstones → upper GI surgery. Dyspepsia failing eradication and full-dose PPI, no alarm feature → gastroenterology.</li>
+            <li>Raised calprotectin, positive tTG-IgA → gastroenterology. Chronic pelvic pain, endometriosis → gynaecology.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A soft abdomen (ischaemia, AAA, ectopic).</li>
+          <li>Normal temperature or bloods (early appendicitis, sepsis).</li>
+          <li>Pain that has settled — including torsion.</li>
+          <li>Normal bowel sounds.</li>
+          <li>Contraception, without a pregnancy test.</li>
+          <li>Mild signs in the old, diabetic or on steroids; a low FIT with a mass.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Call 999 or go to A&amp;E if the pain becomes severe or constant, your tummy goes hard, you vomit repeatedly, pass blood or black stools, faint or go cold and clammy, or get a fever with shivering.”</span>
+        <b>Same day:</b> <span class="say">“If the pain moves to one place or worsens over hours, or you get jaundice or a positive pregnancy test.”</span></p>
+        <p><b>Remote or OOH:</b> convert to face-to-face or emergency if the abdomen, observations or a needed pregnancy test cannot be done; pain is severe, progressive or localising; vomiting stops drinking; over 65, frail, immunosuppressed or anticoagulated; or no reliable same-day review or safe transport.</p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to leave primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>No block 0–2 row applies</span>
+        <span>Observations normal; pregnancy test negative if relevant</span>
+        <span>Abdomen soft; groins and scrotum examined</span>
+        <span>One diagnosis explains it, NG12 considered — or 12–24 h review</span>
+        <span>Written safety-net; review booked, named owner</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../abdominal-pain.html">Reasoning GP abdominal pain algorithm</a>, which holds the detail and evidence. Sources: NICE NG12 (updated April 2026), NG126, NG147, NG118, NG109, NG253, CG184, CG188, CG61, NG20, NG73; BASHH; BNF; MHRA. Clinical decision support — follow local policies and check doses in the current BNF.</div>
+
+</main>
+</body>
+</html>

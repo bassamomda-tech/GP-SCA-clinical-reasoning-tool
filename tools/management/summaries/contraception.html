@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contraception — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/contraception.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/contraception.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../contraception.html">← Full contraception protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Contraception</h1>
+      <div class="scope"><b>For:</b> anyone seeking contraception or emergency contraception (EC), including under-16s (Fraser) and the over-40s. <b>Not for:</b> HRT (use the <a href="../hrt-prescribing.html">HRT protocol</a> — HRT is not contraception); under 13 (safeguarding referral); complex medical disease (specialist advice).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>UKMEC 2025</span><span>FSRH guidelines</span><span>NICE CG30</span><span>NICE PH51</span><span>NICE NG12</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> reasonably exclude pregnancy and start a method today, run the UKMEC screen before any combined method (aura, BP, VTE, smoking), and offer the copper IUD to everyone requesting EC.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>After IUD fitting: severe abdominal pain, fever, shock</b> → <span class="when w999">999</span>. <b>On CHC: leg swelling, chest pain, breathlessness</b> → <span class="when w999">999 or same-day</span></li>
+          <li><b>New aura or new severe headache on CHC</b> → stop the oestrogen; switch to a POP or LARC <span class="when wsd">Same-day</span>. <b>Positive pregnancy test, missing IUD threads, PID after an IUD</b> → <span class="when wsd">Same-day review</span></li>
+          <li><b>EC request</b> → <span class="when wsd">Same-day</span>, never delayed for a pregnancy test. <b>Offer Cu-IUD to all</b>: within 5 days of first UPSI or earliest estimated ovulation (whichever is later). Else <b>UPA 30 mg</b> ≤120 h (then delay progestogen methods 5 days) or <b>LNG 1.5 mg</b> ≤72 h (≤96 h off-label; 3 mg if &gt;70 kg, BMI &gt;26 or enzyme inducer). Oral window passed → <span class="when wurg">Urgent Cu-IUD referral</span></li>
+          <li><b>Undiagnosed abnormal vaginal bleeding</b> → investigate before any hormonal method. <b>Unexplained breast lump aged 30+</b> → refer; <b>cervix looks cancerous</b> → consider <span class="when wurg">Suspected cancer pathway (NG12)</span></li>
+          <li><b>Under 13</b>, or concern about coercion, exploitation or trafficking → <span class="when wurg">Urgent safeguarding referral</span> before prescribing. Under 16 → document Fraser.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— not pregnant, then UKMEC</small></h2>
+        <div class="body">
+          <p><b>FSRH pregnancy-exclusion criteria</b> ± urine βhCG; a negative test <b>cannot exclude pregnancy after recent UPSI</b>. &gt;21 days since LMP, no UPSI → no test; document why.</p>
+          <table>
+            <tr><th>UKMEC</th><th>Combined hormonal contraception (CHC) — key examples</th></tr>
+            <tr><td><b>4</b> never</td><td>Migraine with aura (any age) · current/past VTE or thrombogenic mutation · BP ≥160/100 · ≥35 y smoking ≥15/day · breastfeeding &lt;6 weeks postpartum · current breast cancer · IHD or stroke · major surgery with long immobility · decompensated cirrhosis, liver adenoma or cancer</td></tr>
+            <tr><td><b>3</b> avoid</td><td>BMI ≥35 · ≥35 y smoking &lt;15/day or stopped &lt;1 year · controlled hypertension or BP 140–159/90–99 · first-degree relative with VTE &lt;45 · immobility · breast cancer &gt;5 years ago · gallbladder disease</td></tr>
+          </table>
+          <p><b>Postpartum:</b> POP/implant any time; no CHC &lt;3 weeks; IUD ≤48 h or from 4 weeks. Progestogen-only and IUD methods suit most CHC exclusions — check UKMEC (ukmec.org).</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— before prescribing</small></h2>
+        <div class="body">
+          <p>☐ BP, BMI documented before CHC &nbsp;☐ Aura, smoking, own/family VTE, breast cancer &nbsp;☐ Enzyme inducers, lamotrigine &nbsp;☐ STI risk &nbsp;☐ Smear status &nbsp;☐ Fertility plans. <b>Not needed:</b> thrombophilia screen (unless VTE history), ultrasound, FSH/LH; an overdue smear never delays contraception.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— effectiveness first, then her choice</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Everyone</b> → offer a choice of all methods including LARC — not a default; among UKMEC 1–2 she decides. <b>Year-1 typical-use failure:</b> LARC &lt;1% · DMPA ~4% · pill/patch/ring ~7–9% · condoms/barrier ~13–24%. Condoms with any method — the only STI protection.</li>
+            <li><b>Lighter periods</b> → LNG-IUD or implant. <b>No hormones</b> → Cu-IUD. <b>Pregnancy soon</b> → avoid DMPA.</li>
+            <li><b>Enzyme inducers</b> (carbamazepine, phenytoin, rifampicin, St John’s Wort, some antiretrovirals) → DMPA, Cu-IUD or LNG-IUD. <b>Lamotrigine</b> → prefer non-oestrogen, or seek advice.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— quick-start today</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>First choices:</b> LNG-IUD 52 mg · Cu-IUD · implant · desogestrel 75 mcg POP · levonorgestrel 30 mcg COC (lowest VTE).</li>
+            <li><b>Cover:</b> immediate if started days 1–5 (LNG-IUD 1–7; Cu-IUD any day); else condoms 7 days (desogestrel or traditional POP 2 days).</li>
+            <li><b>Pregnancy not excluded, ongoing risk</b> → quick-start pill or implant, test in 3 weeks. No LNG-IUD.</li>
+            <li><b>Missed COC</b> (21/7): 1 pill → take now, no extra cover. ≥2 → latest pill + condoms 7 days; week 1 with UPSI → consider EC; week 3 → skip the break.</li>
+            <li><b>Late POP</b> (traditional &gt;3 h, desogestrel &gt;12 h, drospirenone &gt;24 h) → take now; condoms 48 h (drospirenone 7 days). Vomit ≤3 h → another pill.</li>
+            <li>Doses per BNF and local formulary/PGD.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>CHC:</b> BP, BMI, aura, smoking at 3 months, then yearly. <b>DMPA:</b> review ≥2-yearly. <b>Implant:</b> 3 years.</li>
+            <li><b>Bleeding &gt;3 months:</b> exclude pregnancy, STI, adherence, interactions, cervix (endometrium if at risk) → 3-month LNG COC (if CHC suitable) or 5-day mefenamic acid (off-label) → switch.</li>
+            <li><b>Switching:</b> overlap by the new method’s time-to-effective — no gap.</li>
+            <li><b>Age 50:</b> stop CHC; advise switching from DMPA. POP/implant/LNG-IUD to 55. Non-hormonal: stop after 2 years’ amenorrhoea under 50, 1 year at 50+.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— routine unless stated</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Sexual health:</b> LARC fitting if untrained, complex UKMEC 3–4, failed insertion. <b>Specialist:</b> enzyme inducers, multiple UKMEC 3, HIV, transplant, immunosuppressed, post-bariatric.</li>
+            <li><b>Gynaecology:</b> lost threads, device not seen on ultrasound ± X-ray (give EC + interim method); sterilisation. Deep implant → removal service.</li>
+            <li><b>PID with IUD, no better at 48–72 h</b> → <span class="when wurg">Urgent gynaecology</span>. Breast cancer → oncology.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>CHC with migraine with aura (any age), or after a new aura.</li>
+          <li>Send her away to wait for a period, or leave a gap when switching.</li>
+          <li>LNG-IUD if pregnancy not excluded; any IUD with PID, purulent cervicitis, gonorrhoea or symptomatic chlamydia.</li>
+          <li>Rely on CHC, POP, implant or patch with an enzyme inducer.</li>
+          <li>Blame the method for bleeding &gt;3 months before examining and testing.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Severe tummy pain with a fever after a coil fitting, or chest pain and breathlessness on the pill — call 999.”</span> &nbsp;
+        <b>CHC:</b> <span class="say">“New headache with visual changes, or calf pain or swelling — stop the pill, contact us now.”</span> &nbsp;
+        <b>Coil/implant:</b> <span class="say">“Pain, fever, missing threads or pregnancy symptoms — contact us.”</span> &nbsp;
+        <b>Pills:</b> <span class="say">“Missed-pill and sickness rules are on this leaflet.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0, EC need and safeguarding checked</span>
+        <span>Pregnancy reasonably excluded, documented</span>
+        <span>UKMEC, BP/BMI, interactions documented</span>
+        <span>Started today; rules in writing; review booked</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../contraception.html">Reasoning GP contraception protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: UKMEC 2025; FSRH guidelines (IUC, POP, EC, over-40s, CHC); NICE CG30, PH51, NG12; BASHH; SPCs. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary/PGD.</div>
+
+</main>
+</body>
+</html>

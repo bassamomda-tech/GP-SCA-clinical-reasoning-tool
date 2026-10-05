@@ -290,7 +290,7 @@ body {
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Summary</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
@@ -298,7 +298,7 @@ body {
 </div>
 
 <!-- SUMMARY VIEW — 2-page quick reference, inline responsive HTML (spec: _summary-spec.md). Download PDF prints summaries/tinnitus.html (the A4 artefact). -->
-<div id="viewSummary">
+<div id="viewSummary"><style>#viewSummary>.sum-bar,#viewSummary>.sum{display:none!important}</style><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/tinnitus.html">⬇ Download PDF</button><a class="sum-open" href="one-page/tinnitus.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/tinnitus.html" title="Snapshot" loading="lazy" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
   <div class="sum-bar"><p><b>2-page quick reference.</b> Tinnitus in adults — triage and diagnostic approach. Ongoing management stays in the Steps tab.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="summaries/tinnitus.html">⬇ Download PDF</button><a class="sum-open" href="summaries/tinnitus.html" target="_blank" rel="noopener">Print view ↗</a></div></div>
   <div class="sum">
 <!-- ===================== PAGE 1 ===================== -->

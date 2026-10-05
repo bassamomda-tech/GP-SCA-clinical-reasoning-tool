@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fever in adults — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/fever-adults.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/fever-adults.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../fever-adults.html">← Full fever in adults algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Fever in adults</h1>
+      <div class="scope"><b>For:</b> adults with fever, GP or OOH/111, face to face or remote. <b>Not for:</b> children (<a href="../fever-children.html">fever in children pathway</a>, NG143). Neutropenic, asplenic, immunosuppressed, pregnant, device or travel → block 2.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG253</span><span>NG240</span><span>NG12</span><span>NG33</span><span>UKHSA malaria</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> judge severity from physiology and risk group, not the thermometer. No fever, a normal CRP or a fever that "breaks" with paracetamol excludes nothing. Neutropenia, asplenia and malaria-area travel make an ordinary fever an emergency.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — call 999 now <small>— before any history</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>NG253 high risk:</b> systolic ≤90 (or &gt;40 below baseline), pulse &gt;130, RR ≥25, SpO₂ &lt;92% on air, new altered mental state, mottled or ashen skin, no urine for 18 h; shock or rapid deterioration → <span class="when w999">999</span></li>
+          <li><b>Non-blanching rash or meningism</b> (headache, neck stiffness, photophobia, vomiting, seizure) → <span class="when w999">999 + pre-alert</span>. No rash or a glass test excludes nothing. Also suspected severe malaria, necrotising fasciitis, epiglottitis (stridor, drooling).</li>
+          <li><b>Unwell within 30 days of anticancer treatment</b>, neutropenia or important immunosuppression → <span class="when w999">999 / urgent secondary care</span> via alert card. No FBC wait; no oral antibiotic.</li>
+          <li><b>While waiting:</b> ABCDE, oxygen if hypoxic, IV access only if no delay; hand over observations including RR. Meningococcal strongly suspected and transfer significantly delayed (or per local pathway): benzylpenicillin 1.2 g IV/IM or ceftriaxone, not if anaphylaxis; record time. Never delay transfer for bloods, cultures, urine or antibiotics.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage by duration <small>— measured, not "feels hot"</small></h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Fever</th><th>Action</th></tr>
+            <tr><td>&lt;5 days</td><td>Usually viral; see block 4.</td></tr>
+            <tr><td>5–14 days</td><td>Look harder: full sweep, targeted bloods.</td></tr>
+            <tr><td>&gt;3 weeks</td><td>Undiagnosed after assessment → refer (block 6).</td></tr>
+            <tr><td>Hyperthermia</td><td>Heatstroke, NMS, serotonin syndrome, thyroid storm → cool, <span class="when wsd">Emergency admission</span></td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen <small>— one row is enough</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Asplenia, sickle cell</b> → <span class="when wsd">Same-day admission</span>, low threshold for 999. <b>Immunosuppressed, device</b> → <span class="when wsd">Same-day acute</span></li>
+            <li><b>Malaria-area travel</b>, even months ago, despite prophylaxis → <span class="when wsd">Same-day malaria test</span>; one negative may not exclude. VHF risk → isolate, call UKHSA.</li>
+            <li><b>Back pain plus</b> neurological deficit, sphincter change, saddle anaesthesia, focal spinal tenderness or toxicity → <span class="when w999">Emergency + MRI</span></li>
+            <li><b>Endocarditis</b> (new murmur, emboli, prosthetic valve, injecting drugs) or <b>hot swollen joint</b> → <span class="when wsd">Same-day hospital</span>; cultures or aspirate before antibiotics if stable.</li>
+            <li><b>GCA:</b> ≥50, new headache, jaw claudication, scalp tenderness → prednisolone 40–60 mg now (60 mg if visual), <span class="when wsd">Same-day rheum</span>; visual → <span class="when wsd">Emergency eye</span></li>
+            <li><b>Unexplained fever</b> → consider <span class="when wurg">FBC ≤48 h</span> (NG12); nodes or spleen → consider lymphoma referral. Cough &gt;3 weeks, sweats, weight loss → CXR, consider TB.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess <small>— once blocks 0–2 are answered</small></h2>
+        <div class="body">
+          <p>☐ Full observations incl. <b>RR</b> ☐ Whole skin undressed; percuss spine; joints, lines ☐ Murmur, chest, abdomen, throat, teeth, ears, nodes</p>
+          <p><b>Well, &lt;5 days, viral:</b> no routine tests. <b>Unwell or persistent:</b> FBC, U&amp;E, LFTs, CRP, glucose; urine if urinary symptoms; CXR if respiratory or unexplained. Echo, CT, MRI via acute route.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify <small>— three exits, not two</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Serious cause likely</b> — red flag, deranged physiology, risk group → blocks 0–2 destination.</li>
+            <li><b>Self-limiting</b> — well, &lt;5 days, normal physiology, coherent viral or minor local source, no risk group, reliable support → block 5, safety-net, named review.</li>
+            <li><b>Non-infective</b> — GCA, Still's, vasculitis, lymphoma, PE (low-grade fever); drug fever 7–10 days after a new drug.</li>
+            <li><b>Uncertain</b> — no source, remote, frail or &gt;5 days → not "viral"; targeted bloods and a defined review, or admit.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— doses per BNF and local formulary</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Sepsis, malaria, endocarditis, septic joint, spinal infection:</b> transfer is the treatment; no oral antibiotic and review.</li>
+            <li><b>Bacterial source, stable:</b> amoxicillin or doxycycline (CAP, CRB-65), nitrofurantoin or trimethoprim (lower UTI), flucloxacillin (cellulitis), phenoxymethylpenicillin (strep throat); cultures first where feasible; shortest course; review at 48–72 h.</li>
+            <li><b>Viral:</b> no antibiotic; usually 3–5 days. Paracetamol for comfort, within maximum dose; ibuprofen may be unsuitable (AKI, dehydration, pregnancy, varicella).</li>
+            <li><b>Sick-day rules:</b> don't stop basal insulin without specialist advice; follow the individual adrenal plan; adrenal crisis → emergency hydrocortisone and admit; SGLT2i, metformin, ACEi/ARB, diuretics may need pausing if poor intake or AKI.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer routinely</h2>
+        <div class="body">
+          <ul>
+            <li>Fever &gt;3 weeks or recurrent, undiagnosed → general medicine or infectious diseases; no repeated empirical antibiotics.</li>
+            <li>Still's, vasculitis or CTD (GCA excluded) → rheumatology. Resolved undiagnosed travel fever → infectious diseases.</li>
+            <li>Suspected notifiable infection → Health Protection Team promptly.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A fever that "breaks" with paracetamol.</li>
+          <li>No fever: frail or steroid-treated patients may be afebrile.</li>
+          <li>A normal CRP or ESR, or early normal bloods.</li>
+          <li>A positive dipstick in an older or catheterised patient.</li>
+          <li>A low NEWS2 score when you are still worried.</li>
+          <li>Fever with back pain called musculoskeletal.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— written; document the words used</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“A rash that does not fade, new confusion or drowsiness, severe headache with stiff neck, breathlessness, cold mottled hands and feet, a fit, or no urine.”</span> <b>Same day:</b> <span class="say">“Much worse, fever beyond 5 days, can't keep fluids down, much less urine, new pain or swelling including your back.”</span> Asplenic or immunosuppressed: within the hour. No source, frail or antibiotic started → <b>review at 48 h</b>.</p>
+        <p><b>Remote or OOH:</b> go face to face if observations incl. RR or a skin check are impossible, high-risk group, changing mental state, caller is not the patient, or review is not assured.</p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to leave primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>No block 0–2 row applies</span>
+        <span>Observations normal, incl. RR</span>
+        <span>Sweep negative; skin and spine examined</span>
+        <span>No risk group; &lt;5 days, improving</span>
+        <span>Written safety-net; review date set</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../fever-adults.html">Reasoning GP fever in adults algorithm</a>, which holds the detail and evidence. Sources: NICE NG253, NG240, NG12 (April 2026), NG33, NG250, NG109, NG141, NG84; RCP NEWS2; UKHSA; BNF. Clinical decision support — follow local policies and check doses in the current BNF.</div>
+
+</main>
+</body>
+</html>

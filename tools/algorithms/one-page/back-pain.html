@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Low back pain in adults — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/back-pain.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/back-pain.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../back-pain.html">← Full back pain algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Low back pain in adults</h1>
+      <div class="scope"><b>For:</b> adults 16+ with low back pain, with or without leg pain, in primary care. <b>Not for:</b> under 16s. Pain &gt;12 weeks: re-screen here, then use the <a href="../chronic-back-pain.html">chronic back pain algorithm</a>.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG59</span><span>NG234</span><span>NG65</span><span>NG12</span><span>NG193</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> ask about bladder, bowel and saddle sensation at every back-pain consultation and document the answer. Any new positive answer means immediate emergency transfer, not community MRI. Most of the rest is non-specific: reassure, keep active, do not image.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — emergency now <small>— before any history</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Cauda equina — any one feature:</b> new urinary retention, poor flow or altered bladder sensation; urinary or faecal incontinence; saddle or perineal numbness; bilateral sciatica or bilateral neurology; progressive weakness or gait disturbance → <span class="when w999">Immediate ED / acute spinal</span></li>
+          <li><b>Cord compression:</b> progressive bilateral leg weakness, upper motor neuron signs (clonus, hyperreflexia), thoracic pain with neuro symptoms, falls → <span class="when w999">Immediate ED / acute spinal</span>. <b>Known cancer + neuro signs</b> → MSCC coordinator / acute oncology now.</li>
+          <li><b>Ruptured AAA or dissection:</b> abdominal pain, collapse, syncope, pulsatile mass, tearing pain to the back → <span class="when w999">999</span>. <b>Anticoagulated + new neuro deficit</b> (epidural haematoma) → <span class="when w999">999</span></li>
+          <li><b>While waiting:</b> urgent MRI is arranged by the receiving service — do not delay transfer for community imaging. Document motor, sensory, reflex, gait and bladder findings. Suspected MSCC with neuro signs: dexamethasone 16 mg promptly, in liaison with the MSCC service.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage by duration <small>— once block 0 is clear</small></h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Duration</th><th>Action</th></tr>
+            <tr><td>&lt;6 weeks</td><td>Self-limiting in most → block 5.</td></tr>
+            <tr><td>6–12 weeks</td><td>Not settling: reassess the diagnosis and look for new symptoms; STarT Back medium/high → physio / exercise.</td></tr>
+            <tr><td>&gt;12 weeks</td><td>Re-screen red flags (every visit) and inflammatory pattern; exercise-led self-management; deprescribe → <a href="../chronic-back-pain.html">chronic pathway</a>.</td></tr>
+                      </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen <small>— one row is enough</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Cancer (current or past)</b> + spinal pain suggesting metastases, no neuro signs → <span class="when wsd">MSCC advice ≤24 h</span>; MRI within 1 week.</li>
+            <li><b>Infection:</b> severe spinal pain + fever or systemic illness, IV drug use, immunosuppression, recent spinal procedure → <span class="when wsd">Same-day hospital</span> if unwell, neuro symptoms or strongly suspected.</li>
+            <li><b>Fracture:</b> significant trauma, or osteoporosis or steroids with sudden focal pain → imaging per local pathway; unstable, neuro deficit or cannot mobilise → <span class="when wsd">Same-day hospital</span></li>
+            <li><b>New significant motor deficit</b> (foot drop, quadriceps weakness) → consider <span class="when wsd">Same-day hospital</span></li>
+            <li><b>60+, persistent bone/back pain</b> → FBC, calcium, ESR/PV, protein electrophoresis, free light chains; myeloma? → <span class="when wurg">Suspected cancer pathway</span></li>
+            <li><b>60+, weight loss + back pain</b> → consider <span class="when wurg">direct-access CT ≤2 weeks</span> (pancreas). Persistent non-mechanical thoracic pain → urgent imaging.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess <small>— once blocks 0–2 are answered</small></h2>
+        <div class="body">
+          <p>☐ Gait, midline tenderness &nbsp;☐ L4/L5/S1 power, reflexes, sensation and SLR, both sides, if leg or neuro symptoms &nbsp;☐ Perianal sensation if bladder, bowel or saddle symptoms &nbsp;☐ Abdomen (pulsatile mass, renal angle), temperature &nbsp;☐ STarT Back for each new episode</p>
+          <p>Not in primary care: routine imaging for non-specific pain or uncomplicated sciatica; a "cancer screen" (PSA, CA125).</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify — the 3 Ns <small>— if the screen is negative</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Non-specific (most)</b> — ± buttock/thigh pain, normal neurology → block 5.</li>
+            <li><b>Sciatica</b> — leg worse than back, dermatomal below knee, positive SLR.</li>
+            <li><b>Spinal stenosis</b> — bilateral leg pain on walking, eased by sitting or leaning forward.</li>
+            <li><b>Inflammatory (axial SpA)</b> — onset &lt;45, &gt;3 months, night waking, buttock pain, better with movement or NSAIDs → block 6.</li>
+            <li><b>Referred</b> — renal, AAA, pancreas, pelvis, zoster; not altered by spinal movement.</li>
+            <li><b>Uncertain</b> — say so; review sooner, reassess the diagnosis.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— doses per BNF and local formulary</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>All:</b> reassure, stay active, no bed rest, exercise, stay at work.</li>
+            <li><b>Consider oral NSAID</b> (e.g. ibuprofen 400 mg TDS, naproxen 500 mg BD), lowest dose, shortest time, after GI, renal, hepatic, CV risk check; gastroprotect by risk. Avoid: GI bleed, heart failure, anticoagulant, pregnancy. Not paracetamol alone.</li>
+            <li><b>Weak opioid</b> (e.g. codeine 30–60 mg QDS) acute pain only, if NSAID unsuitable or ineffective; small supply, stop plan; counsel driving.</li>
+            <li><b>Do not offer:</b> gabapentinoids; oral steroids, benzodiazepines (sciatica); antidepressants for back pain; opioids for chronic pain; acupuncture.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer routinely</h2>
+        <div class="body">
+          <ul>
+            <li>STarT Back medium/high → MSK physio (high: closer follow-up). Depression or anxiety → treat in its own right (NHS Talking Therapies).</li>
+            <li>Persistent or severe radicular pain, severe neurogenic claudication → MSK / spinal (imaging there).</li>
+            <li>Axial SpA with ≥4 NICE NG65 features, or 3 + HLA-B27 positive → rheumatology.</li>
+            <li>Disabling pain despite conservative care → pain / MSK service; prolonged work absence → occupational health.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A normal perianal exam or bladder scan — CES can be incomplete.</li>
+          <li>A normal temperature, CRP or ESR when infection is possible.</li>
+          <li>A negative HLA-B27 or CRP in suspected axial SpA.</li>
+          <li>A normal examination in a patient with cancer — think MSCC.</li>
+          <li>An established "chronic back pain" label — red flags can develop later.</li>
+          <li>Mild bilateral leg symptoms — they still raise concern.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">A&amp;E now</span> <span class="say">“Go to A&amp;E straight away if you can't pass urine or it feels different, lose control of your bladder or bowel, feel numb around your back passage or genitals, or both legs become weak or numb, or you can't walk. Sudden severe back pain with collapse — call 999.”</span>
+        <b>Same day:</b> <span class="say">“Fever with back pain, a new foot drop or spreading tingling, severe pain despite painkillers, a fall that may have broken a bone, or unexplained weight loss — contact us today.”</span></p>
+        <p><b>Every consultation, including remote:</b> ask and document bladder, bowel and saddle answers. Review individualised; sooner if not improving or new neurology.</p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to leave primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>No block 0–2 row applies; bladder, bowel, saddle asked</span>
+        <span>Neurology examined if leg or neuro symptoms</span>
+        <span>One of the 3 Ns fits, or uncertainty stated; STarT Back done</span>
+        <span>NSAID risks checked; any opioid has a stop plan</span>
+        <span>Safety-net given; review owner and timing set</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../back-pain.html">Reasoning GP back pain algorithm</a>, which holds the detail, examination, chronic pathway and evidence. Sources: NICE NG59 (psychological therapy and combined programme recommendations withdrawn July 2026), NG234, NG65, NG12 (updated April 2026), NG193, CG173; STarT Back (Keele). Clinical decision support — follow local emergency, MSCC and spinal pathways and check doses in the current BNF.</div>
+
+</main>
+</body>
+</html>

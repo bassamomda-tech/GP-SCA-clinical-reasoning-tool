@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heart failure in adults — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/heart-failure.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/heart-failure.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../heart-failure.html">← Full heart failure protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Chronic heart failure in adults</h1>
+      <div class="scope"><b>For:</b> adults with suspected or confirmed chronic heart failure. <b>Not for:</b> decompensation (block 0 → local acute-HF pathway) or children. AF with HF → also the AF protocol; end of life → palliative protocols.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG106 (Sept 2025 update)</span><span>QS9</span><span>TA267</span><span>NG12</span><span>ESC 2023</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> in HFrEF start all four pillars low and titrate to target; fix each obstacle (often by cutting the diuretic) rather than stopping a pillar.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time; NYHA-grade at every contact</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Chest pain or syncope</b> → <span class="when w999">999</span>. <b>Severe breathlessness, pulmonary oedema, hypoxia below baseline, hypotension or hypoperfusion, new confusion, significant AKI, severe hyperkalaemia, severe arrhythmia, or failed diuretic plan</b> → <span class="when wsd">Same-day emergency assessment</span> (local acute-HF pathway) — not a 6-week echo; titration stops.</li>
+          <li><b>K⁺ ≥6.0</b> → <span class="when wurg">Urgent assessment</span>: repeat, ECG, local hyperkalaemia protocol; hold ACEi/ARB/ARNI/MRA on acute advice.</li>
+          <li><b>Decompensating but walking, talking, SpO₂ OK</b> (weight up, orthopnoea, oedema) → raise loop diuretic per the individualised plan or HF-nurse advice, U&amp;E in 3–5 days, keep the beta-blocker → <span class="when w7">Review at 48 h</span>; worse → same day.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— NT-proBNP sets the echo clock; EF sets the treatment</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>NT-proBNP</th><th>Meaning</th><th>Action</th></tr>
+            <tr><td>&gt;2000 ng/L</td><td>High risk</td><td><span class="when wurg">Specialist + echo ≤2 weeks</span></td></tr>
+            <tr><td>400–2000 ng/L</td><td>Possible HF</td><td>Specialist + echo within 6 weeks</td></tr>
+            <tr><td>&lt;400 ng/L</td><td>HF unlikely</td><td>Look elsewhere — beware false-lows</td></tr>
+          </table>
+          <p><b>False-low</b> (“normal” does not exclude HF): obesity, African or African-Caribbean background, diuretics, ACEi, ARB, ARNI, beta-blocker, MRA. <b>False-high:</b> age, AF, CKD, LVH, pulmonary hypertension, sepsis, PE, COPD.</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— baseline at diagnosis</small></h2>
+        <div class="body">
+          <p>☐ ECG, CXR &nbsp;☐ U&amp;E, FBC, LFT, TFT, HbA1c, lipids &nbsp;☐ Ferritin + TSAT &nbsp;☐ Urinalysis (ACR if CKD possible) &nbsp;☐ Cause: IHD, BP, valve, AF, alcohol, chemotherapy, family history, amyloid</p>
+          <p><b>Don't miss (NG12):</b> aged 40+, ≥2 unexplained of cough, fatigue, breathlessness, chest pain, weight or appetite loss (≥1 if ever smoked) → offer CXR <span class="when wurg">≤2 weeks</span>, even if “HF”.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— split the phenotype</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>HFrEF (LVEF ≤40%)</b> → offer all four pillars first-line.</li>
+            <li><b>HFmrEF (41–49%)</b> → consider the same four (ACEi or ARB); ask the HF team if uncertain.</li>
+            <li><b>HFimpEF (was ≤40%, now higher)</b> → continue all prognostic treatment.</li>
+            <li><b>HFpEF (≥50% + objective abnormality)</b> → consider an MRA and an SGLT2i + diuretic; treat BP, AF, obesity, diabetes, OSA, CKD.</li>
+            <li><b>Everyone:</b> daily weights, cardiac rehab if stable, no routine fluid restriction, minimal alcohol, vaccines, screen mood, written plan.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target</h2>
+        <div class="body">
+          <table>
+            <tr><th>What</th><th>Goal</th></tr>
+            <tr><td>Each pillar</td><td>Target or maximally tolerated dose — not just started</td></tr>
+            <tr><td>Loop diuretic</td><td>Lowest dose that keeps them decongested</td></tr>
+            <tr><td>Creatinine, ACEi/ARB/ARNI</td><td>Rise ≤30% (eGFR fall ≤25%) OK if stable, other causes excluded</td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat HFrEF <small>— all four low within weeks; titrate 2–4-weekly</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Pillar 1 · ACEi</span>Ramipril 1.25–2.5 → 10 mg (cough → ARB: candesartan 4–8 → 32 mg)</div>
+            <div class="step"><span class="sl">Pillar 2 · Beta-blocker</span>Bisoprolol 1.25 → 10 mg; only when stable, not congested; double no sooner than 2-weekly</div>
+            <div class="step"><span class="sl">Pillar 3 · MRA</span>Spironolactone 25 → 50 mg (eplerenone if gynaecomastia or post-MI)</div>
+            <div class="step"><span class="sl">Pillar 4 · SGLT2i</span>Dapagliflozin or empagliflozin 10 mg OD; check eGFR vs licence; avoid in type 1 diabetes or prior DKA unless specialist-directed</div>
+          </div>
+          <ul>
+            <li><b>Symptomatic hypotension:</b> reduce diuretic first if euvolaemic, stagger doses, drop nitrates/alpha-blockers/CCBs. Asymptomatic → no action.</li>
+            <li><b>HR &lt;50:</b> ECG, reduce beta-blocker last. <b>K⁺ 5.5–5.9:</b> stop K⁺-raisers, recheck; MRA per SPC. CKD → slower, not none.</li>
+            <li><b>Diuretic is not a pillar:</b> furosemide 20–40 mg; no blanket dose-doubling. <b>Still symptomatic on all four</b> → consider ACEi → ARNI (36 h washout; never after ACEi angioedema). Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>U&amp;E + K⁺:</b> before and 1–2 weeks after every RAAS or MRA start or rise; then 3–6-monthly.</li>
+            <li><b>Review</b> ≤2 weeks after any change, then ≥6-monthly: doses, adherence, rehab, devices, care plan.</li>
+            <li><b>Iron:</b> symptomatic HFrEF, ferritin &lt;100 µg/L or TSAT &lt;20% <b>and</b> Hb &lt;150 g/L → consider IV iron (not oral); find the cause.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— HF team / cardiology</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Every new diagnosis:</b> specialist confirmation; HF nurse from day one.</li>
+            <li><b>Escalation:</b> symptomatic on four pillars; EF ≤35% after ~3 months optimal therapy → ICD/CRT assessment; kidneys or K⁺ blocking pillars.</li>
+            <li><b>Cause:</b> ischaemia, valve disease, amyloid (elderly + LVH + carpal tunnel), familial cardiomyopathy.</li>
+            <li><b>≥2 admissions in 6 months</b> → advanced HF assessment + parallel palliative planning.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Stop a pillar for asymptomatic low BP, a ≤30% creatinine rise or early beta-blocker tiredness.</li>
+          <li>ACEi + ARB + MRA together, or ACEi + ARNI together.</li>
+          <li>Accept a “normal” BNP in an obese or treated breathless patient.</li>
+          <li>Stop prognostic therapy because EF improved (specialist only).</li>
+          <li>NSAIDs (incl. OTC), pioglitazone, verapamil, diltiazem; K⁺ salt substitutes with MRA.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Chest pain or fainting — call 999. Breathless at rest or lying flat, waking gasping, new confusion, passing much less urine or swelling fast — same-day call.”</span> &nbsp;
+        <b>Weight:</b> <span class="say">“Weight up by the amount on your plan (often 2 kg in 3 days) — ring us or the HF nurse; don't wait for breathlessness.”</span> &nbsp;
+        <b>Sick days:</b> <span class="say">“Vomiting, diarrhoea or can't eat or drink — contact us. The ‘flozin’ is usually paused; we'll advise on the others. Never stop insulin without diabetes advice.”</span> &nbsp;
+        <b>Beta-blocker / painkillers:</b> <span class="say">“You may feel more tired for the first fortnight — it passes. No ibuprofen-type drugs; paracetamol is fine.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 excluded; NYHA graded</span>
+        <span>NT-proBNP clock set; phenotype from echo</span>
+        <span>Baseline bloods, ECG, iron done; NG12 considered</span>
+        <span>Pillar plan, U&amp;E and 2-week review booked</span>
+        <span>Weight trigger, sick-day rules given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../heart-failure.html">Reasoning GP heart failure protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: NICE NG106 (incl. September 2025 update), QS9, TA267, NG12 (updated April 2026); GMMMG Heart Failure Toolkit; ESC 2023; current SPCs. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

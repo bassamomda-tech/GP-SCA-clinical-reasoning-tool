@@ -62,13 +62,13 @@ h3{font-family:'Source Serif 4',serif;font-weight:600;}
   <div><b>Irregular Periods (Oligomenorrhoea / AUB) — Primary Care Assessment</b>
   <small>Structured 9-step pathway · Reproductive age women · UK GP / RCGP SCA</small></div>
 </div>
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span><span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 <!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
+<div id="viewDiagramRetired" hidden>
   <div class="dg-legend"><span>The full reasoning pathway — exclude pregnancy and the red flags for endometrial pathology, then work through the common ovulatory and endocrine causes. Treat, advise, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
   <div class="chart">
   <div class="flow">
@@ -99,6 +99,7 @@ h3{font-family:'Source Serif 4',serif;font-weight:600;}
   <div class="band"><div class="caution">⚠️ <b>Intermenstrual and postcoital bleeding need a speculum and a cervical look</b> — and any postmenopausal bleeding is endometrial cancer until proven otherwise (suspected cancer pathway referral at 55 and over; consider it under 55).</div></div>
 </div>
 
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/irregular-periods.html">⬇ Download PDF</button><a class="sum-open" href="one-page/irregular-periods.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/irregular-periods.html" title="Snapshot" loading="lazy" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div></div>
 <div class="alg-flow" id="flow">
 
 <div class="node" data-type="SAFETY" data-step="1">

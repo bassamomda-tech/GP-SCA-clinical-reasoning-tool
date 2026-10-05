@@ -317,6 +317,53 @@
 
     root.innerHTML = html;
 
+    // SNAPSHOT TAB \u2014 when the page declares snapshot:"summaries/<slug>.html", add a
+    // two-tab switch under the title: Steps (the full protocol) or Snapshot (its one-page summary)
+    // (shown in a frame, printable as one A4 page). Not on print copies.
+    if(data.snapshot && !document.querySelector('meta[name="omelette-print-source"]')){
+      if(!document.getElementById('mgSnapCss')){
+        var css = document.createElement('style'); css.id = 'mgSnapCss';
+        css.textContent = '.mg-viewtabs{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0 16px}'+
+          '.mg-viewtabs button{font:inherit;font-size:14px;font-weight:700;padding:9px 16px;border-radius:999px;border:1px solid #d9d2c3;background:#fff;color:#15202b;cursor:pointer}'+
+          '.mg-viewtabs button[aria-selected="true"]{background:#0c4a47;border-color:#0c4a47;color:#fff}'+
+          '.mg-viewtabs .mg-vt-note{font-size:12.5px;color:#5d6673}'+
+          '.mg-snap-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:13px;color:#5d6673;margin-bottom:8px}'+
+          '.mg-snap-bar button,.mg-snap-bar a{font:inherit;font-size:13px;font-weight:700;padding:7px 13px;border-radius:8px;border:1px solid #0c4a47;background:#0c4a47;color:#fff;cursor:pointer;text-decoration:none}'+
+          '.mg-snap-bar a{background:#fff;color:#0c4a47}'+
+          '.mg-snap iframe{display:block;width:100%;border:0;min-height:1150px;background:transparent}'+
+          '@media print{.mg-viewtabs,.mg-snap{display:none!important}}';
+        document.head.appendChild(css);
+      }
+      var snapKids = Array.prototype.slice.call(root.children);
+      var snapStem = root.querySelector('.mg-stem');
+      var tabs = el('<div class="mg-viewtabs" role="tablist" aria-label="View">'+
+        '<button type="button" role="tab" data-v="full" aria-selected="true">Steps</button>'+
+        '<button type="button" role="tab" data-v="snap" aria-selected="false">Snapshot</button></div>');
+      var snap = el('<div class="mg-snap" hidden><div class="mg-snap-bar"><span><b>\u26A1 Snapshot.</b> Act now, confirm, decide, treat, monitor, refer and safety-net on one page. The full protocol holds the detail and evidence.</span>'+
+        '<span><button type="button" class="mg-snap-print">\u2B07 Download PDF</button> <a href="'+data.snapshot+'" target="_blank" rel="noopener">Open full screen \u2197</a></span></div>'+
+        '<iframe title="Snapshot" loading="lazy"></iframe></div>');
+      var frame = snap.querySelector('iframe');
+      function snapFit(){ try{ frame.style.height = frame.contentDocument.documentElement.scrollHeight + 'px'; }catch(e){} }
+      frame.addEventListener('load', function(){
+        snapFit();
+        try{ new ResizeObserver(snapFit).observe(frame.contentDocument.body); }catch(e){}
+      });
+      snap.querySelector('.mg-snap-print').addEventListener('click', function(){
+        try{ frame.contentWindow.focus(); frame.contentWindow.print(); }catch(e){ window.open(data.snapshot, '_blank'); }
+      });
+      function setView(v){
+        var on = v === 'snap';
+        if(on && !frame.getAttribute('src')) frame.setAttribute('src', data.snapshot);
+        snapKids.forEach(function(k){ if(k !== snapStem) k.style.display = on ? 'none' : ''; });
+        snap.hidden = !on;
+        tabs.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-selected', String(b.getAttribute('data-v') === v)); });
+      }
+      tabs.addEventListener('click', function(e){ var b = e.target.closest('button[data-v]'); if(b) setView(b.getAttribute('data-v')); });
+      if(snapStem && snapStem.nextSibling) root.insertBefore(tabs, snapStem.nextSibling); else root.insertBefore(tabs, root.firstChild);
+      root.insertBefore(snap, tabs.nextSibling);
+      if(/^#snapshot$/i.test(location.hash)) setView('snap');
+    }
+
 
     // TABLE FIT PASS — every table in the rendered page gets a colgroup of
     // CONTENT-PROPORTIONAL column widths, so a narrow label column stops
