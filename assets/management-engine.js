@@ -341,7 +341,7 @@
         '<button type="button" role="tab" data-v="snap" aria-selected="false">Snapshot</button></div>');
       var snap = el('<div class="mg-snap" hidden><div class="mg-snap-bar"><span><b>\u26A1 Snapshot.</b> Act now, confirm, decide, treat, monitor, refer and safety-net on one page. The full protocol holds the detail and evidence.</span>'+
         '<span><button type="button" class="mg-snap-print">\u2B07 Download PDF</button> <a href="'+data.snapshot+'" target="_blank" rel="noopener">Open full screen \u2197</a></span></div>'+
-        '<iframe title="Snapshot" loading="lazy"></iframe></div>');
+        '<iframe title="Snapshot"></iframe></div>');
       var frame = snap.querySelector('iframe');
       function snapFit(){ try{ frame.style.height = frame.contentDocument.documentElement.scrollHeight + 'px'; }catch(e){} }
       frame.addEventListener('load', function(){
@@ -353,9 +353,9 @@
       });
       function setView(v){
         var on = v === 'snap';
-        if(on && !frame.getAttribute('src')) frame.setAttribute('src', data.snapshot);
         snapKids.forEach(function(k){ if(k !== snapStem) k.style.display = on ? 'none' : ''; });
         snap.hidden = !on;
+        if(on && !frame.getAttribute('src')) frame.setAttribute('src', data.snapshot);
         tabs.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-selected', String(b.getAttribute('data-v') === v)); });
       }
       tabs.addEventListener('click', function(e){ var b = e.target.closest('button[data-v]'); if(b) setView(b.getAttribute('data-v')); });
