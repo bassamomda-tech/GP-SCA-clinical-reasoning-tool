@@ -139,6 +139,25 @@
       const ro = new ResizeObserver(()=>fit(frame));
       ro.observe(d.body);
       d.addEventListener('click', ()=>{ for(let t=120;t<=900;t+=180) setTimeout(()=>fit(frame), t); }, true);
+      // In-page links ("#claudication" opens that live work-up). Inside a srcdoc frame a bare
+      // "#…" link resolves against THIS hub page's address, so the browser would load the whole
+      // hub inside the frame. Set the frame's own #hash instead (its router opens the topic),
+      // then scroll the hub window to it, because the frame itself is auto-height.
+      d.addEventListener('click', e=>{
+        const a = e.target.closest && e.target.closest('a[href^="#"]');
+        if(!a) return;
+        e.preventDefault();
+        const id = decodeURIComponent((a.getAttribute('href')||'').slice(1));
+        if(!id) return;
+        try{ frame.contentWindow.location.hash = id; }catch(err){}
+        setTimeout(()=>{
+          fit(frame);
+          const el = d.getElementById(id) || d.querySelector('[data-workup]');
+          if(!el) return;
+          const top = frame.getBoundingClientRect().top + window.pageYOffset + el.getBoundingClientRect().top - 90;
+          window.scrollTo({ top: Math.max(0, top), behavior:'smooth' });
+        }, 150);
+      }, true);
     }catch(e){}
     // settle re-fits (fonts/layout/scripts)
     for(const t of [80,300,700,1300,2200]) setTimeout(()=>fit(frame), t);
