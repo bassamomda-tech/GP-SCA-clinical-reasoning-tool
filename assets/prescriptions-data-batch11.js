@@ -67,12 +67,12 @@
     eyebrow:'Hygiene · most settle · antibiotics if needed',
     indication:'Superficial folliculitis (inflamed hair follicles) and furuncles/carbuncles (deeper staph abscesses). Most folliculitis is self-limiting; boils often need incision/drainage; antibiotics for systemic features, cellulitis, or high-risk sites.',
     contraindications:'A fluctuant boil needs drainage, not just antibiotics. Recurrent furunculosis → consider decolonisation, diabetes, MRSA. Facial \u201cdanger triangle\u201d lesions / systemic upset → caution (cavernous sinus risk). Swab if recurrent/not responding.',
-    duration:'Antibiotic 5 days if indicated',
+    duration:'Antibiotic 7 days if indicated',
     drugs:[
       { name:'Hygiene: warm compresses, don\u2019t squeeze, antiseptic wash; most folliculitis self-resolves', dose:'\u2014', freq:'\u2014', route:'Advice', days:'Ongoing' },
       { name:'Incision & drainage for a fluctuant boil/abscess', dose:'\u2014', freq:'Once', route:'Procedure', days:'\u2014' },
-      { name:'Flucloxacillin if systemic/spreading/cellulitis or high-risk site', dose:'500 mg', freq:'QDS', route:'PO', days:'5 days' },
-      { name:'Clarithromycin if penicillin-allergic', dose:'500 mg', freq:'BD', route:'PO', days:'5 days' },
+      { name:'Flucloxacillin if systemic/spreading/cellulitis or high-risk site', dose:'500 mg', freq:'QDS', route:'PO', days:'7 days' },
+      { name:'Clarithromycin if penicillin-allergic (erythromycin 500 mg QDS if pregnant)', dose:'500 mg', freq:'BD', route:'PO', days:'7 days' },
     ],
     altRegimens:[
       { label:'Recurrent furunculosis', drugs:'Swab (incl. MRSA); decolonisation (nasal mupirocin + antiseptic body wash); screen for diabetes; treat close contacts if recurrent.' },
@@ -89,7 +89,7 @@
     emisText:`Folliculitis & boils (furuncles):
 - Folliculitis usually self-limiting: warm compresses, antiseptic wash, don't squeeze.
 - Fluctuant boil/abscess \u2192 incision & drainage (not just abx).
-- Flucloxacillin 500 mg QDS 5d (clarithromycin 500 mg BD if pen-allergic) if systemic/spreading/cellulitis/high-risk site.
+- Flucloxacillin 500 mg QDS 7d (clarithromycin 500 mg BD 7d if pen-allergic; erythromycin if pregnant) if systemic/spreading/cellulitis/high-risk site.
 - Recurrent \u2192 swab (incl MRSA) + decolonisation + diabetes screen.`,
     sources:[{ label:'UKHSA — PVL-SA guidance', url:'https://www.gov.uk' }],
   },
@@ -103,7 +103,7 @@
       { name:'Warm soaks several times daily; analgesia', dose:'\u2014', freq:'QDS', route:'Advice', days:'Until settles' },
       { name:'Incision/drainage if pus collection', dose:'\u2014', freq:'Once', route:'Procedure', days:'\u2014' },
       { name:'Flucloxacillin if cellulitis / not settling', dose:'500 mg', freq:'QDS', route:'PO', days:'5 days' },
-      { name:'Clarithromycin if penicillin-allergic', dose:'500 mg', freq:'BD', route:'PO', days:'5 days' },
+      { name:'Clarithromycin if penicillin-allergic (erythromycin 500 mg QDS if pregnant)', dose:'500 mg', freq:'BD', route:'PO', days:'5 days' },
     ],
     altRegimens:[
       { label:'Chronic paronychia', drugs:'Avoid wet work / irritants; keep dry; topical steroid \u00b1 antifungal; not an antibiotic problem.' },
@@ -182,7 +182,7 @@
 - Manage as eczema: emollients generous + soap substitute; avoid irritants (gloves for wet work).
 - Potent topical steroid short bursts (palms/soles); sedating antihistamine ON if itch.
 - Secondary infection \u2192 flucloxacillin. Refractory \u2192 dermatology (patch test/phototherapy/systemics).`,
-    sources:[{ label:'NICE CG57 — Atopic eczema in under 12s', url:'https://www.nice.org.uk/guidance/cg57' }],
+    sources:[{ label:'NICE CKS — Eczema: pompholyx', url:'https://cks.nice.org.uk/topics/eczema-pompholyx/' },{ label:'British Association of Dermatologists — pompholyx', url:'https://www.bad.org.uk' }],
   },
 
   { id:'sunburn', title:'Sunburn', category:'Dermatology',
@@ -218,11 +218,11 @@
     eyebrow:'STOP topical steroids · zero therapy · topical/oral abx',
     indication:'Papulopustular eruption around the mouth (sparing the vermilion border), eyes or nose \u2014 often triggered/worsened by topical (or inhaled) corticosteroids. Stop steroids and treat with anti-inflammatory antibiotics.',
     contraindications:'Do NOT use topical corticosteroids (they worsen it / cause rebound). Stopping steroids may flare initially \u2014 warn the patient. Avoid heavy cosmetics/occlusive creams during treatment.',
-    duration:'Topical weeks; oral course several weeks',
+    duration:'Topical weeks; oral course 6–12 weeks',
     drugs:[
       { name:'STOP all topical corticosteroids on the face; \u201czero therapy\u201d (stop cosmetics/occlusives)', dose:'\u2014', freq:'\u2014', route:'Advice', days:'Key step' },
       { name:'Topical: metronidazole or azelaic acid (mild)', dose:'Apply', freq:'OD\u2013BD', route:'Topical', days:'Several weeks' },
-      { name:'Oral: lymecycline / doxycycline / oxytetracycline (moderate\u2013severe)', dose:'Standard', freq:'OD\u2013BD', route:'PO', days:'~6\u20138 weeks' },
+      { name:'Oral (moderate\u2013severe; not <12 y or pregnancy): lymecycline OR oxytetracycline OR doxycycline', dose:'lymecycline 408 mg OD / oxytetracycline 500 mg BD / doxycycline 100 mg OD', freq:'OD\u2013BD', route:'PO', days:'6\u201312 weeks' },
     ],
     altRegimens:[
       { label:'Children / pregnancy (tetracyclines unsuitable)', drugs:'Topical therapy; oral erythromycin if systemic treatment needed.' },
@@ -238,7 +238,7 @@
     redFlags:['Diagnostic uncertainty or refractory to standard treatment → dermatology.'],
     emisText:`Perioral dermatitis:
 - KEY: STOP topical (and review inhaled) corticosteroids on face; \u201czero therapy\u201d (stop cosmetics/occlusives). Warn re initial flare on stopping.
-- Topical metronidazole or azelaic acid (mild); oral lymecycline/doxycycline ~6-8 wks (moderate-severe).
+- Topical metronidazole or azelaic acid (mild); oral lymecycline 408 mg OD or oxytetracycline 500 mg BD (or doxycycline 100 mg OD) 6-12 wks (moderate-severe).
 - Children/pregnancy: topical \u00b1 oral erythromycin (avoid tetracyclines).`,
     sources:[{ label:'PCDS', url:'https://www.pcds.org.uk' }],
   }

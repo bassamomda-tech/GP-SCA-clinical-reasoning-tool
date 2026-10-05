@@ -59,10 +59,10 @@ Send culture if treatment fails / recurrent / atypical.`,
     drugs: [
       { name: 'Nitrofurantoin (1st/2nd trimester)', dose: '100 mg MR', freq: 'BD', route: 'PO', days: '7' },
       { name: 'OR Amoxicillin (if culture-sensitive)', dose: '500 mg', freq: 'TDS', route: 'PO', days: '7' },
-      { name: 'OR Cefalexin', dose: '500 mg', freq: 'BD–TDS', route: 'PO', days: '7' },
+      { name: 'OR Cefalexin', dose: '500 mg', freq: 'BD', route: 'PO', days: '7' },
     ],
     altRegimens: [
-      { label: 'Near term (≥36 wks)', drugs: 'Avoid nitrofurantoin — use amoxicillin (if sensitive) or cefalexin 500 mg BD–TDS × 7 days.' },
+      { label: 'Near term (≥36 wks)', drugs: 'Avoid nitrofurantoin — use amoxicillin (if sensitive) or cefalexin 500 mg BD × 7 days.' },
       { label: '1st trimester', drugs: 'Avoid trimethoprim — use nitrofurantoin or cefalexin per culture.' },
     ],
     counselling: [
@@ -77,7 +77,7 @@ Send culture if treatment fails / recurrent / atypical.`,
     ],
     emisText: `UTI in pregnancy (send culture; treat asymptomatic bacteriuria too):
 - Nitrofurantoin 100 mg MR PO BD × 7 days (avoid at term ≥36 wks) OR
-- Amoxicillin 500 mg TDS × 7 (if sensitive) OR Cefalexin 500 mg BD–TDS × 7.
+- Amoxicillin 500 mg TDS × 7 (if sensitive) OR Cefalexin 500 mg BD × 7.
 Avoid trimethoprim in 1st trimester. Test of cure after treatment.
 Safety-net: fever/loin pain/reduced fetal movements → urgent maternity.`,
     sources: [
@@ -172,7 +172,7 @@ Safety-net: difficulty swallowing/breathing, drooling, trismus → same-day ENT.
     duration: '5–7 days',
     drugs: [
       { name: 'Amoxicillin', dose: '(child weight/age-based; adult 500 mg)', freq: 'TDS', route: 'PO', days: '5–7' },
-      { name: 'Penicillin allergy: Clarithromycin', dose: '(weight/age-based; adult 250–500 mg)', freq: 'BD', route: 'PO', days: '5' },
+      { name: 'Penicillin allergy: Clarithromycin', dose: '(weight/age-based; adult 250–500 mg)', freq: 'BD', route: 'PO', days: '5–7' },
       { name: 'Analgesia: Paracetamol / ibuprofen', dose: 'Weight-based', freq: 'Regular', route: 'PO', days: 'PRN pain' },
     ],
     altRegimens: [
@@ -192,7 +192,7 @@ Safety-net: difficulty swallowing/breathing, drooling, trismus → same-day ENT.
     ],
     emisText: `Acute otitis media:
 - Regular analgesia (paracetamol/ibuprofen, weight-based) — mainstay.
-- Antibiotic if systemically unwell / <2 yr bilateral / otorrhoea / high-risk: Amoxicillin (weight/age dose) TDS × 5–7 days. Pen-allergic: clarithromycin × 5 days.
+- Antibiotic if systemically unwell / <2 yr bilateral / otorrhoea / high-risk: Amoxicillin (weight/age dose) TDS × 5–7 days. Pen-allergic: clarithromycin × 5–7 days.
 - Otherwise no/back-up antibiotic — use if not better in 3 days.
 Safety-net: mastoid swelling, facial palsy, neck stiffness → same-day.`,
     sources: [
@@ -212,7 +212,7 @@ Safety-net: mastoid swelling, facial palsy, neck stiffness → same-day.`,
     duration: 'Antibiotic 5 days if used',
     drugs: [
       { name: 'Symptom relief: Paracetamol / ibuprofen', dose: '1 g / 400 mg', freq: 'QDS / TDS', route: 'PO', days: 'PRN' },
-      { name: '≥10 days: Mometasone nasal spray', dose: '2 sprays each nostril', freq: 'OD', route: 'INTRANASAL', days: '14' },
+      { name: '≥10 days: Mometasone nasal spray (high dose, ≥12 y, off-label)', dose: '2 sprays (100 micrograms) each nostril', freq: 'BD', route: 'INTRANASAL', days: '14' },
       { name: 'Back-up antibiotic: Phenoxymethylpenicillin', dose: '500 mg', freq: 'QDS', route: 'PO', days: '5' },
     ],
     altRegimens: [
@@ -222,7 +222,7 @@ Safety-net: mastoid swelling, facial palsy, neck stiffness → same-day.`,
     counselling: [
       'Most sinus infections are viral and improve within 2–3 weeks without antibiotics.',
       'Nasal saline rinses, steam inhalation, analgesia, and decongestants (short-term) help.',
-      'Use the back-up antibiotic only if no improvement after ≥10 days of intranasal steroid, or if worsening.',
+      'Use the back-up antibiotic only if symptoms do not improve within 7 days, or worsen rapidly or significantly at any time.',
       'Return urgently with swelling/redness around the eye, double vision, severe headache, or confusion.',
     ],
     followUp: 'No routine review. Recurrent (>3–4/year) or chronic (>12 weeks) → consider ENT referral.',
@@ -232,8 +232,8 @@ Safety-net: mastoid swelling, facial palsy, neck stiffness → same-day.`,
     ],
     emisText: `Acute sinusitis:
 - <10 days: self-care — analgesia, saline rinses, steam; no antibiotic.
-- ≥10 days no improvement: Mometasone nasal spray 2 sprays/nostril OD × 14 days ± back-up antibiotic.
-- Antibiotic (if needed): Phenoxymethylpenicillin 500 mg QDS × 5 days (pen-allergic: doxycycline 100 mg OD × 5 / clarithromycin 500 mg BD × 5).
+- ≥10 days no improvement: Mometasone nasal spray 2 sprays/nostril BD × 14 days (high dose, ≥12 y, off-label) ± back-up antibiotic (use if no better within 7 days or worsening).
+- Antibiotic (if needed): Phenoxymethylpenicillin 500 mg QDS × 5 days (pen-allergic: doxycycline 200 mg day 1 then 100 mg OD, 5 days total / clarithromycin 500 mg BD × 5).
 Safety-net: periorbital swelling, diplopia, severe headache → same-day.`,
     sources: [
       { label: 'NICE NG79 — Sinusitis (acute)', url: 'https://www.nice.org.uk/guidance/ng79' },
@@ -298,7 +298,7 @@ Safety-net: diabetic + severe pain/granulation → urgent ENT (necrotising OE).`
     altRegimens: [
       { label: 'Chloramphenicol allergy', drugs: 'Fusidic acid 1% eye drops BD × 7 days.' },
       { label: 'Contact-lens wearer / suspected keratitis', drugs: 'Do NOT routinely treat as conjunctivitis — stop lenses, same-day ophthalmology.' },
-      { label: 'Allergic conjunctivitis', drugs: 'Topical/oral antihistamine (e.g. sodium cromoglicate / olopatadine drops); avoid antibiotics.' },
+      { label: 'Allergic conjunctivitis', drugs: 'Antihistamine eye drops (e.g. olopatadine) or mast-cell stabiliser (sodium cromoglicate) ± oral non-sedating antihistamine; avoid antibiotics.' },
     ],
     counselling: [
       'Most cases settle on their own within a week; hygiene prevents spread.',

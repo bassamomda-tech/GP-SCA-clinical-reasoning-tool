@@ -140,7 +140,7 @@
       'Detected antenatally on the fetal anomaly scan (and raised maternal AFP); confirmed at birth',
       'PREVENTION: periconceptual folic acid markedly reduces neural-tube defects — higher-dose folic acid for higher-risk pregnancies'],
     management:[
-      'Promote prevention: advise folic acid before conception and in early pregnancy for all women planning pregnancy (and a higher dose for those at increased risk, e.g. previous affected pregnancy, diabetes, certain antiepileptics, or high BMI — per guidance)',
+      'Promote prevention: advise folic acid before conception and in early pregnancy for all women planning pregnancy (and a higher dose for those at increased risk, e.g. previous affected pregnancy, diabetes or certain antiepileptics; not high BMI alone — NICE NG247)',
       'Antenatally detected/severe cases are managed by specialist multidisciplinary teams (fetal medicine, neurosurgery, paediatrics)',
       'Open defects need early neurosurgical closure and management of hydrocephalus (often a shunt)',
       'Coordinate lifelong multidisciplinary care: neurosurgery, urology (neuropathic bladder — catheterisation, preserving renal function), orthopaedics, physiotherapy, continence, and skin/pressure care',

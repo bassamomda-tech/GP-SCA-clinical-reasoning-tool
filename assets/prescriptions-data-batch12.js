@@ -125,12 +125,12 @@
   { id:'recurrent-uti', title:'Recurrent UTI (women) — prevention', category:'Urology & Renal',
     eyebrow:'Self-care · vaginal oestrogen · prophylaxis last',
     indication:'Recurrent UTI in women (≥2 in 6 months or ≥3 in 12 months). Address behavioural/self-care measures, consider vaginal oestrogen (postmenopausal), then antibiotic prophylaxis if needed. Per NICE NG112.',
-    contraindications:'Confirm infections (cultures) before labelling recurrent. Investigate/refer if red flags (haematuria, suspected obstruction/stones), or in men. Antibiotic prophylaxis is a last resort — review at 6 months. Counsel re resistance.',
+    contraindications:'Confirm infections (cultures) before labelling recurrent. Investigate/refer if red flags (haematuria, suspected obstruction/stones), or in men. Antibiotic prophylaxis is a last resort — review at 6 months. Counsel re resistance. Nitrofurantoin: avoid if eGFR <45 (BNF); long-term use — monitor for pulmonary/hepatic reactions. Trimethoprim: avoid in 1st trimester of pregnancy (folate antagonist).',
     duration:'Trial measures; prophylaxis reviewed at ~6 months',
     drugs:[
       { name:'Self-care: hydration, don\u2019t delay voiding, post-coital voiding; consider D-mannose / cranberry (patient choice)', dose:'\u2014', freq:'\u2014', route:'Advice', days:'Ongoing' },
       { name:'Vaginal oestrogen (postmenopausal women)', dose:'Per product', freq:'Per regimen', route:'PV', days:'Ongoing, review' },
-      { name:'Standby/back-up antibiotic for prompt self-start at symptom onset', dose:'Per local 1st-line', freq:'\u2014', route:'PO', days:'3 days' },
+      { name:'Methenamine hippurate — alternative to daily antibiotic prophylaxis (non-pregnant; avoid urinary alkalinising sachets)', dose:'1 g', freq:'BD', route:'PO', days:'Review within 6 months, then 12-monthly' },
       { name:'Antibiotic prophylaxis if measures fail: trimethoprim 100 mg OR nitrofurantoin 50\u2013100 mg', dose:'100 mg / 50\u2013100 mg', freq:'at night (\u00b1 post-coital)', route:'PO', days:'Review at 6 months' },
     ],
     altRegimens:[
@@ -149,7 +149,8 @@
     emisText:`Recurrent UTI in women \u2014 prevention (NG112):
 - Confirm with cultures. Self-care: hydration, regular/post-coital voiding; D-mannose/cranberry (choice).
 - Postmenopausal: vaginal oestrogen 1st.
-- Standby antibiotic (self-start) or prophylaxis (trimethoprim 100 mg or nitrofurantoin 50-100 mg nocte \u00b1 post-coital) if measures fail \u2014 review 6 months.
+- Methenamine hippurate 1 g BD as alternative to daily antibiotic prophylaxis (NG112 2024; not in pregnancy without specialist advice); review 6 months then 12-monthly.
+- Antibiotic prophylaxis (trimethoprim 100 mg or nitrofurantoin 50-100 mg nocte \u00b1 post-coital) if measures fail \u2014 review 6 months.
 - Haematuria/male/stones \u2192 urology.`,
     sources:[{ label:'NICE NG112 \u2014 Recurrent UTI: antimicrobial prescribing', url:'https://www.nice.org.uk/guidance/ng112' }],
   },
@@ -161,7 +162,7 @@
     duration:'Self-limiting (days)',
     drugs:[
       { name:'Oral rehydration (fluids \u00b1 ORS); continue eating as tolerated', dose:'\u2014', freq:'Frequent sips', route:'PO', days:'Until settles' },
-      { name:'Loperamide for non-bloody diarrhoea in adults (if no fever/blood)', dose:'Per product', freq:'PRN', route:'PO', days:'Short term' },
+      { name:'Loperamide for non-bloody diarrhoea in adults (if no fever/blood)', dose:'4 mg initially, then 2 mg after each loose stool (max 16 mg/day)', freq:'PRN', route:'PO', days:'Up to 5 days' },
       { name:'Hygiene + exclusion advice (off work/school until 48 h symptom-free)', dose:'\u2014', freq:'\u2014', route:'Advice', days:'\u2014' },
     ],
     altRegimens:[
@@ -221,7 +222,7 @@
     drugs:[
       { name:'Oral fluconazole (non-pregnant)', dose:'150 mg', freq:'Single dose', route:'PO', days:'Once' },
       { name:'OR clotrimazole pessary \u00b1 external cream', dose:'500 mg pessary', freq:'Single dose', route:'PV', days:'Once (\u00b1 cream BD)' },
-      { name:'Pregnancy: topical clotrimazole (avoid oral azole)', dose:'Per product (longer course)', freq:'\u2014', route:'PV', days:'7 days' },
+      { name:'Pregnancy: clotrimazole pessary (avoid oral azole)', dose:'100 mg', freq:'At night', route:'PV', days:'7 days' },
     ],
     altRegimens:[
       { label:'Recurrent (\u22654/year)', drugs:'Confirm by swab; induction (e.g. fluconazole every 72 h \u00d73) then maintenance (fluconazole weekly ~6 months); screen for diabetes.' },
@@ -245,12 +246,12 @@
   { id:'pid', title:'Pelvic inflammatory disease', category:'Women\'s & Sexual Health',
     eyebrow:'Low threshold to treat · broad-spectrum · STI screen',
     indication:'PID (pelvic/lower abdominal pain, deep dyspareunia, abnormal discharge/bleeding, cervical motion tenderness). Have a low threshold to treat empirically to protect fertility; take STI tests but don\u2019t delay treatment.',
-    contraindications:'Exclude/treat as emergency if pregnancy (ectopic), severe/sepsis, or tubo-ovarian abscess (→ admit). Remove/avoid delay if IUD-related per guidance. Test for chlamydia/gonorrhoea/HIV; partner notification.',
+    contraindications:'Exclude/treat as emergency if pregnancy (ectopic), severe/sepsis, or tubo-ovarian abscess (→ admit). IUD/IUS can usually be left in situ in mild–moderate PID; consider removal if no improvement within 72 h (BASHH). Test for chlamydia/gonorrhoea/HIV; partner notification.',
     duration:'14 days',
     drugs:[
       { name:'Pregnancy test + STI screen (NAAT chlamydia/gonorrhoea), but start treatment empirically', dose:'\u2014', freq:'\u2014', route:'Investigation', days:'\u2014' },
       { name:'Ceftriaxone (single IM) + doxycycline + metronidazole', dose:'ceftriaxone 1 g IM; doxy 100 mg BD; metro 400 mg BD', freq:'\u2014', route:'IM/PO', days:'14 days (doxy+metro)' },
-      { name:'Alt (per local guideline): ofloxacin + metronidazole (if low gonorrhoea risk)', dose:'ofloxacin 400 mg BD; metro 400 mg BD', freq:'\u2014', route:'PO', days:'14 days' },
+      { name:'Alt (per local guideline): ofloxacin + metronidazole (if low gonorrhoea risk; fluoroquinolone — MHRA Jan 2024: only if other options inappropriate)', dose:'ofloxacin 400 mg BD; metro 400 mg BD', freq:'\u2014', route:'PO', days:'14 days' },
       { name:'Analgesia; advise avoid intercourse until treated + partner(s) treated', dose:'\u2014', freq:'\u2014', route:'Advice', days:'\u2014' },
     ],
     altRegimens:[
@@ -280,7 +281,7 @@
     drugs:[
       { name:'EXCLUDE torsion (sudden severe pain, age <20, high-riding testis) \u2192 urgent surgical referral', dose:'\u2014', freq:'\u2014', route:'Assessment', days:'\u2014' },
       { name:'Likely STI: ceftriaxone 1 g IM stat + doxycycline 100 mg BD', dose:'\u2014', freq:'\u2014', route:'IM/PO', days:'doxy 10\u201314 days' },
-      { name:'Likely enteric (older / urinary): ofloxacin or levofloxacin (or per local guidance)', dose:'ofloxacin 200 mg BD / levofloxacin 500 mg OD', freq:'\u2014', route:'PO', days:'10\u201314 days' },
+      { name:'Likely enteric (older / urinary): ofloxacin OR levofloxacin (MHRA Jan 2024 fluoroquinolone cautions) OR co-amoxiclav', dose:'ofloxacin 200 mg BD / levofloxacin 500 mg OD / co-amoxiclav 500/125 mg TDS', freq:'\u2014', route:'PO', days:'oflox 14 days / levo 10 days / co-amox 10 days' },
       { name:'Analgesia, scrotal support, rest', dose:'\u2014', freq:'PRN', route:'\u2014', days:'\u2014' },
     ],
     altRegimens:[
@@ -298,7 +299,7 @@
     emisText:`Epididymo-orchitis:
 - EXCLUDE TORSION first (sudden severe pain, <20, high-riding) \u2192 urgent surgery.
 - STI likely: ceftriaxone 1 g IM stat + doxycycline 100 mg BD 10-14d (refer GUM).
-- Enteric likely (older/urinary): ofloxacin 200 mg BD / levofloxacin 500 mg OD 10-14d.
+- Enteric likely (older/urinary): ofloxacin 200 mg BD 14d / levofloxacin 500 mg OD 10d (MHRA FQ cautions), or co-amoxiclav 500/125 mg TDS 10d.
 - Scrotal support, analgesia. Not improving/abscess \u2192 urology.`,
     sources:[{ label:'BASHH', url:'https://www.bashh.org/guidelines' }],
   },
@@ -310,7 +311,7 @@
     duration:'14 days, then review (NICE NG110)',
     drugs:[
       { name:'Send MSU (\u00b1 STI screen); assess sepsis/retention', dose:'\u2014', freq:'\u2014', route:'Investigation', days:'\u2014' },
-      { name:'1st line: ciprofloxacin (or ofloxacin)', dose:'cipro 500 mg BD', freq:'BD', route:'PO', days:'14 days, then review' },
+      { name:'1st line: ciprofloxacin (or ofloxacin)', dose:'cipro 500 mg BD / oflox 200 mg BD', freq:'BD', route:'PO', days:'14 days, then review' },
       { name:'Alt: trimethoprim (if quinolone unsuitable/per sensitivities)', dose:'200 mg', freq:'BD', route:'PO', days:'14 days, then review' },
       { name:'Analgesia; consider laxative; review with cultures', dose:'\u2014', freq:'PRN', route:'\u2014', days:'\u2014' },
     ],
@@ -340,7 +341,7 @@
     duration:'7 days',
     drugs:[
       { name:'Doxycycline (non-pregnant)', dose:'100 mg', freq:'BD', route:'PO', days:'7 days' },
-      { name:'Pregnancy/breastfeeding or doxycycline unsuitable: azithromycin', dose:'1 g then 500 mg OD (per regimen)', freq:'\u2014', route:'PO', days:'1\u20133 days (test of cure)' },
+      { name:'Pregnancy/breastfeeding or doxycycline unsuitable: azithromycin', dose:'1 g then 500 mg OD (per regimen)', freq:'\u2014', route:'PO', days:'1\u20133 days (test of cure \u22653 weeks after in pregnancy)' },
       { name:'Full STI/HIV screen + partner notification + avoid sex 7 days (and until partners treated)', dose:'\u2014', freq:'\u2014', route:'Advice', days:'\u2014' },
     ],
     altRegimens:[

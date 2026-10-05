@@ -139,11 +139,11 @@ Not improving/atypical → reconsider seb/atopic dermatitis, psoriasis, bacteria
     category: 'Dermatology',
     eyebrow: 'Keep warm · self-limiting · nifedipine if severe',
     indication: 'Chilblains — itchy/painful red-purple papules on extremities (toes/fingers) after cold exposure. Usually self-limiting; mainstay is keeping warm and avoiding rapid rewarming.',
-    contraindications: 'Recurrent/severe/atypical or ulcerating chilblains, or in a young person → consider underlying cause (connective tissue disease/SLE, peripheral arterial disease, vasculitis). Nifedipine: caution in hypotension; off-label use.',
+    contraindications: 'Recurrent/severe/atypical or ulcerating chilblains, or in a young person → consider underlying cause (connective tissue disease/SLE, peripheral arterial disease, vasculitis). Nifedipine (off-label): avoid in hypotension, cardiogenic shock, significant aortic stenosis, unstable angina/recent MI; warn about headache, flushing, dizziness and ankle oedema; check BP.',
     duration: 'Self-limiting (1–3 weeks); preventive measures ongoing',
     drugs: [
       { name: 'Keep warm; gradual rewarming; emollient; avoid scratching', dose: '—', freq: '—', route: '—', days: 'Mainstay' },
-      { name: 'Severe/recurrent: Nifedipine MR (off-label)', dose: 'e.g. 20 mg', freq: 'BD–TDS', route: 'PO', days: 'During cold season / until resolved' },
+      { name: 'Severe/recurrent: Nifedipine MR (off-label)', dose: '20–60 mg daily (start low, titrate)', freq: 'Per MR preparation (OD–BD)', route: 'PO', days: 'During cold season / until resolved' },
       { name: 'Itch: emollient ± short mild topical steroid if inflamed', dose: 'Apply', freq: 'OD–BD', route: 'Topical', days: 'Short course' },
     ],
     altRegimens: [
@@ -165,7 +165,7 @@ Not improving/atypical → reconsider seb/atopic dermatitis, psoriasis, bacteria
     emisText: `Chilblains (perniosis) — usually self-limiting (1–3 wks):
 - Keep extremities AND whole body warm; gradual rewarming (avoid direct heat); emollient; don\u2019t scratch; stop smoking.
 - Itch/inflammation: emollient ± short mild topical steroid.
-- Severe/recurrent: nifedipine MR 20 mg BD–TDS (off-label) during cold season.
+- Severe/recurrent: nifedipine MR 20–60 mg daily (off-label) during cold season — check BP; warn re headache, flushing, ankle oedema.
 - Secondary infection → antibiotics.
 Recurrent/atypical/ulcerating or young + systemic features → investigate underlying cause (SLE/PAD) / refer.`,
     sources: [
@@ -183,7 +183,7 @@ Recurrent/atypical/ulcerating or young + systemic features → investigate under
     contraindications: 'Do NOT examine the throat or distress the child if severe (risk of complete obstruction). Consider alternative diagnosis if drooling/toxic/unable to swallow (epiglottitis), sudden choking (foreign body), or no preceding coryza. Severe croup (stridor at rest, recession, agitation) = emergency.',
     duration: 'Single steroid dose; illness ~48 hours–few days',
     drugs: [
-      { name: 'Dexamethasone (oral)', dose: '0.15 mg/kg', freq: 'Single dose', route: 'PO', days: 'Once (may repeat after 12 h if needed)' },
+      { name: 'Dexamethasone (oral)', dose: '0.15 mg/kg', freq: 'Single dose', route: 'PO', days: 'Once' },
       { name: 'Alternative: Prednisolone', dose: '1–2 mg/kg', freq: 'OD', route: 'PO', days: '1 dose (± repeat next day) if dexamethasone unavailable' },
       { name: 'Hospital (moderate–severe): Nebulised budesonide / adrenaline', dose: 'Per protocol', freq: 'As needed', route: 'Nebulised', days: 'Acute (secondary care)' },
     ],

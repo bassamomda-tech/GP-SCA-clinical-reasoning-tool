@@ -93,7 +93,7 @@ Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change i
     category: 'Gastroenterology',
     eyebrow: 'Mebendazole + treat whole household · hygiene',
     indication: 'Perianal itch (worse at night) ± visible worms. Treat the whole household at the same time and combine with rigorous hygiene measures.',
-    contraindications: 'Mebendazole: avoid in pregnancy (esp. 1st trimester) and <6 months — use hygiene measures alone (6 weeks).',
+    contraindications: 'Mebendazole: avoid in pregnancy (esp. 1st trimester) and <6 months — use hygiene measures alone (6 weeks). Licensed from 2 years; use in 6 months–2 years is off-label.',
     duration: 'Single dose, repeat after 2 weeks',
     drugs: [
       { name: 'Mebendazole', dose: '100 mg', freq: 'Stat (repeat after 2 weeks)', route: 'PO', days: 'Single dose ×2' },
@@ -111,7 +111,7 @@ Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change i
     followUp: 'No routine review; repeat dose at 2 weeks. Persistent → recheck adherence/hygiene; consider re-treatment.',
     redFlags: ['Atypical/persistent symptoms → reconsider diagnosis.'],
     emisText: `Threadworm:
-- Mebendazole 100 mg PO stat, REPEAT after 2 weeks — treat WHOLE household same day.
+- Mebendazole 100 mg PO stat (≥6 months; off-label <2 years), REPEAT after 2 weeks (Greater Manchester pathway) — treat WHOLE household same day.
 - Pregnancy/<6 months: hygiene measures alone × 6 weeks.
 - Hygiene (2 wks): handwashing/short nails, morning shower, wash linen/nightwear, no scratching.`,
     sources: [
@@ -249,7 +249,7 @@ Safety-net: weight loss, bleeding, nocturnal/anaemia, ≥60 change in habit → 
     contraindications: 'Tranexamic acid: history of VTE/thromboembolic disease. Mefenamic acid (NSAID): peptic ulcer, CKD, asthma sensitivity. COC: UKMEC contraindications.',
     duration: 'Cyclical (during periods) or device (LNG-IUS)',
     drugs: [
-      { name: 'LNG-IUS (Mirena) — 1st line', dose: '1 device', freq: 'Fit', route: 'IU', days: 'Up to 8 years' },
+      { name: 'LNG-IUS (Mirena) — 1st line', dose: '1 device', freq: 'Fit', route: 'IU', days: '5 years for HMB (licence); may continue up to 8 years if symptoms controlled' },
       { name: 'Tranexamic acid (no dysmenorrhoea)', dose: '1 g', freq: 'TDS', route: 'PO', days: 'During heavy days (up to 4 days)' },
       { name: 'Mefenamic acid (if pain too)', dose: '500 mg', freq: 'TDS', route: 'PO', days: 'During period' },
     ],
@@ -481,8 +481,8 @@ EMERGENCY safety-net: saddle anaesthesia, bladder/bowel change, bilateral/progre
     title: 'Neuropathic pain',
     category: 'Neurology & Pain',
     eyebrow: 'Amitriptyline / duloxetine / gabapentin / pregabalin',
-    indication: 'Neuropathic pain (e.g. diabetic/peripheral neuropathy, post-herpetic, radicular). Offer one first-line agent; switch (not add) if ineffective/not tolerated. (Trigeminal neuralgia → carbamazepine.)',
-    contraindications: 'Amitriptyline: cardiac disease/arrhythmia, glaucoma, urinary retention, elderly (anticholinergic). Duloxetine: uncontrolled hypertension. Pregabalin/gabapentin: misuse potential (controlled drugs), dose-reduce in renal impairment.',
+    indication: 'Neuropathic pain (e.g. diabetic/peripheral neuropathy, post-herpetic neuralgia). Not for sciatica/lumbar radicular pain — manage per NICE NG59 (no gabapentinoids/antiepileptics). Offer one first-line agent; switch (not add) if ineffective/not tolerated. (Trigeminal neuralgia → carbamazepine.)',
+    contraindications: 'Amitriptyline: cardiac disease/arrhythmia, glaucoma, urinary retention, elderly (anticholinergic). Duloxetine: uncontrolled hypertension. Pregabalin/gabapentin: Schedule 3 controlled drugs (misuse/dependence), dose-reduce in renal impairment; avoid co-prescribing with opioids where possible (respiratory depression — MHRA); pregabalin in pregnancy — possible small increased risk of major congenital malformations, use effective contraception (MHRA 2022).',
     duration: 'Titrate; review at each step',
     drugs: [
       { name: 'Amitriptyline', dose: '10 mg ON; titrate to 25–75 mg', freq: 'ON', route: 'PO', days: 'Trial ≥6–8 weeks at effective dose' },
@@ -505,12 +505,12 @@ EMERGENCY safety-net: saddle anaesthesia, bladder/bowel change, bilateral/progre
       'New/progressive neurology, suspected cord/cauda compression → urgent imaging.',
       'Gabapentinoid misuse/diversion concerns → review (controlled drugs).',
     ],
-    emisText: `Neuropathic pain (NG215 — choose ONE first-line, switch if needed):
+    emisText: `Neuropathic pain (NICE CG173 — choose ONE first-line, switch if needed):
 - Amitriptyline 10 mg ON, titrate to 25–75 mg OR Duloxetine 30→60 mg OD OR Gabapentin 300 mg (titrate) / Pregabalin 75 mg BD (titrate).
 - Localised: capsaicin 0.075% cream / lidocaine 5% plaster (PHN). Trigeminal neuralgia → carbamazepine.
 Counsel: 2–6 wks to work; start low/go slow; don\u2019t stop gabapentinoids abruptly. Switch (not add) if ineffective; refer if refractory.`,
     sources: [
-      { label: 'NICE NG215 — Chronic pain', url: 'https://www.nice.org.uk/guidance/ng215' },
+      { label: 'NICE NG215 — Medicines associated with dependence or withdrawal symptoms', url: 'https://www.nice.org.uk/guidance/ng215' },
       { label:'NICE CG173 — Neuropathic pain', url:'https://www.nice.org.uk/guidance/cg173' },
     ],
   },

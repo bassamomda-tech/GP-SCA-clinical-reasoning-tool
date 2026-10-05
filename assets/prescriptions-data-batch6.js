@@ -18,7 +18,7 @@
     category: 'Neurology & Pain',
     eyebrow: 'Stepwise non-opioid → opioid · review & deprescribe',
     indication: 'Stepwise analgesia for nociceptive pain (WHO-style ladder), adapted for primary care. For chronic primary pain, NICE NG193 (2021) advises AGAINST initiating opioids/NSAIDs/paracetamol/gabapentinoids — favour exercise, CBT/ACT, antidepressant. Use this ladder mainly for ongoing nociceptive (e.g. OA, mechanical) pain.',
-    contraindications: 'NSAIDs: GI/renal/cardiovascular risk, elderly, anticoagulants. Opioids: limited efficacy in chronic pain, dependence/tolerance — set a clear goal and review date; avoid escalating doses. Codeine: ultra-rapid CYP2D6 metabolisers, children, breastfeeding.',
+    contraindications: 'NSAIDs: GI/renal/cardiovascular risk, elderly, anticoagulants. Opioids: limited efficacy in chronic pain, dependence/tolerance — set a clear goal and review date; avoid escalating doses. Codeine: ultra-rapid CYP2D6 metabolisers, children, breastfeeding. Paracetamol: consider reduced dose (max 3 g/day or 15 mg/kg) if <50 kg, hepatic impairment, chronic alcohol excess or malnutrition (BNF).',
     duration: 'Lowest effective dose, shortest time; scheduled review',
     drugs: [
       { name: 'Step 1: Paracetamol', dose: '1 g', freq: 'QDS', route: 'PO', days: 'Regular/PRN' },
@@ -30,7 +30,7 @@
     altRegimens: [
       { label: 'Chronic primary pain (NICE NG193)', drugs: 'Do NOT start opioids/NSAIDs/paracetamol/gabapentinoids/benzodiazepines. Offer exercise, psychological therapy (CBT/ACT), acupuncture, or a trial of an antidepressant (e.g. duloxetine/amitriptyline).' },
       { label: 'Neuropathic component', drugs: 'Use the neuropathic-pain pathway (amitriptyline / duloxetine / gabapentin / pregabalin) — switch, don\u2019t stack.' },
-      { label: 'Osteoarthritis', drugs: 'Topical NSAID first-line for knee/hand; exercise + weight loss; oral NSAID + PPI if needed; avoid routine opioids.' },
+      { label: 'Osteoarthritis (NICE NG226)', drugs: 'Exercise + weight loss are core. Topical NSAID first-line for knee (consider for other joints); oral NSAID + PPI (lowest dose, shortest time) if needed. Do NOT routinely offer paracetamol or weak opioids (only infrequent short-term use if other options unsuitable); do NOT offer strong opioids.' },
     ],
     counselling: [
       'We aim for the lowest dose that keeps you functioning, not necessarily zero pain.',
@@ -62,7 +62,7 @@ Review function at each step; deprescribe if no benefit.`,
     category: 'Dermatology',
     eyebrow: 'Light → greasy · leave-on + soap substitute',
     indication: 'Emollient selection for dry skin conditions (eczema, ichthyosis, xerosis). Choose by greasiness vs cosmetic acceptability; the greasiest tolerated works best. Prescribe generously and use as a soap substitute. Foundation of eczema care alongside topical steroids for flares.',
-    contraindications: 'Paraffin-based emollients are a FIRE HAZARD on dressings/clothing/bedding — warn patients (risk of severe burns near naked flame/cigarettes). Some preparations contain sensitisers (e.g. lanolin, fragrances).',
+    contraindications: 'ALL emollients (paraffin-containing AND paraffin-free) dried onto dressings/clothing/bedding are a FIRE HAZARD (MHRA 2018) — warn patients (risk of severe/fatal burns near naked flame/cigarettes); wash fabrics often (may not fully remove). Some preparations contain sensitisers (e.g. lanolin, fragrances).',
     duration: 'Long-term, daily; continue when skin is clear',
     drugs: [
       { name: 'Lotions (high water, light) — large areas/mild', dose: 'Apply liberally', freq: '\u22652\u20133\u00d7/day', route: 'Topical', days: 'Ongoing' },
@@ -80,7 +80,7 @@ Review function at each step; deprescribe if no benefit.`,
       'Use moisturiser generously and often \u2014 even when the skin looks clear \u2014 it prevents flares.',
       'The greasier the moisturiser, the better it works, but choose one you will actually use; you can use a lighter one by day and a greasier one at night.',
       'Use it instead of soap, and smooth it on gently in the direction the hair grows (don\u2019t rub up and down).',
-      'Important safety point: paraffin-based moisturisers on skin, clothing or bedding can catch fire easily \u2014 keep away from flames, cigarettes and heat.',
+      'Important safety point: any moisturiser (with or without paraffin) that has soaked into clothing, bedding or dressings can make them catch fire easily \u2014 don\u2019t smoke or go near naked flames or heaters, and change/wash fabrics often.',
       'If using a steroid cream for a flare, leave a gap of about 15\u201330 minutes between the two.',
     ],
     followUp: 'Review adherence and quantity used (a common reason for poor control). Step up greasiness if not enough; ensure adequate prescribed amounts.',
@@ -91,7 +91,7 @@ Review function at each step; deprescribe if no benefit.`,
 - Light: lotion. Everyday: cream (Diprobase/Cetraben). Drier: gel/ointment (Doublebase/Epaderm/50:50).
 - Use as SOAP SUBSTITUTE; apply liberally \u22652-3x/day; 250-500 g/week if widespread.
 - Continue when clear; gap ~15-30 min from topical steroid.
-- SAFETY: paraffin emollients are a fire hazard on clothing/bedding \u2014 keep from flames.
+- SAFETY (MHRA): ALL emollients (paraffin and paraffin-free) dried on clothing/bedding/dressings are a fire hazard \u2014 keep from flames/smoking.
 - Avoid aqueous cream as leave-on (irritant); routine bath additives not recommended.`,
     sources: [
       { label:'NICE CG57 — Atopic eczema in under 12s', url:'https://www.nice.org.uk/guidance/cg57' },
@@ -110,10 +110,10 @@ Review function at each step; deprescribe if no benefit.`,
     duration: 'PPI 4\u20138 weeks then review/step down',
     drugs: [
       { name: 'Antacid (e.g. magnesium/aluminium salts)', dose: 'Per pack', freq: 'PRN', route: 'PO', days: 'Symptomatic' },
-      { name: 'Alginate (e.g. Gaviscon Advance)', dose: '10\u201320 mL / 2 tabs', freq: 'After meals + bedtime', route: 'PO', days: 'Symptomatic' },
+      { name: 'Alginate (e.g. Gaviscon Advance)', dose: '5\u201310 mL / 1\u20132 tabs', freq: 'After meals + bedtime', route: 'PO', days: 'Symptomatic' },
       { name: 'H2-receptor antagonist (famotidine)', dose: '20\u201340 mg', freq: 'BD', route: 'PO', days: 'Step-up / adjunct' },
       { name: 'PPI standard dose (e.g. omeprazole 20 mg / lansoprazole 30 mg)', dose: 'Standard', freq: 'OD', route: 'PO', days: '4\u20138 weeks' },
-      { name: 'PPI high dose (if severe oesophagitis)', dose: 'Double', freq: 'OD\u2013BD', route: 'PO', days: 'Per indication' },
+      { name: 'PPI high dose (severe oesophagitis not responding to 8 wks full dose / persistent symptoms)', dose: 'Double', freq: 'OD\u2013BD', route: 'PO', days: 'Per indication' },
     ],
     altRegimens: [
       { label: 'Test-and-treat H. pylori', drugs: 'In uninvestigated dyspepsia, test for H. pylori and eradicate if positive (see H. pylori cards).' },
@@ -132,7 +132,8 @@ Review function at each step; deprescribe if no benefit.`,
     ],
     emisText: `Reflux medication ladder (adult):
 - Lifestyle first (weight, meal timing, alcohol/caffeine, smoking, bed head-up).
-- PRN: antacid \u00b1 alginate (Gaviscon Advance after meals + bedtime).
+- PRN: antacid \u00b1 alginate (Gaviscon Advance 5-10 mL after meals + bedtime).
+- Severe oesophagitis: full-dose PPI 8 wks; high dose only if not responding.
 - Step up: H2RA (famotidine 20-40 mg BD).
 - PPI standard dose OD 4-8 weeks (high dose if severe oesophagitis); step down to lowest effective.
 - Uninvestigated dyspepsia: test-and-treat H. pylori.
@@ -154,7 +155,7 @@ Review function at each step; deprescribe if no benefit.`,
     drugs: [
       { name: 'Honey (\u22651 year) \u00b1 warm lemon drink', dose: '1\u20132 tsp', freq: 'PRN', route: 'PO', days: 'Self-care' },
       { name: 'Simple linctus / glycerol-based soothing syrup', dose: 'Per pack', freq: 'PRN', route: 'PO', days: 'Symptomatic' },
-      { name: 'Pelargonium / OTC cough preparations (limited evidence)', dose: 'Per pack', freq: 'Per pack', route: 'PO', days: 'Optional' },
+      { name: 'Pelargonium (\u226512 y) / guaifenesin or dextromethorphan (OTC, limited evidence)', dose: 'Per pack', freq: 'Per pack', route: 'PO', days: 'Optional' },
       { name: 'Paracetamol / ibuprofen for systemic symptoms', dose: 'Standard', freq: 'PRN', route: 'PO', days: 'Symptomatic' },
     ],
     altRegimens: [
@@ -182,7 +183,6 @@ Review function at each step; deprescribe if no benefit.`,
 - Red flags: haemoptysis, breathlessness, chest pain, weight loss, cough >3 wks (smoker/\u226540) \u2192 CXR.`,
     sources: [
       { label: 'NICE NG120 \u2014 Cough (acute): antimicrobial prescribing', url: 'https://www.nice.org.uk/guidance/ng120' },
-      { label:'NICE NG120 — Cough (acute)', url:'https://www.nice.org.uk/guidance/ng120' },
     ],
   },
 
@@ -193,10 +193,10 @@ Review function at each step; deprescribe if no benefit.`,
     category: 'Dermatology',
     eyebrow: 'Topical for skin · oral for nail/scalp · confirm before oral',
     indication: 'Dermatophyte infections by site: tinea corporis/cruris (body/groin), tinea pedis (athlete\u2019s foot), onychomycosis (nail), tinea capitis (scalp). Topical antifungals for skin; ORAL antifungals are needed for nail and scalp disease. Confirm nail/scalp infection (sampling) before oral treatment.',
-    contraindications: 'Terbinafine/oral azoles: check LFTs (hepatotoxicity), drug interactions (azoles are CYP inhibitors \u2014 e.g. statins, warfarin). Avoid oral terbinafine in significant liver disease. Tinea capitis needs ORAL therapy (topicals don\u2019t penetrate hair follicles).',
+    contraindications: 'Terbinafine/oral azoles: check LFTs (hepatotoxicity), drug interactions (azoles are CYP inhibitors \u2014 e.g. statins, warfarin). Avoid oral terbinafine in significant liver disease. Tinea capitis needs ORAL therapy (topicals don\u2019t penetrate hair follicles). Pregnancy: avoid oral antifungals (topical imidazole preferred). Griseofulvin: women avoid pregnancy during and for 1 month after; men must not father a child during and for 6 months after (BNF/MHRA).',
     duration: 'Skin 1\u20136 wks; nail 6\u201312 months; scalp 4\u20138 weeks',
     drugs: [
-      { name: 'Body/groin/foot: Terbinafine 1% cream', dose: 'Apply', freq: 'OD\u2013BD', route: 'Topical', days: '1\u20132 wks (body) / up to 6 wks (foot)' },
+      { name: 'Body/groin/foot: Terbinafine 1% cream', dose: 'Apply', freq: 'OD\u2013BD', route: 'Topical', days: '1\u20132 wks (body/groin) / 1 wk (foot)' },
       { name: 'Alt topical: imidazole (clotrimazole/miconazole)', dose: 'Apply', freq: 'BD\u2013TDS', route: 'Topical', days: 'Until clear + 1\u20132 wks' },
       { name: 'Nail (dermatophyte-confirmed): Terbinafine PO', dose: '250 mg', freq: 'OD', route: 'PO', days: 'Fingernail 6 wks / toenail 12\u2013(16) wks' },
       { name: 'Scalp (tinea capitis): oral antifungal (terbinafine or griseofulvin)', dose: 'Weight-based', freq: 'OD', route: 'PO', days: '4\u20138 weeks (+ antifungal shampoo)' },
@@ -206,6 +206,7 @@ Review function at each step; deprescribe if no benefit.`,
       { label: 'Inflamed tinea (kerion / very itchy)', drugs: 'Short combined antifungal + mild steroid for skin can reduce inflammation \u2014 but don\u2019t use steroid alone (tinea incognito). Kerion \u2192 oral + consider referral.' },
       { label: 'Tinea capitis (children)', drugs: 'Oral antifungal is essential; add ketoconazole/selenium sulfide shampoo to reduce transmission; examine/treat household contacts; inform school.' },
       { label: 'Confirm before oral', drugs: 'Send nail clippings / skin/hair samples for microscopy & culture before starting oral therapy for nail/scalp disease.' },
+      { label: 'Extensive / treatment-resistant tinea (T. indotineae)', drugs: 'Terbinafine-resistant Trichophyton indotineae is increasing in the UK (UKHSA) - consider in extensive groin/trunk/buttock tinea or tinea that fails or relapses after terbinafine. Send skin scrapings for mycology (request species ID/susceptibility), avoid topical steroid combinations, and seek dermatology/specialist advice (itraconazole is often used).' },
     ],
     counselling: [
       'Skin fungal infections usually clear with a cream; keep using it for a week or two after it looks better.',
@@ -220,10 +221,11 @@ Review function at each step; deprescribe if no benefit.`,
       'Recurrent/extensive tinea \u2192 consider underlying immunosuppression or diabetes.',
     ],
     emisText: `Dermatophyte infections by site:
-- Body/groin/foot: terbinafine 1% cream OD-BD (or imidazole BD) until clear + 1-2 wks (foot up to 6 wks).
+- Body/groin/foot: terbinafine 1% cream OD-BD 1-2 wks (foot 1 wk), or imidazole BD-TDS until clear + 1-2 wks (usually 4-6 wks).
 - Nail (confirm by clippings): terbinafine 250 mg OD \u2014 fingernail 6 wks, toenail 12-16 wks (or amorolfine lacquer if mild/distal).
 - Scalp (tinea capitis): ORAL antifungal (terbinafine/griseofulvin) 4-8 wks + antifungal shampoo; treat contacts; oral essential.
-- Confirm nail/scalp before oral; check LFTs/interactions. Don't use steroid alone (tinea incognito).`,
+- Confirm nail/scalp before oral; check LFTs/interactions. Don't use steroid alone (tinea incognito).
+- Extensive or terbinafine-failed tinea: think terbinafine-resistant T. indotineae (UKHSA) - scrapings for mycology + specialist advice.`,
     sources: [
       { label:'PCDS', url:'https://www.pcds.org.uk' },
     ],
@@ -363,7 +365,7 @@ Review function at each step; deprescribe if no benefit.`,
     contraindications: 'Minoxidil: not in pregnancy/breastfeeding; can cause facial hypertrichosis and initial shedding. Rule out other causes before labelling as pattern loss. Signs of hyperandrogenism (virilisation, irregular periods) \u2192 investigate (e.g. PCOS, androgen excess).',
     duration: 'Continuous; assess at 6\u201312 months',
     drugs: [
-      { name: 'Minoxidil 2% or 5% topical solution/foam', dose: 'Apply to dry scalp', freq: 'OD\u2013BD (per product)', route: 'Topical', days: 'Continuous (\u22656\u201312 mo trial)' },
+      { name: 'Minoxidil 2% or 5% topical solution/foam (usually bought OTC \u2014 solutions not NHS-prescribable)', dose: 'Apply to dry scalp', freq: 'OD\u2013BD (per product)', route: 'Topical', days: 'Continuous (\u22656\u201312 mo trial)' },
       { name: 'Check & correct: ferritin, TFTs, ANA if indicated', dose: '\u2014', freq: 'Baseline', route: 'Investigation', days: 'Once' },
     ],
     altRegimens: [
@@ -401,7 +403,7 @@ Review function at each step; deprescribe if no benefit.`,
     category: "Men's & Sexual Health",
     eyebrow: 'PDE5 inhibitor · treat as CV risk marker',
     indication: 'Erectile dysfunction. Treat as a cardiovascular risk marker (assess QRISK/CV risk, glucose, lipids, early-morning testosterone). PDE5 inhibitor is first-line drug therapy alongside addressing reversible causes and lifestyle.',
-    contraindications: 'PDE5 inhibitors ABSOLUTELY CONTRAINDICATED with nitrates and nicorandil (profound hypotension). Caution: recent MI/stroke/unstable angina, significant hypotension, severe hepatic impairment, certain retinal disorders. Alpha-blockers \u2014 separate dosing/start low.',
+    contraindications: 'PDE5 inhibitors ABSOLUTELY CONTRAINDICATED with nitrates, nicorandil and riociguat (profound hypotension). Caution: recent MI/stroke/unstable angina, significant hypotension, severe hepatic impairment, certain retinal disorders. Alpha-blockers \u2014 separate dosing/start low.',
     duration: 'On-demand or daily; review response',
     drugs: [
       { name: 'Sildenafil', dose: '50 mg (range 25\u2013100)', freq: '~1 h before sex (max OD)', route: 'PO', days: 'On-demand; try \u22656\u20138 times' },

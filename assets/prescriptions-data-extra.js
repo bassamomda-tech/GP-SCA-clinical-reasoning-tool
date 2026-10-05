@@ -13,7 +13,7 @@
     category: 'Gastroenterology',
     eyebrow: 'Soften stool first · topical GTN/diltiazem if chronic',
     indication: 'Painful tear of the anal canal (sharp pain on defecation ± bright bleeding on wiping). Most acute fissures (<6 weeks) heal with conservative stool-softening measures; chronic fissures (≥6 weeks) usually need a topical agent to relax the sphincter.',
-    contraindications: 'Topical GTN: avoid in significant headache disorder/hypotension; causes dose-limiting headache. Always exclude other causes of anal pain/bleeding; consider IBD/STI/malignancy if atypical, lateral, or multiple fissures.',
+    contraindications: 'Topical GTN: do NOT use with PDE-5 inhibitors (sildenafil, tadalafil, vardenafil) or other nitrates; not in pregnancy or under 18 (Rectogesic SPC); avoid in hypotension / significant headache disorder; causes dose-limiting headache. Always exclude other causes of anal pain/bleeding; consider IBD/STI/malignancy if atypical, lateral, or multiple fissures.',
     duration: 'Conservative ongoing; topical GTN/diltiazem 6–8 weeks',
     drugs: [
       { name: 'Bulk-forming laxative: Ispaghula (Fybogel)', dose: '1 sachet', freq: 'BD', route: 'PO', days: 'Ongoing (keep stool soft)' },
@@ -143,9 +143,9 @@ FTU: 1 FTU (~0.5 g) covers ~2 palms. Step UP to control then step DOWN/stop. Avo
     eyebrow: 'Potent steroid + vitamin D analogue · emollients',
     indication: 'Chronic plaque psoriasis (well-demarcated red scaly plaques on extensors/scalp). First-line in primary care is a potent topical corticosteroid PLUS a vitamin D analogue, with generous emollients. Treat by body site.',
     contraindications: 'Potent steroids: avoid on face/flexures (use mild ± calcineurin inhibitor); limit continuous trunk/limb use to ≤8 weeks (atrophy/rebound, risk of pustular flare on abrupt withdrawal). Calcipotriol: max weekly dose limits; caution in calcium disorders. Withdraw oral steroids carefully (can precipitate pustular psoriasis).',
-    duration: 'Trunk/limb regimen up to 8 weeks; review',
+    duration: 'Trunk/limb: steroid + vitamin D up to 4 weeks, review at 4 weeks; not controlled by 8 weeks → vitamin D alone BD',
     drugs: [
-      { name: 'Potent steroid (e.g. Betamethasone valerate 0.1%) — mornings', dose: 'Apply thin', freq: 'OD', route: 'Topical', days: 'Up to 8 weeks (trunk/limbs)' },
+      { name: 'Potent steroid (e.g. Betamethasone valerate 0.1%) — mornings', dose: 'Apply thin', freq: 'OD', route: 'Topical', days: 'Up to 4 weeks initially (trunk/limbs); review at 4 weeks' },
       { name: '+ Vitamin D analogue (Calcipotriol) — evenings', dose: 'Apply thin', freq: 'OD', route: 'Topical', days: 'Applied separately, opposite time to steroid' },
       { name: 'OR combined Calcipotriol/betamethasone (Dovobet gel / Enstilar foam)', dose: 'Apply', freq: 'OD', route: 'Topical', days: 'Up to 4 weeks per course' },
       { name: 'Emollient', dose: 'Liberal', freq: 'Several times daily', route: 'Topical', days: 'Ongoing (mainstay)' },
@@ -163,14 +163,14 @@ FTU: 1 FTU (~0.5 g) covers ~2 palms. Step UP to control then step DOWN/stop. Avo
       'Lifestyle: stop smoking, reduce alcohol, manage weight; these affect severity and cardiovascular risk.',
       'Tell us about joint pain/stiffness/swelling (psoriatic arthritis) and the impact on mood — psoriasis affects wellbeing.',
     ],
-    followUp: 'Review at ~4 weeks (combined products) / 8 weeks (steroid + vit D) for response and steroid duration. Annual review: assess severity (psoriasis), screen for psoriatic arthritis, and assess cardiovascular risk/comorbidities.',
+    followUp: 'Review 4 weeks after starting any new topical treatment (NICE CG153) for response, adherence and steroid duration. Annual review: assess severity (psoriasis), screen for psoriatic arthritis, and assess cardiovascular risk/comorbidities.',
     redFlags: [
       'Generalised pustular or erythrodermic psoriasis (widespread redness/pustules, systemically unwell) → same-day dermatology / admission.',
       'New/worsening joint pain, stiffness, dactylitis → psoriatic arthritis — refer rheumatology.',
     ],
     emisText: `Chronic plaque psoriasis (trunk/limbs — primary care):
 - Emollients liberally (mainstay) +
-- Potent topical steroid (e.g. betamethasone valerate 0.1%) OD (morning) + Calcipotriol OD (evening), applied separately, up to 8 weeks; OR combined Dovobet gel/Enstilar foam OD up to 4 weeks.
+- Potent topical steroid (e.g. betamethasone valerate 0.1%) OD (morning) + Calcipotriol OD (evening), applied separately, up to 4 weeks (not controlled by 8 weeks → vitamin D alone BD); OR combined Dovobet gel/Enstilar foam OD up to 4 weeks.
 - Scalp: potent steroid scalp app ± tar/salicylic acid to descale. Face/flexures: mild steroid / tacrolimus (avoid potent + irritant vit D).
 - Inadequate/extensive/nails/PsA → dermatology ± rheumatology.
 Annual review: severity, PsA screen (PEST), CV risk. Avoid abrupt withdrawal of potent steroid (pustular flare).`,

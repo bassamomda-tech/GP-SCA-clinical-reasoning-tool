@@ -7772,7 +7772,7 @@
     },
     {
      "h": "Fertility: honest reassurance",
-     "t": "PCOS is a common, treatable cause of anovulation, and most women with it conceive. Weight loss can restore ovulation; letrozole is first-line ovulation induction under specialist care (international guideline 2023). NICE NG257 advises earlier referral when there is a known cause of infertility. Before conception: folic acid (higher dose with BMI 30 or more, per BNF) and a glucose check."
+     "t": "PCOS is a common, treatable cause of anovulation, and most women with it conceive. Weight loss can restore ovulation; letrozole is first-line ovulation induction under specialist care (international guideline 2023). NICE NG257 advises earlier referral when there is a known cause of infertility. Before conception: folic acid (400 micrograms; BMI alone does not need the higher dose — NICE NG247) and a glucose check."
     },
     {
      "h": "Mood and body image",

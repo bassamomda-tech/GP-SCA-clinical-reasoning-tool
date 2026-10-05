@@ -392,7 +392,7 @@ RGPTriage.register('tiredness', {
       label:'Pregnant — booking + medication review now',
       action:'Same-week midwife booking; stop teratogenic meds',
       patientPhrase:'"Tiredness is very normal in pregnancy — we just need to make sure your bloods are okay and your medications are safe."',
-      referralTemplate:'Pregnant patient — antenatal booking referral.\nMedication review: stop ACEi/ARB, SGLT2/GLP-1, statin, isotretinoin, methotrexate, warfarin etc.\nFBC + ferritin + TFT + booking bloods. Folic acid 400 mcg (5 mg if DM/BMI≥30/AED).',
+      referralTemplate:'Pregnant patient — antenatal booking referral.\nMedication review: stop ACEi/ARB, SGLT2/GLP-1, statin, isotretinoin, methotrexate, warfarin etc.\nFBC + ferritin + TFT + booking bloods. Folic acid 400 mcg (5 mg if DM/AED/previous NTD — not BMI alone, NICE NG247).',
       source:'NICE NG201 antenatal care',
       sourceUrl:'https://www.nice.org.uk/guidance/ng201',
       when: i => i.preg

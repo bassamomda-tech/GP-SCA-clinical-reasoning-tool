@@ -75,9 +75,9 @@ var DATES = {
    pages/content-safety.html rather than repeated on every page. Setting
    `by` here would put the name back into the strip on all 519 pages.  */
 var ROUNDS = [
-  {kind:'protocol',  date:'20 September 2026'},
-  {kind:'algorithm', date:'20 September 2026'},
-  {kind:'case',      date:'20 September 2026'}
+  {kind:'protocol',  date:'October 2026'},
+  {kind:'algorithm', date:'October 2026'},
+  {kind:'case',      date:'October 2026'}
 ];
 function roundFor(k){
   for(var i = 0; i < ROUNDS.length; i++) if(ROUNDS[i].kind === k) return ROUNDS[i];
@@ -201,6 +201,7 @@ function niceUrl(label){
 /* ---- build ----------------------------------------------------------- */
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+var FOOT_HTML = '';
 function build(){
   var s = slug(), k = kind();
   var reg = DATES[s] || {};
@@ -234,9 +235,7 @@ function build(){
   var next = parseDate(nextOverride) || (rev ? addMonths(rev, cycle) : null);
 
   /* Keep the footer stamp in step with the strip, so a page never shows two different review dates. */
-  try{ var rf=document.querySelector('.rgp-reviewed');
-    if(rf && rev){ rf.innerHTML='<b>Reviewed: '+fmt(rev)+'</b>'+(next?' \u00b7 next review due '+fmt(next):'')+' \u00b7 citations verified against the named sources'; }
-  }catch(e){}
+  FOOT_HTML = rev ? '<b>Reviewed: '+fmt(rev)+'</b>'+(next?' \u00b7 next review due '+fmt(next):'')+' \u00b7 citations verified against the named sources' : '';
 
   var state = 'unrecorded', word = 'Review not recorded', glyph = '–';
   if(rev && next){
@@ -351,8 +350,21 @@ function mount(){
   var el = build();
   if(a.mode === 'replace') a.node.replaceWith(el);
   else a.node.insertAdjacentElement('afterend', el);
-  /* the strip absorbs the legacy foot stamp — don't say it twice */
-  document.querySelectorAll('.rgp-reviewed').forEach(function(n){ n.hidden = true; });
+  /* Show the same review date at the foot of the page as well as in the strip.
+     Pages without a foot stamp (algorithms) get one appended at the end of the content. */
+  if(FOOT_HTML){
+    var feet = document.querySelectorAll('.rgp-reviewed');
+    if(!feet.length){
+      var d = document.createElement('div');
+      d.className = 'rgp-reviewed rgp-reviewed-auto';
+      d.style.cssText = 'max-width:1180px;margin:18px auto 26px;padding:0 20px;font-size:12px;color:#6b7280';
+      var host = document.querySelector('main') || document.querySelector('.main') || document.querySelector('.tool-page') || document.body;
+      var sf = document.querySelector('.site-footer, #siteFooter, body > footer');
+      if(sf && host === document.body) sf.insertAdjacentElement('beforebegin', d); else host.appendChild(d);
+      feet = [d];
+    }
+    Array.prototype.forEach.call(feet, function(n){ n.innerHTML = FOOT_HTML; n.hidden = false; });
+  }
   return true;
 }
 

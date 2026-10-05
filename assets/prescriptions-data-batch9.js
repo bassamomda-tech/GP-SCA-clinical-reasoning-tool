@@ -58,10 +58,10 @@
     contraindications: 'Oral itraconazole/fluconazole: hepatotoxicity, drug interactions (CYP), pregnancy. Recurrence is common. Set expectation that the colour change takes time to normalise (not treatment failure).',
     duration: 'Topical 1\u20134 weeks; oral short course',
     drugs: [
-      { name: 'Ketoconazole 2% shampoo (apply to skin, leave 5\u201310 min, rinse)', dose: 'Apply', freq: 'OD', route: 'Topical', days: '5\u201310 days (or weekly courses)' },
+      { name: 'Ketoconazole 2% shampoo (apply to skin, leave 5\u201310 min, rinse)', dose: 'Apply', freq: 'OD', route: 'Topical', days: '5 days' },
       { name: 'Selenium sulfide shampoo (as body wash) \u2014 alternative', dose: 'Apply', freq: 'OD', route: 'Topical', days: '7 days' },
       { name: 'Topical imidazole cream (small areas)', dose: 'Apply', freq: 'OD\u2013BD', route: 'Topical', days: '2\u20134 weeks' },
-      { name: 'Extensive/refractory: oral itraconazole (or fluconazole)', dose: 'Per regimen', freq: 'Per regimen', route: 'PO', days: 'Short course' },
+      { name: 'Extensive/refractory: oral itraconazole (or fluconazole)', dose: 'Itraconazole 200 mg', freq: 'OD', route: 'PO', days: '7 days' },
     ],
     altRegimens: [
       { label: 'Recurrent', drugs: 'Intermittent prophylactic ketoconazole shampoo (e.g. monthly) or periodic topical antifungal; advise it recurs especially in warm/humid conditions.' },
@@ -78,8 +78,8 @@
       'Diagnostic doubt or no response to antifungal \u2192 reconsider (vitiligo, post-inflammatory change, other) \u00b1 scrapings.',
     ],
     emisText: `Pityriasis versicolor (Malassezia):
-- 1st-line topical: ketoconazole 2% shampoo to skin, leave 5-10 min, rinse, OD x 5-10 days (or selenium sulfide); imidazole cream for small areas.
-- Extensive/refractory: oral itraconazole/fluconazole short course (LFTs/interactions; not pregnancy).
+- 1st-line topical: ketoconazole 2% shampoo to skin, leave 5-10 min, rinse, OD x 5 days (or selenium sulfide); imidazole cream for small areas.
+- Extensive/refractory: oral itraconazole 200 mg OD x 7 days (or fluconazole) (LFTs/interactions; not pregnancy).
 - Recurrence common \u2192 intermittent prophylactic shampoo.
 - Counsel: pigment change persists weeks-months after cure (NOT failure).`,
     sources: [
@@ -138,7 +138,7 @@
     duration: 'Single dose or short course',
     drugs: [
       { name: 'Mebendazole', dose: '100 mg BD (or 500 mg stat)', freq: 'Per regimen', route: 'PO', days: '3 days (or single dose)' },
-      { name: 'Albendazole (alternative)', dose: '400 mg', freq: 'Stat', route: 'PO', days: 'Single dose' },
+      { name: 'Albendazole (alternative; unlicensed in UK \u2014 specialist/named-patient supply)', dose: '400 mg', freq: 'Stat', route: 'PO', days: 'Single dose' },
       { name: 'Hygiene: handwashing, sanitation, wash produce', dose: '\u2014', freq: '\u2014', route: 'Advice', days: 'Ongoing' },
     ],
     altRegimens: [
@@ -286,7 +286,7 @@
 - First episode: aciclovir 400 mg TDS x5 days (start \u226472 h / while new lesions) + analgesia, saline bathing, fluids.
 - Recurrence episodic: aciclovir 800 mg TDS x2 days. Suppression (\u22656/yr): aciclovir 400 mg BD, review ~1 yr. (Valaciclovir/famciclovir alternatives.)
 - Antivirals don't eradicate virus. GUM referral + STI screen + partner notification.
-- PREGNANCY (esp 1st episode 3rd trimester) \u2192 urgent obstetric input (neonatal herpes; suppression from 36/40 \u00b1 CS).`,
+- PREGNANCY (esp 1st episode 3rd trimester) \u2192 urgent obstetric input (neonatal herpes; suppression from 32/40 \u00b1 CS).`,
     sources: [
       { label:'BASHH — anogenital herpes (2024)', url:'https://www.bashh.org/guidelines' },
     ],

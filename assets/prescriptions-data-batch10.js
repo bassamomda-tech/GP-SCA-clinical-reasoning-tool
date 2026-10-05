@@ -63,10 +63,10 @@
       { name: 'Environmental eradication (professional pest control, hot-wash bedding, vacuum)', dose: '\u2014', freq: '\u2014', route: 'Environmental', days: 'Until cleared (mainstay)' },
       { name: 'Oral antihistamine for itch', dose: 'Standard', freq: 'PRN/ON', route: 'PO', days: 'Symptomatic' },
       { name: 'Mild\u2013moderate topical corticosteroid for itch/inflammation', dose: 'Apply thin', freq: 'OD\u2013BD', route: 'Topical', days: 'Short course' },
-      { name: 'Flucloxacillin if secondary bacterial infection', dose: 'Standard', freq: 'QDS', route: 'PO', days: 'If infected' },
+      { name: 'Secondary infection: localised \u2192 hydrogen peroxide 1% cream; widespread \u2192 flucloxacillin', dose: 'Apply / 500 mg', freq: 'BD\u2013TDS / QDS', route: 'Topical/PO', days: '5 days (NICE NG153)' },
     ],
     altRegimens: [
-      { label: 'Secondary infection', drugs: 'Scratched/impetiginised lesions \u2192 antibiotics (e.g. flucloxacillin).' },
+      { label: 'Secondary infection', drugs: 'Scratched/impetiginised lesions: localised \u2192 hydrogen peroxide 1% cream 5 days; widespread or not responding \u2192 flucloxacillin 500 mg QDS 5 days (clarithromycin if penicillin-allergic) (NICE NG153).' },
       { label: 'Diagnostic uncertainty', drugs: 'Consider scabies (burrows, web spaces, household itch), fleas, or papular urticaria.' },
     ],
     counselling: [
@@ -82,7 +82,7 @@
     emisText: `Bedbug bites:
 - Self-limiting (settle 1-2 wks). KEY: eradicate infestation \u2014 professional pest control, hot-wash bedding/clothes, vacuum.
 - Itch: oral antihistamine \u00b1 short mild/moderate topical steroid; avoid scratching.
-- Secondary infection \u2192 flucloxacillin.
+- Secondary infection: localised \u2192 hydrogen peroxide 1% cream; widespread \u2192 flucloxacillin 500 mg QDS x5 days (NICE NG153).
 - Consider scabies/fleas/papular urticaria if atypical.`,
     sources: [
       { label:'BNF', url:'https://bnf.nice.org.uk' },
@@ -250,7 +250,7 @@
     category: 'Neurology & Pain',
     eyebrow: 'Carbamazepine 1st-line · neurology · MRI',
     indication: 'Paroxysmal severe, brief, electric-shock-like unilateral facial pain in trigeminal distribution, triggered by light touch/chewing. First-line is carbamazepine; refer to neurology, and image (MRI) to exclude a secondary cause.',
-    contraindications: 'Carbamazepine: many interactions (enzyme inducer \u2014 e.g. reduces COC/DOAC/other drug levels), hyponatraemia, blood dyscrasias, rash (test HLA-B*1502 in at-risk Han Chinese/Thai \u2014 SJS/TEN risk), hepatic impairment. Standard simple analgesia/opioids are ineffective.',
+    contraindications: 'Carbamazepine: many interactions (enzyme inducer \u2014 e.g. reduces COC/DOAC/other drug levels), hyponatraemia, blood dyscrasias, rash (test HLA-B*1502 in at-risk Han Chinese/Thai \u2014 SJS/TEN risk), hepatic impairment. Teratogenic (MHRA antiepileptic pregnancy advice) \u2014 discuss pregnancy plans and use a non-enzyme-dependent contraceptive (Cu-IUD/LNG-IUS/DMPA); specialist advice before conception. Standard simple analgesia/opioids are ineffective.',
     duration: 'Titrate to control; long-term, review',
     drugs: [
       { name: 'Carbamazepine (start low, titrate)', dose: '100 mg OD\u2013BD \u2192 titrate to effect', freq: 'BD\u2013TDS', route: 'PO', days: 'Titrate; long-term' },

@@ -25,7 +25,7 @@
       { name: 'Check B12 first (treat if also low)', dose: '\u2014', freq: 'Baseline', route: 'Investigation', days: 'Before folate' },
     ],
     altRegimens: [
-      { label: 'Pregnancy / preconception', drugs: 'Folic acid 400 micrograms OD until 12 weeks (5 mg OD if high risk: previous NTD, diabetes, BMI \u226530, antiepileptics, sickle cell/thalassaemia).' },
+      { label: 'Pregnancy / preconception', drugs: 'Folic acid 400 micrograms OD until 12 weeks (5 mg OD if high risk: previous NTD, diabetes, antiepileptics, sickle cell/thalassaemia; not BMI alone \u2014 NICE NG247).' },
       { label: 'Ongoing cause (e.g. malabsorption, chronic haemolysis)', drugs: 'Longer-term/lifelong folic acid; treat underlying cause (e.g. coeliac).' },
       { label: 'Methotrexate', drugs: 'Folic acid (e.g. 5 mg weekly, on a different day) to reduce toxicity \u2014 separate indication.' },
     ],
@@ -121,7 +121,7 @@
       'Sensible sun exposure and vitamin-D-rich/fortified foods help maintain levels.',
       'Take it regularly \u2014 it works gradually; tell us if you get symptoms like excessive thirst or nausea (rare, from too much).',
     ],
-    followUp: 'Recheck after loading only if symptoms persist or malabsorption suspected (routine retesting often unnecessary). Continue lifelong maintenance for at-risk groups. Check calcium if symptomatic/high-dose.',
+    followUp: 'Check adjusted serum calcium 1 month after completing loading (may unmask primary hyperparathyroidism \u2014 stop vitamin D and investigate if raised) (NOS/CKS). Recheck 25-OH-D only if symptoms persist or malabsorption suspected (routine retesting often unnecessary). Continue lifelong maintenance for at-risk groups. Check calcium if symptomatic/high-dose.',
     redFlags: [
       'Symptomatic hypocalcaemia (tetany, seizures), or features suggesting osteomalacia/rickets \u2192 prompt treatment/specialist.',
       'Hypercalcaemia symptoms \u2192 review dose; investigate cause.',
@@ -129,7 +129,7 @@
     emisText: `Vitamin D deficiency (25-OH-D <25 nmol/L):
 - Loading ~300,000 IU total (e.g. colecalciferol 50,000 IU/week x6, or 4000 IU/day x ~10 wks), then maintenance 800-2000 IU OD lifelong (at-risk).
 - HALAL/VEGAN options: standard D3 often lanolin/fish + gelatin \u2014 use lichen-derived vegan D3, ergocalciferol (D2), or gelatin-free drops; check excipients.
-- Check calcium if symptomatic/high-dose; consider PTH/bone profile if severe. Routine retesting often unnecessary.`,
+- Check calcium before loading and 1 month after loading (unmasked hyperparathyroidism); consider PTH/bone profile if severe. Routine retesting often unnecessary.`,
     sources: [
       { label:'BNF — colecalciferol', url:'https://bnf.nice.org.uk/drugs/colecalciferol/' },
     ],
@@ -152,6 +152,7 @@
     ],
     altRegimens: [
       { label: 'Healthy child', drugs: 'Supportive only: fluids, paracetamol, antihistamine/calamine for itch, keep nails short, loose clothing.' },
+      { label: 'Prevention (UK schedule)', drugs: 'From 1 January 2026 varicella vaccine is in the routine UK childhood schedule as MMRV: 12 months and 18 months (born on/after 1 Jan 2025); children born 1 Jul-31 Dec 2024 get MMRV at 18 months and 3 years 4 months (UKHSA/Green Book). Check and offer catch-up as per current UKHSA guidance.' },
       { label: 'Adult / adolescent / smoker / immunocompetent presenting early', drugs: 'Consider oral aciclovir if within 24 h of rash onset (more severe disease in adults).' },
       { label: 'High risk (immunocompromised, neonate, pregnant, severe)', drugs: 'Urgent specialist advice \u2014 IV aciclovir / VZIG / varicella antibody testing as indicated.' },
       { label: 'Secondary bacterial infection', drugs: 'Increasing redness/pain/fever after initial improvement \u2192 antibiotics (e.g. flucloxacillin); be alert to necrotising infection.' },
@@ -173,7 +174,8 @@
 - Healthy child: supportive \u2014 paracetamol (NOT ibuprofen/NSAID; not aspirin), antihistamine/calamine for itch, fluids, nails short. Off school until lesions crusted (~5 days).
 - Consider aciclovir if at-risk/adolescent/adult presenting \u226424 h of rash.
 - HIGH RISK (pregnant/neonate/immunocompromised) or exposure \u2192 urgent specialist advice (VZIG/IV aciclovir).
-- Red flags: necrotising skin infection, pneumonia, neuro signs, dehydration.`,
+- Red flags: necrotising skin infection, pneumonia, neuro signs, dehydration.
+- Prevention: MMRV in routine UK schedule from Jan 2026 (12 + 18 months); check immunisation status.`,
     sources: [
       { label:'UKHSA — Green Book, varicella', url:'https://www.gov.uk/government/collections/immunisation-against-infectious-disease-the-green-book' },
     ],
@@ -311,11 +313,11 @@
     category: 'Mental Health',
     eyebrow: 'De-escalate first · cause-led · drugs last resort',
     indication: 'Acute agitation/behavioural disturbance. ALWAYS look for and treat an underlying cause (delirium, hypoxia, hypoglycaemia, pain, infection, intoxication/withdrawal, urinary retention). De-escalation is first-line; medication is a last resort at the lowest effective dose. Covers delirium-related and palliative agitation.',
-    contraindications: 'Antipsychotics in dementia/delirium: increased stroke/death risk \u2014 use only if severe distress/risk, lowest dose, shortest time. AVOID antipsychotics in Parkinson\u2019s/Lewy body dementia (use lorazepam, or quetiapine/clozapine if essential). Benzodiazepines can worsen delirium (reserve for alcohol/benzo withdrawal, seizures, or where antipsychotics contraindicated).',
+    contraindications: 'Antipsychotics in dementia/delirium: increased stroke/death risk \u2014 use only if severe distress/risk, lowest dose, shortest time. AVOID antipsychotics in Parkinson\u2019s/Lewy body dementia (use lorazepam, or quetiapine/clozapine if essential). Benzodiazepines can worsen delirium (reserve for alcohol/benzo withdrawal, seizures, or where antipsychotics contraindicated). Haloperidol: QT prolongation \u2014 ECG before use where possible, avoid with other QT-prolonging drugs/hypokalaemia (BNF).',
     duration: 'Single/short-term; review urgently',
     drugs: [
       { name: 'De-escalation + treat underlying cause (FIRST)', dose: '\u2014', freq: '\u2014', route: '\u2014', days: 'Always first' },
-      { name: 'Lorazepam (if pharmacological control needed)', dose: '0.5\u20131 mg', freq: 'PRN, review', route: 'PO/IM', days: 'Short-term' },
+      { name: 'Lorazepam (if antipsychotic contraindicated e.g. Parkinson\u2019s/LBD, or alcohol/benzo withdrawal)', dose: '0.5\u20131 mg', freq: 'PRN, review', route: 'PO/IM', days: 'Short-term' },
       { name: 'Haloperidol (NOT in Parkinson\u2019s/LBD)', dose: '0.5\u20131 mg (elderly) / 1\u20132 mg', freq: 'PRN, review', route: 'PO/IM', days: 'Lowest dose, shortest time' },
       { name: 'Palliative terminal agitation: midazolam', dose: '2.5\u20135 mg', freq: 'PRN / via CSCI', route: 'SC', days: 'Per palliative plan' },
     ],
@@ -388,7 +390,6 @@
 - Assess suicide risk + safeguarding; treat comorbidity; avoid alcohol/sedative coping.`,
     sources: [
       { label: 'NICE NG116 \u2014 Post-traumatic stress disorder', url: 'https://www.nice.org.uk/guidance/ng116' },
-      { label:'NICE NG116 — PTSD', url:'https://www.nice.org.uk/guidance/ng116' },
     ],
   }
   );

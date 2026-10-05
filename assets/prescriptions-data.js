@@ -53,7 +53,7 @@ Counsel: take all 3 together, complete full course, avoid alcohol. Re-test only 
     category: 'Gastroenterology',
     eyebrow: '7-day triple therapy (after failed 1st line)',
     indication: 'Failed 1st-line H. pylori eradication. Confirm persistence with urea breath test or stool antigen first.',
-    contraindications: 'Use an antibiotic the patient did NOT receive 1st line. Penicillin allergy → use clarithromycin + metronidazole combination.',
+    contraindications: 'Use an antibiotic the patient did NOT receive 1st line (avoid repeating clarithromycin, metronidazole or a quinolone used in the past year). Penicillin allergy at 2nd line → PPI + metronidazole + levofloxacin (no previous quinolone) or bismuth quadruple therapy — clarithromycin + metronidazole is the penicillin-allergy 1st-line regimen, so not repeated here.',
     duration: '7 days',
     drugs: [
       { name:'Lansoprazole', dose:'30 mg', freq:'BD', route:'PO', days:'7' },
@@ -62,8 +62,9 @@ Counsel: take all 3 together, complete full course, avoid alcohol. Re-test only 
     ],
     altRegimens: [
       { label:'If clarithromycin not used 1st line', drugs:'PPI + amoxicillin 1 g BD + clarithromycin 500 mg BD × 7 days' },
-      { label:'Penicillin allergy', drugs:'PPI + clarithromycin 500 mg BD + metronidazole 400 mg BD × 7 days' },
-      { label:'Pen-allergic + clarithromycin used 1st line', drugs:'PPI + bismuth subsalicylate + metronidazole + tetracycline (specialist input — refer gastro)' },
+      { label:'Previously had clarithromycin AND metronidazole', drugs:'PPI + amoxicillin 1 g BD + tetracycline 500 mg QDS (or levofloxacin 250 mg BD if tetracycline unsuitable) × 7 days' },
+      { label:'Penicillin allergy, no previous quinolone', drugs:'PPI + metronidazole 400 mg BD + levofloxacin 250 mg BD × 7 days (MHRA: fluoroquinolones only when other antibiotics are inappropriate — counsel on tendon, aortic and neuropsychiatric effects)' },
+      { label:'Penicillin allergy, previous quinolone', drugs:'PPI + bismuth subsalicylate 525 mg QDS + metronidazole 400 mg BD + tetracycline 500 mg QDS × 7 days' },
     ],
     counselling: [
       'Avoid alcohol for the whole course AND 48 hours after (metronidazole — disulfiram reaction).',
@@ -95,7 +96,7 @@ Avoid alcohol during AND for 48 h after treatment. Refer gastro if 2nd line fail
     category: "Women's & Sexual Health",
     eyebrow: 'Single doses · choice depends on time since UPSI',
     indication: 'Unprotected sex or contraceptive failure within last 5 days. Discuss all 3 options.',
-    contraindications: 'UPA: severe asthma on oral steroids (relative). Avoid combined contraception 5 days before / 7 days after UPA.',
+    contraindications: 'UPA: severe asthma insufficiently controlled by oral steroids. UPA is less effective if a progestogen was taken in the previous 7 days; hormonal contraception must not be started/restarted until 5 days after UPA. Enzyme inducers: Cu-IUD preferred (or LNG 3 mg).',
     duration: 'Single dose (oral options) or fitted device (Cu-IUD)',
     drugs: [
       { name:'Cu-IUD (copper coil)', dose:'1 device', freq:'Fit', route:'IU', days:'Up to 120 h after UPSI OR ≤ 5 days after earliest predicted ovulation — MOST EFFECTIVE' },
@@ -103,10 +104,10 @@ Avoid alcohol during AND for 48 h after treatment. Refer gastro if 2nd line fail
       { name:'Levonorgestrel', dose:'1.5 mg', freq:'Stat', route:'PO', days:'Up to 72 h after UPSI · double to 3 mg if BMI > 26 or > 70 kg' },
     ],
     counselling: [
-      "Cu-IUD is most effective (~99.9%). Offer to ALL women requesting EC, regardless of time since UPSI.",
+      "Cu-IUD is most effective (failure < 0.1%). Offer to ALL women requesting EC who are eligible — within 120 h of first UPSI or ≤ 5 days after earliest predicted ovulation.",
       "UPA delays ovulation more effectively than LNG — preferred if > 72 h or close to ovulation.",
-      "Restart hormonal contraception: LNG → next day; UPA → wait 5 days before starting/restarting CHC, POP, patch, ring, injection.",
-      "Vomiting within 2 h of LNG or 3 h of UPA → repeat dose.",
+      "Restart hormonal contraception: LNG → immediately (+ condoms until effective); UPA → wait 5 days before starting/restarting CHC, POP, patch, ring, injection.",
+      "Vomiting within 3 h of LNG or UPA → repeat dose.",
       "Pregnancy test in 3 weeks if no period.",
       "Discuss ongoing contraception. Offer STI screen.",
     ],
@@ -120,7 +121,7 @@ DISCUSS ALL 3 OPTIONS:
 1. Cu-IUD — fit within 120 h; MOST EFFECTIVE; refer SRH same-day.
 2. Ulipristal acetate (ellaOne) 30 mg PO STAT — within 120 h.
 3. Levonorgestrel 1.5 mg PO STAT — within 72 h (3 mg if BMI > 26 / > 70 kg).
-Counsel: restart hormonal contraception 5 days after UPA / next day after LNG. Pregnancy test if no period in 3 wks. Offer STI screen.`,
+Counsel: start/restart hormonal contraception 5 days after UPA / immediately after LNG. Pregnancy test if no period in 3 wks. Offer STI screen.`,
     sources: [
       { label:'FSRH Emergency Contraception 2017 (amended 2023)', url:'https://www.fsrh.org/standards-and-guidance/documents/ceu-clinical-guidance-emergency-contraception-march-2017/' },
       { label:'FSRH — Emergency contraception guideline', url:'https://www.fsrh.org/standards-and-guidance/' },
@@ -136,7 +137,7 @@ Counsel: restart hormonal contraception 5 days after UPA / next day after LNG. P
     category: 'Neurology & Pain',
     eyebrow: 'Triptan + NSAID step-wise',
     indication: 'Adult with diagnosed migraine ± aura presenting with acute attack.',
-    contraindications: 'Triptans: uncontrolled HTN, IHD, previous CVA, hemiplegic / basilar migraine, pregnancy (specialist). NSAID: peptic ulcer, CKD eGFR < 30, asthma if sensitive.',
+    contraindications: 'Triptans: uncontrolled HTN, IHD, previous CVA, hemiplegic / basilar migraine; pregnancy — paracetamol first, triptan only after discussing risks. NSAID: peptic ulcer, CKD eGFR < 30, asthma if sensitive.',
     duration: 'Single attack — repeat triptan in 2 h if recurrence (max 2 doses / 24 h).',
     drugs: [
       { name:'Sumatriptan',    dose:'50–100 mg', freq:'Stat (repeat in 2 h if recurrence; max 300 mg/24 h)', route:'PO', days:'PRN attack' },
@@ -146,7 +147,7 @@ Counsel: restart hormonal contraception 5 days after UPA / next day after LNG. P
     altRegimens: [
       { label:'Sumatriptan non-responder', drugs:'Trial alternative triptan — rizatriptan 10 mg or zolmitriptan 2.5 mg or eletriptan 40 mg.' },
       { label:'Nasal route (vomiting)',    drugs:'Sumatriptan 10–20 mg nasal spray OR zolmitriptan 5 mg nasal spray.' },
-      { label:'Pregnancy',                 drugs:'Paracetamol 1 g QDS + metoclopramide 10 mg TDS (avoid triptans, NSAIDs in 3rd trimester).' },
+      { label:'Pregnancy',                 drugs:'Paracetamol 1 g QDS first line ± metoclopramide 10 mg TDS short-term for nausea. Consider a triptan or an NSAID only after discussing risks (NICE CG150); avoid NSAIDs in 3rd trimester.' },
     ],
     counselling: [
       'Take triptan at the FIRST sign of pain — not aura.',
@@ -178,19 +179,19 @@ COUNSEL: take triptan EARLY in attack; avoid > 10 days/month use (MOH risk); kee
     id: 'migraine-prevent',
     title: 'Migraine — preventive therapy',
     category: 'Neurology & Pain',
-    eyebrow: 'First-line: propranolol or topiramate',
+    eyebrow: 'Propranolol, topiramate or amitriptyline (NICE CG150, 2025)',
     indication: '≥ 4 attacks/month, significant disability, medication-overuse, or attacks lasting > 24 h.',
     contraindications: 'Propranolol: asthma, decompensated HF, AV block, peripheral vascular disease. Topiramate: pregnancy (teratogenic — use HIGHLY EFFECTIVE contraception), depression history, renal calculi.',
     duration: 'Trial for 3 months at target dose. Continue 6–12 months if effective, then trial withdrawal.',
     drugs: [
-      { name:'Propranolol (preferred)', dose:'40 mg BD → titrate to 80 mg BD over 4–6 wks', freq:'BD', route:'PO', days:'≥ 3 months' },
-      { name:'Topiramate (2nd line)',   dose:'Start 25 mg ON; titrate weekly to 50 mg BD', freq:'BD', route:'PO', days:'≥ 3 months' },
-      { name:'Amitriptyline (3rd line / mixed migraine + tension)', dose:'10 mg ON; titrate to 25–75 mg ON', freq:'ON', route:'PO', days:'≥ 3 months' },
+      { name:'Propranolol (caution in depression — toxic in overdose)', dose:'40 mg BD → titrate to 80 mg BD over 4–6 wks', freq:'BD', route:'PO', days:'≥ 3 months' },
+      { name:'OR Topiramate (Pregnancy Prevention Programme)',   dose:'Start 25 mg ON; titrate weekly to 50 mg BD', freq:'BD', route:'PO', days:'≥ 3 months' },
+      { name:'OR Amitriptyline (useful with tension-type headache / poor sleep)', dose:'10 mg ON; titrate to 25–75 mg ON', freq:'ON', route:'PO', days:'≥ 3 months' },
     ],
     altRegimens: [
-      { label:'Pregnancy / planning pregnancy', drugs:'Propranolol 40 mg BD (cat C2). Avoid topiramate, amitriptyline (specialist).' },
+      { label:'Pregnancy / planning pregnancy', drugs:'Seek specialist advice. Propranolol is the usual choice if prevention is needed (monitor fetal growth; neonatal bradycardia / hypoglycaemia). Topiramate contraindicated; amitriptyline specialist only.' },
       { label:'Menstrual migraine — perimenstrual', drugs:'Frovatriptan 2.5 mg BD or zolmitriptan 2.5 mg BD or naproxen 250–500 mg BD on days -2 to +3 of period.' },
-      { label:'Refractory (≥ 4 fails)', drugs:'Refer neurology for CGRP monoclonal antibody (erenumab / fremanezumab) per NICE TA682/TA764.' },
+      { label:'Refractory (≥ 3 preventives failed / unsuitable)', drugs:'Refer neurology / headache service for CGRP-targeted therapy — erenumab (TA682), fremanezumab (TA764), galcanezumab (TA659) or atogepant (TA973) — per NICE criteria.' },
     ],
     counselling: [
       'Propranolol: take at same time daily; effect builds over 4–6 weeks.',
@@ -204,9 +205,10 @@ COUNSEL: take triptan EARLY in attack; avoid > 10 days/month use (MOH risk); kee
       'Propranolol + asthma → bronchospasm.',
     ],
     emisText: `Migraine prevention (≥ 4 attacks/month):
-1st line: Propranolol 40 mg PO BD; titrate to 80 mg BD over 4–6 wks. Trial ≥ 3 months.
-2nd line: Topiramate 25 mg ON; titrate weekly to 50 mg BD. PREGNANCY: highly-effective contraception required.
-3rd line: Amitriptyline 10–75 mg ON.
+Options (NICE CG150, 2025 — choose by comorbidity and preference):
+- Propranolol 40 mg PO BD; titrate to 80 mg BD over 4–6 wks. Trial ≥ 3 months. Caution in depression (overdose toxicity).
+- Topiramate 25 mg ON; titrate weekly to 50 mg BD. Pregnancy Prevention Programme: highly effective contraception required.
+- Amitriptyline 10 mg ON; titrate to 25–75 mg ON.
 COUNSEL: review at 3 months; aim ≥ 50% reduction; keep diary; lifestyle measures.`,
     sources: [
       { label:'NICE CG150 — Headaches in over 12s', url:'https://www.nice.org.uk/guidance/cg150' },
@@ -361,7 +363,7 @@ Off-licence if > 17 days. Consider alternatives (continuous CHC pack) if on COCP
     category: 'Dermatology',
     eyebrow: 'Antiviral within 72 h of rash',
     indication: 'Adult with characteristic unilateral dermatomal vesicular rash + neuropathic pain. Start ASAP — ideally within 72 h of rash onset.',
-    contraindications: 'Renal impairment — dose-adjust antivirals (eGFR < 50 reduce dose). Pregnancy: aciclovir is preferred; specialist input if disseminated.',
+    contraindications: 'Renal impairment — dose-adjust by creatinine clearance (aciclovir if CrCl < 25 mL/min; valaciclovir if < 50; famciclovir if < 60) and maintain hydration. Pregnancy: seek specialist advice; aciclovir preferred.',
     duration: 'Antiviral 7 days. Pain management may continue weeks.',
     drugs: [
       { name:'Aciclovir', dose:'800 mg', freq:'5×/day (every 4 h waking)', route:'PO', days:'7' },
@@ -371,8 +373,8 @@ Off-licence if > 17 days. Consider alternatives (continuous CHC pack) if on COCP
       { name:'Amitriptyline', dose:'10–25 mg', freq:'ON', route:'PO', days:'If severe / neuropathic pain — titrate weekly to 75 mg' },
     ],
     altRegimens: [
-      { label:'eGFR 30–49',     drugs:'Aciclovir 800 mg QDS × 7 days (frequency reduced).' },
-      { label:'eGFR 10–29',     drugs:'Aciclovir 800 mg BD × 7 days.' },
+      { label:'CrCl 10–25 mL/min',     drugs:'Aciclovir 800 mg TDS (every 8 h) × 7 days. (Valaciclovir: CrCl 30–49 → 1 g BD; 10–29 → 1 g OD.)' },
+      { label:'CrCl < 10 mL/min',     drugs:'Aciclovir 800 mg BD × 7 days (valaciclovir 500 mg OD) — seek renal advice.' },
       { label:'Pregnancy',      drugs:'Aciclovir 800 mg 5×/day × 7 days — safer profile than valaciclovir/famciclovir.' },
       { label:'Immunocompromised / disseminated', drugs:'⚡ Same-day medical admission for IV aciclovir.' },
     ],
@@ -381,7 +383,7 @@ Off-licence if > 17 days. Consider alternatives (continuous CHC pack) if on COCP
       'Cover lesions; avoid contact with pregnant women, neonates, immunocompromised.',
       'Pain may persist after rash heals (post-herpetic neuralgia) — review at 3 months.',
       'Hygiene: do not share towels; wash hands.',
-      'Vaccine: shingrix offered at age 70–80 — discuss after recovery.',
+      'Vaccine: Shingrix (2 doses) — offered as people turn 65 or 70, to anyone aged 70–79, and to severely immunosuppressed adults ≥ 18 (Green Book ch.28a) — plan after recovery.',
     ],
     followUp: 'Review at 5 days for pain control. At 4 weeks for PHN (consider amitriptyline / gabapentin if persistent pain).',
     redFlags: [
@@ -456,13 +458,13 @@ Eye involvement → same-day ophthalmology (?keratitis).`,
     eyebrow: 'Miconazole gel 1st line; fluconazole if extensive',
     indication: 'White plaques on tongue / palate / buccal mucosa wiping to leave erythema; or angular cheilitis; or denture stomatitis. Risk factors: ICS, antibiotics, dentures, DM, immunosuppression, age.',
     contraindications: 'Miconazole gel: warfarin (potentiates — INR rise), statins (rhabdomyolysis risk). Fluconazole: warfarin, statins, terfenadine, cisapride.',
-    duration: 'Topical 7–14 days. Oral fluconazole 7–14 days.',
+    duration: 'Miconazole until 7 days after symptoms resolve; nystatin 7 days; fluconazole 7 days (up to 14 if severe).',
     drugs: [
-      { name:'Miconazole 2% oral gel', dose:'2.5 mL (½ tsp)', freq:'QDS', route:'Topical (held in mouth before swallow)', days:'7–14 (continue 48 h after symptoms resolve)' },
-      { name:'OR Nystatin suspension 100,000 units/mL', dose:'1 mL', freq:'QDS', route:'Topical', days:'7' },
+      { name:'Miconazole 2% oral gel', dose:'2.5 mL (½ tsp)', freq:'QDS', route:'Topical (held in mouth before swallow)', days:'Continue for 7 days after symptoms resolve' },
+      { name:'OR Nystatin suspension 100,000 units/mL', dose:'1 mL', freq:'QDS', route:'Topical', days:'7 (continue 48 h after lesions resolve)' },
     ],
     altRegimens: [
-      { label:'Severe / extensive / immunocompromised', drugs:'Fluconazole 50 mg PO OD × 7–14 days (50 mg only if normal LFTs; ↑ to 100 mg OD if needed).' },
+      { label:'Severe / extensive / immunocompromised', drugs:'Fluconazole 50 mg PO OD × 7 days; 100 mg OD for up to 14 days if severe / immunocompromised.' },
       { label:'Denture stomatitis', drugs:'Miconazole gel QDS + denture hygiene (clean nightly, soak in chlorhexidine 0.2% or sodium hypochlorite; leave out at night).' },
       { label:'Angular cheilitis', drugs:'Miconazole 2% cream (Daktarin) BD × 10 days; check FBC + ferritin + B12.' },
       { label:'Inhaled corticosteroid related', drugs:'Treat with miconazole + reinforce: rinse mouth after each ICS dose, use spacer.' },
@@ -482,9 +484,9 @@ Eye involvement → same-day ophthalmology (?keratitis).`,
       'Dysphagia / odynophagia → ?oesophageal candidiasis → upper GI endoscopy, consider HIV testing.',
     ],
     emisText: `Oral candidiasis (thrush):
-- Miconazole 2% oral gel 2.5 mL (½ tsp) QDS held in mouth × 7–14 days (continue 48 h after resolved) OR
-- Nystatin suspension 1 mL QDS × 7 days.
-Severe / immunocompromised: Fluconazole 50 mg PO OD × 7–14 days.
+- Miconazole 2% oral gel 2.5 mL (½ tsp) QDS after food, held in mouth; continue for 7 days after symptoms resolve OR
+- Nystatin suspension 1 mL QDS × 7 days (continue 48 h after lesions resolve).
+Extensive: Fluconazole 50 mg PO OD × 7 days (100 mg OD up to 14 days if severe / immunocompromised).
 CAUTION miconazole: interacts with warfarin (raises INR) + statins.
 Counsel: if ICS — rinse mouth, use spacer. Treat denture stomatitis with hygiene + gel. Investigate cause if recurrent (HbA1c, HIV, bloods).`,
     sources: [

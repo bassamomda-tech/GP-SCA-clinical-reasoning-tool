@@ -13,7 +13,7 @@
     category: 'Dermatology',
     eyebrow: 'Topical antifungal · oral if extensive/scalp/nail',
     indication: 'Tinea corporis/cruris/pedis (ringworm, jock itch, athlete\u2019s foot) — annular scaly itchy rash with raised edge. Confirm clinically ± skin scrapings if doubt.',
-    contraindications: 'Oral terbinafine: hepatic impairment (check LFTs if prolonged). Avoid potent steroid alone (worsens / "tinea incognito").',
+    contraindications: 'Oral terbinafine: avoid in chronic/active liver disease — check LFTs before starting and after 4–6 weeks; stop if they rise. Avoid potent steroid alone (worsens / "tinea incognito").',
     duration: 'Topical 2–4 weeks (continue 1–2 weeks after clearing)',
     drugs: [
       { name: 'Terbinafine 1% cream', dose: 'Apply', freq: 'OD–BD', route: 'Topical', days: '1–2 weeks (foot up to 4)' },
@@ -49,13 +49,14 @@ Keep dry; don\u2019t share towels; avoid steroid-only creams. Review if no bette
     id: 'scabies',
     title: 'Scabies',
     category: 'Dermatology',
-    eyebrow: 'Permethrin 5% · treat all contacts simultaneously',
+    eyebrow: 'Permethrin 5% or oral ivermectin · treat all contacts simultaneously',
     indication: 'Intensely itchy rash (worse at night), burrows in web spaces/wrists/genitalia. Treat the patient AND all household/close/sexual contacts at the same time, even if asymptomatic.',
-    contraindications: 'Permethrin: caution in infants <2 months (specialist). Malathion if permethrin unsuitable.',
+    contraindications: 'Permethrin: licensed from 2 months (<2 months → specialist advice). Oral ivermectin (BASHH 2025 alternative): not if <15 kg, pregnant or breastfeeding — in Greater Manchester not routinely commissioned in primary care; permethrin first-line, ivermectin specialist-directed or exceptional cases. Malathion if permethrin unsuitable (check local stock).',
     duration: '2 applications, 7 days apart',
     drugs: [
       { name: 'Permethrin 5% cream', dose: 'Whole body (neck-down; include scalp in young/elderly)', freq: '2 applications 7 days apart', route: 'Topical', days: 'Leave on 8–12 h (overnight)' },
-      { name: 'OR Malathion 0.5% aqueous', dose: 'Whole body', freq: '2 applications 7 days apart', route: 'Topical', days: 'Leave on 24 h' },
+      { name: 'OR Ivermectin (oral; specialist-directed in GM; not <15 kg/pregnancy/breastfeeding)', dose: '200 micrograms/kg', freq: '2 doses 7–14 days apart', route: 'PO', days: 'Single dose ×2' },
+      { name: 'Alt: Malathion 0.5% aqueous', dose: 'Whole body', freq: '2 applications 7 days apart', route: 'Topical', days: 'Leave on 24 h' },
       { name: 'Itch relief: antihistamine ± crotamiton', dose: 'Standard', freq: 'PRN', route: 'PO/Topical', days: 'Itch may persist 2–4 weeks' },
     ],
     altRegimens: [
@@ -75,7 +76,7 @@ Keep dry; don\u2019t share towels; avoid steroid-only creams. Review if no bette
       'Secondary bacterial infection (impetiginised) → add antibiotic.',
     ],
     emisText: `Scabies (treat patient + ALL contacts same day):
-- Permethrin 5% cream to whole body (chin-down; scalp in young/elderly), leave 8–12 h, wash off; REPEAT after 7 days. (Alt: malathion 0.5%, 24 h.)
+- Permethrin 5% cream to whole body (chin-down; scalp in young/elderly), leave 8–12 h, wash off; REPEAT after 7 days. (Alt: oral ivermectin 200 micrograms/kg, repeat after 7–14 days — specialist-directed in Greater Manchester; not <15 kg/pregnancy/breastfeeding; or malathion 0.5%, 24 h.)
 - Wash bedding/clothing at 50°C+ (or bag 72 h) on treatment day.
 - Itch may persist 2–4 wks (antihistamine/crotamiton) — not failure.
 Review at 2–4 wks if persistent/new burrows.`,
@@ -125,7 +126,7 @@ Recheck by combing 2–3 days after 2nd application.`,
     category: 'Dermatology',
     eyebrow: 'Topical combo 1st line · oral antibiotic for moderate',
     indication: 'Mild–moderate acne. NICE NG198 recommends a 12-week course of a topical combination first line; add oral antibiotic (with a topical) for moderate–severe.',
-    contraindications: 'Topical retinoid / oral tetracyclines: pregnancy & breastfeeding (avoid). Avoid antibiotic monotherapy (resistance) — always combine with benzoyl peroxide / retinoid.',
+    contraindications: 'Topical retinoid / oral tetracyclines: pregnancy & breastfeeding (avoid); tetracyclines also contraindicated under 12 years. Avoid antibiotic monotherapy (resistance) — always combine with benzoyl peroxide / retinoid.',
     duration: '12-week courses; review',
     drugs: [
       { name: 'Adapalene 0.1% + benzoyl peroxide gel (1st line)', dose: 'Apply thin layer', freq: 'OD (night)', route: 'Topical', days: '12 weeks' },
@@ -134,7 +135,7 @@ Recheck by combing 2–3 days after 2nd application.`,
     ],
     altRegimens: [
       { label: 'Pregnancy', drugs: 'Avoid retinoids & tetracyclines. Topical benzoyl peroxide / azelaic acid; erythromycin if oral antibiotic needed.' },
-      { label: 'Female — hormonal pattern', drugs: 'Consider COC (e.g. with cyproterone/drospirenone) ± co-cyprindiol per guidance.' },
+      { label: 'Female — hormonal pattern', drugs: 'Consider adding a COC to topical treatment, or co-cyprindiol (VTE risk — stop 3 months after acne controlled; MHRA).' },
       { label: 'Severe / nodulocystic / scarring / failed therapy', drugs: 'Refer dermatology for oral isotretinoin.' },
     ],
     counselling: [
@@ -210,9 +211,9 @@ Avoid facial steroids. Ocular symptoms → ophthalmology.`,
     contraindications: 'Anaphylaxis (airway/breathing/circulation) → IM adrenaline, NOT antihistamine alone. Sedating antihistamines: caution driving/elderly.',
     duration: 'PRN to regular; chronic up to several weeks',
     drugs: [
-      { name: 'Cetirizine (or loratadine/fexofenadine)', dose: '10 mg', freq: 'OD (up to QDS / x4 in chronic per specialist)', route: 'PO', days: 'Until settled' },
+      { name: 'Cetirizine (or loratadine/fexofenadine)', dose: '10 mg (fexofenadine 180 mg)', freq: 'OD (up to QDS / x4 in chronic per specialist)', route: 'PO', days: 'Until settled' },
       { name: 'Add at night: Chlorphenamine (if itch disturbs sleep)', dose: '4 mg', freq: 'ON', route: 'PO', days: 'Short-term' },
-      { name: 'Severe acute flare: Prednisolone (short course)', dose: '40 mg', freq: 'OD', route: 'PO', days: '3–5' },
+      { name: 'Severe acute flare: Prednisolone (short course)', dose: '40 mg', freq: 'OD', route: 'PO', days: 'Up to 7' },
     ],
     altRegimens: [
       { label: 'Chronic spontaneous urticaria not controlled', drugs: 'Up-dose non-sedating antihistamine (up to 4×, off-licence) → refer dermatology/immunology (omalizumab).' },
@@ -232,7 +233,7 @@ Avoid facial steroids. Ocular symptoms → ophthalmology.`,
     emisText: `Urticaria (hives):
 - Non-sedating antihistamine: Cetirizine 10 mg OD (or loratadine/fexofenadine); up-dose if needed.
 - Disturbed sleep: add chlorphenamine 4 mg ON short-term.
-- Severe acute flare: prednisolone 40 mg OD × 3–5 days.
+- Severe acute flare: prednisolone 40 mg OD for up to 7 days.
 Avoid triggers; take regularly. Chronic >6 wks or uncontrolled → dermatology/immunology.
 Angioedema with airway/breathing compromise → IM adrenaline + 999.`,
     sources: [
@@ -258,7 +259,7 @@ Angioedema with airway/breathing compromise → IM adrenaline + 999.`,
       { label: 'Rectal chlamydia / LGV risk', drugs: 'Doxycycline 100 mg BD × 7 days (preferred); extend per GUM advice if LGV.' },
     ],
     counselling: [
-      'Avoid sex (including with treated partners) until 7 days after treatment starts (or 7 days after azithromycin).',
+      'Avoid all sex (including oral/anal) until you have finished the 7-day doxycycline course (or for 7 days after starting azithromycin), symptoms have resolved and your partner(s) have been treated.',
       'Inform recent sexual partners so they can be tested/treated (partner notification — GUM can help).',
       'Complete the full course; doxycycline can cause photosensitivity — use sun protection.',
       'Offer a full STI screen (HIV, syphilis, gonorrhoea) and contraception advice.',
@@ -332,7 +333,7 @@ Avoid douching/perfumed products. Pregnancy → 5–7 day course (not 2 g stat).
       { name: 'Vulval itch: + Clotrimazole 1–2% cream', dose: 'Apply', freq: 'BD–TDS', route: 'Topical', days: 'PRN' },
     ],
     altRegimens: [
-      { label: 'Pregnancy', drugs: 'Clotrimazole 500 mg pessary ON (may need up to 7 nights of lower-strength); AVOID oral fluconazole.' },
+      { label: 'Pregnancy', drugs: 'Intravaginal imidazole for 7 days, e.g. clotrimazole 100 mg pessary ON × 7 nights (insert by hand, not applicator, late in pregnancy); AVOID oral fluconazole.' },
       { label: 'Recurrent (≥4/year)', drugs: 'Confirm by swab; induction (fluconazole 150 mg every 72 h × 3 doses) then maintenance (150 mg weekly × 6 months).' },
       { label: 'Severe symptoms', drugs: 'Fluconazole 150 mg repeated after 3 days; add topical for vulval symptoms.' },
     ],
@@ -350,7 +351,7 @@ Avoid douching/perfumed products. Pregnancy → 5–7 day course (not 2 g stat).
     emisText: `Vaginal thrush:
 - Fluconazole 150 mg PO stat (non-pregnant) OR Clotrimazole 500 mg pessary ON stat.
 - Add clotrimazole 1–2% cream for vulval itch.
-- Pregnancy: clotrimazole pessary (AVOID oral fluconazole).
+- Pregnancy: clotrimazole 100 mg pessary ON × 7 nights (AVOID oral fluconazole).
 - Recurrent (≥4/yr): swab → fluconazole 150 mg every 72 h ×3 then 150 mg weekly × 6 months; check HbA1c.
 Avoid soaps; pessaries weaken latex condoms.`,
     sources: [

@@ -60,7 +60,7 @@
     drugs: [
       { name: 'Cosmetic: shaving/waxing/threading; laser/electrolysis', dose: '—', freq: 'PRN', route: 'External', days: 'Ongoing (immediate)' },
       { name: 'Combined oral contraceptive (anti-androgenic)', dose: 'Per product', freq: 'OD', route: 'PO', days: '≥6 months trial' },
-      { name: 'Eflornithine 11.9% cream (facial hirsutism)', dose: 'Apply thin', freq: 'BD', route: 'Topical', days: 'Reassess at 4 months' },
+      { name: 'Eflornithine 11.5% cream (Vaniqa) (facial hirsutism)', dose: 'Apply thin', freq: 'BD (at least 8 h apart)', route: 'Topical', days: 'Reassess at 4 months' },
       { name: 'Antiandrogen (e.g. spironolactone) — with contraception', dose: 'Specialist/off-label', freq: '—', route: 'PO', days: 'If refractory' },
     ],
     altRegimens: [
@@ -81,7 +81,7 @@
     ],
     emisText: `Hirsutism (women; commonly PCOS):
 - Cosmetic (shaving/waxing/laser/electrolysis) + weight loss if PCOS.
-- COC (anti-androgenic) — trial ≥6 months. Facial: eflornithine 11.9% cream BD (reassess 4 months).
+- COC (anti-androgenic) — trial ≥6 months. Facial: eflornithine 11.5% cream BD, at least 8 h apart (reassess 4 months).
 - Refractory: antiandrogen (spironolactone/cyproterone/finasteride) — TERATOGENIC, need reliable contraception; often specialist.
 - Rapid onset/virilisation/very high testosterone → exclude androgen tumour → urgent.`,
     sources: [
@@ -96,7 +96,7 @@
     category: 'Travel Health',
     eyebrow: 'ABCD · bite avoidance + region-specific drug',
     indication: 'Malaria prevention for travel to endemic areas. Follow ABCD: Awareness of risk, Bite avoidance, Chemoprophylaxis, prompt Diagnosis. Choice depends on destination resistance, trip length, cost, comorbidity and patient factors (check current country-specific advice/TRAVAX/NaTHNaC).',
-    contraindications: 'Mefloquine: avoid in neuropsychiatric history (depression, anxiety, psychosis, seizures). Doxycycline: pregnancy, children <12, photosensitivity. Atovaquone-proguanil: caution severe renal impairment. Chloroquine: not for resistant areas; caution epilepsy/psoriasis. Pregnancy/children/immunocompromised — specialist travel advice.',
+    contraindications: 'Mefloquine: avoid in neuropsychiatric history (depression, anxiety, psychosis, seizures). Doxycycline: pregnancy, children <12, photosensitivity. Atovaquone-proguanil: avoid for prophylaxis if eGFR <30 mL/min/1.73m\u00b2. Chloroquine: not for resistant areas; caution epilepsy/psoriasis. Pregnancy/children/immunocompromised — specialist travel advice.',
     duration: 'Varies by drug (see below)',
     drugs: [
       { name: 'Bite avoidance: DEET ≥20–50%, nets, covering clothing, repellents', dose: '—', freq: 'Continuous', route: 'External', days: 'Whole trip + after' },
@@ -227,7 +227,7 @@
     duration: 'Until symptoms settle (often by 16–20 wks)',
     drugs: [
       { name: 'Conservative: small frequent bland meals, fluids, ginger, P6 acupressure', dose: '—', freq: '—', route: 'Self-care', days: 'First-line' },
-      { name: 'First-line: Cyclizine / Promethazine / Prochlorperazine', dose: 'Per drug', freq: 'Per drug', route: 'PO', days: 'Regular/PRN' },
+      { name: 'First-line: Doxylamine/pyridoxine (Xonvea) / Cyclizine / Promethazine / Prochlorperazine', dose: 'Per drug (SPC)', freq: 'Per drug', route: 'PO', days: 'Regular/PRN' },
       { name: 'Second-line: Metoclopramide (≤5 days) or Ondansetron', dose: 'Per drug', freq: 'Per drug', route: 'PO', days: 'Short-term' },
       { name: 'HG: thiamine + consider VTE prophylaxis; IV fluids if admitted', dose: 'Per protocol', freq: '—', route: 'IV/PO', days: 'Per HG care' },
     ],
@@ -248,7 +248,7 @@
     ],
     emisText: `Nausea & vomiting of pregnancy (NVP):
 - Conservative: small frequent bland meals, fluids, ginger, P6 bands.
-- 1st-line antiemetic: cyclizine / promethazine / prochlorperazine.
+- 1st-line antiemetic: doxylamine/pyridoxine / cyclizine / promethazine / prochlorperazine.
 - 2nd-line: metoclopramide (≤5 days) or ondansetron (counsel 1st-trimester data).
 - Hyperemesis (>5% wt loss, dehydration, ketonuria) → thiamine + VTE assessment + IV fluids/admit.
 - Exclude UTI/thyroid/molar if atypical.`,
@@ -265,7 +265,7 @@
     category: 'Neurology & Pain',
     eyebrow: 'Neuropathic agent · switch not stack',
     indication: 'Neuropathic pain persisting >3 months after shingles, in the affected dermatome. First-line neuropathic agents; offer one, switch (don\u2019t stack) if ineffective/not tolerated. Topical options for localised pain.',
-    contraindications: 'Amitriptyline: cardiac disease, elderly (anticholinergic, falls), glaucoma, urinary retention. Gabapentinoids: dependence/misuse potential, respiratory depression with opioids, dose-adjust in renal impairment. Duloxetine: uncontrolled hypertension.',
+    contraindications: 'Amitriptyline: cardiac disease, elderly (anticholinergic, falls), glaucoma, urinary retention. Gabapentinoids (Schedule 3 CDs): dependence/misuse potential, respiratory depression with opioids, dose-adjust in renal impairment. Pregabalin: possible increased risk of major congenital malformations \u2014 effective contraception, avoid in pregnancy unless clearly needed (MHRA 2022). Duloxetine: uncontrolled hypertension.',
     duration: 'Titrate; review effect and taper later',
     drugs: [
       { name: 'Amitriptyline', dose: '10 mg → titrate (max ~75 mg)', freq: 'ON', route: 'PO', days: 'Titrate to effect' },
