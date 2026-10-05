@@ -114,6 +114,8 @@
   function reviewStamp(){
     var foot = document.querySelector('.alg-foot');
     if (!foot || document.querySelector('.alg-review')) return;
+    /* provenance.js shows the page's review date in the footer (same date as the top strip) — don't show a second, different one */
+    if (window.RGP_PROV) return;
     fetch('../../assets/review-register.json').then(function(r){ return r.json(); }).then(function(reg){
       var isLab = /lab-results/.test(location.pathname);
       var col = (reg.collections||[]).filter(function(c){ return c.id === (isLab ? 'lab-pathways' : 'pathways'); })[0];

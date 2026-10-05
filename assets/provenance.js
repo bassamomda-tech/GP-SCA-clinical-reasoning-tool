@@ -358,7 +358,7 @@ function mount(){
       var d = document.createElement('div');
       d.className = 'rgp-reviewed rgp-reviewed-auto';
       d.style.cssText = 'max-width:1180px;margin:18px auto 26px;padding:0 20px;font-size:12px;color:#6b7280';
-      var host = document.querySelector('main') || document.querySelector('.main') || document.querySelector('.tool-page') || document.body;
+      var host = document.querySelector('.alg-foot') || document.querySelector('main') || document.querySelector('.main') || document.querySelector('.tool-page') || document.body;
       var sf = document.querySelector('.site-footer, #siteFooter, body > footer');
       if(sf && host === document.body) sf.insertAdjacentElement('beforebegin', d); else host.appendChild(d);
       feet = [d];
