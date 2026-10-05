@@ -774,11 +774,11 @@ body.mode-clinic .sca-only{display:none!important}
 
 <div class="numstrip">
   <div class="ns-inner">
-    <div class="ns-item"><span class="ns-val">24h</span><span class="ns-lbl">Max wait for keratitis (same-day ophth)</span></div>
+    <div class="ns-item"><span class="ns-val">Same day</span><span class="ns-lbl">Suspected keratitis &rarr; same-day ophthalmology</span></div>
     <div class="ns-item"><span class="ns-val">IOP &gt;21</span><span class="ns-lbl">Raised intraocular pressure &mdash; glaucoma</span></div>
-    <div class="ns-item"><span class="ns-val">6/12</span><span class="ns-lbl">Visual acuity urgent referral threshold</span></div>
-    <div class="ns-item"><span class="ns-val">15 min</span><span class="ns-lbl">Chemical injury irrigation duration</span></div>
-    <div class="ns-item"><span class="ns-val">Same day</span><span class="ns-lbl">Topical ganciclovir + urgent ophthalmology for HSV keratitis</span></div>
+    <div class="ns-item"><span class="ns-val">VA &darr;</span><span class="ns-lbl">Any unexplained reduction in visual acuity &rarr; same-day assessment</span></div>
+    <div class="ns-item"><span class="ns-val">pH neutral</span><span class="ns-lbl">Chemical injury: irrigate until ocular-surface pH is neutral (no fixed time)</span></div>
+    <div class="ns-item"><span class="ns-val">Same day</span><span class="ns-lbl">Ophthalmology for HSV keratitis (antiviral initiated by ophthalmology)</span></div>
     <div class="ns-item"><span class="ns-val">1 week</span><span class="ns-lbl">Max conjunctivitis review if no improvement</span></div>
     <div class="ns-item"><span class="ns-val">6 metres</span><span class="ns-lbl">Standard Snellen chart distance</span></div>
     <div class="ns-item"><span class="ns-val">Suspected cancer pathway referral</span><span class="ns-lbl">Ocular melanoma / malignancy pathway</span></div>
@@ -845,7 +845,7 @@ body.mode-clinic .sca-only{display:none!important}
           </tr>
           <tr>
             <td class="q">Visual change<em>"Has your vision changed at all? Try covering the other eye &mdash; can you read the time on the clock across the room?"</em></td>
-            <td class="why">Any reduction in visual acuity (VA &lt;6/6 in the affected eye) = urgent ophthalmology referral. VA 6/12 or worse = same-day referral. Normal VA in both eyes = conjunctivitis much more likely.<span class="why-sub">Always test VA before instilling any drops &mdash; drops change the examination</span></td>
+            <td class="why">Any unexplained reduction in visual acuity (not explained by discharge or refractive blur) = same-day ophthalmology assessment. Normal VA in both eyes = conjunctivitis much more likely.<span class="why-sub">Always test VA before instilling any drops &mdash; drops change the examination</span></td>
             <td><span class="chg chg-urgent">Urgent referral if VA reduced</span><span class="chg chg-ddx">Keratitis / uveitis</span></td>
           </tr>
           <tr>
@@ -890,7 +890,7 @@ body.mode-clinic .sca-only{display:none!important}
           </tr>
           <tr>
             <td class="q">Chemical or foreign body exposure<em>"Has anything got into your eye recently &mdash; a chemical splash, dust, or a small object?"</em></td>
-            <td class="why">Chemical injury (acid/alkali) = immediate copious irrigation &times; 15 min, then 999. Any retained foreign body on slit lamp = ophthalmology referral. Alkali burns penetrate deeper than acid &mdash; soak through to anterior chamber.<span class="why-sub">Alkali burns (bleach, cement) are worse than acid burns &mdash; penetrate deeper</span></td>
+            <td class="why">Chemical injury (acid/alkali) = immediate copious irrigation continued until ocular-surface pH is neutral, then emergency ophthalmology (999 if severe). Any retained foreign body on slit lamp = ophthalmology referral. Alkali burns penetrate deeper than acid &mdash; soak through to anterior chamber.<span class="why-sub">Alkali burns (bleach, cement) are worse than acid burns &mdash; penetrate deeper</span></td>
             <td><span class="chg chg-999">Immediate irrigation + 999</span><span class="chg chg-ref">Ophth foreign body removal</span></td>
           </tr>
           <tr>
@@ -914,7 +914,7 @@ body.mode-clinic .sca-only{display:none!important}
         <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
         <tbody>
           <tr><td class="rf-flag">Severe unilateral pain + halos + vomiting + fixed dilated pupil</td><td class="rf-why">Acute Angle Closure Glaucoma (AACG) &mdash; IOP can reach 60&ndash;80 mmHg; optic nerve damage occurs within hours. Irreversible blindness without emergency treatment.</td><td><span class="rf-action rfa-999">999 immediately</span></td></tr>
-          <tr><td class="rf-flag">Chemical splash to eye (especially alkali: bleach, cement, ammonia)</td><td class="rf-why">Alkali liquefies proteins and penetrates to anterior chamber within minutes. Permanent corneal scarring and blindness if not irrigated immediately for 15 min minimum.</td><td><span class="rf-action rfa-999">Irrigate 15 min now + 999</span></td></tr>
+          <tr><td class="rf-flag">Chemical splash to eye (especially alkali: bleach, cement, ammonia)</td><td class="rf-why">Alkali liquefies proteins and penetrates to anterior chamber within minutes. Permanent corneal scarring and blindness if not irrigated immediately and continuously until ocular-surface pH is neutral.</td><td><span class="rf-action rfa-999">Irrigate to neutral pH + emergency eye care</span></td></tr>
           <tr><td class="rf-flag">Contact lens wearer + pain + photophobia + reduced VA</td><td class="rf-why">Microbial keratitis (Pseudomonas, Acanthamoeba) &mdash; can cause corneal perforation within 24 hours without aggressive antibiotic treatment. Same-day ophthalmology essential.</td><td><span class="rf-action rfa-same">Same-day ophthalmology</span></td></tr>
           <tr><td class="rf-flag">Hypopyon visible (white fluid layer in anterior chamber)</td><td class="rf-why">Endophthalmitis or severe uveitis &mdash; ophthalmic emergency. Vision loss can occur within 24&ndash;48 hours without intravitreal antibiotics.</td><td><span class="rf-action rfa-999">Emergency ophthalmology</span></td></tr>
           <tr><td class="rf-flag">Corneal opacity or white infiltrate visible to naked eye</td><td class="rf-why">Bacterial or Acanthamoeba keratitis with established corneal infiltrate. Corneal scarring and perforation risk. Requires intensive topical antibiotics under ophthalmological supervision.</td><td><span class="rf-action rfa-same">Same-day ophthalmology</span></td></tr>
@@ -988,7 +988,7 @@ body.mode-clinic .sca-only{display:none!important}
             <tr><td class="factor">Atopy (asthma, eczema, hay fever)</td><td>Vernal keratoconjunctivitis (VKC) in children; giant papillary conjunctivitis (GPC) in contact lens wearers; seasonal allergic conjunctivitis in adults</td><td class="impact">Topical antihistamine (olopatadine) + sodium cromoglicate; avoid rubbing</td></tr>
             <tr><td class="factor">Glaucoma (self or FH)</td><td>Raised IOP risk; topical steroids can precipitate steroid-induced glaucoma in susceptible individuals &mdash; never prescribe without ophthalmology involvement</td><td class="impact">Check IOP; ophthalmology review; never start topical steroids without specialist input</td></tr>
             <tr><td class="factor">Sarcoidosis</td><td>Granulomatous uveitis is a recognised extra-pulmonary manifestation. Keratic precipitates on slit lamp &mdash; needs ophthalmology &amp; respiratory medicine</td><td class="impact">Systemic immunosuppression; ophthalmology for slit-lamp confirmation</td></tr>
-            <tr><td class="factor">Rosacea</td><td>Ocular rosacea causes chronic blepharitis, meibomian gland dysfunction, recurrent chalazion, and secondary keratitis. Commonest missed cause of chronic red eye.</td><td class="impact">Long-term doxycycline; lid hygiene; artificial tears; dermatology co-management</td></tr>
+            <tr><td class="factor">Rosacea</td><td>Ocular rosacea causes chronic blepharitis, meibomian gland dysfunction, recurrent chalazion, and secondary keratitis. Commonest missed cause of chronic red eye.</td><td class="impact">Lid hygiene first; artificial tears; doxycycline only via the eye-care pathway (off-label, time-limited, not indefinite); dermatology co-management</td></tr>
             <tr><td class="factor">Recent intraocular surgery</td><td>Endophthalmitis risk in post-operative period (peak: 1&ndash;5 days). Any pain or visual loss after cataract / vitreoretinal surgery = emergency</td><td class="impact">Emergency ophthalmology; intravitreal antibiotics without delay</td></tr>
             <tr><td class="factor">Immunosuppression (HIV, transplant, chemotherapy)</td><td>Opportunistic infections: CMV retinitis, Toxoplasmosis, fungal keratitis. Presentations can be atypical and severe.</td><td class="impact">Lower threshold to refer; ophthalmology urgently; consider CMV / toxo serology</td></tr>
           </tbody>
@@ -1002,10 +1002,10 @@ body.mode-clinic .sca-only{display:none!important}
             <tr><td class="factor">Topical steroids (current use)</td><td>Steroid-induced IOP rise (steroid-response glaucoma) in ~30% after 4 weeks. Steroid use + HSV = catastrophic dendritic ulcer expansion. Never prescribe without slit-lamp diagnosis.</td><td class="impact">Stop steroids; check IOP; ophthalmology review; NEVER prescribe topical steroids in primary care for undifferentiated red eye</td></tr>
             <tr><td class="factor">Amiodarone / Hydroxychloroquine</td><td>Corneal microdeposits (amiodarone) visible on slit lamp; hydroxychloroquine causes maculopathy. Both require regular ophthalmological monitoring.</td><td class="impact">Ophthalmology monitoring programme; dose adjustment with cardiology / rheumatology</td></tr>
             <tr><td class="factor">Isotretinoin (Roaccutane)</td><td>Causes dry eye and meibomian gland dysfunction &mdash; can trigger or worsen blepharitis and dry eye syndrome</td><td class="impact">Artificial tears; lid hygiene; dermatology coordination; consider dose reduction</td></tr>
-            <tr><td class="factor">Anticoagulants (warfarin, DOACs)</td><td>Subconjunctival haemorrhage is more likely and dramatic in appearance. The haemorrhage itself is benign but the patient may be alarmed by the blood-red eye appearance.</td><td class="impact">Reassure: fully resolves in 2&ndash;3 weeks; check INR if on warfarin; no treatment needed</td></tr>
+            <tr><td class="factor">Anticoagulants (warfarin, DOACs)</td><td>Subconjunctival haemorrhage is more likely and dramatic in appearance. The haemorrhage itself is benign but the patient may be alarmed by the blood-red eye appearance.</td><td class="impact">Reassure: usually resolves in 1&ndash;2 weeks (larger bleeds longer); check INR if on warfarin; do not stop anticoagulation without advice</td></tr>
             <tr><td class="factor">Swimming / water sports</td><td>Tap water + contact lens = Acanthamoeba keratitis risk. Swimming pool exposure = adenoviral or Acanthamoeba risk. Contact lens wearers must never swim in lenses.</td><td class="impact">Corneal scrapes for Acanthamoeba; same-day ophthalmology; intensive PHMB + propamidine treatment</td></tr>
             <tr><td class="factor">Screen use / dry work environment</td><td>Reduced blink rate with prolonged screen use causes aqueous tear deficiency and dry eye symptoms mimicking conjunctivitis &mdash; bilateral, gritty, worse evening</td><td class="impact">Hypromellose 0.3% QDS; 20-20-20 rule; humidifier; optician review</td></tr>
-            <tr><td class="factor">Occupation: healthcare worker, nursery teacher, office worker</td><td>Healthcare worker / nursery teacher with viral conjunctivitis = FOMITE risk &mdash; must be excluded from patient or child contact until discharge has resolved</td><td class="impact">Sick note if viral conjunctivitis; strict hand hygiene; dedicated towels; advise when safe to return</td></tr>
+            <tr><td class="factor">Occupation: healthcare worker, nursery teacher, office worker</td><td>Healthcare worker / nursery teacher with viral conjunctivitis = FOMITE risk &mdash; follow current UKHSA/local public-health and occupational-health advice on exclusion (outbreak or institutional policy may differ)</td><td class="impact">Sick note if viral conjunctivitis; strict hand hygiene; dedicated towels; advise when safe to return</td></tr>
             <tr><td class="factor">DVLA &mdash; driving</td><td>VA &lt;6/12 in better eye = cannot drive Group 1 vehicle. Severe red eye with reduced VA requires DVLA notification if the condition is expected to be prolonged or recurrent.</td><td class="impact">Advise not to drive if VA impaired; DVLA notification for persistent visual impairment</td></tr>
           </tbody>
         </table>
@@ -1077,8 +1077,8 @@ body.mode-clinic .sca-only{display:none!important}
         <h3>999 / Same-Day Emergency Ophthalmology</h3>
         <span class="tc-badge tcb-e">Act within minutes</span>
         <ul class="tc-items">
-          <li class="tc-item"><strong>Acute Angle Closure Glaucoma: severe pain + halos + vomiting + fixed dilated pupil</strong><em>IOP 60&ndash;80 mmHg &rarr; irreversible optic nerve damage within hours &rarr; 999 immediately; pilocarpine 2% if available, IV acetazolamide at hospital</em></li>
-          <li class="tc-item"><strong>Chemical splash (especially alkali)</strong><em>Irrigate copiously with normal saline or water for 15 min minimum without delay; then 999 or blue-light transfer to ophthalmology / A&amp;E</em></li>
+          <li class="tc-item"><strong>Acute Angle Closure Glaucoma: severe pain + halos + vomiting + fixed dilated pupil</strong><em>IOP 60&ndash;80 mmHg &rarr; irreversible optic nerve damage within hours &rarr; 999 / immediate emergency ophthalmology; do not delay for tonometry; IOP-lowering treatment only on the eye team&rsquo;s advice</em></li>
+          <li class="tc-item"><strong>Chemical splash (especially alkali)</strong><em>Irrigate copiously with normal saline or water without delay, continuing until ocular-surface pH is neutral (no fixed time); then emergency ophthalmology (999 if severe)</em></li>
           <li class="tc-item"><strong>Penetrating eye injury / open globe</strong><em>Do NOT press or pad the eye &mdash; risk of vitreous prolapse; shield only; 999; nil by mouth in case of surgery</em></li>
           <li class="tc-item"><strong>Hypopyon (white level in anterior chamber visible)</strong><em>Endophthalmitis / severe uveitis &rarr; intravitreal antibiotics without delay &rarr; emergency ophthalmology</em></li>
           <li class="tc-item"><strong>Post-operative red eye within 6 weeks of intraocular surgery</strong><em>Endophthalmitis &rarr; same-day emergency ophthalmology; intravitreal vancomycin + ceftazidime</em></li>
@@ -1093,7 +1093,7 @@ body.mode-clinic .sca-only{display:none!important}
           <li class="tc-item"><strong>Anterior uveitis / iritis: circumcorneal flush, photophobia, irregular pupil</strong><em>Same-day ophthalmology; topical cyclopentolate + steroids under specialist guidance only</em></li>
           <li class="tc-item"><strong>Corneal opacity or white infiltrate visible to naked eye</strong><em>Corneal ulcer / keratitis with infiltrate &rarr; same-day ophthalmology; corneal scrapes before initiating antibiotics</em></li>
           <li class="tc-item"><strong>VA &lt;6/12 in affected eye not explained by refractive error</strong><em>Urgent ophthalmology referral &mdash; any unexplained visual loss requires slit-lamp assessment</em></li>
-          <li class="tc-item"><strong>Herpes simplex keratitis (dendritic ulcer on fluorescein)</strong><em>Ganciclovir 0.15% eye gel 5&times; daily (BNF/SPC); urgent ophthalmology; NEVER topical steroids alone</em></li>
+          <li class="tc-item"><strong>Herpes simplex keratitis (dendritic ulcer on fluorescein)</strong><em>Same-day ophthalmology; topical antiviral (ganciclovir 0.15% eye gel) initiated by ophthalmology; NEVER topical steroids</em></li>
         </ul>
       </div>
       <div class="tc tc-r">
@@ -1101,12 +1101,12 @@ body.mode-clinic .sca-only{display:none!important}
         <h3>Primary Care Management</h3>
         <span class="tc-badge tcb-r">GP / pharmacist</span>
         <ul class="tc-items">
-          <li class="tc-item"><strong>Bacterial conjunctivitis (mucopurulent discharge, VA normal, no pain, no photophobia)</strong><em>Chloramphenicol 0.5% drops QDS (or fusidic acid 1% gel BD); self-limiting in 7&ndash;14 days; hygiene measures; review if no improvement at 1 week</em></li>
-          <li class="tc-item"><strong>Viral conjunctivitis (watery discharge, recent URTI, bilateral, follicles)</strong><em>Self-limiting; cool compresses; hand hygiene; no antibiotics unless secondary infection; 2&ndash;3 weeks resolution; healthcare workers: exclude from work while symptomatic</em></li>
-          <li class="tc-item"><strong>Allergic conjunctivitis (itch, bilateral, seasonal, atopy, VA normal)</strong><em>Olopatadine 0.1% BD or sodium cromoglicate 2% QDS; oral antihistamine if rhinitis; allergen avoidance; cool compresses</em></li>
+          <li class="tc-item"><strong>Bacterial conjunctivitis (mucopurulent discharge, VA normal, no pain, no photophobia)</strong><em>Many resolve without antibiotics (5&ndash;14 days): hygiene, delayed or no antibiotic for mild cases; if needed, chloramphenicol 0.5% drops at licensed dosing per local formulary (or fusidic acid 1% gel BD); review if worsening or not improving as expected</em></li>
+          <li class="tc-item"><strong>Viral conjunctivitis (watery discharge, recent URTI, bilateral, follicles)</strong><em>Self-limiting; cool compresses; hand hygiene; no antibiotics unless secondary infection; 2&ndash;3 weeks resolution; work/school exclusion per current UKHSA/local and occupational-health advice</em></li>
+          <li class="tc-item"><strong>Allergic conjunctivitis (itch, bilateral, seasonal, atopy, VA normal)</strong><em>Sodium cromoglicate 2% QDS first-line, olopatadine 0.1% BD if inadequate (avoid in pregnancy/breastfeeding); oral antihistamine if rhinitis; allergen avoidance; cool compresses</em></li>
           <li class="tc-item"><strong>Dry eye syndrome (bilateral, gritty, worse evening, screen use, VA normal)</strong><em>Hypromellose 0.3% QDS; 20-20-20 rule; optician review; preservative-free drops if frequent use</em></li>
-          <li class="tc-item"><strong>Subconjunctival haemorrhage (painless, unilateral, sharp red patch, VA normal)</strong><em>Reassure: fully resolves in 2&ndash;3 weeks; no treatment; check BP; check INR if anticoagulated</em></li>
-          <li class="tc-item"><strong>Blepharitis (lid margin inflammation, flaky debris, both eyes, chronic)</strong><em>Lid hygiene (warm compress + cotton bud cleaning) twice daily; long-term management; fusidic acid if infected; doxycycline if rosacea-associated</em></li>
+          <li class="tc-item"><strong>Subconjunctival haemorrhage (painless, unilateral, sharp red patch, VA normal)</strong><em>Reassure: usually resolves in 1&ndash;2 weeks (larger bleeds longer); no treatment; check BP; check INR if on warfarin; do not stop anticoagulation without advice</em></li>
+          <li class="tc-item"><strong>Blepharitis (lid margin inflammation, flaky debris, both eyes, chronic)</strong><em>Lid hygiene (warm compress + cotton bud cleaning) twice daily; long-term management; topical antibiotic or doxycycline not routine &mdash; only for persistent disease via the eye-care pathway (off-label, time-limited)</em></li>
         </ul>
       </div>
     </div>
@@ -1155,8 +1155,8 @@ body.mode-clinic .sca-only{display:none!important}
           <tr><td class="q">Pattern of conjunctival injection</td><td class="why">Circumcorneal (ciliary) flush = uveitis or keratitis. Diffuse conjunctival redness = conjunctivitis. Sector redness with scleral nodule = episcleritis / scleritis.<span class="why-sub">Ciliary flush: ring of redness around corneal limbus, does NOT move with conjunctiva</span></td><td class="why">Ciliary flush &rarr; urgent ophthalmology; diffuse &rarr; conjunctivitis pathway</td><td><span class="mcb mcb-yes">YES</span></td></tr>
           <tr><td class="q">Corneal inspection (naked eye + pen torch)</td><td class="why">White infiltrate = microbial keratitis. Corneal haze = corneal oedema (AACG, severe keratitis). Branching dendritic pattern on fluorescein = HSV keratitis.<span class="why-sub">Any corneal opacity in a CL wearer = same-day ophthalmology without exception</span></td><td class="why">Any corneal infiltrate or haze &rarr; same-day ophthalmology</td><td><span class="mcb mcb-yes">YES &mdash; urgent</span></td></tr>
           <tr><td class="q">Lid eversion (tarsal plate examination)</td><td class="why">Follicles (lymphoid aggregates) = viral conjunctivitis. Papillae (vascular cores) = bacterial or allergic. Giant papillae = GPC (contact lens-related). Subtarsal foreign body &rarr; remove under magnification.<span class="why-sub">Always evert both lids; subtarsal FB is easily missed and causes persistent abrasion</span></td><td class="why">Follicles &rarr; viral pathway; giant papillae &rarr; GPC / allergy</td><td><span class="mcb mcb-yes">YES</span></td></tr>
-          <tr><td class="q">Fluorescein staining (if available)</td><td class="why">Staining pattern is diagnostic: dendritic ulcer = HSV; punctate epithelial erosions = dry eye / CL-related; single staining area = corneal abrasion; ring lesion = Acanthamoeba.<span class="why-sub">Use blue cobalt light with Wood&rsquo;s lamp or slit lamp; stain then examine within 60s</span></td><td class="why">Positive staining &rarr; ophthalmology referral; dendritic = HSV &rarr; topical ganciclovir + urgent ophth</td><td><span class="mcb mcb-yes">YES</span></td></tr>
-          <tr><td class="q">IOP assessment (if AACG suspected)</td><td class="why">IOP &gt;21 mmHg = raised (normal 10&ndash;21). In AACG, IOP can reach 60&ndash;80 mmHg. Non-contact tonometry (air puff) available in some GP practices; otherwise ophthalmology required.<span class="why-sub">Globe firmness on gentle palpation through closed lid (hard globe = high IOP) is a crude but useful sign</span></td><td class="why">High IOP &rarr; emergency ophthalmology; pilocarpine 2% topically if available pending transfer</td><td><span class="mcb mcb-yes">YES &mdash; emergency</span></td></tr>
+          <tr><td class="q">Fluorescein staining (if available)</td><td class="why">Staining pattern is diagnostic: dendritic ulcer = HSV; punctate epithelial erosions = dry eye / CL-related; single staining area = corneal abrasion; ring lesion = Acanthamoeba.<span class="why-sub">Use blue cobalt light with Wood&rsquo;s lamp or slit lamp; stain then examine within 60s</span></td><td class="why">Positive staining &rarr; ophthalmology referral; dendritic = HSV &rarr; same-day ophthalmology (antiviral initiated by ophthalmology)</td><td><span class="mcb mcb-yes">YES</span></td></tr>
+          <tr><td class="q">IOP assessment (if AACG suspected)</td><td class="why">IOP &gt;21 mmHg = raised (normal 10&ndash;21). In AACG, IOP can reach 60&ndash;80 mmHg. If angle closure is suspected, IOP is measured by ophthalmology &mdash; do not delay referral for tonometry.<span class="why-sub">Do not palpate the globe to estimate IOP &mdash; it is unreliable (and never if penetrating injury is possible)</span></td><td class="why">Suspected AACG &rarr; emergency ophthalmology without delay; IOP-lowering treatment only on the eye team&rsquo;s advice</td><td><span class="mcb mcb-yes">YES &mdash; emergency</span></td></tr>
           <tr><td class="q">Preauricular lymphadenopathy</td><td class="why">Palpable preauricular lymph node = hallmark of viral conjunctivitis (adenoviral). Also seen in HSV primary infection. Not seen in bacterial conjunctivitis or allergic disease.<span class="why-sub">Can be small and tender; palpate below and in front of the tragus of the ear</span></td><td class="why">Positive &rarr; viral pathway; no antibiotics needed; healthcare worker exclusion</td><td><span class="mcb mcb-context">Context dependent</span></td></tr>
           <tr><td class="q">Blood pressure (if subconjunctival haemorrhage)</td><td class="why">Spontaneous subconjunctival haemorrhage in the absence of trauma may be the first presentation of hypertension, especially if recurrent. Also consider anticoagulant use.<span class="why-sub">Always check BP in recurrent subconjunctival haemorrhage without clear cause</span></td><td class="why">High BP &rarr; hypertension management; recurrent SCH + normal BP &rarr; check clotting / INR</td><td><span class="mcb mcb-context">Context dependent</span></td></tr>
         </tbody>
@@ -1202,13 +1202,13 @@ body.mode-clinic .sca-only{display:none!important}
         <thead><tr><th style="width:22%">Investigation</th><th style="width:38%">Clinical question it answers</th><th>What result changes management?</th></tr></thead>
         <tbody>
           <tr><td class="q">Visual acuity (Snellen) &mdash; primary care</td><td class="why">Single most important clinical measurement. Discriminates sight-threatening from benign. Documents baseline for medico-legal purposes.<span class="why-sub">Always document both eyes separately including with glasses if worn</span></td><td>VA &lt;6/12 &rarr; same-day ophthalmology regardless of cause</td></tr>
-          <tr><td class="q">Fluorescein staining &mdash; Wood&rsquo;s lamp (primary care if available)</td><td class="why">Staining reveals epithelial defects not visible to naked eye. Dendritic pattern = HSV; punctate = dry eye / CL-related; single ulcer = bacterial keratitis.<span class="why-sub">Most GP practices can perform this with a simple Wood&rsquo;s lamp and fluorescein strips</span></td><td>Positive staining &rarr; ophthalmology referral; dendritic = HSV &rarr; topical ganciclovir + urgent</td></tr>
-          <tr><td class="q">Conjunctival swab for MC&amp;S</td><td class="why">Rarely needed for standard bacterial conjunctivitis &mdash; empirical antibiotic treatment is appropriate. Indicated in: neonatal conjunctivitis, gonorrhoea / chlamydia suspected (NAAT swab), treatment failure after 7 days.<span class="why-sub">GC conjunctivitis: copious purulent discharge, very rapid onset, very painful &rarr; requires IM ceftriaxone</span></td><td>GC confirmed &rarr; IM ceftriaxone; Chlamydia &rarr; oral doxycycline 100mg BD &times; 3 weeks; treat partner</td></tr>
+          <tr><td class="q">Fluorescein staining &mdash; Wood&rsquo;s lamp (primary care if available)</td><td class="why">Staining reveals epithelial defects not visible to naked eye. Dendritic pattern = HSV; punctate = dry eye / CL-related; single ulcer = bacterial keratitis.<span class="why-sub">Most GP practices can perform this with a simple Wood&rsquo;s lamp and fluorescein strips</span></td><td>Positive staining &rarr; ophthalmology referral; dendritic = HSV &rarr; same-day ophthalmology</td></tr>
+          <tr><td class="q">Conjunctival swab for MC&amp;S</td><td class="why">Rarely needed for standard bacterial conjunctivitis &mdash; empirical antibiotic treatment is appropriate. Indicated in: neonatal conjunctivitis, gonorrhoea / chlamydia suspected (NAAT swab), treatment failure after 7 days.<span class="why-sub">GC conjunctivitis: copious purulent discharge, very rapid onset, very painful &rarr; requires IM ceftriaxone</span></td><td>GC &rarr; same-day ophthalmology + GUM (systemic treatment GUM/hospital-led per BASHH); Chlamydia &rarr; GUM: doxycycline 100mg BD, ocular course length set by GUM; partner notification</td></tr>
           <tr><td class="q">Corneal scrapes for MC&amp;S, microscopy, culture (ophthalmology only)</td><td class="why">Performed by ophthalmologist under slit lamp. Identifies the organism in microbial keratitis: Pseudomonas aeruginosa (most common in CL wearers), Acanthamoeba, Fusarium, MRSA.<span class="why-sub">Do NOT start antibiotics before scrapes in potential keratitis &mdash; masks the organism</span></td><td>Acanthamoeba &rarr; PHMB + propamidine (intensive); Fungal &rarr; natamycin or voriconazole</td></tr>
-          <tr><td class="q">HLA-B27 (serology)</td><td class="why">Positive in 90% of ankylosing spondylitis patients. Recurrent anterior uveitis in a young male = HLA-B27 positivity &rarr; screen for AS (sacroiliac X-ray / MRI, ESR, CRP).<span class="why-sub">HLA-B27 positive + recurrent uveitis + back pain = refer rheumatology + gastroenterology (to exclude IBD)</span></td><td>Positive &rarr; screen for AS / IBD / Reiter&rsquo;s; rheumatology co-management; longer-term systemic immunosuppression if recurrent</td></tr>
+          <tr><td class="q">HLA-B27 (serology)</td><td class="why">Positive in 90% of ankylosing spondylitis patients. Recurrent anterior uveitis in a young male = HLA-B27 positivity &rarr; screen for AS (sacroiliac X-ray / MRI, ESR, CRP).<span class="why-sub">HLA-B27 positive + recurrent uveitis + back pain = refer rheumatology + gastroenterology (to exclude IBD)</span></td><td>Not requested during the acute red-eye consultation &mdash; once ophthalmology confirms anterior uveitis, HLA-B27 testing and rheumatology referral are guided by ophthalmology/rheumatology (NICE NG65)</td></tr>
           <tr><td class="q">ESR / CRP + FBC</td><td class="why">Elevated inflammatory markers in: scleritis (associated with RA, Wegener&rsquo;s, SLE), severe uveitis, orbital cellulitis. FBC: eosinophilia in atopic / parasitic eye disease.<span class="why-sub">Orbital cellulitis: unilateral proptosis + restricted eye movement + fever &rarr; CT orbit + IV antibiotics urgently</span></td><td>Raised CRP + proptosis + restricted movement &rarr; CT orbit + same-day referral; orbital cellulitis vs cavernous sinus thrombosis</td></tr>
-          <tr><td class="q">Blood pressure measurement</td><td class="why">Hypertensive retinopathy can present with visual symptoms. Spontaneous subconjunctival haemorrhage may indicate uncontrolled hypertension or anticoagulant over-dosage.<span class="why-sub">Always check BP in recurrent SCH without clear cause</span></td><td>Elevated BP &rarr; start antihypertensive; recheck INR if anticoagulated</td></tr>
-          <tr><td class="q">STI screen (chlamydia / gonorrhoea NAAT)</td><td class="why">Chlamydial conjunctivitis: chronic follicular conjunctivitis, mucopurulent discharge, age 18&ndash;35, no response to standard antibiotics. Gonorrhoeal conjunctivitis: copious hyper-purulent discharge, rapid onset, very contagious.<span class="why-sub">Both require treatment of sexual partners &mdash; refer GUM clinic; notifiable</span></td><td>Positive chlamydia &rarr; doxycycline 100mg BD &times; 3 weeks; contact tracing; GUM referral</td></tr>
+          <tr><td class="q">Blood pressure measurement</td><td class="why">Hypertensive retinopathy can present with visual symptoms. Spontaneous subconjunctival haemorrhage may indicate uncontrolled hypertension or anticoagulant over-dosage.<span class="why-sub">Always check BP in recurrent SCH without clear cause</span></td><td>Elevated BP &rarr; confirm with ABPM/HBPM and manage per NICE NG136; check INR if on warfarin</td></tr>
+          <tr><td class="q">STI screen (chlamydia / gonorrhoea NAAT)</td><td class="why">Chlamydial conjunctivitis: chronic follicular conjunctivitis, mucopurulent discharge, age 18&ndash;35, no response to standard antibiotics. Gonorrhoeal conjunctivitis: copious hyper-purulent discharge, rapid onset, very contagious.<span class="why-sub">Both require treatment of sexual partners &mdash; refer GUM clinic; notifiable</span></td><td>Positive chlamydia &rarr; GUM referral: doxycycline 100mg BD per BASHH (ocular course length set by GUM); partner notification</td></tr>
           <tr><td class="q">Thyroid function tests</td><td class="why">Thyroid eye disease (Graves&rsquo; ophthalmopathy): proptosis, lid lag, periorbital oedema, diplopia, restricted eye movements. Can cause severe exposure keratopathy if lids don&rsquo;t close fully.<span class="why-sub">Check if bilateral proptosis, lid retraction, or diplopia without other explanation</span></td><td>Hyperthyroidism confirmed &rarr; endocrinology + ophthalmology co-management; selenium supplementation in active TED</td></tr>
         </tbody>
       </table>
@@ -1268,7 +1268,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="ddx-card ddx-d" style="margin-bottom:6px"><h4>Bacterial Conjunctivitis</h4><p>Mucopurulent discharge &middot; lid crusting in morning &middot; VA 6/6 &middot; no photophobia &middot; self-limiting 7&ndash;14 days</p></div>
         <div class="ddx-card ddx-d" style="margin-bottom:6px"><h4>Viral Conjunctivitis</h4><p>Watery discharge &middot; recent URTI &middot; follicles on everted lid &middot; preauricular node &middot; bilateral spread &middot; no antibiotics</p></div>
         <div class="ddx-card ddx-d" style="margin-bottom:6px"><h4>Allergic Conjunctivitis</h4><p>Bilateral itch &middot; seasonal &middot; atopy &middot; pale boggy conjunctiva &middot; VA 6/6 &middot; antihistamine drops</p></div>
-        <div class="ddx-card ddx-d" style="margin-bottom:6px"><h4>Subconjunctival Haemorrhage</h4><p>Painless &middot; unilateral &middot; sharp red sector &middot; alarming but benign &middot; VA 6/6 &middot; resolves 2&ndash;3 weeks</p></div>
+        <div class="ddx-card ddx-d" style="margin-bottom:6px"><h4>Subconjunctival Haemorrhage</h4><p>Painless &middot; unilateral &middot; sharp red sector &middot; alarming but benign &middot; VA 6/6 &middot; resolves 1&ndash;2 weeks</p></div>
         <div class="ddx-card ddx-d" style="margin-bottom:6px"><h4>Dry Eye Syndrome</h4><p>Bilateral gritty &middot; worse evening &middot; screen use &middot; VA 6/6 &middot; artificial tears</p></div>
         <div class="ddx-card ddx-d"><h4>Blepharitis</h4><p>Lid margin inflammation &middot; flaky debris &middot; chronic &middot; lid hygiene &middot; rosacea-associated</p></div>
       </div>
@@ -1277,7 +1277,7 @@ body.mode-clinic .sca-only{display:none!important}
         <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Specialist assessment needed</span>
         <div class="ddx-card ddx-c" style="margin-bottom:6px"><h4>Anterior Uveitis / Iritis</h4><p>Circumcorneal flush &middot; photophobia &middot; irregular pupil &middot; deep pain &middot; reduced VA &middot; HLA-B27 / IBD association</p></div>
         <div class="ddx-card ddx-c" style="margin-bottom:6px"><h4>Keratitis (CL-associated)</h4><p>Pain + photophobia + reduced VA + CL history &middot; white infiltrate &middot; same-day ophthalmology &middot; corneal scrapes</p></div>
-        <div class="ddx-card ddx-c" style="margin-bottom:6px"><h4>HSV Keratitis</h4><p>Dendritic ulcer on fluorescein &middot; previous cold sores &middot; reduced VA &middot; ganciclovir 0.15% eye gel + urgent ophth</p></div>
+        <div class="ddx-card ddx-c" style="margin-bottom:6px"><h4>HSV Keratitis</h4><p>Dendritic ulcer on fluorescein &middot; previous cold sores &middot; reduced VA &middot; same-day ophth (ophthalmology-initiated antiviral)</p></div>
         <div class="ddx-card ddx-c"><h4>Scleritis</h4><p>Severe deep boring pain &middot; tender to touch &middot; scleral nodule &middot; associated RA / Wegener&rsquo;s &middot; urgent ophthalmology</p></div>
       </div>
       <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
@@ -1285,7 +1285,7 @@ body.mode-clinic .sca-only{display:none!important}
         <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">Act immediately</span>
         <div class="ddx-card ddx-b" style="margin-bottom:6px"><h4>Acute Angle Closure Glaucoma</h4><p>Severe pain &middot; halos &middot; vomiting &middot; fixed dilated pupil &middot; hard globe &middot; IOP &gt;50 &rarr; 999</p></div>
         <div class="ddx-card ddx-b" style="margin-bottom:6px"><h4>Endophthalmitis</h4><p>Severe pain &middot; hypopyon &middot; reduced VA &middot; post-op or post-injection &rarr; intravitreal antibiotics within hours</p></div>
-        <div class="ddx-card ddx-b" style="margin-bottom:6px"><h4>Chemical Injury</h4><p>Alkali splash &rarr; irrigate 15 min immediately &rarr; 999 &middot; do not delay for any reason</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:6px"><h4>Chemical Injury</h4><p>Alkali splash &rarr; irrigate immediately until pH neutral &rarr; emergency ophthalmology (999 if severe) &middot; do not delay for any reason</p></div>
         <div class="ddx-card ddx-b"><h4>Orbital Cellulitis</h4><p>Proptosis &middot; restricted eye movement &middot; fever &middot; periorbital oedema &rarr; CT orbit + IV antibiotics &rarr; 999</p></div>
       </div>
     </div>
@@ -1347,13 +1347,13 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="ref-table">
         <thead><tr><th>Condition / Referral</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
         <tbody>
-          <tr><td style="font-weight:600">AACG &mdash; Emergency ophthalmology / 999</td><td><span class="ref-urg rurg-2">Emergency</span></td><td style="font-size:12px">Check IOP if available. Pilocarpine 2% topically if diagnosed. IV acetazolamide 500mg if available and able to give. Do not delay transfer for any further examination.</td><td style="font-size:12px;color:var(--r)">Do not apply pressure to globe. Do not give IV fluids unnecessarily. Do not prescribe topical steroids.</td></tr>
-          <tr><td style="font-weight:600">Chemical injury &mdash; Immediate irrigation</td><td><span class="ref-urg rurg-2">Immediate / 999</span></td><td style="font-size:12px">Irrigate immediately with normal saline (or water) for minimum 15 minutes. Remove contact lenses first. Check pH after irrigation (target 7.0&ndash;7.4). Then 999 or emergency transfer.</td><td style="font-size:12px;color:var(--r)">NEVER delay irrigation to find out the exact chemical. NEVER patch or pad the eye before irrigation.</td></tr>
+          <tr><td style="font-weight:600">AACG &mdash; Emergency ophthalmology / 999</td><td><span class="ref-urg rurg-2">Emergency</span></td><td style="font-size:12px">Phone the on-call eye team now. Do not delay for tonometry or any further examination. Keep supervised; analgesia and antiemetic as needed; avoid pupil dilation; give IOP-lowering medication only on the eye team&rsquo;s advice (IV acetazolamide is not given from routine primary care).</td><td style="font-size:12px;color:var(--r)">Do not apply pressure to globe. Do not give IV fluids unnecessarily. Do not prescribe topical steroids.</td></tr>
+          <tr><td style="font-weight:600">Chemical injury &mdash; Immediate irrigation</td><td><span class="ref-urg rurg-2">Immediate / 999</span></td><td style="font-size:12px">Irrigate immediately with normal saline (or water) and continue until ocular-surface pH is neutral or near-neutral (no fixed time; severe alkali needs longer). Remove contact lenses and particulate matter. Recheck pH a few minutes after stopping. Then emergency ophthalmology (999 if severe).</td><td style="font-size:12px;color:var(--r)">NEVER delay irrigation to find out the exact chemical. NEVER patch or pad the eye before irrigation.</td></tr>
           <tr><td style="font-weight:600">Microbial keratitis (CL wearer + pain + reduced VA)</td><td><span class="ref-urg rurg-2">Same-day</span></td><td style="font-size:12px">Stop contact lens wear immediately. Document VA. Do not instil antibiotic drops before specialist assessment (masks scrape result). Refer with full history including CL wearing pattern.</td><td style="font-size:12px;color:var(--r)">Do NOT start antibiotics before corneal scrapes are taken &mdash; this significantly reduces diagnostic yield. Do not reassure and discharge a CL wearer with pain and reduced VA.</td></tr>
           <tr><td style="font-weight:600">Anterior uveitis / iritis (same-day ophthalmology)</td><td><span class="ref-urg rurg-4">Same-day</span></td><td style="font-size:12px">Document VA. Assess for systemic associations (HLA-B27 conditions: AS, IBD, Reiter&rsquo;s). Do not start topical steroids without slit-lamp confirmation of diagnosis.</td><td style="font-size:12px;color:var(--r)">Do not prescribe topical steroids without slit-lamp-confirmed diagnosis. Steroids in HSV uveitis without antiviral cover = catastrophic.</td></tr>
-          <tr><td style="font-weight:600">HSV keratitis (dendritic ulcer on fluorescein)</td><td><span class="ref-urg rurg-4">Same-day / urgent</span></td><td style="font-size:12px">Ganciclovir 0.15% eye gel 5 times daily (SPC) can be started while arranging same-day review (aciclovir 3% eye ointment is no longer available in the UK). Document VA. Refer urgently for slit-lamp confirmation. NEVER add topical steroids alone.</td><td style="font-size:12px;color:var(--r)">Never prescribe topical steroids without antiviral cover in HSV keratitis &mdash; causes dendritic ulcer to expand dramatically. This is a well-recognised cause of iatrogenic blindness in primary care.</td></tr>
+          <tr><td style="font-weight:600">HSV keratitis (dendritic ulcer on fluorescein)</td><td><span class="ref-urg rurg-4">Same-day / urgent</span></td><td style="font-size:12px">Refer for same-day ophthalmology slit-lamp assessment; topical antiviral (ganciclovir 0.15% eye gel &mdash; aciclovir 3% eye ointment is no longer available in the UK) is initiated by ophthalmology. Document VA. NEVER add topical steroids.</td><td style="font-size:12px;color:var(--r)">Never prescribe topical steroids without antiviral cover in HSV keratitis &mdash; causes dendritic ulcer to expand dramatically. This is a well-recognised cause of iatrogenic blindness in primary care.</td></tr>
           <tr><td style="font-weight:600">Neonatal conjunctivitis (ophthalmia neonatorum)</td><td><span class="ref-urg rurg-4">Urgent / same-day</span></td><td style="font-size:12px">Any conjunctivitis in a neonate &lt;28 days = urgent referral. Swab for GC, Chlamydia (NAAT). Gonococcal: IM/IV ceftriaxone urgently. Arrange sexual health (GUM) assessment and partner notification for the parents.</td><td style="font-size:12px;color:var(--r)">Never delay referral in neonatal conjunctivitis. GC can penetrate the intact cornea of neonates within hours. Chlamydial infection requires systemic erythromycin (prevents pneumonitis).</td></tr>
-          <tr><td style="font-weight:600">Recurrent uveitis / systemic workup</td><td><span class="ref-urg rurg-r">Routine + ophthalmology</span></td><td style="font-size:12px">Check HLA-B27, ESR/CRP, ANA. Review for systemic disease (AS: sacroiliac pain; IBD: bowel symptoms; Reiter&rsquo;s: urethritis + arthritis). Refer rheumatology + gastroenterology as appropriate.</td><td style="font-size:12px;color:var(--r)">Do not treat recurrent uveitis as isolated without systemic screen. Missing AS or IBD represents a significant missed diagnosis opportunity.</td></tr>
+          <tr><td style="font-weight:600">Recurrent uveitis / systemic workup</td><td><span class="ref-urg rurg-r">Same-day ophth per flare + guided workup</span></td><td style="font-size:12px">Each flare: same-day ophthalmology (or written flare plan). No indiscriminate uveitis screen &mdash; HLA-B27 and other tests are guided by ophthalmology/rheumatology after confirmation (NICE NG65). Ask about systemic disease (AS: sacroiliac pain; IBD: bowel symptoms; Reiter&rsquo;s: urethritis + arthritis). Refer rheumatology + gastroenterology as appropriate.</td><td style="font-size:12px;color:var(--r)">Do not treat recurrent uveitis as isolated without systemic screen. Missing AS or IBD represents a significant missed diagnosis opportunity.</td></tr>
           <tr><td style="font-weight:600">Contact lens advice &mdash; optometrist follow-up</td><td><span class="ref-urg rurg-r">Routine</span></td><td style="font-size:12px">After ophthalmology discharge: review CL hygiene regimen. Consider daily disposables instead of monthly. Advise: never sleep in lenses; never rinse in tap water; replace case monthly.</td><td style="font-size:12px;color:var(--r)">Do not clear patient to return to contact lens use without ophthalmology sign-off. Do not underestimate the risk of recurrent keratitis with poor CL hygiene.</td></tr>
         </tbody>
       </table>
@@ -1461,7 +1461,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="life-head"><span class="life-icon">&#129381;</span><div class="life-title">Hand Hygiene (Viral / Bacterial)</div><span class="life-target">Wash hands before and after touching eye</span></div>
         <div class="life-body">
           <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Adenoviral conjunctivitis is highly contagious (fomite transmission on shared towels, pillow cases, hands). Can survive on surfaces for up to 49 days. Secondary spread to household contacts and through healthcare settings is common.</p></div>
-          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Dedicated personal towel. Do not share eye makeup. Avoid rubbing the eye. Healthcare workers and nursery staff must be excluded from work while symptomatic with viral conjunctivitis.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Dedicated personal towel. Do not share eye makeup. Avoid rubbing the eye. Follow current UKHSA/local and occupational-health advice on exclusion from work, school or nursery (outbreak or institutional policy may differ).</p></div>
           <span class="life-benefit">Prevents spread to partner, children and colleagues</span>
         </div>
       </div>
@@ -1505,7 +1505,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--g)">
         <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .55rem;font-size:11.5px">Bacterial conjunctivitis: topical antibiotic</div>
         <ul style="font-size:12px;padding-left:1.1rem;line-height:1.75;margin:0">
-          <li><strong>First-line: Chloramphenicol 0.5% drops</strong> &mdash; QDS for 5&ndash;7 days; or 1% ointment at night</li>
+          <li><strong>If an antibiotic is needed: Chloramphenicol 0.5% drops</strong> &mdash; licensed dosing per local formulary (1 drop 2-hourly for 48 hours, then QDS; continue 48 hours after resolution); or 1% ointment at night. Mild cases: hygiene and delayed or no antibiotic</li>
           <li>Alternative: Fusidic acid 1% gel BD (better tolerance; used especially in pregnancy)</li>
           <li>Self-limiting in 7&ndash;14 days &mdash; antibiotics shorten course by 1&ndash;2 days only (NNT high)</li>
           <li>Do NOT prescribe for viral or allergic conjunctivitis &mdash; antibiotic stewardship</li>
@@ -1537,7 +1537,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="card-hd" style="color:var(--p);border:none;padding:0 0 .55rem;font-size:11.5px">HSV keratitis: antiviral treatment</div>
         <ul style="font-size:12px;padding-left:1.1rem;line-height:1.75;margin:0">
           <li><strong>Ganciclovir 0.15% eye gel (Virgan)</strong> &mdash; 1 drop 5 times daily until the cornea has re-epithelialised, then 3 times daily for 7 days; usually no more than 21 days (SPC). Aciclovir 3% eye ointment was discontinued in the UK in 2018</li>
-          <li>Urgent ophthalmology referral required alongside &mdash; slit-lamp confirmation of dendritic pattern</li>
+          <li>Initiated by ophthalmology after same-day slit-lamp confirmation of the dendritic pattern &mdash; not started from primary care</li>
           <li>After 2+ episodes: prophylactic oral aciclovir 400mg BD may be considered (ophthalmology decision)</li>
           <li>NEVER add topical steroids without concurrent antiviral and ophthalmology cover</li>
         </ul>
@@ -1548,7 +1548,7 @@ body.mode-clinic .sca-only{display:none!important}
           <li><strong>Hypromellose 0.3%</strong> (HPMC) &mdash; artificial tear; QDS or more frequently; suitable for frequent use</li>
           <li>Preservative-free formulations preferred if using &gt;4 times/day (e.g. Minims or unit-dose preservative-free)</li>
           <li>Carbomer 0.2% gel (Viscotears) &mdash; longer-lasting; useful at night</li>
-          <li>For blepharitis + dry eye: lid hygiene + lubricant; consider omega-3 supplements (modest evidence)</li>
+          <li>For blepharitis + dry eye: lid hygiene + lubricant; omega-3 supplements are not standard treatment (evidence mixed)</li>
         </ul>
       </div>
     </div>
@@ -1594,7 +1594,7 @@ body.mode-clinic .sca-only{display:none!important}
         </div>
         <div class="dc-section dc-a">
           <div class="dc-sec-t">&#9888; Administration tips</div>
-          <div class="dc-item">Drops: 1 drop QDS for 5&ndash;7 days; apply to lower conjunctival sac</div>
+          <div class="dc-item">Drops: 1 drop 2-hourly for 48 hours, then QDS; continue 48 hours after resolution (licensed dosing; check local formulary); apply to lower conjunctival sac</div>
           <div class="dc-item">Ointment: 1% at bedtime (can blur vision temporarily &mdash; warn patient)</div>
           <div class="dc-item">Store drops in fridge after opening; discard after 28 days</div>
           <div class="dc-item">Wash hands before and after application; do not share drops</div>
@@ -1605,7 +1605,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dc-item ci-rel">Chloramphenicol allergy (rare) &mdash; use fusidic acid instead</div>
           <div class="dc-item ci-rel">Aplastic anaemia risk is very rare with topical use but documented &mdash; advise to report unusual bruising or bleeding</div>
         </div>
-        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"These drops will help clear up the infection. Put one drop in your lower eyelid four times a day for 5 to 7 days, wash your hands before and after, and don&rsquo;t share them with anyone. Your eye should start to improve within 2&ndash;3 days &mdash; if it doesn&rsquo;t, come back."</p></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"These drops will help clear up the infection. Put one drop in your lower eyelid every 2 hours for the first 2 days, then four times a day until 2 days after it has cleared, wash your hands before and after, and don&rsquo;t share them with anyone. Your eye should start to improve within 2&ndash;3 days &mdash; if it doesn&rsquo;t, come back."</p></div>
         <div class="dc-sca"><p>SCA: Warn about viral conjunctivitis resistance &mdash; antibiotics are not needed and will not help if the cause is viral. If prescribing, explain the rationale. Healthcare workers with bacterial conjunctivitis must still follow exclusion guidance.</p></div>
       </div>
 
@@ -1622,7 +1622,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dc-sec-t">&#10003; Prefer when</div>
           <div class="dc-item">Seasonal or perennial allergic conjunctivitis: bilateral itch, seasonal pattern, normal VA</div>
           <div class="dc-item">Prophylaxis: start 2 weeks before anticipated allergen exposure (hay fever season)</div>
-          <div class="dc-item">Can be used in children &ge;5 years; safe in pregnancy (category B)</div>
+          <div class="dc-item">Can be used in children &ge;5 years; preferred if treatment is needed in pregnancy (use when clearly indicated; caution in first trimester)</div>
         </div>
         <div class="dc-section dc-a">
           <div class="dc-sec-t">&#9888; Counselling essentials</div>
@@ -1656,13 +1656,13 @@ body.mode-clinic .sca-only{display:none!important}
         </div>
         <div class="dc-section dc-a">
           <div class="dc-sec-t">&#9888; Administration tips</div>
-          <div class="dc-item">1 drop BD (morning and evening); can be used up to 6 weeks continuously</div>
+          <div class="dc-item">1 drop BD (morning and evening); can be continued for up to 4 months if needed (SPC)</div>
           <div class="dc-item">Remove contact lenses before instillation; wait 15 min before replacing</div>
           <div class="dc-item">Refrigerated drops feel more soothing (cooling reduces histamine-mediated itch)</div>
         </div>
         <div class="dc-section dc-r">
           <div class="dc-sec-t">&#10007; Cautions</div>
-          <div class="dc-item ci-rel">Not recommended in children under 3 years (0.1% formulation)</div>
+          <div class="dc-item ci-rel">Not recommended in children under 3 years (0.1% formulation); avoid in pregnancy and breastfeeding (SPC)</div>
           <div class="dc-item ci-rel">Not suitable for keratitis or any red eye with reduced VA or photophobia</div>
         </div>
         <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"These drops work in two ways &mdash; they block the allergic reaction and prevent it from starting. Take your contact lenses out first, put one drop in each eye morning and evening, and wait 15 minutes before putting your lenses back in. Keeping them in the fridge can help with the itching."</p></div>
@@ -1681,8 +1681,8 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="dc-section dc-g">
           <div class="dc-sec-t">&#10003; Prefer when</div>
           <div class="dc-item">Herpes simplex keratitis confirmed or strongly suspected: dendritic ulcer on fluorescein staining</div>
-          <div class="dc-item">Start promptly once HSV keratitis is suspected, alongside urgent ophthalmology referral</div>
-          <div class="dc-item">After ophthalmological confirmation (ideally start alongside referral)</div>
+          <div class="dc-item">Suspected HSV keratitis: same-day ophthalmology referral &mdash; do not delay</div>
+          <div class="dc-item">Initiated by ophthalmology after slit-lamp confirmation</div>
         </div>
         <div class="dc-section dc-a">
           <div class="dc-sec-t">&#9888; Dosing schedule</div>
@@ -1741,7 +1741,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="dc-section dc-g">
           <div class="dc-sec-t">&#10003; Prefer when</div>
           <div class="dc-item">Bacterial conjunctivitis as alternative to chloramphenicol (BD dosing improves adherence)</div>
-          <div class="dc-item">Staphylococcal blepharitis with infected lid margins &mdash; applied to lid margin BD</div>
+          <div class="dc-item">Blepharitis: not routine &mdash; only persistent anterior disease despite good lid hygiene, via the eye-care pathway (off-label, time-limited)</div>
           <div class="dc-item">Preferred in pregnancy (category B) and in children &lt;2 years (chloramphenicol safety data less robust)</div>
         </div>
         <div class="dc-section dc-a">
@@ -1774,7 +1774,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="psoci-card">
           <span class="psoci-icon">&#128188;</span>
           <h5>Work &amp; Occupation</h5>
-          <p>Viral conjunctivitis is highly contagious via fomite transmission. Healthcare workers, nursery teachers, and food handlers must be excluded from direct patient, child or food contact until discharge has fully resolved.</p>
+          <p>Viral conjunctivitis is highly contagious via fomite transmission. Exclusion of healthcare workers, nursery staff and food handlers follows current UKHSA/local and occupational-health advice (outbreak or institutional policy may differ).</p>
           <p>For office / screen workers: reduced VA + photophobia impairs computer work. Phased return or temporary adjustments may be needed. Occupational health referral if significant impact on function.</p>
           <span class="psoci-phrase">"Does your work involve contact with patients or children? While you have this, I&rsquo;d advise you not to go in &mdash; I can give you a sick note for today."</span>
         </div>
@@ -1804,7 +1804,7 @@ body.mode-clinic .sca-only{display:none!important}
           <h5>Cosmesis &amp; Appearance</h5>
           <p>A severely red or bloodshot eye &mdash; especially a subconjunctival haemorrhage &mdash; can be cosmetically alarming and cause significant social anxiety, embarrassment and concern. Patients may present primarily because of how the eye looks rather than any symptom.</p>
           <p>Subconjunctival haemorrhage: explicitly reassure it is benign and will fully resolve. Bacterial conjunctivitis: reassure that discharge resolves within days on treatment.</p>
-          <span class="psoci-phrase">"I understand it looks quite alarming &mdash; people tend to stare! But I can reassure you it&rsquo;s completely harmless and will clear up on its own over about 2 to 3 weeks."</span>
+          <span class="psoci-phrase">"I understand it looks quite alarming &mdash; people tend to stare! But I can reassure you it&rsquo;s completely harmless and will clear up on its own, usually over 1 to 2 weeks."</span>
         </div>
         <div class="psoci-card">
           <span class="psoci-icon">&#128064;</span>
@@ -1824,7 +1824,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="fu-dot fd1">1</div>
           <div class="fu-content">
             <h5>48 hours &mdash; Treatment response check (bacterial conjunctivitis)</h5>
-            <p>Phone or F2F: is the discharge reducing? VA still 6/6? Any new photophobia or pain (would suggest keratitis / uveitis developing)? If no improvement in 48h or worsening: immediate ophthalmology referral.</p>
+            <p>Phone or F2F: is the discharge reducing? VA still 6/6? Any new photophobia or pain (would suggest keratitis / uveitis developing)? If worsening, atypical or not improving as expected: review and reconsider the diagnosis; pain, photophobia, visual change or corneal findings &rarr; same-day ophthalmology.</p>
             <div class="fu-tags"><span class="ft ft-b">Bacterial conjunctivitis on antibiotics</span><span class="ft ft-r">Worsening &rarr; ophthalmology same-day</span></div>
           </div>
         </div>
@@ -1848,7 +1848,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="fu-dot fd4">4</div>
           <div class="fu-content">
             <h5>Optometrist review &mdash; 4&ndash;6 weeks post-resolution (CL wearers)</h5>
-            <p>Contact lens wearers should not resume lenses until ophthalmology-cleared and seen by optometrist. Review lens type (switch to daily disposables), wearing schedule (reduce to max 12h/day), lens care regimen, and corneal topography if keratitis caused significant scarring.</p>
+            <p>Contact lens wearers should not resume lenses until ophthalmology-cleared and seen by optometrist. Review lens type (switch to daily disposables), wearing schedule (reduce to max 8&ndash;10h/day), lens care regimen, and corneal topography if keratitis caused significant scarring.</p>
             <div class="fu-tags"><span class="ft ft-b">CL wearers post-keratitis</span><span class="ft ft-a">Daily disposables recommended</span></div>
           </div>
         </div>
@@ -1881,7 +1881,7 @@ body.mode-clinic .sca-only{display:none!important}
         <table class="rt">
           <thead><tr><th>Drug class / Condition</th><th>Monitoring</th><th>Timing</th><th>Action threshold</th></tr></thead>
           <tbody>
-            <tr><td>Bacterial conjunctivitis (chloramphenicol)</td><td>Symptom review</td><td>48h call; 1 week if needed</td><td>No improvement at 48h or worsening &rarr; same-day ophthalmology</td></tr>
+            <tr><td>Bacterial conjunctivitis (chloramphenicol)</td><td>Symptom review</td><td>48h call; 1 week if needed</td><td>Not improving as expected &rarr; review, swab if treatment-resistant; pain, photophobia, visual change or worsening &rarr; same-day ophthalmology</td></tr>
             <tr><td>HSV keratitis (topical ganciclovir)</td><td>VA + fluorescein (ophthalmology)</td><td>Daily initially; then weekly</td><td>Corneal ulcer not healing &rarr; intensify treatment; consider drug resistance</td></tr>
             <tr><td>Uveitis (topical steroids &mdash; ophthalmology)</td><td>VA + IOP + anterior chamber (ophthalmology)</td><td>Weekly until controlled</td><td>IOP rising &gt;21 on steroids &rarr; add IOP-lowering agent; consider steroid-sparing</td></tr>
             <tr><td>Systemic immunosuppression (uveitis)</td><td>FBC + LFTs (methotrexate / azathioprine)</td><td>Every 3 months</td><td>LFT elevation / cytopenia &rarr; dose reduction; rheumatology / ophthalmology review</td></tr>
@@ -2225,15 +2225,15 @@ body.mode-clinic .sca-only{display:none!important}
 
     <div class="sum-sub-hdr">&#128202; 3 &mdash; Key Numbers</div>
     <div class="num-grid" style="margin-bottom:1rem">
-      <div class="num-card num-highlight"><div class="num-val">VA &lt;6/12</div><div class="num-lbl">Urgent ophthalmology threshold</div></div>
+      <div class="num-card num-highlight"><div class="num-val">VA &darr;</div><div class="num-lbl">Any unexplained reduction &rarr; same-day ophthalmology</div></div>
       <div class="num-card num-highlight"><div class="num-val">IOP &gt;21</div><div class="num-lbl">Raised IOP &rarr; glaucoma concern</div></div>
-      <div class="num-card num-highlight"><div class="num-val">15 min</div><div class="num-lbl">Chemical irrigation minimum duration</div></div>
-      <div class="num-card num-highlight"><div class="num-val">Same day</div><div class="num-lbl">HSV keratitis: topical ganciclovir + urgent ophthalmology</div></div>
-      <div class="num-card num-highlight"><div class="num-val">24h</div><div class="num-lbl">Maximum wait for keratitis (same-day preferred)</div></div>
+      <div class="num-card num-highlight"><div class="num-val">pH neutral</div><div class="num-lbl">Chemical irrigation endpoint (no fixed time)</div></div>
+      <div class="num-card num-highlight"><div class="num-val">Same day</div><div class="num-lbl">HSV keratitis: same-day ophthalmology (antiviral ophthalmology-initiated)</div></div>
+      <div class="num-card num-highlight"><div class="num-val">Same day</div><div class="num-lbl">Suspected keratitis &rarr; same-day ophthalmology</div></div>
       <div class="num-card num-highlight"><div class="num-val">6 wks</div><div class="num-lbl">Post-op red eye = endophthalmitis risk</div></div>
       <div class="num-card"><div class="num-val">7&ndash;14d</div><div class="num-lbl">Bacterial conjunctivitis resolution</div></div>
       <div class="num-card"><div class="num-val">2&ndash;3 wks</div><div class="num-lbl">Viral conjunctivitis resolution</div></div>
-      <div class="num-card"><div class="num-val">2&ndash;3 wks</div><div class="num-lbl">Subconj haemorrhage resolution</div></div>
+      <div class="num-card"><div class="num-val">1&ndash;2 wks</div><div class="num-lbl">Subconj haemorrhage resolution</div></div>
       <div class="num-card"><div class="num-val">10&times;</div><div class="num-lbl">Keratitis risk increase with overnight CL wear</div></div>
       <div class="num-card"><div class="num-val">BD</div><div class="num-lbl">Fusidic acid dosing frequency (vs QDS chloramphenicol)</div></div>
       <div class="num-card"><div class="num-val">5&times; daily</div><div class="num-lbl">Ganciclovir 0.15% eye gel frequency for HSV (until healed)</div></div>
@@ -2244,12 +2244,12 @@ body.mode-clinic .sca-only{display:none!important}
       <div style="background:#f0fdf4;border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.75rem .9rem">
         <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.5rem">Primary care treatments</div>
         <div style="font-size:12px;line-height:1.8">
-          <strong>Bacterial conj:</strong> Chloramphenicol 0.5% QDS &times; 5&ndash;7d (or fusidic acid 1% BD)<br>
+          <strong>Bacterial conj:</strong> Mild: hygiene, delayed or no antibiotic; if needed chloramphenicol 0.5% 2-hourly for 48h then QDS (or fusidic acid 1% BD)<br>
           <strong>Viral conj:</strong> Supportive only &mdash; cool compresses; hand hygiene; no antibiotics<br>
-          <strong>Allergic:</strong> Olopatadine 0.1% BD or sodium cromoglicate 2% QDS<br>
+          <strong>Allergic:</strong> Sodium cromoglicate 2% QDS first-line; olopatadine 0.1% BD if inadequate (not in pregnancy)<br>
           <strong>Dry eye:</strong> Hypromellose 0.3% QDS; preservative-free if &gt;4&times;/day<br>
-          <strong>Blepharitis:</strong> Lid hygiene (warm compress + lid scrubs) BD; fusidic acid to lid margin if infected<br>
-          <strong>Subconj haemorrhage:</strong> Reassure; no treatment; check BP; resolves 2&ndash;3 weeks
+          <strong>Blepharitis:</strong> Lid hygiene (warm compress + lid scrubs) BD; antibiotics not routine &mdash; persistent disease via eye-care pathway<br>
+          <strong>Subconj haemorrhage:</strong> Reassure; no treatment; check BP; usually resolves 1&ndash;2 weeks
         </div>
       </div>
       <div style="background:var(--r-bg);border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.75rem .9rem">
@@ -2288,7 +2288,7 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="mon-table">
         <thead><tr><th>Condition / Drug</th><th>Monitor</th><th>Timing</th><th>Action threshold</th></tr></thead>
         <tbody>
-          <tr><td><strong>Bacterial conj (chloramphenicol)</strong></td><td>Symptom response</td><td class="mon-amber">48h call; 1 week if needed</td><td>No improvement &rarr; same-day ophth; consider chlamydial screen</td></tr>
+          <tr><td><strong>Bacterial conj (chloramphenicol)</strong></td><td>Symptom response</td><td class="mon-amber">48h call; 1 week if needed</td><td>Not improving &rarr; review, swab, consider chlamydial screen; pain, photophobia or visual change &rarr; same-day ophth</td></tr>
           <tr><td><strong>HSV keratitis (topical ganciclovir)</strong></td><td>VA + fluorescein (ophthalmology)</td><td class="mon-red">Daily initially</td><td>Ulcer not healing at 7 days &rarr; consider resistance; ophthalmology intensifies</td></tr>
           <tr><td><strong>Uveitis (topical steroids &mdash; ophth)</strong></td><td>VA + IOP (ophthalmology)</td><td class="mon-amber">Weekly until controlled</td><td>IOP &gt;21 on steroids &rarr; add topical beta-blocker; switch steroid formulation</td></tr>
           <tr><td><strong>Allergic conj (olopatadine)</strong></td><td>Symptom severity score</td><td class="mon-green">4&ndash;6 weeks</td><td>Ongoing severe symptoms &rarr; add oral antihistamine; allergy referral</td></tr>
@@ -2419,7 +2419,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px">
         <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
           <div style="font-size:11px;font-weight:600;color:var(--muted)">Bacterial conjunctivitis (1st line)</div>
-          <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap"><span style="font-size:10px;color:var(--muted)">&rarr;</span><span class="sdp-pill acei-pill">Chloramphenicol 0.5% QDS &times; 5&ndash;7d</span></div>
+          <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap"><span style="font-size:10px;color:var(--muted)">&rarr;</span><span class="sdp-pill acei-pill">Chloramphenicol 0.5% 2-hourly 48h, then QDS</span></div>
           <div style="font-size:10.5px;color:var(--muted)">VA 6/6; no photophobia; no pain; not a CL wearer with reduced VA</div>
         </div>
         <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
@@ -2428,19 +2428,19 @@ body.mode-clinic .sca-only{display:none!important}
           <div style="font-size:10.5px;color:var(--muted)">Better adherence (BD); preferred in pregnancy; preferred in children &lt;2</div>
         </div>
         <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
-          <div style="font-size:11px;font-weight:600;color:var(--muted)">Allergic conjunctivitis (acute itch)</div>
+          <div style="font-size:11px;font-weight:600;color:var(--muted)">Allergic conjunctivitis (if cromoglicate inadequate)</div>
           <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap"><span style="font-size:10px;color:var(--muted)">&rarr;</span><span class="sdp-pill arb-pill">Olopatadine 0.1% BD</span></div>
-          <div style="font-size:10.5px;color:var(--muted)">Faster onset than cromoglicate; dual antihistamine + mast cell stabiliser</div>
+          <div style="font-size:10.5px;color:var(--muted)">Faster onset than cromoglicate; dual antihistamine + mast cell stabiliser; avoid in pregnancy/breastfeeding</div>
         </div>
         <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
-          <div style="font-size:11px;font-weight:600;color:var(--muted)">Allergic conjunctivitis (prevention)</div>
+          <div style="font-size:11px;font-weight:600;color:var(--muted)">Allergic conjunctivitis (first-line)</div>
           <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap"><span style="font-size:10px;color:var(--muted)">&rarr;</span><span class="sdp-pill ccb-pill">Sodium cromoglicate 2% QDS</span></div>
           <div style="font-size:10.5px;color:var(--muted)">Start 2 weeks before pollen season; regular QDS essential; delayed onset</div>
         </div>
         <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
-          <div style="font-size:11px;font-weight:600;color:var(--muted)">HSV keratitis (start promptly)</div>
+          <div style="font-size:11px;font-weight:600;color:var(--muted)">HSV keratitis (ophthalmology-initiated)</div>
           <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap"><span style="font-size:10px;color:var(--muted)">&rarr;</span><span class="sdp-pill" style="background:#f5f3ff;color:#6d28d9">Ganciclovir 0.15% gel 5&times; daily</span></div>
-          <div style="font-size:10.5px;color:var(--muted)">Always refer to ophthalmology alongside. NEVER add topical steroids alone.</div>
+          <div style="font-size:10.5px;color:var(--muted)">Same-day ophthalmology starts it. NEVER add topical steroids.</div>
         </div>
         <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
           <div style="font-size:11px;font-weight:600;color:var(--muted)">Dry eye / viral conj (supportive)</div>
@@ -2472,7 +2472,7 @@ function calcEyeDrug(){
     {cbId:'ds-allerg', dcId:'crom',  recId:'rec-crom',  label:'Sodium cromoglicate 2% QDS (prevention) \u00b1 Olopatadine 0.1% BD (acute)'},
     {cbId:'ds-viral',  dcId:'hyp',   recId:'rec-hyp',   label:'Hypromellose 0.3% QDS \u2014 supportive only (no antibiotics for viral)'},
     {cbId:'ds-drye',   dcId:'hyp',   recId:'rec-hyp',   label:'Hypromellose 0.3% QDS \u2014 preservative-free if >4\u00d7/day'},
-    {cbId:'ds-hsvk',   dcId:'acic',  recId:'rec-acic',  label:'Ganciclovir 0.15% eye gel 5\u00d7 daily \u2014 start promptly + urgent ophthalmology'},
+    {cbId:'ds-hsvk',   dcId:'acic',  recId:'rec-acic',  label:'Same-day ophthalmology \u2014 ganciclovir 0.15% eye gel 5\u00d7 daily initiated by ophthalmology'},
     {cbId:'ds-blephi', dcId:'fusid', recId:'rec-fusid',  label:'Lid hygiene (warm compress + lid scrubs BD) \u00b1 Fusidic acid 1% to lid margin if infected'}
   ];
   /* Reset all */

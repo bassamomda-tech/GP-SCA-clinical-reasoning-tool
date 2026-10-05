@@ -860,7 +860,7 @@ body.mode-clinic .sca-only{display:none!important}
             </tr>
             <tr>
               <td class="q">Systemic symptoms (red flag screen)<em>"Have you had any fever, chills, unexplained weight loss, or night sweats?"</em></td>
-              <td class="why">Fever + LBP = discitis/spinal abscess until excluded. Weight loss + back pain in patient over 50 = malignancy screen mandatory. Night sweats may indicate lymphoma.<span class="why-sub">Systemic symptoms mandate urgent bloods and imaging regardless of pain character.</span></td>
+              <td class="why">Fever + LBP = discitis/spinal abscess until excluded. Weight loss + back pain = assess for malignancy directed by the presentation (NICE NG12: age 60+ → consider urgent CT for pancreatic cancer and myeloma bloods); there is no generic cancer screen. Night sweats may indicate lymphoma.<span class="why-sub">Systemic symptoms mandate urgent bloods and imaging regardless of pain character.</span></td>
               <td><span class="chg chg-999">999</span><span class="chg chg-inv">Inv</span><span class="chg chg-ref">Referral</span></td>
             </tr>
             <tr>
@@ -916,12 +916,12 @@ body.mode-clinic .sca-only{display:none!important}
             </tr>
             <tr>
               <td class="rf-flag">History of malignancy + new back pain</td>
-              <td class="rf-why">Metastatic spinal cord compression (MSCC) until proven otherwise. Lung, breast, prostate, kidney, thyroid most common. Urgent MRI whole spine + oncology referral.</td>
+              <td class="rf-why">Metastatic spinal cord compression (MSCC) until proven otherwise. Lung, breast, prostate, kidney, thyroid most common. Contact the MSCC coordinator/acute oncology: neurological signs → immediately (MRI within 24 h); no neurological signs → advice within 24 h and MRI within 1 week (NICE NG234).</td>
               <td><span class="rf-action rfa-same">Same-day referral</span></td>
             </tr>
             <tr>
               <td class="rf-flag">Unexplained weight loss + back pain (especially age &gt;50)</td>
-              <td class="rf-why">Primary spinal malignancy or systemic cancer with bone involvement. Multiple myeloma, lymphoma, or occult primary. Requires urgent bloods and imaging.</td>
+              <td class="rf-why">Primary spinal malignancy or systemic cancer with bone involvement. Multiple myeloma, lymphoma, or occult primary. Bloods and imaging directed by the suspected pathology (NICE NG12: 60+ → myeloma bloods; consider urgent CT for pancreatic cancer).</td>
               <td><span class="rf-action rfa-same">Same-day bloods + urgent ref</span></td>
             </tr>
             <tr>
@@ -999,14 +999,14 @@ body.mode-clinic .sca-only{display:none!important}
           <table class="it">
             <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
             <tbody>
-              <tr><td class="factor">Previous malignancy</td><td>Metastatic spread to spine is the most dangerous LBP aetiology to miss</td><td class="impact">Urgent MRI spine + oncology referral even if pain seems mechanical</td></tr>
+              <tr><td class="factor">Previous malignancy</td><td>Metastatic spread to spine is the most dangerous LBP aetiology to miss</td><td class="impact">Contact MSCC coordinator/acute oncology even if pain seems mechanical — MRI within 24 h if neurological signs, within 1 week if not (NICE NG234)</td></tr>
               <tr><td class="factor">Osteoporosis / steroid use</td><td>Vertebral compression fractures common; minimal trauma may cause collapse</td><td class="impact">Plain film thoracolumbar spine; DEXA if not recent; anti-osteoporotic treatment</td></tr>
-              <tr><td class="factor">Ankylosing spondylitis / seronegative arthritis</td><td>Inflammatory LBP — completely different management pathway</td><td class="impact">Rheumatology referral; HLA-B27; NSAIDs as first-line (beneficial not just analgesic)</td></tr>
+              <tr><td class="factor">Ankylosing spondylitis / seronegative arthritis</td><td>Inflammatory LBP — completely different management pathway</td><td class="impact">Rheumatology referral per NICE NG65 criteria (≥4 features, or 3 + HLA-B27); NSAIDs as first-line (beneficial not just analgesic)</td></tr>
               <tr><td class="factor">Abdominal aortic aneurysm</td><td>Leaking AAA can present as sudden severe back/flank pain</td><td class="impact">Pulsatile epigastric mass on exam → 999 immediately</td></tr>
               <tr><td class="factor">Renal/urological disease</td><td>Renal colic, pyelonephritis, or obstructive uropathy can cause back pain</td><td class="impact">Urinalysis, renal function; different analgesia (avoid NSAIDs in renal impairment)</td></tr>
               <tr><td class="factor">Depression / anxiety / previous trauma</td><td>Strongest predictors of chronic LBP and poor treatment outcomes</td><td class="impact">STarT high risk → closer follow-up and more intensive support; PHQ-9; treat co-existing depression/anxiety in its own right (NHS Talking Therapies)</td></tr>
               <tr><td class="factor">Previous spine surgery</td><td>Failed back surgery syndrome; hardware complications; nerve root scarring</td><td class="impact">Neurosurgical follow-up; specialist pain service; avoid repeat surgery unless new pathology</td></tr>
-              <tr><td class="factor">Family history of inflammatory arthritis / IBD</td><td>Sacroiliitis and ankylosing spondylitis have strong genetic component; IBD-related arthropathy</td><td class="impact">HLA-B27 testing; pelvic X-ray or MRI sacroiliac joints</td></tr>
+              <tr><td class="factor">Family history of inflammatory arthritis / IBD</td><td>Sacroiliitis and ankylosing spondylitis have strong genetic component; IBD-related arthropathy</td><td class="impact">Count NICE NG65 features; HLA-B27 only if exactly 3 features; no MRI sacroiliac joints in primary care</td></tr>
             </tbody>
           </table>
         </div>
@@ -1016,7 +1016,7 @@ body.mode-clinic .sca-only{display:none!important}
             <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
             <tbody>
               <tr><td class="factor">Current opioid use (codeine, tramadol, morphine)</td><td>Opioid-induced hyperalgesia paradoxically worsens chronic pain; dependence is common</td><td class="impact">Opioid review; tapering plan if long-term use; do not escalate without psychology review</td></tr>
-              <tr><td class="factor">NSAIDs / anticoagulants</td><td>Oral NSAIDs can be considered for LBP (NICE NG59) at the lowest dose for the shortest time; interaction with warfarin/DOACs</td><td class="impact">Prescribe with PPI gastroprotection; avoid if GI ulcer history, renal impairment, or anticoagulation</td></tr>
+              <tr><td class="factor">NSAIDs / anticoagulants</td><td>Oral NSAIDs can be considered for LBP (NICE NG59) at the lowest dose for the shortest time; interaction with warfarin/DOACs</td><td class="impact">Gastroprotection (PPI) by individual GI risk; avoid if GI ulcer history, renal impairment, or anticoagulation</td></tr>
               <tr><td class="factor">Corticosteroids (long-term)</td><td>Adrenal suppression + osteoporosis → vertebral fracture risk and immune suppression (masked discitis)</td><td class="impact">Lower imaging threshold; bone protection; explore steroid-sparing alternatives</td></tr>
               <tr><td class="factor">Sedentary occupation / desk work</td><td>Prolonged sitting is an independent risk factor for LBP; poor ergonomics worsen prognosis</td><td class="impact">Ergonomic advice; regular positional breaks; standing desk discussion</td></tr>
               <tr><td class="factor">Manual/heavy lifting occupation</td><td>Mechanical loading is a direct cause of disc herniation and joint strain</td><td class="impact">Fit note for modified duties; occupational health referral; return-to-work plan</td></tr>
@@ -1160,11 +1160,11 @@ body.mode-clinic .sca-only{display:none!important}
           <h3>Same-Day / 1–2 Week Assessment</h3>
           <span class="tc-badge tcb-u">Urgent referral / same-day bloods</span>
           <ul class="tc-items">
-            <li class="tc-item"><strong>New back pain + cancer history (no acute neurology)</strong><em>MRI spine within 24–48 hours via MSCC pathway</em></li>
-            <li class="tc-item"><strong>Fever + back pain (haemodynamically stable)</strong><em>Same-day bloods (FBC, CRP, ESR, blood cultures); consider same-day MRI if high suspicion discitis</em></li>
+            <li class="tc-item"><strong>New back pain + cancer history (no acute neurology)</strong><em>MSCC coordinator advice within 24 hours; MRI within 1 week (NICE NG234)</em></li>
+            <li class="tc-item"><strong>Fever + back pain (haemodynamically stable)</strong><em>Same-day hospital assessment if unwell, neurological symptoms or strongly suspected (blood cultures, CRP, MRI there); normal early markers do not exclude infection</em></li>
             <li class="tc-item"><strong>Suspected vertebral fracture (trauma + osteoporosis risk)</strong><em>Same-day plain X-ray thoracolumbar spine; orthopaedic review if collapse confirmed</em></li>
-            <li class="tc-item"><strong>Significant progressive radiculopathy (&gt;6 weeks, worsening)</strong><em>MRI lumbar spine; neurosurgical referral if motor deficit or unresponsive to conservative treatment</em></li>
-            <li class="tc-item"><strong>Inflammatory back pain (age &lt;45, morning stiffness &gt;30 min, improves with exercise)</strong><em>HLA-B27; CRP; pelvic X-ray/MRI SI joints; rheumatology referral within 2 weeks</em></li>
+            <li class="tc-item"><strong>Significant progressive radiculopathy (&gt;6 weeks, worsening)</strong><em>MSK/spinal referral (imaging arranged there if it will change management); urgent spinal assessment if new or progressive motor deficit</em></li>
+            <li class="tc-item"><strong>Inflammatory back pain (onset &lt;45, &gt;3 months, NICE NG65 features)</strong><em>Refer to rheumatology if ≥4 NG65 features (or 3 + HLA-B27 positive) — do not wait for tests; no MRI SI joints in primary care</em></li>
           </ul>
         </div>
         <div class="tc tc-r">
@@ -1175,7 +1175,7 @@ body.mode-clinic .sca-only{display:none!important}
             <li class="tc-item"><strong>Acute non-specific LBP (&lt;6 weeks, no red flags)</strong><em>Reassurance + NSAIDs + active advice; avoid imaging; review at 6 weeks</em></li>
             <li class="tc-item"><strong>Subacute LBP (6–12 weeks, improving)</strong><em>Structured physiotherapy; consider group exercise; STarT stratification</em></li>
             <li class="tc-item"><strong>Chronic non-specific LBP (&gt;12 weeks, stable)</strong><em>STarT high risk: closer follow-up; exercise programme (± manual therapy as part of that package); return-to-work support; treat co-existing distress in its own right</em></li>
-            <li class="tc-item"><strong>Radiculopathy with mild symptoms, improving</strong><em>Reassurance, NSAIDs, remain active; MRI if no improvement at 6 weeks or progressive deficit</em></li>
+            <li class="tc-item"><strong>Radiculopathy with mild symptoms, improving</strong><em>Reassurance, NSAIDs, remain active; review at 2–4 weeks; MSK/spinal referral if not settling, urgent if progressive deficit</em></li>
             <li class="tc-item"><strong>Recurrent mechanical LBP in known patient</strong><em>Self-management plan, exercise diary, review yellow flags; consider group physiotherapy</em></li>
           </ul>
         </div>
@@ -1235,19 +1235,19 @@ body.mode-clinic .sca-only{display:none!important}
             <tr>
               <td class="q">Range of movement: flexion, extension, lateral flexion</td>
               <td class="why">Quantifies functional impairment. Restriction of flexion and extension consistent with mechanical pain. Restricted rotation in all planes → consider inflammatory.<span class="why-sub">Documents baseline for follow-up and physiotherapy referral.</span></td>
-              <td class="why">All-plane restriction + morning stiffness → inflammatory pathway; HLA-B27; rheumatology</td>
+              <td class="why">All-plane restriction + inflammatory history → apply NICE NG65 criteria; rheumatology</td>
               <td><span class="mcb mcb-yes">YES — inflammatory vs. mechanical</span></td>
             </tr>
             <tr>
               <td class="q">Straight leg raise (SLR)</td>
               <td class="why">Sensitive test for nerve root compression (L4–S1). Positive SLR (pain below knee &lt;60°) has high sensitivity for disc herniation with radiculopathy.<span class="why-sub">Negative SLR in the absence of leg symptoms makes significant radiculopathy unlikely.</span></td>
-              <td class="why">Positive SLR + leg symptoms → MRI lumbar spine; physiotherapy referral; neurosurgical if motor deficit</td>
+              <td class="why">Positive SLR + leg symptoms → sciatica pathway; physiotherapy; MSK/spinal referral if persistent or severe; urgent spinal assessment if motor deficit</td>
               <td><span class="mcb mcb-yes">YES — radiculopathy pathway</span></td>
             </tr>
             <tr>
               <td class="q">Neurological lower limb: power, sensation, reflexes (knee jerk L3/4, ankle jerk S1, plantar L5/S1)</td>
               <td class="why">Motor deficit (foot drop, weakness) or absent reflexes indicate significant nerve root compression and may require neurosurgical assessment. Saddle anaesthesia = cauda equina emergency.<span class="why-sub">Reflex changes localise level of compression and guide imaging.</span></td>
-              <td class="why">Any motor deficit → urgent MRI + neurosurgical referral; foot drop → same day; saddle anaesthesia → A&amp;E immediately</td>
+              <td class="why">New or progressive motor deficit → urgent spinal assessment (imaging by the receiving service); new foot drop → same day; saddle anaesthesia → A&amp;E immediately</td>
               <td><span class="mcb mcb-yes">YES — urgent if deficit present</span></td>
             </tr>
             <tr>
@@ -1271,7 +1271,7 @@ body.mode-clinic .sca-only{display:none!important}
             <tr>
               <td class="q">Gait assessment and heel/toe walking</td>
               <td class="why">Inability to heel walk (foot drop) indicates L4/5 root compression and may require urgent neurosurgical referral. Heel/toe walking is a quick screen for significant motor deficit.<span class="why-sub">Takes 30 seconds and should be standard in any LBP with leg symptoms.</span></td>
-              <td class="why">Foot drop on heel walking → urgent MRI within 24 hours; neurosurgical opinion</td>
+              <td class="why">New foot drop on heel walking → same-day/urgent spinal assessment via local pathway</td>
               <td><span class="mcb mcb-yes">YES — urgent referral</span></td>
             </tr>
           </tbody>
@@ -1326,7 +1326,7 @@ body.mode-clinic .sca-only{display:none!important}
             <tr>
               <td class="q">MRI lumbar spine</td>
               <td class="why">Disc herniation, nerve root compression, spinal stenosis, cord pathology, infection, or malignancy. Gold standard for soft tissue and neural structures.</td>
-              <td class="why">Disc prolapse with nerve root compression + motor deficit → neurosurgical referral; MSCC → immediate oncology/neurosurgery; normal MRI in chronic LBP = strong reassurance tool</td>
+              <td class="why">Disc prolapse with nerve root compression + motor deficit → neurosurgical referral; MSCC → immediate oncology/neurosurgery; not for reassurance — no routine imaging in non-specialist settings for chronic LBP</td>
             </tr>
             <tr>
               <td class="q">MRI whole spine (urgent)</td>
@@ -1344,19 +1344,19 @@ body.mode-clinic .sca-only{display:none!important}
               <td class="why">CRP &gt;50 + fever + severe pain → discitis/abscess → admit for MRI + IV antibiotics; markedly raised ESR → malignancy or inflammatory screen; normal = reassuring for non-specific LBP</td>
             </tr>
             <tr>
-              <td class="q">PSA (prostate-specific antigen)</td>
-              <td class="why">Prostate cancer is the most common malignancy to cause spinal metastases in men. Raised PSA in a male with unexplained back pain should trigger urgent urology referral.</td>
+              <td class="q">PSA (only if prostate cancer clinically suspected)</td>
+              <td class="why">Prostate cancer is the most common malignancy to cause spinal metastases in men. Not a routine back-pain test — request only when prostate cancer is suspected, with shared decision-making.</td>
               <td class="why">Raised PSA + back pain → urgent urology (suspected prostate cancer pathway); normal = reduces malignancy probability</td>
             </tr>
             <tr>
-              <td class="q">Serum protein electrophoresis (SPEP) + urinary Bence Jones protein</td>
-              <td class="why">Multiple myeloma screen — presents as bone pain, anaemia, renal impairment, hypercalcaemia. Age &gt;50 with back pain and anaemia without trauma.</td>
+              <td class="q">Myeloma bloods: FBC, calcium, ESR/PV, SPEP + serum free light chains (urine Bence Jones if unavailable)</td>
+              <td class="why">Multiple myeloma screen — presents as bone pain, anaemia, renal impairment, hypercalcaemia. NICE NG12: age 60+ with persistent bone pain, particularly back pain.</td>
               <td class="why">M-band detected → urgent haematology referral; positive BJP → same; normal significantly reduces myeloma probability</td>
             </tr>
             <tr>
-              <td class="q">HLA-B27 + CRP + pelvic X-ray/MRI sacroiliac joints</td>
+              <td class="q">Axial SpA: NICE NG65 criteria ± HLA-B27</td>
               <td class="why">Axial spondyloarthropathy (ankylosing spondylitis) screen — young patient, inflammatory pattern, morning stiffness, buttock pain, positive family history of IBD/psoriasis/iritis.</td>
-              <td class="why">HLA-B27 positive + sacroiliitis on imaging → rheumatology referral; NSAIDs as therapeutic (not just analgesic) treatment</td>
+              <td class="why">≥4 NG65 features, or 3 + HLA-B27 positive → rheumatology (no MRI SI joints in primary care; negative HLA-B27/CRP does not exclude); NSAIDs as therapeutic (not just analgesic) treatment</td>
             </tr>
             <tr>
               <td class="q">Urinalysis + MSU</td>
@@ -1385,7 +1385,7 @@ body.mode-clinic .sca-only{display:none!important}
             <ul>
               <li>Ordering X-ray or MRI for acute non-specific LBP without red flags</li>
               <li>Not ordering urgent MRI in a patient with known cancer and new back pain</li>
-              <li>Forgetting PSA screen in a male patient over 50 with unexplained back pain</li>
+              <li>Ordering a routine PSA or generic cancer screen for undifferentiated back pain</li>
               <li>Not explaining to the patient why investigations are or are not being arranged</li>
             </ul>
           </div>
@@ -1420,7 +1420,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="lay-why-not">
         <div class="lay-why-not-lbl">💬 Addressing the patient's own explanation — why it may not be the full picture</div>
         <p><strong>"I think I've slipped a disc."</strong><br><em>"That's a very common concern, and I can understand why it feels that way. A 'slipped disc' is when one of the cushioning pads between your vertebrae bulges out — but in your case, your nerve function is normal and your symptoms don't point to that. Even if there is a small disc bulge, which is actually very common in people without any pain at all, the approach would still be the same: gentle movement and physiotherapy. It's very rarely something that needs an operation."</em></p>
-        <p><strong>"I need a scan to find out what's wrong."</strong><br><em>"I understand why a scan feels like the logical next step — and if your symptoms don't improve or if anything changes, we would absolutely arrange one. The reason I'm holding off for now is that scans for back pain very commonly show age-related changes that look worrying on paper but actually don't cause pain and don't need treatment. I'd rather avoid a finding that might cause unnecessary anxiety."</em></p>
+        <p><strong>"I need a scan to find out what's wrong."</strong><br><em>"I understand why a scan feels like the logical next step — and if anything changes — new nerve symptoms or warning signs — we would arrange one. The reason I'm holding off for now is that scans for back pain very commonly show age-related changes that look worrying on paper but actually don't cause pain and don't need treatment. I'd rather avoid a finding that might cause unnecessary anxiety."</em></p>
       </div>
 
       <div class="g3" style="margin-bottom:12px">
@@ -1428,7 +1428,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Diagnosable in Primary Care</div>
           <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP can diagnose and manage</span>
           <p style="font-size:12.5px;margin-bottom:.4rem"><strong>Non-specific / mechanical LBP</strong> — most common; no identifiable structural cause; diagnosis of exclusion.</p>
-          <p style="font-size:12.5px;margin-bottom:.4rem"><strong>Lumbar disc herniation with radiculopathy</strong> — positive SLR, dermatomal pain/sensory change; diagnosed clinically + MRI to confirm.</p>
+          <p style="font-size:12.5px;margin-bottom:.4rem"><strong>Lumbar disc herniation with radiculopathy</strong> — positive SLR, dermatomal pain/sensory change; diagnosed clinically — imaging only via MSK/spinal services if it will change management.</p>
           <p style="font-size:12.5px;margin-bottom:.4rem"><strong>Lumbar spinal stenosis</strong> — older patient, bilateral leg pain on walking (neurogenic claudication), relieved by flexion/sitting; MRI confirms.</p>
           <p style="font-size:12.5px;margin-bottom:.4rem"><strong>Musculoligamentous strain</strong> — acute onset with clear mechanism, localised tenderness, no radiation, no neurology.</p>
           <p style="font-size:12.5px"><strong>Spondylolisthesis</strong> — anterior slip of one vertebra on another; often identified on plain X-ray in young athletes or degenerate spine.</p>
@@ -1436,8 +1436,8 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Suspected — Refer</div>
           <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Refer for confirmation</span>
-          <div class="ddx-card ddx-c" style="background:var(--a-bg);border-color:var(--a-bd);margin-bottom:6px"><h4 style="color:var(--a)">Axial Spondyloarthropathy (AS)</h4><p>Age &lt;45, inflammatory pattern, morning stiffness &gt;30 min, buttock pain, responds to NSAIDs. HLA-B27 + MRI SI joints → rheumatology.</p></div>
-          <div class="ddx-card ddx-c" style="background:var(--a-bg);border-color:var(--a-bd);margin-bottom:6px"><h4 style="color:var(--a)">Significant disc prolapse with motor deficit</h4><p>Foot drop, severe radiculopathy not responding to 6 weeks conservative treatment → MRI + neurosurgical referral.</p></div>
+          <div class="ddx-card ddx-c" style="background:var(--a-bg);border-color:var(--a-bd);margin-bottom:6px"><h4 style="color:var(--a)">Axial Spondyloarthropathy (AS)</h4><p>Onset &lt;45, &gt;3 months, inflammatory pattern, buttock pain, responds to NSAIDs. ≥4 NICE NG65 features (or 3 + HLA-B27) → rheumatology.</p></div>
+          <div class="ddx-card ddx-c" style="background:var(--a-bg);border-color:var(--a-bd);margin-bottom:6px"><h4 style="color:var(--a)">Significant disc prolapse with motor deficit</h4><p>New or progressive foot drop → urgent spinal assessment; severe radiculopathy not settling with conservative care → MSK/spinal referral (no fixed week threshold; imaging by the specialist service).</p></div>
           <div class="ddx-card ddx-c" style="background:var(--a-bg);border-color:var(--a-bd)"><h4 style="color:var(--a)">Vertebral compression fracture</h4><p>Osteoporotic patient, minimal trauma, acute thoracolumbar pain, point tenderness → X-ray; orthopaedics ± vertebroplasty.</p></div>
         </div>
         <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
@@ -1479,15 +1479,15 @@ body.mode-clinic .sca-only{display:none!important}
               <td><span class="conf-badge conf-gp">Radiculopathy</span></td>
               <td>Any</td>
               <td>Dermatomal leg pain, positive SLR, sensory/motor change</td>
-              <td>NSAIDs; remain active; MRI if &gt;6 weeks or motor deficit</td>
-              <td>Motor deficit; refractory pain at 6 weeks → neurosurgery</td>
+              <td>NSAIDs; remain active; no routine MRI — MSK/spinal referral if persistent</td>
+              <td>New/progressive motor deficit → urgent spinal; persistent pain despite conservative care → MSK/spinal (no fixed week threshold)</td>
             </tr>
             <tr>
               <td><span class="conf-badge conf-sus">Inflammatory LBP</span></td>
               <td>Any</td>
-              <td>Age &lt;45, morning stiffness &gt;30 min, improves with exercise, buttock pain</td>
-              <td>NSAIDs (therapeutic); HLA-B27; MRI SI joints</td>
-              <td>Rheumatology within 2 weeks if suspected AS/SpA</td>
+              <td>Onset &lt;45, &gt;3 months, night waking, improves with exercise, buttock pain</td>
+              <td>NSAIDs (therapeutic); HLA-B27 only if exactly 3 NG65 features</td>
+              <td>Rheumatology if NICE NG65 criteria met</td>
             </tr>
             <tr>
               <td><span class="conf-badge conf-emerg">Red flag LBP</span></td>
@@ -1565,20 +1565,20 @@ body.mode-clinic .sca-only{display:none!important}
             </tr>
             <tr>
               <td style="font-weight:600">Disc prolapse with significant motor deficit (foot drop)</td>
-              <td><span class="ref-urg rurg-2">Urgent — within 24–48 hours</span></td>
-              <td style="font-size:12px">Arrange urgent MRI lumbar spine; refer to neurosurgery with imaging; prescribe appropriate analgesia (consider an oral NSAID); NICE NG59 advises against gabapentinoids and oral corticosteroids for sciatica and makes no antidepressant recommendation for it.</td>
+              <td><span class="ref-urg rurg-2">Urgent / same-day spinal assessment</span></td>
+              <td style="font-size:12px">Refer for urgent spinal/MSK assessment via local pathway (imaging arranged by the receiving service); document baseline neurology; prescribe appropriate analgesia (consider an oral NSAID); NICE NG59 advises against gabapentinoids and oral corticosteroids for sciatica and makes no antidepressant recommendation for it.</td>
               <td style="font-size:12px;color:var(--r)">Do NOT discharge without clear safety-netting for cauda equina features; do NOT start opioids as first-line; any neuropathic agent is a clinician judgement with specialist/pain-service input.</td>
             </tr>
             <tr>
               <td style="font-weight:600">Suspected spinal malignancy (no neurological compromise)</td>
               <td><span class="ref-urg rurg-2">Urgent suspected cancer pathway referral</span></td>
-              <td style="font-size:12px">Arrange urgent bloods (FBC, CRP, PSA, calcium, SPEP); MRI spine within 1–2 weeks; suspected cancer pathway referral if primary malignancy suspected; inform patient sensitively.</td>
+              <td style="font-size:12px">Known cancer: MSCC coordinator advice within 24 h, MRI within 1 week (NICE NG234). Otherwise bloods directed by suspicion (NG12 myeloma tests at 60+; PSA only if prostate cancer suspected); suspected cancer pathway referral if primary malignancy suspected; inform patient sensitively.</td>
               <td style="font-size:12px;color:var(--r)">Do NOT send routine referral; do NOT reassure patient that "it's probably just back pain" before investigation results are available.</td>
             </tr>
             <tr>
               <td style="font-weight:600">Axial spondyloarthropathy (suspected)</td>
               <td><span class="ref-urg rurg-4">2–4 weeks — rheumatology</span></td>
-              <td style="font-size:12px">HLA-B27; CRP; pelvic X-ray; start NSAIDs (therapeutic, not just analgesic); counsel patient on likely diagnosis and that treatment significantly improves prognosis.</td>
+              <td style="font-size:12px">Refer if NICE NG65 criteria met — do not wait for tests (HLA-B27 only if exactly 3 features); start NSAIDs (therapeutic, not just analgesic); counsel patient on likely diagnosis and that treatment significantly improves prognosis.</td>
               <td style="font-size:12px;color:var(--r)">Do NOT prescribe opioids as first-line; do NOT refer for physiotherapy alone without diagnostic workup; do NOT delay NSAIDs while waiting for rheumatology appointment.</td>
             </tr>
             <tr>
@@ -1758,8 +1758,8 @@ body.mode-clinic .sca-only{display:none!important}
           </div>
           <div class="life-body">
             <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Nicotine reduces vertebral endplate blood flow and disc nutrition (discs are avascular and depend on diffusion). Smokers have significantly higher rates of disc degeneration and LBP. Smoking also impairs bone healing and post-surgical outcomes.</p></div>
-            <div class="life-section"><div class="life-section-lbl">Practical</div><p>Frame cessation as a back pain intervention, not just cardiovascular/cancer benefit. Refer to NHS Stop Smoking Service. Nicotine replacement therapy and varenicline both appropriate.</p></div>
-            <span class="life-benefit">Quitting reduces LBP risk and severity; improves surgical outcomes</span>
+            <div class="life-section"><div class="life-section-lbl">Practical</div><p>Offer as general health advice — benefit for the back pain itself is not guaranteed. Refer to NHS Stop Smoking Service. Nicotine replacement therapy and varenicline both appropriate.</p></div>
+            <span class="life-benefit">General health benefit; improves surgical outcomes</span>
           </div>
         </div>
       </div>
@@ -1773,9 +1773,9 @@ body.mode-clinic .sca-only{display:none!important}
           <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
             <p style="margin:0 0 .5rem"><strong>Ibuprofen 400mg TDS with food</strong> (or naproxen 500mg BD) — lowest effective dose, shortest duration.</p>
             <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
-              <li>Always co-prescribe PPI (omeprazole 20mg OD) for GI protection</li>
-              <li>Avoid if: renal impairment (eGFR &lt;30), active peptic ulcer, anticoagulation, heart failure</li>
-              <li>Topical diclofenac gel (first-line in older patients or those with NSAID contraindications)</li>
+              <li>Gastroprotection (e.g. omeprazole 20mg OD) by overall GI risk and the chosen NSAID — not age alone</li>
+              <li>Avoid or seek advice if: significant renal impairment (clinical, dose-related — not a single eGFR cut-off), active peptic ulcer, anticoagulation, heart failure</li>
+              <li>Topical diclofenac gel: local formulary option only (not an NG59 recommendation; benefit for deep spinal pain uncertain)</li>
               <li>Review at 4 weeks — if ineffective, step up or reconsider diagnosis</li>
             </ul>
             <div style="font-size:11px;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--g);font-weight:600">❌ Do NOT prescribe paracetamol alone — NICE NG59: not recommended for LBP</div>
@@ -1814,7 +1814,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
             <p style="margin:0 0 .5rem"><strong>Epidural corticosteroid injections</strong> — short-term relief in acute radiculopathy; arranged by spinal or pain clinic.</p>
             <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
-              <li>Facet joint injections: limited evidence; can provide diagnostic information</li>
+              <li>Facet joint injections: not offered for low back pain (NICE NG59)</li>
               <li>Radiofrequency denervation: for facet-mediated pain confirmed by diagnostic blocks</li>
               <li>Spinal cord stimulation: for refractory radicular pain in failed back surgery syndrome</li>
               <li>All require referral to spinal pain clinic — do not arrange in primary care</li>
@@ -1828,7 +1828,7 @@ body.mode-clinic .sca-only{display:none!important}
               <li><strong>Pregnancy:</strong> Paracetamol for mild-moderate pain; avoid NSAIDs after 20 weeks; physiotherapy safe and recommended</li>
               <li><strong>Renal impairment (eGFR &lt;30):</strong> Avoid NSAIDs; paracetamol + physiotherapy; do not substitute an antidepressant for the back pain (NICE NG59)</li>
               <li><strong>Anticoagulation:</strong> Avoid NSAIDs (bleeding risk); topical diclofenac may be used with caution; prefer physiotherapy-led approach</li>
-              <li><strong>Elderly (&gt;75 years):</strong> Use topical NSAIDs first; if oral required, use lowest dose + PPI; highest risk of GI bleed, renal impairment, falls on opioids</li>
+              <li><strong>Elderly (&gt;75 years):</strong> Topical NSAID only as a local formulary option (uncertain benefit); if oral, lowest dose with gastroprotection by GI risk; highest risk of GI bleed, renal impairment, falls on opioids</li>
               <li><strong>Inflammatory LBP (AS):</strong> NSAIDs are therapeutic not just analgesic — sustained NSAID use slows radiographic progression</li>
             </ul>
           </div>
@@ -1893,7 +1893,7 @@ body.mode-clinic .sca-only{display:none!important}
             <div class="dc-item ci-rel">Heart failure — sodium retention worsens fluid overload</div>
           </div>
           <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
-            <div class="dc-item">GI upset, peptic ulceration (always co-prescribe PPI: omeprazole 20mg OD)</div>
+            <div class="dc-item">GI upset, peptic ulceration (gastroprotection, e.g. omeprazole 20mg OD, by individual GI risk)</div>
             <div class="dc-item">Renal impairment (especially in dehydration, elderly, diuretic users)</div>
             <div class="dc-item">Fluid retention and hypertension (problematic in heart failure, hypertension)</div>
           </div>
@@ -1911,7 +1911,7 @@ body.mode-clinic .sca-only{display:none!important}
             <div>
               <div class="dc-name">Topical NSAIDs</div>
               <div class="dc-examples">Diclofenac gel · Ibuprofen gel · Ketoprofen gel</div>
-              <div class="dc-rec-badge" id="rec-topnsaid">✓ Recommended</div>
+              <div class="dc-rec-badge" id="rec-topnsaid">Local formulary option (not NG59)</div>
             </div>
             <div class="dc-badges">
               <span class="dc-step step1">Step 1</span>
@@ -2053,18 +2053,18 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dc-head">
             <div>
               <div class="dc-name">Muscle Relaxants (diazepam)</div>
-              <div class="dc-examples">Diazepam 2–5mg — short course only</div>
-              <div class="dc-rec-badge" id="rec-muscle">✓ Recommended</div>
+              <div class="dc-examples">Benzodiazepine — not recommended for LBP or sciatica</div>
+              <div class="dc-rec-badge" id="rec-muscle">✗ Do not offer (NICE NG59)</div>
             </div>
             <div class="dc-badges">
-              <span class="dc-step step3">Step 3</span>
-              <span class="dc-dose">Diazepam 2mg TDS; max 5–7 days</span>
+              <span class="dc-step step3">Not an LBP step</span>
+              <span class="dc-dose">Not recommended for LBP or sciatica</span>
             </div>
           </div>
-          <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div>
-            <div class="dc-item">Acute severe muscle spasm as adjunct to NSAIDs (not standalone)</div>
-            <div class="dc-item">Patient unable to mobilise due to acute muscle guarding — short bridging treatment</div>
-            <div class="dc-item">Maximum 5–7 day course — never for chronic LBP</div>
+          <div class="dc-section dc-g"><div class="dc-sec-t">✓ Instead</div>
+            <div class="dc-item">Manage spasm with movement, graded activity and an NSAID where appropriate</div>
+            <div class="dc-item">NICE NG59: do not offer benzodiazepines for sciatica; not used for mechanical LBP — lack of benefit and evidence of harm</div>
+            <div class="dc-item">Already taking one: review and agree a gradual taper</div>
           </div>
           <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
             <div class="dc-item ci-abs">Chronic LBP — dependence risk; no long-term evidence</div>
@@ -2081,8 +2081,8 @@ body.mode-clinic .sca-only{display:none!important}
             <div class="dc-item">Do not repeat without clinical review — document rationale for repeat clearly</div>
             <div class="dc-item">Warn patient and document about driving and operating machinery</div>
           </div>
-          <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This is a very short course — just to help with the severe spasm right now. It will make you drowsy, so you must not drive. It's important that you don't take this for longer than a week, as it can become habit-forming."</p></div>
-          <div class="dc-sca"><p>Diazepam is frequently misused in LBP prescribing — an SCA examiner will note if you prescribe it for &gt;5 days or without indicating it's a short course adjunct to NSAIDs, not a standalone or long-term treatment.</p></div>
+          <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"I know the spasm is really painful, but tablets like diazepam don't help back pain recover and can cause drowsiness and dependence — keeping gently moving and the anti-inflammatory will do more for the spasm."</p></div>
+          <div class="dc-sca"><p>Diazepam is frequently misused in LBP prescribing — NICE NG59 advises against benzodiazepines for sciatica, and they are not offered for mechanical LBP. An SCA examiner will expect you to decline it and explain why.</p></div>
         </div>
 
       </div><!-- /drug-cards -->
@@ -2116,7 +2116,7 @@ body.mode-clinic .sca-only{display:none!important}
             <span class="psoci-icon">😔</span>
             <h5>Mood, Identity and Self-Worth</h5>
             <p>Chronic pain profoundly affects identity — patients describe feeling "broken," "useless," or "a burden." Loss of role (breadwinner, active parent, sportsperson) amplifies depression.</p>
-            <p>PHQ-9 screening is indicated in all chronic LBP patients. Active treatment of depression alongside LBP is not optional — untreated depression perpetuates pain.</p>
+            <p>Use PHQ-9/GAD-7 when depression or anxiety is clinically suspected (not mandated for every patient). Active treatment of depression alongside LBP is not optional — untreated depression perpetuates pain.</p>
             <p>Self-management courses (NHS Pain Management Programme) address identity and meaning as well as physical rehabilitation.</p>
             <span class="psoci-phrase">"Living with pain every day is exhausting — not just physically. How has it been affecting how you feel about yourself and your daily life?"</span>
           </div>
@@ -2163,8 +2163,8 @@ body.mode-clinic .sca-only{display:none!important}
             <div class="fu-dot fd2">2</div>
             <div class="fu-content">
               <h5>6 weeks — Subacute reassessment</h5>
-              <p>If not significantly improved by 6 weeks, review diagnosis. Arrange MRI if radiculopathy features persist or worsen. Reassess psychosocial yellow flags. Escalate physiotherapy to structured programme if STarT medium/high risk. Begin chronic pain pathway if trajectory poor. PHQ-9 if not already done.</p>
-              <div class="fu-tags"><span class="ft ft-r">MRI decision point</span><span class="ft ft-a">PHQ-9</span><span class="ft ft-b">Physio escalation</span></div>
+              <p>If not significantly improved by 6 weeks, review diagnosis. Persistent or worsening radicular pain → MSK/spinal referral (imaging arranged there only if it will change management). Reassess psychosocial yellow flags. Escalate physiotherapy to structured programme if STarT medium/high risk. Begin chronic pain pathway if trajectory poor. PHQ-9 if not already done.</p>
+              <div class="fu-tags"><span class="ft ft-r">Diagnosis review</span><span class="ft ft-a">Mood if suspected</span><span class="ft ft-b">Physio escalation</span></div>
             </div>
           </div>
           <div class="fu-event">
@@ -2198,7 +2198,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="sub-divider" id="monitoring">7I — Monitoring: the ABCDE rule + analgesic review targets</div>
       <div class="mon-rule">
         <h4>Memory rule — LBP Monitoring: ABCDE</h4>
-        <p><strong>A</strong>nalgesia review (dose, efficacy, side effects, opioid risk) · <strong>B</strong>owel function (constipation on opioids — always co-prescribe laxative) · <strong>C</strong>hronic pain pathway trigger at <strong>12 weeks</strong> · <strong>D</strong>epression screen (PHQ-9 at 6 and 12 weeks) · <strong>E</strong>mployment and function (fit note, occupational health, return-to-work plan)</p>
+        <p><strong>A</strong>nalgesia review (dose, efficacy, side effects, opioid risk) · <strong>B</strong>owel function (constipation on opioids — always co-prescribe laxative) · <strong>C</strong>hronic pain pathway trigger at <strong>12 weeks</strong> · <strong>D</strong>epression screen (PHQ-9 when depression is clinically suspected) · <strong>E</strong>mployment and function (fit note, occupational health, return-to-work plan)</p>
       </div>
       <div class="g2" style="margin-bottom:1.25rem">
         <div class="card" style="overflow:hidden">
@@ -2209,7 +2209,7 @@ body.mode-clinic .sca-only{display:none!important}
               <tr><td>Codeine / weak opioids</td><td>Bowel function, drowsiness, dose escalation requests</td><td>At 2 weeks (maximum prescription period) — do not repeat without review</td><td>Ongoing use &gt;2 weeks without improvement → opioid deprescribing; escalating dose requests → structured opioid review</td></tr>
               <tr><td>Duloxetine (only if prescribed for another indication — not for LBP, NICE NG59)</td><td>BP, mood, suicidality (young adults), liver function if clinically indicated</td><td>Per BNF/SPC for the indication</td><td>Started for LBP → review and taper; mood deterioration → urgent review</td></tr>
               <tr><td>Amitriptyline (only if prescribed for another indication — not for LBP, NICE NG59)</td><td>ECG (if cardiac risk), falls risk, anticholinergic burden</td><td>Per BNF/SPC for the indication</td><td>Started for LBP → review and taper; falls or cardiac concern → reduce or stop</td></tr>
-              <tr><td>Diazepam (muscle relaxant)</td><td>Dependence, sedation, duration</td><td>Maximum 5–7 days — do not issue repeat without clinical review</td><td>Any request for repeat prescription → structured review; any dependence features → formal tapering plan</td></tr>
+              <tr><td>Diazepam (not recommended — NICE NG59)</td><td>Dependence, sedation, duration</td><td>If already taking: review promptly</td><td>Do not start or repeat for LBP/sciatica; any dependence features → formal tapering plan</td></tr>
             </tbody>
           </table>
         </div>
@@ -2218,9 +2218,9 @@ body.mode-clinic .sca-only{display:none!important}
             <thead><tr><th>Patient group / clinical scenario</th><th>Review milestone</th><th>Key action at review</th></tr></thead>
             <tbody>
               <tr><td>Acute LBP (all patients)</td><td>2 weeks</td><td>Red flag re-screen; STarT Back; analgesia review; fit note</td></tr>
-              <tr><td>Subacute LBP (not improving)</td><td>6 weeks</td><td>Consider MRI; escalate to physio; PHQ-9; yellow flag reassessment</td></tr>
+              <tr><td>Subacute LBP (not improving)</td><td>6 weeks</td><td>Reassess diagnosis; escalate to physio; MSK/spinal referral if persistent radicular pain; mood if suspected; yellow flag reassessment</td></tr>
               <tr><td>Chronic LBP threshold</td><td>12 weeks</td><td>Initiate chronic pain pathway; opioid review; pain programme referral</td></tr>
-              <tr><td>Radiculopathy with motor deficit</td><td>24–48 hours</td><td>Urgent MRI + neurosurgical referral; do not observe expectantly</td></tr>
+              <tr><td>Radiculopathy with new/progressive motor deficit</td><td>Same day / urgent</td><td>Urgent spinal assessment (imaging by receiving service); do not observe expectantly</td></tr>
               <tr><td>Long-term opioid user</td><td>3-monthly</td><td>Structured opioid review; tapering plan; psychology referral; PDSA cycle</td></tr>
               <tr><td>Patient on long-term NSAIDs</td><td>6-monthly</td><td>U&E; BP; GI symptoms; justify continued need vs. non-pharmacological alternatives</td></tr>
             </tbody>
@@ -2262,7 +2262,7 @@ body.mode-clinic .sca-only{display:none!important}
         </div>
         <div class="sn-fu">
           <div class="sn-fu-item"><strong>2 weeks:</strong> Review if not improving; STarT Back Tool; fit note decision</div>
-          <div class="sn-fu-item"><strong>6 weeks:</strong> Chronic threshold approaching — MRI decision; PHQ-9; physio escalation</div>
+          <div class="sn-fu-item"><strong>6 weeks:</strong> Chronic threshold approaching — reassess diagnosis; mood if suspected; physio escalation</div>
           <div class="sn-fu-item"><strong>A&amp;E now:</strong> Any cauda equina feature; fever + severe pain; acute neurological loss</div>
         </div>
       </div>
@@ -2314,8 +2314,8 @@ body.mode-clinic .sca-only{display:none!important}
         </div>
         <div class="rag-strip">
           <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">Paracetamol first-line; bed rest advice; no cauda equina safety-net; opioids for chronic LBP without review; no psychosocial assessment; no ICE; no red flag screen.</div></div>
-          <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">NSAIDs prescribed but no PPI; safety-net given but vague ("if things change"); physio referral made but STarT Back Tool not applied; ICE partially covered; diagnosis given without plain-language explanation.</div></div>
-          <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">NSAIDs + PPI; cauda equina safety-net verbatim; STarT Back applied; ICE fully covered; diagnosis plain language; work and mood discussed; physiotherapy referral; 2-week follow-up named; closing question asked.</div></div>
+          <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">NSAIDs prescribed without GI-risk assessment; safety-net given but vague ("if things change"); physio referral made but STarT Back Tool not applied; ICE partially covered; diagnosis given without plain-language explanation.</div></div>
+          <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">NSAID with risk-based gastroprotection; cauda equina safety-net verbatim; STarT Back applied; ICE fully covered; diagnosis plain language; work and mood discussed; physiotherapy referral; 2-week follow-up named; closing question asked.</div></div>
         </div>
       </div>
     </div>
@@ -2367,7 +2367,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="sc-items">
           <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Red flag screen completed</strong> — cauda equina, malignancy, infection, fracture explicitly screened</span><span class="sc-pts">2pt</span></label>
           <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct diagnosis communicated</strong> — mechanical LBP (or specific diagnosis) stated clearly in plain language</span><span class="sc-pts">2pt</span></label>
-          <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct analgesia prescribed</strong> — oral NSAIDs considered (not paracetamol alone); PPI co-prescribed; dose and duration stated</span><span class="sc-pts">2pt</span></label>
+          <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct analgesia prescribed</strong> — oral NSAIDs considered (not paracetamol alone); gastroprotection by GI risk; dose and duration stated</span><span class="sc-pts">2pt</span></label>
           <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Cauda equina safety-net given</strong> — specific symptoms named; action (A&amp;E) specified</span><span class="sc-pts">2pt</span></label>
           <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>STarT Back stratification applied</strong> — risk category determined; management matched to risk level</span><span class="sc-pts">2pt</span></label>
           <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Active management recommended</strong> — stay active / exercise; bed rest explicitly NOT recommended</span><span class="sc-pts">1pt</span></label>
@@ -2407,8 +2407,8 @@ body.mode-clinic .sca-only{display:none!important}
       <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment Guide</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
         <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red — not achieved</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">No cauda equina safety-net; paracetamol as sole analgesia; bed rest advice; no ICE; no red flag screen; opioids for chronic LBP without review.</div></div>
-        <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber — partially achieved</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Red flags screened but safety-net vague; ICE partially covered; NSAIDs prescribed but no PPI; diagnosis correct but not in plain language; STarT Back mentioned but not applied.</div></div>
-        <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green — fully achieved</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Complete red-flag screen; cauda equina safety-net verbatim; NSAIDs + PPI; STarT Back applied; ICE all three; cancer fear addressed; exercise reframed; 2-week review named; closing question asked.</div></div>
+        <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber — partially achieved</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Red flags screened but safety-net vague; ICE partially covered; NSAIDs prescribed without GI-risk assessment; diagnosis correct but not in plain language; STarT Back mentioned but not applied.</div></div>
+        <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green — fully achieved</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Complete red-flag screen; cauda equina safety-net verbatim; NSAID with risk-based gastroprotection; STarT Back applied; ICE all three; cancer fear addressed; exercise reframed; 2-week review named; closing question asked.</div></div>
       </div>
     </div>
 
@@ -2535,19 +2535,19 @@ body.mode-clinic .sca-only{display:none!important}
             <div style="margin-bottom:.3rem"><strong>Subacute:</strong> 6–12 weeks — STarT stratify; add physio</div>
             <div style="margin-bottom:.3rem"><strong>Chronic:</strong> &gt;12 weeks — pain programme; opioid review</div>
             <div style="margin-bottom:.3rem"><strong>Radiculopathy:</strong> Dermatomal leg pain ± positive SLR</div>
-            <div style="margin-bottom:.3rem"><strong>Inflammatory (AS/SpA):</strong> Age &lt;45; morning stiffness &gt;30 min; improves with exercise; HLA-B27</div>
+            <div style="margin-bottom:.3rem"><strong>Inflammatory (AS/SpA):</strong> Onset &lt;45; &gt;3 months; NICE NG65 features (≥4, or 3 + HLA-B27)</div>
             <div><strong>Red flag LBP:</strong> Any of 7 red flags above — act immediately</div>
           </div>
         </div>
         <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem">
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--navy);margin-bottom:.6rem">Investigations — when to order</div>
           <div style="font-size:12px;line-height:1.6">
-            <div style="margin-bottom:.3rem"><strong>MRI lumbar:</strong> Motor deficit, progressive radiculopathy (&gt;6 wks), pre-surgical planning</div>
-            <div style="margin-bottom:.3rem"><strong>MRI whole spine:</strong> Known cancer + back pain → within 24h (MSCC pathway)</div>
+            <div style="margin-bottom:.3rem"><strong>MRI lumbar:</strong> Not routine — via emergency/specialist pathway (CES, motor deficit) or MSK/spinal service if it will change management</div>
+            <div style="margin-bottom:.3rem"><strong>MRI whole spine:</strong> Known cancer + neuro signs → within 24h; no neuro signs → within 1 week (NICE NG234)</div>
             <div style="margin-bottom:.3rem"><strong>X-ray:</strong> Suspected fracture (osteoporosis/trauma); spondylolisthesis</div>
             <div style="margin-bottom:.3rem"><strong>FBC + CRP + ESR:</strong> Red flag screen (infection, malignancy, inflammation)</div>
-            <div style="margin-bottom:.3rem"><strong>PSA:</strong> Male &gt;50 with unexplained back pain</div>
-            <div><strong>HLA-B27 + pelvic XR:</strong> Suspected AS/SpA</div>
+            <div style="margin-bottom:.3rem"><strong>PSA:</strong> Only if prostate cancer clinically suspected — not a routine back-pain test</div>
+            <div><strong>HLA-B27:</strong> Suspected axial SpA with exactly 3 NG65 features</div>
           </div>
         </div>
       </div>
@@ -2558,14 +2558,14 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="num-card num-highlight"><div class="num-val">&lt;1%</div><div class="num-lbl">Serious pathology in LBP presentations</div></div>
         <div class="num-card"><div class="num-val">6 wks</div><div class="num-lbl">Review point — escalate if not improving</div></div>
         <div class="num-card"><div class="num-val">12 wks</div><div class="num-lbl">Chronic LBP threshold — pain programme</div></div>
-        <div class="num-card"><div class="num-val">400mg TDS</div><div class="num-lbl">Ibuprofen (consider oral NSAID); always + PPI</div></div>
-        <div class="num-card"><div class="num-val">30 min</div><div class="num-lbl">Morning stiffness threshold for inflammatory LBP</div></div>
+        <div class="num-card"><div class="num-val">400mg TDS</div><div class="num-lbl">Ibuprofen (consider oral NSAID); gastroprotection by GI risk</div></div>
+        <div class="num-card"><div class="num-val">≥4</div><div class="num-lbl">NICE NG65 features → refer suspected axial SpA (or 3 + HLA-B27)</div></div>
         <div class="num-card"><div class="num-val">STarT</div><div class="num-lbl">Back screening tool — low/medium/high risk</div></div>
         <div class="num-card"><div class="num-val">14 days</div><div class="num-lbl">Max opioid prescription for acute LBP</div></div>
         <div class="num-card"><div class="num-val">16mg</div><div class="num-lbl">Dexamethasone for suspected MSCC</div></div>
         <div class="num-card"><div class="num-val">24h</div><div class="num-lbl">MRI target for suspected MSCC</div></div>
-        <div class="num-card"><div class="num-val">PHQ-9</div><div class="num-lbl">Depression screen at 6 and 12 weeks</div></div>
-        <div class="num-card"><div class="num-val">5–7 days</div><div class="num-lbl">Max diazepam for acute muscle spasm</div></div>
+        <div class="num-card"><div class="num-val">PHQ-9</div><div class="num-lbl">Depression screen when clinically suspected</div></div>
+        <div class="num-card"><div class="num-val">No</div><div class="num-lbl">Benzodiazepines for LBP/sciatica (NICE NG59)</div></div>
       </div>
 
       <div class="sum-sub-hdr">💊 4 — Medication Decision &amp; Choice</div>
@@ -2573,10 +2573,10 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem">
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--navy);margin-bottom:.6rem">Analgesic Ladder — LBP</div>
           <div style="font-size:12px;line-height:1.65">
-            <div style="margin-bottom:.4rem;padding:.3rem .5rem;background:#f0fdf4;border-left:3px solid var(--g);border-radius:0 6px 6px 0"><strong>Step 1:</strong> Ibuprofen 400mg TDS with food + omeprazole 20mg OD (always). Topical diclofenac if oral NSAID contraindicated or elderly.</div>
+            <div style="margin-bottom:.4rem;padding:.3rem .5rem;background:#f0fdf4;border-left:3px solid var(--g);border-radius:0 6px 6px 0"><strong>Step 1:</strong> Ibuprofen 400mg TDS with food; gastroprotection (omeprazole 20mg OD) by GI risk. Topical diclofenac only as a local formulary option.</div>
             <div style="margin-bottom:.4rem;padding:.3rem .5rem;background:var(--p-bg);border-left:3px solid var(--p);border-radius:0 6px 6px 0"><strong>Step 2:</strong> Consider oral NSAID (NICE NG59) + exercise; review. No antidepressants (SSRI/SNRI/TCA) or gabapentinoids for LBP (NICE NG59); treat co-existing depression in its own right (NICE NG222).</div>
             <div style="margin-bottom:.4rem;padding:.3rem .5rem;background:var(--b-bg);border-left:3px solid var(--b);border-radius:0 6px 6px 0"><strong>Step 3 (short-term only):</strong> Codeine 30mg QDS max 14 days for severe acute LBP. Always + laxatives. NOT for chronic LBP.</div>
-            <div style="padding:.3rem .5rem;background:#fee2e2;border-left:3px solid var(--r);border-radius:0 6px 6px 0"><strong>❌ Do NOT:</strong> Paracetamol alone; opioids for chronic LBP; diazepam &gt;7 days; antidepressants or gabapentinoids for the back pain (NICE NG59).</div>
+            <div style="padding:.3rem .5rem;background:#fee2e2;border-left:3px solid var(--r);border-radius:0 6px 6px 0"><strong>❌ Do NOT:</strong> Paracetamol alone; opioids for chronic LBP; benzodiazepines (diazepam); antidepressants or gabapentinoids for the back pain (NICE NG59).</div>
           </div>
         </div>
         <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem">
@@ -2585,7 +2585,7 @@ body.mode-clinic .sca-only{display:none!important}
             <div style="margin-bottom:.35rem"><strong>Pregnancy:</strong> Paracetamol only (avoid NSAIDs &gt;20 weeks); physio; physiotherapy safe</div>
             <div style="margin-bottom:.35rem"><strong>Renal impairment (eGFR &lt;30):</strong> No oral NSAIDs; topical NSAID ± paracetamol; physio first-line</div>
             <div style="margin-bottom:.35rem"><strong>Anticoagulated:</strong> No oral NSAIDs; topical may be used; physio-led approach</div>
-            <div style="margin-bottom:.35rem"><strong>Elderly (&gt;75):</strong> Topical NSAID first; if oral, lowest dose + PPI; avoid opioids if falls risk</div>
+            <div style="margin-bottom:.35rem"><strong>Elderly (&gt;75):</strong> If oral NSAID, lowest dose with risk-based gastroprotection; topical only per local formulary; avoid opioids if falls risk</div>
             <div style="margin-bottom:.35rem"><strong>Inflammatory LBP (AS):</strong> NSAIDs are therapeutic — sustained use slows progression</div>
             <div><strong>Chronic LBP on opioids:</strong> Initiate structured opioid deprescribing — do not escalate</div>
           </div>
@@ -2611,7 +2611,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="fu-compact-wrap">
           <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem">Follow-up timeline</div>
           <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--r)">1</div><div><strong>2 weeks:</strong> Response to analgesia; STarT Back; red flag re-screen; fit note</div></div>
-          <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--a)">2</div><div><strong>6 weeks:</strong> MRI decision point; PHQ-9; physio escalation if needed</div></div>
+          <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--a)">2</div><div><strong>6 weeks:</strong> Reassess diagnosis; MSK/spinal referral if persistent radicular pain; physio escalation if needed</div></div>
           <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--b)">3</div><div><strong>12 weeks:</strong> Chronic threshold — opioid review; pain programme referral</div></div>
           <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--g)">4</div><div><strong>3 months:</strong> Chronic LBP review; medication deprescribing; PHQ-9</div></div>
           <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--t)">5</div><div><strong>Annual:</strong> Structured review; opioid safety; bone protection; social prescribing</div></div>
@@ -2628,7 +2628,7 @@ body.mode-clinic .sca-only{display:none!important}
             <tr><td><strong>Codeine / opioids</strong></td><td>Duration, bowel function, dose creep</td><td class="mon-red">Do not repeat without review</td><td style="font-size:11.5px">Any use &gt;14 days without improvement → structured opioid review + deprescribing plan</td></tr>
             <tr><td><strong>Duloxetine</strong> (not for LBP — NICE NG59)</td><td>BP, mood (PHQ-9)</td><td class="mon-amber">Per BNF/SPC for the indication</td><td style="font-size:11.5px">Started for LBP → review and taper; mood deterioration → urgent review</td></tr>
             <tr><td><strong>Amitriptyline</strong> (not for LBP — NICE NG59)</td><td>ECG (if cardiac risk), falls</td><td class="mon-amber">Per BNF/SPC for the indication</td><td style="font-size:11.5px">Started for LBP → review and taper; falls or cardiac concern → reduce or stop</td></tr>
-            <tr><td><strong>Diazepam</strong></td><td>Duration, dependence features</td><td class="mon-red">Maximum 5–7 days; no repeats without review</td><td style="font-size:11.5px">Any dependence features → formal tapering; any request beyond 7 days → structured review</td></tr>
+            <tr><td><strong>Diazepam</strong> (not recommended — NICE NG59)</td><td>Duration, dependence features</td><td class="mon-red">Do not start for LBP/sciatica</td><td style="font-size:11.5px">If already taking → review and taper; any dependence features → formal tapering</td></tr>
             <tr><td><strong>STarT Back Tool</strong></td><td>Risk stratification score</td><td class="mon-green">At presentation; repeat at 6 weeks</td><td style="font-size:11.5px">Informs shared decision-making (NICE NG59): higher risk → more intensive exercise-based support + closer follow-up; low → self-management + exercise</td></tr>
           </tbody>
         </table>
@@ -2711,7 +2711,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="sca-f-title">Management Plan + Safety-Net + Close</div>
           <div class="sca-f-phrase">"The most important thing you can do is keep moving — rest actually makes back pain worse."</div>
           <div class="sca-f-phrase">"If you develop any numbness around your bottom or saddle area, or any bladder/bowel changes, go to A&amp;E and say cauda equina syndrome."</div>
-          <div class="sca-f-note">NSAIDs + PPI. Physiotherapy referral. 2-week follow-up named. Fit note discussion.</div>
+          <div class="sca-f-note">NSAID with gastroprotection by GI risk. Physiotherapy referral. 2-week follow-up named. Fit note discussion.</div>
           <div class="sca-f-note">Closing question: "Is there anything else on your mind?"</div>
           <div class="sca-f-domains">
             <span class="sca-dom-tag task">Tasks</span>
@@ -2728,8 +2728,8 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="sum-sub-hdr sca-sub-hdr">🔴🟠🟢 RAG Scoring — All 3 Domains</div>
           <div class="rag-full-wrap">
             <div class="rag-domain-title task-col">Tasks Domain</div>
-            <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>Red flags all screened; correct diagnosis; NSAIDs + PPI; cauda equina safety-net verbatim; STarT applied; active management plan; named follow-up</div></div>
-            <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>Most red flags screened; diagnosis correct but not explained; NSAIDs prescribed without PPI; safety-net given but vague; physio referral made but STarT not mentioned</div></div>
+            <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>Red flags all screened; correct diagnosis; NSAID with risk-based gastroprotection; cauda equina safety-net verbatim; STarT applied; active management plan; named follow-up</div></div>
+            <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>Most red flags screened; diagnosis correct but not explained; NSAIDs prescribed without GI-risk assessment; safety-net given but vague; physio referral made but STarT not mentioned</div></div>
             <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>Cauda equina not screened; paracetamol first-line; bed rest advice; no safety-net; opioids for chronic LBP without review; no management plan</div></div>
             <div class="rag-domain-title ro-col" style="margin-top:.6rem">Relating to Others</div>
             <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>ICE all three; cancer fear explicitly addressed; scan request negotiated with reasoning; work/mood discussed; empathy demonstrated; closing question asked</div></div>
@@ -2763,7 +2763,7 @@ body.mode-clinic .sca-only{display:none!important}
             </div>
             <div class="phrase-card p-explain">
               <div class="p-lbl">Scan negotiation</div>
-              <div class="p-phrase">"I understand the scan feels important — and if you're not improving in 6 weeks, that's exactly when I would arrange one. Right now, I think we'd be investigating something that exercise and the right medication will fix."</div>
+              <div class="p-phrase">"I understand the scan feels important — and if new nerve symptoms or warning signs develop, that's exactly when we would arrange one. Right now, I think we'd be investigating something that exercise and the right medication will fix."</div>
             </div>
             <div class="phrase-card p-close">
               <div class="p-lbl">Closing + safety-net</div>
@@ -2775,15 +2775,15 @@ body.mode-clinic .sca-only{display:none!important}
         <div>
           <div class="sum-sub-hdr sca-sub-hdr">🚫 9 Danger Zones — Instant Deductions</div>
           <div class="dz-stack">
-            <div class="dz-item"><span class="dz-x">✗</span><div><strong>Paracetamol alone as first-line</strong><span class="dz-fix">→ consider oral NSAIDs (NICE NG59); always + PPI</span></div></div>
+            <div class="dz-item"><span class="dz-x">✗</span><div><strong>Paracetamol alone as first-line</strong><span class="dz-fix">→ consider oral NSAIDs (NICE NG59); gastroprotection by GI risk</span></div></div>
             <div class="dz-item"><span class="dz-x">✗</span><div><strong>Advising bed rest</strong><span class="dz-fix">→ NICE NG59: encourage continuing normal activities; rest worsens outcomes</span></div></div>
             <div class="dz-item"><span class="dz-x">✗</span><div><strong>No cauda equina screen</strong><span class="dz-fix">→ Must ask about bladder/bowel/saddle anaesthesia in every LBP case</span></div></div>
             <div class="dz-item"><span class="dz-x">✗</span><div><strong>Ordering X-ray/MRI without red flags</strong><span class="dz-fix">→ Routine imaging in non-specific LBP is not recommended</span></div></div>
             <div class="dz-item"><span class="dz-x">✗</span><div><strong>Prescribing opioids for chronic LBP (&gt;12 wks)</strong><span class="dz-fix">→ NICE NG59: do not offer opioids for chronic LBP; initiate deprescribing if already on opioids</span></div></div>
             <div class="dz-item"><span class="dz-x">✗</span><div><strong>Full sick note without exploring modified duties</strong><span class="dz-fix">→ "May be fit for work with modifications" is usually more appropriate</span></div></div>
             <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not addressing cancer fear</strong><span class="dz-fix">→ Explicitly name and rule out — do not assume the patient is reassured by normal examination</span></div></div>
-            <div class="dz-item"><span class="dz-x">✗</span><div><strong>NSAIDs without PPI</strong><span class="dz-fix">→ Always co-prescribe omeprazole 20mg OD when prescribing oral NSAIDs</span></div></div>
-            <div class="dz-item"><span class="dz-x">✗</span><div><strong>Missing motor deficit (foot drop)</strong><span class="dz-fix">→ Heel/toe walking should be assessed in any LBP with leg symptoms; foot drop = urgent MRI + neurosurgery</span></div></div>
+            <div class="dz-item"><span class="dz-x">✗</span><div><strong>NSAIDs without GI-risk assessment</strong><span class="dz-fix">→ Assess GI, renal and CV risk; co-prescribe omeprazole 20mg OD according to GI risk</span></div></div>
+            <div class="dz-item"><span class="dz-x">✗</span><div><strong>Missing motor deficit (foot drop)</strong><span class="dz-fix">→ Heel/toe walking should be assessed in any LBP with leg symptoms; new foot drop = urgent spinal assessment</span></div></div>
           </div>
         </div>
 
@@ -2795,13 +2795,13 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px">
           <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
             <div style="font-size:11px;font-weight:600;color:var(--muted)">Acute non-specific LBP (no contraindications)</div>
-            <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap"><span style="font-size:10px;color:var(--muted)">→</span><span class="sdp-pill ccb-pill">Ibuprofen 400mg TDS + PPI</span></div>
-            <div style="font-size:10.5px;color:var(--muted)">Always with omeprazole 20mg OD. Review at 2 weeks. Do NOT give paracetamol alone.</div>
+            <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap"><span style="font-size:10px;color:var(--muted)">→</span><span class="sdp-pill ccb-pill">Ibuprofen 400mg TDS ± PPI (GI risk)</span></div>
+            <div style="font-size:10.5px;color:var(--muted)">Omeprazole 20mg OD according to GI risk. Review at 2 weeks. Do NOT give paracetamol alone.</div>
           </div>
           <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
             <div style="font-size:11px;font-weight:600;color:var(--muted)">Elderly (&gt;75) or NSAID intolerance / mild pain</div>
             <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap"><span style="font-size:10px;color:var(--muted)">→</span><span class="sdp-pill ccb-pill">Topical diclofenac 1% gel TDS</span></div>
-            <div style="font-size:10.5px;color:var(--muted)">Lower systemic absorption. Preferred in elderly to reduce GI/renal/cardiovascular risk.</div>
+            <div style="font-size:10.5px;color:var(--muted)">Local formulary option only (not NG59); lower systemic absorption but benefit for deep spinal pain uncertain.</div>
           </div>
           <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px">
             <div style="font-size:11px;font-weight:600;color:var(--muted)">Chronic LBP ± depression</div>
@@ -2824,7 +2824,7 @@ body.mode-clinic .sca-only{display:none!important}
             <div style="font-size:10.5px;color:var(--muted)">NSAIDs in AS are therapeutic — sustained use slows radiographic progression. Refer rheumatology.</div>
           </div>
         </div>
-        <div class="sdp-pivot">⛔ Never prescribe: paracetamol alone for LBP | opioids for chronic LBP (&gt;12 wks) | diazepam &gt;7 days | oral NSAIDs without PPI | bed rest as treatment | antidepressants or gabapentinoids for LBP/sciatica pain (NICE NG59)</div>
+        <div class="sdp-pivot">⛔ Never prescribe: paracetamol alone for LBP | opioids for chronic LBP (&gt;12 wks) | benzodiazepines (diazepam) | oral NSAIDs without GI-risk assessment | bed rest as treatment | antidepressants for LBP or gabapentinoids for LBP/sciatica (NICE NG59; no NG59 antidepressant recommendation for sciatica — specialist decision)</div>
       </div>
 
     </div><!-- /sum-body-sca -->

@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/management.css?v=15">
 <link rel="stylesheet" href="../../assets/management-print.css?v=3">
-<meta name="omelette-print-source" content="v1791113813010347">
+<meta name="omelette-print-source" content="v1791186457638084">
 <style>doc-page:not(:defined){visibility:hidden}</style>
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
@@ -93,7 +93,7 @@ MG.render({
          ["Systemic state","Systemically well","<b>Features of sepsis</b>"],
          ["Bloods","CRP, FBC and renal function support severity assessment","<b>No isolated CRP or WBC threshold substitutes for clinical assessment</b>; any local thresholds are local, not NICE criteria"],
          ["Imaging","No abscess or perforation","<b>Abscess (Hinchey Ib\u2013II)</b> or <b>pneumoperitoneum (Hinchey III\u2013IV)</b>"],
-         ["The patient","Tolerating oral intake, <b>not immunocompromised</b>, not pregnant, adequate social support, reliable to return if deteriorating","Unable to tolerate oral medication, <b>immunocompromised</b>, <b>pregnant</b>, or <b>not socially supported</b>"],
+         ["The patient","Tolerating oral intake (if immunosuppressed: antibiotics and early review), not pregnant, adequate social support, reliable to return if deteriorating","Unable to tolerate oral medication, <b>immunocompromised and frail or with significant comorbidity</b> (low threshold \u2014 signs may be masked), <b>pregnant</b>, or <b>not socially supported</b>"],
          ["Progress","Improving","<b>Persisting or worsening symptoms on outpatient management</b>"]
        ]},
        {b:"dl", rows:[
@@ -102,7 +102,7 @@ MG.render({
          ["Examination","Temperature; <b>localised versus generalised</b> tenderness; guarding and rigidity; bowel sounds \u2014 normal, hyperactive (obstruction) or absent (perforation); a palpable left iliac fossa mass (abscess or phlegmon); rectal examination for blood on the glove and anterior rectal tenderness from a pelvic collection"],
          ["<b>Diverticular haemorrhage</b>","A separate presentation: <b>painless massive fresh rectal bleeding</b>. <b>80% is self-limiting.</b> CT angiography detects active bleeding at <b>0.5 mL/min or more</b>; then colonoscopic haemostasis (clips, adrenaline injection), <b>superselective mesenteric arterial embolisation</b>, or surgery if bleeding fails to stop or recurs"]
        ]},
-       {b:"why", html:"The severity grading is the whole decision. Generalised peritonism, sepsis, obstruction, fistula, uncontrolled pain or a palpable mass moves a patient out of the community pathway to same-day hospital assessment \u2014 CRP, FBC, renal function and observations support, but do not replace, clinical assessment \u2014 and so do three non-biochemical facts that are easy to skip: immunocompromise, pregnancy, and living alone without anyone to notice deterioration. Grading is not just about how inflamed the colon is; it is about whether this patient can be safely observed at home."}
+       {b:"why", html:"The severity grading is the whole decision. Generalised peritonism, sepsis, obstruction, fistula, uncontrolled pain or a palpable mass moves a patient out of the community pathway to same-day hospital assessment \u2014 CRP, FBC, renal function and observations support, but do not replace, clinical assessment \u2014 and so can three non-biochemical facts that are easy to skip: immunocompromise (a low threshold, especially with frailty or comorbidity, because signs are masked \u2014 if managed at home, offer antibiotics), pregnancy, and living alone without anyone to notice deterioration. Grading is not just about how inflamed the colon is; it is about whether this patient can be safely observed at home."}
      ]},
 
     {id:"workup", nav:"Work-up", title:"CT confirms it and excludes the complications; colonoscopy comes later",
@@ -213,7 +213,7 @@ MG.render({
      blocks:[
        {b:"cards", items:[
          {tone:"red", h:"999", html:"<b>Generalised peritonism</b> (perforation), <b>haemodynamic instability or collapse</b>, <b>massive rectal haemorrhage</b>, complete bowel obstruction."},
-         {tone:"red", h:"Same-day surgical assessment", html:"<b>Suspected abscess</b>, <b>persisting or worsening symptoms on outpatient management</b>, <b>features of sepsis or uncontrolled pain</b>, obstruction, unable to tolerate oral medication, a developing palpable left iliac fossa mass, <b>any immunocompromised patient</b>, <b>pregnancy</b>."},
+         {tone:"red", h:"Same-day surgical assessment", html:"<b>Suspected abscess</b>, <b>persisting or worsening symptoms on outpatient management</b>, <b>features of sepsis or uncontrolled pain</b>, obstruction, unable to tolerate oral medication, a developing palpable left iliac fossa mass, <b>immunocompromise with frailty or significant comorbidity</b> (low threshold \u2014 signs may be masked; otherwise antibiotics and early review at home), <b>pregnancy</b>."},
          {tone:"amber", h:"Urgent colorectal surgery", html:"<b>Colovesical or colovaginal fistula</b>; refractory or recurrent diverticular haemorrhage."},
          {tone:"amber", h:"Elective colorectal surgery", html:"Complicated disease, fistula, stricture, persistent symptoms, or recurrent episodes that significantly affect quality of life \u2014 an individualised, shared decision, not based on a fixed number of attacks; age under 50 is not by itself an indication after a first uncomplicated episode."},
          {tone:"purple", h:"Suspected cancer \u00b7 NG12 \u2014 suspected colorectal cancer", html:"Refer on the <b>suspected colorectal cancer pathway (2 weeks)</b> for a <b>FIT result of \u226510 \u00b5g Hb/g</b>; consider referral without FIT for a <b>rectal mass</b>. An <b>abdominal mass</b>, <b>change in bowel habit</b>, <b>iron-deficiency anaemia</b>, <b>rectal bleeding</b>, or <b>weight loss with abdominal pain at 40 and over</b> \u2192 offer FIT first (NICE HTG690, formerly DG56); a low FIT (below 10) or one not returned does not exclude referral and must not delay it where clinical concern persists. <b>NICE NG12 (updated April 2026).</b>"},

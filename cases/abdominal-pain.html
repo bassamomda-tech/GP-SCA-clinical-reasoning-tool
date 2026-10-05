@@ -770,7 +770,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="ns-item"><span class="ns-val">Suspected cancer pathway referral</span><span class="ns-lbl">Age ≥40 + weight loss + abdominal pain → FIT (NG12)</span></div>
     <div class="ns-item"><span class="ns-val">FIT</span><span class="ns-lbl">Change in bowel habit (any age) → suspected cancer pathway referral if ≥10 µg Hb/g</span></div>
     <div class="ns-item"><span class="ns-val">IDA</span><span class="ns-lbl">Iron-deficiency anaemia (any age) → FIT (NG12); refer if ≥10 µg Hb/g</span></div>
-    <div class="ns-item"><span class="ns-val">Alvarado ≥7</span><span class="ns-lbl">Appendicitis risk score — refer for surgical assessment</span></div>
+    <div class="ns-item"><span class="ns-val">Same day</span><span class="ns-lbl">Suspected appendicitis — surgical assessment on clinical findings (Alvarado not validated in primary care)</span></div>
     <div class="ns-item"><span class="ns-val">Rome IV</span><span class="ns-lbl">IBS criteria: ≥1 day/wk pain × 3 months + ≥2 bowel features</span></div>
     <div class="ns-item"><span class="ns-val">CRP &lt;10</span><span class="ns-lbl">mg/L supports functional cause; raised CRP → investigate organic</span></div>
     <div class="ns-item"><span class="ns-val">1 in 15</span><span class="ns-lbl">Lifetime colorectal cancer risk in UK (men); 1 in 18 (women)</span></div>
@@ -788,8 +788,8 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="stem-variant"><strong>Scenario A — IBS / Functional Pain</strong> Classic Rome IV criteria met: crampy lower abdominal pain, altered bowel habit, bloating, worse with stress, no red flags, normal examination. Management: reassurance + lifestyle + antispasmodics.</div>
     <div class="stem-variant"><strong>Scenario B — Suspected IBD First Presentation</strong> Younger patient, bloody diarrhoea, weight loss, urgency, nocturnal symptoms, elevated CRP and faecal calprotectin. Requires urgent gastroenterology referral.</div>
     <div class="stem-variant"><strong>Scenario C — Biliary Colic</strong> Right upper quadrant pain radiating to right shoulder tip, 2–4 hours post fatty meal, nausea and vomiting, resolves spontaneously. USS required; elective surgical referral if gallstones confirmed.</div>
-    <div class="stem-variant"><strong>Scenario D — Colorectal Cancer Concern</strong> Age 62, six-week change in bowel habit to looser stools, mild rectal bleeding on paper, no weight loss. Suspected cancer pathway referral criteria met under NICE NG12.</div>
-    <div class="stem-variant"><strong>Scenario E — Acute Surgical Abdomen</strong> Sudden onset severe right iliac fossa pain, rebound tenderness, guarding, fever, Alvarado ≥7. Same-day surgical assessment required; do not prescribe analgesia and discharge.</div>
+    <div class="stem-variant"><strong>Scenario D — Colorectal Cancer Concern</strong> Age 62, six-week change in bowel habit to looser stools, mild rectal bleeding on paper, no weight loss. Meets NICE NG12 FIT criteria (rectal bleeding at 50+, change in bowel habit) — suspected cancer pathway referral if FIT ≥10 µg Hb/g; PR to exclude a rectal mass.</div>
+    <div class="stem-variant"><strong>Scenario E — Acute Surgical Abdomen</strong> Sudden onset severe right iliac fossa pain, rebound tenderness, guarding, fever. Same-day surgical assessment required whatever the Alvarado score (not validated in primary care); analgesia is appropriate, but do not discharge.</div>
     <div class="stem-variant"><strong>Key variables to adapt for</strong> Age and sex; site and character of pain; duration and pattern; bowel habit change; rectal bleeding; weight loss; family history; red flags; prior GI investigations; reproductive status in women; recent antibiotics or foreign travel.</div>
   </div>
 </div>
@@ -891,7 +891,7 @@ body.mode-clinic .sca-only{display:none!important}
         <tbody>
           <tr><td class="rf-flag">Rigid abdomen, rebound tenderness, guarding, or patient lying absolutely still</td><td class="rf-why">Signs of peritoneal irritation indicate a surgical emergency: perforated viscus, ruptured ectopic, mesenteric ischaemia. Time-critical — mortality rises sharply with delay to theatre.</td><td><span class="rf-action rfa-999">999 now</span></td></tr>
           <tr><td class="rf-flag">Sudden-onset "worst ever" abdominal pain or pulsatile mid-abdominal mass</td><td class="rf-why">Ruptured or leaking AAA — classic triad: tearing/ripping pain, pulsatile mass, haemodynamic instability. Mortality without immediate surgery approaches 90%. Do not delay to investigate.</td><td><span class="rf-action rfa-999">999 now</span></td></tr>
-          <tr><td class="rf-flag">Lower abdominal pain + amenorrhoea ± positive pregnancy test in a woman</td><td class="rf-why">Ectopic pregnancy until proven otherwise. Rupture causes catastrophic intra-abdominal haemorrhage. Even haemodynamically stable patients with suspected ectopic require immediate emergency gynaecology assessment.</td><td><span class="rf-action rfa-999">999 now</span></td></tr>
+          <tr><td class="rf-flag">Lower abdominal pain + amenorrhoea ± positive pregnancy test in a woman</td><td class="rf-why">Ectopic pregnancy until proven otherwise. Rupture causes catastrophic intra-abdominal haemorrhage. Stable with a positive test → early pregnancy assessment unit today (NG126); shock, syncope, severe pain, significant bleeding or shoulder-tip pain → 999.</td><td><span class="rf-action rfa-999">999 if unstable · EPU today if stable</span></td></tr>
           <tr><td class="rf-flag">Unintentional weight loss with new abdominal symptoms, age ≥40</td><td class="rf-why">NICE NG12: FIT at 40+ with abdominal pain; suspected cancer pathway (upper GI) referral at 55+ with weight loss plus upper abdominal pain, reflux or dyspepsia; urgent CT at 60+ for pancreatic cancer. Cancer pick-up rate on investigation is clinically significant at 5–10%.</td><td><span class="rf-action rfa-same">Suspected cancer pathway referral</span></td></tr>
           <tr><td class="rf-flag">Rectal bleeding, especially dark blood mixed with stool</td><td class="rf-why">NICE NG12: rectal bleeding with abdominal pain or weight loss under 50, or any rectal bleeding at 50+ → FIT; suspected cancer pathway referral if ≥10 µg Hb/g. Dark blood mixed with stool is more sinister than bright blood on paper. Never attribute rectal bleeding to haemorrhoids without examination in patients ≥50.</td><td><span class="rf-action rfa-same">Suspected cancer pathway referral</span></td></tr>
           <tr><td class="rf-flag">Change in bowel habit at any age, especially to looser stools (FIT, NG12)</td><td class="rf-why">A strong predictor of colorectal cancer, particularly in older adults. Looser stools are more concerning — they suggest left-sided or rectal cancer. Colorectal cancer incidence peaks in the seventh and eighth decade.</td><td><span class="rf-action rfa-same">Suspected cancer pathway referral</span></td></tr>
@@ -926,7 +926,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tbody>
             <tr><td class="factor">Previous GI malignancy or FH &lt;50</td><td>Markedly increases pre-test probability of colorectal cancer</td><td class="impact">Suspected cancer pathway referral even with borderline symptoms; earlier colonoscopic surveillance</td></tr>
             <tr><td class="factor">IBD (known Crohn's / UC)</td><td>New/changed pain may represent flare, complication (stricture, fistula), or malignant transformation in long-standing colitis</td><td class="impact">Urgent gastroenterology review; faecal calprotectin; colonoscopy if colitis duration &gt;8 years</td></tr>
-            <tr><td class="factor">Coeliac disease</td><td>Untreated coeliac masquerades as IBS for years; associated with iron, folate, B12 and vitamin D deficiency</td><td class="impact">Anti-TTG IgA; refer gastroenterology; dietitian; DEXA scan at diagnosis</td></tr>
+            <tr><td class="factor">Coeliac disease</td><td>Untreated coeliac masquerades as IBS for years; associated with iron, folate, B12 and vitamin D deficiency</td><td class="impact">Anti-TTG IgA + total IgA; refer gastroenterology; dietitian; bone assessment (DEXA by risk)</td></tr>
             <tr><td class="factor">Peptic ulcer / previous H. pylori</td><td>Increased risk of recurrence, especially with NSAID use or incomplete eradication</td><td class="impact">Stool antigen test; OGD if persistent symptoms; avoid NSAIDs</td></tr>
             <tr><td class="factor">Ovarian cysts, endometriosis, or PID (women)</td><td>Recurrent pelvic pain with prior gynaecological pathology may represent progression or new complication</td><td class="impact">Pelvic USS; gynaecology referral if recurrent or new features</td></tr>
             <tr><td class="factor">Previous abdominal surgery</td><td>Adhesional pain and small bowel obstruction significantly more common post-laparotomy — can develop years later</td><td class="impact">Lower threshold for urgent surgical review; CT abdomen if SBO suspected</td></tr>
@@ -1052,9 +1052,9 @@ body.mode-clinic .sca-only{display:none!important}
         <h3>Same-Day GP / Urgent Referral</h3>
         <span class="tc-badge tcb-u">Hours to 2 weeks</span>
         <ul class="tc-items">
-          <li class="tc-item"><strong>Suspected appendicitis (Alvarado 4–6)</strong><em>Right iliac fossa pain, anorexia, fever, rebound tenderness in RIF — admit for surgical assessment; do not give analgesia and discharge</em></li>
-          <li class="tc-item"><strong>Acute cholecystitis</strong><em>RUQ pain, fever, positive Murphy's sign, elevated WCC and CRP — urgent surgical referral; USS same day if available</em></li>
-          <li class="tc-item"><strong>Acute diverticulitis</strong><em>Left iliac fossa pain, fever, change in bowel habit, elevated CRP — CT if diagnosis uncertain; community antibiotics if mild, admit if severe</em></li>
+          <li class="tc-item"><strong>Suspected appendicitis</strong><em>Right iliac fossa pain, anorexia, fever, rebound tenderness in RIF — same-day surgical assessment on clinical findings (Alvarado not validated in primary care); analgesia is fine, but do not discharge</em></li>
+          <li class="tc-item"><strong>Acute cholecystitis</strong><em>RUQ pain, fever, positive Murphy's sign, elevated WCC and CRP — same-day hospital/surgical assessment, not a community scan (CG188)</em></li>
+          <li class="tc-item"><strong>Acute diverticulitis</strong><em>Left iliac fossa pain, fever, change in bowel habit, elevated CRP — well and uncomplicated: consider no antibiotic with review at 48 h; co-amoxiclav if systemically unwell or comorbid; same-day hospital if complicated (NG147)</em></li>
           <li class="tc-item"><strong>Severe IBD flare</strong><em>Bloody diarrhoea ≥6/day, fever, tachycardia — Truelove and Witts criteria; hospital admission if severe; IV corticosteroids</em></li>
           <li class="tc-item"><strong>NICE NG12: suspected cancer pathway referral criteria met</strong><em>FIT for change in bowel habit or IDA (any age), rectal bleeding with pain or weight loss (under 50), rectal bleeding, abdominal pain or weight loss (50+) → suspected cancer pathway referral if ≥10 µg Hb/g; rectal mass → suspected cancer pathway referral</em></li>
           <li class="tc-item"><strong>Suspected ectopic (stable)</strong><em>Lower abdominal pain + positive pregnancy test without ultrasound evidence of intrauterine pregnancy — same-day EPU assessment</em></li>
@@ -1179,13 +1179,13 @@ body.mode-clinic .sca-only{display:none!important}
         <tbody>
           <tr><td class="q">Full Blood Count (FBC)</td><td class="why">Is there anaemia from GI blood loss? Leucocytosis from infection or inflammation? Iron-deficiency pattern (low MCV, low ferritin)?</td><td class="why">Iron-deficiency anaemia → FIT (NICE NG12); refer if ≥10 µg Hb/g (BSG 2021: bidirectional endoscopy for new IDA in men and postmenopausal women). WCC &gt;11 × 10⁹/L = acute infection/inflammation. Low MCV + low ferritin = GI blood loss until proven otherwise</td></tr>
           <tr><td class="q">C-Reactive Protein (CRP)</td><td class="why">Is there systemic inflammation? Normal CRP supports functional diagnosis. CRP &gt;50 with fever = IBD flare or acute infection. Serial CRP is the most useful monitoring tool in IBD.</td><td class="why">CRP &lt;10 + normal FBC = supports functional diagnosis. CRP &gt;50 + abdominal pain = active organic disease; same-day assessment. Persistently elevated = investigate for IBD, malignancy, or infection</td></tr>
-          <tr><td class="q">Liver Function Tests (LFTs)</td><td class="why">Is there biliary obstruction, hepatic disease, or alcohol-related liver damage? Elevated ALP and bilirubin suggests biliary obstruction. Isolated elevated GGT = alcohol-related liver disease.</td><td class="why">Obstructive pattern → urgent ERCP / hepatobiliary surgical referral. Hepatocellular pattern → liver screen. Isolated elevated GGT → alcohol reduction advice</td></tr>
-          <tr><td class="q">Serum amylase or lipase</td><td class="why">Is this acute pancreatitis? Amylase &gt;3× ULN with acute epigastric pain radiating to the back = diagnostic and requires immediate hospital admission.</td><td class="why">Amylase &gt;3× ULN + acute epigastric pain → immediate hospital admission. Normal amylase does not exclude chronic pancreatitis — CT or MRCP required</td></tr>
+          <tr><td class="q">Liver Function Tests (LFTs)</td><td class="why">Is there biliary obstruction, hepatic disease, or alcohol-related liver damage? Elevated ALP and bilirubin suggests biliary obstruction. Isolated elevated GGT may be alcohol-, drug- or metabolic (MASLD)-related — not diagnostic on its own.</td><td class="why">Obstructive pattern → urgent USS; same-day hepatobiliary assessment if jaundiced or febrile. Hepatocellular pattern → liver screen. Isolated elevated GGT → review alcohol, drugs and metabolic risk; recheck and assess further if unexplained</td></tr>
+          <tr><td class="q">Serum amylase or lipase</td><td class="why">Is this acute pancreatitis? Lipase (preferred) or amylase &gt;3× ULN plus characteristic pain meets two of the three diagnostic criteria (pain, enzyme, imaging); a raised amylase alone is not diagnostic and a normal one does not exclude it.</td><td class="why">Suspected acute pancreatitis → same-day hospital assessment; do not wait for the enzyme result. Normal amylase does not exclude chronic pancreatitis — CT or MRCP required</td></tr>
           <tr><td class="q">Urine dipstick ± MSU</td><td class="why">Is this pain caused by UTI, pyelonephritis, or renal colic? Unexplained visible haematuria at 45+ = NICE NG12 suspected cancer pathway referral (bladder/renal cancer). Glycosuria may indicate undiagnosed diabetes.</td><td class="why">UTI on dipstick → antibiotics. Visible haematuria at 45+ without UTI → urology suspected cancer pathway referral (NG12). Pyelonephritis with systemic upset → same-day hospital assessment</td></tr>
           <tr><td class="q">Urinary pregnancy test (all reproductive-age women)</td><td class="why">Is this lower abdominal pain an ectopic pregnancy? Mandatory in any reproductive-age woman with lower abdominal pain regardless of stated contraception or last menstrual period.</td><td class="why">Positive test + lower abdominal pain = ectopic until proven otherwise → immediate EPU referral or 999 if haemodynamically unstable</td></tr>
           <tr><td class="q">Coeliac screen: anti-TTG IgA + total serum IgA</td><td class="why">Is coeliac disease the cause of this patient's abdominal pain and altered bowel habit? Affects 1 in 100 UK adults, most undiagnosed. Requires patient to be on a gluten-containing diet. Total IgA must be checked (IgA deficiency gives false negative).</td><td class="why">Positive anti-TTG IgA → gastroenterology referral for duodenal biopsy before starting GFD. Do NOT start gluten-free diet before biopsy — histology will be falsely negative. IgA deficiency → request IgG-based antibodies</td></tr>
-          <tr><td class="q">Faecal calprotectin</td><td class="why">Is this IBS or IBD? Calprotectin &lt;50 μg/g has a high negative predictive value for IBD, allowing confident IBS diagnosis. NICE HTG320 (formerly DG11) recommends faecal calprotectin before referral for colonoscopy in suspected IBS.</td><td class="why">Calprotectin &gt;250 μg/g → urgent gastroenterology referral (probable IBD). 50–250 = repeat in 4–6 weeks; if persistent, refer. &lt;50 + Rome IV = diagnose IBS; begin IBS management without colonoscopy</td></tr>
-          <tr><td class="q">H. pylori stool antigen test</td><td class="why">Is H. pylori infection causing this dyspepsia? Test before prescribing long-term PPI. IMPORTANT: stop PPI for 2 weeks and antibiotics for 4 weeks before testing to avoid false negatives.</td><td class="why">Positive → 7-day triple eradication therapy; confirm eradication 4–6 weeks post-treatment. Negative with dyspepsia → PPI trial 4–8 weeks; if &lt;55 with no red flags, no OGD needed</td></tr>
+          <tr><td class="q">Faecal calprotectin</td><td class="why">Is this IBS or IBD? Calprotectin &lt;50 μg/g has a high negative predictive value for IBD, allowing confident IBS diagnosis. NICE HTG320 (formerly DG11) recommends faecal calprotectin before referral for colonoscopy in suspected IBS.</td><td class="why">Calprotectin &gt;250 μg/g (interpret against the local laboratory pathway) → urgent gastroenterology referral (probable IBD). 50–250 = repeat in 4–6 weeks; if persistent, refer. &lt;50 + Rome IV = diagnose IBS; begin IBS management without colonoscopy</td></tr>
+          <tr><td class="q">H. pylori stool antigen test</td><td class="why">Is H. pylori infection causing this dyspepsia? Test before prescribing long-term PPI. IMPORTANT: stop PPI for 2 weeks and antibiotics for 4 weeks before testing to avoid false negatives.</td><td class="why">Positive → 7-day eradication therapy per local guidance; retest only if indicated (peptic ulcer, persisting symptoms) — urea breath test ≥4 weeks after treatment. Negative with dyspepsia → PPI trial 4–8 weeks; if &lt;55 with no red flags, no OGD needed</td></tr>
           <tr><td class="q">Abdominal ultrasound (USS)</td><td class="why">Are there gallstones? Biliary dilatation? Palpable mass characterised? Free fluid (ascites, haemoperitoneum)? Aortic aneurysm? Renal obstruction? Ovarian cyst? First-line imaging for RUQ pain, biliary, renal, and gynaecological pathology.</td><td class="why">Gallstones + biliary colic → elective cholecystectomy referral. Dilated CBD → ERCP/hepatobiliary. AAA ≥5.5 cm (men) → urgent vascular referral. Ovarian cyst &gt;5 cm or complex → gynaecology referral</td></tr>
         </tbody>
       </table>
@@ -1245,7 +1245,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Diagnosable in Primary Care</div>
         <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP can diagnose</span>
-        <div class="ddx-card ddx-a" style="background:var(--g-bg);border-color:var(--g-bd);margin-bottom:8px"><h4 style="color:var(--g)">IBS (Irritable Bowel Syndrome)</h4><p>Rome IV: recurrent abdominal pain ≥1 day/week in last 3 months associated with ≥2 of: related to defaecation; change in stool frequency; change in stool form. Requires normal FBC, CRP, and faecal calprotectin &lt;50 μg/g. Diagnosis of confidence, not purely of exclusion.</p></div>
+        <div class="ddx-card ddx-a" style="background:var(--g-bg);border-color:var(--g-bd);margin-bottom:8px"><h4 style="color:var(--g)">IBS (Irritable Bowel Syndrome)</h4><p>Rome IV: recurrent abdominal pain ≥1 day/week in last 3 months associated with ≥2 of: related to defaecation; change in stool frequency; change in stool form. Requires normal FBC, CRP/ESR and coeliac serology, with faecal calprotectin where IBD is possible and FIT for a change in bowel habit (NG12); in women ≥40 with persistent or frequent bloating, check CA-125 (NG12, updated April 2026). Diagnosis of confidence, not purely of exclusion.</p></div>
         <div class="ddx-card ddx-a" style="background:var(--g-bg);border-color:var(--g-bd);margin-bottom:8px"><h4 style="color:var(--g)">Functional Constipation</h4><p>Rome IV: ≥2 of straining, hard stools, incomplete evacuation, anorectal obstruction, manual manoeuvres, &lt;3 bowel movements/week. Rule out thyroid disease, medication causes, and colorectal cancer in older patients before labelling as functional.</p></div>
         <div class="ddx-card ddx-a" style="background:var(--g-bg);border-color:var(--g-bd)"><h4 style="color:var(--g)">Musculoskeletal / Abdominal Wall Pain</h4><p>Carnett's test positive (pain worsens on tensing abdominal muscles) distinguishes abdominal wall from visceral pain. Often post-surgical, post-traumatic, or nerve entrapment. Reassurance + physiotherapy + topical NSAID.</p></div>
       </div>
@@ -1260,7 +1260,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency — Act Now</div>
         <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">Diagnose &amp; act immediately</span>
-        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Acute Appendicitis</h4><p>Periumbilical pain migrating to RIF, anorexia, nausea, fever, rebound at McBurney's point. Alvarado score ≥7: admit. Do not give analgesia and send home. CT abdomen / USS confirms. Laparoscopic appendicectomy or IV antibiotics.</p></div>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Acute Appendicitis</h4><p>Periumbilical pain migrating to RIF, anorexia, nausea, fever, rebound at McBurney's point. Same-day surgical assessment on clinical findings — the Alvarado score is not validated in primary care. Give analgesia, but do not send home. CT abdomen / USS confirms. Laparoscopic appendicectomy or IV antibiotics.</p></div>
         <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Ruptured Ectopic Pregnancy</h4><p>Sudden lower abdominal pain, periumbilical or shoulder tip pain, haemodynamic instability, positive pregnancy test. 999 immediately. No intrauterine pregnancy on any previous USS does not exclude ectopic.</p></div>
         <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Ruptured / Leaking AAA</h4><p>Tearing abdominal/back pain in age ≥60 with cardiovascular risk factors, pulsatile mass. 999. Mortality approaches 90% without emergency repair. Do not press firmly on a pulsatile mass.</p></div>
         <div class="ddx-card ddx-c"><h4>Colorectal or Upper GI Malignancy</h4><p>NICE NG12: FIT (NICE NG12) for change in bowel habit or IDA at any age, rectal bleeding with abdominal pain or weight loss under 50, rectal bleeding, abdominal pain or weight loss at 50+, or an abdominal mass → suspected cancer pathway referral if FIT ≥10 µg Hb/g; rectal mass → suspected cancer pathway referral without FIT. Dysphagia → upper GI suspected cancer pathway referral without waiting.</p></div>
@@ -1496,10 +1496,10 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
           <p style="margin:0 0 .5rem"><strong>Low-dose amitriptyline: ATLANTIS trial evidence (2023)</strong></p>
           <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
-            <li>Amitriptyline 10mg nocte, titrate to 30–75mg as tolerated</li>
+            <li>Amitriptyline 5–10mg nocte, titrate to no more than 30mg in primary care (higher doses only with specialist advice)</li>
             <li>Mechanism: central neuromodulation — reduces visceral hypersensitivity; anticholinergic effects also slow gut transit (useful in IBS-D)</li>
             <li>Counsel patient: this is not being used for depression; antidepressant doses are 5–10× higher; benefits take 4–6 weeks</li>
-            <li>If amitriptyline not tolerated: nortriptyline (fewer anticholinergic effects) or SSRI (sertraline for IBS-C; citalopram for IBS-D)</li>
+            <li>If amitriptyline not tolerated: nortriptyline (fewer anticholinergic effects); an SSRI only if a TCA has been ineffective (NICE CG61 third line)</li>
           </ul>
           <div style="font-size:11px;background:var(--b-bg);border:1px solid var(--b-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--b);font-weight:600">ATLANTIS RCT (NEJM 2023): amitriptyline 10–30mg superior to placebo in IBS at 6 months</div>
         </div>
@@ -1509,10 +1509,10 @@ body.mode-clinic .sca-only{display:none!important}
         <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
           <p style="margin:0 0 .5rem"><strong>Treat the organic cause specifically</strong></p>
           <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
-            <li>H. pylori positive: 7-day triple therapy (lansoprazole 30mg BD + clarithromycin 500mg BD + amoxicillin 1g BD); confirm eradication 4–6 weeks post-treatment</li>
+            <li>H. pylori positive: 7-day triple therapy (lansoprazole 30mg BD + clarithromycin 500mg BD + amoxicillin 1g BD), regimen per local guidance and prior antibiotic exposure; retest only if indicated (urea breath test ≥4 weeks after treatment)</li>
             <li>GORD / peptic: lansoprazole 30mg or omeprazole 20mg OD for 4–8 weeks; step down to on-demand once resolved</li>
             <li>IBD (following gastroenterology advice): mesalazine for UC; azathioprine/biologics for Crohn's — ALWAYS secondary care initiation</li>
-            <li>Coeliac: strict gluten-free diet — no pharmacological treatment; annual haematinic check; DEXA scan at diagnosis</li>
+            <li>Coeliac: strict gluten-free diet — no pharmacological treatment; annual review with tests as indicated; DEXA by risk</li>
           </ul>
           <div style="font-size:11px;background:var(--p-bg);border:1px solid var(--p-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--p);font-weight:600">All IBD immunosuppression should be initiated and supervised by gastroenterology — never independently in primary care</div>
         </div>
@@ -1602,7 +1602,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div>
           <div class="dc-item">GORD, peptic ulcer disease, or H. pylori-negative dyspepsia (no red flags, age &lt;55)</div>
           <div class="dc-item">NSAID-induced gastric symptoms — PPI reduces NSAID-associated ulcer risk by 80%</div>
-          <div class="dc-item">Long-term NSAID or anticoagulant users as gastroprotection regardless of symptoms</div>
+          <div class="dc-item">Gastroprotection for NSAID, antiplatelet or anticoagulant users according to individual GI-bleed risk</div>
           <div class="dc-item">H. pylori eradication triple therapy (as the PPI component of the regimen)</div>
         </div>
         <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
@@ -1616,7 +1616,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dc-item">Subacute cutaneous lupus erythematosus — rare class effect; consider if unexplained rash develops</div>
         </div>
         <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div>
-          <div class="dc-item">H. pylori test before prescribing; confirm eradication with stool antigen 4–6 weeks after eradication course</div>
+          <div class="dc-item">H. pylori test before prescribing; retest after eradication only if indicated (urea breath test ≥4 weeks after the course)</div>
           <div class="dc-item">Annual review for long-term PPI users — attempt step-down to on-demand dosing once controlled</div>
           <div class="dc-item">Serum magnesium 6-monthly if on diuretics or digoxin alongside long-term PPI</div>
         </div>
@@ -1655,7 +1655,7 @@ body.mode-clinic .sca-only{display:none!important}
 
       <div class="dc" id="dc-tca">
         <div class="dc-head">
-          <div><div class="dc-name">Low-Dose Tricyclic Antidepressants</div><div class="dc-examples">Amitriptyline 10–75mg nocte · Nortriptyline 10–50mg nocte</div><div class="dc-rec-badge" id="rec-tca">✓ Recommended</div></div>
+          <div><div class="dc-name">Low-Dose Tricyclic Antidepressants</div><div class="dc-examples">Amitriptyline 5–30mg nocte · Nortriptyline 10–50mg nocte</div><div class="dc-rec-badge" id="rec-tca">✓ Recommended</div></div>
           <div class="dc-badges"><span class="dc-step step2">Step 2 Refractory IBS</span><span class="dc-dose">Start 10mg nocte</span></div>
         </div>
         <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div>
@@ -1696,9 +1696,9 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dc-item">First-degree relative with gastric cancer — H. pylori screening and eradication is recommended</div>
         </div>
         <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
-          <div class="dc-item ci-abs">Penicillin allergy — substitute metronidazole 400mg BD for amoxicillin; clarithromycin dose is then 250mg BD (NICE CG184 / BNF)</div>
-          <div class="dc-item ci-abs">Known clarithromycin resistance or prior clarithromycin treatment failure — use bismuth quadruple therapy as second-line (NICE CG184 updated guidance)</div>
-          <div class="dc-item ci-rel">Check local antibiotic resistance rates — in areas with &gt;20% clarithromycin resistance, use bismuth quadruple therapy first-line</div>
+          <div class="dc-item ci-abs">Penicillin allergy — lansoprazole 30mg BD + clarithromycin 500mg BD + metronidazole 400mg BD × 7 days (BNF)</div>
+          <div class="dc-item ci-abs">Prior clarithromycin exposure or treatment failure — NICE CG184 second line is PPI + amoxicillin + whichever of clarithromycin or metronidazole was not used first; bismuth-based regimens only per BNF or local microbiology advice</div>
+          <div class="dc-item ci-rel">Check local antibiotic resistance rates — where clarithromycin resistance is high, use the metronidazole-based regimen per local guidance</div>
         </div>
         <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
           <div class="dc-item">Metallic taste, nausea, diarrhoea, abdominal discomfort — common with clarithromycin</div>
@@ -1706,11 +1706,11 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dc-item">Antibiotic-associated diarrhoea / C. difficile — particularly in elderly or immunosuppressed patients</div>
         </div>
         <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div>
-          <div class="dc-item">Stool antigen or ¹³C urea breath test 4–6 weeks after completing therapy (stop PPI 2 weeks before test)</div>
+          <div class="dc-item">Retest only if indicated (peptic ulcer, persisting symptoms, treatment failure) — ¹³C urea breath test ≥4 weeks after completing therapy (stop PPI 2 weeks before test)</div>
           <div class="dc-item">If eradication confirmed and symptoms resolved — no further investigation required in patients &lt;55 without red flags</div>
           <div class="dc-item">If eradication confirmed but symptoms persist — OGD referral to exclude peptic ulcer or other pathology</div>
         </div>
-        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"H. pylori is a bacterium that lives in the stomach lining and can cause inflammation and ulcers. These three medicines together — taken over 7 days — will clear it in about 90% of people. Complete the full course even if you feel better partway through. After finishing, we'll do a simple stool test 4–6 weeks later to check it's gone."</p></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"H. pylori is a bacterium that lives in the stomach lining and can cause inflammation and ulcers. These three medicines together — taken over 7 days — will clear it in about 90% of people. Complete the full course even if you feel better partway through. If your symptoms continue after finishing, we can do a breath test at least 4 weeks later to check it's gone."</p></div>
         <div class="dc-sca"><p>SCA pearl: Stop PPI for 2 weeks (and antibiotics for 4 weeks) before testing for H. pylori — failure to do this causes false negative tests. This is one of the most common prescribing errors in primary care dyspepsia management and regularly appears in SCA cases.</p></div>
       </div>
 
@@ -1762,8 +1762,8 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="sub-divider">7H — Follow-up schedule</div>
     <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
       <div class="fu-line">
-        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>2–3 weeks: investigation results review</h5><p>Review FBC, CRP, coeliac antibodies, faecal calprotectin, H. pylori result. Confirm or revise working diagnosis. Initiate first-line pharmacotherapy if not already started. Check suspected cancer pathway referral appointment has been made if applicable.</p><div class="fu-tags"><span class="ft ft-r">Suspected cancer pathway referral check</span><span class="ft ft-a">Results review</span><span class="ft ft-b">Treatment initiation</span></div></div></div>
-        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>6 weeks: treatment response review</h5><p>Assess response to antispasmodics, laxatives, or PPI. Review dietary modification adherence. Check H. pylori eradication confirmed on stool antigen. Consider low-dose amitriptyline if first-line treatment has failed. Review IBD referral outcome if referred.</p><div class="fu-tags"><span class="ft ft-a">Treatment review</span><span class="ft ft-b">Step-up if needed</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>2–3 weeks: investigation results review</h5><p>Review FBC, CRP, coeliac antibodies, faecal calprotectin, FIT (change in bowel habit — NG12) and H. pylori result if tested. Confirm or revise working diagnosis. Initiate first-line pharmacotherapy if not already started. Check suspected cancer pathway referral appointment has been made if applicable.</p><div class="fu-tags"><span class="ft ft-r">Suspected cancer pathway referral check</span><span class="ft ft-a">Results review</span><span class="ft ft-b">Treatment initiation</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>6 weeks: treatment response review</h5><p>Assess response to antispasmodics, laxatives, or PPI. Review dietary modification adherence. Check H. pylori response; retest only if indicated (peptic ulcer or persisting symptoms). Consider low-dose amitriptyline if first-line treatment has failed. Review IBD referral outcome if referred.</p><div class="fu-tags"><span class="ft ft-a">Treatment review</span><span class="ft ft-b">Step-up if needed</span></div></div></div>
         <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>3 months: sustained response assessment</h5><p>If on amitriptyline — review response and side effects; titrate if partial response. Assess dietitian progress (low-FODMAP reintroduction phase). NHS Talking Therapies/CBT outcome if referred. If suspected cancer pathway investigations normal — formally diagnose IBS and communicate clearly. Recheck for any new red flags.</p><div class="fu-tags"><span class="ft ft-b">IBS diagnosis confirmation</span><span class="ft ft-a">Amitriptyline titration</span></div></div></div>
         <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>6 months: consolidation and ongoing management plan</h5><p>Review whether step-down in medication is appropriate. Assess psychosocial impact — has work, relationships, and social participation improved? Arrange annual review for patients on ongoing medication. Refer to gastroenterology if symptoms remain poorly controlled.</p><div class="fu-tags"><span class="ft ft-b">Annual plan</span><span class="ft ft-a">Gastro referral if needed</span></div></div></div>
         <div class="fu-event"><div class="fu-dot fd5">5</div><div class="fu-content"><h5>Annual: surveillance and rechecking for red flags</h5><p>Check weight, ask about new red flags (weight loss, rectal bleeding, change in bowel habit character). Review medication need. Colonoscopic surveillance for patients with FH of colorectal cancer in a first-degree relative &lt;50 — one-off colonoscopy at age 55 (BSG/ACPGBI/UKCGG 2019, Monahan et al. Gut 2020).</p><div class="fu-tags"><span class="ft ft-r">Red flag re-screen</span><span class="ft ft-b">Cancer surveillance</span></div></div></div>
@@ -1773,14 +1773,14 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="sub-divider" id="monitoring">7I — Monitoring: the ABCDE rule + investigation targets</div>
     <div class="mon-rule">
       <h4>Memory rule — monitoring in abdominal pain and IBS</h4>
-      <p><strong>A</strong>naemia check (FBC annually if risk factors for GI blood loss); <strong>B</strong>owel cancer surveillance (colonoscopy per FH protocol — first-degree relative &lt;50: colonoscopy at 55); <strong>C</strong>alprotectin if symptoms change (reconsider IBD); <strong>D</strong>iet review (annual dietitian if on low-FODMAP); <strong>E</strong>radication confirmed — stool antigen <strong>4–6 weeks</strong> post H. pylori treatment, PPI off <strong>2 weeks</strong> before testing</p>
+      <p><strong>A</strong>naemia check (FBC annually if risk factors for GI blood loss); <strong>B</strong>owel cancer surveillance (colonoscopy per FH protocol — first-degree relative &lt;50: colonoscopy at 55); <strong>C</strong>alprotectin if symptoms change (reconsider IBD); <strong>D</strong>iet review (annual dietitian if on low-FODMAP); <strong>E</strong>radication retested only if indicated — urea breath test <strong>≥4 weeks</strong> post H. pylori treatment, PPI off <strong>2 weeks</strong> before testing</p>
     </div>
     <div class="g2" style="margin-bottom:1.25rem">
       <div class="card" style="overflow:hidden">
         <table class="rt">
           <thead><tr><th>Treatment / Condition</th><th>Monitor</th><th>Timing</th><th>Action threshold</th></tr></thead>
           <tbody>
-            <tr><td class="q">H. pylori eradication</td><td class="why">Stool antigen test (or ¹³C urea breath test)</td><td><strong>4–6 weeks post-treatment</strong> (stop PPI 2 weeks before test)</td><td>Positive result → second-line bismuth quadruple therapy; gastroenterology if second-line fails</td></tr>
+            <tr><td class="q">H. pylori eradication</td><td class="why">¹³C urea breath test (or validated stool antigen) — only if indicated (peptic ulcer, persisting symptoms)</td><td><strong>≥4 weeks post-treatment</strong> (stop PPI 2 weeks before test)</td><td>Positive result → second-line 7-day regimen per CG184/local guidance; gastroenterology if second-line fails</td></tr>
             <tr><td class="q">Long-term PPI (≥6 months)</td><td class="why">Serum magnesium (especially with diuretics or digoxin); DEXA if ≥5 years + osteoporosis risk</td><td>Annual review; Mg 6-monthly if diuretics co-prescribed</td><td>Mg &lt;0.7 mmol/L → supplement or PPI dose review. Osteoporosis → calcium/vitamin D supplementation</td></tr>
             <tr><td class="q">Low-dose amitriptyline (IBS)</td><td class="why">Symptom response (pain scale, Bristol stool chart); side effects; QTc if cardiac history</td><td>4 weeks, 3 months, 6 months, annually</td><td>No response at 3 months despite adequate dose → switch to nortriptyline or SSRI; consider gastroenterology referral</td></tr>
             <tr><td class="q">IBS / any persistent GI symptoms</td><td class="why">New alarm symptoms at every review: weight, rectal bleeding, change in bowel habit character</td><td>Every appointment</td><td>Any new red flag → suspected cancer pathway referral regardless of previous normal investigations</td></tr>
@@ -1793,10 +1793,10 @@ body.mode-clinic .sca-only{display:none!important}
           <thead><tr><th>Patient group</th><th>Key target / Threshold</th><th>Action if not met</th></tr></thead>
           <tbody>
             <tr><td class="q">FH colorectal cancer (1st-degree relative &lt;50)</td><td>One-off colonoscopy at age 55 (BSG/ACPGBI/UKCGG 2019)</td><td>Refer; genetics referral if ≥2 first-degree relatives &lt;50 (Lynch syndrome screening)</td></tr>
-            <tr><td class="q">H. pylori eradication confirmed</td><td>Negative stool antigen 4–6 weeks post-treatment</td><td>Second-line bismuth quadruple therapy; OGD if peptic ulcer suspected</td></tr>
+            <tr><td class="q">H. pylori eradication confirmed</td><td>Negative urea breath test ≥4 weeks post-treatment (when retesting is indicated)</td><td>Second-line regimen per CG184/local guidance; OGD if peptic ulcer suspected</td></tr>
             <tr><td class="q">IBS symptom control</td><td>≥50% reduction in pain frequency/severity at 6–8 weeks of treatment</td><td>Step up; add psychological intervention; gastroenterology referral at 12 months if refractory</td></tr>
             <tr><td class="q">Active IBD remission (shared care)</td><td>CRP &lt;10 mg/L, faecal calprotectin &lt;50 μg/g, albumin &gt;35 g/L</td><td>Contact gastroenterology; do not start steroids without specialist advice</td></tr>
-            <tr><td class="q">Coeliac disease (confirmed)</td><td>Anti-TTG IgA negative on strict GFD at 12 months; haematinics normal</td><td>Dietitian review if antibodies remain elevated. DEXA at diagnosis and 3–5 years</td></tr>
+            <tr><td class="q">Coeliac disease (confirmed)</td><td>Anti-TTG IgA negative on strict GFD at 12 months; haematinics normal</td><td>Dietitian review if antibodies remain elevated. DEXA by risk, not routinely for everyone</td></tr>
             <tr><td class="q">Any age ≥50 with previously investigated GI symptoms</td><td>Any change in symptom character = re-investigate</td><td>Suspected cancer pathway referral if new red flag; previous normal investigations do not remain valid indefinitely</td></tr>
           </tbody>
         </table>
@@ -2026,7 +2026,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="algo-branch algo-amber">
           <div class="algo-branch-lbl">🟠 Urgent — Same-day / suspected cancer pathway referral</div>
           <ul class="algo-list">
-            <li>Appendicitis (Alvarado 4–6): RIF pain, fever, anorexia</li>
+            <li>Suspected appendicitis: RIF pain, fever, anorexia — same-day surgical assessment</li>
             <li>Acute cholecystitis: RUQ pain + fever + positive Murphy's</li>
             <li>NICE NG12: FIT for habit change or IDA (any age), bleeding + pain or weight loss (under 50), bleeding, pain or weight loss (50+), abdominal mass → suspected cancer pathway referral if FIT ≥10; rectal mass or dysphagia → suspected cancer pathway referral</li>
             <li>Severe IBD flare: bloody diarrhoea ≥6/day + fever + tachycardia</li>
@@ -2057,7 +2057,7 @@ body.mode-clinic .sca-only{display:none!important}
           <li>Change in stool frequency</li>
           <li>Change in stool form/appearance</li>
         </ul>
-        <div style="font-size:11.5px;color:var(--g);font-weight:600;background:var(--g-bg);border-radius:5px;padding:.3rem .6rem">PLUS: normal FBC, CRP, coeliac screen, and faecal calprotectin &lt;50 μg/g</div>
+        <div style="font-size:11.5px;color:var(--g);font-weight:600;background:var(--g-bg);border-radius:5px;padding:.3rem .6rem">PLUS: normal FBC, CRP and coeliac screen; faecal calprotectin where IBD is possible; FIT for a change in bowel habit (NG12)</div>
       </div>
       <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.8rem 1rem">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.55rem">Baseline Investigations — First Presentation</div>
@@ -2065,7 +2065,8 @@ body.mode-clinic .sca-only{display:none!important}
           <li>FBC (anaemia, infection, eosinophilia)</li>
           <li>CRP / ESR (systemic inflammation)</li>
           <li>LFTs (biliary / hepatic cause)</li>
-          <li>Faecal calprotectin (IBD vs IBS — NICE HTG320, formerly DG11)</li>
+          <li>Faecal calprotectin where IBD is possible (IBD vs IBS — NICE HTG320, formerly DG11)</li>
+          <li>FIT if change in bowel habit at any age (NG12); CA-125 if woman ≥40 with persistent bloating</li>
           <li>Anti-TTG IgA + total IgA (coeliac screen)</li>
           <li>H. pylori stool antigen (if dyspeptic features)</li>
           <li>Urine dipstick (UTI / haematuria)</li>
@@ -2080,10 +2081,10 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="num-card"><div class="num-val">Suspected cancer pathway referral</div><div class="num-lbl">FIT if age ≥40 + weight loss + abdominal pain (NG12)</div></div>
       <div class="num-card"><div class="num-val">FIT</div><div class="num-lbl">Change in bowel habit (any age) → suspected cancer pathway referral if ≥10 µg Hb/g</div></div>
       <div class="num-card"><div class="num-val">IDA</div><div class="num-lbl">Iron-deficiency anaemia (any age) → FIT (NG12); refer if ≥10 µg Hb/g</div></div>
-      <div class="num-card num-highlight"><div class="num-val">Alvarado ≥7</div><div class="num-lbl">Appendicitis risk score — admit for surgical assessment</div></div>
+      <div class="num-card num-highlight"><div class="num-val">Same day</div><div class="num-lbl">Suspected appendicitis — surgical assessment (Alvarado not validated in primary care)</div></div>
       <div class="num-card"><div class="num-val">Calprotectin &lt;50</div><div class="num-lbl">μg/g — supports IBS diagnosis; avoids colonoscopy</div></div>
       <div class="num-card"><div class="num-val">Calprotectin &gt;250</div><div class="num-lbl">μg/g — refer urgent gastroenterology (probable IBD)</div></div>
-      <div class="num-card"><div class="num-val">4–6 wks</div><div class="num-lbl">Post-H. pylori eradication: stool antigen test (PPI off 2 wks)</div></div>
+      <div class="num-card"><div class="num-val">≥4 wks</div><div class="num-lbl">Post-H. pylori eradication: breath test only if indicated (PPI off 2 wks)</div></div>
       <div class="num-card"><div class="num-val">10mg nocte</div><div class="num-lbl">Amitriptyline starting dose for refractory IBS (ATLANTIS trial)</div></div>
       <div class="num-card num-highlight"><div class="num-val">135mg TDS</div><div class="num-lbl">Mebeverine dose — 20 minutes before meals for IBS pain</div></div>
       <div class="num-card"><div class="num-val">Age 55</div><div class="num-lbl">Colonoscopy for FH colorectal cancer (1st-degree relative &lt;50)</div></div>
@@ -2098,14 +2099,14 @@ body.mode-clinic .sca-only{display:none!important}
           <strong>Step 1 — IBS-M or IBS-pain:</strong> Mebeverine 135mg TDS before meals (or hyoscine 10mg QDS)<br>
           <strong>Step 1 — IBS-C:</strong> Macrogol (Movicol) 1–3 sachets daily (not lactulose — worsens bloating)<br>
           <strong>Step 1 — IBS-D:</strong> Loperamide 2mg after each loose stool (max 12mg/day)<br>
-          <strong>Step 2 — Refractory:</strong> Amitriptyline 10mg nocte → titrate to 30–75mg (ATLANTIS RCT 2023)<br>
-          <strong>Step 2 alternative:</strong> Nortriptyline if anticholinergic side effects problematic; SSRI if mood comorbidity
+          <strong>Step 2 — Refractory:</strong> Amitriptyline 5–10mg nocte → titrate to max 30mg in primary care (CG61; ATLANTIS RCT 2023)<br>
+          <strong>Step 2 alternative:</strong> Nortriptyline if anticholinergic side effects problematic; SSRI only if a TCA has been ineffective (CG61)
         </div>
       </div>
       <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.8rem 1rem">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.55rem">Organic Causes — Specific Treatment</div>
         <div style="font-size:12.5px;line-height:1.7;color:var(--ink)">
-          <strong>H. pylori positive:</strong> Lansoprazole 30mg BD + Clarithromycin 500mg BD + Amoxicillin 1g BD × 7 days; confirm eradication at 4–6 weeks<br>
+          <strong>H. pylori positive:</strong> Lansoprazole 30mg BD + Clarithromycin 500mg BD + Amoxicillin 1g BD × 7 days (regimen per local guidance); retest only if indicated<br>
           <strong>GORD / peptic (no red flags, &lt;55):</strong> Omeprazole 20mg OD or Lansoprazole 30mg OD × 4–8 weeks<br>
           <strong>Coeliac:</strong> Strict gluten-free diet — gastroenterology first; no pharmacological treatment<br>
           <strong>IBD:</strong> Mesalazine (UC) / azathioprine / biologics — secondary care initiation only; never independently in primary care
@@ -2127,7 +2128,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--b)">3</div><div><strong>3 months:</strong> Sustained response; IBS diagnosis confirmed if suspected cancer pathway investigations are clear</div></div>
         <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--g)">4</div><div><strong>6 months:</strong> Consolidation; psychosocial impact review; gastro if refractory</div></div>
         <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--t)">5</div><div><strong>Annual:</strong> Red flag re-screen; weight; bowel cancer surveillance if FH</div></div>
-        <div style="margin-top:.5rem;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.45rem .65rem;font-size:11.5px;color:var(--a);font-weight:600">📌 H. pylori eradication test: stool antigen 4–6 weeks post-treatment (PPI off for 2 weeks before testing)</div>
+        <div style="margin-top:.5rem;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.45rem .65rem;font-size:11.5px;color:var(--a);font-weight:600">📌 H. pylori retest only if indicated: urea breath test ≥4 weeks post-treatment (PPI off for 2 weeks before testing)</div>
       </div>
     </div>
 
@@ -2136,11 +2137,11 @@ body.mode-clinic .sca-only{display:none!important}
       <table class="mon-table">
         <thead><tr><th>Treatment / Condition</th><th>Monitor</th><th>Timing</th><th>Action threshold</th></tr></thead>
         <tbody>
-          <tr><td><strong>H. pylori eradication</strong></td><td>Stool antigen or ¹³C urea breath test</td><td class="mon-red">4–6 weeks post-treatment (PPI off 2 wks)</td><td style="font-size:11.5px">Positive → second-line bismuth quadruple; gastroenterology if second-line fails</td></tr>
+          <tr><td><strong>H. pylori eradication</strong></td><td>¹³C urea breath test — only if indicated</td><td class="mon-red">≥4 weeks post-treatment (PPI off 2 wks)</td><td style="font-size:11.5px">Positive → second-line regimen per CG184/local guidance; gastroenterology if second-line fails</td></tr>
           <tr><td><strong>Long-term PPI (&gt;6 months)</strong></td><td>Serum magnesium; DEXA if ≥5 years + osteoporosis risk</td><td class="mon-amber">Annual; Mg 6-monthly with diuretics</td><td style="font-size:11.5px">Mg &lt;0.7 mmol/L → supplement. Step down PPI to lowest effective dose annually</td></tr>
           <tr><td><strong>Amitriptyline (IBS)</strong></td><td>Symptom response; side effects; QTc if cardiac history</td><td class="mon-amber">4 wks, 3 months, 6 months, annually</td><td style="font-size:11.5px">No response at 3 months → switch class; consider gastroenterology referral</td></tr>
           <tr><td><strong>IBD (shared care)</strong></td><td>FBC, CRP, albumin, vitamin D, faecal calprotectin</td><td class="mon-amber">6-monthly when stable</td><td style="font-size:11.5px">Calprotectin &gt;250 + symptoms → gastroenterology re: flare management</td></tr>
-          <tr><td><strong>Coeliac disease</strong></td><td>Anti-TTG IgA; haematinics (Hb, iron, folate, B12, vit D); DEXA</td><td class="mon-green">Annual; DEXA at diagnosis and 3–5 years</td><td style="font-size:11.5px">Raised antibodies on GFD → dietitian review (dietary non-compliance)</td></tr>
+          <tr><td><strong>Coeliac disease</strong></td><td>Anti-TTG IgA; haematinics (Hb, iron, folate, B12, vit D); DEXA by risk</td><td class="mon-green">Annual review; tests as indicated</td><td style="font-size:11.5px">Raised antibodies on GFD → dietitian review (dietary non-compliance)</td></tr>
           <tr><td><strong>Any age ≥50 with GI symptoms</strong></td><td>Weight, rectal bleeding, change in bowel habit character</td><td class="mon-red">Every appointment</td><td style="font-size:11.5px">Any new red flag → suspected cancer pathway referral regardless of previous normal investigations</td></tr>
         </tbody>
       </table>
@@ -2262,7 +2263,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Failing to name the cancer fear explicitly</strong><span class="dz-fix">→ "I'm wondering if you're worried this could be anything like what your mum had."</span></div></div>
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Missing the NG12 FIT criteria (bleeding, weight loss, bowel habit change, IDA)</strong><span class="dz-fix">→ Screen all NICE NG12 criteria for every patient with new abdominal symptoms.</span></div></div>
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Prescribing PPI for dyspepsia without testing for H. pylori first</strong><span class="dz-fix">→ Stool antigen test before PPI prescription — H. pylori eradication is the definitive treatment.</span></div></div>
-          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Diagnosing IBS without checking faecal calprotectin</strong><span class="dz-fix">→ NICE HTG320 (formerly DG11) recommends calprotectin before colonoscopy referral in suspected IBS.</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Diagnosing IBS without baseline tests</strong><span class="dz-fix">→ FBC, CRP/ESR and coeliac serology in everyone (CG61); calprotectin where IBD is possible (HTG320); FIT for a change in bowel habit (NG12).</span></div></div>
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not checking pregnancy test in a reproductive-age woman with lower abdominal pain</strong><span class="dz-fix">→ Mandatory regardless of stated contraception, LMP, or denial of sexual activity.</span></div></div>
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Giving generic lifestyle advice ("eat well, reduce stress, exercise more")</strong><span class="dz-fix">→ Specific, quantified, mechanism-linked advice only: "Mebeverine 20 minutes before meals", "low-FODMAP dietitian referral".</span></div></div>
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Vague safety-netting ("come back if you feel worse")</strong><span class="dz-fix">→ Name specific symptoms: blood in stools, unexplained weight loss, sudden severe pain, rigidity.</span></div></div>
@@ -2275,9 +2276,9 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="sdp-row"><div class="sdp-cond">IBS — constipation-predominant</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">Macrogol 1–3 sachets/day</div><div class="sdp-note">Not lactulose</div></div>
           <div class="sdp-row"><div class="sdp-cond">IBS — diarrhoea-predominant</div><div class="sdp-arrow">→</div><div class="sdp-pill ccb-pill">Loperamide 2mg after loose stool</div><div class="sdp-note">Max 12mg/day</div></div>
           <div class="sdp-row"><div class="sdp-cond">Refractory IBS (≥6 months)</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">Amitriptyline 10mg nocte</div><div class="sdp-note">ATLANTIS trial</div></div>
-          <div class="sdp-row"><div class="sdp-cond">H. pylori positive + dyspepsia</div><div class="sdp-arrow">→</div><div class="sdp-pill acei-pill">7-day triple therapy</div><div class="sdp-note">Confirm eradication 4–6 wks</div></div>
+          <div class="sdp-row"><div class="sdp-cond">H. pylori positive + dyspepsia</div><div class="sdp-arrow">→</div><div class="sdp-pill acei-pill">7-day triple therapy</div><div class="sdp-note">Retest only if indicated</div></div>
           <div class="sdp-row"><div class="sdp-cond">GORD / peptic (no red flags, &lt;55)</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">Omeprazole 20mg OD × 4–8 wks</div><div class="sdp-note">H. pylori test first</div></div>
-          <div class="sdp-pivot">⛔ NEVER prescribe PPI for dyspepsia without testing H. pylori first · NEVER diagnose IBS without calprotectin · NEVER advise GFD before confirmatory duodenal biopsy in coeliac</div>
+          <div class="sdp-pivot">⛔ Test and treat H. pylori before an empirical PPI where possible (CG184 allows either order) · NEVER diagnose IBS without FBC, CRP and coeliac serology (calprotectin where IBD is possible) · NEVER advise GFD before confirmatory duodenal biopsy in coeliac</div>
         </div>
       </div>
     </div>
