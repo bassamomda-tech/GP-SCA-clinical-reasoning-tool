@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05",
+ "generated": "2026-10-07",
  "how_to_use": "Work list for the 6-monthly guidance check. Each entry: a guidance item and every page citing it. The checker updates status/replacement/last_checked; regenerate with governance/guidance_register.py.",
  "last_full_check": "2026-10",
  "next_due": "2027-04",
@@ -27,22 +27,22 @@
     "assets/sca-cases25.js",
     "assets/sca-cases35.js",
     "assets/sca-cases61.js",
+    "assets/sca-enrich.js",
     "cases/alcohol.html",
-    "tools/algorithms/abnormal-lfts.html",
     "tools/algorithms/ataxia.html",
     "tools/algorithms/delirium.html",
     "tools/algorithms/hallucinations.html",
-    "tools/algorithms/summaries/abnormal-lfts.html",
+    "tools/algorithms/one-page/abnormal-lfts.html",
     "tools/management/alcohol-problem-drinking-print.html",
     "tools/management/alcohol-problem-drinking.html",
     "tools/management/palliative-delirium-agitation-print.html",
     "tools/management/palliative-delirium-agitation.html"
    ],
    "page_kinds": {
-    "other": 10,
+    "other": 11,
     "case": 1,
-    "algorithm": 4,
-    "algorithm-summary": 1,
+    "algorithm": 3,
+    "snapshot": 1,
     "protocol": 4
    },
    "status": "current",
@@ -117,8 +117,8 @@
     "tools/algorithms/dizziness.html",
     "tools/algorithms/fits-funny-turns.html",
     "tools/algorithms/hypotension.html",
+    "tools/algorithms/one-page/dizziness.html",
     "tools/algorithms/palpitations.html",
-    "tools/algorithms/summaries/dizziness.html",
     "tools/algorithms/tloc.html",
     "tools/management/driving-diseases-print.html",
     "tools/management/driving-diseases.html",
@@ -129,7 +129,7 @@
     "other": 12,
     "case": 1,
     "algorithm": 5,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 4
    },
    "status": "current",
@@ -203,11 +203,9 @@
     "assets/sca-cases8.js",
     "cases/anxiety.html",
     "cases/low-back-pain.html",
-    "tools/algorithms/breathlessness.html",
     "tools/algorithms/chest-pain.html",
+    "tools/algorithms/one-page/breathlessness.html",
     "tools/algorithms/palpitations.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chest-pain.html",
     "tools/management.html",
     "tools/management/anxiety-print.html",
     "tools/management/anxiety.html",
@@ -220,8 +218,8 @@
     "other": 23,
     "audio": 1,
     "case": 2,
-    "algorithm": 3,
-    "algorithm-summary": 2,
+    "algorithm": 2,
+    "snapshot": 1,
     "protocol": 6
    },
    "status": "current",
@@ -255,7 +253,7 @@
     "cases/drug-dependence.html",
     "tools/algorithms/abnormal-lfts.html",
     "tools/algorithms/loss-of-taste.html",
-    "tools/algorithms/summaries/abnormal-lfts.html",
+    "tools/algorithms/one-page/abnormal-lfts.html",
     "tools/management/alcohol-problem-drinking-print.html",
     "tools/management/alcohol-problem-drinking.html",
     "tools/management/fatty-liver-print.html",
@@ -265,7 +263,7 @@
     "other": 18,
     "case": 2,
     "algorithm": 2,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 4
    },
    "status": "current",
@@ -425,15 +423,16 @@
     "cases/angina.html",
     "cases/chest-pain.html",
     "tools/algorithms/chest-pain.html",
-    "tools/algorithms/summaries/chest-pain.html",
+    "tools/algorithms/one-page/chest-pain.html",
     "tools/management/stable-angina-print.html",
-    "tools/management/stable-angina.html"
+    "tools/management/stable-angina.html",
+    "tools/management/summaries/stable-angina.html"
    ],
    "page_kinds": {
     "other": 5,
     "case": 2,
     "algorithm": 1,
-    "algorithm-summary": 1,
+    "snapshot": 2,
     "protocol": 2
    },
    "status": "current",
@@ -537,12 +536,12 @@
     "assets/triage/abdo-pain.js",
     "assets/triage/dizziness.js",
     "tools/algorithms/haematemesis.html",
-    "tools/algorithms/summaries/haematemesis.html"
+    "tools/algorithms/one-page/haematemesis.html"
    ],
    "page_kinds": {
     "other": 9,
     "algorithm": 1,
-    "algorithm-summary": 1
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -687,12 +686,13 @@
     "tools/algorithms/facial-pain.html",
     "tools/algorithms/flashes-floaters.html",
     "tools/algorithms/headache.html",
-    "tools/algorithms/summaries/headache.html",
+    "tools/algorithms/one-page/headache.html",
     "tools/management.html",
     "tools/management/chronic-pain-print.html",
     "tools/management/chronic-pain.html",
     "tools/management/migraine-print.html",
     "tools/management/migraine.html",
+    "tools/management/summaries/migraine.html",
     "tools/management/tension-headache-print.html",
     "tools/management/tension-headache.html"
    ],
@@ -701,7 +701,7 @@
     "ready-prescriptions": 1,
     "case": 2,
     "algorithm": 3,
-    "algorithm-summary": 1,
+    "snapshot": 2,
     "protocol": 6
    },
    "status": "current",
@@ -787,6 +787,7 @@
    "type": "nice",
    "label": "NICE CG156",
    "pages": [
+    "assets/sca-addons-3.js",
     "cases/breast-cancer.html",
     "cases/infertility.html",
     "tools/algorithms/abnormal-semen-analysis.html",
@@ -800,6 +801,7 @@
     "tools/management/varicocele.html"
    ],
    "page_kinds": {
+    "other": 1,
     "case": 2,
     "algorithm": 3,
     "protocol": 6
@@ -908,13 +910,13 @@
     "cases/abnormal-lfts.html",
     "tools/algorithms/abnormal-cancer-markers.html",
     "tools/algorithms/abnormal-lfts.html",
-    "tools/algorithms/summaries/abnormal-lfts.html"
+    "tools/algorithms/one-page/abnormal-lfts.html"
    ],
    "page_kinds": {
     "other": 1,
     "case": 1,
     "algorithm": 2,
-    "algorithm-summary": 1
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -1005,6 +1007,7 @@
     "tools/algorithms/jaw-pain.html",
     "tools/algorithms/leg-ulcers.html",
     "tools/algorithms/leg-weakness.html",
+    "tools/algorithms/one-page/back-pain.html",
     "tools/algorithms/paraesthesia.html",
     "tools/algorithms/scrotal-pain.html",
     "tools/algorithms/sensory-neuropathy.html",
@@ -1034,6 +1037,7 @@
     "ready-prescriptions": 4,
     "case": 6,
     "algorithm": 11,
+    "snapshot": 1,
     "algorithm-summary": 1,
     "protocol": 16
    },
@@ -1183,7 +1187,6 @@
     "cases/dyspepsia.html",
     "cases/multimorbidity-polypharmacy.html",
     "tools/algorithms/abdominal-pain.html",
-    "tools/algorithms/anaemia.html",
     "tools/algorithms/chest-pain.html",
     "tools/algorithms/chronic-cough.html",
     "tools/algorithms/dyspepsia.html",
@@ -1193,12 +1196,10 @@
     "tools/algorithms/hoarseness.html",
     "tools/algorithms/magnesium-deficiency.html",
     "tools/algorithms/nausea-vomiting-adults.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
-    "tools/algorithms/summaries/anaemia.html",
-    "tools/algorithms/summaries/chest-pain.html",
-    "tools/algorithms/summaries/chronic-cough.html",
-    "tools/algorithms/summaries/dyspepsia.html",
-    "tools/algorithms/summaries/haematemesis.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
+    "tools/algorithms/one-page/chronic-cough.html",
+    "tools/algorithms/one-page/dyspepsia.html",
+    "tools/algorithms/one-page/haematemesis.html",
     "tools/algorithms/summaries/nausea-vomiting-adults.html",
     "tools/management.html",
     "tools/management/gord-print.html",
@@ -1210,8 +1211,9 @@
     "other": 13,
     "ready-prescriptions": 3,
     "case": 4,
-    "algorithm": 11,
-    "algorithm-summary": 7,
+    "algorithm": 10,
+    "snapshot": 4,
+    "algorithm-summary": 1,
     "protocol": 4
    },
    "status": "current",
@@ -1238,14 +1240,16 @@
     "tools/management/psychosis-schizophrenia-print.html",
     "tools/management/psychosis-schizophrenia.html",
     "tools/management/sick-day-rules-print.html",
-    "tools/management/sick-day-rules.html"
+    "tools/management/sick-day-rules.html",
+    "tools/management/summaries/depression.html"
    ],
    "page_kinds": {
     "other": 4,
     "case": 3,
     "algorithm": 2,
     "algorithm-summary": 1,
-    "protocol": 6
+    "protocol": 6,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -1256,16 +1260,10 @@
    "type": "nice",
    "label": "NICE CG187",
    "pages": [
-    "cases/heart-failure.html",
-    "tools/algorithms/breathlessness.html",
-    "tools/algorithms/chest-pain.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chest-pain.html"
+    "cases/heart-failure.html"
    ],
    "page_kinds": {
-    "case": 1,
-    "algorithm": 2,
-    "algorithm-summary": 2
+    "case": 1
    },
    "status": "current",
    "replacement": "",
@@ -1282,7 +1280,7 @@
     "assets/sca-cases32.js",
     "cases/abdominal-pain.html",
     "tools/algorithms/abdominal-pain.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
     "tools/management.html",
     "tools/management/cholecystitis-print.html",
     "tools/management/cholecystitis.html"
@@ -1291,7 +1289,7 @@
     "other": 5,
     "case": 1,
     "algorithm": 1,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 2
    },
    "status": "current",
@@ -1325,8 +1323,6 @@
     "assets/sca-addons-11.js",
     "assets/sca-cases54.js",
     "cases/chest-infections.html",
-    "tools/algorithms/breathlessness.html",
-    "tools/algorithms/summaries/breathlessness.html",
     "tools/management/chest-infections-print.html",
     "tools/management/chest-infections.html"
    ],
@@ -1334,8 +1330,6 @@
     "other": 4,
     "ready-prescriptions": 1,
     "case": 1,
-    "algorithm": 1,
-    "algorithm-summary": 1,
     "protocol": 2
    },
    "status": "replaced",
@@ -1372,13 +1366,15 @@
     "tools/management/postnatal-depression-print.html",
     "tools/management/postnatal-depression.html",
     "tools/management/postnatal-disorders-print.html",
-    "tools/management/postnatal-disorders.html"
+    "tools/management/postnatal-disorders.html",
+    "tools/management/summaries/depression.html"
    ],
    "page_kinds": {
     "other": 15,
     "case": 3,
     "algorithm": 2,
-    "protocol": 6
+    "protocol": 6,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -1392,12 +1388,14 @@
     "assets/articles-data-32.js",
     "cases/contraception.html",
     "tools/management/contraception-print.html",
-    "tools/management/contraception.html"
+    "tools/management/contraception.html",
+    "tools/management/summaries/contraception.html"
    ],
    "page_kinds": {
     "other": 1,
     "case": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -1593,13 +1591,12 @@
     "cases/constipation.html",
     "cases/diarrhoea.html",
     "cases/ibs.html",
-    "tools/algorithms/abdominal-pain.html",
     "tools/algorithms/bloating.html",
     "tools/algorithms/chronic-diarrhoea.html",
     "tools/algorithms/constipation.html",
     "tools/algorithms/dyspepsia.html",
     "tools/algorithms/medically-unexplained-symptoms.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
     "tools/management/ibs-print.html",
     "tools/management/ibs.html"
    ],
@@ -1607,8 +1604,8 @@
     "other": 6,
     "ready-prescriptions": 1,
     "case": 4,
-    "algorithm": 6,
-    "algorithm-summary": 1,
+    "algorithm": 5,
+    "snapshot": 1,
     "protocol": 2
    },
    "status": "current",
@@ -1835,21 +1832,21 @@
     "assets/triage/chest-pain.js",
     "cases/angina.html",
     "cases/chest-pain.html",
-    "tools/algorithms/breathlessness.html",
     "tools/algorithms/chest-pain.html",
     "tools/algorithms/dyspepsia.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chest-pain.html",
-    "tools/algorithms/summaries/dyspepsia.html",
+    "tools/algorithms/one-page/breathlessness.html",
+    "tools/algorithms/one-page/chest-pain.html",
+    "tools/algorithms/one-page/dyspepsia.html",
     "tools/management/stable-angina-print.html",
-    "tools/management/stable-angina.html"
+    "tools/management/stable-angina.html",
+    "tools/management/summaries/stable-angina.html"
    ],
    "page_kinds": {
     "audio": 1,
     "other": 8,
     "case": 2,
-    "algorithm": 3,
-    "algorithm-summary": 3,
+    "algorithm": 2,
+    "snapshot": 4,
     "protocol": 2
    },
    "status": "current",
@@ -1872,12 +1869,14 @@
     "tools/management/benign-prostate-enlargement-print.html",
     "tools/management/benign-prostate-enlargement.html",
     "tools/management/male-luts-print.html",
-    "tools/management/male-luts.html"
+    "tools/management/male-luts.html",
+    "tools/management/summaries/male-luts.html"
    ],
    "page_kinds": {
     "other": 7,
     "case": 1,
-    "protocol": 4
+    "protocol": 4,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -2314,6 +2313,7 @@
    "label": "NICE HTG320",
    "pages": [
     "assets/prescriptions-data-common.js",
+    "assets/sca-addons-13.js",
     "cases/abdominal-pain.html",
     "cases/diarrhoea.html",
     "cases/ibs.html",
@@ -2326,6 +2326,7 @@
    ],
    "page_kinds": {
     "ready-prescriptions": 1,
+    "other": 1,
     "case": 3,
     "algorithm": 4,
     "protocol": 2
@@ -2468,6 +2469,7 @@
     "assets/sca-addons-13.js",
     "assets/sca-cases66.js",
     "cases/tremor.html",
+    "tools/algorithms/one-page/tremors.html",
     "tools/algorithms/tremors.html",
     "tools/management/essential-tremor-print.html",
     "tools/management/essential-tremor.html"
@@ -2475,6 +2477,7 @@
    "page_kinds": {
     "other": 2,
     "case": 1,
+    "snapshot": 1,
     "algorithm": 1,
     "protocol": 2
    },
@@ -2696,9 +2699,10 @@
     "tools/algorithms/fatigue.html",
     "tools/algorithms/low-ferritin.html",
     "tools/algorithms/normocytic-anaemia.html",
+    "tools/algorithms/one-page/dyspepsia.html",
+    "tools/algorithms/one-page/fatigue.html",
     "tools/algorithms/pelvic-pain-women.html",
     "tools/algorithms/rectal-bleeding.html",
-    "tools/algorithms/summaries/dyspepsia.html",
     "tools/algorithms/summaries/pelvic-pain-women.html",
     "tools/algorithms/weight-loss.html",
     "tools/algorithms/widespread-itch.html",
@@ -2719,6 +2723,7 @@
     "tools/management/iron-deficiency-anaemia.html",
     "tools/management/palliative-constipation-print.html",
     "tools/management/palliative-constipation.html",
+    "tools/management/summaries/iron-deficiency-anaemia.html",
     "tools/management/tia-stroke-print.html",
     "tools/management/tia-stroke.html",
     "tools/management/ulcerative-colitis-print.html",
@@ -2730,7 +2735,8 @@
     "ready-prescriptions": 2,
     "case": 3,
     "algorithm": 15,
-    "algorithm-summary": 2,
+    "snapshot": 3,
+    "algorithm-summary": 1,
     "protocol": 20
    },
    "status": "current",
@@ -3320,9 +3326,9 @@
     "tools/algorithms/chronic-cough.html",
     "tools/algorithms/hyperkalaemia.html",
     "tools/algorithms/hyponatraemia.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chronic-cough.html",
-    "tools/algorithms/summaries/hyperkalaemia.html",
+    "tools/algorithms/one-page/breathlessness.html",
+    "tools/algorithms/one-page/chronic-cough.html",
+    "tools/algorithms/one-page/hyperkalaemia.html",
     "tools/algorithms/summaries/hyponatraemia.html",
     "tools/management.html",
     "tools/management/heart-failure-print.html",
@@ -3333,13 +3339,15 @@
     "tools/management/palliative-breathlessness.html",
     "tools/management/sick-day-rules-print.html",
     "tools/management/sick-day-rules.html",
+    "tools/management/summaries/heart-failure.html",
     "tools/prescribing.html"
    ],
    "page_kinds": {
     "other": 14,
     "case": 41,
     "algorithm": 6,
-    "algorithm-summary": 4,
+    "snapshot": 4,
+    "algorithm-summary": 1,
     "protocol": 8
    },
    "status": "current",
@@ -3396,8 +3404,8 @@
     "tools/algorithms/fever-adults.html",
     "tools/algorithms/fever-children.html",
     "tools/algorithms/haematuria.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
-    "tools/algorithms/summaries/fever-adults.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
+    "tools/algorithms/one-page/fever-adults.html",
     "tools/management.html",
     "tools/management/aki-print.html",
     "tools/management/aki.html",
@@ -3417,7 +3425,7 @@
     "ready-prescriptions": 1,
     "case": 1,
     "algorithm": 5,
-    "algorithm-summary": 2,
+    "snapshot": 2,
     "protocol": 12
    },
    "status": "current",
@@ -3521,6 +3529,8 @@
     "tools/algorithms.html",
     "tools/algorithms/dysuria.html",
     "tools/management.html",
+    "tools/management/female-urinary-incontinence-print.html",
+    "tools/management/female-urinary-incontinence.html",
     "tools/management/recurrent-uti-print.html",
     "tools/management/recurrent-uti.html",
     "tools/management/uti-children-print.html",
@@ -3535,7 +3545,7 @@
     "ready-prescriptions": 1,
     "case": 1,
     "algorithm": 1,
-    "protocol": 8
+    "protocol": 10
    },
    "status": "current",
    "replacement": "",
@@ -3572,20 +3582,21 @@
     "cases/chest-infections.html",
     "cases/copd.html",
     "tools/algorithms/breathlessness.html",
-    "tools/algorithms/summaries/breathlessness.html",
+    "tools/algorithms/one-page/breathlessness.html",
     "tools/management/chest-infections-print.html",
     "tools/management/chest-infections.html",
     "tools/management/copd-print.html",
     "tools/management/copd.html",
     "tools/management/sick-day-rules-print.html",
-    "tools/management/sick-day-rules.html"
+    "tools/management/sick-day-rules.html",
+    "tools/management/summaries/copd.html"
    ],
    "page_kinds": {
     "ready-prescriptions": 1,
     "other": 3,
     "case": 2,
     "algorithm": 1,
-    "algorithm-summary": 1,
+    "snapshot": 2,
     "protocol": 6
    },
    "status": "current",
@@ -3615,8 +3626,8 @@
     "tools/algorithms/acute-cough.html",
     "tools/algorithms/breathlessness.html",
     "tools/algorithms/chronic-cough.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chronic-cough.html",
+    "tools/algorithms/one-page/breathlessness.html",
+    "tools/algorithms/one-page/chronic-cough.html",
     "tools/management.html",
     "tools/management/chest-infections-print.html",
     "tools/management/chest-infections.html",
@@ -3626,6 +3637,7 @@
     "tools/management/palliative-breathlessness.html",
     "tools/management/sick-day-rules-print.html",
     "tools/management/sick-day-rules.html",
+    "tools/management/summaries/copd.html",
     "tools/prescribing-guide.html",
     "tools/prescribing.html"
    ],
@@ -3635,7 +3647,7 @@
     "ready-prescriptions": 1,
     "case": 3,
     "algorithm": 3,
-    "algorithm-summary": 2,
+    "snapshot": 3,
     "protocol": 8
    },
    "status": "current",
@@ -3706,13 +3718,13 @@
     "assets/sca-cases64.js",
     "tools/algorithms/abdominal-pain.html",
     "tools/algorithms/haematuria.html",
-    "tools/algorithms/renal-colic.html",
-    "tools/algorithms/summaries/abdominal-pain.html"
+    "tools/algorithms/one-page/abdominal-pain.html",
+    "tools/algorithms/renal-colic.html"
    ],
    "page_kinds": {
     "other": 4,
     "algorithm": 3,
-    "algorithm-summary": 1
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -3971,7 +3983,6 @@
     "tools/algorithms/constipation.html",
     "tools/algorithms/delirium.html",
     "tools/algorithms/diplopia.html",
-    "tools/algorithms/dizziness.html",
     "tools/algorithms/dry-mouth.html",
     "tools/algorithms/dyspareunia.html",
     "tools/algorithms/dyspepsia.html",
@@ -4012,7 +4023,6 @@
     "tools/algorithms/hip-pain.html",
     "tools/algorithms/hoarseness.html",
     "tools/algorithms/hypercalcaemia.html",
-    "tools/algorithms/hyperkalaemia.html",
     "tools/algorithms/hyperprolactinaemia.html",
     "tools/algorithms/hypocalcaemia.html",
     "tools/algorithms/hypokalaemia.html",
@@ -4044,6 +4054,25 @@
     "tools/algorithms/night-sweats.html",
     "tools/algorithms/nipple-problems.html",
     "tools/algorithms/normocytic-anaemia.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
+    "tools/algorithms/one-page/abnormal-lfts.html",
+    "tools/algorithms/one-page/anaemia.html",
+    "tools/algorithms/one-page/back-pain.html",
+    "tools/algorithms/one-page/breathlessness.html",
+    "tools/algorithms/one-page/chest-pain.html",
+    "tools/algorithms/one-page/chronic-cough.html",
+    "tools/algorithms/one-page/dizziness.html",
+    "tools/algorithms/one-page/dyspepsia.html",
+    "tools/algorithms/one-page/fatigue.html",
+    "tools/algorithms/one-page/fever-adults.html",
+    "tools/algorithms/one-page/haematemesis.html",
+    "tools/algorithms/one-page/headache.html",
+    "tools/algorithms/one-page/hearing-loss.html",
+    "tools/algorithms/one-page/hypercalcaemia.html",
+    "tools/algorithms/one-page/hyperkalaemia.html",
+    "tools/algorithms/one-page/irregular-periods.html",
+    "tools/algorithms/one-page/limping-children.html",
+    "tools/algorithms/one-page/tinnitus.html",
     "tools/algorithms/otalgia.html",
     "tools/algorithms/paediatric-cancer-referral.html",
     "tools/algorithms/paediatric-msk.html",
@@ -4065,27 +4094,12 @@
     "tools/algorithms/sore-throat.html",
     "tools/algorithms/splenomegaly.html",
     "tools/algorithms/subcutaneous-lumps.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
-    "tools/algorithms/summaries/abnormal-lfts.html",
-    "tools/algorithms/summaries/anaemia.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chest-pain.html",
-    "tools/algorithms/summaries/chronic-cough.html",
-    "tools/algorithms/summaries/dizziness.html",
-    "tools/algorithms/summaries/dyspepsia.html",
-    "tools/algorithms/summaries/fever-adults.html",
-    "tools/algorithms/summaries/haematemesis.html",
-    "tools/algorithms/summaries/headache.html",
-    "tools/algorithms/summaries/hearing-loss.html",
-    "tools/algorithms/summaries/hypercalcaemia.html",
-    "tools/algorithms/summaries/hyperkalaemia.html",
     "tools/algorithms/summaries/hypocalcaemia.html",
     "tools/algorithms/summaries/hypokalaemia.html",
     "tools/algorithms/summaries/hyponatraemia.html",
     "tools/algorithms/summaries/leg-ulcers.html",
     "tools/algorithms/summaries/nausea-vomiting-adults.html",
     "tools/algorithms/summaries/pelvic-pain-women.html",
-    "tools/algorithms/summaries/tinnitus.html",
     "tools/algorithms/suspected-diabetes-children.html",
     "tools/algorithms/taste-disorders.html",
     "tools/algorithms/testicular-lump.html",
@@ -4094,7 +4108,6 @@
     "tools/algorithms/thigh-pain.html",
     "tools/algorithms/thrombocytopenia.html",
     "tools/algorithms/thrombocytosis.html",
-    "tools/algorithms/tinnitus.html",
     "tools/algorithms/toe-pain.html",
     "tools/algorithms/tongue-problems.html",
     "tools/algorithms/vaginal-bleeding.html",
@@ -4357,6 +4370,18 @@
     "tools/management/smoking-cessation.html",
     "tools/management/subconjunctival-haemorrhage-print.html",
     "tools/management/subconjunctival-haemorrhage.html",
+    "tools/management/summaries/atrial-fibrillation.html",
+    "tools/management/summaries/ckd.html",
+    "tools/management/summaries/contraception.html",
+    "tools/management/summaries/copd.html",
+    "tools/management/summaries/depression.html",
+    "tools/management/summaries/female-urinary-incontinence.html",
+    "tools/management/summaries/heart-failure.html",
+    "tools/management/summaries/hrt-prescribing.html",
+    "tools/management/summaries/hypertension.html",
+    "tools/management/summaries/iron-deficiency-anaemia.html",
+    "tools/management/summaries/male-luts.html",
+    "tools/management/summaries/type-2-diabetes.html",
     "tools/management/surgical-problems-children-print.html",
     "tools/management/surgical-problems-children.html",
     "tools/management/svco-print.html",
@@ -4405,8 +4430,9 @@
     "audio": 4,
     "ready-prescriptions": 6,
     "case": 51,
-    "algorithm": 145,
-    "algorithm-summary": 21,
+    "algorithm": 142,
+    "snapshot": 31,
+    "algorithm-summary": 6,
     "protocol": 285
    },
    "status": "current",
@@ -4428,9 +4454,7 @@
     "cases/chest-infections.html",
     "tools/algorithms.html",
     "tools/algorithms/acute-cough.html",
-    "tools/algorithms/chronic-cough.html",
     "tools/algorithms/cough-children.html",
-    "tools/algorithms/summaries/chronic-cough.html",
     "tools/management/chest-infections-print.html",
     "tools/management/chest-infections.html"
    ],
@@ -4438,8 +4462,7 @@
     "other": 6,
     "ready-prescriptions": 2,
     "case": 1,
-    "algorithm": 3,
-    "algorithm-summary": 1,
+    "algorithm": 2,
     "protocol": 2
    },
    "status": "current",
@@ -4479,13 +4502,15 @@
     "tools/management/pelvic-organ-prolapse-print.html",
     "tools/management/pelvic-organ-prolapse.html",
     "tools/management/recurrent-uti-print.html",
-    "tools/management/recurrent-uti.html"
+    "tools/management/recurrent-uti.html",
+    "tools/management/summaries/female-urinary-incontinence.html"
    ],
    "page_kinds": {
     "other": 3,
     "case": 2,
     "algorithm": 1,
-    "protocol": 6
+    "protocol": 6,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -4525,8 +4550,9 @@
     "tools/algorithms/abdominal-pain.html",
     "tools/algorithms/irregular-periods.html",
     "tools/algorithms/nausea-vomiting-adults.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
+    "tools/algorithms/one-page/irregular-periods.html",
     "tools/algorithms/pelvic-pain-women.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
     "tools/algorithms/summaries/nausea-vomiting-adults.html",
     "tools/algorithms/summaries/pelvic-pain-women.html",
     "tools/algorithms/vaginal-bleeding-pregnancy.html",
@@ -4534,6 +4560,8 @@
     "tools/algorithms/vaginal-mass.html",
     "tools/management/bacterial-vaginosis-print.html",
     "tools/management/bacterial-vaginosis.html",
+    "tools/management/gonorrhoea-print.html",
+    "tools/management/gonorrhoea.html",
     "tools/management/pelvic-inflammatory-disease-print.html",
     "tools/management/pelvic-inflammatory-disease.html"
    ],
@@ -4541,8 +4569,9 @@
     "other": 10,
     "case": 1,
     "algorithm": 7,
-    "algorithm-summary": 3,
-    "protocol": 4
+    "snapshot": 2,
+    "algorithm-summary": 2,
+    "protocol": 6
    },
    "status": "current",
    "replacement": "",
@@ -4576,11 +4605,12 @@
     "tools/algorithms/loss-of-taste.html",
     "tools/algorithms/nausea-vomiting-adults.html",
     "tools/algorithms/neck-pain.html",
+    "tools/algorithms/one-page/dizziness.html",
+    "tools/algorithms/one-page/headache.html",
+    "tools/algorithms/one-page/tremors.html",
     "tools/algorithms/paediatric-cancer-referral.html",
     "tools/algorithms/paraesthesia.html",
     "tools/algorithms/shoulder-pain.html",
-    "tools/algorithms/summaries/dizziness.html",
-    "tools/algorithms/summaries/headache.html",
     "tools/algorithms/summaries/nausea-vomiting-adults.html",
     "tools/algorithms/taste-disorders.html",
     "tools/algorithms/tremors.html",
@@ -4606,7 +4636,8 @@
     "other": 6,
     "case": 3,
     "algorithm": 20,
-    "algorithm-summary": 3,
+    "snapshot": 3,
+    "algorithm-summary": 1,
     "protocol": 16
    },
    "status": "current",
@@ -4634,21 +4665,17 @@
     "cases/vertigo.html",
     "tools/algorithms/ataxia.html",
     "tools/algorithms/diplopia.html",
-    "tools/algorithms/dizziness.html",
     "tools/algorithms/dysphagia.html",
     "tools/algorithms/fits-funny-turns.html",
     "tools/algorithms/flashes-floaters.html",
     "tools/algorithms/foot-drop.html",
-    "tools/algorithms/headache.html",
-    "tools/algorithms/hearing-loss.html",
     "tools/algorithms/leg-weakness.html",
     "tools/algorithms/memory-deficit.html",
+    "tools/algorithms/one-page/dizziness.html",
+    "tools/algorithms/one-page/headache.html",
+    "tools/algorithms/one-page/hearing-loss.html",
+    "tools/algorithms/one-page/tinnitus.html",
     "tools/algorithms/paraesthesia.html",
-    "tools/algorithms/summaries/dizziness.html",
-    "tools/algorithms/summaries/headache.html",
-    "tools/algorithms/summaries/hearing-loss.html",
-    "tools/algorithms/summaries/tinnitus.html",
-    "tools/algorithms/tinnitus.html",
     "tools/algorithms/vision-loss.html",
     "tools/management/antiplatelets-anticoagulants-print.html",
     "tools/management/antiplatelets-anticoagulants.html",
@@ -4660,8 +4687,8 @@
    "page_kinds": {
     "other": 11,
     "case": 3,
-    "algorithm": 14,
-    "algorithm-summary": 4,
+    "algorithm": 10,
+    "snapshot": 4,
     "protocol": 6
    },
    "status": "current",
@@ -4757,13 +4784,13 @@
     "cases/hypercalcaemia.html",
     "tools/algorithms/abnormal-bone-profile.html",
     "tools/algorithms/hypercalcaemia.html",
-    "tools/algorithms/summaries/hypercalcaemia.html"
+    "tools/algorithms/one-page/hypercalcaemia.html"
    ],
    "page_kinds": {
     "other": 6,
     "case": 2,
     "algorithm": 2,
-    "algorithm-summary": 1
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -4783,12 +4810,13 @@
     "assets/sca-cases31.js",
     "assets/sca-cases62.js",
     "assets/triage/hypertension.js",
-    "tools/algorithms/headache.html",
+    "tools/algorithms/one-page/headache.html",
     "tools/algorithms/proteinuria.html",
-    "tools/algorithms/summaries/headache.html",
     "tools/management.html",
     "tools/management/chilblains-print.html",
     "tools/management/chilblains.html",
+    "tools/management/ckd-print.html",
+    "tools/management/ckd.html",
     "tools/management/gestational-diabetes-print.html",
     "tools/management/gestational-diabetes.html",
     "tools/management/hypertension-pregnancy-print.html",
@@ -4796,13 +4824,14 @@
     "tools/management/hypertension-print.html",
     "tools/management/hypertension.html",
     "tools/management/postnatal-disorders-print.html",
-    "tools/management/postnatal-disorders.html"
+    "tools/management/postnatal-disorders.html",
+    "tools/management/summaries/hypertension.html"
    ],
    "page_kinds": {
     "other": 10,
-    "algorithm": 2,
-    "algorithm-summary": 1,
-    "protocol": 10
+    "snapshot": 2,
+    "algorithm": 1,
+    "protocol": 12
    },
    "status": "current",
    "replacement": "",
@@ -4913,24 +4942,25 @@
     "cases/vertigo.html",
     "pages/cpd.html",
     "pages/updates.html",
-    "tools/algorithms/chest-pain.html",
     "tools/algorithms/confusion.html",
     "tools/algorithms/delirium.html",
     "tools/algorithms/falls.html",
     "tools/algorithms/fatigue.html",
     "tools/algorithms/flashes-floaters.html",
     "tools/algorithms/haematospermia.html",
-    "tools/algorithms/headache.html",
     "tools/algorithms/hyperkalaemia.html",
     "tools/algorithms/hypokalaemia.html",
     "tools/algorithms/hyponatraemia.html",
     "tools/algorithms/hypotension.html",
     "tools/algorithms/memory-deficit.html",
+    "tools/algorithms/one-page/chest-pain.html",
+    "tools/algorithms/one-page/fatigue.html",
+    "tools/algorithms/one-page/headache.html",
+    "tools/algorithms/one-page/hyperkalaemia.html",
+    "tools/algorithms/one-page/red-eye.html",
     "tools/algorithms/proteinuria.html",
     "tools/algorithms/red-eye.html",
     "tools/algorithms/sensory-neuropathy.html",
-    "tools/algorithms/summaries/chest-pain.html",
-    "tools/algorithms/summaries/headache.html",
     "tools/algorithms/summaries/hypokalaemia.html",
     "tools/algorithms/summaries/hyponatraemia.html",
     "tools/algorithms/thrombocytosis.html",
@@ -4940,6 +4970,8 @@
     "tools/management/_layout-standard.html",
     "tools/management/angioedema-print.html",
     "tools/management/angioedema.html",
+    "tools/management/ckd-print.html",
+    "tools/management/ckd.html",
     "tools/management/fatty-liver-print.html",
     "tools/management/fatty-liver.html",
     "tools/management/hypercholesterolaemia-print.html",
@@ -4956,6 +4988,8 @@
     "tools/management/screening-programmes.html",
     "tools/management/subconjunctival-haemorrhage-print.html",
     "tools/management/subconjunctival-haemorrhage.html",
+    "tools/management/summaries/hypertension.html",
+    "tools/management/summaries/type-2-diabetes.html",
     "tools/management/tia-stroke-print.html",
     "tools/management/tia-stroke.html",
     "tools/management/type-2-diabetes-print.html",
@@ -4966,9 +5000,10 @@
    "page_kinds": {
     "other": 35,
     "case": 50,
-    "algorithm": 19,
-    "algorithm-summary": 4,
-    "protocol": 23
+    "algorithm": 17,
+    "snapshot": 7,
+    "algorithm-summary": 2,
+    "protocol": 25
    },
    "status": "current",
    "replacement": "",
@@ -4984,11 +5019,8 @@
     "assets/prescriptions-data-batch12.js",
     "cases/chest-infections.html",
     "tools/algorithms/acute-cough.html",
-    "tools/algorithms/breathlessness.html",
     "tools/algorithms/cough-children.html",
     "tools/algorithms/fever-adults.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/fever-adults.html",
     "tools/management/chest-infections-print.html",
     "tools/management/chest-infections.html"
    ],
@@ -4996,8 +5028,7 @@
     "other": 2,
     "ready-prescriptions": 1,
     "case": 1,
-    "algorithm": 4,
-    "algorithm-summary": 2,
+    "algorithm": 3,
     "protocol": 2
    },
    "status": "replaced",
@@ -5070,7 +5101,7 @@
     "tools/algorithms/facial-swelling.html",
     "tools/algorithms/fever-adults.html",
     "tools/algorithms/leg-ulcers.html",
-    "tools/algorithms/summaries/fever-adults.html",
+    "tools/algorithms/one-page/fever-adults.html",
     "tools/algorithms/summaries/leg-ulcers.html",
     "tools/management/cellulitis-print.html",
     "tools/management/cellulitis.html",
@@ -5084,7 +5115,8 @@
     "ready-prescriptions": 1,
     "case": 1,
     "algorithm": 4,
-    "algorithm-summary": 2,
+    "snapshot": 1,
+    "algorithm-summary": 1,
     "protocol": 6
    },
    "status": "current",
@@ -5147,9 +5179,9 @@
     "tools/algorithms/abdominal-pain-children.html",
     "tools/algorithms/fever-adults.html",
     "tools/algorithms/fever-children.html",
+    "tools/algorithms/one-page/fever-adults.html",
     "tools/algorithms/paediatric-msk.html",
     "tools/algorithms/purpura-petechiae.html",
-    "tools/algorithms/summaries/fever-adults.html",
     "tools/algorithms/unsettled-baby.html",
     "tools/algorithms/vomiting-children.html",
     "tools/management/nappy-rash-print.html",
@@ -5165,7 +5197,7 @@
     "audio": 1,
     "case": 3,
     "algorithm": 7,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 6
    },
    "status": "current",
@@ -5212,6 +5244,8 @@
     "tools/algorithms/lab-results.html",
     "tools/algorithms/neck-lump.html",
     "tools/algorithms/night-sweats.html",
+    "tools/algorithms/one-page/fatigue.html",
+    "tools/algorithms/one-page/irregular-periods.html",
     "tools/algorithms/palpitations.html",
     "tools/algorithms/sensory-neuropathy.html",
     "tools/algorithms/tongue-problems.html",
@@ -5229,6 +5263,7 @@
     "audio": 2,
     "case": 7,
     "algorithm": 14,
+    "snapshot": 2,
     "protocol": 6
    },
    "status": "current",
@@ -5245,7 +5280,7 @@
     "cases/abdominal-pain.html",
     "cases/diverticulosis.html",
     "tools/algorithms/abdominal-pain.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
     "tools/management/diverticular-disease-print.html",
     "tools/management/diverticular-disease.html"
    ],
@@ -5253,7 +5288,7 @@
     "other": 2,
     "case": 2,
     "algorithm": 1,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 2
    },
    "status": "current",
@@ -5273,13 +5308,11 @@
     "assets/triage/tiredness.js",
     "assets/triage/type-2-diabetes.js",
     "cases/aki.html",
-    "tools/algorithms/hypercalcaemia.html",
-    "tools/algorithms/hyperkalaemia.html",
     "tools/algorithms/hypernatraemia.html",
     "tools/algorithms/hyponatraemia.html",
     "tools/algorithms/lab-results.html",
-    "tools/algorithms/summaries/hypercalcaemia.html",
-    "tools/algorithms/summaries/hyperkalaemia.html",
+    "tools/algorithms/one-page/hypercalcaemia.html",
+    "tools/algorithms/one-page/hyperkalaemia.html",
     "tools/algorithms/summaries/hypernatraemia.html",
     "tools/algorithms/summaries/hyponatraemia.html",
     "tools/management/aki-print.html",
@@ -5291,8 +5324,9 @@
    "page_kinds": {
     "other": 8,
     "case": 1,
-    "algorithm": 5,
-    "algorithm-summary": 4,
+    "algorithm": 3,
+    "snapshot": 2,
+    "algorithm-summary": 2,
     "protocol": 4
    },
    "status": "current",
@@ -5440,8 +5474,8 @@
     "cases/hearing-loss.html",
     "cases/tinnitus.html",
     "tools/algorithms/hearing-loss.html",
-    "tools/algorithms/summaries/hearing-loss.html",
-    "tools/algorithms/summaries/tinnitus.html",
+    "tools/algorithms/one-page/hearing-loss.html",
+    "tools/algorithms/one-page/tinnitus.html",
     "tools/algorithms/tinnitus.html",
     "tools/management/menieres-print.html",
     "tools/management/menieres.html"
@@ -5450,7 +5484,7 @@
     "other": 5,
     "case": 2,
     "algorithm": 2,
-    "algorithm-summary": 2,
+    "snapshot": 2,
     "protocol": 2
    },
    "status": "current",
@@ -5510,8 +5544,8 @@
     "tools/algorithms/foot-pain.html",
     "tools/algorithms/knee-pain.html",
     "tools/algorithms/leg-pain.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chest-pain.html",
+    "tools/algorithms/one-page/breathlessness.html",
+    "tools/algorithms/one-page/chest-pain.html",
     "tools/algorithms/thigh-pain.html",
     "tools/management.html",
     "tools/management/achilles-tendinopathy-print.html",
@@ -5529,7 +5563,7 @@
     "other": 14,
     "case": 3,
     "algorithm": 9,
-    "algorithm-summary": 2,
+    "snapshot": 2,
     "protocol": 10
    },
    "status": "current",
@@ -5674,7 +5708,7 @@
     "cases/mi-secondary-prevention.html",
     "pages/cpd.html",
     "tools/algorithms/chest-pain.html",
-    "tools/algorithms/summaries/chest-pain.html",
+    "tools/algorithms/one-page/chest-pain.html",
     "tools/management.html",
     "tools/management/mi-secondary-prevention-print.html",
     "tools/management/mi-secondary-prevention.html"
@@ -5683,7 +5717,7 @@
     "other": 9,
     "case": 3,
     "algorithm": 1,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 2
    },
    "status": "current",
@@ -5747,6 +5781,7 @@
     "tools/management/peripheral-arterial-disease.html",
     "tools/management/plantar-fasciitis-print.html",
     "tools/management/plantar-fasciitis.html",
+    "tools/management/summaries/type-2-diabetes.html",
     "tools/management/type-2-diabetes-print.html",
     "tools/management/type-2-diabetes.html"
    ],
@@ -5755,7 +5790,8 @@
     "case": 5,
     "algorithm": 5,
     "algorithm-summary": 1,
-    "protocol": 12
+    "protocol": 12,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -5824,6 +5860,7 @@
     "tools/algorithms/joint-pain.html",
     "tools/algorithms/medically-unexplained-symptoms.html",
     "tools/algorithms/neck-pain.html",
+    "tools/algorithms/one-page/back-pain.html",
     "tools/algorithms/pelvic-pain-women.html",
     "tools/algorithms/scrotal-pain.html",
     "tools/algorithms/sensory-neuropathy.html",
@@ -5847,6 +5884,7 @@
     "ready-prescriptions": 1,
     "case": 7,
     "algorithm": 9,
+    "snapshot": 1,
     "algorithm-summary": 1,
     "protocol": 10
    },
@@ -5929,6 +5967,7 @@
     "tools/management/atrial-fibrillation.html",
     "tools/management/hyperthyroidism-print.html",
     "tools/management/hyperthyroidism.html",
+    "tools/management/summaries/atrial-fibrillation.html",
     "tools/management/tia-stroke-print.html",
     "tools/management/tia-stroke.html",
     "tools/management/vasovagal-syncope-print.html",
@@ -5938,7 +5977,8 @@
     "other": 14,
     "case": 7,
     "algorithm": 1,
-    "protocol": 10
+    "protocol": 10,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -6045,8 +6085,6 @@
     "cases/coeliac.html",
     "cases/diarrhoea.html",
     "tools/algorithms/abdominal-pain-children.html",
-    "tools/algorithms/abdominal-pain.html",
-    "tools/algorithms/anaemia.html",
     "tools/algorithms/ataxia.html",
     "tools/algorithms/bloating.html",
     "tools/algorithms/chronic-diarrhoea.html",
@@ -6057,10 +6095,11 @@
     "tools/algorithms/low-ferritin.html",
     "tools/algorithms/low-folate.html",
     "tools/algorithms/microcytosis.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
+    "tools/algorithms/one-page/anaemia.html",
+    "tools/algorithms/one-page/dyspepsia.html",
+    "tools/algorithms/one-page/fatigue.html",
     "tools/algorithms/short-stature.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
-    "tools/algorithms/summaries/anaemia.html",
-    "tools/algorithms/summaries/dyspepsia.html",
     "tools/algorithms/summaries/hypocalcaemia.html",
     "tools/management.html",
     "tools/management/coeliac-disease-print.html",
@@ -6071,8 +6110,9 @@
    "page_kinds": {
     "other": 17,
     "case": 3,
-    "algorithm": 14,
-    "algorithm-summary": 4,
+    "algorithm": 12,
+    "snapshot": 4,
+    "algorithm-summary": 1,
     "protocol": 4
    },
    "status": "current",
@@ -6135,6 +6175,7 @@
     "cases/osa.html",
     "tools/algorithms/fatigue.html",
     "tools/algorithms/night-sweats.html",
+    "tools/algorithms/one-page/fatigue.html",
     "tools/management/driving-diseases-print.html",
     "tools/management/driving-diseases.html",
     "tools/management/insomnia-print.html",
@@ -6146,6 +6187,7 @@
     "other": 6,
     "case": 4,
     "algorithm": 2,
+    "snapshot": 1,
     "protocol": 6
    },
    "status": "current",
@@ -6214,17 +6256,17 @@
     "cases/vertigo.html",
     "tools/algorithms/anaemia.html",
     "tools/algorithms/haematuria.html",
-    "tools/algorithms/hypercalcaemia.html",
     "tools/algorithms/hyperkalaemia.html",
     "tools/algorithms/hypernatraemia.html",
     "tools/algorithms/hypocalcaemia.html",
     "tools/algorithms/lab-results.html",
     "tools/algorithms/normocytic-anaemia.html",
+    "tools/algorithms/one-page/anaemia.html",
+    "tools/algorithms/one-page/hypercalcaemia.html",
+    "tools/algorithms/one-page/hyperkalaemia.html",
+    "tools/algorithms/one-page/red-eye.html",
     "tools/algorithms/proteinuria.html",
     "tools/algorithms/red-eye.html",
-    "tools/algorithms/summaries/anaemia.html",
-    "tools/algorithms/summaries/hypercalcaemia.html",
-    "tools/algorithms/summaries/hyperkalaemia.html",
     "tools/algorithms/summaries/hypernatraemia.html",
     "tools/algorithms/summaries/hypocalcaemia.html",
     "tools/algorithms/tinnitus.html",
@@ -6240,6 +6282,10 @@
     "tools/management/hypertension.html",
     "tools/management/iron-deficiency-anaemia-print.html",
     "tools/management/iron-deficiency-anaemia.html",
+    "tools/management/summaries/ckd.html",
+    "tools/management/summaries/hypertension.html",
+    "tools/management/summaries/iron-deficiency-anaemia.html",
+    "tools/management/summaries/type-2-diabetes.html",
     "tools/management/type-2-diabetes-print.html",
     "tools/management/type-2-diabetes.html",
     "tools/prescribing.html"
@@ -6248,8 +6294,9 @@
     "audio": 1,
     "other": 10,
     "case": 46,
-    "algorithm": 12,
-    "algorithm-summary": 5,
+    "algorithm": 11,
+    "snapshot": 8,
+    "algorithm-summary": 2,
     "protocol": 12
    },
    "status": "current",
@@ -6274,6 +6321,7 @@
     "tools/algorithms/fatigue.html",
     "tools/algorithms/lymphadenopathy.html",
     "tools/algorithms/medically-unexplained-symptoms.html",
+    "tools/algorithms/one-page/fatigue.html",
     "tools/management.html",
     "tools/management/glandular-fever-print.html",
     "tools/management/glandular-fever.html",
@@ -6285,6 +6333,7 @@
     "audio": 1,
     "case": 1,
     "algorithm": 4,
+    "snapshot": 1,
     "protocol": 4
    },
    "status": "current",
@@ -6296,6 +6345,7 @@
    "type": "nice",
    "label": "NICE NG209",
    "pages": [
+    "assets/audio-scripts-1.js",
     "assets/sca-addons-10.js",
     "assets/sca-addons-11.js",
     "assets/sca-addons-2.js",
@@ -6318,6 +6368,8 @@
     "assets/sca-cases55.js",
     "assets/sca-cases59.js",
     "assets/sca-cases9.js",
+    "assets/sca-enrich.js",
+    "assets/sca-knowledge.js",
     "cases/breathlessness.html",
     "cases/chest-infections.html",
     "cases/copd.html",
@@ -6327,6 +6379,7 @@
     "cases/tia-stroke.html",
     "cases/type-2-diabetes.html",
     "tools/algorithms/acute-cough.html",
+    "tools/algorithms/amenorrhoea.html",
     "tools/algorithms/diplopia.html",
     "tools/algorithms/flashes-floaters.html",
     "tools/algorithms/foot-pain.html",
@@ -6345,9 +6398,10 @@
     "tools/management/subconjunctival-haemorrhage.html"
    ],
    "page_kinds": {
-    "other": 23,
+    "audio": 1,
+    "other": 25,
     "case": 8,
-    "algorithm": 4,
+    "algorithm": 5,
     "protocol": 12
    },
    "status": "current",
@@ -6379,11 +6433,13 @@
     "tools/management/female-urinary-incontinence-print.html",
     "tools/management/female-urinary-incontinence.html",
     "tools/management/pelvic-organ-prolapse-print.html",
-    "tools/management/pelvic-organ-prolapse.html"
+    "tools/management/pelvic-organ-prolapse.html",
+    "tools/management/summaries/female-urinary-incontinence.html"
    ],
    "page_kinds": {
     "other": 2,
-    "protocol": 4
+    "protocol": 4,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -6592,6 +6648,7 @@
     "cases/premenstrual-disorder.html",
     "cases/ptsd.html",
     "tools/algorithms/fatigue.html",
+    "tools/algorithms/one-page/fatigue.html",
     "tools/management.html",
     "tools/management/depression-print.html",
     "tools/management/depression.html",
@@ -6604,13 +6661,15 @@
     "tools/management/premenstrual-syndrome-print.html",
     "tools/management/premenstrual-syndrome.html",
     "tools/management/ptsd-print.html",
-    "tools/management/ptsd.html"
+    "tools/management/ptsd.html",
+    "tools/management/summaries/depression.html"
    ],
    "page_kinds": {
     "other": 35,
     "audio": 1,
     "case": 15,
     "algorithm": 1,
+    "snapshot": 2,
     "protocol": 12
    },
    "status": "current",
@@ -6682,8 +6741,7 @@
     "assets/sca-cases75.js",
     "cases/gender-dysphoria.html",
     "cases/premenstrual-disorder.html",
-    "tools/algorithms/summaries/tinnitus.html",
-    "tools/algorithms/tinnitus.html",
+    "tools/algorithms/one-page/tinnitus.html",
     "tools/management/palliative-anxiety-depression-print.html",
     "tools/management/palliative-anxiety-depression.html",
     "tools/management/premenstrual-syndrome-print.html",
@@ -6692,8 +6750,7 @@
    "page_kinds": {
     "other": 25,
     "case": 2,
-    "algorithm-summary": 1,
-    "algorithm": 1,
+    "snapshot": 1,
     "protocol": 4
    },
    "status": "current",
@@ -6773,13 +6830,13 @@
     "cases/migraine.html",
     "tools/algorithms/diplopia.html",
     "tools/algorithms/headache.html",
-    "tools/algorithms/summaries/headache.html"
+    "tools/algorithms/one-page/headache.html"
    ],
    "page_kinds": {
     "other": 6,
     "case": 2,
     "algorithm": 2,
-    "algorithm-summary": 1
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -6826,6 +6883,8 @@
     "tools/algorithms/irregular-periods.html",
     "tools/algorithms/night-sweats.html",
     "tools/algorithms/nipple-problems.html",
+    "tools/algorithms/one-page/amenorrhoea.html",
+    "tools/algorithms/one-page/irregular-periods.html",
     "tools/algorithms/tongue-problems.html",
     "tools/algorithms/vaginal-bleeding.html",
     "tools/algorithms/vaginal-discharge.html",
@@ -6845,6 +6904,8 @@
     "tools/management/premenstrual-syndrome.html",
     "tools/management/recurrent-uti-print.html",
     "tools/management/recurrent-uti.html",
+    "tools/management/summaries/female-urinary-incontinence.html",
+    "tools/management/summaries/hrt-prescribing.html",
     "tools/management/vulvar-disorders-print.html",
     "tools/management/vulvar-disorders.html"
    ],
@@ -6854,6 +6915,7 @@
     "ready-prescriptions": 1,
     "case": 8,
     "algorithm": 11,
+    "snapshot": 4,
     "protocol": 18
    },
    "status": "current",
@@ -6912,14 +6974,14 @@
     "tools/algorithms/falls.html",
     "tools/algorithms/hallucinations.html",
     "tools/algorithms/headache.html",
-    "tools/algorithms/summaries/dizziness.html",
-    "tools/algorithms/summaries/headache.html"
+    "tools/algorithms/one-page/dizziness.html",
+    "tools/algorithms/one-page/headache.html"
    ],
    "page_kinds": {
     "other": 3,
     "case": 1,
     "algorithm": 6,
-    "algorithm-summary": 2
+    "snapshot": 2
    },
    "status": "current",
    "replacement": "",
@@ -6934,7 +6996,6 @@
     "tools/algorithms/developmental-delay.html",
     "tools/algorithms/hearing-loss.html",
     "tools/algorithms/otalgia.html",
-    "tools/algorithms/summaries/hearing-loss.html",
     "tools/management/otitis-media-effusion-print.html",
     "tools/management/otitis-media-effusion.html",
     "tools/management/otitis-media-externa-print.html",
@@ -6943,7 +7004,6 @@
    "page_kinds": {
     "other": 1,
     "algorithm": 3,
-    "algorithm-summary": 1,
     "protocol": 4
    },
    "status": "current",
@@ -6976,6 +7036,7 @@
     "tools/algorithms/high-psa.html",
     "tools/algorithms/leg-weakness.html",
     "tools/algorithms/neck-pain.html",
+    "tools/algorithms/one-page/back-pain.html",
     "tools/algorithms/shoulder-pain.html",
     "tools/management.html",
     "tools/management/cauda-equina-print.html",
@@ -7003,6 +7064,7 @@
     "other": 7,
     "case": 8,
     "algorithm": 8,
+    "snapshot": 1,
     "protocol": 20
    },
    "status": "current",
@@ -7109,9 +7171,9 @@
     "tools/algorithms/abnormal-lfts.html",
     "tools/algorithms/chest-pain.html",
     "tools/algorithms/high-triglycerides.html",
+    "tools/algorithms/one-page/abnormal-lfts.html",
     "tools/algorithms/proteinuria.html",
     "tools/algorithms/raised-creatine-kinase.html",
-    "tools/algorithms/summaries/abnormal-lfts.html",
     "tools/algorithms/thrombocytosis.html",
     "tools/algorithms/vision-loss.html",
     "tools/management.html",
@@ -7139,6 +7201,9 @@
     "tools/management/screening-programmes.html",
     "tools/management/stable-angina-print.html",
     "tools/management/stable-angina.html",
+    "tools/management/summaries/hypertension.html",
+    "tools/management/summaries/stable-angina.html",
+    "tools/management/summaries/type-2-diabetes.html",
     "tools/management/tia-stroke-print.html",
     "tools/management/tia-stroke.html",
     "tools/management/type-1-diabetes-print.html",
@@ -7151,7 +7216,7 @@
     "audio": 1,
     "case": 15,
     "algorithm": 7,
-    "algorithm-summary": 1,
+    "snapshot": 4,
     "protocol": 30
    },
    "status": "current",
@@ -7180,9 +7245,9 @@
     "tools/algorithms/low-folate.html",
     "tools/algorithms/macrocytosis.html",
     "tools/algorithms/normocytic-anaemia.html",
+    "tools/algorithms/one-page/anaemia.html",
     "tools/algorithms/paraesthesia.html",
     "tools/algorithms/sensory-neuropathy.html",
-    "tools/algorithms/summaries/anaemia.html",
     "tools/algorithms/vitamin-b12-deficiency.html",
     "tools/management/type-2-diabetes-print.html",
     "tools/management/type-2-diabetes.html"
@@ -7192,7 +7257,7 @@
     "ready-prescriptions": 1,
     "case": 5,
     "algorithm": 7,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 2
    },
    "status": "current",
@@ -7210,12 +7275,14 @@
     "tools/algorithms/microcytosis.html",
     "tools/algorithms/thrombocytopenia.html",
     "tools/management/iron-deficiency-anaemia-print.html",
-    "tools/management/iron-deficiency-anaemia.html"
+    "tools/management/iron-deficiency-anaemia.html",
+    "tools/management/summaries/iron-deficiency-anaemia.html"
    ],
    "page_kinds": {
     "case": 1,
     "algorithm": 4,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -7240,19 +7307,18 @@
     "tools/algorithms/delirium.html",
     "tools/algorithms/fever-adults.html",
     "tools/algorithms/fever-children.html",
-    "tools/algorithms/headache.html",
     "tools/algorithms/neck-pain.html",
+    "tools/algorithms/one-page/fever-adults.html",
+    "tools/algorithms/one-page/headache.html",
     "tools/algorithms/purpura-petechiae.html",
-    "tools/algorithms/summaries/fever-adults.html",
-    "tools/algorithms/summaries/headache.html",
     "tools/management/subconjunctival-haemorrhage-print.html",
     "tools/management/subconjunctival-haemorrhage.html"
    ],
    "page_kinds": {
     "other": 8,
     "case": 1,
-    "algorithm": 8,
-    "algorithm-summary": 2,
+    "algorithm": 7,
+    "snapshot": 2,
     "protocol": 2
    },
    "status": "current",
@@ -7293,6 +7359,7 @@
     "tools/algorithms/hyponatraemia.html",
     "tools/algorithms/hypotension.html",
     "tools/algorithms/nausea-vomiting-adults.html",
+    "tools/algorithms/one-page/fatigue.html",
     "tools/algorithms/summaries/hyponatraemia.html",
     "tools/algorithms/summaries/nausea-vomiting-adults.html",
     "tools/management/addisons-disease-print.html",
@@ -7312,6 +7379,7 @@
     "other": 4,
     "case": 3,
     "algorithm": 5,
+    "snapshot": 1,
     "algorithm-summary": 2,
     "protocol": 12
    },
@@ -7362,8 +7430,8 @@
     "tools/algorithms/chest-pain.html",
     "tools/algorithms/chronic-cough.html",
     "tools/algorithms/cough-children.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chronic-cough.html",
+    "tools/algorithms/one-page/breathlessness.html",
+    "tools/algorithms/one-page/chronic-cough.html",
     "tools/algorithms/wheeze-child.html",
     "tools/management.html",
     "tools/management/allergic-rhinitis-print.html",
@@ -7376,6 +7444,7 @@
     "tools/management/preschool-wheeze.html",
     "tools/management/sick-day-rules-print.html",
     "tools/management/sick-day-rules.html",
+    "tools/management/summaries/asthma.html",
     "tools/prescribing-guide.html",
     "tools/prescribing.html"
    ],
@@ -7384,7 +7453,7 @@
     "other": 14,
     "case": 4,
     "algorithm": 5,
-    "algorithm-summary": 2,
+    "snapshot": 3,
     "protocol": 10
    },
    "status": "current",
@@ -7423,6 +7492,7 @@
     "tools/management/obesity.html",
     "tools/management/pcos-print.html",
     "tools/management/pcos.html",
+    "tools/management/summaries/type-2-diabetes.html",
     "tools/management/type-2-diabetes-print.html",
     "tools/management/type-2-diabetes.html"
    ],
@@ -7430,7 +7500,8 @@
     "other": 11,
     "case": 2,
     "algorithm": 4,
-    "protocol": 12
+    "protocol": 12,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -7496,6 +7567,7 @@
    "type": "nice",
    "label": "NICE NG249",
    "pages": [
+    "assets/audio-scripts-4.js",
     "assets/diagnostic-cases.js",
     "assets/sca-addons-1.js",
     "assets/sca-addons-12.js",
@@ -7521,17 +7593,19 @@
     "tools/algorithms/hypotension.html",
     "tools/algorithms/leg-ulcers.html",
     "tools/algorithms/leg-weakness.html",
-    "tools/algorithms/summaries/dizziness.html",
+    "tools/algorithms/one-page/dizziness.html",
     "tools/algorithms/summaries/leg-ulcers.html",
     "tools/algorithms/vitamin-d-deficiency.html",
     "tools/management/bppv-print.html",
     "tools/management/bppv.html"
    ],
    "page_kinds": {
+    "audio": 1,
     "other": 15,
     "case": 1,
     "algorithm": 10,
-    "algorithm-summary": 2,
+    "snapshot": 1,
+    "algorithm-summary": 1,
     "protocol": 2
    },
    "status": "current",
@@ -7560,9 +7634,9 @@
     "tools/algorithms/fever-adults.html",
     "tools/algorithms/fever-children.html",
     "tools/algorithms/high-crp-esr.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chest-pain.html",
-    "tools/algorithms/summaries/fever-adults.html",
+    "tools/algorithms/one-page/breathlessness.html",
+    "tools/algorithms/one-page/chest-pain.html",
+    "tools/algorithms/one-page/fever-adults.html",
     "tools/management/chest-infections-print.html",
     "tools/management/chest-infections.html"
    ],
@@ -7571,7 +7645,7 @@
     "ready-prescriptions": 1,
     "case": 1,
     "algorithm": 7,
-    "algorithm-summary": 3,
+    "snapshot": 3,
     "protocol": 2
    },
    "status": "current",
@@ -7635,26 +7709,21 @@
     "cases/haematological-cancers.html",
     "cases/uti-women.html",
     "tools/algorithms/abdominal-pain.html",
-    "tools/algorithms/abnormal-lfts.html",
-    "tools/algorithms/breathlessness.html",
-    "tools/algorithms/chest-pain.html",
     "tools/algorithms/confusion.html",
     "tools/algorithms/delirium.html",
     "tools/algorithms/fever-adults.html",
     "tools/algorithms/foot-pain.html",
-    "tools/algorithms/haematemesis.html",
     "tools/algorithms/high-crp-esr.html",
     "tools/algorithms/hypernatraemia.html",
     "tools/algorithms/hypotension.html",
     "tools/algorithms/knee-pain.html",
     "tools/algorithms/leg-ulcers.html",
     "tools/algorithms/nausea-vomiting-adults.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
-    "tools/algorithms/summaries/abnormal-lfts.html",
-    "tools/algorithms/summaries/breathlessness.html",
-    "tools/algorithms/summaries/chest-pain.html",
-    "tools/algorithms/summaries/fever-adults.html",
-    "tools/algorithms/summaries/haematemesis.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
+    "tools/algorithms/one-page/abnormal-lfts.html",
+    "tools/algorithms/one-page/chest-pain.html",
+    "tools/algorithms/one-page/fever-adults.html",
+    "tools/algorithms/one-page/haematemesis.html",
     "tools/algorithms/summaries/hypernatraemia.html",
     "tools/algorithms/summaries/leg-ulcers.html",
     "tools/algorithms/summaries/nausea-vomiting-adults.html",
@@ -7682,8 +7751,9 @@
    "page_kinds": {
     "other": 31,
     "case": 3,
-    "algorithm": 15,
-    "algorithm-summary": 9,
+    "algorithm": 11,
+    "snapshot": 5,
+    "algorithm-summary": 3,
     "protocol": 20
    },
    "status": "current",
@@ -7790,6 +7860,7 @@
     "tools/algorithms/female-hormone-abnormalities.html",
     "tools/algorithms/hyperprolactinaemia.html",
     "tools/algorithms/irregular-periods.html",
+    "tools/algorithms/one-page/irregular-periods.html",
     "tools/algorithms/pancytopenia.html",
     "tools/management/infertility-print.html",
     "tools/management/infertility.html",
@@ -7802,6 +7873,7 @@
     "other": 8,
     "case": 3,
     "algorithm": 5,
+    "snapshot": 1,
     "protocol": 6
    },
    "status": "current",
@@ -7944,6 +8016,7 @@
     "tools/management/recurrent-thrush.html",
     "tools/management/sick-day-rules-print.html",
     "tools/management/sick-day-rules.html",
+    "tools/management/summaries/type-2-diabetes.html",
     "tools/management/t2dm-ramadan-print.html",
     "tools/management/t2dm-ramadan.html",
     "tools/management/type-2-diabetes-print.html",
@@ -7958,7 +8031,8 @@
     "case": 14,
     "algorithm": 14,
     "algorithm-summary": 2,
-    "protocol": 16
+    "protocol": 16,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -8087,14 +8161,14 @@
     "tools/algorithms/lymphadenopathy.html",
     "tools/algorithms/neck-lump.html",
     "tools/algorithms/night-sweats.html",
-    "tools/algorithms/paraesthesia.html",
-    "tools/algorithms/summaries/chronic-cough.html",
-    "tools/algorithms/summaries/fever-adults.html"
+    "tools/algorithms/one-page/chronic-cough.html",
+    "tools/algorithms/one-page/fever-adults.html",
+    "tools/algorithms/paraesthesia.html"
    ],
    "page_kinds": {
     "other": 5,
     "algorithm": 7,
-    "algorithm-summary": 2
+    "snapshot": 2
    },
    "status": "current",
    "replacement": "",
@@ -8263,7 +8337,7 @@
     "tools/algorithms/abnormal-lfts.html",
     "tools/algorithms/high-ferritin.html",
     "tools/algorithms/jaundice.html",
-    "tools/algorithms/summaries/abnormal-lfts.html",
+    "tools/algorithms/one-page/abnormal-lfts.html",
     "tools/algorithms/weight-gain.html",
     "tools/management/alcohol-problem-drinking-print.html",
     "tools/management/alcohol-problem-drinking.html",
@@ -8276,7 +8350,7 @@
     "other": 5,
     "case": 2,
     "algorithm": 4,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 6
    },
    "status": "current",
@@ -8316,6 +8390,7 @@
     "assets/articles-data-7.js",
     "assets/sca-addons-2.js",
     "assets/sca-cases13.js",
+    "assets/sca-enrich.js",
     "cases/abnormal-lfts.html",
     "cases/alcohol.html",
     "tools/algorithms/abnormal-cancer-markers.html",
@@ -8323,18 +8398,18 @@
     "tools/algorithms/bloating.html",
     "tools/algorithms/high-ferritin.html",
     "tools/algorithms/jaundice.html",
+    "tools/algorithms/one-page/abnormal-lfts.html",
     "tools/algorithms/splenomegaly.html",
-    "tools/algorithms/summaries/abnormal-lfts.html",
     "tools/management/alcohol-problem-drinking-print.html",
     "tools/management/alcohol-problem-drinking.html",
     "tools/management/fatty-liver-print.html",
     "tools/management/fatty-liver.html"
    ],
    "page_kinds": {
-    "other": 4,
+    "other": 5,
     "case": 2,
     "algorithm": 6,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 4
    },
    "status": "current",
@@ -8439,6 +8514,7 @@
     "assets/articles-data-26.js",
     "assets/articles-data-3.js",
     "assets/audio-scripts-2.js",
+    "assets/audio-scripts-5.js",
     "assets/diagnostic-cases.js",
     "assets/meds/low-back-pain.js",
     "assets/prescriptions-data-common.js",
@@ -8465,6 +8541,7 @@
     "tools/algorithms/leg-pain.html",
     "tools/algorithms/leg-weakness.html",
     "tools/algorithms/neck-pain.html",
+    "tools/algorithms/one-page/back-pain.html",
     "tools/algorithms/paraesthesia.html",
     "tools/algorithms/thigh-pain.html",
     "tools/management.html",
@@ -8483,10 +8560,11 @@
    ],
    "page_kinds": {
     "other": 15,
-    "audio": 1,
+    "audio": 2,
     "ready-prescriptions": 1,
     "case": 8,
     "algorithm": 7,
+    "snapshot": 1,
     "protocol": 12
    },
    "status": "current",
@@ -8509,6 +8587,7 @@
     "tools/algorithms/lymphadenopathy.html",
     "tools/algorithms/lymphopenia.html",
     "tools/algorithms/night-sweats.html",
+    "tools/algorithms/one-page/fatigue.html",
     "tools/management/hiv-print.html",
     "tools/management/hiv.html",
     "tools/management/screening-programmes-print.html",
@@ -8518,6 +8597,7 @@
     "other": 5,
     "case": 1,
     "algorithm": 5,
+    "snapshot": 1,
     "protocol": 4
    },
    "status": "current",
@@ -8576,6 +8656,7 @@
     "cases/red-eye.html",
     "tools/algorithms/back-pain.html",
     "tools/algorithms/hip-pain.html",
+    "tools/algorithms/one-page/back-pain.html",
     "tools/management.html",
     "tools/management/achilles-tendinopathy-print.html",
     "tools/management/achilles-tendinopathy.html",
@@ -8592,6 +8673,7 @@
     "other": 9,
     "case": 4,
     "algorithm": 2,
+    "snapshot": 1,
     "protocol": 10
    },
    "status": "current",
@@ -8649,6 +8731,8 @@
     "tools/algorithms/anorexia.html",
     "tools/algorithms/hypokalaemia.html",
     "tools/algorithms/irregular-periods.html",
+    "tools/algorithms/one-page/amenorrhoea.html",
+    "tools/algorithms/one-page/irregular-periods.html",
     "tools/algorithms/summaries/hypokalaemia.html",
     "tools/algorithms/weight-loss.html",
     "tools/management/eating-disorders-print.html",
@@ -8660,6 +8744,7 @@
     "other": 10,
     "case": 3,
     "algorithm": 5,
+    "snapshot": 2,
     "algorithm-summary": 1,
     "protocol": 4
    },
@@ -8681,6 +8766,7 @@
     "tools/algorithms.html",
     "tools/algorithms/hallucinations.html",
     "tools/algorithms/loss-of-smell.html",
+    "tools/algorithms/one-page/tremors.html",
     "tools/algorithms/taste-disorders.html",
     "tools/algorithms/tremors.html",
     "tools/management.html",
@@ -8702,6 +8788,7 @@
     "other": 7,
     "case": 2,
     "algorithm": 4,
+    "snapshot": 1,
     "protocol": 12
    },
    "status": "current",
@@ -8716,10 +8803,9 @@
     "assets/articles-data-9.js",
     "cases/premenstrual-disorder.html",
     "tools/algorithms.html",
-    "tools/algorithms/abdominal-pain.html",
     "tools/algorithms/dyspareunia.html",
+    "tools/algorithms/one-page/abdominal-pain.html",
     "tools/algorithms/pelvic-pain-women.html",
-    "tools/algorithms/summaries/abdominal-pain.html",
     "tools/algorithms/summaries/pelvic-pain-women.html",
     "tools/management/dysmenorrhoea-print.html",
     "tools/management/dysmenorrhoea.html"
@@ -8727,8 +8813,9 @@
    "page_kinds": {
     "other": 2,
     "case": 1,
-    "algorithm": 3,
-    "algorithm-summary": 2,
+    "algorithm": 2,
+    "snapshot": 1,
+    "algorithm-summary": 1,
     "protocol": 2
    },
    "status": "current",
@@ -8845,16 +8932,13 @@
    "label": "NICE NG8",
    "pages": [
     "cases/ckd.html",
-    "tools/algorithms/anaemia.html",
     "tools/algorithms/normocytic-anaemia.html",
-    "tools/algorithms/summaries/anaemia.html",
     "tools/management/iron-deficiency-anaemia-print.html",
     "tools/management/iron-deficiency-anaemia.html"
    ],
    "page_kinds": {
     "case": 1,
-    "algorithm": 2,
-    "algorithm-summary": 1,
+    "algorithm": 1,
     "protocol": 2
    },
    "status": "replaced",
@@ -8892,6 +8976,7 @@
     "assets/triage/headache.js",
     "cases/glaucoma.html",
     "tools/algorithms/blurry-vision.html",
+    "tools/algorithms/one-page/red-eye.html",
     "tools/algorithms/red-eye.html",
     "tools/algorithms/vision-loss.html",
     "tools/management.html",
@@ -8902,6 +8987,7 @@
     "other": 3,
     "case": 1,
     "algorithm": 3,
+    "snapshot": 1,
     "protocol": 2
    },
    "status": "current",
@@ -8945,8 +9031,8 @@
     "assets/sca-cases66.js",
     "tools/algorithms/fever-adults.html",
     "tools/algorithms/fever-children.html",
+    "tools/algorithms/one-page/fever-adults.html",
     "tools/algorithms/sore-throat.html",
-    "tools/algorithms/summaries/fever-adults.html",
     "tools/management/glandular-fever-print.html",
     "tools/management/glandular-fever.html"
    ],
@@ -8954,7 +9040,7 @@
     "other": 7,
     "ready-prescriptions": 1,
     "algorithm": 3,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 2
    },
    "status": "current",
@@ -9027,17 +9113,21 @@
     "tools/algorithms/irregular-periods.html",
     "tools/algorithms/low-ferritin.html",
     "tools/algorithms/microcytosis.html",
+    "tools/algorithms/one-page/anaemia.html",
+    "tools/algorithms/one-page/irregular-periods.html",
     "tools/algorithms/pelvic-pain-women.html",
-    "tools/algorithms/summaries/anaemia.html",
     "tools/algorithms/summaries/pelvic-pain-women.html",
     "tools/algorithms/vaginal-bleeding.html",
     "tools/management.html",
     "tools/management/dysmenorrhoea-print.html",
     "tools/management/dysmenorrhoea.html",
+    "tools/management/hrt-prescribing-print.html",
+    "tools/management/hrt-prescribing.html",
     "tools/management/iron-deficiency-anaemia-print.html",
     "tools/management/iron-deficiency-anaemia.html",
     "tools/management/menorrhagia-print.html",
-    "tools/management/menorrhagia.html"
+    "tools/management/menorrhagia.html",
+    "tools/management/summaries/iron-deficiency-anaemia.html"
    ],
    "page_kinds": {
     "other": 9,
@@ -9045,8 +9135,9 @@
     "ready-prescriptions": 1,
     "case": 1,
     "algorithm": 7,
-    "algorithm-summary": 2,
-    "protocol": 6
+    "snapshot": 3,
+    "algorithm-summary": 1,
+    "protocol": 8
    },
    "status": "current",
    "replacement": "",
@@ -9106,7 +9197,6 @@
     "tools/algorithms/fever-children.html",
     "tools/algorithms/hearing-loss.html",
     "tools/algorithms/otalgia.html",
-    "tools/algorithms/summaries/hearing-loss.html",
     "tools/algorithms/unsettled-baby.html",
     "tools/management/otitis-media-effusion-print.html",
     "tools/management/otitis-media-effusion.html",
@@ -9117,7 +9207,6 @@
     "other": 3,
     "ready-prescriptions": 1,
     "algorithm": 4,
-    "algorithm-summary": 1,
     "protocol": 4
    },
    "status": "current",
@@ -9209,10 +9298,10 @@
     "cases/vertigo.html",
     "tools/algorithms/dizziness.html",
     "tools/algorithms/hearing-loss.html",
+    "tools/algorithms/one-page/dizziness.html",
+    "tools/algorithms/one-page/hearing-loss.html",
+    "tools/algorithms/one-page/tinnitus.html",
     "tools/algorithms/otalgia.html",
-    "tools/algorithms/summaries/dizziness.html",
-    "tools/algorithms/summaries/hearing-loss.html",
-    "tools/algorithms/summaries/tinnitus.html",
     "tools/algorithms/tinnitus.html",
     "tools/algorithms/vertigo.html",
     "tools/management/menieres-print.html",
@@ -9227,7 +9316,7 @@
     "ready-prescriptions": 1,
     "case": 3,
     "algorithm": 5,
-    "algorithm-summary": 3,
+    "snapshot": 3,
     "protocol": 6
    },
    "status": "current",
@@ -9364,13 +9453,11 @@
    "pages": [
     "assets/articles-data-13.js",
     "tools/algorithms/abnormal-lfts.html",
-    "tools/algorithms/splenomegaly.html",
-    "tools/algorithms/summaries/abnormal-lfts.html"
+    "tools/algorithms/splenomegaly.html"
    ],
    "page_kinds": {
     "other": 1,
-    "algorithm": 2,
-    "algorithm-summary": 1
+    "algorithm": 2
    },
    "status": "current",
    "replacement": "",
@@ -9423,10 +9510,12 @@
    "label": "NICE PH51",
    "pages": [
     "tools/management/contraception-print.html",
-    "tools/management/contraception.html"
+    "tools/management/contraception.html",
+    "tools/management/summaries/contraception.html"
    ],
    "page_kinds": {
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -9943,13 +10032,15 @@
     "tools/algorithms/breathlessness.html",
     "tools/algorithms/wheeze-child.html",
     "tools/management/asthma-print.html",
-    "tools/management/asthma.html"
+    "tools/management/asthma.html",
+    "tools/management/summaries/asthma.html"
    ],
    "page_kinds": {
     "other": 2,
     "case": 1,
     "algorithm": 2,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -9983,11 +10074,11 @@
    "label": "NICE QS38",
    "pages": [
     "tools/algorithms/haematemesis.html",
-    "tools/algorithms/summaries/haematemesis.html"
+    "tools/algorithms/one-page/haematemesis.html"
    ],
    "page_kinds": {
     "algorithm": 1,
-    "algorithm-summary": 1
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -10325,11 +10416,13 @@
    "pages": [
     "cases/heart-failure.html",
     "tools/management/heart-failure-print.html",
-    "tools/management/heart-failure.html"
+    "tools/management/heart-failure.html",
+    "tools/management/summaries/heart-failure.html"
    ],
    "page_kinds": {
     "case": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -10514,13 +10607,15 @@
     "cases/type-2-diabetes.html",
     "tools/algorithms/proteinuria.html",
     "tools/management/ckd-print.html",
-    "tools/management/ckd.html"
+    "tools/management/ckd.html",
+    "tools/management/summaries/ckd.html"
    ],
    "page_kinds": {
     "other": 3,
     "case": 2,
     "algorithm": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -10668,7 +10763,7 @@
     "assets/sca-cases26.js",
     "cases/ckd.html",
     "tools/algorithms/hyperkalaemia.html",
-    "tools/algorithms/summaries/hyperkalaemia.html",
+    "tools/algorithms/one-page/hyperkalaemia.html",
     "tools/management/aki-print.html",
     "tools/management/aki.html",
     "tools/management/ckd-print.html",
@@ -10678,7 +10773,7 @@
     "other": 2,
     "case": 1,
     "algorithm": 1,
-    "algorithm-summary": 1,
+    "snapshot": 1,
     "protocol": 4
    },
    "status": "current",
@@ -10725,10 +10820,12 @@
    "type": "nice",
    "label": "NICE TA1175",
    "pages": [
+    "assets/sca-addons-14.js",
     "tools/management/hyperhidrosis-print.html",
     "tools/management/hyperhidrosis.html"
    ],
    "page_kinds": {
+    "other": 1,
     "protocol": 2
    },
    "status": "current",
@@ -11075,13 +11172,15 @@
     "cases/migraine.html",
     "tools/algorithms/headache.html",
     "tools/management/migraine-print.html",
-    "tools/management/migraine.html"
+    "tools/management/migraine.html",
+    "tools/management/summaries/migraine.html"
    ],
    "page_kinds": {
     "other": 1,
     "case": 1,
     "algorithm": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -11095,12 +11194,14 @@
     "assets/meds/heart-failure.js",
     "cases/heart-failure.html",
     "tools/management/heart-failure-print.html",
-    "tools/management/heart-failure.html"
+    "tools/management/heart-failure.html",
+    "tools/management/summaries/heart-failure.html"
    ],
    "page_kinds": {
     "other": 1,
     "case": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -11180,12 +11281,14 @@
     "tools/management/benign-prostate-enlargement-print.html",
     "tools/management/benign-prostate-enlargement.html",
     "tools/management/male-luts-print.html",
-    "tools/management/male-luts.html"
+    "tools/management/male-luts.html",
+    "tools/management/summaries/male-luts.html"
    ],
    "page_kinds": {
     "other": 6,
     "case": 3,
-    "protocol": 4
+    "protocol": 4,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -11729,13 +11832,12 @@
    "label": "NICE TA566",
    "pages": [
     "tools/algorithms/hearing-loss.html",
-    "tools/algorithms/summaries/hearing-loss.html",
-    "tools/algorithms/summaries/tinnitus.html",
-    "tools/algorithms/tinnitus.html"
+    "tools/algorithms/one-page/hearing-loss.html",
+    "tools/algorithms/one-page/tinnitus.html"
    ],
    "page_kinds": {
-    "algorithm": 2,
-    "algorithm-summary": 2
+    "algorithm": 1,
+    "snapshot": 2
    },
    "status": "current",
    "replacement": "",
@@ -11763,14 +11865,12 @@
     "assets/sca-addons-5.js",
     "assets/sca-cases26.js",
     "tools/algorithms/hyperkalaemia.html",
-    "tools/algorithms/summaries/hyperkalaemia.html",
     "tools/management/ckd-print.html",
     "tools/management/ckd.html"
    ],
    "page_kinds": {
     "other": 2,
     "algorithm": 1,
-    "algorithm-summary": 1,
     "protocol": 2
    },
    "status": "replaced",
@@ -11818,17 +11918,18 @@
     "assets/sca-cases26.js",
     "cases/ckd.html",
     "tools/algorithms/hyperkalaemia.html",
-    "tools/algorithms/summaries/hyperkalaemia.html",
+    "tools/algorithms/one-page/hyperkalaemia.html",
     "tools/management/aki-print.html",
     "tools/management/aki.html",
     "tools/management/ckd-print.html",
-    "tools/management/ckd.html"
+    "tools/management/ckd.html",
+    "tools/management/summaries/ckd.html"
    ],
    "page_kinds": {
     "other": 2,
     "case": 1,
     "algorithm": 1,
-    "algorithm-summary": 1,
+    "snapshot": 2,
     "protocol": 4
    },
    "status": "current",
@@ -11920,12 +12021,14 @@
     "assets/prescriptions-data.js",
     "cases/migraine.html",
     "tools/management/migraine-print.html",
-    "tools/management/migraine.html"
+    "tools/management/migraine.html",
+    "tools/management/summaries/migraine.html"
    ],
    "page_kinds": {
     "ready-prescriptions": 1,
     "case": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -12026,12 +12129,14 @@
     "cases/headache.html",
     "cases/migraine.html",
     "tools/management/migraine-print.html",
-    "tools/management/migraine.html"
+    "tools/management/migraine.html",
+    "tools/management/summaries/migraine.html"
    ],
    "page_kinds": {
     "ready-prescriptions": 1,
     "case": 2,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -12075,10 +12180,13 @@
    "type": "nice",
    "label": "NICE TA697",
    "pages": [
-    "tools/algorithms/bruising.html"
+    "tools/algorithms/bruising.html",
+    "tools/management/atrial-fibrillation-print.html",
+    "tools/management/atrial-fibrillation.html"
    ],
    "page_kinds": {
-    "algorithm": 1
+    "algorithm": 1,
+    "protocol": 2
    },
    "status": "current",
    "replacement": "",
@@ -12228,13 +12336,15 @@
     "cases/headache.html",
     "cases/migraine.html",
     "tools/management/migraine-print.html",
-    "tools/management/migraine.html"
+    "tools/management/migraine.html",
+    "tools/management/summaries/migraine.html"
    ],
    "page_kinds": {
     "ready-prescriptions": 1,
     "other": 1,
     "case": 2,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -12502,11 +12612,13 @@
    "pages": [
     "cases/migraine.html",
     "tools/management/migraine-print.html",
-    "tools/management/migraine.html"
+    "tools/management/migraine.html",
+    "tools/management/summaries/migraine.html"
    ],
    "page_kinds": {
     "case": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -12552,12 +12664,14 @@
     "assets/meds/ckd.js",
     "tools/algorithms/proteinuria.html",
     "tools/management/ckd-print.html",
-    "tools/management/ckd.html"
+    "tools/management/ckd.html",
+    "tools/management/summaries/ckd.html"
    ],
    "page_kinds": {
     "other": 1,
     "algorithm": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -12643,12 +12757,14 @@
     "cases/migraine.html",
     "tools/algorithms/headache.html",
     "tools/management/migraine-print.html",
-    "tools/management/migraine.html"
+    "tools/management/migraine.html",
+    "tools/management/summaries/migraine.html"
    ],
    "page_kinds": {
     "case": 1,
     "algorithm": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -12677,12 +12793,14 @@
     "cases/migraine.html",
     "tools/algorithms/headache.html",
     "tools/management/migraine-print.html",
-    "tools/management/migraine.html"
+    "tools/management/migraine.html",
+    "tools/management/summaries/migraine.html"
    ],
    "page_kinds": {
     "case": 1,
     "algorithm": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -12792,13 +12910,15 @@
     "cases/migraine.html",
     "tools/algorithms/headache.html",
     "tools/management/migraine-print.html",
-    "tools/management/migraine.html"
+    "tools/management/migraine.html",
+    "tools/management/summaries/migraine.html"
    ],
    "page_kinds": {
     "ready-prescriptions": 1,
     "case": 1,
     "algorithm": 1,
-    "protocol": 2
+    "protocol": 2,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",
@@ -12853,13 +12973,17 @@
    "type": "nice",
    "label": "NICE TA999",
    "pages": [
+    "assets/sca-addons-12.js",
     "tools/management/benign-prostate-enlargement-print.html",
     "tools/management/benign-prostate-enlargement.html",
     "tools/management/female-urinary-incontinence-print.html",
-    "tools/management/female-urinary-incontinence.html"
+    "tools/management/female-urinary-incontinence.html",
+    "tools/management/summaries/female-urinary-incontinence.html"
    ],
    "page_kinds": {
-    "protocol": 4
+    "other": 1,
+    "protocol": 4,
+    "snapshot": 1
    },
    "status": "current",
    "replacement": "",

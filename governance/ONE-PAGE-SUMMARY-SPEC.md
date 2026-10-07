@@ -92,8 +92,8 @@ Adapt the five boxes to the condition, but always cover:
 Every page that has a one-page summary shows two tabs: **Steps** (the normal page) and **Snapshot** (the one-page summary, embedded; "Download PDF" prints it on one A4 page). Pages without a summary keep their own tabs.
 
 - **Protocols:** add `snapshot:"summaries/<slug>.html",` at the start of the page's `MG.render({ … })` data. `assets/management-engine.js` then draws the Steps | Snapshot tabs (not on print copies).
-- **Algorithms that had a Summary tab:** rename the button `Summary` → `Snapshot`, and insert the Snapshot block straight after `<div id="viewSummary">` with a style rule hiding the old `.sum-bar` and `.sum` children.
-- **Algorithms that had a Diagram tab:** replace the Diagram button with `<button class="vt-btn" data-view="summary" …>Snapshot</button>`, change `<div id="viewDiagram">` to `<div id="viewDiagramRetired" hidden>`, and add `<div id="viewSummary">` + the Snapshot block before `<div class="alg-flow" id="flow">`.
+- **Algorithms that had a Summary tab:** rename the button `Summary` → `Snapshot`, and replace the contents of `<div id="viewSummary">` with the Snapshot block, deleting the old 2-page summary, and replace `tools/algorithms/summaries/<slug>.html` with a redirect to `../one-page/<slug>.html` (remove it from `sitemap.xml`).
+- **Algorithms that had a Diagram tab:** replace the Diagram button with `<button class="vt-btn" data-view="summary" …>Snapshot</button>`, delete the whole `<div id="viewDiagram">` block (retired content is deleted, never hidden), and add `<div id="viewSummary">` + the Snapshot block before `<div class="alg-flow" id="flow">`.
 - The Snapshot block is an iframe of `one-page/<slug>.html`. Each summary page hides its own top bar when framed (`html.in-frame`).
 
 `Generating the briefs with a script is recommended: build the briefs from the live page and check every FIND is unique.
@@ -101,6 +101,7 @@ Every page that has a one-page summary shows two tabs: **Steps** (the normal pag
 ## Checks before publishing (both types)
 
 - [ ] Every statement traced to the full protocol (source lock), with offer/consider strength kept.
+- [ ] `python3 governance/check_consistency.py <full page>` shows no HIGH finding for the page or its summary. If the summary review finds the full page inconsistent or outdated, fix the full page in the same upload (governance/UPDATE-PROCESS.md, accuracy rules).
 - [ ] `node governance/check_one_page.mjs <page>` passes: one A4 page, at least 4% spare height, no horizontal scroll at 390 px wide.
 - [ ] Review date matches the protocol's current round.
 - [ ] Back links work; `<meta name="robots" content="noindex">`; the canonical link points to the full source page.

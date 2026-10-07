@@ -1,0 +1,151 @@
+# Findings from governance/check_consistency.py that a clinician has reviewed and accepted as correct.
+# One per line:  <page path> | <check> | <short exact snippet from the finding's last quoted line>
+# The finding is hidden only while that snippet is still in it, so a later rewrite brings it back for review.
+# Add a line only after reading both quoted lines and the guidance. Keep the reason in the comment above it.
+#
+# NG12 lists haematemesis under "consider non-urgent direct-access endoscopy" (after acute assessment); the acute route is stated elsewhere.
+tools/algorithms/haematemesis.html | URGENCY | non-urgent direct-access
+tools/algorithms/dyspepsia.html | URGENCY | non-urgent direct-access
+#
+# October 2026 baseline review. These Snapshot facts came from the retired 2-page summary block, which was deleted from the page.
+# Each was checked: aspirin 300 mg (NICE CG95); drug fever 7–10 days after a new drug (CKS fever); prednisolone not less than 0.75 mg/kg (BSR GCA 2020);
+# topical treatment 7–14 days (CKS otitis externa); Ménière's attacks 20 min–12 h (Bárány/AAO-HNS criteria).
+tools/algorithms/one-page/breathlessness.html | SNAPSHOT | aspirin 300 mg
+tools/algorithms/one-page/fever-adults.html | SNAPSHOT | drug fever 7–10 days
+tools/algorithms/one-page/headache.html | SNAPSHOT | minimum 0.75 mg/kg
+tools/algorithms/one-page/hearing-loss.html | SNAPSHOT | topical 7–14 days
+tools/algorithms/one-page/tinnitus.html | SNAPSHOT | vertigo 20 min–12 h
+#
+# Different clinical situations, not a strength change: "prescribe" when both dipstick markers are positive, "consider" when one is negative (NICE NG109).
+tools/management/female-urinary-incontinence.html | STRENGTH | prescribe antibiotics pending culture
+# "consider an ACE inhibitor" (HFmrEF, NG106) versus an ARNI interaction warning.
+tools/management/heart-failure.html | STRENGTH | never co-prescribe an ace inhibitor
+# NG253 explanation line; the red-flag row itself says "immediate secondary care".
+tools/algorithms/fever-adults.html | URGENCY | delay matters most
+#
+# Upload 22 (October 2026): site-wide findings reviewed against guidance and accepted as correct.
+#
+# "urgent" applies to the GTD/suspected-cancer referral; ectopic exclusion is a parenthetical prerequisite, not given a weaker time frame
+tools/algorithms/abnormal-cancer-markers.html | URGENCY | suspected gtd with bleeding
+#
+# NG12 1.7.4 'consider' is quoted as such; firm stem wording supported by NICE QS130 statement 2 (suspected SCC referred via suspected cancer pathway)
+tools/management/actinic-keratosis.html | STRENGTH | raises clinical suspicion of scc
+#
+# allergy-clinic referral priority after the event, not acute anaphylaxis management (NICE CG134 referral)
+tools/management/angioedema.html | URGENCY | routine (urgent if anaphylaxis
+# different situation: urgent review applies to mild stable isolated lip swelling; anaphylaxis gets adrenaline in the same line
+tools/management/angioedema.html | URGENCY | urgent review for mild, stable isolated
+#
+# explanation sentence about imaging before LP; the red-flag row itself pairs Same-day with urgent imaging
+tools/algorithms/ataxia.html | URGENCY | mandates urgent imaging before any
+#
+# sources/citation list naming the RCUK anaphylaxis guideline, not an instruction
+tools/algorithms/facial-swelling.html | URGENCY | resuscitation council uk anaphylaxis
+#
+# different populations: NG12 says consider very urgent FBC in adults, offer FBC/immediate assessment in children
+tools/management/glandular-fever.html | STRENGTH | offer a very urgent fbc (within 48
+#
+# FALSE ALARM: NG12 1.2.7 non-urgent direct-access OGD for (stable) haematemesis; active bleeding is sent to same-day/999 on the same page
+tools/management/gord.html | URGENCY | consider non-urgent direct-access
+# FALSE ALARM: 'urgent' refers to the replaced urgent direct-access endoscopy route, not haematemesis
+tools/management/gord.html | URGENCY | replacing urgent direct-access endoscopy
+#
+# explanation sentence directly after the bold same-day instruction; paraphrases NG219 "refer immediately"
+tools/management/gout.html | URGENCY | nice recommends urgent referral when
+#
+# 'urgent' applies to a painless testicular nodule (suspected cancer pathway); torsion is named only as an alternative explanation for a painful mass, and every torsion action on the page is emergency
+tools/algorithms/gynecomastia.html | URGENCY | a painful mass may instead reflect
+#
+# NG12: 'consider' very urgent FBC applies to adults; for children and young people NG12 says 'offer' - the quoted line is the children recommendation, correctly firmer
+tools/management/haematological-cancers.html | STRENGTH | offer a very urgent fbc within 48 hours
+#
+# row is labelled same-day hospital / hand; the urgent pill sits inside the same-day tier, consistent with the red-flag tile
+tools/algorithms/hand-pain.html | URGENCY | suspected septic arthritis, pyogeni
+#
+# Why? drawer about documentation wording; dysphagia is a same-day/suspected cancer item on this page, not 999.
+tools/algorithms/hiccups.html | URGENCY | return if persisting beyond 48 hours
+#
+# different populations: NICE NG238 offers atorvastatin 20 mg for QRISK3 >=10% primary prevention but says consider it at age >=85
+tools/management/hypercholesterolaemia.html | STRENGTH | as a shared decision; discuss
+#
+# 'ectopic' here is ectopic ACTH (endocrine/NG12 CXR route), not ectopic pregnancy; no urgency conflict
+tools/algorithms/hypokalaemia.html | URGENCY | ectopic acth route
+#
+# Section subtitle describing the purpose of examination, not a referral instruction; all referral lines keep NG12 "consider".
+tools/management/hypothyroidism.html | STRENGTH | finds the neck that needs a suspected
+#
+# Why? drawer medicolegal sentence; the next sentence and all action lines state immediate emergency assessment plus MRI via the spinal pathway (GIRFT CES pathway).
+tools/algorithms/leg-weakness.html | URGENCY | arranging urgent mri has potentially
+#
+# FALSE ALARM: footer source citation, not a time frame
+tools/algorithms/leucopenia.html | URGENCY | nice ng12 suspected cancer
+#
+# second quoted line is the references/sources list, not a clinical instruction
+tools/algorithms/lymphadenopathy.html | URGENCY | british society for haematology
+#
+# FALSE ALARM: UKONS red rating wording; card heading says attend now
+tools/management/neutropenic-sepsis.html | URGENCY | ukons red rating = attend now
+#
+# reference-list summary of the RCH source; both red-flag boxes already say same-day emergency assessment
+tools/management/osgood-schlatter.html | URGENCY | osteomyelitis/septic arthritis: urgent
+#
+# second line is about night pain alone not warranting referral, not a firmer version of the NG12 bone sarcoma consider
+tools/management/osteoarthritis.html | STRENGTH | night pain alone does not mean
+#
+# Both quoted lines are the same card, which already says 'consider' (NICE NG31) and 'a consideration, not an automatic rule'; the heading is not a firmer instruction
+tools/management/palliative-nausea-vomiting.html | STRENGTH | consider a syringe pump when repeated
+#
+# drug-cause list for carbimazole/PTU counselling (BNF/MHRA): FBC on symptoms, stop if neutropenic; not febrile neutropenia triage
+tools/algorithms/pancytopenia.html | URGENCY | urgent fbc if symptoms
+# guideline citation line, not a clinical instruction
+tools/algorithms/pancytopenia.html | URGENCY | neutropenic sepsis, 2012
+#
+# Reference-list description of NICE NG126 content, not a clinical instruction; all instructional lines now say refer immediately (same day) to EPAS.
+tools/management/pelvic-inflammatory-disease.html | URGENCY | unknown location and urgent early
+#
+# same red-flag box: describes secondary-care combined management after the same-day assessment already stated
+tools/management/rheumatoid-arthritis.html | URGENCY | needs urgent combined medical
+# reference-list summary of guideline content, not a triage instruction
+tools/management/rheumatoid-arthritis.html | URGENCY | management of septic arthritis
+#
+# explanation sentence in Why drawer paraphrasing BASHH; the same drawer already says transfer immediately
+tools/algorithms/scrotal-pain.html | URGENCY | needs urgent exploration rather than
+# different situation: past self-resolved episodes (intermittent torsion) -> urgent elective urology, not acute torsion
+tools/algorithms/scrotal-pain.html | URGENCY | intermittent torsion (urgent urology
+# different situation: equivocal stable case, Doppler only if it does not delay surgical review
+tools/algorithms/scrotal-pain.html | URGENCY | an urgent doppler uss may assist
+# different situation: resolved episodes of intermittent torsion in routine/urgent urology table
+tools/algorithms/scrotal-pain.html | URGENCY | episodes suggesting intermittent torsion
+#
+# NG79 wording: back-up advice to seek medical help if systemically very unwell; "very unwell" in the tile is an immediate-antibiotic criterion, not a 999 trigger
+tools/management/sinusitis.html | URGENCY | seek help if they become very unwell
+#
+# citation/description legend, not a management instruction; torsion is routed to 999/same-day elsewhere
+tools/algorithms/testicular-lump.html | URGENCY | the full reasoning pathway
+# epididymo-orchitis failing to improve at 48-72 h: a different (subacute) situation; BASHH 2020 advises reassessment and urological referral
+tools/algorithms/testicular-lump.html | URGENCY | consider torsion, abscess, infarction
+# guideline citation line, not a clinical instruction
+tools/algorithms/testicular-lump.html | URGENCY | testicular torsion pathway
+#
+# Why? drawer explaining the 6-hour salvage window; reinforces the emergency, does not downgrade it.
+tools/algorithms/testicular-pain.html | URGENCY | the 6-hour rule for testicular torsion
+# Different situation: intermittent torsion with resolved pain (bell clapper) -> urgent urology for elective bilateral orchidopexy, not acute torsion.
+tools/algorithms/testicular-pain.html | URGENCY | require urgent urology referral
+#
+# overview subtitle listing urgent categories; the torsion tile and steps all say immediate ED transfer
+tools/management/undescended-testis.html | URGENCY | screen first for the urgent presentation
+#
+# FALSE ALARM: NICE NG1 says offer alginate (formula-fed, after thickener) but consider alginate (breastfed); different recommendations
+tools/algorithms/unsettled-baby.html | STRENGTH | formula-fed with frequent regurgitation
+#
+# explanation of NG126 hCG interpretation within an EPAU pathway, not a referral time frame
+tools/algorithms/vaginal-bleeding-pregnancy.html | URGENCY | a rising hcg does not exclude ectopic
+#
+# guideline citation line (NG126 title), not a clinical instruction
+tools/algorithms/vaginal-mass.html | URGENCY | ectopic pregnancy and miscarriage
+#
+# administrative list of local referral routes to record, not a time-frame instruction; torsion is sent for immediate assessment elsewhere on the page
+tools/management/varicocele.html | URGENCY | urgent urology/torsion route
+#
+# "Consider" (NG12) for any unexplained vaginal mass; "needs" only for an irregular, friable, fixed or ulcerated lesion. Consistent.
+tools/management/pelvic-organ-prolapse.html | STRENGTH | an irregular, friable, fixed or persistently

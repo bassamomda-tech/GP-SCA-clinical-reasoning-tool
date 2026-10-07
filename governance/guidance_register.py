@@ -20,8 +20,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'governance', 'guidance-register.json')
 
 SCAN = [
-    'tools/algorithms/*.html', 'tools/algorithms/summaries/*.html',
-    'tools/management/*.html', 'cases/*.html', 'tools/*.html', 'pages/*.html',
+    'tools/algorithms/*.html', 'tools/algorithms/summaries/*.html', 'tools/algorithms/one-page/*.html',
+    'tools/management/*.html', 'tools/management/summaries/*.html', 'cases/*.html', 'tools/*.html', 'pages/*.html',
     'assets/prescriptions-data*.js', 'assets/audio-scripts-*.js',
     'assets/sca-*.js', 'assets/triage/*.js', 'assets/meds/*.js',
     'assets/diagnostic-cases.js', 'assets/articles-data*.js',
@@ -35,6 +35,7 @@ def is_redirect(text):
     return 'http-equiv="refresh"' in text[:4000] and len(text) < 8000
 
 def page_kind(path):
+    if path.startswith('tools/management/summaries/') or path.startswith('tools/algorithms/one-page/'): return 'snapshot'
     if path.startswith('tools/management/'): return 'protocol'
     if path.startswith('tools/algorithms/summaries/'): return 'algorithm-summary'
     if path.startswith('tools/algorithms/'): return 'algorithm'
