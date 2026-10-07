@@ -127,63 +127,6 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 <!-- DIAGRAM VIEW -->
-<div id="viewDiagramRetired" hidden>
-  <div class="dg-legend"><span>The full reasoning pathway — tiredness is common and usually benign, but a focused history, examination and targeted tests catch the serious organic and red-flag causes; sort psychosocial / organic / other, treat, refer and safety-net (CFS/ME is a positive diagnosis after exclusion).</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Fatigue / tiredness</span><div class="body">Duration, <b>sleep, mood, weight change</b>, drugs/alcohol/substances, menstrual/pregnancy history, diet, psychosocial context, post-exertional malaise. Examine (pallor, thyroid, nodes, abdomen). <b>Targeted first-line bloods</b> guided by history and examination, commonly: FBC, U&amp;E/eGFR, LFT, <b>TFT</b>, glucose/HbA1c, ferritin, and CRP/ESR if inflammatory/infective disease is plausible.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — red flags for serious disease</span><span class="ttl">Sinister features?</span><div class="body"><ul>
-      <li><b>Unintentional weight loss</b>, lymphadenopathy, night sweats, fever</li>
-      <li><b>Focal symptoms</b> or an abnormal examination finding</li>
-      <li><b>New severe anaemia</b> or bruising/bleeding on bloods</li>
-      <li>Breathlessness/chest pain, or significant mood disturbance / suicidality</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Targeted investigation / suspected cancer pathway</span><div class="body">Cancer red flags → the matching NICE NG12 (updated April 2026) action: a suspected cancer pathway referral, or an urgent direct-access test (very urgent FBC, urgent chest X-ray, FIT) and the weight-loss work-up. Severe anaemia/abnormal film → urgent. Mental-health crisis → urgent assessment.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — screen &amp; sort</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">First-line panel</span><div class="body">Targeted tests above. Add B12/folate, calcium, coeliac serology, HIV, CK, morning cortisol, ECG/BNP, urinalysis or imaging only where the history, examination or initial results support them; assess OSA on symptoms (NICE NG202), not Epworth alone.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · which category?</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Psychosocial</div><div class="box ix"><span class="ttl">Commonest</span><div class="body"><b>Stress, poor sleep, low mood/anxiety, overwork</b>, caring responsibilities, alcohol — screen mood (PHQ-9/GAD-7).</div></div></div>
-      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Organic</div><div class="box ix"><span class="ttl">Screen catches these</span><div class="body"><b>Anaemia, hypothyroidism, diabetes, coeliac</b>, CKD, liver disease, vitamin deficiency; treat on results.</div></div></div>
-      <div class="col"><div class="blabel">Other</div><div class="box ix"><span class="ttl">Consider</span><div class="body">Medication (beta-blockers, sedatives), <b>OSA</b>, chronic disease, post-viral, perimenopause, <b>CFS/ME</b> (positive diagnosis after exclusion, NICE NG206).</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat the cause</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — cause-directed</span><span class="ttl">Treat what you find, support the rest</span><div class="body"><ul>
-      <li><b>Organic:</b> treat per result (iron for IDA + find source, levothyroxine for hypothyroidism, gluten-free for coeliac, optimise diabetes/CKD).</li>
-      <li><b>Psychosocial / low mood:</b> sleep hygiene, activity, address stressors; assess depression fully (PHQ-9, suicide risk) and treat per NICE guidance with shared decision-making.</li>
-      <li><b>OSA:</b> refer to sleep service; medication review for sedating drugs.</li>
-      <li><b>CFS/ME:</b> NICE NG206 (2021) — energy management/pacing, do not offer graded exercise therapy, CBT only as supportive (not curative) care, supportive multidisciplinary care.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-purple">NICE NG12 (updated April 2026)</span> fatigue alone is not a referral trigger — apply the site-specific NG12 criterion met, taking account of age, smoking history and associated symptoms: persistent fatigue/pallor/fever/bruising → consider a very urgent FBC within 48 hours (leukaemia); 40+ with 2 or more unexplained symptoms such as fatigue and weight loss (1 or more if ever smoked) → urgent direct-access chest X-ray; unexplained lymphadenopathy → consider a suspected cancer pathway referral (lymphoma).</li>
-      <li><span class="pill pill-blue">Relevant specialty</span> per abnormal result (haematology, endocrine, gastro, sleep service).</li>
-      <li><span class="pill pill-blue">CFS/ME service / mental health</span> ME/CFS service at 3 months where available (access varies), or mental health where mood/anxiety predominates.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · lifestyle &amp; self-care</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; self-management</span><span class="ttl">Often the most effective lever</span><div class="body"><b>Sleep hygiene</b> and a regular routine · <b>reduce alcohol and caffeine</b> · graded physical activity within tolerance (not if ME/CFS is suspected) · balanced diet, address iron/B12 · stress management/CBT and addressing workload/caring strain · medication review for sedating drugs · screen and treat low mood.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Return / re-investigate</b> if new weight loss, lumps, night sweats, fever, breathlessness, or low mood with safety concerns develop. <b>Review</b> after treating a found cause or after a normal screen at a defined interval; if fatigue is unexplained and persists, reconsider the differential (OSA, perimenopause, CFS/ME) rather than repeatedly re-bleeding — repeat or extend tests only where clinically indicated.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>A normal targeted screen is reassuring but does not end assessment:</b> choose tests from the history and examination (commonly FBC, U&amp;E, LFT, TFT, HbA1c, ferritin ± inflammatory markers) to catch the treatable causes, while staying alert to red flags for malignancy — and remember CFS/ME is a <i>positive</i> diagnosis made after exclusion, not a label of last resort.</div></div>
-</div>
-
 <div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/fatigue.html">⬇ Download PDF</button><a class="sum-open" href="one-page/fatigue.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/fatigue.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div></div>
 <div class="alg-flow" id="flow">
 
