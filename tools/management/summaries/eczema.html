@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atopic eczema — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/eczema.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/eczema.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../eczema.html">← Full atopic eczema protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Atopic eczema</h1>
+      <div class="scope"><b>For:</b> children and adults with atopic eczema. CG57 figures apply to under 12s; adolescents and adults by clinical judgement and local pathways. <b>Not for:</b> starting systemic, biologic or JAK treatment (specialist), or one-sided nipple changes (NG12 breast pathway).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE CG57</span><span>NG190</span><span>TA81 · TA82</span><span>MHRA DSU</span><span>NG12 (Apr 2026)</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> emollients are the treatment — lots, every day, even when clear; match steroid potency to the site; and a <b>sudden painful deterioration</b> is eczema herpeticum until you have looked — start aciclovir today.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Eczema herpeticum</b> (painful, fast-worsening, punched-out erosions or blisters, ± fever) → systemic aciclovir now, not after PCR, + <span class="when wsd">Same-day dermatology advice</span> (not obtainable → urgent hospital assessment). Around the eyes → also <span class="when wsd">Same-day ophthalmology</span></li>
+          <li><b>Systemically unwell with spreading infection</b>, suspected sepsis, necrotising fasciitis, severe cellulitis or disproportionate pain; or <b>erythroderma</b> with systemic features → <span class="when wsd">Same-day acute assessment</span>; consider admission.</li>
+          <li><b>Aged 50+, one nipple only:</b> discharge, retraction or other change of concern → <span class="when wurg">Suspected cancer pathway (2 weeks)</span>. Persistent one-sided nipple dermatitis → consider breast referral (Paget’s); don’t repeat creams.</li>
+          <li><b>Child under 12:</b> severe eczema not responding to 1 week of optimal topical treatment, or infected eczema failing treatment → <span class="when wurg">Urgent dermatology (within 2 weeks)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— is it atopic eczema?</small></h2>
+        <div class="body">
+          <p><b>Under 12 (CG57):</b> itchy skin <b>plus ≥3</b> of: visible flexural dermatitis (cheeks/extensors if ≤18 months); past flexural dermatitis; dry skin in the last 12 months; asthma or hay fever (atopic first-degree relative if under 4); onset before 2 (not used under 4).</p>
+          <p><b>Adults:</b> clinical, not CG57. <b>Skin of colour:</b> extensor, discoid or follicular; redness harder to see. <b>Grade:</b> mild = dry, infrequent itch · moderate = frequent itch, redness · severe = widespread, incessant itch, ± oozing. Grade <b>impact</b> too (sleep, school, mood).</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— every review, before stepping up</small></h2>
+        <div class="body">
+          <p>☐ Sites mapped &nbsp;☐ Quantities issued &nbsp;☐ Technique, steroid fears &nbsp;☐ Infection &nbsp;☐ Triggers &nbsp;☐ Infant not settling: cow’s milk, egg. <b>Don’t miss:</b> contact allergy, tinea, scabies, T-cell lymphoma.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— treatment follows the grade</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Mild</b> → mild steroid. <b>Moderate</b> → moderate steroid, TCI, bandages. <b>Severe</b> → potent steroid, TCI; phototherapy, systemic = specialist. Impact can move up a step.</li>
+            <li><b>Infected, not systemically unwell</b> → no routine antibiotic. Localised, if needed → consider fusidic acid 2% TDS 5–7 days.</li>
+            <li><b>Widespread or systemically unwell</b> → flucloxacillin 500 mg QDS 5–7 days (adults); penicillin allergy → clarithromycin 250 mg BD (500 mg if severe); pregnancy → erythromycin. Children per BNFC. Swab only if recurrent or not improving.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target <small>— right potency, right site</small></h2>
+        <div class="body">
+          <table>
+            <tr><td>Face, neck</td><td>Mild; moderate 3–5 days only in a severe flare</td></tr>
+            <tr><td>Axillae, groin</td><td>Moderate or potent, 7–14 days only</td></tr>
+            <tr><td>Children</td><td>Potent ≤14 days, specialist only under 12 months; very potent specialist only</td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— build the base, treat the flare, prevent the next</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Step 1 · everyone</span>Emollient several times a day, as soap substitute, even when clear. Children: <b>250–500 g a week</b>.</div>
+            <div class="step"><span class="sl">Step 2 · flare</span>Steroid <b>once or twice daily</b> to active areas (incl. last 48 hours) until settled, then stop.</div>
+            <div class="step"><span class="sl">Step 3 · 2–3 flares a month</span>Under 12: consider steroid on usual sites <b>2 consecutive days a week</b>; review at 3–6 months.</div>
+            <div class="step s4"><span class="sl">Step 4 · second line</span>Topical calcineurin inhibitor (TCI, TA82), age 2+: steroid not controlling <b>and</b> serious atrophy risk. Never first line.</div>
+          </div>
+          <ul>
+            <li><b>Antihistamines (under 12):</b> not routine. Severe eczema, itch or urticaria → 1-month non-sedating trial; flare with sleep loss, 6 months+ → 7–14-day sedating.</li>
+            <li><b>Bottle-fed under 6 months</b>, moderate–severe, uncontrolled → offer 6–8 weeks of extensively hydrolysed or amino acid formula. Doses per BNF/BNFC and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>Repeats:</b> emollient fits the area; steroid lowest potency, shortest time. Redness or burning worse than before after stopping → consider steroid withdrawal (MHRA).</li>
+            <li><b>Prolonged potent or occluded use, young child</b> → review growth. Wet wraps: trained professional only, not on infected skin.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— routine (urgent ones are in block 0)</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Under 12:</b> diagnosis uncertain; uncontrolled by family’s assessment; facial eczema not responding; contact allergy; major sleep or school impact; severe recurrent infections.</li>
+            <li><b>Adults:</b> severity, impact, diagnostic doubt, treatment failure, patch testing, need for systemic treatment; fixed atypical plaques that never clear.</li>
+            <li><b>Suspected food allergy</b>, young child, uncontrolled → allergy service, not home exclusion.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Wait for an HSV swab or PCR before starting aciclovir.</li>
+          <li>Potent steroid under 12 months or very potent in a child without a specialist.</li>
+          <li>Routine or repeated antibiotics (incl. fusidic acid) when not systemically unwell.</li>
+          <li>Bath additives for children; aqueous cream as a leave-on emollient.</li>
+          <li>Escalate steroid for tinea, or repeat creams on a one-sided nipple rash.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when wsd">Same day</span> <span class="say">“Sudden painful spreading sores or blisters, sores near the eye, fever, or very unwell with spreading redness — get seen today.”</span> &nbsp;
+        <b>Emollient fire risk:</b> <span class="say">“Cream dried on clothes or bedding burns easily — no smoking or naked flames; wash them often.”</span> &nbsp;
+        <b>Steroid:</b> <span class="say">“Once or twice a day on the flare and patches from the last 2 days, until settled, then stop — that is safe.”</span> &nbsp;
+        <b>TCI:</b> <span class="say">“Burning or stinging at first is common; protect from the sun.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 excluded: herpeticum, sepsis, erythroderma, nipple</span>
+        <span>Diagnosis confirmed; skin and impact graded</span>
+        <span>Sites mapped, quantities and infection checked</span>
+        <span>Written emollient and flare plan; review booked</span>
+        <span>Safety-net and fire risk given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../eczema.html">Reasoning GP atopic eczema protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: NICE CG57 (updated 2023), NG190 (2021), TA81, TA82, NG12 (updated April 2026); MHRA Drug Safety Updates; BAD. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF/BNFC and local formulary.</div>
+
+</main>
+</body>
+</html>

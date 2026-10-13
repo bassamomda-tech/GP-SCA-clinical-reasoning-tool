@@ -17,7 +17,7 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({
+MG.render({ snapshot:"summaries/parkinsons.html",
   icon:"🧠",
   title:"Parkinson's disease — the complete guide",
   eyebrow:"Protocol · NICE NG71 · shared care · on time, every time",
@@ -87,7 +87,7 @@ MG.render({
          ["<b>Drooling</b>","Do not rely solely on anticholinergic medicines, particularly in older patients or those with cognitive impairment. Consider speech and language therapy, glycopyrronium or another locally agreed treatment, or botulinum toxin through specialist services"],
          ["<b>REM-sleep behaviour disorder</b>","Assess injury risk to the patient and bed partner; review medication and other sleep disorders; specialist advice may be required for melatonin or clonazepam"],
          ["<b>Depression and cognition</b>","Screen and treat, but assess for delirium, medication adverse effects, dementia with Lewy bodies, hallucinations, capacity and driving risk, and drug interactions"],
-         ["<b>Daytime sleepiness and sudden sleep onset</b>","Ask at reviews, particularly with dopamine agonists. Advise the person not to drive or undertake hazardous work if affected and to inform DVLA where required. Seek specialist advice before changing the regimen"],
+         ["<b>Daytime sleepiness and sudden sleep onset</b>","Ask at reviews, particularly with dopamine agonists. Advise the person not to drive or undertake hazardous work if affected. Everyone with Parkinson's must tell the DVLA (car and lorry licences). Seek specialist advice before changing the regimen"],
          ["<b>Nausea — domperidone</b>","Only for nausea and vomiting; lowest effective dose (generally up to 10 mg three times daily in adults) for the shortest duration, usually no more than 1 week. Avoid in QT prolongation, significant cardiac disease, severe hepatic impairment, electrolyte disturbance, or with QT-prolonging medicines or potent CYP3A4 inhibitors; consider ECG assessment in higher-risk patients. Specific MHRA cardiac and ECG advice applies with apomorphine"],
          ["<b>Psychosis and hallucinations</b>","First assess for delirium, infection, dehydration, medication changes and metabolic disturbance. If symptoms are mild and tolerated, medication may not be required. Reduce or adjust Parkinson's medicines only with specialist advice. If treatment is needed, seek Parkinson's specialist advice: quetiapine may be considered; clozapine is specialist-led and requires blood-count monitoring. Avoid haloperidol, olanzapine, risperidone, most typical antipsychotics and other dopamine-blocking agents unless specifically approved by the specialist team"]
        ]},
@@ -102,7 +102,7 @@ MG.render({
          ["<b>Mood, cognition, psychosis</b>","<b>Each review</b>","<b>Treat depression; assess delirium and reversible causes; specialist advice for hallucinations</b>"],
          ["<b>Autonomic symptoms and constipation</b>","<b>Each review</b>","Manage postural blood pressure, bowels, bladder, swallow and aspiration risk"],
          ["<b>Impulse-control disorder</b>","<b>Each review, on any dopaminergic therapy (highest risk with agonists)</b>","<b>Ask privately — and, with consent, ask family or carers. Assess financial, safeguarding and relationship consequences; do not stop the agonist abruptly; liaise with the specialist (gradual reduction, watch for agonist withdrawal; specialist CBT if persistent)</b>"],
-         ["<b>Sleepiness and driving</b>","<b>Each review</b>","<b>Ask about daytime sleepiness and sudden sleep onset. Driving advice is required when there is sudden sleep onset, severe daytime sleepiness, disabling dyskinesia, disabling dizziness or syncope, cognitive impairment, hallucinations, impulse-control behaviours, sedating medicines or other symptoms likely to impair safe vehicle control — check current DVLA guidance and document the advice</b>"]
+         ["<b>Sleepiness and driving</b>","<b>Each review</b>","<b>Ask about daytime sleepiness and sudden sleep onset. Driving advice is required when there is sudden sleep onset, severe daytime sleepiness, disabling dyskinesia, disabling dizziness or syncope, cognitive impairment, hallucinations, impulse-control behaviours, sedating medicines or other symptoms likely to impair safe vehicle control. Everyone with Parkinson's must tell the DVLA — check current DVLA guidance and document the advice</b>"]
        ]},
        {b:"dl", rows:[
          ["<b>Regular shared-care reviews</b>","Holistic review: motor and non-motor symptoms, falls, mood, swallow, carer needs, medication timing"],
@@ -111,9 +111,9 @@ MG.render({
        ]},
        {b:"cards", items:[
          {tone:"red", h:"🔴 Can't take medication", html:"\"If you cannot swallow or keep down your Parkinson's tablets — because of illness or surgery — contact us or your Parkinson's team urgently the same day. Doses must not be missed.\""},
-         {tone:"red", h:"🔴 NMS-like state", html:"\"High fever, severe stiffness, confusion and sweating — especially if medication has been stopped — call 999.\""},
+         {tone:"red", h:"🔴 NMS-like state", html:"\"High fever, severe stiffness, suddenly being unable to move, confusion or heavy sweating — especially if medication has been stopped — call 999.\""},
          {tone:"amber", h:"🎲 Impulse control", html:"\"Some of these medicines can cause urges to gamble, spend, shop, eat or other compulsions — tell us, or ask your family to tell us, if you notice it. Do not stop your tablets suddenly.\""},
-{tone:"amber", h:"🚗 Sleepiness and driving", html:"\"If you feel very sleepy in the day or fall asleep suddenly, do not drive or do hazardous work, tell us, and check whether you need to inform the DVLA.\""},
+{tone:"amber", h:"🚗 Sleepiness and driving", html:"\"If you feel very sleepy in the day or fall asleep suddenly, do not drive or do hazardous work, and tell us. Everyone with Parkinson's must tell the DVLA.\""},
          {tone:"amber", h:"💊 Avoid certain drugs", html:"\"Some anti-sickness and sedative drugs make Parkinson's worse — always check with us before starting a new medicine.\""}
        ]}
      ]},
@@ -133,8 +133,8 @@ MG.render({
     {id:"refer", nav:"Refer", title:"When to refer or liaise",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Emergency — admission", html:"Acute severe rigidity or akinesia, hyperthermia, confusion, autonomic instability or markedly raised CK after missed Parkinson's medication is a medical emergency. Admit urgently, restore dopaminergic therapy under specialist/acute medical guidance and investigate for infection, dehydration, rhabdomyolysis and other triggers."},
-{tone:"red", h:"Urgent same-day — unable to take medication", html:"If a patient cannot swallow or absorb Parkinson's medication, contact the Parkinson's team or acute medical service urgently the same day; arrange emergency admission if there is acute akinesia, fever, severe rigidity, confusion, autonomic instability or suspected neuroleptic-malignant-like syndrome."},
+         {tone:"red", h:"Emergency — admission", html:"Acute severe rigidity or akinesia, hyperthermia, confusion, autonomic instability or markedly raised CK after missed Parkinson's medication is a medical emergency. Call 999 for emergency admission, restore dopaminergic therapy under specialist/acute medical guidance and investigate for infection, dehydration, rhabdomyolysis and other triggers."},
+{tone:"red", h:"Urgent same-day — unable to take medication", html:"If a patient cannot swallow or absorb Parkinson's medication, contact the Parkinson's team or acute medical service urgently the same day; call 999 for emergency admission if there is acute akinesia, fever, severe rigidity, confusion, autonomic instability or suspected neuroleptic-malignant-like syndrome."},
          {tone:"amber", h:"Motor fluctuations", html:"Wearing-off, dyskinesia or freezing → neurology or the PD service for a regimen change."},
          {tone:"amber", h:"Psychosis or dementia", html:"Hallucinations or cognitive decline → assess for delirium and reversible causes first, then specialist advice before reducing Parkinson's medicines or choosing an antipsychotic. See <a href='dementia.html'>dementia</a>."},
          {tone:"blue", h:"Advanced therapies", html:"<b>For apomorphine, intestinal gel, or deep brain stimulation assessment.</b>"},
@@ -160,7 +160,7 @@ MG.render({
          '<li><b>MHRA Drug Safety Update — Domperidone: risks of cardiac side effects (May 2014)</b><br><a href="https://www.gov.uk/drug-safety-update/domperidone-risks-of-cardiac-side-effects" rel="noopener">gov.uk — Drug Safety Update</a><span class="rd"> — nausea and vomiting only; usually up to 10 mg three times daily; usually no more than 1 week; contraindications in cardiac and severe hepatic disease and with QT-prolonging medicines or potent CYP3A4 inhibitors</span></li>'+
          '<li><b>MHRA Drug Safety Update — Apomorphine with domperidone: minimising risk of cardiac side effects</b><br><a href="https://www.gov.uk/drug-safety-update/apomorphine-with-domperidone-minimising-risk-of-cardiac-side-effects" rel="noopener">gov.uk — Drug Safety Update</a><span class="rd"> — cardiac risk assessment and ECG monitoring when domperidone is used with apomorphine</span></li>'+
          '<li><b>SPS — Parkinson disease medicines in swallowing difficulties</b><br><a href="https://www.sps.nhs.uk/" rel="noopener">sps.nhs.uk</a><span class="rd"> — urgent medication review when swallow changes; modified-release tablets not to be crushed unless the product information permits</span></li>'+
-         '<li><b>DVLA — Assessing fitness to drive: a guide for medical professionals</b><br><a href="https://www.gov.uk/government/publications/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — driving advice for sudden sleep onset, cognitive impairment and other symptoms that impair safe vehicle control</span></li>'+
+         '<li><b>DVLA — Assessing fitness to drive: a guide for medical professionals</b><br><a href="https://www.gov.uk/government/publications/assessing-fitness-to-drive-a-guide-for-medical-professionals" rel="noopener">gov.uk — assessing fitness to drive</a><span class="rd"> — everyone with Parkinson’s must tell the DVLA; driving advice for sudden sleep onset, cognitive impairment and other symptoms that impair safe vehicle control</span></li>'+
          '<li><b>Summaries of Product Characteristics for dopamine agonists (emc)</b><span class="rd"> — impulse-control disorders as a listed warning</span></li>'+
          '</ul></div>'}
      ]}

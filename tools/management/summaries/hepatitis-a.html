@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hepatitis A — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/hepatitis-a.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hepatitis-a.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../hepatitis-a.html">← Full hepatitis A protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Hepatitis A</h1>
+      <div class="scope"><b>For:</b> adults and children with suspected or confirmed acute hepatitis A in primary care. <b>Not for:</b> possible acute liver failure (block 0, same-day hospital); jaundice or abnormal LFTs from another cause (use the jaundice and abnormal LFTs algorithms); contact prophylaxis, which the health protection team decides.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>UKHSA hepatitis A (2024)</span><span>Green Book ch.17</span><span>Notification Regs 2010</span><span>BSG 2018</span><span>NICE NG12 (Apr 2026)</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> check the <b>INR and conscious level</b>, <b>notify on suspicion</b> without waiting for the result, let the health protection team protect contacts <b>within 14 days</b>, and never let HAV IgM explain away jaundice aged 40+ that looks obstructive.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>New confusion, drowsiness, altered behaviour, day-night reversal or asterixis</b> in a jaundiced patient → <span class="when wsd">Same-day hospital</span>; with coagulopathy = possible acute liver failure. Avoid sedatives.</li>
+          <li><b>Raised or rising INR</b> → <span class="when wsd">Same-day discussion</span> with acute medicine or hepatology.</li>
+          <li><b>Bleeding or spontaneous bruising, persistent vomiting or dehydration, oliguria or AKI, hypoglycaemia, rapidly rising bilirubin, severe abdominal pain or systemic deterioration</b>, or severe illness in an older adult or chronic liver disease → <span class="when wsd">Same-day admission or discussion</span></li>
+          <li><b>Jaundice aged 40 and over</b> → assess urgently for pancreatic and biliary disease (NG12). Persistent, painless, obstructive or cholestatic jaundice, a mass, negative serology, no improvement or uncertainty → <span class="when wurg">Urgent imaging and/or suspected cancer pathway</span></li>
+          <li><b>Suspected hepatitis A</b> → notify the proper officer on clinical suspicion; <span class="when wurg">Phone the health protection team ≤24 h</span>, written notification ≤3 days. Do not wait for the result.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— HAV IgM, read in context</small></h2>
+        <div class="body">
+          <p><b>Suspect:</b> prodrome, then dark urine, pale stools, jaundice; travel, contact, MSM, injecting, food. Incubation 15–50 days.</p>
+          <table>
+            <tr><th>Test</th><th>Means</th></tr>
+            <tr><td>HAV IgM +</td><td>Recent infection if it fits; odd or cholestatic → ask the lab</td></tr>
+            <tr><td>HAV IgG only</td><td>Past infection or vaccine — find another cause</td></tr>
+            <tr><td>Dominant ALP</td><td>Cholestasis or obstruction → imaging; think NG12</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— one set of bloods on the day</small></h2>
+        <div class="body">
+          <p>☐ HAV IgM, LFTs, <b>INR</b> &nbsp;☐ FBC, U&amp;E, glucose &nbsp;☐ Occupation, setting, contacts &nbsp;☐ Pregnancy test if relevant</p>
+          <p><b>Uncertain, severe, immunocompromised, atypical exposure</b> → hepatitis B, C, E and medicines/alcohol/supplement review now (else if IgM negative). Cholestasis → consider ultrasound.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— where, and what to tell the team</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Well, drinking, alert, INR normal</b> → primary care. <b>Notify with</b> onset dates, job, setting, travel, foods; flag contacts pregnant, over 60, immunosuppressed or with liver disease.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target <small>— infectivity, exclusion, contacts</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Who</th><th>Usual rule — team decides</th></tr>
+            <tr><td>Infectious</td><td>2 weeks before symptoms → 1 week after jaundice</td></tr>
+            <tr><td>Case</td><td>Off to <b>7 days after jaundice</b> (no jaundice: symptom onset)</td></tr>
+            <tr><td>Food, childcare</td><td>Team and occupational health agree return</td></tr>
+            <tr><td>Contact 1+</td><td>Vaccine <b>≤14 days</b>; ± HNIG if over 60, immunosuppressed, liver disease</td></tr>
+            <tr><td>Other</td><td>Infant &lt;1: team advice. Symptomatic → assess, test</td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— supportive; no antiviral</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Comfort</span>Rest, small frequent meals, oral fluids; antiemetic if vomiting (mind QT, sedation, encephalopathy)</div>
+            <div class="step"><span class="sl">Pain or fever</span><b>Paracetamol cautiously</b>: weight, nutrition, alcohol, liver disease, total exposure, combination products</div>
+            <div class="step"><span class="sl">Protect the liver</span><b>No alcohol</b> until LFTs normal; review all medicines incl. OTC and herbal; stop non-essential hepatotoxic drugs</div>
+            <div class="step s4"><span class="sl">Hygiene</span><b>Soap and water</b>, not gel; no cooking for others; no shared towels; no sex incl. oral-anal while infectious</div>
+          </div>
+          <ul>
+            <li><b>Avoid</b> sedatives, opioids; NSAIDs if dehydrated, AKI, bleeding risk, significant liver or renal illness. Oestrogen contraception → check UKMEC. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor <small>— by severity and trajectory</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Early review:</b> hydration, conscious level, INR. Older, unwell, jaundiced or liver disease → repeat within a few days.</li>
+            <li><b>LFTs and INR</b> until well, INR stable or normal, trend clearly improving. Rising INR, worse jaundice or no improvement → seek advice.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— hepatology soon, and prevention</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Hepatology:</b> chronic liver disease; prolonged cholestasis or relapse; persistent or worsening results; negative screen with uncertainty.</li>
+            <li><b>Prevent:</b> offer vaccine to at-risk patients the team has not covered (travellers, liver disease, MSM, people who inject drugs).</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Wait for laboratory confirmation before notifying.</li>
+          <li>Decide the contacts' prophylaxis regimen without the health protection team.</li>
+          <li>Let a positive HAV IgM explain jaundice aged 40+ that is painless, persistent, obstructive or cholestatic.</li>
+          <li>Judge severity by the ALT (it does not predict outcome) — use the INR and conscious level.</li>
+          <li>Let a food handler return on a generic 7-day rule alone.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“If you are very hard to wake, call 999.”</span> &nbsp;
+        <span class="when wsd">Same-day</span> <span class="say">“If you become confused or very drowsy, start bruising or bleeding, or can't keep fluids down, contact us or NHS 111 straight away — you need to be seen that day.”</span> &nbsp;
+        <b>Spread:</b> <span class="say">“Stay off work or school until the public health team says it's safe, usually a week after the yellowness started; wash hands with soap and water, and don't cook for anyone else until then.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 excluded: conscious level, INR, fluids, bleeding; NG12 if 40+</span>
+        <span>HAV IgM read in context; wider screen if atypical</span>
+        <span>LFTs, INR, FBC, U&amp;E, glucose; medicines reviewed; pregnancy checked</span>
+        <span>Notified on suspicion; exclusion and contacts with the team; repeat bloods booked</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../hepatitis-a.html">Reasoning GP hepatitis A protocol</a>, which holds the detail, evidence and differentials. Sources: UKHSA Public health control and management of hepatitis A (2024); UKHSA hepatitis A immunoglobulin (2024); Green Book chapter 17 (2024); Health Protection (Notification) Regulations 2010; UKHSA exclusion table; BSG abnormal liver blood tests (2018); NICE NG12 (updated April 2026); BNF. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

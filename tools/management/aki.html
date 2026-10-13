@@ -17,7 +17,7 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({
+MG.render({ snapshot:"summaries/aki.html",
   icon:"\u{1FAD8}",
   title:"Acute kidney injury (AKI)",
   eyebrow:"Protocol \u00b7 detect &amp; manage in one place",
@@ -85,7 +85,7 @@ MG.render({
          {tone:"red", h:"Rapidly rising creatinine", html:"Creatinine <b>doubled within 24\u201348 hours</b>, or <b>\u2265354 \u00b5mol/L with an acute rise</b> \u2192 <b>same-day medical</b>."},
          {tone:"amber", h:"Obstructive uropathy", html:"Bilateral flank pain, bladder distension, unable to pass urine despite the urge \u2192 <b>same-day urology</b>."},
          {tone:"amber", h:"Nephrotoxin exposure with AKI", html:"Recent high-dose NSAID, contrast or aminoglycoside with a rising creatinine in an unwell patient \u2192 <b>same-day</b>."},
-         {tone:"purple", h:"Very urgent tests \u00b7 NICE NG12 \u2014 myeloma", html:"AKI with a raised calcium and anaemia or bone pain, aged 60 and over \u2192 FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains together (urine Bence Jones if free light chain testing is not available), and refer on a suspected cancer pathway if the results suggest myeloma. Myeloma is an intrinsic-renal cause that is repeatedly missed because each abnormality looks explicable on its own."}
+         {tone:"purple", h:"Very urgent tests \u00b7 NICE NG12 \u2014 myeloma", html:"Aged 60 and over with AKI and a raised calcium or leukopenia, or with persistent bone pain (particularly back pain) or an unexplained fracture \u2192 FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains together (urine Bence Jones if free light chain testing is not available), and refer on a suspected cancer pathway if the results suggest myeloma. Myeloma is an intrinsic-renal cause that is repeatedly missed because each abnormality looks explicable on its own."}
        ]},
        {b:"why", html:"AKI kills by three mechanisms. <b>(1) Hyperkalaemia</b> causes fatal arrhythmias \u2014 K\u207a \u22656.5 warrants emergency hospital treatment per the local/UKKA protocol. <b>(2) Fluid overload</b> causes pulmonary oedema. <b>(3) Uraemia</b> accumulates toxins causing pericarditis, encephalopathy and coagulopathy. NG148 asks for discussion with a nephrologist as soon as possible and within 24 hours for stage 3 AKI, and stage 2 usually needs same-day hospital assessment. Transport route depends on physiology and the local pathway, not creatinine stage alone."}
      ]},
@@ -184,7 +184,7 @@ MG.render({
          ["<b>By severity \u2014 often 24\u201348 hours</b>","<b>U&amp;E</b> for any community-managed AKI","Confirm creatinine is trending down. Stable or improving \u2192 continue monitoring. Rising creatinine or K\u207a, falling urine output or worsening symptoms \u2192 same-day hospital"],
          ["<b>1 week</b>","U&amp;E","Confirm recovery; restart held medicines by the clinical restart criteria, then recheck creatinine and K⁺ within 1–2 weeks"],
          ["<b>3 months</b>","Full AKI review \u2014 U&amp;E, eGFR, ACR, BP, medicines reconciliation","Compare with pre-AKI function. Diagnose CKD only if chronic (&gt;3 months): eGFR &lt;60 on two occasions ≥90 days apart, or persistent damage markers (confirmed ACR ≥3 mg/mmol — confirm 3–70 on an early-morning sample). Code the AKI even if recovered; monitor for at least 3 years, especially after stage 3 (NG203). Required by <b>NICE QS76</b>"],
-         ["Annual","If CKD confirmed: monitor per the <a href='ckd.html'>CKD protocol</a>","<b>Discuss with nephrology</b>: eGFR ≤30 after recovery, significant albuminuria, haematuria with proteinuria, recurrent or unexplained AKI, progressive decline, residual CKD stage 4\u20135, ongoing dialysis requirement"],
+         ["Annual","If CKD confirmed: monitor per the <a href='ckd.html'>CKD protocol</a>","<b>Discuss with nephrology</b>: eGFR &lt;30 after recovery, significant albuminuria, haematuria with proteinuria, recurrent or unexplained AKI, progressive decline, residual CKD stage 4\u20135, ongoing dialysis requirement"],
          ["Fluid balance and weight","Daily while managing at home","Overload or worsening oliguria \u2192 admit"],
          ["<b>After a hospital AKI</b>","Check the discharge summary for <b>AKI stage, cause, nephrotoxin changes and follow-up instructions</b>","Review maximum stage, cause, recovery, medication changes and plan; earlier review for poor recovery, HF, CKD, frailty, recurrent or stage 3 AKI"]
        ]},
@@ -196,13 +196,13 @@ MG.render({
          
        ]},
        {b:"cards", items:[
-         {tone:"red", h:"\ud83d\udea8 999 \u2014 passing no urine", html:"\u201cIf you pass no urine at all for 6 hours or more and feel unwell \u2014 call 999.\u201d"},
+         {tone:"red", h:"\ud83d\udea8 999 \u2014 passing no urine", html:"\u201cIf you pass no urine at all and feel unwell \u2014 call 999.\u201d"},
          {tone:"red", h:"\ud83d\udea8 999 \u2014 breathless at rest", html:"\u201cNew or worsening breathlessness, especially at night \u2014 call 999.\u201d"},
          {tone:"red", h:"\ud83d\udea8 999 \u2014 confusion or drowsiness", html:"\u201cAny new confusion, or not acting like yourself \u2014 call 999.\u201d Also severe weakness or inability to stand, and <b>palpitations or chest pain, which can mean a potassium arrhythmia</b>."},
          {tone:"amber", h:"\ud83d\udd34 Same-day", html:"\u201cIf you are not improving despite pausing the agreed tablets, you are passing much less urine, or you keep vomiting \u2014 contact us the same day.\u201d"},
          {tone:"green", h:"\ud83d\udca7 While you are unwell", html:"\u201cDrink to thirst unless you have a fluid limit, pause only the tablets we agreed, and restart them once you are eating and drinking normally \u2014 contact us if unsure.\u201d"}
        ]},
-       {b:"say", html:"Your kidney blood test has gone off \u2014 usually from dehydration, an infection or a medication. We'll pause some tablets while you're unwell, make sure you're drinking enough (unless you have a fluid limit), and recheck the blood in a couple of days. If you're passing very little urine, getting breathless or feel very unwell, we need to send you in the same day."},
+       {b:"say", html:"Your kidney blood test has gone off \u2014 usually from dehydration, an infection or a medication. We'll pause some tablets while you're unwell, make sure you're drinking enough (unless you have a fluid limit), and recheck the blood in a couple of days. If you're passing much less urine, keep vomiting or feel very unwell, contact us the same day. If you pass no urine at all and feel unwell, get breathless at rest, or become confused or drowsy, call 999."},
        {b:"why", html:"Post-AKI care is chronically under-resourced. Many AKI survivors have no formal review, missing the chance to diagnose CKD, optimise BP and prevent recurrence. The 3-month review detects persistent impairment, allows safe medication restart, and reduces the risk of a second AKI \u2014 and failing to review post-AKI and missing progression to CKD 3\u20134 is a known complaint trigger. The early recheck is the safety net that prevents missed deterioration."}
      ]},
 

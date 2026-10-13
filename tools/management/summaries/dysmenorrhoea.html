@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dysmenorrhoea — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/dysmenorrhoea.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/dysmenorrhoea.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../dysmenorrhoea.html">← Full dysmenorrhoea protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Dysmenorrhoea</h1>
+      <div class="scope"><b>For:</b> period pain in women and young people in primary care, including suspected endometriosis or adenomyosis. <b>Not for:</b> acute pelvic pain with possible pregnancy (pregnancy test first, block 0). Bleeding-led → <a href="../menorrhagia.html">heavy menstrual bleeding</a>; PID → <a href="../pelvic-inflammatory-disease.html">PID</a>; established chronic pain → <a href="../chronic-pain.html">chronic pain</a>.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG73 (updated 2024)</span><span>NICE NG88</span><span>NG12 (updated April 2026)</span><span>FSRH CHC · UKMEC</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> a normal examination, ultrasound or MRI does not exclude endometriosis — treat on symptoms while investigating, and refer on the NG73 clinical thresholds, not on the scan.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— the acute causes and the cancer routes</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Sudden severe unilateral pelvic pain with nausea and vomiting</b> (torsion) → <span class="when wsd">Same-day emergency gynaecology</span> — no outpatient scan first.</li>
+          <li><b>Pelvic pain, pregnancy possible</b> → test, whatever the contraception. Positive + pain or bleeding → <span class="when wsd">Immediate early pregnancy assessment</span> Syncope, instability, severe pain → <span class="when w999">999 / A&amp;E</span></li>
+          <li><b>Fever, offensive discharge, cervical excitation</b> (PID) → antibiotics per local pathway + STI screen now; severe, abscess or pregnant → <span class="when wsd">Same-day hospital</span></li>
+          <li><b>Ovarian symptoms 40+</b>, persistent or frequent → CA-125 (NG12 age thresholds) → <span class="when wurg">Urgent direct-access ultrasound</span> if at or above; 39 or under → consider it. <b>Ascites or a mass not obviously fibroids</b> → <span class="when wurg">Suspected cancer pathway</span></li>
+          <li><b>Cervix consistent with cancer</b> → consider <span class="when wurg">Suspected cancer pathway</span>, despite a normal smear. <b>Unexplained post-menopausal bleeding 55+</b>, not HRT → suspected cancer pathway; under 55 → consider.</li>
+          <li><b>Severe pain from the first period with obstructed flow, a mass or primary amenorrhoea</b> → <span class="when wurg">Urgent adolescent gynaecology</span> (acute retention of flow → <span class="when wsd">Same day</span>)</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— primary or secondary is the whole question</small></h2>
+        <div class="body">
+          <table>
+            <tr><th></th><th>Primary</th><th>Secondary</th></tr>
+            <tr><td>Onset</td><td>Within a few years of menarche</td><td>Years later, often 20s–40s</td></tr>
+            <tr><td>Timing</td><td>With or just before the bleed; 8–72 hours</td><td>Days before, after, or acyclical</td></tr>
+            <tr><td>Course</td><td>Stable or improving</td><td>Progressive; “treatment stopped working”</td></tr>
+            <tr><td>Clues</td><td>Nausea, backache; normal exam</td><td>Deep dyspareunia, cyclical bowel or urinary symptoms, heavy bleeding, subfertility</td></tr>
+          </table>
+          <p><b>NG73: suspect endometriosis on symptoms alone</b> — imaging is for planning, not permission.</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— targeted, not routine</small></h2>
+        <div class="body">
+          <p>☐ <b>Impact:</b> days of school or work lost &nbsp;☐ Pregnancy test if possible &nbsp;☐ STI NAAT if PID possible &nbsp;☐ FBC + ferritin if heavy &nbsp;☐ Urinalysis if urinary symptoms</p>
+          <p><b>Examine:</b> offer abdominal ± pelvic, with consent and a chaperone; declined → abdominal only, don't delay treatment. <b>Transvaginal ultrasound:</b> offer to all with suspected endometriosis, even if examination is normal. <b>New pain with an IUD</b> → threads, ultrasound, infection screen.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide</h2>
+        <div class="body">
+          <ul>
+            <li><b>Treat empirically now</b>, in parallel with imaging and referral.</li>
+            <li><b>Fertility plans first:</b> trying to conceive → hormones don't improve spontaneous pregnancy; early gynaecology/fertility referral.</li>
+            <li><b>Adolescents:</b> CHC for pain regardless of sexual activity.</li>
+            <li><b>Adjuncts:</b> heat, TENS, exercise, sleep, stop smoking.</li>
+          </ul>
+        </div>
+      </section>
+
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— the ladder</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Step 1 · analgesia</span>Paracetamol or <b>NSAID</b>: mefenamic acid 500 mg TDS · naproxen 500 mg, then 250 mg 6–8-hourly · ibuprofen 400 mg TDS. <b>Early, regular, 2–3 days.</b></div>
+            <div class="step"><span class="sl">Step 2 · CHC</span>After UKMEC review; <b>continuous or extended</b> regimens are options.</div>
+            <div class="step"><span class="sl">Step 3 · progestogen</span><b>LNG-IUS 52 mg</b> (consider if heavy bleeding, adenomyosis) · desogestrel 75 µg · depot 150 mg IM 13-weekly (bone, fertility delay) · implant.</div>
+            <div class="step s4"><span class="sl">No contraception wanted</span>Norethisterone 5 mg TDS day 5–24, 3–4 cycles — <b>not contraceptive</b>; not first line.</div>
+          </div>
+          <ul>
+            <li><b>NSAID:</b> renal, GI bleed, anticoagulant, NSAID asthma, pregnancy; PPI if GI risk. <b>CHC:</b> aura = UKMEC 4. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>Analgesia ~3 months (NG73)</b>; hormones earlier if side effects or failure. Pain days, days lost, NSAID timing.</li>
+            <li><b>LNG-IUS ≥6 cycles:</b> irregular bleeding may last 3–6 months or more; keep if pain improves.</li>
+            <li><b>Annually:</b> UKMEC, BP, BMI · bone on depot · fertility plans.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— on the clinical picture, regardless of imaging</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Gynaecology (NG73):</b> affects daily life · persistent/recurrent · treatment failed, not tolerated or contraindicated · pelvic signs · fertility priority · normal scan, suspicion remains.</li>
+            <li><b>Endometriosis centre:</b> endometrioma · deep (bowel, bladder, ureter) · extra-pelvic.</li>
+            <li><b>Suspected endometriosis, 17 or under</b> → adolescent gynaecology or endometriosis service. <b>Subfertility</b> → fertility referral in parallel.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Stop treatment or referral because the scan or examination is normal.</li>
+          <li>Dismiss a new or escalating pattern as “just periods”, or cyclical dyschezia as IBS.</li>
+          <li>Routine opioids, or GnRH analogues in primary care.</li>
+          <li>CA-125 or primary-care MRI to diagnose endometriosis.</li>
+          <li>Make pelvic examination a condition of treatment.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">A&amp;E now · 999</span> <span class="say">“Sudden severe one-sided pain with vomiting, or pain with a positive pregnancy test that is severe or comes with dizziness, fainting or shoulder-tip pain — go to A&amp;E straight away, or call 999 if you collapse.”</span> &nbsp;
+        <span class="when wsd">Same day</span> <span class="say">“Any other pain with a positive pregnancy test, or pain with a fever and offensive discharge — contact us the same day.”</span> &nbsp;
+        <span class="when w7">Within a week</span> <span class="say">“Pain that changes, becomes constant or stops responding, bleeding between periods or after sex, or new bowel or bladder symptoms — book to be seen within a week.”</span> </p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 excluded; pregnancy test if possible</span>
+        <span>Primary vs secondary decided; endometriosis symptoms asked</span>
+        <span>Impact recorded; examination offered; scan if endometriosis suspected</span>
+        <span>Treatment started with fertility plans and UKMEC; review booked</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../dysmenorrhoea.html">Reasoning GP dysmenorrhoea protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: NICE NG73 (2017, updated 2024), NICE NG88, NICE NG12 (updated April 2026), FSRH CHC guideline and UKMEC, BNF and product information. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

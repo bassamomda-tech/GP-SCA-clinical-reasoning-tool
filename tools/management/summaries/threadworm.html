@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Threadworm — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/threadworm.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/threadworm.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../threadworm.html">← Full threadworm protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Threadworm</h1>
+      <div class="scope"><b>For:</b> children and adults with suspected threadworm, and the household members who share their living or sleeping accommodation. <b>Not for:</b> perianal itch that is persistent, atypical or never improved (use the <a href="../../algorithms/anal-itchiness.html">anal itch pathway</a>) or suspected <a href="../scabies.html">scabies</a>.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>GM antimicrobial guidelines v16 (2024)</span><span>GMMMG formulary</span><span>NHS mebendazole advice</span><span>BNF/BNFC + SmPC</span><span>BIA eosinophilia 2024</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> threadworm is a clinical diagnosis — treat the affected person and every eligible household member on the same day, repeat once at 2 weeks, pair every dose with hygiene, and re-examine rather than re-supply when symptoms never improve.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— rare, but check every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Secondary infection</b>: spreading erythema, increasing pain, pus or crusting, fever, significant skin breakdown, urinary symptoms or marked vulval inflammation → <span class="when wsd">Same-day review</span> No empirical antibiotics without clinical evidence of bacterial infection.</li>
+          <li><b>Persistent, atypical, painful or vulval symptoms, or never improved</b> → examine and reconsider the diagnosis (block 2) rather than supplying more mebendazole.</li>
+          <li><b>Safeguarding</b>: threadworm does not indicate neglect → follow local safeguarding procedures only when other history or examination findings raise a specific concern.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— a clinical diagnosis</small></h2>
+        <div class="body">
+          <table>
+            <tr><td><b>Typical</b></td><td>Perianal itch worse at night (vulval itch in girls) ± small, white, thread-like worms around the anus, perineum or in stool</td></tr>
+            <tr><td><b>Only if uncertain</b></td><td>Early-morning adhesive-tape test before washing or opening the bowels; several mornings if negative and suspicion stays high</td></tr>
+            <tr><td><b>Not useful</b></td><td>Stool microscopy for uncomplicated threadworm</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— for each person you treat</small></h2>
+        <div class="body">
+          <p>☐ Age (&lt;6 months, 6 months–2 years) &nbsp;☐ Pregnancy, breastfeeding &nbsp;☐ Comorbidity, contraindications &nbsp;☐ Excoriation, dermatitis, secondary infection</p>
+          <p><b>Don’t miss</b> (persistent symptoms): perianal streptococcal dermatitis in children (marked erythema, pain, fissuring, blood-streaked stool); in girls irritant dermatitis, eczema, candidiasis, lichen sclerosus, foreign body, UTI; IBD; scabies.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— who to treat</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Affected person + eligible household members</b> (sharing living or sleeping accommodation), <b>with or without symptoms</b> → treat at the same time.</li>
+            <li><b>Not</b> school, nursery or workplace contacts, or visitors. Contacts unsuitable for treatment → hygiene.</li>
+            <li><b>Usually self-care / over the counter.</b> In GM, NHS prescribing is generally not supported for uncomplicated threadworm — follow local policy, document any exception.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 HYGIENE -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Hygiene <small>— the tablet does not reliably kill eggs</small></h2>
+        <div class="body">
+          <p><b>At least 2 weeks</b> alongside mebendazole; <b>6 weeks</b> where medication is not used. Hands and nails scrubbed after the toilet or nappies and before eating; nails short; wash around the anus each morning; no nail-biting or scratching. Wash nightwear, underwear, towels and bedding on day 1 and regularly — <b>no need to hot-wash everything daily</b>.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— mebendazole 100 mg, repeat once at 2 weeks</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Aged 2 years +</span><b>Mebendazole 100 mg</b> single dose (chewable tablet or 5 mL suspension); repeat once after 2 weeks if still eligible.</div>
+            <div class="step"><span class="sl">6 months – 2 years</span>Same dose, <b>off-label</b>: individual risk–benefit decision, not automatic; hygiene and treating contacts may suffice if mild.</div>
+            <div class="step s4"><span class="sl">Under 6 months</span><b>Avoid mebendazole.</b> Hygiene alone for 6 weeks, with frequent perianal washing or wet wiping by day. Significant, persistent or atypical → paediatric or medicines advice.</div>
+            <div class="step s4"><span class="sl">Pregnancy</span>Hygiene first for 6 weeks (especially first 12 weeks). Severe, persistent or sleep-disturbing → individual advice (GP, pharmacist, midwife, medicines-in-pregnancy service).</div>
+          </div>
+          <p><b>Breastfeeding:</b> mebendazole can generally be used when clinically appropriate; no need to interrupt breastfeeding. Doses per BNF/BNFC and local formulary.</p>
+        </div>
+      </section>
+
+      <!-- 6 RECURRING -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Recurring or not settling <small>— re-check before re-treating</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Check:</b> taken correctly, second dose at 2 weeks? Whole eligible household treated together? Hygiene practical and followed?</li>
+            <li><b>Never improved</b> → examine, reconsider the diagnosis. <b>Reinfection likely, diagnosis secure</b> → a further simultaneous household course may be considered per local advice, with reinforced hygiene.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Seek advice or refer <small>— rarely needed</small></h2>
+        <div class="body">
+          <ul>
+            <li>Persistent despite correct household treatment and hygiene; uncertain diagnosis; recurrent significant vulvovaginitis; very young infant; pregnancy with severe symptoms.</li>
+            <li><b>Significant or persistent eosinophilia</b>, abdominal symptoms, weight loss, pulmonary symptoms or relevant travel/migration → broader assessment, often infectious-disease or tropical-medicine advice.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Treat one person alone — treat eligible household members on the same day.</li>
+          <li>Give mebendazole under 6 months.</li>
+          <li>Keep re-supplying mebendazole when symptoms never improved or the diagnosis is uncertain.</li>
+          <li>Routinely exclude from school or nursery, or treat school or nursery contacts.</li>
+          <li>Suggest threadworm means neglect or poor hygiene.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when wsd">Same day</span> <span class="say">“If the skin becomes red and spreading, very sore, weepy or crusted, or there's a fever, contact us the same day.”</span> &nbsp;
+        <b>Everyone:</b> <span class="say">“Everyone in the house who can take the tablet takes it on the same day, with a second dose two weeks later.”</span> &nbsp;
+        <b>Hygiene:</b> <span class="say">“Wash hands, scrub under short nails, wash around the bottom each morning; wash underwear and bedding on day one.”</span> &nbsp;
+        <b>School:</b> <span class="say">“Your child can keep going to school. If the itching hasn't settled after the second dose, come back to see us.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 excluded: infection, atypical features</span>
+        <span>Clinical diagnosis; tape test only if uncertain</span>
+        <span>Age, pregnancy, breastfeeding checked per person</span>
+        <span>Household dose same day, repeat at 2 weeks, hygiene plan</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../threadworm.html">Reasoning GP threadworm protocol</a>, which holds the detail, evidence and differential diagnosis. Sources: Greater Manchester antimicrobial guidelines (v16, 2024); GMMMG formulary; NHS mebendazole medicines advice; BNF/BNFC and mebendazole product information; UK eosinophilia guideline (BIA, 2024). Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF/BNFC and local formulary.</div>
+
+</main>
+</body>
+</html>

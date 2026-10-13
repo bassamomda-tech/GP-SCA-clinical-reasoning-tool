@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uveitis — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/uveitis.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/uveitis.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../uveitis.html">← Full uveitis protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Uveitis — recognise and refer</h1>
+      <div class="scope"><b>For:</b> adults and children with a painful, photophobic red eye or new posterior eye symptoms, and people with recurrent uveitis or JIA. <b>Not for:</b> diagnosis or treatment — slit lamp and treatment are ophthalmology-led. NICE NG65 covers over 16s; children follow the local paediatric ophthalmology pathway. Back pain → <a href="../ankylosing-spondylitis.html">axial spondyloarthritis</a>.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG65 (over 16s)</span><span>College of Optometrists CMGs</span><span>RCOphth JIA uveitis screening (2006)</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> a painful, photophobic red eye is suspected acute anterior uveitis until a slit lamp says otherwise — <b>same-day ophthalmology</b>, with no steroid drops and no blood tests first.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Suspected acute anterior uveitis:</b> eye pain, red eye (ciliary flush), photophobia, blurred vision, watering, small or irregular pupil → <span class="when wsd">Same-day ophthalmology</span> — eye casualty, ED or urgent eye service; no bloods or routine optometry first.</li>
+          <li><b>Acute angle closure:</b> severe pain, vomiting, haloes, marked visual loss, cloudy cornea, fixed mid-dilated pupil → <span class="when wsd">Immediate, same day</span> emergency eye assessment (eye casualty or ED).</li>
+          <li><b>Curtain or shadow, sudden or new field loss, marked visual reduction</b> (retinal tear or detachment) → <span class="when wsd">Immediate, same day</span> eye casualty or ED.</li>
+          <li><b>New floaters, flashes, distortion or reduced vision</b> → <span class="when wurg">Urgent ≤24 h</span> ophthalmic assessment — consider retinal tear as well as posterior uveitis.</li>
+          <li><b>Contact-lens painful red eye, corneal opacity, herpetic keratitis, scleritis</b> (boring pain, tender globe) → <span class="when wsd">Same-day ophthalmology</span>.</li>
+          <li><b>Any child</b> (with or without JIA) with red eye, photophobia, visual change or abnormal pupil → <span class="when wsd">Same-day</span> via the local paediatric ophthalmology pathway.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— by the eye team, never in primary care</small></h2>
+        <div class="body">
+          <p>Slit lamp, IOP and dilated fundus are <b>specialist only</b>: uveitis cannot be excluded in primary care, and the pupil alone cannot separate it from angle closure.</p>
+          <table>
+            <tr><th>Type</th><th>Clues</th><th>Route</th></tr>
+            <tr><td>Acute anterior</td><td>Pain, photophobia, ciliary flush, irregular pupil</td><td>Same day</td></tr>
+            <tr><td>Chronic anterior</td><td>Mild redness or blurring; may be painless</td><td>Prompt ophthalmology</td></tr>
+            <tr><td>Intermediate, posterior, pan</td><td>Floaters, reduced vision, distortion; pain variable</td><td>Urgent ≤24 h</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— before referral, without delaying it</small></h2>
+        <div class="body">
+          <p>☐ Visual acuity each eye &nbsp;☐ Pupils &nbsp;☐ Pattern of redness, cornea &nbsp;☐ Contact lenses, trauma, eye surgery &nbsp;☐ Floaters, flashes, field loss &nbsp;☐ Fluorescein optional; negative does not exclude</p>
+          <p><b>Don't miss:</b> posterior, chronic and JIA uveitis may be painless.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— a bounded GP role</small></h2>
+        <div class="body">
+          <ul>
+                        <li><b>Recurrent flares:</b> written ophthalmology flare plan → follow it, confirm eye follow-up. No plan → <span class="when wsd">Same-day</span> ophthalmic advice or assessment, no steroid drops.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 SYSTEMIC -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Systemic questions <small>— guided, not a panel</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Ask:</b> inflammatory back pain, arthritis, enthesitis, family history, psoriasis, IBD, oral or genital ulcers, sarcoid features, infection, travel, immunosuppression.</li>
+            <li><b>HLA-B27 (NG65, over 16s):</b> guided by ophthalmology or rheumatology after confirmation, never before referral. A negative result or normal CRP/ESR does not exclude spondyloarthritis.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— ophthalmology starts it; GP supports</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Anterior (eye team)</span>Steroid + cycloplegic drops after slit lamp, IOP, infection excluded</div>
+            <div class="step s4"><span class="sl">Posterior (eye team)</span>Cause-led: antimicrobial, steroid, steroid-sparing</div>
+          </div>
+          <ul>
+            <li><b>While waiting (GP):</b> dark glasses, simple analgesia, no patching, contact lenses out.</li>
+            <li>Underlying disease co-managed with its specialty. Doses set by ophthalmology; check the BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor <small>— the eye is ophthalmology's</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Eye:</b> acuity, IOP, cataract, synechiae, macular oedema, response — ophthalmology only.</li>
+            <li><b>Shared care:</b> systemic steroids, DMARDs or biologics only under a current written agreement; abnormal results, infection, toxicity or ocular relapse → specialist advice.</li>
+            <li><b>Seek specialist advice</b> for recurrent or persistent flares, or on biological or targeted synthetic DMARDs (NG65).</li>
+            <li><b>JIA:</b> check slit-lamp screening is arranged; actively follow up missed appointments. High-street optometry does not replace it.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— non-urgent; urgent ones are in block 0</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Chronic or painless anterior uveitis</b> → prompt ophthalmology; urgency per vision and local pathway.</li>
+            <li><b>Rheumatology (NG65):</b> confirmed anterior uveitis, joint or back pain from before 45, no psoriasis, HLA-B27 positive.</li>
+            <li><b>Asymptomatic JIA</b> → paediatric ophthalmology slit-lamp screening.</li>
+            <li><b>Sarcoidosis, IBD, Behçet's, infection</b> → relevant specialty.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Start or restart steroid eye drops without a written flare plan — they mask or worsen infective keratitis; IOP must be checked first.</li>
+          <li>Empirical steroid/antibiotic combination drops for a red eye, or someone else's eye drops.</li>
+          <li>Delay referral for HLA-B27 or other bloods, or send an indiscriminate uveitis screen (ACE, ANA, syphilis, TB, toxoplasma).</li>
+          <li>Put flashes or floaters down to uveitis without a dilated fundus examination.</li>
+          <li>Patch the eye, or let someone with impaired vision drive.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when wsd">Immediate</span> <span class="say">“If you see a shadow or curtain, lose part of your vision, your vision suddenly gets worse or the pain becomes severe, go to eye casualty or A&amp;E straight away.”</span> &nbsp;
+        <span class="when wsd">Same day</span> <span class="say">“If the pain, light sensitivity or blurred vision comes back, or you notice new floaters or flashes, contact the eye team or us the same day.”</span> &nbsp;
+        <b>Driving:</b> <span class="say">“Don't drive while your vision is blurred, and don't drive yourself to the eye unit with severe pain or marked loss of vision.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 red flags excluded</span>
+        <span>Acuity, pupils, cornea, contact lenses recorded</span>
+        <span>Same-day referral; no steroids or bloods first</span>
+        <span>Systemic questions and JIA screening checked</span>
+        <span>Safety-net and driving advice documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../uveitis.html">Reasoning GP uveitis protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: NICE NG65 (over 16s); College of Optometrists Clinical Management Guidelines (anterior uveitis; retinal detachment); RCOphth/BSPAR JIA uveitis screening guideline (2006; local protocols may supersede). Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

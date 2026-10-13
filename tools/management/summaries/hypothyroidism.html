@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hypothyroidism — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/hypothyroidism.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hypothyroidism.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../hypothyroidism.html">← Full hypothyroidism protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Hypothyroidism, including subclinical</h1>
+      <div class="scope"><b>For:</b> adults with primary or subclinical hypothyroidism. <b>Not for:</b> pregnancy or planning it (specialist/local pathway), under 16s (paediatric or endocrine), central hypothyroidism (endocrinology).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG145</span><span>BTA</span><span>NICE NG12</span><span>MHRA</span><span>GM formulary</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> read the pattern, not just the TSH; never diagnose subclinical disease on one result; cortisol first if adrenal insufficiency is possible; dose by age and heart.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Doses missed for weeks, then drowsiness, confusion, hypothermia</b> (myxoedema coma) → <span class="when w999">999</span> emergency admission.</li>
+          <li><b>Suspected adrenal crisis</b> (hypotension, vomiting, severe hyponatraemia, hypoglycaemia, hyperkalaemia, altered consciousness) → emergency hydrocortisone, <span class="when w999">999</span> — don't wait for cortisol.</li>
+          <li><b>Suspected adrenal insufficiency</b> (pigmentation, postural dizziness, hyponatraemia) → <span class="when wsd">Same-day assessment</span>; if stable, 9am cortisol <b>before any levothyroxine</b> and discuss with endocrinology.</li>
+          <li><b>New pericardial effusion, heart failure, bradyarrhythmia or long QTc</b> → <span class="when wsd">Same-day cardiology</span>; compromised → <span class="when w999">999</span></li>
+          <li><b>Unexplained thyroid lump</b> → consider <span class="when wurg">Suspected cancer pathway (2 weeks)</span>, whatever the TSH. Aged 45+ with persistent hoarseness or neck lump → NG12 head-and-neck. <b>Acute compressive neck symptoms</b> → <span class="when wsd">Same-day</span>; stridor → <span class="when w999">999</span></li>
+          <li><b>On levothyroxine, positive pregnancy test</b> → <span class="when wsd">Same-day contact</span>: dose up about 25–30% now, urgent TFTs, specialist pathway.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— read the pattern, not just the TSH</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Pattern</th><th>TSH</th><th>FT4</th><th>Action</th></tr>
+            <tr><td>Overt primary</td><td>↑</td><td>↓</td><td>Treat</td></tr>
+            <tr><td>Subclinical</td><td>Above range</td><td>Normal</td><td>Repeat at 3 months; anti-TPO once</td></tr>
+            <tr><td>Central (pituitary)</td><td>Low, normal or slightly ↑</td><td>↓</td><td>Cortisol; endocrinology</td></tr>
+            <tr><td>Sick euthyroid</td><td>Low/normal</td><td>Low/normal</td><td>Repeat after recovery (≥6 weeks)</td></tr>
+          </table>
+          <p>Exclude recent illness or thyroiditis, amiodarone, lithium, <b>biotin</b>.</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— baseline</small></h2>
+        <div class="body">
+          <p>☐ TSH + FT4 &nbsp;☐ Anti-TPO once (subclinical) &nbsp;☐ Pregnancy status or plans &nbsp;☐ Medicines and supplements &nbsp;☐ Neck, pulse, reflexes</p>
+          <p>ECG if bradycardic or cardiac disease. <b>Not:</b> routine FT3, repeat antibodies, ultrasound of a normal neck.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— treat, trial or monitor</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Overt</b> → treat, regardless of symptoms.</li>
+            <li><b>Subclinical, TSH ≥10 on 2 tests 3 months apart</b> → consider levothyroxine.</li>
+            <li><b>TSH above range but &lt;10, under 65, symptomatic</b> → consider a 6-month trial; consider stopping if no better once TSH is in range.</li>
+            <li><b>TSH &lt;10 and asymptomatic, or 65+</b> → usually monitor: yearly if anti-TPO positive, prior RAI or surgery, or goitre; else 2–3-yearly.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target</h2>
+        <div class="body">
+          <p><b>TSH within the reference range</b> — no lower-half target, no suppression. After thyroid cancer it may be deliberately suppressed (&lt;0.1): check the oncology letter.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— levothyroxine</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Start · under 65, no CVD</span>Consider <b>1.6 micrograms/kg/day</b>, nearest 25 (60 kg → 100; 80 kg → 125)</div>
+            <div class="step"><span class="sl">Start · 65+, CVD, severe</span>Or possible adrenal insufficiency: consider <b>25–50 micrograms/day</b></div>
+            <div class="step"><span class="sl">Titrate</span>25 microgram steps on TSH; most settle on 75–150</div>
+            <div class="step s4"><span class="sl">Over-replaced</span>Suppressed TSH → reduce by 25; recheck 6–8 weeks</div>
+          </div>
+          <ul>
+            <li><b>Before every rise:</b> adherence, timing, iron, calcium or antacids (4 h apart), PPI, oestrogen, weight. &gt;2 micrograms/kg/day → coeliac serology.</li>
+            <li>Empty stomach, 30–60 min before breakfast or at bedtime 3 h after eating. Angina → drop back, then 12.5–25 microgram steps.</li>
+            <li>No T3 or thyroid extract started in primary care. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>TSH from about 6 weeks</b> after any start or change → about 3-monthly until stable → <b>annually</b> on the register (check for over-replacement).</li>
+            <li>Starting HRT or COCP → TSH at 8 weeks. Amiodarone, lithium → TFTs 6-monthly.</li>
+            <li>Untreated subclinical: TSH ≥10 twice 3 months apart, or symptoms with a rising TSH → revisit the decision.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— endocrinology</small></h2>
+        <div class="body">
+          <ul>
+            <li>Pituitary picture → endocrinology; with headache, visual field defect or galactorrhoea → <span class="when wurg">Urgent</span> with MRI pituitary.</li>
+            <li>TSH high on &gt;200 micrograms a day after adherence, absorption and coeliac checked; angina blocking titration.</li>
+            <li>Unwell despite optimal TSH and mimics excluded (T3 is their call); amiodarone or lithium that must continue.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Levothyroxine before cortisol is checked when adrenal insufficiency is suspected — it can precipitate adrenal crisis.</li>
+          <li>Titrate to a “normal TSH” in central hypothyroidism.</li>
+          <li>Treat subclinical disease on a single result.</li>
+          <li>Suppress the TSH or keep escalating for non-thyroidal symptoms — AF and fracture risk.</li>
+          <li>Let a normal TFT talk you out of examining, or referring, a thyroid lump.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“If doses have been missed for weeks and you become very drowsy, confused and cold — call 999.”</span> &nbsp;
+        <b>Chest pain:</b> <span class="say">“New chest tightness after a dose increase — call us the same day. Severe, at rest or over 15 minutes — call 999.”</span> &nbsp;
+        <b>Too much:</b> <span class="say">“Palpitations, shakiness, sweating or weight loss — contact us within a few days, the same day if your heart is racing or irregular.”</span> &nbsp;
+        <b>Pregnancy:</b> <span class="say">“Planning — tell us beforehand. Positive test — contact us the same day.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0: adrenal, cardiac and neck red flags excluded</span>
+        <span>Pattern read; subclinical repeated at 3 months</span>
+        <span>Pregnancy, medicines and biotin checked; neck examined</span>
+        <span>Dose by age and heart; TSH recheck booked</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../hypothyroidism.html">Reasoning GP hypothyroidism protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: NICE NG145 (2019); NICE NG12 (updated April 2026); British Thyroid Association; MHRA; Specialist Pharmacy Service; Greater Manchester formulary; BNF. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

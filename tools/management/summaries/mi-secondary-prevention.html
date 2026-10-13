@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MI secondary prevention — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/mi-secondary-prevention.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/mi-secondary-prevention.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../mi-secondary-prevention.html">← Full MI secondary prevention protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Secondary prevention after myocardial infarction</h1>
+      <div class="scope"><b>For:</b> adults after STEMI or NSTEMI, from discharge onwards. <b>Not for:</b> chest pain now (999), stable angina without MI (use the <a href="../stable-angina.html">stable angina protocol</a>) or full heart-failure therapy (use the <a href="../heart-failure.html">heart-failure protocol</a>).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG185</span><span>NG238</span><span>TA733 · TA393 · TA394</span><span>GMMMG lipid pathway</span><span>DVLA</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> ACE inhibitor, antiplatelets, beta-blocker and high-intensity statin unless contraindicated — <b>titrated</b> to target or maximum tolerated dose, not left at starter doses — and never stop DAPT without the cardiology plan.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Suspected re-infarction</b> — pain like their MI, not gone 5 minutes after a second GTN dose, worse, or unwell → <span class="when w999">999</span></li>
+          <li><b>Significant bleeding on DAPT</b> — black tarry stools, vomiting blood, a bleed that will not stop → <span class="when w999">999 / A&amp;E</span> Interruption is a multidisciplinary decision.</li>
+          <li><b>New angina or breathlessness</b> → stable angina or a new event? ACS → <span class="when w999">999</span>; recurrent angina → cardiology.</li>
+          <li><b>Asked to stop an antiplatelet</b> for dental work, surgery, endoscopy or preference → check the proceduralist and cardiology plan first: <b>early cessation after stenting risks stent thrombosis</b>.</li>
+          <li><b>Lorry or bus driver (Group 2)</b> → must stop driving and notify the DVLA.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— from the discharge letter</small></h2>
+        <div class="body">
+          <p>MI type, date · PCI/stent/CABG · <b>LVEF</b> · heart-failure signs · <b>DAPT agent and stop date</b> · anticoagulant indication · bleeding risk · rehab · licence group · what was deliberately omitted.</p>
+          <table>
+            <tr><th>LVEF</th><th>What it changes</th></tr>
+            <tr><td>≤40% <b>with</b> heart-failure symptoms or signs</td><td>MRA (eplerenone) via cardiology/heart-failure plan, ideally from 3–14 days after MI</td></tr>
+            <tr><td>Reduced / preserved</td><td>Beta-blocker indefinitely / ≥12 months, then review</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— first review and every titration</small></h2>
+        <div class="body">
+          <p>☐ BP, symptoms &nbsp;☐ U&amp;E, potassium &nbsp;☐ Lipids, transaminases &nbsp;☐ HbA1c &nbsp;☐ Depression, anxiety, suicide risk &nbsp;☐ Rehab attended? &nbsp;☐ Licence group</p>
+          <p>Don't miss: starter doses, or a statin that quietly stopped.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— core treatment unless contraindicated</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Everyone:</b> ACE inhibitor · DAPT (unless anticoagulation is indicated) · beta-blocker · high-intensity statin.</li>
+            <li><b>MRA only</b> if LVEF ≤40% with heart-failure symptoms or signs — via the cardiology plan.</li>
+            <li><b>Anticoagulated</b> (e.g. AF) → clopidogrel usual; triple therapy time-limited, cardiology-led — record its stop date.</li>
+            <li><b>Cardiac rehabilitation for everyone</b> — present it as a core treatment.</li>
+            <li><b>Lifestyle:</b> stop smoking, Mediterranean diet, activity, alcohol, weight; annual flu vaccine.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target</h2>
+        <div class="body">
+          <table>
+            <tr><th>What</th><th>Goal</th></tr>
+            <tr><td>LDL / non-HDL</td><td>LDL ≤2.0 mmol/L or non-HDL ≤2.6 (NG238)</td></tr>
+            <tr><td>ACE inhibitor, beta-blocker</td><td>Target or maximum tolerated dose; ACE inhibitor usually within 4–6 weeks; no heart-rate target</td></tr>
+            <tr><td>DAPT</td><td>Up to 12 months, then aspirin alone indefinitely</td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— doses per BNF and local formulary</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>DAPT:</b> aspirin 75 mg + the P2Y12 cardiology chose (ticagrelor, prasugrel, clopidogrel) — don't switch it in primary care.</li>
+            <li><b>Ramipril</b> (ARB if intolerant) and <b>bisoprolol</b>, titrated; never stop a beta-blocker abruptly.</li>
+            <li><b>Eplerenone</b> only if MRA criteria met; don't swap to spironolactone automatically.</li>
+            <li><b>PPI</b> if GI bleeding risk (age, prior ulcer, steroids); not omeprazole or esomeprazole with clopidogrel.</li>
+          </ul>
+          <div class="ladder">
+            <div class="step"><span class="sl">Lipids</span>Atorvastatin 80 mg → <b>consider ezetimibe 10 mg</b> if target not met, and even when met</div>
+            <div class="step s4"><span class="sl">Then</span>Inclisiran or PCSK9 inhibitor only if NICE TA and GMMMG criteria are met</div>
+          </div>
+          <p><b>"Intolerant":</b> rechallenge, lower dose, other statin or alternate days — nocebo is common; then GMMMG pathway.</p>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>ACE inhibitor or MRA change:</b> U&amp;E, potassium, BP before and 1–2 weeks after.</li>
+            <li><b>Lipids, transaminases:</b> 2–3 months after any change, then at least annually.</li>
+            <li><b>DAPT stop date</b> diarised → aspirin alone, per the cardiology plan.</li>
+            <li><b>Annually:</b> angina, heart failure, bleeding, adherence, BP, HbA1c, U&amp;E, LDL, smoking, mood, driving.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— and driving</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Cardiology:</b> recurrent angina, DAPT duration, high bleeding risk, triple therapy, device or EF concerns. <b>Heart-failure team:</b> EF ≤40% or heart failure.</li>
+            <li><b>Lipid clinic:</b> above LDL target on statin plus ezetimibe, or possible familial hypercholesterolaemia.</li>
+            <li><b>DVLA Group 1:</b> 1 week off after successful PCI with adequate LV function, otherwise 4 weeks. <b>Group 2:</b> stop and notify; relicensing ≥6 weeks if criteria met.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Stop or change either antiplatelet without the proceduralist and cardiology plan.</li>
+          <li>Leave the ACE inhibitor and beta-blocker at starter doses — started is not treated.</li>
+          <li>Accept "statin intolerance" without a rechallenge or an alternative.</li>
+          <li>Routinely combine an ACE inhibitor and an ARB.</li>
+          <li>Let triple therapy run on through repeat-prescription inertia.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Chest pain like your heart attack: sit down and use your GTN; still there after 5 minutes, take a second dose; still there 5 minutes after that, worse, or you feel unwell — or no GTN — call 999. Do not drive yourself.”</span> &nbsp;
+        <span class="when w999">999 / A&amp;E</span> <span class="say">“Black tarry stools, vomiting blood or a bleed that won't stop — 999 or A&amp;E now.”</span> &nbsp;
+        <b>DAPT:</b> <span class="say">“Don't stop the blood thinners for dental work or surgery without checking with us or cardiology.”</span> &nbsp;
+        <b>Feeling well:</b> <span class="say">“Carry on all your heart tablets — that is when they are working.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 red flags excluded</span>
+        <span>Discharge letter checked: LVEF, DAPT stop date, licence group</span>
+        <span>U&amp;E, potassium and lipids booked; mood screened</span>
+        <span>Titration plan and DAPT stop date in the notes; rehab confirmed</span>
+        <span>Safety-net and DVLA advice given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../mi-secondary-prevention.html">Reasoning GP MI secondary prevention protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: NICE NG185, NG238, TA733, TA393, TA394; GMMMG lipid and statin-intolerance pathways; DVLA; BNF. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scabies — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/scabies.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/scabies.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../scabies.html">← Full scabies protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Scabies</h1>
+      <div class="scope"><b>For:</b> adults and children with classical scabies, and their close contacts, in primary care. <b>Not for:</b> crusted scabies or infants under 2 months (specialist-led, block 0); care-home outbreaks are co-ordinated with the infection-prevention lead and Health Protection Team. Impetiginised patches → <a href="../impetigo.html">impetigo</a> protocol alongside the scabicide.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>BASHH 2025</span><span>UKHSA 2023 (updated 2025)</span><span>BAD 2023</span><span>PCDS</span><span>GMMMG formulary</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> treat the index case and every close contact from the last 8 weeks on the same day, twice, 7–14 days apart — and treat thick, crumbly scale in a frail or immunosuppressed person as crusted scabies until proven otherwise.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— more than ordinary scabies</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Crusted scabies</b>: thick crumbly scale, often little itch, in someone frail, immunosuppressed, neurologically impaired or on potent topical steroids → <span class="when wsd">Same-day dermatology or ID input</span> Alert the setting’s infection-control lead; do not rely on topical treatment or a standard two-dose course.</li>
+          <li><b>Secondary infection with systemic features</b>: spreading cellulitis, fever, or an unwell child with widespread infected excoriations → <span class="when wsd">Same-day acute assessment</span></li>
+          <li><b>Severely immunosuppressed or frail patient unable to apply treatment</b> → <span class="when wsd">Same-day specialist</span></li>
+          <li><b>Infant under 2 months</b> with suspected scabies → <span class="when wsd">Same-day specialist advice</span> No routine primary-care alternative.</li>
+          <li><b>Care-home outbreak with ongoing transmission</b> despite co-ordinated treatment → <span class="when wsd">Same-day specialist</span> plus HPT advice.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— a clinical diagnosis in general practice</small></h2>
+        <div class="body">
+          <p><b>Night-time itch</b> + someone else itching. Burrows: finger webs, wrists, axillae, waist, buttocks, genitals; infants also palms, soles, scalp, face.</p>
+          <table>
+            <tr><td>Burrow, or typical male genital lesions</td><td>Clinical diagnosis</td></tr>
+            <tr><td>Typical rash + an itchy contact</td><td>Likely</td></tr>
+          </table>
+          <p><b>Frail elderly:</b> subtle signs, back may be affected — look for crusting. A negative scraping, or no itch in a recent contact, does not exclude it.</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— before you prescribe</small></h2>
+        <div class="body">
+          <p>☐ Crusting, infection &nbsp;☐ Contacts (8 weeks) &nbsp;☐ Pregnancy, breastfeeding, age, weight &nbsp;☐ Care home? &nbsp;☐ Sexually acquired?</p>
+          <p><b>Don’t miss:</b> eczema, bites, bullous pemphigoid in the elderly; lice can coexist.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— who to treat</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Everyone with skin contact in the 8 weeks before diagnosis</b> (household, partners, hands-on carers), <b>itchy or not</b> → start the same day, repeat together. Brief social contact carries little risk.</li>
+            <li><b>Offer STI testing</b> if sexually acquired, genital lesions, new partner or STI symptoms — not routinely.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 HOME MEASURES -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Home measures and exclusion <small>— UKHSA</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Day 1 laundry</b> at <b>≥50°C</b>, or sealed in a bag <b>≥72 hours</b>. No fumigation.</li>
+            <li><b>No routine exclusion:</b> avoid close skin contact until 24 hours after the first treatment; children who cannot (e.g. under 5) stay off until then. Carers: gloves and aprons until 24 hours after treatment.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— two doses, 7–14 days apart</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">1st · GM primary care</span><b>Permethrin 5%</b>, cool dry skin, neck down (head too if affected, elderly, immunosuppressed, infants); off after <b>8–12 h</b>. From 2 months; safe in pregnancy.</div>
+            <div class="step"><span class="sl">1st · BASHH alternative</span><b>Ivermectin 200 micrograms/kg</b> orally. Not routinely commissioned in GM — specialist or exceptional use.</div>
+            <div class="step"><span class="sl">Permethrin unsuitable</span><b>Malathion 0.5% aqueous</b>, whole body, off after <b>24 h</b>; repeat at 7 days. Check stock, age (BNF).</div>
+            <div class="step s4"><span class="sl">Crusted · specialist</span>Repeated topical scabicide + <b>multiple oral ivermectin doses</b> + keratolytics, with infection control.</div>
+          </div>
+          <ul>
+            <li>Adult: one to two 30 g tubes per application. <b>Ivermectin:</b> not in pregnancy; generally not when breastfeeding; &lt;15 kg specialist only.</li>
+            <li><b>Itch:</b> emollient, crotamiton, night sedating antihistamine (caution in older adults), short topical steroid. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REVIEW -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Review <small>— itch outlasts the mite</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Itch may take at least a month</b> to settle (BAD); itch alone is not failure.</li>
+            <li><b>New burrows or lesions, or itch not easing 4 weeks after dose 2</b> → check application and contacts; re-treat everyone together, consider switching agent.</li>
+            <li><b>Sore eczematous skin</b> → emollient, topical steroid, no scabicide. <b>Nodules</b> → not failure.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— non-urgent routes (urgent ones in block 0)</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Dermatology (routine or A&amp;G):</b> diagnostic doubt; persists after two correct courses with contacts treated; troublesome nodules.</li>
+            <li><b>Sexual health:</b> sexually acquired — STI screen, partner notification.</li>
+            <li><b>Care home ≥2 linked cases in 8 weeks</b> → infection-prevention lead + HPT advice; mass treatment, all starting within 24 hours. Not statutorily notifiable.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Treat the index case alone, or contacts one by one as they start itching.</li>
+          <li>Give a single application — the second dose catches mites hatched from surviving eggs.</li>
+          <li>Start a standard two-dose course and discharge in crusted scabies.</li>
+          <li>Repeat scabicide for itch alone — irritant dermatitis drives more itch.</li>
+          <li>Give oral ivermectin in pregnancy, or prolonged potent topical steroids without review.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when wsd">Same day</span> <span class="say">“If the skin becomes hot, red and spreading, or you feel feverish or unwell, contact us the same day.”</span> &nbsp;
+        <b>Everyone:</b> <span class="say">“Everyone you live with uses it the same night, even if not itching — then again in a week.”</span> &nbsp;
+        <b>Application:</b> <span class="say">“Bedtime, cool skin, neck to soles; leave on all night; re-apply to hands after washing; hot wash tomorrow.”</span> &nbsp;
+        <b>Itch:</b> <span class="say">“It can carry on for a month. New tracks or spots, or not easing a month after the second treatment — come back.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 excluded: crusting, infection, infant &lt;2 months</span>
+        <span>Diagnosis made clinically; mimics considered</span>
+        <span>Contacts listed; pregnancy, age, setting checked</span>
+        <span>Two doses for everyone, same days; written instructions</span>
+        <span>Safety-net, laundry and exclusion advice documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../scabies.html">Reasoning GP scabies protocol</a>, which holds the detail, evidence and care-home outbreak steps. Sources: BASHH scabies guideline 2025; UKHSA communal-settings guidance 2023 (updated April 2025) and children’s settings exclusion advice; BAD 2023; PCDS; permethrin and ivermectin SPCs; GMMMG formulary; BNF. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF/BNFC and local formulary.</div>
+
+</main>
+</body>
+</html>

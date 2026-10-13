@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Temporomandibular disorders — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/tmd.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/tmd.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../tmd.html">← Full temporomandibular disorders protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Temporomandibular disorders (TMD)</h1>
+      <div class="scope"><b>For:</b> adults with jaw-joint or chewing-muscle pain, clicking, locking or restricted opening that fits TMD. <b>Not for:</b> undifferentiated jaw pain (use the <a href="../../algorithms/jaw-pain.html">jaw pain pathway</a>); suspected giant cell arteritis (use the <a href="../giant-cell-arteritis.html">GCA protocol</a>); trigeminal neuralgia (use the <a href="../trigeminal-neuralgia.html">trigeminal neuralgia protocol</a>).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>DC/TMD (2014)</span><span>GIRFT OMFS (2023)</span><span>NICE NG12 (red flags)</span><span>BNF</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> name the type and examine fully — teeth, opening, joint, muscles, bite, nodes, cranial nerves and, <b>aged 50 or over, GCA</b> — then treat uncomplicated TMD conservatively; <b>no routine muscle relaxants, benzodiazepines or irreversible bite treatment</b>.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Spreading facial or dental infection with airway compromise</b> → <span class="when w999">999</span> emergency, not a routine OMFS referral.</li>
+          <li><b>Aged ≥50 with new jaw or tongue claudication</b> (chewing or talking, relieved by rest), new headache, scalp tenderness, polymyalgia → <span class="when wsd">Same-day GCA pathway</span>; FBC, CRP, ESR, U&amp;E/LFT, but do not delay steroids or assessment if suspicion is high.</li>
+          <li><b>Visual symptoms</b> with GCA features → <span class="when wsd">Same-day</span> emergency ophthalmology or acute medicine.</li>
+          <li><b>Acute dislocation, significant trauma or suspected fracture, profound trismus, unable to eat or drink, dysphagia, floor-of-mouth swelling, dental swelling with fever</b> → <span class="when wsd">Same-day</span> emergency, dental or OMFS. Do not manipulate or reduce the jaw untrained.</li>
+          <li><b>Unexplained oral ulcer &gt;3 weeks or persistent unexplained neck lump</b> → consider <span class="when wurg">Suspected cancer pathway</span> (NG12). <b>Lip or oral lump, red or red-and-white patch</b> → consider <span class="when wurg">Urgent dental</span> referral.</li>
+          <li><b>Trigeminal-type pain with sensory loss, bilateral, onset &lt;40, deafness, visual or other neurological signs</b> → <span class="when wurg">Urgent specialist advice</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— name the type</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Type</th><th>Typical features</th></tr>
+            <tr><td>Muscular</td><td>Masseter or temporalis tender; pain clenching or chewing</td></tr>
+            <tr><td>Joint</td><td>Preauricular pain, crepitus, painful or restricted movement</td></tr>
+            <tr><td>Disc displacement</td><td>With reduction: click, often painless · without: closed lock, limited opening → refer</td></tr>
+            <tr><td>Degenerative, inflammatory, dislocation</td><td>Crepitus, stiffness; recurrent open lock</td></tr>
+          </table>
+          <p><b>Click without pain, locking or limitation</b> → reassurance only.</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— before the TMD label</small></h2>
+        <div class="body">
+          <p>☐ Teeth, gums &nbsp;☐ Opening, deviation, locking &nbsp;☐ Joint, masseter, temporalis; resisted movement &nbsp;☐ Bite &nbsp;☐ Cranial nerves, sensation &nbsp;☐ Neck nodes, parotid, face &nbsp;☐ Otoscopy if ear symptoms &nbsp;☐ ≥50: temporal arteries, scalp &nbsp;☐ Bruxism, stress, sleep</p>
+          <p>Don't miss: unilateral or progressive pain, swelling, numbness, new bite change, weight loss → reconsider TMD.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— who gets what</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Uncomplicated TMD</b> → conservative care, short-term analgesia; most need no OMFS.</li>
+            <li><b>Painless click</b> → reassure; no splint just to remove a click.</li>
+            <li><b>Troublesome bruxism or selected persistent TMD</b> → a dentist may consider a reversible, monitored splint.</li>
+            <li><b>Persistent pain, reassessed, chronic primary or neuropathic phenotype</b> → consider low-dose TCA (off-label); specialist advice may help.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat</h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Self-care</span>Soft diet for a while; no gum or wide opening; heat, massage; move gently; ease clenching</div>
+            <div class="step"><span class="sl">Analgesia</span>Paracetamol or an oral NSAID, <b>short term only</b>, local formulary</div>
+            <div class="step"><span class="sl">Dental</span>Reversible splint after dental assessment; must not alter the bite</div>
+            <div class="step s4"><span class="sl">Not settling</span>Re-check self-care, bruxism, mood, diagnosis → refer</div>
+          </div>
+          <ul>
+            <li><b>NSAID:</b> check renal, GI, cardiovascular risk, anticoagulant, antiplatelet, steroid, NSAID-sensitive asthma; never two; gastroprotect by risk. <b>Paracetamol:</b> lower maximum if low weight, frail, liver disease, high alcohol. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>Not improving with conservative care</b> → review; sooner if function deteriorating.</li>
+            <li><b>Analgesia:</b> no prolonged regular use without reassessing the diagnosis and medication overuse.</li>
+            <li><b>Splint:</b> dentist reviews; worse pain, bite or function → review.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— routine</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Dentist:</b> caries, gum disease, odontogenic pain, occlusal assessment, bruxism and splints.</li>
+            <li><b>Physio, MSK or facial-pain service:</b> persistent muscular pain or movement dysfunction.</li>
+            <li><b>Oral medicine or OMFS</b> (local pathway): closed lock, marked restriction, recurrent dislocation, progressive, disabling, failed conservative trial, joint disease, diagnostic doubt — not chronicity alone.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Routine benzodiazepines or muscle relaxants; any course exceptional, time-limited, reviewed.</li>
+          <li>Irreversible bite adjustment, extensive restorative work or orthodontics for TMD pain.</li>
+          <li>Forceful jaw manipulation in primary care.</li>
+          <li>Prolonged jaw immobilisation, or a routine TCA for uncomplicated mechanical TMD.</li>
+          <li>Persistent, progressive or unilateral facial pain called TMD without reassessment.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Difficulty breathing or swallowing, or swelling spreading under your tongue or into your neck: call 999.”</span> &nbsp;
+        <span class="when wsd">Same-day</span> <span class="say">“If you're 50 or over and your jaw aches when you chew, with a new headache or scalp tenderness, get help the same day — if your vision changes, go to A&amp;E or eye casualty straight away. Jaw locked, can't open or can't eat or drink, facial swelling with fever, a lump, a red or red-and-white patch or an ulcer that won't heal: get help the same day.”</span> &nbsp;
+        <b>Review:</b> <span class="say">“If it is not improving, come back for a review.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 red flags excluded; GCA asked if ≥50</span>
+        <span>TMD type named; full examination done</span>
+        <span>Teeth, nodes, parotid, cranial nerves checked; NSAID risks reviewed</span>
+        <span>Conservative plan, short-term analgesia, review booked</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../tmd.html">Reasoning GP temporomandibular disorders protocol</a>, which holds the detail and evidence. There is no dedicated NICE TMD guideline. Sources: DC/TMD (2014); GIRFT oral and maxillofacial outpatient guidance (2023); NICE NG12 (red flags); BNF; local Greater Manchester pathways. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

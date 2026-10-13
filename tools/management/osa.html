@@ -17,7 +17,7 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({
+MG.render({ snapshot:"summaries/osa.html",
   icon:"\u{1F634}",
   title:"Snoring and obstructive sleep apnoea",
   eyebrow:"Protocol \u00b7 diagnose &amp; manage in one place",
@@ -55,7 +55,7 @@ MG.render({
     {id:"confirm", nav:"Confirm", title:"Suspecting OSAHS — history, examination and the two scores", sub:"Diagnosis and grading are specialist-led on the sleep study; the pre-test assessment that gets the right patient seen fast is primary care. STOP-BANG and Epworth are pre-test assessment tools, not diagnostic tests.",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"blue", h:"STOP-BANG \u2014 pre-test risk", html:"<b>S</b>noring loud \u00b7 <b>T</b>ired by day \u00b7 <b>O</b>bserved apnoeas \u00b7 <b>P</b>ressure (hypertension) \u00b7 <b>B</b>MI &gt;35 \u00b7 <b>A</b>ge &gt;50 \u00b7 <b>N</b>eck &gt;40 cm (M) / 35 cm (F) \u00b7 <b>G</b>ender male.<br><b>0–2 low · 3–4 intermediate · ≥5 high risk.</b><br>An adjunct to clinical assessment: a low score does not exclude OSAHS and a high score does not confirm it."},
+         {tone:"blue", h:"STOP-BANG \u2014 pre-test risk", html:"<b>S</b>noring loud \u00b7 <b>T</b>ired by day \u00b7 <b>O</b>bserved apnoeas \u00b7 <b>P</b>ressure (hypertension) \u00b7 <b>B</b>MI &gt;35 \u00b7 <b>A</b>ge &gt;50 \u00b7 <b>N</b>eck ≥43 cm (M) / ≥41 cm (F) \u00b7 <b>G</b>ender male.<br><b>0–2 low · 3–4 intermediate · ≥5 high risk.</b><br>An adjunct to clinical assessment: a low score does not exclude OSAHS and a high score does not confirm it."},
          {tone:"blue", h:"Epworth Sleepiness Scale \u2014 impact", html:"Eight everyday situations (reading, watching TV, as a passenger, lying down, sitting talking, after lunch, in a stopped car, in traffic), scored <b>0\u201324</b>. Higher scores indicate more sleepiness (scores above 10 are conventionally taken as excessive). Use it to quantify sleepiness, but <b>do not use Epworth alone to decide whether referral is required</b> (NICE NG202) — driving risk depends on the history, not the score."}
        ]},
        {b:"dl", rows:[
@@ -65,8 +65,8 @@ MG.render({
          ["Who to think of it in","OSAHS is associated with <b>hypertension</b> (including resistant hypertension), <b>atrial fibrillation</b>, heart failure, stroke and <b>type 2 diabetes</b>; also obesity, hypothyroidism, large collar size, retrognathia. Screen and manage these conditions by their usual pathways; do not claim that CPAP will necessarily improve all cardiovascular outcomes"]
        ]},
        {b:"table", head:["Examination","What to look for","Why it changes the plan"], rows:[
-         ["BMI, weight, waist","BMI &gt;30 strongly associated; waist &gt;94 cm (M) / &gt;80 cm (F)","Track at every consultation — weight loss can improve OSAHS"],
-         ["<b>Neck circumference</b>","<b>&gt;40 cm (M) / &gt;35 cm (F)</b>, measured at the thyroid cartilage","An independent risk factor \u2014 pharyngeal fat narrows the airway"],
+         ["BMI, weight, waist","BMI &gt;30 strongly associated; waist-to-height ratio ≥0.5 (NICE NG246)","Track at every consultation — weight loss can improve OSAHS"],
+         ["<b>Neck circumference</b>","<b>≥43 cm (M) / ≥41 cm (F)</b> (STOP-BANG thresholds), measured at the thyroid cartilage","An independent risk factor \u2014 pharyngeal fat narrows the airway"],
          ["Blood pressure","Both arms; note if resistant (uncontrolled on \u22653 agents including a diuretic)","Resistant hypertension \u2192 screen for OSA as a secondary cause"],
          ["Oropharynx","<b>Mallampati class III/IV</b> (posterior oropharynx not visible), tonsillar grade 1\u20134, <b>retrognathia</b>","Correlates with severity; also predicts difficult intubation \u2014 <b>document it, it matters for anaesthesia</b>. MADs work particularly well in retrognathia"],
          ["Nasal airway","Anterior rhinoscopy: septal deviation, turbinate hypertrophy, polyps","Nasal obstruction worsens OSA and reduces CPAP tolerance"],
@@ -122,7 +122,7 @@ MG.render({
     {id:"lifestyle", nav:"Lifestyle", title:"Weight, position and risk-factor modification", sub:"Supportive management for everyone, alongside — not instead of — CPAP or other indicated treatment.",
      blocks:[
        {b:"table", head:["Measure","What to advise","Effect"], rows:[
-         ["<b>Weight loss</b>","Structured calorie restriction plus exercise; GLP-1 or bariatric pathway if eligible. Tier 3 referral if BMI &gt;35 with comorbidities","Weight loss can improve, and occasionally resolve, OSAHS; effects vary by baseline BMI, severity and follow-up. Bariatric assessment according to current NICE obesity criteria and local pathways"],
+         ["<b>Weight loss</b>","Structured calorie restriction plus exercise; GLP-1 or bariatric pathway if eligible. Tier 3 referral according to current NICE obesity criteria and local pathways","Weight loss can improve, and occasionally resolve, OSAHS; effects vary by baseline BMI, severity and follow-up. Bariatric assessment according to current NICE obesity criteria and local pathways"],
          ["<b>Lateral sleep position</b>","Side-sleeping; positional alarms or a sleep-position trainer","Positional therapy is reasonable in selected positional OSAHS after sleep-study confirmation"],
          ["<b>Alcohol</b>","Reduce evening alcohol; AUDIT-C screen","Relaxes upper-airway muscles and worsens apnoeas and sleepiness"],
          ["<b>Smoking</b>","Cessation via NHS service","Causes upper-airway mucosal inflammation and nasal congestion"],

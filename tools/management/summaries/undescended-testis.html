@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Undescended testis — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/undescended-testis.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/undescended-testis.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../undescended-testis.html">← Full undescended testis protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Undescended testis</h1>
+      <div class="scope"><b>For:</b> infants, boys and men with a testis that is not in the scrotum, from the newborn check to adulthood, and those with a history of undescended testis. <b>Not for:</b> DSD/CAH work-up or adult orchidopexy-versus-orchidectomy decisions — these are specialist-led (blocks 0 and 5); the newborn screen-positive pathway is NIPE's.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>EAU/ESPU paediatric urology 2026</span><span>NICE CKS</span><span>NHS NIPE programme</span><span>GIRFT/BAUS torsion pathway</span><span>NICE NG12</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> the <b>mobility test</b> decides the diagnosis and the <b>NIPE timetable</b> decides the referral — specialist review by 6 months, treatment by 12 months where possible (18 at the latest); <b>no imaging before referral</b>, and <b>if unsure, refer</b>.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— most undescended testes are not emergencies; these are</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Newborn check:</b> bilateral impalpable testes, a unilateral impalpable testis, or a palpable undescended testis with hypospadias → <span class="when wsd">Senior paediatric review ≤24 h</span> (NIPE) — exclude DSD, including CAH.</li>
+          <li><b>Atypical genitalia</b> (hypospadias, micropenis, bifid scrotum, scrotal hyperpigmentation, ambiguous) → <span class="when wsd">Same-day paediatric/DSD</span>. Hyperpigmentation + bilateral impalpable testes = possible <b>salt-wasting CAH</b>, a medical emergency. Don't delay for a primary-care endocrine panel.</li>
+          <li><b>Acute groin, abdominal, scrotal or testicular pain</b>, or swelling or tenderness where the testis lies = possible torsion → <span class="when w999">Immediate ED or surgical centre, ambulance if needed</span>; no ultrasound first. A normal scrotum does not exclude it — <b>examine the testes in every boy with acute abdominal pain</b>.</li>
+          <li><b>Bilateral undescended at the 6–8-week check</b>, or bilateral non-palpable testes found later → <span class="when wurg">Urgent paediatrics, seen ≤2 weeks</span></li>
+          <li><b>Man with a history:</b> non-painful enlargement or change in shape or texture → <b>consider</b> <span class="when wurg">Suspected cancer pathway</span> (NG12); unexplained or persistent testicular symptoms → <b>consider</b> a direct-access ultrasound.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— the mobility test, warm hands, relaxed child</small></h2>
+        <div class="body">
+          <p>Brought into the dependent scrotum <b>without tension</b>, and stays at least temporarily?</p>
+          <table>
+            <tr><th>Type</th><th>Finding</th><th>Action</th></tr>
+            <tr><td><b>Retractile</b></td><td>Reaches and stays; active cremasteric reflex</td><td>No surgery; review yearly</td></tr>
+            <tr><td><b>True undescended</b></td><td>Doesn't reach, tense, or springs back</td><td>Refer</td></tr>
+            <tr><td><b>Ascending</b></td><td>Previously scrotal, now higher</td><td>Treat as undescended — refer</td></tr>
+            <tr><td><b>Ectopic · absent</b></td><td>Perineal, femoral, penile base · not found</td><td>Refer</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— supine, then squatting or cross-legged</small></h2>
+        <div class="body">
+          <p>☐ Hemiscrotum empty or underdeveloped &nbsp;☐ Groin sweep from the internal ring; ectopic sites incl. perineum &nbsp;☐ Genitalia for DSD signs &nbsp;☐ Hernia &nbsp;☐ Other testis: size, position &nbsp;☐ Record palpability, position, size &nbsp;☐ Older boys: puberty; examine standing</p>
+          <p><b>No ultrasound or MRI</b> to locate the testis before referral — it delays treatment. Endocrine/genetic tests, tumour markers: specialist only.</p>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target <small>— the timetable (corrected age if preterm)</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>When</th><th>Unilateral palpable, not scrotal</th></tr>
+            <tr><td>Newborn → 6–8 weeks</td><td>Re-examine; still not scrotal → GP review at 4–5 months</td></tr>
+            <tr><td>4–5 months</td><td>Still undescended or impalpable → refer promptly</td></tr>
+            <tr><td>By 6 months</td><td>Specialist review</td></tr>
+            <tr><td>By 12 months</td><td>Treatment completed where possible; <b>18 months at the latest</b></td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— specialist-led</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Clearly retractile</span>Reassure; review yearly until puberty, documenting position.</div>
+            <div class="step"><span class="sl">Palpable</span><b>Orchidopexy</b>, usually open day case; hernia repaired at the same operation.</div>
+            <div class="step"><span class="sl">Non-palpable</span>Examination under anaesthesia and/or <b>laparoscopy</b>; one- or two-stage orchidopexy if viable.</div>
+            <div class="step s4"><span class="sl">Untreated after puberty</span>Adult urology: orchidopexy vs orchidectomy is a <b>shared specialist decision</b>, not a primary-care one.</div>
+          </div>
+          <ul>
+            <li><b>Hormones:</b> not in primary care; specialists may consider in selected bilateral cases.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor <small>— follow up for life</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Retractile:</b> yearly until puberty; no longer reaches or stays, or uncertain → refer.</li>
+            <li><b>After orchidopexy:</b> per the surgical team; re-ascent or atrophy → re-refer.</li>
+            <li><b>Puberty:</b> bilateral, anorchia, atrophic testes or no progression → paediatric endocrinology.</li>
+            <li><b>Adulthood:</b> testicular awareness — orchidopexy reduces but does not remove the cancer risk; no routine ultrasound surveillance.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— paediatric surgery or urology (urgent routes in block 0)</small></h2>
+        <div class="body">
+          <ul>
+            <li><span class="when wurg">Prompt</span> still undescended at 4–5 months; becomes impalpable; found later; ascending — Bolton/GM pathway.</li>
+            <li>Paediatric (not adult) surgeons for infants, bilateral or non-palpable testes, and recurrence.</li>
+            <li><span class="when wrt">Adult urology</span> untreated testis in an adolescent or man; fertility concerns.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Request ultrasound or MRI to locate the testis, or let a scan delay referral.</li>
+          <li>Let ultrasound delay surgical assessment of possible torsion, or be reassured by a normal scrotum.</li>
+          <li>Delay a DSD referral to arrange a primary-care endocrine panel.</li>
+          <li>Label a testis retractile when unsure, or wait beyond the timetable for it to descend.</li>
+          <li>Offer hormonal treatment in primary care to bring a testis down.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999 / A&amp;E</span> <span class="say">“Sudden pain in his groin, tummy or testicle, or swelling or tenderness where the testis sits, could be a twisted testis — go to A&amp;E straight away, by ambulance if needed.”</span> &nbsp;
+        <b>After surgery:</b> <span class="when wsd">Same-day</span> <span class="say">“A fever, a red or weeping wound, or a swollen bruised scrotum — be seen the same day.”</span> &nbsp;
+        <b>From puberty:</b> <span class="say">“Check your testicles; a new lump, swelling, change in shape or feel, ongoing discomfort, or a testis that seems to have gone up — see your GP promptly.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 excluded: DSD signs, torsion, bilateral</span>
+        <span>Mobility test done warm and relaxed; type recorded</span>
+        <span>Genitalia, hernia and other testis examined; no imaging requested</span>
+        <span>Referred or review booked on the timetable, with dates</span>
+        <span>Torsion safety-net given; testicular awareness when older</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../undescended-testis.html">Reasoning GP undescended testis protocol</a>, which holds the examination detail, adult treatment options, counselling and evidence. Sources: EAU/ESPU paediatric urology (2026); EAU sexual and reproductive health (2026); NICE CKS Undescended testes; NHS NIPE programme; GIRFT/BAUS torsion pathway; NICE NG12. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

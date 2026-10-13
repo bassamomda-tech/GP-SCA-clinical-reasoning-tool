@@ -18,7 +18,7 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({
+MG.render({ snapshot:"summaries/cellulitis.html",
   icon:"\u{1F9A0}",
   title:"Cellulitis and erysipelas",
   eyebrow:"Protocol · diagnose &amp; manage in one place",
@@ -168,7 +168,7 @@ MG.render({
          {tone:"red", h:"Near the eyes or nose", html:"The area from the bridge of the nose to the corners of the mouth, or immediately around the eyes, carries a risk of serious intracranial complications. Not a routine primary-care scenario: seek referral or specialist advice; <b>co-amoxiclav</b> 500/125 mg TDS for 7 days if appropriate (penicillin allergy in adults: clarithromycin + metronidazole, per NG141). Any orbital sign → same-day emergency.", src:"NICE NG141"},
          {tone:"amber", h:"Human and animal bites", html:"Cellulitis after a bite is managed under the bites guideline, not NG141: <b>co-amoxiclav</b> is the first choice for treating an infected bite, with alternatives for penicillin allergy set out in NG184. Assess tetanus and, where relevant, rabies and blood-borne virus risk.", src:"NICE NG184 (2020)"},
          {tone:"amber", h:"Leg ulcer infection", html:"A separate pathway. Most leg ulcers are colonised but not clinically infected. Do not give antibiotics for colonisation, odour alone or delayed healing. Treat only where there is spreading redness/swelling beyond the ulcer, local warmth, increased pain or fever. Do not take a routine swab at initial presentation; consider a cleaned wound sample if infection worsens or fails to improve. Compression and management of venous insufficiency/oedema are central to healing, but compression requires vascular assessment.", src:"NICE NG152 (2020)"},
-         {tone:"amber", h:"Diabetic foot", html:"Manage infection on a diabetic foot under NG19: clinical diagnosis, a soft-tissue or bone sample from the base of the debrided wound where possible, and referral to the multidisciplinary foot care service — immediately to acute services if limb- or life-threatening, otherwise <b>within 1 working day</b>. Grade with the diabetic-foot infection classification, not Eron: <b>mild</b> — erythema 0.5 cm to &lt;2 cm around the ulcer; <b>moderate</b> — erythema &gt;2 cm or deeper structures involved; <b>severe</b> — systemic inflammatory response.", src:"NICE NG19 diabetic foot"},
+         {tone:"amber", h:"Diabetic foot", html:"Manage infection on a diabetic foot under NG19: clinical diagnosis, a soft-tissue or bone sample from the base of the debrided wound where possible, and referral to the multidisciplinary foot care service — immediately to acute services if limb- or life-threatening, otherwise <b>within 1 working day</b>. Grade with the diabetic-foot infection classification, not Eron: <b>mild</b> — erythema &gt;0.5 cm to ≤2 cm around the ulcer; <b>moderate</b> — erythema &gt;2 cm or deeper structures involved; <b>severe</b> — systemic inflammatory response.", src:"NICE NG19 diabetic foot"},
          {tone:"blue", h:"Lymphoedema", html:"People with lymphoedema get cellulitis repeatedly and each episode damages lymphatics further. The BLS/LSN guideline sets out antibiotic choice, duration, when to admit and when to start prophylaxis for this group — follow it and involve the lymphoedema service. Do not make a blanket recommendation to stop compression: compression may need temporary modification during a painful acute episode but should be resumed or continued when tolerated and clinically appropriate. Treat the acute infection and manage oedema concurrently. Assess arterial supply before compression; do not use standard high compression if significant arterial disease is suspected.", src:"BLS/LSN 2025 cellulitis in lymphoedema"},
          {tone:"cream", h:"Older and frail people", html:"May present with confusion, falls or “off legs” rather than fever. Frailty is a trigger to consider referral. Check renal function and interactions — check the current SPC/local antimicrobial formulary before prescribing clarithromycin, particularly with statins, DOACs, antiarrhythmics, antipsychotics and other QT-prolonging medicines (see prescribing cautions).", src:"NICE NG141 · SPC"}
        ]},
@@ -192,7 +192,7 @@ MG.render({
          {t:"5 · Organism", html:"MRSA history, water exposure, bite, travel, immunosuppression → swab if broken skin with a specific risk of an uncommon or resistant pathogen, microbiology advice, consider hospital."},
          {t:"6 · Portal still open", html:"Untreated tinea pedis or an open ulcer keeps reseeding the infection."}
        ]},
-       {b:"why", html:"Oedema and inflammation can make the area look worse for the first 24–48 hours even when treatment is working. That is why the review trigger combines spread beyond the line with systemic features and pain — not the colour alone."}
+       {b:"why", html:"Oedema and inflammation can make the area look worse early in treatment even when treatment is working. That is why the review trigger combines spread beyond the line with systemic features and pain — not the colour alone."}
      ]},
 
     {id:"recurrence", nav:"Recurrence", title:"Recurrent cellulitis, prophylaxis and lymphoedema", sub:"Prevention is mostly skin and oedema care. Antibiotic prophylaxis is specialist-led in NG141.",
@@ -223,12 +223,12 @@ MG.render({
      blocks:[
        {b:"cards", items:[
          {tone:"red", h:"🔴 Call 999 or go to A&amp;E", html:"“If the pain becomes severe and out of keeping with how the skin looks, the skin turns dark, purple or blistered, or you feel very unwell — cold and clammy, confused, very breathless, or passing little urine.”", src:"NICE NG141 · NICE NG253 (updated September 2026)"},
-         {tone:"amber", h:"🟠 Contact us the same day", html:"“If the redness spreads well past the line I've drawn, you get fever or shivering, or it isn't starting to get better within 2 to 3 days.”", src:"NICE NG141"},
+         {tone:"amber", h:"🟠 Contact us the same day", html:"“If the redness spreads past the line I've drawn, it gets worse quickly at any time, you get fever or shivering, or it isn't starting to get better within 2 to 3 days.”", src:"NICE NG141"},
          {tone:"red", h:"👁 Face and eyes", html:"“If your eye starts to bulge, it hurts to move your eye, you see double or your vision gets blurred — go to A&amp;E straight away.”", src:"NICE NG141"},
          {tone:"blue", h:"⏳ It fades slowly", html:"“The redness can take a while to fade even after the tablets finish — that's normal if the pain, heat and swelling are going.”", src:"NICE NG141"},
          {tone:"green", h:"🦶 The way in", html:"“Athlete's foot, cracked skin or a leg ulcer is often how the germ gets in. Treating that is how we stop it coming back.”", src:"NICE NG141"}
        ]},
-       {b:"say", html:"This is a skin infection called cellulitis. I've drawn around the edge of the redness so we can both see whether it's spreading. Take the flucloxacillin four times a day on an empty stomach, before food, for the full course, and keep your leg raised when you're sitting where you can, to ease the swelling. It should start to feel better in two or three days, though the redness can take longer to fade. If it spreads past the line, you get fever or shivers, or it isn't improving in two to three days, contact us the same day. If the pain becomes severe and out of keeping with how it looks, or you feel very unwell, call 999."}
+       {b:"say", html:"This is a skin infection called cellulitis. I've drawn around the edge of the redness so we can both see whether it's spreading. Take the flucloxacillin four times a day on an empty stomach, before food, for the full course, and keep your leg raised when you're sitting where you can, to ease the swelling. It should start to feel better in two or three days, though the redness can take longer to fade. If it spreads past the line, it gets worse quickly, you get fever or shivers, or it isn't improving in two to three days, contact us the same day. If the pain becomes severe and out of keeping with how it looks, or you feel very unwell, call 999."}
      ]},
 
     {id:"pitfalls", nav:"Pitfalls", title:"Common pitfalls", sub:"The errors that recur in complaints, audits and exam stations.",

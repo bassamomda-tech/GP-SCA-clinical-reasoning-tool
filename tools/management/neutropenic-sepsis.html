@@ -18,7 +18,7 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({
+MG.render({ snapshot:"summaries/neutropenic-sepsis.html",
   icon:"\u{1FA78}",
   title:"Suspected neutropenic sepsis",
   eyebrow:"Protocol · recognise &amp; send in, from the GP / out-of-hours seat",
@@ -134,7 +134,7 @@ MG.render({
          ["Diarrhoea / abdominal pain","Immune-related <b>colitis</b> (can perforate)","Same-day oncology advice via hotline; do not treat empirically as a routine infection or simply prescribe loperamide without oncology input"],
          ["Cough, breathlessness, falling SpO₂","<b>Pneumonitis</b> vs infection (may coexist)","Same-day via hotline/ED; do not treat empirically as a routine infection without oncology input"],
          ["Fatigue, hypotension, vomiting, hyponatraemia","<b>Hypophysitis / adrenal insufficiency</b>","Emergency if hypotensive — give emergency hydrocortisone immediately if adrenal crisis is suspected; otherwise same-day via hotline"],
-         ["Polyuria, thirst, high glucose","Immune-related <b>diabetes / DKA</b>","Emergency if ketotic"],
+         ["Polyuria, thirst, high glucose","Immune-related <b>diabetes / DKA</b>","999 / ED if ketotic or unwell; otherwise same-day oncology advice via the hotline"],
          ["Jaundice, deranged LFTs","Immune-related <b>hepatitis</b>","Discuss with oncology the same day; do not treat empirically as a routine infection"],
          ["Fever alone on combination chemo-immunotherapy","<b>Neutropenic sepsis</b> from the chemotherapy component","Neutropenic sepsis pathway"]
        ]},
@@ -147,8 +147,8 @@ MG.render({
     {id:"mimics", nav:"Non-cancer neutropenia", title:"Neutropenia from non-cancer drugs", sub:"The same emergency physiology, outside the cancer pathway — but each drug group has its own pathway. NG253 and NG254 extend suspicion to immunosuppressants for reasons unrelated to cancer.",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Carbimazole / propylthiouracil — agranulocytosis", html:"Sore throat, mouth ulcers, fever or malaise on an antithyroid drug → <b>stop the drug</b> and check an <b>urgent same-day FBC with neutrophil count</b> (the total white count can look normal). Urgent assessment if systemically unwell or septic. Do not restart the drug if agranulocytosis is confirmed without specialist advice. Patients must be warned to report these symptoms at the start of treatment.", src:"BNF carbimazole (CSM warning)"},
-         {tone:"red", h:"Clozapine", html:"Neutropenia and agranulocytosis are the reason for mandatory blood monitoring via the clozapine monitoring service. Fever, sore throat or flu-like illness → urgent FBC and contact the mental health team, following the local clozapine monitoring service. Any unwell patient with possible sepsis needs emergency clinical assessment. Do not independently stop clozapine in a clinically stable patient without specialist advice. Consider myocarditis, pneumonia and other causes of fever, especially early in treatment. Smoking cessation can increase clozapine levels and may need dose review.", src:"BNF clozapine monograph · clozapine SmPC"},
+         {tone:"red", h:"Carbimazole / propylthiouracil — agranulocytosis", html:"Sore throat, mouth ulcers, fever or malaise on an antithyroid drug → <b>stop the drug</b> and check an <b>urgent same-day FBC with neutrophil count</b> (the total white count can look normal). Immediate emergency assessment (ED or medical take; 999 if shocked) if systemically unwell or septic. Do not restart the drug if agranulocytosis is confirmed without specialist advice. Patients must be warned to report these symptoms at the start of treatment.", src:"BNF carbimazole (CSM warning)"},
+         {tone:"red", h:"Clozapine", html:"Neutropenia and agranulocytosis are the reason for mandatory blood monitoring via the clozapine monitoring service. Fever, sore throat or flu-like illness → urgent same-day FBC and contact the mental health team, following the local clozapine monitoring service. Any unwell patient with possible sepsis needs emergency clinical assessment. Do not independently stop clozapine in a clinically stable patient without specialist advice. Consider myocarditis, pneumonia and other causes of fever, especially early in treatment. Smoking cessation can increase clozapine levels and may need dose review.", src:"BNF clozapine monograph · clozapine SmPC"},
          {tone:"amber", h:"Conventional synthetic DMARDs", html:"Methotrexate, azathioprine, leflunomide, sulfasalazine, mycophenolate: fever or infection with a low neutrophil count → follow the drug-specific shared-care protocol and contact the specialist team urgently about temporary withholding and restart — not every immunosuppressant has identical interruption rules. Methotrexate toxicity with mucositis is a classic neutropenic presentation.", src:"BSR 2025 csDMARD guideline"},
          {tone:"amber", h:"Other immunosuppression", html:"Biologics, JAK inhibitors, high-dose steroids, post-transplant immunosuppression: NICE NG253 and NG254 ask you to use clinical judgement about neutropenia risk in anyone unwell on (or recently off) immunosuppressants for non-cancer reasons. Follow the drug-specific protocol and contact the specialist team; do not independently stop transplant immunosuppression or antiretroviral therapy.", src:"NICE NG253 · NICE NG254"}
        ]},
@@ -185,7 +185,7 @@ MG.render({
          ["Shock or hypotension, new confusion or reduced consciousness, severe breathlessness or hypoxia, peri-arrest, rapid deterioration, NEWS2 high, or unable to travel safely","<b>Immediate — 999</b>","ED (pre-alert)","Cancer, regimen, last dose, line, obs, allergies"],
          ["Unwell or febrile, stable, on/within 30 days of SACT","<b>Immediate</b>","Acute oncology hotline (number from the alert card) → named unit or ED, per the local Greater Manchester pathway","As above + alert card"],
          ["Child on cancer treatment, unwell or febrile","<b>Immediate</b>","Shared-care unit / PTC open access; 999 if shocked, drowsy or in respiratory distress","Treatment protocol, last dose, line"],
-         ["Unwell on clozapine, carbimazole, csDMARD","<b>Same hour if unwell</b>; urgent FBC if well","ED/medical take; specialist team informed","Drug, dose, duration, last monitoring result"],
+         ["Unwell on clozapine, carbimazole, csDMARD","<b>Same hour if unwell</b>; urgent same-day FBC if well","ED/medical take; specialist team informed","Drug, dose, duration, last monitoring result"],
          ["Suspected immunotherapy toxicity","<b>Same day</b> (immediate if unstable)","Acute oncology hotline","Agent, start date, symptoms, obs"]
        ]},
        {b:"cards", cols:2, items:[

@@ -17,7 +17,7 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({
+MG.render({ snapshot:"summaries/obesity.html",
   icon:"⚖️",
   title:"Obesity — the complete guide",
   eyebrow:"Protocol · NICE NG246 · TA875 · TA1026 · a chronic relapsing disease, not willpower",
@@ -119,13 +119,13 @@ MG.render({
          ["<b>Weight, waist and goals</b>","<b>Regularly</b>","Reinforce, adjust, and expect and normalise relapse — re-engage rather than discharge"],
          ["<b>Cardiometabolic</b>","<b>Annually, more often if abnormal</b>","HbA1c, blood pressure, lipids and QRISK3, MASLD via FIB-4 — each treated to its own target"],
          ["<b>Drug therapy</b>","<b>Per the agent's schedule</b>","Efficacy against the agent's review rule (at least 5%), side effects, pregnancy plans and contraception, local funding criteria, and a maintenance plan for when treatment stops"],
-         ["<b>Post-bariatric</b>","<b>Per the shared-care protocol</b>","Bariatric service for at least 2 years, then lifelong annual shared-care monitoring with micronutrients per the specialist/BOMSS protocol; new abdominal pain → urgent surgical review"],
+         ["<b>Post-bariatric</b>","<b>Per the shared-care protocol</b>","Bariatric service for at least 2 years, then lifelong annual shared-care monitoring with micronutrients per the specialist/BOMSS protocol; new or severe abdominal pain → same-day emergency surgical assessment (A&amp;E)"],
          ["<b>Mood and eating</b>","<b>As needed</b>","Re-assess — treat depression and binge-eating disorder in their own right, alongside weight-management care"]
        ]},
        {b:"say", html:"We will keep an eye on the things the weight affects — sugars, blood pressure, liver and sleep — because improving those is the real win. If we use medication or surgery, they come with their own follow-up, and I will keep that going with you long-term."},
        {b:"cards", items:[
-         {tone:"red", h:"🔴 Post-bariatric emergency", html:"\"Severe or persistent tummy pain after weight-loss surgery, vomiting or being unable to keep fluids down, a fast heartbeat, fever, bleeding or collapse — same-day or A&amp;E, and tell them about your surgery. Some complications, such as a twisted or blocked bowel after a bypass, are urgent.\""},
-         {tone:"amber", h:"💉 GLP-1 side effects", html:"\"Nausea is common early and settles as we go up slowly. Severe ongoing tummy pain — contact us; rarely it is the pancreas or gallbladder.\""},
+         {tone:"red", h:"🔴 Post-bariatric emergency", html:"\"Severe or persistent tummy pain after weight-loss surgery, vomiting or being unable to keep fluids down, a fast heartbeat, fever or bleeding — go to A&amp;E straight away, or call 999 if you collapse, and tell them about your surgery. Some complications, such as a twisted or blocked bowel after a bypass, are urgent.\""},
+         {tone:"amber", h:"💉 GLP-1 side effects", html:"\"Nausea is common early and settles as we go up slowly. Severe tummy pain that does not go away, which may spread to your back, with or without being sick — get urgent medical help the same day (NHS 111 or A&amp;E if we are closed); rarely it is the pancreas or gallbladder.\""},
          {tone:"amber", h:"🤰 Pregnancy", html:"\"These injections are not used in pregnancy. If you are planning a pregnancy, they need stopping in advance — at least 2 months before for semaglutide and at least 1 month before for tirzepatide — and if you become pregnant, stop and tell us. Tirzepatide can reduce how well the pill works after starting and after each dose increase, so use a non-pill or barrier method during those times.\""},
          {tone:"red", h:"🌐 Online supply", html:"\"Please do not buy these injections from unregulated websites — wrong doses without monitoring cause real harm.\""}
        ]}

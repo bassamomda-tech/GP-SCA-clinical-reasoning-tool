@@ -17,7 +17,7 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({
+MG.render({ snapshot:"summaries/menieres.html",
   icon:"\u{1F442}",
   title:"Ménière's disease — the complete guide",
   eyebrow:"Protocol · diagnose &amp; manage in one place",
@@ -62,7 +62,7 @@ MG.render({
        {b:"dl", rows:[
          ["<b>Central vertigo / stroke (NICE NG127)</b>","Vertical or direction-changing nystagmus, new neurological symptoms, persistent severe ataxia, diplopia, new unilateral hearing loss, severe headache or neck pain → immediate stroke-pathway assessment. During a Ménière's attack nystagmus is usually horizontal, but do not reassure from peripheral-looking nystagmus alone. <b>HINTS is only for sudden-onset acute vestibular syndrome</b> (continuous vertigo, nausea or vomiting and gait unsteadiness) and only if performed by a clinician trained and experienced in the test — not for episodic Ménière's attacks, BPPV or intermittent dizziness"],
          ["<b>Ramsay Hunt</b>","Vertigo with ear pain and vesicles ± facial palsy → same-day assessment"],
-         ["<b>Bacterial labyrinthitis / cholesteatoma</b>","Otalgia, discharge, systemic upset, attic crust → urgent ENT"],
+         ["<b>Bacterial labyrinthitis / cholesteatoma</b>","Otalgia, discharge, systemic upset, attic crust → same-day ENT (seen within 24 hours)"],
          ["<b>Cardiac and drug causes</b>","Pre-syncope or arrhythmia; ototoxic drugs (aminoglycosides, loop diuretics, cisplatin). Lying and standing BP and pulse"],
          ["<b>Cancer</b>","Do not use a suspected-cancer pathway simply because vestibular schwannoma is being considered — follow the ENT/audiovestibular MRI pathway. Apply NICE NG12 separately if there are independent head-and-neck cancer features"]
        ]}
@@ -120,7 +120,7 @@ MG.render({
      blocks:[
        {b:"ladder", steps:[
          {step:"Acute", title:"Limited vestibular suppressant or antiemetic", when:"the attack only",
-          html:"<b>Prochlorperazine 5 mg PO TDS</b>, or buccal 3–6 mg BD, or an antihistamine — <b><span class='rx'>cyclizine 50 mg TDS</span></b> or <b><span class='rx'>cinnarizine 30 mg TDS</span></b>. Check doses against the current SPC and local formulary. Use one principal antiemetic or vestibular suppressant initially and review if symptoms are not controlled — do not stack sedating medicines or give them as an automatic combination. Avoid routine continuation between attacks: sedation, falls and impaired vestibular compensation may worsen persistent imbalance. Cautions: older adults; Parkinson's disease or extrapyramidal symptoms (prochlorperazine); glaucoma and urinary retention; QT-prolonging medicines; sedation and falls; driving and safety-critical work. Severe vomiting, dehydration, inability to mobilise or inability to retain oral treatment → acute medical assessment."},
+          html:"<b>Prochlorperazine 5 mg PO TDS</b>, or buccal 3–6 mg BD, or an antihistamine — <b><span class='rx'>cyclizine 50 mg TDS</span></b> or <b><span class='rx'>cinnarizine 30 mg TDS</span></b>. Check doses against the current SPC and local formulary. Use one principal antiemetic or vestibular suppressant initially and review if symptoms are not controlled — do not stack sedating medicines or give them as an automatic combination. Avoid routine continuation between attacks: sedation, falls and impaired vestibular compensation may worsen persistent imbalance. Cautions: older adults; Parkinson's disease or extrapyramidal symptoms (prochlorperazine); glaucoma and urinary retention; QT-prolonging medicines; sedation and falls; driving and safety-critical work. Severe vomiting, dehydration, inability to mobilise or inability to retain oral treatment → same-day acute medical assessment."},
          {step:"Maintenance", title:"Time-limited trial after specialist assessment", when:"recurrent attacks",
           fromLabel:"evidence limited",
           html:"After ENT or audiovestibular assessment, a time-limited trial of <b>betahistine</b> may be considered in selected patients (dose per specialist or local plan, commonly 16 mg TDS) — explain that evidence of benefit is uncertain. Review attack frequency, severity, hearing and patient-reported benefit after an <b>agreed period</b>; stop if ineffective. <b>Contraindicated in phaeochromocytoma</b>; caution in <b>asthma</b> and <b>active or previous peptic ulcer disease</b>; GI adverse effects; consider interactions with antihistamines and monoamine oxidase inhibitors. Do not offer betahistine for tinnitus alone (NICE NG155)."},
@@ -140,7 +140,7 @@ MG.render({
          ["Attack frequency and severity","Each review","Refer if disabling"],
          ["Hearing — serial audiometry","Via ENT or audiology","Track change; hearing support as needed"],
          ["<b>Maintenance benefit</b>","<b>At the agreed review point</b>","Continue only if helping — not on repeat by default"],
-         ["<b>The diagnosis</b>","If features change","New asymmetry or progression → imaging per criteria; central signs → urgent reassessment"],
+         ["<b>The diagnosis</b>","If features change","New asymmetry or progression → imaging per criteria; central signs → 999 / emergency stroke pathway"],
          ["Mood","Each review","Screen and treat anxiety and depression"],
          ["Driving and occupation","Each review","Reinforce and document the advice"]
        ]},

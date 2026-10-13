@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Age-related macular degeneration — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/macular-degeneration.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/macular-degeneration.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../macular-degeneration.html">← Full AMD protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Age-related macular degeneration — the GP's part</h1>
+      <div class="scope"><b>For:</b> adults with new central distortion or blur, or known AMD under a macula service. <b>Not for:</b> grading AMD or choosing anti-VEGF — the macula service decides. Sudden profound loss, curtain or floaters → same-day eye pathways; suspected GCA → <a href="../giant-cell-arteritis.html">GCA protocol</a>. AMD is not a suspected-cancer pathway condition.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG82 (2018)</span><span>NICE QS180 (2019)</span><span>NICE TA155, TA294, TA672, TA800, TA1022</span><span>GMMMG anti-VEGF statement (Oct 2025)</span><span>DVLA visual disorders</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> new distortion or central blur in an older adult is suspected wet active AMD until the macula service says otherwise — refer within 1 working day, even with a ‘dry’ label, and never delay referral to test.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>New distortion, central blur or grey patch, or a fall in reading vision</b> → <span class="when wurg">Urgent ≤1 working day</span> macula service via the local direct route (optometrist with OCT or rapid-access clinic), even if vision seems fine; not A&amp;E.</li>
+          <li><b>Known AMD (even ‘dry’ or ‘inactive’) with new distortion or a drop in vision</b> → <span class="when wurg">Urgent ≤1 working day</span> macula service directly via the clinic-letter route.</li>
+          <li><b>Sudden profound painless loss, a curtain or field defect, or new flashes with a shower of floaters</b> → <span class="when wsd">Same-day eye assessment</span>. Retinal artery occlusion or transient monocular loss → also stroke/TIA pathway immediately (specialist within 24 hours).</li>
+          <li><b>Over 50, visual symptoms plus headache, scalp tenderness, jaw claudication, constitutional or polymyalgia symptoms</b> (GCA) → <span class="when wsd">Same-day</span> assessment, inflammatory markers, <b>start corticosteroids immediately</b> per local GCA pathway.</li>
+          <li><b>After an intravitreal injection: severe or increasing pain, marked redness, photophobia, worse vision or more floaters</b> → <span class="when wsd">Same-day</span> treating eye unit's emergency line.</li>
+          <li><b>Suspected retinal vein occlusion</b> → <span class="when w7">Urgent ≤1 week</span> ophthalmology; same day if severe loss, neovascularisation, severe pain or raised pressure.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— the eye service confirms, not the GP</small></h2>
+        <div class="body">
+          <p><b>OCT</b> confirms; angiography only if OCT does not exclude neovascular disease. A distorted <b>Amsler</b> grid supports referral; a <b>normal grid does not rule out</b> wet AMD.</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— without delaying referral</small></h2>
+        <div class="body">
+          <p>☐ Onset: days–weeks (wet) vs months–years &nbsp;☐ Each eye separately (cover one) &nbsp;☐ Acuity each eye with usual glasses or pinhole, if available &nbsp;☐ Other causes: diabetic macular oedema, vascular occlusion, detachment, optic neuropathy, recent cataract surgery, hydroxychloroquine &nbsp;☐ Function, falls, driving, mood &nbsp;☐ Hallucinations</p>
+          <p><b>Don't miss:</b> a ‘dry AMD’ letter does not mean the eye cannot convert to wet.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— the conversations primary care owns</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Smoking</b> is the most clearly modifiable risk → offer stop-smoking support at every contact, especially with one eye affected.</li>
+            <li><b>Supplements:</b> NICE does not recommend routine antioxidant or zinc; don't initiate or prescribe AREDS-type preparations routinely. Self-purchase → discuss with the eye service; <b>no beta-carotene</b> in current or previous smokers.</li>
+            <li><b>Hallucinations</b> with insight → name <b>Charles Bonnet syndrome</b>; not dementia or psychosis on its own. Insight lost → look for other causes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TYPES -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Which type <small>— NG82 language on clinic letters</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Category</th><th>GP action</th></tr>
+            <tr><td>Early/intermediate</td><td>Smoking, CV risk, routine optometry</td></tr>
+            <tr><td>Late dry (atrophy)</td><td>Low-vision support; can still convert</td></tr>
+            <tr><td>Wet active (suspected)</td><td>Macula service ≤1 working day</td></tr>
+            <tr><td>Wet inactive/scarred</td><td>Eye-service plan; not ‘dry AMD’</td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— specialist-led (NG82)</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Start</span>Anti-VEGF <b>within 14 days of referral</b> (NG82; QS180) — chase a referral that has gone quiet</div>
+            <div class="step"><span class="sl">Agent</span>Macula service decides eligibility and choice per NICE TA, SPC and GMMMG statement</div>
+            <div class="step"><span class="sl">Worse than 6/96</span>May be considered if overall visual function should improve (e.g. better-seeing eye)</div>
+            <div class="step s4"><span class="sl">Not offered</span>Photodynamic therapy alone or as first-line adjunct; any drug for late dry AMD</div>
+          </div>
+          <ul>
+            <li><b>Don't recommend a specific agent</b> or imply a newer one is better. Doses per SPC, BNF and local formulary.</li>
+            <li><b>Brolucizumab:</b> intraocular inflammation, retinal vasculitis and occlusion.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor <small>— keep them in treatment</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Intervals</b> set by the macula service; missed visits risk reactivation and permanent loss. Ask about falls, mood, loneliness.</li>
+            <li>Help with transport, carers, injection anxiety, clashing appointments.</li>
+            <li><b>Fellow eye</b> is at risk: teach checking each eye separately; act on new distortion the same way.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— routine; urgent ones are in block 0</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Gradual central loss without distortion</b> → optometrist review, referral per local pathway.</li>
+            <li><b>Low-vision clinic</b> (registration not required), ECLO, council rehabilitation, sight-loss charities.</li>
+            <li><b>CVI</b> as soon as eligible, even during treatment (QS180).</li>
+            <li><b>DVLA (patient's duty):</b> car — AMD in <b>both eyes</b> or only seeing eye; bus or lorry — <b>one or both eyes</b>. Below 6/12 both eyes or 20 m plate → must not drive. Advise and document.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A routine letter, A&amp;E or the next routine review for suspected wet AMD.</li>
+          <li>Delay referral for acuity or Amsler, or be reassured by a normal Amsler grid.</li>
+          <li>Accept ‘dry AMD, nothing to be done’ as a reason to ignore new distortion.</li>
+          <li>Prescribe AREDS-type supplements routinely, or beta-carotene to smokers or ex-smokers.</li>
+          <li>Let an AMD label distract from GCA, retinal artery occlusion or detachment.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when wsd">Same day</span> <span class="say">“If straight lines ever start to bend or a new smudge appears, ring the eye clinic the same day, not at your next appointment. If it gets suddenly much worse, or you see a curtain or lots of new floaters, contact us or the eye unit straight away.”</span> &nbsp;
+        <b>After injections:</b> <span class="say">“Severe pain, redness, light sensitivity or worse vision — call the eye unit's emergency number the same day.”</span> &nbsp;
+        <b>Driving:</b> <span class="say">“With AMD in both eyes you must tell the DVLA.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 red flags excluded</span>
+        <span>Referred ≤1 working day or same day</span>
+        <span>Each eye; other causes considered</span>
+        <span>Smoking, supplements, CBS, CVI</span>
+        <span>DVLA and safety-net documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../macular-degeneration.html">Reasoning GP age-related macular degeneration protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: NICE NG82 (2018); NICE QS180 (2019); NICE TA155, TA294, TA672, TA800, TA1022; GMMMG anti-VEGF commissioning statement (October 2025); MHRA Drug Safety Update (brolucizumab); BSR GCA guideline (2020); NICE NG128; DVLA visual disorders standards. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sick day rules — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/sick-day-rules.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/sick-day-rules.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../sick-day-rules.html">← Full sick day rules protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Sick day rules — medicines in acute illness</h1>
+      <div class="scope"><b>For:</b> adults on regular medicines with an acute dehydrating or febrile illness. <b>Not for:</b> managing established DKA (use the DKA protocol), insulin dose adjustment (use Feeling unwell on insulin), Addison's long-term care (Addison's protocol), or children (full protocol has emergency hydrocortisone doses).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>Think Kidneys 2018</span><span>JBDS 02 (2023)</span><span>MHRA SGLT2i</span><span>NICE NG243</span><span>Steroid Emergency Card</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> screen for DKA, AKI and adrenal crisis first; never stop basal insulin in type 1 diabetes; steroids go up, never down; hold SADMAN drugs only in significant dehydration — and write down when each one restarts.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— screen before deciding home is safe</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Blood ketones ≥3.0 mmol/L (or urine 2+) and unwell, or drowsy, Kussmaul breathing, abdominal pain</b> (DKA) → <span class="when w999">999</span> Do <b>not</b> stop insulin, including en route.</li>
+          <li><b>Older person with type 2 diabetes, glucose ≥30 mmol/L, marked dehydration, drowsy</b> (HHS) → <span class="when w999">999</span></li>
+          <li><b>Steroid-dependent with vomiting, drowsiness, hypotension, collapse or hyponatraemia</b> (adrenal crisis) → <b>hydrocortisone 100 mg IM/IV now</b>, then <span class="when w999">999</span> — do not wait for bloods.</li>
+          <li><b>Persistent vomiting or unable to keep fluids down</b> → <span class="when wsd">Admit now</span> for IV fluids ± insulin ± parenteral hydrocortisone.</li>
+          <li><b>Fever, sore throat or mouth ulcers</b> on carbimazole (stop it), clozapine (don't stop; clozapine service) or a DMARD → urgent assessment and FBC <span class="when wsd">Same-day</span>. Recent anticancer treatment or known neutropenia → <span class="when wsd">Immediate acute oncology</span> — don't wait for a community FBC.</li>
+          <li><b>Ketones 1.5–2.9</b> → <span class="when wurg">Urgent diabetes-team advice</span>; emergency assessment if rising, vomiting, unable to maintain fluids or unwell. <b>Oliguria or postural drop on SADMAN</b> → U&amp;E, same-day assessment if unwell. <b>NEWS2 ≥5</b> → urgent assessment per local sepsis pathway.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— is it a sick day? map the drug list</small></h2>
+        <div class="body">
+          <p>Sick day = <b>vomiting, diarrhoea, or fever with sweats and shaking</b>, with poor intake. A cold without fever → <b>no hold</b>; other drugs continue.</p>
+          <table>
+            <tr><th>Group</th><th>Action</th></tr>
+            <tr><td>Insulin</td><td>Never stop basal in type 1; dose per plan</td></tr>
+            <tr><td>SADMAN</td><td>Consider a temporary hold</td></tr>
+            <tr><td>Glucocorticoids</td><td><b>Increase</b> (block 5) — never hold</td></tr>
+            <tr><td>Levodopa, antiepileptics, transplant, HIV drugs</td><td>Don't omit; vomiting → same-day advice on route</td></tr>
+            <tr><td>Lithium, digoxin, DOAC, warfarin</td><td>Check level, INR or renal function</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check</h2>
+        <div class="body">
+          <p>☐ Glucose now, then 2–4 hourly (&lt;4 = hypo; no universal target) &nbsp;☐ Blood ketones if glucose &gt;11 mmol/L, unwell, or <b>on an SGLT2 inhibitor — a normal glucose does not exclude DKA</b> &nbsp;☐ Postural BP, urine output &nbsp;☐ U&amp;E if D&amp;V on SADMAN &nbsp;☐ Levels / INR &nbsp;☐ NEWS2 &nbsp;☐ Precipitant (infection, MI, pancreatitis)</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— home or admit</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Keeping fluids down and able to follow the plan</b> (not the glucose) → home, with a written plan and someone to help. <b>Lower threshold:</b> recent DKA, hypo unawareness, pregnancy, frailty, CKD, alone and worsening.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target <small>— blood ketones (mmol/L)</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>&lt;0.6</th><th>0.6–1.5</th><th>1.5–2.9</th><th>≥3.0</th></tr>
+            <tr><td>Normal</td><td>Recheck per plan</td><td>Correction per plan + urgent team advice</td><td>Emergency (block 0)</td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— continue · hold · increase</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Continue</span>Insulin (T1 basal never stopped; T2 per plan — may continue or reduce). Time-critical drugs.</div>
+            <div class="step"><span class="sl">Consider holding (SADMAN)</span><b>S</b>ulfonylurea · <b>S</b>GLT2i · <b>A</b>CEi · <b>D</b>iuretic · <b>M</b>etformin · <b>A</b>RB · <b>N</b>SAID (incl. OTC — use paracetamol)</div>
+            <div class="step s4"><span class="sl">Increase · steroids</span>Extra <b>20 mg hydrocortisone at once</b>, then <b>≥40 mg/day in 2–4 doses</b> (or prednisolone ≥10 mg/day) until recovered. On prednisolone ≥10 mg: no extra, split in 2.</div>
+            <div class="step s4"><span class="sl">Can't absorb</span>Persistent vomiting or diarrhoea → <b>100 mg hydrocortisone IM/IV</b> and emergency admission</div>
+          </div>
+          <ul>
+            <li><b>Heart failure:</b> no automatic diuretic or ACEi/ARB hold — seek advice early.</li>
+            <li><b>Steroid risk:</b> adrenal insufficiency; prednisolone ≥5 mg/day ≥4 weeks (any route); high-dose inhaled; recently stopped.</li>
+            <li><b>Lithium</b> + significant dehydration or toxicity → stop, urgent advice. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor <small>— restart drug by drug</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>SGLT2i:</b> recovered, eating and drinking, ketones normal. <b>Metformin:</b> eating and drinking, renal function satisfactory.</li>
+            <li><b>ACEi, ARB, diuretic:</b> by BP, volume, K⁺, renal function; recheck U&amp;E after AKI. <b>Sulfonylurea:</b> intake reliable. <b>NSAID:</b> not routinely.</li>
+            <li><b>Reconcile</b> after every illness or admission so held drugs are not lost.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— discuss</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Diabetes team:</b> ketones rising despite correction, insulin doubt, recurrent decompensation.</li>
+            <li><b>Specialist:</b> lithium toxicity, Parkinson's nil by mouth, DMARD in serious infection, transplant/HIV drugs with vomiting, steroid doubt.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Stop basal insulin in type 1 diabetes — even if not eating, even en route to hospital.</li>
+          <li>Accept a normal glucose as reassurance on an SGLT2 inhibitor — check ketones.</li>
+          <li>Hold or skip steroids in the steroid-dependent — increase them; when in doubt, give hydrocortisone.</li>
+          <li>Metoclopramide or prochlorperazine in Parkinson's disease.</li>
+          <li>Hold without a written restart plan, or a blanket hold list for a cold.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Being sick and can't keep fluids down, ketones 3 or more, drowsy or confused, deep fast breathing, tummy pain or collapse — call 999. On steroids and vomiting or very unwell — use your injection first.”</span> &nbsp;
+        <span class="when wsd">Same-day</span> <span class="say">“Ketones rising despite extra insulin, sugars very high or very low, passing less urine, or getting steadily worse — ring us today.”</span> &nbsp;
+        <b>Agranulocytosis drugs:</b> <span class="say">“Sore throat, mouth ulcers or a temperature — contact us the same day for a blood test.”</span> &nbsp;
+        <b>Restart:</b> <span class="say">“I've written down when to restart each paused tablet — some need a blood test first.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 emergencies excluded</span>
+        <span>Sick day confirmed; every drug mapped</span>
+        <span>Ketones, hydration and U&amp;E checked; pregnancy and frailty considered</span>
+        <span>Written plan: hold, continue, increase, restart dates</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../sick-day-rules.html">Reasoning GP sick day rules protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: Think Kidneys (2018); JBDS 02 (2023); MHRA Drug Safety Update (2016, 2020); NICE NG17, NG28, NG148, NG243 (2024); NatPSA Steroid Emergency Card (2020); BNF. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

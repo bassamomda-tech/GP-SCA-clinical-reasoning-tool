@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PCOS (PMOS) — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/pcos.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/pcos.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../pcos.html">← Full PCOS (PMOS) protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>PCOS, now PMOS</h1>
+      <div class="scope"><b>For:</b> women and adolescents with suspected or confirmed PCOS (polyendocrine metabolic ovarian syndrome). <b>Not for:</b> postmenopausal bleeding (NG12) or androgen excess after the menopause (endocrinology); ovulation induction is for fertility services.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>International PCOS guideline 2023</span><span>RCOG GTG 33</span><span>NICE NG257 · PH38 · NG246</span><span>UKMEC 2025</span><span>SfE 2025</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> ask how fast it came on and exclude the mimics before labelling PCOS, screen glucose, BP and lipids at every weight, and give endometrial protection when bleeds are 3–4 months apart or more.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— speed, severity and age at onset are the clues</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Rapid virilisation</b> (deep voice, clitoromegaly, temporal balding, hirsutism over months) <b>or testosterone above about 5 nmol/L</b> (reliable assay) → <span class="when wurg">Urgent endocrinology</span> (androgen-secreting tumour). No combined pill first — it masks it.</li>
+          <li><b>New hirsutism or scalp hair loss after the menopause</b> → check testosterone → <span class="when wurg">Urgent endocrinology</span> (hyperthecosis, tumour).</li>
+          <li><b>Postmenopausal bleeding aged 55+</b>, not attributable to HRT → <span class="when wurg">Suspected cancer pathway</span> (endometrial); under 55 → consider one. Pelvic or abdominal mass or ascites → ovarian suspected cancer pathway.</li>
+          <li><b>Low mood with suicidal thoughts or self-harm</b> → <span class="when wsd">Same-day crisis assessment</span>; <span class="when w999">999</span> if in immediate danger.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— two of three, after mimics are excluded</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Feature</th><th>What counts</th></tr>
+            <tr><td>Cycles</td><td>≥3 years post-menarche: &lt;21 or &gt;35 days or &lt;8 a year (1–3 years: &gt;45). Any &gt;90 days</td></tr>
+            <tr><td>Androgen excess</td><td>Ferriman–Gallwey ≥4–6 (by ethnicity), acne, female-pattern hair loss; or raised testosterone/FAI</td></tr>
+            <tr><td>Ovaries</td><td>≥20 follicles or ≥10 mL on transvaginal scan, or raised AMH (adults)</td></tr>
+          </table>
+          <p><b>Within 8 years of menarche</b>: needs cycles <b>and</b> androgen excess, no scan or AMH; not met → "increased risk", treat and reassess.</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— exclude mimics, then map the risks</small></h2>
+        <div class="body">
+          <p>☐ Pregnancy test ☐ Testosterone + FAI ☐ TSH ☐ Prolactin, 17-OHP, FSH/oestradiol if indicated ☐ 75 g OGTT (any BMI) ☐ Lipids ☐ BP, weight ☐ Mood, eating, sleep apnoea ☐ Bleeds in last year</p>
+          <p><b>Don't miss</b> Cushing's (striae, bruising, proximal weakness).</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— treat the goal she names</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Lifestyle for all</b>: modest weight loss may help if excess; preventing gain is valid. Screen for disordered eating first.</li>
+            <li><b>Cycles, hirsutism, acne</b> → combined pill first line if suitable and acceptable.</li>
+            <li><b>Adults, metabolic features</b> (esp. BMI ≥25) → consider metformin.</li>
+            <li><b>Weight medicines</b> → NICE TA875/TA1026 criteria and GMMMG position, not PCOS alone.</li>
+            <li><b>Wanting a baby</b> → folic acid, OGTT, stop the pill, refer early.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target <small>— goals and thresholds</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Goal</th><th>Threshold or action</th></tr>
+            <tr><td>Endometrium</td><td>No CHC/LNG-IUS → bleed at least every 3–4 months</td></tr>
+            <tr><td>HbA1c 42–47</td><td>Intensive lifestyle programme; yearly test</td></tr>
+            <tr><td>HbA1c ≥48</td><td>Confirm, then diabetes pathway</td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— cycles, endometrium, hair</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">First choice</span><b>Combined pill</b> (20–30 µg). UKMEC: BMI 30–34.9 = 2; ≥35 = 3</div>
+            <div class="step"><span class="sl">Alternative</span><b>LNG-IUS</b>, or <b>cyclical progestogen</b> (not contraceptive)</div>
+            <div class="step"><span class="sl">Facial hair</span>Cosmetic ± <b>eflornithine</b> twice daily; stop if no benefit at 4 months</div>
+            <div class="step s4"><span class="sl">Hair at ~6 months</span>Consider an <b>anti-androgen</b> or specialist advice, with effective contraception</div>
+          </div>
+          <ul>
+            <li><b>Before the pill:</b> BP, smoking, migraine with aura, VTE history. <b>Metformin:</b> renal function, start low.</li>
+            <li><b>Tirzepatide:</b> non-oral or added barrier method 4 weeks after start and each dose rise; stop ≥1 month before pregnancy (semaglutide 2 months).</li>
+            <li>Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>Yearly:</b> weight, BP, bleeds and endometrial plan, mood, eating, sleep, contraception, pregnancy plans.</li>
+            <li><b>Glucose</b> every 1–3 years (OGTT preferred). Lipids by result and CV risk.</li>
+            <li><b>Pregnancy:</b> OGTT before 20 weeks if not done before, and at 24–28 weeks.</li>
+            <li><b>Hair:</b> baseline score or photos; compare at 6 months.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— non-urgent (urgent in block 0)</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Trying to conceive</b>, anovulatory, aged 36+ or other factors → earlier fertility referral, not waiting 12 months.</li>
+            <li><b>Suspected mimic</b> or unclear adolescent → endocrinology (paediatric if under 16).</li>
+            <li><b>Persistent abnormal bleeding</b> or failed endometrial protection → gynaecology.</li>
+            <li><b>Hirsutism uncontrolled at 6 months</b> → endocrinology or dermatology advice.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A combined pill before testing when onset is rapid or virilising.</li>
+          <li>Scan or AMH within 8 years of menarche; routine endometrial scans.</li>
+          <li>Skip glucose screening because she is slim; leave long gaps between bleeds unprotected.</li>
+          <li>Anti-androgens or GLP-1/tirzepatide without effective contraception; letrozole in routine primary care.</li>
+          <li>Co-cyprindiol first line, for contraception alone or with another hormonal contraceptive.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when wurg">Urgent</span> <span class="say">“Voice deepening, hair growth speeding up over weeks to months, or body shape changing — contact us within a few days; don't wait for your review.”</span> &nbsp;
+        <span class="when w7">Within a week</span> <span class="say">“Any bleeding a year or more after your periods have stopped — contact us within a week.”</span> &nbsp;
+        <b>Combined pill:</b> <span class="say">“Painful, swollen leg — contact us the same day; chest pain or sudden breathlessness — call 999.”</span> &nbsp;
+        <b>Mood:</b> <span class="say">“Thoughts of harming yourself — contact us or NHS 111 the same day, or 999 if you are in immediate danger.”</span> &nbsp;
+        <span class="when wrt">Routine</span> <span class="say">“No period for over 3 months without a pill or coil protecting the womb lining, or bleeding between periods or after sex — book an appointment.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Speed of onset asked; block 0 red flags excluded</span>
+        <span>Two of three met; pregnancy, TSH and indicated mimics excluded</span>
+        <span>OGTT, BP, lipids, mood and eating screened; UKMEC checked</span>
+        <span>Endometrial plan, goal treatment, 6-month and yearly reviews booked</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../pcos.html">Reasoning GP PCOS (PMOS) protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: International evidence-based PCOS guideline 2023, RCOG Green-top 33 (2014), NICE NG257, PH38, NG246, TA875, TA1026 and NG12 (updated April 2026), UKMEC 2025, Society for Endocrinology 2025, MHRA and FSRH. The UK PMOS guideline is in development. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

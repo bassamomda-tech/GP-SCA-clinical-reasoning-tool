@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breast cancer — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/breast-cancer.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/breast-cancer.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../breast-cancer.html">← Full breast cancer protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Breast cancer</h1>
+      <div class="scope"><b>For:</b> adults with a breast or axillary symptom, people with a family history, and people on breast cancer treatment or follow-up in primary care. <b>Not for:</b> benign inflammatory breast disease (use the <a href="../mastitis-breast-abscess.html">mastitis and breast abscess protocol</a>), or bilateral milky discharge (galactorrhoea — prolactin and drug review).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG12</span><span>NICE CG164</span><span>NICE NG101</span><span>MHRA tamoxifen/CYP2D6</span><span>NHS Breast Screening</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> an unexplained breast lump at 30 or over is a suspected cancer pathway referral however benign it feels — refer the symptom, never primary-care imaging instead, and never let a family history or a normal test delay it.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Unwell, febrile, rigoring or abnormal temperature on anticancer treatment</b> → acute oncology <span class="when wsd">Immediately</span> — possible neutropenic sepsis; not 38°C alone.</li>
+          <li><b>Bone or back pain with neurological symptoms or signs</b> (cord compression) → MSCC coordinator or acute oncology <span class="when wsd">Immediately</span>.</li>
+          <li><b>Suspected DVT or PE on tamoxifen</b> → <span class="when wsd">Same-day</span> assessment.</li>
+          <li><b>Unexpected vaginal bleeding</b> (esp. postmenopausal) or <b>new visual symptoms</b> on tamoxifen → <span class="when wurg">Urgent</span> gynaecology/specialist.</li>
+          <li><b>Any NG12 criterion (block 1)</b>, incl. a new lump after treatment — never assume scar tissue → <span class="when wurg">Suspected cancer pathway</span></li>
+          <li><b>Breast erythema, oedema or rapid inflammatory change</b> not settling promptly with treatment, or atypical → <span class="when wurg">Urgent breast assessment</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— apply the NG12 criteria exactly</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Finding</th><th>NG12 (suspected cancer pathway)</th></tr>
+            <tr><td>Aged ≥30, unexplained breast lump, ± pain</td><td><b>Refer</b></td></tr>
+            <tr><td>Aged ≥50, discharge, retraction or other concerning change in <b>one</b> nipple only</td><td><b>Refer</b></td></tr>
+            <tr><td>Skin changes suggesting cancer (peau d'orange, tethering, ulceration, Paget's)</td><td><b>Consider</b> referral</td></tr>
+            <tr><td>Aged ≥30, unexplained axillary lump</td><td><b>Consider</b> referral</td></tr>
+            <tr><td>Aged &lt;30, unexplained breast lump</td><td><b>Consider</b> non-urgent referral</td></tr>
+            <tr><td>Spontaneous unilateral or bloodstained discharge &lt;50; non-resolving mastitis; nipple eczema not settling</td><td>Clinical grounds (local pathway)</td></tr>
+          </table>
+          <p><b>Unexplained</b> = no satisfactory diagnosis after history and examination; a benign feel does not remove the referral.</p>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— for the referral letter</small></h2>
+        <div class="body">
+          <p>☐ Chaperone offered, documented &nbsp;☐ Both breasts, sitting and lying &nbsp;☐ Axillary, supraclavicular nodes &nbsp;☐ Discharge spontaneous or expressed &nbsp;☐ Pregnancy/lactation, menopause, implants, past cancer or radiotherapy, COCP/HRT &nbsp;☐ Family history</p>
+          <p><b>Don't</b> order a mammogram instead of referring — a normal one does not exclude cancer.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— familial risk is CG164, not NG12</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Three-generation family history, both sides</b> → local familial pathway or validated tool, not a “three relatives” rule. CG164 thresholds include BRCA probability ≥10%, risk &gt;8% at 40–50, lifetime ≥30%. No genetic testing without counselling.</li>
+            <li><b>Chemoprevention</b> (specialist): high risk → offer tamoxifen (premenopausal) or anastrozole (postmenopausal, unless severe osteoporosis) for 5 years; moderate risk (lifetime 17–30%) → consider. Cuts incidence; mortality benefit not shown.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— oncology leads; GP supports the care plan</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">ER+ premenopausal</span>Tamoxifen 20 mg OD; duration per oncology</div>
+            <div class="step"><span class="sl">ER+ postmenopausal</span>Anastrozole 1 mg, letrozole 2.5 mg or exemestane 25 mg OD; confirm menopause (FSH)</div>
+            <div class="step"><span class="sl">Ovarian suppression</span>Goserelin or leuprorelin, continued as oncology plans</div>
+            <div class="step s4"><span class="sl">HER2+</span>Trastuzumab 12 months; heart checks before and 3-monthly</div>
+          </div>
+          <ul>
+            <li><b>Tamoxifen:</b> avoid paroxetine, fluoxetine (CYP2D6) where possible; agree an alternative with oncology.</li>
+            <li><b>Contraception:</b> no hormonal method in current breast cancer unless the specialist advises — offer non-hormonal.</li>
+            <li>Hot flushes: venlafaxine (HRT usually contraindicated in ER+). Doses per BNF/local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor <small>— follow the written oncology care plan</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Mammography</b> yearly for 5 years (incl. DCIS); no routine bloods, markers or scans if well.</li>
+            <li><b>Tamoxifen:</b> bleeding, clots, mood, adherence; LFTs only if the plan says; CYP2D6 drugs at each change.</li>
+            <li><b>Aromatase inhibitor:</b> fracture risk, bone density per local guidance; bone protection not automatic; joint pain → paracetamol/NSAID.</li>
+            <li><b>Suspected recurrence</b> (bone pain, lump, nodes, chest or neuro symptoms) → FBC, U&amp;E, LFTs, calcium, LDH; consider CXR.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— routine</small></h2>
+        <div class="body">
+          <ul>
+            <li>Breast clinic: unexplained lump &lt;30; large fibroadenoma, recurrent cysts.</li>
+            <li>Genetics per CG164/local criteria — never instead of an NG12 referral.</li>
+            <li>Breast care nurse, Breast Cancer Now, Macmillan; fertility before chemotherapy.</li>
+            <li><b>Screening</b> 50–71 three-yearly (over 71 on request) — never instead of referral.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>“Watch and wait” an unexplained lump at 30 or over because it feels benign.</li>
+          <li>Let a benign or normal test override persistent clinical concern.</li>
+          <li>Paroxetine or fluoxetine with tamoxifen where an alternative exists.</li>
+          <li>An aromatase inhibitor in a premenopausal woman without confirmed ovarian suppression.</li>
+          <li>Stop the COCP or HRT before the diagnosis is known.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><b>Referral:</b> <span class="say">“Most people referred urgently do not have cancer; this is because of the symptom. No breast-clinic appointment within 2 weeks — contact us. Any new or worsening symptom — tell us straight away.”</span> &nbsp;
+        <b>On chemotherapy:</b> <span class="when wsd">Immediately</span> <span class="say">“Feverish, shivery or unwell — ring the acute oncology line straight away.”</span> &nbsp;
+        <b>Endocrine therapy:</b> <span class="say">“New bone pain that does not settle, or a new lump — see me within a week. Back pain with weakness, numbness or bladder or bowel problems — contact us or the acute oncology line straight away.”</span> &nbsp;
+        <b>Breast awareness:</b> <span class="say">“Any new lump, skin or nipple change or armpit swelling — report it straight away.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 red flags excluded</span>
+        <span>NG12 criteria applied exactly; referral made</span>
+        <span>Chaperoned exam incl. nodes; letter complete</span>
+        <span>Family history and CG164 route; contraception checked</span>
+        <span>Safety-net and 2-week appointment check documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../breast-cancer.html">Reasoning GP breast cancer protocol</a>, which holds the detail, evidence and referral-letter checklist. Sources: NICE NG12, CG164, NG101, NG234; MHRA Drug Safety Update; NHS Breast Screening Programme. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

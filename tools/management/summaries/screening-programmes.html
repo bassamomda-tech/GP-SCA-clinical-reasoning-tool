@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK screening programmes — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/screening-programmes.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/screening-programmes.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../screening-programmes.html">← Full screening programmes protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>UK screening programmes (England)</h1>
+      <div class="scope"><b>For:</b> asymptomatic people eligible for NHS population, targeted or opportunistic screening in England. <b>Not for:</b> anyone with symptoms (use the diagnostic or suspected cancer pathway, NICE NG12), or specialist enhanced surveillance (BRCA, Lynch, FH — clinical genetics or lipid service). Local programme details need local confirmation.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>GOV.UK NHS screening programmes</span><span>NHSCSP</span><span>NICE NG12</span><span>NG156</span><span>CG164</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> screening is for people without symptoms — symptoms override any screening result, abnormal screens are actioned by the programme, and the practice closes the loop on every one.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— symptoms override a screening result</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Symptomatic or tender AAA</b> → emergency: <span class="when w999">999</span> immediate transfer to the regional vascular service (not the 2-week pathway).</li>
+          <li><b>New visual symptoms in diabetes</b> → <span class="when wsd">Same-day</span> clinical assessment (sudden loss of vision → same-day eye service); do not wait for routine DES. Act on urgent DESP advice.</li>
+          <li><b>Symptoms despite a normal or recent screen</b> (breast lump, rectal bleeding, suspicious cervix, postmenopausal bleeding meeting NG12 criteria, symptomatic FIT ≥10 µg Hb/g) → <span class="when wurg">Suspected cancer pathway</span>. Postcoital bleeding → assess and refer per local gynaecology pathway.</li>
+          <li><b>Pregnant and not booked for antenatal screening by 10 weeks</b> → <span class="when wurg">Urgent maternity referral</span> (sickle cell/thalassaemia ideally by 10 weeks; combined test 11+2 to 14+1 weeks).</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Eligible? <small>— national programmes, England</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Programme</th><th>Who · interval</th></tr>
+            <tr><td>Cervical (HPV)</td><td>Cervix, 25–64: 5-yearly if HPV-negative (25–49 too, since 1 July 2025); HPV+ → shorter recall</td></tr>
+            <tr><td>Breast</td><td>50 to 71st birthday, 3-yearly; 71+ self-refer</td></tr>
+            <tr><td>Bowel (FIT)</td><td>50–74, 2-yearly; 75+ on request</td></tr>
+            <tr><td>AAA</td><td>Men, once around 65 (ultrasound)</td></tr>
+            <tr><td>Diabetic eye</td><td>Diabetes, 12+: 1–2-yearly, set by DESP</td></tr>
+            <tr><td>Antenatal</td><td>Every pregnancy, at defined gestations</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— when the record or consultation allows</small></h2>
+        <div class="body">
+          <p>☐ Symptoms asked &nbsp;☐ Eligible and up to date &nbsp;☐ Diabetes registered with DESP &nbsp;☐ CIN treatment coded &nbsp;☐ Learning disability health check: screening status</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— informed choice, equitable uptake</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Explain</b> benefits, limits, false results and the right to decline; record a decline without coercion.</li>
+            <li><b>Offer opportunistically</b>; interpreters, reasonable adjustments.</li>
+            <li><b>NHS Health Check</b> 40–74, 5-yearly: QRISK3 ≥10% → shared discussion, then offer atorvastatin 20 mg (NG238).</li>
+            <li><b>TLHC</b> via local case-finding only · <b>HIV opt-out</b> where commissioned · <b>hepatitis B/C</b> in UKHSA risk groups.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>AAA result <small>— screening ultrasound</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Aorta</th><th>Action</th></tr>
+            <tr><td>3.0–5.4 cm</td><td>Programme surveillance (4.5–5.4 cm 3-monthly) + regional vascular service within 12 weeks</td></tr>
+            <tr><td>5.5+ cm, or growth &gt;1 cm/year</td><td>Vascular referral (5.5+ cm within 2 weeks)</td></tr>
+          </table>
+          <p>Stop smoking; BP (NG136) and statin. Incidental AAA → vascular (NG156).</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Act on results <small>— the programme owns abnormal screens</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>HPV+, cytology negative</b> → retest at 12 months (not routine recall); persistent HPV → colposcopy per national pathway.</li>
+            <li><b>HPV+, cytology abnormal</b>, or two consecutive inadequate samples → colposcopy via NHSCSP.</li>
+            <li><b>After CIN treatment</b> → test of cure about 6 months: HPV-negative → recall in 3 years; HPV-positive → back to colposcopy.</li>
+            <li><b>Abnormal screening FIT</b> → hub arranges specialist screening practitioner and colonoscopy; don't duplicate referral unless symptomatic (helpline 0800 707 6060).</li>
+            <li><b>Breast recall</b> → breast screening service; GP referral only if symptomatic or asked.</li>
+            <li><b>DESP R1</b> → DESP recall, no ophthalmology referral; optimise HbA1c, BP, lipids, smoking.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Close the loop</h2>
+        <div class="body">
+          <ul>
+            <li><b>Every abnormal result, record:</b> result received, action, who is responsible, patient informed, referral receipt confirmed, outcome, follow-up plan.</li>
+            <li>Electronic recall to check the outcome; fail-safe for non-attenders. A referral sent but not received is a patient safety event.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— specialist-led, not population screening</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Family history</b> of breast/ovarian, pancreatic or prostate cancer meeting NICE CG164 criteria → clinical genetics or family-history service.</li>
+            <li><b>MMR-deficient tumour</b>, suspected or confirmed Lynch, or FAP → clinical genetics. Lynch aspirin only after specialist discussion.</li>
+            <li><b>Suspected FH</b> (total cholesterol &gt;7.5 mmol/L or LDL-C &gt;4.9 mmol/L, secondary causes excluded; Simon Broome or DLCN) → lipid/genetics service.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Reassure a symptomatic patient with a normal or recent screen.</li>
+          <li>Confuse screening FIT with symptomatic FIT (≥10 µg Hb/g, NG12).</li>
+          <li>Duplicate a referral the programme (hub, breast service, colposcopy, DESP) already owns, unless symptomatic or asked.</li>
+          <li>Discharge to routine recall straight after CIN treatment or a previous HPV-positive result.</li>
+          <li>Start aspirin 600 mg daily for Lynch syndrome in primary care, or set up ad hoc TLHC referral routes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><b>Everyone:</b> <span class="say">“Screening is for people without symptoms. A new breast lump, bleeding from the bottom, or bleeding after sex or the menopause — see us now; don't wait for your next screen.”</span> &nbsp;
+        <b>AAA:</b> <span class="say">“New pain or tenderness in your tummy — call 999.”</span> <span class="when w999">999</span> &nbsp;
+        <b>Diabetes:</b> <span class="say">“Any new change in your sight — contact us the same day.”</span> &nbsp;
+        <b>Abnormal result:</b> <span class="say">“A positive result means a closer look, not cancer.”</span> &nbsp;
+        <b>After colonoscopy:</b> <span class="say">“Significant bleeding, fever or severe tummy pain — come back immediately.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Symptoms asked; block 0 actioned</span>
+        <span>Eligibility and screening status checked</span>
+        <span>Informed choice; decline recorded</span>
+        <span>Abnormal result owner and recall set</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../screening-programmes.html">Reasoning GP UK screening programmes protocol</a>, which holds the detail, evidence and programme notes. Sources: GOV.UK NHS screening programmes; NHSCSP programme and colposcopy management; NICE NG12, NG156, CG164, NG238, NG242, NG60, NG136; BSG/ACPGBI/UKCGG 2019; UKHSA. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

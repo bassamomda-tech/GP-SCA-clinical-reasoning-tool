@@ -18,7 +18,7 @@
 <script src="../../assets/management-engine.js?v=22"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 <script>
-MG.render({
+MG.render({ snapshot:"summaries/varicocele.html",
   icon:"🔵",
   title:"Varicocele",
   eyebrow:"Protocol · assess and manage in one place",
@@ -140,15 +140,15 @@ MG.render({
          {n:"1", when:"First visit", title:"Examine, grade and decide", html:"Typical: explain and offer conservative measures. Atypical: scrotal and abdominal/retroperitoneal imaging via the local pathway, with urgency set by clinical judgement. Suspected torsion: immediate surgical/urology assessment. Testicular lump: NG12 pathway."},
          {n:"2", when:"If trying to conceive", title:"Semen analysis", html:"Arrange at the NG257 time point, repeat an abnormal result at about 3 months (sooner if azoospermia or severe oligozoospermia), examine the scrotum and testes after two abnormal results, then refer the couple if there is a clinical varicocele and reduced semen parameters."},
          {n:"3", when:"Adolescents", title:"Growth checks", html:"Record testicular volumes at intervals through puberty; persistent difference over 2 mL or 20%, confirmed on two assessments approximately 6 months apart, means paediatric urology."},
-         {n:"4", when:"Any time", title:"Change in character", html:"A new right-sided swelling, a varicocele that no longer empties lying down, a lump in the testis, or visible haematuria: return promptly."}
+         {n:"4", when:"Any time", title:"Change in character", html:"Sudden severe testicular pain: go to A&amp;E or call 999 straight away for immediate surgical/urology assessment. A new right-sided swelling, a varicocele that no longer empties lying down, a lump in the testis, or visible haematuria: book to be seen within a week."}
        ]},
-       {b:"say", html:"This is a common and usually harmless swelling of the veins. Supportive underwear and painkillers help with the ache. Come back if a swelling appears on the right side, if it stops going down when you lie flat, if you feel a lump in the testicle itself, or if you ever see blood in your urine."}
+       {b:"say", html:"This is a common and usually harmless swelling of the veins. Supportive underwear and painkillers help with the ache. If you get sudden, severe pain in the testicle, go to A&amp;E or call 999 straight away. Book to see us within a week if a swelling appears on the right side, if it stops going down when you lie flat, if you feel a lump in the testicle itself, or if you ever see blood in your urine."}
      ]},
 
     {id:"refer", nav:"Refer", title:"Refer — which pathway, how fast", sub:"Match the referral to the specific indication.",
      blocks:[
        {b:"cards", items:[
-         {tone:"red", h:"Same day", html:"Acute severe scrotal pain or suspected torsion: immediate surgical/urology assessment. Do not delay for ultrasound, urine testing or a sexual-health appointment.", src:"BASHH epididymo-orchitis 2020"},
+         {tone:"red", h:"Immediate", html:"Acute severe scrotal pain or suspected torsion: immediate surgical/urology assessment. Do not delay for ultrasound, urine testing or a sexual-health appointment.", src:"BASHH epididymo-orchitis 2020"},
          {tone:"purple", h:"Urgent referral routes <span class='tw'>Suspected cancer</span> · NICE NG12", html:"Consider a suspected cancer pathway referral for testicular cancer in men with a <b>non-painful enlargement or change in shape or texture of the testis</b>; consider a <b>direct access ultrasound scan</b> for testicular cancer in men with <b>unexplained or persistent testicular symptoms</b>. Refer people <b>aged 45 and over</b> with <b>unexplained visible haematuria without urinary tract infection, or visible haematuria that persists or recurs after successful treatment</b> of a urinary tract infection, for bladder or renal cancer.", src:"NICE NG12 (2015, updated April 2026)"},
          {tone:"amber", h:"Imaging for an atypical varicocele", html:"Isolated right-sided, sudden-onset or non-reducing varicocele, or any varicocele in a prepubertal boy: scrotal and abdominal (renal and retroperitoneal) ultrasound via the local radiology/urology pathway, stating the reason. Urgency depends on onset, pain, failure to reduce, abdominal findings and clinical concern; escalate urgently for an abdominal mass, systemic illness or suspected malignancy. Act on the result; a mass goes to the appropriate cancer pathway.", src:"ESUR-SPIWG 2020 (international) · EAU/ESPU Paediatric Urology 2024 (international)"},
          {tone:"blue", h:"Fertility assessment", html:"A couple not conceiving after 1 year, or sooner under NG257, where the couple is trying to conceive spontaneously and the man has a clinical varicocele and reduced semen parameters on repeated analysis: refer for consideration of radiological or surgical treatment alongside assessment of the female partner.", src:"NICE NG257 (2026)"},

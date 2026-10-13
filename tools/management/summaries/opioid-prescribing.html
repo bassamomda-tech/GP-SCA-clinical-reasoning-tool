@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opioids in non-cancer pain — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/opioid-prescribing.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/opioid-prescribing.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../opioid-prescribing.html">← Full opioid prescribing protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Opioids in non-cancer pain</h1>
+      <div class="scope"><b>For:</b> adults with chronic non-cancer pain, starting or already on opioids. <b>Not for:</b> acute, postoperative, trauma, renal colic or sickle-cell pain; cancer pain or palliative care (use <a href="../palliative-pain.html">palliative pain</a>); opioid dependence treatment (use <a href="../opioid-dependence.html">opioid dependence</a>).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>Opioids Aware (FPM 2026)</span><span>NICE NG193</span><span>NG215</span><span>NG59</span><span>MHRA</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> don't start opioids for chronic primary pain; any trial has written goals and an exit; for someone still in pain the answer is rarely a higher dose — review benefit and harm, and never stop abruptly.</div>
+
+  <div class="grid">
+
+    <!-- 0 ACT NOW -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— check first, every time</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Suspected opioid toxicity</b> (cannot be woken, slow or gurgling breathing, blue lips) or respiratory depression → <span class="when w999">999</span> and give naloxone.</li>
+          <li><b>Recurrent overdose or severe sedation; suicidality</b>, severe psychiatric risk or psychosocial crisis → <span class="when wsd">Same-day advice</span> (999 if in immediate danger)</li>
+          <li><b>Opioid plus benzodiazepine, Z-drug, gabapentinoid or alcohol</b> → <span class="when wurg">Urgent review</span>: agree which to reduce first, taper gradually, consider naloxone.</li>
+          <li><b>Changed pain, red flags, weight loss</b> → re-examine for new pathology; refer by the relevant pathway.</li>
+          <li><b>Restart after a gap</b> (e.g. hospital discharge without the opioid) → tolerance is lost: restart <b>low</b>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 CONFIRM -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— which pain is this?</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Pain</th><th>Opioid?</th></tr>
+            <tr><td>Chronic primary pain, fibromyalgia</td><td><b>Do not initiate</b> (NG193)</td></tr>
+            <tr><td>Chronic low back pain</td><td><b>Do not offer</b> (NG59)</td></tr>
+            <tr><td>Headache, migraine</td><td>Generally inappropriate (overuse headache)</td></tr>
+            <tr><td>Neuropathic</td><td>Neuropathic ladder instead</td></tr>
+            <tr><td>Chronic secondary (OA, fracture)</td><td>Treat the cause; selected patients only, after non-opioid options</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 CHECK -->
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— risk screen before starting</small></h2>
+        <div class="body">
+          <p>☐ Misuse, alcohol, overdose history &nbsp;☐ Mental health &nbsp;☐ CNS depressants &nbsp;☐ Lung disease, sleep apnoea &nbsp;☐ eGFR, liver &nbsp;☐ Frailty, falls &nbsp;☐ Pregnancy, breastfeeding &nbsp;☐ Driving &nbsp;☐ Total daily dose incl. PRN. Low eGFR → renal-safe plan with pharmacy or specialist advice.</p>
+        </div>
+      </section>
+
+      <!-- 3 DECIDE -->
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— the trial, with the exit named at the start</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Written functional goals</b>, duration, maximum daily dose, exit plan. Never "as directed".</li>
+            <li><b>Lowest appropriate immediate-release dose</b>; avoid routine MR initiation (NG215).</li>
+            <li><b>Review ≤2–4 weeks</b>: functional gain → lowest effective dose; no benefit → taper and stop.</li>
+            <li><b>Established users</b>, limited benefit or harm → offer an individualised taper; invite, don't ambush.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4 TARGET -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target <small>— OME review thresholds (not safe limits or ceilings)</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Total daily OME</th><th>Action</th></tr>
+            <tr><td>About 50 mg/day</td><td>Heightened review; escalate only with documented benefit</td></tr>
+            <tr><td>Approaching 90 mg/day</td><td>Specialist advice (earlier if major risk factors)</td></tr>
+            <tr><td>Switching</td><td>Convert, then reduce 25–50%; experienced prescriber</td></tr>
+          </table>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 5 TREAT -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— choice, harms, taper</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Choose</span><b>Morphine</b> IR, lowest dose. <b>Buprenorphine patch</b> by brand, per SPC (e.g. renal impairment, poor swallow). Oxycodone, fentanyl, tapentadol → specialist only.</div>
+            <div class="step"><span class="sl">Weak-opioid traps</span><b>Tramadol:</b> serotonin syndrome with SSRIs, seizures, dependence. <b>Codeine:</b> CYP2D6 — little effect or toxicity; not in breastfeeding.</div>
+            <div class="step"><span class="sl">Constipation from day 1</span>Regular stimulant (senna or bisacodyl) ± macrogol. Exclude obstruction or impaction; PAMORA per formulary if inadequate.</div>
+            <div class="step s4"><span class="sl">Taper</span>One opioid at a time; slow steps proportionate to the dose, smaller as it falls. Pause or slow for withdrawal. Months is success.</div>
+          </div>
+          <ul>
+            <li><b>Still in pain?</b> Rarely a higher dose: check function, hyperalgesia (diffuse, more sensitive pain → taper), pain type, combinations, mood, sleep, new pathology. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 MONITOR -->
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>Monthly until stable</b>, then at least 6-monthly while prescribed.</li>
+            <li><b>Each review:</b> OME, function, sedation, constipation, falls, endocrine symptoms, other prescribers, readiness to taper.</li>
+            <li><b>Naloxone</b> with training: high dose, sedative combination, previous overdose, lung disease or OSA, lost tolerance.</li>
+            <li><b>Early requests, multiple prescribers, crushing MR</b> → name it; no early scripts.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer</h2>
+        <div class="body">
+          <ul>
+            <li><b>Pain service:</b> approaching 90 mg/day OME, complex rotation, refractory pain, complex or failed taper.</li>
+            <li><b>Drug and alcohol service:</b> suspected opioid use disorder, diversion, illicit top-ups — alongside primary care.</li>
+            <li><b>Pregnant on regular opioids</b> → joint obstetric and specialist plan; neonatal team aware.</li>
+            <li><b>Definitive fix:</b> the joint to replace, the radiculopathy to image.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 8 NEVER -->
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Start opioids for chronic primary pain, fibromyalgia or chronic low back pain.</li>
+          <li>Stop abruptly after regular use — including in pregnancy (fetal withdrawal).</li>
+          <li>Start an avoidable opioid + benzodiazepine, Z-drug or gabapentinoid combination.</li>
+          <li>Raise the dose for ongoing pain before checking benefit, hyperalgesia and new pathology.</li>
+          <li>Switch opioids at the full "equivalent" dose — incomplete cross-tolerance can overdose.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Can't be woken, slow or gurgling breathing, blue lips — whoever is with you calls 999, says 'opioid overdose' and uses naloxone if you have it.”</span> &nbsp;
+        <b>Mixing:</b> <span class="say">“No alcohol, sleeping or 'nerve' tablets on top — it can stop your breathing.”</span> &nbsp;
+        <b>Driving:</b> <span class="say">“Don't drive if drowsy or dizzy, or after a dose change until you know how it affects you.”</span> &nbsp;
+        <b>Storage:</b> <span class="say">“Lock them away — one MR tablet can kill a child.”</span> &nbsp;
+        <b>Never stop dead:</b> <span class="say">“Stopping suddenly makes you ill — we reduce together, in small steps.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE CONSULTATION -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Block 0 toxicity and combinations excluded</span>
+        <span>Pain type identified; opioid indicated</span>
+        <span>Risk screen, total OME and pregnancy checked</span>
+        <span>Goals, maximum dose and review date written</span>
+        <span>Safety-net and naloxone given, documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../opioid-prescribing.html">Reasoning GP opioid prescribing protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: Faculty of Pain Medicine Opioids Aware (2026), NICE NG193, NG215, NG59; MHRA Drug Safety Updates; GMMMG high-dose opioid guidance. Clinical decision support for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>
