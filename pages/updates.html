@@ -26,6 +26,8 @@
   .arch-d{ flex-shrink:0; font-size:12px; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums; }
   .arch-empty{ color:var(--muted); font-size:13.5px; line-height:1.6; background:var(--surface-2); border:1px dashed var(--line-2); border-radius:12px; padding:18px 16px; }
   .arch-n{ font-size:11px; font-weight:700; opacity:.75; margin-left:2px; }
+  .arch-filters{ align-items:center; }
+  .arch-filter-lab{ font-size:12.5px; font-weight:700; color:var(--muted); margin-right:2px; }
   .arch-rich:hover{ background:var(--bg-soft); }
   .arch-link{ color:var(--ink); font-weight:600; text-decoration:none; }
   .arch-link:hover{ color:var(--teal); text-decoration:underline; }
@@ -55,6 +57,13 @@
 <p id="asOfStamp" style="max-width:1180px;margin:-6px auto 0;padding:0 22px;font-size:12.5px;color:var(--muted)"></p>
 
 <div class="page-body">
+
+  <section class="page-section" id="archiveSection">
+    <h2><span class="eyebrow">NICE first · 12-month archive</span>NICE guidance updates — the last year</h2>
+    <p style="font-size:14px;color:var(--ink-2);line-height:1.6;max-width:74ch;margin:-2px 0 4px">NICE guideline changes for primary care are shown first, grouped by month. Use the filter to switch to <b>All</b>, <b>MHRA</b>, <b>UKHSA</b> or <b>Prescriber</b> updates — every update is kept here for 12 months. <span id="archiveStamp" style="color:var(--muted)"></span></p>
+    <div class="arch-filters" id="archFilters" role="group" aria-label="Filter updates by source"></div>
+    <div id="archiveBody"></div>
+  </section>
 
   <section class="page-section" id="liveSection" hidden>
     <h2><span class="eyebrow">Live from the source · auto-updating</span>MHRA · UKHSA · NICE — latest</h2>
@@ -324,12 +333,7 @@
     </div>
   </section>
 
-  <section class="page-section" id="archiveSection">
-    <h2><span class="eyebrow">12-month memory · auto-archived</span>Updates archive — the last year</h2>
-    <p style="font-size:14px;color:var(--ink-2);line-height:1.6;max-width:74ch;margin:-2px 0 4px">Every update is remembered here for 12 months, grouped by month, so you can catch up on anything you missed — filter to <b>NICE</b> to review the year’s NICE guideline releases. <span id="archiveStamp" style="color:var(--muted)"></span></p>
-    <div class="arch-filters" id="archFilters"></div>
-    <div id="archiveBody"></div>
-  </section>
+
 
   <section class="page-section">
     <h2><span class="eyebrow">Go deeper</span>NICE &amp; primary-care news platforms</h2>
@@ -417,7 +421,8 @@
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(d){
       if(!d || !d.items || !d.items.length) return;
-      grid.innerHTML = d.items.map(function(it){
+      var isNice=function(x){ return String(x&&x.src||'').toUpperCase()==='NICE' ? 1 : 0; };
+      grid.innerHTML = d.items.slice().sort(function(a,b){ return isNice(b)-isNice(a); }).map(function(it){
         var date = fmt(it.date);
         return '<div class="page-card">'+
           '<div class="page-card-eyebrow">'+esc(it.tag||it.src)+'</div>'+
@@ -479,8 +484,8 @@
     });
     return out.sort(function(a,b){ return timeOf(b)-timeOf(a); });
   }
-  var ALL=[], filter='all';
-  var FILTERS=[['all','All'],['NICE','NICE'],['MHRA','MHRA'],['UKHSA','UKHSA'],['Prescriber','Prescriber']];
+  var ALL=[], filter='NICE';
+  var FILTERS=[['NICE','NICE'],['all','All'],['MHRA','MHRA'],['UKHSA','UKHSA'],['Prescriber','Prescriber']];
   function srcIs(x,f){ return String(x.src||'').toLowerCase()===String(f).toLowerCase(); }
   function fmtDay(it){
     var t=timeOf(it); if(!it.date || isNaN(t)) return '';
@@ -503,7 +508,7 @@
       '<span class="arch-d"'+(monthOnly(it)?' title="NICE gives the month for this change"':'')+'>'+esc(fmtDay(it))+'</span></div>';
   }
   function renderChips(){
-    filtersEl.innerHTML = FILTERS.map(function(f){
+    filtersEl.innerHTML = '<span class="arch-filter-lab">Filter by source:</span>' + FILTERS.map(function(f){
       var n = f[0]==='all' ? ALL.length : ALL.filter(function(x){ return srcIs(x,f[0]); }).length;
       return '<button type="button" class="arch-chip'+(f[0]===filter?' on':'')+'" data-f="'+esc(f[0])+'" aria-pressed="'+(f[0]===filter)+'">'+esc(f[1])+' <span class="arch-n">'+n+'</span></button>';
     }).join('');
