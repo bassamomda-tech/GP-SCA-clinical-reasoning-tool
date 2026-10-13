@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdominal mass — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/abdominal-mass.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/abdominal-mass.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../abdominal-mass.html">← Full abdominal mass algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Abdominal or pelvic mass</h1>
+      <div class="scope"><b>For:</b> a new or unexplained palpable abdominal or pelvic mass, found by the patient or on examination. <b>Children:</b> block 1 only (very urgent specialist route). <b>Not for:</b> acute abdominal pain without a mass (use the <a href="../abdominal-pain.html">abdominal pain</a> algorithm) or jaundice alone (<a href="../jaundice.html">jaundice</a>).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG12</span><span>NG151</span><span>CG122</span><span>RCOG GTG 62/34</span><span>MHRA</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> exclude a ruptured AAA, obstruction and an acute abdomen first. Then treat any unexplained mass as cancer until FIT, imaging and the right NICE NG12 route say otherwise — never reassure without investigation.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — call 999 now <small>— before any further examination</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Pulsatile central or epigastric mass, or known AAA</b>, with sudden severe abdominal, back or flank pain, collapse or haemodynamic compromise → <span class="when w999">999</span>. Do not palpate vigorously.</li>
+          <li><b>Obstruction</b> (vomiting, distension, failure to pass stool or wind), <b>peritonism or perforation</b>, <b>ovarian torsion</b> (sudden severe unilateral pelvic pain, vomiting, peritonism) → <span class="when w999">999</span> emergency surgical admission.</li>
+          <li><b>Child with an abdominal mass who is acutely unwell</b>; <b>LUQ mass after trauma</b> with haemodynamic compromise → <span class="when w999">999</span></li>
+          <li><b>While waiting:</b> two large-bore IV accesses; resuscitate per the local major-haemorrhage protocol; contact vascular surgery via the emergency pathway; nil by mouth. No laxatives. Do not delay transfer for imaging.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage <small>— who is in front of you</small></h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Patient</th><th>Action</th></tr>
+            <tr><td>Child</td><td>Palpable mass or unexplained enlarged organ → <span class="when wurg">≤48 h</span> specialist; <span class="when wsd">Same-day</span> if unwell. Do not examine repeatedly.</td></tr>
+            <tr><td>Fever + tender mass</td><td>RUQ + travel → <span class="when wsd">Same-day</span> hepatology / ID. RIF (appendix mass) → <span class="when wsd">Same-day</span> surgical</td></tr>
+            <tr><td>Stable adult</td><td>FIT, bloods, NG12 route by site (block 2)</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen — NICE NG12 route by site <small>— any adult</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Abdominal mass</b> → FIT; <b>≥10 µg Hb/g</b> → <span class="when wurg">Suspected cancer</span> colorectal. Negative or missing FIT never delays referral if concerned. <b>Rectal mass</b> → refer, no FIT.</li>
+            <li><b>Woman: pelvic or abdominal mass or ascites, not obviously fibroids</b> → <span class="when wurg">Suspected cancer</span> gynaecology; do not wait for CA125 or USS.</li>
+            <li><b>Upper abdominal mass:</b> like an enlarged liver or gallbladder → consider <span class="when wurg">Urgent</span> direct-access USS; like stomach cancer → consider <span class="when wurg">Suspected cancer</span> upper GI.</li>
+            <li><b>Jaundice, 40+</b> → <span class="when wurg">Suspected cancer</span> pancreatic. <b>60+, weight loss</b> + diarrhoea, back or abdominal pain, nausea, vomiting, constipation or new diabetes → consider <span class="when wurg">Urgent</span> direct-access CT (USS if no CT).</li>
+            <li><b>Splenomegaly or nodes, unexplained</b> → consider suspected cancer referral. <b>Left supraclavicular node</b> → <span class="when wurg">Suspected cancer</span> for the likely primary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess <small>— once blocks 0–1 are answered</small></h2>
+        <div class="body">
+          <p>☐ Observations, weight trend, LMP &nbsp;☐ Mass: site, size, consistency, mobility, pulsatility (expansile = aneurysm); ascites; hernias; left supraclavicular node; PR if it alters management &nbsp;☐ FBC, U&amp;E, LFTs, CRP; HbA1c if pancreatic; urinalysis; pregnancy test; FIT. <b>Not here:</b> tumour-marker panels (CEA, CA19-9) or blanket CT; CA125 only per the ovarian pathway.</p>
+          
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify <small>— by region, then block 2</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>RUQ / epigastric</b> — liver, gallbladder (Courvoisier suggests, never proves, cancer), stomach, pancreas, aorta.</li>
+            <li><b>LUQ</b> — spleen (cannot get above it, notched) vs left kidney (ballotable). Unsure → USS.</li>
+            <li><b>RIF / LIF</b> — caecal or sigmoid cancer, appendix or diverticular mass, Crohn's, ovary.</li>
+            <li><b>Suprapubic</b> — bladder (catheterise), pregnant uterus (urine hCG), fibroids, ovary → USS.</li>
+            <li><b>Faecal mass</b> — cannot exclude cancer clinically: image if any doubt; treat only once obstruction excluded; persists → urgent referral.</li>
+            <li><b>Uncertain</b> — say so; follow block 2 for the likely site. Never "watch" it.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— only these</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Pain:</b> paracetamol; strong opioid only via the local acute-pain or palliative pathway (immediate-release, reviewed).</li>
+            <li><b>Nausea:</b> metoclopramide (max 5 days; not in obstruction, perforation, GI bleed) or ondansetron (QT). Doses per BNF and local formulary.</li>
+            <li><b>No high-dose or bulk-forming laxatives</b> if obstruction is possible.</li>
+            <li><b>Tell them:</b> suspected cancer pathway = prompt tests, not a diagnosis. Written plan; Macmillan; fit note if needed.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer routinely</h2>
+        <div class="body">
+          <ul>
+            <li><b>Premenopausal simple ovarian cyst</b> &lt;5 cm: no routine follow-up; 5–7 cm: consider yearly USS; &gt;7 cm, persistent, enlarging, symptomatic or complex → gynaecology.</li>
+            <li><b>Postmenopausal cyst</b> symptomatic, complex, persistent or enlarging → gynaecology. Benign lesion → specialist if symptomatic.</li>
+                        <li><b>After an appendix mass:</b> confirm the surgical team has arranged follow-up to exclude caecal cancer.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A normal FIT, CA125 or ultrasound while symptoms persist or progress.</li>
+          <li>A "constipation mass" that softens with laxatives.</li>
+          <li>Back or flank pain labelled renal colic or muscular in an older man with a possible AAA.</li>
+          <li>A midline mass after surgery assumed to be adhesions.</li>
+          <li>A referral sent but never tracked.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— verbal and written, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Call 999 if you collapse, get sudden severe tummy or back pain, the lump grows quickly or pulsates, you vomit with a swollen tummy and cannot pass stool or wind, or you vomit blood or bleed heavily from the back passage.”</span>
+        <span class="when wsd">Same day</span> <span class="say">“Contact us or NHS 111 today for worsening pain, persistent vomiting or not keeping fluids down, black stools or other rectal bleeding, fever with shivers, yellow skin, confusion or feeling rapidly worse.”</span></p>
+        <p><b>Tracking:</b> record the referral date; not contacted within 14 days → chase it. Act on a rejected, delayed or missed (DNA) appointment. If acutely unwell, do not wait for the appointment — A&amp;E.</p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to leave primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>No block 0 or same-day row applies</span>
+        <span>Mass characterised; pregnancy and retention excluded</span>
+        <span>FIT, bloods and NG12 route by site requested</span>
+        <span>Referral date logged and tracking set</span>
+        <span>Verbal and written safety-net given</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../abdominal-mass.html">Reasoning GP abdominal mass algorithm</a>, which holds the examination signs, mass types, ovarian cyst detail and evidence. Sources: NICE NG12 (updated April 2026), NG151, CG122; RCOG Green-top Guidelines 62 and 34; MHRA Drug Safety Updates; local suspected cancer pathways. Clinical decision support — follow local pathways and check doses in the current BNF.</div>
+
+</main>
+</body>
+</html>
