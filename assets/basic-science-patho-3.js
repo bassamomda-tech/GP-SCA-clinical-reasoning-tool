@@ -24,7 +24,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     'C-peptide is low/absent (vs preserved in T2DM).',
   ],
   note:'No insulin means cells starve in a sea of glucose — and burn fat to ketones. That single deficiency explains hyperglycaemia, dehydration and acidosis together.',
-  links:{ case:'cases/type-1-diabetes.html', caseLabel:'Type 1 diabetes case', algorithm:'tools/algorithms/unwell-diabetes-insulin.html', algorithmLabel:'Unwell on insulin pathway' } },
+  links:{ case:'cases/type-1-diabetes.html', caseLabel:'Type 1 diabetes case', algorithm:'tools/management/sick-day-rules.html#insulin', algorithmLabel:'Sick day rules — unwell on insulin' } },
 
 { id:'patho-hyperthyroid', domain:'Pathophysiology', system:'Endocrine & Metabolic', icon:'🦋',
   title:'Hyperthyroidism (Graves\u2019)', blurb:'How excess thyroid hormone accelerates every metabolic process.',

@@ -137,45 +137,15 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — distinguish bilateral (systemic) from unilateral (local) swelling — the unilateral hot, swollen leg is a DVT until excluded. Find the cause, treat, modify factors, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Ankle / leg swelling</span><div class="body">Unilateral or bilateral? Pitting or non-pitting? Associated breathlessness, pain, skin changes. Check meds.</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1 · Safety — DVT / decompensated HF</span><span class="ttl">Unilateral hot/painful leg, or breathless?</span><div class="body">Unilateral swelling + calf tenderness → DVT (two-level Wells score). Bilateral swelling + breathlessness → heart failure. Cellulitis (hot, red, fever).</div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Act · NICE NG158</span><span class="ttl">Two-level DVT Wells score</span><div class="body"><b>Wells ≥2 (DVT likely):</b> proximal leg vein USS within 4h — if delayed, scan within 24h + interim anticoagulation + D-dimer. USS negative + D-dimer positive → stop interim, repeat scan in 6–8 days. <b>Wells ≤1 (DVT unlikely):</b> D-dimer (consider age-adjusting if &gt;50y); if positive → USS; if result delayed &gt;4h → interim anticoagulation. Treat cellulitis; decompensated HF → assess/admit.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Bilateral work-up</span><div class="body">NT-proBNP (NG106 thresholds; falsely low in obesity/on HF drugs) ± echo, U&amp;E, LFT/albumin, urine ACR (nephrotic); medication review.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · cause</span></div>
-    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Bilateral systemic</div><div class="box ix"><span class="ttl">Organ failure</span><div class="body">Heart failure, CKD/nephrotic, liver disease, hypoalbuminaemia.</div></div></div>
-      <div class="col"><div class="blabel">Drugs / venous</div><div class="box ix"><span class="ttl">Common</span><div class="body"><b>Calcium-channel blockers</b>, NSAIDs; chronic venous insufficiency.</div></div></div>
-      <div class="col"><div class="blabel">Unilateral local</div><div class="box ix"><span class="ttl">Local cause</span><div class="body">DVT, cellulitis, lymphoedema, Baker's cyst, trauma.</div></div></div>
-    </div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Same-day</span> suspected DVT / decompensated HF. <span class="pill pill-purple">Cardiology / renal / hepatology</span> by underlying cause; <span class="pill pill-purple">vascular / lymphoedema</span> service for chronic local oedema.</div></div>
-    <div class="arrow"><span class="tag">Step 8 · modifiable factors &amp; self-care</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; modifiable factors</span><span class="ttl">Reduce dependent &amp; venous oedema</span><div class="body"><b>Leg elevation</b>, regular walking/ankle exercises and weight loss for venous/dependent oedema; <b>compression</b> once arterial supply is assessed (ABPI/toe pressure where indicated; not in decompensated HF). <b>Review culprit drugs</b> — <b>calcium-channel blockers</b> (amlodipine), NSAIDs, gabapentinoids, steroids, glitazones. Optimise heart-failure (including SGLT2 inhibitor in HFrEF), renal and liver treatment for systemic causes (no routine salt restriction in HF); meticulous skin care to prevent cellulitis.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; urgent return advice</span><div class="body"><b>Review</b> response to the cause-directed treatment and recheck renal function/weight where relevant. <b>Same-day</b> for a newly hot, painful, swollen calf (DVT — Wells + D-dimer/USS), increasing breathlessness/orthopnoea (decompensated heart failure), unilateral red hot leg with fever (cellulitis), or any signs of an arterial/critical-ischaemia problem. Counsel on weight-gain and breathlessness as warning signs in heart failure.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Unilateral vs bilateral splits the differential:</b> a single hot swollen calf is a DVT until excluded; symmetrical pitting oedema points to a systemic or drug cause.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/ankle-swelling.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/ankle-swelling.html">⬇ Download PDF</button><a class="sum-open" href="one-page/ankle-swelling.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/ankle-swelling.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -198,7 +168,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div class="rftile"><b>Sudden severe leg swelling + collapse</b> Haemodynamic instability, pale/mottled limb → <span class="pill pill-red">999</span> Phlegmasia cerulea dolens / ileofemoral DVT</div>
       <div class="rftile"><b>Facial + ankle oedema + haematuria/proteinuria</b> Periorbital puffiness, frothy urine → <span class="pill pill-red">Same-day</span> Nephrotic syndrome</div>
       <div class="rftile"><b>Jaundice + ankle oedema + abdominal distension</b> Stigmata of liver disease, ascites → <span class="pill pill-red">Same-day</span> Hepatic failure / decompensated cirrhosis</div>
-      <div class="rftile"><b>Oedema + severe hypertension in pregnancy</b> BP ≥160/110, severe headache, visual disturbance, epigastric/RUQ pain, vomiting, reduced fetal movements → <span class="pill pill-red">Immediate obstetric</span> Pre-eclampsia / HELLP — 999 if seizure, collapse or unstable</div>
+      <div class="rftile"><b>Oedema in pregnancy (from 20 weeks) or after the birth + raised BP or symptoms</b> New BP ≥140/90, proteinuria, sudden swelling of face, hands or feet, severe headache, visual disturbance, epigastric/RUQ pain, vomiting, reduced fetal movements — symptoms even with a normal BP; BP ≥160/110 → <span class="pill pill-red">Same-day maternity assessment</span> Pre-eclampsia / HELLP — 999 if seizure, collapse or unstable</div>
       <div class="rftile"><b>Unexplained unilateral swelling or lymphadenopathy</b> Examine abdomen, pelvis, groin and nodes → <span class="pill pill-purple">2WW</span> Consider suspected-cancer referral for unexplained lymphadenopathy or splenomegaly, especially with fever, night sweats, breathlessness, pruritus or weight loss (NICE NG12); otherwise image or refer by findings — do not label it malignant lymphoedema without evidence</div>
       <div class="rftile"><b>Swelling + fever + erythema tracking</b> Spreading cellulitis, lymphangitis, systemic sepsis → <span class="pill pill-red">Same-day</span> Admit if septic / diabetic</div>
     </div>
@@ -238,7 +208,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>Amlodipine is the commonest cause of bilateral ankle oedema in primary care — always check the drug chart before extensive investigation. The pitting/non-pitting distinction is the single most useful examination finding: non-pitting oedema essentially rules out cardiac/renal/hepatic causes. Bilateral oedema with normal cardiac/renal/hepatic function in an ambulant patient is idiopathic oedema until proven otherwise.</p>
+      <p>Amlodipine and other calcium-channel blockers are the commonest drug cause of bilateral ankle oedema (venous insufficiency is the commonest cause overall) — always check the drug chart before extensive investigation. The pitting/non-pitting distinction is the single most useful examination finding: non-pitting oedema essentially rules out cardiac/renal/hepatic causes. Bilateral oedema with normal cardiac/renal/hepatic function in an ambulant patient is usually venous, dependent or drug-related; call it idiopathic only once these are excluded.</p>
     </div>
   </div>
 </div>
@@ -288,13 +258,13 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="node-body">
     <div class="kv">
       <div>Vital signs</div><div>BP (hypertension → renal/cardiac), HR (AF → cardiac), RR (tachypnoea → HF/PE), temp (fever → cellulitis/DVT), SpO₂</div>
-      <div>Weight & BMI</div><div>Recent gain &gt;2 kg → fluid retention. Obesity → venous hypertension and dependency oedema. Compare to previous weights</div>
-      <div>Jugular venous pressure</div><div>Raised JVP (>4 cm above sternal angle) → right heart failure, constrictive pericarditis, SVC obstruction</div>
+      <div>Weight & BMI</div><div>Recent weight gain → fluid retention. Obesity → venous hypertension and dependency oedema. Compare to previous weights</div>
+      <div>Jugular venous pressure</div><div>Raised JVP → right heart failure, constrictive pericarditis, SVC obstruction</div>
       <div>Heart sounds</div><div>S3 gallop, murmurs, displaced apex → cardiac cause. Check for pericardial friction rub</div>
       <div>Chest auscultation</div><div>Bibasal crackles → pulmonary oedema (LVF). Pleural effusion → dullness to percussion</div>
       <div>Abdominal exam</div><div>Hepatomegaly (HF/hepatic), ascites (shifting dullness → hepatic/cardiac), splenomegaly</div>
       <div>Leg examination</div><div>Symmetry, pitting test (press 5 sec over tibia), skin changes (haemosiderin, liposclerosis, ulcers, varicosities), calf circumference if DVT suspected (calf tenderness counts only within the Wells criteria — do not use Homan's sign), pulses, capillary refill, temperature, sacral oedema if immobile</div>
-      <div>Stemmer's sign</div><div>Attempt to pinch dorsal foot skin: impossible = positive → lymphoedema. Most reliable lymphoedema sign</div>
+      <div>Stemmer's sign</div><div>Attempt to pinch dorsal foot skin: impossible = positive → supports lymphoedema; it does not establish or exclude it alone</div>
     </div>
   </div>
   <div class="why-row">
@@ -323,7 +293,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div>Suspected DVT</div><div><span class="pill pill-blue">Two-level Wells</span> (NICE NG158). <b>Likely (≥2):</b> proximal leg-vein USS within 4 h; if not possible, D-dimer then interim therapeutic anticoagulation and USS within 24 h; <b>USS negative but D-dimer positive → stop interim anticoagulation, repeat USS at 6–8 days</b>. <b>Unlikely (≤1):</b> quantitative D-dimer within 4 h (consider age-adjusted threshold over 50); negative → DVT unlikely; positive → USS within 4 h, or interim anticoagulation and USS within 24 h. Take FBC, renal and hepatic function, PT, APTT when starting interim anticoagulation — do not delay treatment for results; document bleeding risk, surgery, pregnancy, weight and interacting drugs</div>
       <div>Suspected renal</div><div><span class="pill pill-blue">Urine albumin:creatinine ratio (ACR)</span>, <span class="pill pill-blue">eGFR</span>, <span class="pill pill-blue">serum albumin</span>. Suspect nephrotic syndrome with marked proteinuria + hypoalbuminaemia + oedema; urgent renal assessment if severe hypoalbuminaemia, nephrotic-range proteinuria, AKI, haematuria, thrombosis or systemic illness</div>
       <div>Suspected hepatic</div><div><span class="pill pill-blue">LFTs, albumin, bilirubin</span>, <span class="pill pill-blue">INR/PT</span> (marker of synthetic function), <span class="pill pill-blue">USS abdomen</span> (ascites, liver texture)</div>
-      <div>When NOT to investigate</div><div>Do NOT order extensive tests for bilateral ankle oedema if CCB started recently — trial of drug switch first. Do NOT order BNP if clear drug-induced cause identified</div>
+      <div>When NOT to investigate</div><div>Do NOT order extensive tests for bilateral ankle oedema if CCB started recently — trial of drug switch first. Do NOT order BNP if clear drug-induced cause identified — unless there is breathlessness or another heart-failure feature, which still needs NT-proBNP (NICE NG106)</div>
     </div>
   </div>
   <div class="why-row">
@@ -351,10 +321,10 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div><span class="pill pill-red">Same-day</span></div><div>Suspected DVT per the NG158 pathway, new symptomatic heart failure, suspected nephrotic syndrome (marked proteinuria + hypoalbuminaemia), decompensated liver disease, jaundice or new ascites</div>
       <div><span class="pill pill-purple">2WW · NICE NG12</span></div><div>Unexplained lymphadenopathy or splenomegaly (especially with fever, night sweats, breathlessness, pruritus or weight loss) → consider suspected-cancer referral. Unexplained unilateral swelling: examine abdomen, pelvis, groin and nodes — a mass follows its NG12 site pathway. DVT: assess for additional cancer symptoms/signs and investigate or refer if present (no routine extensive screening)</div>
       <div>Cardiology / HF clinic</div><div>NT-proBNP &gt;400: echo within 6 weeks. NT-proBNP &gt;2000: urgent echo within 2 weeks (NICE NG106). Preserved EF heart failure → specialist confirmation</div>
-      <div>Nephrology</div><div>eGFR &lt;30 or rapidly declining, nephrotic range proteinuria (ACR &gt;300 mg/mmol), haematuria + proteinuria combination</div>
+      <div>Nephrology</div><div>NICE NG203: KFRE 5-year risk &gt;5%; eGFR &lt;30; sustained eGFR fall ≥25% with a category change within 12 months, or ≥15 mL/min/year; ACR ≥70 mg/mmol (unless diabetic nephropathy already treated); ACR &gt;30 mg/mmol with persistent haematuria. Suspected nephrotic syndrome → same-day (see above)</div>
       <div>Lymphoedema clinic</div><div>Confirmed or suspected lymphoedema → specialist compression and management. Diuretics do not treat lymphatic dysfunction — not routinely, unless a separate cardiac, renal or hepatic indication</div>
       <div>Vascular surgery</div><div>Chronic venous insufficiency with non-healing venous leg ulcer, severe varicosities affecting quality of life, arterial disease found before compression (refer per local leg-ulcer pathway)</div>
-      <div>Primary care manage</div><div>CCB-induced oedema (switch drug), mild bilateral venous oedema with normal investigations, idiopathic oedema of pregnancy (physiological)</div>
+      <div>Primary care manage</div><div>CCB-induced oedema (switch drug), mild bilateral venous oedema with normal investigations, oedema of pregnancy (physiological) only once BP and urine protein are normal and there are no pre-eclampsia symptoms</div>
     </div>
   </div>
   <div class="why-row">
@@ -435,7 +405,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div class="lstile"><b>Weight loss</b> Weight management where appropriate — obesity causes dependency oedema independently of cardiac/renal causes. Support smoking cessation.</div>
       <div class="lstile"><b>Compression hosiery adherence</b> Worn from rising to bedtime — compliance is the main barrier. Ensure correct fitting (measure in morning before swelling). Consider donning aids for elderly patients.</div>
       <div class="lstile"><b>Skin care</b> Moisturise daily to prevent skin breakdown. Avoid trauma. Early treatment of fungal infections (tinea pedis) to prevent cellulitis entry point.</div>
-      <div class="lstile"><b>Alcohol reduction</b> Alcohol causes both direct hypoalbuminaemia and hepatic disease. Target &lt;14 units/week; brief intervention in consultation.</div>
+      <div class="lstile"><b>Alcohol reduction</b> Alcohol causes both direct hypoalbuminaemia and hepatic disease. No more than 14 units a week, spread over 3 or more days (UK CMO); brief intervention in consultation.</div>
     </div>
   </div>
   <div class="why-row">
@@ -464,7 +434,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div>3 months</div><div>Full review: classification confirmed, treatment effective? Step-up if inadequate response. HF: formal echocardiography result should be back</div>
       <div>Ongoing (chronic)</div><div>Annual review for chronic venous insufficiency / lymphoedema / HF. Weight monitoring, medication review, skin assessment, compression renewal</div>
       <div><span class="pill pill-red">Safety-net 999</span></div><div>Sudden severe breathlessness, chest pain, SpO₂ drops, collapse, acute severe unilateral leg pain/pallor (arterial ischaemia)</div>
-      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Rapidly progressive swelling, new unilateral swelling with pain/warmth (DVT), new or worsening breathlessness or chest pain, fever or spreading erythema, jaundice or new ascites, severe proteinuria or haematuria, pregnancy with severe hypertension or symptoms, weight gain beyond the HF action-plan trigger</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Rapidly progressive swelling, new unilateral swelling with pain/warmth (DVT), new or worsening breathlessness or chest pain, fever or spreading erythema, jaundice or new ascites, severe proteinuria or haematuria, in pregnancy from 20 weeks or after the birth: sudden swelling of face, hands or feet, severe headache, visual disturbance, upper abdominal pain or vomiting (maternity unit), weight gain beyond the HF action-plan trigger</div>
       <div>Diuretic monitoring</div><div>ACEI/ARNI/ARB/MRA (NG106): renal function and electrolytes before starting, 1–2 weeks after starting and after each dose increase, then every 3–6 months, sooner if the clinical picture changes. Use laboratory ranges; follow local renal/HF protocols for a significant creatinine rise, hyperkalaemia, hypotension or suspected AKI</div>
       <div>Anticoagulation (DVT)</div><div>At least 3 months, then reassess provoking factor, recurrence and bleeding risk, and preference: consider stopping if a transient provoking factor has resolved; consider extended treatment after unprovoked or recurrent events if recurrence risk outweighs bleeding (NG158). Active cancer: 3–6 months then review. Assess for additional cancer symptoms or signs and investigate or refer if present (NG12 2026) — no routine extensive occult-cancer screening</div>
     </div>

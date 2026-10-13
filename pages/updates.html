@@ -25,7 +25,19 @@
   .arch-item:hover .arch-t{ color:var(--teal); }
   .arch-d{ flex-shrink:0; font-size:12px; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums; }
   .arch-empty{ color:var(--muted); font-size:13.5px; line-height:1.6; background:var(--surface-2); border:1px dashed var(--line-2); border-radius:12px; padding:18px 16px; }
-  @media(max-width:620px){ .arch-tag{ min-width:0; } .arch-item{ flex-wrap:wrap; gap:4px 10px; } }
+  .arch-n{ font-size:11px; font-weight:700; opacity:.75; margin-left:2px; }
+  .arch-rich:hover{ background:var(--bg-soft); }
+  .arch-link{ color:var(--ink); font-weight:600; text-decoration:none; }
+  .arch-link:hover{ color:var(--teal); text-decoration:underline; }
+  .arch-sum{ display:block; font-size:13px; color:var(--ink-2); line-height:1.5; margin-top:3px; }
+  .arch-site{ display:block; font-size:12.5px; color:var(--muted); margin-top:4px; }
+  .arch-site a{ color:var(--teal-2); font-weight:600; text-decoration:none; }
+  .arch-site a:hover{ color:var(--rust); }
+  .hot-do-h{ font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--teal-2); margin:0 0 4px; }
+  .hot-do{ margin:0 0 12px; padding-left:18px; font-size:13px; color:var(--ink-2); line-height:1.5; }
+  .hot-do li{ margin-bottom:4px; }
+  .hot-links{ display:flex; flex-wrap:wrap; gap:0 16px; }
+  @media(max-width:620px){ .arch-tag{ min-width:0; } .arch-item{ flex-wrap:wrap; gap:4px 10px; } .arch-t{ flex-basis:100%; } }
 </style>
 </head>
 <body>
@@ -52,7 +64,7 @@
 
   <section class="page-section">
     <h2><span class="eyebrow">Editorial picks</span>What to act on</h2>
-    <p style="font-size:13px;color:var(--muted);line-height:1.55;max-width:74ch;margin:-4px 0 14px">Curated explainers, each dated to when the change actually happened and linked to the source. For the authoritative, continuously-dated stream see the live feed and 12-month archive above.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.55;max-width:74ch;margin:-4px 0 14px">Curated explainers, each dated to when the change actually happened and linked to the source. For the authoritative, continuously-dated stream see the live feed above and the 12-month archive below.</p>
     <div class="page-grid">
       <div class="page-card">
         <div class="page-card-eyebrow">💊 MHRA</div>
@@ -95,6 +107,193 @@
         <p>The Simulated Consultation Assessment (SCA) replaced the RCA in November 2023 and is the licensing exam for the 2026 sittings — 12 cases, weighted on data-gathering, clinical management and relating to others.</p>
         <div class="page-card-meta"><span>📅 <b>Live since Nov 2023</b></span><span>RCGP</span></div>
         <a class="page-card-cta" href="https://www.rcgp.org.uk/mrcgp-exams/sca" target="_blank" rel="noopener noreferrer">RCGP SCA ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section" id="hot-topics">
+    <h2><span class="eyebrow">Hot topics</span>What’s changed in the main topics</h2>
+    <p style="font-size:13px;color:var(--muted);line-height:1.55;max-width:74ch;margin:-4px 0 14px">The latest practice-changing update for each of the 20 topics GPs see most, dated and linked to the source, with what to do differently and the site page that holds the detail. Checked October 2026.</p>
+    <div class="page-grid">
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Hypertension — advice for raised BP below the diagnostic line</h3>
+        <p>NICE added recommendation 1.2.11: offer healthy-living advice to people with raised blood pressure who have not been diagnosed with hypertension. Diagnostic and treatment thresholds are unchanged.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Offer healthy-living advice (diet, salt, alcohol, activity, smoking) when clinic BP is raised but hypertension is not confirmed — and keep checking it.</li><li>Still confirm a clinic reading of 140/90 or more with ambulatory or home monitoring before diagnosing.</li><li>Step 1 for under-55s not of Black African or African–Caribbean family origin is still an ACE inhibitor or ARB.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Updated Feb 2026</b></span><span>NICE NG136</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng136" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/hypertension.html">Hypertension protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Type 2 diabetes — dual therapy from the start</h3>
+        <p>Metformin on its own is no longer the default. When medication is needed, NICE now recommends modified-release metformin plus an SGLT2 inhibitor first line for most people, with extra options for established cardiovascular disease and early-onset diabetes.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Offer MR metformin and an SGLT2 inhibitor first line unless contraindicated — introduce them stepwise and check DKA risk and sick-day rules before starting the SGLT2 inhibitor.</li><li>Established atherosclerotic CVD: add subcutaneous semaglutide (up to 1 mg weekly).</li><li>Run a register search — many people on metformin alone may now qualify for an SGLT2 inhibitor.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Updated Feb 2026</b></span><span>NICE NG28</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng28" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/type-2-diabetes.html">Type 2 diabetes protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">💊 Supply</div>
+        <h3>Type 1 diabetes — Levemir (insulin detemir) is being discontinued</h3>
+        <p>Novo Nordisk is discontinuing Levemir Penfill and FlexPen in the UK, with supply expected to end in December 2026 and a risk of earlier stock-outs. ABCD/PCDOS switching guidance was revised in May 2026.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Do not start Levemir in new patients.</li><li>Find everyone on detemir now and agree each switch with the diabetes team, following ABCD/PCDOS guidance — not by changing the repeat prescription alone.</li><li>Warn patients that doses may need adjusting after a switch and to monitor glucose closely.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Supply ends Dec 2026</b></span><span>ABCD/PCDOS · DHSC supply notice</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://abcd.care/" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/type-1-diabetes.html">Type 1 diabetes protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Asthma — AIR and MART replace SABA-only plans</h3>
+        <p>The joint NICE, BTS and SIGN guideline changed diagnosis and treatment: objective tests in a set order, and an inhaled corticosteroid in every regimen.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Do not start or continue a SABA-only regimen — move to as-needed ICS/formoterol (AIR), then low-dose MART.</li><li>Confirm the diagnosis objectively: blood eosinophils or FeNO first in adults; FeNO first at 12–16.</li><li>Review within 2 working days after an asthma attack treated in primary care or hospital.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Published Nov 2024</b></span><span>NICE NG245 (BTS/NICE/SIGN)</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng245" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/asthma.html">Asthma protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>COPD — the first biologics for eosinophilic COPD</h3>
+        <p>NICE recommended dupilumab (TA1142, March 2026) and then mepolizumab (TA1166, June 2026) as specialist add-on maintenance for uncontrolled COPD with raised blood eosinophils.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Identify people on triple inhaled therapy who are still uncontrolled (1 or more severe, or 2 or more moderate, exacerbations in 12 months).</li><li>Check the blood eosinophil count; 0.3 × 10⁹/L or more → refer to the respiratory team to consider a biologic.</li><li>Get the basics right first: inhaler technique, smoking cessation and pulmonary rehabilitation.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Published 26 Mar &amp; 17 Jun 2026</b></span><span>NICE TA1142 · TA1166</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ta1166" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/copd.html">COPD protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Atrial fibrillation — no NICE change — check your best-value DOAC</h3>
+        <p>NG196 has not changed in the last 12 months. NHS England’s national DOAC commissioning recommendations now put generic apixaban first as best value, and most ICBs have followed.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Keep using CHA₂DS₂-VASc to decide on anticoagulation, and ORBIT to assess bleeding risk and fix modifiable factors — not to withhold anticoagulation.</li><li>Offer a DOAC first line; follow your ICB’s best-value choice for new starts.</li><li>Switch existing patients only as part of a full anticoagulation review.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Published Apr 2021</b></span><span>NICE NG196 · NHS England</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng196" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/atrial-fibrillation.html">Atrial fibrillation protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Heart failure — all four pillars, started early</h3>
+        <p>The September 2025 update recommends starting all four main medicine classes in HFrEF without first optimising the dose of each one, and adds options for mildly reduced and preserved ejection fraction.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>HFrEF: offer an ACE inhibitor, a beta-blocker, an MRA and an SGLT2 inhibitor — introduce them early, then titrate.</li><li>HFpEF: consider an MRA and an SGLT2 inhibitor (dapagliflozin or empagliflozin).</li><li>NT-proBNP above 2,000 ng/L → specialist assessment and echo within 2 weeks.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Updated 3 Sep 2025</b></span><span>NICE NG106</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng106" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/heart-failure.html">Heart failure protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Lipids &amp; CVD prevention — treat-to-target in secondary prevention</h3>
+        <p>NG238 brought in lipid targets for people with established CVD and replaced CG181.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Primary prevention: offer atorvastatin 20 mg when 10-year QRISK3 is 10% or more, after discussion; aim for a reduction in non-HDL cholesterol of more than 40%.</li><li>Secondary prevention: atorvastatin 80 mg and aim for LDL 2.0 mmol/L or less, or non-HDL 2.6 mmol/L or less; consider adding ezetimibe.</li><li>Inclisiran and PCSK9 inhibitors only through NICE criteria and local pathways.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Published Dec 2023</b></span><span>NICE NG238</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng238" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/hypercholesterolaemia.html">Hypercholesterolaemia protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>CKD — keep renoprotection when potassium is high</h3>
+        <p>TA1148 (replacing TA599) makes sodium zirconium cyclosilicate an option for persistent hyperkalaemia, so that RAAS inhibitors need not be stopped.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Persistent potassium 5.5 mmol/L or more in CKD stage 3b–5 or heart failure that would otherwise stop an optimised ACE inhibitor or ARB → consider sodium zirconium cyclosilicate via the local renal or cardiology pathway.</li><li>Keep the four kidney-protecting medicines in view: ACE inhibitor/ARB, dapagliflozin (TA1075), atorvastatin 20 mg, and finerenone where indicated.</li><li>Potassium 6.0 or more → same-day assessment; 6.5 or more, or ECG changes → emergency care.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Published 29 Apr 2026</b></span><span>NICE TA1148</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ta1148" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/ckd.html">CKD protocol →</a><a class="page-card-cta" href="../tools/algorithms/hyperkalaemia.html">Hyperkalaemia algorithm →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Depression &amp; anxiety — antidepressants not routine first line in less severe depression</h3>
+        <p>NICE clarified recommendation 1.5.3 in October 2025 and amended its antidepressant tables in December 2025 to stress regular reviews and the timing of the first review.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Less severe depression: do not routinely offer an antidepressant first line unless it is the person’s informed preference — offer guided self-help, CBT, behavioural activation or group exercise.</li><li>When an antidepressant is started, book the first review and keep reviewing regularly while it continues.</li><li>Anxiety disorders: NHS Talking Therapies self-referral remains first line (CG113 unchanged).</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Updated Oct &amp; Dec 2025</b></span><span>NICE NG222</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng222" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/depression.html">Depression protocol →</a><a class="page-card-cta" href="../tools/management/anxiety.html">Anxiety protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Menopause &amp; HRT — bleeding on HRT, and fezolinetant</h3>
+        <p>NG23 now says when unscheduled bleeding on systemic HRT needs prompt assessment (April 2026), and TA1143 recommends fezolinetant when HRT is unsuitable (March 2026).</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Tell women starting systemic HRT that unscheduled bleeding is common in the first 6 months and within 3 months of a dose or preparation change.</li><li>Bleeding beyond those windows, or heavy, prolonged or persistent bleeding → prompt assessment (BMS guidance).</li><li>Fezolinetant only when HRT is unsuitable: check liver function before starting and monitor per the SPC/MHRA advice.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Updated 15 Apr 2026</b></span><span>NICE NG23 · TA1143</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng23" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/hrt-prescribing.html">HRT prescribing protocol →</a><a class="page-card-cta" href="../tools/algorithms/bleeding-on-hrt.html">Bleeding on HRT algorithm →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📘 CoSRH</div>
+        <h3>Contraception — UKMEC 2025</h3>
+        <p>The College of Sexual and Reproductive Healthcare (formerly FSRH) published UKMEC 2025, with new conditions and several upgraded categories for conditions that raise VTE risk.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Re-screen with UKMEC 2025 — new entries include CKD, multiple sclerosis, sickle cell trait and multiple VTE risk factors.</li><li>Several UKMEC 2 conditions together can add up to an unacceptable risk — weigh them, do not just count them.</li><li>Check that your PGDs and templates have moved to UKMEC 2025.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Published Dec 2025</b></span><span>CoSRH UKMEC 2025</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/contraception.html">Contraception protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Suspected cancer — NG12 updated April 2026</h3>
+        <p>The update brought in age-specific CA125 thresholds for suspected ovarian cancer and revised the recommendations on unexplained weight loss and on postmenopausal bleeding not explained by HRT.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Aged 40 and over with symptoms suggesting ovarian cancer: CA125, then urgent ultrasound by the age-specific threshold; aged 39 and under, do not use CA125 alone — consider urgent ultrasound.</li><li>Aged 60 and over with unexplained weight loss of more than 5% in 6 months: urgent investigation or a suspected cancer or non-specific symptoms pathway referral.</li><li>Postmenopausal bleeding at 55 and over not explained by HRT → suspected cancer pathway; bleeding on HRT follows NG23 and BMS guidance.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Updated 15 Apr 2026</b></span><span>NICE NG12</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng12" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/algorithms/bloating.html">Bloating algorithm →</a><a class="page-card-cta" href="../tools/algorithms/weight-loss.html">Weight loss algorithm →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">⚠ UKHSA</div>
+        <h3>UTI &amp; antimicrobials — updated UTI diagnostic tools</h3>
+        <p>UKHSA’s primary-care UTI diagnostic tools now have separate algorithms for women under 65, adults 65 and over, and suspected catheter-associated UTI. NICE NG109 prescribing is unchanged.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Do not use urine dipsticks to diagnose UTI in people aged 65 and over or with a catheter — use symptoms and the age-specific algorithm.</li><li>Non-pregnant women: nitrofurantoin for 3 days first line if eGFR allows (NG109).</li><li>Fever or confusion without urinary symptoms → look for another source; assess every patient for sepsis.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Updated 7 Jul 2025</b></span><span>UKHSA · NICE NG109</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.gov.uk/government/publications/urinary-tract-infection-diagnosis" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/uti-women.html">UTI in women protocol →</a><a class="page-card-cta" href="../tools/management/recurrent-uti.html">Recurrent UTI protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Osteoporosis — new risk assessment guideline</h3>
+        <p>NG259 replaced CG146. It covers who to assess, which tools and methods to use, identifying vertebral fractures, when to start treatment and when to reassess.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Use FRAX or QFracture and keep the same tool throughout one assessment; QFracture is the only option at age 30–39.</li><li>Act on vertebral fractures reported incidentally on imaging — do not just file the report.</li><li>Use the NOGG thresholds to decide on treatment; a fragility fracture in an older adult need not wait for DXA.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Published 29 Jul 2026</b></span><span>NICE NG259</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng259" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/osteoporosis.html">Osteoporosis protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">🏥 NHS England</div>
+        <h3>Obesity — tirzepatide in primary care, in phases</h3>
+        <p>NICE TA1026 recommends tirzepatide for weight management. NHS England’s funding variation started a phased primary-care rollout from 23 June 2025, beginning with the highest-need cohort.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Prescribe tirzepatide only within your local commissioned pathway with wraparound care — NICE eligibility does not mean immediate local access.</li><li>First cohort: BMI 40 or more with at least 4 of type 2 diabetes, hypertension, cardiovascular disease, obstructive sleep apnoea and dyslipidaemia (BMI thresholds are usually 2.5 lower for higher-risk ethnic groups).</li><li>Explain that weight often returns when the medicine stops, and plan maintenance from the start.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Rollout from 23 Jun 2025</b></span><span>NICE TA1026 · NHS England</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ta1026" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/obesity.html">Obesity protocol →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Low back pain &amp; sciatica — psychological programmes withdrawn</h3>
+        <p>In July 2026 NICE withdrew the NG59 recommendations on psychological therapy and on combined physical and psychological programmes.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Build the plan on exercise, self-management and staying active; manual therapy only as part of a package that includes exercise.</li><li>Do not refer for a psychological or combined programme for back pain — treat low mood or distress in its own right (for example NHS Talking Therapies).</li><li>Chronic primary pain features → use NG193.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Updated Jul 2026</b></span><span>NICE NG59</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng59" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/sciatica.html">Sciatica protocol →</a><a class="page-card-cta" href="../tools/algorithms/back-pain.html">Back pain algorithm →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Infertility — NG257 replaces CG156</h3>
+        <p>The new fertility guideline sets when to investigate, who to refer early, and preconception care in primary care.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Investigate both partners after 1 year of regular unprotected intercourse — semen analysis and the female tests at the same visit, not one after the other.</li><li>Offer specialist referral at presentation if the person trying to conceive is 36 or over, or there is a known cause or predictive history.</li><li>Folic acid 400 micrograms daily; 5 mg only for a recognised indication — BMI alone does not need 5 mg (NG247).</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Published 31 Mar 2026</b></span><span>NICE NG257</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng257" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/infertility.html">Infertility protocol →</a><a class="page-card-cta" href="../tools/algorithms/infertility.html">Infertility algorithm →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Sepsis — NG51 replaced by three guidelines</h3>
+        <p>NG253 (16 and over), NG254 (under 16s) and NG255 (pregnant or recently pregnant) replaced NG51.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>Judge sepsis on physiology and risk factors, not temperature — a raised respiratory rate is often the earliest warning sign.</li><li>NEWS2 is for acute hospital, acute mental health and ambulance settings; in general practice use a structured set of observations and consider an early warning score as an adjunct.</li><li>High risk → 999; anyone managed at home gets clear safety-netting on what to watch for and where to go.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Published 19 Nov 2025</b></span><span>NICE NG253 · NG254 · NG255</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng253" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/algorithms/fever-adults.html">Fever in adults algorithm →</a></div>
+      </div>
+      <div class="page-card hot-card">
+        <div class="page-card-eyebrow">📋 NICE</div>
+        <h3>Heavy menstrual bleeding — ferritin testing back in</h3>
+        <p>NICE removed the recommendation not to routinely test serum ferritin, because iron deficiency is common in heavy menstrual bleeding.</p>
+        <div class="hot-do-h">What to do differently</div>
+        <ul class="hot-do"><li>FBC for every woman with heavy menstrual bleeding, alongside starting treatment.</li><li>Consider ferritin, particularly where iron deficiency is suspected with a normal haemoglobin, or the result will change treatment.</li><li>Treat iron deficiency fully and recheck the response.</li></ul>
+        <div class="page-card-meta"><span>📅 <b>Updated 7 Jul 2026</b></span><span>NICE NG88</span></div>
+        <div class="hot-links"><a class="page-card-cta" href="https://www.nice.org.uk/guidance/ng88" target="_blank" rel="noopener noreferrer">Read source ↗</a><a class="page-card-cta" href="../tools/management/menorrhagia.html">Menorrhagia protocol →</a></div>
       </div>
     </div>
   </section>
@@ -199,6 +398,7 @@
 
 </main></div>
 <script src="../assets/site.js?v=105"></script>
+<script src="../assets/updates-nice-archive.js?v=1"></script>
 <script>
 /* Auto-updating live feed — renders the Worker's /api/updates digest.
    On the live site (workerUrl set) it shows the latest MHRA/UKHSA/NICE items.
@@ -236,7 +436,12 @@
   setAsOf();
 })();
 
-/* ---- 12-month archive (per-device memory + server KV history) ---- */
+/* ---- 12-month archive ----
+   Three sources, merged and grouped by month:
+   1. the curated NICE dataset (assets/updates-nice-archive.js) — always present, so the
+      NICE filter works with empty browser storage and no network to the feeds;
+   2. this device's memory of live items (rgp.updates.archive.v1);
+   3. the shared server archive (Worker /api/updates/archive) when the backend is deployed. */
 (function(){
   var cfg  = window.RGP_CONFIG || {};
   var base = cfg.workerUrl ? String(cfg.workerUrl).replace(/\/$/,'') : '';
@@ -247,13 +452,16 @@
   if(!sec || !body || !filtersEl) return;
   var LKEY = 'rgp.updates.archive.v1';
   var YEAR = 365*24*60*60*1000;
+  var CUR  = window.RGP_NICE_ARCHIVE || { items:[] };
+  var CURATED = (CUR.items || []).filter(function(x){ return x && x.title; });
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function load(){ try{ return JSON.parse(localStorage.getItem(LKEY)||'[]')||[]; }catch(e){ return []; } }
   function store(a){ try{ localStorage.setItem(LKEY, JSON.stringify(a)); }catch(e){} }
   function keyOf(it){ return (it.url||'')+'|'+(it.title||''); }
   function timeOf(it){ var t=Date.parse(it.date||''); if(!isNaN(t)) return t; var s=Date.parse(it.seen||''); return isNaN(s)?Date.now():s; }
+  function monthOnly(it){ return /^\d{4}-\d{2}$/.test(String(it.date||'')); }
   function merge(items){
-    var map={}; load().forEach(function(x){ map[keyOf(x)]=x; });
+    var map={}; load().forEach(function(x){ if(x && x.title) map[keyOf(x)]=x; });
     var now=new Date().toISOString();
     (items||[]).forEach(function(x){ if(!x||!x.title) return; var k=keyOf(x); if(!map[k]){ var o={}; for(var p in x) o[p]=x[p]; o.seen=now; map[k]=o; } });
     var cutoff=Date.now()-YEAR;
@@ -263,36 +471,74 @@
       .slice(0,800);
     store(merged); return merged;
   }
+  // curated NICE entries + remembered live items, de-duplicated, last 12 months, newest first
+  function combine(live){
+    var cutoff=Date.now()-YEAR, seen={}, out=[];
+    CURATED.concat(live||[]).forEach(function(x){
+      var k=keyOf(x); if(seen[k] || timeOf(x)<cutoff) return; seen[k]=1; out.push(x);
+    });
+    return out.sort(function(a,b){ return timeOf(b)-timeOf(a); });
+  }
   var ALL=[], filter='all';
-  var FILTERS=[['all','All'],['NICE','NICE'],['NICE','NICE guidance'],['MHRA','MHRA'],['UKHSA','UKHSA']];
+  var FILTERS=[['all','All'],['NICE','NICE'],['MHRA','MHRA'],['UKHSA','UKHSA'],['Prescriber','Prescriber']];
+  function srcIs(x,f){ return String(x.src||'').toLowerCase()===String(f).toLowerCase(); }
+  function fmtDay(it){
+    var t=timeOf(it); if(!it.date || isNaN(t)) return '';
+    return new Date(t).toLocaleDateString('en-GB', monthOnly(it) ? {month:'short',timeZone:'UTC'} : {day:'numeric',month:'short',timeZone:'UTC'});
+  }
+  function rowLive(it){
+    return '<a class="arch-item" href="'+esc(it.url||'#')+'" target="_blank" rel="noopener noreferrer">'+
+      '<span class="arch-tag">'+esc(it.tag||it.src||'')+'</span>'+
+      '<span class="arch-t">'+esc(it.title)+'</span>'+
+      '<span class="arch-d">'+esc(fmtDay(it))+'</span></a>';
+  }
+  function rowCurated(it){
+    var site=(it.site||[]).map(function(s){ return '<a href="../'+esc(s[1])+'">'+esc(s[0])+' →</a>'; }).join(' · ');
+    return '<div class="arch-item arch-rich">'+
+      '<span class="arch-tag">'+esc(it.tag||'NICE')+(it.code?' '+esc(it.code):'')+'</span>'+
+      '<span class="arch-t"><a class="arch-link" href="'+esc(it.url||'#')+'" target="_blank" rel="noopener noreferrer">'+esc(it.title)+' ↗</a>'+
+        (it.summary?'<span class="arch-sum">'+esc(it.summary)+'</span>':'')+
+        (site?'<span class="arch-site">On this site: '+site+'</span>':'')+
+      '</span>'+
+      '<span class="arch-d"'+(monthOnly(it)?' title="NICE gives the month for this change"':'')+'>'+esc(fmtDay(it))+'</span></div>';
+  }
+  function renderChips(){
+    filtersEl.innerHTML = FILTERS.map(function(f){
+      var n = f[0]==='all' ? ALL.length : ALL.filter(function(x){ return srcIs(x,f[0]); }).length;
+      return '<button type="button" class="arch-chip'+(f[0]===filter?' on':'')+'" data-f="'+esc(f[0])+'" aria-pressed="'+(f[0]===filter)+'">'+esc(f[1])+' <span class="arch-n">'+n+'</span></button>';
+    }).join('');
+  }
   function render(){
-    var items = (filter==='all') ? ALL : ALL.filter(function(x){ return String(x.src||'')===filter; });
-    if(!items.length){ body.innerHTML='<div class="arch-empty">Nothing archived yet for this filter. The archive fills in automatically as weekly updates arrive — come back and the last 12 months will build up here.</div>'; return; }
+    renderChips();
+    var items = (filter==='all') ? ALL : ALL.filter(function(x){ return srcIs(x,filter); });
+    if(!items.length){ body.innerHTML='<div class="arch-empty">Nothing archived yet for this filter. Live MHRA, UKHSA and Prescriber items are added automatically as the weekly feed brings them in, and kept here for 12 months.</div>'; return; }
     var groups={}, order=[];
-    items.forEach(function(it){ var d=new Date(timeOf(it)); var k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); if(!groups[k]){ groups[k]=[]; order.push(k); } groups[k].push(it); });
+    items.forEach(function(it){ var d=new Date(timeOf(it)); var k=d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0'); if(!groups[k]){ groups[k]=[]; order.push(k); } groups[k].push(it); });
     body.innerHTML = order.map(function(k){
-      var d=new Date(k+'-01'); var label=d.toLocaleDateString('en-GB',{month:'long',year:'numeric'});
-      var rows=groups[k].map(function(it){
-        var date = it.date ? new Date(it.date).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : '';
-        return '<a class="arch-item" href="'+esc(it.url||'#')+'" target="_blank" rel="noopener noreferrer">'+
-          '<span class="arch-tag">'+esc(it.tag||it.src||'')+'</span>'+
-          '<span class="arch-t">'+esc(it.title)+'</span>'+
-          '<span class="arch-d">'+esc(date)+'</span></a>';
-      }).join('');
+      var p=k.split('-'); var label=new Date(Date.UTC(+p[0], +p[1]-1, 1)).toLocaleDateString('en-GB',{month:'long',year:'numeric',timeZone:'UTC'});
+      var rows=groups[k].map(function(it){ return it.curated ? rowCurated(it) : rowLive(it); }).join('');
       return '<div class="arch-month"><h3 class="arch-month-h">'+esc(label)+' <span>'+groups[k].length+'</span></h3>'+rows+'</div>';
     }).join('');
   }
-  filtersEl.innerHTML = FILTERS.map(function(f){ return '<button class="arch-chip'+(f[0]==='all'?' on':'')+'" data-f="'+f[0]+'">'+esc(f[1])+'</button>'; }).join('');
-  filtersEl.querySelectorAll('.arch-chip').forEach(function(b){ b.addEventListener('click', function(){ filter=b.dataset.f; filtersEl.querySelectorAll('.arch-chip').forEach(function(x){ x.classList.toggle('on', x===b); }); render(); }); });
+  filtersEl.addEventListener('click', function(e){
+    var b=e.target.closest && e.target.closest('.arch-chip'); if(!b) return;
+    filter=b.getAttribute('data-f'); render();
+  });
+  function setStamp(extra){
+    if(!stamp) return;
+    var n=CURATED.filter(function(x){ return timeOf(x)>=Date.now()-YEAR; }).length;
+    var asOf=CUR.asOf ? new Date(Date.parse(CUR.asOf)).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}) : '';
+    stamp.textContent = (n ? 'Includes '+n+' NICE guidance changes for primary care'+(asOf?', checked to '+asOf:'')+'. ' : '') + (extra||'');
+  }
 
-  ALL = merge([]);            // start from this device's memory
-  render();
+  ALL = combine(merge([]));   // curated NICE list + this device's memory
+  setStamp(); render();
   // capture this load's live items as they arrive
-  document.addEventListener('rgp-updates-live', function(e){ if(e.detail && e.detail.length){ ALL = merge(e.detail); render(); } });
+  document.addEventListener('rgp-updates-live', function(e){ if(e.detail && e.detail.length){ ALL = combine(merge(e.detail)); render(); } });
   // pull the shared server archive (full year, all devices) when the backend is deployed
   if(base){
     fetch(base+'/api/updates/archive').then(function(r){ return r.ok?r.json():null; }).then(function(d){
-      if(d && d.items && d.items.length){ ALL = merge(d.items); if(stamp){ stamp.textContent='Synced '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})+' · '+ALL.length+' items.'; } render(); }
+      if(d && d.items && d.items.length){ ALL = combine(merge(d.items)); setStamp('Synced '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})+' · '+ALL.length+' items.'); render(); }
     }).catch(function(){});
   }
 })();

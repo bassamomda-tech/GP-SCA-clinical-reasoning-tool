@@ -253,45 +253,15 @@ body {
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — neutropenic sepsis is the emergency; otherwise think drugs, viruses, autoimmune disease and marrow. Quantify the neutrophil count, treat the cause, protect the patient, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Low WCC / neutrophils</span><div class="body">Confirm with a repeat and blood film. Quantify the <b>neutrophil</b> count — that drives infection risk.</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1 · Safety — sepsis / agranulocytosis</span><span class="ttl">Neutropenic sepsis or agranulocytosis?</span><div class="body">On anticancer treatment + fever or unwell → acute oncology + immediate hospital assessment. Any ANC with fever, sepsis features or deterioration → immediate hospital assessment. New drug (carbimazole, clozapine, DMARD, sulfasalazine) + sore throat/fever → urgent FBC.</div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Admit</span><span class="ttl">999 / emergency admission</span><div class="body">Suspected neutropenic sepsis → immediate hospital transfer; do not wait for the ANC or cultures. Withhold the suspected drug where clinically safe and follow the drug-specific pathway (e.g. clozapine).</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Repeat + film + cause</span><div class="body">Trend, film, drug review, renal/liver function; B12/folate and HIV where indicated; autoimmune/viral tests only if clinically suggested; check for other cytopenias.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · cause</span></div>
-    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Drugs / infection</div><div class="box ix"><span class="ttl">Commonest</span><div class="body">Chemo, carbimazole, clozapine, DMARDs, sulfasalazine; viral infection.</div></div></div>
-      <div class="col"><div class="blabel">Autoimmune / benign</div><div class="box ix"><span class="ttl">Often isolated</span><div class="body">SLE, Felty's; <b>benign ethnic/Duffy-null-associated neutropenia</b> (stable, isolated, well — not diagnosed from ethnicity alone).</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Marrow</div><div class="box ix"><span class="ttl">With other cytopenias</span><div class="body">MDS, leukaemia, aplasia, hypersplenism, B12/folate deficiency.</div></div></div>
-    </div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Immediate hospital</span> suspected neutropenic sepsis, fever/deterioration with significant neutropenia, pancytopenia with bleeding/infection, blasts. <span class="pill pill-blue">Urgent haematology</span> new/falling ANC &lt;0.5, persistent ANC 0.5–1.0, unexplained pancytopenia, abnormal film.</div></div>
-    <div class="arrow"><span class="tag">Step 8 · treat cause &amp; protect</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; protect the patient</span><span class="ttl">Remove drivers, reduce infection risk</span><div class="body"><b>Stop/withhold the culprit drug</b> (carbimazole, clozapine, sulfasalazine, DMARDs) in consultation with the specialist; replace B12/folate; treat infection. Give <b>proportionate infection advice</b> and to seek urgent help for fever/sore throat. <b>Benign ethnic/Duffy-null-associated neutropenia</b>, once confirmed stable, needs no treatment, just recognition.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Repeat FBC + film</b> to confirm and trend; mild isolated post-viral neutropenia usually recovers. <b>Urgent FBC and same-day assessment</b> for any fever or sore throat on carbimazole/clozapine/DMARDs (agranulocytosis can be fatal); follow the clozapine monitoring pathway. New <b>other cytopenias or blasts</b> → urgent haematology. Provide written safety-net advice for drug-related neutropenia.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution crit">⚠️ <b>Safety rule:</b> any patient on carbimazole or clozapine with a sore throat or fever needs an urgent FBC and same-day assessment — agranulocytosis can be fatal.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/leucopenia.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/leucopenia.html">⬇ Download PDF</button><a class="sum-open" href="one-page/leucopenia.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/leucopenia.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -308,19 +278,19 @@ body {
     <div class="rfgrid">
       <div class="rftile"><b>Neutropenic sepsis (anticancer treatment)</b> NICE: ANC ≤0.5 × 10⁹/L with temperature >38°C or other clinically significant sepsis features → immediate referral to secondary care; do not delay for community investigations</div>
       <div class="rftile"><b>Unwell, possibly neutropenic</b> Do not rely on fever alone (attenuated in neutropenic or steroid-treated patients). Rigors, new cough or breathlessness, dysuria, abdominal pain, diarrhoea, mucositis, hypotension, confusion or unexplained deterioration → immediate hospital assessment</div>
-      <div class="rftile"><b>Pancytopenia</b> New pancytopenia, blasts, dysplastic cells, rapidly falling counts, significant bleeding, severe anaemia, fever or systemic illness → urgent same-day hospital/haematology discussion (aplastic anaemia, acute leukaemia, MDS)</div>
+      <div class="rftile"><b>Pancytopenia</b> New pancytopenia, dysplastic cells, rapidly falling counts, significant bleeding, severe anaemia, fever or systemic illness → urgent same-day hospital/haematology discussion (aplastic anaemia, acute leukaemia, MDS); blasts on the film or a film suggesting acute leukaemia → immediate specialist assessment</div>
       <div class="rftile"><b>Shock or rapid deterioration</b> Hypotension, confusion, respiratory compromise → follow the local sepsis pathway and emergency resuscitation guidance while arranging 999 transfer</div>
-      <div class="rftile"><b>Mouth ulcers + sore throat</b> Severe mucositis, inability to swallow, drooling → same-day (agranulocytosis, risk of aspiration pneumonia)</div>
-      <div class="rftile"><b>Receiving anticancer treatment</b> Fever or other possible infection symptoms → immediate contact with the acute oncology service and hospital assessment; follow the patient's oncology instructions, even if temperature is below 38°C</div>
+      <div class="rftile"><b>Mouth ulcers + sore throat</b> Severe mucositis, inability to swallow, drooling → immediate hospital assessment (agranulocytosis, risk of aspiration pneumonia)</div>
+      <div class="rftile"><b>Receiving anticancer treatment (now or in the last 30 days)</b> Fever, feeling unwell or other possible infection symptoms → immediate contact with the acute oncology service and hospital assessment; follow the patient's oncology instructions, even if temperature is below 38°C</div>
       <div class="rftile"><b>Purpura or bleeding</b> Petechiae, spontaneous bruising, mucosal bleeding → same-day haematology (DIC, aplastic anaemia, acute leukaemia)</div>
-      <div class="rftile"><b>Suspected drug-induced agranulocytosis</b> Clozapine, carbimazole, sulfasalazine or other implicated drug + sore throat/fever or very low ANC → withhold the drug where clinically safe, urgent FBC, same-day assessment and contact the relevant specialist team</div>
+      <div class="rftile"><b>Suspected drug-induced agranulocytosis</b> Clozapine, carbimazole, sulfasalazine or other implicated drug + sore throat/fever or very low ANC → urgent FBC, same-day assessment and contact the relevant specialist team; withhold the drug where clinically safe (carbimazole: stop immediately; clozapine: follow the clozapine monitoring and emergency pathway with the mental health team — do not stop it independently in a clinically stable patient)</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p><b>Neutropenic sepsis</b> (neutrophils <0.5 × 10⁹/L + fever) is a medical emergency. Without neutrophils, infections can progress rapidly to septic shock; risk varies with cause, duration and nadir, mucosal injury, chemotherapy, comorbidity, age and steroid use, so no single mortality figure applies. NICE CG151 requires immediate referral to secondary/tertiary care, where empirical antibiotics are given immediately; treatment should not be delayed for community investigations.</p>
-      <p><b>Pancytopenia</b> suggests bone marrow failure (aplastic anaemia, MDS, acute leukaemia). Urgent haematology assessment enables bone marrow examination and supportive care. NICE NG12 recommends a very urgent FBC when leukaemia is possible (unexplained fever, persistent fatigue, recurrent infection, generalised lymphadenopathy, unexplained bruising, bleeding, petechiae or hepatosplenomegaly).</p>
+      <p><b>Neutropenic sepsis</b> (neutrophils ≤0.5 × 10⁹/L with a temperature &gt;38°C or other sepsis features) is a medical emergency. Without neutrophils, infections can progress rapidly to septic shock; risk varies with cause, duration and nadir, mucosal injury, chemotherapy, comorbidity, age and steroid use, so no single mortality figure applies. NICE CG151 requires immediate referral to secondary/tertiary care, where empirical antibiotics are given immediately; treatment should not be delayed for community investigations.</p>
+      <p><b>Pancytopenia</b> suggests bone marrow failure (aplastic anaemia, MDS, acute leukaemia). Urgent haematology assessment enables bone marrow examination and supportive care. NICE NG12 (updated April 2026) advises considering a very urgent FBC (within 48 hours) when leukaemia is possible in adults (pallor, persistent fatigue, unexplained fever, persistent or recurrent infection, generalised lymphadenopathy, unexplained bruising, bleeding, petechiae or hepatosplenomegaly), and immediate specialist assessment if a blood count or film suggests acute leukaemia.</p>
       <p><b>Drug-induced agranulocytosis</b> is a recognised risk with clozapine, carbimazole and sulfasalazine. Management is drug-specific: clozapine follows the mandatory monitoring and emergency pathway via the clozapine/psychiatric team; carbimazole requires immediate discontinuation and urgent FBC/medical assessment; DMARDs are withheld and the initiating specialist/shared-care team contacted.</p>
       <p><b>Chemotherapy-induced neutropenia</b>: a patient on anticancer treatment who becomes unwell with fever or other possible infection symptoms needs immediate acute oncology contact and hospital assessment, even if they look well. Neutropenic sepsis is diagnosed in hospital using the clinical context, sepsis features, temperature and ANC; do not delay transfer while awaiting the ANC or cultures.</p>
     </div>
@@ -405,7 +375,7 @@ body {
     <div class="why-drawer">
       <p><b>Infection risk rises as the ANC falls</b>, but also depends on cause, duration and nadir, mucosal barrier injury, chemotherapy, comorbidity, malignancy, age, corticosteroid treatment, previous infections and local microbiology. A stable chronic ANC of 0.8–1.0 in a well patient is not equivalent to a new falling ANC of 0.8 with fever, mucositis or pancytopenia.</p>
       <p><b>Isolated neutropenia</b> is more likely to be benign (BEN, autoimmune) than pancytopenia. If Hb and platelets are normal, the bone marrow is functioning. Pancytopenia suggests marrow failure or infiltration and requires urgent haematology assessment.</p>
-      <p><b>Lymphopenia</b> is less clinically important than neutropenia. Lymphocytes <0.5 × 10⁹/L suggests immunodeficiency (HIV, chemotherapy, immunosuppressants). Check HIV serology if risk factors present.</p>
+      <p><b>Lymphopenia</b> is less clinically important than neutropenia. Lymphocytes <0.5 × 10⁹/L suggests immunodeficiency (HIV, chemotherapy, immunosuppressants). Offer an HIV test if it is unexplained (an HIV indicator condition), not only when risk factors are present.</p>
       <p><b>Benign ethnic / Duffy-null-associated neutropenia</b> is stable over time. If the ANC is falling, persistently below 1.0, associated with other abnormalities or recurrent infection, seek haematology advice.</p>
     </div>
   </div>
@@ -517,7 +487,7 @@ body {
       <div>Suspected neutropenic sepsis in a patient receiving anticancer treatment. Any ANC with fever, sepsis features or clinical deterioration. Sepsis, hypotension, confusion or respiratory compromise. ANC <0.5 × 10⁹/L with systemic symptoms. Pancytopenia with bleeding, infection, severe anaemia or abnormal film. Suspected acute leukaemia or circulating blasts. Severe mucositis with drooling.</div>
       
       <div><span class="pill pill-red">Urgent same-day haematology discussion</span></div>
-      <div>New or falling ANC <0.5 × 10⁹/L, even if afebrile (stable chronic cases via local haematology policy, not 999). New pancytopenia, blasts, dysplasia or rapidly falling counts. Suspected drug-induced agranulocytosis.</div>
+      <div>New or falling ANC <0.5 × 10⁹/L, even if afebrile (stable chronic cases via local haematology policy, not 999). New pancytopenia, dysplasia or rapidly falling counts (blasts → immediate, above). Suspected drug-induced agranulocytosis.</div>
       
       <div><span class="pill pill-amber">Urgent haematology</span></div>
       <div>Persistent ANC 0.5-1.0 × 10⁹/L (timing by trend and clinical context). Persistent unexplained WCC <3 × 10⁹/L. Abnormal blood film. Neutropenia with splenomegaly, lymphadenopathy, recurrent infections or constitutional symptoms. Unexplained pancytopenia (stable, mild, no red flags).</div>
@@ -565,7 +535,7 @@ body {
       <div class="b-card">
         <div class="b-cond">B12/folate deficiency</div>
         <div class="b-drug">Replace deficiency <span class="pill pill-teal">Curative</span></div>
-        <div class="b-note">Hydroxocobalamin 1 mg IM (3× weekly for 2 weeks, then every 2–3 months; BNF). Folic acid 5 mg OD. Repeat FBC to confirm the cytopenia is resolving.</div>
+        <div class="b-note">Hydroxocobalamin 1 mg IM (3× weekly for 2 weeks, then every 2–3 months; with neurological features, 1 mg on alternate days until no further improvement; BNF). Folic acid 5 mg OD — do not give folic acid alone until B12 deficiency is excluded or B12 treatment has started. Repeat FBC to confirm the cytopenia is resolving.</div>
       </div>
       
       <div class="b-card">
@@ -631,7 +601,7 @@ body {
       
       <div class="lstile"><b>Gardening</b> Usually acceptable with ordinary hygiene — gloves and hand washing. Extra precautions (e.g. compost) only during profound or treatment-related neutropenia per specialist plan.</div>
       
-      <div class="lstile"><b>Recognise infection early</b> Fever, rigors or feeling unwell (especially on anticancer treatment) = urgent help; on chemotherapy, contact the acute oncology service immediately. Sore throat, mouth ulcers, dysuria, cough or breathlessness = same-day assessment. Educate patient on when to seek help.</div>
+      <div class="lstile"><b>Recognise infection early</b> Fever, rigors or feeling unwell (especially on, or within 30 days of, anticancer treatment) = seek help immediately (999 if confused, breathless or collapsing); on chemotherapy, contact the acute oncology service immediately. Sore throat, mouth ulcers, dysuria, cough or breathlessness = same-day assessment. Educate patient on when to seek help.</div>
     </div>
   </div>
   <div class="why-row">
@@ -661,7 +631,7 @@ body {
       <div>Repeat FBC if drug-induced neutropenia, as agreed with the specialist team (should be recovering). If ANC still falling, same-day haematology discussion. Check patient asymptomatic (no fever, mouth ulcers).</div>
       
       <div>2-4 weeks</div>
-      <div>Repeat FBC if transient viral leucopenia (should normalize). If WCC <3 persistent, refer haematology. Persistent ANC 0.5–1.0: urgent haematology advice/referral (timing by trend and context); new/falling ANC <0.5 or symptomatic: same-day discussion.</div>
+      <div>Repeat FBC if transient viral leucopenia (should normalize). If WCC <3 persistent, urgent haematology advice/referral. Persistent ANC 0.5–1.0: urgent haematology advice/referral (timing by trend and context); new/falling ANC <0.5 or symptomatic: same-day discussion.</div>
       
       <div>3 months</div>
       <div>If benign ethnic/Duffy-null-associated neutropenia suspected: repeat FBC to confirm the ANC is stable and isolated with a normal film. If stable, reassure; routine annual FBC not necessarily required (local haematology advice). If falling or persistently below 1.0, seek haematology advice.</div>
@@ -670,7 +640,7 @@ body {
       <div>No routine FBC needed after a transient neutropenia that has resolved. For chronic idiopathic neutropenia, follow the haematology monitoring plan.</div>
       
       <div><span class="pill pill-red">Safety-net immediate</span></div>
-      <div>Fever or feeling unwell while on anticancer treatment (contact acute oncology). Fever, rigors or sepsis features with known neutropenia. Confusion, breathlessness, collapse or rapid deterioration. Severe dysphagia with drooling (mucositis, aspiration risk).</div>
+      <div>Fever or feeling unwell while on, or within 30 days of, anticancer treatment (contact acute oncology). Fever, rigors or sepsis features with known neutropenia. Confusion, breathlessness, collapse or rapid deterioration. Severe dysphagia with drooling (mucositis, aspiration risk).</div>
       
       <div><span class="pill pill-red">Safety-net same-day</span></div>
       <div>New mouth ulcers, sore throat, dysuria (infection). Cough + breathlessness (pneumonia). Diarrhoea or abdominal pain. Do not rely on fever alone. Any infection in a neutropenic patient needs same-day assessment.</div>

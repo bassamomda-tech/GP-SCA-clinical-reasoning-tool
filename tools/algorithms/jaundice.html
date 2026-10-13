@@ -117,69 +117,15 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — split the bilirubin and localise pre- / intra- / post-hepatic, exclude cholangitis and liver failure, run the liver screen, then treat by cause and use the NICE NG12 pancreatic suspected cancer pathway referral (aged 40 and over with jaundice) for painless obstructive jaundice.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Jaundice / raised bilirubin</span><div class="body">Pale stools + dark urine (obstructive), pain vs painless, weight loss, alcohol, drugs, travel/risk factors, itch. Request a <b>split (conjugated/unconjugated) bilirubin</b>, full LFTs, FBC, clotting and USS (urgency set by the clinical picture).</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — screen the emergencies</span><span class="ttl">Cholangitis or liver failure?</span><div class="body"><ul>
-      <li><b>Ascending cholangitis</b> — Charcot's triad (fever + RUQ pain + jaundice) ± Reynolds' pentad (+ hypotension + confusion)</li>
-      <li><b>Acute liver failure</b> — encephalopathy, coagulopathy (↑INR), hypoglycaemia</li>
-      <li><b>Paracetamol overdose</b> or new drug-induced liver injury</li>
-      <li><b>Sepsis / haemodynamic instability</b></li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — emergency</div><div class="box stop"><span class="lbl">Stop · admit</span><span class="ttl">Emergency admission</span><div class="body">Cholangitis → IV fluids + antibiotics + urgent biliary decompression (ERCP). Acute liver failure → 999; suspected paracetamol overdose → urgent ED, acetylcysteine without delay, TOXBASE. Don't wait for outpatient imaging.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — stable</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Split bilirubin + LFT pattern + USS</span><div class="body">Use the conjugated fraction and the predominant ALT-vs-ALP pattern to localise; <b>USS liver/biliary tree</b> for duct dilatation; full <b>liver screen</b> (viral serology, autoantibodies, ferritin, caeruloplasmin, immunoglobulins) as for abnormal LFTs.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · where is the block?</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Pre-hepatic</div><div class="box ix"><span class="ttl">Unconjugated, LFTs usually normal</span><div class="body"><b>Haemolysis</b> (↑retic, ↑LDH, ↓haptoglobin, +DAT) or <b>Gilbert's</b> (isolated mild ↑bilirubin, worse when fasting/unwell). No dark urine.</div></div></div>
-      <div class="col"><div class="blabel">Hepatic</div><div class="box ix"><span class="ttl">Hepatocellular (↑↑ALT)</span><div class="body">Viral hepatitis (A–E), <b>alcoholic</b>/drug-induced (incl. paracetamol), autoimmune hepatitis, decompensated cirrhosis, Wilson's, haemochromatosis.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Post-hepatic</div><div class="box ix"><span class="ttl">Obstructive (↑↑ALP/GGT, conjugated)</span><div class="body">Pale stools, dark urine, itch. Gallstones (painful), stricture, PSC, <b>pancreatic / cholangiocarcinoma</b>. <b>Painless obstruction needs urgent assessment for malignancy.</b></div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat by cause</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — cause-directed treatment</span><span class="ttl">Treat the level, support the liver</span><div class="body"><ul>
-      <li><b>Pre-hepatic:</b> Gilbert's — reassure, no treatment. Haemolysis — find &amp; treat the cause (haematology).</li>
-      <li><b>Hepatic:</b> stop hepatotoxins &amp; alcohol; specialist-led antivirals for hepatitis B/C; immunosuppression for autoimmune hepatitis; manage cirrhosis complications; NAC for paracetamol.</li>
-      <li><b>Post-hepatic benign:</b> ERCP stone extraction → cholecystectomy; stricture dilatation/stenting.</li>
-      <li><b>Post-hepatic malignant:</b> urgent staging CT + hepatobiliary MDT; biliary stenting for relief; symptom control (itch — colestyramine), nutrition.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">Emergency</span> cholangitis, acute liver failure, decompensated cirrhosis, suspected paracetamol toxicity.</li>
-      <li><span class="pill pill-purple">Suspected cancer · NICE NG12 (updated April 2026)</span> adults aged <b>40 and over with jaundice</b> → <b>suspected cancer pathway referral for pancreatic cancer</b>; arrange imaging alongside but do not let it delay the referral. Under 40, painless obstructive jaundice still needs urgent HPB assessment.</li>
-      <li><span class="pill pill-blue">Hepatology / gastro</span> unexplained hepatocellular jaundice, suspected autoimmune/inherited liver disease, PSC. <span class="pill pill-blue">Haematology</span> haemolysis.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · modify &amp; protect</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; liver protection</span><span class="ttl">Reduce ongoing injury</span><div class="body"><b>Alcohol cessation</b> and brief intervention · review and stop hepatotoxic drugs/supplements · weight loss for fatty liver · hepatitis A/B vaccination in chronic liver disease · paracetamol dose tailored to liver disease · safe-sex/needle advice for viral hepatitis · pruritus measures.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · monitor &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>999 / same-day</b> if fever + rigors + RUQ pain (cholangitis), confusion/drowsiness, bruising/bleeding, or vomiting blood. <b>Review:</b> chase USS/CT and suspected cancer referral outcomes; repeat LFTs to track trend; re-image if obstruction suspected but first scan normal. <b>Safety-net</b> that a normal USS does not exclude a small pancreatic tumour — escalate to CT if jaundice persists.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution crit">⚠️ <b>Painless jaundice is a red flag:</b> in an adult aged ≥40, jaundice itself meets the pancreatic suspected cancer criterion — refer on the pathway (NICE NG12, updated April 2026), and never wait out a normal ultrasound.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/jaundice.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/jaundice.html">⬇ Download PDF</button><a class="sum-open" href="one-page/jaundice.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/jaundice.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -198,7 +144,7 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
         <div class="rftile"><b>Suspected acute liver failure</b> Acute liver injury with prolonged INR plus new encephalopathy (confusion, drowsiness, asterixis), hypoglycaemia, acidosis, rapidly worsening jaundice or multiorgan dysfunction → <span class="pill pill-red">999</span> + urgent liver/critical-care discussion</div>
         <div class="rftile"><b>Ascending cholangitis</b> Fever/rigors + RUQ pain + jaundice → <span class="pill pill-red">same-day hospital</span>; 999 if hypotension, confusion, severe sepsis, hypoxia or instability</div>
         <div class="rftile"><b>Haemodynamic instability</b> Hypotension, poor perfusion or altered consciousness — judged on the whole picture → <span class="pill pill-red">999</span></div>
-        <div class="rftile"><b>Paracetamol overdose</b> Any suspected overdose → <span class="pill pill-red">urgent ED</span> (999 if unwell) + TOXBASE/NPIS advice. Do not delay acetylcysteine for bloods if late, uncertain-timing or staggered — staggered ingestion is not plotted on the nomogram</div>
+        <div class="rftile"><b>Paracetamol overdose</b> Any suspected overdose → <span class="pill pill-red">ED now</span> (999 if unwell) + TOXBASE/NPIS advice. Do not delay acetylcysteine for bloods if late, uncertain-timing or staggered — staggered ingestion is not plotted on the nomogram</div>
         <div class="rftile"><b>Jaundice at 40 or over</b> <span class="pill pill-purple">2WW · pancreatic</span> Suspected cancer pathway referral whether or not there is weight loss (NICE NG12); weight loss, pale stools, itch or a palpable gallbladder (Courvoisier — suggestive, not diagnostic) add concern</div>
         <div class="rftile"><b>Pruritus + pale stools + dark urine</b> Obstructive pattern → urgent USS/HPB assessment; at 40+ the jaundice itself meets the NG12 pancreatic criterion → <span class="pill pill-purple">2WW</span></div>
         <div class="rftile"><b>Coagulopathy / bleeding</b> Raised INR needs urgent interpretation (exclude warfarin/DOAC, vitamin K deficiency, chronic disease); spontaneous bruising or GI bleed → <span class="pill pill-red">Same-day ED</span> (999 if bleeding actively)</div>
@@ -335,8 +281,8 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
       <p class="intro">Almost all new jaundice in adults requires specialist input. The key decision is urgency of referral.</p>
       <div class="kv">
         <div><span class="pill pill-red">999</span></div><div>Suspected acute liver failure (encephalopathy, hypoglycaemia); cholangitis with sepsis or instability; shock; active GI bleeding; unwell after overdose; pregnancy with systemic illness</div>
-        <div><span class="pill pill-red">Same-day ED</span></div><div>New jaundice with coagulopathy, renal dysfunction, fever, significant pain, rapidly rising bilirubin, inability to maintain intake or suspected decompensation; suspected paracetamol overdose; suspected alcoholic hepatitis (steroids for Maddrey DF ≥32 are specialist-only) — no single bilirubin or INR number decides</div>
-        <div><span class="pill pill-purple">Suspected cancer: pancreatic / upper GI</span></div><div><b>Jaundice at 40 or over</b> (with or without weight loss) → pancreatic suspected cancer pathway (NG12); obstruction or duct dilatation → urgent HPB assessment, 2WW if criteria met or imaging suggests malignancy. NICE NG85: pancreatic-protocol CT before biliary drainage unless drainage is urgent</div>
+        <div><span class="pill pill-red">Same-day ED</span></div><div>New jaundice with coagulopathy, renal dysfunction, fever, significant pain, rapidly rising bilirubin, inability to maintain intake or suspected decompensation; suspected paracetamol overdose → ED now, not later in the day; suspected alcoholic hepatitis (steroids for Maddrey DF ≥32 are specialist-only) — no single bilirubin or INR number decides</div>
+        <div><span class="pill pill-purple">Suspected cancer: pancreatic / upper GI</span></div><div><b>Jaundice at 40 or over</b> (with or without weight loss) → pancreatic suspected cancer pathway (NG12) — do not wait for imaging, and a normal ultrasound does not exclude pancreatic cancer; obstruction or duct dilatation → urgent HPB assessment, 2WW if criteria met or imaging suggests malignancy. NICE NG85: pancreatic-protocol CT before biliary drainage unless drainage is urgent</div>
         <div><span class="pill pill-amber">Urgent (1–2 weeks)</span></div><div>Cholestatic LFTs + normal USS (PSC/PBC suspected); HBsAg or HCV RNA positive; positive autoantibodies supported by pattern, raised IgG or persistent derangement</div>
         <div><span class="pill pill-blue">Routine Hepatology</span></div><div>Chronic viral hepatitis (stable); haemochromatosis; Wilson's disease; PBC (stable); cirrhosis monitoring; unexplained persistent LFT derangement &gt;6 months</div>
         <div><span class="pill pill-green">Primary care manage</span></div><div>Gilbert's syndrome (isolated unconjugated bilirubin, normal ALT/ALP/GGT/albumin/INR, haemolysis excluded); fatty liver without jaundice and with low fibrosis risk — <b>new jaundice from suspected alcoholic hepatitis needs urgent specialist assessment</b></div>
@@ -437,7 +383,7 @@ body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 
         <div>1–2 weeks</div><div>Repeat LFTs + FBC in selected stable patients — not instead of urgent assessment or referral. Check response to any stopped drug (DILI). Confirm specialist appointment made. Review alcohol intake</div>
         <div>4 weeks</div><div>LFTs improving? If not, escalate urgency of referral. Check medication side effects (cholestyramine constipation/malabsorption)</div>
         <div>3 months</div><div>LFT trend: falling is reassuring but does not exclude malignancy, chronic disease or persistent obstruction. Static/rising = escalate. NAFLD without advanced fibrosis: retest for advanced fibrosis every 3 years (NICE NG49); hepatology if fibrosis markers raised (FIB-4 / ELF)</div>
-        <div>Annual</div><div>Cirrhosis: liver USS every 6 months ± AFP per cause and hepatology protocol — never substitute annual AFP for imaging (NG50). Variceal screening per hepatology</div>
+        <div>Cirrhosis</div><div>Cirrhosis: liver USS every 6 months ± AFP per cause and hepatology protocol — never substitute annual AFP for imaging (NG50). Variceal screening per hepatology</div>
         <div>FIB-4 score</div><div>Age × AST ÷ (platelet × √ALT). &lt;1.3 low risk under 65 (about 2.0 if over 65); intermediate → ELF/elastography; high (BSG commonly &gt;3.25) → specialist — follow the local GM hepatology thresholds. Use to triage NAFLD/AFLD monitoring in primary care</div>
         <div><span class="pill pill-red">Safety-net 999</span></div><div>Confusion / drowsiness (encephalopathy); haematemesis or melaena; severe abdominal pain; marked pallor; collapse</div>
         <div><span class="pill pill-red">Safety-net same-day</span></div><div>Deepening jaundice; new fever; inability to eat/drink; bruising without injury; worsening abdominal distension (ascites)</div>

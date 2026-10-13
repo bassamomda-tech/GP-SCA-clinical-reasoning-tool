@@ -848,7 +848,7 @@ const RGP_ALG_SPECIALTIES = [
   {label:'Endocrine & Metabolic',        icon:'🦋', n:10},
   {label:'Neurology',                    icon:'🧠', n:14},
   {label:'Mental Health',                icon:'🧩', n:3},
-  {label:'ENT & Dental',                 icon:'👂', n:19},
+  {label:'ENT & Dental',                 icon:'👂', n:18},
   {label:'Dermatology',              icon:'🧴', n:5},
   {label:'Ophthalmology',                icon:'👁️', n:9},
   {label:"Women's Health",               icon:'🌸', n:12},
@@ -973,7 +973,7 @@ function renderTopNav(activeId){
   // Algorithms mega — by specialty (not all topics).
   // NOTE: the nav meta must match what tools/algorithms.html advertises (algShown).
   // That page counts every card in its 16 specialty groups, Lab Results included
-  // (183 pathways), so each specialty's n here must equal its card count there.
+  // (182 pathways), so each specialty's n here must equal its card count there.
   const ALG_VISIBLE = RGP_ALG_SPECIALTIES.reduce((n,s)=>n+(s.hub?1:s.n),0);
   const algTotal = ALG_VISIBLE;
   const algMega = `

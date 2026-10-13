@@ -253,45 +253,15 @@ body {
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — the differential and blood film decide everything: which white-cell line is raised tells you reactive vs haematological. Screen the emergency, identify the line, treat/refer, modify factors, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Raised white cell count</span><div class="body">Look at the differential + blood film: which line is up — neutrophils, lymphocytes or eosinophils?</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1 · Safety — blasts / unwell</span><span class="ttl">Blasts or unwell?</span><div class="body">Reported blasts/immature cells · suspected leucostasis · sepsis or clinical instability · new cytopenias · B symptoms with lymphadenopathy/splenomegaly. Urgency is set by the clinical state, differential and film — not the total WCC alone.</div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Same-day haematology / admission</span><div class="body">Reported blasts → urgent (usually same-day) haematology discussion (?acute leukaemia). Unstable, suspected leucostasis or sepsis → emergency assessment via the local pathway.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Repeat + film + CRP</span><div class="body">Identify the dominant line; look for an infective/inflammatory source.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · which line is raised?</span></div>
-    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Neutrophilia</div><div class="box ix"><span class="ttl">Usually reactive</span><div class="body">Infection, inflammation, steroids, stress, smoking, obesity, medicines. Neutrophilia alone does not mean bacterial infection. Persistent + left shift/basophilia/splenomegaly → discuss with haematology (?<b>CML</b>).</div></div></div>
-      <div class="col"><div class="blabel">Lymphocytosis</div><div class="box ix"><span class="ttl">Viral vs clonal</span><div class="body">Viral, pertussis (may persist after infection); persistent unexplained absolute lymphocytosis → film; ?<b>CLL</b> needs clonal B cells on immunophenotyping via the local haematology pathway.</div></div></div>
-      <div class="col"><div class="blabel">Eosinophilia</div><div class="box ix"><span class="ttl">Separate pathway</span><div class="body">Allergy, drugs, parasites, vasculitis — see the eosinophilia pathway (BSH 2017).</div></div></div>
-    </div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> unstable, suspected leucostasis, sepsis, severe bleeding, neurological/cardiac symptoms. <span class="pill pill-blue">Same-day haematology advice</span> blasts, major cytopenias, marked splenomegaly, rapidly rising WCC, symptomatic hyperleukocytosis. <span class="pill pill-purple">Suspected cancer</span> <span class="pill pill-grey">NICE NG12</span> symptom features → very urgent FBC. <span class="pill pill-blue">Routine haematology</span> persistent unexplained abnormality after reactive causes addressed (local laboratory pathway).</div></div>
-    <div class="arrow"><span class="tag">Step 8 · treat driver &amp; modifiable factors</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the driver &amp; modifiable factors</span><span class="ttl">Address the reactive cause</span><div class="body"><b>Treat the underlying infection/inflammation</b>; <b>stop smoking</b> (can contribute to persistent mild neutrophilia) and review <b>corticosteroids</b> and other drivers. A raised WCC is not itself an indication for antibiotics. Optimise general health while the dominant line is characterised.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Repeat FBC</b> after the suspected reactive cause has resolved, using the laboratory comment and local guidance; <b>persistent unexplained leucocytosis → haematology</b>, not another antibiotic course. <b>Escalate sooner</b> if the WCC rises, the differential becomes abnormal, cytopenias develop, organomegaly is found or systemic symptoms emerge. Any <b>reported blasts</b> → urgent (usually same-day) haematology discussion.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Reactive is commonest</b> — but a persistent, unexplained leucocytosis, or any blasts on the film, needs haematology, not another course of antibiotics.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/leucocytosis.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/leucocytosis.html">⬇ Download PDF</button><a class="sum-open" href="one-page/leucocytosis.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/leucocytosis.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -310,7 +280,7 @@ body {
       <div class="rftile"><b>Blasts on film</b> Any reported blasts or abnormal immature-cell population → urgent discussion with haematology, generally the same day (contact the reporting haematologist or local advice line). Emergency assessment if clinical instability, anaemia, thrombocytopenia, bleeding or infection.</div>
       <div class="rftile"><b>Severe symptoms</b> Headache, confusion, visual changes, breathlessness, chest pain or priapism with marked leucocytosis → emergency assessment (suspected leucostasis; diagnosis and management are specialist-led)</div>
       <div class="rftile"><b>Cytopenias</b> Leucocytosis with new anaemia, thrombocytopenia, neutropenia, abnormal red-cell indices, blasts or a leukoerythroblastic film → urgent haematology advice. Emergency assessment for active bleeding, severe anaemia symptoms, febrile neutropenia, sepsis or haemodynamic instability.</div>
-      <div class="rftile"><b>B symptoms</b> Unexplained fever, drenching night sweats or weight loss → very urgent FBC (within 48 hours) for leukaemia; consider the lymphoma suspected cancer pathway if there is unexplained generalised lymphadenopathy or splenomegaly, especially with fever, night sweats, weight loss, pruritus or breathlessness (NICE NG12)</div>
+      <div class="rftile"><b>B symptoms</b> Unexplained fever, drenching night sweats or weight loss → blood film (Step 2). NICE NG12: consider a very urgent FBC (within 48 hours) for leukaemia if there is unexplained fever; consider the lymphoma suspected cancer pathway if there is unexplained lymphadenopathy or splenomegaly, especially with fever, night sweats, weight loss, pruritus or breathlessness (NICE NG12)</div>
       <div class="rftile"><b>Marked splenomegaly</b> Marked splenomegaly with abnormal blood counts → same-day haematology discussion (CML, myelofibrosis)</div>
       <div class="rftile"><b>Suspected sepsis</b> Assess using clinical observations, organ dysfunction, perfusion, mental state and the local adult sepsis pathway; a high NEWS2 triggers urgent review and escalation. Escalate immediately for shock, altered consciousness, severe respiratory compromise or rapidly deteriorating physiology.</div>
       <div class="rftile"><b>Unexplained bruising/bleeding</b> Petechiae, gum bleeding, haematuria → same-day haematology (leukaemia with DIC); emergency assessment if active significant bleeding</div>
@@ -319,7 +289,7 @@ body {
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p><b>Hyperleukocytosis</b> (commonly defined as WCC >100 × 10⁹/L) can cause leucostasis, but the risk varies with the underlying disease, blast count, myeloid versus lymphoid lineage, symptoms, platelet and haemoglobin results and biochemical evidence of tumour lysis. A numerical WCC threshold does not automatically mandate a 999 ambulance in a clinically stable patient; diagnosing and managing leucostasis/hyperviscosity is haematology-led.</p>
+      <p><b>Hyperleukocytosis</b> (WCC ≥100 × 10⁹/L) can cause leucostasis, but the risk varies with the underlying disease, blast count, myeloid versus lymphoid lineage, symptoms, platelet and haemoglobin results and biochemical evidence of tumour lysis. A numerical WCC threshold does not automatically mandate a 999 ambulance in a clinically stable patient; diagnosing and managing leucostasis/hyperviscosity is haematology-led.</p>
       <p><b>Blast cells</b> indicate acute leukaemia (AML/ALL). Some laboratory “blast” or “immature cell” flags need confirmation by a manual film, so contact the reporting haematologist/pathologist or local haematology advice line rather than automatically sending every patient by 999.</p>
       <p><b>B symptoms</b> (fever, sweats, weight loss) in the context of leucocytosis suggest haematological malignancy. NICE NG12 sets very urgent FBC and suspected cancer pathway referral routes for suspected haematological cancer.</p>
       <p><b>Septic leucocytosis</b> can be marked (leukaemoid reaction). The leucocytosis is secondary; the priority is identifying and treating the source of infection urgently.</p>
@@ -390,7 +360,7 @@ body {
       <div>Monocytes >1 × 10⁹/L. <b>Causes:</b> Chronic infection (TB, endocarditis), autoimmune disease (SLE, sarcoid), CMML, recovery from neutropenia. For persistent unexplained monocytosis, review the blood film, assess for infection/inflammation and discuss with haematology if persistent, progressive or associated with anaemia, thrombocytopenia, splenomegaly or dysplastic changes.</div>
       
       <div>Eosinophilia</div>
-      <div>Eosinophils >0.5 × 10⁹/L (mild 0.5–1.5 × 10⁹/L; persistent ≥1.5 × 10⁹/L, or eosinophilia with systemic symptoms/organ involvement, warrants further assessment — BSH 2017). <b>Causes:</b> Allergy, asthma, parasites (strongyloides, schistosomiasis), drugs, vasculitis (Churg-Strauss), Hodgkin lymphoma, hypereosinophilic syndrome.</div>
+      <div>Eosinophils >0.5 × 10⁹/L (mild 0.5–1.5 × 10⁹/L; persistent ≥1.5 × 10⁹/L, or eosinophilia with systemic symptoms/organ involvement, warrants further assessment — BSH 2017). <b>Causes:</b> Allergy, asthma, parasites (strongyloides, schistosomiasis), drugs, vasculitis (EGPA, formerly Churg-Strauss), Hodgkin lymphoma, hypereosinophilic syndrome.</div>
       
       <div>Basophilia</div>
       <div>Basophils >0.1 × 10⁹/L (rare). <b>Causes:</b> CML, polycythaemia vera, myelofibrosis, hypothyroidism, hypersensitivity. Not pathognomonic for CML; persistent basophilia, particularly with neutrophilia, left shift, thrombocytosis, splenomegaly or constitutional symptoms, should prompt haematology discussion.</div>
@@ -426,7 +396,7 @@ body {
       <div>Fever >38°C → active infection, lymphoma. Tachycardia, hypotension → sepsis (requires same-day assessment).</div>
       
       <div>Lymph nodes</div>
-      <div>Palpate cervical, axillary, inguinal chains. <b>Unexplained generalised lymphadenopathy, or hard, fixed, painless nodes</b> → consider a suspected cancer pathway referral (lymphoma, CLL), especially with fever, night sweats, weight loss, pruritus or breathlessness. Mobile, tender → reactive lymphadenopathy (infection).</div>
+      <div>Palpate cervical, axillary, inguinal chains. <b>Unexplained lymphadenopathy (especially generalised, or hard, fixed, painless nodes) or splenomegaly</b> → consider a suspected cancer pathway referral (lymphoma, CLL), especially with fever, night sweats, weight loss, pruritus or breathlessness. Mobile, tender → reactive lymphadenopathy (infection).</div>
       
       <div>Spleen</div>
       <div>Percuss and palpate left upper quadrant. <b>Palpable spleen</b> → CML, CLL, lymphoma, myelofibrosis, infection (EBV, malaria). Measure cm below costal margin.</div>
@@ -451,7 +421,7 @@ body {
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
       <p><b>Splenomegaly</b> in leucocytosis is highly significant. Massive splenomegaly suggests CML, myelofibrosis, or hairy cell leukaemia. Moderate splenomegaly occurs in CLL, lymphoma, and infectious mononucleosis.</p>
-      <p><b>Lymphadenopathy</b> differentiates malignant from reactive causes. Unexplained generalised lymphadenopathy or splenomegaly, especially with fever, night sweats, weight loss, pruritus or breathlessness, may justify a suspected cancer pathway referral (NICE NG12); there is no universal node-size or duration rule. Tender, mobile nodes suggest reactive hyperplasia.</p>
+      <p><b>Lymphadenopathy</b> differentiates malignant from reactive causes. Unexplained lymphadenopathy or splenomegaly, especially with fever, night sweats, weight loss, pruritus or breathlessness, should prompt consideration of a suspected cancer pathway referral (NICE NG12); there is no universal node-size or duration rule. Tender, mobile nodes suggest reactive hyperplasia.</p>
       <p><b>Hepatomegaly + splenomegaly</b> together strongly suggest haematological malignancy (CML, CLL, lymphoma) or chronic infection (EBV, CMV). Isolated hepatomegaly is more often due to liver pathology or heart failure.</p>
     </div>
   </div>
@@ -482,7 +452,7 @@ body {
       <div>Persistent unexplained absolute lymphocytosis: <span class="pill pill-blue">Blood film</span> (smudge cells), <span class="pill pill-blue">EBV/CMV serology</span> if clinically suggested. <span class="pill pill-blue">Immunophenotyping</span> (flow cytometry for CLL) through the local haematology pathway or according to laboratory criteria — not automatically for every count >5 × 10⁹/L. Immunoglobulins if recurrent infections.</div>
       
       <div>Eosinophilia workup</div>
-      <div>Full history (including travel and medication) and examination; <span class="pill pill-blue">FBC + blood film</span> <span class="pill pill-blue">Renal/liver function + bone profile</span> <span class="pill pill-blue">LDH</span> <span class="pill pill-blue">ESR and/or CRP</span> <span class="pill pill-blue">Vitamin B12</span> (BSH 2017). Then select further tests — <span class="pill pill-blue">Stool microscopy</span> (parasites), <span class="pill pill-blue">Strongyloides serology</span>, <span class="pill pill-blue">IgE</span>, <span class="pill pill-blue">ANCA</span> (Churg-Strauss), <span class="pill pill-blue">Tryptase</span> (mastocytosis) — according to travel, medication, allergic disease, vasculitic symptoms, organ involvement and persistence, not for every patient. Otherwise-well patients with mild eosinophilia (0.5–1.5 × 10⁹/L) may not need extensive testing.</div>
+      <div>Full history (including travel and medication) and examination; <span class="pill pill-blue">FBC + blood film</span> <span class="pill pill-blue">Renal/liver function + bone profile</span> <span class="pill pill-blue">LDH</span> <span class="pill pill-blue">ESR and/or CRP</span> <span class="pill pill-blue">Vitamin B12</span> (BSH 2017). Then select further tests — <span class="pill pill-blue">Stool microscopy</span> (parasites), <span class="pill pill-blue">Strongyloides serology</span>, <span class="pill pill-blue">IgE</span>, <span class="pill pill-blue">ANCA</span> (EGPA; may be negative), <span class="pill pill-blue">Tryptase</span> (mastocytosis) — according to travel, medication, allergic disease, vasculitic symptoms, organ involvement and persistence, not for every patient. Otherwise-well patients with mild eosinophilia (0.5–1.5 × 10⁹/L) may not need extensive testing.</div>
       
       <div>Monocytosis workup</div>
       <div>Persistent unexplained monocytosis: review the blood film and assess for infection/inflammation — <span class="pill pill-blue">Blood cultures</span> if endocarditis suspected, <span class="pill pill-blue">HIV test</span>. Discuss with haematology if persistent, progressive or with anaemia, thrombocytopenia, splenomegaly or dysplastic changes; bone marrow investigation (CMML) is specialist-led.</div>
@@ -521,18 +491,18 @@ body {
       <div>Blasts or a clearly abnormal immature-cell population. Hyperleukocytosis with symptoms or a rapidly rising count. Leucocytosis plus unexplained anaemia or thrombocytopenia. Marked splenomegaly with abnormal blood counts. Leukoerythroblastic or markedly dysplastic film. Suspected acute leukaemia or blast transformation. Severe unexplained eosinophilia with organ involvement.</div>
       
       <div><span class="pill pill-purple">Suspected cancer: haematology</span></div>
-      <div>NICE NG12 — very urgent FBC (within 48 hours) for pallor, persistent fatigue, unexplained fever, persistent or recurrent infection, generalised lymphadenopathy, unexplained bruising, bleeding or petechiae, or hepatosplenomegaly. Lymphoma: unexplained generalised lymphadenopathy or splenomegaly, especially with fever, night sweats, weight loss, pruritus or breathlessness, may justify suspected cancer referral. Use NG12 for symptoms, not numerical WCC thresholds.</div>
+      <div>NICE NG12 — consider a very urgent FBC (within 48 hours) for leukaemia if pallor, persistent fatigue, unexplained fever, unexplained persistent or recurrent infection, generalised lymphadenopathy, unexplained bruising, bleeding or petechiae, or hepatosplenomegaly. Lymphoma: consider a suspected cancer pathway referral for unexplained lymphadenopathy or splenomegaly, especially with fever, night sweats, weight loss, pruritus or breathlessness. Use NG12 for symptoms, not numerical WCC thresholds.</div>
       <div><span class="pill pill-amber">Urgent haematology referral (local pathway)</span></div>
-      <div>Not NG12 criteria on a count alone: persistent unexplained lymphocytosis, neutrophilia, monocytosis or basophilia, or a rising count, after reactive causes have been addressed — follow the local laboratory abnormal-result and haematology referral pathway.</div>
+      <div>Not NG12 criteria on a count alone: persistent unexplained lymphocytosis, neutrophilia, monocytosis or basophilia, persistent unexplained leucocytosis, or a rising count, after reactive causes have been addressed — follow the local laboratory abnormal-result and haematology referral pathway. Persistent unexplained eosinophilia ≥1.5 × 10⁹/L → urgent haematology advice (BSH 2017; see the eosinophilia pathway).</div>
       
       <div><span class="pill pill-blue">Routine haematology</span></div>
-      <div>Persistent unexplained eosinophilia ≥1.5 × 10⁹/L (BSH 2017). Persistent unexplained monocytosis. Abnormal blood film (left shift, atypical cells) without urgent features. Persistent unexplained leucocytosis after reactive causes have been addressed (local laboratory pathway).</div>
+      <div>Abnormal blood film (left shift, atypical cells) without urgent features, via the local laboratory pathway.</div>
       
       <div><span class="pill pill-green">Primary care management</span></div>
       <div>Mild leucocytosis with a clear reactive cause (infection, smoking, steroids) in a well patient with a reassuring differential and film. Transient elevation that settles once the reactive cause resolves. Neutrophilia with active infection responding to treatment.</div>
       
       <div>Specialist referrals</div>
-      <div><b>Infectious diseases:</b> Persistent fever, travel history, suspected TB/HIV. <b>Respiratory:</b> Eosinophilia with asthma exacerbations. <b>Rheumatology:</b> Vasculitis (eosinophilia + ANCA+).</div>
+      <div><b>Infectious diseases:</b> Persistent fever, travel history, suspected TB/HIV. <b>Respiratory:</b> Eosinophilia with asthma exacerbations. <b>Rheumatology:</b> Suspected vasculitis (EGPA: eosinophilia with asthma, sinus disease or neuropathy; ANCA may be negative).</div>
     </div>
   </div>
   <div class="why-row">
@@ -626,7 +596,7 @@ body {
       
       <div class="lstile"><b>Alcohol moderation</b> Alcohol suppresses immunity and worsens cytopenia in haematological malignancy. Recommend ≤14 units/week. Abstinence if liver involvement or on chemotherapy.</div>
       
-      <div class="lstile"><b>Sun protection</b> Patients on immunosuppression (chemotherapy, steroids) have higher skin cancer risk. SPF 50+ daily, avoid midday sun, annual skin checks.</div>
+      <div class="lstile"><b>Sun protection</b> Patients on immunosuppression (chemotherapy, steroids) have higher skin cancer risk. Sunscreen of at least SPF 30 with 4-star UVA protection (NHS advice), avoid midday sun, annual skin checks.</div>
       
       <div class="lstile"><b>Exercise</b> Moderate exercise (150 min/week) reduces fatigue in CLL and myeloproliferative disorders. Avoid contact sports if thrombocytopenic or splenomegaly (risk of splenic rupture).</div>
       
@@ -639,7 +609,7 @@ body {
       <p><b>Smoking cessation</b> is offered for general health benefit; it may help a smoking-related mild neutrophilia, but a WCC response is not guaranteed.</p>
       <p><b>Infection prevention</b> is critical in CLL and other lymphoproliferative disorders. Hypogammaglobulinaemia is common in CLL and increases infection risk; offer flu and pneumococcal vaccination.</p>
       <p><b>Thrombosis risk</b> is increased in myeloproliferative disorders (ET, PV). Aspirin and cytoreductive therapy are haematology-led decisions; aspirin may be contraindicated depending on platelet count, bleeding risk and specialist management.</p>
-      <p><b>Exercise</b> improves quality of life and reduces fatigue in haematological malignancy. A Cochrane review (2019) showed moderate exercise reduces cancer-related fatigue by 30% (effect size 0.3). Avoid exercise if platelet count <50 × 10⁹/L (bleeding risk).</p>
+      <p><b>Exercise</b> improves quality of life and reduces fatigue in haematological malignancy. Avoid contact sports if the platelet count is low or the spleen is enlarged, and follow haematology advice on safe activity.</p>
     </div>
   </div>
 </div>
@@ -660,7 +630,7 @@ body {
       <div>Repeat FBC once the suspected reactive cause (infection, steroids) has resolved — often within 2–6 weeks, depending on context and laboratory advice. If the WCC is rising or the differential is abnormal, request a blood film and discuss with haematology.</div>
       
       <div>On repeat result</div>
-      <div>If normalised, no further routine testing. If persistent and unexplained, follow the local laboratory pathway / routine haematology referral. Review symptoms (fevers, sweats, weight loss).</div>
+      <div>If normalised, no further routine testing. If persistent and unexplained, follow the local laboratory pathway / urgent haematology referral (Step 6). Review symptoms (fevers, sweats, weight loss).</div>
       
       <div>Known haematological disorder</div>
       <div>For known CLL, CML or another haematological disorder, follow the specialist-written monitoring schedule and communicate deterioration to haematology.</div>
@@ -669,7 +639,7 @@ body {
       <div>Sudden severe headache, confusion, visual loss, chest pain or breathlessness (possible leucostasis). Priapism. Severe bleeding or bruising. Fever with rigors or feeling very unwell (possible sepsis).</div>
       
       <div><span class="pill pill-red">Safety-net same-day</span></div>
-      <div>Rising WCC, new cytopenias or blasts on monitoring. New lymphadenopathy. New fevers >38°C with rigors. New abdominal distension (splenomegaly). Drenching night sweats or unexplained weight loss.</div>
+      <div>Rising WCC, new cytopenias or blasts on monitoring. New lymphadenopathy. New fever >38°C (with rigors or feeling very unwell → emergency, above). New abdominal distension (splenomegaly). Drenching night sweats or unexplained weight loss.</div>
       
       <div>Re-referral criteria</div>
       <div>Any new red-flag symptoms (B symptoms, organomegaly). WCC rising despite treatment. Development of new cytopenias (interpreted in clinical context). Patient anxiety about malignancy (haematology can reassure).</div>

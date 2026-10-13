@@ -533,69 +533,15 @@ body {
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — use the NICE NG143 traffic-light system (under 5s; same principles for older children) to identify the unwell child and the must-not-miss diagnoses (sepsis, meningitis, leukaemia) before reassuring the common viral illness; treat the focus, refer and safety-net the parents.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Fever in a child</span><div class="body"><b>Immediate ABCDE assessment</b> — airway compromise, respiratory distress, shock/poor perfusion, altered consciousness, seizure, severe dehydration → stabilise and arrange emergency transfer. <b>Age, duration, focus, fluid intake/output, activity/alertness.</b> Full obs (incl. RR, HR, cap refill, temp), <b>rash (glass test)</b>, hydration. Apply the <b>NICE NG143 traffic-light</b> assessment.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — red / sepsis / meningitis (NG143/NG240)</span><span class="ttl">High-risk features?</span><div class="body"><ul>
-      <li><b>Non-blanching/petechial rash</b>, mottled/blue, looks unwell, reduced consciousness</li>
-      <li>Weak/high-pitched/continuous cry, <b>bulging fontanelle, neck stiffness</b>, focal neurology, status</li>
-      <li>Grunting, RR &gt;60, moderate/severe chest indrawing, reduced skin turgor (cap refill ≥3 s alone is amber)</li>
-      <li><b>&lt;3 months + temp ≥38</b> → high risk (red); <b>3–6 months + ≥39</b> → amber</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">RED — high-risk</div><div class="box stop"><span class="lbl">Stop · emergency / urgent</span><span class="ttl">Red features</span><div class="body">Immediately life-threatening (shock, respiratory compromise, reduced consciousness, status epilepticus) → stabilise + <b>999</b>. Other red features → urgent face-to-face paediatric assessment, generally within 2 hours. Strongly suspected meningococcal disease → <b>emergency transfer; give IV/IM ceftriaxone or benzylpenicillin unless this delays transfer.</b> Any infant &lt;3 months with temp ≥38°C → urgent same-day paediatric assessment.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">GREEN/AMBER — assess</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Find the focus</span><div class="body"><b>Test urine if UTI is suspected</b> or the child is unwell without a clear alternative source (NICE NG224); examine ears/throat/chest; no routine CRP/FBC/CXR in a well child with a clear viral illness — bloods/cultures via the hospital pathway for red features or &lt;3 months. Undress fully to look for a rash.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · which cause?</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Self-limiting viral</div><div class="box ix"><span class="ttl">Commonest</span><div class="body">URTI, viral exanthem (roseola, hand-foot-mouth), green-category child with a clear viral focus.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Treatable bacterial focus</div><div class="box ix"><span class="ttl">Treat</span><div class="body"><b>Otitis media, tonsillitis, UTI</b> (urine dip), pneumonia; treat per focus.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Serious / must-not-miss</div><div class="box ix"><span class="ttl">Don't miss</span><div class="body">Meningococcal sepsis, meningitis, <b>leukaemia</b> (petechiae/pallor/hepatosplenomegaly), Kawasaki incl. incomplete (fever ≥5 days), osteomyelitis/septic arthritis, appendicitis, pyelonephritis, febrile seizure/status epilepticus, infection in an immunocompromised child.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · manage</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — by category</span><span class="ttl">Treat the cause, advise the parent</span><div class="body"><ul>
-      <li><b>Viral (green):</b> antipyretics <b>for distress, not for the temperature itself</b> (don't alternate paracetamol/ibuprofen routinely), encourage fluids, manage at home with safety-netting.</li>
-      <li><b>Bacterial focus:</b> antibiotic only when a bacterial diagnosis or high-risk indication justifies it (e.g. amoxicillin for pneumonia; NICE NG109/NG111 for UTI), per current Greater Manchester paediatric antimicrobial guidance and product information + review.</li>
-      <li><b>Amber:</b> consider observation, investigations, a safety-net plan or a period of review.</li>
-      <li><b>Red:</b> emergency treatment + admission.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">999</span> immediately life-threatening illness (shock, respiratory compromise, reduced consciousness, status epilepticus) or strongly suspected meningococcal disease/meningitis; other red features → urgent face-to-face assessment, generally within 2 hours.</li>
-      <li><span class="pill pill-purple">Suspected cancer · NICE NG12 (children)</span> unexplained petechiae or hepatosplenomegaly → <b>immediate specialist (paediatric) assessment</b>; pallor, persistent fatigue, unexplained fever, persistent infection, generalised lymphadenopathy, bone pain, unexplained bruising or bleeding → <b>very urgent FBC within 48 hours</b> (leukaemia; NICE NG12, updated April 2026). Fever alone in an otherwise well child does not need an urgent FBC solely because it persists.</li>
-      <li><span class="pill pill-amber">Paediatrics</span> all infants &lt;3 months with temp ≥38°C (urgent same-day), amber features not settling, fever ≥5 days with suspected Kawasaki disease (including incomplete), or diagnostic uncertainty.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · home care &amp; prevention</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Home care &amp; prevention</span><span class="ttl">Parent education</span><div class="body"><b>Fluids and antipyretics for distress</b> (not to prevent febrile convulsions — they don't); avoid over-wrapping/tepid sponging · ensure <b>immunisations up to date</b> · hand hygiene · clear written "when to worry" advice and where to seek help out of hours · check the child can maintain hydration.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">Tell parents exactly when to return</span><div class="body"><b>Seek urgent help / call 999</b> if a <b>non-blanching rash</b> develops or a rash changes, the child becomes less responsive/unusually sleepy/difficult to wake, has a fit, breathing becomes difficult, rapid or noisy, looks pale/mottled/blue/cold, or can't keep fluids down/passes markedly less urine. Return if the child is less well, the parent is more worried, fever lasts 5 days or longer, or there is persistent limb/joint swelling, refusal to weight-bear or severe pain. Document the traffic-light category and the advice given.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution crit">⚠️ <b>Always undress and examine for a non-blanching rash</b> — and a febrile child with a new non-blanching rash needs immediate emergency assessment for meningococcal disease (check conjunctivae and nappy area — petechiae are harder to see on brown/black skin); unexplained petechiae or hepatosplenomegaly → immediate specialist assessment for leukaemia (NICE NG12). Test urine when UTI is suspected or an unwell child has no clear source.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/fever-children.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/fever-children.html">⬇ Download PDF</button><a class="sum-open" href="one-page/fever-children.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/fever-children.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -617,14 +563,14 @@ body {
       <div class="rftile"><b>Suspected meningitis</b> Judge the overall picture: fever, altered consciousness, irritability or abnormal behaviour, persistent vomiting, photophobia, headache, neck stiffness, bulging fontanelle, seizures, focal neurology, non-blanching rash. Absence of neck stiffness or classical meningeal signs does not exclude it, especially in infants. No LP in primary care → <span class="pill pill-red">999</span></div>
       <div class="rftile"><b>Bulging fontanelle</b> In infants — raised ICP → <span class="pill pill-red">999</span></div>
       <div class="rftile"><b>Shock / poor perfusion</b> Mottled / pale / ashen / blue skin, weak pulses, hypotension, altered mental state → <span class="pill pill-red">999</span>. Capillary refill ≥3 s alone is a NICE NG143 amber feature — interpret with pulse quality, skin colour/temperature, mental state, BP, urine output, hydration and overall appearance.</div>
-      <div class="rftile"><b>Fever &lt;3 months + temp ≥38°C</b> High risk (red) → <span class="pill pill-orange">Urgent same-day paediatric assessment</span>, usually in hospital. Emergency transport (999) if shock, respiratory compromise, reduced consciousness or seizure.</div>
+      <div class="rftile"><b>Fever &lt;3 months + temp ≥38°C</b> High risk (red) → <span class="pill pill-orange">Urgent paediatric assessment (generally ≤2 h)</span>, usually in hospital. Emergency transport (999) if shock, respiratory compromise, reduced consciousness or seizure.</div>
       <div class="rftile"><b>Seizure / status epilepticus</b> Ongoing convulsion ≥5 min or breathing compromised → <span class="pill pill-red">999</span> (local paediatric seizure protocol). Focal/complex febrile seizure, persistent altered consciousness, meningism, recurrence within 24 h or atypical age → <span class="pill pill-orange">Urgent paediatric assessment</span></div>
-      <div class="rftile"><b>Altered consciousness / inconsolable</b> GCS drop, persistent high-pitched cry, not rousable → <span class="pill pill-red">999</span></div>
-      <div class="rftile"><b>Other NICE red features</b> No response to social cues, appears ill to a healthcare professional, weak/high-pitched/continuous cry, RR &gt;60, moderate or severe chest indrawing, reduced skin turgor, focal neurological signs or focal seizures → <span class="pill pill-orange">Urgent face-to-face assessment (generally ≤2 h)</span></div>
+      <div class="rftile"><b>Altered consciousness / inconsolable</b> GCS drop, not rousable or does not stay awake, weak, high-pitched or continuous cry → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Other NICE red features</b> No response to social cues, appears ill to a healthcare professional, RR &gt;60, moderate chest indrawing, reduced skin turgor, focal neurological signs or focal seizures → <span class="pill pill-orange">Urgent face-to-face assessment (generally ≤2 h)</span>. A weak, high-pitched or continuous cry, or severe chest indrawing → <span class="pill pill-red">999</span> (tiles above and below)</div>
       <div class="rftile"><b>Respiratory compromise</b> SpO₂ &lt;92% in air, cyanosis, grunting, severe recession, apnoea or exhaustion → <span class="pill pill-red">999</span> / emergency management per clinical context; give oxygen if shock or SpO₂ &lt;92%. SpO₂ ≤95% in air and nasal flaring alone are NICE NG143 amber features.</div>
       <div class="rftile"><b>Fever ≥5 days</b> Assess for Kawasaki disease, including incomplete Kawasaki — same-day paediatric advice/referral if suspected</div>
       <div class="rftile"><b>Immunocompromised child</b> Chemotherapy, severe neutropenia, haematological malignancy, central line, asplenia/sickle-cell disease, significant immunodeficiency or recent transplant → follow the child's specialist fever/neutropenic sepsis pathway: immediate specialist advice, usually <span class="pill pill-red">Same-day hospital</span>. Steroids alone do not automatically carry the same risk — assess dose, duration, indication and condition.</div>
-      <div class="rftile"><b>Features of leukaemia</b> Pallor, persistent fatigue, unexplained fever, persistent or unexplained infection, generalised lymphadenopathy, unexplained bone pain, bruising or bleeding → <span class="pill pill-red">Very urgent FBC (≤48h)</span>; unexplained petechiae or hepatosplenomegaly → <span class="pill pill-purple">immediate paediatric referral</span> (NICE NG12 (updated April 2026) — children &amp; young people). Fever alone in an otherwise well child does not need an urgent FBC solely because it persists; a petechial rash with fever also needs consideration of meningococcal disease.</div>
+      <div class="rftile"><b>Features of leukaemia</b> Pallor, persistent fatigue, unexplained fever, persistent or unexplained infection, generalised lymphadenopathy, unexplained bone pain, bruising or bleeding → <span class="pill pill-red">Very urgent FBC (≤48h)</span>; unexplained petechiae or hepatosplenomegaly → <span class="pill pill-purple">immediate paediatric referral</span> (NICE NG12 (updated April 2026) — children &amp; young people). Unexplained fever is itself an NG12 trigger; fever with a clear source in an otherwise well child does not need an FBC; a petechial rash with fever also needs consideration of meningococcal disease.</div>
     </div>
   </div>
   <div class="why-row">
@@ -682,8 +628,8 @@ body {
   <div class="node-body">
     <span>Age is an important risk modifier for serious infection in febrile children.</span>
     <div class="kv">
-      <div>&lt;28 days</div><div><b>Temp ≥38°C → urgent same-day paediatric (hospital) assessment</b> regardless of appearance; generally needs parenteral antibiotics in hospital. Emergency transport (999) if shock, respiratory compromise, reduced consciousness or seizure. Group B Strep, E. coli, Listeria.</div>
-      <div>1–3 months</div><div>Temp ≥38°C = high risk → urgent same-day paediatric assessment. Hospital investigation (blood tests, cultures, urine ± LP) per the hospital pathway; parenteral antibiotics if unwell-appearing. A well-appearing infant still needs urgent paediatric assessment.</div>
+      <div>&lt;28 days</div><div><b>Temp ≥38°C → urgent paediatric (hospital) assessment, generally within 2 hours</b>, regardless of appearance; generally needs parenteral antibiotics in hospital. Emergency transport (999) if shock, respiratory compromise, reduced consciousness or seizure. Group B Strep, E. coli, Listeria.</div>
+      <div>1–3 months</div><div>Temp ≥38°C = high risk → urgent paediatric assessment, generally within 2 hours. Hospital investigation (blood tests, cultures, urine ± LP) per the hospital pathway; parenteral antibiotics if unwell-appearing. A well-appearing infant still needs urgent paediatric assessment.</div>
       <div>3–6 months</div><div>Temp ≥39°C = amber → face-to-face assessment; consider same-day paediatric review based on appearance and other features.</div>
       <div>6 months – 5 years</div><div>Viral illness most likely. Do not use temperature height alone — use appearance, activity, circulation, respiratory signs, hydration, neurological findings, source and parental concern. Test urine if UTI is suspected or the child is unwell without a clear alternative source (NICE NG224).</div>
       <div>5–12 years</div><div>NICE NG143 does not apply — use the same clinical principles with local paediatric assessment pathways and sepsis/meningitis guidance. Consider EBV, mycoplasma if prolonged or with pharyngitis + rash.</div>
@@ -716,8 +662,8 @@ body {
       <div>General impression</div><div>Responds to parent, maintains eye contact, consolable → low risk. Lethargic, glassy-eyed, high-pitched cry → high risk.</div>
       <div>Skin</div><div>Rash: blanching (often viral) vs non-blanching (petechiae/purpura → emergency assessment for meningococcal disease). Inspect the whole skin incl. nappy area and conjunctivae — petechiae are harder to see on brown/black skin. Jaundice in neonate = urgent. Scarlatiniform rash = strep.</div>
       <div>ENT</div><div>Ears: erythematous TM / effusion (AOM). Throat: tonsillar exudate (use Centor/FeverPAIN). Lymphadenopathy: anterior cervical = local infection; generalised = EBV/malignancy.</div>
-      <div>Respiratory</div><div>RR (&gt;60 in &lt;2mo, &gt;50 in 2–12mo, &gt;40 in 1–5yr = abnormal). Recession, nasal flaring, grunting, wheeze, focal crackles.</div>
-      <div>Abdomen</div><div>Tenderness, guarding, rebound → surgical emergency. Right iliac fossa = appendicitis (peak 6–10yr). Hepatosplenomegaly = EBV.</div>
+      <div>Respiratory</div><div>RR &gt;60 at any age = red; &gt;50 at 6–12 months or &gt;40 over 12 months = amber (NICE NG143). Recession, nasal flaring, grunting, wheeze, focal crackles.</div>
+      <div>Abdomen</div><div>Tenderness, guarding, rebound → surgical emergency. Right iliac fossa = appendicitis. Hepatosplenomegaly = EBV.</div>
       <div>Fontanelle</div><div>Infants only — bulging = raised ICP → 999. Sunken = dehydration.</div>
       <div>Perfusion</div><div>Cap refill &lt;3 s (≥3 s = NICE amber), warm peripheries, normal HR for age, normal BP. Tachycardia can be fever-driven — interpret in context; response to an antipyretic does not distinguish serious from non-serious illness.</div>
       <div>Urine</div><div>Test urine when symptoms or signs suggest UTI; consider it in an unwell child where UTI remains possible without urinary symptoms. Do not routinely test children aged 3 months or over with a clear alternative infection and no diagnostic uncertainty (NICE NG224). Under 3 months: paediatric referral + urgent microscopy and culture; 3 months to under 3 years: dipstick (leukocyte esterase + nitrite), culture when indicated; 3 years and over: dipstick. Offensive urine / frequency increase suspicion but do not establish UTI. Obtain urine before antibiotics when feasible, but do not delay treatment in a seriously unwell child.</div>
@@ -778,7 +724,7 @@ body {
   <div class="node-body">
     <div class="kv">
       <div><span class="pill pill-red">999</span></div><div>Immediately life-threatening illness: shock, respiratory compromise, reduced consciousness, ongoing seizure ≥5 min / status epilepticus, strongly suspected meningococcal disease or bacterial meningitis. New non-blanching rash with fever → immediate emergency assessment.</div>
-      <div><span class="pill pill-orange">Urgent (≤2 h) / same-day</span></div><div>Other NICE red features — urgent face-to-face assessment, generally within 2 hours. Age &lt;3 months with fever ≥38°C (urgent same-day paediatric assessment). Immunocompromised (per specialist fever/neutropenic sepsis pathway). Unable to tolerate oral fluids. Suspected appendicitis/surgical abdomen.</div>
+      <div><span class="pill pill-orange">Urgent (≤2 h) / same-day</span></div><div>Other NICE red features — urgent face-to-face assessment, generally within 2 hours. Age &lt;3 months with fever ≥38°C (urgent paediatric assessment, generally within 2 hours). Immunocompromised (per specialist fever/neutropenic sepsis pathway). Unable to tolerate oral fluids. Suspected appendicitis/surgical abdomen.</div>
       <div><span class="pill pill-amber">Same-day paeds</span></div><div>Amber features — face-to-face review; same-day paediatric assessment per clinical picture. Fever ≥5 days with suspected Kawasaki disease (including incomplete). Suspected septic arthritis / osteomyelitis (limb swelling + fever + refusal to weight-bear). Suspicious rash + fever (parvovirus B19, HHV-6, varicella complications).</div>
       <div><span class="pill pill-amber">Urgent GP / OOH</span></div><div>Parental concern overriding your assessment — trust it. Child deteriorating or not improving. New symptoms developing. Unable to assess adequately.</div>
       <div><span class="pill pill-green">Primary care manage</span></div><div>NICE NG143 green features. Clear viral source (URTI, hand-foot-mouth). Adequate fluid intake. Parent confident with safety-net. Age &gt;3 months.</div>
@@ -858,11 +804,11 @@ body {
     <span>Clear verbal and written advice to parents reduces re-attendance, prevents complications, and builds confidence.</span>
     <div class="lsgrid">
       <div class="lstile"><b>Hydration — key priority</b> Encourage regular fluids: breast milk / formula in infants; water, diluted squash, oral rehydration solution in older children. Regular wet nappies / urination is reassuring — interpret against the child's age, usual pattern, fluid intake and other dehydration features.</div>
-      <div class="lstile"><b>Dress lightly</b> Remove excess clothing. Tepid sponging is NOT recommended — NICE NG143 advises against. Room temperature 18–21°C. Avoid over-bundling.</div>
+      <div class="lstile"><b>Dress lightly</b> Remove excess clothing. Tepid sponging is NOT recommended — NICE NG143 advises against. Avoid over-bundling.</div>
       <div class="lstile"><b>School / nursery exclusion</b> Keep the child away from nursery or school while they have a fever or are too unwell to participate. For vomiting or diarrhoea, follow UKHSA exclusion advice — usually 48 hours after the last episode. No need to exclude for mild URTI without fever. Inform school of Kawasaki / invasive GAS if applicable.</div>
       <div class="lstile"><b>Vaccination check</b> Is child up to date? Fever after vaccination is common; assess according to the child's clinical condition and the timing/type of vaccine. Do not automatically attribute persistent, severe or unusual symptoms to vaccination.</div>
       <div class="lstile"><b>Avoid aspirin</b> Never give aspirin to children under 16 (Reye's syndrome risk) — except under specialist guidance in Kawasaki disease.</div>
-      <div class="lstile"><b>Febrile seizure first aid</b> Place the child on their side; remove nearby hazards; do not restrain; put nothing in the mouth; time the seizure; call 999 if it reaches 5 minutes or breathing is compromised.</div>
+      <div class="lstile"><b>Febrile seizure first aid</b> Place the child on their side; remove nearby hazards; do not restrain; put nothing in the mouth; time the seizure; call 999 if it is the first seizure, it reaches 5 minutes or breathing is compromised.</div>
       <div class="lstile"><b>Written safety-net</b> Provide written advice: when to call 999, when to re-attend. Consider NHS 111 leaflet. NHS "fever in children" information available online.</div>
     </div>
   </div>
@@ -893,7 +839,7 @@ body {
       <div>Fever ≥5 days</div><div>Assess for Kawasaki disease, including incomplete Kawasaki; ask about features since onset as they may have resolved. Seek same-day paediatric advice/referral if suspected — do not require 4 or 5 criteria. Bloods, ECG and echocardiography via the paediatric pathway; do not delay referral to obtain them.</div>
       <div>Document</div><div>Clinical appearance, observations, traffic-light features, source (or absence of source), urine testing and results, treatment and dosing advice, exact safety-netting advice, planned review or referral.</div>
       <div>UTI follow-up</div><div>Renal USS within 6 weeks for a first UTI responding to treatment in infants &lt;6 months, and for recurrent UTI; USS during the acute infection for atypical UTI (NICE NG224). DMSA / MAG3 if recurrent or atypical UTI (specialist).</div>
-      <div><span class="pill pill-red">Urgent help / 999 if:</span></div><div>Non-blanching rash develops or a rash changes. Seizure. Child less responsive, unusually sleepy or difficult to wake. Breathing difficult, rapid or noisy. Pale, mottled, blue or cold.</div>
+      <div><span class="pill pill-red">Call 999 if:</span></div><div>Non-blanching rash develops or a rash changes. Seizure. Child less responsive, unusually sleepy or difficult to wake. Weak, high-pitched or continuous cry. Stiff neck, bothered by light or a bulging soft spot. Breathing difficult, rapid or noisy. Pale, mottled, blue or cold.</div>
       <div><span class="pill pill-orange">Same-day if:</span></div><div>Cannot keep fluids down or passing markedly less urine than usual. Child deteriorating or parent more concerned. Fever lasting 5 days or longer. Persistent limb/joint swelling, refusal to weight-bear or severe pain. New or worsening symptoms.</div>
       <div>Febrile seizure follow-up</div><div>Simple febrile seizure, back to baseline, no concerning features → routine EEG or neuroimaging generally not needed. Focal/complex seizure, persistent altered consciousness, meningism, recurrence within 24 h or atypical age → urgent paediatric assessment; specialist assessment if the diagnosis is uncertain or the event atypical (NICE NG217). Teach seizure first aid (on side, remove hazards, do not restrain, nothing in mouth, time it, 999 if ≥5 minutes or breathing compromised). Review 1–2 weeks.</div>
     </div>

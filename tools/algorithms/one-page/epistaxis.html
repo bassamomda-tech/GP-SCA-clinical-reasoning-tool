@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epistaxis — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/epistaxis.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/epistaxis.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../epistaxis.html">← Full epistaxis algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Epistaxis (nosebleeds)</h1>
+      <div class="scope"><b>For:</b> adults and children with a nosebleed in primary care. <b>Not for:</b> packing, pledgets, posterior bleeds, tranexamic acid or anticoagulant reversal (ENT/emergency protocols). Child under 2 → block 2.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>BRS consensus 2017</span><span>ENT UK 2023</span><span>NICE NG12</span><span>NICE NG24</span><span>MHRA DOACs</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> most nosebleeds are anterior and stop with correct pressure. But one-sided bleeding with blockage needs urgent ENT to exclude a tumour, and the rare deaths are mostly in elderly anticoagulated patients with heavy or posterior bleeds.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — call 999 now <small>— before any history</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Massive bleeding or haemodynamic compromise</b> (hypotension, tachycardia, pallor, dizziness); <b>airway compromise or aspiration risk</b> → <span class="when w999">999</span></li>
+          <li><b>Major trauma or suspected skull-base/facial fracture</b> → <span class="when w999">999</span></li>
+          <li><b>Uncontrolled despite correct pressure and local measures</b>, suspected posterior bleed still bleeding, or severe bleeding on significant anticoagulation → <span class="when w999">999 / A&amp;E</span></li>
+          <li><b>While waiting:</b> sit forward, pinch the soft part, spit not swallow. Record the anticoagulant and last DOAC dose time. GPs do not give vitamin K or PCC.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage <small>— after 10–15 min of correct, uninterrupted pressure</small></h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Situation</th><th>Action</th></tr>
+            <tr><td>Stopped</td><td>Assess (block 3); find the source</td></tr>
+            <tr><td>Still bleeding</td><td>Reassess urgently. Active after further pressure and local measures → <span class="when wsd">Same-day ENT / A&amp;E</span></td></tr>
+            <tr><td>Transfer earlier</td><td>Compromise, anticoagulated with significant bleeding, blood in the airway/pharynx, frailty or major comorbidity, or unable to assess safely</td></tr>
+            <tr><td>Posterior signs</td><td>Blood entering the pharynx, both nostrils, no visible anterior point (none diagnostic alone) → <span class="when wsd">A&amp;E</span></td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen <small>— one row is enough</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>On warfarin, DOAC or antiplatelet, not stopping</b> → <span class="when wsd">Same-day</span>. INR if on warfarin; INR does not assess DOACs.</li>
+            <li><b>Persistent one-sided obstruction</b>, blood-stained discharge or recurrent one-sided bleeds; facial swelling, anosmia, cranial-nerve signs, nasal mass → <span class="when wurg">Urgent ENT</span> (local head and neck pathway). No biopsy or repeated cautery.</li>
+            <li><b>Adolescent male</b>, one-sided obstruction + profuse bleeding (angiofibroma) → <span class="when wurg">Urgent imaging / ENT</span>; no biopsy.</li>
+            <li><b>Bruising, petechiae, bleeding gums, heavy periods</b> → <span class="when wurg">FBC + clotting ≤48 h</span> (consider in adults, offer in children). <b>Child, unexplained petechiae</b> → <span class="when wsd">Immediate specialist</span></li>
+            <li><b>Child under 2 years</b> → <span class="when wsd">Same-day paediatrics</span>: bleeding disorder or non-accidental injury; follow local safeguarding procedures.</li>
+            <li><b>Recurrent bleeds from both nostrils</b> → <span class="when wurg">Urgent ENT</span> (HHT, systemic cause).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess <small>— once blocks 0–2 are answered</small></h2>
+        <div class="body">
+          <p>☐ Pulse, BP, postural BP if volume depleted &nbsp;☐ Anterior rhinoscopy (speculum + headlight): Little's area, perforation, crusting &nbsp;☐ Oropharynx for blood &nbsp;☐ Telangiectasia (lips, tongue, fingers), bruising, petechiae, pallor</p>
+          <p><b>Bloods only if</b> recurrent or severe, bleeding elsewhere, anticoagulated or coagulopathy suspected; FBC + iron if recurrent. Raised BP → repeat after haemostasis; do not lower it rapidly.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify <small>— only if the screen is negative</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Anterior (Little's area)</b> — commonest; visible one-sided bleed that stops with pressure → primary care.</li>
+            <li><b>Posterior</b> — persists despite anterior measures, blood in the pharynx → <span class="when wsd">A&amp;E</span> (packing or embolisation).</li>
+            <li><b>Secondary</b> — anticoagulant, bleeding disorder, liver disease → treat the cause plus local measures.</li>
+            <li><b>HHT</b> — recurrent bleeds from childhood + telangiectasia and/or family history → HHT specialist centre.</li>
+            <li><b>Uncertain / no source seen</b> — stopped or posterior; say so → ENT nasendoscopy (still bleeding → same-day).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— only these</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>First aid:</b> sit forward, pinch the soft part (not the bridge) 10–15 min, mouth-breathe, spit out blood; do not release to check.</li>
+            <li><b>Silver nitrate cautery</b> only for a discrete visible anterior point, by a trained, equipped clinician, after co-phenylcaine. Never both sides of the septum at once (4–6 weeks apart); do not force in young children.</li>
+            <li><b>Naseptin</b> four times daily for 10 days — check peanut/soya allergy — or petroleum jelly/saline. Doses per BNF and local formulary.</li>
+            <li><b>Anticoagulant/antiplatelet:</b> do not routinely stop for a minor, controlled bleed; discuss with the prescriber if clinically significant.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer <small>— bleeding settled (still bleeding → same-day)</small></h2>
+        <div class="body">
+          <ul>
+            <li>Recurrent despite cautery or Naseptin, or no anterior source seen → <span class="when wurg">Urgent ENT</span> (nasendoscopy).</li>
+            <li>Suspected HHT → HHT specialist centre; check FBC and iron status.</li>
+            <li>Prolonged APTT, or bleeding history suggestive even with normal PT/APTT, or family history → haematology.</li>
+            <li>Septal perforation enlarging or symptomatic → ENT.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A bleed that has stopped, if an adult has one-sided blockage or discharge.</li>
+          <li>A normal FBC or PT/APTT when the history suggests a bleeding disorder.</li>
+          <li>A normal INR in a patient taking a DOAC.</li>
+          <li>"Nosebleeds are common in children" — not under 2 years.</li>
+          <li>High BP as the explanation for the bleed.</li>
+          <li>A "refractory" bleed before checking the first-aid technique — but never delay A&amp;E for ongoing bleeding.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— teach first aid, say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Call 999 for very heavy bleeding (soaking towels, clots the size of a fist), feeling faint or collapsing, chest pain, or choking on blood.”</span>
+        <span class="when wsd">A&amp;E</span> <span class="say">“Lasting over 10–15 minutes despite pinching correctly — go to A&amp;E straight away.”</span>
+        <b>Same day:</b> <span class="say">“Contact us today if bleeds get more frequent or heavier, bleed after cautery, new one-sided blockage or facial pain, new bruising or spots, or you become pale and tired.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to leave primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>Bleeding stopped; no block 0–2 row applies</span>
+        <span>Pulse and BP recorded; BP rechecked if raised</span>
+        <span>Source seen and treated, or ENT route arranged</span>
+        <span>Anticoagulant reviewed (not routinely stopped); INR if warfarin and indicated</span>
+        <span>First aid taught, safety-net given; 1-week review after cautery</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../epistaxis.html">Reasoning GP epistaxis algorithm</a>, which holds the history, examination, investigation detail and follow-up. Sources: British Rhinological Society consensus (2017); ENT UK Global ENT epistaxis guideline (2023); NICE NG24; MHRA DOAC advice; NICE NG12 (updated April 2026); NICE CKS; GMMMG formulary; BNF/SPC. Clinical decision support — follow local ENT pathways and check doses in the current BNF.</div>
+
+</main>
+</body>
+</html>

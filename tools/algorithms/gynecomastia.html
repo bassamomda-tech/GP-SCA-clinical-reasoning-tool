@@ -449,7 +449,7 @@ body {
 </div>
 
 <!-- ══════════════════════════════ PROGRESS ══════════════════════════════ -->
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
@@ -457,36 +457,8 @@ body {
 </div>
 
 <!-- ══════════════════════════════ FLOW ══════════════════════════════ -->
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — distinguish true glandular gynaecomastia from lipomastia, exclude the drug, endocrine and (rarely) malignant causes, reassure physiological cases, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Gynaecomastia</span><div class="body">Onset, symmetry, tenderness, drugs, alcohol, systemic symptoms. Examine breast tissue (glandular vs fatty), testes, signs of liver/thyroid disease.</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1 · Safety — breast cancer / tumour</span><span class="ttl">Breast cancer or sinister cause?</span><div class="body">Hard, eccentric, fixed or irregular mass, nipple/skin change, axillary lymphadenopathy → male breast cancer. Painless testicular mass or change in shape/texture (tumour). Acute severe testicular pain (torsion).</div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Suspected cancer / investigate</span><div class="body">Unexplained breast lump aged ≥30, or concerning unilateral nipple change aged ≥50 → breast suspected cancer pathway referral (no tests first). Painless testicular mass → urgent USS + urology (suspected cancer pathway). Acute severe testicular pain → emergency torsion assessment.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
-    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Physiological</div><div class="box act"><span class="ttl">Common</span><div class="body">Neonatal, pubertal or age-related; reassure, review; usually resolves.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Drug / substance</div><div class="box act"><span class="ttl">Common</span><div class="body">Spironolactone, anti-androgens, oestrogens, anabolic steroids, finasteride/dutasteride; causality review — stop/switch only where safe, with the prescriber.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Endocrine / systemic</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">Hypogonadism, hyperthyroidism, liver/renal disease, testicular/other tumours (uncommon). Selective tests only if cause unclear, recent, marked, progressive or atypical: morning testosterone, LH/FSH, U&amp;E, LFT, TSH ± β-hCG, prolactin, oestradiol.</div></div></div>
-    </div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">Suspected cancer</span> <span class="pill pill-grey">NICE NG12</span> unexplained breast lump aged ≥30, or concerning unilateral nipple change aged ≥50; painless testicular mass → urology. <span class="pill pill-blue">Endocrinology</span> confirmed hypogonadism, or unexplained or persistent gynaecomastia after drug/physiological causes excluded.</div></div>
-    <div class="arrow"><span class="tag">Step 8 · modifiable factors</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; modifiable factors</span><span class="ttl">Remove the reversible drivers</span><div class="body"><b>Review the drug chart</b> by causality (timing, dose, plausibility, alternatives) and stop/switch culprits only where safe, with the prescriber; <b>address anabolic steroids, recreational drugs and excess alcohol</b>. <b>Weight loss</b> may improve pseudogynaecomastia and metabolic health, but established glandular tissue may persist. Treat underlying hyperthyroidism, hypogonadism or liver disease.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Reassess in ~3 months</b> after removing a drug/lifestyle cause — most physiological and drug-induced cases settle. <b>Suspected cancer pathway referral</b> for an unexplained breast lump aged ≥30 or concerning unilateral nipple change aged ≥50; urgent specialist discussion at any age for a hard, eccentric or fixed mass, bloody discharge or suspicious skin/nipple change. <b>Painless testicular mass</b> → urgent USS + urology; <b>acute severe testicular pain</b> → emergency. Rapid-onset gynaecomastia → selective tests including β-hCG. Longstanding symptomatic/fibrotic gynaecomastia → surgical assessment per local ICB policy.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Review the drug chart and feel the testes:</b> many drugs cause gynaecomastia, but a hard eccentric breast mass (cancer) or a testicular tumour must not be missed.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/gynecomastia.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/gynecomastia.html">⬇ Download PDF</button><a class="sum-open" href="one-page/gynecomastia.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/gynecomastia.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -506,7 +478,7 @@ body {
     <div class="rfgrid">
       <div class="rftile"><b>Hard, irregular, unilateral breast mass</b> Fixed, non-tender, skin tethering / nipple retraction → breast suspected cancer pathway referral — NICE NG12 (updated April 2026): aged 30 and over with an unexplained breast lump, with or without pain; applies to men. Do not delay referral for blood tests or breast imaging</div>
       <div class="rftile"><b>Nipple discharge / change</b> Unilateral nipple discharge, retraction or other concerning nipple change in a man aged 50 and over → suspected cancer pathway referral (NICE NG12). Spontaneous unilateral bloody discharge or clinically suspicious nipple/skin changes → urgent specialist discussion irrespective of age; exclude Paget's disease / carcinoma</div>
-      <div class="rftile"><b>Testicular mass / pain</b> Acute severe testicular pain (especially with nausea, high-riding testis or abnormal lie) → immediate emergency assessment for torsion. Painless testicular mass or change in size/shape/texture → urgent testicular USS + urology referral via the local suspected cancer pathway; do not wait for tumour markers. A painful mass may be epididymo-orchitis, torsion or trauma</div>
+      <div class="rftile"><b>Testicular mass / pain</b> Acute severe testicular pain (especially with nausea, high-riding testis or abnormal lie) → immediate emergency assessment for torsion. Painless testicular mass or change in size/shape/texture → consider a suspected cancer pathway referral to urology (NICE NG12) and an urgent direct-access testicular USS; do not delay referral for the scan or tumour markers. A painful mass may be epididymo-orchitis, torsion or trauma</div>
       <div class="rftile"><b>Rapid onset + systemic symptoms</b> Weight loss, drenching sweats, lymphadenopathy → Urgent bloods + CT; exclude lymphoma, lung cancer (paraneoplastic)</div>
       <div class="rftile"><b>Signs of liver failure</b> Jaundice, spider naevi, caput medusae, asterixis → Same-day medical review; hepatic failure reduces oestrogen clearance</div>
       <div class="rftile"><b>Severe hypogonadism features</b> Kallmann-like picture: absent puberty, anosmia, eunuchoid proportions → Urgent endocrinology; may mask serious pituitary pathology</div>
@@ -547,7 +519,7 @@ body {
       <div>Laterality</div>
       <div><b>Bilateral</b> = usually physiological, drug-induced or systemic · <b>Unilateral</b> gynaecomastia can occur, especially early, and is not automatically malignant · Suspicion is driven by an eccentric, hard, fixed or irregular lesion, nipple/skin changes or lymphadenopathy</div>
       <div>Age pattern</div>
-      <div>3 physiological peaks: <b>neonatal</b> (maternal oestrogens), <b>pubertal</b> (age 13–14, resolves in 18 months), <b>older adult</b> (50s–70s, rising SHBG + falling testosterone)</div>
+      <div>3 physiological peaks: <b>neonatal</b> (maternal oestrogens), <b>pubertal</b> (age 13–14, usually resolves within 18–24 months), <b>older adult</b> (50s–70s, rising SHBG + falling testosterone)</div>
       <div>Presentation type</div>
       <div><b>Pubertal:</b> typical, no red flags → reassure and observe, no tests · <b>Drug-induced:</b> clear link to a causative medicine, no atypical features → causality review, no routine tests · <b>Adult (cause unclear):</b> recent, marked, progressive or atypical → selective tests (Step 5)</div>
       <div>Drug history</div>
@@ -604,7 +576,7 @@ body {
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
       <p>The cause determines management: drug-induced gynaecomastia → stop/switch the drug; hypogonadism → endocrinology/andrology assessment; hyperthyroidism → treatment via the endocrine pathway (NICE NG145); tumour → urgent specialist referral. Getting the aetiology right prevents unnecessary drug treatment with aromatase inhibitors or SERMs.</p>
-      <p>Klinefelter syndrome (1:600 males) is frequently undiagnosed into adulthood. Gynaecomastia is the most common presenting feature. These patients also have 20–50× increased risk of male breast cancer — important cascade of discoveries from one GP consultation.</p>
+      <p>Klinefelter syndrome is common and frequently undiagnosed into adulthood. Gynaecomastia is a common presenting feature. These patients also have a markedly increased risk of male breast cancer — important cascade of discoveries from one GP consultation.</p>
     </div>
   </div>
 </div>
@@ -630,7 +602,7 @@ body {
       <div>Axillary lymph nodes</div>
       <div>Palpate axillae bilaterally · Hard, matted, fixed nodes + breast mass = strongly suspicious for malignancy · Soft, mobile = reactive (common in obesity, skin conditions)</div>
       <div>Testicular examination</div>
-      <div>Size, symmetry, consistency · Normal adult testis: 15–25 mL · Small, firm testes in young male → Klinefelter syndrome · Painless mass or change in shape/texture → <span class="pill pill-red">urgent USS + urology (suspected cancer pathway)</span> · Acute severe pain → emergency torsion assessment</div>
+      <div>Size, symmetry, consistency · Normal adult testis: 15–25 mL · Small, firm testes in young male → Klinefelter syndrome · Painless mass or change in shape/texture → <span class="pill pill-red">consider suspected cancer pathway referral to urology + urgent direct-access USS (NICE NG12)</span> · Acute severe pain → emergency torsion assessment</div>
       <div>Body habitus / virilisation</div>
       <div>Assess muscle mass, fat distribution, body hair (axillary, pubic, facial), penile development · Eunuchoid proportions = hypogonadism · Excess central adiposity = peripheral aromatisation source</div>
       <div>Signs of liver disease</div>
@@ -644,7 +616,7 @@ body {
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>Testicular examination changes management in a significant minority: small testes in a young man with gynaecomastia and infertility strongly suggests Klinefelter syndrome (requires karyotype + endocrinology referral). A painless testicular nodule with gynaecomastia needs urgent USS and urology referral; a painful mass may instead reflect epididymo-orchitis, torsion or trauma.</p>
+      <p>Testicular examination changes management in a significant minority: small testes in a young man with gynaecomastia and infertility strongly suggests Klinefelter syndrome (requires karyotype + endocrinology referral). A painless testicular nodule with gynaecomastia → consider a suspected cancer pathway referral to urology and an urgent direct-access USS (NICE NG12); a painful mass may instead reflect epididymo-orchitis, torsion or trauma.</p>
       <p>Signs of liver disease in a man with gynaecomastia should prompt LFTs, clotting, and USS liver — cirrhosis-related gynaecomastia requires hepatology input, not breast treatment. Similarly, thyroid signs should trigger TFTs before any hormonal investigation.</p>
     </div>
   </div>
@@ -709,11 +681,11 @@ body {
       <div><span class="pill pill-red">999 / A&amp;E</span></div>
       <div>Acute liver failure or severe systemic illness · Acute adrenal crisis · Severe hypercalcaemia (e.g. with confusion) · Pituitary emergency · Acute severe testicular pain → immediate emergency torsion assessment</div>
       <div><span class="pill pill-red">Same-day</span></div>
-      <div>Jaundice or signs of liver decompensation without acute liver failure → urgent medical assessment</div>
+      <div>Jaundice or signs of liver decompensation without acute liver failure → same-day medical assessment</div>
       <div><span class="pill pill-purple">Suspected cancer · breast</span></div>
       <div>Aged 30 and over with an unexplained breast lump, with or without pain (NICE NG12, updated April 2026 — applies to men) · Aged 50 and over with unilateral nipple discharge, retraction or other concerning nipple change · Any age: hard, irregular, fixed or eccentric mass, skin tethering, ulceration, Paget's or spontaneous unilateral bloody discharge → urgent specialist discussion · No investigation needed before referral</div>
       <div><span class="pill pill-purple">Suspected cancer · urology</span></div>
-      <div>Non-painful testicular enlargement or change in shape/texture (NICE NG12) → urgent USS + urology · Do not wait for tumour markers · Raised or unexplained β-hCG → urgent specialist investigation (not a 999 response)</div>
+      <div>Non-painful testicular enlargement or change in shape/texture → consider a suspected cancer pathway referral to urology (NICE NG12) + urgent direct-access USS · Do not wait for the scan or tumour markers · Raised or unexplained β-hCG → urgent specialist investigation (not a 999 response)</div>
       <div>Urgent Endocrinology <span class="pill pill-amber">2–4 weeks</span></div>
       <div>Confirmed hypogonadism (primary or secondary) · Klinefelter karyotype · Markedly raised prolactin, or raised prolactin with headache / visual field symptoms · Low LH + low testosterone (pituitary pathology suspected) · Clearly raised oestradiol or virilisation/feminisation · Adrenal tumour on imaging</div>
       <div>Routine Endocrinology</div>
@@ -814,7 +786,7 @@ body {
     <p class="intro-text">Address obesity, alcohol excess, anabolic-steroid use and recreational-drug use where relevant. Explain that weight loss may improve pseudogynaecomastia and metabolic health, but established glandular tissue may persist.</p>
     <div class="lsgrid">
       <div class="lstile"><b>Weight reduction</b> Appropriate for obesity and metabolic risk; may improve pseudogynaecomastia, but may not reverse established glandular gynaecomastia. Refer to NHS Tier 2 weight management service. Semaglutide is not a routine primary-care treatment — NICE TA875 limits it to eligible adults within a specialist multidisciplinary weight-management service (generally BMI ≥35 with a weight-related comorbidity, or BMI 30–34.9 meeting specialist-service criteria).</div>
-      <div class="lstile"><b>Alcohol reduction</b> Excess alcohol causes liver disease (reducing oestrogen clearance) and promotes central adiposity. AUDIT screen. Target &lt;14 units/week with 2 alcohol-free days. Offer brief intervention for hazardous drinking. Refer to community alcohol services if dependent.</div>
+      <div class="lstile"><b>Alcohol reduction</b> Excess alcohol causes liver disease (reducing oestrogen clearance) and promotes central adiposity. AUDIT screen. Advise not regularly drinking more than 14 units/week, spread over 3 or more days, with several alcohol-free days (UK CMOs). Offer brief intervention for hazardous drinking. Refer to community alcohol services if dependent.</div>
       <div class="lstile"><b>Stop anabolic steroids / SARMs</b> Anabolic steroids are a common cause of gynaecomastia in men aged 18–40. Suppression of LH/FSH leads to rebound oestrogen excess post-cycle. Provide non-judgmental harm reduction advice. Refer to specialist AAS clinic if available locally.</div>
       <div class="lstile"><b>Recreational drugs</b> Cannabis and other recreational drugs have been linked to gynaecomastia, but a confirmed endocrine mechanism is lacking — do not present cessation as an established treatment. Offer drug-service support as part of general health advice.</div>
       <div class="lstile"><b>Resistance exercise</b> Increases endogenous testosterone and reduces peripheral fat. Prescribe 150 min/week moderate activity + 2× resistance training sessions. Exercise referral scheme via social prescribing link worker if available.</div>
@@ -860,7 +832,7 @@ body {
       <div>Post-surgical</div>
       <div>GP wound check at 1 week · Review at 6 weeks: healing, patient satisfaction · Long-term: document recurrence (recurrence possible if cause not treated, e.g. ongoing AAS use)</div>
       <div><span class="pill pill-red">Safety-net emergency</span></div>
-      <div>Chest pain or sudden breathlessness → emergency assessment irrespective of gynaecomastia (consider PE if on tamoxifen or VTE risk factors) · Acute severe testicular pain → emergency torsion assessment · Jaundice → urgent medical assessment (999 only with acute liver failure or severe systemic illness, e.g. confusion)</div>
+      <div>Chest pain or sudden breathlessness → emergency assessment irrespective of gynaecomastia (consider PE if on tamoxifen or VTE risk factors) · Acute severe testicular pain → emergency torsion assessment · Jaundice → same-day medical assessment (999 only with acute liver failure or severe systemic illness, e.g. confusion)</div>
       <div><span class="pill pill-red">Safety-net same-day GP</span></div>
       <div>Breast mass becomes hard, irregular, or fixed at any review · New nipple discharge · Rapid increase in size · New systemic symptoms (weight loss, sweats) · New painless testicular lump · Raised β-hCG → urgent specialist investigation (not 999)</div>
       <div>Klinefelter monitoring</div>
@@ -871,7 +843,7 @@ body {
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
       <p>Safety-netting is critical because gynaecomastia is a recurring presentation — the GP may be the only clinician reviewing a man whose gynaecomastia is gradually changing character over years. Documenting size in the notes (in cm, not just "improved" or "same") allows objective comparison at follow-up and supports timely escalation.</p>
-      <p>Men with Klinefelter syndrome have 20–50× the risk of breast cancer compared to 46,XY males. While absolute risk remains low (~3% lifetime), this group needs clear long-term monitoring. Many local trusts now have Klinefelter clinics — if available, refer for shared care.</p>
+      <p>Men with Klinefelter syndrome have a markedly higher risk of breast cancer than 46,XY males. While absolute risk remains low, this group needs clear long-term monitoring. Many local trusts now have Klinefelter clinics — if available, refer for shared care.</p>
       <p>Tamoxifen use carries a small but real VTE risk. If a man is on tamoxifen for gynaecomastia and develops leg swelling or breathlessness, VTE must be excluded. Ensure this is documented in safety-netting advice given to the patient at initiation.</p>
     </div>
   </div>

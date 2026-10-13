@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itchy eye — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/itchy-eye.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/itchy-eye.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../itchy-eye.html">← Full itchy eye algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Itchy eye</h1>
+      <div class="scope"><b>For:</b> adults and children with itchy eyes, including neonates with discharge, in hours or OOH. <b>Not for:</b> a painful red eye without itch (use the <a href="../red-eye.html">red eye algorithm</a>) or an eye injury (<a href="../foreign-body-eye.html">foreign body algorithm</a>); ongoing care is in the allergic conjunctivitis, blepharitis and dry eye protocols.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>College of Optometrists CMGs</span><span>RCOphth 2021</span><span>BSACI rhinitis</span><span>BASHH chlamydia</span><span>GMMMG Eye formulary</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> itch usually means allergy — but pain, photophobia, reduced vision or a painful red eye in a contact-lens wearer means it is not simple allergy: same-day ophthalmology, and never start steroid drops.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — call 999 now</h2>
+      <div class="body">
+        <ul>
+          <li><b>Acute angle-closure glaucoma</b> — severe pain, haloes, cloudy cornea, nausea/vomiting, headache, visual disturbance (also in a patient on steroid drops) → <span class="when w999">999</span> / emergency ophthalmology.</li>
+          <li><b>Severe orbital or facial infection</b> with systemic illness, neurological symptoms or rapidly progressive swelling → <span class="when w999">999</span></li>
+          <li><b>Anaphylaxis</b> with airway or systemic compromise → <span class="when w999">999</span></li>
+          <li><b>Do not</b> palpate the globe for pressure, give IV acetazolamide from primary care, or delay transfer.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage by pattern</h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Pattern</th><th>Means → action</th></tr>
+            <tr><td>Itch, bilateral, watery</td><td>Allergy more likely → blocks 3–5</td></tr>
+            <tr><td>Burning, gritty</td><td>Fluctuating vision → dry eye or blepharitis</td></tr>
+            <tr><td>Pain, photophobia, ↓ vision</td><td>Or marked unilateral redness → do not assume allergy → block 2</td></tr>
+            <tr><td>Contact lens + pain</td><td>Painful red eye = emergency until keratitis excluded → block 2</td></tr>
+            <tr><td>Neonate &lt;28 days</td><td>Any purulent discharge → block 2</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen <small>— same-day ophthalmology</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Reduced or changed acuity, moderate/severe pain, photophobia, ciliary flush</b> (uveitis) → <span class="when wsd">Same-day</span></li>
+            <li><b>Contact-lens wearer with painful red eye</b> → lens out now, no patch, no steroid → <span class="when wsd">Same-day emergency</span>. <b>Corneal haze, opacity, ulcer or staining</b> → <span class="when wsd">Same-day</span></li>
+            <li><b>Dendritic staining</b> (herpes simplex), <b>V1 rash or Hutchinson's sign</b> (zoster), new diplopia or restricted movements → <span class="when wsd">Same-day</span></li>
+            <li><b>Neonate with purulent discharge</b> → <span class="when wsd">Same-day</span> paediatrics/ophthalmology; gonococcal and chlamydial swabs.</li>
+            <li><b>VKC or AKC</b> with photophobia, reduced vision or corneal staining → <span class="when wsd">Same-day</span>; otherwise VKC → <span class="when w7">Within 1 week</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess</h2>
+        <div class="body">
+          <p>☐ Acuity each eye &nbsp;☐ Redness pattern, discharge &nbsp;☐ Lid margins &nbsp;☐ Cornea + fluorescein &nbsp;☐ Pupils, eye movements &nbsp;☐ Evert upper lid: child with severe chronic itch, lens wearer with lens intolerance &nbsp;☐ Lenses, drops, cosmetics, atopy</p>
+          <p>No tests for typical seasonal allergy; specific IgE only if it changes management; swab if purulent, neonatal or chronic follicular (chlamydia PCR, sexual history). No slit lamp and any doubt → refer.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify <small>— only if blocks 0–2 are negative</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Allergic conjunctivitis</b> — bilateral itch, watery, seasonal or perennial, atopy, rhinitis → block 5.</li>
+            <li><b>Blepharitis / meibomian gland dysfunction</b> — lid-margin itch, morning crusting → lid hygiene.</li>
+            <li><b>Dry eye</b> — burning, grit, blur clearing on blinking → lubricants.</li>
+            <li><b>Contact dermatoconjunctivitis</b> — periorbital eczema from drop preservative (BAK) or cosmetics → stop agent, preservative-free drops.</li>
+            <li><b>Giant papillary conjunctivitis</b> — lens wearer, itch on removal, papillae → lenses out, optometry.</li>
+            <li><b>Uncertain</b> — unilateral, chronic follicular or not responding → reconsider and refer.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— only these</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Allergic:</b> topical antihistamine or mast-cell stabiliser per local formulary (sodium cromoglicate, ketotifen, azelastine, olopatadine); mast-cell stabilisers before the season. Cold compresses, no rubbing, no lenses while active. Loratadine 10 mg or cetirizine 10 mg OD if rhinitis.</li>
+            <li><b>Blepharitis:</b> warm compress → lid massage → lid scrub, long term. Antibiotic ointment may be considered for selected anterior disease; doxycycline usually after specialist advice (not in pregnancy, breastfeeding or under 12).</li>
+            <li><b>Dry eye:</b> lubricants, preservative-free if frequent use or ocular-surface disease; ointment at night if severe.</li>
+            <li><b>No topical steroid</b> from primary care; do not renew ophthalmology steroids without review. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer non-urgently</h2>
+        <div class="body">
+          <ul>
+            <li><span class="when w7">Within 1 week</span> ophthalmology: persistent AKC; GPC not settling; follicular conjunctivitis not settling after 4 weeks; recurrent severe allergy needing steroid.</li>
+            <li><span class="when wrt">Routine</span> optometry/ophthalmology: dry eye or blepharitis despite an adequate trial. Minor eye conditions service (same or next day) for mild–moderate cases without red flags.</li>
+            <li><b>Allergy clinic:</b> rhinoconjunctivitis uncontrolled on antihistamine + nasal steroid, occupational allergy, immunotherapy. <b>Sexual health:</b> suspected chlamydial conjunctivitis.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>"It itches" when there is pain, photophobia or reduced vision.</li>
+          <li>A contact-lens wearer's painful red eye labelled allergy or conjunctivitis.</li>
+          <li>No giant papillae when the upper lid was not everted.</li>
+          <li>A cornea that looks clear by direct light alone.</li>
+          <li>An absent Hutchinson's sign — it does not exclude eye involvement.</li>
+          <li>Failed antihistamines met with more antihistamine — think dry eye, preservative allergy, chlamydia, VKC.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Severe eye pain with haloes, headache or vomiting — call 999.”</span>
+        <span class="when wsd">Same day</span> <span class="say">“If the eye becomes painful, light hurts, your vision changes, or a lens-wearing eye turns red and painful (take the lens out), get same-day eye assessment.”</span>
+        <span class="when w7">Same week</span> review if not controlled after 2–4 weeks of treatment, and reconsider the diagnosis.</p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to leave primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>Acuity each eye normal</span>
+        <span>No pain, photophobia or block 0–2 feature</span>
+        <span>Cornea checked; lid everted if needed</span>
+        <span>Lenses, drops and cosmetics reviewed</span>
+        <span>Safety-net and review route given</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../itchy-eye.html">Reasoning GP itchy eye algorithm</a>, which holds the examination technique, allergen advice, blepharitis and dry eye detail and evidence. Sources: College of Optometrists Clinical Management Guidelines; RCOphth Commissioning Guide for Medical Ophthalmology 2021; BSACI rhinitis guideline 2017; BASHH chlamydia guideline; NICE neonatal infection guidance; NICE TA369; GMMMG Eye formulary. Clinical decision support — follow the local eye pathway and check doses in the current BNF.</div>
+
+</main>
+</body>
+</html>

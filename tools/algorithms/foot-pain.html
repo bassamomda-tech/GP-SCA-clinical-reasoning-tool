@@ -396,70 +396,15 @@ body { padding: 0 0 60px; }
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — localise by region (heel / forefoot / midfoot), exclude infection and the diabetic-foot emergency, diagnose the common overuse causes, treat conservatively, refer and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Foot pain</span><div class="body"><b>Site</b> (heel / forefoot / midfoot), onset (first-step vs activity), footwear, <b>diabetes status</b>. Examine, and <b>assess vascular + neurological status</b> (pulses, sensation) — essential in diabetes.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — diabetic foot &amp; infection</span><span class="ttl">Emergency?</span><div class="body"><ul>
-      <li><b>Diabetic foot infection</b> — ulcer, spreading erythema, warmth, discharge, systemic upset</li>
-      <li><b>Charcot foot</b> — diabetic, hot/swollen/red foot, often <i>without</i> much pain (neuropathy)</li>
-      <li><b>Septic arthritis</b> — acutely painful, restricted, swollen joint (fever and raised blood tests may be absent) · <b>acute limb ischaemia</b> (pain, pallor, coldness, sensory loss, weakness, absent pulses — features may be incomplete)</li>
-      <li><b>Stress fracture</b> in an at-risk patient (sudden focal bony pain)</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Urgent</span><div class="body"><b>Diabetic foot: sepsis, severe ischaemia, gangrene or suspected deep infection → immediate hospital referral; other active problems (incl. suspected Charcot) → diabetic-foot service, usually within 1 working day (NICE NG19).</b> Suspected septic joint → same-day hospital assessment + aspiration. Acute limb ischaemia → immediate vascular assessment / 999.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — localise</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">By region</span><div class="body">Mostly clinical. X-ray for trauma/suspected stress fracture/OA (a normal X-ray does not exclude stress fracture); consider gout (urate — may be normal during a flare) for acute 1st MTP; USS for plantar/Morton's only if diagnosis uncertain.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · which region?</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Heel</div><div class="box ix"><span class="ttl">Plantar fasciitis</span><div class="body"><b>First-step pain</b> at the medial heel, worse after rest; also Achilles insertional pain, fat-pad atrophy.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Forefoot</div><div class="box ix"><span class="ttl">Metatarsalgia / Morton's</span><div class="body">Metatarsalgia, <b>Morton's neuroma</b> (burning ± click between 3rd/4th toes — click supportive, not diagnostic), hallux valgus, <b>gout</b> (acute hot 1st MTP).</div></div></div>
-      <div class="col"><div class="blabel">Midfoot / other</div><div class="box ix"><span class="ttl">OA / stress fracture</span><div class="body">Midfoot OA, tibialis posterior dysfunction (flat foot), <b>stress fracture</b>, inflammatory arthritis.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat by cause</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — conservative first</span><span class="ttl">Footwear, orthotics, load management</span><div class="body"><ul>
-      <li><b>Plantar fasciitis:</b> <b>plantar-fascia &amp; calf stretches</b>, supportive footwear/insoles/heel cups, activity &amp; weight management, short-term analgesia only if appropriate; injection or ESWT only after discussing uncertain/short-term benefit and risks (plantar fascia rupture, fat-pad atrophy).</li>
-      <li><b>Metatarsalgia / Morton's:</b> wide footwear + metatarsal pad/orthotic; corticosteroid injection or excision for persistent neuroma.</li>
-      <li><b>Gout (1st MTP):</b> NSAID, colchicine or short oral steroid course for the flare — chosen by renal function, CV/GI risk, interactions and preference; treat-to-target urate-lowering therapy. Do not stop low-dose aspirin.</li>
-      <li><b>Stress fracture:</b> rest/protected weight-bearing; address bone health (FRAX, vitamin D, RED-S in athletes).</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">999 / emergency</span> acute limb ischaemia, necrotising fasciitis, sepsis from a foot source, acute compartment syndrome, major trauma, open fracture/dislocation with neurovascular compromise.</li>
-      <li><span class="pill pill-red">Same-day hospital / MDT</span> suspected septic arthritis, diabetic foot infection with ischaemia/deep infection/systemic illness, Charcot foot, suspected DVT (local pathway), high-risk stress fracture, Lisfranc injury, new persistent synovitis.</li>
-      <li><span class="pill pill-blue">Podiatry / MSK / orthopaedics</span> refractory plantar fasciitis, symptomatic Morton's neuroma, painful deformity (hallux valgus), midfoot OA, tibialis posterior dysfunction.</li>
-      <li><span class="pill pill-grey">Diabetic foot clinic</span> all at-risk diabetic feet for surveillance.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · footwear &amp; prevention</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; prevention</span><span class="ttl">Footwear is treatment</span><div class="body"><b>Supportive, well-fitted footwear</b> and appropriate orthotics/insoles · <b>weight management where clinically appropriate</b> · stretching, graded activity and avoiding sudden training-load increases · gout: weight, alcohol, sugar-sweetened drinks, CV risk and ULT adherence (diet alone does not replace treat-to-target therapy) · activity modification and pacing · <b>diabetic foot care</b> — daily inspection, never barefoot, prompt review of any break in the skin · address bone health for stress fracture.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Prompt assessment (diabetes or known PAD)</b> for any new ulcer, blister, skin break, swelling, redness, colour change, rest pain or rapidly worsening pain — via the local diabetic-foot/vascular pathway, <b>do not wait</b>. <b>Emergency</b> if a hot, painful, swollen joint, or a cold, pale, numb or weak foot. <b>Review</b> plantar fasciitis at 6–12 weeks (slow to settle); escalate persistent or worsening pain and reconsider stress fracture.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution crit">⚠️ <b>The diabetic foot is an emergency:</b> a warm, swollen or ulcerated foot in diabetes can be infection or Charcot — and Charcot is often <i>not</i> very painful. Refer via the local diabetic-foot pathway (usually within 1 working day; immediately if sepsis, severe ischaemia, gangrene or suspected deep infection) rather than treating as simple mechanical pain.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/foot-pain.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/foot-pain.html">⬇ Download PDF</button><a class="sum-open" href="one-page/foot-pain.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/foot-pain.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -484,11 +429,11 @@ body { padding: 0 0 60px; }
         <div class="rftile"><b>Necrotising fasciitis</b> Severe, rapidly progressive or disproportionate pain with systemic illness, skin discolouration, bullae, anaesthesia, oedema or rapidly spreading swelling → emergency hospital/surgical assessment (999; NICE NG253). Crepitus may be absent and normal inflammatory markers do not exclude early disease</div>
         <div class="rftile"><b>Septic arthritis</b> Suspect with an acutely painful, restricted and swollen joint, especially with systemic illness or immunosuppression — fever and raised blood tests may be absent. Refer for same-day hospital assessment (ED/acute medical/orthopaedic pathway) and joint aspiration. Do not delay antibiotics in a septic patient while waiting for aspiration or imaging</div>
         <div class="rftile"><b>Diabetic foot emergency</b> Sepsis, severe ischaemia, gangrene or suspected deep soft-tissue/bone infection → immediate hospital referral. Other active diabetic foot problems (new ulcer, blister, skin break, swelling, erythema, colour change, unexplained pain, suspected Charcot) → prompt assessment and diabetic-foot service referral, usually within 1 working day (NICE NG19)</div>
-        <div class="rftile"><b>Deep vein thrombosis</b> Distal foot pain alone is not a typical DVT presentation. Assess suspected DVT (unilateral calf swelling/pain) using the two-level Wells score and the local NICE NG158 pathway; do not use D-dimer indiscriminately in older people, inpatients, pregnancy or high pre-test probability. Differentials: cellulitis, superficial thrombophlebitis, ruptured Baker's cyst, trauma/haematoma, venous insufficiency, acute limb ischaemia, compartment syndrome</div>
-        <div class="rftile"><b>Stress fracture with high-risk site</b> Anterior tibial cortex, femoral neck, navicular, 5th metatarsal (Jones) in athlete — continued activity risks complete fracture → urgent orthopaedics</div>
+        <div class="rftile"><b>Deep vein thrombosis</b> Distal foot pain alone is not a typical DVT presentation. Assess suspected DVT (unilateral calf swelling/pain) using the two-level Wells score and the local NICE NG158 pathway (DVT likely → proximal leg vein ultrasound within 4 hours, or D-dimer + interim anticoagulation + scan within 24 hours); do not use D-dimer indiscriminately in older people, inpatients, pregnancy or high pre-test probability. Differentials: cellulitis, superficial thrombophlebitis, ruptured Baker's cyst, trauma/haematoma, venous insufficiency, acute limb ischaemia, compartment syndrome</div>
+        <div class="rftile"><b>Stress fracture with high-risk site</b> Anterior tibial cortex, femoral neck, navicular, 5th metatarsal (Jones) in athlete — continued activity risks complete fracture → same-day orthopaedic assessment; stop loading (non-weight-bearing) until seen</div>
         <div class="rftile"><b>Achilles rupture</b> Suspected complete rupture → urgent same-day assessment and immobilisation; 999 only if neurovascular compromise, major trauma or unsafe transfer</div>
         <div class="rftile"><b>Compartment syndrome / major trauma</b> Acute compartment syndrome, major trauma, or acute neurological or vascular compromise → 999</div>
-        <div class="rftile"><b>Malignancy / Paget's disease</b> Not for every unexplained foot pain — consider with persistent unexplained focal bone pain, night pain, swelling or mass, unexplained fracture, constitutional symptoms, abnormal examination, history of malignancy, or raised ALP/other Paget clues. Imaging and referral route depend on age, site and suspicion: plain X-ray is a useful first test, with suspected cancer pathway referral if it suggests bone sarcoma (NICE NG12, updated April 2026). A normal X-ray does not exclude stress fracture, marrow disease or early malignancy — persistent concern needs specialist review or further imaging. Consider myeloma and metastases in older adults</div>
+        <div class="rftile"><b>Malignancy / Paget's disease</b> Not for every unexplained foot pain — consider with persistent unexplained focal bone pain, night pain, swelling or mass, unexplained fracture, constitutional symptoms, abnormal examination, history of malignancy, or raised ALP/other Paget clues. Imaging and referral route depend on age, site and suspicion: plain X-ray is a useful first test; consider a suspected cancer pathway referral if it suggests bone sarcoma (NICE NG12, updated April 2026). A normal X-ray does not exclude stress fracture, marrow disease or early malignancy — persistent concern needs specialist review or further imaging. Consider myeloma and metastases in older adults</div>
       </div>
     </div>
     <div class="why-row">
@@ -570,7 +515,7 @@ body { padding: 0 0 60px; }
         <div>🟦 Toes</div>
         <div><b>Hallux valgus</b> (1st MTP deviation + bunion). <b>Hallux rigidus</b> (1st MTP stiffness/OA). <b>Hammer/claw toes</b> (deformity + dorsal corn). <b>Ingrown toenail</b> (lateral nail fold infection)</div>
         <div>🟪 Diffuse / systemic</div>
-        <div><b>Gout</b> (acute 1st MTP, red, swollen — podagra in 50%). <b>Psoriatic arthritis</b> (dactylitis, nail changes). <b>Reactive arthritis</b> (asymmetric, post-infection). <b>RA</b> (symmetric MTP synovitis). <b>Peripheral neuropathy</b> (burning bilateral, distal, diabetes/alcohol)</div>
+        <div><b>Gout</b> (acute 1st MTP, red, swollen — podagra). <b>Psoriatic arthritis</b> (dactylitis, nail changes). <b>Reactive arthritis</b> (asymmetric, post-infection). <b>RA</b> (symmetric MTP synovitis). <b>Peripheral neuropathy</b> (burning bilateral, distal, diabetes/alcohol)</div>
       </div>
     </div>
     <div class="why-row">
@@ -679,13 +624,13 @@ body { padding: 0 0 60px; }
       <p class="intro">Most foot pain is managed in primary care. Refer early for high-risk diagnoses, failed conservative management, or when specialist intervention is required.</p>
       <div class="kv">
         <div>999 Emergency</div>
-        <div><span class="pill pill-red">999</span> Acute limb ischaemia, open fracture or dislocation with neurovascular compromise, major trauma, necrotising fasciitis with systemic illness, severe sepsis from a foot source, acute compartment syndrome, acute neurological or vascular compromise, complete Achilles rupture with neurovascular compromise</div>
+        <div><span class="pill pill-red">999</span> Acute limb ischaemia, open fracture, dislocation or gross deformity, neurovascular compromise, major trauma, necrotising fasciitis with systemic illness, severe sepsis from a foot source, acute compartment syndrome, acute neurological or vascular compromise, complete Achilles rupture with neurovascular compromise</div>
         <div>Same-day urgent</div>
-        <div><span class="pill pill-red">Same-day</span> Suspected septic arthritis (acutely painful, restricted, swollen joint — fever may be absent) → same-day hospital assessment (ED/acute medical/orthopaedic pathway) and aspiration. Diabetic foot with sepsis, severe ischaemia, gangrene or suspected deep soft-tissue/bone infection → immediate hospital referral; other active diabetic foot problems → multidisciplinary foot service, usually within 1 working day (NICE NG19). Suspected DVT → two-level Wells and local NICE NG158 pathway. Suspected complete Achilles rupture → same-day assessment + immobilisation. Suspected high-risk stress fracture, Lisfranc injury or Charcot foot → same-day hospital/MDT. New inflammatory arthritis with persistent synovitis → urgent rheumatology</div>
+        <div><span class="pill pill-red">Same-day</span> Suspected septic arthritis (acutely painful, restricted, swollen joint — fever may be absent) → same-day hospital assessment (ED/acute medical/orthopaedic pathway) and aspiration. Diabetic foot with sepsis, severe ischaemia, gangrene or suspected deep soft-tissue/bone infection → immediate hospital referral; other active diabetic foot problems → multidisciplinary foot service, usually within 1 working day (NICE NG19). Suspected DVT → two-level Wells (NICE NG158): likely → proximal leg vein ultrasound within 4 hours, or D-dimer + interim anticoagulation + scan within 24 hours. Suspected complete Achilles rupture → same-day assessment + immobilisation. Suspected high-risk stress fracture or Lisfranc injury → same-day orthopaedic/fracture assessment. Suspected Charcot foot → multidisciplinary foot service within 1 working day, non-weight-bearing until assessed (NICE NG19). New inflammatory arthritis with persistent synovitis → urgent rheumatology</div>
         <div>Suspected cancer</div>
-        <div><span class="pill pill-purple">NICE NG12</span> Not for every unexplained foot pain — consider for persistent unexplained focal bone pain, night pain, swelling/mass, unexplained fracture, constitutional symptoms, abnormal examination, history of malignancy or raised ALP; route depends on age, site and suspicion. Unexplained bone swelling or pain → urgent direct-access X-ray (within 2 weeks); a normal X-ray does not exclude early malignancy — persistent concern needs specialist review or further imaging; X-ray suggesting bone sarcoma → suspected cancer pathway referral. Unexplained soft-tissue lump increasing in size → urgent direct-access ultrasound (within 2 weeks); ultrasound suggesting soft tissue sarcoma, or uncertain findings with persisting concern → suspected cancer pathway referral (NICE NG12, updated April 2026)</div>
+        <div><span class="pill pill-purple">NICE NG12</span> Not for every unexplained foot pain — consider for persistent unexplained focal bone pain, night pain, swelling/mass, unexplained fracture, constitutional symptoms, abnormal examination, history of malignancy or raised ALP; route depends on age, site and suspicion. Adults: X-ray suggesting bone sarcoma → consider a suspected cancer pathway referral; a normal X-ray does not exclude early malignancy — persistent concern needs specialist review or further imaging. Children and young people: unexplained bone swelling or pain → consider a very urgent direct-access X-ray (within 48 hours); X-ray suggesting bone sarcoma → consider a very urgent specialist referral (within 48 hours). Adults: unexplained soft-tissue lump increasing in size → consider an urgent direct-access ultrasound (within 2 weeks); ultrasound suggesting soft tissue sarcoma, or uncertain findings with persisting concern → consider a suspected cancer pathway referral. Children and young people: unexplained lump increasing in size → consider a very urgent direct-access ultrasound (within 48 hours) (NICE NG12, updated April 2026)</div>
         <div>Urgent routine (2–4 wks)</div>
-        <div>Lower-risk stress fractures not settling with protected weight-bearing → orthopaedics/MSK (high-risk sites — navicular, Jones, 5th metatarsal — and Lisfranc/Charcot are same-day, above). Acute gout not responding to first-line therapy → rheumatology</div>
+        <div>Lower-risk stress fractures not settling with protected weight-bearing → orthopaedics/MSK (high-risk sites — navicular, Jones, 5th metatarsal — and Lisfranc are same-day; Charcot within 1 working day, above). Acute gout not responding to first-line therapy → rheumatology</div>
         <div>Primary care / rehabilitation</div>
         <div>Typical plantar fasciitis, uncomplicated tendinopathy, stable hallux valgus/rigidus, Morton's neuroma, uncomplicated metatarsalgia, uncomplicated gout after appropriate diagnostic assessment</div>
         <div>Routine orthopaedics / MSK</div>
@@ -727,7 +672,7 @@ body { padding: 0 0 60px; }
       <p style="font-weight:700; font-size:0.9rem; margin: 12px 0 6px; color: var(--treat-h);">① Plantar Fasciitis (most common)</p>
       <div class="ladder">
         <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Load management + analgesia:</b> Education; reduce high-impact activity (not rest). Consider short-term analgesia only where clinically appropriate — simple analgesics are not necessarily effective for chronic plantar fasciitis. Silicone heel cup / supportive cushioned footwear</span></div>
-        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Physiotherapy — stretching programme:</b> Plantar fascia stretch (towel toe-curls) and calf stretches (Achilles/gastrocnemius) 3× daily. Night splint if early morning pain prominent. Progressive exercise programme; refer to physiotherapy or podiatry if symptoms persist</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Physiotherapy — stretching programme:</b> Plantar fascia stretch (towel toe-curls) and calf stretches (Achilles/gastrocnemius) regularly, including before the first steps in the morning. Night splint if early morning pain prominent. Progressive exercise programme; refer to physiotherapy or podiatry if symptoms persist</span></div>
         <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Orthotics &amp; podiatry:</b> Custom semi-rigid orthotics for pronation/pes planus. Podiatry referral for taping, assessment. Consider if failed step 2 at 6 weeks</span></div>
         <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Corticosteroid injection</b> (persistent symptoms despite conservative care; specialist-led or ultrasound-guided preferred): do not inject routinely — confirm the diagnosis and consider alternative causes of heel pain first. Discuss uncertain, short-term benefit and risks including plantar fascia rupture and fat-pad atrophy</span></div>
         <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Specialist referral</b> at 6 months if failed all above: after discussion of uncertain or short-term benefit and treatment risks, extracorporeal shockwave therapy (ESWT — NICE HTG200, formerly IPG311: no major safety concerns but efficacy evidence inconsistent — special arrangements for consent/audit), platelet-rich plasma, or surgical plantar fasciotomy (last resort)</span></div>
@@ -750,7 +695,7 @@ body { padding: 0 0 60px; }
         <div class="b-card">
           <div class="b-cond">Option — short oral course</div>
           <div class="b-drug">Prednisolone <span class="pill pill-teal">Oral steroid</span></div>
-          <div class="b-note">25–35 mg OD for 5 days, then stop (no taper needed for short course). Check HbA1c / blood glucose if diabetic</div>
+          <div class="b-note">30–35 mg once daily for 3–5 days, then stop (no taper needed for short course). Check HbA1c / blood glucose if diabetic</div>
         </div>
       </div>
       <div class="kv" style="margin-top:10px;">
@@ -810,7 +755,7 @@ body { padding: 0 0 60px; }
         <div class="lstile"><b>Stretching programme — calf &amp; plantar fascia</b> Towel curls, standing calf stretch (gastrocnemius and soleus — separate stretches), stair stretches. Regularly, including before first steps in the morning, as part of a progressive exercise programme</div>
         <div class="lstile"><b>Activity modification — not rest</b> Complete rest is harmful for tendinopathies and plantar fasciitis. Replace high-impact (running, jumping) with low-impact (swimming, cycling) during recovery. Return to running gradually with graded activity, avoiding sudden increases in training load</div>
         <div class="lstile"><b>Dietary modification — gout</b> Focus on weight, alcohol reduction, sugar-sweetened drinks, cardiovascular risk and adherence to urate-lowering therapy. Avoid crash dieting. Dietary changes alone do not replace treat-to-target therapy</div>
-        <div class="lstile"><b>Footwear orthotics &amp; self-management</b> Off-the-shelf silicone heel cups (plantar fasciitis) £5–15 — recommend purchasing immediately. Metatarsal domes for metatarsalgia — position just proximal to MTP heads. Toe spacers for hallux valgus prevention. Custom orthotics via podiatry if significant biomechanical deformity</div>
+        <div class="lstile"><b>Footwear orthotics &amp; self-management</b> Off-the-shelf silicone heel cups (plantar fasciitis) can be bought over the counter. Metatarsal domes for metatarsalgia — position just proximal to MTP heads. Toe spacers for hallux valgus prevention. Custom orthotics via podiatry if significant biomechanical deformity</div>
         <div class="lstile"><b>Smoking cessation</b> Smoking reduces peripheral perfusion and impairs tendon healing. Relevant for all tendinopathies and critical for diabetic foot disease (smoking increases amputation risk in diabetes). Refer to NHS Stop Smoking services; offer NRT/varenicline/cytisinicline (NICE NG209, updated 2025)</div>
         <div class="lstile"><b>Diabetic foot self-care</b> Daily foot inspection (mirror if needed). Moisturise (avoid between toes). Never walk barefoot. Wear properly fitting shoes and specialist diabetic socks. Attend the annual foot risk assessment (NICE NG19). Report any new blister, crack, swelling, redness, discolouration, break in skin or unexplained foot pain promptly (the same day) for assessment via the local diabetic-foot pathway</div>
       </div>
@@ -851,7 +796,7 @@ body { padding: 0 0 60px; }
         <div>Safety-net → 999</div>
         <div><span class="pill pill-red">999</span> Sudden severe pain with a pale, cold, numb or weak foot, with or without absent pulses (acute ischaemia). Rapidly spreading redness or swelling, severe pain out of proportion, blistering, skin discolouration or numbness + feeling very unwell (necrotising fasciitis). Foot crushing injury / open fracture</div>
         <div>Safety-net → same-day GP</div>
-        <div><span class="pill pill-amber">Same-day</span> Any new ulcer, blister, skin break, infection, swelling, colour change, rest pain or rapidly worsening foot pain in a person with diabetes or known peripheral arterial disease → prompt assessment via the local diabetic-foot/vascular pathway (emergency if sepsis, critical ischaemia, gangrene, suspected deep infection/osteomyelitis or rapidly progressive tissue loss). Acutely painful, swollen, restricted joint, especially if unwell (septic arthritis — fever may be absent) → same-day hospital assessment (A&amp;E)</div>
+        <div><span class="pill pill-amber">Same-day</span> Any new ulcer, blister, skin break, infection, swelling, colour change, rest pain or rapidly worsening foot pain in a person with diabetes or known peripheral arterial disease → same-day assessment: contact the practice or NHS 111 the same day for the local diabetic-foot/vascular pathway (A&amp;E or 999 if sepsis, critical ischaemia, gangrene, suspected deep infection/osteomyelitis or rapidly progressive tissue loss). Acutely painful, swollen, restricted joint, especially if unwell (septic arthritis — fever may be absent) → same-day hospital assessment (A&amp;E)</div>
         <div>Safety-net → routine</div>
         <div>Pain not improving after 4–6 weeks of first-line treatment. New swelling / bony deformity not yet imaged. Spreading rash or nail changes alongside joint pain (psoriatic arthritis). New numbness or tingling in feet</div>
         <div>Patient information</div>

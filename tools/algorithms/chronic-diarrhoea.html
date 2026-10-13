@@ -131,69 +131,15 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — exclude the cancer/IBD red flags, then use FIT, faecal calprotectin and coeliac serology to separate inflammatory, malabsorptive and functional diarrhoea, treat the named cause, refer appropriately and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Chronic diarrhoea (&gt;4 weeks)</span><div class="body">Stool pattern &amp; frequency, blood/mucus, <b>nocturnal</b> symptoms, weight loss, steatorrhoea; travel, drugs (metformin, PPI, laxatives), diet, alcohol, prior surgery. Examine including <b>PR</b>.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — cancer / IBD red flags</span><span class="ttl">Serious pathology?</span><div class="body"><ul>
-      <li><b>Rectal bleeding</b>, iron-deficiency anaemia</li>
-      <li><b>Unexplained weight loss</b>, abdominal or rectal mass</li>
-      <li><b>Nocturnal diarrhoea</b>, systemic upset (suggests organic disease/IBD)</li>
-      <li><b>Persistent change in bowel habit</b> at any age → FIT (NICE NG12); family history of bowel cancer / IBD</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">FIT + suspected cancer pathway</span><div class="body">Suspected colorectal cancer → FIT, then a colorectal suspected cancer pathway referral if ≥10 µg Hb/g (don't wait for FIT for a rectal mass or an unexplained anal mass or ulceration). Suspected acute severe IBD → urgent gastro/admission.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — work up mechanism</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Bloods + stool tests</span><div class="body">FBC, CRP/ESR, <b>coeliac serology (tTG + total IgA, while eating gluten)</b>; U&amp;E, albumin, LFT, TFT only if indicated; FIT per NG12; <b>faecal calprotectin</b> where IBD is the question; targeted stool tests (one sample; C. diff per lab algorithm; parasites only with exposure). Consider HIV per risk.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · which mechanism?</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Inflammatory</div><div class="box ix"><span class="ttl">Calprotectin (18–60y, cancer not suspected)</span><div class="body">Interpret per the <b>local GM pathway</b> — low makes active colonic inflammation less likely (not cancer, coeliac, bile acid or microscopic colitis); raised → repeat or refer by magnitude. Blood/mucus + nocturnal → IBD; watery + drug history → microscopic colitis (colonoscopy + biopsy).</div></div></div>
-      <div class="col"><div class="blabel">Malabsorption</div><div class="box ix"><span class="ttl">Weight loss, steatorrhoea</span><div class="body"><b>Coeliac</b> (+tTG → gastro for OGD/biopsy), <b>pancreatic insufficiency</b> (low faecal elastase), <b>bile-acid malabsorption</b> (post-cholecystectomy/terminal ileal → SeHCAT or validated test via gastroenterology; a monitored trial does not confirm the diagnosis).</div></div></div>
-      <div class="col"><div class="blabel">Functional</div><div class="box ix"><span class="ttl">Normal tests</span><div class="body"><b>IBS-D</b> as a positive NICE diagnosis (recurrent pain + altered habit, no alarms; loose stool without pain = functional diarrhoea); drug-induced; dietary (caffeine, sorbitol, lactose).</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat the cause</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — cause-directed treatment</span><span class="ttl">Treat mechanism, not just symptom</span><div class="body"><ul>
-      <li><b>Coeliac:</b> gastro confirmation then lifelong gluten-free diet + dietitian; replace deficiencies.</li>
-      <li><b>Bile-acid diarrhoea:</b> sequestrant per formulary/specialist (response does not confirm it). <b>Pancreatic insufficiency:</b> PERT titrated per specialist advice.</li>
-      <li><b>IBD / microscopic colitis:</b> specialist-led (mesalazine/budesonide); review NSAID/PPI/SSRI with the patient in microscopic colitis.</li>
-      <li><b>IBS-D:</b> loperamide (start low) only without infective or inflammatory red flags; dietary review (low-FODMAP with dietitian); antispasmodic; consider low-dose TCA (amitriptyline) for persistent symptoms. Review and stop metformin/PPI/laxative triggers.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-purple">Suspected cancer · NICE NG12</span> red flags → FIT, referring on <b>≥10 µg Hb/g</b>, + colorectal pathway; weight loss + diarrhoea ≥60 → consider pancreatic/CT pathway.</li>
-      <li><span class="pill pill-purple">Urgent gastroenterology</span> raised calprotectin per local pathway (suspected IBD), positive coeliac serology, unexplained malabsorption.</li>
-      <li><span class="pill pill-grey">Routine gastro</span> IBS-D refractory to first-line management, suspected bile-acid malabsorption for SeHCAT.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · diet &amp; lifestyle</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; diet</span><span class="ttl">Target the trigger</span><div class="body"><b>Food &amp; symptom diary</b> to find triggers · reduce caffeine, alcohol, fizzy drinks, sorbitol/artificial sweeteners · trial lactose reduction if suggestive · <b>low-FODMAP under a dietitian</b> for IBS-D · maintain hydration · regular meals and stress management (gut–brain axis). Lifelong gluten-free diet for coeliac.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Same-day</b> if dehydration, blood in stool, severe pain, or systemic upset/fever. <b>Return / re-investigate</b> if weight loss, nocturnal symptoms or anaemia develop — don't anchor on IBS. <b>Review:</b> treatment response and repeat calprotectin per local pathway where borderline; no C. diff test of cure; reassess the diagnosis if not improving on first-line therapy.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Calprotectin and coeliac serology do the heavy lifting:</b> they separate inflammatory and malabsorptive causes from IBS — but red flags still go down the cancer pathway, and IBS is a <i>positive</i> diagnosis, never just "all tests normal".</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/chronic-diarrhoea.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/chronic-diarrhoea.html">⬇ Download PDF</button><a class="sum-open" href="one-page/chronic-diarrhoea.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/chronic-diarrhoea.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -211,13 +157,13 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   <div class="node-body">
     <span>Chronic diarrhoea is common; serious causes are uncommon but catastrophic if missed. Screen every new presentation systematically.</span>
     <div class="rfgrid">
-      <div class="rftile"><b>Rectal bleeding with diarrhoea</b> Any age → do not attribute to haemorrhoids. FIT → colorectal suspected cancer pathway referral if ≥10 µg Hb/g (NICE NG12), or urgent assessment if profuse, with haemodynamic compromise or symptomatic anaemia. An anal/rectal mass is referred without waiting for FIT; a low FIT does not exclude IBD, anal pathology or upper-GI bleeding</div>
-      <div class="rftile"><b>Unintentional weight loss ≥5%</b> Over 6 months with chronic diarrhoea → FIT (colorectal suspected cancer pathway referral if ≥10 µg Hb/g); upper GI suspected cancer pathway referral if 55 or over with upper abdominal pain, reflux or dyspepsia. Targeted tests by symptom pattern — do not use CEA or CA-125 as general cancer screens (CA-125 only per the NG12 ovarian pathway at 40+). FIT is triage, not rule-out: a negative or unavailable FIT must not delay referral if concern remains. FIT does not assess upper-GI, pancreatic, ovarian or IBD pathology</div>
+      <div class="rftile"><b>Rectal bleeding with diarrhoea</b> Any age → do not attribute to haemorrhoids. FIT → colorectal suspected cancer pathway referral if ≥10 µg Hb/g (NICE NG12), or same-day assessment if profuse or with symptomatic anaemia (999 if haemodynamically compromised). An anal/rectal mass is referred without waiting for FIT; a low FIT does not exclude IBD, anal pathology or upper-GI bleeding</div>
+      <div class="rftile"><b>Unintentional weight loss ≥5%</b> Over 6 months with chronic diarrhoea → FIT (colorectal suspected cancer pathway referral if ≥10 µg Hb/g); urgent direct-access upper GI endoscopy if 55 or over with upper abdominal pain, reflux or dyspepsia; aged 60 or over with weight loss and diarrhoea → consider urgent direct-access CT for pancreatic cancer (urgent ultrasound if CT unavailable) (NICE NG12). Targeted tests by symptom pattern — do not use CEA or CA-125 as general cancer screens (CA-125 only per the NG12 ovarian pathway at 40+). FIT is triage, not rule-out: a negative or unavailable FIT must not delay referral if concern remains. FIT does not assess upper-GI, pancreatic, ovarian or IBD pathology</div>
       <div class="rftile"><b>Persistent change in bowel habit</b> Looser, more frequent stools at any age → FIT → colorectal suspected cancer pathway referral if ≥10 µg Hb/g (NICE NG12) regardless of other explanation</div>
       <div class="rftile"><b>Iron-deficiency anaemia</b> Any adult with diarrhoea → FIT → colorectal suspected cancer pathway referral if ≥10 µg Hb/g (NICE NG12). Right-sided colon cancer classically presents with IDA + change in bowel habit</div>
       <div class="rftile"><b>Nocturnal diarrhoea</b> An alarm feature that increases the likelihood of organic disease (IBD, microscopic colitis, secretory causes) — do not dismiss as IBS without assessment</div>
       <div class="rftile"><b>Severe dehydration / haemodynamic compromise</b> In acute-on-chronic diarrhoea (e.g. IBD flare, C. diff) → 999 if shocked. Same-day if unable to maintain hydration</div>
-      <div class="rftile"><b>Fever + bloody diarrhoea</b> Systemic sepsis picture with diarrhoea → infectious colitis (Campylobacter, Salmonella, Shigella, <b>E. coli O157</b>), IBD flare, C. difficile. One stool sample for culture/PCR urgently. Same-day if NEWS2 ≥3. <b>In suspected E. coli O157 do not give loperamide or an antibiotic — both increase the risk of haemolytic uraemic syndrome</b></div>
+      <div class="rftile"><b>Fever + bloody diarrhoea</b> Systemic sepsis picture with diarrhoea → infectious colitis (Campylobacter, Salmonella, Shigella, <b>E. coli O157</b>), IBD flare, C. difficile. One stool sample for culture/PCR urgently. Same-day assessment; 999 if signs of sepsis or shock. <b>In suspected E. coli O157 do not give loperamide or an antibiotic — both increase the risk of haemolytic uraemic syndrome</b></div>
       <div class="rftile"><b>Palpable abdominal mass</b> Any new mass with diarrhoea → FIT, then a colorectal suspected cancer pathway referral if ≥10 µg Hb/g (rectal mass: refer without FIT); imaging by site. Also examine for <b>organomegaly</b> and note <b>cachexia</b> — both shift the differential towards malignancy</div>
       <div class="rftile"><b>Recent antibiotics / hospital admission</b> Raises suspicion of C. difficile in new unexplained diarrhoea — send a diarrhoeal stool per the local two-step lab algorithm (do not test formed stool or asymptomatic patients)</div>
       <div class="rftile"><b>Immunocompromised patient</b> HIV, transplant, chemotherapy, biologics — opportunistic infections (CMV colitis, cryptosporidium, Giardia) require urgent specialist input</div>
@@ -226,7 +172,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      Most chronic diarrhoea in primary care is functional, but organic causes are common enough that identifying them is the main task. Colorectal cancer presenting with diarrhoea alone (without bleeding) is frequently right-sided and presents late — IDA may be the only clue. Nocturnal diarrhoea makes organic disease more likely and should not be attributed to IBS without assessment. C. difficile is significantly under-recognised in primary care — rates of community-acquired C. diff have increased since 2010. In immunocompromised patients, any diarrhoea lasting &gt;1 week requires specialist assessment due to the broad range of opportunistic pathogens.
+      Most chronic diarrhoea in primary care is functional, but organic causes are common enough that identifying them is the main task. Colorectal cancer presenting with diarrhoea alone (without bleeding) is frequently right-sided and presents late — IDA may be the only clue. Nocturnal diarrhoea makes organic disease more likely and should not be attributed to IBS without assessment. C. difficile is significantly under-recognised in primary care — rates of community-acquired C. diff have increased since 2010. In immunocompromised patients, persistent diarrhoea requires urgent specialist assessment due to the broad range of opportunistic pathogens.
     </div>
   </div>
 </div>
@@ -275,7 +221,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Mechanism classified</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div>Osmotic</div><div>Diarrhoea stops with fasting. Stool osmolar gap &gt;125 mOsm/kg. Causes: lactose intolerance, coeliac disease, sorbitol, lactulose, magnesium-containing products, malabsorption syndromes. Clue: improves when not eating</div>
+      <div>Osmotic</div><div>Diarrhoea stops with fasting. Causes: lactose intolerance, coeliac disease, sorbitol, lactulose, magnesium-containing products, malabsorption syndromes. Clue: improves when not eating</div>
       <div>Secretory</div><div>Diarrhoea continues with fasting (secretory mechanism independent of food). Large volume, watery. Causes: bile acid malabsorption, VIPoma, carcinoid, microscopic colitis, Giardia, Cryptosporidium, collagenous colitis. Clue: nocturnal, persists despite fasting</div>
       <div>Inflammatory</div><div>Blood + mucus + systemic features (fever, weight loss, CRP elevated). Causes: IBD (Crohn's / UC), infectious colitis, C. difficile, ischaemic colitis, radiation enteritis. Clue: systemic upset, elevated inflammatory markers</div>
       <div>Malabsorptive / fat malabsorption</div><div>Steatorrhoea: fatty, pale, difficult to flush, offensive stools. Causes: coeliac disease, pancreatic exocrine insufficiency (chronic pancreatitis, post-pancreatectomy), small bowel bacterial overgrowth (SIBO), Whipple's disease. Clue: weight loss + steatorrhoea</div>
@@ -338,7 +284,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
       <div>Faecal tests</div><div><span class="pill pill-blue">Faecal calprotectin</span> — where IBD vs functional disease is the question and cancer is not suspected; interpret with the local (GM) pathway and assay cut-offs. Low → active colonic inflammation less likely (not cancer, coeliac, bile acid, pancreatic or microscopic colitis); raised → repeat or refer by magnitude (confounders: infection, NSAIDs, PPIs, cancer, diverticulitis). <span class="pill pill-blue">Targeted stool tests</span> — one sample for culture/PCR when indicated; C. diff per lab algorithm; Giardia/parasites only with travel, exposure, immunosuppression or persistent unexplained diarrhoea</div>
       <div>Faecal elastase</div><div><span class="pill pill-blue">Faecal elastase-1</span> — if steatorrhoea suspected. &lt;200 µg/g may suggest pancreatic exocrine insufficiency — watery stool can give a falsely low result; interpret with symptoms, nutrition and imaging. Order if post-pancreatitis, alcohol history, weight loss + steatorrhoea</div>
       <div>Coeliac disease <span class="pill pill-blue">NG20</span></div><div>Anti-tTG IgA (positive = refer gastroenterology for duodenal biopsy to confirm — do NOT start gluten-free diet before biopsy). Must be eating gluten at time of testing; a negative test does not exclude coeliac disease if gluten was restricted or suspicion remains high. If IgA deficient: use anti-DGP IgG or anti-tTG IgG instead</div>
-      <div>If bile acid malabsorption suspected</div><div>Post-cholecystectomy, post-ileal resection, idiopathic BAM → <span class="pill pill-blue">SeHCAT</span> or a validated alternative via gastroenterology; a monitored empirical trial if testing unavailable (response does not confirm the diagnosis) (nuclear medicine — 75Se retention &lt;10% = BAM). Arrange via gastroenterology</div>
+      <div>If bile acid malabsorption suspected</div><div>Post-cholecystectomy, post-ileal resection, idiopathic BAM → <span class="pill pill-blue">SeHCAT</span> or a validated alternative via gastroenterology; a monitored empirical trial if testing unavailable (response does not confirm the diagnosis). SeHCAT is a nuclear medicine test arranged via gastroenterology</div>
       <div>Second-line (secondary care)</div><div>Colonoscopy + biopsies (IBD, microscopic colitis — invisible to naked eye) · OGD + duodenal biopsy (coeliac, Giardia, Whipple's) · CT abdomen (Crohn's complications, cancer, lymphoma) · Small bowel MRI (Crohn's extent) · Hydrogen breath test (SIBO, lactose intolerance)</div>
       <div>Do NOT order</div><div>Routine CT for all diarrhoea without indication · Breath tests in primary care without specialist input · SeHCAT without gastroenterology referral · Colonoscopy as first-line without red flags / elevated calprotectin</div>
     </div>
@@ -346,7 +292,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <b>Faecal calprotectin</b> is endorsed by NICE (HTG320, formerly DG11) for distinguishing IBD from IBS in adults with diarrhoea. A low result makes active colonic inflammation less likely and can avoid colonoscopy in many, but thresholds are assay- and pathway-dependent. <b>Coeliac disease</b> affects 1% of the UK population — anti-tTG IgA can be falsely negative in IgA deficiency (always check total IgA). The patient must be eating gluten (≥2 slices bread/day for ≥6 weeks) for the test to be valid. <b>Microscopic colitis</b> is the most underdiagnosed cause of chronic watery diarrhoea in women over 50 — the mucosa often looks normal, so colonoscopy with biopsies is needed; calprotectin may be only mildly elevated.
+      <b>Faecal calprotectin</b> is endorsed by NICE (HTG320, formerly DG11) for distinguishing IBD from IBS in adults with diarrhoea. A low result makes active colonic inflammation less likely and can avoid colonoscopy in many, but thresholds are assay- and pathway-dependent. <b>Coeliac disease</b> affects 1% of the UK population — anti-tTG IgA can be falsely negative in IgA deficiency (always check total IgA). The patient must be eating gluten in more than one meal every day for at least 6 weeks before testing (NICE NG20). <b>Microscopic colitis</b> is the most underdiagnosed cause of chronic watery diarrhoea in women over 50 — the mucosa often looks normal, so colonoscopy with biopsies is needed; calprotectin may be only mildly elevated.
     </div>
   </div>
 </div>
@@ -365,8 +311,8 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   <div class="node-body">
     <div class="kv">
       <div><span class="pill pill-red">999</span> Emergency</div><div>Severe dehydration with haemodynamic shock · Profuse bloody diarrhoea with collapse · Toxic megacolon (IBD — distension + fever + peritonism) · Septic shock from enteric source</div>
-      <div><span class="pill pill-red">Same-day</span></div><div>Suspected C. difficile with systemic upset (elderly, post-antibiotic, care home) · Severe IBD flare (≥6 bloody stools/day with fever, tachycardia — Truelove &amp; Witts severe criteria) · Unable to maintain oral hydration</div>
-      <div><span class="pill pill-purple">Suspected cancer</span> Colorectal</div><div>NICE NG12, offer FIT for: change in bowel habit or IDA at any age · rectal bleeding with abdominal pain or weight loss under 50 · rectal bleeding, abdominal pain or weight loss at 50+ · abdominal mass → <b>referral if FIT ≥10 µg Hb/g</b> · rectal mass → referral without FIT</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suspected C. difficile with systemic upset (elderly, post-antibiotic, care home) · Severe IBD flare (≥6 bloody stools/day plus any one of temperature &gt;37.8°C, pulse &gt;90, Hb &lt;105 g/L or ESR &gt;30 mm/h — Truelove &amp; Witts severe criteria) · Unable to maintain oral hydration</div>
+      <div><span class="pill pill-purple">Suspected cancer</span> Colorectal</div><div>NICE NG12, offer FIT for: change in bowel habit or IDA at any age · rectal bleeding with abdominal pain or weight loss under 50 · rectal bleeding, abdominal pain or weight loss at 50+ · abdominal mass → <b>referral if FIT ≥10 µg Hb/g</b> · rectal mass → referral without FIT · Pancreatic: aged 60+ with weight loss and diarrhoea → consider urgent direct-access CT (urgent ultrasound if CT unavailable)</div>
       <div>Urgent gastroenterology</div><div>Raised faecal calprotectin per the local GM pathway · Positive coeliac serology (for duodenal biopsy) · Suspected new IBD without red flag urgency · Steatorrhoea / malabsorption · Suspected microscopic colitis (watery diarrhoea, female, age &gt;50, on NSAIDs / PPIs)</div>
       <div>Routine gastroenterology</div><div>IBS-D not responding to 6-month primary care treatment · Suspected bile acid malabsorption (for SeHCAT) · SIBO investigation · Positive Giardia / unusual parasites requiring specialist treatment oversight · Unexplained diarrhoea with normal standard workup</div>
       <div>Other specialties</div><div>Dietitian: coeliac (gluten-free diet) · malabsorption · IBS-D (low-FODMAP) · Endocrinology: carcinoid / VIPoma (rare — diarrhoea + flushing + tachycardia) · Infectious diseases: immunocompromised with diarrhoea</div>

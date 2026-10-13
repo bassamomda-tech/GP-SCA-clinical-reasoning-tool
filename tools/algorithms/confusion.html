@@ -97,68 +97,14 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <strong>Scope:</strong> adults presenting with new or worsening confusion, altered behaviour, reduced attention or fluctuating alertness. This is an assessment and referral guide, not a substitute for local emergency, antimicrobial, safeguarding or medicines protocols.<br>
   <strong>Overall assessment:</strong> new confusion developing over hours to days should be treated as delirium until proven otherwise. Delirium is an acute disturbance of attention and awareness, usually fluctuating, and often has more than one precipitant. A normal cognitive score does not exclude delirium if the collateral history is incomplete. Always establish: (1) Is the patient immediately unsafe or physiologically unstable? (2) Is the change acute, chronic or acute-on-chronic? (3) What is the patient's usual cognitive and functional baseline? (4) What reversible cause or combination of causes is present? (5) Can the person be safely managed at home with reliable supervision and review? A collateral history from a relative, carer or care-home staff member is essential.
 </div>
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — check safety first (999 or same-day hospital), confirm probable delirium with a collateral history and the 4AT, search for the cause with PINCH ME, examine and investigate, decide where the patient can be safely managed, treat the cause with non-drug care for everyone, then follow up and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">New or worsening confusion</span><div class="body"><b>Collateral history is essential</b> — acute, chronic or acute-on-chronic? Usual baseline? Full obs, <b>capillary glucose</b>, AVPU/GCS, urine output, focused neurology and medication review at first contact.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — 999 or same-day hospital?</span><span class="ttl">Emergency features?</span><div class="body"><ul>
-      <li><b>Reduced or deteriorating consciousness</b> (GCS ≤13) · <b>suspected sepsis with any NICE high-risk criterion</b> · severe hypoglycaemia</li>
-      <li><b>Stroke / intracranial haemorrhage</b> · ongoing or recurrent seizure</li>
-      <li><b>Meningitis / encephalitis</b> — fever, headache, neck stiffness, altered consciousness, non-blanching rash</li>
-      <li><b>Opioid toxicity</b> with respiratory depression · severe serotonin toxicity or NMS</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — emergency or same-day</div><div class="box stop"><span class="lbl">Stop · act</span><span class="ttl">999 with pre-alert / same-day hospital</span><div class="body">Do not delay transfer for cognitive testing or tests. Same-day hospital: no treatable cause found, needs IV/monitored treatment, head injury on an anticoagulant or non-aspirin antiplatelet, alcohol withdrawal or Wernicke's, severe agitation, no one to supervise, BP ≥180/120 with new confusion.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — stable</div><div class="box ix"><span class="lbl">Step 2 · Confirm</span><span class="ttl">Probable delirium?</span><div class="body">Collateral history + <b>4AT</b> (≥4 possible delirium). Diagnosis is clinical and needs a change from baseline. Distinguish dementia, depression and psychosis; look for <b>hypoactive</b> delirium.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · find the cause — PINCH ME</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Infective / metabolic</div><div class="box ix"><span class="ttl">Common</span><div class="body">Chest, skin, abdominal infection; UTI only with urinary or systemic features. Hypoxia, glucose, Na, Ca, AKI, dehydration, constipation/retention, pain.</div></div></div>
-      <div class="col"><div class="blabel">Drugs / withdrawal</div><div class="box ix"><span class="ttl">Iatrogenic</span><div class="body">Opioids, anticholinergics, benzodiazepines/Z-drugs, steroids, dopaminergics; alcohol/sedative withdrawal; recent starts, stops &amp; OTC products.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Neurological</div><div class="box ix"><span class="ttl">Don't miss</span><div class="body">Stroke, <b>subdural haematoma</b>, meningitis/encephalitis, non-convulsive seizure, raised ICP, Wernicke's.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · manage</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — treat cause + supportive care</span><span class="ttl">Cause-directed, non-drug first</span><div class="body"><ul>
-      <li><b>Treat the cause:</b> antimicrobials only for suspected or confirmed infection (local formulary), fluids, relieve retention/constipation, reduce contributory medicines, treat hypoxia; withdrawal per local protocol.</li>
-      <li><b>Non-drug care for every patient:</b> reassurance, familiar people, reorientation, glasses/hearing aids, light by day and dark nights, drinks and food, mobilise.</li>
-      <li><b>Distress/risk only:</b> de-escalate first; then short-term haloperidol (usually ≤1 week, NICE) at the <b>lowest dose</b> after ECG/electrolyte checks, with a stop date. Contraindicated in Parkinson's disease and Lewy body dementia — seek specialist advice. No routine benzodiazepines.</li>
-      
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · where to manage</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Home only if all criteria met</span><div class="body"><ul>
-      <li><span class="pill pill-red">Admit</span> any emergency or same-day criterion, cause not clear or not treatable at home, unstable, or no reliable supervision.</li>
-      <li><span class="pill pill-blue">Home</span> clear treatable cause, stable, safe environment, responsible person supervising, same-day results reviewed, daily follow-up; consider urgent community response or virtual ward.</li>
-      <li><span class="pill pill-blue">Capacity &amp; safeguarding</span> decision-specific capacity assessment; safeguarding for neglect, abuse, self-neglect or unsafe home.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · non-drug care</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Non-drug care</span><span class="ttl">For every patient</span><div class="body">Calm explanations, a familiar person present, reorientation, good daytime light and quiet dark nights, working glasses and hearing aids, drinks and food if safe, assisted mobilisation; avoid unnecessary catheters, restraint, room changes, routine hypnotics and sedating antihistamines.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>999</b> if harder to wake, new weakness or speech difficulty, fit, non-blanching rash, breathing difficulty, or head injury on a blood thinner. <b>Same-day</b> if worsening, not eating or drinking, fever, very agitated, or not improving in 2–3 days. <b>Review:</b> ideally daily at home; not improving in 48–72 hours → reassess and consider admission. Repeat cognitive assessment once delirium has fully resolved; memory service if not back to baseline.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>New confusion is delirium until proven otherwise:</b> acute fluctuating inattention demands a hunt for an organic precipitant — never assume it is "just dementia", and remember hypoactive delirium is easily missed. Always check a glucose, apply the NICE sepsis criteria, and review the actual medicines.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/confusion.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/confusion.html">⬇ Download PDF</button><a class="sum-open" href="one-page/confusion.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/confusion.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -174,7 +120,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
       <div class="rftile"><b>Suspected sepsis</b> Any NICE high-risk criterion: objective new altered mental state, RR ≥25/min, HR &gt;130/min, systolic BP ≤90 mmHg, no urine for 18 hours, mottled or ashen appearance, cyanosis or non-blanching petechial/purpuric rash → 999 with pre-alert [1]. A collateral history of new altered behaviour is a moderate-to-high-risk feature — use the complete NICE criteria and clinical judgement</div>
       <div class="rftile"><b>Stroke or intracranial haemorrhage</b> Sudden confusion with facial weakness, limb weakness, dysphasia, visual loss, new ataxia or other focal deficit</div>
       <div class="rftile"><b>Seizure</b> Ongoing seizure, recurrent seizure or prolonged unexplained post-ictal drowsiness</div>
-      <div class="rftile"><b>Meningitis / encephalitis</b> Particularly fever, headache, neck stiffness and altered consciousness/cognition, or a non-blanching petechial/purpuric rash. Antibiotics must not delay transfer; give pre-hospital ceftriaxone or benzylpenicillin only where delay is clinically significant, following the current local protocol [10]</div>
+      <div class="rftile"><b>Meningitis / encephalitis</b> Particularly fever, headache, neck stiffness and altered consciousness/cognition, or a non-blanching petechial/purpuric rash. Antibiotics must not delay transfer. Strongly suspected meningococcal disease (for example a non-blanching rash): give IM or IV ceftriaxone or benzylpenicillin as soon as possible, unless this would delay transfer or there is a severe allergy to it. Other suspected bacterial meningitis: pre-hospital antibiotics only if transfer will be significantly delayed. Follow the current local protocol [10]</div>
       <div class="rftile"><b>Opioid toxicity</b> Suspected opioid toxicity with respiratory depression — pinpoint pupils, slow shallow breathing, drowsiness</div>
       <div class="rftile"><b>Serotonin toxicity / NMS</b> Severe serotonin toxicity (serotonergic drugs + agitation, hyperthermia, tremor, clonus) or neuroleptic malignant syndrome (antipsychotic + rigidity, fever, fluctuating consciousness)</div>
       <div class="rftile"><b>Hypoglycaemia</b> Severe hypoglycaemia not promptly corrected or with ongoing risk of recurrence. Treat low capillary glucose immediately</div>
@@ -373,7 +319,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
     <div class="kv">
       <div>If managed at home</div><div>Review according to severity, ideally daily during the acute phase: repeat observations; repeat 4AT or assess attention and alertness clinically; check intake, urine output and bowel function; confirm the presumed cause is improving; review blood results; confirm the carer can continue to supervise safely</div>
       <div>Not improving</div><div>Deteriorating or not beginning to improve within 48–72 hours → reassess the diagnosis, search for a second precipitant and consider admission</div>
-      <div>If an antipsychotic was used</div><div>Review within days; stop as soon as clinically appropriate; confirm deprescribing within 1–2 weeks; document response and adverse effects</div>
+      <div>If an antipsychotic was used</div><div>Review within days; stop as soon as clinically appropriate, usually within 1 week, by the documented stop date; document response and adverse effects</div>
       <div>After recovery</div><div>After delirium has fully resolved — often several weeks later — repeat cognitive and functional assessment. If cognition has not returned to baseline, investigate reversible causes and refer to a memory service or appropriate specialist dementia pathway. NICE advises investigating delirium before diagnosing dementia and treating delirium first when the distinction is unclear [9]</div>
       <div><span class="pill pill-red">999 safety-net</span></div><div>Harder to wake, new weakness or speech difficulty, a fit, a non-blanching rash or breathing difficulty, or a fall with a head injury while taking a blood thinner</div>
       <div><span class="pill pill-amber">Same-day GP</span></div><div>Worsening, stops eating or drinking, develops a fever, becomes very agitated, or not beginning to improve within two or three days</div>

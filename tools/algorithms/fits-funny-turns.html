@@ -119,69 +119,14 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
     <small>Covers seizure, syncope, TIA, hypoglycaemia, cardiac arrhythmia, and psychogenic causes</small>
   </div>
 </div>
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — the witness account is the key investigation; separate epileptic seizure, syncope and non-epileptic events, exclude status &amp; cardiac causes, investigate (ECG mandatory), then manage, refer to the right clinic and give explicit DVLA/safety advice.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Fits / funny turns (transient LoC)</span><div class="body">Detailed <b>before / during / after</b> history + <b>witness account</b>. Triggers, prodrome, posture, movements, tongue-biting (lateral), incontinence, colour, duration, recovery time. <b>12-lead ECG in everyone.</b></div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — status &amp; dangerous causes</span><span class="ttl">Ongoing event or sinister features?</span><div class="body"><ul>
-      <li><b>Status epilepticus</b> — seizure &gt;5 min or repeated without recovery → 999</li>
-      <li><b>Cardiac red flags (TLoC)</b> — exertional/supine onset, no prodrome, palpitations, FH sudden death, abnormal ECG</li>
-      <li><b>New focal neurology, head injury, or anticoagulated</b></li>
-      <li><b>Pregnancy</b> (eclampsia), meningism, or first seizure with fever</li>
-      <li><b>Incomplete recovery</b> / persistent altered consciousness, injury needing treatment, severe persistent headache, significant metabolic disturbance</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · admit</span><span class="ttl">999 / emergency</span><div class="body">Status epilepticus → 999; benzodiazepine per individual emergency plan/local protocol + admit. <b>Cardiac-syncope red flags → same-day cardiology</b> (arrhythmia, structural). Focal neurology/head injury → urgent assessment.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — resolved</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">ECG + bloods + collateral</span><div class="body"><b>12-lead ECG</b> (abnormal/suspicious → specialist interpretation), lying/standing BP, capillary glucose; targeted bloods (U&amp;E, calcium, magnesium, FBC, pregnancy test) guided by context. Consider EEG only per local first-seizure pathway — never to exclude epilepsy; don't delay referral.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · seizure vs syncope vs NEAD</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Epileptic seizure</div><div class="box ix"><span class="ttl">First-fit clinic</span><div class="body">Supportive (not diagnostic alone): aura, automatisms, <b>lateral tongue-bite</b>, head-turning, prolonged <b>post-ictal confusion</b> → urgent first-seizure specialist (≤2 weeks).</div></div></div>
-      <div class="col"><div class="blabel">Syncope</div><div class="box ix"><span class="ttl">Cardiovascular</span><div class="body">Prodrome (light-headed, sweaty, tunnel vision), upright trigger, <b>rapid recovery</b>; brief myoclonic jerks can occur. Vasovagal / orthostatic / cardiac — exclude cardiac.</div></div></div>
-      <div class="col"><div class="blabel">Non-epileptic / other</div><div class="box ix"><span class="ttl">Functional / metabolic</span><div class="body">Functional/dissociative seizures (PNES — specialist diagnosis), <b>hypoglycaemia</b>, panic/hyperventilation, cataplexy.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · manage by diagnosis</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — manage by cause</span><span class="ttl">Refer correctly, advise clearly</span><div class="body"><ul>
-      <li><b>Suspected first seizure:</b> refer to first-seizure clinic to be seen <b>within 2 weeks</b>; <b>do not start anti-epileptic drugs in primary care</b> — that is a specialist decision after diagnosis.</li>
-      <li><b>Vasovagal syncope:</b> after excluding high-risk disease, reassure, explain triggers + counter-pressure manoeuvres, appropriate hydration; document the specific DVLA syncope category.</li>
-      <li><b>Orthostatic:</b> individualised review of causative drugs and comorbidities, hydration and gradual postural change where safe; specialist if persistent/autonomic failure; cardiac syncope → cardiology.</li>
-      <li><b>Functional/dissociative seizures:</b> once specialist-diagnosed — sensitive explanation, psychology/neuropsychiatry; treat hypoglycaemia/panic appropriately.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">999 / ED</span> status epilepticus, incomplete recovery, new focal deficit, injury, meningism/fever, eclampsia, significant metabolic disturbance, high-risk cardiac presentation.</li>
-      <li><span class="pill pill-red">First-seizure clinic (≤2 weeks)</span> any suspected first seizure.</li>
-      <li><span class="pill pill-amber">Cardiology</span> suspected cardiac syncope (abnormal ECG, exertional, supine, sudden without prodrome, structural heart disease, FH sudden death). <span class="pill pill-blue">Neurology / epilepsy</span> recurrent or diagnostic uncertainty. <span class="pill pill-grey">Psychology</span> non-epileptic attacks.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · safety advice &amp; lifestyle</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Safety advice &amp; lifestyle</span><span class="ttl">Risk reduction while awaiting diagnosis</span><div class="body"><b>Personal-safety advice for a suspected seizure:</b> shower rather than bath, avoid swimming alone, heights, operating dangerous machinery, and locking the bathroom. Sleep, avoiding binge drinking/alcohol withdrawal and individual seizure triggers; occupational risk assessment. Optimise BP and hydration for syncope. <b>Address the cause's modifiable factors.</b></div></div>
-    <div class="arrow"><span class="tag">Step 9 · safety-net &amp; DVLA</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net, follow-up &amp; DVLA</span><span class="ttl">When to come back · driving rules</span><div class="body"><b>999</b> if a further seizure lasts &gt;5 min, repeated seizures, injury, or no recovery. <b>DVLA (must advise &amp; document):</b> first unprovoked/single seizure — <b>stop driving and contact DVLA</b> (Group 1: normally 6 months, 12 months if an underlying factor increases recurrence risk; Group 2: normally 5 years with additional requirements; established epilepsy: Group 1 generally 12 months seizure-free). Syncope rules depend on the category — check current DVLA guidance. The patient must inform DVLA — record that you advised them.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution crit">⚠️ <b>The witness is your best investigation</b> — and every patient needs explicit driving (DVLA) and personal-safety advice after a first event, regardless of cause. Never start anti-epileptic drugs in primary care, and never miss a cardiac cause of "collapse" (do the ECG).</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/fits-funny-turns.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/fits-funny-turns.html">⬇ Download PDF</button><a class="sum-open" href="one-page/fits-funny-turns.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/fits-funny-turns.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -196,13 +141,13 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
     <div class="rfgrid">
       <div class="rftile"><b>Status epilepticus (seizure &gt;5 min)</b> Ongoing convulsion, post-ictal coma not resolving → <span class="pill pill-red">999</span> Life-threatening — buccal midazolam or IV lorazepam only per individual emergency plan/local protocol and training</div>
       <div class="rftile"><b>First seizure with focal deficit or new headache</b> Todd's paresis, persistent confusion, meningism → <span class="pill pill-red">999</span> Exclude intracranial lesion, encephalitis, SAH</div>
-      <div class="rftile"><b>Loss of consciousness + chest pain / palpitations</b> Structural heart disease, exertional syncope → <span class="pill pill-red">Same-day</span> Cardiac arrhythmia / Stokes-Adams / long QT</div>
+      <div class="rftile"><b>Loss of consciousness + chest pain / palpitations</b> Structural heart disease, exertional syncope → <span class="pill pill-red">Same-day</span> Cardiac arrhythmia / Stokes-Adams / long QT. Chest pain still present, or haemodynamically unstable → 999</div>
       <div class="rftile"><b>Syncope in young patient with family history sudden death</b> Long QT, HOCM, Brugada, WPW → <span class="pill pill-red">Same-day</span> ECG essential — ambulatory monitoring matched to episode frequency</div>
       <div class="rftile"><b>High-risk syncope features</b> Syncope while supine or during swimming, sudden unexplained death or inherited arrhythmia in a first-degree relative, known structural heart disease, severe anaemia or haemorrhage, recurrent unexplained episodes without prodrome → <span class="pill pill-red">Same-day</span> Urgent cardiology / acute assessment</div>
-      <div class="rftile"><b>Focal neurological symptoms &gt;24h post-event</b> Arm weakness, speech difficulty, visual loss → <span class="pill pill-red">Same-day</span> Suspect TIA/stroke — urgent neurovascular assessment. Transient loss of consciousness is not a typical TIA feature</div>
+      <div class="rftile"><b>New focal neurological symptoms after the event</b> Arm weakness, speech difficulty, visual loss → <span class="pill pill-red">999</span> Still present: suspect stroke — 999. Fully resolved: suspect TIA — aspirin 300 mg unless contraindicated and specialist assessment within 24 hours via the local TIA pathway (NICE NG128). Transient loss of consciousness is not a typical TIA feature</div>
       <div class="rftile"><b>Recurrent falls in elderly + loss of consciousness</b> Carotid sinus hypersensitivity, heart block → <span class="pill pill-red">Same-day</span> ECG, lying/standing BP, cardiology</div>
       <div class="rftile"><b>Seizure in known diabetic — severe hypoglycaemia</b> Check capillary glucose immediately. Conscious and able to swallow: treat promptly with fast-acting carbohydrate per local diabetes protocol (treat at &lt;4.0 mmol/L if diabetes-treated). Unconscious or unable to swallow: no oral treatment — <span class="pill pill-red">999</span> and glucagon or IV glucose if trained and appropriate. Review the diabetes regimen after any severe or recurrent episode</div>
-      <div class="rftile"><b>Seizure in pregnancy ≥20 weeks</b> Hypertension, proteinuria, headache → <span class="pill pill-red">999</span> Eclampsia — call obstetric emergency team</div>
+      <div class="rftile"><b>Seizure in pregnancy or postpartum</b> Hypertension, proteinuria, headache → <span class="pill pill-red">999</span> Presume eclampsia until excluded, particularly from 20 weeks or postpartum — call obstetric emergency team</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
@@ -229,7 +174,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer"><p>Lateral tongue biting is strongly supportive of epileptic seizure, and prolonged post-ictal confusion is also supportive — but no single feature is diagnostic in isolation. The Edmonton Syncope Score and LOSS Score help risk-stratify cardiac vs non-cardiac syncope. DVLA notification is a legal requirement — failure to advise patients about driving restrictions after first seizure is a significant medico-legal risk.</p></div>
+    <div class="why-drawer"><p>Lateral tongue biting is strongly supportive of epileptic seizure, and prolonged post-ictal confusion is also supportive — but no single feature is diagnostic in isolation. Syncope risk scores (such as the Canadian Syncope Risk Score) were developed for emergency departments; in primary care, use the red-flag features (NICE CG109). DVLA notification is a legal requirement — failure to advise patients about driving restrictions after first seizure is a significant medico-legal risk.</p></div>
   </div>
 </div>
 <div class="connector"></div>
@@ -379,7 +324,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div class="lstile"><b>Vasovagal triggers</b> Avoid prolonged standing, hot environments, dehydration. Encourage appropriate hydration and gradual postural change where safe. Increase salt only after assessing blood pressure, renal function and cardiac status (caution in hypertension, heart failure, CKD, liver disease). Compression stockings.</div>
       <div class="lstile"><b>Driving & work</b> DVLA rules apply — document advice. Some occupations prohibited during driving restriction (train driver, pilot, certain machinery). Appropriate occupational risk assessment / occupational health review if relevant.</div>
       <div class="lstile"><b>SUDEP awareness</b> Sudden Unexpected Death in Epilepsy — risk varies substantially with seizure type, frequency, nocturnal seizures and treatment adherence. Good seizure control and adherence reduce risk; nocturnal supervision may be discussed but does not eliminate risk. Refer to epilepsy.org.uk for resources.</div>
-      <div class="lstile"><b>Medication adherence</b> Never stop AEDs suddenly — withdrawal seizure risk. If dose missed: take as soon as remembered. Interactions: contraceptive pill (enzyme-inducing AEDs reduce efficacy — use additional contraception).</div>
+      <div class="lstile"><b>Medication adherence</b> Never stop AEDs suddenly — withdrawal seizure risk. If dose missed: take as soon as remembered. Interactions: enzyme-inducing AEDs reduce the effectiveness of combined hormonal contraception, the implant and the progestogen-only pill — advise a method that is unaffected (progestogen-only injection, LNG-IUS or copper IUD; FSRH).</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
@@ -395,12 +340,12 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   </div>
   <div class="node-body">
     <div class="kv">
-      <div>Post-first episode</div><div>Review within 1 week. Confirm referral received. Check DVLA advice documented and written seizure first-aid and safety advice given. Assess for further episodes. Review any medication changes. Ensure not driving</div>
-      <div>Epilepsy established</div><div>GP review 3-monthly while establishing control. Annual epilepsy review once stable. Seizure diary review. Drug levels only where clinically indicated (not annually for all) — interpret with clinical response, adherence, pregnancy, toxicity, interacting medicines and formulation changes. AED side effect monitoring</div>
+      <div>Post-first episode</div><div>Review soon after the event: confirm the referral was received and the specialist appointment is within 2 weeks. Check DVLA advice documented and written seizure first-aid and safety advice given. Assess for further episodes. Review any medication changes. Ensure not driving</div>
+      <div>Epilepsy established</div><div>Specialist-led review while establishing control. At least annual structured epilepsy review once stable. Seizure diary review. Drug levels only where clinically indicated (not annually for all) — interpret with clinical response, adherence, pregnancy, toxicity, interacting medicines and formulation changes. AED side effect monitoring</div>
       <div>AED monitoring</div><div>Valproate: baseline and clinically indicated FBC/LFTs; monitor symptoms and adverse effects — ammonia only if unexplained reduced consciousness, vomiting, ataxia or encephalopathy. Carbamazepine: FBC, LFTs and sodium per initiation and local monitoring protocol; alert for rash, marrow suppression, hyponatraemia. Lamotrigine: urgent review of any new rash, mucosal involvement, fever or systemic symptoms. Levetiracetam: mood, irritability, aggression, suicidality. Phenytoin: levels only where clinically indicated; monitor toxicity, interactions, gingival disease</div>
       <div>Vasovagal</div><div>Review 4–6 weeks. Confirm trigger avoidance working. No further investigation if typical recurrent vasovagal. Consider tilt-table test referral if refractory</div>
-      <div><span class="pill pill-red">Safety-net 999</span></div><div>Any seizure lasting &gt;5 minutes, cluster of seizures without recovery, new focal deficit after seizure, loss of consciousness with cardiac symptoms, suspected eclampsia in pregnancy</div>
-      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Breakthrough seizure in established epileptic (may indicate infection, missed doses, drug interaction, non-compliance), exertional syncope, new neurological symptoms</div>
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Any seizure lasting &gt;5 minutes, cluster of seizures without recovery, not regaining full consciousness, difficulty breathing or an injury needing treatment after a seizure, new focal deficit after seizure, loss of consciousness with cardiac symptoms, any seizure in pregnancy or after recent birth</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Breakthrough seizure in established epileptic (may indicate infection, missed doses, drug interaction, non-compliance), exertional syncope, new neurological symptoms that have fully resolved (still present → 999)</div>
       <div>Pregnancy planning (epilepsy)</div><div>Pre-conception counselling and folic acid 5 mg OD (not 400 mcg), coordinated between specialist and GP. AED review with neurology. Valproate: MHRA pregnancy-prevention safeguards; never stop abruptly. Topiramate: pregnancy-prevention restrictions. Register on Epilepsy and Pregnancy Register (UKEPPR)</div>
       <div>DVLA driving review</div><div>Relicensing follows the current DVLA criteria (e.g. Group 1 generally 12 months seizure-free for epilepsy) — not necessarily a formal DVLA assessment if the criteria are met. Patients inform DVLA directly — GP documents advice and supports with factual medical information on request</div>
     </div>

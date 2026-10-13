@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fits and funny turns — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/fits-funny-turns.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/fits-funny-turns.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../fits-funny-turns.html">← Full fits and funny turns algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Fits and funny turns (transient loss of consciousness)</h1>
+      <div class="scope"><b>For:</b> adults with a first or recurrent fit, faint, blackout or funny turn, face to face or remote. <b>Not for:</b> children (use paediatric pathways). Known epilepsy: see the epilepsy protocol; a recovered TIA: see the TIA algorithm.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG217</span><span>CG109</span><span>NG128</span><span>SIGN 143</span><span>DVLA</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> witness account (phone them; ask for video) and a 12-lead ECG in everyone. Cardiac syncope kills; no single feature or EEG diagnoses or excludes epilepsy.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — call 999 now <small>— before any history</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Seizure lasting ≥5 minutes, or repeated seizures without recovery</b> (status epilepticus) → <span class="when w999">999</span></li>
+          <li><b>Not fully recovered:</b> persistent altered consciousness, new focal deficit, meningism or fever, severe persistent headache, injury needing treatment, significant metabolic disturbance → <span class="when w999">999 / ED</span></li>
+          <li><b>Any seizure in pregnancy or postpartum</b> (presume eclampsia) → <span class="when w999">999</span> + obstetric emergency team. <b>Cardiac syncope</b> with haemodynamic instability, chest pain still present, or exertional syncope with structural heart disease → <span class="when w999">999</span></li>
+          <li><b>While waiting:</b> time it, protect the head, recovery position, do not restrain, nothing in the mouth. Buccal midazolam (or rectal diazepam) only per the individual emergency plan or local protocol and training. Check capillary glucose: unable to swallow → no oral treatment; glucagon or IV glucose if trained.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage <small>— recovery status after the event</small></h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Situation</th><th>Action</th></tr>
+            <tr><td>Ongoing or not recovered</td><td>Block 0 → <span class="when w999">999</span></td></tr>
+            <tr><td>First seizure + injury or concern</td><td><span class="when wsd">Same-day</span> ED / acute medicine</td></tr>
+            <tr><td>First seizure, recovered</td><td>Normal → <span class="when wurg">≤2 weeks</span> specialist, not automatically by ambulance</td></tr>
+            <tr><td>Syncope, high-risk feature</td><td><span class="when wsd">Same-day</span> cardiology / acute (block 2)</td></tr>
+            <tr><td>Typical vasovagal</td><td>Normal ECG and exam → primary care</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen <small>— one row is enough</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Cardiac syncope:</b> exertional, supine or swimming, no prodrome, palpitations, structural heart disease, abnormal ECG, family sudden death or inherited arrhythmia, severe anaemia or bleeding, recurrent unexplained → <span class="when wsd">Same-day</span> cardiology / acute</li>
+            <li><b>Older, recurrent falls + blackouts</b> (heart block, carotid sinus) → <span class="when wsd">Same-day</span> ECG, lying/standing BP, cardiology</li>
+            <li><b>New focal neurology:</b> still present → <span class="when w999">999</span> (stroke). Fully resolved → aspirin 300 mg unless contraindicated + TIA specialist <span class="when wurg">≤24 h</span>; no ABCD2 (NG128)</li>
+            <li><b>Anticoagulant, significant head injury, immunosuppression, cancer, HIV</b> → <span class="when wsd">Same-day</span> emergency imaging / assessment</li>
+            <li><b>Diabetes on insulin or a sulphonylurea:</b> treat glucose &lt;4.0 mmol/L per local protocol; review the regimen.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess <small>— only once blocks 0–2 are answered</small></h2>
+        <div class="body">
+          <p>☐ Before, during, after: posture, prodrome, trigger, recovery; drugs &nbsp;☐ Lying BP (after 5 min supine) and standing, with symptoms &nbsp;☐ Pulse, temperature, murmur &nbsp;☐ Neurology, pupils, fundi, tongue &nbsp;☐ ECG: abnormal or suspicious → specialist interpretation &nbsp;☐ Bloods by context: U&amp;E, calcium, magnesium, FBC; pregnancy test</p>
+          <p>Not in primary care: carotid sinus massage, prolactin, EEG to exclude epilepsy, starting antiseizure medicines.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify <small>— only if the screen is negative</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Epileptic seizure</b> — lateral tongue bite, confusion &gt;5 min, aura, automatisms, Todd's paresis; supportive, none diagnostic alone → <span class="when wurg">≤2 weeks</span> specialist.</li>
+            <li><b>Vasovagal</b> — upright, hot or emotional trigger, sweaty, greying, pale, recovery &lt;1 min; brief jerks can occur.</li>
+            <li><b>Orthostatic</b> — fall ≥20 systolic or ≥10 diastolic within 3 min of standing; medicines, dehydration, autonomic failure.</li>
+            <li><b>Functional / dissociative seizures</b> — specialist diagnosis (often video-EEG); keep epilepsy, syncope and cardiac causes open → neurology.</li>
+            <li><b>Uncertain</b> — say so. Do not label epilepsy or "just a faint" on one feature; refer to the first-seizure clinic or cardiology.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— only these</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Vasovagal:</b> counterpressure (leg crossing, gripping, squatting), avoid triggers, fluids; salt only after BP, renal and cardiac check.</li>
+            <li><b>Orthostatic:</b> review antihypertensives, diuretics, alpha-blockers first; fludrocortisone is specialist-led.</li>
+            <li><b>Antiseizure medicines:</b> never started in primary care; valproate under 55 is started only after two specialists agree (MHRA).</li>
+            <li><b>Driving:</b> first suspected seizure → stop driving; the patient tells DVLA. Syncope → document the DVLA category. Written first-aid and safety advice (shower, never swim alone, no heights).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer routinely</h2>
+        <div class="body">
+          <ul>
+            <li>Recurrent unexplained syncope → cardiology (ambulatory ECG or loop recorder).</li>
+            <li>Refractory vasovagal → consider tilt-table. Persistent orthostatic symptoms → specialist.</li>
+            <li>Epilepsy confirmed → epilepsy specialist nurse; pre-conception folic acid 5 mg daily; enzyme-inducing medicines → injection, LNG-IUS or copper IUD.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A normal EEG or CT — neither excludes epilepsy.</li>
+          <li>Jerking, incontinence or a tip-of-tongue bite — these occur in syncope.</li>
+          <li>Fast recovery when the onset was exertional, supine or without warning.</li>
+          <li>A young, fit patient — long QT, HOCM and Brugada kill the young.</li>
+          <li>A psychiatric history or dramatic movements.</li>
+          <li>A "faint" with no ECG and no lying/standing BP.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Call 999 if a fit lasts over 5 minutes or fits keep coming, if they don't wake up fully, have trouble breathing or are badly hurt, for new weakness, speech or vision loss, a blackout with chest pain or palpitations, or any fit in pregnancy or after a recent birth.”</span>
+        <b>Same day:</b> <span class="say">“A further fit if you have epilepsy, a blackout on exercise, or new nerve symptoms that have gone — contact us today.”</span></p>
+        <p><b>Until seen:</b> no driving; shower, don't bathe or swim alone. Review soon after the event to confirm the specialist appointment is within 2 weeks.</p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to leave primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>Fully recovered; no block 0–2 row applies</span>
+        <span>Witness account taken; ECG done and normal or sent for interpretation</span>
+        <span>Glucose and lying/standing BP recorded</span>
+        <span>Referral route and review date set</span>
+        <span>Driving advice, safety-net and written first aid given</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../fits-funny-turns.html">Reasoning GP fits and funny turns algorithm</a>, which holds the history, examination, investigations, DVLA detail and epilepsy follow-up. Sources: NICE NG217, CG109, NG128; SIGN 143; DVLA Assessing fitness to drive; MHRA valproate safety material; FSRH. Clinical decision support — follow local emergency and first-seizure pathways and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

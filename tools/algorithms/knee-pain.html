@@ -250,70 +250,15 @@ body { padding: 0 0 60px; }
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — exclude the hot/septic joint and significant trauma (Ottawa rules), diagnose by age and mechanism (ligament/meniscal vs OA vs crystal), treat conservatively, refer the locked knee/instability, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="ttl">Presentation</span><span class="lbl"></span><span class="ttl">Knee pain</span><div class="body">Mechanism (twist, blow, gradual), <b>swelling &amp; its timing</b> (immediate haemarthrosis vs slow effusion), <b>locking / giving way</b>, weight-bearing. Examine effusion, ligaments, menisci, patella, and the hip (referred).</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — septic joint &amp; significant injury</span><span class="ttl">Emergency or serious trauma?</span><div class="body"><ul>
-      <li><b>Septic arthritis</b> — hot, swollen, painful knee with restricted movement (fever and raised CRP/WCC may be absent) → immediate hospital assessment</li>
-      <li><b>Vascular</b> — acute limb ischaemia, knee dislocation with suspected popliteal artery injury, compartment syndrome → 999; suspected DVT → Wells pathway</li>
-      <li><b>Significant trauma</b> — immediate large effusion (haemarthrosis = ACL/fracture), gross instability</li>
-      <li><b>Locked knee</b> — fixed loss of full extension (displaced meniscal tear)</li>
-      <li><b>Extensor-mechanism rupture</b> — can't straight-leg-raise (patellar/quadriceps tendon)</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Emergency / urgent</span><div class="body">Septic arthritis → immediate hospital assessment and aspiration in a sterile setting. Significant trauma → <b>Ottawa Knee Rule</b> decides X-ray need; traumatic haemarthrosis → specialist acute knee pathway. True locked knee / extensor rupture → urgent ortho.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — age + mechanism</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Clinical ± imaging</span><div class="body">Mostly clinical. No routine X-ray for typical OA (image only if atypical or another diagnosis suspected); MRI for suspected significant meniscal/ligament injury (via specialist/acute knee pathway); <b>aspirate + microscopy</b> for an acute hot effusion (crystals vs infection).</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · which diagnosis?</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Younger / sporting</div><div class="box ix"><span class="ttl">Soft-tissue injury</span><div class="body"><b>Ligament</b> (ACL — pop + immediate swelling + instability; MCL), <b>meniscal tear</b> (twist, joint-line pain, locking), <b>patellofemoral pain</b> (anterior, stairs/sitting).</div></div></div>
-      <div class="col"><div class="blabel">Older</div><div class="box ix"><span class="ttl">Osteoarthritis</span><div class="body">Activity-related pain, stiffness, crepitus, bony swelling; commonest cause of chronic knee pain.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">Acute hot joint (non-septic)</div><div class="box ix"><span class="ttl">Crystal</span><div class="body"><b>Gout / pseudogout</b> — aspirate to confirm (and to exclude infection); treat the flare.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat by diagnosis</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — conservative first</span><span class="ttl">RICE, rehab, analgesia</span><div class="body"><ul>
-      <li><b>Soft-tissue injury:</b> POLICE/RICE, analgesia, early <b>physiotherapy</b>; most MCL/meniscal and ACL injuries start with rehab — ACL reconstruction for instability/high-demand.</li>
-      <li><b>Patellofemoral pain:</b> physiotherapy (VMO/glute strengthening), activity modification — responds well to rehab.</li>
-      <li><b>OA:</b> <b>exercise &amp; weight loss are core</b>, topical/oral NSAID (NICE NG226: paracetamol not routinely offered); intra-articular steroid for short-term relief; joint replacement referral if substantial impact and non-surgical management ineffective or unsuitable.</li>
-      <li><b>Crystal:</b> NSAID, colchicine or short oral steroid for the flare, chosen by renal function, comorbidity and interactions; treat-to-target urate-lowering therapy for gout.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">Emergency</span> septic arthritis, locked knee, extensor-mechanism rupture, significant fracture.</li>
-      <li><span class="pill pill-blue">Orthopaedics</span> significant ligament/meniscal injury, instability, end-stage OA for joint replacement.</li>
-      <li><span class="pill pill-grey">Physiotherapy / MSK</span> most soft-tissue pain, patellofemoral pain, early OA.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · rehab &amp; self-care</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; rehabilitation</span><span class="ttl">Core therapy, not optional</span><div class="body"><b>Weight loss</b> (any weight loss can improve pain and function; discuss sensitively) and <b>quadriceps/glute strengthening</b> are first-line for OA and patellofemoral pain · low-impact aerobic activity (cycling, swimming) · graded return to sport · appropriate footwear; walking aids/bracing where helpful · pacing and joint protection.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Same-day</b> if the knee becomes hot, swollen and painful, with or without fever (septic), truly locks, or you can't straight-leg-raise. <b>Review</b> soft-tissue injuries at 4–6 weeks; escalate persistent locking/instability for MRI. Reassess OA management and consider referral when conservative measures are exhausted.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution crit">⚠️ <b>Hot swollen knee = septic until proven otherwise:</b> septic arthritis is a joint-destroying emergency — fever and raised CRP/WCC may be absent, and finding crystals does not exclude coexisting infection. Refer immediately for hospital aspiration; never assume a hot effusion is just gout. And an immediate large effusion after a twisting injury is an ACL tear or fracture until proven otherwise.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/knee-pain.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/knee-pain.html">⬇ Download PDF</button><a class="sum-open" href="one-page/knee-pain.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/knee-pain.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -337,10 +282,10 @@ body { padding: 0 0 60px; }
         <div class="rftile"><b>Compartment syndrome / major trauma</b> Severe pain out of proportion, tense swollen leg after injury, or severe trauma with multiple injuries → 999</div>
         <div class="rftile"><b>Haemarthrosis — acute ligament rupture / fracture</b> Immediate (within about 2h) tense effusion after trauma → ACL rupture, patellar dislocation, fracture or osteochondral injury until proven otherwise → same-day assessment, radiography where indicated (Ottawa Knee Rule) and specialist acute knee pathway; surgery depends on the injury and instability</div>
         <div class="rftile"><b>Deep vein thrombosis</b> Calf and posterior knee pain, swelling, erythema, post-immobility/surgery/travel → same-day two-level Wells pathway (NICE NG158): Wells ≥2 → proximal leg-vein ultrasound within 4 h (if not possible: D-dimer, interim therapeutic anticoagulation and ultrasound within 24 h); Wells ≤1 → D-dimer. Do not diagnose DVT from calf/posterior knee pain alone; consider ruptured Baker's cyst if the DVT pathway is negative</div>
-        <div class="rftile"><b>Bone tumour / malignancy</b> Persistent unexplained bone pain or swelling, rest/night pain, limp, systemic features (weight loss) → X-ray. Adults: suspected cancer pathway referral if X-ray suggests bone sarcoma. Children and young people: very urgent direct-access X-ray, very urgent referral if it suggests sarcoma (NICE NG12, updated April 2026). Age thresholds are not standalone cancer criteria</div>
+        <div class="rftile"><b>Bone tumour / malignancy</b> Persistent unexplained bone pain or swelling, rest/night pain, limp, systemic features (weight loss) → X-ray. Adults: consider a suspected cancer pathway referral if X-ray suggests bone sarcoma. Children and young people: consider a very urgent direct-access X-ray, and a very urgent referral if it suggests sarcoma (NICE NG12, updated April 2026). Age thresholds are not standalone cancer criteria</div>
         <div class="rftile"><b>Necrotising fasciitis / cellulitis with systemic sepsis</b> Rapidly spreading erythema around knee + fever + disproportionate pain + systemically unwell → 999 (NICE NG253)</div>
         <div class="rftile"><b>Locked knee — acute mechanical block</b> True mechanical locking (fixed inability to extend) after trauma → displaced meniscal tear or loose body; same-day orthopaedics — do not force extension. Distinguish from pseudo-locking due to effusion or spasm</div>
-        <div class="rftile"><b>Other same-day assessment</b> New knee effusion without a clear benign explanation; acutely swollen knee on anticoagulants; suspected tibial plateau fracture; sudden severe pain with known malignancy or suspected pathological fracture</div>
+        <div class="rftile"><b>Other same-day assessment</b> New knee effusion without a clear benign explanation; acutely swollen knee on anticoagulants; suspected tibial plateau fracture; sudden severe pain with known malignancy or suspected pathological fracture; cannot straight-leg-raise after injury (suspected quadriceps or patellar tendon rupture) → same-day orthopaedics</div>
       </div>
     </div>
     <div class="why-row">
@@ -390,7 +335,7 @@ body { padding: 0 0 60px; }
     </div>
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-      <div class="why-drawer"><b>Pain location combined with mechanism often suggests the diagnosis before any examination.</b> The "cinema sign" (anterior knee pain after prolonged sitting) is suggestive of patellofemoral pain but not diagnostic alone. True mechanical locking — the patient cannot actively extend the knee, not just stiffness — suggests a displaced meniscal tear or loose body requiring urgent orthopaedic review; distinguish it from pseudo-locking due to effusion or spasm and from OA morning stiffness. Asking about bilateral symmetry and morning stiffness duration takes 20 seconds but reliably separates inflammatory arthritis (needing DMARD therapy) from mechanical causes.</div>
+      <div class="why-drawer"><b>Pain location combined with mechanism often suggests the diagnosis before any examination.</b> The "cinema sign" (anterior knee pain after prolonged sitting) is suggestive of patellofemoral pain but not diagnostic alone. True mechanical locking — the patient cannot actively extend the knee, not just stiffness — suggests a displaced meniscal tear or loose body requiring same-day orthopaedic review; distinguish it from pseudo-locking due to effusion or spasm and from OA morning stiffness. Asking about bilateral symmetry and morning stiffness duration takes 20 seconds but reliably separates inflammatory arthritis (needing DMARD therapy) from mechanical causes.</div>
     </div>
   </div>
 
@@ -531,17 +476,17 @@ body { padding: 0 0 60px; }
         <div>999 Emergency</div>
         <div><span class="pill pill-red">999</span> Acute limb ischaemia (6 Ps). Open fracture / dislocation with neurovascular compromise. Necrotising fasciitis / sepsis with haemodynamic compromise. Suspected popliteal artery injury post knee dislocation. Suspected compartment syndrome. Severe trauma with multiple injuries. Septic arthritis with shock, severe sepsis or rapid deterioration. Do not delay transfer for imaging</div>
         <div>Same-day urgent</div>
-        <div><span class="pill pill-red">Same-day</span> Suspected septic arthritis → orthopaedics/rheumatology for aspiration + IV antibiotics. Include immunosuppressed patients and prosthetic joints. True locked knee (displaced meniscal tear / loose body) → orthopaedics. Acute traumatic haemarthrosis → same-day assessment, radiography where indicated, then specialist acute knee pathway (BOA: assessment within about 2 weeks with MRI access). Suspected tibial plateau fracture → ED / orthopaedics. Suspected DVT → NICE NG158 two-level Wells pathway. New effusion without a clear benign explanation, acutely swollen knee on anticoagulants, or sudden severe pain with malignancy / suspected pathological fracture → same-day assessment</div>
+        <div><span class="pill pill-red">Same-day</span> Suspected septic arthritis → immediate hospital assessment (orthopaedics/rheumatology) for aspiration + IV antibiotics. Include immunosuppressed patients and prosthetic joints. True locked knee (displaced meniscal tear / loose body) → orthopaedics. Cannot straight-leg-raise after injury (suspected quadriceps or patellar tendon rupture) → orthopaedics. Acute traumatic haemarthrosis → same-day assessment, radiography where indicated, then specialist acute knee pathway (BOA: assessment within about 2 weeks with MRI access). Suspected tibial plateau fracture → ED / orthopaedics. Suspected DVT → NICE NG158 two-level Wells pathway. New effusion without a clear benign explanation, acutely swollen knee on anticoagulants, or sudden severe pain with malignancy / suspected pathological fracture → same-day assessment</div>
         <div>Suspected cancer pathway</div>
-        <div><span class="pill pill-purple">Suspected cancer</span> <b>NICE NG12 (updated April 2026):</b> adults — suspected cancer pathway referral if an X-ray suggests the possibility of bone sarcoma; children and young people with unexplained bone swelling or pain → very urgent direct-access X-ray (within 48 hours), and very urgent referral (within 48 hours) if it suggests sarcoma. Adults with an unexplained soft-tissue lump that is increasing in size → urgent direct-access ultrasound (within 2 weeks); suspected cancer pathway referral if ultrasound suggests sarcoma, or findings are uncertain and concern persists. Also X-ray persistent unexplained rest/night pain, bony swelling or limp (clinical practice). Age thresholds should not be used as standalone cancer criteria.</div>
-        <div>Urgent routine (2–4 wks)</div>
+        <div><span class="pill pill-purple">Suspected cancer</span> <b>NICE NG12 (updated April 2026):</b> adults — consider a suspected cancer pathway referral if an X-ray suggests the possibility of bone sarcoma; children and young people with unexplained bone swelling or pain → consider a very urgent direct-access X-ray (within 48 hours), and a very urgent referral (within 48 hours) if it suggests sarcoma. Adults with an unexplained soft-tissue lump that is increasing in size → consider an urgent direct-access ultrasound (within 2 weeks); consider a suspected cancer pathway referral if ultrasound suggests sarcoma, or findings are uncertain and concern persists. Also X-ray persistent unexplained rest/night pain, bony swelling or limp (clinical practice). Age thresholds should not be used as standalone cancer criteria.</div>
+        <div>Urgent (not same-day)</div>
         <div>Suspected persistent synovitis / new inflammatory arthritis (RA/psoriatic/reactive) → rheumatology without waiting for RF, anti-CCP or CRP results; urgent if small joints of hands/feet, multiple joints or prolonged symptoms (NICE NG100; NICE QS33: seen within 3 weeks of referral). PMR suspected → assess for GCA and exclude infection, malignancy, endocrine disease and inflammatory arthritis first; typical PMR may then be treated with prednisolone — do not use steroid response as a diagnostic shortcut. Any visual disturbance, jaw claudication, new temporal headache or scalp tenderness → same-day GCA management and urgent specialist advice. Suspected ACL injury → acute knee pathway for shared decision on rehabilitation vs reconstruction. Tibial plateau fracture confirmed → orthopaedics</div>
         <div>Routine orthopaedics</div>
-        <div>Knee OA: symptoms with substantial impact on pain, function or quality of life, and non-surgical management ineffective or unsuitable — no mandatory waiting period or Oxford Knee Score/KOOS threshold; do not exclude because of age, smoking, comorbidity or obesity (NICE NG226). Meniscal tear with true locking, persistent mechanical symptoms, an unstable or repairable tear, or failed rehabilitation. Recurrent patellofemoral dislocation. Symptomatic loose body. PCL rupture</div>
+        <div>Knee OA: symptoms with substantial impact on pain, function or quality of life, and non-surgical management ineffective or unsuitable — no mandatory waiting period or Oxford Knee Score/KOOS threshold; do not exclude because of age, smoking, comorbidity or obesity (NICE NG226). Meniscal tear with persistent mechanical symptoms (true locking → same-day, above), an unstable or repairable tear, or failed rehabilitation. Recurrent patellofemoral dislocation. Symptomatic loose body. PCL rupture</div>
         <div>Physiotherapy <span class="pill pill-teal">First-line</span></div>
         <div>Knee OA (NICE NG226 — exercise is first-line treatment, not optional). Patellofemoral syndrome. Patellar tendinopathy. ACL rupture in less active patient (rehabilitation first; reconstruction mainly for symptomatic instability). Degenerative meniscal tear without true locking. ITB syndrome. Post-meniscal repair rehabilitation. Self-refer where NHS self-referral available</div>
         <div>Rheumatology</div>
-        <div>New inflammatory arthritis (RA, psoriatic, reactive), recurrent crystal arthropathy with renal impairment, recurrent or diagnostically uncertain CPPD, seronegative arthropathy, PMR, suspected systemic vasculitis</div>
+        <div>New inflammatory arthritis (RA, psoriatic, reactive), recurrent crystal arthropathy with renal impairment, recurrent or diagnostically uncertain CPPD, seronegative arthropathy, atypical PMR, suspected systemic vasculitis</div>
         <div>MSK / Pain clinic</div>
         <div>Chronic knee OA not suitable for surgery. Complex pain with psychological overlay. Failed standard management, requiring multimodal pain approach</div>
         <div>Podiatry</div>
@@ -605,8 +550,8 @@ body { padding: 0 0 60px; }
         </div>
         <div class="b-card">
           <div class="b-cond">Locked knee</div>
-          <div class="b-drug">Clarify true vs pseudo-locking <span class="pill pill-amber">Urgent</span></div>
-          <div class="b-note">True mechanical locking (fixed inability to extend — displaced meniscal tear or loose body) → urgent orthopaedic assessment; do not forcibly extend. Pseudo-locking from effusion or muscle spasm → treat cause</div>
+          <div class="b-drug">Clarify true vs pseudo-locking <span class="pill pill-red">Same-day</span></div>
+          <div class="b-note">True mechanical locking (fixed inability to extend — displaced meniscal tear or loose body) → same-day orthopaedic assessment; do not forcibly extend. Pseudo-locking from effusion or muscle spasm → treat cause</div>
         </div>
       </div>
 
@@ -641,7 +586,7 @@ body { padding: 0 0 60px; }
       </div>
       <div class="kv" style="margin-top:10px;">
         <div>Gout — long-term ULT</div>
-        <div>Discuss ULT with everyone who has had a flare; offer treat-to-target ULT for multiple or troublesome flares, CKD stage 3–5, diuretic therapy, tophi or chronic gouty arthritis. Usually start 2–4 weeks after a flare has settled (can start during a flare if flares are frequent). Start at a low dose and titrate using monthly serum urate to &lt;360 μmol/L, or &lt;300 μmol/L if tophi, chronic gouty arthritis or continuing frequent flares despite &lt;360 (NICE NG219). Consider flare prophylaxis when starting ULT, taking renal function and interactions into account. <b>Pseudogout (CPPD) has no equivalent urate-lowering therapy</b> — manage attacks; refer recurrent or diagnostically uncertain CPPD to rheumatology</div>
+        <div>Discuss ULT with everyone who has had a flare; offer treat-to-target ULT for multiple or troublesome flares, CKD stage 3–5, diuretic therapy, tophi or chronic gouty arthritis. Usually start 2–4 weeks after a flare has settled (can start during a flare if flares are frequent). Start at a low dose and titrate using monthly serum urate to &lt;360 μmol/L, or consider &lt;300 μmol/L if tophi, chronic gouty arthritis or continuing frequent flares despite &lt;360 (NICE NG219). Consider flare prophylaxis when starting ULT, taking renal function and interactions into account. <b>Pseudogout (CPPD) has no equivalent urate-lowering therapy</b> — manage attacks; refer recurrent or diagnostically uncertain CPPD to rheumatology</div>
       </div>
     </div>
     <div class="why-row">
@@ -701,17 +646,17 @@ body { padding: 0 0 60px; }
         <div>4–6 weeks</div>
         <div>OA newly diagnosed: review exercise adherence, assess analgesia adequacy, adjust if needed (step up ladder). Physiotherapy attendance confirmed. Review BMI / weight management progress. Post-MCL sprain: functional assessment, return to activity planning</div>
         <div>3 months</div>
-        <div>OA: reassessment — pain, function and quality of life, weight where relevant (scores may help monitoring but are not referral thresholds). If no improvement on steps 1–3, consider corticosteroid injection or expedite physio. Gout on allopurinol: recheck serum urate, eGFR, LFT — dose-titrate using monthly serum urate if above target (&lt;360 μmol/L, or &lt;300 if tophi, chronic gouty arthritis or continuing frequent flares; NICE NG219)</div>
+        <div>OA: reassessment — pain, function and quality of life, weight where relevant (scores may help monitoring but are not referral thresholds). If no improvement on steps 1–3, consider corticosteroid injection or expedite physio. Gout on allopurinol: recheck serum urate, eGFR, LFT — dose-titrate using monthly serum urate if above target (&lt;360 μmol/L, or consider &lt;300 if tophi, chronic gouty arthritis or continuing frequent flares; NICE NG219)</div>
         <div>6 months</div>
         <div>OA: refer for joint replacement consideration (at any point, no fixed waiting period) if substantial impact on pain, function or quality of life and non-surgical management ineffective or unsuitable. Gout: review — target urate achieved? Consider stopping prophylactic colchicine if &gt;6 months flare-free. Inflammatory arthritis: should be established with rheumatology by now — confirm review ongoing</div>
         <div>Annual review</div>
         <div>Chronic knee OA: annual medication review (NSAID safety — eGFR, BP, GI symptoms), BMI, functional status, exercise engagement. Gout: serum urate annually on allopurinol, eGFR, BP. Inflammatory arthritis: shared care monitoring (FBC, LFT, U&amp;E) if on DMARD</div>
         <div>Safety-net → 999</div>
-        <div><span class="pill pill-red">999</span> Sudden severe knee pain + cold pale leg + absent pulse (acute ischaemia). Rapidly spreading redness + severe pain + feeling very unwell/fever (necrotising fasciitis). Significant trauma with deformed knee, numbness, weakness or cold foot (a pulse may still be present). Severe pain with a tense swollen leg after injury (compartment syndrome)</div>
+        <div><span class="pill pill-red">999</span> Sudden severe knee pain + cold pale leg + absent pulse (acute ischaemia). Rapidly spreading redness + severe pain + feeling very unwell/fever (necrotising fasciitis). Significant trauma with deformed knee, numbness, weakness or cold foot (a pulse may still be present). Severe pain with a tense swollen leg after injury (compartment syndrome). Hot swollen knee with fever and feeling very unwell, faint or confused (septic arthritis with sepsis)</div>
         <div>Safety-net → same-day GP</div>
-        <div><span class="pill pill-amber">Same-day</span> Acute hot, swollen, painful knee, with or without fever (septic arthritis until proven otherwise). Swollen knee while on anticoagulants. Calf or posterior knee swelling (possible DVT). Sudden inability to straighten knee after giving way (acute bucket-handle lock). Knee pain in patient on immunosuppressants — lower threshold for septic arthritis. New severe pain in patient with known joint replacement — prosthetic joint infection</div>
+        <div><span class="pill pill-amber">Same-day</span> Acute hot, swollen, painful knee, with or without fever (septic arthritis until proven otherwise). Swollen knee while on anticoagulants. Calf or posterior knee swelling (possible DVT). Sudden inability to straighten knee after giving way (acute bucket-handle lock). Can't lift the straightened leg after an injury (possible tendon rupture). Knee pain in patient on immunosuppressants — lower threshold for septic arthritis. New pain, swelling, redness or fever in a knee replacement — prosthetic joint infection</div>
         <div>Safety-net → routine</div>
-        <div>Pain not improving at 6 weeks on conservative treatment. New mechanical symptoms (locking, giving way) developing in previously stable knee. Worsening symptoms despite compliance with treatment. New bilateral joint involvement or systemic features (fever, weight loss)</div>
+        <div>Pain not improving at 6 weeks on conservative treatment. New mechanical symptoms (locking, giving way) developing in previously stable knee. Worsening symptoms despite compliance with treatment. New bilateral joint involvement or unexplained weight loss (fever with a painful or swollen knee → same day)</div>
         <div>NSAID monitoring</div>
         <div>If on regular oral NSAIDs: review renal function, BP and GI symptoms after starting and periodically during continued treatment, per local prescribing guidance. Review indication at every consultation — aim to stop or use topical if possible. NSAIDs can raise BP</div>
       </div>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fractures — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/fractures.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/fractures.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../fractures.html">← Full fractures algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Fractures — suspected or confirmed</h1>
+      <div class="scope"><b>For:</b> adults and children with a suspected or confirmed fracture, in primary care. <b>Not for:</b> joint pain without injury (use the <a href="../hip-pain.html">hip</a>, <a href="../knee-pain.html">knee</a> or <a href="../ankle-pain.html">ankle pain</a> algorithms); a limping child without clear injury (<a href="../limping-children.html">limping child</a>); osteoporosis treatment detail (<a href="../../management/osteoporosis.html">osteoporosis protocol</a>).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG38</span><span>NG37</span><span>CG124</span><span>NG259</span><span>BOAST</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> check skin and neurovascular status first, and never let a normal X-ray, a palpable pulse or a patient who walked in overrule high clinical suspicion. Then ask why the bone broke: every fragility fracture needs bone-health follow-up.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — call 999 now <small>— before X-ray or bloods</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Major trauma or uncontrolled bleeding; open fracture with major bleeding, severe contamination, vascular injury, amputation or mangled limb</b> → <span class="when w999">999</span>. ABCDE, control bleeding; cover with saline-soaked sterile gauze + occlusive layer; do not irrigate or probe; splint; check tetanus status.</li>
+          <li><b>Pulseless or ischaemic limb, or suspected compartment syndrome</b> (pain out of proportion, pain on passive stretch, rising analgesic need, tense compartment) → <span class="when w999">999 + pre-alert</span>. Loosen tight dressings; limb at about heart level.</li>
+          <li><b>Suspected spinal fracture</b> with neurological deficit, altered consciousness or high-risk mechanism; <b>pelvic fracture</b> with haemodynamic instability → <span class="when w999">999</span>. Spinal motion restriction per protocol; no routine rigid board or collar.</li>
+          <li><b>Hip fracture in an older or frail person who cannot safely mobilise</b>; <b>pathological fracture</b> with neurological compromise or cord/cauda equina symptoms → <span class="when w999">999</span>. Do not mobilise; no primary-care X-ray first.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage — X-ray? <small>— Ottawa rules (NICE NG38, over 5 years)</small></h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Site</th><th>X-ray if any of</th></tr>
+            <tr><td>Ankle</td><td>Tender posterior edge or tip of a malleolus (distal 6 cm), or cannot take 4 steps both at injury and now</td></tr>
+            <tr><td>Foot</td><td>Tender 5th metatarsal base or navicular, or cannot take 4 steps</td></tr>
+            <tr><td>Knee</td><td>Age ≥55; isolated patellar or fibular-head tenderness; flexion &lt;90°; cannot take 4 steps</td></tr>
+            <tr><td>Do not apply</td><td>Deformity, dislocation, open wound, neurovascular deficit, unreliable examination</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen <small>— one row is enough</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Other open fracture</b> → <span class="when wsd">Same-day trauma transfer</span></li>
+            <li><b>Displaced, unstable or intra-articular; suspected hip (even if X-ray negative), scaphoid or physeal</b> → <span class="when wsd">Same-day A&amp;E / fracture clinic</span></li>
+            <li><b>Altered sensation, weakness, disproportionate pain, rising swelling, or a painful tight cast</b> → <span class="when wsd">Same-day</span></li>
+            <li><b>Child: story absent or inconsistent, non-mobile, multiple or rib fractures, delay</b> → safeguarding lead, <span class="when wsd">Same-day paediatric safeguarding</span>; no skeletal survey from primary care.</li>
+            <li><b>Known or suspected cancer + minimal trauma</b> (pathological) → <span class="when wsd">Same-day orthopaedics</span>; avoid loading.</li>
+            <li><b>Older person, hip pain, cannot weight-bear, little trauma</b> → no weight-bearing, <span class="when wsd">Same-day orthopaedics</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess <small>— once blocks 0–2 are answered</small></h2>
+        <div class="body">
+          <p>☐ Mechanism: high or low energy, delay &nbsp;☐ Pulses, capillary refill, motor, sensory; repeat after splint or cast &nbsp;☐ Skin, wounds &nbsp;☐ Joint above and below &nbsp;☐ Child: tender physis = physeal injury &nbsp;☐ Anticoagulants, steroids, bone risk</p>
+          <p>X-ray AP + lateral; occult scaphoid or hip → MRI (CT if no MRI within 24 h). Not: X-ray before transfer with vascular compromise, deformity or suspected hip fracture.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify <small>— only if the screen is negative</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Ottawa-negative ankle</b> → RICE, analgesia, physiotherapy.</li>
+            <li><b>Stable undisplaced</b> → minor: buddy taping; needs cast, or 5th metatarsal <b>Jones</b> → <span class="when w7">Fracture clinic ≤72 h</span></li>
+            <li><b>Scaphoid</b> — snuffbox or tubercle tenderness, axial thumb pain → immobilise; consider MRI first-line.</li>
+            <li><b>Vertebral compression</b> → analgesia, mobilise; no routine bracing or vertebroplasty.</li>
+            <li><b>Child</b> — torus: often wrist brace; Salter-Harris III–V → paediatric orthopaedics.</li>
+            <li><b>Uncertain</b> — suspicion with normal X-ray: immobilise; MRI or fracture-clinic review.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— doses per BNF and local formulary</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Analgesia:</b> regular paracetamol; short opioid course if severe. NSAID only after risk check; not routinely in older people with hip or vertebral fracture. Hip fracture: no NSAID.</li>
+            <li><b>Splint</b>; neurovascular check before and after. Never "window" a cast in primary care.</li>
+            <li><b>Driving:</b> no fixed DVLA time; only with safe control incl. emergency stop; cast on right foot → driving assessment. Document; fit note if needed.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer routinely <small>— the bone-health step</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Any fragility fracture</b> → Fracture Liaison Service; calcium, vitamin D.</li>
+            <li><b>DXA (NG259)</b> from age 30 after hip or vertebral fragility fracture, a major one in 2 years, or ≥2; else FRAX/NOGG, selective DXA.</li>
+            <li><b>Bone protection</b> by risk, not T-score; alendronate 70 mg weekly. Never stop denosumab unplanned.</li>
+            <li><b>Aged ≥60, unexplained fracture</b> → offer FBC, calcium, ESR/PV, protein electrophoresis + free light chains (NG12); myeloma? → suspected cancer pathway.</li>
+            <li><b>Falls</b> assessment (NG249); physiotherapy, OT.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A palpable pulse — it does not exclude compartment syndrome.</li>
+          <li>A normal X-ray in suspected scaphoid or hip fracture.</li>
+          <li>Walking in — some hip fractures do; shortening may be absent.</li>
+          <li>Ottawa rules with neuropathy, intoxication or presentation &gt;48 h.</li>
+          <li>A negative skeletal survey — it does not exclude abuse.</li>
+          <li>Fixing the fracture but forgetting the bone (no FLS).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">Emergency now</span> <span class="say">“If your fingers or toes go numb, tingly, weak, pale, blue or cold, or the pain is far worse than expected or worse when you move them — go to A&amp;E now or call 999.”</span></p>
+        <p><span class="when wsd">Same day</span> <span class="say">“Pain rising despite painkillers, more swelling or tightness, a smell, discharge, fever, sore skin, or a wet, broken or loose cast — fracture clinic or A&amp;E today. Do not cut the cast yourself.”</span></p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to leave primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>No block 0–2 row; skin and neurovascular status recorded</span>
+        <span>Imaging decided; occult fracture immobilised, followed up</span>
+        <span>Child: story fits development; safeguarding considered</span>
+        <span>Fragility fracture → FLS, DXA and falls actioned</span>
+        <span>Analgesia, cast safety-net, driving advice; follow-up set</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../fractures.html">Reasoning GP fractures algorithm</a>, which holds the classification, examination, specific-fracture management, rehabilitation and evidence. Sources: NICE NG38, NG37, CG124, CG89, NG259 (July 2026), NG12 (updated April 2026), NG249, QS149; NOGG 2024; BOAST open fractures, compartment syndrome and fracture clinic services; MHRA (denosumab); DVLA. Clinical decision support — follow local trauma, safeguarding and fracture liaison pathways and check doses in the current BNF.</div>
+
+</main>
+</body>
+</html>
