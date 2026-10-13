@@ -817,7 +817,7 @@ const RGP_NAV_SECTIONS = [
   {id:'__leaflets', label:'Patient Leaflets',  icon:'📄', path:'tools/leaflets.html',     meta:'UK lead charities · AccuRx copy-link'},
   {id:'__cpd',      label:'CPD',               icon:'🏅', path:'pages/cpd.html',          meta:'Reading credits · question banks · courses'},
   {id:'__audios',   label:'Audios',            icon:'🎧', path:'pages/audios.html',       meta:'AI + human recordings · NHS topic updates'},
-  {id:'__updates',  label:'Updates',           icon:'📰', path:'pages/updates.html',      meta:'Weekly NICE · UKHSA · guideline changes'},
+  {id:'__updates',  label:'Updates & News',    icon:'📰', path:'pages/updates.html',      meta:'NICE first · MHRA · UKHSA · 12-month archive'},
   {id:'__ebm',      label:'EBM',               icon:'📊', path:'pages/ebm.html',          meta:'gpevidence · TheNNT · OpenEvidence'},
   {id:'__tools-basicsci', label:'Basic Science', icon:'🔬', path:'tools/basic-science.html', meta:'Pathophysiology · pharmacodynamics · the “why”'},
   {id:'__resources',label:'Resources',         icon:'🔗', path:'pages/resources.html',    meta:'GP links · referral pathways · community'},
@@ -962,6 +962,7 @@ function renderTopNav(activeId){
     { ic:'🌡️', label:'My Readiness',          meta:'Pass-likelihood · habits · coverage', path:'tools/sca-weakspots.html' },
     { ic:'🩺', label:'The Resit Clinic',      meta:'Failed? Results letter → 8-week fix', path:'tools/sca-resit.html' },
     { ic:'📆', label:'The Daily 10',          meta:'Habit streak · quick daily reps', path:'tools/sca-daily.html' },
+    { id:'__updates', ic:'📰', label:'Updates & News', meta:'NICE first · MHRA · UKHSA · 12-month archive', path:'pages/updates.html' },
   ];
   const scaToolsMega = scaToolsList.map(t => `
     <a class="rgp-mm-tool ${activeId === t.id ? 'is-active' : ''}" href="${PRE}${t.path}">
@@ -1054,7 +1055,7 @@ function renderTopNav(activeId){
     </a>`;
 
   // Clinic Toolkit — single ordered list (clinical tools first, then reference).
-  const TOOLKIT_IDS = ['__tools-scribe','__tools-spine','__tools-decision','__tools-exam','__tools-admin','__tools-calc','__leaflets','__tools-basicsci','__ebm','__resources'];
+  const TOOLKIT_IDS = ['__updates','__tools-scribe','__tools-spine','__tools-decision','__tools-exam','__tools-admin','__tools-calc','__leaflets','__tools-basicsci','__ebm','__resources'];
   const toolkitMap = {};
   RGP_TOOLS.forEach(t => { toolkitMap[t.id] = t; });
   RGP_NAV_SECTIONS.forEach(s => { toolkitMap[s.id] = s; });
