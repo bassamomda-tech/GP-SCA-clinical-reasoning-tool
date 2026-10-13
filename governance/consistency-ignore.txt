@@ -149,3 +149,46 @@ tools/management/varicocele.html | URGENCY | urgent urology/torsion route
 #
 # "Consider" (NG12) for any unexplained vaginal mass; "needs" only for an irregular, friable, fixed or ulcerated lesion. Consistent.
 tools/management/pelvic-organ-prolapse.html | STRENGTH | an irregular, friable, fixed or persistently
+#
+# NG238: "offer" atorvastatin 20 mg at QRISK3 ≥10% (under 85); "consider" it at 85 and over. Different groups.
+tools/management/hypercholesterolaemia.html | STRENGTH | offer atorvastatin 20 mg (aged 85
+#
+# print twin: stem now reads 'needs a suspected cancer pathway referral to be considered (NICE NG12)' — same NG12 'consider' strength; the checker reads 'needs' as firmer (same accepted finding as the page line)
+tools/management/actinic-keratosis-print.html | STRENGTH | raises clinical suspicion of scc
+#
+# Source page has 'folic acid 5 mg daily' in the pre-conception card; the checker's tag-stripper eats it because the preceding '<48 mmol/mol' is read as a tag start. Number is in the source (NG3).
+tools/management/summaries/dka.html | SNAPSHOT | folic acid 5 mg
+#
+# CG109: "refer within 24 hours" for ECG abnormality, heart failure, exertional TLoC, family history, murmur, breathlessness; "consider" the same 24-hour referral for over-65s with no prodrome. Different groups, NICE strength kept on purpose.
+tools/management/driving-diseases.html | STRENGTH | refer within 24 hours for specialist
+# print twin: same deliberate CG109 refer/consider split as the main page
+tools/management/driving-diseases-print.html | STRENGTH | refer within 24 hours for specialist
+#
+# print twin: NG12 adults 'consider' very urgent FBC vs children/young people 'offer' very urgent FBC — both correct per NG12 (same false alarm already accepted for glandular-fever.html)
+tools/management/glandular-fever-print.html | STRENGTH | offer a very urgent fbc (within 48
+#
+# print twin: NG12 non-urgent direct-access OGD for (stable) haematemesis; active bleeding goes same-day/999 on the same page (same false alarm already accepted for gord.html)
+tools/management/gord-print.html | URGENCY | consider non-urgent direct-access
+# print twin: 'urgent' refers to the replaced urgent direct-access endoscopy route, not haematemesis (already accepted for gord.html)
+tools/management/gord-print.html | URGENCY | replacing urgent direct-access endoscopy
+#
+# print twin: NG12 says 'consider' a very urgent FBC for adults and 'offer' for children and young people - the quoted line is the children recommendation, correctly firmer (same accepted finding as the page line)
+tools/management/haematological-cancers-print.html | STRENGTH | offer a very urgent fbc within 48 hours
+#
+# print twin: section subtitle describes what the neck exam finds, not a firmer referral instruction (same false alarm already accepted for the main page)
+tools/management/hypothyroidism-print.html | STRENGTH | finds the neck that needs a suspected
+#
+# print twin of the already-accepted page finding: UKONS red rating = attend now (immediate), not a softer urgency; page line already in consistency-ignore.txt
+tools/management/neutropenic-sepsis-print.html | URGENCY | ukons red rating = attend now
+#
+# NG12 has two separate recommendations: CONSIDER very urgent X-ray (bone sarcoma) and OFFER very urgent FBC (leukaemia, CYP) — different strengths are correct
+tools/management/osgood-schlatter.html | STRENGTH | offer a very urgent full blood count
+#
+# print twin: same accepted false alarm as the page (suspicious-looking lesion -> suspected cancer pathway is clinical judgement; NG12 'consider' applies to an unexplained palpable mass, stated alongside)
+tools/management/pelvic-organ-prolapse-print.html | STRENGTH | fixed or persistently ulcerated lesion
+#
+# print twin: 'urgent presentations' is the overview heading listing categories; torsion itself is immediate ED transfer everywhere (same false alarm already accepted for the page)
+tools/management/undescended-testis-print.html | URGENCY | screen first for the urgent presentation
+#
+# print twin: administrative list of local referral routes to record, not a time-frame instruction; torsion is sent for immediate assessment elsewhere (same line already accepted for the page)
+tools/management/varicocele-print.html | URGENCY | urgent urology/torsion route
