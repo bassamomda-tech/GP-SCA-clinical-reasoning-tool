@@ -245,9 +245,19 @@
 
     var html = '';
 
-    // stem
+    // stem — the protocol's name is the page heading; the teaching line sits under it
+    var mgName = String(data.title||'').replace(/\s+\u2014\s+the complete (prescribing )?guide$/i,'');
+    if(mgName && !document.getElementById('mgNameCss')){
+      var ncss = document.createElement('style'); ncss.id = 'mgNameCss';
+      ncss.textContent = '.mg-stem .mg-stem-name{margin:0 0 5px;font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:32px;line-height:1.08;color:#fff}'+
+        '.mg-stem .mg-stem-name+b{font-size:17px!important;line-height:1.3!important;font-weight:400!important;color:rgba(243,237,224,.92)}'+
+        '@media(max-width:760px){.mg-stem .mg-stem-name{font-size:25px}.mg-stem .mg-stem-name+b{font-size:15px!important}}'+
+        '@media print{.mg-stem .mg-stem-name{font-size:16px;margin:0 0 1px;color:#fff}.mg-stem .mg-stem-name+b{font-size:10px!important}}';
+      document.head.appendChild(ncss);
+    }
     html += '<div class="mg-stem"><div class="mg-stem-ic">'+(data.icon||'🩺')+'</div><div>'+
             '<span class="mg-stem-eyebrow">'+(data.eyebrow||'Protocol · Already diagnosed')+'</span>'+
+            (mgName ? '<h1 class="mg-stem-name">'+mgName+'</h1>' : '')+
             '<b class="mg-stem-title">'+data.stemTitle+'</b>'+
             '<small>'+data.stemSub+'</small></div></div>';
 
@@ -353,7 +363,8 @@
       });
       function setView(v){
         var on = v === 'snap';
-        snapKids.forEach(function(k){ if(k !== snapStem) k.style.display = on ? 'none' : ''; });
+        // every page element except the title, the tabs and the Snapshot itself (incl. Expand all, added later)
+        Array.prototype.slice.call(root.children).forEach(function(k){ if(k !== snapStem && k !== tabs && k !== snap) k.style.display = on ? 'none' : ''; });
         snap.hidden = !on;
         if(on && !frame.getAttribute('src')) frame.setAttribute('src', data.snapshot);
         tabs.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-selected', String(b.getAttribute('data-v') === v)); });

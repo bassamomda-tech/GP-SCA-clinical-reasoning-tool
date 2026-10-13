@@ -10,7 +10,7 @@
     if (document.querySelector('.mg-nav')) return;
 
     var title =
-      (document.querySelector('.mg-stem b') && document.querySelector('.mg-stem b').textContent.trim()) ||
+      (document.querySelector('.mg-stem-name, .mg-stem b') && document.querySelector('.mg-stem-name, .mg-stem b').textContent.trim()) ||
       (document.title || '').replace(/·.*$/, '').replace(/—.*$/, '').trim() ||
       'Management';
 
