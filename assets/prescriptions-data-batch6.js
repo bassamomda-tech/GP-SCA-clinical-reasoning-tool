@@ -28,7 +28,7 @@
       { name: 'Step 3: Stronger opioid (e.g. morphine MR) — caution', dose: 'Lowest dose', freq: 'Per regimen', route: 'PO', days: 'Specialist/structured; review' },
     ],
     altRegimens: [
-      { label: 'Chronic primary pain (NICE NG193)', drugs: 'Do NOT start opioids/NSAIDs/paracetamol/gabapentinoids/benzodiazepines. Offer exercise, psychological therapy (CBT/ACT), acupuncture, or a trial of an antidepressant (e.g. duloxetine/amitriptyline).' },
+      { label: 'Chronic primary pain (NICE NG193)', drugs: 'Do NOT start opioids/NSAIDs/paracetamol/gabapentinoids/benzodiazepines. Offer supervised group exercise; consider ACT or CBT for pain, a single course of acupuncture, or a trial of an antidepressant (e.g. duloxetine/amitriptyline).' },
       { label: 'Neuropathic component', drugs: 'Use the neuropathic-pain pathway (amitriptyline / duloxetine / gabapentin / pregabalin) — switch, don\u2019t stack.' },
       { label: 'Osteoarthritis (NICE NG226)', drugs: 'Exercise + weight loss are core. Topical NSAID first-line for knee (consider for other joints); oral NSAID + PPI (lowest dose, shortest time) if needed. Do NOT routinely offer paracetamol or weak opioids (only infrequent short-term use if other options unsuitable); do NOT offer strong opioids.' },
     ],
@@ -47,7 +47,7 @@
 - Step 1: paracetamol 1 g QDS ± topical NSAID.
 - Step 2: oral NSAID (+PPI if risk) OR codeine 30-60 mg QDS PRN, short-term.
 - Step 3: stronger opioid (lowest dose, structured, review) — caution in chronic pain.
-Chronic PRIMARY pain (NG193): do NOT start opioids/NSAIDs/paracetamol/gabapentinoids; offer exercise, CBT/ACT, acupuncture, or antidepressant trial.
+Chronic PRIMARY pain (NG193): do NOT start opioids/NSAIDs/paracetamol/gabapentinoids; offer supervised group exercise; consider ACT or CBT for pain, acupuncture, or an antidepressant trial.
 Review function at each step; deprescribe if no benefit.`,
     sources: [
       { label: 'NICE NG193 — Chronic pain (primary & secondary)', url: 'https://www.nice.org.uk/guidance/ng193' },

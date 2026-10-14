@@ -75,7 +75,7 @@
       'Provide patient information and coordinate care with rheumatology/ophthalmology/dentistry'],
     referral:[
       'Suspected Sjögren’s (sicca symptoms with positive antibodies or systemic features) → rheumatology',
-      'Persistent parotid/salivary gland swelling, lymphadenopathy, or B symptoms → urgent assessment to exclude lymphoma (NICE NG12 (updated April 2026) — suspected haematological cancer)',
+      'Persistent, unexplained or suspicious salivary gland swelling → local head and neck/ENT pathway (urgent if firm mass, facial weakness, fixation or neck nodes); lymphadenopathy or B symptoms → assess for lymphoma (NICE NG12 (updated April 2026))',
       'Significant dry eye → ophthalmology; systemic organ involvement → relevant specialty',
       'Associated connective-tissue disease → rheumatology'],
     source:'BSR guideline for the management of adults with primary Sjögren’s syndrome (2017)' },

@@ -457,11 +457,11 @@ Eye involvement → same-day ophthalmology (?keratitis).`,
     category: 'ENT & Eyes',
     eyebrow: 'Miconazole gel 1st line; fluconazole if extensive',
     indication: 'White plaques on tongue / palate / buccal mucosa wiping to leave erythema; or angular cheilitis; or denture stomatitis. Risk factors: ICS, antibiotics, dentures, DM, immunosuppression, age.',
-    contraindications: 'Miconazole gel: warfarin (potentiates — INR rise), statins (rhabdomyolysis risk). Fluconazole: warfarin, statins, terfenadine, cisapride.',
+    contraindications: 'Miconazole gel: warfarin (potentiates — INR rise, bleeding; use nystatin instead), statins (rhabdomyolysis risk). Fluconazole: warfarin, statins, terfenadine, cisapride.',
     duration: 'Miconazole until 7 days after symptoms resolve; nystatin 7 days; fluconazole 7 days (up to 14 if severe).',
     drugs: [
       { name:'Miconazole 2% oral gel', dose:'2.5 mL (½ tsp)', freq:'QDS', route:'Topical (held in mouth before swallow)', days:'Continue for 7 days after symptoms resolve' },
-      { name:'OR Nystatin suspension 100,000 units/mL', dose:'1 mL', freq:'QDS', route:'Topical', days:'7 (continue 48 h after lesions resolve)' },
+      { name:'If miconazole unsuitable (e.g. on warfarin): Nystatin suspension 100,000 units/mL', dose:'1 mL', freq:'QDS', route:'Topical', days:'7 (continue 48 h after lesions resolve)' },
     ],
     altRegimens: [
       { label:'Severe / extensive / immunocompromised', drugs:'Fluconazole 50 mg PO OD × 7 days; 100 mg OD for up to 14 days if severe / immunocompromised.' },
@@ -484,8 +484,8 @@ Eye involvement → same-day ophthalmology (?keratitis).`,
       'Dysphagia / odynophagia → ?oesophageal candidiasis → upper GI endoscopy, consider HIV testing.',
     ],
     emisText: `Oral candidiasis (thrush):
-- Miconazole 2% oral gel 2.5 mL (½ tsp) QDS after food, held in mouth; continue for 7 days after symptoms resolve OR
-- Nystatin suspension 1 mL QDS × 7 days (continue 48 h after lesions resolve).
+- Miconazole 2% oral gel 2.5 mL (½ tsp) QDS after food, held in mouth; continue for 7 days after symptoms resolve.
+- If miconazole is unsuitable (e.g. on warfarin): Nystatin suspension 1 mL QDS × 7 days (continue 48 h after lesions resolve).
 Extensive: Fluconazole 50 mg PO OD × 7 days (100 mg OD up to 14 days if severe / immunocompromised).
 CAUTION miconazole: interacts with warfarin (raises INR) + statins.
 Counsel: if ICS — rinse mouth, use spacer. Treat denture stomatitis with hygiene + gel. Investigate cause if recurrent (HbA1c, HIV, bloods).`,

@@ -1454,7 +1454,7 @@
     },
     {
      "dom": "tasks",
-     "fail": "Using the non-neurological regimen (three times a week for 2 weeks, then 3-monthly) despite nerve symptoms.",
+     "fail": "Using the non-neurological regimen (three times a week for 2 weeks, then every 2–3 months) despite nerve symptoms.",
      "why": "BNF: neurological involvement needs alternate-day injections until no further improvement, then 2-monthly.",
      "fix": "Name the intensive regimen and why it applies to her."
     },

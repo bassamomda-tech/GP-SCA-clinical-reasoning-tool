@@ -284,6 +284,44 @@ PX.ready(function(){
   put(urgent); put(tabs); put(snap); put($('.mg-meta', root)); put(prov); put(tl);
 
   /* ---- 4. the step rail replaces layer cards + chip row + Expand all ---- */
+  /* ---- 3b. the "3-minute pathway" step becomes a one-line Route under the 30-second answer (owner decision, Oct 2026).
+         The original step cards and sub-line are MOVED, not copied or reworded; numbering closes up. ---- */
+  (function routeFold(){
+    var pw = document.getElementById('pathway'), q = document.getElementById('quick');
+    var qb = q && q.querySelector(':scope > .mg-sbody'), path = pw && pw.querySelector('.mg-path');
+    if(!pw || !qb || !path) return;
+    var steps = PX.$$('.mg-pstep', path); if(!steps.length) return;
+    var box = PX.el('<div class="px-route" id="px-route"><div class="px-route-h"><span class="px-route-k">Route</span><ol class="px-route-chips"></ol>'+
+      '<button type="button" class="px-route-all px-chrome" aria-expanded="false" aria-controls="px-route-body">Show the route in full</button></div>'+
+      '<div class="px-route-body" id="px-route-body" hidden></div></div>');
+    var ol = box.querySelector('.px-route-chips'), body = box.querySelector('.px-route-body'), all = box.querySelector('.px-route-all');
+    var sub = pw.querySelector('.mg-sec-sub'); if(sub) body.appendChild(sub);
+    body.appendChild(path);
+    function open(on){ body.hidden = !on; all.setAttribute('aria-expanded', String(on)); all.textContent = on ? 'Hide the route' : 'Show the route in full'; }
+    steps.forEach(function(st, i){
+      var h = st.querySelector('h3'); if(!h) return;
+      var li = PX.el('<li><button type="button" class="px-route-chip"><span class="px-route-n">'+(i+1)+'</span><span class="px-route-t"></span></button></li>');
+      li.querySelector('.px-route-t').textContent = h.textContent.trim();
+      if(st.classList.contains('alert')) li.firstChild.classList.add('is-alert');
+      li.firstChild.setAttribute('aria-label', 'Route step ' + (i+1) + ': ' + h.textContent.trim() + (st.classList.contains('alert') ? ' (where patients come to harm)' : ''));
+      li.firstChild.addEventListener('click', function(){
+        open(true); st.scrollIntoView({behavior:'smooth', block:'center'});
+        st.classList.remove('px-route-flash'); void st.offsetWidth; st.classList.add('px-route-flash');
+      });
+      ol.appendChild(li);
+    });
+    all.addEventListener('click', function(){ open(body.hidden); });
+    /* search: open the route when a match lands inside it */
+    new MutationObserver(function(){ if(body.hidden && body.querySelector('mark')) open(true); }).observe(body, {subtree:true, childList:true});
+    qb.appendChild(box);
+    pw.parentNode.removeChild(pw);
+    /* close up the step numbers (01, 03, 04 … → 01, 02, 03 …) */
+    var k = 0;
+    PX.sections().forEach(function(s){
+      var n = s.querySelector(':scope > .mg-sec-h .mg-sec-n');
+      if(n && /^\d+$/.test(n.textContent.trim())){ k++; s.setAttribute('data-px-orig-n', n.textContent.trim()); n.textContent = (k < 10 ? '0' : '') + k; }
+    });
+  })();
   PX.hideOnScreen([layers, secnav, allbtn]);
   var secs = PX.sections();
   var refs = document.getElementById('px-refs');
@@ -1197,7 +1235,7 @@ PX.ready(function(){
     }
     var cands = secs.filter(function(s){
       if(RF_NEVER.test(s.id || '')) return false;
-      var num = parseInt(sectionNum(s), 10); if(!(num <= RF_MAX_STEP)) return false;
+      var num = parseInt(s.getAttribute('data-px-orig-n') || sectionNum(s), 10); if(!(num <= RF_MAX_STEP)) return false;
       var t = bareTitle(s), n = secNav(s), first = t.split(/\s+[—–-]\s+|,\s+/)[0];
       /* an id match needs the keyword in the rail label or the title's first clause — never a passing mention */
       var hit = RF_START.test(t) || RF_START.test(n) || (RF_IDS.test(s.id || '') && RF_WORDS.test(n + ' ' + first));

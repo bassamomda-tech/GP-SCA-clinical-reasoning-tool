@@ -486,7 +486,7 @@ EMERGENCY safety-net: saddle anaesthesia, bladder/bowel change, bilateral/progre
     duration: 'Titrate; review at each step',
     drugs: [
       { name: 'Amitriptyline', dose: '10 mg ON; titrate to 25–75 mg', freq: 'ON', route: 'PO', days: 'Trial ≥6–8 weeks at effective dose' },
-      { name: 'OR Duloxetine', dose: '30 mg → 60 mg OD', freq: 'OD', route: 'PO', days: 'Trial' },
+      { name: 'OR Duloxetine', dose: '60 mg OD (a 30 mg start may be used for tolerability)', freq: 'OD', route: 'PO', days: 'Trial' },
       { name: 'OR Gabapentin / Pregabalin', dose: 'Gabapentin 300 mg titrate / Pregabalin 75 mg BD titrate', freq: 'TDS / BD', route: 'PO', days: 'Trial' },
     ],
     altRegimens: [

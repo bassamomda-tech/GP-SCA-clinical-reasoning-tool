@@ -206,7 +206,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   equipment:['Pillow for support','Couch/table'],
   redFlags:[
     'Hot swollen single joint → ?septic arthritis / gout — aspirate',
-    'New symmetrical small-joint synovitis with early-morning stiffness → refer within 3 weeks (?RA)',
+    'New symmetrical small-joint synovitis with early-morning stiffness → refer within 3 working days (?RA; seen within 3 weeks of referral, QS33)',
     'Rapidly progressive hand weakness/wasting → urgent neurology',
   ],
   sequence:[

@@ -288,7 +288,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   cascade:[
     { step:'Autoimmune synovitis', detail:'Pannus formation' },
-    { step:'Symmetrical small-joint arthritis', detail:'Prolonged morning stiffness (>30–60 min)' },
+    { step:'Symmetrical small-joint arthritis', detail:'Prolonged morning stiffness (>30 min)' },
     { step:'Erosions + deformity', detail:'If untreated; extra-articular disease' },
   ],
   implications:[

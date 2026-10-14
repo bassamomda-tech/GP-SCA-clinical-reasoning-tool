@@ -71,14 +71,14 @@ MedChooser.register('neuropathic-pain', {
     {
       id:'duloxetine',
       name:'Duloxetine',
-      examples:'Duloxetine 60 mg OD (30 mg start)',
+      examples:'Duloxetine 60 mg OD (30 mg start only if tolerability is a concern)',
       step:'1st-line (one of four)',
       source:'NICE CG173 §1.1.1',
       sideEffects:'Nausea, insomnia, dry mouth, raised BP, sexual dysfunction',
-      monitor:'BP; mood; titrate from 30 mg',
+      monitor:'BP; mood; tolerability (nausea)',
       counsel:'"This one helps nerve pain and low mood together, so it\'s a good fit if both are a problem. Take it in the morning; any nausea usually settles in a week or two."',
       detail:{
-        'Dose': 'Start 30 mg OD, increase to 60 mg; first-line/licensed in diabetic neuropathy',
+        'Dose': '60 mg OD for diabetic peripheral neuropathic pain (BNF; max 120 mg daily in divided doses); a lower 30 mg start may be used for tolerability; first-line/licensed in diabetic neuropathy',
         'Interactions': 'Other serotonergic drugs, tramadol, hepatic impairment (avoid)',
         'Key teaching': 'CG173 first-line; particularly useful with comorbid depression/anxiety and the agent of choice many use for diabetic neuropathy.'
       },

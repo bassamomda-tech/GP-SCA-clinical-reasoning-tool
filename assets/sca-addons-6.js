@@ -4408,7 +4408,7 @@
     },
     {
      "h": "Widespread pain",
-     "t": "NICE NG193 (chronic primary pain): offer supervised group exercise and psychological therapy (CBT or ACT); consider acupuncture within limits; consider an antidepressant (amitriptyline, citalopram, duloxetine, fluoxetine, paroxetine or sertraline) after discussion, reviewed at 4 to 6 weeks. Do not start opioids, gabapentinoids, NSAIDs, benzodiazepines or paracetamol for chronic primary pain."
+     "t": "NICE NG193 (chronic primary pain): offer supervised group exercise; consider ACT or CBT for pain; consider acupuncture within limits; consider an antidepressant (amitriptyline, citalopram, duloxetine, fluoxetine, paroxetine or sertraline) after discussion, reviewed at 4 to 6 weeks. Do not start opioids, gabapentinoids, NSAIDs, benzodiazepines or paracetamol for chronic primary pain."
     },
     {
      "h": "Mind and body without blame",

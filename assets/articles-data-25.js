@@ -233,7 +233,7 @@
   { id:'rheumatoid-arthritis', title:'Rheumatoid arthritis', category:'Musculoskeletal', icon:'🦴',
     overview:'A chronic, systemic autoimmune inflammatory arthritis causing symmetrical small-joint synovitis that, untreated, leads to joint destruction and disability. Early diagnosis and prompt disease-modifying treatment ("treat-to-target") dramatically improve outcomes — so urgent referral of suspected RA is a key primary-care responsibility.',
     features:[
-      'Symmetrical pain, swelling and stiffness of the small joints of the hands and feet (MCP, PIP, MTP joints), with prolonged early-morning stiffness (>30–60 minutes)',
+      'Symmetrical pain, swelling and stiffness of the small joints of the hands and feet (MCP, PIP, MTP joints), with prolonged early-morning stiffness (more than 30 minutes)',
       'Insidious onset over weeks–months; soft, "boggy" joint swelling (synovitis), and difficulty with grip/function',
       'Systemic features: fatigue, malaise, and sometimes low-grade fever and weight loss',
       'Later/extra-articular features: rheumatoid nodules, joint deformities (ulnar deviation, swan-neck), and involvement of lungs, eyes, and the cervical spine',

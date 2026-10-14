@@ -6274,7 +6274,7 @@
    "reason": "Video appointment: “wants to book a PSA blood test”."
   },
   "knowledge": {
-   "guideline": "UKHSA Prostate Cancer Risk Management Programme (GOV.UK) · UK NSC prostate screening recommendation (2026) · NICE NG12 (updated April 2026) · NICE NG131 (2019, updated 2021)",
+   "guideline": "UKHSA Prostate Cancer Risk Management Programme (GOV.UK) · UK NSC (no population prostate screening programme) · NICE NG12 (updated April 2026) · NICE NG131 (2019, updated 2021)",
    "summary": "An asymptomatic man aged 50 or over can have a PSA test after a balanced discussion. Help him make an informed choice — neither refuse nor reflexively test — and give real weight to his higher risk as a Black man.",
    "points": [
     {
@@ -6283,7 +6283,7 @@
     },
     {
      "h": "Screening policy",
-     "t": "UK NSC (2026): targeted two-yearly PSA screening is recommended only for men aged 45 to 61 with a confirmed BRCA2 variant and a relevant family history. It did not recommend screening Black men as a group because the balance of benefit and harm remains uncertain — but their higher risk is a legitimate part of an individual discussion."
+     "t": "There is no population PSA screening programme. Follow the current Prostate Cancer Risk Management Programme / NHS prostate pathway, using age-specific PSA thresholds and local referral criteria. Men with a BRCA2 variant are at high risk: targeted surveillance is arranged through specialist or clinical genetics pathways, not population screening. Black men are also at higher risk — a legitimate part of an individual discussion."
     },
     {
      "h": "What PSA can and cannot do",

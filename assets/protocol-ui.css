@@ -193,14 +193,11 @@
   .pc-b{min-height:54px}
 }
 @media (max-width:400px){ .pc-b{font-size:12px} .pc-bar{padding-left:6px;padding-right:6px;gap:2px} }
-/* desktop/tablet: the shortcut bar stands upright on the right edge, vertically centred (owner decision, Oct 2026) */
-@media (min-width:761px){
-  .pc-bar{left:auto;right:12px;top:50%;bottom:auto;transform:translateY(-50%);width:auto;
-    grid-auto-flow:row;grid-auto-columns:auto;grid-auto-rows:auto;gap:4px;padding:8px 6px;border-radius:18px}
-  .pc-b{width:76px;min-height:58px;padding:6px 4px;font-size:12px;line-height:1.15;text-align:center}
-  .pc-b svg{width:22px;height:22px}
-  /* keep page text clear of the bar */
-  html.pxa-has-bar #mgRoot, html:has(.pc-bar) #mgRoot{padding-right:clamp(22px, calc(122px - (100vw - 1180px) / 2), 122px)}
+/* desktop: no shortcut bar — the left step list carries the steps and the search box (owner decision, Oct 2026) */
+@media (min-width:901px){
+  .pc-bar{display:none!important}
+  .pd .rgp-a11y-btn{bottom:24px!important}
+  .pd .rgp-a11y-panel{bottom:84px!important}
 }
 /* lift the accessibility button above the bar */
 .pd .rgp-a11y-btn{bottom:calc(96px + env(safe-area-inset-bottom))!important}
@@ -382,7 +379,7 @@ li > .pxa-drug{margin:2px 0 4px}
   mark.pxa-hit{background:none;box-shadow:none}
 }
 
-/* ==== Calm layout (owner request, Oct 2026): more white space, lighter cards, lighter shortcut bar.
+/* ==== Calm layout (owner request, Oct 2026): more white space, lighter cards, lighter phone bar.
    Screen only; print uses the -print.html twins. Cards keep their colour as a left accent strip. ==== */
 @media screen{
   .pd .mg-wrap .card,.pd .mg-wrap .mg-card,.pd .mg-wrap .mg-qcard{--tone:#d9cfbb;background:#fff;border:1px solid #ece6da;border-left:4px solid var(--tone);
@@ -403,7 +400,7 @@ li > .pxa-drug{margin:2px 0 4px}
   .pd .mg-wrap .card li{margin-bottom:8px}
   .pd .mg-wrap .card p+p{margin-top:12px}
   .pd .mg-wrap .mg-sec-h{margin:44px 0 20px;border-bottom-width:1px}
-  .pd .mg-wrap section:first-of-type>.mg-sec-h{margin-top:8px}
+  .pd .mg-wrap section>.mg-sec-h{margin-top:6px}
   .pd .mg-wrap .mg-sbody>*+*{margin-top:18px}
   .pd .mg-wrap section th,.pd .mg-wrap section td{padding:11px 12px}
   .pd .mg-wrap .say{background:#f4faf9;border-color:#d5e9e6;padding:14px 16px;line-height:1.7}
@@ -413,8 +410,4 @@ li > .pxa-drug{margin:2px 0 4px}
   .pc-b:hover,.pc-b:focus-visible{background:#f3ede0}
   .pc-b-red{color:#fff;background:#b3261e}
   .pc-b-red:hover{background:#9d1f18}
-}
-@media screen and (min-width:761px){
-  .pc-bar{padding:6px;gap:2px}
-  .pc-b{width:64px;min-height:54px;font-size:11px;font-weight:600}
 }

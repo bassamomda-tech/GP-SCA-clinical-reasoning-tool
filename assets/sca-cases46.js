@@ -355,7 +355,7 @@
       avoid: [
         { dont:'"Just eat more eggs, meat and dairy, or take a B12 tablet \u2014 that\u2019ll bring it up."', instead:'"If your body can\u2019t absorb it \u2014 which is likely here \u2014 eating or swallowing more won\u2019t get it in; an injection bypasses the gut."', why:'Diet/oral B12 cannot correct malabsorptive deficiency (e.g. pernicious anaemia).' },
         { dont:'"I\u2019ll start you on folic acid to fix the big red cells."', instead:'"I won\u2019t give folate alone first \u2014 in B12 deficiency that can worsen the nerve problem; we correct B12 properly first."', why:'Folate alone in B12 deficiency can precipitate/worsen subacute combined degeneration.' },
-        { dont:'(Ignoring neuro) "We\u2019ll do the standard loading and a top-up every three months."', instead:'"Because you\u2019ve got nerve symptoms, you need intensive loading \u2014 injections on alternate days until no further improvement \u2014 then maintenance."', why:'Neurological involvement requires intensive loading; standard dosing undertreats and risks irreversible damage.' }
+        { dont:'(Ignoring neuro) "We\u2019ll do the standard loading and a top-up every 2 to 3 months."', instead:'"Because you\u2019ve got nerve symptoms, you need intensive loading \u2014 injections on alternate days until no further improvement \u2014 then maintenance."', why:'Neurological involvement requires intensive loading; standard dosing undertreats and risks irreversible damage.' }
       ]
     }
 

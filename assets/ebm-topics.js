@@ -168,7 +168,7 @@ window.EBM_TOPICS = [
   { id:'opioids-chronic', cat:'Pain & MSK', name:'Opioids in chronic non-cancer pain', verdict:'harm',
     numbers:'Little benefit beyond a few months; dependence, hyperalgesia, falls and overdose rise with dose.',
     detail:'For chronic non-cancer pain the evidence for long-term opioids is weak and the harms are substantial. The SPACE trial found opioids were no better than non-opioid analgesics for pain-related function in chronic back, hip or knee pain over 12 months, and the broader literature shows tolerance, opioid-induced hyperalgesia, dependence, falls, fractures, endocrine effects and a dose-dependent overdose risk. NICE NG193 explicitly advises against starting opioids (and most drugs) for chronic primary pain, favouring exercise, psychological therapy and supported self-management. Where patients are already on long-term opioids without benefit, the right action is structured, supported dose reduction.',
-    note:'Avoid/limit in chronic primary pain (NICE NG193). Review and deprescribe; offer exercise, CBT and group programmes.',
+    note:'Avoid/limit in chronic primary pain (NICE NG193). Review and deprescribe; offer supervised group exercise and consider ACT or CBT for pain.',
     src:{label:'NICE NG193', url:'https://www.nice.org.uk/guidance/ng193'} },
 
   { id:'paracetamol-lbp', cat:'Pain & MSK', name:'Paracetamol for low back pain', verdict:'none',

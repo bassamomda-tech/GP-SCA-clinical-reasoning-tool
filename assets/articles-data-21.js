@@ -90,7 +90,7 @@
       'Extensive, recurrent, or unexplained oral candidiasis — especially with weight loss or other features — warrants considering HIV and other immunosuppression',
       'Diagnosis is usually clinical; swab/investigate atypical, severe, or recurrent cases'],
     management:[
-      'Treat the infection: topical antifungal (e.g. nystatin suspension or miconazole oral gel — miconazole is contraindicated with warfarin, MHRA Drug Safety Update 2016) for localised disease; oral fluconazole for extensive, severe, or unresponsive infection or in immunocompromised patients',
+      'Treat the infection: topical antifungal for localised disease — miconazole oral gel first line, or nystatin suspension if miconazole is unsuitable, including patients on warfarin (miconazole raises the INR — MHRA Drug Safety Update 2016; NICE CKS); oral fluconazole for extensive, severe, or unresponsive infection or in immunocompromised patients',
       'Crucially, identify and address the underlying cause — this prevents recurrence',
       'For inhaled-steroid-related thrush: optimise inhaler technique, use a spacer, and rinse the mouth after use; review the steroid dose',
       'Denture care: clean and remove dentures overnight, and treat the denture (soaking) as well as the mouth',
