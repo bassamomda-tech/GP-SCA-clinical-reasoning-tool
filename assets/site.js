@@ -1069,9 +1069,7 @@ function renderTopNav(activeId){
     <a class="rgp-mm-tool" href="${PRE}pages/audios.html">
       <span class="rgp-mm-tool-ic">🎧</span><span><b>Audios</b><small>AI + human recordings · CPD-tracked</small></span>
     </a>
-    <a class="rgp-mm-tool ${activeId==='__howwefit'?'is-active':''}" href="${PRE}pages/how-we-fit.html">
-      <span class="rgp-mm-tool-ic">🧩</span><span><b>How we fit with CKS &amp; BNF</b><small>Use us alongside CKS, the BNF and your ICB</small></span>
-    </a>`;
+`;
 
   // Clinic Toolkit — single ordered list (clinical tools first, then reference).
   const TOOLKIT_IDS = ['__updates','__tools-scribe','__tools-spine','__tools-decision','__tools-exam','__tools-admin','__tools-calc','__leaflets','__tools-basicsci','__ebm','__resources'];
@@ -1732,8 +1730,8 @@ function injectPalette(){
     href: PRE + 'index.html', search: 'home overview framework reasoning gp index',
   });
   entries.push({
-    type: 'page', group: 'Site', title: 'How we fit with CKS, BNF and your ICB', meta: 'Using Reasoning GP alongside CKS, the BNF and local formularies',
-    href: PRE + 'pages/how-we-fit.html', search: 'how we fit cks clinical knowledge summaries nice bnf bnfc british national formulary icb formulary local guidance medicines optimisation why use compare',
+    type: 'page', group: 'Site', title: 'How we fit with NICE, the BNF and your ICB', meta: 'Using Reasoning GP alongside NICE, the BNF and local formularies',
+    href: PRE + 'pages/how-we-fit.html', search: 'how we fit nice guidance guidelines bnf bnfc british national formulary icb formulary local guidance medicines optimisation why use compare',
   });
 
   const el = document.createElement('div');
@@ -3071,7 +3069,7 @@ function injectFooter(){
         <summary><h5>Trust &amp; legal</h5></summary>
         <ul>
           <li><a href="${PRE}pages/content-safety.html">How we keep content safe</a></li>
-          <li><a href="${PRE}pages/how-we-fit.html">How we fit with CKS, BNF and your ICB</a></li>
+          <li><a href="${PRE}pages/how-we-fit.html">How we fit with NICE, the BNF and your ICB</a></li>
           <li><a href="${PRE}pages/ai-safety.html">AI safety and data</a></li>
           <li><a href="${PRE}pages/accessibility.html">Accessibility</a></li>
           <li><a href="${PRE}tools/governance.html">Guideline review</a></li>

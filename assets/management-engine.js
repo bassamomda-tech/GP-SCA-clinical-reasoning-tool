@@ -34,8 +34,7 @@
     var root = document.getElementById('mgRoot');
     if(!e || !root || !root.firstChild || extIsPrint() || root.querySelector('.mg-extsrc')) return;
     var parts = [];
-    if(e.cks) parts.push(extA(e.cks, 'CKS — '+(e.cksTitle || 'topic')));
-    (e.cksAlso || []).forEach(function(c){ parts.push(extA(c[1], 'CKS — '+c[0])); });
+    /* CKS links removed from this row (owner decision, Oct 2026): BNF, BNFC and the ICB formulary only */
     var drugs = (e.bnf || []).slice(0, 4).map(function(d){ return extA(d[1], d[0]); }).filter(Boolean);
     if(drugs.length) parts.push('BNF — '+drugs.join('<span class="sep">·</span>'));
     if(e.bnfc) parts.push(extA('https://bnfc.nice.org.uk/', 'BNFC'));
