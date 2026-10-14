@@ -48,6 +48,8 @@
   }
 
   /* MHRA items from the data file, plus newer MHRA/UKHSA items seen in the live feed. */
+  // Routine statistics releases (surveillance reports, coverage data) are not safety alerts — keep them off the home panel.
+  var ROUTINE = /^(official statistics|research and analysis)\b|surveillance|data to week|quarterly data|annual data|epidemiology update/i;
   function safetyItems(){
     var base = SAFETY.map(function(s){ return { src:s.src || 'MHRA', date:s.date, title:s.title, action:s.action || '' }; });
     var newest = base.length ? Math.max.apply(null, base.map(function(s){ return utc(s.date); })) : 0;
@@ -60,9 +62,9 @@
       var s = String(x.src || x.tag).toUpperCase().indexOf('UKHSA') >= 0 ? 'UKHSA' : 'MHRA';
       var d = String(x.date).slice(0, 10), sm = String(x.summary || ''), cut = sm.search(/\.\s/);
       return { src:s, date:d, title:String(x.title), action: cut > 0 ? sm.slice(0, cut + 1) : sm, _t: Date.parse(d) };
-    }).filter(function(x){ return !isNaN(x._t) && x._t > newest && x._t >= cutoff; })
+    }).filter(function(x){ return !isNaN(x._t) && x._t > newest && x._t >= cutoff && !ROUTINE.test(x.title); })
       .sort(function(a, b){ return b._t - a._t; });
-    return live.slice(0, 2).concat(base);
+    return live.slice(0, 1).concat(base);
   }
 
   function badge(src){ var s = String(src).toUpperCase(); return '<span class="hu-badge hu-' + esc(s.toLowerCase()) + '">' + esc(s) + '</span>'; }
