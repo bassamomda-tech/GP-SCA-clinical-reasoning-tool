@@ -163,6 +163,27 @@
        its "Step 0" exists before the algorithm UI starts. Each file also guards itself, so a page
        that links them directly (chest pain, Uploads 97 and 104) never runs them twice. */
     if (/\/tools\/algorithms\/[^\/]+\.html?$/i.test(location.pathname) && !/-print\.html?$/i.test(location.pathname)) {
+      /* No flicker (Oct 2026): readers used to see the old layout for a moment before the stepper,
+         the algorithm UI and the header card rearranged it. Hide the page until the header card is
+         styled (or the card is switched off for this page), then fade in. Never longer than 2.5 s. */
+      (function(){
+        var R = document.documentElement, t0 = Date.now();
+        if (R.classList.contains('alg-ready') || window.self !== window.top) { R.classList.add('alg-ready'); return; }
+        if (!document.getElementById('alg-boot-css')) {
+          var bs = document.createElement('style'); bs.id = 'alg-boot-css';
+          bs.textContent = 'html.alg-boot body{opacity:0}html.alg-ready body{opacity:1;transition:opacity .18s ease-out}@media print{html.alg-boot body{opacity:1}}';
+          document.head.appendChild(bs);
+        }
+        R.classList.add('alg-boot');
+        var show = function(){ R.classList.remove('alg-boot'); R.classList.add('alg-ready'); };
+        (function wait(){
+          var card = document.querySelector('.ah-card');
+          var styled = card && getComputedStyle(card).borderTopLeftRadius === '18px';
+          var skipped = window.__algHead && !R.classList.contains('ah') && Date.now() - t0 > 700;
+          if (styled || skipped || Date.now() - t0 > 2500) { requestAnimationFrame(show); return; }
+          setTimeout(wait, 40);
+        })();
+      })();
       var ui = function(){
         if (window.__algUi || document.querySelector('script[src*="alg-ui.js"]')) return;
         var u = document.createElement('script'); u.src = base + 'alg-ui.js?v=2'; document.head.appendChild(u);
