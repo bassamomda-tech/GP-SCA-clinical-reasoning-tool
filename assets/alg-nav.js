@@ -167,8 +167,14 @@
         if (window.__algUi || document.querySelector('script[src*="alg-ui.js"]')) return;
         var u = document.createElement('script'); u.src = base + 'alg-ui.js?v=2'; document.head.appendChild(u);
       };
-      if (window.__algStepper) ui();
-      else { var st = document.createElement('script'); st.src = base + 'alg-stepper.js?v=2'; st.onload = ui; st.onerror = ui; document.head.appendChild(st); }
+      /* Compact header card (Upload 112): after the stepper and the algorithm UI; guards itself too */
+      var head = function(){
+        if (window.__algHead || document.querySelector('script[src*="alg-head.js"]')) return;
+        var h = document.createElement('script'); h.src = base + 'alg-head.js?v=1'; document.head.appendChild(h);
+      };
+      var both = function(){ ui(); head(); };
+      if (window.__algStepper) both();
+      else { var st = document.createElement('script'); st.src = base + 'alg-stepper.js?v=2'; st.onload = both; st.onerror = both; document.head.appendChild(st); }
     }
   })();
 })();

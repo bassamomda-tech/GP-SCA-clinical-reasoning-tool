@@ -1,0 +1,109 @@
+/* ============================================================
+   alg-head.css — compact header card for every algorithm page (Upload 112). Loaded by
+   assets/alg-head.js. Screen only, scoped to html.ah; print is untouched.
+   ============================================================ */
+/* ---- common: one reading column, less vertical padding.
+   Screen only; print is untouched (blocks go back to their place before printing). ---- */
+@media screen{
+html.ah{--ah-w:960px}
+html.ah .ah-x[hidden],html.ah .ah-x [hidden]{display:none!important}
+html.ah .alg-flow{max-width:calc(var(--ah-w) + 32px)!important}
+html.ah .alg-wrap{max-width:calc(var(--ah-w) + 40px)!important}
+html.ah .au-refs,html.ah .alg-foot:not(.st-zero .alg-foot){max-width:var(--ah-w)!important}
+html.ah .page-header{max-width:var(--ah-w)!important;padding:10px 0 0!important}
+html.ah .alg-wrap > .page-header{padding-top:4px!important}
+
+/* moved blocks lose their old card chrome inside the head */
+html.ah .ah-x .alg-header{display:contents!important}
+html.ah .ah-x .alg-header > h1{margin:0!important;line-height:1.15!important}
+html.ah .ah-x .alg-header > p{margin:0!important;opacity:1!important}
+html.ah .ah-x .stem-banner{display:block!important;max-width:none!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:none!important;border-radius:0!important}
+html.ah .ah-x .stem-banner .sb-icon{display:none!important}  /* same emoji as the title */
+html.ah .ah-x .stem-banner b{display:inline!important;font-family:'DM Sans',system-ui,sans-serif!important;font-size:.98rem!important;font-weight:600!important;color:var(--a-ink)}
+html.ah .ah-x .stem-banner small{display:inline!important;font-size:.9rem!important;color:var(--a-mute)}
+html.ah .ah-x .stem-banner b::after{content:" · ";color:#a59e90;font-weight:400}
+html.ah .ah-x .alg-meta{display:contents!important}
+html.ah .ah-x .alg-meta > span:not(.px-print-only),html.ah .ah-x .pxa-upd,html.ah .ah-chip{display:inline-flex!important;align-items:center;gap:6px;margin:0!important;height:28px;box-sizing:border-box;padding:0 11px!important;border-radius:999px!important;font:600 12.5px/1 'DM Sans',system-ui,sans-serif!important;white-space:nowrap;
+  background:var(--a-teal-bg)!important;color:var(--a-teal)!important;border:1px solid #cfe3df!important}
+html.ah .ah-x .pxa-upd{background:#fff!important}
+html.ah .ah-x .pxa-upd .pxa-upd-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--a-treat);box-shadow:0 0 0 3px rgba(43,122,62,.18)}
+html.ah .ah-x .pxa-upd span{background:none;padding:0;font-size:inherit}
+html.ah .ah-x .pxa-upd-a{color:var(--a-teal);text-decoration:underline;text-underline-offset:3px;font-weight:700}
+html.ah .ah-chip.ah-next{background:#fff!important;color:var(--a-mute)!important;border-color:var(--a-line)!important;font-weight:600!important}
+html.ah button.ah-chip{cursor:pointer;background:#fff!important;border-color:#b9cfcb!important}
+html.ah button.ah-chip:hover{background:#f2f8f7!important;border-color:var(--a-teal)!important}
+html.ah button.ah-chip:focus-visible,html.ah .ah-x .rgp-teach-toggle:focus-visible{outline:3px solid #15202b;outline-offset:2px}
+html.ah .ah-chev{font-size:11px;transition:transform .15s}
+html.ah button[aria-expanded="true"] .ah-chev{transform:rotate(180deg)}
+html.ah .ah-x .rgp-teach-toggle{margin:0!important;padding:5px 10px!important;font-size:12.5px!important}
+
+/* the review strip, unchanged inside a panel */
+html.ah .ah-x #rgpProvStrip{max-width:none!important;margin:0!important;box-shadow:none!important;border-radius:12px!important}
+/* the reference-only line stays visible, one slim line */
+html.ah .ah-x .rgp-ref-notice{max-width:none!important;margin:0!important;padding:6px 12px!important;font-size:12.5px!important;border-radius:0 8px 8px 0!important}
+
+/* toolkit strip as one compact line */
+html.ah .ah-x .tl-strip{max-width:none!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:none!important;border-radius:0!important;display:flex!important;flex-wrap:wrap;align-items:center;gap:6px 10px}
+html.ah .ah-x .tl-strip .tl-head{margin:0!important;gap:8px}
+html.ah .ah-x .tl-strip .tl-eyebrow{font-size:10.5px!important}
+html.ah .ah-x .tl-strip .tl-topic{font-size:.95rem!important}
+html.ah .ah-x .tl-strip .tl-cards{display:flex!important;flex-wrap:wrap;gap:6px;grid-template-columns:none!important;margin:0!important}
+html.ah .ah-x .tl-strip .tl-card{padding:5px 12px!important;border-radius:999px!important;gap:8px!important;min-height:0!important}
+html.ah .ah-x .tl-strip .tl-ic{font-size:14px!important;width:auto!important;height:auto!important}
+html.ah .ah-x .tl-strip .tl-tx{display:flex!important;flex-direction:row!important;align-items:baseline;gap:6px;flex-wrap:wrap}
+html.ah .ah-x .tl-strip .tl-tx b{font-size:12.5px!important}
+html.ah .ah-x .tl-strip .tl-tx small{font-size:11.5px!important}
+
+/* ONE toolbar row: Steps|Snapshot · progress · Search · Show all steps · Reset */
+html.ah .ah-bar{max-width:var(--ah-w);margin:12px auto 16px;box-sizing:border-box;display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;
+  background:#fff;border:1px solid var(--a-line);border-radius:14px;padding:6px 8px 6px 6px;box-shadow:var(--a-shadow);font-family:'DM Sans',system-ui,sans-serif}
+html.ah .ah-bar > .alg-progress,html.ah .ah-bar > .st-mode{display:contents!important}
+body.summary-mode .ah-bar > .st-mode,body.diagram-mode .ah-bar > .st-mode{display:none!important}
+html.ah .ah-bar .view-toggle{order:1;margin:0!important}
+html.ah .ah-bar .alg-progress > span:not(.pcount){order:2;font-size:.82rem;color:var(--a-mute);font-weight:500!important}
+html.ah .ah-bar .pcount{order:3;font-size:.86rem;font-weight:700;color:var(--a-ink)}
+html.ah .ah-bar .pbar{order:4;flex:1 1 60px!important;min-width:40px;margin:0!important}
+html.ah .ah-bar .st-mode-t{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+html.ah .ah-bar .st-find{order:5;min-height:32px;padding:5px 12px}
+html.ah .ah-bar .st-switch{order:6;margin:0!important;padding:4px 12px 4px 6px!important;min-height:32px!important;font-size:.84rem!important;border-radius:999px}
+html.ah .ah-bar .reset{order:7;margin:0!important}
+html.ah .alg-flow > .st-zero:first-child,html.ah .alg-flow > .node:first-child{margin-top:0}
+
+@media (max-width:760px){
+  html.ah .ah-bar{margin:10px 12px 12px;padding:6px;gap:8px 6px}
+  html.ah .ah-bar .vt-btn{padding:5px 12px!important}
+  html.ah .ah-bar .pbar{min-width:16px}
+  html.ah .ah-bar .reset{padding:4px 9px!important}
+  html.ah .ah-bar .st-switch{flex:1 1 auto;justify-content:center;order:8}
+  html.ah .ah-bar .reset{order:9;min-height:32px}
+  /* pages that already sit in a padded wrapper (.alg-wrap): no second side margin */
+  html.ah .alg-wrap > .ah-x{margin-left:0!important;margin-right:0!important}
+}
+}
+@media print{ .ah-x .ah-chips > .pxa-chrome,.ah-rev-btn{display:none!important} }
+/* ---- option A: compact header card ---- */
+@media screen{
+html.ah .ah-card{max-width:var(--ah-w);margin:16px auto 0;box-sizing:border-box;background:#fff;border:1px solid var(--a-line);border-radius:18px;box-shadow:var(--a-shadow);
+  padding:16px 22px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;
+  grid-template-areas:"eyebrow toggle" "title title" "sub sub" "chips chips" "rev rev" "tl tl" "notice notice";font-family:'DM Sans',system-ui,sans-serif}
+html.ah .ah-card .alg-header > p{grid-area:eyebrow;align-self:center;font-size:.74rem!important;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--a-mute)!important}
+html.ah .ah-card .rgp-teach-toggle{grid-area:toggle;justify-self:end;align-self:center}
+html.ah .ah-card .alg-header > h1{grid-area:title;font-size:1.75rem!important;margin-top:6px!important}
+html.ah .ah-card .stem-banner{grid-area:sub;margin-top:4px!important;line-height:1.45}
+html.ah .ah-card .ah-chips{grid-area:chips;display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px}
+html.ah .ah-card .ah-rev{grid-area:rev;margin-top:10px}
+html.ah .ah-card .ah-tl{grid-area:tl;margin-top:12px;padding-top:12px;border-top:1px solid var(--a-line2)}
+html.ah .ah-card .rgp-ref-notice{grid-area:notice;margin-top:12px!important}
+@media (max-width:760px){
+  html.ah .ah-card{margin:10px 12px 0;padding:12px 14px 12px;border-radius:16px;}
+  html.ah .ah-card{grid-template-areas:"eyebrow eyebrow" "title title" "sub sub" "chips chips" "toggle toggle" "rev rev" "tl tl" "notice notice"}
+  html.ah .ah-card .rgp-teach-toggle{justify-self:start;margin-top:8px!important}
+  html.ah .ah-card .alg-header > p{font-size:.68rem!important;letter-spacing:.06em}
+  html.ah .ah-card .alg-header > h1{font-size:1.45rem!important;margin-top:4px!important}
+  html.ah .ah-card .stem-banner b{font-size:.92rem!important}
+  html.ah .ah-card .stem-banner small{font-size:.84rem!important}
+  html.ah .ah-card .ah-chips{margin-top:10px}
+  html.ah .ah-card .ah-tl{margin-top:10px;padding-top:10px}
+  html.ah .ah-card .rgp-ref-notice{margin-top:10px!important}
+}
+}
