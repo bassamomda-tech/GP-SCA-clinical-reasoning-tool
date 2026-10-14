@@ -507,7 +507,7 @@
 
   function init(){
     const isCasePage = !!getCurrentCaseKey();
-    const isToolPage = !!getCurrentToolKey();
+    const isToolPage = false;   /* the "Connect · Cases that use the …" panel on tool pages is switched off (owner decision, Oct 2026) */
     if (!isCasePage && !isToolPage) return;
     injectCss();
     const fn = isCasePage ? render : renderToolPage;
