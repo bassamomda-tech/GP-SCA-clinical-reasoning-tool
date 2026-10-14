@@ -126,10 +126,9 @@ var PX = (function(){
     }
     if(ev){
       ev.classList.add('px-ev-in-refs');
-      /* unfold for good: the evidence is part of the closing reference block */
-      ev.setAttribute('data-open','1');
-      ev.classList.remove('mg-fold');
-      var h = head(ev); if(h){ h.removeAttribute('role'); h.removeAttribute('tabindex'); h.removeAttribute('aria-expanded'); var ch = h.querySelector('.mg-chev'); if(ch) ch.classList.add('px-screen-hide'); }
+      /* folded by default (owner decision, Oct 2026): click or tap the Evidence heading to open it;
+         search and links still open it when they land inside */
+      if(ev.classList.contains('mg-fold')){ ev.setAttribute('data-open','0'); var h = head(ev); if(h) h.setAttribute('aria-expanded','false'); }
       var parent = ev.parentNode, next = ev.nextSibling;
       parent.insertBefore(refs, next);
       refs.appendChild(ev);
