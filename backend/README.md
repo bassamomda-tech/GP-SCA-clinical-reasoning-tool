@@ -142,6 +142,27 @@ The page also shows an **Updates archive — the last year**, filterable (All / 
   endpoint falls back to a live pull, and the per-device memory still works.
 
 
+## Searches with no results (anonymous)
+When a search on the site finds nothing at all, the site sends just the search words to
+`POST /api/search-miss` (after typing stops for 1.5 s, or on Enter; once per search per page view).
+Nothing to configure: it uses the existing **USERS** KV.
+
+- **Kept:** `miss:YYYY-MM` → `{ terms: { "<words>": count }, overflow }`. Only words and counts per month:
+  no IP, no account, no page, no time. Each month's key expires 12 months after the month ends.
+- **Filtered twice** (browser and Worker): lower-case, spaces collapsed, max 60 characters; dropped if it
+  has a run of 6+ digits, an email, a UK postcode or a date. Max 2,000 different searches a month
+  (`MISS_MAX_TERMS`); beyond that only `overflow` goes up.
+- **Rate limit:** 20 a minute per visitor (`MISS_RL_MAX`), counted against a salted hash of the IP in a
+  `missrl:*` key that expires after 60 seconds. Optional: `wrangler secret put MISS_SALT` (any long
+  random text) keeps the hash stable across Worker instances; without it each instance uses its own.
+- **Owner view:** `GET /api/search-misses?month=YYYY-MM` — signed in as `ADMIN_EMAIL`, like the other
+  owner endpoints. The page is `pages/search-misses.html` (not linked, not indexed): top searches,
+  counts and a CSV download.
+- **Only the site may report:** requests whose `Origin` is not in `ALLOWED_ORIGIN` are ignored. The
+  endpoint always answers `204`.
+- **KV cost:** each reported search is about two KV reads and two writes. The free tier allows 1,000
+  writes a day, which is far more than no-result searches on a site this size.
+
 ## Collecting your signups / users
 All users live in the **USERS** KV namespace. View them in the Cloudflare dashboard (Workers & Pages → KV), or `wrangler kv key list --binding USERS`.
 

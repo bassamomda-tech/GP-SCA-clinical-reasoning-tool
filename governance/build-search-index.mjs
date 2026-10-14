@@ -10,6 +10,9 @@
    (assets/search/idx-<type>.json). The search box loads them only when
    someone starts typing. No dependencies beyond Node 18+.
 
+   After the same content changes, also rebuild the owner review-due index:
+       node governance/build-review-index.mjs   (writes assets/review-index.json)
+
    What is indexed (public, indexable pages only):
      protocols  tools/management/*.html      (the MG.render data, not the script shell)
      pathways   tools/algorithms/*.html      (the Steps, #flow — never the retired Diagram/Summary views)
@@ -22,7 +25,8 @@
      audio      assets/audio-scripts-*.js    (one entry per audio briefing)
      pages      pages/*.html, tools/*.html hub/tool pages, index.html
    Skipped: meta-refresh redirect stubs, *-print.html twins, noindex pages
-   other than the Snapshots, robots-disallowed/admin pages, withheld pages
+   other than the Snapshots, robots-disallowed/admin pages (incl. the owner
+   page pages/review-due.html), withheld pages
    (Consult Scribe), the directory hubs (their cards are already in the
    topic results), and the retired 2-page algorithm summaries.
 
@@ -321,7 +325,7 @@ for (const f of glob(path.join(ROOT, 'cases'), /^[a-z0-9].*\.html$/)){
 // Tool and site pages
 const HUBS = new Set(['tools/algorithms.html','tools/management.html','cases.html','pages/articles.html','pages/audios.html','tools/prescriptions.html','tools/calculators.html','pages/search.html']);
 const WITHHELD = new Set(['tools/scribe.html']);
-const ADMIN = new Set(['tools/access-codes.html','tools/ask-quality.html','pages/ask-quality.html','pages/logo-preview.html','offline.html']);
+const ADMIN = new Set(['tools/access-codes.html','tools/ask-quality.html','pages/ask-quality.html','pages/logo-preview.html','pages/review-due.html','offline.html']);
 const pageFiles = [...glob(path.join(ROOT, 'tools'), /\.html$/), ...glob(path.join(ROOT, 'pages'), /\.html$/), path.join(ROOT, 'index.html')];
 for (const f of pageFiles){
   const rel = path.relative(ROOT, f).split(path.sep).join('/');

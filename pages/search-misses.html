@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Searches with no results · Reasoning GP</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=14" />
+<style>
+.sm-body{ max-width:860px; margin:0 auto; padding:0 20px 80px; }
+.sm-owner{ display:inline-block; margin-bottom:10px; background:var(--rust); color:#fff; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 10px; border-radius:999px; }
+.sm-card{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:0 0 16px; }
+.sm-card h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:19px; margin:0 0 6px; color:var(--ink); }
+.sm-card p{ font-size:14px; line-height:1.6; color:var(--ink-2); margin:6px 0; }
+.sm-row{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.sm-row label{ font-size:13px; font-weight:600; color:var(--ink-2); }
+.sm-in, .sm-sel{ font:inherit; font-size:15px; padding:9px 12px; border:1px solid var(--line-2); border-radius:10px; background:var(--surface); color:var(--ink); min-width:0; }
+.sm-in{ flex:1 1 220px; }
+.sm-btn{ font:inherit; font-size:14px; font-weight:700; padding:9px 16px; border-radius:10px; border:1px solid var(--teal); background:var(--teal); color:#fff; cursor:pointer; min-height:40px; }
+.sm-btn.ghost{ background:var(--surface); color:var(--teal); }
+.sm-btn[disabled]{ opacity:.5; cursor:default; }
+.sm-note{ font-size:12.5px; color:var(--muted); line-height:1.55; }
+.sm-err{ background:var(--rust-soft); border:1px solid #e8c4b4; border-radius:12px; padding:12px 16px; font-size:13.5px; line-height:1.55; margin:0 0 16px; color:var(--ink); }
+.sm-stats{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:0 0 14px; }
+.sm-stat{ background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:10px 12px; }
+.sm-stat b{ display:block; font-size:22px; color:var(--teal); font-variant-numeric:tabular-nums; }
+.sm-stat span{ font-size:12px; color:var(--muted); }
+.sm-table{ width:100%; border-collapse:collapse; font-size:14px; table-layout:fixed; }
+.sm-table th{ text-align:left; font-size:12px; color:var(--muted); font-weight:600; padding:6px 8px; border-bottom:1px solid var(--line-2); }
+.sm-table td{ padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:middle; }
+.sm-table td.t{ overflow-wrap:anywhere; }
+.sm-table .n{ width:44px; color:var(--muted); font-variant-numeric:tabular-nums; }
+.sm-table .c{ width:64px; text-align:right; font-weight:700; font-variant-numeric:tabular-nums; }
+.sm-table .bar{ width:28%; }
+.sm-bar{ height:8px; border-radius:4px; background:var(--teal-soft); overflow:hidden; }
+.sm-bar i{ display:block; height:100%; background:var(--teal-3); }
+.sm-empty{ padding:18px; border:1px dashed var(--line-2); border-radius:12px; color:var(--muted); font-size:14px; background:var(--surface-2); }
+@media (max-width:600px){
+  .sm-body{ padding:0 14px 60px; }
+  .sm-table .bar{ display:none; }
+  .sm-stat b{ font-size:18px; }
+}
+</style>
+</head>
+<body>
+<aside class="sidebar" data-active-id="__search-misses"></aside>
+<div class="app"><main class="main">
+
+<section class="page-hero" data-screen-label="Searches with no results hero">
+  <div class="page-hero-inner">
+    <span class="sm-owner">Owner page · not linked, not indexed</span>
+    <h1>Searches with <em>no results</em></h1>
+    <p>What people searched for on the site and found nothing — the gaps worth writing next. Only the words and a monthly count are kept: no names, accounts, IP addresses or times. Searches that look like an NHS number, phone number, email, postcode or date are never recorded.</p>
+  </div>
+</section>
+
+<div class="sm-body">
+  <div id="smErr" class="sm-err" hidden></div>
+
+  <div class="sm-card" id="smAuth">
+    <h2>Owner sign-in</h2>
+    <p id="smWho">Checking…</p>
+    <form class="sm-row" id="smKeyForm" autocomplete="off">
+      <label for="smKey">Owner key</label>
+      <input id="smKey" class="sm-in" type="password" placeholder="Leave blank to use your sign-in on this browser" spellcheck="false" />
+      <button class="sm-btn ghost" type="submit">Use key</button>
+      <button class="sm-btn ghost" type="button" id="smForget" hidden>Forget key</button>
+    </form>
+    <p class="sm-note">The owner view uses the same check as the other owner tools: you must be signed in to the site with the owner email (<code>ADMIN_EMAIL</code> in the Worker). The key box is only for a sign-in key copied from another browser; it is kept in this tab only and cleared when you close it.</p>
+  </div>
+
+  <div class="sm-card">
+    <div class="sm-row" style="justify-content:space-between">
+      <div class="sm-row">
+        <label for="smMonth">Month</label>
+        <select id="smMonth" class="sm-sel"></select>
+        <button class="sm-btn" type="button" id="smLoad">Load</button>
+      </div>
+      <button class="sm-btn ghost" type="button" id="smCsv" disabled>Download CSV</button>
+    </div>
+  </div>
+
+  <div id="smOut"><div class="sm-empty">Choose a month and press Load.</div></div>
+</div>
+
+</main></div>
+<script src="../assets/site.js?v=106"></script>
+<script>
+(function(){
+  'use strict';
+  var KEY_STORE = 'rgp.searchMisses.key';
+  var $ = function(id){ return document.getElementById(id); };
+  var last = null;
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
+  function workerUrl(){ var c = window.RGP_CONFIG || {}; return c.workerUrl ? String(c.workerUrl).replace(/\/$/, '') : ''; }
+  function sessionKey(){ try { return sessionStorage.getItem(KEY_STORE) || ''; } catch (e) { return ''; } }
+  function signInToken(){ try { return localStorage.getItem('rgp.auth.token.v1') || ''; } catch (e) { return ''; } }
+  function token(){ return sessionKey() || signInToken(); }
+  function monthOf(d){ return d.getUTCFullYear() + '-' + String(d.getUTCMonth() + 1).padStart(2, '0'); }
+  function monthLabel(m){
+    var p = m.split('-'); var d = new Date(Date.UTC(+p[0], +p[1] - 1, 1));
+    try { return d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }); } catch (e) { return m; }
+  }
+  function showErr(html){ var e = $('smErr'); if (!html){ e.hidden = true; e.innerHTML = ''; return; } e.innerHTML = html; e.hidden = false; }
+  function who(){
+    var me = null; try { me = JSON.parse(localStorage.getItem('rgp.auth.me.v1') || 'null'); } catch (e) {}
+    var k = sessionKey();
+    $('smForget').hidden = !k;
+    if (k) $('smWho').innerHTML = 'Using the owner key saved in this tab.';
+    else if (signInToken()) $('smWho').innerHTML = 'Using your sign-in on this browser' + (me && me.email ? ' (<b>' + esc(me.email) + '</b>)' : '') + '.';
+    else $('smWho').innerHTML = 'You are not signed in. <a href="#" id="smSignIn">Sign in as the owner</a>, or paste an owner key below.';
+    var a = $('smSignIn'); if (a) a.addEventListener('click', function(ev){ ev.preventDefault(); if (window.RGP_openAuth) window.RGP_openAuth('signin'); });
+  }
+  function fillMonths(list, current){
+    var sel = $('smMonth'), now = new Date(), seen = {}, opts = [];
+    for (var i = 0; i < 12; i++){ var m = monthOf(new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - i, 1))); seen[m] = 1; opts.push(m); }
+    (list || []).forEach(function(m){ if (!seen[m] && /^\d{4}-\d{2}$/.test(m)){ seen[m] = 1; opts.push(m); } });
+    opts.sort().reverse();
+    var keep = current || sel.value || opts[0];
+    sel.innerHTML = opts.map(function(m){ return '<option value="' + m + '"' + (m === keep ? ' selected' : '') + '>' + esc(monthLabel(m)) + ((list || []).indexOf(m) >= 0 ? '' : ' (no data)') + '</option>'; }).join('');
+  }
+  function render(d){
+    last = d;
+    $('smCsv').disabled = !(d.terms && d.terms.length);
+    if (!d.terms || !d.terms.length){
+      $('smOut').innerHTML = '<div class="sm-empty">No searches without results were recorded in ' + esc(monthLabel(d.month)) + '.</div>';
+      return;
+    }
+    var max = d.terms[0].count || 1;
+    var rows = d.terms.map(function(t, i){
+      return '<tr><td class="n">' + (i + 1) + '</td><td class="t">' + esc(t.term) + '</td><td class="c">' + t.count + '</td><td class="bar"><div class="sm-bar"><i style="width:' + Math.max(3, Math.round(100 * t.count / max)) + '%"></i></div></td></tr>';
+    }).join('');
+    $('smOut').innerHTML =
+      '<div class="sm-stats">' +
+        '<div class="sm-stat"><b>' + d.total + '</b><span>searches with no results</span></div>' +
+        '<div class="sm-stat"><b>' + d.distinct + '</b><span>different searches</span></div>' +
+        '<div class="sm-stat"><b>' + (d.overflow || 0) + '</b><span>over the ' + (d.cap || 2000) + ' limit</span></div>' +
+      '</div>' +
+      '<div class="sm-card" style="padding:8px 10px"><table class="sm-table"><thead><tr><th class="n">#</th><th>Search</th><th class="c">Count</th><th class="bar"></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      '<p class="sm-note">Most-searched first. Add a synonym (governance/search-synonyms.txt) when the page exists under another name; write the page when it does not.</p>';
+  }
+  function load(){
+    showErr('');
+    var base = workerUrl();
+    if (!base){ showErr('The Worker address is not set on this copy of the site (RGP_CONFIG.workerUrl in assets/site.js), so there is nothing to read. Open this page on the live site.'); return; }
+    var t = token();
+    if (!t){ showErr('<b>Owner sign-in needed.</b> Sign in with the owner account (the email in <code>ADMIN_EMAIL</code>), then press Load.'); return; }
+    var m = $('smMonth').value || monthOf(new Date());
+    $('smLoad').disabled = true;
+    $('smOut').innerHTML = '<div class="sm-empty">Loading…</div>';
+    fetch(base + '/api/search-misses?month=' + encodeURIComponent(m), { headers: { 'Authorization': 'Bearer ' + t } })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { ok: r.ok, status: r.status, j: j }; }); })
+      .then(function(x){
+        if (x.status === 404){ throw new Error('not_deployed'); }
+        if (x.status === 401 || x.status === 403){ throw new Error('auth:' + (x.j.error || '')); }
+        if (!x.ok) throw new Error(x.j.error || ('HTTP ' + x.status));
+        fillMonths(x.j.months, x.j.month);
+        render(x.j);
+      })
+      .catch(function(e){
+        var msg = String(e && e.message || e);
+        $('smOut').innerHTML = '';
+        $('smCsv').disabled = true;
+        if (msg === 'not_deployed') showErr('<b>The Worker has not been updated yet.</b> Deploy the new <code>backend/worker.js</code> (see the Upload 100 MANIFEST). Until then the site works as before and nothing is recorded.');
+        else if (msg.indexOf('auth:') === 0) showErr('<b>Owner sign-in needed.</b> This list is only for the owner account (<code>ADMIN_EMAIL</code> in the Worker). ' + esc(msg.slice(5)));
+        else showErr('Could not load: ' + esc(msg));
+      })
+      .then(function(){ $('smLoad').disabled = false; });
+  }
+  function csvCell(s){
+    s = String(s == null ? '' : s);
+    if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;          // keep spreadsheets from running it as a formula
+    return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+  function csv(){
+    if (!last || !last.terms) return;
+    var lines = ['search,count,month'].concat(last.terms.map(function(t){ return csvCell(t.term) + ',' + t.count + ',' + last.month; }));
+    var blob = new Blob(['﻿' + lines.join('\r\n') + '\r\n'], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'searches-no-results-' + last.month + '.csv';
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  }
+  $('smKeyForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var v = $('smKey').value.trim();
+    try { if (v) sessionStorage.setItem(KEY_STORE, v); else sessionStorage.removeItem(KEY_STORE); } catch (err) {}
+    $('smKey').value = '';
+    who(); load();
+  });
+  $('smForget').addEventListener('click', function(){ try { sessionStorage.removeItem(KEY_STORE); } catch (e) {} who(); });
+  $('smLoad').addEventListener('click', load);
+  $('smCsv').addEventListener('click', csv);
+  fillMonths([], null);
+  who();
+  if (token() && workerUrl()) load();
+})();
+</script>
+</body></html>

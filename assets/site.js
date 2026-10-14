@@ -21,6 +21,22 @@
   s.src = (m ? m[1] : '') + 'assets/a11y.js?v=2';
   document.head.appendChild(s);
 })();
+/* Anonymous page counts (assets/analytics.js — does nothing until the owner pastes
+   the Cloudflare Web Analytics token into it) and structured data for search engines
+   (assets/seo-jsonld.js). provenance.js loads the same two on clinical pages; each
+   file guards against running twice. */
+(function(){
+  var el = document.querySelector('script[src*="assets/site.js"], link[href*="assets/site.css"]');
+  var u = el ? (el.getAttribute('src') || el.getAttribute('href') || '') : '';
+  var m = u.match(/^(.*?)assets\//);
+  ['analytics.js?v=1', 'seo-jsonld.js?v=1'].forEach(function(f){
+    if (document.querySelector('script[src*="assets/' + f.split('?')[0] + '"]')) return;
+    var s = document.createElement('script');
+    s.src = (m ? m[1] : '') + 'assets/' + f;
+    s.defer = true;
+    document.head.appendChild(s);
+  });
+})();
 
 window.RGP_CONFIG = window.RGP_CONFIG || {
   // e.g. 'https://reasoning-gp-api.YOURNAME.workers.dev'  (no trailing slash)
@@ -1813,7 +1829,7 @@ function injectPalette(){
     const go = () => { window.RGPSearch.onUpdate = () => { if (!el.hidden) render(input.value); }; window.RGPSearch.onUpdate(); };
     if (window.RGPSearch) return go();
     const s = document.createElement('script');
-    s.src = PRE + 'assets/site-search.js?v=1';
+    s.src = PRE + 'assets/site-search.js?v=2';
     s.onload = go;
     document.head.appendChild(s);
   });

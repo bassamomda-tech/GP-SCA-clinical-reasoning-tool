@@ -1218,7 +1218,17 @@ PX.ready(function(){
   function sectionNum(s){ var n = s.querySelector(':scope > .mg-sec-h .mg-sec-n'); return n ? squash(n.textContent) : ''; }
   function applyRedFlags(){
     var info = decideRedFlags(); API.redFlags = {renamed: info.renamed, n: info.n, title: info.title, nav: info.nav, reason: info.reason, id: info.el ? info.el.id : ''};
-    if(info.el && W.PX){ var target = info.el; W.PX.redFlagTarget = function(){ return target; }; }
+    /* Red flags button: the red-flags step; else a step whose title or rail label says "red flags";
+       else the Refer step (owner decision, Oct 2026); else the original fallback */
+    if(W.PX){
+      var rfSecs = sections().filter(function(s){ return !isRefs(s) && !s.closest('.px-refs'); });
+      var target = info.el
+        || rfSecs.filter(function(s){ return /\bred[ -]?flags?\b/i.test(secNav(s) + ' ' + bareTitle(s)); })[0]
+        || rfSecs.filter(function(s){ return /^refer/i.test(s.id || ''); })[0]
+        || rfSecs.filter(function(s){ return /\brefer(ral)?s?\b/i.test(secNav(s) + ' ' + bareTitle(s)); })[0]
+        || null;
+      if(target) W.PX.redFlagTarget = function(){ return target; };
+    }
     if(!info.renamed) return;
     var s = info.el, h2 = s.querySelector(':scope > .mg-sec-h h2');
     /* header: "Red flags" + the original title as a subtitle (the original nodes are kept, not copied) */

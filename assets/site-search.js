@@ -493,7 +493,7 @@
   function paletteFill(list, q, startIdx, active){
     css();
     q = String(q || '');
-    if (!q.trim()) return;
+    if (!q.trim()){ missCancel(); return; }
     load();
     var box = document.createElement('div');
     box.className = 'rgp-fts';
@@ -503,6 +503,7 @@
     var total = res ? res.total : 0;
     html += '<div class="rgp-pl-group rgp-fts-h"><span>Matches in pages</span><small>' + (res ? (total ? total + (total === 1 ? ' page' : ' pages') : '') : '') + (ready ? '' : ' · loading…') + '</small></div>';
     if (res && total){
+      missCancel();
       var counts = res.counts;
       var chips = '<button type="button" class="rgp-fts-chip" data-fts-type="all" aria-pressed="' + (palType === 'all') + '">All<span>' + total + '</span></button>';
       ORDER.forEach(function(ty){ if (counts[ty]) chips += '<button type="button" class="rgp-fts-chip" data-fts-type="' + ty + '" aria-pressed="' + (palType === ty) + '">' + TYPES[ty].label + '<span>' + counts[ty] + '</span></button>'; });
@@ -512,6 +513,8 @@
       html += '<a class="rgp-pl-item rgp-fts-item rgp-fts-all' + (idx === active ? ' is-active' : '') + '" href="' + esc(ROOT + 'pages/search.html?q=' + encodeURIComponent(q.trim()) + (palType !== 'all' ? '&type=' + palType : '')) + '" data-idx="' + idx + '" role="option"><span class="rgp-fts-mid"><span class="rgp-fts-top">Search all results for <b>‘' + esc(q.trim()) + '’</b> →</span></span><span class="rgp-pl-key">↵</span></a>';
       idx++;
     } else if (res && ready){
+      // nothing in the topic list either (startIdx 0) → a search with no results at all
+      if (startIdx === 0 && !failed.length) missWatch(q); else missCancel();
       html += '<div class="rgp-fts-status">No page mentions <b>‘' + esc(q.trim()) + '’</b>.</div>';
       html += '<a class="rgp-pl-item rgp-fts-item' + (idx === active ? ' is-active' : '') + '" href="' + esc(ROOT + 'pages/ask.html?q=' + encodeURIComponent(q.trim())) + '" data-idx="' + idx + '" role="option"><span class="rgp-fts-mid"><span class="rgp-fts-top">Try Ask for a question in plain English →</span><span class="rgp-fts-snip">Ask answers from the whole library, in your own words.</span></span><span class="rgp-pl-key">↵</span></a>';
       idx++;
@@ -543,6 +546,70 @@
     });
   }
 
+  /* ---------------- searches with no results (anonymous) ----------------
+     When a search finds nothing at all, its words — and nothing else — are sent
+     to the Worker so the owner can see what the site is missing
+     (pages/search-misses.html). Sent at most once per distinct search per page
+     view, and only after typing stops for 1.5 s or Enter is pressed. Before
+     sending, the words are lower-cased, spaces collapsed and cut to 60
+     characters, and dropped entirely if they could hold personal data: a run of
+     6+ digits (NHS number, phone), an email, a UK postcode or a date. The Worker
+     applies the same rules again. No account, token, cookie or page address is
+     sent, and nothing is sent until RGP_CONFIG.workerUrl is set and the Worker
+     has the /api/search-miss endpoint. See pages/privacy.html. */
+  var MISS_WAIT = 1500;
+  var miss = { q: '', t: null, sent: {} };
+  // Same rules in the browser (assets/site-search.js) and the Worker (backend/worker.js).
+  var MISS_MON = '(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)';
+  var MISS_DROP = [
+    /\d(?:[\s.\/-]?\d){5,}/,                                                    // 6+ digits in a row (NHS number, phone, hospital number)
+    /@/,                                                                         // email address
+    /\b[a-z]{1,2}\d[a-z\d]?\s*\d[a-z]{2}\b/,                                     // UK postcode (sw1a 1aa, m1 1ae)
+    /\b\d{1,2}([\/.-])\d{1,2}\1\d{2,4}\b|\b\d{4}([\/.-])\d{1,2}\2\d{1,2}\b/,      // 12/03/1980, 1980-03-12
+    new RegExp('\\b\\d{1,2}(?:st|nd|rd|th)?\\s+(?:of\\s+)?' + MISS_MON + '\\b'),   // 12 march, 1st of may
+    new RegExp('\\b' + MISS_MON + '\\.?\\s+(?:\\d{1,2}(?:st|nd|rd|th)?,?\\s+)?(?:19|20)\\d\\d\\b') // march 1980, march 12, 1980
+  ];
+  function missClean(q){
+    var s = String(q == null ? '' : q).toLowerCase().replace(/[\u0000-\u001f<>"`\\]/g, ' ').replace(/\s+/g, ' ').trim();
+    if (s.length < 3) return '';
+    for (var i = 0; i < MISS_DROP.length; i++) if (MISS_DROP[i].test(s)) return '';
+    return s.slice(0, 60).trim();
+  }
+  function missSend(s){
+    if (!s || miss.sent[s]) return;
+    var cfg = window.RGP_CONFIG || {};
+    var base = cfg.workerUrl ? String(cfg.workerUrl).replace(/\/$/, '') : '';
+    if (!base) return;
+    miss.sent[s] = 1;
+    var url = base + '/api/search-miss', body = JSON.stringify({ q: s });
+    try {
+      if (navigator.sendBeacon && navigator.sendBeacon(url, new Blob([body], { type: 'text/plain;charset=UTF-8' }))) return;
+    } catch (e) {}
+    try {
+      fetch(url, { method: 'POST', body: body, headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, credentials: 'omit', keepalive: true, referrerPolicy: 'no-referrer' }).catch(function(){});
+    } catch (e) {}
+  }
+  function missCancel(){ if (miss.t) clearTimeout(miss.t); miss.t = null; miss.q = ''; }
+  // a search is showing no results: (re)start the 1.5 s wait, unless it is the same search
+  function missWatch(q){
+    var s = missClean(q);
+    if (!s){ missCancel(); return; }
+    if (s === miss.q && miss.t) return;
+    missCancel();
+    miss.q = s;
+    miss.t = setTimeout(function(){ miss.t = null; var x = miss.q; miss.q = ''; missSend(x); }, MISS_WAIT);
+  }
+  // Enter pressed: send a waiting no-result search now
+  function missNow(q){
+    var s = missClean(q);
+    if (s && s === miss.q && miss.t){ clearTimeout(miss.t); miss.t = null; miss.q = ''; missSend(s); }
+  }
+  // Enter in the header search box (assets/site.js palette)
+  document.addEventListener('keydown', function(e){
+    var t = e.target;
+    if (e.key === 'Enter' && t && t.classList && t.classList.contains('rgp-palette-input')) missNow(t.value);
+  }, true);
+
   /* ---------------- pages/search.html ---------------- */
   function mountPage(root){
     css();
@@ -568,7 +635,7 @@
     }
     function draw(){
       activeIdx = -1;
-      if (!st.q.trim()){ statusEl.textContent = 'Type a word or phrase — every protocol, pathway, case, article and tool is searched.'; listEl.innerHTML = ''; chipsEl.innerHTML = ''; pagerEl.innerHTML = ''; return; }
+      if (!st.q.trim()){ missCancel(); statusEl.textContent = 'Type a word or phrase — every protocol, pathway, case, article and tool is searched.'; listEl.innerHTML = ''; chipsEl.innerHTML = ''; pagerEl.innerHTML = ''; return; }
       if (!shards.length){ statusEl.textContent = 'Loading the search index…'; return; }
       var res = search(st.q, { type: st.type });
       var total = res.total, shown = res.results.length;
@@ -579,11 +646,13 @@
       if (st.p > pages) st.p = pages;
       var slice = res.results.slice((st.p - 1) * PER, st.p * PER).map(resolve);
       if (!shown){
+        if (ready && !failed.length && !total) missWatch(st.q); else missCancel();
         statusEl.innerHTML = ready ? 'No page mentions <b>‘' + esc(st.q) + '’</b>' + (st.type !== 'all' ? ' in ' + TYPES[st.type].label + 's' : '') + '.' : 'Searching…';
         listEl.innerHTML = ready ? '<li class="srp-empty">Try fewer or different words, or <a href="' + esc(ROOT + 'pages/ask.html?q=' + encodeURIComponent(st.q)) + '">try Ask for a question in plain English →</a></li>' : '';
         pagerEl.innerHTML = '';
         return;
       }
+      missCancel();
       statusEl.innerHTML = shown + (shown === 1 ? ' page' : ' pages') + ' mention <b>‘' + esc(st.q) + '’</b>' + (res.partial ? ' (closest matches — no page has every word)' : '') +
         ' · page ' + st.p + ' of ' + pages + (ready ? '' : ' · still loading…') + ' <span class="srp-ms">' + res.ms.toFixed(0) + ' ms</span>';
       listEl.innerHTML = slice.map(function(r){
@@ -605,7 +674,7 @@
       }
       pagerEl.innerHTML = pg;
     }
-    root.querySelector('.srp-form').addEventListener('submit', function(e){ e.preventDefault(); st.q = input.value.trim(); st.p = 1; sync(true); draw(); });
+    root.querySelector('.srp-form').addEventListener('submit', function(e){ e.preventDefault(); st.q = input.value.trim(); st.p = 1; sync(true); draw(); missNow(st.q); });
     var tmr = null;
     input.addEventListener('input', function(){ clearTimeout(tmr); tmr = setTimeout(function(){ st.q = input.value; st.p = 1; sync(false); draw(); }, 120); });
     chipsEl.addEventListener('click', function(e){ var b = e.target.closest('[data-t]'); if (!b) return; st.type = b.getAttribute('data-t'); st.p = 1; sync(true); draw(); var nb = chipsEl.querySelector('[data-t="' + st.type + '"]'); if (nb) nb.focus(); });
@@ -640,6 +709,7 @@
     onUpdate: null,
     lastMs: 0,
     types: TYPES,
+    missClean: missClean,
     stats: function(){ return { ready: ready, loadMs: loadMs, gz: bytes, built: manifest && manifest.built, hash: manifest && manifest.hash, docs: manifest && manifest.totals && manifest.totals.docs, failed: failed.slice(), shards: shards.length, loaded: shards.map(function(x){ return x.type; }) }; }
   };
   window.RGPSearch = api;

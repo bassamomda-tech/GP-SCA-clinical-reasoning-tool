@@ -396,6 +396,22 @@ else start();
   document.head.appendChild(s);
 })();
 
+/* Anonymous page counts (assets/analytics.js — inert until the owner pastes the
+   Cloudflare Web Analytics token) and structured data for search engines
+   (assets/seo-jsonld.js) ride along here for the same reason as a11y.js: protocol,
+   pathway and case pages do not load site.js. Not on print copies. Both files guard
+   against running twice. */
+(function(){
+  if(document.querySelector('meta[name="omelette-print-source"]') || /-print\.html?$/i.test(location.pathname)) return;
+  ['analytics.js?v=1', 'seo-jsonld.js?v=1'].forEach(function(f){
+    if(document.querySelector('script[src*="assets/' + f.split('?')[0] + '"]')) return;
+    var s = document.createElement('script');
+    s.src = root() + 'assets/' + f;
+    s.defer = true;
+    document.head.appendChild(s);
+  });
+})();
+
 /* Whole-site search: a result links here with ?hl=<words>. Protocol and pathway
    pages do not load site.js, so the highlighter rides along with this file too.
    It marks the words, opens the folded section / drawer that holds them and

@@ -1,0 +1,118 @@
+# Monthly broken-link check for gpreasoning.uk
+#
+# Runs governance/check-links.mjs on the 1st of every month at 06:17 UTC
+# (and whenever you press "Run workflow" on the Actions tab).
+# - The full report is attached to the run as an artifact ("link-check-report").
+# - If any link is BROKEN, ONE issue titled "Monthly link check: N broken links"
+#   is opened, or the existing open one is updated.
+# - If a later run finds no broken links, that issue gets a comment and is closed.
+# - Nothing is ever committed to the repository.
+# How to read the issue: governance/UPDATE-PROCESS.md, "Monthly link check".
+
+name: Monthly link check
+
+on:
+  schedule:
+    - cron: '17 6 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: link-check
+  cancel-in-progress: false
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check every external link
+        id: check
+        run: node governance/check-links.mjs
+
+      - name: Attach the report to this run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-report
+          path: |
+            governance/reports/link-check.md
+            governance/reports/link-check.json
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Open or update the issue
+        if: steps.check.outcome == 'success'
+        uses: actions/github-script@v7
+        env:
+          BROKEN: ${{ steps.check.outputs.broken }}
+          NETWORK_SUSPECT: ${{ steps.check.outputs.network_suspect }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const broken = parseInt(process.env.BROKEN || '0', 10);
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const PREFIX = 'Monthly link check:';
+
+            if (process.env.NETWORK_SUSPECT === 'true') {
+              core.warning('Most links could not be reached at all - probably a network problem on the runner. No issue opened. Re-run the workflow.');
+              return;
+            }
+
+            // Find the one open issue this workflow manages (matched by title prefix).
+            const open = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100,
+            });
+            const existing = open.find(i => !i.pull_request && i.title.startsWith(PREFIX));
+
+            if (broken === 0) {
+              if (existing) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number,
+                  body: `This month's check found **no broken links**, so this issue is being closed. Full report: ${runUrl} (artifact "link-check-report").`,
+                });
+                await github.rest.issues.update({
+                  owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number,
+                  state: 'closed', state_reason: 'completed',
+                });
+              }
+              core.info('No broken links.');
+              return;
+            }
+
+            let md = fs.readFileSync('governance/reports/link-check.md', 'utf8');
+            const header = `Report from [this run](${runUrl}). The full report (with moved and blocked links) is attached to the run as the "link-check-report" artifact.\n\n`;
+            const LIMIT = 60000; // GitHub issue bodies are limited to 65,536 characters
+            if (header.length + md.length > LIMIT) {
+              md = md.slice(0, LIMIT - header.length - 200) + '\n\n_The report was cut short here because it is too long for an issue. Download the "link-check-report" artifact from the run for the rest._\n';
+            }
+            const title = `${PREFIX} ${broken} broken link${broken === 1 ? '' : 's'}`;
+            const body = header + md;
+
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, title, body,
+              });
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number,
+                body: `Updated by the ${new Date().toISOString().slice(0, 10)} check: ${broken} broken link${broken === 1 ? '' : 's'}. ${runUrl}`,
+              });
+              core.info(`Updated issue #${existing.number}`);
+            } else {
+              const res = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo, title, body,
+              });
+              core.info(`Opened issue #${res.data.number}`);
+            }

@@ -13,6 +13,8 @@
      • Manage my plan (/api/plan, /api/plan/pause|resume|cancel) and
        the owner's /api/admin/plan — pause, resume and cancel the
        member's PayPal subscription. See the block at the end.
+     • Searches with no results (/api/search-miss, owner view
+       /api/search-misses) — anonymous monthly counts of search words.
 
    DEPLOY: see backend/README.md. You need two KV namespaces
    (USERS, TOKENS) and a handful of secrets/vars (below).
@@ -65,6 +67,8 @@ export default {
       if (url.pathname === '/api/admin/ask')      return await adminAsk(request, env, cors);
       if (url.pathname === '/api/updates')        return await updatesFeed(request, env, cors);
       if (url.pathname === '/api/updates/archive') return await updatesArchive(request, env, cors);
+      if (url.pathname === '/api/search-miss')    return await searchMiss(request, env, cors);
+      if (url.pathname === '/api/search-misses')  return await searchMisses(request, env, cors);
       if (url.pathname === '/api/paypal/webhook') return await paypalWebhook(request, env);
       if (url.pathname === '/api/health')         return json({ ok: true }, 200, cors);
       return json({ error: 'Not found' }, 404, cors);
@@ -977,6 +981,103 @@ async function adminAsk(request, env, cors) {
     return json({ ok: true }, 200, cors);
   }
   return json({ error: 'bad_action' }, 400, cors);
+}
+
+/* ---------------- Searches with no results (anonymous) ----------------
+   POST /api/search-miss  {q}                (public; sent by the site search with
+                                              navigator.sendBeacon as text/plain)
+   GET  /api/search-misses?month=YYYY-MM     (ADMIN_EMAIL only — requireAdmin, exactly
+                                              like the other /api/admin/* endpoints)
+   What is kept: the search words and how many times they were searched, per
+   calendar month, in the existing USERS KV under miss:YYYY-MM — nothing else.
+   No IP address, account, cookie, page or time beyond the month. Each month's
+   key expires automatically 12 months after that month ends.
+   The words are filtered again here (the browser already did it): lower-case,
+   spaces collapsed, max 60 characters, and dropped entirely if they contain a
+   run of 6+ digits, an email address, a UK postcode or a date.
+   At most MISS_MAX_TERMS different searches a month; past that only a count.
+   Rate limit: MISS_RL_MAX a minute per visitor, counted against a salted hash
+   of the IP address in a KV key that expires after 60 seconds (the same
+   KV-with-expiry pattern as planRateLimit). The IP itself is never stored.
+   Always answers 204 so the browser learns nothing. No new KV namespace. */
+const MISS_MAX_TERMS = 2000;
+const MISS_RL_MAX = 20;
+let MISS_SALT_RUNTIME = '';   // made on first use (random values are not allowed at global scope); used when no MISS_SALT secret is set
+// Same rules in the browser (assets/site-search.js) and the Worker (backend/worker.js).
+var MISS_MON = '(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)';
+var MISS_DROP = [
+  /\d(?:[\s.\/-]?\d){5,}/,                                                    // 6+ digits in a row (NHS number, phone, hospital number)
+  /@/,                                                                         // email address
+  /\b[a-z]{1,2}\d[a-z\d]?\s*\d[a-z]{2}\b/,                                     // UK postcode (sw1a 1aa, m1 1ae)
+  /\b\d{1,2}([\/.-])\d{1,2}\1\d{2,4}\b|\b\d{4}([\/.-])\d{1,2}\2\d{1,2}\b/,      // 12/03/1980, 1980-03-12
+  new RegExp('\\b\\d{1,2}(?:st|nd|rd|th)?\\s+(?:of\\s+)?' + MISS_MON + '\\b'),   // 12 march, 1st of may
+  new RegExp('\\b' + MISS_MON + '\\.?\\s+(?:\\d{1,2}(?:st|nd|rd|th)?,?\\s+)?(?:19|20)\\d\\d\\b') // march 1980, march 12, 1980
+];
+function missClean(q){
+  var s = String(q == null ? '' : q).toLowerCase().replace(/[\u0000-\u001f<>"`\\]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (s.length < 3) return '';
+  for (var i = 0; i < MISS_DROP.length; i++) if (MISS_DROP[i].test(s)) return '';
+  return s.slice(0, 60).trim();
+}
+function missMonth(d) { d = d || new Date(); return d.getUTCFullYear() + '-' + String(d.getUTCMonth() + 1).padStart(2, '0'); }
+// expire 12 months after the END of the month (first day of month + 13 months)
+function missExpiry(month) { const [y, m] = month.split('-').map(Number); return Math.floor(Date.UTC(y, m - 1 + 13, 1) / 1000); }
+async function missRateOk(request, env) {
+  const ip = request.headers.get('CF-Connecting-IP') || '';
+  if (!ip) return true;
+  if (!env.MISS_SALT && !MISS_SALT_RUNTIME) MISS_SALT_RUNTIME = randHex(16);
+  const salt = String(env.MISS_SALT || MISS_SALT_RUNTIME);
+  const h = hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(salt + '|' + missMonth() + '|' + ip))).slice(0, 24);
+  const k = 'missrl:' + h;
+  let n = 0;
+  try { n = parseInt((await env.USERS.get(k)) || '0', 10) || 0; } catch (e) {}
+  if (n >= MISS_RL_MAX) return false;
+  await env.USERS.put(k, String(n + 1), { expirationTtl: 60 });
+  return true;
+}
+async function searchMiss(request, env, cors) {
+  if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
+  const done = new Response(null, { status: 204, headers: cors });
+  // only the site itself may report (the browser sends Origin on a beacon)
+  const allowed = String(env.ALLOWED_ORIGIN || '').split(',').map(s => s.trim()).filter(Boolean);
+  if (allowed.length && !allowed.includes(request.headers.get('Origin') || '')) return done;
+  if (!env.USERS) return done;
+  let term = '';
+  try {
+    const raw = (await request.text()).slice(0, 2000);
+    term = missClean(JSON.parse(raw).q);
+  } catch (e) { return done; }
+  if (!term) return done;
+  try {
+    if (!(await missRateOk(request, env))) return done;
+    const month = missMonth();
+    const key = 'miss:' + month;
+    let rec = null;
+    try { rec = JSON.parse((await env.USERS.get(key)) || 'null'); } catch (e) {}
+    if (!rec || typeof rec.terms !== 'object' || !rec.terms) rec = { month, terms: {}, overflow: 0 };
+    if (Object.prototype.hasOwnProperty.call(rec.terms, term)) rec.terms[term] = (Number(rec.terms[term]) || 0) + 1;
+    else if (Object.keys(rec.terms).length < MISS_MAX_TERMS) rec.terms[term] = 1;
+    else rec.overflow = (Number(rec.overflow) || 0) + 1;
+    await env.USERS.put(key, JSON.stringify(rec), { expiration: missExpiry(month) });
+  } catch (e) {}
+  return done;
+}
+async function searchMisses(request, env, cors) {
+  try { await requireAdmin(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  if (request.method !== 'GET') return json({ error: 'method' }, 405, cors);
+  let month = String(new URL(request.url).searchParams.get('month') || '').trim();
+  if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month)) month = missMonth();
+  let rec = null;
+  try { rec = JSON.parse((await env.USERS.get('miss:' + month)) || 'null'); } catch (e) {}
+  const terms = Object.entries((rec && rec.terms) || {})
+    .map(([term, count]) => ({ term, count: Number(count) || 0 }))
+    .sort((a, b) => b.count - a.count || a.term.localeCompare(b.term));
+  const months = [];
+  try { const res = await env.USERS.list({ prefix: 'miss:', limit: 100 }); for (const k of res.keys) months.push(k.name.slice(5)); } catch (e) {}
+  months.sort().reverse();
+  return json({ month, terms, total: terms.reduce((s, t) => s + t.count, 0), distinct: terms.length,
+                overflow: (rec && Number(rec.overflow)) || 0, cap: MISS_MAX_TERMS, months }, 200, cors);
 }
 
 /* ---------------- Embeddings proxy (Cloudflare Workers AI) ----------------

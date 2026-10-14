@@ -1,0 +1,679 @@
+# Search-engine (SEO) check
+
+Built by `node governance/build-seo.mjs` on 2026-10-14. sitemap.xml rebuilt: 563 pages (0 added, 2 removed).
+
+| Check | Before | Now |
+|---|---:|---:|
+| HTML files scanned | 1311 | 1312 |
+| public pages | 563 | 563 |
+| print copies | 210 | 210 |
+| owner / noindex pages | 401 | 402 |
+| redirect stubs | 137 | 137 |
+| title missing | 0 | 0 |
+| title duplicated | 0 | 0 |
+| title over 60 characters (advisory) | 49 | 49 |
+| description missing | 353 | 0 |
+| description duplicated | 0 | 0 |
+| description under 70 characters | 0 | 0 |
+| description over 160 characters (advisory) | 208 | 208 |
+| canonical missing | 0 | 0 |
+| canonical points elsewhere | 0 | 0 |
+| Open Graph basics missing | 562 | 0 |
+| lang is not en-GB | 563 | 0 |
+| no <h1> in the HTML (drawn by script? check in a browser) | 367 | 367 |
+| more than one <h1> | 2 | 2 |
+| owner page without noindex | 1 | 0 |
+| print copy canonical not the main page | 0 | 0 |
+| robots.txt names the sitemap | yes | yes |
+| sitemap.xml: public pages missing from it | 0 | 0 |
+| sitemap.xml: entries that should not be there | 2 | 0 |
+| sitemap.xml: entries without lastmod | 565 | 58 |
+
+Advisory rows are worth fixing when a page is next edited; they do not stop a page being indexed.
+Pages whose heading is drawn by a script (protocols, many pathways) have a rendered <h1> in the browser; the structured data script (assets/seo-jsonld.js) adds MedicalWebPage data at run time.
+
+## sitemap.xml changes
+
+Removed (redirect, print copy, owner or noindex page):
+- https://gpreasoning.uk/tools/sca-progress.html
+- https://gpreasoning.uk/tools/management/menopause.html
+
+## Details
+
+### title over 60 characters (advisory) (49)
+
+- cases/alcohol.html — 63
+- cases/analgesia-primary-care.html — 62
+- cases/anxiety.html — 62
+- cases/childhood-msk.html — 64
+- cases/cmpa-reflux.html — 62
+- cases/constipation-children.html — 61
+- cases/diverticulosis.html — 68
+- cases/ibs.html — 61
+- cases/multimorbidity-polypharmacy.html — 66
+- cases/osa.html — 61
+- cases/peripheral-arterial-disease.html — 64
+- cases/premenstrual-disorder.html — 65
+- cases/psychosis-schizophrenia.html — 62
+- cases/type-1-diabetes.html — 70
+- cases/urinary-incontinence.html — 66
+- cases/vaginal-discharge.html — 67
+- tools/algorithms/abnormal-semen-analysis.html — 64
+- tools/algorithms/allergy-test-abnormalities.html — 67
+- tools/algorithms/confusion.html — 65
+- tools/algorithms/daytime-urinary-incontinence-children.html — 65
+- tools/algorithms/developmental-delay.html — 67
+- tools/algorithms/dry-mouth.html — 63
+- tools/algorithms/female-hormone-abnormalities.html — 69
+- tools/algorithms/fever-children.html — 80
+- tools/algorithms/incidental-renal-mass.html — 62
+- tools/algorithms/paediatric-cancer-referral.html — 67
+- tools/algorithms/pigmented-skin-lesions.html — 63
+- tools/algorithms/taste-disorders.html — 74
+- tools/algorithms/watery-eye.html — 62
+- tools/management/addisons-disease.html — 67
+- tools/management/alcohol-problem-drinking.html — 63
+- tools/management/ankylosing-spondylitis.html — 74
+- tools/management/antiplatelets-anticoagulants.html — 64
+- tools/management/chest-infections.html — 70
+- tools/management/cholecystitis.html — 61
+- tools/management/diverticular-disease.html — 63
+- tools/management/driving-diseases.html — 70
+- tools/management/glandular-fever.html — 68
+- tools/management/hypertension-pregnancy.html — 64
+- tools/management/hypothyroidism.html — 69
+- tools/management/insulin-type-2-diabetes.html — 80
+- tools/management/iron-deficiency-anaemia.html — 67
+- tools/management/osa.html — 62
+- tools/management/otitis-media-effusion.html — 63
+- tools/management/palliative-delirium-agitation.html — 65
+- tools/management/palliative-respiratory-secretions.html — 67
+- tools/management/sick-day-rules.html — 73
+- tools/management/terminal-haemorrhage.html — 63
+- tools/management/tia-stroke.html — 83
+
+### description over 160 characters (advisory) (208)
+
+- index.html — 277
+- pages/accessibility.html — 181
+- pages/how-we-fit.html — 185
+- pages/pricing.html — 191
+- tools/algorithms/back-pain.html — 319
+- tools/algorithms/confusion.html — 188
+- tools/algorithms/developmental-delay.html — 333
+- tools/algorithms/scrotal-pain.html — 227
+- tools/algorithms/taste-disorders.html — 251
+- tools/management/achilles-tendinopathy.html — 399
+- tools/management/acne.html — 385
+- tools/management/actinic-keratosis.html — 402
+- tools/management/addisons-disease.html — 397
+- tools/management/adhd.html — 380
+- tools/management/aki.html — 267
+- tools/management/alcohol-problem-drinking.html — 357
+- tools/management/allergic-conjunctivitis.html — 317
+- tools/management/allergic-rhinitis.html — 335
+- tools/management/anal-fissure.html — 387
+- tools/management/anaphylaxis.html — 380
+- tools/management/angioedema.html — 335
+- tools/management/ankylosing-spondylitis.html — 356
+- tools/management/anogenital-warts.html — 413
+- tools/management/antiplatelets-anticoagulants.html — 481
+- tools/management/anxiety.html — 316
+- tools/management/aphthous-ulcer.html — 353
+- tools/management/asthma-children.html — 389
+- tools/management/asthma.html — 252
+- tools/management/atrial-fibrillation.html — 320
+- tools/management/autism.html — 340
+- tools/management/bacterial-vaginosis.html — 308
+- tools/management/bells-palsy.html — 231
+- tools/management/benign-prostate-enlargement.html — 466
+- tools/management/benzodiazepines-z-drugs.html — 400
+- tools/management/blepharitis.html — 274
+- tools/management/bppv.html — 333
+- tools/management/breast-cancer.html — 323
+- tools/management/breast-disorders.html — 349
+- tools/management/bronchiectasis.html — 296
+- tools/management/bullous-pemphigoid.html — 343
+- tools/management/care-of-the-dying.html — 341
+- tools/management/carpal-tunnel-syndrome.html — 391
+- tools/management/cauda-equina.html — 381
+- tools/management/cellulitis.html — 411
+- tools/management/chalazion.html — 426
+- tools/management/chest-infections.html — 402
+- tools/management/chilblains.html — 422
+- tools/management/chlamydia.html — 473
+- tools/management/cholecystitis.html — 318
+- tools/management/chronic-pain.html — 418
+- tools/management/ckd.html — 246
+- tools/management/cmpa.html — 357
+- tools/management/coeliac-disease.html — 328
+- tools/management/constipation-adult.html — 403
+- tools/management/constipation-child.html — 355
+- tools/management/contraception.html — 369
+- tools/management/copd.html — 273
+- tools/management/crohns-disease.html — 422
+- tools/management/dementia.html — 318
+- tools/management/depression.html — 331
+- tools/management/diverticular-disease.html — 397
+- tools/management/dka.html — 253
+- tools/management/driving-diseases.html — 363
+- tools/management/dry-eye-disease.html — 374
+- tools/management/dvt.html — 371
+- tools/management/dysmenorrhoea.html — 345
+- tools/management/eating-disorders.html — 401
+- tools/management/epilepsy.html — 386
+- tools/management/erectile-dysfunction.html — 368
+- tools/management/essential-tremor.html — 351
+- tools/management/familial-hypercholesterolaemia.html — 350
+- tools/management/fatty-liver.html — 327
+- tools/management/female-pattern-hair-loss.html — 338
+- tools/management/female-urinary-incontinence.html — 378
+- tools/management/gastroenteritis.html — 338
+- tools/management/gender-dysphoria.html — 509
+- tools/management/genital-herpes.html — 334
+- tools/management/gestational-diabetes.html — 327
+- tools/management/giant-cell-arteritis.html — 537
+- tools/management/gilberts-syndrome.html — 271
+- tools/management/gonorrhoea.html — 303
+- tools/management/gord.html — 437
+- tools/management/gout.html — 246
+- tools/management/greater-trochanteric-pain-syndrome.html — 247
+- tools/management/haematological-cancers.html — 502
+- tools/management/haemorrhoids.html — 384
+- tools/management/heart-failure.html — 325
+- tools/management/hepatitis-a.html — 386
+- tools/management/hernia.html — 558
+- tools/management/hirsutism.html — 405
+- tools/management/hiv.html — 365
+- tools/management/hrt-prescribing.html — 310
+- tools/management/hypercholesterolaemia.html — 293
+- tools/management/hyperhidrosis.html — 444
+- tools/management/hypertension-pregnancy.html — 386
+- tools/management/hypertension.html — 241
+- tools/management/hyperthyroidism.html — 388
+- tools/management/hypothyroidism.html — 307
+- tools/management/ibs.html — 335
+- tools/management/impetigo.html — 339
+- tools/management/infant-reflux.html — 268
+- tools/management/infertility.html — 374
+- tools/management/insomnia.html — 404
+- tools/management/insulin-type-2-diabetes.html — 410
+- tools/management/iron-deficiency-anaemia.html — 245
+- tools/management/leg-cramps.html — 377
+- tools/management/lyme-disease.html — 313
+- tools/management/macular-degeneration.html — 460
+- tools/management/malaria-prophylaxis.html — 382
+- tools/management/male-luts.html — 370
+- tools/management/male-pattern-hair-loss.html — 284
+- tools/management/malignant-hypercalcaemia.html — 360
+- tools/management/malnutrition.html — 337
+- tools/management/me-cfs.html — 322
+- tools/management/menieres.html — 345
+- tools/management/menorrhagia.html — 486
+- tools/management/metabolic-syndrome.html — 403
+- tools/management/mi-secondary-prevention.html — 335
+- tools/management/migraine.html — 404
+- tools/management/mortons-neuroma.html — 291
+- tools/management/mscc.html — 466
+- tools/management/nail-disorders.html — 328
+- tools/management/nappy-rash.html — 333
+- tools/management/nausea-vomiting-pregnancy.html — 348
+- tools/management/neuropathic-pain.html — 397
+- tools/management/neutropenic-sepsis.html — 366
+- tools/management/nocturnal-enuresis.html — 329
+- tools/management/obesity.html — 441
+- tools/management/ocd.html — 433
+- tools/management/opioid-dependence.html — 351
+- tools/management/opioid-prescribing.html — 392
+- tools/management/osa.html — 341
+- tools/management/osteoarthritis.html — 354
+- tools/management/osteoporosis.html — 282
+- tools/management/otitis-media-effusion.html — 321
+- tools/management/otitis-media-externa.html — 333
+- tools/management/palliative-anxiety-depression.html — 360
+- tools/management/palliative-breathlessness.html — 327
+- tools/management/palliative-constipation.html — 303
+- tools/management/palliative-corticosteroids.html — 284
+- tools/management/palliative-delirium-agitation.html — 325
+- tools/management/palliative-nausea-vomiting.html — 360
+- tools/management/palliative-pain.html — 414
+- tools/management/palliative-respiratory-secretions.html — 378
+- tools/management/parkinsons.html — 369
+- tools/management/pcos.html — 318
+- tools/management/pelvic-inflammatory-disease.html — 350
+- tools/management/pelvic-organ-prolapse.html — 384
+- tools/management/penile-disorders.html — 346
+- tools/management/peripheral-arterial-disease.html — 331
+- tools/management/plantar-fasciitis.html — 335
+- tools/management/polymyalgia-rheumatica.html — 328
+- tools/management/post-herpetic-neuralgia.html — 376
+- tools/management/postnatal-depression.html — 443
+- tools/management/postnatal-disorders.html — 404
+- tools/management/ppi-prescribing.html — 300
+- tools/management/precocious-puberty.html — 389
+- tools/management/premature-ejaculation.html — 490
+- tools/management/premenstrual-syndrome.html — 549
+- tools/management/preschool-wheeze.html — 363
+- tools/management/prostatitis.html — 457
+- tools/management/psoriasis.html — 453
+- tools/management/psychosis-schizophrenia.html — 349
+- tools/management/ptsd.html — 328
+- tools/management/pulmonary-embolism.html — 381
+- tools/management/raynauds.html — 270
+- tools/management/recurrent-thrush.html — 303
+- tools/management/recurrent-uti.html — 326
+- tools/management/restless-legs.html — 441
+- tools/management/rheumatoid-arthritis.html — 363
+- tools/management/rosacea.html — 242
+- tools/management/sciatica.html — 412
+- tools/management/screening-programmes.html — 315
+- tools/management/shingles.html — 319
+- tools/management/sick-day-rules.html — 450
+- tools/management/sickle-cell-disease.html — 420
+- tools/management/sinusitis.html — 333
+- tools/management/smoking-cessation.html — 441
+- tools/management/stable-angina.html — 386
+- tools/management/subconjunctival-haemorrhage.html — 337
+- tools/management/surgical-problems-children.html — 382
+- tools/management/svco.html — 362
+- tools/management/t2dm-ramadan.html — 350
+- tools/management/tennis-elbow.html — 353
+- tools/management/tension-headache.html — 401
+- tools/management/terminal-haemorrhage.html — 296
+- tools/management/threadworm.html — 222
+- tools/management/thyroid-pregnancy.html — 421
+- tools/management/tia-stroke.html — 309
+- tools/management/tmd.html — 211
+- tools/management/trichomoniasis.html — 389
+- tools/management/trigeminal-neuralgia.html — 367
+- tools/management/type-1-diabetes.html — 348
+- tools/management/type-2-diabetes.html — 270
+- tools/management/ulcerative-colitis.html — 390
+- tools/management/undescended-testis.html — 347
+- tools/management/urethritis-male.html — 380
+- tools/management/urticaria.html — 397
+- tools/management/uti-children.html — 325
+- tools/management/uti-men.html — 371
+- tools/management/uti-women.html — 279
+- tools/management/uveitis.html — 352
+- tools/management/varicocele.html — 313
+- tools/management/varicose-veins.html — 302
+- tools/management/vasovagal-syncope.html — 376
+- tools/management/vestibular-neuronitis.html — 269
+- tools/management/vulvar-disorders.html — 374
+- tools/sca-group.html — 163
+
+### more than one <h1> (2)
+
+- index.html — 2
+- pages/cpd.html — 2
+
+### no <h1> in the HTML (drawn by script? check in a browser) (367)
+
+- tools/algorithms/acute-cough.html
+- tools/algorithms/breathlessness.html
+- tools/algorithms/bruising.html
+- tools/algorithms/chronic-cough.html
+- tools/algorithms/chronic-diarrhoea.html
+- tools/algorithms/confusion.html
+- tools/algorithms/constipation.html
+- tools/algorithms/cough-children.html
+- tools/algorithms/daytime-urinary-incontinence-children.html
+- tools/algorithms/developmental-delay.html
+- tools/algorithms/diplopia.html
+- tools/algorithms/dizziness.html
+- tools/algorithms/dry-mouth.html
+- tools/algorithms/dyspareunia.html
+- tools/algorithms/dyspepsia.html
+- tools/algorithms/dysphagia.html
+- tools/algorithms/dysuria.html
+- tools/algorithms/elbow-pain.html
+- tools/algorithms/eosinophilia.html
+- tools/algorithms/epistaxis.html
+- tools/algorithms/eye-swelling.html
+- tools/algorithms/facial-pain.html
+- tools/algorithms/facial-swelling.html
+- tools/algorithms/faecal-incontinence.html
+- tools/algorithms/falls.html
+- tools/algorithms/faltered-growth.html
+- tools/algorithms/fatigue.html
+- tools/algorithms/female-hormone-abnormalities.html
+- tools/algorithms/fever-adults.html
+- tools/algorithms/fever-children.html
+- tools/algorithms/finger-pain.html
+- tools/algorithms/flashes-floaters.html
+- tools/algorithms/foot-drop.html
+- tools/algorithms/foot-pain.html
+- tools/algorithms/foreign-body-eye.html
+- tools/algorithms/fractures.html
+- tools/algorithms/glucosuria.html
+- tools/algorithms/groin-pain.html
+- tools/algorithms/gynecomastia.html
+- tools/algorithms/haematemesis.html
+- tools/algorithms/haematospermia.html
+- tools/algorithms/haematuria-children.html
+- tools/algorithms/haematuria.html
+- tools/algorithms/hair-loss.html
+- tools/algorithms/halitosis.html
+- tools/algorithms/hallucinations.html
+- tools/algorithms/hand-pain.html
+- tools/algorithms/headache.html
+- tools/algorithms/hearing-loss.html
+- tools/algorithms/hiccups.html
+- tools/algorithms/high-crp-esr.html
+- tools/algorithms/high-ferritin.html
+- tools/algorithms/high-psa.html
+- tools/algorithms/high-triglycerides.html
+- tools/algorithms/hip-pain.html
+- tools/algorithms/hoarseness.html
+- tools/algorithms/hypercalcaemia.html
+- tools/algorithms/hyperkalaemia.html
+- tools/algorithms/hypernatraemia.html
+- tools/algorithms/hyperprolactinaemia.html
+- tools/algorithms/hypocalcaemia.html
+- tools/algorithms/hypoglycaemia.html
+- tools/algorithms/hypokalaemia.html
+- tools/algorithms/hyponatraemia.html
+- tools/algorithms/hypotension.html
+- tools/algorithms/incidental-renal-mass.html
+- tools/algorithms/irregular-periods.html
+- tools/algorithms/itchy-eye.html
+- tools/algorithms/jaundice.html
+- tools/algorithms/jaw-pain.html
+- tools/algorithms/joint-pain.html
+- tools/algorithms/knee-pain.html
+- tools/algorithms/leg-pain.html
+- tools/algorithms/leg-ulcers.html
+- tools/algorithms/leg-weakness.html
+- tools/algorithms/leucocytosis.html
+- tools/algorithms/leucopenia.html
+- tools/algorithms/limping-children.html
+- tools/algorithms/loss-of-smell.html
+- tools/algorithms/low-ferritin.html
+- tools/algorithms/low-folate.html
+- tools/algorithms/lymphadenopathy.html
+- tools/algorithms/lymphocytosis.html
+- tools/algorithms/lymphopenia.html
+- tools/algorithms/macrocytosis.html
+- tools/algorithms/maculopapular-rash.html
+- tools/algorithms/magnesium-deficiency.html
+- tools/algorithms/mastalgia.html
+- tools/algorithms/medically-unexplained-symptoms.html
+- tools/algorithms/memory-deficit.html
+- tools/algorithms/microcytosis.html
+- tools/algorithms/mouth-ulcers.html
+- tools/algorithms/nasal-congestion.html
+- tools/algorithms/nausea-vomiting-adults.html
+- tools/algorithms/neck-lump.html
+- tools/algorithms/neck-pain.html
+- tools/algorithms/neonatal-jaundice.html
+- tools/algorithms/night-sweats.html
+- tools/algorithms/nipple-problems.html
+- tools/algorithms/normocytic-anaemia.html
+- tools/algorithms/otalgia.html
+- tools/algorithms/paediatric-cancer-referral.html
+- tools/algorithms/paediatric-msk.html
+- tools/algorithms/palpitations.html
+- tools/algorithms/pancytopenia.html
+- tools/algorithms/paraesthesia.html
+- tools/algorithms/pelvic-pain-women.html
+- tools/algorithms/penile-discharge.html
+- tools/algorithms/penile-irritation.html
+- tools/algorithms/pigmented-skin-lesions.html
+- tools/algorithms/polycythaemia.html
+- tools/algorithms/proteinuria.html
+- tools/algorithms/pruritus-pregnancy.html
+- tools/algorithms/psychosis.html
+- tools/algorithms/purpura-petechiae.html
+- tools/algorithms/raised-creatine-kinase.html
+- tools/algorithms/rectal-bleeding.html
+- tools/algorithms/red-eye.html
+- tools/algorithms/renal-colic.html
+- tools/algorithms/scrotal-pain.html
+- tools/algorithms/sensory-neuropathy.html
+- tools/algorithms/short-stature.html
+- tools/algorithms/shoulder-pain.html
+- tools/algorithms/sleep-problems-children.html
+- tools/algorithms/sore-mouth-tongue.html
+- tools/algorithms/sore-throat.html
+- tools/algorithms/splenomegaly.html
+- tools/algorithms/subcutaneous-lumps.html
+- tools/algorithms/suspected-diabetes-children.html
+- tools/algorithms/taste-disorders.html
+- tools/algorithms/testicular-lump.html
+- tools/algorithms/testosterone-deficiency.html
+- tools/algorithms/thigh-pain.html
+- tools/algorithms/thrombocytopenia.html
+- tools/algorithms/thrombocytosis.html
+- tools/algorithms/tinnitus.html
+- tools/algorithms/tloc.html
+- tools/algorithms/toe-pain.html
+- tools/algorithms/tongue-problems.html
+- tools/algorithms/tremors.html
+- tools/algorithms/unsettled-baby.html
+- tools/algorithms/vaginal-bleeding-pregnancy.html
+- tools/algorithms/vaginal-bleeding.html
+- tools/algorithms/vaginal-discharge.html
+- tools/algorithms/vaginal-mass.html
+- tools/algorithms/vertigo.html
+- tools/algorithms/vision-loss.html
+- tools/algorithms/vitamin-b12-deficiency.html
+- tools/algorithms/vitamin-d-deficiency.html
+- tools/algorithms/vomiting-children.html
+- tools/algorithms/watery-eye.html
+- tools/algorithms/weight-gain.html
+- tools/algorithms/weight-loss.html
+- tools/algorithms/wheeze-child.html
+- tools/algorithms/widespread-itch.html
+- tools/basic-science.html
+- tools/examinations.html
+- tools/management/achilles-tendinopathy.html
+- tools/management/acne.html
+- tools/management/actinic-keratosis.html
+- tools/management/addisons-disease.html
+- tools/management/adhd.html
+- tools/management/aki.html
+- tools/management/alcohol-problem-drinking.html
+- tools/management/allergic-conjunctivitis.html
+- tools/management/allergic-rhinitis.html
+- tools/management/anal-fissure.html
+- tools/management/anaphylaxis.html
+- tools/management/angioedema.html
+- tools/management/ankylosing-spondylitis.html
+- tools/management/anogenital-warts.html
+- tools/management/antiplatelets-anticoagulants.html
+- tools/management/anxiety.html
+- tools/management/aphthous-ulcer.html
+- tools/management/asthma-children.html
+- tools/management/asthma.html
+- tools/management/atrial-fibrillation.html
+- tools/management/autism.html
+- tools/management/bacterial-vaginosis.html
+- tools/management/balanitis.html
+- tools/management/bells-palsy.html
+- tools/management/benign-prostate-enlargement.html
+- tools/management/benzodiazepines-z-drugs.html
+- tools/management/blepharitis.html
+- tools/management/bppv.html
+- tools/management/breast-cancer.html
+- tools/management/breast-disorders.html
+- tools/management/bronchiectasis.html
+- tools/management/bullous-pemphigoid.html
+- tools/management/care-of-the-dying.html
+- tools/management/carpal-tunnel-syndrome.html
+- tools/management/cauda-equina.html
+- tools/management/cellulitis.html
+- tools/management/chalazion.html
+- tools/management/chest-infections.html
+- tools/management/chilblains.html
+- tools/management/chlamydia.html
+- tools/management/cholecystitis.html
+- tools/management/chronic-pain.html
+- tools/management/ckd.html
+- tools/management/cmpa.html
+- tools/management/coeliac-disease.html
+- tools/management/constipation-adult.html
+- tools/management/constipation-child.html
+- tools/management/contraception.html
+- tools/management/copd.html
+- tools/management/crohns-disease.html
+- tools/management/dementia.html
+- tools/management/depression.html
+- tools/management/diverticular-disease.html
+- tools/management/dka.html
+- tools/management/driving-diseases.html
+- tools/management/dry-eye-disease.html
+- tools/management/dvt.html
+- tools/management/dysmenorrhoea.html
+- tools/management/eating-disorders.html
+- tools/management/eczema.html
+- tools/management/epilepsy.html
+- tools/management/erectile-dysfunction.html
+- tools/management/essential-tremor.html
+- tools/management/familial-hypercholesterolaemia.html
+- tools/management/fatty-liver.html
+- tools/management/female-pattern-hair-loss.html
+- tools/management/female-urinary-incontinence.html
+- tools/management/fungal-skin-infection.html
+- tools/management/gastroenteritis.html
+- tools/management/gender-dysphoria.html
+- tools/management/genital-herpes.html
+- tools/management/gestational-diabetes.html
+- tools/management/giant-cell-arteritis.html
+- tools/management/gilberts-syndrome.html
+- tools/management/glandular-fever.html
+- tools/management/glaucoma.html
+- tools/management/gonorrhoea.html
+- tools/management/gord.html
+- tools/management/gout.html
+- tools/management/greater-trochanteric-pain-syndrome.html
+- tools/management/haematological-cancers.html
+- tools/management/haemorrhoids.html
+- tools/management/heart-failure.html
+- tools/management/hepatitis-a.html
+- tools/management/hernia.html
+- tools/management/hirsutism.html
+- tools/management/hiv.html
+- tools/management/hrt-prescribing.html
+- tools/management/hypercholesterolaemia.html
+- tools/management/hyperhidrosis.html
+- tools/management/hypertension-pregnancy.html
+- tools/management/hypertension.html
+- tools/management/hyperthyroidism.html
+- tools/management/hypothyroidism.html
+- tools/management/ibs.html
+- tools/management/impetigo.html
+- tools/management/infant-reflux.html
+- tools/management/infertility.html
+- tools/management/insomnia.html
+- tools/management/insulin-type-2-diabetes.html
+- tools/management/iron-deficiency-anaemia.html
+- tools/management/leg-cramps.html
+- tools/management/lyme-disease.html
+- tools/management/macular-degeneration.html
+- tools/management/malaria-prophylaxis.html
+- tools/management/male-luts.html
+- tools/management/male-pattern-hair-loss.html
+- tools/management/malignant-hypercalcaemia.html
+- tools/management/malnutrition.html
+- tools/management/mastitis-breast-abscess.html
+- tools/management/me-cfs.html
+- tools/management/menieres.html
+- tools/management/menorrhagia.html
+- tools/management/metabolic-syndrome.html
+- tools/management/mi-secondary-prevention.html
+- tools/management/migraine.html
+- tools/management/mortons-neuroma.html
+- tools/management/mscc.html
+- tools/management/nail-disorders.html
+- tools/management/nappy-rash.html
+- tools/management/nausea-vomiting-pregnancy.html
+- tools/management/neuropathic-pain.html
+- tools/management/neutropenic-sepsis.html
+- tools/management/nocturnal-enuresis.html
+- tools/management/obesity.html
+- tools/management/ocd.html
+- tools/management/opioid-dependence.html
+- tools/management/opioid-prescribing.html
+- tools/management/osa.html
+- tools/management/osgood-schlatter.html
+- tools/management/osteoarthritis.html
+- tools/management/osteoporosis.html
+- tools/management/otitis-media-effusion.html
+- tools/management/otitis-media-externa.html
+- tools/management/palliative-anxiety-depression.html
+- tools/management/palliative-breathlessness.html
+- tools/management/palliative-constipation.html
+- tools/management/palliative-corticosteroids.html
+- tools/management/palliative-delirium-agitation.html
+- tools/management/palliative-nausea-vomiting.html
+- tools/management/palliative-pain.html
+- tools/management/palliative-respiratory-secretions.html
+- tools/management/parkinsons.html
+- tools/management/pcos.html
+- tools/management/pelvic-inflammatory-disease.html
+- tools/management/pelvic-organ-prolapse.html
+- tools/management/penile-disorders.html
+- tools/management/peripheral-arterial-disease.html
+- tools/management/pityriasis-rosea.html
+- tools/management/pityriasis-versicolor.html
+- tools/management/plantar-fasciitis.html
+- tools/management/polymyalgia-rheumatica.html
+- tools/management/post-herpetic-neuralgia.html
+- tools/management/postnatal-depression.html
+- tools/management/postnatal-disorders.html
+- tools/management/ppi-prescribing.html
+- tools/management/precocious-puberty.html
+- tools/management/premature-ejaculation.html
+- tools/management/premenstrual-syndrome.html
+- tools/management/preschool-wheeze.html
+- tools/management/prostatitis.html
+- tools/management/psoriasis.html
+- tools/management/psychosis-schizophrenia.html
+- tools/management/ptsd.html
+- tools/management/pulmonary-embolism.html
+- tools/management/raynauds.html
+- tools/management/recurrent-thrush.html
+- tools/management/recurrent-uti.html
+- tools/management/restless-legs.html
+- tools/management/rheumatoid-arthritis.html
+- tools/management/rosacea.html
+- tools/management/scabies.html
+- tools/management/sciatica.html
+- tools/management/screening-programmes.html
+- tools/management/seborrhoeic-dermatitis.html
+- tools/management/shingles.html
+- tools/management/sick-day-rules.html
+- tools/management/sickle-cell-disease.html
+- tools/management/sinusitis.html
+- tools/management/smoking-cessation.html
+- tools/management/stable-angina.html
+- tools/management/subconjunctival-haemorrhage.html
+- tools/management/surgical-problems-children.html
+- tools/management/svco.html
+- tools/management/t2dm-ramadan.html
+- tools/management/tennis-elbow.html
+- tools/management/tension-headache.html
+- tools/management/terminal-haemorrhage.html
+- tools/management/threadworm.html
+- tools/management/thyroid-pregnancy.html
+- tools/management/tia-stroke.html
+- tools/management/tmd.html
+- tools/management/trichomoniasis.html
+- tools/management/trigeminal-neuralgia.html
+- tools/management/type-1-diabetes.html
+- tools/management/type-2-diabetes.html
+- tools/management/ulcerative-colitis.html
+- tools/management/undescended-testis.html
+- tools/management/urethritis-male.html
+- tools/management/urticaria.html
+- tools/management/uti-children.html
+- tools/management/uti-men.html
+- tools/management/uti-women.html
+- tools/management/uveitis.html
+- tools/management/varicocele.html
+- tools/management/varicose-veins.html
+- tools/management/vasovagal-syncope.html
+- tools/management/vestibular-neuronitis.html
+- tools/management/vulvar-disorders.html
+- tools/management/whooping-cough.html
