@@ -411,3 +411,26 @@ li > .pxa-drug{margin:2px 0 4px}
   .pc-b-red{color:#fff;background:#b3261e}
   .pc-b-red:hover{background:#9d1f18}
 }
+
+/* ==== Route: the 3-minute pathway folded into one line under the 30-second answer ==== */
+.px-route{margin-top:22px;padding:14px 16px;border:1px solid #e4dccb;border-radius:14px;background:#fbf8f2}
+.px-route-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.px-route-k{font:800 11.5px/1 'DM Sans',system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#0c4a47}
+.px-route-chips{display:flex;flex-wrap:wrap;align-items:center;gap:6px;list-style:none;margin:0;padding:0;flex:1 1 auto;min-width:0}
+.px-route-chips li{display:flex;align-items:center;gap:6px;min-width:0}
+.px-route-chips li+li::before{content:"→";color:#8a7f6a;font-weight:700}
+.px-route-chip{display:inline-flex;align-items:center;gap:6px;max-width:100%;padding:6px 11px 6px 6px;border:1px solid #d9cfbb;border-radius:999px;background:#fff;
+  font:600 13.5px/1.25 'DM Sans',system-ui,sans-serif;color:#18322f;cursor:pointer;text-align:left}
+.px-route-chip:hover{border-color:#0c4a47;background:#f3faf9}
+.px-route-chip:focus-visible{outline:3px solid #f0b429;outline-offset:2px}
+.px-route-n{flex:none;display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#0c4a47;color:#fff;font-size:11.5px;font-weight:800}
+.px-route-chip.is-alert{border-color:#e7b4ad;background:#fff6f5;color:#8f1d16}
+.px-route-chip.is-alert .px-route-n{background:#b3261e}
+.px-route-all{margin-left:auto;border:0;background:none;color:#0c4a47;font:700 13px 'DM Sans',system-ui,sans-serif;text-decoration:underline;cursor:pointer;padding:4px 2px}
+.px-route-all:focus-visible{outline:3px solid #f0b429;outline-offset:2px}
+.px-route-body{margin-top:14px}
+.px-route-body .mg-sec-sub{margin-bottom:10px}
+.px-route-flash{animation:pxRouteFlash 1.6s ease-out}
+@keyframes pxRouteFlash{0%{box-shadow:0 0 0 4px rgba(240,180,41,.75)}100%{box-shadow:0 0 0 0 rgba(240,180,41,0)}}
+@media (max-width:760px){ .px-route-all{margin-left:0} .px-route-chip{font-size:13px} }
+@media print{ .px-route-all{display:none} .px-route-body[hidden]{display:block!important} }
