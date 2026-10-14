@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manage my plan · Reasoning GP</title>
+<meta name="description" content="See your Reasoning GP plan, pause it for 1 to 3 months, or cancel it. Access runs to the end of the period you have paid for." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://gpreasoning.uk/pages/account-plan.html">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=14" />
+<style>
+.ap-body{max-width:760px;margin:0 auto}
+.ap-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md,12px);padding:22px 22px 20px;margin:0 0 18px}
+.ap-card h2{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:21px;color:var(--ink);margin:0 0 6px;letter-spacing:-.01em}
+.ap-card p,.ap-card li{font-size:14.5px;line-height:1.65;color:var(--ink-2)}
+.ap-card p{margin:8px 0}
+.ap-eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:4px}
+.ap-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.ap-card .ap-name{font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:600;color:var(--ink);margin:0;line-height:1.15}
+.ap-price{font-size:15px;color:var(--ink-2);margin:4px 0 0!important;font-weight:600}
+.ap-pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.03em;border-radius:99px;padding:5px 12px;white-space:nowrap;border:1px solid transparent}
+.ap-pill.is-active{background:#e3f1ec;color:#0f5f3a;border-color:#b9dccb}
+.ap-pill.is-paused{background:#fdf3dc;color:#7a4b06;border-color:#f1d79b}
+.ap-pill.is-cancelled{background:#fbeae4;color:#8a3a1a;border-color:#ebc6b6}
+.ap-pill.is-expired,.ap-pill.is-free{background:#eee9df;color:#4b4f57;border-color:#ddd5c5}
+.ap-pill.is-problem{background:#fbeae4;color:#8a3a1a;border-color:#ebc6b6}
+.ap-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px 22px;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+.ap-facts div{min-width:0}
+.ap-facts dt{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 3px}
+.ap-facts dd{margin:0;font-size:14.5px;color:var(--ink);font-weight:600;line-height:1.45;overflow-wrap:anywhere}
+.ap-facts dd small{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
+.ap-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin:14px 0 4px}
+.ap-btn{appearance:none;font:inherit;font-size:14.5px;font-weight:700;padding:12px 18px;border-radius:10px;cursor:pointer;text-align:center;text-decoration:none;display:block;box-sizing:border-box;border:1px solid var(--teal);background:#fff;color:var(--teal);min-height:46px}
+.ap-btn:hover{background:var(--teal-soft)}
+.ap-btn.pri{background:var(--teal);color:#f6f2e9}
+.ap-btn.pri:hover{background:var(--teal-2,#0a3d3a)}
+.ap-btn.danger{background:#9f3a1c;border-color:#9f3a1c;color:#fff}
+.ap-btn.danger:hover{background:#86301a}
+.ap-btn[disabled]{opacity:.55;cursor:default}
+.ap-row{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+.ap-row .ap-btn{flex:1 1 180px}
+.ap-link{appearance:none;background:none;border:none;padding:0;font:inherit;font-size:14px;font-weight:600;color:var(--teal);text-decoration:underline;cursor:pointer}
+.ap-small{font-size:13px!important;color:var(--muted)!important}
+.ap-rule{background:var(--teal-soft);border-radius:10px;padding:12px 14px;margin:12px 0 0;font-size:13.5px!important;line-height:1.6;color:var(--ink-2)}
+.ap-opts{border:0;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.ap-opts legend{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 6px;padding:0}
+.ap-opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff}
+.ap-opt:has(input:checked){border-color:var(--teal);box-shadow:0 0 0 2px var(--teal-soft)}
+.ap-opt input{margin:3px 0 0;accent-color:var(--teal);flex:none}
+.ap-opt b{display:block;font-size:14.5px;color:var(--ink)}
+.ap-opt span{font-size:13px;color:var(--muted);line-height:1.5}
+.ap-field{margin:14px 0 0}
+.ap-field label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin:0 0 6px}
+.ap-field select,.ap-field textarea{width:100%;box-sizing:border-box;font:inherit;font-size:14.5px;padding:10px 12px;border:1px solid var(--line-2,#d8cfba);border-radius:9px;background:#fff;color:var(--ink)}
+.ap-field textarea{min-height:84px;resize:vertical}
+.ap-count{font-size:12px;color:var(--muted);text-align:right;margin-top:3px}
+.ap-done{border-color:#b9dccb;background:#f3faf6}
+.ap-done h2::before{content:"\2713  ";color:#0f5f3a}
+.ap-err{background:#fbeae4;border:1px solid #ebc6b6;color:#8a3a1a;border-radius:10px;padding:11px 14px;font-size:13.5px;line-height:1.55;margin:12px 0 0}
+.ap-err:empty{display:none}
+.ap-list{padding-left:20px;margin:8px 0;display:flex;flex-direction:column;gap:6px}
+.ap-muted{color:var(--muted)}
+[hidden]{display:none!important}
+@media (max-width:520px){
+  .ap-card{padding:18px 16px}
+  .ap-card .ap-name{font-size:23px}
+}
+</style>
+</head>
+<body>
+<aside class="sidebar" data-active-id="__account-plan"></aside>
+<div class="app"><main class="main">
+
+<section class="page-hero" data-screen-label="Manage my plan hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Your account</span>
+    <h1>Manage my plan</h1>
+    <p>See what you are on, pause it for a while, or cancel it. Cancelling takes two clicks and you keep access until the end of the period you have paid for.</p>
+  </div>
+</section>
+
+<div class="page-body"><div class="ap-body">
+
+  <div id="apMain" aria-live="polite">
+    <section class="ap-card"><p class="ap-muted">Loading your plan…</p></section>
+  </div>
+
+  <section class="ap-card" id="apRules">
+    <span class="ap-eyebrow">How it works</span>
+    <h2>Pausing and cancelling</h2>
+    <ul class="ap-list">
+      <li><b>Cancel any time.</b> No further payments are taken. You keep your plan until the end of the period you have already paid for, then your account moves to the free Bronze plan. Nothing you have saved is deleted.</li>
+      <li><b>Pause for 1, 2 or 3 months.</b> The pause starts when your current paid period ends, so you never lose days you have paid for. While paused your account is on the free Bronze plan and no payments are taken. Your plan restarts by itself on the date shown, and the next payment is taken then. You can resume early or cancel at any time during a pause.</li>
+      <li><b>Pausing is only for recurring plans.</b> Access from an access code, a referral or a group invoice has no recurring payment, so there is nothing to pause or cancel: it simply ends on its date and you are never charged.</li>
+      <li><b>Changed your mind within 14 days?</b> If you started a new subscription in the last 14 days, cancel here and email us for a refund, as set out in the <a href="terms.html#billing">terms</a>.</li>
+      <li>You can also cancel any time in your PayPal account (Settings → Payments → Manage automatic payments).</li>
+    </ul>
+    <p class="ap-small">Need a hand? Email <a href="mailto:bassamomda@gmail.com?subject=Manage%20my%20plan">bassamomda@gmail.com</a> and we will cancel or pause it for you.</p>
+  </section>
+
+</div></div>
+
+</main></div>
+<script src="../assets/site.js?v=106"></script>
+<script>
+(function(){
+  'use strict';
+  var main = document.getElementById('apMain');
+  var TOKEN_KEY = 'rgp.auth.token.v1';
+  var STATUS = {
+    active: ['Active', 'is-active'], paused: ['Paused', 'is-paused'], payment_problem: ['Payment problem', 'is-problem'],
+    cancelled: ['Cancelled', 'is-cancelled'], expired: ['Expired', 'is-expired'], free: ['Free plan', 'is-free']
+  };
+  var REASONS = [
+    ['', 'Choose a reason (optional)'], ['too-expensive', 'It costs too much'], ['not-using', 'I am not using it enough'],
+    ['exam-done', 'My exam is over'], ['missing-content', 'Something I need is missing'], ['technical', 'Technical problems'],
+    ['other-service', 'I am using another service'], ['other', 'Another reason']
+  ];
+  var plan = null, lastDone = null;
+
+  function api(){ var u = (window.RGP_CONFIG || {}).workerUrl; return u ? u.replace(/\/$/, '') : null; }
+  function token(){ try { return localStorage.getItem(TOKEN_KEY); } catch (e) { return null; } }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
+  function day(ts){ if (!ts) return '—'; try { return new Date(ts).toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }); } catch (e) { return '—'; } }
+  function money(n){ return '£' + (Math.round(n) === n ? n : n.toFixed(2)); }
+  function priceLabel(p){
+    if (p.price == null) return '';
+    if (p.periodMonths === 12) return money(p.price) + ' a year';
+    if (p.periodMonths === 1) return money(p.price) + ' a month';
+    return money(p.price) + ' every ' + p.periodMonths + ' months';
+  }
+  function periodWord(p){ return p.periodMonths === 12 ? 'yearly' : (p.periodMonths === 1 ? 'monthly' : (p.periodMonths ? 'every ' + p.periodMonths + ' months' : '')); }
+  function set(html){ main.innerHTML = html; }
+  function q(sel){ return main.querySelector(sel); }
+
+  async function call(method, path, body){
+    var res = await fetch(api() + path, {
+      method: method,
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token() },
+      body: method === 'GET' ? undefined : JSON.stringify(body || {})
+    });
+    var d = await res.json().catch(function(){ return {}; });
+    if (!res.ok) { var e = new Error(d.error || 'Something went wrong. Please try again.'); e.code = d.code || ''; e.status = res.status; throw e; }
+    return d;
+  }
+
+  /* ---------- states ---------- */
+  function signedOut(){
+    set('<section class="ap-card"><h2>Sign in to manage your plan</h2>'
+      + '<p>Your plan is linked to your Reasoning GP account. Sign in with the email you subscribed with.</p>'
+      + '<div class="ap-row"><button type="button" class="ap-btn pri" data-signin>Sign in</button></div></section>');
+    q('[data-signin]').addEventListener('click', function(){ if (window.RGP_openAuth) window.RGP_openAuth('signin'); });
+    var iv = setInterval(function(){ if (token()) { clearInterval(iv); load(); } }, 1000);
+  }
+  function offline(msg){
+    set('<section class="ap-card"><h2>We couldn’t load your plan</h2><p>' + esc(msg) + '</p>'
+      + '<p>You can still cancel any time in your PayPal account (Settings → Payments → Manage automatic payments), or email <a href="mailto:bassamomda@gmail.com?subject=Please%20cancel%20my%20plan">bassamomda@gmail.com</a> and we will do it for you.</p>'
+      + '<div class="ap-row"><button type="button" class="ap-btn" data-retry>Try again</button></div></section>');
+    q('[data-retry]').addEventListener('click', load);
+  }
+
+  function facts(p){
+    var st = STATUS[p.status] || STATUS.free, rows = [];
+    var statusText = st[0];
+    if (p.status === 'cancelled' && p.accessUntil) statusText = 'Cancelled — access until ' + day(p.accessUntil);
+    if (p.status === 'expired' && p.accessUntil) statusText = 'Expired ' + day(p.accessUntil);
+    if (p.status === 'paused' && p.pause) statusText = 'Paused until ' + day(p.pause.resumeAt);
+    if (p.status === 'active' && p.kind === 'fixed' && p.accessUntil) statusText = 'Active — ends ' + day(p.accessUntil);
+    rows.push(['Status', esc(statusText)]);
+    if (p.kind === 'subscription') {
+      var np;
+      if (p.status === 'active') np = p.nextPayment ? day(p.nextPayment) + (p.price != null ? ' · ' + money(p.price) : '') : 'Shown in your PayPal account';
+      else if (p.status === 'paused') np = day(p.nextPayment) + '<small>when your plan restarts</small>';
+      else if (p.status === 'payment_problem') np = 'Overdue<small>update your card in PayPal, or cancel below</small>';
+      else np = 'None<small>no further payments will be taken</small>';
+      rows.push(['Next payment', np]);
+      if (p.status === 'paused' && p.accessUntil) rows.push(['Full access until', day(p.accessUntil) + '<small>then free Bronze while paused</small>']);
+      if (p.status === 'paused' && !p.accessUntil) rows.push(['Access now', 'Free Bronze<small>until your plan restarts</small>']);
+      rows.push(['Payment method', 'PayPal' + (p.subRef ? '<small>subscription ' + esc(p.subRef) + '</small>' : '')]);
+      rows.push(['Started', day(p.startDate)]);
+    } else if (p.kind === 'fixed') {
+      var src = { code: 'Access code', referral: 'Referral month', 'referral-credit': 'Referral months', admin: 'Added by Reasoning GP', paypal: 'PayPal' }[p.source] || 'Fixed-term access';
+      rows.push(['Next payment', 'None<small>this isn’t a recurring payment</small>']);
+      rows.push(['How you got it', esc(src)]);
+      rows.push([p.status === 'expired' ? 'Ended' : 'Access until', day(p.accessUntil)]);
+    }
+    return '<dl class="ap-facts">' + rows.map(function(r){ return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>';
+  }
+
+  function summaryCard(p){
+    var st = STATUS[p.status] || STATUS.free;
+    var name = p.kind === 'none' ? 'Bronze — free' : esc(p.planName);
+    var price = p.kind === 'subscription' ? priceLabel(p) + (periodWord(p) ? ' · billed ' + periodWord(p) : '') : (p.kind === 'fixed' ? 'No recurring payment' : '£0 — free for good');
+    return '<section class="ap-card" data-state="' + esc(p.status) + '"><div class="ap-head"><div><span class="ap-eyebrow">Your plan</span>'
+      + '<p class="ap-name">' + name + '</p><p class="ap-price">' + esc(price) + '</p></div>'
+      + '<span class="ap-pill ' + st[1] + '">' + esc(st[0]) + '</span></div>'
+      + (p.kind === 'none' ? '' : facts(p)) + '</section>';
+  }
+
+  function actionsCard(p, justDone){
+    if (p.kind === 'none') {
+      return '<section class="ap-card"><h2>You’re on the free plan</h2><p>There is nothing to cancel and you are never charged. When you want the full library, pick a plan.</p>'
+        + '<div class="ap-row"><a class="ap-btn pri" href="pricing.html">See the plans</a></div></section>';
+    }
+    if (p.kind === 'fixed') {
+      return '<section class="ap-card"><h2>Nothing to cancel</h2><p>Your access ' + (p.status === 'expired' ? 'came' : 'comes') + ' from a fixed-term grant, not a recurring payment, so there is nothing to pause or cancel. ' + (p.status === 'expired' ? 'It has ended.' : 'It ends by itself on <b>' + day(p.accessUntil) + '</b> and you will not be charged.') + '</p>'
+        + '<p class="ap-small">Pausing only applies to recurring PayPal plans, where it stops the payments for a while.</p>'
+        + '<div class="ap-row"><a class="ap-btn" href="pricing.html">See the plans</a></div></section>';
+    }
+    if (p.status === 'active') {
+      return '<section class="ap-card" id="apChange"><h2>Change your plan</h2>'
+        + '<p>Pause if you need a break, or cancel if you are finished with it. Either way you keep everything until <b>' + day(p.nextPayment) + '</b>, the end of the period you have paid for.</p>'
+        + '<div class="ap-actions"><button type="button" class="ap-btn" data-go="pause">Pause plan</button><button type="button" class="ap-btn" data-go="cancel">Cancel plan</button></div></section>';
+    }
+    if (p.status === 'paused') {
+      return '<section class="ap-card" id="apChange"><h2>Your plan is paused</h2>'
+        + '<p>' + (p.accessUntil ? 'You keep full access until <b>' + day(p.accessUntil) + '</b>. From then your account is on the free Bronze plan' : 'Your account is on the free Bronze plan')
+        + ' until <b>' + day(p.pause.resumeAt) + '</b>, when your plan restarts by itself and the next payment is taken.</p>'
+        + '<div class="ap-actions"><button type="button" class="ap-btn pri" data-do="resume">Resume now</button><button type="button" class="ap-btn" data-go="cancel">Cancel plan</button></div>'
+        + '<p class="ap-small">Resuming now restores your plan straight away' + (p.accessUntil ? '; your next payment stays on ' + day(p.accessUntil) : '; PayPal then takes the next payment') + '.</p>'
+        + '<div class="ap-err" data-err role="alert"></div></section>';
+    }
+    if (p.status === 'payment_problem') {
+      return '<section class="ap-card" id="apChange"><h2>Your last payment didn’t go through</h2>'
+        + '<p>PayPal will retry it. To keep your plan, update your card in your PayPal account. Pausing isn’t available while a payment is overdue.</p>'
+        + '<div class="ap-actions"><a class="ap-btn pri" href="https://www.paypal.com/" target="_blank" rel="noopener">Open PayPal</a><button type="button" class="ap-btn" data-go="cancel">Cancel plan</button></div></section>';
+    }
+    if (p.status === 'cancelled') {
+      return '<section class="ap-card" id="apChange"><h2>' + (justDone ? 'Changed your mind?' : 'Your plan is cancelled') + '</h2>'
+        + (justDone ? '' : '<p>No further payments will be taken. You keep ' + esc(p.planName) + ' until <b>' + day(p.accessUntil) + '</b>, then your account moves to the free Bronze plan.</p>')
+        + '<p>' + (justDone ? '' : 'Changed your mind? ') + 'PayPal doesn’t allow a cancelled subscription to be switched back on, so restarting means choosing a plan again. The days you still have are not lost: they are added on when the new plan ends.</p>'
+        + '<div class="ap-row"><a class="ap-btn pri" href="pricing.html">Restart a plan</a></div></section>';
+    }
+    return '<section class="ap-card" id="apChange"><h2>Your plan has ended</h2><p>Your account is on the free Bronze plan. Nothing you saved has been deleted.</p>'
+      + '<div class="ap-row"><a class="ap-btn pri" href="pricing.html">See the plans</a></div></section>';
+  }
+
+  function render(p){
+    plan = p;
+    set(summaryCard(p) + actionsCard(p, !!lastDone));
+    if (lastDone) { q('#apChange') && q('#apChange').insertAdjacentHTML('beforebegin', lastDone); lastDone = null; }
+    wire();
+  }
+
+  function wire(){
+    main.querySelectorAll('[data-go]').forEach(function(b){
+      b.addEventListener('click', function(){ b.getAttribute('data-go') === 'pause' ? showPause() : showCancel(); });
+    });
+    var r = q('[data-do="resume"]');
+    if (r) r.addEventListener('click', function(){ act('resume', {}, r); });
+  }
+
+  function panel(html){
+    var c = q('#apChange');
+    c.innerHTML = html;
+    c.scrollIntoView({ block: 'nearest' });
+    return c;
+  }
+
+  function showPause(){
+    var p = plan;
+    var opts = (p.pauseOptions || []).map(function(o, i){
+      return '<label class="ap-opt"><input type="radio" name="apMonths" value="' + o.months + '"' + (i === 0 ? ' checked' : '') + '>'
+        + '<span><b>' + o.months + ' month' + (o.months > 1 ? 's' : '') + '</b>'
+        + '<span>Paused from ' + day(o.from) + ' · restarts ' + day(o.resumeAt) + '</span></span></label>';
+    }).join('');
+    var c = panel('<h2>Pause your plan</h2>'
+      + '<p>Your pause starts when your paid period ends on <b>' + day(p.nextPayment) + '</b>, so you lose no paid days.</p>'
+      + '<fieldset class="ap-opts"><legend>How long for?</legend>' + opts + '</fieldset>'
+      + '<p class="ap-rule">While paused your account is on the free Bronze plan and no payments are taken. Your plan restarts by itself on the date shown and the next payment (' + esc(priceLabel(p)) + ') is taken then. You can resume early or cancel at any time.</p>'
+      + '<div class="ap-row"><button type="button" class="ap-btn pri" data-confirm-pause>Confirm pause</button><button type="button" class="ap-btn" data-back>Back</button></div>'
+      + '<div class="ap-err" data-err role="alert"></div>');
+    c.querySelector('[data-back]').addEventListener('click', function(){ render(plan); });
+    var go = c.querySelector('[data-confirm-pause]');
+    go.addEventListener('click', function(){
+      var m = c.querySelector('input[name="apMonths"]:checked');
+      act('pause', { months: Number(m ? m.value : 1) }, go);
+    });
+  }
+
+  function showCancel(){
+    var p = plan;
+    var until = p.status === 'paused' ? (p.accessUntil || Date.now()) : (p.status === 'payment_problem' ? Date.now() : p.nextPayment);
+    var keep = (until && until > Date.now() + 36e5) ? 'You keep ' + esc(p.planName) + ' until <b>' + day(until) + '</b>, then your account moves to the free Bronze plan.' : 'Your account moves to the free Bronze plan.';
+    var c = panel('<h2>Cancel your ' + esc(p.planName) + ' plan</h2>'
+      + '<p>No further payments will be taken. ' + keep + ' Nothing you have saved is deleted.</p>'
+      + '<div class="ap-field"><label for="apReason">Why are you leaving? (optional)</label><select id="apReason">'
+      + REASONS.map(function(r){ return '<option value="' + r[0] + '">' + esc(r[1]) + '</option>'; }).join('') + '</select></div>'
+      + '<div class="ap-field"><label for="apDetails">Anything else? (optional)</label><textarea id="apDetails" maxlength="300" placeholder="What would have made you stay?"></textarea><div class="ap-count" id="apCount">0 / 300</div></div>'
+      + (p.status === 'active' ? '<p class="ap-small">Only need a break? <button type="button" class="ap-link" data-instead>Pause for 1 to 3 months instead</button>.</p>' : '')
+      + '<div class="ap-row"><button type="button" class="ap-btn danger" data-confirm-cancel>Confirm cancellation</button><button type="button" class="ap-btn" data-back>Keep my plan</button></div>'
+      + '<div class="ap-err" data-err role="alert"></div>');
+    var ta = c.querySelector('#apDetails'), cnt = c.querySelector('#apCount');
+    ta.addEventListener('input', function(){ cnt.textContent = ta.value.length + ' / 300'; });
+    c.querySelector('[data-back]').addEventListener('click', function(){ render(plan); });
+    var inst = c.querySelector('[data-instead]');
+    if (inst) inst.addEventListener('click', showPause);
+    var go = c.querySelector('[data-confirm-cancel]');
+    go.addEventListener('click', function(){
+      act('cancel', { reason: c.querySelector('#apReason').value, details: ta.value.slice(0, 300) }, go);
+    });
+  }
+
+  async function act(action, body, btn){
+    var err = main.querySelector('[data-err]');
+    if (err) err.textContent = '';
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Working…';
+    try {
+      var d = await call('POST', '/api/plan/' + action, body);
+      var p = d.plan;
+      if (action === 'cancel') {
+        lastDone = '<section class="ap-card ap-done" id="apConfirm" tabindex="-1"><h2>Your plan is cancelled</h2>'
+          + '<p>No further payments will be taken. ' + (p.accessUntil && p.accessUntil > Date.now() + 36e5 ? 'You keep ' + esc(p.planName) + ' until <b>' + day(p.accessUntil) + '</b>, then your account moves to the free Bronze plan.' : 'Your account is now on the free Bronze plan.') + '</p>'
+          + '<p class="ap-small">Cancelled on ' + day(Date.now()) + '. Keep this page as your record: we don’t send a confirmation email yet. Your PayPal account will also show this automatic payment as cancelled.</p></section>';
+      } else if (action === 'pause') {
+        lastDone = '<section class="ap-card ap-done" id="apConfirm" tabindex="-1"><h2>Your plan is paused</h2>'
+          + '<p>' + (p.accessUntil ? 'Full access until <b>' + day(p.accessUntil) + '</b>, then free Bronze. ' : '') + 'Your plan restarts by itself on <b>' + day(p.pause && p.pause.resumeAt) + '</b> and the next payment is taken then.</p></section>';
+      } else if (action === 'resume') {
+        lastDone = '<section class="ap-card ap-done" id="apConfirm" tabindex="-1"><h2>Welcome back</h2><p>Your ' + esc(p.planName) + ' plan is active again.</p></section>';
+      }
+      if (window.RGPAuth && RGPAuth.refresh) RGPAuth.refresh().then(function(){ if (window.RGP_renderAuthState) RGP_renderAuthState(); }).catch(function(){});
+      render(p);
+      var cf = document.getElementById('apConfirm');
+      if (cf) { cf.focus({ preventScroll: true }); cf.scrollIntoView({ block: 'start', behavior: 'auto' }); }
+    } catch (e) {
+      btn.disabled = false; btn.textContent = label;
+      var m = e.message || 'Something went wrong.';
+      if (e.code === 'resubscribe') m += ' <a href="pricing.html">See the plans</a>.';
+      else if (e.status >= 500) m = esc(m) + ' If it keeps happening, cancel in PayPal (Settings → Payments → Manage automatic payments) or email bassamomda@gmail.com.';
+      if (err) err.innerHTML = e.code === 'resubscribe' ? m : (e.status >= 500 ? m : esc(m));
+    }
+  }
+
+  async function load(){
+    if (!api()) { offline('Plan management works on the live site.'); return; }
+    if (!token()) { signedOut(); return; }
+    set('<section class="ap-card"><p class="ap-muted">Loading your plan…</p></section>');
+    try {
+      var d = await call('GET', '/api/plan');
+      render(d.plan);
+    } catch (e) {
+      if (e.status === 401) { signedOut(); return; }
+      offline(e.message);
+    }
+  }
+  load();
+})();
+</script>
+</body></html>

@@ -10,6 +10,9 @@
        PayPal, then sets the user's tier (entitlement).
      • Entitlement is returned by /api/auth/me so the site can
        unlock the right area (clinic / sca / all).
+     • Manage my plan (/api/plan, /api/plan/pause|resume|cancel) and
+       the owner's /api/admin/plan — pause, resume and cancel the
+       member's PayPal subscription. See the block at the end.
 
    DEPLOY: see backend/README.md. You need two KV namespaces
    (USERS, TOKENS) and a handful of secrets/vars (below).
@@ -28,6 +31,11 @@
    ============================================================ */
 
 const PAYPAL_API = 'https://api-m.paypal.com'; // live. Sandbox: https://api-m.sandbox.paypal.com
+const PAYPAL_SANDBOX_API = 'https://api-m.sandbox.paypal.com';
+// Set PAYPAL_MODE = "sandbox" in wrangler.toml [vars] (with sandbox secrets) to
+// send EVERY PayPal call — webhook verification, plan look-ups and the
+// Manage-my-plan actions — to the sandbox together. Unset = live.
+function ppBase(env) { return String((env && env.PAYPAL_MODE) || '').trim().toLowerCase() === 'sandbox' ? PAYPAL_SANDBOX_API : PAYPAL_API; }
 
 export default {
   async fetch(request, env) {
@@ -43,6 +51,11 @@ export default {
       if (url.pathname === '/api/group')          return await groupSession(request, env, cors);
       if (url.pathname === '/api/redeem')         return await redeemCode(request, env, cors);
       if (url.pathname === '/api/referral')       return await referral(request, env, cors);
+      if (url.pathname === '/api/plan')           return await planGet(request, env, cors);
+      if (url.pathname === '/api/plan/pause')     return await planAction(request, env, cors, 'pause');
+      if (url.pathname === '/api/plan/resume')    return await planAction(request, env, cors, 'resume');
+      if (url.pathname === '/api/plan/cancel')    return await planAction(request, env, cors, 'cancel');
+      if (url.pathname === '/api/admin/plan')     return await adminPlan(request, env, cors);
       if (url.pathname === '/api/admin/codes')    return await adminCodes(request, env, cors);
       if (url.pathname === '/api/admin/user')     return await adminUser(request, env, cors);
       if (url.pathname === '/api/admin/stats')    return await adminStats(request, env, cors);
@@ -60,8 +73,11 @@ export default {
     }
   },
 
-  // Optional Cron Trigger — warms the updates cache so the live feed is instant.
+  // Cron Triggers (wrangler.toml): every run restarts paused plans whose pause
+  // has ended; the daily 07:00 run also warms the updates cache.
   async scheduled(event, env, ctx) {
+    ctx.waitUntil(resumeDuePlans(env).catch(() => {}));
+    if (event && event.cron && event.cron !== '0 7 * * *') return;
     ctx.waitUntil((async () => {
       const data = await fetchUpdates(env);
       try { if (env.UPDATES) await mergeArchive(env, data.items); } catch(e){}
@@ -86,7 +102,7 @@ function corsHeaders(env, request) {
   return {
     'Access-Control-Allow-Origin': allow,
     'Vary': 'Origin',
-    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+    'Access-Control-Allow-Methods': 'POST, GET, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Access-Control-Max-Age': '86400'
   };
@@ -129,7 +145,8 @@ const publicUser = (u, env) => ({
   tierSource: u.tierSource || '',
   // Expose just enough of the subscription for the account menu to show the
   // renewal date — never the PayPal ids beyond the subscription reference.
-  sub: u.sub ? { status: u.sub.status || '', nextBilling: u.sub.nextBilling || null, id: u.sub.id || '' } : null,
+  sub: u.sub ? { status: u.sub.status || '', nextBilling: u.sub.nextBilling || null, id: u.sub.id || '',
+                 resumeAt: (u.pause && u.pause.resumeAt) || null, pausedFrom: (u.pause && u.pause.from) || null } : null,
   admin: !!(env && String(env.ADMIN_EMAIL || '').trim().toLowerCase() === u.email)
 });
 
@@ -173,13 +190,16 @@ async function login(request, env) {
   return { token, user: publicUser(user, env) };
 }
 async function me(request, env) {
-  const user = await userFromToken(request, env);
+  const user = await maybeAutoResume(await userFromToken(request, env), env);
   return { user: publicUser(user, env) };
 }
 
-/* ---------------- per-user data sync (e.g. Scribe consultations) ----------------
-   GET  /api/data?k=scribe          -> { data, ts }   (null data if never saved)
-   POST /api/data?k=scribe {data}   -> { ok, ts }
+/* ---------------- per-user data sync (e.g. Scribe consultations, CPD log) ----------------
+   GET    /api/data?k=scribe                -> { data, ts }   (null data if never saved)
+   POST   /api/data?k=scribe {data}         -> { ok, ts }
+   POST   /api/data?k=cpd {data, baseTs}    -> { ok, ts }, or 409 { error, data, ts } when the
+          stored copy changed since baseTs (the client merges and retries — no lost updates)
+   DELETE /api/data?k=cpd                   -> { ok }   (user deletes their own server copy)
    Stored in USERS KV as udata:<email>:<key>. Signed-in users only, any tier. */
 async function userData(request, env, cors) {
   let user;
@@ -196,11 +216,24 @@ async function userData(request, env, cors) {
   }
   if (request.method === 'POST' || request.method === 'PUT') {
     const body = await request.json();
-    const ts = Date.now();
-    const payload = JSON.stringify({ data: body.data ?? null, ts });
-    if (payload.length > 800 * 1024) return json({ error: 'Too large to sync (800 KB limit) — delete some old items.' }, 413, cors);
-    await env.USERS.put(kvKey, payload);
+    let ts = Date.now();
+    if (JSON.stringify({ data: body.data ?? null, ts }).length > 800 * 1024) return json({ error: 'Too large to sync (800 KB limit) — delete some old items.' }, 413, cors);
+    // Optional optimistic concurrency: a client that sends baseTs (the ts it last read)
+    // is told about a newer write from another device instead of overwriting it.
+    if (body.baseTs !== undefined && body.baseTs !== null) {
+      const curRaw = await env.USERS.get(kvKey);
+      if (curRaw) {
+        let cur = null; try { cur = JSON.parse(curRaw); } catch (e) {}
+        if (cur && cur.ts && cur.ts !== Number(body.baseTs)) return json({ error: 'conflict', data: cur.data, ts: cur.ts }, 409, cors);
+        if (cur && cur.ts >= ts) ts = cur.ts + 1;
+      }
+    }
+    await env.USERS.put(kvKey, JSON.stringify({ data: body.data ?? null, ts }));
     return json({ ok: true, ts }, 200, cors);
+  }
+  if (request.method === 'DELETE') {
+    await env.USERS.delete(kvKey);
+    return json({ ok: true }, 200, cors);
   }
   return json({ error: 'method' }, 405, cors);
 }
@@ -973,7 +1006,7 @@ async function embedProxy(request, env, cors) {
 /* ---------------- PayPal subscription webhook ---------------- */
 async function paypalAccessToken(env) {
   const basic = btoa(`${env.PAYPAL_CLIENT_ID}:${env.PAYPAL_SECRET}`);
-  const r = await fetch(`${PAYPAL_API}/v1/oauth2/token`, {
+  const r = await fetch(`${ppBase(env)}/v1/oauth2/token`, {
     method: 'POST',
     headers: { 'Authorization': `Basic ${basic}`, 'Content-Type': 'application/x-www-form-urlencoded' },
     body: 'grant_type=client_credentials'
@@ -987,7 +1020,7 @@ async function paypalWebhook(request, env) {
   const access = await paypalAccessToken(env);
 
   // Verify the event really came from PayPal
-  const verifyRes = await fetch(`${PAYPAL_API}/v1/notifications/verify-webhook-signature`, {
+  const verifyRes = await fetch(`${ppBase(env)}/v1/notifications/verify-webhook-signature`, {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${access}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -1023,7 +1056,7 @@ async function paypalWebhook(request, env) {
   const subId = res.id && String(res.id).indexOf('I-') === 0 ? res.id : (res.billing_agreement_id || null);
   if ((!res.plan_id || !res.custom_id) && subId) {
     try {
-      const sr = await fetch(`${PAYPAL_API}/v1/billing/subscriptions/${encodeURIComponent(subId)}`, {
+      const sr = await fetch(`${ppBase(env)}/v1/billing/subscriptions/${encodeURIComponent(subId)}`, {
         headers: { 'Authorization': `Bearer ${access}` }
       });
       if (sr.ok) { const full = await sr.json(); res = Object.assign({}, full, { id: full.id || subId }); }
@@ -1036,13 +1069,30 @@ async function paypalWebhook(request, env) {
   const raw = await env.USERS.get(email);
   if (!raw) { await logPayIssue(env, 'unknown-user:' + email, type, res); return new Response('unknown user', { status: 200 }); }
   const user = JSON.parse(raw);
+  const thisSub = !!(user.sub && user.sub.id && user.sub.id === (res.id || subId));
+
+  // A grant-type event must not undo a pause or cancellation. Events can arrive
+  // late or out of order, so for a paused member ask PayPal for the subscription's
+  // CURRENT status; a resource that is already CANCELLED/EXPIRED never grants.
+  if (GRANT.indexOf(type) !== -1) {
+    let st = String(res.status || '').toUpperCase();
+    if (thisSub && user.pause) {
+      const cur = await ppGetSub(env, user.sub.id, access);
+      if (cur && cur.status) st = String(cur.status).toUpperCase();
+      if (st !== 'ACTIVE') { await logPlan(env, { email, action: 'webhook ' + type, by: 'paypal', sub: user.sub.id, result: 'ignored: plan is paused' }); return new Response('ok', { status: 200 }); }
+    }
+    if ((st === 'CANCELLED' || st === 'EXPIRED') && thisSub && ['cancelled', 'expired'].indexOf(String(user.sub.status).toLowerCase()) !== -1) {
+      await logPlan(env, { email, action: 'webhook ' + type, by: 'paypal', sub: user.sub.id, result: 'ignored: subscription already ended' });
+      return new Response('ok', { status: 200 });
+    }
+  }
 
   if (GRANT.indexOf(type) !== -1) {
     let tier = tierFromPlan(res.plan_id, env);
     // The PLAN_* vars can drift from the live plans (e.g. plans recreated under a
     // new PayPal app). Rather than silently granting nothing to someone who has
     // just paid, fall back to the plan's NAME from the PayPal API.
-    if (!tier && res.plan_id) tier = await tierFromPlanName(res.plan_id, access);
+    if (!tier && res.plan_id) tier = await tierFromPlanName(res.plan_id, access, env);
     if (tier) {
       user.tier = tier;
       // A live paid subscription never carries a code expiry. Clearing this is
@@ -1057,12 +1107,18 @@ async function paypalWebhook(request, env) {
       // renews. A live subscription has no access expiry (tierUntil stays null) —
       // this is the renewal date, not a cut-off.
       const nextBill = (res.billing_info && res.billing_info.next_billing_time) ? Date.parse(res.billing_info.next_billing_time) : null;
+      const started = res.start_time ? Date.parse(res.start_time) : NaN;
       user.sub = {
         id: res.id || subId, plan: res.plan_id || null, status: res.status || 'ACTIVE',
         nextBilling: (nextBill && !isNaN(nextBill)) ? nextBill : null,
         cycle: (res.billing_info && res.billing_info.cycle_executions && res.billing_info.cycle_executions[0] && res.billing_info.cycle_executions[0].tenure_type) || null,
+        start: !isNaN(started) ? started : ((thisSub && user.sub.start) || Date.now()),
         ts: Date.now()
       };
+      // Live and paying again (first payment, renewal, or a resume done inside
+      // PayPal): any pause or cancellation recorded here is over.
+      if (user.pause) { delete user.pause; await env.USERS.delete('pause:' + email); }
+      delete user.cancel;
     } else {
       // Paid but unmappable — record it so it can be fixed by hand, never silent.
       user.payIssue = { plan: res.plan_id || null, sub: res.id || subId || null, type, ts: Date.now() };
@@ -1071,14 +1127,30 @@ async function paypalWebhook(request, env) {
   } else {
     // A monthly subscription must keep running until it's genuinely finished.
     // Only EXPIRED (PayPal says the agreement is over) cuts access immediately.
-    if (type === 'BILLING.SUBSCRIPTION.SUSPENDED') {
+    if (type === 'BILLING.SUBSCRIPTION.SUSPENDED' && thisSub && user.pause) {
+      // The member (or the owner) paused this plan from Manage my plan. Access
+      // already runs to the end of the paid period (tierUntil = pause.from);
+      // no payment-failure grace on top of it.
+      user.sub.status = 'paused';
+    } else if (type === 'BILLING.SUBSCRIPTION.SUSPENDED') {
       // Usually a temporarily failed payment — PayPal retries for days. Don't strip
       // access off a paying member over a declined card: hold the tier and give a
       // 7-day grace window, and let a later success clear it.
       const grace = Date.now() + 7 * 864e5;
       user.tierUntil = Math.max(user.tierUntil || 0, grace) || grace;
       if (user.sub) { user.sub.status = 'suspended'; user.sub.graceUntil = grace; }
+    } else if (type === 'BILLING.SUBSCRIPTION.CANCELLED' && thisSub && String(user.sub.status).toLowerCase() === 'cancelled') {
+      // Already cancelled from Manage my plan: tierUntil (paid period + any
+      // released referral days) was set then. Re-deriving it here would drop
+      // the released days, so keep it.
     } else if (type === 'BILLING.SUBSCRIPTION.CANCELLED') {
+      // Cancelled inside PayPal (or by the owner in the PayPal dashboard). If the
+      // plan was paused, the paid period ended when the pause began.
+      if (user.pause) {
+        if (user.sub) user.sub.nextBilling = Math.min(user.sub.nextBilling || user.pause.from, user.pause.from);
+        delete user.pause; await env.USERS.delete('pause:' + email);
+      }
+      user.cancel = user.cancel || { at: Date.now(), by: 'paypal', reason: '' };
       // They've cancelled but already paid for the current month — let them keep
       // what they bought until the period ends, then it lapses on its own.
       // Any referral months banked while the subscription was live (it had no
@@ -1089,6 +1161,7 @@ async function paypalWebhook(request, env) {
       if (bank) user.refCreditDays = 0;
       if (user.sub) user.sub.status = 'cancelled';
     } else {
+      if (user.pause) { delete user.pause; await env.USERS.delete('pause:' + email); }
       // Expired. Release any banked referral months rather than dropping the
       // member straight to bronze — those were earned, not bought.
       const bank = Math.max(0, +user.refCreditDays || 0);
@@ -1105,12 +1178,13 @@ async function paypalWebhook(request, env) {
     }
   }
   await env.USERS.put(email, JSON.stringify(user));
+  await logPlan(env, { email, action: 'webhook ' + type, by: 'paypal', sub: (user.sub && user.sub.id) || subId || '', result: 'applied' });
   return new Response('ok', { status: 200 });
 }
 /* Map a plan to a tier by its NAME when the PLAN_* ids don't match. */
-async function tierFromPlanName(planId, access) {
+async function tierFromPlanName(planId, access, env) {
   try {
-    const r = await fetch(`${PAYPAL_API}/v1/billing/plans/${encodeURIComponent(planId)}`, {
+    const r = await fetch(`${ppBase(env)}/v1/billing/plans/${encodeURIComponent(planId)}`, {
       headers: { 'Authorization': `Bearer ${access}` }
     });
     if (!r.ok) return null;
@@ -1129,4 +1203,373 @@ async function logPayIssue(env, why, type, res) {
       JSON.stringify({ why, type, plan: (res && res.plan_id) || null, sub: (res && res.id) || null, ts: Date.now() }),
       { expirationTtl: 60 * 60 * 24 * 30 });
   } catch (e) {}
+}
+
+/* ---------------- Manage my plan: pause / resume / cancel ----------------
+   GET  /api/plan                    -> { plan }        the signed-in member's own plan
+   POST /api/plan/pause  {months}    -> { ok, plan }    months = 1 | 2 | 3
+   POST /api/plan/resume             -> { ok, plan }
+   POST /api/plan/cancel {reason?, details?} -> { ok, plan }
+   GET  /api/admin/plan?email=x      -> { plan, user, log }   (ADMIN_EMAIL only)
+   GET  /api/admin/plan              -> { log }               recent actions, all members
+   POST /api/admin/plan {email, action:'cancel'|'pause'|'resume', months?, reason?, details?}
+
+   The rules (also explained to members on pages/account-plan.html):
+   • PAUSE = PayPal suspend. The pause starts when the period already paid for
+     ends, so paid days are never lost. While paused the account is on free
+     Bronze. PayPal is reactivated automatically on resumeAt (hourly cron, and
+     on the member's next visit) and billing restarts. Recurring plans only.
+   • CANCEL = PayPal cancel. No further payments. Access runs to the end of
+     the paid period, then the account drops to Bronze. Banked referral days
+     are released on top, exactly as the CANCELLED webhook does.
+   • A cancelled PayPal subscription cannot be reactivated (PayPal's rule), so
+     "restart" means a new subscription from the pricing page; any days still
+     left are banked by bankRemaining() when the new one starts.
+   • Every action is idempotent (repeating it changes nothing), rate-limited
+     per member, and logged as planlog:* (time, email, action, reason, who) —
+     never card or PayPal payer data.                                         */
+const PLAN_INFO = {
+  PLAN_SILVER_MONTHLY:   { tier: 'silver',   months: 1,  price: 10 },
+  PLAN_SILVER_YEARLY:    { tier: 'silver',   months: 12, price: 100 },
+  PLAN_GOLD_MONTHLY:     { tier: 'gold',     months: 1,  price: 15 },
+  PLAN_GOLD_3MONTHLY:    { tier: 'gold',     months: 3,  price: 40 },
+  PLAN_GOLD_YEARLY:      { tier: 'gold',     months: 12, price: 100 },
+  PLAN_PLATINUM_MONTHLY: { tier: 'platinum', months: 1,  price: 20 },
+  PLAN_PLATINUM_YEARLY:  { tier: 'platinum', months: 12, price: 180 }
+};
+const PAUSE_MONTHS = [1, 2, 3];
+const PLAN_RL_MAX = 6;                       // plan changes per member per hour
+const PLAN_RL_ADMIN_MAX = 40;                // owner acting for members, per hour
+const PLAN_LOG_TTL = 60 * 60 * 24 * 730;     // keep the owner's action log 2 years
+const CANCEL_REASONS = ['too-expensive', 'not-using', 'exam-done', 'missing-content', 'technical', 'other-service', 'other'];
+const TIER_NAME = { silver: 'Silver', gold: 'Gold', platinum: 'Platinum', bronze: 'Bronze (free)' };
+
+function planInfo(planId, env) {
+  if (!planId) return null;
+  for (const k of Object.keys(PLAN_INFO)) {
+    if (env[k] && env[k] === planId) return Object.assign({ key: k }, PLAN_INFO[k]);
+  }
+  return null;
+}
+/* Same day-of-month N months later (clamped: 31 Jan + 1 month = 28/29 Feb). */
+function addMonths(ts, n) {
+  const d = new Date(ts);
+  const day = d.getUTCDate();
+  const t = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + n, 1, d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds()));
+  const last = new Date(Date.UTC(t.getUTCFullYear(), t.getUTCMonth() + 1, 0)).getUTCDate();
+  t.setUTCDate(Math.min(day, last));
+  return t.getTime();
+}
+function ukDate(ts) {
+  try { return new Date(ts).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/London' }); }
+  catch (e) { return new Date(ts).toISOString().slice(0, 10); }
+}
+function failCode(msg, status, code) { const e = fail(msg, status); e.code = code; return e; }
+
+/* What the member sees. Derived from the stored record only — never trusts the
+   browser. `status` is one of: active | paused | payment_problem | cancelled |
+   expired | free. `kind` is subscription (recurring PayPal) | fixed (a code,
+   referral or manual grant: no recurring payment) | none. */
+function planView(user, env) {
+  const now = Date.now();
+  const sub = user.sub && user.sub.id ? user.sub : null;
+  const info = sub ? planInfo(sub.plan, env) : null;
+  const tier = ['silver', 'gold', 'platinum'].includes(user.tier) ? user.tier : 'bronze';
+  const live = tier !== 'bronze' && (!user.tierUntil || user.tierUntil > now);
+  const sst = String((sub && sub.status) || '').toLowerCase();
+  let kind = sub ? 'subscription' : (tier !== 'bronze' || user.tierUntil ? 'fixed' : 'none');
+  let status;
+  if (kind === 'subscription') {
+    if (sst === 'cancelled' || sst === 'expired') status = live ? 'cancelled' : 'expired';
+    else if (user.pause) status = 'paused';
+    else if (sst === 'suspended') status = live ? 'payment_problem' : 'expired';
+    else status = 'active';
+  } else if (kind === 'fixed') status = live ? 'active' : 'expired';
+  else status = 'free';
+
+  const view = {
+    kind, status,
+    tier: (kind === 'subscription' && info) ? info.tier : tier,
+    accessTier: live ? tier : 'bronze',
+    planName: TIER_NAME[(kind === 'subscription' && info) ? info.tier : tier] || 'Bronze (free)',
+    price: info ? info.price : null,
+    currency: 'GBP',
+    periodMonths: info ? info.months : null,
+    nextPayment: null,
+    accessUntil: null,
+    startDate: sub ? (sub.start || null) : (kind === 'fixed' ? (user.tierStart || null) : null),
+    method: kind === 'subscription' ? 'PayPal' : (kind === 'fixed' ? 'No recurring payment' : null),
+    source: kind === 'fixed' ? String(user.tierSource || '').split('+')[0].replace(/:.*/, '') : (kind === 'subscription' ? 'paypal' : ''),
+    subRef: sub ? ('…' + String(sub.id).slice(-4)) : null,
+    pause: null,
+    cancel: null,
+    canPause: false, canCancel: false, canResume: false, canRestart: false,
+    pauseOptions: [],
+    bankedDays: Math.max(0, +user.refCreditDays || 0)
+  };
+  if (status === 'active' && kind === 'subscription') {
+    view.nextPayment = sub.nextBilling || null;
+    view.canPause = true; view.canCancel = true;
+    const from = sub.nextBilling && sub.nextBilling > now ? sub.nextBilling : now;
+    view.pauseOptions = PAUSE_MONTHS.map(m => ({ months: m, from, resumeAt: addMonths(from, m) }));
+  } else if (status === 'paused') {
+    view.pause = { months: user.pause.months, from: user.pause.from, resumeAt: user.pause.resumeAt };
+    view.accessUntil = user.pause.from > now ? user.pause.from : null;
+    view.nextPayment = user.pause.resumeAt;
+    view.canResume = true; view.canCancel = true;
+  } else if (status === 'payment_problem') {
+    view.accessUntil = user.tierUntil || null;
+    view.canCancel = true;
+  } else if (status === 'cancelled') {
+    view.accessUntil = user.tierUntil || null;
+    view.canRestart = true;
+  } else if (status === 'expired') {
+    view.accessUntil = user.tierUntil || (sub && sub.nextBilling) || null;
+    view.canRestart = true;
+  } else if (kind === 'fixed') {
+    view.accessUntil = user.tierUntil || null;
+  }
+  if (user.cancel) view.cancel = { at: user.cancel.at, accessUntil: user.cancel.accessUntil || user.tierUntil || null, by: String(user.cancel.by || 'member').indexOf('admin') === 0 ? 'owner' : 'member' };
+  return view;
+}
+
+async function planRateLimit(env, key, max) {
+  const k = 'planrl:' + key;
+  let r = null;
+  try { r = JSON.parse((await env.USERS.get(k)) || 'null'); } catch (e) {}
+  if (!r || Date.now() - r.start > 3600e3) r = { n: 0, start: Date.now() };
+  if (r.n >= (max || PLAN_RL_MAX)) throw failCode('Too many plan changes in a short time. Please wait an hour, or email bassamomda@gmail.com and it will be done for you.', 429, 'rate_limited');
+  r.n++;
+  await env.USERS.put(k, JSON.stringify(r), { expirationTtl: 3600 });
+}
+
+/* Log for the owner. Keys sort newest-first (inverted timestamp) so a prefix
+   listing returns the latest actions. Free text is capped and any long digit
+   run is masked, so a card number typed into the reason box is never kept. */
+function scrubText(s, max) {
+  return String(s || '').replace(/[\u0000-\u001f]/g, ' ').replace(/\d[\d \-]{10,}\d/g, '[number removed]').trim().slice(0, max || 300);
+}
+async function logPlan(env, e) {
+  const ts = Date.now();
+  const row = {
+    ts, email: e.email || '', action: e.action || '', by: e.by || 'member',
+    reason: e.reason || '', details: scrubText(e.details, 300), result: e.result || 'ok',
+    sub: e.sub ? String(e.sub) : ''
+  };
+  try {
+    await env.USERS.put('planlog:' + String(9e13 - ts).padStart(14, '0') + ':' + randHex(3), JSON.stringify(row), { expirationTtl: PLAN_LOG_TTL });
+  } catch (err) {}
+  return row;
+}
+
+async function ppGetSub(env, subId, access) {
+  try {
+    const r = await fetch(`${ppBase(env)}/v1/billing/subscriptions/${encodeURIComponent(subId)}`, { headers: { 'Authorization': `Bearer ${access}` } });
+    if (!r.ok) return null;
+    return await r.json();
+  } catch (e) { return null; }
+}
+/* POST /v1/billing/subscriptions/{id}/{suspend|activate|cancel}. PayPal answers
+   204 on success and 422 when the subscription is not in a state that allows the
+   change, which is also what a REPEATED call gets. So on any failure, read the
+   subscription back: if it is already where we wanted it, that is success
+   (idempotent); otherwise report PayPal's status. */
+async function ppSubAction(env, subId, action, reason) {
+  const access = await paypalAccessToken(env);
+  if (!access) throw failCode('Couldn’t reach PayPal just now. Please try again in a few minutes.', 502, 'paypal_unavailable');
+  const want = { suspend: 'SUSPENDED', activate: 'ACTIVE', cancel: 'CANCELLED' }[action];
+  const r = await fetch(`${ppBase(env)}/v1/billing/subscriptions/${encodeURIComponent(subId)}/${action}`, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${access}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ reason: String(reason || 'Requested by the member').slice(0, 128) })
+  });
+  if (r.ok) return { access, already: false };
+  const cur = await ppGetSub(env, subId, access);
+  if (cur && String(cur.status || '').toUpperCase() === want) return { access, already: true, sub: cur };
+  if (cur && action !== 'cancel' && ['CANCELLED', 'EXPIRED'].includes(String(cur.status || '').toUpperCase())) {
+    throw failCode('This PayPal subscription has already ended, so it can’t be paused or restarted. Choose a plan on the pricing page to start again.', 409, 'resubscribe');
+  }
+  throw failCode('PayPal didn’t accept that change' + (cur && cur.status ? ' (the subscription is ' + String(cur.status).toLowerCase() + ')' : ' (' + r.status + ')') + '. Please try again, or email bassamomda@gmail.com.', 502, 'paypal_rejected');
+}
+function readNextBilling(ps) {
+  const t = ps && ps.billing_info && ps.billing_info.next_billing_time ? Date.parse(ps.billing_info.next_billing_time) : NaN;
+  return isNaN(t) ? null : t;
+}
+
+async function doPause(user, env, months, by) {
+  months = Number(months);
+  if (!PAUSE_MONTHS.includes(months)) throw failCode('Choose a pause of 1, 2 or 3 months.', 400, 'bad_months');
+  const view = planView(user, env);
+  if (view.status === 'paused') {
+    if (user.pause.months === months) return { user, idempotent: true };
+    throw failCode('Your plan is already paused until ' + ukDate(user.pause.resumeAt) + '. Resume it first if you want a different length.', 409, 'already_paused');
+  }
+  if (view.kind !== 'subscription') throw failCode('Pausing only applies to a recurring PayPal plan. Your access isn’t a recurring payment, so there is nothing to pause.', 409, 'not_recurring');
+  if (view.status !== 'active') throw failCode('Only an active plan can be paused.', 409, 'not_active');
+  const now = Date.now();
+  const from = user.sub.nextBilling && user.sub.nextBilling > now ? user.sub.nextBilling : now;
+  await ppSubAction(env, user.sub.id, 'suspend', 'Member paused for ' + months + ' month' + (months > 1 ? 's' : ''));
+  user.pause = { months, from, resumeAt: addMonths(from, months), at: now, by };
+  user.sub.status = 'paused';
+  user.tierUntil = from;            // paid access to the end of the paid period, then Bronze
+  delete user.cancel;
+  await env.USERS.put('pause:' + user.email, String(user.pause.resumeAt));
+  return { user };
+}
+
+async function doResume(user, env, by) {
+  const view = planView(user, env);
+  if (view.status === 'active' && view.kind === 'subscription') return { user, idempotent: true };
+  if (view.status === 'cancelled' || view.status === 'expired') {
+    throw failCode('A cancelled PayPal subscription can’t be restarted. Choose a plan on the pricing page to start a new one; any days you still have are kept.', 409, 'resubscribe');
+  }
+  if (view.status !== 'paused') throw failCode('There is no paused plan to resume.', 409, 'not_paused');
+  const r = await ppSubAction(env, user.sub.id, 'activate', by === 'auto' ? 'Pause ended' : 'Member resumed early');
+  const ps = r.sub || await ppGetSub(env, user.sub.id, r.access);
+  const nb = readNextBilling(ps);
+  // Resumed early, inside the period already paid for: keep that renewal date.
+  if (nb) user.sub.nextBilling = nb;
+  delete user.pause;
+  user.sub.status = 'active';
+  user.tierUntil = null;
+  await env.USERS.delete('pause:' + user.email);
+  return { user };
+}
+
+async function doCancel(user, env, reason, details, by) {
+  const view = planView(user, env);
+  if (view.kind === 'subscription' && (view.status === 'cancelled' || view.status === 'expired')) return { user, idempotent: true };
+  if (view.kind !== 'subscription') {
+    throw failCode(view.status === 'active' && view.accessUntil
+      ? 'There is no recurring payment to cancel. Your access ends by itself on ' + ukDate(view.accessUntil) + ' and nothing will be charged.'
+      : 'There is no recurring payment to cancel.', 409, 'not_recurring');
+  }
+  const now = Date.now();
+  const paidTo = user.pause ? user.pause.from : (user.sub.nextBilling || now);
+  const code = CANCEL_REASONS.includes(reason) ? reason : (reason ? 'other' : '');
+  await ppSubAction(env, user.sub.id, 'cancel', 'Cancelled by ' + (String(by).indexOf('admin') === 0 ? 'the owner for the member' : 'the member') + (code ? ' (' + code + ')' : ''));
+  const until = Math.max(paidTo, now);
+  const bank = Math.max(0, +user.refCreditDays || 0);
+  user.tierUntil = until + bank * 864e5;
+  if (bank) user.refCreditDays = 0;
+  user.sub.status = 'cancelled';
+  user.cancel = { at: now, by, reason: code, accessUntil: user.tierUntil };
+  delete user.pause;
+  await env.USERS.delete('pause:' + user.email);
+  return { user, reason: code, details: scrubText(details, 300) };
+}
+
+async function runPlanAction(user, env, action, body, by) {
+  let out;
+  if (action === 'pause') out = await doPause(user, env, body.months, by);
+  else if (action === 'resume') out = await doResume(user, env, by);
+  else if (action === 'cancel') out = await doCancel(user, env, body.reason, body.details, by);
+  else throw failCode('Unknown action', 400, 'bad_action');
+  const row = await logPlan(env, {
+    email: user.email, action, by, sub: user.sub && user.sub.id,
+    reason: out.reason || (action === 'pause' ? (body.months + 'm') : ''), details: out.details || '',
+    result: out.idempotent ? 'no change (already done)' : 'ok'
+  });
+  if (!out.idempotent) {
+    user.planLog = (user.planLog || []).concat({ ts: row.ts, action, by, reason: row.reason }).slice(-20);
+    await env.USERS.put(user.email, JSON.stringify(user));
+  }
+  return out;
+}
+
+/* Restart a pause that is due. Used on the member's visit (/api/auth/me,
+   /api/plan) and by the hourly cron. Never throws: a PayPal hiccup just means
+   the next visit or cron run tries again. */
+async function maybeAutoResume(user, env) {
+  if (!user || !user.pause || !(user.pause.resumeAt <= Date.now())) return user;
+  try { await runPlanAction(user, env, 'resume', {}, 'auto'); }
+  catch (e) { await logPlan(env, { email: user.email, action: 'resume', by: 'auto', result: 'error: ' + String(e.message || e).slice(0, 140) }); }
+  return user;
+}
+async function resumeDuePlans(env) {
+  let cursor, done = 0;
+  for (let i = 0; i < 20; i++) {
+    const res = await env.USERS.list({ prefix: 'pause:', limit: 1000, cursor });
+    for (const k of res.keys) {
+      const raw = await env.USERS.get(k.name);
+      if (!raw || Number(raw) > Date.now()) continue;
+      const email = k.name.slice(6);
+      const ur = await env.USERS.get(email);
+      if (!ur) { await env.USERS.delete(k.name); continue; }
+      const u = JSON.parse(ur);
+      if (!u.pause) { await env.USERS.delete(k.name); continue; }
+      await maybeAutoResume(u, env); done++;
+    }
+    if (!res.list_complete && res.cursor) cursor = res.cursor; else break;
+  }
+  return done;
+}
+
+async function planGet(request, env, cors) {
+  if (request.method !== 'GET') return json({ error: 'method' }, 405, cors);
+  let user;
+  try { user = await userFromToken(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  user = await maybeAutoResume(user, env);
+  // Older records were stored before the start date was captured: fill it once.
+  if (user.sub && user.sub.id && !user.sub.start) {
+    try {
+      const access = await paypalAccessToken(env);
+      const ps = access ? await ppGetSub(env, user.sub.id, access) : null;
+      if (ps && ps.start_time) {
+        user.sub.start = Date.parse(ps.start_time) || null;
+        if (!user.sub.nextBilling) user.sub.nextBilling = readNextBilling(ps);
+        await env.USERS.put(user.email, JSON.stringify(user));
+      }
+    } catch (e) {}
+  }
+  return json({ plan: planView(user, env) }, 200, cors);
+}
+
+async function planAction(request, env, cors, action) {
+  if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
+  let user;
+  try { user = await userFromToken(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  const body = await request.json().catch(() => ({}));
+  try {
+    await planRateLimit(env, user.email, PLAN_RL_MAX);
+    const out = await runPlanAction(user, env, action, body || {}, 'member');
+    return json({ ok: true, idempotent: !!out.idempotent, plan: planView(out.user, env), user: publicUser(out.user, env) }, 200, cors);
+  } catch (e) {
+    if (e.status !== 429) await logPlan(env, { email: user.email, action, by: 'member', result: 'error: ' + String(e.message || '').slice(0, 140) });
+    return json({ error: e.message || 'Something went wrong.', code: e.code || '' }, e.status || 400, cors);
+  }
+}
+
+/* Owner tool: see and act on a member's plan (people email to ask). Protected
+   exactly like the other admin endpoints (requireAdmin = ADMIN_EMAIL only). */
+async function adminPlan(request, env, cors) {
+  let admin;
+  try { admin = await requireAdmin(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  const url = new URL(request.url);
+  if (request.method === 'GET') {
+    const email = String(url.searchParams.get('email') || '').trim().toLowerCase();
+    if (!email) return json({ log: await listKV(env, 'planlog:', 100) }, 200, cors);
+    const raw = await env.USERS.get(email);
+    if (!raw) return json({ error: 'no such user' }, 404, cors);
+    const u = JSON.parse(raw);
+    return json({ plan: planView(u, env), sub: u.sub || null, pause: u.pause || null, cancel: u.cancel || null, log: u.planLog || [] }, 200, cors);
+  }
+  if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
+  const b = await request.json().catch(() => ({}));
+  const email = String(b.email || '').trim().toLowerCase();
+  if (!email) return json({ error: 'email required' }, 400, cors);
+  const raw = await env.USERS.get(email);
+  if (!raw) return json({ error: 'no such user' }, 404, cors);
+  const user = JSON.parse(raw);
+  try {
+    await planRateLimit(env, 'admin', PLAN_RL_ADMIN_MAX);
+    const out = await runPlanAction(user, env, String(b.action || ''), b, 'admin:' + admin.email);
+    return json({ ok: true, idempotent: !!out.idempotent, plan: planView(out.user, env) }, 200, cors);
+  } catch (e) {
+    await logPlan(env, { email, action: String(b.action || ''), by: 'admin:' + admin.email, result: 'error: ' + String(e.message || '').slice(0, 140) });
+    return json({ error: e.message || 'Something went wrong.', code: e.code || '' }, e.status || 400, cors);
+  }
 }

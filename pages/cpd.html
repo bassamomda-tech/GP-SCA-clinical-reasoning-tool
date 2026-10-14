@@ -126,13 +126,77 @@
   .cpd-cert .cc-rf b{ color:#0c4a47; }
   .cpd-cert .cc-foot{ font-size:11px; color:#777; margin-top:16px; border-top:1px solid #ccc; padding-top:8px; }
 
+  /* ---- Account backup status ---- */
+  .cpd-sync{ font-size:12.5px; color:var(--muted); display:flex; align-items:flex-start; gap:8px; line-height:1.45; text-align:left; }
+  .cpd-sync .dot{ width:8px; height:8px; border-radius:50%; background:#b9b2a3; flex-shrink:0; margin-top:5px; }
+  .cpd-sync[data-state="ok"] .dot{ background:#16a34a; }
+  .cpd-sync[data-state="syncing"] .dot, .cpd-sync[data-state="idle"] .dot{ background:#d4a017; }
+  .cpd-sync[data-state="offline"] .dot, .cpd-sync[data-state="error"] .dot{ background:var(--rust); }
+  .cpd-sync b{ color:var(--ink-2); font-weight:700; }
+  .cpd-link{ font:inherit; font-size:12.5px; font-weight:700; color:var(--teal-2); background:none; border:none; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:2px; }
+  .cpd-link:hover{ color:var(--rust); }
+  .cpd-link.danger{ color:#b91c1c; }
+
+  /* ---- Patient-data warning in the reflection form ---- */
+  .ci-pii-note{ grid-column:1 / -1; font-size:12px; font-weight:600; color:#8a3b12; background:#fff7ed; border:1px solid #fed7aa; border-radius:8px; padding:6px 10px; }
+  .ci-pii-warn{ grid-column:1 / -1; font-size:12.5px; line-height:1.45; color:#7c2d12; background:#fef2f2; border:1px solid #f3c7bd; border-radius:8px; padding:8px 11px; }
+  .ci-pii-warn[hidden]{ display:none; }
+
+  /* ---- Appraisal export panel ---- */
+  .cpd-exp{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:22px 0 10px; }
+  .cpd-exp h3{ font-size:15px; font-weight:800; color:var(--teal); margin:0 0 4px; }
+  .cpd-exp .exp-sub{ font-size:12.5px; color:var(--muted); line-height:1.5; margin-bottom:12px; max-width:78ch; }
+  .exp-row{ display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap; }
+  .exp-row .cpd-fld{ min-width:150px; }
+  .exp-row .cpd-fld.grow{ flex:1 1 220px; }
+  .exp-custom[hidden]{ display:none; }
+  .exp-totals{ display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 4px; }
+  .exp-chip{ font-size:12px; background:var(--surface-2); border:1px solid var(--line); border-radius:99px; padding:4px 11px; color:var(--ink-2); }
+  .exp-chip b{ color:var(--ink); font-variant-numeric:tabular-nums; }
+  .exp-actions{ display:flex; gap:9px; flex-wrap:wrap; margin-top:12px; }
+  .exp-list{ margin-top:12px; }
+  .exp-list summary{ cursor:pointer; font-size:13px; font-weight:700; color:var(--ink-2); padding:4px 0; }
+  .exp-item{ display:flex; align-items:center; gap:10px; justify-content:space-between; border-top:1px solid var(--line); padding:8px 0; font-size:13px; }
+  .exp-item .t{ min-width:0; overflow-wrap:anywhere; }
+  .exp-item .m{ font-size:11.5px; color:var(--muted); }
+  .exp-copy{ font:inherit; font-size:11.5px; font-weight:700; padding:6px 10px; border-radius:8px; border:1px solid var(--line-2); background:#fff; color:var(--ink-2); cursor:pointer; white-space:nowrap; flex-shrink:0; }
+  .exp-copy:hover{ border-color:var(--teal); color:var(--teal); }
+  .exp-note{ font-size:11.5px; color:var(--muted); line-height:1.5; margin-top:10px; }
+
+  /* ---- Printable appraisal summary (hidden on screen) ---- */
+  .cpd-appr{ display:none; font-family:'DM Sans',system-ui,sans-serif; color:#111; }
+  .cpd-appr h1{ font-family:'Source Serif 4',serif; font-size:23px; font-weight:600; color:#0c2f2d; margin:0 0 2px; }
+  .cpd-appr .ap-sub{ font-size:12.5px; color:#444; margin-bottom:12px; }
+  .cpd-appr .ap-meta{ display:flex; gap:24px; flex-wrap:wrap; border-top:3px solid #0c4a47; border-bottom:1px solid #ccc; padding:10px 0; margin-bottom:12px; font-size:12.5px; }
+  .cpd-appr .ap-meta b{ display:block; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:#666; margin-bottom:2px; }
+  .cpd-appr .ap-meta .big{ font-family:'Source Serif 4',serif; font-size:19px; color:#0c4a47; }
+  .cpd-appr h2{ font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:#0c4a47; margin:14px 0 6px; }
+  .cpd-appr table{ width:100%; border-collapse:collapse; font-size:12px; }
+  .cpd-appr th, .cpd-appr td{ text-align:left; border-bottom:1px solid #ddd; padding:5px 6px; vertical-align:top; }
+  .cpd-appr th{ font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; color:#555; }
+  .cpd-appr td.n, .cpd-appr th.n{ text-align:right; font-variant-numeric:tabular-nums; }
+  .cpd-appr .ap-entry{ border-bottom:1px solid #e2e2e2; padding:8px 0; break-inside:avoid; }
+  .cpd-appr .ap-et{ font-size:13px; font-weight:700; }
+  .cpd-appr .ap-em{ font-size:11px; color:#555; margin:2px 0 3px; overflow-wrap:anywhere; }
+  .cpd-appr .ap-rf{ font-size:11.5px; line-height:1.5; margin:2px 0; }
+  .cpd-appr .ap-rf b{ color:#0c4a47; }
+  .cpd-appr .ap-decl{ margin-top:18px; border:1px solid #999; border-radius:6px; padding:12px 14px; break-inside:avoid; font-size:12px; line-height:1.6; }
+  .cpd-appr .ap-sign{ display:grid; grid-template-columns:2fr 1fr 1fr; gap:18px; margin-top:22px; }
+  .cpd-appr .ap-sign div{ border-top:1px solid #333; padding-top:3px; font-size:10.5px; color:#555; }
+  .cpd-appr .ap-foot{ font-size:10.5px; color:#666; margin-top:12px; line-height:1.5; }
+  body.print-appraisal .cpd-appr{ display:block; }
+
   @media print{
     @page{ margin:14mm; }
     body{ background:#fff; }
-    body *{ visibility:hidden; }
-    .cpd-cert, .cpd-cert *{ visibility:visible; }
-    .cpd-cert{ display:block; position:absolute; left:0; top:0; width:100%; }
+    body:not(.print-appraisal) *{ visibility:hidden; }
+    body:not(.print-appraisal) .cpd-cert, body:not(.print-appraisal) .cpd-cert *{ visibility:visible; }
+    body:not(.print-appraisal) .cpd-cert{ display:block; position:absolute; left:0; top:0; width:100%; }
     .sidebar{ display:none !important; }
+    /* Appraisal summary: print only that block, so no blank trailing pages */
+    body.print-appraisal{ padding:0 !important; background:#fff !important; }
+    body.print-appraisal > *:not(.cpd-appr){ display:none !important; }
+    body.print-appraisal .cpd-appr a{ color:#0c4a47; text-decoration:none; }
   }
 
   @media (max-width:720px){
@@ -142,6 +206,9 @@
     .cpd-item.open .ci-refl{ grid-template-columns:1fr; }
     .cpd-row{ grid-template-columns:auto 1fr; }
     .ci-credit, .ci-tools{ grid-column:2; justify-self:start; }
+    .cpd-name-row input{ min-width:0; width:100%; }
+    .exp-row .cpd-fld{ flex:1 1 100%; }
+    .cpd-exp{ padding:16px 14px; }
   }
 </style>
 </head>
@@ -160,7 +227,7 @@
 <div class="page-body">
 
   <section class="page-section" id="cpdAuto">
-    <h2><span class="eyebrow">Your CPD log · this device</span>Activity, reflection &amp; credits</h2>
+    <h2><span class="eyebrow">Your CPD log</span>Activity, reflection &amp; credits</h2>
     <p class="cpd-lead">Every pathway, protocol, case and tool you read — plus time on the <a href="audios.html">Clinical Audios</a> player — accrues here as reflective CPD (active time only, paused when you switch away). One credit ≈ one hour. Add external learning with <b>+ Add CPD</b>, fine-tune the declared credits, and write a reflection against each entry.</p>
 
     <!-- HERO -->
@@ -189,6 +256,7 @@
           <label for="cpdName">Name on record</label>
           <input id="cpdName" placeholder="Your name (for the certificate)" />
         </div>
+        <div class="cpd-sync" id="cpdSync" role="status" aria-live="polite" data-state="local"><span class="dot" aria-hidden="true"></span><span>Saved on this device.</span></div>
       </div>
     </div>
 
@@ -223,10 +291,28 @@
     </form>
 
     <!-- PDP -->
-    <div id="cpdPdp"></div>
+    <div class="cpd-pdp" id="cpdPdp"></div>
 
     <!-- LIST -->
     <div id="cpdList"></div>
+
+    <!-- APPRAISAL EXPORT -->
+    <div class="cpd-exp" id="cpdExport">
+      <h3>Appraisal export</h3>
+      <div class="exp-sub">Pick the period your appraisal covers, then print it (or save it as a PDF), download a spreadsheet, or copy single entries into your appraisal toolkit. Credits are self-declared: 1 credit ≈ 1 hour of learning, and your appraiser agrees the final figure.</div>
+      <div class="exp-row">
+        <div class="cpd-fld grow"><label for="expPeriod">Appraisal period</label><select id="expPeriod"></select></div>
+        <div class="cpd-fld exp-custom" id="expCustomFrom" hidden><label for="expFrom">From</label><input id="expFrom" type="date" /></div>
+        <div class="cpd-fld exp-custom" id="expCustomTo" hidden><label for="expTo">To</label><input id="expTo" type="date" /></div>
+      </div>
+      <div class="exp-totals" id="expTotals"></div>
+      <div class="exp-actions">
+        <button class="cpd-btn primary" id="expPrint" type="button">⎙ Print / save as PDF</button>
+        <button class="cpd-btn" id="expCsv" type="button">⤓ Download CSV (FourteenFish-friendly)</button>
+      </div>
+      <details class="exp-list" id="expList"><summary>Entries in this period: copy one at a time</summary><div id="expItems"></div></details>
+      <div class="exp-note">FourteenFish, L2P and Clarity have no public import, so nothing is sent to them automatically. Use <b>Copy entry</b> and paste into the toolkit's CPD form (title, date, credits and the three reflection answers), or keep the CSV/PDF as supporting information.</div>
+    </div>
 
     <!-- PRINTABLE CERTIFICATE -->
     <div class="cpd-cert" id="cpdCert" aria-hidden="true"></div>
@@ -290,7 +376,7 @@
       <div class="page-card">
         <div class="page-card-eyebrow">Q2 2026</div>
         <h3>Clinical reasoning for new GPs</h3>
-        <p>Half-day workshop. Move from textbook recall to in-clinic reasoning under time pressure. CPD verified.</p>
+        <p>Half-day workshop. Move from textbook recall to in-clinic reasoning under time pressure.</p>
         <div class="page-card-meta"><span><b>4</b> CPD hours</span></div>
         <a class="page-card-cta" href="mailto:bassamomda@gmail.com?subject=New%20GP%20workshop%20interest">Register interest →</a>
       </div>
@@ -306,7 +392,10 @@
 </div>
 
 </main></div>
-<script src="../assets/site.js?v=105"></script>
+<!-- PRINTABLE APPRAISAL SUMMARY (direct child of body so print shows only this) -->
+<div class="cpd-appr" id="cpdAppr" aria-hidden="true"></div>
+<script src="../assets/site.js?v=106"></script>
+<script src="../assets/cpd-sync.js?v=1"></script>
 <script>
 (function(){
   var KEY = 'rgp-cpd-v1';
@@ -352,8 +441,9 @@
   }
 
   function listAll(){ var d=load(), out=[]; for(var k in d){ if(d.hasOwnProperty(k)) out.push(d[k]); } out.sort(function(a,b){return (b.last||0)-(a.last||0);}); return out; }
-  function update(href, fn){ var d=load(); if(!d[href]) return; fn(d[href]); save(d); render(); }
-  function removeItem(href){ var d=load(); delete d[href]; save(d); render(); }
+  function touch(r){ r.mod = r.emod = Date.now(); }   // edit time: lets account sync keep the newest edit
+  function update(href, fn){ var d=load(); if(!d[href]) return; fn(d[href]); touch(d[href]); save(d); render(); }
+  function removeItem(href){ var d=load(); delete d[href]; save(d); try{ window.RGPCPDSync && RGPCPDSync.markDeleted([href]); }catch(e){} render(); }
 
   // ---- elements ----
   var els = {
@@ -390,7 +480,8 @@
     els.year.value = curYear;
   }
 
-  function render(){
+  function render(){ renderLog(); renderExport(); }
+  function renderLog(){
     var api = window.RGPCPD;
     if(!api && !load()){ els.list.innerHTML='<div class="cpd-empty">Starting the activity tracker…</div>'; return; }
 
@@ -459,9 +550,11 @@
             '</span>'+
           '</div>'+
           '<div class="ci-refl">'+
+            '<div class="ci-pii-note">Do not include patient-identifiable information: no names, NHS numbers, dates of birth, addresses or postcodes.</div>'+
             '<div class="rf full"><label>What did I learn? <span class="hint">key points worth keeping</span></label><textarea data-f="rLearn" placeholder="The main thing(s) I took away…">'+rl+'</textarea></div>'+
             '<div class="rf"><label>What will I change? <span class="hint">impact on practice</span></label><textarea data-f="rChange" placeholder="What I\'ll do differently in clinic…">'+esc(r.rChange||'')+'</textarea></div>'+
             '<div class="rf"><label>Further learning? <span class="hint">→ feeds your PDP</span></label><textarea data-f="rNeed" placeholder="A gap to follow up…">'+esc(r.rNeed||'')+'</textarea></div>'+
+            '<div class="ci-pii-warn" data-pii role="alert" hidden></div>'+
           '</div>'+
         '</div>';
       });
@@ -521,12 +614,12 @@
     var href = item.getAttribute('data-href');
     if(e.target.matches('input[data-credit]')){
       var v = e.target.value.trim();
-      update(href, function(r){ if(v==='') delete r.credits; else r.credits = Math.max(0, Number(v)||0); });
+      update(href, function(r){ if(v==='') r.credits = null; else r.credits = Math.max(0, Number(v)||0); });
       return;
     }
     if(e.target.matches('textarea[data-f]')){
       var f = e.target.getAttribute('data-f'), val = e.target.value;
-      var d=load(); if(d[href]){ d[href][f]=val; save(d); }
+      var d=load(); if(d[href]){ d[href][f]=val; touch(d[href]); save(d); }
       // update reflect button + KPIs without losing focus/scroll
       var btn=item.querySelector('[data-toggle]'); var any=reflected(load()[href]||{});
       if(btn){ btn.classList.toggle('done',any); btn.textContent = any?'✓ Reflection':'＋ Reflect'; }
@@ -578,7 +671,7 @@
     var ts = dv ? new Date(dv+'T12:00:00').getTime() : Date.now();
     var cr = Math.max(0, Number(document.getElementById('acCredits').value)||0);
     var d=load(); var id='manual:'+Date.now()+':'+Math.random().toString(36).slice(2,7);
-    var rec={ href:id, title:title, kind:type, seconds:Math.round(cr*3600), credits:cr, visits:1, first:ts, last:ts, rLearn:'', rChange:'', rNeed:'' };
+    var rec={ href:id, title:title, kind:type, seconds:Math.round(cr*3600), credits:cr, visits:1, first:ts, last:ts, mod:Date.now(), emod:Date.now(), rLearn:'', rChange:'', rNeed:'' };
     if(stagedEvi) rec.evidence = stagedEvi;
     try{ d[id]=rec; save(d);
       if(localStorage.getItem(KEY).length > 4900000) throw new Error('quota');
@@ -591,14 +684,226 @@
 
   document.getElementById('cpdPrint').addEventListener('click', function(){ renderCertOnly(); window.print(); });
   document.getElementById('cpdClear').addEventListener('click', function(){
-    if(confirm('Clear ALL auto-logged CPD and manual entries on this device? This cannot be undone.')){ try{ localStorage.removeItem(KEY); }catch(e){} render(); }
+    var signed = !!(window.RGPCPDSync && RGPCPDSync.state().signedIn);
+    if(confirm('Clear ALL auto-logged CPD and manual entries'+(signed?' on this device and from your account backup (so also on your other devices)':' on this device')+'? This cannot be undone.')){ var ids=Object.keys(load()); try{ localStorage.removeItem(KEY); }catch(e){} try{ window.RGPCPDSync && RGPCPDSync.markDeleted(ids); }catch(e){} render(); }
   });
 
   // wait for tracker, then render
   var tries=0;
   (function wait(){ if(window.RGPCPD || tries>40 || Object.keys(load()).length){ render(); } else { tries++; setTimeout(wait,120); } })();
-  // Cross-device sync landed newer data for this account → refresh the view.
-  window.addEventListener('rgp-sync-updated', function(e){ if(!e.detail || !e.detail.keys || e.detail.keys.indexOf('rgp-cpd-v1')>-1) render(); });
+  // Cross-device sync landed newer data for this account → refresh the view
+  // (but never while the user is typing a reflection; wait until they leave the field).
+  var pendingRender = false;
+  window.addEventListener('rgp-sync-updated', function(e){
+    if(e.detail && e.detail.keys && e.detail.keys.indexOf('rgp-cpd-v1')===-1) return;
+    if(els.list.contains(document.activeElement)){ pendingRender = true; return; }
+    render();
+  });
+  els.list.addEventListener('focusout', function(){ setTimeout(function(){ if(pendingRender && !els.list.contains(document.activeElement)){ pendingRender=false; render(); } }, 0); });
+
+  /* ---------- Patient-identifiable data check (warns, never blocks) ---------- */
+  function nhsValid(d){ if(!/^\d{10}$/.test(d)) return false; var sum=0; for(var i=0;i<9;i++) sum += Number(d[i])*(10-i); var c=11-(sum%11); if(c===11) c=0; return c!==10 && c===Number(d[9]); }
+  function piiFindings(text){
+    var out=[], t=String(text||''), m, re;
+    re=/(^|[^\d])(\d{3})[ -]?(\d{3})[ -]?(\d{4})(?!\d)/g;
+    while((m=re.exec(t))){ var d=m[2]+m[3]+m[4]; if(nhsValid(d)){ out.push('an NHS number ('+m[2]+' '+m[3]+' '+m[4]+')'); break; } }
+    if(/\b(dob|d\.o\.b\.?|date of birth|born on)\b/i.test(t) || /\b(0?[1-9]|[12]\d|3[01])[\/.-](0?[1-9]|1[0-2])[\/.-](19|20)?\d\d\b/.test(t) ||
+       /\b(0?[1-9]|[12]\d|3[01])(st|nd|rd|th)?\s+(jan(uary)?|feb(ruary)?|mar(ch)?|apr(il)?|may|june?|july?|aug(ust)?|sep(t(ember)?)?|oct(ober)?|nov(ember)?|dec(ember)?)\s+(19\d\d|20[01]\d)\b/i.test(t))
+      out.push('a date that could be a date of birth');
+    if(/\b(GIR ?0AA|[A-PR-UWYZ][A-HK-Y]?\d[A-HJKPSTUW\d]? ?\d[ABD-HJLNP-UW-Z]{2})\b/i.test(t)) out.push('a postcode');
+    return out;
+  }
+  function checkPii(item){
+    var box=item && item.querySelector('[data-pii]'); if(!box) return;
+    var txt=[].map.call(item.querySelectorAll('textarea[data-f]'), function(x){ return x.value; }).join('\n');
+    var f=piiFindings(txt);
+    if(f.length){ box.hidden=false; box.textContent='⚠ This reflection may contain patient-identifiable information: '+f.join(', ')+'. Please remove or anonymise it. Your reflection is still saved.'; }
+    else { box.hidden=true; box.textContent=''; }
+  }
+  var piiT=null;
+  els.list.addEventListener('input', function(e){ if(!e.target.matches('textarea[data-f]')) return; var item=e.target.closest('.cpd-item'); clearTimeout(piiT); piiT=setTimeout(function(){ checkPii(item); }, 350); });
+  els.list.addEventListener('click', function(e){ if(e.target.closest('[data-toggle]')){ var item=e.target.closest('.cpd-item'); if(item) checkPii(item); } });
+  window.RGPCPDPii = { find: piiFindings, nhsValid: nhsValid };
+
+  /* ---------- Account backup status line ---------- */
+  var syncEl = document.getElementById('cpdSync');
+  var lastSyncState = null;
+  function ago(ts){ var s=Math.max(0,Math.round((Date.now()-ts)/1000)); if(s<45) return 'just now'; var m=Math.round(s/60); if(m<60) return m+' min ago'; var h=Math.round(m/60); if(h<24) return h+' h ago'; return fmtDate(ts); }
+  function renderSync(st){
+    if(!syncEl) return;
+    var S = window.RGPCPDSync, info = S ? S.state() : null;
+    st = st || (info && info.status) || { state:'local' };
+    lastSyncState = st;
+    var state = st.state, html='';
+    var signedIn = !!(info && info.signedIn);
+    if(!S || state==='local') html='Saved on this device.';
+    else if(state==='signedout' || !signedIn) html=(st.message?esc(st.message)+' ':'Saved on this device only. ')+'<button class="cpd-link" type="button" data-sync="signin">Sign in to back up your CPD log to your account</button>';
+    else if(state==='paused') html='Account backup is off: your log stays on this device. <button class="cpd-link" type="button" data-sync="enable">Turn backup on</button>';
+    else if(state==='other') html='This device\'s log is backed up to a different account, so it is not being copied into this one. <button class="cpd-link" type="button" data-sync="adopt">Back it up to this account instead</button>';
+    else if(state==='offline') html='<b>Offline — will sync later.</b> Your changes are saved on this device.';
+    else if(state==='error') html=esc(st.message||'Backup failed — will retry.')+' <button class="cpd-link" type="button" data-sync="retry">Try again</button>';
+    else if(state==='syncing' || state==='idle') html='Backing up to your account…';
+    else if(state==='ok') html='Backed up to your account · '+ago(st.lastSync||Date.now())+' <button class="cpd-link danger" type="button" data-sync="delete">Delete my CPD data from the server</button>';
+    syncEl.setAttribute('data-state', state);
+    syncEl.innerHTML='<span class="dot" aria-hidden="true"></span><span>'+html+'</span>';
+  }
+  window.addEventListener('rgp-cpd-sync-status', function(e){ renderSync(e.detail); });
+  setInterval(function(){ if(lastSyncState && lastSyncState.state==='ok') renderSync(lastSyncState); }, 30000);
+  syncEl.addEventListener('click', function(e){
+    var b=e.target.closest('[data-sync]'); if(!b) return; var a=b.getAttribute('data-sync'), S=window.RGPCPDSync;
+    if(a==='signin'){ if(window.RGP_openAuth) RGP_openAuth('signin'); return; }
+    if(!S) return;
+    if(a==='enable') S.enable();
+    else if(a==='adopt') S.adopt();
+    else if(a==='retry') S.syncNow();
+    else if(a==='delete'){
+      if(!confirm('Delete your CPD log from our server? Your log stays on this device, and account backup is switched off until you turn it on again.')) return;
+      S.deleteServer().then(function(){ alert('Deleted. Your CPD log is no longer stored on our server; this device still has its copy.'); })
+        .catch(function(err){ alert('Could not delete just now: '+(err&&err.message||'network error')+'. Please try again.'); });
+    }
+  });
+  renderSync();
+
+  /* ---------- Appraisal export ---------- */
+  var SITE = 'https://gpreasoning.uk';
+  var CATS = ['Clinical reading','Listening','SCA','Other'];
+  function catOf(r){
+    var h=r.href||'', k=r.kind||'';
+    if(/\/tools\/sca[-.]/i.test(h) || /\bsca\b/i.test(isManual(r)?(r.title||''):'')) return 'SCA';
+    if(k==='Audio' || (isManual(r) && /podcast/i.test(k))) return 'Listening';
+    if(['Pathway','Protocol','Tool'].indexOf(k)>-1 || (!isLogged(r) && k==='Case') || (isManual(r) && /journal|reading|e-learning/i.test(k))) return 'Clinical reading';
+    return 'Other';
+  }
+  function linkOf(r){ var h=r.href||''; if(isLogged(r)) return r.link||''; if(/^https?:/.test(h)) return h; if(h.charAt(0)==='/') return SITE+h; return ''; }
+  function hoursOf(r){ return (r.seconds||0)/3600; }
+  function fmtH(n){ return (Math.round(n*100)/100).toFixed(2).replace(/\.?0+$/,''); }
+  function isoDay(ts){ var d=new Date(ts); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function ukDay(ts){ var d=new Date(ts); return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear(); }
+  function dayStart(v){ return new Date(v+'T00:00:00').getTime(); }
+  function dayEnd(v){ return new Date(v+'T23:59:59.999').getTime(); }
+
+  var expEls = { period:document.getElementById('expPeriod'), from:document.getElementById('expFrom'), to:document.getElementById('expTo'),
+    cf:document.getElementById('expCustomFrom'), ct:document.getElementById('expCustomTo'), totals:document.getElementById('expTotals'),
+    items:document.getElementById('expItems'), appr:document.getElementById('cpdAppr') };
+
+  function buildPeriods(){
+    var cur = expEls.period.value || 'last12';
+    var set={}; listAll().forEach(function(r){ if(r.last) set[ayStart(r.last)]=1; });
+    set[ayStart()]=1; set[ayStart()-1]=1;
+    var yrs=Object.keys(set).map(Number).sort(function(a,b){return b-a;});
+    var html='<option value="last12">Last 12 months (to today)</option>';
+    yrs.forEach(function(y){ html+='<option value="ay:'+y+'">1 Apr '+y+' – 31 Mar '+(y+1)+' (April–March year)</option>'; });
+    html+='<option value="custom">Custom dates (e.g. appraisal anniversary)</option>';
+    expEls.period.innerHTML=html;
+    expEls.period.value = [].some.call(expEls.period.options, function(o){ return o.value===cur; }) ? cur : 'last12';
+  }
+  function periodRange(){
+    var v=expEls.period.value||'last12', now=new Date();
+    if(v==='last12'){ var f=new Date(now); f.setFullYear(f.getFullYear()-1); f.setDate(f.getDate()+1); return { from:dayStart(isoDay(f)), to:dayEnd(isoDay(now)), label:'Last 12 months: '+fmtDate(f)+' – '+fmtDate(now) }; }
+    if(v.indexOf('ay:')===0){ var y=Number(v.slice(3)); return { from:new Date(y,3,1).getTime(), to:new Date(y+1,2,31,23,59,59,999).getTime(), label:'Appraisal year 1 Apr '+y+' – 31 Mar '+(y+1) }; }
+    var a=expEls.from.value, b=expEls.to.value;
+    if(!a || !b){ var f2=new Date(now); f2.setFullYear(f2.getFullYear()-1); f2.setDate(f2.getDate()+1); if(!a) expEls.from.value=a=isoDay(f2); if(!b) expEls.to.value=b=isoDay(now); }
+    if(a>b){ var t=a; a=b; b=t; }
+    return { from:dayStart(a), to:dayEnd(b), label:fmtDate(dayStart(a))+' – '+fmtDate(dayStart(b)) };
+  }
+  function periodItems(){ var p=periodRange(); return { p:p, items:listAll().filter(function(r){ var t=r.last||r.first||0; return t>=p.from && t<=p.to; }).sort(function(a,b){ return (a.last||0)-(b.last||0); }) }; }
+  function totalsOf(items){
+    var t={ credits:0, hours:0, n:items.length, refl:0, cats:{} };
+    CATS.forEach(function(c){ t.cats[c]={ n:0, hours:0, credits:0 }; });
+    items.forEach(function(r){ var c=t.cats[catOf(r)]; c.n++; c.hours+=hoursOf(r); c.credits+=declared(r); t.hours+=hoursOf(r); t.credits+=declared(r); if(reflected(r)) t.refl++; });
+    return t;
+  }
+  function entryText(r){
+    var L=[];
+    L.push('Title: '+(r.title||'CPD activity'));
+    L.push('Date: '+ukDay(r.last||r.first||Date.now()));
+    L.push('Time: '+fmtH(hoursOf(r))+' hours · Credits claimed: '+fmtCr(declared(r)));
+    L.push('Type: '+catOf(r)+' ('+(isManual(r)?(r.kind||'External'):(isCpdCase(r)?(r.source||'Recorded case'):r.kind))+')');
+    var ln=linkOf(r); if(ln) L.push('Link: '+ln);
+    L.push('');
+    L.push('What did I learn?'); L.push(((r.rLearn||r.reflection||'').trim())||'—'); L.push('');
+    L.push('What will I change in my practice?'); L.push(((r.rChange||'').trim())||'—'); L.push('');
+    L.push('What further learning do I need?'); L.push(((r.rNeed||'').trim())||'—');
+    return L.join('\n');
+  }
+  function copyText(txt, btn){
+    function done(ok){ if(!btn) return; var o=btn.getAttribute('data-label')||btn.textContent; btn.setAttribute('data-label',o); btn.textContent= ok?'✓ Copied':'Copy failed'; setTimeout(function(){ btn.textContent=o; }, 1600); }
+    function legacy(){ try{ var ta=document.createElement('textarea'); ta.value=txt; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); var ok=document.execCommand('copy'); ta.remove(); done(ok); }catch(e){ done(false); } }
+    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function(){ done(true); }, legacy); else legacy();
+  }
+  var CSV_COLS = ['Title','Date','Type','Category','Hours','Credits','Link','What did I learn','What will I change','Further learning needs','Notes'];
+  function csvCell(v){ v=String(v==null?'':v); if(/^[=+\-@\t\r]/.test(v)) v="'"+v; return '"'+v.replace(/"/g,'""')+'"'; }
+  function buildCsv(items){
+    var rows=[CSV_COLS.map(csvCell).join(',')];
+    items.forEach(function(r){
+      rows.push([ r.title||'CPD activity', ukDay(r.last||r.first||Date.now()),
+        isManual(r)?(r.kind||'External'):(isCpdCase(r)?(r.source||'Recorded case'):(r.kind||'')),
+        catOf(r), fmtH(hoursOf(r)), fmtCr(declared(r)), linkOf(r),
+        (r.rLearn||r.reflection||'').trim(), (r.rChange||'').trim(), (r.rNeed||'').trim(),
+        isLogged(r)? (r.summary||'') : ('Reading time logged automatically on Reasoning GP ('+(r.visits||1)+' visit'+((r.visits||1)>1?'s':'')+')')
+      ].map(csvCell).join(','));
+    });
+    return '\ufeff'+rows.join('\r\n')+'\r\n';
+  }
+  function renderExport(){
+    if(!expEls || !expEls.period) return;
+    buildPeriods();
+    var custom = expEls.period.value==='custom'; expEls.cf.hidden=!custom; expEls.ct.hidden=!custom;
+    var pi=periodItems(), t=totalsOf(pi.items);
+    expEls.totals.innerHTML='<span class="exp-chip"><b>'+t.n+'</b> activities</span><span class="exp-chip"><b>'+fmtCr(t.credits)+'</b> credits</span><span class="exp-chip"><b>'+fmtH(t.hours)+'</b> hours</span>'+
+      CATS.map(function(c){ return '<span class="exp-chip">'+c+': <b>'+fmtCr(t.cats[c].credits)+'</b> cr</span>'; }).join('');
+    expEls.items.innerHTML = pi.items.length ? pi.items.map(function(r){
+      return '<div class="exp-item" data-href="'+esc(r.href)+'"><div class="t">'+esc(r.title||'CPD activity')+'<div class="m">'+ukDay(r.last||r.first)+' · '+catOf(r)+' · '+fmtCr(declared(r))+' cr'+(reflected(r)?' · reflection':'')+'</div></div><button class="exp-copy" type="button" data-copy>Copy entry</button></div>';
+    }).join('') : '<div class="exp-item"><span class="m">No activity in this period.</span></div>';
+  }
+  function renderAppraisal(){
+    var pi=periodItems(), t=totalsOf(pi.items), name=(els.name.value||'').trim();
+    var catRows = CATS.map(function(c){ var x=t.cats[c]; return '<tr><td>'+c+'</td><td class="n">'+x.n+'</td><td class="n">'+fmtH(x.hours)+'</td><td class="n">'+fmtCr(x.credits)+'</td></tr>'; }).join('')+
+      '<tr><td><b>Total</b></td><td class="n"><b>'+t.n+'</b></td><td class="n"><b>'+fmtH(t.hours)+'</b></td><td class="n"><b>'+fmtCr(t.credits)+'</b></td></tr>';
+    var entries = pi.items.map(function(r){
+      var ln=linkOf(r), rf='';
+      if((r.rLearn||r.reflection||'').trim()) rf+='<div class="ap-rf"><b>What I learned:</b> '+esc((r.rLearn||r.reflection).trim())+'</div>';
+      if((r.rChange||'').trim()) rf+='<div class="ap-rf"><b>What I will change:</b> '+esc(r.rChange.trim())+'</div>';
+      if((r.rNeed||'').trim()) rf+='<div class="ap-rf"><b>Further learning:</b> '+esc(r.rNeed.trim())+'</div>';
+      if(!rf) rf='<div class="ap-rf" style="color:#777">No reflection recorded.</div>';
+      return '<div class="ap-entry"><div class="ap-et">'+esc(r.title||'CPD activity')+'</div>'+
+        '<div class="ap-em">'+fmtDate(r.last||r.first)+' · '+catOf(r)+' · '+fmtH(hoursOf(r))+' h · '+fmtCr(declared(r))+' credit'+(declared(r)===1?'':'s')+(ln?' · '+esc(ln):'')+'</div>'+rf+'</div>';
+    }).join('') || '<p style="font-size:12px;color:#666">No activity recorded in this period.</p>';
+    expEls.appr.innerHTML =
+      '<h1>CPD summary for appraisal</h1>'+
+      '<div class="ap-sub">Self-declared learning record generated from Reasoning GP (gpreasoning.uk)</div>'+
+      '<div class="ap-meta"><div><b>Name</b>'+(name?esc(name):'____________________')+'</div><div><b>Period</b>'+esc(pi.p.label)+'</div>'+
+      '<div><b>Activities</b>'+t.n+'</div><div><b>Hours</b>'+fmtH(t.hours)+'</div><div><b>Credits claimed</b><span class="big">'+fmtCr(t.credits)+'</span></div><div><b>With reflection</b>'+t.refl+'</div><div><b>Generated</b>'+fmtDate(Date.now())+'</div></div>'+
+      '<h2>Totals by category</h2><table><thead><tr><th>Category</th><th class="n">Activities</th><th class="n">Hours</th><th class="n">Credits</th></tr></thead><tbody>'+catRows+'</tbody></table>'+
+      '<h2>Activities</h2>'+entries+
+      '<div class="ap-decl"><b>Declaration</b><br>I confirm that this is an accurate record of the learning I undertook in the period above, that the credits claimed reflect the time I spent and the value of the learning, and that the reflections are my own and contain no patient-identifiable information.'+
+      '<div class="ap-sign"><div>Signature</div><div>Date</div><div>GMC number</div></div></div>'+
+      '<div class="ap-foot">One credit ≈ one hour of learning (RCGP guidance). Reading and listening time is timed automatically; credits are declared by the doctor and agreed with the appraiser. Reasoning GP does not accredit or certify CPD; this summary supports, and does not replace, the appraisal discussion.</div>';
+  }
+  if(expEls.period){
+    expEls.period.addEventListener('change', renderExport);
+    expEls.from.addEventListener('change', renderExport);
+    expEls.to.addEventListener('change', renderExport);
+    expEls.items.addEventListener('click', function(e){
+      var b=e.target.closest('[data-copy]'); if(!b) return;
+      var row=b.closest('.exp-item'), r=load()[row.getAttribute('data-href')]; if(r) copyText(entryText(r), b);
+    });
+    document.getElementById('expPrint').addEventListener('click', function(){
+      renderAppraisal(); document.body.classList.add('print-appraisal');
+      var off=function(){ document.body.classList.remove('print-appraisal'); window.removeEventListener('afterprint', off); };
+      window.addEventListener('afterprint', off);
+      window.print();
+      setTimeout(function(){ if(!window.matchMedia || !window.matchMedia('print').matches) off(); }, 1500);
+    });
+    document.getElementById('expCsv').addEventListener('click', function(){
+      var pi=periodItems(), csv=buildCsv(pi.items);
+      var url=URL.createObjectURL(new Blob([csv], { type:'text/csv;charset=utf-8' }));
+      var a=document.createElement('a'); a.href=url; a.download='reasoning-gp-cpd-'+isoDay(pi.p.from)+'-to-'+isoDay(pi.p.to)+'.csv';
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+    });
+    renderExport();
+  }
+  window.RGPCPDExport = { csv:function(){ return buildCsv(periodItems().items); }, entryText:entryText, catOf:catOf, columns:CSV_COLS };
 })();
 </script>
 </body></html>

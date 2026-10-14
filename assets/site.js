@@ -1052,6 +1052,9 @@ function renderTopNav(activeId){
     </a>
     <a class="rgp-mm-tool" href="${PRE}pages/audios.html">
       <span class="rgp-mm-tool-ic">🎧</span><span><b>Audios</b><small>AI + human recordings · CPD-tracked</small></span>
+    </a>
+    <a class="rgp-mm-tool ${activeId==='__howwefit'?'is-active':''}" href="${PRE}pages/how-we-fit.html">
+      <span class="rgp-mm-tool-ic">🧩</span><span><b>How we fit with CKS &amp; BNF</b><small>Use us alongside CKS, the BNF and your ICB</small></span>
     </a>`;
 
   // Clinic Toolkit — single ordered list (clinical tools first, then reference).
@@ -1712,6 +1715,10 @@ function injectPalette(){
     type: 'page', group: 'Site', title: 'Home — Reasoning GP', meta: 'Overview & framework',
     href: PRE + 'index.html', search: 'home overview framework reasoning gp index',
   });
+  entries.push({
+    type: 'page', group: 'Site', title: 'How we fit with CKS, BNF and your ICB', meta: 'Using Reasoning GP alongside CKS, the BNF and local formularies',
+    href: PRE + 'pages/how-we-fit.html', search: 'how we fit cks clinical knowledge summaries nice bnf bnfc british national formulary icb formulary local guidance medicines optimisation why use compare',
+  });
 
   const el = document.createElement('div');
   el.className = 'rgp-palette';
@@ -1884,7 +1891,11 @@ const RGPAuth = (function(){
 
   function readUsers(){ try { return JSON.parse(localStorage.getItem(USERS) || '{}'); } catch(e){ return {}; } }
   function writeUsers(u){ try { localStorage.setItem(USERS, JSON.stringify(u)); } catch(e){} }
-  function pub(u){ return u ? { name:u.name, email:u.email, stage:u.stage, created:u.created, tier:u.tier || 'bronze', admin: !!u.admin } : null; }
+  // tierUntil / tierSource / sub feed planLine() in the account menu. They were
+  // dropped here, so the menu never showed "Renews …" (nor a pause or a
+  // cancellation date) for a paying member.
+  function pub(u){ return u ? { name:u.name, email:u.email, stage:u.stage, created:u.created, tier:u.tier || 'bronze', admin: !!u.admin,
+    tierUntil: u.tierUntil || null, tierSource: u.tierSource || '', sub: u.sub || null } : null; }
 
   function randSalt(){
     const a = new Uint8Array(16); (crypto.getRandomValues ? crypto : window.msCrypto).getRandomValues(a);
@@ -1986,6 +1997,10 @@ window.RGPAuth = RGPAuth;
   const isPublic =
     /(^|\/)(index\.html)?$/.test(p) ||
     /(pages\/)?(terms|privacy|about|contact)\.html$/.test(p) ||
+    // Every member must always be able to see the plans and manage or cancel
+    // their own plan, whatever their tier (a Gold member was locked out of
+    // pricing.html because it counts as a Clinic page).
+    /(pages\/)?(pricing|account-plan)\.html$/.test(p) ||
     /offline\.html$/.test(p) ||
     /SETUP[^/]*\.html$/i.test(p) ||
     /Reasoning GP - Home\.html$/.test(decodeURIComponent(p));
@@ -2093,7 +2108,7 @@ window.RGPAuth = RGPAuth;
     // Consult Scribe is NOT in this list: it is a paid feature, and it is also
     // withheld pending its legal/information-governance requirements (see
     // RGP_HIDDEN_TOOLS). Handled by its own branch below so the gate can say so.
-    const OPEN = ['articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','accessibility.html'];
+    const OPEN = ['articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','how-we-fit.html','accessibility.html'];
     if (OPEN.indexOf(base) > -1) return null;
     if (/scribe\.html$/.test(base)) return 'scribe';
     if (/\/cases\.html$/.test(path) || /\/tools\/algorithms\.html$/.test(path)) return null; // browse catalogue
@@ -2324,7 +2339,8 @@ window.RGPCloud = (function(){
    across devices, not just Consult Scribe. Mirrors a small family
    of localStorage progress stores to the Worker (via RGPCloud):
      • rgp.progress.v1         pathway / case “done” ticks
-     • rgp-cpd-v1              auto-CPD reading + case log
+     (The CPD log, rgp-cpd-v1, is NOT synced here: it has its own lossless
+      sync with delete tombstones in assets/cpd-sync.js — RGPCPDSync.)
      • rgp-sca-progress-v1     Hot Seat scorecard attempts
      • rgp-sca-domain-attempts Examiner Marking attempts
      • rgp-sca-attempts-hotseat Hot Seat self-marks
@@ -2341,7 +2357,6 @@ window.RGPCloud = (function(){
 window.RGPSync = (function(){
   var CFG = {
     'rgp.progress.v1':          'rank',
-    'rgp-cpd-v1':               'cpd',
     'rgp-sca-progress-v1':      'array',
     'rgp-sca-attempts':         'array',
     'rgp-sca-circuit-history':  'array',
@@ -2362,15 +2377,6 @@ window.RGPSync = (function(){
   var RANK = { '':0, todo:0, seen:1, reading:2, review:2, started:2, done:3, complete:3, completed:3, mastered:4 };
   function mergeRank(a,b){ a=a||{}; b=b||{}; var o=Object.assign({},a),k;
     for(k in b){ if((RANK[b[k]]||0) >= (RANK[o[k]]||0)) o[k]=b[k]; } return o; }
-  function mergeCpd(a,b){ a=a||{}; b=b||{}; var o={},ks={},k;
-    for(k in a)ks[k]=1; for(k in b)ks[k]=1;
-    for(k in ks){ var x=a[k]||{}, y=b[k]||{}, newer=((y.last||0)>=(x.last||0))?y:x;
-      o[k]={ href:y.href||x.href, title:y.title||x.title, kind:y.kind||x.kind,
-        seconds:Math.max(x.seconds||0, y.seconds||0), visits:Math.max(x.visits||0, y.visits||0),
-        first:Math.min(x.first||y.first||Date.now(), y.first||x.first||Date.now()),
-        last:Math.max(x.last||0, y.last||0),
-        reflection:(newer.reflection || x.reflection || y.reflection || '') }; }
-    return o; }
   function idOf(e){ if(!e || typeof e!=='object') return null;
     if(e.id!=null) return 'id:'+e.id;
     var t=e.ts!=null?e.ts:e.t; if(t!=null) return t+'|'+(e.caseId||e.case||e.slug||e.c||''); return null; }
@@ -2410,7 +2416,7 @@ window.RGPSync = (function(){
   // AI free-trial counters {feature:count}: keep the HIGHER count per feature so
   // the trial can't be reset by switching devices or clearing one browser.
   function mergeTrialMax(a,b){ a=a||{}; b=b||{}; var o=Object.assign({},a),k; for(k in b){ o[k]=Math.max(o[k]||0, b[k]||0); } return o; }
-  var MERGE = { rank:mergeRank, cpd:mergeCpd, array:function(a,b){return mergeArray(a,b,600);}, objnew:mergeObjNew, asksess:mergeAskSess, trialmax:mergeTrialMax };
+  var MERGE = { rank:mergeRank, array:function(a,b){return mergeArray(a,b,600);}, objnew:mergeObjNew, asksess:mergeAskSess, trialmax:mergeTrialMax };
 
   var snap={}, started=false;
   function initSnap(){ for(var k in CFG) snap[k]=hash(k); }
@@ -2461,7 +2467,16 @@ function planLine(u){
   const paid = t !== 'bronze';
   const name = ({ bronze:'Free plan', silver:'Silver', gold:'Gold', platinum:'Platinum' })[t] || 'Free plan';
   let sub = '';
-  if (!paid) sub = 'Upgrade any time';
+  const fmtD = ts => new Date(ts).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+  if (u && u.sub && u.sub.status === 'paused' && u.sub.resumeAt) {
+    sub = (paid && u.tierUntil && u.tierUntil > Date.now())
+      ? 'Pause starts ' + fmtD(u.tierUntil) + ' \u00b7 restarts ' + fmtD(u.sub.resumeAt)
+      : 'Paused \u00b7 restarts ' + fmtD(u.sub.resumeAt);
+  }
+  else if (!paid) sub = 'Upgrade any time';
+  else if (u.sub && u.sub.status === 'cancelled' && u.tierUntil && u.tierUntil > Date.now()) {
+    sub = 'Cancelled \u00b7 access until ' + fmtD(u.tierUntil);
+  }
   else if (u.sub && u.sub.status === 'suspended') {
     sub = 'Payment problem \u2014 update your card in PayPal to keep access';
   } else if (u.tierUntil) {
@@ -2510,6 +2525,7 @@ function renderAuthState(){
         <div class="rgp-acct-menu" hidden>
           <div class="rgp-acct-hd"><b>${esc(u.name)}</b><small>${esc(u.email)}</small>${u.stage ? `<span class="rgp-acct-stage">${esc(u.stage)}</span>` : ''}</div>
           <div class="rgp-acct-plan">${planLine(u)}</div>
+          <a class="rgp-acct-link" href="${getPathPrefix()}pages/account-plan.html" data-acct-manage>Manage my plan</a>
           <button class="rgp-acct-link" data-acct-refresh type="button">Refresh my plan</button>
           <button class="rgp-acct-link" data-acct-redeem type="button">Have a code?</button>
           <button class="rgp-acct-link rgp-acct-logout" data-acct-logout type="button">Log out</button>
@@ -2702,6 +2718,19 @@ function injectAuthModal(){
     .rgp-acct-link{ display:block; width:100%; text-align:left; font:inherit; font-size:13px; font-weight:600; color:var(--ink-2,#374151); background:none; border:none; border-radius:8px; padding:9px 12px; cursor:pointer; text-decoration:none; box-sizing:border-box; }
     .rgp-acct-link:hover{ background:var(--bg-soft,#efe9dc); }
     .rgp-acct-logout{ color:#b91c1c; }
+    /* Phones: the signed-in name button was pushed off the right edge at 390 px,
+       so the account menu (and Manage my plan) could not be reached. Show the
+       avatar only, and on the narrowest screens give the band to the switch +
+       avatar (Plans stays in the footer and in Manage my plan). */
+    @media (max-width: 600px){
+      .rgp-acct-name, .rgp-acct-caret{ display:none; }
+      .rgp-acct-btn{ padding:4px; }
+    }
+    @media (max-width: 460px){
+      .rgp-iface-inner:has(.rgp-acct){ grid-template-columns:auto 1fr; gap:8px; padding:0 12px; }
+      .rgp-iface-inner:has(.rgp-acct) .rgp-iface-spacer,
+      .rgp-iface-inner:has(.rgp-acct) .rgp-nav-plans{ display:none; }
+    }
   `;
   document.body.appendChild(el);
 
@@ -2748,6 +2777,7 @@ function injectAuthModal(){
       el.querySelector('.rgp-auth-done').hidden = false;
       renderAuthState();
       try { window.RGPSync && RGPSync.onSignIn(); } catch(e){}
+      try { window.RGPCPDSync && RGPCPDSync.onSignIn(); } catch(e){}
     } catch (err) {
       if (errEl) errEl.textContent = err.message || 'Something went wrong — please try again.';
     } finally {
@@ -2991,6 +3021,7 @@ function injectFooter(){
         <summary><h5>Account</h5></summary>
         <ul>
           <li><a href="${PRE}pages/pricing.html">Plans and pricing</a></li>
+          <li><a href="${PRE}pages/account-plan.html">Manage or cancel your plan</a></li>
           <li><a href="${PRE}pages/cpd.html">CPD</a></li>
           <li><a href="${PRE}index.html#about">About us</a></li>
           <li><a href="mailto:bassamomda@gmail.com?subject=Reasoning%20GP%20enquiry">Contact us</a></li>
@@ -3001,6 +3032,7 @@ function injectFooter(){
         <summary><h5>Trust &amp; legal</h5></summary>
         <ul>
           <li><a href="${PRE}pages/content-safety.html">How we keep content safe</a></li>
+          <li><a href="${PRE}pages/how-we-fit.html">How we fit with CKS, BNF and your ICB</a></li>
           <li><a href="${PRE}pages/ai-safety.html">AI safety and data</a></li>
           <li><a href="${PRE}pages/accessibility.html">Accessibility</a></li>
           <li><a href="${PRE}tools/governance.html">Guideline review</a></li>
@@ -3407,7 +3439,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (/[?&]embed=1/.test(location.search) || document.documentElement.hasAttribute('data-rgp-embed')) return;   // hub iframe — host page tracks CPD, avoid double-count
   var base = '', ss = document.getElementsByTagName('script');
   for (var i=0;i<ss.length;i++){ var m=(ss[i].src||'').match(/^(.*\/)(site|alg-nav)\.js(\?.*)?$/); if(m){ base=m[1]; break; } }
-  var el = document.createElement('script'); el.src = base + 'cpd-tracker.js?v=1'; el.defer = true;
+  var el = document.createElement('script'); el.src = base + 'cpd-tracker.js?v=2'; el.defer = true;
   document.head.appendChild(el);
   var cl = document.createElement('script'); cl.src = base + 'cite-links.js?v=2'; cl.defer = true;
   document.head.appendChild(cl);

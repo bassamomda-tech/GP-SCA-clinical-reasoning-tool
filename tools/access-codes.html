@@ -114,6 +114,36 @@
       </div>
 
       <div class="ac-card">
+        <h2>Cancel or pause a member's plan</h2>
+        <p style="font-size:14px;color:var(--muted);margin:-4px 0 14px">When someone emails asking you to cancel, do it here. <b>Cancel for user</b> cancels their PayPal subscription (no further payments), keeps their access to the end of the period they paid for, and logs that you did it. Pause and Resume work the same way. To refund as well, issue the refund in PayPal (Activity &rarr; the payment &rarr; Refund).</p>
+        <div class="ac-grid">
+          <div class="ac-f">
+            <label for="mpEmail">Member email</label>
+            <input id="mpEmail" type="email" placeholder="name@nhs.net" autocomplete="off" spellcheck="false">
+            <div class="hint">The email on their Reasoning GP account.</div>
+          </div>
+          <div class="ac-f">
+            <label for="mpMonths">Pause length</label>
+            <select id="mpMonths"><option value="1">1 month</option><option value="2">2 months</option><option value="3">3 months</option></select>
+            <div class="hint">Only used by Pause.</div>
+          </div>
+          <div class="ac-f">
+            <label for="mpNote">Note for the log (optional)</label>
+            <input id="mpNote" type="text" maxlength="300" placeholder="e.g. asked by email 13 Oct">
+            <div class="hint">Never paste card details.</div>
+          </div>
+        </div>
+        <div class="ac-actions">
+          <button class="ac-btn ghost" id="mpLookup" type="button">Show plan</button>
+          <button class="ac-btn" id="mpCancel" type="button">Cancel for user</button>
+          <button class="ac-btn ghost" id="mpPause" type="button">Pause</button>
+          <button class="ac-btn ghost" id="mpResume" type="button">Resume</button>
+          <button class="ac-btn ghost" id="mpLog" type="button">Recent plan actions</button>
+        </div>
+        <div id="mpOut" style="margin-top:12px;font-size:13.5px"></div>
+      </div>
+
+      <div class="ac-card">
         <h2>Create a code</h2>
         <div class="ac-grid">
           <div class="ac-f">
@@ -411,6 +441,68 @@
       s += '<br><i>“signature-failed” means PAYPAL_WEBHOOK_ID doesn\u2019t match the webhook PayPal is sending from. “unmapped-plan” means the PLAN_* variables don\u2019t match your live plan ids.</i>';
       muSay(s, true);
     }catch(e){ muSay(esc(e.message)); }
+  });
+
+  /* ---- Cancel or pause a member's plan (/api/admin/plan, ADMIN_EMAIL only) ---- */
+  const mpOut = $('#mpOut');
+  function mpSay(html, ok){ mpOut.innerHTML = html ? '<span style="color:'+(ok?'#15803d':'#b54c2b')+'">'+html+'</span>' : ''; }
+  async function planCall(method, qs, body){
+    if(!API) throw new Error('The Worker isn’t connected yet — set RGP_CONFIG.workerUrl in assets/site.js.');
+    const t = token();
+    if(!t) throw new Error('Sign in with your admin account first, then reload.');
+    const res = await fetch(API + '/api/admin/plan' + (qs||''), {
+      method,
+      headers: { 'Content-Type':'application/json', 'Authorization':'Bearer ' + t },
+      body: body ? JSON.stringify(body) : undefined
+    });
+    const d = await res.json().catch(()=>({}));
+    if(!res.ok) throw new Error(d.error || ('Request failed ('+res.status+')'));
+    return d;
+  }
+  const PLAN_ST = { active:'Active', paused:'Paused', payment_problem:'Payment problem', cancelled:'Cancelled', expired:'Expired', free:'Free plan' };
+  function planText(p){
+    if(!p) return '';
+    let s = '<b>'+esc(p.planName)+'</b> · '+esc(PLAN_ST[p.status]||p.status)+' · '+esc(p.kind==='subscription'?'PayPal subscription '+(p.subRef||''):(p.kind==='fixed'?'fixed-term access, no recurring payment':'no plan'));
+    if(p.nextPayment) s += '<br>Next payment: '+fmtDate(p.nextPayment);
+    if(p.accessUntil) s += '<br>Access until: '+fmtDate(p.accessUntil);
+    if(p.pause) s += '<br>Paused '+p.pause.months+' month(s): restarts '+fmtDate(p.pause.resumeAt);
+    if(p.cancel) s += '<br>Cancelled '+fmtDate(p.cancel.at)+' by '+esc(p.cancel.by);
+    return s;
+  }
+  function mpEmail(){ return $('#mpEmail').value.trim().toLowerCase(); }
+  $('#mpLookup').addEventListener('click', async ()=>{
+    const email = mpEmail(); if(!email) return mpSay('Enter their email first.');
+    mpSay('Looking up…', true);
+    try{
+      const d = await planCall('GET', '?email=' + encodeURIComponent(email));
+      let s = planText(d.plan);
+      if((d.log||[]).length) s += '<br><br><b>Their plan history:</b><br>' + d.log.slice(-8).reverse().map(r=>'\u2022 '+new Date(r.ts).toLocaleString('en-GB')+' · '+esc(r.action)+' · '+esc(r.by)+(r.reason?' · '+esc(r.reason):'')).join('<br>');
+      mpSay(s, true);
+    }catch(e){ mpSay(esc(e.message)); }
+  });
+  async function mpAct(action){
+    const email = mpEmail(); if(!email) return mpSay('Enter their email first.');
+    const months = Number($('#mpMonths').value || 1);
+    const ask = { cancel: 'Cancel '+email+'’s PayPal subscription?\n\nNo further payments will be taken. They keep access until the end of the period already paid for.',
+                  pause: 'Pause '+email+'’s plan for '+months+' month(s)?', resume: 'Resume '+email+'’s paused plan now?' }[action];
+    if(!confirm(ask)) return;
+    mpSay('Working…', true);
+    try{
+      const d = await planCall('POST', '', { email, action, months, reason: action==='cancel' ? 'other' : '', details: $('#mpNote').value.slice(0,300) });
+      mpSay('✓ '+(d.idempotent ? 'Nothing to change — it was already done.' : 'Done.')+'<br>'+planText(d.plan)+(action==='cancel' ? '<br><i>Let them know by email. The worker does not send a confirmation email yet.</i>' : ''), true);
+    }catch(e){ mpSay(esc(e.message)); }
+  }
+  $('#mpCancel').addEventListener('click', ()=>mpAct('cancel'));
+  $('#mpPause').addEventListener('click', ()=>mpAct('pause'));
+  $('#mpResume').addEventListener('click', ()=>mpAct('resume'));
+  $('#mpLog').addEventListener('click', async ()=>{
+    mpSay('Loading…', true);
+    try{
+      const d = await planCall('GET', '');
+      const rows = d.log || [];
+      if(!rows.length) return mpSay('No plan actions logged yet.', true);
+      mpSay('<b>Recent plan actions (newest first):</b><br>' + rows.slice(0,40).map(r=>'\u2022 '+new Date(r.ts).toLocaleString('en-GB')+' · '+esc(r.email)+' · '+esc(r.action)+' · '+esc(r.by)+(r.reason?' · '+esc(r.reason):'')+' · '+esc(r.result)+(r.details?' · “'+esc(r.details)+'”':'')).join('<br>'), true);
+    }catch(e){ mpSay(esc(e.message)); }
   });
 
   msg('');

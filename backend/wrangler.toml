@@ -17,9 +17,11 @@ kv_namespaces = [
   { binding = "UPDATES", id = "PASTE_UPDATES_KV_ID" }
 ]
 
-# Daily cron warms the live feed AND appends new items to the 12-month archive.
+# Daily 07:00 cron warms the live feed AND appends new items to the 12-month archive.
+# Hourly :15 cron restarts paused plans whose pause has ended (Manage my plan);
+# the 07:00 run does that too. Both are free-tier friendly.
 [triggers]
-crons = ["0 7 * * *"]
+crons = ["0 7 * * *", "15 * * * *"]
 
 # --- Workers AI (OPTIONAL) — powers semantic search in the Ask assistant. ---
 # Free tier. In the dashboard: Worker → Settings → Bindings → Add → Workers AI,
@@ -34,6 +36,7 @@ WEB_SEARCH = "on"                # live web search on trusted UK clinical domain
 ADMIN_EMAIL = "bassamomda@gmail.com"   # YOUR account email on the site — unlocks tools/ask-quality.html (feedback review + answer cache)
 FALLBACK_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"  # free Workers AI model used if Anthropic credit runs out
 EMBED_MODEL = "@cf/baai/bge-base-en-v1.5"   # Workers AI embedding model for semantic search
+# PAYPAL_MODE = "sandbox"   # uncomment ONLY on a test Worker with SANDBOX secrets + sandbox PLAN_* ids; unset = live
 
 # PayPal Subscription Plan IDs — pre-filled from the live ids already in
 # assets/site.js (RGP_CONFIG.paypalPlans). Verify against your PayPal dashboard

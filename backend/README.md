@@ -90,7 +90,21 @@ Apple Pay rides on PayPal's checkout but Apple requires you to **verify your dom
 - The site asks the Worker "what tier is this user?" on every load and unlocks the matching area. Cancelling/expiry sets them back to **bronze** automatically.
 
 ## Testing safely first
-Use PayPal **Sandbox** while testing: in `worker.js` change `PAYPAL_API` to the sandbox URL, use sandbox app credentials, and test with sandbox buyer accounts. Switch back to live for launch.
+Use PayPal **Sandbox** while testing: deploy a separate test Worker with `PAYPAL_MODE = "sandbox"` in `[vars]`, sandbox app credentials as its secrets, sandbox `PLAN_*` ids, and sandbox buyer accounts. `PAYPAL_MODE` switches every PayPal call (webhook verification, plan look-ups, pause / resume / cancel) together. Leave it unset on the live Worker.
+
+## Manage my plan — pause, resume, cancel
+Members open **Manage my plan** from the account menu (top right) → `pages/account-plan.html`. The Worker endpoints:
+- `GET /api/plan` — the signed-in member's plan, status, next payment, start date.
+- `POST /api/plan/pause {months: 1|2|3}` — PayPal **suspend**. The pause starts at the end of the paid period; Bronze while paused; restarts automatically (PayPal **activate**) on the date shown.
+- `POST /api/plan/resume` — restart a paused plan early.
+- `POST /api/plan/cancel {reason?, details?}` — PayPal **cancel**. No more payments; access to the end of the paid period, then Bronze.
+- `GET|POST /api/admin/plan` — owner only (ADMIN_EMAIL): look up, cancel, pause or resume for a member by email; `GET` with no email lists recent actions. Used by the "Cancel or pause a member's plan" card in `tools/access-codes.html`.
+
+All actions use the member's own bearer token (nobody can act on another account), are idempotent, rate-limited (6 an hour per member) and logged in USERS KV as `planlog:*` (time, email, action, reason, who; never card data; kept 2 years). Pauses are indexed as `pause:<email>`; the hourly cron (`15 * * * *`) and the member's next visit restart them when due.
+
+**PayPal app permission:** the live app must have **Subscriptions** enabled (developer.paypal.com → Apps & Credentials → your app → Features). Suspend, activate and cancel use the same client id and secret as the webhook.
+
+**No email yet:** the Worker does not send email. A cancellation or pause confirmation email from Reasoning GP (and, from 2027, the DMCC Act reminder notices) needs an email provider adding.
 
 ## Auto-updating "Updates & News" feed (no manual editing)
 The Worker exposes a public **`/api/updates`** endpoint that fetches the official
