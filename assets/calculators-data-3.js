@@ -236,7 +236,7 @@
       title: 'Rockwood Clinical Frailty Scale',
       category: 'Frailty',
       description: 'Global frailty judgement (1–9).',
-      usefulFor: 'Frailty identification, treatment-burden & escalation decisions, anticipatory care.',
+      usefulFor: 'Frailty identification and anticipatory care planning.',
       resultLabel: 'CFS', resultMax: 9,
       inputs: [
         { id:'cfs', kind:'select', label:'Clinical Frailty Scale level',
@@ -333,7 +333,7 @@
       title: 'Ottawa ankle & foot rules',
       category: 'MSK / pain',
       description: 'Whether an ankle/foot X-ray is needed after injury.',
-      usefulFor: 'Acute ankle/foot trauma — safely avoids unnecessary X-rays (near-100% sensitive for fracture).',
+      usefulFor: 'Acute ankle/foot trauma — the published decision rule (near-100% sensitive for fracture). Each criterion is shown; the rule is met only as the zone headings state.',
       resultLabel: 'X-ray indication', resultUnit:'',
       inputs: [
         { group:'Ankle X-ray — pain in the malleolar zone AND any of:',
@@ -368,7 +368,7 @@
       id: 'ome',
       title: 'Oral morphine equivalent (OME)',
       category: 'MSK / pain',
-      description: 'Daily opioid dose converted to oral morphine equivalent.',
+      description: 'Oral morphine equivalent — the conversion factors, as a reference card (no dose is calculated here).',
       usefulFor: 'Chronic non-cancer pain safety — Opioids Aware (Faculty of Pain Medicine, 2026): ideally ≤50 mg/day OME; seek specialist advice before exceeding 90 mg/day.',
       resultLabel: 'OME', resultUnit:'mg/day',
       formula: 'OME = total daily dose × conversion factor',

@@ -496,24 +496,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E — Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select headache scenario — personalised treatment recommendation</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-ha-moa" onchange="calcDrug()"> Migraine with aura (Rachel)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ha-moh" onchange="calcDrug()"> Medication overuse headache</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ha-cluster" onchange="calcDrug()"> Cluster headache</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ha-gca" onchange="calcDrug()"> Giant cell arteritis (GCA)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ha-pregnancy" onchange="calcDrug()"> Pregnancy or possible pregnancy</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ha-frequent" onchange="calcDrug()"> Frequent migraine (≥4 days/month)</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Treatment recommendation</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Migraine with aura + OCP: STOP combined OCP immediately (UKMEC 4); prescribe desogestrel 75mcg (progestogen-only). MOH withdrawal: stop ALL analgesics simultaneously; no routine bridging (NICE CG150); add prophylaxis. Migraine acute: oral triptan (e.g. sumatriptan 50–100mg) + NSAID or paracetamol (CG150 first line), or monotherapy incl. aspirin 900mg ± metoclopramide (not during aura; triptan &lt;10 days/month). Prophylaxis (≥4/month): consider propranolol 40mg BD OR amitriptyline 10–75mg nocte. Topiramate: highly effective but TERATOGENIC — not in women of childbearing potential without highly effective contraception; MHRA 2024 warning. Cluster: 100% O2 12–15 L/min NRB mask × 15–20 min (home oxygen via HOOF) + sumatriptan SC 6mg; prophylaxis: verapamil (specialist). GCA: prednisolone 40–60mg OD IMMEDIATELY — do not wait for biopsy or ESR. Pregnancy: paracetamol acutely (safest); avoid NSAIDs after 20 weeks; sumatriptan only after risk–benefit discussion; topiramate and valproate ABSOLUTELY CONTRAINDICATED.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider">7E — Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Migraine with aura (Rachel)</li><li>Medication overuse headache</li><li>Cluster headache</li><li>Giant cell arteritis (GCA)</li><li>Pregnancy or possible pregnancy</li><li>Frequent migraine (≥4 days/month)</li></ul></div><div class="ds-result"><div class="ds-result-title">What the guidance says</div><div><span style="font-size:12.5px;color:var(--g)">Migraine with aura + OCP: STOP combined OCP immediately (UKMEC 4); prescribe desogestrel 75mcg (progestogen-only). MOH withdrawal: stop ALL analgesics simultaneously; no routine bridging (NICE CG150); add prophylaxis. Migraine acute: oral triptan (e.g. sumatriptan 50–100mg) + NSAID or paracetamol (CG150 first line), or monotherapy incl. aspirin 900mg ± metoclopramide (not during aura; triptan &lt;10 days/month). Prophylaxis (≥4/month): consider propranolol 40mg BD OR amitriptyline 10–75mg nocte. Topiramate: highly effective but TERATOGENIC — not in women of childbearing potential without highly effective contraception; MHRA 2024 warning. Cluster: 100% O2 12–15 L/min NRB mask × 15–20 min (home oxygen via HOOF) + sumatriptan SC 6mg; prophylaxis: verapamil (specialist). GCA: prednisolone 40–60mg OD IMMEDIATELY — do not wait for biopsy or ESR. Pregnancy: paracetamol acutely (safest); avoid NSAIDs after 20 weeks; sumatriptan only after risk–benefit discussion; topiramate and valproate ABSOLUTELY CONTRAINDICATED.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F — Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">

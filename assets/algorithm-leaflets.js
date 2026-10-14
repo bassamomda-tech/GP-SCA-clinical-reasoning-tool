@@ -5,34 +5,31 @@
                'clear' = same key words, or a reviewed manual match (reason in the review CSV).
    Same rules as assets/protocol-leaflets.js. Uncertain matches are deliberately left out — an
    algorithm with no entry shows no "Give to patient" button.
-   Review list: algorithm-leaflets-review.csv. 28 of 185 live algorithms mapped. */
+   Review list: algorithm-leaflets-review.csv. 22 of 185 live algorithms mapped.
+   Oct 2026 clinical review: a symptom algorithm is NOT given a leaflet about one possible cause
+   (removed: anaemia→iron deficiency, anal pain→fissure, headache→migraine, psychosis→schizophrenia,
+   red eye→conjunctivitis, wheeze in children→asthma, dizziness/vertigo→labyrinthitis or BPPV). */
 window.RGP_ALGORITHM_LEAFLETS = {
-  'anaemia': [['iron-deficiency-anaemia','exact']],
-  'anal-pain': [['anal-fissure','exact']],
   'back-pain': [['low-back-pain','clear']],
   'chest-pain': [['angina','clear']],
   'chronic-cough': [['cough','exact']],
   'constipation': [['constipation','exact']],
-  'dizziness': [['vertigo','exact'], ['labyrinthitis','exact']],
+  'dizziness': [['vertigo','exact']],
   'epistaxis': [['epistaxis','exact']],
   'fatigue': [['fatigue','exact']],
   'fever-children': [['fever-child','clear']],
   'haematuria': [['haematuria','exact']],
-  'headache': [['migraine','exact']],
   'hearing-loss': [['hearing-loss','exact']],
   'knee-pain': [['knee-pain','exact']],
   'low-folate': [['b12-folate-anaemia','exact']],
   'mouth-ulcers': [['mouth-ulcers','exact']],
   'neck-pain': [['neck-pain','exact']],
   'palpitations': [['palpitations','exact']],
-  'psychosis': [['schizophrenia','exact']],
-  'red-eye': [['conjunctivitis','exact']],
   'renal-colic': [['kidney-stones','exact']],
   'shoulder-pain': [['shoulder-pain','exact']],
   'sore-throat': [['tonsillitis','exact']],
   'tinnitus': [['tinnitus','exact']],
-  'vertigo': [['vertigo','exact'], ['bppv','exact'], ['labyrinthitis','exact']],
+  'vertigo': [['vertigo','exact']],
   'vitamin-d-deficiency': [['vitamin-d-deficiency','exact']],
-  'weight-loss': [['weight-loss-unintended','clear']],
-  'wheeze-child': [['asthma-paeds','exact']]
+  'weight-loss': [['weight-loss-unintended','clear']]
 };

@@ -87,7 +87,7 @@
       title: 'Gestational age (from EDD)',
       category: "Women's / obstetric",
       description: 'Current gestation and trimester from a known estimated due date (e.g. the dating-scan EDD).',
-      usefulFor: 'Quick "how many weeks is she?" from the scan EDD \u2014 medication safety, scan timing, referral urgency.',
+      usefulFor: 'Quick "how many weeks?" from the scan EDD — for scan timing and reading medicine-safety information.',
       resultLabel: 'Result', resultUnit:'',
       formula: 'GA today = 280 \u2212 (EDD \u2212 today),  in weeks+days',
       inputs: [

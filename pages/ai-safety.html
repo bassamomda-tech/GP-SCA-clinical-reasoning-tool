@@ -42,6 +42,7 @@
 .ai-cta{display:inline-block;margin-top:6px;background:var(--teal);color:#f6f2e9;padding:11px 20px;border-radius:9px;font-size:14px;font-weight:600}
 .ai-cta:hover{background:var(--teal-2);color:#fff}
 .ai-meta{font-size:13px;color:var(--muted);margin-top:8px}
+@media (max-width:620px){.ai-table{display:block;max-width:100%;overflow-x:auto}}
 </style>
 </head>
 <body>
@@ -75,7 +76,7 @@
         <tr>
           <td><b>Ask</b><br>clinical questions</td>
           <td>Finding what UK guidance says on a clinical question, with its sources, faster than opening five sites.</td>
-          <td>Deciding management for a specific patient. Doses. Anything you would not check.</td>
+          <td>Deciding management for a specific patient. Doses. Anything you would not check. Ask is set up to decline questions about a specific patient, to give no doses (it points to the BNF / SPC) and not to diagnose or triage anyone.</td>
           <td>Open the cited source and read the recommendation yourself.</td>
         </tr>
         <tr>
@@ -118,8 +119,12 @@
       <thead><tr><th style="width:44%">Question</th><th style="width:16%">Answer</th><th>Detail</th></tr></thead>
       <tbody>
         <tr><td>Is your input used to train AI models?</td><td><span class="ai-yn ai-y">No</span></td><td>Prompts are sent to the model provider to generate a response and are not used by us to train anything.</td></tr>
-        <tr><td>Does Reasoning GP store your prompts?</td><td><span class="ai-yn ai-y">No</span></td><td>Tool inputs and outputs are not retained on our side beyond the request. Anything you deliberately save stays in your own browser.</td></tr>
-        <tr><td>Is your input processed by a third party?</td><td><span class="ai-yn ai-n">Yes</span></td><td>Requests are passed to an external AI model provider to be answered. That is why the rule above exists: assume anything you type leaves this site.</td></tr>
+        <tr><td>Does Reasoning GP store your Ask questions?</td><td><span class="ai-yn ai-n">Yes</span></td><td>The <b>first question of each Ask chat</b> (in normalised form) and the answer it received are kept in an answer cache for <b>30 days</b>, so a repeat of the same question can be answered instantly. Follow-up questions in a chat are not cached. A cached answer is shown only to the member who asked it, unless the editor has vetted it.</td></tr>
+        <tr><td>Are any answers kept longer?</td><td><span class="ai-yn ai-n">Yes</span></td><td>When the editor <b>vets</b> a cached answer (checks it, and may correct it) it is kept until the editor removes it, and it can be shown to any member who asks the same question. The stored question is the normalised text of the question, not your name or email.</td></tr>
+        <tr><td>Is feedback on an answer stored?</td><td><span class="ai-yn ai-n">Yes</span></td><td>If you rate an answer or send a comment, we keep the rating, the question, the answer, your comment and <b>your account email</b> for <b>180 days</b>, so the editor can follow it up.</td></tr>
+        <tr><td>Is my Ask chat history stored?</td><td><span class="ai-yn ai-n">Yes</span></td><td>Signed in, your Ask chats are saved to your account so they follow you across devices, until you delete them. As a guest they stay in this browser tab only and are cleared when it closes.</td></tr>
+        <tr><td>Are other AI tools' inputs stored?</td><td><span class="ai-yn ai-y">No</span></td><td>Inputs and outputs of the other AI tools are not retained on our side beyond the request. Anything you deliberately save stays in your own browser (or your account, if you choose to sync it).</td></tr>
+        <tr><td>Is your input processed by a third party?</td><td><span class="ai-yn ai-n">Yes</span></td><td>Requests pass through our server (Cloudflare) to an external AI model provider (Anthropic) to be answered, and Ask may search a short list of UK guidance websites. That is why the rule above exists: assume anything you type leaves this site.</td></tr>
         <tr><td>Is anything sent anywhere without you pressing a button?</td><td><span class="ai-yn ai-y">No</span></td><td>Nothing is transmitted until you run a tool.</td></tr>
         <tr><td>Is audio recorded or stored?</td><td><span class="ai-yn ai-y">No</span></td><td>No tool on this site records or uploads audio. Where dictation appears, it is your own device's keyboard dictation and never reaches us as audio.</td></tr>
       </tbody>
@@ -133,7 +138,7 @@
   <section class="page-section">
     <h2><span class="eyebrow">Boundaries</span>Regulatory position</h2>
     <ul>
-      <li><b>No medical-device claim is made.</b> These tools are positioned as educational and drafting aids. They are not offered as software intended to diagnose, prevent, monitor, predict, prognose or treat.</li>
+      <li><b>No medical-device claim is made.</b> These tools are positioned as educational and drafting aids. They are not offered as software intended to diagnose, prevent, monitor, predict, prognose or treat. See the site’s <a href="intended-purpose.html">intended purpose</a>.</li>
       <li><b>No tool produces patient-specific recommendations.</b> If a future feature did — taking a real patient's data and returning advice about that patient — specialist regulatory advice would be required before release, and the product claim would have to change with it.</li>
       <li><b>AI does not replace clinical judgement</b>, your local protocol, or emergency assessment. In an emergency, call <b>999</b>.</li>
       <li><b>Doses are always the BNF's.</b> No AI output on this site should be used as a prescribing source.</li>

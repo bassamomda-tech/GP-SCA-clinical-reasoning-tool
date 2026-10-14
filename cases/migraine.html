@@ -760,26 +760,10 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="migraine"></div>
 
-    <div class="sub-divider" id="drugs">7E — Medication selection tool — choose patient characteristics for tailored drug recommendations</div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
     <!-- NOTE: calcDrug() in script.js is HTN-specific. Migraine checkboxes use non-overlapping IDs.
          Drug cards in 7F are the primary reference. -->
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — see drug cards and guidance below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-mig-aura" onchange="calcDrug()"> Migraine with aura</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mig-moh" onchange="calcDrug()"> Medication overuse headache (MOH)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mig-asthma" onchange="calcDrug()"> Asthma / COPD (beta-blocker contraindicated)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mig-depress" onchange="calcDrug()"> Comorbid depression or insomnia</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mig-preg" onchange="calcDrug()"> Pregnant or planning pregnancy</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mig-coc" onchange="calcDrug()"> Currently on combined OCP</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Migraine drug selection guide</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Migraine with aura + COC: Stop COC immediately — UKMEC 4. Start POP (desogestrel 75mcg OD). MOH: withdraw overused agent; no routine bridging; start preventive simultaneously. Asthma: avoid propranolol — use amitriptyline 10–50mg ON or topiramate (candesartan off-label). Depression + insomnia: amitriptyline 10–50mg ON may suit (consider overdose risk). Pregnancy: paracetamol first-line; preventive specialist-guided (propranolol often used); NO topiramate, NO valproate, NO ergotamines. Acute treatment: sumatriptan 50–100mg + naproxen 500mg + metoclopramide 10mg simultaneously at headache onset. See drug cards below.</span></div>
-      </div>
-    </div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Migraine with aura</li><li>Medication overuse headache (MOH)</li><li>Asthma / COPD (beta-blocker contraindicated)</li><li>Comorbid depression or insomnia</li><li>Pregnant or planning pregnancy</li><li>Currently on combined OCP</li></ul></div><div class="ds-result"><div class="ds-result-title">Migraine drug selection guide</div><div><span style="font-size:12.5px;color:var(--g)">Migraine with aura + COC: Stop COC immediately — UKMEC 4. Start POP (desogestrel 75mcg OD). MOH: withdraw overused agent; no routine bridging; start preventive simultaneously. Asthma: avoid propranolol — use amitriptyline 10–50mg ON or topiramate (candesartan off-label). Depression + insomnia: amitriptyline 10–50mg ON may suit (consider overdose risk). Pregnancy: paracetamol first-line; preventive specialist-guided (propranolol often used); NO topiramate, NO valproate, NO ergotamines. Acute treatment: sumatriptan 50–100mg + naproxen 500mg + metoclopramide 10mg simultaneously at headache onset. See drug cards below.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
     <!-- 7F Drug Cards -->
     <div class="sub-divider">7F — Drug reference cards: triptan · NSAID + antiemetic · preventive agents</div>
     <div class="drug-cards" id="drug-cards-container">

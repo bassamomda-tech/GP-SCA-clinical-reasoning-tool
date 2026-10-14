@@ -430,20 +430,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top"><h3>Select DED type and severity &#8212; treatment guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-de-mild" onchange="calcDrug()"> Mild DED (&lt;4 times/day use; OSDI 13&#8211;22)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-de-mod" onchange="calcDrug()"> Moderate DED (&gt;4 times/day; contact lens wearer &#8212; Mrs. Chen)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-de-night" onchange="calcDrug()"> Night-time symptoms; waking with dry eyes</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-de-sjogren" onchange="calcDrug()"> Sj&ouml;gren&rsquo;s / aqueous-deficient type</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-de-keratitis" onchange="calcDrug()"> Keratitis confirmed on slit lamp (specialist)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-de-bak" onchange="calcDrug()"> On BAK-preserved anti-glaucoma drops</label>
-        </div>
-      </div>
-      <div class="ds-result"><div class="ds-result-title">DED treatment guidance</div><div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Moderate DED + contact lens wearer (Mrs. Chen): PF sodium hyaluronate drops (Hylo-Forte; Clinitas; Artelac) &#215;4/day &#8212; safe to use in contact lenses. Warm compress 5&#8211;10 min BD + Blephasol lid wipes BD. 20-20-20 screen rule + humidifier at workstation. Switch cetirizine to fluticasone nasal spray (Flixonase) &#8212; no anticholinergic ocular effect. Omega-3 fish oil 1&#8211;2g/day with food. Review OSDI at 4&#8211;6 weeks. Mild DED: preserved carmellose 0.5% or hypromellose 0.3% PRN if &lt;4&#215;/day (not contact lens wearers). Night symptoms: carbomer gel (Viscotears; Clinitas Gel) at bedtime; or VitA-POS ointment. Sj&ouml;gren&#8217;s: PF drops &#215;6&#8211;8/day; preserve-free gels; anti-Ro; anti-La; ANA; rheumatology referral; ophthalmology. Keratitis confirmed: Ikervis (ciclosporin 0.1%) OD at night &#8212; ophthalmology initiation only; GP can continue in shared care. BAK-preserved anti-glaucoma drops: switch to PF formulation (latanoprost PF &#8212; Monopost; travoprost PF); discuss with ophthalmologist.</span></div></div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Mild DED (&lt;4 times/day use; OSDI 13&#8211;22)</li><li>Moderate DED (&gt;4 times/day; contact lens wearer &#8212; Mrs. Chen)</li><li>Night-time symptoms; waking with dry eyes</li><li>Sj&ouml;gren&rsquo;s / aqueous-deficient type</li><li>Keratitis confirmed on slit lamp (specialist)</li><li>On BAK-preserved anti-glaucoma drops</li></ul></div><div class="ds-result"><div class="ds-result-title">DED treatment guidance</div><div><span style="font-size:12.5px;color:var(--g)">Moderate DED + contact lens wearer (Mrs. Chen): PF sodium hyaluronate drops (Hylo-Forte; Clinitas; Artelac) &#215;4/day &#8212; safe to use in contact lenses. Warm compress 5&#8211;10 min BD + Blephasol lid wipes BD. 20-20-20 screen rule + humidifier at workstation. Switch cetirizine to fluticasone nasal spray (Flixonase) &#8212; no anticholinergic ocular effect. Omega-3 fish oil 1&#8211;2g/day with food. Review OSDI at 4&#8211;6 weeks. Mild DED: preserved carmellose 0.5% or hypromellose 0.3% PRN if &lt;4&#215;/day (not contact lens wearers). Night symptoms: carbomer gel (Viscotears; Clinitas Gel) at bedtime; or VitA-POS ointment. Sj&ouml;gren&#8217;s: PF drops &#215;6&#8211;8/day; preserve-free gels; anti-Ro; anti-La; ANA; rheumatology referral; ophthalmology. Keratitis confirmed: Ikervis (ciclosporin 0.1%) OD at night &#8212; ophthalmology initiation only; GP can continue in shared care. BAK-preserved anti-glaucoma drops: switch to PF formulation (latanoprost PF &#8212; Monopost; travoprost PF); discuss with ophthalmologist.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -792,14 +780,14 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div><!-- /sum-3col -->
     <div class="dqp-wrap">
-      <div class="dqp-hdr">&#128138; Treatment Quick-Pick</div>
+      <div class="dqp-hdr">&#128138; Treatment summary — see the medication options in 7E</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-de-mild')">&#127986; Mild DED</button>
-        <button class="dqp-btn" onclick="showDrug('ds-de-mod')">&#128083; Moderate (Mrs. Chen)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-de-night')">&#128564; Night symptoms</button>
-        <button class="dqp-btn" onclick="showDrug('ds-de-sjogren')">&#129361; Sj&ouml;gren&rsquo;s / ADDE</button>
-        <button class="dqp-btn" onclick="showDrug('ds-de-keratitis')">&#128308; Keratitis (specialist)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-de-bak')">&#9888; BAK glaucoma drops</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#127986; Mild DED</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128083; Moderate (Mrs. Chen)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128564; Night symptoms</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129361; Sj&ouml;gren&rsquo;s / ADDE</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128308; Keratitis (specialist)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#9888; BAK glaucoma drops</a>
       </div>
     </div>
   </div>

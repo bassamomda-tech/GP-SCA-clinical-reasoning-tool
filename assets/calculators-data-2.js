@@ -102,7 +102,7 @@
       title: 'RCP 3 Questions (asthma control)',
       category: 'Respiratory',
       description: 'Quick asthma morbidity screen (3 yes/no).',
-      usefulFor: 'Every asthma review. Any "yes" suggests suboptimal control — assess and step up.',
+      usefulFor: 'Every asthma review. Any "yes" suggests suboptimal control.',
       resultLabel: 'RCP "yes" answers', resultMax: 3,
       inputs: [
         { id:'rcp_sleep',  kind:'check', label:'In the last week/month: difficulty sleeping due to asthma (incl. cough)?', points:1 },
@@ -302,7 +302,7 @@
       title: 'FIB-4 (liver fibrosis)',
       category: 'Gastro / hepatology',
       description: 'Non-invasive fibrosis estimate in NAFLD / chronic liver disease.',
-      usefulFor: 'Risk-stratifying fatty liver / abnormal LFTs — who needs ELF / fibroscan / hepatology.',
+      usefulFor: 'Fibrosis estimate in NAFLD / chronic liver disease. NICE NG49 and the BSG describe what follows each band.',
       resultLabel: 'FIB-4', resultUnit:'',
       formula: '(age × AST) / (platelets ×10⁹/L × √ALT)',
       inputs: [
@@ -337,8 +337,8 @@
       id: 'psa-threshold',
       title: 'PSA age-specific threshold',
       category: 'Urology',
-      description: 'Age-referenced PSA cut-offs for suspected prostate cancer.',
-      usefulFor: 'NICE NG12 (updated April 2026) — refer on a suspected cancer pathway if PSA above the age-specific range. Under 40 or 80 and over: use clinical judgement.',
+      description: 'Age-specific PSA thresholds as used by NICE NG12 (reference table).',
+      usefulFor: 'Reference card. NICE NG12 (updated April 2026) — refer on a suspected cancer pathway if PSA above the age-specific range. Under 40 or 80 and over: use clinical judgement.',
       resultLabel: 'PSA vs threshold', resultUnit:'',
       inputs: [
         { id:'psa_age', kind:'select', label:'Age band',

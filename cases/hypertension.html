@@ -1552,24 +1552,8 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="hypertension"></div>
 
-    <div class="sub-divider" id="drugs">7E — Medication selection tool — choose patient characteristics for tailored drug recommendations</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — Step 1 drug recommendation appears below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-dm" onchange="calcDrug()"> Type 2 diabetes</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ckd" onchange="calcDrug()"> CKD / ACR &gt;3</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cvd" onchange="calcDrug()"> Established CVD / post-MI</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-afro" onchange="calcDrug()"> Black African or African–Caribbean family origin (no DM)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-age55" onchange="calcDrug()"> Age ≥55 (no DM)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-hf" onchange="calcDrug()"> Heart failure (HFrEF)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-angina" onchange="calcDrug()"> Angina / IHD</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-af" onchange="calcDrug()"> Atrial fibrillation</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cough" onchange="calcDrug()"> ACEi intolerance (cough)</label>
-        </div>
-      </div>
-      <div class="ds-result"><div class="ds-result-title">Step 1 recommendation</div><div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span></div></div>
-    </div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Type 2 diabetes</li><li>CKD / ACR &gt;3</li><li>Established CVD / post-MI</li><li>Black African or African–Caribbean family origin (no DM)</li><li>Age ≥55 (no DM)</li><li>Heart failure (HFrEF)</li><li>Angina / IHD</li><li>Atrial fibrillation</li><li>ACEi intolerance (cough)</li></ul></div><div class="ds-result"><div class="ds-result-title">What the guidance says</div><div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Age &lt;55, not of Black African or African–Caribbean family origin, no type 2 diabetes/CKD</div><div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: Ramipril (ACEi)</div><div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: Candesartan (ARB) — if ACEi cough develops</div><div style="font-size:12px;color:#15803d;margin-bottom:3px">Age <55, not of Black African or African–Caribbean family origin, no type 2 diabetes/CKD: ACEi (or ARB) is the Step 1 drug of choice (NICE NG136).</div><div style="font-size:11.5px;color:var(--b);margin-bottom:3px">Switch to ARB within the RAAS class, not off-class, if cough develops.</div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Type 2 diabetes · CKD / ACR &gt;3 · Established CVD / post-MI</div><div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: Ramipril (ACEi)</div><div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: Candesartan (ARB) — if ACEi cough develops</div><div style="font-size:12px;color:#15803d;margin-bottom:3px">Type 2 diabetes: ACEi or ARB first-line at any age (NICE NG136). CKD: ACEi/ARB if ACR >30 mg/mmol, or >3 mg/mmol with diabetes (NICE NG203). Established CVD alone: follow the NG136 age/ethnicity steps.</div><div style="font-size:11.5px;color:var(--b);margin-bottom:3px">ACEi and ARB give equal renoprotection. Never combine ACEi + ARB simultaneously.</div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Type 2 diabetes or CKD — Black African or African–Caribbean family origin</div><div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: Candesartan / losartan (ARB)</div><div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: + Amlodipine (CCB) at Step 2</div><div style="font-size:12px;color:#15803d;margin-bottom:3px">Type 2 diabetes (or CKD with albuminuria) in a person of Black African or African–Caribbean family origin: ARB in preference to an ACEi (NICE NG136; CKD per NICE NG203).</div><div style="font-size:11.5px;color:var(--b);margin-bottom:3px">ACEi and ARB give equal renoprotection. Never combine ACEi + ARB simultaneously.</div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Age ≥55 (no DM)</div><div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: Amlodipine (CCB)</div><div style="font-size:12px;color:#15803d;margin-bottom:3px">Age ≥55 (no type 2 diabetes, not of Black African or African–Caribbean family origin): CCB first-line (NICE NG136).</div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Angina / IHD:</em> <div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: + Ramipril (ACEi) at Step 2</div><div style="font-size:11.5px;color:var(--b);margin-bottom:3px">Step 2 per NICE NG136: add an ACEi or ARB (or a thiazide-like diuretic); amlodipine also treats stable angina.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Without angina:</em> <div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: Indapamide (thiazide-like diuretic) — if a CCB is not suitable</div><div style="font-size:11.5px;color:var(--b);margin-bottom:3px">If a CCB is not suitable (oedema, intolerance, heart failure or high risk of it), offer a thiazide-like diuretic (NICE NG136).</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Black African or African–Caribbean family origin (no DM)</div><div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: Amlodipine (CCB)</div><div style="font-size:12px;color:#15803d;margin-bottom:3px">Black African or African–Caribbean family origin (no type 2 diabetes): CCB first-line at any age (NICE NG136). At Step 2 add an ARB in preference to an ACEi, or a thiazide-like diuretic.</div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">ACEi intolerance (cough)</div><div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: Candesartan / Losartan (ARB)</div><div style="font-size:12px;color:#15803d;margin-bottom:3px">ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.</div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Atrial fibrillation</div><div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: Bisoprolol (rate control + antihypertensive)</div><div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: + ACEi or CCB for BP target</div><div style="font-size:12px;color:#15803d;margin-bottom:3px">AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.</div><div style="font-size:11.5px;color:var(--b);margin-bottom:3px">Rate control alone may not achieve BP target — add Step 2 drug</div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Heart failure (HFrEF)</div><div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: Ramipril (ACEi) — HFrEF</div><div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: + Bisoprolol (start low, titrate slowly)</div><div style="font-size:12px;color:#15803d;margin-bottom:3px">Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.</div><div style="font-size:11.5px;color:var(--b);margin-bottom:3px">ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)</div></div><div style="font-size:11px;color:var(--muted);margin-top:5px">U&amp;Es 1–2 weeks after starting or up-titrating ACEi/ARB (NICE NG203)</div></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F — Drug reference cards: antihypertensive classes, doses &amp; contraindications</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -2327,84 +2311,7 @@ function printSummary(){
   if(ac)ac.style.display=ad;
 }
 
-function calcDrug(){
-  const dm=document.getElementById('ds-dm').checked,
-    ckd=document.getElementById('ds-ckd').checked,
-    cvd=document.getElementById('ds-cvd').checked,
-    afro=document.getElementById('ds-afro').checked,
-    age55=document.getElementById('ds-age55').checked,
-    hf=document.getElementById('ds-hf').checked,
-    angina=document.getElementById('ds-angina').checked,
-    af=document.getElementById('ds-af').checked,
-    cough=document.getElementById('ds-cough').checked;
-  const none=!dm&&!ckd&&!cvd&&!afro&&!age55&&!hf&&!angina&&!af&&!cough;
-  ['acei','arb','ccb','thiazide','spiro','ab'].forEach(id=>{
-    const el=document.getElementById('dc-'+id);
-    el.classList.remove('recommended','alt-rec');
-    const b=document.getElementById('rec-'+id);
-    b.style.cssText='';b.textContent='✓ Recommended';b.style.display='none';
-  });
-  if(none){
-    document.getElementById('ds-output').innerHTML='<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
-    return;
-  }
-  let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
-  if(hf){
-    main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
-  } else if(af){
-    main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
-    why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
-    alt=(dm||ckd)?'acei':'ccb';altLabel='+ ACEi or CCB for BP target';altWhy='Rate control alone may not achieve BP target — add Step 2 drug';
-  } else if(cough){
-    main='arb';mainLabel='Candesartan / Losartan (ARB)';
-    why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
-    alt='';altLabel='';altWhy='';
-  } else if(dm||ckd||cvd){
-    main=afro?'arb':'acei';mainLabel=afro?'Candesartan / losartan (ARB)':'Ramipril (ACEi)';
-    why=afro?'Type 2 diabetes (or CKD with albuminuria) in a person of Black African or African–Caribbean family origin: ARB in preference to an ACEi (NICE NG136; CKD per NICE NG203).':'Type 2 diabetes: ACEi or ARB first-line at any age (NICE NG136). CKD: ACEi/ARB if ACR >30 mg/mmol, or >3 mg/mmol with diabetes (NICE NG203). Established CVD alone: follow the NG136 age/ethnicity steps.';
-    alt=afro?'ccb':'arb';altLabel=afro?'+ Amlodipine (CCB) at Step 2':'Candesartan (ARB) — if ACEi cough develops';altWhy='ACEi and ARB give equal renoprotection. Never combine ACEi + ARB simultaneously.';
-  } else if(afro){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Black African or African–Caribbean family origin (no type 2 diabetes): CCB first-line at any age (NICE NG136). At Step 2 add an ARB in preference to an ACEi, or a thiazide-like diuretic.';
-    alt='';altLabel='';altWhy='';
-  } else if(age55){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Age ≥55 (no type 2 diabetes, not of Black African or African–Caribbean family origin): CCB first-line (NICE NG136).';
-    alt=angina?'acei':'thiazide';
-    altLabel=angina?'+ Ramipril (ACEi) at Step 2':'Indapamide (thiazide-like diuretic) — if a CCB is not suitable';
-    altWhy=angina?'Step 2 per NICE NG136: add an ACEi or ARB (or a thiazide-like diuretic); amlodipine also treats stable angina.':'If a CCB is not suitable (oedema, intolerance, heart failure or high risk of it), offer a thiazide-like diuretic (NICE NG136).';
-  } else {
-    main='acei';mainLabel='Ramipril (ACEi)';
-    why='Age <55, not of Black African or African–Caribbean family origin, no type 2 diabetes/CKD: ACEi (or ARB) is the Step 1 drug of choice (NICE NG136).';
-    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
-    altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
-  }
-
-  const m=document.getElementById('dc-'+main);
-  m.classList.add('recommended');
-  const mb=document.getElementById('rec-'+main);
-  mb.style.display='inline-block';
-
-  if(alt){
-    const a=document.getElementById('dc-'+alt);
-    a.classList.add('alt-rec');
-    const ab=document.getElementById('rec-'+alt);
-    ab.style.display='inline-block';
-    ab.style.background='#dbeafe';
-    ab.style.color='#1d4ed8';
-    ab.style.borderColor='#bfdbfe';
-    ab.textContent='↳ Alternative';
-  }
-
-  document.getElementById('ds-output').innerHTML=`
-    <div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: ${mainLabel}</div>
-    ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
-    <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
-    ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
-    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es 1–2 weeks after starting or up-titrating ACEi/ARB (NICE NG203)</div>`;
-}
+/* calcDrug(): interactive drug selector removed Oct 2026 (Route 1) — its guidance is shown as static text */
 
 function calcScore(){
   var total=0, tasks=0, ro=0, gs=0;

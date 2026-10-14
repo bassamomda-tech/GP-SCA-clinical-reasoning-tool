@@ -75,84 +75,7 @@ function printSummary(){
   if(ac)ac.style.display=ad;
 }
 
-function calcDrugHTN(){
-  const dm=document.getElementById('ds-dm').checked,
-    ckd=document.getElementById('ds-ckd').checked,
-    cvd=document.getElementById('ds-cvd').checked,
-    afro=document.getElementById('ds-afro').checked,
-    age55=document.getElementById('ds-age55').checked,
-    hf=document.getElementById('ds-hf').checked,
-    angina=document.getElementById('ds-angina').checked,
-    af=document.getElementById('ds-af').checked,
-    cough=document.getElementById('ds-cough').checked;
-  const none=!dm&&!ckd&&!cvd&&!afro&&!age55&&!hf&&!angina&&!af&&!cough;
-  ['acei','arb','ccb','thiazide','spiro','ab'].forEach(id=>{
-    const el=document.getElementById('dc-'+id);
-    el.classList.remove('recommended','alt-rec');
-    const b=document.getElementById('rec-'+id);
-    b.style.cssText='';b.textContent='✓ Recommended';b.style.display='none';
-  });
-  if(none){
-    document.getElementById('ds-output').innerHTML='<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
-    return;
-  }
-  let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
-  if(hf){
-    main='thiazide';mainLabel='Indapamide SR 1.5mg';
-    why='HF with fluid overload: thiazide-like diuretic. Add ACEi + bisoprolol + spiro per NICE NG106 HF guideline.';
-    alt='acei';altLabel='+ Ramipril (essential in HFrEF)';altWhy='ACEi + beta-blocker + spiro = cornerstone of HFrEF management';
-  } else if(af){
-    main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
-    why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
-    alt=(dm||ckd)?'acei':'ccb';altLabel='+ ACEi or CCB for BP target';altWhy='Rate control alone may not achieve BP target — add Step 2 drug';
-  } else if(cough){
-    main='arb';mainLabel='Candesartan / Losartan (ARB)';
-    why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
-    alt='';altLabel='';altWhy='';
-  } else if(dm||ckd||cvd){
-    main='acei';mainLabel='Ramipril (ACEi)';
-    why='DM / CKD / CVD: ACEi first-line for cardio-renal protection at ANY age and ANY ethnicity (NICE NG136).';
-    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';altWhy='Equal renoprotection. Never combine ACEi + ARB simultaneously.';
-  } else if(afro){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Afro-Caribbean (no DM): CCB more effective in low-renin hypertension. At Step 2: ARB preferred over ACEi.';
-    alt='';altLabel='';altWhy='';
-  } else if(age55){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Age ≥55 (no DM, no Afro-Caribbean): CCB preferred over ACEi — greater efficacy in lower-renin patients.';
-    alt=angina?'acei':'arb';
-    altLabel=angina?'+ Ramipril (anti-anginal benefit at Step 2)':'Candesartan (ARB) — if CCB not tolerated';
-    altWhy=angina?'ACEi has additional anti-anginal benefit at Step 2':'ARB is equally effective if CCB causes intolerable oedema';
-  } else {
-    main='acei';mainLabel='Ramipril (ACEi)';
-    why='Age <55, non-Afro-Caribbean, no DM/CKD/CVD: ACEi is the Step 1 drug of choice (NICE NG136).';
-    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
-    altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
-  }
-
-  const m=document.getElementById('dc-'+main);
-  m.classList.add('recommended');
-  const mb=document.getElementById('rec-'+main);
-  mb.style.display='inline-block';
-
-  if(alt){
-    const a=document.getElementById('dc-'+alt);
-    a.classList.add('alt-rec');
-    const ab=document.getElementById('rec-'+alt);
-    ab.style.display='inline-block';
-    ab.style.background='#dbeafe';
-    ab.style.color='#1d4ed8';
-    ab.style.borderColor='#bfdbfe';
-    ab.textContent='↳ Alternative';
-  }
-
-  document.getElementById('ds-output').innerHTML=`
-    <div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: ${mainLabel}</div>
-    ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
-    <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
-    ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
-    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es within 1 week of starting ACEi/ARB</div>`;
-}
+/* calcDrugHTN(): the hypertension drug selector was removed Oct 2026 (Route 1). The case page shows its guidance as static text. */
 
 function calcScore(){
   var total=0, tasks=0, ro=0, gs=0;
@@ -232,36 +155,5 @@ function resetScorecard(){
 })();
 
 
-/* ── Medication quick-reference selector ─────────────────────────────────────
-   The detailed selector logic above (calcDrugHTN) is specific to the hypertension
-   case. Other case pages reuse the same checkbox markup (.ds-wrap) with their own
-   checkbox ids, so calling the hypertension logic there threw an error on the
-   first click. calcDrug() now routes: hypertension ids present → calcDrugHTN();
-   otherwise a generic, error-free summary that points to the drug reference cards.
-   A page may still define its own calcDrug(); it is wrapped so that any error
-   falls back to the generic summary instead of breaking the page. */
-function calcDrugGeneric(){
-  var out=document.getElementById('ds-output'); if(!out) return;
-  if(out.dataset.initial===undefined) out.dataset.initial=out.innerHTML;
-  var wrap=out.closest('.ds-wrap')||document;
-  var picked=[].slice.call(wrap.querySelectorAll('input[type=checkbox]:checked')).map(function(c){
-    var l=c.closest('label'); return (l?l.textContent:c.id).trim();
-  });
-  if(!picked.length){ out.innerHTML=out.dataset.initial; return; }
-  var esc=function(t){return t.replace(/[&<>"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch];});};
-  out.innerHTML='<div style="font-size:12.5px;line-height:1.55;color:var(--ink,#222)"><strong>Selected:</strong> '+picked.map(esc).join(' · ')+
-    '<br><span style="color:var(--g,#555)">Use the drug reference cards below for choice, cautions and monitoring for these characteristics — this quick reference does not auto-select a drug for this topic. Check doses in the BNF.</span></div>'+
-    (out.dataset.initial?'<div style="margin-top:.5rem">'+out.dataset.initial+'</div>':'');
-}
-function calcDrug(){
-  if(document.getElementById('ds-dm')&&document.getElementById('dc-acei')&&document.getElementById('ds-output')){
-    try{ return calcDrugHTN(); }catch(e){ return calcDrugGeneric(); }
-  }
-  return calcDrugGeneric();
-}
-document.addEventListener('DOMContentLoaded',function(){
-  var f=window.calcDrug;
-  if(typeof f==='function' && f!==calcDrug){          /* page-specific override */
-    window.calcDrug=function(){ try{ return f.apply(this,arguments); }catch(e){ return calcDrugGeneric(); } };
-  }
-});
+/* Medication quick-reference selector (calcDrug / calcDrugGeneric) removed Oct 2026 (Route 1):
+   every case page now shows its medication options as a static guideline summary. */

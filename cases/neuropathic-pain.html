@@ -439,24 +439,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics &#8212; neuropathic pain drug guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-np-dpn" onchange="calcDrug()"> Diabetic peripheral neuropathy</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-np-dep" onchange="calcDrug()"> Comorbid depression (PHQ-9 &#8805;10)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-np-cardiac" onchange="calcDrug()"> Cardiac history / QTc prolongation concern</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-np-renal" onchange="calcDrug()"> Renal impairment (eGFR &lt;60)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-np-phn" onchange="calcDrug()"> Post-herpetic neuralgia</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-np-tn" onchange="calcDrug()"> Trigeminal neuralgia</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Neuropathic pain drug guidance</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">DPN + depression (Mrs. Osei): duloxetine 60mg OD (30mg with food for 1 week first if tolerability is a concern); dual indication; NICE CG173 first-line. DPN without prominent depression: amitriptyline 10mg OD night (check ECG; titrate to 25&#8211;50mg) OR gabapentinoid (check eGFR first; Schedule 3 CD). Cardiac concern / QTc &gt;450ms: avoid amitriptyline; prefer duloxetine or gabapentinoid. Renal impairment eGFR &lt;60: dose-reduce gabapentinoid (50% if eGFR 30&#8211;59); avoid duloxetine if eGFR &lt;30; amitriptyline preferred. PHN: one CG173 agent (amitriptyline; duloxetine; gabapentinoid); topical for localised pain &#8212; lidocaine 5% plasters only if oral treatment ineffective or unsuitable (Versatis: 3 patches 12h on/12h off; intact skin); capsaicin 0.075% cream 3&#8211;4 times/day; Qutenza (specialist). Trigeminal neuralgia: carbamazepine 100mg BD &#8594; titrate 400&#8211;1200mg/day (NOT amitriptyline or gabapentinoid first-line for TN); monitor Na+; FBC; LFTs. NOT for neuropathic pain: tramadol; strong opioids; NSAIDs; paracetamol alone (NICE CG173).</span></div>
-      </div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Diabetic peripheral neuropathy</li><li>Comorbid depression (PHQ-9 &#8805;10)</li><li>Cardiac history / QTc prolongation concern</li><li>Renal impairment (eGFR &lt;60)</li><li>Post-herpetic neuralgia</li><li>Trigeminal neuralgia</li></ul></div><div class="ds-result"><div class="ds-result-title">Neuropathic pain drug guidance</div><div><span style="font-size:12.5px;color:var(--g)">DPN + depression (Mrs. Osei): duloxetine 60mg OD (30mg with food for 1 week first if tolerability is a concern); dual indication; NICE CG173 first-line. DPN without prominent depression: amitriptyline 10mg OD night (check ECG; titrate to 25&#8211;50mg) OR gabapentinoid (check eGFR first; Schedule 3 CD). Cardiac concern / QTc &gt;450ms: avoid amitriptyline; prefer duloxetine or gabapentinoid. Renal impairment eGFR &lt;60: dose-reduce gabapentinoid (50% if eGFR 30&#8211;59); avoid duloxetine if eGFR &lt;30; amitriptyline preferred. PHN: one CG173 agent (amitriptyline; duloxetine; gabapentinoid); topical for localised pain &#8212; lidocaine 5% plasters only if oral treatment ineffective or unsuitable (Versatis: 3 patches 12h on/12h off; intact skin); capsaicin 0.075% cream 3&#8211;4 times/day; Qutenza (specialist). Trigeminal neuralgia: carbamazepine 100mg BD &#8594; titrate 400&#8211;1200mg/day (NOT amitriptyline or gabapentinoid first-line for TN); monitor Na+; FBC; LFTs. NOT for neuropathic pain: tramadol; strong opioids; NSAIDs; paracetamol alone (NICE CG173).</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -813,12 +797,12 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="dqp-wrap">
       <div class="dqp-hdr">&#128138; Drug Quick-Pick</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-np-dpn')">&#128200; DPN (standard)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-np-dep')">&#128147; DPN + depression (Mrs. Osei)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-np-cardiac')">&#10084; Cardiac / QTc concern</button>
-        <button class="dqp-btn" onclick="showDrug('ds-np-renal')">&#128268; Renal impairment</button>
-        <button class="dqp-btn" onclick="showDrug('ds-np-phn')">&#129740; Post-herpetic neuralgia</button>
-        <button class="dqp-btn" onclick="showDrug('ds-np-tn')">&#129298; Trigeminal neuralgia</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128200; DPN (standard)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128147; DPN + depression (Mrs. Osei)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#10084; Cardiac / QTc concern</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128268; Renal impairment</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129740; Post-herpetic neuralgia</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129298; Trigeminal neuralgia</a>
       </div>
     </div>
   </div>

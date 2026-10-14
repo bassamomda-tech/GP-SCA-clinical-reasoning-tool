@@ -403,7 +403,7 @@ else start();
    against running twice. */
 (function(){
   if(document.querySelector('meta[name="omelette-print-source"]') || /-print\.html?$/i.test(location.pathname)) return;
-  ['analytics.js?v=1', 'seo-jsonld.js?v=1'].forEach(function(f){
+  ['analytics.js?v=1', 'seo-jsonld.js?v=1', 'ref-notice.js?v=1'].forEach(function(f){
     if(document.querySelector('script[src*="assets/' + f.split('?')[0] + '"]')) return;
     var s = document.createElement('script');
     s.src = root() + 'assets/' + f;

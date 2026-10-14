@@ -1346,50 +1346,50 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="atrial-fibrillation"></div>
 
-    <div class="sub-divider" id="af-drugs">7E — Medication selection tool — choose patient characteristics for tailored drug recommendations</div>
-    <div class="ds-af-wrap">
-      <div class="ds-af-top">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:.75rem;line-height:1.55;background:var(--b-bg);border:1px solid var(--b-bd);border-left:3px solid var(--b);border-radius:0 var(--rad-sm) var(--rad-sm) 0;padding:.55rem .85rem">
-          Tick the patient's relevant characteristics. The three recommendation boxes update instantly with tailored drug choices, doses, and clinical rationale. Multiple selections are handled — e.g. HFrEF + asthma gives you the appropriate combination guidance.
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
-          <div>
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.5rem;padding-bottom:.3rem;border-bottom:2px solid var(--g-bd)">⚡ Rate Control Factors</div>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-asthma" onchange="calcAF()"> Asthma or severe COPD</label>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-hfref" onchange="calcAF()"> Heart failure with reduced EF (HFrEF, EF &lt;40%)</label>
-            <label class="ds-af-lbl" style="border-color:var(--r-bd);background:var(--r-bg)"><input type="checkbox" id="af-wpw" onchange="calcAF()"> <strong style="color:var(--r)">WPW / pre-excitation on ECG ⛔</strong></label>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-brady" onchange="calcAF()"> Resting HR &lt;60 bpm (bradycardia)</label>
-          </div>
-          <div>
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--af);margin-bottom:.5rem;padding-bottom:.3rem;border-bottom:2px solid var(--af-bd)">💊 Anticoagulation Factors</div>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-valvular" onchange="calcAF()"> Rheumatic mitral stenosis or mechanical heart valve</label>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-ckd" onchange="calcAF()"> CKD — CrCl &lt;30 mL/min (Cockcroft-Gault)</label>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-labile" onchange="calcAF()"> On warfarin with poor control (TTR &lt;65%)</label>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-elderly" onchange="calcAF()"> Frailty: ≥2 of (age ≥80, weight ≤60kg, creatinine ≥133)</label>
-          </div>
-          <div>
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--b);margin-bottom:.5rem;padding-bottom:.3rem;border-bottom:2px solid var(--b-bd)">🎵 Rhythm Control Factors</div>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-structural" onchange="calcAF()"> Structural heart disease or IHD (previous MI, cardiomyopathy)</label>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-parox" onchange="calcAF()"> Paroxysmal AF — symptomatic, structurally normal heart</label>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-amio" onchange="calcAF()"> Currently on amiodarone</label>
-            <label class="ds-af-lbl"><input type="checkbox" id="af-new48" onchange="calcAF()"> New AF onset &lt;48 hours — cardioversion window open</label>
-          </div>
-        </div>
-        <div style="margin-top:.85rem;display:flex;justify-content:flex-end;gap:8px">
-          <button onclick="clearAFSelector()" style="font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:20px;border:1px solid var(--line);background:var(--white);cursor:pointer;color:var(--muted);font-family:'DM Sans',sans-serif;transition:.15s">↺ Clear all</button>
-          <button onclick="calcAF()" style="font-size:11.5px;font-weight:600;padding:5px 16px;border-radius:20px;border:none;background:var(--navy);cursor:pointer;color:#fff;font-family:'DM Sans',sans-serif;transition:.15s">▶ Get recommendation</button>
-        </div>
+    <div class="sub-divider" id="af-drugs">7E — Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-af-wrap ds-static" id="ds-ref"><div class="ds-af-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li style="list-style:none;margin:.35rem 0 .1rem -1.1rem;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">⚡ Rate Control Factors</li><li>Asthma or severe COPD</li><li>Heart failure with reduced EF (HFrEF, EF &lt;40%)</li><li><strong style="color:var(--r)">WPW / pre-excitation on ECG ⛔</strong></li><li>Resting HR &lt;60 bpm (bradycardia)</li><li style="list-style:none;margin:.35rem 0 .1rem -1.1rem;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">💊 Anticoagulation Factors</li><li>Rheumatic mitral stenosis or mechanical heart valve</li><li>CKD — CrCl &lt;30 mL/min (Cockcroft-Gault)</li><li>On warfarin with poor control (TTR &lt;65%)</li><li>Frailty: ≥2 of (age ≥80, weight ≤60kg, creatinine ≥133)</li><li style="list-style:none;margin:.35rem 0 .1rem -1.1rem;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">🎵 Rhythm Control Factors</li><li>Structural heart disease or IHD (previous MI, cardiomyopathy)</li><li>Paroxysmal AF — symptomatic, structurally normal heart</li><li>Currently on amiodarone</li><li>New AF onset &lt;48 hours — cardioversion window open</li></ul></div><div style="padding:1rem 1.25rem"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.5rem">What the guidance says, by situation</div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">⛔ WPW / pre-excitation</div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">WPW / pre-excitation on ECG:</em> <div style="background:#b91c1c;color:#fff;border-radius:var(--rad-sm);padding:.65rem .9rem;margin-bottom:.75rem;font-size:12px;font-weight:700;line-height:1.5">⛔ WPW DETECTED — ALL AV nodal drugs (digoxin, verapamil, diltiazem, beta-blockers, adenosine) are ABSOLUTELY CONTRAINDICATED → risk of VF and cardiac arrest. Call 999 if haemodynamically unstable.</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">⚡ Rate Control</div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">WPW / pre-excitation on ECG:</em> 
+      <div style="background:var(--r-bg);border:2px solid var(--r-bd);border-radius:var(--rad-sm);padding:.65rem .85rem;margin-bottom:.5rem">
+        <div style="font-size:12px;font-weight:700;color:var(--r);margin-bottom:.25rem">⛔ WPW DETECTED — ALL AV nodal drugs CONTRAINDICATED</div>
+        <div style="font-size:12px;color:#7f1d1d;line-height:1.5">DO NOT give digoxin, verapamil, diltiazem, beta-blockers, or adenosine. These accelerate conduction via accessory pathway → VF. Call 999 if unstable. Urgent electrophysiology referral for ablation.</div>
       </div>
-      <div id="af-result" class="ds-af-result">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.5rem">Medication Recommendation</div>
-        <div id="af-output">
-          <div style="display:flex;align-items:center;gap:10px;padding:.65rem .9rem;background:var(--white);border:1px solid var(--line);border-radius:var(--rad-sm)">
-            <span style="font-size:1.4rem">☑️</span>
-            <span style="font-size:12.5px;color:var(--muted)">Select patient characteristics above and press <strong>Get recommendation</strong> — or tick any box to see instant results</span>
-          </div>
-        </div>
+      <span class="af-pill af-pill-r">999 if unstable</span>
+      <span class="af-pill af-pill-r">Urgent ablation referral</span></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Heart failure with reduced EF (HFrEF, EF &lt;40%) + Asthma or severe COPD:</em> 
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.5rem .75rem;margin-bottom:.45rem;font-size:12px;color:#78350f">
+        <strong>Complex combination:</strong> both BB (asthma CI) and diltiazem (HFrEF CI) are problematic. Digoxin may be the safest option — specialist advice strongly recommended.
       </div>
-    </div>
+      <span class="af-pill af-pill-a">Digoxin (specialist-guided)</span>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.35rem;line-height:1.45">Monitor K⁺ closely. Target level 0.5–1.0 ng/mL. Avoid if WPW. 6-monthly level + U&Es.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Asthma or severe COPD:</em> 
+      <span class="af-pill af-pill-p">Diltiazem</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">Beta-blocker contraindicated in asthma. Diltiazem 60–360mg/day in divided doses. <strong>Never combine diltiazem + beta-blocker</strong> → heart block risk. Avoid if HFrEF.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Heart failure with reduced EF (HFrEF, EF &lt;40%):</em> 
+      <span class="af-pill af-pill-g">Bisoprolol</span>
+      <span class="af-pill af-pill-a">+ Digoxin (add-on)</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">BB first-line in HFrEF — dual benefit (rate control + cardiac remodelling). <strong>Start only when euvolaemic</strong> (not in acute decompensation). Avoid diltiazem/verapamil — negatively inotropic. Digoxin useful add-on; monitor K⁺ (diuretics lower K⁺ → toxicity).</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Resting HR &lt;60 bpm (bradycardia):</em> 
+      <span class="af-pill af-pill-a">Review current drugs first</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">HR <60 at rest: do NOT start or increase rate-limiting drugs. Identify cause — sick sinus syndrome, drug effect, or intrinsic conduction disease. ECG review. Pacing may be needed if symptomatic bradycardia with AF.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">None of the situations above:</em> 
+      <span class="af-pill af-pill-g">Bisoprolol</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">First-line rate control in most patients. Start 2.5mg OD, titrate to 10mg OD. Target: resting HR <110 bpm (lenient — RACE II trial) or <80 bpm if symptomatic at 110. <strong>Never combine with diltiazem or verapamil</strong> → heart block.</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">💊 Anticoagulation</div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Rheumatic mitral stenosis or mechanical heart valve:</em> 
+      <span class="af-pill af-pill-a">Warfarin only</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">Rheumatic mitral stenosis or mechanical prosthetic valve: <strong>DOACs are contraindicated</strong> — not validated in these populations (RE-ALIGN trial showed dabigatran inferior). Warfarin target INR 2–3 (non-mechanical) or 2.5–3.5 (mechanical mitral valve). Specialist input required.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">CKD — CrCl &lt;30 mL/min (Cockcroft-Gault):</em> 
+      <span class="af-pill af-pill-g">Apixaban (preferred in CKD)</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">CrCl <30 (Cockcroft-Gault, not eGFR): apixaban has least renal clearance — preferred DOAC; check the SPC for severe renal impairment. Standard dose 5mg BD unless dose-reduce criteria met. CrCl <15: consider warfarin instead. Dabigatran contraindicated at CrCl <30 (80% renal clearance). Recalculate CrCl 6-monthly.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">On warfarin with poor control (TTR &lt;65%):</em> 
+      <span class="af-pill af-pill-g">Switch to DOAC now</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">TTR <65% means poor anticoagulation control — patient is at higher stroke AND bleeding risk simultaneously. Switch to apixaban or rivaroxaban. <strong>No bridging needed</strong> — stop warfarin and start the DOAC once the INR is below its product-specific threshold (e.g. apixaban when INR &lt;2; check the SPC).</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Frailty: ≥2 of (age ≥80, weight ≤60kg, creatinine ≥133):</em> 
+      <span class="af-pill af-pill-g">Apixaban 2.5mg BD</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">≥2 of: age ≥80, weight ≤60kg, creatinine ≥133 µmol/L → <strong>reduced-dose apixaban 2.5mg BD</strong> (not standard 5mg BD). Prevents over-anticoagulation and excess bleeding in frail elderly. Reassess dose criteria at annual review — weight and renal function can change.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">None of the situations above:</em> 
+      <span class="af-pill af-pill-g">DOAC — Apixaban or Rivaroxaban</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">Standard first-line anticoagulation for non-valvular AF. <strong>Apixaban 5mg BD</strong> (twice daily — adherence challenge but lowest bleed risk) or <strong>Rivaroxaban 20mg OD</strong> (once daily with evening meal). Check eGFR + FBC at baseline and annually. <strong>Aspirin is NOT an alternative</strong> — does not prevent AF-related stroke.</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">🎵 Rhythm Control</div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">WPW / pre-excitation on ECG:</em> 
+      <span class="af-pill af-pill-r">Urgent ablation referral</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">WPW: catheter ablation of accessory pathway is definitive treatment — curative in >95% of cases. Drug therapy is limited and dangerous (AV nodal drugs contraindicated). Until ablation: IV procainamide or flecainide under specialist guidance if haemodynamically stable.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Structural heart disease or IHD (previous MI, cardiomyopathy):</em> 
+      <span class="af-pill af-pill-a">Amiodarone only (specialist)</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45"><strong>Flecainide and propafenone are ABSOLUTELY CONTRAINDICATED</strong> in structural heart disease or IHD — pro-arrhythmic in damaged myocardium → VT/VF (CAST trial). Only amiodarone is safe for rhythm control. Initiate with specialist input. <strong>6-monthly monitoring: TFTs + LFTs + CXR mandatory.</strong></div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Currently on amiodarone:</em> 
+      <span class="af-pill af-pill-a">Continue amiodarone + monitor</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">On amiodarone: mandatory 6-monthly TFTs + LFTs + CXR. Monitor for: thyroid disorders (both hypo AND hyperthyroidism), liver toxicity (↑ ALT), pulmonary toxicity (new cough/dyspnoea → CXR), corneal microdeposits (usually asymptomatic), photosensitivity (high-factor sunscreen). Very long half-life — effects persist for months after stopping.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">New AF onset &lt;48 hours — cardioversion window open:</em> 
+      <span class="af-pill af-pill-b">Cardioversion ± anticoagulation</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">New AF <48h: <strong>anticoagulate now</strong> with DOAC or heparin. Pharmacological cardioversion (flecainide 300mg if no structural disease) or DC cardioversion can be attempted. If <48h confirmed AND echo excludes LV thrombus: cardioversion without 3-week prior anticoagulation is acceptable. <strong>Anticoagulate for ≥4 weeks post-cardioversion</strong> regardless of CHA₂DS₂-VASc (AF may recur silently).</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Paroxysmal AF — symptomatic, structurally normal heart:</em> 
+      <span class="af-pill af-pill-b">Flecainide pill-in-pocket or ablation</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">Paroxysmal AF in <strong>structurally normal heart</strong>: flecainide 200–300mg as pill-in-pocket self-treatment (only after confirming patient can use this safely, and a rate-limiting drug is also taken). Or refer for catheter ablation — 60–80% success for paroxysmal AF. <strong>Anticoagulation based on CHA₂DS₂-VASc regardless</strong> of rhythm control strategy.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">None of the situations above:</em> 
+      <span class="af-pill af-pill-t">Rate control preferred initially</span>
+      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">In most persistent/permanent AF, rate control is as effective as rhythm control for quality of life and outcomes (AFFIRM trial). Offer rhythm control (cardioversion or ablation) if: symptomatic despite adequate rate control, or patient preference. <strong>EAST-AFNET 4</strong>: early rhythm control within 1 year of diagnosis may reduce CV outcomes in selected patients.</div></div></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
 
     <div class="sub-divider">7F — Drug reference cards: rate control · rhythm control · anticoagulation</div>
@@ -2095,134 +2095,9 @@ function toggleActor(){
   i.textContent=b.classList.contains('open')?'▲ hide':'▼ show';
 }
 
-function calcAF(){
-  const asthma    = document.getElementById('af-asthma').checked;
-  const hfref     = document.getElementById('af-hfref').checked;
-  const wpw       = document.getElementById('af-wpw').checked;
-  const brady     = document.getElementById('af-brady').checked;
-  const valvular  = document.getElementById('af-valvular').checked;
-  const ckd       = document.getElementById('af-ckd').checked;
-  const labile    = document.getElementById('af-labile').checked;
-  const elderly   = document.getElementById('af-elderly').checked;
-  const structural= document.getElementById('af-structural').checked;
-  const parox     = document.getElementById('af-parox').checked;
-  const amio      = document.getElementById('af-amio').checked;
-  const new48     = document.getElementById('af-new48').checked;
+/* calcAF(): interactive drug selector removed Oct 2026 (Route 1) — its guidance is shown as static text */
 
-  // ── RATE CONTROL ────────────────────────────────────────────────────────────
-  let rateHTML = '';
-  if (wpw) {
-    rateHTML = `
-      <div style="background:var(--r-bg);border:2px solid var(--r-bd);border-radius:var(--rad-sm);padding:.65rem .85rem;margin-bottom:.5rem">
-        <div style="font-size:12px;font-weight:700;color:var(--r);margin-bottom:.25rem">⛔ WPW DETECTED — ALL AV nodal drugs CONTRAINDICATED</div>
-        <div style="font-size:12px;color:#7f1d1d;line-height:1.5">DO NOT give digoxin, verapamil, diltiazem, beta-blockers, or adenosine. These accelerate conduction via accessory pathway → VF. Call 999 if unstable. Urgent electrophysiology referral for ablation.</div>
-      </div>
-      <span class="af-pill af-pill-r">999 if unstable</span>
-      <span class="af-pill af-pill-r">Urgent ablation referral</span>`;
-  } else if (hfref && asthma) {
-    rateHTML = `
-      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.5rem .75rem;margin-bottom:.45rem;font-size:12px;color:#78350f">
-        <strong>Complex combination:</strong> both BB (asthma CI) and diltiazem (HFrEF CI) are problematic. Digoxin may be the safest option — specialist advice strongly recommended.
-      </div>
-      <span class="af-pill af-pill-a">Digoxin (specialist-guided)</span>
-      <div style="font-size:11.5px;color:var(--muted);margin-top:.35rem;line-height:1.45">Monitor K⁺ closely. Target level 0.5–1.0 ng/mL. Avoid if WPW. 6-monthly level + U&Es.</div>`;
-  } else if (asthma) {
-    rateHTML = `
-      <span class="af-pill af-pill-p">Diltiazem</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">Beta-blocker contraindicated in asthma. Diltiazem 60–360mg/day in divided doses. <strong>Never combine diltiazem + beta-blocker</strong> → heart block risk. Avoid if HFrEF.</div>`;
-  } else if (hfref) {
-    rateHTML = `
-      <span class="af-pill af-pill-g">Bisoprolol</span>
-      <span class="af-pill af-pill-a">+ Digoxin (add-on)</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">BB first-line in HFrEF — dual benefit (rate control + cardiac remodelling). <strong>Start only when euvolaemic</strong> (not in acute decompensation). Avoid diltiazem/verapamil — negatively inotropic. Digoxin useful add-on; monitor K⁺ (diuretics lower K⁺ → toxicity).</div>`;
-  } else if (brady) {
-    rateHTML = `
-      <span class="af-pill af-pill-a">Review current drugs first</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">HR <60 at rest: do NOT start or increase rate-limiting drugs. Identify cause — sick sinus syndrome, drug effect, or intrinsic conduction disease. ECG review. Pacing may be needed if symptomatic bradycardia with AF.</div>`;
-  } else {
-    rateHTML = `
-      <span class="af-pill af-pill-g">Bisoprolol</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">First-line rate control in most patients. Start 2.5mg OD, titrate to 10mg OD. Target: resting HR <110 bpm (lenient — RACE II trial) or <80 bpm if symptomatic at 110. <strong>Never combine with diltiazem or verapamil</strong> → heart block.</div>`;
-  }
-
-  // ── ANTICOAGULATION ──────────────────────────────────────────────────────────
-  let anticoagHTML = '';
-  if (valvular) {
-    anticoagHTML = `
-      <span class="af-pill af-pill-a">Warfarin only</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">Rheumatic mitral stenosis or mechanical prosthetic valve: <strong>DOACs are contraindicated</strong> — not validated in these populations (RE-ALIGN trial showed dabigatran inferior). Warfarin target INR 2–3 (non-mechanical) or 2.5–3.5 (mechanical mitral valve). Specialist input required.</div>`;
-  } else if (ckd) {
-    anticoagHTML = `
-      <span class="af-pill af-pill-g">Apixaban (preferred in CKD)</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">CrCl <30 (Cockcroft-Gault, not eGFR): apixaban has least renal clearance — preferred DOAC; check the SPC for severe renal impairment. Standard dose 5mg BD unless dose-reduce criteria met. CrCl <15: consider warfarin instead. Dabigatran contraindicated at CrCl <30 (80% renal clearance). Recalculate CrCl 6-monthly.</div>`;
-  } else if (labile) {
-    anticoagHTML = `
-      <span class="af-pill af-pill-g">Switch to DOAC now</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">TTR <65% means poor anticoagulation control — patient is at higher stroke AND bleeding risk simultaneously. Switch to apixaban or rivaroxaban. <strong>No bridging needed</strong> — stop warfarin and start the DOAC once the INR is below its product-specific threshold (e.g. apixaban when INR &lt;2; check the SPC).</div>`;
-  } else if (elderly) {
-    anticoagHTML = `
-      <span class="af-pill af-pill-g">Apixaban 2.5mg BD</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">≥2 of: age ≥80, weight ≤60kg, creatinine ≥133 µmol/L → <strong>reduced-dose apixaban 2.5mg BD</strong> (not standard 5mg BD). Prevents over-anticoagulation and excess bleeding in frail elderly. Reassess dose criteria at annual review — weight and renal function can change.</div>`;
-  } else {
-    anticoagHTML = `
-      <span class="af-pill af-pill-g">DOAC — Apixaban or Rivaroxaban</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">Standard first-line anticoagulation for non-valvular AF. <strong>Apixaban 5mg BD</strong> (twice daily — adherence challenge but lowest bleed risk) or <strong>Rivaroxaban 20mg OD</strong> (once daily with evening meal). Check eGFR + FBC at baseline and annually. <strong>Aspirin is NOT an alternative</strong> — does not prevent AF-related stroke.</div>`;
-  }
-
-  // ── RHYTHM CONTROL ──────────────────────────────────────────────────────────
-  let rhythmHTML = '';
-  if (wpw) {
-    rhythmHTML = `
-      <span class="af-pill af-pill-r">Urgent ablation referral</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">WPW: catheter ablation of accessory pathway is definitive treatment — curative in >95% of cases. Drug therapy is limited and dangerous (AV nodal drugs contraindicated). Until ablation: IV procainamide or flecainide under specialist guidance if haemodynamically stable.</div>`;
-  } else if (structural) {
-    rhythmHTML = `
-      <span class="af-pill af-pill-a">Amiodarone only (specialist)</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45"><strong>Flecainide and propafenone are ABSOLUTELY CONTRAINDICATED</strong> in structural heart disease or IHD — pro-arrhythmic in damaged myocardium → VT/VF (CAST trial). Only amiodarone is safe for rhythm control. Initiate with specialist input. <strong>6-monthly monitoring: TFTs + LFTs + CXR mandatory.</strong></div>`;
-  } else if (amio) {
-    rhythmHTML = `
-      <span class="af-pill af-pill-a">Continue amiodarone + monitor</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">On amiodarone: mandatory 6-monthly TFTs + LFTs + CXR. Monitor for: thyroid disorders (both hypo AND hyperthyroidism), liver toxicity (↑ ALT), pulmonary toxicity (new cough/dyspnoea → CXR), corneal microdeposits (usually asymptomatic), photosensitivity (high-factor sunscreen). Very long half-life — effects persist for months after stopping.</div>`;
-  } else if (new48) {
-    rhythmHTML = `
-      <span class="af-pill af-pill-b">Cardioversion ± anticoagulation</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">New AF <48h: <strong>anticoagulate now</strong> with DOAC or heparin. Pharmacological cardioversion (flecainide 300mg if no structural disease) or DC cardioversion can be attempted. If <48h confirmed AND echo excludes LV thrombus: cardioversion without 3-week prior anticoagulation is acceptable. <strong>Anticoagulate for ≥4 weeks post-cardioversion</strong> regardless of CHA₂DS₂-VASc (AF may recur silently).</div>`;
-  } else if (parox) {
-    rhythmHTML = `
-      <span class="af-pill af-pill-b">Flecainide pill-in-pocket or ablation</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">Paroxysmal AF in <strong>structurally normal heart</strong>: flecainide 200–300mg as pill-in-pocket self-treatment (only after confirming patient can use this safely, and a rate-limiting drug is also taken). Or refer for catheter ablation — 60–80% success for paroxysmal AF. <strong>Anticoagulation based on CHA₂DS₂-VASc regardless</strong> of rhythm control strategy.</div>`;
-  } else {
-    rhythmHTML = `
-      <span class="af-pill af-pill-t">Rate control preferred initially</span>
-      <div style="font-size:11.5px;color:var(--ink);margin-top:.35rem;line-height:1.45">In most persistent/permanent AF, rate control is as effective as rhythm control for quality of life and outcomes (AFFIRM trial). Offer rhythm control (cardioversion or ablation) if: symptomatic despite adequate rate control, or patient preference. <strong>EAST-AFNET 4</strong>: early rhythm control within 1 year of diagnosis may reduce CV outcomes in selected patients.</div>`;
-  }
-
-  // ── BUILD OUTPUT ─────────────────────────────────────────────────────────────
-  const wpwWarn = wpw ? `<div style="background:#b91c1c;color:#fff;border-radius:var(--rad-sm);padding:.65rem .9rem;margin-bottom:.75rem;font-size:12px;font-weight:700;line-height:1.5">⛔ WPW DETECTED — ALL AV nodal drugs (digoxin, verapamil, diltiazem, beta-blockers, adenosine) are ABSOLUTELY CONTRAINDICATED → risk of VF and cardiac arrest. Call 999 if haemodynamically unstable.</div>` : '';
-
-  document.getElementById('af-output').innerHTML = wpwWarn +
-    `<div class="af-rec-grid">
-      <div class="af-rec-card rate-card">
-        <h5>⚡ Rate Control</h5>
-        ${rateHTML}
-      </div>
-      <div class="af-rec-card anticoag-card">
-        <h5>💊 Anticoagulation</h5>
-        ${anticoagHTML}
-      </div>
-      <div class="af-rec-card rhythm-card">
-        <h5>🎵 Rhythm Control</h5>
-        ${rhythmHTML}
-      </div>
-    </div>`;
-}
-
-function clearAFSelector(){
-  ['af-asthma','af-hfref','af-wpw','af-brady','af-valvular','af-ckd','af-labile','af-elderly','af-structural','af-parox','af-amio','af-new48'].forEach(id=>{
-    document.getElementById(id).checked=false;
-  });
-  document.getElementById('af-output').innerHTML='<div style="display:flex;align-items:center;gap:10px;padding:.65rem .9rem;background:var(--white);border:1px solid var(--line);border-radius:var(--rad-sm)"><span style="font-size:1.4rem">☑️</span><span style="font-size:12.5px;color:var(--muted)">Select patient characteristics above and press <strong>Get recommendation</strong> — or tick any box to see instant results</span></div>';
-}
+/* clearAFSelector(): interactive drug selector removed Oct 2026 (Route 1) — its guidance is shown as static text */
 
 function calcScore(){
   var total=0, tasks=0, ro=0, gs=0;

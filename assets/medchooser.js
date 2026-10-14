@@ -1,9 +1,18 @@
 /* ============================================
-   Reasoning GP — Medication Chooser engine
+   Reasoning GP — Medication options by condition
+   (formerly "Medication Chooser")
    Topic-agnostic component, mounts into any host
    ============================================
 
-   USAGE
+   OWNER DECISION, OCTOBER 2026 — reference, not a medical device.
+   This component no longer takes patient factors and no longer
+   re-ranks or re-tiers anything for a patient. For each condition it
+   shows STATIC guideline cards: the options in the order the topic
+   file lists them (the guideline's own order), each with its step,
+   source, side effects, monitoring and the guideline's own cautions
+   and conditions, written out as a fixed list.
+
+   USAGE (unchanged, so every page that embeds it keeps working)
    -----
    <link rel="stylesheet" href="assets/medchooser.css" />
    <div data-medchooser="hypertension"></div>
@@ -13,24 +22,30 @@
    Or programmatically:
    MedChooser.mount(elem, 'hypertension');
 
-   TOPIC DATA SHAPE
+   TOPIC DATA SHAPE (unchanged — assets/meds/*.js)
    ----------------
    MedChooser.register('hypertension', {
      title, subtitle, guideline,
-     factors: [{ group, id, label, note, numeric?: {min,max,step,unit,default} }, ...],
-     drugs: [{
-       id, name, examples, step,
-       source, sourceUrl,
-       sideEffects, monitor, counsel,
-       detail: { interactions, dose, key },          // optional, shown in expand
-       evaluate(f) -> { tier: 'preferred'|'acceptable'|'avoid', reasons: [{kind:'good'|'bad'|'neutral', text}] }
-     }, ...],
+     factors: [{ group, id, label, note, options?, numeric? }, ...],
+     drugs: [{ id, name, examples, step, source, sourceUrl,
+               sideEffects, monitor, counsel, detail:{...},
+               evaluate(f) -> { tier, reasons:[{kind, text}] } }, ...],
      sources: [{ label, url }, ...],
-     flags?: (f) => [{ tone:'red'|'amber', text }],  // global safety flags
+     flags?: (f) => [{ tone, text }],
    });
+
+   How the fixed "cautions and conditions" list is built: each drug's
+   own evaluate() rules are read ONE FACTOR AT A TIME, with no patient
+   attached, and every statement a factor adds is written out next to
+   that factor's name ("Avoid — eGFR <30: …"). The reader sees all of
+   them at once; nothing is selected, hidden or re-ordered for anyone.
    ============================================ */
 (function(){
   const TOPICS = {};
+
+  const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  /* interface hints written for the old interactive tool ("switch the decision toggle") are not guidance */
+  const UI_HINT = /toggle|switch the decision/i;
 
   const MedChooser = {
     register(name, data){ TOPICS[name] = data; this._notify(name); },
@@ -48,7 +63,7 @@
       else this._pending.push({name, cb});
     },
     mount(el, topicName){
-      const inst = new ChooserInstance(el, topicName);
+      const inst = new StaticCards(el, topicName);
       this._whenReady(topicName, data => inst.setTopic(topicName, data));
       return inst;
     },
@@ -59,87 +74,116 @@
         const t = el.dataset.medchooser;
         if (t) this.mount(el, t);
       });
-    }
+    },
+    /* exposed for checking: the fixed list of cautions for one drug */
+    cautions(topic, drug){ return cautionsFor(topic, drug); }
   };
 
-  class ChooserInstance {
+  /* ---------- the fixed cautions list (no patient attached) ---------- */
+  function run(d, f){
+    try { const r = d.evaluate ? d.evaluate(f) : null; return r && r.tier ? r : { tier:'acceptable', reasons:(r && r.reasons) || [] }; }
+    catch(e){ return null; }
+  }
+  function cautionsFor(topic, d){
+    if (!d.evaluate) return [];
+    const base = run(d, {});
+    if (!base) return [];
+    const baseTexts = new Set((base.reasons || []).map(r => r.text));
+    const out = [], seen = new Set();
+    const consider = (label, f) => {
+      const r = run(d, f);
+      if (!r) return;
+      const texts = (r.reasons || []).filter(x => x && x.text && !baseTexts.has(x.text) && !UI_HINT.test(x.text));
+      if (!texts.length) return;
+      let kind;
+      if (r.tier === 'avoid') kind = 'avoid';
+      else if (texts.some(x => x.kind === 'bad')) kind = 'caution';
+      else if (texts.some(x => x.kind === 'good')) kind = 'favoured';
+      else kind = 'note';
+      const text = texts.map(x => x.text).join(' · ');
+      const key = label + '|' + text;
+      if (seen.has(key)) return;
+      seen.add(key);
+      out.push({ kind, label, text });
+    };
+    (topic.factors || []).forEach(f => {
+      if (f.numeric) return;                       /* numeric thresholds are stated in the card text itself */
+      if (f.options) { f.options.forEach(o => consider(f.label + ': ' + o.label, { [f.id]: o.value })); return; }
+      consider(f.label, { [f.id]: true });
+    });
+    const rank = { avoid:0, caution:1, favoured:2, note:3 };
+    return out.sort((a, b) => rank[a.kind] - rank[b.kind]);
+  }
+  function safetyPoints(topic){
+    if (typeof topic.flags !== 'function') return [];
+    const out = [], seen = new Set();
+    let always = [];
+    try { always = topic.flags({}) || []; } catch(e){ always = []; }
+    always.forEach(x => {
+      if (!x || !x.text || UI_HINT.test(x.text) || seen.has(x.text)) return;
+      seen.add(x.text);
+      out.push({ tone:x.tone || 'amber', label:'', text:x.text });
+    });
+    (topic.factors || []).forEach(f => {
+      if (f.numeric) return;
+      const vals = f.options ? f.options.map(o => ({ v:o.value, l:f.label + ': ' + o.label })) : [{ v:true, l:f.label }];
+      vals.forEach(({ v, l }) => {
+        let fl = [];
+        try { fl = topic.flags({ [f.id]: v }) || []; } catch(e){ fl = []; }
+        fl.forEach(x => {
+          if (!x || !x.text || UI_HINT.test(x.text) || seen.has(x.text)) return;
+          seen.add(x.text);
+          out.push({ tone:x.tone || 'amber', label:l, text:x.text });
+        });
+      });
+    });
+    return out;
+  }
+  function cleanSubtitle(s){
+    return String(s || '').replace(/\s*Tick the [^.]*\./g, '').trim();
+  }
+
+  const KIND_LABEL = { avoid:'Avoid', caution:'Caution', favoured:'Favoured', note:'Note' };
+
+  class StaticCards {
     constructor(host, topicName){
       this.host = host;
       this.topicName = topicName;
-      this.state = {
-        factors: {},        // id -> true | numeric value
-        mode: 'clinic',     // clinic | sca
-        reasoning: false,
-        topics: null,       // populated for topic-picker pages
-      };
-      // Loading skeleton
-      host.classList.add('mc');
-      host.innerHTML = `<div class="mc-results"><div class="mc-tier-empty">Loading medication data…</div></div>`;
+      host.classList.add('mc', 'mc-static');
+      host.innerHTML = `<div class="mc-results"><div class="mc-tier-empty">Loading medication options…</div></div>`;
     }
 
     setTopic(topicName, data){
       this.topicName = topicName;
       this.topic = data;
-      this.state.factors = {};
-      // Pre-fill numeric defaults
-      (data.factors||[]).forEach(f => {
-        if (f.numeric && f.numeric.default !== undefined) this.state.factors[f.id] = f.numeric.default;
-      });
       this.render();
     }
 
-    setMode(m){ this.state.mode = m; this.render(); }
-    toggleFactor(id, val){
-      if (val === undefined) {
-        if (this.state.factors[id]) delete this.state.factors[id];
-        else this.state.factors[id] = true;
-      } else if (val === false || val === null) {
-        delete this.state.factors[id];
-      } else {
-        this.state.factors[id] = val;
-      }
-      this.renderResults();
-    }
-    resetFactors(){
-      this.state.factors = {};
-      (this.topic.factors||[]).forEach(f => {
-        if (f.numeric && f.numeric.default !== undefined) this.state.factors[f.id] = f.numeric.default;
-      });
-      this.render();
-    }
-    toggleReasoning(v){ this.state.reasoning = v; this.renderResults(); }
-
-    // ---------- rendering ----------
     render(){
       if (!this.topic) return;
       const t = this.topic;
-      this.host.className = 'mc' + (this.state.mode === 'sca' ? ' is-sca' : '');
+      const sub = cleanSubtitle(t.subtitle);
+      const flags = safetyPoints(t);
+      const drugs = t.drugs || [];
 
-      const topicPicker = this.host.dataset.topicPicker === '1'
-        ? this.renderTopicPicker() : '';
-
+      this.host.className = 'mc mc-static';
       this.host.innerHTML = `
         <div class="mc-head">
           <div class="mc-head-l">
-            <div class="mc-eyebrow">Medication Chooser</div>
+            <div class="mc-eyebrow">Medication options by condition</div>
             <div class="mc-title">${t.title}</div>
-            ${t.subtitle ? `<div class="mc-sub">${t.subtitle}</div>` : ''}
+            ${sub ? `<div class="mc-sub">${sub}</div>` : ''}
             ${t.guideline ? `<div class="mc-source-pill">${t.guideline}</div>` : ''}
           </div>
-          <div class="mc-head-r">
-            <div class="mc-mode" role="tablist" aria-label="Display mode">
-              <button data-mode="clinic" class="${this.state.mode==='clinic'?'active':''}">Clinic detail</button>
-              <button data-mode="sca" class="${this.state.mode==='sca'?'active':''}">SCA view</button>
-            </div>
-            <div class="mc-toggles">
-              <label><input type="checkbox" data-toggle="reasoning" ${this.state.reasoning?'checked':''}/> Show reasoning</label>
-            </div>
-          </div>
         </div>
-        ${topicPicker}
-        <div class="mc-body">
-          <aside class="mc-factors" aria-label="Patient factors"></aside>
-          <div class="mc-results"></div>
+        <p class="mc-static-note">The options below are listed in the order the guideline gives them, with the guideline’s own cautions and conditions. Nothing here is ranked or chosen for a patient — check the cited source, the BNF or SPC, and the patient in front of you.</p>
+        ${flags.length ? `
+          <section class="mc-safety" aria-label="Safety points in the guidance">
+            <h4>Safety points in the guidance</h4>
+            <ul>${flags.map(f => `<li class="mc-flag flag-${esc(f.tone)}">${f.label ? `<b>${f.label}:</b> ` : ''}${f.text}</li>`).join('')}</ul>
+          </section>` : ''}
+        <div class="mc-static-list">
+          ${drugs.map((d, i) => this.renderCard(d, i)).join('')}
         </div>
         <footer class="mc-footer">
           <div class="mc-footer-l">
@@ -149,207 +193,20 @@
             </div>
           </div>
           <div class="mc-disclaimer">
-            <strong>Educational use only.</strong> Always verify against the live NICE and BNF before prescribing. Recommendations are illustrative reasoning aids, not clinical advice.
+            <strong>Reference only.</strong> A summary of what the cited guidance says about each option. Always verify against the live guideline, the BNF/SPC and your local formulary before prescribing; doses are the BNF’s.
           </div>
         </footer>
       `;
-
-      // Wire mode + toggles
-      this.host.querySelectorAll('.mc-mode button').forEach(btn => {
-        btn.addEventListener('click', () => this.setMode(btn.dataset.mode));
-      });
-      this.host.querySelector('[data-toggle="reasoning"]').addEventListener('change', e => {
-        this.toggleReasoning(e.target.checked);
-      });
-
-      // Topic picker wiring
-      this.host.querySelectorAll('.mc-topic-pill').forEach(b => {
-        b.addEventListener('click', () => {
-          const t = b.dataset.topic;
-          if (TOPICS[t]) this.setTopic(t, TOPICS[t]);
-        });
-      });
-
-      this.renderFactors();
-      this.renderResults();
     }
 
-    renderTopicPicker(){
-      const all = MedChooser.list();
-      return `
-        <div class="mc-topic-picker">
-          <span class="mc-topic-picker-label">Topic</span>
-          <div class="mc-topic-pills">
-            ${all.map(t => `<button class="mc-topic-pill ${t===this.topicName?'active':''}" data-topic="${t}">${TOPICS[t].title}</button>`).join('')}
-          </div>
-        </div>
-      `;
-    }
-
-    renderFactors(){
-      const panel = this.host.querySelector('.mc-factors');
-      if (!panel) return;
-      const factors = this.topic.factors || [];
-
-      // Group factors
-      const groups = {};
-      const order = [];
-      factors.forEach(f => {
-        const g = f.group || 'Other';
-        if (!groups[g]) { groups[g] = []; order.push(g); }
-        groups[g].push(f);
-      });
-
-      panel.innerHTML = `
-        <div class="mc-factors-head">
-          <h4>Patient factors</h4>
-          <button class="mc-reset" type="button">Reset</button>
-        </div>
-        ${order.map(g => `
-          <div class="mc-fgroup">
-            <div class="mc-fgroup-t">${g}</div>
-            <div class="mc-fopts">
-              ${groups[g].map(f => this.renderFactor(f)).join('')}
-            </div>
-          </div>
-        `).join('')}
-      `;
-
-      panel.querySelector('.mc-reset').addEventListener('click', () => this.resetFactors());
-
-      panel.querySelectorAll('input[type="checkbox"][data-factor]').forEach(cb => {
-        cb.addEventListener('change', e => this.toggleFactor(e.target.dataset.factor));
-      });
-      panel.querySelectorAll('input[type="number"][data-factor]').forEach(inp => {
-        inp.addEventListener('input', e => {
-          const v = e.target.value === '' ? null : Number(e.target.value);
-          this.toggleFactor(e.target.dataset.factor, v);
-        });
-      });
-      panel.querySelectorAll('select[data-factor]').forEach(sel => {
-        sel.addEventListener('change', e => {
-          const v = e.target.value === '' ? null : e.target.value;
-          this.toggleFactor(e.target.dataset.factor, v);
-        });
-      });
-    }
-
-    renderFactor(f){
-      if (f.numeric) {
-        const v = this.state.factors[f.id] ?? '';
-        return `
-          <div class="mc-fopt" style="cursor:default">
-            <span class="mc-fopt-lbl">
-              <b style="font-weight:600">${f.label}</b>
-              ${f.note ? `<span class="mc-fopt-note">${f.note}</span>` : ''}
-            </span>
-          </div>
-          <div class="mc-fnum">
-            <input type="number" data-factor="${f.id}" value="${v}"
-              min="${f.numeric.min ?? ''}" max="${f.numeric.max ?? ''}" step="${f.numeric.step ?? 1}"
-              style="width:70px"/>
-            ${f.numeric.unit ? `<span style="font-size:11px;color:var(--muted)">${f.numeric.unit}</span>` : ''}
-          </div>
-        `;
-      }
-      if (f.options) {
-        const v = this.state.factors[f.id] ?? '';
-        return `
-          <label class="mc-fopt" style="cursor:default">
-            <span class="mc-fopt-lbl">
-              <b style="font-weight:600">${f.label}</b>
-              ${f.note ? `<span class="mc-fopt-note">${f.note}</span>` : ''}
-            </span>
-          </label>
-          <div class="mc-fnum">
-            <select data-factor="${f.id}">
-              <option value="">—</option>
-              ${f.options.map(o => `<option value="${o.value}" ${v===o.value?'selected':''}>${o.label}</option>`).join('')}
-            </select>
-          </div>
-        `;
-      }
-      const checked = !!this.state.factors[f.id];
-      return `
-        <label class="mc-fopt">
-          <input type="checkbox" data-factor="${f.id}" ${checked?'checked':''}/>
-          <span class="mc-fopt-lbl">
-            ${f.label}
-            ${f.note ? `<span class="mc-fopt-note">${f.note}</span>` : ''}
-          </span>
-        </label>
-      `;
-    }
-
-    renderResults(){
-      const panel = this.host.querySelector('.mc-results');
-      if (!panel) return;
-      const drugs = this.topic.drugs || [];
-      const f = this.state.factors;
-
-      const tiers = { preferred: [], acceptable: [], avoid: [] };
-      drugs.forEach(d => {
-        let res;
-        try {
-          res = d.evaluate ? d.evaluate(f) : { tier: 'acceptable', reasons: [] };
-        } catch(e) {
-          console.error('evaluate error', d.id, e);
-          res = { tier: 'acceptable', reasons: [] };
-        }
-        if (!res || !res.tier) res = { tier: 'acceptable', reasons: res?.reasons || [] };
-        tiers[res.tier] = tiers[res.tier] || [];
-        tiers[res.tier].push({ drug: d, reasons: res.reasons || [] });
-      });
-
-      const activeCount = Object.keys(f).filter(k => f[k] && f[k] !== false).length;
-      const globalFlags = (this.topic.flags ? this.topic.flags(f) : []) || [];
-
-      panel.innerHTML = `
-        <div class="mc-summary">
-          <div class="mc-summary-l">
-            <strong>${activeCount}</strong> factor${activeCount===1?'':'s'} selected ·
-            <strong style="color:var(--mc-pref)">${tiers.preferred.length}</strong> preferred ·
-            <strong style="color:var(--mc-ok)">${tiers.acceptable.length}</strong> acceptable ·
-            <strong style="color:var(--mc-avoid)">${tiers.avoid.length}</strong> avoid
-          </div>
-          <div class="mc-summary-flags">
-            ${globalFlags.map(fl => `<span class="mc-flag flag-${fl.tone}">${fl.text}</span>`).join('')}
-          </div>
-        </div>
-        <div class="mc-tiers">
-          ${this.renderTier('preferred', '✓ Preferred', tiers.preferred)}
-          ${this.renderTier('acceptable', '○ Acceptable', tiers.acceptable)}
-          ${this.renderTier('avoid', '✗ Avoid', tiers.avoid)}
-        </div>
-      `;
-    }
-
-    renderTier(tier, label, entries){
-      return `
-        <section class="mc-tier t-${tier}">
-          <div class="mc-tier-head">
-            <span class="mc-tier-dot"></span>
-            <span>${label}</span>
-            <span class="mc-tier-count">${entries.length}</span>
-          </div>
-          ${entries.length === 0
-            ? `<div class="mc-tier-empty">No drugs in this tier for the current profile.</div>`
-            : entries.map(e => this.renderCard(e.drug, e.reasons, tier)).join('')}
-        </section>
-      `;
-    }
-
-    renderCard(d, reasons, tier){
-      const isSca = this.state.mode === 'sca';
-      const showReason = this.state.reasoning && reasons.length > 0;
-
+    renderCard(d, i){
+      const conds = cautionsFor(this.topic, d);
       const meta = `
         <div class="mc-card-meta">
           ${d.sideEffects ? `<span><b>Side effects:</b> ${d.sideEffects}</span>` : ''}
           ${d.monitor ? `<span><b>Monitor:</b> ${d.monitor}</span>` : ''}
         </div>
       `;
-
       const detail = d.detail ? `
         <details>
           <summary>More detail</summary>
@@ -360,42 +217,34 @@
           </div>
         </details>
       ` : '';
-
-      // The headline "rule" line — what makes this drug land in this tier
-      const headline = this.summariseReasons(reasons, tier) || d.rule || '';
+      const condHtml = conds.length ? `
+        <details class="mc-conds">
+          <summary>Cautions and conditions in the guidance (${conds.length})</summary>
+          <ul>
+            ${conds.map(c => `<li class="mc-cond k-${c.kind}"><span class="mc-cond-k">${KIND_LABEL[c.kind]}</span> <b>${c.label}:</b> ${c.text}</li>`).join('')}
+          </ul>
+        </details>
+      ` : '';
+      const src = d.source
+        ? (d.sourceUrl ? `<div class="mc-card-source"><a href="${d.sourceUrl}" target="_blank" rel="noopener noreferrer">${d.source} ↗</a></div>` : `<div class="mc-card-source">${d.source}</div>`)
+        : '';
 
       return `
         <article class="mc-card">
           <div class="mc-card-top">
             <div>
-              <div class="mc-card-name">${d.name}</div>
+              <div class="mc-card-name"><span class="mc-card-n">${i + 1}.</span> ${d.name}</div>
               ${d.examples ? `<div class="mc-card-ex">${d.examples}</div>` : ''}
             </div>
             ${d.step ? `<span class="mc-card-step step-${(d.step+'').replace(/\D/g,'')||'x'}">${d.step}</span>` : ''}
           </div>
-          ${headline ? `<div class="mc-card-rule">${headline}</div>` : ''}
           ${d.counsel ? `<div class="mc-counsel">${d.counsel}</div>` : ''}
-          ${isSca ? '' : meta}
-          ${d.source ? `<div class="mc-card-source">${d.source}</div>` : ''}
-          ${isSca ? '' : detail}
-          ${showReason ? `
-            <div class="mc-reasons">
-              <div class="mc-reasons-t">Why this tier</div>
-              <ul>
-                ${reasons.map(r => `<li class="r-${r.kind||'neutral'}">${r.text}</li>`).join('')}
-              </ul>
-            </div>
-          ` : ''}
+          ${meta}
+          ${src}
+          ${condHtml}
+          ${detail}
         </article>
       `;
-    }
-
-    summariseReasons(reasons, tier){
-      if (!reasons || reasons.length === 0) return '';
-      // Show first "headline" reason matching tier polarity
-      const want = tier === 'avoid' ? 'bad' : 'good';
-      const hit = reasons.find(r => r.kind === want) || reasons[0];
-      return hit ? hit.text : '';
     }
   }
 

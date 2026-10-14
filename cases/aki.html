@@ -410,20 +410,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top"><h3>Select AKI scenario for management guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-aki-stop" onchange="calcDrug()"> STOP nephrotoxics (all AKI &#8212; first action)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-aki-stage1" onchange="calcDrug()"> Stage 1 AKI; clinically stable; community management</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-aki-admit" onchange="calcDrug()"> Stage 2&#8211;3 AKI; hospital admission (Mr. Patel)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-aki-hk" onchange="calcDrug()"> Hyperkalaemia K+ &gt;5.5 &#8212; management</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-aki-recovery" onchange="calcDrug()"> Post-AKI recovery &#8212; medication reinstatement</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-aki-sadman" onchange="calcDrug()"> SADMAN sick-day rules education</label>
-        </div>
-      </div>
-      <div class="ds-result"><div class="ds-result-title">AKI management guidance</div><div id="ds-output"><span style="font-size:12.5px;color:var(--g)">ALL AKI — REVIEW MEDICINES first: NSAIDs and avoidable nephrotoxins (STOP; do not restart); ACEi/ARBs and diuretics (review individually — withhold in hypovolaemia, hypotension or hyperkalaemia; restart by clinical criteria); metformin (HOLD; restart on recovery). Stage 1 stable: oral fluids; repeat bloods 24&#8211;48h; escalation criteria. Stage 2&#8211;3 / haemodynamically compromised (Mr. Patel): hospital admission by ambulance; ECG (K+ 5.9); IV 0.9% NaCl; K+ management; sepsis screen. K+ 6.0–6.4 with AKI: same-day hospital; ECG. K+ 5.5–5.9: consider pseudohyperkalaemia; review drugs; repeat. K+ ≥6.5 or ECG changes: 999; IV calcium gluconate; insulin/dextrose; salbutamol nebulised. Post-AKI: U&amp;E at about 1 week, structured review at 3 months; urine ACR; BP; restart ACEi when stable, euvolaemic and K+ acceptable; check K+ and creatinine 1&#8211;2 weeks after restarting. NSAID contraindication documented permanently. SADMAN education: written leaflet; all SADMAN drugs identified; when to stop; when to seek help; when to restart.</span></div></div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>STOP nephrotoxics (all AKI &#8212; first action)</li><li>Stage 1 AKI; clinically stable; community management</li><li>Stage 2&#8211;3 AKI; hospital admission (Mr. Patel)</li><li>Hyperkalaemia K+ &gt;5.5 &#8212; management</li><li>Post-AKI recovery &#8212; medication reinstatement</li><li>SADMAN sick-day rules education</li></ul></div><div class="ds-result"><div class="ds-result-title">AKI management guidance</div><div><span style="font-size:12.5px;color:var(--g)">ALL AKI — REVIEW MEDICINES first: NSAIDs and avoidable nephrotoxins (STOP; do not restart); ACEi/ARBs and diuretics (review individually — withhold in hypovolaemia, hypotension or hyperkalaemia; restart by clinical criteria); metformin (HOLD; restart on recovery). Stage 1 stable: oral fluids; repeat bloods 24&#8211;48h; escalation criteria. Stage 2&#8211;3 / haemodynamically compromised (Mr. Patel): hospital admission by ambulance; ECG (K+ 5.9); IV 0.9% NaCl; K+ management; sepsis screen. K+ 6.0–6.4 with AKI: same-day hospital; ECG. K+ 5.5–5.9: consider pseudohyperkalaemia; review drugs; repeat. K+ ≥6.5 or ECG changes: 999; IV calcium gluconate; insulin/dextrose; salbutamol nebulised. Post-AKI: U&amp;E at about 1 week, structured review at 3 months; urine ACR; BP; restart ACEi when stable, euvolaemic and K+ acceptable; check K+ and creatinine 1&#8211;2 weeks after restarting. NSAID contraindication documented permanently. SADMAN education: written leaflet; all SADMAN drugs identified; when to stop; when to seek help; when to restart.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -766,12 +754,12 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="dqp-wrap">
       <div class="dqp-hdr">&#128138; Management Quick-Pick</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-aki-stop')">&#9940; Medicine review (all AKI)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-aki-stage1')">&#129001; Stage 1 community</button>
-        <button class="dqp-btn" onclick="showDrug('ds-aki-admit')">&#128308; Stage 2&#8211;3 admit</button>
-        <button class="dqp-btn" onclick="showDrug('ds-aki-hk')">&#9889; Hyperkalaemia</button>
-        <button class="dqp-btn" onclick="showDrug('ds-aki-recovery')">&#128200; Post-AKI recovery</button>
-        <button class="dqp-btn" onclick="showDrug('ds-aki-sadman')">&#128209; SADMAN education</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#9940; Medicine review (all AKI)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129001; Stage 1 community</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128308; Stage 2&#8211;3 admit</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#9889; Hyperkalaemia</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128200; Post-AKI recovery</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128209; SADMAN education</a>
       </div>
     </div>
   </div>

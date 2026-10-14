@@ -511,24 +511,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider" id="drugs">7E — Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select clinical scenario — see drug cards below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-ep-focal" onchange="calcDrug()"> Focal epilepsy</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ep-jme" onchange="calcDrug()"> JME / idiopathic generalised</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ep-absence" onchange="calcDrug()"> Childhood absence epilepsy</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ep-female" onchange="calcDrug()"> Female (childbearing potential)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ep-cocp" onchange="calcDrug()"> On COCP (interaction risk)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ep-status" onchange="calcDrug()"> Status epilepticus / cluster rescue</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">AED guide (specialist initiates; GP monitors)</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Focal: lamotrigine or levetiracetam first-line; carbamazepine third-line (enzyme-inducer; COCP). JME/generalised: specialist choice — valproate restricted under 55 (two-specialist rule; PPP); lamotrigine or levetiracetam; NEVER carbamazepine in JME (worsens). Childhood absence: ethosuximide first-line (NOT lamotrigine or valproate as first choice). Female on COCP: lamotrigine preferred (but COCP reduces levels by 50% — monitor); avoid enzyme-inducers (carbamazepine makes COCP unreliable). Status out-of-hospital: 999 + prescribed rescue medication per individual plan. GP does NOT initiate AEDs — specialist responsibility per NICE NG217.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Focal epilepsy</li><li>JME / idiopathic generalised</li><li>Childhood absence epilepsy</li><li>Female (childbearing potential)</li><li>On COCP (interaction risk)</li><li>Status epilepticus / cluster rescue</li></ul></div><div class="ds-result"><div class="ds-result-title">AED guide (specialist initiates; GP monitors)</div><div><span style="font-size:12.5px;color:var(--g)">Focal: lamotrigine or levetiracetam first-line; carbamazepine third-line (enzyme-inducer; COCP). JME/generalised: specialist choice — valproate restricted under 55 (two-specialist rule; PPP); lamotrigine or levetiracetam; NEVER carbamazepine in JME (worsens). Childhood absence: ethosuximide first-line (NOT lamotrigine or valproate as first choice). Female on COCP: lamotrigine preferred (but COCP reduces levels by 50% — monitor); avoid enzyme-inducers (carbamazepine makes COCP unreliable). Status out-of-hospital: 999 + prescribed rescue medication per individual plan. GP does NOT initiate AEDs — specialist responsibility per NICE NG217.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F — Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">

@@ -491,24 +491,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics &#8212; back pain medication guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-bp-nsaid" onchange="calcDrug()"> NSAIDs appropriate (no contraindication)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-bp-gi" onchange="calcDrug()"> GI risk (age &gt;65; previous ulcer; on aspirin/anticoagulant)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-bp-cv" onchange="calcDrug()"> Cardiovascular risk (hypertension; ischaemic heart disease; cerebrovascular disease)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-bp-chronic" onchange="calcDrug()"> Chronic LBP (&gt;12 weeks; failed NSAIDs and physiotherapy)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-bp-spasm" onchange="calcDrug()"> Acute muscle spasm component</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-bp-renal" onchange="calcDrug()"> Renal impairment or NSAIDs contraindicated</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Back pain medication guidance</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Standard (David): Naproxen 500mg BD with food + omeprazole 20mg OD. 2&#8211;4 week course; reassess. GI risk: COX-2 inhibitor (etoricoxib 60mg OD) + PPI; or celecoxib 200mg OD. CV risk: naproxen preferred (best CV safety among NSAIDs); avoid diclofenac; avoid COX-2 inhibitors if established IHD/CVD. Both GI and CV risk: discuss risk-benefit; paracetamol + codeine may be preferable. Chronic LBP (&gt;12 weeks): no antidepressant for LBP itself (NICE NG59); persistent radicular pain: no neuropathic agent (CG173 ladder does not apply to sciatica) &#8212; MSK/spinal referral; antidepressant only for co-existing depression/anxiety; refer pain service if not settling. Muscle spasm: do not offer benzodiazepines (NICE NG59) &#8212; movement, graded activity, NSAID. NSAIDs contraindicated (renal impairment; active peptic ulcer; severe CV disease): paracetamol 1g QDS + codeine 30mg PRN; or tramadol 50mg QDS (reduce in renal impairment). NOT recommended for LBP: gabapentinoids; strong opioids for chronic LBP; paracetamol alone (NICE NG59).</span></div>
-      </div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>NSAIDs appropriate (no contraindication)</li><li>GI risk (age &gt;65; previous ulcer; on aspirin/anticoagulant)</li><li>Cardiovascular risk (hypertension; ischaemic heart disease; cerebrovascular disease)</li><li>Chronic LBP (&gt;12 weeks; failed NSAIDs and physiotherapy)</li><li>Acute muscle spasm component</li><li>Renal impairment or NSAIDs contraindicated</li></ul></div><div class="ds-result"><div class="ds-result-title">Back pain medication guidance</div><div><span style="font-size:12.5px;color:var(--g)">Standard (David): Naproxen 500mg BD with food + omeprazole 20mg OD. 2&#8211;4 week course; reassess. GI risk: COX-2 inhibitor (etoricoxib 60mg OD) + PPI; or celecoxib 200mg OD. CV risk: naproxen preferred (best CV safety among NSAIDs); avoid diclofenac; avoid COX-2 inhibitors if established IHD/CVD. Both GI and CV risk: discuss risk-benefit; paracetamol + codeine may be preferable. Chronic LBP (&gt;12 weeks): no antidepressant for LBP itself (NICE NG59); persistent radicular pain: no neuropathic agent (CG173 ladder does not apply to sciatica) &#8212; MSK/spinal referral; antidepressant only for co-existing depression/anxiety; refer pain service if not settling. Muscle spasm: do not offer benzodiazepines (NICE NG59) &#8212; movement, graded activity, NSAID. NSAIDs contraindicated (renal impairment; active peptic ulcer; severe CV disease): paracetamol 1g QDS + codeine 30mg PRN; or tramadol 50mg QDS (reduce in renal impairment). NOT recommended for LBP: gabapentinoids; strong opioids for chronic LBP; paracetamol alone (NICE NG59).</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -864,12 +848,12 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="dqp-wrap">
       <div class="dqp-hdr">&#128138; Drug Quick-Pick</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-bp-nsaid')">&#128202; Standard (NSAIDs appropriate)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-bp-gi')">&#128268; High GI risk</button>
-        <button class="dqp-btn" onclick="showDrug('ds-bp-cv')">&#10084; High CV risk</button>
-        <button class="dqp-btn" onclick="showDrug('ds-bp-chronic')">&#128339; Chronic LBP (&gt;12 weeks)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-bp-spasm')">&#9889; Acute muscle spasm</button>
-        <button class="dqp-btn" onclick="showDrug('ds-bp-renal')">&#128268; NSAIDs contraindicated</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128202; Standard (NSAIDs appropriate)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128268; High GI risk</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#10084; High CV risk</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128339; Chronic LBP (&gt;12 weeks)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#9889; Acute muscle spasm</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128268; NSAIDs contraindicated</a>
       </div>
     </div>
   </div>

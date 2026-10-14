@@ -757,27 +757,11 @@ body{background:var(--bg, #f6f2e9) !important}
     </div>
 
     <!-- 7E -->
-    <div class="sub-divider" id="drugs">7E — Medication selection tool — choose patient characteristics for tailored drug recommendations</div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
     <!-- NOTE: calcDrug() in script.js is HTN-specific. These PAD checkboxes use non-overlapping IDs
          and the output div provides static guidance. A PAD-specific calcDrug() replacement
          can be written for full interactivity. Drug cards in 7F are the primary reference. -->
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — see drug cards and guidance below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-pad-dm" onchange="calcDrug()"> Diabetes mellitus (ABPI may be unreliable)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pad-afib" onchange="calcDrug()"> Atrial fibrillation confirmed</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pad-clti" onchange="calcDrug()"> Critical limb-threatening ischaemia (rest pain / tissue loss)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pad-smoker" onchange="calcDrug()"> Current smoker</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pad-highcv" onchange="calcDrug()"> High CV risk (prior MI, polyvascular disease)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pad-claud" onchange="calcDrug()"> Claudication not improving after exercise therapy</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">PAD drug selection guide</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">All confirmed PAD: Clopidogrel 75mg + Atorvastatin 80mg; BP to NICE NG136 target (Ramipril 2.5mg titrated if hypertensive, first-line with DM). DM: add SGLT2i; toe pressures/TBI if ABPI high or normal. AF: DOAC replaces antiplatelet (specialist). High CV risk + prior MI: consider rivaroxaban 2.5mg BD + aspirin (COMPASS). Claudication not improving on exercise: naftidrofuryl oxalate 200mg TDS for 3–6 months. CLTI: urgent vascular surgery referral + analgesia. See drug cards below.</span></div>
-      </div>
-    </div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Diabetes mellitus (ABPI may be unreliable)</li><li>Atrial fibrillation confirmed</li><li>Critical limb-threatening ischaemia (rest pain / tissue loss)</li><li>Current smoker</li><li>High CV risk (prior MI, polyvascular disease)</li><li>Claudication not improving after exercise therapy</li></ul></div><div class="ds-result"><div class="ds-result-title">PAD drug selection guide</div><div><span style="font-size:12.5px;color:var(--g)">All confirmed PAD: Clopidogrel 75mg + Atorvastatin 80mg; BP to NICE NG136 target (Ramipril 2.5mg titrated if hypertensive, first-line with DM). DM: add SGLT2i; toe pressures/TBI if ABPI high or normal. AF: DOAC replaces antiplatelet (specialist). High CV risk + prior MI: consider rivaroxaban 2.5mg BD + aspirin (COMPASS). Claudication not improving on exercise: naftidrofuryl oxalate 200mg TDS for 3–6 months. CLTI: urgent vascular surgery referral + analgesia. See drug cards below.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
     <!-- 7F Drug Cards -->
     <div class="sub-divider">7F — Drug reference cards: antiplatelets · statins · ACEi · vasodilator · anticoagulant combo</div>
     <div class="drug-cards" id="drug-cards-container">

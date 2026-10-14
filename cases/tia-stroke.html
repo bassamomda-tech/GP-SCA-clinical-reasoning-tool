@@ -783,23 +783,7 @@ body{background:var(--bg, #f6f2e9) !important}
          and will not activate for these TIA/stroke-specific checkboxes.
          The drug cards in 7F are the primary reference for this topic.
          A TIA/stroke-specific calcDrug() replacement can be added to script.js for full interactivity. -->
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — see drug cards below for tailored recommendations</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-afib" onchange="calcDrug()"> Atrial fibrillation confirmed (ECG or history)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-tia-isch" onchange="calcDrug()"> Non-AF ischaemic TIA / stroke</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-carotid" onchange="calcDrug()"> Carotid stenosis &gt;50% on Doppler</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-haemorrhagic" onchange="calcDrug()"> Haemorrhagic stroke (intracerebral or SAH)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-young" onchange="calcDrug()"> Young patient (&lt;60) / cryptogenic mechanism</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-hyp" onchange="calcDrug()"> Hypertension requiring treatment</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Drug selection guide</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">AF → DOAC (not antiplatelet): apixaban 5mg BD or rivaroxaban 20mg OD. Non-AF ischaemic TIA → aspirin 300mg loading now; specialist may start 21-day DAPT (high-risk TIA/minor stroke); long-term clopidogrel 75mg. Haemorrhagic stroke → NO antiplatelet/anticoagulant acutely. All ischaemic TIA/stroke → atorvastatin 80mg + antihypertensive. Symptomatic carotid 50–99% → urgent vascular referral. See drug cards below.</span></div>
-      </div>
-    </div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Atrial fibrillation confirmed (ECG or history)</li><li>Non-AF ischaemic TIA / stroke</li><li>Carotid stenosis &gt;50% on Doppler</li><li>Haemorrhagic stroke (intracerebral or SAH)</li><li>Young patient (&lt;60) / cryptogenic mechanism</li><li>Hypertension requiring treatment</li></ul></div><div class="ds-result"><div class="ds-result-title">Drug selection guide</div><div><span style="font-size:12.5px;color:var(--g)">AF → DOAC (not antiplatelet): apixaban 5mg BD or rivaroxaban 20mg OD. Non-AF ischaemic TIA → aspirin 300mg loading now; specialist may start 21-day DAPT (high-risk TIA/minor stroke); long-term clopidogrel 75mg. Haemorrhagic stroke → NO antiplatelet/anticoagulant acutely. All ischaemic TIA/stroke → atorvastatin 80mg + antihypertensive. Symptomatic carotid 50–99% → urgent vascular referral. See drug cards below.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
     <!-- 7F Drug Cards -->
     <div class="sub-divider">7F — Drug reference cards: antiplatelets, anticoagulants, statins &amp; antihypertensives</div>
     <div class="drug-cards" id="drug-cards-container">

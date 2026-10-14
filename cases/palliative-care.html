@@ -476,24 +476,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Medication selector &#8212; syringe driver and anticipatory medications</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select clinical scenario &#8212; syringe driver and anticipatory medication guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-pc-opioid" onchange="calcDrug()"> Opioid titration &#8212; syringe driver needed</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pc-renal" onchange="calcDrug()"> Renal impairment (eGFR &lt;30) &#8212; morphine risk</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pc-agitation" onchange="calcDrug()"> Terminal agitation or breathlessness</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pc-nausea" onchange="calcDrug()"> Nausea / vomiting &#8212; antiemetic needed</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pc-secretions" onchange="calcDrug()"> Noisy breathing / secretions (&#8220;death rattle&#8221;)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pc-icp" onchange="calcDrug()"> Raised ICP / MSCC / appetite / hepatic capsule pain</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Syringe driver and anticipatory medication guidance</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Syringe driver: convert total 24h oral opioid dose to subcutaneous equivalent (oral morphine &#247; 3 = SC diamorphine; oral oxycodone &#247; 1.5&#8211;2 = SC oxycodone; reduce 25&#8211;50% when switching opioid). Renal impairment (eGFR &lt;30): avoid morphine SC (M6G accumulation causes prolonged sedation and respiratory depression); alternative (e.g. oxycodone with caution, or alfentanil) on same-day specialist advice. Always seek palliative care team telephone advice for dose confirmation. PRN dose = about 1/10&#8211;1/6 of the 24h dose, with a stated maximum frequency. Individualised anticipatory medications, typically: SC opioid (pain); SC midazolam (agitation/breathlessness); SC antiemetic (nausea); SC antisecretory (secretions). These should be prescribed and accessible at home before they are needed.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Opioid titration &#8212; syringe driver needed</li><li>Renal impairment (eGFR &lt;30) &#8212; morphine risk</li><li>Terminal agitation or breathlessness</li><li>Nausea / vomiting &#8212; antiemetic needed</li><li>Noisy breathing / secretions (&#8220;death rattle&#8221;)</li><li>Raised ICP / MSCC / appetite / hepatic capsule pain</li></ul></div><div class="ds-result"><div class="ds-result-title">Syringe driver and anticipatory medication guidance</div><div><span style="font-size:12.5px;color:var(--g)">Syringe driver: convert total 24h oral opioid dose to subcutaneous equivalent (oral morphine &#247; 3 = SC diamorphine; oral oxycodone &#247; 1.5&#8211;2 = SC oxycodone; reduce 25&#8211;50% when switching opioid). Renal impairment (eGFR &lt;30): avoid morphine SC (M6G accumulation causes prolonged sedation and respiratory depression); alternative (e.g. oxycodone with caution, or alfentanil) on same-day specialist advice. Always seek palliative care team telephone advice for dose confirmation. PRN dose = about 1/10&#8211;1/6 of the 24h dose, with a stated maximum frequency. Individualised anticipatory medications, typically: SC opioid (pain); SC midazolam (agitation/breathlessness); SC antiemetic (nausea); SC antisecretory (secretions). These should be prescribed and accessible at home before they are needed.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -852,12 +836,12 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="dqp-wrap">
       <div class="dqp-hdr">&#128138; Drug Quick-Pick</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-pc-opioid')">&#128138; SC Opioid &#8212; pain</button>
-        <button class="dqp-btn" onclick="showDrug('ds-pc-renal')">&#9888; Renal impairment &#8212; oxycodone</button>
-        <button class="dqp-btn" onclick="showDrug('ds-pc-agitation')">&#128172; Midazolam &#8212; agitation</button>
-        <button class="dqp-btn" onclick="showDrug('ds-pc-nausea')">&#128174; Cyclizine &#8212; nausea</button>
-        <button class="dqp-btn" onclick="showDrug('ds-pc-secretions')">&#128483;&#65039; Hyoscine &#8212; secretions</button>
-        <button class="dqp-btn" onclick="showDrug('ds-pc-icp')">&#128308; Dexamethasone &#8212; MSCC/SVCO</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128138; SC Opioid &#8212; pain</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#9888; Renal impairment &#8212; oxycodone</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128172; Midazolam &#8212; agitation</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128174; Cyclizine &#8212; nausea</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128483;&#65039; Hyoscine &#8212; secretions</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128308; Dexamethasone &#8212; MSCC/SVCO</a>
       </div>
     </div>
   </div>

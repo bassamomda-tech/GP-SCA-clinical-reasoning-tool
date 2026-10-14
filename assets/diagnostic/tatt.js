@@ -10,8 +10,8 @@ RGPDiagnostic.register('tatt', {
   patientPresenting: "I\u2019m just exhausted all the time, doctor. I sleep but I never feel rested. My partner says I snore. I\u2019m wondering if it\u2019s my thyroid \u2014 or maybe something worse.",
 
   xlink: {
-    url: '../tools/triage-tool.html',
-    label: 'For suspected cancer pathways and emergency thresholds (anaemia, hyponatraemia, hyperkalaemia, DKA, etc.) — open the Tiredness Triage Tool dataset.',
+    url: '../tools/diagnostic.html',
+    label: 'For suspected cancer pathways and emergency thresholds (anaemia, hyponatraemia, hyperkalaemia, DKA, etc.) — open the tiredness red-flag rules.',
   },
 
   inputs: [

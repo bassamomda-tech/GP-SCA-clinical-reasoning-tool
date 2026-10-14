@@ -165,7 +165,7 @@
     if (/\/tools\/algorithms\/[^\/]+\.html?$/i.test(location.pathname) && !/-print\.html?$/i.test(location.pathname)) {
       var ui = function(){
         if (window.__algUi || document.querySelector('script[src*="alg-ui.js"]')) return;
-        var u = document.createElement('script'); u.src = base + 'alg-ui.js?v=1'; document.head.appendChild(u);
+        var u = document.createElement('script'); u.src = base + 'alg-ui.js?v=2'; document.head.appendChild(u);
       };
       if (window.__algStepper) ui();
       else { var st = document.createElement('script'); st.src = base + 'alg-stepper.js?v=2'; st.onload = ui; st.onerror = ui; document.head.appendChild(st); }

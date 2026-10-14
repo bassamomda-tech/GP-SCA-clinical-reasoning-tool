@@ -473,24 +473,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider" id="drugs">7E — Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select clinical scenario — see drug cards below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-ptsd-ssri" onchange="calcDrug()"> SSRI needed (TF-CBT waiting or comorbid depression)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ptsd-nightmares" onchange="calcDrug()"> Severe nightmares (IRT; specialist advice)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ptsd-depression" onchange="calcDrug()"> Depression + PTSD comorbidity</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ptsd-insomnia" onchange="calcDrug()"> Sleep disruption prominent</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ptsd-alcohol" onchange="calcDrug()"> Alcohol dependence present</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ptsd-bdz" onchange="calcDrug()"> Patient requesting benzodiazepine</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Medication guide</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">TF-CBT or EMDR is first-line — medication is a bridge or adjunct, not a replacement. SSRI: sertraline 50→200mg OD (or paroxetine 20→60mg OD) — NICE NG116: consider venlafaxine or an SSRI such as sertraline if the person prefers drug treatment (paroxetine and sertraline are licensed for PTSD); 12-week trial. Nightmares: IRT first (clinical practice; not an NG116 recommendation); persistent severe nightmares despite trauma-focused treatment → specialist advice (prazosin is not initiated routinely in primary care). Depression + PTSD: sertraline or mirtazapine (sedating nocte for severe sleep disruption). Sleep: mirtazapine 15mg nocte if also depressed. Alcohol dependence: assisted withdrawal and alcohol treatment coordinated alongside PTSD care — do not exclude from PTSD treatment. ABSOLUTELY NEVER: benzodiazepines — not recommended (NICE NG116); impair fear extinction; cause dependence in PTSD population.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>SSRI needed (TF-CBT waiting or comorbid depression)</li><li>Severe nightmares (IRT; specialist advice)</li><li>Depression + PTSD comorbidity</li><li>Sleep disruption prominent</li><li>Alcohol dependence present</li><li>Patient requesting benzodiazepine</li></ul></div><div class="ds-result"><div class="ds-result-title">Medication guide</div><div><span style="font-size:12.5px;color:var(--g)">TF-CBT or EMDR is first-line — medication is a bridge or adjunct, not a replacement. SSRI: sertraline 50→200mg OD (or paroxetine 20→60mg OD) — NICE NG116: consider venlafaxine or an SSRI such as sertraline if the person prefers drug treatment (paroxetine and sertraline are licensed for PTSD); 12-week trial. Nightmares: IRT first (clinical practice; not an NG116 recommendation); persistent severe nightmares despite trauma-focused treatment → specialist advice (prazosin is not initiated routinely in primary care). Depression + PTSD: sertraline or mirtazapine (sedating nocte for severe sleep disruption). Sleep: mirtazapine 15mg nocte if also depressed. Alcohol dependence: assisted withdrawal and alcohol treatment coordinated alongside PTSD care — do not exclude from PTSD treatment. ABSOLUTELY NEVER: benzodiazepines — not recommended (NICE NG116); impair fear extinction; cause dependence in PTSD population.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F — Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">

@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lab Results Actioning · GP / SCA Clinical Reasoning Tool</title>
-<meta name="description" content="Lab results actioning — next steps, per result. Paste from EMIS / SystmOne or fill the form.">
+<title>Lab results reference · GP / SCA Clinical Reasoning Tool</title>
+<meta name="description" content="Lab results reference — what UK guidance says at each threshold band, by test, with the source.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reasoning GP">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Lab Results Actioning">
-<meta property="og:description" content="Lab results actioning — next steps, per result. Paste from EMIS / SystmOne or fill the form.">
+<meta property="og:title" content="Lab results reference">
+<meta property="og:description" content="Lab results reference — what UK guidance says at each threshold band, by test, with the source.">
 <meta property="og:url" content="https://gpreasoning.uk/tools/lab-results.html">
 <meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
 <link rel="canonical" href="https://gpreasoning.uk/tools/lab-results.html">
@@ -17,36 +17,64 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/site.css?v=14" />
-<link rel="stylesheet" href="../assets/labs.css" />
 
 <style>
-  .tool-head{padding:28px 0 6px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .tool-head{padding:28px 0 6px;border-bottom:1px solid var(--line);margin-bottom:18px}
   .tool-head .eyebrow{margin-bottom:10px;display:block}
   .tool-head h1{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:10px}
-  .tool-head p{color:var(--ink-2);font-size:15px;line-height:1.6;max-width:64ch;margin-bottom:14px}
-  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-head p{color:var(--ink-2);font-size:15px;line-height:1.6;max-width:68ch;margin-bottom:14px}
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px;flex-wrap:wrap}
   .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
   .tool-breadcrumb a:hover{color:var(--rust)}
   .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
-  [data-labs]{margin-top:0}
-  .action-legend{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;
-    margin:18px 0 4px;
-  }
-  .al{
-    border:1px solid;border-radius:var(--r-md);padding:7px 11px;
-    font-size:12px;line-height:1.35;font-weight:500;
-  }
-  .al b{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
-  .al-emer{background:#fef4f2;border-color:#fecaca;color:#7f1d1d}
-  .al-canc{background:#faf5ff;border-color:#e9d5ff;color:#581c87}
-  .al-urg{background:#fff7ed;border-color:#fed7aa;color:#7c2d12}
-  .al-rev{background:#fffbeb;border-color:#fde68a;color:#78350f}
-  .al-treat{background:#ecfeff;border-color:#a5f3fc;color:#155e75}
-  .al-ref{background:#eff6ff;border-color:#bfdbfe;color:#1e40af}
-  .al-rep{background:#eef2ff;border-color:#c7d2fe;color:#3730a3}
-  .al-rec{background:#f0fdf4;border-color:#bbf7d0;color:#14532d}
-  .al-ann{background:#f8fafc;border-color:#cbd5e1;color:#1f2937}
+
+  .lr-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .lr-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:4px 0 10px}
+  .lr-search{flex:1 1 260px;display:flex;align-items:center;gap:8px;background:var(--surface,#fff);border:1px solid var(--line);border-radius:12px;padding:9px 12px;color:var(--muted);min-width:0}
+  .lr-search input{flex:1;border:0;outline:0;background:transparent;font:500 15px/1.3 'DM Sans',sans-serif;color:var(--ink);min-width:0}
+  .lr-count{font-size:12.5px;color:var(--muted);white-space:nowrap}
+  .lr-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+  .lr-chip{border:1px solid var(--line);background:var(--surface,#fff);border-radius:99px;padding:5px 11px;font:600 12.5px/1.2 'DM Sans',sans-serif;color:var(--ink-2);cursor:pointer}
+  .lr-chip.on{background:var(--teal,#0f5a55);border-color:var(--teal,#0f5a55);color:#fff}
+  .lr-empty,.lr-none{font-size:14px;color:var(--muted);padding:6px 0}
+  .lr-panel{margin:0 0 26px}
+  .lr-panel-h{font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:600;margin:10px 0 12px;color:var(--ink)}
+  .lr-test{border:1px solid var(--line);border-radius:14px;background:var(--surface,#fff);padding:14px 16px;margin:0 0 12px;scroll-margin-top:90px}
+  .lr-test-h h3{font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;margin:0 0 4px;color:var(--ink)}
+  .lr-test-h h3 small{font-weight:500;color:var(--muted);font-size:13px}
+  .lr-k{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .lr-ref{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+  .lr-ref .lr-k{display:inline;margin-right:6px}
+  .lr-ref-n{color:var(--muted);font-size:12.5px}
+  .lr-paths{font-size:13px;margin:6px 0 0;display:flex;flex-wrap:wrap;gap:4px 10px}
+  .lr-paths-t{color:var(--muted);font-weight:600}
+  .lr-paths a{color:var(--teal-2,#0f5a55);font-weight:600;text-decoration:none}
+  .lr-paths a:hover{color:var(--rust)}
+  .lr-bands{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .lr-band{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) minmax(0,.8fr);gap:8px 16px;padding:10px 12px;border:1px solid var(--line);border-left:4px solid #cbd5e1;border-radius:0 10px 10px 0;background:var(--bg,#faf9f6);font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+  .lr-band > div{min-width:0;overflow-wrap:anywhere}
+  .lr-says{color:var(--ink);font-weight:600}
+  .lr-tf{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+  .lr-band-src a{color:var(--teal-2,#0f5a55);font-weight:600;text-decoration:none}
+  .lr-tag{display:inline-block;font-size:11px;font-weight:700;border-radius:99px;padding:1px 8px;margin:0 4px 3px 0;border:1px solid;white-space:nowrap}
+  .lr-more{grid-column:1 / -1;font-size:13px}
+  .lr-more summary{cursor:pointer;color:var(--teal-2,#0f5a55);font-weight:600}
+  .lr-more-b{margin:6px 0 0}
+  .lr-more-b b{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .lr-more-b p{margin:2px 0 0}
+  .lr-note{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--surface,#fff);border:1px dashed var(--line);border-radius:8px;padding:8px 10px}
+  .lr-emer{border-left-color:#dc2626}.lr-tag.lr-emer{background:#fef4f2;border-color:#fecaca;color:#7f1d1d}
+  .lr-canc{border-left-color:#9333ea}.lr-tag.lr-canc{background:#faf5ff;border-color:#e9d5ff;color:#581c87}
+  .lr-urg{border-left-color:#ea580c}.lr-tag.lr-urg{background:#fff7ed;border-color:#fed7aa;color:#7c2d12}
+  .lr-rev{border-left-color:#d97706}.lr-tag.lr-rev{background:#fffbeb;border-color:#fde68a;color:#78350f}
+  .lr-treat{border-left-color:#0891b2}.lr-tag.lr-treat{background:#ecfeff;border-color:#a5f3fc;color:#155e75}
+  .lr-tag.lr-refer{background:#eff6ff;border-color:#bfdbfe;color:#1e40af}.lr-band.lr-refer{border-left-color:#2563eb}
+  .lr-rep{border-left-color:#4f46e5}.lr-tag.lr-rep{background:#eef2ff;border-color:#c7d2fe;color:#3730a3}
+  .lr-rec{border-left-color:#16a34a}.lr-tag.lr-rec{background:#f0fdf4;border-color:#bbf7d0;color:#14532d}
+  .lr-ann{border-left-color:#94a3b8}.lr-tag.lr-ann{background:#f8fafc;border-color:#cbd5e1;color:#1f2937}
+  .lr-sources ul{padding-left:20px;font-size:13.5px;line-height:1.7}
+  .lr-sources a{color:var(--teal-2,#0f5a55)}
+  @media (max-width:760px){ .lr-band{grid-template-columns:1fr} }
 
   .tool-howto{
     background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
@@ -75,51 +103,39 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
         <span>Tools</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
-        <span style="color:var(--ink-2)">Lab Results Actioning</span>
+        <span style="color:var(--ink-2)">Lab results reference</span>
       </div>
 
       <header class="tool-head" data-screen-label="Tool head">
-        <span class="eyebrow">Reasoning Tool · NICE · BSH · Renal Association</span>
-        <h1>Lab results actioning — <em style="font-style:italic;color:var(--teal);font-weight:500">next steps, per result</em></h1>
-        <p>Paste from EMIS / SystmOne or fill the form. The tool fires per-result rules from UK guidance (NICE, BSH, UK Kidney Association, BSG, BTA, Society for Endocrinology) and turns each abnormal value into an action: emergency, suspected cancer, urgent, treat, drug review, repeat, refer, recall, or annotate — with the rule cited, a patient phrase, and a notes template you can copy.</p>
+        <span class="eyebrow">Reference · NICE · BSH · UK Kidney Association</span>
+        <h1>Lab results reference — <em style="font-style:italic;color:var(--teal);font-weight:500">what the guidance says, by test</em></h1>
+        <p>A browsable reference for common primary-care blood and stool tests. For each test you see the threshold bands and what published UK guidance (NICE, BSH, UK Kidney Association, BSG, BTA, Society for Endocrinology) says at each band, with the source cited. Search by test name or filter by panel. There is no box for patient values and nothing is worked out for a patient: read the band, then check the source and the patient in front of you.</p>
       </header>
 
-      <div class="action-legend">
-        <div class="al al-emer"><b>🔴 Emergency</b>999 / same-day admission</div>
-        <div class="al al-canc"><b>🟣 Suspected cancer</b>NICE NG12 / Macmillan</div>
-        <div class="al al-urg"><b>🟠 Urgent</b>Same-day GP / same-week specialist</div>
-        <div class="al al-rev"><b>⚠ Drug review</b>Stop / adjust offending med</div>
-        <div class="al al-treat"><b>💊 Treat</b>Start medication / supplement</div>
-        <div class="al al-ref"><b>↗ Refer</b>Routine specialist</div>
-        <div class="al al-rep"><b>♻ Repeat</b>Retest in X days/weeks</div>
-        <div class="al al-rec"><b>📞 Recall</b>Phone patient with plan</div>
-        <div class="al al-ann"><b>📝 Annotate</b>Incidental — document only</div>
-      </div>
-
-      <!-- The labs tool. data-topic-picker isn't needed (only one topic right now). -->
-      <div data-labs="generic"></div>
+      <!-- The reference mounts here (assets/labs-reference.js). The shared notice is added above it by assets/ref-notice.js. -->
+      <div data-labs-ref="generic"></div>
 
       <div class="tool-howto" data-screen-label="How to use">
         <div>
-          <h4>1 · Patient context first</h4>
-          <p>Age, sex, pregnancy, current meds — thresholds shift with each (e.g. K⁺ 5.6 on ACEi is a drug review; without it, just a repeat).</p>
+          <h4>1 · Find the test</h4>
+          <p>Search by name or abbreviation (K⁺, Hb, TSH, PSA…) or pick a panel. Each test shows a typical reference range — your own laboratory's range takes precedence.</p>
         </div>
         <div>
-          <h4>2 · Paste or type</h4>
-          <p>The paste box parses common formats (Hb 102, K+ 6.2, HbA1c 62…). Anything it can't parse stays blank; fill it manually. Abnormal values get colour-coded as you type.</p>
+          <h4>2 · Read the bands</h4>
+          <p>Each band states the threshold and what the guidance says about it, with the time frame the source gives. Some bands depend on age, sex, pregnancy or medication — the band wording says so.</p>
         </div>
         <div>
-          <h4>3 · Read per-result actions</h4>
-          <p>The headline is the highest-acuity action. Below it: every rule that fired, grouped by test. Expand each for the patient phrase and notes template; one-click copy.</p>
+          <h4>3 · Open the source</h4>
+          <p>Every band names its source. Read the recommendation itself before relying on it, and check doses in the BNF or SPC.</p>
         </div>
         <div>
           <h4>4 · Open the full pathway</h4>
-          <p>Every analyte links to its full structured pathway (e.g. Hb → Anaemia, TSH → Abnormal TFTs) — all 52 lab pathways are wired in. Rules also hand off to the Triage Tool and MedChooser where relevant.</p>
+          <p>Most tests link to their full structured pathway (e.g. Hb → Anaemia, TSH → Abnormal TFTs) for the wider context.</p>
         </div>
       </div>
 
       <div class="footer-disclaimer" style="margin-top:50px">
-        <strong>Educational use only.</strong> Reference ranges, drug thresholds, and pathways vary by lab, assay, age, sex, pregnancy, and locality. The tool surfaces published UK guidance — always verify against live NICE, your local pathology lab ranges, your formulary, and your clinical judgement. Recommendations are illustrative, not clinical advice.
+        <strong>Reference only.</strong> Reference ranges, drug thresholds and pathways vary by lab, assay, age, sex, pregnancy and locality. This page summarises published UK guidance — always verify against live NICE, your local pathology lab ranges, your formulary and your clinical judgement. It does not give advice about an individual patient.
       </div>
 
     </div>
@@ -129,10 +145,11 @@
 <script src="../assets/site.js?v=105"></script>
 <script src="../assets/case-related.js?v=2"></script>
 
-<!-- Lab actioning engine + ruleset -->
+<!-- Lab reference: the ruleset is read as TEXT only (bands, guidance wording, sources). Its rules are never run. -->
+<script>window.RGPLabs = { register: function(name, data){ (window.RGP_LAB_SETS = window.RGP_LAB_SETS || {})[name] = data; } };</script>
 <script src="../assets/retired-pathways.js?v=1"></script>
-<script src="../assets/labs.js?v=20260927s18"></script>
-<script src="../assets/labs/generic.js?v=20260927s18"></script>
+<script src="../assets/labs/generic.js?v=20261014r1"></script>
+<script src="../assets/labs-reference.js?v=1"></script>
 
 <script src="../assets/nav-back.js?v=1"></script>
 </body>

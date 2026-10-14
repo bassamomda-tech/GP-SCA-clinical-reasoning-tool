@@ -14,8 +14,8 @@ window.RGP_CALCULATORS = [
     id: 'chads-vasc',
     title: 'CHA₂DS₂-VASc',
     category: 'Cardiovascular',
-    description: 'Stroke risk in non-valvular AF — decides anticoagulation.',
-    usefulFor: 'Newly diagnosed AF, AF review. Decides if DOAC indicated.',
+    description: 'Stroke risk score in non-valvular AF.',
+    usefulFor: 'AF review. NICE NG196 uses CHA₂DS₂-VASc for stroke risk — read the anticoagulation recommendations in the guideline itself.',
     resultLabel: 'CHA₂DS₂-VASc score', resultMax: 9,
     inputs: [
       { id:'chf',      kind:'check', label:'Congestive heart failure / LV dysfunction', points:1 },
@@ -283,8 +283,8 @@ window.RGP_CALCULATORS = [
     id: 'feverpain',
     title: 'FeverPAIN (sore throat)',
     category: 'Respiratory',
-    description: 'Likelihood of streptococcal sore throat — guides antibiotics.',
-    usefulFor: 'Sore throat without red-flag features. Decides immediate vs delayed vs no antibiotic.',
+    description: 'Likelihood of streptococcal sore throat.',
+    usefulFor: 'Sore throat without red-flag features. NICE NG84 uses FeverPAIN or Centor — read the antibiotic recommendations in the guideline itself.',
     resultLabel: 'FeverPAIN score', resultMax: 5,
     inputs: [
       { id:'fp_fever',  kind:'check', label:'Fever in last 24 h', points:1 },
@@ -336,8 +336,8 @@ window.RGP_CALCULATORS = [
     id: 'news2',
     title: 'NEWS2',
     category: 'Acute / sepsis',
-    description: 'Aggregate physiological score for acute illness severity.',
-    usefulFor: 'Telephone triage, home visits, walk-ins — sepsis recognition, escalation decisions.',
+    description: 'NEWS2 scoring chart and the published clinical-risk bands (Royal College of Physicians, 2017).',
+    usefulFor: 'Reference card: the chart the score is added up from. Use the official RCP NEWS2 chart in practice.',
     resultLabel: 'NEWS2', resultMax: 20,
     inputs: [
       { group:'Vitals', id:'n_rr',   kind:'number', label:'Respiratory rate', unit:'/min', min:0, max:80, step:1 },
@@ -508,7 +508,7 @@ window.RGP_CALCULATORS = [
     title: 'AUDIT (full, 10-item)',
     category: 'Mental health',
     description: 'Detailed alcohol-use disorder screen (0\u201340).',
-    usefulFor: 'After positive AUDIT-C. Plans intervention vs referral.',
+    usefulFor: 'After a positive AUDIT-C. Higher scores indicate more harmful drinking (published bands below).',
     resultLabel: 'AUDIT-10', resultMax: 40,
     inputs: [
       { id:'au1',  kind:'select', label:'1. Frequency of drinking',
@@ -556,7 +556,7 @@ window.RGP_CALCULATORS = [
     title: 'Epworth Sleepiness Scale',
     category: 'Sleep',
     description: 'Daytime sleepiness score (8 items, 0\u201324).',
-    usefulFor: 'Screening for OSA, narcolepsy. \u2265 11 suggests significant sleepiness \u2014 refer sleep clinic.',
+    usefulFor: 'Screening for OSA, narcolepsy. ≥ 11 suggests significant sleepiness.',
     resultLabel: 'Epworth', resultMax: 24,
     inputs: [
       { group:'How likely are you to doze off? (0 = never, 3 = high chance)',
@@ -627,7 +627,7 @@ window.RGP_CALCULATORS = [
     title: 'eGFR (CKD-EPI 2021)',
     category: 'Renal / metabolic',
     description: 'Estimated GFR \u2014 race-free 2021 equation.',
-    usefulFor: 'CKD staging, drug dose adjustment, contrast safety.',
+    usefulFor: 'CKD staging by GFR category (NICE NG203). For drug dosing, check the BNF/SPC.',
     resultLabel: 'eGFR', resultUnit:'mL/min/1.73m\u00b2',
     formula: 'CKD-EPI 2021 \u2014 uses creatinine, age, sex (race factor removed)',
     inputs: [
@@ -666,8 +666,8 @@ window.RGP_CALCULATORS = [
     id: 'crcl',
     title: 'Creatinine clearance (Cockcroft-Gault)',
     category: 'Renal / metabolic',
-    description: 'Drug-dosing renal function \u2014 still used for DOAC dosing.',
-    usefulFor: 'DOAC dose adjustment (apixaban, dabigatran, rivaroxaban \u2014 use CrCl, NOT eGFR).',
+    description: 'Estimated creatinine clearance (Cockcroft-Gault formula).',
+    usefulFor: 'Reference formula. The BNF and SPC say which renal-function measure applies to each drug (for DOACs it is creatinine clearance, not eGFR); this page gives no dose.',
     resultLabel: 'CrCl', resultUnit:'mL/min',
     formula: '((140 \u2212 age) \u00d7 weight \u00d7 (0.85 if F)) / (0.814 \u00d7 Cr \u00b5mol/L)',
     inputs: [
@@ -778,7 +778,7 @@ window.RGP_CALCULATORS = [
     title: 'IPSS (BPH symptom score)',
     category: 'Urology',
     description: 'International Prostate Symptom Score \u2014 7 items 0\u20135.',
-    usefulFor: 'Male LUTS severity & monitoring response. Score guides treatment intensification.',
+    usefulFor: 'Male LUTS severity and monitoring.',
     resultLabel: 'IPSS', resultMax: 35,
     inputs: [
       { group:'Over the past month, how often:',
@@ -816,7 +816,7 @@ window.RGP_CALCULATORS = [
     title: 'MUST (malnutrition)',
     category: 'Nutrition',
     description: 'Malnutrition Universal Screening Tool \u2014 3 parameters.',
-    usefulFor: 'Care home / housebound / chronic illness review. Triggers nutritional intervention.',
+    usefulFor: 'Care home / housebound / chronic illness review.',
     resultLabel: 'MUST', resultMax: 6,
     inputs: [
       { id:'m_bmi',  kind:'select', label:'1. BMI',
@@ -881,7 +881,7 @@ window.RGP_CALCULATORS = [
     title: '6-CIT (cognitive screen)',
     category: 'Cognition',
     description: '6-item cognitive impairment test \u2014 NICE NG97 first-line.',
-    usefulFor: 'Memory clinic referral threshold. \u2265 8 suggests cognitive impairment.',
+    usefulFor: 'Cognitive screen. ≥ 8 suggests cognitive impairment.',
     resultLabel: '6-CIT', resultMax: 28,
     inputs: [
       { id:'c1', kind:'select', label:'1. What year is it?',

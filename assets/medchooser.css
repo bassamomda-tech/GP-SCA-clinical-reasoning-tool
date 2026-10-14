@@ -366,3 +366,37 @@
   padding:8px 12px;font-size:11.5px;color:var(--ink-2);
   max-width:46ch;
 }
+
+/* ---------- STATIC GUIDELINE CARDS (October 2026: reference, not a medical device) ----------
+   "Medication options by condition": no patient factors, no tiers. */
+.mc-static .mc-head-l{min-width:0}
+.mc-static-note{
+  margin:0;padding:10px 22px;font-size:12.5px;line-height:1.55;color:var(--ink-2);
+  background:var(--bg-soft);border-bottom:1px solid var(--line);
+}
+.mc-safety{padding:12px 22px 4px}
+.mc-safety h4{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.mc-safety ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.mc-safety .mc-flag{display:block;white-space:normal;line-height:1.5}
+.mc-static-list{display:flex;flex-direction:column;gap:10px;padding:14px 22px 18px}
+.mc-static .mc-card{min-width:0;overflow-wrap:anywhere}
+.mc-card-n{color:var(--muted);font-weight:600;margin-right:2px}
+.mc-card-source a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.mc-conds{margin-top:8px}
+.mc-conds summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--teal)}
+.mc-conds ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}
+.mc-cond{font-size:12.5px;line-height:1.5;color:var(--ink-2);padding:5px 9px;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.mc-cond-k{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:1px 7px;margin-right:4px;border:1px solid}
+.mc-cond.k-avoid .mc-cond-k{color:var(--mc-avoid);background:var(--mc-avoid-bg);border-color:var(--mc-avoid-bd)}
+.mc-cond.k-caution .mc-cond-k{color:var(--mc-ok);background:var(--mc-ok-bg);border-color:var(--mc-ok-bd)}
+.mc-cond.k-favoured .mc-cond-k{color:var(--mc-pref);background:var(--mc-pref-bg);border-color:var(--mc-pref-bd)}
+.mc-cond.k-note .mc-cond-k{color:var(--muted);background:var(--bg-soft);border-color:var(--line)}
+@media (max-width:560px){
+  .mc-static-note,.mc-safety{padding-left:14px;padding-right:14px}
+  .mc-static-list{padding:12px 12px 14px}
+}
+
+/* phone fix: long step badge must not squeeze the drug name */
+.mc-card-top>:first-child{min-width:0;flex:1 1 auto}
+.mc-card-step{max-width:55%;white-space:normal;text-align:right}
+@media (max-width:560px){.mc-card-top{flex-wrap:wrap}.mc-card-top>:first-child{flex-basis:100%}.mc-card-step{max-width:100%;text-align:left}}

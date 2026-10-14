@@ -10,7 +10,7 @@ RGPDiagnostic.register('headache', {
   patientPresenting: "I've been getting these headaches and they're not going away. My friend googled it and said it could be a brain tumour…",
 
   xlink: {
-    url: '../tools/triage-tool.html',
+    url: '../tools/diagnostic.html',
     label: 'Headache doesn\'t have a dedicated triage dataset yet, but new-onset headache >50 + scalp tenderness fires the GCA pathway (BSR 2020) in the urgent column.',
   },
 

@@ -777,23 +777,7 @@ body{background:var(--bg, #f6f2e9) !important}
     <!-- NOTE: calcDrug() in script.js is HTN-specific. Angina-specific checkboxes use non-overlapping IDs.
          A bespoke angina calcDrug() function can be added to script.js for full interactivity.
          Drug cards in 7F are the primary reference for anti-anginal and secondary prevention choices. -->
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — see drug cards and guidance below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-ang-bb" onchange="calcDrug()"> Raised heart rate (&gt;70 bpm) — beta-blocker preferred</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ang-vasospasm" onchange="calcDrug()"> Vasospastic / Prinzmetal angina</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ang-pde5" onchange="calcDrug()"> On PDE5 inhibitor (sildenafil / tadalafil / vardenafil)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ang-af" onchange="calcDrug()"> Atrial fibrillation + angina</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ang-hf" onchange="calcDrug()"> Heart failure (reduced ejection fraction)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ang-copd" onchange="calcDrug()"> COPD or significant asthma</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Anti-anginal drug selection guide</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Raised HR: bisoprolol 2.5–5mg OD first-line (titrate to symptoms, HR and BP). Vasospasm: amlodipine or diltiazem SR — NOT beta-blocker. PDE5 inhibitor: ALL nitrates absolutely contraindicated — use beta-blocker or CCB instead. AF + angina: beta-blocker for rate control + anti-anginal dual benefit. HFrEF: bisoprolol + ACEi mandatory; avoid diltiazem/verapamil. COPD: cardioselective bisoprolol safe in mild-moderate COPD; CCB if severe. All: aspirin 75mg + atorvastatin 80mg + GTN PRN (if not on PDE5 inhibitor). See drug cards below.</span></div>
-      </div>
-    </div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Raised heart rate (&gt;70 bpm) — beta-blocker preferred</li><li>Vasospastic / Prinzmetal angina</li><li>On PDE5 inhibitor (sildenafil / tadalafil / vardenafil)</li><li>Atrial fibrillation + angina</li><li>Heart failure (reduced ejection fraction)</li><li>COPD or significant asthma</li></ul></div><div class="ds-result"><div class="ds-result-title">Anti-anginal drug selection guide</div><div><span style="font-size:12.5px;color:var(--g)">Raised HR: bisoprolol 2.5–5mg OD first-line (titrate to symptoms, HR and BP). Vasospasm: amlodipine or diltiazem SR — NOT beta-blocker. PDE5 inhibitor: ALL nitrates absolutely contraindicated — use beta-blocker or CCB instead. AF + angina: beta-blocker for rate control + anti-anginal dual benefit. HFrEF: bisoprolol + ACEi mandatory; avoid diltiazem/verapamil. COPD: cardioselective bisoprolol safe in mild-moderate COPD; CCB if severe. All: aspirin 75mg + atorvastatin 80mg + GTN PRN (if not on PDE5 inhibitor). See drug cards below.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <!-- 7F Drug Cards -->
     <div class="sub-divider">7F — Drug reference cards: GTN · beta-blocker · CCB · nitrate · secondary prevention · add-on agents</div>

@@ -1593,28 +1593,9 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="anxiety"></div>
 
-    <div class="sub-divider" id="drugs">7E — Medication selection tool — choose patient characteristics for tailored recommendation</div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
     <!-- NOTE: calcDrug() in script.js is hardcoded to HTN drug IDs. This selector uses custom IDs matching GAD context. -->
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — GAD treatment recommendation appears below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-mod" onchange="calcDrug()"> Moderate-severe GAD (GAD-7 ≥10) — first treatment</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cardiac" onchange="calcDrug()"> Cardiac disease (IHD, arrhythmia, heart failure)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-depress" onchange="calcDrug()"> Comorbid depression (PHQ-9 ≥10)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-pain" onchange="calcDrug()"> Comorbid chronic pain (fibromyalgia, neuropathy)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-benzodep" onchange="calcDrug()"> Benzodiazepine dependence — needs managed withdrawal</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ssrifail" onchange="calcDrug()"> Failed ≥2 adequate SSRI trials</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-preg" onchange="calcDrug()"> Pregnant or breastfeeding</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-perf" onchange="calcDrug()"> Situational / performance anxiety only</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-insomnia" onchange="calcDrug()"> Comorbid insomnia and poor appetite</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Treatment recommendation</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Select patient characteristics above to see tailored GAD treatment recommendation</span></div>
-      </div>
-    </div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Moderate-severe GAD (GAD-7 ≥10) — first treatment</li><li>Cardiac disease (IHD, arrhythmia, heart failure)</li><li>Comorbid depression (PHQ-9 ≥10)</li><li>Comorbid chronic pain (fibromyalgia, neuropathy)</li><li>Benzodiazepine dependence — needs managed withdrawal</li><li>Failed ≥2 adequate SSRI trials</li><li>Pregnant or breastfeeding</li><li>Situational / performance anxiety only</li><li>Comorbid insomnia and poor appetite</li></ul></div><div class="ds-result"><div class="ds-result-title">What the guidance says</div><div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Pregnant or breastfeeding</div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">🤰 <strong>Pregnancy / breastfeeding</strong> → <strong>Sertraline 50mg OD</strong> (most safety data in pregnancy; preferred over other SSRIs)</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">Refer urgently to <strong>perinatal mental health team</strong> — NICE CG192 mandates this pathway</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">Avoid benzodiazepines, paroxetine (first-trimester cardiac risk), and pregabalin (teratogenic)</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-warn">⚠ Do NOT withhold SSRI in severe anxiety in pregnancy — untreated severe anxiety causes more foetal harm than sertraline</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Situational / performance anxiety only + without Moderate-severe GAD (GAD-7 ≥10) — first treatment</div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">🎯 <strong>Situational / performance anxiety only</strong> → <strong>Propranolol 10–40mg PRN</strong> (30–45 minutes before the situation)</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">Reduces peripheral symptoms only (palpitations, tremor, sweating) — no central anxiolytic effect</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">Avoid in asthma, COPD, heart block, or insulin-treated diabetes</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-warn">⚠ Propranolol is not a standalone treatment for chronic GAD — if worry is pervasive and uncontrollable, reassess for GAD and consider SSRI + CBT</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Benzodiazepine dependence — needs managed withdrawal</div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">💊 <strong>Benzodiazepine dependence — managed withdrawal</strong></div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">Convert current benzodiazepine to equivalent <strong>diazepam dose</strong> (long half-life = smoother withdrawal)</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line"><strong>Individualised gradual taper</strong> per local/UK withdrawal guidance (Ashton manual is a resource only); never stop abruptly (seizure risk)</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">Add <strong>Sertraline 50mg OD</strong> alongside taper to treat underlying GAD</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">Refer to <strong>Drug and Alcohol Service</strong> for complex or high-dose dependence</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-warn">⚠ Never abruptly stop benzodiazepines — risk of seizures, severe withdrawal, and acute anxiety crisis</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Failed ≥2 adequate SSRI trials</div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">🔄 <strong>Refractory GAD — failed ≥2 adequate SSRI/SNRI trials</strong></div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">→ <strong>Pregabalin 75mg BD</strong> (escalate to 150–300mg BD) — <em>only if SSRIs/SNRIs unsuitable or not tolerated; check local formulary</em></div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">Schedule 3 controlled drug — document two SSRI failures clearly in notes before prescribing</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">Refer to <strong>CMHT</strong> with full treatment history; ensure comorbid depression, substance use, and personality disorder reviewed</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Comorbid chronic pain (fibromyalgia, neuropathy):</em> <div class="ds-line">Pregabalin also addresses comorbid neuropathic pain — dual benefit in this patient</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-warn">⚠ Do NOT prescribe pregabalin first-line — NICE CG113 reserves it for people who cannot tolerate SSRIs/SNRIs</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-warn">⚠ Risk of misuse and dependence — do not prescribe to patients with substance use history without specialist input</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Moderate-severe GAD (GAD-7 ≥10) — first treatment or Cardiac disease (IHD, arrhythmia, heart failure) or Comorbid depression (PHQ-9 ≥10) or Comorbid chronic pain (fibromyalgia, neuropathy) or Comorbid insomnia and poor appetite</div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line"><strong>First-line treatment — NICE CG113 (updated 2020)</strong></div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Comorbid chronic pain (fibromyalgia, neuropathy):</em> <div class="ds-line">🩺 Comorbid pain detected → <strong>Duloxetine 30mg OD</strong> (escalate to 60–120mg) or <strong>Venlafaxine XR 75mg OD</strong> (escalate to 150mg) — SNRI dual anxiolytic + analgesic benefit</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Comorbid chronic pain (fibromyalgia, neuropathy):</em> <div class="ds-warn">⚠ Venlafaxine: monitor BP at every dose increase above 75mg; never stop abruptly — taper over ≥4 weeks minimum</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Cardiac disease (IHD, arrhythmia, heart failure):</em> <div class="ds-line">❤️ Cardiac disease detected → <strong>Sertraline 50mg OD</strong> — safest SSRI in IHD, arrhythmia, and heart failure</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Cardiac disease (IHD, arrhythmia, heart failure):</em> <div class="ds-line">Lowest drug interaction profile of all SSRIs; ECG at baseline; avoid TCAs</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Comorbid insomnia and poor appetite:</em> <div class="ds-line">😴 Comorbid insomnia + poor appetite → Consider <strong>Mirtazapine 15mg nocte</strong> as an alternative to SSRI — sedating and appetite-stimulating</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Comorbid insomnia and poor appetite:</em> <div class="ds-line">Or <strong>Sertraline 50mg OD</strong> with CBT-I (CBT for insomnia) added via NHS Talking Therapies</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">None of the situations above:</em> <div class="ds-line">→ <strong>Sertraline 50mg OD</strong> (first-choice SSRI per NICE CG113; lowest drug interaction profile)</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Comorbid depression (PHQ-9 ≥10):</em> <div class="ds-line">🧠 Comorbid depression (PHQ-9 ≥10) confirmed → Sertraline treats both anxiety and depression simultaneously; <strong>2-week suicide review is mandatory</strong></div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Comorbid depression (PHQ-9 ≥10):</em> <div class="ds-warn">⚠ PHQ-9 item 9 must be reviewed; if suicidal ideation present with plan → same-day CRHT referral, do not send home with prescription alone</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">➕ Add <strong>NHS Talking Therapies referral</strong> for high-intensity CBT alongside medication — CBT + SSRI is superior to either alone</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">⏰ Arrange <strong>early mandatory review</strong> (within 1 week if under 30 or higher risk, otherwise 1–2 weeks) after SSRI initiation — check tolerability, suicide risk, and NHS Talking Therapies contact status</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-line">⚠️ Pre-warn: <em>"In the first 1–2 weeks, the anxiety may feel slightly worse — this is normal and temporary. Do not stop without contacting us first."</em></div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div class="ds-warn">⚠ Adequate, disorder-appropriate trial at therapeutic dose before declaring SSRI failure; continue for minimum 12 months after remission (50% relapse reduction)</div></div></div></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F — Drug reference cards: GAD pharmacotherapy</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -2380,101 +2361,7 @@ body.mode-clinic .sca-only{display:none!important}
 
 <script>
 // GAD-specific drug selector — overrides any calcDrug() in script.js
-function calcDrug() {
-  const mod      = document.getElementById('ds-mod')?.checked;
-  const cardiac  = document.getElementById('ds-cardiac')?.checked;
-  const depress  = document.getElementById('ds-depress')?.checked;
-  const pain     = document.getElementById('ds-pain')?.checked;
-  const benzodep = document.getElementById('ds-benzodep')?.checked;
-  const ssrifail = document.getElementById('ds-ssrifail')?.checked;
-  const preg     = document.getElementById('ds-preg')?.checked;
-  const perf     = document.getElementById('ds-perf')?.checked;
-  const insomnia = document.getElementById('ds-insomnia')?.checked;
-
-  let lines = [];
-  let warn  = [];
-
-  // Pregnancy overrides all
-  if (preg) {
-    lines.push('🤰 <strong>Pregnancy / breastfeeding</strong> → <strong>Sertraline 50mg OD</strong> (most safety data in pregnancy; preferred over other SSRIs)');
-    lines.push('Refer urgently to <strong>perinatal mental health team</strong> — NICE CG192 mandates this pathway');
-    lines.push('Avoid benzodiazepines, paroxetine (first-trimester cardiac risk), and pregabalin (teratogenic)');
-    warn.push('Do NOT withhold SSRI in severe anxiety in pregnancy — untreated severe anxiety causes more foetal harm than sertraline');
-    document.getElementById('ds-output').innerHTML = lines.map(l => '<div class="ds-line">'+l+'</div>').join('') + warn.map(w=>'<div class="ds-warn">⚠ '+w+'</div>').join('');
-    return;
-  }
-
-  // Performance / situational anxiety only — no GAD diagnosis criteria met
-  if (perf && !mod) {
-    lines.push('🎯 <strong>Situational / performance anxiety only</strong> → <strong>Propranolol 10–40mg PRN</strong> (30–45 minutes before the situation)');
-    lines.push('Reduces peripheral symptoms only (palpitations, tremor, sweating) — no central anxiolytic effect');
-    lines.push('Avoid in asthma, COPD, heart block, or insulin-treated diabetes');
-    warn.push('Propranolol is not a standalone treatment for chronic GAD — if worry is pervasive and uncontrollable, reassess for GAD and consider SSRI + CBT');
-    document.getElementById('ds-output').innerHTML = lines.map(l => '<div class="ds-line">'+l+'</div>').join('') + warn.map(w=>'<div class="ds-warn">⚠ '+w+'</div>').join('');
-    return;
-  }
-
-  // Benzodiazepine dependence — withdrawal management
-  if (benzodep) {
-    lines.push('💊 <strong>Benzodiazepine dependence — managed withdrawal</strong>');
-    lines.push('Convert current benzodiazepine to equivalent <strong>diazepam dose</strong> (long half-life = smoother withdrawal)');
-    lines.push('<strong>Individualised gradual taper</strong> per local/UK withdrawal guidance (Ashton manual is a resource only); never stop abruptly (seizure risk)');
-    lines.push('Add <strong>Sertraline 50mg OD</strong> alongside taper to treat underlying GAD');
-    lines.push('Refer to <strong>Drug and Alcohol Service</strong> for complex or high-dose dependence');
-    warn.push('Never abruptly stop benzodiazepines — risk of seizures, severe withdrawal, and acute anxiety crisis');
-    document.getElementById('ds-output').innerHTML = lines.map(l => '<div class="ds-line">'+l+'</div>').join('') + warn.map(w=>'<div class="ds-warn">⚠ '+w+'</div>').join('');
-    return;
-  }
-
-  // Refractory — 2 SSRI failures
-  if (ssrifail) {
-    lines.push('🔄 <strong>Refractory GAD — failed ≥2 adequate SSRI/SNRI trials</strong>');
-    lines.push('→ <strong>Pregabalin 75mg BD</strong> (escalate to 150–300mg BD) — <em>only if SSRIs/SNRIs unsuitable or not tolerated; check local formulary</em>');
-    lines.push('Schedule 3 controlled drug — document two SSRI failures clearly in notes before prescribing');
-    lines.push('Refer to <strong>CMHT</strong> with full treatment history; ensure comorbid depression, substance use, and personality disorder reviewed');
-    if (pain) lines.push('Pregabalin also addresses comorbid neuropathic pain — dual benefit in this patient');
-    warn.push('Do NOT prescribe pregabalin first-line — NICE CG113 reserves it for people who cannot tolerate SSRIs/SNRIs');
-    warn.push('Risk of misuse and dependence — do not prescribe to patients with substance use history without specialist input');
-    document.getElementById('ds-output').innerHTML = lines.map(l => '<div class="ds-line">'+l+'</div>').join('') + warn.map(w=>'<div class="ds-warn">⚠ '+w+'</div>').join('');
-    return;
-  }
-
-  // First-line treatment selection
-  if (mod || cardiac || depress || pain || insomnia) {
-    lines.push('<strong>First-line treatment — NICE CG113 (updated 2020)</strong>');
-
-    if (pain) {
-      lines.push('🩺 Comorbid pain detected → <strong>Duloxetine 30mg OD</strong> (escalate to 60–120mg) or <strong>Venlafaxine XR 75mg OD</strong> (escalate to 150mg) — SNRI dual anxiolytic + analgesic benefit');
-      warn.push('Venlafaxine: monitor BP at every dose increase above 75mg; never stop abruptly — taper over ≥4 weeks minimum');
-    } else if (cardiac) {
-      lines.push('❤️ Cardiac disease detected → <strong>Sertraline 50mg OD</strong> — safest SSRI in IHD, arrhythmia, and heart failure');
-      lines.push('Lowest drug interaction profile of all SSRIs; ECG at baseline; avoid TCAs');
-    } else if (insomnia) {
-      lines.push('😴 Comorbid insomnia + poor appetite → Consider <strong>Mirtazapine 15mg nocte</strong> as an alternative to SSRI — sedating and appetite-stimulating');
-      lines.push('Or <strong>Sertraline 50mg OD</strong> with CBT-I (CBT for insomnia) added via NHS Talking Therapies');
-    } else {
-      lines.push('→ <strong>Sertraline 50mg OD</strong> (first-choice SSRI per NICE CG113; lowest drug interaction profile)');
-    }
-
-    if (depress) {
-      lines.push('🧠 Comorbid depression (PHQ-9 ≥10) confirmed → Sertraline treats both anxiety and depression simultaneously; <strong>2-week suicide review is mandatory</strong>');
-      warn.push('PHQ-9 item 9 must be reviewed; if suicidal ideation present with plan → same-day CRHT referral, do not send home with prescription alone');
-    }
-
-    lines.push('➕ Add <strong>NHS Talking Therapies referral</strong> for high-intensity CBT alongside medication — CBT + SSRI is superior to either alone');
-    lines.push('⏰ Arrange <strong>early mandatory review</strong> (within 1 week if under 30 or higher risk, otherwise 1–2 weeks) after SSRI initiation — check tolerability, suicide risk, and NHS Talking Therapies contact status');
-    lines.push('⚠️ Pre-warn: <em>"In the first 1–2 weeks, the anxiety may feel slightly worse — this is normal and temporary. Do not stop without contacting us first."</em>');
-
-    warn.push('Adequate, disorder-appropriate trial at therapeutic dose before declaring SSRI failure; continue for minimum 12 months after remission (50% relapse reduction)');
-  } else {
-    document.getElementById('ds-output').innerHTML = '<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above to see tailored GAD treatment recommendation</span>';
-    return;
-  }
-
-  document.getElementById('ds-output').innerHTML =
-    lines.map(l => '<div class="ds-line">'+l+'</div>').join('') +
-    warn.map(w => '<div class="ds-warn">⚠ '+w+'</div>').join('');
-}
+/* calcDrug(): interactive drug selector removed Oct 2026 (Route 1) — its guidance is shown as static text */
 </script>
 
 
@@ -2557,84 +2444,7 @@ function printSummary(){
   if(ac)ac.style.display=ad;
 }
 
-function __fw_unused_calcDrug(){
-  const dm=document.getElementById('ds-dm').checked,
-    ckd=document.getElementById('ds-ckd').checked,
-    cvd=document.getElementById('ds-cvd').checked,
-    afro=document.getElementById('ds-afro').checked,
-    age55=document.getElementById('ds-age55').checked,
-    hf=document.getElementById('ds-hf').checked,
-    angina=document.getElementById('ds-angina').checked,
-    af=document.getElementById('ds-af').checked,
-    cough=document.getElementById('ds-cough').checked;
-  const none=!dm&&!ckd&&!cvd&&!afro&&!age55&&!hf&&!angina&&!af&&!cough;
-  ['acei','arb','ccb','thiazide','spiro','ab'].forEach(id=>{
-    const el=document.getElementById('dc-'+id);
-    el.classList.remove('recommended','alt-rec');
-    const b=document.getElementById('rec-'+id);
-    b.style.cssText='';b.textContent='✓ Recommended';b.style.display='none';
-  });
-  if(none){
-    document.getElementById('ds-output').innerHTML='<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
-    return;
-  }
-  let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
-  if(hf){
-    main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
-  } else if(af){
-    main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
-    why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
-    alt=(dm||ckd)?'acei':'ccb';altLabel='+ ACEi or CCB for BP target';altWhy='Rate control alone may not achieve BP target — add Step 2 drug';
-  } else if(cough){
-    main='arb';mainLabel='Candesartan / Losartan (ARB)';
-    why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
-    alt='';altLabel='';altWhy='';
-  } else if(dm||ckd||cvd){
-    main=afro?'arb':'acei';mainLabel=afro?'Candesartan / losartan (ARB)':'Ramipril (ACEi)';
-    why=afro?'Type 2 diabetes (or CKD with albuminuria) in a person of Black African or African–Caribbean family origin: ARB in preference to an ACEi (NICE NG136; CKD per NICE NG203).':'Type 2 diabetes: ACEi or ARB first-line at any age (NICE NG136). CKD: ACEi/ARB if ACR >30 mg/mmol, or >3 mg/mmol with diabetes (NICE NG203). Established CVD alone: follow the NG136 age/ethnicity steps.';
-    alt=afro?'ccb':'arb';altLabel=afro?'+ Amlodipine (CCB) at Step 2':'Candesartan (ARB) — if ACEi cough develops';altWhy='ACEi and ARB give equal renoprotection. Never combine ACEi + ARB simultaneously.';
-  } else if(afro){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Black African or African–Caribbean family origin (no type 2 diabetes): CCB first-line at any age (NICE NG136). At Step 2 add an ARB in preference to an ACEi, or a thiazide-like diuretic.';
-    alt='';altLabel='';altWhy='';
-  } else if(age55){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Age ≥55 (no type 2 diabetes, not of Black African or African–Caribbean family origin): CCB first-line (NICE NG136).';
-    alt=angina?'acei':'thiazide';
-    altLabel=angina?'+ Ramipril (ACEi) at Step 2':'Indapamide (thiazide-like diuretic) — if a CCB is not suitable';
-    altWhy=angina?'Step 2 per NICE NG136: add an ACEi or ARB (or a thiazide-like diuretic); amlodipine also treats stable angina.':'If a CCB is not suitable (oedema, intolerance, heart failure or high risk of it), offer a thiazide-like diuretic (NICE NG136).';
-  } else {
-    main='acei';mainLabel='Ramipril (ACEi)';
-    why='Age <55, not of Black African or African–Caribbean family origin, no type 2 diabetes/CKD: ACEi (or ARB) is the Step 1 drug of choice (NICE NG136).';
-    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
-    altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
-  }
-
-  const m=document.getElementById('dc-'+main);
-  m.classList.add('recommended');
-  const mb=document.getElementById('rec-'+main);
-  mb.style.display='inline-block';
-
-  if(alt){
-    const a=document.getElementById('dc-'+alt);
-    a.classList.add('alt-rec');
-    const ab=document.getElementById('rec-'+alt);
-    ab.style.display='inline-block';
-    ab.style.background='#dbeafe';
-    ab.style.color='#1d4ed8';
-    ab.style.borderColor='#bfdbfe';
-    ab.textContent='↳ Alternative';
-  }
-
-  document.getElementById('ds-output').innerHTML=`
-    <div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: ${mainLabel}</div>
-    ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
-    <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
-    ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
-    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es 1–2 weeks after starting or up-titrating ACEi/ARB (NICE NG203)</div>`;
-}
+/* __fw_unused_calcDrug(): interactive drug selector removed Oct 2026 (Route 1) — its guidance is shown as static text */
 
 function calcScore(){
   var total=0, tasks=0, ro=0, gs=0;

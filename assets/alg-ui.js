@@ -40,7 +40,7 @@ var ALG_UI_SKIP = [];
     return x ? x.src.replace(/[^\/]*$/, '') : '../../assets/';
   })();
   var ROOT = ASSETS.replace(/assets\/$/, '');
-  var V = '?v=1';   /* bump with the files this script adds: alg-ui.css, rgp-ui-core.js, algorithm-leaflets.js */
+  var V = '?v=2';   /* bump with the files this script adds: alg-ui.css, rgp-ui-core.js, algorithm-leaflets.js */
 
   /* the stylesheet: a page may link it in <head> (no flash); otherwise load it here */
   if(!D.querySelector('link[href*="assets/alg-ui.css"]')){
@@ -138,6 +138,28 @@ var ALG_UI_SKIP = [];
       var foot = $('.alg-foot');
       if(foot && foot.parentNode){ foot.parentNode.insertBefore(refs, foot); var mw = getComputedStyle(foot).maxWidth; if(mw && mw !== 'none') refs.style.maxWidth = mw; }
       else flow.parentNode.insertBefore(refs, flow.nextSibling);
+      /* folds as one block, closed by default (owner decision, Oct 2026) */
+      var rh = refs.querySelector('.px-refs-head');
+      refs.classList.add('au-refs-fold'); refs.setAttribute('data-open', '0');
+      rh.setAttribute('role', 'button'); rh.setAttribute('tabindex', '0'); rh.setAttribute('aria-expanded', 'false'); rh.setAttribute('aria-controls', 'au-refs-body');
+      top.id = 'au-refs-body';
+      rh.appendChild(el('<span class="au-refs-chev" aria-hidden="true">▾</span>'));
+      var tog = function(on){ refs.setAttribute('data-open', on ? '1' : '0'); rh.setAttribute('aria-expanded', on ? 'true' : 'false'); };
+      rh.addEventListener('click', function(){ tog(refs.getAttribute('data-open') !== '1'); });
+      rh.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); tog(refs.getAttribute('data-open') !== '1'); } });
+      D.addEventListener('click', function(e){ var a = e.target.closest && e.target.closest('a[href="#au-refs"]'); if(a) tog(true); });
+      if(location.hash === '#au-refs') tog(true);
+      /* sits just above the closing "Educational use" disclaimer (owner decision, Oct 2026); re-checked after
+         the guided stepper has arranged the page */
+      var placeRefs = function(){
+        var disc = $$('.alg-foot').filter(function(f){ return /^\s*Educational use/i.test(f.textContent) && !(f.closest && f.closest('.st-zero')); }).pop();
+        if(!disc) return;
+        /* a page-level disclaimer caught inside a step card (raised CK) is moved to the end of the steps, so it never hides with that step */
+        var inStep = disc.closest && disc.closest('.node'); var fl = disc.closest && disc.closest('.alg-flow');
+        if(inStep && fl) fl.appendChild(disc);
+        if(refs.nextElementSibling !== disc) disc.parentNode.insertBefore(refs, disc);
+      };
+      placeRefs(); setTimeout(placeRefs, 0); W.addEventListener('load', function(){ setTimeout(placeRefs, 60); });
       return refs;
     }
 

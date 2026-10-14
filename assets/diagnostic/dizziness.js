@@ -11,7 +11,7 @@ RGPDiagnostic.register('dizziness', {
 
   xlink: {
     url: '../tools/triage-tool.html',
-    label: 'Dizziness with focal neuro / chest pain / palpitations triggers urgent referral pathways — confirm with the Triage Tool for vital-sign thresholds.',
+    label: 'Dizziness with focal neuro / chest pain / palpitations triggers urgent referral pathways — see the red-flag rules for the vital-sign thresholds the guidance sets.',
   },
 
   inputs: [

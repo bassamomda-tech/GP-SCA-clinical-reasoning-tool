@@ -552,11 +552,11 @@
 
   /* ---------- suggestions ---------- */
   const SUGGESTIONS = [
-    { ic:'🩺', t:'First-line for newly diagnosed hypertension in a 52-year-old?' },
-    { ic:'🧠', t:'What are the red flags in a patient presenting with headache?' },
-    { ic:'🩸', t:'Man of 67 with unexplained weight loss and iron-deficiency anaemia — what now?' },
-    { ic:'💊', t:'Stepwise inhaler management for COPD with frequent exacerbations' },
-    { ic:'🌸', t:'How do I manage post-menopausal bleeding in a 58-year-old?' },
+    { ic:'🩺', t:'What does NICE NG136 say about first-line treatment for hypertension under 55?' },
+    { ic:'🧠', t:'What red flags for headache does UK guidance list?' },
+    { ic:'🩸', t:'What does NICE NG12 say about unexplained weight loss and iron-deficiency anaemia?' },
+    { ic:'💊', t:'What does NICE say about inhaler steps in COPD with frequent exacerbations?' },
+    { ic:'🌸', t:'What does NICE NG12 say about post-menopausal bleeding?' },
     { ic:'🎓', t:'How is the "Relating to others" domain marked in the SCA?' },
   ];
   function buildSuggestions(){

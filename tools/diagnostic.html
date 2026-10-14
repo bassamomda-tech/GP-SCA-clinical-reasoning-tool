@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Diagnostic Tool · GP / SCA Clinical Reasoning</title>
-<meta name="description" content="Diagnostic tool — how urgent and what is it, by presenting complaint: live triage and differential work-up, or the structured visual pathway.">
+<title>Diagnostic reference · GP / SCA Clinical Reasoning</title>
+<meta name="description" content="Diagnostic reference — what the guidance says about each presenting complaint: red flags, urgency thresholds and the differential, as practice reference packs or structured visual pathways. Education and reference.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reasoning GP">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Diagnostic Tool">
-<meta property="og:description" content="Diagnostic tool — how urgent and what is it, by presenting complaint: live triage and differential work-up, or the structured visual pathway.">
+<meta property="og:title" content="Diagnostic reference">
+<meta property="og:description" content="Diagnostic reference — what the guidance says about each presenting complaint: red flags, urgency thresholds and the differential, as practice reference packs or structured visual pathways. Education and reference.">
 <meta property="og:url" content="https://gpreasoning.uk/tools/diagnostic.html">
 <meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
 <link rel="canonical" href="https://gpreasoning.uk/tools/diagnostic.html">
@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="../assets/site.css?v=14" />
 <link rel="stylesheet" href="../assets/triage.css" />
 <link rel="stylesheet" href="../assets/diagnostic.css" />
-<link rel="stylesheet" href="../assets/workup.css" />
+<link rel="stylesheet" href="../assets/workup.css?v=20261014ref" />
 
 <style>
   .tool-head{padding:28px 0 6px;border-bottom:1px solid var(--line);margin-bottom:24px}
@@ -136,22 +136,23 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
         <span>Tools</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
-        <span style="color:var(--ink-2)">Diagnostic Tool</span>
+        <span style="color:var(--ink-2)">Diagnostic reference</span>
       </div>
 
       <header class="tool-head" data-screen-label="Tool head">
-        <span class="eyebrow">Reasoning Tool · Triage + Differential, by presentation</span>
-        <h1>Diagnostic tool — <em style="font-style:italic;color:var(--teal);font-weight:500">how urgent</em> &amp; <em style="font-style:italic;color:var(--teal);font-weight:500">what is it</em>, by presenting complaint</h1>
-        <p>Pick a presenting complaint below. Selected presentations open a <strong>live triage + differential workup</strong> — tick what the patient describes and the engine surfaces every NICE / Macmillan triage rule that fires and ranks the differential live. Every other presentation opens its <strong>structured visual pathway</strong>.</p>
+        <span class="eyebrow">Education &amp; reference · Red flags + differential, by presentation</span>
+        <h1>Diagnostic reference — <em style="font-style:italic;color:var(--teal);font-weight:500">red flags</em> &amp; <em style="font-style:italic;color:var(--teal);font-weight:500">the differential</em>, by presenting complaint</h1>
+        <p>Pick a presenting complaint below. Selected presentations open a <strong>practice reference pack</strong> for learning and revision: the published NICE / Macmillan red-flag and urgency rules for that presentation, then each differential with its key features, discriminators and what the guidance says, in a fixed order. There is a side-by-side <strong>Compare</strong> view and a <strong>Self-test</strong> checklist. Nothing is calculated from what you tick, and it does not diagnose or triage anyone. Every other presentation opens its <strong>structured visual pathway</strong>.</p>
+        <div data-ref-notice></div>
 
         <div class="wu-explainer">
           <div class="wu-ex is-tr">
-            <b>🚦 Triage</b>
-            <p>NICE NG12 / Macmillan rapid-referral / NICE thresholds. Headline = highest-acuity rule fired; every fired rule listed by tier with patient phrase, copy-paste referral text and proforma link.</p>
+            <b>🚦 Red flags &amp; urgency rules</b>
+            <p>NICE NG12 / Macmillan rapid-referral / NICE thresholds. Every rule in the pack is listed by tier — emergency, suspected cancer pathway, urgent, routine — with its patient phrase, source and proforma link.</p>
           </div>
           <div class="wu-ex is-dx">
             <b>🩺 Differential</b>
-            <p>Feature-weighted ranking against ICHD-3 / SNNOOP10 / TiTrATE / NICE criteria. Three views: % likelihood, Most-likely / Consider / Don't-miss buckets, or Pro / Con per diagnosis. Red-flag diagnoses always surface when their triggers fire.</p>
+            <p>Each differential in the pack's own order — common, less common and don't-miss — with the key features to ask about, the features that point towards or away (ICHD-3 / SNNOOP10 / TiTrATE / NICE criteria), the key examination finding and the next step the guidance gives. Not ranked or scored.</p>
           </div>
         </div>
       </header>
@@ -160,7 +161,7 @@
       <section class="dxp" data-screen-label="Presentation picker">
         <div class="dxp-head">
           <h2>Choose a <em>presenting complaint</em></h2>
-          <p>Live workups run the interactive triage + differential engine. The remaining presentations open their structured algorithm pathway in the Algorithms library.</p>
+          <p>Practice reference packs show the red-flag rules and differential reasoning from the guidance. The remaining presentations open their structured algorithm pathway in the Algorithms library.</p>
         </div>
 
         <div class="dxp-controls">
@@ -171,7 +172,7 @@
           <span class="dxp-count"><b id="dxShown">—</b> / <span id="dxTotal">—</span> presentations</span>
         </div>
         <div class="dxp-legend">
-          <span><i class="l-live"></i> Live triage + differential workup</span>
+          <span><i class="l-live"></i> Practice reference pack (red flags + differential)</span>
           <span><i class="l-path"></i> Visual algorithm pathway</span>
         </div>
 
@@ -181,33 +182,33 @@
 
       <!-- ===== Live workup engine ===== -->
       <section class="dxp-live">
-        <div class="dxp-live-head"><span class="dot"></span><h2>Live workup</h2></div>
-        <p class="dxp-live-sub">Showing the interactive engine for the selected presentation. Pick another <strong>live</strong> presentation above to switch — your inputs reset for the new complaint.</p>
-        <!-- The combined engine. Initial topic = tiredness (has both triage + dx). -->
+        <div class="dxp-live-head"><span class="dot"></span><h2>Practice reference pack</h2></div>
+        <p class="dxp-live-sub">Showing the reference pack for the selected presentation. Pick another <strong>teal</strong> presentation above to switch.</p>
+        <!-- The reference view. Initial topic = tiredness (has both red-flag rules + differential). -->
         <div data-workup="tiredness"></div>
       </section>
 
       <div class="tool-howto" data-screen-label="How to use">
         <div>
           <h4>1 · Pick the presenting complaint</h4>
-          <p>Browse or search the grouped list. Teal cards run the live workup; the rest open a structured visual pathway. A live card also offers a small “pathway ↗” link to its algorithm.</p>
+          <p>Browse or search the grouped list. Teal cards open a practice reference pack; the rest open a structured visual pathway. A teal card also offers a small “pathway ↗” link to its algorithm.</p>
         </div>
         <div>
-          <h4>2 · Tick what you've found</h4>
-          <p>For live workups: symptoms · vitals · blood results · context. The merged input panel shows every feature either engine needs — ticked once, used by both.</p>
+          <h4>2 · Read the red flags</h4>
+          <p>Every red-flag and urgency rule in the pack, grouped by tier, with its source and the wording to explain it.</p>
         </div>
         <div>
-          <h4>3 · Read the verdict</h4>
-          <p>Triage verdict sits on top — that's the safety net. The differential ranks beneath. Switch the DDx between % / Buckets / Pro-Con from the top-right.</p>
+          <h4>3 · Study the differential</h4>
+          <p>Each diagnosis card gives the key features, the discriminators, the key examination finding, what the guidance says next, the NICE link and the matching full case. Use <b>Compare</b> to see them side by side.</p>
         </div>
         <div>
-          <h4>4 · Act on it</h4>
-          <p>Expand any diagnosis card for the key examination finding, the next investigation that confirms/refutes, the NICE link, and the matching full case on Reasoning GP.</p>
+          <h4>4 · Test yourself</h4>
+          <p>The <b>Self-test</b> checklist hides the teaching note for each feature until you tick it. It never adds up or ranks your ticks.</p>
         </div>
       </div>
 
       <div class="footer-disclaimer" style="margin-top:50px">
-        <strong>Educational use only.</strong> The Diagnostic Tool surfaces published NICE / Macmillan triage thresholds (triage view) and tunes feature weights to ICHD-3 / SNNOOP10 / TiTrATE / NICE criteria (differential view). Visual pathways are structured reference flows anchored to NICE guidance. None of this is a validated clinical decision rule — always confirm with full history, examination, and your local pathway.
+        <strong>Education and reference only.</strong> The diagnostic reference shows published NICE / Macmillan red-flag and urgency thresholds and a teaching summary of each differential (ICHD-3 / SNNOOP10 / TiTrATE / NICE criteria). It does not score, rank or calculate anything from your answers. Visual pathways are structured reference flows anchored to NICE guidance. None of this is a validated clinical decision rule — always confirm with full history, examination, and your local pathway.
       </div>
 
     </div>
@@ -220,7 +221,7 @@
 <script src="../assets/filter-rail.js"></script>
 
 <!-- Triage engine + topic data -->
-<script src="../assets/triage.js?v=20260927s18"></script>
+<script src="../assets/triage.js?v=20261014r1"></script>
 <script src="../assets/triage/tiredness.js?v=20260927s18"></script>
 <script src="../assets/triage/hypertension.js?v=20260927s18"></script>
 <script src="../assets/triage/type-2-diabetes.js?v=20260927s18"></script>
@@ -232,10 +233,10 @@
 <script src="../assets/triage/breathlessness.js?v=20260924d"></script>
 
 <!-- Diagnostic engine + topic data -->
-<script src="../assets/diagnostic.js?v=20260927s18"></script>
-<script src="../assets/diagnostic/headache.js?v=20260927s17"></script>
-<script src="../assets/diagnostic/dizziness.js?v=20260927s17"></script>
-<script src="../assets/diagnostic/tatt.js?v=20260927s18"></script>
+<script src="../assets/diagnostic.js?v=20261014r1"></script>
+<script src="../assets/diagnostic/headache.js?v=20261014r1"></script>
+<script src="../assets/diagnostic/dizziness.js?v=20261014r1"></script>
+<script src="../assets/diagnostic/tatt.js?v=20261014r1"></script>
 <script src="../assets/diagnostic/hypertension.js?v=20260927s17"></script>
 <script src="../assets/diagnostic/type-2-diabetes.js?v=20260927s17"></script>
 <script src="../assets/diagnostic/asthma.js?v=20260927s17"></script>
@@ -370,7 +371,7 @@
 <script src="../assets/dx-packs/psychosis.js?v=20260924d"></script>
 
 <!-- Workup orchestrator (consumes both registries) -->
-<script src="../assets/workup.js?v=20260927s18"></script>
+<script src="../assets/workup.js?v=20261014ref"></script>
 
 <!-- Presentation index (all algorithm cases + interactive topics) -->
 <script src="../assets/diagnostic-cases.js"></script>
@@ -399,7 +400,7 @@
       ? RGP_RESOLVE_PATHWAY(it.slug)
       : { url: 'algorithms/' + it.slug + '.html', kind: 'pathway', retired: false };
     const badge = live
-      ? '<span class="dxp-badge is-live">Live workup</span>'
+      ? '<span class="dxp-badge is-live">Practice reference</span>'
       : (R.retired
           ? '<span class="dxp-badge">Protocol</span>'
           : '<span class="dxp-badge">Visual pathway</span>');

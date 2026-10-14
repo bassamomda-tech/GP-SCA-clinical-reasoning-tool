@@ -29,7 +29,7 @@
   var el = document.querySelector('script[src*="assets/site.js"], link[href*="assets/site.css"]');
   var u = el ? (el.getAttribute('src') || el.getAttribute('href') || '') : '';
   var m = u.match(/^(.*?)assets\//);
-  ['analytics.js?v=1', 'seo-jsonld.js?v=1'].forEach(function(f){
+  ['analytics.js?v=1', 'seo-jsonld.js?v=1', 'ref-notice.js?v=1'].forEach(function(f){
     if (document.querySelector('script[src*="assets/' + f.split('?')[0] + '"]')) return;
     var s = document.createElement('script');
     s.src = (m ? m[1] : '') + 'assets/' + f;
@@ -98,7 +98,7 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
       // Optional per-call knobs (role-play tools): nosearch disables the web-search
       // tool server-side (a simulated patient must never stall to search); temperature
       // lets the patient vary naturally between runs (clinical answers stay at 0).
-      const extra = {};
+      const extra = { feature: _feat };
       if (arg && !Array.isArray(arg)) {
         if (arg.nosearch === true) extra.nosearch = true;
         if (typeof arg.temperature === 'number') extra.temperature = arg.temperature;
@@ -127,7 +127,7 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
       const messages = Array.isArray(arg) ? arg : (arg && arg.messages) ? arg.messages
         : [{ role:'user', content:String(arg||'') }];
       const cacheKey = (arg && !Array.isArray(arg) && arg.cacheKey) ? String(arg.cacheKey) : null;
-      const extra = {};
+      const extra = { feature: _feat };
       if (arg && !Array.isArray(arg)) {
         if (arg.nosearch === true) extra.nosearch = true;
         if (typeof arg.temperature === 'number') extra.temperature = arg.temperature;
@@ -636,7 +636,7 @@ function renderSidebar(host, opts={}){
 
       <a class="sb-item ${activeId==='__algorithms'?'active':''}" href="${PRE}tools/algorithms.html" data-search="algorithms pathways flowchart decision tree quick visual print printable diagnosis triage">
         <span class="sb-i-dot" style="background:var(--rust)"></span>
-        <span class="sb-i-text"><b>Diagnostic Algorithms</b><div class="sb-i-meta">200+ visual pathways · diagnose &amp; triage</div></span>
+        <span class="sb-i-text"><b>Diagnostic Algorithms</b><div class="sb-i-meta">200+ visual pathways · red flags &amp; differential</div></span>
       </a>
 
       <a class="sb-item ${activeId==='__tools-management'?'active':''}" href="${PRE}tools/management.html" data-search="management algorithms stepwise treatment drug ladder already diagnosed confirmed monitoring follow-up safety netting referral hypertension">
@@ -646,11 +646,11 @@ function renderSidebar(host, opts={}){
 
       <div class="sb-section">
         <div class="sb-section-t">Tools<span class="sb-count">7</span></div>
-        <a class="sb-item ${activeId==='__tools-decision'?'active':''}" href="${PRE}tools/decision-support.html" data-search="decision support diagnostic tool workup triage differential symptom presentation 2ww ng12 medication chooser drug nice bnf which drug lab results actioning blood tests fbc lft tft hba1c interpretation diagnose investigate treat">
+        <a class="sb-item ${activeId==='__tools-decision'?'active':''}" href="${PRE}tools/decision-support.html" data-search="guidance explorer decision support diagnostic tool workup triage differential symptom presentation 2ww ng12 medication chooser drug nice bnf which drug lab results actioning blood tests fbc lft tft hba1c interpretation diagnose investigate treat">
           <span class="sb-i-dot" style="background:var(--rust)"></span>
           <span class="sb-i-text">
-            <b>Decision Support</b>
-            <div class="sb-i-meta">Diagnose → labs → medication, one flow</div>
+            <b>Guidance Explorer</b>
+            <div class="sb-i-meta">Work-up · lab results · medication options — reference</div>
           </span>
         </a>
         <a class="sb-item ${activeId==='__tools-prescribing'?'active':''}" href="${PRE}tools/prescribing.html" data-search="prescribing ready prescriptions rx h pylori migraine gout shingles emergency contraception eligibility exemption fp92a medex matex ppc fp10 controlled drugs how to write otc not to prescribe rag traffic light gmmmg formulary sick day rules steroid emergency metformin sglt2 pause">
@@ -817,10 +817,10 @@ window.RGP_wireMobileToggle = wireMobileToggle;
 
 let RGP_TOOLS = [
   {id:'__tools-guide',     label:'How to use this site',   meta:'Start here · framework · the four layers · tools', path:'tools/clinic-guide.html', icon:'🧭'},
-  {id:'__tools-decision',  label:'Decision Support',       meta:'Diagnose → labs → medication, one flow',  path:'tools/decision-support.html',   icon:'🩺'},
+  {id:'__tools-decision',  label:'Guidance Explorer',      meta:'Work-up · lab results · medication options — reference',  path:'tools/decision-support.html',   icon:'🩺'},
   {id:'__tools-prescribing',label:'Prescribing',           meta:'Ready Rx · eligibility/FP10/RAG · sick-day rules', path:'tools/prescribing.html', icon:'💊'},
   {id:'__tools-admin',     label:'GP Admin',               meta:'Fit Note · DVLA · forms & certificates',  path:'tools/gp-admin.html',           icon:'📋'},
-  {id:'__tools-spine',     label:'Consultation Spine',     meta:'Complaint → coded, safety-netted record',  path:'tools/consultation-spine.html', icon:'🧬'},
+  {id:'__tools-spine',     label:'Consultation Spine',     meta:'Consultation structure by presentation — reference',  path:'tools/consultation-spine.html', icon:'🧬'},
   {id:'__tools-scribe',    label:'Consult Scribe',         meta:'Record → EMIS / SystmOne / SOAP note · AI', path:'tools/scribe.html',           icon:'🎙️'},
   {id:'__tools-calc',      label:'Medical Calculators',    meta:'55 scores · CV · VTE · MH · renal & more', path:'tools/calculators.html',        icon:'🧮'},
   {id:'__tools-exam',      label:'Examinations',           meta:'Indications · technique · interpretation · red flags', path:'tools/examinations.html',  icon:'🩻'},
@@ -1024,7 +1024,7 @@ function renderTopNav(activeId){
   const mmHead = (label, count) =>
     `<div class="rgp-mm-head" style="grid-column:1/-1;display:flex;align-items:baseline;gap:9px;margin:13px 2px 1px;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)"><span>${label}</span>${count!=null?`<span style="color:var(--rust);font-weight:800">${count}</span>`:''}</div>`;
   const coreTotal = algTotal + mgmtTotal;
-  const coreMega = mmHead('Pathways \u00b7 diagnose &amp; triage', algDisp) + algMega
+  const coreMega = mmHead('Pathways \u00b7 red flags &amp; differential', algDisp) + algMega
                  + mmHead('Protocols \u00b7 manage', mgmtDisp) + mgmtMega;
   const refTotal = totalCases + ARTICLES_N;
   const refArticles = `
@@ -1048,7 +1048,7 @@ function renderTopNav(activeId){
       <span class="rgp-mm-tool-ic">🧭</span><span><b>Open Clinical Compass</b><small>The full diagnose → manage hub</small></span>
     </a>
     <a class="rgp-mm-tool" href="${PRE}tools/algorithms.html">
-      <span class="rgp-mm-tool-ic">🗺️</span><span><b>Pathways</b><small>${algDisp} pathways · diagnose &amp; triage</small></span>
+      <span class="rgp-mm-tool-ic">🗺️</span><span><b>Pathways</b><small>${algDisp} pathways · red flags &amp; differential</small></span>
     </a>
     <a class="rgp-mm-tool" href="${PRE}tools/management.html">
       <span class="rgp-mm-tool-ic">💠</span><span><b>Protocols</b><small>${mgmtDisp} protocols · manage the condition</small></span>
@@ -2842,12 +2842,12 @@ function injectFooter(){
         <div class="rgp-mv">
           <div class="rgp-mv-eyebrow">Our mission</div>
           <h3>Deliver high-quality care in a <em>practical</em> way — built on understanding and evidence.</h3>
-          <p>Help the whole primary care team — in busy clinics, urgent care and out-of-hours, in teaching, tutorials and revision — turn trusted UK guidance into clear, confident decisions at the point of care. When you genuinely understand the reasoning, good day-to-day practice follows, and so does success in exams like the SCA.</p>
+          <p>Help the whole primary care team — in busy clinics, urgent care and out-of-hours, in teaching, tutorials and revision — turn trusted UK guidance into clear understanding that supports their own clinical judgement. When you genuinely understand the reasoning, good day-to-day practice follows, and so does success in exams like the SCA.</p>
         </div>
         <div class="rgp-mv">
           <div class="rgp-mv-eyebrow">Our vision</div>
           <h3>A primary care team that reasons from <em>understanding and evidence</em> — by habit.</h3>
-          <p>Every case mapped to NICE or named UK guidance, every tool surfacing the reasoning behind the action, every recommendation linked back to a clear, repeatable framework — so safe, high-quality care reaches every patient, and strong exam performance is simply a reflection of how the team already practises.</p>
+          <p>Every case mapped to NICE or named UK guidance, every tool showing what the guidance says and the reasoning behind it, every summary linked back to its source and a clear, repeatable framework — so safe, high-quality care reaches every patient, and strong exam performance is simply a reflection of how the team already practises.</p>
         </div>
       </div>
     </section>
@@ -3078,6 +3078,7 @@ function injectFooter(){
           <li><a href="${PRE}pages/privacy.html">Privacy Policy</a></li>
           <li><a href="${PRE}pages/terms.html">Terms of Use</a></li>
           <li><a href="${PRE}pages/disclaimer.html">Medical Disclaimer</a></li>
+          <li><a href="${PRE}pages/intended-purpose.html">Intended purpose</a></li>
         </ul>
       </details>
       </div>
@@ -3085,9 +3086,9 @@ function injectFooter(){
 
     <div class="rgp-foot-legal">
       <div class="rgp-foot-legal-inner">
-        <div class="rgp-foot-legal-copy">© ${new Date().getFullYear()} BDYAM Medical Services Ltd · All rights reserved.</div>
-        <p class="rgp-foot-legal-company">Reasoning GP is a trading name of BDYAM Medical Services Ltd, registered in England &amp; Wales (company no. 16892799).</p>
-        <p class="rgp-foot-legal-disc">An independent clinical-reasoning and medical-education platform for UK healthcare professionals. Educational use only — it does not replace clinical judgement or official national/local guidance; verify all information against current standards.</p>
+        <!-- Clinical-judgement line + company / ICO line: written by assets/ref-notice.js,
+             where the four company values are set once (RGP_LEGAL). -->
+        <div class="rgp-legal-slot" data-rgp-legal><p class="rgp-foot-legal-disc">Education and reference for healthcare professionals. It supports, but never replaces, clinical judgement — always check against the source guidance and the patient in front of you. <a href="${PRE}pages/intended-purpose.html" style="color:#fff">Intended purpose →</a></p></div>
         <div class="rgp-foot-legal-links">
           <a href="mailto:bassamomda@gmail.com">Contact</a>
           <a href="https://wa.me/447543774533" target="_blank" rel="noopener noreferrer">WhatsApp</a>

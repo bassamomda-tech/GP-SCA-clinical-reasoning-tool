@@ -5,7 +5,7 @@
    ============================================ */
 RGPLabs.register('generic', {
   title: 'Lab results — generic adult primary care',
-  subtitle: 'Enter values (or paste from EMIS / SystmOne). Tool surfaces per-result actions: emergency, suspected cancer pathway referral, urgent, treat, drug review, repeat, refer, recall, annotate — each anchored to UK guidance.',
+  subtitle: 'Reference: threshold bands by test and what UK guidance says at each band — emergency, suspected cancer pathway referral, urgent, treat, drug review, repeat, refer, recall, annotate — each anchored to its source.',
   guideline: 'NICE NG12 (updated April 2026) · NG203 · NG145 · NG28 · BSH · UK Kidney Association',
 
   context: [

@@ -48,6 +48,13 @@ html.au .alg-flow .rftile.u-tile-routine{border-left-color:var(--u-routine)} htm
 /* ---------- References & sources (end of page) ---------- */
 .au-refs{max-width:720px;margin:28px auto 0;padding:20px 20px 12px;background:#fbf8f1;border:1px solid #e2dfd6;border-radius:14px;font-family:'DM Sans',system-ui,sans-serif}
 .au-refs .px-refs-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+/* folds as one block, closed by default (Oct 2026) */
+.au-refs.au-refs-fold > .px-refs-head{cursor:pointer;margin-bottom:0}
+.au-refs.au-refs-fold[data-open="1"] > .px-refs-head{margin-bottom:14px}
+.au-refs.au-refs-fold > .px-refs-head:focus-visible{outline:3px solid #f0b429;outline-offset:3px;border-radius:10px}
+.au-refs.au-refs-fold[data-open="0"] > .px-refs-top{display:none}
+.au-refs-chev{margin-left:auto;color:#6b6760;font-size:14px;transition:transform .2s}
+.au-refs.au-refs-fold[data-open="0"] .au-refs-chev{transform:rotate(-90deg)}
 .au-refs .px-refs-ic{width:38px;height:38px;border-radius:11px;background:#0c4a47;color:#f3ede0;display:grid;place-items:center;font-family:'Source Serif 4',Georgia,serif;font-size:20px;flex:none}
 .au-refs .px-refs-k{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6b6760}
 .au-refs h2{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:22px;line-height:1.15;color:#1a1917;margin:0}

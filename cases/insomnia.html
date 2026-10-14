@@ -435,24 +435,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider" id="drugs">7E — Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — see drug cards below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-ins-cbti" onchange="calcDrug()"> CBT-I first-line (chronic insomnia)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ins-acute" onchange="calcDrug()"> Acute / short-term insomnia (&lt;4 weeks)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ins-elderly" onchange="calcDrug()"> Age ≥55</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ins-depressed" onchange="calcDrug()"> Depression + insomnia</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ins-zdrug" onchange="calcDrug()"> Z-drug dependence / deprescribing</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ins-osa" onchange="calcDrug()"> OSA suspected</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Medication selection guide</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Chronic insomnia: CBT-I first-line (BAP consensus; NICE HTG624, formerly MTG70) — NHS Talking Therapies or Sleepio. If short-term hypnotic needed: Zopiclone 7.5mg (3.75mg in older people or hepatic/renal impairment — BNF); usually a few days, normally ≤2 weeks; defined quantity and stop date. Age ≥55: melatonin MR is licensed but not routinely supported locally. Chronic insomnia, CBT-I tried and not worked or unavailable: daridorexant (NICE TA922). Depression + insomnia: Mirtazapine (sedating, 15–45mg nocte) or Sertraline (activating — give in morning). Z-drug dependence: patient-paced taper (often 5–10% every 2–4 weeks); CBT-I alongside. OSA suspected: assess per NICE NG202; sleep study; avoid hypnotics pending assessment — respiratory depression risk.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>CBT-I first-line (chronic insomnia)</li><li>Acute / short-term insomnia (&lt;4 weeks)</li><li>Age ≥55</li><li>Depression + insomnia</li><li>Z-drug dependence / deprescribing</li><li>OSA suspected</li></ul></div><div class="ds-result"><div class="ds-result-title">Medication selection guide</div><div><span style="font-size:12.5px;color:var(--g)">Chronic insomnia: CBT-I first-line (BAP consensus; NICE HTG624, formerly MTG70) — NHS Talking Therapies or Sleepio. If short-term hypnotic needed: Zopiclone 7.5mg (3.75mg in older people or hepatic/renal impairment — BNF); usually a few days, normally ≤2 weeks; defined quantity and stop date. Age ≥55: melatonin MR is licensed but not routinely supported locally. Chronic insomnia, CBT-I tried and not worked or unavailable: daridorexant (NICE TA922). Depression + insomnia: Mirtazapine (sedating, 15–45mg nocte) or Sertraline (activating — give in morning). Z-drug dependence: patient-paced taper (often 5–10% every 2–4 weeks); CBT-I alongside. OSA suspected: assess per NICE NG202; sleep study; avoid hypnotics pending assessment — respiratory depression risk.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F — Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">

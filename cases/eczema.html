@@ -433,24 +433,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select site and severity &#8212; eczema TCS selection guide</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-ec-face" onchange="calcDrug()"> Face or eyelids</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ec-body" onchange="calcDrug()"> Body or limbs (moderate severity &#8212; Mrs. Mensah)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ec-infected" onchange="calcDrug()"> Signs of bacterial superinfection</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ec-phobia" onchange="calcDrug()"> Steroid phobia / previous TCS atrophy</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ec-severe" onchange="calcDrug()"> Severe (POEM &#8805;17); failed topical treatment</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ec-phn" onchange="calcDrug()"> Eczema herpeticum features</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Eczema treatment guidance</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Mrs. Mensah (POEM 16; body and limbs): betamethasone valerate 0.1% (Betnovate) ointment &#215;2/day for up to 14 days on body and limbs; FTU (arms: 3 FTU each; trunk front 7 FTU); emollient 500g/week (Epaderm ointment body; Diprobase gel daytime/work). Face only: hydrocortisone 1% &#215;2/day &#8212; maximum 7 days. Hands: betamethasone 0.1% ointment (back of hands; NOT web spaces) + barrier cream (Diprobase gel) during work shift. Step down to emollient alone when clear. Proactive TCS &#215;2/week on prone areas when in remission. Written eczema action plan provided. Eczema herpeticum: systemic aciclovir now + same-day dermatology advice &#8212; do NOT apply TCS. Bacterial superinfection: antibiotic only if needed (NG190; fusidic acid 2% &#215;3/day for 5&#8211;7 days if localised) before stepping up TCS. Steroid phobia: tacrolimus 0.1% (Protopic) as alternative to potent TCS on face; TCI preferred for face and flexures to avoid atrophy.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Face or eyelids</li><li>Body or limbs (moderate severity &#8212; Mrs. Mensah)</li><li>Signs of bacterial superinfection</li><li>Steroid phobia / previous TCS atrophy</li><li>Severe (POEM &#8805;17); failed topical treatment</li><li>Eczema herpeticum features</li></ul></div><div class="ds-result"><div class="ds-result-title">Eczema treatment guidance</div><div><span style="font-size:12.5px;color:var(--g)">Mrs. Mensah (POEM 16; body and limbs): betamethasone valerate 0.1% (Betnovate) ointment &#215;2/day for up to 14 days on body and limbs; FTU (arms: 3 FTU each; trunk front 7 FTU); emollient 500g/week (Epaderm ointment body; Diprobase gel daytime/work). Face only: hydrocortisone 1% &#215;2/day &#8212; maximum 7 days. Hands: betamethasone 0.1% ointment (back of hands; NOT web spaces) + barrier cream (Diprobase gel) during work shift. Step down to emollient alone when clear. Proactive TCS &#215;2/week on prone areas when in remission. Written eczema action plan provided. Eczema herpeticum: systemic aciclovir now + same-day dermatology advice &#8212; do NOT apply TCS. Bacterial superinfection: antibiotic only if needed (NG190; fusidic acid 2% &#215;3/day for 5&#8211;7 days if localised) before stepping up TCS. Steroid phobia: tacrolimus 0.1% (Protopic) as alternative to potent TCS on face; TCI preferred for face and flexures to avoid atrophy.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -802,14 +786,14 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div><!-- /sum-3col -->
     <div class="dqp-wrap">
-      <div class="dqp-hdr">&#128138; Treatment Quick-Pick by Scenario</div>
+      <div class="dqp-hdr">&#128138; Treatment summary — see the medication options in 7E by Scenario</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-ec-face')">&#128084; Face / eyelids</button>
-        <button class="dqp-btn" onclick="showDrug('ds-ec-body')">&#128084; Body / limbs (moderate)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-ec-infected')">&#129688; Infected eczema</button>
-        <button class="dqp-btn" onclick="showDrug('ds-ec-phobia')">&#9888; Steroid phobia / TCI</button>
-        <button class="dqp-btn" onclick="showDrug('ds-ec-severe')">&#128308; Severe (POEM &#8805;17)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-ec-phn')">&#128308; Eczema herpeticum</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128084; Face / eyelids</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128084; Body / limbs (moderate)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129688; Infected eczema</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#9888; Steroid phobia / TCI</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128308; Severe (POEM &#8805;17)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128308; Eczema herpeticum</a>
       </div>
     </div>
   </div>

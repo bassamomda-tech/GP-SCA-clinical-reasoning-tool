@@ -417,20 +417,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Decision aid</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top"><h3>Select breast presentation for management guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-br-lump30" onchange="calcDrug()"> Unexplained breast lump; age &ge;30</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-br-lump30m" onchange="calcDrug()"> Unexplained breast lump; age &lt;30</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-br-mastalgia" onchange="calcDrug()"> Cyclical mastalgia; no lump; normal exam</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-br-mastitis" onchange="calcDrug()"> Lactational mastitis</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-br-discharge" onchange="calcDrug()"> Nipple discharge (characterise type)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-br-family" onchange="calcDrug()"> High-risk family history assessment</label>
-        </div>
-      </div>
-      <div class="ds-result"><div class="ds-result-title">Breast management guidance</div><div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Age &ge;30 + unexplained lump = suspected cancer pathway referral (NICE NG12); do not order GP imaging; clinical description in referral letter; cancer anxiety addressed; family history assessed; breast awareness advice. Age &lt;30 + unexplained lump: NICE NG12 &#8212; consider non-urgent referral (refer urgently if other features cause clinical concern). Cyclical mastalgia (no lump): reassurance + pain diary + well-fitted bra + simple analgesia + topical NSAID if suitable (evening primrose oil not routinely recommended). Severe and refractory after 3&#8211;6 months: routine breast clinic referral (danazol and tamoxifen are specialist-only). Lactational mastitis: flucloxacillin 500mg QDS 10&#8211;14 days; CONTINUE breastfeeding to the baby&#8217;s needs (no extra pumping); cold packs; paracetamol + ibuprofen (safe in breastfeeding); review 48&#8211;72 hours (abscess safety-net). Nipple discharge: woman &ge;50 with unilateral discharge = suspected cancer pathway referral; blood-stained unilateral under 50 = breast clinic referral. Bilateral milky: prolactin; TSH; drug history; pregnancy test; endocrinology if hyperprolactinaemia confirmed. Family history: refer to familial cancer service if: FDR &lt;40; bilateral; male breast; breast+ovarian; Ashkenazi Jewish. Do NOT order BRCA without genetic counselling.</span></div></div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Unexplained breast lump; age &ge;30</li><li>Unexplained breast lump; age &lt;30</li><li>Cyclical mastalgia; no lump; normal exam</li><li>Lactational mastitis</li><li>Nipple discharge (characterise type)</li><li>High-risk family history assessment</li></ul></div><div class="ds-result"><div class="ds-result-title">Breast management guidance</div><div><span style="font-size:12.5px;color:var(--g)">Age &ge;30 + unexplained lump = suspected cancer pathway referral (NICE NG12); do not order GP imaging; clinical description in referral letter; cancer anxiety addressed; family history assessed; breast awareness advice. Age &lt;30 + unexplained lump: NICE NG12 &#8212; consider non-urgent referral (refer urgently if other features cause clinical concern). Cyclical mastalgia (no lump): reassurance + pain diary + well-fitted bra + simple analgesia + topical NSAID if suitable (evening primrose oil not routinely recommended). Severe and refractory after 3&#8211;6 months: routine breast clinic referral (danazol and tamoxifen are specialist-only). Lactational mastitis: flucloxacillin 500mg QDS 10&#8211;14 days; CONTINUE breastfeeding to the baby&#8217;s needs (no extra pumping); cold packs; paracetamol + ibuprofen (safe in breastfeeding); review 48&#8211;72 hours (abscess safety-net). Nipple discharge: woman &ge;50 with unilateral discharge = suspected cancer pathway referral; blood-stained unilateral under 50 = breast clinic referral. Bilateral milky: prolactin; TSH; drug history; pregnancy test; endocrinology if hyperprolactinaemia confirmed. Family history: refer to familial cancer service if: FDR &lt;40; bilateral; male breast; breast+ovarian; Ashkenazi Jewish. Do NOT order BRCA without genetic counselling.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -782,12 +770,12 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="dqp-wrap">
       <div class="dqp-hdr">&#128138; Breast Quick-Pick</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-br-lump30')">&#128308; Lump age &ge;30</button>
-        <button class="dqp-btn" onclick="showDrug('ds-br-mastalgia')">&#128200; Cyclical mastalgia</button>
-        <button class="dqp-btn" onclick="showDrug('ds-br-mastitis')">&#129382; Lactational mastitis</button>
-        <button class="dqp-btn" onclick="showDrug('ds-br-discharge')">&#128148; Nipple discharge</button>
-        <button class="dqp-btn" onclick="showDrug('ds-br-family')">&#129360; High-risk family history</button>
-        <button class="dqp-btn" onclick="showDrug('ds-br-lump30m')">&#128064; Lump age &lt;30</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128308; Lump age &ge;30</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128200; Cyclical mastalgia</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129382; Lactational mastitis</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128148; Nipple discharge</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129360; High-risk family history</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128064; Lump age &lt;30</a>
       </div>
     </div>
   </div>

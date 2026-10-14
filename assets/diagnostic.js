@@ -209,9 +209,9 @@
           <span class="dx-xlink-ic">🚦</span>
           <div class="dx-xlink-text">
             <b>This presentation also has a triage view.</b><br/>
-            ${t.xlink.label || 'Use the Triage Tool to surface suspected cancer pathway and emergency thresholds for the same patient.'}
+            ${t.xlink.label || 'See the red-flag rules for the suspected cancer pathway and emergency thresholds the guidance sets for this presentation.'}
           </div>
-          <a href="${t.xlink.url || '../tools/triage-tool.html'}">Open Triage Tool ↗</a>
+          <a href="${t.xlink.url || '../tools/diagnostic.html'}">Open the red-flag rules ↗</a>
         </div>
       ` : '';
 

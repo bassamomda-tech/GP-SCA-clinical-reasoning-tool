@@ -488,24 +488,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient scenario &#8212; personalised statin recommendation</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-lp-primary" onchange="calcDrug()"> Primary prevention (QRISK3 ≥10%)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-lp-secondary" onchange="calcDrug()"> Secondary prevention (prior MI/stroke/PAD)</label>
-          <label class="ds-lp" style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--white);border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:12.5px;transition:.15s"><input type="checkbox" id="ds-lp-intolerant" onchange="calcDrug()"> Statin intolerant</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-lp-fh" onchange="calcDrug()"> Familial hypercholesterolaemia</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-lp-amlodipine" onchange="calcDrug()"> On amlodipine (drug interaction)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-lp-pregnant" onchange="calcDrug()"> Pregnancy or planning pregnancy</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Lipid treatment recommendation</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Primary prevention (QRISK3 ≥10%): atorvastatin 20mg OD (NICE NG238); LFTs (+ TSH if indicated) before starting; 3-month non-HDL target (≥40% reduction from baseline). On amlodipine: atorvastatin SAFE &#8212; do NOT use simvastatin (amlodipine inhibits simvastatin metabolism; max 20mg &#8212; insufficient). Secondary prevention: atorvastatin 80mg OD regardless of cholesterol level; LDL-C target &#8804;2.0 mmol/L (NICE NG238); add ezetimibe if not at target; PCSK9 inhibitor if still not at target (specialist). FH: atorvastatin 40-80mg + specialist lipid clinic + cascade screening; PCSK9 if LDL &gt;5 on max therapy. Statin intolerant: switch to rosuvastatin or pravastatin (hydrophilic; lower myopathy risk); if truly intolerant: ezetimibe 10mg or bempedoic acid with ezetimibe (NICE TA694); PCSK9 inhibitor (specialist). PREGNANCY: STOP ALL STATINS IMMEDIATELY; absolutely contraindicated; bile acid sequestrants only; resume after delivery and cessation of breastfeeding.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Primary prevention (QRISK3 ≥10%)</li><li>Secondary prevention (prior MI/stroke/PAD)</li><li>Statin intolerant</li><li>Familial hypercholesterolaemia</li><li>On amlodipine (drug interaction)</li><li>Pregnancy or planning pregnancy</li></ul></div><div class="ds-result"><div class="ds-result-title">What the guidance says</div><div><span style="font-size:12.5px;color:var(--g)">Primary prevention (QRISK3 ≥10%): atorvastatin 20mg OD (NICE NG238); LFTs (+ TSH if indicated) before starting; 3-month non-HDL target (≥40% reduction from baseline). On amlodipine: atorvastatin SAFE &#8212; do NOT use simvastatin (amlodipine inhibits simvastatin metabolism; max 20mg &#8212; insufficient). Secondary prevention: atorvastatin 80mg OD regardless of cholesterol level; LDL-C target &#8804;2.0 mmol/L (NICE NG238); add ezetimibe if not at target; PCSK9 inhibitor if still not at target (specialist). FH: atorvastatin 40-80mg + specialist lipid clinic + cascade screening; PCSK9 if LDL &gt;5 on max therapy. Statin intolerant: switch to rosuvastatin or pravastatin (hydrophilic; lower myopathy risk); if truly intolerant: ezetimibe 10mg or bempedoic acid with ezetimibe (NICE TA694); PCSK9 inhibitor (specialist). PREGNANCY: STOP ALL STATINS IMMEDIATELY; absolutely contraindicated; bile acid sequestrants only; resume after delivery and cessation of breastfeeding.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">

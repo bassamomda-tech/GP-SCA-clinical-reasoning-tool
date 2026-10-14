@@ -663,25 +663,9 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="low-back-pain"></div>
 
-    <div class="sub-divider" id="drugs">7E — Medication selection tool</div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
     <!-- NOTE: calcDrug() in script.js is HTN-specific. Sciatica IDs are non-overlapping. See drug cards in 7F for full guidance. -->
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — see drug cards below for full guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-sci-nsaid-ci" onchange="calcDrug()"> NSAID contraindicated (CKD, peptic ulcer, aspirin-sensitive asthma)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-sci-neuropathic" onchange="calcDrug()"> Neuropathic features (burning, electric, tingling)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-sci-depression" onchange="calcDrug()"> Comorbid depression or anxiety</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-sci-elderly" onchange="calcDrug()"> Age &gt;65 (fall risk; renal function concern)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-sci-pregnancy" onchange="calcDrug()"> Pregnant or planning pregnancy</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-sci-severe" onchange="calcDrug()"> Severe pain at night / unable to sleep</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Analgesic selection guide</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">First-line: Naproxen 500mg BD (gastroprotection by GI risk). Neuropathic features: still NG59 — no gabapentinoids; no routine TCA or duloxetine for the sciatica pain (no NG59 recommendation — specialist decision). NSAID CI: severe acute pain → short-term weak opioid with stop date (not paracetamol alone). Comorbid depression: treat in its own right (duloxetine an option). Severe night pain: positioning advice; specialist referral if uncontrolled. Age &gt;65: reduce NSAID dose; avoid strong opioids; falls risk with gabapentinoids (DO NOT USE). Pregnancy: Paracetamol only; avoid NSAIDs (third trimester absolutely). NEVER gabapentin or pregabalin for sciatica (NICE NG59). See drug cards below.</span></div>
-      </div>
-    </div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>NSAID contraindicated (CKD, peptic ulcer, aspirin-sensitive asthma)</li><li>Neuropathic features (burning, electric, tingling)</li><li>Comorbid depression or anxiety</li><li>Age &gt;65 (fall risk; renal function concern)</li><li>Pregnant or planning pregnancy</li><li>Severe pain at night / unable to sleep</li></ul></div><div class="ds-result"><div class="ds-result-title">Analgesic selection guide</div><div><span style="font-size:12.5px;color:var(--g)">First-line: Naproxen 500mg BD (gastroprotection by GI risk). Neuropathic features: still NG59 — no gabapentinoids; no routine TCA or duloxetine for the sciatica pain (no NG59 recommendation — specialist decision). NSAID CI: severe acute pain → short-term weak opioid with stop date (not paracetamol alone). Comorbid depression: treat in its own right (duloxetine an option). Severe night pain: positioning advice; specialist referral if uncontrolled. Age &gt;65: reduce NSAID dose; avoid strong opioids; falls risk with gabapentinoids (DO NOT USE). Pregnancy: Paracetamol only; avoid NSAIDs (third trimester absolutely). NEVER gabapentin or pregabalin for sciatica (NICE NG59). See drug cards below.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F — Drug reference cards: sciatica-specific analgesics</div>
     <div class="drug-cards" id="drug-cards-container">

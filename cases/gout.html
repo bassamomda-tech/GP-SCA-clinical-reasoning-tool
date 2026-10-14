@@ -1592,28 +1592,9 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The static selector and reference cards below are unchanged.</div>
     <div data-medchooser="gout"></div>
 
-    <div class="sub-divider" id="drugs">7E — Medication selection tool — choose patient characteristics for tailored recommendation</div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
     <!-- NOTE: calcDrug() in script.js is coded for HTN. This section uses a Gout-specific override injected below. -->
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — gout treatment recommendation appears below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-acute" onchange="calcDrug()"> Acute flare — needs immediate treatment now</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ckd" onchange="calcDrug()"> CKD (eGFR &lt;60) — dose adjustment required</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ult" onchange="calcDrug()"> Meets ULT criteria (multiple/troublesome flares, CKD 3–5, diuretics, tophi or chronic gouty arthritis)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cvd" onchange="calcDrug()"> Established cardiovascular disease (IHD, stroke, HF)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-aza" onchange="calcDrug()"> On azathioprine or mercaptopurine</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-thiazide" onchange="calcDrug()"> On thiazide diuretic for uncomplicated hypertension</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-tophi" onchange="calcDrug()"> Tophi present on examination</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ethnic" onchange="calcDrug()"> Han Chinese, Thai, or Korean ancestry</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-hf" onchange="calcDrug()"> Heart failure or on loop diuretic</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Treatment recommendation</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Select patient characteristics above to see tailored gout treatment recommendation</span></div>
-      </div>
-    </div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Acute flare — needs immediate treatment now</li><li>CKD (eGFR &lt;60) — dose adjustment required</li><li>Meets ULT criteria (multiple/troublesome flares, CKD 3–5, diuretics, tophi or chronic gouty arthritis)</li><li>Established cardiovascular disease (IHD, stroke, HF)</li><li>On azathioprine or mercaptopurine</li><li>On thiazide diuretic for uncomplicated hypertension</li><li>Tophi present on examination</li><li>Han Chinese, Thai, or Korean ancestry</li><li>Heart failure or on loop diuretic</li></ul></div><div class="ds-result"><div class="ds-result-title">What the guidance says</div><div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">On azathioprine or mercaptopurine</div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.6rem .9rem;font-size:12.5px;color:var(--r);font-weight:600;margin-bottom:6px">⛔ CRITICAL: Allopurinol + azathioprine or mercaptopurine = POTENTIALLY FATAL. Allopurinol inhibits xanthine oxidase → azathioprine accumulates → bone marrow failure. Do NOT prescribe allopurinol. Febuxostat also interacts (xanthine oxidase inhibitor) — specialist transplant/haematology review before any ULT.</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Acute flare — needs immediate treatment now</div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div style="font-size:13px;font-weight:700;color:var(--r);margin-bottom:4px">🔴 Acute Flare — Treatment Now</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">CKD (eGFR &lt;60) — dose adjustment required:</em> <div style="font-size:12.5px;margin-bottom:4px"><strong>CKD present</strong> → Colchicine 500mcg OD–BD (halved dose; avoid if eGFR &lt;10)</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">CKD (eGFR &lt;60) — dose adjustment required:</em> <div style="font-size:12.5px;margin-bottom:4px">If colchicine contraindicated in severe CKD: <strong>Prednisolone 30–35mg OD × 3–5 days</strong> (safer in CKD than NSAIDs)</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">CKD (eGFR &lt;60) — dose adjustment required:</em> <div style="font-size:12px;color:var(--r);margin-bottom:4px">⚠ Avoid NSAIDs in CKD — risk of acute tubular necrosis and fluid retention</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Without CKD (eGFR &lt;60) — dose adjustment required:</em> <div style="font-size:12.5px;margin-bottom:4px"><strong>First-line options:</strong> Colchicine 500mcg BD–TDS (max 6mg per course); start within 12 hours of attack onset for best effect</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Without CKD (eGFR &lt;60) — dose adjustment required:</em> <div style="font-size:12.5px;margin-bottom:4px"><strong>Or an NSAID:</strong> Naproxen 750mg then 250mg 8-hourly + PPI (omeprazole 20mg OD); <strong>or</strong> prednisolone 30–35mg OD × 3–5 days</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Heart failure or on loop diuretic:</em> <div style="font-size:12px;color:var(--r);margin-bottom:4px">⚠ Heart failure present: avoid NSAIDs (fluid retention); use colchicine (adjusted for renal function) or prednisolone</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div style="font-size:12px;color:var(--muted);margin-bottom:8px">Do NOT stop established allopurinol during a flare; start new ULT 2–4 weeks after it settles (sooner only with anti-inflammatory cover if flares are frequent)</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">Meets ULT criteria (multiple/troublesome flares, CKD 3–5, diuretics, tophi or chronic gouty arthritis) or Tophi present on examination</div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">🟢 Long-Term ULT — Start After Flare Resolves</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">On azathioprine or mercaptopurine:</em> <div style="font-size:12.5px;margin-bottom:4px;color:var(--r)">Allopurinol CONTRAINDICATED with azathioprine. Seek specialist review for febuxostat or alternative.</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Han Chinese, Thai, or Korean ancestry:</em> <div style="font-size:12.5px;margin-bottom:4px">⚠ <strong>HLA-B*5801 genetic screen required before allopurinol</strong> (Han Chinese, Thai, Korean ancestry — risk of Stevens-Johnson syndrome)</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Han Chinese, Thai, or Korean ancestry:</em> <div style="font-size:12.5px;margin-bottom:4px">If HLA-B*5801 negative: proceed with <strong>Allopurinol</strong> as normal. If positive: <strong>Febuxostat</strong> preferred (with CVD caveat if applicable)</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">CKD (eGFR &lt;60) — dose adjustment required:</em> <div style="font-size:12.5px;margin-bottom:4px"><strong>Allopurinol</strong> — start at <strong>50mg OD</strong> (reduced starting dose in CKD); titrate more slowly (every 6–8 weeks); maximum dose depends on eGFR</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">None of the situations above:</em> <div style="font-size:12.5px;margin-bottom:4px"><strong>Allopurinol 100mg OD</strong> — titrate by 50–100mg every 4 weeks until target serum urate reached</div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div style="font-size:12.5px;margin-bottom:4px">Serum urate target: <strong><span class="ds-cond"><em>If Tophi present on examination:</em> ≤360 µmol/L; consider ≤300 µmol/L (to dissolve existing tophi)</span><span class="ds-cond"><em>Otherwise:</em> ≤360 µmol/L</span></strong></div></div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div style="font-size:12.5px;margin-bottom:4px">Offer <strong>colchicine 500mcg OD prophylaxis</strong> while titrating to target (often up to 6 months) to prevent initiation flares</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Established cardiovascular disease (IHD, stroke, HF) + without On azathioprine or mercaptopurine:</em> <div style="font-size:12px;color:var(--a);margin-bottom:4px">⚠ CVD present: <strong>Allopurinol is preferred over febuxostat</strong> — MHRA: use febuxostat cautiously in pre-existing major cardiovascular disease</div></div></div><div class="ds-ref-sit" style="border:1px solid var(--line);border-radius:10px;background:var(--white);padding:.7rem .9rem;margin-bottom:.6rem;overflow-wrap:anywhere"><div style="font-size:12px;font-weight:700;color:var(--navy,#0f2540);margin-bottom:.35rem">On thiazide diuretic for uncomplicated hypertension</div><div style="margin-top:.2rem;font-size:12.5px;line-height:1.5"><div style="font-size:13px;font-weight:700;color:var(--b);margin-bottom:4px">💊 Medication Switch</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Heart failure or on loop diuretic:</em> <div style="font-size:12.5px;margin-bottom:4px">Loop diuretic for heart failure — <strong>cannot switch</strong>; manage gout alongside diuretic therapy; offer ULT (diuretic therapy is a NICE NG219 criterion)</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Without Heart failure or on loop diuretic:</em> <div style="font-size:12.5px;margin-bottom:4px">Thiazide for uncomplicated hypertension → <strong>Switch to Losartan 50mg OD</strong> (ARB with mild uricosuric effect)</div></div><div style="margin-top:.3rem;font-size:12.5px;line-height:1.5"><em style="font-style:normal;font-weight:600;color:var(--muted)">Without Heart failure or on loop diuretic:</em> <div style="font-size:12px;color:var(--muted);margin-bottom:4px">Losartan reduces serum urate by ~15–20%; equivalent BP control; check eGFR + K+ at 4–6 weeks post-switch</div></div></div><div style="font-size:11px;color:var(--muted);margin-top:5px">Always check renal function before prescribing allopurinol · Review according to current BNF · Repeat serum urate ≥2 weeks post-flare if low during the flare</div></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F — Drug reference cards: gout pharmacotherapy</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -2396,93 +2377,7 @@ body.mode-clinic .sca-only{display:none!important}
 
 <script>
 // Gout-specific calcDrug() — overrides HTN logic from script.js
-function calcDrug() {
-  var acute    = document.getElementById('ds-acute')   ? document.getElementById('ds-acute').checked   : false;
-  var ckd      = document.getElementById('ds-ckd')     ? document.getElementById('ds-ckd').checked     : false;
-  var ult      = document.getElementById('ds-ult')     ? document.getElementById('ds-ult').checked     : false;
-  var cvd      = document.getElementById('ds-cvd')     ? document.getElementById('ds-cvd').checked     : false;
-  var aza      = document.getElementById('ds-aza')     ? document.getElementById('ds-aza').checked     : false;
-  var thiazide = document.getElementById('ds-thiazide')? document.getElementById('ds-thiazide').checked: false;
-  var tophi    = document.getElementById('ds-tophi')   ? document.getElementById('ds-tophi').checked   : false;
-  var ethnic   = document.getElementById('ds-ethnic')  ? document.getElementById('ds-ethnic').checked  : false;
-  var hf       = document.getElementById('ds-hf')      ? document.getElementById('ds-hf').checked      : false;
-
-  var out = document.getElementById('ds-output');
-  if (!out) return;
-
-  var none = !acute && !ckd && !ult && !cvd && !aza && !thiazide && !tophi && !ethnic && !hf;
-  if (none) {
-    out.innerHTML = '<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above to see tailored gout treatment recommendation</span>';
-    return;
-  }
-
-  var lines = [], warns = [];
-
-  // CRITICAL SAFETY — azathioprine
-  if (aza) {
-    warns.push('<div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.6rem .9rem;font-size:12.5px;color:var(--r);font-weight:600;margin-bottom:6px">⛔ CRITICAL: Allopurinol + azathioprine or mercaptopurine = POTENTIALLY FATAL. Allopurinol inhibits xanthine oxidase → azathioprine accumulates → bone marrow failure. Do NOT prescribe allopurinol. Febuxostat also interacts (xanthine oxidase inhibitor) — specialist transplant/haematology review before any ULT.</div>');
-  }
-
-  // ACUTE FLARE
-  if (acute) {
-    lines.push('<div style="font-size:13px;font-weight:700;color:var(--r);margin-bottom:4px">🔴 Acute Flare — Treatment Now</div>');
-    if (ckd) {
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px"><strong>CKD present</strong> → Colchicine 500mcg OD–BD (halved dose; avoid if eGFR &lt;10)</div>');
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px">If colchicine contraindicated in severe CKD: <strong>Prednisolone 30–35mg OD × 3–5 days</strong> (safer in CKD than NSAIDs)</div>');
-      lines.push('<div style="font-size:12px;color:var(--r);margin-bottom:4px">⚠ Avoid NSAIDs in CKD — risk of acute tubular necrosis and fluid retention</div>');
-    } else {
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px"><strong>First-line options:</strong> Colchicine 500mcg BD–TDS (max 6mg per course); start within 12 hours of attack onset for best effect</div>');
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px"><strong>Or an NSAID:</strong> Naproxen 750mg then 250mg 8-hourly + PPI (omeprazole 20mg OD); <strong>or</strong> prednisolone 30–35mg OD × 3–5 days</div>');
-    }
-    if (hf) {
-      lines.push('<div style="font-size:12px;color:var(--r);margin-bottom:4px">⚠ Heart failure present: avoid NSAIDs (fluid retention); use colchicine (adjusted for renal function) or prednisolone</div>');
-    }
-    lines.push('<div style="font-size:12px;color:var(--muted);margin-bottom:8px">Do NOT stop established allopurinol during a flare; start new ULT 2–4 weeks after it settles (sooner only with anti-inflammatory cover if flares are frequent)</div>');
-  }
-
-  // ULT / LONG-TERM
-  if (ult || tophi) {
-    lines.push('<div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">🟢 Long-Term ULT — Start After Flare Resolves</div>');
-
-    if (aza) {
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px;color:var(--r)">Allopurinol CONTRAINDICATED with azathioprine. Seek specialist review for febuxostat or alternative.</div>');
-    } else if (ethnic) {
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px">⚠ <strong>HLA-B*5801 genetic screen required before allopurinol</strong> (Han Chinese, Thai, Korean ancestry — risk of Stevens-Johnson syndrome)</div>');
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px">If HLA-B*5801 negative: proceed with <strong>Allopurinol</strong> as normal. If positive: <strong>Febuxostat</strong> preferred (with CVD caveat if applicable)</div>');
-    } else if (ckd) {
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px"><strong>Allopurinol</strong> — start at <strong>50mg OD</strong> (reduced starting dose in CKD); titrate more slowly (every 6–8 weeks); maximum dose depends on eGFR</div>');
-    } else {
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px"><strong>Allopurinol 100mg OD</strong> — titrate by 50–100mg every 4 weeks until target serum urate reached</div>');
-    }
-
-    var target = tophi ? '≤360 µmol/L; consider ≤300 µmol/L (to dissolve existing tophi)' : '≤360 µmol/L';
-    lines.push('<div style="font-size:12.5px;margin-bottom:4px">Serum urate target: <strong>' + target + '</strong></div>');
-    lines.push('<div style="font-size:12.5px;margin-bottom:4px">Offer <strong>colchicine 500mcg OD prophylaxis</strong> while titrating to target (often up to 6 months) to prevent initiation flares</div>');
-
-    if (cvd && !aza) {
-      lines.push('<div style="font-size:12px;color:var(--a);margin-bottom:4px">⚠ CVD present: <strong>Allopurinol is preferred over febuxostat</strong> — MHRA: use febuxostat cautiously in pre-existing major cardiovascular disease</div>');
-    }
-  }
-
-  // THIAZIDE SWITCH
-  if (thiazide) {
-    lines.push('<div style="font-size:13px;font-weight:700;color:var(--b);margin-bottom:4px">💊 Medication Switch</div>');
-    if (hf) {
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px">Loop diuretic for heart failure — <strong>cannot switch</strong>; manage gout alongside diuretic therapy; offer ULT (diuretic therapy is a NICE NG219 criterion)</div>');
-    } else {
-      lines.push('<div style="font-size:12.5px;margin-bottom:4px">Thiazide for uncomplicated hypertension → <strong>Switch to Losartan 50mg OD</strong> (ARB with mild uricosuric effect)</div>');
-      lines.push('<div style="font-size:12px;color:var(--muted);margin-bottom:4px">Losartan reduces serum urate by ~15–20%; equivalent BP control; check eGFR + K+ at 4–6 weeks post-switch</div>');
-    }
-  }
-
-  if (lines.length === 0 && warns.length === 0) {
-    out.innerHTML = '<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
-    return;
-  }
-
-  out.innerHTML = warns.join('') + lines.join('') +
-    '<div style="font-size:11px;color:var(--muted);margin-top:5px">Always check renal function before prescribing allopurinol · Review according to current BNF · Repeat serum urate ≥2 weeks post-flare if low during the flare</div>';
-}
+/* calcDrug(): interactive drug selector removed Oct 2026 (Route 1) — its guidance is shown as static text */
 </script>
 
 
@@ -2565,84 +2460,7 @@ function printSummary(){
   if(ac)ac.style.display=ad;
 }
 
-function __fw_unused_calcDrug(){
-  const dm=document.getElementById('ds-dm').checked,
-    ckd=document.getElementById('ds-ckd').checked,
-    cvd=document.getElementById('ds-cvd').checked,
-    afro=document.getElementById('ds-afro').checked,
-    age55=document.getElementById('ds-age55').checked,
-    hf=document.getElementById('ds-hf').checked,
-    angina=document.getElementById('ds-angina').checked,
-    af=document.getElementById('ds-af').checked,
-    cough=document.getElementById('ds-cough').checked;
-  const none=!dm&&!ckd&&!cvd&&!afro&&!age55&&!hf&&!angina&&!af&&!cough;
-  ['acei','arb','ccb','thiazide','spiro','ab'].forEach(id=>{
-    const el=document.getElementById('dc-'+id);
-    el.classList.remove('recommended','alt-rec');
-    const b=document.getElementById('rec-'+id);
-    b.style.cssText='';b.textContent='✓ Recommended';b.style.display='none';
-  });
-  if(none){
-    document.getElementById('ds-output').innerHTML='<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
-    return;
-  }
-  let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
-  if(hf){
-    main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
-  } else if(af){
-    main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
-    why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
-    alt=(dm||ckd)?'acei':'ccb';altLabel='+ ACEi or CCB for BP target';altWhy='Rate control alone may not achieve BP target — add Step 2 drug';
-  } else if(cough){
-    main='arb';mainLabel='Candesartan / Losartan (ARB)';
-    why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
-    alt='';altLabel='';altWhy='';
-  } else if(dm||ckd||cvd){
-    main=afro?'arb':'acei';mainLabel=afro?'Candesartan / losartan (ARB)':'Ramipril (ACEi)';
-    why=afro?'Type 2 diabetes (or CKD with albuminuria) in a person of Black African or African–Caribbean family origin: ARB in preference to an ACEi (NICE NG136; CKD per NICE NG203).':'Type 2 diabetes: ACEi or ARB first-line at any age (NICE NG136). CKD: ACEi/ARB if ACR >30 mg/mmol, or >3 mg/mmol with diabetes (NICE NG203). Established CVD alone: follow the NG136 age/ethnicity steps.';
-    alt=afro?'ccb':'arb';altLabel=afro?'+ Amlodipine (CCB) at Step 2':'Candesartan (ARB) — if ACEi cough develops';altWhy='ACEi and ARB give equal renoprotection. Never combine ACEi + ARB simultaneously.';
-  } else if(afro){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Black African or African–Caribbean family origin (no type 2 diabetes): CCB first-line at any age (NICE NG136). At Step 2 add an ARB in preference to an ACEi, or a thiazide-like diuretic.';
-    alt='';altLabel='';altWhy='';
-  } else if(age55){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Age ≥55 (no type 2 diabetes, not of Black African or African–Caribbean family origin): CCB first-line (NICE NG136).';
-    alt=angina?'acei':'thiazide';
-    altLabel=angina?'+ Ramipril (ACEi) at Step 2':'Indapamide (thiazide-like diuretic) — if a CCB is not suitable';
-    altWhy=angina?'Step 2 per NICE NG136: add an ACEi or ARB (or a thiazide-like diuretic); amlodipine also treats stable angina.':'If a CCB is not suitable (oedema, intolerance, heart failure or high risk of it), offer a thiazide-like diuretic (NICE NG136).';
-  } else {
-    main='acei';mainLabel='Ramipril (ACEi)';
-    why='Age <55, not of Black African or African–Caribbean family origin, no type 2 diabetes/CKD: ACEi (or ARB) is the Step 1 drug of choice (NICE NG136).';
-    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
-    altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
-  }
-
-  const m=document.getElementById('dc-'+main);
-  m.classList.add('recommended');
-  const mb=document.getElementById('rec-'+main);
-  mb.style.display='inline-block';
-
-  if(alt){
-    const a=document.getElementById('dc-'+alt);
-    a.classList.add('alt-rec');
-    const ab=document.getElementById('rec-'+alt);
-    ab.style.display='inline-block';
-    ab.style.background='#dbeafe';
-    ab.style.color='#1d4ed8';
-    ab.style.borderColor='#bfdbfe';
-    ab.textContent='↳ Alternative';
-  }
-
-  document.getElementById('ds-output').innerHTML=`
-    <div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: ${mainLabel}</div>
-    ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
-    <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
-    ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
-    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es 1–2 weeks after starting or up-titrating ACEi/ARB (NICE NG203)</div>`;
-}
+/* __fw_unused_calcDrug(): interactive drug selector removed Oct 2026 (Route 1) — its guidance is shown as static text */
 
 function calcScore(){
   var total=0, tasks=0, ro=0, gs=0;

@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Decision Support · GP / SCA Clinical Reasoning Tool</title>
-<meta name="description" content="Decision Support — work it up, read the bloods, choose the drug: three point-of-care engines that carry a problem from the door to the plan.">
+<title>Guidance Explorer · GP / SCA Clinical Reasoning Tool</title>
+<meta name="description" content="Guidance Explorer — the diagnostic work-up, the lab results reference and medication options by condition: what UK guidance says, in one place. Reference only.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reasoning GP">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Decision Support">
-<meta property="og:description" content="Decision Support — work it up, read the bloods, choose the drug: three point-of-care engines that carry a problem from the door to the plan.">
+<meta property="og:title" content="Guidance Explorer">
+<meta property="og:description" content="Guidance Explorer — the diagnostic work-up, the lab results reference and medication options by condition: what UK guidance says, in one place. Reference only.">
 <meta property="og:url" content="https://gpreasoning.uk/tools/decision-support.html">
 <meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
 <link rel="canonical" href="https://gpreasoning.uk/tools/decision-support.html">
@@ -74,44 +74,46 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
           <span>Tools</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
-          <span style="color:var(--ink-2)">Decision Support</span>
+          <span style="color:var(--ink-2)">Guidance Explorer</span>
         </div>
 
         <header class="tool-head" data-screen-label="Tool head">
-          <span class="eyebrow">Reasoning Tool · From symptom to safe action</span>
-          <h1>Decision Support — <em>work it up, read the bloods, choose the drug</em></h1>
-          <p>The three point-of-care engines that carry a problem from the door to the plan, in one place: a <b>diagnostic work-up</b> (triage red flags + structured differential by presentation), <b>lab-results actioning</b> (what each abnormal result means and the GP next step), and the <b>medication chooser</b> (NICE / BNF first-line and alternatives, with the reasoning).</p>
-          <div class="review-stamp"><span class="dot"></span> Live tools · always cite the source shown <span class="src">· NICE / NG · BNF · NICE NG12 suspected cancer pathway where relevant</span></div>
+          <span class="eyebrow">Reference · What the guidance says</span>
+          <h1>Guidance Explorer — <em>the work-up, the bloods, the medicines</em></h1>
+          <p>Three reference tools that summarise what UK guidance says, in one place: a <b>diagnostic work-up</b> (the red flags and structured differential the guidance lists for each presentation), the <b>lab results reference</b> (threshold bands by test and what the guidance says at each), and <b>medication options by condition</b> (the options each guideline lists, in its own order, with its cautions). Nothing here is worked out for an individual patient.</p>
+          <div class="review-stamp"><span class="dot"></span> Reference tools · always check the source shown <span class="src">· NICE / NG · BNF · NICE NG12 suspected cancer pathway where relevant</span></div>
         </header>
 
-        <nav class="phub-nav" id="phubNav" aria-label="Decision-support sections">
+        <div data-ref-notice></div>
+
+        <nav class="phub-nav" id="phubNav" aria-label="Guidance explorer sections">
           <button class="phub-btn on" data-sec="diagnostic" data-src="diagnostic.html?embed=1">
             <span class="ic">🩺</span>
-            <span class="tx"><b><span class="step">1 · DIAGNOSE</span>Diagnostic work-up</b><span>Triage red flags + differential, by presentation</span></span>
+            <span class="tx"><b><span class="step">1 · WORK-UP</span>Diagnostic work-up</b><span>Red flags + differential the guidance lists, by presentation</span></span>
           </button>
           <button class="phub-btn" data-sec="labs" data-src="lab-results.html?embed=1">
             <span class="ic">🧪</span>
-            <span class="tx"><b><span class="step">2 · INVESTIGATE</span>Lab results actioning</b><span>Per-result meaning &amp; the GP next step</span></span>
+            <span class="tx"><b><span class="step">2 · LAB RESULTS</span>Lab results reference</b><span>Threshold bands by test &amp; what the guidance says</span></span>
           </button>
           <button class="phub-btn" data-sec="meds" data-src="medication-chooser.html?embed=1">
             <span class="ic">💊</span>
-            <span class="tx"><b><span class="step">3 · TREAT</span>Medication chooser</b><span>NICE / BNF first-line &amp; alternatives</span></span>
+            <span class="tx"><b><span class="step">3 · MEDICINES</span>Medication options</b><span>By condition, in the guideline’s own order</span></span>
           </button>
         </nav>
-        <div class="phub-flow"><b>Diagnose</b> <span class="arr">→</span> <b>Investigate</b> <span class="arr">→</span> <b>Treat</b> &nbsp;·&nbsp; the same clinical-reasoning spine, three tools.</div>
+        <div class="phub-flow"><b>Work-up</b> <span class="arr">·</span> <b>Lab results</b> <span class="arr">·</span> <b>Medicines</b> &nbsp;·&nbsp; three reference tools, one place.</div>
 
         <section class="phub-section on" id="sec-diagnostic" data-screen-label="Diagnostic work-up">
           <iframe class="hub-frame" title="Diagnostic work-up" loading="lazy"></iframe>
         </section>
-        <section class="phub-section" id="sec-labs" data-screen-label="Lab results actioning">
-          <iframe class="hub-frame" title="Lab results actioning" loading="lazy"></iframe>
+        <section class="phub-section" id="sec-labs" data-screen-label="Lab results reference">
+          <iframe class="hub-frame" title="Lab results reference" loading="lazy"></iframe>
         </section>
-        <section class="phub-section" id="sec-meds" data-screen-label="Medication chooser">
-          <iframe class="hub-frame" title="Medication chooser" loading="lazy"></iframe>
+        <section class="phub-section" id="sec-meds" data-screen-label="Medication options by condition">
+          <iframe class="hub-frame" title="Medication options by condition" loading="lazy"></iframe>
         </section>
 
         <div class="footer-disclaimer">
-          <strong>Educational use only.</strong> Each engine mirrors NICE NG / BNF guidance as cited within it, including the NICE NG12 suspected cancer pathway thresholds where a presentation qualifies. Always verify against the current guideline, the BNF and your local formulary, and confirm patient-specific factors before acting. Not a substitute for clinical judgement.
+          <strong>Reference only.</strong> Each tool summarises NICE NG / BNF guidance as cited within it, including the NICE NG12 suspected cancer pathway thresholds. Always verify against the current guideline, the BNF/SPC and your local formulary, and apply your own clinical judgement to the patient in front of you. It supports, but never replaces, clinical judgement.
         </div>
 
       </div>

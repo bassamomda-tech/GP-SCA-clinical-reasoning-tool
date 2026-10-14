@@ -472,24 +472,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select infant characteristics &#8212; CMPA and reflux management guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-cmpa-breastfed" onchange="calcDrug()"> Breastfed infant with suspected CMPA</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cmpa-formula" onchange="calcDrug()"> Formula-fed infant with suspected CMPA</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cmpa-ige" onchange="calcDrug()"> IgE-mediated features (immediate reaction; urticaria; anaphylaxis)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cmpa-nonige" onchange="calcDrug()"> Non-IgE-mediated (delayed; green stools; eczema; growth faltering)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cmpa-reflux" onchange="calcDrug()"> Reflux dominant &#8212; GOR or GORD symptoms</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cmpa-eczema" onchange="calcDrug()"> Eczema alongside GI symptoms</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">CMPA and reflux management guidance</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Breastfed infant with CMPA: time-limited maternal dairy-free diet for 2&#8211;6 weeks then planned reintroduction (infant continues breastfeeding; do NOT switch to formula); maternal calcium 1000mg/day + vitamin D 10 mcg/day; paediatric dietitian referral. Formula-fed non-IgE-mediated CMPA (Priya): eHF (Nutramigen 1 with LGG or Aptamil Pepti 1); complete switch from day 1; 150&#8211;200 ml/kg/day; review in 2&#8211;4 weeks; dietitian referral; allergy team. IgE-mediated (immediate reactions; urticaria; anaphylaxis): AAF if severe reaction, otherwise eHF with allergy advice; adrenaline auto-injector need assessed by the allergy service; URGENT allergy team referral (2 weeks); written allergy action plan; 999 if acute anaphylaxis. Reflux-dominant GOR (happy spitter; good growth; no atopy): reassurance; feed review; positioning; thickener then alginate only if marked distress persists (never both). GORD with complications (faltering growth; aspiration): Infant Gaviscon first; omeprazole 0.7&#8211;1.4 mg/kg/day ONLY if confirmed GORD &#8212; not for simple GOR or CMPA. Eczema: emollient twice daily (Diprobase; Epaderm); topical HC 1% for active flares (face-safe); CMPA treatment will improve eczema over 2&#8211;4 weeks; SCORAD at baseline and review.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Breastfed infant with suspected CMPA</li><li>Formula-fed infant with suspected CMPA</li><li>IgE-mediated features (immediate reaction; urticaria; anaphylaxis)</li><li>Non-IgE-mediated (delayed; green stools; eczema; growth faltering)</li><li>Reflux dominant &#8212; GOR or GORD symptoms</li><li>Eczema alongside GI symptoms</li></ul></div><div class="ds-result"><div class="ds-result-title">CMPA and reflux management guidance</div><div><span style="font-size:12.5px;color:var(--g)">Breastfed infant with CMPA: time-limited maternal dairy-free diet for 2&#8211;6 weeks then planned reintroduction (infant continues breastfeeding; do NOT switch to formula); maternal calcium 1000mg/day + vitamin D 10 mcg/day; paediatric dietitian referral. Formula-fed non-IgE-mediated CMPA (Priya): eHF (Nutramigen 1 with LGG or Aptamil Pepti 1); complete switch from day 1; 150&#8211;200 ml/kg/day; review in 2&#8211;4 weeks; dietitian referral; allergy team. IgE-mediated (immediate reactions; urticaria; anaphylaxis): AAF if severe reaction, otherwise eHF with allergy advice; adrenaline auto-injector need assessed by the allergy service; URGENT allergy team referral (2 weeks); written allergy action plan; 999 if acute anaphylaxis. Reflux-dominant GOR (happy spitter; good growth; no atopy): reassurance; feed review; positioning; thickener then alginate only if marked distress persists (never both). GORD with complications (faltering growth; aspiration): Infant Gaviscon first; omeprazole 0.7&#8211;1.4 mg/kg/day ONLY if confirmed GORD &#8212; not for simple GOR or CMPA. Eczema: emollient twice daily (Diprobase; Epaderm); topical HC 1% for active flares (face-safe); CMPA treatment will improve eczema over 2&#8211;4 weeks; SCORAD at baseline and review.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -856,11 +840,11 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="dqp-wrap">
       <div class="dqp-hdr">&#128138; Drug Quick-Pick</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-cmpa-formula')">&#129369; Formula-fed non-IgE CMPA</button>
-        <button class="dqp-btn" onclick="showDrug('ds-cmpa-breastfed')">&#128149; Breastfed infant CMPA</button>
-        <button class="dqp-btn" onclick="showDrug('ds-cmpa-ige')">&#9888; IgE-mediated (immediate)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-cmpa-reflux')">&#129371; GOR / reflux dominant</button>
-        <button class="dqp-btn" onclick="showDrug('ds-cmpa-eczema')">&#127774; Eczema management</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129369; Formula-fed non-IgE CMPA</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128149; Breastfed infant CMPA</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#9888; IgE-mediated (immediate)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129371; GOR / reflux dominant</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#127774; Eczema management</a>
       </div>
     </div>
   </div>

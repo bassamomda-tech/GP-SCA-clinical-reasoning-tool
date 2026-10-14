@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Medication Chooser · Reasoning GP</title>
-<meta name="description" content="Medication chooser — tailored to the patient in front of you: pick a condition, tick the patient factors, see first-line options against guideline and BNF.">
+<title>Medication options by condition · Reasoning GP</title>
+<meta name="description" content="Medication options by condition — the options each UK guideline lists, in the guideline's own order, with its cautions and the source. Reference only.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reasoning GP">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Medication Chooser">
-<meta property="og:description" content="Medication chooser — tailored to the patient in front of you: pick a condition, tick the patient factors, see first-line options against guideline and BNF.">
+<meta property="og:title" content="Medication options by condition">
+<meta property="og:description" content="Medication options by condition — the options each UK guideline lists, in the guideline's own order, with its cautions and the source. Reference only.">
 <meta property="og:url" content="https://gpreasoning.uk/tools/medication-chooser.html">
 <meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
 <link rel="canonical" href="https://gpreasoning.uk/tools/medication-chooser.html">
@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/site.css?v=14" />
-<link rel="stylesheet" href="../assets/medchooser.css" />
+<link rel="stylesheet" href="../assets/medchooser.css?v=20261014r1" />
 
 <style>
   .tool-head{ padding:28px 0 6px; border-bottom:1px solid var(--line); margin-bottom:20px; }
@@ -74,14 +74,16 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
         <span>Tools</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
-        <span style="color:var(--ink-2)">Medication Chooser</span>
+        <span style="color:var(--ink-2)">Medication options by condition</span>
       </div>
 
       <header class="tool-head" data-screen-label="Tool head">
-        <span class="eyebrow">Reasoning Tool · Guideline + BNF</span>
-        <h1>Medication chooser — <em style="font-style:italic;color:var(--teal);font-weight:500">tailored to the patient in front of you</em></h1>
-        <p>Pick a condition, tick the patient factors that apply, and watch first-line options re-tier in real time against the cited guideline and BNF — with the reasoning one toggle away. Filter the list by specialty on the left, or search by name.</p>
+        <span class="eyebrow">Reference · Guideline + BNF</span>
+        <h1>Medication options — <em style="font-style:italic;color:var(--teal);font-weight:500">by condition, as the guideline lists them</em></h1>
+        <p>Pick a condition to see the medication options its UK guideline lists — in the guideline’s own order, with the guideline’s own cautions and conditions, side effects, monitoring and the source for each. Nothing is ranked or chosen for a patient. Filter the list by specialty on the left, or search by name.</p>
       </header>
+
+      <div data-ref-notice></div>
 
       <div class="alg-controls">
         <div class="alg-search">
@@ -97,7 +99,7 @@
       <div id="medGroups"></div>
 
       <div class="alg-foot footer-disclaimer">
-        <strong>Educational use only.</strong> The Medication Chooser is a reasoning aid for UK GP trainees and clinicians — not a substitute for clinical judgement. Always verify against the current guideline cited on each card, the BNF, and your local formulary before prescribing. The same chooser is embedded live inside each applicable case page.
+        <strong>Reference only.</strong> Medication options by condition summarises what each cited guideline says, for UK GP trainees and clinicians — it supports, but never replaces, clinical judgement. Always verify against the current guideline cited on each card, the BNF/SPC and your local formulary before prescribing. The same cards appear inside each applicable case page.
       </div>
 
     </div>
@@ -108,7 +110,7 @@
 <script src="../assets/case-related.js?v=2"></script>
 
 <!-- Medication chooser engine + topic data -->
-<script src="../assets/medchooser.js?v=20260924b"></script>
+<script src="../assets/medchooser.js?v=20261014r1"></script>
 <script src="../assets/meds/hypertension.js?v=20260927s17"></script>
 <script src="../assets/meds/type-2-diabetes.js?v=20260927s17"></script>
 <script src="../assets/meds/asthma.js?v=20260927s17"></script>

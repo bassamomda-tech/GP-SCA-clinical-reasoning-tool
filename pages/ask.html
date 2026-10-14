@@ -188,22 +188,23 @@
   <section class="ask-hero" data-screen-label="Ask · hero">
     <span class="eyebrow">💬 Reasoning assistant</span>
     <h1>Ask a question — <em>answered from the library</em></h1>
-    <p>Type any clinical question the way you'd think it in the room. The assistant answers from Reasoning GP's own library first, then NICE and the BNF — and falls back to other authoritative UK sources when needed, telling you which it used. It points you to the exact pathway, protocol or tool to open next, and flags the suspected cancer pathway whenever NICE NG12 applies.</p>
+    <p>Ask what UK guidance says on a clinical topic. The assistant answers from Reasoning GP's own library first, then NICE and the BNF — and falls back to other authoritative UK sources when needed, telling you which it used. It points you to the pathway or protocol to open next, and flags the suspected cancer pathway whenever NICE NG12 applies.</p>
+    <div data-ref-notice></div>
   </section>
 
   <div class="ask-thread" id="thread">
     <div class="ask-welcome" id="welcome" data-screen-label="Ask · welcome">
       <h2>What would you like to work through?</h2>
-      <p>Ask about a presentation, a diagnosis, first-line management, a drug choice, a red flag, or how a station is marked. Answers are concise, grounded and source-attributed — always verify against the live NICE / BNF before acting.</p>
+      <p>Ask what the guidance says about a presentation, a condition, first-line management, a drug option, a red flag, or how a station is marked. Answers are concise, grounded and source-attributed — always verify against the live NICE / BNF before acting. Ask answers general guidance questions only: it does not answer questions about a specific patient, give doses (see the BNF / SPC) or diagnose or triage anyone.</p>
       <div class="ask-cap">Try one of these</div>
       <div class="sugg-grid" id="suggGrid"></div>
     </div>
   </div>
 
   <div class="ask-composer">
-    <p class="ask-privacy" style="margin:0 0 8px;font-size:12.5px;line-height:1.45;color:var(--ink-2,#57534e)"><b>Decision support only</b> — check the original guideline, patient factors and local pathways before acting. <b>Do not enter names, NHS numbers, dates of birth, addresses or other identifiable patient information.</b> In an emergency, call 999.</p>
+    <p class="ask-privacy" id="askHint" style="margin:0 0 8px;font-size:12.5px;line-height:1.45;color:var(--ink-2,#57534e)"><b>Ask what the guidance says — not about a specific patient.</b> Ask gives no individual doses (see the BNF / SPC) and does not diagnose or triage anyone; it supports, but never replaces, clinical judgement. <b>Do not enter names, NHS numbers, dates of birth, addresses or other identifiable patient information.</b> In an emergency, call 999.</p>
     <form class="composer-inner" id="composer">
-      <textarea id="input" rows="1" placeholder="Ask anything — e.g. 'first-line for newly diagnosed hypertension under 55?'" autocomplete="off"></textarea>
+      <textarea id="input" rows="1" placeholder="Ask what UK guidance says — e.g. 'What does NG136 say is first-line for hypertension?'" aria-describedby="askHint" autocomplete="off"></textarea>
       <button class="send-btn" id="send" type="submit" aria-label="Send question" disabled>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
       </button>
@@ -262,8 +263,8 @@
 <script src="../assets/kb-index.js"></script>
 <script src="../assets/site.js?v=105"></script>
 <script src="../assets/ask-retrieval.js?v=4"></script>
-<script src="../assets/ask-core.js?v=15"></script>
-<script src="ask.js?v=23"></script>
+<script src="../assets/ask-core.js?v=16"></script>
+<script src="ask.js?v=24"></script>
 <script>window.RGP_AI_NOTICE={use:"finds what UK guidance says, with its sources"};</script>
 <script src="../assets/ai-notice.js?v=2"></script>
 </body>

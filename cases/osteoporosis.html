@@ -1134,24 +1134,8 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="life-card"><div class="life-head"><span class="life-icon">🦷</span><div class="life-title">Dental Review Before Starting</div><span class="life-target">Dental check before bisphosphonate; maintain oral hygiene</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>ONJ risk is dramatically reduced by ensuring good oral health before starting. Dental surgery during bisphosphonate therapy has higher ONJ risk — plan any needed work before starting.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Advise dental review before starting. Inform dentist of bisphosphonate at every dental visit. Excellent oral hygiene throughout. If dental surgery needed: discuss with prescriber — brief holiday evidence equivocal.</p></div><span class="life-benefit">Pre-treatment dental review + good oral hygiene reduce ONJ risk below baseline oral surgical risk</span></div></div>
     </div>
 
-    <div class="sub-divider" id="drugs">7D — Drug selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics — see drug cards below</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-dm" onchange="calcDrug()"> Standard postmenopausal/adult, eGFR ≥35, no GI disease</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ckd" onchange="calcDrug()"> eGFR &lt;35 — oral bisphosphonates contraindicated</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cvd" onchange="calcDrug()"> GIOP — prednisolone ≥7.5 mg for ≥3 months</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-afro" onchange="calcDrug()"> GI disease / cannot take oral tablets</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-age55" onchange="calcDrug()"> Severe osteoporosis T &lt;−3.5 / multiple fractures on treatment</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-hf" onchange="calcDrug()"> Denosumab planned — counsel on never stopping without transition</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Treatment approach</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Standard: alendronate 70 mg weekly + calcium/vitamin D. eGFR &lt;35: renal/metabolic bone advice; denosumab only with a 6-monthly pathway and exit plan (never stop without bisphosphonate follow-on). GIOP: alendronate or risedronate. GI disease/IV: zoledronic acid 5 mg annually. Very high risk: specialist for anabolic treatment. Always: pre-treatment Ca/eGFR/vit D · Ca+D3 according to intake and deficiency (later in the day, not with bisphosphonate) · dental check before starting.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider" id="drugs">7D — Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Standard postmenopausal/adult, eGFR ≥35, no GI disease</li><li>eGFR &lt;35 — oral bisphosphonates contraindicated</li><li>GIOP — prednisolone ≥7.5 mg for ≥3 months</li><li>GI disease / cannot take oral tablets</li><li>Severe osteoporosis T &lt;−3.5 / multiple fractures on treatment</li><li>Denosumab planned — counsel on never stopping without transition</li></ul></div><div class="ds-result"><div class="ds-result-title">Treatment approach</div><div><span style="font-size:12.5px;color:var(--g)">Standard: alendronate 70 mg weekly + calcium/vitamin D. eGFR &lt;35: renal/metabolic bone advice; denosumab only with a 6-monthly pathway and exit plan (never stop without bisphosphonate follow-on). GIOP: alendronate or risedronate. GI disease/IV: zoledronic acid 5 mg annually. Very high risk: specialist for anabolic treatment. Always: pre-treatment Ca/eGFR/vit D · Ca+D3 according to intake and deficiency (later in the day, not with bisphosphonate) · dental check before starting.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <!-- ═══ Interactive Medication Chooser (live, BNF tiered) ═══ -->
     <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against the BNF and NOGG 2024</div>
@@ -1658,87 +1642,7 @@ function printSummary(){
   if(ac)ac.style.display=ad;
 }
 
-function calcDrug(){
-  // G10: this chooser logic was copied from cases/hypertension.html. On any other topic it must not
-  // run (these pages reuse the ds-* ids with their own labels), so show the neutral summary instead.
-  if(!/\/hypertension(\.html)?$/i.test(location.pathname)){ if(typeof window.calcDrugGeneric==='function') return window.calcDrugGeneric(); return; }
-  const dm=document.getElementById('ds-dm').checked,
-    ckd=document.getElementById('ds-ckd').checked,
-    cvd=document.getElementById('ds-cvd').checked,
-    afro=document.getElementById('ds-afro').checked,
-    age55=document.getElementById('ds-age55').checked,
-    hf=document.getElementById('ds-hf').checked,
-    angina=document.getElementById('ds-angina').checked,
-    af=document.getElementById('ds-af').checked,
-    cough=document.getElementById('ds-cough').checked;
-  const none=!dm&&!ckd&&!cvd&&!afro&&!age55&&!hf&&!angina&&!af&&!cough;
-  ['acei','arb','ccb','thiazide','spiro','ab'].forEach(id=>{
-    const el=document.getElementById('dc-'+id);
-    el.classList.remove('recommended','alt-rec');
-    const b=document.getElementById('rec-'+id);
-    b.style.cssText='';b.textContent='✓ Recommended';b.style.display='none';
-  });
-  if(none){
-    document.getElementById('ds-output').innerHTML='<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
-    return;
-  }
-  let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
-  if(hf){
-    main='acei';mainLabel='Ramipril (ACEi) — HFrEF';
-    why='Heart failure: manage per NICE NG106 (updated September 2025) rather than the NG136 steps. HFrEF: offer all four core medicines first-line — an ACE inhibitor, a beta-blocker, an MRA (spironolactone) and an SGLT2 inhibitor. Start each at a low dose in an order guided by symptoms, comorbidities and preference; there is no need to optimise one before adding the next. If an ACE inhibitor is not tolerated, an ARNI or ARB replaces it; if symptoms persist on maximum tolerated doses of all four, consider switching the ACE inhibitor to an ARNI (specialist advice). A loop diuretic relieves fluid overload.';
-    alt='ab';altLabel='+ Bisoprolol (start low, titrate slowly)';altWhy='ACEi + beta-blocker + MRA + SGLT2 inhibitor = the four first-line HFrEF medicines (NICE NG106, updated September 2025)';
-  } else if(af){
-    main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
-    why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
-    alt=(dm||ckd)?'acei':'ccb';altLabel='+ ACEi or CCB for BP target';altWhy='Rate control alone may not achieve BP target — add Step 2 drug';
-  } else if(cough){
-    main='arb';mainLabel='Candesartan / Losartan (ARB)';
-    why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
-    alt='';altLabel='';altWhy='';
-  } else if(dm||ckd||cvd){
-    main=afro?'arb':'acei';mainLabel=afro?'Candesartan / losartan (ARB)':'Ramipril (ACEi)';
-    why=afro?'Type 2 diabetes (or CKD with albuminuria) in a person of Black African or African–Caribbean family origin: ARB in preference to an ACEi (NICE NG136; CKD per NICE NG203).':'Type 2 diabetes: ACEi or ARB first-line at any age (NICE NG136). CKD: ACEi/ARB if ACR >30 mg/mmol, or >3 mg/mmol with diabetes (NICE NG203). Established CVD alone: follow the NG136 age/ethnicity steps.';
-    alt=afro?'ccb':'arb';altLabel=afro?'+ Amlodipine (CCB) at Step 2':'Candesartan (ARB) — if ACEi cough develops';altWhy='ACEi and ARB give equal renoprotection. Never combine ACEi + ARB simultaneously.';
-  } else if(afro){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Black African or African–Caribbean family origin (no type 2 diabetes): CCB first-line at any age (NICE NG136). At Step 2 add an ARB in preference to an ACEi, or a thiazide-like diuretic.';
-    alt='';altLabel='';altWhy='';
-  } else if(age55){
-    main='ccb';mainLabel='Amlodipine (CCB)';
-    why='Age ≥55 (no type 2 diabetes, not of Black African or African–Caribbean family origin): CCB first-line (NICE NG136).';
-    alt=angina?'acei':'thiazide';
-    altLabel=angina?'+ Ramipril (ACEi) at Step 2':'Indapamide (thiazide-like diuretic) — if a CCB is not suitable';
-    altWhy=angina?'Step 2 per NICE NG136: add an ACEi or ARB (or a thiazide-like diuretic); amlodipine also treats stable angina.':'If a CCB is not suitable (oedema, intolerance, heart failure or high risk of it), offer a thiazide-like diuretic (NICE NG136).';
-  } else {
-    main='acei';mainLabel='Ramipril (ACEi)';
-    why='Age <55, not of Black African or African–Caribbean family origin, no type 2 diabetes/CKD: ACEi (or ARB) is the Step 1 drug of choice (NICE NG136).';
-    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
-    altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
-  }
-
-  const m=document.getElementById('dc-'+main);
-  m.classList.add('recommended');
-  const mb=document.getElementById('rec-'+main);
-  mb.style.display='inline-block';
-
-  if(alt){
-    const a=document.getElementById('dc-'+alt);
-    a.classList.add('alt-rec');
-    const ab=document.getElementById('rec-'+alt);
-    ab.style.display='inline-block';
-    ab.style.background='#dbeafe';
-    ab.style.color='#1d4ed8';
-    ab.style.borderColor='#bfdbfe';
-    ab.textContent='↳ Alternative';
-  }
-
-  document.getElementById('ds-output').innerHTML=`
-    <div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: ${mainLabel}</div>
-    ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
-    <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
-    ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
-    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es 1–2 weeks after starting or up-titrating ACEi/ARB (NICE NG203)</div>`;
-}
+/* calcDrug(): interactive drug selector removed Oct 2026 (Route 1) — its guidance is shown as static text */
 
 function calcScore(){
   var total=0, tasks=0, ro=0, gs=0;

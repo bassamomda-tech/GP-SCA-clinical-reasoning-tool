@@ -480,24 +480,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider" id="drugs">7E — Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select clinical scenario — see drug cards below for guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-ocd-sertraline" onchange="calcDrug()"> First SSRI trial (new diagnosis)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ocd-partial" onchange="calcDrug()"> Partial SSRI response (augmentation)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ocd-resistant" onchange="calcDrug()"> Inadequate response after combined SSRI + CBT-ERP (clomipramine)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ocd-depression" onchange="calcDrug()"> OCD + significant depression</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ocd-tic" onchange="calcDrug()"> OCD + tic disorder</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-ocd-perinatal" onchange="calcDrug()"> Pregnant / breastfeeding</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">OCD medication guide</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">First-line: Sertraline 50mg, titrated as tolerated up to 200mg OD (around 12-week trial; consider increase after 4–6 weeks). Or Fluoxetine 20mg → up to 60mg OD. Inadequate response: multidisciplinary review and combined SSRI + CBT-ERP; then a different SSRI or clomipramine 25mg → 75–250mg (risk-based ECG and BP; specialist). Antipsychotic augmentation (e.g. aripiprazole 5–10mg OD): specialist-initiated after multidisciplinary review. OCD + depression: SSRI addresses both; mirtazapine nocte if severe depression + sleep disruption. OCD + tics: augment SSRI with low-dose aripiprazole or risperidone (also helps tics). Pregnant: sertraline preferred SSRI in pregnancy; discuss risk-benefit with specialist perinatal mental health. 12-week minimum SSRI trial before judging response — do NOT switch at 4–6 weeks.</span></div>
-      </div>
-    </div>
+    <div class="sub-divider" id="drugs">7E — Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>First SSRI trial (new diagnosis)</li><li>Partial SSRI response (augmentation)</li><li>Inadequate response after combined SSRI + CBT-ERP (clomipramine)</li><li>OCD + significant depression</li><li>OCD + tic disorder</li><li>Pregnant / breastfeeding</li></ul></div><div class="ds-result"><div class="ds-result-title">OCD medication guide</div><div><span style="font-size:12.5px;color:var(--g)">First-line: Sertraline 50mg, titrated as tolerated up to 200mg OD (around 12-week trial; consider increase after 4–6 weeks). Or Fluoxetine 20mg → up to 60mg OD. Inadequate response: multidisciplinary review and combined SSRI + CBT-ERP; then a different SSRI or clomipramine 25mg → 75–250mg (risk-based ECG and BP; specialist). Antipsychotic augmentation (e.g. aripiprazole 5–10mg OD): specialist-initiated after multidisciplinary review. OCD + depression: SSRI addresses both; mirtazapine nocte if severe depression + sleep disruption. OCD + tics: augment SSRI with low-dose aripiprazole or risperidone (also helps tics). Pregnant: sertraline preferred SSRI in pregnancy; discuss risk-benefit with specialist perinatal mental health. 12-week minimum SSRI trial before judging response — do NOT switch at 4–6 weeks.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F — Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">

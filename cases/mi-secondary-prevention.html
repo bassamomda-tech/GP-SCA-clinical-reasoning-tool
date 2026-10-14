@@ -490,24 +490,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Medication selector</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top">
-        <h3>Select patient characteristics &#8212; post-MI medication guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-mi-statin" onchange="calcDrug()"> LDL-C above target on atorvastatin 80mg</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mi-antiplatelet" onchange="calcDrug()"> DAPT &#8212; approaching 12 months</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mi-acei" onchange="calcDrug()"> ACE inhibitor cough &#8212; switch needed</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mi-betab" onchange="calcDrug()"> Bisoprolol-related ED &#8212; alternative needed</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mi-aldo" onchange="calcDrug()"> EF &le;40% + HF signs &#8212; eplerenone indicated</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-mi-ppi" onchange="calcDrug()"> GI protection on DAPT + aspirin</label>
-        </div>
-      </div>
-      <div class="ds-result">
-        <div class="ds-result-title">Post-MI medication guidance</div>
-        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Post-MI standard regimen: aspirin 75mg + ticagrelor 90mg BD (DAPT for 12 months); atorvastatin 80mg OD; ramipril (titrate to 10mg OD); bisoprolol (titrate to target or maximum tolerated dose); PPI if GI bleeding risk (GI protection). LDL-C above target on atorvastatin 80mg: add ezetimibe 10mg OD; recheck in 3 months; if still above target and NICE/local criteria met: inclisiran or PCSK9 inhibitor. ACEi cough: switch to candesartan 32mg OD (ARB). Bisoprolol ED: switch to nebivolol (vasodilatory BB; less ED risk). EF &le;40% + HF: add eplerenone 25mg OD (EPHESUS); titrate to 50mg; monitor K+ 1 week and 1 month; ICD assessment at 40 days. DAPT approaching 12 months: transition aspirin 75mg lifelong at 12 months; stop ticagrelor (with cardiology agreement); never stop both simultaneously. GI protection: PPI with DAPT and where there is GI bleeding risk on aspirin (lansoprazole or pantoprazole if on clopidogrel &#8212; avoid omeprazole/esomeprazole).</span></div>
-      </div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>LDL-C above target on atorvastatin 80mg</li><li>DAPT &#8212; approaching 12 months</li><li>ACE inhibitor cough &#8212; switch needed</li><li>Bisoprolol-related ED &#8212; alternative needed</li><li>EF &le;40% + HF signs &#8212; eplerenone indicated</li><li>GI protection on DAPT + aspirin</li></ul></div><div class="ds-result"><div class="ds-result-title">Post-MI medication guidance</div><div><span style="font-size:12.5px;color:var(--g)">Post-MI standard regimen: aspirin 75mg + ticagrelor 90mg BD (DAPT for 12 months); atorvastatin 80mg OD; ramipril (titrate to 10mg OD); bisoprolol (titrate to target or maximum tolerated dose); PPI if GI bleeding risk (GI protection). LDL-C above target on atorvastatin 80mg: add ezetimibe 10mg OD; recheck in 3 months; if still above target and NICE/local criteria met: inclisiran or PCSK9 inhibitor. ACEi cough: switch to candesartan 32mg OD (ARB). Bisoprolol ED: switch to nebivolol (vasodilatory BB; less ED risk). EF &le;40% + HF: add eplerenone 25mg OD (EPHESUS); titrate to 50mg; monitor K+ 1 week and 1 month; ICD assessment at 40 days. DAPT approaching 12 months: transition aspirin 75mg lifelong at 12 months; stop ticagrelor (with cardiology agreement); never stop both simultaneously. GI protection: PPI with DAPT and where there is GI bleeding risk on aspirin (lansoprazole or pantoprazole if on clopidogrel &#8212; avoid omeprazole/esomeprazole).</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -874,12 +858,12 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="dqp-wrap">
       <div class="dqp-hdr">&#128138; Drug Quick-Pick</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-mi-statin')">&#128202; LDL-C above target</button>
-        <button class="dqp-btn" onclick="showDrug('ds-mi-antiplatelet')">&#9200; DAPT at 12 months</button>
-        <button class="dqp-btn" onclick="showDrug('ds-mi-acei')">&#128138; ACEi cough &#8212; switch</button>
-        <button class="dqp-btn" onclick="showDrug('ds-mi-betab')">&#128145; BB-related ED</button>
-        <button class="dqp-btn" onclick="showDrug('ds-mi-aldo')">&#129504; EF &le;40% + HF</button>
-        <button class="dqp-btn" onclick="showDrug('ds-mi-ppi')">&#128138; GI protection on DAPT</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128202; LDL-C above target</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#9200; DAPT at 12 months</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128138; ACEi cough &#8212; switch</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128145; BB-related ED</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129504; EF &le;40% + HF</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128138; GI protection on DAPT</a>
       </div>
     </div>
   </div>

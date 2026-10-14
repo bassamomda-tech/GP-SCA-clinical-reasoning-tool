@@ -407,20 +407,8 @@ body{background:var(--bg, #f6f2e9) !important}
       </div>
     </div>
 
-    <div class="sub-divider">7E &#8212; Decision aid</div>
-    <div class="ds-wrap" style="margin-bottom:.85rem">
-      <div class="ds-top"><h3>Select age and presentation for laxative guidance</h3>
-        <div class="ds-checks">
-          <label class="ds-lbl"><input type="checkbox" id="ds-cc-disimpact" onchange="calcDrug()"> Child 5&#8211;11 years with overflow soiling (impaction &#8212; Josh)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cc-mild" onchange="calcDrug()"> Mild constipation; no overflow (maintenance from outset)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cc-toddler" onchange="calcDrug()"> Toddler (2&#8211;5 years)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cc-infant" onchange="calcDrug()"> Infant (&lt;12 months)</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cc-redflags" onchange="calcDrug()"> Red flags present &#8212; possible organic cause</label>
-          <label class="ds-lbl"><input type="checkbox" id="ds-cc-relapse" onchange="calcDrug()"> Relapse after laxative course</label>
-        </div>
-      </div>
-      <div class="ds-result"><div class="ds-result-title">Laxative management guidance</div><div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Child 5&#8211;11 with overflow soiling (Josh): Disimpaction &#8212; Movicol Paediatric Plain 4 sachets/day &#8594; increase by 2 sachets each day &#8594; max 12 sachets/day. Each sachet in 62.5ml water. Once stool soft and regular (Bristol Type 3&#8211;4): step down to maintenance 1&#8211;2 sachets/day. Continue minimum 3&#8211;6 months. Mild constipation (no overflow): start maintenance dose 1&#8211;2 sachets/day; adjust by effect; continue 3&#8211;6 months. Toddler (2&#8211;5): disimpaction &#8212; 2 sachets/day &#8594; increase to max 8 sachets/day. Infant (&lt;12 months): avoid macrogol under 12 months unless specialist guidance; lactulose 2.5ml BD (BNFC; from 1 month; adjust); bath; massage; bicycle legs; infant-specific feeding advice (no routine extra water between feeds); refer if no response to optimal treatment within 4 weeks. Red flags: coeliac screen (tTG-IgA + total IgA); TSH; FBC; paediatric referral. Never macrogol in Hirschsprung&#8217;s suspected &#8212; refer urgently; DRE absolutely contraindicated. Relapse: re-disimpact (escalating dose again); do not use maintenance dose on a re-impacted child; ensure Gemma understands not to stop again until GP advises.</span></div></div>
-    </div>
+    <div class="sub-divider">7E &#8212; Medication options — guideline summary (no patient selection)</div>
+    <div class="ds-wrap ds-static" id="ds-ref" style="margin-bottom:.85rem"><div class="ds-top"><div style="font-size:12px;font-weight:600;margin-bottom:.35rem">Situations this summary covers</div><ul style="margin:0;padding-left:1.1rem;font-size:12.5px;line-height:1.6;columns:2 240px;column-gap:1.5rem"><li>Child 5&#8211;11 years with overflow soiling (impaction &#8212; Josh)</li><li>Mild constipation; no overflow (maintenance from outset)</li><li>Toddler (2&#8211;5 years)</li><li>Infant (&lt;12 months)</li><li>Red flags present &#8212; possible organic cause</li><li>Relapse after laxative course</li></ul></div><div class="ds-result"><div class="ds-result-title">Laxative management guidance</div><div><span style="font-size:12.5px;color:var(--g)">Child 5&#8211;11 with overflow soiling (Josh): Disimpaction &#8212; Movicol Paediatric Plain 4 sachets/day &#8594; increase by 2 sachets each day &#8594; max 12 sachets/day. Each sachet in 62.5ml water. Once stool soft and regular (Bristol Type 3&#8211;4): step down to maintenance 1&#8211;2 sachets/day. Continue minimum 3&#8211;6 months. Mild constipation (no overflow): start maintenance dose 1&#8211;2 sachets/day; adjust by effect; continue 3&#8211;6 months. Toddler (2&#8211;5): disimpaction &#8212; 2 sachets/day &#8594; increase to max 8 sachets/day. Infant (&lt;12 months): avoid macrogol under 12 months unless specialist guidance; lactulose 2.5ml BD (BNFC; from 1 month; adjust); bath; massage; bicycle legs; infant-specific feeding advice (no routine extra water between feeds); refer if no response to optimal treatment within 4 weeks. Red flags: coeliac screen (tTG-IgA + total IgA); TSH; FBC; paediatric referral. Never macrogol in Hirschsprung&#8217;s suspected &#8212; refer urgently; DRE absolutely contraindicated. Relapse: re-disimpact (escalating dose again); do not use maintenance dose on a re-impacted child; ensure Gemma understands not to stop again until GP advises.</span></div><div class="ds-ref-note" style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:.6rem">Guideline summary — each situation is shown with what the guidance says for it, as written. Nothing is selected or worked out for an individual patient. Check doses in the current BNF and the SPC.</div></div></div>
 
     <div class="sub-divider">7F &#8212; Drug reference cards</div>
     <div class="drug-cards" id="drug-cards-container">
@@ -768,12 +756,12 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="dqp-wrap">
       <div class="dqp-hdr">&#128138; Laxative Quick-Pick by Age</div>
       <div class="dqp-btns">
-        <button class="dqp-btn" onclick="showDrug('ds-cc-disimpact')">&#128308; Overflow soiling (5&#8211;11)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-cc-mild')">&#129001; Mild functional constipation</button>
-        <button class="dqp-btn" onclick="showDrug('ds-cc-toddler')">&#128100; Toddler (2&#8211;5 years)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-cc-infant')">&#128376; Infant (&lt;12 months)</button>
-        <button class="dqp-btn" onclick="showDrug('ds-cc-redflags')">&#128680; Red flags screen</button>
-        <button class="dqp-btn" onclick="showDrug('ds-cc-relapse')">&#128200; Relapse management</button>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128308; Overflow soiling (5&#8211;11)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#129001; Mild functional constipation</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128100; Toddler (2&#8211;5 years)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128376; Infant (&lt;12 months)</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128680; Red flags screen</a>
+        <a class="dqp-btn" href="#ds-ref" style="text-decoration:none">&#128200; Relapse management</a>
       </div>
     </div>
   </div>

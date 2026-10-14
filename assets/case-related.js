@@ -8,12 +8,12 @@
 (function(){
   // -------- Tool registry --------
   const TOOLS = {
-    workup:     { icon:'🩺', label:'Diagnostic Tool',   path:'tools/diagnostic.html',       meta:'Triage + differential' },
-    rx:         { icon:'📝', label:'Ready Prescriptions',path:'tools/prescriptions.html',   meta:'EMIS copy-paste' },
-    calc:       { icon:'🧮', label:'Calculators',        path:'tools/calculators.html',     meta:'Risk scores · 55' },
-    labs:       { icon:'🧪', label:'Lab Results',        path:'tools/lab-results.html',     meta:'Per-result GP actions' },
+    workup:     { icon:'🩺', label:'Diagnostic work-up', path:'tools/diagnostic.html',      meta:'Red flags + differential' },
+    rx:         { icon:'📝', label:'Ready Prescriptions',path:'tools/prescriptions.html',   meta:'Reference wording' },
+    calc:       { icon:'🧮', label:'Scores',             path:'tools/calculators.html',     meta:'Published scores · bands' },
+    labs:       { icon:'🧪', label:'Lab results reference', path:'tools/lab-results.html',  meta:'Threshold bands by test' },
     algorithms: { icon:'🗺️', label:'Algorithms',         path:'tools/algorithms.html',     meta:'Visual pathways' },
-    medchooser: { icon:'💊', label:'Medication Chooser', path:'tools/medication-chooser.html', meta:'NICE · BNF' },
+    medchooser: { icon:'💊', label:'Medication options', path:'tools/medication-chooser.html', meta:'By condition · NICE · BNF' },
     leaflets:   { icon:'📄', label:'Patient Leaflets',   path:'tools/leaflets.html',        meta:'AccuRx copy-link' },
     sca:        { icon:'🎓', label:'SCA Practice',       path:'tools/sca-practice.html',    meta:'12-min mock + scorecard' },
   };
