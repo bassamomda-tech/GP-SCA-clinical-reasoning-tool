@@ -21,6 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site.css?v=14" />
+<link rel="stylesheet" href="assets/home.css?v=1" />
 
 <template id="__bundler_thumbnail" data-bg-color="#f6f2e9">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -218,30 +219,6 @@
   .feat-sub .fs-cta svg{ width:15px; height:15px; transition:transform .15s ease; }
   .feat-sub:hover .fs-cta svg{ transform:translateX(3px); }
   @media(max-width:760px){ .feat-sub{ flex-wrap:wrap; gap:12px; } .feat-sub .fs-cta{ width:100%; } }
-
-  /* ---------- FLOATING UPDATES BAND ---------- */
-  .home-updates{ margin-top:42px; }
-  .home-updates .home-sec-head{ margin-bottom:14px; }
-  .upd-float{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  @media(max-width:860px){ .upd-float{ grid-template-columns:1fr; } }
-  .upd-card{ position:relative; display:flex; flex-direction:column; gap:8px; padding:18px 18px 16px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); text-decoration:none; color:inherit; box-shadow:0 10px 26px -14px rgba(12,74,71,.30); animation:updBob 6s ease-in-out infinite; will-change:transform; transition:box-shadow .18s ease, border-color .18s ease; }
-  .upd-card:nth-child(2){ animation-delay:-2s; }
-  .upd-card:nth-child(3){ animation-delay:-4s; }
-  .upd-card::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:var(--r-lg) 0 0 var(--r-lg); background:var(--teal); }
-  .upd-card.src-mhra::before{ background:var(--rust); }
-  .upd-card.src-ukhsa::before{ background:#b45309; }
-  .upd-card:hover{ border-color:var(--teal); box-shadow:0 16px 34px -12px rgba(12,74,71,.42); animation-play-state:paused; }
-  .upd-eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--teal-3); }
-  .upd-card.src-mhra .upd-eyebrow{ color:var(--rust); }
-  .upd-card.src-ukhsa .upd-eyebrow{ color:#b45309; }
-  .upd-card h3{ font-size:15px; line-height:1.28; letter-spacing:-.005em; margin:0; }
-  .upd-card p{ font-size:12.5px; color:var(--ink-2); line-height:1.5; margin:0; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-  .upd-meta{ margin-top:auto; padding-top:4px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
-  .upd-date{ font-size:11.5px; font-weight:700; color:var(--muted); font-variant-numeric:tabular-nums; }
-  .upd-go{ font-size:12px; font-weight:700; color:var(--teal); display:inline-flex; align-items:center; gap:5px; }
-  .upd-card:hover .upd-go{ color:var(--rust); }
-  @keyframes updBob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-6px); } }
-  @media(prefers-reduced-motion:reduce){ .upd-card{ animation:none; } }
 
   /* ---------- TOOL TILE GRID ---------- */
   .tile-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(252px,1fr)); gap:14px; }
@@ -566,26 +543,44 @@
       <!-- ================= CLINIC INTERFACE ================= -->
       <div class="home-clinic rgp-clinic-only">
 
-        <section class="home-hero" data-screen-label="Clinic · Hero">
-          <span class="hero-eyebrow">🏥 Clinic interface · point of care</span>
-          <h1>Clinical reasoning that works <em>in the room</em>.</h1>
-          <p class="lede">Open a pathway, confirm the management, reach for a tool — each mapped to named UK guidance. Built for busy clinics, urgent care and out-of-hours, where the next decision matters more than the next exam.</p>
-          <div class="home-find">
-            <div class="home-search" id="clinicSearchWrap">
-              <span class="hs-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-              <input type="search" class="homeSearch" id="clinicGlobalSearch" placeholder="Search every pathway, protocol, prescription & tool…" autocomplete="off" aria-label="Search the clinic interface" role="combobox" aria-expanded="false" aria-controls="clinicResults" />
-              <span class="hs-hint">↵ to open</span>
-              <div class="gsearch" id="clinicResults" role="listbox" aria-label="Search results"></div>
+        <section class="home-hero hero-split" data-screen-label="Clinic · Hero">
+          <div class="hero-left">
+            <span class="hero-eyebrow">🏥 Clinic interface · point of care</span>
+            <h1>Clinical reasoning that works <em>in the room</em>.</h1>
+            <p class="lede">Open a pathway, confirm the management, reach for a tool — each mapped to named UK guidance. Built for busy clinics, urgent care and out-of-hours, where the next decision matters more than the next exam.</p>
+            <div class="hero-ctas">
+              <a class="hero-btn primary" href="pages/ask.html">💬 Ask a clinical question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a class="hero-btn" href="tools/algorithms.html">🗺️ Browse pathways</a>
+              <a class="hero-btn" href="tools/management.html">💠 Protocols</a>
             </div>
+            <a class="hu-new rgp-cite-skip" href="pages/updates.html" data-hu-new data-no-cite hidden><span class="hu-new-pill">What&#39;s new</span><span class="hu-new-t">Latest NICE, MHRA and UKHSA updates</span><span class="hu-new-go" aria-hidden="true">→</span></a>
+            <div class="home-find">
+              <div class="home-search" id="clinicSearchWrap">
+                <span class="hs-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                <input type="search" class="homeSearch" id="clinicGlobalSearch" placeholder="Search every pathway, protocol, prescription & tool…" autocomplete="off" aria-label="Search the clinic interface" role="combobox" aria-expanded="false" aria-controls="clinicResults" />
+                <span class="hs-hint">↵ to open</span>
+                <div class="gsearch" id="clinicResults" role="listbox" aria-label="Search results"></div>
+              </div>
+            </div>
+            <div class="home-stats" aria-label="At a glance">
+              <div class="home-stat"><span class="hs-n">200+</span><span class="hs-l">Visual pathways<small>print-ready</small></span></div>
+              <div class="home-stat"><span class="hs-n">200+</span><span class="hs-l">Management protocols<small>drug ladders</small></span></div>
+              <div class="home-stat"><span class="hs-n">110+</span><span class="hs-l">Prescription templates<small>editable · check before use</small></span></div>
+              <div class="home-stat hs-center"><span class="hs-l"><b class="hs-em">NICE</b> &amp; national guidelines<small>source named on every page</small></span></div>
+            </div>
+            <p class="iface-note">Preparing for the SCA instead? <button type="button" data-go-sca>Switch to the SCA interface →</button></p>
           </div>
-          <div class="home-stats" aria-label="At a glance">
-            <div class="home-stat"><span class="hs-n">200+</span><span class="hs-l">Visual pathways<small>print-ready</small></span></div>
-            <div class="home-stat"><span class="hs-n">200+</span><span class="hs-l">Management protocols<small>drug ladders</small></span></div>
-            <div class="home-stat"><span class="hs-n">110+</span><span class="hs-l">Prescription templates<small>editable · check before use</small></span></div>
-            <div class="home-stat hs-center"><span class="hs-l"><b class="hs-em">NICE</b> &amp; national guidelines<small>source named on every page</small></span></div>
-          </div>
-          <p class="iface-note">Preparing for the SCA instead? <button type="button" data-go-sca>Switch to the SCA interface →</button></p>
+          <aside class="hu-panel" data-hu-panel="clinic" aria-labelledby="huTitleClinic">
+            <div class="hu-ph"><span class="hu-live"><i aria-hidden="true"></i>Updates · NICE first</span><button type="button" class="hu-pause" aria-pressed="false" hidden>Pause</button></div>
+            <h2 class="hu-title" id="huTitleClinic">Latest in UK primary care</h2>
+            <p class="hu-asof">Newest first · NICE, then MHRA safety advice</p>
+            <ol class="hu-list"><li class="hu-fallback">NICE guideline changes, MHRA safety advice and UKHSA alerts, newest first — <a href="pages/updates.html">open Updates &amp; News →</a></li></ol>
+            <div class="hu-safety" hidden></div>
+            <div class="hu-foot"><a href="pages/updates.html">See all updates →</a><a href="pages/updates.html#hot-topics">🔥 Hot topics →</a></div>
+          </aside>
         </section>
+        <nav class="hu-continue" data-hu-continue aria-label="Continue where you left off" hidden><span class="hu-cont-l">↩ Continue where you left off</span><span class="hu-cont-links"></span></nav>
+        <div class="hu-trust rgp-cite-skip" data-no-cite><span><b>Review cycle:</b> high risk 6 months · standard 12 months</span><span><b>NICE</b> · <b>MHRA</b> · <b>BNF</b> sources</span><span><b>400+</b> topics</span><a href="pages/content-safety.html">Every page shows its own review status →</a></div>
 
         <!-- HOW TO USE -->
         <a class="guide-flag" href="tools/clinic-guide.html" data-csearch="how to use guide start here orientation what is this website help getting started four layers framework consultation tour 2 minute">
@@ -614,8 +609,8 @@
 
         <!-- CLINICAL COMPASS -->
         <section class="home-sec core-flag" data-screen-label="Clinic · Clinical Compass" data-grp="core">
-          <div class="home-sec-head"><div><span class="core-badge">🧭 Clinical Compass</span><h2 style="margin-top:10px">Diagnose · treat · prescribe</h2></div><a class="more" href="tools/clinical-core.html">Open Clinical Compass →</a></div>
-          <div class="tools3">
+          <div class="home-sec-head"><div><span class="core-badge">🧭 Clinical Compass</span><h2 style="margin-top:10px">Your main tools — diagnose · treat · prescribe · consult</h2></div><a class="more" href="tools/clinical-core.html">Open Clinical Compass →</a></div>
+          <div class="tools3 main-grid">
             <a class="t3" href="tools/algorithms.html" data-csearch="pathways algorithms flowchart decision tree diagnose triage printable headache chest pain">
               <span class="t3-ic">🗺️</span><span class="t3-tag">200+ · print-ready</span>
               <h3>Pathways</h3><p>One visual flow per presentation — Safety · Diagnose · Refer · Treat · Lifestyle. Print to a clean handout.</p>
@@ -630,6 +625,12 @@
               <span class="t3-ic">💊</span><span class="t3-tag">Ready Rx · RAG · sick-day</span>
               <h3>Prescribing</h3><p>Everything around the prescription — ready-built Rx, who pays, FP10, what not to prescribe, RAG and sick-day rules.</p>
               <span class="t3-cta" style="margin-top:14px">Open prescribing →</span>
+            </a>
+            <a class="t3 spine" href="tools/consultation-spine.html" data-csearch="consultation spine presenting complaint provisional diagnosis full editable consultation red flags safety netting coded record note snomed accurx emis systmone">
+              <span class="t3-ic">🧬</span><span class="t3-tag">Core · complaint + diagnosis → full consultation</span>
+              <h3>Consultation Spine</h3><p>Enter the presenting complaint (and provisional diagnosis) and get the whole consultation — ready red flags, history, examination, investigations, management, safety-netting and a coded record. Age- and symptom-specific and fully editable; highlights possibly relevant NICE NG12 suspected-cancer criteria for you to review — it does not decide whether to refer. Use de-identified details only.</p>
+              <span class="t3-steps"><span class="ts-step"><b>1</b>Complaint ± diagnosis</span><span class="ts-step"><b>2</b>Generate consultation</span><span class="ts-step"><b>3</b>Edit &amp; copy in</span></span>
+              <span class="t3-cta" style="margin-top:14px">Open tool →</span>
             </a>
           </div>
         </section>
@@ -672,16 +673,6 @@
         <!-- CLINIC TOOLKIT -->
         <section class="home-sec" data-screen-label="Clinic · Clinic Toolkit" data-grp="tools">
           <div class="home-sec-head"><div><span class="eyebrow">🩺 Clinic Toolkit</span><h2>Everything at the desk</h2></div></div>
-          <a class="tool-spot" href="tools/consultation-spine.html" data-csearch="consultation spine presenting complaint provisional diagnosis full editable consultation red flags safety netting coded record note snomed accurx emis systmone">
-            <span class="ts-ic">🧬</span>
-            <span class="ts-tags"><span class="ts-new">Core</span><span class="ts-tag">Complaint + diagnosis → full consultation</span></span>
-            <span class="ts-main">
-              <h3>Consultation Spine</h3>
-              <p>Enter the presenting complaint (and provisional diagnosis) and get the whole consultation — ready red flags, history, examination, investigations, management, safety-netting and a coded record. Age- and symptom-specific and fully editable; highlights possibly relevant NICE NG12 suspected-cancer criteria for you to review — it does not decide whether to refer. Use de-identified details only.</p>
-              <div class="ts-row"><span class="ts-step"><b>1</b>Complaint ± diagnosis</span><span class="ts-step"><b>2</b>Generate consultation</span><span class="ts-step"><b>3</b>Edit &amp; copy in</span></div>
-              <span class="ts-cta">Open tool →</span>
-            </span>
-          </a>
           <div class="tile-grid">
             <a class="x-card" href="tools/decision-support.html" data-csearch="decision support diagnostic medication chooser lab results actioning diagnose investigate treat"><span class="x-ic">🩺</span><span class="x-body"><span class="x-t">Decision Support</span><span class="x-meta">Diagnose → read the bloods → choose the drug</span></span><span class="x-arrow">→</span></a>
             <a class="x-card" href="tools/calculators.html" data-csearch="calculators scores chads vasc qrisk phq gad news2 egfr"><span class="x-ic">🧮</span><span class="x-body"><span class="x-t">Medical Calculators</span><span class="x-meta">55 scores · CV · VTE · MH · renal</span></span><span class="x-arrow">→</span></a>
@@ -708,69 +699,68 @@
           </button>
         </section>
 
-        <!-- FLOATING UPDATES -->
-        <section class="home-sec home-updates" data-screen-label="Clinic · Latest updates" data-grp="updates">
-          <div class="home-sec-head"><div><span class="eyebrow">📰 Latest updates</span><h2>What changed in UK primary care</h2></div><a class="more" href="pages/updates.html">See all updates →</a></div>
-          <div class="upd-float" id="homeUpdates">
-            <a class="upd-card src-mhra" href="pages/updates.html">
-              <span class="upd-eyebrow">💊 MHRA</span>
-              <h3>ACE inhibitors — delayed-onset angioedema</h3>
-              <p>Stop the ACE inhibitor immediately if angioedema is suspected — it can occur at any time, even after years of use. Consider a bradykinin-mediated cause when standard anaphylaxis treatment isn't working.</p>
-              <span class="upd-meta"><span class="upd-date">17 Jun 2026</span><span class="upd-go">Read →</span></span>
-            </a>
-            <a class="upd-card src-mhra" href="pages/updates.html">
-              <span class="upd-eyebrow">💊 MHRA</span>
-              <h3>Nasal decongestant sprays — rebound congestion</h3>
-              <p>Xylometazoline and oxymetazoline sprays can cause rebound congestion and, with prolonged use, rhinitis medicamentosa. Advise patients not to use for more than 5 consecutive days.</p>
-              <span class="upd-meta"><span class="upd-date">30 Apr 2026</span><span class="upd-go">Read →</span></span>
-            </a>
-          </div>
-        </section>
-
         <div class="footer-disclaimer" style="margin-top:40px"><strong>Educational use only.</strong> Reasoning GP is a clinical reasoning resource for the UK primary care team. It is not a substitute for clinical judgement, and recommendations should always be verified against the live NICE and your local prescribing formulary.</div>
       </div>
 
       <!-- ================= SCA EXAM INTERFACE ================= -->
       <div class="home-sca rgp-sca-only">
 
-        <section class="home-hero" data-screen-label="SCA · Hero">
-          <span class="hero-eyebrow is-sca">🎓 SCA interface · exam preparation</span>
-          <h1>Reason like the patient needs it — and <em>score like the examiner marks it</em>.</h1>
-          <p class="lede">The same clinical reasoning in an SCA-style format — an educational simulation, not affiliated with or endorsed by the RCGP. Work the most common stations, see how each is marked against our reading of the three published domains, then rehearse under real exam conditions.</p>
-          <a class="guide-flag" href="tools/sca-guide.html" data-ssearch="sca guide how to use start here exam format marking domains 12 week plan understand orientation">
-            <span class="gf-ic" aria-hidden="true">🧭</span>
-            <span class="gf-body">
-              <span class="gf-eyebrow">New here? Start here</span>
-              <h2>How to pass the <em>SCA</em></h2>
-              <span class="gf-p">A two-minute orientation: the exam format, the marking arithmetic across the three domains, why candidates fail — and a week-by-week plan that runs Understand → See a pass → Practise → Mock → Sharpen → Track.</span>
-              <span class="gf-layers"><span>🎙️ Hot Seat — practise</span><span>🔁 Mock circuit — rehearse</span><span>📚 Q-bank — sharpen</span><span>🌡️ Readiness — track</span></span>
-            </span>
-            <span class="gf-cta">Open the SCA Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-          </a>
-          <a class="guide-flag ask-flag" href="pages/ask.html" aria-label="Ask the clinical reasoning assistant a question">
-            <span class="gf-ic" aria-hidden="true">💬</span>
-            <span class="gf-body">
-              <span class="gf-eyebrow">Ask the assistant</span>
-              <h2>Ask a <em>clinical question</em></h2>
-              <span class="gf-p">Ask in plain English. Answers draw on the Reasoning GP library and current UK guidance — NICE, specialty guidance, MHRA safety updates and the BNF — with the source named and links to the matching pathway, protocol or case. Decision support only; do not enter identifiable patient information.</span>
-            </span>
-            <span class="gf-cta">Ask a question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-          </a>
-          <div class="home-find">
-            <div class="home-search">
-              <span class="hs-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-              <input type="search" class="homeSearch" placeholder="Search SCA cases, algorithms & resources…" autocomplete="off" aria-label="Search the SCA interface" />
-              <span class="hs-hint">↵ to open</span>
+        <section class="home-hero hero-split" data-screen-label="SCA · Hero">
+          <div class="hero-left">
+            <span class="hero-eyebrow is-sca">🎓 SCA interface · exam preparation</span>
+            <h1>Reason like the patient needs it — and <em>score like the examiner marks it</em>.</h1>
+            <p class="lede">The same clinical reasoning in an SCA-style format — an educational simulation, not affiliated with or endorsed by the RCGP. Work the most common stations, see how each is marked against our reading of the three published domains, then rehearse under real exam conditions.</p>
+            <div class="hero-ctas">
+              <a class="hero-btn primary" href="tools/sca-practice.html">🔥 Sit in the Hot Seat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a class="hero-btn" href="pages/ask.html">💬 Ask a question</a>
+              <a class="hero-btn" href="tools/algorithms.html">🗺️ Pathways</a>
             </div>
+            <a class="hu-new rgp-cite-skip" href="pages/updates.html" data-hu-new data-no-cite hidden><span class="hu-new-pill">What&#39;s new</span><span class="hu-new-t">Latest NICE, MHRA and UKHSA updates</span><span class="hu-new-go" aria-hidden="true">→</span></a>
+            <div class="home-find">
+              <div class="home-search">
+                <span class="hs-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                <input type="search" class="homeSearch" placeholder="Search SCA cases, algorithms & resources…" autocomplete="off" aria-label="Search the SCA interface" />
+                <span class="hs-hint">↵ to open</span>
+              </div>
+            </div>
+            <div class="home-stats" aria-label="At a glance">
+              <div class="home-stat"><span class="hs-n">312</span><span class="hs-l">AI patient cases<small>unlimited · no credits</small></span></div>
+              <div class="home-stat"><span class="hs-n">3</span><span class="hs-l">Marking domains<small>scored live</small></span></div>
+              <div class="home-stat"><span class="hs-n">12<small style="display:inline">min</small></span><span class="hs-l">Real-time timer<small>exam-paced</small></span></div>
+              <div class="home-stat"><span class="hs-n">AI</span><span class="hs-l">Record &amp; review<small>instant feedback</small></span></div>
+            </div>
+            <p class="iface-note">Working a real clinic instead? <button type="button" data-go-clinic>Switch to the Clinic interface →</button></p>
           </div>
-          <div class="home-stats" aria-label="At a glance">
-            <div class="home-stat"><span class="hs-n">312</span><span class="hs-l">AI patient cases<small>unlimited · no credits</small></span></div>
-            <div class="home-stat"><span class="hs-n">3</span><span class="hs-l">Marking domains<small>scored live</small></span></div>
-            <div class="home-stat"><span class="hs-n">12<small style="display:inline">min</small></span><span class="hs-l">Real-time timer<small>exam-paced</small></span></div>
-            <div class="home-stat"><span class="hs-n">AI</span><span class="hs-l">Record &amp; review<small>instant feedback</small></span></div>
-          </div>
-          <p class="iface-note">Working a real clinic instead? <button type="button" data-go-clinic>Switch to the Clinic interface →</button></p>
+          <aside class="hu-panel" data-hu-panel="sca" aria-labelledby="huTitleSca">
+            <div class="hu-ph"><span class="hu-live"><i aria-hidden="true"></i>For the exam · NICE first</span><button type="button" class="hu-pause" aria-pressed="false" hidden>Pause</button></div>
+            <h2 class="hu-title" id="huTitleSca">Guideline changes examiners expect you to know</h2>
+            <p class="hu-asof">Newest first · NICE, then MHRA safety advice</p>
+            <ol class="hu-list"><li class="hu-fallback">NICE guideline changes, MHRA safety advice and UKHSA alerts, newest first — <a href="pages/updates.html">open Updates &amp; News →</a></li></ol>
+            <div class="hu-safety" hidden></div>
+            <div class="hu-foot"><a href="pages/updates.html">See all updates →</a><a href="pages/updates.html#hot-topics">🔥 Hot topics →</a></div>
+          </aside>
         </section>
+        <nav class="hu-continue" data-hu-continue aria-label="Continue where you left off" hidden><span class="hu-cont-l">↩ Continue where you left off</span><span class="hu-cont-links"></span></nav>
+        <div class="hu-trust rgp-cite-skip" data-no-cite><span><b>Review cycle:</b> high risk 6 months · standard 12 months</span><span><b>NICE</b> · <b>MHRA</b> · <b>BNF</b> sources</span><span><b>400+</b> topics</span><a href="pages/content-safety.html">Every page shows its own review status →</a></div>
+        <a class="guide-flag after-hero" href="tools/sca-guide.html" data-ssearch="sca guide how to use start here exam format marking domains 12 week plan understand orientation">
+          <span class="gf-ic" aria-hidden="true">🧭</span>
+          <span class="gf-body">
+            <span class="gf-eyebrow">New here? Start here</span>
+            <h2>How to pass the <em>SCA</em></h2>
+            <span class="gf-p">A two-minute orientation: the exam format, the marking arithmetic across the three domains, why candidates fail — and a week-by-week plan that runs Understand → See a pass → Practise → Mock → Sharpen → Track.</span>
+            <span class="gf-layers"><span>🎙️ Hot Seat — practise</span><span>🔁 Mock circuit — rehearse</span><span>📚 Q-bank — sharpen</span><span>🌡️ Readiness — track</span></span>
+          </span>
+          <span class="gf-cta">Open the SCA Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="guide-flag ask-flag after-hero" href="pages/ask.html" aria-label="Ask the clinical reasoning assistant a question">
+          <span class="gf-ic" aria-hidden="true">💬</span>
+          <span class="gf-body">
+            <span class="gf-eyebrow">Ask the assistant</span>
+            <h2>Ask a <em>clinical question</em></h2>
+            <span class="gf-p">Ask in plain English. Answers draw on the Reasoning GP library and current UK guidance — NICE, specialty guidance, MHRA safety updates and the BNF — with the source named and links to the matching pathway, protocol or case. Decision support only; do not enter identifiable patient information.</span>
+          </span>
+          <span class="gf-cta">Ask a question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
 
         <div class="home-empty scaEmpty">No match. Try a case, a pathway, or “SCA practice” — or browse the full list in the menu.</div>
 
@@ -928,31 +918,9 @@
 <script src="assets/sca-cases.js"></script>
 <script src="assets/kb-index.js?v=6"></script>
 <script src="assets/local-area.js?v=1"></script>
-<script>
-/* ---------- Floating "Latest updates" — use live archive when present ---------- */
-(function(){
-  var host=document.getElementById('homeUpdates'); if(!host) return;
-  var LKEY='rgp.updates.archive.v1';
-  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
-  function srcClass(src){ var s=String(src||'').toUpperCase(); if(s.indexOf('MHRA')>=0) return 'src-mhra'; if(s.indexOf('UKHSA')>=0) return 'src-ukhsa'; return 'src-nice'; }
-  function ic(src){ var s=String(src||'').toUpperCase(); if(s.indexOf('MHRA')>=0) return '💊 '; if(s.indexOf('UKHSA')>=0) return '⚠ '; if(s.indexOf('NICE')>=0||s.indexOf('NICE')>=0) return '📝 '; return '📰 '; }
-  function dt(d){ if(!d) return ''; var x=new Date(d); return isNaN(x)?'':x.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
-  function tOf(it){ var t=Date.parse(it.date||''); if(!isNaN(t)) return t; var s=Date.parse(it.seen||''); return isNaN(s)?0:s; }
-  var items=[];
-  try{ items=JSON.parse(localStorage.getItem(LKEY)||'[]')||[]; }catch(e){ items=[]; }
-  if(!items.length) return; // keep the curated editorial cards
-  items=items.filter(function(x){return x&&x.title;}).sort(function(a,b){return tOf(b)-tOf(a);}).slice(0,3);
-  if(!items.length) return;
-  host.innerHTML=items.map(function(it){
-    return '<a class="upd-card '+srcClass(it.src||it.tag)+'" href="pages/updates.html">'+
-      '<span class="upd-eyebrow">'+esc(ic(it.src||it.tag)+(it.tag||it.src||'Update'))+'</span>'+
-      '<h3>'+esc(it.title)+'</h3>'+
-      (it.summary?'<p>'+esc(it.summary)+'</p>':'')+
-      '<span class="upd-meta"><span class="upd-date">'+esc(dt(it.date))+'</span><span class="upd-go">Read →</span></span>'+
-    '</a>';
-  }).join('');
-})();
-</script>
+<script src="assets/updates-nice-archive.js?v=1"></script>
+<script src="assets/home-updates-data.js?v=1"></script>
+<script src="assets/home-updates.js?v=1"></script>
 <script>
 /* ---------- Global command-palette search ---------- */
 (function(){

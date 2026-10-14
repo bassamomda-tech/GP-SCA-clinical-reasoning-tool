@@ -396,5 +396,18 @@ else start();
   document.head.appendChild(s);
 })();
 
+/* Whole-site search: a result links here with ?hl=<words>. Protocol and pathway
+   pages do not load site.js, so the highlighter rides along with this file too.
+   It marks the words, opens the folded section / drawer that holds them and
+   scrolls there. Not on print copies; site.js pages load it themselves (guarded). */
+(function(){
+  if(!/[?&]hl=/.test(location.search)) return;
+  if(document.querySelector('meta[name="omelette-print-source"]')) return;
+  if(window.__rgpHlDone || document.querySelector('script[src*="assets/search-highlight.js"]')) return;
+  var s = document.createElement('script');
+  s.src = root() + 'assets/search-highlight.js?v=1';
+  document.head.appendChild(s);
+})();
+
 window.RGP_PROV = {DATES:DATES, ROUNDS:ROUNDS, HIGH_RISK:HIGH_RISK, mount:mount, build:build, parseDate:parseDate, roundFor:roundFor};
 })();

@@ -39,6 +39,23 @@
   function start(subs) {
     var sdkFailed = false;
 
+    // Consent before payment (Consumer Contracts Regulations 2013, reg 37): the
+    // buyer asks for access to start now and acknowledges losing the 14-day
+    // cancellation right. Subscribe is refused until this box is ticked.
+    var consent = subs.querySelector('#rgpPayConsent');
+    if (!consent) {
+      var wrap = document.createElement('label');
+      wrap.className = 'rgp-pay-consent';
+      wrap.style.cssText = 'display:flex;gap:10px;align-items:flex-start;max-width:760px;margin:0 auto 16px;padding:12px 14px;border:1px solid #d9cfbf;border-radius:12px;background:#fffdf8;font-size:13.5px;line-height:1.5;color:#2b2b2b;cursor:pointer';
+      wrap.innerHTML = '<input type="checkbox" id="rgpPayConsent" style="margin-top:3px;width:18px;height:18px;flex-shrink:0">' +
+        '<span>I want my paid access to start immediately, and I understand that I then lose my 14-day right to cancel and get a refund. I can still cancel at any time to stop future payments (<a href="' + (location.pathname.indexOf('/pages/') > -1 ? '' : 'pages/') + 'terms.html#billing">terms</a>).</span>';
+      var grid = subs.querySelector(CARDS[0].sel);
+      var anchor = grid && grid.parentNode ? grid.parentNode : subs;
+      anchor.parentNode.insertBefore(wrap, anchor);
+      consent = wrap.querySelector('input');
+    }
+    function consented(){ return !!(consent && consent.checked); }
+
     // Guard against the SDK silently never arriving (blocked by a network or
     // extension): after 12s, fall back on every card instead of showing nothing.
     var sdkTimer = setTimeout(function(){
@@ -116,6 +133,14 @@
 
       var btn = window.paypal.Buttons({
         style: { layout: 'vertical', shape: 'pill', label: 'subscribe' },
+        onClick: function (data, actions) {
+          if (!consented()) {
+            note(host, 'Please tick the box above the plans to confirm you want access to start now — then tap Subscribe again.');
+            if (consent && consent.focus) consent.focus();
+            return actions.reject();
+          }
+          return actions.resolve();
+        },
         createSubscription: function (data, actions) {
           var user = window.RGPAuth && RGPAuth.current ? RGPAuth.current() : null;
           if (!user) {

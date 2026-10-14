@@ -1,0 +1,127 @@
+# Reasoning GP — search synonyms and abbreviations
+# ------------------------------------------------------------------
+# Used by the site search box and pages/search.html. One group per line;
+# separate the terms with " = ". A term can be several words. Searching for
+# ANY term in a group also finds pages that use the others.
+#   - Case does not matter; plurals and UK/US spellings are handled for you
+#     (anaemia = anemia, oesophagus = esophagus), so you do not need to list them.
+#   - Keep each group to one meaning. An abbreviation with two meanings
+#     (e.g. "PE") should only be listed with the meaning GPs mean most often.
+#   - Lines starting with # are notes and are ignored.
+# After editing, rebuild the index:  node governance/build-search-index.mjs
+# ------------------------------------------------------------------
+
+# Cardiovascular
+mi = myocardial infarction = heart attack
+acs = acute coronary syndrome
+af = atrial fibrillation = afib
+hf = heart failure
+htn = hypertension = high blood pressure
+cvd = cardiovascular disease
+pad = peripheral arterial disease = peripheral artery disease
+dvt = deep vein thrombosis
+pe = pulmonary embolism
+vte = venous thromboembolism
+tia = transient ischaemic attack = mini stroke
+cva = stroke
+aaa = abdominal aortic aneurysm
+abpm = ambulatory blood pressure monitoring
+hbpm = home blood pressure monitoring
+doac = direct oral anticoagulant = noac
+ecg = electrocardiogram = ekg
+gtn = glyceryl trinitrate
+
+# Respiratory
+copd = chronic obstructive pulmonary disease
+sob = shortness of breath = breathlessness = dyspnoea
+urti = upper respiratory tract infection
+lrti = lower respiratory tract infection = chest infection
+cap = community acquired pneumonia
+osa = obstructive sleep apnoea
+ics = inhaled corticosteroid
+saba = short acting beta agonist
+laba = long acting beta agonist
+mart = maintenance and reliever therapy
+feno = fractional exhaled nitric oxide
+pef = peak expiratory flow = peak flow
+ild = interstitial lung disease
+tb = tuberculosis
+
+# Endocrine and renal
+t1dm = type 1 diabetes
+t2dm = type 2 diabetes
+dka = diabetic ketoacidosis
+hhs = hyperosmolar hyperglycaemic state
+hba1c = glycated haemoglobin = a1c
+sglt2 = sodium glucose cotransporter 2
+glp1 = glp-1 = glucagon like peptide 1
+ckd = chronic kidney disease
+aki = acute kidney injury
+egfr = estimated glomerular filtration rate
+acr = albumin creatinine ratio
+tft = thyroid function test
+tsh = thyroid stimulating hormone
+pcos = polycystic ovary syndrome
+hrt = hormone replacement therapy = menopausal hormone therapy
+
+# Gastro and liver
+gord = gastro-oesophageal reflux disease = gerd = reflux
+ibs = irritable bowel syndrome
+ibd = inflammatory bowel disease
+uc = ulcerative colitis
+fit = faecal immunochemical test
+lft = liver function test
+nafld = non-alcoholic fatty liver disease = masld
+ppi = proton pump inhibitor
+ugi = upper gastrointestinal
+
+# Neurology and mental health
+ms = multiple sclerosis
+mnd = motor neurone disease
+ces = cauda equina syndrome
+gad = generalised anxiety disorder
+ocd = obsessive compulsive disorder
+ptsd = post traumatic stress disorder
+adhd = attention deficit hyperactivity disorder
+asd = autism spectrum disorder = autism
+ssri = selective serotonin reuptake inhibitor
+cbt = cognitive behavioural therapy
+cfs = chronic fatigue syndrome = me cfs = myalgic encephalomyelitis
+
+# Musculoskeletal and skin
+oa = osteoarthritis
+ra = rheumatoid arthritis
+pmr = polymyalgia rheumatica
+gca = giant cell arteritis = temporal arteritis
+nsaid = non steroidal anti inflammatory drug
+lbp = low back pain
+bcc = basal cell carcinoma
+scc = squamous cell carcinoma
+
+# Women's, men's and sexual health
+uti = urinary tract infection = water infection
+luts = lower urinary tract symptoms
+bph = benign prostatic hyperplasia = enlarged prostate
+psa = prostate specific antigen
+ed = erectile dysfunction
+hmb = heavy menstrual bleeding = menorrhagia
+pmb = postmenopausal bleeding
+pid = pelvic inflammatory disease
+sti = sexually transmitted infection = std
+coc = combined oral contraceptive = combined pill
+pop = progestogen only pill = mini pill
+iud = intrauterine device = coil
+ius = intrauterine system = mirena
+lmp = last menstrual period
+
+
+# General
+tatt = tired all the time = fatigue
+2ww = two week wait = suspected cancer pathway
+ng12 = suspected cancer recognition and referral
+fbc = full blood count
+crp = c reactive protein
+esr = erythrocyte sedimentation rate
+bmi = body mass index
+bnf = british national formulary
+dvla = driving

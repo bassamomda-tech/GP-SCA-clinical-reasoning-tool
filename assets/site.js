@@ -1728,7 +1728,7 @@ function injectPalette(){
     <div class="rgp-palette-shell" role="dialog" aria-label="Quick jump" aria-modal="true">
       <div class="rgp-palette-input-wrap">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input class="rgp-palette-input" type="search" placeholder="Jump to a case, tool, or topic…" autocomplete="off" autocorrect="off" spellcheck="false" />
+        <input class="rgp-palette-input" type="search" placeholder="Search every page, or jump to a case, tool or topic…" autocomplete="off" autocorrect="off" spellcheck="false" />
         <kbd>esc</kbd>
       </div>
       <div class="rgp-palette-list" role="listbox"></div>
@@ -1752,11 +1752,14 @@ function injectPalette(){
       entries.filter(e => qq.split(/\s+/).every(token => e.search.includes(token))) :
       entries;
     lastFiltered = filtered;
-    if (active >= filtered.length) active = filtered.length - 1;
+    // (the whole-site 'Matches in pages' items below the topics are selectable too)
+    if (active >= filtered.length && !(window.RGPSearch && qq)) active = filtered.length - 1;
     if (active < 0) active = 0;
 
     if (!filtered.length) {
-      list.innerHTML = `<div class="rgp-pl-empty">No results for "${q}"</div>`;
+      list.innerHTML = `<div class="rgp-pl-empty">No topic or tool called "${String(q).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}"</div>`;
+      // Whole-site word search (assets/site-search.js) — matches inside pages
+      if (window.RGPSearch && qq) window.RGPSearch.paletteFill(list, q, 0, active);
       return;
     }
     // Group by category
@@ -1784,6 +1787,8 @@ function injectPalette(){
       }
     }
     list.innerHTML = html;
+    // Whole-site word search (assets/site-search.js) — matches inside pages, under the topic results
+    if (window.RGPSearch && qq) window.RGPSearch.paletteFill(list, q, runningIdx, active);
   }
 
   function openPalette(){
@@ -1800,6 +1805,24 @@ function injectPalette(){
   }
   window.RGP_openPalette = openPalette;
   window.RGP_closePalette = closePalette;
+
+  // Whole-site word search: the engine and its index load only once someone types
+  // (assets/site-search.js → assets/search/*.json, built by governance/build-search-index.mjs).
+  input.addEventListener('input', function rgpLoadFts(){
+    input.removeEventListener('input', rgpLoadFts);
+    const go = () => { window.RGPSearch.onUpdate = () => { if (!el.hidden) render(input.value); }; window.RGPSearch.onUpdate(); };
+    if (window.RGPSearch) return go();
+    const s = document.createElement('script');
+    s.src = PRE + 'assets/site-search.js?v=1';
+    s.onload = go;
+    document.head.appendChild(s);
+  });
+  // Arrived from a search result (?hl=…): highlight the words and open their section
+  if (/[?&]hl=/.test(location.search) && !document.querySelector('script[src*="assets/search-highlight.js"]')) {
+    const h = document.createElement('script');
+    h.src = PRE + 'assets/search-highlight.js?v=1';
+    document.head.appendChild(h);
+  }
 
   // Wire input
   input.addEventListener('input', e => { active = 0; render(e.target.value); });
@@ -2108,7 +2131,7 @@ window.RGPAuth = RGPAuth;
     // Consult Scribe is NOT in this list: it is a paid feature, and it is also
     // withheld pending its legal/information-governance requirements (see
     // RGP_HIDDEN_TOOLS). Handled by its own branch below so the gate can say so.
-    const OPEN = ['articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','how-we-fit.html','accessibility.html'];
+    const OPEN = ['search.html','articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','how-we-fit.html','accessibility.html'];
     if (OPEN.indexOf(base) > -1) return null;
     if (/scribe\.html$/.test(base)) return 'scribe';
     if (/\/cases\.html$/.test(path) || /\/tools\/algorithms\.html$/.test(path)) return null; // browse catalogue
