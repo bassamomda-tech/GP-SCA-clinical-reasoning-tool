@@ -158,6 +158,18 @@
     document.head.appendChild(el);
     var cl = document.createElement('script'); cl.src = base + 'cite-links.js?v=2'; cl.defer = true;
     document.head.appendChild(cl);
+    /* Guided stepper (Upload 106), then the algorithm UI (Upload 97), on tools/algorithms/<slug>.html
+       only (not print copies, one-page summaries or the Snapshot frame). The stepper loads first so
+       its "Step 0" exists before the algorithm UI starts. Each file also guards itself, so a page
+       that links them directly (chest pain, Uploads 97 and 104) never runs them twice. */
+    if (/\/tools\/algorithms\/[^\/]+\.html?$/i.test(location.pathname) && !/-print\.html?$/i.test(location.pathname)) {
+      var ui = function(){
+        if (window.__algUi || document.querySelector('script[src*="alg-ui.js"]')) return;
+        var u = document.createElement('script'); u.src = base + 'alg-ui.js?v=1'; document.head.appendChild(u);
+      };
+      if (window.__algStepper) ui();
+      else { var st = document.createElement('script'); st.src = base + 'alg-stepper.js?v=2'; st.onload = ui; st.onerror = ui; document.head.appendChild(st); }
+    }
   })();
 })();
 

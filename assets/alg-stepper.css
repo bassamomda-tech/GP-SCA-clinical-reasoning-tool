@@ -1,0 +1,324 @@
+/* ============================================================
+   alg-stepper.css — "Guided stepper" for every algorithm page (Upload 106; trial: Upload 104).
+   Loaded by alg-stepper.js (or a page's own <link>). One step open at a time on a numbered
+   timeline (done / current / next), "Step 0 · Before you start" for content that sits before
+   step 1, a "Show all steps" switch near the top, decision boxes as choice chips that show the
+   chosen row's own action word for word (no urgency added), calm white cards (same family as
+   the protocol pages), no shortcut bar on desktop/tablet, a light bottom bar on phones.
+   Screen only, scoped to html.au (alg-ui.js has run) / html.st (alg-stepper.js has run). Print
+   is unchanged: moved content goes back to its place before printing (alg-stepper.js), and
+   the print rules at the end keep it printing as before even without that.
+   ============================================================ */
+@media screen{
+html.au{
+  --a-bg:#f7f5ef; --a-card:#fff; --a-line:#ece6da; --a-line2:#f1ece2;
+  --a-ink:#1a1917; --a-mute:#57534c; --a-teal:#0c4a47; --a-teal-bg:#e9f3f1;
+  --a-safety:#b3261e; --a-diagnose:#1f5fa8; --a-treat:#2b7a3e; --a-refer:#6a3fa0; --a-life:#8f4f00;
+  --a-shadow:0 1px 2px rgba(20,40,38,.04),0 8px 22px rgba(20,40,38,.05);
+}
+html.au body{background:var(--a-bg);font-size:16px}
+
+/* ---- header: light and not sticky (the slim top bar stays) ---- */
+html.au .alg-header{max-width:980px!important;position:static!important;background:transparent!important;color:var(--a-ink)!important;box-shadow:none!important;margin:0 auto!important;padding:28px 20px 6px!important}
+html.au .alg-header h1{font-size:1.9rem!important;font-weight:600!important;color:var(--a-teal)!important;letter-spacing:-.01em!important}
+html.au .alg-header p{color:var(--a-mute);opacity:1;font-size:.9rem;margin-top:4px}
+html.au .alg-header .alg-meta{gap:8px;margin-top:14px;align-items:center}
+html.au .alg-header .alg-meta>span{background:var(--a-teal-bg);color:var(--a-teal);border:1px solid #cfe3df;font-weight:600;font-size:.76rem;padding:3px 12px}
+html.au .alg-header .pxa-upd{background:#fff;border-color:#cfe3df;color:var(--a-teal)}
+html.au .alg-header .pxa-upd .pxa-upd-dot{background:var(--a-treat);box-shadow:0 0 0 3px rgba(43,122,62,.18)}
+html.au .alg-header .pxa-upd-a{color:var(--a-teal)}
+html.au .alg-header .pxa-upd-a:hover{color:#08332f}
+html.au .alg-header .rgp-teach-toggle{margin-top:12px}
+
+html.au .stem-banner{max-width:980px!important;margin:14px auto 0!important;border:1px solid var(--a-line)!important;border-radius:18px!important;padding:18px 22px!important;box-shadow:var(--a-shadow)!important}
+html.au .stem-banner b{font-size:1.05rem!important}
+html.au .stem-banner small{font-size:.86rem;color:var(--a-mute)}
+html.au #rgpProvStrip{max-width:980px;margin:14px auto 0;border-radius:16px;box-shadow:none}
+html.au .alg-progress{max-width:980px!important;margin:22px auto 6px!important;padding:0 4px!important;font-size:.84rem!important;color:var(--a-mute)!important}
+html.au .pbar{height:4px!important;background:#e7e1d4!important}
+html.au .pbar-fill{background:var(--a-treat)}
+html.au .view-toggle{background:#fff;border:1px solid var(--a-line);border-radius:999px;padding:3px}
+html.au .vt-btn{border-radius:999px;padding:6px 16px;font-size:.84rem;color:#4a4f57}
+html.au .vt-btn[aria-selected="true"]{background:var(--a-teal);color:#fff}
+html.au .reset{background:#fff;color:var(--a-mute);border-color:var(--a-line);padding:4px 12px}
+html.au .tl-strip{max-width:980px!important;margin:18px auto 22px!important;background:#fff!important;border:1px solid var(--a-line)!important;border-left:4px solid var(--a-teal)!important;box-shadow:var(--a-shadow)!important;border-radius:16px!important;padding:14px 18px!important}
+html.au .tl-strip .tl-eyebrow{color:var(--a-mute)}
+html.au .tl-strip .tl-topic,html.au .tl-strip .tl-card,html.au .tl-strip .tl-tx b,html.au .tl-strip .tl-card:hover,html.au .tl-strip .tl-card:hover .tl-tx b{color:var(--a-teal)}
+html.au .tl-strip .tl-card{background:var(--a-teal-bg)!important;border:1px solid #cfe3df!important}
+html.au .tl-strip .tl-card:hover{background:#dcece9!important}
+html.au .tl-strip .tl-tx small{color:var(--a-mute)}
+html.au .tl-strip .tl-arr{color:var(--a-teal)}
+
+/* ---- the decision flow ---- */
+/* other algorithm layouts (node-head-row, node-row, node-top, page-header): the first row of a step is its header */
+html.au .alg-flow .node[data-step] > :first-child,html.au .alg-flow .st-zero > :first-child{display:flex!important;background:none!important;border-top:0!important;border-left:0!important;border-right:0!important}
+html.au .alg-flow .node[data-step] > :first-child:not(.node-body),html.au .alg-flow .st-zero > :first-child:not(.node-body){align-items:flex-start}
+html.au .alg-flow .node[data-step] > :first-child > .node-head,html.au .alg-flow .node[data-step] > :first-child > [class^="node-head"],html.au .alg-flow .st-zero > :first-child > .node-head,html.au .alg-flow .st-zero > :first-child > [class^="node-head"]{flex:1 1 auto!important;padding:0!important;background:none!important;border:0!important;min-width:0}
+html.au .page-header,html.au .stem-banner,html.au .alg-progress{position:static!important}
+html.au .page-header{background:transparent!important;color:var(--a-ink)!important;box-shadow:none!important;max-width:980px;margin:0 auto;padding:14px 20px 0!important}
+
+html.au .alg-flow{max-width:1012px!important;padding:0 16px!important}
+html.au .alg-flow .intro-note{font-size:.95rem!important;line-height:1.65!important;background:#fff!important;border:1px solid var(--a-line)!important;border-left:4px solid #b9b2a3!important;border-radius:14px!important;padding:14px 18px!important;margin-bottom:16px!important;color:var(--a-mute)!important}
+html.au .alg-flow .override{background:#fff;border:1px solid #f0d9d5;border-left:4px solid var(--a-safety);border-radius:16px;padding:16px 20px;box-shadow:var(--a-shadow);font-size:.95rem;line-height:1.65}
+html.au .alg-flow .override b{color:var(--a-safety);font-size:1rem}
+html.au .alg-flow .warn{background:#fdf5f3;border-left:4px solid var(--a-safety);border-radius:12px;padding:13px 16px;margin:16px 0;font-size:.95rem;line-height:1.65}
+html.au .alg-flow .caution{background:#fdf8ee;border-left:4px solid var(--a-life);border-radius:12px;padding:13px 16px;margin:16px 0;font-size:.95rem;line-height:1.65}
+html.au .alg-flow .dbox{background:#fff;border:1px solid var(--a-line);border-radius:16px;margin:16px 0;box-shadow:var(--a-shadow)}
+html.au .alg-flow .dbox-h{background:#faf7f1;padding:14px 18px;font-size:.95rem;line-height:1.5;border-bottom-color:var(--a-line)}
+html.au .alg-flow .dbox-r{padding:13px 18px;font-size:.95rem;line-height:1.6;border-bottom-color:var(--a-line2);grid-template-columns:210px 1fr;gap:18px}
+html.au .alg-flow .dbox-r>b{font-size:.92rem;color:var(--a-ink)}
+
+html.au .alg-flow .connector{width:0;height:30px;background:none;border-left:2px dotted #cfc6b4}
+html.au .alg-flow .connector::after{display:none}
+
+html.au .alg-flow .node,html.au .alg-flow .st-zero{--tone:#cfc6b4;background:var(--a-card)!important;border:1px solid var(--a-line)!important;border-left:4px solid var(--tone)!important;border-top:1px solid var(--a-line)!important;border-radius:18px!important;box-shadow:var(--a-shadow)!important}
+html.au .alg-flow .node:hover,html.au .alg-flow .st-zero:hover{box-shadow:var(--a-shadow)!important}
+html.au .alg-flow .node[data-type="SAFETY"]{--tone:var(--a-safety)}
+html.au .alg-flow .node[data-type="DIAGNOSE"]{--tone:var(--a-diagnose)}
+html.au .alg-flow .node[data-type="TREAT"]{--tone:var(--a-treat)}
+html.au .alg-flow .node[data-type="REFER"]{--tone:var(--a-refer)}
+html.au .alg-flow .node[data-type="LIFESTYLE"]{--tone:var(--a-life)}
+html.au .alg-flow .node[data-step] > :first-child,html.au .alg-flow .st-zero > :first-child{padding:22px 24px 8px!important;gap:14px!important;align-items:flex-start!important}
+html.au .alg-flow .node[data-type] .node-num,html.au .alg-flow .node .node-num,html.au .alg-flow .st-zero .node-num{width:34px!important;height:34px!important;font-size:.95rem!important;background:#f4f1ea!important;color:var(--tone)!important;box-shadow:inset 0 0 0 1.5px var(--tone)!important}
+html.au .alg-flow .node-tag + h3{display:block!important}
+html.au .alg-flow .node-tag{display:block!important;width:max-content;background:none!important;color:var(--tone)!important;padding:0!important;font-size:.72rem!important;letter-spacing:.12em!important;margin-bottom:6px!important}
+html.au .alg-flow .node-head h3{font-size:1.32rem!important;line-height:1.3!important;font-weight:600!important;color:var(--a-ink)!important}
+html.au .alg-flow .node-tick{margin-top:6px!important;padding-right:0!important}
+html.au .alg-flow .node-tick label{font-size:.84rem!important;color:var(--a-mute)!important;padding:6px 10px!important;border:1px solid var(--a-line)!important;border-radius:999px!important}
+html.au .alg-flow .node-body{padding:4px 24px 22px!important;font-size:1rem!important;line-height:1.7!important}
+html.au .alg-flow .node-body>p{margin:4px 0 14px!important;color:#2d2b27!important}
+html.au .alg-flow .node-body h4{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;margin:22px 0 8px;color:var(--a-ink)}
+html.au .au-steptools{margin:0 0 6px}
+html.au .au-steptools .pxa-btn{border-color:var(--a-line);color:var(--a-teal);background:#fff}
+
+/* label/value grids: quiet rows, no grey table */
+html.au .alg-flow .kv{background:none!important;border:0!important;border-radius:0!important;gap:0!important;margin:14px 0!important;font-size:.97rem!important;grid-template-columns:minmax(160px,24%) 1fr!important}
+html.au .alg-flow .kv>div{background:none!important;padding:13px 4px 13px 0!important;border-top:1px solid var(--a-line2)!important;line-height:1.65!important}
+html.au .alg-flow .kv>div:nth-child(odd){background:none!important;text-transform:none!important;letter-spacing:0!important;font-size:.92rem!important;font-weight:700!important;color:#3a3732!important;padding-right:18px!important}
+html.au .alg-flow .kv>div:nth-child(1),html.au .alg-flow .kv>div:nth-child(2){border-top:0!important}
+html.au .alg-flow .kv>.au-sn-l{box-shadow:inset 3px 0 0 var(--a-teal);padding-left:12px}
+
+/* red-flag tiles: white cards with the urgency strip */
+html.au .alg-flow .rfgrid{gap:14px;margin:16px 0}
+html.au .alg-flow .rftile{background:#fff;border:1px solid #efe4e1;border-left:4px solid var(--a-safety);border-radius:14px;padding:15px 18px;font-size:.95rem;line-height:1.65;box-shadow:0 1px 2px rgba(20,40,38,.03)}
+html.au .alg-flow .rftile>b{font-size:1rem;margin-bottom:4px}
+html.au .alg-flow .lsgrid{gap:14px;margin:16px 0}
+html.au .alg-flow .lstile{background:#fff;border:1px solid #efe7d6;border-left:4px solid var(--a-life);border-radius:14px;padding:15px 18px;font-size:.95rem;line-height:1.65}
+html.au .alg-flow .lstile b{color:var(--a-life)}
+html.au .alg-flow .branch{gap:14px;margin:14px 0;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+html.au .alg-flow .b-card{background:#fff;border:1px solid var(--a-line);border-left:4px solid var(--a-diagnose);border-top:1px solid var(--a-line);border-radius:14px;padding:14px 16px}
+html.au .alg-flow .b-cond{color:var(--a-mute);font-size:.76rem}
+html.au .alg-flow .b-drug{font-size:1rem}
+html.au .alg-flow .b-note{font-size:.88rem;color:var(--a-mute);line-height:1.6}
+html.au .alg-flow .ladder{border-color:var(--a-line);border-radius:14px;margin:14px 0}
+html.au .alg-flow .rung{padding:13px 16px;font-size:.95rem;border-bottom-color:var(--a-line2)}
+html.au .alg-flow .rn{color:var(--a-treat);background:#eaf4ec}
+
+/* softer pills (urgency tokens from alg-ui keep their colours) */
+html.au .alg-flow .pill{font-size:.76rem;font-weight:700;padding:2px 10px;border-radius:999px;border-color:transparent;letter-spacing:.01em}
+html.au .alg-flow .pill-blue{color:#1f5fa8;background:#edf3fb}
+html.au .alg-flow .pill-teal{color:#0f5f58;background:#e8f5f2}
+html.au .alg-flow .pill-grey{color:#4f5560;background:#f1f2f4}
+
+/* pills the urgency rule leaves alone ("First-line", "Referral"…) keep their hue, at AA contrast */
+html.au .alg-flow .pill-red:not(.u-pill){color:#a3231b}
+html.au .alg-flow .pill-green:not(.u-pill){color:#256b36}
+html.au .alg-flow .pill-amber:not(.u-pill){color:#8a4b00}
+html.au .alg-flow .pill-purple:not(.u-pill){color:#6a3fa0}
+/* Why? drawers */
+html.au .alg-flow .why-row{background:none;border-top:1px solid var(--a-line2)}
+html.au .alg-flow .why-btn{padding:12px 24px;font-size:.88rem;color:var(--a-teal)}
+html.au .alg-flow .why-btn:hover,html.au .alg-flow .why-btn[aria-expanded="true"]{color:#08332f}
+html.au .alg-flow .why-drawer{padding:4px 24px 18px;font-size:.93rem;color:#47443e;border-top:0}
+
+html.au .alg-foot{max-width:980px!important;border-radius:16px!important;font-size:.84rem!important}
+html.au .au-refs{max-width:980px!important;border-radius:18px!important;background:#fff!important;border-color:var(--a-line)!important}
+
+/* focus: visible everywhere */
+html.au :is(.why-btn,.vt-btn,.reset,.node-tick input,.tl-card,.rgp-teach-toggle):focus-visible{outline:3px solid var(--pxa-focus,#15202b);outline-offset:2px}
+
+/* ---- light shortcut bar (same as the calm protocol bar) ---- */
+html.au .pc-bar{background:rgba(255,255,255,.96);border:1px solid #e4dccb;box-shadow:0 10px 30px rgba(8,40,38,.12)}
+html.au .pc-b{color:var(--a-teal)}
+html.au .pc-b:hover,html.au .pc-b:focus-visible{background:#f3ede0}
+html.au .pc-b:focus-visible{outline:3px solid var(--a-teal);outline-offset:-3px}
+html.au .pc-b-red{color:#fff;background:var(--a-safety)}
+html.au .pc-b-red:hover{background:#9d1f18}
+html.au .pc-b[aria-pressed="true"]{background:var(--a-teal);color:#fff}
+
+@media (max-width:760px){
+  html.au body{font-size:15px}
+  html.au .alg-header{padding:20px 16px 4px!important}
+  html.au .alg-header h1{font-size:1.55rem!important}
+  html.au .stem-banner,html.au #rgpProvStrip{margin-left:12px!important;margin-right:12px!important}
+  html.au .alg-progress{margin:18px 12px 4px!important;flex-wrap:wrap!important}
+  html.au .tl-strip{margin:14px 12px 18px!important}
+  html.au .alg-flow{padding:0 12px!important}
+  html.au .alg-flow .node,html.au .alg-flow .st-zero{border-radius:16px!important}
+  html.au .alg-flow .node[data-step] > :first-child,html.au .alg-flow .st-zero > :first-child{padding:18px 16px 6px!important;gap:12px!important;flex-wrap:wrap!important}
+  html.au .alg-flow .node[data-step] > :first-child > [class^="node-head"],html.au .alg-flow .st-zero > :first-child > [class^="node-head"]{flex:1 1 180px!important}
+  html.au .alg-flow .node-head h3{font-size:1.18rem!important}
+  html.au .alg-flow .node-body{padding:2px 16px 18px!important;font-size:.95rem!important;line-height:1.62!important}
+  html.au .alg-flow .why-btn{padding:12px 16px!important}
+  html.au .alg-flow .why-drawer{padding:4px 16px 16px}
+  html.au .alg-flow .kv{grid-template-columns:1fr!important}
+  html.au .alg-flow .kv>div:nth-child(odd){padding:14px 0 2px!important;border-top:1px solid var(--a-line2)!important}
+  html.au .alg-flow .kv>div:nth-child(even){padding-top:2px!important;border-top:0!important}
+  html.au .alg-flow .kv>div:nth-child(1){border-top:0!important}
+  html.au .alg-flow .kv>.au-sn-l{padding-left:10px}
+  html.au .alg-flow .rftile,html.au .alg-flow .lstile{padding:13px 15px;line-height:1.58}
+  html.au .alg-flow .dbox-r{grid-template-columns:1fr;gap:4px;padding:12px 16px}
+  html.au .alg-flow .dbox-h{padding:12px 16px}
+  html.au .pc-bar{border-width:1px 0 0;border-radius:0}
+}
+
+/* desktop/tablet (owner decision): no shortcut bar; content uses the full width.
+   Search stays one click away via the small "Search" button alg-stepper.js adds. Phones keep the bottom bar. */
+@media (min-width:761px){
+  html.au .pc-bar{display:none!important}
+  html.pd body,html.au body{padding-bottom:48px!important}
+  html.au .rgp-a11y-btn{bottom:24px!important}
+  html.au .rgp-a11y-panel{bottom:84px!important}
+  html.au .pxa-sheet{bottom:24px}
+  html.au .pxa-toast{bottom:28px}
+}
+.st-find{display:none;align-items:center;gap:6px;font:700 12.5px/1.2 'DM Sans',system-ui,sans-serif;color:#0c4a47;background:#fff;border:1px solid #cfd9d8;border-radius:999px;padding:6px 12px;min-height:34px;cursor:pointer;white-space:nowrap}
+.st-find:hover{background:#f2f8f7;border-color:#0c4a47}
+.st-find svg{width:15px;height:15px}
+.st-find:focus-visible{outline:3px solid #15202b;outline-offset:2px}
+@media (min-width:761px){ html.au .st-find{display:inline-flex} }
+@media (max-width:760px){ html.au .st-find{display:none!important} }
+
+/* ================= stepper (html.st, set by alg-stepper.js) ================= */
+html.st .alg-flow .node,html.st .alg-flow .st-zero{overflow:visible!important;margin-left:58px;transition:box-shadow .2s}
+html.st .alg-flow .connector{height:16px;border:0}
+/* the timeline: a line from each dot to the next step's dot */
+html.st .alg-flow .node::before,html.st .alg-flow .st-zero::before{content:"";position:absolute;left:-41px;top:58px;bottom:-30px;width:2px;background:#d9d2c2;border-radius:2px}
+html.st .alg-flow .node:not(:has(~ .node))::before{display:none}
+html.st .alg-flow .node:has(.node-tick input:checked)::before,html.st .alg-flow .st-zero:has(.node-tick input:checked)::before{background:#2b7a3e}
+html.st .alg-flow .node .node-num,html.st .alg-flow .st-zero .node-num{position:absolute!important;left:-60px!important;top:18px!important;width:40px!important;height:40px!important;min-width:40px!important;
+  background:#fff!important;color:#57534c!important;box-shadow:inset 0 0 0 2px #cfc6b4!important;font-size:1rem!important;z-index:1}
+html.st .alg-flow .node.st-next .node-num,html.st .alg-flow .st-zero.st-next .node-num{box-shadow:inset 0 0 0 2px #0c4a47!important;color:#0c4a47!important}
+html.st .alg-flow .node.st-cur .node-num,html.st .alg-flow .st-zero.st-cur .node-num{background:#0c4a47!important;color:#fff!important;box-shadow:0 0 0 5px #d5e9e6!important}
+html.st .alg-flow .node:has(.node-tick input:checked) .node-num,html.st .alg-flow .st-zero:has(.node-tick input:checked) .node-num{background:#2b7a3e!important;color:#fff!important;box-shadow:none!important}
+html.st .alg-flow .node:has(.node-tick input:checked) .node-num::after,html.st .alg-flow .st-zero:has(.node-tick input:checked) .node-num::after{content:"✓";position:absolute;right:-5px;bottom:-5px;width:18px;height:18px;border-radius:50%;background:#fff;color:#2b7a3e;
+  font-size:11px;line-height:18px;text-align:center;box-shadow:0 0 0 1.5px #2b7a3e}
+html.st .alg-flow .node.pxa-rf-step .node-num,html.st .alg-flow .st-zero.pxa-rf-step .node-num{background:#b3261e!important;color:#fff!important}
+
+/* closed steps: header only, compact */
+html.st:not(.st-all) .alg-flow .node:not(.st-cur):not(:has(mark.pxa-hit)) > :not(:first-child):not(.st-next-row):not(.node-tick),html.st:not(.st-all) .alg-flow .st-zero:not(.st-cur):not(:has(mark.pxa-hit)) > :not(:first-child):not(.st-next-row):not(.node-tick){display:none!important}
+html.st:not(.st-all) .alg-flow .node:not(.st-cur):not(:has(mark.pxa-hit)) .st-next-row,html.st:not(.st-all) .alg-flow .st-zero:not(.st-cur):not(:has(mark.pxa-hit)) .st-next-row{display:none}
+html.st .alg-flow .node:not(.st-cur) > :first-child,html.st .alg-flow .st-zero:not(.st-cur) > :first-child{padding:16px 20px!important;cursor:pointer;align-items:center!important}
+html.st .alg-flow .node:not(.st-cur) .node-head h3,html.st .alg-flow .st-zero:not(.st-cur) .node-head h3{font-size:1.05rem!important;color:#3a3732}
+html.st .alg-flow .node:not(.st-cur) .node-tag,html.st .alg-flow .st-zero:not(.st-cur) .node-tag{margin-bottom:2px!important}
+html.st .alg-flow .node:not(.st-cur):hover,html.st .alg-flow .st-zero:not(.st-cur):hover{box-shadow:0 1px 2px rgba(20,40,38,.06),0 10px 26px rgba(20,40,38,.09)!important}
+html.st .alg-flow .node.st-cur,html.st .alg-flow .st-zero.st-cur{box-shadow:0 0 0 2px #0c4a47,0 14px 34px rgba(12,74,71,.12)!important;border-left-width:5px!important}
+html.st.st-all .alg-flow .node:not(.st-cur),html.st.st-all .alg-flow .st-zero:not(.st-cur){box-shadow:var(--a-shadow)!important}
+html.st .alg-flow .node .node-num,html.st .alg-flow .st-zero .node-num{top:18px!important}
+html.st .alg-flow .node:not(.st-cur) .node-num,html.st .alg-flow .st-zero:not(.st-cur) .node-num{top:12px!important}
+
+/* open / close and next-step controls */
+.st-tog{flex:none;align-self:center;display:inline-flex;align-items:center;gap:6px;font:700 13px/1.2 'DM Sans',system-ui,sans-serif;color:#0c4a47;background:#e9f3f1;
+  border:1px solid #cfe3df;border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer;white-space:nowrap}
+.st-tog:hover{background:#dcece9}
+.st-tog .st-chev{transition:transform .15s}
+.st-tog[aria-expanded="true"] .st-chev{transform:rotate(180deg)}
+html.st .node.st-cur .st-tog,html.st .st-zero.st-cur .st-tog{background:#fff}
+.st-next-row{padding:4px 24px 22px}
+.st-next-b{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;font:700 15px/1.35 'DM Sans',system-ui,sans-serif;color:#fff;
+  background:#0c4a47;border:0;border-radius:14px;padding:14px 18px;min-height:52px;cursor:pointer}
+.st-next-b:hover{background:#0e5c58}
+.st-next-b small{display:block;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#bfe0db}
+/* "Show all steps": a clear switch in a bar right under the Steps | Snapshot row (hidden in Snapshot view) */
+body.summary-mode .st-mode,body.diagram-mode .st-mode{display:none}
+.st-mode{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;max-width:980px;margin:6px auto 18px;padding:12px 16px;background:#fff;border:1px solid #cfe3df;border-left:4px solid #0c4a47;
+  border-radius:14px;font:500 14.5px/1.4 'DM Sans',system-ui,sans-serif;color:#1a1917;box-shadow:0 1px 2px rgba(20,40,38,.04)}
+.st-mode-t{flex:1 1 260px;min-width:0}
+.st-mode-t b{color:#0c4a47}
+.st-mode-s{color:#57534c}
+.st-mode-btns{display:contents}
+.st-switch{display:inline-flex;align-items:center;gap:10px;font:700 14.5px/1.2 'DM Sans',system-ui,sans-serif;color:#0c4a47;background:#e9f3f1;border:1.5px solid #0c4a47;border-radius:999px;
+  padding:7px 16px 7px 8px;min-height:44px;cursor:pointer;white-space:nowrap}
+.st-switch:hover{background:#dcece9}
+.st-sw-track{position:relative;width:40px;height:24px;border-radius:999px;background:#8d9a98;flex:none;transition:background .15s}
+.st-sw-knob{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .15s}
+.st-switch[aria-checked="true"]{background:#0c4a47;color:#fff}
+.st-switch[aria-checked="true"] .st-sw-track{background:#5fb39a}
+.st-switch[aria-checked="true"] .st-sw-knob{left:19px}
+@media (max-width:760px){ .st-mode{margin:4px 12px 14px;padding:10px 12px} .st-switch{flex:1 1 100%;justify-content:center} }
+html.st :is(.st-tog,.st-next-b,.st-switch,.dbox.st-chips .dbox-r > b):focus-visible{outline:3px solid #15202b;outline-offset:2px}
+
+/* decision boxes as choice chips; the chosen row's own action shows below, word for word, highlighted.
+   No urgency label is worked out or added: pills and colours are the page's own. */
+html.st:not(.st-all) .alg-flow .dbox.st-chips{display:flex;flex-wrap:wrap;gap:10px;padding:0 16px 16px;overflow:visible}
+html.st:not(.st-all) .alg-flow .dbox.st-chips .dbox-h{flex:1 1 calc(100% + 32px);margin:0 -16px 4px;order:-1;border-radius:16px 16px 0 0}
+html.st:not(.st-all) .alg-flow .dbox.st-chips .dbox-r{display:contents}
+html.st:not(.st-all) .alg-flow .dbox.st-chips .dbox-r > b{order:0;display:flex;align-items:center;min-height:50px;padding:10px 16px;border:1.5px solid #cfc6b4;border-radius:14px;background:#fff;
+  font-size:.95rem!important;font-weight:700;color:#1a1917;cursor:pointer;line-height:1.3;max-width:100%}
+html.st:not(.st-all) .alg-flow .dbox.st-chips .dbox-r > b:hover{border-color:#0c4a47;background:#f2f8f7}
+html.st:not(.st-all) .alg-flow .dbox.st-chips .dbox-r.st-sel > b{background:#0c4a47;border-color:#0c4a47;color:#fff}
+html.st:not(.st-all) .alg-flow .dbox.st-chips .dbox-r > :not(b){display:none}
+html.st:not(.st-all) .alg-flow .dbox.st-chips .dbox-r.st-sel > .st-out,html.st:not(.st-all) .alg-flow .dbox.st-chips .dbox-r:has(mark.pxa-hit) > .st-out{display:block;order:5;flex:1 1 100%;margin:4px 0 0;
+  border:1.5px solid #0c4a47;border-left:6px solid #0c4a47;border-radius:14px;background:#eef6f4;padding:14px 18px;font-size:1rem;line-height:1.65;color:#1a1917;box-shadow:0 6px 18px rgba(12,74,71,.08)}
+.st-chip-hint{order:4;flex:1 1 100%;margin:2px 0 0;font:600 13.5px/1.4 'DM Sans',system-ui,sans-serif;color:#57534c}
+html.st .dbox.st-chips:has(.st-sel) .st-chip-hint,html.st.st-all .st-chip-hint{display:none}
+
+@media (max-width:760px){
+  html.st .alg-flow .node,html.st .alg-flow .st-zero{margin-left:32px}
+  html.st .alg-flow .node.st-cur,html.st .alg-flow .st-zero.st-cur{box-shadow:0 0 0 1.5px #0c4a47,0 10px 24px rgba(12,74,71,.1)!important;border-left-width:4px!important}
+  html.st .alg-flow .node.st-cur .node-body,html.st .alg-flow .st-zero.st-cur .node-body{padding:2px 14px 16px!important}
+  html.st .alg-flow .node.st-cur > :first-child,html.st .alg-flow .st-zero.st-cur > :first-child{padding:16px 14px 6px!important}
+  html.st .alg-flow .node .node-num,html.st .alg-flow .st-zero .node-num{left:-36px!important;width:30px!important;height:30px!important;min-width:30px!important;font-size:.85rem!important}
+  html.st .alg-flow .node:not(.st-cur) .node-num,html.st .alg-flow .st-zero:not(.st-cur) .node-num{top:14px!important}
+  html.st .alg-flow .node::before,html.st .alg-flow .st-zero::before{left:-22px;top:50px}
+  html.st .alg-flow .node:not(.st-cur) > :first-child,html.st .alg-flow .st-zero:not(.st-cur) > :first-child{padding:14px 14px!important}
+  html.st .alg-flow .node .node-tick,html.st .alg-flow .st-zero .node-tick{order:3}
+  .st-tog{padding:6px 12px;min-height:40px}
+  .st-next-row{padding:4px 16px 18px}
+  html.st:not(.st-all) .alg-flow .dbox.st-chips .dbox-r > b{flex:1 1 100%}
+}
+}
+/* phone: closed steps keep one tidy header (the toggle shows as a chevron; its name stays in aria-label) */
+@media screen and (max-width:760px){
+  html.st .alg-flow .node:not(.st-cur) .st-tog,html.st .alg-flow .st-zero:not(.st-cur) .st-tog{padding:0;width:40px;justify-content:center}
+  html.st .alg-flow .node:not(.st-cur) .st-tog-l,html.st .alg-flow .st-zero:not(.st-cur) .st-tog-l{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  html.st .alg-flow .node:not(.st-cur) .node-tick label,html.st .alg-flow .st-zero:not(.st-cur) .node-tick label{padding:3px 9px;font-size:.78rem}
+  html.st .alg-flow .node:not(.st-cur) .node-tick,html.st .alg-flow .st-zero:not(.st-cur) .node-tick{margin-top:2px!important}
+}
+
+/* ================= Upload 106 additions ================= */
+@media screen{
+/* Step 0 · Before you start: styled like the steps (teal), no Done box */
+html.au .alg-flow .st-zero{--tone:#0c4a47;position:relative;display:block}
+html.au .alg-flow .st-zero .node-tag{color:#0c4a47!important}
+html.au .alg-flow .st-zero > .node-header{display:flex;align-items:flex-start;gap:14px}
+html.au .alg-flow .st-zero .node-head h3{font-family:var(--font-serif,'Source Serif 4',Georgia,serif);margin:0}
+html.au .alg-flow .st-zero .node-body > *:first-child{margin-top:0}
+html.au .alg-flow .st-zero .node-body > .alg-foot{max-width:none!important;margin:12px 0!important}
+html.au .alg-flow .st-zero-conn{display:block}
+html.st .alg-flow .st-zero .node-num{background:#fff!important;color:#0c4a47!important}
+html.st .alg-flow .st-zero.st-cur .node-num{background:#0c4a47!important;color:#fff!important}
+/* layouts whose Done box sits after the header (not inside it): a row under the header; long "done" labels wrap */
+html.au .alg-flow .node[data-step] > .node-tick{position:static!important;margin:0!important;padding:0 24px 8px 24px!important}
+html.au .alg-flow .node-tick label{white-space:normal!important;max-width:100%}
+html.au .alg-flow .node-tick{min-width:0;max-width:100%}
+html.st .alg-flow .node,html.st .alg-flow .st-zero{width:auto!important}
+/* grids never wider than their step card */
+html.au .alg-flow .rfgrid,html.au .alg-flow .lsgrid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))!important}
+html.au .alg-flow .node-body{min-width:0}
+html.au .alg-flow .node-body > *{max-width:100%}
+html.au .alg-flow .node-body{overflow-wrap:break-word}
+html.au .alg-flow .pill{white-space:normal!important;max-width:100%}
+html.au .alg-flow .rung{flex-wrap:wrap}
+html.au .alg-flow .rn{white-space:normal!important;max-width:100%}
+html.au .alg-flow .rt{min-width:0;flex:1 1 220px;display:block!important}  /* some pages lay rung text out as a row of columns; read it as text */
+html.au .alg-flow .node-body table{display:block;max-width:100%;overflow-x:auto}
+@media (max-width:760px){
+  html.au .alg-flow .node[data-step] > .node-tick{padding:0 14px 8px 14px!important}
+}
+}
+/* print: exactly as before (alg-stepper.js also puts moved content back before printing) */
+@media print{
+  .st-zero,.st-zero > .node-body{display:contents!important}
+  .st-zero > .node-header,.st-zero-conn,.st-mode,.st-tog,.st-next-row,.st-chip-hint,.st-find{display:none!important}
+}
